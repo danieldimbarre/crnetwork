@@ -1219,6 +1219,8 @@ function TargetEnable()
 											end
 										end
 									end
+
+									table.insert(Menu,{ event = "engine:Vehrify", label = "Verificar", tunnel = "client" })
 								end
 							else
 								Selected[5] = false

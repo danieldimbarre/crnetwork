@@ -233,8 +233,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		DisablePlayerVehicleRewards(PlayerId())
-
 		SetWeaponDamageModifierThisFrame("WEAPON_BAT",0.25)
 		SetWeaponDamageModifierThisFrame("WEAPON_KATANA",0.25)
 		SetWeaponDamageModifierThisFrame("WEAPON_HAMMER",0.25)

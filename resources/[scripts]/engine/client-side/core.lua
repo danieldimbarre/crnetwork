@@ -242,86 +242,52 @@ function text3D(x,y,z,text)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VTUNING
+-- INSTALL
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("engine:vehTuning")
-AddEventHandler("engine:vehTuning",function()
-	local Vehicle = vRP.ClosestVehicle(5)
-	if IsEntityAVehicle(Vehicle) then
-		local motor = GetVehicleMod(Vehicle,11)
-		local freio = GetVehicleMod(Vehicle,12)
-		local transmissao = GetVehicleMod(Vehicle,13)
-		local suspensao = GetVehicleMod(Vehicle,15)
-		local blindagem = GetVehicleMod(Vehicle,16)
-		local body = GetVehicleBodyHealth(Vehicle)
-		local engine = GetVehicleEngineHealth(Vehicle)
-		local fuel = GetVehicleFuelLevel(Vehicle)
-		local plate = GetVehicleNumberPlateText(Vehicle)
+local Install = {
+	[0] = "A",
+	[1] = "B",
+	[2] = "C",
+	[3] = "D",
+	[4] = "E"
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ENGINE:VEHRIFY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("engine:Vehrify")
+AddEventHandler("engine:Vehrify",function(Entity)
+	local Vehicle = Entity[3]
 
-		if motor == -1 then
-			motor = "Desativado"
-		elseif motor == 0 then
-			motor = "Nível 1 / "..GetNumVehicleMods(Vehicle,11)
-		elseif motor == 1 then
-			motor = "Nível 2 / "..GetNumVehicleMods(Vehicle,11)
-		elseif motor == 2 then
-			motor = "Nível 3 / "..GetNumVehicleMods(Vehicle,11)
-		elseif motor == 3 then
-			motor = "Nível 4 / "..GetNumVehicleMods(Vehicle,11)
-		elseif motor == 4 then
-			motor = "Nível 5 / "..GetNumVehicleMods(Vehicle,11)
-		end
-
-		if freio == -1 then
-			freio = "Desativado"
-		elseif freio == 0 then
-			freio = "Nível 1 / "..GetNumVehicleMods(Vehicle,12)
-		elseif freio == 1 then
-			freio = "Nível 2 / "..GetNumVehicleMods(Vehicle,12)
-		elseif freio == 2 then
-			freio = "Nível 3 / "..GetNumVehicleMods(Vehicle,12)
-		end
-
-		if transmissao == -1 then
-			transmissao = "Desativado"
-		elseif transmissao == 0 then
-			transmissao = "Nível 1 / "..GetNumVehicleMods(Vehicle,13)
-		elseif transmissao == 1 then
-			transmissao = "Nível 2 / "..GetNumVehicleMods(Vehicle,13)
-		elseif transmissao == 2 then
-			transmissao = "Nível 3 / "..GetNumVehicleMods(Vehicle,13)
-		elseif transmissao == 3 then
-			transmissao = "Nível 4 / "..GetNumVehicleMods(Vehicle,13)
-		end
-
-		if suspensao == -1 then
-			suspensao = "Desativado"
-		elseif suspensao == 0 then
-			suspensao = "Nível 1 / "..GetNumVehicleMods(Vehicle,15)
-		elseif suspensao == 1 then
-			suspensao = "Nível 2 / "..GetNumVehicleMods(Vehicle,15)
-		elseif suspensao == 2 then
-			suspensao = "Nível 3 / "..GetNumVehicleMods(Vehicle,15)
-		elseif suspensao == 3 then
-			suspensao = "Nível 4 / "..GetNumVehicleMods(Vehicle,15)
-		elseif suspensao == 4 then
-			suspensao = "Nível 5 / "..GetNumVehicleMods(Vehicle,15)
-		end
-
-		if blindagem == -1 then
-			blindagem = "Desativado"
-		elseif blindagem == 0 then
-			blindagem = "Nível 1 / "..GetNumVehicleMods(Vehicle,16)
-		elseif blindagem == 1 then
-			blindagem = "Nível 2 / "..GetNumVehicleMods(Vehicle,16)
-		elseif blindagem == 2 then
-			blindagem = "Nível 3 / "..GetNumVehicleMods(Vehicle,16)
-		elseif blindagem == 3 then
-			blindagem = "Nível 4 / "..GetNumVehicleMods(Vehicle,16)
-		elseif blindagem == 4 then
-			blindagem = "Nível 5 / "..GetNumVehicleMods(Vehicle,16)
-		end
-
-		TriggerEvent("Notify","default","<b>Motor:</b> "..motor.."<br><b>Freio:</b> "..freio.."<br><b>Transmissão:</b> "..transmissao.."<br><b>Suspensão:</b> "..suspensao.."<br><b>Blindagem:</b> "..blindagem.."<br><b>Lataria:</b> "..parseInt(body / 10).."%<br><b>Nitro:</b> "..parseInt((GlobalState["Nitro"][plate] or 0) / 20).."%<br><b>Motor:</b> "..parseInt(engine / 10).."%<br><b>Gasolina:</b> "..parseInt(fuel).."%",10000)
+	local Engine = GetVehicleMod(Vehicle,11)
+	if Engine ~= -1 then
+		exports["dynamic"]:AddButton("Motor","Modelo instalado: <yellow>"..Install[Engine].."</yellow>","","",false,false)
 	end
+
+	local Brake = GetVehicleMod(Vehicle,12)
+	if Brake ~= -1 then
+		exports["dynamic"]:AddButton("Freio","Modelo instalado: <yellow>"..Install[Brake].."</yellow>","","",false,false)
+	end
+
+	local Transmission = GetVehicleMod(Vehicle,13)
+	if Transmission ~= -1 then
+		exports["dynamic"]:AddButton("Transmissão","Modelo instalado: <yellow>"..Install[Transmission].."</yellow>","","",false,false)
+	end
+
+	local Suspension = GetVehicleMod(Vehicle,15)
+	if Suspension ~= -1 then
+		exports["dynamic"]:AddButton("Suspensão","Modelo instalado: <yellow>"..Install[Suspension].."</yellow>","","",false,false)
+	end
+
+	local Shielding = GetVehicleMod(Vehicle,16)
+	if Shielding ~= -1 then
+		exports["dynamic"]:AddButton("Blindagem","Modelo instalado: <yellow>"..Install[Shielding].."</yellow>","","",false,false)
+	end
+
+	local Force = GetVehicleEngineHealth(Vehicle) / 10
+	exports["dynamic"]:AddButton("Potência","A força do motor se encontra em <yellow>"..parseInt(Force).."%</yellow>.","","",false,false)
+
+	local Body = GetVehicleBodyHealth(Vehicle) / 10
+	exports["dynamic"]:AddButton("Lataria","A qualidade da lataria se encontra em <yellow>"..parseInt(Body).."%</yellow>.","","",false,false)
+
+	exports["dynamic"]:openMenu()
 end)

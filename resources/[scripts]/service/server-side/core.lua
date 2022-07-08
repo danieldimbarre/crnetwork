@@ -156,7 +156,7 @@ AddEventHandler("service:Remove",function(Passport)
 				local Account = vRP.Account(Identity["license"])
 				if Account and Roles[Permission[Passport]] then
 					PerformHttpRequest(Webhook,function(err,text,headers) end,"POST",json.encode({
-						username = "CR Network",
+						username = "Creative Network",
 						content = Account["discord"].." "..Roles[Permission[Passport]].." Remover"
 					}),{ ["Content-Type"] = "application/json" })
 				end
@@ -185,7 +185,7 @@ AddEventHandler("service:Add",function(Passport)
 				local Account = vRP.Account(Identity["license"])
 				if Account and Roles[Permission[Passport]] then
 					PerformHttpRequest(Webhook,function(err,text,headers) end,"POST",json.encode({
-						username = "CR Network",
+						username = "Creative Network",
 						content = Account["discord"].." "..Roles[Permission[Passport]].." Adicionar"
 					}),{ ["Content-Type"] = "application/json" })
 				end

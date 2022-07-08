@@ -2060,9 +2060,9 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 				if not vRPC.inVehicle(source) then
 					local Vehicle,vehNet,vehPlate,vehName = vRPC.vehList(source,4)
 					if Vehicle then
-						local Passport = vRP.PassportPlate(vehPlate)
-						if Passport then
-							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..Passport["Passport"]..":"..vehName })
+						local PassportPlate = vRP.PassportPlate(vehPlate)
+						if PassportPlate then
+							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
 							if parseInt(#Datatable) > 0 then
 								Datatable = json.decode(Datatable[1]["dvalue"])
 
@@ -2105,7 +2105,7 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 													if vRP.tryGetInventoryItem(Passport,totalName,1,false,Slot) then
 														Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 														vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
-														vRP.Execute("entitydata/SetData",{ key = "vehMods:"..Passport["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+														vRP.Execute("entitydata/SetData",{ key = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 													end
 												end
 
@@ -2133,9 +2133,9 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 				if not vRPC.inVehicle(source) then
 					local Vehicle,vehNet,vehPlate,vehName = vRPC.vehList(source,4)
 					if Vehicle then
-						local Passport = vRP.PassportPlate(vehPlate)
-						if Passport then
-							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..Passport["Passport"]..":"..vehName })
+						local PassportPlate = vRP.PassportPlate(vehPlate)
+						if PassportPlate then
+							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
 							if parseInt(#Datatable) > 0 then
 								Datatable = json.decode(Datatable[1]["dvalue"])
 
@@ -2178,7 +2178,7 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 													if vRP.tryGetInventoryItem(Passport,totalName,1,false,Slot) then
 														Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
 														vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
-														vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..Passport["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+														vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 													end
 												end
 
@@ -2206,9 +2206,9 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 				if not vRPC.inVehicle(source) then
 					local Vehicle,vehNet,vehPlate,vehName = vRPC.vehList(source,4)
 					if Vehicle then
-						local Passport = vRP.PassportPlate(vehPlate)
-						if Passport then
-							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..Passport["Passport"]..":"..vehName })
+						local PassportPlate = vRP.PassportPlate(vehPlate)
+						if PassportPlate then
+							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
 							if parseInt(#Datatable) > 0 then
 								Datatable = json.decode(Datatable[1]["dvalue"])
 
@@ -2251,7 +2251,7 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 													if vRP.tryGetInventoryItem(Passport,totalName,1,false,Slot) then
 														Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
 														vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
-														vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..Passport["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+														vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 													end
 												end
 
@@ -2280,9 +2280,9 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 					local Vehicle,vehNet,vehPlate,vehName = vRPC.vehList(source,4)
 					if Vehicle then
 						if vCLIENT.CheckCar(source,Vehicle) then
-							local Passport = vRP.PassportPlate(vehPlate)
-							if Passport then
-								local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..Passport["Passport"]..":"..vehName })
+							local PassportPlate = vRP.PassportPlate(vehPlate)
+							if PassportPlate then
+								local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
 								if parseInt(#Datatable) > 0 then
 									Datatable = json.decode(Datatable[1]["dvalue"])
 
@@ -2325,7 +2325,7 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 														if vRP.tryGetInventoryItem(Passport,totalName,1,false,Slot) then
 															Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
 															vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
-															vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..Passport["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+															vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 														end
 													end
 

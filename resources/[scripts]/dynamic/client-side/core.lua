@@ -117,7 +117,6 @@ RegisterCommand("globalFunctions",function()
 				exports["dynamic"]:AddButton("Porta-Malas","Abrir porta-malas.","player:Doors","5","doors",true)
 				exports["dynamic"]:AddButton("Capô","Abrir capô.","player:Doors","6","doors",true)
 
-				exports["dynamic"]:AddButton("Estatisticas","Informações do veículo.","engine:vehTuning","","vehicle",false)
 				exports["dynamic"]:SubMenu("Veículo","Funções do veículo.","vehicle")
 				exports["dynamic"]:SubMenu("Portas","Portas do veículo.","doors")
 			end

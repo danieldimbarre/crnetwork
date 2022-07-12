@@ -78,7 +78,6 @@ AddEventHandler("inventory:Close",function()
 		Backpack = false
 		SetNuiFocus(false,false)
 		SetCursorLocation(0.5,0.5)
-		TriggerEvent("hud:Active",true)
 		SendNUIMessage({ action = "hideMenu" })
 	end
 end)
@@ -96,7 +95,6 @@ end)
 RegisterNUICallback("Craft",function(Data,Callback)
 	Backpack = false
 	SetNuiFocus(false,false)
-	TriggerEvent("hud:Active",true)
 	SendNUIMessage({ action = "hideMenu" })
 
 	TriggerEvent("crafting:openSource")
@@ -211,7 +209,6 @@ RegisterCommand("openBackpack",function()
 			Backpack = true
 			SetNuiFocus(true,true)
 			SetCursorLocation(0.5,0.5)
-			TriggerEvent("hud:Active",false)
 			SendNUIMessage({ action = "showMenu" })
 		end
 	end

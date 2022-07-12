@@ -25,13 +25,13 @@
 }
 
 .color-3 {
-	color: #4a380c;
+	color: #715611;
 	font-size: 11px;
 	margin-right: 5px;
 	border-radius: 3px;
 	letter-spacing: 1px;
 	padding: 4px 7px 3px;
-	background-color: #a27cdb;
+	background-color: #fec026;
 	text-shadow: none;
 }
 
@@ -140,7 +140,7 @@ em {
 
 .prefix {
 	top: 7.5px;
-	color: #a27cdb;
+	color: #fec026;
 	position: absolute;
 	letter-spacing: 2.5px;
 }
@@ -192,7 +192,7 @@ textarea:focus, input:focus {
 	bottom: 10%;
 	position: absolute;
 	border-radius: 3px;
-	background: #a27cdb;
+	background: #fec026;
 }
 
 .help {

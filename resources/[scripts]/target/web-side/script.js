@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 			case "Valid":
 				$(".Text").html("");
-				$(".Eye").css("color","#a27cdb");
+				$(".Eye").css("color","#fec026");
 
 				$.each(event["data"]["data"],function(index,item){
 					$(".Text").append("<div id='Target-" + index + "'<li>" + item["label"] + "</li></div>");

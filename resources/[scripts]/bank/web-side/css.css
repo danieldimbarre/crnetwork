@@ -36,27 +36,27 @@ body {
 }
 
 #deposit {
-	color: #fff;
 	float: left;
 	width: 190px;
 	padding: 16px;
+	color: #715611;
 	font-size: 18px;
 	border-radius: 3px;
 	margin-right: 10px;
 	text-align: center;
-	background: #a27cdb;
+	background: #fec026;
 	letter-spacing: 2px;
 }
 
 #withdraw {
-	color: #fff;
 	float: left;
 	width: 150px;
 	padding: 16px;
+	color: #715611;
 	font-size: 18px;
 	border-radius: 3px;
 	text-align: center;
-	background: #a27cdb;
+	background: #fec026;
 	letter-spacing: 2px;
 }
 

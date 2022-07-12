@@ -99,10 +99,10 @@ body {
 }
 
 .itemPrice {
-	color: #4a380c;
+	color: #715611;
 	text-shadow: none;
 	border-radius: 3px;
-	background: #a27cdb;
+	background: #fec026;
 	padding: 3px 6px 4px;
 	margin: 14px 14px 0 0;
 }
@@ -225,7 +225,7 @@ input::placeholder {
 	min-height: 10px;
 	max-height: 10px;
 	max-width: 596px;
-	background: #a27cdb;
+	background: #fec026;
 	transition: all 0.9s;
 }
 

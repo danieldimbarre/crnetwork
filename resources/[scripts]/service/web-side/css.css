@@ -99,7 +99,7 @@ body {
 .Add {
 	top: 32px;
 	right: 45px;
-	color: #a27cdb;
+	color: #fec026;
 	position: absolute;
 	letter-spacing: 1px;
 }
@@ -119,10 +119,10 @@ vermelho {
 	width: 300px;
 	display: none;
 	padding: 30px;
-	color: #4a380c;
+	color: #715611;
 	position: absolute;
 	border-radius: 10px;
-	background: #a27cdb;
+	background: #fec026;
 	box-shadow: 0 0 10px #181818;
 }
 
@@ -144,12 +144,12 @@ vermelho {
 	border: 0;
 	float: left;
 	width: 115px;
-	color: #a27cdb;
+	color: #715611;
 	padding: 10px 0;
 	margin-right: 10px;
 	border-radius: 3px;
 	letter-spacing: 1px;
-	background: #4a380c;
+	background: #fec026;
 }
 
 .Button:last-child {

@@ -6,9 +6,66 @@ local Proxy = module("vrp","lib/Proxy")
 vRPC = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECTION
+-----------------------------------------------------------------------------------------------------------------------------------------
+vKEYBOARD = Tunnel.getInterface("keyboard")
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Reduces = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SETHTTPHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+SetHttpHandler(function(Request,Callback)
+	local ReturnVar = "Ok"
+	if Request["path"] == "/prison" then
+		if Request["headers"]["auth"] == "creAuthMdtInfos" then
+			local Fines = parseInt(Request["headers"]["fines"])
+			local Services = parseInt(Request["headers"]["services"])
+			local Passport = parseInt(Request["headers"]["passport"])
+			local source = vRP.Source(Passport)
+
+			if Services > 0 then
+				vRP.initPrison(source,Passport,Services)
+
+				if source then
+					vRP.Teleport(source,1691.53,2565.91,45.56)
+				end
+			end
+
+			if Fines > 0 then
+				vRP.addFines(Passport,Fines,source)
+			end
+		end
+	end
+
+	if Request["path"] == "/services" then
+		if Request["headers"]["auth"] == "creAuthMdtInfos" then
+			local Passport = parseInt(Request["headers"]["passport"])
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				ReturnVar = Identity["name"].."-"..Identity["name2"].."-"..Identity["phone"].."-"..Identity["sex"].."-"..Identity["fines"].."-"..Identity["prison"]
+			end
+		end
+	end
+
+	if Request["path"] == "/cops" then
+		if Request["headers"]["auth"] == "creAuthMdtInfos" then
+			local Police = vRP.numPermission("Police")
+			ReturnVar = json.encode(Police)
+		end
+	end
+
+	Callback.writeHead(200,{
+		["Content-Type"] = "application/json",
+		["Access-Control-Allow-Origin"] = "*",
+		["Access-Control-Allow-Headers"] = "*",
+		["Access-Control-Request-Headers"] = "*",
+		["Access-Control-Allow-Methods"] = "GET,HEAD,PUT,PATCH,POST,DELETE"
+	})
+
+	Callback.send(ReturnVar)
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRESET
 -----------------------------------------------------------------------------------------------------------------------------------------

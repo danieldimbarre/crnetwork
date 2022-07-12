@@ -26,14 +26,14 @@ html,body {
 
 .Button {
 	float: left;
-	color: #4a380c;
+	color: #715611;
 	font-size: 14px;
 	margin-top: 15px;
 	text-shadow: none;
 	padding: 6px 10px;
 	text-align: center;
 	border-radius: 100%;
-	background: #a27cdb;
+	background: #fec026;
 	box-shadow: 0 0 10px #000;
 }
 

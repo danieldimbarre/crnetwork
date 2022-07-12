@@ -61,11 +61,11 @@ html,body {
 .racePosition {
 	float: left;
 	width: 40px;
-	color: #4a380c;
+	color: #715611;
 	padding: 3px 0;
 	text-shadow: none;
 	text-align: center;
-	background: #a27cdb;
+	background: #fec026;
 }
 
 .raceName {
@@ -101,7 +101,7 @@ key {
 	left: 4.7vw;
 	bottom: 18vw;
 	display: none;
-	color: #a27cdb;
+	color: #fec026;
 	text-align: left;
 	line-height: 30px;
 	letter-spacing: 2px;

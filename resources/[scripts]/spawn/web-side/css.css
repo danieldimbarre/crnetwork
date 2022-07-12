@@ -53,16 +53,17 @@ body {
 
 #spawnPage #spawnNew {
 	border: 0;
-	color: #fff;
 	width: 300px;
 	height: 60px;
 	display: flex;
+	color: #715611;
 	cursor: pointer;
 	font-size: 16px;
+	font-weight: 700;
 	border-radius: 3px;
 	align-items: center;
 	letter-spacing: 2px;
-	background: #a27cdb;
+	background: #fec026;
 	justify-content: center;
 	text-transform: uppercase;
 }
@@ -72,14 +73,14 @@ body {
 }
 
 #charPage .charNew {
-	color: #fff;
 	width: 260px;
 	height: 80px;
 	display: flex;
+	color: #715611;
 	padding: 0 20px;
 	cursor: pointer;
 	border-radius: 3px;
-	background: #a27cdb;
+	background: #fec026;
 	align-items: center;
 	flex-direction: column;
 	justify-content: center;
@@ -97,7 +98,7 @@ body {
 }
 
 #charPage .charNew p:first-child {
-	font-weight: 300;
+	font-weight: 700;
 }
 
 #charPage .charBox {
@@ -135,11 +136,11 @@ body {
 }
 
 #charPage .charBox .playerButton {
-	color: #fff;
+	color: #715611;
 	font-size: 11px;
 	padding: 10px 10px;
 	letter-spacing: 2px;
-	background: #a27cdb;
+	background: #fec026;
 	font-family: "Roboto";
 	border-radius: 3px;
 	text-transform: uppercase;

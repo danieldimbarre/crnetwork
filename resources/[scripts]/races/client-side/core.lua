@@ -102,6 +102,8 @@ CreateThread(function()
 										Points = 0
 
 										MakeBlips()
+										SetBlipRoute(Blips[Checkpoint],true)
+
 										MakeObjects()
 										Start = true
 									end
@@ -128,7 +130,7 @@ function MakeBlips()
 	for Number = 1,#Circuits[Select]["Coords"] do
 		Blips[Number] = AddBlipForCoord(Circuits[Select]["Coords"][Number][1][1],Circuits[Select]["Coords"][Number][1][2],Circuits[Select]["Coords"][Number][1][3])
 		SetBlipSprite(Blips[Number],1)
-		SetBlipColour(Blips[Number],22)
+		SetBlipColour(Blips[Number],60)
 		SetBlipScale(Blips[Number],0.85)
 		ShowNumberOnBlip(Blips[Number],Number)
 		SetBlipAsShortRange(Blips[Number],true)

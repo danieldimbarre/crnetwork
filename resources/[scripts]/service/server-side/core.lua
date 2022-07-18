@@ -89,22 +89,22 @@ function cRP.Request()
 		local Selected = Permission[Passport]
 		local Entitys = vRP.DataGroups(Selected)
 
-		for Passport,v in pairs(Entitys) do
-			local Passport = parseInt(Passport)
-			local Identity = vRP.Identity(Passport)
+		for New,_ in pairs(Entitys) do
+			local New = parseInt(New)
+			local Identity = vRP.Identity(New)
 			if Identity then
-				table.insert(Members,{ ["Name"] = Identity["name"].." "..Identity["name2"], ["Phone"] = Identity["phone"], ["Status"] = Sources[Passport], ["Passport"] = Passport })
+				table.insert(Members,{ ["Name"] = Identity["name"].." "..Identity["name2"], ["Phone"] = Identity["phone"], ["Status"] = Sources[New], ["Passport"] = New })
 			end
 		end
 
 		if Selected == "Lspd" or Selected == "State" or Selected == "Ranger" or Selected == "Sheriff" or Selected == "Corrections" or Selected == "Paramedic" then
 			local Entitys = vRP.DataGroups("wait"..Selected)
 
-			for Passport,v in pairs(Entitys) do
-				local Passport = parseInt(Passport)
-				local Identity = vRP.Identity(Passport)
+			for New,_ in pairs(Entitys) do
+				local New = parseInt(New)
+				local Identity = vRP.Identity(New)
 				if Identity then
-					table.insert(Members,{ ["Name"] = Identity["name"].." "..Identity["name2"], ["Phone"] = Identity["phone"], ["Status"] = Sources[Passport], ["Passport"] = Passport })
+					table.insert(Members,{ ["Name"] = Identity["name"].." "..Identity["name2"], ["Phone"] = Identity["phone"], ["Status"] = Sources[New], ["Passport"] = New })
 				end
 			end
 		end
@@ -116,13 +116,13 @@ end
 -- SERVICE:REMOVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("service:Remove")
-AddEventHandler("service:Remove",function(Passport)
+AddEventHandler("service:Remove",function(New)
 	local source = source
-	local Passport = parseInt(Passport)
+	local New = parseInt(New)
 	local Passport = vRP.Passport(source)
-	if Passport and Permission[Passport] and Passport > 1 and Passport ~= Passport then
+	if Passport and Permission[Passport] and New > 1 and Passport ~= New then
 		if vRP.HasPermission(Passport,"set"..Permission[Passport]) then
-			vRP.CleanPermission(Passport)
+			vRP.CleanPermission(New)
 			TriggerClientEvent("service:Update",source)
 			TriggerClientEvent("Notify",source,"verde","Passaporte removido.",5000)
 		end
@@ -132,14 +132,14 @@ end)
 -- SERVICE:ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("service:Add")
-AddEventHandler("service:Add",function(Passport)
+AddEventHandler("service:Add",function(New)
 	local source = source
-	local Passport = parseInt(Passport)
+	local New = parseInt(New)
 	local Passport = vRP.Passport(source)
-	if Passport and Permission[Passport] and Passport > 1 and Passport ~= Passport then
+	if Passport and Permission[Passport] and New > 1 and Passport ~= New then
 		if vRP.HasPermission(Passport,"set"..Permission[Passport]) then
-			vRP.CleanPermission(Passport)
-			vRP.SetPermission(Passport,Permission[Passport])
+			vRP.CleanPermission(New)
+			vRP.SetPermission(New,Permission[Passport])
 			TriggerClientEvent("Notify",source,"verde","Passaporte adicionado.",5000)
 			TriggerClientEvent("service:Update",source)
 		end

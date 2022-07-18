@@ -14,10 +14,6 @@ Tunnel.bindInterface("service",cRP)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Permission = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- WEBHOOK
------------------------------------------------------------------------------------------------------------------------------------------
-local Webhook = "https://discordapp.com/api/webhooks/941921168036884480/m8tNc3UoVWDHayiBGr2qaV8YEOpu8zM949dYUoHZikJgTAjy8Xvb32ocGq3eaF_JSweA"
------------------------------------------------------------------------------------------------------------------------------------------
 -- SERVICE:TOGGLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("service:Toggle")
@@ -82,28 +78,6 @@ RegisterCommand("painel",function(source,args)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ROLES
------------------------------------------------------------------------------------------------------------------------------------------
-local Roles = {
-	["Ranger"] = "941921989503889408",
-	["State"] = "941921989503889408",
-	["Corrections"] = "941921989503889408",
-	["Lspd"] = "941921989503889408",
-	["Sheriff"] = "941921989503889408",
-	["Paramedic"] = "941922007484858429",
-	["BurgerShot"] = "969807066824843335",
-	["PizzaThis"] = "969807069429518336",
-	["UwuCoffee"] = "969807075028922408",
-	["BeanMachine"] = "969807077335760926",
-	["Ballas"] = "973835350269108274",
-	["Families"] = "973835355683946496",
-	["Vagos"] = "973835358724816906",
-	["Aztecas"] = "973835361283350598",
-	["Bloods"] = "973835363854458911",
-	["Triads"] = "973997099387588619",
-	["Razors"] = "973997103770664961"
-}
------------------------------------------------------------------------------------------------------------------------------------------
 -- REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function cRP.Request()
@@ -149,20 +123,8 @@ AddEventHandler("service:Remove",function(Passport)
 	if Passport and Permission[Passport] and Passport > 1 and Passport ~= Passport then
 		if vRP.HasPermission(Passport,"set"..Permission[Passport]) then
 			vRP.CleanPermission(Passport)
-			TriggerClientEvent("Notify",source,"verde","Passaporte removido.",5000)
-
-			local Identity = vRP.Identity(Passport)
-			if Identity then
-				local Account = vRP.Account(Identity["license"])
-				if Account and Roles[Permission[Passport]] then
-					PerformHttpRequest(Webhook,function(err,text,headers) end,"POST",json.encode({
-						username = "Creative Network",
-						content = Account["discord"].." "..Roles[Permission[Passport]].." Remover"
-					}),{ ["Content-Type"] = "application/json" })
-				end
-			end
-
 			TriggerClientEvent("service:Update",source)
+			TriggerClientEvent("Notify",source,"verde","Passaporte removido.",5000)
 		end
 	end
 end)
@@ -179,18 +141,6 @@ AddEventHandler("service:Add",function(Passport)
 			vRP.CleanPermission(Passport)
 			vRP.SetPermission(Passport,Permission[Passport])
 			TriggerClientEvent("Notify",source,"verde","Passaporte adicionado.",5000)
-
-			local Identity = vRP.Identity(Passport)
-			if Identity then
-				local Account = vRP.Account(Identity["license"])
-				if Account and Roles[Permission[Passport]] then
-					PerformHttpRequest(Webhook,function(err,text,headers) end,"POST",json.encode({
-						username = "Creative Network",
-						content = Account["discord"].." "..Roles[Permission[Passport]].." Adicionar"
-					}),{ ["Content-Type"] = "application/json" })
-				end
-			end
-
 			TriggerClientEvent("service:Update",source)
 		end
 	end

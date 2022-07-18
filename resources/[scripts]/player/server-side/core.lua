@@ -797,9 +797,7 @@ AddEventHandler("player:deathLogs",function(nsource)
 	if Passport and source ~= nsource then
 		local OtherPassport = vRP.Passport(nsource)
 		if OtherPassport then
-			if GetPlayerRoutingBucket(source) < 900000 then
-				TriggerEvent("Discord","Deaths","**Matou:** "..Passport.."\n**Morreu:** "..OtherPassport,3092790)
-			else
+			if GetPlayerRoutingBucket(source) >= 900000 then
 				local Name = "Individuo Indigente"
 				local Name2 = "Individuo Indigente"
 				local Identity = vRP.Identity(Passport)
@@ -815,35 +813,6 @@ AddEventHandler("player:deathLogs",function(nsource)
 			end
 		end
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DISCORDLINKS
------------------------------------------------------------------------------------------------------------------------------------------
-local discordLinks = {
-	["Connect"] = "https://discord.com/api/webhooks/989754921157021696/6lUqgoDRHsW2TCulAZ0NXyfN1z5s4g_mUrA0l-8pOUmQ4OSL_rGSbNvSeAOpPNDUVdS5",
-	["Disconnect"] = "https://discord.com/api/webhooks/967913220079779900/R7N2wncut-TcqbGcUsEZmGn9L3qL511ah4AZN7Nc--ZL7nJy_5pUh6wdzlKxQjdcVPsW",
-	["Airport"] = "https://discord.com/api/webhooks/967913294276993055/E5GO582IpFHkQyMHQqyPa53whupAcbf2V6KfWalJX0joPYBh3KVh-dXyFcRMVnBa4piQ",
-	["Deaths"] = "https://discord.com/api/webhooks/967913353018241084/8XslRC77Wt_l4pSIz8s6Xf7D5Q6HtfWasADpwTgaRndPabwGTVLr4KN3T-_pyBwSdK3t",
-	["Prison"] = "https://discord.com/api/webhooks/967932607906082976/uy9TigjRmg7kClJJuQN4ClCe-9qnqAoyOeaFoZPM0um7aOkD4a8hiXi59Ld659EcpZT8",
-	["State"] = "https://discord.com/api/webhooks/967932245648212028/CFnMTXDCDKPP-0D6MUP-wDwHJ09CqOk8p1hd1GxKtlZphvIcajkoOMa9k7BQbNvUOChF",
-	["Lspd"] = "https://discord.com/api/webhooks/967932330813583450/LK76WZiqShlFA_noHHkaJOW7CsHUvex_JI44SPepMrvrNIQrWVst2SmM17SXoLF9ZXOV",
-	["Sheriff"] = "https://discord.com/api/webhooks/967932385247248507/N6tQE48c0nnKI5T6rhI8Tf5voTrzST4UzCQfwTuxsrQFhQP_o18kWo6JsIxL7LpT8PX-",
-	["Ranger"] = "https://discord.com/api/webhooks/967932450728706099/gCocUUBguIxR_XmWwLBX_BURhDy2oC-KtsA4w1417UrqKgoI3Ls5d-EwfwnavNiK-Kza",
-	["Corrections"] = "https://discord.com/api/webhooks/967932513534222336/oCJwIVyR83gizUVvhIR7VycARoFpma8fC3wEC-o5Dc6p6sV_wQkoY4c2HiZJTGjbm2kA",
-	["Paramedic"] = "https://discord.com/api/webhooks/792811616923025479/rJIg8tfIKDiRYur83q700Jo3V2x4NfEH-WHLzimr3lqFOJNmKApBHJ8KmybspIYifheP",
-	["Hackers"] = "https://discord.com/api/webhooks/967913441664843866/5PpMgLFmC5RjzLdxMUC7dHJLIUAv-t0XOxB39GKPEnQCfMTM89N44TnkE7RHxK2NoPKe",
-	["Gemstone"] = "https://discord.com/api/webhooks/989756119809409054/YOSaUbUDpglXXe7nCjSqKJSqKWLWi9fWAGTAjdaNNQuYwhGhqjxzRb51l_DTKPLSnmJJ",
-	["Sugestões"] = "https://discord.com/api/webhooks/967913521985781851/aMScc1OpcyGCt0kxpTMgJKTQ_IWZ3QHPdnMEXnCL5_cm0kz7w6diX_5GYtXnmw1x3tLz"
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- DISCORD
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("Discord")
-AddEventHandler("Discord",function(webhook,message,color)
-	PerformHttpRequest(discordLinks[webhook],function(err,text,headers) end,"POST",json.encode({
-		username = "Creative Network",
-		embeds = { { color = color, description = message } }
-	}),{ ["Content-Type"] = "application/json" })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BIKESBACKPACK

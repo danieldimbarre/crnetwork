@@ -129,10 +129,6 @@ function cRP.storeItem(Item,Slot,Amount,Target)
 		else
 			local Result = vRP.GetSrvData("stackChest:"..Open[Passport]["Name"])
 			TriggerClientEvent("chest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
-
-			if Open[Passport]["Logs"] then
-				TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
-			end
 		end
 	end
 end
@@ -151,10 +147,6 @@ function cRP.takeItem(Item,Slot,Amount,Target)
 		else
 			local result = vRP.GetSrvData("stackChest:"..Open[Passport]["Name"])
 			TriggerClientEvent("chest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Open[Passport]["Weight"])
-
-			if Open[Passport]["Logs"] then
-				TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
-			end
 		end
 	end
 end

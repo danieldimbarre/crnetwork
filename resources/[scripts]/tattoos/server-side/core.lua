@@ -16,7 +16,7 @@ function cRP.checkShares()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.getFines(source) > 0 then
+		if vRP.GetFine(source) > 0 then
 			TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
 			return false
 		end

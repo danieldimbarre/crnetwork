@@ -30,7 +30,7 @@ function cRP.Permissions(Name,Mode)
 			end
 
 			local Consult = vRP.Query("chests/GetChests",{ name = Name })
-			if Consult[1] and vRP.hasGroup(Passport,Consult[1]["perm"]) then
+			if Consult[1] and vRP.HasGroup(Passport,Consult[1]["perm"]) then
 				Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = true }
 				return true
 			end
@@ -46,9 +46,9 @@ function cRP.openChest()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Open[Passport] then
-		local myInventory = {}
-		local inventory = vRP.Inventory(Passport)
-		for k,v in pairs(inventory) do
+		local Inventory = {}
+		local Inv = vRP.Inventory(Passport)
+		for Index,v in pairs(Inv) do
 			v["amount"] = parseInt(v["amount"])
 			v["name"] = itemName(v["item"])
 			v["peso"] = itemWeight(v["item"])
@@ -57,7 +57,7 @@ function cRP.openChest()
 			v["desc"] = itemDescription(v["item"])
 			v["economy"] = parseFormat(itemEconomy(v["item"]))
 			v["key"] = v["item"]
-			v["slot"] = k
+			v["slot"] = Index
 
 			local Split = splitString(v["item"],"-")
 			if Split[2] ~= nil then
@@ -73,12 +73,12 @@ function cRP.openChest()
 				v["days"] = 1
 			end
 
-			myInventory[k] = v
+			Inventory[Index] = v
 		end
 
-		local myChest = {}
-		local Result = vRP.getSrvdata("stackChest:"..Open[Passport]["Name"])
-		for k,v in pairs(Result) do
+		local Chest = {}
+		local Result = vRP.GetSrvData("stackChest:"..Open[Passport]["Name"])
+		for Index,v in pairs(Result) do
 			v["amount"] = parseInt(v["amount"])
 			v["name"] = itemName(v["item"])
 			v["peso"] = itemWeight(v["item"])
@@ -87,7 +87,7 @@ function cRP.openChest()
 			v["economy"] = parseFormat(itemEconomy(v["item"]))
 			v["desc"] = itemDescription(v["item"])
 			v["key"] = v["item"]
-			v["slot"] = k
+			v["slot"] = Index
 
 			local Split = splitString(v["item"],"-")
 			if Split[2] ~= nil then
@@ -103,10 +103,10 @@ function cRP.openChest()
 				v["days"] = 1
 			end
 
-			myChest[k] = v
+			Chest[Index] = v
 		end
 
-		return myInventory,myChest,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(Result),Open[Passport]["Weight"]
+		return Inventory,Chest,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"]
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -124,11 +124,11 @@ function cRP.storeItem(Item,Slot,Amount,Target)
 			return true
 		end
 
-		if vRP.storeChest(Passport,"stackChest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target) then
+		if vRP.StoreChest(Passport,"stackChest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target) then
 			TriggerClientEvent("chest:Update",source,"requestChest")
 		else
-			local Result = vRP.getSrvdata("stackChest:"..Open[Passport]["Name"])
-			TriggerClientEvent("chest:UpdateWeight",source,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(Result),Open[Passport]["Weight"])
+			local Result = vRP.GetSrvData("stackChest:"..Open[Passport]["Name"])
+			TriggerClientEvent("chest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
 
 			if Open[Passport]["Logs"] then
 				TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
@@ -146,11 +146,11 @@ function cRP.takeItem(Item,Slot,Amount,Target)
 	if Passport and Open[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.tryChest(Passport,"stackChest:"..Open[Passport]["Name"],Amount,Slot,Target) then
+		if vRP.TakeChest(Passport,"stackChest:"..Open[Passport]["Name"],Amount,Slot,Target) then
 			TriggerClientEvent("chest:Update",source,"requestChest")
 		else
-			local result = vRP.getSrvdata("stackChest:"..Open[Passport]["Name"])
-			TriggerClientEvent("chest:UpdateWeight",source,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(result),Open[Passport]["Weight"])
+			local result = vRP.GetSrvData("stackChest:"..Open[Passport]["Name"])
+			TriggerClientEvent("chest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Open[Passport]["Weight"])
 
 			if Open[Passport]["Logs"] then
 				TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
@@ -168,7 +168,7 @@ function cRP.updateChest(Slot,Target,Amount)
 	if Passport and Open[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.updateChest(Passport,"stackChest:"..Open[Passport]["Name"],Slot,Target,Amount) then
+		if vRP.UpdateChest(Passport,"stackChest:"..Open[Passport]["Name"],Slot,Target,Amount) then
 			TriggerClientEvent("chest:Update",source,"requestChest")
 		end
 	end
@@ -181,9 +181,9 @@ AddEventHandler("chest:Upgrade",function()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Open[Passport] then
-		if vRP.hasGroup(Passport,Open[Passport]["Name"]) then
-			if vRP.request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
-				if vRP.paymentFull(Passport,source,10000) then
+		if vRP.HasGroup(Passport,Open[Passport]["Name"]) then
+			if vRP.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
+				if vRP.PaymentFull(Passport,source,10000) then
 					vRP.Execute("chests/UpdateChests",{ name = Open[Passport]["Name"] })
 					TriggerClientEvent("Notify",source,"verde","Compra concluída.",3000)
 				else

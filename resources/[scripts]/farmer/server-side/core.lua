@@ -149,7 +149,7 @@ AddEventHandler("farmer:Fruits",function(Number)
 					local Items = { "acerola","banana","guarana","tomato","passion","grape","tange","orange","apple","strawberry","coffee2" }
 					local Select = math.random(#Items)
 
-					if (vRP.inventoryWeight(Passport) + itemWeight(Items[Select]) * Amount) <= vRP.getWeights(Passport) then
+					if (vRP.InventoryWeight(Passport) + itemWeight(Items[Select]) * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
 						Objects[Number]["time"] = GlobalState["Work"] + math.random(26,34)
 						TriggerClientEvent("Progress",source,"Colhendo",11000)
@@ -171,10 +171,10 @@ AddEventHandler("farmer:Fruits",function(Number)
 						Wait(400)
 
 						TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["time"])
-						vRP.generateItem(Passport,Items[Select],Amount,true)
+						vRP.GenerateItem(Passport,Items[Select],Amount,true)
 						Player(source)["state"]["Buttons"] = false
 						Player(source)["state"]["Cancel"] = false
-						vRP.upgradeStress(Passport,1)
+						vRP.UpgradeStress(Passport,1)
 						vRPC.removeObjects(source)
 					else
 						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
@@ -196,9 +196,9 @@ AddEventHandler("farmer:Miner",function(Number)
 			local source = source
 			local Passport = vRP.Passport(source)
 			if Passport then
-				if vRP.consultItem(Passport,"pickaxe",1) then
+				if vRP.ConsultItem(Passport,"pickaxe",1) then
 					local Amount = math.random(2)
-					if (vRP.inventoryWeight(Passport) + itemWeight("geode") * Amount) <= vRP.getWeights(Passport) then
+					if (vRP.InventoryWeight(Passport) + itemWeight("geode") * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.createObjects(source,"melee@large_wpn@streamed_core","ground_attack_on_spot","prop_tool_pickaxe",1,18905,0.10,-0.1,0.0,-92.0,260.0,5.0)
 						Objects[Number]["time"] = GlobalState["Work"] + math.random(16,20)
 						TriggerClientEvent("Progress",source,"Mineirando",10000)
@@ -214,10 +214,10 @@ AddEventHandler("farmer:Miner",function(Number)
 						Wait(1000)
 
 						TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["time"])
-						vRP.generateItem(Passport,"geode",Amount,true)
+						vRP.GenerateItem(Passport,"geode",Amount,true)
 						Player(source)["state"]["Buttons"] = false
 						Player(source)["state"]["Cancel"] = false
-						vRP.upgradeStress(Passport,1)
+						vRP.UpgradeStress(Passport,1)
 						vRPC.removeObjects(source)
 					else
 						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
@@ -242,7 +242,7 @@ AddEventHandler("farmer:Lumber",function(Number)
 				local Ped = GetPlayerPed(source)
 				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") then
 					local Amount = math.random(3,5)
-					if (vRP.inventoryWeight(Passport) + itemWeight("woodlog") * Amount) <= vRP.getWeights(Passport) then
+					if (vRP.InventoryWeight(Passport) + itemWeight("woodlog") * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
 						Objects[Number]["time"] = GlobalState["Work"] + math.random(16,20)
 						TriggerClientEvent("Progress",source,"Cortando",11000)
@@ -263,10 +263,10 @@ AddEventHandler("farmer:Lumber",function(Number)
 						Wait(400)
 
 						TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["time"])
-						vRP.generateItem(Passport,"woodlog",Amount,true)
+						vRP.GenerateItem(Passport,"woodlog",Amount,true)
 						Player(source)["state"]["Buttons"] = false
 						Player(source)["state"]["Cancel"] = false
-						vRP.upgradeStress(Passport,1)
+						vRP.UpgradeStress(Passport,1)
 						vRPC.removeObjects(source)
 					else
 						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
@@ -288,7 +288,7 @@ AddEventHandler("farmer:Money",function(Number)
 			local source = source
 			local Passport = vRP.Passport(source)
 			if Passport then
-				if (vRP.inventoryWeight(Passport) + itemWeight("pouch")) <= vRP.getWeights(Passport) then
+				if (vRP.InventoryWeight(Passport) + itemWeight("pouch")) <= vRP.GetWeight(Passport) then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					Objects[Number]["time"] = GlobalState["Work"] + math.random(4,8)
 					TriggerClientEvent("Progress",source,"Coletando",1000)
@@ -300,8 +300,8 @@ AddEventHandler("farmer:Money",function(Number)
 					TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["time"])
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
-					vRP.generateItem(Passport,"pouch",1,true)
-					vRP.upgradeStress(Passport,1)
+					vRP.GenerateItem(Passport,"pouch",1,true)
+					vRP.UpgradeStress(Passport,1)
 					vRPC.removeObjects(source)
 				else
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)

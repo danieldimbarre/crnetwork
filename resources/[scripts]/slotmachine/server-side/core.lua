@@ -351,7 +351,7 @@ function cRP.Payment(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Machines[Table] then
-		if vRP.paymentBank(source,Passport,Machines[Table]["bet"]) then
+		if vRP.PaymentBank(source,Passport,Machines[Table]["bet"]) then
 			return true
 		else
 			TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -400,7 +400,7 @@ function cRP.CheckWin(Table,Result)
 				end
 
 				if Total > 0 then
-					vRP.addBank(Passport,Total,"Private")
+					vRP.GiveBank(Passport,Total,"Private")
 				end
 			end
 

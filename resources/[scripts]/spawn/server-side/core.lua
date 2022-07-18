@@ -82,9 +82,9 @@ function cRP.newCharacter(name,name2,sex)
 		end
 
 		if sex == "mp_m_freemode_01" then
-			vRP.Execute("characters/newCharacter",{ license = License, name = name, name2 = name2, sex = "M", phone = vRP.generatePhone(), blood = math.random(4) })
+			vRP.Execute("characters/newCharacter",{ license = License, name = name, name2 = name2, sex = "M", phone = vRP.GeneratePhone(), blood = math.random(4) })
 		else
-			vRP.Execute("characters/newCharacter",{ license = License, name = name, name2 = name2, sex = "F", phone = vRP.generatePhone(), blood = math.random(4) })
+			vRP.Execute("characters/newCharacter",{ license = License, name = name, name2 = name2, sex = "F", phone = vRP.GeneratePhone(), blood = math.random(4) })
 		end
 
 		local consult = vRP.Query("characters/lastCharacters",{ license = License })

@@ -749,7 +749,7 @@ local animacoes = {
 		if Vehicle then
 			TriggerEvent("Progress","Limpando",10000)
 			SetTimeout(10000,function()
-				TriggerServerEvent("tryClearVehicle",vehNet)
+				TriggerServerEvent("CleanVehicle",vehNet)
 				vRP.removeObjects("one")
 			end)
 		end
@@ -759,7 +759,7 @@ local animacoes = {
 		if Vehicle then
 			TriggerEvent("Progress","Limpando",10000)
 			SetTimeout(10000,function()
-				TriggerServerEvent("tryClearVehicle",vehNet)
+				TriggerServerEvent("CleanVehicle",vehNet)
 				vRP.removeObjects("one")
 			end)
 		end

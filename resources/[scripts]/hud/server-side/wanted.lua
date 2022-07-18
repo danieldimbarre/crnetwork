@@ -39,7 +39,7 @@ exports("Wanted",function(Passport,source)
 
 				local Ped = GetPlayerPed(source)
 				local Coords = GetEntityCoords(Ped)
-				local Polices = vRP.numPermission("Police")
+				local Polices = vRP.NumPermission("Police")
 
 				for k,v in pairs(Polices) do
 					async(function()

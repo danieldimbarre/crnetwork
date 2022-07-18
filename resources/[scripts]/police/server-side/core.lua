@@ -26,7 +26,7 @@ SetHttpHandler(function(Request,Callback)
 			local source = vRP.Source(Passport)
 
 			if Services > 0 then
-				vRP.initPrison(source,Passport,Services)
+				vRP.InitPrison(source,Passport,Services)
 
 				if source then
 					vRP.Teleport(source,1691.53,2565.91,45.56)
@@ -34,7 +34,7 @@ SetHttpHandler(function(Request,Callback)
 			end
 
 			if Fines > 0 then
-				vRP.addFines(Passport,Fines,source)
+				vRP.GiveFine(Passport,Fines,source)
 			end
 		end
 	end
@@ -51,7 +51,7 @@ SetHttpHandler(function(Request,Callback)
 
 	if Request["path"] == "/cops" then
 		if Request["headers"]["auth"] == "creAuthMdtInfos" then
-			local Police = vRP.numPermission("Police")
+			local Police = vRP.NumPermission("Police")
 			ReturnVar = json.encode(Police)
 		end
 	end
@@ -112,8 +112,8 @@ RegisterNetEvent("police:prisonClothes")
 AddEventHandler("police:prisonClothes",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.getHealth(source) > 100 then
-		local mHash = vRP.modelPlayer(entity[1])
+	if Passport and vRP.GetHealth(source) > 100 then
+		local mHash = vRP.ModelPlayer(entity[1])
 		if mHash == "mp_m_freemode_01" or mHash == "mp_f_freemode_01" then
 			TriggerClientEvent("updateRoupas",entity[1],Preset[mHash])
 		end
@@ -161,7 +161,7 @@ function reduceFunction(source,Passport,Number)
 		timeProgress = timeProgress - 1
 	until timeProgress <= 0
 
-	vRP.updatePrison(Passport,source,math.random(2))
+	vRP.UpdatePrison(Passport,source,math.random(2))
 	Player(source)["state"]["Buttons"] = false
 	Player(source)["state"]["Cancel"] = false
 	vRPC.removeObjects(source)

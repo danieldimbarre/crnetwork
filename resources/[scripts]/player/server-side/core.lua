@@ -50,7 +50,7 @@ AddEventHandler("player:Stress",function(Number)
 	local Number = parseInt(Number)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		vRP.downgradeStress(Passport,Number)
+		vRP.DowngradeStress(Passport,Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -75,13 +75,13 @@ end)
 RegisterCommand("e",function(source,args)
 	if exports["chat"]:statusChat(source) then
 		local Passport = vRP.Passport(source)
-		if Passport and vRP.getHealth(source) > 100 then
+		if Passport and vRP.GetHealth(source) > 100 then
 			if args[2] == "friend" then
 				local ClosestPed = vRPC.ClosestPed(source,2)
 				if ClosestPed then
-					if vRP.getHealth(ClosestPed) > 100 and not Player(ClosestPed)["state"]["Handcuff"] then
+					if vRP.GetHealth(ClosestPed) > 100 and not Player(ClosestPed)["state"]["Handcuff"] then
 						local Identity = vRP.Identity(Passport)
-						if vRP.request(ClosestPed,"Pedido de <b>"..Identity["name"].."</b> da animação <b>"..args[1].."</b>?","Sim, iniciar animação","Não, sai fora") then
+						if vRP.Request(ClosestPed,"Pedido de <b>"..Identity["name"].."</b> da animação <b>"..args[1].."</b>?","Sim, iniciar animação","Não, sai fora") then
 							TriggerClientEvent("emotes",ClosestPed,args[1])
 							TriggerClientEvent("emotes",source,args[1])
 						end
@@ -99,10 +99,10 @@ end)
 RegisterCommand("e2",function(source,args)
 	if exports["chat"]:statusChat(source) then
 		local Passport = vRP.Passport(source)
-		if Passport and vRP.getHealth(source) > 100 then
+		if Passport and vRP.GetHealth(source) > 100 then
 			local ClosestPed = vRPC.ClosestPed(source,2)
 			if ClosestPed then
-				if vRP.hasGroup(Passport,"Paramedic") then
+				if vRP.HasGroup(Passport,"Paramedic") then
 					TriggerClientEvent("emotes",ClosestPed,args[1])
 				end
 			end
@@ -115,8 +115,8 @@ end)
 RegisterCommand("e3",function(source,args)
 	if exports["chat"]:statusChat(source) then
 		local Passport = vRP.Passport(source)
-		if Passport and vRP.getHealth(source) > 100 then
-			if vRP.hasGroup(Passport,"Moderator") then
+		if Passport and vRP.GetHealth(source) > 100 then
+			if vRP.HasGroup(Passport,"Moderator") then
 				local Players = vRPC.ClosestPeds(source,50)
 				for _,v in pairs(Players) do
 					async(function()
@@ -147,23 +147,23 @@ end)
 RegisterCommand("911",function(source,args,rawCommand)
 	if exports["chat"]:statusChat(source) then
 		local Passport = vRP.Passport(source)
-		if Passport and args[1] and vRP.getHealth(source) > 100 then
-			if vRP.hasGroup(Passport,"Police") then
+		if Passport and args[1] and vRP.GetHealth(source) > 100 then
+			if vRP.HasGroup(Passport,"Police") then
 				local department = "Police"
-				if vRP.hasPermission(Passport,"State") then
+				if vRP.HasPermission(Passport,"State") then
 					department = "STATE POLICE"
-				elseif vRP.hasPermission(Passport,"Lspd") then
+				elseif vRP.HasPermission(Passport,"Lspd") then
 					department = "LSPD"
-				elseif vRP.hasPermission(Passport,"Ranger") then
+				elseif vRP.HasPermission(Passport,"Ranger") then
 					department = "PARK RANGER"
-				elseif vRP.hasPermission(Passport,"Corrections") then
+				elseif vRP.HasPermission(Passport,"Corrections") then
 					department = "CORRECTIONS"
-				elseif vRP.hasPermission(Passport,"Sheriff") then
+				elseif vRP.HasPermission(Passport,"Sheriff") then
 					department = "SHERIFF"
 				end
 
 				local Identity = vRP.Identity(Passport)
-				local Polices = vRP.numPermission("Police")
+				local Polices = vRP.NumPermission("Police")
 				for k,v in pairs(Polices) do
 					async(function()
 						TriggerClientEvent("chatME",v["source"],"^2911^3"..department.."^9"..Identity["name"].."^0"..rawCommand:sub(4))
@@ -179,10 +179,10 @@ end)
 RegisterCommand("112",function(source,args,rawCommand)
 	if exports["chat"]:statusChat(source) then
 		local Passport = vRP.Passport(source)
-		if Passport and args[1] and vRP.getHealth(source) > 100 then
-			if vRP.hasGroup(Passport,"Paramedic") then
+		if Passport and args[1] and vRP.GetHealth(source) > 100 then
+			if vRP.HasGroup(Passport,"Paramedic") then
 				local Identity = vRP.Identity(Passport)
-				local Paramedics = vRP.numPermission("Paramedic")
+				local Paramedics = vRP.NumPermission("Paramedic")
 				for k,v in pairs(Paramedics) do
 					async(function()
 						TriggerClientEvent("chatME",v["source"],"^4112^9"..Identity["name"].." "..Identity["name2"].."^0"..rawCommand:sub(4))
@@ -207,7 +207,7 @@ function cRP.shotsFired(Vehicle)
 
 		local Ped = GetPlayerPed(source)
 		local Coords = GetEntityCoords(Ped)
-		local Polices = vRP.numPermission("Police")
+		local Polices = vRP.NumPermission("Police")
 
 		for k,v in pairs(Polices) do
 			async(function()
@@ -268,8 +268,8 @@ AddEventHandler("player:cvFunctions",function(Mode)
 	local ClosestPed = vRPC.ClosestPed(source,Distance)
 	if ClosestPed then
 		local Passport = vRP.Passport(source)
-		local consultItem = vRP.getInventoryItemAmount(Passport,"rope")
-		if vRP.hasGroup(Passport,"Emergency") or consultItem[1] >= 1 then
+		local consultItem = vRP.InventoryItemAmount(Passport,"rope")
+		if vRP.HasGroup(Passport,"Emergency") or consultItem[1] >= 1 then
 			local Vehicle,vehNet = vRPC.vehList(source,5)
 			if Vehicle then
 				local Network = NetworkGetEntityFromNetworkId(vehNet)
@@ -659,8 +659,8 @@ AddEventHandler("player:presetFunctions",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.hasGroup(Passport,"Emergency") then
-			local Model = vRP.modelPlayer(source)
+		if vRP.HasGroup(Passport,"Emergency") then
+			local Model = vRP.ModelPlayer(source)
 
 			if Model == "mp_m_freemode_01" or "mp_f_freemode_01" then
 				TriggerClientEvent("updateRoupas",source,preset[Number][Model])
@@ -707,7 +707,7 @@ AddEventHandler("player:checkShoes",function(Entity)
 
 			if os.time() >= UniqueShoes[Passport] then
 				if vSKINSHOP.checkShoes(Entity) then
-					vRP.generateItem(Passport,"WEAPON_SHOES",2,true)
+					vRP.GenerateItem(Passport,"WEAPON_SHOES",2,true)
 					UniqueShoes[Passport] = os.time() + 60
 				end
 			end
@@ -762,7 +762,7 @@ AddEventHandler("player:outfitFunctions",function(Mode)
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) then
 		if Mode == "aplicar" then
-			local result = vRP.getSrvdata("saveClothes:"..Passport)
+			local result = vRP.GetSrvData("saveClothes:"..Passport)
 			if result["pants"] ~= nil then
 				TriggerClientEvent("updateRoupas",source,result)
 				TriggerClientEvent("Notify",source,"verde","Roupas aplicadas.",3000)
@@ -772,11 +772,11 @@ AddEventHandler("player:outfitFunctions",function(Mode)
 		elseif Mode == "salvar" then
 			local custom = vSKINSHOP.getCustomization(source)
 			if custom then
-				vRP.setSrvdata("saveClothes:"..Passport,custom)
+				vRP.SetSrvData("saveClothes:"..Passport,custom)
 				TriggerClientEvent("Notify",source,"verde","Roupas salvas.",3000)
 			end
 		elseif Mode == "remover" then
-			local Model = vRP.modelPlayer(source)
+			local Model = vRP.ModelPlayer(source)
 			if Model == "mp_m_freemode_01" then
 				TriggerClientEvent("updateRoupas",source,removeFit["homem"])
 			elseif Model == "mp_f_freemode_01" then
@@ -853,7 +853,7 @@ function cRP.bikesBackpack()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local amountWeight = 10
-		local myWeight = vRP.getWeights(Passport)
+		local myWeight = vRP.GetWeight(Passport)
 
 		if parseInt(myWeight) < 45 then
 			amountWeight = 15
@@ -867,7 +867,7 @@ function cRP.bikesBackpack()
 			amountWeight = 1
 		end
 
-		vRP.setWeights(Passport,amountWeight)
+		vRP.SetWeight(Passport,amountWeight)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -918,7 +918,7 @@ CreateThread(function()
 		for Permission,_ in pairs(Salary) do
 			for Passport,Timer in pairs(Salary[Permission]) do
 				if os.time() >= Timer then
-					vRP.addBank(Passport,SalaryValue[Permission],"Private")
+					vRP.GiveBank(Passport,SalaryValue[Permission],"Private")
 					Salary[Permission][Passport] = os.time() + 1800
 				end
 			end

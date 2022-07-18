@@ -46,22 +46,22 @@ AddEventHandler("impound:Check",function(entity)
 			end
 
 			if VehRandom <= 10 then
-				vRP.generateItem(Passport,VehSelected.."e",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."e",1,true)
 			elseif VehRandom >= 10 and VehRandom <= 30 then
-				vRP.generateItem(Passport,VehSelected.."d",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."d",1,true)
 			elseif VehRandom >= 31 and VehRandom <= 60 then
-				vRP.generateItem(Passport,VehSelected.."c",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."c",1,true)
 			elseif VehRandom >= 61 and VehRandom <= 100 then
-				vRP.generateItem(Passport,VehSelected.."b",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."b",1,true)
 			elseif VehRandom >= 101 and VehRandom <= 150 then
-				vRP.generateItem(Passport,VehSelected.."a",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 			end
 
-			vRP.generateItem(Passport,"plastic",AmountItens,true)
-			vRP.generateItem(Passport,"glass",AmountItens,true)
-			vRP.generateItem(Passport,"rubber",AmountItens,true)
-			vRP.generateItem(Passport,"copper",AmountItens,true)
-			vRP.generateItem(Passport,"aluminum",AmountItens,true)
+			vRP.GenerateItem(Passport,"plastic",AmountItens,true)
+			vRP.GenerateItem(Passport,"glass",AmountItens,true)
+			vRP.GenerateItem(Passport,"rubber",AmountItens,true)
+			vRP.GenerateItem(Passport,"copper",AmountItens,true)
+			vRP.GenerateItem(Passport,"aluminum",AmountItens,true)
 			vRP.PutExperience(Passport,"Tows",1)
 
 			TriggerClientEvent("garages:Delete",source,entity[3])
@@ -97,22 +97,22 @@ AddEventHandler("police:Impound",function(entity)
 				end
 
 				if VehRandom <= 10 then
-					vRP.generateItem(Passport,VehSelected.."e",1,true)
+					vRP.GenerateItem(Passport,VehSelected.."e",1,true)
 				elseif VehRandom >= 10 and VehRandom <= 30 then
-					vRP.generateItem(Passport,VehSelected.."d",1,true)
+					vRP.GenerateItem(Passport,VehSelected.."d",1,true)
 				elseif VehRandom >= 31 and VehRandom <= 60 then
-					vRP.generateItem(Passport,VehSelected.."c",1,true)
+					vRP.GenerateItem(Passport,VehSelected.."c",1,true)
 				elseif VehRandom >= 61 and VehRandom <= 100 then
-					vRP.generateItem(Passport,VehSelected.."b",1,true)
+					vRP.GenerateItem(Passport,VehSelected.."b",1,true)
 				elseif VehRandom >= 101 and VehRandom <= 150 then
-					vRP.generateItem(Passport,VehSelected.."a",1,true)
+					vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 				end
 
-				vRP.generateItem(Passport,"plastic",AmountItens,true)
-				vRP.generateItem(Passport,"glass",AmountItens,true)
-				vRP.generateItem(Passport,"rubber",AmountItens,true)
-				vRP.generateItem(Passport,"copper",AmountItens,true)
-				vRP.generateItem(Passport,"aluminum",AmountItens,true)
+				vRP.GenerateItem(Passport,"plastic",AmountItens,true)
+				vRP.GenerateItem(Passport,"glass",AmountItens,true)
+				vRP.GenerateItem(Passport,"rubber",AmountItens,true)
+				vRP.GenerateItem(Passport,"copper",AmountItens,true)
+				vRP.GenerateItem(Passport,"aluminum",AmountItens,true)
 			end
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Veículo já está na lista.",5000)
@@ -142,7 +142,7 @@ end)
 RegisterCommand("placa",function(source,args)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.hasGroup(Passport,"Police") and args[1] then
+		if vRP.HasGroup(Passport,"Police") and args[1] then
 			runPlate(source,args[1])
 		end
 	end
@@ -158,7 +158,7 @@ function runPlate(source,vehPlate)
 		TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Identity["id"].."<br><b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."<br><b>Nº:</b> "..Identity["phone"],10000)
 	else
 		if not plateSave[vehPlate] then
-			plateSave[vehPlate] = { plateName[math.random(#plateName)].." "..plateName2[math.random(#plateName2)],vRP.generatePhone() }
+			plateSave[vehPlate] = { plateName[math.random(#plateName)].." "..plateName2[math.random(#plateName2)],vRP.GeneratePhone() }
 		end
 
 		vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
@@ -173,7 +173,7 @@ AddEventHandler("police:Arrest",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.request(source,"Apreender o veículo?","Sim, concluír apreensão","Não, mudei de ideia") then
+		if vRP.Request(source,"Apreender o veículo?","Sim, concluír apreensão","Não, mudei de ideia") then
 			local Passport = vRP.PassportPlate(entity[1])
 			if Passport then
 				local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })

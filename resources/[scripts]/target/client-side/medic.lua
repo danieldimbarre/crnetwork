@@ -59,6 +59,6 @@ end)
 RegisterNetEvent("target:BedDestroy")
 AddEventHandler("target:BedDestroy",function(Selected)
 	if not LocalPlayer["state"]["Commands"] and LocalPlayer["state"]["Paramedic"] then
-		TriggerServerEvent("tryDeleteObject",Selected[3])
+		TriggerServerEvent("DeleteObject",Selected[3])
 	end
 end)

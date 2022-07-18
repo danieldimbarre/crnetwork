@@ -6094,12 +6094,12 @@ function cRP.finishRace(Id,Points)
 
 		if Ilegal[Passport] then
 			local Rand = math.random(Races[Id]["Payment"][1],Races[Id]["Payment"][1])
-			vRP.generateItem(Passport,"dollars",Rand,true)
+			vRP.GenerateItem(Passport,"dollars",Rand,true)
 
 			local Top = vRP.Query("races/TopFive",{ Race = Id })
 			if Top[1] then
 				if parseInt(Top[1]["Points"]) > parseInt(Points) then
-					vRP.generateItem(Passport,"racetrophy",1,true)
+					vRP.GenerateItem(Passport,"racetrophy",1,true)
 				end
 			end
 
@@ -6122,12 +6122,12 @@ function cRP.checkPermission(Id)
 		if os.time() >= Races[Id]["Cooldown"][Passport] then
 			Ilegal[Passport] = false
 
-			if vRP.tryGetInventoryItem(Passport,"credential",1) then
+			if vRP.TakeItem(Passport,"credential",1) then
 				TriggerEvent("blipsystem:Enter",source,"Corredor")
 				Races[Id]["Cooldown"][Passport] = os.time() + 3600
 				Ilegal[Passport] = true
 
-				local Polices = vRP.numPermission("Police")
+				local Polices = vRP.NumPermission("Police")
 				for k,v in pairs(Polices) do
 					async(function()
 						TriggerClientEvent("Notify",v["source"],"amarelo","Detectamos um corredor clandestino nas ruas.",5000)

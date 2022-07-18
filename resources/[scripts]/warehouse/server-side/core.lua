@@ -50,8 +50,8 @@ function cRP.Warehouse(Name)
 						if Warehouse[1]["tax"] > os.time() then
 							return true
 						else
-							if vRP.request(source,"Pagar o aluguel do armazém por <b>$20.000</b>?","Sim, por favor","Não, decido depois") then
-								if vRP.paymentFull(Passport,source,20000) then
+							if vRP.Request(source,"Pagar o aluguel do armazém por <b>$20.000</b>?","Sim, por favor","Não, decido depois") then
+								if vRP.PaymentFull(Passport,source,20000) then
 									vRP.Execute("warehouse/Tax",{ name = Name })
 									return true
 								else
@@ -64,13 +64,13 @@ function cRP.Warehouse(Name)
 					end
 				end
 			else
-				if vRP.request(source,"Gostaria de comprar o armazém por <b>$100.000</b>?","Sim, por favor","Não, decido depois") then
+				if vRP.Request(source,"Gostaria de comprar o armazém por <b>$100.000</b>?","Sim, por favor","Não, decido depois") then
 					local Keyboard = vKEYBOARD.keyWord(source,"Senha:")
 					if Keyboard then
 						local Password = sanitizeString(Keyboard[1],"0123456789",true)
 						if string.len(Password) >= 4 and string.len(Password) <= 20 then
-							if vRP.request(source,"Finalizar a compra usando a senha <b>"..Password.."</b>?","Sim, por favor","Não, decido depois") then
-								if vRP.paymentFull(Passport,source,100000) then
+							if vRP.Request(source,"Finalizar a compra usando a senha <b>"..Password.."</b>?","Sim, por favor","Não, decido depois") then
+								if vRP.PaymentFull(Passport,source,100000) then
 									vRP.Execute("warehouse/Buy",{ name = Name, Passport = Passport, password = Password })
 									return true
 								else
@@ -98,8 +98,8 @@ AddEventHandler("warehouse:Upgrade",function(Name)
 	if Passport then
 		local Warehouse = vRP.Query("warehouse/Informations",{ name = Name })
 		if Warehouse[1] then
-			if vRP.request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
-				if vRP.paymentFull(Passport,source,10000) then
+			if vRP.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
+				if vRP.PaymentFull(Passport,source,10000) then
 					vRP.Execute("warehouse/Upgrade",{ name = Name })
 					TriggerClientEvent("Notify",source,"verde","Aumento concluído.",3000)
 				else
@@ -147,7 +147,7 @@ function cRP.openWarehouse(Name)
 		end
 
 		local myWarehouse = {}
-		local result = vRP.getSrvdata("Warehouse:"..Name)
+		local result = vRP.GetSrvData("Warehouse:"..Name)
 		for k,v in pairs(result) do
 			v["amount"] = parseInt(v["amount"])
 			v["name"] = itemName(v["item"])
@@ -178,7 +178,7 @@ function cRP.openWarehouse(Name)
 
 		local Warehouse = vRP.Query("warehouse/Informations",{ name = Name })
 		if Warehouse[1] then
-			return myInventory,myWarehouse,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(result),Warehouse[1]["weight"]
+			return myInventory,myWarehouse,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Warehouse[1]["weight"]
 		end
 	end
 end
@@ -199,11 +199,11 @@ function cRP.storeItem(Item,Slot,Amount,Target,Name)
 
 		local Consult = vRP.Query("warehouse/Informations",{ name = Name })
 		if Consult[1] then
-			if vRP.storeChest(Passport,"Warehouse:"..Name,Amount,Consult[1]["weight"],Slot,Target) then
+			if vRP.StoreChest(Passport,"Warehouse:"..Name,Amount,Consult[1]["weight"],Slot,Target) then
 				TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
 			else
-				local result = vRP.getSrvdata("Warehouse:"..Name)
-				TriggerClientEvent("warehouse:Weight",source,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(result),Consult[1]["weight"])
+				local result = vRP.GetSrvData("Warehouse:"..Name)
+				TriggerClientEvent("warehouse:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Consult[1]["weight"])
 			end
 		end
 	end
@@ -222,11 +222,11 @@ function cRP.takeItem(Item,Slot,Amount,Target,Name)
 
 		local Consult = vRP.Query("warehouse/Informations",{ name = Name })
 		if Consult[1] then
-			if vRP.tryChest(Passport,"Warehouse:"..Name,Amount,Slot,Target) then
+			if vRP.TakeChest(Passport,"Warehouse:"..Name,Amount,Slot,Target) then
 				TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
 			else
-				local result = vRP.getSrvdata("Warehouse:"..Name)
-				TriggerClientEvent("warehouse:Weight",source,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(result),Consult[1]["weight"])
+				local result = vRP.GetSrvData("Warehouse:"..Name)
+				TriggerClientEvent("warehouse:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Consult[1]["weight"])
 			end
 		end
 	end
@@ -241,7 +241,7 @@ function cRP.updateWarehouse(Slot,Target,Amount,Name)
 	if Passport then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.updateChest(Passport,"Warehouse:"..Name,Slot,Target,Amount) then
+		if vRP.UpdateChest(Passport,"Warehouse:"..Name,Slot,Target,Amount) then
 			TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
 		end
 	end

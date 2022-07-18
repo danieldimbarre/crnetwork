@@ -2,7 +2,7 @@ $(document).ready(function(){
 	window.addEventListener("message",function(event){
 		switch (event["data"]["action"]){
 			case "showMenu":
-				updateMochila();
+				Backpack();
 				$(".inventory").css("display","flex");
 			break;
 
@@ -11,8 +11,8 @@ $(document).ready(function(){
 				$(".ui-tooltip").hide();
 			break;
 
-			case "updateMochila":
-				updateMochila();
+			case "Backpack":
+				Backpack();
 			break;
 		}
 	});
@@ -360,7 +360,7 @@ const colorPicker = (percent) => {
 	return colorPercent;
 }
 
-const updateMochila = () => {
+const Backpack = () => {
 	$.post("http://inventory/requestInventory",JSON.stringify({}),(data) => {
 		$("#weightTextLeft").html(`${(data["invPeso"]).toFixed(2)}   /   ${(data["invMaxpeso"]).toFixed(2)}`);
 

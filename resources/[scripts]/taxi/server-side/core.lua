@@ -17,7 +17,7 @@ function cRP.paymentService()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local value = math.random(175,275)
-		vRP.generateItem(Passport,"dollars",value,true)
+		vRP.GenerateItem(Passport,"dollars",value,true)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -28,9 +28,9 @@ function cRP.initService(status)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if status then
-			vRP.insertPermission(source,Passport,"Taxi")
+			vRP.AddPermission(source,Passport,"Taxi")
 		else
-			vRP.removePermission(Passport,"Taxi")
+			vRP.BlankPermission(Passport,"Taxi")
 		end
 	end
 

@@ -53,7 +53,7 @@ function cRP.sendCode(code)
 		local Ped = GetPlayerPed(source)
 		local Coords = GetEntityCoords(Ped)
 		local Identity = vRP.Identity(Passport)
-		local Polices = vRP.numPermission("Police")
+		local Polices = vRP.NumPermission("Police")
 
 		for k,v in pairs(Polices) do
 			async(function()

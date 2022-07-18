@@ -203,12 +203,12 @@ CreateThread(function()
 								end
 
 								if currentPassenger ~= nil then
-									TriggerServerEvent("tryDeletePed",currentPassenger)
+									TriggerServerEvent("DeletePed",currentPassenger)
 									currentPassenger = nil
 								end
 
 								if lastPassenger ~= nil then
-									TriggerServerEvent("tryDeletePed",lastPassenger)
+									TriggerServerEvent("DeletePed",lastPassenger)
 									lastPassenger = nil
 								end
 							end
@@ -276,7 +276,7 @@ CreateThread(function()
 							Wait(5000)
 
 							if lastPassenger ~= nil then
-								TriggerServerEvent("tryDeletePed",lastPassenger)
+								TriggerServerEvent("DeletePed",lastPassenger)
 								lastPassenger = nil
 							end
 						else
@@ -295,7 +295,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function generatePassenger(vehicle)
 	if lastPassenger ~= nil then
-		TriggerServerEvent("tryDeletePed",lastPassenger)
+		TriggerServerEvent("DeletePed",lastPassenger)
 		lastPassenger = nil
 	end
 

@@ -35,19 +35,6 @@ CREATE TABLE IF NOT EXISTS `summerz_banneds` (
 	KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `summerz_business`;
-CREATE TABLE IF NOT EXISTS `summerz_business` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`business` int(11) NOT NULL DEFAULT 0,
-	`Passport` int(11) NOT NULL DEFAULT 0,
-	`products` int(11) NOT NULL DEFAULT 0,
-	`balance` int(11) NOT NULL DEFAULT 0,
-	`owner` int(1) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`),
-	KEY `Passport` (`Passport`),
-	KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 DROP TABLE IF EXISTS `summerz_characters`;
 CREATE TABLE IF NOT EXISTS `summerz_characters` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -101,7 +88,6 @@ CREATE TABLE IF NOT EXISTS `summerz_playerdata` (
 	`Passport` int(11) NOT NULL,
 	`dkey` varchar(100) NOT NULL,
 	`dvalue` longtext DEFAULT NULL,
-	PRIMARY KEY (`dkey`),
 	KEY `Passport` (`Passport`),
 	KEY `dkey` (`dkey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

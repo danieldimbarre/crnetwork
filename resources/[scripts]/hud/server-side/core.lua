@@ -44,7 +44,7 @@ RegisterCommand("timeset",function(source,args)
 	if exports["chat"]:statusChat(source) then
 		local Passport = vRP.Passport(source)
 		if Passport then
-			if vRP.hasGroup(Passport,"Admin") then
+			if vRP.HasGroup(Passport,"Admin") then
 				GlobalState["Hours"] = parseInt(args[1])
 				GlobalState["Minutes"] = parseInt(args[2])
 

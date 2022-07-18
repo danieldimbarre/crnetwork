@@ -50,7 +50,7 @@ AddEventHandler("plants:Collect",function(Number)
 			if os.time() >= Plants[Number]["Time"] then
 				local Temporary = Plants[Number]
 
-				if (vRP.inventoryWeight(Passport) + itemWeight("weedleaf")) <= vRP.getWeights(Passport) then
+				if (vRP.InventoryWeight(Passport) + itemWeight("weedleaf")) <= vRP.GetWeight(Passport) then
 					Plants[Number] = nil
 					Player(source)["state"]["Cancel"] = true
 					Player(source)["state"]["Buttons"] = true
@@ -60,7 +60,7 @@ AddEventHandler("plants:Collect",function(Number)
 
 					Wait(10000)
 
-					vRP.generateItem(Passport,"weedleaf-"..Temporary["Points"],1,true)
+					vRP.GenerateItem(Passport,"weedleaf-"..Temporary["Points"],1,true)
 					TriggerClientEvent("plants:Remover",-1,Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
@@ -89,7 +89,7 @@ AddEventHandler("plants:Cloning",function(Number)
 			if (Plants[Number]["Time"] - os.time()) <= 5400 then
 				local Temporary = Plants[Number]
 
-				if (vRP.inventoryWeight(Passport) + itemWeight("weedclone") * 2) <= vRP.getWeights(Passport) then
+				if (vRP.InventoryWeight(Passport) + itemWeight("weedclone") * 2) <= vRP.GetWeight(Passport) then
 					Plants[Number] = nil
 					Player(source)["state"]["Cancel"] = true
 					Player(source)["state"]["Buttons"] = true
@@ -104,7 +104,7 @@ AddEventHandler("plants:Cloning",function(Number)
 						Points = 100
 					end
 
-					vRP.generateItem(Passport,"weedclone-"..Points,2,true)
+					vRP.GenerateItem(Passport,"weedclone-"..Points,2,true)
 					TriggerClientEvent("plants:Remover",-1,Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false

@@ -28,8 +28,8 @@ function cRP.Propertys(Name)
 		if Consult[1] then
 			if parseInt(Consult[1]["Passport"]) == Passport or vRP.InventoryFull(Passport,"propertys-"..Consult[1]["Serial"]) or Lock[Name] then
 				if os.time() > Consult[1]["Tax"] then
-					if vRP.request(source,"Hipoteca atrasada, deseja efetuar o pagamento?","Sim, concluir pagamento","Não, pago depois") then
-						if vRP.paymentFull(Passport,source,Informations[Consult[1]["Interior"]]["Price"] * 0.1) then
+					if vRP.Request(source,"Hipoteca atrasada, deseja efetuar o pagamento?","Sim, concluir pagamento","Não, pago depois") then
+						if vRP.PaymentFull(Passport,source,Informations[Consult[1]["Interior"]]["Price"] * 0.1) then
 							vRP.Execute("propertys/Tax",{ name = Name })
 							TriggerClientEvent("Notify",source,"amarelo","Pagamento concluído.",5000)
 						end
@@ -78,12 +78,12 @@ AddEventHandler("propertys:Buy",function(Name)
 		if Consult[1] == nil then
 			TriggerClientEvent("dynamic:closeSystem",source)
 
-			if vRP.request(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudeia de ideia") then
+			if vRP.Request(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudeia de ideia") then
 				local Interior = Split[2]
 
-				if vRP.paymentFull(Passport,source,Informations[Interior]["Price"]) then
+				if vRP.PaymentFull(Passport,source,Informations[Interior]["Price"]) then
 					local Serial = PropertysSerials()
-					vRP.giveInventoryItem(Passport,"propertys-"..Serial,3,true)
+					vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
 					vRP.Execute("propertys/Buy",{ name = Split[1], interior = Interior, passport = Passport, serial = Serial, vault = Informations[Interior]["Vault"], fridge = Informations[Interior]["Fridge"], tax = os.time() + 2592000 })
 				else
 					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -127,13 +127,13 @@ AddEventHandler("propertys:Sell",function(Name)
 			if parseInt(Consult[1]["Passport"]) == Passport then
 				TriggerClientEvent("dynamic:closeSystem",source)
 
-				if vRP.request(source,"Deseja vender a propriedade?","Sim, concluir a venda","Não, mudeia de ideia") then
-					vRP.remSrvdata("Vault:"..Name)
-					vRP.remSrvdata("Fridge:"..Name)
+				if vRP.Request(source,"Deseja vender a propriedade?","Sim, concluir a venda","Não, mudeia de ideia") then
+					vRP.RemSrvData("Vault:"..Name)
+					vRP.RemSrvData("Fridge:"..Name)
 
 					vRP.Execute("propertys/Sell",{ name = Name })
 					TriggerClientEvent("Notify",source,"amarelo","Venda concluída.",5000)
-					vRP.addBank(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.75,"Private")
+					vRP.GiveBank(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.75,"Private")
 				end
 			end
 		end
@@ -152,10 +152,10 @@ AddEventHandler("propertys:Credentials",function(Name)
 			if parseInt(Consult[1]["Passport"]) == Passport then
 				TriggerClientEvent("dynamic:closeSystem",source)
 
-				if vRP.request(source,"Você escolheu reconfigurar todos os cartões de segurança, lembrando que ao prosseguir todos os cartões vão deixar de funcionar, deseja prosseguir?","Sim, prosseguir","Não, outra hora") then
+				if vRP.Request(source,"Você escolheu reconfigurar todos os cartões de segurança, lembrando que ao prosseguir todos os cartões vão deixar de funcionar, deseja prosseguir?","Sim, prosseguir","Não, outra hora") then
 					local Serial = PropertysSerials()
 					vRP.Execute("propertys/Credentials",{ name = Name, serial = Serial })
-					vRP.giveInventoryItem(Passport,"propertys-"..Serial,Consult[1]["Keys"],true)
+					vRP.GiveItem(Passport,"propertys-"..Serial,Consult[1]["Keys"],true)
 				end
 			end
 		end
@@ -169,7 +169,7 @@ function cRP.Clothes()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Clothes = {}
-		local Consult = vRP.getSrvdata("Wardrobe:"..Passport)
+		local Consult = vRP.GetSrvData("Wardrobe:"..Passport)
 
 		for k,v in pairs(Consult) do
 			table.insert(Clothes,{ ["name"] = k })
@@ -187,7 +187,7 @@ AddEventHandler("propertys:Clothes",function(Mode)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Split = splitString(Mode,"-")
-		local Consult = vRP.getSrvdata("Wardrobe:"..Passport)
+		local Consult = vRP.GetSrvData("Wardrobe:"..Passport)
 		local Name = Split[2]
 
 		if Split[1] == "save" then
@@ -197,7 +197,7 @@ AddEventHandler("propertys:Clothes",function(Mode)
 
 				if Consult[Name] == nil then
 					Consult[Name] = vSKINSHOP.getCustomization(source)
-					vRP.setSrvdata("Wardrobe:"..Passport,Consult)
+					vRP.SetSrvData("Wardrobe:"..Passport,Consult)
 					TriggerClientEvent("propertys:ClothesReset",source)
 					TriggerClientEvent("Notify",source,"verde","<b>"..Name.."</b> adicionado.",5000)
 				else
@@ -207,7 +207,7 @@ AddEventHandler("propertys:Clothes",function(Mode)
 		elseif Split[1] == "delete" then
 			if Consult[Name] ~= nil then
 				Consult[Name] = nil
-				vRP.setSrvdata("Wardrobe:"..Passport,Consult)
+				vRP.SetSrvData("Wardrobe:"..Passport,Consult)
 				TriggerClientEvent("propertys:ClothesReset",source)
 				TriggerClientEvent("Notify",source,"verde","<b>"..Name.."</b> removido.",5000)
 			else
@@ -227,7 +227,7 @@ end)
 -- PROPERTYSSERIALS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function PropertysSerials()
-	local Serial = vRP.generateStringNumber("LDLDLDLDLD")
+	local Serial = vRP.GenerateString("LDLDLDLDLD")
 	local Consult = vRP.Execute("propertys/Serial",{ serial = Serial })
 	if Consult[1] then
 		PropertysSerials()
@@ -245,7 +245,7 @@ function cRP.OpenChest(Name,Mode)
 		local Chest = {}
 		local Inventory = {}
 		local Inv = vRP.Inventory(Passport)
-		local Consult = vRP.getSrvdata(Mode..":"..Name)
+		local Consult = vRP.GetSrvData(Mode..":"..Name)
 
 		for k,v in pairs(Inv) do
 			v["amount"] = parseInt(v["amount"])
@@ -305,7 +305,7 @@ function cRP.OpenChest(Name,Mode)
 
 		local Exist = vRP.Query("propertys/Exist",{ name = Name })
 		if Exist[1] then
-			return Inventory,Chest,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(Consult),Exist[1][Mode]
+			return Inventory,Chest,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Consult),Exist[1][Mode]
 		end
 	end
 end
@@ -327,16 +327,16 @@ function cRP.Store(Item,Slot,Amount,Target,Name,Mode)
 		local Consult = vRP.Query("propertys/Exist",{ name = Name })
 		if Consult[1] then
 			if Item == "diagram" then
-				if vRP.tryGetInventoryItem(Passport,Item,Amount,false,Slot) then
+				if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
 					vRP.Execute("propertys/"..Mode,{ name = Name, weight = 10 * Amount })
 					TriggerClientEvent("propertys:Update",source)
 				end
 			else
-				if vRP.storeChest(Passport,Mode..":"..Name,Amount,Consult[1][Mode],Slot,Target) then
+				if vRP.StoreChest(Passport,Mode..":"..Name,Amount,Consult[1][Mode],Slot,Target) then
 					TriggerClientEvent("propertys:Update",source)
 				else
-					local Result = vRP.getSrvdata(Mode..":"..Name)
-					TriggerClientEvent("propertys:Weight",source,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(Result),Consult[1][Mode])
+					local Result = vRP.GetSrvData(Mode..":"..Name)
+					TriggerClientEvent("propertys:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Consult[1][Mode])
 				end
 			end
 		end
@@ -352,13 +352,13 @@ function cRP.Take(Slot,Amount,Target,Name,Mode)
 	if Passport then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.tryChest(Passport,Mode..":"..Name,Amount,Slot,Target) then
+		if vRP.TakeChest(Passport,Mode..":"..Name,Amount,Slot,Target) then
 			TriggerClientEvent("propertys:Update",source)
 		else
 			local Consult = vRP.Query("propertys/Exist",{ name = Name })
 			if Consult[1] then
-				local Result = vRP.getSrvdata(Mode..":"..Name)
-				TriggerClientEvent("propertys:Weight",source,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(Result),Consult[1][Mode])
+				local Result = vRP.GetSrvData(Mode..":"..Name)
+				TriggerClientEvent("propertys:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Consult[1][Mode])
 			end
 		end
 	end
@@ -373,7 +373,7 @@ function cRP.Update(Slot,Target,Amount,Name,Mode)
 	if Passport then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.updateChest(Passport,Mode..":"..Name,Slot,Target,Amount) then
+		if vRP.UpdateChest(Passport,Mode..":"..Name,Slot,Target,Amount) then
 			TriggerClientEvent("propertys:Update",source)
 		end
 	end

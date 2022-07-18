@@ -17,7 +17,7 @@ function cRP.checkPermission(hasPerm)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.getFines(source) > 0 then
+		if vRP.GetFine(source) > 0 then
 			TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
 			return false
 		end
@@ -29,7 +29,7 @@ function cRP.checkPermission(hasPerm)
 		if not hasPerm then
 			return true
 		else
-			if vRP.hasGroup(Passport,hasPerm) then
+			if vRP.HasGroup(Passport,hasPerm) then
 				return true
 			end
 		end
@@ -48,13 +48,13 @@ AddEventHandler("lscustoms:attemptPurchase",function(type,mod)
 		if type == "engines" or type == "brakes" or type == "transmission" or type == "suspension" or type == "shield" then
 			local Price = vehicleCustomisationPrices[type][mod]
 
-			if vRP.paymentFull(Passport,source,Price) then
+			if vRP.PaymentFull(Passport,source,Price) then
 				TriggerClientEvent("lscustoms:purchaseSuccessful",source)
 			else
 				TriggerClientEvent("lscustoms:purchaseFailed",source)
 			end
 		else
-			if vRP.paymentFull(Passport,source,parseInt(vehicleCustomisationPrices[type])) then
+			if vRP.PaymentFull(Passport,source,parseInt(vehicleCustomisationPrices[type])) then
 				TriggerClientEvent("lscustoms:purchaseSuccessful",source)
 			else
 				TriggerClientEvent("lscustoms:purchaseFailed",source)

@@ -51,7 +51,7 @@ function cRP.openChest()
 		end
 
 		local vehInfos = {}
-		local Result = vRP.getSrvdata(Vehicle[Passport]["Data"])
+		local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
 		for k,v in pairs(Result) do
 			v["amount"] = parseInt(v["amount"])
 			v["name"] = itemName(v["item"])
@@ -80,7 +80,7 @@ function cRP.openChest()
 			vehInfos[k] = v
 		end
 
-		return myInfos,vehInfos,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(Result),Vehicle[Passport]["Weight"]
+		return myInfos,vehInfos,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Vehicle[Passport]["Weight"]
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ function cRP.updateChest(Slot,Target,Amount)
 	if Passport and Vehicle[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.updateChest(Passport,Vehicle[Passport]["Data"],Slot,Target,Amount) then
+		if vRP.UpdateChest(Passport,Vehicle[Passport]["Data"],Slot,Target,Amount) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 		end
 	end
@@ -133,12 +133,12 @@ function cRP.storeItem(Item,Slot,Amount,Target)
 			goto scapeInventory
 		end
 
-		if vRP.storeChest(Passport,Vehicle[Passport]["Data"],Amount,Vehicle[Passport]["Weight"],Slot,Target) then
+		if vRP.StoreChest(Passport,Vehicle[Passport]["Data"],Amount,Vehicle[Passport]["Weight"],Slot,Target) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 		else
 			if Vehicle[Passport] then
-				local Result = vRP.getSrvdata(Vehicle[Passport]["Data"])
-				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(Result),Vehicle[Passport]["Weight"])
+				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
+				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Vehicle[Passport]["Weight"])
 			end
 		end
 	end
@@ -155,12 +155,12 @@ function cRP.takeItem(Slot,Amount,Target)
 	if Passport and Vehicle[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.tryChest(Passport,Vehicle[Passport]["Data"],Amount,Slot,Target) then
+		if vRP.TakeChest(Passport,Vehicle[Passport]["Data"],Amount,Slot,Target) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 		else
 			if Vehicle[Passport] then
-				local Result = vRP.getSrvdata(Vehicle[Passport]["Data"])
-				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.chestWeight(Result),Vehicle[Passport]["Weight"])
+				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
+				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Vehicle[Passport]["Weight"])
 			end
 		end
 	end

@@ -48,7 +48,7 @@ function cRP.paymentMethod()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if (vRP.inventoryWeight(Passport) + 3) <= vRP.getWeights(Passport) then
+		if (vRP.InventoryWeight(Passport) + 3) <= vRP.GetWeight(Passport) then
 			local VehParts = math.random(4)
 			local VehSelected = "suspension"
 			local AmountItens = math.random(4,5)
@@ -73,22 +73,22 @@ function cRP.paymentMethod()
 			end
 
 			if VehRandom <= 10 then
-				vRP.generateItem(Passport,VehSelected.."e",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."e",1,true)
 			elseif VehRandom >= 10 and VehRandom <= 30 then
-				vRP.generateItem(Passport,VehSelected.."d",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."d",1,true)
 			elseif VehRandom >= 31 and VehRandom <= 60 then
-				vRP.generateItem(Passport,VehSelected.."c",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."c",1,true)
 			elseif VehRandom >= 61 and VehRandom <= 100 then
-				vRP.generateItem(Passport,VehSelected.."b",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."b",1,true)
 			elseif VehRandom >= 101 and VehRandom <= 150 then
-				vRP.generateItem(Passport,VehSelected.."a",1,true)
+				vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 			end
 
-			vRP.generateItem(Passport,"plastic",AmountItens,true)
-			vRP.generateItem(Passport,"glass",AmountItens,true)
-			vRP.generateItem(Passport,"rubber",AmountItens,true)
-			vRP.generateItem(Passport,"copper",AmountItens,true)
-			vRP.generateItem(Passport,"aluminum",AmountItens,true)
+			vRP.GenerateItem(Passport,"plastic",AmountItens,true)
+			vRP.GenerateItem(Passport,"glass",AmountItens,true)
+			vRP.GenerateItem(Passport,"rubber",AmountItens,true)
+			vRP.GenerateItem(Passport,"copper",AmountItens,true)
+			vRP.GenerateItem(Passport,"aluminum",AmountItens,true)
 
 			vRP.PutExperience(Passport,"Tows",1)
 		else

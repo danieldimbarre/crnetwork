@@ -30,12 +30,12 @@ function cRP.checkRolling()
 				return true
 			end
 
-			if vRP.tryGetInventoryItem(Passport,"luckywheelpass",1) then
+			if vRP.TakeItem(Passport,"luckywheelpass",1) then
 				Active = os.time() + 20
 				return true
 			end
 
-			if vRP.paymentBank(source,Passport,5000) then
+			if vRP.PaymentBank(source,Passport,5000) then
 				Active = os.time() + 20
 				return true
 			else
@@ -120,27 +120,27 @@ AddEventHandler("luckywheel:Payment",function()
 	local Passport = vRP.Passport(source)
 	if Passport and Payments[Passport] then
 		if Payments[Passport] == 2 then
-			vRP.addBank(Passport,2500,"Private")
+			vRP.GiveBank(Passport,2500,"Private")
 		elseif Payments[Passport] == 3 or Payments[Passport] == 11 then
-			vRP.addBank(Passport,15000,"Private")
+			vRP.GiveBank(Passport,15000,"Private")
 		elseif Payments[Passport] == 4 or Payments[Passport] == 14 then
-			vRP.addBank(Passport,10000,"Private")
+			vRP.GiveBank(Passport,10000,"Private")
 		elseif Payments[Passport] == 5 then
 			Bonus[tostring(Passport)] = true
 		elseif Payments[Passport] == 6 then
-			vRP.addBank(Passport,5000,"Private")
+			vRP.GiveBank(Passport,5000,"Private")
 		elseif Payments[Passport] == 7 then
-			vRP.addBank(Passport,20000,"Private")
+			vRP.GiveBank(Passport,20000,"Private")
 		elseif Payments[Passport] == 8 or Payments[Passport] == 18 then
-			vRP.addBank(Passport,12500,"Private")
+			vRP.GiveBank(Passport,12500,"Private")
 		elseif Payments[Passport] == 10 then
-			vRP.addBank(Passport,7500,"Private")
+			vRP.GiveBank(Passport,7500,"Private")
 		elseif Payments[Passport] == 12 then
-			vRP.upgradeGemstone(source,10)
+			vRP.UpgradeGemstone(source,10)
 		elseif Payments[Passport] == 15 then
-			vRP.addBank(Passport,22500,"Private")
+			vRP.GiveBank(Passport,22500,"Private")
 		elseif Payments[Passport] == 16 then
-			vRP.addBank(Passport,17500,"Private")
+			vRP.GiveBank(Passport,17500,"Private")
 		elseif Payments[Passport] == 19 then
 			local vehName = "silvias15"
 			local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
@@ -151,10 +151,10 @@ AddEventHandler("luckywheel:Payment",function()
 					vRP.Execute("vehicles/rentalVehiclesDays",{ Passport = Passport, vehicle = vehName })
 				end
 			else
-				vRP.Execute("vehicles/rentalVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.generatePlate(), work = "false" })
+				vRP.Execute("vehicles/rentalVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 			end
 		elseif Payments[Passport] == 20 then
-			vRP.addBank(Passport,25000,"Private")
+			vRP.GiveBank(Passport,25000,"Private")
 		end
 	end
 end)

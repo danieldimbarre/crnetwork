@@ -35,7 +35,7 @@ function cRP.Exclusivas()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Roupas = {}
-		local Consult = vRP.getSrvdata("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
 
 		for k,v in pairs(Consult) do
 			table.insert(Roupas,{ ["name"] = k, ["id"] = v["id"], ["texture"] = v["texture"] or 0, ["type"] = v["type"] })

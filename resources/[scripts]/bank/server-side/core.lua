@@ -37,8 +37,8 @@ function cRP.bankDeposit(amount)
 		actived[Passport] = true
 
 		if parseInt(amount) > 0 then
-			if vRP.tryGetInventoryItem(Passport,"dollars",amount,true) then
-				vRP.addBank(Passport,amount,"Private")
+			if vRP.TakeItem(Passport,"dollars",amount,true) then
+				vRP.GiveBank(Passport,amount,"Private")
 			else
 				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 			end
@@ -56,7 +56,7 @@ function cRP.bankWithdraw(amount)
 	if Passport and actived[Passport] == nil then
 		actived[Passport] = true
 
-		if vRP.getFines(source) > 0 then
+		if vRP.GetFine(source) > 0 then
 			TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
 			actived[Passport] = nil
 
@@ -64,8 +64,8 @@ function cRP.bankWithdraw(amount)
 		end
 
 		local value = parseInt(amount)
-		if (vRP.inventoryWeight(Passport) + itemWeight("dollars") * value) <= vRP.getWeights(Passport) then
-			if not vRP.withdrawCash(Passport,source,value) then
+		if (vRP.InventoryWeight(Passport) + itemWeight("dollars") * value) <= vRP.GetWeight(Passport) then
+			if not vRP.WithdrawCash(Passport,source,value) then
 				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 			end
 		else

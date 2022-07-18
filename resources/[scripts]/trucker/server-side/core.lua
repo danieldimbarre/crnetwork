@@ -102,7 +102,7 @@ function cRP.Payment(Service)
 
 		for k,v in pairs(Delivery[Service]) do
 			local Rand = math.random(v["min"],v["max"])
-			vRP.generateItem(Passport,v["item"],Rand,true)
+			vRP.GenerateItem(Passport,v["item"],Rand,true)
 		end
 	end
 end

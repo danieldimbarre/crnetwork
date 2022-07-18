@@ -25,7 +25,7 @@ function cRP.newPostIts(Coords)
 		local Keyboard = vKEYBOARD.keyDouble(source,"Mensagem:","Distância: (3 a 15)")
 		if Keyboard then
 			if parseInt(Keyboard[2]) >= 3 and parseInt(Keyboard[2]) <= 15 then
-				if vRP.tryGetInventoryItem(Passport,"postit",1,true) then
+				if vRP.TakeItem(Passport,"postit",1,true) then
 					local Postit = GlobalState["Postit"]
 					table.insert(Postit,{ mathLength(Coords["x"]),mathLength(Coords["y"]),mathLength(Coords["z"]),string.sub(Keyboard[1],1,100),parseInt(Keyboard[2]),Passport,os.time() + 60 })
 					GlobalState:set("Postit",Postit,true)
@@ -43,7 +43,7 @@ function cRP.deletePostIts(id)
 	if Passport then
 		local Postit = GlobalState["Postit"]
 
-		if vRP.hasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Moderator") then
 			TriggerClientEvent("Notify",source,"verde","Post-It do passaporte <b>"..Postit[id][6].."</b> removido.",10000)
 			Postit[id] = nil
 			GlobalState:set("Postit",Postit,true)
@@ -52,7 +52,7 @@ function cRP.deletePostIts(id)
 			if Postit[id] then
 				if Postit[id][6] == Passport then
 					if os.time() <= Postit[id][7] then
-						vRP.generateItem(Passport,"postit",1,true)
+						vRP.GenerateItem(Passport,"postit",1,true)
 					end
 
 					Postit[id] = nil

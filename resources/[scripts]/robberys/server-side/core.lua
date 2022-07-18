@@ -808,12 +808,12 @@ AddEventHandler("robberys:Init",function(Number)
 				end
 
 				if os.time() >= Robberype[Robberys[Number]["type"]] then
-					local checkGroup = vRP.numPermission(Robberys[Number]["group"])
+					local checkGroup = vRP.NumPermission(Robberys[Number]["group"])
 					if parseInt(#checkGroup) >= Robberys[Number]["population"] then
-						local Consult = vRP.getInventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
+						local Consult = vRP.InventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
 						if Consult[1] >= Robberys[Number]["need"]["amount"] then
-							if not vRP.checkDamaged(Consult[2]) then
-								if vRP.tryGetInventoryItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
+							if not vRP.CheckDamaged(Consult[2]) then
+								if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
 									Robberype[Robberys[Number]["type"]] = os.time() + Robberys[Number]["cooldown"]
 									Robberys[Number]["timavaiable"] = os.time() + Robberys[Number]["duration"]
 									Robberys[Number]["avaiable"] = true
@@ -845,7 +845,7 @@ AddEventHandler("robberys:Init",function(Number)
 					Robberys[Number]["avaiable"] = false
 
 					for k,v in pairs(Robberys[Number]["payment"]) do
-						vRP.generateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
+						vRP.GenerateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
 					end
 				else
 					local Cooldown = parseInt(Robberys[Number]["timavaiable"] - os.time())

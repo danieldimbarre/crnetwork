@@ -1769,7 +1769,7 @@ function cRP.requestPerm(Name,Type)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if List[Type]["perm"] ~= nil then
-			if vRP.hasGroup(Passport,List[Type]["perm"]) then
+			if vRP.HasGroup(Passport,List[Type]["perm"]) then
 				return true
 			end
 		else
@@ -1825,7 +1825,7 @@ function cRP.requestCrafting(Type)
 			inventoryUser[k] = v
 		end
 
-		return inventoryShop,inventoryUser,vRP.inventoryWeight(Passport),vRP.getWeights(Passport)
+		return inventoryShop,inventoryUser,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1859,28 +1859,28 @@ function cRP.functionCrafting(Item,Type,Amount,Slot)
 				end
 			end
 
-			if vRP.checkMaxItens(Passport,Item,List[Type]["List"][Item]["amount"] * Amount) then
+			if vRP.MaxItens(Passport,Item,List[Type]["List"][Item]["amount"] * Amount) then
 				TriggerClientEvent("Notify",source,"amarelo","Estoque finalizado.",3000)
 				TriggerClientEvent("crafting:Update",source,"requestCrafting")
 				return
 			end
 
-			if (vRP.inventoryWeight(Passport) + (itemWeight(Item) * List[Type]["List"][Item]["amount"]) * Amount) <= vRP.getWeights(Passport) then
+			if (vRP.InventoryWeight(Passport) + (itemWeight(Item) * List[Type]["List"][Item]["amount"]) * Amount) <= vRP.GetWeight(Passport) then
 				for k,v in pairs(List[Type]["List"][Item]["require"]) do
-					local consultItem = vRP.getInventoryItemAmount(Passport,k)
+					local consultItem = vRP.InventoryItemAmount(Passport,k)
 					if consultItem[1] < parseInt(v * Amount) then
 						return
 					end
 
-					if vRP.checkDamaged(consultItem[2]) then
+					if vRP.CheckDamaged(consultItem[2]) then
 						TriggerClientEvent("Notify",source,"vermelho","Item danificado.",5000)
 						return
 					end
 				end
 
 				for k,v in pairs(List[Type]["List"][Item]["require"]) do
-					local consultItem = vRP.getInventoryItemAmount(Passport,k)
-					vRP.removeInventoryItem(Passport,consultItem[2],parseInt(v * Amount))
+					local consultItem = vRP.InventoryItemAmount(Passport,k)
+					vRP.RemoveItem(Passport,consultItem[2],parseInt(v * Amount))
 				end
 
 				if AmountCrafts[Item] then
@@ -1891,7 +1891,7 @@ function cRP.functionCrafting(Item,Type,Amount,Slot)
 					end
 				end
 
-				vRP.generateItem(Passport,Item,List[Type]["List"][Item]["amount"] * Amount,false,Slot)
+				vRP.GenerateItem(Passport,Item,List[Type]["List"][Item]["amount"] * Amount,false,Slot)
 			else
 				TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 			end
@@ -1913,18 +1913,18 @@ function cRP.functionDestroy(Item,Type,Amount,Slot)
 		local splitName = splitString(Item,"-")
 		if List[Type]["List"][splitName[1]] then
 			if List[Type]["List"][splitName[1]]["destroy"] then
-				if vRP.checkDamaged(Item) then
+				if vRP.CheckDamaged(Item) then
 					TriggerClientEvent("Notify",source,"vermelho","Item danificado.",5000)
 					TriggerClientEvent("crafting:Update",source,"requestCrafting")
 					return
 				end
 
-				if vRP.tryGetInventoryItem(Passport,Item,List[Type]["List"][splitName[1]]["amount"],Slot) then
+				if vRP.TakeItem(Passport,Item,List[Type]["List"][splitName[1]]["amount"],Slot) then
 					for k,v in pairs(List[Type]["List"][splitName[1]]["require"]) do
 						if parseInt(v) <= 1 then
-							vRP.generateItem(Passport,k,1)
+							vRP.GenerateItem(Passport,k,1)
 						else
-							vRP.generateItem(Passport,k,v / 2)
+							vRP.GenerateItem(Passport,k,v / 2)
 						end
 					end
 				end
@@ -1945,8 +1945,8 @@ AddEventHandler("crafting:populateSlot",function(Item,Slot,Target,Amount)
 	if Passport then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.tryGetInventoryItem(Passport,Item,Amount,false,Slot) then
-			vRP.giveInventoryItem(Passport,Item,Amount,false,Target)
+		if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
+			vRP.GiveItem(Passport,Item,Amount,false,Target)
 			TriggerClientEvent("crafting:Update",source,"requestCrafting")
 		end
 	end
@@ -1964,11 +1964,11 @@ AddEventHandler("crafting:updateSlot",function(Item,Slot,Target,Amount)
 
 		local inventory = vRP.Inventory(Passport)
 		if inventory[tostring(Slot)] and inventory[tostring(Target)] and inventory[tostring(Slot)]["item"] == inventory[tostring(Target)]["item"] then
-			if vRP.tryGetInventoryItem(Passport,Item,Amount,false,Slot) then
-				vRP.giveInventoryItem(Passport,Item,Amount,false,Target)
+			if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
+				vRP.GiveItem(Passport,Item,Amount,false,Target)
 			end
 		else
-			vRP.swapSlot(Passport,Slot,Target)
+			vRP.SwapSlot(Passport,Slot,Target)
 		end
 
 		TriggerClientEvent("crafting:Update",source,"requestCrafting")

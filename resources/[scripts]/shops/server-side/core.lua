@@ -516,7 +516,7 @@ function cRP.requestPerm(Type)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.getFines(source) > 0 then
+		if vRP.GetFine(source) > 0 then
 			TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
 			return false
 		end
@@ -526,7 +526,7 @@ function cRP.requestPerm(Type)
 		end
 
 		if shops[Type]["perm"] ~= nil then
-			if not vRP.hasGroup(Passport,shops[Type]["perm"]) then
+			if not vRP.HasGroup(Passport,shops[Type]["perm"]) then
 				return false
 			end
 		end
@@ -581,7 +581,7 @@ function cRP.requestShop(name)
 			shopSlots = parseInt(#inventoryShop)
 		end
 
-		return inventoryShop,inventoryUser,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),shopSlots
+		return inventoryShop,inventoryUser,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),shopSlots
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -603,18 +603,18 @@ function cRP.functionShops(Type,Item,Amount,Slot)
 			local inventory = vRP.Inventory(Passport)
 			if (inventory[tostring(Slot)] and inventory[tostring(Slot)]["item"] == Item) or inventory[tostring(Slot)] == nil then
 				if shops[Type]["mode"] == "Buy" then
-					if vRP.checkMaxItens(Passport,Item,Amount) then
+					if vRP.MaxItens(Passport,Item,Amount) then
 						TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
 						vCLIENT.updateShops(source,"requestShop")
 						return
 					end
 
-					if (vRP.inventoryWeight(Passport) + itemWeight(Item) * Amount) <= vRP.getWeights(Passport) then
+					if (vRP.InventoryWeight(Passport) + itemWeight(Item) * Amount) <= vRP.GetWeight(Passport) then
 						if shops[Type]["type"] == "Cash" then
 							if shops[Type]["List"][Item] then
-								if vRP.paymentFull(Passport,source,shops[Type]["List"][Item] * Amount) then
+								if vRP.PaymentFull(Passport,source,shops[Type]["List"][Item] * Amount) then
 									if Item == "identity" or string.sub(Item,1,5) == "badge" then
-										vRP.giveInventoryItem(Passport,Item.."-"..Passport,Amount,false,Slot)
+										vRP.GiveItem(Passport,Item.."-"..Passport,Amount,false,Slot)
 									elseif Item == "fidentity" then
 										local Identity = vRP.Identity(Passport)
 										if Identity then
@@ -627,14 +627,14 @@ function cRP.functionShops(Type,Item,Amount,Slot)
 											local Identity = vRP.Identity(Passport)
 											local consult = vRP.Query("fidentity/GetIdentity")
 											if consult[1] then
-												vRP.giveInventoryItem(Passport,Item.."-"..consult[1]["id"],Amount,false,Slot)
+												vRP.GiveItem(Passport,Item.."-"..consult[1]["id"],Amount,false,Slot)
 											end
 										end
 									else
-										vRP.generateItem(Passport,Item,Amount,false,Slot)
+										vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 
 										if Item == "WEAPON_PETROLCAN" then
-											vRP.generateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500,false)
+											vRP.GenerateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500,false)
 										end
 									end
 
@@ -644,16 +644,16 @@ function cRP.functionShops(Type,Item,Amount,Slot)
 								end
 							end
 						elseif shops[Type]["type"] == "Consume" then
-							if vRP.tryGetInventoryItem(Passport,shops[Type]["item"],parseInt(shops[Type]["List"][Item] * Amount)) then
-								vRP.generateItem(Passport,Item,Amount,false,Slot)
+							if vRP.TakeItem(Passport,shops[Type]["item"],parseInt(shops[Type]["List"][Item] * Amount)) then
+								vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 								TriggerClientEvent("sounds:Private",source,"cash",0.1)
 							else
 								TriggerClientEvent("Notify",source,"vermelho","<b>"..itemName(shops[Type]["item"]).."</b> insuficiente.",5000)
 							end
 						elseif shops[Type]["type"] == "Premium" then
-							if vRP.paymentGems(source,shops[Type]["List"][Item] * Amount) then
+							if vRP.PaymentGems(source,shops[Type]["List"][Item] * Amount) then
 								TriggerClientEvent("sounds:Private",source,"cash",0.1)
-								vRP.generateItem(Passport,Item,Amount,false,Slot)
+								vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 								TriggerClientEvent("Notify",source,"verde","Comprou <b>"..Amount.."x "..itemName(Item).."</b> por <b>"..shops[Type]["List"][Item] * Amount.." Gemas</b>.",5000)
 							else
 								TriggerClientEvent("Notify",source,"vermelho","<b>Gemas</b> insuficientes.",5000)
@@ -669,7 +669,7 @@ function cRP.functionShops(Type,Item,Amount,Slot)
 						local itemPrice = shops[Type]["List"][splitName[1]]
 
 						if itemPrice > 0 then
-							if vRP.checkDamaged(Item) then
+							if vRP.CheckDamaged(Item) then
 								TriggerClientEvent("Notify",source,"vermelho","Itens danificados não podem ser vendidos.",5000)
 								vCLIENT.updateShops(source,"requestShop")
 								return
@@ -677,16 +677,16 @@ function cRP.functionShops(Type,Item,Amount,Slot)
 						end
 
 						if shops[Type]["type"] == "Cash" then
-							if vRP.tryGetInventoryItem(Passport,Item,Amount,true,Slot) then
+							if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
 								if itemPrice > 0 then
-									vRP.generateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)
+									vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)
 									TriggerClientEvent("sounds:Private",source,"cash",0.1)
 								end
 							end
 						elseif shops[Type]["type"] == "Consume" then
-							if vRP.tryGetInventoryItem(Passport,Item,Amount,true,Slot) then
+							if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
 								if itemPrice > 0 then
-									vRP.generateItem(Passport,shops[Type]["item"],parseInt(itemPrice * Amount),false)
+									vRP.GenerateItem(Passport,shops[Type]["item"],parseInt(itemPrice * Amount),false)
 									TriggerClientEvent("sounds:Private",source,"cash",0.1)
 								end
 							end
@@ -710,8 +710,8 @@ AddEventHandler("shops:populateSlot",function(Item,Slot,Target,Amount)
 	if Passport then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.tryGetInventoryItem(Passport,Item,Amount,false,Slot) then
-			vRP.giveInventoryItem(Passport,Item,Amount,false,Target)
+		if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
+			vRP.GiveItem(Passport,Item,Amount,false,Target)
 			vCLIENT.updateShops(source,"requestShop")
 		end
 	end
@@ -729,11 +729,11 @@ AddEventHandler("shops:updateSlot",function(Item,Slot,Target,Amount)
 
 		local inventory = vRP.Inventory(Passport)
 		if inventory[tostring(Slot)] and inventory[tostring(Target)] and inventory[tostring(Slot)]["item"] == inventory[tostring(Target)]["item"] then
-			if vRP.tryGetInventoryItem(Passport,Item,Amount,false,Slot) then
-				vRP.giveInventoryItem(Passport,Item,Amount,false,Target)
+			if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
+				vRP.GiveItem(Passport,Item,Amount,false,Target)
 			end
 		else
-			vRP.swapSlot(Passport,Slot,Target)
+			vRP.SwapSlot(Passport,Slot,Target)
 		end
 
 		vCLIENT.updateShops(source,"requestShop")

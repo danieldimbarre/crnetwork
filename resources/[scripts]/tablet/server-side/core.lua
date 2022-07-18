@@ -50,7 +50,7 @@ function cRP.requestRental(vehName)
 		if Active[Passport] == nil then
 			Active[Passport] = true
 
-			if vRP.getFines(source) > 0 then
+			if vRP.GetFine(source) > 0 then
 				TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
 				Active[Passport] = nil
 				return
@@ -59,12 +59,12 @@ function cRP.requestRental(vehName)
 			local vehPrice = vehicleGems(vehName)
 			local Text = "Alugar o veículo <b>"..vehicleName(vehName).."</b> por <b>"..vehPrice.."</b> gemas?"
 
-			if vRP.consultItem(Passport,"rentalveh",1) then
+			if vRP.ConsultItem(Passport,"rentalveh",1) then
 				Text = "Alugar o veículo <b>"..vehicleName(vehName).."</b> usando o vale?"
 			end
 
-			if vRP.request(source,Text,"Sim, concluír pagamento","Não, mudei de ideia") then
-				if vRP.tryGetInventoryItem(Passport,"rentalveh",1,true) or vRP.paymentGems(source,vehPrice) then
+			if vRP.Request(source,Text,"Sim, concluír pagamento","Não, mudei de ideia") then
+				if vRP.TakeItem(Passport,"rentalveh",1,true) or vRP.PaymentGems(source,vehPrice) then
 					local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 					if vehicle[1] then
 						if vehicle[1]["rental"] <= os.time() then
@@ -75,7 +75,7 @@ function cRP.requestRental(vehName)
 							TriggerClientEvent("Notify",source,"verde","Adicionado <b>30 Dias</b> de aluguel no veículo <b>"..vehicleName(vehName).."</b>.",5000)
 						end
 					else
-						vRP.Execute("vehicles/rentalVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.generatePlate(), work = "false" })
+						vRP.Execute("vehicles/rentalVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 						TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..vehicleName(vehName).."</b> concluído.",5000)
 					end
 				else
@@ -97,7 +97,7 @@ function cRP.requestBuy(vehName)
 		if Active[Passport] == nil then
 			Active[Passport] = true
 
-			if vRP.getFines(source) > 0 then
+			if vRP.GetFine(source) > 0 then
 				TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
 				Active[Passport] = nil
 				return
@@ -115,17 +115,17 @@ function cRP.requestBuy(vehName)
 				return
 			else
 				if vehicleType(vehName) == "work" then
-					if vRP.paymentFull(Passport,source,vehiclePrice(vehName)) then
-						vRP.Execute("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.generatePlate(), work = "true" })
+					if vRP.PaymentFull(Passport,source,vehiclePrice(vehName)) then
+						vRP.Execute("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "true" })
 						TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)
 					else
 						TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 					end
 				else
 					local vehPrice = vehiclePrice(vehName)
-					if vRP.request(source,"Comprar <b>"..vehicleName(vehName).."</b> por <b>$"..parseFormat(vehPrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
-						if vRP.paymentFull(Passport,source,vehPrice) then
-							vRP.Execute("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.generatePlate(), work = "false" })
+					if vRP.Request(source,"Comprar <b>"..vehicleName(vehName).."</b> por <b>$"..parseFormat(vehPrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
+						if vRP.PaymentFull(Passport,source,vehPrice) then
+							vRP.Execute("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 							TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)
 						else
 							TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -149,8 +149,8 @@ function cRP.startDrive()
 			Active[Passport] = true
 
 			if not exports["hud"]:Wanted(Passport) then
-				if vRP.request(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
-					if vRP.paymentFull(Passport,source,100) then
+				if vRP.Request(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
+					if vRP.PaymentFull(Passport,source,100) then
 						Player(source)["state"]["Route"] = Passport
 						SetPlayerRoutingBucket(source,Passport)
 						Active[Passport] = nil

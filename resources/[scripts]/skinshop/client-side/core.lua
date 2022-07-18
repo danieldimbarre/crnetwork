@@ -55,7 +55,7 @@ AddEventHandler("skinshop:Apply",function(status)
 		skinData = status
 	end
 
-	resetClothing(skinData)
+	ApplyClothings(skinData)
 	vSERVER.updateClothes(skinData)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ end)
 RegisterNetEvent("updateRoupas")
 AddEventHandler("updateRoupas",function(custom)
 	skinData = custom
-	resetClothing(custom)
+	ApplyClothings(custom)
 	vSERVER.updateClothes(custom)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("skinshop:updateTattoo")
 AddEventHandler("skinshop:updateTattoo",function()
-	resetClothing(skinData)
+	ApplyClothings(skinData)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOPS
@@ -177,7 +177,7 @@ end)
 -- RESETOUTFIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("resetOutfit",function(Data,Callback)
-	resetClothing(json.decode(previousSkinData))
+	ApplyClothings(json.decode(previousSkinData))
 	skinData = json.decode(previousSkinData)
 	previousSkinData = {}
 
@@ -351,9 +351,9 @@ function closeMenu()
 	DestroyCam(cam,false)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- RESETCLOTHING
+-- APPLYCLOTHINGS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function resetClothing(data)
+function ApplyClothings(data)
 	local Ped = PlayerPedId()
 
 	if data["backpack"] == nil then

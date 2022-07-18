@@ -68,7 +68,7 @@ AddEventHandler("evidence:pickupEvidence",function(Id,Grid)
 			local Temporary = Evidences[Grid][tostring(Id)]
 
 			Evidences[Grid][tostring(Id)] = nil
-			vRP.giveInventoryItem(Passport,Temporary[2],1,true)
+			vRP.GiveItem(Passport,Temporary[2],1,true)
 		end
 	end
 end)

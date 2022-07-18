@@ -690,7 +690,6 @@ local weaponAmmos = {
 		"WEAPON_MACHINEPISTOL"
 	},
 	["WEAPON_RIFLE_AMMO"] = {
-		"WEAPON_FNFAL",
 		"WEAPON_COMPACTRIFLE",
 		"WEAPON_CARBINERIFLE",
 		"WEAPON_CARBINERIFLE_MK2",
@@ -815,7 +814,7 @@ AddEventHandler("inventory:Firecracker",function()
 				StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords["x"],Coords["y"],Coords["z"],0.0,0.0,0.0,2.5,false,false,false,false)
 			until Explosive <= 0
 
-			TriggerServerEvent("tryDeleteObject",Network)
+			TriggerServerEvent("DeleteObject",Network)
 		end
 	end
 end)
@@ -2017,16 +2016,6 @@ local WeaConfig = {
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_specialcarbinemk2"
 	},
-	["WEAPON_FNFAL"] = {
-		["Bone"] = 24818,
-		["x"] = 0.12,
-		["y"] = -0.14,
-		["z"] = 0.08,
-		["RotX"] = 0.0,
-		["RotY"] = 180.0,
-		["RotZ"] = 5.0,
-		["Model"] = "w_ar_fnfal"
-	},
 	["WEAPON_MUSKET"] = {
 		["Bone"] = 24818,
 		["x"] = -0.1,
@@ -2134,7 +2123,7 @@ local WeaConfig = {
 RegisterNetEvent("inventory:RemoveWeapon")
 AddEventHandler("inventory:RemoveWeapon",function(Name)
 	if WeaObjects[Name] then
-		TriggerServerEvent("tryDeleteObject",0,Name)
+		TriggerServerEvent("DeleteObject",0,Name)
 		WeaObjects[Name] = nil
 	end
 end)

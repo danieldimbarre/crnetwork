@@ -22,7 +22,7 @@ RegisterNetEvent("police:runInspect")
 AddEventHandler("police:runInspect",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.getHealth(source) > 100 then
+	if Passport and vRP.GetHealth(source) > 100 then
 		openSource[Passport] = Entity[1]
 		openPlayer[Passport] = vRP.Passport(Entity[1])
 
@@ -99,7 +99,7 @@ function cRP.openChest()
 			otherInventory[k] = v
 		end
 
-		return myInventory,otherInventory,vRP.inventoryWeight(Passport),vRP.getWeights(Passport),vRP.inventoryWeight(openPlayer[Passport]),vRP.getWeights(openPlayer[Passport])
+		return myInventory,otherInventory,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.InventoryWeight(openPlayer[Passport]),vRP.GetWeight(openPlayer[Passport])
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -130,15 +130,15 @@ function cRP.storeItem(Item,Slot,Amount,Target)
 		if openSource[Passport] then
 			local Ped = GetPlayerPed(openSource[Passport])
 			if DoesEntityExist(Ped) then
-				if vRP.checkMaxItens(openPlayer[Passport],Item,Amount) then
+				if vRP.MaxItens(openPlayer[Passport],Item,Amount) then
 					TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
 					TriggerClientEvent("inspect:Update",source,"requestChest")
 					return
 				end
 
-				if (vRP.inventoryWeight(openPlayer[Passport]) + (itemWeight(Item) * Amount)) <= vRP.getWeights(openPlayer[Passport]) then
-					if vRP.tryGetInventoryItem(Passport,Item,Amount,false,Slot) then
-						vRP.giveInventoryItem(openPlayer[Passport],Item,Amount,true,Target)
+				if (vRP.InventoryWeight(openPlayer[Passport]) + (itemWeight(Item) * Amount)) <= vRP.GetWeight(openPlayer[Passport]) then
+					if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
+						vRP.GiveItem(openPlayer[Passport],Item,Amount,true,Target)
 					end
 				else
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
@@ -157,14 +157,14 @@ function cRP.takeItem(Item,Slot,Amount)
 	if Passport then
 		if openSource[Passport] then
 			if DoesEntityExist(GetPlayerPed(openSource[Passport])) then
-				if vRP.checkMaxItens(Passport,Item,Amount) then
+				if vRP.MaxItens(Passport,Item,Amount) then
 					TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
 					TriggerClientEvent("inspect:Update",source,"requestChest")
 					return
 				end
 
-				if (vRP.inventoryWeight(Passport) + (itemWeight(Item) * Amount)) <= vRP.getWeights(Passport) then
-					if vRP.tryGetInventoryItem(openPlayer[Passport],Item,Amount,true,Slot) then
+				if (vRP.InventoryWeight(Passport) + (itemWeight(Item) * Amount)) <= vRP.GetWeight(Passport) then
+					if vRP.TakeItem(openPlayer[Passport],Item,Amount,true,Slot) then
 						TriggerClientEvent("inspect:Update",source,"requestChest")
 					end
 				else

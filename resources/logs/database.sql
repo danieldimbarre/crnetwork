@@ -85,11 +85,12 @@ CREATE TABLE IF NOT EXISTS `summerz_fidentity` (
 
 DROP TABLE IF EXISTS `summerz_playerdata`;
 CREATE TABLE IF NOT EXISTS `summerz_playerdata` (
-	`Passport` int(11) NOT NULL,
-	`dkey` varchar(100) NOT NULL,
-	`dvalue` longtext DEFAULT NULL,
-	KEY `Passport` (`Passport`),
-	KEY `dkey` (`dkey`)
+  `Passport` int(11) NOT NULL,
+  `dkey` varchar(100) NOT NULL,
+  `dvalue` text,
+  PRIMARY KEY (`Passport`,`dkey`),
+  KEY `Passport` (`Passport`),
+  KEY `dkey` (`dkey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `summerz_propertys`;

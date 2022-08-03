@@ -23,6 +23,9 @@ function cRP.Permissions(Name,Mode)
 		if Mode == "Personal" then
 			Open[Passport] = { ["Name"] = Passport, ["Weight"] = 50, ["Logs"] = false }
 			return true
+		elseif Mode == "Custom" then
+			Open[Passport] = { ["Name"] = Name, ["Weight"] = 50, ["Logs"] = false }
+			return true
 		else
 			if Name == "trayShot" or Name == "trayDesserts" or Name == "trayPizza" or Name == "trayBean" then
 				Open[Passport] = { ["Name"] = Name, ["Weight"] = 15, ["Logs"] = false }

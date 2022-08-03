@@ -121,7 +121,7 @@ local animacoes = {
 	["poledance"] = { dict = "mini@strip_club@pole_dance@pole_dance1", anim = "pd_dance_01", andar = false, loop = true, extra = function()
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
-		for k,v in pairs(Poledance) do
+		for _,v in pairs(Poledance) do
 			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 			if Distance <= 1 then
 				SetEntityHeading(Ped,v[4])
@@ -133,7 +133,7 @@ local animacoes = {
 	["poledance2"] = { dict = "mini@strip_club@pole_dance@pole_dance2", anim = "pd_dance_02", andar = false, loop = true, extra = function()
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
-		for k,v in pairs(Poledance) do
+		for _,v in pairs(Poledance) do
 			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 			if Distance <= 1 then
 				SetEntityHeading(Ped,v[4])
@@ -145,7 +145,7 @@ local animacoes = {
 	["poledance3"] = { dict = "mini@strip_club@pole_dance@pole_dance3", anim = "pd_dance_03", andar = false, loop = true, extra = function()
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
-		for k,v in pairs(Poledance) do
+		for _,v in pairs(Poledance) do
 			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 			if Distance <= 1 then
 				SetEntityHeading(Ped,v[4])

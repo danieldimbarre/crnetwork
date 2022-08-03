@@ -70,6 +70,13 @@ local chestInfos = {
 			label = "Aumentar",
 			tunnel = "shopserver"
 		}
+	},
+	["4"] = {
+		{
+			event = "chest:openCustom",
+			label = "Abrir",
+			tunnel = "shop"
+		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -113,6 +120,17 @@ end)
 AddEventHandler("chest:openPersonal",function(Name)
 	if LocalPlayer["state"]["Route"] < 900000 then
 		if vSERVER.Permissions(Name,"Personal") then
+			SetNuiFocus(true,true)
+			SendNUIMessage({ action = "showMenu" })
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHEST:OPENCUSTOM
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("chest:openCustom",function(Name)
+	if LocalPlayer["state"]["Route"] < 900000 then
+		if vSERVER.Permissions(Name,"Custom") then
 			SetNuiFocus(true,true)
 			SendNUIMessage({ action = "showMenu" })
 		end

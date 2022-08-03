@@ -430,9 +430,9 @@ function cRP.requestInventory()
 			end
 		end
 
-		local myInventory = {}
+		local Inv = {}
 		local Inventory = vRP.Inventory(Passport)
-		for k,v in pairs(Inventory) do
+		for Index,v in pairs(Inventory) do
 			if (parseInt(v["amount"]) <= 0 or itemBody(v["item"]) == nil) then
 				vRP.RemoveItem(Passport,v["item"],parseInt(v["amount"]),false)
 			else
@@ -444,7 +444,7 @@ function cRP.requestInventory()
 				v["desc"] = itemDescription(v["item"])
 				v["economy"] = parseFormat(itemEconomy(v["item"]))
 				v["key"] = v["item"]
-				v["slot"] = k
+				v["slot"] = Index
 
 				local Split = splitString(v["item"],"-")
 				if Split[2] ~= nil then
@@ -509,11 +509,11 @@ function cRP.requestInventory()
 					v["desc"] = "A pureza "..Item.." se encontra em <green>"..(Split[2] or 0).."%</green>."
 				end
 
-				myInventory[k] = v
+				Inv[Index] = v
 			end
 		end
 
-		return myInventory,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport)
+		return Inv,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -760,13 +760,13 @@ AddEventHandler("inventory:Deliver",function(Slot)
 	local Slot = tostring(Slot)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local inventory = vRP.Inventory(Passport)
-		if not inventory[Slot] or inventory[Slot]["item"] == nil then
+		local Inventory = vRP.Inventory(Passport)
+		if not Inventory[Slot] or Inventory[Slot]["item"] == nil then
 			return
 		end
 
-		local Split = splitString(inventory[Slot]["item"],"-")
-		local Full = inventory[Slot]["item"]
+		local Split = splitString(Inventory[Slot]["item"],"-")
+		local Full = Inventory[Slot]["item"]
 		local Item = Split[1]
 
 		if Item == "woodlog" then
@@ -1000,13 +1000,13 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 	if Passport and Active[Passport] == nil then
 		if Amount <= 0 then Amount = 1 end
 
-		local Inv = vRP.Inventory(Passport)
-		if not Inv[Slot] or Inv[Slot]["item"] == nil then
+		local Inventory = vRP.Inventory(Passport)
+		if not Inventory[Slot] or Inventory[Slot]["item"] == nil then
 			return
 		end
 
-		local Split = splitString(Inv[Slot]["item"],"-")
-		local Full = Inv[Slot]["item"]
+		local Split = splitString(Inventory[Slot]["item"],"-")
+		local Full = Inventory[Slot]["item"]
 		local Item = Split[1]
 
 		if itemDurability(Full) then

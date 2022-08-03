@@ -329,7 +329,7 @@ const updateDrag = () => {
 				var idPremium = $(this).attr("data-idPremium");
 				var idRolepass = $(this).attr("data-idRolepass");
 
-				contents = `<item>${name}</item>${description !== "undefined" ? "<br><description>"+description+"</description>":""}<br><legenda>Nome: <r>${idName}</r> <s>|</s> Tipo Sangüineo: <r>${idBlood}</r><br>Passe: <r>${idRolepass}</r>${idPremium == "Nenhum" ? "":"<br>Premium: <r>"+ idPremium +"</r>"}</legenda>`;
+				contents = `<item>${name}</item>${description !== "undefined" ? "<br><description>"+description+"</description>":""}<br><legenda>Nome: <r>${idName}</r><br>Tipo Sangüineo: <r>${idBlood}</r><br>Rolepass: <r>${idRolepass}</r><br>Premium: <r>${idPremium}</r></legenda>`;
 			}
 
 			$(this).tooltip({

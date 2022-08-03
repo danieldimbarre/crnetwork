@@ -24,7 +24,7 @@ RegisterCommand("gem",function(source,args)
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
 				TriggerClientEvent("Notify",source,"verde","Gemas entregues.",5000)
-				vRP.Execute("accounts/infosUpdategems",{ license = Identity["license"], gems = Amount })
+				vRP.Execute("accounts/AddGems",{ license = Identity["license"], gems = Amount })
 			end
 		end
 	end
@@ -386,8 +386,8 @@ end)
 RegisterCommand("kickall",function(source)
 	if source == 0 then
 		local playerList = vRP.Players()
-		for k,v in pairs(playerList) do
-			vRP.Kick(k,"Desconectado, a cidade reiniciou.")
+		for Passport,_ in pairs(playerList) do
+			vRP.Kick(Passport,"Desconectado, a cidade reiniciou.")
 			Wait(100)
 		end
 
@@ -402,9 +402,9 @@ RegisterCommand("itemall",function(source,args)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
 			local playerList = vRP.Players()
-			for k,v in pairs(playerList) do
+			for PassportPlayer,_ in pairs(playerList) do
 				async(function()
-					vRP.GenerateItem(k,tostring(args[1]),parseInt(args[2]),true)
+					vRP.GenerateItem(PassportPlayer,tostring(args[1]),parseInt(args[2]),true)
 				end)
 			end
 

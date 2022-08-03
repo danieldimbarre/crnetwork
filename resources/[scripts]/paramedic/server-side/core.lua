@@ -158,7 +158,7 @@ AddEventHandler("paramedic:Diagnostic",function(entity)
 					Result = "<b>Sangramento:</b> Alto<br>"
 				end
 
-				Result = Result.."<b>Tipo Sanguíneo:</b> "..Sanguine(Identity["blood"])
+				Result = Result.."<b>Tipo Sangüíneo:</b> "..Sanguine(Identity["blood"])
 
 				local Number = 0
 				local Damaged = false

@@ -146,8 +146,6 @@ RegisterNUICallback("requestWarehouse",function(Data,Callback)
 	if myInventory then
 		Callback({ myInventory = myInventory, myWarehouse = myWarehouse, invPeso = invPeso, invMaxpeso = invMaxpeso, warehousePeso = warehousePeso, warehouseMaxpeso = warehouseMaxpeso })
 	end
-
-	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WAREHOUSE:UPDATE

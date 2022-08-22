@@ -1793,7 +1793,7 @@ function cRP.requestCrafting(Type)
 				table.insert(keyList,{ name = itemName(k), amount = v })
 			end
 
-			table.insert(inventoryShop,{ name = itemName(k), index = itemIndex(k), max = itemMaxAmount(k), economy = parseFormat(itemEconomy(k)), dkey = k, peso = itemWeight(k), list = keyList, amount = parseInt(v["amount"]), desc = itemDescription(k) })
+			table.insert(inventoryShop,{ name = itemName(k), index = itemIndex(k), max = itemMaxAmount(k), economy = parseFormat(itemEconomy(k)), key = k, peso = itemWeight(k), list = keyList, amount = parseInt(v["amount"]), desc = itemDescription(k) })
 		end
 
 		local inventoryUser = {}

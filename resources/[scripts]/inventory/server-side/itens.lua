@@ -4090,7 +4090,7 @@ Use = {
 				end
 			end
 		else
-			Player(source)["state"]["Buttons"] = true
+			Player(source)["state"]["Buttons"] = false
 		end
 	end,
 

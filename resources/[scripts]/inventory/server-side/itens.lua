@@ -4611,7 +4611,7 @@ Use = {
 
 	["radio"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("hud:RadioNui",source)
+		TriggerClientEvent("radio:openSystem",source)
 		vRPC.AnimActive(source)
 	end,
 

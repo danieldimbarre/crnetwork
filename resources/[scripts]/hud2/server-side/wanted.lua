@@ -16,6 +16,8 @@ AddEventHandler("Wanted",function(source,Passport,Seconds)
 	else
 		Wanted[Passport] = os.time() + Seconds
 	end
+
+	--TriggerClientEvent("hud:Wanted",source,Wanted[Passport] - os.time())
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WANTED
@@ -51,4 +53,14 @@ exports("Wanted",function(Passport,source)
 	end
 
 	return false
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Connect",function(Passport,source)
+	if Wanted[Passport] then
+		if Wanted[Passport] > os.time() then
+			--TriggerClientEvent("hud:Wanted",source,Wanted[Passport] - os.time())
+		end
+	end
 end)

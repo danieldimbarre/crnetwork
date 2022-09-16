@@ -83,7 +83,7 @@ end)
 
 RegisterCommand("+radiotalk",function()
 	local Ped = PlayerPedId()
-	if IsPedSwimming(Ped) or LocalPlayer["state"]["Handcuff"] or IsPlayerFreeAiming(PlayerId()) or not MumbleIsConnected() then
+	if IsPedSwimming(Ped) or LocalPlayer["state"]["Handcuff"] or IsPlayerFreeAiming(PlayerId()) or not LocalPlayer["state"]["Network"] then
 		return
 	end
 
@@ -119,7 +119,7 @@ end,false)
 
 RegisterCommand("-radiotalk",function()
 	local Ped = PlayerPedId()
-	if IsPedSwimming(Ped) or LocalPlayer["state"]["Handcuff"] or IsPlayerFreeAiming(PlayerId()) or not MumbleIsConnected() then
+	if IsPedSwimming(Ped) or LocalPlayer["state"]["Handcuff"] or IsPlayerFreeAiming(PlayerId()) or not LocalPlayer["state"]["Network"] then
 		return
 	end
 

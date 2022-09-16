@@ -98,13 +98,17 @@ end)
 -- REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Request",function(Data,Callback)
-	Callback({ Result = vSERVER.Request() })
+	if LocalPlayer["state"]["Network"] then
+		Callback({ Result = vSERVER.Request() })
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMOVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Remove",function(Data,Callback)
-	TriggerServerEvent("service:Remove",Data["passport"])
+	if LocalPlayer["state"]["Network"] then
+		TriggerServerEvent("service:Remove",Data["passport"])
+	end
 
 	Callback("Ok")
 end)
@@ -112,7 +116,9 @@ end)
 -- ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Add",function(Data,Callback)
-	TriggerServerEvent("service:Add",Data["passport"])
+	if LocalPlayer["state"]["Network"] then
+		TriggerServerEvent("service:Add",Data["passport"])
+	end
 
 	Callback("Ok")
 end)

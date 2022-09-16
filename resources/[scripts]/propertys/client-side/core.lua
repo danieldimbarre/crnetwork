@@ -31,7 +31,7 @@ CreateThread(function()
 	while true do
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
-		if not IsPedInAnyVehicle(Ped) and MumbleIsConnected() then
+		if not IsPedInAnyVehicle(Ped) and LocalPlayer["state"]["Network"] then
 			local Coords = GetEntityCoords(Ped)
 
 			if Init == "" then
@@ -164,7 +164,7 @@ end)
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.Take(Data["slot"],Data["amount"],Data["target"],Init,Chest)
 	end
 
@@ -174,7 +174,7 @@ end)
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Store",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"],Init,Chest)
 	end
 
@@ -184,7 +184,7 @@ end)
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Update",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.Update(Data["slot"],Data["target"],Data["amount"],Init,Chest)
 	end
 

@@ -98,7 +98,7 @@ end)
 -- TOGGLERADAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleRadar",function()
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		local Ped = PlayerPedId()
 		if IsPedInAnyPoliceVehicle(Ped) and LocalPlayer["state"]["Police"] then
 			if policeRadar then
@@ -124,7 +124,7 @@ end)
 -- TENCODE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("enterTencodes",function()
-	if LocalPlayer["state"]["Police"] and MumbleIsConnected() and LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Police"] and LocalPlayer["state"]["Network"] and LocalPlayer["state"]["Route"] < 900000 then
 		SetNuiFocus(true,true)
 		SetCursorLocation(0.5,0.1)
 		SendNUIMessage({ tencode = true })

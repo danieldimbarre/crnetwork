@@ -25,7 +25,7 @@ RegisterNetEvent("tablet:enterTablet")
 AddEventHandler("tablet:enterTablet",function(Select)
 	if LocalPlayer["state"]["Route"] < 900000 then
 		local Ped = PlayerPedId()
-		if not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and GetEntityHealth(Ped) > 100 and MumbleIsConnected() then
+		if not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and GetEntityHealth(Ped) > 100 and LocalPlayer["state"]["Network"] then
 			Open = Select
 			SetNuiFocus(true,true)
 			SetCursorLocation(0.5,0.5)
@@ -65,7 +65,7 @@ end)
 -- REQUESTBUY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("requestBuy",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.requestBuy(Data["name"])
 	end
 
@@ -75,7 +75,7 @@ end)
 -- REQUESTRENTAL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("requestRental",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.requestRental(Data["name"])
 	end
 

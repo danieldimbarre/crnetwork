@@ -16,7 +16,7 @@ local numberBlips = 0
 -- NOTIFY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("enterNotifys",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and MumbleIsConnected() then
+	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and LocalPlayer["state"]["Network"] then
 		SendNUIMessage({ action = "showAll" })
 	end
 end)

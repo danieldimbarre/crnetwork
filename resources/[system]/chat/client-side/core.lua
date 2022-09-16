@@ -136,7 +136,7 @@ end)
 -- CHAT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("chat",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and MumbleIsConnected() then
+	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and LocalPlayer["state"]["Network"] then
 		if chatOpen then
 			if chatActive then
 				chatActive = false
@@ -168,7 +168,7 @@ end)
 -- ENTERCHAT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("enterChat",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and MumbleIsConnected() then
+	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and LocalPlayer["state"]["Network"] then
 		chatOpen = true
 		SetNuiFocus(true,true)
 		SendNUIMessage({ type = "ON_OPEN" })

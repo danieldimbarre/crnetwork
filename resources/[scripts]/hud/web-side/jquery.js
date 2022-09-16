@@ -1,5 +1,6 @@
 var lastRadio = ""
 var voice = "Médio"
+var Networked = false;
 var tickInterval = undefined;
 // -------------------------------------------------------------------------------------------
 function minimalTimers(Seconds){
@@ -22,6 +23,15 @@ function minimalTimers(Seconds){
         return "00:" + S
     }
 }
+// -------------------------------------------------------------------------------------------
+setInterval(() => {
+	if (navigator.onLine != Networked){
+		Networked = navigator.onLine
+		$.post("http://hud/Network",JSON.stringify({ status: Networked }));
+
+		console.log(Networked);
+	}
+},500)
 // -------------------------------------------------------------------------------------------
 $(document).ready(function(){
 	window.addEventListener("message",function(event){

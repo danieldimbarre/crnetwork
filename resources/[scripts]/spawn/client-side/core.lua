@@ -120,7 +120,9 @@ end)
 -- NEWCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("newCharacter",function(Data,Callback)
-	vSERVER.newCharacter(Data["name"],Data["name2"],Data["sex"])
+	if LocalPlayer["state"]["Network"] then
+		vSERVER.newCharacter(Data["name"],Data["name2"],Data["sex"])
+	end
 
 	Callback("Ok")
 end)

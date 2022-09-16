@@ -105,7 +105,7 @@ end)
 -- DELIVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Deliver",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		TriggerServerEvent("inventory:Deliver",Data["slot"])
 	end
 
@@ -116,7 +116,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Slot")
 AddEventHandler("inventory:Slot",function(Number,Amount)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		PushSlot = parseInt(Number)
 		TriggerServerEvent("inventory:useItem",Number,Amount)
 	end
@@ -125,7 +125,9 @@ end)
 -- USEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("useItem",function(Data,Callback)
-	TriggerEvent("inventory:Slot",Data["slot"],Data["amount"])
+	if LocalPlayer["state"]["Network"] then
+		TriggerEvent("inventory:Slot",Data["slot"],Data["amount"])
+	end
 
 	Callback("Ok")
 end)
@@ -133,7 +135,7 @@ end)
 -- SENDITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("sendItem",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		TriggerServerEvent("inventory:sendItem",Data["slot"],Data["amount"])
 	end
 
@@ -143,7 +145,7 @@ end)
 -- UPDATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSlot",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vRPS.invUpdate(Data["slot"],Data["target"],Data["amount"])
 	end
 
@@ -154,7 +156,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Update")
 AddEventHandler("inventory:Update",function(action)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		SendNUIMessage({ action = action })
 	end
 end)
@@ -204,7 +206,7 @@ end)
 -- OPENBACKPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("openBackpack",function()
-	if GetEntityHealth(PlayerPedId()) > 100 and not LocalPlayer["state"]["Buttons"] and MumbleIsConnected() then
+	if GetEntityHealth(PlayerPedId()) > 100 and not LocalPlayer["state"]["Buttons"] and LocalPlayer["state"]["Network"] then
 		if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPlayerFreeAiming(PlayerId()) then
 			Backpack = true
 			SetNuiFocus(true,true)
@@ -828,7 +830,7 @@ end
 -- DROPITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("dropItem",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
 		local _,cdz = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
@@ -923,7 +925,7 @@ end)
 -- PICKUPITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("pickupItem",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		TriggerServerEvent("inventory:Pickup",Data["id"],Data["amount"],Data["target"])
 	end
 
@@ -1150,7 +1152,7 @@ CreateThread(function()
 							TimeDistance = 1
 							soundScanner = 250
 
-							if IsControlJustPressed(1,38) and MumbleIsConnected() then
+							if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
 								TriggerServerEvent("inventory:makeProducts","scanner")
 
 								local rand = math.random(#scanCoords)

@@ -570,7 +570,7 @@ end
 -- CRUISER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("cr",function(source,args)
-	if exports["chat"]:statusChat() and MumbleIsConnected() then
+	if exports["chat"]:statusChat() and LocalPlayer["state"]["Network"] then
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
 			local Vehicle = GetVehiclePedIsUsing(Ped)

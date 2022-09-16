@@ -28,7 +28,7 @@ end)
 -- FUNCTIONCRAFT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("functionCraft",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.functionCrafting(Data["index"],Data["craft"],Data["amount"],Data["slot"])
 	end
 
@@ -38,7 +38,7 @@ end)
 -- FUNCTIONDESTROY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("functionDestroy",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.functionDestroy(Data["index"],Data["craft"],Data["amount"],Data["slot"])
 	end
 
@@ -48,7 +48,7 @@ end)
 -- POPULATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("populateSlot",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		TriggerServerEvent("crafting:populateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
 	end
 
@@ -58,7 +58,7 @@ end)
 -- UPDATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSlot",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		TriggerServerEvent("crafting:updateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
 	end
 

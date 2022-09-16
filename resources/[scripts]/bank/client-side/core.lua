@@ -42,7 +42,7 @@ end)
 -- DEPOSIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("deposit",function(Data,Callback)
-	if parseInt(Data["value"]) > 0 and MumbleIsConnected() then
+	if parseInt(Data["value"]) > 0 and LocalPlayer["state"]["Network"] then
 		vSERVER.bankDeposit(Data["value"])
 	end
 
@@ -52,7 +52,7 @@ end)
 -- WITHDRAW
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("withdraw",function(Data,Callback)
-	if parseInt(Data["value"]) > 0 and MumbleIsConnected() then
+	if parseInt(Data["value"]) > 0 and LocalPlayer["state"]["Network"] then
 		vSERVER.bankWithdraw(Data["value"])
 	end
 

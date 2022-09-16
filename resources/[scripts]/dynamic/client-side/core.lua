@@ -77,7 +77,7 @@ end)
 -- GLOBALFUNCTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("globalFunctions",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not menuOpen and MumbleIsConnected() and LocalPlayer["state"]["Route"] < 900000 then
+	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not menuOpen and LocalPlayer["state"]["Network"] and LocalPlayer["state"]["Route"] < 900000 then
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
 
@@ -150,7 +150,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("emergencyFunctions",function()
 	if LocalPlayer["state"]["Police"] or LocalPlayer["state"]["Paramedic"] then
-		if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not menuOpen and MumbleIsConnected() and LocalPlayer["state"]["Route"] < 900000 then
+		if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not menuOpen and LocalPlayer["state"]["Network"] and LocalPlayer["state"]["Route"] < 900000 then
 
 			local Ped = PlayerPedId()
 			if GetEntityHealth(Ped) > 100 then

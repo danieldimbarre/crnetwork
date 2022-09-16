@@ -1074,7 +1074,7 @@ function TargetEnable()
 	if LocalPlayer["state"]["Active"] then
 		local Ped = PlayerPedId()
 
-		if LocalPlayer["state"]["Buttons"] or LocalPlayer["state"]["Commands"] or LocalPlayer["state"]["Handcuff"] or Sucess or IsPedArmed(Ped,6) or IsPedInAnyVehicle(Ped) or not MumbleIsConnected() or LocalPlayer["state"]["Route"] > 900000 then
+		if LocalPlayer["state"]["Buttons"] or LocalPlayer["state"]["Commands"] or LocalPlayer["state"]["Handcuff"] or Sucess or IsPedArmed(Ped,6) or IsPedInAnyVehicle(Ped) or not LocalPlayer["state"]["Network"] or LocalPlayer["state"]["Route"] > 900000 then
 			return
 		end
 

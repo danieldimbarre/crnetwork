@@ -1261,7 +1261,7 @@ CreateThread(function()
 					if Distance <= 2 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and vSERVER.checkShares() and MumbleIsConnected() then
+						if IsControlJustPressed(1,38) and vSERVER.checkShares() and LocalPlayer["state"]["Network"] then
 							openTattooShop()
 						end
 					end

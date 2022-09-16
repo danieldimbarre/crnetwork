@@ -149,7 +149,7 @@ end)
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("takeItem",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.takeItem(Data["item"],Data["slot"],Data["amount"],Data["target"])
 	end
 
@@ -159,7 +159,7 @@ end)
 -- STOREITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("storeItem",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.storeItem(Data["item"],Data["slot"],Data["amount"],Data["target"])
 	end
 
@@ -169,7 +169,7 @@ end)
 -- UPDATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateChest",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.updateChest(Data["slot"],Data["target"],Data["amount"])
 	end
 

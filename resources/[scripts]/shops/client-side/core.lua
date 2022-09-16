@@ -38,7 +38,7 @@ end)
 -- REQUESTBUY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("functionShops",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		vSERVER.functionShops(Data["shop"],Data["item"],Data["amount"],Data["slot"])
 	end
 
@@ -48,7 +48,7 @@ end)
 -- POPULATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("populateSlot",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		TriggerServerEvent("shops:populateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
 	end
 
@@ -58,7 +58,7 @@ end)
 -- UPDATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSlot",function(Data,Callback)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		TriggerServerEvent("shops:updateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
 	end
 

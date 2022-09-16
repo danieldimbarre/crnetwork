@@ -19,6 +19,13 @@ local updateFoods = GetGameTimer()
 local wantedTimer = GetGameTimer()
 local reposeTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- NETWORK
+-----------------------------------------------------------------------------------------------------------------------------------------
+LocalPlayer["state"]["Network"] = false
+RegisterNUICallback("Network",function(Data,Callback)
+	LocalPlayer["state"]["Network"] = Data["status"]
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- NITRO
 -----------------------------------------------------------------------------------------------------------------------------------------
 local nitroFuel = 0
@@ -225,7 +232,7 @@ end
 -- HUD
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("hud",function(source,args,rawCommand)
-	if exports["chat"]:statusChat() and MumbleIsConnected() then
+	if exports["chat"]:statusChat() and LocalPlayer["state"]["Network"] then
 		showHud = not showHud
 
 		displayHud()
@@ -240,7 +247,7 @@ end)
 -- MOVIE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("movie",function(source,args,rawCommand)
-	if exports["chat"]:statusChat() and MumbleIsConnected() then
+	if exports["chat"]:statusChat() and LocalPlayer["state"]["Network"] then
 		showMovie = not showMovie
 
 		displayHud()
@@ -415,7 +422,7 @@ end)
 -- SEATBELT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("seatbelt",function(source,args,rawCommand)
-	if MumbleIsConnected() then
+	if LocalPlayer["state"]["Network"] then
 		local ped = PlayerPedId()
 		if IsPedInAnyVehicle(ped) then
 			if not IsPedOnAnyBike(ped) then

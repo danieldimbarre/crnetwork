@@ -118,7 +118,9 @@ end)
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("takeItem",function(Data,Callback)
-	vSERVER.takeItem(Data["item"],Data["slot"],Data["amount"],Data["target"],Warehouse)
+	if LocalPlayer["state"]["Network"] then
+		vSERVER.takeItem(Data["item"],Data["slot"],Data["amount"],Data["target"],Warehouse)
+	end
 
 	Callback("Ok")
 end)
@@ -126,7 +128,9 @@ end)
 -- STOREITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("storeItem",function(Data,Callback)
-	vSERVER.storeItem(Data["item"],Data["slot"],Data["amount"],Data["target"],Warehouse)
+	if LocalPlayer["state"]["Network"] then
+		vSERVER.storeItem(Data["item"],Data["slot"],Data["amount"],Data["target"],Warehouse)
+	end
 
 	Callback("Ok")
 end)
@@ -134,7 +138,9 @@ end)
 -- UPDATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateWarehouse",function(Data,Callback)
-	vSERVER.updateWarehouse(Data["slot"],Data["target"],Data["amount"],Warehouse)
+	if LocalPlayer["state"]["Network"] then
+		vSERVER.updateWarehouse(Data["slot"],Data["target"],Data["amount"],Warehouse)
+	end
 
 	Callback("Ok")
 end)

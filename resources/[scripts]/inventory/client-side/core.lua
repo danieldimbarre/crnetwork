@@ -720,12 +720,13 @@ local weaponAmmos = {
 -- RECHARGECHECK
 -----------------------------------------------------------------------------------------------------------------------------------------
 function cRP.rechargeCheck(ammoType)
+	local weaponAmmo = 0
 	local weaponHash = nil
 	local Ped = PlayerPedId()
 	local weaponStatus = false
 
 	if weaponAmmos[ammoType] then
-		local weaponAmmo = GetAmmoInPedWeapon(Ped,Weapon)
+		weaponAmmo = GetAmmoInPedWeapon(Ped,Weapon)
 
 		for k,v in pairs(weaponAmmos[ammoType]) do
 			if Weapon == v then

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `banneds` (
   `time` int(20) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `characters`;
 CREATE TABLE IF NOT EXISTS `characters` (
@@ -35,12 +35,12 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `blood` int(1) NOT NULL DEFAULT 1,
   `fines` int(20) NOT NULL DEFAULT 0,
   `prison` int(11) NOT NULL DEFAULT 0,
-  `port` int(1) NOT NULL DEFAULT 0,
+  `tracking` int(30) NOT NULL DEFAULT 0,
   `deleted` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `license` (`license`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `chests`;
 CREATE TABLE IF NOT EXISTS `chests` (
@@ -60,9 +60,6 @@ CREATE TABLE IF NOT EXISTS `entitydata` (
   PRIMARY KEY (`dkey`),
   KEY `dkey` (`dkey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES
-('Permissions', '{\"Admin\":{\"1\":true}}');
 
 DROP TABLE IF EXISTS `fidentity`;
 CREATE TABLE IF NOT EXISTS `fidentity` (
@@ -85,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `mastercard` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `playerdata`;
 CREATE TABLE IF NOT EXISTS `playerdata` (
@@ -148,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `vehicle` (`vehicle`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `warehouse`;
 CREATE TABLE IF NOT EXISTS `warehouse` (
@@ -161,4 +158,7 @@ CREATE TABLE IF NOT EXISTS `warehouse` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES
+('Permissions', '{\"Admin\":{\"1\":true}}');

@@ -4066,7 +4066,6 @@ Use = {
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100 }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
 					TriggerClientEvent("Progress",source,"Plantando",25000)
-					Player(source)["state"]["Buttons"] = false
 					atmTimers[NumberAtm] = os.time() + 10800
 					local explosionProgress = 25
 
@@ -4089,9 +4088,9 @@ Use = {
 					TriggerEvent("Wanted",source,Passport,600)
 				end
 			end
-		else
-			Player(source)["state"]["Buttons"] = false
 		end
+
+		Player(source)["state"]["Buttons"] = false
 	end,
 
 	["carp"] = function(source,Passport,Amount,Slot,Full,Item,Split)

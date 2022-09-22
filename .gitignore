@@ -1,6 +1,5 @@
 /resources/vrp
-/resources/\[tests\]
 /artifacts
 /cache
-server.bat
+/resources/[tests]
 server.cfg

@@ -14,9 +14,10 @@ Tunnel.bindInterface("arena",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Players = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHECKENTER
+-- ARENA:ENTER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.CheckEnter(Route,Number)
+RegisterServerEvent("arena:Enter")
+AddEventHandler("arena:Enter",function(Route)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

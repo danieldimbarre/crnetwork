@@ -52,6 +52,8 @@ AddEventHandler("onClientResourceStart",function(Resource)
 		return
 	end
 
+	Wait(5000)
+
 	DoScreenFadeOut(0)
 	DisplayRadar(false)
 	ShutdownLoadingScreen()

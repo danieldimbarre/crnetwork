@@ -48,7 +48,7 @@ end
 -- VEHICLEFUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.vehicleFuel(vehPlate)
-	if not ehicles[vehPlate] and vehPlate then
+	if not Vehicles[vehPlate] and vehPlate then
 		Vehicles[vehPlate] = 50
 	end
 

@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,body {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	font-family: "Roboto";
+}
+
+#deathDiv {
+	width: 100%;
+	bottom: 50px;
+	display: none;
+	position: fixed;
+}
+
+#deathText {
+	width: 300px;
+	margin: 0 auto;
+	font-size: 13px;
+	line-height: 20px;
+	padding: 15px 20px;
+	text-align: center;
+	font-family: "Roboto";
+	text-shadow: 1px 1px #000;
+	color: rgba(255,255,255,0.75);
+	background: rgba(15,15,15,.75);
+}
+
+#deathText color {
+	color: #92ac29;
+}
+
+#deathText color2 {
+	color: #bd962e;
+}

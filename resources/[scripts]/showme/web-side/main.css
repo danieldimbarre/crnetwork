@@ -17,7 +17,6 @@ body {
 .message {
 	color: #ccc;
 	max-width: 250px;
-	border-radius: 3px;
 	padding: 10px 13px;
 	position: absolute;
 	word-wrap: break-word;

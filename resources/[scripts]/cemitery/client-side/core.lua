@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("cemitery",cRP)
+Creative = {}
+Tunnel.bindInterface("cemitery",Creative)
 vSERVER = Tunnel.getInterface("cemitery")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -85,13 +85,12 @@ AddEventHandler("cemitery:initBody",function()
 		end
 
 		if DoesEntityExist(spawnPed) then
-			SetEntityAsNoLongerNeeded(spawnPed)
 			DeleteEntity(spawnPed)
 			spawnPed = nil
 		end
 	end
 
-	if spawnPed == nil then
+	if not spawnPed then
 		checkItem = 0
 		Selected = math.random(#cCoords)
 		local pSelected = math.random(#pedList)
@@ -112,8 +111,7 @@ AddEventHandler("cemitery:initBody",function()
 
 			exports["target"]:AddCircleZone("Cemitery:"..Selected,vec3(cCoords[Selected][1],cCoords[Selected][2],cCoords[Selected][3]),0.5,{
 				name = "Cemitery:"..Selected,
-				heading = 3374176,
-				useZ = true
+				heading = 3374176
 			},{
 				Distance = 1.0,
 				options = {

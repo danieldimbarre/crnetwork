@@ -45,9 +45,13 @@ local Beds = {
 	{ ["Coords"] = vec3(-471.87,6287.56,13.63), ["Heading"] = 53.86 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADBEDS
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	for Number,v in pairs(Beds) do
 		AddBoxZone("Beds:"..Number,v["Coords"],1.0,1.0,{
 			name = "Beds:"..Number,
@@ -76,7 +80,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:PutBed")
 AddEventHandler("target:PutBed",function(Number)
-	if Previous == nil then
+	if not Previous then
 		local Ped = PlayerPedId()
 		Previous = GetEntityCoords(Ped)
 		SetEntityCoords(Ped,Beds[Number]["Coords"]["x"],Beds[Number]["Coords"]["y"],Beds[Number]["Coords"]["z"] - 1,false,false,false,false)
@@ -100,7 +104,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:Treatment")
 AddEventHandler("target:Treatment",function(Number)
-	if Previous == nil then
+	if not Previous then
 		if vSERVER.CheckIn() then
 			local Ped = PlayerPedId()
 			Previous = GetEntityCoords(Ped)

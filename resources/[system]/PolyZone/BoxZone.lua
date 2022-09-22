@@ -17,6 +17,33 @@ function PolyZone.rotate(origin, point, theta)
   return vector2(x, y) + origin
 end
 
+function BoxZone.calculateMinAndMaxZ(minZ, maxZ, scaleZ, offsetZ)
+  local minScaleZ, maxScaleZ, minOffsetZ, maxOffsetZ = scaleZ[1] or 1.0, scaleZ[2] or 1.0, offsetZ[1] or 0.0, offsetZ[2] or 0.0
+  if (not minZ and not maxZ) or (minScaleZ == 1.0 and maxScaleZ == 1.0 and minOffsetZ == 0.0 and maxOffsetZ == 0.0) then
+    return minZ, maxZ
+  end
+
+  if minScaleZ ~= 1.0 or maxScaleZ ~= 1.0 then
+    if minZ ~= nil and maxZ ~= nil then
+      local halfHeight = (maxZ - minZ) / 2
+      local centerZ = minZ + halfHeight
+      minZ = centerZ - halfHeight * minScaleZ
+      maxZ = centerZ + halfHeight * maxScaleZ
+    else
+      print(string.format(
+        "[PolyZone] Warning: The minZ/maxZ of a BoxZone can only be scaled if both minZ and maxZ are non-nil (minZ=%s, maxZ=%s)",
+        tostring(minZ),
+        tostring(maxZ)
+      ))
+    end
+  end
+
+  if minZ then minZ = minZ - minOffsetZ end
+  if maxZ then maxZ = maxZ + maxOffsetZ end
+
+  return minZ, maxZ
+end
+
 local function _calculateScaleAndOffset(options)
   -- Scale and offset tables are both formatted as {forward, back, left, right, up, down}
   -- or if symmetrical {forward/back, left/right, up/down}
@@ -30,17 +57,17 @@ local function _calculateScaleAndOffset(options)
   if #offset == 3 then
     offset = {offset[1], offset[1], offset[2], offset[2], offset[3], offset[3]}
   end
-  local minOffset = vec3(offset[3], offset[2], offset[6])
-  local maxOffset = vec3(offset[4], offset[1], offset[5])
-  local minScale = vec3(scale[3], scale[2], scale[6])
-  local maxScale = vec3(scale[4], scale[1], scale[5])
+  local minOffset = vector3(offset[3], offset[2], offset[6])
+  local maxOffset = vector3(offset[4], offset[1], offset[5])
+  local minScale = vector3(scale[3], scale[2], scale[6])
+  local maxScale = vector3(scale[4], scale[1], scale[5])
   return minOffset, maxOffset, minScale, maxScale
 end
 
 local function _calculatePoints(center, length, width, minScale, maxScale, minOffset, maxOffset)
   local halfLength, halfWidth = length / 2, width / 2
-  local min = vec3(-halfWidth, -halfLength, 0.0)
-  local max = vec3(halfWidth, halfLength, 0.0)
+  local min = vector3(-halfWidth, -halfLength, 0.0)
+  local max = vector3(halfWidth, halfLength, 0.0)
 
   min = min * minScale - minOffset
   max = max * maxScale + maxOffset
@@ -66,7 +93,7 @@ local function _initDebug(zone, options)
   if not options.debugPoly then
     return
   end
-  
+
   Citizen.CreateThread(function()
     while not zone.destroyed do
       zone:draw()
@@ -75,16 +102,36 @@ local function _initDebug(zone, options)
   end)
 end
 
+local defaultMinOffset, defaultMaxOffset, defaultMinScale, defaultMaxScale = vector3(0.0, 0.0, 0.0), vector3(0.0, 0.0, 0.0), vector3(1.0, 1.0, 1.0), vector3(1.0, 1.0, 1.0)
+local defaultScaleZ, defaultOffsetZ = {defaultMinScale.z, defaultMaxScale.z}, {defaultMinOffset.z, defaultMaxOffset.z}
 function BoxZone:new(center, length, width, options)
-  local minOffset, maxOffset, minScale, maxScale = _calculateScaleAndOffset(options)
-  local scaleZ, offsetZ = {minScale.z, maxScale.z}, {minOffset.z, maxOffset.z}
+  local minOffset, maxOffset, minScale, maxScale = defaultMinOffset, defaultMaxOffset, defaultMinScale, defaultMaxScale
+  local scaleZ, offsetZ = defaultScaleZ, defaultOffsetZ
+  if options.scale ~= nil or options.offset ~= nil then
+    minOffset, maxOffset, minScale, maxScale = _calculateScaleAndOffset(options)
+    scaleZ, offsetZ = {minScale.z, maxScale.z}, {minOffset.z, maxOffset.z}
+  end
 
   local points = _calculatePoints(center, length, width, minScale, maxScale, minOffset, maxOffset)
+  local min = points[1]
+  local max = points[3]
+  local size = max - min
+
+  local minZ, maxZ = BoxZone.calculateMinAndMaxZ(options.minZ, options.maxZ, scaleZ, offsetZ)
+  options.minZ = minZ
+  options.maxZ = maxZ
 
   -- Box Zones don't use the grid optimization because they are already rectangles/cubes
   options.useGrid = false
+
+  -- Pre-setting all these values to avoid PolyZone:new() having to calculate them
+  options.min = min
+  options.max = max
+  options.size = size
+  options.center = center
+  options.area = size.x * size.y
+
   local zone = PolyZone:new(points, options)
-  zone.center = center
   zone.length = length
   zone.width = width
   zone.startPos = center.xy
@@ -110,7 +157,8 @@ end
 -- Helper functions
 function BoxZone:isPointInside(point)
   if self.destroyed then
-    return false 
+    print("[PolyZone] Warning: Called isPointInside on destroyed zone {name=" .. self.name .. "}")
+    return false
   end
 
   local startPos = self.startPos

@@ -1,7 +1,7 @@
 local callChannel = 0
 
-local function createPhoneThread()
-	Citizen.CreateThread(function()
+local function createCallThread()
+	CreateThread(function()
 		local changed = false
 
 		while callChannel ~= 0 do
@@ -25,7 +25,7 @@ RegisterNetEvent("pma-voice:syncCallData",function(callTable,channel)
 
 	for tgt,enabled in pairs(callTable) do
 		if tgt ~= playerServerId then
-			toggleVoice(tgt,enabled,"phone")
+			toggleVoice(tgt,enabled,"call")
 		end
 	end
 end)
@@ -33,7 +33,7 @@ end)
 RegisterNetEvent("pma-voice:setTalkingOnCall",function(tgt,enabled)
 	if tgt ~= playerServerId then
 		callData[tgt] = enabled
-		toggleVoice(tgt,enabled,"phone")
+		toggleVoice(tgt,enabled,"call")
 	end
 end)
 
@@ -45,7 +45,7 @@ RegisterNetEvent("pma-voice:removePlayerFromCall",function(plySource)
 	if plySource == playerServerId then
 		for tgt,_ in pairs(callData) do
 			if tgt ~= playerServerId then
-				toggleVoice(tgt,false,"phone")
+				toggleVoice(tgt,false,"call")
 			end
 		end
 
@@ -54,7 +54,7 @@ RegisterNetEvent("pma-voice:removePlayerFromCall",function(plySource)
 		playerTargets(radioPressed and radioData or {},callData)
 	else
 		callData[plySource] = nil
-		toggleVoice(plySource,false,"phone")
+		toggleVoice(plySource,false,"call")
 
 		if MumbleIsPlayerTalking(PlayerId()) then
 			MumbleClearVoiceTargetPlayers(voiceTarget)
@@ -69,7 +69,7 @@ function setCallChannel(channel)
 
 	sendUIMessage({ callInfo = channel })
 
-	createPhoneThread()
+	createCallThread()
 end
 
 exports("setCallChannel",setCallChannel)
@@ -88,5 +88,5 @@ end)
 
 RegisterNetEvent("pma-voice:clSetPlayerCall",function(_callChannel)
 	callChannel = _callChannel
-	createPhoneThread()
+	createCallThread()
 end)

@@ -146,9 +146,13 @@ local Chairs = {
 	{ ["Coords"] = vec3(-578.79,-1065.32,26.42), ["Heading"] = 200, ["Offset"] = 0.35 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADCHAIRS
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	for Number,v in pairs(Chairs) do
 		AddBoxZone("Chairs:"..Number,v["Coords"],0.35,0.35,{
 			name = "Chairs:"..Number,
@@ -173,7 +177,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:SitChair")
 AddEventHandler("target:SitChair",function(Number)
-	if Previous == nil then
+	if not Previous then
 		local Ped = PlayerPedId()
 		local Coords = Chairs[Number]["Coords"]
 		TaskStartScenarioAtPosition(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT",Coords["x"],Coords["y"],Coords["z"] - Chairs[Number]["Offset"],Chairs[Number]["Heading"] + 1.0,-1,true,true)

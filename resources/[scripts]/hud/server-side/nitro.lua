@@ -5,10 +5,22 @@ GlobalState["Nitro"] = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATENITRO
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.updateNitro(Plate,Fuel)
+function Creative.updateNitro(Plate,Fuel)
 	if GlobalState["Nitro"][Plate] then
 		local Nitro = GlobalState["Nitro"]
 		Nitro[Plate] = Fuel
 		GlobalState:set("Nitro",Nitro,true)
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ACTIVENITRO
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.activeNitro(Net,Status)
+	local source = source
+	local Players = vRPC.Players(source)
+	for _,v in ipairs(Players) do
+		async(function()
+			TriggerClientEvent("hud:activeNitro",v,Net,Status)
+		end)
 	end
 end

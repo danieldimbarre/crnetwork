@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("service",cRP)
+Creative = {}
+Tunnel.bindInterface("service",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -16,52 +16,38 @@ local Permission = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVICE:TOGGLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("service:Toggle")
+RegisterServerEvent("service:Toggle")
 AddEventHandler("service:Toggle",function(Service)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local splitName = splitString(Service,"-")
-		local serviceName = splitName[1]
+		local Name = splitName[1]
 
-		if vRP.HasPermission(Passport,serviceName) then
-			if serviceName == "Lspd" or serviceName == "Sheriff" or serviceName == "Corrections" or serviceName == "Ranger" or serviceName == "State" then
-				vRP.BlankPermission(Passport,"Police")
+		if vRP.HasPermission(Passport,Name) then
+			if Name == "Police" or Name == "Paramedic" then
+				Player(source)["state"][Name] = false
 				TriggerEvent("blipsystem:Exit",source)
-				Player(source)["state"]["Police"] = false
-				TriggerEvent("Salary:Remove",Passport,"Emergency")
+				TriggerEvent("Salary:Remove",Passport,Name)
 			end
 
-			if serviceName == "Paramedic" then
-				TriggerEvent("blipsystem:Exit",source)
-				vRP.BlankPermission(Passport,serviceName)
-				Player(source)["state"]["Paramedic"] = false
-				TriggerEvent("Salary:Remove",Passport,"Emergency")
-			end
-
-			vRP.RemovePermission(Passport,serviceName)
-			vRP.SetPermission(Passport,"wait"..serviceName)
+			vRP.RemovePermission(Passport,Name)
+			vRP.SetPermission(Passport,"wait"..Name)
 
 			TriggerClientEvent("Notify",source,"azul","Saiu de serviço.",5000)
-			TriggerClientEvent("service:Label",source,serviceName,"Entrar em Serviço",5000)
-		elseif vRP.HasPermission(Passport,"wait"..serviceName) then
-			if serviceName == "Lspd" or serviceName == "Sheriff" or serviceName == "Corrections" or serviceName == "Ranger" or serviceName == "State" then
-				TriggerEvent("blipsystem:Enter",source,serviceName,true)
-				TriggerEvent("Salary:Add",Passport,"Emergency")
-				Player(source)["state"]["Police"] = true
+			TriggerClientEvent("service:Label",source,Name,"Entrar em Serviço",5000)
+		elseif vRP.HasPermission(Passport,"wait"..Name) then
+			if Name == "Police" or Name == "Paramedic" then
+				Player(source)["state"][Name] = true
+				TriggerEvent("Salary:Add",Passport,Name)
+				TriggerEvent("blipsystem:Enter",source,Name,true)
 			end
 
-			if serviceName == "Paramedic" then
-				TriggerEvent("blipsystem:Enter",source,"Paramedic",true)
-				TriggerEvent("Salary:Add",Passport,"Emergency")
-				Player(source)["state"]["Paramedic"] = true
-			end
-
-			vRP.SetPermission(Passport,serviceName)
-			vRP.RemovePermission(Passport,"wait"..serviceName)
+			vRP.SetPermission(Passport,Name)
+			vRP.RemovePermission(Passport,"wait"..Name)
 
 			TriggerClientEvent("Notify",source,"azul","Entrou em serviço.",5000)
-			TriggerClientEvent("service:Label",source,serviceName,"Sair de Serviço",5000)
+			TriggerClientEvent("service:Label",source,Name,"Sair de Serviço",5000)
 		end
 	end
 end)
@@ -80,31 +66,30 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Request()
+function Creative.Request()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Permission[Passport] then
 		local Members = {}
 		local Sources = vRP.Players()
-		local Selected = Permission[Passport]
-		local Entitys = vRP.DataGroups(Selected)
+		local Entitys = vRP.DataGroups(Permission[Passport])
 
-		for New,_ in pairs(Entitys) do
-			local New = parseInt(New)
-			local Identity = vRP.Identity(New)
+		for Number,_ in pairs(Entitys) do
+			local Number = parseInt(Number)
+			local Identity = vRP.Identity(Number)
 			if Identity then
-				table.insert(Members,{ ["Name"] = Identity["name"].." "..Identity["name2"], ["Phone"] = Identity["phone"], ["Status"] = Sources[New], ["Passport"] = New })
+				table.insert(Members,{ ["Name"] = Identity["name"].." "..Identity["name2"], ["Phone"] = Identity["phone"], ["Status"] = Sources[Number], ["Passport"] = Number })
 			end
 		end
 
-		if Selected == "Lspd" or Selected == "State" or Selected == "Ranger" or Selected == "Sheriff" or Selected == "Corrections" or Selected == "Paramedic" then
-			local Entitys = vRP.DataGroups("wait"..Selected)
+		if Permission[Passport] == "Police" or Permission[Passport] == "Paramedic" then
+			local Entitys = vRP.DataGroups("wait"..Permission[Passport])
 
-			for New,_ in pairs(Entitys) do
-				local New = parseInt(New)
-				local Identity = vRP.Identity(New)
+			for Number,_ in pairs(Entitys) do
+				local Number = parseInt(Number)
+				local Identity = vRP.Identity(Number)
 				if Identity then
-					table.insert(Members,{ ["Name"] = Identity["name"].." "..Identity["name2"], ["Phone"] = Identity["phone"], ["Status"] = Sources[New], ["Passport"] = New })
+					table.insert(Members,{ ["Name"] = Identity["name"].." "..Identity["name2"], ["Phone"] = Identity["phone"], ["Status"] = Sources[Number], ["Passport"] = Number })
 				end
 			end
 		end
@@ -115,14 +100,16 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVICE:REMOVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("service:Remove")
-AddEventHandler("service:Remove",function(New)
+RegisterServerEvent("service:Remove")
+AddEventHandler("service:Remove",function(Number)
 	local source = source
-	local New = parseInt(New)
+	local Number = parseInt(Number)
 	local Passport = vRP.Passport(source)
-	if Passport and Permission[Passport] and New > 1 and Passport ~= New then
+	if Passport and Permission[Passport] and Number > 1 and Passport ~= Number then
 		if vRP.HasPermission(Passport,"set"..Permission[Passport]) then
-			vRP.CleanPermission(New)
+			vRP.RemovePermission(Number,Permission[Passport])
+			vRP.RemovePermission(Number,"wait"..Permission[Passport])
+
 			TriggerClientEvent("service:Update",source)
 			TriggerClientEvent("Notify",source,"verde","Passaporte removido.",5000)
 		end
@@ -131,15 +118,17 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVICE:ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("service:Add")
-AddEventHandler("service:Add",function(New)
+RegisterServerEvent("service:Add")
+AddEventHandler("service:Add",function(Number)
 	local source = source
-	local New = parseInt(New)
+	local Number = parseInt(Number)
 	local Passport = vRP.Passport(source)
-	if Passport and Permission[Passport] and New > 1 and Passport ~= New then
+	if Passport and Permission[Passport] and Number > 1 and Passport ~= Number and vRP.Identity(Number) then
 		if vRP.HasPermission(Passport,"set"..Permission[Passport]) then
-			vRP.CleanPermission(New)
-			vRP.SetPermission(New,Permission[Passport])
+			vRP.RemovePermission(Number,Permission[Passport])
+			vRP.RemovePermission(Number,"wait"..Permission[Passport])
+
+			vRP.SetPermission(Number,Permission[Passport])
 			TriggerClientEvent("Notify",source,"verde","Passaporte adicionado.",5000)
 			TriggerClientEvent("service:Update",source)
 		end

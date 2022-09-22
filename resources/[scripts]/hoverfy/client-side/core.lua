@@ -65,7 +65,7 @@ AddEventHandler("hoverfy:Insert",function(innerTable)
 	for _,v in pairs(innerTable) do
 		local gridZone = getGridzone(v[1],v[2])
 
-		if Zone[gridZone] == nil then
+		if not Zone[gridZone] then
 			Zone[gridZone] = {}
 		end
 

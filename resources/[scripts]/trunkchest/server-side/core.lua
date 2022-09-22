@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("trunkchest",cRP)
+Creative = {}
+Tunnel.bindInterface("trunkchest",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ local Vehicle = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENCHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.openChest()
+function Creative.openChest()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Vehicle[Passport] then
@@ -104,7 +104,7 @@ local storeVehs = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATECHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.updateChest(Slot,Target,Amount)
+function Creative.updateChest(Slot,Target,Amount)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -119,7 +119,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STOREITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.storeItem(Item,Slot,Amount,Target)
+function Creative.storeItem(Item,Slot,Amount,Target)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -148,7 +148,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.takeItem(Slot,Amount,Target)
+function Creative.takeItem(Slot,Amount,Target)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -168,7 +168,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHESTCLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.chestClose()
+function Creative.chestClose()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Vehicle[Passport] then
@@ -179,7 +179,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TRUNKCHEST:OPENTRUNK
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("trunkchest:openTrunk")
+RegisterServerEvent("trunkchest:openTrunk")
 AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)

@@ -1,13 +1,15 @@
 local disableUpdates = false
 local isListenerEnabled = false
 local plyCoords = GetEntityCoords(PlayerPedId())
+proximity = MumbleGetTalkerProximity()
+currentTargets = {}
 
 function orig_addProximityCheck(ply)
 	local tgtPed = GetPlayerPed(ply)
-	local voiceModeData = Cfg.voiceModes[mode]
-	local Distance = voiceModeData[1]
+	local voiceRange = proximity * 3 or proximity
+	local distance = #(plyCoords - GetEntityCoords(tgtPed))
 
-	return #(plyCoords - GetEntityCoords(tgtPed)) < Distance
+	return distance < voiceRange,distance
 end
 local addProximityCheck = orig_addProximityCheck
 
@@ -26,19 +28,20 @@ function addNearbyPlayers()
 
 	local Ped = PlayerPedId()
 	plyCoords = GetEntityCoords(Ped)
+	proximity = MumbleGetTalkerProximity()
+	currentTargets = {}
 	MumbleClearVoiceTargetChannels(voiceTarget)
+	MumbleAddVoiceChannelListen(playerServerId)
+	MumbleAddVoiceTargetChannel(voiceTarget,playerServerId)
 
 	local players = GetActivePlayers()
 	for i = 1,#players do
 		local ply = players[i]
 		local serverId = GetPlayerServerId(ply)
-
-		if addProximityCheck(ply) then
-			if isTarget then goto skip_loop end
+		local shouldAdd, distance = addProximityCheck(ply)
+		if shouldAdd then
 			MumbleAddVoiceTargetChannel(voiceTarget,serverId)
 		end
-
-		::skip_loop::
 	end
 end
 
@@ -89,7 +92,7 @@ local lastRadioStatus = false
 local lastTalkingStatus = false
 local voiceState = "proximity"
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		while not MumbleIsConnected() do
 			Wait(100)
@@ -133,7 +136,9 @@ exports("setVoiceState",function(_voiceState,channel)
 		handleInitialState()
 	end
 end)
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ONCLIENTRESOURCESTOP
+-----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("onClientResourceStop",function(Resource)
 	if type(addProximityCheck) == "table" then
 		local proximityCheckRef = addProximityCheck.__cfx_functionReference

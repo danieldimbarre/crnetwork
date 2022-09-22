@@ -21,7 +21,6 @@
 .notification {
 	float: left;
 	width: 270px;
-	border-radius: 3px;
 	position: relative;
 	margin-bottom: 10px;
 	padding: 15px 10px 15px 15px;
@@ -67,7 +66,6 @@
 	color: #715611;
 	font-size: 11px;
 	padding: 5px 10px;
-	border-radius: 3px;
 	margin-right: 10px;
 	background: #fec026;
 }
@@ -92,5 +90,4 @@
 	line-height: 16px;
 	padding: 8px 10px;
 	background: #c1bebe;
-	border-radius: 3px;
 }

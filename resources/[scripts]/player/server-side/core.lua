@@ -8,11 +8,12 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("player",cRP)
+Creative = {}
+Tunnel.bindInterface("player",Creative)
 vCLIENT = Tunnel.getInterface("player")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
+vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DUITEXTURES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -22,7 +23,7 @@ local DuiTextures = {
 		["Dimension"] = 1.25,
 		["Label"] = "Quadro Branco",
 		["Coords"] = vec3(439.47,-985.85,35.99),
-		["Link"] = "https://cdn.discordapp.com/attachments/580166917847908382/977007547959607326/Lino.png",
+		["Link"] = "https://creative-rp.com/Quadro.png",
 		["Dict"] = "prop_planning_b1",
 		["Texture"] = "prop_base_white_01b",
 		["Width"] = 550,
@@ -32,7 +33,7 @@ local DuiTextures = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:TEXTURE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:Texture")
+RegisterServerEvent("player:Texture")
 AddEventHandler("player:Texture",function(Name)
 	local source = source
 	local Keyboard = vKEYBOARD.keySingle(source,"Link:")
@@ -44,7 +45,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:STRESS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:Stress")
+RegisterServerEvent("player:Stress")
 AddEventHandler("player:Stress",function(Number)
 	local source = source
 	local Number = parseInt(Number)
@@ -73,23 +74,21 @@ end)
 -- E
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("e",function(source,args)
-	if exports["chat"]:statusChat(source) then
-		local Passport = vRP.Passport(source)
-		if Passport and vRP.GetHealth(source) > 100 then
-			if args[2] == "friend" then
-				local ClosestPed = vRPC.ClosestPed(source,2)
-				if ClosestPed then
-					if vRP.GetHealth(ClosestPed) > 100 and not Player(ClosestPed)["state"]["Handcuff"] then
-						local Identity = vRP.Identity(Passport)
-						if vRP.Request(ClosestPed,"Pedido de <b>"..Identity["name"].."</b> da animação <b>"..args[1].."</b>?","Sim, iniciar animação","Não, sai fora") then
-							TriggerClientEvent("emotes",ClosestPed,args[1])
-							TriggerClientEvent("emotes",source,args[1])
-						end
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.GetHealth(source) > 100 then
+		if args[2] == "friend" then
+			local ClosestPed = vRPC.ClosestPed(source,2)
+			if ClosestPed then
+				if vRP.GetHealth(ClosestPed) > 100 and not Player(ClosestPed)["state"]["Handcuff"] then
+					local Identity = vRP.Identity(Passport)
+					if vHUD.Request(ClosestPed,"Pedido de <b>"..Identity["name"].."</b> da animação <b>"..args[1].."</b>?","Sim, iniciar animação","Não, sai fora") then
+						TriggerClientEvent("emotes",ClosestPed,args[1])
+						TriggerClientEvent("emotes",source,args[1])
 					end
 				end
-			else
-				TriggerClientEvent("emotes",source,args[1])
 			end
+		else
+			TriggerClientEvent("emotes",source,args[1])
 		end
 	end
 end)
@@ -97,14 +96,12 @@ end)
 -- E2
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("e2",function(source,args)
-	if exports["chat"]:statusChat(source) then
-		local Passport = vRP.Passport(source)
-		if Passport and vRP.GetHealth(source) > 100 then
-			local ClosestPed = vRPC.ClosestPed(source,2)
-			if ClosestPed then
-				if vRP.HasGroup(Passport,"Paramedic") then
-					TriggerClientEvent("emotes",ClosestPed,args[1])
-				end
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.GetHealth(source) > 100 then
+		local ClosestPed = vRPC.ClosestPed(source,2)
+		if ClosestPed then
+			if vRP.HasGroup(Passport,"Paramedic") then
+				TriggerClientEvent("emotes",ClosestPed,args[1])
 			end
 		end
 	end
@@ -113,16 +110,14 @@ end)
 -- E3
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("e3",function(source,args)
-	if exports["chat"]:statusChat(source) then
-		local Passport = vRP.Passport(source)
-		if Passport and vRP.GetHealth(source) > 100 then
-			if vRP.HasGroup(Passport,"Moderator") then
-				local Players = vRPC.ClosestPeds(source,50)
-				for _,v in pairs(Players) do
-					async(function()
-						TriggerClientEvent("emotes",v[2],args[1])
-					end)
-				end
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.GetHealth(source) > 100 then
+		if vRP.HasGroup(Passport,"Moderator") then
+			local Players = vRPC.ClosestPeds(source,50)
+			for _,v in pairs(Players) do
+				async(function()
+					TriggerClientEvent("emotes",v[2],args[1])
+				end)
 			end
 		end
 	end
@@ -130,7 +125,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:DOORS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:Doors")
+RegisterServerEvent("player:Doors")
 AddEventHandler("player:Doors",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -145,30 +140,15 @@ end)
 -- 911
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("911",function(source,args,rawCommand)
-	if exports["chat"]:statusChat(source) then
-		local Passport = vRP.Passport(source)
-		if Passport and args[1] and vRP.GetHealth(source) > 100 then
-			if vRP.HasGroup(Passport,"Police") then
-				local department = "Police"
-				if vRP.HasPermission(Passport,"State") then
-					department = "STATE POLICE"
-				elseif vRP.HasPermission(Passport,"Lspd") then
-					department = "LSPD"
-				elseif vRP.HasPermission(Passport,"Ranger") then
-					department = "PARK RANGER"
-				elseif vRP.HasPermission(Passport,"Corrections") then
-					department = "CORRECTIONS"
-				elseif vRP.HasPermission(Passport,"Sheriff") then
-					department = "SHERIFF"
-				end
-
-				local Identity = vRP.Identity(Passport)
-				local Polices = vRP.NumPermission("Police")
-				for k,v in pairs(Polices) do
-					async(function()
-						TriggerClientEvent("chatME",v["source"],"^2911^3"..department.."^9"..Identity["name"].."^0"..rawCommand:sub(4))
-					end)
-				end
+	local Passport = vRP.Passport(source)
+	if Passport and args[1] and vRP.GetHealth(source) > 100 then
+		if vRP.HasGroup(Passport,"Police") then
+			local Identity = vRP.Identity(Passport)
+			local Polices = vRP.NumPermission("Police")
+			for k,v in pairs(Polices) do
+				async(function()
+					TriggerClientEvent("hud:ClientMessage",v["source"],Identity["name"],rawCommand:sub(4))
+				end)
 			end
 		end
 	end
@@ -177,17 +157,15 @@ end)
 -- 112
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("112",function(source,args,rawCommand)
-	if exports["chat"]:statusChat(source) then
-		local Passport = vRP.Passport(source)
-		if Passport and args[1] and vRP.GetHealth(source) > 100 then
-			if vRP.HasGroup(Passport,"Paramedic") then
-				local Identity = vRP.Identity(Passport)
-				local Paramedics = vRP.NumPermission("Paramedic")
-				for k,v in pairs(Paramedics) do
-					async(function()
-						TriggerClientEvent("chatME",v["source"],"^4112^9"..Identity["name"].." "..Identity["name2"].."^0"..rawCommand:sub(4))
-					end)
-				end
+	local Passport = vRP.Passport(source)
+	if Passport and args[1] and vRP.GetHealth(source) > 100 then
+		if vRP.HasGroup(Passport,"Paramedic") then
+			local Identity = vRP.Identity(Passport)
+			local Paramedics = vRP.NumPermission("Paramedic")
+			for k,v in pairs(Paramedics) do
+				async(function()
+					TriggerClientEvent("Datatable",v["source"],Identity["name"].." "..Identity["name2"],rawCommand:sub(4))
+				end)
 			end
 		end
 	end
@@ -195,7 +173,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SHOTSFIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.shotsFired(Vehicle)
+function Creative.shotsFired(Vehicle)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -220,7 +198,7 @@ end
 -- PLAYER:CARRYPLAYER
 -----------------------------------------------------------------------------------------------------------------------------------------
 local playerCarry = {}
-RegisterNetEvent("player:carryPlayer")
+RegisterServerEvent("player:carryPlayer")
 AddEventHandler("player:carryPlayer",function()
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -245,7 +223,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:WINSFUNCTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:winsFunctions")
+RegisterServerEvent("player:winsFunctions")
 AddEventHandler("player:winsFunctions",function(Mode)
 	local source = source
 	local vehicle,vehNet = vRPC.vehList(source,10)
@@ -256,7 +234,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:CVFUNCTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:cvFunctions")
+RegisterServerEvent("player:cvFunctions")
 AddEventHandler("player:cvFunctions",function(Mode)
 	local source = source
 	local Distance = 1
@@ -654,7 +632,7 @@ local preset = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:PRESETFUNCTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:presetFunctions")
+RegisterServerEvent("player:presetFunctions")
 AddEventHandler("player:presetFunctions",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -671,7 +649,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:CHECKTRUNK
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:checkTrunk")
+RegisterServerEvent("player:checkTrunk")
 AddEventHandler("player:checkTrunk",function()
 	local source = source
 	local ClosestPed = vRPC.ClosestPed(source,2)
@@ -682,7 +660,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:CHECKTRASH
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:checkTrash")
+RegisterServerEvent("player:checkTrash")
 AddEventHandler("player:checkTrash",function()
 	local source = source
 	local ClosestPed = vRPC.ClosestPed(source,2)
@@ -694,14 +672,14 @@ end)
 -- PLAYER:CHECKSHOES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local UniqueShoes = {}
-RegisterNetEvent("player:checkShoes")
+RegisterServerEvent("player:checkShoes")
 AddEventHandler("player:checkShoes",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Passport = vRP.Passport(Entity)
 		if Passport then
-			if UniqueShoes[Passport] == nil then
+			if not UniqueShoes[Passport] then
 				UniqueShoes[Passport] = os.time()
 			end
 
@@ -756,7 +734,7 @@ local removeFit = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:PRESETFUNCTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:outfitFunctions")
+RegisterServerEvent("player:outfitFunctions")
 AddEventHandler("player:outfitFunctions",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -790,14 +768,16 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DEATHLOGS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:deathLogs")
+RegisterServerEvent("player:deathLogs")
 AddEventHandler("player:deathLogs",function(nsource)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and source ~= nsource then
 		local OtherPassport = vRP.Passport(nsource)
 		if OtherPassport then
-			if GetPlayerRoutingBucket(source) >= 900000 then
+			if GetPlayerRoutingBucket(source) < 900000 then
+				TriggerEvent("Discord","Deaths","**Matou:** "..Passport.."\n**Morreu:** "..OtherPassport,3092790)
+			else
 				local Name = "Individuo Indigente"
 				local Name2 = "Individuo Indigente"
 				local Identity = vRP.Identity(Passport)
@@ -817,7 +797,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BIKESBACKPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.bikesBackpack()
+function Creative.bikesBackpack()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -851,11 +831,11 @@ local SalaryValue = {
 -- SALARY:ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Salary:Add",function(Passport,Permission)
-	if Salary[Permission] == nil then
+	if not Salary[Permission] then
 		Salary[Permission] = {}
 	end
 
-	if Salary[Permission][Passport] == nil then
+	if not Salary[Permission][Passport] then
 		Salary[Permission][Passport] = os.time() + 1800
 	end
 end)
@@ -887,7 +867,7 @@ CreateThread(function()
 		for Permission,_ in pairs(Salary) do
 			for Passport,Timer in pairs(Salary[Permission]) do
 				if os.time() >= Timer then
-					vRP.GiveBank(Passport,SalaryValue[Permission],"Private")
+					vRP.GiveBank(Passport,SalaryValue[Permission])
 					Salary[Permission][Passport] = os.time() + 1800
 				end
 			end

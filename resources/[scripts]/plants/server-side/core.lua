@@ -8,8 +8,8 @@ vRPC = Tunnel.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("plants",cRP)
+Creative = {}
+Tunnel.bindInterface("plants",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ exports("Plants",function(Coords,Route,Points)
 
 	repeat
 		Number = Number + 1
-	until Plants[tostring(Number)] == nil
+	until not Plants[tostring(Number)]
 
 	Plants[tostring(Number)] = {
 		["Coords"] = { mathLength(Coords["x"]),mathLength(Coords["y"]),mathLength(Coords["z"]) },
@@ -36,7 +36,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLANTS:COLLECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("plants:Collect")
+RegisterServerEvent("plants:Collect")
 AddEventHandler("plants:Collect",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -75,7 +75,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLANTS:CLONING
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("plants:Cloning")
+RegisterServerEvent("plants:Cloning")
 AddEventHandler("plants:Cloning",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -119,7 +119,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INFORMATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Informations(Number)
+function Creative.Informations(Number)
 	if Plants[Number] then
 		if (os.time() - Plants[Number]["Time"]) > 3600 then
 			Plants[Number] = nil
@@ -150,9 +150,13 @@ AddEventHandler("admin:KickAll",function()
 	SaveResourceFile("logs","plants.json",json.encode(Plants),-1)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSTART
+-- ONSERVERRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onServerResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	local PlantsFile = LoadResourceFile("logs","plants.json")
 	Plants = json.decode(PlantsFile)
 end)

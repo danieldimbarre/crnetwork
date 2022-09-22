@@ -1123,14 +1123,6 @@ local tattooShop = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- TATTOOS:APPLY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("tattoos:Apply")
@@ -1234,9 +1226,13 @@ local Locations = {
 	{ -294.34,6200.93,31.48 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADHOVERFY
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	local Table = {}
 
 	for _,v in pairs(Locations) do
@@ -1285,7 +1281,7 @@ RegisterNUICallback("changeTattoo",function(Data,Callback)
 		end
 	end
 
-	if atualTattoo[tattooData["name"]] == nil then
+	if not atualTattoo[tattooData["name"]] then
 		newAtualTattoo[tattooData["name"]] = { tattooData["part"] }
 	end
 

@@ -16,11 +16,7 @@ local Pause = false
 -- COLORS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Colors = {
-	["Corrections"] = 60,
-	["Ranger"] = 69,
-	["State"] = 7,
-	["Lspd"] = 63,
-	["Sheriff"] = 47,
+	["Police"] = 63,
 	["Paramedic"] = 6,
 	["Prisioneiro"] = 33,
 	["Corredor"] = 32
@@ -73,7 +69,7 @@ CreateThread(function()
 
 					for k,v in pairs(Players) do
 						if tableActive[k] then
-							if Blips[k] == nil then
+							if not Blips[k] then
 								local source = GetPlayerFromServerId(k)
 								local Ped = GetPlayerPed(source)
 

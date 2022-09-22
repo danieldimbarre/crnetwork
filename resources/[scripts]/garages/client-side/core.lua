@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("garages",cRP)
+Creative = {}
+Tunnel.bindInterface("garages",Creative)
 vSERVER = Tunnel.getInterface("garages")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DECOR
@@ -17,10 +17,10 @@ DecorRegister("PlayerVehicle",3)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIAVEIS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local searchBlip = nil
-local vehHotwired = false
-local anim = "machinic_loop_mechandplayer"
-local animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@"
+local Searched = nil
+local Hotwired = false
+local Anim = "machinic_loop_mechandplayer"
+local Dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIAVEIS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -338,134 +338,134 @@ local Garages = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEMODS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function vehicleMods(veh,vehCustom)
-	if vehCustom then
-		SetVehicleModKit(veh,0)
+function Mods(Vehicle,Customize)
+	if Customize then
+		SetVehicleModKit(Vehicle,0)
 
-		if vehCustom["wheeltype"] ~= nil then
-			SetVehicleWheelType(veh,vehCustom["wheeltype"])
+		if Customize["wheeltype"] ~= nil then
+			SetVehicleWheelType(Vehicle,Customize["wheeltype"])
 		end
 
-		if vehCustom["mods"] then
+		if Customize["mods"] then
 			for i = 0,16 do
-				if vehCustom["mods"][tostring(i)] ~= nil then
-					SetVehicleMod(veh,i,vehCustom["mods"][tostring(i)])
+				if Customize["mods"][tostring(i)] ~= nil then
+					SetVehicleMod(Vehicle,i,Customize["mods"][tostring(i)])
 				end
 			end
 
 			for i = 17,22 do
-				if vehCustom["mods"][tostring(i)] ~= nil then
-					ToggleVehicleMod(veh,i,vehCustom["mods"][tostring(i)])
+				if Customize["mods"][tostring(i)] ~= nil then
+					ToggleVehicleMod(Vehicle,i,Customize["mods"][tostring(i)])
 				end
 			end
 
 			for i = 23,24 do
-				if vehCustom["mods"][tostring(i)] ~= nil then
-					if vehCustom["var"] == nil then
-						vehCustom["var"] = {}
-						vehCustom["var"][tostring(i)] = 0
+				if Customize["mods"][tostring(i)] ~= nil then
+					if not Customize["var"] then
+						Customize["var"] = {}
+						Customize["var"][tostring(i)] = 0
 					end
 
-					SetVehicleMod(veh,i,vehCustom["mods"][tostring(i)],vehCustom["var"][tostring(i)])
+					SetVehicleMod(Vehicle,i,Customize["mods"][tostring(i)],Customize["var"][tostring(i)])
 				end
 			end
 
 			for i = 25,48 do
-				if vehCustom["mods"][tostring(i)] ~= nil then
-					SetVehicleMod(veh,i,vehCustom["mods"][tostring(i)])
+				if Customize["mods"][tostring(i)] ~= nil then
+					SetVehicleMod(Vehicle,i,Customize["mods"][tostring(i)])
 				end
 			end
 		end
 
-		if vehCustom["neon"] ~= nil then
+		if Customize["neon"] ~= nil then
 			for i = 0,3 do
-				SetVehicleNeonLightEnabled(veh,i,vehCustom["neon"][tostring(i)])
+				SetVehicleNeonLightEnabled(Vehicle,i,Customize["neon"][tostring(i)])
 			end
 		end
 
-		if vehCustom["extras"] ~= nil then
+		if Customize["extras"] ~= nil then
 			for i = 1,12 do
-				local onoff = tonumber(vehCustom["extras"][i])
+				local onoff = tonumber(Customize["extras"][i])
 				if onoff == 1 then
-					SetVehicleExtra(veh,i,0)
+					SetVehicleExtra(Vehicle,i,0)
 				else
-					SetVehicleExtra(veh,i,1)
+					SetVehicleExtra(Vehicle,i,1)
 				end
 			end
 		end
 
-		if vehCustom["liverys"] ~= nil and vehCustom["liverys"] ~= 24  then
-			SetVehicleLivery(veh,vehCustom["liverys"])
+		if Customize["liverys"] ~= nil and Customize["liverys"] ~= 24  then
+			SetVehicleLivery(Vehicle,Customize["liverys"])
 		end
 
-		if vehCustom["plateIndex"] ~= nil and vehCustom["plateIndex"] ~= 4 then
-			SetVehicleNumberPlateTextIndex(veh,vehCustom["plateIndex"])
+		if Customize["plateIndex"] ~= nil and Customize["plateIndex"] ~= 4 then
+			SetVehicleNumberPlateTextIndex(Vehicle,Customize["plateIndex"])
 		end
 
-		SetVehicleXenonLightsColour(veh,vehCustom["xenonColor"])
-		SetVehicleColours(veh,vehCustom["colors"][1],vehCustom["colors"][2])
-		SetVehicleExtraColours(veh,vehCustom["extracolors"][1],vehCustom["extracolors"][2])
-		SetVehicleNeonLightsColour(veh,vehCustom["lights"][1],vehCustom["lights"][2],vehCustom["lights"][3])
-		SetVehicleTyreSmokeColor(veh,vehCustom["smokecolor"][1],vehCustom["smokecolor"][2],vehCustom["smokecolor"][3])
+		SetVehicleXenonLightsColour(Vehicle,Customize["xenonColor"])
+		SetVehicleColours(Vehicle,Customize["colors"][1],Customize["colors"][2])
+		SetVehicleExtraColours(Vehicle,Customize["extracolors"][1],Customize["extracolors"][2])
+		SetVehicleNeonLightsColour(Vehicle,Customize["lights"][1],Customize["lights"][2],Customize["lights"][3])
+		SetVehicleTyreSmokeColor(Vehicle,Customize["smokecolor"][1],Customize["smokecolor"][2],Customize["smokecolor"][3])
 
-		if vehCustom["tint"] ~= nil then
-			SetVehicleWindowTint(veh,vehCustom["tint"])
+		if Customize["tint"] ~= nil then
+			SetVehicleWindowTint(Vehicle,Customize["tint"])
 		end
 
-		if vehCustom["dashColour"] ~= nil then
-			SetVehicleInteriorColour(veh,vehCustom["dashColour"])
+		if Customize["dashColour"] ~= nil then
+			SetVehicleInteriorColour(Vehicle,Customize["dashColour"])
 		end
 
-		if vehCustom["interColour"] ~= nil then
-			SetVehicleDashboardColour(veh,vehCustom["interColour"])
+		if Customize["interColour"] ~= nil then
+			SetVehicleDashboardColour(Vehicle,Customize["interColour"])
 		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWNPOSITION
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.spawnPosition(openGarage)
+function Creative.SpawnPosition(Select)
 	local Slot = "0"
-	local checkSlot = 0
-	local checkPos = nil
-	local spawnSelected = {}
+	local Checks = 0
+	local Selected = {}
+	local Position = nil
 
 	repeat
-		checkSlot = checkSlot + 1
+		Checks = Checks + 1
 
-		Slot = tostring(checkSlot)
-		if Garages[openGarage][Slot] ~= nil then
-			local _,Groundz = GetGroundZAndNormalFor_3dCoord(Garages[openGarage][Slot][1],Garages[openGarage][Slot][2],Garages[openGarage][Slot][3])
-			spawnSelected = { Garages[openGarage][Slot][1],Garages[openGarage][Slot][2],Groundz,Garages[openGarage][Slot][4] }
-			checkPos = GetClosestVehicle(spawnSelected[1],spawnSelected[2],spawnSelected[3],2.501,0,71)
+		Slot = tostring(Checks)
+		if Garages[Select][Slot] ~= nil then
+			local _,Groundz = GetGroundZAndNormalFor_3dCoord(Garages[Select][Slot][1],Garages[Select][Slot][2],Garages[Select][Slot][3])
+			Selected = { Garages[Select][Slot][1],Garages[Select][Slot][2],Groundz,Garages[Select][Slot][4] }
+			Position = GetClosestVehicle(Selected[1],Selected[2],Selected[3],2.501,0,71)
 		end
-	until not DoesEntityExist(checkPos) or Garages[openGarage][Slot] == nil
+	until not DoesEntityExist(Position) or not Garages[Select][Slot]
 
-	if Garages[openGarage][tostring(checkSlot)] == nil then
+	if not Garages[Select][tostring(Checks)] then
 		TriggerEvent("Notify","amarelo","Vagas estão ocupadas.",5000)
 		return false
 	end
 
-	return spawnSelected
+	return Selected
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.createVehicle(Model,vehNet,vehEngine,vehCustom,vehWindows,vehTyres)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+function Creative.CreateVehicle(Model,Network,Engine,Customize,Windows,Tyres)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
-			if vehCustom ~= nil then
-				local vehMods = json.decode(vehCustom)
-				vehicleMods(Vehicle,vehMods)
+			if Customize ~= nil then
+				local vehMods = json.decode(Customize)
+				Mods(Vehicle,vehMods)
 			end
 
-			SetVehicleEngineHealth(Vehicle,vehEngine + 0.0)
+			SetVehicleEngineHealth(Vehicle,Engine + 0.0)
 
-			if vehWindows then
-				local vehWindows = json.decode(vehWindows)
-				if vehWindows ~= nil then
-					for k,v in pairs(vehWindows) do
+			if Windows then
+				local Windows = json.decode(Windows)
+				if Windows ~= nil then
+					for k,v in pairs(Windows) do
 						if not v then
 							RemoveVehicleWindow(Vehicle,parseInt(k))
 						end
@@ -473,10 +473,10 @@ function cRP.createVehicle(Model,vehNet,vehEngine,vehCustom,vehWindows,vehTyres)
 				end
 			end
 
-			if vehTyres then
-				local vehTyres = json.decode(vehTyres)
-				if vehTyres ~= nil then
-					for k,Burst in pairs(vehTyres) do
+			if Tyres then
+				local Tyres = json.decode(Tyres)
+				if Tyres ~= nil then
+					for k,Burst in pairs(Tyres) do
 						if Burst then
 							SetVehicleTyreBurst(Vehicle,parseInt(k),true,1000.0)
 						end
@@ -505,7 +505,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("garages:Delete")
 AddEventHandler("garages:Delete",function(Vehicle)
-	if Vehicle == nil or Vehicle == "" then
+	if not Vehicle or Vehicle == "" then
 		Vehicle = vRP.ClosestVehicle(15)
 	end
 
@@ -542,47 +542,47 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEARCHBLIP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.searchBlip(vehCoords)
-	if DoesBlipExist(searchBlip) then
-		RemoveBlip(searchBlip)
-		searchBlip = nil
+function Creative.SearchBlip(Coords)
+	if DoesBlipExist(Searched) then
+		RemoveBlip(Searched)
+		Searched = nil
 	end
 
-	searchBlip = AddBlipForCoord(vehCoords["x"],vehCoords["y"],vehCoords["z"])
-	SetBlipSprite(searchBlip,225)
-	SetBlipColour(searchBlip,2)
-	SetBlipScale(searchBlip,0.6)
-	SetBlipAsShortRange(searchBlip,true)
+	Searched = AddBlipForCoord(Coords["x"],Coords["y"],Coords["z"])
+	SetBlipSprite(Searched,225)
+	SetBlipColour(Searched,2)
+	SetBlipScale(Searched,0.6)
+	SetBlipAsShortRange(Searched,true)
 	BeginTextCommandSetBlipName("STRING")
 	AddTextComponentString("Veículo")
-	EndTextCommandSetBlipName(searchBlip)
+	EndTextCommandSetBlipName(Searched)
 
 	SetTimeout(30000,function()
-		RemoveBlip(searchBlip)
-		searchBlip = nil
+		RemoveBlip(Searched)
+		Searched = nil
 	end)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- STARTANIMHOTWIRED
+-- STARTHOTWIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.startAnimHotwired()
-	vehHotwired = true
+function Creative.StartHotwired()
+	Hotwired = true
 
-	if LoadAnim(animDict) then
-		TaskPlayAnim(PlayerPedId(),animDict,anim,8.0,8.0,-1,49,5.0,0,0,0)
+	if LoadAnim(Dict) then
+		TaskPlayAnim(PlayerPedId(),Dict,Anim,8.0,8.0,-1,49,5.0,0,0,0)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- STOPANIMHOTWIRED
+-- STOPHOTWIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.stopAnimHotwired(Vehicle)
-	vehHotwired = false
+function Creative.StopHotwired(Vehicle)
+	Hotwired = false
 
-	if LoadAnim(animDict) then
-		StopAnimTask(PlayerPedId(),animDict,anim,8.0)
+	if LoadAnim(Dict) then
+		StopAnimTask(PlayerPedId(),Dict,Anim,8.0)
 	end
 
-	if Vehicle ~= nil then
+	if Vehicle then
 		SetEntityAsMissionEntity(Vehicle,true,false)
 		SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
 		SetVehicleNeedsToBeHotwired(Vehicle,false)
@@ -595,8 +595,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATEHOTWIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.updateHotwired(status)
-	vehHotwired = status
+function Creative.UpdateHotwired(Status)
+	Hotwired = Status
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOOPHOTWIRED
@@ -604,18 +604,18 @@ end
 CreateThread(function()
 	while true do
 		local TimeDistance = 999
-		if LocalPlayer["state"]["Route"] == 0 then
+		if LocalPlayer["state"]["Route"] < 900000 then
 			local Ped = PlayerPedId()
 			if IsPedInAnyVehicle(Ped) then
-				local vehicle = GetVehiclePedIsUsing(Ped)
-				local platext = GetVehicleNumberPlateText(vehicle)
-				if GetPedInVehicleSeat(vehicle,-1) == Ped and not GlobalState["vehPlates"][platext] then
-					SetVehicleEngineOn(vehicle,false,true,true)
+				local Vehicle = GetVehiclePedIsUsing(Ped)
+				local Plate = GetVehicleNumberPlateText(Vehicle)
+				if GetPedInVehicleSeat(Vehicle,-1) == Ped and not GlobalState["vehPlates"][Plate] then
+					SetVehicleEngineOn(Vehicle,false,true,true)
 					DisablePlayerFiring(Ped,true)
 					TimeDistance = 1
 				end
 
-				if vehHotwired and vehicle then
+				if Hotwired and Vehicle then
 					DisableControlAction(1,75,true)
 					DisableControlAction(1,20,true)
 					TimeDistance = 1
@@ -631,17 +631,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("garages:Impound")
 AddEventHandler("garages:Impound",function()
-	if not menuOpen then
-		local Impound = vSERVER.Impound()
-		if parseInt(#Impound) > 0 then
-			for k,v in pairs(Impound) do
-				exports["dynamic"]:AddButton(v["name"],"Clique para iniciar a liberação.","garages:Impound",v["Model"],false,true)
-			end
-
-			exports["dynamic"]:openMenu()
-		else
-			TriggerEvent("Notify","amarelo","Não possui veículos apreendidos.",5000)
+	local Impound = vSERVER.Impound()
+	if parseInt(#Impound) > 0 then
+		for k,v in pairs(Impound) do
+			exports["dynamic"]:AddButton(v["name"],"Clique para iniciar a liberação.","garages:Impound",v["Model"],false,true)
 		end
+
+		exports["dynamic"]:openMenu()
+	else
+		TriggerEvent("Notify","amarelo","Não possui veículos apreendidos.",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -654,19 +652,20 @@ CreateThread(function()
 			local Ped = PlayerPedId()
 			if not IsPedInAnyVehicle(Ped) then
 				local Coords = GetEntityCoords(Ped)
-				for k,v in pairs(Garages) do
+
+				for Number,v in pairs(Garages) do
 					local Distance = #(Coords - vec3(v["x"],v["y"],v["z"]))
 					if Distance <= 1.25 then
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
-							local Vehicles = vSERVER.Vehicles(k)
+							local Vehicles = vSERVER.Vehicles(Number)
 							if Vehicles then
 								exports["dynamic"]:AddButton("Guardar","Guardar o veículo mais próximo.","garages:Delete","",false,false)
 
 								if parseInt(#Vehicles) > 0 then
 									for _,v in pairs(Vehicles) do
-										exports["dynamic"]:AddButton("Pegar","Clique para pega-lo na garagem.","garages:Spawn",v["Model"].."-"..k,v["Model"],true)
+										exports["dynamic"]:AddButton("Pegar","Clique para pega-lo na garagem.","garages:Spawn",v["Model"].."-"..Number,v["Model"],true)
 										exports["dynamic"]:AddButton("Taxas","Clique para o pagamento das taxas.","garages:Tax",v["Model"],v["Model"],true)
 										exports["dynamic"]:AddButton("Vender","Clique para o vender o veículo.","garages:Sell",v["Model"],v["Model"],true)
 										exports["dynamic"]:AddButton("Transferência","Clique para transferir a outra pessoa.","garages:Transfer",v["Model"],v["Model"],true)

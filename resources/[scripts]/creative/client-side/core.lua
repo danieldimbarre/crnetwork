@@ -2,17 +2,19 @@
 -- DRIFTENABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function driftEnable()
-	local Ped = PlayerPedId()
-	if IsPedInAnyVehicle(Ped) and not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
-		local Vehicle = GetVehiclePedIsIn(Ped)
-		if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-			local speed = GetEntitySpeed(Vehicle) * 3.6
-			if speed <= 100.0 and speed >= 5.0 then
-				SetVehicleReduceGrip(Vehicle,true)
+	if not IsPauseMenuActive() then
+		local Ped = PlayerPedId()
+		if IsPedInAnyVehicle(Ped) and not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
+			local Vehicle = GetVehiclePedIsIn(Ped)
+			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
+				local speed = GetEntitySpeed(Vehicle) * 3.6
+				if speed <= 100.0 and speed >= 5.0 then
+					SetVehicleReduceGrip(Vehicle,true)
 
-				if not GetDriftTyresEnabled(Vehicle) then
-					SetDriftTyresEnabled(Vehicle,true)
-					SetReduceDriftVehicleSuspension(Vehicle,true)
+					if not GetDriftTyresEnabled(Vehicle) then
+						SetDriftTyresEnabled(Vehicle,true)
+						SetReduceDriftVehicleSuspension(Vehicle,true)
+					end
 				end
 			end
 		end
@@ -183,24 +185,9 @@ local blips = {
 	{ -1194.46,-1189.31,7.69,440,62,"Escritório",0.7 },
 	{ -1007.12,-486.67,39.97,440,62,"Escritório",0.7 },
 	{ -1913.48,-574.11,11.43,440,62,"Escritório",0.7 },
-	{ 918.69,50.33,80.9,617,62,"Cassino",0.6 }
+	{ 918.69,50.33,80.9,617,62,"Cassino",0.6 },
+	{ 393.7,-832.77,29.28,355,62,"DigitalDen",0.4 }
 }
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADBLIPS
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	for _,v in pairs(blips) do
-		local blip = AddBlipForCoord(v[1],v[2],v[3])
-		SetBlipSprite(blip,v[4])
-		SetBlipDisplay(blip,4)
-		SetBlipAsShortRange(blip,true)
-		SetBlipColour(blip,v[5])
-		SetBlipScale(blip,v[7])
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(v[6])
-		EndTextCommandSetBlipName(blip)
-	end
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTIMERS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -365,9 +352,25 @@ local Teleport = {
 	{ 234.24,229.94,97.11,236.23,229.27,97.11 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADHOVERFY
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
+	for _,v in pairs(blips) do
+		local blip = AddBlipForCoord(v[1],v[2],v[3])
+		SetBlipSprite(blip,v[4])
+		SetBlipDisplay(blip,4)
+		SetBlipAsShortRange(blip,true)
+		SetBlipColour(blip,v[5])
+		SetBlipScale(blip,v[7])
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString(v[6])
+		EndTextCommandSetBlipName(blip)
+	end
+
 	local Table = {}
 
 	for _,v in pairs(Teleport) do
@@ -553,15 +556,15 @@ CreateThread(function()
 				TriggerServerEvent("admin:Hacker","está invisível")
 			end
 
-			if ForceSocialClubUpdate == nil then
+			if not ForceSocialClubUpdate then
 				TriggerServerEvent("admin:Hacker","forçou a social club.")
 			end
 
-			if ShutdownAndLaunchSinglePlayerGame == nil then
+			if not ShutdownAndLaunchSinglePlayerGame then
 				TriggerServerEvent("admin:Hacker","entrou no modo single player.")
 			end
 
-			if ActivateRockstarEditor == nil then
+			if not ActivateRockstarEditor then
 				TriggerServerEvent("admin:Hacker","ativou o rockstar editor.")
 			end
 		end

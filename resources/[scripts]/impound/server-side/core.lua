@@ -4,6 +4,7 @@
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRPC = Tunnel.getInterface("vRP")
+vHUD = Tunnel.getInterface("hud")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIÁVEIS
@@ -12,12 +13,12 @@ local Impound = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- IMPOUND:CHECK
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("impound:Check")
+RegisterServerEvent("impound:Check")
 AddEventHandler("impound:Check",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Impound[entity[2].."-"..entity[1]] == nil then
+		if not Impound[entity[2].."-"..entity[1]] then
 			return
 		else
 			Impound[entity[2].."-"..entity[1]] = nil
@@ -71,12 +72,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:IMPOUND
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("police:Impound")
+RegisterServerEvent("police:Impound")
 AddEventHandler("police:Impound",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Impound[entity[2].."-"..entity[1]] == nil then
+		if not Impound[entity[2].."-"..entity[1]] then
 			Impound[entity[2].."-"..entity[1]] = true
 			TriggerEvent("towdriver:Call",source,entity[2],entity[1])
 			vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
@@ -128,7 +129,7 @@ local plateSave = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:PLATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("police:Plate")
+RegisterServerEvent("police:Plate")
 AddEventHandler("police:Plate",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -168,12 +169,12 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:ARREST
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("police:Arrest")
+RegisterServerEvent("police:Arrest")
 AddEventHandler("police:Arrest",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.Request(source,"Apreender o veículo?","Sim, concluír apreensão","Não, mudei de ideia") then
+		if vHUD.Request(source,"Apreender o veículo?","Sim, concluír apreensão","Não, mudei de ideia") then
 			local Passport = vRP.PassportPlate(entity[1])
 			if Passport then
 				local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })

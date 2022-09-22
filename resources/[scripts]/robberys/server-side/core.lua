@@ -8,8 +8,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("robberys",cRP)
+Creative = {}
+Tunnel.bindInterface("robberys",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -796,14 +796,14 @@ local Robberys = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROBBERYS:INIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("robberys:Init")
+RegisterServerEvent("robberys:Init")
 AddEventHandler("robberys:Init",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if Robberys[Number] then
 			if not Robberys[Number]["avaiable"] then
-				if Robberype[Robberys[Number]["type"]] == nil then
+				if not Robberype[Robberys[Number]["type"]] then
 					Robberype[Robberys[Number]["type"]] = os.time()
 				end
 

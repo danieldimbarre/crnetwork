@@ -18,14 +18,6 @@ local fuelNui = false
 local fuelSupply = false
 local fuelEnter = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Event,args)

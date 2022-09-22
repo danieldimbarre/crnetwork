@@ -54,7 +54,7 @@ end
 
 exports("setPlayerCall",setPlayerCall)
 
-RegisterNetEvent("pma-voice:setPlayerCall",function(callChannel)
+RegisterServerEvent("pma-voice:setPlayerCall",function(callChannel)
     setPlayerCall(source,callChannel)
 end)
 
@@ -72,4 +72,4 @@ function setTalkingOnCall(talking)
         end
     end
 end
-RegisterNetEvent("pma-voice:setTalkingOnCall",setTalkingOnCall)
+RegisterServerEvent("pma-voice:setTalkingOnCall",setTalkingOnCall)

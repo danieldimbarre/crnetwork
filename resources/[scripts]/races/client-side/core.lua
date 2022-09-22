@@ -279,7 +279,7 @@ end)
 -- TYREBURST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function TyreBurst(Vehicle)
-	if Bikes[GetEntityModel(Vehicle)] == nil then
+	if not Bikes[GetEntityModel(Vehicle)] then
 		local Tyre = math.random(4)
 		if Tyre == 1 then
 			if GetTyreHealth(Vehicle,0) == 1000.0 then

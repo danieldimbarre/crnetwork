@@ -7,12 +7,12 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("taxi",cRP)
+Creative = {}
+Tunnel.bindInterface("taxi",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENTSERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.paymentService()
+function Creative.paymentService()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -23,14 +23,14 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITSERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.initService(status)
+function Creative.initService(status)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if status then
 			vRP.AddPermission(source,Passport,"Taxi")
 		else
-			vRP.BlankPermission(Passport,"Taxi")
+			vRP.RemovePermission(Passport,"Taxi")
 		end
 	end
 

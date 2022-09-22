@@ -7,36 +7,31 @@ local Tunnel = module("vrp","lib/Tunnel")
 -----------------------------------------------------------------------------------------------------------------------------------------
 vSERVER = Tunnel.getInterface("service")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SERVICELIST
------------------------------------------------------------------------------------------------------------------------------------------
-local serviceList = {
-	{ 441.81,-982.05,30.83,"Lspd",1.0 },
-	{ 1833.75,3678.34,34.27,"Sheriff-1",1.0 },
-	{ -447.28,6013.01,32.41,"Sheriff-2",1.0 },
-	{ 1840.20,2578.48,46.07,"Corrections",1.0 },
-	{ 385.43,794.42,187.48,"Ranger",1.0 },
-	{ 382.01,-1596.39,29.91,"State",1.0 },
+local List = {
+	{ 441.81,-982.05,30.83,"Police-1",1.0 },
+	{ 1833.75,3678.34,34.27,"Police-2",1.0 },
+	{ -447.28,6013.01,32.41,"Police-3",1.0 },
+	{ 1840.20,2578.48,46.07,"Police-4",1.0 },
+	{ 385.43,794.42,187.48,"Police-5",1.0 },
+	{ 382.01,-1596.39,29.91,"Police-6",1.0 },
 	{ 310.23,-597.54,43.29,"Paramedic-1",1.0 },
 	{ -254.77,6331.03,32.79,"Paramedic-2",1.5 },
 	{ 1188.05,-1468.31,34.66,"Paramedic-3",1.5 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADTARGET
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	for k,v in pairs(serviceList) do
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
+	for k,v in pairs(List) do
 		exports["target"]:AddCircleZone("Service:"..v[4],vec3(v[1],v[2],v[3]),0.10,{
 			name = "Service:"..v[4],
-			heading = 3374176,
-			useZ = true
+			heading = 3374176
 		},{
 			shop = k,
 			Distance = v[5],
@@ -56,7 +51,7 @@ end)
 RegisterNetEvent("service:Toggle")
 AddEventHandler("service:Toggle",function(Service)
 	if LocalPlayer["state"]["Route"] < 900000 then
-		TriggerServerEvent("service:Toggle",serviceList[Service][4])
+		TriggerServerEvent("service:Toggle",List[Service][4])
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -64,9 +59,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("service:Label")
 AddEventHandler("service:Label",function(Service,Text)
-	if Service == "Sheriff" then
-		exports["target"]:LabelText("Service:Sheriff-1",Text)
-		exports["target"]:LabelText("Service:Sheriff-2",Text)
+	if Service == "Police" then
+		exports["target"]:LabelText("Service:Police-1",Text)
+		exports["target"]:LabelText("Service:Police-2",Text)
+		exports["target"]:LabelText("Service:Police-3",Text)
+		exports["target"]:LabelText("Service:Police-4",Text)
+		exports["target"]:LabelText("Service:Police-5",Text)
+		exports["target"]:LabelText("Service:Police-6",Text)
 	elseif Service == "Paramedic" then
 		exports["target"]:LabelText("Service:Paramedic-1",Text)
 		exports["target"]:LabelText("Service:Paramedic-2",Text)
@@ -98,9 +97,7 @@ end)
 -- REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Request",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		Callback({ Result = vSERVER.Request() })
-	end
+	Callback({ Result = vSERVER.Request() })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMOVE
@@ -127,5 +124,5 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("service:Update")
 AddEventHandler("service:Update",function()
-	SendNUIMessage({ action = "updateSystem" })
+	SendNUIMessage({ action = "Update" })
 end)

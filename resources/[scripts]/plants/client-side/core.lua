@@ -5,8 +5,8 @@ local Tunnel = module("vrp","lib/Tunnel")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("plants",cRP)
+Creative = {}
+Tunnel.bindInterface("plants",Creative)
 vSERVER = Tunnel.getInterface("plants")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -24,7 +24,7 @@ CreateThread(function()
 		for k,v in pairs(Plants) do
 			local Distance = #(Coords - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
 			if Distance <= 50 then
-				if Objects[k] == nil and v["Route"] == LocalPlayer["state"]["Route"] then
+				if not Objects[k] and v["Route"] == LocalPlayer["state"]["Route"] then
 					exports["target"]:AddBoxZone("Plants:"..k,vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]),0.4,0.4,{
 						name = "Plants:"..k,
 						heading = 3374176,
@@ -105,7 +105,6 @@ AddEventHandler("plants:Remover",function(Number)
 
 	if DoesEntityExist(Objects[Number]) then
 		exports["target"]:RemCircleZone("Plants:"..Number)
-		SetEntityAsNoLongerNeeded(Objects[Number])
 		DeleteEntity(Objects[Number])
 		Objects[Number] = nil
 	end

@@ -260,19 +260,19 @@ vehicleWheelOptions = {
 		id = 7,
 		wheelID = 23
 	},{
-		category = "Bennys",
+		category = "Originals",
 		id = 8,
 		wheelID = 23
 	},{
-		category = "Golden",
+		category = "Bespokes",
 		id = 9,
 		wheelID = 23
 	},{
-		category = "Tuners",
+		category = "Streets",
 		id = 11,
 		wheelID = 23
 	},{
-		category = "Specials",
+		category = "Trackers",
 		id = 12,
 		wheelID = 23
 	}

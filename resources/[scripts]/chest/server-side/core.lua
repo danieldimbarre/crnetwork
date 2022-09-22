@@ -7,8 +7,9 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("chest",cRP)
+Creative = {}
+Tunnel.bindInterface("chest",Creative)
+vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -16,7 +17,7 @@ local Open = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PERMISSIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Permissions(Name,Mode)
+function Creative.Permissions(Name,Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Wanted(Passport) then
@@ -34,7 +35,7 @@ function cRP.Permissions(Name,Mode)
 
 			local Consult = vRP.Query("chests/GetChests",{ name = Name })
 			if Consult[1] and vRP.HasGroup(Passport,Consult[1]["perm"]) then
-				Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = true }
+				Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"] }
 				return true
 			end
 		end
@@ -45,7 +46,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENCHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.openChest()
+function Creative.openChest()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Open[Passport] then
@@ -115,7 +116,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STOREITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.storeItem(Item,Slot,Amount,Target)
+function Creative.storeItem(Item,Slot,Amount,Target)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -132,13 +133,17 @@ function cRP.storeItem(Item,Slot,Amount,Target)
 		else
 			local Result = vRP.GetSrvData("stackChest:"..Open[Passport]["Name"])
 			TriggerClientEvent("chest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
+
+			if Open[Passport]["Logs"] then
+				TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
+			end
 		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.takeItem(Item,Slot,Amount,Target)
+function Creative.takeItem(Item,Slot,Amount,Target)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -148,15 +153,25 @@ function cRP.takeItem(Item,Slot,Amount,Target)
 		if vRP.TakeChest(Passport,"stackChest:"..Open[Passport]["Name"],Amount,Slot,Target) then
 			TriggerClientEvent("chest:Update",source,"requestChest")
 		else
-			local result = vRP.GetSrvData("stackChest:"..Open[Passport]["Name"])
-			TriggerClientEvent("chest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Open[Passport]["Weight"])
+			local Result = vRP.GetSrvData("stackChest:"..Open[Passport]["Name"])
+			TriggerClientEvent("chest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
+
+			if string.sub(Open[Passport]["Name"],1,9) == "Helicrash" and vRP.ChestWeight(Result) <= 0 then
+				TriggerClientEvent("helicrash:RemoveBox",-1,string.sub(Open[Passport]["Name"],10,11))
+				TriggerClientEvent("chest:Close",source)
+				TriggerEvent("helicrash:AmountBoxes")
+			end
+
+			if Open[Passport]["Logs"] then
+				TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
+			end
 		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATECHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.updateChest(Slot,Target,Amount)
+function Creative.updateChest(Slot,Target,Amount)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -171,13 +186,13 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHEST:UPGRADE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("chest:Upgrade")
+RegisterServerEvent("chest:Upgrade")
 AddEventHandler("chest:Upgrade",function()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Open[Passport] then
 		if vRP.HasGroup(Passport,Open[Passport]["Name"]) then
-			if vRP.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
+			if vHUD.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
 				if vRP.PaymentFull(Passport,source,10000) then
 					vRP.Execute("chests/UpdateChests",{ name = Open[Passport]["Name"] })
 					TriggerClientEvent("Notify",source,"verde","Compra concluída.",3000)

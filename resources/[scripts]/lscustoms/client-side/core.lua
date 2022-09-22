@@ -517,7 +517,7 @@ function PreviewMod(categoryID,modID)
 	local Ped = PlayerPedId()
 	local vehicle = GetVehiclePedIsUsing(Ped)
 
-	if originalMod == nil and originalCategory == nil then
+	if not originalMod and not originalCategory then
 		originalCategory = categoryID
 		originalMod = GetVehicleMod(vehicle,categoryID)
 	end
@@ -547,7 +547,7 @@ function PreviewColour(paintType,paintCategory,paintID)
 	local vehicle = GetVehiclePedIsUsing(Ped)
 	SetVehicleModKit(vehicle,0)
 
-	if originalDashColour == nil and originalInterColour == nil and originalPrimaryColour == nil and originalSecondaryColour == nil and originalPearlescentColour == nil and originalWheelColour == nil then
+	if not originalDashColour and not originalInterColour and not originalPrimaryColour and not originalSecondaryColour and not originalPearlescentColour and not originalWheelColour then
 		originalPrimaryColour,originalSecondaryColour = GetVehicleColours(vehicle)
 		originalPearlescentColour,originalWheelColour = GetVehicleExtraColours(vehicle)
 		originalDashColour = GetVehicleDashboardColour(vehicle)
@@ -581,7 +581,7 @@ function PreviewWheel(categoryID,wheelID,wheelType)
 	local vehicle = GetVehiclePedIsUsing(Ped)
 	local doesHaveCustomWheels = GetVehicleModVariation(vehicle,23)
 
-	if originalWheelCategory == nil and originalWheel == nil and originalWheelType == nil and originalCustomWheels == nil then
+	if not originalWheelCategory and not originalWheel and not originalWheelType and not originalCustomWheels then
 		originalWheelCategory = categoryID
 		originalWheelType = GetVehicleWheelType(vehicle)
 		originalWheel = GetVehicleMod(vehicle,23)
@@ -602,7 +602,7 @@ function PreviewNeon(side,enabled)
 	local Ped = PlayerPedId()
 	local vehicle = GetVehiclePedIsUsing(Ped)
 
-	if originalNeonLightState == nil and originalNeonLightSide == nil then
+	if not originalNeonLightState and not originalNeonLightSide then
 		if IsVehicleNeonLightEnabled(vehicle,side) then
 			originalNeonLightState = 1
 		else
@@ -621,7 +621,7 @@ function PreviewNeonColour(r,g,b)
 	local Ped = PlayerPedId()
 	local vehicle = GetVehiclePedIsUsing(Ped)
 
-	if originalNeonColourR == nil and originalNeonColourG == nil and originalNeonColourB == nil then
+	if not originalNeonColourR and not originalNeonColourG and not originalNeonColourB then
 		originalNeonColourR,originalNeonColourG,originalNeonColourB = GetVehicleNeonLightsColour(vehicle)
 	end
 
@@ -634,7 +634,7 @@ function PreviewXenonColour(colour)
 	local Ped = PlayerPedId()
 	local vehicle = GetVehiclePedIsUsing(Ped)
 
-	if originalXenonColour == nil then
+	if not originalXenonColour then
 		originalXenonColour = GetVehicleHeadlightsColour(vehicle)
 	end
 

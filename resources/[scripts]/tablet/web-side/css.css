@@ -205,7 +205,6 @@ s {
 	padding: 15px;
 	background: #fff;
 	line-height: 21px;
-	border-radius: 3px;
 	border-bottom: 1px solid rgba(0,0,0,0.35);
 }
 
@@ -229,7 +228,6 @@ s {
 	margin-bottom: 3px;
 	letter-spacing: 1px;
 	background: #2e6e4c;
-	border-radius: 3px;
 }
 
 #benefactorBuy:hover, #benefactorRental:hover {
@@ -261,7 +259,6 @@ i {
 	text-align: center;
 	letter-spacing: 1px;
 	background: #a93b50;
-	border-radius: 3px;
 }
 
 #benefactorDrive:hover {

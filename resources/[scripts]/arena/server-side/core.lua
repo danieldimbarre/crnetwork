@@ -7,17 +7,16 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("arena",cRP)
+Creative = {}
+Tunnel.bindInterface("arena",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Players = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ARENA:ENTER
+-- CHECKENTER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("arena:Enter")
-AddEventHandler("arena:Enter",function(Route)
+function Creative.CheckEnter(Route,Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -27,7 +26,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ARENA:EXIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("arena:Exit")
+RegisterServerEvent("arena:Exit")
 AddEventHandler("arena:Exit",function()
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -38,7 +37,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ARENA:CANCEL
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("arena:Cancel")
+RegisterServerEvent("arena:Cancel")
 AddEventHandler("arena:Cancel",function(source,Passport)
 	local Route = GetPlayerRoutingBucket(source)
 
@@ -49,10 +48,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ARENA:PLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("arena:Players")
+RegisterServerEvent("arena:Players")
 AddEventHandler("arena:Players",function(Mode,Route)
 	if Mode == "+" then
-		if Players[Route] == nil then
+		if not Players[Route] then
 			SetRoutingBucketEntityLockdownMode(Route,"relaxed")
 			SetRoutingBucketPopulationEnabled(Route,false)
 			Players[Route] = 0

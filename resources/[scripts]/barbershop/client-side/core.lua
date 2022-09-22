@@ -158,9 +158,13 @@ local Locations = {
 	{ -276.65,6226.76,31.7 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADHOVERFY
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	local Table = {}
 
 	for _,v in pairs(Locations) do
@@ -168,14 +172,6 @@ CreateThread(function()
 	end
 
 	TriggerEvent("hoverfy:Insert",Table)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADOPEN

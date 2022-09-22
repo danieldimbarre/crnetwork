@@ -7,12 +7,13 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("target",cRP)
+Creative = {}
+Tunnel.bindInterface("target",Creative)
+vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.CheckIn()
+function Creative.CheckIn()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -27,7 +28,7 @@ function cRP.CheckIn()
 				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 			end
 		else
-			if vRP.Request(source,"Prosseguir o tratamento por <b>$750</b> dólares?","Sim, iniciar tratamento","Não, volto mais tarde") then
+			if vHUD.Request(source,"Prosseguir o tratamento por <b>$750</b> dólares?","Sim, iniciar tratamento","Não, volto mais tarde") then
 				if vRP.PaymentFull(Passport,source,750) then
 					vRP.UpgradeHunger(Passport,20)
 					vRP.UpgradeThirst(Passport,20)
@@ -47,12 +48,12 @@ end
 -- TARGET:CALLWORKS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Calls = {}
-RegisterNetEvent("target:CallWorks")
+RegisterServerEvent("target:CallWorks")
 AddEventHandler("target:CallWorks",function(Perm)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Calls[Perm] == nil then
+		if not Calls[Perm] then
 			Calls[Perm] = os.time()
 		end
 

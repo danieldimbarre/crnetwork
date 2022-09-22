@@ -32,8 +32,7 @@ function InputTargetPosition(Number,v)
 	else
 		exports["target"]:AddCircleZone("Farmer:"..Number,vec3(v["x"],v["y"],v["z"]),v["width"],{
 			name = "Farmer:"..Number,
-			heading = v["heading"],
-			useZ = true
+			heading = v["heading"]
 		},{
 			shop = Number,
 			Distance = v["Distance"],
@@ -58,7 +57,7 @@ CreateThread(function()
 		for Number,v in pairs(Objects) do
 			local Distance = #(Coords - vec3(v["x"],v["y"],v["z"]))
 			if Distance <= v["show"] and GlobalState["Work"] >= v["time"] then
-				if initObjects[Number] == nil then
+				if not initObjects[Number] then
 					if LoadModel(v["prop"]) then
 						initObjects[Number] = CreateObjectNoOffset(v["prop"],v["x"],v["y"],v["z"] - v["height"],false,false,false)
 						FreezeEntityPosition(initObjects[Number],true)
@@ -75,7 +74,6 @@ CreateThread(function()
 					exports["target"]:RemCircleZone("Farmer:"..Number)
 
 					if DoesEntityExist(initObjects[Number]) then
-						SetEntityAsNoLongerNeeded(initObjects[Number])
 						DeleteEntity(initObjects[Number])
 						initObjects[Number] = nil
 					end

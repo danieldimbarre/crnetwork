@@ -8,12 +8,12 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("barbershop",cRP)
+Creative = {}
+Tunnel.bindInterface("barbershop",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BARBER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkShares()
+function Creative.checkShares()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -32,7 +32,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.updateSkin(Clothes)
+function Creative.updateSkin(Clothes)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -42,14 +42,14 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DEBUG
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("barbershop:Debug")
+RegisterServerEvent("barbershop:Debug")
 AddEventHandler("barbershop:Debug",function()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		TriggerClientEvent("barbershop:Apply",source,vRP.userData(Passport,"Barbershop"))
-		TriggerClientEvent("skinshop:Apply",source,vRP.userData(Passport,"Clothings"))
-		TriggerClientEvent("tattoos:Apply",source,vRP.userData(Passport,"Tatuagens"))
+		TriggerClientEvent("barbershop:Apply",source,vRP.UserData(Passport,"Barbershop"))
+		TriggerClientEvent("skinshop:Apply",source,vRP.UserData(Passport,"Clothings"))
+		TriggerClientEvent("tattoos:Apply",source,vRP.UserData(Passport,"Tatuagens"))
 		TriggerClientEvent("target:Debug",source)
 
 		local Ped = GetPlayerPed(source)

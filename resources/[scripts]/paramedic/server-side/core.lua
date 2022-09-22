@@ -11,6 +11,7 @@ vRP = Proxy.getInterface("vRP")
 vCLIENT = Tunnel.getInterface("paramedic")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
+vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -19,7 +20,7 @@ local extractPerson = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARAMEDIC:REPOSED
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:Reposed")
+RegisterServerEvent("paramedic:Reposed")
 AddEventHandler("paramedic:Reposed",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -32,7 +33,7 @@ AddEventHandler("paramedic:Reposed",function(entity)
 					local Identity = vRP.Identity(OtherPassport)
 					local playerTimer = parseInt(Keyboard[1] * 60)
 					if Identity then
-						if vRP.Request(source,"Adicionar <b>"..Keyboard[1].." minutos</b> de repouso no(a) <b>"..Identity["name"].."</b>?.","Sim, aplicar repouso","Não, mudei de ideia") then
+						if vHUD.Request(source,"Adicionar <b>"..Keyboard[1].." minutos</b> de repouso no(a) <b>"..Identity["name"].."</b>?.","Sim, aplicar repouso","Não, mudei de ideia") then
 							TriggerClientEvent("Notify",source,"azul","Aplicou <b>"..Keyboard[1].." minutos</b> de repouso.",10000)
 							TriggerEvent("Reposed",entity,OtherPassport,playerTimer)
 						end
@@ -45,7 +46,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARAMEDIC:TREATMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:Treatment")
+RegisterServerEvent("paramedic:Treatment")
 AddEventHandler("paramedic:Treatment",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -54,7 +55,7 @@ AddEventHandler("paramedic:Treatment",function(entity)
 		local Identity = vRP.Identity(OtherPassport)
 		if Identity then
 			if vRP.TakeItem(Passport,"syringe0"..Identity["blood"],1) then
-				if bloodTimers[OtherPassport] == nil then
+				if not bloodTimers[OtherPassport] then
 					bloodTimers[OtherPassport] = os.time() + 1800
 				end
 
@@ -69,7 +70,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARAMEDIC:BED
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:Bed")
+RegisterServerEvent("paramedic:Bed")
 AddEventHandler("paramedic:Bed",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -82,7 +83,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARAMEDIC:REVIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:Revive")
+RegisterServerEvent("paramedic:Revive")
 AddEventHandler("paramedic:Revive",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -110,7 +111,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARAMEDIC:BANDAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:Bandage")
+RegisterServerEvent("paramedic:Bandage")
 AddEventHandler("paramedic:Bandage",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -138,7 +139,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARAMEDIC:DIAGNOSTIC
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:Diagnostic")
+RegisterServerEvent("paramedic:Diagnostic")
 AddEventHandler("paramedic:Diagnostic",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -257,7 +258,7 @@ local preset = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:PRESETBURN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:presetBurn")
+RegisterServerEvent("paramedic:presetBurn")
 AddEventHandler("paramedic:presetBurn",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -273,7 +274,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:PRESETPLASTER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:presetPlaster")
+RegisterServerEvent("paramedic:presetPlaster")
 AddEventHandler("paramedic:presetPlaster",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -289,22 +290,22 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:EXTRACTBLOOD
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:extractBlood")
+RegisterServerEvent("paramedic:extractBlood")
 AddEventHandler("paramedic:extractBlood",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local OtherPassport = vRP.Passport(entity)
 		if OtherPassport then
-			if extractPerson[OtherPassport] == nil then
+			if not extractPerson[OtherPassport] then
 				extractPerson[OtherPassport] = true
 
 				local Ped = GetPlayerPed(entity)
 				if GetEntityHealth(Ped) >= 170 then
 					local Identity = vRP.Identity(OtherPassport)
 					if Identity then
-						if vRP.Request(entity,"Deseja iniciar a doação sangue?","Sim, iniciar processo","Não, tenho medo") then
-							if bloodTimers[OtherPassport] == nil then
+						if vHUD.Request(entity,"Deseja iniciar a doação sangue?","Sim, iniciar processo","Não, tenho medo") then
+							if not bloodTimers[OtherPassport] then
 								bloodTimers[OtherPassport] = os.time()
 							end
 
@@ -335,7 +336,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:BLOODDEATH
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("paramedic:bloodDeath")
+RegisterServerEvent("paramedic:bloodDeath")
 AddEventHandler("paramedic:bloodDeath",function()
 	local source = source
 	local Passport = vRP.Passport(source)

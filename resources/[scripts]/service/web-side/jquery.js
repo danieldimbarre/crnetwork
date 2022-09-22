@@ -12,7 +12,7 @@ $(document).ready(function(){
 				$("#Body").css("display","none");
 			break;
 
-			case "updateSystem":
+			case "Update":
 				Groups();
 			break;
 		};

@@ -5,21 +5,13 @@ local Tunnel = module("vrp","lib/Tunnel")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("keyboard",cRP)
+Creative = {}
+Tunnel.bindInterface("keyboard",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Status = ""
 local Progress = false
------------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SUCESS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -78,7 +70,7 @@ function Password(First)
 	})
 
 	if Array then
-		if Array[1]["input"] == nil then
+		if not Array[1]["input"] then
 			return false
 		end
 
@@ -104,7 +96,7 @@ function OneStep(First)
 	})
 
 	if Array then
-		if Array[1]["input"] == nil then
+		if not Array[1]["input"] then
 			return false
 		end
 
@@ -125,20 +117,18 @@ function TwoStep(First,Second)
 				copy = "undefined",
 				area = "undefined",
 				word = "undefined"
-
 			},{
 				id = 1,
 				txt = Second,
 				copy = "undefined",
 				area = "undefined",
 				word = "undefined"
-
 			}
 		}
 	})
 
 	if Array then
-		if Array[1]["input"] == nil or Array[2]["input"] == nil then
+		if not Array[1]["input"] or not Array[2]["input"] then
 			return false
 		end
 
@@ -159,27 +149,24 @@ function ThreeStep(First,Second,Third)
 				copy = "undefined",
 				area = "undefined",
 				word = "undefined"
-
 			},{
 				id = 1,
 				txt = Second,
 				copy = "undefined",
 				area = "undefined",
 				word = "undefined"
-
 			},{
 				id = 2,
 				txt = Third,
 				copy = "undefined",
 				area = "undefined",
 				word = "undefined"
-
 			}
 		}
 	})
 
 	if Array then
-		if Array[1]["input"] == nil or Array[2]["input"] == nil or Array[3]["input"] == nil then
+		if not Array[1]["input"] or not Array[2]["input"] or not Array[3]["input"] then
 			return false
 		end
 
@@ -200,34 +187,30 @@ function ThreeFourth(First,Second,Third,Fourth)
 				copy = "undefined",
 				area = "undefined",
 				word = "undefined"
-
 			},{
 				id = 1,
 				txt = Second,
 				copy = "undefined",
 				area = "undefined",
 				word = "undefined"
-
 			},{
 				id = 2,
 				txt = Third,
 				copy = "undefined",
 				area = "undefined",
 				word = "undefined"
-
 			},{
 				id = 3,
 				txt = Fourth,
 				copy = "undefined",
 				area = true,
 				word = "undefined"
-
 			}
 		}
 	})
 
 	if Array then
-		if Array[1]["input"] == nil or Array[2]["input"] == nil or Array[3]["input"] == nil or Array[4]["input"] == nil then
+		if not Array[1]["input"] or not Array[2]["input"] or not Array[3]["input"] or not Array[4]["input"] then
 			return false
 		end
 
@@ -248,7 +231,6 @@ function CopyStep(First,Copy)
 				copy = Copy,
 				area = "undefined",
 				word = "undefined"
-
 			}
 		}
 	})
@@ -267,13 +249,12 @@ function AreaStep(First)
 				copy = "undefined",
 				area = true,
 				word = "undefined"
-
 			}
 		}
 	})
 
 	if Array then
-		if Array[1]["input"] == nil then
+		if not Array[1]["input"] then
 			return false
 		end
 
@@ -285,43 +266,43 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYWORD
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.keyWord(First)
+function Creative.keyWord(First)
 	return Password(First)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYSINGLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.keySingle(First)
+function Creative.keySingle(First)
 	return OneStep(First)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYDOUBLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.keyDouble(First,Second)
+function Creative.keyDouble(First,Second)
 	return TwoStep(First,Second)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYTRIPLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.keyTriple(First,Second,Third)
+function Creative.keyTriple(First,Second,Third)
 	return ThreeStep(First,Second,Third)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYFOURTH
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.keyFourth(First,Second,Third,Fourth)
+function Creative.keyFourth(First,Second,Third,Fourth)
 	return ThreeFourth(First,Second,Third,Fourth)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYAREA
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.keyArea(First)
+function Creative.keyArea(First)
 	return AreaStep(First)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYCOPY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.keyCopy(First,Copy)
+function Creative.keyCopy(First,Copy)
 	return CopyStep(First,Copy)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

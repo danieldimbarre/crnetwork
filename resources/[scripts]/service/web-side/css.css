@@ -32,7 +32,6 @@ body {
 	height: 695px;
 	padding: 30px;
 	position: relative;
-	border-radius: 10px;
 	background: rgba(15,15,15,.75);
 }
 
@@ -46,7 +45,6 @@ body {
 	float: left;
 	width: 540px;
 	padding-top: 14px;
-	border-radius: 3px;
 	letter-spacing: 1px;
 	padding-bottom: 14px;
 	background: rgba(15,15,15,.75);
@@ -121,7 +119,6 @@ vermelho {
 	padding: 30px;
 	color: #715611;
 	position: absolute;
-	border-radius: 10px;
 	background: #fec026;
 	box-shadow: 0 0 10px #181818;
 }
@@ -147,7 +144,6 @@ vermelho {
 	color: #715611;
 	padding: 10px 0;
 	margin-right: 10px;
-	border-radius: 3px;
 	letter-spacing: 1px;
 	background: #fec026;
 }
@@ -164,7 +160,6 @@ vermelho {
 	padding: 10px;
 	background: #fff;
 	margin-right: 5px;
-	border-radius: 3px;
 	letter-spacing: 1px;
 	margin-bottom: 10px;
 }

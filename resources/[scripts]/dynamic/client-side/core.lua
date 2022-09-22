@@ -10,14 +10,6 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 vSERVER = Tunnel.getInterface("dynamic")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local menuOpen = false
@@ -69,15 +61,17 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("dynamic:closeSystem")
 AddEventHandler("dynamic:closeSystem",function()
-	SendNUIMessage({ close = true })
-	SetNuiFocus(false,false)
-	menuOpen = false
+	if menuOpen then
+		SendNUIMessage({ close = true })
+		SetNuiFocus(false,false)
+		menuOpen = false
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALFUNCTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("globalFunctions",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not menuOpen and LocalPlayer["state"]["Network"] and LocalPlayer["state"]["Route"] < 900000 then
+	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not menuOpen and LocalPlayer["state"]["Network"] and LocalPlayer["state"]["Route"] < 900000 and not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
 
@@ -149,7 +143,7 @@ end)
 -- EMERGENCYFUNCTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("emergencyFunctions",function()
-	if LocalPlayer["state"]["Police"] or LocalPlayer["state"]["Paramedic"] then
+	if (LocalPlayer["state"]["Police"] or LocalPlayer["state"]["Paramedic"]) and not IsPauseMenuActive() then
 		if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not menuOpen and LocalPlayer["state"]["Network"] and LocalPlayer["state"]["Route"] < 900000 then
 
 			local Ped = PlayerPedId()

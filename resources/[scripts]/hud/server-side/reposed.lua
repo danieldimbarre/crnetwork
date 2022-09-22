@@ -15,6 +15,8 @@ AddEventHandler("Reposed",function(source,Passport,Seconds)
 	else
 		Reposed[Passport] = os.time() + Seconds
 	end
+
+	TriggerClientEvent("hud:Reposed",source,Reposed[Passport] - os.time())
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REPOSED
@@ -29,4 +31,14 @@ exports("Reposed",function(Passport)
 	end
 
 	return false
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Connect",function(Passport,source)
+	if Reposed[Passport] then
+		if Reposed[Passport] > os.time() then
+			TriggerClientEvent("hud:Reposed",source,Reposed[Passport] - os.time())
+		end
+	end
 end)

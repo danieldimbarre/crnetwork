@@ -1,5 +1,5 @@
-RegisterNetEvent("hostingSession")
-RegisterNetEvent("hostedSession")
+RegisterServerEvent("hostingSession")
+RegisterServerEvent("hostedSession")
 
 local currentHosting
 local hostReleaseCallbacks = {}

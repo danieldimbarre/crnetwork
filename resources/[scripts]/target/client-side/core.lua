@@ -9,14 +9,6 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 vSERVER = Tunnel.getInterface("target")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Zones = {}
@@ -228,23 +220,16 @@ AddEventHandler("target:animDeitar",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSYSTEM
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	RegisterCommand("+entityTarget",TargetEnable)
 	RegisterCommand("-entityTarget",TargetDisable)
 	RegisterKeyMapping("+entityTarget","Interação auricular.","keyboard","LMENU")
-
-	-- AddTargetModel({ 1631638868,2117668672,-1498379115,-1519439119,-289946279 },{
-	-- 	options = {
-	-- 		{
-	-- 			event = "target:animDeitar",
-	-- 			label = "Deitar",
-	-- 			tunnel = "client"
-	-- 		}
-	-- 	},
-	-- 	Distance = 1.0
-	-- })
 
 	AddBoxZone("CallBurgerShot",vec3(-1187.86,-904.92,13.73),0.25,0.25,{
 		name = "CallBurgerShot",
@@ -333,8 +318,7 @@ CreateThread(function()
 
 	AddCircleZone("PackSend01",vec3(1175.0,2708.21,38.08),0.5,{
 		name = "PackMoney01",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "1",
 		Distance = 2.5,
@@ -349,8 +333,7 @@ CreateThread(function()
 
 	AddCircleZone("PackSend02",vec3(-2961.15,482.92,15.69),0.5,{
 		name = "PackMoney02",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "2",
 		Distance = 2.5,
@@ -365,8 +348,7 @@ CreateThread(function()
 
 	AddCircleZone("PackSend03",vec3(-1211.96,-331.97,37.78),0.5,{
 		name = "PackMoney03",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "3",
 		Distance = 2.5,
@@ -381,8 +363,7 @@ CreateThread(function()
 
 	AddCircleZone("PackSend04",vec3(-351.37,-51.25,49.03),0.5,{
 		name = "PackMoney04",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "4",
 		Distance = 2.5,
@@ -397,8 +378,7 @@ CreateThread(function()
 
 	AddCircleZone("PackSend05",vec3(313.76,-280.45,54.16),0.5,{
 		name = "PackMoney05",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "5",
 		Distance = 2.5,
@@ -413,8 +393,7 @@ CreateThread(function()
 
 	AddCircleZone("PackSend06",vec3(149.44,-1042.06,29.37),0.5,{
 		name = "PackMoney06",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "6",
 		Distance = 2.5,
@@ -440,8 +419,7 @@ CreateThread(function()
 
 	AddCircleZone("Trucker",vec3(1239.87,-3257.2,7.09),0.5,{
 		name = "Trucker",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -467,8 +445,7 @@ CreateThread(function()
 
 	AddCircleZone("makePaper",vec3(-533.18,5292.15,74.17),0.5,{
 		name = "makePaper",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 0.75,
 		options = {
@@ -483,8 +460,7 @@ CreateThread(function()
 
 	AddCircleZone("Yoga01",vec3(-492.83,-217.31,35.61),0.5,{
 		name = "Yoga01",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -498,8 +474,7 @@ CreateThread(function()
 
 	AddCircleZone("Yoga02",vec3(-492.87,-219.03,36.55),0.5,{
 		name = "Yoga02",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -513,8 +488,7 @@ CreateThread(function()
 
 	AddCircleZone("Yoga03",vec3(-492.89,-220.68,36.51),0.5,{
 		name = "Yoga03",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -528,8 +502,7 @@ CreateThread(function()
 
 	AddCircleZone("Yoga04",vec3(-490.21,-220.91,36.51),0.5,{
 		name = "Yoga04",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -543,8 +516,7 @@ CreateThread(function()
 
 	AddCircleZone("Yoga05",vec3(-490.18,-219.24,36.58),0.5,{
 		name = "Yoga05",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -558,8 +530,7 @@ CreateThread(function()
 
 	AddCircleZone("Yoga06",vec3(-490.16,-217.33,36.63),0.5,{
 		name = "Yoga06",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -751,8 +722,7 @@ CreateThread(function()
 
 	AddCircleZone("Juice01",vec3(-1190.76,-904.24,13.99),0.5,{
 		name = "Juice01",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -767,8 +737,7 @@ CreateThread(function()
 
 	AddCircleZone("Burger01",vec3(-1202.09,-897.2,13.99),0.5,{
 		name = "Burger01",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.0,
 		options = {
@@ -783,8 +752,7 @@ CreateThread(function()
 
 	AddCircleZone("Box01",vec3(-1197.92,-892.28,13.99),0.5,{
 		name = "Box01",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -799,8 +767,7 @@ CreateThread(function()
 
 	AddCircleZone("Juice02",vec3(810.69,-764.58,26.77),0.5,{
 		name = "Juice02",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -815,8 +782,7 @@ CreateThread(function()
 
 	AddCircleZone("Burger02",vec3(807.68,-762.3,26.77),0.5,{
 		name = "Burger02",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.0,
 		options = {
@@ -831,8 +797,7 @@ CreateThread(function()
 
 	AddCircleZone("Box02",vec3(809.87,-761.15,26.77),0.5,{
 		name = "Box02",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -847,8 +812,7 @@ CreateThread(function()
 
 	AddCircleZone("Juice03",vec3(-590.36,-1058.54,22.34),0.5,{
 		name = "Juice03",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -863,8 +827,7 @@ CreateThread(function()
 
 	AddCircleZone("Burger03",vec3(-590.49,-1056.51,22.36),0.5,{
 		name = "Burger03",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.0,
 		options = {
@@ -879,8 +842,7 @@ CreateThread(function()
 
 	AddCircleZone("Box03",vec3(-590.5,-1063.02,22.36),0.5,{
 		name = "Box03",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -895,8 +857,7 @@ CreateThread(function()
 
 	AddCircleZone("Juice04",vec3(126.28,-1035.83,29.27),0.5,{
 		name = "Juice04",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -911,8 +872,7 @@ CreateThread(function()
 
 	AddCircleZone("Burger04",vec3(122.31,-1038.35,29.27),0.5,{
 		name = "Burger04",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.0,
 		options = {
@@ -927,8 +887,7 @@ CreateThread(function()
 
 	AddCircleZone("Box04",vec3(122.79,-1044.03,29.27),0.5,{
 		name = "Box04",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.25,
 		options = {
@@ -943,8 +902,7 @@ CreateThread(function()
 
 	AddCircleZone("tabletVehicles01",vec3(-38.9,-1100.22,27.26),0.5,{
 		name = "tabletVehicles01",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "Santos",
 		Distance = 1.0,
@@ -959,8 +917,7 @@ CreateThread(function()
 
 	AddCircleZone("tabletVehicles02",vec3(-40.37,-1094.57,27.26),0.5,{
 		name = "tabletVehicles02",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "Santos",
 		Distance = 1.0,
@@ -975,8 +932,7 @@ CreateThread(function()
 
 	AddCircleZone("tabletVehicles03",vec3(-46.87,-1095.5,27.26),0.5,{
 		name = "tabletVehicles03",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "Santos",
 		Distance = 1.0,
@@ -991,8 +947,7 @@ CreateThread(function()
 
 	AddCircleZone("tabletVehicles04",vec3(-51.59,-1094.98,27.26),0.5,{
 		name = "tabletVehicles04",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "Santos",
 		Distance = 1.0,
@@ -1007,8 +962,7 @@ CreateThread(function()
 
 	AddCircleZone("tabletVehicles05",vec3(-51.15,-1087.13,27.26),0.5,{
 		name = "tabletVehicles05",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "Santos",
 		Distance = 1.0,
@@ -1023,8 +977,7 @@ CreateThread(function()
 
 	AddCircleZone("tabletVehicles06",vec3(1224.78,2728.01,38.0),0.5,{
 		name = "tabletVehicles06",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		shop = "Sandy",
 		Distance = 2.0,
@@ -1039,8 +992,7 @@ CreateThread(function()
 
 	AddCircleZone("cemiteryMan",vec3(-1745.57,-205.19,57.37),0.5,{
 		name = "cemiteryMan",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.0,
 		options = {
@@ -1054,8 +1006,7 @@ CreateThread(function()
 
 	AddCircleZone("CassinoWheel",vec3(1112.05,228.11,-49.64),0.5,{
 		name = "CassinoWheel",
-		heading = 3374176,
-		useZ = true
+		heading = 3374176
 	},{
 		Distance = 1.5,
 		options = {
@@ -1071,7 +1022,7 @@ end)
 -- TARGETENABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function TargetEnable()
-	if LocalPlayer["state"]["Active"] then
+	if LocalPlayer["state"]["Active"] and not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
 
 		if LocalPlayer["state"]["Buttons"] or LocalPlayer["state"]["Commands"] or LocalPlayer["state"]["Handcuff"] or Sucess or IsPedArmed(Ped,6) or IsPedInAnyVehicle(Ped) or not LocalPlayer["state"]["Network"] or LocalPlayer["state"]["Route"] > 900000 then

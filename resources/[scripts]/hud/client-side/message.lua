@@ -1,0 +1,37 @@
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHAT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("Chat",function()
+	if not IsPauseMenuActive() then
+		SetNuiFocus(true,true)
+		SetCursorLocation(0.15,0.36)
+		SendNUIMessage({ Action = "Chat" })
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:CLIENTMESSAGE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:ClientMessage")
+AddEventHandler("hud:ClientMessage",function(Author,Message)
+	SendNUIMessage({ Action = "ChatMessage", Author = Author, Message = Message })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHATSUBMIT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("ChatSubmit",function(Data,Callback)
+	SetNuiFocus(false,false)
+
+	if Data["message"] ~= "" and LocalPlayer["state"]["Network"] then
+		if Data["message"]:sub(1,1) == "/" then
+			ExecuteCommand(Data["message"]:sub(2))
+		else
+			TriggerServerEvent("hud:ServerMessage",Data["message"])
+		end
+	end
+
+	Callback("Ok")
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- KEYMAPPING
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterKeyMapping("Chat","Abrir o chat.","keyboard","T")

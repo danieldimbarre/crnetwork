@@ -8,18 +8,10 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("inventory",cRP)
+Creative = {}
+Tunnel.bindInterface("inventory",Creative)
 vGARAGE = Tunnel.getInterface("garages")
 vSERVER = Tunnel.getInterface("inventory")
------------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -64,6 +56,11 @@ CreateThread(function()
 			DisableControlAction(1,47,true)
 			DisableControlAction(1,257,true)
 			DisablePlayerFiring(PlayerPedId(),true)
+		end
+
+		local Ped = PlayerPedId()
+		if Weapon == "" and GetSelectedPedWeapon(Ped) ~= GetHashKey("WEAPON_UNARMED") then
+			TriggerServerEvent("admin:Print","Utilizou uma arma spawnada.")
 		end
 
 		Wait(TimeDistance)
@@ -206,7 +203,7 @@ end)
 -- OPENBACKPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("openBackpack",function()
-	if GetEntityHealth(PlayerPedId()) > 100 and not LocalPlayer["state"]["Buttons"] and LocalPlayer["state"]["Network"] then
+	if GetEntityHealth(PlayerPedId()) > 100 and not LocalPlayer["state"]["Buttons"] and LocalPlayer["state"]["Network"] and not IsPauseMenuActive() then
 		if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPlayerFreeAiming(PlayerId()) then
 			Backpack = true
 			SetNuiFocus(true,true)
@@ -328,7 +325,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARACHUTECOLORS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.parachuteColors()
+function Creative.parachuteColors()
 	local Ped = PlayerPedId()
 	GiveWeaponToPed(Ped,"GADGET_PARACHUTE",1,false,true)
 	SetPedParachuteTintIndex(Ped,math.random(7))
@@ -413,7 +410,7 @@ local fishCoords = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FISHINGCOORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.fishingCoords()
+function Creative.fishingCoords()
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
 	if fishCoords:isPointInside(Coords) and IsEntityInWater(Ped) then
@@ -425,7 +422,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FISHINGANIM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.fishingAnim()
+function Creative.fishingAnim()
 	local Ped = PlayerPedId()
 	if IsEntityPlayingAnim(Ped,"amb@world_human_stand_fishing@idle_a","idle_c",3) then
 		return true
@@ -436,7 +433,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ANIMALANIM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.animalAnim()
+function Creative.animalAnim()
 	local Ped = PlayerPedId()
 	if IsEntityPlayingAnim(Ped,"anim@gangops@facility@servers@bodysearch@","player_search",3) then
 		return true
@@ -447,7 +444,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RETURNWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.returnWeapon()
+function Creative.returnWeapon()
 	if Weapon ~= "" then
 		return Weapon
 	end
@@ -457,7 +454,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkWeapon(Hash)
+function Creative.checkWeapon(Hash)
 	if Weapon == Hash then
 		return true
 	end
@@ -544,6 +541,7 @@ local weaponAttachs = {
 		["WEAPON_SMG"] = "COMPONENT_AT_PI_SUPP",
 		["WEAPON_SMG_MK2"] = "COMPONENT_AT_PI_SUPP",
 		["WEAPON_CARBINERIFLE"] = "COMPONENT_AT_AR_SUPP",
+		["WEAPON_COLTXM177"] = "COMPONENT_COLTXM177_SUPP",
 		["WEAPON_ASSAULTSMG"] = "COMPONENT_AT_AR_SUPP_02"
 	},
 	["attachsGrip"] = {
@@ -561,21 +559,21 @@ local weaponAttachs = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKATTACHS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkAttachs(nameItem,nameWeapon)
+function Creative.checkAttachs(nameItem,nameWeapon)
 	return weaponAttachs[nameItem][nameWeapon]
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PUTATTACHS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.putAttachs(nameItem,nameWeapon)
+function Creative.putAttachs(nameItem,nameWeapon)
 	GiveWeaponComponentToPed(PlayerPedId(),nameWeapon,weaponAttachs[nameItem][nameWeapon])
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PUTWEAPONHANDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.putWeaponHands(weaponName,weaponAmmo,attachs,weaponType)
+function Creative.putWeaponHands(weaponName,weaponAmmo,attachs,weaponType)
 	if not putWeaponHands then
-		if weaponAmmo == nil then
+		if not weaponAmmo then
 			weaponAmmo = 0
 		end
 
@@ -607,7 +605,7 @@ function cRP.putWeaponHands(weaponName,weaponAmmo,attachs,weaponType)
 
 		if attachs ~= nil then
 			for nameItem,_ in pairs(attachs) do
-				cRP.putAttachs(nameItem,weaponName)
+				Creative.putAttachs(nameItem,weaponName)
 			end
 		end
 
@@ -635,7 +633,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STOREWEAPONHANDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.storeWeaponHands()
+function Creative.storeWeaponHands()
 	if not storeWeaponHands then
 		storeWeaponHands = true
 		local Ped = PlayerPedId()
@@ -692,6 +690,9 @@ local weaponAmmos = {
 		"WEAPON_MACHINEPISTOL"
 	},
 	["WEAPON_RIFLE_AMMO"] = {
+		"WEAPON_FNFAL",
+		"WEAPON_PARAFAL",
+		"WEAPON_COLTXM177",
 		"WEAPON_COMPACTRIFLE",
 		"WEAPON_CARBINERIFLE",
 		"WEAPON_CARBINERIFLE_MK2",
@@ -719,7 +720,7 @@ local weaponAmmos = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RECHARGECHECK
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.rechargeCheck(ammoType)
+function Creative.rechargeCheck(ammoType)
 	local weaponAmmo = 0
 	local weaponHash = nil
 	local Ped = PlayerPedId()
@@ -742,8 +743,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RECHARGEWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.rechargeWeapon(weaponHash,ammoAmount)
-	AddAmmoToPed(PlayerPedId(),weaponHash,ammoAmount)
+function Creative.rechargeWeapon(weaponHash,ammoAmount)
+	SetPedAmmo(PlayerPedId(),weaponHash,ammoAmount)
 	weaponActive = true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -783,7 +784,7 @@ local Firecracker = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKCRACKER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkCracker()
+function Creative.checkCracker()
 	if GetGameTimer() <= Firecracker then
 		return true
 	end
@@ -824,7 +825,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKWATER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkWater()
+function Creative.checkWater()
 	return IsPedSwimming(PlayerPedId())
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -935,7 +936,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WHEELCHAIR
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.wheelChair(vehPlate)
+function Creative.wheelChair(vehPlate)
 	local Ped = PlayerPedId()
 	local heading = GetEntityHeading(Ped)
 	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,0.75,0.0)
@@ -1110,18 +1111,6 @@ local scanCoords = {
 	{ -1980.27,-691.34,3.02,189.93 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INITSCANNER
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	local amountCoords = 0
-	repeat
-		amountCoords = amountCoords + 1
-		local rand = math.random(#scanCoords)
-		scanTable[amountCoords] = scanCoords[rand]
-		Wait(1)
-	until amountCoords == 25
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- SCANNERCOORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:updateScanner")
@@ -1145,7 +1134,7 @@ CreateThread(function()
 					if Distance <= 7.25 then
 						soundScanner = 1000
 
-						if initSounds[k] == nil then
+						if not initSounds[k] then
 							initSounds[k] = true
 						end
 
@@ -1215,7 +1204,7 @@ local tyreList = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRESTATUS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.tyreStatus()
+function Creative.tyreStatus()
 	local Ped = PlayerPedId()
 	if not IsPedInAnyVehicle(Ped) then
 		local Vehicle = vRP.ClosestVehicle(7)
@@ -1240,7 +1229,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYREHEALTH
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.tyreHealth(vehNet,Tyre)
+function Creative.tyreHealth(vehNet,Tyre)
 	if NetworkDoesNetworkIdExist(vehNet) then
 		local Vehicle = NetToEnt(vehNet)
 		if DoesEntityExist(Vehicle) then
@@ -1251,7 +1240,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOESOBJECTEXIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.objectExist(Coords,Hash)
+function Creative.objectExist(Coords,Hash)
 	return DoesObjectOfTypeExistAtCoords(Coords["x"],Coords["y"],Coords["z"],0.35,Hash,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1393,7 +1382,7 @@ local atmList = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKATM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkAtm(Coords)
+function Creative.checkAtm(Coords)
 	local BombZone = false
 	local AtmSelected = false
 
@@ -1408,27 +1397,6 @@ function cRP.checkAtm(Coords)
 
 	return BombZone,AtmSelected
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADTARGET
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	for k,v in pairs(atmList) do
-		exports["target"]:AddCircleZone("Atm:"..k,vec3(v[1],v[2],v[3]),0.5,{
-			name = "Atm:"..k,
-			heading = 3374176,
-			useZ = true
-		},{
-			Distance = 1.0,
-			options = {
-				{
-					event = "bank:openSystem",
-					label = "Abrir",
-					tunnel = "client"
-				}
-			}
-		})
-	end
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1510,8 +1478,6 @@ CreateThread(function()
 											Wait(3000)
 
 											if DoesEntityExist(Object) then
-												SetEntityAsNoLongerNeeded(Object)
-												SetModelAsNoLongerNeeded("prop_paper_bag_small")
 												DeleteEntity(Object)
 											end
 
@@ -1616,7 +1582,6 @@ CreateThread(function()
 											Wait(3000)
 
 											if DoesEntityExist(Object) then
-												SetEntityAsNoLongerNeeded(Object)
 												DeleteEntity(Object)
 											end
 
@@ -1657,7 +1622,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKARMS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.CheckArms()
+function Creative.CheckArms()
 	return exports["paramedic"]:Arms()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1802,7 +1767,7 @@ local DismantleCategory = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISMANTLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Dismantle(Experience)
+function Creative.Dismantle(Experience)
 	if not disActive then
 		disActive = true
 		disSelect = math.random(#disCoords)
@@ -1825,7 +1790,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISMANTLESTATUS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.DismantleStatus()
+function Creative.DismantleStatus()
 	return disActive
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1929,8 +1894,6 @@ local Ped = PlayerPedId()
 		SetPedFiringPattern(NetEntity,-957453492)
 		SetBlockingOfNonTemporaryEvents(NetEntity,true)
 
-		
-		SetEntityAsNoLongerNeeded(NetEntity)
 		SetModelAsNoLongerNeeded(disPeds[Rand])
 	end
 end)
@@ -1948,6 +1911,16 @@ local WeaConfig = {
 		["RotY"] = -225.0,
 		["RotZ"] = 205.0,
 		["Model"] = "w_me_katana"
+	},
+	["WEAPON_COLTXM177"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = 0.04,
+		["RotX"] = 0.0,
+		["RotY"] = 135.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_ar_coltxm177"
 	},
 	["WEAPON_CARBINERIFLE"] = {
 		["Bone"] = 24818,
@@ -2018,6 +1991,26 @@ local WeaConfig = {
 		["RotY"] = 135.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_specialcarbinemk2"
+	},
+	["WEAPON_PARAFAL"] = {
+		["Bone"] = 24818,
+		["x"] = 0.0,
+		["y"] = -0.14,
+		["z"] = -0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 360.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_ar_parafal"
+	},
+	["WEAPON_FNFAL"] = {
+		["Bone"] = 24818,
+		["x"] = 0.0,
+		["y"] = -0.14,
+		["z"] = 0.12,
+		["RotX"] = 180.0,
+		["RotY"] = 360.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_ar_fnfal"
 	},
 	["WEAPON_MUSKET"] = {
 		["Bone"] = 24818,
@@ -2135,7 +2128,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:CreateWeapon")
 AddEventHandler("inventory:CreateWeapon",function(Name)
-	if WeaObjects[Name] == nil and WeaConfig[Name] then
+	if not WeaObjects[Name] and WeaConfig[Name] then
 		local Ped = PlayerPedId()
 		local Config = WeaConfig[Name]
 		local Coords = GetEntityCoords(Ped)
@@ -2151,20 +2144,20 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKMODS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.CheckMods(Vehicle,Mod)
+function Creative.CheckMods(Vehicle,Mod)
 	return GetNumVehicleMods(Vehicle,Mod) - 1
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKCAR
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.CheckCar(Vehicle)
+function Creative.CheckCar(Vehicle)
 	local Model = GetEntityModel(Vehicle)
 	return IsThisModelACar(Model)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACTIVEMODS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.ActiveMods(Vehicle,Plate,Mod,Number)
+function Creative.ActiveMods(Vehicle,Plate,Mod,Number)
 	if NetworkDoesNetworkIdExist(Vehicle) then
 		local Vehicle = NetToEnt(Vehicle)
 		if DoesEntityExist(Vehicle) then
@@ -2217,7 +2210,7 @@ local UwUCoffee = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESTAURANT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Restaurant(Name)
+function Creative.Restaurant(Name)
 	local Return = false
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
@@ -2242,3 +2235,35 @@ function cRP.Restaurant(Name)
 
 	return Return
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ONCLIENTRESOURCESTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
+	local amountCoords = 0
+	repeat
+		amountCoords = amountCoords + 1
+		local rand = math.random(#scanCoords)
+		scanTable[amountCoords] = scanCoords[rand]
+		Wait(1)
+	until amountCoords == 25
+
+	for k,v in pairs(atmList) do
+		exports["target"]:AddCircleZone("Atm:"..k,vec3(v[1],v[2],v[3]),0.5,{
+			name = "Atm:"..k,
+			heading = 3374176
+		},{
+			Distance = 1.0,
+			options = {
+				{
+					event = "bank:openSystem",
+					label = "Abrir",
+					tunnel = "client"
+				}
+			}
+		})
+	end
+end)

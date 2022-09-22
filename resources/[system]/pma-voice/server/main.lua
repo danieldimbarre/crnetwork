@@ -16,8 +16,9 @@ end
 function handleStateBagInitilization(source)
 	local plyState = Player(source).state
 	if not plyState.pmaVoiceInit then
+		plyState:set("call",60,true)
 		plyState:set("radio",60,true)
-		plyState:set("phone",60,true)
+		plyState:set("submix",nil,true)
 		plyState:set("proximity",{},true)
 		plyState:set("callChannel",0,true)
 		plyState:set("radioChannel",0,true)
@@ -26,7 +27,7 @@ function handleStateBagInitilization(source)
 	end
 end
 
-Citizen.CreateThreadNow(function()
+CreateThread(function()
 	local plyTbl = GetPlayers()
 	for i = 1,#plyTbl do
 		local ply = tonumber(plyTbl[i])
@@ -57,13 +58,13 @@ AddEventHandler("playerDropped",function()
 	end
 end)
 
-RegisterNetEvent("pma-voice:Megaphone")
+RegisterServerEvent("pma-voice:Megaphone")
 AddEventHandler("pma-voice:Megaphone",function(Status)
 	local source = source
 	TriggerClientEvent("pma-voice:syncMegaphone",-1,source,Status)
 end)
 
-RegisterNetEvent("pma-voice:Megaserver")
+RegisterServerEvent("pma-voice:Megaserver")
 AddEventHandler("pma-voice:Megaserver",function(source,Status)
 	TriggerClientEvent("pma-voice:syncMegaphone",-1,source,Status)
 end)

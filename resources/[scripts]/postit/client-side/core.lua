@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("postit",cRP)
+Creative = {}
+Tunnel.bindInterface("postit",Creative)
 vSERVER = Tunnel.getInterface("postit")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -60,7 +60,7 @@ CreateThread(function()
 			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 			if Distance <= v[5] then
 				local _,x,y = GetScreenCoordFromWorldCoord(v[1],v[2],v[3])
-				if displayText[k] == nil then
+				if not displayText[k] then
 					SendNUIMessage({ show = true, text = "", id = k, x = x, y = y })
 					displayText[k] = true
 				end

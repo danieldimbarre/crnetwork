@@ -82,7 +82,7 @@ function setPlayerRadio(source,_radioChannel)
 end
 exports("setPlayerRadio",setPlayerRadio)
 
-RegisterNetEvent("pma-voice:setPlayerRadio",function(radioChannel)
+RegisterServerEvent("pma-voice:setPlayerRadio",function(radioChannel)
 	setPlayerRadio(source,radioChannel)
 end)
 
@@ -99,7 +99,7 @@ function setTalkingOnRadio(talking)
 		end
 	end
 end
-RegisterNetEvent("pma-voice:setTalkingOnRadio",setTalkingOnRadio)
+RegisterServerEvent("pma-voice:setTalkingOnRadio",setTalkingOnRadio)
 
 AddEventHandler("onResourceStop",function(Resource)
 	for channel,cfxFunctionRef in pairs(radioChecks) do

@@ -7,55 +7,9 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("crafting",cRP)
+Creative = {}
+Tunnel.bindInterface("crafting",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
------------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
------------------------------------------------------------------------------------------------------------------------------------------
-local AmountCrafts = {
-	["weedclone"] = {
-		["Max"] = 2,
-		["Users"] = {}
-	},
-	["notebook"] = {
-		["Max"] = 1
-	},
-	["nitro"] = {
-		["Max"] = 10
-	},
-	["credential"] = {
-		["Max"] = 25
-	},
-	["lockpick"] = {
-		["Max"] = 10
-	},
-	["WEAPON_NAILGUN"] = {
-		["Max"] = 1
-	},
-	["WEAPON_NAIL_AMMO"] = {
-		["Max"] = 100
-	},
-	["repairkit03"] = {
-		["Max"] = 3
-	},
-	["repairkit04"] = {
-		["Max"] = 1
-	}
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- CRAFTING:CONTAINERS
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("crafting:Containers",function()
-	AmountCrafts["nitro"]["Max"] = 10
-	AmountCrafts["notebook"]["Max"] = 1
-	AmountCrafts["credential"]["Max"] = 25
-	AmountCrafts["lockpick"]["Max"] = 10
-	AmountCrafts["WEAPON_NAILGUN"]["Max"] = 1
-	AmountCrafts["WEAPON_NAIL_AMMO"]["Max"] = 100
-	AmountCrafts["repairkit03"]["Max"] = 3
-	AmountCrafts["repairkit04"]["Max"] = 1
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1699,72 +1653,12 @@ local List = {
 				}
 			}
 		}
-	},
-	["Containers"] = {
-		["List"] = {
-			["lockpick"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 575
-				}
-			},
-			["WEAPON_NAILGUN"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 3250
-				}
-			},
-			["WEAPON_NAIL_AMMO"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 2
-				}
-			},
-			["repairkit03"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 7250
-				}
-			},
-			["repairkit04"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 15250
-				}
-			},
-			["credential"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 1000
-				}
-			},
-			["notebook"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 4250
-				}
-			},
-			["nitro"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 400
-				}
-			}
-		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTPERM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.requestPerm(Name,Type)
+function Creative.requestPerm(Name,Type)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -1782,7 +1676,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTCRAFTING
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.requestCrafting(Type)
+function Creative.requestCrafting(Type)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -1831,7 +1725,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FUNCTIONCRAFTING
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.functionCrafting(Item,Type,Amount,Slot)
+function Creative.functionCrafting(Item,Type,Amount,Slot)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -1839,28 +1733,8 @@ function cRP.functionCrafting(Item,Type,Amount,Slot)
 		if Amount <= 0 then Amount = 1 end
 
 		if List[Type]["List"][Item] then
-			if AmountCrafts[Item] then
-				if AmountCrafts[Item]["Users"] then
-					if AmountCrafts[Item]["Users"][Passport] == nil then
-						AmountCrafts[Item]["Users"][Passport] = 0
-					end
-
-					if (AmountCrafts[Item]["Users"][Passport] + Amount) > AmountCrafts[Item]["Max"] then
-						TriggerClientEvent("Notify",source,"amarelo","Estoque finalizado.",3000)
-						TriggerClientEvent("crafting:Update",source,"requestCrafting")
-						return
-					end
-				else
-					if AmountCrafts[Item]["Max"] < Amount then
-						TriggerClientEvent("Notify",source,"amarelo","Estoque finalizado.",3000)
-						TriggerClientEvent("crafting:Update",source,"requestCrafting")
-						return
-					end
-				end
-			end
-
 			if vRP.MaxItens(Passport,Item,List[Type]["List"][Item]["amount"] * Amount) then
-				TriggerClientEvent("Notify",source,"amarelo","Estoque finalizado.",3000)
+				TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
 				TriggerClientEvent("crafting:Update",source,"requestCrafting")
 				return
 			end
@@ -1883,14 +1757,6 @@ function cRP.functionCrafting(Item,Type,Amount,Slot)
 					vRP.RemoveItem(Passport,consultItem[2],parseInt(v * Amount))
 				end
 
-				if AmountCrafts[Item] then
-					if AmountCrafts[Item]["Users"] then
-						AmountCrafts[Item]["Users"][Passport] = AmountCrafts[Item]["Users"][Passport] + Amount
-					else
-						AmountCrafts[Item]["Max"] = AmountCrafts[Item]["Max"] - Amount
-					end
-				end
-
 				vRP.GenerateItem(Passport,Item,List[Type]["List"][Item]["amount"] * Amount,false,Slot)
 			else
 				TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
@@ -1903,7 +1769,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FUNCTIONDESTROY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.functionDestroy(Item,Type,Amount,Slot)
+function Creative.functionDestroy(Item,Type,Amount,Slot)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -1937,7 +1803,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POPULATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("crafting:populateSlot")
+RegisterServerEvent("crafting:populateSlot")
 AddEventHandler("crafting:populateSlot",function(Item,Slot,Target,Amount)
 	local source = source
 	local Amount = parseInt(Amount)
@@ -1954,7 +1820,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("crafting:updateSlot")
+RegisterServerEvent("crafting:updateSlot")
 AddEventHandler("crafting:updateSlot",function(Item,Slot,Target,Amount)
 	local source = source
 	local Amount = parseInt(Amount)

@@ -10,12 +10,12 @@ vSERVER = Tunnel.getInterface("chest")
 -- CHESTCOORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local chestCoords = {
-	{ "State",360.43,-1600.48,25.83,"3" },
-	{ "Lspd",486.46,-994.94,31.07,"3" },
-	{ "Sheriff",1836.96,3685.16,34.80,"3" },
-	{ "Sheriff",-445.38,6019.65,37.38,"3" },
-	{ "Ranger",386.72,800.09,187.47,"3" },
-	{ "Corrections",1844.31,2573.84,46.26,"3" },
+	{ "Police",360.43,-1600.48,25.83,"3" },
+	{ "Police",486.46,-994.94,31.07,"3" },
+	{ "Police",1836.96,3685.16,34.80,"3" },
+	{ "Police",-445.38,6019.65,37.38,"3" },
+	{ "Police",386.72,800.09,187.47,"3" },
+	{ "Police",1844.31,2573.84,46.26,"3" },
 	{ "Paramedic",306.17,-601.98,43.25,"3" },
 	{ "Paramedic",-258.00,6332.62,32.72,"3" },
 	{ "BurgerShot",-1203.11,-895.47,13.99,"1" },
@@ -83,19 +83,14 @@ local chestInfos = {
 -- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
+	if Resource ~= GetCurrentResourceName() then
+		return
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADTARGET
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+
 	for k,v in pairs(chestCoords) do
 		exports["target"]:AddCircleZone("Chest:"..k,vec3(v[2],v[3],v[4]),1.0,{
 			name = "Chest:"..k,
-			heading = 3374176,
-			useZ = true
+			heading = 3374176
 		},{
 			shop = v[1],
 			Distance = 1.5,
@@ -197,4 +192,12 @@ end)
 RegisterNetEvent("chest:UpdateWeight")
 AddEventHandler("chest:UpdateWeight",function(invPeso,invMaxpeso,chestPeso,chestMaxpeso)
 	SendNUIMessage({ action = "updateWeight", invPeso = invPeso, invMaxpeso = invMaxpeso, chestPeso = chestPeso, chestMaxpeso = chestMaxpeso })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHEST:CLOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("chest:Close")
+AddEventHandler("chest:Close",function(action)
+	SendNUIMessage({ action = "hideMenu" })
+	SetNuiFocus(false,false)
 end)

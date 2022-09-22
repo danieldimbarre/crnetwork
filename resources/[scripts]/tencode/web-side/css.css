@@ -22,7 +22,6 @@ body {
 #midCode {
 	width: 498px;
 	margin: 0 auto;
-	border-radius: 3px;
 }
 
 #midCode div {
@@ -55,7 +54,6 @@ body {
 	line-height: 20px;
 	padding: 10px 15px;
 	position: absolute;
-	border-radius: 3px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	text-shadow: 1px 1px #000;
@@ -70,7 +68,6 @@ body {
 	font-size: 12px;
 	text-align: right;
 	line-height: 20px;
-	border-radius: 3px;
 	padding: 10px 15px;
 	position: absolute;
 	letter-spacing: 1px;
@@ -102,5 +99,4 @@ legend {
 	margin-bottom: 5px;
 	background: #fec026;
 	padding-right: 5px;
-	border-radius: 3px;
 }

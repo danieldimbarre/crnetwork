@@ -27,20 +27,14 @@ end)
 -- SENDCODE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("sendCode",function(Data,Callback)
-	SetNuiFocus(false,false)
-	SetCursorLocation(0.5,0.5)
-	vSERVER.sendCode(Data["code"])
-	SendNUIMessage({ tencode = false })
+	if LocalPlayer["state"]["Network"] then
+		SetNuiFocus(false,false)
+		SetCursorLocation(0.5,0.5)
+		vSERVER.sendCode(Data["code"])
+		SendNUIMessage({ tencode = false })
+	end
 
 	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADRADAR
@@ -98,7 +92,7 @@ end)
 -- TOGGLERADAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleRadar",function()
-	if LocalPlayer["state"]["Network"] then
+	if LocalPlayer["state"]["Network"] and not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
 		if IsPedInAnyPoliceVehicle(Ped) and LocalPlayer["state"]["Police"] then
 			if policeRadar then
@@ -116,7 +110,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleFreeze",function()
 	local Ped = PlayerPedId()
-	if IsPedInAnyPoliceVehicle(Ped) and LocalPlayer["state"]["Police"] then
+	if IsPedInAnyPoliceVehicle(Ped) and LocalPlayer["state"]["Police"] and not IsPauseMenuActive() then
 		policeFreeze = not policeFreeze
 	end
 end)
@@ -124,7 +118,7 @@ end)
 -- TENCODE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("enterTencodes",function()
-	if LocalPlayer["state"]["Police"] and LocalPlayer["state"]["Network"] and LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Police"] and LocalPlayer["state"]["Network"] and LocalPlayer["state"]["Route"] < 900000 and not IsPauseMenuActive() then
 		SetNuiFocus(true,true)
 		SetCursorLocation(0.5,0.1)
 		SendNUIMessage({ tencode = true })

@@ -45,7 +45,7 @@ CreateThread(function()
 				TimeDistance = 1
 
 				local _,x,y = GetScreenCoordFromWorldCoord(CoordsMe["x"],CoordsMe["y"],CoordsMe["z"] + 0.7)
-				if showActive[k] == nil then
+				if not showActive[k] then
 					SendNUIMessage({ show = true, text = v[1], id = k, x = x, y = y, border = v[3] })
 					showActive[k] = true
 				end

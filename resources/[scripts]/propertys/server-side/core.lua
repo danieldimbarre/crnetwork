@@ -7,10 +7,11 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("propertys",cRP)
+Creative = {}
+Tunnel.bindInterface("propertys",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vSKINSHOP = Tunnel.getInterface("skinshop")
+vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -20,7 +21,7 @@ local Inside = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Propertys(Name)
+function Creative.Propertys(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -28,7 +29,7 @@ function cRP.Propertys(Name)
 		if Consult[1] then
 			if parseInt(Consult[1]["Passport"]) == Passport or vRP.InventoryFull(Passport,"propertys-"..Consult[1]["Serial"]) or Lock[Name] then
 				if os.time() > Consult[1]["Tax"] then
-					if vRP.Request(source,"Hipoteca atrasada, deseja efetuar o pagamento?","Sim, concluir pagamento","Não, pago depois") then
+					if vHUD.Request(source,"Hipoteca atrasada, deseja efetuar o pagamento?","Sim, concluir pagamento","Não, pago depois") then
 						if vRP.PaymentFull(Passport,source,Informations[Consult[1]["Interior"]]["Price"] * 0.1) then
 							vRP.Execute("propertys/Tax",{ name = Name })
 							TriggerClientEvent("Notify",source,"amarelo","Pagamento concluído.",5000)
@@ -49,7 +50,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:TOGGLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("propertys:Toggle")
+RegisterServerEvent("propertys:Toggle")
 AddEventHandler("propertys:Toggle",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -68,17 +69,17 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:BUY
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("propertys:Buy")
+RegisterServerEvent("propertys:Buy")
 AddEventHandler("propertys:Buy",function(Name)
 	local source = source
 	local Split = splitString(Name,"-")
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Consult = vRP.Query("propertys/Exist",{ name = Split[1] })
-		if Consult[1] == nil then
+		if not Consult[1] then
 			TriggerClientEvent("dynamic:closeSystem",source)
 
-			if vRP.Request(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudeia de ideia") then
+			if vHUD.Request(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudeia de ideia") then
 				local Interior = Split[2]
 
 				if vRP.PaymentFull(Passport,source,Informations[Interior]["Price"]) then
@@ -95,7 +96,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:LOCK
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("propertys:Lock")
+RegisterServerEvent("propertys:Lock")
 AddEventHandler("propertys:Lock",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -117,7 +118,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:SELL
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("propertys:Sell")
+RegisterServerEvent("propertys:Sell")
 AddEventHandler("propertys:Sell",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -127,13 +128,13 @@ AddEventHandler("propertys:Sell",function(Name)
 			if parseInt(Consult[1]["Passport"]) == Passport then
 				TriggerClientEvent("dynamic:closeSystem",source)
 
-				if vRP.Request(source,"Deseja vender a propriedade?","Sim, concluir a venda","Não, mudeia de ideia") then
+				if vHUD.Request(source,"Deseja vender a propriedade?","Sim, concluir a venda","Não, mudeia de ideia") then
 					vRP.RemSrvData("Vault:"..Name)
 					vRP.RemSrvData("Fridge:"..Name)
 
 					vRP.Execute("propertys/Sell",{ name = Name })
 					TriggerClientEvent("Notify",source,"amarelo","Venda concluída.",5000)
-					vRP.GiveBank(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.75,"Private")
+					vRP.GiveBank(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.75)
 				end
 			end
 		end
@@ -142,7 +143,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:CREDENTIALS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("propertys:Credentials")
+RegisterServerEvent("propertys:Credentials")
 AddEventHandler("propertys:Credentials",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -152,7 +153,7 @@ AddEventHandler("propertys:Credentials",function(Name)
 			if parseInt(Consult[1]["Passport"]) == Passport then
 				TriggerClientEvent("dynamic:closeSystem",source)
 
-				if vRP.Request(source,"Você escolheu reconfigurar todos os cartões de segurança, lembrando que ao prosseguir todos os cartões vão deixar de funcionar, deseja prosseguir?","Sim, prosseguir","Não, outra hora") then
+				if vHUD.Request(source,"Você escolheu reconfigurar todos os cartões de segurança, lembrando que ao prosseguir todos os cartões vão deixar de funcionar, deseja prosseguir?","Sim, prosseguir","Não, outra hora") then
 					local Serial = PropertysSerials()
 					vRP.Execute("propertys/Credentials",{ name = Name, serial = Serial })
 					vRP.GiveItem(Passport,"propertys-"..Serial,Consult[1]["Keys"],true)
@@ -164,7 +165,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Clothes()
+function Creative.Clothes()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -181,7 +182,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("propertys:Clothes")
+RegisterServerEvent("propertys:Clothes")
 AddEventHandler("propertys:Clothes",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -195,7 +196,7 @@ AddEventHandler("propertys:Clothes",function(Mode)
 			if Keyboard then
 				local Name = Keyboard[1]
 
-				if Consult[Name] == nil then
+				if not Consult[Name] then
 					Consult[Name] = vSKINSHOP.getCustomization(source)
 					vRP.SetSrvData("Wardrobe:"..Passport,Consult)
 					TriggerClientEvent("propertys:ClothesReset",source)
@@ -238,7 +239,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENCHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.OpenChest(Name,Mode)
+function Creative.OpenChest(Name,Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -312,7 +313,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Store(Item,Slot,Amount,Target,Name,Mode)
+function Creative.Store(Item,Slot,Amount,Target,Name,Mode)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -345,7 +346,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Take(Slot,Amount,Target,Name,Mode)
+function Creative.Take(Slot,Amount,Target,Name,Mode)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -366,7 +367,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Update(Slot,Target,Amount,Name,Mode)
+function Creative.Update(Slot,Target,Amount,Name,Mode)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -379,9 +380,13 @@ function cRP.Update(Slot,Target,Amount,Name,Mode)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ASYNCFUNCTIONS
+-- ONSERVERRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onServerResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	local Number = 100000
 	for Name,_ in pairs(Propertys) do
 		Number = Number + 1

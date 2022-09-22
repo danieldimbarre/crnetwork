@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("evidence",cRP)
+Creative = {}
+Tunnel.bindInterface("evidence",Creative)
 vCLIENT = Tunnel.getInterface("evidence")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -18,7 +18,7 @@ local evidenceNumber = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DROPEVIDENCE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("evidence:dropEvidence")
+RegisterServerEvent("evidence:dropEvidence")
 AddEventHandler("evidence:dropEvidence",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -40,7 +40,7 @@ AddEventHandler("evidence:dropEvidence",function(Mode)
 		evidenceNumber = evidenceNumber + 1
 		local Coords,Grid = vCLIENT.GetPostions(source)
 
-		if Evidences[Grid] == nil then
+		if not Evidences[Grid] then
 			Evidences[Grid] = {}
 		end
 
@@ -50,7 +50,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMOVEEVIDENCE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("evidence:removeEvidence")
+RegisterServerEvent("evidence:removeEvidence")
 AddEventHandler("evidence:removeEvidence",function(Id,Grid)
 	if Evidences[Grid] and Evidences[Grid][tostring(Id)] then
 		Evidences[Grid][tostring(Id)] = nil
@@ -59,7 +59,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PICKUPEVIDENCE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("evidence:pickupEvidence")
+RegisterServerEvent("evidence:pickupEvidence")
 AddEventHandler("evidence:pickupEvidence",function(Id,Grid)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -75,7 +75,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GETEVIDENCES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.GetEvidences(Grid)
+function Creative.GetEvidences(Grid)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Grid and Evidences[Grid] then

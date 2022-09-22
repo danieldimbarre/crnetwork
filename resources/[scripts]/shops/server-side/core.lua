@@ -7,9 +7,10 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("shops",cRP)
+Creative = {}
+Tunnel.bindInterface("shops",Creative)
 vCLIENT = Tunnel.getInterface("shops")
+vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -116,7 +117,6 @@ local shops = {
 			["rope"] = 875,
 			["firecracker"] = 100,
 			["radio"] = 975,
-			["cellphone"] = 575,
 			["binoculars"] = 275,
 			["camera"] = 275,
 			["vape"] = 4750,
@@ -307,7 +307,7 @@ local shops = {
 			["copper"] = 15,
 			["radio"] = 485,
 			["rope"] = 435,
-			["cellphone"] = 285,
+			["cellphone"] = 325,
 			["binoculars"] = 135,
 			["emptybottle"] = 15,
 			["switchblade"] = 215,
@@ -512,7 +512,7 @@ local userName2 = { "Smith","Johnson","Williams","Jones","Brown","Davis","Miller
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTPERM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.requestPerm(Type)
+function Creative.requestPerm(Type)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -537,7 +537,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.requestShop(name)
+function Creative.requestShop(name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -587,12 +587,12 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GETSHOPTYPE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.getShopType(Type)
+function Creative.getShopType(Type)
     return shops[Type]["mode"]
 end---------------------------------------------------------------------------------------------------------------------------------
 -- FUNCTIONSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.functionShops(Type,Item,Amount,Slot)
+function Creative.functionShops(Type,Item,Amount,Slot)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -601,7 +601,7 @@ function cRP.functionShops(Type,Item,Amount,Slot)
 			if Amount <= 0 then Amount = 1 end
 
 			local inventory = vRP.Inventory(Passport)
-			if (inventory[tostring(Slot)] and inventory[tostring(Slot)]["item"] == Item) or inventory[tostring(Slot)] == nil then
+			if (inventory[tostring(Slot)] and inventory[tostring(Slot)]["item"] == Item) or not inventory[tostring(Slot)] then
 				if shops[Type]["mode"] == "Buy" then
 					if vRP.MaxItens(Passport,Item,Amount) then
 						TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
@@ -702,7 +702,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POPULATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("shops:populateSlot")
+RegisterServerEvent("shops:populateSlot")
 AddEventHandler("shops:populateSlot",function(Item,Slot,Target,Amount)
 	local source = source
 	local Amount = parseInt(Amount)
@@ -719,7 +719,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POPULATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("shops:updateSlot")
+RegisterServerEvent("shops:updateSlot")
 AddEventHandler("shops:updateSlot",function(Item,Slot,Target,Amount)
 	local source = source
 	local Amount = parseInt(Amount)
@@ -737,5 +737,29 @@ AddEventHandler("shops:updateSlot",function(Item,Slot,Target,Amount)
 		end
 
 		vCLIENT.updateShops(source,"requestShop")
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DIGIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Digital = {
+	["cellphone"] = 725
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SHOPS:DIGITAL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("shops:Digital")
+AddEventHandler("shops:Digital",function(Item)
+	local source = source
+	local Amount = parseInt(Amount)
+	local Passport = vRP.Passport(source)
+	if Passport and Digital[Item] then
+		if vHUD.Request(source,"Deseja comprar o <b>"..itemName(Item).."</b> por <b>$"..parseFormat(Digital[Item]).."</b> dólares?","Sim, efetuar pagamento","Não, outra hora") then
+			if vRP.PaymentFull(Passport,source,Digital[Item]) then
+				vRP.GenerateItem(Passport,Item,1,true)
+			else
+				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
+			end
+		end
 	end
 end)

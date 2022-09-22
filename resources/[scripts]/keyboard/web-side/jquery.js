@@ -34,13 +34,13 @@ function AddRow(data){
 					element = $('<label for="usr">' + message + '</label><input type="password" placeholder="Preencha o campo." id="' + id + '" />');
 				}
 			} else {
-				element = $('<label for="usr">' + message + '</label><textarea type="text" placeholder="Preencha o campo." maxlength="850" id="' + id + '" /></textarea>');
+				element = $('<label for="usr">' + message + '</label><textarea type="text" placeholder="Preencha o campo." maxlength="500" id="' + id + '" /></textarea>');
 			}
 		} else {
 			if (Area == "undefined"){
 				element = $('<label for="usr">' + message + '</label><input type="text" placeholder="Preencha o campo." value='+ Copy +' id="' + id + '" />');
 			} else {
-				element = $('<label for="usr">' + message + '</label><textarea type="text" placeholder="Preencha o campo." maxlength="850" value='+ Copy +' id="' + id + '" /></textarea>');
+				element = $('<label for="usr">' + message + '</label><textarea type="text" placeholder="Preencha o campo." maxlength="500" value='+ Copy +' id="' + id + '" /></textarea>');
 			}
 		}
 

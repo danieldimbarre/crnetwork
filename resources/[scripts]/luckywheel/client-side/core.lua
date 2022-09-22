@@ -30,7 +30,7 @@ CreateThread(function()
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
-			local Distance = #(Coords - vec3(1107.92,218.34,-49.44))
+			local Distance = #(Coords - vec3(1107.92,218.35,-49.45))
 			if Distance <= 100 then
 				if not LocalPlayer["state"]["Cassino"] then
 					LocalPlayer["state"]["Cassino"] = true
@@ -55,12 +55,15 @@ CreateThread(function()
 				if LocalPlayer["state"]["Cassino"] then
 					LocalPlayer["state"]["Cassino"] = false
 
-					SetEntityAsNoLongerNeeded(Vehicle)
-					DeleteEntity(Vehicle)
-					Vehicle = nil
+					if DoesEntityExist(Vehicle) then
+						DeleteEntity(Vehicle)
+					end
 
-					SetEntityAsNoLongerNeeded(Wheel)
-					DeleteEntity(Wheel)
+					if DoesEntityExist(Wheel) then
+						DeleteEntity(Wheel)
+					end
+
+					Vehicle = nil
 					Wheel = nil
 				end
 			end

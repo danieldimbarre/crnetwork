@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("inspect",cRP)
+Creative = {}
+Tunnel.bindInterface("inspect",Creative)
 vCLIENT = Tunnel.getInterface("inspect")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -18,7 +18,7 @@ local openSource = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:RUNINSPECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("police:runInspect")
+RegisterServerEvent("police:runInspect")
 AddEventHandler("police:runInspect",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -35,7 +35,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENCHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.openChest()
+function Creative.openChest()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -105,7 +105,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESETINSPECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.resetInspect()
+function Creative.resetInspect()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -123,7 +123,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STOREITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.storeItem(Item,Slot,Amount,Target)
+function Creative.storeItem(Item,Slot,Amount,Target)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -151,7 +151,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.takeItem(Item,Slot,Amount)
+function Creative.takeItem(Item,Slot,Amount)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -178,7 +178,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATECHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.updateChest(Slot,Target,Amount)
+function Creative.updateChest(Slot,Target,Amount)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

@@ -82,14 +82,17 @@ local vehRescue = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SERVICETOGGLE
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	for k,v in pairs(initLocates) do
 		exports["target"]:AddCircleZone("TowDriver:"..k,vec3(v[1],v[2],v[3]),0.5,{
 			name = "TowDriver:"..k,
-			heading = 3374176,
-			useZ = true
+			heading = 3374176
 		},{
 			shop = k,
 			Distance = 1.5,

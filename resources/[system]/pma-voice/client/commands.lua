@@ -30,7 +30,7 @@ function setProximityState(proximityRange,isCustom)
 	MumbleSetTalkerProximity(proximityRange + 0.0)
 	LocalPlayer.state:set("proximity",{
 		index = mode,
-		Distance = proximityRange,
+		distance = proximityRange,
 		mode = isCustom and "Custom" or voiceModeData[2]
 	},true)
 

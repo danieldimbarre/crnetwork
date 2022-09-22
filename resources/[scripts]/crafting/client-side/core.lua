@@ -97,19 +97,14 @@ local List = {
 -- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
+	if Resource ~= GetCurrentResourceName() then
+		return
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADTARGET
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+
 	for k,v in pairs(List) do
 		exports["target"]:AddCircleZone("Crafting:"..k,vec3(v[1],v[2],v[3]),0.5,{
 			name = "Crafting:"..k,
-			heading = 3374176,
-			useZ = true
+			heading = 3374176
 		},{
 			shop = k,
 			Distance = 1.0,
@@ -141,12 +136,4 @@ RegisterNetEvent("crafting:openSource")
 AddEventHandler("crafting:openSource",function()
 	SetNuiFocus(true,true)
 	SendNUIMessage({ action = "showNUI", name = "Inventory" })
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CRAFTING:CONTAINERS
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("crafting:Containers")
-AddEventHandler("crafting:Containers",function()
-	SetNuiFocus(true,true)
-	SendNUIMessage({ action = "showNUI", name = "Containers" })
 end)

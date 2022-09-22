@@ -8,8 +8,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("admin",cRP)
+Creative = {}
+Tunnel.bindInterface("admin",Creative)
 vCLIENT = Tunnel.getInterface("admin")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -25,6 +25,7 @@ RegisterCommand("gem",function(source,args)
 			if Identity then
 				TriggerClientEvent("Notify",source,"verde","Gemas entregues.",5000)
 				vRP.Execute("accounts/AddGems",{ license = Identity["license"], gems = Amount })
+				TriggerEvent("Discord","Gemstone","**Passaporte:** "..OtherPassport.."\n**Gemas:** "..Amount,3092790)
 			end
 		end
 	end
@@ -268,11 +269,9 @@ end)
 -- TPWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("limbo",function(source)
-	if exports["chat"]:statusChat(source) then
-		local Passport = vRP.Passport(source)
-		if Passport and vRP.GetHealth(source) <= 100 then
-			vCLIENT.teleportLimbo(source)
-		end
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.GetHealth(source) <= 100 then
+		vCLIENT.teleportLimbo(source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -341,14 +340,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADMIN:PROPCOORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("admin:PropCoords")
+RegisterServerEvent("admin:PropCoords")
 AddEventHandler("admin:PropCoords",function(Entity)
 	vRP.Archive("coordenadas.txt",mathLength(Entity[4]["x"])..","..mathLength(Entity[4]["y"])..","..mathLength(Entity[4]["z"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.buttonTxt()
+function Creative.buttonTxt()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -368,7 +367,7 @@ RegisterCommand("announce",function(source,args,rawCommand)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") and args[1] then
-			TriggerClientEvent("chatME",-1,"^6ALERTA^9Governador^0"..rawCommand:sub(9))
+			TriggerClientEvent("hud:ClientMessage",-1,"Governador",rawCommand:sub(9))
 		end
 	end
 end)
@@ -377,7 +376,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("console",function(source,args,rawCommand)
 	if source == 0 then
-		TriggerClientEvent("chatME",-1,"^6ALERTA^9Governador^0"..rawCommand:sub(9))
+		TriggerClientEvent("hud:ClientMessage",-1,"Governador",rawCommand:sub(9))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -416,7 +415,7 @@ end)
 -- RACECOORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Checkpoint = 0
-function cRP.raceCoords(vehCoords,leftCoords,rightCoords)
+function Creative.raceCoords(vehCoords,leftCoords,rightCoords)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -468,17 +467,5 @@ end)
 AddEventHandler("Disconnect",function(Passport)
 	if Spectate[Passport] then
 		Spectate[Passport] = nil
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SUGESTÃO
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("sugestao",function(source)
-	local Passport = vRP.Passport(source)
-	if Passport then
-		local Keyboard = vKEYBOARD.keyArea(source,"Sugestão:")
-		if Keyboard then
-			TriggerClientEvent("Notify",source,"verde","Sugestão enviada.",5000)
-		end
 	end
 end)

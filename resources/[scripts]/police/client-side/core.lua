@@ -4,14 +4,6 @@
 local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- REDUCES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local reduceList = {
@@ -50,14 +42,17 @@ local reduceList = {
 	["33"] = { 1784.21,2561.16,45.66 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADTARGET
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	for Number,v in pairs(reduceList) do
 		exports["target"]:AddCircleZone("Prison:"..Number,vec3(v[1],v[2],v[3]),0.75,{
 			name = "Prison:"..Number,
-			heading = 3374176,
-			useZ = true
+			heading = 3374176
 		},{
 			shop = Number,
 			Distance = 1.0,
@@ -76,25 +71,5 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("police:Mdt")
 AddEventHandler("police:Mdt",function()
-	local Ped = PlayerPedId()
-	if not IsPedSwimming(Ped) then
-		SendNUIMessage({ action = "openSystem" })
-		TriggerEvent("dynamic:closeSystem")
-		SetNuiFocus(true,true)
-
-		if not IsPedInAnyVehicle(Ped) then
-			vRP.removeObjects()
-			vRP.createObjects("amb@code_human_in_bus_passenger_idles@female@tablet@base","base","prop_cs_tablet",50,28422)
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CLOSESYSTEM
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("closeSystem",function(Data,Callback)
-	SetNuiFocus(false,false)
-	SetCursorLocation(0.5,0.5)
-	SendNUIMessage({ action = "closeSystem" })
-
-	Callback("Ok")
+	
 end)

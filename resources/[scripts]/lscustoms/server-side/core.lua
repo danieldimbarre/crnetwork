@@ -8,12 +8,12 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("lscustoms",cRP)
+Creative = {}
+Tunnel.bindInterface("lscustoms",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKPERMISSIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkPermission(hasPerm)
+function Creative.checkPermission(hasPerm)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -40,7 +40,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("lscustoms:attemptPurchase")
+RegisterServerEvent("lscustoms:attemptPurchase")
 AddEventHandler("lscustoms:attemptPurchase",function(type,mod)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -65,7 +65,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("lscustoms:updateVehicle")
+RegisterServerEvent("lscustoms:updateVehicle")
 AddEventHandler("lscustoms:updateVehicle",function(Mods,vehPlate,vehName)
 	local Passport = vRP.PassportPlate(vehPlate)
 	if Passport then
@@ -76,12 +76,12 @@ end)
 -- INVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 local inVehicle = {}
-RegisterNetEvent("lscustoms:inVehicle")
+RegisterServerEvent("lscustoms:inVehicle")
 AddEventHandler("lscustoms:inVehicle",function(vehNet,vehPlate)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vehNet == nil then
+		if not vehNet then
 			if inVehicle[Passport] then
 				inVehicle[Passport] = nil
 			end

@@ -108,7 +108,7 @@ local Preset = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:PRISONCLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("police:prisonClothes")
+RegisterServerEvent("police:prisonClothes")
 AddEventHandler("police:prisonClothes",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -122,14 +122,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:REDUCES
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("police:Reduces")
+RegisterServerEvent("police:Reduces")
 AddEventHandler("police:Reduces",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Identity = vRP.Identity(Passport)
 		if parseInt(Identity["prison"]) > 0 then
-			if Reduces[Number] == nil then
+			if not Reduces[Number] then
 				Reduces[Number] = {}
 			end
 

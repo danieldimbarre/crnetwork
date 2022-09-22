@@ -1,12 +1,4 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local showBlips = {}
@@ -16,7 +8,7 @@ local numberBlips = 0
 -- NOTIFY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("enterNotifys",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and LocalPlayer["state"]["Network"] then
+	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and LocalPlayer["state"]["Network"] and not IsPauseMenuActive() then
 		SendNUIMessage({ action = "showAll" })
 	end
 end)

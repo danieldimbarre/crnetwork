@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("player",cRP)
+Creative = {}
+Tunnel.bindInterface("player",Creative)
 vSERVER = Tunnel.getInterface("player")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -506,7 +506,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKSOAP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkSoap()
+function Creative.checkSoap()
 	return Residuals
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -515,7 +515,7 @@ end
 RegisterNetEvent("player:Residuals")
 AddEventHandler("player:Residuals",function(Informations)
 	if Informations then
-		if Residuals == nil then
+		if not Residuals then
 			Residuals = {}
 		end
 
@@ -534,7 +534,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMOVEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.removeVehicle()
+function Creative.removeVehicle()
 	if not inBennys then
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
@@ -545,7 +545,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PUTVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.putVehicle(vehNet)
+function Creative.putVehicle(vehNet)
 	if NetworkDoesNetworkIdExist(vehNet) then
 		local Vehicle = NetToEnt(vehNet)
 		if DoesEntityExist(Vehicle) then
@@ -570,22 +570,20 @@ end
 -- CRUISER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("cr",function(source,args)
-	if exports["chat"]:statusChat() and LocalPlayer["state"]["Network"] then
-		local Ped = PlayerPedId()
-		if IsPedInAnyVehicle(Ped) then
-			local Vehicle = GetVehiclePedIsUsing(Ped)
-			if GetPedInVehicleSeat(Vehicle,-1) == Ped and not IsEntityInAir(Vehicle) then
-				local speed = GetEntitySpeed(Vehicle) * 3.6
+	local Ped = PlayerPedId()
+	if IsPedInAnyVehicle(Ped) then
+		local Vehicle = GetVehiclePedIsUsing(Ped)
+		if GetPedInVehicleSeat(Vehicle,-1) == Ped and not IsEntityInAir(Vehicle) then
+			local speed = GetEntitySpeed(Vehicle) * 3.6
 
-				if speed >= 10 then
-					if args[1] == nil then
-						SetEntityMaxSpeed(Vehicle,GetVehicleEstimatedMaxSpeed(Vehicle))
-						TriggerEvent("Notify","amarelo","Controle de cruzeiro desativado.",3000)
-					else
-						if parseInt(args[1]) > 10 then
-							SetEntityMaxSpeed(Vehicle,0.28 * args[1])
-							TriggerEvent("Notify","verde","Controle de cruzeiro ativado.",3000)
-						end
+			if speed >= 10 then
+				if not args[1] then
+					SetEntityMaxSpeed(Vehicle,GetVehicleEstimatedMaxSpeed(Vehicle))
+					TriggerEvent("Notify","amarelo","Controle de cruzeiro desativado.",3000)
+				else
+					if parseInt(args[1]) > 10 then
+						SetEntityMaxSpeed(Vehicle,0.28 * args[1])
+						TriggerEvent("Notify","verde","Controle de cruzeiro ativado.",3000)
 					end
 				end
 			end
@@ -598,8 +596,8 @@ end)
 AddEventHandler("gameEventTriggered",function(name,args)
 	if name == "CEventNetworkEntityDamage" then
 		if (GetEntityHealth(args[1]) <= 100 and PlayerPedId() == args[2] and IsPedAPlayer(args[1])) then
-			local index = NetworkGetPlayerIndexFromPed(args[1])
-			local source = GetPlayerServerId(index)
+			local Index = NetworkGetPlayerIndexFromPed(args[1])
+			local source = GetPlayerServerId(Index)
 			TriggerServerEvent("player:deathLogs",source)
 		end
 	end
@@ -801,14 +799,17 @@ local cowCoords = {
 	{ 2519.56,4737.35,34.29 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADCOWS
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	for k,v in pairs(cowCoords) do
 		exports["target"]:AddCircleZone("Cows:"..k,vec3(v[1],v[2],v[3]),0.5,{
 			name = "Cows:"..k,
-			heading = 3374176,
-			useZ = true
+			heading = 3374176
 		},{
 			Distance = 1.25,
 			options = {
@@ -963,7 +964,7 @@ CreateThread(function()
 
 			for Line,v in pairs(DuiTextures) do
 				if #(Coords - v["Coords"]) <= 15 then
-					if InnerTexture[Line] == nil then
+					if not InnerTexture[Line] then
 						InnerTexture[Line] = true
 
 						local Texture = CreateRuntimeTxd("Texture"..Line)
@@ -975,8 +976,7 @@ CreateThread(function()
 
 						exports["target"]:AddCircleZone("Texture"..Line,v["Coords"],v["Dimension"],{
 							name = "Texture"..Line,
-							heading = 3374176,
-							useZ = true
+							heading = 3374176
 						},{
 							shop = Line,
 							Distance = v["Distance"],

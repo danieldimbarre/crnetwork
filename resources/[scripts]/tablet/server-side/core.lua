@@ -7,9 +7,10 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("tablet",cRP)
+Creative = {}
+Tunnel.bindInterface("tablet",Creative)
 vCLIENT = Tunnel.getInterface("tablet")
+vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -18,9 +19,13 @@ GlobalState["Cars"] = {}
 GlobalState["Bikes"] = {}
 GlobalState["Rental"] = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ASYNCFUNCTIONS
+-- ONSERVERRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onServerResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	local Cars = {}
 	local Bikes = {}
 	local Rental = {}
@@ -43,11 +48,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTRENTAL
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.requestRental(vehName)
+function Creative.requestRental(vehName)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Active[Passport] == nil then
+		if not Active[Passport] then
 			Active[Passport] = true
 
 			if vRP.GetFine(source) > 0 then
@@ -63,7 +68,7 @@ function cRP.requestRental(vehName)
 				Text = "Alugar o veículo <b>"..vehicleName(vehName).."</b> usando o vale?"
 			end
 
-			if vRP.Request(source,Text,"Sim, concluír pagamento","Não, mudei de ideia") then
+			if vHUD.Request(source,Text,"Sim, concluír pagamento","Não, mudei de ideia") then
 				if vRP.TakeItem(Passport,"rentalveh",1,true) or vRP.PaymentGems(source,vehPrice) then
 					local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 					if vehicle[1] then
@@ -90,11 +95,11 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTBUY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.requestBuy(vehName)
+function Creative.requestBuy(vehName)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Active[Passport] == nil then
+		if not Active[Passport] then
 			Active[Passport] = true
 
 			if vRP.GetFine(source) > 0 then
@@ -103,7 +108,7 @@ function cRP.requestBuy(vehName)
 				return
 			end
 
-			if vehicleType(vehName) == "rental" or vehicleType(vehName) == nil then
+			if vehicleType(vehName) == "rental" or not vehicleType(vehName) then
 				Active[Passport] = nil
 				return
 			end
@@ -123,7 +128,7 @@ function cRP.requestBuy(vehName)
 					end
 				else
 					local vehPrice = vehiclePrice(vehName)
-					if vRP.Request(source,"Comprar <b>"..vehicleName(vehName).."</b> por <b>$"..parseFormat(vehPrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
+					if vHUD.Request(source,"Comprar <b>"..vehicleName(vehName).."</b> por <b>$"..parseFormat(vehPrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
 						if vRP.PaymentFull(Passport,source,vehPrice) then
 							vRP.Execute("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 							TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)
@@ -141,15 +146,15 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STARTDRIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.startDrive()
+function Creative.startDrive()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Active[Passport] == nil then
+		if not Active[Passport] then
 			Active[Passport] = true
 
 			if not exports["hud"]:Wanted(Passport) then
-				if vRP.Request(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
+				if vHUD.Request(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
 					if vRP.PaymentFull(Passport,source,100) then
 						Player(source)["state"]["Route"] = Passport
 						SetPlayerRoutingBucket(source,Passport)
@@ -171,7 +176,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMOVEDRIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.removeDrive()
+function Creative.removeDrive()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

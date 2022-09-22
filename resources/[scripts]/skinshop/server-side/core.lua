@@ -8,12 +8,12 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("skinshop",cRP)
+Creative = {}
+Tunnel.bindInterface("skinshop",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKOPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkShares()
+function Creative.checkShares()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -32,7 +32,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATECLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.updateClothes(Clothes)
+function Creative.updateClothes(Clothes)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -43,15 +43,13 @@ end
 -- SKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skin",function(source,args)
-	if exports["chat"]:statusChat(source) then
-		local Passport = vRP.Passport(source)
-		if Passport and args[1] then
-			if vRP.HasGroup(Passport,"Paramedic") or vRP.HasGroup(Passport,"Moderator") then
-				local ClosestPed = vRP.Source(args[1])
-				if ClosestPed then
-					vRPC.Skin(ClosestPed,args[2])
-					vRP.SkinCharacter(parseInt(args[1]),args[2])
-				end
+	local Passport = vRP.Passport(source)
+	if Passport and args[1] then
+		if vRP.HasGroup(Passport,"Paramedic") or vRP.HasGroup(Passport,"Moderator") then
+			local ClosestPed = vRP.Source(args[1])
+			if ClosestPed then
+				vRPC.Skin(ClosestPed,args[2])
+				vRP.SkinCharacter(parseInt(args[1]),args[2])
 			end
 		end
 	end
@@ -59,7 +57,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP:REMOVEPROPS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("skinshop:removeProps")
+RegisterServerEvent("skinshop:removeProps")
 AddEventHandler("skinshop:removeProps",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)

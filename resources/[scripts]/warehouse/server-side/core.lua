@@ -7,13 +7,14 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("warehouse",cRP)
+Creative = {}
+Tunnel.bindInterface("warehouse",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
+vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WAREHOUSE:PASSWORD
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("warehouse:Password")
+RegisterServerEvent("warehouse:Password")
 AddEventHandler("warehouse:Password",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
@@ -36,7 +37,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WAREHOUSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Warehouse(Name)
+function Creative.Warehouse(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -50,7 +51,7 @@ function cRP.Warehouse(Name)
 						if Warehouse[1]["tax"] > os.time() then
 							return true
 						else
-							if vRP.Request(source,"Pagar o aluguel do armazém por <b>$20.000</b>?","Sim, por favor","Não, decido depois") then
+							if vHUD.Request(source,"Pagar o aluguel do armazém por <b>$20.000</b>?","Sim, por favor","Não, decido depois") then
 								if vRP.PaymentFull(Passport,source,20000) then
 									vRP.Execute("warehouse/Tax",{ name = Name })
 									return true
@@ -64,12 +65,12 @@ function cRP.Warehouse(Name)
 					end
 				end
 			else
-				if vRP.Request(source,"Gostaria de comprar o armazém por <b>$100.000</b>?","Sim, por favor","Não, decido depois") then
+				if vHUD.Request(source,"Gostaria de comprar o armazém por <b>$100.000</b>?","Sim, por favor","Não, decido depois") then
 					local Keyboard = vKEYBOARD.keyWord(source,"Senha:")
 					if Keyboard then
 						local Password = sanitizeString(Keyboard[1],"0123456789",true)
 						if string.len(Password) >= 4 and string.len(Password) <= 20 then
-							if vRP.Request(source,"Finalizar a compra usando a senha <b>"..Password.."</b>?","Sim, por favor","Não, decido depois") then
+							if vHUD.Request(source,"Finalizar a compra usando a senha <b>"..Password.."</b>?","Sim, por favor","Não, decido depois") then
 								if vRP.PaymentFull(Passport,source,100000) then
 									vRP.Execute("warehouse/Buy",{ name = Name, Passport = Passport, password = Password })
 									return true
@@ -91,14 +92,14 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WAREHOUSEUPGRADE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("warehouse:Upgrade")
+RegisterServerEvent("warehouse:Upgrade")
 AddEventHandler("warehouse:Upgrade",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Warehouse = vRP.Query("warehouse/Informations",{ name = Name })
 		if Warehouse[1] then
-			if vRP.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
+			if vHUD.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
 				if vRP.PaymentFull(Passport,source,10000) then
 					vRP.Execute("warehouse/Upgrade",{ name = Name })
 					TriggerClientEvent("Notify",source,"verde","Aumento concluído.",3000)
@@ -112,13 +113,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENWAREHOUSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.openWarehouse(Name)
+function Creative.openWarehouse(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local myInventory = {}
-		local inventory = vRP.Inventory(Passport)
-		for k,v in pairs(inventory) do
+		local Inv = vRP.Inventory(Passport)
+		for Index,v in pairs(Inv) do
 			v["amount"] = parseInt(v["amount"])
 			v["name"] = itemName(v["item"])
 			v["peso"] = itemWeight(v["item"])
@@ -127,7 +128,7 @@ function cRP.openWarehouse(Name)
 			v["desc"] = itemDescription(v["item"])
 			v["economy"] = parseFormat(itemEconomy(v["item"]))
 			v["key"] = v["item"]
-			v["slot"] = k
+			v["slot"] = Index
 
 			local splitName = splitString(v["item"],"-")
 			if splitName[2] ~= nil then
@@ -143,12 +144,12 @@ function cRP.openWarehouse(Name)
 				v["days"] = 1
 			end
 
-			myInventory[k] = v
+			myInventory[Index] = v
 		end
 
 		local myWarehouse = {}
-		local result = vRP.GetSrvData("Warehouse:"..Name)
-		for k,v in pairs(result) do
+		local Consult = vRP.GetSrvData("Warehouse:"..Name)
+		for Index,v in pairs(Consult) do
 			v["amount"] = parseInt(v["amount"])
 			v["name"] = itemName(v["item"])
 			v["peso"] = itemWeight(v["item"])
@@ -157,7 +158,7 @@ function cRP.openWarehouse(Name)
 			v["economy"] = parseFormat(itemEconomy(v["item"]))
 			v["desc"] = itemDescription(v["item"])
 			v["key"] = v["item"]
-			v["slot"] = k
+			v["slot"] = Index
 
 			local splitName = splitString(v["item"],"-")
 			if splitName[2] ~= nil then
@@ -173,19 +174,19 @@ function cRP.openWarehouse(Name)
 				v["days"] = 1
 			end
 
-			myWarehouse[k] = v
+			myWarehouse[Index] = v
 		end
 
 		local Warehouse = vRP.Query("warehouse/Informations",{ name = Name })
 		if Warehouse[1] then
-			return myInventory,myWarehouse,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Warehouse[1]["weight"]
+			return myInventory,myWarehouse,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Consult),Warehouse[1]["weight"]
 		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STOREITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.storeItem(Item,Slot,Amount,Target,Name)
+function Creative.storeItem(Item,Slot,Amount,Target,Name)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -213,7 +214,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.takeItem(Item,Slot,Amount,Target,Name)
+function Creative.takeItem(Item,Slot,Amount,Target,Name)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -234,7 +235,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATEWAREHOUSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.updateWarehouse(Slot,Target,Amount,Name)
+function Creative.updateWarehouse(Slot,Target,Amount,Name)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)

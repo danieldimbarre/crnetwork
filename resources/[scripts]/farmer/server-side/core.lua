@@ -42,6 +42,7 @@ local Objects = {
 	["31"] = { x = 2099.65, y = 5128.21, z = 48.7, heading = 3374176, height = 1.25, width = 1.0, show = 150.0, prop = "prop_veg_crop_orange", event = "farmer:Fruits", label = "Derrubar", time = 0, Distance = 1.25 },
 	["32"] = { x = 2081.11, y = 5143.14, z = 50.2, heading = 3374176, height = 1.25, width = 1.0, show = 150.0, prop = "prop_veg_crop_orange", event = "farmer:Fruits", label = "Derrubar", time = 0, Distance = 1.25 },
 	["33"] = { x = 2063.54, y = 5166.11, z = 51.43, heading = 3374176, height = 1.25, width = 1.0, show = 150.0, prop = "prop_veg_crop_orange", event = "farmer:Fruits", label = "Derrubar", time = 0, Distance = 1.25 },
+
 	["34"] = { x = 2952.07, y = 2819.73, z = 42.58, heading = 3374176, height = 1.5, width = 1.5, show = 150.0, prop = "prop_rock_1_e", event = "farmer:Miner", label = "Mineirar", time = 0, Distance = 2.0 },
 	["35"] = { x = 2923.9, y = 2809.09, z = 43.35, heading = 3374176, height = 1.25, width = 1.5, show = 150.0, prop = "prop_rock_1_d", event = "farmer:Miner", label = "Mineirar", time = 0, Distance = 2.0 },
 	["36"] = { x = 2921.64, y = 2793.9, z = 40.61, heading = 3374176, height = 1.25, width = 1.5, show = 150.0, prop = "prop_rock_1_f", event = "farmer:Miner", label = "Mineirar", time = 0, Distance = 2.0 },
@@ -66,6 +67,7 @@ local Objects = {
 	["55"] = { x = 2954.26, y = 2802.48, z = 41.74, heading = 3374176, height = 1.5, width = 1.5, show = 150.0, prop = "prop_rock_1_e", event = "farmer:Miner", label = "Mineirar", time = 0, Distance = 2.0 },
 	["56"] = { x = 2964.23, y = 2786.72, z = 39.75, heading = 3374176, height = 1.25, width = 1.5, show = 150.0, prop = "prop_rock_1_d", event = "farmer:Miner", label = "Mineirar", time = 0, Distance = 2.0 },
 	["57"] = { x = 2947.96, y = 2783.56, z = 39.93, heading = 3374176, height = 1.25, width = 1.5, show = 150.0, prop = "prop_rock_1_f", event = "farmer:Miner", label = "Mineirar", time = 0, Distance = 2.0 },
+
 	["58"] = { x = 2386.34, y = 5099.58, z = 47.55, heading = 3374176, height = 1.5, width = 1.0, show = 150.0, prop = "prop_tree_pine_02", event = "farmer:Lumber", label = "Derrubar", time = 0, Distance = 1.25 },
 	["59"] = { x = 2397.96, y = 5087.04, z = 47.31, heading = 3374176, height = 2.0, width = 1.0, show = 150.0, prop = "prop_tree_cedar_02", event = "farmer:Lumber", label = "Derrubar", time = 0, Distance = 1.25 },
 	["60"] = { x = 2401.23, y = 5099.75, z = 46.4, heading = 3374176, height = 1.25, width = 1.0, show = 150.0, prop = "prop_tree_cedar_s_01", event = "farmer:Lumber", label = "Derrubar", time = 0, Distance = 1.25 },
@@ -136,7 +138,7 @@ local Objects = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FARMER:FRUITS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("farmer:Fruits")
+RegisterServerEvent("farmer:Fruits")
 AddEventHandler("farmer:Fruits",function(Number)
 	if Objects[Number] then
 		if GlobalState["Work"] >= Objects[Number]["time"] then
@@ -189,7 +191,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FARMER:MINER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("farmer:Miner")
+RegisterServerEvent("farmer:Miner")
 AddEventHandler("farmer:Miner",function(Number)
 	if Objects[Number] then
 		if GlobalState["Work"] >= Objects[Number]["time"] then
@@ -232,7 +234,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FARMER:LUMBER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("farmer:Lumber")
+RegisterServerEvent("farmer:Lumber")
 AddEventHandler("farmer:Lumber",function(Number)
 	if Objects[Number] then
 		if GlobalState["Work"] >= Objects[Number]["time"] then
@@ -281,7 +283,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FARMER:MONEY
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("farmer:Money")
+RegisterServerEvent("farmer:Money")
 AddEventHandler("farmer:Money",function(Number)
 	if Objects[Number] then
 		if GlobalState["Work"] >= Objects[Number]["time"] then

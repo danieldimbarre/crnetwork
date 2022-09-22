@@ -8,8 +8,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("slotmachine",cRP)
+Creative = {}
+Tunnel.bindInterface("slotmachine",Creative)
 vCLIENT = Tunnel.getInterface("slotmachine")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -298,7 +298,7 @@ local mulTable = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKTABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkTable(Table)
+function Creative.checkTable(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Machines[Table] then
@@ -314,7 +314,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEANTABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.cleanTable(Table)
+function Creative.cleanTable(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Machines[Table] then
@@ -347,7 +347,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Payment(Table)
+function Creative.Payment(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Machines[Table] then
@@ -363,7 +363,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STARTSLOTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.StartSlots(Table)
+function Creative.StartSlots(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Machines[Table] then
@@ -380,7 +380,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SLOTSCHECKWIN
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.CheckWin(Table,Result)
+function Creative.CheckWin(Table,Result)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Machines[Table] then
@@ -400,7 +400,7 @@ function cRP.CheckWin(Table,Result)
 				end
 
 				if Total > 0 then
-					vRP.GiveBank(Passport,Total,"Private")
+					vRP.GiveBank(Passport,Total)
 				end
 			end
 

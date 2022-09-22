@@ -14,7 +14,7 @@ $(document).ready(function(){
 			$("#goback").remove();
 			buttons["length"] = 0;
 			submenus["length"] = 0;
-			$(".container").html("");
+			$(".Container").html("");
 
 			$.post("http://dynamic/close");
 		}
@@ -27,7 +27,7 @@ $(document).ready(function(){
 			if(item.id == false || null){
 				normalButtons = normalButtons + 1;
 				var b = (`<div id="normalbutton-${normalButtons}" data-trigger="`+item["trigger"]+`" data-parm="`+item["par"]+`" data-server="`+item["server"]+`" class="normalbutton ${item["title"] == "Guardar" ? "amarelo":""}"><div class="title">`+item["title"]+`</div><div class="description" >`+item["description"]+`</div></div>`);
-				$(".container").append(b);
+				$(".Container").append(b);
 				buttons.push(b);
 			} else {
 				var b = (`<button id="`+item["id"]+`" data-trigger="`+item["trigger"]+`" data-parm="`+item["par"]+`" data-server="`+item["server"]+`" class="a btn"><div class="title">`+item["title"]+`</div><div class="description" >`+item["description"]+`</div></button>`);
@@ -35,7 +35,7 @@ $(document).ready(function(){
 			}
 		} else if(item["addmenu"] == true){
 			var aa = (`<button data-menu="`+item["menuid"]+`" class="b btn"><div class="title">`+item["title"]+`</div><div class="description" >`+item["description"]+`</div><i class="fas fa-chevron-right" style="float:right;margin-top:-10%"></i></button>`)
-			$(".container").append(aa);
+			$(".Container").append(aa);
 			submenus.push(aa);
 		}
 
@@ -49,13 +49,13 @@ $(document).ready(function(){
 			$("#goback").remove();
 			buttons["length"] = 0;
 			submenus["length"] = 0;
-			$(".container").html("");
+			$(".Container").html("");
 
 			$.post("http://dynamic/close");
 		}
 
 		if (item["show"] == true){
-			$(".container").show();
+			$(".Container").show();
 		}
 	});
 
@@ -76,14 +76,14 @@ $(document).ready(function(){
 		}
 
 		var goBack = (`<div id="goback" class="normalbutton amarelo"><div class="title">Voltar</div><div class="description" >Clique e volte nas opções anteriores</div></div>`);
-		$(".container").append(goBack).show();
+		$(".Container").append(goBack).show();
 
 		var menuid = $(this).attr("data-menu");
 		for (i = 0; i < buttons["length"]; ++i){
 			var div = buttons[i];
 			var match = div.match(`id="`+menuid+`"`);
 			if (match){
-				$(".container").append(div);
+				$(".Container").append(div);
 			}
 		}
 	});
@@ -93,7 +93,7 @@ $(document).ready(function(){
 		$(".a").remove();
 		$("button").remove();
 		$("#goback").remove();
-		$(".container").append(submenus).show();
+		$(".Container").append(submenus).show();
 
 		for (i = 1; i <= normalButtons; ++i){
 			$("#normalbutton-"+i).show();

@@ -47,41 +47,30 @@ $(document).ready(function(){
 			break;
 
 			case "Ranking":
-				if (event["data"]["Status"] == true){
-					if ($("#Ranking").css("display") === "none"){
-						var Result = event["data"]["Ranking"];
+				var Result = event["data"]["Ranking"];
 
-						if (Result !== "[]"){
-							$("#Ranking").css("display","block");
+				if (Result !== false){
+					$("#Ranking").css("display","block");
 
-							var position = 0;
-							$("#Ranking").html("");
-							$("#Ranking").html(`
-								<div id="raceTitle">RANKING</div>
-								<div id="raceLegend">Lista dos 5 melhores colocados neste circuito.</div>
-								`);
+					var Position = 0;
+					$("#Ranking").html("");
+					$("#Ranking").html(`
+						<div id="raceTitle">RANKING</div>
+						<div id="raceLegend">Lista dos 5 melhores colocados neste circuito.</div>
+					`);
 
-							$("#Ranking").css("display","block");
+					$.each(Result,(k,v) => {
+						$('#Ranking').append(`<div id="raceLine">
+							<div class="racePosition">${Position = Position + 1}</div>
+							<div class="raceName">${v["Name"]}</div>
+							<div class="raceVehicle">${v["Vehicle"]}</div>
+							<div class="racePoints">${MinimalTimers(v["Points"])}</div>
+						</div>`);
+					});
 
-							$.each(JSON.parse(Result),(k,v) => {
-								$('#Ranking').append(`
-									<div id="raceLine">
-										<div class="racePosition">${position = position + 1}</div>
-										<div class="raceName">${v["name"]}</div>
-										<div class="raceVehicle">${v["vehicle"]}</div>
-										<div class="racePoints">${MinimalTimers(v["points"])}</div>
-									</div>
-								`);
-							});
-
-							$('#Ranking').append(`<div id="raceButtom">Pressionando a tecla <key>G</key> você fecha o ranking</div>`);
-							$("#Ranking").css("display","block");
-						}
-					}
+					$('#Ranking').append(`<div id="raceButtom">Pressionando a tecla <key>G</key> você fecha o ranking</div>`);
 				} else {
-					if ($("#Ranking").css("display") === "block"){
-						$("#Ranking").css("display","none");
-					}
+					$("#Ranking").css("display","none");
 				}
 			break;
 
@@ -95,16 +84,3 @@ $(document).ready(function(){
 		}
 	});
 });
-/* ----------FORMATARNUMERO---------- */
-const formatarNumero = (n) => {
-	var n = n.toString();
-	var r = '';
-	var x = 0;
-
-	for (var i = n.length; i > 0; i--) {
-		r += n.substr(i - 1, 1) + (x == 2 && i != 1 ? '.' : '');
-		x = x == 2 ? 0 : x + 1;
-	}
-
-	return r.split('').reverse().join('');
-}

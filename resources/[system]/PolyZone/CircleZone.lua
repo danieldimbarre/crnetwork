@@ -21,7 +21,7 @@ local function _initDebug(zone, options)
   if not options.debugPoly then
     return
   end
-  
+
   Citizen.CreateThread(function()
     while not zone.destroyed do
       zone:draw()
@@ -59,6 +59,7 @@ end
 
 function CircleZone:isPointInside(point)
   if self.destroyed then
+    print("[PolyZone] Warning: Called isPointInside on destroyed zone {name=" .. self.name .. "}")
     return false
   end
 

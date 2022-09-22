@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("slotmachine",cRP)
+Creative = {}
+Tunnel.bindInterface("slotmachine",Creative)
 vSERVER = Tunnel.getInterface("slotmachine")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -73,14 +73,17 @@ AddEventHandler("slotmachine:Init",function(Entity)
 						while Spin01 ~= nil do
 							if IsDisabledControlJustPressed(0,47) then
 								if not Spinning then
-									SetEntityAsNoLongerNeeded(Spin01)
-									DeleteEntity(Spin01)
+									if DoesEntityExist(Spin01) then
+										DeleteEntity(Spin01)
+									end
 
-									SetEntityAsNoLongerNeeded(Spin02)
-									DeleteEntity(Spin02)
+									if DoesEntityExist(Spin02) then
+										DeleteEntity(Spin02)
+									end
 
-									SetEntityAsNoLongerNeeded(Spin03)
-									DeleteEntity(Spin03)
+									if DoesEntityExist(Spin03) then
+										DeleteEntity(Spin03)
+									end
 
 									SendNUIMessage({ show = false })
 
@@ -121,7 +124,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MACHINESLOTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.MachineSlots(Result)
+function Creative.MachineSlots(Result)
 	if Spinning then
 		for i = 1,300,1 do
 			local rotSpin01 = GetEntityRotation(Spin01)
@@ -157,6 +160,6 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATEMACHINES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.UpdateMachines(Table)
+function Creative.UpdateMachines(Table)
 	Machines = Table
 end

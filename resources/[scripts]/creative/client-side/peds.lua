@@ -914,7 +914,7 @@ CreateThread(function()
 		for k,v in pairs(pedList) do
 			local Distance = #(Coords - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
 			if Distance <= v["Distance"] then
-				if localPeds[k] == nil and LocalPlayer["state"]["Route"] < 900000 then
+				if not localPeds[k] and LocalPlayer["state"]["Route"] < 900000 then
 					if LoadModel(v["Model"]) then
 						localPeds[k] = CreatePed(4,v["Model"],v["Coords"][1],v["Coords"][2],v["Coords"][3] - 1,v["Coords"][4],false,false)
 						SetPedArmour(localPeds[k],100)
@@ -948,8 +948,10 @@ CreateThread(function()
 				end
 			else
 				if localPeds[k] then
-					SetEntityAsNoLongerNeeded(localPeds[k])
-					DeleteEntity(localPeds[k])
+					if DoesEntityExist(localPeds[k]) then
+						DeleteEntity(localPeds[k])
+					end
+
 					localPeds[k] = nil
 				end
 			end

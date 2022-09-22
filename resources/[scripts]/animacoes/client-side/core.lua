@@ -919,7 +919,7 @@ AddEventHandler("emotes",function(nome)
 						animacoes[nome].extra()
 					end
 
-					if animacoes[nome]["altura"] and animacoes[nome]["anim"] == nil then
+					if animacoes[nome]["altura"] and not animacoes[nome]["anim"] then
 						vRP.createObjects("","",animacoes[nome]["prop"],animacoes[nome]["flag"],animacoes[nome]["mao"],animacoes[nome]["altura"],animacoes[nome]["pos1"],animacoes[nome]["pos2"],animacoes[nome]["pos3"],animacoes[nome]["pos4"],animacoes[nome]["pos5"])
 					elseif animacoes[nome]["altura"] and animacoes[nome]["anim"] then
 						vRP.createObjects(animacoes[nome]["dict"],animacoes[nome]["anim"],animacoes[nome]["prop"],animacoes[nome]["flag"],animacoes[nome]["mao"],animacoes[nome]["altura"],animacoes[nome]["pos1"],animacoes[nome]["pos2"],animacoes[nome]["pos3"],animacoes[nome]["pos4"],animacoes[nome]["pos5"])

@@ -11,14 +11,6 @@ vSERVER = Tunnel.getInterface("tablet")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Open = "Santos"
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		SetNuiFocus(false,false)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- ENTERTABLET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("tablet:enterTablet")
@@ -98,27 +90,29 @@ local benCoords = { 0.0,0.0,0.0 }
 -- REQUESTDRIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("requestDrive",function(Data,Callback)
-	if vSERVER.startDrive() then
-		SetNuiFocus(false,false)
-		SetCursorLocation(0.5,0.5)
-		SendNUIMessage({ action = "closeSystem" })
+	if LocalPlayer["state"]["Network"] then
+		if vSERVER.startDrive() then
+			SetNuiFocus(false,false)
+			SetCursorLocation(0.5,0.5)
+			SendNUIMessage({ action = "closeSystem" })
 
-		local Ped = PlayerPedId()
-		local Coords = GetEntityCoords(Ped)
-		benCoords = { Coords["x"],Coords["y"],Coords["z"] }
+			local Ped = PlayerPedId()
+			local Coords = GetEntityCoords(Ped)
+			benCoords = { Coords["x"],Coords["y"],Coords["z"] }
 
-		TriggerEvent("races:Inative",true)
-		LocalPlayer["state"]["Commands"] = true
-		TriggerEvent("Notify","azul","Teste iniciado, para finalizar saia do veículo.",5000)
+			TriggerEvent("races:Inative",true)
+			LocalPlayer["state"]["Commands"] = true
+			TriggerEvent("Notify","azul","Teste iniciado, para finalizar saia do veículo.",5000)
 
-		Wait(1000)
+			Wait(1000)
 
-		vehCreate(Data["name"])
+			vehCreate(Data["name"])
 
-		Wait(1000)
+			Wait(1000)
 
-		SetPedIntoVehicle(Ped,vehDrive,-1)
-		benDrive = true
+			SetPedIntoVehicle(Ped,vehDrive,-1)
+			benDrive = true
+		end
 	end
 
 	Callback("Ok")
@@ -157,8 +151,10 @@ CreateThread(function()
 				TriggerEvent("races:Inative",false)
 				LocalPlayer["state"]["Commands"] = false
 				SetEntityCoords(Ped,benCoords[1],benCoords[2],benCoords[3],false,false,false,false)
-				SetEntityAsNoLongerNeeded(vehDrive)
-				DeleteEntity(vehDrive)
+
+				if DoesEntityExist(vehDrive) then
+					DeleteEntity(vehDrive)
+				end
 			end
 		end
 
@@ -211,7 +207,7 @@ CreateThread(function()
 		for k,v in pairs(Vehicles) do
 			local Distance = #(Coords - v["Coords"])
 			if Distance <= v["Distance"] then
-				if initVehicles[k] == nil then
+				if not initVehicles[k] then
 					if LoadModel(v["Model"]) then
 						local Color = math.random(112)
 						initVehicles[k] = CreateVehicle(v["Model"],v["Coords"],v["heading"],false,false)
@@ -225,7 +221,6 @@ CreateThread(function()
 			else
 				if initVehicles[k] then
 					if DoesEntityExist(initVehicles[k]) then
-						SetEntityAsNoLongerNeeded(initVehicles[k])
 						DeleteEntity(initVehicles[k])
 						initVehicles[k] = nil
 					end

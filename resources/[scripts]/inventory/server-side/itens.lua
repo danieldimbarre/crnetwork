@@ -17,7 +17,7 @@ Geodes = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Use = {
 	["bandage"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if (Healths[Passport] == nil or os.time() > Healths[Passport]) then
+		if (not Healths[Passport] or os.time() > Healths[Passport]) then
 			if vRP.GetHealth(source) > 100 and vRP.GetHealth(source) < 200 then
 				Active[Passport] = os.time() + 5
 				Player(source)["state"]["Buttons"] = true
@@ -40,7 +40,7 @@ Use = {
 					end
 
 					Wait(100)
-				until Active[Passport] == nil
+				until not Active[Passport]
 			else
 				TriggerClientEvent("Notify",source,"amarelo","Não pode utilizar de vida cheia ou nocauteado.",5000)
 			end
@@ -69,11 +69,11 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["analgesic"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if (Healths[Passport] == nil or os.time() > Healths[Passport]) then
+		if (not ealths[Passport] or os.time() > Healths[Passport]) then
 			if vRP.GetHealth(source) > 100 and vRP.GetHealth(source) < 200 then
 				Active[Passport] = os.time() + 3
 				Player(source)["state"]["Buttons"] = true
@@ -95,7 +95,7 @@ Use = {
 					end
 
 					Wait(100)
-				until Active[Passport] == nil
+				until not Active[Passport]
 			else
 				TriggerClientEvent("Notify",source,"azul","Não pode utilizar de vida cheia ou nocauteado.",5000)
 			end
@@ -106,7 +106,7 @@ Use = {
 	end,
 
 	["oxy"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if (Healths[Passport] == nil or os.time() > Healths[Passport]) then
+		if (not Healths[Passport] or os.time() > Healths[Passport]) then
 			if vRP.GetHealth(source) > 100 and vRP.GetHealth(source) < 200 then
 				Active[Passport] = os.time() + 3
 				Player(source)["state"]["Buttons"] = true
@@ -128,7 +128,7 @@ Use = {
 					end
 
 					Wait(100)
-				until Active[Passport] == nil
+				until not Active[Passport]
 			else
 				TriggerClientEvent("Notify",source,"azul","Não pode utilizar de vida cheia ou nocauteado.",5000)
 			end
@@ -141,7 +141,7 @@ Use = {
 	["vehkey"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Vehicle,vehNet,vehPlate = vRPC.vehList(source,5)
 		if Vehicle then
-			if vehPlate == Split then
+			if vehPlate == Split[2] then
 				TriggerEvent("garages:keyVehicle",source,vehNet)
 			end
 		end
@@ -151,7 +151,7 @@ Use = {
 		if Split then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				vRP.GiveItem(Passport,"suitcase",1,false)
-				vRP.GiveItem(Passport,"dollars",Split,false)
+				vRP.GiveItem(Passport,"dollars",Split[2],false)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
 		end
@@ -174,7 +174,7 @@ Use = {
 	["backcamping"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Acampamento"
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
-		if Consult[Name] == nil then
+		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 102, ["texture"] = 0, ["type"] = "backpack" }
@@ -188,7 +188,7 @@ Use = {
 	["backschool"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Escolar"
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
-		if Consult[Name] == nil then
+		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 101, ["texture"] = 0, ["type"] = "backpack" }
@@ -202,7 +202,7 @@ Use = {
 	["backcyclist"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Ciclista"
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
-		if Consult[Name] == nil then
+		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 103, ["texture"] = 0, ["type"] = "backpack" }
@@ -216,7 +216,7 @@ Use = {
 	["backalohomorawhite"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Alohomora Branca"
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
-		if Consult[Name] == nil then
+		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 104, ["texture"] = 0, ["type"] = "backpack" }
@@ -230,7 +230,7 @@ Use = {
 	["backalohomorablack"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Alohomora Preta"
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
-		if Consult[Name] == nil then
+		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 104, ["texture"] = 1, ["type"] = "backpack" }
@@ -244,7 +244,7 @@ Use = {
 	["backalohomorared"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Alohomora Vermelha"
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
-		if Consult[Name] == nil then
+		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 104, ["texture"] = 2, ["type"] = "backpack" }
@@ -258,7 +258,7 @@ Use = {
 	["backrudolphpurple"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Rudolph Roxo"
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
-		if Consult[Name] == nil then
+		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 105, ["texture"] = 0, ["type"] = "backpack" }
@@ -272,7 +272,7 @@ Use = {
 	["backrudolphred"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Rudolph Vermelho"
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
-		if Consult[Name] == nil then
+		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 105, ["texture"] = 1, ["type"] = "backpack" }
@@ -346,15 +346,15 @@ Use = {
 		local cards = { "A","2","3","4","5","6","7","8","9","10","J","Q","K" }
 
 		local naipe = math.random(4)
-		local naipes = { "^8♣","^8♠","^7♦","^7♥" }
+		local naipes = { "<black>♣</black>","<red>♠</red>","<black>♦</black>","<red>♥</red>" }
 
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("chatME",source,"^5CARTAS^9"..Identity["name"].." "..Identity["name2"].."^0 tirou "..cards[card]..naipes[naipe].."^0 do baralho.")
+		TriggerClientEvent("hud:ClientMessage",source,Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
 
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("chatME",v[2],"^5CARTAS^9"..Identity["name"].." "..Identity["name2"].."^0 "..cards[card]..naipes[naipe].."^0 do baralho.")
+				TriggerClientEvent("hud:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
 			end)
 		end
 	end,
@@ -375,12 +375,12 @@ Use = {
 		local Coins = math.random(2)
 		local Sides = { "Cara","Coroa" }
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("chatME",source,"^5MOEDA^9"..Identity["name"].." "..Identity["name2"].."^0 "..Sides[Coins]..".")
+		TriggerClientEvent("hud:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
 
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("chatME",v[2],"^5MOEDA^9"..Identity["name"].." "..Identity["name2"].."^0 "..Sides[Coins]..".")
+				TriggerClientEvent("hud:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins])
 			end)
 		end
 	end,
@@ -401,12 +401,12 @@ Use = {
 		local Coins = math.random(2)
 		local Sides = { "Cara","Coroa" }
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("chatME",source,"^5MOEDA^9"..Identity["name"].." "..Identity["name2"].."^0 "..Sides[Coins]..".")
+		TriggerClientEvent("hud:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
 
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("chatME",v[2],"^5MOEDA^9"..Identity["name"].." "..Identity["name2"].."^0 "..Sides[Coins]..".")
+				TriggerClientEvent("hud:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins])
 			end)
 		end
 	end,
@@ -431,7 +431,7 @@ Use = {
 				end
 
 				Wait(100)
-			until Active[Passport] == nil
+			until not Active[Passport]
 		end
 	end,
 
@@ -469,8 +469,8 @@ Use = {
 
 					if vRP.TakeItem(Passport,Full,1,true,Slot) then
 						local Points = 0
-						if Split ~= nil then
-							Points = parseInt(Split)
+						if Split[2] ~= nil then
+							Points = parseInt(Split[2])
 						end
 
 						vRP.WeedTimer(Passport,1)
@@ -482,7 +482,7 @@ Use = {
 				end
 
 				Wait(100)
-			until Active[Passport] == nil
+			until not Active[Passport]
 		end
 	end,
 
@@ -507,7 +507,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["meth"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -540,7 +540,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["cigarette"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -563,7 +563,7 @@ Use = {
 				end
 
 				Wait(100)
-			until Active[Passport] == nil
+			until not Active[Passport]
 		end
 	end,
 
@@ -583,11 +583,11 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["medkit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if (Healths[Passport] == nil or os.time() > Healths[Passport]) then
+		if (not Healths[Passport] or os.time() > Healths[Passport]) then
 			if vRP.GetHealth(source) > 100 and vRP.GetHealth(source) < 200 then
 				Active[Passport] = os.time() + 10
 				Player(source)["state"]["Buttons"] = true
@@ -608,7 +608,7 @@ Use = {
 					end
 
 					Wait(100)
-				until Active[Passport] == nil
+				until not Active[Passport]
 			else
 				TriggerClientEvent("Notify",source,"amarelo","Não pode utilizar de vida cheia ou nocauteado.",5000)
 			end
@@ -638,7 +638,7 @@ Use = {
 				end
 
 				Wait(100)
-			until Active[Passport] == nil
+			until not Active[Passport]
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Nenhum ferimento encontrado.",5000)
 		end
@@ -664,7 +664,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["camera"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -687,7 +687,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["evidence01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -703,7 +703,7 @@ Use = {
 		for k,v in pairs(Microscope) do
 			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 			if Distance <= 1 then
-				local Identity = vRP.Identity(Split)
+				local Identity = vRP.Identity(Split[2])
 				if Identity then
 					TriggerClientEvent("Notify",source,"amarelo","Evidência de <b>"..Identity["name2"].."</b>.",5000)
 					break
@@ -725,7 +725,7 @@ Use = {
 		for k,v in pairs(Microscope) do
 			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 			if Distance <= 1 then
-				local Identity = vRP.Identity(Split)
+				local Identity = vRP.Identity(Split[2])
 				if Identity then
 					TriggerClientEvent("Notify",source,"amarelo","Evidência de <b>"..Identity["name2"].."</b>.",5000)
 					break
@@ -747,7 +747,7 @@ Use = {
 		for k,v in pairs(Microscope) do
 			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 			if Distance <= 1 then
-				local Identity = vRP.Identity(Split)
+				local Identity = vRP.Identity(Split[2])
 				if Identity then
 					TriggerClientEvent("Notify",source,"amarelo","Evidência de <b>"..Identity["name2"].."</b>.",5000)
 					break
@@ -769,7 +769,7 @@ Use = {
 		for k,v in pairs(Microscope) do
 			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 			if Distance <= 1 then
-				local Identity = vRP.Identity(Split)
+				local Identity = vRP.Identity(Split[2])
 				if Identity then
 					TriggerClientEvent("Notify",source,"amarelo","Evidência de <b>"..Identity["name2"].."</b>.",5000)
 					break
@@ -808,7 +808,7 @@ Use = {
 				end
 
 				Wait(100)
-			until Active[Passport] == nil
+			until not Active[Passport]
 		end
 	end,
 
@@ -844,7 +844,7 @@ Use = {
 				end
 
 				Wait(100)
-			until Active[Passport] == nil
+			until not Active[Passport]
 		end
 	end,
 
@@ -908,7 +908,7 @@ Use = {
 					end
 
 					Wait(100)
-				until Active[Passport] == nil
+				until not Active[Passport]
 			end
 		end
 	end,
@@ -939,7 +939,7 @@ Use = {
 					end
 
 					Wait(100)
-				until Active[Passport] == nil
+				until not Active[Passport]
 
 				TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
 			end
@@ -974,7 +974,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["GADGET_PARACHUTE"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -994,7 +994,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["advtoolbox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1018,7 +1018,7 @@ Use = {
 								end)
 							end
 
-							local Number = parseInt(Split) - 1
+							local Number = parseInt(Split[2]) - 1
 
 							if Number >= 1 then
 								vRP.GiveItem(Passport,"advtoolbox-"..Number,1,false)
@@ -1045,7 +1045,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["11"] == nil then
+						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
@@ -1078,7 +1078,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1107,7 +1107,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["11"] == nil then
+						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
@@ -1140,7 +1140,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1169,7 +1169,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["11"] == nil then
+						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
@@ -1202,7 +1202,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1231,7 +1231,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["11"] == nil then
+						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
@@ -1264,7 +1264,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1293,7 +1293,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["11"] == nil then
+						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
@@ -1326,7 +1326,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1355,7 +1355,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["12"] == nil then
+						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
@@ -1388,7 +1388,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1417,7 +1417,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["12"] == nil then
+						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
@@ -1450,7 +1450,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1479,7 +1479,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["12"] == nil then
+						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
@@ -1512,7 +1512,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1541,7 +1541,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["12"] == nil then
+						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
@@ -1574,7 +1574,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1603,7 +1603,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["12"] == nil then
+						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
@@ -1636,7 +1636,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1665,7 +1665,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["13"] == nil then
+						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
@@ -1698,7 +1698,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1727,7 +1727,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["13"] == nil then
+						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
@@ -1760,7 +1760,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1789,7 +1789,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["13"] == nil then
+						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
@@ -1822,7 +1822,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1851,7 +1851,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["13"] == nil then
+						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
@@ -1884,7 +1884,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1913,7 +1913,7 @@ Use = {
 					if parseInt(#Datatable) > 0 then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if Datatable["mods"]["13"] == nil then
+						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
@@ -1946,7 +1946,7 @@ Use = {
 										end
 
 										Wait(100)
-									until Active[Passport] == nil
+									until not Active[Passport]
 								end
 
 								TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -1976,7 +1976,7 @@ Use = {
 						if parseInt(#Datatable) > 0 then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if Datatable["mods"]["15"] == nil then
+							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
@@ -2009,7 +2009,7 @@ Use = {
 											end
 
 											Wait(100)
-										until Active[Passport] == nil
+										until not Active[Passport]
 									end
 
 									TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -2042,7 +2042,7 @@ Use = {
 						if parseInt(#Datatable) > 0 then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if Datatable["mods"]["15"] == nil then
+							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
@@ -2075,7 +2075,7 @@ Use = {
 											end
 
 											Wait(100)
-										until Active[Passport] == nil
+										until not Active[Passport]
 									end
 
 									TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -2108,7 +2108,7 @@ Use = {
 						if parseInt(#Datatable) > 0 then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if Datatable["mods"]["15"] == nil then
+							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
@@ -2141,7 +2141,7 @@ Use = {
 											end
 
 											Wait(100)
-										until Active[Passport] == nil
+										until not Active[Passport]
 									end
 
 									TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -2174,7 +2174,7 @@ Use = {
 						if parseInt(#Datatable) > 0 then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if Datatable["mods"]["15"] == nil then
+							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
@@ -2207,7 +2207,7 @@ Use = {
 											end
 
 											Wait(100)
-										until Active[Passport] == nil
+										until not Active[Passport]
 									end
 
 									TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -2240,7 +2240,7 @@ Use = {
 						if parseInt(#Datatable) > 0 then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if Datatable["mods"]["15"] == nil then
+							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
@@ -2273,7 +2273,7 @@ Use = {
 											end
 
 											Wait(100)
-										until Active[Passport] == nil
+										until not Active[Passport]
 									end
 
 									TriggerClientEvent("player:syncHoodOptions",source,vehNet,"close")
@@ -2336,7 +2336,7 @@ Use = {
 
 				if vRPC.inVehicle(source) then
 					vRPC.AnimActive(source)
-					vGARAGE.startAnimHotwired(source)
+					vGARAGE.StartHotwired(source)
 					Active[Passport] = os.time() + 100
 					Player(source)["state"]["Buttons"] = true
 					TriggerClientEvent("inventory:Close",source)
@@ -2373,7 +2373,7 @@ Use = {
 					end
 
 					Player(source)["state"]["Buttons"] = false
-					vGARAGE.stopAnimHotwired(source,vehicle)
+					vGARAGE.StopHotwired(source,vehicle)
 					Active[Passport] = nil
 				else
 					vRPC.AnimActive(source)
@@ -2414,7 +2414,7 @@ Use = {
 								end
 
 								Wait(100)
-							until Active[Passport] == nil
+							until not Active[Passport]
 						end
 					else
 						if vTASKBAR.taskLockpick(source) then
@@ -2461,9 +2461,9 @@ Use = {
 		if not Player(source)["state"]["Handcuff"] then
 			local Vehicle,vehNet,vehPlate = vRPC.vehList(source,4)
 			if Vehicle and vRPC.inVehicle(source) then
-				if exports["garages"]:vehSignal(vehPlate) == nil then
+				if not exports["garages"]:vehSignal(vehPlate) then
 					vRPC.AnimActive(source)
-					vGARAGE.startAnimHotwired(source)
+					vGARAGE.StartHotwired(source)
 					Active[Passport] = os.time() + 100
 					Player(source)["state"]["Buttons"] = true
 					TriggerClientEvent("inventory:Close",source)
@@ -2476,7 +2476,7 @@ Use = {
 					end
 
 					Player(source)["state"]["Buttons"] = false
-					vGARAGE.stopAnimHotwired(source)
+					vGARAGE.StopHotwired(source)
 					Active[Passport] = nil
 				else
 					TriggerClientEvent("Notify",source,"amarelo","<b>Bloqueador de Sinal</b> já instalado.",5000)
@@ -2529,7 +2529,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["hennessy"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2554,7 +2554,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["chandon"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2579,7 +2579,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["dewars"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2604,7 +2604,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["scanner"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2641,7 +2641,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["passionjuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2670,7 +2670,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["tangejuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2698,7 +2698,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["grapejuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2726,7 +2726,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["strawberryjuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2754,7 +2754,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["bananajuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2782,7 +2782,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["acerolajuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2810,7 +2810,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["orange"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2833,7 +2833,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["apple"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2856,7 +2856,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["strawberry"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2879,7 +2879,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["coffee2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2902,7 +2902,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["grape"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2925,7 +2925,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["tange"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2948,7 +2948,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["banana"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2971,7 +2971,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["acerola"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2994,7 +2994,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["passion"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3017,7 +3017,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["tomato"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3040,7 +3040,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["mushroom"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3063,7 +3063,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["guarana"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3086,7 +3086,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["medicpass"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3174,7 +3174,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["water"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3198,7 +3198,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["milkbottle"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3222,7 +3222,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["guarananatural"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3250,7 +3250,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["sinkalmy"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3275,7 +3275,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["ritmoneury"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3300,7 +3300,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["cola"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3323,7 +3323,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["soda"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3346,7 +3346,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["fishingrod"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3413,7 +3413,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["pizzamozzarella"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3440,7 +3440,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["pizzamushroom"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3467,7 +3467,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["pizzabanana"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3494,7 +3494,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["pizzachocolate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3521,7 +3521,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["sushi"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3548,7 +3548,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["nigirizushi"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3575,7 +3575,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["calzone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3602,7 +3602,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["chickenfries"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3629,7 +3629,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["cookies"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3657,7 +3657,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["onionrings"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3684,7 +3684,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["hamburger"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3711,7 +3711,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["hamburger2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3738,7 +3738,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["cannedsoup"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3761,7 +3761,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["canofbeans"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3784,7 +3784,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["tablecoke"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -3800,7 +3800,7 @@ Use = {
 
 					repeat
 						Number = Number + 1
-					until Objects[tostring(Number)] == nil
+					until not Objects[tostring(Number)]
 
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = heading, object = Hash, item = Full, Distance = 50, mode = "1" }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
@@ -3816,15 +3816,15 @@ Use = {
 		TriggerClientEvent("inventory:Close",source)
 
 		local Hash = "bkr_prop_meth_table01a"
-		local application,Coords,heading = vRPC.objectCoords(source,Hash)
-		if application then
+		local Application,Coords,heading = vRPC.objectCoords(source,Hash)
+		if Application then
 			if not vCLIENT.objectExist(source,Coords,Hash) then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
 					repeat
 						Number = Number + 1
-					until Objects[tostring(Number)] == nil
+					until not Objects[tostring(Number)]
 
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(heading), object = Hash, item = Full, Distance = 50, mode = "1" }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
@@ -3848,7 +3848,7 @@ Use = {
 
 					repeat
 						Number = Number + 1
-					until Objects[tostring(Number)] == nil
+					until not Objects[tostring(Number)]
 
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(heading), object = Hash, item = Full, Distance = 50, mode = "1" }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
@@ -3883,7 +3883,7 @@ Use = {
 
 						repeat
 							Number = Number + 1
-						until Objects[tostring(Number)] == nil
+						until not Objects[tostring(Number)]
 
 						Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100, mode = "Spray" }
 						TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
@@ -3891,7 +3891,7 @@ Use = {
 				end
 
 				Wait(100)
-			until Active[Passport] == nil
+			until not Active[Passport]
 		end
 
 		Player(source)["state"]["Buttons"] = false
@@ -3910,7 +3910,7 @@ Use = {
 
 					repeat
 						Number = Number + 1
-					until Objects[tostring(Number)] == nil
+					until not Objects[tostring(Number)]
 
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]) + 0.10, h = mathLength(heading), object = Hash, item = Full, Distance = 50, mode = "2" }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
@@ -3934,7 +3934,7 @@ Use = {
 
 					repeat
 						Number = Number + 1
-					until Objects[tostring(Number)] == nil
+					until not Objects[tostring(Number)]
 
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(heading), object = Hash, item = Full, Distance = 100, mode = "3" }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
@@ -3958,7 +3958,7 @@ Use = {
 
 					repeat
 						Number = Number + 1
-					until Objects[tostring(Number)] == nil
+					until not Objects[tostring(Number)]
 
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(heading), object = Hash, item = Full, Distance = 50, mode = "4" }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
@@ -3984,8 +3984,8 @@ Use = {
 						local Points = 0
 						local Route = GetPlayerRoutingBucket(source)
 
-						if Split ~= nil then
-							Points = parseInt(Split)
+						if Split[2] ~= nil then
+							Points = parseInt(Split[2])
 						end
 
 						exports["plants"]:Plants(Coords,Route,Points)
@@ -4036,7 +4036,7 @@ Use = {
 			local CoordsAtm,NumberAtm = vCLIENT.checkAtm(source,Coords)
 
 			if CoordsAtm then
-				if atmTimers[NumberAtm] == nil then
+				if not atmTimers[NumberAtm] then
 					atmTimers[NumberAtm] = os.time()
 				end
 
@@ -4061,7 +4061,7 @@ Use = {
 
 					repeat
 						Number = Number + 1
-					until Objects[tostring(Number)] == nil
+					until not Objects[tostring(Number)]
 
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100 }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
@@ -4213,7 +4213,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["cookedmeat"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4236,7 +4236,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["hotdog"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4259,7 +4259,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["sandwich"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4286,7 +4286,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["tacos"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4309,7 +4309,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["fries"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4336,7 +4336,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["milkshake"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4363,7 +4363,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["cappuccino"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4390,7 +4390,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["applelove"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4418,7 +4418,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["cupcake"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4446,7 +4446,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["marshmallow"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4469,7 +4469,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["chocolate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4492,7 +4492,7 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
 	["donut"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4516,14 +4516,32 @@ Use = {
 			end
 
 			Wait(100)
-		until Active[Passport] == nil
+		until not Active[Passport]
 	end,
 
-	["donut"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			TriggerClientEvent("inventory:Close",source)
-			TriggerClientEvent("notepad:createNotepad",source)
+	["notepad"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Active[Passport] = os.time() + 100
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Keyboard = vKEYBOARD.keySingle(source,"Mensagem:")
+		if Keyboard then
+			if vRP.TakeItem(Passport,Full,1,false,Slot) then
+				if Split[2] then
+					vRP.SetSrvData(Full,Keyboard[1])
+					vRP.GenerateItem(Passport,Full,1,false)
+				else
+					local Time = os.time()
+					vRP.SetSrvData("notepad-"..Time,Keyboard[1])
+					vRP.GenerateItem(Passport,"notepad-"..Time,1,false)
+				end
+			end
+
+			TriggerClientEvent("inventory:Update",source,"Backpack")
 		end
+
+		Player(source)["state"]["Buttons"] = false
+		Active[Passport] = nil
 	end,
 
 	["megaphone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -4611,7 +4629,7 @@ Use = {
 
 	["radio"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("radio:openSystem",source)
+		TriggerClientEvent("hud:RadioNui",source)
 		vRPC.AnimActive(source)
 	end,
 
@@ -4722,89 +4740,23 @@ Use = {
 			if Player(ClosestPed)["state"]["Handcuff"] then
 				local OtherPassport = vRP.Passport(ClosestPed)
 				if OtherPassport then
-					if vRP.HasGroup(OtherPassport,"Ranger") then
+					if vRP.HasGroup(OtherPassport,"Police") then
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							vRP.BlankPermission(OtherPassport,"Police")
-							TriggerEvent("blipsystem:Exit",ClosestPed)
-							Player(ClosestPed)["state"]["Police"] = false
-							TriggerClientEvent("hud:RadioClean",ClosestPed)
-
-							vRP.RemovePermission(OtherPassport,"Ranger")
-							vRP.SetPermission(OtherPassport,"waitRanger")
-
-							TriggerEvent("Salary:Remove",OtherPassport,"Emergency")
-							TriggerClientEvent("service:Label",ClosestPed,"Ranger","Entrar em Serviço",5000)
-							TriggerClientEvent("Notify",source,"amarelo","Todas as comunicações foram retiradas.",5000)
-						end
-					end
-
-					if vRP.HasGroup(OtherPassport,"State") then
-						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							vRP.BlankPermission(OtherPassport,"Police")
-							TriggerEvent("blipsystem:Exit",ClosestPed)
-							Player(ClosestPed)["state"]["Police"] = false
-							TriggerClientEvent("hud:RadioClean",ClosestPed)
-
-							vRP.RemovePermission(OtherPassport,"State")
-							vRP.SetPermission(OtherPassport,"waitState")
-
-							TriggerEvent("Salary:Remove",OtherPassport,"Emergency")
-							TriggerClientEvent("service:Label",ClosestPed,"State","Entrar em Serviço",5000)
-							TriggerClientEvent("Notify",source,"amarelo","Todas as comunicações foram retiradas.",5000)
-						end
-					end
-
-					if vRP.HasGroup(OtherPassport,"Lspd") then
-						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							vRP.BlankPermission(OtherPassport,"Police")
 							TriggerEvent("blipsystem:Exit",ClosestPed)
 							Player(ClosestPed)["state"]["Police"] = false
 
-							vRP.RemovePermission(OtherPassport,"Lspd")
-							vRP.SetPermission(OtherPassport,"waitLspd")
+							vRP.RemovePermission(OtherPassport,"Police")
+							vRP.SetPermission(OtherPassport,"waitPolice")
 
 							TriggerClientEvent("hud:RadioClean",ClosestPed)
 							TriggerEvent("Salary:Remove",OtherPassport,"Emergency")
-							TriggerClientEvent("service:Label",ClosestPed,"Lspd","Entrar em Serviço",5000)
-							TriggerClientEvent("Notify",source,"amarelo","Todas as comunicações foram retiradas.",5000)
-						end
-					end
-
-					if vRP.HasGroup(OtherPassport,"Sheriff") then
-						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							vRP.BlankPermission(OtherPassport,"Police")
-							TriggerEvent("blipsystem:Exit",ClosestPed)
-							Player(ClosestPed)["state"]["Police"] = false
-							TriggerClientEvent("hud:RadioClean",ClosestPed)
-
-							vRP.RemovePermission(OtherPassport,"Sheriff")
-							vRP.SetPermission(OtherPassport,"waitSheriff")
-
-							TriggerEvent("Salary:Remove",OtherPassport,"Emergency")
-							TriggerClientEvent("service:Label",ClosestPed,"Sheriff","Entrar em Serviço",5000)
-							TriggerClientEvent("Notify",source,"amarelo","Todas as comunicações foram retiradas.",5000)
-						end
-					end
-
-					if vRP.HasGroup(OtherPassport,"Corrections") then
-						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							vRP.BlankPermission(OtherPassport,"Police")
-							TriggerEvent("blipsystem:Exit",ClosestPed)
-							Player(ClosestPed)["state"]["Police"] = false
-							TriggerClientEvent("hud:RadioClean",ClosestPed)
-
-							vRP.RemovePermission(OtherPassport,"Corrections")
-							vRP.SetPermission(OtherPassport,"waitCorrections")
-
-							TriggerEvent("Salary:Remove",OtherPassport,"Emergency")
-							TriggerClientEvent("service:Label",ClosestPed,"Corrections","Entrar em Serviço",5000)
+							TriggerClientEvent("service:Label",ClosestPed,"Police","Entrar em Serviço",5000)
 							TriggerClientEvent("Notify",source,"amarelo","Todas as comunicações foram retiradas.",5000)
 						end
 					end
 
 					if vRP.HasGroup(OtherPassport,"Paramedic") then
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							vRP.BlankPermission(Passport,"Paramedic")
 							TriggerEvent("blipsystem:Exit",ClosestPed)
 							TriggerClientEvent("hud:RadioClean",ClosestPed)
 

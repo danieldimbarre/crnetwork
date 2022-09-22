@@ -90,7 +90,7 @@ CreateThread(function()
 		for Number,v in pairs(Zones) do
 			local Distance = #(Coords - v["Ped"]["Coords"])
 			if Distance <= 100 and LocalPlayer["state"]["Route"] < 900000 then
-				if Peds[Number] == nil then
+				if not Peds[Number] then
 					if LoadModel(v["Ped"]["Model"]) then
 						Peds[Number] = CreatePed(4,v["Ped"]["Model"],v["Ped"]["Coords"]["x"],v["Ped"]["Coords"]["y"],v["Ped"]["Coords"]["z"] - 1,v["Ped"]["Heading"],false,false)
 						SetPedArmour(Peds[Number],100)
@@ -105,8 +105,7 @@ CreateThread(function()
 
 						exports["target"]:AddCircleZone("Arena:"..Number,v["Ped"]["Coords"],0.5,{
 							name = "Arena:"..Number,
-							heading = 3374176,
-							useZ = true
+							heading = 3374176
 						},{
 							shop = Number,
 							Distance = 2.0,
@@ -123,8 +122,11 @@ CreateThread(function()
 			else
 				if Peds[Number] then
 					exports["target"]:RemCircleZone("Arena:"..Number)
-					SetEntityAsNoLongerNeeded(Peds[Number])
-					DeleteEntity(Peds[Number])
+
+					if DoesEntityExist(Peds[Number]) then
+						DeleteEntity(Peds[Number])
+					end
+
 					Peds[Number] = nil
 				end
 			end
@@ -167,10 +169,6 @@ AddEventHandler("arena:Exit",function()
 		TriggerEvent("resetEnergetic")
 		KillStreek = 0
 		Arena = "0"
-
-		DoScreenFadeOut(0)
-		Wait(1000)
-		DoScreenFadeIn(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -207,8 +205,8 @@ end)
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(name,args)
-	if name == "CEventNetworkEntityDamage" then
-		if (GetEntityHealth(args[1]) <= 100 and PlayerPedId() == args[2] and IsPedAPlayer(args[1])) then
+	if name == "CEventNetworkEntityDamage" and Arena ~= "0" then
+		if GetEntityHealth(args[1]) <= 100 and PlayerPedId() == args[2] and IsPedAPlayer(args[1]) then
 			SendNUIMessage({ Players = Players, Streek = KillStreek + 1 })
 			KillStreek = KillStreek + 1
 		end
@@ -219,7 +217,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		local TimeDistance = 999
 		if LocalPlayer["state"]["Route"] > 900000 and Arena ~= "0" and Zones[Arena]["PolyZone"] then
 			local Ped = PlayerPedId()
 			local Coords = GetEntityCoords(Ped)
@@ -229,13 +226,17 @@ CreateThread(function()
 			end
 		end
 
-		Wait(TimeDistance)
+		Wait(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADBLIPS
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	for _,v in pairs(Zones) do
 		local blip = AddBlipForCoord(v["Ped"]["Coords"][1],v["Ped"]["Coords"][2],v["Ped"]["Coords"][3])
 		SetBlipSprite(blip,433)

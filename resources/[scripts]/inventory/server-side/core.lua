@@ -1557,7 +1557,7 @@ AddEventHandler("inventory:applyPlate",function(Entity)
 	local vehPlate = Entity[1]
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
-		if not lates[vehPlate] then
+		if not Plates[vehPlate] then
 			consultItem = vRP.InventoryItemAmount(Passport,"plate")
 			if consultItem[1] <= 0 then
 				TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>1x "..itemName("plate").."</b>.",5000)

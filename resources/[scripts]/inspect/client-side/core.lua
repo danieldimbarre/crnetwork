@@ -32,7 +32,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("takeItem",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
-		vSERVER.takeItem(Data["item"],Data["slot"],Data["amount"])
+		vSERVER.takeItem(Data["item"],Data["slot"],Data["target"],Data["amount"])
 	end
 
 	Callback("Ok")

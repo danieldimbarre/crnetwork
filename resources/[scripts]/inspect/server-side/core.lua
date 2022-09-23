@@ -151,7 +151,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.takeItem(Item,Slot,Amount)
+function Creative.takeItem(Item,Slot,Target,Amount)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -165,6 +165,7 @@ function Creative.takeItem(Item,Slot,Amount)
 
 				if (vRP.InventoryWeight(Passport) + (itemWeight(Item) * Amount)) <= vRP.GetWeight(Passport) then
 					if vRP.TakeItem(openPlayer[Passport],Item,Amount,true,Slot) then
+						vRP.GiveItem(Passport,Item,Amount,false,Target)
 						TriggerClientEvent("inspect:Update",source,"requestChest")
 					end
 				else

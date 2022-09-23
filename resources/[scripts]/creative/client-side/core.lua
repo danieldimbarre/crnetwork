@@ -268,6 +268,7 @@ CreateThread(function()
 		HideHudComponentThisFrame(21)
 		HideHudComponentThisFrame(22)
 
+		DisableControlAction(1,36,true)
 		DisableControlAction(1,37,true)
 		DisableControlAction(1,204,true)
 		DisableControlAction(1,211,true)

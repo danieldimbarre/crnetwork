@@ -484,12 +484,12 @@ space {
 }
 
 .march circle:nth-child(1) {
-	stroke: #977217;
+	stroke: #1a912e;
 	stroke-dashoffset: calc(440 - (440 * 18) / 100);
 }
 
 .march circle:nth-child(2) {
-	stroke: #6ede81;
+	stroke: #21ac38;
 	stroke-dashoffset: calc(440 - (440 * 0) / 100);
 }
 
@@ -526,8 +526,8 @@ space {
 }
 
 .Yellow {
-	fill: #6ede81;
-	color: #6ede81;
+	fill: #fec026;
+	color: #fec026;
 }
 
 .Green {

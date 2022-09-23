@@ -43,6 +43,11 @@ function Creative.CharacterChosen(Passport)
 	if Consult[1] then
 		SetPlayerRoutingBucket(source,0)
 		vRP.CharacterChosen(source,Passport)
+
+		Wait(500)
+
+		local Identity = vRP.Identity(Passport)
+		TriggerClientEvent("vRP:PlayerActive",source,Passport,Identity["name"].." "..Identity["name2"])
 	else
 		DropPlayer(source,"Conectando em personagem irregular.")
 		TriggerEvent("Discord","Hackers","A license **"..License.."** conectou em outra conta.",3092790)

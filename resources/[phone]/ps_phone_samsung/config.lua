@@ -50,9 +50,9 @@ Config.ButtonDisable = { --https://docs.fivem.net/docs/game-references/controls/
 
 Config.HelpList = {
     ['policia'] = {
-        name        = "Emergência",
-        description = "LSPD",
-        text        = "Chame uma Unidade movél",
+        name        = "Polícia",
+        description = "Chame a Polícia",
+        text        = "Chame uma VTR",
         message     = "Descreva a situação:",
         emergency   = true,
         staff       = false,
@@ -64,9 +64,9 @@ Config.HelpList = {
     },
     ['ems'] = {
         name        = "Emergência",
-        description = "Chame uma unidade móvel",
+        description = "Chame uma Unidade móvel",
         text        = "Chame uma Unidade movél",
-        message    = "Descreva a situação:",
+        message     = "Descreva a situação:",
         emergency   = true,
         staff       = false,
         image       = "https://gtapolicemods.com/uploads/monthly_2020_11/Rambulance.png.d24e5be1cafdffe6786dd1f8dcd64678.png",

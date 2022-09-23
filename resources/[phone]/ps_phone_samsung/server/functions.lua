@@ -126,51 +126,51 @@ end
 -- getUserSource
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserSource = function(user_id)
-    return vRP.userSource(tonumber(user_id))
+    return vRP.Source(tonumber(user_id))
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserId
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserId = function(source)
-    return vRP.getUserId(source)
+    return vRP.Passport(source)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserIdentity
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserIdentity = function(user_id)
-    return vRP.userIdentity(user_id)
+    return vRP.Identity(user_id)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserFullName
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserFullName = function(user_id)
-    local identity = getUserIdentity(user_id)
-    local name = identity.name.." "..identity.name2
+    local identity = Identity(user_id)
+    local name = identity["name"].." "..identity["name2"]
     return name
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserByPhone
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserByPhone = function(phone)
-    return vRP.userPhone(phone)
+    return vRP.UserPhone(phone)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUsers
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUsers = function()
-    return vRP.getUsers()
+    return vRP.Users()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getHasPermission
 -----------------------------------------------------------------------------------------------------------------------------------------
 getHasPermission = function(user_id, perm)
-    return vRP.hasPermission(user_id,perm)
+    return vRP.HasPermission(user_id,perm)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- checkIteminInvetory
 -----------------------------------------------------------------------------------------------------------------------------------------
 checkIteminInvetory = function(user_id, item, amount)
-    local check = vRP.getInventoryItemAmount(user_id, item)
+    local check = vRP.InventoryItemAmount(user_id, item)
     if check[1] >= amount then
         return true
     else
@@ -181,13 +181,13 @@ end
 -- giveInventoryItem
 -----------------------------------------------------------------------------------------------------------------------------------------
 giveInventoryItem = function(user_id, item, amount)
-    return vRP.giveInventoryItem(user_id, item, amount)
+    return vRP.GiveItem(user_id, item, amount, true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUsersByPermission
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUsersByPermission = function(group)
-    return vRP.numPermission(group)
+    return vRP.NumPermission(group)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- treatUsersByPermission
@@ -213,38 +213,38 @@ end
 -- requestAcceptorNot
 -----------------------------------------------------------------------------------------------------------------------------------------
 requestAcceptorNot = function(source,title,timeout)
-    return vRP.request(source,title,timeout)
+    vHUD = Tunnel.getInterface("hud")
+    return vHUD.Request(source,title,"Sim","Não")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- checkPlayerHandcuffed
 -----------------------------------------------------------------------------------------------------------------------------------------
 checkPlayerHandcuffed = function(source)
-    vPLAYER = Tunnel.getInterface(Config.NameVRPPlayer)
-    return vPLAYER.getHandcuff(source)
+    return LocalPlayer["state"]["Handcuff"]
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getBankMoney
 -----------------------------------------------------------------------------------------------------------------------------------------
 getBankMoney = function(user_id)
-    return vRP.getBank(user_id)
+    return vRP.GetBank(user_id)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- addBankMoney
 -----------------------------------------------------------------------------------------------------------------------------------------
 addBankMoney = function(user_id, amount)
-    vRP.addBank(user_id, tonumber(amount), "Private")
+    vRP.GiveBank(user_id, tonumber(amount), "Private")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- remBankMoney
 -----------------------------------------------------------------------------------------------------------------------------------------
 remBankMoney = function(user_id, amount)
-    vRP.paymentBank(user_id, tonumber(amount))
+    vRP.PaymentBank(user_id, tonumber(amount))
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- expulseUser
 -----------------------------------------------------------------------------------------------------------------------------------------
 expulseUser = function(user_id, message)
-    vRP.kick(user_id,message)
+    vRP.Kick(user_id,message)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- formatnumber
@@ -257,7 +257,7 @@ end
 -- getUserData
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserData = function(user_id, key)
-    local consult = vRP.query("playerdata/getUserdata",{ user_id = tonumber(user_id), key = key })
+    local consult = vRP.Query("playerdata/GetData",{ Passaport = tonumber(user_id), dkey = key })
 	if consult[1] then
 		return consult[1]["dvalue"]
 	else
@@ -268,14 +268,15 @@ end
 -- setUserData
 -----------------------------------------------------------------------------------------------------------------------------------------
 setUserData = function(user_id, key, data)
-    vRP.execute("playerdata/setUserdata", { user_id = tonumber(user_id), key = key, value = data })
+    vRP.Execute("playerdata/SetData", { Passaport = tonumber(user_id), dkey = key, dvalue = data })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserFines
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserFines = function(user_id)
+    local source = source
     local fines = {}
-    local finesamount = vRP.getFines(user_id) or 0
+    local finesamount = vRP.GetFines(source) or 0
 
     if finesamount == "" then
         return fines
@@ -296,9 +297,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserFine
 -----------------------------------------------------------------------------------------------------------------------------------------
-getUserFine = function(user_id, id)
+getUserFine = function(source, id)
     local fines = {}
-    local finesamount = vRP.getFines(user_id)
+    local finesamount = vRP.GetFines(source)
 
     if tonumber(finesamount) > 0 then
         return tonumber(finesamount)
@@ -310,8 +311,9 @@ end
 -- payFines
 -----------------------------------------------------------------------------------------------------------------------------------------
 payFines = function(user_id, id)
-    local amount = getUserFine(user_id, id)
-    return vRP.delFines(user_id,amount)
+    local source = source
+    local amount = getUserFine(source, id)
+    return vRP.RemoveFine(user_id,amount,source)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- sendnotify
@@ -320,18 +322,19 @@ sendnotify = function(source, type, message, time)
     if time == nil then
         time = 5000
     end
+
     if source then
         if type == "sucesso" then
-            type = "~g~Sucesso~h~"
+            type = "verde"
         elseif type == "negado" then
-            type = "~r~Negado~h~"
+            type = "vermelho"
         elseif type == "aviso" then
-            type = "~y~Aviso~h~"
+            type = "amarelo"
         elseif type == "importante" then
-            type = "~b~Importante~h~"
+            type = "azul"
         end
         
-        TriggerClientEvent("_notify:send",source,type..' \n '..message,time,'bottomleft','default')
+        TriggerClientEvent("Notify",source,type,message,time)
     end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -339,6 +342,6 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 sendnotifypush = function(source,title,message,x,y,z,name,phone)
     if source then 
-        TriggerClientEvent("NotifyPush",source,{ time = os.date("%H:%M:%S - %d/%m/%Y"), text = message, code = 20, title = title, x = x, y = y, z = z, name = name, phone = phone, rgba = {69,115,41} })
+        TriggerClientEvent("NotifyPush",source,{ code = 20, title = title, x = x, y = y, z = z, name = name, phone = phone, text = message, time = "Recebido às "..os.date("%H:%M"), blipColor = 25 })
     end
 end

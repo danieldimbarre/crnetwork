@@ -14,7 +14,7 @@ vRP.Banned(License: string)
 
 vRP.Account(License: string)
 
-vRP.userData(Passport: int,Key: string)
+vRP.UserData(Passport: int,Key: string)
 
 vRP.InsidePropertys(Passport: int,Coords)
 

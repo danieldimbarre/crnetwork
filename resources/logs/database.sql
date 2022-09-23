@@ -160,5 +160,4 @@ CREATE TABLE IF NOT EXISTS `warehouse` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES
-('Permissions', '{\"Admin\":{\"1\":true}}');
+INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES ('Permissions', '{\"Admin\":{\"1\":true}}');

@@ -1086,7 +1086,11 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 			local Weapon,Hash,Ammo = vCLIENT.rechargeCheck(source,Item)
 
 			if Weapon then
-				if Item ~= itemAmmo(Hash) then
+				if (Ammo + Amount) > 250 then
+					Amount = 250 - Ammo
+				end
+
+				if Item ~= itemAmmo(Hash) or Amount <= 0 then
 					return
 				end
 

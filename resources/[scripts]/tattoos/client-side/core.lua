@@ -12,8 +12,8 @@ vSERVER = Tunnel.getInterface("tattoos")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local cam = nil
+local Tattoos = {}
 local atualShop = {}
-local atualTattoo = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADFOCUS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1127,10 +1127,11 @@ local tattooShop = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("tattoos:Apply")
 AddEventHandler("tattoos:Apply",function(status)
-	atualTattoo = status
+	Tattoos = status
+	ClearPedDecorations(PlayerPedId())
 
-	for k,v in pairs(atualTattoo) do
-		SetPedDecoration(PlayerPedId(),GetHashKey(v[1]),GetHashKey(k))
+	for Hash,v in pairs(Tattoos) do
+		SetPedDecoration(PlayerPedId(),GetHashKey(v[1]),GetHashKey(Hash))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1171,7 +1172,7 @@ function openTattooShop()
 
 	ClearAllPedProps(Ped)
 
-	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = atualTattoo })
+	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ATUALIZARTATTOO
@@ -1179,8 +1180,8 @@ end
 function atualizarTattoo()
 	ClearPedDecorations(PlayerPedId())
 
-	for k,v in pairs(atualTattoo) do
-		AddPedDecorationFromHashes(PlayerPedId(),GetHashKey(v[1]),GetHashKey(k))
+	for Hash,v in pairs(Tattoos) do
+		AddPedDecorationFromHashes(PlayerPedId(),GetHashKey(v[1]),GetHashKey(Hash))
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1198,7 +1199,7 @@ function setCameraCoords()
 	RenderScriptCams(true,true,500,true,true)
 	pos = GetEntityCoords(PlayerPedId())
 	camPos = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0.0,2.0,0.0)
-	SetCamCoord(cam,camPos["x"],camPos["y"],camPos["z"] + 0.5)
+	SetCamCoord(cam,camPos["x"],camPos["y"],camPos["z"] + 0.75)
 	PointCamAtCoord(cam,pos["x"],pos["y"],pos["z"] + 0.15)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1207,7 +1208,7 @@ end
 RegisterNUICallback("close",function(Data,Callback)
 	TriggerEvent("skinshop:updateTattoo")
 	RenderScriptCams(false,true,250,1,0)
-	vSERVER.updateTattoo(atualTattoo)
+	vSERVER.updateTattoo(Tattoos)
 	SetNuiFocus(false,false)
 	DestroyCam(cam,false)
 	cam = nil
@@ -1272,20 +1273,20 @@ end)
 -- CHANGETATTOO
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("changeTattoo",function(Data,Callback)
-	local newAtualTattoo = {}
+	local newTattoos = {}
 	local tattooData = atualShop[Data["type"]]["tattoo"][Data["id"] + 1]
 
-	for k,v in pairs(atualTattoo) do
+	for k,v in pairs(Tattoos) do
 		if k ~= tattooData["name"] then
-			newAtualTattoo[k] = v
+			newTattoos[k] = v
 		end
 	end
 
-	if not atualTattoo[tattooData["name"]] then
-		newAtualTattoo[tattooData["name"]] = { tattooData["part"] }
+	if not Tattoos[tattooData["name"]] then
+		newTattoos[tattooData["name"]] = { tattooData["part"] }
 	end
 
-	atualTattoo = newAtualTattoo
+	Tattoos = newTattoos
 	atualizarTattoo()
 
 	Callback("Ok")
@@ -1295,7 +1296,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("limpaTattoo",function(Data,Callback)
 	ClearPedDecorations(PlayerPedId())
-	atualTattoo = {}
+	Tattoos = {}
 
 	Callback("Ok")
 end)
@@ -1304,11 +1305,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("rotate",function(Data,Callback)
 	local Ped = PlayerPedId()
-	local heading = GetEntityHeading(Ped)
+	local Heading = GetEntityHeading(Ped)
 	if Data == "left" then
-		SetEntityHeading(Ped,heading + 10)
+		SetEntityHeading(Ped,Heading + 10)
 	elseif Data == "right" then
-		SetEntityHeading(Ped,heading - 10)
+		SetEntityHeading(Ped,Heading - 10)
 	end
 
 	Callback("Ok")
@@ -1323,33 +1324,6 @@ RegisterNUICallback("handsup",function(Data,Callback)
 		vRP.AnimActive()
 	else
 		vRP.playAnim(true,{"random@mugging3","handsup_standing_base"},true)
-	end
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SETUPCAM
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("setupCam",function(Data,Callback)
-	local value = Data["value"]
-	local Ped = PlayerPedId()
-	local Pos = GetEntityCoords(Ped)
-	if value == 1 then
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,0.75,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
-		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.65)
-	elseif value == 2 then
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
-		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.2)
-	elseif value == 3 then
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
-		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] - 0.5)
-	else
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
-		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.15)
 	end
 
 	Callback("Ok")

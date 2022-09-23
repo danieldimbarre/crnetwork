@@ -453,13 +453,7 @@ local shops = {
 			["blender"] = 75,
 			["switch"] = 45,
 			["cup"] = 100,
-			["lampshade"] = 75
-		}
-	},
-	["Criminal2"] = {
-		["mode"] = "Sell",
-		["type"] = "Cash",
-		["List"] = {
+			["lampshade"] = 75,
 			["watch"] = 75,
 			["bracelet"] = 75,
 			["dildo"] = 75,
@@ -470,13 +464,7 @@ local shops = {
 			["slipper"] = 75,
 			["rimel"] = 75,
 			["brush"] = 75,
-			["soap"] = 75
-		}
-	},
-	["Criminal3"] = {
-		["mode"] = "Sell",
-		["type"] = "Cash",
-		["List"] = {
+			["soap"] = 75,
 			["eraser"] = 75,
 			["legos"] = 75,
 			["ominitrix"] = 75,
@@ -484,13 +472,7 @@ local shops = {
 			["domino"] = 45,
 			["floppy"] = 45,
 			["horseshoe"] = 75,
-			["deck"] = 75
-		}
-	},
-	["Criminal4"] = {
-		["mode"] = "Sell",
-		["type"] = "Cash",
-		["List"] = {
+			["deck"] = 75,
 			["goldbar"] = 525,
 			["pliers"] = 55,
 			["pager"] = 125,

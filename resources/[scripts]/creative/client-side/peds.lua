@@ -164,72 +164,6 @@ local pedList = {
 		Model = "ig_barry",
 		anim = { "anim@heists@prison_heistig1_p1_guard_checks_bus","loop" }
 	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2431.86,4967.66,42.34,133.23 },
-		Model = "g_m_y_ballaeast_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2431.09,4970.72,42.34,42.52 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2436.08,4965.39,42.34,226.78 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2434.4,4963.8,42.34,229.61 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2432.44,4964.06,42.34,178.59 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@world_human_bum_wash@male@high@base","base" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2431.57,4965.22,42.34,124.73 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@world_human_bum_wash@male@high@base","base" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2428.67,4969.51,42.34,133.23 },
-		Model = "g_f_y_ballas_01",
-		anim = { "anim@amb@business@coc@coc_packing_hi@","full_cycle_v1_pressoperator" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2437.05,4967.61,42.34,317.49 },
-		Model = "g_f_y_ballas_01",
-		anim = { "anim@amb@business@coc@coc_packing_hi@","full_cycle_v1_pressoperator" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2433.09,4971.51,42.34,320.32 },
-		Model = "g_f_y_ballas_01",
-		anim = { "anim@amb@business@coc@coc_packing_hi@","full_cycle_v1_pressoperator" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2432.67,4970.29,42.34,226.78 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2435.28,4969.27,42.34,317.49 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
 	{ -- Taxi
 		Distance = 50,
 		Coords = { -1039.34,-2730.8,20.2,235.28 },
@@ -242,64 +176,10 @@ local pedList = {
 		Model = "g_f_y_ballas_01",
 		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
 	},
-	{ -- Ilegal
+	{ -- Ilegal - Certo
 		Distance = 100,
-		Coords = { 301.4,-195.29,61.57,158.75 },
+		Coords = { -1403.59,-628.61,28.68,170.08 },
 		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 169.28,-1536.23,29.25,311.82 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 487.56,-1456.11,29.28,272.13 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 154.66,-1472.9,29.35,325.99 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 389.69,-942.1,29.42,175.75 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 475.1,3555.28,33.23,263.63 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 112.41,3373.68,35.25,59.53 },
-		Model = "g_m_y_ballaeast_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 2013.95,4990.88,41.21,133.23 },
-		Model = "g_m_y_ballasout_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 186.9,6374.75,32.33,206.93 },
-		Model = "g_m_y_famca_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { -653.2,-1502.18,5.24,201.26 },
-		Model = "g_m_y_famdnf_01",
 		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
 	},
 	{ -- Police

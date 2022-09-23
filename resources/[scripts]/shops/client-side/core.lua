@@ -128,7 +128,7 @@ local shopList = {
 	{ 112.41,3373.68,35.25,"Criminal2",false },
 	{ 2013.95,4990.88,41.21,"Criminal3",false },
 	{ 186.9,6374.75,32.33,"Criminal4",false },
-	{ -653.12,-1502.67,5.22,"Criminal",false },
+	{ -1403.64,-628.93,28.68,"Criminal",false },
 	{ 389.71,-942.61,29.42,"Criminal2",false },
 	{ 154.98,-1472.47,29.35,"Criminal3",false },
 	{ 488.1,-1456.11,29.28,"Criminal4",false },

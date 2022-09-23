@@ -9,7 +9,7 @@ window.addEventListener("load",function(){
 		}
 
 		if (event["data"]["deathtext"] !== undefined){
-			$("#deathText").html(data["deathtext"]);
-		}
+			$("#deathText").html(event["data"]["deathtext"]);
+		  }
 	});
 });

@@ -119,7 +119,7 @@ local shopList = {
 	{ -195.79,6264.95,31.49,"Recycle",false },
 	{ 834.68,-1300.54,24.31,"Police",false },
 	{ -628.41,-238.36,38.05,"Miners",false },
-	{ 475.1,3555.28,33.23,"Criminal",false },
+	{ -1403.52,-628.62,28.68,"Criminal",false },
 	{ 169.76,-1535.88,29.25,"Weapons",false },
 	{ 301.14,-195.75,61.57,"Weapons",false },
 	{ 947.97,-972.36,39.5,"Mechanic",false },

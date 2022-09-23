@@ -36,12 +36,12 @@ AddEventHandler("creator:newCharacter",function()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Creator = vRP.UserData(Passport,"Creator") or nil
-		if not Creator then
-			SetPlayerRoutingBucket(source,source)
-			TriggerClientEvent("creator:displayCreator",source,true)
-		else
-			TriggerClientEvent("spawn:justSpawn",source,true,true)
-		end
+		local Creator = vRP.UserData(Passport,"Creator")
+if Creator == 1 then
+    TriggerClientEvent("spawn:justSpawn",source,true,true)
+else
+    SetPlayerRoutingBucket(source,source)
+    TriggerClientEvent("creator:displayCreator",source,true)
+end
 	end
-end)
+end) 

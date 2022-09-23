@@ -1,17 +1,20 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "1.4.1"
+version "1.4.2"
+creative_network "yes"
 
 ui_page "gui/index.html"
 
 client_scripts {
+	"config/Global.lua",
 	"config/Garages.lua",
 	"config/Vehicle.lua",
 	"config/Native.lua",
 	"config/Item.lua",
 	"lib/Utils.lua",
-	"client/*"
+	"client/*",
+	"config/Client.lua"
 }
 
 server_scripts {
@@ -37,7 +40,8 @@ server_scripts {
 	"modules/premium.lua",
 	"modules/prepare.lua",
 	"modules/queue.lua",
-	"modules/vehicles.lua"
+	"modules/vehicles.lua",
+	"config/Modules.lua"
 }
 
 files {

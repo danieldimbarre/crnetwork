@@ -330,15 +330,3 @@ function Barber(Ped,status)
 	SetPedFaceFeature(Ped,17,myClothes[39] * 0.1)
 	SetPedFaceFeature(Ped,19,myClothes[40] * 0.1)
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- VRP:PLAYERACTIVE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("vRP:PlayerActive")
-AddEventHandler("vRP:PlayerActive",function(Passport,Name)
-	SetDiscordAppId(1016809425350176911)
-	SetDiscordRichPresenceAsset("logo")
-	SetRichPresence("#"..Passport.." "..Name)
-	SetDiscordRichPresenceAssetText("Energy")
-	SetDiscordRichPresenceAction(0,"Entrar na Cidade","https://discord.gg/8Z64czXtq6")
-	-- SetDiscordRichPresenceAction(1,"Nosso Instagram","https://www.creative-rp.com/instagram/")
-end)

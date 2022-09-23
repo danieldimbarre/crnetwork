@@ -17,7 +17,7 @@ local Links = {
 RegisterServerEvent("Discord")
 AddEventHandler("Discord",function(Hook,Message,Color)
 	PerformHttpRequest(Links[Hook],function(err,text,headers) end,"POST",json.encode({
-		username = "Energy",
+		username = ServerName,
 		embeds = { { color = Color, description = Message } }
 	}),{ ["Content-Type"] = "application/json" })
 end)

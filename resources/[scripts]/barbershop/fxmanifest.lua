@@ -2,7 +2,7 @@ fx_version "bodacious"
 game "gta5"
 lua54 "yes"
 
-ui_page "web-side/index.html"
+ui_page "web-side/app.html"
 
 client_scripts {
 	"@vrp/config/Native.lua",
@@ -17,5 +17,7 @@ server_scripts {
 
 files {
 	"web-side/*",
-	"web-side/**/*"
+	"web-side/**/*",
+	"web-side/**/**/*",
+	"web-side/**/**/**/*"
 }

@@ -557,15 +557,15 @@ CreateThread(function()
 			end
 
 			if not ForceSocialClubUpdate then
-				TriggerServerEvent("admin:Hacker","forçou a social club.")
+				TriggerServerEvent("admin:Hacker","forçou a Social Club.")
 			end
 
 			if not ShutdownAndLaunchSinglePlayerGame then
-				TriggerServerEvent("admin:Hacker","entrou no modo single player.")
+				TriggerServerEvent("admin:Hacker","entrou no modo Single Player.")
 			end
 
 			if not ActivateRockstarEditor then
-				TriggerServerEvent("admin:Hacker","ativou o rockstar editor.")
+				TriggerServerEvent("admin:Hacker","ativou o Rockstar Editor.")
 			end
 		end
 

@@ -2,6 +2,8 @@
 -- VRP
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
+local Proxy = module("vrp","lib/Proxy")
+vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -11,18 +13,21 @@ vSERVER = Tunnel.getInterface("barbershop")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local cam = -1
 local myClothes = {}
+local mySkin = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSkin",function(Data,Callback)
 	myClothes = {}
-	myClothes = { tonumber(Data["fathers"]),tonumber(Data["kinship"]),tonumber(Data["eyecolor"]),tonumber(Data["skincolor"]),tonumber(Data["acne"]),tonumber(Data["stains"]),tonumber(Data["freckles"]),tonumber(Data["aging"]),tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintentisy"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintentisy"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),tonumber(Data["face06"]),tonumber(Data["face08"]),tonumber(Data["face09"]),tonumber(Data["face10"]),tonumber(Data["face12"]),tonumber(Data["face13"]),tonumber(Data["face14"]),tonumber(Data["face15"]),tonumber(Data["face16"]),tonumber(Data["face17"]),tonumber(Data["face19"]),tonumber(Data["mothers"]) }
+	myClothes = { mySkin[1],mySkin[2],mySkin[3],mySkin[4],mySkin[5],mySkin[6],mySkin[7],mySkin[8],tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintentisy"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintentisy"]),tonumber(Data["blushcolor"]),mySkin[9],mySkin[10],mySkin[11],mySkin[12],mySkin[13],mySkin[14],mySkin[15],mySkin[16],mySkin[17],mySkin[18],mySkin[19],mySkin[20],mySkin[21],mySkin[22],mySkin[23] }
 
 	if Data["value"] then
 		SetNuiFocus(false,false)
 		displayBarbershop(false)
-		vSERVER.updateSkin(myClothes)
 		SendNUIMessage({ openBarbershop = false })
+
+		vRP.stopAnim(false)
+		vSERVER.updateSkin(myClothes)
 	end
 
 	TriggerEvent("barbershop:Apply",myClothes)
@@ -49,7 +54,10 @@ end)
 RegisterNetEvent("barbershop:Apply")
 AddEventHandler("barbershop:Apply",function(status)
 	myClothes = {}
-	myClothes = { status[1] or 0, status[2] or 0, status[3] or 0, status[4] or 0, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or 0, status[13] or 0, status[14] or 0, status[15] or 0, status[16] or 0, status[17] or 0, status[18] or 0, status[19] or 0, status[20] or 0, status[21] or 0, status[22] or 0, status[23] or 0, status[24] or 0, status[25] or 0, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 0 }
+	myClothes = { status[1] or 0, status[2] or 100, status[3] or 0, status[4] or 100, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or -1, status[13] or 5, status[14] or -1, status[15] or -1, status[16] or 5, status[17] or 0, status[18] or -1, status[19] or 0, status[20] or 0, status[21] or -1, status[22] or 5, status[23] or 0, status[24] or -1, status[25] or 5, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 21 }
+
+	mySkin = {}
+	mySkin = { status[1] or 0, status[2] or 100, status[3] or 0, status[4] or 100, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0,status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 21 }
 
 	local Ped = PlayerPedId()
 
@@ -80,7 +88,11 @@ AddEventHandler("barbershop:Apply",function(status)
 	SetPedHairColor(Ped,myClothes[10],myClothes[11])
 
 	SetPedHeadOverlay(Ped,4,myClothes[12],myClothes[13] * 0.1)
-	SetPedHeadOverlayColor(Ped,4,1,myClothes[14],myClothes[14])
+	if myClothes[14] == -1 then
+        SetPedHeadOverlayColor(Ped,4,0,0,0)
+    else
+	    SetPedHeadOverlayColor(Ped,4,2,myClothes[14],myClothes[14])
+    end
 
 	SetPedHeadOverlay(Ped,8,myClothes[15],myClothes[16] * 0.1)
 	SetPedHeadOverlayColor(Ped,8,1,myClothes[17],myClothes[17])
@@ -118,29 +130,29 @@ function displayBarbershop(enable)
 	local Ped = PlayerPedId()
 
 	if enable then
-		SetEntityHeading(PlayerPedId(),332.21)
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
-		SendNUIMessage({ openBarbershop = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2) - 1, fathers = myClothes[1], mothers = myClothes[41], kinship = myClothes[2], eyecolor = myClothes[3], skincolor = myClothes[4], acne = myClothes[5], stains = myClothes[6], freckles = myClothes[7], aging = myClothes[8], hair = myClothes[9], haircolor = myClothes[10], haircolor2 = myClothes[11], makeup = myClothes[12], makeupintensity = myClothes[13], makeupcolor = myClothes[14], lipstick = myClothes[15], lipstickintensity = myClothes[16], lipstickcolor = myClothes[17], eyebrow = myClothes[18], eyebrowintensity = myClothes[19], eyebrowcolor = myClothes[20], beard = myClothes[21], beardintentisy = myClothes[22], beardcolor = myClothes[23], blush = myClothes[24], blushintentisy = myClothes[25], blushcolor = myClothes[26], face00 = myClothes[27], face01 = myClothes[28], face04 = myClothes[29], face06 = myClothes[30], face08 = myClothes[31], face09 = myClothes[32], face10 = myClothes[33], face12 = myClothes[34], face13 = myClothes[35], face14 = myClothes[36], face15 = myClothes[37], face16 = myClothes[38], face17 = myClothes[39], face19 = myClothes[40] })
+		SendNUIMessage({ openBarbershop = true,hair = myClothes[9],haircolor = myClothes[10],haircolor2 = myClothes[11],eyebrow = myClothes[18],eyebrowintensity = myClothes[19],eyebrowcolor = myClothes[20],beard = myClothes[21],beardintensity = myClothes[22],beardcolor = myClothes[23],blush = myClothes[24],blushintensity = myClothes[25],blushcolor = myClothes[26],lipstick = myClothes[15],lipstickintensity = myClothes[16],lipstickcolor = myClothes[17],makeup = myClothes[12],makeupintensity = myClothes[13],makeupcolor = myClothes[14],maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1,maxHaircolors = GetNumHairColors()-1,maxMakeupcolor = GetNumMakeupColors()-1,maxBeard = GetPedHeadOverlayNum(1)-1,maxEyebrow = GetPedHeadOverlayNum(2)-1,maxMakeup = GetPedHeadOverlayNum(4)-1,maxBlush = GetPedHeadOverlayNum(5)-1,maxLipstick = GetPedHeadOverlayNum(8)-1 })
 
+		
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })
 		end
-
+		
 		SetPlayerInvincible(Ped,true)
+		vRP.playAnim(false,{ "mp_sleep","bind_pose_180" },true)
+
+		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,0.4,0)
+		RenderScriptCams(false,false,0,1,0)
+		DestroyCam(cam,false)
 
 		if not DoesCamExist(cam) then
 			cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-			SetCamCoord(cam,GetEntityCoords(Ped))
-			SetCamRot(cam,0.0,0.0,0.0)
 			SetCamActive(cam,true)
 			RenderScriptCams(true,false,0,true,true)
-			SetCamCoord(cam,GetEntityCoords(Ped))
+			SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.7)
+			SetCamRot(cam,0.0,0.0,GetEntityHeading(PlayerPedId()) + 180)
 		end
-
-		local x,y,z = table.unpack(GetEntityCoords(Ped))
-		SetCamCoord(cam,x + 0.2,y + 0.5,z + 0.7)
-		SetCamRot(cam,0.0,0.0,150.0)
 	else
 		SetPlayerInvincible(Ped,false)
 		RenderScriptCams(false,false,0,1,0)

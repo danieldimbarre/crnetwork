@@ -180,22 +180,30 @@ RegisterNUICallback("resetOutfit",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ROTATERIGHT
+-- ROTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("rotateRight",function(Data,Callback)
+RegisterNUICallback("rotate",function(Data,Callback)
 	local Ped = PlayerPedId()
 	local heading = GetEntityHeading(Ped)
-	SetEntityHeading(Ped,heading + 30)
+	if Data == "left" then
+		SetEntityHeading(Ped,heading + 10)
+	elseif Data == "right" then
+		SetEntityHeading(Ped,heading - 10)
+	end
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ROTATELEFT
+-- HANDSUP
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("rotateLeft",function(Data,Callback)
+RegisterNUICallback("handsup",function(Data,Callback)
 	local Ped = PlayerPedId()
-	local heading = GetEntityHeading(Ped)
-	SetEntityHeading(Ped,heading - 30)
+	if IsEntityPlayingAnim(Ped,"random@mugging3","handsup_standing_base",3) then
+		StopAnimTask(Ped,"random@mugging3","handsup_standing_base",8.0)
+		vRP.AnimActive()
+	else
+		vRP.playAnim(true,{ "random@mugging3","handsup_standing_base" },true)
+	end
 
 	Callback("Ok")
 end)
@@ -284,7 +292,9 @@ end
 -- ENABLECAM
 -----------------------------------------------------------------------------------------------------------------------------------------
 function enableCam()
-	local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,2.0,0)
+	local Ped = PlayerPedId()
+	local Pos = GetEntityCoords(Ped)
+	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
 	RenderScriptCams(false,false,0,1,0)
 	DestroyCam(cam,false)
 
@@ -293,7 +303,7 @@ function enableCam()
 		SetCamActive(cam,true)
 		RenderScriptCams(true,false,0,true,true)
 		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
-		SetCamRot(cam,0.0,0.0,GetEntityHeading(PlayerPedId()) + 180)
+		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.15)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -321,19 +331,24 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("setupCam",function(Data,Callback)
 	local value = Data["value"]
-
+	local Ped = PlayerPedId()
+	local Pos = GetEntityCoords(Ped)
 	if value == 1 then
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,0.75,0)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,0.75,0)
 		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
+		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.65)
 	elseif value == 2 then
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,1.0,0)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
 		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
+		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.2)
 	elseif value == 3 then
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,1.0,0)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
 		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
+		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] - 0.5)
 	else
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,2.0,0)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
 		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
+		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.15)
 	end
 
 	Callback("Ok")

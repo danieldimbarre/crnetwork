@@ -11,33 +11,6 @@ $(document).ready(() => {
 	}
 	
 	window.addEventListener('message',function(event){
-		document.getElementById("fathers").value = event.data.fathers;
-		$("#fathers").parent().parent().parent().find('#minRange').html(event.data.fathers);
-
-		document.getElementById("mothers").value = event.data.mothers;
-		$("#mothers").parent().parent().parent().find('#minRange').html(event.data.mothers);
-
-		document.getElementById("kinship").value = event.data.kinship;
-		$("#kinship").parent().parent().parent().find('#minRange').html(event.data.kinship);
-
-		document.getElementById("eyecolor").value = event.data.eyecolor;
-		$("#eyecolor").parent().parent().parent().find('#minRange').html(event.data.eyecolor);
-
-		document.getElementById("skincolor").value = event.data.skincolor;
-		$("#skincolor").parent().parent().parent().find('#minRange').html(event.data.skincolor);
-
-		document.getElementById("acne").value = event.data.acne;
-		$("#acne").parent().parent().parent().find('#minRange').html(event.data.acne);
-
-		document.getElementById("stains").value = event.data.stains;
-		$("#stains").parent().parent().parent().find('#minRange').html(event.data.stains);
-
-		document.getElementById("freckles").value = event.data.freckles;
-		$("#freckles").parent().parent().parent().find('#minRange').html(event.data.freckles);
-
-		document.getElementById("aging").value = event.data.aging;
-		$("#aging").parent().parent().parent().find('#minRange').html(event.data.aging);
-
 		$("#hair").attr("max",event.data.maxHair);
 		$("#hair").parent().parent().parent().find('#minRange').html(event.data.hair);
 		$("#hair").parent().parent().parent().find('#maxRange').html(event.data.maxHair);
@@ -117,50 +90,8 @@ $(document).ready(() => {
 		$("#lipstickcolor").parent().parent().parent().find('#minRange').html(event.data.maxMakeupcolor);
 		$("#lipstickcolor").parent().parent().parent().find('#maxRange').html(event.data.maxMakeupcolor);
 		document.getElementById("lipstickcolor").value = event.data.lipstickcolor;
-		
-		$("#face00").parent().parent().parent().find('#minRange').html(event.data.face00);
-		document.getElementById("face00").value = event.data.face00;
 
-		$("#face01").parent().parent().parent().find('#minRange').html(event.data.face01);
-		document.getElementById("face01").value = event.data.face01;
-
-		$("#face04").parent().parent().parent().find('#minRange').html(event.data.face04);
-		document.getElementById("face04").value = event.data.face04;
-
-		$("#face06").parent().parent().parent().find('#minRange').html(event.data.face06);
-		document.getElementById("face06").value = event.data.face06;
-
-		$("#face08").parent().parent().parent().find('#minRange').html(event.data.face08);
-		document.getElementById("face08").value = event.data.face08;
-
-		$("#face09").parent().parent().parent().find('#minRange').html(event.data.face09);
-		document.getElementById("face09").value = event.data.face09;
-
-		$("#face10").parent().parent().parent().find('#minRange').html(event.data.face10);
-		document.getElementById("face10").value = event.data.face10;
-
-		$("#face12").parent().parent().parent().find('#minRange').html(event.data.face12);
-		document.getElementById("face12").value = event.data.face12;
-
-		$("#face13").parent().parent().parent().find('#minRange').html(event.data.face13);
-		document.getElementById("face13").value = event.data.face13;
-
-		$("#face14").parent().parent().parent().find('#minRange').html(event.data.face14);
-		document.getElementById("face14").value = event.data.face14;
-
-		$("#face15").parent().parent().parent().find('#minRange').html(event.data.face15);
-		document.getElementById("face15").value = event.data.face15;
-
-		$("#face16").parent().parent().parent().find('#minRange').html(event.data.face16);
-		document.getElementById("face16").value = event.data.face16;
-
-		$("#face17").parent().parent().parent().find('#minRange').html(event.data.face17);
-		document.getElementById("face17").value = event.data.face17;
-
-		$("#face19").parent().parent().parent().find('#minRange').html(event.data.face19);
-		document.getElementById("face19").value = event.data.face19;
-
-		if(event.data.openCreator == true){
+		if(event.data.openBarbershop == true){
 			$("body").fadeIn();
 			$(".rangeSlider .slider").each(function( index ) {
 				$(this).css({
@@ -170,7 +101,7 @@ $(document).ready(() => {
 			});
 		}
 
-		if(event.data.openCreator == false){
+		if(event.data.openBarbershop == false){
 			$("body").fadeOut();
 		}
 
@@ -204,17 +135,8 @@ $(document).ready(() => {
   	$('.done-btn').on('click',function(e){
 		e.preventDefault();
 
-		$.post('http://creator/updateSkin',JSON.stringify({
+		$.post('http://barbershop/updateSkin',JSON.stringify({
 			value: true,
-			fathers: $('#fathers').val(),
-			mothers: $('#mothers').val(),
-			kinship: $('#kinship').val(),
-			eyecolor: $('#eyecolor').val(),
-			skincolor: $('#skincolor').val(),
-			acne: $('#acne').val(),
-			stains: $('#stains').val(),
-			freckles: $('#freckles').val(),
-			aging: $('#aging').val(),
 			hair: $('#hair').val(),
 			haircolor: $('#haircolor').val(),
 			haircolor2: $('#haircolor2').val(),
@@ -232,30 +154,16 @@ $(document).ready(() => {
 			beardcolor: $('#beardcolor').val(),
 			blush: $('#blush').val(),
 			blushintentisy: $('#blushintentisy').val(),
-			blushcolor: $('#blushcolor').val(),
-			face00: $('#face00').val(),
-			face01: $('#face01').val(),
-			face04: $('#face04').val(),
-			face06: $('#face06').val(),
-			face08: $('#face08').val(),
-			face09: $('#face09').val(),
-			face10: $('#face10').val(),
-			face12: $('#face12').val(),
-			face13: $('#face13').val(),
-			face14: $('#face14').val(),
-			face15: $('#face15').val(),
-			face16: $('#face16').val(),
-			face17: $('#face17').val(),
-			face19: $('#face19').val()
+			blushcolor: $('#blushcolor').val()
 		}));
 	});
 
   	document.onkeydown = function(data){
 		if(data.which == 65){
-			$.post('http://creator/rotate',JSON.stringify("right"));
+			$.post('http://barbershop/rotate',JSON.stringify("right"));
 		}
 		if(data.which == 68){
-			$.post('http://creator/rotate',JSON.stringify("left"));
+			$.post('http://barbershop/rotate',JSON.stringify("left"));
 		}
 	}
 })
@@ -271,17 +179,8 @@ function change(e) {
 		'backgroundSize': (val - min) * 100 / (max - min) + '% 100%'
 	});
 
-	$.post('http://creator/updateSkin',JSON.stringify({
+	$.post('http://barbershop/updateSkin',JSON.stringify({
 		value: false,
-		fathers: $('#fathers').val(),
-		mothers: $('#mothers').val(),
-		kinship: $('#kinship').val(),
-		eyecolor: $('#eyecolor').val(),
-		skincolor: $('#skincolor').val(),
-		acne: $('#acne').val(),
-		stains: $('#stains').val(),
-		freckles: $('#freckles').val(),
-		aging: $('#aging').val(),
 		hair: $('#hair').val(),
 		haircolor: $('#haircolor').val(),
 		haircolor2: $('#haircolor2').val(),
@@ -299,21 +198,7 @@ function change(e) {
 		beardcolor: $('#beardcolor').val(),
 		blush: $('#blush').val(),
 		blushintentisy: $('#blushintentisy').val(),
-		blushcolor: $('#blushcolor').val(),
-		face00: $('#face00').val(),
-		face01: $('#face01').val(),
-		face04: $('#face04').val(),
-		face06: $('#face06').val(),
-		face08: $('#face08').val(),
-		face09: $('#face09').val(),
-		face10: $('#face10').val(),
-		face12: $('#face12').val(),
-		face13: $('#face13').val(),
-		face14: $('#face14').val(),
-		face15: $('#face15').val(),
-		face16: $('#face16').val(),
-		face17: $('#face17').val(),
-		face19: $('#face19').val()
+		blushcolor: $('#blushcolor').val()
 	}));
 	
 	$(e).parent().parent().parent().find('#minRange').html($(e).val());

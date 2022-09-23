@@ -1,5 +1,7 @@
+var selectedCam =  null;
+
 const TattooStore = {
-	currentCategory: null,
+	currentCategory: null,	
 	selectedTattoos: {},
 	categories: {
 		"head": { "title": "Cabeça", "available": [] },
@@ -11,9 +13,9 @@ const TattooStore = {
 		"hair": { "title": "Micropigmentação", "available": [] }
 	},
 	changeCategory: function(category){
-		$(".category").removeClass("selected");
+		$(".option").removeClass("active");
 		TattooStore.currentCategory = category;
-		$(".category[category-name='"+category+"']").addClass("selected");
+		$(".option[category-name='"+category+"']").addClass("active");
 		$("#category-name").html(TattooStore.categories[category]["title"]);
 
 		$("#items").html("");
@@ -22,44 +24,87 @@ const TattooStore = {
 			let label = index + 1;
 
 			if(TattooStore.selectedTattoos[tattoo.name])
-				selected = " selected";
+				selected = " active-item";
 
-			$("#items").append(`<div class="item${selected}" tattoo-code="${tattoo.name}" tattoo-category="${category}" tattoo-index="${index}">${label}</div>`);
+			$("#items").append(`
+				<div class="item${selected}" tattoo-code="${tattoo.name}" tattoo-category="${category}" tattoo-index="${index}"
+				style="background-image: url('http://45.162.228.208/baixada/tattoo/${category}/${tattoo.name}.jpg')"
+				>
+				<div class="circle number">${label}</div>
+			`);
 		});
 
 		TattooStore.loadVariableListeners();
 	},
 	selectTattoo: function(category,index){
 		let item = $(".item[tattoo-category='"+category+"'][tattoo-index='"+index+"']");
-		if(item.hasClass("selected")){
-			item.removeClass("selected");
+		if(item.hasClass("active-item")){
+			item.removeClass("active-item");
 			delete TattooStore.selectedTattoos[item.attr("tattoo-code")];
 		} else {
 			TattooStore.selectedTattoos[item.attr("tattoo-code")] = {};
-			item.addClass("selected");
+			item.addClass("active-item");
 		}
 
 		TattooStore.callServer("changeTattoo",{ type: category, id: index });
 	},
 	resetTattoos: function(){
-		$(".item").removeClass("selected");
+		$(".item").removeClass("active-item");
 
 		TattooStore.selectedTattoos = {};
 		TattooStore.callServer("limpaTattoo",{});
 	},
 	loadStaticListeners: function(){
-		$(".category").on("click",function(){
+		$(".option").on("click",function(){
 			TattooStore.changeCategory($(this).attr("category-name"));
+		});
+
+		$("#save").on("click",function(){
+			$("body").fadeOut();
+			TattooStore.callServer("close",{});
+			window.location.reload();
 		});
 
 		$("#reset").on("click",function(){
 			TattooStore.resetTattoos();
 		});
 
+		$(".cam").on("click", function(e) {
+			e.preventDefault();
+
+			var camValue = parseFloat($(this).data('value'));
+			if (selectedCam == null) {
+				$(this).addClass("selected-cam");
+				$.post('http://tattoos/setupCam', JSON.stringify({
+					value: camValue
+				}));
+				selectedCam = this;
+			} else {
+				if (selectedCam == this) {
+					$(selectedCam).removeClass("selected-cam");
+					$.post('http://tattoos/setupCam', JSON.stringify({
+						value: 0
+					}));
+					
+					selectedCam = null;
+				} else {
+					$(selectedCam).removeClass("selected-cam");
+					$(this).addClass("selected-cam");
+					$.post('http://tattoos/setupCam', JSON.stringify({
+						value: camValue
+					}));
+
+					selectedCam = this;
+				}
+			}
+		});
+
 		document.onkeydown = function(data) {
 			switch(data.keyCode) {
 				case 27:
-					$("#tattoo-container").css("display","none");
+					$("body").fadeOut();
+					selectedCam = null;
+					window.location.reload();
 					TattooStore.callServer("close",{});
 				break;
 
@@ -96,9 +141,8 @@ const TattooStore = {
 			"hair": { "title": "Micropigmentação", "available": [] }
 		};
 
-		$("#tattoo-container").css("display","block");
+		$("body").fadeIn();
 		TattooStore.selectedTattoos = selectedTattoos;
-
 		$.each(tattoos,function(category,element){
 			$.each(element.tattoo,function(index,tattoo){
 				TattooStore.categories[category]["available"].push(tattoo);

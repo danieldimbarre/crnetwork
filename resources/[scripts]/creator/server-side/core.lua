@@ -29,7 +29,7 @@ function Creative.updateFace(Face)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- NEWCHARACTER
+-- CREATOR:NEWCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("creator:newCharacter")
 AddEventHandler("creator:newCharacter",function()
@@ -37,11 +37,11 @@ AddEventHandler("creator:newCharacter",function()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Creator = vRP.UserData(Passport,"Creator")
-if Creator == 1 then
-    TriggerClientEvent("spawn:justSpawn",source,true,true)
-else
-    SetPlayerRoutingBucket(source,source)
-    TriggerClientEvent("creator:displayCreator",source,true)
-end
+		if Creator == 1 then
+			TriggerClientEvent("spawn:justSpawn",source,true,true)
+		else
+			SetPlayerRoutingBucket(source,source)
+			TriggerClientEvent("creator:displayCreator",source,true)
+		end
 	end
-end) 
+end)

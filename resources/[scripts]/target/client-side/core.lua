@@ -1419,8 +1419,8 @@ RegisterNUICallback("Select",function(Data,Callback)
 		TriggerServerEvent(Data["event"],Selected)
 	elseif Data["tunnel"] == "shop" then
 		TriggerEvent(Data["event"],Selected)
-	elseif data["tunnel"] == "teleport" then
-		TriggerEvent(data["event"],Data["service"],Data["teleport"])
+	elseif Data["tunnel"] == "teleport" then
+		TriggerEvent(Data["event"],Data["service"],Data["teleport"])
 	elseif Data["tunnel"] == "shopserver" then
 		TriggerServerEvent(Data["event"],Selected)
 	elseif Data["tunnel"] == "boxes" then

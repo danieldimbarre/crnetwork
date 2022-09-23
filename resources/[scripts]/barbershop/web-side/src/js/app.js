@@ -44,8 +44,8 @@ $(document).ready(() => {
 		$("#beard").parent().parent().parent().find('#maxRange').html(event.data.maxBeard);
 		document.getElementById("beard").value = event.data.beard;
 
-		$("#beardintentisy").parent().parent().parent().find('#minRange').html(event.data.beardintentisy);
-		document.getElementById("beardintentisy").value = event.data.beardintentisy;
+		$("#beardintensity").parent().parent().parent().find('#minRange').html(event.data.beardintensity);
+		document.getElementById("beardintensity").value = event.data.beardintensity;
 
 		$("#beardcolor").attr("max",event.data.maxHaircolors);
 		$("#beardcolor").parent().parent().parent().find('#minRange').html(event.data.beardcolor);
@@ -70,8 +70,8 @@ $(document).ready(() => {
 		$("#blush").parent().parent().parent().find('#maxRange').html(event.data.maxBlush);
 		document.getElementById("blush").value = event.data.blush;
 
-		$("#blushintentisy").parent().parent().parent().find('#minRange').html(event.data.blushintentisy);
-		document.getElementById("blushintentisy").value = event.data.blushintentisy;
+		$("#blushintensity").parent().parent().parent().find('#minRange').html(event.data.blushintensity);
+		document.getElementById("blushintensity").value = event.data.blushintensity;
 
 		$("#blushcolor").attr("max",event.data.maxMakeupcolor);
 		$("#blushcolor").parent().parent().parent().find('#minRange').html(event.data.maxMakeupcolor);
@@ -150,10 +150,10 @@ $(document).ready(() => {
 			eyebrowintensity: $('#eyebrowintensity').val(),
 			eyebrowcolor: $('#eyebrowcolor').val(),
 			beard: $('#beard').val(),
-			beardintentisy: $('#beardintentisy').val(),
+			beardintensity: $('#beardintensity').val(),
 			beardcolor: $('#beardcolor').val(),
 			blush: $('#blush').val(),
-			blushintentisy: $('#blushintentisy').val(),
+			blushintensity: $('#blushintensity').val(),
 			blushcolor: $('#blushcolor').val()
 		}));
 	});
@@ -194,10 +194,10 @@ function change(e) {
 		eyebrowintensity: $('#eyebrowintensity').val(),
 		eyebrowcolor: $('#eyebrowcolor').val(),
 		beard: $('#beard').val(),
-		beardintentisy: $('#beardintentisy').val(),
+		beardintensity: $('#beardintensity').val(),
 		beardcolor: $('#beardcolor').val(),
 		blush: $('#blush').val(),
-		blushintentisy: $('#blushintentisy').val(),
+		blushintensity: $('#blushintensity').val(),
 		blushcolor: $('#blushcolor').val()
 	}));
 	

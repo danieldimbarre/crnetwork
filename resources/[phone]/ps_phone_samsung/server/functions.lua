@@ -144,7 +144,7 @@ end
 -- getUserFullName
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserFullName = function(user_id)
-    local identity = Identity(user_id)
+    local identity = getUserIdentity(user_id)
     local name = identity["name"].." "..identity["name2"]
     return name
 end

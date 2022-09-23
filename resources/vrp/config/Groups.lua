@@ -25,6 +25,12 @@ Groups = {
 		["Police"] = true,
 		["Paramedic"] = true
 	},
+	["Mafia2"] = {
+		["Mafia2"] = true
+	},
+	["Mafia1"] = {
+		["Mafia1"] = true
+	},
 	["BurgerShot"] = {
 		["BurgerShot"] = true
 	},

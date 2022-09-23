@@ -22,6 +22,13 @@ local List = {
 		["Block"] = true,
 		["Weight"] = 3.25
 	},
+	["polvora"] = {
+		["Index"] = "polvora",
+		["Name"] = "Polvora",
+		["Type"] = "Usável",
+		["Block"] = true,
+		["Weight"] = 0.25
+	},
 	["sprays01"] = {
 		["Index"] = "sprays",
 		["Name"] = "Spray",

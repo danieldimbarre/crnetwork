@@ -406,306 +406,6 @@ local List = {
 			}
 		}
 	},
-	["Mercado"] = {
-		["List"] = {
-			["keyboard"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["plastic"] = 4,
-					["rubber"] = 2
-				}
-			},
-			["mouse"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["plastic"] = 4,
-					["rubber"] = 2
-				}
-			},
-			["playstation"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 2,
-					["copper"] = 2,
-					["plastic"] = 3,
-					["glass"] = 3
-				}
-			},
-			["xbox"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 2,
-					["copper"] = 2,
-					["plastic"] = 3,
-					["glass"] = 3
-				}
-			},
-			["pan"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 2,
-					["copper"] = 2,
-					["rubber"] = 2,
-					["plastic"] = 3,
-					["glass"] = 3
-				}
-			},
-			["fan"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["blender"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["switch"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 1,
-					["plastic"] = 3
-				}
-			},
-			["cup"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 2,
-					["copper"] = 2,
-					["rubber"] = 2,
-					["plastic"] = 3,
-					["glass"] = 3
-				}
-			},
-			["lampshade"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 2,
-					["copper"] = 2,
-					["rubber"] = 2,
-					["plastic"] = 2,
-					["glass"] = 2
-				}
-			},
-			["silverring"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["silvercoin"] = 4,
-					["copper"] = 2,
-					["glass"] = 3
-				}
-			},
-			["goldring"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["goldcoin"] = 4,
-					["copper"] = 2,
-					["rubber"] = 2,
-					["plastic"] = 3,
-					["glass"] = 3
-				}
-			},
-			["watch"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["goldcoin"] = 4,
-					["copper"] = 2,
-					["rubber"] = 2,
-					["plastic"] = 3,
-					["glass"] = 3
-				}
-			},
-			["bracelet"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["goldcoin"] = 4,
-					["copper"] = 2,
-					["rubber"] = 2,
-					["plastic"] = 3,
-					["glass"] = 3
-				}
-			},
-			["dildo"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["spray01"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["spray02"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["spray03"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["spray04"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["slipper"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["rubber"] = 6
-				}
-			},
-			["rimel"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["brush"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["soap"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 3
-				}
-			},
-			["eraser"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["legos"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 1,
-					["rubber"] = 2,
-					["plastic"] = 8
-				}
-			},
-			["ominitrix"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 1,
-					["rubber"] = 2,
-					["plastic"] = 8
-				}
-			},
-			["dices"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 1,
-					["plastic"] = 4
-				}
-			},
-			["domino"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 1,
-					["plastic"] = 5
-				}
-			},
-			["floppy"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 2,
-					["plastic"] = 5
-				}
-			},
-			["horseshoe"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 4
-				}
-			},
-			["deck"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 3
-				}
-			},
-			["pliers"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["copper"] = 3,
-					["rubber"] = 2,
-					["plastic"] = 3
-				}
-			}
-		}
-	},
 	["UwuCoffee"] = {
 		["perm"] = "UwuCoffee",
 		["List"] = {
@@ -1585,6 +1285,227 @@ local List = {
 			}
 		}
 	},
+	["Mafia2"] = {
+		["List"] = {
+		    ["WEAPON_PISTOL_AMMO"] = {
+				["amount"] = 3,
+				["destroy"] = false,
+				["require"] = {
+					["copper"] = 3,
+					["polvora"] = 3
+				}
+			},
+			["WEAPON_SMG_AMMO"] = {
+				["amount"] = 3,
+				["destroy"] = false,
+				["require"] = {
+					["copper"] = 5,
+					["polvora"] = 3
+				}
+			},
+			["WEAPON_RIFLE_AMMO"] = {
+				["amount"] = 3,
+				["destroy"] = false,
+				["require"] = {
+					["copper"] = 8,
+					["polvora"] = 3
+				}
+			}
+		}
+	},	
+	["Mafia1"] = {
+		["List"] = {
+			["WEAPON_PISTOL"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 120,
+					["copper"] = 175,
+				}
+			},		
+			["WEAPON_MACHINEPISTOL"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 150,
+					["copper"] = 185,
+				}
+			},
+			["WEAPON_SNSPISTOL"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 120,
+					["copper"] = 175,
+				}
+			},
+			["WEAPON_PISTOL50"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 120,
+					["copper"] = 175,
+				}
+			},
+			["WEAPON_PISTOL_MK2"] = {
+				["amount"] = 1,				
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 120,
+					["copper"] = 175,
+				}
+			},
+			["WEAPON_SNSPISTOL_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 120,
+					["copper"] = 175,
+				}
+			},
+			["WEAPON_MINISMG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 180,
+					["copper"] = 215,
+				}
+			},
+			["WEAPON_MICROSMG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 180,
+					["copper"] = 215,
+				}	
+			},
+			["WEAPON_COMPACTRIFLE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 180,
+					["copper"] = 215,
+				}
+			},
+			["WEAPON_ADVANCEDRIFLE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_BULLPUPRIFLE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_BULLPUPRIFLE_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_SPECIALCARBINE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_SPECIALCARBINE_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_PUMPSHOTGUN_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_SAWNOFFSHOTGUN"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_SMG_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_ASSAULTRIFLE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_ASSAULTRIFLE_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_ASSAULTSMG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,
+				}
+			},
+			["WEAPON_GUSENBERG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 2,
+					["aluminum"] = 220,
+					["copper"] = 256,	
+				}
+			}
+		}
+	},				
 	["Lester"] = {
 		["List"] = {
 			["vest"] = {

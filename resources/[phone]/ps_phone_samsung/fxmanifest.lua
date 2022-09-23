@@ -15,14 +15,19 @@ shared_scripts {
 }
 
 client_scripts {
-	"@_core/_lib/utils.lua",
+    "@vrp/config/Native.lua",
+	"@vrp/config/Vehicle.lua",
+	"@vrp/lib/Utils.lua",
 	'locale.lua',
 	'locales/*.lua',
     'client/*.lua',
 }
 
 server_scripts {
-	"@_core/_lib/utils.lua",
+    "@vrp/config/Native.lua",
+    "@vrp/config/Vehicle.lua",
+    "@vrp/config/Item.lua",
+	"@vrp/lib/Utils.lua",
 	'locale.lua',
 	'locales/*.lua',
     'server/*.lua',

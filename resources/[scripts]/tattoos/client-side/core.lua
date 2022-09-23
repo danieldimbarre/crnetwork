@@ -12,8 +12,8 @@ vSERVER = Tunnel.getInterface("tattoos")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local cam = nil
+local Tattoos = {}
 local atualShop = {}
-local atualTattoo = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADFOCUS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1127,10 +1127,11 @@ local tattooShop = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("tattoos:Apply")
 AddEventHandler("tattoos:Apply",function(status)
-	atualTattoo = status
+	Tattoos = status
+	ClearPedDecorations(PlayerPedId())
 
-	for k,v in pairs(atualTattoo) do
-		SetPedDecoration(PlayerPedId(),GetHashKey(v[1]),GetHashKey(k))
+	for Hash,v in pairs(Tattoos) do
+		SetPedDecoration(PlayerPedId(),GetHashKey(v[1]),GetHashKey(Hash))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1171,7 +1172,7 @@ function openTattooShop()
 
 	ClearAllPedProps(Ped)
 
-	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = atualTattoo })
+	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ATUALIZARTATTOO
@@ -1179,8 +1180,8 @@ end
 function atualizarTattoo()
 	ClearPedDecorations(PlayerPedId())
 
-	for k,v in pairs(atualTattoo) do
-		AddPedDecorationFromHashes(PlayerPedId(),GetHashKey(v[1]),GetHashKey(k))
+	for Hash,v in pairs(Tattoos) do
+		AddPedDecorationFromHashes(PlayerPedId(),GetHashKey(v[1]),GetHashKey(Hash))
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1207,7 +1208,7 @@ end
 RegisterNUICallback("close",function(Data,Callback)
 	TriggerEvent("skinshop:updateTattoo")
 	RenderScriptCams(false,true,250,1,0)
-	vSERVER.updateTattoo(atualTattoo)
+	vSERVER.updateTattoo(Tattoos)
 	SetNuiFocus(false,false)
 	DestroyCam(cam,false)
 	cam = nil
@@ -1272,20 +1273,20 @@ end)
 -- CHANGETATTOO
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("changeTattoo",function(Data,Callback)
-	local newAtualTattoo = {}
+	local newTattoos = {}
 	local tattooData = atualShop[Data["type"]]["tattoo"][Data["id"] + 1]
 
-	for k,v in pairs(atualTattoo) do
+	for k,v in pairs(Tattoos) do
 		if k ~= tattooData["name"] then
-			newAtualTattoo[k] = v
+			newTattoos[k] = v
 		end
 	end
 
-	if not atualTattoo[tattooData["name"]] then
-		newAtualTattoo[tattooData["name"]] = { tattooData["part"] }
+	if not Tattoos[tattooData["name"]] then
+		newTattoos[tattooData["name"]] = { tattooData["part"] }
 	end
 
-	atualTattoo = newAtualTattoo
+	Tattoos = newTattoos
 	atualizarTattoo()
 
 	Callback("Ok")
@@ -1295,7 +1296,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("limpaTattoo",function(Data,Callback)
 	ClearPedDecorations(PlayerPedId())
-	atualTattoo = {}
+	Tattoos = {}
 
 	Callback("Ok")
 end)
@@ -1304,11 +1305,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("rotate",function(Data,Callback)
 	local Ped = PlayerPedId()
-	local heading = GetEntityHeading(Ped)
-	if data == "left" then
-		SetEntityHeading(Ped,heading + 10)
-	elseif data == "right" then
-		SetEntityHeading(Ped,heading - 10)
+	local Heading = GetEntityHeading(Ped)
+	if Data == "left" then
+		SetEntityHeading(Ped,Heading + 10)
+	elseif Data == "right" then
+		SetEntityHeading(Ped,Heading - 10)
 	end
 
 	Callback("Ok")

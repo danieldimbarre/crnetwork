@@ -49,23 +49,23 @@ AddEventHandler("onClientResourceStart",function(Resource)
 
 	local Characters = vSERVER.Characters()
 	if parseInt(#Characters) > 0 then
-		for k,v in pairs(Characters) do
+		for Number,v in pairs(Characters) do
 			if LoadModel(v["Skin"]) then
-				Peds[k] = CreatePed(4,v["Skin"],Poords[k][1],Poords[k][2],Poords[k][3],Poords[k][4],false,false)
-				SetEntityInvincible(Peds[k],true)
-				FreezeEntityPosition(Peds[k],true)
-				SetBlockingOfNonTemporaryEvents(Peds[k],true)
+				Peds[Number] = CreatePed(4,v["Skin"],Poords[Number][1],Poords[Number][2],Poords[Number][3],Poords[Number][4],false,false)
+				SetEntityInvincible(Peds[Number],true)
+				FreezeEntityPosition(Peds[Number],true)
+				SetBlockingOfNonTemporaryEvents(Peds[Number],true)
 				SetModelAsNoLongerNeeded(v["Skin"])
 
-				if LoadAnim(Poords[k][5]) then
-					TaskPlayAnim(Peds[k],Poords[k][5],Poords[k][6],8.0,8.0,-1,1,0,0,0,0)
+				if LoadAnim(Poords[Number][5]) then
+					TaskPlayAnim(Peds[Number],Poords[Number][5],Poords[Number][6],8.0,8.0,-1,1,0,0,0,0)
 				end
 
-				Clothes(Peds[k],v["Clothes"])
-				Barber(Peds[k],v["Barber"])
+				Clothes(Peds[Number],v["Clothes"])
+				Barber(Peds[Number],v["Barber"])
 
-				for k,v in pairs(v["Tattoos"]) do
-					SetPedDecoration(Peds[k],GetHashKey(v[1]),GetHashKey(k))
+				for Hash,Component in pairs(v["Tattoos"]) do
+					SetPedDecoration(Peds[Number],GetHashKey(Component[1]),GetHashKey(Hash))
 				end
 			end
 		end

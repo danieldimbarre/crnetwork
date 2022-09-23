@@ -26,7 +26,7 @@ exports("Plants",function(Coords,Route,Points)
 
 	Plants[tostring(Number)] = {
 		["Coords"] = { mathLength(Coords["x"]),mathLength(Coords["y"]),mathLength(Coords["z"]) },
-		["Time"] = os.time() + 10800,
+		["Time"] = os.time() + 3600,
 		["Points"] = Points,
 		["Route"] = Route
 	}

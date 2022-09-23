@@ -48,8 +48,8 @@ input::-webkit-inner-spin-button {
 }
 
 #NaviWeapons {
-	top: 125px;
-	right: 50px;
+	top: 16.667vw;
+	right: 3vw;
 	color: #ccc;
 	display: none;
 	text-align: right;
@@ -68,8 +68,8 @@ input::-webkit-inner-spin-button {
 }
 
 #NaviTop {
-	top: 50px;
-	right: 50px;
+	top: 3vw;
+	right: 3vw;
 	color: #ccc;
 	position: absolute;
 }
@@ -77,6 +77,7 @@ input::-webkit-inner-spin-button {
 .NameServer {
 	float: left;
 	margin-left: 30px;
+	opacity: .75;
 }
 
 .InfoUser {
@@ -98,8 +99,8 @@ space {
 }
 
 #NaviBottom {
-	right: 50px;
-	bottom: 50px;
+	right: 3vw;
+	bottom: 3vw;
 	font-size: 16px;
 	text-align: right;
 	position: absolute;
@@ -140,7 +141,7 @@ space {
 
 #NaviMiddle > .NaviBlock {
 	display: block;
-	margin-right: 50px;
+	margin-right: 3vw;
 }
 
 #NaviMiddle > div > div {
@@ -294,7 +295,7 @@ space {
 }
 
 #Vehicle {
-	display: none;
+	/* display: none; */
 }
 
 .SpeedoBox, .SpeedoBox * {
@@ -484,7 +485,7 @@ space {
 }
 
 .march circle:nth-child(1) {
-	stroke: #1a912e;
+	stroke: #166d24;
 	stroke-dashoffset: calc(440 - (440 * 18) / 100);
 }
 
@@ -619,10 +620,10 @@ space {
 }
 
 .SpawnCreate, .SpawnSelected, .SpawnLocation {
-	margin: 50px;
-	width: 300px;
+	margin: 3vw;
+	width: 24vw;
 	display: none;
-	letter-spacing: 1px;
+	letter-spacing: 0.1vw;
 }
 
 .SpawnSelectedNew {
@@ -669,14 +670,14 @@ space {
 }
 
 .SpawnMessage {
-	right: 50px;
+	right: 4vw;
 	color: #999;
-	bottom: 50px;
-	width: 600px;
-	padding: 40px;
+	bottom: 4vw;
+	width: 22.8vw;
+	padding: 2.12vw;
 	display: none;
-	font-size: 12px;
-	line-height: 22px;
+	font-size: 0.84vw;
+	line-height: 1.7vw;
 	position: absolute;
 	background: #141414;
 }
@@ -684,9 +685,9 @@ space {
 .SpawnMessage span {
 	color: #6ede81;
 	display: block;
-	font-size: 30px;
-	letter-spacing: 2px;
-	margin-bottom: 25px;
+	font-size: 2.333vw;
+	letter-spacing: 0.167vw;
+	margin-bottom: 1.5vw;
 	font-family: "Gotham";
 	text-transform: uppercase;
 }
@@ -701,11 +702,11 @@ space {
 	border: 0;
 	float: left;
 	color: #fff;
-	width: 300px;
-	padding: 20px;
-	font-size: 13px;
-	margin-bottom: 10px;
-	letter-spacing: 2px;
+	width: 22.5vw;
+	padding: 1vw;
+	font-size: 1vw;
+	margin-bottom: 0.667vw;
+	letter-spacing: 0.167vw;
 	background: #141414;
 }
 
@@ -717,11 +718,11 @@ space {
 	border: 0;
 	float: left;
 	color: #999;
-	width: 145px;
-	padding: 20px;
-	margin-right: 10px;
-	margin-bottom: 10px;
-	letter-spacing: 2px;
+	width: 10.8vw;
+	padding: 1vw;
+	margin-right: 0.8vw;
+	margin-bottom: 0.667vw;
+	letter-spacing: 0.167vw;
 	background: #141414;
 }
 
@@ -736,50 +737,50 @@ space {
 
 .SpawnCreateSubmit, .SpawnLocationSubmit {
 	float: left;
-	width: 260px;
-	padding: 20px;
+	width: 20.45vw;
+	padding: 1vw;
 	color: #cbeddb;
-	font-size: 16px;
+	font-size: 1.3vw;
 	text-align: center;
-	letter-spacing: 5px;
-	margin-bottom: 10px;
+	letter-spacing: 0.367vw;
+	margin-bottom: 0.667vw;
 	background: #2e6e4c;
 	text-transform: uppercase;
 }
 
 .SpawnCreateCancel {
 	float: left;
-	width: 260px;
+	width: 20.45vw;
 	color: #f9cfde;
-	font-size: 16px;
-	padding: 10px 20px;
+	font-size: 1.3vw;
+	padding: 0.766vw 1vw;
 	text-align: center;
-	letter-spacing: 5px;
+	letter-spacing: 0.367vw;
 	background: #7c344d;
 	text-transform: uppercase;
 }
 
 .SpawnCreateTitle {
 	float: left;
-	width: 300px;
+	width: 23.5vw;
 	color: #6ede81;
-	font-size: 30px;
-	letter-spacing: 2px;
+	font-size: 2.3vw;
+	letter-spacing: 0.167vw;
 	font-family: "Gotham";
 	text-transform: uppercase;
-	text-shadow: 1px 1px #000;
+	text-shadow: 0.1vw 0.1vw #000;
 }
 
 .SpawnCreateSubtitle {
 	float: left;
 	color: #fff;
-	width: 298px;
-	font-size: 9px;
-	margin-left: 2px;
-	margin-bottom: 20px;
-	letter-spacing: 2px;
+	width: 23.4vw;
+	font-size: 0.7vw;
+	margin-left: 0.167vw;
+	margin-bottom: 1.667vw;
+	letter-spacing: 0.167vw;
 	text-transform: uppercase;
-	text-shadow: 1px 1px #000;
+	text-shadow: 0.1vw 0.1vw #000;
 }
 
 .SpawnLocationBox {
@@ -801,28 +802,28 @@ space {
 }
 
 #Chat {
-	top: 50px;
-	left: 50px;
+	top: 3vw;
+	left: 3vw;
 	z-index: 997;
-	max-width: 500px;
+	max-width: 30vw;
 	position: absolute;
 }
 
 #ChatMessage {
 	float: left;
-	margin: 20px;
-	width: 460px;
-	height: 260px;
+	margin: 1.5vw;
+	width: 27vw;
+	height: 12vw;
 	display: none;
-	font-size: 13px;
+	font-size: 0.9vw;
 	overflow: hidden;
 	overflow-y: scroll;
-	letter-spacing: 2px;
-	text-shadow: 1px 1px #000;
+	letter-spacing: 0.16vw;
+	text-shadow: 0.1vw 0.1vw #000;
 }
 
 #ChatMessage div {
-	margin-bottom: 15px;
+	margin-bottom: 1vw;
 }
 
 #ChatMessage div:last-child {
@@ -831,13 +832,13 @@ space {
 
 #ChatMessage red {
 	color: #ff0000;
-	font-size: 16px;
+	font-size: 1vw;
 	text-shadow: none;
 }
 
 #ChatMessage black {
 	color: #666;
-	font-size: 16px;
+	font-size: 1vw;
 	text-shadow: none;
 }
 
@@ -845,20 +846,20 @@ space {
 	border: 0;
 	float: left;
 	color: #fff;
-	width: 500px;
-	padding: 20px;
+	width: 30vw;
+	padding: 1.333vw;
 	display: none;
 	cursor: default;
-	font-size: 13px;
-	margin-top: 15px;
-	letter-spacing: 2px;
-	background: #141414;
+	font-size: 0.9vw;
+	margin-top: 1vw;
+	letter-spacing: 0.16vw;
+	background: #14141415;
 }
 
 #ChatBackground {
 	float: left;
-	width: 500px;
-	height: 300px;
+	width: 30vw;
+	height: 15vw;
 	background: transparent;
 }
 
@@ -876,22 +877,22 @@ space {
 }
 
 #Request {
-	width: 450px;
-	bottom: 100px;
+	width: 25vw;
+	bottom: 3vw;
 	display: none;
 	position: absolute;
-	left: calc(50% - 225px);
+	left: calc(50% - 11.2vw);
 }
 
 #RequestM {
 	color: #ccc;
 	float: left;
-	width: 400px;
-	padding: 25px;
-	font-size: 14px;
-	margin-top: 25px;
- 	line-height: 20px;
-	margin-bottom: 10px;
+	width: 21vw;
+	padding: 0.8vw;
+	font-size: 1.2vw;
+	margin-top: 3.333vw;
+ 	line-height: 2.667vw;
+	margin-bottom: 0.8vw;
 	font-family: "Roboto";
 	background: rgba(15,15,15,.75);
 }
@@ -903,53 +904,53 @@ space {
 
 #RequestY {
 	float: left;
-	width: 200px;
+	width: 9.3vw;
 	color: #d6ffea;
-	font-size: 13px;
+	font-size: 1vw;
 	position: relative;
-	padding: 20px 10px;
-	margin-right: 10px;
+	padding: 1.59vw 0.78vw;
+	margin-right: 0.8vw;
 	text-align: center;
-	letter-spacing: 2px;
+	letter-spacing: 0.167vw;
 	font-family: "Roboto";
 	background: rgba(43,135,86,.75);
 }
 
 #RequestU {
 	float: left;
-	width: 200px;
+	width: 9.3vw;
 	color: #fedcdc;
-	font-size: 13px;
+	font-size: 1vw;
 	position: relative;
-	padding: 20px 10px;
+	padding: 1.59vw 0.78vw;
 	text-align: center;
-	letter-spacing: 3px;
+	letter-spacing: 0.167vw;
 	font-family: "Roboto";
 	background: rgba(237,105,106,.75);
 }
 
 #RequestY::before {
-	left: 95px;
-	width: 27px;
+	left: 4.433vw;
+	width: 2vw;
 	color: #ccc;
 	content: "Y";
-	bottom: -15px;
-	font-size: 14px;
+	bottom: -1.166vw;
+	font-size: 1.2vw;
 	position: absolute;
 	border-radius: 100%;
-	padding: 7px 0 6px 2px;
+	padding: 0.3vw 0 0.3vw 0.1vw;
 	background: rgba(15,15,15,.75);
 }
 
 #RequestU::before {
-	left: 95px;
-	width: 26px;
+	left: 4.433vw;
+	width: 2vw;
 	color: #ccc;
 	content: "U";
-	bottom: -15px;
-	font-size: 14px;
+	bottom: -1.166vw;
+	font-size: 1.2vw;
 	position: absolute;
 	border-radius: 100%;
-	padding: 7px 0 6px 3px;
+	padding: 0.3vw 0 0.3vw 0.1vw;
 	background: rgba(15,15,15,.75);
 }

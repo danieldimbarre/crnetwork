@@ -64,7 +64,7 @@ function Creative.NewCharacter(Name,Name2,Sex)
 		local License = vRP.Identities(source)
 		local Account = vRP.Account(License)
 		local AmountCharacters = parseInt(Account["chars"])
-		local Characters = vRP.UserData("characters/countPersons",{ license = License })
+		local Characters = vRP.Query("characters/countPersons",{ license = License })
 
 		if vRP.LicensePremium(License) then
 			AmountCharacters = AmountCharacters + 2

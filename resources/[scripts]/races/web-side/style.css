@@ -65,7 +65,7 @@ html,body {
 	padding: 3px 0;
 	text-shadow: none;
 	text-align: center;
-	background: #fec026;
+	background: #6ede81;
 }
 
 .raceName {
@@ -101,7 +101,7 @@ key {
 	left: 4.7vw;
 	bottom: 18vw;
 	display: none;
-	color: #fec026;
+	color: #6ede81;
 	text-align: left;
 	line-height: 30px;
 	letter-spacing: 2px;

@@ -258,7 +258,7 @@ space {
 	bottom: 20%;
 	content: "";
 	position: absolute;
-	background: #fec026;
+	background: #6ede81;
 }
 
 #Doors > .Button {
@@ -489,7 +489,7 @@ space {
 }
 
 .march circle:nth-child(2) {
-	stroke: #fec026;
+	stroke: #6ede81;
 	stroke-dashoffset: calc(440 - (440 * 0) / 100);
 }
 
@@ -526,8 +526,8 @@ space {
 }
 
 .Yellow {
-	fill: #fec026;
-	color: #fec026;
+	fill: #6ede81;
+	color: #6ede81;
 }
 
 .Green {
@@ -634,7 +634,7 @@ space {
 	margin-top: 30px;
 	text-align: center;
 	margin-left: 125px;
-	background: #fec026;
+	background: #6ede81;
 	border-radius: 100%;
 }
 
@@ -662,7 +662,7 @@ space {
 .SpawnSelectedCharacter i {
 	top: 40px;
 	right: 30px;
-	color: #fec026;
+	color: #6ede81;
 	font-size: 40px;
 	font-weight: 700;
 	position: absolute;
@@ -682,7 +682,7 @@ space {
 }
 
 .SpawnMessage span {
-	color: #fec026;
+	color: #6ede81;
 	display: block;
 	font-size: 30px;
 	letter-spacing: 2px;
@@ -762,7 +762,7 @@ space {
 .SpawnCreateTitle {
 	float: left;
 	width: 300px;
-	color: #fec026;
+	color: #6ede81;
 	font-size: 30px;
 	letter-spacing: 2px;
 	font-family: "Gotham";

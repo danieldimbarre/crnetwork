@@ -1,5 +1,41 @@
-/artifacts
-/cache
-/resources/[tests]
-server.cfg
+##
+# .gitignore for energy-main
+# IDE related files
+
+.idea/
+.vscode/**
+!.vscode/settings.json
+
+# CitizenFX Server files
+artifacts/
+bin/
+cache/
+*.lnk
+imgui.ini
+desktop.ini
+
+# TxAdmin files
+txData/
+start_*_default.bat
 server.bat
+
+# NodeJS modules
+node_modules/
+
+# Configuration files
+server.cfg
+
+# Streamed content (maps, vehicles, clothes, etc.)
+# *.ydd
+# *.ytd
+# *.ydr
+# *.ymap
+# *.ymf
+# *.ybn
+# *.ytyp
+# *.yft
+# *.ycd
+# *.ynd
+
+# Test Resources
+resources/\[tests\]/

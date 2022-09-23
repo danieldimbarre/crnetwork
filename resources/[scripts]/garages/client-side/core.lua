@@ -628,6 +628,22 @@ AddEventHandler("garages:Impound",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ONCLIENTRESOURCESTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
+	local Table = {}
+
+	for _,v in pairs(Garages) do
+		table.insert(Table,{ v["x"],v["y"],v["z"],1.25,"E","Garagem","Pressione para abrir" })
+	end
+
+	TriggerEvent("hoverfy:Insert",Table)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADOPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -642,6 +658,7 @@ CreateThread(function()
 					local Distance = #(Coords - vec3(v["x"],v["y"],v["z"]))
 					if Distance <= 1.25 then
 						TimeDistance = 1
+						DrawMarker(27,v["x"],v["y"],v["z"] - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,255,255,255,100,0,0,0,0)
 
 						if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
 							local Vehicles = vSERVER.Vehicles(Number)

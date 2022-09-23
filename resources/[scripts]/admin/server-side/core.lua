@@ -234,6 +234,27 @@ RegisterCommand("ungroup",function(source,args)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- UGROUPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("ugroups",function(source,args)
+    local Passport = vRP.Passport(source)
+    if Passport then
+		if vRP.HasGroup(Passport,"Admin") and parseInt(args[1]) > 0 then
+			local List = ""
+			local AllGroups = Groupment()
+			local Passport = args[1]
+			for Permission,_ in pairs(AllGroups) do
+				local Data = vRP.DataGroups(Permission)
+				if Data[Passport] then
+					List = List..Permission.."<br>"
+				end
+			end
+
+			TriggerClientEvent("Notify",source,"verde",List,10000)
+		end
+    end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- TPTOME
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("tptome",function(source,args)

@@ -1037,3 +1037,69 @@ AddEventHandler("player:Relationship",function(Group)
 		SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ELEVATORLIST
+-----------------------------------------------------------------------------------------------------------------------------------------
+local ElevatorList = {
+	["Hospital"] = {{
+		["Coords"] = vector3(-664.27,326.48,78.12),
+		["Heading"] = 356,
+		["Label"] = "Térreo"
+	},{
+		["Coords"] = vector3(-664.27,326.48,83.09),
+		["Heading"] = 356,
+		["Label"] = "1° Andar"
+	},{
+		["Coords"] = vector3(-664.27,326.48,88.02),
+		["Heading"] = 356,
+		["Label"] = "2° Andar"
+	},{
+		["Coords"] = vector3(-664.27,326.48,92.74),
+		["Heading"] = 356,
+		["Label"] = "3° Andar"
+	},{
+		["Coords"] = vector3(-664.27,326.48,140.12),
+		["Heading"] = 356,
+		["Label"] = "Cobertura"
+	}}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADELEVATOR
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	local ElevatorFloorsOptions = {}
+	for ElevatorName,ElevatorFloors in pairs(ElevatorList) do
+		for Index,Floor in pairs(ElevatorFloors) do
+			for k,v in pairs(ElevatorFloors) do
+				if k ~= Index then
+					table.insert(ElevatorFloorsOptions,{
+						event = "player:ElevatorTeleport",
+						label = v["Label"],
+						service = ElevatorName,
+						teleport = k,
+						tunnel = "teleport"
+					})
+				end
+			end
+
+			exports["target"]:AddBoxZone(ElevatorName..Index,Floor["Coords"],3,3, {
+				name = ElevatorName,
+				heading = Floor["Heading"],
+				minZ = Floor["Coords"]["z"] - 1.5,
+				maxZ = Floor["Coords"]["z"] + 2
+			},{
+				Distance = 1.5,
+				options = ElevatorFloorsOptions
+			})
+
+			ElevatorFloorsOptions = {}
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:ELEVATORTELEPORT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("player:ElevatorTeleport")
+AddEventHandler("player:ElevatorTeleport",function(Elevator,Floor)
+	SetEntityCoords(PlayerPedId(),ElevatorList[Elevator][Floor]["Coords"]["x"],ElevatorList[Elevator][Floor]["Coords"]["y"],ElevatorList[Elevator][Floor]["Coords"]["z"],1,0,0,0)
+end)

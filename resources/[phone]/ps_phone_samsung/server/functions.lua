@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Tunnel = module("_core","_lib/Tunnel")
-local Proxy  = module("_core","_lib/Proxy")
+local Tunnel = module("vrp","lib/Tunnel")
+local Proxy  = module("vrp","lib/Proxy")
 local lib    = loadmodule(GetCurrentResourceName(),"lib/lib")
 vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP")

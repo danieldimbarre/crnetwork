@@ -1,5 +1,5 @@
-local Tunnel = module("_core","_lib/Tunnel")
-local Proxy = module("_core","_lib/Proxy")
+local Tunnel = module("vrp","lib/Tunnel")
+local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 
 local myPedId = nil
@@ -105,7 +105,7 @@ end
 
 function PhonePlayAnim(status,freeze,force)
 	if status ~= 'out' and currentStatus == 'out' then
-		vRP._DeletarObjeto()
+		vRP.removeObjects()
 	end
 
 	if currentStatus == status and force ~= true then

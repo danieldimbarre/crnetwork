@@ -13,6 +13,18 @@ Tunnel.bindInterface("admin",Creative)
 vCLIENT = Tunnel.getInterface("admin")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CLEARINV
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("clearinv",function(source,args)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin") and parseInt(args[1]) > 0 then
+			TriggerClientEvent("Notify",source,"verde","Limpeza concluída.",5000)
+			vRP.ClearInventory(args[1])
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- GEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("gem",function(source,args)

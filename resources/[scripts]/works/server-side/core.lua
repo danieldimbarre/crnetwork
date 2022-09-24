@@ -239,7 +239,7 @@ function Creative.checkPermission(serviceName)
 			return true
 		end
 
-		if vRP.hasGroup(Passport,works[serviceName]["perm"]) then
+		if vRP.HasGroup(Passport,works[serviceName]["perm"]) then
 			if activeWorks[serviceName] then
 				if parseInt(#activeWorks[serviceName]) < 5 then
 					activeWorks[serviceName][Passport] = true

@@ -39,89 +39,35 @@ local isPurchaseSuccessful = false
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local bennysLocations = {
-	["mechanic01"] = {
-		pos = vec3(450.4,-975.81,25.7),
-		heading = 90.00
+	["police01"] = {
+		pos = vector3(853.6,-1392.09,26.13),
+		heading = 90.00,
+		permission = "Police"
 	},
-	["mechanic02"] = {
-		pos = vec3(435.28,-975.86,25.7),
-		heading = 90.00
+	["paramedic01"] = {
+		pos = vector3(-707.9,320.8,140.14),
+		heading = 340.00,
+		permission = "Paramedic"
 	},
-	["mechanic03"] = {
-		pos = vec3(333.34,-574.76,28.80),
-		heading = 340.00
+	["bennys01"] = {
+		pos = vector3(824.71,-903.65,25.75),
+		heading = 360.0,
+		permission = "Mechanic"
 	},
-	["mechanic04"] = {
-		pos = vec3(-339.15,-136.66,39.01),
-		heading = 87.88
+	["bennys02"] = {
+		pos = vector3(829.6,-903.69,25.75),
+		heading = 360.0,
+		permission = "Mechanic"
 	},
-	["mechanic05"] = {
-		pos = vec3(-1155.12,-2005.7,13.18),
-		heading = 334.49
+	["bennys03"] = {
+		pos = vector3(820.37,-903.62,25.75),
+		heading = 360.0,
+		permission = "Mechanic"
 	},
-	["mechanic06"] = {
-		pos = vec3(1174.98,2640.4,37.74),
-		heading = 1.0
-	},
-	["mechanic07"] = {
-		pos = vec3(1182.14,2639.94,37.74),
-		heading = 1.0
-	},
-	["mechanic08"] = {
-		pos = vec3(110.63,6626.54,31.78),
-		heading = 224.94
-	},
-	["mechanic09"] = {
-		pos = vec3(105.26,6621.59,31.78),
-		heading = 223.94
-	},
-	["mechanic10"] = {
-		pos = vec3(731.7,-1088.84,21.84),
-		heading = 87.88
-	},
-	["mechanic11"] = {
-		pos = vec3(-1178.37,-2845.97,13.93),
-		heading = 331.66
-	},
-	["mechanic12"] = {
-		pos = vec3(-222.63,-1330.03,30.57),
-		heading = 272.13
-	},
-	["mechanic13"] = {
-		pos = vec3(-32.76,-1065.91,27.77),
-		heading = 339.5
-	},
-	["mechanic14"] = {
-		pos = vec3(135.97,-3030.56,6.71),
-		heading = 178.59
-	},
-	["mechanic15"] = {
-		pos = vec3(144.91,-3030.35,6.71),
-		heading = 0.0
-	},
-	["mechanic16"] = {
-		pos = vec3(-1423.62,-450.23,35.28),
-		heading = 32.00
-	},
-	["mechanic17"] = {
-		pos = vec3(-1417.29,-446.25,35.28),
-		heading = 32.00
-	},
-	["mechanic18"] = {
-		pos = vec3(936.6,-970.85,38.91),
-		heading = 273.00
-	},
-	["mechanic19"] = {
-		pos = vec3(380.35,-1626.4,29.1),
-		heading = 320.32
-	},
-	["mechanic20"] = {
-		pos = vec3(1881.54,3700.57,33.35),
-		heading = 28.35
-	},
-	["mechanic21"] = {
-		pos = vec3(374.39,797.98,187.2),
-		heading = 178.59
+	["bennys04"] = {
+		pos = vector3(815.94,-903.67,25.75),
+		heading = 360.0,
+		permission = "Mechanic"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

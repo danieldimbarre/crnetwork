@@ -1049,7 +1049,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] == -1 then
+						-- if Datatable["mods"]["11"] == -1 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1086,9 +1086,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1111,7 +1111,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] == 0 then
+						-- if Datatable["mods"]["11"] == 0 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1148,9 +1148,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1173,7 +1173,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] == 1 then
+						-- if Datatable["mods"]["11"] == 1 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1210,9 +1210,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1235,7 +1235,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] == 2 then
+						-- if Datatable["mods"]["11"] == 2 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1272,9 +1272,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1297,7 +1297,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] == 3 then
+						-- if Datatable["mods"]["11"] == 3 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1334,9 +1334,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1359,7 +1359,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] == -1 then
+						-- if Datatable["mods"]["12"] == -1 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1396,9 +1396,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1421,7 +1421,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] == 0 then
+						-- if Datatable["mods"]["12"] == 0 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1458,9 +1458,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1483,7 +1483,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] == 1 then
+						-- if Datatable["mods"]["12"] == 1 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1520,9 +1520,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1545,7 +1545,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] == 2 then
+						-- if Datatable["mods"]["12"] == 2 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1582,9 +1582,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1607,7 +1607,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] == 3 then
+						-- if Datatable["mods"]["12"] == 3 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1644,9 +1644,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1669,7 +1669,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] == -1 then
+						-- if Datatable["mods"]["13"] == -1 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1706,9 +1706,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1731,7 +1731,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] == 0 then
+						-- if Datatable["mods"]["13"] == 0 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1768,9 +1768,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1793,7 +1793,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] == 1 then
+						-- if Datatable["mods"]["13"] == 1 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1830,9 +1830,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1855,7 +1855,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] == 2 then
+						-- if Datatable["mods"]["13"] == 2 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1892,9 +1892,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1917,7 +1917,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] == 3 then
+						-- if Datatable["mods"]["13"] == 3 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1954,9 +1954,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						end
+						-- else
+						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						-- end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1980,7 +1980,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] == -1 then
+							-- if Datatable["mods"]["15"] == -1 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2017,9 +2017,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							end
+							-- else
+							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							-- end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
@@ -2046,7 +2046,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] == 0 then
+							-- if Datatable["mods"]["15"] == 0 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2083,9 +2083,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							end
+							-- else
+							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							-- end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
@@ -2112,7 +2112,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] == 1 then
+							-- if Datatable["mods"]["15"] == 1 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2149,9 +2149,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							end
+							-- else
+							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							-- end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
@@ -2178,7 +2178,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] == 2 then
+							-- if Datatable["mods"]["15"] == 2 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2215,9 +2215,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							end
+							-- else
+							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							-- end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
@@ -2244,7 +2244,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] == 3 then
+							-- if Datatable["mods"]["15"] == 3 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2281,9 +2281,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							end
+							-- else
+							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							-- end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end

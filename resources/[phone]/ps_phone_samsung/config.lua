@@ -72,7 +72,7 @@ Config.HelpList = {
         image       = "https://gtapolicemods.com/uploads/monthly_2020_11/Rambulance.png.d24e5be1cafdffe6786dd1f8dcd64678.png",
         style       = "top: 230px;",
         groups      = {
-            "Emergency"
+            "Paramedic"
         }
     },
     ['mecanico'] = {

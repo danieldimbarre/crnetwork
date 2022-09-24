@@ -310,6 +310,8 @@ CreateThread(function()
 			ClearPlayerWantedLevel(PlayerId())
 		end
 
+		SetPedSuffersCriticalHits(PlayerPedId(),true)
+
 		SetWeatherTypeNow(GlobalState["Weather"])
 		SetWeatherTypePersist(GlobalState["Weather"])
 		SetWeatherTypeNowPersist(GlobalState["Weather"])

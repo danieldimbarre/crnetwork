@@ -86,7 +86,7 @@ AddEventHandler("plants:Cloning",function(Number)
 			TriggerClientEvent("dynamic:closeSystem",source)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
-			if (Plants[Number]["Time"] - os.time()) <= 5400 then
+			if (Plants[Number]["Time"] - os.time()) <= 1800 then
 				local Temporary = Plants[Number]
 
 				if (vRP.InventoryWeight(Passport) + itemWeight("weedclone") * 2) <= vRP.GetWeight(Passport) then

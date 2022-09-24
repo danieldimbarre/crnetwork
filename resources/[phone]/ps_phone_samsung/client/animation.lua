@@ -135,7 +135,7 @@ function PhonePlayAnim(status,freeze,force)
 	if status ~= 'out' and currentStatus == 'out' then
 		Citizen.Wait(380)
 		newPhoneProp()
-		TriggerEvent("smartphone:Status",true)
+		TriggerEvent("vRP:Phone",true)
 		SetCurrentPedWeapon(myPedId,GetHashKey("WEAPON_UNARMED"),true)
 	end
 
@@ -148,7 +148,7 @@ function PhonePlayAnim(status,freeze,force)
 		Citizen.Wait(180)
 		deletePhone()
 		StopAnimTask(myPedId,lastDict,lastAnim,1.0)
-		TriggerEvent("smartphone:Status",false)
+		TriggerEvent("vRP:Phone",false)
 	end
 end
 

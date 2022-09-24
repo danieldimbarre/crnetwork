@@ -837,7 +837,7 @@ space {
 }
 
 #ChatMessage black {
-	color: #666;
+	color: #ccc;
 	font-size: 0.5vw;
 	text-shadow: none;
 }

@@ -785,7 +785,7 @@ local List = {
 		["Name"] = "Combo",
 		["Type"] = "Comum",
 		["Weight"] = 1.25,
-		["Max"] = 2,
+		["Max"] = 5,
 		["Economy"] = 120
 	},
 	["burgershot4"] = {
@@ -793,7 +793,7 @@ local List = {
 		["Name"] = "Combo + Brinquedo",
 		["Type"] = "Comum",
 		["Weight"] = 1.25,
-		["Max"] = 2,
+		["Max"] = 5,
 		["Economy"] = 270
 	},
 	["pizzathis1"] = {

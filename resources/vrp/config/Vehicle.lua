@@ -978,8 +978,8 @@ local List = {
 		["Block"] = false,
 		["Gems"] = 0
 	},
-	["ambulance2"] = {
-		["Name"] = "Ambulance 2",
+	["ambulancia"] = {
+		["Name"] = "Ambulancia",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Type"] = "work",
@@ -1155,6 +1155,14 @@ local List = {
 		["Gems"] = 0
 	},
 	["maverick"] = {
+		["Name"] = "Maverick",
+		["Weight"] = 0,
+		["Price"] = 2000,
+		["Type"] = nil,
+		["Block"] = false,
+		["Gems"] = 0
+	},
+	["maverick2"] = {
 		["Name"] = "Maverick",
 		["Weight"] = 0,
 		["Price"] = 2000,

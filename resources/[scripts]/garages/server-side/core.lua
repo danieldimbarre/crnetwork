@@ -104,6 +104,8 @@ local Garages = {
 	["23"] = { name = "Garage", payment = false },
 	["24"] = { name = "Garage", payment = true },
 	["25"] = { name = "Garage", payment = true },
+	["26"] = { name = "Garage", payment = true },
+	["27"] = { name = "Garage", payment = true },
 
 	-- Paramedic
 	["41"] = { name = "Paramedic", payment = false, perm = "Paramedic" },
@@ -200,10 +202,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local workGarages = {
 	["Paramedic"] = {
-		"lguard",
-		"blazer2",
-		"ambulance2",
-		"firetruk"
+		"ambulancia",
 	},
 	["heliParamedic"] = {
 		"maverick2"

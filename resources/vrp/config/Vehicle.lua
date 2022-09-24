@@ -986,6 +986,70 @@ local List = {
 		["Block"] = false,
 		["Gems"] = 0
 	},
+	["fordraptor"] = {
+		["Name"] = "FordRaptor",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Type"] = "work",
+		["Block"] = false,
+		["Gems"] = 0
+	},
+	["wra45"] = {
+		["Name"] = "A45",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Type"] = "work",
+		["Block"] = false,
+		["Gems"] = 0
+	},
+	["wrbmwx6"] = {
+		["Name"] = "BMWX6",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Type"] = "work",
+		["Block"] = false,
+		["Gems"] = 0
+	},
+	["audir82"] = {
+		["Name"] = "Audi",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Type"] = "work",
+		["Block"] = false,
+		["Gems"] = 0
+	},
+	["tahoe"] = {
+		["Name"] = "Tahoe",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Type"] = "work",
+		["Block"] = false,
+		["Gems"] = 0
+	},
+	["wrsxr"] = {
+		["Name"] = "BMW S1000XR",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Type"] = "work",
+		["Block"] = false,
+		["Gems"] = 0
+	},
+	["fordmustanggt2"] = {
+		["Name"] = "MustangGOE",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Type"] = "work",
+		["Block"] = false,
+		["Gems"] = 0
+	},
+	["nspeddo"] = {
+		["Name"] = "Van",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Type"] = "work",
+		["Block"] = false,
+		["Gems"] = 0
+	},
 	["utillitruck2"] = {
 		["Name"] = "Utillitruck 2",
 		["Weight"] = 40,
@@ -1164,6 +1228,14 @@ local List = {
 	},
 	["maverick2"] = {
 		["Name"] = "Maverick",
+		["Weight"] = 0,
+		["Price"] = 2000,
+		["Type"] = nil,
+		["Block"] = false,
+		["Gems"] = 0
+	},
+	["b412"] = {
+		["Name"] = "B412",
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Type"] = nil,

@@ -208,26 +208,14 @@ local workGarages = {
 		"maverick2"
 	},
 	["Police"] = {
-		"polvic",
-		"komodapol",
-		"r1250pol",
-		"nc700pol",
-		"polchar",
-		"ballerpol",
-		"elegy2pol",
-		"fugitivepol",
-		"kurumapol",
-		"oracle2pol",
-		"police3pol",
-		"policepol",
-		"policetpol",
-		"schafter2pol",
-		"sheriff2pol",
-		"sultanrspol",
-		"tailgater2pol",
-		"polcorv",
-		"polchall",
-		"poltang"
+		"fordraptor",
+		"wra45",
+		"wrbmwx6",
+		"audir82",
+		"tahoe",
+		"wrsxr",
+		"fordmustanggt2",
+		"nspeedo"
 	},
 	["heliPolice"] = {
 		"maverick2"

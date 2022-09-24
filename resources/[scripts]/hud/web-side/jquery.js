@@ -375,7 +375,7 @@ $(document).ready(function(){
 					$("#ChatSubmit").val("");
 					$("#ChatSubmit").css("display","block");
 					$("#ChatMessage").css("display","block");
-					$("#ChatBackground").css("background","#14141415");
+					$("#ChatBackground").css("background","#14141410");
 
 					document.getElementById("ChatSubmit").focus();
 					document.getElementById("ChatSubmit").select();
@@ -483,6 +483,11 @@ $(document).ready(function(){
 				$("#Request").css("display","none");
 				$.post("http://hud/RequestFailure");
 			break;
+
+			case "SpawnClose":
+				$(".SpawnMessage").css("display","none");
+				$(".SpawnCreate").css("display","none");
+			break;
 		}
 	});
 
@@ -537,8 +542,6 @@ $(document).on("click",".SpawnCreateSubmit",function(event){
 
 	if (Nome != "" && Sobrenome != ""){
 		$.post("http://hud/NewCharacter",JSON.stringify({ name: Nome, name2: Sobrenome, sex: Sexo }));
-		$(".SpawnMessage").css("display","none");
-		$(".SpawnCreate").css("display","none");
 	}
 });
 // -------------------------------------------------------------------------------------------

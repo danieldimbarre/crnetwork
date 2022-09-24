@@ -79,7 +79,7 @@ AddEventHandler("propertys:Buy",function(Name)
 		if not Consult[1] then
 			TriggerClientEvent("dynamic:closeSystem",source)
 
-			if vHUD.Request(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudeia de ideia") then
+			if vHUD.Request(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudei de ideia") then
 				local Interior = Split[2]
 
 				if vRP.PaymentFull(Passport,source,Informations[Interior]["Price"]) then

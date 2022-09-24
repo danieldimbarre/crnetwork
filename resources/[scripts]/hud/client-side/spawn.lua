@@ -89,11 +89,7 @@ end)
 RegisterNUICallback("CharacterChosen",function(Data,Callback)
 	DoScreenFadeOut(0)
 
-	for _,v in pairs(Peds) do
-		if DoesEntityExist(v) then
-			DeleteEntity(v)
-		end
-	end
+	Delete()
 
 	vSERVER.CharacterChosen(Data["passport"])
 
@@ -108,7 +104,7 @@ RegisterNUICallback("NewCharacter",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- JUSTSPAWN
+-- SPAWN:JUSTSPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:justSpawn")
 AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
@@ -148,6 +144,15 @@ AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
 	else
 		TriggerServerEvent("creator:newCharacter")
 	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SPAWN:SPAWNCLOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("spawn:SpawnClose")
+AddEventHandler("spawn:SpawnClose",function()
+	Delete()
+
+	SendNUIMessage({ Action = "SpawnClose" })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHOSEN
@@ -216,6 +221,16 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 
 	Callback("Ok")
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DELETE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Delete()
+	for _,v in pairs(Peds) do
+		if DoesEntityExist(v) then
+			DeleteEntity(v)
+		end
+	end
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------

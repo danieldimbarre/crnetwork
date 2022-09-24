@@ -80,6 +80,7 @@ function Creative.NewCharacter(Name,Name2,Sex)
 
 		local Consult = vRP.Query("characters/lastCharacters",{ license = License })
 		if Consult[1] then
+			TriggerClientEvent("spawn:SpawnClose",source)
 			vRP.CharacterChosen(source,Consult[1]["id"],Sex)
 			SetPlayerRoutingBucket(source,0)
 		end

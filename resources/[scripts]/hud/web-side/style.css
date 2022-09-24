@@ -805,25 +805,25 @@ space {
 	top: 3vw;
 	left: 3vw;
 	z-index: 997;
-	max-width: 30vw;
+	max-width: 22vw;
 	position: absolute;
 }
 
 #ChatMessage {
 	float: left;
-	margin: 1.5vw;
-	width: 27vw;
-	height: 12vw;
+	margin: 0.667vw;
+	width: 20.62vw;
+	height: 10.63vw;
 	display: none;
-	font-size: 0.9vw;
+	font-size: 0.4vw;
 	overflow: hidden;
 	overflow-y: scroll;
-	letter-spacing: 0.16vw;
+	letter-spacing: 0.1vw;
 	text-shadow: 0.05vw 0.05vw #000;
 }
 
 #ChatMessage div {
-	margin-bottom: 1vw;
+	margin-bottom: 0.367vw;
 }
 
 #ChatMessage div:last-child {
@@ -832,13 +832,13 @@ space {
 
 #ChatMessage red {
 	color: #ff0000;
-	font-size: 1vw;
+	font-size: 0.5vw;
 	text-shadow: none;
 }
 
 #ChatMessage black {
 	color: #666;
-	font-size: 1vw;
+	font-size: 0.5vw;
 	text-shadow: none;
 }
 
@@ -846,20 +846,20 @@ space {
 	border: 0;
 	float: left;
 	color: #fff;
-	width: 30vw;
-	padding: 1.333vw;
+	width: 22vw;
+	padding: 0.667vw;
 	display: none;
 	cursor: default;
-	font-size: 0.9vw;
-	margin-top: 1vw;
-	letter-spacing: 0.16vw;
-	background: #14141415;
+	font-size: 0.5vw;
+	margin-top: 0.667vw;
+	letter-spacing: 0.1vw;
+	background: #14141410;
 }
 
 #ChatBackground {
 	float: left;
-	width: 30vw;
-	height: 15vw;
+	width: 22vw;
+	height: 12vw;
 	background: transparent;
 }
 
@@ -889,10 +889,10 @@ space {
 	float: left;
 	width: 21vw;
 	padding: 0.8vw;
-	font-size: 1.2vw;
+	font-size: 0.8vw;
 	margin-top: 3.333vw;
- 	line-height: 2.667vw;
-	margin-bottom: 0.8vw;
+ 	line-height: 1vw;
+	margin-bottom: 0.667vw;
 	font-family: "Roboto";
 	background: rgba(15,15,15,.75);
 }
@@ -904,12 +904,12 @@ space {
 
 #RequestY {
 	float: left;
-	width: 9.3vw;
+	width: 9.5vw;
 	color: #d6ffea;
-	font-size: 1vw;
+	font-size: 0.6vw;
 	position: relative;
-	padding: 1.59vw 0.78vw;
-	margin-right: 0.8vw;
+	padding: 1vw 0.667vw;
+	margin-right: 0.667vw;
 	text-align: center;
 	letter-spacing: 0.1vw;
 	font-family: "Roboto";
@@ -918,11 +918,11 @@ space {
 
 #RequestU {
 	float: left;
-	width: 9.3vw;
+	width: 9.5vw;
 	color: #fedcdc;
-	font-size: 1vw;
+	font-size: 0.6vw;
 	position: relative;
-	padding: 1.59vw 0.78vw;
+	padding: 1vw 0.667vw;
 	text-align: center;
 	letter-spacing: 0.1vw;
 	font-family: "Roboto";
@@ -931,26 +931,26 @@ space {
 
 #RequestY::before {
 	left: 4.433vw;
-	width: 2vw;
+	width: 1.5vw;
 	color: #ccc;
 	content: "Y";
-	bottom: -1.166vw;
-	font-size: 1.2vw;
+	bottom: -0.7vw;
+	font-size: 0.8vw;
 	position: absolute;
 	border-radius: 100%;
-	padding: 0.3vw 0 0.3vw 0.05vw;
+	padding: 0.25vw 0 0.25vw 0.01vw;
 	background: rgba(15,15,15,.75);
 }
 
 #RequestU::before {
 	left: 4.433vw;
-	width: 2vw;
+	width: 1.5vw;
 	color: #ccc;
 	content: "U";
-	bottom: -1.166vw;
-	font-size: 1.2vw;
+	bottom: -0.7vw;
+	font-size: 0.8vw;
 	position: absolute;
 	border-radius: 100%;
-	padding: 0.3vw 0 0.3vw 0.05vw;
+	padding: 0.25vw 0 0.25vw 0.01vw;
 	background: rgba(15,15,15,.75);
 }

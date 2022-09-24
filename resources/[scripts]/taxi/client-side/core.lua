@@ -172,7 +172,17 @@ local spawnModels = {
 	"ig_denise","ig_devin","a_m_y_dhill_01","ig_dom","a_m_y_downtown_01","ig_dreyfuss"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
+-- HOVERFY:INSERT
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Table = {}
+
+for k,v in pairs(initService) do
+	table.insert(Table,{ v[1],v[2],v[3],2,"E","Táxi","Pressione para iniciar/finalizar" })
+end
+
+TriggerEvent("hoverfy:Insert",Table)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADINIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
@@ -185,12 +195,6 @@ CreateThread(function()
 				local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 				if Distance <= 2 then
 					TimeDistance = 1
-
-					if serviceStatus then
-						DrawText3D(v[1],v[2],v[3],"~g~E~w~   FINALIZAR")
-					else
-						DrawText3D(v[1],v[2],v[3],"~g~E~w~   INICIAR")
-					end
 
 					if IsControlJustPressed(1,38) then
 						if serviceStatus then

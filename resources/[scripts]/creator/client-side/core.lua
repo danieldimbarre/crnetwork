@@ -54,8 +54,8 @@ function displayCreator(enable)
 	local Ped = PlayerPedId()
 
 	if enable then
-		SetEntityCoords(Ped,239.31,-1381.13,33.73,0,0,1)
-		SetEntityHeading(Ped,147.41)
+		SetEntityCoords(Ped,239.41,-1381.01,33.73 - 1,0,0,1)
+		SetEntityHeading(Ped,136.07)
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
 		SendNUIMessage({ openCreator = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1, maxHaircolors = GetNumHairColors()-1, maxMakeupcolor = GetNumMakeupColors()-1, maxBeard = GetPedHeadOverlayNum(1)-1, maxEyebrow = GetPedHeadOverlayNum(2)-1, maxMakeup = GetPedHeadOverlayNum(4)-1, maxBlush = GetPedHeadOverlayNum(5)-1, maxLipstick = GetPedHeadOverlayNum(8)-1, fathers = myFace[1], mothers = myFace[41], kinship = myFace[2], eyecolor = myFace[3], skincolor = myFace[4], acne = myFace[5], stains = myFace[6], freckles = myFace[7], aging = myFace[8], hair = myFace[9], haircolor = myFace[10], haircolor2 = myFace[11], makeup = myFace[12], makeupintensity = myFace[13], makeupcolor = myFace[14], lipstick = myFace[15], lipstickintensity = myFace[16], lipstickcolor = myFace[17], eyebrow = myFace[18], eyebrowintensity = myFace[19], eyebrowcolor = myFace[20], beard = myFace[21], beardintensity = myFace[22], beardcolor = myFace[23], blush = myFace[24], blushintensity = myFace[25], blushcolor = myFace[26], face00 = myFace[27], face01 = myFace[28], face04 = myFace[29], face06 = myFace[30], face08 = myFace[31], face09 = myFace[32], face10 = myFace[33], face12 = myFace[34], face13 = myFace[35], face14 = myFace[36], face15 = myFace[37], face16 = myFace[38], face17 = myFace[39], face19 = myFace[40] })

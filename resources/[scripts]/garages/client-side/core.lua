@@ -589,7 +589,7 @@ end
 CreateThread(function()
 	while true do
 		local TimeDistance = 999
-		if LocalPlayer["state"]["Route"] < 900000 then
+		if LocalPlayer["state"]["Route"] == 0 then
 			local Ped = PlayerPedId()
 			if IsPedInAnyVehicle(Ped) then
 				local Vehicle = GetVehiclePedIsUsing(Ped)

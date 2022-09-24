@@ -13,6 +13,24 @@ Tunnel.bindInterface("admin",Creative)
 vCLIENT = Tunnel.getInterface("admin")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- UGROUPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("ugroups",function(source,args)
+	local Passport = vRP.Passport(source)
+	if Passport and parseInt(args[1]) > 0 then
+		local Message = ""
+		local Groups = vRP.Groups()
+		for Permission,_ in pairs(Groups) do
+			local Data = vRP.DataGroups(Permission)
+			if Data[tostring(Passport)] then
+				Message = Message..Permission.."<br>"
+			end
+		end
+
+		TriggerClientEvent("Notify",source,"verde",Message,10000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEARINV
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("clearinv",function(source,args)

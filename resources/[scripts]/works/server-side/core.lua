@@ -53,8 +53,8 @@ local works = {
 		["collectButtonDistance"] = 1,
 		["collectShowDistance"] = 30,
 		["collectConsume"] = {
-			["min"] = 2,
-			["max"] = 5
+			["min"] = 1,
+			["max"] = 1
 		},
 		["collectCoords"] = {
 			{ -1100.46,2722.19,18.8,221.11 },
@@ -68,7 +68,11 @@ local works = {
 			{ -2175.36,4295.12,49.05,59.53 },
 			{ -2543.92,2316.04,33.21,192.76 }
 		},
-		["deliveryItem"] = "fragmento"
+		["deliveryItem"] = {
+			"pistolbody",
+			"smgbody",
+			"riflebody"
+		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

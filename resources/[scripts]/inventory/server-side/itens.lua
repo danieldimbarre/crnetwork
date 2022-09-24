@@ -1049,7 +1049,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						-- if Datatable["mods"]["11"] == -1 then
+						if Datatable["mods"]["11"] <= -1 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1071,7 +1071,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												Datatable["mods"]["11"] = 0
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ key = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1086,9 +1087,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1111,7 +1112,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						-- if Datatable["mods"]["11"] == 0 then
+						if Datatable["mods"]["11"] <= 0 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1133,7 +1134,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												Datatable["mods"]["11"] = 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ key = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1148,9 +1150,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1173,7 +1175,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						-- if Datatable["mods"]["11"] == 1 then
+						if Datatable["mods"]["11"] <= 1 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1195,7 +1197,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												Datatable["mods"]["11"] = 2
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ key = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1210,9 +1213,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1235,7 +1238,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						-- if Datatable["mods"]["11"] == 2 then
+						if Datatable["mods"]["11"] <= 2 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1257,7 +1260,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												Datatable["mods"]["11"] = 3
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ key = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1272,9 +1276,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1297,7 +1301,7 @@ Use = {
 							Datatable["mods"]["11"] = -1
 						end
 
-						-- if Datatable["mods"]["11"] == 3 then
+						if Datatable["mods"]["11"] <= 3 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1319,7 +1323,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+												Datatable["mods"]["11"] = 4
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ key = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1334,9 +1339,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1359,7 +1364,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						-- if Datatable["mods"]["12"] == -1 then
+						if Datatable["mods"]["12"] <= -1 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1381,7 +1386,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												Datatable["mods"]["12"] = 0
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1396,9 +1402,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1421,7 +1427,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						-- if Datatable["mods"]["12"] == 0 then
+						if Datatable["mods"]["12"] <= 0 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1443,7 +1449,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												Datatable["mods"]["12"] = 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1458,9 +1465,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1483,7 +1490,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						-- if Datatable["mods"]["12"] == 1 then
+						if Datatable["mods"]["12"] <= 1 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1505,7 +1512,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												Datatable["mods"]["12"] = 2
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1520,9 +1528,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1545,7 +1553,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						-- if Datatable["mods"]["12"] == 2 then
+						if Datatable["mods"]["12"] <= 2 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1567,7 +1575,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												Datatable["mods"]["12"] = 3
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1582,9 +1591,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1607,7 +1616,7 @@ Use = {
 							Datatable["mods"]["12"] = -1
 						end
 
-						-- if Datatable["mods"]["12"] == 3 then
+						if Datatable["mods"]["12"] <= 3 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1629,7 +1638,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+												Datatable["mods"]["12"] = 4
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1644,9 +1654,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1669,7 +1679,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						-- if Datatable["mods"]["13"] == -1 then
+						if Datatable["mods"]["13"] <= -1 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1691,7 +1701,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												Datatable["mods"]["13"] = 0
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1706,9 +1717,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1731,7 +1742,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						-- if Datatable["mods"]["13"] == 0 then
+						if Datatable["mods"]["13"] <= 0 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1753,7 +1764,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												Datatable["mods"]["13"] = 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1768,9 +1780,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1793,7 +1805,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						-- if Datatable["mods"]["13"] == 1 then
+						if Datatable["mods"]["13"] <= 1 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1815,7 +1827,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												Datatable["mods"]["13"] = 2
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1830,9 +1843,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1855,7 +1868,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						-- if Datatable["mods"]["13"] == 2 then
+						if Datatable["mods"]["13"] <= 2 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1877,7 +1890,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												Datatable["mods"]["13"] = 3
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1892,9 +1906,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1917,7 +1931,7 @@ Use = {
 							Datatable["mods"]["13"] = -1
 						end
 
-						-- if Datatable["mods"]["13"] == 3 then
+						if Datatable["mods"]["13"] <= 3 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1939,7 +1953,8 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+												Datatable["mods"]["13"] = 4
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1954,9 +1969,9 @@ Use = {
 								vRPC.stopAnim(source,false)
 								Active[Passport] = nil
 							end
-						-- else
-						-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
-						-- end
+						else
+							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
@@ -1980,7 +1995,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							-- if Datatable["mods"]["15"] == -1 then
+							if Datatable["mods"]["15"] <= -1 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2002,7 +2017,8 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													Datatable["mods"]["15"] = 0
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end
@@ -2017,9 +2033,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							-- else
-							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							-- end
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
@@ -2046,7 +2062,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							-- if Datatable["mods"]["15"] == 0 then
+							if Datatable["mods"]["15"] <= 0 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2068,7 +2084,8 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													Datatable["mods"]["15"] = 1
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end
@@ -2083,9 +2100,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							-- else
-							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							-- end
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
@@ -2112,7 +2129,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							-- if Datatable["mods"]["15"] == 1 then
+							if Datatable["mods"]["15"] <= 1 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2134,7 +2151,8 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													Datatable["mods"]["15"] = 2
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end
@@ -2149,9 +2167,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							-- else
-							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							-- end
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
@@ -2178,7 +2196,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							-- if Datatable["mods"]["15"] == 2 then
+							if Datatable["mods"]["15"] <= 2 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2200,7 +2218,8 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													Datatable["mods"]["15"] = 3
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end
@@ -2215,9 +2234,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							-- else
-							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							-- end
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
@@ -2244,7 +2263,7 @@ Use = {
 								Datatable["mods"]["15"] = -1
 							end
 
-							-- if Datatable["mods"]["15"] == 3 then
+							if Datatable["mods"]["15"] <= 3 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2266,7 +2285,8 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+													Datatable["mods"]["15"] = 4
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end
@@ -2281,9 +2301,9 @@ Use = {
 									vRPC.stopAnim(source,false)
 									Active[Passport] = nil
 								end
-							-- else
-							-- 	TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
-							-- end
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+							end
 						else
 							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end

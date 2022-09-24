@@ -647,7 +647,7 @@ space {
 	float: left;
 	color: #999;
 	width: 14vw;
-	font-size: 0.5vw;
+	font-size: 0.6vw;
 	line-height: 1vw;
 	padding: 0.6vw;
 	position: relative;
@@ -676,7 +676,7 @@ space {
 	width: 20vw;
 	padding: 0.6vw;
 	display: none;
-	font-size: 0.5vw;
+	font-size: 0.6vw;
 	line-height: 1vw;
 	position: absolute;
 	background: #141414;
@@ -687,7 +687,7 @@ space {
 	display: block;
 	font-size: 0.9vw;
 	letter-spacing: 0.1vw;
-	margin-bottom: 0.5vw;
+	margin-bottom: 0.7vw;
 	font-family: "Gotham";
 	text-transform: uppercase;
 }
@@ -815,7 +815,7 @@ space {
 	width: 20.62vw;
 	height: 10.63vw;
 	display: none;
-	font-size: 0.4vw;
+	font-size: 0.6vw;
 	overflow: hidden;
 	overflow-y: scroll;
 	letter-spacing: 0.1vw;
@@ -832,13 +832,13 @@ space {
 
 #ChatMessage red {
 	color: #ff0000;
-	font-size: 0.5vw;
+	font-size: 0.55vw;
 	text-shadow: none;
 }
 
 #ChatMessage black {
 	color: #ccc;
-	font-size: 0.5vw;
+	font-size: 0.55vw;
 	text-shadow: none;
 }
 
@@ -850,7 +850,7 @@ space {
 	padding: 0.667vw;
 	display: none;
 	cursor: default;
-	font-size: 0.5vw;
+	font-size: 0.6vw;
 	margin-top: 0.667vw;
 	letter-spacing: 0.1vw;
 	background: #14141410;

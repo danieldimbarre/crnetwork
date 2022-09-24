@@ -275,7 +275,7 @@ function Creative.updateWorks(status)
 
 	local Table = {}
 
-	for _,v in pairs(works) do
+	for k,v in pairs(works) do
 		table.insert(Table,{ v["coords"][1],v["coords"][2],v["coords"][3],2,"E",k,"Pressione para iniciar/finalizar" })
 	end
 

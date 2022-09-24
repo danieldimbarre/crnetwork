@@ -82,7 +82,7 @@ input::-webkit-inner-spin-button {
 
 .InfoUser {
 	float: left;
-	font-size: 0.55vw;
+	font-size: 0.8vw;
 	margin-top: 0.4vw;
 	text-align: right;
 	line-height: 1vw;
@@ -93,8 +93,8 @@ input::-webkit-inner-spin-button {
 space {
 	opacity: .35;
 	border-left: 0.05vw;
-	padding-left: 0.467vw;
-	margin-right: 0.467vw;
+	padding-left: 0.267vw;
+	margin-right: 0.267vw;
 	text-shadow: none;
 }
 
@@ -110,7 +110,7 @@ space {
 .NaviText {
 	float: left;
 	width: 15.625vw;
-	font-size: 0.6vw;
+	font-size: 0.8vw;
 	margin-top: 1.05vw;
 	letter-spacing: 0.05vw;
 }
@@ -118,14 +118,14 @@ space {
 .NaviText > span {
 	opacity: .5;
 	display: block;
-	font-size: 0.55vw;
+	font-size: 0.7vw;
 	letter-spacing: 0.05vw;
 }
 
 .NaviIcon {
 	width: 2.084vw;
 	float: left;
-	font-size: 1vw;
+	font-size: 1.15vw;
 	margin-top: 1.15vw;
 	padding-top: 0.233vw;
 }

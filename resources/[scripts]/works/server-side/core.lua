@@ -89,8 +89,8 @@ local deliveryAmount = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.collectConsume(serviceName)
 	local source = source
-	local user_id = vRP.Passport(source)
-	if user_id then
+	local Passport = vRP.Passport(source)
+	if Passport then
 		if works[serviceName]["collectRandom"] then
 			local amountItem = 0
 			local selectItem = ""
@@ -132,11 +132,11 @@ function Creative.collectConsume(serviceName)
 				amountItem = math.random(works[serviceName]["collectConsume"]["min"],works[serviceName]["collectConsume"]["max"])
 			end
 
-			if (vRP.InventoryWeight(user_id) + (itemWeight(selectItem) * parseInt(amountItem))) <= vRP.GetWeight(user_id) then
-				vRP.GenerateItem(user_id,selectItem,amountItem,true)
+			if (vRP.InventoryWeight(Passport) + (itemWeight(selectItem) * parseInt(amountItem))) <= vRP.GetWeight(Passport) then
+				vRP.GenerateItem(Passport,selectItem,amountItem,true)
 
 				if works[serviceName]["upgradeStress"] > 0 then
-					vRP.UpgradeStress(user_id,works[serviceName]["upgradeStress"])
+					vRP.UpgradeStress(Passport,works[serviceName]["upgradeStress"])
 				end
 
 				return true
@@ -144,17 +144,17 @@ function Creative.collectConsume(serviceName)
 				TriggerClientEvent("Notify",source,'vermelho','Mochila cheia.',5000)
 			end
 		else
-			if collectAmount[user_id] == nil then
-				collectAmount[user_id] = math.random(works[serviceName]["collectConsume"]["min"],works[serviceName]["collectConsume"]["max"])
+			if collectAmount[Passport] == nil then
+				collectAmount[Passport] = math.random(works[serviceName]["collectConsume"]["min"],works[serviceName]["collectConsume"]["max"])
 			end
 
 			local deliveryItem = works[serviceName]["deliveryItem"]
-			if (vRP.InventoryWeight(user_id) + (itemWeight(deliveryItem) * parseInt(collectAmount[user_id]))) <= vRP.GetWeight(user_id) then
-				vRP.GenerateItem(user_id,deliveryItem,collectAmount[user_id],true)
-				collectAmount[user_id] = nil
+			if (vRP.InventoryWeight(Passport) + (itemWeight(deliveryItem) * parseInt(collectAmount[Passport]))) <= vRP.GetWeight(Passport) then
+				vRP.GenerateItem(Passport,deliveryItem,collectAmount[Passport],true)
+				collectAmount[Passport] = nil
 
 				if works[serviceName]["upgradeStress"] > 0 then
-					vRP.UpgradeStress(user_id,works[serviceName]["upgradeStress"])
+					vRP.UpgradeStress(Passport,works[serviceName]["upgradeStress"])
 				end
 
 				return true
@@ -171,34 +171,34 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.deliveryConsume(serviceName)
 	local source = source
-	local user_id = vRP.getUserId(source)
-	if user_id then
-		if deliveryAmount[user_id] == nil then
-			deliveryAmount[user_id] = math.random(works[serviceName]["deliveryConsume"]["min"],works[serviceName]["deliveryConsume"]["max"])
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if deliveryAmount[Passport] == nil then
+			deliveryAmount[Passport] = math.random(works[serviceName]["deliveryConsume"]["min"],works[serviceName]["deliveryConsume"]["max"])
 		end
 
-		if paymentAmount[user_id] == nil then
-			paymentAmount[user_id] = math.random(works[serviceName]["deliveryPayment"]["min"],works[serviceName]["deliveryPayment"]["max"])
+		if paymentAmount[Passport] == nil then
+			paymentAmount[Passport] = math.random(works[serviceName]["deliveryPayment"]["min"],works[serviceName]["deliveryPayment"]["max"])
 		end
 
 		local deliveryItem = works[serviceName]["deliveryPayment"]["item"]
-		if (vRP.InventoryWeight(user_id) + (itemWeight(deliveryItem) * parseInt(paymentAmount[user_id]))) <= vRP.GetWeight(user_id) then
-			if vRP.RemoveItem(user_id,works[serviceName]["deliveryItem"],deliveryAmount[user_id]) then
-				local paymentPrice = parseInt(paymentAmount[user_id] * deliveryAmount[user_id])
+		if (vRP.InventoryWeight(Passport) + (itemWeight(deliveryItem) * parseInt(paymentAmount[Passport]))) <= vRP.GetWeight(Passport) then
+			if vRP.RemoveItem(Passport,works[serviceName]["deliveryItem"],deliveryAmount[Passport]) then
+				local paymentPrice = parseInt(paymentAmount[Passport] * deliveryAmount[Passport])
 
-				vRP.GenerateItem(user_id,deliveryItem,paymentPrice,true)
+				vRP.GenerateItem(Passport,deliveryItem,paymentPrice,true)
 
 				if deliveryItem == "dollars" or deliveryItem == "dollarsz" then
-					if vRP.UserPremium(user_id) then
-						vRP.GenerateItem(user_id,deliveryItem,paymentPrice * 0.1,true)
+					if vRP.UserPremium(Passport) then
+						vRP.GenerateItem(Passport,deliveryItem,paymentPrice * 0.1,true)
 					end
 				end
 
-				deliveryAmount[user_id] = nil
-				paymentAmount[user_id] = nil
+				deliveryAmount[Passport] = nil
+				paymentAmount[Passport] = nil
 
 				if works[serviceName]["upgradeStress"] > 0 then
-					vRP.UpgradeStress(user_id,works[serviceName]["upgradeStress"])
+					vRP.UpgradeStress(Passport,works[serviceName]["upgradeStress"])
 				end
 
 				if serviceName == "Contrabandista" then
@@ -219,7 +219,7 @@ function Creative.deliveryConsume(serviceName)
 
 				return true
 			else
-				TriggerClientEvent("Notify",source,'amarelo','Precisa de <b>'..parseFormat(deliveryAmount[user_id])..'x '..itemName(works[serviceName]["deliveryItem"])..'</b> para entregar.',5000)
+				TriggerClientEvent("Notify",source,'amarelo','Precisa de <b>'..parseFormat(deliveryAmount[Passport])..'x '..itemName(works[serviceName]["deliveryItem"])..'</b> para entregar.',5000)
 			end
 		else
 			TriggerClientEvent("Notify",source,'vermelho','Mochila cheia.',5000)
@@ -233,16 +233,16 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.checkPermission(serviceName)
 	local source = source
-	local user_id = vRP.getUserId(source)
-	if user_id then
+	local Passport = vRP.Passport(source)
+	if Passport then
 		if works[serviceName]["perm"] == nil then
 			return true
 		end
 
-		if vRP.hasGroup(user_id,works[serviceName]["perm"]) then
+		if vRP.hasGroup(Passport,works[serviceName]["perm"]) then
 			if activeWorks[serviceName] then
 				if parseInt(#activeWorks[serviceName]) < 5 then
-					activeWorks[serviceName][user_id] = true
+					activeWorks[serviceName][Passport] = true
 					return true
 				else
 					TriggerClientEvent("Notify",source,'amarelo','Limite de trabalhadores atingido.',3000)
@@ -260,10 +260,10 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.finishService(serviceName)
 	local source = source
-	local user_id = vRP.getUserId(source)
-	if user_id and activeWorks[serviceName] then
-		if activeWorks[serviceName][user_id] then
-			activeWorks[serviceName][user_id] = nil
+	local Passport = vRP.Passport(source)
+	if Passport and activeWorks[serviceName] then
+		if activeWorks[serviceName][Passport] then
+			activeWorks[serviceName][Passport] = nil
 		end
 	end
 end
@@ -273,14 +273,14 @@ end
 RegisterServerEvent("works:bullguerJuice")
 AddEventHandler("works:bullguerJuice",function()
 	local source = source
-	local user_id = vRP.getUserId(source)
-	if user_id then
-		if vRP.MaxItens(user_id,"bullguerjuice",1) then
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.MaxItens(Passport,"bullguerjuice",1) then
 			TriggerClientEvent("Notify",source,'amarelo','Limite de trabalhadores atingido.',3000)
 			return
 		end
 
-		vRP.GenerateItem(user_id,"bullguerjuice",1,true)
+		vRP.GenerateItem(Passport,"bullguerjuice",1,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -289,14 +289,14 @@ end)
 RegisterServerEvent("works:bullguerFood")
 AddEventHandler("works:bullguerFood",function()
 	local source = source
-	local user_id = vRP.getUserId(source)
-	if user_id then
-		if vRP.MaxItens(user_id,"bullguerfood",1) then
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.MaxItens(Passport,"bullguerfood",1) then
 			TriggerClientEvent("Notify",source,'amarelo','Limite de trabalhadores atingido.',3000)
 			return
 		end
 
-		vRP.GenerateItem(user_id,"bullguerfood",1,true)
+		vRP.GenerateItem(Passport,"bullguerfood",1,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -305,45 +305,45 @@ end)
 RegisterServerEvent("works:bullguerBox")
 AddEventHandler("works:bullguerBox",function()
 	local source = source
-	local user_id = vRP.getUserId(source)
-	if user_id then
-		if vRP.MaxItens(user_id,"bullguerbox",1) then
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.MaxItens(Passport,"bullguerbox",1) then
 			TriggerClientEvent("Notify",source,'amarelo','Limite de trabalhadores atingido.',3000)
 			return
 		end
 
-		local consultFood = vRP.InventoryItemAmount(user_id,"bullguerfood")
+		local consultFood = vRP.InventoryItemAmount(Passport,"bullguerfood")
 		if consultFood[1] <= 0 then
 			TriggerClientEvent("Notify",source,'amarelo','Precisa de <b>1x '..itemName("bullguerfood")..'</b>.',5000)
 			return
 		end
 
-		local consultJuice = vRP.InventoryItemAmount(user_id,"bullguerjuice")
+		local consultJuice = vRP.InventoryItemAmount(Passport,"bullguerjuice")
 		if consultJuice[1] <= 0 then
 			TriggerClientEvent("Notify",source,'amarelo','Precisa de  <b>1x '..itemName("bullguerjuice")..'</b> para roubar.',5000)
 			return
 		end
 
-		vRP.removeInventoryItem(user_id,"bullguerjuice",1,false)
-		vRP.removeInventoryItem(user_id,"bullguerfood",1,false)
-		vRP.GenerateItem(user_id,"bullguerbox",1,true)
+		vRP.RemoveItem(Passport,"bullguerjuice",1,false)
+		vRP.RemoveItem(Passport,"bullguerfood",1,false)
+		vRP.GenerateItem(Passport,"bullguerbox",1,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PLAYERSPAWN
+-- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Connect",function(user_id,source)
+AddEventHandler("Connect",function(Passport,source)
 	vCLIENT.updateWorks(source,works)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PLAYERLEAVE
+-- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Disconnect",function(user_id,source)
-	if activeWorks["Municao"][user_id] then
-		activeWorks["Municao"][user_id] = nil
+AddEventHandler("Disconnect",function(Passport)
+	if activeWorks["Municao"][Passport] then
+		activeWorks["Municao"][Passport] = nil
 	end
 
-	if activeWorks["Armas"][user_id] then
-		activeWorks["Armas"][user_id] = nil
+	if activeWorks["Armas"][Passport] then
+		activeWorks["Armas"][Passport] = nil
 	end
 end)

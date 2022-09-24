@@ -36,12 +36,6 @@ CreateThread(function()
 				if distance <= 2 then
 					timeDistance = 1
 
-					if not inService then
-						DrawText3D(v["coords"][1],v["coords"][2],v["coords"][3],"~g~E~w~   "..string.upper(k))
-					else
-						DrawText3D(v["coords"][1],v["coords"][2],v["coords"][3],"~g~E~w~   FINALIZAR")
-					end
-
 					if IsControlJustPressed(1,38) and inSeconds <= 0 then
 						inSeconds = 3
 

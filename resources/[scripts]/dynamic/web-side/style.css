@@ -1,22 +1,33 @@
-::-webkit-scrollbar { width: 0; }
-::selection { background: transparent; }
-::-moz-selection { background: transparent; }
-
-body {
-	font-family: "Roboto";
+::-webkit-scrollbar {
+	width: 0;
+}
+::selection {
+	background: transparent;
+}
+::-moz-selection {
+	background: transparent;
 }
 
-.Body {
+body, html {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: center;
+	font-family: "Roboto", sans-serif;
+}
+
+.Body {
+	max-width: 300px;
+	max-height: 575px;
+	position: absolute;
+	display: block;
+	overflow-y: auto;
+	right: 20rem;
 }
 
 .Container {
-	display: block;
-	margin-right: 200px;
+	margin: 1rem;
 }
 
 .btn {
@@ -31,7 +42,7 @@ body {
 	margin-bottom: 5px;
 	position: relative;
 	padding: 20px 20px 20px 14px;
-	background: rgba(15,15,15,.75);
+	background: rgba(15, 15, 15, 0.75);
 }
 
 .btn::before, .normalbutton::before {
@@ -46,7 +57,7 @@ body {
 }
 
 .btn:hover, .normalbutton:hover {
-	background: rgba(10,10,10,.75);
+	background: rgba(10, 10, 10, 0.75);
 }
 
 .btn:hover::before, .normalbutton:hover::before {
@@ -81,7 +92,7 @@ body {
 	margin-bottom: 5px;
 	position: relative;
 	padding: 20px 20px 12px 14px;
-	background: rgba(15,15,15,.75);
+	background: rgba(15, 15, 15, 0.75);
 }
 
 .amarelo::before {
@@ -101,5 +112,5 @@ body {
 
 .amarelo .description {
 	color: #fff;
-	opacity: .4;
+	opacity: 0.4;
 }

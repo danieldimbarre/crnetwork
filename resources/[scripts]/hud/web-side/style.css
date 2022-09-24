@@ -21,7 +21,7 @@ html,body {
 	overflow: hidden;
 	font-family: "Roboto";
 	box-sizing: border-box;
-	background: #000;
+	background: transparent;
 }
 
 u {
@@ -44,14 +44,14 @@ input::-webkit-inner-spin-button {
 }
 
 #Body, .Reposed, .Wanted, .Progress {
-	/* display: none; */
+	display: none;
 }
 
 #NaviWeapons {
-	top: 16.667vw;
+	top: 8vw;
 	right: 3vw;
 	color: #ccc;
-	/* display: none; */
+	display: none;
 	text-align: right;
 	position: absolute;
 	font-family: "Gotham";
@@ -60,11 +60,11 @@ input::-webkit-inner-spin-button {
 
 .NameWeapon {
 	opacity: .5;
-	font-size: 14px;
+	font-size: 1.2vw;
 }
 
 .NameAmmos {
-	font-size: 20px;
+	font-size: 1.5vw;
 }
 
 #NaviTop {
@@ -87,7 +87,7 @@ input::-webkit-inner-spin-button {
 	text-align: right;
 	line-height: 1vw;
 	letter-spacing: 0.167vw;
-	text-shadow: 0.1vw 0.1vw #000;
+	text-shadow: 0.05vw 0.05vw #000;
 }
 
 space {
@@ -146,7 +146,7 @@ space {
 
 #NaviMiddle > div > div {
 	display: block;
-	margin-bottom: 20px;
+	margin-bottom: 0.5vw;
 }
 
 #NaviMiddle > div > div:last-child {

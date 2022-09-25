@@ -3972,7 +3972,7 @@ Use = {
 				if vRP.TakeItem(Passport,Full,1,false,Slot) then
 					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
 
-					if vTASKBAR.Weeds(source) then
+					-- if vTASKBAR.Weeds(source) then
 						local Points = 0
 						local Route = GetPlayerRoutingBucket(source)
 
@@ -3981,7 +3981,7 @@ Use = {
 						end
 
 						exports["plants"]:Plants(Coords,Route,Points)
-					end
+					-- end
 
 					vRPC.removeObjects(source)
 				end

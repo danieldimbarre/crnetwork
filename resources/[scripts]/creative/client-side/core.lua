@@ -352,13 +352,9 @@ local Teleport = {
 	{ 234.24,229.94,97.11,236.23,229.27,97.11 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for _,v in pairs(blips) do
 		local blip = AddBlipForCoord(v[1],v[2],v[3])
 		SetBlipSprite(blip,v[4])

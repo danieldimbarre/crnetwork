@@ -3,21 +3,19 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Display = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if GetCurrentResourceName() == Resource then
-		for Number,v in pairs(GlobalState["Doors"]) do
-			if IsDoorRegisteredWithSystem(Number) then
-				RemoveDoorFromSystem(Number)
-			end
-
-			AddDoorToSystem(Number,v["Hash"],v["Coords"],false,false,true)
-
-			DoorSystemSetOpenRatio(Number,0.0,false,false)
-			DoorSystemSetAutomaticRate(Number,2.0,false,false)
-			DoorSystemSetDoorState(Number,v["Lock"] and 1 or 0,true)
+CreateThread(function()
+	for Number,v in pairs(GlobalState["Doors"]) do
+		if IsDoorRegisteredWithSystem(Number) then
+			RemoveDoorFromSystem(Number)
 		end
+
+		AddDoorToSystem(Number,v["Hash"],v["Coords"],false,false,true)
+
+		DoorSystemSetOpenRatio(Number,0.0,false,false)
+		DoorSystemSetAutomaticRate(Number,2.0,false,false)
+		DoorSystemSetDoorState(Number,v["Lock"] and 1 or 0,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

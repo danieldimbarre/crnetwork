@@ -799,13 +799,9 @@ local cowCoords = {
 	{ 2519.56,4737.35,34.29 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for k,v in pairs(cowCoords) do
 		exports["target"]:AddCircleZone("Cows:"..k,vec3(v[1],v[2],v[3]),0.5,{
 			name = "Cows:"..k,

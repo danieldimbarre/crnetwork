@@ -380,13 +380,9 @@ function Creative.Update(Slot,Target,Amount,Name,Mode)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONSERVERRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onServerResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	local Number = 100000
 	for Name,_ in pairs(Propertys) do
 		Number = Number + 1

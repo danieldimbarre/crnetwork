@@ -42,13 +42,9 @@ local reduceList = {
 	["33"] = { 1784.21,2561.16,45.66 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for Number,v in pairs(reduceList) do
 		exports["target"]:AddCircleZone("Prison:"..Number,vec3(v[1],v[2],v[3]),0.75,{
 			name = "Prison:"..Number,

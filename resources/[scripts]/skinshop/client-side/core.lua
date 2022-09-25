@@ -110,13 +110,9 @@ local Skinshops = {
 	{ 810.31,-760.23,31.26 } -- Pizza This
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	local Table = {}
 
 	for k,v in pairs(Skinshops) do

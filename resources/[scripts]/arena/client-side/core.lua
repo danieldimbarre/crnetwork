@@ -230,13 +230,9 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for _,v in pairs(Zones) do
 		local blip = AddBlipForCoord(v["Ped"]["Coords"][1],v["Ped"]["Coords"][2],v["Ped"]["Coords"][3])
 		SetBlipSprite(blip,433)

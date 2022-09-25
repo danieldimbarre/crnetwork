@@ -45,13 +45,9 @@ local Beds = {
 	{ ["Coords"] = vec3(-471.87,6287.56,13.63), ["Heading"] = 53.86 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for Number,v in pairs(Beds) do
 		AddBoxZone("Beds:"..Number,v["Coords"],1.0,1.0,{
 			name = "Beds:"..Number,

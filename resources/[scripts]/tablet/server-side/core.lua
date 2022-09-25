@@ -19,13 +19,9 @@ GlobalState["Cars"] = {}
 GlobalState["Bikes"] = {}
 GlobalState["Rental"] = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONSERVERRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onServerResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	local Cars = {}
 	local Bikes = {}
 	local Rental = {}

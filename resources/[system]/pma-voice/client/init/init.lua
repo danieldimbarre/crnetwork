@@ -1,11 +1,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	local success = pcall(function()
 		local micClicksKvp = GetResourceKvpString("pma-voice_enableMicClicks")
 		if not micClicksKvp then

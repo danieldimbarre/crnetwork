@@ -26,13 +26,9 @@ local Locate = {
 	{ ["x"] = 449.71, ["y"] = -659.27, ["z"] = 28.48, ["name"] = "Integrity Way", ["hash"] = 7 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	DoScreenFadeOut(0)
 	DisplayRadar(false)
 	ShutdownLoadingScreen()

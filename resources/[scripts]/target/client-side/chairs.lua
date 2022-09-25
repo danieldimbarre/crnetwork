@@ -146,13 +146,9 @@ local Chairs = {
 	{ ["Coords"] = vec3(-578.79,-1065.32,26.42), ["Heading"] = 200, ["Offset"] = 0.35 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for Number,v in pairs(Chairs) do
 		AddBoxZone("Chairs:"..Number,v["Coords"],0.35,0.35,{
 			name = "Chairs:"..Number,

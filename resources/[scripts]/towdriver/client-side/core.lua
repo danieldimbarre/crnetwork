@@ -82,13 +82,9 @@ local vehRescue = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for k,v in pairs(initLocates) do
 		exports["target"]:AddCircleZone("TowDriver:"..k,vec3(v[1],v[2],v[3]),0.5,{
 			name = "TowDriver:"..k,

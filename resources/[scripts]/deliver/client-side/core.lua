@@ -26,13 +26,9 @@ local initList = {
 	["Transporter"] = { 229.16,231.91,97.04,0.25,1.0,"Trabalhar",true }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for k,v in pairs(initList) do
 		exports["target"]:AddCircleZone("Deliver:"..k,vec3(v[1],v[2],v[3]),v[4],{
 			name = "Deliver:"..k,

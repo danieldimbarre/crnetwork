@@ -76,13 +76,9 @@ local chestInfos = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for k,v in pairs(chestCoords) do
 		exports["target"]:AddCircleZone("Chest:"..k,vec3(v[2],v[3],v[4]),1.0,{
 			name = "Chest:"..k,

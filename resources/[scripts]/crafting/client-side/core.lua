@@ -96,13 +96,9 @@ local List = {
 	["19"] = { -1870.6,2061.71,135.44,"Mafia1"}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for k,v in pairs(List) do
 		exports["target"]:AddCircleZone("Crafting:"..k,vec3(v[1],v[2],v[3]),0.5,{
 			name = "Crafting:"..k,

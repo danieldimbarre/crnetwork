@@ -260,13 +260,9 @@ local Digital = {
 	{ vec3(388.58,-828.28,29.25),"cellphone" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	for Number,v in pairs(shopList) do
 		exports["target"]:AddCircleZone("Shops:"..Number,vec3(v[1],v[2],v[3]),0.5,{
 			name = "Shops:"..Number,

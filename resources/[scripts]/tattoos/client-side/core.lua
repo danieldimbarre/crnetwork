@@ -1227,13 +1227,9 @@ local Locations = {
 	{ -294.34,6200.93,31.48 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	local Table = {}
 
 	for _,v in pairs(Locations) do

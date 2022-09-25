@@ -2236,13 +2236,9 @@ function Creative.Restaurant(Name)
 	return Return
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	local amountCoords = 0
 	repeat
 		amountCoords = amountCoords + 1

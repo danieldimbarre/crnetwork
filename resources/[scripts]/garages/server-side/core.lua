@@ -847,13 +847,9 @@ AddEventHandler("garages:Propertys",function(Name)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONSERVERRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onServerResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	local Consult = vRP.Query("propertys/Garages")
 	for _,v in pairs(Consult) do
 		local Name = v["Name"]

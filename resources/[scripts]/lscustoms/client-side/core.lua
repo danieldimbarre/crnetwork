@@ -921,13 +921,9 @@ AddEventHandler("lscustoms:purchaseFailed",function()
 	attemptingPurchase = false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	local Table = {}
 
 	for _,v in pairs(bennysLocations) do

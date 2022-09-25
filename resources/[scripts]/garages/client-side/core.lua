@@ -595,13 +595,9 @@ AddEventHandler("garages:Impound",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- ONTHREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if Resource ~= GetCurrentResourceName() then
-		return
-	end
-
+CreateThread(function()
 	local Table = {}
 
 	for _,v in pairs(Garages) do

@@ -921,6 +921,22 @@ AddEventHandler("lscustoms:purchaseFailed",function()
 	attemptingPurchase = false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ONCLIENTRESOURCESTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
+	local Table = {}
+
+	for _,v in pairs(bennysLocations) do
+		table.insert(Table,{ v["pos"]["x"],v["pos"]["y"],v["pos"]["z"],2.5,"E","Tunagem","Pressione para abrir" })
+	end
+
+	TriggerEvent("hoverfy:Insert",Table)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADOPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()

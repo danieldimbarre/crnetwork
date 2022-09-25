@@ -133,8 +133,8 @@ function Creative.Informations(Number)
 			end
 
 			local Cloning = "A clonagem está disponível"
-			if (Plants[Number]["Time"] - os.time()) > 5400 then
-				Cloning = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time() - 5400)
+			if (Plants[Number]["Time"] - os.time()) > 1800 then
+				Cloning = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time() - 1800)
 			end
 
 			return { Collect,Cloning }

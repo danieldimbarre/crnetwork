@@ -1042,14 +1042,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] <= -1 then
+						if Datatable["mods"]["11"] == -1 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1071,8 +1071,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												Datatable["mods"]["11"] = 0
+												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1105,14 +1104,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] <= 0 then
+						if Datatable["mods"]["11"] == 0 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1134,8 +1133,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												Datatable["mods"]["11"] = 1
+												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1168,14 +1166,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] <= 1 then
+						if Datatable["mods"]["11"] == 1 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1197,8 +1195,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												Datatable["mods"]["11"] = 2
+												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1231,14 +1228,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] <= 2 then
+						if Datatable["mods"]["11"] == 2 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1260,8 +1257,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												Datatable["mods"]["11"] = 3
+												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1294,14 +1290,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["11"] then
 							Datatable["mods"]["11"] = -1
 						end
 
-						if Datatable["mods"]["11"] <= 3 then
+						if Datatable["mods"]["11"] == 3 then
 							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
 							else
@@ -1323,8 +1319,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												Datatable["mods"]["11"] = 4
+												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,11,Datatable["mods"]["11"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1357,14 +1352,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] <= -1 then
+						if Datatable["mods"]["12"] == -1 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1386,8 +1381,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												Datatable["mods"]["12"] = 0
+												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1420,14 +1414,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] <= 0 then
+						if Datatable["mods"]["12"] == 0 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1449,8 +1443,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												Datatable["mods"]["12"] = 1
+												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1483,14 +1476,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] <= 1 then
+						if Datatable["mods"]["12"] == 1 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1512,8 +1505,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												Datatable["mods"]["12"] = 2
+												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1546,14 +1538,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] <= 2 then
+						if Datatable["mods"]["12"] == 2 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1575,8 +1567,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												Datatable["mods"]["12"] = 3
+												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1609,14 +1600,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["12"] then
 							Datatable["mods"]["12"] = -1
 						end
 
-						if Datatable["mods"]["12"] <= 3 then
+						if Datatable["mods"]["12"] == 3 then
 							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
 							else
@@ -1638,8 +1629,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												Datatable["mods"]["12"] = 4
+												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,12,Datatable["mods"]["12"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1672,14 +1662,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] <= -1 then
+						if Datatable["mods"]["13"] == -1 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1701,8 +1691,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												Datatable["mods"]["13"] = 0
+												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1735,14 +1724,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] <= 0 then
+						if Datatable["mods"]["13"] == 0 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1764,8 +1753,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												Datatable["mods"]["13"] = 1
+												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1798,14 +1786,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] <= 1 then
+						if Datatable["mods"]["13"] == 1 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1827,8 +1815,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												Datatable["mods"]["13"] = 2
+												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1861,14 +1848,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] <= 2 then
+						if Datatable["mods"]["13"] == 2 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1890,8 +1877,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												Datatable["mods"]["13"] = 3
+												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1924,14 +1910,14 @@ Use = {
 				local PassportPlate = vRP.PassportPlate(vehPlate)
 				if PassportPlate then
 					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
+					if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 						Datatable = json.decode(Datatable[1]["dvalue"])
 
 						if not Datatable["mods"]["13"] then
 							Datatable["mods"]["13"] = -1
 						end
 
-						if Datatable["mods"]["13"] <= 3 then
+						if Datatable["mods"]["13"] == 3 then
 							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
 								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
 							else
@@ -1953,8 +1939,7 @@ Use = {
 											Player(source)["state"]["Buttons"] = false
 
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												-- Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												Datatable["mods"]["13"] = 4
+												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
 												vCLIENT.ActiveMods(source,vehNet,vehPlate,13,Datatable["mods"]["13"])
 												vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
@@ -1988,14 +1973,14 @@ Use = {
 					local PassportPlate = vRP.PassportPlate(vehPlate)
 					if PassportPlate then
 						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
+						if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
 							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] <= -1 then
+							if Datatable["mods"]["15"] == -1 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2017,8 +2002,7 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													Datatable["mods"]["15"] = 0
+													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end
@@ -2055,14 +2039,14 @@ Use = {
 					local PassportPlate = vRP.PassportPlate(vehPlate)
 					if PassportPlate then
 						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
+						if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
 							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] <= 0 then
+							if Datatable["mods"]["15"] == 0 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2084,8 +2068,7 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													Datatable["mods"]["15"] = 1
+													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end
@@ -2122,14 +2105,14 @@ Use = {
 					local PassportPlate = vRP.PassportPlate(vehPlate)
 					if PassportPlate then
 						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
+						if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
 							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] <= 1 then
+							if Datatable["mods"]["15"] == 1 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2151,8 +2134,7 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													Datatable["mods"]["15"] = 2
+													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end
@@ -2189,14 +2171,14 @@ Use = {
 					local PassportPlate = vRP.PassportPlate(vehPlate)
 					if PassportPlate then
 						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
+						if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
 							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] <= 2 then
+							if Datatable["mods"]["15"] == 2 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2218,8 +2200,7 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													Datatable["mods"]["15"] = 3
+													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end
@@ -2256,14 +2237,14 @@ Use = {
 					local PassportPlate = vRP.PassportPlate(vehPlate)
 					if PassportPlate then
 						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
+						if parseInt(#Datatable) > 0 and vRP.HasGroup(Passport,"Mechanic") then
 							Datatable = json.decode(Datatable[1]["dvalue"])
 
 							if not Datatable["mods"]["15"] then
 								Datatable["mods"]["15"] = -1
 							end
 
-							if Datatable["mods"]["15"] <= 3 then
+							if Datatable["mods"]["15"] == 3 then
 								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
 									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
 								else
@@ -2285,8 +2266,7 @@ Use = {
 												Player(source)["state"]["Buttons"] = false
 
 												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													-- Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													Datatable["mods"]["15"] = 4
+													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
 													vCLIENT.ActiveMods(source,vehNet,vehPlate,15,Datatable["mods"]["15"])
 													vRP.Execute("entitydata/SetData",{ dkey = "vehMods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 												end

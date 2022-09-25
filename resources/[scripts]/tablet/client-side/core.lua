@@ -170,29 +170,24 @@ local initVehicles = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Vehicles = {
 	{
-		["Coords"] = vec3(),
-		["heading"] = 19.85,
+		["Coords"] = vec3(-47.11,-1093.67,26.42),
+		["heading"] = 102.05,
 		["Model"] = "sultan",
 		["Distance"] = 100
 	},{
-		["Coords"] = vec3(),
-		["heading"] = 31.19,
-		["Model"] = "sultan",
+		["Coords"] = vec3(-42.17,-1096.29,26.42),
+		["heading"] = 96.38,
+		["Model"] = "neon",
 		["Distance"] = 100
 	},{
-		["Coords"] = vec3(),
-		["heading"] = 283.47,
-		["Model"] = "sultan",
+		["Coords"] = vec3(-47.3,-1100.9,26.42),
+		["heading"] = 25.52,
+		["Model"] = "akuma",
 		["Distance"] = 100
 	},{
-		["Coords"] = vec3(),
-		["heading"] = 206.93,
-		["Model"] = "sultan",
-		["Distance"] = 100
-	},{
-		["Coords"] = vec3(),
-		["heading"] = 65.2,
-		["Model"] = "sultan",
+		["Coords"] = vec3(-40.04,-1101.65,26.42),
+		["heading"] = 48.19,
+		["Model"] = "reaper",
 		["Distance"] = 100
 	}
 }

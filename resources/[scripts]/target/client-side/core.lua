@@ -727,7 +727,7 @@ AddEventHandler("onClientResourceStart",function(Resource)
 		Distance = 1.0
 	})
 
-	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688 },{
+	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688,-50684386 },{
 		options = {
 			{
 				event = "inventory:Animals",
@@ -961,12 +961,12 @@ AddEventHandler("onClientResourceStart",function(Resource)
 		}
 	})
 
-	AddCircleZone("tabletVehicles01",vec3(-38.9,-1100.22,27.26),0.5,{
+	AddCircleZone("tabletVehicles01",vec3(-30.92,-1105.72,27.21),0.5,{
 		name = "tabletVehicles01",
 		heading = 3374176
 	},{
 		shop = "Santos",
-		Distance = 1.0,
+		Distance = 2.0,
 		options = {
 			{
 				event = "tablet:enterTablet",
@@ -976,12 +976,12 @@ AddEventHandler("onClientResourceStart",function(Resource)
 		}
 	})
 
-	AddCircleZone("tabletVehicles02",vec3(-40.37,-1094.57,27.26),0.5,{
+	AddCircleZone("tabletVehicles02",vec3(-32.76,-1113.82,27.21),0.5,{
 		name = "tabletVehicles02",
 		heading = 3374176
 	},{
 		shop = "Santos",
-		Distance = 1.0,
+		Distance = 2.0,
 		options = {
 			{
 				event = "tablet:enterTablet",
@@ -991,12 +991,12 @@ AddEventHandler("onClientResourceStart",function(Resource)
 		}
 	})
 
-	AddCircleZone("tabletVehicles03",vec3(-46.87,-1095.5,27.26),0.5,{
+	AddCircleZone("tabletVehicles03",vec3(-55.38,-1097.24,27.21),0.5,{
 		name = "tabletVehicles03",
 		heading = 3374176
 	},{
 		shop = "Santos",
-		Distance = 1.0,
+		Distance = 2.0,
 		options = {
 			{
 				event = "tablet:enterTablet",
@@ -1006,38 +1006,8 @@ AddEventHandler("onClientResourceStart",function(Resource)
 		}
 	})
 
-	AddCircleZone("tabletVehicles04",vec3(-51.59,-1094.98,27.26),0.5,{
+	AddCircleZone("tabletVehicles04",vec3(1224.78,2728.01,38.0),0.5,{
 		name = "tabletVehicles04",
-		heading = 3374176
-	},{
-		shop = "Santos",
-		Distance = 1.0,
-		options = {
-			{
-				event = "tablet:enterTablet",
-				label = "Abrir",
-				tunnel = "shop"
-			}
-		}
-	})
-
-	AddCircleZone("tabletVehicles05",vec3(-51.15,-1087.13,27.26),0.5,{
-		name = "tabletVehicles05",
-		heading = 3374176
-	},{
-		shop = "Santos",
-		Distance = 1.0,
-		options = {
-			{
-				event = "tablet:enterTablet",
-				label = "Abrir",
-				tunnel = "shop"
-			}
-		}
-	})
-
-	AddCircleZone("tabletVehicles06",vec3(1224.78,2728.01,38.0),0.5,{
-		name = "tabletVehicles06",
 		heading = 3374176
 	},{
 		shop = "Sandy",

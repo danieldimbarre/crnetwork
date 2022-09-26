@@ -1552,25 +1552,25 @@ end)
 -- SETUPCAM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("setupCam",function(Data,Callback)
-	local value = Data["value"]
+	local Value = Data["value"]
 	local Ped = PlayerPedId()
 	local Pos = GetEntityCoords(Ped)
-	if value == 1 then
+	if Value == 1 then
 		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,0.75,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
-		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.65)
-	elseif value == 2 then
+		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
+		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] + 0.65)
+	elseif Value == 2 then
 		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
-		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.2)
-	elseif value == 3 then
+		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
+		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] + 0.2)
+	elseif Value == 3 then
 		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
-		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] - 0.5)
+		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
+		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] - 0.5)
 	else
 		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
-		PointCamAtCoord(cam,Pos["x"],Pos["y"],Pos["z"] + 0.15)
+		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
+		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] + 0.15)
 	end
 	Callback("Ok")
 end)

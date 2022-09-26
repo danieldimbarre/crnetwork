@@ -51,8 +51,8 @@ SetHttpHandler(function(Request,Callback)
 
 	if Request["path"] == "/cops" then
 		if Request["headers"]["auth"] == "creAuthMdtInfos" then
-			local Police = vRP.NumPermission("Police")
-			ReturnVar = json.encode(Police)
+			local Service = vRP.NumPermission("Police")
+			ReturnVar = json.encode(Service)
 		end
 	end
 

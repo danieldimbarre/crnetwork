@@ -53,15 +53,14 @@ function Creative.sendCode(code)
 		local Ped = GetPlayerPed(source)
 		local Coords = GetEntityCoords(Ped)
 		local Identity = vRP.Identity(Passport)
-		local Polices = vRP.NumPermission("Police")
-
-		for k,v in pairs(Polices) do
+		local Service = vRP.NumPermission("Police")
+		for Passports,Sources in pairs(Service) do
 			async(function()
 				if code ~= 13 then
-					vRPC.playSound(v["source"],"Event_Start_Text","GTAO_FM_Events_Soundset")
+					vRPC.playSound(Sources,"Event_Start_Text","GTAO_FM_Events_Soundset")
 				end
 
-				TriggerClientEvent("NotifyPush",v["source"],{ code = code, title = codes[parseInt(code)]["text"], x = Coords["x"], y = Coords["y"], z = Coords["z"], name = Identity["name"].." "..Identity["name2"], time = "Recebido às "..os.date("%H:%M"), blipColor = codes[parseInt(code)]["blip"] })
+				TriggerClientEvent("NotifyPush",Sources,{ code = code, title = codes[parseInt(code)]["text"], x = Coords["x"], y = Coords["y"], z = Coords["z"], name = Identity["name"].." "..Identity["name2"], time = "Recebido às "..os.date("%H:%M"), blipColor = codes[parseInt(code)]["blip"] })
 			end)
 		end
 	end

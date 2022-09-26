@@ -2348,10 +2348,10 @@ Use = {
 
 						if math.random(100) >= 75 then
 							local Coords = vRP.GetEntityCoords(source)
-							local Polices = vRP.NumPermission("Police")
-							for k,v in pairs(Polices) do
+							local Service = vRP.NumPermission("Police")
+							for Passports,Sources in pairs(Service) do
 								async(function()
-									TriggerClientEvent("NotifyPush",v["source"],{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+									TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 								end)
 							end
 						end
@@ -2383,10 +2383,10 @@ Use = {
 
 							if math.random(100) >= 25 then
 								local Coords = vRP.GetEntityCoords(source)
-								local Polices = vRP.NumPermission("Police")
-								for k,v in pairs(Polices) do
+								local Service = vRP.NumPermission("Police")
+								for Passports,Sources in pairs(Service) do
 									async(function()
-										TriggerClientEvent("NotifyPush",v["source"],{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+										TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 									end)
 								end
 							end
@@ -2424,10 +2424,10 @@ Use = {
 
 							if math.random(100) >= 25 then
 								local Coords = vRP.GetEntityCoords(source)
-								local Polices = vRP.NumPermission("Police")
-								for k,v in pairs(Polices) do
+								local Service = vRP.NumPermission("Police")
+								for Passports,Sources in pairs(Service) do
 									async(function()
-										TriggerClientEvent("NotifyPush",v["source"],{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+										TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 									end)
 								end
 							end
@@ -4040,7 +4040,7 @@ Use = {
 					return
 				end
 
-				local Polices = vRP.NumPermission("Police")
+				local Service = vRP.NumPermission("Police")
 				if parseInt(#Polices) <= 5 then
 					TriggerClientEvent("Notify",source,"azul","Caixa vazio, aguarde até que um transportador venha até o local efetuar reabastecimento do mesmo.",5000)
 					Player(source)["state"]["Buttons"] = false
@@ -4061,10 +4061,10 @@ Use = {
 					atmTimers[NumberAtm] = os.time() + 10800
 					local explosionProgress = 25
 
-					for k,v in pairs(Polices) do
+					for Passports,Sources in pairs(Service) do
 						async(function()
-							vRPC.playSound(v["source"],"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",v["source"],{ code = 20, title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 
@@ -4733,29 +4733,14 @@ Use = {
 				if OtherPassport then
 					if vRP.HasGroup(OtherPassport,"Police") then
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							TriggerEvent("blipsystem:Exit",ClosestPed)
-							Player(ClosestPed)["state"]["Police"] = false
-
-							vRP.RemovePermission(OtherPassport,"Police")
-							vRP.SetPermission(OtherPassport,"waitPolice")
-
-							TriggerClientEvent("hud:RadioClean",ClosestPed)
-							TriggerEvent("Salary:Remove",OtherPassport,"Emergency")
-							TriggerClientEvent("service:Label",ClosestPed,"Police","Entrar em Serviço",5000)
+							vRP.ServiceLeave(ClosestPed,OtherPassport,"Police")
 							TriggerClientEvent("Notify",source,"amarelo","Todas as comunicações foram retiradas.",5000)
 						end
 					end
 
 					if vRP.HasGroup(OtherPassport,"Paramedic") then
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							TriggerEvent("blipsystem:Exit",ClosestPed)
-							TriggerClientEvent("hud:RadioClean",ClosestPed)
-
-							vRP.RemovePermission(OtherPassport,"Paramedic")
-							vRP.SetPermission(OtherPassport,"waitParamedic")
-
-							TriggerEvent("Salary:Remove",OtherPassport,"Emergency")
-							TriggerClientEvent("service:Label",ClosestPed,"Paramedic","Entrar em Serviço",5000)
+							vRP.ServiceLeave(ClosestPed,OtherPassport,"Paramedic")
 							TriggerClientEvent("Notify",source,"amarelo","Todas as comunicações foram retiradas.",5000)
 						end
 					end

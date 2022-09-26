@@ -295,11 +295,11 @@ end
 -- ADMIN:PRINT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("admin:Print")
-AddEventHandler("admin:Print",function(message)
+AddEventHandler("admin:Print",function(Message)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		TriggerEvent("Discord","Hackers","Passaporte **"..Passport.."**, "..message,3092790)
+		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** "..Message.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -310,7 +310,7 @@ AddEventHandler("explosionEvent",function(sender,ev)
 	if not explosionType == 7 or not explosionType == 9 then
 		local Passport = vRP.Passport(sender)
 		if Passport then
-			TriggerEvent("Discord","Hackers","Passaporte **"..Passport.."**, criou explosões com hacker.",3092790)
+			TriggerEvent("Discord","Hackers","**Source:** "..sender.."\n**Passaporte:** "..Passport.."\n**Motivo:** Criou explosões\n**Address:** "..GetPlayerEndpoint(sender),3092790)
 		end
 	end
 end)
@@ -322,6 +322,6 @@ AddEventHandler("ResourceStop",function(Resource)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		TriggerEvent("Discord","Hackers","Passaporte **"..Passport.."** pausou o resource "..Resource..".",3092790)
+		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Pausou o resource "..Resource.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 	end
 end)

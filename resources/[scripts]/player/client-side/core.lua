@@ -364,6 +364,7 @@ CreateThread(function()
 			DisableControlAction(1,243,true)
 			DisableControlAction(1,257,true)
 			DisableControlAction(1,263,true)
+			DisableControlAction(1,311,true)
 			DisablePlayerFiring(PlayerPedId(),true)
 		end
 
@@ -799,7 +800,7 @@ local cowCoords = {
 	{ 2519.56,4737.35,34.29 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONTHREADSTART
+-- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for k,v in pairs(cowCoords) do

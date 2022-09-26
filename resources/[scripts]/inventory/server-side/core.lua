@@ -1695,10 +1695,10 @@ AddEventHandler("inventory:stealTrunk",function(Entity)
 					Active[Passport] = nil
 
 					local Coords = vRP.GetEntityCoords(source)
-					local Polices = vRP.NumPermission("Police")
-					for k,v in pairs(Polices) do
+					local Service = vRP.NumPermission("Police")
+					for Passports,Sources in pairs(Service) do
 						async(function()
-							TriggerClientEvent("NotifyPush",v["source"],{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehModels).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehModels).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 						end)
 					end
 				end
@@ -1832,12 +1832,11 @@ AddEventHandler("inventory:makeProducts",function(Table)
 			if Selected == "cemitery" then
 				if not vTASKBAR.taskOne(source) then
 					local Coords = vRP.GetEntityCoords(source)
-					local Polices = vRP.NumPermission("Police")
-
-					for k,v in pairs(Polices) do
+					local Service = vRP.NumPermission("Police")
+					for Passports,Sources in pairs(Service) do
 						async(function()
-							vRPC.playSound(v["source"],"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",v["source"],{ code = 20, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 				end
@@ -2143,12 +2142,11 @@ AddEventHandler("inventory:StealPeds",function()
 			if math.random(100) >= 80 then
 				local Ped = GetPlayerPed(source)
 				local Coords = GetEntityCoords(Ped)
-				local Polices = vRP.NumPermission("Police")
-
-				for k,v in pairs(Polices) do
+				local Service = vRP.NumPermission("Police")
+				for Passports,Sources in pairs(Service) do
 					async(function()
-						vRPC.playSound(v["source"],"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",v["source"],{ code = 32, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						TriggerClientEvent("NotifyPush",Sources,{ code = 32, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end
@@ -2205,12 +2203,11 @@ AddEventHandler("inventory:DrugsPeds",function()
 			if math.random(100) >= Percentage then
 				local Ped = GetPlayerPed(source)
 				local Coords = GetEntityCoords(Ped)
-				local Police = vRP.NumPermission("Police")
-
-				for k,v in pairs(Police) do
+				local Service = vRP.NumPermission("Police")
+				for Passports,Sources in pairs(Service) do
 					async(function()
-						vRPC.playSound(v["source"],"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",v["source"],{ code = 20, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end

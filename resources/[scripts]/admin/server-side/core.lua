@@ -20,14 +20,17 @@ RegisterCommand("ugroups",function(source,args)
 	if Passport and parseInt(args[1]) > 0 then
 		local Message = ""
 		local Groups = vRP.Groups()
+		local OtherPassport = args[1]
 		for Permission,_ in pairs(Groups) do
 			local Data = vRP.DataGroups(Permission)
-			if Data[tostring(Passport)] then
+			if Data[OtherPassport] then
 				Message = Message..Permission.."<br>"
 			end
 		end
 
-		TriggerClientEvent("Notify",source,"verde",Message,10000)
+		if Message ~= "" then
+			TriggerClientEvent("Notify",source,"verde",Message,10000)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +58,7 @@ RegisterCommand("gem",function(source,args)
 			if Identity then
 				TriggerClientEvent("Notify",source,"verde","Gemas entregues.",5000)
 				vRP.Execute("accounts/AddGems",{ license = Identity["license"], gems = Amount })
-				TriggerEvent("Discord","Gemstone","**Passaporte:** "..OtherPassport.."\n**Gemas:** "..Amount,3092790)
+				TriggerEvent("Discord","Gemstone","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Gemas:** "..Amount.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 			end
 		end
 	end

@@ -132,7 +132,12 @@ AddEventHandler("player:Doors",function(Number)
 	if Passport then
 		local Vehicle,vehNet = vRPC.vehList(source,5)
 		if Vehicle then
-			TriggerClientEvent("player:syncDoors",source,vehNet,Number)
+			local Players = vRPC.Players(source)
+			for _,v in ipairs(Players) do
+				async(function()
+					TriggerClientEvent("player:syncDoors",v,vehNet,Number)
+				end)
+			end
 		end
 	end
 end)
@@ -144,10 +149,10 @@ RegisterCommand("911",function(source,args,rawCommand)
 	if Passport and args[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasGroup(Passport,"Police") then
 			local Identity = vRP.Identity(Passport)
-			local Polices = vRP.NumPermission("Police")
-			for k,v in pairs(Polices) do
+			local Service = vRP.NumPermission("Police")
+			for Passports,Sources in pairs(Service) do
 				async(function()
-					TriggerClientEvent("hud:ClientMessage",v["source"],Identity["name"],rawCommand:sub(4))
+					TriggerClientEvent("hud:ClientMessage",Sources,Identity["name"],rawCommand:sub(4))
 				end)
 			end
 		end
@@ -161,10 +166,10 @@ RegisterCommand("112",function(source,args,rawCommand)
 	if Passport and args[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasGroup(Passport,"Paramedic") then
 			local Identity = vRP.Identity(Passport)
-			local Paramedics = vRP.NumPermission("Paramedic")
-			for k,v in pairs(Paramedics) do
+			local Service = vRP.NumPermission("Paramedic")
+			for Passports,Sources in pairs(Service) do
 				async(function()
-					TriggerClientEvent("Datatable",v["source"],Identity["name"].." "..Identity["name2"],rawCommand:sub(4))
+					TriggerClientEvent("Datatable",Sources,Identity["name"].." "..Identity["name2"],rawCommand:sub(4))
 				end)
 			end
 		end
@@ -185,11 +190,10 @@ function Creative.shotsFired(Vehicle)
 
 		local Ped = GetPlayerPed(source)
 		local Coords = GetEntityCoords(Ped)
-		local Polices = vRP.NumPermission("Police")
-
-		for k,v in pairs(Polices) do
+		local Service = vRP.NumPermission("Police")
+		for Passports,Sources in pairs(Service) do
 			async(function()
-				TriggerClientEvent("NotifyPush",v["source"],{ code = 10, title = Vehicle, x = Coords["x"], y = Coords["y"], z = Coords["z"], blipColor = 6 })
+				TriggerClientEvent("NotifyPush",Sources,{ code = 10, title = Vehicle, x = Coords["x"], y = Coords["y"], z = Coords["z"], blipColor = 6 })
 			end)
 		end
 	end
@@ -825,8 +829,15 @@ end
 local Salary = {}
 local SalaryValue = {
 	["Premium"] = 2000,
-	["Emergency"] = 1000
+	["Paramedic"] = 1000,
+	["Police"] = 1000
 }
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SALARYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Salarys",function()
+	return SalaryValue
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SALARY:ADD
 -----------------------------------------------------------------------------------------------------------------------------------------

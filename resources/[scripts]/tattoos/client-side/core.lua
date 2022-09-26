@@ -11,7 +11,7 @@ vSERVER = Tunnel.getInterface("tattoos")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local cam = nil
+local Cam = nil
 local Tattoos = {}
 local atualShop = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1188,19 +1188,19 @@ end
 -- SETCAMERACOORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function setCameraCoords()
-	if DoesCamExist(cam) then
+	if DoesCamExist(Cam) then
 		RenderScriptCams(false,true,250,1,0)
-		DestroyCam(cam,false)
-		cam = nil
+		DestroyCam(Cam,false)
+		Cam = nil
 	end
 
-	cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-	SetCamActive(cam,true)
+	Cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
+	SetCamActive(Cam,true)
 	RenderScriptCams(true,true,500,true,true)
-	pos = GetEntityCoords(PlayerPedId())
-	camPos = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0.0,2.0,0.0)
-	SetCamCoord(cam,camPos["x"],camPos["y"],camPos["z"] + 0.75)
-	PointCamAtCoord(cam,pos["x"],pos["y"],pos["z"] + 0.15)
+	local Coords = GetEntityCoords(PlayerPedId())
+	local CamCoords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0.0,2.0,0.0)
+	SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.75)
+	PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.15)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
@@ -1210,8 +1210,8 @@ RegisterNUICallback("close",function(Data,Callback)
 	RenderScriptCams(false,true,250,1,0)
 	vSERVER.updateTattoo(Tattoos)
 	SetNuiFocus(false,false)
-	DestroyCam(cam,false)
-	cam = nil
+	DestroyCam(Cam,false)
+	Cam = nil
 
 	Callback("Ok")
 end)
@@ -1227,7 +1227,7 @@ local Locations = {
 	{ -294.34,6200.93,31.48 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONTHREADSTART
+-- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	local Table = {}
@@ -1249,7 +1249,7 @@ CreateThread(function()
 			if not IsPedInAnyVehicle(Ped) then
 				local Coords = GetEntityCoords(Ped)
 
-				for k,v in pairs(Locations) do
+				for _,v in pairs(Locations) do
 					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 					if Distance <= 2 then
 						TimeDistance = 1

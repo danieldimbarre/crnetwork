@@ -39,11 +39,10 @@ exports("Wanted",function(Passport,source)
 
 				local Ped = GetPlayerPed(source)
 				local Coords = GetEntityCoords(Ped)
-				local Polices = vRP.NumPermission("Police")
-
-				for k,v in pairs(Polices) do
+				local Service = vRP.NumPermission("Police")
+				for Passports,Sources in pairs(Service) do
 					async(function()
-						TriggerClientEvent("NotifyPush",v["source"],{ code = 20, title = "Digitais Encontrada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alerta de procurado", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Digitais Encontrada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alerta de procurado", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end

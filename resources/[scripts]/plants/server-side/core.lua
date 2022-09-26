@@ -150,7 +150,7 @@ AddEventHandler("admin:KickAll",function()
 	SaveResourceFile("logs","plants.json",json.encode(Plants),-1)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONTHREADSTART
+-- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	local PlantsFile = LoadResourceFile("logs","plants.json")

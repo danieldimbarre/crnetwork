@@ -45,7 +45,7 @@ function Creative.CharacterChosen(Passport)
 		vRP.CharacterChosen(source,Passport)
 	else
 		DropPlayer(source,"Conectando em personagem irregular.")
-		TriggerEvent("Discord","Hackers","A license **"..License.."** conectou em outra conta.",3092790)
+		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**License:** "..License.."\n**Motivo:** Conectou em outra conta\n**Address:** "..GetPlayerEndpoint(source),3092790)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

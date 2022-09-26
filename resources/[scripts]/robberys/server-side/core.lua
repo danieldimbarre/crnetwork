@@ -808,8 +808,8 @@ AddEventHandler("robberys:Init",function(Number)
 				end
 
 				if os.time() >= Robberype[Robberys[Number]["type"]] then
-					local checkGroup = vRP.NumPermission(Robberys[Number]["group"])
-					if parseInt(#checkGroup) >= Robberys[Number]["population"] then
+					local Service = vRP.NumPermission(Robberys[Number]["group"])
+					if parseInt(#Service) >= Robberys[Number]["population"] then
 						local Consult = vRP.InventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
 						if Consult[1] >= Robberys[Number]["need"]["amount"] then
 							if not vRP.CheckDamaged(Consult[2]) then
@@ -818,10 +818,10 @@ AddEventHandler("robberys:Init",function(Number)
 									Robberys[Number]["timavaiable"] = os.time() + Robberys[Number]["duration"]
 									Robberys[Number]["avaiable"] = true
 
-									for k,v in pairs(checkGroup) do
+									for Passports,Sources in pairs(Service) do
 										async(function()
-											TriggerClientEvent("NotifyPush",v["source"],{ code = 31, title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
-											vRPC.playSound(v["source"],"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
+											TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
+											vRPC.playSound(Sources,"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
 										end)
 									end
 

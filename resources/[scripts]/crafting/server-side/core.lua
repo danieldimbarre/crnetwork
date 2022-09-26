@@ -1506,7 +1506,7 @@ local List = {
 			--}
 		}
 	},				
-	["Lester"] = {
+	["craftingTable"] = {
 		["List"] = {
 			--["tablecoke"] = {
 			--	["amount"] = 1,

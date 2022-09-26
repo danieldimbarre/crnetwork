@@ -123,7 +123,7 @@ end)
 function vehCreate(vehName)
 	if LoadModel(vehName) then
 		if Open == "Santos" then
-			vehDrive = CreateVehicle(vehName,-27.69,-1104.18,26.42,260.79,false,false)
+			vehDrive = CreateVehicle(vehName,-56.83,-1109.15,26.44,70.87,false,false)
 		elseif Open == "Sandy" then
 			vehDrive = CreateVehicle(vehName,1209.74,2713.49,37.81,175.75,false,false)
 		end
@@ -172,22 +172,22 @@ local Vehicles = {
 	{
 		["Coords"] = vec3(-47.11,-1093.67,26.42),
 		["heading"] = 102.05,
-		["Model"] = "sultan",
+		["Model"] = "r1200gs",
 		["Distance"] = 100
 	},{
 		["Coords"] = vec3(-42.17,-1096.29,26.42),
 		["heading"] = 96.38,
-		["Model"] = "neon",
+		["Model"] = "fordmustang",
 		["Distance"] = 100
 	},{
 		["Coords"] = vec3(-47.3,-1100.9,26.42),
 		["heading"] = 25.52,
-		["Model"] = "akuma",
+		["Model"] = "m1000rr",
 		["Distance"] = 100
 	},{
 		["Coords"] = vec3(-40.04,-1101.65,26.42),
 		["heading"] = 48.19,
-		["Model"] = "reaper",
+		["Model"] = "f8t",
 		["Distance"] = 100
 	}
 }

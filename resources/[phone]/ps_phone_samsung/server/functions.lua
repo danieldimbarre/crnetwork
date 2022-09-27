@@ -217,8 +217,8 @@ end
 -- requestAcceptorNot
 -----------------------------------------------------------------------------------------------------------------------------------------
 requestAcceptorNot = function(source,title,timeout)
-    vHUD = Tunnel.getInterface("hud")
-    return vHUD.Request(source,title,"Sim","Não")
+    vREQUEST = Tunnel.getInterface("request")
+    return vREQUEST.Request(source,title,"Sim","Não")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- checkPlayerHandcuffed
@@ -231,6 +231,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 getBankMoney = function(user_id)
     local data = vRP.UserBank(user_id, "Private")
+    print(user_id)
     print(json.encode(data))
     return vRP.UserBank(user_id, "Private")
 end

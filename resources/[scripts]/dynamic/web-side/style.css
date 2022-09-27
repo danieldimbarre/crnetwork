@@ -53,7 +53,7 @@ body, html {
 	bottom: 20%;
 	content: "";
 	position: absolute;
-	background: #6ede81;
+	background: #21ac38;
 }
 
 .btn:hover, .normalbutton:hover {
@@ -61,7 +61,7 @@ body, html {
 }
 
 .btn:hover::before, .normalbutton:hover::before {
-	background: #ffd97b;
+	background: #80e470;
 }
 
 .title {
@@ -103,11 +103,11 @@ body, html {
 	bottom: 20%;
 	content: "";
 	position: absolute;
-	background: #54c941;
+	background: #fec026;
 }
 
 .amarelo:hover::before {
-	background: #80e470;
+	background: #ffd97b;
 }
 
 .amarelo .description {

@@ -386,12 +386,12 @@ space {
 }
 
 .march circle:nth-child(1) {
-	stroke: #977217;
+	stroke: #166d24;
 	stroke-dashoffset: calc(440 - (440 * 18) / 100);
 }
 
 .march circle:nth-child(2) {
-	stroke: #fec026;
+	stroke: #21ac38;
 	stroke-dashoffset: calc(440 - (440 * 0) / 100);
 }
 
@@ -419,7 +419,7 @@ space {
 }
 
 .fuel circle:nth-child(2) {
-	stroke: #999;
+	stroke: #83121d;
 }
 
 .Gray {

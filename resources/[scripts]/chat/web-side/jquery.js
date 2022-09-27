@@ -35,7 +35,7 @@ window.addEventListener("message",function(event){
 				$("#ChatSubmit").val("");
 				$("#ChatSubmit").css("display","block");
 				$("#ChatMessage").css("display","block");
-				$("#ChatBackground").css("background","#141414");
+				$("#ChatBackground").css("background","#14141410");
 
 				document.getElementById("ChatSubmit").focus();
 				document.getElementById("ChatSubmit").select();

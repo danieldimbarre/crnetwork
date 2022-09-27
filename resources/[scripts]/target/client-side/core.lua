@@ -1059,7 +1059,7 @@ CreateThread(function()
 		}
 	})
 
-	AddCircleZone("CassinoWheel",vec3(1112.05,228.11,-49.64),0.5,{
+	AddCircleZone("CassinoWheel",vec3(990.41,40.9,71.26),0.5,{
 		name = "CassinoWheel",
 		heading = 3374176
 	},{

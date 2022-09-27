@@ -114,7 +114,7 @@ local Garages = {
 	["43"] = { name = "Paramedic", payment = false, perm = "Paramedic" },
 	["44"] = { name = "heliParamedic", payment = false, perm = "Paramedic" },
 
-	["45"] = { name = "Paramedic", payment = false, perm = "Paramedic" },
+	-- ["45"] = { name = "Paramedic", payment = false, perm = "Paramedic" },
 
 	-- Police
 	["61"] = { name = "Police", payment = false, perm = "Police" },

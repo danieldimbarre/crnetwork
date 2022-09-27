@@ -188,11 +188,11 @@ local Garages = {
 	["44"] = { x = -271.7, y = 6321.75, z = 32.42,
 		["1"] = { -273.13,6329.85,32.1,133.23 }
 	},
-	["45"] = { x = 1206.15, y = -1474.68, z = 34.85,
-		["1"] = { 1196.58,-1468.52,34.93,0.0 },
-		["2"] = { 1200.73,-1468.58,34.93,0.0 },
-		["3"] = { 1204.83,-1468.62,34.93,0.0 }
-	},
+	-- ["45"] = { x = 1206.15, y = -1474.68, z = 34.85,
+	-- 	["1"] = { 1196.58,-1468.52,34.93,0.0 },
+	-- 	["2"] = { 1200.73,-1468.58,34.93,0.0 },
+	-- 	["3"] = { 1204.83,-1468.62,34.93,0.0 }
+	-- },
 	["61"] = { x = 838.0, y = -1374.5, z = 26.3,
 		["1"] = { 837.24,-1365.96,25.95,0.0 },
 		["2"] = { 833.58,-1366.02,25.93,0.0 },
@@ -200,6 +200,45 @@ local Garages = {
 	},
 	["62"] = { x = 838.55, y = -1398.6, z = 26.3,
 		["1"] = { 837.04,-1409.44,26.81,274.97 }
+	},
+	["63"] = { x = 1839.35, y = 3691.23, z = 33.97,
+		["1"] = { 1844.43,3689.35,33.78,303.31 },
+		["2"] = { 1846.28,3686.09,33.78,303.31 },
+		["3"] = { 1848.23,3682.71,33.78,303.31 }
+	},
+	["64"] = { x = 1844.42, y = 3707.33, z = 33.97,
+		["1"] = { 1853.31,3706.24,33.97,28.35 }
+	},
+	["65"] = { x = -459.37, y = 6016.01, z = 31.49,
+		["1"] = { -469.04,6038.77,31.0,226.78 },
+		["2"] = { -472.45,6035.42,31.0,226.78 },
+		["3"] = { -476.09,6031.71,31.0,226.78 },
+		["4"] = { -479.61,6028.09,31.0,226.78 },
+		["5"] = { -482.7,6024.95,31.0,226.78 }
+	},
+	["66"] = { x = -479.48, y = 6011.12, z = 31.29,
+		["1"] = { -475.04,5988.45,31.73,317.49 }
+	},
+	["67"] = { x = 1840.78, y = 2545.84, z = 45.66,
+		["1"] = { 1833.59,2542.09,45.54,272.13 }
+	},
+	["68"] = { x = 1840.79, y = 2538.28, z = 45.66,
+		["1"] = { 1833.59,2542.09,45.54,272.13 }
+	},
+	["69"] = { x = 377.58, y = 791.66, z = 187.64,
+		["1"] = { 374.46,796.86,187.03,178.59 }
+	},
+	["70"] = { x = 382.12, y = -1617.63, z = 29.28,
+		["1"] = { 386.96,-1615.25,28.96,232.45 },
+		["2"] = { 388.99,-1612.91,28.96,229.61 },
+		["3"] = { 390.91,-1610.57,28.96,232.45 },
+		["4"] = { 392.96,-1608.22,28.96,229.61 }
+	},
+	["71"] = { x = 381.17, y = -1634.05, z = 29.28,
+		["1"] = { 384.12,-1623.63,29.67,320.32 }
+	},
+	["72"] = { x = 392.56, y = -1632.1, z = 29.28,
+		["1"] = { 397.13,-1622.63,29.55,320.32 }
 	},
 	["91"] = { x = 84.47, y = -1972.8, z = 20.84,
 		["1"] = { 88.7,-1967.4,20.51,323.15 }
@@ -619,29 +658,25 @@ CreateThread(function()
 
 				for Number,v in pairs(Garages) do
 					local Distance = #(Coords - vec3(v["x"],v["y"],v["z"]))
-					if Distance <= 2.5 then
+					if Distance <= 1.25 then
 						TimeDistance = 1
-						DrawMarker(27,v["x"],v["y"],v["z"] - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,255,255,255,100,0,0,0,0)
+						if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
+							local Vehicles = vSERVER.Vehicles(Number)
+							if Vehicles then
+								exports["dynamic"]:AddButton("Guardar","Guardar o veículo mais próximo.","garages:Delete","",false,false)
 
-						if Distance <= 1.25 then
-							if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
-								local Vehicles = vSERVER.Vehicles(Number)
-								if Vehicles then
-									exports["dynamic"]:AddButton("Guardar","Guardar o veículo mais próximo.","garages:Delete","",false,false)
+								if parseInt(#Vehicles) > 0 then
+									for _,v in pairs(Vehicles) do
+										exports["dynamic"]:AddButton("Pegar","Clique para pega-lo na garagem.","garages:Spawn",v["Model"].."-"..Number,v["Model"],true)
+										exports["dynamic"]:AddButton("Taxas","Clique para o pagamento das taxas.","garages:Tax",v["Model"],v["Model"],true)
+										exports["dynamic"]:AddButton("Vender","Clique para o vender o veículo.","garages:Sell",v["Model"],v["Model"],true)
+										exports["dynamic"]:AddButton("Transferência","Clique para transferir a outra pessoa.","garages:Transfer",v["Model"],v["Model"],true)
 
-									if parseInt(#Vehicles) > 0 then
-										for _,v in pairs(Vehicles) do
-											exports["dynamic"]:AddButton("Pegar","Clique para pega-lo na garagem.","garages:Spawn",v["Model"].."-"..Number,v["Model"],true)
-											exports["dynamic"]:AddButton("Taxas","Clique para o pagamento das taxas.","garages:Tax",v["Model"],v["Model"],true)
-											exports["dynamic"]:AddButton("Vender","Clique para o vender o veículo.","garages:Sell",v["Model"],v["Model"],true)
-											exports["dynamic"]:AddButton("Transferência","Clique para transferir a outra pessoa.","garages:Transfer",v["Model"],v["Model"],true)
-
-											exports["dynamic"]:SubMenu(v["name"],"Todas as funções do veículo.",v["Model"])
-										end
+										exports["dynamic"]:SubMenu(v["name"],"Todas as funções do veículo.",v["Model"])
 									end
-
-									exports["dynamic"]:openMenu()
 								end
+
+								exports["dynamic"]:openMenu()
 							end
 						end
 					end

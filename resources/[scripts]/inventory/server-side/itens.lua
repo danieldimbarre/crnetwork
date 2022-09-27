@@ -692,8 +692,9 @@ Use = {
 
 	["evidence01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Microscope = {
-			{ 839.87,-1294.16,24.31 },
-			{ 841.71,-1296.23,24.31 }
+			{ 482.95,-988.61,30.68 },
+			{ 368.33,-1592.01,25.44 },
+			{ 1772.18,2577.82,45.73 }
 		}
 
 		local Ped = GetPlayerPed(source)
@@ -712,8 +713,9 @@ Use = {
 
 	["evidence02"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Microscope = {
-			{ 839.87,-1294.16,24.31 },
-			{ 841.71,-1296.23,24.31 }
+			{ 482.95,-988.61,30.68 },
+			{ 368.33,-1592.01,25.44 },
+			{ 1772.18,2577.82,45.73 }
 		}
 
 		local Ped = GetPlayerPed(source)
@@ -732,8 +734,9 @@ Use = {
 
 	["evidence03"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Microscope = {
-			{ 839.87,-1294.16,24.31 },
-			{ 841.71,-1296.23,24.31 }
+			{ 482.95,-988.61,30.68 },
+			{ 368.33,-1592.01,25.44 },
+			{ 1772.18,2577.82,45.73 }
 		}
 
 		local Ped = GetPlayerPed(source)
@@ -752,8 +755,9 @@ Use = {
 
 	["evidence04"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Microscope = {
-			{ 839.87,-1294.16,24.31 },
-			{ 841.71,-1296.23,24.31 }
+			{ 482.95,-988.61,30.68 },
+			{ 368.33,-1592.01,25.44 },
+			{ 1772.18,2577.82,45.73 }
 		}
 
 		local Ped = GetPlayerPed(source)

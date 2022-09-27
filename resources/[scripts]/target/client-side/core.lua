@@ -202,9 +202,7 @@ local beds = {
 	[2117668672] = { 0.0,0.0 },
 	[-1498379115] = { 1.0,90.0 },
 	[-1519439119] = { 1.0,0.0 },
-	[-289946279] = { 1.0,0.0 },
-	[4053787055] = { 1.0,0.0 },
-	[580306412] = { 1.0,0.0 }
+	[-289946279] = { 1.0,0.0 }
 }
 
 RegisterNetEvent("target:animDeitar")
@@ -962,7 +960,7 @@ CreateThread(function()
 		heading = 3374176
 	},{
 		shop = "Santos",
-		Distance = 2.0,
+		Distance = 1.0,
 		options = {
 			{
 				event = "tablet:enterTablet",
@@ -977,7 +975,7 @@ CreateThread(function()
 		heading = 3374176
 	},{
 		shop = "Santos",
-		Distance = 2.0,
+		Distance = 1.0,
 		options = {
 			{
 				event = "tablet:enterTablet",
@@ -992,7 +990,7 @@ CreateThread(function()
 		heading = 3374176
 	},{
 		shop = "Santos",
-		Distance = 2.0,
+		Distance = 1.0,
 		options = {
 			{
 				event = "tablet:enterTablet",
@@ -1002,12 +1000,42 @@ CreateThread(function()
 		}
 	})
 
-	AddCircleZone("tabletVehicles04",vec3(1224.78,2728.01,38.0),0.5,{
+	AddCircleZone("tabletVehicles04",vec3(-51.59,-1094.98,27.26),0.5,{
 		name = "tabletVehicles04",
 		heading = 3374176
 	},{
+		shop = "Santos",
+		Distance = 1.0,
+		options = {
+			{
+				event = "tablet:enterTablet",
+				label = "Abrir",
+				tunnel = "shop"
+			}
+		}
+	})
+
+	AddCircleZone("tabletVehicles05",vec3(-51.15,-1087.13,27.26),0.5,{
+		name = "tabletVehicles05",
+		heading = 3374176
+	},{
+		shop = "Santos",
+		Distance = 1.0,
+		options = {
+			{
+				event = "tablet:enterTablet",
+				label = "Abrir",
+				tunnel = "shop"
+			}
+		}
+	})
+
+	AddCircleZone("tabletVehicles06",vec3(1224.78,2728.01,38.0),0.5,{
+		name = "tabletVehicles06",
+		heading = 3374176
+	},{
 		shop = "Sandy",
-		Distance = 2.0,
+		Distance = 1.0,
 		options = {
 			{
 				event = "tablet:enterTablet",
@@ -1045,7 +1073,7 @@ CreateThread(function()
 		}
 	})
 
-	AddTargetModel({ 1631638868,2117668672,-1498379115,-1519439119,-289946279,4053787055,580306412 },{
+	AddTargetModel({ 1631638868,2117668672,-1498379115,-1519439119,-289946279 },{
 		Distance = 1.00,
 		options = {
 			{

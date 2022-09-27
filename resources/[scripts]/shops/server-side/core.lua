@@ -10,7 +10,7 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("shops",Creative)
 vCLIENT = Tunnel.getInterface("shops")
-vHUD = Tunnel.getInterface("hud")
+REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -751,7 +751,7 @@ AddEventHandler("shops:Digital",function(Item)
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
 	if Passport and Digital[Item] then
-		if vHUD.Request(source,"Deseja comprar o <b>"..itemName(Item).."</b> por <b>$"..parseFormat(Digital[Item]).."</b> dólares?","Sim, efetuar pagamento","Não, outra hora") then
+		if REQUEST.Function(source,"Deseja comprar o <b>"..itemName(Item).."</b> por <b>$"..parseFormat(Digital[Item]).."</b> dólares?","Sim, efetuar pagamento","Não, outra hora") then
 			if vRP.PaymentFull(Passport,source,Digital[Item]) then
 				vRP.GenerateItem(Passport,Item,1,true)
 			else

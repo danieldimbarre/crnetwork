@@ -9,8 +9,12 @@ files {
 	"nui/**",
 }
 
+dependencies { 
+    'screenshot-basic',
+}
+
 client_scripts {
-	"@vrp/lib/utils.lua",
+	"@vrp/lib/Utils.lua",
 	"lib/NativeUI.lua",
 	"lib/cinematicCam_config.lua",
 	"lib/cinematicCam_client.lua",
@@ -19,7 +23,8 @@ client_scripts {
 } 
 
 server_script {
-	"@vrp/lib/utils.lua",
+	"@vrp/config/Groups.lua",
+	"@vrp/lib/Utils.lua",
 	"lib/cinematicCam_server.lua",
 	"server_config.lua",
 	"server.lua"

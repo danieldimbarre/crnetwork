@@ -198,41 +198,37 @@ CreateThread(function()
 
 					if IsControlJustPressed(1,38) then
 						if serviceStatus then
-							if vSERVER.initService(false) then
-								serviceStatus = false
+							serviceStatus = false
 
-								if DoesBlipExist(serviceBlip) then
-									RemoveBlip(serviceBlip)
-									serviceBlip = nil
-								end
+							if DoesBlipExist(serviceBlip) then
+								RemoveBlip(serviceBlip)
+								serviceBlip = nil
+							end
 
-								if currentPassenger ~= nil then
-									TriggerServerEvent("DeletePed",currentPassenger)
-									currentPassenger = nil
-								end
+							if currentPassenger ~= nil then
+								TriggerServerEvent("DeletePed",currentPassenger)
+								currentPassenger = nil
+							end
 
-								if lastPassenger ~= nil then
-									TriggerServerEvent("DeletePed",lastPassenger)
-									lastPassenger = nil
-								end
+							if lastPassenger ~= nil then
+								TriggerServerEvent("DeletePed",lastPassenger)
+								lastPassenger = nil
 							end
 						else
-							if vSERVER.initService(true) then
-								locateSelect = k
+							locateSelect = k
 
-								repeat
-									if lastPosition == selectPosition then
-										selectPosition = math.random(#stopVehicle[locateSelect])
-									end
-									Wait(1)
-								until lastPosition ~= selectPosition
+							repeat
+								if lastPosition == selectPosition then
+									selectPosition = math.random(#stopVehicle[locateSelect])
+								end
+								Wait(1)
+							until lastPosition ~= selectPosition
 
-								currentPassenger = nil
-								currentStatus = false
-								serviceStatus = true
-								lastPassenger = nil
-								blipPassenger()
-							end
+							currentPassenger = nil
+							currentStatus = false
+							serviceStatus = true
+							lastPassenger = nil
+							blipPassenger()
 						end
 					end
 				end

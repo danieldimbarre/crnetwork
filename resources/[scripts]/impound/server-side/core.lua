@@ -4,8 +4,8 @@
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRPC = Tunnel.getInterface("vRP")
-vHUD = Tunnel.getInterface("hud")
 vRP = Proxy.getInterface("vRP")
+REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIÁVEIS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -174,7 +174,7 @@ AddEventHandler("police:Arrest",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vHUD.Request(source,"Apreender o veículo?","Sim, concluír apreensão","Não, mudei de ideia") then
+		if REQUEST.Function(source,"Apreender o veículo?","Sim, concluír apreensão","Não, mudei de ideia") then
 			local Passport = vRP.PassportPlate(entity[1])
 			if Passport then
 				local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })

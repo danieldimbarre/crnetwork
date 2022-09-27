@@ -66,9 +66,9 @@ end
 -- SHOPLIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local shopList = {
-	{ -546.15,-206.63,38.15,"Identity",false },
-	{ -544.25,-205.7,38.11,"Identity",false },
-	{ -546.15,-206.63,38.15,"Identity2",false },
+	{ -542.87,-198.35,38.23,"Identity",false },
+	{ -551.27,-203.09,38.23,"Identity",false },
+	{ -544.76,-185.81,52.2,"Identity2",false },
 	{ 24.9,-1346.8,29.49,"Departament",true },
 	{ 2556.74,381.24,108.61,"Departament",true },
 	{ 1164.82,-323.65,69.2,"Departament",true },
@@ -108,23 +108,21 @@ local shopList = {
 	{ 1523.69,3782.48,34.51,"Fishing2",true },
 	{ -695.56,5802.12,17.32,"Hunting",false },
 	{ -679.13,5839.52,17.32,"Hunting2",false },
-	{ -662.29,315.33,83.09,"Pharmacy",false },
-	{ -662.0,318.22,83.09,"Pharmacy",false },
-	{ -661.79,321.14,83.09,"Pharmacy",false },
+	{ -665.78,321.34,83.09,"Pharmacy",false },
 	{ -674.38,339.24,83.09,"Paramedic",false },
 	{ -254.64,6326.95,32.82,"Paramedic",false },
 	{ -428.57,-1728.35,19.78,"Recycle",false },
 	{ 180.55,2793.45,45.65,"Recycle",false },
 	{ -195.79,6264.95,31.49,"Recycle",false },
 	{ 487.3,-997.08,30.68,"Police",false },
-	{ 1838.43,3686.29,34.19,"Police",false },
+	-- { 1838.43,3686.29,34.19,"Police",false },
 	{ -447.15,6016.51,36.99,"Police",false },
-	{ 385.5,799.94,190.49,"Police",false },
+	-- { 385.5,799.94,190.49,"Police",false },
 	{ 362.37,-1603.12,25.44,"Police",false },
 	{ -628.41,-238.36,38.05,"Miners",false },
 	{ -1403.52,-628.62,28.68,"Criminal",false },
-	{ 169.76,-1535.88,29.25,"Weapons",false },
-	{ 301.14,-195.75,61.57,"Weapons",false },
+	-- { 169.76,-1535.88,29.25,"Weapons",false },
+	-- { 301.14,-195.75,61.57,"Weapons",false },
 	{ 829.35,-906.85,25.68,"Mechanic",false },
 	{ 824.8,-906.89,25.68,"Mechanic",false },
 	{ 820.21,-906.87,25.68,"Mechanic",false },
@@ -140,7 +138,7 @@ local shopList = {
 	{ 806.22,-761.68,26.77,"PizzaThis",false },
 	{ -588.5,-1066.23,22.34,"UwuCoffee",false },
 	{ 124.01,-1036.72,29.27,"BeanMachine",false },
-	{ -1127.26,-1439.35,5.22,"Clothes",false },
+	-- { -1127.26,-1439.35,5.22,"Clothes",false },
 	{ 78.26,-1388.91,29.37,"Clothes",false },
 	{ -706.73,-151.38,37.41,"Clothes",false },
 	{ -166.69,-301.55,39.73,"Clothes",false },
@@ -155,6 +153,7 @@ local shopList = {
 	{ -3172.39,1055.31,20.86,"Clothes",false },
 	{ -1096.53,2711.1,19.11,"Clothes",false },
 	{ 422.7,-810.25,29.49,"Clothes",false },
+	{ 963.34,19.26,71.46,"Clothes",false },
 	{ -1174.54,-1571.4,4.35,"Weeds",false }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -269,8 +268,7 @@ CreateThread(function()
 	for Number,v in pairs(shopList) do
 		exports["target"]:AddCircleZone("Shops:"..Number,vec3(v[1],v[2],v[3]),0.5,{
 			name = "Shops:"..Number,
-			heading = 3374176,
-			debugPoly = true
+			heading = 3374176
 		},{
 			shop = Number,
 			Distance = 1.75,

@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jura:wght@600&display=swap");
-
-@font-face {
-	font-family: "DSEG7Classic";
-	src: url("fonts/dseg7.ttf");
-}
 
 @font-face {
 	font-family: "Gotham";
@@ -17,26 +11,19 @@ html,body {
 	padding: 0;
 	color: #fff;
 	cursor: default;
-	font-size: 11px;
+	font-size: 0.6vw;
 	overflow: hidden;
 	font-family: "Roboto";
 	box-sizing: border-box;
 	background: transparent;
 }
 
-u {
-	text-decoration: none;
-}
-
-:focus {
-	outline: 0;
-}
-
+:focus { outline: 0; }
+u { text-decoration: none; }
 ::-webkit-scrollbar { width: 0; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: transparent; }
 ::-webkit-scrollbar-thumb:hover { background: transparent; }
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
@@ -67,17 +54,18 @@ input::-webkit-inner-spin-button {
 	font-size: 0.9vw;
 }
 
+#NaviLogo {
+	margin: 3vw 47.8vw;
+	float: left;
+	text-align : center;
+	opacity: .75;
+}
+
 #NaviTop {
 	top: 3vw;
 	right: 3vw;
 	color: #ccc;
 	position: absolute;
-}
-
-.NameServer {
-	float: left;
-	margin-left: 1.5vw;
-	opacity: .75;
 }
 
 .InfoUser {
@@ -197,93 +185,6 @@ space {
 	stroke-dashoffset: 0;
 	stroke-dasharray: 100;
 	fill: rgba(15,15,15,.75);
-}
-
-#Radio {
-	bottom: 0;
-	z-index: 998;
-	right: 50px;
-	width: 180px;
-	height: 380px;
-	display: none;
-	position: absolute;
-	background: url("images/Radio.png");
-}
-
-.RadioInative {
-	float: left;
-	width: 26px;
-	height: 39px;
-	margin-top: 127px;
-	margin-left: 77px;
-}
-
-.RadioActive {
-	float: left;
-	width: 41px;
-	height: 33px;
-	margin-top: -22px;
-	margin-left: 139px;
-}
-
-.RadioFrequency {
-	border: 0;
-	float: left;
-	width: 108px;
-	height: 94px;
-	font-size: 33px;
-	margin-top: 90px;
-	margin-left: 38px;
-	text-align: center;
-	letter-spacing: 2px;
-	background: transparent;
-	font-family: "DSEG7Classic";
-}
-
-#Doors {
-	right: 50px;
-	bottom: 170px;
-	display: none;
-	line-height: 16px;
-	position: absolute;
-	padding: 15px 20px 13px 15px;
-	text-shadow: 1px 1px #232630;
-	background: rgba(15,15,15,.75);
-}
-
-#Doors::before {
-	top: 20%;
-	left: -2px;
-	width: 4px;
-	height: 60%;
-	bottom: 20%;
-	content: "";
-	position: absolute;
-	background: #6ede81;
-}
-
-#Doors > .Button {
-	float: left;
-	color: #ccc;
-	font-size: 35px;
-	text-shadow: none;
-	text-align: center;
-	font-family: "Jura";
-	padding: 6px 14px 0 0;
-}
-
-#Doors > .Text {
-	float: left;
-	color: #666666;
-	font-size: 11px;
-	letter-spacing: 1px;
-}
-
-#Doors > .Text > b {
-	color: #c0c0c0;
-	display: block;
-	font-size: 12px;
-	font-weight: 300;
 }
 
 #Vehicle * {
@@ -485,12 +386,12 @@ space {
 }
 
 .march circle:nth-child(1) {
-	stroke: #166d24;
+	stroke: #977217;
 	stroke-dashoffset: calc(440 - (440 * 18) / 100);
 }
 
 .march circle:nth-child(2) {
-	stroke: #21ac38;
+	stroke: #fec026;
 	stroke-dashoffset: calc(440 - (440 * 0) / 100);
 }
 
@@ -546,323 +447,6 @@ space {
 	color: #40a7f7;
 }
 
-#Notify {
-	top: 50px;
-	right: 400px;
-	width: 500px;
-	font-size: 13px;
-	position: absolute;
-	letter-spacing: .5px;
-}
-
-#Notify > div {
-	float: left;
-	color: #c6c6c6;
-	margin-right: 5px;
-	line-height: 20px;
-	margin-bottom: 5px;
-	text-shadow: 1px 1px #000;
-	padding: 15px 20px 15px 45px;
-}
-
-#Notify > div > b {
-	color: #fff;
-	font-weight: 300;
-}
-
-#Notify-verde {
-	background: rgba(15,15,15,.75) url("images/Notify/Check.png") no-repeat center left 11px;
-}
-
-#Notify-vermelho {
-	background: rgba(15,15,15,.75) url("images/Notify/Cancel.png") no-repeat center left 11px;
-}
-
-#Notify-blood {
-	background: rgba(15,15,15,.75) url("images/Notify/Blood.png") no-repeat center left 11px;
-}
-
-#Notify-hunger {
-	background: rgba(15,15,15,.75) url("images/Notify/Hunger.png") no-repeat center left 11px;
-}
-
-#Notify-thirst {
-	background: rgba(15,15,15,.75) url("images/Notify/Thirst.png") no-repeat center left 11px;
-}
-
-#Notify-azul {
-	background: rgba(15,15,15,.75) url("images/Notify/Ring.png") no-repeat center left 11px;
-}
-
-#Notify-amarelo {
-	background: rgba(15,15,15,.75) url("images/Notify/Important.png") no-repeat center left 11px;
-}
-
-#Notify-locked {
-	background: rgba(15,15,15,.75) url("images/Notify/Locked.png") no-repeat center left 11px;
-}
-
-#Notify-unlocked {
-	background: rgba(15,15,15,.75) url("images/Notify/Unlocked.png") no-repeat center left 11px;
-}
-
-#Notify-default {
-	padding: 15px 20px !important;
-	line-height: 20px !important;
-	background: rgba(15,15,15,.75);
-}
-
-#Spawn {
-	width: 100vw;
-	height: 100vh;
-	z-index: 998;
-	position: absolute;	
-}
-
-.SpawnCreate, .SpawnSelected, .SpawnLocation {
-	margin: 3vw;
-	width: 16vw;
-	display: none;
-	letter-spacing: 0.05vw;
-}
-
-.SpawnSelectedNew {
-	float: left;
-	width: 2vw;
-	height: 2vw;
-	color: #715611;
-	font-size: 1.7vw;
-	margin-top: 0.5vw;
-	text-align: center;
-	margin-left: 7vw;
-	background: #6ede81;
-	border-radius: 100%;
-}
-
-.SpawnSelectedNew:first-child {
-	margin-top: 0;
-}
-
-.SpawnSelectedCharacter {
-	float: left;
-	color: #999;
-	width: 14vw;
-	font-size: 0.6vw;
-	line-height: 1vw;
-	padding: 0.6vw;
-	position: relative;
-	margin-bottom: 0.5vw;
-	background: #141414;
-}
-
-.SpawnSelectedCharacter b {
-	color: #fff;
-	font-weight: 300;
-}
-
-.SpawnSelectedCharacter i {
-	top: 1.5vw;
-	right: 1.5vw;
-	color: #6ede81;
-	font-size: 2vw;
-	font-weight: 700;
-	position: absolute;
-}
-
-.SpawnMessage {
-	right: 3vw;
-	color: #999;
-	bottom: 3vw;
-	width: 20vw;
-	padding: 0.6vw;
-	display: none;
-	font-size: 0.6vw;
-	line-height: 1vw;
-	position: absolute;
-	background: #141414;
-}
-
-.SpawnMessage span {
-	color: #6ede81;
-	display: block;
-	font-size: 0.9vw;
-	letter-spacing: 0.1vw;
-	margin-bottom: 0.7vw;
-	font-family: "Gotham";
-	text-transform: uppercase;
-}
-
-.SpawnMessage b {
-	color: #fff;
-	font-weight: 100;
-	text-transform: none;
-}
-
-.SpawnCreate input {
-	border: 0;
-	float: left;
-	color: #fff;
-	width: 15.2vw;
-	padding: 0.6vw;
-	font-size: 0.6vw;
-	margin-bottom: 0.5vw;
-	letter-spacing: 0.1vw;
-	background: #141414;
-}
-
-.SpawnCreate input::placeholder {
-	color: #999;
-}
-
-.SpawnCreateButton {
-	border: 0;
-	float: left;
-	color: #999;
-	width: 7.35vw;
-	padding: 0.6vw;
-	font-size: 0.6vw;
-	margin-right: 0.5vw;
-	margin-bottom: 0.5vw;
-	letter-spacing: 0.1vw;
-	background: #141414;
-}
-
-.SpawnCreateButtonActive {
-	color: #333;
-	background: #ccc;
-}
-
-.MarginRight {
-	margin-right: 0;
-}
-
-.SpawnCreateSubmit, .SpawnLocationSubmit {
-	float: left;
-	width: 14vw;
-	padding: 0.6vw;
-	color: #cbeddb;
-	font-size: 0.8vw;
-	text-align: center;
-	letter-spacing: 0.167vw;
-	margin-bottom: 0.5vw;
-	background: #2e6e4c;
-	text-transform: uppercase;
-}
-
-.SpawnCreateCancel {
-	float: left;
-	width: 14vw;
-	color: #f9cfde;
-	font-size: 0.8vw;
-	padding: 0.6vw;
-	text-align: center;
-	letter-spacing: 0.167vw;
-	background: #7c344d;
-	text-transform: uppercase;
-}
-
-.SpawnCreateTitle {
-	float: left;
-	width: 16vw;
-	color: #6ede81;
-	font-size: 1.5vw;
-	letter-spacing: 0.15vw;
-	font-family: "Gotham";
-	text-transform: uppercase;
-	text-shadow: 0.05vw 0.05vw #000;
-}
-
-.SpawnCreateSubtitle {
-	float: left;
-	color: #fff;
-	width: 17.2vw;
-	font-size: 0.45vw;
-	margin-bottom: 1vw;
-	letter-spacing: 0.16vw;
-	text-transform: uppercase;
-	text-shadow: 0.05vw 0.05vw #000;
-}
-
-.SpawnLocationBox {
-	color: #999;
-	float: left;
-	width: 14vw;
-	padding: 0.6vw;
-	font-size: 0.6vw;
-	text-align: center;
-	letter-spacing: 0.1vw;
-	margin-bottom: 0.5vw;
-	background: #141414;
-	text-transform: uppercase;
-}
-
-.SpawnLocationBox:hover {
-	color: #fff;
-	background: #1e1e1e;
-}
-
-#Chat {
-	top: 3vw;
-	left: 3vw;
-	z-index: 997;
-	max-width: 22vw;
-	position: absolute;
-}
-
-#ChatMessage {
-	float: left;
-	margin: 0.667vw;
-	width: 20.62vw;
-	height: 10.63vw;
-	display: none;
-	font-size: 0.6vw;
-	overflow: hidden;
-	overflow-y: scroll;
-	letter-spacing: 0.1vw;
-	text-shadow: 0.05vw 0.05vw #000;
-}
-
-#ChatMessage div {
-	margin-bottom: 0.367vw;
-}
-
-#ChatMessage div:last-child {
-	margin-bottom: 0;
-}
-
-#ChatMessage red {
-	color: #ff0000;
-	font-size: 0.55vw;
-	text-shadow: none;
-}
-
-#ChatMessage black {
-	color: #ccc;
-	font-size: 0.55vw;
-	text-shadow: none;
-}
-
-#ChatSubmit {
-	border: 0;
-	float: left;
-	color: #fff;
-	width: 22vw;
-	padding: 0.667vw;
-	display: none;
-	cursor: default;
-	font-size: 0.6vw;
-	margin-top: 0.667vw;
-	letter-spacing: 0.1vw;
-	background: #14141410;
-}
-
-#ChatBackground {
-	float: left;
-	width: 22vw;
-	height: 12vw;
-	background: transparent;
-}
-
 .Textform {
 	color: #fff;
 	padding: 0.6vw;
@@ -874,83 +458,4 @@ space {
 	letter-spacing: 0.1vw;
 	background: #141414;
 	word-wrap: break-word;
-}
-
-#Request {
-	width: 25vw;
-	bottom: 3vw;
-	display: none;
-	position: absolute;
-	left: calc(50% - 11.2vw);
-}
-
-#RequestM {
-	color: #ccc;
-	float: left;
-	width: 21vw;
-	padding: 0.8vw;
-	font-size: 0.8vw;
-	margin-top: 3.333vw;
- 	line-height: 1vw;
-	margin-bottom: 0.667vw;
-	font-family: "Roboto";
-	background: rgba(15,15,15,.75);
-}
-
-#RequestM b {
-	color: #fff;
-	font-weight: 300;
-}
-
-#RequestY {
-	float: left;
-	width: 9.5vw;
-	color: #d6ffea;
-	font-size: 0.6vw;
-	position: relative;
-	padding: 1vw 0.667vw;
-	margin-right: 0.667vw;
-	text-align: center;
-	letter-spacing: 0.1vw;
-	font-family: "Roboto";
-	background: rgba(43,135,86,.75);
-}
-
-#RequestU {
-	float: left;
-	width: 9.5vw;
-	color: #fedcdc;
-	font-size: 0.6vw;
-	position: relative;
-	padding: 1vw 0.667vw;
-	text-align: center;
-	letter-spacing: 0.1vw;
-	font-family: "Roboto";
-	background: rgba(237,105,106,.75);
-}
-
-#RequestY::before {
-	left: 4.433vw;
-	width: 1.5vw;
-	color: #ccc;
-	content: "Y";
-	bottom: -0.7vw;
-	font-size: 0.8vw;
-	position: absolute;
-	border-radius: 100%;
-	padding: 0.25vw 0 0.25vw 0.01vw;
-	background: rgba(15,15,15,.75);
-}
-
-#RequestU::before {
-	left: 4.433vw;
-	width: 1.5vw;
-	color: #ccc;
-	content: "U";
-	bottom: -0.7vw;
-	font-size: 0.8vw;
-	position: absolute;
-	border-radius: 100%;
-	padding: 0.25vw 0 0.25vw 0.01vw;
-	background: rgba(15,15,15,.75);
 }

@@ -25,62 +25,60 @@ function MinimalTimers(Seconds){
 	}
 }
 // -------------------------------------------------------------------------------------------
-$(document).ready(function(){
-	window.addEventListener("message",function(event){
-		switch (event["data"]["Action"]){
-			case "Display":
-				if (event["data"]["Status"] == true){
-					if ($("#Scoreboard").css("display") === "none"){
-						$("#Scoreboard").css("display","block");
-						Max = event["data"]["Max"];
-						Checkpoint = 1;
-					}
-				} else {
-					if ($("#Scoreboard").css("display") === "block"){
-						$("#Scoreboard").css("display","none");
-					}
+window.addEventListener("message",function(event){
+	switch (event["data"]["Action"]){
+		case "Display":
+			if (event["data"]["Status"] == true){
+				if ($("#Scoreboard").css("display") === "none"){
+					$("#Scoreboard").css("display","block");
+					Max = event["data"]["Max"];
+					Checkpoint = 1;
 				}
-			break;
-
-			case "Checkpoint":
-				Checkpoint = Checkpoint + 1;
-			break;
-
-			case "Ranking":
-				var Result = event["data"]["Ranking"];
-
-				if (Result !== false){
-					$("#Ranking").css("display","block");
-
-					var Position = 0;
-					$("#Ranking").html("");
-					$("#Ranking").html(`
-						<div id="raceTitle">RANKING</div>
-						<div id="raceLegend">Lista dos 5 melhores colocados neste circuito.</div>
-					`);
-
-					$.each(Result,(k,v) => {
-						$('#Ranking').append(`<div id="raceLine">
-							<div class="racePosition">${Position = Position + 1}</div>
-							<div class="raceName">${v["Name"]}</div>
-							<div class="raceVehicle">${v["Vehicle"]}</div>
-							<div class="racePoints">${MinimalTimers(v["Points"])}</div>
-						</div>`);
-					});
-
-					$('#Ranking').append(`<div id="raceButtom">Pressionando a tecla <key>G</key> você fecha o ranking</div>`);
-				} else {
-					$("#Ranking").css("display","none");
+			} else {
+				if ($("#Scoreboard").css("display") === "block"){
+					$("#Scoreboard").css("display","none");
 				}
-			break;
+			}
+		break;
 
-			case "Progress":
-				$("#Scoreboard").html(`
-					CHECKPOINTS <s>${Checkpoint} / ${Max}</s><br>
-					PERCORRIDO <s>${MinimalTimers(event["data"]["Points"])}</s><br>
-					TEMPO <s>${MinimalTimers(event["data"]["Timer"])}</s>
+		case "Checkpoint":
+			Checkpoint = Checkpoint + 1;
+		break;
+
+		case "Ranking":
+			var Result = event["data"]["Ranking"];
+
+			if (Result !== false){
+				$("#Ranking").css("display","block");
+
+				var Position = 0;
+				$("#Ranking").html("");
+				$("#Ranking").html(`
+					<div id="raceTitle">RANKING</div>
+					<div id="raceLegend">Lista dos 5 melhores colocados neste circuito.</div>
 				`);
-			break;
-		}
-	});
+
+				$.each(Result,(k,v) => {
+					$('#Ranking').append(`<div id="raceLine">
+						<div class="racePosition">${Position = Position + 1}</div>
+						<div class="raceName">${v["Name"]}</div>
+						<div class="raceVehicle">${v["Vehicle"]}</div>
+						<div class="racePoints">${MinimalTimers(v["Points"])}</div>
+					</div>`);
+				});
+
+				$('#Ranking').append(`<div id="raceButtom">Pressionando a tecla <key>G</key> você fecha o ranking</div>`);
+			} else {
+				$("#Ranking").css("display","none");
+			}
+		break;
+
+		case "Progress":
+			$("#Scoreboard").html(`
+				CHECKPOINTS <s>${Checkpoint} / ${Max}</s><br>
+				PERCORRIDO <s>${MinimalTimers(event["data"]["Points"])}</s><br>
+				TEMPO <s>${MinimalTimers(event["data"]["Timer"])}</s>
+			`);
+		break;
+	}
 });

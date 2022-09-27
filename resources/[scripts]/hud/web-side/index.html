@@ -9,71 +9,17 @@
 		<script src="jquery.js"></script>
 	</head>
 	<body>
-		<div id="Request">
-			<div id="RequestM"></div>
-			<div id="RequestY"></div>
-			<div id="RequestU"></div>
-		</div>
-
 		<div id="Textform"></div>
 
-		<div id="Spawn">
-			<div class="SpawnSelected"></div>
-
-			<div class="SpawnCreate">
-				<div class="SpawnCreateTitle">Criação</div>
-				<div class="SpawnCreateSubtitle">Preencha as informações abaixo</div>
-
-				<input autocomplete="off" onKeyPress="if(this.value.length==16) return false;" value="" type="text" id="SpawnNome" placeholder="Nome">
-				<input autocomplete="off" onKeyPress="if(this.value.length==16) return false;" value="" type="text" id="SpawnSobrenome" placeholder="Sobrenome">
-
-				<button type="button" class="SpawnCreateButton SpawnCreateButtonActive" id="mp_m_freemode_01">Masculino</button>
-				<button type="button" class="SpawnCreateButton MarginRight" id="mp_f_freemode_01">Feminino</button>
-
-				<div class="SpawnCreateSubmit">Concluir</div>
-				<div class="SpawnCreateCancel">Cancelar</div>
-			</div>
-
-			<div class="SpawnLocation"></div>
-
-			<div class="SpawnMessage">
-				<span>BEM-VINDO</span>
-				Pensa logo em um <b>texto</b> para colocar aqui.
-			</div>
-		</div>
-
-		<div id="Chat">
-			<div id="ChatBackground">
-				<div id="ChatMessage"></div>
-			</div>
-
-			<input id="ChatSubmit" type="text" placeholder="Mensagem...">
-		</div>
-
-		<div id="Radio">
-			<div class="RadioInative"></div>
-			<div class="RadioActive"></div>
-			<input class="RadioFrequency" type="number" min="1" max="999" onKeyPress="if (this.value.length == 3) return false;" placeholder="000">
-		</div>
-
-		<div id="Doors">
-			<div class="Button">E</div>
-			<div class="Text">
-				<b>Destrancar</b>Pressione o botão 
-			</div>
-		</div>
-
-		<div id="Notify"></div>
-
 		<div id="Body">
+			<div id="NaviLogo">
+				<img src="images/Logo.png">
+			</div>
+		
 			<div id="NaviTop">
 				<div class="InfoUser">
 					<i class="Green mdi mdi-clock-outline"></i> <span class="Date">00:00</span> <space>I</space> <i class="Green mdi mdi-rhombus"></i> <span class="Gemstone">0</span> <space>I</space> <i class="Green mdi mdi-account"></i> <span class="Passport">1</span><br>
 					<i class="Green mdi mdi-contactless-payment"></i> <span class="Radio">Offline</span> <space>I</space> <i class="Green mdi mdi-headphones"></i> <span class="Voip">Normal</span>
-				</div>
-
-				<div class="NameServer">
-					<img src="images/Logo.png">
 				</div>
 			</div>
 

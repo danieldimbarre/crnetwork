@@ -1,20 +1,17 @@
-/* ----------EVENTLISTENER---------- */
-$(document).ready(function(){
-	window.addEventListener("message",function(event){
-		if (event["data"]["show"] !== undefined){
-			if (event["data"]["show"] == true){
-				$("#fuelMenu").css("display","block");
-			}
+window.addEventListener("message",function(event){
+	switch (event["data"]["Action"]){
+		case "Show":
+			$("#fuelMenu").css("display","block");
+		break;
 
-			if (event["data"]["show"] == false){
-				$("#fuelMenu").css("display","none");
-			}
-		}
+		case "Hide":
+			$("#fuelMenu").css("display","none");
+		break;
 
-		if (event["data"]["tank"] !== undefined){
+		case "Tank":
 			$("#lts").html(event["data"]["lts"] + " ¢");
 			$("#tank").html(parseInt(event["data"]["tank"]) + " %");
 			$("#price").html("$" + parseInt(event["data"]["price"]));
-		}
-	});
+		break;
+	}
 });

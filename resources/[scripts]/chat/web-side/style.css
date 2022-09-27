@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+html,body {
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	cursor: default;
+	font-size: 0.6vw;
+	overflow: hidden;
+	font-family: "Roboto";
+	box-sizing: border-box;
+	background: transparent;
+}
+
+:focus { outline: 0; }
+u { text-decoration: none; }
+::-webkit-scrollbar { width: 0; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: transparent; }
+::-webkit-scrollbar-thumb:hover { background: transparent; }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+#Chat {
+	top: 3vw;
+	left: 3vw;
+	z-index: 997;
+	max-width: 22vw;
+	position: absolute;
+}
+
+#ChatMessage {
+	float: left;
+	margin: 0.667vw;
+	width: 20.62vw;
+	height: 10.63vw;
+	display: none;
+	font-size: 0.6vw;
+	overflow: hidden;
+	overflow-y: scroll;
+	letter-spacing: 0.1vw;
+	text-shadow: 0.05vw 0.05vw #000;
+}
+
+#ChatMessage div {
+	margin-bottom: 0.367vw;
+}
+
+#ChatMessage div:last-child {
+	margin-bottom: 0;
+}
+
+#ChatMessage red {
+	color: #ff0000;
+	font-size: 0.55vw;
+	text-shadow: none;
+}
+
+#ChatMessage black {
+	color: #666;
+	font-size: 0.55vw;
+	text-shadow: none;
+}
+
+#ChatSubmit {
+	border: 0;
+	float: left;
+	color: #fff;
+	width: 22vw;
+	padding: 0.667vw;
+	display: none;
+	cursor: default;
+	font-size: 0.6vw;
+	margin-top: 0.667vw;
+	letter-spacing: 0.1vw;
+	background: #14141410;
+}
+
+#ChatBackground {
+	float: left;
+	width: 22vw;
+	height: 12vw;
+	background: transparent;
+}

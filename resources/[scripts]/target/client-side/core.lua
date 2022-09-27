@@ -955,7 +955,7 @@ CreateThread(function()
 		}
 	})
 
-	AddCircleZone("tabletVehicles01",vec3(-30.92,-1105.72,27.21),0.5,{
+	AddCircleZone("tabletVehicles01",vec3(-38.9,-1100.22,27.26),0.5,{
 		name = "tabletVehicles01",
 		heading = 3374176
 	},{
@@ -970,7 +970,7 @@ CreateThread(function()
 		}
 	})
 
-	AddCircleZone("tabletVehicles02",vec3(-32.76,-1113.82,27.21),0.5,{
+	AddCircleZone("tabletVehicles02",vec3(-40.37,-1094.57,27.26),0.5,{
 		name = "tabletVehicles02",
 		heading = 3374176
 	},{
@@ -985,7 +985,7 @@ CreateThread(function()
 		}
 	})
 
-	AddCircleZone("tabletVehicles03",vec3(-55.38,-1097.24,27.21),0.5,{
+	AddCircleZone("tabletVehicles03",vec3(-46.87,-1095.5,27.26),0.5,{
 		name = "tabletVehicles03",
 		heading = 3374176
 	},{
@@ -1059,7 +1059,7 @@ CreateThread(function()
 		}
 	})
 
-	AddCircleZone("CassinoWheel",vec3(1112.05,228.11,-49.64),0.5,{
+	AddCircleZone("CassinoWheel",vec3(990.41,40.9,71.26),0.5,{
 		name = "CassinoWheel",
 		heading = 3374176
 	},{

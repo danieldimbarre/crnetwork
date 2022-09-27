@@ -40893,11 +40893,7 @@
       <bumpersNeedToCollideWithMap value="false" />
       <needsRopeTexture value="true" />
       <requiredExtras />
-      <rewards>
-        <Item>REWARD_WEAPON_SNIPERRIFLE</Item>
-        <Item>REWARD_AMMO_SNIPERRIFLE</Item>
-        <Item>REWARD_STAT_WEAPON</Item>
-      </rewards>
+      <rewards />
       <cinematicPartCamera>
         <Item>HELI_REAR_ROTOR_CAMERA</Item>
       </cinematicPartCamera>

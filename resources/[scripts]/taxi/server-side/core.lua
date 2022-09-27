@@ -20,19 +20,3 @@ function Creative.paymentService()
 		vRP.GenerateItem(Passport,"dollars",value,true)
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- INITSERVICE
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.initService(status)
-	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport then
-		if status then
-			vRP.AddPermission(source,Passport,"Taxi")
-		else
-			vRP.RemovePermission(Passport,"Taxi")
-		end
-	end
-
-	return true
-end

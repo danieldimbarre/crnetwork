@@ -30,16 +30,16 @@ CreateThread(function()
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
-			local Distance = #(Coords - vec3(1107.92,218.35,-49.45))
+			local Distance = #(Coords - vec3(981.75,34.61,71.46))
 			if Distance <= 100 then
 				if not LocalPlayer["state"]["Cassino"] then
 					LocalPlayer["state"]["Cassino"] = true
 
 					if LoadModel("silvias15") and LoadModel("vw_prop_vw_luckywheel_02a") then
-						Wheel = CreateObjectNoOffset("vw_prop_vw_luckywheel_02a",1111.05,229.85,-49.14,false,false,false)
-						SetEntityHeading(Wheel,0.0)
+						Wheel = CreateObjectNoOffset("vw_prop_vw_luckywheel_02a",990.48,43.31,71.26,false,false,false)
+						SetEntityHeading(Wheel,150.24)
 
-						Vehicle = CreateVehicle("silvias15",1100.04,219.87,-47.75,200.0,false,false)
+						Vehicle = CreateVehicle("silvias15",975.6,40.62,72.15,195.6,false,false)
 						SetVehicleNumberPlateText(Vehicle,"PDMSPORT")
 						SetVehicleOnGroundProperly(Vehicle)
 						FreezeEntityPosition(Vehicle,true)

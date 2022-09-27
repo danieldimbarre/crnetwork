@@ -10,7 +10,7 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("warehouse",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
-vHUD = Tunnel.getInterface("hud")
+REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WAREHOUSE:PASSWORD
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ function Creative.Warehouse(Name)
 						if Warehouse[1]["tax"] > os.time() then
 							return true
 						else
-							if vHUD.Request(source,"Pagar o aluguel do armazém por <b>$20.000</b>?","Sim, por favor","Não, decido depois") then
+							if REQUEST.Function(source,"Pagar o aluguel do armazém por <b>$20.000</b>?","Sim, por favor","Não, decido depois") then
 								if vRP.PaymentFull(Passport,source,20000) then
 									vRP.Execute("warehouse/Tax",{ name = Name })
 									return true
@@ -65,12 +65,12 @@ function Creative.Warehouse(Name)
 					end
 				end
 			else
-				if vHUD.Request(source,"Gostaria de comprar o armazém por <b>$100.000</b>?","Sim, por favor","Não, decido depois") then
+				if REQUEST.Function(source,"Gostaria de comprar o armazém por <b>$100.000</b>?","Sim, por favor","Não, decido depois") then
 					local Keyboard = vKEYBOARD.keyWord(source,"Senha:")
 					if Keyboard then
 						local Password = sanitizeString(Keyboard[1],"0123456789",true)
 						if string.len(Password) >= 4 and string.len(Password) <= 20 then
-							if vHUD.Request(source,"Finalizar a compra usando a senha <b>"..Password.."</b>?","Sim, por favor","Não, decido depois") then
+							if REQUEST.Function(source,"Finalizar a compra usando a senha <b>"..Password.."</b>?","Sim, por favor","Não, decido depois") then
 								if vRP.PaymentFull(Passport,source,100000) then
 									vRP.Execute("warehouse/Buy",{ name = Name, Passport = Passport, password = Password })
 									return true
@@ -99,7 +99,7 @@ AddEventHandler("warehouse:Upgrade",function(Name)
 	if Passport then
 		local Warehouse = vRP.Query("warehouse/Informations",{ name = Name })
 		if Warehouse[1] then
-			if vHUD.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
+			if REQUEST.Function(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
 				if vRP.PaymentFull(Passport,source,10000) then
 					vRP.Execute("warehouse/Upgrade",{ name = Name })
 					TriggerClientEvent("Notify",source,"verde","Aumento concluído.",3000)

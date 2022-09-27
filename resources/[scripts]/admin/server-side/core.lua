@@ -400,7 +400,7 @@ RegisterCommand("announce",function(source,args,rawCommand)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") and args[1] then
-			TriggerClientEvent("hud:ClientMessage",-1,"Governador",rawCommand:sub(9))
+			TriggerClientEvent("chat:ClientMessage",-1,"Governador",rawCommand:sub(9))
 		end
 	end
 end)
@@ -409,7 +409,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("console",function(source,args,rawCommand)
 	if source == 0 then
-		TriggerClientEvent("hud:ClientMessage",-1,"Governador",rawCommand:sub(9))
+		TriggerClientEvent("chat:ClientMessage",-1,"Governador",rawCommand:sub(9))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

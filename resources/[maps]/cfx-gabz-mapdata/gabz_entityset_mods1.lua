@@ -76,7 +76,7 @@ local interiors = {
         ipl = 'gabz_pillbox_milo_',
         coords = { x = 311.2546, y = -592.4204, z = 42.32737 },
         entitySets = {
-            { name = 'rc12b_fixed', enable = false },
+            { name = 'rc12b_fixed', enable = true },
             { name = 'rc12b_destroyed', enable = false },
             { name = 'rc12b_default', enable = false },
             { name = 'rc12b_hospitalinterior_lod', enable = false },

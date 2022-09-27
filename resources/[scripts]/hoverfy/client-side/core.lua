@@ -39,7 +39,7 @@ CreateThread(function()
 				if Zone[gridZone] then
 					for _,Table in pairs(Zone[gridZone]) do
 						if #(Coords - Table["Coords"]) < Table["Distance"] then
-							SendNUIMessage({ show = true, key = Table["key"], title = Table["title"], legend = Table["legend"] })
+							SendNUIMessage({ Action = "Show", key = Table["key"], title = Table["title"], legend = Table["legend"] })
 							Select = Table
 							Active = true
 						end
@@ -47,7 +47,7 @@ CreateThread(function()
 				end
 			else
 				if #(Coords - Select["Coords"]) > Select["Distance"] then
-					SendNUIMessage({ show = false })
+					SendNUIMessage({ Action = "Hide" })
 					TimeDistance = 100
 					Active = false
 				end

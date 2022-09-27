@@ -1,3 +1,6 @@
+var list = [];
+var blocked = false;
+
 window.addEventListener("message",function(event){
 	switch(event["data"]["action"]){
 		case "notify":
@@ -19,9 +22,6 @@ window.addEventListener("message",function(event){
 });
 
 $(document).ready(function(){
-	let list = [];
-	let blocked = false;
-
 	document.onkeyup = function(data){
 		if (data["which"] == 27){
 			hideAll();

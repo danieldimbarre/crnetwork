@@ -10,7 +10,7 @@ html,body {
 	padding: 0;
 	color: #fff;
 	cursor: default;
-	font-size: 11px;
+	font-size: 0.6vw;
 	overflow: hidden;
 	font-family: "Roboto";
 	box-sizing: border-box;
@@ -37,22 +37,22 @@ input::-webkit-inner-spin-button {
 }
 
 .SpawnCreate, .SpawnSelected, .SpawnLocation {
-	margin: 50px;
-	width: 300px;
+	margin: 3vw;
+	width: 16vw;
 	display: none;
-	letter-spacing: 1px;
+	letter-spacing: 0.05vw;
 }
 
 .SpawnSelectedNew {
 	float: left;
-	width: 49px;
-	height: 50px;
+	width: 2vw;
+	height: 2vw;
 	color: #715611;
-	font-size: 40px;
-	margin-top: 30px;
+	font-size: 1.7vw;
+	margin-top: 0.5vw;
 	text-align: center;
-	margin-left: 125px;
-	background: #fec026;
+	margin-left: 7vw;
+	background: #6ede81;
 	border-radius: 100%;
 }
 
@@ -63,12 +63,12 @@ input::-webkit-inner-spin-button {
 .SpawnSelectedCharacter {
 	float: left;
 	color: #999;
-	width: 250px;
-	font-size: 13px;
-	line-height: 20px;
-	padding: 20px 25px;
+	width: 14vw;
+	font-size: 0.6vw;
+	line-height: 1vw;
+	padding: 0.6vw;
 	position: relative;
-	margin-bottom: 20px;
+	margin-bottom: 0.5vw;
 	background: #141414;
 }
 
@@ -78,33 +78,33 @@ input::-webkit-inner-spin-button {
 }
 
 .SpawnSelectedCharacter i {
-	top: 40px;
-	right: 30px;
-	color: #fec026;
-	font-size: 40px;
+	top: 1.5vw;
+	right: 1.5vw;
+	color: #6ede81;
+	font-size: 2vw;
 	font-weight: 700;
 	position: absolute;
 }
 
 .SpawnMessage {
-	right: 50px;
+	right: 3vw;
 	color: #999;
-	bottom: 50px;
-	width: 600px;
-	padding: 40px;
+	bottom: 3vw;
+	width: 20vw;
+	padding: 0.6vw;
 	display: none;
-	font-size: 12px;
-	line-height: 22px;
+	font-size: 0.6vw;
+	line-height: 1vw;
 	position: absolute;
 	background: #141414;
 }
 
 .SpawnMessage span {
-	color: #fec026;
+	color: #6ede81;
 	display: block;
-	font-size: 30px;
-	letter-spacing: 2px;
-	margin-bottom: 25px;
+	font-size: 0.9vw;
+	letter-spacing: 0.1vw;
+	margin-bottom: 0.7vw;
 	font-family: "Gotham";
 	text-transform: uppercase;
 }
@@ -119,11 +119,11 @@ input::-webkit-inner-spin-button {
 	border: 0;
 	float: left;
 	color: #fff;
-	width: 300px;
-	padding: 20px;
-	font-size: 13px;
-	margin-bottom: 10px;
-	letter-spacing: 2px;
+	width: 15.2vw;
+	padding: 0.6vw;
+	font-size: 0.6vw;
+	margin-bottom: 0.5vw;
+	letter-spacing: 0.1vw;
 	background: #141414;
 }
 
@@ -135,11 +135,11 @@ input::-webkit-inner-spin-button {
 	border: 0;
 	float: left;
 	color: #999;
-	width: 145px;
-	padding: 20px;
-	margin-right: 10px;
-	margin-bottom: 10px;
-	letter-spacing: 2px;
+	width: 7.35vw;
+	padding: 0.6vw;
+	margin-right: 0.5vw;
+	margin-bottom: 0.5vw;
+	letter-spacing: 0.1vw;
 	background: #141414;
 }
 
@@ -154,61 +154,61 @@ input::-webkit-inner-spin-button {
 
 .SpawnCreateSubmit, .SpawnLocationSubmit {
 	float: left;
-	width: 260px;
-	padding: 20px;
+	width: 14vw;
+	padding: 0.6vw;
 	color: #cbeddb;
-	font-size: 16px;
+	font-size: 0.8vw;
 	text-align: center;
-	letter-spacing: 5px;
-	margin-bottom: 10px;
+	letter-spacing: 0.167vw;
+	margin-bottom: 0.5vw;
 	background: #2e6e4c;
 	text-transform: uppercase;
 }
 
 .SpawnCreateCancel {
 	float: left;
-	width: 260px;
+	width: 14vw;
 	color: #f9cfde;
-	font-size: 16px;
-	padding: 10px 20px;
+	font-size: 0.8vw;
+	padding: 0.6vw;
 	text-align: center;
-	letter-spacing: 5px;
+	letter-spacing: 0.167vw;
 	background: #7c344d;
 	text-transform: uppercase;
 }
 
 .SpawnCreateTitle {
 	float: left;
-	width: 300px;
-	color: #fec026;
-	font-size: 30px;
-	letter-spacing: 2px;
+	width: 16vw;
+	color: #6ede81;
+	font-size: 1.5vw;
+	letter-spacing: 0.15vw;
 	font-family: "Gotham";
 	text-transform: uppercase;
-	text-shadow: 1px 1px #000;
+	text-shadow: 0.05vw 0.05vw #000;
 }
 
 .SpawnCreateSubtitle {
 	float: left;
 	color: #fff;
-	width: 298px;
-	font-size: 9px;
-	margin-left: 2px;
-	margin-bottom: 20px;
-	letter-spacing: 2px;
+	width: 17.2vw;
+	font-size: 0.45vw;
+	margin-left: 0.167vw;
+	margin-bottom: 1vw;
+	letter-spacing: 0.16vw;
 	text-transform: uppercase;
-	text-shadow: 1px 1px #000;
+	text-shadow: 0.05vw 0.05vw #000;
 }
 
 .SpawnLocationBox {
 	color: #999;
 	float: left;
-	width: 260px;
-	padding: 20px;
-	font-size: 16px;
+	width: 14vw;
+	padding: 0.6vw;
+	font-size: 0.6vw;
 	text-align: center;
-	letter-spacing: 5px;
-	margin-bottom: 10px;
+	letter-spacing: 0.1vw;
+	margin-bottom: 0.5vw;
 	background: #141414;
 	text-transform: uppercase;
 }

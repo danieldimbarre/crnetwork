@@ -5,7 +5,7 @@ html,body {
 	padding: 0;
 	color: #fff;
 	cursor: default;
-	font-size: 11px;
+	font-size: 0.6vw;
 	overflow: hidden;
 	font-family: "Roboto";
 	box-sizing: border-box;
@@ -25,28 +25,28 @@ input::-webkit-inner-spin-button {
 }
 
 #Chat {
-	top: 50px;
-	left: 50px;
+	top: 3vw;
+	left: 3vw;
 	z-index: 997;
-	max-width: 500px;
+	max-width: 22vw;
 	position: absolute;
 }
 
 #ChatMessage {
 	float: left;
-	margin: 20px;
-	width: 460px;
-	height: 260px;
+	margin: 0.667vw;
+	width: 20.62vw;
+	height: 10.63vw;
 	display: none;
-	font-size: 13px;
+	font-size: 0.6vw;
 	overflow: hidden;
 	overflow-y: scroll;
-	letter-spacing: 2px;
-	text-shadow: 1px 1px #000;
+	letter-spacing: 0.1vw;
+	text-shadow: 0.05vw 0.05vw #000;
 }
 
 #ChatMessage div {
-	margin-bottom: 15px;
+	margin-bottom: 0.367vw;
 }
 
 #ChatMessage div:last-child {
@@ -55,13 +55,13 @@ input::-webkit-inner-spin-button {
 
 #ChatMessage red {
 	color: #ff0000;
-	font-size: 16px;
+	font-size: 0.55vw;
 	text-shadow: none;
 }
 
 #ChatMessage black {
 	color: #666;
-	font-size: 16px;
+	font-size: 0.55vw;
 	text-shadow: none;
 }
 
@@ -69,19 +69,19 @@ input::-webkit-inner-spin-button {
 	border: 0;
 	float: left;
 	color: #fff;
-	width: 500px;
-	padding: 20px;
+	width: 22vw;
+	padding: 0.667vw;
 	display: none;
 	cursor: default;
-	font-size: 13px;
-	margin-top: 15px;
-	letter-spacing: 2px;
-	background: #141414;
+	font-size: 0.6vw;
+	margin-top: 0.667vw;
+	letter-spacing: 0.1vw;
+	background: #14141410;
 }
 
 #ChatBackground {
 	float: left;
-	width: 500px;
-	height: 300px;
+	width: 22vw;
+	height: 12vw;
 	background: transparent;
 }

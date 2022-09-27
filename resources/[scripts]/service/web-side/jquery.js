@@ -1,27 +1,27 @@
 /* ---------------------------------------------------------------------------------------------------------------- */
 $(document).ready(function(){
-	window.addEventListener("message",function(event){
-		switch (event["data"]["action"]){
-			case "openSystem":
-				$("#Body").css("display","flex");
-				$(".Title").html(event["data"]["title"]);
-				Groups();
-			break;
-
-			case "closeSystem":
-				$("#Body").css("display","none");
-			break;
-
-			case "Update":
-				Groups();
-			break;
-		};
-	});
-
 	document.onkeyup = function(data){
 		if (data["which"] == 27){
 			$.post("http://service/closeSystem");
 		};
+	};
+});
+/* ---------------------------------------------------------------------------------------------------------------- */
+window.addEventListener("message",function(event){
+	switch (event["data"]["action"]){
+		case "openSystem":
+			$("#Body").css("display","flex");
+			$(".Title").html(event["data"]["title"]);
+			Groups();
+		break;
+
+		case "closeSystem":
+			$("#Body").css("display","none");
+		break;
+
+		case "Update":
+			Groups();
+		break;
 	};
 });
 /* ---------------------------------------------------------------------------------------------------------------- */

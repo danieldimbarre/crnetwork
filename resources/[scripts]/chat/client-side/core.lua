@@ -9,11 +9,11 @@ RegisterCommand("Chat",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- HUD:CLIENTMESSAGE
+-- CHAT:CLIENTMESSAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("hud:ClientMessage")
-AddEventHandler("hud:ClientMessage",function(Author,Message)
-	SendNUIMessage({ Action = "ChatMessage", Author = Author, Message = Message })
+RegisterNetEvent("chat:ClientMessage")
+AddEventHandler("chat:ClientMessage",function(Author,Message)
+	SendNUIMessage({ Action = "Message", Author = Author, Message = Message })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHATSUBMIT
@@ -25,7 +25,7 @@ RegisterNUICallback("ChatSubmit",function(Data,Callback)
 		if Data["message"]:sub(1,1) == "/" then
 			ExecuteCommand(Data["message"]:sub(2))
 		else
-			TriggerServerEvent("hud:ServerMessage",Data["message"])
+			TriggerServerEvent("chat:ServerMessage",Data["message"])
 		end
 	end
 

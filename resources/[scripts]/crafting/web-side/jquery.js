@@ -1,25 +1,25 @@
 var selectCraft = "selectCraft";
 
+window.addEventListener("message",function(event){
+	switch (event.data.action){
+		case "showNUI":
+			selectCraft = event.data.name;
+			$(".inventory").css("display","flex");
+			requestCrafting();
+		break;
+
+		case "hideNUI":
+			$(".inventory").css("display","none");
+			$(".ui-tooltip").hide();
+		break;
+
+		case "requestCrafting":
+			requestCrafting();
+		break;
+	}
+});
+
 $(document).ready(function(){
-	window.addEventListener("message",function(event){
-		switch (event.data.action){
-			case "showNUI":
-				selectCraft = event.data.name;
-				$(".inventory").css("display","flex");
-				requestCrafting();
-			break;
-
-			case "hideNUI":
-				$(".inventory").css("display","none");
-				$(".ui-tooltip").hide();
-			break;
-
-			case "requestCrafting":
-				requestCrafting();
-			break;
-		}
-	});
-
 	document.onkeyup = (data) => {
 		if (data["key"] === "Escape"){
 			$.post("http://crafting/invClose");

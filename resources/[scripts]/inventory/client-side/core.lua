@@ -2255,7 +2255,7 @@ CreateThread(function()
 			Distance = 1.0,
 			options = {
 				{
-					event = "bank:openSystem",
+					event = "hud:Bank",
 					label = "Abrir",
 					tunnel = "client"
 				}

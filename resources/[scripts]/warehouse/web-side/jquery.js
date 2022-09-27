@@ -1,30 +1,4 @@
 $(document).ready(function(){
-	window.addEventListener("message",function(event){
-		switch(event.data.action){
-			case "showMenu":
-				requestWarehouse();
-				$(".inventory").css("display","flex");
-			break;
-
-			case "hideMenu":
-				$(".inventory").css("display","none");
-				$(".ui-tooltip").hide();
-			break;
-
-			case "requestWarehouse":
-				requestWarehouse();
-			break;
-
-			case "updateWeight":
-				$("#weightTextLeft").html(`${(event["data"]["invPeso"]).toFixed(2)}   /   ${(event["data"]["invMaxpeso"]).toFixed(2)}`);
-				$("#weightTextRight").html(`${(event["data"]["warehousePeso"]).toFixed(2)}   /   ${(event["data"]["warehouseMaxpeso"]).toFixed(2)}`);
-
-				$("#weightBarLeft").html(`<div id="weightContent" style="width: ${event["data"]["invPeso"] / event["data"]["invMaxpeso"] * 100}%"></div>`);
-				$("#weightBarRight").html(`<div id="weightContent" style="width: ${event["data"]["warehousePeso"] / event["data"]["warehouseMaxpeso"] * 100}%"></div>`);
-			break;
-		}
-	});
-
 	document.onkeyup = data => {
 		if (data["key"] === "Escape"){
 			$.post("http://warehouse/invClose");
@@ -36,6 +10,32 @@ $(document).ready(function(){
 	$('body').mousedown(e => {
 		if(e.button == 1) return false;
 	});
+});
+
+window.addEventListener("message",function(event){
+	switch(event.data.action){
+		case "showMenu":
+			requestWarehouse();
+			$(".inventory").css("display","flex");
+		break;
+
+		case "hideMenu":
+			$(".inventory").css("display","none");
+			$(".ui-tooltip").hide();
+		break;
+
+		case "requestWarehouse":
+			requestWarehouse();
+		break;
+
+		case "updateWeight":
+			$("#weightTextLeft").html(`${(event["data"]["invPeso"]).toFixed(2)}   /   ${(event["data"]["invMaxpeso"]).toFixed(2)}`);
+			$("#weightTextRight").html(`${(event["data"]["warehousePeso"]).toFixed(2)}   /   ${(event["data"]["warehouseMaxpeso"]).toFixed(2)}`);
+
+			$("#weightBarLeft").html(`<div id="weightContent" style="width: ${event["data"]["invPeso"] / event["data"]["invMaxpeso"] * 100}%"></div>`);
+			$("#weightBarRight").html(`<div id="weightContent" style="width: ${event["data"]["warehousePeso"] / event["data"]["warehouseMaxpeso"] * 100}%"></div>`);
+		break;
+	}
 });
 
 const updateDrag = () => {

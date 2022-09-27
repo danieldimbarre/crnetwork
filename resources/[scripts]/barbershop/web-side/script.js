@@ -8,7 +8,7 @@ $(document).ready(function() {
         return true;
     }
 
-    window.addEventListener('message', function(event) {
+    window.addEventListener("message",function(event){
         $("#hair").attr("max", event.data.maxHair);
 
         document.getElementById("fathers").value = event.data.fathers;

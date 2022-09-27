@@ -125,7 +125,7 @@ AddEventHandler("engine:Supply",function(Entity)
 	if fuelLast < 99.0 then
 		local Gallon = Entity[5]
 		if not fuelNui and not Gallon then
-			SendNUIMessage({ show = true })
+			SendNUIMessage({ Action = "Show" })
 			fuelNui = true
 		end
 
@@ -155,7 +155,7 @@ AddEventHandler("engine:Supply",function(Entity)
 			if not Gallon then
 				fuelPrice = fuelPrice + 0.085
 				SetVehicleFuelLevel(Vehicle,vFuel + 0.025)
-				SendNUIMessage({ tank = floor(vFuel), price = fuelPrice, lts = 0.085 * 4 })
+				SendNUIMessage({ Action = "Tank", tank = floor(vFuel), price = fuelPrice, lts = 0.085 * 4 })
 			else
 				if GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100 > 1 then
 					SetPedAmmo(Ped,883325847,math.floor(GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100))
@@ -190,7 +190,7 @@ function finishFuel(Gallon,Plate,vFuel,vehNet)
 			fuelVeh[Plate] = fuelLast
 		end
 
-		SendNUIMessage({ show = false })
+		SendNUIMessage({ Action = "Hide" })
 	else
 		TriggerServerEvent("engine:tryFuel",Plate,vFuel)
 	end

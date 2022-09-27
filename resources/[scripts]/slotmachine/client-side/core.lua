@@ -67,7 +67,7 @@ AddEventHandler("slotmachine:Init",function(Entity)
 					SetEntityHeading(Spin02,TableHeading)
 					SetEntityHeading(Spin03,TableHeading)
 
-					SendNUIMessage({ show = true })
+					SendNUIMessage({ Action = "Show" })
 
 					CreateThread(function()
 						while Spin01 ~= nil do
@@ -85,7 +85,7 @@ AddEventHandler("slotmachine:Init",function(Entity)
 										DeleteEntity(Spin03)
 									end
 
-									SendNUIMessage({ show = false })
+									SendNUIMessage({ Action = "Hide" })
 
 									LocalPlayer["state"]["Cancel"] = false
 									LocalPlayer["state"]["Buttons"] = false
@@ -163,3 +163,10 @@ end
 function Creative.UpdateMachines(Table)
 	Machines = Table
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- NETWORK
+-----------------------------------------------------------------------------------------------------------------------------------------
+LocalPlayer["state"]["Network"] = false
+RegisterNUICallback("Network",function(Data,Callback)
+	LocalPlayer["state"]["Network"] = Data["status"]
+end)

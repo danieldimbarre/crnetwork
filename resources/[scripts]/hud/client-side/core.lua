@@ -326,3 +326,14 @@ AddEventHandler("hud:RemoveGems",function(Number)
 
 	SendNUIMessage({ Action = "Gemstone", Number = Gemstone })
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:RADIO
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Radio")
+AddEventHandler("hud:Radio",function(Frequency)
+	if type(Frequency) == "number" then
+		SendNUIMessage({ Action = "Frequency", Frequency = Frequency.."Mhz" })
+	else
+		SendNUIMessage({ Action = "Frequency", Frequency = Frequency })
+	end
+end)

@@ -349,12 +349,12 @@ Use = {
 		local naipes = { "<black>♣</black>","<red>♠</red>","<black>♦</black>","<red>♥</red>" }
 
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("hud:ClientMessage",source,Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
+		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
 
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("hud:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
+				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
 			end)
 		end
 	end,
@@ -375,12 +375,12 @@ Use = {
 		local Coins = math.random(2)
 		local Sides = { "Cara","Coroa" }
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("hud:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
+		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
 
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("hud:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins])
+				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins])
 			end)
 		end
 	end,
@@ -401,12 +401,12 @@ Use = {
 		local Coins = math.random(2)
 		local Sides = { "Cara","Coroa" }
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("hud:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
+		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
 
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("hud:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins])
+				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins])
 			end)
 		end
 	end,
@@ -4628,7 +4628,7 @@ Use = {
 
 	["radio"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("hud:RadioNui",source)
+		TriggerClientEvent("radio:RadioNui",source)
 		vRPC.AnimActive(source)
 	end,
 

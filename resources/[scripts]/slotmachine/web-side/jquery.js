@@ -1,14 +1,20 @@
+var Networked = false;
 // -------------------------------------------------------------------------------------------
-$(document).ready(function(){
-	window.addEventListener("message",function(event){
-		if (event["data"]["show"] !== undefined){
-			if (event["data"]["show"] == true){
-				$("#SlotMachine").css("display","block");
-			} else {
-				$("#SlotMachine").css("display","none");
-			}
+window.addEventListener("message",function(event){
+	switch (event["data"]["Action"]){
+		case "Show":
+			$("#SlotMachine").css("display","block");
+		break;
 
-			return
-		}
-	});
+		case "Hide":
+			$("#SlotMachine").css("display","none");
+		break;
+	}
 });
+// -------------------------------------------------------------------------------------------
+setInterval(() => {
+	if (navigator.onLine != Networked){
+		Networked = navigator.onLine
+		$.post("http://slotmachine/Network",JSON.stringify({ status: Networked }));
+	}
+},500)

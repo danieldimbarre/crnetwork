@@ -42,7 +42,7 @@ end
 
 function func.checkPermission(permission)
     local source = source
-    local user_id = vRP.Passaport(source)
+    local user_id = vRP.Passport(source)
     if type(permission) == "table" then
         for i, perm in pairs(permission) do
             if vRP.HasPermission(user_id, perm) then

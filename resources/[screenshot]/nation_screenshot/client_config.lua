@@ -95,7 +95,7 @@ screenshotTexture = false -- tirar fotos das texturas tamém (nyo)
 screenshotHair = true -- tirar fotos do cabelo (tiu muito toxico)
 
 takeAllScreenshots = function(_, args)
-    if startedScreenshots or not func.checkPermission({"Admin", "admin.permissao"}) then return end
+    if startedScreenshots or not func.checkPermission("Admin") then return end
     startedScreenshots = true
     screenshots = {}
     local ped = PlayerPedId()

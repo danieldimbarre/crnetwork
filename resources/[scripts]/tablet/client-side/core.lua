@@ -172,7 +172,7 @@ local Vehicles = {
 	{
 		["Coords"] = vec3(-42.39,-1101.32,25.98),
 		["heading"] = 19.85,
-		["Model"] = "r1200gs",
+		["Model"] = "r1200",
 		["Distance"] = 100
 	},{
 		["Coords"] = vec3(-54.61,-1096.86,25.98),

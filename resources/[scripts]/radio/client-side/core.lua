@@ -1,24 +1,23 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VRP
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Tunnel = module("vrp","lib/Tunnel")
+local Proxy = module("vrp","lib/Proxy")
+vRP = Proxy.getInterface("vRP")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECTION
+-----------------------------------------------------------------------------------------------------------------------------------------
+vSERVER = Tunnel.getInterface("radio")
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Frequency = 0
 local Timer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
--- HUD:RADIO
+-- RADIO:RADIONUI
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("hud:Radio")
-AddEventHandler("hud:Radio",function(Frequency)
-	if type(Frequency) == "number" then
-		SendNUIMessage({ Action = "Frequency", Frequency = Frequency.."Mhz" })
-	else
-		SendNUIMessage({ Action = "Frequency", Frequency = Frequency })
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- HUD:RADIONUI
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("hud:RadioNui")
-AddEventHandler("hud:RadioNui",function()
+RegisterNetEvent("radio:RadioNui")
+AddEventHandler("radio:RadioNui",function()
 	SetNuiFocus(true,true)
 	SetCursorLocation(0.9,0.9)
 	SendNUIMessage({ Action = "Radio", Show = true })
@@ -59,15 +58,15 @@ end)
 -- RADIOINATIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("RadioInative",function(Data,Callback)
-	TriggerEvent("hud:RadioClean")
+	TriggerEvent("radio:RadioClean")
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- HUD:RADIOCLEAN
+-- RADIO:RADIOCLEAN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("hud:RadioClean")
-AddEventHandler("hud:RadioClean",function()
+RegisterNetEvent("radio:RadioClean")
+AddEventHandler("radio:RadioClean",function()
 	if Frequency ~= 0 then
 		exports["pma-voice"]:removePlayerFromRadio()
 		TriggerEvent("hud:Radio","Offline")
@@ -84,7 +83,7 @@ CreateThread(function()
 
 			local Ped = PlayerPedId()
 			if vSERVER.CheckRadio() or IsPedSwimming(Ped) then
-				TriggerEvent("hud:RadioClean")
+				TriggerEvent("radio:RadioClean")
 			end
 		end
 

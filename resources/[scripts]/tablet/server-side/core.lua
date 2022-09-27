@@ -10,7 +10,7 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("tablet",Creative)
 vCLIENT = Tunnel.getInterface("tablet")
-vHUD = Tunnel.getInterface("hud")
+REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ function Creative.requestRental(vehName)
 				Text = "Alugar o veículo <b>"..vehicleName(vehName).."</b> usando o vale?"
 			end
 
-			if vHUD.Request(source,Text,"Sim, concluír pagamento","Não, mudei de ideia") then
+			if REQUEST.Function(source,Text,"Sim, concluír pagamento","Não, mudei de ideia") then
 				if vRP.TakeItem(Passport,"rentalveh",1,true) or vRP.PaymentGems(source,vehPrice) then
 					local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 					if vehicle[1] then
@@ -124,7 +124,7 @@ function Creative.requestBuy(vehName)
 					end
 				else
 					local vehPrice = vehiclePrice(vehName)
-					if vHUD.Request(source,"Comprar <b>"..vehicleName(vehName).."</b> por <b>$"..parseFormat(vehPrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
+					if REQUEST.Function(source,"Comprar <b>"..vehicleName(vehName).."</b> por <b>$"..parseFormat(vehPrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
 						if vRP.PaymentFull(Passport,source,vehPrice) then
 							vRP.Execute("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 							TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)
@@ -150,7 +150,7 @@ function Creative.startDrive()
 			Active[Passport] = true
 
 			if not exports["hud"]:Wanted(Passport) then
-				if vHUD.Request(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
+				if REQUEST.Function(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
 					if vRP.PaymentFull(Passport,source,100) then
 						Player(source)["state"]["Route"] = Passport
 						SetPlayerRoutingBucket(source,Passport)

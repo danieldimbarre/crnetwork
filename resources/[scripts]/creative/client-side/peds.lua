@@ -574,7 +574,7 @@ local pedList = {
 	},
 	{ -- Transporter
 		Distance = 20,
-		Coords = { 264.74,219.99,101.67,343.0 },
+		Coords = { 355.15,275.79,103.15,343.0 },
 		Model = "ig_casey",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},

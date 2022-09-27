@@ -23,259 +23,259 @@ local Machines = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1121.13,230.99,-50.84),
+		["Coords"] = vec3(981.6,48.9,70.07),
 		["prop"] = "vw_prop_casino_slot_04a_reels"
 	},
 	["2"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1117.13,230.28,-50.84),
+		["Coords"] = vec3(984.56,45.92,70.07),
 		["prop"] = "vw_prop_casino_slot_04a_reels"
 	},
 	["3"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1113.63,233.67,-50.84),
+		["Coords"] = vec3(990.98,48.85,70.07),
 		["prop"] = "vw_prop_casino_slot_04a_reels"
 	},
 	["4"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1110.97,238.64,-50.84),
+		["Coords"] = vec3(995.54,50.05,70.07),
 		["prop"] = "vw_prop_casino_slot_04a_reels"
 	},
 	["5"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1108.48,235.31,-50.84),
+		["Coords"] = vec3(994.5,44.73,70.07),
 		["prop"] = "vw_prop_casino_slot_04a_reels"
 	},
 	["6"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1104.57,229.44,-50.84),
+		["Coords"] = vec3(995.68,40.01,70.07),
 		["prop"] = "vw_prop_casino_slot_04a_reels"
 	},
 	["7"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1100.48,230.40,-50.84),
+		["Coords"] = vec3(999.53,37.76,70.07),
 		["prop"] = "vw_prop_casino_slot_04a_reels"
 	},
 	["8"] = {
 		["win"] = {},
 		["bet"] = 750,
 		["use"] = false,
-		["Coords"] = vec3(1100.93,231.00,-50.84),
+		["Coords"] = vec3(982.3,49.16,70.07),
 		["prop"] = "vw_prop_casino_slot_05a_reels"
 	},
 	["9"] = {
 		["win"] = {},
 		["bet"] = 750,
 		["use"] = false,
-		["Coords"] = vec3(1104.30,230.31,-50.84),
+		["Coords"] = vec3(984.79,46.8,70.07),
 		["prop"] = "vw_prop_casino_slot_05a_reels"
 	},
 	["10"] = {
 		["win"] = {},
 		["bet"] = 750,
 		["use"] = false,
-		["Coords"] = vec3(1109.21,234.76,-50.84),
+		["Coords"] = vec3(991.32,47.99,70.07),
 		["prop"] = "vw_prop_casino_slot_05a_reels"
 	},
 	["11"] = {
 		["win"] = {},
 		["bet"] = 750,
 		["use"] = false,
-		["Coords"] = vec3(1111.71,238.73,-50.84),
+		["Coords"] = vec3(995.54,50.05,70.07),
 		["prop"] = "vw_prop_casino_slot_05a_reels"
 	},
 	["12"] = {
 		["win"] = {},
 		["bet"] = 750,
 		["use"] = false,
-		["Coords"] = vec3(1113.36,234.54,-50.84),
+		["Coords"] = vec3(994.73,45.61,70.07),
 		["prop"] = "vw_prop_casino_slot_05a_reels"
 	},
 	["13"] = {
 		["win"] = {},
 		["bet"] = 750,
 		["use"] = false,
-		["Coords"] = vec3(1117.87,229.74,-50.84),
+		["Coords"] = vec3(996.02,39.16,70.07),
 		["prop"] = "vw_prop_casino_slot_05a_reels"
 	},
 	["14"] = {
 		["win"] = {},
 		["bet"] = 750,
 		["use"] = false,
-		["Coords"] = vec3(1121.59,230.41,-50.84),
+		["Coords"] = vec3(999.53,37.76,70.07),
 		["prop"] = "vw_prop_casino_slot_05a_reels"
 	},
 	["15"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1120.85,231.68,-50.84),
+		["Coords"] = vec3(985.33,45.43,70.07),
 		["prop"] = "vw_prop_casino_slot_03a_reels"
 	},
 	["16"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1114.55,233.66,-50.84),
+		["Coords"] = vec3(994.27,50.83,70.07),
 		["prop"] = "vw_prop_casino_slot_03a_reels"
 	},
 	["17"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1110.22,238.74,-50.84),
+		["Coords"] = vec3(995.27,44.24,70.07),
 		["prop"] = "vw_prop_casino_slot_03a_reels"
 	},
 	["18"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1105.48,229.43,-50.84),
+		["Coords"] = vec3(999.58,39.24,70.07),
 		["prop"] = "vw_prop_casino_slot_03a_reels"
 	},
 	["19"] = {
 		["win"] = {},
 		["bet"] = 500,
 		["use"] = false,
-		["Coords"] = vec3(1101.22,231.69,-50.84),
+		["Coords"] = vec3(982.9,49.6,70.07),
 		["prop"] = "vw_prop_casino_slot_06a_reels"
 	},
 	["20"] = {
 		["win"] = {},
 		["bet"] = 500,
 		["use"] = false,
-		["Coords"] = vec3(1108.91,233.90,-50.84),
+		["Coords"] = vec3(990.61,47.41,70.07),
 		["prop"] = "vw_prop_casino_slot_06a_reels"
 	},
 	["21"] = {
 		["win"] = {},
 		["bet"] = 500,
 		["use"] = false,
-		["Coords"] = vec3(1112.40,239.02,-50.84),
+		["Coords"] = vec3(996.27,49.92,70.07),
 		["prop"] = "vw_prop_casino_slot_06a_reels"
 	},
 	["22"] = {
 		["win"] = {},
 		["bet"] = 500,
 		["use"] = false,
-		["Coords"] = vec3(1117.57,228.87,-50.84),
+		["Coords"] = vec3(995.31,38.58,70.07),
 		["prop"] = "vw_prop_casino_slot_06a_reels"
 	},
 	["23"] = {
 		["win"] = {},
 		["bet"] = 1000,
 		["use"] = false,
-		["Coords"] = vec3(1120.75,232.42,-50.84),
+		["Coords"] = vec3(986.04,46.01,70.07),
 		["prop"] = "vw_prop_casino_slot_02a_reels"
 	},
 	["24"] = {
 		["win"] = {},
 		["bet"] = 1000,
 		["use"] = false,
-		["Coords"] = vec3(1114.84,234.52,-50.84),
+		["Coords"] = vec3(993.84,51.44,70.07),
 		["prop"] = "vw_prop_casino_slot_02a_reels"
 	},
 	["25"] = {
 		["win"] = {},
 		["bet"] = 1000,
 		["use"] = false,
-		["Coords"] = vec3(1109.53,239.02,-50.84),
+		["Coords"] = vec3(995.97,44.82,70.07),
 		["prop"] = "vw_prop_casino_slot_02a_reels"
 	},
 	["26"] = {
 		["win"] = {},
 		["bet"] = 1000,
 		["use"] = false,
-		["Coords"] = vec3(1105.78,230.29,-50.84),
+		["Coords"] = vec3(999.88,39.92,70.07),
 		["prop"] = "vw_prop_casino_slot_02a_reels"
 	},
 	["27"] = {
 		["win"] = {},
 		["bet"] = 1250,
 		["use"] = false,
-		["Coords"] = vec3(1120.85,233.16,-50.84),
+		["Coords"] = vec3(985.71,46.86,70.07),
 		["prop"] = "vw_prop_casino_slot_01a_reels"
 	},
 	["28"] = {
 		["win"] = {},
 		["bet"] = 1250,
 		["use"] = false,
-		["Coords"] = vec3(1114.11,235.07,-50.84),
+		["Coords"] = vec3(993.57,52.14,70.07),
 		["prop"] = "vw_prop_casino_slot_01a_reels"
 	},
 	["29"] = {
 		["win"] = {},
 		["bet"] = 1250,
 		["use"] = false,
-		["Coords"] = vec3(1108.93,239.47,-50.84),
+		["Coords"] = vec3(995.64,45.67,70.07),
 		["prop"] = "vw_prop_casino_slot_01a_reels"
 	},
 	["30"] = {
 		["win"] = {},
 		["bet"] = 1250,
 		["use"] = false,
-		["Coords"] = vec3(1105.04,230.84,-50.84),
+		["Coords"] = vec3(1000.35,40.49,70.07),
 		["prop"] = "vw_prop_casino_slot_01a_reels"
 	},
 	["31"] = {
 		["win"] = {},
 		["bet"] = 1000,
 		["use"] = false,
-		["Coords"] = vec3(1101.32,232.43,-50.84),
+		["Coords"] = vec3(983.38,50.17,70.07),
 		["prop"] = "vw_prop_casino_slot_07a_reels"
 	},
 	["32"] = {
 		["win"] = {},
 		["bet"] = 1000,
 		["use"] = false,
-		["Coords"] = vec3(1108.00,233.91,-50.84),
+		["Coords"] = vec3(989.84,47.91,70.07),
 		["prop"] = "vw_prop_casino_slot_07a_reels"
 	},
 	["33"] = {
 		["win"] = {},
 		["bet"] = 1000,
 		["use"] = false,
-		["Coords"] = vec3(1112.99,239.47,-50.84),
+		["Coords"] = vec3(997.01,49.99,70.07),
 		["prop"] = "vw_prop_casino_slot_07a_reels"
 	},
 	["34"] = {
 		["win"] = {},
 		["bet"] = 1000,
 		["use"] = false,
-		["Coords"] = vec3(1116.66,228.88,-50.84),
+		["Coords"] = vec3(994.54,39.07,70.07),
 		["prop"] = "vw_prop_casino_slot_07a_reels"
 	},
 	["35"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1116.39,229.76,-50.84),
+		["Coords"] = vec3(983.69,50.85,70.07),
 		["prop"] = "vw_prop_casino_slot_08a_reels"
 	},
 	["36"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1107.73,234.79,-50.84),
+		["Coords"] = vec3(990.07,48.79,70.07),
 		["prop"] = "vw_prop_casino_slot_08a_reels"
 	},
 	["37"] = {
 		["win"] = {},
 		["bet"] = 250,
 		["use"] = false,
-		["Coords"] = vec3(1101.22,233.17,-50.84),
+		["Coords"] = vec3(994.77,39.95,70.07),
 		["prop"] = "vw_prop_casino_slot_08a_reels"
 	}
 }

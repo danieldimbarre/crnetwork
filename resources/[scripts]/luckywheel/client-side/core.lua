@@ -37,7 +37,7 @@ CreateThread(function()
 
 					if LoadModel("silvias15") and LoadModel("vw_prop_vw_luckywheel_02a") then
 						Wheel = CreateObjectNoOffset("vw_prop_vw_luckywheel_02a",990.48,43.31,71.26,false,false,false)
-						SetEntityHeading(Wheel,0.0)
+						SetEntityHeading(Wheel,150.24)
 
 						Vehicle = CreateVehicle("silvias15",975.6,40.62,72.15,195.6,false,false)
 						SetVehicleNumberPlateText(Vehicle,"PDMSPORT")

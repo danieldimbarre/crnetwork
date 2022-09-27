@@ -231,11 +231,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 getBankMoney = function(user_id)
     local source = getUserSource(user_id)
-    local data = vRP.GetBank(source)
-    print(user_id)
-    print(source)
-    print(json.encode(data))
-    return vRP.UserBank(user_id, "Private")
+    return vRP.GetBank(source)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- addBankMoney

@@ -629,6 +629,18 @@ local List = {
 			}
 		}
 	},
+	["Lockpick"] = {
+		["List"] = {
+			["lockpick"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["copper"] = 15,
+					["aluminum"] = 20
+				}
+			}
+		}
+	},		
 	["Inventory"] = {
 		["List"] = {
 			["ketchup"] = {

@@ -30,9 +30,9 @@ local pedList = {
 		Model = "ig_g",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Aztecas
+	{ -- LockPick
 		Distance = 100,
-		Coords = { 512.29,-1803.52,28.51,246.62 },
+		Coords = { 121.3,-2468.84,6.1,53.86 },
 		Model = "ig_g",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},

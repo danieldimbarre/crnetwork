@@ -495,6 +495,17 @@ RegisterCommand("spectate",function(source,args)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DEBUG
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("debug",function(source,args,rawCommand)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin") then
+			TriggerClientEvent("admin:toggleDebug",source)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- TXADMIN:EVENTS:SERVERSHUTTINGDOWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler('txAdmin:events:serverShuttingDown',function(eventData)

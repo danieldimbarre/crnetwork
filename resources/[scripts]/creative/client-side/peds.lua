@@ -284,6 +284,12 @@ local pedList = {
 		Model = "s_m_m_paramedic_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
+	{ -- Paramedic
+		Distance = 100,
+		Coords = { -674.37,339.24,83.07,189.93 },
+		Model = "s_m_m_paramedic_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
 	{ -- Pharmacy
 		Distance = 20,
 		Coords = { -665.78,321.34,83.09,215.44 },

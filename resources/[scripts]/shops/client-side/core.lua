@@ -66,9 +66,9 @@ end
 -- SHOPLIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local shopList = {
-	{ -546.15,-206.63,38.15,"Identity",false },
-	{ -544.25,-205.7,38.11,"Identity",false },
-	{ -546.15,-206.63,38.15,"Identity2",false },
+	{ -542.87,-198.35,38.23,"Identity",false },
+	{ -551.27,-203.09,38.23,"Identity",false },
+	{ -544.76,-185.81,52.2,"Identity2",false },
 	{ 24.9,-1346.8,29.49,"Departament",true },
 	{ 2556.74,381.24,108.61,"Departament",true },
 	{ 1164.82,-323.65,69.2,"Departament",true },
@@ -108,18 +108,16 @@ local shopList = {
 	{ 1523.69,3782.48,34.51,"Fishing2",true },
 	{ -695.56,5802.12,17.32,"Hunting",false },
 	{ -679.13,5839.52,17.32,"Hunting2",false },
-	{ -662.29,315.33,83.09,"Pharmacy",false },
-	{ -662.0,318.22,83.09,"Pharmacy",false },
-	{ -661.79,321.14,83.09,"Pharmacy",false },
+	{ -665.78,321.34,83.09,"Pharmacy",false },
 	{ -674.38,339.24,83.09,"Paramedic",false },
 	{ -254.64,6326.95,32.82,"Paramedic",false },
 	{ -428.57,-1728.35,19.78,"Recycle",false },
 	{ 180.55,2793.45,45.65,"Recycle",false },
 	{ -195.79,6264.95,31.49,"Recycle",false },
 	{ 487.3,-997.08,30.68,"Police",false },
-	{ 1838.43,3686.29,34.19,"Police",false },
+	-- { 1838.43,3686.29,34.19,"Police",false },
 	{ -447.15,6016.51,36.99,"Police",false },
-	{ 385.5,799.94,190.49,"Police",false },
+	-- { 385.5,799.94,190.49,"Police",false },
 	{ 362.37,-1603.12,25.44,"Police",false },
 	{ -628.41,-238.36,38.05,"Miners",false },
 	{ -1403.52,-628.62,28.68,"Criminal",false },
@@ -269,8 +267,7 @@ CreateThread(function()
 	for Number,v in pairs(shopList) do
 		exports["target"]:AddCircleZone("Shops:"..Number,vec3(v[1],v[2],v[3]),0.5,{
 			name = "Shops:"..Number,
-			heading = 3374176,
-			debugPoly = true
+			heading = 3374176
 		},{
 			shop = Number,
 			Distance = 1.75,

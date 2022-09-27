@@ -120,8 +120,8 @@ local Garages = {
 	["61"] = { name = "Police", payment = false, perm = "Police" },
 	["62"] = { name = "heliPolice", payment = false, perm = "Police" },
 
-	["63"] = { name = "Police", payment = false, perm = "Police" },
-	["64"] = { name = "heliPolice", payment = false, perm = "Police" },
+	-- ["63"] = { name = "Police", payment = false, perm = "Police" },
+	-- ["64"] = { name = "heliPolice", payment = false, perm = "Police" },
 
 	["65"] = { name = "Police", payment = false, perm = "Police" },
 	["66"] = { name = "heliPolice", payment = false, perm = "Police" },
@@ -129,7 +129,7 @@ local Garages = {
 	["67"] = { name = "Police", payment = false, perm = "Police" },
 	["68"] = { name = "busPolice", payment = false, perm = "Police" },
 
-	["69"] = { name = "Police", payment = false, perm = "Police" },
+	-- ["69"] = { name = "Police", payment = false, perm = "Police" },
 
 	["70"] = { name = "Police", payment = false, perm = "Police" },
 	["71"] = { name = "heliPolice", payment = false, perm = "Police" },

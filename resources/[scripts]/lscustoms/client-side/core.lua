@@ -40,8 +40,8 @@ local isPurchaseSuccessful = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 local bennysLocations = {
 	["police01"] = {
-		pos = vector3(853.6,-1392.09,26.13),
-		heading = 90.00,
+		pos = vector3(435.62,-976.14,25.7),
+		heading = 87.88,
 		permission = "Police"
 	},
 	["paramedic01"] = {

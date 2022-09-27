@@ -153,7 +153,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserByPhone = function(phone)
     local data = vRP.UserPhone(phone)
-    if data.id ~= nil then
+    if data ~= false then
         return data.id
     end
     return vRP.UserPhone(phone)

@@ -301,9 +301,9 @@ AddEventHandler("admin:Print",function(Message)
 	if Passport then
 		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** "..Message.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 
-		if not vRP.HasPermission(Passaport,"Admin") then
-			vRP.Kick(Passaport,"Banido.")
-			local Identity = vRP.Identity(Passaport)
+		if not vRP.HasPermission(Passport,"Admin") then
+			vRP.Kick(Passport,"Banido.")
+			local Identity = vRP.Identity(Passport)
 			vRP.Execute("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
 		end
 	end
@@ -318,9 +318,9 @@ AddEventHandler("explosionEvent",function(sender,ev)
 		if Passport then
 			TriggerEvent("Discord","Hackers","**Source:** "..sender.."\n**Passaporte:** "..Passport.."\n**Motivo:** Criou explosões\n**Address:** "..GetPlayerEndpoint(sender),3092790)
 
-			if not vRP.HasPermission(Passaport,"Admin") then
-				vRP.Kick(Passaport,"Banido.")
-				local Identity = vRP.Identity(Passaport)
+			if not vRP.HasPermission(Passport,"Admin") then
+				vRP.Kick(Passport,"Banido.")
+				local Identity = vRP.Identity(Passport)
 				vRP.Execute("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
 			end
 		end
@@ -336,7 +336,7 @@ AddEventHandler("ResourceStop",function(Resource)
 	if Passport then
 		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Pausou o resource "..Resource.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 
-		if not vRP.HasPermission(Passaport,"Admin") then
+		if not vRP.HasPermission(Passport,"Admin") then
 			vRP.Kick(Passport,"Banido.")
 			local Identity = vRP.Identity(Passport)
 			vRP.Execute("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })

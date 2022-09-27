@@ -262,7 +262,7 @@ end
 -- getUserData
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserData = function(user_id, key)
-    local consult = vRP.Query("playerdata/GetData",{ Passaport = user_id, dkey = key })
+    local consult = vRP.Query("playerdata/GetData",{ Passport = tonumber(user_id), dkey = key })
 	if consult[1] then
 		return consult[1]["dvalue"]
 	else
@@ -273,8 +273,7 @@ end
 -- setUserData
 -----------------------------------------------------------------------------------------------------------------------------------------
 setUserData = function(user_id, key, data)
-    print(user_id)
-    vRP.Execute("playerdata/SetData", { Passaport = user_id, dkey = key, dvalue = data })
+    vRP.Execute("playerdata/SetData", { Passport = tonumber(user_id), dkey = key, dvalue = data })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserFines

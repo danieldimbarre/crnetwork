@@ -156,7 +156,7 @@ getUserByPhone = function(phone)
     if data ~= false then
         return data.id
     end
-    return vRP.UserPhone(phone)
+    return nil
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUsers
@@ -204,7 +204,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- createBlipTimeout
 -----------------------------------------------------------------------------------------------------------------------------------------
-createBlipTimeout = function(source,idgens,x,y,z,title,timeout)
+createBlipTimeout = function(source,x,y,z,title,timeout)
     local idgens = lib.newIDGenerator()
     local id = idgens:gen()
     TriggerClientEvent(GetCurrentResourceName()..':addblip',source,id,x,y,z,358,71,title,0.6,false)
@@ -279,7 +279,7 @@ end
 -- getUserFines
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserFines = function(user_id)
-    local source = source
+    local source = getUserSource(user_id)
     local fines = {}
     local finesamount = vRP.GetFines(source) or 0
 
@@ -303,6 +303,7 @@ end
 -- getUserFine
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserFine = function(source, id)
+    local source = getUserSource(user_id)
     local fines = {}
     local finesamount = vRP.GetFines(source)
 
@@ -316,8 +317,8 @@ end
 -- payFines
 -----------------------------------------------------------------------------------------------------------------------------------------
 payFines = function(user_id, id)
-    local source = source
-    local amount = getUserFine(source, id)
+    local source = getUserSource(user_id)
+    local amount = getUserFine(user_id, id)
     return vRP.RemoveFine(user_id,amount,source)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

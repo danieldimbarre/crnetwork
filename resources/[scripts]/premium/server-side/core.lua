@@ -332,14 +332,16 @@ end)
 RegisterServerEvent("ResourceStop")
 AddEventHandler("ResourceStop",function(Resource)
 	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport then
-		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Pausou o resource "..Resource.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if Passport then
+			TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Pausou o resource "..Resource.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 
-		if not vRP.HasPermission(Passport,"Admin") then
-			vRP.Kick(Passport,"Banido.")
-			local Identity = vRP.Identity(Passport)
-			vRP.Execute("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+			if not vRP.HasPermission(Passport,"Admin") then
+				vRP.Kick(Passport,"Banido.")
+				local Identity = vRP.Identity(Passport)
+				vRP.Execute("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+			end
 		end
 	end
 end)

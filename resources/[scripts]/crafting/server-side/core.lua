@@ -635,8 +635,11 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["copper"] = 15,
-					["aluminum"] = 20
+					["copper"] = 5,
+					["aluminum"] = 5,
+					["plastic"] = 5,
+					["glass"] = 5,
+					["rubber"] = 5
 				}
 			}
 		}

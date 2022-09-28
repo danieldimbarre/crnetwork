@@ -37,7 +37,7 @@ input::-webkit-inner-spin-button {
 }
 
 .SpawnCreate, .SpawnSelected, .SpawnLocation {
-	margin: 3vw;
+	margin: 2vw;
 	width: 16vw;
 	display: none;
 	letter-spacing: 0.05vw;

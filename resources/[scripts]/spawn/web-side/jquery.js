@@ -2,13 +2,14 @@
 window.addEventListener("message",function(event){
 	switch (event["data"]["Action"]){
 		case "Spawn":
+			console.log(5,$(".SpawnSelected").css("display"));
 			if ($(".SpawnSelected").css("display") === "none"){
 				$(".SpawnSelected").css("display","block");
 				$(".SpawnMessage").css("display","block");
 			}
-
+			console.log(10);
 			var Characters = event["data"]["Table"].sort((a,b) => (a["Passport"] > b["Passport"]) ? 1 : -1);
-
+			console.log(12);
 			$(".SpawnSelected").html(`
 				<div class="SpawnCreateTitle">Personagem</div>
 				<div class="SpawnCreateSubtitle">Selecione abaixo o personagem desejado</div>
@@ -23,6 +24,7 @@ window.addEventListener("message",function(event){
 
 				<div class="SpawnSelectedNew">+</div>
 			`);
+			console.log(27);
 		break;
 
 		case "Location":

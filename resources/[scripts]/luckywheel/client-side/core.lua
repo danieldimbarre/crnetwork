@@ -39,7 +39,7 @@ CreateThread(function()
 						Wheel = CreateObjectNoOffset("vw_prop_vw_luckywheel_02a",990.28,42.85,71.76,false,false,false)
 						SetEntityHeading(Wheel,-31.8)
 
-						Vehicle = CreateVehicle("nissangtrnismo",975.37,40.84,71.71,221.11,false,false)
+						Vehicle = CreateVehicle("nissangtrnismo",975.37,40.84,72.15,221.11,false,false)
 						SetVehicleNumberPlateText(Vehicle,"PDMSPORT")
 						SetVehicleOnGroundProperly(Vehicle)
 						FreezeEntityPosition(Vehicle,true)
@@ -110,7 +110,7 @@ AddEventHandler("luckywheel:Start",function(Result)
 					rollingSpeed = rollingRatio / 200
 					local yRot = xRot["y"] - rollingSpeed
 					wheelAngles = wheelAngles - rollingSpeed
-					SetEntityRotation(Wheel,0.0,yRot,0.0,2,true)
+					SetEntityRotation(Wheel,0.0,yRot,-31.8,2,true)
 
 					Wait(0)
 				end

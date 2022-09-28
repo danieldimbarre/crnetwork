@@ -44,7 +44,7 @@ local pedList = {
 	},
 	{ -- Cassino
 		Distance = 25,
-		Coords = { 990.41,40.9,71.26,110.56 },
+		Coords = { 990.48,41.0,71.26,90.71 },
 		Model = "s_f_y_casino_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},

@@ -35,8 +35,8 @@ input::-webkit-inner-spin-button {
 }
 
 #NaviWeapons {
-	top: 7vw;
-	right: 3vw;
+	top: 6vw;
+	right: 2vw;
 	color: #ccc;
 	display: none;
 	text-align: right;
@@ -55,15 +55,15 @@ input::-webkit-inner-spin-button {
 }
 
 #NaviLogo {
-	margin: 3vw 47.8vw;
+	margin: 2vw 47.8vw;
 	float: left;
 	text-align : center;
 	opacity: .75;
 }
 
 #NaviTop {
-	top: 3vw;
-	right: 3vw;
+	top: 2vw;
+	right: 2vw;
 	color: #ccc;
 	position: absolute;
 }

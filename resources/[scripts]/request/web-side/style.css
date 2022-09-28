@@ -26,7 +26,7 @@ input::-webkit-inner-spin-button {
 
 #Request {
 	width: 25vw;
-	bottom: 3vw;
+	bottom: 2vw;
 	display: none;
 	position: absolute;
 	left: calc(50% - 11.2vw);

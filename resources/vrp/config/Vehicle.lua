@@ -6627,7 +6627,7 @@ local List = {
 		["Gems"] = 150
 	},
 	["amarok"] = {
-		["Name"] = "",
+		["Name"] = "Amarok",
 		["Weight"] = 80,
 		["Price"] = 0,
 		["Type"] = "rental",

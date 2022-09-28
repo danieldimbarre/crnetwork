@@ -180,7 +180,7 @@ AddEventHandler("police:Arrest",function(entity)
 				local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })
 				if Vehicle[1] then
 					if Vehicle[1]["arrest"] <= os.time() then
-						vRP.Execute("vehicles/arrestVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })
+						vRP.Query("vehicles/arrestVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })
 						TriggerClientEvent("Notify",source,"verde","Veículo apreendido.",5000)
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Veículo já se encontra apreendido.",5000)

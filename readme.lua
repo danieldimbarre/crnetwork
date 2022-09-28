@@ -1,14 +1,10 @@
 vRP.Identities(source: int)
 
-vRP.Drivers(Name: string,Init: string,Prepare: string,Query: string)
-
 vRP.Archive(Archive: string,Text: string)
 
 vRP.Prepare(Name: string,Query: string)
 
-vRP.Query(Name: string,Params: string,Mode: string)
-
-vRP.Execute(Name: string,Params: string)
+vRP.Query(Name: string,Params: string)
 
 vRP.Banned(License: string)
 

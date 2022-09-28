@@ -616,9 +616,9 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 										local Identity = vRP.Identity(Passport)
 										if Identity then
 											if Identity["sex"] == "M" then
-												vRP.Execute("fidentity/NewIdentity",{ name = nameMale[math.random(#nameMale)], name2 = userName2[math.random(#userName2)], blood = math.random(4) })
+												vRP.Query("fidentity/NewIdentity",{ name = nameMale[math.random(#nameMale)], name2 = userName2[math.random(#userName2)], blood = math.random(4) })
 											else
-												vRP.Execute("fidentity/NewIdentity",{ name = nameFemale[math.random(#nameFemale)], name2 = userName2[math.random(#userName2)], blood = math.random(4) })
+												vRP.Query("fidentity/NewIdentity",{ name = nameFemale[math.random(#nameFemale)], name2 = userName2[math.random(#userName2)], blood = math.random(4) })
 											end
 
 											local Identity = vRP.Identity(Passport)

@@ -69,14 +69,14 @@ function Creative.Rental(vehName)
 					local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 					if vehicle[1] then
 						if vehicle[1]["rental"] <= os.time() then
-							vRP.Execute("vehicles/rentalVehiclesUpdate",{ Passport = Passport, vehicle = vehName })
+							vRP.Query("vehicles/rentalVehiclesUpdate",{ Passport = Passport, vehicle = vehName })
 							TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..vehicleName(vehName).."</b> atualizado.",5000)
 						else
-							vRP.Execute("vehicles/rentalVehiclesDays",{ Passport = Passport, vehicle = vehName })
+							vRP.Query("vehicles/rentalVehiclesDays",{ Passport = Passport, vehicle = vehName })
 							TriggerClientEvent("Notify",source,"verde","Adicionado <b>30 Dias</b> de aluguel no veículo <b>"..vehicleName(vehName).."</b>.",5000)
 						end
 					else
-						vRP.Execute("vehicles/rentalVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
+						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 						TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..vehicleName(vehName).."</b> concluído.",5000)
 					end
 				else
@@ -117,7 +117,7 @@ function Creative.Buy(vehName)
 			else
 				if vehicleType(vehName) == "work" then
 					if vRP.PaymentFull(Passport,source,vehiclePrice(vehName)) then
-						vRP.Execute("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "true" })
+						vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "true" })
 						TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)
 					else
 						TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -126,7 +126,7 @@ function Creative.Buy(vehName)
 					local vehPrice = vehiclePrice(vehName)
 					if REQUEST.Function(source,"Comprar <b>"..vehicleName(vehName).."</b> por <b>$"..parseFormat(vehPrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
 						if vRP.PaymentFull(Passport,source,vehPrice) then
-							vRP.Execute("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
+							vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 							TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)
 						else
 							TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)

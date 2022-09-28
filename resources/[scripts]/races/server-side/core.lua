@@ -6085,11 +6085,11 @@ function Creative.finishRace(Id,Points)
 		local Consult = vRP.Query("races/Result",{ Race = Id, Passport = Passport })
 		if Consult[1] then
 			if parseInt(Points) < parseInt(Consult[1]["Points"]) then
-				vRP.Execute("races/Records",{ Race = Id, Passport = Passport, Vehicle = vehicleName(vehName), Points = parseInt(Points) })
+				vRP.Query("races/Records",{ Race = Id, Passport = Passport, Vehicle = vehicleName(vehName), Points = parseInt(Points) })
 			end
 		else
 			local Identity = vRP.Identity(Passport)
-			vRP.Execute("races/Insert",{ Race = Id, Passport = Passport, Name = Identity["name"].." "..Identity["name2"], Vehicle = vehicleName(vehName), Points = parseInt(Points) })
+			vRP.Query("races/Insert",{ Race = Id, Passport = Passport, Name = Identity["name"].." "..Identity["name2"], Vehicle = vehicleName(vehName), Points = parseInt(Points) })
 		end
 
 		if Ilegal[Passport] then

@@ -194,7 +194,7 @@ AddEventHandler("chest:Upgrade",function()
 		if vRP.HasGroup(Passport,Open[Passport]["Name"]) then
 			if REQUEST.Function(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
 				if vRP.PaymentFull(Passport,source,10000) then
-					vRP.Execute("chests/UpdateChests",{ name = Open[Passport]["Name"] })
+					vRP.Query("chests/UpdateChests",{ name = Open[Passport]["Name"] })
 					TriggerClientEvent("Notify",source,"verde","Compra concluída.",3000)
 				else
 					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)

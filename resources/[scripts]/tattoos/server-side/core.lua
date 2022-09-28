@@ -35,6 +35,6 @@ function Creative.updateTattoo(status)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		vRP.Execute("playerdata/SetData",{ Passport = Passport, dkey = "Tatuagens", dvalue = json.encode(status) })
+		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Tatuagens", dvalue = json.encode(status) })
 	end
 end

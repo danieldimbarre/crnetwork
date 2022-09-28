@@ -25,7 +25,7 @@ AddEventHandler("warehouse:Password",function(Name)
 			if Keyboard then
 				local Password = sanitizeString(Keyboard[1],"0123456789",true)
 				if string.len(Password) >= 4 and string.len(Password) <= 20 then
-					vRP.Execute("warehouse/Password",{ name = Name, password = Password })
+					vRP.Query("warehouse/Password",{ name = Name, password = Password })
 					TriggerClientEvent("Notify",source,"verde","Senha atualizada.",5000)
 				else
 					TriggerClientEvent("Notify",source,"amarelo","Necessário possuir entre <b>4</b> e <b>20</b> números.",5000)
@@ -53,7 +53,7 @@ function Creative.Warehouse(Name)
 						else
 							if REQUEST.Function(source,"Pagar o aluguel do armazém por <b>$20.000</b>?","Sim, por favor","Não, decido depois") then
 								if vRP.PaymentFull(Passport,source,20000) then
-									vRP.Execute("warehouse/Tax",{ name = Name })
+									vRP.Query("warehouse/Tax",{ name = Name })
 									return true
 								else
 									TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -72,7 +72,7 @@ function Creative.Warehouse(Name)
 						if string.len(Password) >= 4 and string.len(Password) <= 20 then
 							if REQUEST.Function(source,"Finalizar a compra usando a senha <b>"..Password.."</b>?","Sim, por favor","Não, decido depois") then
 								if vRP.PaymentFull(Passport,source,100000) then
-									vRP.Execute("warehouse/Buy",{ name = Name, Passport = Passport, password = Password })
+									vRP.Query("warehouse/Buy",{ name = Name, Passport = Passport, password = Password })
 									return true
 								else
 									TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -101,7 +101,7 @@ AddEventHandler("warehouse:Upgrade",function(Name)
 		if Warehouse[1] then
 			if REQUEST.Function(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
 				if vRP.PaymentFull(Passport,source,10000) then
-					vRP.Execute("warehouse/Upgrade",{ name = Name })
+					vRP.Query("warehouse/Upgrade",{ name = Name })
 					TriggerClientEvent("Notify",source,"verde","Aumento concluído.",3000)
 				else
 					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)

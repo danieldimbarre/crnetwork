@@ -304,7 +304,7 @@ AddEventHandler("admin:Print",function(Message)
 		if not vRP.HasGroup(Passport,"Admin") then
 			vRP.Kick(Passport,"Banido.")
 			local Identity = vRP.Identity(Passport)
-			vRP.Execute("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+			vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
 		end
 	end
 end)
@@ -321,7 +321,7 @@ AddEventHandler("explosionEvent",function(sender,ev)
 			if not vRP.HasGroup(Passport,"Admin") then
 				vRP.Kick(Passport,"Banido.")
 				local Identity = vRP.Identity(Passport)
-				vRP.Execute("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
 			end
 		end
 	end
@@ -340,7 +340,7 @@ AddEventHandler("ResourceStop",function(Resource)
 			if not vRP.HasGroup(Passport,"Admin") then
 				vRP.Kick(Passport,"Banido.")
 				local Identity = vRP.Identity(Passport)
-				vRP.Execute("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
 			end
 		end
 	end

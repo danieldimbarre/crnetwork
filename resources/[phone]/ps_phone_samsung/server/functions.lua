@@ -273,7 +273,7 @@ end
 -- setUserData
 -----------------------------------------------------------------------------------------------------------------------------------------
 setUserData = function(user_id, key, data)
-    vRP.Execute("playerdata/SetData", { Passport = tonumber(user_id), dkey = key, dvalue = data })
+    vRP.Query("playerdata/SetData", { Passport = tonumber(user_id), dkey = key, dvalue = data })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserFines

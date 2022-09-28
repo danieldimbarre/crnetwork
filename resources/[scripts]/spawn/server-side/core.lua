@@ -22,8 +22,8 @@ function Creative.Characters()
 	local License = vRP.Identities(source)
 	local Consult = vRP.Query("characters/Characters",{ license = License })
 
-	Player(source)["state"]["Route"] = 999999
-	SetPlayerRoutingBucket(source,999999)
+	Player(source)["state"]["Route"] = source
+	SetPlayerRoutingBucket(source,source)
 
 	if Consult[1] then
 		for _,v in pairs(Consult) do

@@ -7,7 +7,7 @@ set mysql_slow_query_warning 100
 
 start vrp
 
-start cfx-summerz
+start [maps]
 start [vehicles]
 # start [clothes]
 start [system]

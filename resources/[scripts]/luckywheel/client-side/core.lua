@@ -35,11 +35,11 @@ CreateThread(function()
 				if not LocalPlayer["state"]["Cassino"] then
 					LocalPlayer["state"]["Cassino"] = true
 
-					if LoadModel("silvias15") and LoadModel("vw_prop_vw_luckywheel_02a") then
-						Wheel = CreateObjectNoOffset("vw_prop_vw_luckywheel_02a",990.48,43.31,71.26,false,false,false)
-						SetEntityHeading(Wheel,150.24)
+					if LoadModel("nissangtrnismo") and LoadModel("vw_prop_vw_luckywheel_02a") then
+						Wheel = CreateObjectNoOffset("vw_prop_vw_luckywheel_02a",990.28,42.85,71.76,false,false,false)
+						SetEntityHeading(Wheel,-31.8)
 
-						Vehicle = CreateVehicle("silvias15",975.6,40.62,72.15,195.6,false,false)
+						Vehicle = CreateVehicle("nissangtrnismo",975.37,40.84,71.71,221.11,false,false)
 						SetVehicleNumberPlateText(Vehicle,"PDMSPORT")
 						SetVehicleOnGroundProperly(Vehicle)
 						FreezeEntityPosition(Vehicle,true)
@@ -48,7 +48,7 @@ CreateThread(function()
 						SetVehicleColours(Vehicle,29,1)
 
 						SetModelAsNoLongerNeeded("vw_prop_vw_luckywheel_02a")
-						SetModelAsNoLongerNeeded("silvias15")
+						SetModelAsNoLongerNeeded("nissangtrnismo")
 					end
 				end
 			else

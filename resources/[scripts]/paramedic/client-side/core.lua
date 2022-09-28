@@ -45,31 +45,31 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADBLOODTICK
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local Ped = PlayerPedId()
-		if GetGameTimer() >= BloodTimers and LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(Ped) > 100 then
-			BloodTimers = GetGameTimer() + 10000
-			BloodTick = BloodTick + 1
+-- CreateThread(function()
+-- 	while true do
+-- 		local Ped = PlayerPedId()
+-- 		if GetGameTimer() >= BloodTimers and LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(Ped) > 100 then
+-- 			BloodTimers = GetGameTimer() + 10000
+-- 			BloodTick = BloodTick + 1
 
-			if BloodTick >= 3 and Bleeding >= 3 then
-				BloodTick = 0
-				local Nocaute = Bleeding * 1000
+-- 			if BloodTick >= 3 and Bleeding >= 3 then
+-- 				BloodTick = 0
+-- 				local Nocaute = Bleeding * 1000
 
-				if not IsPedInAnyVehicle(Ped) then
-					SetPedToRagdoll(Ped,Nocaute,Nocaute,0,0,0,0)
-					TriggerServerEvent("inventory:Cancel")
-				end
+-- 				if not IsPedInAnyVehicle(Ped) then
+-- 					SetPedToRagdoll(Ped,Nocaute,Nocaute,0,0,0,0)
+-- 					TriggerServerEvent("inventory:Cancel")
+-- 				end
 
-				DoScreenFadeOut(1000)
-				Wait(Nocaute)
-				DoScreenFadeIn(1000)
-			end
-		end
+-- 				DoScreenFadeOut(1000)
+-- 				Wait(Nocaute)
+-- 				DoScreenFadeIn(1000)
+-- 			end
+-- 		end
 
-		Wait(1000)
-	end
-end)
+-- 		Wait(1000)
+-- 	end
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARAMEDIC:RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -144,9 +144,9 @@ end
 -- ARMS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Arms",function()
-	if Damaged[18905] or Damaged[18905] or Damaged[60309] or Damaged[36029] or Damaged[57005] or Damaged[28422] or Damaged[6286] then
-		return true
-	end
+	-- if Damaged[18905] or Damaged[18905] or Damaged[60309] or Damaged[36029] or Damaged[57005] or Damaged[28422] or Damaged[6286] then
+	-- 	return true
+	-- end
 
 	return false
 end)
@@ -154,9 +154,9 @@ end)
 -- LEGS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Legs",function()
-	if Damaged[14201] or Damaged[65245] or Damaged[57717] or Damaged[52301] or Damaged[35502] or Damaged[24806] then
-		return true
-	end
+	-- if Damaged[14201] or Damaged[65245] or Damaged[57717] or Damaged[52301] or Damaged[35502] or Damaged[24806] then
+	-- 	return true
+	-- end
 
 	return false
 end)

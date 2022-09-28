@@ -21,7 +21,7 @@ RegisterNUICallback("updateSkin",function(data)
 	myFace = { tonumber(data["fathers"]),tonumber(data["kinship"]),tonumber(data["eyecolor"]),tonumber(data["skincolor"]),tonumber(data["acne"]),tonumber(data["stains"]),tonumber(data["freckles"]),tonumber(data["aging"]),tonumber(data["hair"]),tonumber(data["haircolor"]),tonumber(data["haircolor2"]),tonumber(data["makeup"]),tonumber(data["makeupintensity"]),tonumber(data["makeupcolor"]),tonumber(data["lipstick"]),tonumber(data["lipstickintensity"]),tonumber(data["lipstickcolor"]),tonumber(data["eyebrow"]),tonumber(data["eyebrowintensity"]),tonumber(data["eyebrowcolor"]),tonumber(data["beard"]),tonumber(data["beardintentisy"]),tonumber(data["beardcolor"]),tonumber(data["blush"]),tonumber(data["blushintentisy"]),tonumber(data["blushcolor"]),tonumber(data["face00"]),tonumber(data["face01"]),tonumber(data["face04"]),tonumber(data["face06"]),tonumber(data["face08"]),tonumber(data["face09"]),tonumber(data["face10"]),tonumber(data["face12"]),tonumber(data["face13"]),tonumber(data["face14"]),tonumber(data["face15"]),tonumber(data["face16"]),tonumber(data["face17"]),tonumber(data["face19"]),tonumber(data["mothers"]) }
 
 	if data["value"] then
-		SetNuiFocus(false)
+		SetNuiFocus(false,false)
 		displayCreator(false)
 		SendNUIMessage({ openCreator = false })
 
@@ -129,7 +129,7 @@ end
 -- STARTFOCUS
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	SetNuiFocus(false)
+	SetNuiFocus(false,false)
 	SendNUIMessage({ openCreator = false })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

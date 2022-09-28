@@ -37,9 +37,8 @@ local Locate = {
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	print(40)
 	Wait(1000)
-
+	print(41)
 	DoScreenFadeOut(0)
 
 	DisplayRadar(false)

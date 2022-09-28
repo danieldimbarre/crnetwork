@@ -7,3 +7,5 @@ client_scripts {
 	"@vrp/lib/Utils.lua",
 	"client-side/*"
 }
+
+file "stream/*"

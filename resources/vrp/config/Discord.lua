@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LINKS
+-- DISCORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Links = {
+local Discords = {
 	["Connect"] = "https://discord.com/api/webhooks/1022874276065464380/NkKAoIcWvipHev6haEqzvAYRHWzf8GMtyEh0NT8jzZSk5g3Ku0G_2OEERS5vAQeoFfV4",
 	["Disconnect"] = "https://discord.com/api/webhooks/1022874371833995264/t-0GcQHrBTuziykBbds2Zu1iFgjKG3ZZrGMxM6H2-ttnCdV04bn8Xm5oKF5hAZznsWF6",
 	["Airport"] = "https://discord.com/api/webhooks/1022874655486394378/JOuDg3YeKXB-DFwoT5IiUozBO2K2cWPX6G0QTJV-dhs--vy7_troN93pRd5Z2GhD_9mI",
@@ -16,7 +16,7 @@ local Links = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("Discord")
 AddEventHandler("Discord",function(Hook,Message,Color)
-	PerformHttpRequest(Links[Hook],function(err,text,headers) end,"POST",json.encode({
+	PerformHttpRequest(Discords[Hook],function(err,text,headers) end,"POST",json.encode({
 		username = ServerName,
 		embeds = { { color = Color, description = Message } }
 	}),{ ["Content-Type"] = "application/json" })

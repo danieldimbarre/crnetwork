@@ -512,7 +512,7 @@ local tattooShop = {
 				{ ["name"] = "MP_Heist4_Tat_012_M", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_026_M", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_031_M", ["part"] = "mpheist4_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_032_M", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Heist4_Tat_032_M", ["part"] = "mpheist4_overlays" }
 			}
 		},
 		["leftleg"] = {
@@ -1259,7 +1259,7 @@ local tattooShop = {
 				{ ["name"] = "FM_Tat_F_043", ["part"] = "multiplayer_overlays" },
 				{ ["name"] = "MP_Vinewood_Tat_020_F", ["part"] = "mpvinewood_overlays" },
 				{ ["name"] = "mpHeist3_Tat_031_F", ["part"] = "mpheist3_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_027_F", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Heist4_Tat_027_F", ["part"] = "mpheist4_overlays" }
 			}
 		},
 		["hair"] = {

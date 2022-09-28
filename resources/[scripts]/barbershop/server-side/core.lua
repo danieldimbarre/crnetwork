@@ -36,7 +36,7 @@ function Creative.updateSkin(Clothes)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		vRP.Execute("playerdata/SetData",{ Passport = Passport, dkey = "Barbershop", dvalue = json.encode(Clothes) })
+		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Barbershop", dvalue = json.encode(Clothes) })
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

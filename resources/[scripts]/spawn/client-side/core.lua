@@ -38,7 +38,7 @@ local Locate = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	Wait(5000)
-	print(41)
+
 	DoScreenFadeOut(0)
 
 	DisplayRadar(false)
@@ -46,7 +46,7 @@ CreateThread(function()
 	ShutdownLoadingScreenNui()
 	TriggerServerEvent("Queue:Connect")
 	LocalPlayer["state"]["Invisible"] = true
-	print(47)
+
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)
 	SetEntityVisible(Ped,false,false)
@@ -54,41 +54,40 @@ CreateThread(function()
 	SetEntityInvincible(Ped,true)
 	SetEntityHealth(Ped,100)
 	SetPedArmour(Ped,0)
-	print(55)
+
 	local Characters = vSERVER.Characters()
 	if parseInt(#Characters) > 0 then
 		for Number,v in pairs(Characters) do
-			print(59)
 			if LoadModel(v["Skin"]) then
 				Peds[Number] = CreatePed(4,v["Skin"],Poords[Number][1],Poords[Number][2],Poords[Number][3],Poords[Number][4],false,false)
 				SetEntityInvincible(Peds[Number],true)
 				FreezeEntityPosition(Peds[Number],true)
 				SetBlockingOfNonTemporaryEvents(Peds[Number],true)
 				SetModelAsNoLongerNeeded(v["Skin"])
-				print(66)
+
 				if LoadAnim(Poords[Number][5]) then
 					TaskPlayAnim(Peds[Number],Poords[Number][5],Poords[Number][6],8.0,8.0,-1,1,0,0,0,0)
 				end
-				print(70)
+
 				Clothes(Peds[Number],v["Clothes"])
 				Barber(Peds[Number],v["Barber"])
-				print(73)
+
 				for Hash,Component in pairs(v["Tattoos"]) do
 					SetPedDecoration(Peds[Number],GetHashKey(Component[1]),GetHashKey(Hash))
 				end
 			end
 		end
 	end
-	print(80)
+
 	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
 	SetCamActive(Camera,true)
 	RenderScriptCams(true,true,1,true,true)
 	SetCamCoord(Camera,231.99,-1389.94,31.0)
 	SetCamRot(Camera,0.0,0.0,320.25,2)
-	print(86)
+
 	SendNUIMessage({ Action = "Spawn", Table = Characters })
 	SetNuiFocus(true,true)
-	print(89)
+
 	DoScreenFadeIn(1000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -97,7 +96,11 @@ end)
 RegisterNUICallback("CharacterChosen",function(Data,Callback)
 	DoScreenFadeOut(0)
 
-	Delete()
+	for _,v in pairs(Peds) do
+		if DoesEntityExist(v) then
+			DeleteEntity(v)
+		end
+	end
 
 	vSERVER.CharacterChosen(Data["passport"])
 
@@ -107,12 +110,20 @@ end)
 -- NEWCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("NewCharacter",function(Data,Callback)
+	DoScreenFadeOut(0)
+
+	for _,v in pairs(Peds) do
+		if DoesEntityExist(v) then
+			DeleteEntity(v)
+		end
+	end
+
 	vSERVER.NewCharacter(Data["name"],Data["name2"],Data["sex"])
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SPAWN:JUSTSPAWN
+-- JUSTSPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:justSpawn")
 AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
@@ -123,7 +134,7 @@ AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
 		DestroyCam(Camera,true)
 		Camera = nil
 	end
-	
+
 	if NewCharacter then
 		Character = not NewCharacter
 	end
@@ -154,8 +165,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:SpawnClose")
 AddEventHandler("spawn:SpawnClose",function()
-	Delete()
-
 	SendNUIMessage({ Action = "SpawnClose" })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -225,16 +234,6 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 
 	Callback("Ok")
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DELETE
------------------------------------------------------------------------------------------------------------------------------------------
-function Delete()
-	for _,v in pairs(Peds) do
-		if DoesEntityExist(v) then
-			DeleteEntity(v)
-		end
-	end
-end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------

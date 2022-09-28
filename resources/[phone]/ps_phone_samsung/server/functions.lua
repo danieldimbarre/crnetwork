@@ -217,8 +217,8 @@ end
 -- requestAcceptorNot
 -----------------------------------------------------------------------------------------------------------------------------------------
 requestAcceptorNot = function(source,title,timeout)
-    vREQUEST = Tunnel.getInterface("request")
-    return vREQUEST.Request(source,title,"Sim","Não")
+    REQUEST = Tunnel.getInterface("request")
+    return REQUEST.Request(source,title,"Sim","Não")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- checkPlayerHandcuffed
@@ -273,7 +273,7 @@ end
 -- setUserData
 -----------------------------------------------------------------------------------------------------------------------------------------
 setUserData = function(user_id, key, data)
-    vRP.Execute("playerdata/SetData", { Passport = tonumber(user_id), dkey = key, dvalue = data })
+    vRP.Query("playerdata/SetData", { Passport = tonumber(user_id), dkey = key, dvalue = data })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserFines
@@ -348,6 +348,6 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 sendnotifypush = function(source,title,message,x,y,z,name,phone)
     if source then 
-        TriggerClientEvent("NotifyPush",source,{ code = 20, title = title, x = x, y = y, z = z, name = name, phone = phone, text = message, time = "Recebido às "..os.date("%H:%M"), blipColor = 25 })
+        TriggerClientEvent("NotifyPush",source,{ code = 20, title = title, text = message, x = x, y = y, z = z, time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
     end
 end

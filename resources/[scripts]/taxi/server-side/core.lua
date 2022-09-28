@@ -16,7 +16,6 @@ function Creative.paymentService()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local value = math.random(175,275)
-		vRP.GenerateItem(Passport,"dollars",value,true)
+		vRP.GenerateItem(Passport,"dollars",math.random(175,275),true)
 	end
 end

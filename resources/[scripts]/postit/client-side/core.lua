@@ -61,19 +61,19 @@ CreateThread(function()
 			if Distance <= v[5] then
 				local _,x,y = GetScreenCoordFromWorldCoord(v[1],v[2],v[3])
 				if not displayText[k] then
-					SendNUIMessage({ show = true, text = "", id = k, x = x, y = y })
+					SendNUIMessage({ Action = "Show", text = "", id = k, x = x, y = y })
 					displayText[k] = true
 				end
 
 				TimeDistance = 1
-				SendNUIMessage({ action = "update", text = v[4], id = k, x = x, y = y })
+				SendNUIMessage({ Action = "Update", text = v[4], id = k, x = x, y = y })
 
 				if IsControlJustPressed(1,47) and Distance <= 2 then
 					vSERVER.deletePostIts(k)
 				end
 			else
 				if displayText[k] then
-					SendNUIMessage({ action = "remove", id = k })
+					SendNUIMessage({ Action = "Remove", id = k })
 					displayText[k] = nil
 				end
 			end
@@ -88,7 +88,7 @@ end)
 RegisterNetEvent("postit:deletePostIts")
 AddEventHandler("postit:deletePostIts",function(id)
 	if displayText[id] then
-		SendNUIMessage({ action = "remove", id = id })
+		SendNUIMessage({ Action = "Remove", id = id })
 		displayText[id] = nil
 	end
 end)

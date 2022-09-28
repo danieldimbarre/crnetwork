@@ -1,13 +1,15 @@
 addEventListener("message",function(event){
-	if (event["data"]["show"] !== undefined){
-		if (event["data"]["show"] == true){
+	switch (event["data"]["Action"]){
+		case "Show":
 			var html = `<span id=${event["data"]["id"]} class="message" style="left: 0; top: 0;"></span>`;
 			$(html).fadeIn("normal").appendTo("#webShowMe");
-		}
-	}
+		break;
 
-	if (event["data"]["action"] !== undefined){
-		if (event["data"]["action"] == "update"){
+		case "Remove":
+			$(`#${event["data"]["id"]}`).fadeOut("normal",function(){ $(this).remove(); });
+		break;
+
+		case "Update":
 			if (event["data"]["border"] !== undefined){
 				$(`#${event["data"]["id"]}`).css("padding","0").css("background","transparent");
 				$(`#${event["data"]["id"]}`).css("left",event["data"]["x"] * 100 + 4 + "%").css("top",event["data"]["y"] * 95 + "%");
@@ -19,10 +21,6 @@ addEventListener("message",function(event){
 
 				$(`#${event["data"]["id"]}`).text(event["data"]["text"])
 			}
-		}
-
-		if (event["data"]["action"] == "remove"){
-			$(`#${event["data"]["id"]}`).fadeOut("normal",function(){ $(this).remove(); });
-		}
+		break;
 	}
 });

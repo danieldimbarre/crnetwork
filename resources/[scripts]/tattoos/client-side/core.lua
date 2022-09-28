@@ -272,7 +272,65 @@ local tattooShop = {
 				{ ["name"] = "MP_Heist4_Tat_021_M", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_022_M", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_023_M", ["part"] = "mpheist4_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_030_M", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_030_M", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "mpSum_Tee_000_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_001_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_002_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_003_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_004_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_005_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_006_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_007_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_008_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_009_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_011_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_012_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_013_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_014_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_015_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_016_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_017_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_018_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_019_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_020_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_021_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_022_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_023_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_024_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_025_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_026_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_027_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_028_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_029_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_030_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_031_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_032_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_033_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_034_M", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_000_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_002_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_003_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_005_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_006_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_008_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_010_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_011_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_012_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_013_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_014_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_015_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_016_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Security_Tat_004_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_008_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_013_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_014_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_015_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_016_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_017_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_018_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_024_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_025_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_026_M", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["head"] = {
@@ -326,7 +384,10 @@ local tattooShop = {
 				{ ["name"] = "mpHeist3_Tat_022_M", ["part"] = "mpheist3_overlays" },
 				{ ["name"] = "mpHeist3_Tat_042_M", ["part"] = "mpheist3_overlays" },
 				{ ["name"] = "mpHeist3_Tat_043_M", ["part"] = "mpheist3_overlays" },
-				{ ["name"] = "mpHeist3_Tat_044_M", ["part"] = "mpheist3_overlays" }
+				{ ["name"] = "mpHeist3_Tat_044_M", ["part"] = "mpheist3_overlays" },
+				{ ["name"] = "MP_Security_Tat_001_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_002_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_027_M", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["leftarm"] = {
@@ -416,7 +477,11 @@ local tattooShop = {
 				{ ["name"] = "MP_Vinewood_Tat_026_M", ["part"] = "mpvinewood_overlays" },
 				{ ["name"] = "mpHeist3_Tat_040_M", ["part"] = "mpheist3_overlays" },
 				{ ["name"] = "mpHeist3_Tat_041_M", ["part"] = "mpheist3_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_009_M", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_009_M", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Security_Tat_006_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_010_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_011_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_019_M", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["rightarm"] = {
@@ -512,7 +577,13 @@ local tattooShop = {
 				{ ["name"] = "MP_Heist4_Tat_012_M", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_026_M", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_031_M", ["part"] = "mpheist4_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_032_M", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_032_M", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Security_Tat_000_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_005_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_007_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_009_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_012_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_020_M", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["leftleg"] = {
@@ -560,7 +631,9 @@ local tattooShop = {
 				{ ["name"] = "MP_Heist4_Tat_024_M", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_025_M", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_028_M", ["part"] = "mpheist4_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_029_M", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_029_M", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Security_Tat_022_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_023_M", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["rightleg"] = {
@@ -593,7 +666,9 @@ local tattooShop = {
 				{ ["name"] = "FM_Tat_M_043", ["part"] = "multiplayer_overlays" },
 				{ ["name"] = "MP_Vinewood_Tat_020_M", ["part"] = "mpvinewood_overlays" },
 				{ ["name"] = "mpHeist3_Tat_031_M", ["part"] = "mpheist3_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_027_M", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_027_M", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Security_Tat_003_M", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_021_M", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["hair"] = {
@@ -671,7 +746,8 @@ local tattooShop = {
 				{ ["name"] = "MP_Biker_Hair_005_M", ["part"] = "mpbiker_overlays" },
 				{ ["name"] = "MP_Gunrunning_Hair_M_000_M", ["part"] = "mpgunrunning_overlays" },
 				{ ["name"] = "MP_Gunrunning_Hair_M_001_M", ["part"] = "mpgunrunning_overlays" },
-				{ ["name"] = "MP_Tuner_Hair_001_M", ["part"] = "mpTuner_overlays" }
+				{ ["name"] = "MP_Tuner_Hair_001_M", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Security_Hair_001_M", ["part"] = "mpSecurity_overlays" }
 			}
 		}
 	},
@@ -940,7 +1016,52 @@ local tattooShop = {
 				{ ["name"] = "MP_Heist4_Tat_021_F", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_022_F", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_023_F", ["part"] = "mpheist4_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_030_F", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_030_F", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "mpSum_Tee_000_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_001_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_002_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_003_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_004_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_005_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_006_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_007_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_008_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_009_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_010_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_011_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_012_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_013_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_014_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_015_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_016_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_017_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_018_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_019_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_020_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_022_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_023_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_024_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_025_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_026_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_027_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_028_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_029_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_030_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_031_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_032_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_033_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "mpSum_Tee_034_F", ["part"] = "mpSum_overlays" },
+				{ ["name"] = "MP_Security_Tat_004_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_008_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_013_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_014_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_015_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_016_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_017_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_018_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_024_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_025_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_026_F", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["head"] = {
@@ -991,7 +1112,23 @@ local tattooShop = {
 				{ ["name"] = "mpHeist3_Tat_022_F", ["part"] = "mpheist3_overlays" },
 				{ ["name"] = "mpHeist3_Tat_042_F", ["part"] = "mpheist3_overlays" },
 				{ ["name"] = "mpHeist3_Tat_043_F", ["part"] = "mpheist3_overlays" },
-				{ ["name"] = "mpHeist3_Tat_044_F", ["part"] = "mpheist3_overlays" }
+				{ ["name"] = "mpHeist3_Tat_044_F", ["part"] = "mpheist3_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_000_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_002_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_003_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_005_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_006_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_008_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_010_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_011_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_012_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_013_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_014_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_015_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Tuner_Tee_016_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Security_Tat_001_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_002_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_027_F", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["leftarm"] = {
@@ -1080,7 +1217,11 @@ local tattooShop = {
 				{ ["name"] = "MP_Vinewood_Tat_026_F", ["part"] = "mpvinewood_overlays" },
 				{ ["name"] = "mpHeist3_Tat_040_F", ["part"] = "mpheist3_overlays" },
 				{ ["name"] = "mpHeist3_Tat_041_F", ["part"] = "mpheist3_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_009_F", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_009_F", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Security_Tat_006_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_010_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_011_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_019_F", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["rightarm"] = {
@@ -1177,7 +1318,13 @@ local tattooShop = {
 				{ ["name"] = "MP_Heist4_Tat_012_F", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_026_F", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_031_F", ["part"] = "mpheist4_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_032_F", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_032_F", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Security_Tat_000_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_005_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_007_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_009_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_012_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_020_F", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["leftleg"] = { 
@@ -1225,7 +1372,9 @@ local tattooShop = {
 				{ ["name"] = "MP_Heist4_Tat_024_F", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_025_F", ["part"] = "mpheist4_overlays" },
 				{ ["name"] = "MP_Heist4_Tat_028_F", ["part"] = "mpheist4_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_029_F", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_029_F", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Security_Tat_022_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_023_F", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["rightleg"] = {
@@ -1259,7 +1408,9 @@ local tattooShop = {
 				{ ["name"] = "FM_Tat_F_043", ["part"] = "multiplayer_overlays" },
 				{ ["name"] = "MP_Vinewood_Tat_020_F", ["part"] = "mpvinewood_overlays" },
 				{ ["name"] = "mpHeist3_Tat_031_F", ["part"] = "mpheist3_overlays" },
-				{ ["name"] = "MP_Heist4_Tat_027_F", ["part"] = "mpheist4_overlays" }
+				{ ["name"] = "MP_Heist4_Tat_027_F", ["part"] = "mpheist4_overlays" },
+				{ ["name"] = "MP_Security_Tat_003_F", ["part"] = "mpSecurity_overlays" },
+				{ ["name"] = "MP_Security_Tat_021_F", ["part"] = "mpSecurity_overlays" }
 			}
 		},
 		["hair"] = {
@@ -1341,7 +1492,8 @@ local tattooShop = {
 				{ ["name"] = "MP_Biker_Hair_004_F", ["part"] = "mpbiker_overlays" },
 				{ ["name"] = "MP_Gunrunning_Hair_F_000_F", ["part"] = "mpgunrunning_overlays" },
 				{ ["name"] = "MP_Gunrunning_Hair_F_001_F", ["part"] = "mpgunrunning_overlays" },
-				{ ["name"] = "MP_Tuner_Hair_000_F", ["part"] = "mpTuner_overlays" }
+				{ ["name"] = "MP_Tuner_Hair_000_F", ["part"] = "mpTuner_overlays" },
+				{ ["name"] = "MP_Security_Hair_000_F", ["part"] = "mpSecurity_overlays" }
 			}
 		}
 	}

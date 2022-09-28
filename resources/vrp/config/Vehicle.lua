@@ -6305,7 +6305,431 @@ local List = {
 		["Type"] = "rental",
 		["Block"] = false,
 		["Gems"] = 150
-	}
+	},
+	["bmwi8"] = {
+		["Name"] = "BMWi8",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["bmwm4gts"] = {
+		["Name"] = "BMWM4",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["civictyper"] = {
+		["Name"] = "CivicTyper",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["dodgechargersrt"] = {
+		["Name"] = "Dodgecharger",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["fordmustang"] = {
+		["Name"] = "Fordmustang",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["lamborghinihuracan"] = {
+		["Name"] = "LamborghiniHuracan",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["ferrari812"] = {
+		["Name"] = "Ferrari812",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["ferrarif12"] = {
+		["Name"] = "FerrariF12",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["ferrariitalia"] = {
+		["Name"] = "FerrariItalia",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["dodgecharger1970"] = {
+		["Name"] = "Dodgecharger1970",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["lancerevolutionx"] = {
+		["Name"] = "LancerevolutionX",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["lancerevolution9"] = {
+		["Name"] = "Lancerevolution9",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["m3e46"] = {
+		["Name"] = "BMWM3",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["mazdarx7"] = {
+		["Name"] = "MazdaRX7",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["mazdarx72"] = {
+		["Name"] = "MazdaRX7-2",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["dodgeramtrx"] = {
+		["Name"] = "DodgeRAM",
+		["Weight"] = 80,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["mclarenp1"] = {
+		["Name"] = "McLarenP1",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["mclarensenna"] = {
+		["Name"] = "McSenna",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["mercedesgt63"] = {
+		["Name"] = "MercedesGT63",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["mustangfast"] = {
+		["Name"] = "MustangFast",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["nissangtr"] = {
+		["Name"] = "NissanGTR",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["nissangtr2"] = {
+		["Name"] = "NissanGTR-2",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["nissangtr3"] = {
+		["Name"] = "NissanGTR-3",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["nissangtrnismo"] = {
+		["Name"] = "NissanNismo",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["skyliner34"] = {
+		["Name"] = "SkylineR34",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["subaruimpreza"] = {
+		["Name"] = "SubaruImpreza",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["subarubrz"] = {
+		["Name"] = "SubaruBRZ",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["toyotasupra"] = {
+		["Name"] = "ToyotaSupra",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["toyotasupra2"] = {
+		["Name"] = "ToyotaSupraGR",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["golfgti"] = {
+		["Name"] = "GolfGTI",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["bmwm5e34"] = {
+		["Name"] = "BMWM5",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["golfmk7"] = {
+		["Name"] = "GolfMK7",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["jeepcherokee"] = {
+		["Name"] = "JeppCherokee",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["porsche911"] = {
+		["Name"] = "Porsche911",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["350z"] = {
+		["Name"] = "350z",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["shelbygt500"] = {
+		["Name"] = "ShelbyGT500",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["bmwm1wb"] = {
+		["Name"] = "BMWM1",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["urus"] = {
+		["Name"] = "Urus",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["lamborghinihuracanlw"] = {
+		["Name"] = "LamborghiniHuracanLW",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["panameramansory"] = {
+		["Name"] = "Panamera",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["amarok"] = {
+		["Name"] = "",
+		["Weight"] = 80,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["ferrarif40"] = {
+		["Name"] = "FerrariF40",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["astonmartindbs"] = {
+		["Name"] = "Astonmartin",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["nissangtr50"] = {
+		["Name"] = "NissanGTR50",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["dodgechargerrt69"] = {
+		["Name"] = "Dodgecharger69",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["bmwg20"] = {
+		["Name"] = "BMWG20",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
+	["r1"] = {
+		["Name"] = "R1",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 200
+	},
+	["r6"] = {
+		["Name"] = "R6",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 200
+	},
+	["s1000rr"] = {
+		["Name"] = "S1000RR",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 200
+	},
+	["m1000rr"] = {
+		["Name"] = "M1000RR",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 200
+	},
+	["r1200"] = {
+		["Name"] = "R1200",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 200
+	},
+	["r1200gs"] = {
+		["Name"] = "R1200GS",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 200
+	},
+	["s15"] = {
+		["Name"] = "NissanSilvia",
+		["Weight"] = 30,
+		["Price"] = 0,
+		["Type"] = "rental",
+		["Block"] = false,
+		["Gems"] = 150
+	},
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEGLOBAL

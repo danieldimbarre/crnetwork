@@ -38,7 +38,10 @@ local Locate = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	print(40)
+	Wait(1000)
+
 	DoScreenFadeOut(0)
+
 	DisplayRadar(false)
 	ShutdownLoadingScreen()
 	ShutdownLoadingScreenNui()
@@ -114,6 +117,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:justSpawn")
 AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
+	local Ped = PlayerPedId()
 	if Camera then
 		RenderScriptCams(false,false,0,true,true)
 		SetCamActive(Camera,false)
@@ -126,10 +130,7 @@ AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
 	end
 
 	if not Character then
-		local Ped = PlayerPedId()
 		if Open then
-			Wait(2000)
-
 			local Coords = GetEntityCoords(Ped)
 			Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",Coords["x"],Coords["y"],Coords["z"] + 200.0,270.00,0.0,0.0,80.0,0,0)
 			SetCamActive(Camera,true)
@@ -142,8 +143,6 @@ AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
 			TriggerEvent("hud:Active",true)
 			SetNuiFocus(false,false)
 			Destroy = false
-
-			Wait(1000)
 		end
 
 		DoScreenFadeIn(1000)
@@ -157,7 +156,6 @@ end)
 RegisterNetEvent("spawn:SpawnClose")
 AddEventHandler("spawn:SpawnClose",function()
 	Delete()
-
 	SendNUIMessage({ Action = "SpawnClose" })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

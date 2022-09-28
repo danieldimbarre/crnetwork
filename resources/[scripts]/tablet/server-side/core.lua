@@ -42,9 +42,9 @@ CreateThread(function()
 	GlobalState:set("Rental",Rental,true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTRENTAL
+-- RENTAL
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.requestRental(vehName)
+function Creative.Rental(vehName)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -89,9 +89,9 @@ function Creative.requestRental(vehName)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTBUY
+-- BUY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.requestBuy(vehName)
+function Creative.Buy(vehName)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

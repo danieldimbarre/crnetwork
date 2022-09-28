@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `gems` int(20) NOT NULL DEFAULT 0,
   `rolepass` int(20) NOT NULL DEFAULT 0,
   `premium` int(20) NOT NULL DEFAULT 0,
-  `login` int(20) NOT NULL DEFAULT 0,
   `discord` varchar(50) NOT NULL DEFAULT '0',
   `license` varchar(50) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE,
@@ -160,4 +159,4 @@ CREATE TABLE IF NOT EXISTS `warehouse` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES ('Permissions', '{\"Admin\":{\"1\":true}}');
+INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES ('Permissions:Admin', '{\"1\":true}');

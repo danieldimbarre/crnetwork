@@ -11,64 +11,64 @@ vSERVER = Tunnel.getInterface("tablet")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Open = "Santos"
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ENTERTABLET
+-- TABLET:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("tablet:enterTablet")
-AddEventHandler("tablet:enterTablet",function(Select)
+RegisterNetEvent("tablet:Open")
+AddEventHandler("tablet:Open",function(Select)
 	if LocalPlayer["state"]["Route"] < 900000 then
 		local Ped = PlayerPedId()
 		if not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and GetEntityHealth(Ped) > 100 and LocalPlayer["state"]["Network"] then
 			Open = Select
 			SetNuiFocus(true,true)
 			SetCursorLocation(0.5,0.5)
-			SendNUIMessage({ action = "openSystem" })
+			SendNUIMessage({ action = "Open" })
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CLOSESYSTEM
+-- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("closeSystem",function(Data,Callback)
+RegisterNUICallback("Close",function(Data,Callback)
 	SetNuiFocus(false,false)
 	SetCursorLocation(0.5,0.5)
-	SendNUIMessage({ action = "closeSystem" })
+	SendNUIMessage({ action = "Close" })
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTCARROS
+-- CARROS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("requestCarros",function(Data,Callback)
+RegisterNUICallback("Carros",function(Data,Callback)
 	Callback({ result = GlobalState["Cars"] })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTMOTOS
+-- MOTOS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("requestMotos",function(Data,Callback)
+RegisterNUICallback("Motos",function(Data,Callback)
 	Callback({ result = GlobalState["Bikes"] })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTALUGUEL
+-- ALUGUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("requestAluguel",function(Data,Callback)
+RegisterNUICallback("Aluguel",function(Data,Callback)
 	Callback({ result = GlobalState["Rental"] })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTBUY
+-- BUY
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("requestBuy",function(Data,Callback)
+RegisterNUICallback("Buy",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
-		vSERVER.requestBuy(Data["name"])
+		vSERVER.Buy(Data["name"])
 	end
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTRENTAL
+-- RENTAL
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("requestRental",function(Data,Callback)
+RegisterNUICallback("Rental",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
-		vSERVER.requestRental(Data["name"])
+		vSERVER.Rental(Data["name"])
 	end
 
 	Callback("Ok")
@@ -87,14 +87,14 @@ local vehDrive = nil
 local benDrive = false
 local benCoords = { 0.0,0.0,0.0 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTDRIVE
+-- DRIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("requestDrive",function(Data,Callback)
+RegisterNUICallback("Drive",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
 		if vSERVER.startDrive() then
 			SetNuiFocus(false,false)
 			SetCursorLocation(0.5,0.5)
-			SendNUIMessage({ action = "closeSystem" })
+			SendNUIMessage({ action = "Close" })
 
 			local Ped = PlayerPedId()
 			local Coords = GetEntityCoords(Ped)

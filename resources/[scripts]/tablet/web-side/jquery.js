@@ -8,18 +8,18 @@ $(document).ready(function(){
 
 	document.onkeyup = function(data){
 		if (data["which"] == 27){
-			$.post("http://tablet/closeSystem");
+			$.post("http://tablet/Close");
 		};
 	};
 });
 /* ---------------------------------------------------------------------------------------------------------------- */
 window.addEventListener("message",function(event){
 	switch (event["data"]["action"]){
-		case "openSystem":
+		case "Open":
 			$("#mainPage").css("display","block");
 		break;
 
-		case "closeSystem":
+		case "Close":
 			$("#mainPage").css("display","none");
 		break;
 	};
@@ -59,7 +59,7 @@ const benefactor = (mode) => {
 		</div>
 	`);
 
-	$.post("http://tablet/request"+ mode,JSON.stringify({}),(data) => {
+	$.post("http://tablet/"+ mode,JSON.stringify({}),(data) => {
 		if (benSearch == "alphabetic"){
 			var nameList = data["result"].sort((a,b) => (a["name"] > b["name"]) ? 1: -1);
 		} else {
@@ -88,15 +88,15 @@ $(document).on("click","#benefactor",function(e){
 });
 /* ----------BENEFACTORBUY---------- */
 $(document).on("click","#benefactorBuy",function(e){
-	$.post("http://tablet/requestBuy",JSON.stringify({ name: e["target"]["dataset"]["name"] }));
+	$.post("http://tablet/Buy",JSON.stringify({ name: e["target"]["dataset"]["name"] }));
 });
 /* ----------BENEFACTORRENTAL---------- */
 $(document).on("click","#benefactorRental",function(e){
-	$.post("http://tablet/requestRental",JSON.stringify({ name: e["target"]["dataset"]["name"] }));
+	$.post("http://tablet/Rental",JSON.stringify({ name: e["target"]["dataset"]["name"] }));
 });
 /* ----------BENEFACTORDRIVE---------- */
 $(document).on("click","#benefactorDrive",function(e){
-	$.post("http://tablet/requestDrive",JSON.stringify({ name: e["target"]["dataset"]["name"] }));
+	$.post("http://tablet/Drive",JSON.stringify({ name: e["target"]["dataset"]["name"] }));
 });
 /* ----------FORMAT---------- */
 const format = (n) => {

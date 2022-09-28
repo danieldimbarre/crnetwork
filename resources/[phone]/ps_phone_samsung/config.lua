@@ -56,7 +56,7 @@ Config.HelpList = {
         message     = "Descreva a situação:",
         emergency   = true,
         staff       = false,
-        image       = "https://i.lcpdfrusercontent.com/screenshots/monthly_2020_07/271590_20200630222342_1.png.a17364b16fdc65230dace2ac5c95e808.png",
+        image       = "nui://ps_phone_samsung/html/img/apps/Police.jpg",
         style       = "top: 15px;",
         groups      = {
             "Police"
@@ -69,7 +69,7 @@ Config.HelpList = {
         message     = "Descreva a situação:",
         emergency   = true,
         staff       = false,
-        image       = "https://gtapolicemods.com/uploads/monthly_2020_11/Rambulance.png.d24e5be1cafdffe6786dd1f8dcd64678.png",
+        image       = "nui://ps_phone_samsung/html/img/apps/Hospital.jpg",
         style       = "top: 230px;",
         groups      = {
             "Paramedic"
@@ -82,7 +82,7 @@ Config.HelpList = {
         message     = "Descreva seu problema:",
         emergency   = false,
         staff       = false,
-        image       = "https://img.gta5-mods.com/q75/images/legion-square-car-show-map-editor-menyoo/2b001e-3.jpg",
+        image       = "nui://ps_phone_samsung/html/img/apps/Mechanic.jpg",
         style       = "top: 460px;",
         groups      = {
             "Mechanic"

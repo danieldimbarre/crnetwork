@@ -152,7 +152,11 @@ end
 -- getUserByPhone
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserByPhone = function(phone)
-    return vRP.UserPhone(phone)
+    local data = vRP.UserPhone(phone)
+    if data ~= false then
+        return data.id
+    end
+    return nil
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUsers
@@ -200,7 +204,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- createBlipTimeout
 -----------------------------------------------------------------------------------------------------------------------------------------
-createBlipTimeout = function(source,idgens,x,y,z,title,timeout)
+createBlipTimeout = function(source,x,y,z,title,timeout)
     local idgens = lib.newIDGenerator()
     local id = idgens:gen()
     TriggerClientEvent(GetCurrentResourceName()..':addblip',source,id,x,y,z,358,71,title,0.6,false)
@@ -213,8 +217,8 @@ end
 -- requestAcceptorNot
 -----------------------------------------------------------------------------------------------------------------------------------------
 requestAcceptorNot = function(source,title,timeout)
-    vHUD = Tunnel.getInterface("hud")
-    return vHUD.Request(source,title,"Sim","Não")
+    vREQUEST = Tunnel.getInterface("request")
+    return vREQUEST.Request(source,title,"Sim","Não")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- checkPlayerHandcuffed
@@ -226,7 +230,8 @@ end
 -- getBankMoney
 -----------------------------------------------------------------------------------------------------------------------------------------
 getBankMoney = function(user_id)
-    return vRP.GetBank(user_id)
+    local source = getUserSource(user_id)
+    return vRP.GetBank(source)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- addBankMoney
@@ -238,7 +243,7 @@ end
 -- remBankMoney
 -----------------------------------------------------------------------------------------------------------------------------------------
 remBankMoney = function(user_id, amount)
-    vRP.PaymentBank(user_id, tonumber(amount))
+    vRP.RemoveBank(user_id, tonumber(amount), "Private")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- expulseUser
@@ -257,7 +262,7 @@ end
 -- getUserData
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserData = function(user_id, key)
-    local consult = vRP.Query("playerdata/GetData",{ Passaport = tonumber(user_id), dkey = key })
+    local consult = vRP.Query("playerdata/GetData",{ Passport = tonumber(user_id), dkey = key })
 	if consult[1] then
 		return consult[1]["dvalue"]
 	else
@@ -268,13 +273,13 @@ end
 -- setUserData
 -----------------------------------------------------------------------------------------------------------------------------------------
 setUserData = function(user_id, key, data)
-    vRP.Execute("playerdata/SetData", { Passaport = tonumber(user_id), dkey = key, dvalue = data })
+    vRP.Execute("playerdata/SetData", { Passport = tonumber(user_id), dkey = key, dvalue = data })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- getUserFines
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserFines = function(user_id)
-    local source = source
+    local source = getUserSource(user_id)
     local fines = {}
     local finesamount = vRP.GetFines(source) or 0
 
@@ -298,6 +303,7 @@ end
 -- getUserFine
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUserFine = function(source, id)
+    local source = getUserSource(user_id)
     local fines = {}
     local finesamount = vRP.GetFines(source)
 
@@ -311,8 +317,8 @@ end
 -- payFines
 -----------------------------------------------------------------------------------------------------------------------------------------
 payFines = function(user_id, id)
-    local source = source
-    local amount = getUserFine(source, id)
+    local source = getUserSource(user_id)
+    local amount = getUserFine(user_id, id)
     return vRP.RemoveFine(user_id,amount,source)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

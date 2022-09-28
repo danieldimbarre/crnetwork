@@ -20,7 +20,7 @@ RegisterNUICallback('PostNewImage', function(data, cb)
             cb(nil)
             takePhoto = false
             break
-        elseif IsControlJustPressed(1, 176) then -- TAKE.. PIC
+        elseif IsControlJustPressed(1, 38) then -- TAKE.. PIC
 			exports['screenshot-basic']:requestScreenshotUpload(Config.Webhook, Config.Field, function(data)
                 local resp = json.decode(data)
                 TriggerServerEvent(GetCurrentResourceName()..':SaveImageGallery', resp.attachments[1].proxy_url)

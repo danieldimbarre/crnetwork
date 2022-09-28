@@ -1,46 +1,46 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRIFTENABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function driftEnable()
-	if not IsPauseMenuActive() then
-		local Ped = PlayerPedId()
-		if IsPedInAnyVehicle(Ped) and not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
-			local Vehicle = GetVehiclePedIsIn(Ped)
-			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-				local speed = GetEntitySpeed(Vehicle) * 3.6
-				if speed <= 100.0 and speed >= 5.0 then
-					SetVehicleReduceGrip(Vehicle,true)
+-- function driftEnable()
+-- 	if not IsPauseMenuActive() then
+-- 		local Ped = PlayerPedId()
+-- 		if IsPedInAnyVehicle(Ped) and not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
+-- 			local Vehicle = GetVehiclePedIsIn(Ped)
+-- 			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
+-- 				local speed = GetEntitySpeed(Vehicle) * 3.6
+-- 				if speed <= 100.0 and speed >= 5.0 then
+-- 					SetVehicleReduceGrip(Vehicle,true)
 
-					if not GetDriftTyresEnabled(Vehicle) then
-						SetDriftTyresEnabled(Vehicle,true)
-						SetReduceDriftVehicleSuspension(Vehicle,true)
-					end
-				end
-			end
-		end
-	end
-end
+-- 					if not GetDriftTyresEnabled(Vehicle) then
+-- 						SetDriftTyresEnabled(Vehicle,true)
+-- 						SetReduceDriftVehicleSuspension(Vehicle,true)
+-- 					end
+-- 				end
+-- 			end
+-- 		end
+-- 	end
+-- end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRIFTDISABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function driftDisable()
-	local Ped = PlayerPedId()
-	if IsPedInAnyVehicle(Ped) then
-		local Vehicle = GetLastDrivenVehicle()
+-- function driftDisable()
+-- 	local Ped = PlayerPedId()
+-- 	if IsPedInAnyVehicle(Ped) then
+-- 		local Vehicle = GetLastDrivenVehicle()
 
-		if GetDriftTyresEnabled(Vehicle) then
-			SetVehicleReduceGrip(Vehicle,false)
-			SetDriftTyresEnabled(Vehicle,false)
-			SetReduceDriftVehicleSuspension(Vehicle,false)
-		end
-	end
-end
+-- 		if GetDriftTyresEnabled(Vehicle) then
+-- 			SetVehicleReduceGrip(Vehicle,false)
+-- 			SetDriftTyresEnabled(Vehicle,false)
+-- 			SetReduceDriftVehicleSuspension(Vehicle,false)
+-- 		end
+-- 	end
+-- end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACTIVEDRIFT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("+activeDrift",driftEnable)
-RegisterCommand("-activeDrift",driftDisable)
-RegisterKeyMapping("+activeDrift","Ativação do drift.","keyboard","LSHIFT")
+-- RegisterCommand("+activeDrift",driftEnable)
+-- RegisterCommand("-activeDrift",driftDisable)
+-- RegisterKeyMapping("+activeDrift","Ativação do drift.","keyboard","LSHIFT")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -66,13 +66,13 @@ AddEventHandler("service:Label",function(Service,Text)
 		exports["target"]:LabelText("Service:Police-1",Text)
 		exports["target"]:LabelText("Service:Police-2",Text)
 		exports["target"]:LabelText("Service:Police-3",Text)
-		exports["target"]:LabelText("Service:Police-4",Text)
+		-- exports["target"]:LabelText("Service:Police-4",Text)
 		exports["target"]:LabelText("Service:Police-5",Text)
-		exports["target"]:LabelText("Service:Police-6",Text)
+		-- exports["target"]:LabelText("Service:Police-6",Text)
 	elseif Service == "Paramedic" then
 		exports["target"]:LabelText("Service:Paramedic-1",Text)
 		exports["target"]:LabelText("Service:Paramedic-2",Text)
-		exports["target"]:LabelText("Service:Paramedic-3",Text)
+		-- exports["target"]:LabelText("Service:Paramedic-3",Text)
 	else
 		exports["target"]:LabelText("Service:"..Service,Text)
 	end

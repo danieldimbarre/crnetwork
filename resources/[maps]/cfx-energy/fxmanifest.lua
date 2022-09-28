@@ -7,10 +7,8 @@ files {
 	"stream/*",
 	"stream/*/**",
 	"stream/*/*/**",
-	"stream/*/*/*/**",
-	"interiorproxies.meta"
+	"stream/*/*/*/**"
+	-- "interiorproxies.meta"
 }
 
-data_file "INTERIOR_PROXY_ORDER_FILE" "interiorproxies.meta"
-
-data_file "DLC_ITYP_REQUEST" "stream/vesp_props.ytyp"
+-- data_file "INTERIOR_PROXY_ORDER_FILE" "interiorproxies.meta"

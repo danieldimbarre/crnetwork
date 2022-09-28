@@ -17,13 +17,15 @@ local Selected = {}
 -- SPAWNCHARACTERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Characters()
+	print(20)
 	local Character = {}
 	local source = source
 	local License = vRP.Identities(source)
+	print(24,License)
 	local Consult = vRP.Query("characters/Characters",{ license = License })
-
+	print(25,#Consult)
 	SetPlayerRoutingBucket(source,source)
-
+	print(27)
 	if Consult[1] then
 		for _,v in pairs(Consult) do
 			local Datatable = vRP.UserData(v["id"],"Datatable")
@@ -41,7 +43,7 @@ function Creative.Characters()
 			end
 		end
 	end
-
+	print(45)
 	return Character
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

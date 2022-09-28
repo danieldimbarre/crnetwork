@@ -155,6 +155,7 @@ end)
 RegisterNetEvent("spawn:SpawnClose")
 AddEventHandler("spawn:SpawnClose",function()
 	Delete()
+
 	SendNUIMessage({ Action = "SpawnClose" })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

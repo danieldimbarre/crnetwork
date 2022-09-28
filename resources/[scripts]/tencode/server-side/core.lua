@@ -14,31 +14,15 @@ Tunnel.bindInterface("tencode",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local codes = {
-	[10] = {
-		text = "Confronto em andamento",
-		blip = 6
-	},
-	[13] = {
+	[QRT] = {
 		text = "Oficial ferido",
 		blip = 1
 	},
-	[20] = {
+	[QTH] = {
 		text = "Localização",
 		blip = 38
 	},
-	[32] = {
-		text = "Homem armado",
-		blip = 83
-	},
-	[38] = {
-		text = "Parando veículo suspeito",
-		blip = 61
-	},
-	[50] = {
-		text = "Acidente de trânsito",
-		blip = 77
-	},
-	[78] = {
+	[QRR] = {
 		text = "Reforço solicitado",
 		blip = 4
 	}

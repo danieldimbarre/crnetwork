@@ -1,27 +1,27 @@
-var list = [];
-var blocked = false;
-
-window.addEventListener("message",function(event){
-	switch(event["data"]["action"]){
-		case "notify":
-			addNotification(event["data"]["data"]);
-		break
-
-		case "showAll":
-			if (list["length"] > 0){
-				showLast()
-				$.post("http://notifycall/focusOn");
-			}
-		break
-
-		case "hideAll":
-			hideAll();
-			$.post("http://notifycall/focusOff");
-		break
-	}
-});
-
 $(document).ready(function(){
+	let list = [];
+	let blocked = false;
+
+	window.addEventListener("message",function(event){
+		switch(event["data"]["action"]){
+			case "notify":
+				addNotification(event["data"]["data"]);
+			break;
+
+			case "showAll":
+				if (list["length"] > 0){
+					showLast()
+					$.post("http://notifycall/focusOn");
+				}
+			break;
+
+			case "hideAll":
+				hideAll();
+				$.post("http://notifycall/focusOff");
+			break;
+		}
+	});
+
 	document.onkeyup = function(data){
 		if (data["which"] == 27){
 			hideAll();

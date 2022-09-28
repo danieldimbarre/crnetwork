@@ -23,7 +23,7 @@ AddEventHandler("showme:removeMe",function(source)
 		local Ped = GetPlayerPed(pedsource)
 
 		if showActive[Ped] then
-			SendNUIMessage({ action = "remove", id = Ped })
+			SendNUIMessage({ Action = "Remove", id = Ped })
 			showActive[Ped] = nil
 			showMe[Ped] = nil
 		end
@@ -46,14 +46,14 @@ CreateThread(function()
 
 				local _,x,y = GetScreenCoordFromWorldCoord(CoordsMe["x"],CoordsMe["y"],CoordsMe["z"] + 0.7)
 				if not showActive[k] then
-					SendNUIMessage({ show = true, text = v[1], id = k, x = x, y = y, border = v[3] })
+					SendNUIMessage({ Action = "Show", text = v[1], id = k, x = x, y = y, border = v[3] })
 					showActive[k] = true
 				end
 
-				SendNUIMessage({ action = "update", text = v[1], id = k, x = x, y = y, border = v[3] })
+				SendNUIMessage({ Action = "Update", text = v[1], id = k, x = x, y = y, border = v[3] })
 			else
 				if showActive[k] then
-					SendNUIMessage({ action = "remove", id = k })
+					SendNUIMessage({ Action = "Remove", id = k })
 					showActive[k] = nil
 				end
 			end
@@ -75,7 +75,7 @@ CreateThread(function()
 					showMe[k] = nil
 
 					if showActive[k] then
-						SendNUIMessage({ action = "remove", id = k })
+						SendNUIMessage({ Action = "Remove", id = k })
 						showActive[k] = nil
 					end
 				end

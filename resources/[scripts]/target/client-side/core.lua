@@ -904,7 +904,7 @@ CreateThread(function()
 		Distance = 1.0,
 		options = {
 			{
-				event = "tablet:enterTablet",
+				event = "tablet:Open",
 				label = "Abrir",
 				tunnel = "shop"
 			}
@@ -919,7 +919,7 @@ CreateThread(function()
 		Distance = 1.0,
 		options = {
 			{
-				event = "tablet:enterTablet",
+				event = "tablet:Open",
 				label = "Abrir",
 				tunnel = "shop"
 			}
@@ -934,7 +934,7 @@ CreateThread(function()
 		Distance = 1.0,
 		options = {
 			{
-				event = "tablet:enterTablet",
+				event = "tablet:Open",
 				label = "Abrir",
 				tunnel = "shop"
 			}
@@ -949,7 +949,7 @@ CreateThread(function()
 		Distance = 1.0,
 		options = {
 			{
-				event = "tablet:enterTablet",
+				event = "tablet:Open",
 				label = "Abrir",
 				tunnel = "shop"
 			}
@@ -964,7 +964,7 @@ CreateThread(function()
 		Distance = 1.0,
 		options = {
 			{
-				event = "tablet:enterTablet",
+				event = "tablet:Open",
 				label = "Abrir",
 				tunnel = "shop"
 			}
@@ -979,7 +979,7 @@ CreateThread(function()
 		Distance = 2.0,
 		options = {
 			{
-				event = "tablet:enterTablet",
+				event = "tablet:Open",
 				label = "Abrir",
 				tunnel = "shop"
 			}

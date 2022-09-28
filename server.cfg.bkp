@@ -9,7 +9,7 @@ start vrp
 
 start [maps]
 start [vehicles]
-# start [clothes]
+start [clothes]
 start [system]
 start [phone]
 start [scripts]
@@ -54,13 +54,16 @@ sv_scriptHookAllowed 0
 
 #rcon_password
 
-sets tags "default"
+sets tags "energy"
+sets Discord "discord.gg/8Z64czXtq6"
 
 sets locale "pt-BR"
 
 load_server_icon server.png
 
 sv_master1 ""
+
+sets sv_pureLevel 1
 
 sets banner_detail ""
 sets banner_connecting ""
@@ -81,7 +84,7 @@ setr voice_useSendingRangeOnly true
 
 sv_hostname "Energy"
 sets sv_projectName "Energy"
-sets sv_projectDesc "discord.gg/T8UHA3PVyx"
+sets sv_projectDesc "Energy"
 
 sv_maxclients 8
 

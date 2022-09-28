@@ -31,7 +31,7 @@ function Creative.Propertys(Name)
 				if os.time() > Consult[1]["Tax"] then
 					if REQUEST.Function(source,"Hipoteca atrasada, deseja efetuar o pagamento?","Sim, concluir pagamento","Não, pago depois") then
 						if vRP.PaymentFull(Passport,source,Informations[Consult[1]["Interior"]]["Price"] * 0.1) then
-							vRP.Execute("propertys/Tax",{ name = Name })
+							vRP.Query("propertys/Tax",{ name = Name })
 							TriggerClientEvent("Notify",source,"amarelo","Pagamento concluído.",5000)
 						end
 					end
@@ -85,7 +85,7 @@ AddEventHandler("propertys:Buy",function(Name)
 				if vRP.PaymentFull(Passport,source,Informations[Interior]["Price"]) then
 					local Serial = PropertysSerials()
 					vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
-					vRP.Execute("propertys/Buy",{ name = Split[1], interior = Interior, passport = Passport, serial = Serial, vault = Informations[Interior]["Vault"], fridge = Informations[Interior]["Fridge"], tax = os.time() + 2592000 })
+					vRP.Query("propertys/Buy",{ name = Split[1], interior = Interior, passport = Passport, serial = Serial, vault = Informations[Interior]["Vault"], fridge = Informations[Interior]["Fridge"], tax = os.time() + 2592000 })
 				else
 					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 				end
@@ -132,7 +132,7 @@ AddEventHandler("propertys:Sell",function(Name)
 					vRP.RemSrvData("Vault:"..Name)
 					vRP.RemSrvData("Fridge:"..Name)
 
-					vRP.Execute("propertys/Sell",{ name = Name })
+					vRP.Query("propertys/Sell",{ name = Name })
 					TriggerClientEvent("Notify",source,"amarelo","Venda concluída.",5000)
 					vRP.GiveBank(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.75)
 				end
@@ -155,7 +155,7 @@ AddEventHandler("propertys:Credentials",function(Name)
 
 				if REQUEST.Function(source,"Você escolheu reconfigurar todos os cartões de segurança, lembrando que ao prosseguir todos os cartões vão deixar de funcionar, deseja prosseguir?","Sim, prosseguir","Não, outra hora") then
 					local Serial = PropertysSerials()
-					vRP.Execute("propertys/Credentials",{ name = Name, serial = Serial })
+					vRP.Query("propertys/Credentials",{ name = Name, serial = Serial })
 					vRP.GiveItem(Passport,"propertys-"..Serial,Consult[1]["Keys"],true)
 				end
 			end
@@ -229,7 +229,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function PropertysSerials()
 	local Serial = vRP.GenerateString("LDLDLDLDLD")
-	local Consult = vRP.Execute("propertys/Serial",{ serial = Serial })
+	local Consult = vRP.Query("propertys/Serial",{ serial = Serial })
 	if Consult[1] then
 		PropertysSerials()
 	end
@@ -329,7 +329,7 @@ function Creative.Store(Item,Slot,Amount,Target,Name,Mode)
 		if Consult[1] then
 			if Item == "diagram" then
 				if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
-					vRP.Execute("propertys/"..Mode,{ name = Name, weight = 10 * Amount })
+					vRP.Query("propertys/"..Mode,{ name = Name, weight = 10 * Amount })
 					TriggerClientEvent("propertys:Update",source)
 				end
 			else

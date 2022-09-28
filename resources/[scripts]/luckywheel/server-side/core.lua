@@ -146,12 +146,12 @@ AddEventHandler("luckywheel:Payment",function()
 			local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 			if Vehicle[1] then
 				if Vehicle[1]["rental"] <= os.time() then
-					vRP.Execute("vehicles/rentalVehiclesUpdate",{ Passport = Passport, vehicle = vehName })
+					vRP.Query("vehicles/rentalVehiclesUpdate",{ Passport = Passport, vehicle = vehName })
 				else
-					vRP.Execute("vehicles/rentalVehiclesDays",{ Passport = Passport, vehicle = vehName })
+					vRP.Query("vehicles/rentalVehiclesDays",{ Passport = Passport, vehicle = vehName })
 				end
 			else
-				vRP.Execute("vehicles/rentalVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
+				vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 			end
 		elseif Payments[Passport] == 20 then
 			vRP.GiveBank(Passport,25000)

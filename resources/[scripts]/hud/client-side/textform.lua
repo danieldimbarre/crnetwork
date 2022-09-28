@@ -2,13 +2,18 @@
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Showform = {}
-local Textform = {
-	{
-		["Coords"] = vec3(843.18,-721.66,32.15),
-		["Text"] = "Testando essa bagaceira",
-		["Seconds"] = GetGameTimer() + 10000
-	}
-}
+local Textform = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:TEXTFORM
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Textform")
+AddEventHandler("hud:Textform",function(Coords,Text,Seconds)
+	table.insert(Textform,{
+		["Coords"] = Coords,
+		["Text"] = Text,
+		["Seconds"] = GetGameTimer() + Seconds
+	})
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTEXTFORM
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -20,7 +25,7 @@ CreateThread(function()
 
 		for Number,v in pairs(Textform) do
 			local Distance = #(Coords - v["Coords"])
-			if Distance <= 10 and GetGameTimer() <= v["Seconds"] then
+			if Distance <= 15 and GetGameTimer() <= v["Seconds"] then
 				TimeDistance = 1
 				local _,X,Y = GetScreenCoordFromWorldCoord(v["Coords"]["x"],v["Coords"]["y"],v["Coords"]["z"])
 				if not Showform[Number] then

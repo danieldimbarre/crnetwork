@@ -22,7 +22,8 @@ function Creative.Characters()
 	local License = vRP.Identities(source)
 	local Consult = vRP.Query("characters/Characters",{ license = License })
 
-	SetPlayerRoutingBucket(source,source)
+	Player(source)["state"]["Route"] = 999999
+	SetPlayerRoutingBucket(source,999999)
 
 	if Consult[1] then
 		for _,v in pairs(Consult) do
@@ -53,6 +54,7 @@ function Creative.CharacterChosen(Passport)
 	local Consult = vRP.Query("characters/UserLicense",{ id = Passport, license = License })
 	if Consult[1] then
 		SetPlayerRoutingBucket(source,0)
+		Player(source)["state"]["Route"] = 0
 		vRP.CharacterChosen(source,Passport)
 	else
 		DropPlayer(source,"Conectando em personagem irregular.")
@@ -87,11 +89,12 @@ function Creative.NewCharacter(Name,Name2,Sex)
 			Sexo = "M"
 		end
 
-		vRP.Execute("characters/newCharacter",{ license = License, name = Name, name2 = Name2, sex = Sexo, phone = vRP.GeneratePhone(), blood = math.random(4) })
+		vRP.Query("characters/newCharacter",{ license = License, name = Name, name2 = Name2, sex = Sexo, phone = vRP.GeneratePhone(), blood = math.random(4) })
 
 		local Consult = vRP.Query("characters/lastCharacters",{ license = License })
 		if Consult[1] then
 			vRP.CharacterChosen(source,Consult[1]["id"],Sex)
+			Player(source)["state"]["Route"] = 0
 			SetPlayerRoutingBucket(source,0)
 		end
 

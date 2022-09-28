@@ -57,7 +57,7 @@ RegisterCommand("gem",function(source,args)
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
 				TriggerClientEvent("Notify",source,"verde","Gemas entregues.",5000)
-				vRP.Execute("accounts/AddGems",{ license = Identity["license"], gems = Amount })
+				vRP.Query("accounts/AddGems",{ license = Identity["license"], gems = Amount })
 				TriggerEvent("Discord","Gemstone","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Gemas:** "..Amount.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 			end
 		end
@@ -138,7 +138,7 @@ RegisterCommand("delete",function(source,args)
 	if Passport and args[1] then
 		if vRP.HasGroup(Passport,"Moderator") then
 			local OtherPassport = parseInt(args[1])
-			vRP.Execute("characters/removeCharacter",{ id = OtherPassport })
+			vRP.Query("characters/removeCharacter",{ id = OtherPassport })
 			TriggerClientEvent("Notify",source,"verde","Personagem <b>"..OtherPassport.."</b> deletado.",5000)
 		end
 	end
@@ -178,7 +178,7 @@ RegisterCommand("ban",function(source,args)
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
 				vRP.Kick(OtherPassport,"Banido.")
-				vRP.Execute("banneds/InsertBanned",{ license = Identity["license"], time = time })
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = time })
 				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..time.."</b> dias.",5000)
 			end
 		end
@@ -194,7 +194,7 @@ RegisterCommand("unban",function(source,args)
 			local OtherPassport = parseInt(args[1])
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
-				vRP.Execute("banneds/RemoveBanned",{ license = Identity["license"] })
+				vRP.Query("banneds/RemoveBanned",{ license = Identity["license"] })
 				TriggerClientEvent("Notify",source,"verde","Passaporte <b>"..OtherPassport.."</b> desbanido.",5000)
 			end
 		end

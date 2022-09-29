@@ -34,8 +34,11 @@ Follow these steps to properly update your Gabz resources. Not following these s
     ensure cfx-gabz-scenarios       #*THIS RESOURCE IS OPTIONAL, IT REMOVES CONFLICTING PEDS SPAWNS*
     ensure cfx-gabz-pdprops         #*THIS RESOURCE IS REQUIRED IF YOU USE ANY PD. IT MUST BE START BEFORE PD'S*
     ensure cfx-gabz-247             #*THIS RESOURCE IS MANDATORY IF YOU USE [CFX-GABZ-OTTOS]*
+    ensure cfx-gabz-altruists
     ensure cfx-gabz-ammunation
     ensure cfx-gabz-arcade
+    ensure cfx-gabz-aztecas
+    ensure cfx-gabz-ballas
     ensure cfx-gabz-barber
     ensure cfx-gabz-beanmachine
     #ensure cfx-gabz-bennys         #*READ BELOW*!
@@ -48,6 +51,7 @@ Follow these steps to properly update your Gabz resources. Not following these s
     ensure cfx-gabz-davispd         #*THIS RESOURCE REQUIRES [CFX-GABZ-PDPROPS] TO WORK PROPERLY*
     ensure cfx-gabz-diner
     ensure cfx-gabz-esbltd
+    ensure cfx-gabz-families
     ensure cfx-gabz-firedept
     ensure cfx-gabz-fleeca
     ensure cfx-gabz-harmony
@@ -58,7 +62,9 @@ Follow these steps to properly update your Gabz resources. Not following these s
     #ensure cfx-gabz-impound        #*READ BELOW*!
     ensure cfx-gabz-lamesapd        #*THIS RESOURCE REQUIRES [CFX-GABZ-PDPROPS] TO WORK PROPERLY*
     ensure cfx-gabz-lost
+    ensure cfx-gabz-lostsc
     ensure cfx-gabz-lscustoms
+    ensure cfx-gabz-marabunta
     ensure cfx-gabz-mirrorpark1
     ensure cfx-gabz-mirrorpark2
     ensure cfx-gabz-mrpd
@@ -80,7 +86,9 @@ Follow these steps to properly update your Gabz resources. Not following these s
     ensure cfx-gabz-suburban
     ensure cfx-gabz-tattoo
     ensure cfx-gabz-townhall        #*THIS RESOURCE REQUIRES [CFX-GABZ-PDPROPS] TO WORK PROPERLY*
+    ensure cfx-gabz-triads
     ensure cfx-gabz-tuners
+    ensure cfx-gabz-vagos
     ensure cfx-gabz-vbmarket
     ensure cfx-gabz-vu
     ensure cfx-gabz-yachts

@@ -22,6 +22,7 @@ local DuiTextures = {
 		["Distance"] = 1.50,
 		["Dimension"] = 1.25,
 		["Label"] = "Quadro Branco",
+		["Permission"] = "setPolice",
 		["Coords"] = vec3(439.47,-985.85,35.99),
 		["Link"] = "https://creative-rp.com/Quadro.png",
 		["Dict"] = "prop_planning_b1",
@@ -36,10 +37,15 @@ local DuiTextures = {
 RegisterServerEvent("player:Texture")
 AddEventHandler("player:Texture",function(Name)
 	local source = source
-	local Keyboard = vKEYBOARD.keySingle(source,"Link:")
-	if Keyboard then
-		DuiTextures[Name]["Link"] = Keyboard[1]
-		TriggerClientEvent("player:DuiUpdate",-1,Name,DuiTextures[Name])
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if (DuiTextures[Name]["Permission"] and vRP.HasGroup(Passport,DuiTextures[Name]["Permission"])) or not DuiTextures[Name]["Permission"] then
+			local Keyboard = vKEYBOARD.keySingle(source,"Link:")
+			if Keyboard then
+				DuiTextures[Name]["Link"] = Keyboard[1]
+				TriggerClientEvent("player:DuiUpdate",-1,Name,DuiTextures[Name])
+			end
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

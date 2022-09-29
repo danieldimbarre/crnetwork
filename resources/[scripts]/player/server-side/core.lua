@@ -193,7 +193,7 @@ function Creative.shotsFired(Vehicle)
 		local Service = vRP.NumPermission("Police")
 		for Passports,Sources in pairs(Service) do
 			async(function()
-				TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Vehicle, x = Coords["x"], y = Coords["y"], z = Coords["z"], blipColor = 6 })
+				TriggerClientEvent("NotifyPush",Sources,{ code = 10, title = Vehicle, x = Coords["x"], y = Coords["y"], z = Coords["z"], blipColor = 6 })
 			end)
 		end
 	end
@@ -681,17 +681,14 @@ AddEventHandler("player:checkShoes",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local OtherPassport = vRP.Passport(Entity)
-		if OtherPassport then
-			if not UniqueShoes[OtherPassport] then
-				UniqueShoes[OtherPassport] = os.time()
-			end
+		if not UniqueShoes[Entity] then
+			UniqueShoes[Entity] = os.time()
+		end
 
-			if os.time() >= UniqueShoes[OtherPassport] then
-				if vSKINSHOP.checkShoes(Entity) then
-					vRP.GenerateItem(Passport,"WEAPON_SHOES",2,true)
-					UniqueShoes[OtherPassport] = os.time() + 60
-				end
+		if os.time() >= UniqueShoes[Entity] then
+			if vSKINSHOP.checkShoes(Entity) then
+				vRP.GenerateItem(Passport,"WEAPON_SHOES",2,true)
+				UniqueShoes[Entity] = os.time() + 300
 			end
 		end
 	end

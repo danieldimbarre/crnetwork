@@ -12,6 +12,7 @@ vSERVER = Tunnel.getInterface("spawn")
 local Peds = {}
 local Camera = nil
 local Destroy = false
+local Character = true
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -113,6 +114,12 @@ end)
 -- NEWCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("NewCharacter",function(Data,Callback)
+	for _,v in pairs(Peds) do
+		if DoesEntityExist(v) then
+			DeleteEntity(v)
+		end
+	end
+
 	vSERVER.NewCharacter(Data["name"],Data["name2"],Data["sex"])
 
 	Callback("Ok")
@@ -121,29 +128,39 @@ end)
 -- JUSTSPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:justSpawn")
-AddEventHandler("spawn:justSpawn",function(Open)
+AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
 	local Ped = PlayerPedId()
-	RenderScriptCams(false,false,0,true,true)
-	SetCamActive(Camera,false)
-	DestroyCam(Camera,true)
-	Camera = nil
-
-	if Open then
-		local Coords = GetEntityCoords(Ped)
-		Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",Coords["x"],Coords["y"],Coords["z"] + 200.0,270.00,0.0,0.0,80.0,0,0)
-		SetCamActive(Camera,true)
-		RenderScriptCams(true,false,1,true,true)
-
-		SendNUIMessage({ Action = "Location", Table = Locate })
-	else
-		LocalPlayer["state"]["Invisible"] = false
-		SetEntityVisible(Ped,true,false)
-		TriggerEvent("hud:Active",true)
-		SetNuiFocus(false,false)
-		Destroy = false
+	if Camera then
+		RenderScriptCams(false,false,0,true,true)
+		SetCamActive(Camera,false)
+		DestroyCam(Camera,true)
+		Camera = nil
 	end
 
-	DoScreenFadeIn(1000)
+	if NewCharacter then
+		Character = not Character
+	end
+
+	if not Character then
+		if Open then
+			local Coords = GetEntityCoords(Ped)
+			Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",Coords["x"],Coords["y"],Coords["z"] + 200.0,270.00,0.0,0.0,80.0,0,0)
+			SetCamActive(Camera,true)
+			RenderScriptCams(true,false,1,true,true)
+
+			SendNUIMessage({ Action = "Location", Table = Locate })
+		else
+			LocalPlayer["state"]["Invisible"] = false
+			SetEntityVisible(Ped,true,false)
+			TriggerEvent("hud:Active",true)
+			SetNuiFocus(false,false)
+			Destroy = false
+		end
+
+		DoScreenFadeIn(1000)
+	else
+		TriggerServerEvent("creator:newCharacter")
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHOSEN
@@ -268,7 +285,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Barber(Ped,status)
 	myClothes = {}
-	myClothes = { status[1] or 0, status[2] or 0, status[3] or 0, status[4] or 0, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or 0, status[13] or 0, status[14] or 0, status[15] or 0, status[16] or 0, status[17] or 0, status[18] or 0, status[19] or 0, status[20] or 0, status[21] or 0, status[22] or 0, status[23] or 0, status[24] or 0, status[25] or 0, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 0 }
+	myClothes = { status[1] or 0, status[2] or 100, status[3] or 0, status[4] or 100, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or -1, status[13] or 5, status[14] or -1, status[15] or -1, status[16] or 5, status[17] or 0, status[18] or -1, status[19] or 0, status[20] or 0, status[21] or -1, status[22] or 5, status[23] or 0, status[24] or -1, status[25] or 5, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 21 }
+
+	local Ped = PlayerPedId()
 
     local weightFace = myClothes[2] / 100 + 0.0
     local weightSkin = myClothes[4] / 100 + 0.0
@@ -297,7 +316,11 @@ function Barber(Ped,status)
 	SetPedHairColor(Ped,myClothes[10],myClothes[11])
 
 	SetPedHeadOverlay(Ped,4,myClothes[12],myClothes[13] * 0.1)
-	SetPedHeadOverlayColor(Ped,4,1,myClothes[14],myClothes[14])
+	if myClothes[14] == -1 then
+        SetPedHeadOverlayColor(Ped,4,0,0,0)
+    else
+	    SetPedHeadOverlayColor(Ped,4,2,myClothes[14],myClothes[14])
+    end
 
 	SetPedHeadOverlay(Ped,8,myClothes[15],myClothes[16] * 0.1)
 	SetPedHeadOverlayColor(Ped,8,1,myClothes[17],myClothes[17])

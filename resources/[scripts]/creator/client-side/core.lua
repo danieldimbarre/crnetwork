@@ -16,11 +16,11 @@ local myFace = { 0,100,0,100,0,0,0,0,0,0,0,-1,5,-1,-1,5,0,0,0,0,-1,5,0,-1,5,0,0,
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("updateSkin",function(data)
+RegisterNUICallback("updateSkin",function(Data,Callback)
 	myFace = {}
-	myFace = { tonumber(data["fathers"]),tonumber(data["kinship"]),tonumber(data["eyecolor"]),tonumber(data["skincolor"]),tonumber(data["acne"]),tonumber(data["stains"]),tonumber(data["freckles"]),tonumber(data["aging"]),tonumber(data["hair"]),tonumber(data["haircolor"]),tonumber(data["haircolor2"]),tonumber(data["makeup"]),tonumber(data["makeupintensity"]),tonumber(data["makeupcolor"]),tonumber(data["lipstick"]),tonumber(data["lipstickintensity"]),tonumber(data["lipstickcolor"]),tonumber(data["eyebrow"]),tonumber(data["eyebrowintensity"]),tonumber(data["eyebrowcolor"]),tonumber(data["beard"]),tonumber(data["beardintentisy"]),tonumber(data["beardcolor"]),tonumber(data["blush"]),tonumber(data["blushintentisy"]),tonumber(data["blushcolor"]),tonumber(data["face00"]),tonumber(data["face01"]),tonumber(data["face04"]),tonumber(data["face06"]),tonumber(data["face08"]),tonumber(data["face09"]),tonumber(data["face10"]),tonumber(data["face12"]),tonumber(data["face13"]),tonumber(data["face14"]),tonumber(data["face15"]),tonumber(data["face16"]),tonumber(data["face17"]),tonumber(data["face19"]),tonumber(data["mothers"]) }
+	myFace = { tonumber(Data["fathers"]),tonumber(Data["kinship"]),tonumber(Data["eyecolor"]),tonumber(Data["skincolor"]),tonumber(Data["acne"]),tonumber(Data["stains"]),tonumber(Data["freckles"]),tonumber(Data["aging"]),tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintentisy"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintentisy"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),tonumber(Data["face06"]),tonumber(Data["face08"]),tonumber(Data["face09"]),tonumber(Data["face10"]),tonumber(Data["face12"]),tonumber(Data["face13"]),tonumber(Data["face14"]),tonumber(Data["face15"]),tonumber(Data["face16"]),tonumber(Data["face17"]),tonumber(Data["face19"]),tonumber(Data["mothers"]) }
 
-	if data["value"] then
+	if Data["value"] then
 		SetNuiFocus(false,false)
 		displayCreator(false)
 		SendNUIMessage({ openCreator = false })
@@ -34,18 +34,22 @@ RegisterNUICallback("updateSkin",function(data)
 	end
 
 	TriggerEvent("barbershop:Apply",myFace)
+
+	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROTATELEFT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("rotate",function(data,cb)
+RegisterNUICallback("rotate",function(Data,Callback)
 	local Ped = PlayerPedId()
-	local heading = GetEntityHeading(Ped)
-	if data == "left" then
-		SetEntityHeading(Ped,heading + 10)
-	elseif data == "right" then
-		SetEntityHeading(Ped,heading - 10)
+	local Heading = GetEntityHeading(Ped)
+	if Data == "left" then
+		SetEntityHeading(Ped,Heading + 10)
+	elseif Data == "right" then
+		SetEntityHeading(Ped,Heading - 10)
 	end
+
+	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISPLAYCREATOR
@@ -125,13 +129,6 @@ function defaultCharacter()
         SetPedPropIndex(Ped,7,-1,0,2)
     end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- STARTFOCUS
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	SetNuiFocus(false,false)
-	SendNUIMessage({ openCreator = false })
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISPLAYCREATOR
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -33,13 +33,17 @@ local Locate = {
 	{ ["x"] = 449.71, ["y"] = -659.27, ["z"] = 28.48, ["name"] = "Integrity Way", ["hash"] = 7 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSTART
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+RegisterNetEvent("onClientResourceStart")
+AddEventHandler("onClientResourceStart",function(Resource)
+	if (GetCurrentResourceName() ~= Resource) then
+		return
+	end
+
 	Wait(5000)
 
 	DoScreenFadeOut(0)
-
 	DisplayRadar(false)
 	ShutdownLoadingScreen()
 	ShutdownLoadingScreenNui()

@@ -19,7 +19,6 @@ local List = {
 		["Name"] = "Megafone",
 		["Type"] = "Usável",
 		["Durability"] = 7,
-		["Block"] = true,
 		["Weight"] = 3.25
 	},
 	["sprays01"] = {
@@ -2983,8 +2982,7 @@ local List = {
 	["polvora"] = {
 		["Index"] = "polvora",
 		["Name"] = "Polvora",
-		["Type"] = "Usável",
-		["Block"] = true,
+		["Type"] = "Comun",
 		["Weight"] = 0.25
 	}
 }

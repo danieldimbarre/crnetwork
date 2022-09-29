@@ -6259,7 +6259,7 @@ local List = {
 		["Gems"] = 0
 	},
 	["fordmustanggt2"] = {
-		["Name"] = "MustangGOE",
+		["Name"] = "FordMustang",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Type"] = "work",

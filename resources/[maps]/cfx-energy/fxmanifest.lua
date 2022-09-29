@@ -12,6 +12,3 @@ files {
 }
 
 data_file "INTERIOR_PROXY_ORDER_FILE" "interiorproxies.meta"
-
-data_file "DLC_ITYP_REQUEST" "stream/Sprays/sprays.ytyp"
-data_file "DLC_ITYP_REQUEST" "stream/Badges/v_badges.ytyp"

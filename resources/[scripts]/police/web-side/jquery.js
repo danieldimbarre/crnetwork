@@ -4,8 +4,8 @@ var ReversePage = "Prender";
 $(document).ready(function(){
 	functionPrender();
 
-	window.addEventListener("message",function(Event){
-		switch (Event["Data"]["Action"]){
+	window.addEventListener("message",function(event){
+		switch (event["data"]["Action"]){
 			case "openSystem":
 				$("#mainPage").css("display","block");
 			break;
@@ -23,7 +23,7 @@ $(document).ready(function(){
 			break;
 
 			case "reloadSearch":
-				functionSearch(Event["Data"]["Data"]);
+				functionSearch(event["data"]["Data"]);
 			break;
 		};
 	});

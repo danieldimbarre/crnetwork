@@ -82,20 +82,26 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("initPrison",function(Data)
-	vSERVER.initPrison(Data["passaporte"],Data["servicos"],Data["multas"],Data["texto"])
+RegisterNUICallback("initPrison",function(Data,Callback)
+	vSERVER.initPrison(Data["Passport"],Data["Services"],Data["Fines"],Data["Text"])
+
+	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITFINE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("initFine",function(Data)
-	vSERVER.initFine(Data["passaporte"],Data["multas"],Data["texto"])
+RegisterNUICallback("initFine",function(Data,Callback)
+	vSERVER.initFine(Data["Passport"],Data["Fines"],Data["Text"])
+
+	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEARCHUSER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("searchUser",function(Data,cb)
-	cb({ Result = vSERVER.searchUser(Data["passaporte"]) })
+RegisterNUICallback("searchUser",function(Data,Callback)
+	cb({ Result = vSERVER.searchUser(Data["Passport"]) })
+
+	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:MDT
@@ -128,7 +134,7 @@ local inDeath = false
 local inPrison = false
 local inTimer = GetGameTimer()
 local timeDeath = GetGameTimer()
-local coordsIntern = { 1679.94,2513.07,45.56 }
+local coordsIntern = { 1691.53,2565.91,45.56 }
 local coordsExtern = { 1896.15,2604.44,45.75 }
 local coordsLeaver = { 1834.09,2594.34,46.02 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -256,37 +262,47 @@ local polyPrison = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RUNAWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function runAway()
-	CreateThread(function()
-		while inPrison do
-			local timeDistance = 999
-			local Ped = PlayerPedId()
-			local coords = GetEntityCoords(Ped)
-			local distance = #(coords - vec3(coordsLeaver[1],coordsLeaver[2],coordsLeaver[3]))
+-- function runAway()
+-- 	CreateThread(function()
+-- 		while inPrison do
+-- 			local timeDistance = 999
+-- 			local Ped = PlayerPedId()
+-- 			local coords = GetEntityCoords(Ped)
 
-			if not polyPrison:isPointInside(coords) then
-				SetEntityCoords(Ped,coordsIntern[1],coordsIntern[2],coordsIntern[3],1,0,0,0)
-			end
+-- 			if not polyPrison:isPointInside(coords) then
+-- 				SetEntityCoords(Ped,coordsIntern[1],coordsIntern[2],coordsIntern[3],1,0,0,0)
+-- 			end
 
-			if GetEntityHealth(Ped) <= 100 then
-				if not inDeath then
-					timeDeath = GetGameTimer() + 60000
-					inDeath = true
-				else
-					if GetGameTimer() >= timeDeath then
-						vRP.revivePlayer(125)
-						inDeath = false
-					end
-				end
-			end
+-- 			if GetEntityHealth(Ped) <= 100 then
+-- 				if not inDeath then
+-- 					timeDeath = GetGameTimer() + 60000
+-- 					inDeath = true
+-- 				else
+-- 					if GetGameTimer() >= timeDeath then
+-- 						vRP.revivePlayer(125)
+-- 						inDeath = false
+-- 					end
+-- 				end
+-- 			end
 
-			Wait(timeDistance)
-		end
-	end)
-end
+-- 			Wait(timeDistance)
+-- 		end
+-- 	end)
+-- end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SYNCPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.syncPrison(Status)
+function Creative.syncPrison(Status,Teleport)
+	if Teleport then
+		if Status then
+			SetEntityCoords(PlayerPedId(),coordsIntern[1],coordsIntern[2],coordsIntern[3],1,0,0,0)
+		else
+			SetEntityCoords(PlayerPedId(),coordsExtern[1],coordsExtern[2],coordsExtern[3],1,0,0,0)
+		end
+	end
+
 	inPrison = Status
+	if inPrison then
+		runAway()
+	end
 end

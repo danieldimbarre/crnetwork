@@ -16,7 +16,6 @@ vCLIENT = Tunnel.getInterface("police")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Reduces = {}
 local Actived = {}
-local PrisonMarkers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PREPRARES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -109,7 +108,7 @@ function Creative.initPrison(OtherPassport,Services,Fines,Text)
 					TriggerClientEvent("radio:RadioClean",OtherPlayer)
 
 					if OtherPlayer then
-						vRP.Teleport(OtherPlayer,1691.53,2565.91,45.56)
+						vCLIENT.syncPrison(source,true,false)
 					end
 				end
 
@@ -168,28 +167,6 @@ function Creative.initFine(OtherPassport,Fines,Text)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PRISONSYNC
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		for k,v in pairs(PrisonMarkers) do
-			if PrisonMarkers[k][1] > 0 then
-				PrisonMarkers[k][1] = PrisonMarkers[k][1] - 1
-
-				if PrisonMarkers[k][1] <= 0 then
-					if vRP.Source(PrisonMarkers[k][2]) then
-						TriggerEvent("blipsystem:serviceExit",k)
-					end
-
-					PrisonMarkers[k] = nil
-				end
-			end
-		end
-
-		Wait(1000)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:REDUCES
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("police:Reduces")
@@ -198,7 +175,11 @@ AddEventHandler("police:Reduces",function(Number)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Identity = vRP.Identity(Passport)
-		if parseInt(Identity["prison"]) > 0 then
+		if parseInt(Identity["prison"]) <= 0 then
+			vCLIENT.syncPrison(source,false,false)
+			
+			TriggerClientEvent("Notify",source,"azul","Sua sentença foi paga.",5000)
+		else
 			if not Reduces[Number] then
 				Reduces[Number] = {}
 			end
@@ -236,3 +217,13 @@ function reduceFunction(source,Passport,Number)
 	Player(source)["state"]["Cancel"] = false
 	vRPC.removeObjects(source)
 end
+--------------------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECT
+--------------------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Connect",function(Passport,source)
+	local Identity = vRP.Identity(Passport)
+	if parseInt(Identity["prison"]) > 0 then
+		TriggerClientEvent("Notify",source,"azul","Restam <b>"..parseInt(Identity["prison"]).." serviços</b>.",5000)
+		vCLIENT.syncPrison(source,true,true)
+	end
+end)

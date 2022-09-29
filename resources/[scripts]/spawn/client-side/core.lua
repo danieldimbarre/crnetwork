@@ -12,7 +12,6 @@ vSERVER = Tunnel.getInterface("spawn")
 local Peds = {}
 local Camera = nil
 local Destroy = false
-local Character = true
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -34,13 +33,17 @@ local Locate = {
 	{ ["x"] = 449.71, ["y"] = -659.27, ["z"] = 28.48, ["name"] = "Integrity Way", ["hash"] = 7 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSTART
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	DoScreenFadeOut(0)
+RegisterNetEvent("onClientResourceStart")
+AddEventHandler("onClientResourceStart",function(Resource)
+	if (GetCurrentResourceName() ~= Resource) then
+		return
+	end
 
 	Wait(5000)
 
+	DoScreenFadeOut(0)
 	DisplayRadar(false)
 	ShutdownLoadingScreen()
 	ShutdownLoadingScreenNui()
@@ -110,14 +113,6 @@ end)
 -- NEWCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("NewCharacter",function(Data,Callback)
-	DoScreenFadeOut(0)
-
-	for _,v in pairs(Peds) do
-		if DoesEntityExist(v) then
-			DeleteEntity(v)
-		end
-	end
-
 	vSERVER.NewCharacter(Data["name"],Data["name2"],Data["sex"])
 
 	Callback("Ok")
@@ -126,46 +121,29 @@ end)
 -- JUSTSPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:justSpawn")
-AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
+AddEventHandler("spawn:justSpawn",function(Open)
 	local Ped = PlayerPedId()
-	if Camera then
-		RenderScriptCams(false,false,0,true,true)
-		SetCamActive(Camera,false)
-		DestroyCam(Camera,true)
-		Camera = nil
-	end
+	RenderScriptCams(false,false,0,true,true)
+	SetCamActive(Camera,false)
+	DestroyCam(Camera,true)
+	Camera = nil
 
-	if NewCharacter then
-		Character = not NewCharacter
-	end
+	if Open then
+		local Coords = GetEntityCoords(Ped)
+		Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",Coords["x"],Coords["y"],Coords["z"] + 200.0,270.00,0.0,0.0,80.0,0,0)
+		SetCamActive(Camera,true)
+		RenderScriptCams(true,false,1,true,true)
 
-	if not Character then
-		if Open then
-			local Coords = GetEntityCoords(Ped)
-			Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",Coords["x"],Coords["y"],Coords["z"] + 200.0,270.00,0.0,0.0,80.0,0,0)
-			SetCamActive(Camera,true)
-			RenderScriptCams(true,false,1,true,true)
-
-			SendNUIMessage({ Action = "Location", Table = Locate })
-		else
-			LocalPlayer["state"]["Invisible"] = false
-			SetEntityVisible(Ped,true,false)
-			TriggerEvent("hud:Active",true)
-			SetNuiFocus(false,false)
-			Destroy = false
-		end
-
-		DoScreenFadeIn(1000)
+		SendNUIMessage({ Action = "Location", Table = Locate })
 	else
-		TriggerServerEvent("creator:newCharacter")
+		LocalPlayer["state"]["Invisible"] = false
+		SetEntityVisible(Ped,true,false)
+		TriggerEvent("hud:Active",true)
+		SetNuiFocus(false,false)
+		Destroy = false
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SPAWN:SPAWNCLOSE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("spawn:SpawnClose")
-AddEventHandler("spawn:SpawnClose",function()
-	SendNUIMessage({ Action = "SpawnClose" })
+
+	DoScreenFadeIn(1000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHOSEN

@@ -681,16 +681,16 @@ AddEventHandler("player:checkShoes",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Passport = vRP.Passport(Entity)
-		if Passport then
-			if not UniqueShoes[Passport] then
-				UniqueShoes[Passport] = os.time()
+		local OtherPassport = vRP.Passport(Entity)
+		if OtherPassport then
+			if not UniqueShoes[OtherPassport] then
+				UniqueShoes[OtherPassport] = os.time()
 			end
 
-			if os.time() >= UniqueShoes[Passport] then
+			if os.time() >= UniqueShoes[OtherPassport] then
 				if vSKINSHOP.checkShoes(Entity) then
 					vRP.GenerateItem(Passport,"WEAPON_SHOES",2,true)
-					UniqueShoes[Passport] = os.time() + 60
+					UniqueShoes[OtherPassport] = os.time() + 60
 				end
 			end
 		end

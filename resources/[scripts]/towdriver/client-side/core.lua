@@ -122,7 +122,7 @@ AddEventHandler("towdriver:Toggle",function(id)
 			spawnSelect = math.random(#vehModels)
 			spawnCoords = math.random(#vehRescue[serviceLocate])
 
-			TriggerEvent("NotifyPush",{ code = 20, title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], name = "Aguardando reboque", blipColor = 2 })
+			TriggerEvent("NotifyPush",{ title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], name = "Aguardando reboque", blipColor = 2 })
 		end
 
 		vSERVER.toggleService()
@@ -163,7 +163,7 @@ AddEventHandler("towdriver:Tow",function(entity)
 
 		TriggerServerEvent("garages:deleteVehicle",entity[4],entity[1])
 
-		TriggerEvent("NotifyPush",{ code = 20, title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], name = "Aguardando reboque.", blipColor = 2 })
+		TriggerEvent("NotifyPush",{ title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], name = "Aguardando reboque.", blipColor = 2 })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

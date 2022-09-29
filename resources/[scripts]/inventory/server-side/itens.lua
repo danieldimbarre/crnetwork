@@ -2359,7 +2359,7 @@ Use = {
 							local Service = vRP.NumPermission("Police")
 							for Passports,Sources in pairs(Service) do
 								async(function()
-									TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 								end)
 							end
 						end
@@ -2394,7 +2394,7 @@ Use = {
 								local Service = vRP.NumPermission("Police")
 								for Passports,Sources in pairs(Service) do
 									async(function()
-										TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+										TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 									end)
 								end
 							end
@@ -2435,7 +2435,7 @@ Use = {
 								local Service = vRP.NumPermission("Police")
 								for Passports,Sources in pairs(Service) do
 									async(function()
-										TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+										TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 									end)
 								end
 							end
@@ -4072,7 +4072,7 @@ Use = {
 					for Passports,Sources in pairs(Service) do
 						async(function()
 							vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 

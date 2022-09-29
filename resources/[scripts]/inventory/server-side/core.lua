@@ -1698,7 +1698,7 @@ AddEventHandler("inventory:stealTrunk",function(Entity)
 					local Service = vRP.NumPermission("Police")
 					for Passports,Sources in pairs(Service) do
 						async(function()
-							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehModels).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehModels).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 						end)
 					end
 				end
@@ -1836,7 +1836,7 @@ AddEventHandler("inventory:makeProducts",function(Table)
 					for Passports,Sources in pairs(Service) do
 						async(function()
 							vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 				end
@@ -2146,7 +2146,7 @@ AddEventHandler("inventory:StealPeds",function()
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 32, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end
@@ -2207,7 +2207,7 @@ AddEventHandler("inventory:DrugsPeds",function()
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end

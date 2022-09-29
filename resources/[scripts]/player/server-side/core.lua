@@ -193,7 +193,7 @@ function Creative.shotsFired(Vehicle)
 		local Service = vRP.NumPermission("Police")
 		for Passports,Sources in pairs(Service) do
 			async(function()
-				TriggerClientEvent("NotifyPush",Sources,{ code = 10, title = Vehicle, x = Coords["x"], y = Coords["y"], z = Coords["z"], blipColor = 6 })
+				TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Vehicle, x = Coords["x"], y = Coords["y"], z = Coords["z"], blipColor = 6 })
 			end)
 		end
 	end

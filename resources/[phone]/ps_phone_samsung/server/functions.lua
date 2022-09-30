@@ -191,34 +191,39 @@ end
 -- getUsersByPermission
 -----------------------------------------------------------------------------------------------------------------------------------------
 getUsersByPermission = function(group)
-    return vRP.NumPermission(group)
+    local Service = vRP.NumPermission(group)
+    local users = {}
+
+    for k, v in pairs(Service) do
+        table.insert(users, k)
+    end
+    return users
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- treatUsersByPermission
 -----------------------------------------------------------------------------------------------------------------------------------------
-treatUsersByPermission = function(id)
-    local player = id
-    local user_id = getUserId(player)
+treatUsersByPermission = function(user_id)
+    local player = getUserSource(user_id)
     return player,user_id
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- createBlipTimeout
 -----------------------------------------------------------------------------------------------------------------------------------------
 createBlipTimeout = function(source,x,y,z,title,timeout)
-    local idgens = lib.newIDGenerator()
-    local id = idgens:gen()
-    TriggerClientEvent(GetCurrentResourceName()..':addblip',source,id,x,y,z,358,71,title,0.6,false)
-    SetTimeout(timeout,function() 
-        TriggerClientEvent(GetCurrentResourceName()..':removeblip',source,id)
-        idgens:free(id) 
-    end)
+    -- local idgens = lib.newIDGenerator()
+    -- local id = idgens:gen()
+    -- TriggerClientEvent(GetCurrentResourceName()..':addblip',source,id,x,y,z,358,71,title,0.6,false)
+    -- SetTimeout(timeout,function() 
+    --     TriggerClientEvent(GetCurrentResourceName()..':removeblip',source,id)
+    --     idgens:free(id) 
+    -- end)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- requestAcceptorNot
 -----------------------------------------------------------------------------------------------------------------------------------------
 requestAcceptorNot = function(source,title,timeout)
     REQUEST = Tunnel.getInterface("request")
-    return REQUEST.Request(source,title,"Sim","Não")
+    return REQUEST.Function(source,title,"Sim, aceitar","Não, recusar")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- checkPlayerHandcuffed
@@ -348,6 +353,6 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 sendnotifypush = function(source,title,message,x,y,z,name,phone)
     if source then 
-        TriggerClientEvent("NotifyPush",source,{ code = 20, title = title, text = message, x = x, y = y, z = z, time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
+        TriggerClientEvent("NotifyPush",source,{ code = "QRU", title = title, text = message, x = x, y = y, z = z, time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
     end
 end

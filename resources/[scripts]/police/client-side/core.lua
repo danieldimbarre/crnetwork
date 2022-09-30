@@ -100,9 +100,7 @@ end)
 -- SEARCHUSER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("searchUser",function(Data,Callback)
-	cb({ Result = vSERVER.searchUser(Data["Passport"]) })
-
-	Callback("Ok")
+	Callback({ Result = vSERVER.searchUser(Data["Passport"]) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:MDT
@@ -263,33 +261,33 @@ local polyPrison = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RUNAWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
--- function runAway()
--- 	CreateThread(function()
--- 		while inPrison do
--- 			local timeDistance = 999
--- 			local Ped = PlayerPedId()
--- 			local coords = GetEntityCoords(Ped)
+function runAway()
+	CreateThread(function()
+		while inPrison do
+			local timeDistance = 999
+			local Ped = PlayerPedId()
+			local coords = GetEntityCoords(Ped)
 
--- 			if not polyPrison:isPointInside(coords) then
--- 				SetEntityCoords(Ped,coordsIntern[1],coordsIntern[2],coordsIntern[3],1,0,0,0)
--- 			end
+			if not polyPrison:isPointInside(coords) then
+				SetEntityCoords(Ped,coordsIntern[1],coordsIntern[2],coordsIntern[3],1,0,0,0)
+			end
 
--- 			if GetEntityHealth(Ped) <= 100 then
--- 				if not inDeath then
--- 					timeDeath = GetGameTimer() + 60000
--- 					inDeath = true
--- 				else
--- 					if GetGameTimer() >= timeDeath then
--- 						vRP.revivePlayer(125)
--- 						inDeath = false
--- 					end
--- 				end
--- 			end
+			if GetEntityHealth(Ped) <= 100 then
+				if not inDeath then
+					timeDeath = GetGameTimer() + 60000
+					inDeath = true
+				else
+					if GetGameTimer() >= timeDeath then
+						vRP.revivePlayer(125)
+						inDeath = false
+					end
+				end
+			end
 
--- 			Wait(timeDistance)
--- 		end
--- 	end)
--- end
+			Wait(timeDistance)
+		end
+	end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SYNCPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -303,7 +301,7 @@ function Creative.syncPrison(Status,Teleport)
 	end
 
 	inPrison = Status
-	if inPrison then
-		runAway()
-	end
+	-- if inPrison then
+	-- 	runAway()
+	-- end
 end

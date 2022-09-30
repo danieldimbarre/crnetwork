@@ -60,7 +60,8 @@ const functionSearch = (Passport) => {
 							<b>Passaporte:</b> ${formatarNumero(Passport)}<br>
 							<b>Nome:</b> ${Data["result"][1]}<br>
 							<b>Telefone:</b> ${Data["result"][2]}<br>
-							<b>Multas:</b> $${formatarNumero(Data["result"][3])}<br>
+							<b>Serviços:</b> ${Data["result"][3]}<br>
+							<b>Multas:</b> $${formatarNumero(Data["result"][4])}<br>
 						</div>
 
 						${Data["result"][4].map((Data) => (`

@@ -109,6 +109,7 @@ function Creative.initPrison(OtherPassport,Services,Fines,Text)
 
 					if OtherPlayer then
 						vCLIENT.syncPrison(source,true,false)
+						TriggerEvent("Wanted",source,Passport,9999999)
 					end
 				end
 
@@ -140,7 +141,7 @@ function Creative.searchUser(OtherPassport)
 		if Identity then
 			local Fines = vRP.GetFine(OtherPassport)
 			local Records = vRP.Query("prison/getRecords",{ Passport = parseInt(OtherPassport) })
-			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],Fines,Records }
+			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],Identity["prison"],Fines,Records }
 		end
 	end
 
@@ -175,11 +176,7 @@ AddEventHandler("police:Reduces",function(Number)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Identity = vRP.Identity(Passport)
-		if parseInt(Identity["prison"]) <= 0 then
-			vCLIENT.syncPrison(source,false,false)
-			
-			TriggerClientEvent("Notify",source,"azul","Sua sentença foi paga.",5000)
-		else
+		if parseInt(Identity["prison"]) > 0 then
 			if not Reduces[Number] then
 				Reduces[Number] = {}
 			end
@@ -216,6 +213,15 @@ function reduceFunction(source,Passport,Number)
 	Player(source)["state"]["Buttons"] = false
 	Player(source)["state"]["Cancel"] = false
 	vRPC.removeObjects(source)
+
+	local Identity = vRP.Identity(Passport)
+	if parseInt(Identity["prison"]) <= 0 then
+		vCLIENT.syncPrison(source,false,false)
+		TriggerEvent("Wanted:Remove",source,Passport)
+		TriggerClientEvent("Notify",source,"azul","Sua sentença foi paga.",5000)
+	else
+		TriggerClientEvent("Notify",source,"azul","Restam <b>"..parseInt(Identity["prison"]).." serviços</b>.",5000)
+	end
 end
 --------------------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

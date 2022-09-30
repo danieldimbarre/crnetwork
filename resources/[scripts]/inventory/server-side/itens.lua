@@ -3147,9 +3147,17 @@ Use = {
 
 	["mushroomteaplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			vRP.SetWeight(Passport,10)
-			vRP.UpgradeThirst(Passport,20)
-			TriggerClientEvent("inventory:Update",source,"Backpack")
+			if not SKINSHOP.checkBackpackPremium(source) then
+				if vRP.GetWeight(Passport) < 100 then
+					vRP.SetWeight(Passport,10)
+					vRP.UpgradeThirst(Passport,20)
+					TriggerClientEvent("inventory:Update",source,"Backpack")
+				else
+					TriggerClientEvent("Notify",source,"vermelho","Inventário já alcançou o limite.",5000)
+				end
+			else
+				TriggerClientEvent("Notify",source,"vermelho","Remova sua mochila das costas.",5000)
+			end
 		end
 	end,
 

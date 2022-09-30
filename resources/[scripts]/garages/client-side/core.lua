@@ -673,25 +673,28 @@ CreateThread(function()
 
 				for Number,v in pairs(Garages) do
 					local Distance = #(Coords - vec3(v["x"],v["y"],v["z"]))
-					if Distance <= 1.25 then
+					if Distance <= 5 then
 						TimeDistance = 1
-						if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
-							local Vehicles = vSERVER.Vehicles(Number)
-							if Vehicles then
-								exports["dynamic"]:AddButton("Guardar","Guardar o veículo mais próximo.","garages:Delete","",false,false)
+						DrawMarker(23,v["x"],v["y"],v["z"] - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,46,110,76,100,0,0,0,0)
+						if Distance <= 1.25 then
+							if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
+								local Vehicles = vSERVER.Vehicles(Number)
+								if Vehicles then
+									exports["dynamic"]:AddButton("Guardar","Guardar o veículo mais próximo.","garages:Delete","",false,false)
 
-								if parseInt(#Vehicles) > 0 then
-									for _,v in pairs(Vehicles) do
-										exports["dynamic"]:AddButton("Pegar","Clique para pega-lo na garagem.","garages:Spawn",v["Model"].."-"..Number,v["Model"],true)
-										exports["dynamic"]:AddButton("Taxas","Clique para o pagamento das taxas.","garages:Tax",v["Model"],v["Model"],true)
-										exports["dynamic"]:AddButton("Vender","Clique para o vender o veículo.","garages:Sell",v["Model"],v["Model"],true)
-										exports["dynamic"]:AddButton("Transferência","Clique para transferir a outra pessoa.","garages:Transfer",v["Model"],v["Model"],true)
+									if parseInt(#Vehicles) > 0 then
+										for _,v in pairs(Vehicles) do
+											exports["dynamic"]:AddButton("Pegar","Clique para pega-lo na garagem.","garages:Spawn",v["Model"].."-"..Number,v["Model"],true)
+											exports["dynamic"]:AddButton("Taxas","Clique para o pagamento das taxas.","garages:Tax",v["Model"],v["Model"],true)
+											exports["dynamic"]:AddButton("Vender","Clique para o vender o veículo.","garages:Sell",v["Model"],v["Model"],true)
+											exports["dynamic"]:AddButton("Transferência","Clique para transferir a outra pessoa.","garages:Transfer",v["Model"],v["Model"],true)
 
-										exports["dynamic"]:SubMenu(v["name"],"Todas as funções do veículo.",v["Model"])
+											exports["dynamic"]:SubMenu(v["name"],"Todas as funções do veículo.",v["Model"])
+										end
 									end
-								end
 
-								exports["dynamic"]:openMenu()
+									exports["dynamic"]:openMenu()
+								end
 							end
 						end
 					end

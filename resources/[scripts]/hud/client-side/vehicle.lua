@@ -290,7 +290,7 @@ CreateThread(function()
 							local Health = GetEntityHealth(Ped)
 							SetEntityCoords(Ped,Coords["x"] + FowardVeh["x"],Coords["y"] + FowardVeh["y"],Coords["z"] + 1,1,0,0,0)
 							SetEntityVelocity(Ped,SeatbeltVelocity["x"],SeatbeltVelocity["y"],SeatbeltVelocity["z"])
-							SetEntityHealth(Ped,health - 50)
+							SetEntityHealth(Ped,Health - 50)
 
 							Wait(1)
 

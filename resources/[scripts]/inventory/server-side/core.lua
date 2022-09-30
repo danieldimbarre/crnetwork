@@ -17,6 +17,7 @@ vDELIVER = Tunnel.getInterface("deliver")
 vCLIENT = Tunnel.getInterface("inventory")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vPARAMEDIC = Tunnel.getInterface("paramedic")
+vSKINSHOP = Tunnel.getInterface("skinshop")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------

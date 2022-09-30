@@ -3147,7 +3147,7 @@ Use = {
 
 	["mushroomteaplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			if not SKINSHOP.checkBackpackPremium(source) then
+			if not vSKINSHOP.checkBackpackPremium(source) then
 				if vRP.GetWeight(Passport) < 100 then
 					vRP.SetWeight(Passport,10)
 					vRP.UpgradeThirst(Passport,20)

@@ -204,7 +204,8 @@ local workGarages = {
 		"tacoma"
 	},
 	["heliPolice"] = {
-		"maverick2"
+		"maverick2".
+		"b412"
 	},
 	["busPolice"] = {
 		"pbus",

@@ -509,6 +509,11 @@ end)
 -- TXADMIN:EVENTS:SERVERSHUTTINGDOWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler('txAdmin:events:serverShuttingDown',function(eventData)
+	local playerList = vRP.Players()
+	for Passport,_ in pairs(playerList) do
+		vRP.Kick(Passport,"Desconectado, a cidade reiniciou.")
+	end
+
     TriggerEvent("admin:KickAll")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

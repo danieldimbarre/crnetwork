@@ -317,8 +317,8 @@ local Garages = {
 		["2"] = { 918.35,-167.18,74.22,99.22 },
 		["3"] = { 920.64,-163.54,74.43,99.22 }
 	},
-	["146"] = { x = -154.58, y = -1174.61, z = 23.99,
-		["1"] = { -141.94,-1180.86,23.86,87.88 }
+	["146"] = { x = 409.42, y = -1623.16, z = 29.28,
+		["1"] = { 406.91,-1644.46,29.28,226.78 }
 	},
 	["147"] = { x = 283.93, y = 2849.5, z = 43.64,
 		["1"] = { 277.34,2840.0,43.29,28.35 }
@@ -673,25 +673,28 @@ CreateThread(function()
 
 				for Number,v in pairs(Garages) do
 					local Distance = #(Coords - vec3(v["x"],v["y"],v["z"]))
-					if Distance <= 1.25 then
+					if Distance <= 5 then
 						TimeDistance = 1
-						if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
-							local Vehicles = vSERVER.Vehicles(Number)
-							if Vehicles then
-								exports["dynamic"]:AddButton("Guardar","Guardar o veículo mais próximo.","garages:Delete","",false,false)
+						DrawMarker(23,v["x"],v["y"],v["z"] - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,46,110,76,100,0,0,0,0)
+						if Distance <= 1.25 then
+							if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
+								local Vehicles = vSERVER.Vehicles(Number)
+								if Vehicles then
+									exports["dynamic"]:AddButton("Guardar","Guardar o veículo mais próximo.","garages:Delete","",false,false)
 
-								if parseInt(#Vehicles) > 0 then
-									for _,v in pairs(Vehicles) do
-										exports["dynamic"]:AddButton("Pegar","Clique para pega-lo na garagem.","garages:Spawn",v["Model"].."-"..Number,v["Model"],true)
-										exports["dynamic"]:AddButton("Taxas","Clique para o pagamento das taxas.","garages:Tax",v["Model"],v["Model"],true)
-										exports["dynamic"]:AddButton("Vender","Clique para o vender o veículo.","garages:Sell",v["Model"],v["Model"],true)
-										exports["dynamic"]:AddButton("Transferência","Clique para transferir a outra pessoa.","garages:Transfer",v["Model"],v["Model"],true)
+									if parseInt(#Vehicles) > 0 then
+										for _,v in pairs(Vehicles) do
+											exports["dynamic"]:AddButton("Pegar","Clique para pega-lo na garagem.","garages:Spawn",v["Model"].."-"..Number,v["Model"],true)
+											exports["dynamic"]:AddButton("Taxas","Clique para o pagamento das taxas.","garages:Tax",v["Model"],v["Model"],true)
+											exports["dynamic"]:AddButton("Vender","Clique para o vender o veículo.","garages:Sell",v["Model"],v["Model"],true)
+											exports["dynamic"]:AddButton("Transferência","Clique para transferir a outra pessoa.","garages:Transfer",v["Model"],v["Model"],true)
 
-										exports["dynamic"]:SubMenu(v["name"],"Todas as funções do veículo.",v["Model"])
+											exports["dynamic"]:SubMenu(v["name"],"Todas as funções do veículo.",v["Model"])
+										end
 									end
-								end
 
-								exports["dynamic"]:openMenu()
+									exports["dynamic"]:openMenu()
+								end
 							end
 						end
 					end

@@ -8,64 +8,20 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-vKEYBOARD = Tunnel.getInterface("keyboard")
+Creative = {}
+Tunnel.bindInterface("police",Creative)
+vCLIENT = Tunnel.getInterface("police")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Reduces = {}
+local Actived = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SETHTTPHANDLER
+-- PREPRARES
 -----------------------------------------------------------------------------------------------------------------------------------------
-SetHttpHandler(function(Request,Callback)
-	local ReturnVar = "Ok"
-	if Request["path"] == "/prison" then
-		if Request["headers"]["auth"] == "creAuthMdtInfos" then
-			local Fines = parseInt(Request["headers"]["fines"])
-			local Services = parseInt(Request["headers"]["services"])
-			local Passport = parseInt(Request["headers"]["passport"])
-			local source = vRP.Source(Passport)
-
-			if Services > 0 then
-				vRP.InitPrison(source,Passport,Services)
-
-				if source then
-					vRP.Teleport(source,1691.53,2565.91,45.56)
-				end
-			end
-
-			if Fines > 0 then
-				vRP.GiveFine(Passport,Fines,source)
-			end
-		end
-	end
-
-	if Request["path"] == "/services" then
-		if Request["headers"]["auth"] == "creAuthMdtInfos" then
-			local Passport = parseInt(Request["headers"]["passport"])
-			local Identity = vRP.Identity(Passport)
-			if Identity then
-				ReturnVar = Identity["name"].."-"..Identity["name2"].."-"..Identity["phone"].."-"..Identity["sex"].."-"..Identity["fines"].."-"..Identity["prison"]
-			end
-		end
-	end
-
-	if Request["path"] == "/cops" then
-		if Request["headers"]["auth"] == "creAuthMdtInfos" then
-			local Service = vRP.NumPermission("Police")
-			ReturnVar = json.encode(Service)
-		end
-	end
-
-	Callback.writeHead(200,{
-		["Content-Type"] = "application/json",
-		["Access-Control-Allow-Origin"] = "*",
-		["Access-Control-Allow-Headers"] = "*",
-		["Access-Control-Request-Headers"] = "*",
-		["Access-Control-Allow-Methods"] = "GET,HEAD,PUT,PATCH,POST,DELETE"
-	})
-
-	Callback.send(ReturnVar)
-end)
+vRP.Prepare("prison/cleanRecords","DELETE FROM prison WHERE nuser_id = @Passport")
+vRP.Prepare("prison/getRecords","SELECT * FROM prison WHERE nuser_id = @Passport ORDER BY id DESC")
+vRP.Prepare("prison/insertPrison","INSERT INTO prison(police,nuser_id,services,fines,text,date) VALUES(@Police,@Passport,@Services,@Fines,@Text,@Date)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRESET
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -120,6 +76,98 @@ AddEventHandler("police:prisonClothes",function(entity)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CLEANREC
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("cleanrec",function(source,args,rawCommand)
+	local Passport = vRP.Passport(source)
+	if Passport and args[1] then
+		if vRP.HasPermission(Passport,"setPolice") then
+			local OtherPassport = parseInt(args[1])
+			if OtherPassport > 0 then
+				vRP.Execute("prison/cleanRecords",{ Passport = OtherPassport })
+				TriggerClientEvent("Notify",source,"verde","Limpeza efetuada.",5000)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INITPRISON
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.initPrison(OtherPassport,Services,Fines,Text)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if Actived[Passport] == nil then
+			Actived[Passport] = true
+
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				local OtherPlayer = vRP.Source(OtherPassport)
+				if Services > 0 then
+					vRP.InitPrison(OtherPlayer,OtherPassport,Services)
+					TriggerClientEvent("radio:RadioClean",OtherPlayer)
+
+					if OtherPlayer then
+						vCLIENT.syncPrison(source,true,false)
+						TriggerEvent("Wanted",source,Passport,9999999)
+					end
+				end
+
+				if Fines > 0 then
+					vRP.GiveFine(OtherPassport,Fines,OtherPlayer)
+				end
+
+				vRP.Query("prison/insertPrison",{ Police = Identity["name"].." "..Identity["name2"], OtherPassport = parseInt(OtherPassport), Services = Services, Fines = Fines, Text = Text, Date = os.date("%d/%m/%Y").." ás "..os.date("%H:%M") })
+				vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
+				TriggerClientEvent("Notify",source,"verde","Prisão efetuada.",5000)
+				TriggerClientEvent("police:Update",source,"reloadPrison")
+
+				TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..Text,13541152)
+			end
+
+			Actived[Passport] = nil
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SEARCHUSER
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.searchUser(OtherPassport)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(OtherPassport)
+		local Identity = vRP.Identity(OtherPassport)
+		if Identity then
+			local Fines = vRP.GetFine(OtherPassport)
+			local Records = vRP.Query("prison/getRecords",{ Passport = parseInt(OtherPassport) })
+			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],Identity["prison"],Fines,Records }
+		end
+	end
+
+	return { false }
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INITFINE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.initFine(OtherPassport,Fines,Text)
+	local source = source
+	local Passport = vRP.Passport(source)
+	local OtherPlayer = vRP.Source(OtherPassport)
+	if Passport and Fines > 0 then
+		if Actived[Passport] == nil then
+			Actived[Passport] = true
+
+			TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Multa:** $"..parseFormat(Fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..Text,2316674)
+			TriggerClientEvent("Notify",source,"verde","Multa aplicada.",5000)
+			TriggerClientEvent("police:Update",source,"reloadFine")
+			vRP.GiveFine(OtherPassport,fines,OtherPlayer)
+
+			Actived[Passport] = nil
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:REDUCES
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("police:Reduces")
@@ -165,4 +213,23 @@ function reduceFunction(source,Passport,Number)
 	Player(source)["state"]["Buttons"] = false
 	Player(source)["state"]["Cancel"] = false
 	vRPC.removeObjects(source)
+
+	local Identity = vRP.Identity(Passport)
+	if parseInt(Identity["prison"]) <= 0 then
+		vCLIENT.syncPrison(source,false,false)
+		TriggerEvent("Wanted:Remove",source,Passport)
+		TriggerClientEvent("Notify",source,"azul","Sua sentença foi paga.",5000)
+	else
+		TriggerClientEvent("Notify",source,"azul","Restam <b>"..parseInt(Identity["prison"]).." serviços</b>.",5000)
+	end
 end
+--------------------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECT
+--------------------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Connect",function(Passport,source)
+	local Identity = vRP.Identity(Passport)
+	if parseInt(Identity["prison"]) > 0 then
+		TriggerClientEvent("Notify",source,"azul","Restam <b>"..parseInt(Identity["prison"]).." serviços</b>.",5000)
+		vCLIENT.syncPrison(source,true,true)
+	end
+end)

@@ -62,7 +62,7 @@ local pedList = {
 	},
 	{ -- TowDriver
 		Distance = 30,
-		Coords = { -193.23,-1162.39,23.67,274.97 },
+		Coords = { 409.42,-1623.16,29.28,232.45 },
 		Model = "g_m_m_armboss_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},

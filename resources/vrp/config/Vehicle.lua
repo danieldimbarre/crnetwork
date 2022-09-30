@@ -1229,8 +1229,8 @@ local List = {
 	["phantom"] = {
 		["Name"] = "Phantom",
 		["Weight"] = 40,
-		["Price"] = 100,
-		["Type"] = nil,
+		["Price"] = 1000,
+		["Type"] = "work",
 		["Block"] = false,
 		["Gems"] = 0
 	},
@@ -2261,8 +2261,8 @@ local List = {
 	["hauler"] = {
 		["Name"] = "Hauler",
 		["Weight"] = 40,
-		["Price"] = 100,
-		["Type"] = nil,
+		["Price"] = 1000,
+		["Type"] = "work",
 		["Block"] = false,
 		["Gems"] = 0
 	},
@@ -3709,8 +3709,8 @@ local List = {
 	["packer"] = {
 		["Name"] = "Packer",
 		["Weight"] = 0,
-		["Price"] = 500,
-		["Type"] = nil,
+		["Price"] = 1000,
+		["Type"] = "work",
 		["Block"] = false,
 		["Gems"] = 0
 	},
@@ -4349,8 +4349,8 @@ local List = {
 	["hauler2"] = {
 		["Name"] = "Hauler 2",
 		["Weight"] = 40,
-		["Price"] = 100,
-		["Type"] = nil,
+		["Price"] = 1000,
+		["Type"] = "work",
 		["Block"] = false,
 		["Gems"] = 0
 	},

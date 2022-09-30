@@ -93,6 +93,19 @@ CREATE TABLE IF NOT EXISTS `playerdata` (
   KEY `dkey` (`dkey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `prison`;
+CREATE TABLE IF NOT EXISTS `prison` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `police` varchar(255) DEFAULT '0',
+  `nuser_id` int(11) NOT NULL DEFAULT '0',
+  `services` int(11) NOT NULL DEFAULT '0',
+  `fines` int(20) NOT NULL DEFAULT '0',
+  `text` longtext,
+  `date` text,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 DROP TABLE IF EXISTS `propertys`;
 CREATE TABLE IF NOT EXISTS `propertys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

@@ -154,9 +154,9 @@ end)
 -- LEGS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Legs",function()
-	-- if Damaged[14201] or Damaged[65245] or Damaged[57717] or Damaged[52301] or Damaged[35502] or Damaged[24806] then
-	-- 	return true
-	-- end
+	if Damaged[14201] or Damaged[65245] or Damaged[57717] or Damaged[52301] or Damaged[35502] or Damaged[24806] then
+		return true
+	end
 
 	return false
 end)

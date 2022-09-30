@@ -34,13 +34,17 @@ local Locate = {
 	{ ["x"] = 449.71, ["y"] = -659.27, ["z"] = 28.48, ["name"] = "Integrity Way", ["hash"] = 7 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSTART
+-- ONCLIENTRESOURCESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+RegisterNetEvent("onClientResourceStart")
+AddEventHandler("onClientResourceStart",function(Resource)
+	if (GetCurrentResourceName() ~= Resource) then
+		return
+	end
+
 	Wait(5000)
 
 	DoScreenFadeOut(0)
-
 	DisplayRadar(false)
 	ShutdownLoadingScreen()
 	ShutdownLoadingScreenNui()
@@ -110,8 +114,6 @@ end)
 -- NEWCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("NewCharacter",function(Data,Callback)
-	DoScreenFadeOut(0)
-
 	for _,v in pairs(Peds) do
 		if DoesEntityExist(v) then
 			DeleteEntity(v)
@@ -136,7 +138,7 @@ AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
 	end
 
 	if NewCharacter then
-		Character = not NewCharacter
+		Character = not Character
 	end
 
 	if not Character then
@@ -159,13 +161,6 @@ AddEventHandler("spawn:justSpawn",function(Open,NewCharacter)
 	else
 		TriggerServerEvent("creator:newCharacter")
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SPAWN:SPAWNCLOSE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("spawn:SpawnClose")
-AddEventHandler("spawn:SpawnClose",function()
-	SendNUIMessage({ Action = "SpawnClose" })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHOSEN
@@ -290,7 +285,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Barber(Ped,status)
 	myClothes = {}
-	myClothes = { status[1] or 0, status[2] or 0, status[3] or 0, status[4] or 0, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or 0, status[13] or 0, status[14] or 0, status[15] or 0, status[16] or 0, status[17] or 0, status[18] or 0, status[19] or 0, status[20] or 0, status[21] or 0, status[22] or 0, status[23] or 0, status[24] or 0, status[25] or 0, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 0 }
+	myClothes = { status[1] or 0, status[2] or 100, status[3] or 0, status[4] or 100, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or -1, status[13] or 5, status[14] or -1, status[15] or -1, status[16] or 5, status[17] or 0, status[18] or -1, status[19] or 0, status[20] or 0, status[21] or -1, status[22] or 5, status[23] or 0, status[24] or -1, status[25] or 5, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 21 }
+
+	local Ped = PlayerPedId()
 
     local weightFace = myClothes[2] / 100 + 0.0
     local weightSkin = myClothes[4] / 100 + 0.0
@@ -319,7 +316,11 @@ function Barber(Ped,status)
 	SetPedHairColor(Ped,myClothes[10],myClothes[11])
 
 	SetPedHeadOverlay(Ped,4,myClothes[12],myClothes[13] * 0.1)
-	SetPedHeadOverlayColor(Ped,4,1,myClothes[14],myClothes[14])
+	if myClothes[14] == -1 then
+        SetPedHeadOverlayColor(Ped,4,0,0,0)
+    else
+	    SetPedHeadOverlayColor(Ped,4,2,myClothes[14],myClothes[14])
+    end
 
 	SetPedHeadOverlay(Ped,8,myClothes[15],myClothes[16] * 0.1)
 	SetPedHeadOverlayColor(Ped,8,1,myClothes[17],myClothes[17])

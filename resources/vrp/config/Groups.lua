@@ -12,11 +12,17 @@ Groups = {
 	["Police"] = {
 		["Police"] = true
 	},
+	["setPolice"] = {
+		["setPolice"] = true
+	},
 	["waitPolice"] = {
 		["waitPolice"] = true
 	},
 	["Paramedic"] = {
 		["Paramedic"] = true
+	},
+	["setParamedic"] = {
+		["setParamedic"] = true
 	},
 	["waitParamedic"] = {
 		["waitParamedic"] = true

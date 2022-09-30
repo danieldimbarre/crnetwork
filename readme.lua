@@ -10,7 +10,7 @@ vRP.Banned(License: string)
 
 vRP.Account(License: string)
 
-vRP.userData(Passport: int,Key: string)
+vRP.UserData(Passport: int,Key: string)
 
 vRP.InsidePropertys(Passport: int,Coords)
 
@@ -31,8 +31,6 @@ vRP.DataGroups(Group: string)
 vRP.HasPermission(Passport: int,Permission: string)
 
 vRP.SetPermission(Passport: int,Permission: string)
-
-vRP.CleanPermission(Passport: int)
 
 vRP.RemovePermission(Passport: int,Permission: string)
 

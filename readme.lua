@@ -32,8 +32,6 @@ vRP.HasPermission(Passport: int,Permission: string)
 
 vRP.SetPermission(Passport: int,Permission: string)
 
-vRP.CleanPermission(Passport: int)
-
 vRP.RemovePermission(Passport: int,Permission: string)
 
 vRP.HasGroup(Passport: int,Permission: string)

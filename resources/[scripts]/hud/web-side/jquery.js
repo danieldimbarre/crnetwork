@@ -274,10 +274,12 @@ window.addEventListener("message",function(event){
 		break;
 
 		case "Headlight":
-			if (event["data"]["Status"] == 0){
+			if (event["data"]["Status"] == 1){
 				$(".Headlight").addClass("Gray").removeClass("Green").removeClass("Blue");
 			} else {
 				if (event["data"]["Beam"] == 0){
+					$(".Headlight").addClass("Gray").removeClass("Green").removeClass("Blue");
+				} else if (event["data"]["Beam"] == 1){
 					$(".Headlight").addClass("Green").removeClass("Gray").removeClass("Blue");
 				} else {
 					$(".Headlight").addClass("Blue").removeClass("Gray").removeClass("Green");

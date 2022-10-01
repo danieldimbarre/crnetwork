@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SInteriorOrderData>
+    <startFrom value="8000" />
+    <filePathHash value="0" />
+    <proxies>
+        <Item>apa_ss1_11_strm_0</Item>
+        <Item>apa_ss1_11_strm_1</Item>
+        <Item>apa_ss1_rd1_long_0</Item>
+        <Item>apa_ss1_occl_02</Item>
+        <Item>apa_ss1_rd1_strm_0</Item>
+        <Item>shmann_ehos_mlo</Item>
+        <Item>apa_ch2_03_long_5</Item>
+        <Item>apa_ch2_03_long_6</Item>
+        <Item>apa_ss1_rd1</Item>
+        <Item>apa_ch2_03_strm_0</Item>
+        <Item>ch2_03_critical_2</Item>
+        <Item>ch2_03_long_5</Item>
+        <Item>apa_ch2_03_strm_1</Item>
+        <Item>apa_ch2_03</Item>
+        <Item>ch2_03_long_6</Item>
+        <Item>ch2_03_strm_1</Item>
+        <Item>ch2_03_strm_0</Item>
+        <Item>ch2_03</Item>
+        <Item>vinewood</Item>
+    </proxies>
+</SInteriorOrderData>

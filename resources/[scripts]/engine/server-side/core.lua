@@ -17,7 +17,7 @@ local Vehicles = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENTFUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.paymentFuel(Price,vehPlate,vehFuel,LastFuel,vehNet)
+function Creative.paymentFuel(Price,Plate,vehFuel,LastFuel,Network)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -26,7 +26,7 @@ function Creative.paymentFuel(Price,vehPlate,vehFuel,LastFuel,vehNet)
 		if vRP.PaymentFull(Passport,source,Price) then
 			for _,v in ipairs(Players) do
 				async(function()
-					TriggerClientEvent("engine:syncFuel",v,vehPlate,vehFuel,vehNet)
+					TriggerClientEvent("engine:syncFuel",v,Plate,vehFuel,Network)
 				end)
 			end
 
@@ -34,7 +34,7 @@ function Creative.paymentFuel(Price,vehPlate,vehFuel,LastFuel,vehNet)
 		else
 			for _,v in ipairs(Players) do
 				async(function()
-					TriggerClientEvent("engine:syncFuel",v,vehPlate,LastFuel,vehNet)
+					TriggerClientEvent("engine:syncFuel",v,Plate,LastFuel,Network)
 				end)
 			end
 
@@ -47,19 +47,19 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEFUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.vehicleFuel(vehPlate)
-	if not Vehicles[vehPlate] and vehPlate then
-		Vehicles[vehPlate] = 50
+function Creative.vehicleFuel(Plate)
+	if not Vehicles[Plate] and Plate then
+		Vehicles[Plate] = 50
 	end
 
-	return Vehicles[vehPlate]
+	return Vehicles[Plate]
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TRYFUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("engine:tryFuel")
-AddEventHandler("engine:tryFuel",function(vehPlate,vehFuel)
-	if vehPlate ~= nil then
-		Vehicles[vehPlate] = vehFuel
+AddEventHandler("engine:tryFuel",function(Plate,vehFuel)
+	if Plate ~= nil then
+		Vehicles[Plate] = vehFuel
 	end
 end)

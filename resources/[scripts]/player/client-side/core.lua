@@ -242,9 +242,9 @@ end)
 -- SYNCHOODOPTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:syncHoodOptions")
-AddEventHandler("player:syncHoodOptions",function(vehNet,Active)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+AddEventHandler("player:syncHoodOptions",function(Network,Active)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			if Active == "open" then
 				SetVehicleDoorOpen(Vehicle,4,0,0)
@@ -258,9 +258,9 @@ end)
 -- SYNCDOORSOPTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:syncDoorsOptions")
-AddEventHandler("player:syncDoorsOptions",function(vehNet,Active)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+AddEventHandler("player:syncDoorsOptions",function(Network,Active)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			if Active == "open" then
 				SetVehicleDoorOpen(Vehicle,5,0,0)
@@ -274,9 +274,9 @@ end)
 -- SYNCWINS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:syncWins")
-AddEventHandler("player:syncWins",function(vehNet,Active)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+AddEventHandler("player:syncWins",function(Network,Active)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			if Active == "1" then
 				RollUpWindow(Vehicle,0)
@@ -297,9 +297,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local doorStatus = { ["1"] = 0, ["2"] = 1, ["3"] = 2, ["4"] = 3, ["5"] = 5, ["6"] = 4 }
 RegisterNetEvent("player:syncDoors")
-AddEventHandler("player:syncDoors",function(vehNet,Active)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local v = NetToEnt(vehNet)
+AddEventHandler("player:syncDoors",function(Network,Active)
+	if NetworkDoesNetworkIdExist(Network) then
+		local v = NetToEnt(Network)
 		if DoesEntityExist(v) and GetVehicleDoorLockStatus(v) == 1 then
 			if doorStatus[Active] then
 				if GetVehicleDoorAngleRatio(v,doorStatus[Active]) == 0 then
@@ -546,9 +546,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PUTVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.putVehicle(vehNet)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+function Creative.putVehicle(Network)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			local vehSeats = 10
 			local Ped = PlayerPedId()
@@ -570,7 +570,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CRUISER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("cr",function(source,args)
+RegisterCommand("cr",function(source,Message)
 	local Ped = PlayerPedId()
 	if IsPedInAnyVehicle(Ped) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
@@ -578,12 +578,12 @@ RegisterCommand("cr",function(source,args)
 			local speed = GetEntitySpeed(Vehicle) * 3.6
 
 			if speed >= 10 then
-				if not args[1] then
+				if not Message[1] then
 					SetEntityMaxSpeed(Vehicle,GetVehicleEstimatedMaxSpeed(Vehicle))
 					TriggerEvent("Notify","amarelo","Controle de cruzeiro desativado.",3000)
 				else
-					if parseInt(args[1]) > 10 then
-						SetEntityMaxSpeed(Vehicle,0.28 * args[1])
+					if parseInt(Message[1]) > 10 then
+						SetEntityMaxSpeed(Vehicle,0.28 * Message[1])
 						TriggerEvent("Notify","verde","Controle de cruzeiro ativado.",3000)
 					end
 				end
@@ -594,10 +594,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("gameEventTriggered",function(name,args)
+AddEventHandler("gameEventTriggered",function(name,Message)
 	if name == "CEventNetworkEntityDamage" then
-		if (GetEntityHealth(args[1]) <= 100 and PlayerPedId() == args[2] and IsPedAPlayer(args[1])) then
-			local Index = NetworkGetPlayerIndexFromPed(args[1])
+		if (GetEntityHealth(Message[1]) <= 100 and PlayerPedId() == Message[2] and IsPedAPlayer(Message[1])) then
+			local Index = NetworkGetPlayerIndexFromPed(Message[1])
 			local source = GetPlayerServerId(Index)
 			TriggerServerEvent("player:deathLogs",source)
 		end

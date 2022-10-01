@@ -270,9 +270,9 @@ CreateThread(function()
 end)
 ---------------------------------------------------------------------
 RegisterNetEvent("vehcontrol:Client")
-AddEventHandler("vehcontrol:Client",function(Siren,Air,vehNet,source)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+AddEventHandler("vehcontrol:Client",function(Siren,Air,Network,source)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			local Player = GetPlayerFromServerId(source)
 			local Ped = GetPlayerPed(Player)

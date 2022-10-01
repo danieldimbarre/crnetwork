@@ -17,60 +17,63 @@ REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIAVEIS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local vehSpawn = {}
-local vehSignal = {}
+local Spawn = {}
+local Signal = {}
+local Searched = {}
 local Propertys = {}
-local searchTimers = {}
-GlobalState["vehPlates"] = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GLOBALSTATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+GlobalState["Plates"] = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVERVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.serverVehicle(Model,x,y,z,heading,vehPlate,nitroFuel,vehDoors,vehBody,vehFuel)
-	local spawnVehicle = 0
-	local myVeh = CreateVehicle(Model,x,y,z,heading,true,true)
+function Creative.ServerVehicle(Model,x,y,z,Heading,Plate,Nitrox,Doors,Body,Fuel)
+	local Randomize = 0
+	local Vehicle = CreateVehicle(Model,x,y,z,Heading,true,true)
 
-	while not DoesEntityExist(myVeh) and spawnVehicle <= 1000 do
-		spawnVehicle = spawnVehicle + 1
+	while not DoesEntityExist(Vehicle) and Randomize <= 1000 do
+		Randomize = Randomize + 1
 		Wait(100)
 	end
 
-	if DoesEntityExist(myVeh) then
-		if vehPlate ~= nil then
-			SetVehicleNumberPlateText(myVeh,vehPlate)
+	if DoesEntityExist(Vehicle) then
+		if Plate ~= nil then
+			SetVehicleNumberPlateText(Vehicle,Plate)
 		else
-			vehPlate = vRP.GeneratePlate()
-			SetVehicleNumberPlateText(myVeh,vehPlate)
+			Plate = vRP.GeneratePlate()
+			SetVehicleNumberPlateText(Vehicle,Plate)
 		end
 
-		SetVehicleBodyHealth(myVeh,vehBody + 0.0)
+		SetVehicleBodyHealth(Vehicle,Body + 0.0)
 
-		if not vehFuel then
-			TriggerEvent("engine:tryFuel",vehPlate,100)
+		if not Fuel then
+			TriggerEvent("engine:tryFuel",Plate,100)
 		end
 
-		if vehDoors then
-			local vehDoors = json.decode(vehDoors)
-			if vehDoors ~= nil then
-				for k,v in pairs(vehDoors) do
-					if v then
-						SetVehicleDoorBroken(myVeh,parseInt(k),true)
+		if Doors then
+			local Doors = json.decode(Doors)
+			if Doors ~= nil then
+				for Number,Status in pairs(Doors) do
+					if Status then
+						SetVehicleDoorBroken(Vehicle,parseInt(Number),true)
 					end
 				end
 			end
 		end
 
-		local netVeh = NetworkGetNetworkIdFromEntity(myVeh)
+		local Network = NetworkGetNetworkIdFromEntity(Vehicle)
 
 		if Model ~= "wheelchair" then
-			local Network = NetworkGetEntityFromNetworkId(netVeh)
+			local Network = NetworkGetEntityFromNetworkId(Network)
 			SetVehicleDoorsLocked(Network,2)
 
 			local Nitro = GlobalState["Nitro"]
-			Nitro[vehPlate] = nitroFuel or 0
+			Nitro[Plate] = Nitrox or 0
 			GlobalState:set("Nitro",Nitro,true)
 		end
 
-		return true,netVeh,myVeh
+		return true,Network,Vehicle
 	end
 
 	return false
@@ -162,35 +165,37 @@ local Garages = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SIGNALREMOVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("signalRemove",function(vehPlate)
-	vehSignal[vehPlate] = true
+AddEventHandler("signalRemove",function(Plate)
+	if not Signal[Plate] then
+		Signal[Plate] = true
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLATEREVERYONE
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("plateReveryone",function(vehPlate)
-	if GlobalState["vehPlates"][vehPlate] then
-		local vehPlates = GlobalState["vehPlates"]
-		vehPlates[vehPlate] = nil
-		GlobalState:set("vehPlates",vehPlates,true)
+AddEventHandler("plateReveryone",function(Plate)
+	if GlobalState["Plates"][Plate] then
+		local Plates = GlobalState["Plates"]
+		Plates[Plate] = nil
+		GlobalState:set("Plates",Plates,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLATEEVERYONE
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("plateEveryone",function(vehPlate)
-	local vehPlates = GlobalState["vehPlates"]
-	vehPlates[vehPlate] = true
-	GlobalState:set("vehPlates",vehPlates,true)
+AddEventHandler("plateEveryone",function(Plate)
+	local Plates = GlobalState["Plates"]
+	Plates[Plate] = true
+	GlobalState:set("Plates",Plates,true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLATEPLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("platePlayers",function(vehPlate,Passport)
-	if not vRP.PassportPlate(vehPlate) then
-		local vehPlates = GlobalState["vehPlates"]
-		vehPlates[vehPlate] = Passport
-		GlobalState:set("vehPlates",vehPlates,true)
+AddEventHandler("platePlayers",function(Plate,Passport)
+	if not vRP.PassportPlate(Plate) then
+		local Plate = GlobalState["Plates"]
+		Plate[Plate] = Passport
+		GlobalState:set("Plates",Plate,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -296,16 +301,16 @@ function Creative.Vehicles(Garage)
 		local Garage = Garages[Garage]["name"]
 		if workGarages[Garage] then
 			for k,v in pairs(workGarages[Garage]) do
-				if vehicleExist(v) then
-					table.insert(Vehicle,{ ["Model"] = v, ["name"] = vehicleName(v) })
+				if VehicleExist(v) then
+					table.insert(Vehicle,{ ["Model"] = v, ["name"] = VehicleName(v) })
 				end
 			end
 		else
 			local vehicle = vRP.Query("vehicles/UserVehicles",{ Passport = Passport })
 			for k,v in pairs(vehicle) do
-				if vehicleExist(v["vehicle"]) then
+				if VehicleExist(v["vehicle"]) then
 					if v["work"] == "false" then
-						table.insert(Vehicle,{ ["Model"] = v["vehicle"], ["name"] = vehicleName(v["vehicle"]) })
+						table.insert(Vehicle,{ ["Model"] = v["vehicle"], ["name"] = VehicleName(v["vehicle"]) })
 					end
 				end
 			end
@@ -328,7 +333,7 @@ function Creative.Impound()
 
 		for k,v in ipairs(vehicle) do
 			if v["arrest"] >= os.time() then
-				table.insert(myVehicle,{ ["Model"] = vehicle[k]["vehicle"], ["name"] = vehicleName(vehicle[k]["vehicle"]) })
+				table.insert(myVehicle,{ ["Model"] = vehicle[k]["vehicle"], ["name"] = VehicleName(vehicle[k]["vehicle"]) })
 			end
 		end
 
@@ -343,11 +348,11 @@ AddEventHandler("garages:Impound",function(vehName)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local vehPrice = vehiclePrice(vehName)
+		local VehiclePrice = VehiclePrice(vehName)
 		TriggerClientEvent("dynamic:closeSystem",source)
 
-		if REQUEST.Function(source,"A liberação do veículo tem o custo de <b>$"..parseFormat(vehPrice * 0.25).."</b> dólares, deseja prosseguir com a liberação do mesmo?","Sim, efetuar o pagamento","Não, decido depois") then
-			if vRP.PaymentFull(Passport,source,vehPrice * 0.25) then
+		if REQUEST.Function(source,"A liberação do veículo tem o custo de <b>$"..parseFormat(VehiclePrice * 0.25).."</b> dólares, deseja prosseguir com a liberação do mesmo?","Sim, efetuar o pagamento","Não, decido depois") then
+			if vRP.PaymentFull(Passport,source,VehiclePrice * 0.25) then
 				vRP.Query("vehicles/paymentArrest",{ Passport = Passport, vehicle = vehName })
 				TriggerClientEvent("Notify",source,"verde","Veículo liberado.",5000)
 			else
@@ -367,9 +372,9 @@ AddEventHandler("garages:Tax",function(vehName)
 		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 		if vehicle[1] then
 			if vehicle[1]["tax"] <= os.time() then
-				local vehiclePrice = vehiclePrice(vehName) * 0.10
+				local VehiclePrice = VehiclePrice(vehName) * 0.10
 
-				if vRP.PaymentFull(Passport,source,vehiclePrice) then
+				if vRP.PaymentFull(Passport,source,VehiclePrice) then
 					vRP.Query("vehicles/updateVehiclesTax",{ Passport = Passport, vehicle = vehName })
 					TriggerClientEvent("Notify",source,"verde","Pagamento concluído.",5000)
 				else
@@ -394,19 +399,19 @@ AddEventHandler("garages:Sell",function(vehName)
 
 		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 		if vehicle[1] then
-			local vehType = vehicleType(vehName)
+			local vehType = VehicleType(vehName)
 			if vehType == "rental" or vehType == "work" then
 				return
 			end
 
-			local vehPrices = vehiclePrice(vehName) * 0.5
-			if REQUEST.Function(source,"Vender o veículo <b>"..vehicleName(vehName).."</b> por <b>$"..parseFormat(vehPrices).."</b>?","Sim, concluír venda","Não, mudei de ideia") then
+			local VehiclePrice = VehiclePrice(vehName) * 0.5
+			if REQUEST.Function(source,"Vender o veículo <b>"..VehicleName(vehName).."</b> por <b>$"..parseFormat(VehiclePrice).."</b>?","Sim, concluír venda","Não, mudei de ideia") then
 				local vehicles = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 				if vehicles[1] then
-					vRP.GiveBank(Passport,vehPrices)
+					vRP.GiveBank(Passport,VehiclePrice)
 					vRP.Query("vehicles/removeVehicles",{ Passport = Passport, vehicle = vehName })
-					vRP.Query("entitydata/RemoveData",{ dkey = "vehMods:"..Passport..":"..vehName })
-					vRP.Query("entitydata/RemoveData",{ dkey = "vehChest:"..Passport..":"..vehName })
+					vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..Passport..":"..vehName })
+					vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..Passport..":"..vehName })
 				end
 			end
 		end
@@ -429,22 +434,22 @@ AddEventHandler("garages:Transfer",function(vehName)
 				local OtherPassport = parseInt(Keyboard[1])
 				local Identity = vRP.Identity(OtherPassport)
 				if Identity then
-					if REQUEST.Function(source,"Transferir o veículo <b>"..vehicleName(vehName).."</b> para <b>"..Identity["name"].." "..Identity["name2"].."</b>?","Sim, transferir","Não, mudei de ideia") then
+					if REQUEST.Function(source,"Transferir o veículo <b>"..VehicleName(vehName).."</b> para <b>"..Identity["name"].." "..Identity["name2"].."</b>?","Sim, transferir","Não, mudei de ideia") then
 						local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = parseInt(OtherPassport), vehicle = vehName })
 						if vehicle[1] then
 							TriggerClientEvent("Notify",source,"amarelo","<b>"..Identity["name"].." "..Identity["name2"].."</b> já possui este modelo de veículo.",5000)
 						else
 							vRP.Query("vehicles/moveVehicles",{ Passport = Passport, OtherPassport = parseInt(OtherPassport), vehicle = vehName })
 
-							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..Passport..":"..vehName })
+							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..Passport..":"..vehName })
 							if parseInt(#Datatable) > 0 then
-								vRP.Query("entitydata/SetData",{ dkey = "vehMods:"..OtherPassport..":"..vehName, dvalue = Datatable[1]["dvalue"] })
-								vRP.Query("entitydata/RemoveData",{ dkey = "vehMods:"..Passport..":"..vehName })
+								vRP.Query("entitydata/SetData",{ dkey = "Mods:"..OtherPassport..":"..vehName, dvalue = Datatable[1]["dvalue"] })
+								vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..Passport..":"..vehName })
 							end
 
-							local Datatable = vRP.GetSrvData("vehChest:"..Passport..":"..vehName)
-							vRP.SetSrvData("vehChest:"..OtherPassport..":"..vehName,Datatable)
-							vRP.RemSrvData("vehChest:"..Passport..":"..vehName)
+							local Datatable = vRP.GetSrvData("Chest:"..Passport..":"..vehName)
+							vRP.SetSrvData("Chest:"..OtherPassport..":"..vehName,Datatable)
+							vRP.RemSrvData("Chest:"..Passport..":"..vehName)
 
 							TriggerClientEvent("Notify",source,"verde","Transferência concluída.",5000)
 						end
@@ -466,15 +471,15 @@ AddEventHandler("garages:Spawn",function(Table)
 		local garageName = splitName[2]
 		local vehName = splitName[1]
 
-		local Gemstone = vehicleGems(vehName)
+		local Gemstone = VehicleGems(vehName)
 		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 
 		if not vehicle[1] then
 			if parseInt(Gemstone) > 0 then
-				if REQUEST.Function(source,"Alugar o veículo <b>"..vehicleName(vehName).."</b> por <b>"..Gemstone.."</b> gemas?","Sim, concluír aluguel","Não, mudei de ideia") then
+				if REQUEST.Function(source,"Alugar o veículo <b>"..VehicleName(vehName).."</b> por <b>"..Gemstone.."</b> gemas?","Sim, concluír aluguel","Não, mudei de ideia") then
 					if vRP.PaymentGems(source,Gemstone) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "true" })
-						TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..vehicleName(vehName).."</b> concluído.",5000)
+						TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..VehicleName(vehName).."</b> concluído.",5000)
 						vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 					else
 						TriggerClientEvent("Notify",source,"vermelho","<b>Gemas</b> insuficientes.",5000)
@@ -484,10 +489,10 @@ AddEventHandler("garages:Spawn",function(Table)
 					return
 				end
 			else
-				local vehPrice = vehiclePrice(vehName)
-				if parseInt(vehPrice) > 0 then
-					if REQUEST.Function(source,"Comprar <b>"..vehicleName(vehName).."</b> por <b>$"..parseFormat(vehPrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
-						if vRP.PaymentFull(Passport,source,vehPrice) then
+				local VehiclePrice = VehiclePrice(vehName)
+				if parseInt(VehiclePrice) > 0 then
+					if REQUEST.Function(source,"Comprar <b>"..VehicleName(vehName).."</b> por <b>$"..parseFormat(VehiclePrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
+						if vRP.PaymentFull(Passport,source,VehiclePrice) then
 							vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "true" })
 							vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 						else
@@ -504,31 +509,31 @@ AddEventHandler("garages:Spawn",function(Table)
 		end
 
 		if vehicle[1] then
-			local vehPlates = GlobalState["vehPlates"]
-			local vehPlate = vehicle[1]["plate"]
+			local Plates = GlobalState["Plates"]
+			local Plate = vehicle[1]["plate"]
 
-			if vehSpawn[vehPlate] then
-				if not vehSignal[vehPlate] then
-					if not searchTimers[Passport] then
-						searchTimers[Passport] = os.time()
+			if Spawn[Plate] then
+				if not Signal[Plate] then
+					if not Searched[Passport] then
+						Searched[Passport] = os.time()
 					end
 
-					if os.time() >= parseInt(searchTimers[Passport]) then
-						searchTimers[Passport] = os.time() + 60
+					if os.time() >= parseInt(Searched[Passport]) then
+						Searched[Passport] = os.time() + 60
 
-						local vehNet = vehSpawn[vehPlate][3]
-						local Network = NetworkGetEntityFromNetworkId(vehNet)
-						if DoesEntityExist(Network) and not IsPedAPlayer(Network) and GetEntityType(Network) == 2 and GetVehicleNumberPlateText(Network) == vehPlate then
+						local Network = Spawn[Plate][3]
+						local Network = NetworkGetEntityFromNetworkId(Network)
+						if DoesEntityExist(Network) and not IsPedAPlayer(Network) and GetEntityType(Network) == 2 and GetVehicleNumberPlateText(Network) == Plate then
 							vCLIENT.SearchBlip(source,GetEntityCoords(Network))
 							TriggerClientEvent("Notify",source,"amarelo","Rastreador do veículo foi ativado por <b>30</b> segundos, lembrando que se o mesmo estiver em movimento a localização pode ser imprecisa.",10000)
 						else
-							if vehSpawn[vehPlate] then
-								vehSpawn[vehPlate] = nil
+							if Spawn[Plate] then
+								Spawn[Plate] = nil
 							end
 
-							if vehPlates[vehPlate] then
-								vehPlates[vehPlate] = nil
-								GlobalState:set("vehPlates",vehPlates,true)
+							if Plates[Plate] then
+								Plates[Plate] = nil
+								GlobalState:set("Plates",Plates,true)
 							end
 
 							TriggerClientEvent("Notify",source,"verde","A seguradora efetuou o resgate do seu veículo e o mesmo já se encontra disponível para retirada.",5000)
@@ -547,10 +552,10 @@ AddEventHandler("garages:Spawn",function(Table)
 				else
 					if vehicle[1]["rental"] ~= 0 then
 						if vehicle[1]["rental"] <= os.time() then
-							if REQUEST.Function(source,"Atualizar o aluguel do veículo <b>"..vehicleName(vehName).."</b> por <b>"..Gemstone.." gemas</b>?","Sim, concluír pagamento","Não, mudei de ideia") then
+							if REQUEST.Function(source,"Atualizar o aluguel do veículo <b>"..VehicleName(vehName).."</b> por <b>"..Gemstone.." gemas</b>?","Sim, concluír pagamento","Não, mudei de ideia") then
 								if vRP.PaymentGems(source,Gemstone) then
 									vRP.Query("vehicles/rentalVehiclesUpdate",{ Passport = Passport, vehicle = vehName })
-									TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..vehicleName(vehName).."</b> atualizado.",5000)
+									TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..VehicleName(vehName).."</b> atualizado.",5000)
 								else
 									TriggerClientEvent("Notify",source,"vermelho","<b>Gemas</b> insuficientes.",5000)
 									return
@@ -563,42 +568,42 @@ AddEventHandler("garages:Spawn",function(Table)
 
 					local Coords = vCLIENT.SpawnPosition(source,garageName)
 					if Coords then
-						local vehMods = nil
-						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "vehMods:"..Passport..":"..vehName })
+						local Mods = nil
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..Passport..":"..vehName })
 						if parseInt(#Datatable) > 0 then
-							vehMods = Datatable[1]["dvalue"]
+							Mods = Datatable[1]["dvalue"]
 						end
 
 						if Garages[garageName]["payment"] then
 							if vRP.UserPremium(Passport) then
 								TriggerClientEvent("dynamic:closeSystem",source)
-								local netExist,netVeh = Creative.serverVehicle(vehName,Coords[1],Coords[2],Coords[3],Coords[4],vehPlate,vehicle[1]["nitro"],vehicle[1]["doors"],vehicle[1]["body"])
+								local Exist,Network = Creative.ServerVehicle(vehName,Coords[1],Coords[2],Coords[3],Coords[4],Plate,vehicle[1]["nitro"],vehicle[1]["doors"],vehicle[1]["body"])
 
-								if netExist then
-									vCLIENT.CreateVehicle(-1,vehName,netVeh,vehicle[1]["engine"],vehMods,vehicle[1]["windows"],vehicle[1]["tyres"])
+								if Exist then
+									vCLIENT.CreateVehicle(-1,vehName,Network,vehicle[1]["engine"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
 									TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
-									TriggerEvent("engine:tryFuel",vehPlate,vehicle[1]["fuel"])
-									vehSpawn[vehPlate] = { Passport,vehName,netVeh }
+									TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
+									Spawn[Plate] = { Passport,vehName,Network }
 
-									vehPlates[vehPlate] = Passport
-									GlobalState:set("vehPlates",vehPlates,true)
+									Plates[Plate] = Passport
+									GlobalState:set("Plates",Plates,true)
 								end
 							else
-								local vehPrice = vehiclePrice(vehName)
-								if REQUEST.Function(source,"Retirar o veículo por <b>$"..parseFormat(vehPrice * 0.05).."</b> dólares?","Sim, efetuar o pagamento","Não, volto depois") then
-									if vRP.GetBank(source) >= parseInt(vehPrice * 0.05) then
+								local VehiclePrice = VehiclePrice(vehName)
+								if REQUEST.Function(source,"Retirar o veículo por <b>$"..parseFormat(VehiclePrice * 0.05).."</b> dólares?","Sim, efetuar o pagamento","Não, volto depois") then
+									if vRP.GetBank(source) >= parseInt(VehiclePrice * 0.05) then
 										TriggerClientEvent("dynamic:closeSystem",source)
-										local netExist,netVeh = Creative.serverVehicle(vehName,Coords[1],Coords[2],Coords[3],Coords[4],vehPlate,vehicle[1]["nitro"],vehicle[1]["doors"],vehicle[1]["body"])
+										local Exist,Network = Creative.ServerVehicle(vehName,Coords[1],Coords[2],Coords[3],Coords[4],Plate,vehicle[1]["nitro"],vehicle[1]["doors"],vehicle[1]["body"])
 
-										if netExist then
-											vCLIENT.CreateVehicle(-1,vehName,netVeh,vehicle[1]["engine"],vehMods,vehicle[1]["windows"],vehicle[1]["tyres"])
+										if Exist then
+											vCLIENT.CreateVehicle(-1,vehName,Network,vehicle[1]["engine"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
 											TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
-											TriggerEvent("engine:tryFuel",vehPlate,vehicle[1]["fuel"])
-											vehSpawn[vehPlate] = { Passport,vehName,netVeh }
-											vRP.PaymentFull(Passport,source,vehPrice * 0.05)
+											TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
+											Spawn[Plate] = { Passport,vehName,Network }
+											vRP.PaymentFull(Passport,source,VehiclePrice * 0.05)
 
-											vehPlates[vehPlate] = Passport
-											GlobalState:set("vehPlates",vehPlates,true)
+											Plates[Plate] = Passport
+											GlobalState:set("Plates",Plates,true)
 										end
 									else
 										TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -607,16 +612,16 @@ AddEventHandler("garages:Spawn",function(Table)
 							end
 						else
 							TriggerClientEvent("dynamic:closeSystem",source)
-							local netExist,netVeh = Creative.serverVehicle(vehName,Coords[1],Coords[2],Coords[3],Coords[4],vehPlate,vehicle[1]["nitro"],vehicle[1]["doors"],vehicle[1]["body"])
+							local Exist,Network = Creative.ServerVehicle(vehName,Coords[1],Coords[2],Coords[3],Coords[4],Plate,vehicle[1]["nitro"],vehicle[1]["doors"],vehicle[1]["body"])
 
-							if netExist then
-								vCLIENT.CreateVehicle(-1,vehName,netVeh,vehicle[1]["engine"],vehMods,vehicle[1]["windows"],vehicle[1]["tyres"])
+							if Exist then
+								vCLIENT.CreateVehicle(-1,vehName,Network,vehicle[1]["engine"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
 								TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
-								TriggerEvent("engine:tryFuel",vehPlate,vehicle[1]["fuel"])
-								vehSpawn[vehPlate] = { Passport,vehName,netVeh }
+								TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
+								Spawn[Plate] = { Passport,vehName,Network }
 
-								vehPlates[vehPlate] = Passport
-								GlobalState:set("vehPlates",vehPlates,true)
+								Plates[Plate] = Passport
+								GlobalState:set("Plates",Plates,true)
 							end
 						end
 					end
@@ -628,28 +633,29 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CAR
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("car",function(source,args)
+RegisterCommand("car",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
+			local VehicleName = Message[1]
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
-			local heading = GetEntityHeading(Ped)
-			local vehPlate = "VEH"..math.random(10000,99999)
-			local netExist,netVeh,myVeh = Creative.serverVehicle(args[1],Coords["x"],Coords["y"],Coords["z"],heading,vehPlate,2000,nil,1000)
+			local Heading = GetEntityHeading(Ped)
+			local Plate = "VEH"..math.random(10000,99999)
+			local Exist,Network,Vehicle = Creative.ServerVehicle(VehicleName,Coords["x"],Coords["y"],Coords["z"],Heading,Plate,2000,nil,1000)
 
-			if not netExist then
+			if not Exist then
 				return
 			end
 
-			vCLIENT.CreateVehicle(-1,args[1],netVeh,1000,nil,false,false)
-			vehSpawn[vehPlate] = { Passport,vehName,netVeh }
-			TriggerEvent("engine:tryFuel",vehPlate,100)
-			SetPedIntoVehicle(Ped,myVeh,-1)
+			vCLIENT.CreateVehicle(-1,VehicleName,Network,1000,nil,false,false)
+			Spawn[Plate] = { Passport,VehicleName,Network }
+			TriggerEvent("engine:tryFuel",Plate,100)
+			SetPedIntoVehicle(Ped,Vehicle,-1)
 
-			local vehPlates = GlobalState["vehPlates"]
-			vehPlates[vehPlate] = Passport
-			GlobalState:set("vehPlates",vehPlates,true)
+			local Plates = GlobalState["Plates"]
+			Plates[Plate] = Passport
+			GlobalState:set("Plates",Plates,true)
 		end
 	end
 end)
@@ -658,47 +664,41 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("dv",function(source)
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") then
-			TriggerClientEvent("garages:Delete",source)
-		end
+	if Passport and vRP.HasGroup(Passport,"Moderator") then
+		TriggerClientEvent("garages:Delete",source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- GARAGES:VEHICLEKEY
+-- GARAGES:KEY
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("garages:vehicleKey")
-AddEventHandler("garages:vehicleKey",function(entity)
+RegisterServerEvent("garages:Key")
+AddEventHandler("garages:Key",function(entity)
 	local source = source
-	local vehPlate = entity[1]
+	local Plate = entity[1]
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if GlobalState["vehPlates"][vehPlate] == Passport then
-			vRP.GenerateItem(Passport,"vehkey-"..vehPlate,1,true,false)
-		end
+	if Passport and GlobalState["Plates"][Plate] == Passport then
+		vRP.GenerateItem(Passport,"vehkey-"..Plate,1,true,false)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GARAGES:LOCK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("garages:Lock")
+AddEventHandler("garages:Lock",function(Network,Plate)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and GlobalState["Plates"][Plate] == Passport then
+		TriggerEvent("garages:LockVehicle",source,Network)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:LOCKVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("garages:lockVehicle")
-AddEventHandler("garages:lockVehicle",function(vehNet,vehPlate)
-	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport then
-		if GlobalState["vehPlates"][vehPlate] == Passport then
-			TriggerEvent("garages:keyVehicle",source,vehNet)
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- GARAGES:KEYVEHICLE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("garages:keyVehicle",function(source,vehNet)
-	local Network = NetworkGetEntityFromNetworkId(vehNet)
-	local doorStatus = GetVehicleDoorLockStatus(Network)
+AddEventHandler("garages:LockVehicle",function(source,Network)
+	local Network = NetworkGetEntityFromNetworkId(Network)
+	local Doors = GetVehicleDoorLockStatus(Network)
 
-	if parseInt(doorStatus) <= 1 then
+	if parseInt(Doors) <= 1 then
 		TriggerClientEvent("Notify",source,"locked","Veículo trancado.",5000)
 		TriggerClientEvent("sounds:Private",source,"locked",0.7)
 		SetVehicleDoorsLocked(Network,2)
@@ -715,65 +715,65 @@ AddEventHandler("garages:keyVehicle",function(source,vehNet)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TRYDELETE
+-- DELETE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.tryDelete(vehNet,vehEngine,vehBody,vehFuel,vehDoors,vehWindows,vehTyres,vehPlate)
-	if vehSpawn[vehPlate] then
-		local Passport = vehSpawn[vehPlate][1]
-		local vehName = vehSpawn[vehPlate][2]
+function Creative.Delete(Network,Engine,Body,Fuel,Doors,Windows,Tyres,Plate)
+	if Spawn[Plate] then
+		local Passport = Spawn[Plate][1]
+		local vehName = Spawn[Plate][2]
 
-		if parseInt(vehEngine) <= 100 then
-			vehEngine = 100
+		if parseInt(Engine) <= 100 then
+			Engine = 100
 		end
 
-		if parseInt(vehBody) <= 100 then
-			vehBody = 100
+		if parseInt(Body) <= 100 then
+			Body = 100
 		end
 
-		if parseInt(vehFuel) >= 100 then
-			vehFuel = 100
+		if parseInt(Fuel) >= 100 then
+			Fuel = 100
 		end
 
-		if parseInt(vehFuel) <= 0 then
-			vehFuel = 0
+		if parseInt(Fuel) <= 0 then
+			Fuel = 0
 		end
 
 		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 		if vehicle[1] ~= nil then
-			vRP.Query("vehicles/updateVehicles",{ Passport = Passport, vehicle = vehName, nitro = GlobalState["Nitro"][vehPlate] or 0, engine = parseInt(vehEngine), body = parseInt(vehBody), fuel = parseInt(vehFuel), doors = json.encode(vehDoors), windows = json.encode(vehWindows), tyres = json.encode(vehTyres) })
+			vRP.Query("vehicles/updateVehicles",{ Passport = Passport, vehicle = vehName, nitro = GlobalState["Nitro"][Plate] or 0, engine = parseInt(Engine), body = parseInt(Body), fuel = parseInt(Fuel), doors = json.encode(Doors), windows = json.encode(Windows), tyres = json.encode(Tyres) })
 		end
 	end
 
-	TriggerEvent("garages:deleteVehicle",vehNet,vehPlate)
+	TriggerEvent("garages:deleteVehicle",Network,Plate)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:DELETEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("garages:deleteVehicle")
-AddEventHandler("garages:deleteVehicle",function(vehNet,vehPlate)
-	if vehNet ~= nil and vehPlate ~= nil then
-		if GlobalState["vehPlates"][vehPlate] then
-			local vehPlates = GlobalState["vehPlates"]
-			vehPlates[vehPlate] = nil
-			GlobalState:set("vehPlates",vehPlates,true)
+AddEventHandler("garages:deleteVehicle",function(Network,Plate)
+	if Network ~= nil and Plate ~= nil then
+		if GlobalState["Plates"][Plate] then
+			local Plates = GlobalState["Plates"]
+			Plates[Plate] = nil
+			GlobalState:set("Plates",Plates,true)
 		end
 
-		if GlobalState["Nitro"][vehPlate] then
+		if GlobalState["Nitro"][Plate] then
 			local Nitro = GlobalState["Nitro"]
-			Nitro[vehPlate] = nil
+			Nitro[Plate] = nil
 			GlobalState:set("Nitro",Nitro,true)
 		end
 
-		if vehSignal[vehPlate] then
-			vehSignal[vehPlate] = nil
+		if Signal[Plate] then
+			Signal[Plate] = nil
 		end
 
-		if vehSpawn[vehPlate] then
-			vehSpawn[vehPlate] = nil
+		if Spawn[Plate] then
+			Spawn[Plate] = nil
 		end
 
-		if string.sub(vehPlate,1,4) == "DISM" then
-			local Passport = parseInt(string.sub(vehPlate,5,8)) - 1000
+		if string.sub(Plate,1,4) == "DISM" then
+			local Passport = parseInt(string.sub(Plate,5,8)) - 1000
 			local source = vRP.Source(Passport)
 			if source then
 				TriggerClientEvent("inventory:Disreset",source)
@@ -781,19 +781,13 @@ AddEventHandler("garages:deleteVehicle",function(vehNet,vehPlate)
 			end
 		end
 
-		local Network = NetworkGetEntityFromNetworkId(vehNet)
+		local Network = NetworkGetEntityFromNetworkId(Network)
 		if DoesEntityExist(Network) and not IsPedAPlayer(Network) and GetEntityType(Network) == 2 then
-			if GetVehicleNumberPlateText(Network) == vehPlate then
+			if GetVehicleNumberPlateText(Network) == Plate then
 				DeleteEntity(Network)
 			end
 		end
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- VEHSIGNAL
------------------------------------------------------------------------------------------------------------------------------------------
-exports("vehSignal",function(vehPlate)
-	return vehSignal[vehPlate]
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:PROPERTYS
@@ -862,6 +856,12 @@ CreateThread(function()
 			}
 		end
 	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SIGNAL
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Signal",function(Plate)
+	return Signal[Plate]
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

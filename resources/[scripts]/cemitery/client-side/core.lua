@@ -98,7 +98,7 @@ AddEventHandler("cemitery:initBody",function()
 		if LoadModel(pedList[pSelected]) then
 			spawnPed = CreatePed(4,pedList[pSelected],cCoords[Selected][1],cCoords[Selected][2],cCoords[Selected][3] - 1,cCoords[Selected][4] - 180.0,false,false)
 
-			SetPedArmour(spawnPed,100)
+			SetPedArmour(spawnPed,99)
 			SetEntityInvincible(spawnPed,true)
 			FreezeEntityPosition(spawnPed,true)
 			SetBlockingOfNonTemporaryEvents(spawnPed,true)

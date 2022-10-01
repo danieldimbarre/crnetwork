@@ -57,11 +57,11 @@ CreateThread(function()
 
 					if IsEntityAVehicle(vehFront) then
 						local vehModel = GetEntityModel(vehFront)
-						local vehHash = vRP.vehicleModel(vehModel)
+						local vehHash = vRP.VehicleModel(vehModel)
 						local vehSpeed = GetEntitySpeed(vehFront) * 3.6
-						local vehPlate = GetVehicleNumberPlateText(vehFront)
+						local Plate = GetVehicleNumberPlateText(vehFront)
 
-						SendNUIMessage({ radar = "top", plate = vehPlate, Model = vehicleName(vehHash), speed = vehSpeed })
+						SendNUIMessage({ radar = "top", plate = Plate, Model = VehicleName(vehHash), speed = vehSpeed })
 					end
 
 					local vehicleBack = GetOffsetFromEntityInWorldCoords(vehicle,0.0,-105.0,0.0)
@@ -70,11 +70,11 @@ CreateThread(function()
 
 					if IsEntityAVehicle(vehBack) then
 						local vehModel = GetEntityModel(vehBack)
-						local vehHash = vRP.vehicleModel(vehModel)
+						local vehHash = vRP.VehicleModel(vehModel)
 						local vehSpeed = GetEntitySpeed(vehBack) * 3.6
-						local vehPlate = GetVehicleNumberPlateText(vehBack)
+						local Plate = GetVehicleNumberPlateText(vehBack)
 
-						SendNUIMessage({ radar = "bot", plate = vehPlate, Model = vehicleName(vehHash), speed = vehSpeed })
+						SendNUIMessage({ radar = "bot", plate = Plate, Model = VehicleName(vehHash), speed = vehSpeed })
 					end
 				end
 			end

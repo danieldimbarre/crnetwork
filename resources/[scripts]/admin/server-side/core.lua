@@ -15,12 +15,12 @@ vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UGROUPS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("ugroups",function(source,args)
+RegisterCommand("ugroups",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and parseInt(args[1]) > 0 then
+	if Passport and parseInt(Message[1]) > 0 then
 		local Message = ""
 		local Groups = vRP.Groups()
-		local OtherPassport = args[1]
+		local OtherPassport = Message[1]
 		for Permission,_ in pairs(Groups) do
 			local Data = vRP.DataGroups(Permission)
 			if Data[OtherPassport] then
@@ -36,24 +36,24 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEARINV
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("clearinv",function(source,args)
+RegisterCommand("clearinv",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(args[1]) > 0 then
+		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
 			TriggerClientEvent("Notify",source,"verde","Limpeza concluída.",5000)
-			vRP.ClearInventory(args[1])
+			vRP.ClearInventory(Message[1])
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("gem",function(source,args)
+RegisterCommand("gem",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(args[1]) > 0 and parseInt(args[2]) > 0 then
-			local Amount = parseInt(args[2])
-			local OtherPassport = parseInt(args[1])
+		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 then
+			local Amount = parseInt(Message[2])
+			local OtherPassport = parseInt(Message[1])
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
 				TriggerClientEvent("Notify",source,"verde","Gemas entregues.",5000)
@@ -77,12 +77,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GOD
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("god",function(source,args)
+RegisterCommand("god",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Moderator") then
-			if args[1] then
-				local OtherPassport = parseInt(args[1])
+			if Message[1] then
+				local OtherPassport = parseInt(Message[1])
 				local ClosestPed = vRP.Source(OtherPassport)
 				if ClosestPed then
 					vRP.UpgradeThirst(OtherPassport,100)
@@ -91,7 +91,7 @@ RegisterCommand("god",function(source,args)
 					vRPC.revivePlayer(ClosestPed,200)
 				end
 			else
-				vRP.SetArmour(source,100)
+				vRP.SetArmour(source,99)
 				vRPC.revivePlayer(source,200)
 				vRP.UpgradeThirst(Passport,100)
 				vRP.UpgradeHunger(Passport,100)
@@ -107,12 +107,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("item",function(source,args)
+RegisterCommand("item",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			if args[1] and args[2] and itemBody(args[1]) ~= nil then
-				vRP.GenerateItem(Passport,args[1],parseInt(args[2]),true)
+			if Message[1] and Message[2] and itemBody(Message[1]) ~= nil then
+				vRP.GenerateItem(Passport,Message[1],parseInt(Message[2]),true)
 			end
 		end
 	end
@@ -120,12 +120,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEM2
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("item2",function(source,args)
+RegisterCommand("item2",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			if args[1] and args[2] and args[3] and itemBody(args[1]) ~= nil then
-				vRP.GenerateItem(args[3],args[1],parseInt(args[2]),true)
+			if Message[1] and Message[2] and Message[3] and itemBody(Message[1]) ~= nil then
+				vRP.GenerateItem(Message[3],Message[1],parseInt(Message[2]),true)
 			end
 		end
 	end
@@ -133,11 +133,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DELETE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("delete",function(source,args)
+RegisterCommand("delete",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and args[1] then
+	if Passport and Message[1] then
 		if vRP.HasGroup(Passport,"Moderator") then
-			local OtherPassport = parseInt(args[1])
+			local OtherPassport = parseInt(Message[1])
 			vRP.Query("characters/removeCharacter",{ id = OtherPassport })
 			TriggerClientEvent("Notify",source,"verde","Personagem <b>"..OtherPassport.."</b> deletado.",5000)
 		end
@@ -157,24 +157,24 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KICK
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("kick",function(source,args)
+RegisterCommand("kick",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(args[1]) > 0 then
-			TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..args[1].."</b> expulso.",5000)
-			vRP.Kick(args[1],"Expulso da cidade.")
+		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 then
+			TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..Message[1].."</b> expulso.",5000)
+			vRP.Kick(Message[1],"Expulso da cidade.")
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BAN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("ban",function(source,args)
+RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(args[1]) > 0 and parseInt(args[2]) > 0 then
-			local time = parseInt(args[2])
-			local OtherPassport = parseInt(args[1])
+		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 then
+			local time = parseInt(Message[2])
+			local OtherPassport = parseInt(Message[1])
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
 				vRP.Kick(OtherPassport,"Banido.")
@@ -187,11 +187,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UNBAN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("unban",function(source,args)
+RegisterCommand("unban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(args[1]) > 0 then
-			local OtherPassport = parseInt(args[1])
+		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 then
+			local OtherPassport = parseInt(Message[1])
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
 				vRP.Query("banneds/RemoveBanned",{ license = Identity["license"] })
@@ -233,35 +233,35 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GROUP
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("group",function(source,args)
+RegisterCommand("group",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(args[1]) > 0 and args[2] then
-			TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..args[2].."</b> ao passaporte <b>"..args[1].."</b>.",5000)
-			vRP.SetPermission(args[1],args[2])
+		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and Message[2] then
+			TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
+			vRP.SetPermission(Message[1],Message[2])
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UNGROUP
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("ungroup",function(source,args)
+RegisterCommand("ungroup",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(args[1]) > 0 and args[2] then
-			TriggerClientEvent("Notify",source,"verde","Removido <b>"..args[2].."</b> ao passaporte <b>"..args[1].."</b>.",5000)
-			vRP.RemovePermission(args[1],args[2])
+		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and Message[2] then
+			TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
+			vRP.RemovePermission(Message[1],Message[2])
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TPTOME
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("tptome",function(source,args)
+RegisterCommand("tptome",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(args[1]) > 0 then
-			local ClosestPed = vRP.Source(args[1])
+		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 then
+			local ClosestPed = vRP.Source(Message[1])
 			if ClosestPed then
 				local Ped = GetPlayerPed(source)
 				local Coords = GetEntityCoords(Ped)
@@ -274,11 +274,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TPTO
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("tpto",function(source,args)
+RegisterCommand("tpto",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(args[1]) > 0 then
-			local ClosestPed = vRP.Source(args[1])
+		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 then
+			local ClosestPed = vRP.Source(Message[1])
 			if ClosestPed then
 				local Ped = GetPlayerPed(ClosestPed)
 				local Coords = GetEntityCoords(Ped)
@@ -314,7 +314,7 @@ RegisterCommand("hash",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			local vehicle = vRPC.vehicleHash(source)
+			local vehicle = vRPC.VehicleHash(source)
 			if vehicle then
 				vRP.Archive("hash.txt",vehicle)
 			end
@@ -339,9 +339,9 @@ RegisterCommand("fix",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			local Vehicle,vehNet,vehPlate = vRPC.vehList(source,10)
+			local Vehicle,Network,Plate = vRPC.VehicleList(source,10)
 			if Vehicle then
-				TriggerClientEvent("inventory:repairAdmin",source,vehNet,vehPlate)
+				TriggerClientEvent("inventory:repairAdmin",source,Network,Plate)
 			end
 		end
 	end
@@ -396,20 +396,20 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ANNOUNCE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("announce",function(source,args,rawCommand)
+RegisterCommand("announce",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and args[1] then
-			TriggerClientEvent("chat:ClientMessage",-1,"Governador",rawCommand:sub(9))
+		if vRP.HasGroup(Passport,"Admin") and Message[1] then
+			TriggerClientEvent("chat:ClientMessage",-1,"Governador",History:sub(9))
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONSOLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("console",function(source,args,rawCommand)
+RegisterCommand("console",function(source,Message,History)
 	if source == 0 then
-		TriggerClientEvent("chat:ClientMessage",-1,"Governador",rawCommand:sub(9))
+		TriggerClientEvent("chat:ClientMessage",-1,"Governador",History:sub(9))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -429,14 +429,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMALL
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("itemall",function(source,args)
+RegisterCommand("itemall",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
 			local playerList = vRP.Players()
 			for PassportPlayer,_ in pairs(playerList) do
 				async(function()
-					vRP.GenerateItem(PassportPlayer,tostring(args[1]),parseInt(args[2]),true)
+					vRP.GenerateItem(PassportPlayer,tostring(Message[1]),parseInt(Message[2]),true)
 				end)
 			end
 
@@ -467,7 +467,7 @@ end
 -- SPECTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Spectate = {}
-RegisterCommand("spectate",function(source,args)
+RegisterCommand("spectate",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
@@ -480,7 +480,7 @@ RegisterCommand("spectate",function(source,args)
 				TriggerClientEvent("admin:resetSpectate",source)
 				Spectate[Passport] = nil
 			else
-				local nsource = vRP.Source(args[1])
+				local nsource = vRP.Source(Message[1])
 				if nsource then
 					local Ped = GetPlayerPed(nsource)
 					if DoesEntityExist(Ped) then

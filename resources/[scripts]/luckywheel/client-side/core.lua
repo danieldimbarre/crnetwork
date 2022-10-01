@@ -26,29 +26,30 @@ end)
 -- THREADCASSINO
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
+	Wait(1000)
 	while true do
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
-			local Distance = #(Coords - vec3(981.75,34.61,71.46))
+			local Distance = #(Coords - vec3(980.29,34.34,72.17))
 			if Distance <= 100 then
 				if not LocalPlayer["state"]["Cassino"] then
 					LocalPlayer["state"]["Cassino"] = true
 
-					if LoadModel("nissangtrnismo") and LoadModel("vw_prop_vw_luckywheel_02a") then
-						Wheel = CreateObjectNoOffset("vw_prop_vw_luckywheel_02a",990.28,42.85,71.76,false,false,false)
-						SetEntityHeading(Wheel,-31.8)
+					if LoadModel("sabregt2") and LoadModel("vw_prop_vw_luckywheel_02a") then
+						Wheel = CreateObjectNoOffset("vw_prop_vw_luckywheel_02a",990.28,42.84,71.77,false,false,false)
+						SetEntityHeading(Wheel,328.16)
 
-						Vehicle = CreateVehicle("nissangtrnismo",975.37,40.84,72.15,221.11,false,false)
+						Vehicle = CreateVehicle("sabregt2",975.7,40.31,70.91,200.0,false,false)
 						SetVehicleNumberPlateText(Vehicle,"PDMSPORT")
 						SetVehicleOnGroundProperly(Vehicle)
 						FreezeEntityPosition(Vehicle,true)
 						SetEntityInvincible(Vehicle,true)
 						SetVehicleDoorsLocked(Vehicle,2)
-						SetVehicleColours(Vehicle,29,1)
+						SetVehicleColours(Vehicle,0,1)
 
 						SetModelAsNoLongerNeeded("vw_prop_vw_luckywheel_02a")
-						SetModelAsNoLongerNeeded("nissangtrnismo")
+						SetModelAsNoLongerNeeded("sabregt2")
 					end
 				end
 			else
@@ -110,7 +111,7 @@ AddEventHandler("luckywheel:Start",function(Result)
 					rollingSpeed = rollingRatio / 200
 					local yRot = xRot["y"] - rollingSpeed
 					wheelAngles = wheelAngles - rollingSpeed
-					SetEntityRotation(Wheel,0.0,yRot,-31.8,2,true)
+					SetEntityRotation(Wheel,0.0,yRot,328.16,2,true)
 
 					Wait(0)
 				end

@@ -7,7 +7,7 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HACKEREVENTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local hackerEvents = {
+local HackerEvents = {
 	"esx_vehicletrunk:giveDirty",
 	"esx_moneywash:deposit",
 	"Esx-MenuPessoal:Boss_recruterplayer",
@@ -280,15 +280,92 @@ local hackerEvents = {
 	"reanimar:pagamento",
 	"adminmenu:allowall",
 	"antilynx8:anticheat",
-	"DiscordBot:playerDie"
+	"DiscordBot:playerDie",
+	"esx_fueldeliver",
+	"PayForRepairNow",
+	"esx_pizza:pay",
+	"esx_jobs:caution",
+	"bank:transfer",
+	"lscustoms:payGarag",
+	"esx_vangelico_robbery:gioielli1",
+	"99kr-burglary:addMoney",
+	"burglary:money",
+	"lenzh_chopshop:sell",
+	"esx_deliveries:AddCashMoney",
+	"loffe_prisonwork",
+	"esx_tankerjob:pay",
+	"napadtransport:graczZrobilnapad",
+	"tost:zgarnijsiano",
+	"esx_loffe_fangelse:Pay",
+	"esx_mugging:giveMoney",
+	"esx_robnpc:giveMoney",
+	"esx_vehicletrunk:giveDirty",
+	"esx_gopostaljob:pay",
+	"f0ba1292-b68d-4d95-8823-6230cdf282b6",
+	"gambling:spend",
+	"265df2d8-421b-4727-b01d-b92fd6503f5e",
+	"AdminMenu:giveDirtyMoney",
+	"AdminMenu:giveBank",
+	"AdminMenu:giveCash",
+	"esx_slotmachine:sv:2",
+	"esx_moneywash:deposit",
+	"esx_moneywash:withdraw",
+	"esx_moneywash:deposit",
+	"mission:completed",
+	"truckerJob:success",
+	"esx_fishing:receiveFish",
+	"c65a46c5-5485-4404-bacf-06a106900258",
+	"dropOff",
+	"truckerfuel:success",
+	"delivery:success",
+	"lscustoms:payGarage",
+	"esx_brinksjob:pay",
+	"esx_garbagejob:pay",
+	"esx_postejob:pay",
+	"esx_garbage:pay",
+	"esx_carteirojob:pay",
+	"esx_pilot:success",
+	"esx_taxijob:success",
+	"adminmenu:setsalary",
+	"esx_mugging:giveMoney",
+	"paycheck:salary",
+	"vrp_slotmachine:server:2",
+	"DiscordBot:playerDied",
+	"esx_drugs:startHarvestWeed",
+	"esx_drugs:startTransformWeed",
+	"esx_drugs:startSellWeed",
+	"esx_drugs:startHarvestCoke",
+	"esx_drugs:startTransformCoke",
+	"esx_drugs:startSellCoke",
+	"esx_drugs:startHarvestMeth",
+	"esx_drugs:startTransformMeth",
+	"esx_drugs:startSellMeth",
+	"esx_drugs:startHarvestOpium",
+	"esx_drugs:startTransformOpium",
+	"esx_drugs:startSellOpium",
+	"esx_drugs:stopTransformCoke",
+	"esx_handcuffs:unlocking",
+	"esx_policejob:requestarrest",
+	"esx_policejob:handcuffPasta",
+	"17A34C820A685513C5B4ADDD85968B9E905CC300A261EB55D299ABCB6C90AAA872712B3B6C13DC41913FCC2BE84A07EF9300DC4E89669A4B0E6FBB344A69D239",
+	"llotrainer:adminKick",
+	"esx_mafiajob:confiscatePlayerItem",
+	"InteractSound_SV:PlayOnAll",
+	"SEM_InteractionMenu:Jail",
+	"SEM_InteractionMenu:DragNear"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- FORHACKEREVENTS
+-- HACKEREVENTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-for k,v in ipairs(hackerEvents) do
-	RegisterServerEvent(v)
-	AddEventHandler(v,function()
-		TriggerEvent("admin:Print","Carregou um evento da blacklist.")
+for i = 1,#HackerEvents do
+	RegisterServerEvent(HackerEvents[i])
+	AddEventHandler(HackerEvents[i],function()
+		local source = source
+		local Passport = vRP.Passport(source)
+		if Passport then
+			TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Carregou um evento da blacklist.\n**Address:** "..GetPlayerEndpoint(source),3092790)
+			CancelEvent()
+		end
 	end)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -300,28 +377,88 @@ AddEventHandler("admin:Print",function(Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** "..Message.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
-
-		if not vRP.HasGroup(Passport,"Admin") then
-			vRP.Kick(Passport,"Banido.")
-			local Identity = vRP.Identity(Passport)
-			vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
-		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- EXPLOSIONEVENTS
+-- EXPLODE
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("explosionEvent",function(sender,ev)
-	local explosionType = ev["explosionType"]
-	if not explosionType == 7 or not explosionType == 9 then
-		local Passport = vRP.Passport(sender)
-		if Passport then
-			TriggerEvent("Discord","Hackers","**Source:** "..sender.."\n**Passaporte:** "..Passport.."\n**Motivo:** Criou explosões\n**Address:** "..GetPlayerEndpoint(sender),3092790)
+local Expam = {}
+local Explode = {
+	[0] = { ["Name"] = "Grenade" },
+	[1] = { ["Name"] = "GrenadeLauncher" },
+	[4] = { ["Name"] = "Rocket" },
+	[5] = { ["Name"] = "TankShell" },
+	[18] = { ["Name"] = "Bullet" },
+	[19] = { ["Name"] = "SmokeGrenadeLauncher" },
+	[32] = { ["Name"] = "PlaneRocket" },
+	[37] = { ["Name"] = "Valkyrie_Cannon" }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- EXPLOSIONEVENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("explosionEvent",function(source,Data)
+	if tonumber(source) then
+		local Number = Data["explosionType"]
+		local Token = GetPlayerToken(source,0)
 
-			if not vRP.HasGroup(Passport,"Admin") then
-				vRP.Kick(Passport,"Banido.")
-				local Identity = vRP.Identity(Passport)
-				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+		if Token then
+			if Explode[Number] then
+				local Passport = vRP.Passport(source)
+				if Passport then
+					TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Criou explosões com uma __"..Explode[Number]["Name"].."__.\n**Address:** "..GetPlayerEndpoint(source),3092790)
+				end
+			end
+
+			local Token = GetPlayerToken(source,0)
+			if not Expam[Token] then
+				Expam[Token] = {
+					["Count"] = 1,
+					["Time"] = os.time() + 10
+				}
+			else
+				Expam[Token]["Count"] = Expam[Token]["Count"] + 1
+
+				if os.time() >= Expam[Token]["Time"] then
+					Expam[Token] = nil
+				else
+					if Expam[Token]["Count"] >= 10 then
+						local Passport = vRP.Passport(source)
+						TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Spammou explosões.\n**Address:** "..GetPlayerEndpoint(source),3092790)
+						CancelEvent()
+					end
+				end
+			end
+		else
+			CancelEvent()
+		end
+	else
+		CancelEvent()
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WEAPONDAMAGEEVENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Tazer = {}
+AddEventHandler("weaponDamageEvent",function(source,Data)
+	if Data["weaponType"] == 911657153 then
+		local Token = GetPlayerToken(source,0)
+
+		if not Tazer[Token] then
+			Tazer[Token] = {
+				["Count"] = 1,
+				["Time"] = os.time() + 10
+			}
+		else
+			Tazer[Token]["Count"] = Tazer[Token]["Count"] + 1
+
+			if os.time() >= Tazer[Token]["Time"] then
+				Tazer[Token] = nil
+			else
+				if Tazer[Token]["Count"] >= 10 then
+					local Passport = vRP.Passport(source)
+					TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Spammou tazer.\n**Address:** "..GetPlayerEndpoint(source),3092790)
+					CancelEvent()
+				end
 			end
 		end
 	end
@@ -332,16 +469,8 @@ end)
 RegisterServerEvent("ResourceStop")
 AddEventHandler("ResourceStop",function(Resource)
 	local source = source
-	if source ~= 0 then
-		local Passport = vRP.Passport(source)
-		if Passport then
-			TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Pausou o resource "..Resource.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
-
-			if not vRP.HasGroup(Passport,"Admin") then
-				vRP.Kick(Passport,"Banido.")
-				local Identity = vRP.Identity(Passport)
-				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
-			end
-		end
+	local Passport = vRP.Passport(source)
+	if Passport then
+		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Pausou o resource "..Resource.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 	end
 end)

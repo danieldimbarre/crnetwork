@@ -140,30 +140,30 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLACA
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("placa",function(source,args)
+RegisterCommand("placa",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Police") and args[1] then
-			runPlate(source,args[1])
+		if vRP.HasGroup(Passport,"Police") and Message[1] then
+			runPlate(source,Message[1])
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RUNPLATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function runPlate(source,vehPlate)
-	local Passport = vRP.PassportPlate(vehPlate)
+function runPlate(source,Plate)
+	local Passport = vRP.PassportPlate(Plate)
 	if Passport then
 		local Identity = vRP.Identity(Passport["Passport"])
 		vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
 		TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Identity["id"].."<br><b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."<br><b>Nº:</b> "..Identity["phone"],10000)
 	else
-		if not plateSave[vehPlate] then
-			plateSave[vehPlate] = { plateName[math.random(#plateName)].." "..plateName2[math.random(#plateName2)],vRP.GeneratePhone() }
+		if not plateSave[Plate] then
+			plateSave[Plate] = { plateName[math.random(#plateName)].." "..plateName2[math.random(#plateName2)],vRP.GeneratePhone() }
 		end
 
 		vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
-		TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> 9.999<br><b>Nome:</b> "..plateSave[vehPlate][1].."<br><b>Nº:</b> "..plateSave[vehPlate][2],10000)
+		TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> 9.999<br><b>Nome:</b> "..plateSave[Plate][1].."<br><b>Nº:</b> "..plateSave[Plate][2],10000)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

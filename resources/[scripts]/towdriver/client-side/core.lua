@@ -143,7 +143,7 @@ CreateThread(function()
 				local vehName = vehModels[spawnSelect]
 				local heading = vehRescue[serviceLocate][spawnCoords][4]
 
-				vGARAGE.serverVehicle(vehName,vehRescue[serviceLocate][spawnCoords][1],vehRescue[serviceLocate][spawnCoords][2],vehRescue[serviceLocate][spawnCoords][3],heading,nil,0,nil,100)
+				vGARAGE.ServerVehicle(vehName,vehRescue[serviceLocate][spawnCoords][1],vehRescue[serviceLocate][spawnCoords][2],vehRescue[serviceLocate][spawnCoords][3],heading,nil,0,nil,100)
 			end
 		end
 

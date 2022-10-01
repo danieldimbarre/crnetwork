@@ -135,7 +135,7 @@ local function saveVehicle()
 			end
 		end
 
-		TriggerServerEvent("lscustoms:updateVehicle",vehicleMods,GetVehicleNumberPlateText(vehicle),vRP.vehicleName())
+		TriggerServerEvent("lscustoms:updateVehicle",vehicleMods,GetVehicleNumberPlateText(vehicle),vRP.VehicleName())
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

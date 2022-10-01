@@ -21,7 +21,7 @@ LocalPlayer["state"]["Target"] = false
 -- TOWS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tows = {
-	{ 408.82,-1639.74,29.28 }
+	{ -142.24,-1174.19,23.76 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISMANTLES
@@ -49,7 +49,7 @@ local Dismantles = {
 RegisterNetEvent("target:Dismantles")
 AddEventHandler("target:Dismantles",function()
 	Dismantleds = math.random(#Dismantles)
-	TriggerEvent("NotifyPush",{ title = "Localização do Desmanche", x = Dismantles[Dismantleds][1], y = Dismantles[Dismantleds][2], z = Dismantles[Dismantleds][3], blipColor = 60 })
+	TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Desmanche", x = Dismantles[Dismantleds][1], y = Dismantles[Dismantleds][2], z = Dismantles[Dismantleds][3], blipColor = 60 })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRELIST
@@ -215,66 +215,7 @@ AddEventHandler("target:animDeitar",function()
 			SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + beds[Selected[2]][1],1,0,0,0)
 			SetEntityHeading(Ped,GetEntityHeading(Selected[1]) + beds[Selected[2]][2] - 180.0)
 
-			vRP.playAnim(false,{ "anim@gangops@morgue@table@","body_search" },true)
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- TARGET:SENTAR
------------------------------------------------------------------------------------------------------------------------------------------
-local chairs = {
-	[-171943901] = 0.0,
-	[-109356459] = 0.5,
-	[1805980844] = 0.5,
-	[-99500382] = 0.3,
-	[1262298127] = 0.0,
-	[1737474779] = 0.5,
-	[2040839490] = 0.0,
-	[1037469683] = 0.4,
-	[867556671] = 0.4,
-	[-1521264200] = 0.0,
-	[-741944541] = 0.4,
-	[-591349326] = 0.5,
-	[-293380809] = 0.5,
-	[-628719744] = 0.5,
-	[-1317098115] = 0.5,
-	[1630899471] = 0.5,
-	[38932324] = 0.5,
-	[-523951410] = 0.5,
-	[725259233] = 0.5,
-	[764848282] = 0.5,
-	[2064599526] = 0.5,
-	[536071214] = 0.5,
-	[589738836] = 0.5,
-	[146905321] = 0.5,
-	[47332588] = 0.5,
-	[-1118419705] = 0.5,
-	[538002882] = -0.1,
-	[-377849416] = 0.5,
-	[96868307] = 0.5,
-	[-1195678770] = 0.7,
-	[-853526657] = -0.1,
-	[652816835] = 0.8,
-	[-606800174] = 0.5,
-	[736919402] = 0.55,
-}
-
-RegisterNetEvent("target:animSentar")
-AddEventHandler("target:animSentar",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] then
-		local Ped = PlayerPedId()
-		if GetEntityHealth(Ped) > 101 then
-			local objCoords = GetEntityCoords(Selected[1])
-
-			FreezeEntityPosition(Selected[1],true)
-			SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + chairs[Selected[2]],1,0,0,0)
-			if chairs[Selected[2]] == 0.7 then
-				SetEntityHeading(Ped,GetEntityHeading(Selected[1]))
-			else
-				SetEntityHeading(Ped,GetEntityHeading(Selected[1]) - 180.0)
-			end
-
-			vRP.playAnim(false,{ task = "PROP_HUMAN_SEAT_CHAIR_MP_PLAYER" },false)
+			vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
 		end
 	end
 end)
@@ -721,7 +662,7 @@ CreateThread(function()
 		Distance = 1.0
 	})
 
-	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688,-50684386 },{
+	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688 },{
 		options = {
 			{
 				event = "inventory:Animals",
@@ -1035,7 +976,7 @@ CreateThread(function()
 		heading = 3374176
 	},{
 		shop = "Sandy",
-		Distance = 1.0,
+		Distance = 2.0,
 		options = {
 			{
 				event = "tablet:Open",
@@ -1059,7 +1000,7 @@ CreateThread(function()
 		}
 	})
 
-	AddCircleZone("CassinoWheel",vec3(990.48,41.0,71.26),0.5,{
+	AddCircleZone("CassinoWheel",vec3(988.37,43.06,71.3),0.5,{
 		name = "CassinoWheel",
 		heading = 3374176
 	},{
@@ -1068,28 +1009,6 @@ CreateThread(function()
 			{
 				event = "luckywheel:Target",
 				label = "Roda da Fortuna",
-				tunnel = "client"
-			}
-		}
-	})
-
-	AddTargetModel({ 1631638868,2117668672,-1498379115,-1519439119,-289946279 },{
-		Distance = 1.00,
-		options = {
-			{
-				event = "target:animDeitar",
-				label = "Deitar",
-				tunnel = "client"
-			}
-		}
-	})
-
-	AddTargetModel({ -171943901,-109356459,1805980844,-99500382,1262298127,1737474779,2040839490,1037469683,867556671,-1521264200,-741944541,-591349326,-293380809,-628719744,-1317098115,1630899471,38932324,-523951410,725259233,764848282,2064599526,536071214,589738836,146905321,47332588,-1118419705,538002882,-377849416,96868307,-1195678770,-853526657,652816835,736919402 },{
-		Distance = 1.00,
-		options = {
-			{
-				event = "target:animSentar",
-				label = "Sentar",
 				tunnel = "client"
 			}
 		}
@@ -1154,18 +1073,18 @@ function TargetEnable()
 
 				if GetEntityType(Entity) ~= 0 then
 					if IsEntityAVehicle(Entity) then
-						local vehPlate = GetVehicleNumberPlateText(Entity)
-						if #(Coords - entCoords) <= 1.0 and vehPlate ~= "PDMSPORT" then
-							local vehNet = nil
+						local Plate = GetVehicleNumberPlateText(Entity)
+						if #(Coords - entCoords) <= 1.0 and Plate ~= "PDMSPORT" then
+							local Network = nil
 							local Combustivel = false
 							local vehModel = GetEntityModel(Entity)
 							SetEntityAsMissionEntity(Entity,true,true)
 
 							if NetworkGetEntityIsNetworked(Entity) then
-								vehNet = VehToNet(Entity)
+								Network = VehToNet(Entity)
 							end
 
-							Selected = { vehPlate,vRP.vehicleModel(vehModel),Entity,vehNet }
+							Selected = { Plate,vRP.VehicleModel(vehModel),Entity,Network }
 
 							local Menu = {}
 
@@ -1182,7 +1101,7 @@ function TargetEnable()
 									Selected[5] = true
 									table.insert(Menu,{ event = "engine:Supply", label = "Abastecer", tunnel = "client" })
 								else
-									if GlobalState["vehPlates"][vehPlate] then
+									if GlobalState["Plates"][Plate] then
 										if GetVehicleDoorLockStatus(Entity) == 1 then
 											for k,Tyre in pairs(tyreList) do
 												local Wheel = GetEntityBoneIndexByName(Entity,k)
@@ -1200,7 +1119,7 @@ function TargetEnable()
 											table.insert(Menu,{ event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" })
 										end
 
-										table.insert(Menu,{ event = "garages:vehicleKey", label = "Criar Chave Cópia", tunnel = "police" })
+										table.insert(Menu,{ event = "garages:Key", label = "Criar Chave Cópia", tunnel = "police" })
 										table.insert(Menu,{ event = "inventory:applyPlate", label = "Trocar Placa", tunnel = "server" })
 									end
 
@@ -1228,11 +1147,11 @@ function TargetEnable()
 										table.insert(Menu,{ event = "police:Plate", label = "Verificar Placa", tunnel = "police" })
 										table.insert(Menu,{ event = "police:Impound", label = "Registrar Veículo", tunnel = "police" })
 
-										if GlobalState["vehPlates"][vehPlate] then
+										if GlobalState["Plates"][Plate] then
 											table.insert(Menu,{ event = "police:Arrest", label = "Apreender Veículo", tunnel = "police" })
 										end
 									else
-										if vehPlate == "DISM"..(1000 + LocalPlayer["state"]["Passport"]) then
+										if Plate == "DISM"..(1000 + LocalPlayer["state"]["Passport"]) then
 											local Distance = #(Coords - vec3(Dismantles[Dismantleds][1],Dismantles[Dismantleds][2],Dismantles[Dismantleds][3]))
 											if Distance <= 10 then
 												table.insert(Menu,{ event = "inventory:Dismantle", label = "Desmanchar", tunnel = "police" })
@@ -1379,9 +1298,9 @@ end
 -- TARGET:ROLLVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:RollVehicle")
-AddEventHandler("target:RollVehicle",function(vehNet)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+AddEventHandler("target:RollVehicle",function(Network)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			SetVehicleOnGroundProperly(Vehicle)
 		end
@@ -1413,8 +1332,6 @@ RegisterNUICallback("Select",function(Data,Callback)
 		TriggerServerEvent(Data["event"],Selected)
 	elseif Data["tunnel"] == "shop" then
 		TriggerEvent(Data["event"],Selected)
-	elseif Data["tunnel"] == "teleport" then
-		TriggerEvent(Data["event"],Data["service"],Data["teleport"])
 	elseif Data["tunnel"] == "shopserver" then
 		TriggerServerEvent(Data["event"],Selected)
 	elseif Data["tunnel"] == "boxes" then

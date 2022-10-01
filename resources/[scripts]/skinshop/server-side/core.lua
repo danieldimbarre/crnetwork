@@ -42,14 +42,14 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("skin",function(source,args)
+RegisterCommand("skin",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and args[1] then
+	if Passport and Message[1] then
 		if vRP.HasGroup(Passport,"Paramedic") or vRP.HasGroup(Passport,"Moderator") then
-			local ClosestPed = vRP.Source(args[1])
+			local ClosestPed = vRP.Source(Message[1])
 			if ClosestPed then
-				vRPC.Skin(ClosestPed,args[2])
-				vRP.SkinCharacter(parseInt(args[1]),args[2])
+				vRPC.Skin(ClosestPed,Message[2])
+				vRP.SkinCharacter(parseInt(Message[1]),Message[2])
 			end
 		end
 	end

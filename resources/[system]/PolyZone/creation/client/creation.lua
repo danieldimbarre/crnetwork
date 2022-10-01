@@ -5,7 +5,7 @@ createdZone = nil
 drawZone = false
 
 RegisterNetEvent("polyzone:pzcreate")
-AddEventHandler("polyzone:pzcreate", function(zoneType, name, args)
+AddEventHandler("polyzone:pzcreate", function(zoneType, name, Message)
   if createdZone then
     return
   end
@@ -14,7 +14,7 @@ AddEventHandler("polyzone:pzcreate", function(zoneType, name, args)
     polyStart(name)
   elseif zoneType == "circle" then
     local radius = nil
-    if #args >= 3 then radius = tonumber(args[3])
+    if #Message >= 3 then radius = tonumber(Message[3])
     else radius = tonumber(GetUserInput("Enter radius:")) end
     if not radius then
       return
@@ -22,13 +22,13 @@ AddEventHandler("polyzone:pzcreate", function(zoneType, name, args)
     circleStart(name, radius)
   elseif zoneType == "box" then
     local length = nil
-    if #args >= 3 then length = tonumber(args[3])
+    if #Message >= 3 then length = tonumber(Message[3])
     else length = tonumber(GetUserInput("Enter length:")) end
     if not length or length < 0.0 then
       return
     end
     local width = nil
-    if #args >= 4 then width = tonumber(args[4])
+    if #Message >= 4 then width = tonumber(Message[4])
     else width = tonumber(GetUserInput("Enter width:")) end
     if not width or width < 0.0 then
       return

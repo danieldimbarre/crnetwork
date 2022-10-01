@@ -34,12 +34,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAINEL
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("painel",function(source,args)
+RegisterCommand("painel",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and args[1] then
-		if vRP.HasPermission(Passport,"set"..args[1]) then
-			Panel[Passport] = args[1]
-			TriggerClientEvent("service:Open",source,args[1])
+	if Passport and Message[1] then
+		if vRP.HasPermission(Passport,"set"..Message[1]) then
+			Panel[Passport] = Message[1]
+			TriggerClientEvent("service:Open",source,Message[1])
 		end
 	end
 end)

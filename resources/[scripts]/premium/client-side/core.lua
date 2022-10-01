@@ -1,8 +1,56 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADCHECK
 -----------------------------------------------------------------------------------------------------------------------------------------
+local LastAimX,LastAimY = nil,nil
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADCHECK
+-----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
+		local Pid = PlayerId()
+		local Ped = PlayerPedId()
+
+		if GetPedArmour(Ped) >= 100 then
+			TriggerServerEvent("admin:Print","Está com hacker de colete.")
+		end
+
+		local Health = GetEntityHealth(Ped)
+		if Health > 102 then
+			SetEntityHealth(Ped,Health - 2)
+
+			Wait(250)
+
+			if GetEntityHealth(Ped) >= Health and GetEntityHealth(Ped) ~= 0 then
+				TriggerServerEvent("admin:Print","Está de GodMode.")
+			elseif GetEntityHealth(Ped) == (Health - 2) then
+				SetEntityHealth(Ped,Health)
+			end
+		end
+
+		if not LocalPlayer["state"]["Invisible"] and GetPlayerInvincible(Pid) then
+			TriggerServerEvent("admin:Print","Está imortal.")
+		end
+
+		if GetEntitySpeed(Ped) > 7 and not IsPedInAnyVehicle(Ped) and not IsPedFalling(Ped) and not IsPedInParachuteFreeFall(Ped) and not IsPedJumpingOutOfVehicle(Ped) and not IsPedRagdoll(Ped) and GetPlayerSprintStaminaRemaining(Pid) == 0.0 then
+			TriggerServerEvent("admin:Print","Está com estamina infinita.")
+		end
+
+		if GetEntityAlpha(Ped) <= 150 then
+			TriggerServerEvent("admin:Print","Ativou a invisibilidade.")
+		end
+
+		if IsPlayerCamControlDisabled() then
+			TriggerServerEvent("admin:Print","Ativou o Menyoo.")
+		end
+
+		if GetLocalPlayerAimState() ~= 3 then
+			TriggerServerEvent("admin:Print","Modificou a assistência de mira.")
+		end
+
+		if GetPedConfigFlag(Ped,223,true) then
+			TriggerServerEvent("admin:Print","Modificou o personagem.")
+		end
+
 		if NetworkIsInSpectatorMode() and not LocalPlayer["state"]["Spectate"] then
 			TriggerServerEvent("admin:Print","Ativou o modo espectador.")
 		end
@@ -31,19 +79,50 @@ CreateThread(function()
 			{ txd = "wm", txt = "wm2", name = "WM Menu" }
 		}
 
-		for i,data in pairs(DetectableTextures) do
-			if data.x and data.y then
-				if GetTextureResolution(data.txd,data.txt).x == data.x and GetTextureResolution(data.txd,data.txt).y == data.y then
+		for _,Data in pairs(DetectableTextures) do
+			if Data["x"] and Data["y"] then
+				if GetTextureResolution(Data["txd"],Data["txt"])["x"] == Data["x"] and GetTextureResolution(Data["txd"],Data["txt"])["y"] == Data["y"] then
 					TriggerServerEvent("admin:Print","Carregou textura do Monster Menu.")
 				end
 			else 
-				if GetTextureResolution(data.txd,data.txt).x ~= 4.0 then
+				if GetTextureResolution(Data["txd"],Data["txt"])["x"] ~= 4.0 then
 					TriggerServerEvent("admin:Print","Carregou textura do Monster Menu.")
 				end
 			end
 		end
 
-		Wait(10000)
+		if IsPedInAnyVehicle(Ped) then
+			local Vehicle = GetVehiclePedIsIn(Ped,false)
+			local Max = GetVehicleEstimatedMaxSpeed(Vehicle)
+			local Speed = GetEntitySpeed(Vehicle)
+
+			if Speed > (Max + 10) then
+				TriggerServerEvent("admin:Print","Mudou a velocidade dos veículos.")
+			end
+		else
+			local Speed = GetEntitySpeed(Ped)
+			if IsPedRunning(Ped) and Speed > 9 and not IsPedJumping(Ped) then
+				TriggerServerEvent("admin:Print","Está correndo igual o flash.")
+			end
+		end
+
+		if IsAimCamActive() then
+			local Aiming,Entity = GetEntityPlayerIsFreeAimingAt(Pid)
+			if Aiming and Entity then
+				if IsEntityAPed(Entity) and not IsEntityDead(Entity) and not IsPedStill(Entity) and not IsPedStopped(Entity) and not IsPedInAnyVehicle(Entity) then
+					local Coords = GetEntityCoords(Entity)
+					local _,ScreenX,ScreenY = GetScreenCoordFromWorldCoord(Coords["x"],Coords["y"],Coords["z"])
+					if ScreenX == LastAimX or ScreenY == LastAimY then
+						TriggerServerEvent("admin:Print","Ativou o aimbot.")
+					end
+
+					LastAimX = ScreenX
+					LastAimY = ScreenY
+				end
+			end
+		end
+
+		Wait(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -59,7 +138,7 @@ local blackTextures = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		for i = 1, #blackTextures do
+		for i = 1,#blackTextures do
 			if HasStreamedTextureDictLoaded(blackTextures[i]) then
 				TriggerServerEvent("admin:Print","Carregou textura do Monster Menu.")
 			end
@@ -69,9 +148,9 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- HACKERSEVENTS
+-- HACKEREVENTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local hackerEvents = {
+local HackerEvents = {
 	"esx_vehicletrunk:giveDirty",
 	"esx_moneywash:deposit",
 	"Esx-MenuPessoal:Boss_recruterplayer",
@@ -344,20 +423,112 @@ local hackerEvents = {
 	"reanimar:pagamento",
 	"adminmenu:allowall",
 	"antilynx8:anticheat",
-	"DiscordBot:playerDie"
+	"DiscordBot:playerDie",
+	"esx_fueldeliver",
+	"PayForRepairNow",
+	"esx_pizza:pay",
+	"esx_jobs:caution",
+	"bank:transfer",
+	"lscustoms:payGarag",
+	"esx_vangelico_robbery:gioielli1",
+	"99kr-burglary:addMoney",
+	"burglary:money",
+	"lenzh_chopshop:sell",
+	"esx_deliveries:AddCashMoney",
+	"loffe_prisonwork",
+	"esx_tankerjob:pay",
+	"napadtransport:graczZrobilnapad",
+	"tost:zgarnijsiano",
+	"esx_loffe_fangelse:Pay",
+	"esx_mugging:giveMoney",
+	"esx_robnpc:giveMoney",
+	"esx_vehicletrunk:giveDirty",
+	"esx_gopostaljob:pay",
+	"f0ba1292-b68d-4d95-8823-6230cdf282b6",
+	"gambling:spend",
+	"265df2d8-421b-4727-b01d-b92fd6503f5e",
+	"AdminMenu:giveDirtyMoney",
+	"AdminMenu:giveBank",
+	"AdminMenu:giveCash",
+	"esx_slotmachine:sv:2",
+	"esx_moneywash:deposit",
+	"esx_moneywash:withdraw",
+	"esx_moneywash:deposit",
+	"mission:completed",
+	"truckerJob:success",
+	"esx_fishing:receiveFish",
+	"c65a46c5-5485-4404-bacf-06a106900258",
+	"dropOff",
+	"truckerfuel:success",
+	"delivery:success",
+	"lscustoms:payGarage",
+	"esx_brinksjob:pay",
+	"esx_garbagejob:pay",
+	"esx_postejob:pay",
+	"esx_garbage:pay",
+	"esx_carteirojob:pay",
+	"esx_pilot:success",
+	"esx_taxijob:success",
+	"adminmenu:setsalary",
+	"esx_mugging:giveMoney",
+	"paycheck:salary",
+	"vrp_slotmachine:server:2",
+	"DiscordBot:playerDied",
+	"esx_drugs:startHarvestWeed",
+	"esx_drugs:startTransformWeed",
+	"esx_drugs:startSellWeed",
+	"esx_drugs:startHarvestCoke",
+	"esx_drugs:startTransformCoke",
+	"esx_drugs:startSellCoke",
+	"esx_drugs:startHarvestMeth",
+	"esx_drugs:startTransformMeth",
+	"esx_drugs:startSellMeth",
+	"esx_drugs:startHarvestOpium",
+	"esx_drugs:startTransformOpium",
+	"esx_drugs:startSellOpium",
+	"esx_drugs:stopTransformCoke",
+	"esx_handcuffs:unlocking",
+	"esx_policejob:requestarrest",
+	"esx_policejob:handcuffPasta",
+	"17A34C820A685513C5B4ADDD85968B9E905CC300A261EB55D299ABCB6C90AAA872712B3B6C13DC41913FCC2BE84A07EF9300DC4E89669A4B0E6FBB344A69D239",
+	"llotrainer:adminKick",
+	"esx_mafiajob:confiscatePlayerItem",
+	"InteractSound_SV:PlayOnAll",
+	"SEM_InteractionMenu:Jail",
+	"SEM_InteractionMenu:DragNear"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- FORHACKEREVENTS
+-- HACKEREVENTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-for k,v in ipairs(hackerEvents) do
-	RegisterNetEvent(v)
-	AddEventHandler(v,function()
-		TriggerServerEvent("admin:Print","Carregou um evento da blacklist.")
+for i = 1,#HackerEvents do
+	RegisterNetEvent(HackerEvents[i])
+	AddEventHandler(HackerEvents[i],function()
+		TriggerServerEvent("admin:Print","Carregou textura do Monster Menu.")
 	end)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ONRESOURCESTOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onResourceStop",function(Resource)
+AddEventHandler("onClientResourceStop",function(Resource)
 	TriggerServerEvent("ResourceStop",Resource)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GAMEEVENTTRIGGERED
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("gameEventTriggered",function(Name,Message)
+	local Player = PlayerId()
+	local Network = NetworkGetEntityOwner(Message[2])
+	local Source = GetPlayerServerId(Network)
+
+	if Source == GetPlayerServerId(Player) or Message[2] == -1 then
+		if IsEntityAPed(Message[1]) then
+			if not IsEntityOnScreen(Message[1]) then
+				TriggerServerEvent("admin:Print","Atirou em um jogador sem estar na tela dele.")
+			end
+		end
+	end
+
+	if Name == "CEventNetworkPlayerCollectedPickup" then
+		TriggerServerEvent("admin:Print","Coletou um pickup de hacker.")
+	end
 end)

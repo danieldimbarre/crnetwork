@@ -18,18 +18,18 @@ local BloodTimers = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("gameEventTriggered",function(name,args)
+AddEventHandler("gameEventTriggered",function(name,Message)
 	if LocalPlayer["state"]["Route"] < 900000 then
 		if name == "CEventNetworkEntityDamage" then
-			if PlayerPedId() == args[1] and LocalPlayer["state"]["Active"] then
-				if args[7] == 126349499 or args[7] == 1064738331 or args[7] == 85055149 then
+			if PlayerPedId() == Message[1] and LocalPlayer["state"]["Active"] then
+				if Message[7] == 126349499 or Message[7] == 1064738331 or Message[7] == 85055149 then
 					SetPedToRagdoll(PlayerPedId(),2500,2500,0,0,0,0)
 				else
 					if GetGameTimer() >= Injuried then
-						if not IsPedInAnyVehicle(args[1]) and GetEntityHealth(args[1]) > 100 then
+						if not IsPedInAnyVehicle(Message[1]) and GetEntityHealth(Message[1]) > 100 then
 							Injuried = GetGameTimer() + 1000
 
-							local Hit,Mark = GetPedLastDamageBone(args[1])
+							local Hit,Mark = GetPedLastDamageBone(Message[1])
 							if Hit and not Damaged[Mark] and Mark ~= 0 then
 								TriggerServerEvent("evidence:dropEvidence","yellow")
 								Bleeding = Bleeding + 1

@@ -30,9 +30,9 @@ local function proxy_resolve(itable,key)
 			callbacks[rid] = r
 		end
 
-		local args = {...}
+		local Message = {...}
 
-		TriggerEvent(iname..":proxy",fname, args, identifier, rid)
+		TriggerEvent(iname..":proxy",fname, Message, identifier, rid)
     
 		if not no_wait then
 			return r:wait()
@@ -45,11 +45,11 @@ local function proxy_resolve(itable,key)
 end
 
 function Proxy.addInterface(name,itable)
-	AddEventHandler(name..":proxy",function(member,args,identifier,rid)
+	AddEventHandler(name..":proxy",function(member,Message,identifier,rid)
 		local f = itable[member]
 		local rets = {}
 		if type(f) == "function" then
-			rets = {f(table.unpack(args,1,table.maxn(args)))}
+			rets = {f(table.unpack(Message,1,table.maxn(Message)))}
 		end
 		if rid >= 0 then
 			TriggerEvent(name..":"..identifier..":proxy_res",rid,rets)

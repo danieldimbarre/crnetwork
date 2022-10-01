@@ -28,11 +28,11 @@ local function tunnel_resolve(itable,key)
 		local r = nil
 		local profile
 
-		local args = {...} 
+		local Message = {...} 
 		local dest = nil
 		if SERVER then
-			dest = args[1]
-			args = { table.unpack(args,2,table.maxn(args)) }
+			dest = Message[1]
+			Message = { table.unpack(Message,2,table.maxn(Message)) }
 			if parseInt(dest) >= 0 and not no_wait then
 				r = async()
 			end
@@ -54,9 +54,9 @@ local function tunnel_resolve(itable,key)
 				end
 
 				if SERVER then
-					TriggerRemoteEvent(iname..":tunnel_req",dest,fname,args,identifier,rid)
+					TriggerRemoteEvent(iname..":tunnel_req",dest,fname,Message,identifier,rid)
 				else
-					TriggerRemoteEvent(iname..":tunnel_req",fname,args,identifier,rid)
+					TriggerRemoteEvent(iname..":tunnel_req",fname,Message,identifier,rid)
 				end
 			end)
 		else
@@ -67,9 +67,9 @@ local function tunnel_resolve(itable,key)
 			end
 
 			if SERVER then
-				TriggerRemoteEvent(iname..":tunnel_req",dest,fname,args,identifier,rid)
+				TriggerRemoteEvent(iname..":tunnel_req",dest,fname,Message,identifier,rid)
 			else
-				TriggerRemoteEvent(iname..":tunnel_req",fname,args,identifier,rid)
+				TriggerRemoteEvent(iname..":tunnel_req",fname,Message,identifier,rid)
 			end
 		end
 
@@ -89,14 +89,14 @@ end
 
 function Tunnel.bindInterface(name,interface)
 	RegisterLocalEvent(name..":tunnel_req")
-	AddEventHandler(name..":tunnel_req",function(member,args,identifier,rid)
+	AddEventHandler(name..":tunnel_req",function(member,Message,identifier,rid)
 		local source = source
 
 		local f = interface[member]
 
 		local rets = {}
 		if type(f) == "function" then
-			rets = { f(table.unpack(args,1,table.maxn(args))) }
+			rets = { f(table.unpack(Message,1,table.maxn(Message))) }
 		end
 
 		if rid >= 0 then
@@ -119,12 +119,12 @@ function Tunnel.getInterface(name,identifier)
 	local r = setmetatable({},{ __index = tunnel_resolve, name = name, tunnel_ids = ids, tunnel_callbacks = callbacks, identifier = identifier })
 
 	RegisterLocalEvent(name..":"..identifier..":tunnel_res")
-	AddEventHandler(name..":"..identifier..":tunnel_res",function(rid,args)
+	AddEventHandler(name..":"..identifier..":tunnel_res",function(rid,Message)
 		local callback = callbacks[rid]
 		if callback then
 			ids:free(rid)
 			callbacks[rid] = nil
-			callback(table.unpack(args,1,table.maxn(args)))
+			callback(table.unpack(Message,1,table.maxn(Message)))
 		end
 	end)
 	return r

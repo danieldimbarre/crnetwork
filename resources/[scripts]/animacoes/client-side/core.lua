@@ -745,21 +745,21 @@ local animacoes = {
 	["tapa"] = { dict = "melee@unarmed@streamed_variations", anim = "plyr_takedown_front_slap", andar = false, loop = false },
 	["hotwired"] = { dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", andar = true, loop = true, cars = true },
 	["pano2"] = { dict = "timetable@floyd@clean_kitchen@base", anim = "base", prop = "prop_sponge_01", flag = 49, mao = 28422, altura = 0.0, pos1 = 0.0, pos2 = -0.01, pos3 = 90.0, pos4 = 0.0, pos5 = 0.0, extra = function()
-		local Vehicle,vehNet = vRP.vehList(10)
+		local Vehicle,Network = vRP.VehicleList(10)
 		if Vehicle then
 			TriggerEvent("Progress","Limpando",10000)
 			SetTimeout(10000,function()
-				TriggerServerEvent("CleanVehicle",vehNet)
+				TriggerServerEvent("CleanVehicle",Network)
 				vRP.removeObjects("one")
 			end)
 		end
 	end },
 	["pano"] = { dict = "amb@world_human_maid_clean@", anim = "base", prop = "prop_sponge_01", flag = 49, mao = 28422, altura = 0.0, pos1 = 0.0, pos2 = -0.01, pos3 = 90.0, pos4 = 0.0, pos5 = 0.0, extra = function()
-		local Vehicle,vehNet = vRP.vehList(10)
+		local Vehicle,Network = vRP.VehicleList(10)
 		if Vehicle then
 			TriggerEvent("Progress","Limpando",10000)
 			SetTimeout(10000,function()
-				TriggerServerEvent("CleanVehicle",vehNet)
+				TriggerServerEvent("CleanVehicle",Network)
 				vRP.removeObjects("one")
 			end)
 		end

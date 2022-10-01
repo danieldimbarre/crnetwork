@@ -31,13 +31,13 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOWDRIVER:CALL
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("towdriver:Call",function(source,vehName,vehPlate)
+AddEventHandler("towdriver:Call",function(source,vehName,Plate)
 	local Ped = GetPlayerPed(source)
 	local Coords = GetEntityCoords(Ped)
 
 	for k,v in pairs(userList) do
 		async(function()
-			TriggerClientEvent("NotifyPush",v,{ code = 51, title = "Registro de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 33 })
+			TriggerClientEvent("NotifyPush",v,{ code = 51, title = "Registro de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 33 })
 		end)
 	end
 end)

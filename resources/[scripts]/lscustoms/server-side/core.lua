@@ -66,10 +66,10 @@ end)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("lscustoms:updateVehicle")
-AddEventHandler("lscustoms:updateVehicle",function(Mods,vehPlate,vehName)
-	local Passport = vRP.PassportPlate(vehPlate)
+AddEventHandler("lscustoms:updateVehicle",function(Mods,Plate,vehName)
+	local Passport = vRP.PassportPlate(Plate)
 	if Passport then
-		vRP.Query("entitydata/SetData",{ dkey = "vehMods:"..Passport["Passport"]..":"..vehName, dvalue = json.encode(Mods) })
+		vRP.Query("entitydata/SetData",{ dkey = "Mods:"..Passport["Passport"]..":"..vehName, dvalue = json.encode(Mods) })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -77,16 +77,16 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local inVehicle = {}
 RegisterServerEvent("lscustoms:inVehicle")
-AddEventHandler("lscustoms:inVehicle",function(vehNet,vehPlate)
+AddEventHandler("lscustoms:inVehicle",function(Network,Plate)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if not vehNet then
+		if not Network then
 			if inVehicle[Passport] then
 				inVehicle[Passport] = nil
 			end
 		else
-			inVehicle[Passport] = { vehNet,vehPlate }
+			inVehicle[Passport] = { Network,Plate }
 		end
 	end
 end)

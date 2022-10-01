@@ -1000,7 +1000,7 @@ CreateThread(function()
 		}
 	})
 
-	AddCircleZone("CassinoWheel",vec3(1112.05,228.11,-49.64),0.5,{
+	AddCircleZone("CassinoWheel",vec3(988.37,43.06,71.3),0.5,{
 		name = "CassinoWheel",
 		heading = 3374176
 	},{
@@ -1073,18 +1073,18 @@ function TargetEnable()
 
 				if GetEntityType(Entity) ~= 0 then
 					if IsEntityAVehicle(Entity) then
-						local vehPlate = GetVehicleNumberPlateText(Entity)
-						if #(Coords - entCoords) <= 1.0 and vehPlate ~= "PDMSPORT" then
-							local vehNet = nil
+						local Plate = GetVehicleNumberPlateText(Entity)
+						if #(Coords - entCoords) <= 1.0 and Plate ~= "PDMSPORT" then
+							local Network = nil
 							local Combustivel = false
 							local vehModel = GetEntityModel(Entity)
 							SetEntityAsMissionEntity(Entity,true,true)
 
 							if NetworkGetEntityIsNetworked(Entity) then
-								vehNet = VehToNet(Entity)
+								Network = VehToNet(Entity)
 							end
 
-							Selected = { vehPlate,vRP.vehicleModel(vehModel),Entity,vehNet }
+							Selected = { Plate,vRP.VehicleModel(vehModel),Entity,Network }
 
 							local Menu = {}
 
@@ -1101,7 +1101,7 @@ function TargetEnable()
 									Selected[5] = true
 									table.insert(Menu,{ event = "engine:Supply", label = "Abastecer", tunnel = "client" })
 								else
-									if GlobalState["vehPlates"][vehPlate] then
+									if GlobalState["Plates"][Plate] then
 										if GetVehicleDoorLockStatus(Entity) == 1 then
 											for k,Tyre in pairs(tyreList) do
 												local Wheel = GetEntityBoneIndexByName(Entity,k)
@@ -1119,7 +1119,7 @@ function TargetEnable()
 											table.insert(Menu,{ event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" })
 										end
 
-										table.insert(Menu,{ event = "garages:vehicleKey", label = "Criar Chave Cópia", tunnel = "police" })
+										table.insert(Menu,{ event = "garages:Key", label = "Criar Chave Cópia", tunnel = "police" })
 										table.insert(Menu,{ event = "inventory:applyPlate", label = "Trocar Placa", tunnel = "server" })
 									end
 
@@ -1147,11 +1147,11 @@ function TargetEnable()
 										table.insert(Menu,{ event = "police:Plate", label = "Verificar Placa", tunnel = "police" })
 										table.insert(Menu,{ event = "police:Impound", label = "Registrar Veículo", tunnel = "police" })
 
-										if GlobalState["vehPlates"][vehPlate] then
+										if GlobalState["Plates"][Plate] then
 											table.insert(Menu,{ event = "police:Arrest", label = "Apreender Veículo", tunnel = "police" })
 										end
 									else
-										if vehPlate == "DISM"..(1000 + LocalPlayer["state"]["Passport"]) then
+										if Plate == "DISM"..(1000 + LocalPlayer["state"]["Passport"]) then
 											local Distance = #(Coords - vec3(Dismantles[Dismantleds][1],Dismantles[Dismantleds][2],Dismantles[Dismantleds][3]))
 											if Distance <= 10 then
 												table.insert(Menu,{ event = "inventory:Dismantle", label = "Desmanchar", tunnel = "police" })
@@ -1298,9 +1298,9 @@ end
 -- TARGET:ROLLVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:RollVehicle")
-AddEventHandler("target:RollVehicle",function(vehNet)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+AddEventHandler("target:RollVehicle",function(Network)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			SetVehicleOnGroundProperly(Vehicle)
 		end

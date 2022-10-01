@@ -112,13 +112,13 @@ function EntityZone:onEntityDamaged(onDamagedCb)
     return
   end
 
-  self.damageEventHandlers[#self.damageEventHandlers + 1] = AddEventHandler('gameEventTriggered', function (name, args)
+  self.damageEventHandlers[#self.damageEventHandlers + 1] = AddEventHandler('gameEventTriggered', function (name, Message)
     if self.destroyed or self.paused then
       return
     end
 
     if name == 'CEventNetworkEntityDamage' then
-      local victim, attacker, victimDied, weaponHash, isMelee = args[1], args[2], args[4], args[5], args[10]
+      local victim, attacker, victimDied, weaponHash, isMelee = Message[1], Message[2], Message[4], Message[5], Message[10]
       --print(entity, victim, attacker, victimDied, weaponHash, isMelee)
       if victim ~= entity then return end
       onDamagedCb(victimDied == 1, attacker, weaponHash, isMelee == 1)

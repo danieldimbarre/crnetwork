@@ -44,7 +44,7 @@ local pedList = {
 	},
 	{ -- Cassino
 		Distance = 25,
-		Coords = { 1112.05,228.11,-49.64,144.57 },
+		Coords = { 988.37,43.06,71.3,170.08 },
 		Model = "s_f_y_casino_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
@@ -917,7 +917,7 @@ CreateThread(function()
 				if not localPeds[k] and LocalPlayer["state"]["Route"] < 900000 then
 					if LoadModel(v["Model"]) then
 						localPeds[k] = CreatePed(4,v["Model"],v["Coords"][1],v["Coords"][2],v["Coords"][3] - 1,v["Coords"][4],false,false)
-						SetPedArmour(localPeds[k],100)
+						SetPedArmour(localPeds[k],99)
 						SetEntityInvincible(localPeds[k],true)
 						FreezeEntityPosition(localPeds[k],true)
 						SetBlockingOfNonTemporaryEvents(localPeds[k],true)

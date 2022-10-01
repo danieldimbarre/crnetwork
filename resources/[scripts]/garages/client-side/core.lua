@@ -456,8 +456,8 @@ function Creative.CreateVehicle(Model,Network,Engine,Customize,Windows,Tyres)
 		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			if Customize ~= nil then
-				local vehMods = json.decode(Customize)
-				Mods(Vehicle,vehMods)
+				local Mods = json.decode(Customize)
+				Mods(Vehicle,Mods)
 			end
 
 			SetVehicleEngineHealth(Vehicle,Engine + 0.0)
@@ -536,7 +536,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 			DecorRemove(Vehicle,"PlayerVehicle")
 		end
 
-		vSERVER.tryDelete(VehToNet(Vehicle),GetVehicleEngineHealth(Vehicle),GetVehicleBodyHealth(Vehicle),GetVehicleFuelLevel(Vehicle),Doors,Windows,Tyres,GetVehicleNumberPlateText(Vehicle))
+		vSERVER.Delete(VehToNet(Vehicle),GetVehicleEngineHealth(Vehicle),GetVehicleBodyHealth(Vehicle),GetVehicleFuelLevel(Vehicle),Doors,Windows,Tyres,GetVehicleNumberPlateText(Vehicle))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -609,7 +609,7 @@ CreateThread(function()
 			if IsPedInAnyVehicle(Ped) then
 				local Vehicle = GetVehiclePedIsUsing(Ped)
 				local Plate = GetVehicleNumberPlateText(Vehicle)
-				if GetPedInVehicleSeat(Vehicle,-1) == Ped and not GlobalState["vehPlates"][Plate] then
+				if GetPedInVehicleSeat(Vehicle,-1) == Ped and not GlobalState["Plates"][Plate] then
 					SetVehicleEngineOn(Vehicle,false,true,true)
 					DisablePlayerFiring(Ped,true)
 					TimeDistance = 1

@@ -220,11 +220,11 @@ RegisterKeyMapping("openBackpack","Manusear a mochila.","keyboard","OEM_3")
 -- REPAIRVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:repairVehicle")
-AddEventHandler("inventory:repairVehicle",function(vehIndex,vehPlate)
-	if NetworkDoesNetworkIdExist(vehIndex) then
-		local Vehicle = NetToEnt(vehIndex)
+AddEventHandler("inventory:repairVehicle",function(Index,Plate)
+	if NetworkDoesNetworkIdExist(Index) then
+		local Vehicle = NetToEnt(Index)
 		if DoesEntityExist(Vehicle) then
-			if GetVehicleNumberPlateText(Vehicle) == vehPlate then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
 				local vehTyres = {}
 
 				for i = 0,7 do
@@ -257,11 +257,11 @@ end)
 -- INVENTORY:REPAIRTYRE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:repairTyre")
-AddEventHandler("inventory:repairTyre",function(Vehicle,Tyres,vehPlate)
+AddEventHandler("inventory:repairTyre",function(Vehicle,Tyres,Plate)
 	if NetworkDoesNetworkIdExist(Vehicle) then
 		local Vehicle = NetToEnt(Vehicle)
 		if DoesEntityExist(Vehicle) then
-			if GetVehicleNumberPlateText(Vehicle) == vehPlate then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
 				for i = 0,7 do
 					if GetTyreHealth(Vehicle,i) ~= 1000.0 then
 						SetVehicleTyreBurst(Vehicle,i,true,1000.0)
@@ -277,11 +277,11 @@ end)
 -- REPAIRPLAYER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:repairPlayer")
-AddEventHandler("inventory:repairPlayer",function(vehIndex,vehPlate)
-	if NetworkDoesNetworkIdExist(vehIndex) then
-		local Vehicle = NetToEnt(vehIndex)
+AddEventHandler("inventory:repairPlayer",function(Index,Plate)
+	if NetworkDoesNetworkIdExist(Index) then
+		local Vehicle = NetToEnt(Index)
 		if DoesEntityExist(Vehicle) then
-			if GetVehicleNumberPlateText(Vehicle) == vehPlate then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
 				SetVehicleEngineHealth(Vehicle,1000.0)
 				SetVehicleBodyHealth(Vehicle,1000.0)
 			end
@@ -292,11 +292,11 @@ end)
 -- REPAIRADMIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:repairAdmin")
-AddEventHandler("inventory:repairAdmin",function(vehIndex,vehPlate)
-	if NetworkDoesNetworkIdExist(vehIndex) then
-		local Vehicle = NetToEnt(vehIndex)
+AddEventHandler("inventory:repairAdmin",function(Index,Plate)
+	if NetworkDoesNetworkIdExist(Index) then
+		local Vehicle = NetToEnt(Index)
 		if DoesEntityExist(Vehicle) then
-			if GetVehicleNumberPlateText(Vehicle) == vehPlate then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
 				local Fuel = GetVehicleFuelLevel(Vehicle)
 
 				SetVehicleFixed(Vehicle)
@@ -311,11 +311,11 @@ end)
 -- VEHICLEALARM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:vehicleAlarm")
-AddEventHandler("inventory:vehicleAlarm",function(vehIndex,vehPlate)
-	if NetworkDoesNetworkIdExist(vehIndex) then
-		local Vehicle = NetToEnt(vehIndex)
+AddEventHandler("inventory:vehicleAlarm",function(Index,Plate)
+	if NetworkDoesNetworkIdExist(Index) then
+		local Vehicle = NetToEnt(Index)
 		if DoesEntityExist(Vehicle) then
-			if GetVehicleNumberPlateText(Vehicle) == vehPlate then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
 				SetVehicleAlarm(Vehicle,true)
 				StartVehicleAlarm(Vehicle)
 			end
@@ -936,11 +936,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WHEELCHAIR
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.wheelChair(vehPlate)
+function Creative.wheelChair(Plate)
 	local Ped = PlayerPedId()
 	local heading = GetEntityHeading(Ped)
 	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,0.75,0.0)
-	local myVehicle = vGARAGE.serverVehicle("wheelchair",Coords["x"],Coords["y"],Coords["z"],heading,vehPlate,0,nil,1000)
+	local myVehicle = vGARAGE.ServerVehicle("wheelchair",Coords["x"],Coords["y"],Coords["z"],heading,Plate,0,nil,1000)
 
 	if NetworkDoesNetworkIdExist(myVehicle) then
 		local vehicleNet = NetToEnt(myVehicle)
@@ -1180,11 +1180,11 @@ end)
 -- INVENTORY:EXPLODETYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:explodeTyres")
-AddEventHandler("inventory:explodeTyres",function(vehNet,vehPlate,Tyre)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+AddEventHandler("inventory:explodeTyres",function(Network,Plate,Tyre)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
-			if GetVehicleNumberPlateText(Vehicle) == vehPlate then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
 				SetVehicleTyreBurst(Vehicle,Tyre,true,1000.0)
 			end
 		end
@@ -1229,9 +1229,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYREHEALTH
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.tyreHealth(vehNet,Tyre)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+function Creative.tyreHealth(Network,Tyre)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			return GetTyreHealth(Vehicle,Tyre)
 		end
@@ -1781,9 +1781,9 @@ function Creative.Dismantle(Experience)
 		local RandomY = math.random(25,100)
 
 		if math.random(2) >= 2 then
-			TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Veículo", x = disCoords[disSelect][1] + RandomX + 0.0, y = disCoords[disSelect][2] - RandomY + 0.0, z = disCoords[disSelect][3], vehicle = vehicleName(disModel).." - "..disPlate, blipColor = 60 })
+			TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Veículo", x = disCoords[disSelect][1] + RandomX + 0.0, y = disCoords[disSelect][2] - RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
 		else
-			TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Veículo", x = disCoords[disSelect][1] - RandomX + 0.0, y = disCoords[disSelect][2] + RandomY + 0.0, z = disCoords[disSelect][3], vehicle = vehicleName(disModel).." - "..disPlate, blipColor = 60 })
+			TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Veículo", x = disCoords[disSelect][1] - RandomX + 0.0, y = disCoords[disSelect][2] + RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
 		end
 	end
 end
@@ -1815,12 +1815,12 @@ CreateThread(function()
 			local Distance = #(Coords - vec3(disCoords[disSelect][1],disCoords[disSelect][2],disCoords[disSelect][3]))
 
 			if Distance <= 125 then
-				disVehicle = vGARAGE.serverVehicle(disModel,disCoords[disSelect][1],disCoords[disSelect][2],disCoords[disSelect][3],disCoords[disSelect][4],disPlate,1000,nil,1000)
+				disVehicle = vGARAGE.ServerVehicle(disModel,disCoords[disSelect][1],disCoords[disSelect][2],disCoords[disSelect][3],disCoords[disSelect][4],disPlate,1000,nil,1000)
 
 				if NetworkDoesNetworkIdExist(disVehicle) then
-					local vehNet = NetToEnt(disVehicle)
-					if NetworkDoesNetworkIdExist(vehNet) then
-						SetVehicleOnGroundProperly(vehNet)
+					local Network = NetToEnt(disVehicle)
+					if NetworkDoesNetworkIdExist(Network) then
+						SetVehicleOnGroundProperly(Network)
 					end
 				end
 			end
@@ -1876,7 +1876,7 @@ local Ped = PlayerPedId()
 			Wait(1)
 		end
 
-		SetPedArmour(NetEntity,100)
+		SetPedArmour(NetEntity,99)
 		SetPedAccuracy(NetEntity,100)
 		SetPedRelationshipGroupHash(NetEntity,GetHashKey("HATES_PLAYER"))
 		SetPedKeepTask(NetEntity,true)
@@ -2255,7 +2255,7 @@ CreateThread(function()
 			Distance = 1.0,
 			options = {
 				{
-					event = "bank:openSystem",
+					event = "hud:Bank",
 					label = "Abrir",
 					tunnel = "client"
 				}

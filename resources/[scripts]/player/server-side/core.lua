@@ -57,10 +57,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ME
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("me",function(source,args,rawCommand)
+RegisterCommand("me",function(source,Message,History)
 	local Passport = vRP.Passport(source)
-	if Passport and args[1] then
-		local message = string.sub(rawCommand:sub(4),1,100)
+	if Passport and Message[1] then
+		local message = string.sub(History:sub(4),1,100)
 
 		local Players = vRPC.Players(source)
 		for _,v in ipairs(Players) do
@@ -73,35 +73,35 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- E
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("e",function(source,args)
+RegisterCommand("e",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 then
-		if args[2] == "friend" then
+		if Message[2] == "friend" then
 			local ClosestPed = vRPC.ClosestPed(source,2)
 			if ClosestPed then
 				if vRP.GetHealth(ClosestPed) > 100 and not Player(ClosestPed)["state"]["Handcuff"] then
 					local Identity = vRP.Identity(Passport)
-					if REQUEST.Function(ClosestPed,"Pedido de <b>"..Identity["name"].."</b> da animação <b>"..args[1].."</b>?","Sim, iniciar animação","Não, sai fora") then
-						TriggerClientEvent("emotes",ClosestPed,args[1])
-						TriggerClientEvent("emotes",source,args[1])
+					if REQUEST.Function(ClosestPed,"Pedido de <b>"..Identity["name"].."</b> da animação <b>"..Message[1].."</b>?","Sim, iniciar animação","Não, sai fora") then
+						TriggerClientEvent("emotes",ClosestPed,Message[1])
+						TriggerClientEvent("emotes",source,Message[1])
 					end
 				end
 			end
 		else
-			TriggerClientEvent("emotes",source,args[1])
+			TriggerClientEvent("emotes",source,Message[1])
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- E2
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("e2",function(source,args)
+RegisterCommand("e2",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 then
 		local ClosestPed = vRPC.ClosestPed(source,2)
 		if ClosestPed then
 			if vRP.HasGroup(Passport,"Paramedic") then
-				TriggerClientEvent("emotes",ClosestPed,args[1])
+				TriggerClientEvent("emotes",ClosestPed,Message[1])
 			end
 		end
 	end
@@ -109,14 +109,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- E3
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("e3",function(source,args)
+RegisterCommand("e3",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 then
 		if vRP.HasGroup(Passport,"Moderator") then
 			local Players = vRPC.ClosestPeds(source,50)
 			for _,v in pairs(Players) do
 				async(function()
-					TriggerClientEvent("emotes",v[2],args[1])
+					TriggerClientEvent("emotes",v[2],Message[1])
 				end)
 			end
 		end
@@ -130,12 +130,12 @@ AddEventHandler("player:Doors",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Vehicle,vehNet = vRPC.vehList(source,5)
+		local Vehicle,Network = vRPC.VehicleList(source,5)
 		if Vehicle then
 			local Players = vRPC.Players(source)
 			for _,v in ipairs(Players) do
 				async(function()
-					TriggerClientEvent("player:syncDoors",v,vehNet,Number)
+					TriggerClientEvent("player:syncDoors",v,Network,Number)
 				end)
 			end
 		end
@@ -144,15 +144,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- 911
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("911",function(source,args,rawCommand)
+RegisterCommand("911",function(source,Message,History)
 	local Passport = vRP.Passport(source)
-	if Passport and args[1] and vRP.GetHealth(source) > 100 then
+	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasGroup(Passport,"Police") then
 			local Identity = vRP.Identity(Passport)
 			local Service = vRP.NumPermission("Police")
 			for Passports,Sources in pairs(Service) do
 				async(function()
-					TriggerClientEvent("chat:ClientMessage",Sources,Identity["name"],rawCommand:sub(4))
+					TriggerClientEvent("chat:ClientMessage",Sources,Identity["name"],History:sub(4))
 				end)
 			end
 		end
@@ -161,15 +161,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- 112
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("112",function(source,args,rawCommand)
+RegisterCommand("112",function(source,Message,History)
 	local Passport = vRP.Passport(source)
-	if Passport and args[1] and vRP.GetHealth(source) > 100 then
+	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasGroup(Passport,"Paramedic") then
 			local Identity = vRP.Identity(Passport)
 			local Service = vRP.NumPermission("Paramedic")
 			for Passports,Sources in pairs(Service) do
 				async(function()
-					TriggerClientEvent("Datatable",Sources,Identity["name"].." "..Identity["name2"],rawCommand:sub(4))
+					TriggerClientEvent("Datatable",Sources,Identity["name"].." "..Identity["name2"],History:sub(4))
 				end)
 			end
 		end
@@ -230,9 +230,9 @@ end)
 RegisterServerEvent("player:winsFunctions")
 AddEventHandler("player:winsFunctions",function(Mode)
 	local source = source
-	local vehicle,vehNet = vRPC.vehList(source,10)
+	local vehicle,Network = vRPC.VehicleList(source,10)
 	if vehicle then
-		TriggerClientEvent("player:syncWins",source,vehNet,Mode)
+		TriggerClientEvent("player:syncWins",source,Network,Mode)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -252,16 +252,16 @@ AddEventHandler("player:cvFunctions",function(Mode)
 		local Passport = vRP.Passport(source)
 		local consultItem = vRP.InventoryItemAmount(Passport,"rope")
 		if vRP.HasGroup(Passport,"Emergency") or consultItem[1] >= 1 then
-			local Vehicle,vehNet = vRPC.vehList(source,5)
+			local Vehicle,Network = vRPC.VehicleList(source,5)
 			if Vehicle then
-				local Network = NetworkGetEntityFromNetworkId(vehNet)
+				local Network = NetworkGetEntityFromNetworkId(Network)
 				local doorStatus = GetVehicleDoorLockStatus(Network)
 			
 				if parseInt(doorStatus) <= 1 then
 					if Mode == "rv" then
 						vCLIENT.removeVehicle(ClosestPed)
 					elseif Mode == "cv" then
-						vCLIENT.putVehicle(ClosestPed,vehNet)
+						vCLIENT.putVehicle(ClosestPed,Network)
 					end
 				end
 			end

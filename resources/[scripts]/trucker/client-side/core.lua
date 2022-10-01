@@ -158,7 +158,7 @@ CreateThread(function()
 									if IsControlJustPressed(1,38) then
 										local Heading = GetEntityHeading(Vehicle)
 										local vehCoords = GetOffsetFromEntityInWorldCoords(Vehicle,0.0,-12.0,0.0)
-										local Trailer = vGARAGE.serverVehicle(packService[Service]["trailer"],vehCoords["x"],vehCoords["y"],vehCoords["z"],Heading,nil,0,nil,1000)
+										local Trailer = vGARAGE.ServerVehicle(packService[Service]["trailer"],vehCoords["x"],vehCoords["y"],vehCoords["z"],Heading,nil,0,nil,1000)
 
 										if NetworkDoesNetworkIdExist(Trailer) then
 											local vehicleNet = NetToEnt(Trailer)
@@ -173,11 +173,11 @@ CreateThread(function()
 								else
 									if packService[Service]["Coords"][Position][4] ~= nil then
 										if not IsPedInAnyVehicle(Ped) and IsControlJustPressed(1,38) then
-											local Vehicle,vehNet,vehPlate,vehModel = vRP.vehList(10)
+											local Vehicle,Network,Plate,vehModel = vRP.VehicleList(10)
 											if Vehicle then
 												if vehModel == packService[Service]["trailer"] then
 													TriggerEvent("Notify","amarelo","Volte para receber o pagamento.",5000)
-													TriggerServerEvent("garages:deleteVehicle",vehNet,vehPlate)
+													TriggerServerEvent("garages:deleteVehicle",Network,Plate)
 													Position = Position + 1
 													makeBlipMarked()
 												end

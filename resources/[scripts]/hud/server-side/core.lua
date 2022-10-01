@@ -40,15 +40,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TIMESET
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("timeset",function(source,args)
+RegisterCommand("timeset",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			GlobalState["Hours"] = parseInt(args[1])
-			GlobalState["Minutes"] = parseInt(args[2])
+			GlobalState["Hours"] = parseInt(Message[1])
+			GlobalState["Minutes"] = parseInt(Message[2])
 
-			if args[3] then
-				GlobalState["Weather"] = args[3]
+			if Message[3] then
+				GlobalState["Weather"] = Message[3]
 			end
 		end
 	end

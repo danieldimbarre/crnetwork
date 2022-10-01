@@ -184,7 +184,7 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if not vRP.vehicleBlock(Entity[2]) then
+		if not vRP.VehicleBlock(Entity[2]) then
 			local PassportPlate = vRP.PassportPlate(Entity[1])
 
 			if PassportPlate then
@@ -193,8 +193,8 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 					["Plate"] = Entity[1],
 					["Model"] = Entity[2],
 					["User"] = PassportPlate["Passport"],
-					["Weight"] = vehicleChest(Entity[2]),
-					["Data"] = "vehChest:"..PassportPlate["Passport"]..":"..Entity[2]
+					["Weight"] = VehicleChest(Entity[2]),
+					["Data"] = "Chest:"..PassportPlate["Passport"]..":"..Entity[2]
 				}
 
 				local Network = NetworkGetEntityFromNetworkId(Vehicle[Passport]["Net"])

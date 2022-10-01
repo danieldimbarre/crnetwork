@@ -1,5 +1,5 @@
-RegisterCommand("pzcreate", function(src, args)
-  local zoneType = args[1]
+RegisterCommand("pzcreate",function(source,Message)
+  local zoneType = Message[1]
   if not zoneType then
     return
   end
@@ -7,35 +7,35 @@ RegisterCommand("pzcreate", function(src, args)
     return
   end
   local name = nil
-  if #args >= 2 then name = args[2]
+  if #Message >= 2 then name = Message[2]
   else name = GetUserInput("Enter name of zone:") end
   if not name or name == "" then
     return
   end
-  TriggerEvent("polyzone:pzcreate", zoneType, name, args)
+  TriggerEvent("polyzone:pzcreate", zoneType, name, Message)
 end)
 
-RegisterCommand("pzadd", function(src, args)
+RegisterCommand("pzadd",function()
   TriggerEvent("polyzone:pzadd")
 end)
 
-RegisterCommand("pzundo", function(src, args)
+RegisterCommand("pzundo",function()
   TriggerEvent("polyzone:pzundo")
 end)
 
-RegisterCommand("pzfinish", function(src, args)
+RegisterCommand("pzfinish",function()
   TriggerEvent("polyzone:pzfinish")
 end)
 
-RegisterCommand("pzlast", function(src, args)
+RegisterCommand("pzlast",function()
   TriggerEvent("polyzone:pzlast")
 end)
 
-RegisterCommand("pzcancel", function(src, args)
+RegisterCommand("pzcancel",function()
   TriggerEvent("polyzone:pzcancel")
 end)
 
-RegisterCommand("pzcomboinfo", function (src, args)
+RegisterCommand("pzcomboinfo",function()
     TriggerEvent("polyzone:pzcomboinfo")
 end)
 

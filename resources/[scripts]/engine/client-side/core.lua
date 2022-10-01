@@ -20,14 +20,14 @@ local fuelEnter = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("gameEventTriggered",function(Event,args)
+AddEventHandler("gameEventTriggered",function(Event,Message)
 	if Event == "CEventNetworkPlayerEnteredVehicle" then
-		if args[1] == PlayerId() and GetGameTimer() >= fuelEnter then
+		if Message[1] == PlayerId() and GetGameTimer() >= fuelEnter then
 			fuelEnter = GetGameTimer() + 5000
 
-			local Plate = GetVehicleNumberPlateText(args[2])
+			local Plate = GetVehicleNumberPlateText(Message[2])
 			fuelVeh[Plate] = vSERVER.vehicleFuel(Plate)
-			SetVehicleFuelLevel(args[2],fuelVeh[Plate] + 0.0)
+			SetVehicleFuelLevel(Message[2],fuelVeh[Plate] + 0.0)
 		end
 	end
 end)
@@ -131,7 +131,7 @@ AddEventHandler("engine:Supply",function(Entity)
 
 		fuelSupply = true
 		local Plate = Entity[1]
-		local vehNet = Entity[4]
+		local Network = Entity[4]
 		local Ped = PlayerPedId()
 		TaskTurnPedToFaceEntity(Ped,Vehicle,5000)
 
@@ -170,7 +170,7 @@ AddEventHandler("engine:Supply",function(Entity)
 			end
 
 			if vFuel >= 100.0 or GetEntityHealth(Ped) <= 100 or (Gallon and GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100 <= 1) or IsControlJustPressed(1,38) then
-				finishFuel(Gallon,Plate,vFuel,vehNet)
+				finishFuel(Gallon,Plate,vFuel,Network)
 			end
 
 			Wait(1)
@@ -180,9 +180,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FINISHFUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
-function finishFuel(Gallon,Plate,vFuel,vehNet)
+function finishFuel(Gallon,Plate,vFuel,Network)
 	if not Gallon then
-		if vSERVER.paymentFuel(fuelPrice,Plate,vFuel,fuelLast,vehNet) then
+		if vSERVER.paymentFuel(fuelPrice,Plate,vFuel,fuelLast,Network) then
 			TriggerServerEvent("engine:tryFuel",Plate,vFuel)
 			fuelVeh[Plate] = vFuel
 		else
@@ -204,11 +204,11 @@ end
 -- ENGINE:SYNCFUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("engine:syncFuel")
-AddEventHandler("engine:syncFuel",function(Plate,Result,vehNet)
+AddEventHandler("engine:syncFuel",function(Plate,Result,Network)
 	fuelVeh[Plate] = Result
 
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			SetVehicleFuelLevel(Vehicle,fuelVeh[Plate] + 0.0)
 		end

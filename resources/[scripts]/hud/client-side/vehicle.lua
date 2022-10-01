@@ -165,8 +165,8 @@ function nitroEnable()
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
 				if GetVehicleTopSpeedModifier(Vehicle) < 50.0 then
-					local vehPlate = GetVehicleNumberPlateText(Vehicle)
-					NitroFuel = GlobalState["Nitro"][vehPlate] or 0
+					local Plate = GetVehicleNumberPlateText(Vehicle)
+					NitroFuel = GlobalState["Nitro"][Plate] or 0
 
 					if NitroFuel >= 1 then
 						if GetIsVehicleEngineRunning(Vehicle) then
@@ -184,7 +184,7 @@ function nitroEnable()
 											SetVehicleBoostActive(Vehicle,true)
 											ModifyVehicleTopSpeed(Vehicle,50.0)
 											SetLightTrail(Vehicle,true)
-											NitroFlame = vehPlate
+											NitroFlame = Plate
 										end
 									else
 										if NitroFlame then
@@ -346,9 +346,9 @@ end
 -- HUD:ACTIVENITRO
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("hud:activeNitro")
-AddEventHandler("hud:activeNitro",function(vehNet,Status)
-	if NetworkDoesNetworkIdExist(vehNet) then
-		local Vehicle = NetToEnt(vehNet)
+AddEventHandler("hud:activeNitro",function(Network,Status)
+	if NetworkDoesNetworkIdExist(Network) then
+		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
 			SetVehicleNitroEnabled(Vehicle,Status)
 		end

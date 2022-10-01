@@ -44,7 +44,7 @@ RegisterKeyMapping("+activeDrift","Ativação do drift.","keyboard","LSHIFT")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local blips = {
+local Blips = {
 	{ 1239.87,-3257.2,7.09,67,62,"Caminhoneiro",0.5 },
 	{ 280.38,-584.45,43.29,80,38,"Hospital",0.5 },
 	{ -247.42,6331.39,32.42,80,38,"Hospital",0.5 },
@@ -201,6 +201,8 @@ CreateThread(function()
 		SetCreateRandomCopsOnScenarios(false)
 		SetCreateRandomCopsNotOnScenarios(false)
 
+		SetPedInfiniteAmmoClip(PlayerPedId(),false)
+
 		SetVehicleModelIsSuppressed(GetHashKey("jet"),true)
 		SetVehicleModelIsSuppressed(GetHashKey("besra"),true)
 		SetVehicleModelIsSuppressed(GetHashKey("luxor"),true)
@@ -342,9 +344,6 @@ local Teleport = {
 	{ -1908.09,-570.9,22.97,-1902.05,-572.42,19.09 },
 	{ -1902.05,-572.42,19.09,-1908.09,-570.9,22.97 },
 
-	{ 1089.67,206.05,-49.0,935.9,46.96,81.1 },
-	{ 935.9,46.96,81.1,1089.67,206.05,-49.0 },
-
 	{ -71.05,-801.01,44.23,-75.0,-824.54,321.29 },
 	{ -75.0,-824.54,321.29,-71.05,-801.01,44.23 },
 
@@ -355,7 +354,7 @@ local Teleport = {
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for _,v in pairs(blips) do
+	for _,v in pairs(Blips) do
 		local blip = AddBlipForCoord(v[1],v[2],v[3])
 		SetBlipSprite(blip,v[4])
 		SetBlipDisplay(blip,4)

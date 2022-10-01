@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "1.5.2"
+version "1.5.4"
 author "ImagicTheCat"
 creative_network "yes"
 
@@ -54,6 +54,7 @@ escrow_ignore {
 	"lib/*",
 	"gui/*",
 	"config/*",
-	"modules/vrp.lua"
+	"modules/vrp.lua",
+	"modules/prepare.lua"
 }
 dependency '/assetpacks'

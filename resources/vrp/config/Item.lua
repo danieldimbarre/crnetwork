@@ -19,6 +19,7 @@ local List = {
 		["Name"] = "Megafone",
 		["Type"] = "Usável",
 		["Durability"] = 7,
+		["Block"] = true,
 		["Weight"] = 3.25
 	},
 	["sprays01"] = {
@@ -777,7 +778,7 @@ local List = {
 		["Name"] = "Combo",
 		["Type"] = "Comum",
 		["Weight"] = 1.25,
-		["Max"] = 5,
+		["Max"] = 2,
 		["Economy"] = 120
 	},
 	["burgershot4"] = {
@@ -785,7 +786,7 @@ local List = {
 		["Name"] = "Combo + Brinquedo",
 		["Type"] = "Comum",
 		["Weight"] = 1.25,
-		["Max"] = 5,
+		["Max"] = 2,
 		["Economy"] = 270
 	},
 	["pizzathis1"] = {
@@ -2982,7 +2983,7 @@ local List = {
 	["polvora"] = {
 		["Index"] = "polvora",
 		["Name"] = "Polvora",
-		["Type"] = "Comun",
+		["Type"] = "Comum",
 		["Weight"] = 0.25
 	}
 }

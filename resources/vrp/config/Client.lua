@@ -12,3 +12,9 @@ AddEventHandler("vRP:Active",function(Passport,Name)
 	SetDiscordRichPresenceAction(0,"Entrar na Cidade","https://discord.gg/8Z64czXtq6/")
 	SetDiscordRichPresenceAction(1,"Nosso Instagram","https://www.instagram.com/cidadeenergy/")
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	RequestIpl("RC12B_Default")
+end)

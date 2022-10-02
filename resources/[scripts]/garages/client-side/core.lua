@@ -338,7 +338,7 @@ local Garages = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEMODS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Mods(Vehicle,Customize)
+function VehicleMods(Vehicle,Customize)
 	if Customize then
 		SetVehicleModKit(Vehicle,0)
 
@@ -457,7 +457,7 @@ function Creative.CreateVehicle(Model,Network,Engine,Customize,Windows,Tyres)
 		if DoesEntityExist(Vehicle) then
 			if Customize ~= nil then
 				local Mods = json.decode(Customize)
-				Mods(Vehicle,Mods)
+				VehicleMods(Vehicle,Mods)
 			end
 
 			SetVehicleEngineHealth(Vehicle,Engine + 0.0)

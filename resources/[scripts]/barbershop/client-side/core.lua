@@ -125,6 +125,7 @@ function displayBarbershop(enable)
 			SendNUIMessage({ type = "click" })
 		end
 
+		LocalPlayer["state"]["Invincible"] = tue
 		SetPlayerInvincible(Ped,true)
 
 		if not DoesCamExist(cam) then
@@ -140,8 +141,9 @@ function displayBarbershop(enable)
 		SetCamCoord(cam,x + 0.2,y + 0.5,z + 0.7)
 		SetCamRot(cam,0.0,0.0,150.0)
 	else
-		SetPlayerInvincible(Ped,false)
 		RenderScriptCams(false,false,0,1,0)
+		SetPlayerInvincible(Ped,false)
+		LocalPlayer["state"]["Invincible"] = false
 		DestroyCam(cam,false)
 	end
 end

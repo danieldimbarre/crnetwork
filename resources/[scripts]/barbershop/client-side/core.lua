@@ -125,7 +125,7 @@ function displayBarbershop(enable)
 			SendNUIMessage({ type = "click" })
 		end
 
-		LocalPlayer["state"]["Invincible"] = tue
+		LocalPlayer["state"]["Invincible"] = true
 		SetPlayerInvincible(Ped,true)
 
 		if not DoesCamExist(cam) then

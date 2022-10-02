@@ -177,5 +177,5 @@ end)
 -- ONRESOURCESTOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("onClientResourceStop",function(Resource)
-	TriggerServerEvent("ResourceStop",Resource)
+	TriggerServerEvent("AnyResourceStop",Resource)
 end)

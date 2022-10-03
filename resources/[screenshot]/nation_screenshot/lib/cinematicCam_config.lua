@@ -100,6 +100,12 @@ Cfg.controls = {
 
         rollLeft    = 44,   -- Q
         rollRight   = 38,   -- E
+
+        Left        = 47,   -- G
+        Right       = 74,   -- H
+
+        Back        = 29,   -- B
+        Front       = 23,   -- F
     },
     controller = {
         openMenu    = 244,  -- Select -- hold for ~1 second
@@ -123,6 +129,10 @@ Cfg.disabledControls = {
     22,     -- SPACE
     44,     -- Q
     38,     -- E
+    47,     -- G
+    74,     -- H
+    29,     -- B
+    23,     -- F
     71,     -- W (Vehicle Movement)
     72,     -- S (Vehicle Movement)
     59,     -- A and D (Vehicle Movement)

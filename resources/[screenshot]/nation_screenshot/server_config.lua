@@ -36,7 +36,7 @@ function func.takeScreenshot(gender, key, component, data, texture)
     end
     if key == "tattoo" then
         if Diretory[gender][component] then
-            Paste = Diretory[component]
+            Paste = Diretory[gender][component]
             PhotoCount = 1
         end
 

@@ -719,7 +719,7 @@ local IpList = {
 			"chair06",
 			"chair07"
 		},
-		Coords = { 1165,-3196.6,-39.01306 }
+		Coords = { 1164.99,-3196.6,-39.01 }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -728,11 +728,11 @@ local IpList = {
 CreateThread(function()
 	for _,Interior in pairs(IpList) do
 		local InteriorCoords = GetInteriorAtCoords(Interior["Coords"][1],Interior["Coords"][2],Interior["Coords"][3])
-		LoadInterior(InteriorCoords)
+		PinInteriorInMemory(InteriorCoords)
 
 		if Interior["Props"] ~= nil then
 			for _,Prop in pairs(Interior["Props"]) do
-				EnableInteriorProp(InteriorCoords,Prop)
+				ActivateInteriorEntitySet(InteriorCoords,Prop)
 				Wait(1)
 			end
 		end

@@ -242,15 +242,16 @@ screenshotCams = {
 firstHeading = GetEntityHeading(PlayerPedId())
 
 function createScreenshotCamera(cam)
+    local ped = PlayerPedId()
+    SetEntityCoords(ped,1165.55,-3191.69,-39.01 - 1,0,0,1)
+    SetEntityHeading(ped,87.88)
     if type(cam) == "function" then
         freezeAnim("mp_sleep", "bind_pose_180", 1, true)
         return cam()
     end
-    local ped = PlayerPedId()
     if not DoesCamExist(screenshotCam) then
         firstHeading = GetEntityHeading(ped)
     end
-    SetEntityHeading(ped, firstHeading)
     freezeAnim("mp_sleep", "bind_pose_180", 1, true)
     local coord = GetOffsetFromEntityInWorldCoords(ped,cam.coords)
     local tempCam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", coord, 0,0,0, 50.0)

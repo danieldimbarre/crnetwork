@@ -40,6 +40,11 @@ window.addEventListener("message",function(event){
 				<div class="SpawnLocationSubmit" data-hash="spawn">Confirmar</div>
 			`);
 		break;
+
+		case "Close":
+			$(".SpawnMessage").css("display","none");
+			$(".SpawnCreate").css("display","none");
+		break;
 	}
 });
 // -------------------------------------------------------------------------------------------
@@ -65,8 +70,6 @@ $(document).on("click",".SpawnCreateSubmit",function(event){
 
 	if (Nome != "" && Sobrenome != ""){
 		$.post("http://spawn/NewCharacter",JSON.stringify({ name: Nome, name2: Sobrenome, sex: Sexo }));
-		$(".SpawnMessage").css("display","none");
-		$(".SpawnCreate").css("display","none");
 	}
 });
 // -------------------------------------------------------------------------------------------

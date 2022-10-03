@@ -739,27 +739,3 @@ AddEventHandler("shops:updateSlot",function(Item,Slot,Target,Amount)
 		vCLIENT.updateShops(source,"requestShop")
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DIGIABLES
------------------------------------------------------------------------------------------------------------------------------------------
-local Digital = {
-	["cellphone"] = 725
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:DIGITAL
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("shops:Digital")
-AddEventHandler("shops:Digital",function(Item)
-	local source = source
-	local Amount = parseInt(Amount)
-	local Passport = vRP.Passport(source)
-	if Passport and Digital[Item] then
-		if REQUEST.Function(source,"Deseja comprar o <b>"..itemName(Item).."</b> por <b>$"..parseFormat(Digital[Item]).."</b> dólares?","Sim, efetuar pagamento","Não, outra hora") then
-			if vRP.PaymentFull(Passport,source,Digital[Item]) then
-				vRP.GenerateItem(Passport,Item,1,true)
-			else
-				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
-			end
-		end
-	end
-end)

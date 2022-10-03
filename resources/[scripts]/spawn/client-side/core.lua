@@ -122,7 +122,7 @@ end)
 -- JUSTSPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:justSpawn")
-AddEventHandler("spawn:justSpawn",function(Open)
+AddEventHandler("spawn:justSpawn",function(Open,Barbershop)
 	local Ped = PlayerPedId()
 	RenderScriptCams(false,false,0,true,true)
 	SetCamActive(Camera,false)
@@ -142,9 +142,21 @@ AddEventHandler("spawn:justSpawn",function(Open)
 		TriggerEvent("hud:Active",true)
 		SetNuiFocus(false,false)
 		Destroy = false
+
+		if Barbershop then
+			Wait(1000)
+			TriggerEvent("barbershop:Open")
+		end
 	end
 
 	DoScreenFadeIn(1000)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SPAWN:CLOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("spawn:Close")
+AddEventHandler("spawn:Close",function()
+	SendNUIMessage({ Action = "Close", Table = Locate })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHOSEN

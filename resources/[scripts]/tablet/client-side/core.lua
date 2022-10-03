@@ -100,7 +100,7 @@ RegisterNUICallback("Drive",function(Data,Callback)
 			local Coords = GetEntityCoords(Ped)
 			benCoords = { Coords["x"],Coords["y"],Coords["z"] }
 
-			TriggerEvent("races:Inative",true)
+			LocalPlayer["state"]["Race"] = true
 			LocalPlayer["state"]["Commands"] = true
 			TriggerEvent("Notify","azul","Teste iniciado, para finalizar saia do veículo.",5000)
 
@@ -148,7 +148,7 @@ CreateThread(function()
 
 				benDrive = false
 				vSERVER.removeDrive()
-				TriggerEvent("races:Inative",false)
+				LocalPlayer["state"]["Race"] = false
 				LocalPlayer["state"]["Commands"] = false
 				SetEntityCoords(Ped,benCoords[1],benCoords[2],benCoords[3],false,false,false,false)
 

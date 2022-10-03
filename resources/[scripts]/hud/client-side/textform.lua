@@ -9,8 +9,8 @@ local Textform = {}
 RegisterNetEvent("hud:Textform")
 AddEventHandler("hud:Textform",function(Coords,Text,Seconds)
 	table.insert(Textform,{
-		["Coords"] = Coords,
 		["Text"] = Text,
+		["Coords"] = Coords,
 		["Seconds"] = GetGameTimer() + Seconds
 	})
 end)

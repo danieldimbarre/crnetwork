@@ -186,7 +186,7 @@ local Blips = {
 	{ -1007.12,-486.67,39.97,440,62,"Escritório",0.7 },
 	{ -1913.48,-574.11,11.43,440,62,"Escritório",0.7 },
 	{ 918.69,50.33,80.9,617,62,"Cassino",0.6 },
-	{ 393.7,-832.77,29.28,355,62,"DigitalDen",0.4 }
+	{ -1278.64,-1413.21,4.33,355,62,"DigitalDen",0.4 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTIMERS
@@ -238,7 +238,6 @@ CreateThread(function()
 		SetWeaponDamageModifierThisFrame("WEAPON_FLASHLIGHT",0.25)
 		SetWeaponDamageModifierThisFrame("WEAPON_NIGHTSTICK",0.35)
 		SetWeaponDamageModifierThisFrame("WEAPON_STONE_HATCHET",0.25)
-
 		SetWeaponDamageModifierThisFrame("WEAPON_SMOKEGRENADE",0.0)
 
 		RemoveAllPickupsOfType("PICKUP_WEAPON_KNIFE")
@@ -310,6 +309,8 @@ CreateThread(function()
 		if GetPlayerWantedLevel(PlayerId()) ~= 0 then
 			ClearPlayerWantedLevel(PlayerId())
 		end
+
+		DisablePlayerVehicleRewards(PlayerId())
 
 		SetWeatherTypeNow(GlobalState["Weather"])
 		SetWeatherTypePersist(GlobalState["Weather"])

@@ -39,6 +39,8 @@ AddEventHandler("postit:initPostit",function()
 			DrawMarker(28,Coords["x"],Coords["y"],Coords["z"],0.0,0.0,0.0,0.0,0.0,0.0,0.05,0.05,0.05,162,124,219,200,0,0,0,0)
 
 			if IsControlJustPressed(1,38) then
+				--TriggerServerEvent("admin:Coords",Coords)
+
 				vSERVER.newPostIts(Coords)
 				break
 			end

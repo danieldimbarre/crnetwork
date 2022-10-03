@@ -269,15 +269,6 @@ AddEventHandler("shops:Fuel",function()
 	SetNuiFocus(true,true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DIGITAL
------------------------------------------------------------------------------------------------------------------------------------------
-local Digital = {
-	{ vec3(391.67,-828.28,29.25),"cellphone" },
-	{ vec3(391.67,-827.41,29.25),"cellphone" },
-	{ vec3(388.58,-827.41,29.25),"cellphone" },
-	{ vec3(388.58,-828.28,29.25),"cellphone" }
-}
------------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -293,25 +284,6 @@ CreateThread(function()
 					event = "shops:openSystem",
 					label = "Abrir",
 					tunnel = "shop"
-				}
-			}
-		})
-	end
-
-	for Number,v in pairs(Digital) do
-		exports["target"]:AddBoxZone("Digital:"..Number,v[1],0.15,0.15,{
-			name = "Digital:"..Number,
-			heading = 3374176,
-			minZ = 29.25 - 0.1,
-			maxZ = 29.25 + 0.1
-		},{
-			shop = v[2],
-			Distance = 0.75,
-			options = {
-				{
-					event = "shops:Digital",
-					label = "Comprar",
-					tunnel = "shopserver"
 				}
 			}
 		})

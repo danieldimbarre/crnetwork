@@ -134,13 +134,13 @@ const TattooStore = {
 	},
 	load: function(tattoos,selectedTattoos){
 		TattooStore.categories = {
+			"hair": { "title": "Micropigmentação", "available": [] },
 			"head": { "title": "Cabeça", "available": [] },
 			"torso": { "title": "Torso", "available": [] },
 			"leftarm": { "title": "Braço Esquerdo", "available": [] },
 			"rightarm": { "title": "Braço Direito", "available": [] },
 			"leftleg": { "title": "Perna Esquerda", "available": [] },
-			"rightleg": { "title": "Perna Direita", "available": [] },
-			"hair": { "title": "Micropigmentação", "available": [] }
+			"rightleg": { "title": "Perna Direita", "available": [] }
 		};
 
 		$("body").fadeIn();

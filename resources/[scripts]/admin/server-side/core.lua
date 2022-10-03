@@ -18,18 +18,18 @@ vKEYBOARD = Tunnel.getInterface("keyboard")
 RegisterCommand("ugroups",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and parseInt(Message[1]) > 0 then
-		local Message = ""
+		local Messages = ""
 		local Groups = vRP.Groups()
 		local OtherPassport = Message[1]
 		for Permission,_ in pairs(Groups) do
 			local Data = vRP.DataGroups(Permission)
 			if Data[OtherPassport] then
-				Message = Message..Permission.."<br>"
+				Messages = Messages..Permission.."<br>"
 			end
 		end
 
-		if Message ~= "" then
-			TriggerClientEvent("Notify",source,"verde",Message,10000)
+		if Messages ~= "" then
+			TriggerClientEvent("Notify",source,"verde",Messages,10000)
 		end
 	end
 end)

@@ -27,7 +27,7 @@ CreateThread(function()
 			end
 		end
 
-		if not LocalPlayer["state"]["Invisible"] and GetPlayerInvincible(Pid) then
+		if not LocalPlayer["state"]["Invincible"] and GetPlayerInvincible(Pid) then
 			TriggerServerEvent("admin:Print","Está imortal.")
 		end
 
@@ -92,12 +92,14 @@ CreateThread(function()
 		end
 
 		if IsPedInAnyVehicle(Ped) then
-			local Vehicle = GetVehiclePedIsIn(Ped,false)
-			local Max = GetVehicleEstimatedMaxSpeed(Vehicle)
-			local Speed = GetEntitySpeed(Vehicle)
+			if not LocalPlayer["state"]["Nitro"] then
+				local Vehicle = GetVehiclePedIsIn(Ped)
+				local Max = GetVehicleEstimatedMaxSpeed(Vehicle)
+				local Speed = GetEntitySpeed(Vehicle)
 
-			if Speed > (Max + 10) then
-				TriggerServerEvent("admin:Print","Mudou a velocidade dos veículos.")
+				if Speed > (Max + 10) then
+					TriggerServerEvent("admin:Print","Mudou a velocidade dos veículos.")
+				end
 			end
 		else
 			local Speed = GetEntitySpeed(Ped)
@@ -510,7 +512,7 @@ end
 -- ONRESOURCESTOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("onClientResourceStop",function(Resource)
-	TriggerServerEvent("ResourceStop",Resource)
+	TriggerServerEvent("AnyResourceStop",Resource)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED

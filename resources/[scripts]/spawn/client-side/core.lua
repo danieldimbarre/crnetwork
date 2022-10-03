@@ -50,6 +50,7 @@ AddEventHandler("onClientResourceStart",function(Resource)
 	ShutdownLoadingScreenNui()
 	TriggerServerEvent("Queue:Connect")
 	LocalPlayer["state"]["Invisible"] = true
+	LocalPlayer["state"]["Invincible"] = true
 
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)

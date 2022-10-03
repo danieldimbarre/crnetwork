@@ -138,7 +138,8 @@ function displayBarbershop(enable)
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })
 		end
-		
+
+		LocalPlayer["state"]["Invincible"] = true
 		SetPlayerInvincible(Ped,true)
 		vRP.playAnim(false,{ "mp_sleep","bind_pose_180" },true)
 
@@ -154,8 +155,9 @@ function displayBarbershop(enable)
 			SetCamRot(cam,0.0,0.0,GetEntityHeading(PlayerPedId()) + 180)
 		end
 	else
-		SetPlayerInvincible(Ped,false)
 		RenderScriptCams(false,false,0,1,0)
+		SetPlayerInvincible(Ped,false)
+		LocalPlayer["state"]["Invincible"] = false
 		DestroyCam(cam,false)
 	end
 end

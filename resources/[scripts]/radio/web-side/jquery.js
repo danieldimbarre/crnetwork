@@ -28,6 +28,14 @@ $(document).ready(function(){
 					$.post("http://radio/RadioClose");
 				}
 			break;
+
+			case "Enter":
+				if ($("#Radio").css("display") === "block"){
+					var Frequency = parseInt($(".RadioFrequency").val());
+					$.post("http://radio/RadioActive",JSON.stringify({ Frequency }));
+					$(".RadioFrequency").val("");
+				}
+			break;
 		}
 	}
 });

@@ -10,9 +10,9 @@
 }
 
 .body {
-	top: 125px;
-	right: 43px;
-	height: 75%;
+	top: 15%;
+	right: 100px;
+	height: 50%;
 	width: 300px;
 	overflow: hidden;
 	position: absolute;
@@ -67,7 +67,7 @@
 	font-size: 11px;
 	padding: 5px 10px;
 	margin-right: 10px;
-	background: #6ede81;
+	background: #fec026;
 }
 
 .titulo {

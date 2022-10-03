@@ -16,8 +16,8 @@ local ActualVehicle = nil
 -----------------------------------------------------------------------------------------------------------------------------------------
 local NitroFuel = 0
 local NitroFlame = false
-local NitroActive = false
 local NitroButton = GetGameTimer()
+LocalPlayer["state"]["Nitro"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LIGHTTRAILS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ CreateThread(function()
 					Tyres = Tyre
 				end
 
-				if NitroActive then
+				if LocalPlayer["state"]["Nitro"] then
 					SendNUIMessage({ Action = "Nitro", Number = NitroFuel })
 					Nitro = NitroFuel
 				else
@@ -178,9 +178,9 @@ function nitroEnable()
 						if GetIsVehicleEngineRunning(Vehicle) then
 							local Speed = GetEntitySpeed(Vehicle) * 3.6
 							if Speed > 10 then
-								NitroActive = true
+								LocalPlayer["state"]["Nitro"] = true
 
-								while NitroActive do
+								while LocalPlayer["state"]["Nitro"] do
 									if NitroFuel >= 1 then
 										NitroFuel = NitroFuel - 1
 
@@ -200,8 +200,9 @@ function nitroEnable()
 											SetVehicleBoostActive(Vehicle,false)
 											ModifyVehicleTopSpeed(Vehicle,0.0)
 											SetLightTrail(Vehicle,false)
-											NitroActive = false
 											NitroFlame = false
+
+											LocalPlayer["state"]["Nitro"] = false
 										end
 									end
 
@@ -236,8 +237,9 @@ function nitroDisable()
 			SetVehicleBoostActive(Vehicle,false)
 			ModifyVehicleTopSpeed(Vehicle,0.0)
 			SetLightTrail(Vehicle,false)
-			NitroActive = false
 			NitroFlame = false
+
+			LocalPlayer["state"]["Nitro"] = false
 		end
 
 		if PurgeActive then

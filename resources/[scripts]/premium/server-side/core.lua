@@ -464,10 +464,10 @@ AddEventHandler("weaponDamageEvent",function(source,Data)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- RESOURCESTOP
+-- ANYRESOURCESTOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("ResourceStop")
-AddEventHandler("ResourceStop",function(Resource)
+RegisterServerEvent("AnyResourceStop")
+AddEventHandler("AnyResourceStop",function(Resource)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

@@ -27,6 +27,7 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 
 		local Ped = PlayerPedId()
 		SetEntityVisible(Ped,false,false)
+		LocalPlayer["state"]["Invisible"] = true
     	vRP.stopAnim(false)
 
 		vSERVER.updateFace(myFace)
@@ -68,6 +69,7 @@ function displayCreator(enable)
 			SendNUIMessage({ type = "click" })
 		end
 
+		LocalPlayer["state"]["Invisible"] = false
 		SetEntityVisible(Ped,true,false)
 		vRP.playAnim(false,{ "mp_sleep","bind_pose_180" },true)
 		

@@ -170,7 +170,7 @@ function canPedBeUsed(ped)
 end
 
 function GetVehicle()
-    local playerped = GetPlayerPed(-1)
+    local playerped = PlayerPedId()
     local playerCoords = GetEntityCoords(playerped)
     local handle, ped = FindFirstVehicle()
     local success
@@ -182,7 +182,7 @@ function GetVehicle()
         if canPedBeUsed(ped) and distance < 30.0 and (distanceFrom == nil or distance < distanceFrom) then
             distanceFrom = distance
             rped = ped
-	    	if IsEntityTouchingEntity(GetPlayerPed(-1), ped) then
+	    	if IsEntityTouchingEntity(PlayerPedId(), ped) then
 	    		DrawText3Ds(pos["x"],pos["y"],pos["z"]+1, "Veh: " .. ped .. " Model: " .. GetEntityModel(ped) .. " IN CONTACT" )
 	    	else
 	    		DrawText3Ds(pos["x"],pos["y"],pos["z"]+1, "Veh: " .. ped .. " Model: " .. GetEntityModel(ped) .. "" )
@@ -195,7 +195,7 @@ function GetVehicle()
 end
 
 function GetObject()
-    local playerped = GetPlayerPed(-1)
+    local playerped = PlayerPedId()
     local playerCoords = GetEntityCoords(playerped)
     local handle, ped = FindFirstObject()
     local success
@@ -208,7 +208,7 @@ function GetObject()
             distanceFrom = distance
             rped = ped
             --FreezeEntityPosition(ped, inFreeze)
-	    	if IsEntityTouchingEntity(GetPlayerPed(-1), ped) then
+	    	if IsEntityTouchingEntity(PlayerPedId(), ped) then
 	    		DrawText3Ds(pos["x"],pos["y"],pos["z"]+1, "Obj: " .. ped .. " Model: " .. GetEntityModel(ped) .. " IN CONTACT" )
 	    	else
 	    		DrawText3Ds(pos["x"],pos["y"],pos["z"]+1, "Obj: " .. ped .. " Model: " .. GetEntityModel(ped) .. "" )
@@ -221,7 +221,7 @@ function GetObject()
 end
 
 function getNPC()
-    local playerped = GetPlayerPed(-1)
+    local playerped = PlayerPedId()
     local playerCoords = GetEntityCoords(playerped)
     local handle, ped = FindFirstPed()
     local success
@@ -234,7 +234,7 @@ function getNPC()
             distanceFrom = distance
             rped = ped
 
-	    	if IsEntityTouchingEntity(GetPlayerPed(-1), ped) then
+	    	if IsEntityTouchingEntity(PlayerPedId(), ped) then
 	    		DrawText3Ds(pos["x"],pos["y"],pos["z"], "Ped: " .. ped .. " Model: " .. GetEntityModel(ped) .. " Relationship HASH: " .. GetPedRelationshipGroupHash(ped) .. " IN CONTACT" )
 	    	else
 	    		DrawText3Ds(pos["x"],pos["y"],pos["z"], "Ped: " .. ped .. " Model: " .. GetEntityModel(ped) .. " Relationship HASH: " .. GetPedRelationshipGroupHash(ped) )
@@ -304,6 +304,8 @@ function debugOn()
 					TriggerEvent("Notify",'amarelo','Freeze OFF.',5000)
 				end
 			end
+
+			Wait(1)
 		end
 	end)
 end

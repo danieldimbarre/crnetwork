@@ -5,8 +5,25 @@ fclient = Tunnel.getInterface("nation_screenshot")
 func = {}
 Tunnel.bindInterface("nation_screenshot", func)
 
+local Diretory = {
+    ["male"] = {
+        [285] = "head",
+        [350] = "leftarm",
+        [446] = "rightarm",
+        [553] = "leftleg",
+        [608] = "rightleg"
+    },
+    ["female"] = {
+        [296] = "head",
+        [358] = "leftarm",
+        [453] = "rightarm",
+        [561] = "leftleg",
+        [616] = "rightleg"
+    }
+}
 
-
+local Paste = "torso"
+local PhotoCount = 1
 ---------------------------------------------------------------------------
 -----------------------REQUEST DA SCREENSHOT--------------------------
 ---------------------------------------------------------------------------
@@ -16,6 +33,18 @@ function func.takeScreenshot(gender, key, component, data, texture)
     local fileName = 'nation_screenshot/'..gender..'/'..key..'/'..component..'.png'
     if texture then
         fileName = 'nation_screenshot/'..gender..'/'..key..'/'..component..'_'..texture..'.png'
+    end
+    if key == "tattoo" then
+        if Diretory[gender][component] then
+            Paste = Diretory[component]
+            PhotoCount = 1
+        end
+
+        component = PhotoCount
+        fileName = 'nation_screenshot/'..gender..'/'..key..'/'..Paste..'/'..component..'.png'
+        PhotoCount = PhotoCount + 1
+    elseif key == "overlay" then
+        fileName = 'nation_screenshot/'..gender..'/tattoo/hair/'..component..'.png'
     end
     exports['screenshot-basic']:requestClientScreenshot(source, {
         fileName = fileName,

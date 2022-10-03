@@ -464,7 +464,7 @@ AddEventHandler("weaponDamageEvent",function(source,Data)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- RESOURCESTOP
+-- ANYRESOURCESTOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("AnyResourceStop")
 AddEventHandler("AnyResourceStop",function(Resource)

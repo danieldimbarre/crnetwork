@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "1.5.5"
+version "1.5.7"
 author "ImagicTheCat"
 creative_network "yes"
 
@@ -9,7 +9,6 @@ ui_page "gui/index.html"
 
 client_scripts {
 	"config/Global.lua",
-	"config/Garages.lua",
 	"config/Vehicle.lua",
 	"config/Native.lua",
 	"config/Item.lua",

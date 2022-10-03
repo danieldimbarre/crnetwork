@@ -352,7 +352,9 @@ overlays = {
         { ["overlay"] = "MP_Gunrunning_Hair_M_000_M", ["collection"] = "mpgunrunning_overlays" },
         { ["overlay"] = "MP_Gunrunning_Hair_M_001_M", ["collection"] = "mpgunrunning_overlays" },
         { ["overlay"] = "MP_Tuner_Hair_001_M", ["collection"] = "mpTuner_overlays" },
-        { ["overlay"] = "MP_Security_Hair_001_M", ["collection"] = "mpSecurity_overlays" }
+        { ["overlay"] = "MP_Security_Hair_001_M", ["collection"] = "mpSecurity_overlays" },
+        { ["overlay"] = "MP_Sum2_Hair_000_M", ["collection"] = "mpSum2_overlays" },
+		{ ["overlay"] = "MP_Sum2_Hair_002_M", ["collection"] = "mpSum2_overlays" }
     },
 
     [GetHashKey("mp_f_freemode_01")] = {
@@ -434,7 +436,9 @@ overlays = {
         { ["overlay"] = "MP_Gunrunning_Hair_F_000_F", ["collection"] = "mpgunrunning_overlays" },
         { ["overlay"] = "MP_Gunrunning_Hair_F_001_F", ["collection"] = "mpgunrunning_overlays" },
         { ["overlay"] = "MP_Tuner_Hair_000_F", ["collection"] = "mpTuner_overlays" },
-        { ["overlay"] = "MP_Security_Hair_000_F", ["collection"] = "mpSecurity_overlays" }
+        { ["overlay"] = "MP_Security_Hair_000_F", ["collection"] = "mpSecurity_overlays" },
+        { ["overlay"] = "MP_Sum2_Hair_001_F", ["collection"] = "mpSum2_overlays" },
+		{ ["overlay"] = "MP_Sum2_Hair_003_F", ["collection"] = "mpSum2_overlays" }
     }
 }
 
@@ -715,7 +719,28 @@ tattoos =  {
             { ["overlay"] = "MP_Security_Tat_018_M", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_024_M", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_025_M", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_026_M", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_026_M", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_003_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_004_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_005_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_006_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_007_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_035_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_036_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_037_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_038_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_039_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_040_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_041_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_042_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_043_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_044_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_057_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_058_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_059_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_060_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_061_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_062_M", ["collection"] = "mpSum2_overlays" }
         },
         [2] = {
             { ["overlay"] = "MP_Bea_M_Head_000", ["collection"] = "mpbeach_overlays" },
@@ -770,7 +795,19 @@ tattoos =  {
             { ["overlay"] = "mpHeist3_Tat_044_M", ["collection"] = "mpheist3_overlays" },
             { ["overlay"] = "MP_Security_Tat_001_M", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_002_M", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_027_M", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_027_M", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_000_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_001_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_018_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_019_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_020_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_021_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_022_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_023_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_024_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_025_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_026_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_027_M", ["collection"] = "mpSum2_overlays" }
         },
         [3] = {
             { ["overlay"] = "MP_Airraces_Tattoo_003_M", ["collection"] = "mpairraces_overlays" },
@@ -862,7 +899,13 @@ tattoos =  {
             { ["overlay"] = "MP_Security_Tat_006_M", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_010_M", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_011_M", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_019_M", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_019_M", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_008_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_009_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_010_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_028_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_029_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_049_M", ["collection"] = "mpSum2_overlays" }
         },
         [4] = {
             { ["overlay"] = "MP_Bea_M_RArm_000", ["collection"] = "mpbeach_overlays" },
@@ -962,7 +1005,16 @@ tattoos =  {
             { ["overlay"] = "MP_Security_Tat_007_M", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_009_M", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_012_M", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_020_M", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_020_M", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_011_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_012_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_013_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_030_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_031_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_045_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_046_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_047_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_048_M", ["collection"] = "mpSum2_overlays" }
         },
         [5] = {
             { ["overlay"] = "MP_Bea_M_Lleg_000", ["collection"] = "mpbeach_overlays" },
@@ -1010,7 +1062,16 @@ tattoos =  {
             { ["overlay"] = "MP_Heist4_Tat_028_M", ["collection"] = "mpheist4_overlays" },
             { ["overlay"] = "MP_Heist4_Tat_029_M", ["collection"] = "mpheist4_overlays" },
             { ["overlay"] = "MP_Security_Tat_022_M", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_023_M", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_023_M", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_002_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_014_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_015_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_016_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_032_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_053_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_054_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_055_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_056_M", ["collection"] = "mpSum2_overlays" }
         },
         [6] = {
             { ["overlay"] = "MP_Bea_M_Rleg_000", ["collection"] = "mpbeach_overlays" },
@@ -1043,7 +1104,13 @@ tattoos =  {
             { ["overlay"] = "mpHeist3_Tat_031_M", ["collection"] = "mpheist3_overlays" },
             { ["overlay"] = "MP_Heist4_Tat_027_M", ["collection"] = "mpheist4_overlays" },
             { ["overlay"] = "MP_Security_Tat_003_M", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_021_M", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_021_M", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_017_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_033_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_034_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_050_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_051_M", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_052_M", ["collection"] = "mpSum2_overlays" }
         }
     },
     [GetHashKey("mp_f_freemode_01")] = {
@@ -1321,7 +1388,28 @@ tattoos =  {
             { ["overlay"] = "MP_Security_Tat_018_F", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_024_F", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_025_F", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_026_F", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_026_F", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_003_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_004_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_005_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_006_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_007_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_035_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_036_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_037_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_038_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_039_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_040_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_041_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_042_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_043_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_044_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_057_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_058_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_059_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_060_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_061_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_062_F", ["collection"] = "mpSum2_overlays" }
         },
         [2] = {
             { ["overlay"] = "MP_Bea_F_Neck_000", ["collection"] = "mpbeach_overlays" },
@@ -1373,7 +1461,19 @@ tattoos =  {
             { ["overlay"] = "mpHeist3_Tat_044_F", ["collection"] = "mpheist3_overlays" },
             { ["overlay"] = "MP_Security_Tat_001_F", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_002_F", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_027_F", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_027_F", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_000_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_001_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_018_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_019_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_020_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_021_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_022_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_023_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_024_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_025_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_026_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_027_F", ["collection"] = "mpSum2_overlays" }
         },
         [3] = {
             { ["overlay"] = "MP_Airraces_Tattoo_003_F", ["collection"] = "mpairraces_overlays" },
@@ -1464,7 +1564,13 @@ tattoos =  {
             { ["overlay"] = "MP_Security_Tat_006_F", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_010_F", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_011_F", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_019_F", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_019_F", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_008_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_009_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_010_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_028_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_029_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_049_F", ["collection"] = "mpSum2_overlays" }
         },
         [4] = {
             { ["overlay"] = "MP_Bea_F_RArm_001", ["collection"] = "mpbeach_overlays" },
@@ -1565,7 +1671,16 @@ tattoos =  {
             { ["overlay"] = "MP_Security_Tat_007_F", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_009_F", ["collection"] = "mpSecurity_overlays" },
             { ["overlay"] = "MP_Security_Tat_012_F", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_020_F", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_020_F", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_011_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_012_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_013_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_030_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_031_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_045_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_046_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_047_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_048_F", ["collection"] = "mpSum2_overlays" }
         },
         [5] = { 
             { ["overlay"] = "MP_MP_Biker_Tat_002_F", ["collection"] = "mpbiker_overlays" },
@@ -1613,7 +1728,16 @@ tattoos =  {
             { ["overlay"] = "MP_Heist4_Tat_028_F", ["collection"] = "mpheist4_overlays" },
             { ["overlay"] = "MP_Heist4_Tat_029_F", ["collection"] = "mpheist4_overlays" },
             { ["overlay"] = "MP_Security_Tat_022_F", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_023_F", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_023_F", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_002_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_014_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_015_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_016_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_032_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_053_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_054_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_055_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_056_F", ["collection"] = "mpSum2_overlays" }
         },
         [6] = {
             { ["overlay"] = "MP_MP_Biker_Tat_004_F", ["collection"] = "mpbiker_overlays" },
@@ -1633,7 +1757,7 @@ tattoos =  {
             { ["overlay"] = "MP_LR_Tat_017_F", ["collection"] = "mplowrider_overlays" },
             { ["overlay"] = "MP_LR_Tat_023_F", ["collection"] = "mplowrider_overlays" },
             { ["overlay"] = "MP_LUXE_TAT_023_F", ["collection"] = "mpluxe2_overlays" },
-            { ["overlay"] = "MP_LUXE_TAT_001_F", ["collection"] = "mpluxe_overlays" },
+            { ["overlay"] = "MP_LUXE_TAT_001_F", ["collection"] = "mpluxe_overlays" },s
             { ["overlay"] = "MP_Smuggler_Tattoo_020_F", ["collection"] = "mpsmuggler_overlays" },
             { ["overlay"] = "MP_MP_Stunt_tat_005_F", ["collection"] = "mpstunt_overlays" },
             { ["overlay"] = "MP_MP_Stunt_tat_015_F", ["collection"] = "mpstunt_overlays" },
@@ -1647,7 +1771,13 @@ tattoos =  {
             { ["overlay"] = "mpHeist3_Tat_031_F", ["collection"] = "mpheist3_overlays" },
             { ["overlay"] = "MP_Heist4_Tat_027_F", ["collection"] = "mpheist4_overlays" },
             { ["overlay"] = "MP_Security_Tat_003_F", ["collection"] = "mpSecurity_overlays" },
-            { ["overlay"] = "MP_Security_Tat_021_F", ["collection"] = "mpSecurity_overlays" }
+            { ["overlay"] = "MP_Security_Tat_021_F", ["collection"] = "mpSecurity_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_017_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_033_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_034_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_050_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_051_F", ["collection"] = "mpSum2_overlays" },
+            { ["overlay"] = "MP_Sum2_Tat_052_F", ["collection"] = "mpSum2_overlays" }
         }
     },
 }

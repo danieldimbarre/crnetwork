@@ -156,7 +156,7 @@ const TattooStore = {
 			});
 		});
 
-		TattooStore.changeCategory("head");
+		TattooStore.changeCategory("hair");
 		TattooStore.loadStaticListeners();
 	}
 };

@@ -304,7 +304,7 @@ local tattooShop = {
 				{ ["name"] = "MP_Sum2_Tat_059_M", ["part"] = "mpSum2_overlays" },
 				{ ["name"] = "MP_Sum2_Tat_060_M", ["part"] = "mpSum2_overlays" },
 				{ ["name"] = "MP_Sum2_Tat_061_M", ["part"] = "mpSum2_overlays" },
-				{ ["name"] = "MP_Sum2_Tat_062_M", ["part"] = "mpSum2_overlays" 
+				{ ["name"] = "MP_Sum2_Tat_062_M", ["part"] = "mpSum2_overlays" }
 			}
 		},
 		["head"] = {

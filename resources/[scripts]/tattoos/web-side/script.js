@@ -145,7 +145,7 @@ const TattooStore = {
 
 		$("body").fadeIn();
 		TattooStore.selectedTattoos = selectedTattoos;
-		if (tattoos === "partsF"){
+		if (model === GetHashKey("mp_f_freemode_01")){
 			selectShop = "female";
 		} else {
 			selectShop = "male";
@@ -162,5 +162,5 @@ const TattooStore = {
 };
 
 window.addEventListener("message",function(event){
-	TattooStore.load(event.data.shop,event.data.tattoo);
+	TattooStore.load(event.data.shop,event.data.tattoo,event.data.model);
 });

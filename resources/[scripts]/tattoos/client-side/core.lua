@@ -1554,7 +1554,8 @@ function openTattooShop()
 	SetNuiFocus(true,true)
 
 	local Ped = PlayerPedId()
-	if GetEntityModel(Ped) == GetHashKey("mp_m_freemode_01") then
+	local Model = GetEntityModel(Ped)
+	if Model == GetHashKey("mp_m_freemode_01") then
 		atualShop = tattooShop["partsM"]
 
 		SetPedComponentVariation(Ped,1,-1,0,1)
@@ -1567,7 +1568,7 @@ function openTattooShop()
 		SetPedComponentVariation(Ped,9,-1,0,1)
 		SetPedComponentVariation(Ped,10,-1,0,1)
 		SetPedComponentVariation(Ped,11,15,0,1)
-	elseif GetEntityModel(Ped) == GetHashKey("mp_f_freemode_01") then
+	elseif Model == GetHashKey("mp_f_freemode_01") then
 		atualShop = tattooShop["partsF"]
 
 		SetPedComponentVariation(Ped,1,-1,0,1)
@@ -1584,7 +1585,7 @@ function openTattooShop()
 
 	ClearAllPedProps(Ped)
 
-	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos })
+	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos, type = Model })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ATUALIZARTATTOO

@@ -702,3 +702,41 @@ CreateThread(function()
 		Wait(TimeDistance)
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- IPLOADER
+-----------------------------------------------------------------------------------------------------------------------------------------
+local IpList = {
+	{
+		Props = {
+			"interior_upgrade",
+			"equipment_upgrade",
+			"security_high",
+			"chair01",
+			"chair02",
+			"chair03",
+			"chair04",
+			"chair05",
+			"chair06",
+			"chair07"
+		},
+		Coords = { 1165,-3196.6,-39.01306 }
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADIPLOADER
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	for _,Interior in pairs(IpList) do
+		local InteriorCoords = GetInteriorAtCoords(Interior["Coords"][1],Interior["Coords"][2],Interior["Coords"][3])
+		LoadInterior(InteriorCoords)
+
+		if Interior["Props"] ~= nil then
+			for _,Prop in pairs(Interior["Props"]) do
+				EnableInteriorProp(InteriorCoords,Prop)
+				Wait(1)
+			end
+		end
+
+		RefreshInterior(InteriorCoords)
+	end
+end)

@@ -1757,7 +1757,7 @@ tattoos =  {
             { ["overlay"] = "MP_LR_Tat_017_F", ["collection"] = "mplowrider_overlays" },
             { ["overlay"] = "MP_LR_Tat_023_F", ["collection"] = "mplowrider_overlays" },
             { ["overlay"] = "MP_LUXE_TAT_023_F", ["collection"] = "mpluxe2_overlays" },
-            { ["overlay"] = "MP_LUXE_TAT_001_F", ["collection"] = "mpluxe_overlays" },s
+            { ["overlay"] = "MP_LUXE_TAT_001_F", ["collection"] = "mpluxe_overlays" },
             { ["overlay"] = "MP_Smuggler_Tattoo_020_F", ["collection"] = "mpsmuggler_overlays" },
             { ["overlay"] = "MP_MP_Stunt_tat_005_F", ["collection"] = "mpstunt_overlays" },
             { ["overlay"] = "MP_MP_Stunt_tat_015_F", ["collection"] = "mpstunt_overlays" },

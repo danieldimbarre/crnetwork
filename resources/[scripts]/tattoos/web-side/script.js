@@ -1,16 +1,17 @@
 var selectedCam =  null;
+var selectShop  =  null;
 
 const TattooStore = {
 	currentCategory: null,	
 	selectedTattoos: {},
 	categories: {
+		"hair": { "title": "Micropigmentação", "available": [] },
 		"head": { "title": "Cabeça", "available": [] },
 		"torso": { "title": "Torso", "available": [] },
 		"leftarm": { "title": "Braço Esquerdo", "available": [] },
 		"rightarm": { "title": "Braço Direito", "available": [] },
 		"leftleg": { "title": "Perna Esquerda", "available": [] },
-		"rightleg": { "title": "Perna Direita", "available": [] },
-		"hair": { "title": "Micropigmentação", "available": [] }
+		"rightleg": { "title": "Perna Direita", "available": [] }
 	},
 	changeCategory: function(category){
 		$(".option").removeClass("active");
@@ -28,7 +29,7 @@ const TattooStore = {
 
 			$("#items").append(`
 				<div class="item${selected}" tattoo-code="${tattoo.name}" tattoo-category="${category}" tattoo-index="${index}"
-				style="background-image: url('http://45.162.228.208/baixada/tattoo/${category}/${tattoo.name}.jpg')"
+				style="background-image: url('http://181.214.221.93/energy-images/${selectShop}/tattoo/${category}/${tattoo.name}.png')"
 				>
 				<div class="circle number">${label}</div>
 			`);
@@ -104,6 +105,7 @@ const TattooStore = {
 				case 27:
 					$("body").fadeOut();
 					selectedCam = null;
+					selectShop = null;
 					window.location.reload();
 					TattooStore.callServer("close",{});
 				break;
@@ -143,6 +145,11 @@ const TattooStore = {
 
 		$("body").fadeIn();
 		TattooStore.selectedTattoos = selectedTattoos;
+		if (tattoos === "partsF"){
+			selectShop = "female";
+		} else {
+			selectShop = "male";
+		}
 		$.each(tattoos,function(category,element){
 			$.each(element.tattoo,function(index,tattoo){
 				TattooStore.categories[category]["available"].push(tattoo);

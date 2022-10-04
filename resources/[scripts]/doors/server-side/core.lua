@@ -95,7 +95,8 @@ GlobalState["Doors"] = {
 	-- [91] = { Coords = vec3(320.26,-574.34,43.43), Hash = -1700911976, Lock = true, Distance = 1.5, Perm = "Paramedic", Other = 90 },
 	-- [92] = { Coords = vec3(323.23,-575.42,43.43), Hash = -434783486, Lock = true, Distance = 1.5, Perm = "Paramedic", Other = 93 },
 	-- [93] = { Coords = vec3(325.65,-576.30,43.43), Hash = -1700911976, Lock = true, Distance = 1.5, Perm = "Paramedic", Other = 92 },
-	
+	[94] = { Coords = vec3(475.39,-989.82,26.35), Hash = -692649124, Lock = true, Distance = 1.5, Perm = "Police" },
+
 	[101] = { Coords = vec3(805.03,-747.97,27.25), Hash = 95403626, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 102 },
 	[102] = { Coords = vec3(803.98,-747.97,27.25), Hash = -49173194, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 101 },
 	[103] = { Coords = vec3(794.29,-757.62,27.25), Hash = 95403626, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 104 },
@@ -110,12 +111,7 @@ GlobalState["Doors"] = {
 	[112] = { Coords = vec3(797.92,-758.19,31.75), Hash = 1984391163, Lock = true, Distance = 1.5, Perm = "PizzaThis" },
 	[113] = { Coords = vec3(806.83,-764.04,31.75), Hash = 1984391163, Lock = true, Distance = 1.5, Perm = "PizzaThis" },
 
-	[150] = { Coords = vec3(-1886.47,2050.54,141.0), Hash = 1077118233, Lock = true, Distance = 7, Perm = "Mafia1" },
-	[151] = { Coords = vec3(-1889.16,2051.61,141.0), Hash = 1077118233, Lock = true, Distance = 7, Perm = "Mafia1" },
 	
-	[152] = { Coords = vec3(1384.49,-2080.12,52.6), Hash = 1466379709, Lock = true, Distance = 1.5, Perm = "Mafia2" },
-	[153] = { Coords = vec3(1356.84,-2088.72,52.0), Hash = 844544730, Lock = true, Distance = 7, Perm = "Mafia2" },
-	[154] = { Coords = vec3(1351.56,-2093.47,52.0), Hash = 844544730, Lock = true, Distance = 7, Perm = "Mafia2" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOORSPERMISSION

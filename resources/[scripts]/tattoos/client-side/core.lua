@@ -1585,7 +1585,7 @@ function openTattooShop()
 
 	ClearAllPedProps(Ped)
 
-	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos, type = Model })
+	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos, model = Model })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ATUALIZARTATTOO

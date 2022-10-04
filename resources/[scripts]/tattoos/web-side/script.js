@@ -132,7 +132,7 @@ const TattooStore = {
 	callServer: function(endpoint,data){
 		$.post("http://tattoos/"+endpoint,JSON.stringify(data));
 	},
-	load: function(tattoos,selectedTattoos){
+	load: function(tattoos,selectedTattoos,model){
 		TattooStore.categories = {
 			"hair": { "title": "Micropigmentação", "available": [] },
 			"head": { "title": "Cabeça", "available": [] },
@@ -145,11 +145,13 @@ const TattooStore = {
 
 		$("body").fadeIn();
 		TattooStore.selectedTattoos = selectedTattoos;
-		if (model === GetHashKey("mp_f_freemode_01")){
-			selectShop = "female";
-		} else {
+
+		if (model === 1885233650){
 			selectShop = "male";
+		} else {
+			selectShop = "female";
 		}
+
 		$.each(tattoos,function(category,element){
 			$.each(element.tattoo,function(index,tattoo){
 				TattooStore.categories[category]["available"].push(tattoo);

@@ -564,22 +564,6 @@ function ProcessNewPosition(x, y, z)
         if (IsDisabledControlPressed(1, Cfg.controls.controller.rollRight)) then
             offsetRotY = offsetRotY + precision
         end
-
-        -- player
-        local Ped = PlayerPedId()
-	    local heading = GetEntityHeading(Ped)
-        if (IsDisabledControlPressed(1, Cfg.controls.keyboard.Left)) then
-            SetEntityHeading(Ped,heading - 10)
-        end
-        if (IsDisabledControlPressed(1, Cfg.controls.keyboard.Right)) then
-            SetEntityHeading(Ped,heading + 10)
-        end
-        if (IsDisabledControlPressed(1, Cfg.controls.keyboard.Back)) then
-            SetEntityHeading(Ped,87.88 + 180)
-        end
-        if (IsDisabledControlPressed(1, Cfg.controls.keyboard.Front)) then
-            SetEntityHeading(Ped,87.88)
-        end
     end
 
     if (offsetRotX > 90.0) then offsetRotX = 90.0 elseif (offsetRotX < -90.0) then offsetRotX = -90.0 end

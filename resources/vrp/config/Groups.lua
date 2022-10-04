@@ -33,13 +33,7 @@ Groups = {
 	},
 	["Mechanic"] = {
 		["Mechanic"] = true
-	},
-	["Mafia2"] = {
-		["Mafia2"] = true
-	},
-	["Mafia1"] = {
-		["Mafia1"] = true
-	},
+	},	
 	["BurgerShot"] = {
 		["BurgerShot"] = true
 	},
@@ -70,13 +64,16 @@ Groups = {
 	["Aztecas"] = {
 		["Aztecas"] = true
 	},
-	["Bloods"] = {
-		["Bloods"] = true
+	["Marabunta"] = {
+		["Marabunta"] = true
 	},
 	["Triads"] = {
 		["Triads"] = true
 	},
-	["Razors"] = {
-		["Razors"] = true
+	["TheLost"] = {
+		["TheLost"] = true
+	},
+	["Altruists"] = {
+		["Altruists"] = true
 	}
 }

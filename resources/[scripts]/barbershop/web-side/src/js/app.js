@@ -105,9 +105,9 @@ $(document).ready(() => {
 			$("body").fadeOut();
 		}
 
-		if (event.data.type == "click") {
-			triggerClick(cursorX-1,cursorY-1);
-		}
+		// if (event.data.type == "click") {
+		// 	triggerClick(cursorX-1,cursorY-1);
+		// }
 	});
 
   	$('.leftC .sectionCategorys .option').on('click', function () {

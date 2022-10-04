@@ -56,7 +56,8 @@ CreateThread(function()
 					local _,_,_,_,vehFront = GetShapeTestResult(vehicleFrontShape)
 
 					if IsEntityAVehicle(vehFront) then
-						local vehHash = vRP.VehicleModel(vehFront)
+						local vehModel = GetEntityModel(vehFront)
+						local vehHash = vRP.VehicleModel(vehModel)
 						local vehSpeed = GetEntitySpeed(vehFront) * 3.6
 						local Plate = GetVehicleNumberPlateText(vehFront)
 
@@ -68,7 +69,8 @@ CreateThread(function()
 					local _,_,_,_,vehBack = GetShapeTestResult(vehicleBackShape)
 
 					if IsEntityAVehicle(vehBack) then
-						local vehHash = vRP.VehicleModel(vehBack)
+						local vehModel = GetEntityModel(vehBack)
+						local vehHash = vRP.VehicleModel(vehModel)
 						local vehSpeed = GetEntitySpeed(vehBack) * 3.6
 						local Plate = GetVehicleNumberPlateText(vehBack)
 

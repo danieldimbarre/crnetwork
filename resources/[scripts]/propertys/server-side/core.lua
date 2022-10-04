@@ -172,8 +172,8 @@ function Creative.Clothes()
 		local Clothes = {}
 		local Consult = vRP.GetSrvData("Wardrobe:"..Passport)
 
-		for k,v in pairs(Consult) do
-			table.insert(Clothes,{ ["name"] = k })
+		for Table,_ in pairs(Consult) do
+			table.insert(Clothes,{ ["name"] = Table })
 		end
 
 		return Clothes

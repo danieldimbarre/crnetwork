@@ -532,7 +532,7 @@ AddEventHandler('txAdmin:events:serverShuttingDown',function(eventData)
 		vRP.Kick(Passport,"Desconectado, a cidade reiniciou.")
 	end
 
-    TriggerEvent("admin:KickAll")
+    TriggerEvent("SaveServer")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

@@ -86,11 +86,7 @@ function displayCreator(enable)
 		end
 
 		defaultCharacter()
-
-		DoScreenFadeIn(1000)
 	else
-		DoScreenFadeOut(0)
-
 		RenderScriptCams(false,false,0,1,0)
 		DestroyCam(cam,false)
 	end

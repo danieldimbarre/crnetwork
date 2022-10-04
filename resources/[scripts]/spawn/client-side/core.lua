@@ -12,6 +12,7 @@ vSERVER = Tunnel.getInterface("spawn")
 local Peds = {}
 local Camera = nil
 local Destroy = false
+local Close = true
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -131,39 +132,42 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:justSpawn")
 AddEventHandler("spawn:justSpawn",function(Open,Barbershop)
-	local Ped = PlayerPedId()
-	RenderScriptCams(false,false,0,true,true)
-	SetCamActive(Camera,false)
-	DestroyCam(Camera,true)
-	Camera = nil
+	if not Close then
+		local Ped = PlayerPedId()
+		RenderScriptCams(false,false,0,true,true)
+		SetCamActive(Camera,false)
+		DestroyCam(Camera,true)
+		Camera = nil
 
-	if Open then
-		local Coords = GetEntityCoords(Ped)
-		Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",Coords["x"],Coords["y"],Coords["z"] + 200.0,270.00,0.0,0.0,80.0,0,0)
-		SetCamActive(Camera,true)
-		RenderScriptCams(true,false,1,true,true)
+		if Open then
+			local Coords = GetEntityCoords(Ped)
+			Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",Coords["x"],Coords["y"],Coords["z"] + 200.0,270.00,0.0,0.0,80.0,0,0)
+			SetCamActive(Camera,true)
+			RenderScriptCams(true,false,1,true,true)
 
-		SendNUIMessage({ Action = "Location", Table = Locate })
-	else
-		LocalPlayer["state"]["Invisible"] = false
-		SetEntityVisible(Ped,true,false)
-		TriggerEvent("hud:Active",true)
-		SetNuiFocus(false,false)
-		Destroy = false
+			SendNUIMessage({ Action = "Location", Table = Locate })
+		else
+			LocalPlayer["state"]["Invisible"] = false
+			SetEntityVisible(Ped,true,false)
+			TriggerEvent("hud:Active",true)
+			SetNuiFocus(false,false)
+			Destroy = false
 
-		if Barbershop then
-			Wait(1000)
-			TriggerEvent("creator:Open")
+			if Barbershop then
+				Wait(1000)
+				TriggerEvent("creator:Open")
+			end
 		end
-	end
 
-	DoScreenFadeIn(1000)
+		DoScreenFadeIn(1000)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN:CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:Close")
 AddEventHandler("spawn:Close",function()
+	Close = true
 	SendNUIMessage({ Action = "Close", Table = Locate })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

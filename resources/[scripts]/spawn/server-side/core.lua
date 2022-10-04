@@ -62,7 +62,6 @@ function Creative.CharacterChosen(Passport)
 		end
 		
 		vRP.CharacterChosen(source,Passport)
-		Wait(1000)
 		TriggerClientEvent("spawn:Close",source)
 	else
 		DropPlayer(source,"Conectando em personagem irregular.")

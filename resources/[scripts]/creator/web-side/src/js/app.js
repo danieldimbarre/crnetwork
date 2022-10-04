@@ -6,7 +6,7 @@ $(document).ready(() => {
   
   	function triggerClick(x,y){
 		var element = $(document.elementFromPoint(x,y));
-		// element.focus().click();
+		element.focus().click();
 		return true;
 	}
 	
@@ -172,10 +172,6 @@ $(document).ready(() => {
 
 		if(event.data.openCreator == false){
 			$("body").fadeOut();
-		}
-
-		if (event.data.type == "click") {
-			triggerClick(cursorX-1,cursorY-1);
 		}
 	});
 

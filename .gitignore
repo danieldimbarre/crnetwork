@@ -17,6 +17,7 @@ desktop.ini
 # TxAdmin files
 txData/
 start_*_default.bat
+start_txAdmin.bat
 server.bat
 
 # NodeJS modules

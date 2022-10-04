@@ -1077,13 +1077,14 @@ function TargetEnable()
 						if #(Coords - entCoords) <= 1.0 and Plate ~= "PDMSPORT" then
 							local Network = nil
 							local Combustivel = false
+							local vehModel = GetEntityModel(Entity)
 							SetEntityAsMissionEntity(Entity,true,true)
 
 							if NetworkGetEntityIsNetworked(Entity) then
 								Network = VehToNet(Entity)
 							end
 
-							Selected = { Plate,vRP.VehicleModel(Entity),Entity,Network }
+							Selected = { Plate,vRP.VehicleModel(vehModel),Entity,Network }
 
 							local Menu = {}
 

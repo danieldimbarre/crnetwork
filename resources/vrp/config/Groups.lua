@@ -9,20 +9,20 @@ Groups = {
 		["Admin"] = true,
 		["Moderator"] = true
 	},
-	["Police"] = {
-		["Police"] = true
-	},
 	["setPolice"] = {
 		["setPolice"] = true
+	},
+	["Police"] = {
+		["Police"] = true
 	},
 	["waitPolice"] = {
 		["waitPolice"] = true
 	},
-	["Paramedic"] = {
-		["Paramedic"] = true
-	},
 	["setParamedic"] = {
 		["setParamedic"] = true
+	},
+	["Paramedic"] = {
+		["Paramedic"] = true
 	},
 	["waitParamedic"] = {
 		["waitParamedic"] = true

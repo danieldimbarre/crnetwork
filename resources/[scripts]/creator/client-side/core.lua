@@ -11,7 +11,7 @@ vSERVER = Tunnel.getInterface("creator")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local cam = -1
+local Cam = -1
 local myFace = { 0,100,0,100,0,0,0,0,0,0,0,-1,5,-1,-1,5,0,0,0,0,-1,5,0,-1,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
@@ -25,9 +25,6 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 		displayCreator(false)
 		SendNUIMessage({ openCreator = false })
 
-		local Ped = PlayerPedId()
-		SetEntityVisible(Ped,false,false)
-		LocalPlayer["state"]["Invisible"] = true
     	vRP.stopAnim(false)
 
 		vSERVER.updateFace(myFace)
@@ -69,26 +66,24 @@ function displayCreator(enable)
 			SendNUIMessage({ type = "click" })
 		end
 
-		LocalPlayer["state"]["Invisible"] = false
-		SetEntityVisible(Ped,true,false)
 		vRP.playAnim(false,{ "mp_sleep","bind_pose_180" },true)
 		
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,0.4,0)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,0.4,0)
 		RenderScriptCams(false,false,0,1,0)
-		DestroyCam(cam,false)
+		DestroyCam(Cam,false)
 
-		if not DoesCamExist(cam) then
-			cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-			SetCamActive(cam,true)
+		if not DoesCamExist(Cam) then
+			Cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
+			SetCamActive(Cam,true)
 			RenderScriptCams(true,false,0,true,true)
-			SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.7)
-			SetCamRot(cam,0.0,0.0,GetEntityHeading(PlayerPedId()) + 180)
+			SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.7)
+			SetCamRot(Cam,0.0,0.0,GetEntityHeading(Ped) + 180)
 		end
 
 		defaultCharacter()
 	else
 		RenderScriptCams(false,false,0,1,0)
-		DestroyCam(cam,false)
+		DestroyCam(Cam,false)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -98,34 +93,30 @@ function defaultCharacter()
     local Ped = PlayerPedId()
 
     if GetEntityModel(Ped) == GetHashKey("mp_m_freemode_01") then
-        SetPedComponentVariation(Ped,1,-1,0,2)
-        SetPedComponentVariation(Ped,5,-1,0,2)
-        SetPedComponentVariation(Ped,7,-1,0,2)
-        SetPedComponentVariation(Ped,3,15,0,2)
-        SetPedComponentVariation(Ped,4,61,0,2)
-        SetPedComponentVariation(Ped,8,15,0,2)
-        SetPedComponentVariation(Ped,6,16,0,2)
-        SetPedComponentVariation(Ped,11,15,0,2)
-        SetPedComponentVariation(Ped,9,-1,0,2)
-        SetPedComponentVariation(Ped,10,-1,0,2)
-        SetPedPropIndex(Ped,2,-1,0,2)
-        SetPedPropIndex(Ped,6,-1,0,2)
-        SetPedPropIndex(Ped,7,-1,0,2)
+        SetPedComponentVariation(Ped,1,-1,0,1)
+		SetPedComponentVariation(Ped,3,15,0,1)
+		SetPedComponentVariation(Ped,4,61,0,1)
+		SetPedComponentVariation(Ped,5,-1,0,1)
+		SetPedComponentVariation(Ped,6,34,0,1)
+		SetPedComponentVariation(Ped,7,-1,0,1)
+		SetPedComponentVariation(Ped,8,15,0,1)
+		SetPedComponentVariation(Ped,9,-1,0,1)
+		SetPedComponentVariation(Ped,10,-1,0,1)
+		SetPedComponentVariation(Ped,11,15,0,1)
     else
-        SetPedComponentVariation(Ped,1,-1,0,2)
-        SetPedComponentVariation(Ped,5,-1,0,2)
-        SetPedComponentVariation(Ped,7,-1,0,2)
-        SetPedComponentVariation(Ped,3,15,0,2)
-        SetPedComponentVariation(Ped,4,57,0,2)
-        SetPedComponentVariation(Ped,8,15,0,2)
-        SetPedComponentVariation(Ped,6,5,0,2)
-        SetPedComponentVariation(Ped,11,105,0,2)
-        SetPedComponentVariation(Ped,9,-1,0,2)
-        SetPedComponentVariation(Ped,10,-1,0,2)
-        SetPedPropIndex(Ped,2,-1,0,2)
-        SetPedPropIndex(Ped,6,-1,0,2)
-        SetPedPropIndex(Ped,7,-1,0,2)
+        SetPedComponentVariation(Ped,1,-1,0,1)
+		SetPedComponentVariation(Ped,3,15,0,1)
+		SetPedComponentVariation(Ped,4,17,0,1)
+		SetPedComponentVariation(Ped,5,-1,0,1)
+		SetPedComponentVariation(Ped,6,35,0,1)
+		SetPedComponentVariation(Ped,7,-1,0,1)
+		SetPedComponentVariation(Ped,8,7,0,1)
+		SetPedComponentVariation(Ped,9,-1,0,1)
+		SetPedComponentVariation(Ped,10,-1,0,1)
+		SetPedComponentVariation(Ped,11,18,0,1)
     end
+
+	ClearAllPedProps(Ped)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPEN

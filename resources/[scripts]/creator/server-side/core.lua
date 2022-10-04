@@ -17,33 +17,9 @@ function Creative.updateFace(Face)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Barbershop", dvalue = json.encode(Face) })
-
-		Wait(500)
-
 		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Creator", dvalue = 1 })
-
-		Wait(500)
 
 		Player(source)["state"]["Route"] = 0
 		SetPlayerRoutingBucket(source,0)
-		TriggerClientEvent("spawn:justSpawn",source,false,true)
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- CREATOR:NEWCHARACTER
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("creator:newCharacter")
-AddEventHandler("creator:newCharacter",function()
-	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport then
-		local Creator = vRP.UserData(Passport,"Creator")
-		if Creator == 1 then
-			TriggerClientEvent("spawn:justSpawn",source,true,true)
-		else
-			Player(source)["state"]["Route"] = source
-			SetPlayerRoutingBucket(source,source)
-			TriggerClientEvent("creator:displayCreator",source,true)
-		end
-	end
-end)

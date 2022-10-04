@@ -132,11 +132,11 @@ function defaultCharacter()
     end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DISPLAYCREATOR
+-- OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("creator:displayCreator")
-AddEventHandler("creator:displayCreator",function(status)
-	displayCreator(status)
+RegisterNetEvent("creator:Open")
+AddEventHandler("creator:Open",function()
+	displayCreator(true)
 end) 
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATEFACE

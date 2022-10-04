@@ -145,7 +145,7 @@ AddEventHandler("spawn:justSpawn",function(Open,Barbershop)
 
 		if Barbershop then
 			Wait(1000)
-			TriggerEvent("barbershop:Open")
+			TriggerEvent("creator:Open")
 		end
 	end
 

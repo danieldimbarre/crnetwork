@@ -114,6 +114,14 @@ end)
 -- NEWCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("NewCharacter",function(Data,Callback)
+	DoScreenFadeOut(0)
+
+	for _,v in pairs(Peds) do
+		if DoesEntityExist(v) then
+			DeleteEntity(v)
+		end
+	end
+
 	vSERVER.NewCharacter(Data["name"],Data["name2"],Data["sex"])
 
 	Callback("Ok")

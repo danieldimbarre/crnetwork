@@ -58,11 +58,11 @@ function Creative.CharacterChosen(Passport)
 			SetPlayerRoutingBucket(source,0)
 			Player(source)["state"]["Route"] = 0
 		else
-			TriggerClientEvent("spawn:Close",source)
 			TriggerClientEvent("creator:Open",source)
 		end
 		
 		vRP.CharacterChosen(source,Passport)
+		TriggerClientEvent("spawn:Close",source)
 	else
 		DropPlayer(source,"Conectando em personagem irregular.")
 		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**License:** "..License.."\n**Motivo:** Conectou em outra conta\n**Address:** "..GetPlayerEndpoint(source),3092790)

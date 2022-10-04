@@ -29,6 +29,7 @@ end
 AddEventHandler("Connect",function(Passport,source)
 	local Creator = vRP.UserData(Passport,"Creator")
 	if Creator ~= 1 then
+		TriggerClientEvent("spawn:Close",source)
 		TriggerClientEvent("creator:Open",source)
 	end
 end)

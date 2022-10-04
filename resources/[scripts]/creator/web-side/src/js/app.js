@@ -6,7 +6,7 @@ $(document).ready(() => {
   
   	function triggerClick(x,y){
 		var element = $(document.elementFromPoint(x,y));
-		element.focus().click();
+		// element.focus().click();
 		return true;
 	}
 	

@@ -1,8 +1,6 @@
 $(document).ready(() => {
 	var documentWidth = document.documentElement.clientWidth;
 	var documentHeight = document.documentElement.clientHeight;
-	var cursorX = documentWidth/2;
-	var cursorY = documentHeight/2;
   
   	function triggerClick(x,y){
 		var element = $(document.elementFromPoint(x,y));
@@ -104,10 +102,6 @@ $(document).ready(() => {
 		if(event.data.openBarbershop == false){
 			$("body").fadeOut();
 		}
-
-		// if (event.data.type == "click") {
-		// 	triggerClick(cursorX-1,cursorY-1);
-		// }
 	});
 
   	$('.leftC .sectionCategorys .option').on('click', function () {

@@ -527,13 +527,19 @@ end)
 -- TXADMIN:EVENTS:SERVERSHUTTINGDOWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler('txAdmin:events:serverShuttingDown',function(eventData)
-	local playerList = vRP.Players()
-	for Passport,_ in pairs(playerList) do
-		vRP.Kick(Passport,"Desconectado, a cidade reiniciou.")
-	end
-
     TriggerEvent("SaveServer")
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TXADMIN:EVENTS:SCHEDULEDRESTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- AddEventHandler('txAdmin:events:scheduledRestart',function(eventData)
+-- 	if eventData.secondsRemaining == 60 then
+--         CreateThread(function()
+--             Wait(30000)
+--             TriggerEvent("SaveServer")
+--         end)
+--     end
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------

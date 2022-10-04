@@ -3,8 +3,11 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 SecondDeath = 300
 Whitelisted = true
+CombatLogMinutes = 3
+BannedText = "Banido"
 CleanDeathInventory = true
 ServerName = "Energy"
+ReleaseText = "Envie na sala liberação"
 SpawnCoords = vec3(239.41,-1381.01,33.73)
 AirportCoords = vec3(-1042.36,-2745.73,21.35)
 -----------------------------------------------------------------------------------------------------------------------------------------

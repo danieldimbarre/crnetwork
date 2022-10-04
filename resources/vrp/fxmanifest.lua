@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "1.5.7"
+version "1.5.8"
 author "ImagicTheCat"
 creative_network "yes"
 

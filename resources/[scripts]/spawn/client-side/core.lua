@@ -318,7 +318,11 @@ function Barber(Ped,status)
 	SetPedHairColor(Ped,myClothes[10],myClothes[11])
 
 	SetPedHeadOverlay(Ped,4,myClothes[12],myClothes[13] * 0.1)
-	SetPedHeadOverlayColor(Ped,4,1,myClothes[14],myClothes[14])
+	if myClothes[14] == -1 then
+        SetPedHeadOverlayColor(Ped,4,0,0,0)
+    else
+	    SetPedHeadOverlayColor(Ped,4,2,myClothes[14],myClothes[14])
+    end
 
 	SetPedHeadOverlay(Ped,8,myClothes[15],myClothes[16] * 0.1)
 	SetPedHeadOverlayColor(Ped,8,1,myClothes[17],myClothes[17])

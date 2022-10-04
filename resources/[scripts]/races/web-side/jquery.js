@@ -28,7 +28,7 @@ function MinimalTimers(Seconds){
 window.addEventListener("message",function(event){
 	switch (event["data"]["Action"]){
 		case "Display":
-			if (event["data"]["Status"] == true){
+			if (event["data"]["Status"]){
 				if ($("#Scoreboard").css("display") === "none"){
 					$("#Scoreboard").css("display","block");
 					Max = event["data"]["Max"];

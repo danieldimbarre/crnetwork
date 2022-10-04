@@ -220,3 +220,10 @@ AddEventHandler("syncarea",function(x,y,z,Distance)
 	ClearAreaOfVehicles(x,y,z,Distance + 0.0,false,false,false,false,false)
 	ClearAreaOfEverything(x,y,z,Distance + 0.0,false,false,false,false)
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BARBERSHOP:OPEN
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("barbershop:Open")
+AddEventHandler("barbershop:Open",function()
+	displayBarbershop(true)
+end)

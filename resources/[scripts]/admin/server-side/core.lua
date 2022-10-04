@@ -371,11 +371,11 @@ RegisterCommand("players",function(source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ADMIN:PROPCOORDS
+-- ADMIN:COORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("admin:PropCoords")
-AddEventHandler("admin:PropCoords",function(Entity)
-	vRP.Archive("coordenadas.txt",mathLength(Entity[4]["x"])..","..mathLength(Entity[4]["y"])..","..mathLength(Entity[4]["z"]))
+RegisterServerEvent("admin:Coords")
+AddEventHandler("admin:Coords",function(Coords)
+	vRP.Archive("coordenadas.txt",mathLength(Coords["x"])..","..mathLength(Coords["y"])..","..mathLength(Coords["z"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CDS
@@ -416,15 +416,33 @@ end)
 -- KICKALL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("kickall",function(source)
-	if source == 0 then
-		local playerList = vRP.Players()
-		for Passport,_ in pairs(playerList) do
-			vRP.Kick(Passport,"Desconectado, a cidade reiniciou.")
-			Wait(100)
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if not vRP.HasGroup(Passport,"Admin") then
+			return
 		end
-
-		TriggerEvent("admin:KickAll")
 	end
+
+	local List = vRP.Players()
+	for Passport,_ in pairs(List) do
+		vRP.Kick(Passport,"Desconectado, a cidade reiniciou.")
+		Wait(100)
+	end
+
+	TriggerEvent("SaveServer")
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SAVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("save",function(source)
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if not vRP.HasGroup(Passport,"Admin") then
+			return
+		end
+	end
+
+	TriggerEvent("SaveServer")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMALL

@@ -6075,9 +6075,9 @@ local Races = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- FINISHRACE
+-- FINISH
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.finishRace(Id,Points)
+function Creative.Finish(Id,Points)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -6096,9 +6096,9 @@ function Creative.finishRace(Id,Points)
 			local Rand = math.random(Races[Id]["Payment"][1],Races[Id]["Payment"][1])
 			vRP.GenerateItem(Passport,"dollars",Rand,true)
 
-			local Top = vRP.Query("races/TopFive",{ Race = Id })
-			if Top[1] then
-				if parseInt(Top[1]["Points"]) > parseInt(Points) then
+			local Ranking = vRP.Query("races/TopFive",{ Race = Id })
+			if Ranking[1] then
+				if parseInt(Ranking[1]["Points"]) > parseInt(Points) then
 					vRP.GenerateItem(Passport,"racetrophy",1,true)
 				end
 			end
@@ -6109,12 +6109,12 @@ function Creative.finishRace(Id,Points)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHECKPERMISSION
+-- START
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.checkPermission(Id)
+function Creative.Start(Id)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and Races[Id] then
 		if not Races[Id]["Cooldown"][Passport] then
 			Races[Id]["Cooldown"][Passport] = os.time()
 		end
@@ -6146,16 +6146,16 @@ function Creative.checkPermission(Id)
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTRANKING
+-- RANKING
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.requestRanking(Id)
+function Creative.Ranking(Id)
 	local Consult = vRP.Query("races/Ranking",{ Race = Id })
 	return json.encode(Consult)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- EXITRACE
+-- CANCEL
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.exitRace()
+function Creative.Cancel()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

@@ -144,10 +144,12 @@ function Creative.Informations(Number)
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ADMIN:KICKALL
+-- SAVESERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("admin:KickAll",function()
+AddEventHandler("SaveServer",function()
 	SaveResourceFile("logs","plants.json",json.encode(Plants),-1)
+
+	print("O arquivo plants.lua terminou de salvar os dados.")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART

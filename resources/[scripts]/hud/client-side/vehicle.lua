@@ -444,7 +444,7 @@ RegisterNetEvent("hud:activeNitro")
 AddEventHandler("hud:activeNitro",function(Network,Status)
 	if NetworkDoesNetworkIdExist(Network) then
 		local Vehicle = NetToEnt(Network)
-		if DoesEntityExist(Vehicle) then
+		if DoesEntityExist(Vehicle) and LoadPtfxAsset("veh_xs_vehicle_mods") then
 			SetVehicleNitroEnabled(Vehicle,Status)
 		end
 	end

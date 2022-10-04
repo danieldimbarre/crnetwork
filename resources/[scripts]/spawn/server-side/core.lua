@@ -95,6 +95,7 @@ function Creative.NewCharacter(Name,Name2,Sex)
 		if Consult[1] then
 			TriggerClientEvent("spawn:SpawnClose",source)
 			vRP.CharacterChosen(source,Consult[1]["id"],Sex)
+			TriggerClientEvent("spawn:Close",source)
 			Player(source)["state"]["Route"] = 0
 			SetPlayerRoutingBucket(source,0)
 		end

@@ -30,9 +30,9 @@ local PhotoCount = 1
 
 function func.takeScreenshot(gender, key, component, data, texture)
     local source = source
-    local fileName = 'nation_screenshot/'..gender..'/'..key..'/'..component..'.png'
+    local fileName = 'energy-images/'..gender..'/'..key..'/'..component..'.png'
     if texture then
-        fileName = 'nation_screenshot/'..gender..'/'..key..'/'..component..'_'..texture..'.png'
+        fileName = 'energy-images/'..gender..'/'..key..'/'..component..'_'..texture..'.png'
     end
     if key == "tattoo" then
         if Diretory[gender][component] then
@@ -40,11 +40,10 @@ function func.takeScreenshot(gender, key, component, data, texture)
             PhotoCount = 1
         end
 
-        component = PhotoCount
-        fileName = 'nation_screenshot/'..gender..'/'..key..'/'..Paste..'/'..component..'.png'
+        fileName = 'energy-images/'..gender..'/'..key..'/'..Paste..'/'..PhotoCount..'.png'
         PhotoCount = PhotoCount + 1
     elseif key == "overlay" then
-        fileName = 'nation_screenshot/'..gender..'/tattoo/hair/'..component..'.png'
+        fileName = 'energy-images/'..gender..'/tattoo/hair/'..component..'.png'
     end
     exports['screenshot-basic']:requestClientScreenshot(source, {
         fileName = fileName,

@@ -1708,7 +1708,7 @@ tattoos =  {
             { ["overlay"] = "MP_Sum2_Tat_051_F", ["collection"] = "mpSum2_overlays" },
             { ["overlay"] = "MP_Sum2_Tat_052_F", ["collection"] = "mpSum2_overlays" }
         }
-    },
+    }
 }
 
 

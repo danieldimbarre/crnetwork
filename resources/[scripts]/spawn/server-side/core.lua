@@ -53,15 +53,9 @@ function Creative.CharacterChosen(Passport)
 	local License = vRP.Identities(source)
 	local Consult = vRP.Query("characters/UserLicense",{ id = Passport, license = License })
 	if Consult[1] then
-		local Creator = vRP.UserData(Passport,"Creator")
-		if Creator == 1 then
-			SetPlayerRoutingBucket(source,0)
-			Player(source)["state"]["Route"] = 0
-			vRP.CharacterChosen(source,Passport)
-		else
-			vRP.CharacterChosen(source,Passport,Consult[1]["sex"])
-			TriggerClientEvent("spawn:Close",source)
-		end
+		SetPlayerRoutingBucket(source,0)
+		Player(source)["state"]["Route"] = 0
+		vRP.CharacterChosen(source,Passport)
 	else
 		DropPlayer(source,"Conectando em personagem irregular.")
 		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**License:** "..License.."\n**Motivo:** Conectou em outra conta\n**Address:** "..GetPlayerEndpoint(source),3092790)

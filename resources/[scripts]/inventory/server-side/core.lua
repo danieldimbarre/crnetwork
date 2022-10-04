@@ -2020,8 +2020,8 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 				local Members = exports["vrp"]:Party(Passport,source,20)
 				if #Members > 1 then
 					for _,v in pairs(Members) do
-						vRP.GenerateItem(v,"dollars",AmountItens * #Members,true)
-						vRP.PutExperience(v,"Dismantly",2)
+						vRP.GenerateItem(v["Passport"],"dollars",AmountItens * #Members,true)
+						vRP.PutExperience(v["Passport"],"Dismantly",2)
 					end
 				else
 					vRP.GenerateItem(Passport,"dollars",AmountItens,true)

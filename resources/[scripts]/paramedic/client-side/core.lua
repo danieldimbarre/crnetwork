@@ -22,8 +22,8 @@ AddEventHandler("gameEventTriggered",function(name,Message)
 	if LocalPlayer["state"]["Route"] < 900000 then
 		if name == "CEventNetworkEntityDamage" then
 			if PlayerPedId() == Message[1] and LocalPlayer["state"]["Active"] then
-				if Message[7] == 126349499 or Message[7] == 1064738331 or Message[7] == 85055149 then
-					SetPedToRagdoll(PlayerPedId(),2500,2500,0,0,0,0)
+				if Message[7] == 126349499 or Message[7] == 1064738331 or Message[7] == 85055149) and GetEntityHealth(Message[1]) > 100 then
+					SetPedToRagdoll(Message[1],2500,2500,0,0,0,0)
 				else
 					if GetGameTimer() >= Injuried then
 						if not IsPedInAnyVehicle(Message[1]) and GetEntityHealth(Message[1]) > 100 then

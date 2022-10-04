@@ -321,7 +321,7 @@ window.addEventListener("message",function(event){
 				$(html).fadeIn("normal").appendTo("#Textform");
 			} else if (event["data"]["Mode"] === "Update"){
 				$("#Textform-" + event["data"]["Number"]).css("left",event["data"]["x"] * 100 + "%").css("top",event["data"]["y"] * 100 + "%");
-				$("#Textform-" + event["data"]["Number"]).text(event["data"]["Text"])
+				$("#Textform-" + event["data"]["Number"]).html(event["data"]["Text"])
 			} else if (event["data"]["Mode"] === "Remove"){
 				$("#Textform-" + event["data"]["Number"]).fadeOut("normal",function(){ $(this).remove(); });
 			}

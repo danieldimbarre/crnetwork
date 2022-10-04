@@ -158,9 +158,9 @@ AddEventHandler("spawn:justSpawn",function(Open,Barbershop)
 				TriggerEvent("creator:Open")
 			end
 		end
-
-		DoScreenFadeIn(1000)
 	end
+
+	DoScreenFadeIn(1000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN:CLOSE

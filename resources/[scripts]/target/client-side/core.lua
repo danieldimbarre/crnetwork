@@ -711,6 +711,11 @@ CreateThread(function()
 				event = "player:checkTrash",
 				label = "Verificar",
 				tunnel = "server"
+			},{
+				event = "chest:Custom",
+				label = "Abrir",
+				tunnel = "entity",
+				service = "Normal"
 			}
 		},
 		Distance = 0.75
@@ -1042,10 +1047,6 @@ function TargetEnable()
 								Selected = v["targetoptions"]["shop"]
 							end
 
-							if v["targetoptions"]["shopserver"] ~= nil then
-								Selected = v["targetoptions"]["shopserver"]
-							end
-
 							SendNUIMessage({ Action = "Valid", data = Zones[k]["targetoptions"]["options"] })
 
 							Sucess = true
@@ -1331,13 +1332,15 @@ RegisterNUICallback("Select",function(Data,Callback)
 	elseif Data["tunnel"] == "server" then
 		TriggerServerEvent(Data["event"],Selected)
 	elseif Data["tunnel"] == "shop" then
-		TriggerEvent(Data["event"],Selected)
+		TriggerEvent(Data["event"],Selected,Data["service"])
 	elseif Data["tunnel"] == "shopserver" then
 		TriggerServerEvent(Data["event"],Selected)
 	elseif Data["tunnel"] == "boxes" then
 		TriggerServerEvent(Data["event"],Selected,Data["service"])
 	elseif Data["tunnel"] == "paramedic" then
 		TriggerServerEvent(Data["event"],Selected[1])
+	elseif Data["tunnel"] == "entity" then
+		TriggerEvent(Data["event"],Selected[1],Data["service"])
 	elseif Data["tunnel"] == "police" then
 		TriggerServerEvent(Data["event"],Selected,Data["service"])
 	elseif Data["tunnel"] == "products" then

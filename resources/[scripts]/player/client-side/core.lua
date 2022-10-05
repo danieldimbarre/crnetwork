@@ -828,7 +828,7 @@ local inTrash = false
 -- PLAYER:ENTERTRUNK
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:enterTrash")
-AddEventHandler("player:enterTrash",function(entity)
+AddEventHandler("player:enterTrash",function(Entity)
 	if not inTrash then
 		LocalPlayer["state"]["Commands"] = true
 		LocalPlayer["state"]["Invisible"] = true
@@ -836,9 +836,9 @@ AddEventHandler("player:enterTrash",function(entity)
 		local Ped = PlayerPedId()
 		FreezeEntityPosition(Ped,true)
 		SetEntityVisible(Ped,false,false)
-		SetEntityCoords(Ped,entity[4],false,false,false,false)
+		SetEntityCoords(Ped,Entity[4],false,false,false,false)
 
-		inTrash = GetOffsetFromEntityInWorldCoords(entity[1],0.0,-1.5,0.0)
+		inTrash = GetOffsetFromEntityInWorldCoords(Entity[1],0.0,-1.5,0.0)
 
 		while inTrash do
 			Wait(1)

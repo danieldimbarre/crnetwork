@@ -1,21 +1,21 @@
 $(document).ready(function(){
 	window.addEventListener("message",function(event){
-		switch(event.data.action){
-			case "showMenu":
-				requestChest();
+		switch(event["data"]["Action"]){
+			case "Open":
+				Chest();
 				$(".inventory").css("display","flex");
 			break;
 
-			case "hideMenu":
+			case "Close":
 				$(".inventory").css("display","none");
 				$(".ui-tooltip").hide();
 			break;
 
-			case "requestChest":
-				requestChest();
+			case "Refresh":
+				Chest();
 			break;
 
-			case "updateWeight":
+			case "Update":
 				$("#weightTextLeft").html(`${(event["data"]["invPeso"]).toFixed(2)}   /   ${(event["data"]["invMaxpeso"]).toFixed(2)}`);
 				$("#weightTextRight").html(`${(event["data"]["chestPeso"]).toFixed(2)}   /   ${(event["data"]["chestMaxpeso"]).toFixed(2)}`);
 
@@ -25,17 +25,15 @@ $(document).ready(function(){
 		}
 	});
 
-	document.onkeyup = data => {
-		if (data["key"] === "Escape"){
-			$.post("http://chest/invClose");
-			$(".invRight").html("");
-			$(".invLeft").html("");
+	document.onkeyup = function(event){
+		switch (event["key"]){
+			case "Escape":
+				$.post("http://chest/Close");
+				$(".invRight").html("");
+				$(".invLeft").html("");
+			break;
 		}
 	};
-
-	$('body').mousedown(e => {
-		if(e.button == 1) return false;
-	});
 });
 
 const updateDrag = () => {
@@ -122,14 +120,14 @@ const updateDrag = () => {
 					amount: parseInt(amount)
 				}));
 			} else if (origin === "invLeft" && tInv === "invRight"){
-				$.post("http://chest/storeItem",JSON.stringify({
+				$.post("http://chest/Store",JSON.stringify({
 					item: itemData.key,
 					slot: itemData.slot,
 					target: target,
 					amount: parseInt(amount)
 				}));
 			} else if (origin === "invRight" && tInv === "invRight"){
-				$.post("http://chest/updateChest",JSON.stringify({
+				$.post("http://chest/Update",JSON.stringify({
 					item: itemData.key,
 					slot: itemData.slot,
 					target: target,
@@ -222,14 +220,14 @@ const updateDrag = () => {
 					amount: parseInt(amount)
 				}));
 			} else if (origin === "invLeft" && tInv === "invRight"){
-				$.post("http://chest/storeItem",JSON.stringify({
+				$.post("http://chest/Store",JSON.stringify({
 					item: itemData.key,
 					slot: itemData.slot,
 					target: target,
 					amount: parseInt(amount)
 				}));
 			} else if (origin === "invRight" && tInv === "invRight"){
-				$.post("http://chest/updateChest",JSON.stringify({
+				$.post("http://chest/Update",JSON.stringify({
 					item: itemData.key,
 					slot: itemData.slot,
 					target: target,
@@ -276,8 +274,8 @@ const colorPicker = (percent) => {
 	return colorPercent;
 }
 
-const requestChest = () => {
-	$.post("http://chest/requestChest",JSON.stringify({}),(data) => {
+const Chest = () => {
+	$.post("http://chest/Chest",JSON.stringify({}),(data) => {
 		$("#weightTextLeft").html(`${(data["invPeso"]).toFixed(2)}   /   ${(data["invMaxpeso"]).toFixed(2)}`);
 		$("#weightTextRight").html(`${(data["chestPeso"]).toFixed(2)}   /   ${(data["chestMaxpeso"]).toFixed(2)}`);
 

@@ -1085,7 +1085,7 @@ function TargetEnable()
 								Network = VehToNet(Entity)
 							end
 
-							Selected = { Plate,vRP.VehicleModel(vehModel),Entity,Network }
+							Selected = { Plate,vRP.VehicleModel(Entity),Entity,Network }
 
 							local Menu = {}
 

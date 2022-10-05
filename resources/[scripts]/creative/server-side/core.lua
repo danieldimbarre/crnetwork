@@ -73,7 +73,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport,source)
 	if Players[source] then
-		vRP.Teleport(source,List[Index]["Other"][Players[source]]["x"],List[Index]["Other"][Players[source]]["y"],List[Index]["Other"][Players[source]]["z"])
+		vRP.Teleport(source,List[Players[source]]["Other"]["x"],List[Players[source]]["Other"]["y"],List[Players[source]]["Other"]["z"])
 
 		Players[source] = nil
 	end

@@ -179,7 +179,7 @@ function nitroEnable()
 										NitroFuel = NitroFuel - 1
 
 										if not NitroFlame then
-											vSERVER.activeNitro(VehToNet(Vehicle),true)
+											vSERVER.ActiveNitro(VehToNet(Vehicle),true)
 											SetVehicleRocketBoostActive(Vehicle,true)
 											SetVehicleBoostActive(Vehicle,true)
 											ModifyVehicleTopSpeed(Vehicle,50.0)
@@ -188,9 +188,9 @@ function nitroEnable()
 										end
 									else
 										if NitroFlame then
-											vSERVER.activeNitro(VehToNet(Vehicle),false)
+											vSERVER.ActiveNitro(VehToNet(Vehicle),false)
 											SetVehicleRocketBoostActive(Vehicle,false)
-											vSERVER.updateNitro(NitroFlame,NitroFuel)
+											vSERVER.UpdateNitro(NitroFlame,NitroFuel)
 											SetVehicleBoostActive(Vehicle,false)
 											ModifyVehicleTopSpeed(Vehicle,0.0)
 											SetLightTrail(Vehicle,false)
@@ -225,9 +225,9 @@ function nitroDisable()
 		local Vehicle = GetVehiclePedIsUsing(Ped)
 
 		if NitroFlame then
-			vSERVER.activeNitro(VehToNet(Vehicle),false)
+			vSERVER.ActiveNitro(VehToNet(Vehicle),false)
 			SetVehicleRocketBoostActive(Vehicle,false)
-			vSERVER.updateNitro(NitroFlame,NitroFuel)
+			vSERVER.UpdateNitro(NitroFlame,NitroFuel)
 			SetVehicleBoostActive(Vehicle,false)
 			ModifyVehicleTopSpeed(Vehicle,0.0)
 			SetLightTrail(Vehicle,false)
@@ -345,10 +345,10 @@ function CreatePurgeSprays(Vehicle,xOffset,yOffset,zOffset,xRot,yRot)
 	return StartNetworkedParticleFxNonLoopedOnEntity("ent_sht_steam",Vehicle,xOffset,yOffset,zOffset,xRot,yRot,0.0,0.5,false,false,false)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- HUD:ACTIVENITRO
+-- HUD:NITRO
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("hud:activeNitro")
-AddEventHandler("hud:activeNitro",function(Network,Status)
+RegisterNetEvent("hud:Nitro")
+AddEventHandler("hud:Nitro",function(Network,Status)
 	if NetworkDoesNetworkIdExist(Network) then
 		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) and LoadPtfxAsset("veh_xs_vehicle_mods") then

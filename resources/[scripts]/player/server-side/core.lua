@@ -741,7 +741,7 @@ AddEventHandler("player:outfitFunctions",function(Mode)
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) then
 		if Mode == "aplicar" then
-			local result = vRP.GetSrvData("saveClothes:"..Passport)
+			local result = vRP.GetSrvData("Outfit:"..Passport)
 			if result["pants"] ~= nil then
 				TriggerClientEvent("updateRoupas",source,result)
 				TriggerClientEvent("Notify",source,"verde","Roupas aplicadas.",3000)
@@ -751,7 +751,7 @@ AddEventHandler("player:outfitFunctions",function(Mode)
 		elseif Mode == "salvar" then
 			local custom = vSKINSHOP.getCustomization(source)
 			if custom then
-				vRP.SetSrvData("saveClothes:"..Passport,custom,true)
+				vRP.SetSrvData("Outfit:"..Passport,custom,true)
 				TriggerClientEvent("Notify",source,"verde","Roupas salvas.",3000)
 			end
 		elseif Mode == "remover" then

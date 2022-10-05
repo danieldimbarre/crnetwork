@@ -712,10 +712,10 @@ CreateThread(function()
 				label = "Verificar",
 				tunnel = "server"
 			},{
-				event = "chest:Custom",
+				event = "chest:Open",
 				label = "Abrir",
 				tunnel = "entity",
-				service = "Normal"
+				service = "Custom"
 			}
 		},
 		Distance = 0.75

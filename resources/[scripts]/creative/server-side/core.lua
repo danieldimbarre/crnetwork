@@ -19,14 +19,14 @@ local Players = {}
 local List = {
 	[15] = {
 		["Route"] = 1,
-		["Other"] = vec3(848.79,3003.35,44.52)
+		["Other"] = { 848.79,3003.35,44.52 }
 	},
 	[16] = {
 		["Route"] = 0
 	},
 	[17] = {
-		["Route"] = 1,
-		["Other"] = vec3(-391.17,4354.86,57.68)
+		["Route"] = 2,
+		["Other"] = { -391.17,4354.86,57.68 }
 	},
 	[18] = {
 		["Route"] = 0
@@ -73,7 +73,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport,source)
 	if Players[source] then
-		vRP.Teleport(source,List[Players[source]]["Other"]["x"],List[Players[source]]["Other"]["y"],List[Players[source]]["Other"]["z"])
+		vRP.Teleport(source,List[Players[source]]["Other"][1],List[Players[source]]["Other"][2],List[Players[source]]["Other"][3])
 
 		Players[source] = nil
 	end

@@ -375,7 +375,9 @@ CreateThread(function()
 	local Table = {}
 
 	for _,v in pairs(Teleport) do
-		table.insert(Table,{ v[1],v[2],v[3],1,"E","Porta de Acesso","Pressione para acessar" })
+		if not v[7] then
+			table.insert(Table,{ v[1],v[2],v[3],1,"E","Porta de Acesso","Pressione para acessar" })
+		end
 	end
 
 	TriggerEvent("hoverfy:Insert",Table)

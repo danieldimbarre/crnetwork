@@ -59,8 +59,8 @@ CreateThread(function()
 					Boxes = Boxes + 1
 
 					local Loot = math.random(#Loots)
-					vRP.RemSrvData("stackChest:Helicrash"..Number,false)
-					vRP.SetSrvData("stackChest:Helicrash"..Number,Loots[Loot],false)
+					vRP.RemSrvData("Chest:Helicrash"..Number,false)
+					vRP.SetSrvData("Chest:Helicrash"..Number,Loots[Loot],false)
 				end
 			end
 

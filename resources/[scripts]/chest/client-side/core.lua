@@ -7,42 +7,53 @@ local Tunnel = module("vrp","lib/Tunnel")
 -----------------------------------------------------------------------------------------------------------------------------------------
 vSERVER = Tunnel.getInterface("chest")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHESTCOORDS
+-- CHESTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local chestCoords = {
-	{ "Police",360.43,-1600.48,25.83,"3" },
-	{ "Police",486.46,-994.94,31.07,"3" },
-	{ "Police",1836.96,3685.16,34.80,"3" },
-	{ "Police",-445.38,6019.65,37.38,"3" },
-	{ "Police",386.72,800.09,187.47,"3" },
-	{ "Police",1844.31,2573.84,46.26,"3" },
-	{ "Paramedic",306.17,-601.98,43.25,"3" },
-	{ "Paramedic",-258.00,6332.62,32.72,"3" },
-	{ "BurgerShot",-1203.11,-895.47,13.99,"1" },
-	{ "PizzaThis",796.55,-749.32,31.26,"1" },
-	{ "UwuCoffee",-572.65,-1049.74,26.61,"1" },
-	{ "BeanMachine",123.04,-1043.76,29.27,"1" },
-	{ "Ballas",94.96,-1983.86,20.44,"1" },
-	{ "Families",-30.36,-1434.1,31.49,"1" },
-	{ "Vagos",347.04,-2067.86,20.86,"1" },
-	{ "Aztecas",513.49,-1802.83,28.51,"1" },
-	{ "Bloods",231.62,-1752.92,28.98,"1" },
-	{ "Triads",-816.51,-696.17,32.13,"1" },
-	{ "Razors",502.55,-70.36,58.15,"1" },
-	{ "trayShot",-1195.20,-893.13,14.41,"2" },
-	{ "trayDesserts",-584.01,-1059.30,22.41,"2" },
-	{ "trayPizza",811.10,-752.78,26.74,"2" },
-	{ "trayBean",121.8,-1037.27,29.25,"2" }
+local Chests = {
+	{ ["Name"] = "Police", ["Coords"] = vec3(360.43,-1600.48,25.83), ["Mode"] = "1" },
+	{ ["Name"] = "Police", ["Coords"] = vec3(486.46,-994.94,31.07), ["Mode"] = "1" },
+	{ ["Name"] = "Police", ["Coords"] = vec3(1836.96,3685.16,34.80), ["Mode"] = "1" },
+	{ ["Name"] = "Police", ["Coords"] = vec3(-445.38,6019.65,37.38), ["Mode"] = "1" },
+	{ ["Name"] = "Police", ["Coords"] = vec3(386.72,800.09,187.47), ["Mode"] = "1" },
+	{ ["Name"] = "Police", ["Coords"] = vec3(1844.31,2573.84,46.26), ["Mode"] = "1" },
+	{ ["Name"] = "Paramedic", ["Coords"] = vec3(306.17,-601.98,43.25), ["Mode"] = "2" },
+	{ ["Name"] = "Paramedic", ["Coords"] = vec3(-258.00,6332.62,32.72), ["Mode"] = "2" },
+	{ ["Name"] = "BurgerShot", ["Coords"] = vec3(-1203.11,-895.47,13.99), ["Mode"] = "2" },
+	{ ["Name"] = "PizzaThis", ["Coords"] = vec3(796.55,-749.32,31.26), ["Mode"] = "2" },
+	{ ["Name"] = "UwuCoffee", ["Coords"] = vec3(-572.65,-1049.74,26.61), ["Mode"] = "2" },
+	{ ["Name"] = "BeanMachine", ["Coords"] = vec3(123.04,-1043.76,29.27), ["Mode"] = "2" },
+	{ ["Name"] = "Ballas", ["Coords"] = vec3(94.96,-1983.86,20.44), ["Mode"] = "2" },
+	{ ["Name"] = "Families", ["Coords"] = vec3(-30.36,-1434.1,31.49), ["Mode"] = "2" },
+	{ ["Name"] = "Vagos", ["Coords"] = vec3(347.04,-2067.86,20.86), ["Mode"] = "2" },
+	{ ["Name"] = "Aztecas", ["Coords"] = vec3(513.49,-1802.83,28.51), ["Mode"] = "2" },
+	{ ["Name"] = "Bloods", ["Coords"] = vec3(231.62,-1752.92,28.98), ["Mode"] = "2" },
+	{ ["Name"] = "Triads", ["Coords"] = vec3(-816.51,-696.17,32.13), ["Mode"] = "2" },
+	{ ["Name"] = "Razors", ["Coords"] = vec3(502.55,-70.36,58.15), ["Mode"] = "2" },
+	{ ["Name"] = "trayShot", ["Coords"] = vec3(-1195.20,-893.13,14.41), ["Mode"] = "3" },
+	{ ["Name"] = "trayDesserts", ["Coords"] = vec3(-584.01,-1059.30,22.41), ["Mode"] = "3" },
+	{ ["Name"] = "trayPizza", ["Coords"] = vec3(811.10,-752.78,26.74), ["Mode"] = "3" },
+	{ ["Name"] = "trayBean", ["Coords"] = vec3(121.8,-1037.27,29.25), ["Mode"] = "3" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHESTINFOS
+-- LABELS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local chestInfos = {
+local Labels = {
 	["1"] = {
 		{
-			event = "chest:openSystem",
-			label = "Abrir",
-			tunnel = "shop"
+			event = "chest:Open",
+			label = "Compartimento Geral",
+			tunnel = "shop",
+			service = "Normal"
+		},{
+			event = "chest:Open",
+			label = "Compartimento Pessoal",
+			tunnel = "shop",
+			service = "Personal"
+		},{
+			event = "chest:Open",
+			label = "Compartimento Evidências",
+			tunnel = "shop",
+			service = "Evidences"
 		},{
 			event = "chest:Upgrade",
 			label = "Aumentar",
@@ -51,126 +62,95 @@ local chestInfos = {
 	},
 	["2"] = {
 		{
-			event = "chest:openSystem",
-			label = "Bandeja",
-			tunnel = "shop"
-		}
-	},
-	["3"] = {
-		{
-			event = "chest:openSystem",
-			label = "Compartimento Geral",
-			tunnel = "shop"
-		},{
-			event = "chest:openPersonal",
-			label = "Compartimento Pessoal",
-			tunnel = "shop"
+			event = "chest:Open",
+			label = "Abrir",
+			tunnel = "shop",
+			service = "Normal"
 		},{
 			event = "chest:Upgrade",
 			label = "Aumentar",
 			tunnel = "shopserver"
 		}
 	},
-	["4"] = {
+	["3"] = {
 		{
-			event = "chest:openCustom",
-			label = "Abrir",
-			tunnel = "shop"
+			event = "chest:Open",
+			label = "Bandeja",
+			tunnel = "shop",
+			service = "Normal"
 		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSTART
+-- THREADINIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for k,v in pairs(chestCoords) do
-		exports["target"]:AddCircleZone("Chest:"..k,vec3(v[2],v[3],v[4]),1.0,{
-			name = "Chest:"..k,
+	for Name,v in pairs(Chests) do
+		exports["target"]:AddCircleZone("Chest:"..Name,v["Coords"],1.0,{
+			name = "Chest:"..Name,
 			heading = 3374176
 		},{
-			shop = v[1],
 			Distance = 1.5,
-			options = chestInfos[v[5]]
+			shop = v["Name"],
+			options = Labels[v["Mode"]]
 		})
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHEST:OPENSYSTEM
+-- CHEST:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("chest:openSystem",function(Name)
+AddEventHandler("chest:Open",function(Name,Init)
 	if LocalPlayer["state"]["Route"] < 900000 then
-		if vSERVER.Permissions(Name,"Chest") then
+		if vSERVER.Permissions(Name,Init) then
 			SetNuiFocus(true,true)
-			SendNUIMessage({ action = "showMenu" })
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CHEST:OPENPERSONAL
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("chest:openPersonal",function(Name)
-	if LocalPlayer["state"]["Route"] < 900000 then
-		if vSERVER.Permissions(Name,"Personal") then
-			SetNuiFocus(true,true)
-			SendNUIMessage({ action = "showMenu" })
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CHEST:OPENCUSTOM
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("chest:openCustom",function(Name)
-	if LocalPlayer["state"]["Route"] < 900000 then
-		if vSERVER.Permissions(Name,"Custom") then
-			SetNuiFocus(true,true)
-			SendNUIMessage({ action = "showMenu" })
+			SendNUIMessage({ Action = "Open" })
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHESTCLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("invClose",function(Data,Callback)
-	SendNUIMessage({ action = "hideMenu" })
+RegisterNUICallback("Close",function(Data,Callback)
+	SendNUIMessage({ Action = "Close" })
 	SetNuiFocus(false,false)
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TAKEITEM
+-- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("takeItem",function(Data,Callback)
+RegisterNUICallback("Take",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
-		vSERVER.takeItem(Data["item"],Data["slot"],Data["amount"],Data["target"])
+		vSERVER.Take(Data["item"],Data["slot"],Data["amount"],Data["target"])
 	end
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- STOREITEM
+-- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("storeItem",function(Data,Callback)
+RegisterNUICallback("Store",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
-		vSERVER.storeItem(Data["item"],Data["slot"],Data["amount"],Data["target"])
+		vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"])
 	end
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- UPDATESLOT
+-- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("updateChest",function(Data,Callback)
+RegisterNUICallback("Update",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
-		vSERVER.updateChest(Data["slot"],Data["target"],Data["amount"])
+		vSERVER.Update(Data["slot"],Data["target"],Data["amount"])
 	end
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTCHEST
+-- CHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("requestChest",function(Data,Callback)
-	local Inventory,Chest,invPeso,invMaxpeso,chestPeso,chestMaxpeso = vSERVER.openChest()
+RegisterNUICallback("Chest",function(Data,Callback)
+	local Inventory,Chest,invPeso,invMaxpeso,chestPeso,chestMaxpeso = vSERVER.Chest()
 	if Inventory then
 		Callback({ Inventory = Inventory, Chest = Chest, invPeso = invPeso, invMaxpeso = invMaxpeso, chestPeso = chestPeso, chestMaxpeso = chestMaxpeso })
 	end
@@ -179,21 +159,14 @@ end)
 -- CHEST:UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("chest:Update")
-AddEventHandler("chest:Update",function(action)
-	SendNUIMessage({ action = action })
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CHEST:UPDATEWEIGHT
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("chest:UpdateWeight")
-AddEventHandler("chest:UpdateWeight",function(invPeso,invMaxpeso,chestPeso,chestMaxpeso)
-	SendNUIMessage({ action = "updateWeight", invPeso = invPeso, invMaxpeso = invMaxpeso, chestPeso = chestPeso, chestMaxpeso = chestMaxpeso })
+AddEventHandler("chest:Update",function(Action,invPeso,invMaxpeso,chestPeso,chestMaxpeso)
+	SendNUIMessage({ Action = Action, invPeso = invPeso, invMaxpeso = invMaxpeso, chestPeso = chestPeso, chestMaxpeso = chestMaxpeso })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHEST:CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("chest:Close")
-AddEventHandler("chest:Close",function(action)
-	SendNUIMessage({ action = "hideMenu" })
+AddEventHandler("chest:Close",function(Action)
+	SendNUIMessage({ Action = "Close" })
 	SetNuiFocus(false,false)
 end)

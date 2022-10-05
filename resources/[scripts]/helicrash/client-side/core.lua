@@ -36,9 +36,10 @@ CreateThread(function()
 									Distance = 1.75,
 									options = {
 										{
-											event = "chest:openCustom",
+											event = "chest:Open",
 											label = "Abrir",
-											tunnel = "shop"
+											tunnel = "shop",
+											service = "Custom"
 										}
 									}
 								})

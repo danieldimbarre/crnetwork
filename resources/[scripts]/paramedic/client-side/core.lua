@@ -22,7 +22,7 @@ AddEventHandler("gameEventTriggered",function(name,Message)
 	if LocalPlayer["state"]["Route"] < 900000 then
 		if name == "CEventNetworkEntityDamage" then
 			if PlayerPedId() == Message[1] and LocalPlayer["state"]["Active"] then
-				if Message[7] == 126349499 or Message[7] == 1064738331 or Message[7] == 85055149) and GetEntityHealth(Message[1]) > 100 then
+				if (Message[7] == 126349499 or Message[7] == 1064738331 or Message[7] == 85055149) and GetEntityHealth(Message[1]) > 100 then
 					SetPedToRagdoll(Message[1],2500,2500,0,0,0,0)
 				else
 					if GetGameTimer() >= Injuried then
@@ -93,12 +93,12 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Bandage()
 	local Humanes = ""
-	for k,v in pairs(Damaged) do
-		TriggerEvent("Notify","amarelo","Passou ataduras no(a) <b>"..Bone(k).."</b>.",3000)
+	for Number,_ in pairs(Damaged) do
+		TriggerEvent("Notify","amarelo","Passou ataduras no(a) <b>"..Bone(Number).."</b>.",3000)
 		TriggerEvent("sounds:Private","bandage",0.5)
 		Bleeding = Bleeding - 1
-		Humanes = Bone(k)
-		Damaged[k] = nil
+		Humanes = Bone(Number)
+		Damaged[Number] = nil
 		BloodTick = 0
 		break
 	end
@@ -114,18 +114,18 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("paramedic:Injuries")
 AddEventHandler("paramedic:Injuries",function()
-	local Number = 0
+	local Wounds = 0
 	local Injuries = ""
 	local Damages = false
 
-	for k,v in pairs(Damaged) do
+	for Number,_ in pairs(Damaged) do
 		if not Damages then
 			Injuries = Injuries.."<b>Danos Superficiais:</b><br>"
 			Damages = true
 		end
 
-		Number = Number + 1
-		Injuries = Injuries.."<b>"..Number.."</b>: "..Bone(k).."<br>"
+		Wounds = Wounds + 1
+		Injuries = Injuries.."<b>"..Wounds.."</b>: "..Bone(Number).."<br>"
 	end
 
 	if Injuries == "" then

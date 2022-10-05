@@ -111,7 +111,23 @@ GlobalState["Doors"] = {
 	[112] = { Coords = vec3(797.92,-758.19,31.75), Hash = 1984391163, Lock = true, Distance = 1.5, Perm = "PizzaThis" },
 	[113] = { Coords = vec3(806.83,-764.04,31.75), Hash = 1984391163, Lock = true, Distance = 1.5, Perm = "PizzaThis" },
 
-	
+	[150] = { Coords = vec3(-1111.63,4938.29,218.52), Hash = 825709191, Lock = true, Distance = 1.5, Perm = "Altruists" },
+	[151] = { Coords = vec3(-1102.26,4940.41,218.52), Hash = 825709191, Lock = true, Distance = 1.5, Perm = "Altruists" },
+	[152] = { Coords = vec3(493.07,-1541.83,29.44), Hash = 903896222, Lock = true, Distance = 1.5, Perm = "Aztecas" },
+	[153] = { Coords = vec3(486.01,-1530.39,29.44), Hash = 2103001488, Lock = true, Distance = 1.5, Perm = "Aztecas" },
+	[154] = { Coords = vec3(-1.87,-1808.82,25.54), Hash = -1351120742, Lock = true, Distance = 1.5, Perm = "Ballas" },
+	[155] = { Coords = vec3(-6.94,-1819.73,29.34), Hash = 373216819, Lock = true, Distance = 1.5, Perm = "Ballas" },
+	[156] = { Coords = vec3(-152.02,-1622.64,33.83), Hash = 1381046002, Lock = true, Distance = 1.5, Perm = "Families" },
+	[157] = { Coords = vec3(99.63,3615.91,40.63), Hash = 190770132, Lock = true, Distance = 1.5, Perm = "Lost" },
+	[158] = { Coords = vec3(1250.21,-1583.80,54.73), Hash = -955445187, Lock = true, Distance = 1.5, Perm = "Marabunta" },
+	[159] = { Coords = vec3(472.95,-103.77,63.30), Hash = -350302570, Lock = true, Distance = 1.5, Perm = "Razors", Other = 160 },
+	[160] = { Coords = vec3(475.15,-104.57,63.30), Hash = -104698915, Lock = true, Distance = 1.5, Perm = "Razors", Other = 159 },
+	[161] = { Coords = vec3(-637.36,-1249.23,11.94), Hash = -636132164, Lock = true, Distance = 1.5, Perm = "Triads", Other = 162 },
+	[162] = { Coords = vec3(-639.82,-1248.90,11.94), Hash = 1215119726, Lock = true, Distance = 1.5, Perm = "Triads", Other = 161 },
+	[163] = { Coords = vec3(-643.14,-1229.26,11.68), Hash = 1215119726, Lock = true, Distance = 1.5, Perm = "Triads", Other = 164 },
+	[164] = { Coords = vec3(-644.47,-1227.16,11.68), Hash = -636132164, Lock = true, Distance = 1.5, Perm = "Triads", Other = 163 },
+	[165] = { Coords = vec3(324.71,-1991.08,24.36), Hash = 2118614536, Lock = true, Distance = 1.5, Perm = "Vagos" },
+	[166] = { Coords = vec3(336.74,-1991.84,24.36), Hash = 2118614536, Lock = true, Distance = 1.5, Perm = "Vagos" },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOORSPERMISSION

@@ -141,6 +141,10 @@ local Garages = {
 	["95"] = { name = "Bloods", payment = true, perm = "Bloods" },
 	["96"] = { name = "Triads", payment = true, perm = "Triads" },
 	["97"] = { name = "Razors", payment = true, perm = "Razors" },
+	["98"] = { name = "Marabunta", payment = true, perm = "Marabunta" },
+	["99"] = { name = "Lost", payment = true, perm = "Lost" },
+	["100"] = { name = "Altruists", payment = true, perm = "Altruists" },
+	["101"] = { name = "Gang", payment = true, perm = "Gang" },
 
 	-- Boats
 	["121"] = { name = "Boats", payment = false },

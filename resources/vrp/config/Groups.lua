@@ -64,14 +64,20 @@ Groups = {
 	["Aztecas"] = {
 		["Aztecas"] = true
 	},
-	["Marabunta"] = {
-		["Marabunta"] = true
+	["Bloods"] = {
+		["Bloods"] = true
 	},
 	["Triads"] = {
 		["Triads"] = true
 	},
-	["TheLost"] = {
-		["TheLost"] = true
+	["Razors"] = {
+		["Razors"] = true
+	},
+	["Marabunta"] = {
+		["Marabunta"] = true
+	},
+	["Lost"] = {
+		["Lost"] = true
 	},
 	["Altruists"] = {
 		["Altruists"] = true

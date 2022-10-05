@@ -192,6 +192,18 @@ local shops = {
 			["ritmoneury"] = 475
 		}
 	},
+	["Pharmacy2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["medkit"] = 575,
+			["bandage"] = 225,
+			["gauze"] = 100,
+			["analgesic"] = 125,
+			["sinkalmy"] = 375,
+			["ritmoneury"] = 475
+		}
+	},
 	["Paramedic"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",

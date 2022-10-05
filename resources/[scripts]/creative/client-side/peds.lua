@@ -174,39 +174,45 @@ local List = {
 		Model = "s_m_m_trucker_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Ballas
-		Distance = 100,
-		Coords = { 95.58,-1985.56,20.44,317.49 },
-		Model = "ig_g",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Families
-		Distance = 100,
-		Coords = { -31.47,-1434.84,31.49,0.0 },
-		Model = "ig_g",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Vagos
-		Distance = 100,
-		Coords = { 347.45,-2069.06,20.89,320.32 },
-		Model = "ig_g",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Aztecas
-		Distance = 100,
-		Coords = { 512.29,-1803.52,28.51,246.62 },
-		Model = "ig_g",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Bloods
-		Distance = 100,
-		Coords = { 230.55,-1753.35,28.98,232.45 },
-		Model = "ig_g",
+	-- { -- Ballas
+	-- 	Distance = 100,
+	-- 	Coords = { -2.83,-1827.81,29.15,42.52 },
+	-- 	Model = "ig_g",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Families
+	-- 	Distance = 100,
+	-- 	Coords = { -157.25,-1611.56,33.65,255.12 },
+	-- 	Model = "ig_g",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Vagos
+	-- 	Distance = 100,
+	-- 	Coords = { 336.7,-1989.15,24.2,51.03 },
+	-- 	Model = "ig_g",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Gang
+	-- 	Distance = 100,
+	-- 	Coords = { 512.29,-1803.52,28.51,246.62 },
+	-- 	Model = "ig_g",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Bloods
+	-- 	Distance = 100,
+	-- 	Coords = { 230.55,-1753.35,28.98,232.45 },
+	-- 	Model = "ig_g",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	{ -- Cassino
+		Distance = 25,
+		Coords = { 988.37,43.06,71.3,170.08 },
+		Model = "s_f_y_casino_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Cassino
 		Distance = 25,
-		Coords = { 988.37,43.06,71.3,170.08 },
+		Coords = { 963.34,19.26,71.46,280.63 },
 		Model = "s_f_y_casino_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
@@ -218,7 +224,7 @@ local List = {
 	},
 	{ -- TowDriver
 		Distance = 30,
-		Coords = { -193.23,-1162.39,23.67,274.97 },
+		Coords = { 409.42,-1623.16,29.28,232.45 },
 		Model = "g_m_m_armboss_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
@@ -326,72 +332,72 @@ local List = {
 		Model = "ig_barry",
 		anim = { "anim@heists@prison_heistig1_p1_guard_checks_bus","loop" }
 	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2431.86,4967.66,42.34,133.23 },
-		Model = "g_m_y_ballaeast_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2431.09,4970.72,42.34,42.52 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2436.08,4965.39,42.34,226.78 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2434.4,4963.8,42.34,229.61 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2432.44,4964.06,42.34,178.59 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@world_human_bum_wash@male@high@base","base" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2431.57,4965.22,42.34,124.73 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@world_human_bum_wash@male@high@base","base" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2428.67,4969.51,42.34,133.23 },
-		Model = "g_f_y_ballas_01",
-		anim = { "anim@amb@business@coc@coc_packing_hi@","full_cycle_v1_pressoperator" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2437.05,4967.61,42.34,317.49 },
-		Model = "g_f_y_ballas_01",
-		anim = { "anim@amb@business@coc@coc_packing_hi@","full_cycle_v1_pressoperator" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2433.09,4971.51,42.34,320.32 },
-		Model = "g_f_y_ballas_01",
-		anim = { "anim@amb@business@coc@coc_packing_hi@","full_cycle_v1_pressoperator" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2432.67,4970.29,42.34,226.78 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
-	{ -- Black Market
-		Distance = 20,
-		Coords = { 2435.28,4969.27,42.34,317.49 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
-	},
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2431.86,4967.66,42.34,133.23 },
+	-- 	Model = "g_m_y_ballaeast_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2431.09,4970.72,42.34,42.52 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2436.08,4965.39,42.34,226.78 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2434.4,4963.8,42.34,229.61 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2432.44,4964.06,42.34,178.59 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@world_human_bum_wash@male@high@base","base" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2431.57,4965.22,42.34,124.73 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@world_human_bum_wash@male@high@base","base" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2428.67,4969.51,42.34,133.23 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "anim@amb@business@coc@coc_packing_hi@","full_cycle_v1_pressoperator" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2437.05,4967.61,42.34,317.49 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "anim@amb@business@coc@coc_packing_hi@","full_cycle_v1_pressoperator" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2433.09,4971.51,42.34,320.32 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "anim@amb@business@coc@coc_packing_hi@","full_cycle_v1_pressoperator" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2432.67,4970.29,42.34,226.78 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
+	-- },
+	-- { -- Black Market
+	-- 	Distance = 20,
+	-- 	Coords = { 2435.28,4969.27,42.34,317.49 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }
+	-- },
 	{ -- Taxi
 		Distance = 50,
 		Coords = { -1039.34,-2730.8,20.2,235.28 },
@@ -406,64 +412,70 @@ local List = {
 	},
 	{ -- Ilegal
 		Distance = 100,
-		Coords = { 301.4,-195.29,61.57,158.75 },
+		Coords = { -1403.59,-628.61,28.68,170.08 },
 		Model = "g_f_y_ballas_01",
 		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
 	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 169.28,-1536.23,29.25,311.82 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 487.56,-1456.11,29.28,272.13 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 154.66,-1472.9,29.35,325.99 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 389.69,-942.1,29.42,175.75 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 475.1,3555.28,33.23,263.63 },
-		Model = "g_f_y_ballas_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 112.41,3373.68,35.25,59.53 },
-		Model = "g_m_y_ballaeast_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 2013.95,4990.88,41.21,133.23 },
-		Model = "g_m_y_ballasout_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { 186.9,6374.75,32.33,206.93 },
-		Model = "g_m_y_famca_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
-	{ -- Ilegal
-		Distance = 100,
-		Coords = { -653.2,-1502.18,5.24,201.26 },
-		Model = "g_m_y_famdnf_01",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { 301.4,-195.29,61.57,158.75 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { 169.28,-1536.23,29.25,311.82 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { 487.56,-1456.11,29.28,272.13 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { 154.66,-1472.9,29.35,325.99 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { 389.69,-942.1,29.42,175.75 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { 475.1,3555.28,33.23,263.63 },
+	-- 	Model = "g_f_y_ballas_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { 112.41,3373.68,35.25,59.53 },
+	-- 	Model = "g_m_y_ballaeast_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { 2013.95,4990.88,41.21,133.23 },
+	-- 	Model = "g_m_y_ballasout_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { 186.9,6374.75,32.33,206.93 },
+	-- 	Model = "g_m_y_famca_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
+	-- { -- Ilegal
+	-- 	Distance = 100,
+	-- 	Coords = { -653.2,-1502.18,5.24,201.26 },
+	-- 	Model = "g_m_y_famdnf_01",
+	-- 	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	-- },
 	{ -- Police
 		Distance = 100,
 		Coords = { 392.56,-1632.1,29.28,28.35 },
@@ -482,12 +494,12 @@ local List = {
 		Model = "s_f_y_cop_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Police
-		Distance = 100,
-		Coords = { 377.58,791.66,187.64,130.4 },
-		Model = "s_f_y_cop_01",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
+	-- { -- Police
+	-- 	Distance = 100,
+	-- 	Coords = { 377.58,791.66,187.64,130.4 },
+	-- 	Model = "s_f_y_cop_01",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
 	{ -- Police
 		Distance = 100,
 		Coords = { -479.48,6011.12,31.29,175.75 },
@@ -512,18 +524,18 @@ local List = {
 		Model = "s_f_y_cop_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Police
-		Distance = 100,
-		Coords = { 1844.42,3707.33,33.97,255.12 },
-		Model = "s_f_y_cop_01",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Police
-		Distance = 100,
-		Coords = { 1839.35,3691.23,33.97,269.3 },
-		Model = "s_f_y_cop_01",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
+	-- { -- Police
+	-- 	Distance = 100,
+	-- 	Coords = { 1844.42,3707.33,33.97,255.12 },
+	-- 	Model = "s_f_y_cop_01",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Police
+	-- 	Distance = 100,
+	-- 	Coords = { 1839.35,3691.23,33.97,269.3 },
+	-- 	Model = "s_f_y_cop_01",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
 	{ -- Paramedic
 		Distance = 100,
 		Coords = { -271.7,6321.75,32.42,0.0 },
@@ -536,15 +548,39 @@ local List = {
 		Model = "s_m_m_paramedic_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
+	-- { -- Paramedic
+	-- 	Distance = 100,
+	-- 	Coords = { 338.19,-586.91,74.16,252.29 },
+	-- 	Model = "s_m_m_paramedic_01",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Paramedic
+	-- 	Distance = 100,
+	-- 	Coords = { 340.08,-576.19,28.8,73.71 },
+	-- 	Model = "s_m_m_paramedic_01",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
 	{ -- Paramedic
 		Distance = 100,
-		Coords = { 338.19,-586.91,74.16,252.29 },
+		Coords = { -673.81,335.35,78.12,354.34 },
 		Model = "s_m_m_paramedic_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Paramedic
 		Distance = 100,
-		Coords = { 340.08,-576.19,28.8,73.71 },
+		Coords = { -675.94,324.27,140.14,144.57 },
+		Model = "s_m_m_paramedic_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
+	{ -- Paramedic
+		Distance = 100,
+		Coords = { -674.37,339.24,83.07,189.93 },
+		Model = "s_m_m_paramedic_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
+	{ -- Paramedic
+		Distance = 100,
+		Coords = { -665.78,321.34,83.09,215.44 },
 		Model = "s_m_m_paramedic_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
@@ -758,42 +794,42 @@ local List = {
 		Model = "ig_barry",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Pharmacy Store
-		Distance = 30,
-		Coords = { -172.89,6381.32,31.48,223.94 },
-		Model = "u_m_y_baygor",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Pharmacy Store
-		Distance = 30,
-		Coords = { 1690.07,3581.68,35.62,212.6 },
-		Model = "u_m_y_baygor",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Pharmacy Store
-		Distance = 15,
-		Coords = { 326.5,-1074.43,29.47,0.0 },
-		Model = "u_m_y_baygor",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Pharmacy Store
-		Distance = 15,
-		Coords = { 114.39,-4.85,67.82,204.1 },
-		Model = "u_m_y_baygor",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Mercado Central
-		Distance = 50,
-		Coords = { 46.65,-1749.7,29.62,51.03 },
-		Model = "ig_cletus",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Mercado Central
-		Distance = 50,
-		Coords = { 2747.31,3473.07,55.67,249.45 },
-		Model = "ig_cletus",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
+	-- { -- Pharmacy Store
+	-- 	Distance = 30,
+	-- 	Coords = { -172.89,6381.32,31.48,223.94 },
+	-- 	Model = "u_m_y_baygor",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Pharmacy Store
+	-- 	Distance = 30,
+	-- 	Coords = { 1690.07,3581.68,35.62,212.6 },
+	-- 	Model = "u_m_y_baygor",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Pharmacy Store
+	-- 	Distance = 15,
+	-- 	Coords = { 326.5,-1074.43,29.47,0.0 },
+	-- 	Model = "u_m_y_baygor",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Pharmacy Store
+	-- 	Distance = 15,
+	-- 	Coords = { 114.39,-4.85,67.82,204.1 },
+	-- 	Model = "u_m_y_baygor",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Mercado Central
+	-- 	Distance = 50,
+	-- 	Coords = { 46.65,-1749.7,29.62,51.03 },
+	-- 	Model = "ig_cletus",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Mercado Central
+	-- 	Distance = 50,
+	-- 	Coords = { 2747.31,3473.07,55.67,249.45 },
+	-- 	Model = "ig_cletus",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
 	{ -- Recycling Sell
 		Distance = 50,
 		Coords = { -428.54,-1728.29,19.78,70.87 },
@@ -826,7 +862,7 @@ local List = {
 	},
 	{ -- Transporter
 		Distance = 20,
-		Coords = { 264.74,219.99,101.67,343.0 },
+		Coords = { 355.15,275.79,103.15,343.0 },
 		Model = "ig_casey",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
@@ -844,7 +880,7 @@ local List = {
 	},
 	{ -- Motorista
 		Distance = 30,
-		Coords = { 452.97,-607.75,28.59,266.46 },
+		Coords = { 453.59,-600.63,28.59,260.79 },
 		Model = "u_m_m_edtoh",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
@@ -866,94 +902,94 @@ local List = {
 		Model = "s_m_y_garbage",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Loja de Roupas
-		Distance = 20,
-		Coords = { -1127.26,-1439.35,5.22,303.31 },
-		Model = "a_f_y_epsilon_01",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
+	-- { -- Loja de Roupas
+	-- 	Distance = 20,
+	-- 	Coords = { -1127.26,-1439.35,5.22,303.31 },
+	-- 	Model = "a_f_y_epsilon_01",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { 78.26,-1388.91,29.37,178.59 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { -706.73,-151.38,37.41,116.23 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_m_shop_high",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { -166.69,-301.55,39.73,249.45 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_m_shop_high",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { -817.5,-1074.03,11.32,119.06 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { -1197.33,-778.98,17.32,31.19 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_mid",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { -1447.84,-240.03,49.81,45.36 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_m_shop_high",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { -0.07,6511.8,31.88,311.82 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { 1691.6,4818.47,42.06,2.84 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { 123.21,-212.34,54.56,255.12 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_mid",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { 621.24,2753.37,42.09,90.71 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_mid",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { 1200.68,2707.35,38.22,85.04 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { -3172.39,1055.31,20.86,246.62 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_mid",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { -1096.53,2711.1,19.11,127.56 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
 		Coords = { 422.7,-810.25,29.49,357.17 },
-		Model = "a_f_y_epsilon_01",
+		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Tatuagem
@@ -1025,44 +1061,49 @@ local List = {
 	{ -- Barbearia
 		Distance = 15,
 		Coords = { -821.82,-183.36,37.56,212.6 },
-		Model = "a_f_y_hipster_04",
+		Model = "s_f_m_fembarber",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Barbearia
 		Distance = 15,
 		Coords = { 137.12,-1710.54,29.28,138.9 },
-		Model = "a_f_y_hipster_04",
+		Model = "s_f_m_fembarber",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Barbearia
 		Distance = 15,
 		Coords = { -1284.59,-1118.98,6.99,90.71 },
-		Model = "a_f_y_hipster_04",
+		Model = "s_f_m_fembarber",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Barbearia
 		Distance = 15,
 		Coords = { 1934.17,3729.63,32.84,212.6 },
-		Model = "a_f_y_hipster_04",
+		Model = "s_f_m_fembarber",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Barbearia
 		Distance = 15,
 		Coords = { 1210.2,-474.01,66.2,73.71 },
-		Model = "a_f_y_hipster_04",
+		Model = "s_f_m_fembarber",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Barbearia
 		Distance = 15,
 		Coords = { -34.04,-150.15,57.07,340.16 },
-		Model = "a_f_y_hipster_04",
+		Model = "s_f_m_fembarber",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Barbearia
 		Distance = 15,
 		Coords = { -280.72,6228.2,31.69,42.52 },
-		Model = "a_f_y_hipster_04",
+		Model = "s_f_m_fembarber",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- CraftingTable
+		Distance = 30,
+		Coords = { 2191.63,5595.93,53.77,255.12 },
+		Model = "s_m_m_gaffer_01",
+		anim = { "mini@repair","fixing_a_player" }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

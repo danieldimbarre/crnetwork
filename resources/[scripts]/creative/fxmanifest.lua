@@ -6,3 +6,8 @@ client_scripts {
 	"@vrp/config/Native.lua",
 	"client-side/*"
 }
+
+server_scripts {
+	"@vrp/lib/Utils.lua",
+	"server-side/*"
+}

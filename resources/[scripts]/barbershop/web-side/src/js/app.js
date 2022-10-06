@@ -1,13 +1,4 @@
 $(document).ready(() => {
-	var documentWidth = document.documentElement.clientWidth;
-	var documentHeight = document.documentElement.clientHeight;
-  
-  	function triggerClick(x,y){
-		var element = $(document.elementFromPoint(x,y));
-		element.focus().click();
-		return true;
-	}
-	
 	window.addEventListener('message',function(event){
 		$("#hair").attr("max",event.data.maxHair);
 		$("#hair").parent().parent().parent().find('#minRange').html(event.data.hair);

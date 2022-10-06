@@ -1254,7 +1254,7 @@ function TargetEnable()
 						if LocalPlayer["state"]["Debug"] then
 							if DoesEntityExist(Entity) then
 								local Model = GetEntityModel(Entity)
-								if #(Coords - entCoords) <= Models[Model]["Distance"] then
+								if #(Coords - entCoords) <= 10 then
 									local objNet = nil
 									if NetworkGetEntityIsNetworked(Entity) then
 										objNet = ObjToNet(Entity)
@@ -1278,7 +1278,7 @@ function TargetEnable()
 											SetNuiFocus(true,true)
 										end
 
-										if GetEntityType(Entity) == 0 or #(Coords - entCoords) > Models[Model]["Distance"] then
+										if GetEntityType(Entity) == 0 or #(Coords - entCoords) > 10 then
 											Sucess = false
 										end
 

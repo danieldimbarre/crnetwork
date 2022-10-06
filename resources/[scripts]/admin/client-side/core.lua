@@ -150,9 +150,9 @@ AddEventHandler("admin:DebugToggle",function()
 
     if Debug then
         debugOn()
-        TriggerEvent("Notify","amarelo","Debug ON.")
+        TriggerEvent("Notify","amarelo","Debug ON.",5000)
     else
-        TriggerEvent("Notify","amarelo","Debug OFF.")
+        TriggerEvent("Notify","amarelo","Debug OFF.",5000)
     end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -282,10 +282,10 @@ function debugOn()
 			-- local StreetHash,StreetCrossing = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
 			-- StreetName = GetStreetNameFromHashKey(StreetHash)
 
-			drawTxtS(0.8,0.50,0.4,0.4,0.30,"Heading: "..GetEntityHeading(Ped),55,155,55,255)
-			drawTxtS(0.8,0.52,0.4,0.4,0.30,"Coords: "..Coords,55,155,55,255)
-			drawTxtS(0.8,0.54,0.4,0.4,0.30,"Attached Ent: "..GetEntityAttachedTo(Ped),55,155,55,255)
-			drawTxtS(0.8,0.56,0.4,0.4,0.30,"H a G: "..GetEntityHeightAboveGround(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.50,0.4,0.4,0.30,"Heading: "..GetEntityHeading(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.52,0.4,0.4,0.30,"Coords: "..Coords,55,155,55,255)
+			-- drawTxtS(0.8,0.54,0.4,0.4,0.30,"Attached Ent: "..GetEntityAttachedTo(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.56,0.4,0.4,0.30,"H a G: "..GetEntityHeightAboveGround(Ped),55,155,55,255)
 			-- drawTxtS(0.8,0.58,0.4,0.4,0.30,"Health: "..GetEntityHealth(Ped),55,155,55,255)
 			-- drawTxtS(0.8,0.60,0.4,0.4,0.30,"Model: "..GetEntityModel(Ped),55,155,55,255)
 			-- drawTxtS(0.8,0.62,0.4,0.4,0.30,"Speed: "..GetEntitySpeed(Ped),55,155,55,255)

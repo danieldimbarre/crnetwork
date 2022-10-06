@@ -1,0 +1,569 @@
+[
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\task_diff_000_a_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 9,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\task_000_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "🧥",
+    "Name": "Armor_000",
+    "DisplayName": "Armor_000 (ID: 0) (-) (Armor)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\task_diff_000_a_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\task_diff_000_b_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\task_diff_000_c_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\task_diff_000_d_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 9,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\task_000_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 1,
+    "Icon": "👩🏻",
+    "Type": "🧥",
+    "Name": "Armor_000",
+    "DisplayName": "Armor_000 (ID: 0) (-) (Armor)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\task_diff_001_a_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 9,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\task_001_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 1,
+    "Icon": "👩🏻",
+    "Type": "🧥",
+    "Name": "Armor_001",
+    "DisplayName": "Armor_001 (ID: 0) (-) (Armor)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\task_diff_007_a_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\task_diff_007_b_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\task_diff_007_c_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\task_diff_007_d_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 9,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\task_007_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "🧥",
+    "Name": "Armor_007",
+    "DisplayName": "Armor_007 (ID: 0) (-) (Armor)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\task_diff_008_a_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 9,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\task_008_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "🧥",
+    "Name": "Armor_008",
+    "DisplayName": "Armor_008 (ID: 0) (-) (Armor)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\lowr_diff_000_a_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\lowr_diff_000_b_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\lowr_diff_000_c_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 4,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\lowr_000_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 1,
+    "Icon": "👩🏻",
+    "Type": "🧥",
+    "Name": "Legs_000",
+    "DisplayName": "Legs_000 (ID: 0) (-) (Legs)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\lowr_diff_001_a_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\lowr_diff_001_b_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\lowr_diff_001_c_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 4,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\lowr_001_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "🧥",
+    "Name": "Legs_001",
+    "DisplayName": "Legs_001 (ID: 0) (-) (Legs)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_diff_000_a.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_diff_000_b.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_diff_000_c.ytd"
+    ],
+    "ClothType": 1,
+    "DrawableType": 12,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_000.ydd",
+    "FirstPersonModelPath": null,
+    "TargetSex": 1,
+    "Icon": "👩🏻",
+    "Type": "👓",
+    "Name": "PropHead_000",
+    "DisplayName": "PropHead_000 (ID: 0) (-) (PropHead)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_diff_001_a.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_diff_001_b.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_diff_001_c.ytd"
+    ],
+    "ClothType": 1,
+    "DrawableType": 12,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_001.ydd",
+    "FirstPersonModelPath": null,
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "👓",
+    "Name": "PropHead_001",
+    "DisplayName": "PropHead_001 (ID: 0) (-) (PropHead)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_diff_001_a.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_diff_001_b.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_diff_001_c.ytd"
+    ],
+    "ClothType": 1,
+    "DrawableType": 12,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_001.ydd",
+    "FirstPersonModelPath": null,
+    "TargetSex": 1,
+    "Icon": "👩🏻",
+    "Type": "👓",
+    "Name": "PropHead_001",
+    "DisplayName": "PropHead_001 (ID: 0) (-) (PropHead)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_diff_002_a.ytd"
+    ],
+    "ClothType": 1,
+    "DrawableType": 12,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_002.ydd",
+    "FirstPersonModelPath": null,
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "👓",
+    "Name": "PropHead_002",
+    "DisplayName": "PropHead_002 (ID: 0) (-) (PropHead)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_diff_002_a.ytd"
+    ],
+    "ClothType": 1,
+    "DrawableType": 12,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\p_head_002.ydd",
+    "FirstPersonModelPath": null,
+    "TargetSex": 1,
+    "Icon": "👩🏻",
+    "Type": "👓",
+    "Name": "PropHead_002",
+    "DisplayName": "PropHead_002 (ID: 0) (-) (PropHead)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_diff_003_a.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_diff_003_b.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_diff_003_c.ytd"
+    ],
+    "ClothType": 1,
+    "DrawableType": 12,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\p_head_003.ydd",
+    "FirstPersonModelPath": null,
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "👓",
+    "Name": "PropHead_003",
+    "DisplayName": "PropHead_003 (ID: 0) (-) (PropHead)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\feet_diff_002_a_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\feet_diff_002_b_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 6,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\feet_002_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "🧥",
+    "Name": "Shoes_002",
+    "DisplayName": "Shoes_002 (ID: 0) (-) (Shoes)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_000_a_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_000_b_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_000_c_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_000_d_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_000_e_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 11,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_000_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 1,
+    "Icon": "👩🏻",
+    "Type": "🧥",
+    "Name": "Top_000",
+    "DisplayName": "Top_000 (ID: 0) (-) (Top)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_001_a_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_001_b_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_001_c_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_001_d_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_diff_001_e_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 11,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\female\\addon\\Police\\jbib_001_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 1,
+    "Icon": "👩🏻",
+    "Type": "🧥",
+    "Name": "Top_001",
+    "DisplayName": "Top_001 (ID: 0) (-) (Top)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_011_a_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_011_b_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_011_c_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_011_d_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_011_e_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 11,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_011_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "🧥",
+    "Name": "Top_011",
+    "DisplayName": "Top_011 (ID: 0) (-) (Top)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_047_a_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_047_b_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_047_c_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_047_d_uni.ytd",
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_047_e_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 11,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_047_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "🧥",
+    "Name": "Top_047",
+    "DisplayName": "Top_047 (ID: 0) (-) (Top)"
+  },
+  {
+    "PedComponentFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "isHighHeels": false
+    },
+    "PedPropFlags": {
+      "unkFlag1": false,
+      "unkFlag2": false,
+      "unkFlag3": false,
+      "unkFlag4": false,
+      "unkFlag5": false
+    },
+    "Textures": [
+      "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_diff_052_a_uni.ytd"
+    ],
+    "ClothType": 0,
+    "DrawableType": 11,
+    "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\male\\addon\\Police\\jbib_052_u.ydd",
+    "FirstPersonModelPath": "",
+    "TargetSex": 0,
+    "Icon": "👨🏻",
+    "Type": "🧥",
+    "Name": "Top_052",
+    "DisplayName": "Top_052 (ID: 0) (-) (Top)"
+  }
+]

@@ -529,7 +529,7 @@ end)
 RegisterServerEvent("admin:DebugInformations")
 AddEventHandler("admin:DebugInformations",function(Entity)
 	local source = source
-    vKEYBOARD.keyCopy(source,"Hash:","Model: "..Entity[2]..", Coords: vec3("..mathLength(Entity[4]["x"])..","..mathLength(Entity[4]["y"])..","..mathLength(Entity[4]["z"]).."), Heading: "..GetEntityHeading(Entity[3]))
+	vKEYBOARD.keyCopy(source,"Hash:",Entity[2]..","..mathLength(Entity[4]["x"])..","..mathLength(Entity[4]["y"])..","..mathLength(Entity[4]["z"])..","..mathLength(Entity[5]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TXADMIN:EVENTS:SERVERSHUTTINGDOWN

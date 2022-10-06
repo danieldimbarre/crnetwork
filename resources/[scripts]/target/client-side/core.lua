@@ -1261,7 +1261,7 @@ function TargetEnable()
 									end
 									local Menu = {}
 
-									Selected = { Entity,Model,objNet,GetEntityCoords(Entity) }
+									Selected = { Entity,Model,objNet,GetEntityCoords(Entity),GetEntityHeading(Entity) }
 									
 									table.insert(Menu,{ event = "admin:DebugInformations", label = "Informações", tunnel = "server" })
 

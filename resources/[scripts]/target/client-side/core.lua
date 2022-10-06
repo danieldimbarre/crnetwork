@@ -1263,7 +1263,7 @@ function TargetEnable()
 
 									Selected = { Entity,Model,objNet,GetEntityCoords(Entity) }
 									
-									table.insert(Menu,{ event = "admin:Informations", label = "Informações", tunnel = "server" })
+									table.insert(Menu,{ event = "admin:DebugInformations", label = "Informações", tunnel = "server" })
 
 									SendNUIMessage({ Action = "Valid", data = Menu })
 

@@ -1,13 +1,4 @@
 $(document).ready(() => {
-	var documentWidth = document.documentElement.clientWidth;
-	var documentHeight = document.documentElement.clientHeight;
-  
-  	function triggerClick(x,y){
-		var element = $(document.elementFromPoint(x,y));
-		element.focus().click();
-		return true;
-	}
-	
 	window.addEventListener('message',function(event){
 		document.getElementById("fathers").value = event.data.fathers;
 		$("#fathers").parent().parent().parent().find('#minRange').html(event.data.fathers);

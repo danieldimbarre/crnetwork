@@ -279,18 +279,18 @@ function debugOn()
 			local CoordsLef2 = GetOffsetFromEntityInWorldCoords(Ped,2.0,0.0,0.0)
 			local CoordsRig2 = GetOffsetFromEntityInWorldCoords(Ped,-2.0,0.0,0.0)    
 
-			local StreetHash,StreetCrossing = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
-			StreetName = GetStreetNameFromHashKey(StreetHash)
+			-- local StreetHash,StreetCrossing = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
+			-- StreetName = GetStreetNameFromHashKey(StreetHash)
 
 			drawTxtS(0.8,0.50,0.4,0.4,0.30,"Heading: "..GetEntityHeading(Ped),55,155,55,255)
 			drawTxtS(0.8,0.52,0.4,0.4,0.30,"Coords: "..Coords,55,155,55,255)
 			drawTxtS(0.8,0.54,0.4,0.4,0.30,"Attached Ent: "..GetEntityAttachedTo(Ped),55,155,55,255)
-			-- drawTxtS(0.8,0.56,0.4,0.4,0.30,"Health: "..GetEntityHealth(Ped),55,155,55,255)
-			drawTxtS(0.8,0.58,0.4,0.4,0.30,"H a G: "..GetEntityHeightAboveGround(Ped),55,155,55,255)
-			drawTxtS(0.8,0.60,0.4,0.4,0.30,"Model: "..GetEntityModel(Ped),55,155,55,255)
+			drawTxtS(0.8,0.56,0.4,0.4,0.30,"H a G: "..GetEntityHeightAboveGround(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.58,0.4,0.4,0.30,"Health: "..GetEntityHealth(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.60,0.4,0.4,0.30,"Model: "..GetEntityModel(Ped),55,155,55,255)
 			-- drawTxtS(0.8,0.62,0.4,0.4,0.30,"Speed: "..GetEntitySpeed(Ped),55,155,55,255)
 			-- drawTxtS(0.8,0.64,0.4,0.4,0.30,"Frame Time: "..GetFrameTime(),55,155,55,255)
-			-- drawTxtS(0.8,0.66,0.4,0.4,0.30,"Street: "..currentStreetName,55,155,55,255)
+			-- drawTxtS(0.8,0.66,0.4,0.4,0.30,"Street: "..StreetName,55,155,55,255)
 			
 			
 			DrawLine(Coords,CoordsFor,255,0,0,115)
@@ -344,16 +344,18 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function DrawText3Ds(x,y,z,text)
     local onScreen,_x,_y = World3dToScreen2d(x,y,z)
-    local px,py,pz = table.unpack(GetGameplayCamCoords())
-    
-    SetTextScale(0.35,0.35)
-    SetTextFont(4)
-    SetTextProportional(1)
-    SetTextColour(255,255,255,215)
-    SetTextEntry("STRING")
-    SetTextCentre(1)
-    AddTextComponentString(text)
-    DrawText(_x,_y)
-    local factor = (string.len(text)) / 370
-    DrawRect(_x,_y + 0.0125,0.015 + factor,0.03,41,11,41,68)
+
+	if onScreen then
+		SetTextScale(0.35,0.35)
+		SetTextFont(4)
+		SetTextProportional(1)
+		SetTextColour(204,204,204,175)
+		BeginTextCommandDisplayText("STRING")
+		SetTextCentre(1)
+		AddTextComponentSubstringKeyboardDisplay(text)
+		EndTextCommandDisplayText(_x,_y)
+		DrawText(_x,_y)
+		local width = string.len(text) / 300
+		DrawRect(_x,_y + 0.0125,width,0.03,15,15,15,200)
+	end
 end

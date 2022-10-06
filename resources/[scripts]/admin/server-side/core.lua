@@ -207,7 +207,7 @@ RegisterCommand("tpcds",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Moderator") then
-			local Keyboard = vKEYBOARD.keySingle(source,"Cordenadas:")
+			local Keyboard = vKEYBOARD.keySingle(source,"Coordenadas:")
 			if Keyboard then
 				local Split = splitString(Keyboard[1],",")
 				vRP.Teleport(source,Split[1] or 0,Split[2] or 0,Split[3] or 0)
@@ -226,7 +226,7 @@ RegisterCommand("cds",function(source)
 			local Coords = GetEntityCoords(Ped)
 			local heading = GetEntityHeading(Ped)
 
-			vKEYBOARD.keyCopy(source,"Cordenadas:",mathLength(Coords["x"])..","..mathLength(Coords["y"])..","..mathLength(Coords["z"])..","..mathLength(heading))
+			vKEYBOARD.keyCopy(source,"Coordenadas:",mathLength(Coords["x"])..","..mathLength(Coords["y"])..","..mathLength(Coords["z"])..","..mathLength(heading))
 		end
 	end
 end)
@@ -299,7 +299,7 @@ RegisterCommand("tpway",function(source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TPWAY
+-- LIMBO
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("limbo",function(source)
 	local Passport = vRP.Passport(source)
@@ -316,7 +316,7 @@ RegisterCommand("hash",function(source)
 		if vRP.HasGroup(Passport,"Admin") then
 			local vehicle = vRPC.VehicleHash(source)
 			if vehicle then
-				vRP.Archive("hash.txt",vehicle)
+				vKEYBOARD.keyCopy(source,"Hash:",vehicle)
 			end
 		end
 	end
@@ -519,20 +519,28 @@ RegisterCommand("debug",function(source,args,rawCommand)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			TriggerClientEvent("admin:toggleDebug",source)
+			TriggerClientEvent("admin:DebugToggle",source)
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ADMIN:DEBUGINFORMATIONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("admin:DebugInformations")
+AddEventHandler("admin:DebugInformations",function(Entity)
+	local source = source
+    vKEYBOARD.keyCopy(source,"Hash:","Model: "..Entity[2]..", Coords: vec3("..mathLength(Entity[4]["x"])..","..mathLength(Entity[4]["y"])..","..mathLength(Entity[4]["z"]).."), Heading: "..GetEntityHeading(Entity[3]))
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- TXADMIN:EVENTS:SERVERSHUTTINGDOWN
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler('txAdmin:events:serverShuttingDown',function(eventData)
+AddEventHandler("txAdmin:events:serverShuttingDown",function(eventData)
     TriggerEvent("SaveServer")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TXADMIN:EVENTS:SCHEDULEDRESTART
 -----------------------------------------------------------------------------------------------------------------------------------------
--- AddEventHandler('txAdmin:events:scheduledRestart',function(eventData)
+-- AddEventHandler("txAdmin:events:scheduledRestart",function(eventData)
 -- 	if eventData.secondsRemaining == 60 then
 --         CreateThread(function()
 --             Wait(30000)

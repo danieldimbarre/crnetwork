@@ -60,7 +60,7 @@ CreateThread(function()
 			maxZ = v["Coords"]["z"] + 0.01
 		},{
 			shop = Number,
-			Distance = 1.5,
+			Distance = 1.75,
 			options = {
 				{
 					event = "target:PutBed",

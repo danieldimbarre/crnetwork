@@ -1251,38 +1251,77 @@ function TargetEnable()
 							SendNUIMessage({ Action = "Left" })
 						end
 					else
-						for k,v in pairs(Models) do
+						if LocalPlayer["state"]["Debug"] then
 							if DoesEntityExist(Entity) then
-								if k == GetEntityModel(Entity) then
-									if #(Coords - entCoords) <= Models[k]["Distance"] then
-										local objNet = nil
-										if NetworkGetEntityIsNetworked(Entity) then
-											objNet = ObjToNet(Entity)
+								local Model = GetEntityModel(Entity)
+								if #(Coords - entCoords) <= Models[Model]["Distance"] then
+									local objNet = nil
+									if NetworkGetEntityIsNetworked(Entity) then
+										objNet = ObjToNet(Entity)
+									end
+									local Menu = {}
+
+									Selected = { Entity,Model,objNet,GetEntityCoords(Entity) }
+									
+									table.insert(Menu,{ event = "admin:Informations", label = "Informações", tunnel = "server" })
+
+									SendNUIMessage({ Action = "Valid", data = Menu })
+
+									Sucess = true
+									while Sucess do
+										local Ped = PlayerPedId()
+										local Coords = GetEntityCoords(Ped)
+										local _,entCoords,Entity = RayCastGamePlayCamera()
+
+										if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+											SetCursorLocation(0.5,0.5)
+											SetNuiFocus(true,true)
 										end
 
-										Selected = { Entity,k,objNet,GetEntityCoords(Entity) }
-
-										SendNUIMessage({ Action = "Valid", data = Models[k]["options"] })
-
-										Sucess = true
-										while Sucess do
-											local Ped = PlayerPedId()
-											local Coords = GetEntityCoords(Ped)
-											local _,entCoords,Entity = RayCastGamePlayCamera()
-
-											if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
-												SetCursorLocation(0.5,0.5)
-												SetNuiFocus(true,true)
-											end
-
-											if GetEntityType(Entity) == 0 or #(Coords - entCoords) > Models[k]["Distance"] then
-												Sucess = false
-											end
-
-											Wait(1)
+										if GetEntityType(Entity) == 0 or #(Coords - entCoords) > Models[Model]["Distance"] then
+											Sucess = false
 										end
 
-										SendNUIMessage({ Action = "Left" })
+										Wait(1)
+									end
+
+									SendNUIMessage({ Action = "Left" })
+								end
+							end
+						else
+							for k,v in pairs(Models) do
+								if DoesEntityExist(Entity) then
+									if k == GetEntityModel(Entity) then
+										if #(Coords - entCoords) <= Models[k]["Distance"] then
+											local objNet = nil
+											if NetworkGetEntityIsNetworked(Entity) then
+												objNet = ObjToNet(Entity)
+											end
+
+											Selected = { Entity,k,objNet,GetEntityCoords(Entity) }
+
+											SendNUIMessage({ Action = "Valid", data = Models[k]["options"] })
+
+											Sucess = true
+											while Sucess do
+												local Ped = PlayerPedId()
+												local Coords = GetEntityCoords(Ped)
+												local _,entCoords,Entity = RayCastGamePlayCamera()
+
+												if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+													SetCursorLocation(0.5,0.5)
+													SetNuiFocus(true,true)
+												end
+
+												if GetEntityType(Entity) == 0 or #(Coords - entCoords) > Models[k]["Distance"] then
+													Sucess = false
+												end
+
+												Wait(1)
+											end
+
+											SendNUIMessage({ Action = "Left" })
+										end
 									end
 								end
 							end

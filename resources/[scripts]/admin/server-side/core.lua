@@ -12,6 +12,7 @@ Creative = {}
 Tunnel.bindInterface("admin",Creative)
 vCLIENT = Tunnel.getInterface("admin")
 vKEYBOARD = Tunnel.getInterface("keyboard")
+vSKINSHOP = Tunnel.getInterface("skinshop")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UGROUPS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -508,6 +509,57 @@ RegisterCommand("spectate",function(source,Message)
 						Spectate[Passport] = nsource
 					end
 				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CUSTOM
+-----------------------------------------------------------------------------------------------------------------------------------------
+local CustomList = {
+	[1] = "hat",
+	[2] = "pants",
+	[3] = "vest",
+	[4] = "bracelet",
+	[5] = "backpack",
+	[6] = "decals",
+	[7] = "mask",
+	[8] = "shoes",
+	[9] = "tshirt",
+	[10] = "torso",
+	[11] = "accessory",
+	[12] = "watch",
+	[13] = "arms",
+	[14] = "glass",
+	[15] = "ear"
+}
+
+RegisterCommand("custom",function(source,args,rawCommand)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin") then
+			local Custom = vSKINSHOP.getCustomization(source)
+			if Custom then
+				local Text = ""
+				local Count = 1
+
+				repeat
+					if Text == "" then
+						Text = '["'..CustomList[Count]..'"] = { item = '..Custom[CustomList[Count]]["item"]..', texture = '..Custom[CustomList[Count]]["texture"]..' }'
+					else
+						if #CustomList ~= Number then
+							Text = Text..",\n"
+						else
+							Text = Text.."\n"
+						end
+
+						Text = Text..'["'..CustomList[Count]..'"] = { item = '..Custom[CustomList[Count]]["item"]..', texture = '..Custom[CustomList[Count]]["texture"]..' }'
+					end
+
+					Count = Count + 1
+				until Count == #CustomList + 1
+
+				vRP.Archive("custom.txt",Text)
 			end
 		end
 	end

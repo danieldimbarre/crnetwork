@@ -316,21 +316,21 @@ local preset = {
 	},
 	["2"] = {
 		["mp_m_freemode_01"] = {
-			["hat"] = { item = 12, texture = 1 },
-			["pants"] = { item = 144, texture = 2 },
-			["vest"] = { item = 58, texture = 0 },
+			["hat"] = { item = 175, texture = 1 },
+			["pants"] = { item = 148, texture = 0 },
+			["vest"] = { item = 59, texture = 0 },
 			["bracelet"] = { item = -1, texture = 0 },
 			["backpack"] = { item = 0, texture = 0 },
-			["decals"] = { item = 131, texture = 3 },
-			["mask"] = { item = 121, texture = 0 },
+			["decals"] = { item = 0, texture = 0 },
+			["mask"] = { item = 169, texture = 0 },
 			["shoes"] = { item = 25, texture = 0 },
-			["tshirt"] = { item = 192, texture = 0 },
-			["torso"] = { item = 393, texture = 6 },
-			["accessory"] = { item = 152, texture = 0 },
+			["tshirt"] = { item = 15, texture = 0 },
+			["torso"] = { item = 413, texture = 0 },
+			["accessory"] = { item = 0, texture = 0 },
 			["watch"] = { item = -1, texture = 0 },
-			["arms"] = { item = 20, texture = 0 },
-			["glass"] = { item = 0, texture = 0 },
-			["ear"] = { item = -1, texture = 0 }
+			["arms"] = { item = 33, texture = 0 },
+			["glass"] = { item = 23, texture = 6 },
+			["ear"] = { item = 5, texture = 0 }
 		},
 		["mp_f_freemode_01"] = {
 			["hat"] = { item = 12, texture = 1 },
@@ -497,7 +497,7 @@ local preset = {
 	["7"] = {
 		["mp_m_freemode_01"] = {
 			["hat"] = { item = -1, texture = 0 },
-			["pants"] = { item = 144, texture = 1 },
+			["pants"] = { item = 96, texture = 1 },
 			["vest"] = { item = 0, texture = 0 },
 			["bracelet"] = { item = -1, texture = 0 },
 			["backpack"] = { item = 0, texture = 0 },
@@ -603,6 +603,78 @@ local preset = {
 		}
 	},
 	["10"] = {
+		["mp_m_freemode_01"] = {
+			["hat"] = { item = -1, texture = 0 },
+			["pants"] = { item = 94, texture = 2 },
+			["vest"] = { item = 0, texture = 0 },
+			["bracelet"] = { item = -1, texture = 0 },
+			["backpack"] = { item = 0, texture = 0 },
+			["decals"] = { item = 0, texture = 0 },
+			["mask"] = { item = 0, texture = 0 },
+			["shoes"] = { item = 67, texture = 2 },
+			["tshirt"] = { item = 15, texture = 0 },
+			["torso"] = { item = 243, texture = 2 },
+			["accessory"] = { item = 0, texture = 0 },
+			["watch"] = { item = -1, texture = 0 },
+			["arms"] = { item = 86, texture = 1 },
+			["glass"] = { item = 0, texture = 0 },
+			["ear"] = { item = -1, texture = 0 }
+		},
+		["mp_f_freemode_01"] = {
+			["hat"] = { item = -1, texture = 0 },
+			["pants"] = { item = 97, texture = 2 },
+			["vest"] = { item = 0, texture = 0 },
+			["bracelet"] = { item = -1, texture = 0 },
+			["backpack"] = { item = 0, texture = 0 },
+			["decals"] = { item = 0, texture = 0 },
+			["mask"] = { item = 0, texture = 0 },
+			["shoes"] = { item = 70, texture = 2 },
+			["tshirt"] = { item = 15, texture = 0 },
+			["torso"] = { item = 251, texture = 2 },
+			["accessory"] = { item = 0, texture = 0 },
+			["watch"] = { item = -1, texture = 0 },
+			["arms"] = { item = 88, texture = 0 },
+			["glass"] = { item = 0, texture = 0 },
+			["ear"] = { item = -1, texture = 0 }
+		}
+	},
+	["11"] = {
+		["mp_m_freemode_01"] = {
+			["hat"] = { item = -1, texture = 0 },
+			["pants"] = { item = 94, texture = 2 },
+			["vest"] = { item = 0, texture = 0 },
+			["bracelet"] = { item = -1, texture = 0 },
+			["backpack"] = { item = 0, texture = 0 },
+			["decals"] = { item = 0, texture = 0 },
+			["mask"] = { item = 0, texture = 0 },
+			["shoes"] = { item = 67, texture = 2 },
+			["tshirt"] = { item = 15, texture = 0 },
+			["torso"] = { item = 243, texture = 2 },
+			["accessory"] = { item = 0, texture = 0 },
+			["watch"] = { item = -1, texture = 0 },
+			["arms"] = { item = 86, texture = 1 },
+			["glass"] = { item = 0, texture = 0 },
+			["ear"] = { item = -1, texture = 0 }
+		},
+		["mp_f_freemode_01"] = {
+			["hat"] = { item = -1, texture = 0 },
+			["pants"] = { item = 97, texture = 2 },
+			["vest"] = { item = 0, texture = 0 },
+			["bracelet"] = { item = -1, texture = 0 },
+			["backpack"] = { item = 0, texture = 0 },
+			["decals"] = { item = 0, texture = 0 },
+			["mask"] = { item = 0, texture = 0 },
+			["shoes"] = { item = 70, texture = 2 },
+			["tshirt"] = { item = 15, texture = 0 },
+			["torso"] = { item = 251, texture = 2 },
+			["accessory"] = { item = 0, texture = 0 },
+			["watch"] = { item = -1, texture = 0 },
+			["arms"] = { item = 88, texture = 0 },
+			["glass"] = { item = 0, texture = 0 },
+			["ear"] = { item = -1, texture = 0 }
+		}
+	},
+	["12"] = {
 		["mp_m_freemode_01"] = {
 			["hat"] = { item = -1, texture = 0 },
 			["pants"] = { item = 94, texture = 2 },

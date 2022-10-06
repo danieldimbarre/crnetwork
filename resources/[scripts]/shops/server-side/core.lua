@@ -97,6 +97,54 @@ local shops = {
 			["fidentity"] = 10000
 		}
 	},
+	["Digital"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["cellphone"] = 725
+		}
+	},
+	["Brewery"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {}
+	},
+	["Organic"] = {
+		["mode"] = "Sell",
+		["type"] = "Cash",
+		["List"] = {
+			["tomato"] = 10,
+			["banana"] = 10,
+			["guarana"] = 10,
+			["acerola"] = 10,
+			["passion"] = 10,
+			["grape"] = 10,
+			["tange"] = 10,
+			["orange"] = 10,
+			["apple"] = 10,
+			["strawberry"] = 10,
+			["coffee2"] = 10
+		}
+	},
+	["Beans"] = {
+		["mode"] = "Sell",
+		["type"] = "Cash",
+		["List"] = {
+			["cupcake"] = 70
+		}
+	},
+	["Pills"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["medkit"] = 575,
+			["bandage"] = 225,
+			["gauze"] = 100,
+			["analgesic"] = 125,
+			["sinkalmy"] = 375,
+			["ritmoneury"] = 475
+		}
+	},
 	["Weeds"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
@@ -192,18 +240,6 @@ local shops = {
 			["ritmoneury"] = 475
 		}
 	},
-	["Pharmacy2"] = {
-		["mode"] = "Buy",
-		["type"] = "Cash",
-		["List"] = {
-			["medkit"] = 575,
-			["bandage"] = 225,
-			["gauze"] = 100,
-			["analgesic"] = 125,
-			["sinkalmy"] = 375,
-			["ritmoneury"] = 475
-		}
-	},
 	["Paramedic"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
@@ -238,8 +274,8 @@ local shops = {
 			["WEAPON_POOLCUE"] = 975,
 			["WEAPON_STONE_HATCHET"] = 975,
 			["WEAPON_KNUCKLE"] = 975,
-			--["WEAPON_KARAMBIT"] = 975,--
-			--["WEAPON_KATANA"] = 975,--
+			-- ["WEAPON_KARAMBIT"] = 975,
+			-- ["WEAPON_KATANA"] = 975,
 			["WEAPON_FLASHLIGHT"] = 975,
 			["pickaxe"] = 525,
 			["repairkit01"] = 525,
@@ -456,13 +492,13 @@ local shops = {
 			["WEAPON_RIFLE_AMMO"] = 6,
 			["WEAPON_SHOTGUN_AMMO"] = 5,
 			["badge01"] = 10,
-			--["WEAPON_MOLOTOV"] = 75,
-			--["WEAPON_SMOKEGRENADE"] = 75,
-			--["attachsFlashlight"] = 1750,
-			--["attachsCrosshair"] = 1750,
-			--["attachsSilencer"] = 1750,
-			--["attachsMagazine"] = 1750,
-			--["attachsGrip"] = 1750,
+			-- ["WEAPON_MOLOTOV"] = 75,
+			-- ["WEAPON_SMOKEGRENADE"] = 75,
+			-- ["attachsFlashlight"] = 1750,
+			-- ["attachsCrosshair"] = 1750,
+			-- ["attachsSilencer"] = 1750,
+			-- ["attachsMagazine"] = 1750,
+			-- ["attachsGrip"] = 1750,
 			["megaphone"] = 525
 		}
 	},

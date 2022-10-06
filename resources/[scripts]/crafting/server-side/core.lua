@@ -360,7 +360,7 @@ local List = {
 					["aluminum"] = 120,
 					["copper"] = 175,
 				}
-		},		
+			},		
 			--["WEAPON_MACHINEPISTOL"] = {
 			--	["amount"] = 1,
 			--	["destroy"] = false,

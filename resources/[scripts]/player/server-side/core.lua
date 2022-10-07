@@ -199,7 +199,7 @@ function Creative.shotsFired(Vehicle)
 		local Service = vRP.NumPermission("Police")
 		for Passports,Sources in pairs(Service) do
 			async(function()
-				TriggerClientEvent("NotifyPush",Sources,{ code = 10, title = Vehicle, x = Coords["x"], y = Coords["y"], z = Coords["z"], blipColor = 6 })
+				TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Vehicle, x = Coords["x"], y = Coords["y"], z = Coords["z"], blipColor = 6 })
 			end)
 		end
 	end
@@ -330,7 +330,7 @@ local preset = {
 			["watch"] = { item = -1, texture = 0 },
 			["arms"] = { item = 33, texture = 0 },
 			["glass"] = { item = 23, texture = 6 },
-			["ear"] = { item = 5, texture = 0 }
+			["ear"] = { item = -1, texture = 0 }
 		},
 		["mp_f_freemode_01"] = {
 			["hat"] = { item = 12, texture = 1 },

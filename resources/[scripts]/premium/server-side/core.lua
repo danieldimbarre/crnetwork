@@ -364,6 +364,15 @@ for i = 1,#HackerEvents do
 		local Passport = vRP.Passport(source)
 		if Passport then
 			TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Carregou um evento da blacklist.\n**Address:** "..GetPlayerEndpoint(source),3092790)
+
+			if not vRP.HasGroup(Passport,"Admin") then
+				local Identity = vRP.Identity(Passport)
+				if Identity then
+					vRP.Kick(Passport,"Banido.")
+					vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+				end
+			end
+
 			CancelEvent()
 		end
 	end)
@@ -377,6 +386,14 @@ AddEventHandler("admin:Print",function(Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** "..Message.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
+
+		if not vRP.HasGroup(Passport,"Admin") then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Kick(Passport,"Banido.")
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+			end
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -424,6 +441,15 @@ AddEventHandler("explosionEvent",function(source,Data)
 					if Expam[Token]["Count"] >= 10 then
 						local Passport = vRP.Passport(source)
 						TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Spammou explosões.\n**Address:** "..GetPlayerEndpoint(source),3092790)
+
+						if not vRP.HasGroup(Passport,"Admin") then
+							local Identity = vRP.Identity(Passport)
+							if Identity then
+								vRP.Kick(Passport,"Banido.")
+								vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+							end
+						end
+
 						CancelEvent()
 					end
 				end
@@ -457,6 +483,15 @@ AddEventHandler("weaponDamageEvent",function(source,Data)
 				if Tazer[Token]["Count"] >= 10 then
 					local Passport = vRP.Passport(source)
 					TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Spammou tazer.\n**Address:** "..GetPlayerEndpoint(source),3092790)
+
+					if not vRP.HasGroup(Passport,"Admin") then
+						local Identity = vRP.Identity(Passport)
+						if Identity then
+							vRP.Kick(Passport,"Banido.")
+							vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+						end
+					end
+
 					CancelEvent()
 				end
 			end
@@ -472,5 +507,13 @@ AddEventHandler("AnyResourceStop",function(Resource)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Pausou o resource "..Resource.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
+
+		if not vRP.HasGroup(Passport,"Admin") then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Kick(Passport,"Banido.")
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999 })
+			end
+		end
 	end
 end)

@@ -73,7 +73,7 @@ Use = {
 	end,
 
 	["analgesic"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if (not ealths[Passport] or os.time() > Healths[Passport]) then
+		if (not Healths[Passport] or os.time() > Healths[Passport]) then
 			if vRP.GetHealth(source) > 100 and vRP.GetHealth(source) < 200 then
 				Active[Passport] = os.time() + 3
 				Player(source)["state"]["Buttons"] = true

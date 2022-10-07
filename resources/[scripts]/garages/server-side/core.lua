@@ -304,14 +304,14 @@ function Creative.Vehicles(Garage)
 
 		local Garage = Garages[Garage]["name"]
 		if workGarages[Garage] then
-			for k,v in pairs(workGarages[Garage]) do
+			for _,v in pairs(workGarages[Garage]) do
 				if VehicleExist(v) then
 					table.insert(Vehicle,{ ["Model"] = v, ["name"] = VehicleName(v) })
 				end
 			end
 		else
 			local vehicle = vRP.Query("vehicles/UserVehicles",{ Passport = Passport })
-			for k,v in pairs(vehicle) do
+			for _,v in pairs(vehicle) do
 				if VehicleExist(v["vehicle"]) then
 					if v["work"] == "false" then
 						table.insert(Vehicle,{ ["Model"] = v["vehicle"], ["name"] = VehicleName(v["vehicle"]) })
@@ -332,16 +332,16 @@ function Creative.Impound()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local myVehicle = {}
-		local vehicle = vRP.Query("vehicles/UserVehicles",{ Passport = Passport })
+		local Vehicles = {}
+		local Vehicle = vRP.Query("vehicles/UserVehicles",{ Passport = Passport })
 
-		for k,v in ipairs(vehicle) do
+		for Number,v in ipairs(Vehicle) do
 			if v["arrest"] >= os.time() then
-				table.insert(myVehicle,{ ["Model"] = vehicle[k]["vehicle"], ["name"] = VehicleName(vehicle[k]["vehicle"]) })
+				table.insert(Vehicles,{ ["Model"] = Vehicle[Number]["vehicle"], ["name"] = VehicleName(Vehicle[Number]["vehicle"]) })
 			end
 		end
 
-		return myVehicle
+		return Vehicles
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -369,53 +369,51 @@ end)
 -- GARAGES:TAX
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("garages:Tax")
-AddEventHandler("garages:Tax",function(vehName)
+AddEventHandler("garages:Tax",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
-		if vehicle[1] then
-			if vehicle[1]["tax"] <= os.time() then
-				local VehiclePrice = VehiclePrice(vehName) * 0.10
+		local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
+		if Consult[1] and Consult[1]["tax"] <= os.time() then
+			local VehiclePrice = VehiclePrice(Name) * 0.10
 
-				if vRP.PaymentFull(Passport,source,VehiclePrice) then
-					vRP.Query("vehicles/updateVehiclesTax",{ Passport = Passport, vehicle = vehName })
-					TriggerClientEvent("Notify",source,"verde","Pagamento concluído.",5000)
-				else
-					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
-				end
+			if vRP.PaymentFull(Passport,source,VehiclePrice) then
+				vRP.Query("vehicles/updateVehiclesTax",{ Passport = Passport, vehicle = Name })
+				TriggerClientEvent("Notify",source,"verde","Pagamento concluído.",5000)
+			else
+				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 			end
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- GARAGES:TAX
+-- GARAGES:SELL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("garages:Sell")
-AddEventHandler("garages:Sell",function(vehName)
+AddEventHandler("garages:Sell",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		local Type = VehicleType(Name)
+		if Type == "rental" or Type == "work" then
+			return
+		end
+
 		if vRP.GetFine(source) > 0 then
 			TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
 			return
 		end
 
-		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
-		if vehicle[1] then
-			local vehType = VehicleType(vehName)
-			if vehType == "rental" or vehType == "work" then
-				return
-			end
-
-			local VehiclePrice = VehiclePrice(vehName) * 0.5
-			if REQUEST.Function(source,"Vender o veículo <b>"..VehicleName(vehName).."</b> por <b>$"..parseFormat(VehiclePrice).."</b>?","Sim, concluír venda","Não, mudei de ideia") then
-				local vehicles = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
-				if vehicles[1] then
-					vRP.GiveBank(Passport,VehiclePrice)
-					vRP.Query("vehicles/removeVehicles",{ Passport = Passport, vehicle = vehName })
-					vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..Passport..":"..vehName })
-					vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..Passport..":"..vehName })
+		local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
+		if Consult[1] then
+			local Price = VehiclePrice(Name) * 0.5
+			if REQUEST.Function(source,"Vender o veículo <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b>?","Sim, concluír venda","Não, mudei de ideia") then
+				local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
+				if Consult[1] then
+					vRP.GiveBank(Passport,Price)
+					vRP.Query("vehicles/removeVehicles",{ Passport = Passport, vehicle = Name })
+					vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..Passport..":"..Name })
+					vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..Passport..":"..Name })
 				end
 			end
 		end

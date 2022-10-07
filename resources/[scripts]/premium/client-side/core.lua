@@ -27,7 +27,7 @@ CreateThread(function()
 			end
 		end
 
-		if not LocalPlayer["state"]["Invincible"] and GetPlayerInvincible(Pid) then
+		if not LocalPlayer["state"]["Invincible"] and GetPlayerInvincible_2(Pid) then
 			TriggerServerEvent("admin:Print","Está imortal.")
 		end
 

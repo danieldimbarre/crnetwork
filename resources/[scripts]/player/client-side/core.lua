@@ -599,7 +599,7 @@ AddEventHandler("gameEventTriggered",function(name,Message)
 		if (GetEntityHealth(Message[1]) <= 100 and PlayerPedId() == Message[2] and IsPedAPlayer(Message[1])) then
 			local Index = NetworkGetPlayerIndexFromPed(Message[1])
 			local source = GetPlayerServerId(Index)
-			TriggerServerEvent("player:deathLogs",source)
+			TriggerServerEvent("player:Death",source)
 		end
 	end
 end)
@@ -680,7 +680,7 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- BIKESBACKPACK
+-- BIKEPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 local bikesPoints = 0
 local bikesTea = false
@@ -725,7 +725,7 @@ CreateThread(function()
 				bikesPoints = bikesPoints + 1
 
 				if bikesPoints >= bikeMaxPoints then
-					vSERVER.bikesBackpack()
+					vSERVER.Bikepack()
 					bikesPoints = 0
 				end
 			end

@@ -106,14 +106,14 @@ const updateDrag = () => {
 			updateDrag();
 
 			if (origin === "invLeft" && tInv === "invLeft"){
-				$.post("http://inventory/updateSlot",JSON.stringify({
+				$.post("http://inventory/Update",JSON.stringify({
 					item: itemData.key,
 					slot: itemData.slot,
 					target: target,
 					amount: parseInt(amount)
 				}));
 			} else if (origin === "invRight" && tInv === "invLeft"){
-				$.post("http://chest/takeItem",JSON.stringify({
+				$.post("http://chest/Take",JSON.stringify({
 					item: itemData.key,
 					slot: itemData.slot,
 					target: target,
@@ -206,14 +206,14 @@ const updateDrag = () => {
 			updateDrag();
 
 			if (origin === "invLeft" && tInv === "invLeft") {
-				$.post("http://inventory/updateSlot",JSON.stringify({
+				$.post("http://inventory/Update",JSON.stringify({
 					item: itemData.key,
 					slot: itemData.slot,
 					target: target,
 					amount: parseInt(amount)
 				}));
 			} else if (origin === "invRight" && tInv === "invLeft"){
-				$.post("http://chest/takeItem",JSON.stringify({
+				$.post("http://chest/Take",JSON.stringify({
 					item: itemData.key,
 					slot: itemData.slot,
 					target: target,

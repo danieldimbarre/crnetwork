@@ -35,7 +35,7 @@ CreateThread(function()
 			TriggerServerEvent("admin:Print","Está com estamina infinita.")
 		end
 
-		if GetEntityAlpha(Ped) <= 150 then
+		if (not LocalPlayer["state"]["Invisible"] and not IsEntityVisible(Ped)) and GetEntityAlpha(Ped) <= 150 then
 			TriggerServerEvent("admin:Print","Ativou a invisibilidade.")
 		end
 
@@ -56,7 +56,7 @@ CreateThread(function()
 		end
 
 		if GetUsingseethrough() then
-			TriggerServerEvent("admin:Print","Ativou a visão termica.")
+			TriggerServerEvent("admin:Print","Ativou a visão térmica.")
 		end
 
 		if GetUsingnightvision() then
@@ -98,13 +98,13 @@ CreateThread(function()
 				local Speed = GetEntitySpeed(Vehicle)
 
 				if Speed > (Max + 10) then
-					TriggerServerEvent("admin:Print","Mudou a velocidade dos veículos.")
+					TriggerServerEvent("admin:Print","Mudou a velocidade dos veículos. Velocidade: "..Speed * 3.6)
 				end
 			end
 		else
 			local Speed = GetEntitySpeed(Ped)
 			if IsPedRunning(Ped) and Speed > 9 and not IsPedJumping(Ped) then
-				TriggerServerEvent("admin:Print","Está correndo igual o flash.")
+				TriggerServerEvent("admin:Print","Está correndo igual o flash. Velocidade: "..Speed)
 			end
 		end
 
@@ -122,6 +122,12 @@ CreateThread(function()
 					LastAimY = ScreenY
 				end
 			end
+		end
+
+		if not HasPedGotWeapon(Ped,GetHashKey("WEAPON_UNARMED")) and not LocalPlayer["state"]["Weapon"] then
+			local _,Weapon = GetCurrentPedWeapon(Ped)
+			RemoveAllPedWeapons(Ped,true)
+			TriggerServerEvent("admin:Print","Spawnou uma arma. Arma: "..Weapon)
 		end
 
 		Wait(1000)
@@ -512,20 +518,27 @@ end
 -- ONRESOURCESTOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("onClientResourceStop",function(Resource)
-	TriggerServerEvent("AnyResourceStop",Resource)
+	TriggerServerEvent("AnyResource",Resource,"Pausou")
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ONRESOURCESTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onClientResourceStart",function(Resource)
+	TriggerServerEvent("AnyResource",Resource,"Iniciou")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Name,Message)
 	local Player = PlayerId()
-	local Network = NetworkGetEntityOwner(Message[2])
-	local Source = GetPlayerServerId(Network)
+	local Source = GetPlayerServerId(NetworkGetEntityOwner(Message[2]))
 
-	if Source == GetPlayerServerId(Player) or Message[2] == -1 then
+	if Source == GetPlayerServerId(PlayerId()) or Message[2] == -1 then
 		if IsEntityAPed(Message[1]) then
 			if not IsEntityOnScreen(Message[1]) then
-				TriggerServerEvent("admin:Print","Atirou em um jogador sem estar na tela dele.")
+				local Coords = GetEntityCoords(Message[1])
+                local Distance = #(Coords - GetEntityCoords(PlayerPedId()))
+				TriggerServerEvent("admin:Print","Atirou em um jogador sem estar na tela dele. Distância: "..Distance)
 			end
 		end
 	end

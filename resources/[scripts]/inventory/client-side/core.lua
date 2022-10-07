@@ -25,6 +25,7 @@ local putWeaponHands = false
 local storeWeaponHands = false
 local timeReload = GetGameTimer()
 LocalPlayer["state"]["Buttons"] = false
+LocalPlayer["state"]["Weapon"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:CLEANWEAPONS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -34,7 +35,8 @@ AddEventHandler("inventory:CleanWeapons",function(Create)
 		if Create and PushSlot <= 5 then
 			TriggerEvent("inventory:CreateWeapon",Weapon)
 		end
-
+		
+		LocalPlayer["state"]["Weapon"] = false
 		RemoveWeaponFromPed(PlayerPedId(),Weapon)
 		SetPedAmmo(PlayerPedId(),Weapon,0)
 	end
@@ -188,6 +190,7 @@ AddEventHandler("inventory:preventWeapon",function(storeWeapons)
 		if storeWeapons then
 			if Weapon ~= "" then
 				TriggerEvent("inventory:CreateWeapon",Weapon)
+				LocalPlayer["state"]["Weapon"] = false
 				RemoveWeaponFromPed(Ped,Weapon)
 				SetPedAmmo(Ped,Weapon,0)
 			end
@@ -616,6 +619,7 @@ function Creative.putWeaponHands(weaponName,weaponAmmo,attachs,weaponType)
 		Weapon = weaponName
 		putWeaponHands = false
 		LocalPlayer["state"]["Cancel"] = false
+		LocalPlayer["state"]["Weapon"] = true
 
 		if itemAmmo(weaponName) then
 			TriggerEvent("hud:Weapon",true,weaponName)

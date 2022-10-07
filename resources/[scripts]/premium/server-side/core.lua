@@ -464,13 +464,13 @@ AddEventHandler("weaponDamageEvent",function(source,Data)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ANYRESOURCESTOP
+-- ANYRESOURCE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("AnyResourceStop")
-AddEventHandler("AnyResourceStop",function(Resource)
+RegisterServerEvent("AnyResource")
+AddEventHandler("AnyResource",function(Resource,Status)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** Pausou o resource "..Resource.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
+		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Motivo:** "..Status.." o resource "..Resource.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 	end
 end)

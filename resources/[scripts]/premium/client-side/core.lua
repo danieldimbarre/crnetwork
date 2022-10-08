@@ -103,7 +103,7 @@ CreateThread(function()
 			end
 		else
 			local Speed = GetEntitySpeed(Ped)
-			if IsPedRunning(Ped) and Speed > 9 and not IsPedJumping(Ped) then
+			if IsPedRunning(Ped) and Speed > 9 and not IsPedJumping(Ped) and not LocalPlayer["state"]["Invisible"] then
 				TriggerServerEvent("admin:Print","Está correndo igual o flash. Velocidade: "..Speed)
 			end
 		end
@@ -124,10 +124,47 @@ CreateThread(function()
 			end
 		end
 
-		if not HasPedGotWeapon(Ped,GetHashKey("WEAPON_UNARMED")) and not LocalPlayer["state"]["Weapon"] then
-			local _,Weapon = GetCurrentPedWeapon(Ped)
-			RemoveAllPedWeapons(Ped,true)
-			TriggerServerEvent("admin:Print","Spawnou uma arma. Arma: "..Weapon)
+		local Plates = {
+			'Desudo',
+			'LynxMenu',
+			'AKTeam',
+			'Ancient',
+			'BRUTAN',
+			'Brutan#7799',
+			'Cookie',
+			'AlikhanMenu',
+			'GEJ',
+			'LYNX',
+			'CK GANG',
+			'Tiago',
+			'Swag Menu',
+			'HamHaxia',
+			'eulencheats',
+			'EulenMenu',
+			'Falcon',
+			'GEJ',
+			'Shadow',
+			'AlphaV',
+			'Luminous',
+			'Lux Menu',
+			'MalossiMenu V3',
+			'Malossi',
+			'obl2',
+			'S1MLLER',
+			'iSeekFR',
+			'Skaza',
+			'TITOModz',
+			'ZajacMenu',
+			'Menuxdhf798230fsdf3df Menu',
+		}
+
+		if IsPedInAnyVehicle(Ped) then
+			for _,v in ipairs(Plates) do
+				local Plate = GetVehicleNumberPlateText(GetVehiclePedIsIn(Ped))
+				if Plate == v then
+					TriggerServerEvent("admin:Print","Utilizou um veículo spawnado. Placa: "..Plate)
+				end
+			end
 		end
 
 		Wait(1000)

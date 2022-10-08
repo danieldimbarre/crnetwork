@@ -19,7 +19,7 @@ local Colors = {
 	["Police"] = 63,
 	["Paramedic"] = 6,
 	["Prisioneiro"] = 33,
-	["Corredor"] = 32
+	["Corredor"] = 2
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADBLIPS
@@ -50,8 +50,9 @@ CreateThread(function()
 							SetBlipAsShortRange(Blips[k],true)
 							SetBlipColour(Blips[k],Colors[v["service"]])
 							SetBlipScale(Blips[k],0.7)
+							SetBlipCategory(Blips[k],7)
 							BeginTextCommandSetBlipName("STRING")
-							AddTextComponentString("! "..v["service"])
+							AddTextComponentString(v["service"])
 							EndTextCommandSetBlipName(Blips[k])
 						end
 					end
@@ -80,8 +81,9 @@ CreateThread(function()
 								SetBlipAsShortRange(Blips[k],true)
 								SetBlipColour(Blips[k],Colors[v["service"]])
 								SetBlipScale(Blips[k],0.7)
+								SetBlipCategory(Blips[k],7)
 								BeginTextCommandSetBlipName("STRING")
-								AddTextComponentString("! "..v["service"])
+								AddTextComponentString(v["service"])
 								EndTextCommandSetBlipName(Blips[k])
 							end
 						else

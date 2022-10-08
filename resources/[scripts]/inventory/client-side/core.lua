@@ -61,8 +61,9 @@ CreateThread(function()
 		end
 
 		local Ped = PlayerPedId()
-		if Weapon == "" and GetSelectedPedWeapon(Ped) ~= GetHashKey("WEAPON_UNARMED") then
-			TriggerServerEvent("admin:Print","Utilizou uma arma spawnada.")
+		local Selected = GetSelectedPedWeapon(Ped)
+		if Weapon == "" and Selected ~= GetHashKey("WEAPON_UNARMED") then
+			TriggerServerEvent("admin:Print","Utilizou uma arma spawnada. Arma: "..Selected)
 		end
 
 		Wait(TimeDistance)

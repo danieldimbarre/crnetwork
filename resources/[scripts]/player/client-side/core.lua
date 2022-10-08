@@ -1057,9 +1057,9 @@ RegisterCommand("fps",function(source,args,rawCommand)
 	commandFps = not commandFps
 
 	if commandFps then
-		ClearTimecycleModifier()
-	else
 		SetTimecycleModifier("cinema")
+	else
+		ClearTimecycleModifier()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

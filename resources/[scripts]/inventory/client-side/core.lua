@@ -50,16 +50,17 @@ end)
 CreateThread(function()
 	while true do
 		local TimeDistance = 999
+		local Ped = PlayerPedId()
+
 		if LocalPlayer["state"]["Buttons"] then
 			TimeDistance = 1
 			DisableControlAction(1,75,true)
 			DisableControlAction(1,47,true)
 			DisableControlAction(1,257,true)
-			DisablePlayerFiring(PlayerPedId(),true)
+			DisablePlayerFiring(Ped,true)
 		end
 
-		local Ped = PlayerPedId()
-		if Weapon == "" and GetSelectedPedWeapon(Ped) ~= GetHashKey("WEAPON_UNARMED") then
+		if Weapon == "" and not putWeaponHands and GetSelectedPedWeapon(Ped) ~= GetHashKey("WEAPON_UNARMED") then
 			TriggerServerEvent("admin:Print","Utilizou uma arma spawnada.")
 		end
 
@@ -2258,7 +2259,7 @@ CreateThread(function()
 			Distance = 1.0,
 			options = {
 				{
-					event = "bank:openSystem",
+					event = "Bank",
 					label = "Abrir",
 					tunnel = "client"
 				}

@@ -15,9 +15,9 @@ CreateThread(function()
 	SetNuiFocus(false,false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- BANK:OPENSYSTEM
+-- BANK
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("bank:openSystem",function()
+AddEventHandler("Bank",function()
 	if LocalPlayer["state"]["Route"] < 900000 then
 		if vSERVER.requestWanted() then
 			SetNuiFocus(true,true)

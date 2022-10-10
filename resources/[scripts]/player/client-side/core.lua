@@ -1063,9 +1063,9 @@ RegisterCommand("fps",function(source,args,rawCommand)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ELEVATORLIST
+-- ELEVATOR
 -----------------------------------------------------------------------------------------------------------------------------------------
-local ElevatorList = {
+local Elevator = {
 	["Hospital"] = {{
 		["Coords"] = vector3(-664.27,326.48,78.12),
 		["Heading"] = 356,
@@ -1092,32 +1092,32 @@ local ElevatorList = {
 -- THREADELEVATOR
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local ElevatorFloorsOptions = {}
-	for ElevatorName,ElevatorFloors in pairs(ElevatorList) do
-		for Index,Floor in pairs(ElevatorFloors) do
-			for k,v in pairs(ElevatorFloors) do
+	local ElevatorList = {}
+	for Number,Table in pairs(ElevatorList) do
+		for Index,Floor in pairs(Table) do
+			for k,v in pairs(Table) do
 				if k ~= Index then
-					table.insert(ElevatorFloorsOptions,{
+					table.insert(ElevatorList,{
 						event = "player:ElevatorTeleport",
 						label = v["Label"],
-						service = ElevatorName,
+						service = Number,
 						teleport = k,
 						tunnel = "teleport"
 					})
 				end
 			end
 
-			exports["target"]:AddBoxZone(ElevatorName..Index,Floor["Coords"],3,3, {
-				name = ElevatorName,
+			exports["target"]:AddBoxZone("Elevator:"..Number,Floor["Coords"],3,3, {
+				name = "Elevator:"..Number,
 				heading = Floor["Heading"],
 				minZ = Floor["Coords"]["z"] - 1.5,
 				maxZ = Floor["Coords"]["z"] + 2
 			},{
 				Distance = 1.5,
-				options = ElevatorFloorsOptions
+				options = ElevatorList
 			})
 
-			ElevatorFloorsOptions = {}
+			ElevatorList = {}
 		end
 	end
 end)
@@ -1125,6 +1125,13 @@ end)
 -- PLAYER:ELEVATORTELEPORT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:ElevatorTeleport")
-AddEventHandler("player:ElevatorTeleport",function(Elevator,Floor)
-	SetEntityCoords(PlayerPedId(),ElevatorList[Elevator][Floor]["Coords"]["x"],ElevatorList[Elevator][Floor]["Coords"]["y"],ElevatorList[Elevator][Floor]["Coords"]["z"],1,0,0,0)
+AddEventHandler("player:ElevatorTeleport",function(Number,Floor)
+	DoScreenFadeOut(0)
+
+    local Ped = PlayerPedId()
+    SetEntityCoords(Ped,Elevator[Number][Floor]["Coords"])
+
+    Wait(1000)
+
+    DoScreenFadeIn(1000)
 end)

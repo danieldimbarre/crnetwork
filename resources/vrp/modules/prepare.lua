@@ -1,16 +1,6 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("mastercard/ConsultCard","SELECT * FROM mastercard WHERE Card = @Card")
-vRP.Prepare("mastercard/UserCards","SELECT * FROM mastercard WHERE Passport = @Passport")
-vRP.Prepare("mastercard/ConsultOwner","SELECT * FROM mastercard WHERE Card = @Card AND Owner = 1")
-vRP.Prepare("mastercard/CardCheck","SELECT * FROM mastercard WHERE Passport = @Passport AND Card = @Card")
-vRP.Prepare("mastercard/NewCard","INSERT INTO mastercard(Card,Passport,Owner) VALUES(@Card,@Passport,@Owner)")
-vRP.Prepare("mastercard/addFunds","UPDATE mastercard SET Money = Money + @Money WHERE Card = @Card AND Owner = 1")
-vRP.Prepare("mastercard/remFunds","UPDATE mastercard SET Money = Money - @Money WHERE Card = @Card AND Owner = 1")
------------------------------------------------------------------------------------------------------------------------------------------
--- CHARACTERS
------------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("characters/Person","SELECT * FROM characters WHERE id = @id")
 vRP.Prepare("characters/getPhone","SELECT id FROM characters WHERE phone = @phone")
 vRP.Prepare("characters/updatePhone","UPDATE characters SET phone = @phone WHERE id = @id")
@@ -25,7 +15,11 @@ vRP.Prepare("characters/Characters","SELECT * FROM characters WHERE license = @l
 vRP.Prepare("characters/removePrison","UPDATE characters SET prison = prison - @prison WHERE id = @Passport")
 vRP.Prepare("characters/updateName","UPDATE characters SET name = @name, name2 = @name2 WHERE id = @Passport")
 vRP.Prepare("characters/Tracking","UPDATE characters SET tracking = tracking + @tracking WHERE id = @Passport")
+vRP.Prepare("characters/UpgradeSpending","UPDATE characters SET spending = spending + @spending WHERE id = @Passport")
+vRP.Prepare("characters/DowngradeSpending","UPDATE characters SET spending = spending - @spending WHERE id = @Passport")
 vRP.Prepare("characters/lastCharacters","SELECT id FROM characters WHERE license = @license ORDER BY id DESC LIMIT 1")
+vRP.Prepare("characters/UpgradeCardlimit","UPDATE characters SET cardlimit = cardlimit + @cardlimit WHERE id = @Passport")
+vRP.Prepare("characters/DowngradeCardlimit","UPDATE characters SET cardlimit = cardlimit - @cardlimit WHERE id = @Passport")
 vRP.Prepare("characters/countPersons","SELECT COUNT(license) as qtd FROM characters WHERE license = @license and deleted = 0")
 vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,phone,blood) VALUES(@license,@name,@name2,@sex,@phone,@blood)")
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -121,6 +115,45 @@ vRP.Prepare("propertys/Fridge","UPDATE propertys SET Fridge = Fridge + @weight W
 vRP.Prepare("propertys/Check","SELECT * FROM propertys WHERE Name = @name AND Passport = @passport")
 vRP.Prepare("propertys/Tax","UPDATE propertys SET Tax = UNIX_TIMESTAMP() + 2592000 WHERE Name = @name")
 vRP.Prepare("propertys/Buy","INSERT INTO propertys(Name,Interior,Passport,Serial,Vault,Fridge,Tax) VALUES(@name,@interior,@passport,@serial,@vault,@fridge,@tax)")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FINES
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("fines/List","SELECT * FROM fines WHERE Passport = @Passport")
+vRP.Prepare("fines/Remove","DELETE FROM fines WHERE Passport = @Passport AND id = @id")
+vRP.Prepare("fines/Check","SELECT * FROM fines WHERE Passport = @Passport AND id = @id")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TAXS
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("taxs/List","SELECT * FROM taxs WHERE Passport = @Passport")
+vRP.Prepare("taxs/Remove","DELETE FROM taxs WHERE Passport = @Passport AND id = @id")
+vRP.Prepare("taxs/Check","SELECT * FROM taxs WHERE Passport = @Passport AND id = @id")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TRANSACTIONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("transactions/List","SELECT * FROM transactions WHERE Passport = @Passport ORDER BY id DESC LIMIT @Limit")
+vRP.Prepare("transactions/Add","INSERT INTO transactions(Passport,Type,Date,Value,Balance) VALUES(@Passport,@Type,@Date,@Value,@Balance)")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DEPENDENTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("dependents/List","SELECT * FROM dependents WHERE Passport = @Passport")
+vRP.Prepare("dependents/Remove","DELETE FROM dependents WHERE Passport = @Passport AND Dependent = @Dependent")
+vRP.Prepare("dependents/Check","SELECT * FROM dependents WHERE Passport = @Passport AND Dependent = @Dependent")
+vRP.Prepare("dependents/Add","INSERT INTO dependents(Passport,Dependent,Name) VALUES(@Passport,@Dependent,@Name)")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVOICES
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("invoices/Remove","DELETE FROM invoices WHERE id = @id")
+vRP.Prepare("invoices/Check","SELECT * FROM invoices WHERE id = @id")
+vRP.Prepare("invoices/List","SELECT * FROM invoices WHERE Passport = @Passport")
+vRP.Prepare("invoices/Add","INSERT INTO invoices(Passport,Type,Reason,Holder,Value) VALUES(@Passport,@Type,@Reason,@Holder,@Value)")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVESTMENTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("investments/Remove","DELETE FROM investments WHERE Passport = @Passport")
+vRP.Prepare("investments/Check","SELECT * FROM investments WHERE Passport = @Passport")
+vRP.Prepare("investments/Add","INSERT INTO investments(Passport,Deposit,Last) VALUES(@Passport,@Deposit,UNIX_TIMESTAMP())")
+vRP.Prepare("investments/Invest","UPDATE investments SET Deposit = Deposit + @Value, Last = UNIX_TIMESTAMP() WHERE Passport = @Passport")
+vRP.Prepare("investments/Actives","UPDATE investments SET Monthly = Monthly + FLOOR((Deposit + Liquid) * 0.10), Liquid = Liquid + FLOOR((Deposit + Liquid) * 0.10), Last = UNIX_TIMESTAMP() + 86400 WHERE Last < UNIX_TIMESTAMP()")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------

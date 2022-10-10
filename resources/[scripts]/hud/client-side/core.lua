@@ -147,7 +147,7 @@ CreateThread(function()
 			if HungerTimer <= GetGameTimer() then
 				HungerTimer = GetGameTimer() + 10000
 
-				if Hunger < 25 then
+				if Hunger < 25 and GetEntityHealth(Ped) > 100 then
 					ApplyDamageToPed(Ped,math.random(2),false)
 					TriggerEvent("Notify","hunger","Sofrendo de fome.",2500)
 				end
@@ -156,7 +156,7 @@ CreateThread(function()
 			if ThirstTimer <= GetGameTimer() then
 				ThirstTimer = GetGameTimer() + 10000
 
-				if Thirst < 25 then
+				if Thirst < 25 and GetEntityHealth(Ped) > 100 then
 					ApplyDamageToPed(Ped,math.random(2),false)
 					TriggerEvent("Notify","thirst","Sofrendo de sede.",2500)
 				end

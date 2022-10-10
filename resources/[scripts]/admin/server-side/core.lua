@@ -430,7 +430,7 @@ RegisterCommand("kickall",function(source)
 		Wait(100)
 	end
 
-	TriggerEvent("SaveServer")
+	TriggerEvent("SaveServer",false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVE
@@ -443,7 +443,7 @@ RegisterCommand("save",function(source)
 		end
 	end
 
-	TriggerEvent("SaveServer")
+	TriggerEvent("SaveServer",false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMALL

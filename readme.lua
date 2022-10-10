@@ -152,7 +152,7 @@ vRP.ModelPlayer(source: int)
 
 vRP.GetExperience(Passport: int,Work: string)
 
-vRP.PutExperience(Passport: int,Work: string,Number)
+vRP.PutExperience(Passport: int,Work: string,Number: int)
 
 vRP.SetArmour(source: int,Amount: int)
 
@@ -167,3 +167,11 @@ vRP.UpgradePremium(source: int)
 vRP.UserPremium(Passport: int)
 
 vRP.LicensePremium(License: string)
+
+vRP.UpgradeSpending(Passport: int,Amount: int)
+
+vRP.DowngradeSpending(Passport: int,Amount: int)
+
+vRP.UpgradeCardlimit(Passport: int,Amount: int)
+
+vRP.DowngradeCardlimit(Passport: int,Amount: int)

@@ -146,10 +146,12 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVESERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("SaveServer",function()
+AddEventHandler("SaveServer",function(Silenced)
 	SaveResourceFile("logs","plants.json",json.encode(Plants),-1)
 
-	print("O arquivo plants.lua terminou de salvar os dados.")
+	if not Silenced then
+		print("O arquivo plants.lua terminou de salvar os dados.")
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART

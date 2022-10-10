@@ -246,8 +246,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("player:cvFunctions")
 AddEventHandler("player:cvFunctions",function(Mode)
-	local source = source
 	local Distance = 1
+	local source = source
 
 	if Mode == "rv" then
 		Distance = 10
@@ -256,14 +256,14 @@ AddEventHandler("player:cvFunctions",function(Mode)
 	local ClosestPed = vRPC.ClosestPed(source,Distance)
 	if ClosestPed then
 		local Passport = vRP.Passport(source)
-		local consultItem = vRP.InventoryItemAmount(Passport,"rope")
-		if vRP.HasGroup(Passport,"Emergency") or consultItem[1] >= 1 then
+		local Consult = vRP.InventoryItemAmount(Passport,"rope")
+		if vRP.HasGroup(Passport,"Emergency") or Consult[1] >= 1 then
 			local Vehicle,Network = vRPC.VehicleList(source,5)
 			if Vehicle then
-				local Network = NetworkGetEntityFromNetworkId(Network)
-				local doorStatus = GetVehicleDoorLockStatus(Network)
-			
-				if parseInt(doorStatus) <= 1 then
+				local Networked = NetworkGetEntityFromNetworkId(Network)
+				local Door = GetVehicleDoorLockStatus(Networked)
+
+				if parseInt(Door) <= 1 then
 					if Mode == "rv" then
 						vCLIENT.removeVehicle(ClosestPed)
 					elseif Mode == "cv" then
@@ -712,10 +712,10 @@ local preset = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PLAYER:PRESETFUNCTIONS
+-- PLAYER:PRESET
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("player:presetFunctions")
-AddEventHandler("player:presetFunctions",function(Number)
+RegisterServerEvent("player:Preset")
+AddEventHandler("player:Preset",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -811,10 +811,10 @@ local removeFit = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PLAYER:PRESETFUNCTIONS
+-- PLAYER:OUTFIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("player:outfitFunctions")
-AddEventHandler("player:outfitFunctions",function(Mode)
+RegisterServerEvent("player:Outfit")
+AddEventHandler("player:Outfit",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) then
@@ -845,10 +845,10 @@ AddEventHandler("player:outfitFunctions",function(Mode)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DEATHLOGS
+-- DEATH
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("player:deathLogs")
-AddEventHandler("player:deathLogs",function(nsource)
+RegisterServerEvent("player:Death")
+AddEventHandler("player:Death",function(nsource)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and source ~= nsource then
@@ -874,9 +874,9 @@ AddEventHandler("player:deathLogs",function(nsource)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- BIKESBACKPACK
+-- BIKEPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.bikesBackpack()
+function Creative.Bikepack()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

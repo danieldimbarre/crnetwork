@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `fines` int(20) NOT NULL DEFAULT 0,
   `prison` int(11) NOT NULL DEFAULT 0,
   `tracking` int(30) NOT NULL DEFAULT 0,
+  `spending` int(20) NOT NULL DEFAULT 0,
+  `cardlimit` int(20) NOT NULL DEFAULT 0,
   `deleted` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `license` (`license`),
@@ -49,6 +51,17 @@ CREATE TABLE IF NOT EXISTS `chests` (
   `perm` varchar(50) NOT NULL,
   `logs` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `dependents`;
+CREATE TABLE IF NOT EXISTS `dependents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Passport` int(10) NOT NULL DEFAULT 0,
+  `Dependent` int(10) NOT NULL DEFAULT 0,
+  `Name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Passport` (`Passport`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -71,13 +84,43 @@ CREATE TABLE IF NOT EXISTS `fidentity` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `mastercard`;
-CREATE TABLE IF NOT EXISTS `mastercard` (
+DROP TABLE IF EXISTS `fines`;
+CREATE TABLE IF NOT EXISTS `fines` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Card` varchar(16) NOT NULL DEFAULT '0000000000000000',
-  `Money` int(20) NOT NULL DEFAULT 0,
-  `Passport` int(20) NOT NULL DEFAULT 0,
-  `Owner` tinyint(1) NOT NULL DEFAULT 0,
+  `Passport` int(10) NOT NULL DEFAULT 0,
+  `Name` varchar(50) NOT NULL,
+  `Date` varchar(50) NOT NULL,
+  `Hour` varchar(50) NOT NULL,
+  `Value` int(11) NOT NULL,
+  `Message` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Passport` (`Passport`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `investments`;
+CREATE TABLE IF NOT EXISTS `investments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Passport` int(10) NOT NULL DEFAULT 0,
+  `Total` int(20) NOT NULL DEFAULT 0,
+  `Brute` int(20) NOT NULL DEFAULT 0,
+  `Liquid` int(20) NOT NULL DEFAULT 0,
+  `Monthly` int(20) NOT NULL DEFAULT 0,
+  `Deposit` int(20) NOT NULL DEFAULT 0,
+  `Last` int(20) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `Passport` (`Passport`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `invoices`;
+CREATE TABLE IF NOT EXISTS `invoices` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Passport` int(10) NOT NULL DEFAULT 0,
+  `Type` varchar(50) NOT NULL,
+  `Reason` varchar(50) NOT NULL,
+  `Holder` varchar(50) NOT NULL,
+  `Value` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
@@ -135,6 +178,33 @@ CREATE TABLE IF NOT EXISTS `races` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `Race` (`Race`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `taxs`;
+CREATE TABLE IF NOT EXISTS `taxs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Passport` int(10) NOT NULL DEFAULT 0,
+  `Name` varchar(50) NOT NULL,
+  `Date` varchar(50) NOT NULL,
+  `Hour` varchar(50) NOT NULL,
+  `Value` int(11) NOT NULL,
+  `Message` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Passport` (`Passport`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `transactions`;
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Passport` int(10) NOT NULL DEFAULT 0,
+  `Type` varchar(50) NOT NULL,
+  `Date` varchar(50) NOT NULL,
+  `Value` int(11) NOT NULL,
+  `Balance` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Passport` (`Passport`),
+  KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `vehicles`;

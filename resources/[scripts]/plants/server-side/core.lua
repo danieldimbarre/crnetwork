@@ -147,7 +147,7 @@ end
 -- SAVESERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("SaveServer",function(Silenced)
-	SaveResourceFile("logs","plants.json",json.encode(Plants),-1)
+	vRP.SetSrvData("Plants",Plants,true)
 
 	if not Silenced then
 		print("O arquivo plants.lua terminou de salvar os dados.")
@@ -157,8 +157,7 @@ end)
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local PlantsFile = LoadResourceFile("logs","plants.json")
-	Plants = json.decode(PlantsFile)
+	Plants = vRP.GetSrvData("Plants",true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

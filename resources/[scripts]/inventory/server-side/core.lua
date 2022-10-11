@@ -17,7 +17,6 @@ vDELIVER = Tunnel.getInterface("deliver")
 vCLIENT = Tunnel.getInterface("inventory")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vPARAMEDIC = Tunnel.getInterface("paramedic")
-vSKINSHOP = Tunnel.getInterface("skinshop")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -782,7 +781,7 @@ AddEventHandler("inventory:Deliver",function(Slot)
 		local Item = Split[1]
 
 		if Item == "woodlog" then
-			if not vRPC.lastVehicle(source,"ratloader") then
+			if not vRPC.LastVehicle(source,"ratloader") then
 				TriggerClientEvent("Notify",source,"amarelo","Precisa utilizar o veículo do <b>Lenhador</b>.",3000)
 				return
 			end
@@ -818,7 +817,7 @@ AddEventHandler("inventory:Deliver",function(Slot)
 				end
 			end
 		elseif Item == "pouch" then
-			if not vRPC.lastVehicle(source,"stockade") then
+			if not vRPC.LastVehicle(source,"stockade") then
 				TriggerClientEvent("Notify",source,"amarelo","Precisa utilizar o veículo do <b>Transportador</b>.",3000)
 				return
 			end
@@ -1412,7 +1411,7 @@ AddEventHandler("inventory:verifyObjects",function(Entity,Service)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
 		if Service == "Lixeiro" then
-			if not vRPC.lastVehicle(source,"trash") then
+			if not vRPC.LastVehicle(source,"trash") then
 				TriggerClientEvent("Notify",source,"amarelo","Precisa utilizar o veículo do <b>Lixeiro</b>.",3000)
 				return
 			end
@@ -1559,10 +1558,10 @@ RegisterServerEvent("inventory:applyPlate")
 AddEventHandler("inventory:applyPlate",function(Entity)
 	local source = source
 	local consultItem = {}
-	local vehPlate = Entity[1]
+	local Plate = Entity[1]
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
-		if not Plates[vehPlate] then
+		if not Plates[Plate] then
 			consultItem = vRP.InventoryItemAmount(Passport,"plate")
 			if consultItem[1] <= 0 then
 				TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>1x "..itemName("plate").."</b>.",5000)
@@ -1576,9 +1575,9 @@ AddEventHandler("inventory:applyPlate",function(Entity)
 			return
 		end
 
-		if Plates[vehPlate] ~= nil then
-			if os.time() < Plates[vehPlate][1] then
-				local plateTimers = parseInt(Plates[vehPlate][1] - os.time())
+		if Plates[Plate] ~= nil then
+			if os.time() < Plates[Plate][1] then
+				local plateTimers = parseInt(Plates[Plate][1] - os.time())
 				if plateTimers ~= nil then
 					TriggerClientEvent("Notify",source,"azul","Aguarde "..CompleteTimers(plateTimers)..".",5000)
 				end
@@ -1598,11 +1597,11 @@ AddEventHandler("inventory:applyPlate",function(Entity)
 				vRPC.stopAnim(source,false)
 				Player(source)["state"]["Buttons"] = false
 
-				if not Plates[vehPlate] then
+				if not Plates[Plate] then
 					if vRP.TakeItem(Passport,consultItem[2],1,true) then
 						local newPlate = vRP.GeneratePlate()
 						TriggerEvent("plateEveryone",newPlate)
-						Plates[newPlate] = { os.time() + 3600,vehPlate }
+						Plates[newPlate] = { os.time() + 3600,Plate }
 
 						local Network = NetworkGetEntityFromNetworkId(Entity[4])
 						if DoesEntityExist(Network) and not IsPedAPlayer(Network) and GetEntityType(Network) == 2 then
@@ -1612,7 +1611,7 @@ AddEventHandler("inventory:applyPlate",function(Entity)
 				else
 					local Network = NetworkGetEntityFromNetworkId(Entity[4])
 					if DoesEntityExist(Network) and not IsPedAPlayer(Network) and GetEntityType(Network) == 2 then
-						SetVehicleNumberPlateText(Network,Plates[vehPlate][2])
+						SetVehicleNumberPlateText(Network,Plates[Plate][2])
 					end
 
 					if math.random(100) >= 50 then
@@ -1621,8 +1620,8 @@ AddEventHandler("inventory:applyPlate",function(Entity)
 						TriggerClientEvent("Notify",source,"azul","Após remove-la a mesma quebrou.",5000)
 					end
 
-					TriggerEvent("plateReveryone",vehPlate)
-					Plates[vehPlate] = nil
+					TriggerEvent("plateReveryone",Plate)
+					Plates[Plate] = nil
 				end
 			end
 
@@ -1636,8 +1635,8 @@ end)
 RegisterServerEvent("inventory:stealTrunk")
 AddEventHandler("inventory:stealTrunk",function(Entity)
 	local source = source
-	local vehNet = Entity[4]
-	local vehPlate = Entity[1]
+	local Plate = Entity[1]
+	local Network = Entity[4]
 	local vehModels = Entity[2]
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
@@ -1646,12 +1645,12 @@ AddEventHandler("inventory:stealTrunk",function(Entity)
 			return
 		end
 
-		if not vRP.PassportPlate(vehPlate) then
-			if not Trunks[vehPlate] then
-				Trunks[vehPlate] = os.time()
+		if not vRP.PassportPlate(Plate) then
+			if not Trunks[Plate] then
+				Trunks[Plate] = os.time()
 			end
 
-			if os.time() >= Trunks[vehPlate] then
+			if os.time() >= Trunks[Plate] then
 				vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 				Active[Passport] = os.time() + 100
 
@@ -1660,30 +1659,30 @@ AddEventHandler("inventory:stealTrunk",function(Entity)
 					Player(source)["state"]["Buttons"] = true
 					TriggerClientEvent("Progress",source,"Vasculhando",20000)
 					TriggerClientEvent("player:Residuals",source,"Resíduo de Ferro.")
-					TriggerClientEvent("player:syncDoorsOptions",source,vehNet,"open")
+					TriggerClientEvent("player:syncDoorsOptions",source,Network,"open")
 
 					repeat
 						if os.time() >= parseInt(Active[Passport]) then
 							Active[Passport] = nil
 							vRPC.stopAnim(source,false)
 							Player(source)["state"]["Buttons"] = false
-							TriggerClientEvent("player:syncDoorsOptions",source,vehNet,"close")
+							TriggerClientEvent("player:syncDoorsOptions",source,Network,"close")
 
-							if os.time() >= Trunks[vehPlate] then
+							if os.time() >= Trunks[Plate] then
 								local randItens = math.random(#StealItens)
 								if math.random(250) <= StealItens[randItens]["rand"] then
 									local randAmounts = math.random(StealItens[randItens]["min"],StealItens[randItens]["max"])
 
 									if (vRP.InventoryWeight(Passport) + itemWeight(StealItens[randItens]["item"]) * randAmounts) <= vRP.GetWeight(Passport) then
 										vRP.GenerateItem(Passport,StealItens[randItens]["item"],randAmounts,true)
-										Trunks[vehPlate] = os.time() + 3600
+										Trunks[Plate] = os.time() + 3600
 										vRP.UpgradeStress(Passport,2)
 									else
 										TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 									end
 								else
 									TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
-									Trunks[vehPlate] = os.time() + 3600
+									Trunks[Plate] = os.time() + 3600
 								end
 							end
 						end
@@ -1691,7 +1690,7 @@ AddEventHandler("inventory:stealTrunk",function(Entity)
 						Wait(100)
 					until not Active[Passport]
 				else
-					TriggerClientEvent("inventory:vehicleAlarm",source,vehNet,vehPlate)
+					TriggerClientEvent("inventory:vehicleAlarm",source,Network,Plate)
 					vRPC.stopAnim(source,false)
 					Active[Passport] = nil
 
@@ -1699,7 +1698,7 @@ AddEventHandler("inventory:stealTrunk",function(Entity)
 					local Service = vRP.NumPermission("Police")
 					for Passports,Sources in pairs(Service) do
 						async(function()
-							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = vehicleName(vehModels).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehModels).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 						end)
 					end
 				end

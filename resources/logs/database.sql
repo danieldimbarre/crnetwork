@@ -117,6 +117,7 @@ DROP TABLE IF EXISTS `invoices`;
 CREATE TABLE IF NOT EXISTS `invoices` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Passport` int(10) NOT NULL DEFAULT 0,
+  `Received` int(10) NOT NULL DEFAULT 0,
   `Type` varchar(50) NOT NULL,
   `Reason` varchar(50) NOT NULL,
   `Holder` varchar(50) NOT NULL,

@@ -3176,7 +3176,7 @@ Use = {
 				Active[Passport] = nil
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,10,1.10)
+					TriggerClientEvent("setEnergetic",source,40,1.20)
 					-- TriggerClientEvent("player:MushroomTea",source)
 					vRP.UpgradeThirst(Passport,20)
 				end

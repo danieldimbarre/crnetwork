@@ -127,6 +127,7 @@ vRP.Prepare("fines/Check","SELECT * FROM fines WHERE Passport = @Passport AND id
 vRP.Prepare("taxs/List","SELECT * FROM taxs WHERE Passport = @Passport")
 vRP.Prepare("taxs/Remove","DELETE FROM taxs WHERE Passport = @Passport AND id = @id")
 vRP.Prepare("taxs/Check","SELECT * FROM taxs WHERE Passport = @Passport AND id = @id")
+vRP.Prepare("taxs/Add","INSERT INTO taxs(Passport,Name,Date,Hour,Value,Message) VALUES(@Passport,@Name,@Date,@Hour,@Value,@Message)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TRANSACTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -145,7 +146,7 @@ vRP.Prepare("dependents/Add","INSERT INTO dependents(Passport,Dependent,Name) VA
 vRP.Prepare("invoices/Remove","DELETE FROM invoices WHERE id = @id")
 vRP.Prepare("invoices/Check","SELECT * FROM invoices WHERE id = @id")
 vRP.Prepare("invoices/List","SELECT * FROM invoices WHERE Passport = @Passport")
-vRP.Prepare("invoices/Add","INSERT INTO invoices(Passport,Type,Reason,Holder,Value) VALUES(@Passport,@Type,@Reason,@Holder,@Value)")
+vRP.Prepare("invoices/Add","INSERT INTO invoices(Passport,Received,Type,Reason,Holder,Value) VALUES(@Passport,@Received,@Type,@Reason,@Holder,@Value)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVESTMENTS
 -----------------------------------------------------------------------------------------------------------------------------------------

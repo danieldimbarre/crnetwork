@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `license` (`license`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `banneds`;
 CREATE TABLE IF NOT EXISTS `banneds` (
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `banneds` (
   `time` int(20) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `characters`;
 CREATE TABLE IF NOT EXISTS `characters` (
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   PRIMARY KEY (`id`),
   KEY `license` (`license`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `chests`;
 CREATE TABLE IF NOT EXISTS `chests` (
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `chests` (
   `logs` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `dependents`;
 CREATE TABLE IF NOT EXISTS `dependents` (
@@ -63,7 +63,18 @@ CREATE TABLE IF NOT EXISTS `dependents` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `discord`;
+CREATE TABLE IF NOT EXISTS `discord` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `discord_id` varchar(50) DEFAULT NULL,
+  `channel_id` varchar(50) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `is_finished` tinyint(4) DEFAULT 0,
+  `created_at` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `entitydata`;
 CREATE TABLE IF NOT EXISTS `entitydata` (
@@ -71,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `entitydata` (
   `dvalue` longtext DEFAULT NULL,
   PRIMARY KEY (`dkey`),
   KEY `dkey` (`dkey`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `fidentity`;
 CREATE TABLE IF NOT EXISTS `fidentity` (
@@ -82,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `fidentity` (
   `blood` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `fines`;
 CREATE TABLE IF NOT EXISTS `fines` (
@@ -96,14 +107,12 @@ CREATE TABLE IF NOT EXISTS `fines` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `investments`;
 CREATE TABLE IF NOT EXISTS `investments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Passport` int(10) NOT NULL DEFAULT 0,
-  `Total` int(20) NOT NULL DEFAULT 0,
-  `Brute` int(20) NOT NULL DEFAULT 0,
   `Liquid` int(20) NOT NULL DEFAULT 0,
   `Monthly` int(20) NOT NULL DEFAULT 0,
   `Deposit` int(20) NOT NULL DEFAULT 0,
@@ -111,12 +120,13 @@ CREATE TABLE IF NOT EXISTS `investments` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `invoices`;
 CREATE TABLE IF NOT EXISTS `invoices` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Passport` int(10) NOT NULL DEFAULT 0,
+  `Received` int(10) NOT NULL DEFAULT 0,
   `Type` varchar(50) NOT NULL,
   `Reason` varchar(50) NOT NULL,
   `Holder` varchar(50) NOT NULL,
@@ -124,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `playerdata`;
 CREATE TABLE IF NOT EXISTS `playerdata` (
@@ -134,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `playerdata` (
   PRIMARY KEY (`Passport`,`dkey`),
   KEY `Passport` (`Passport`),
   KEY `dkey` (`dkey`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `prison`;
 CREATE TABLE IF NOT EXISTS `prison` (
@@ -160,12 +170,12 @@ CREATE TABLE IF NOT EXISTS `propertys` (
   `Serial` varchar(10) NOT NULL,
   `Vault` int(6) NOT NULL DEFAULT 1,
   `Fridge` int(6) NOT NULL DEFAULT 1,
-  `Garage` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`Garage`)),
+  `Garage` longtext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`),
   KEY `Passport` (`Passport`),
   KEY `Name` (`Name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `races`;
 CREATE TABLE IF NOT EXISTS `races` (
@@ -178,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `races` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `Race` (`Race`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `taxs`;
 CREATE TABLE IF NOT EXISTS `taxs` (
@@ -192,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `taxs` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `transactions`;
 CREATE TABLE IF NOT EXISTS `transactions` (
@@ -205,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `vehicles`;
 CREATE TABLE IF NOT EXISTS `vehicles` (
@@ -227,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `vehicle` (`vehicle`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `warehouse`;
 CREATE TABLE IF NOT EXISTS `warehouse` (
@@ -240,6 +250,6 @@ CREATE TABLE IF NOT EXISTS `warehouse` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES ('Permissions:Admin', '{\"1\":true}');

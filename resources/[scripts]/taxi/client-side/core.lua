@@ -176,9 +176,10 @@ local spawnModels = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for k,v in pairs(initList) do
-		exports["target"]:AddCircleZone("Taxi",vec3(v[1],v[2],v[3]),v[4],{
-			name = "Taxi",
-			heading = 3374176
+		exports["target"]:AddCircleZone("Taxi:"..k,vec3(v[1],v[2],v[3]),v[4],{
+			name = "Taxi:"..k,
+			heading = 3374176,
+			debugPoly = true
 		},{
 			shop = k,
 			Distance = v[5],
@@ -200,7 +201,7 @@ AddEventHandler("taxi:Starting",function(Init)
 	if stopVehicle[Init] and spawnPeds[Init] then
 		if serviceStatus then
 			serviceStatus = false
-			exports["target"]:LabelText("Taxi","Trabalhar")
+			exports["target"]:LabelText("Taxi:"..Init,"Trabalhar")
 			TriggerEvent("Notify","verde","Trabalho finalizado.",3000)
 
 			if DoesBlipExist(serviceBlip) then
@@ -235,7 +236,7 @@ AddEventHandler("taxi:Starting",function(Init)
 
 			serviceStatus = true
 			TriggerEvent("Notify","verde","Trabalho iniciado.",3000)
-			exports["target"]:LabelText("Taxi","Finalizar")
+			exports["target"]:LabelText("Taxi:"..Init,"Finalizar")
 
 			while serviceStatus do
 				local TimeDistance = 999

@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `name` varchar(50) DEFAULT 'Individuo',
   `name2` varchar(50) DEFAULT 'Indigente',
   `sex` varchar(1) NOT NULL DEFAULT 'M',
-  `bank` int(20) NOT NULL DEFAULT 0,
+  `bank` int(20) NOT NULL DEFAULT 2000,
   `blood` int(1) NOT NULL DEFAULT 1,
   `fines` int(20) NOT NULL DEFAULT 0,
   `prison` int(11) NOT NULL DEFAULT 0,

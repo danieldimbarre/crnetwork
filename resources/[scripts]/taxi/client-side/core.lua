@@ -18,9 +18,9 @@ local lastPassenger = nil
 local currentStatus = false
 local serviceStatus = false
 local currentPassenger = nil
-local initService = {
-	{ 894.97,-179.07,74.7 },
-	{ 1696.19,4785.25,42.02 }
+local initList = {
+	{ 894.97,-179.07,74.7,1.0,1.0,"Trabalhar",false },
+	{ 1696.19,4785.25,42.02,0.5,1.0,"Trabalhar",false }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STOPVEHICLE
@@ -172,122 +172,129 @@ local spawnModels = {
 	"ig_denise","ig_devin","a_m_y_dhill_01","ig_dom","a_m_y_downtown_01","ig_dreyfuss"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- HOVERFY:INSERT
------------------------------------------------------------------------------------------------------------------------------------------
-local Table = {}
-
-for k,v in pairs(initService) do
-	table.insert(Table,{ v[1],v[2],v[3],2,"E","Táxi","Pressione para iniciar/finalizar" })
-end
-
-TriggerEvent("hoverfy:Insert",Table)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADINIT
+-- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	while true do
-		local TimeDistance = 999
-		local Ped = PlayerPedId()
-		if not IsPedInAnyVehicle(Ped) then
-			local Coords = GetEntityCoords(Ped)
+	for k,v in pairs(initList) do
+		exports["target"]:AddCircleZone("Taxi",vec3(v[1],v[2],v[3]),v[4],{
+			name = "Taxi",
+			heading = 3374176
+		},{
+			shop = k,
+			Distance = v[5],
+			options = {
+				{
+					event = "taxi:Starting",
+					tunnel = "shop",
+					label = v[6]
+				}
+			}
+		})
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TAXI:STARTING
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("taxi:Starting")
+AddEventHandler("taxi:Starting",function(Init)
+	if stopVehicle[Init] and spawnPeds[Init] then
+		if serviceStatus then
+			serviceStatus = false
+			exports["target"]:LabelText("Taxi","Trabalhar")
+			TriggerEvent("Notify","verde","Trabalho finalizado.",3000)
 
-			for k,v in pairs(initService) do
-				local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-				if Distance <= 2 then
-					TimeDistance = 1
+			if DoesBlipExist(serviceBlip) then
+				RemoveBlip(serviceBlip)
+				serviceBlip = nil
+			end
 
-					if IsControlJustPressed(1,38) then
-						if serviceStatus then
-							serviceStatus = false
+			if currentPassenger ~= nil then
+				TriggerServerEvent("DeletePed",currentPassenger)
+				currentPassenger = nil
+			end
 
-							if DoesBlipExist(serviceBlip) then
-								RemoveBlip(serviceBlip)
-								serviceBlip = nil
-							end
-
-							if currentPassenger ~= nil then
-								TriggerServerEvent("DeletePed",currentPassenger)
-								currentPassenger = nil
-							end
-
-							if lastPassenger ~= nil then
-								TriggerServerEvent("DeletePed",lastPassenger)
-								lastPassenger = nil
-							end
-						else
-							locateSelect = k
-
-							repeat
-								if lastPosition == selectPosition then
-									selectPosition = math.random(#stopVehicle[locateSelect])
-								end
-								Wait(1)
-							until lastPosition ~= selectPosition
-
-							currentPassenger = nil
-							currentStatus = false
-							serviceStatus = true
-							lastPassenger = nil
-							blipPassenger()
-						end
-					end
-				end
+			if lastPassenger ~= nil then
+				TriggerServerEvent("DeletePed",lastPassenger)
+				lastPassenger = nil
 			end
 		else
-			if serviceStatus then
-				local Coords = GetEntityCoords(Ped)
-				local vehicle = GetVehiclePedIsUsing(Ped)
-				local Distance = #(Coords - vec3(stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3]))
-				if Distance <= 100 then
-					TimeDistance = 1
+			locateSelect = Init
 
-					DrawMarker(1,stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3] - 3,0,0,0,0,0,0,5.0,5.0,3.0,255,255,255,25,0,0,0,0)
-					DrawMarker(21,stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3],0,0,0,0,180.0,130.0,1.5,1.5,1.0,162,124,219,200,0,0,0,1)
+			repeat
+				if lastPosition == selectPosition then
+					selectPosition = math.random(#stopVehicle[locateSelect])
+				end
+				Wait(1)
+			until lastPosition ~= selectPosition
 
-					if IsControlJustPressed(1,38) and Distance <= 2.5 and GetEntityModel(vehicle) == -956048545 then
-						if currentStatus then
-							FreezeEntityPosition(vehicle,true)
+			currentPassenger = nil
+			currentStatus = false
+			serviceStatus = true
+			lastPassenger = nil
+			blipPassenger()
 
-							if DoesEntityExist(currentPassenger) then
-								vSERVER.paymentService()
-								Wait(1000)
-								TaskLeaveVehicle(currentPassenger,vehicle,262144)
-								TaskWanderStandard(currentPassenger,10.0,10)
-								Wait(1000)
-								SetVehicleDoorShut(vehicle,3,0)
-								Wait(1000)
-							end
+			serviceStatus = true
+			TriggerEvent("Notify","verde","Trabalho iniciado.",3000)
+			exports["target"]:LabelText("Taxi","Finalizar")
 
-							FreezeEntityPosition(vehicle,false)
+			while serviceStatus do
+				local TimeDistance = 999
+				local Ped = PlayerPedId()
+				if IsPedInAnyVehicle(Ped) then
+					local Coords = GetEntityCoords(Ped)
+					local vehicle = GetVehiclePedIsUsing(Ped)
+					local Distance = #(Coords - vec3(stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3]))
+					if Distance <= 100 then
+						TimeDistance = 1
 
-							lastPassenger = PedToNet(currentPassenger)
-							lastPosition = selectPosition
-							currentStatus = false
+						DrawMarker(1,stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3] - 3,0,0,0,0,0,0,5.0,5.0,3.0,255,255,255,25,0,0,0,0)
+						DrawMarker(21,stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3],0,0,0,0,180.0,130.0,1.5,1.5,1.0,162,124,219,200,0,0,0,1)
 
-							repeat
-								if lastPosition == selectPosition then
-									selectPosition = math.random(#stopVehicle[locateSelect])
+						if IsControlJustPressed(1,38) and Distance <= 2.5 and GetEntityModel(vehicle) == -956048545 then
+							if currentStatus then
+								FreezeEntityPosition(vehicle,true)
+
+								if DoesEntityExist(currentPassenger) then
+									vSERVER.paymentService()
+									Wait(1000)
+									TaskLeaveVehicle(currentPassenger,vehicle,262144)
+									TaskWanderStandard(currentPassenger,10.0,10)
+									Wait(1000)
+									SetVehicleDoorShut(vehicle,3,0)
+									Wait(1000)
 								end
-								Wait(1)
-							until lastPosition ~= selectPosition
 
-							blipPassenger()
+								FreezeEntityPosition(vehicle,false)
 
-							Wait(5000)
+								lastPassenger = PedToNet(currentPassenger)
+								lastPosition = selectPosition
+								currentStatus = false
 
-							if lastPassenger ~= nil then
-								TriggerServerEvent("DeletePed",lastPassenger)
-								lastPassenger = nil
+								repeat
+									if lastPosition == selectPosition then
+										selectPosition = math.random(#stopVehicle[locateSelect])
+									end
+									Wait(1)
+								until lastPosition ~= selectPosition
+
+								blipPassenger()
+
+								Wait(5000)
+
+								if lastPassenger ~= nil then
+									TriggerServerEvent("DeletePed",lastPassenger)
+									lastPassenger = nil
+								end
+							else
+								generatePassenger(vehicle)
 							end
-						else
-							generatePassenger(vehicle)
 						end
 					end
 				end
+
+				Wait(TimeDistance)
 			end
 		end
-
-		Wait(TimeDistance)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

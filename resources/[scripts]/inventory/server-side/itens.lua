@@ -4741,6 +4741,54 @@ Use = {
 		end
 	end,
 
+	["premium01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not vRP.UserPremium(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerEvent("Salary:Add",Passport,"Premium")
+				vRP.SetPremium(source)
+			end
+		else
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerEvent("Salary:Add",Passport,"Premium")
+				vRP.UpgradePremium(Passport)
+			end
+		end
+	end,
+
+	["premium02"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not vRP.UserPremium(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerEvent("Salary:Add",Passport,"Premium")
+				vRP.SetPremium(source)
+			end
+		else
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerEvent("Salary:Add",Passport,"Premium")
+				vRP.UpgradePremium(Passport)
+			end
+		end
+	end,
+
+	["premium03"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not vRP.UserPremium(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerEvent("Salary:Add",Passport,"Premium")
+				vRP.SetPremium(source)
+			end
+		else
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerEvent("Salary:Add",Passport,"Premium")
+				vRP.UpgradePremium(Passport)
+			end
+		end
+	end,
+
 	["pager"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local ClosestPed = vRPC.ClosestPed(source,2)
 		if ClosestPed then

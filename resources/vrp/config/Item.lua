@@ -1225,6 +1225,27 @@ local List = {
 		["Weight"] = 0.15,
 		["Economy"] = 150000
 	},
+	["premium01"] = {
+		["Index"] = "premium",
+		["Name"] = "VIP",
+		["Type"] = "Usável",
+		["Weight"] = 0.15,
+		["Economy"] = 200000
+	},
+	["premium02"] = {
+		["Index"] = "premium",
+		["Name"] = "MVP",
+		["Type"] = "Usável",
+		["Weight"] = 0.15,
+		["Economy"] = 300000
+	},
+	["premium03"] = {
+		["Index"] = "premium",
+		["Name"] = "Master",
+		["Type"] = "Usável",
+		["Weight"] = 0.15,
+		["Economy"] = 400000
+	},
 	["premiumplate"] = {
 		["Index"] = "platepremium",
 		["Name"] = "Placa Premium",

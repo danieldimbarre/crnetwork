@@ -26,7 +26,7 @@ SetHttpHandler(function(Request,Callback)
 			local source = vRP.Source(Passport)
 
 			if Services > 0 then
-				vRP.InitPrison(source,Passport,Services)
+				vRP.InitPrison(Passport,Services)
 
 				if source then
 					vRP.Teleport(source,1691.53,2565.91,45.56)
@@ -34,7 +34,7 @@ SetHttpHandler(function(Request,Callback)
 			end
 
 			if Fines > 0 then
-				vRP.GiveFine(Passport,Fines,source)
+				vRP.GiveFine(Passport,Fines)
 			end
 		end
 	end
@@ -161,7 +161,7 @@ function reduceFunction(source,Passport,Number)
 		timeProgress = timeProgress - 1
 	until timeProgress <= 0
 
-	vRP.UpdatePrison(Passport,source,math.random(2))
+	vRP.UpdatePrison(Passport,math.random(2))
 	Player(source)["state"]["Buttons"] = false
 	Player(source)["state"]["Cancel"] = false
 	vRPC.removeObjects(source)

@@ -11,7 +11,6 @@ Creative = {}
 Tunnel.bindInterface("propertys",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vSKINSHOP = Tunnel.getInterface("skinshop")
-REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -29,8 +28,8 @@ function Creative.Propertys(Name)
 		if Consult[1] then
 			if parseInt(Consult[1]["Passport"]) == Passport or vRP.InventoryFull(Passport,"propertys-"..Consult[1]["Serial"]) or Lock[Name] then
 				if os.time() > Consult[1]["Tax"] then
-					if REQUEST.Function(source,"Hipoteca atrasada, deseja efetuar o pagamento?","Sim, concluir pagamento","Não, pago depois") then
-						if vRP.PaymentFull(Passport,source,Informations[Consult[1]["Interior"]]["Price"] * 0.1) then
+					if vRP.Request(source,"Hipoteca atrasada, deseja efetuar o pagamento?","Sim, concluir pagamento","Não, pago depois") then
+						if vRP.PaymentFull(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.1) then
 							vRP.Query("propertys/Tax",{ name = Name })
 							TriggerClientEvent("Notify",source,"amarelo","Pagamento concluído.",5000)
 						end
@@ -79,10 +78,10 @@ AddEventHandler("propertys:Buy",function(Name)
 		if not Consult[1] then
 			TriggerClientEvent("dynamic:closeSystem",source)
 
-			if REQUEST.Function(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudeia de ideia") then
+			if vRP.Request(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudeia de ideia") then
 				local Interior = Split[2]
 
-				if vRP.PaymentFull(Passport,source,Informations[Interior]["Price"]) then
+				if vRP.PaymentFull(Passport,Informations[Interior]["Price"]) then
 					local Serial = PropertysSerials()
 					vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
 					vRP.Query("propertys/Buy",{ name = Split[1], interior = Interior, passport = Passport, serial = Serial, vault = Informations[Interior]["Vault"], fridge = Informations[Interior]["Fridge"], tax = os.time() + 2592000 })
@@ -128,7 +127,7 @@ AddEventHandler("propertys:Sell",function(Name)
 			if parseInt(Consult[1]["Passport"]) == Passport then
 				TriggerClientEvent("dynamic:closeSystem",source)
 
-				if REQUEST.Function(source,"Deseja vender a propriedade?","Sim, concluir a venda","Não, mudeia de ideia") then
+				if vRP.Request(source,"Deseja vender a propriedade?","Sim, concluir a venda","Não, mudeia de ideia") then
 					vRP.RemSrvData("Vault:"..Name,true)
 					vRP.RemSrvData("Fridge:"..Name,true)
 
@@ -153,7 +152,7 @@ AddEventHandler("propertys:Credentials",function(Name)
 			if parseInt(Consult[1]["Passport"]) == Passport then
 				TriggerClientEvent("dynamic:closeSystem",source)
 
-				if REQUEST.Function(source,"Você escolheu reconfigurar todos os cartões de segurança, lembrando que ao prosseguir todos os cartões vão deixar de funcionar, deseja prosseguir?","Sim, prosseguir","Não, outra hora") then
+				if vRP.Request(source,"Você escolheu reconfigurar todos os cartões de segurança, lembrando que ao prosseguir todos os cartões vão deixar de funcionar, deseja prosseguir?","Sim, prosseguir","Não, outra hora") then
 					local Serial = PropertysSerials()
 					vRP.Query("propertys/Credentials",{ name = Name, serial = Serial })
 					vRP.GiveItem(Passport,"propertys-"..Serial,Consult[1]["Keys"],true)

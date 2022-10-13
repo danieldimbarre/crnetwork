@@ -35,7 +35,7 @@ function Creative.checkRolling()
 				return true
 			end
 
-			if vRP.PaymentBank(source,Passport,5000) then
+			if vRP.PaymentBank(Passport,5000) then
 				Active = os.time() + 20
 				return true
 			else
@@ -136,7 +136,7 @@ AddEventHandler("luckywheel:Payment",function()
 		elseif Payments[Passport] == 10 then
 			vRP.GiveBank(Passport,7500)
 		elseif Payments[Passport] == 12 then
-			vRP.UpgradeGemstone(source,10)
+			vRP.UpgradeGemstone(Passport,10)
 		elseif Payments[Passport] == 15 then
 			vRP.GiveBank(Passport,22500)
 		elseif Payments[Passport] == 16 then

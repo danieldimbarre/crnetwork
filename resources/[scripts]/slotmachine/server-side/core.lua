@@ -351,7 +351,7 @@ function Creative.Payment(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Machines[Table] then
-		if vRP.PaymentBank(source,Passport,Machines[Table]["bet"]) then
+		if vRP.PaymentBank(Passport,Machines[Table]["bet"]) then
 			return true
 		else
 			TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)

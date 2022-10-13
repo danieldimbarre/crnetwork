@@ -13,7 +13,6 @@ Tunnel.bindInterface("player",Creative)
 vCLIENT = Tunnel.getInterface("player")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
-REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DUITEXTURES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -81,7 +80,7 @@ RegisterCommand("e",function(source,Message)
 			if ClosestPed then
 				if vRP.GetHealth(ClosestPed) > 100 and not Player(ClosestPed)["state"]["Handcuff"] then
 					local Identity = vRP.Identity(Passport)
-					if REQUEST.Function(ClosestPed,"Pedido de <b>"..Identity["name"].."</b> da animação <b>"..Message[1].."</b>?","Sim, iniciar animação","Não, sai fora") then
+					if vRP.Request(ClosestPed,"Pedido de <b>"..Identity["name"].."</b> da animação <b>"..Message[1].."</b>?","Sim, iniciar animação","Não, sai fora") then
 						TriggerClientEvent("emotes",ClosestPed,Message[1])
 						TriggerClientEvent("emotes",source,Message[1])
 					end

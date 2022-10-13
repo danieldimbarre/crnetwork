@@ -10,7 +10,6 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("shops",Creative)
 vCLIENT = Tunnel.getInterface("shops")
-REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -612,7 +611,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 					if (vRP.InventoryWeight(Passport) + itemWeight(Item) * Amount) <= vRP.GetWeight(Passport) then
 						if shops[Type]["type"] == "Cash" then
 							if shops[Type]["List"][Item] then
-								if vRP.PaymentFull(Passport,source,shops[Type]["List"][Item] * Amount) then
+								if vRP.PaymentFull(Passport,shops[Type]["List"][Item] * Amount) then
 									if Item == "identity" or string.sub(Item,1,5) == "badge" then
 										vRP.GiveItem(Passport,Item.."-"..Passport,Amount,false,Slot)
 									elseif Item == "fidentity" then
@@ -651,7 +650,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 								TriggerClientEvent("Notify",source,"vermelho","<b>"..itemName(shops[Type]["item"]).."</b> insuficiente.",5000)
 							end
 						elseif shops[Type]["type"] == "Premium" then
-							if vRP.PaymentGems(source,shops[Type]["List"][Item] * Amount) then
+							if vRP.PaymentGems(Passport,shops[Type]["List"][Item] * Amount) then
 								TriggerClientEvent("sounds:Private",source,"cash",0.1)
 								vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 								TriggerClientEvent("Notify",source,"verde","Comprou <b>"..Amount.."x "..itemName(Item).."</b> por <b>"..shops[Type]["List"][Item] * Amount.." Gemas</b>.",5000)

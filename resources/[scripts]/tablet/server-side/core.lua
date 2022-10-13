@@ -10,7 +10,6 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("tablet",Creative)
 vCLIENT = Tunnel.getInterface("tablet")
-REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -64,8 +63,8 @@ function Creative.Rental(vehName)
 				Text = "Alugar o veículo <b>"..VehicleName(vehName).."</b> usando o vale?"
 			end
 
-			if REQUEST.Function(source,Text,"Sim, concluír pagamento","Não, mudei de ideia") then
-				if vRP.TakeItem(Passport,"rentalveh",1,true) or vRP.PaymentGems(source,VehiclePrice) then
+			if vRP.Request(source,Text,"Sim, concluír pagamento","Não, mudei de ideia") then
+				if vRP.TakeItem(Passport,"rentalveh",1,true) or vRP.PaymentGems(Passport,VehiclePrice) then
 					local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 					if vehicle[1] then
 						if vehicle[1]["rental"] <= os.time() then
@@ -116,7 +115,7 @@ function Creative.Buy(vehName)
 				return
 			else
 				if VehicleType(vehName) == "work" then
-					if vRP.PaymentFull(Passport,source,VehiclePrice(vehName)) then
+					if vRP.PaymentFull(Passport,VehiclePrice(vehName)) then
 						vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "true" })
 						TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)
 					else
@@ -124,8 +123,8 @@ function Creative.Buy(vehName)
 					end
 				else
 					local VehiclePrice = VehiclePrice(vehName)
-					if REQUEST.Function(source,"Comprar <b>"..VehicleName(vehName).."</b> por <b>$"..parseFormat(VehiclePrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
-						if vRP.PaymentFull(Passport,source,VehiclePrice) then
+					if vRP.Request(source,"Comprar <b>"..VehicleName(vehName).."</b> por <b>$"..parseFormat(VehiclePrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
+						if vRP.PaymentFull(Passport,VehiclePrice) then
 							vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 							TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)
 						else
@@ -150,8 +149,8 @@ function Creative.startDrive()
 			Active[Passport] = true
 
 			if not exports["hud"]:Wanted(Passport) then
-				if REQUEST.Function(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
-					if vRP.PaymentFull(Passport,source,100) then
+				if vRP.Request(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
+					if vRP.PaymentFull(Passport,100) then
 						Player(source)["state"]["Route"] = Passport
 						SetPlayerRoutingBucket(source,Passport)
 						Active[Passport] = nil

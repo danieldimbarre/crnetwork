@@ -689,6 +689,7 @@ function ApplyExtra(extraID)
 
 	local engine = GetVehicleEngineHealth(Vehicle)
 	local body = GetVehicleBodyHealth(Vehicle)
+	local health = GetEntityHealth(Vehicle)
 	local vehWindows = {}
 	local vehTyres = {}
 	local vehDoors = {}
@@ -722,6 +723,7 @@ function ApplyExtra(extraID)
 
 	SetVehicleEngineHealth(Vehicle,engine)
 	SetVehicleBodyHealth(Vehicle,body)
+	SetEntityHealth(Vehicle,health)
 
 	for Tyre,Burst in pairs(vehTyres) do
 		if Burst then

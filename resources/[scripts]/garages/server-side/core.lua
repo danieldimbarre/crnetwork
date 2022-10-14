@@ -591,7 +591,7 @@ AddEventHandler("garages:Spawn",function(Table)
 								local Exist,Network = Creative.ServerVehicle(vehName,Coords[1],Coords[2],Coords[3],Coords[4],Plate,vehicle[1]["nitro"],vehicle[1]["doors"],vehicle[1]["body"])
 
 								if Exist then
-									vCLIENT.CreateVehicle(-1,vehName,Network,vehicle[1]["engine"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
+									vCLIENT.CreateVehicle(-1,vehName,Network,vehicle[1]["engine"],vehicle[1]["health"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
 									TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
 									TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
 									Spawn[Plate] = { Passport,vehName,Network }
@@ -607,7 +607,7 @@ AddEventHandler("garages:Spawn",function(Table)
 										local Exist,Network = Creative.ServerVehicle(vehName,Coords[1],Coords[2],Coords[3],Coords[4],Plate,vehicle[1]["nitro"],vehicle[1]["doors"],vehicle[1]["body"])
 
 										if Exist then
-											vCLIENT.CreateVehicle(-1,vehName,Network,vehicle[1]["engine"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
+											vCLIENT.CreateVehicle(-1,vehName,Network,vehicle[1]["engine"],vehicle[1]["health"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
 											TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
 											TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
 											Spawn[Plate] = { Passport,vehName,Network }
@@ -626,7 +626,7 @@ AddEventHandler("garages:Spawn",function(Table)
 							local Exist,Network = Creative.ServerVehicle(vehName,Coords[1],Coords[2],Coords[3],Coords[4],Plate,vehicle[1]["nitro"],vehicle[1]["doors"],vehicle[1]["body"])
 
 							if Exist then
-								vCLIENT.CreateVehicle(-1,vehName,Network,vehicle[1]["engine"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
+								vCLIENT.CreateVehicle(-1,vehName,Network,vehicle[1]["engine"],vehicle[1]["health"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
 								TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
 								TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
 								Spawn[Plate] = { Passport,vehName,Network }
@@ -659,7 +659,7 @@ RegisterCommand("car",function(source,Message)
 				return
 			end
 
-			vCLIENT.CreateVehicle(-1,VehicleName,Network,1000,nil,false,false)
+			vCLIENT.CreateVehicle(-1,VehicleName,Network,1000,1000,nil,false,false)
 			Spawn[Plate] = { Passport,VehicleName,Network }
 			TriggerEvent("engine:tryFuel",Plate,100)
 			SetPedIntoVehicle(Ped,Vehicle,-1)
@@ -728,7 +728,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DELETE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Delete(Network,Engine,Body,Fuel,Doors,Windows,Tyres,Plate)
+function Creative.Delete(Network,Health,Engine,Body,Fuel,Doors,Windows,Tyres,Plate)
 	if Spawn[Plate] then
 		local Passport = Spawn[Plate][1]
 		local vehName = Spawn[Plate][2]
@@ -751,7 +751,7 @@ function Creative.Delete(Network,Engine,Body,Fuel,Doors,Windows,Tyres,Plate)
 
 		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 		if vehicle[1] ~= nil then
-			vRP.Query("vehicles/updateVehicles",{ Passport = Passport, vehicle = vehName, nitro = GlobalState["Nitro"][Plate] or 0, engine = parseInt(Engine), body = parseInt(Body), fuel = parseInt(Fuel), doors = json.encode(Doors), windows = json.encode(Windows), tyres = json.encode(Tyres) })
+			vRP.Query("vehicles/updateVehicles",{ Passport = Passport, vehicle = vehName, nitro = GlobalState["Nitro"][Plate] or 0, engine = parseInt(Engine), body = parseInt(Body), health = parseInt(Health), fuel = parseInt(Fuel), doors = json.encode(Doors), windows = json.encode(Windows), tyres = json.encode(Tyres) })
 		end
 	end
 

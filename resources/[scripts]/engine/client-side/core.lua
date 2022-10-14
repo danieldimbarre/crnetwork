@@ -50,27 +50,28 @@ local Class = {
 	[12] = 1.0,
 	[13] = 0.0,
 	[14] = 0.0,
-	[15] = 2.5,
+	[15] = 1.5,
 	[16] = 1.0,
 	[17] = 1.0,
 	[18] = 1.0,
 	[19] = 1.0,
 	[20] = 1.0,
-	[21] = 0.0
+	[21] = 0.0,
+	[22] = 1.0
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONSUME
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Consume = {
-	[1.0] = 0.95,
-	[0.9] = 0.85,
-	[0.8] = 0.75,
-	[0.7] = 0.65,
-	[0.6] = 0.55,
-	[0.5] = 0.45,
-	[0.4] = 0.35,
-	[0.3] = 0.25,
-	[0.2] = 0.15,
+	[1.0] = 0.90,
+	[0.9] = 0.80,
+	[0.8] = 0.70,
+	[0.7] = 0.60,
+	[0.6] = 0.50,
+	[0.5] = 0.40,
+	[0.4] = 0.30,
+	[0.3] = 0.20,
+	[0.2] = 0.10,
 	[0.1] = 0.05,
 	[0.0] = 0.00
 }
@@ -280,6 +281,9 @@ AddEventHandler("engine:Vehrify",function(Entity)
 
 	local Body = GetVehicleBodyHealth(Vehicle) / 10
 	exports["dynamic"]:AddButton("Lataria","A qualidade da lataria se encontra em <yellow>"..parseInt(Body).."%</yellow>.","","",false,false)
+
+	local Health = GetEntityHealth(Vehicle) / 10
+	exports["dynamic"]:AddButton("Lataria","A durabilidade do chassi se encontra em <yellow>"..parseInt(Health).."%</yellow>.","","",false,false)
 
 	exports["dynamic"]:openMenu()
 end)

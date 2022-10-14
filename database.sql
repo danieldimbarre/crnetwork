@@ -65,17 +65,6 @@ CREATE TABLE IF NOT EXISTS `dependents` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `discord`;
-CREATE TABLE IF NOT EXISTS `discord` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `discord_id` varchar(50) DEFAULT NULL,
-  `channel_id` varchar(50) DEFAULT NULL,
-  `type` varchar(50) DEFAULT NULL,
-  `is_finished` tinyint(4) DEFAULT 0,
-  `created_at` datetime DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 DROP TABLE IF EXISTS `entitydata`;
 CREATE TABLE IF NOT EXISTS `entitydata` (
   `dkey` varchar(100) NOT NULL,
@@ -128,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   `Passport` int(10) NOT NULL DEFAULT 0,
   `Received` int(10) NOT NULL DEFAULT 0,
   `Type` varchar(50) NOT NULL,
-  `Reason` varchar(50) NOT NULL,
+  `Reason` longtext NOT NULL,
   `Holder` varchar(50) NOT NULL,
   `Value` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
@@ -140,7 +129,7 @@ DROP TABLE IF EXISTS `playerdata`;
 CREATE TABLE IF NOT EXISTS `playerdata` (
   `Passport` int(11) NOT NULL,
   `dkey` varchar(100) NOT NULL,
-  `dvalue` text DEFAULT NULL,
+  `dvalue` longtext DEFAULT NULL,
   PRIMARY KEY (`Passport`,`dkey`),
   KEY `Passport` (`Passport`),
   KEY `dkey` (`dkey`)
@@ -210,17 +199,18 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   `Passport` int(11) NOT NULL,
   `vehicle` varchar(100) NOT NULL,
   `tax` int(20) NOT NULL DEFAULT 0,
-  `plate` varchar(20) DEFAULT NULL,
+  `plate` varchar(10) DEFAULT NULL,
   `rental` int(20) NOT NULL DEFAULT 0,
   `arrest` int(20) NOT NULL DEFAULT 0,
   `engine` int(4) NOT NULL DEFAULT 1000,
   `body` int(4) NOT NULL DEFAULT 1000,
+  `health` int(4) NOT NULL DEFAULT 1000,
   `fuel` int(3) NOT NULL DEFAULT 100,
   `nitro` int(5) NOT NULL DEFAULT 0,
   `work` varchar(5) NOT NULL DEFAULT 'false',
-  `doors` varchar(254) NOT NULL,
-  `windows` varchar(254) NOT NULL,
-  `tyres` varchar(254) NOT NULL,
+  `doors` longtext NOT NULL,
+  `windows` longtext NOT NULL,
+  `tyres` longtext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `vehicle` (`vehicle`)

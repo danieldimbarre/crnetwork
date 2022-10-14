@@ -2495,7 +2495,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Close",source)
 
-				Dismantle[Passport] = vRP.GetExperience(Passport,"Dismantly")
+				Dismantle[Passport] = vRP.GetExperience(Passport,"Dismantle")
 				if math.random(100) <= 15 then
 					Dismantle[Passport] = math.random(1000)
 				end

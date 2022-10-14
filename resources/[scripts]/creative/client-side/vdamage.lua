@@ -1,28 +1,66 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ENGINABLES
+-- ENGINE
 -----------------------------------------------------------------------------------------------------------------------------------------
-local engineDelta = 0.0
-local engineScaled = 0.0
-local engineNew = 1000.0
-local engineLast = 1000.0
-local engineCurrent = 1000.0
+local Engine = {
+	["Delta"] = 0.0,
+	["Scale"] = 0.0,
+	["New"] = 1000.0,
+	["Last"] = 1000.0,
+	["Current"] = 1000.0
+}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- BODYABLES
+-- BODY
 -----------------------------------------------------------------------------------------------------------------------------------------
-local bodyDelta = 0.0
-local bodyScaled = 0.0
-local bodyNew = 1000.0
-local bodyLast = 1000.0
-local bodyCurrent = 1000.0
+local Body = {
+	["Delta"] = 0.0,
+	["Scale"] = 0.0,
+	["New"] = 1000.0,
+	["Last"] = 1000.0,
+	["Current"] = 1000.0
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HEALTH
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Health = {
+	["Delta"] = 0,
+	["Scale"] = 0,
+	["New"] = 1000,
+	["Last"] = 1000,
+	["Current"] = 1000
+}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local lastVehicle = nil
-local sameVehicle = false
+local Last = nil
+local Same = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CLASSDAMAGE
+-- CLASS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local classDamage = { 1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.0,1.5,1.5,1.5,1.5,0.0,0.0,1.5,1.5,1.5,1.5,1.5,1.5,1.5 }
+local Class = {
+	[0] = 1.5,
+	[1] = 1.5,
+	[2] = 1.5,
+	[3] = 1.5,
+	[4] = 1.5,
+	[5] = 1.5,
+	[6] = 1.5,
+	[7] = 1.5,
+	[8] = 1.5,
+	[9] = 1.5,
+	[10] = 1.5,
+	[11] = 1.5,
+	[12] = 1.5,
+	[13] = 1.5,
+	[14] = 0.0,
+	[15] = 0.5,
+	[16] = 0.5,
+	[17] = 1.5,
+	[18] = 1.5,
+	[19] = 1.5,
+	[20] = 1.5,
+	[21] = 1.5,
+	[22] = 1.5
+}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADHEALTHVEH
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -31,103 +69,125 @@ CreateThread(function()
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
-			local vehicle = GetVehiclePedIsUsing(Ped)
-			local vehClass = GetVehicleClass(vehicle)
-			if vehClass ~= 13 and vehClass ~= 14 then
+			local Vehicle = GetVehiclePedIsUsing(Ped)
+			local Classes = GetVehicleClass(Vehicle)
+			if Classes ~= 13 and Classes ~= 14 then
 				TimeDistance = 1
 
-				if sameVehicle then
-					local engineTorque = 1.0
-					if engineNew < 900 then
-						engineTorque = (engineNew + 200.0) / 1100
+				if Same then
+					local Torque = 1.0
+					if Engine["New"] < 900 then
+						Torque = (Engine["New"] + 200.0) / 1100
 					end
 
-					SetVehicleEngineTorqueMultiplier(vehicle,engineTorque)
+					SetVehicleEngineTorqueMultiplier(Vehicle,Torque)
 				end
 
-				if GetPedInVehicleSeat(vehicle,-1) == Ped then
-					local vehRoll = GetEntityRoll(vehicle)
-					if vehRoll > 75.0 or vehRoll < -75.0 then
+				if GetPedInVehicleSeat(Vehicle,-1) == Ped then
+					local Roll = GetEntityRoll(Vehicle)
+					if Roll > 75.0 or Roll < -75.0 then
 						DisableControlAction(1,59,true)
 						DisableControlAction(1,60,true)
 					end
 				end
 
-				engineCurrent = GetVehicleEngineHealth(vehicle)
-				if engineCurrent >= 1000 then
-					engineLast = 1000.0
+				Engine["Current"] = GetVehicleEngineHealth(Vehicle)
+				if Engine["Current"] >= 1000 then
+					Engine["Last"] = 1000.0
 				end
 
-				engineNew = engineCurrent
-				engineDelta = engineLast - engineCurrent
-				engineScaled = engineDelta * 0.6 * classDamage[vehClass + 1]
+				Engine["New"] = Engine["Current"]
+				Engine["Delta"] = Engine["Last"] - Engine["Current"]
+				Engine["Scale"] = Engine["Delta"] * 0.6 * Class[Classes + 1]
 
-				bodyCurrent = GetVehicleBodyHealth(vehicle)
-				if bodyCurrent >= 1000 then
-					bodyLast = 1000.0
+				Body["Current"] = GetVehicleBodyHealth(Vehicle)
+				if Body["Current"] >= 1000 then
+					Body["Last"] = 1000.0
 				end
 
-				bodyNew = bodyCurrent
-				bodyDelta = bodyLast - bodyCurrent
-				bodyScaled = bodyDelta * 0.6 * classDamage[vehClass + 1]
+				Body["New"] = Body["Current"]
+				Body["Delta"] = Body["Last"] - Body["Current"]
+				Body["Scale"] = Body["Delta"] * 0.6 * Class[Classes + 1]
 
-				if vehicle ~= lastVehicle then
-					sameVehicle = false
+				Health["Current"] = GetEntityHealth(Vehicle)
+				if Health["Current"] >= 1000 then
+					Health["Last"] = 1000
 				end
 
-				if sameVehicle then
-					if engineCurrent ~= 1000.0 or bodyCurrent ~= 1000.0 then
-						local engineCombine = math.max(engineScaled,bodyScaled)
-						if engineCombine > (engineCurrent - 100.0) then
-							engineCombine = engineCombine * 0.7
+				Health["New"] = Health["Current"]
+				Health["Delta"] = Health["Last"] - Health["Current"]
+				Health["Scale"] = Health["Delta"] * 0.6 * Class[Classes + 1]
+
+				if Vehicle ~= Last then
+					Same = false
+				end
+
+				if Same then
+					if Engine["Current"] ~= 1000.0 or Body["Current"] ~= 1000.0 then
+						local Combine = math.max(Engine["Scale"],Body["Scale"])
+						if Combine > (Engine["Current"] - 100.0) then
+							Combine = Combine * 0.7
 						end
 
-						if engineCombine > engineCurrent then
-							engineCombine = engineCurrent - (210.0 / 5)
-						end
-						engineNew = engineLast - engineCombine
-
-						if engineNew > 210.0 and engineNew < 350.0 then
-							engineNew = engineNew - (0.038 * 7.4)
+						if Combine > Engine["Current"] then
+							Combine = Engine["Current"] - (210.0 / 5)
 						end
 
-						if engineNew < 210.0 then
-							engineNew = engineNew - (0.1 * 1.5)
+						Engine["New"] = Engine["Last"] - Combine
+
+						if Engine["New"] > 210.0 and Engine["New"] < 350.0 then
+							Engine["New"] = Engine["New"] - (0.038 * 7.4)
 						end
 
-						if bodyNew < 0 then
-							bodyNew = 0.0
+						if Engine["New"] < 210.0 then
+							Engine["New"] = Engine["New"] - (0.1 * 1.5)
+						end
+
+						if Body["New"] < 0 then
+							Body["New"] = 0.0
+						end
+
+						if Engine["New"] < 0 then
+							Engine["New"] = 0.0
 						end
 					end
 				else
-					if bodyCurrent < 100.0 then
-						bodyNew = 100.0
-					end
-
-					if engineCurrent < 100.0 then
-						engineNew = 100.0
-					end
-
-					sameVehicle = true
+					Same = true
 				end
 
-				if engineNew ~= engineCurrent then
-					SetVehicleEngineHealth(vehicle,engineNew)
+				if Health["Current"] < 100 then
+					Health["New"] = 100
 				end
 
-				if bodyNew ~= bodyCurrent then
-					SetVehicleBodyHealth(vehicle,bodyNew)
+				if Body["Current"] < 100.0 then
+					Body["New"] = 100.0
 				end
 
-				SetVehiclePetrolTankHealth(vehicle,1000.0)
+				if Engine["Current"] < 100.0 then
+					Engine["New"] = 100.0
+				end
 
-				bodyLast = bodyNew
-				engineLast = engineNew
-				lastVehicle = vehicle
+				if Engine["New"] ~= Engine["Current"] then
+					SetVehicleEngineHealth(Vehicle,Engine["New"])
+				end
+
+				if Body["New"] ~= Body["Current"] then
+					SetVehicleBodyHealth(Vehicle,Body["New"])
+				end
+
+				if Health["New"] ~= Health["Current"] then
+					SetEntityHealth(Vehicle,Health["New"])
+					SetVehiclePetrolTankHealth(Vehicle,Health["New"] + 0.0)
+				end
+
+				Last = Vehicle
+				Body["Last"] = Body["New"]
+				Health["Last"] = Health["New"]
+				Engine["Last"] = Engine["New"]
 			end
 		else
-			if sameVehicle then
-				sameVehicle = false
+			if Same then
+				Same = false
 			end
 		end
 
@@ -143,9 +203,9 @@ CreateThread(function()
 		if IsPedInAnyVehicle(Ped) then
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-				local vehRoll = GetEntityRoll(Vehicle)
-				if vehRoll > 75.0 or vehRoll < -75.0 then
-					if math.random(100) <= 50 and GetVehicleClass(Vehicle) ~= 8 then
+				local Roll = GetEntityRoll(Vehicle)
+				if Roll > 75.0 or Roll < -75.0 then
+					if math.random(100) <= 50 and GetVehicleClass(Vehicle) ~= 8 and GetVehicleClass(Vehicle) ~= 13 and GetVehicleClass(Vehicle) ~= 14 and GetVehicleClass(Vehicle) ~= 15 and GetVehicleClass(Vehicle) ~= 16 then
 						local Tyre = math.random(4)
 
 						if Tyre == 1 then

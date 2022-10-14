@@ -451,7 +451,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.CreateVehicle(Model,Network,Engine,Customize,Windows,Tyres)
+function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Tyres)
 	if NetworkDoesNetworkIdExist(Network) then
 		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
@@ -461,6 +461,7 @@ function Creative.CreateVehicle(Model,Network,Engine,Customize,Windows,Tyres)
 			end
 
 			SetVehicleEngineHealth(Vehicle,Engine + 0.0)
+			SetEntityHealth(Vehicle,Health)
 
 			if Windows then
 				local Windows = json.decode(Windows)
@@ -536,7 +537,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 			DecorRemove(Vehicle,"PlayerVehicle")
 		end
 
-		vSERVER.Delete(VehToNet(Vehicle),GetVehicleEngineHealth(Vehicle),GetVehicleBodyHealth(Vehicle),GetVehicleFuelLevel(Vehicle),Doors,Windows,Tyres,GetVehicleNumberPlateText(Vehicle))
+		vSERVER.Delete(VehToNet(Vehicle),GetEntityHealth(Vehicle),GetVehicleEngineHealth(Vehicle),GetVehicleBodyHealth(Vehicle),GetVehicleFuelLevel(Vehicle),Doors,Windows,Tyres,GetVehicleNumberPlateText(Vehicle))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

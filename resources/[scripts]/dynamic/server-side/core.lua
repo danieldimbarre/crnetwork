@@ -17,7 +17,7 @@ function Creative.Experience()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Experiences = {
-			["Desmanche"] = vRP.GetExperience(Passport,"Dismantly"),
+			["Desmanche"] = vRP.GetExperience(Passport,"Dismantle"),
 			["Reboque"] = vRP.GetExperience(Passport,"Tows"),
 			["Entregador"] = vRP.GetExperience(Passport,"Delivery"),
 			["Transportador"] = vRP.GetExperience(Passport,"Transporter"),
@@ -34,13 +34,13 @@ function Creative.Exclusivas()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Roupas = {}
+		local Clothes = {}
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
 
-		for k,v in pairs(Consult) do
-			table.insert(Roupas,{ ["name"] = k, ["id"] = v["id"], ["texture"] = v["texture"] or 0, ["type"] = v["type"] })
+		for Index,v in pairs(Consult) do
+			table.insert(Clothes,{ ["name"] = Index, ["id"] = v["id"], ["texture"] = v["texture"] or 0, ["type"] = v["type"] })
 		end
 
-		return Roupas
+		return Clothes
 	end
 end

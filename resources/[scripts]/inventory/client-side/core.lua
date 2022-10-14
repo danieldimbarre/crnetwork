@@ -285,6 +285,7 @@ AddEventHandler("inventory:repairPlayer",function(Index,Plate)
 			if GetVehicleNumberPlateText(Vehicle) == Plate then
 				SetVehicleEngineHealth(Vehicle,1000.0)
 				SetVehicleBodyHealth(Vehicle,1000.0)
+				SetEntityHealth(Vehicle,1000)
 			end
 		end
 	end

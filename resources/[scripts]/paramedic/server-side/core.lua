@@ -11,7 +11,6 @@ vRP = Proxy.getInterface("vRP")
 vCLIENT = Tunnel.getInterface("paramedic")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
-REQUEST = Tunnel.getInterface("request")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -33,7 +32,7 @@ AddEventHandler("paramedic:Reposed",function(entity)
 					local Identity = vRP.Identity(OtherPassport)
 					local playerTimer = parseInt(Keyboard[1] * 60)
 					if Identity then
-						if REQUEST.Function(source,"Adicionar <b>"..Keyboard[1].." minutos</b> de repouso no(a) <b>"..Identity["name"].."</b>?.","Sim, aplicar repouso","Não, mudei de ideia") then
+						if vRP.Request(source,"Adicionar <b>"..Keyboard[1].." minutos</b> de repouso no(a) <b>"..Identity["name"].."</b>?.","Sim, aplicar repouso","Não, mudei de ideia") then
 							TriggerClientEvent("Notify",source,"azul","Aplicou <b>"..Keyboard[1].." minutos</b> de repouso.",10000)
 							TriggerEvent("Reposed",entity,OtherPassport,playerTimer)
 						end
@@ -304,7 +303,7 @@ AddEventHandler("paramedic:extractBlood",function(entity)
 				if GetEntityHealth(Ped) >= 170 then
 					local Identity = vRP.Identity(OtherPassport)
 					if Identity then
-						if REQUEST.Function(entity,"Deseja iniciar a doação sangue?","Sim, iniciar processo","Não, tenho medo") then
+						if vRP.Request(entity,"Deseja iniciar a doação sangue?","Sim, iniciar processo","Não, tenho medo") then
 							if not bloodTimers[OtherPassport] then
 								bloodTimers[OtherPassport] = os.time()
 							end

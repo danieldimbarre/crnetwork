@@ -290,7 +290,7 @@ Use = {
 	["gemstone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.TakeItem(Passport,Full,Amount,false,Slot) then
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			vRP.UpgradeGemstone(source,Amount)
+			vRP.UpgradeGemstone(Passport,Amount)
 		end
 	end,
 
@@ -312,7 +312,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("Notify",source,"verde","Passaporte atualizado.",5000)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
-				vRP.UpgradeNames(source,Passport,Keyboard[1],Keyboard[2])
+				vRP.UpgradeNames(Passport,Keyboard[1],Keyboard[2])
 			end
 		end
 	end,

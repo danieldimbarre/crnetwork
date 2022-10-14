@@ -9,7 +9,6 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 Creative = {}
 Tunnel.bindInterface("chest",Creative)
-REQUEST = Tunnel.getInterface("request")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -199,8 +198,8 @@ AddEventHandler("chest:Upgrade",function(Name)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,Name) then
-			if REQUEST.Function(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
-				if vRP.PaymentFull(Passport,source,10000) then
+			if vRP.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
+				if vRP.PaymentFull(Passport,10000) then
 					vRP.Query("chests/UpdateChests",{ name = Name })
 					TriggerClientEvent("Notify",source,"verde","Compra concluída.",3000)
 				else

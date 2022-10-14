@@ -209,7 +209,7 @@ function reduceFunction(source,Passport,Number)
 		timeProgress = timeProgress - 1
 	until timeProgress <= 0
 
-	vRP.UpdatePrison(Passport,source,math.random(2))
+	vRP.UpdatePrison(Passport,math.random(2))
 	Player(source)["state"]["Buttons"] = false
 	Player(source)["state"]["Cancel"] = false
 	vRPC.removeObjects(source)

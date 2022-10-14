@@ -72,8 +72,11 @@ CreateThread(function()
 
 			if IsPauseMenuActive() then
 				if not Pause then
-					SendNUIMessage({ Action = "Body", Status = false })
 					Pause = true
+
+					if Display then
+						SendNUIMessage({ Action = "Body", Status = false })
+					end
 				end
 			else
 				if Pause then

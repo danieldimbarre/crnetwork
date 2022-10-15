@@ -26,13 +26,13 @@ CreateThread(function()
 	local Rental = {}
 	local Vehicles = VehicleGlobal()
 
-	for k,v in pairs(Vehicles) do
-		if v["Type"] == "cars" then
-			table.insert(Cars,{ k = k, name = v["Name"], price = v["Price"], chest = v["Weight"], tax = v["Price"] * 0.10 })
-		elseif v["Type"] == "bikes" then
-			table.insert(Bikes,{ k = k, name = v["Name"], price = v["Price"], chest = v["Weight"], tax = v["Price"] * 0.10 })
-		elseif v["Type"] == "rental" then
-			table.insert(Rental,{ k = k, name = v["Name"], price = v["Gems"], chest = v["Weight"], tax = v["Price"] * 0.10 })
+	for Index,v in pairs(Vehicles) do
+		if v["Mode"] == "cars" then
+			table.insert(Cars,{ k = Index, name = v["Name"], price = v["Price"], chest = v["Weight"], tax = v["Price"] * 0.10 })
+		elseif v["Mode"] == "bikes" then
+			table.insert(Bikes,{ k = Index, name = v["Name"], price = v["Price"], chest = v["Weight"], tax = v["Price"] * 0.10 })
+		elseif v["Mode"] == "rental" then
+			table.insert(Rental,{ k = Index, name = v["Name"], price = v["Gems"], chest = v["Weight"], tax = v["Price"] * 0.10 })
 		end
 	end
 
@@ -103,7 +103,7 @@ function Creative.Buy(vehName)
 				return
 			end
 
-			if VehicleType(vehName) == "rental" or not VehicleType(vehName) then
+			if VehicleMode(vehName) == "rental" or not VehicleMode(vehName) then
 				Active[Passport] = nil
 				return
 			end
@@ -114,7 +114,7 @@ function Creative.Buy(vehName)
 				Active[Passport] = nil
 				return
 			else
-				if VehicleType(vehName) == "work" then
+				if VehicleMode(vehName) == "work" then
 					if vRP.PaymentFull(Passport,VehiclePrice(vehName)) then
 						vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "true" })
 						TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)

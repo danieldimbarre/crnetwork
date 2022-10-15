@@ -150,7 +150,7 @@ AddEventHandler("SaveServer",function(Silenced)
 	vRP.SetSrvData("Plants",Plants,true)
 
 	if not Silenced then
-		print("O arquivo plants.lua terminou de salvar os dados.")
+		print("O resource Plants salvou os dados.")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

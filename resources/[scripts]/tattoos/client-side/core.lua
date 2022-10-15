@@ -1513,6 +1513,7 @@ function openTattooShop()
 
 	ClearAllPedProps(Ped)
 
+	TriggerServerEvent("bucket:Toggle","Enter")
 	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos, model = Model })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1547,6 +1548,7 @@ end
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("close",function(Data,Callback)
+	TriggerServerEvent("bucket:Toggle","Exit")
 	TriggerEvent("skinshop:updateTattoo")
 	RenderScriptCams(false,true,250,1,0)
 	vSERVER.updateTattoo(Tattoos)

@@ -97,7 +97,7 @@ CreateThread(function()
 				local Max = GetVehicleEstimatedMaxSpeed(Vehicle)
 				local Speed = GetEntitySpeed(Vehicle)
 
-				if Speed > (Max + 10) then
+				if Speed > (Max + 10) and not GetDriftTyresEnabled(Vehicle) then
 					TriggerServerEvent("admin:Print","Mudou a velocidade dos veículos. Velocidade: "..Speed * 3.6)
 				end
 			end

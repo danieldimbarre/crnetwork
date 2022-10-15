@@ -25,9 +25,9 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 		SetNuiFocus(false,false)
 		displayBarbershop(false)
 		SendNUIMessage({ openBarbershop = false })
-
 		vRP.stopAnim(false)
 		vSERVER.updateSkin(myClothes)
+		TriggerServerEvent("bucket:Toggle","Exit")
 	end
 
 	TriggerEvent("barbershop:Apply",myClothes)
@@ -202,6 +202,7 @@ CreateThread(function()
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) and vSERVER.checkShares() then
+							TriggerServerEvent("bucket:Toggle","Enter")
 							displayBarbershop(true)
 						end
 					end
@@ -225,5 +226,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Open")
 AddEventHandler("barbershop:Open",function()
+	TriggerServerEvent("bucket:Toggle","Enter")
 	displayBarbershop(true)
 end)

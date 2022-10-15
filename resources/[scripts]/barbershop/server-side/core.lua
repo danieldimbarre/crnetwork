@@ -57,3 +57,20 @@ AddEventHandler("barbershop:Debug",function()
 		TriggerClientEvent("syncarea",source,Coords["x"],Coords["y"],Coords["z"],1)
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BUCKET:TOGGLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("bucket:Toggle")
+AddEventHandler("bucket:Toggle",function(Mode)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if Mode == "Enter" then
+			Player(source)["state"]["Route"] = Passport
+			SetPlayerRoutingBucket(source,Passport)
+		else
+			Player(source)["state"]["Route"] = 0
+			SetPlayerRoutingBucket(source,0)
+		end
+	end
+end)

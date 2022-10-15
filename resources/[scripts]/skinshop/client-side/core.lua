@@ -115,7 +115,7 @@ local Skinshops = {
 CreateThread(function()
 	local Table = {}
 
-	for k,v in pairs(Skinshops) do
+	for _,v in pairs(Skinshops) do
 		table.insert(Table,{ v[1],v[2],v[3],2,"E","Loja de Roupas","Pressione para abrir" })
 	end
 
@@ -269,6 +269,7 @@ function openMenu(allowedMenus)
 
 	GetMaxValues()
 
+	TriggerServerEvent("bucket:Toggle","Enter")
 	SendNUIMessage({ action = "open", menus = allowedMenus, currentClothing = skinData })
 
 	SetCursorLocation(0.9,0.25)
@@ -338,6 +339,7 @@ end)
 -- CLOSEMENU
 -----------------------------------------------------------------------------------------------------------------------------------------
 function closeMenu()
+	TriggerServerEvent("bucket:Toggle","Exit")
 	SendNUIMessage({ action = "close" })
 	RenderScriptCams(false,true,250,1,0)
 	DestroyCam(cam,false)

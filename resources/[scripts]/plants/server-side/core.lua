@@ -26,7 +26,7 @@ exports("Plants",function(Coords,Route,Points)
 
 	Plants[tostring(Number)] = {
 		["Coords"] = { mathLength(Coords["x"]),mathLength(Coords["y"]),mathLength(Coords["z"]) },
-		["Time"] = os.time() + 3600,
+		["Time"] = os.time() + 7200,
 		["Points"] = Points,
 		["Route"] = Route
 	}
@@ -47,7 +47,7 @@ AddEventHandler("plants:Collect",function(Number)
 			TriggerClientEvent("dynamic:closeSystem",source)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
-			if os.time() >= Plants[Number]["Time"] then
+			if (Plants[Number]["Time"] - os.time()) <= 3600 then
 				local Temporary = Plants[Number]
 
 				if (vRP.InventoryWeight(Passport) + itemWeight("weedleaf")) <= vRP.GetWeight(Passport) then
@@ -86,7 +86,7 @@ AddEventHandler("plants:Cloning",function(Number)
 			TriggerClientEvent("dynamic:closeSystem",source)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
-			if (Plants[Number]["Time"] - os.time()) <= 1800 then
+			if os.time() >= Plants[Number]["Time"] then
 				local Temporary = Plants[Number]
 
 				if (vRP.InventoryWeight(Passport) + itemWeight("weedclone") * 2) <= vRP.GetWeight(Passport) then
@@ -128,12 +128,12 @@ function Creative.Informations(Number)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
 			local Collect = "A coleta está disponível"
-			if os.time() < Plants[Number]["Time"] then
+			if (Plants[Number]["Time"] - os.time()) > 3600 then
 				Collect = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time())
 			end
 
 			local Cloning = "A clonagem está disponível"
-			if (Plants[Number]["Time"] - os.time()) > 1800 then
+			if os.time() < Plants[Number]["Time"] then
 				Cloning = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time() - 1800)
 			end
 

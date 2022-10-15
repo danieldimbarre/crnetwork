@@ -2997,6 +2997,8 @@ function itemBody(Item)
 	if List[Item] then
 		return List[Item]
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMINDEX
@@ -3008,6 +3010,8 @@ function itemIndex(Item)
 	if List[Item] then
 		return List[Item]["Index"]
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMNAME
@@ -3032,6 +3036,8 @@ function itemType(Item)
 	if List[Item] then
 		return List[Item]["Type"]
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMAMMO
@@ -3043,6 +3049,8 @@ function itemAmmo(Item)
 	if List[Item] then
 		return List[Item]["Ammo"]
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMVEHICLE

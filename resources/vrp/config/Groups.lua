@@ -33,7 +33,10 @@ Groups = {
 	},
 	["Mechanic"] = {
 		["Mechanic"] = true
-	},	
+	},
+	["waitMechanic"] = {
+		["waitMechanic"] = true
+	},
 	["BurgerShot"] = {
 		["BurgerShot"] = true
 	},

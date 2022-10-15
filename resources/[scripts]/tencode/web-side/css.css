@@ -12,7 +12,7 @@ body {
 }
 
 #divCode {
-	bottom: 7vw;
+	top: 100px;
 	width: 100%;
 	display: none;
 	position: fixed;
@@ -20,7 +20,7 @@ body {
 }
 
 #midCode {
-	width: 180px;
+	width: 498px;
 	margin: 0 auto;
 }
 
@@ -47,7 +47,7 @@ body {
 #topRadar {
 	right: 632px;
 	width: 225px;
-	bottom: 2vw;
+	bottom: 50px;
 	display: none;
 	font-size: 12px;
 	text-align: right;
@@ -63,7 +63,7 @@ body {
 #botRadar {
 	right: 387px;
 	width: 225px;
-	bottom: 2vw;
+	bottom: 50px;
 	display: none;
 	font-size: 12px;
 	text-align: right;

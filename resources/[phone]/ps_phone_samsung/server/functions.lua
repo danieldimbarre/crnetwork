@@ -353,6 +353,6 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 sendnotifypush = function(source,title,message,x,y,z,name,phone)
     if source then 
-        TriggerClientEvent("NotifyPush",source,{ code = "QRU", title = title, text = message, x = x, y = y, z = z, time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
+        TriggerClientEvent("NotifyPush",source,{ code = 20, title = title, text = message, x = x, y = y, z = z, time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
     end
 end

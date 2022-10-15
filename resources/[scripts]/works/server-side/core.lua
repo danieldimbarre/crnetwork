@@ -218,7 +218,7 @@ function Creative.deliveryConsume(serviceName)
 						local policeResult = vRP.NumPermission("Police")
 						for k,v in pairs(policeResult) do
 							async(function()
-								TriggerClientEvent("NotifyPush",v,{ code = "QRU", title = "Contrabando de Munições", x = coords["x"], y = coords["y"], z = coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 5 })
+								TriggerClientEvent("NotifyPush",v,{ code = 20, title = "Contrabando de Munições", x = coords["x"], y = coords["y"], z = coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 5 })
 							end)
 						end
 					end

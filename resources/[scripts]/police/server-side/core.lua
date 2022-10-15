@@ -82,9 +82,9 @@ RegisterCommand("cleanrec",function(source,args,rawCommand)
 	local Passport = vRP.Passport(source)
 	if Passport and args[1] then
 		if vRP.HasPermission(Passport,"setPolice") then
-			local nuser_id = parseInt(args[1])
-			if nuser_id > 0 then
-				vRP.Query("prison/cleanRecords",{ nuser_id = nuser_id })
+			local OtherPassport = parseInt(args[1])
+			if OtherPassport > 0 then
+				vRP.Query("prison/cleanRecords",{ nuser_id = OtherPassport })
 				TriggerClientEvent("Notify",source,"verde","Limpeza efetuada.",5000)
 			end
 		end
@@ -93,7 +93,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.initPrison(nuser_id,services,fines,text)
+function cRP.initPrison(OtherPassport,services,fines,text)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -102,23 +102,23 @@ function cRP.initPrison(nuser_id,services,fines,text)
 
 			local Identity = vRP.Identity(Passport)
 			if Identity then
-				local otherPlayer = vRP.Source(nuser_id)
+				local otherPlayer = vRP.Source(OtherPassport)
 				if otherPlayer then
 					vCLIENT.syncPrison(otherPlayer,true,false)
 					TriggerClientEvent("hud:RadioClean",otherPlayer)
 				end
 
-				vRP.Query("prison/insertPrison",{ police = Identity["name"].." "..Identity["name2"], nuser_id = parseInt(nuser_id), services = services, fines = fines, text = text, date = os.date("%d/%m/%Y").." ás "..os.date("%H:%M") })
+				vRP.Query("prison/insertPrison",{ police = Identity["name"].." "..Identity["name2"], nuser_id = parseInt(OtherPassport), services = services, fines = fines, text = text, date = os.date("%d/%m/%Y").." ás "..os.date("%H:%M") })
 				vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
 				TriggerClientEvent("Notify",source,"verde","Prisão efetuada.",5000)
 				TriggerClientEvent("police:Update",source,"reloadPrison")
-				vRP.InitPrison(nuser_id,services)
+				vRP.InitPrison(OtherPassport,services)
 
 				if fines > 0 then
-					vRP.GiveFine(nuser_id,fines)
+					vRP.GiveFine(OtherPassport,fines,otherPlayer)
 				end
 
-				TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(nuser_id).."\n**Serviços:** "..parseFormat(services).."\n**Multa:** $"..parseFormat(fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..text,13541152)
+				TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Serviços:** "..parseFormat(services).."\n**Multa:** $"..parseFormat(fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..text,13541152)
 			end
 
 			actived[Passport] = nil
@@ -128,15 +128,16 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEARCHUSER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.searchUser(nuser_id)
+function cRP.searchUser(OtherPassport)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local nuser_id = parseInt(nuser_id)
-		local Identity = vRP.Identity(nuser_id)
-		if Identity then
-			local fines = vRP.GetFine(nuser_id)
-			local records = vRP.Query("prison/getRecords",{ nuser_id = parseInt(nuser_id) })
+		local OtherPassport = parseInt(OtherPassport)
+		local OtherSource = vRP.Source(OtherPassport)
+		local Identity = vRP.Identity(OtherPassport)
+		if Identity and OtherSource then
+			local fines = vRP.GetFine(OtherSource)
+			local records = vRP.Query("prison/getRecords",{ nuser_id = OtherPassport })
 			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],fines,records }
 		end
 	end
@@ -146,17 +147,18 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITFINE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.initFine(nuser_id,fines,text)
+function cRP.initFine(OtherPassport,fines,text)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and fines > 0 then
+	local OtherSource = vRP.Source(OtherPassport)
+	if Passport and fines > 0 and OtherSource then
 		if actived[Passport] == nil then
 			actived[Passport] = true
 
-			TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(nuser_id).."\n**Multa:** $"..parseFormat(fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..text,2316674)
+			TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Multa:** $"..parseFormat(fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..text,2316674)
 			TriggerClientEvent("Notify",source,"verde","Multa aplicada.",5000)
 			TriggerClientEvent("police:Update",source,"reloadFine")
-			vRP.GiveFine(nuser_id,fines)
+			vRP.GiveFine(OtherPassport,fines,OtherSource)
 
 			actived[Passport] = nil
 		end

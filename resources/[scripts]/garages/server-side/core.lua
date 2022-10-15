@@ -28,7 +28,8 @@ GlobalState["Plates"] = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.ServerVehicle(Model,x,y,z,Heading,Plate,Nitrox,Doors,Body,Fuel)
 	local Randomize = 0
-	local Vehicle = CreateVehicle(Model,x,y,z,Heading,true,true)
+	local Type = VehicleType(Model)
+	local Vehicle = CreateVehicleServerSetter(Model,Type,x,y,z,Heading)
 
 	while not DoesEntityExist(Vehicle) and Randomize <= 1000 do
 		Randomize = Randomize + 1
@@ -403,8 +404,8 @@ AddEventHandler("garages:Sell",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Type = VehicleType(Name)
-		if Type == "rental" or Type == "work" then
+		local Mode = VehicleMode(Name)
+		if Mode == "rental" or Mode == "work" then
 			return
 		end
 
@@ -647,12 +648,12 @@ end)
 RegisterCommand("car",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") then
+		if vRP.HasGroup(Passport,"Admin") and Message[1] then
 			local VehicleName = Message[1]
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
 			local Heading = GetEntityHeading(Ped)
-			local Plate = "VEH"..math.random(10000,99999)
+			local Plate = "VEH"..(10000 + Passport)
 			local Exist,Network,Vehicle = Creative.ServerVehicle(VehicleName,Coords["x"],Coords["y"],Coords["z"],Heading,Plate,2000,nil,1000)
 
 			if not Exist then
@@ -662,11 +663,14 @@ RegisterCommand("car",function(source,Message)
 			vCLIENT.CreateVehicle(-1,VehicleName,Network,1000,1000,nil,false,false)
 			Spawn[Plate] = { Passport,VehicleName,Network }
 			TriggerEvent("engine:tryFuel",Plate,100)
-			SetPedIntoVehicle(Ped,Vehicle,-1)
 
 			local Plates = GlobalState["Plates"]
 			Plates[Plate] = Passport
 			GlobalState:set("Plates",Plates,true)
+
+			Wait(100)
+
+			SetPedIntoVehicle(Ped,Vehicle,-1)
 		end
 	end
 end)

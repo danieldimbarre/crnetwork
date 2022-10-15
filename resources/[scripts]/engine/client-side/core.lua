@@ -277,13 +277,13 @@ AddEventHandler("engine:Vehrify",function(Entity)
 	end
 
 	local Force = GetVehicleEngineHealth(Vehicle) / 10
-	exports["dynamic"]:AddButton("Potência","A força do motor se encontra em <yellow>"..parseInt(Force).."%</yellow>.","","",false,false)
+	exports["dynamic"]:AddButton("Potência","Potência do motor se encontra em <yellow>"..parseInt(Force).."%</yellow>.","","",false,false)
 
 	local Body = GetVehicleBodyHealth(Vehicle) / 10
-	exports["dynamic"]:AddButton("Lataria","A qualidade da lataria se encontra em <yellow>"..parseInt(Body).."%</yellow>.","","",false,false)
+	exports["dynamic"]:AddButton("Lataria","Qualidade da lataria se encontra em <yellow>"..parseInt(Body).."%</yellow>.","","",false,false)
 
 	local Health = GetEntityHealth(Vehicle) / 10
-	exports["dynamic"]:AddButton("Lataria","A durabilidade do chassi se encontra em <yellow>"..parseInt(Health).."%</yellow>.","","",false,false)
+	exports["dynamic"]:AddButton("Chassi","Rigidez do chassi se encontra em <yellow>"..parseInt(Health).."%</yellow>.","","",false,false)
 
 	exports["dynamic"]:openMenu()
 end)

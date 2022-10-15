@@ -18,7 +18,7 @@ body, html {
 }
 
 .Body {
-	max-width: 300px;
+	max-width: 320px;
 	max-height: 575px;
 	position: absolute;
 	display: block;
@@ -41,8 +41,8 @@ body, html {
 	min-width: 280px;
 	margin-bottom: 5px;
 	position: relative;
-	padding: 20px 20px 20px 14px;
-	background: rgba(15, 15, 15, 0.75);
+	padding: 20px 20px 20px 15px;
+	background: rgba(15,15,15,0.75);
 }
 
 .btn::before, .normalbutton::before {
@@ -57,7 +57,7 @@ body, html {
 }
 
 .btn:hover, .normalbutton:hover {
-	background: rgba(10, 10, 10, 0.75);
+	background: rgba(10,10,10,0.75);
 }
 
 .btn:hover::before, .normalbutton:hover::before {

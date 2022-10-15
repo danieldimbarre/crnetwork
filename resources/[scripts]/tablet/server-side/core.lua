@@ -103,7 +103,7 @@ function Creative.Buy(vehName)
 				return
 			end
 
-			if VehicleType(vehName) == "rental" or not VehicleType(vehName) then
+			if VehicleMode(vehName) == "rental" or not VehicleMode(vehName) then
 				Active[Passport] = nil
 				return
 			end
@@ -114,7 +114,7 @@ function Creative.Buy(vehName)
 				Active[Passport] = nil
 				return
 			else
-				if VehicleType(vehName) == "work" then
+				if VehicleMode(vehName) == "work" then
 					if vRP.PaymentFull(Passport,VehiclePrice(vehName)) then
 						vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "true" })
 						TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)

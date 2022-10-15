@@ -129,12 +129,12 @@ function Creative.Informations(Number)
 		else
 			local Collect = "A coleta está disponível"
 			if (Plants[Number]["Time"] - os.time()) > 3600 then
-				Collect = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time())
+				Collect = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time() - 3600)
 			end
 
 			local Cloning = "A clonagem está disponível"
 			if os.time() < Plants[Number]["Time"] then
-				Cloning = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time() - 1800)
+				Cloning = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time())
 			end
 
 			return { Collect,Cloning }

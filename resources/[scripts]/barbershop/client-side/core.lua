@@ -24,9 +24,9 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 	if Data["value"] then
 		SetNuiFocus(false,false)
 		displayBarbershop(false)
-		SendNUIMessage({ openBarbershop = false })
 		vRP.stopAnim(false)
 		vSERVER.updateSkin(myClothes)
+		SendNUIMessage({ openBarbershop = false })
 		TriggerServerEvent("bucket:Toggle","Exit")
 	end
 

@@ -8,20 +8,20 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-Creative = {}
-Tunnel.bindInterface("police",Creative)
+cRP = {}
+Tunnel.bindInterface("police",cRP)
 vCLIENT = Tunnel.getInterface("police")
------------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
------------------------------------------------------------------------------------------------------------------------------------------
-local Reduces = {}
-local Actived = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PREPRARES
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("prison/cleanRecords","DELETE FROM prison WHERE nuser_id = @Passport")
-vRP.Prepare("prison/getRecords","SELECT * FROM prison WHERE nuser_id = @Passport ORDER BY id DESC")
-vRP.Prepare("prison/insertPrison","INSERT INTO prison(police,nuser_id,services,fines,text,date) VALUES(@Police,@Passport,@Services,@Fines,@Text,@Date)")
+vRP.Prepare("prison/cleanRecords","DELETE FROM prison WHERE nuser_id = @nuser_id")
+vRP.Prepare("prison/getRecords","SELECT * FROM prison WHERE nuser_id = @nuser_id ORDER BY id DESC")
+vRP.Prepare("prison/insertPrison","INSERT INTO prison(police,nuser_id,services,fines,text,date) VALUES(@police,@nuser_id,@services,@fines,@text,@date)")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local actived = {}
+local prisonMarkers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRESET
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -82,9 +82,9 @@ RegisterCommand("cleanrec",function(source,args,rawCommand)
 	local Passport = vRP.Passport(source)
 	if Passport and args[1] then
 		if vRP.HasPermission(Passport,"setPolice") then
-			local OtherPassport = parseInt(args[1])
-			if OtherPassport > 0 then
-				vRP.Execute("prison/cleanRecords",{ Passport = OtherPassport })
+			local nuser_id = parseInt(args[1])
+			if nuser_id > 0 then
+				vRP.Query("prison/cleanRecords",{ nuser_id = nuser_id })
 				TriggerClientEvent("Notify",source,"verde","Limpeza efetuada.",5000)
 			end
 		end
@@ -93,55 +93,51 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.initPrison(OtherPassport,Services,Fines,Text)
+function cRP.initPrison(nuser_id,services,fines,text)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Actived[Passport] == nil then
-			Actived[Passport] = true
+		if actived[Passport] == nil then
+			actived[Passport] = true
 
 			local Identity = vRP.Identity(Passport)
 			if Identity then
-				local OtherPlayer = vRP.Source(OtherPassport)
-				if Services > 0 then
-					vRP.InitPrison(OtherPlayer,OtherPassport,Services)
-					TriggerClientEvent("radio:RadioClean",OtherPlayer)
-
-					if OtherPlayer then
-						vCLIENT.syncPrison(source,true,false)
-						TriggerEvent("Wanted",source,Passport,9999999)
-					end
+				local otherPlayer = vRP.Source(nuser_id)
+				if otherPlayer then
+					vCLIENT.syncPrison(otherPlayer,true,false)
+					TriggerClientEvent("hud:RadioClean",otherPlayer)
 				end
 
-				if Fines > 0 then
-					vRP.GiveFine(OtherPassport,Fines,OtherPlayer)
-				end
-
-				vRP.Query("prison/insertPrison",{ Police = Identity["name"].." "..Identity["name2"], OtherPassport = parseInt(OtherPassport), Services = Services, Fines = Fines, Text = Text, Date = os.date("%d/%m/%Y").." ás "..os.date("%H:%M") })
+				vRP.Query("prison/insertPrison",{ police = Identity["name"].." "..Identity["name2"], nuser_id = parseInt(nuser_id), services = services, fines = fines, text = text, date = os.date("%d/%m/%Y").." ás "..os.date("%H:%M") })
 				vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
 				TriggerClientEvent("Notify",source,"verde","Prisão efetuada.",5000)
 				TriggerClientEvent("police:Update",source,"reloadPrison")
+				vRP.InitPrison(nuser_id,services)
 
-				TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..Text,13541152)
+				if fines > 0 then
+					vRP.GiveFine(nuser_id,fines)
+				end
+
+				TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(nuser_id).."\n**Serviços:** "..parseFormat(services).."\n**Multa:** $"..parseFormat(fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..text,13541152)
 			end
 
-			Actived[Passport] = nil
+			actived[Passport] = nil
 		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEARCHUSER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.searchUser(OtherPassport)
+function cRP.searchUser(nuser_id)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local OtherPassport = parseInt(OtherPassport)
-		local Identity = vRP.Identity(OtherPassport)
+		local nuser_id = parseInt(nuser_id)
+		local Identity = vRP.Identity(nuser_id)
 		if Identity then
-			local Fines = vRP.GetFine(OtherPassport)
-			local Records = vRP.Query("prison/getRecords",{ Passport = parseInt(OtherPassport) })
-			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],Identity["prison"],Fines,Records }
+			local fines = vRP.GetFine(nuser_id)
+			local records = vRP.Query("prison/getRecords",{ nuser_id = parseInt(nuser_id) })
+			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],fines,records }
 		end
 	end
 
@@ -150,77 +146,59 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITFINE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.initFine(OtherPassport,Fines,Text)
+function cRP.initFine(nuser_id,fines,text)
 	local source = source
 	local Passport = vRP.Passport(source)
-	local OtherPlayer = vRP.Source(OtherPassport)
-	if Passport and Fines > 0 then
-		if Actived[Passport] == nil then
-			Actived[Passport] = true
+	if Passport and fines > 0 then
+		if actived[Passport] == nil then
+			actived[Passport] = true
 
-			TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Multa:** $"..parseFormat(Fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..Text,2316674)
+			TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(nuser_id).."\n**Multa:** $"..parseFormat(fines).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..text,2316674)
 			TriggerClientEvent("Notify",source,"verde","Multa aplicada.",5000)
 			TriggerClientEvent("police:Update",source,"reloadFine")
-			vRP.GiveFine(OtherPassport,fines,OtherPlayer)
+			vRP.GiveFine(nuser_id,fines)
 
-			Actived[Passport] = nil
+			actived[Passport] = nil
 		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- POLICE:REDUCES
+-- PRISONSYNC
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("police:Reduces")
-AddEventHandler("police:Reduces",function(Number)
+-- Citizen.CreateThread(function()
+-- 	while true do
+-- 		for k,v in pairs(prisonMarkers) do
+-- 			if prisonMarkers[k][1] > 0 then
+-- 				prisonMarkers[k][1] = prisonMarkers[k][1] - 1
+
+-- 				if prisonMarkers[k][1] <= 0 then
+-- 					if vRP.Source(prisonMarkers[k][2]) then
+-- 						TriggerEvent("blipsystem:serviceExit",k)
+-- 					end
+
+-- 					prisonMarkers[k] = nil
+-- 				end
+-- 			end
+-- 		end
+
+-- 		Citizen.Wait(1000)
+-- 	end
+-- end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REDUCEPRISON
+-----------------------------------------------------------------------------------------------------------------------------------------
+function cRP.reducePrison()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		vRP.UpdatePrison(Passport,math.random(2))
+
 		local Identity = vRP.Identity(Passport)
-		if parseInt(Identity["prison"]) > 0 then
-			if not Reduces[Number] then
-				Reduces[Number] = {}
-			end
-
-			if Reduces[Number][Passport] then
-				if os.time() > Reduces[Number][Passport] then
-					reduceFunction(source,Passport,Number)
-				else
-					TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
-				end
-			else
-				reduceFunction(source,Passport,Number)
-			end
+		if parseInt(Identity["prison"]) <= 0 then
+			vCLIENT.syncPrison(source,false,true)
+		else
+			vCLIENT.asyncServices(source)
 		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- REDUCEFUNCTION
------------------------------------------------------------------------------------------------------------------------------------------
-function reduceFunction(source,Passport,Number)
-	vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
-	TriggerClientEvent("Progress",source,"Vasculhando",10000)
-	Reduces[Number][Passport] = os.time() + 600
-	Player(source)["state"]["Buttons"] = true
-	Player(source)["state"]["Cancel"] = true
-	local timeProgress = 10
-
-	repeat
-		Wait(1000)
-		timeProgress = timeProgress - 1
-	until timeProgress <= 0
-
-	vRP.UpdatePrison(Passport,math.random(2))
-	Player(source)["state"]["Buttons"] = false
-	Player(source)["state"]["Cancel"] = false
-	vRPC.removeObjects(source)
-
-	local Identity = vRP.Identity(Passport)
-	if parseInt(Identity["prison"]) <= 0 then
-		vCLIENT.syncPrison(source,false,false)
-		TriggerEvent("Wanted:Remove",source,Passport)
-		TriggerClientEvent("Notify",source,"azul","Sua sentença foi paga.",5000)
-	else
-		TriggerClientEvent("Notify",source,"azul","Restam <b>"..parseInt(Identity["prison"]).." serviços</b>.",5000)
 	end
 end
 --------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,11 +1,11 @@
-var SelectPage = "Prender";
-var ReversePage = "Prender";
+var selectPage = "Prender";
+var reversePage = "Prender";
 /* ---------------------------------------------------------------------------------------------------------------- */
 $(document).ready(function(){
 	functionPrender();
 
 	window.addEventListener("message",function(event){
-		switch (event["data"]["Action"]){
+		switch (event["data"]["action"]){
 			case "openSystem":
 				$("#mainPage").css("display","block");
 			break;
@@ -23,25 +23,25 @@ $(document).ready(function(){
 			break;
 
 			case "reloadSearch":
-				functionSearch(event["data"]["Data"]);
+				functionSearch(event["data"]["data"]);
 			break;
 		};
 	});
 
-	document.onkeyup = function(Data){
-		if (Data["which"] == 27){
+	document.onkeyup = function(data){
+		if (data["which"] == 27){
 			$.post("http://police/closeSystem");
 		};
 	};
 });
 /* ---------------------------------------------------------------------------------------------------------------- */
 $(document).on("click","#mainMenu li",function(){
-	if (SelectPage != ReversePage){
+	if (selectPage != reversePage){
 		let isActive = $(this).hasClass('active');
 		$('#mainMenu li').removeClass('active');
 		if (!isActive){
 			$(this).addClass('active');
-			ReversePage = SelectPage;
+			reversePage = selectPage;
 
 			$("#content").css("height","414px");
 			$("#content").css("margin","76px 30px 30px 30px");
@@ -49,30 +49,29 @@ $(document).on("click","#mainMenu li",function(){
 	};
 });
 /* ----------FUNCTIONSEARCH---------- */
-const functionSearch = (Passport) => {
-	if (Passport != ""){
-		$.post("http://police/searchUser",JSON.stringify({ Passport: parseInt(Passport) }),(Data) => {
-			if(Data["result"][0] == true){
+const functionSearch = (passaporte) => {
+	if (passaporte != ""){
+		$.post("http://police/searchUser",JSON.stringify({ passaporte: parseInt(passaporte) }),(data) => {
+			if(data["result"][0] == true){
 				$('#content').html(`
-					<div id="titleContent">${Data["result"][1]}</div>
+					<div id="titleContent">${data["result"][1]}</div>
 					<div id="pageLeftSearch">
 						<div class="searchBox">
-							<b>Passaporte:</b> ${formatarNumero(Passport)}<br>
-							<b>Nome:</b> ${Data["result"][1]}<br>
-							<b>Telefone:</b> ${Data["result"][2]}<br>
-							<b>Serviços:</b> ${Data["result"][3]}<br>
-							<b>Multas:</b> $${formatarNumero(Data["result"][4])}<br>
+							<b>Passaporte:</b> ${formatarNumero(passaporte)}<br>
+							<b>Nome:</b> ${data["result"][1]}<br>
+							<b>Telefone:</b> ${data["result"][2]}<br>
+							<b>Multas:</b> $${formatarNumero(data["result"][3])}<br>
 						</div>
 
-						${Data["result"][4].map((Data) => (`
+						${data["result"][4].map((data) => (`
 							<div class="recordBox">
 								<div class="fineSeachTitle">
-									<span style="width: 250px; float: left;"><b>Policial:</b> ${Data["police"]}</span>
-									<span style="width: 125px; float: left;"><b>Serviços:</b> ${formatarNumero(Data["services"])}</span>
-									<span style="width: 110px; float: left;"><b>Multa:</b> $${formatarNumero(Data["fines"])}</span>
-									<span style="width: 150px; float: right; text-align: right;">${Data["date"]}</span>
+									<span style="width: 250px; float: left;"><b>Policial:</b> ${data["police"]}</span>
+									<span style="width: 125px; float: left;"><b>Serviços:</b> ${formatarNumero(data["services"])}</span>
+									<span style="width: 110px; float: left;"><b>Multa:</b> $${formatarNumero(data["fines"])}</span>
+									<span style="width: 150px; float: right; text-align: right;">${data["date"]}</span>
 								</div>
-								${Data["text"]}
+								${data["text"]}
 							</div>
 						`)).join('')}
 					</div>
@@ -86,7 +85,7 @@ const functionSearch = (Passport) => {
 			} else {
 				$('#content').html(`
 					<div id="titleContent">RESULTADO</div>
-					Não foi encontrado informações sobre o Passport procurado.
+					Não foi encontrado informações sobre o passaporte procurado.
 				`);
 			}
 		});
@@ -94,12 +93,12 @@ const functionSearch = (Passport) => {
 }
 /* ----------BUTTONSEARCH---------- */
 $(document).on("click",".buttonSearch",function(e){
-	const Passport = $('#searchPassaporte').val();
-	functionSearch(Passport);
+	const passaporte = $('#searchPassaporte').val();
+	functionSearch(passaporte);
 });
 /* ---------------------------------------------------------------------------------------------------------------- */
 const functionPrender = () => {
-	SelectPage = "Prender";
+	selectPage = "Prender";
 
 	$('#content').html(`
 		<div id="titleContent">PRENDER</div>
@@ -121,23 +120,23 @@ const functionPrender = () => {
 };
 /* ----------BUTTONPRISON---------- */
 $(document).on("click",".buttonPrison",function(e){
-	const Passport = $('#prenderPassaporte').val()
-	const Services = $('#prenderServices').val()
-	const Fines = $('#prenderMultas').val()
-	const Text = $('#prenderTexto').val()
+	const passaporte = $('#prenderPassaporte').val()
+	const servicos = $('#prenderServices').val()
+	const multas = $('#prenderMultas').val()
+	const texto = $('#prenderTexto').val()
 
-	if (Passport != "" && Services != "" && Fines != "" && Text != ""){
+	if (passaporte != "" && servicos != "" && multas != "" && texto != ""){
 		$.post("http://police/initPrison",JSON.stringify({
-			Passport: parseInt(Passport),
-			Services: parseInt(Services),
-			Fines: parseInt(Fines),
-			Text: Text
+			passaporte: parseInt(passaporte),
+			servicos: parseInt(servicos),
+			multas: parseInt(multas),
+			texto: texto
 		}));
 	}
 });
 /* ---------------------------------------------------------------------------------------------------------------- */
 const functionMultar = () => {
-	SelectPage = "Multar";
+	selectPage = "Multar";
 
 	$('#content').html(`
 		<div id="titleContent">MULTAR</div>
@@ -151,21 +150,21 @@ const functionMultar = () => {
 		<div id="pageRight">
 			<h2>OBSERVAÇÕES:</h2>
 			<b>1:</b> Antes de enviar o formulário verifique corretamente se todas as informações estão de acordo com a multa, você é responsável por todas as informações enviadas e salvas no sistema.<br><br>
-			<b>2:</b> Ao preencher o campo de Fines, verifique se o valor está correto, após enviar o formulário não será possível alterar ou remover a multa enviada.<br><br>
+			<b>2:</b> Ao preencher o campo de multas, verifique se o valor está correto, após enviar o formulário não será possível alterar ou remover a multa enviada.<br><br>
 		</div>
 	`);
 };
 /* ----------BUTTONFINE---------- */
 $(document).on("click",".buttonFine",function(e){
-	const Passport = $('#multarPassaporte').val()
-	const Fines = $('#multarMultas').val()
-	const Text = $('#multarTexto').val()
+	const passaporte = $('#multarPassaporte').val()
+	const multas = $('#multarMultas').val()
+	const texto = $('#multarTexto').val()
 
-	if (Passport != "" != "" && Fines != "" && Text != ""){
+	if (passaporte != "" != "" && multas != "" && texto != ""){
 		$.post("http://police/initFine",JSON.stringify({
-			Passport: parseInt(Passport),
-			Fines: parseInt(Fines),
-			Text: Text
+			passaporte: parseInt(passaporte),
+			multas: parseInt(multas),
+			texto: texto
 		}));
 	}
 });

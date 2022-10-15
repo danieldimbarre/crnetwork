@@ -178,8 +178,7 @@ CreateThread(function()
 	for k,v in pairs(initList) do
 		exports["target"]:AddCircleZone("Taxi:"..k,vec3(v[1],v[2],v[3]),v[4],{
 			name = "Taxi:"..k,
-			heading = 3374176,
-			debugPoly = true
+			heading = 3374176
 		},{
 			shop = k,
 			Distance = v[5],

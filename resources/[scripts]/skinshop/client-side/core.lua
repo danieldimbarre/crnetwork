@@ -137,7 +137,7 @@ CreateThread(function()
 					if Distance <= 2 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(0,38) and vSERVER.checkShares() then
+						if IsControlJustPressed(0,38) and vSERVER.CheckWanted() then
 							openMenu({
 								{ menu = "character", label = "Roupas", selected = true },
 								{ menu = "accessoires", label = "Utilidades", selected = false }
@@ -158,7 +158,7 @@ RegisterNetEvent("skinshop:openShop")
 AddEventHandler("skinshop:openShop",function()
 	TriggerEvent("dynamic:closeSystem")
 
-	if not creatingCharacter and vSERVER.checkShares() then
+	if not creatingCharacter and vSERVER.CheckWanted() then
 		openMenu({
 			{ menu = "character", label = "Roupas", selected = true },
 			{ menu = "accessoires", label = "Utilidades", selected = false }
@@ -269,7 +269,7 @@ function openMenu(allowedMenus)
 
 	GetMaxValues()
 
-	TriggerServerEvent("bucket:Toggle","Enter")
+	TriggerServerEvent("vRP:BucketClient","Enter")
 	SendNUIMessage({ action = "open", menus = allowedMenus, currentClothing = skinData })
 
 	SetCursorLocation(0.9,0.25)
@@ -339,7 +339,7 @@ end)
 -- CLOSEMENU
 -----------------------------------------------------------------------------------------------------------------------------------------
 function closeMenu()
-	TriggerServerEvent("bucket:Toggle","Exit")
+	TriggerServerEvent("vRP:BucketClient","Exit")
 	SendNUIMessage({ action = "close" })
 	RenderScriptCams(false,true,250,1,0)
 	DestroyCam(cam,false)

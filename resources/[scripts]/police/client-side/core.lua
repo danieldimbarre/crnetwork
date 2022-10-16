@@ -55,7 +55,7 @@ CreateThread(function()
 			options = {
 				{
 					event = "police:Reduces",
-					tunnel = "shopserver",
+					tunnel = "server",
 					label = "Vasculhar"
 				}
 			}

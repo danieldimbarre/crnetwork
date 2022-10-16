@@ -371,8 +371,6 @@ local function _createGrid(poly, options)
 
     if options.debugGrid then
       local coverage = string.format("%.2f", poly.gridCoverage * 100)
-      print("[PolyZone] Debug: Grid Coverage at " .. coverage .. "% with " .. poly.gridDivisions
-      .. " divisions. Optimal coverage for memory usage and startup time is 80-90%")
 
       Citizen.CreateThread(function()
         poly.lines = _calculateLinesForDrawingGrid(poly)
@@ -443,11 +441,7 @@ end
 
 function PolyZone:new(points, options)
   if not points then
-    print("[PolyZone] Error: Passed nil points table to PolyZone:Create() {name=" .. options.name .. "}")
     return
-  end
-  if #points < 3 then
-    print("[PolyZone] Warning: Passed points table with less than 3 points to PolyZone:Create() {name=" .. options.name .. "}")
   end
 
   options = options or {}
@@ -489,7 +483,6 @@ end
 
 function PolyZone:isPointInside(point)
   if self.destroyed then
-    print("[PolyZone] Warning: Called isPointInside on destroyed zone {name=" .. self.name .. "}")
     return false
   end
 
@@ -498,9 +491,6 @@ end
 
 function PolyZone:destroy()
   self.destroyed = true
-  if self.debugPoly or self.debugGrid then
-    print("[PolyZone] Debug: Destroying zone {name=" .. self.name .. "}")
-  end
 end
 
 -- Helper functions

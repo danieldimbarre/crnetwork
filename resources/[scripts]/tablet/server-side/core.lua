@@ -50,12 +50,6 @@ function Creative.Rental(vehName)
 		if not Active[Passport] then
 			Active[Passport] = true
 
-			if vRP.GetFine(source) > 0 then
-				TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
-				Active[Passport] = nil
-				return
-			end
-
 			local VehiclePrice = VehicleGems(vehName)
 			local Text = "Alugar o veículo <b>"..VehicleName(vehName).."</b> por <b>"..VehiclePrice.."</b> gemas?"
 
@@ -96,12 +90,6 @@ function Creative.Buy(vehName)
 	if Passport then
 		if not Active[Passport] then
 			Active[Passport] = true
-
-			if vRP.GetFine(source) > 0 then
-				TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
-				Active[Passport] = nil
-				return
-			end
 
 			if VehicleMode(vehName) == "rental" or not VehicleMode(vehName) then
 				Active[Passport] = nil
@@ -151,8 +139,7 @@ function Creative.startDrive()
 			if not exports["hud"]:Wanted(Passport) then
 				if vRP.Request(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
 					if vRP.PaymentFull(Passport,100) then
-						Player(source)["state"]["Route"] = Passport
-						SetPlayerRoutingBucket(source,Passport)
+						TriggerEvent("vRP:BucketServer",source,"Enter",Passport)
 						Active[Passport] = nil
 
 						return true
@@ -175,8 +162,7 @@ function Creative.removeDrive()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		Player(source)["state"]["Route"] = 0
-		SetPlayerRoutingBucket(source,0)
+		TriggerEvent("vRP:BucketServer",source,"Exit")
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

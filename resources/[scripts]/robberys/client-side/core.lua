@@ -13,7 +13,7 @@ AddEventHandler("robberys:Init",function(Robberys)
 			options = {
 				{
 					event = "robberys:Init",
-					tunnel = "shopserver",
+					tunnel = "server",
 					label = "Roubar"
 				}
 			}

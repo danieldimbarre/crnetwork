@@ -537,39 +537,6 @@ function HandleZoom(cam)
 	SetCamFov(cam,current_fov + (fov - current_fov) * 0.05)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVISIBLABLES
------------------------------------------------------------------------------------------------------------------------------------------
-LocalPlayer["state"]["Invisible"] = false
-LocalPlayer["state"]["Invincible"] = false
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADHACKER
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		if LocalPlayer["state"]["Active"] then
-			local Ped = PlayerPedId()
-
-			if not IsEntityVisible(Ped) and not LocalPlayer["state"]["Invisible"] then
-				TriggerServerEvent("admin:Hacker","está invisível")
-			end
-
-			if not ForceSocialClubUpdate then
-				TriggerServerEvent("admin:Hacker","forçou a social club.")
-			end
-
-			if not ShutdownAndLaunchSinglePlayerGame then
-				TriggerServerEvent("admin:Hacker","entrou no modo single player.")
-			end
-
-			if not ActivateRockstarEditor then
-				TriggerServerEvent("admin:Hacker","ativou o rockstar editor.")
-			end
-		end
-
-		Wait(10000)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- ISLAND
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Island = {

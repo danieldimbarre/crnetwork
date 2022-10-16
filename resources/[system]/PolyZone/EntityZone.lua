@@ -108,7 +108,6 @@ end
 function EntityZone:onEntityDamaged(onDamagedCb)
   local entity = self.entity
   if not entity then
-    print("[PolyZone] Error: Called onEntityDamage on Entity Zone with no entity {name=" .. self.name .. "}")
     return
   end
 
@@ -119,7 +118,6 @@ function EntityZone:onEntityDamaged(onDamagedCb)
 
     if name == 'CEventNetworkEntityDamage' then
       local victim, attacker, victimDied, weaponHash, isMelee = Message[1], Message[2], Message[4], Message[5], Message[10]
-      --print(entity, victim, attacker, victimDied, weaponHash, isMelee)
       if victim ~= entity then return end
       onDamagedCb(victimDied == 1, attacker, weaponHash, isMelee == 1)
     end
@@ -128,7 +126,6 @@ end
 
 function EntityZone:destroy()
   for i=1, #self.damageEventHandlers do
-    print("Destroying damageEventHandler:", self.damageEventHandlers[i])
     RemoveEventHandler(self.damageEventHandlers[i])
   end
   self.damageEventHandlers = {}

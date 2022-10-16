@@ -667,7 +667,7 @@ CreateThread(function()
 			{
 				event = "inventory:Animals",
 				label = "Esfolar",
-				tunnel = "police"
+				tunnel = "shop"
 			}
 		},
 		Distance = 1.0
@@ -687,9 +687,9 @@ CreateThread(function()
 	AddTargetModel({ 684586828,577432224,-1587184881,-1426008804,-228596739,1437508529,-1096777189,-468629664,1143474856,-2096124444,-115771139,1329570871,-130812911 },{
 		options = {
 			{
-				event = "inventory:verifyObjects",
+				event = "inventory:VerifyObjects",
 				label = "Vasculhar",
-				tunnel = "police",
+				tunnel = "shop",
 				service = "Lixeiro"
 			}
 		},
@@ -699,9 +699,9 @@ CreateThread(function()
 	AddTargetModel({ -206690185,666561306,218085040,-58485588,1511880420,682791951 },{
 		options = {
 			{
-				event = "inventory:verifyObjects",
+				event = "inventory:VerifyObjects",
 				label = "Vasculhar",
-				tunnel = "police",
+				tunnel = "shop",
 				service = "Lixeiro"
 			},{
 				event = "player:enterTrash",
@@ -1111,7 +1111,7 @@ function TargetEnable()
 													local Distance = #(Coords - cWheel)
 													if Distance <= 1.0 then
 														Selected[5] = Tyre
-														table.insert(Menu,{ event = "inventory:removeTyres", label = "Retirar Pneu", tunnel = "server" })
+														table.insert(Menu,{ event = "inventory:RemoveTyres", label = "Retirar Pneu", tunnel = "client" })
 													end
 												end
 											end
@@ -1138,7 +1138,7 @@ function TargetEnable()
 														table.insert(Menu,{ event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" })
 													end
 
-													table.insert(Menu,{ event = "inventory:stealTrunk", label = "Arrombar Porta-Malas", tunnel = "server" })
+													table.insert(Menu,{ event = "inventory:StealTrunk", label = "Arrombar Porta-Malas", tunnel = "client" })
 												end
 											end
 										end
@@ -1155,7 +1155,7 @@ function TargetEnable()
 										if Plate == "DISM"..(1000 + LocalPlayer["state"]["Passport"]) then
 											local Distance = #(Coords - vec3(Dismantles[Dismantleds][1],Dismantles[Dismantleds][2],Dismantles[Dismantleds][3]))
 											if Distance <= 10 then
-												table.insert(Menu,{ event = "inventory:Dismantle", label = "Desmanchar", tunnel = "police" })
+												table.insert(Menu,{ event = "inventory:Dismantle", label = "Desmanchar", tunnel = "client" })
 											end
 										end
 
@@ -1329,26 +1329,18 @@ RegisterNUICallback("Select",function(Data,Callback)
 
 	if Data["tunnel"] == "client" then
 		TriggerEvent(Data["event"],Selected)
-	elseif Data["tunnel"] == "server" then
-		TriggerServerEvent(Data["event"],Selected)
 	elseif Data["tunnel"] == "shop" then
 		TriggerEvent(Data["event"],Selected,Data["service"])
-	elseif Data["tunnel"] == "shopserver" then
-		TriggerServerEvent(Data["event"],Selected)
-	elseif Data["tunnel"] == "boxes" then
-		TriggerServerEvent(Data["event"],Selected,Data["service"])
-	elseif Data["tunnel"] == "paramedic" then
-		TriggerServerEvent(Data["event"],Selected[1])
 	elseif Data["tunnel"] == "entity" then
 		TriggerEvent(Data["event"],Selected[1],Data["service"])
+	elseif Data["tunnel"] == "products" then
+		TriggerEvent(Data["event"],Data["service"])
+	elseif Data["tunnel"] == "server" then
+		TriggerServerEvent(Data["event"],Selected)
+	elseif Data["tunnel"] == "paramedic" then
+		TriggerServerEvent(Data["event"],Selected[1])
 	elseif Data["tunnel"] == "police" then
 		TriggerServerEvent(Data["event"],Selected,Data["service"])
-	elseif Data["tunnel"] == "products" then
-		TriggerServerEvent(Data["event"],Data["service"])
-	elseif Data["tunnel"] == "objects" then
-		TriggerServerEvent(Data["event"],Selected[3])
-	else
-		TriggerServerEvent(Data["event"])
 	end
 
 	Callback("Ok")

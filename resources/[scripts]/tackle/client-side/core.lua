@@ -19,7 +19,7 @@ CreateThread(function()
 						for _,v in ipairs(touchedPlayers()) do
 							if not tackled[v] then
 								tackled[v] = true
-								TriggerServerEvent("inventory:Cancel")
+								TriggerEvent("inventory:Cancel")
 								TriggerServerEvent("tackle:Update",GetPlayerServerId(v),{ Coords["x"],Coords["y"],Coords["z"] })
 							end
 						end
@@ -39,7 +39,7 @@ end)
 RegisterNetEvent("tackle:Player")
 AddEventHandler("tackle:Player",function(Coords)
 	SetPedToRagdollWithFall(PlayerPedId(),5000,5000,0,Coords[1],Coords[2],Coords[3],10.0,0.0,0.0,0.0,0.0,0.0,0.0)
-	TriggerServerEvent("inventory:Cancel")
+	TriggerEvent("inventory:Cancel")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOUCHEDPLAYERS

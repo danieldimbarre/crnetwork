@@ -120,6 +120,54 @@ function Creative.Chest()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- OPENITENS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local OpenItens = {
+	["mechanicpass"] = {
+		["Open"] = "Mechanic",
+		["Table"] = {
+			{ ["Item"] = "advtoolbox", ["Amount"] = 1 },
+			{ ["Item"] = "toolbox", ["Amount"] = 1 },
+			{ ["Item"] = "tyres", ["Amount"] = 1 },
+			{ ["Item"] = "dollars", ["Amount"] = 1 }
+		}
+	},
+	["uwucoffeepass"] = {
+		["Open"] = "UwuCoffee",
+		["Table"] = {
+			{ ["Item"] = "nigirizushi", ["Amount"] = 3 },
+			{ ["Item"] = "sushi", ["Amount"] = 3 },
+			{ ["Item"] = "dollars", ["Amount"] = 200 }
+		}
+	},
+	["pizzathispass"] = {
+		["Open"] = "PizzaThis",
+		["Table"] = {
+			{ ["Item"] = "nigirizushi", ["Amount"] = 3 },
+			{ ["Item"] = "sushi", ["Amount"] = 3 },
+			{ ["Item"] = "dollars", ["Amount"] = 200 }
+		}
+	},
+	["burgershotpass"] = {
+		["Open"] = "BurgerShot",
+		["Table"] = {
+			{ ["Item"] = "hamburger2", ["Amount"] = 1 },
+			{ ["Item"] = "cookedmeat", ["Amount"] = 2 },
+			{ ["Item"] = "cookedfishfillet", ["Amount"] = 1 },
+			{ ["Item"] = "dollars", ["Amount"] = 200 }
+		}
+	},
+	["paramedicpass"] = {
+		["Open"] = "Paramedic",
+		["Table"] = {
+			{ ["Item"] = "gauze", ["Amount"] = 3 },
+			{ ["Item"] = "medkit", ["Amount"] = 1 },
+			{ ["Item"] = "analgesic", ["Amount"] = 4 },
+			{ ["Item"] = "dollars", ["Amount"] = 200 }
+		}
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Store(Item,Slot,Amount,Target)
@@ -131,6 +179,19 @@ function Creative.Store(Item,Slot,Amount,Target)
 
 		if itemBlock(Item) then
 			TriggerClientEvent("chest:Update",source,"Refresh")
+
+			return true
+		end
+
+		if OpenItens[Item] and OpenItens[Item]["Open"] == Open[Passport]["Name"] then
+			if vRP.TakeItem(Passport,Item,1) then
+				for _,v in pairs(OpenItens[Item]["Table"]) do
+					vRP.GenerateItem(Passport,v["Item"],v["Amount"])
+				end
+			end
+
+			TriggerClientEvent("chest:Update",source,"Refresh")
+
 			return true
 		end
 

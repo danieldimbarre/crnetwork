@@ -3089,62 +3089,6 @@ Use = {
 		until not Active[Passport]
 	end,
 
-	["medicpass"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasGroup(Passport,"Paramedic") then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.GenerateItem(Passport,"gauze",3)
-				vRP.GenerateItem(Passport,"medkit",1)
-				vRP.GenerateItem(Passport,"analgesic",4)
-				vRP.GenerateItem(Passport,"dollars",200)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-			end
-		end
-	end,
-
-	["mechanicpass"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			vRP.GenerateItem(Passport,"advtoolbox",1)
-			vRP.GenerateItem(Passport,"toolbox",2)
-			vRP.GenerateItem(Passport,"tyres",4)
-			vRP.GenerateItem(Passport,"dollars",200)
-			TriggerClientEvent("inventory:Update",source,"Backpack")
-		end
-	end,
-
-	["dessertspass"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasGroup(Passport,"UwuCoffee") then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.GenerateItem(Passport,"nigirizushi",3)
-				vRP.GenerateItem(Passport,"sushi",3)
-				vRP.GenerateItem(Passport,"dollars",200)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-			end
-		end
-	end,
-
-	["pizzathispass"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasGroup(Passport,"UwuCoffee") then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.GenerateItem(Passport,"nigirizushi",3)
-				vRP.GenerateItem(Passport,"sushi",3)
-				vRP.GenerateItem(Passport,"dollars",200)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-			end
-		end
-	end,
-
-	["burgershotpass"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasGroup(Passport,"BurgerShot") then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.GenerateItem(Passport,"hamburger2",1)
-				vRP.GenerateItem(Passport,"cookedmeat",2)
-				vRP.GenerateItem(Passport,"cookedfishfillet",1)
-				vRP.GenerateItem(Passport,"dollars",200)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-			end
-		end
-	end,
-
 	["mushroomteaplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
 			vRP.SetWeight(Passport,10)
@@ -4081,7 +4025,7 @@ Use = {
 						explosionProgress = explosionProgress - 1
 					until explosionProgress <= 0
 
-					TriggerEvent("inventory:DropServer",CoordsAtm,"dollars",math.random(2500,5000))
+					Creative.DropServer(CoordsAtm,"dollars",math.random(2500,5000))
 					TriggerClientEvent("player:Residuals",source,"Resíduo de Explosivo.")
 					TriggerClientEvent("objects:Remover",-1,tostring(Number))
 					TriggerClientEvent("vRP:Explosion",source,Coords)

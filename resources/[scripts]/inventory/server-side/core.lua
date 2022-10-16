@@ -520,9 +520,9 @@ function Creative.requestInventory()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:DROPSERVER
+-- DROPSERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("inventory:DropServer",function(Coords,Item,Amount)
+function Creative.DropServer(Coords,Item,Amount)
 	local Number = 0
 
 	repeat
@@ -542,12 +542,11 @@ AddEventHandler("inventory:DropServer",function(Coords,Item,Amount)
 	}
 
 	TriggerClientEvent("drops:Adicionar",-1,tostring(Number),Drops[tostring(Number)])
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:DROPS
+-- DROPS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:Drops")
-AddEventHandler("inventory:Drops",function(Item,Slot,Amount,x,y,z)
+function Creative.Drops(Item,Slot,Amount,x,y,z)
 	local source = source
 	local Slot = tostring(Slot)
 	local Passport = vRP.Passport(source)
@@ -614,12 +613,11 @@ AddEventHandler("inventory:Drops",function(Item,Slot,Amount,x,y,z)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:PICKUP
+-- PICKUP
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:Pickup")
-AddEventHandler("inventory:Pickup",function(Number,Amount,Slot)
+function Creative.Pickup(Number,Amount,Slot)
 	local source = source
 	local Slot = tostring(Slot)
 	local Number = tostring(Number)
@@ -693,12 +691,11 @@ AddEventHandler("inventory:Pickup",function(Number,Amount,Slot)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:SENDITEM
+-- SENDITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:sendItem")
-AddEventHandler("inventory:sendItem",function(Slot,Amount)
+function Creative.SendItem(Slot,Amount)
 	local source = source
 	local Slot = tostring(Slot)
 	local Amount = parseInt(Amount)
@@ -761,12 +758,11 @@ AddEventHandler("inventory:sendItem",function(Slot,Amount)
 			Active[Passport] = nil
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:DELIVER
+-- DELIVER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:Deliver")
-AddEventHandler("inventory:Deliver",function(Slot)
+function Creative.Deliver(Slot)
 	local source = source
 	local Slot = tostring(Slot)
 	local Passport = vRP.Passport(source)
@@ -998,12 +994,11 @@ AddEventHandler("inventory:Deliver",function(Slot)
 			end
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:USEITEM
+-- USEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:useItem")
-AddEventHandler("inventory:useItem",function(Slot,Amount)
+function Creative.UseItem(Slot,Amount)
 	local source = source
 	local Slot = tostring(Slot)
 	local Amount = parseInt(Amount)
@@ -1157,7 +1152,7 @@ AddEventHandler("inventory:useItem",function(Slot,Amount)
 			Use[Item](source,Passport,Amount,Slot,Full,Item,Split)
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:SAVETEMPORARY
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1194,10 +1189,9 @@ AddEventHandler("inventory:applyTemporary",function(Passport)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:CANCEL
+-- CANCEL
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:Cancel")
-AddEventHandler("inventory:Cancel",function()
+function Creative.Cancel()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -1265,7 +1259,7 @@ AddEventHandler("inventory:Cancel",function()
 			TriggerEvent("arena:Cancel",source,Passport)
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKINVENTORY
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1403,10 +1397,9 @@ AddEventHandler("inventory:CleanWeapons",function(Passport)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:VERIFYOBJECTS
+-- VERIFYOBJECTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:verifyObjects")
-AddEventHandler("inventory:verifyObjects",function(Entity,Service)
+function Creative.VerifyObjects(Entity,Service)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
@@ -1489,12 +1482,11 @@ AddEventHandler("inventory:verifyObjects",function(Entity,Service)
 			TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:LOOTSYSTEM
+-- LOOT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:lootSystem")
-AddEventHandler("inventory:lootSystem",function(Entity,Service)
+function Creative.Loot(Entity,Service)
 	local source = source
 	local Entity = tostring(Entity)
 	local Passport = vRP.Passport(source)
@@ -1550,7 +1542,7 @@ AddEventHandler("inventory:lootSystem",function(Entity,Service)
 			until not Active[Passport]
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:APPLYPLATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1632,8 +1624,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STEALTRUNK
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:stealTrunk")
-AddEventHandler("inventory:stealTrunk",function(Entity)
+function Creative.StealTrunk(Entity)
 	local source = source
 	local Plate = Entity[1]
 	local Network = Entity[4]
@@ -1709,12 +1700,11 @@ AddEventHandler("inventory:stealTrunk",function(Entity)
 			TriggerClientEvent("Notify",source,"amarelo","Veículo protegido pela seguradora.",1000)
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:ANIMALS
+-- ANIMALS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:Animals")
-AddEventHandler("inventory:Animals",function(Entity)
+function Creative.Animals(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -1797,12 +1787,11 @@ AddEventHandler("inventory:Animals",function(Entity)
 			TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- OBJECTS:GUARDAR
+-- STOREOBJECTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("objects:Guardar")
-AddEventHandler("objects:Guardar",function(Number)
+function Creative.StoreObjects(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -1816,12 +1805,11 @@ AddEventHandler("objects:Guardar",function(Number)
 			end
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:MAKEPRODUCTS
+-- MAKEPRODUCTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:makeProducts")
-AddEventHandler("inventory:makeProducts",function(Table)
+function Creative.MakeProducts(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
@@ -1951,12 +1939,11 @@ AddEventHandler("inventory:makeProducts",function(Table)
 			until not Active[Passport]
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:DISMANTLE
+-- DISMANTLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:Dismantle")
-AddEventHandler("inventory:Dismantle",function(Entity)
+function Creative.Dismantle(Entity)
 	local source = source
 	local vehName = Entity[2]
 	local Passport = vRP.Passport(source)
@@ -2038,12 +2025,11 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 			Wait(100)
 		until not Active[Passport]
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:REMOVETYRES
+-- REMOVETYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:removeTyres")
-AddEventHandler("inventory:removeTyres",function(Entity)
+function Creative.RemoveTyres(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Entity[2] ~= "veto" and Entity[2] ~= "veto2" then
@@ -2092,7 +2078,7 @@ AddEventHandler("inventory:removeTyres",function(Entity)
 			end
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:DRINK
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -2121,10 +2107,9 @@ AddEventHandler("inventory:Drink",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:STEALPEDS
+-- STEALPEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:StealPeds")
-AddEventHandler("inventory:StealPeds",function()
+function Creative.StealPeds()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -2154,7 +2139,7 @@ AddEventHandler("inventory:StealPeds",function()
 			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- AMOUNTDRUGS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -2177,10 +2162,9 @@ function Creative.AmountDrugs()
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:DRUGSPEDS
+-- DRUGPEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:DrugsPeds")
-AddEventHandler("inventory:DrugsPeds",function()
+function Creative.DrugPeds()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Drugs[Passport] then
@@ -2215,7 +2199,7 @@ AddEventHandler("inventory:DrugsPeds",function()
 			Drugs[Passport] = nil
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:ROLLVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------

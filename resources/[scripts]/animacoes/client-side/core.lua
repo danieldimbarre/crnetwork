@@ -980,7 +980,7 @@ CreateThread(function()
 				end
 
 				if IsPedArmed(PlayerPedId(),6) then
-					TriggerServerEvent("inventory:Cancel")
+					TriggerEvent("inventory:Cancel")
 					binoculos = false
 					cameras = false
 				end

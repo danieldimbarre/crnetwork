@@ -56,12 +56,10 @@ AddEventHandler("propertys:Toggle",function(Name)
 	if Passport then
 		if Inside[Passport] then
 			Inside[Passport] = nil
-			SetPlayerRoutingBucket(source,0)
-			Player(source)["state"]["Route"] = 0
+			TriggerEvent("vRP:BucketServer",source,"Exit")
 		else
 			Inside[Passport] = Name
-			SetPlayerRoutingBucket(source,Route[Name])
-			Player(source)["state"]["Route"] = Route[Name]
+			TriggerEvent("vRP:BucketServer",source,"Enter",Route[Name])
 		end
 	end
 end)

@@ -286,11 +286,6 @@ function Creative.Vehicles(Garage)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Wanted(Passport) then
-		if vRP.GetFine(source) > 0 then
-			TriggerClientEvent("Notify",source,"vermelho","Multas pendentes encontradas.",3000)
-			return false
-		end
-
 		if Garages[Garage]["perm"] then
 			if not vRP.HasGroup(Passport,Garages[Garage]["perm"]) then
 				return false
@@ -406,11 +401,6 @@ AddEventHandler("garages:Sell",function(Name)
 	if Passport then
 		local Mode = VehicleMode(Name)
 		if Mode == "rental" or Mode == "work" then
-			return
-		end
-
-		if vRP.GetFine(source) > 0 then
-			TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
 			return
 		end
 

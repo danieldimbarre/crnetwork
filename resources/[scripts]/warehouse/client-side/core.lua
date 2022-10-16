@@ -73,11 +73,11 @@ CreateThread(function()
 				},{
 					event = "warehouse:Upgrade",
 					label = "Aumentar",
-					tunnel = "shopserver"
+					tunnel = "server"
 				},{
 					event = "warehouse:Password",
 					label = "Trocar Senha",
-					tunnel = "shopserver"
+					tunnel = "server"
 				}
 			}
 		})

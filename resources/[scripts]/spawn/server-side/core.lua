@@ -22,8 +22,7 @@ function Creative.Characters()
 	local License = vRP.Identities(source)
 	local Consult = vRP.Query("characters/Characters",{ license = License })
 
-	Player(source)["state"]["Route"] = 999999
-	SetPlayerRoutingBucket(source,999999)
+	TriggerEvent("vRP:BucketServer",source,"Enter",source)
 
 	if Consult[1] then
 		for _,v in pairs(Consult) do
@@ -53,12 +52,10 @@ function Creative.CharacterChosen(Passport)
 	local License = vRP.Identities(source)
 	local Consult = vRP.Query("characters/UserLicense",{ id = Passport, license = License })
 	if Consult[1] then
-		SetPlayerRoutingBucket(source,0)
-		Player(source)["state"]["Route"] = 0
+		TriggerEvent("vRP:BucketServer",source,"Exit")
 		vRP.CharacterChosen(source,Passport)
 	else
 		DropPlayer(source,"Conectando em personagem irregular.")
-		TriggerEvent("Discord","Hackers","**Source:** "..source.."\n**License:** "..License.."\n**Motivo:** Conectou em outra conta\n**Address:** "..GetPlayerEndpoint(source),3092790)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -93,10 +90,9 @@ function Creative.NewCharacter(Name,Name2,Sex)
 
 		local Consult = vRP.Query("characters/lastCharacters",{ license = License })
 		if Consult[1] then
+			TriggerEvent("vRP:BucketServer",source,"Exit")
 			vRP.CharacterChosen(source,Consult[1]["id"],Sex)
 			TriggerClientEvent("spawn:Close",source)
-			Player(source)["state"]["Route"] = 0
-			SetPlayerRoutingBucket(source,0)
 		end
 
 		Selected[source] = nil

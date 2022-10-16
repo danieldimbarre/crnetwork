@@ -23,7 +23,7 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 		displayBarbershop(false)
 		vSERVER.updateSkin(myClothes)
 		SendNUIMessage({ openBarbershop = false })
-		TriggerServerEvent("bucket:Toggle","Exit")
+		TriggerServerEvent("vRP:BucketClient","Exit")
 	end
 
 	TriggerEvent("barbershop:Apply",myClothes)
@@ -126,7 +126,6 @@ function displayBarbershop(enable)
 			SendNUIMessage({ type = "click" })
 		end
 
-		LocalPlayer["state"]["Invincible"] = true
 		SetPlayerInvincible(Ped,true)
 
 		if not DoesCamExist(cam) then
@@ -144,7 +143,6 @@ function displayBarbershop(enable)
 	else
 		RenderScriptCams(false,false,0,1,0)
 		SetPlayerInvincible(Ped,false)
-		LocalPlayer["state"]["Invincible"] = false
 		DestroyCam(cam,false)
 	end
 end
@@ -188,8 +186,8 @@ CreateThread(function()
 					if Distance <= 2.5 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and vSERVER.checkShares() then
-							TriggerServerEvent("bucket:Toggle","Enter")
+						if IsControlJustPressed(1,38) and vSERVER.CheckWanted() then
+							TriggerServerEvent("vRP:BucketClient","Enter")
 							displayBarbershop(true)
 						end
 					end
@@ -213,6 +211,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Open")
 AddEventHandler("barbershop:Open",function()
-	TriggerServerEvent("bucket:Toggle","Enter")
+	TriggerServerEvent("vRP:BucketClient","Enter")
 	displayBarbershop(true)
 end)

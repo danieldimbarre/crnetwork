@@ -26,6 +26,69 @@ local storeWeaponHands = false
 local timeReload = GetGameTimer()
 LocalPlayer["state"]["Buttons"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:CANCEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:Cancel")
+AddEventHandler("inventory:Cancel",function()
+	vSERVER.Cancel()
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:VERIFYOBJECTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:VerifyObjects")
+AddEventHandler("inventory:VerifyObjects",function(Entity,Service)
+	vSERVER.VerifyObjects(Entity,Service)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:LOOT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:Loot")
+AddEventHandler("inventory:Loot",function(Entity,Service)
+	vSERVER.Loot(Entity,Service)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:STEALTRUNK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:StealTrunk")
+AddEventHandler("inventory:StealTrunk",function(Entity)
+	vSERVER.StealTrunk(Entity)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:ANIMALS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:Animals")
+AddEventHandler("inventory:Animals",function(Entity,Service)
+	vSERVER.Animals(Entity,Service)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:STOREOBJECTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:StoreObjects")
+AddEventHandler("inventory:StoreObjects",function(Number)
+	vSERVER.StoreObjects(Number)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:MAKEPRODUCTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:MakeProducts")
+AddEventHandler("inventory:MakeProducts",function(Service)
+	vSERVER.MakeProducts(Service)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:DISMANTLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:Dismantle")
+AddEventHandler("inventory:Dismantle",function(Entity)
+	vSERVER.Dismantle(Entity)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:REMOVETYRES
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:RemoveTyres")
+AddEventHandler("inventory:RemoveTyres",function(Entity)
+	vSERVER.RemoveTyres(Entity)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:CLEANWEAPONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:CleanWeapons")
@@ -58,10 +121,6 @@ CreateThread(function()
 			DisableControlAction(1,47,true)
 			DisableControlAction(1,257,true)
 			DisablePlayerFiring(Ped,true)
-		end
-
-		if Weapon == "" and not putWeaponHands and GetSelectedPedWeapon(Ped) ~= GetHashKey("WEAPON_UNARMED") then
-			TriggerServerEvent("admin:Print","Utilizou uma arma spawnada.")
 		end
 
 		Wait(TimeDistance)
@@ -104,7 +163,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Deliver",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
-		TriggerServerEvent("inventory:Deliver",Data["slot"])
+		vSERVER.Deliver(Data["slot"])
 	end
 
 	Callback("Ok")
@@ -116,7 +175,7 @@ RegisterNetEvent("inventory:Slot")
 AddEventHandler("inventory:Slot",function(Number,Amount)
 	if LocalPlayer["state"]["Network"] then
 		PushSlot = parseInt(Number)
-		TriggerServerEvent("inventory:useItem",Number,Amount)
+		vSERVER.UseItem(Number,Amount)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -134,7 +193,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("sendItem",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
-		TriggerServerEvent("inventory:sendItem",Data["slot"],Data["amount"])
+		vSERVER.SendItem(Data["slot"],Data["amount"])
 	end
 
 	Callback("Ok")
@@ -839,7 +898,7 @@ RegisterNUICallback("dropItem",function(Data,Callback)
 		local Coords = GetEntityCoords(Ped)
 		local _,cdz = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
 
-		TriggerServerEvent("inventory:Drops",Data["item"],Data["slot"],Data["amount"],Coords["x"],Coords["y"],cdz)
+		vSERVER.Drops(Data["item"],Data["slot"],Data["amount"],Coords["x"],Coords["y"],cdz)
 	end
 
 	Callback("Ok")
@@ -930,7 +989,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("pickupItem",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
-		TriggerServerEvent("inventory:Pickup",Data["id"],Data["amount"],Data["target"])
+		vSERVER.Pickup(Data["id"],Data["amount"],Data["target"])
 	end
 
 	Callback("Ok")
@@ -1382,7 +1441,8 @@ local atmList = {
 	["131"] = { 821.54,-780.27,26.17 },
 	["132"] = { -1243.12,-1455.52,4.31 },
 	["133"] = { -1242.01,-1454.75,4.31 },
-	["134"] = { -1240.89,-1453.96,4.31 }
+	["134"] = { -1240.89,-1453.96,4.31 },
+	["135"] = { 822.93,-825.94,26.32 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKATM
@@ -1486,9 +1546,9 @@ CreateThread(function()
 												DeleteEntity(Object)
 											end
 
+											vSERVER.StealPeds()
 											ClearPedSecondaryTask(Selected)
 											TaskWanderStandard(Selected,10.0,10)
-											TriggerServerEvent("inventory:StealPeds")
 
 											LocalPlayer["state"]["Buttons"] = false
 											LocalPlayer["state"]["Commands"] = false
@@ -1593,7 +1653,7 @@ CreateThread(function()
 											vRP.removeObjects()
 											ClearPedSecondaryTask(Selected)
 											TaskWanderStandard(Selected,10.0,10)
-											TriggerServerEvent("inventory:DrugsPeds")
+											vSERVER.DrugPeds()
 
 											LocalPlayer["state"]["Buttons"] = false
 											LocalPlayer["state"]["Commands"] = false

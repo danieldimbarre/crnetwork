@@ -49,8 +49,6 @@ AddEventHandler("onClientResourceStart",function(Resource)
 	ShutdownLoadingScreen()
 	ShutdownLoadingScreenNui()
 	TriggerServerEvent("Queue:Connect")
-	LocalPlayer["state"]["Invisible"] = true
-	LocalPlayer["state"]["Invincible"] = true
 
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)
@@ -151,7 +149,6 @@ AddEventHandler("spawn:justSpawn",function(Open,Barbershop)
 
 		SendNUIMessage({ Action = "Location", Table = Locate })
 	else
-		LocalPlayer["state"]["Invisible"] = false
 		SetEntityVisible(Ped,true,false)
 		TriggerEvent("hud:Active",true)
 		SetNuiFocus(false,false)
@@ -185,7 +182,6 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 		TriggerEvent("hud:Active",true)
 		SetNuiFocus(false,false)
 
-		LocalPlayer["state"]["Invisible"] = false
 		RenderScriptCams(false,false,0,true,true)
 		SetEntityVisible(Ped,true,false)
 		SetCamActive(Camera,false)

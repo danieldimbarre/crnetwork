@@ -29,12 +29,6 @@ function BoxZone.calculateMinAndMaxZ(minZ, maxZ, scaleZ, offsetZ)
       local centerZ = minZ + halfHeight
       minZ = centerZ - halfHeight * minScaleZ
       maxZ = centerZ + halfHeight * maxScaleZ
-    else
-      print(string.format(
-        "[PolyZone] Warning: The minZ/maxZ of a BoxZone can only be scaled if both minZ and maxZ are non-nil (minZ=%s, maxZ=%s)",
-        tostring(minZ),
-        tostring(maxZ)
-      ))
     end
   end
 
@@ -157,7 +151,6 @@ end
 -- Helper functions
 function BoxZone:isPointInside(point)
   if self.destroyed then
-    print("[PolyZone] Warning: Called isPointInside on destroyed zone {name=" .. self.name .. "}")
     return false
   end
 

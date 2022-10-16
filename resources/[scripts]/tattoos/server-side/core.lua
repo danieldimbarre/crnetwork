@@ -10,23 +10,16 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("tattoos",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHECKSHARES
+-- CHECKWANTED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.checkShares()
+function Creative.CheckWanted()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if vRP.GetFine(source) > 0 then
-			TriggerClientEvent("Notify",source,"amarelo","Multas pendentes encontradas.",3000)
-			return false
-		end
-
-		if exports["hud"]:Reposed(Passport) or exports["hud"]:Wanted(Passport,source) then
-			return false
-		end
-
+	if Passport and not exports["hud"]:Wanted(Passport,source) then
 		return true
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GETPLAYERS

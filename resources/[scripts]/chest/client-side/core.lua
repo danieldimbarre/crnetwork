@@ -61,7 +61,7 @@ local Labels = {
 		},{
 			event = "chest:Upgrade",
 			label = "Aumentar",
-			tunnel = "shopserver"
+			tunnel = "server"
 		}
 	},
 	["2"] = {
@@ -73,7 +73,7 @@ local Labels = {
 		},{
 			event = "chest:Upgrade",
 			label = "Aumentar",
-			tunnel = "shopserver"
+			tunnel = "server"
 		}
 	},
 	["3"] = {

@@ -22,12 +22,12 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 	myClothes = { mySkin[1],mySkin[2],mySkin[3],mySkin[4],mySkin[5],mySkin[6],mySkin[7],mySkin[8],tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintensity"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintensity"]),tonumber(Data["blushcolor"]),mySkin[9],mySkin[10],mySkin[11],mySkin[12],mySkin[13],mySkin[14],mySkin[15],mySkin[16],mySkin[17],mySkin[18],mySkin[19],mySkin[20],mySkin[21],mySkin[22],mySkin[23] }
 
 	if Data["value"] then
+		OpenBarbershop(false)
 		SetNuiFocus(false,false)
-		displayBarbershop(false)
 		vRP.stopAnim(false)
 		vSERVER.updateSkin(myClothes)
 		SendNUIMessage({ openBarbershop = false })
-		TriggerServerEvent("bucket:Toggle","Exit")
+		TriggerServerEvent("vRP:BucketClient","Exit")
 	end
 
 	TriggerEvent("barbershop:Apply",myClothes)
@@ -124,24 +124,24 @@ AddEventHandler("barbershop:Apply",function(status)
 	TriggerEvent("creator:updateFace",myClothes)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DISPLAYBARBERSHOP
+-- OPENBARBERSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function displayBarbershop(enable)
+function OpenBarbershop(Enabled)
 	local Ped = PlayerPedId()
 
-	if enable then
+	if Enabled then
+		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
+		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
 		SendNUIMessage({ openBarbershop = true,hair = myClothes[9],haircolor = myClothes[10],haircolor2 = myClothes[11],eyebrow = myClothes[18],eyebrowintensity = myClothes[19],eyebrowcolor = myClothes[20],beard = myClothes[21],beardintensity = myClothes[22],beardcolor = myClothes[23],blush = myClothes[24],blushintensity = myClothes[25],blushcolor = myClothes[26],lipstick = myClothes[15],lipstickintensity = myClothes[16],lipstickcolor = myClothes[17],makeup = myClothes[12],makeupintensity = myClothes[13],makeupcolor = myClothes[14],maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1,maxHaircolors = GetNumHairColors()-1,maxMakeupcolor = GetNumMakeupColors()-1,maxBeard = GetPedHeadOverlayNum(1)-1,maxEyebrow = GetPedHeadOverlayNum(2)-1,maxMakeup = GetPedHeadOverlayNum(4)-1,maxBlush = GetPedHeadOverlayNum(5)-1,maxLipstick = GetPedHeadOverlayNum(8)-1 })
 
-		
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })
 		end
 
-		LocalPlayer["state"]["Invincible"] = true
 		SetPlayerInvincible(Ped,true)
-		vRP.playAnim(false,{ "mp_sleep","bind_pose_180" },true)
 
 		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,0.4,0)
 		RenderScriptCams(false,false,0,1,0)
@@ -154,11 +154,16 @@ function displayBarbershop(enable)
 			SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.7)
 			SetCamRot(cam,0.0,0.0,GetEntityHeading(PlayerPedId()) + 180)
 		end
+
+		local Coords = GetEntityCoords(Ped)
+		SetCamCoord(cam,Coords["x"] + 0.2,Coords["y"] + 0.5,Coords["z"] + 0.7)
+		SetCamRot(cam,0.0,0.0,150.0)
 	else
 		RenderScriptCams(false,false,0,1,0)
 		SetPlayerInvincible(Ped,false)
-		LocalPlayer["state"]["Invincible"] = false
 		DestroyCam(cam,false)
+
+		vRP.removeObjects()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -201,9 +206,9 @@ CreateThread(function()
 					if Distance <= 2.5 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and vSERVER.checkShares() then
-							TriggerServerEvent("bucket:Toggle","Enter")
-							displayBarbershop(true)
+						if IsControlJustPressed(1,38) and vSERVER.CheckWanted() then
+							TriggerServerEvent("vRP:BucketClient","Enter")
+							OpenBarbershop(true)
 						end
 					end
 				end
@@ -226,6 +231,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Open")
 AddEventHandler("barbershop:Open",function()
-	TriggerServerEvent("bucket:Toggle","Enter")
-	displayBarbershop(true)
+	TriggerServerEvent("vRP:BucketClient","Enter")
+	OpenBarbershop(true)
 end)

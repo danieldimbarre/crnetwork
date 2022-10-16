@@ -1513,7 +1513,10 @@ function openTattooShop()
 
 	ClearAllPedProps(Ped)
 
-	TriggerServerEvent("bucket:Toggle","Enter")
+	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
+	vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+
+	TriggerServerEvent("vRP:BucketClient","Enter")
 	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos, model = Model })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1548,12 +1551,13 @@ end
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("close",function(Data,Callback)
-	TriggerServerEvent("bucket:Toggle","Exit")
+	TriggerServerEvent("vRP:BucketClient","Exit")
 	TriggerEvent("skinshop:updateTattoo")
 	RenderScriptCams(false,true,250,1,0)
 	vSERVER.updateTattoo(Tattoos)
 	SetNuiFocus(false,false)
 	DestroyCam(Cam,false)
+	vRP.removeObjects()
 	Cam = nil
 
 	Callback("Ok")
@@ -1597,7 +1601,7 @@ CreateThread(function()
 					if Distance <= 2 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and vSERVER.checkShares() and LocalPlayer["state"]["Network"] then
+						if IsControlJustPressed(1,38) and vSERVER.CheckWanted() and LocalPlayer["state"]["Network"] then
 							openTattooShop()
 						end
 					end

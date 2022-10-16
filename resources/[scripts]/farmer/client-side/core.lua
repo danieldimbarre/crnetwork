@@ -25,7 +25,7 @@ function InputTargetPosition(Number,v)
 				{
 					event = v["event"],
 					label = v["label"],
-					tunnel = "shopserver"
+					tunnel = "server"
 				}
 			}
 		})
@@ -40,7 +40,7 @@ function InputTargetPosition(Number,v)
 				{
 					event = v["event"],
 					label = v["label"],
-					tunnel = "shopserver"
+					tunnel = "server"
 				}
 			}
 		})

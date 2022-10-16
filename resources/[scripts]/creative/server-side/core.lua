@@ -60,12 +60,15 @@ AddEventHandler("creative:SyncBucket",function(Index)
 			Players[source] = nil
 		end
 
-		if List[Index]["Other"] then
+		if List[Index]["Route"] ~= 0 then
 			Players[source] = Index
 		end
 
-		Player(source)["state"]["Route"] = List[Index]["Route"]
-		SetPlayerRoutingBucket(source,List[Index]["Route"])
+		if Players[source] then
+			TriggerEvent("vRP:BucketServer",source,"Enter",List[Index]["Route"])
+		else
+			TriggerEvent("vRP:BucketServer",source,"Exit")
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

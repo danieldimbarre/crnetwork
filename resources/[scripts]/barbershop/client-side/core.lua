@@ -24,7 +24,6 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 	if Data["value"] then
 		OpenBarbershop(false)
 		SetNuiFocus(false,false)
-		vRP.stopAnim(false)
 		vSERVER.updateSkin(myClothes)
 		SendNUIMessage({ openBarbershop = false })
 		TriggerServerEvent("vRP:BucketClient","Exit")
@@ -142,10 +141,6 @@ function OpenBarbershop(Enabled)
 		end
 
 		SetPlayerInvincible(Ped,true)
-
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,0.4,0)
-		RenderScriptCams(false,false,0,1,0)
-		DestroyCam(cam,false)
 
 		if not DoesCamExist(cam) then
 			cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)

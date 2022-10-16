@@ -21,13 +21,10 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 	myFace = { tonumber(Data["fathers"]),tonumber(Data["kinship"]),tonumber(Data["eyecolor"]),tonumber(Data["skincolor"]),tonumber(Data["acne"]),tonumber(Data["stains"]),tonumber(Data["freckles"]),tonumber(Data["aging"]),tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintentisy"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintentisy"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),tonumber(Data["face06"]),tonumber(Data["face08"]),tonumber(Data["face09"]),tonumber(Data["face10"]),tonumber(Data["face12"]),tonumber(Data["face13"]),tonumber(Data["face14"]),tonumber(Data["face15"]),tonumber(Data["face16"]),tonumber(Data["face17"]),tonumber(Data["face19"]),tonumber(Data["mothers"]) }
 
 	if Data["value"] then
-		SetNuiFocus(false,false)
 		displayCreator(false)
-		SendNUIMessage({ openCreator = false })
-
-    	vRP.stopAnim(false)
-
+		SetNuiFocus(false,false)
 		vSERVER.updateFace(myFace)
+		SendNUIMessage({ openCreator = false })
 		TriggerEvent("skinshop:updateTattoo")
 	end
 
@@ -56,6 +53,9 @@ function displayCreator(enable)
 	local Ped = PlayerPedId()
 
 	if enable then
+		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
+		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+
 		SetEntityCoords(Ped,239.41,-1381.01,33.73 - 1,0,0,1)
 		SetEntityHeading(Ped,136.07)
 		SetFollowPedCamViewMode(0)
@@ -65,12 +65,8 @@ function displayCreator(enable)
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })
 		end
-
-		vRP.playAnim(false,{ "mp_sleep","bind_pose_180" },true)
 		
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,0.4,0)
-		RenderScriptCams(false,false,0,1,0)
-		DestroyCam(Cam,false)
+		SetPlayerInvincible(Ped,true)
 
 		if not DoesCamExist(Cam) then
 			Cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
@@ -80,10 +76,17 @@ function displayCreator(enable)
 			SetCamRot(Cam,0.0,0.0,GetEntityHeading(Ped) + 180)
 		end
 
+		local Coords = GetEntityCoords(Ped)
+		SetCamCoord(Cam,Coords["x"] + 0.2,Coords["y"] + 0.5,Coords["z"] + 0.7)
+		SetCamRot(Cam,0.0,0.0,150.0)
+
 		defaultCharacter()
 	else
 		RenderScriptCams(false,false,0,1,0)
+		SetPlayerInvincible(Ped,false)
 		DestroyCam(Cam,false)
+
+		vRP.removeObjects()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

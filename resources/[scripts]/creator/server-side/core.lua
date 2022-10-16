@@ -19,7 +19,6 @@ function Creative.updateFace(Face)
 		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Barbershop", dvalue = json.encode(Face) })
 		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Creator", dvalue = 1 })
 
-		Player(source)["state"]["Route"] = 0
-		SetPlayerRoutingBucket(source,0)
+		TriggerEvent("vRP:BucketServer",source,"Exit")
 	end
 end

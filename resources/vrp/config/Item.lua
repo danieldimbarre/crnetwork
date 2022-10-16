@@ -264,11 +264,11 @@ local List = {
 		["Weight"] = 0.75,
 		["Economy"] = 325
 	},
-	["medicpass"] = {
+	["paramedicpass"] = {
 		["Index"] = "medicbag",
 		["Name"] = "Vale - Médico",
 		["Description"] = "Leve até um médico para troca-lo.",
-		["Type"] = "Usável",
+		["Type"] = "Comum",
 		["Weight"] = 0.25,
 		["Economy"] = 0
 	},
@@ -284,15 +284,15 @@ local List = {
 		["Index"] = "mechanicpass",
 		["Name"] = "Vale - Mecânico",
 		["Description"] = "Leve até um mecânico para troca-lo.",
-		["Type"] = "Usável",
+		["Type"] = "Comum",
 		["Weight"] = 0.25,
 		["Economy"] = 0
 	},
-	["dessertspass"] = {
+	["uwucoffeepass"] = {
 		["Index"] = "foodpass",
 		["Name"] = "Vale - Uwu Café",
 		["Description"] = "Leve até o restaurante para troca-lo.",
-		["Type"] = "Usável",
+		["Type"] = "Comum",
 		["Weight"] = 0.25,
 		["Economy"] = 0
 	},
@@ -300,7 +300,7 @@ local List = {
 		["Index"] = "foodpass",
 		["Name"] = "Vale - Pizza This",
 		["Description"] = "Leve até o restaurante para troca-lo.",
-		["Type"] = "Usável",
+		["Type"] = "Comum",
 		["Weight"] = 0.25,
 		["Economy"] = 0
 	},
@@ -308,7 +308,7 @@ local List = {
 		["Index"] = "foodpass",
 		["Name"] = "Vale - BurgerShot",
 		["Description"] = "Leve até o restaurante para troca-lo.",
-		["Type"] = "Usável",
+		["Type"] = "Comum",
 		["Weight"] = 0.25,
 		["Economy"] = 0
 	},

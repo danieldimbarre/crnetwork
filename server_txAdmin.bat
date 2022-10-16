@@ -1,3 +1,3 @@
 @echo off
-"E:/FiveM/FXServer//FXServer.exe" +set serverProfile "default"
+"artifacts//FXServer.exe" +set serverProfile "default"
 pause

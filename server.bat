@@ -1,3 +1,3 @@
 @echo off
-"E:/FiveM/FXServer//FXServer.exe" +set onesync on +set onesync_population true +exec server.cfg
+"artifacts//FXServer.exe" +set onesync on +set onesync_population true +exec server.cfg
 pause

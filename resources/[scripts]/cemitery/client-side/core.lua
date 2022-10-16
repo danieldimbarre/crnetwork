@@ -132,7 +132,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("cemitery:finishBody")
 AddEventHandler("cemitery:finishBody",function()
-	TriggerServerEvent("inventory:makeProducts","cemitery")
+	TriggerEvent("inventory:MakeProducts","cemitery")
 	checkItem = checkItem + 1
 
 	if checkItem >= 5 then

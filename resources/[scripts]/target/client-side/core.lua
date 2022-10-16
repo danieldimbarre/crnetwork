@@ -312,96 +312,6 @@ CreateThread(function()
 		}
 	})
 
-	AddCircleZone("PackSend01",vec3(1175.0,2708.21,38.08),0.5,{
-		name = "PackMoney01",
-		heading = 3374176
-	},{
-		shop = "1",
-		Distance = 2.5,
-		options = {
-			{
-				event = "inventory:PackSend",
-				label = "Entregar Pacote",
-				tunnel = "shopserver"
-			}
-		}
-	})
-
-	AddCircleZone("PackSend02",vec3(-2961.15,482.92,15.69),0.5,{
-		name = "PackMoney02",
-		heading = 3374176
-	},{
-		shop = "2",
-		Distance = 2.5,
-		options = {
-			{
-				event = "inventory:PackSend",
-				label = "Entregar Pacote",
-				tunnel = "shopserver"
-			}
-		}
-	})
-
-	AddCircleZone("PackSend03",vec3(-1211.96,-331.97,37.78),0.5,{
-		name = "PackMoney03",
-		heading = 3374176
-	},{
-		shop = "3",
-		Distance = 2.5,
-		options = {
-			{
-				event = "inventory:PackSend",
-				label = "Entregar Pacote",
-				tunnel = "shopserver"
-			}
-		}
-	})
-
-	AddCircleZone("PackSend04",vec3(-351.37,-51.25,49.03),0.5,{
-		name = "PackMoney04",
-		heading = 3374176
-	},{
-		shop = "4",
-		Distance = 2.5,
-		options = {
-			{
-				event = "inventory:PackSend",
-				label = "Entregar Pacote",
-				tunnel = "shopserver"
-			}
-		}
-	})
-
-	AddCircleZone("PackSend05",vec3(313.76,-280.45,54.16),0.5,{
-		name = "PackMoney05",
-		heading = 3374176
-	},{
-		shop = "5",
-		Distance = 2.5,
-		options = {
-			{
-				event = "inventory:PackSend",
-				label = "Entregar Pacote",
-				tunnel = "shopserver"
-			}
-		}
-	})
-
-	AddCircleZone("PackSend06",vec3(149.44,-1042.06,29.37),0.5,{
-		name = "PackMoney06",
-		heading = 3374176
-	},{
-		shop = "6",
-		Distance = 2.5,
-		options = {
-			{
-				event = "inventory:PackSend",
-				label = "Entregar Pacote",
-				tunnel = "shopserver"
-			}
-		}
-	})
-
 	AddTargetModel({ -2007231801,1339433404,1694452750,1933174915,-462817101,-469694731,-164877493,486135101 },{
 		options = {
 			{
@@ -446,7 +356,7 @@ CreateThread(function()
 		Distance = 0.75,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Produzir",
 				tunnel = "products",
 				service = "paper"
@@ -552,7 +462,7 @@ CreateThread(function()
 	AddTargetModel({ -1691644768,-742198632 },{
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Encher",
 				tunnel = "products",
 				service = "emptybottle"
@@ -728,7 +638,7 @@ CreateThread(function()
 		Distance = 1.25,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Encher Copo",
 				tunnel = "products",
 				service = "burgershot1"
@@ -743,7 +653,7 @@ CreateThread(function()
 		Distance = 1.0,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Montar Lanche",
 				tunnel = "products",
 				service = "burgershot2"
@@ -758,7 +668,7 @@ CreateThread(function()
 		Distance = 1.25,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Montar Combo",
 				tunnel = "products",
 				service = "burgershot3"
@@ -773,7 +683,7 @@ CreateThread(function()
 		Distance = 1.25,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Encher Copo",
 				tunnel = "products",
 				service = "pizzathis1"
@@ -788,7 +698,7 @@ CreateThread(function()
 		Distance = 1.0,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Montar Lanche",
 				tunnel = "products",
 				service = "pizzathis2"
@@ -803,7 +713,7 @@ CreateThread(function()
 		Distance = 1.25,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Montar Combo",
 				tunnel = "products",
 				service = "pizzathis3"
@@ -818,7 +728,7 @@ CreateThread(function()
 		Distance = 1.25,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Encher Copo",
 				tunnel = "products",
 				service = "uwucoffee1"
@@ -833,7 +743,7 @@ CreateThread(function()
 		Distance = 1.0,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Montar Lanche",
 				tunnel = "products",
 				service = "uwucoffee2"
@@ -848,7 +758,7 @@ CreateThread(function()
 		Distance = 1.25,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Montar Combo",
 				tunnel = "products",
 				service = "uwucoffee3"
@@ -863,7 +773,7 @@ CreateThread(function()
 		Distance = 1.25,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Encher Copo",
 				tunnel = "products",
 				service = "beanmachine1"
@@ -878,7 +788,7 @@ CreateThread(function()
 		Distance = 1.0,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Montar Lanche",
 				tunnel = "products",
 				service = "beanmachine2"
@@ -893,7 +803,7 @@ CreateThread(function()
 		Distance = 1.25,
 		options = {
 			{
-				event = "inventory:makeProducts",
+				event = "inventory:MakeProducts",
 				label = "Montar Combo",
 				tunnel = "products",
 				service = "beanmachine3"

@@ -25,9 +25,9 @@ AddEventHandler("service:Toggle",function(Service)
 		local Permission = Split[1]
 
 		if vRP.HasPermission(Passport,Permission) then
-			vRP.ServiceLeave(source,Passport,Permission)
+			vRP.ServiceLeave(source,Passport,Permission,false)
 		elseif vRP.HasPermission(Passport,"wait"..Permission) then
-			vRP.ServiceEnter(source,Passport,Permission)
+			vRP.ServiceEnter(source,Passport,Permission,false)
 		end
 	end
 end)

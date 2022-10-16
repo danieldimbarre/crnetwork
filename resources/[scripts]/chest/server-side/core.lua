@@ -127,9 +127,9 @@ local OpenItens = {
 		["Open"] = "Mechanic",
 		["Table"] = {
 			{ ["Item"] = "advtoolbox", ["Amount"] = 1 },
-			{ ["Item"] = "toolbox", ["Amount"] = 1 },
-			{ ["Item"] = "tyres", ["Amount"] = 1 },
-			{ ["Item"] = "dollars", ["Amount"] = 1 }
+			{ ["Item"] = "toolbox", ["Amount"] = 2 },
+			{ ["Item"] = "tyres", ["Amount"] = 4 },
+			{ ["Item"] = "dollars", ["Amount"] = 200 }
 		}
 	},
 	["uwucoffeepass"] = {

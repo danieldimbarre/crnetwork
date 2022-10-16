@@ -4685,14 +4685,14 @@ Use = {
 				if OtherPassport then
 					if vRP.HasGroup(OtherPassport,"Police") then
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							vRP.ServiceLeave(ClosestPed,OtherPassport,"Police")
+							vRP.ServiceLeave(ClosestPed,OtherPassport,"Police",true)
 							TriggerClientEvent("Notify",source,"amarelo","Todas as comunicações foram retiradas.",5000)
 						end
 					end
 
 					if vRP.HasGroup(OtherPassport,"Paramedic") then
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							vRP.ServiceLeave(ClosestPed,OtherPassport,"Paramedic")
+							vRP.ServiceLeave(ClosestPed,OtherPassport,"Paramedic",true)
 							TriggerClientEvent("Notify",source,"amarelo","Todas as comunicações foram retiradas.",5000)
 						end
 					end

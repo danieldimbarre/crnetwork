@@ -2,6 +2,8 @@
 -- VRP
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
+local Proxy = module("vrp","lib/Proxy")
+vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -19,8 +21,8 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 	myClothes = { tonumber(Data["fathers"]),tonumber(Data["kinship"]),tonumber(Data["eyecolor"]),tonumber(Data["skincolor"]),tonumber(Data["acne"]),tonumber(Data["stains"]),tonumber(Data["freckles"]),tonumber(Data["aging"]),tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintentisy"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintentisy"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),tonumber(Data["face06"]),tonumber(Data["face08"]),tonumber(Data["face09"]),tonumber(Data["face10"]),tonumber(Data["face12"]),tonumber(Data["face13"]),tonumber(Data["face14"]),tonumber(Data["face15"]),tonumber(Data["face16"]),tonumber(Data["face17"]),tonumber(Data["face19"]),tonumber(Data["mothers"]) }
 
 	if Data["value"] then
+		OpenBarbershop(false)
 		SetNuiFocus(false,false)
-		displayBarbershop(false)
 		vSERVER.updateSkin(myClothes)
 		SendNUIMessage({ openBarbershop = false })
 		TriggerServerEvent("vRP:BucketClient","Exit")
@@ -111,12 +113,15 @@ AddEventHandler("barbershop:Apply",function(status)
 	SetPedFaceFeature(Ped,19,myClothes[40] * 0.1)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DISPLAYBARBERSHOP
+-- OPENBARBERSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function displayBarbershop(enable)
+function OpenBarbershop(Enabled)
 	local Ped = PlayerPedId()
 
-	if enable then
+	if Enabled then
+		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
+		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+
 		SetEntityHeading(PlayerPedId(),332.21)
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
@@ -137,13 +142,15 @@ function displayBarbershop(enable)
 			SetCamCoord(cam,GetEntityCoords(Ped))
 		end
 
-		local x,y,z = table.unpack(GetEntityCoords(Ped))
-		SetCamCoord(cam,x + 0.2,y + 0.5,z + 0.7)
+		local Coords = GetEntityCoords(Ped)
+		SetCamCoord(cam,Coords["x"] + 0.2,Coords["y"] + 0.5,Coords["z"] + 0.7)
 		SetCamRot(cam,0.0,0.0,150.0)
 	else
 		RenderScriptCams(false,false,0,1,0)
 		SetPlayerInvincible(Ped,false)
 		DestroyCam(cam,false)
+
+		vRP.removeObjects()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -188,7 +195,7 @@ CreateThread(function()
 
 						if IsControlJustPressed(1,38) and vSERVER.CheckWanted() then
 							TriggerServerEvent("vRP:BucketClient","Enter")
-							displayBarbershop(true)
+							OpenBarbershop(true)
 						end
 					end
 				end
@@ -212,5 +219,5 @@ end)
 RegisterNetEvent("barbershop:Open")
 AddEventHandler("barbershop:Open",function()
 	TriggerServerEvent("vRP:BucketClient","Enter")
-	displayBarbershop(true)
+	OpenBarbershop(true)
 end)

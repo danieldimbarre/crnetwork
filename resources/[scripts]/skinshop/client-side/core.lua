@@ -263,14 +263,17 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENMENU
 -----------------------------------------------------------------------------------------------------------------------------------------
-function openMenu(allowedMenus)
+function openMenu(Menus)
 	creatingCharacter = true
 	previousSkinData = json.encode(skinData)
 
 	GetMaxValues()
 
+	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
+	vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+
 	TriggerServerEvent("vRP:BucketClient","Enter")
-	SendNUIMessage({ action = "open", menus = allowedMenus, currentClothing = skinData })
+	SendNUIMessage({ action = "open", menus = Menus, currentClothing = skinData })
 
 	SetCursorLocation(0.9,0.25)
 	SetNuiFocus(true,true)
@@ -343,6 +346,8 @@ function closeMenu()
 	SendNUIMessage({ action = "close" })
 	RenderScriptCams(false,true,250,1,0)
 	DestroyCam(cam,false)
+
+	vRP.removeObjects()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- APPLYCLOTHINGS

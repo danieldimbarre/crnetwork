@@ -225,10 +225,6 @@ CreateThread(function()
 
 				local Vehicle = GetVehiclePedIsUsing(Ped)
 				if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-					if GetVehicleDirtLevel(Vehicle) ~= 0.0 then
-						SetVehicleDirtLevel(Vehicle,0.0)
-					end
-
 					local Speed = GetEntitySpeed(Vehicle) * 3.6
 					if Speed ~= TyreExplodes then
 						if (TyreExplodes - Speed) >= 125 then

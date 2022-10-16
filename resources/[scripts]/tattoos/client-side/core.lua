@@ -1172,6 +1172,9 @@ function openTattooShop()
 
 	ClearAllPedProps(Ped)
 
+	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
+	vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+
 	TriggerServerEvent("vRP:BucketClient","Enter")
 	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos })
 end
@@ -1213,6 +1216,7 @@ RegisterNUICallback("close",function(Data,Callback)
 	vSERVER.updateTattoo(Tattoos)
 	SetNuiFocus(false,false)
 	DestroyCam(Cam,false)
+	vRP.removeObjects()
 	Cam = nil
 
 	Callback("Ok")

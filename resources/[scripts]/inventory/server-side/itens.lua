@@ -178,7 +178,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 102, ["texture"] = 0, ["type"] = "backpack" }
-				vRP.SetSrvData("Exclusivas:"..Passport,Consult,true)
+				vRP.SetSrvData("Exclusivas:"..Passport,Consult)
 			end
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Mochila já possuída.",5000)
@@ -192,7 +192,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 101, ["texture"] = 0, ["type"] = "backpack" }
-				vRP.SetSrvData("Exclusivas:"..Passport,Consult,true)
+				vRP.SetSrvData("Exclusivas:"..Passport,Consult)
 			end
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Mochila já possuída.",5000)
@@ -206,7 +206,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 103, ["texture"] = 0, ["type"] = "backpack" }
-				vRP.SetSrvData("Exclusivas:"..Passport,Consult,true)
+				vRP.SetSrvData("Exclusivas:"..Passport,Consult)
 			end
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Mochila já possuída.",5000)
@@ -220,7 +220,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 104, ["texture"] = 0, ["type"] = "backpack" }
-				vRP.SetSrvData("Exclusivas:"..Passport,Consult,true)
+				vRP.SetSrvData("Exclusivas:"..Passport,Consult)
 			end
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Mochila já possuída.",5000)
@@ -234,7 +234,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 104, ["texture"] = 1, ["type"] = "backpack" }
-				vRP.SetSrvData("Exclusivas:"..Passport,Consult,true)
+				vRP.SetSrvData("Exclusivas:"..Passport,Consult)
 			end
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Mochila já possuída.",5000)
@@ -248,7 +248,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 104, ["texture"] = 2, ["type"] = "backpack" }
-				vRP.SetSrvData("Exclusivas:"..Passport,Consult,true)
+				vRP.SetSrvData("Exclusivas:"..Passport,Consult)
 			end
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Mochila já possuída.",5000)
@@ -262,7 +262,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 105, ["texture"] = 0, ["type"] = "backpack" }
-				vRP.SetSrvData("Exclusivas:"..Passport,Consult,true)
+				vRP.SetSrvData("Exclusivas:"..Passport,Consult)
 			end
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Mochila já possuída.",5000)
@@ -276,7 +276,7 @@ Use = {
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Consult[Name] = { ["id"] = 105, ["texture"] = 1, ["type"] = "backpack" }
-				vRP.SetSrvData("Exclusivas:"..Passport,Consult,true)
+				vRP.SetSrvData("Exclusivas:"..Passport,Consult)
 			end
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Mochila já possuída.",5000)
@@ -4480,11 +4480,11 @@ Use = {
 		if Keyboard then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				if Split[2] then
-					vRP.SetSrvData(Full,Keyboard[1],true)
+					vRP.SetSrvData(Full,Keyboard[1])
 					vRP.GenerateItem(Passport,Full,1,false)
 				else
 					local Time = os.time()
-					vRP.SetSrvData("notepad-"..Time,Keyboard[1],true)
+					vRP.SetSrvData("notepad-"..Time,Keyboard[1])
 					vRP.GenerateItem(Passport,"notepad-"..Time,1,false)
 				end
 			end

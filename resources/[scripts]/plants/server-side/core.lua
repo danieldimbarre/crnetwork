@@ -147,7 +147,7 @@ end
 -- SAVESERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("SaveServer",function(Silenced)
-	vRP.SetSrvData("Plants",Plants,true)
+	vRP.SetSrvData("Plants",Plants)
 
 	if not Silenced then
 		print("O resource Plants salvou os dados.")
@@ -157,7 +157,7 @@ end)
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	Plants = vRP.GetSrvData("Plants",true)
+	Plants = vRP.GetSrvData("Plants")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

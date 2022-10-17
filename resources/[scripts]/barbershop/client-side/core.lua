@@ -131,6 +131,7 @@ function OpenBarbershop(Enabled)
 	if Enabled then
 		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+		TriggerServerEvent("vRP:BucketClient","Enter")
 
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
@@ -202,7 +203,6 @@ CreateThread(function()
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) and vSERVER.CheckWanted() then
-							TriggerServerEvent("vRP:BucketClient","Enter")
 							OpenBarbershop(true)
 						end
 					end
@@ -226,6 +226,5 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Open")
 AddEventHandler("barbershop:Open",function()
-	TriggerServerEvent("vRP:BucketClient","Enter")
 	OpenBarbershop(true)
 end)

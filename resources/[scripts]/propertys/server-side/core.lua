@@ -126,8 +126,8 @@ AddEventHandler("propertys:Sell",function(Name)
 				TriggerClientEvent("dynamic:closeSystem",source)
 
 				if vRP.Request(source,"Deseja vender a propriedade?","Sim, concluir a venda","Não, mudeia de ideia") then
-					vRP.RemSrvData("Vault:"..Name,true)
-					vRP.RemSrvData("Fridge:"..Name,true)
+					vRP.RemSrvData("Vault:"..Name)
+					vRP.RemSrvData("Fridge:"..Name)
 
 					vRP.Query("propertys/Sell",{ name = Name })
 					TriggerClientEvent("Notify",source,"amarelo","Venda concluída.",5000)
@@ -195,7 +195,7 @@ AddEventHandler("propertys:Clothes",function(Mode)
 
 				if not Consult[Name] then
 					Consult[Name] = vSKINSHOP.getCustomization(source)
-					vRP.SetSrvData("Wardrobe:"..Passport,Consult,true)
+					vRP.SetSrvData("Wardrobe:"..Passport,Consult)
 					TriggerClientEvent("propertys:ClothesReset",source)
 					TriggerClientEvent("Notify",source,"verde","<b>"..Name.."</b> adicionado.",5000)
 				else
@@ -205,7 +205,7 @@ AddEventHandler("propertys:Clothes",function(Mode)
 		elseif Split[1] == "delete" then
 			if Consult[Name] ~= nil then
 				Consult[Name] = nil
-				vRP.SetSrvData("Wardrobe:"..Passport,Consult,true)
+				vRP.SetSrvData("Wardrobe:"..Passport,Consult)
 				TriggerClientEvent("propertys:ClothesReset",source)
 				TriggerClientEvent("Notify",source,"verde","<b>"..Name.."</b> removido.",5000)
 			else

@@ -1204,7 +1204,7 @@ CreateThread(function()
 							soundScanner = 250
 
 							if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
-								TriggerServerEvent("inventory:makeProducts","scanner")
+								TriggerEvent("inventory:MakeProducts","scanner")
 
 								local rand = math.random(#scanCoords)
 								scanTable[k] = scanCoords[rand]

@@ -24,7 +24,7 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 		OpenBarbershop(false)
 		SetNuiFocus(false,false)
 		vSERVER.updateSkin(myClothes)
-		SendNUIMessage({ openBarbershop = false })
+		SendNUIMessage({ Open = false })
 		TriggerServerEvent("vRP:BucketClient","Exit")
 	end
 
@@ -121,11 +121,12 @@ function OpenBarbershop(Enabled)
 	if Enabled then
 		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+		TriggerServerEvent("vRP:BucketClient","Enter")
 
 		SetEntityHeading(PlayerPedId(),332.21)
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
-		SendNUIMessage({ openBarbershop = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2) - 1, fathers = myClothes[1], mothers = myClothes[41], kinship = myClothes[2], eyecolor = myClothes[3], skincolor = myClothes[4], acne = myClothes[5], stains = myClothes[6], freckles = myClothes[7], aging = myClothes[8], hair = myClothes[9], haircolor = myClothes[10], haircolor2 = myClothes[11], makeup = myClothes[12], makeupintensity = myClothes[13], makeupcolor = myClothes[14], lipstick = myClothes[15], lipstickintensity = myClothes[16], lipstickcolor = myClothes[17], eyebrow = myClothes[18], eyebrowintensity = myClothes[19], eyebrowcolor = myClothes[20], beard = myClothes[21], beardintentisy = myClothes[22], beardcolor = myClothes[23], blush = myClothes[24], blushintentisy = myClothes[25], blushcolor = myClothes[26], face00 = myClothes[27], face01 = myClothes[28], face04 = myClothes[29], face06 = myClothes[30], face08 = myClothes[31], face09 = myClothes[32], face10 = myClothes[33], face12 = myClothes[34], face13 = myClothes[35], face14 = myClothes[36], face15 = myClothes[37], face16 = myClothes[38], face17 = myClothes[39], face19 = myClothes[40] })
+		SendNUIMessage({ Open = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2) - 1, fathers = myClothes[1], mothers = myClothes[41], kinship = myClothes[2], eyecolor = myClothes[3], skincolor = myClothes[4], acne = myClothes[5], stains = myClothes[6], freckles = myClothes[7], aging = myClothes[8], hair = myClothes[9], haircolor = myClothes[10], haircolor2 = myClothes[11], makeup = myClothes[12], makeupintensity = myClothes[13], makeupcolor = myClothes[14], lipstick = myClothes[15], lipstickintensity = myClothes[16], lipstickcolor = myClothes[17], eyebrow = myClothes[18], eyebrowintensity = myClothes[19], eyebrowcolor = myClothes[20], beard = myClothes[21], beardintentisy = myClothes[22], beardcolor = myClothes[23], blush = myClothes[24], blushintentisy = myClothes[25], blushcolor = myClothes[26], face00 = myClothes[27], face01 = myClothes[28], face04 = myClothes[29], face06 = myClothes[30], face08 = myClothes[31], face09 = myClothes[32], face10 = myClothes[33], face12 = myClothes[34], face13 = myClothes[35], face14 = myClothes[36], face15 = myClothes[37], face16 = myClothes[38], face17 = myClothes[39], face19 = myClothes[40] })
 
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })
@@ -194,7 +195,6 @@ CreateThread(function()
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) and vSERVER.CheckWanted() then
-							TriggerServerEvent("vRP:BucketClient","Enter")
 							OpenBarbershop(true)
 						end
 					end
@@ -218,6 +218,5 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Open")
 AddEventHandler("barbershop:Open",function()
-	TriggerServerEvent("vRP:BucketClient","Enter")
 	OpenBarbershop(true)
 end)

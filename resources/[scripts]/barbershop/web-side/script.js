@@ -56,7 +56,7 @@ $(document).ready(function() {
 
         updateSlider();
 
-        if (event.data.openBarbershop == true) {
+        if (event.data.Open == true) {
             $(".openBarbershop").css("display", "flex");
 
             $('.input .label-value').each(function() {
@@ -66,7 +66,7 @@ $(document).ready(function() {
             });
         }
 
-        if (event.data.openBarbershop == false) {
+        if (event.data.Open == false) {
             $(".openBarbershop").css("display", "none");
         }
     });

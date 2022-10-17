@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `propertys` (
   `Serial` varchar(10) NOT NULL,
   `Vault` int(6) NOT NULL DEFAULT 1,
   `Fridge` int(6) NOT NULL DEFAULT 1,
-  `Garage` longtext NOT NULL,
+  `Garage` longtext NOT NULL DEFAULT '{}',
   PRIMARY KEY (`id`),
   KEY `id` (`id`),
   KEY `Passport` (`Passport`),

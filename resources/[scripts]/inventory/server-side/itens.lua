@@ -1065,7 +1065,7 @@ Use = {
 									TriggerClientEvent("Progress",source,"Aplicando",120000)
 
 									repeat
-										if os.time() >= parseInt(Active[Passport]) thens
+										if os.time() >= parseInt(Active[Passport]) then
 											Active[Passport] = nil
 											vRPC.removeObjects(source)
 											Player(source)["state"]["Buttons"] = false

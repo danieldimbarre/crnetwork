@@ -25,7 +25,7 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 		OpenBarbershop(false)
 		SetNuiFocus(false,false)
 		vSERVER.updateSkin(myClothes)
-		SendNUIMessage({ openBarbershop = false })
+		SendNUIMessage({ Open = false })
 		TriggerServerEvent("vRP:BucketClient","Exit")
 	end
 
@@ -135,7 +135,7 @@ function OpenBarbershop(Enabled)
 
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
-		SendNUIMessage({ openBarbershop = true,hair = myClothes[9],haircolor = myClothes[10],haircolor2 = myClothes[11],eyebrow = myClothes[18],eyebrowintensity = myClothes[19],eyebrowcolor = myClothes[20],beard = myClothes[21],beardintensity = myClothes[22],beardcolor = myClothes[23],blush = myClothes[24],blushintensity = myClothes[25],blushcolor = myClothes[26],lipstick = myClothes[15],lipstickintensity = myClothes[16],lipstickcolor = myClothes[17],makeup = myClothes[12],makeupintensity = myClothes[13],makeupcolor = myClothes[14],maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1,maxHaircolors = GetNumHairColors()-1,maxMakeupcolor = GetNumMakeupColors()-1,maxBeard = GetPedHeadOverlayNum(1)-1,maxEyebrow = GetPedHeadOverlayNum(2)-1,maxMakeup = GetPedHeadOverlayNum(4)-1,maxBlush = GetPedHeadOverlayNum(5)-1,maxLipstick = GetPedHeadOverlayNum(8)-1 })
+		SendNUIMessage({ Open = true,hair = myClothes[9],haircolor = myClothes[10],haircolor2 = myClothes[11],eyebrow = myClothes[18],eyebrowintensity = myClothes[19],eyebrowcolor = myClothes[20],beard = myClothes[21],beardintensity = myClothes[22],beardcolor = myClothes[23],blush = myClothes[24],blushintensity = myClothes[25],blushcolor = myClothes[26],lipstick = myClothes[15],lipstickintensity = myClothes[16],lipstickcolor = myClothes[17],makeup = myClothes[12],makeupintensity = myClothes[13],makeupcolor = myClothes[14],maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1,maxHaircolors = GetNumHairColors()-1,maxMakeupcolor = GetNumMakeupColors()-1,maxBeard = GetPedHeadOverlayNum(1)-1,maxEyebrow = GetPedHeadOverlayNum(2)-1,maxMakeup = GetPedHeadOverlayNum(4)-1,maxBlush = GetPedHeadOverlayNum(5)-1,maxLipstick = GetPedHeadOverlayNum(8)-1 })
 
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })

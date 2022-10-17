@@ -28,8 +28,7 @@ GlobalState["Plates"] = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.ServerVehicle(Model,x,y,z,Heading,Plate,Nitrox,Doors,Body,Fuel)
 	local Randomize = 0
-	local Type = VehicleType(Model)
-	local Vehicle = CreateVehicleServerSetter(Model,Type,x,y,z,Heading)
+	local Vehicle = CreateVehicle(Model,x,y,z,Heading,true,true)
 
 	while not DoesEntityExist(Vehicle) and Randomize <= 1000 do
 		Randomize = Randomize + 1
@@ -653,14 +652,11 @@ RegisterCommand("car",function(source,Message)
 			vCLIENT.CreateVehicle(-1,VehicleName,Network,1000,1000,nil,false,false)
 			Spawn[Plate] = { Passport,VehicleName,Network }
 			TriggerEvent("engine:tryFuel",Plate,100)
+			SetPedIntoVehicle(Ped,Vehicle,-1)
 
 			local Plates = GlobalState["Plates"]
 			Plates[Plate] = Passport
 			GlobalState:set("Plates",Plates,true)
-
-			Wait(100)
-
-			SetPedIntoVehicle(Ped,Vehicle,-1)
 		end
 	end
 end)

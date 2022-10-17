@@ -13,15 +13,14 @@ vSERVER = Tunnel.getInterface("skinshop")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local cam = -1
-local skinData = {}
-local animation = false
-local previousSkinData = {}
-local creatingCharacter = false
+local Cam = -1
+local Dataset = {}
+local Previous = {}
+local Animation = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SKINDATA
+-- DATASET
 -----------------------------------------------------------------------------------------------------------------------------------------
-local skinData = {
+local Dataset = {
 	["pants"] = { item = 0, texture = 0 },
 	["arms"] = { item = 0, texture = 0 },
 	["tshirt"] = { item = 1, texture = 0 },
@@ -39,24 +38,44 @@ local skinData = {
 	["decals"] = { item = 0, texture = 0 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DATACATEGORY
+-----------------------------------------------------------------------------------------------------------------------------------------
+local DataCategory = {
+	["arms"] = { type = "variation", id = 3 },
+	["backpack"] = { type = "variation", id = 5 },
+	["tshirt"] = { type = "variation", id = 8 },
+	["torso"] = { type = "variation", id = 11 },
+	["pants"] = { type = "variation", id = 4 },
+	["vest"] = { type = "variation", id = 9 },
+	["shoes"] = { type = "variation", id = 6 },
+	["mask"] = { type = "variation", id = 1 },
+	["hat"] = { type = "prop", id = 0 },
+	["glass"] = { type = "prop", id = 1 },
+	["ear"] = { type = "prop", id = 2 },
+	["watch"] = { type = "prop", id = 6 },
+	["bracelet"] = { type = "prop", id = 7 },
+	["accessory"] = { type = "variation", id = 7 },
+	["decals"] = { type = "variation", id = 10 }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP:APPLY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("skinshop:Apply")
 AddEventHandler("skinshop:Apply",function(status)
 	if status["pants"] ~= nil then
-		skinData = status
+		Dataset = status
 	end
 
-	ApplyClothings(skinData)
-	vSERVER.updateClothes(skinData)
+	ApplyDataset(Dataset)
+	vSERVER.updateClothes(Dataset)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATEROUPAS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("updateRoupas")
 AddEventHandler("updateRoupas",function(custom)
-	skinData = custom
-	ApplyClothings(custom)
+	Dataset = custom
+	ApplyDataset(custom)
 	vSERVER.updateClothes(custom)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -64,7 +83,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("skinshop:updateTattoo")
 AddEventHandler("skinshop:updateTattoo",function()
-	ApplyClothings(skinData)
+	ApplyDataset(Dataset)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOPS
@@ -105,8 +124,8 @@ local Skinshops = {
 	{ -586.89,-1049.92,22.34 }, -- Uwu Café
 	{ 300.2,-598.85,43.29 }, -- Hospital Sul
 	{ -256.56,6327.32,32.42 }, -- Hospital Norte
-	{ 153.16,-3011.05,7.04 }, -- Mecânica Sul
-	{ 550.21,-182.36,54.49 }, -- Mecânica Sul
+	{ 841.11,-824.54,26.34 }, -- Mecânica Sul
+	{ 801.62,-830.37,26.34 }, -- Mecânica Sul
 	{ 810.31,-760.23,31.26 } -- Pizza This
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -129,10 +148,10 @@ CreateThread(function()
 		local TimeDistance = 999
 		if LocalPlayer["state"]["Route"] < 900000 then
 			local Ped = PlayerPedId()
-			if not IsPedInAnyVehicle(Ped) and not creatingCharacter then
+			if not IsPedInAnyVehicle(Ped) then
 				local Coords = GetEntityCoords(Ped)
 
-				for k,v in pairs(Skinshops) do
+				for _,v in pairs(Skinshops) do
 					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 					if Distance <= 2 then
 						TimeDistance = 1
@@ -158,7 +177,7 @@ RegisterNetEvent("skinshop:openShop")
 AddEventHandler("skinshop:openShop",function()
 	TriggerEvent("dynamic:closeSystem")
 
-	if not creatingCharacter and vSERVER.CheckWanted() then
+	if vSERVER.CheckWanted() then
 		openMenu({
 			{ menu = "character", label = "Roupas", selected = true },
 			{ menu = "accessoires", label = "Utilidades", selected = false }
@@ -169,9 +188,9 @@ end)
 -- RESETOUTFIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("resetOutfit",function(Data,Callback)
-	ApplyClothings(json.decode(previousSkinData))
-	skinData = json.decode(previousSkinData)
-	previousSkinData = {}
+	ApplyDataset(json.decode(Previous))
+	Dataset = json.decode(Previous)
+	Previous = {}
 
 	Callback("Ok")
 end)
@@ -180,8 +199,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("rotateRight",function(Data,Callback)
 	local Ped = PlayerPedId()
-	local heading = GetEntityHeading(Ped)
-	SetEntityHeading(Ped,heading + 30)
+	local Heading = GetEntityHeading(Ped)
+	SetEntityHeading(Ped,Heading + 30)
 
 	Callback("Ok")
 end)
@@ -196,30 +215,10 @@ RegisterNUICallback("rotateLeft",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CLOTHINGCATEGORYS
+-- MAXVALUES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local clothingCategorys = {
-	["arms"] = { type = "variation", id = 3 },
-	["backpack"] = { type = "variation", id = 5 },
-	["tshirt"] = { type = "variation", id = 8 },
-	["torso"] = { type = "variation", id = 11 },
-	["pants"] = { type = "variation", id = 4 },
-	["vest"] = { type = "variation", id = 9 },
-	["shoes"] = { type = "variation", id = 6 },
-	["mask"] = { type = "variation", id = 1 },
-	["hat"] = { type = "prop", id = 0 },
-	["glass"] = { type = "prop", id = 1 },
-	["ear"] = { type = "prop", id = 2 },
-	["watch"] = { type = "prop", id = 6 },
-	["bracelet"] = { type = "prop", id = 7 },
-	["accessory"] = { type = "variation", id = 7 },
-	["decals"] = { type = "variation", id = 10 }
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- GETMAXVALUES
------------------------------------------------------------------------------------------------------------------------------------------
-function GetMaxValues()
-	maxModelValues = {
+function MaxValues()
+	local MaxValues = {
 		["backpack"] = { type = "character", item = 0, texture = 0 },
 		["arms"] = { type = "character", item = 0, texture = 0 },
 		["tshirt"] = { type = "character", item = 0, texture = 0 },
@@ -238,166 +237,127 @@ function GetMaxValues()
 	}
 
 	local Ped = PlayerPedId()
-	for k,v in pairs(clothingCategorys) do
+	for Index,v in pairs(DataCategory) do
 		if v["type"] == "variation" then
-			maxModelValues[k]["item"] = GetNumberOfPedDrawableVariations(Ped,v["id"]) - 1
-			maxModelValues[k]["texture"] = GetNumberOfPedTextureVariations(Ped,v["id"],GetPedDrawableVariation(Ped,v["id"])) - 1
+			MaxValues[Index]["item"] = GetNumberOfPedDrawableVariations(Ped,v["id"]) - 1
+			MaxValues[Index]["texture"] = GetNumberOfPedTextureVariations(Ped,v["id"],GetPedDrawableVariation(Ped,v["id"])) - 1
 
-			if maxModelValues[k]["texture"] <= 0 then
-				maxModelValues[k]["texture"] = 0
+			if MaxValues[Index]["texture"] <= 0 then
+				MaxValues[Index]["texture"] = 0
 			end
 		end
 
 		if v["type"] == "prop" then
-			maxModelValues[k]["item"] = GetNumberOfPedPropDrawableVariations(Ped,v["id"]) - 1
-			maxModelValues[k]["texture"] = GetNumberOfPedPropTextureVariations(Ped,v["id"],GetPedPropIndex(Ped,v["id"])) - 1
+			MaxValues[Index]["item"] = GetNumberOfPedPropDrawableVariations(Ped,v["id"]) - 1
+			MaxValues[Index]["texture"] = GetNumberOfPedPropTextureVariations(Ped,v["id"],GetPedPropIndex(Ped,v["id"])) - 1
 
-			if maxModelValues[k]["texture"] <= 0 then
-				maxModelValues[k]["texture"] = 0
+			if MaxValues[Index]["texture"] <= 0 then
+				MaxValues[Index]["texture"] = 0
 			end
 		end
 	end
 
-	SendNUIMessage({ action = "updateMax", maxValues = maxModelValues })
+	SendNUIMessage({ action = "updateMax", maxValues = MaxValues })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENMENU
 -----------------------------------------------------------------------------------------------------------------------------------------
 function openMenu(Menus)
-	creatingCharacter = true
-	previousSkinData = json.encode(skinData)
-
-	GetMaxValues()
+	MaxValues()
 
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 	vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
 
+	Previous = json.encode(Dataset)
 	TriggerServerEvent("vRP:BucketClient","Enter")
-	SendNUIMessage({ action = "open", menus = Menus, currentClothing = skinData })
+	SendNUIMessage({ action = "open", menus = Menus, currentClothing = Dataset })
 
-	SetCursorLocation(0.9,0.25)
 	SetNuiFocus(true,true)
 
-	enableCam()
+	CamActive()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ENABLECAM
+-- CAMACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function enableCam()
-	local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,2.0,0)
-	RenderScriptCams(false,false,0,1,0)
-	DestroyCam(cam,false)
-
-	if not DoesCamExist(cam) then
-		cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-		SetCamActive(cam,true)
-		RenderScriptCams(true,false,0,true,true)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
-		SetCamRot(cam,0.0,0.0,GetEntityHeading(PlayerPedId()) + 180)
+function CamActive()
+	if DoesCamExist(Cam) then
+		RenderScriptCams(false,false,0,1,0)
+		DestroyCam(Cam,false)
 	end
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- ROTATECAM
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("rotateCam",function(Data,Callback)
+
 	local Ped = PlayerPedId()
-	local rotType = Data["type"]
+	local Heading = GetEntityHeading(Ped)
 	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
 
-	if rotType == "left" then
-		SetEntityHeading(Ped,GetEntityHeading(Ped) - 10)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
-		SetCamRot(cam,0.0,0.0,GetEntityHeading(Ped) + 180)
-	else
-		SetEntityHeading(Ped,GetEntityHeading(Ped) + 10)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
-		SetCamRot(cam,0.0,0.0,GetEntityHeading(Ped) + 180)
-	end
-
-	Callback("Ok")
-end)
+	Cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
+	SetCamActive(Cam,true)
+	RenderScriptCams(true,false,0,true,true)
+	SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
+	SetCamRot(Cam,0.0,0.0,Heading + 180)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETUPCAM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("setupCam",function(Data,Callback)
-	local value = Data["value"]
-
-	if value == 1 then
+	if Data["value"] == 1 then
 		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,0.75,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
-	elseif value == 2 then
+		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
+	elseif Data["value"] == 2 then
 		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,1.0,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
-	elseif value == 3 then
+		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
+	elseif Data["value"] == 3 then
 		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,1.0,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
+		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
 	else
 		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,2.0,0)
-		SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
+		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
 	end
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CLOSEMENU
+-- APPLYDATASET
 -----------------------------------------------------------------------------------------------------------------------------------------
-function closeMenu()
-	TriggerServerEvent("vRP:BucketClient","Exit")
-	SendNUIMessage({ action = "close" })
-	RenderScriptCams(false,true,250,1,0)
-	DestroyCam(cam,false)
-
-	vRP.removeObjects()
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- APPLYCLOTHINGS
------------------------------------------------------------------------------------------------------------------------------------------
-function ApplyClothings(data)
+function ApplyDataset(Data)
 	local Ped = PlayerPedId()
 
-	if not data["backpack"] then
-		data["backpack"] = {}
-		data["backpack"]["item"] = 0
-		data["backpack"]["texture"] = 0
-	end
+	SetPedComponentVariation(Ped,4,Data["pants"]["item"],Data["pants"]["texture"],1)
+	SetPedComponentVariation(Ped,3,Data["arms"]["item"],Data["arms"]["texture"],1)
+	SetPedComponentVariation(Ped,5,Data["backpack"]["item"],Data["backpack"]["texture"],1)
+	SetPedComponentVariation(Ped,8,Data["tshirt"]["item"],Data["tshirt"]["texture"],1)
+	SetPedComponentVariation(Ped,9,Data["vest"]["item"],Data["vest"]["texture"],1)
+	SetPedComponentVariation(Ped,11,Data["torso"]["item"],Data["torso"]["texture"],1)
+	SetPedComponentVariation(Ped,6,Data["shoes"]["item"],Data["shoes"]["texture"],1)
+	SetPedComponentVariation(Ped,1,Data["mask"]["item"],Data["mask"]["texture"],1)
+	SetPedComponentVariation(Ped,10,Data["decals"]["item"],Data["decals"]["texture"],1)
+	SetPedComponentVariation(Ped,7,Data["accessory"]["item"],Data["accessory"]["texture"],1)
 
-	SetPedComponentVariation(Ped,4,data["pants"]["item"],data["pants"]["texture"],1)
-	SetPedComponentVariation(Ped,3,data["arms"]["item"],data["arms"]["texture"],1)
-	SetPedComponentVariation(Ped,5,data["backpack"]["item"],data["backpack"]["texture"],1)
-	SetPedComponentVariation(Ped,8,data["tshirt"]["item"],data["tshirt"]["texture"],1)
-	SetPedComponentVariation(Ped,9,data["vest"]["item"],data["vest"]["texture"],1)
-	SetPedComponentVariation(Ped,11,data["torso"]["item"],data["torso"]["texture"],1)
-	SetPedComponentVariation(Ped,6,data["shoes"]["item"],data["shoes"]["texture"],1)
-	SetPedComponentVariation(Ped,1,data["mask"]["item"],data["mask"]["texture"],1)
-	SetPedComponentVariation(Ped,10,data["decals"]["item"],data["decals"]["texture"],1)
-	SetPedComponentVariation(Ped,7,data["accessory"]["item"],data["accessory"]["texture"],1)
-
-	if data["hat"]["item"] ~= -1 and data["hat"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,0,data["hat"]["item"],data["hat"]["texture"],1)
+	if Data["hat"]["item"] ~= -1 and Data["hat"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,0,Data["hat"]["item"],Data["hat"]["texture"],1)
 	else
 		ClearPedProp(Ped,0)
 	end
 
-	if data["glass"]["item"] ~= -1 and data["glass"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,1,data["glass"]["item"],data["glass"]["texture"],1)
+	if Data["glass"]["item"] ~= -1 and Data["glass"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,1,Data["glass"]["item"],Data["glass"]["texture"],1)
 	else
 		ClearPedProp(Ped,1)
 	end
 
-	if data["ear"]["item"] ~= -1 and data["ear"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,2,data["ear"]["item"],data["ear"]["texture"],1)
+	if Data["ear"]["item"] ~= -1 and Data["ear"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,2,Data["ear"]["item"],Data["ear"]["texture"],1)
 	else
 		ClearPedProp(Ped,2)
 	end
 
-	if data["watch"]["item"] ~= -1 and data["watch"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,6,data["watch"]["item"],data["watch"]["texture"],1)
+	if Data["watch"]["item"] ~= -1 and Data["watch"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,6,Data["watch"]["item"],Data["watch"]["texture"],1)
 	else
 		ClearPedProp(Ped,6)
 	end
 
-	if data["bracelet"]["item"] ~= -1 and data["bracelet"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,7,data["bracelet"]["item"],data["bracelet"]["texture"],1)
+	if Data["bracelet"]["item"] ~= -1 and Data["bracelet"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,7,Data["bracelet"]["item"],Data["bracelet"]["texture"],1)
 	else
 		ClearPedProp(Ped,7)
 	end
@@ -406,10 +366,14 @@ end
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("close",function(Data,Callback)
-	RenderScriptCams(false,true,250,1,0)
-	creatingCharacter = false
+	if DoesCamExist(Cam) then
+		RenderScriptCams(false,true,250,1,0)
+		DestroyCam(Cam,false)
+	end
+
+	TriggerServerEvent("vRP:BucketClient","Exit")
 	SetNuiFocus(false,false)
-	DestroyCam(cam,false)
+	vRP.removeObjects()
 
 	Callback("Ok")
 end)
@@ -417,7 +381,7 @@ end)
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSkin",function(Data,Callback)
-	ChangeVariation(Data)
+	ChangeDataset(Data)
 
 	Callback("Ok")
 end)
@@ -425,166 +389,163 @@ end)
 -- UPDATESKINONINPUT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSkinOnInput",function(Data,Callback)
-	ChangeVariation(Data)
+	ChangeDataset(Data)
 
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHANGEVARIATION
+-- CHANGEDATASET
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ChangeVariation(data)
+function ChangeDataset(Data)
 	local Ped = PlayerPedId()
-	local types = data["type"]
-	local item = data["articleNumber"]
-	local category = data["clothingType"]
+	local Variation = Data["articleNumber"]
 
-	if category == "pants" then
-		if types == "item" then
-			SetPedComponentVariation(Ped,4,item,0,1)
-			skinData["pants"]["item"] = item
-		elseif types == "texture" then
-			SetPedComponentVariation(Ped,4,GetPedDrawableVariation(Ped,4),item,1)
-			skinData["pants"]["texture"] = item
+	if Data["clothingType"] == "pants" then
+		if Data["types"] == "item" then
+			SetPedComponentVariation(Ped,4,Variation,0,1)
+			Dataset["pants"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedComponentVariation(Ped,4,GetPedDrawableVariation(Ped,4),Variation,1)
+			Dataset["pants"]["texture"] = Variation
 		end
-	elseif category == "arms" then
-		if types == "item" then
-			SetPedComponentVariation(Ped,3,item,0,1)
-			skinData["arms"]["item"] = item
-		elseif types == "texture" then
-			SetPedComponentVariation(Ped,3,GetPedDrawableVariation(Ped,3),item,1)
-			skinData["arms"]["texture"] = item
+	elseif Data["clothingType"] == "arms" then
+		if Data["types"] == "item" then
+			SetPedComponentVariation(Ped,3,Variation,0,1)
+			Dataset["arms"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedComponentVariation(Ped,3,GetPedDrawableVariation(Ped,3),Variation,1)
+			Dataset["arms"]["texture"] = Variation
 		end
-	elseif category == "tshirt" then
-		if types == "item" then
-			SetPedComponentVariation(Ped,8,item,0,1)
-			skinData["tshirt"]["item"] = item
-		elseif types == "texture" then
-			SetPedComponentVariation(Ped,8,GetPedDrawableVariation(Ped,8),item,1)
-			skinData["tshirt"]["texture"] = item
+	elseif Data["clothingType"] == "tshirt" then
+		if Data["types"] == "item" then
+			SetPedComponentVariation(Ped,8,Variation,0,1)
+			Dataset["tshirt"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedComponentVariation(Ped,8,GetPedDrawableVariation(Ped,8),Variation,1)
+			Dataset["tshirt"]["texture"] = Variation
 		end
-	elseif category == "vest" then
-		if types == "item" then
-			SetPedComponentVariation(Ped,9,item,0,1)
-			skinData["vest"]["item"] = item
-		elseif types == "texture" then
-			SetPedComponentVariation(Ped,9,skinData["vest"]["item"],item,1)
-			skinData["vest"]["texture"] = item
+	elseif Data["clothingType"] == "vest" then
+		if Data["types"] == "item" then
+			SetPedComponentVariation(Ped,9,Variation,0,1)
+			Dataset["vest"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedComponentVariation(Ped,9,Dataset["vest"]["item"],Variation,1)
+			Dataset["vest"]["texture"] = Variation
 		end
-	elseif category == "decals" then
-		if types == "item" then
-			SetPedComponentVariation(Ped,10,item,0,1)
-			skinData["decals"]["item"] = item
-		elseif types == "texture" then
-			SetPedComponentVariation(Ped,10,skinData["decals"]["item"],item,1)
-			skinData["decals"]["texture"] = item
+	elseif Data["clothingType"] == "decals" then
+		if Data["types"] == "item" then
+			SetPedComponentVariation(Ped,10,Variation,0,1)
+			Dataset["decals"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedComponentVariation(Ped,10,Dataset["decals"]["item"],Variation,1)
+			Dataset["decals"]["texture"] = Variation
 		end
-	elseif category == "accessory" then
-		if types == "item" then
-			SetPedComponentVariation(Ped,7,item,0,1)
-			skinData["accessory"]["item"] = item
-		elseif types == "texture" then
-			SetPedComponentVariation(Ped,7,skinData["accessory"]["item"],item,1)
-			skinData["accessory"]["texture"] = item
+	elseif Data["clothingType"] == "accessory" then
+		if Data["types"] == "item" then
+			SetPedComponentVariation(Ped,7,Variation,0,1)
+			Dataset
+			["accessory"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedComponentVariation(Ped,7,Dataset["accessory"]["item"],Variation,1)
+			Dataset["accessory"]["texture"] = Variation
 		end
-	elseif category == "torso" then
-		if types == "item" then
-			SetPedComponentVariation(Ped,11,item,0,1)
-			skinData["torso"]["item"] = item
-		elseif types == "texture" then
-			SetPedComponentVariation(Ped,11,GetPedDrawableVariation(Ped,11),item,1)
-			skinData["torso"]["texture"] = item
+	elseif Data["clothingType"] == "torso" then
+		if Data["types"] == "item" then
+			SetPedComponentVariation(Ped,11,Variation,0,1)
+			Dataset["torso"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedComponentVariation(Ped,11,GetPedDrawableVariation(Ped,11),Variation,1)
+			Dataset["torso"]["texture"] = Variation
 		end
-	elseif category == "shoes" then
-		if types == "item" then
-			SetPedComponentVariation(Ped,6,item,0,1)
-			skinData["shoes"]["item"] = item
-		elseif types == "texture" then
-			SetPedComponentVariation(Ped,6,GetPedDrawableVariation(Ped,6),item,1)
-			skinData["shoes"]["texture"] = item
+	elseif Data["clothingType"] == "shoes" then
+		if Data["types"] == "item" then
+			SetPedComponentVariation(Ped,6,Variation,0,1)
+			Dataset["shoes"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedComponentVariation(Ped,6,GetPedDrawableVariation(Ped,6),Variation,1)
+			Dataset["shoes"]["texture"] = Variation
 		end
-	elseif category == "mask" then
-		if types == "item" then
-			SetPedComponentVariation(Ped,1,item,0,1)
-			skinData["mask"]["item"] = item
-		elseif types == "texture" then
-			SetPedComponentVariation(Ped,1,GetPedDrawableVariation(Ped,1),item,1)
-			skinData["mask"]["texture"] = item
+	elseif Data["clothingType"] == "mask" then
+		if Data["types"] == "item" then
+			SetPedComponentVariation(Ped,1,Variation,0,1)
+			Dataset["mask"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedComponentVariation(Ped,1,GetPedDrawableVariation(Ped,1),Variation,1)
+			Dataset["mask"]["texture"] = Variation
 		end
-	elseif category == "hat" then
-		if types == "item" then
-			if item ~= -1 then
-				SetPedPropIndex(Ped,0,item,skinData["hat"]["texture"],1)
+	elseif Data["clothingType"] == "hat" then
+		if Data["types"] == "item" then
+			if Variation ~= -1 then
+				SetPedPropIndex(Ped,0,Variation,Dataset["hat"]["texture"],1)
 			else
 				ClearPedProp(Ped,0)
 			end
 
-			skinData["hat"]["item"] = item
-		elseif types == "texture" then
-			SetPedPropIndex(Ped,0,skinData["hat"]["item"],item,1)
-			skinData["hat"]["texture"] = item
+			Dataset["hat"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedPropIndex(Ped,0,Dataset["hat"]["item"],Variation,1)
+			Dataset["hat"]["texture"] = Variation
 		end
-	elseif category == "glass" then
-		if types == "item" then
-			if item ~= -1 then
-				SetPedPropIndex(Ped,1,item,skinData["glass"]["texture"],1)
-				skinData["glass"]["item"] = item
+	elseif Data["clothingType"] == "glass" then
+		if Data["types"] == "item" then
+			if Variation ~= -1 then
+				SetPedPropIndex(Ped,1,Variation,Dataset["glass"]["texture"],1)
+				Dataset["glass"]["item"] = Variation
 			else
 				ClearPedProp(Ped,1)
 			end
-		elseif types == "texture" then
-			SetPedPropIndex(Ped,1,skinData["glass"]["item"],item,1)
-			skinData["glass"]["texture"] = item
+		elseif Data["types"] == "texture" then
+			SetPedPropIndex(Ped,1,Dataset["glass"]["item"],Variation,1)
+			Dataset["glass"]["texture"] = Variation
 		end
-	elseif category == "ear" then
-		if types == "item" then
-			if item ~= -1 then
-				SetPedPropIndex(Ped,2,item,skinData["ear"]["texture"],1)
+	elseif Data["clothingType"] == "ear" then
+		if Data["types"] == "item" then
+			if Variation ~= -1 then
+				SetPedPropIndex(Ped,2,Variation,Dataset["ear"]["texture"],1)
 			else
 				ClearPedProp(Ped,2)
 			end
 
-			skinData["ear"]["item"] = item
-		elseif types == "texture" then
-			SetPedPropIndex(Ped,2,skinData["ear"]["item"],item,1)
-			skinData["ear"]["texture"] = item
+			Dataset["ear"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedPropIndex(Ped,2,Dataset["ear"]["item"],Variation,1)
+			Dataset["ear"]["texture"] = Variation
 		end
-	elseif category == "watch" then
-		if types == "item" then
-			if item ~= -1 then
-				SetPedPropIndex(Ped,6,item,skinData["watch"]["texture"],1)
+	elseif Data["clothingType"] == "watch" then
+		if Data["types"] == "item" then
+			if Variation ~= -1 then
+				SetPedPropIndex(Ped,6,Variation,Dataset["watch"]["texture"],1)
 			else
 				ClearPedProp(Ped,6)
 			end
 
-			skinData["watch"]["item"] = item
-		elseif types == "texture" then
-			SetPedPropIndex(Ped,6,skinData["watch"]["item"],item,1)
-			skinData["watch"]["texture"] = item
+			Dataset["watch"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedPropIndex(Ped,6,Dataset["watch"]["item"],Variation,1)
+			Dataset["watch"]["texture"] = Variation
 		end
-	elseif category == "bracelet" then
-		if types == "item" then
-			if item ~= -1 then
-				SetPedPropIndex(Ped,7,item,skinData["bracelet"]["texture"],1)
+	elseif Data["clothingType"] == "bracelet" then
+		if Data["types"] == "item" then
+			if Variation ~= -1 then
+				SetPedPropIndex(Ped,7,Variation,Dataset["bracelet"]["texture"],1)
 			else
 				ClearPedProp(Ped,7)
 			end
 
-			skinData["bracelet"]["item"] = item
-		elseif types == "texture" then
-			SetPedPropIndex(Ped,7,skinData["bracelet"]["item"],item,1)
-			skinData["bracelet"]["texture"] = item
+			Dataset["bracelet"]["item"] = Variation
+		elseif Data["types"] == "texture" then
+			SetPedPropIndex(Ped,7,Dataset["bracelet"]["item"],Variation,1)
+			Dataset["bracelet"]["texture"] = Variation
 		end
 	end
 
-	GetMaxValues()
+	MaxValues()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVECLOTHING
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("saveClothing",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.updateClothes(skinData)
-	end
+	vSERVER.updateClothes(Dataset)
 
 	Callback("Ok")
 end)
@@ -593,21 +554,21 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("skinshop:setMask")
 AddEventHandler("skinshop:setMask",function()
-	if not animation and not LocalPlayer["state"]["Buttons"] then
-		animation = true
+	if not Animation and not LocalPlayer["state"]["Buttons"] then
+		Animation = true
+		local Ped = PlayerPedId()
 		vRP.playAnim(true,{"missfbi4","takeoff_mask"},true)
+
 		Wait(1000)
 
-		local Ped = PlayerPedId()
-
-		if GetPedDrawableVariation(Ped,1) == skinData["mask"]["item"] then
+		if GetPedDrawableVariation(Ped,1) == Dataset["mask"]["item"] then
 			SetPedComponentVariation(Ped,1,0,0,1)
 		else
-			SetPedComponentVariation(Ped,1,skinData["mask"]["item"],skinData["mask"]["texture"],1)
+			SetPedComponentVariation(Ped,1,Dataset["mask"]["item"],Dataset["mask"]["texture"],1)
 		end
 
 		vRP.removeObjects()
-		animation = false
+		Animation = false
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -615,21 +576,21 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("skinshop:setHat")
 AddEventHandler("skinshop:setHat",function()
-	if not animation and not LocalPlayer["state"]["Buttons"] then
-		animation = true
+	if not Animation and not LocalPlayer["state"]["Buttons"] then
+		Animation = true
+		local Ped = PlayerPedId()
 		vRP.playAnim(true,{"mp_masks@standard_car@ds@","put_on_mask"},true)
+
 		Wait(1000)
 
-		local Ped = PlayerPedId()
-
-		if GetPedPropIndex(Ped,0) == skinData["hat"]["item"] then
+		if GetPedPropIndex(Ped,0) == Dataset["hat"]["item"] then
 			ClearPedProp(Ped,0)
 		else
-			SetPedPropIndex(Ped,0,skinData["hat"]["item"],skinData["hat"]["texture"],1)
+			SetPedPropIndex(Ped,0,Dataset["hat"]["item"],Dataset["hat"]["texture"],1)
 		end
 
 		vRP.removeObjects()
-		animation = false
+		Animation = false
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -637,21 +598,21 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("skinshop:setGlasses")
 AddEventHandler("skinshop:setGlasses",function()
-	if not animation and not LocalPlayer["state"]["Buttons"] then
-		animation = true
+	if not Animation and not LocalPlayer["state"]["Buttons"] then
+		Animation = true
+		local Ped = PlayerPedId()
 		vRP.playAnim(true,{"clothingspecs","take_off"},true)
+
 		Wait(1000)
 
-		local Ped = PlayerPedId()
-
-		if GetPedPropIndex(Ped,1) == skinData["glass"]["item"] then
+		if GetPedPropIndex(Ped,1) == Dataset["glass"]["item"] then
 			ClearPedProp(Ped,1)
 		else
-			SetPedPropIndex(Ped,1,skinData["glass"]["item"],skinData["glass"]["texture"],1)
+			SetPedPropIndex(Ped,1,Dataset["glass"]["item"],Dataset["glass"]["texture"],1)
 		end
 
 		vRP.removeObjects()
-		animation = false
+		Animation = false
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -664,10 +625,10 @@ function Creative.checkShoes()
 		Number = 35
 	end
 
-	if skinData["shoes"]["item"] ~= Number then
-		skinData["shoes"]["item"] = Number
-		skinData["shoes"]["texture"] = 0
-		SetPedComponentVariation(Ped,6,skinData["shoes"]["item"],skinData["shoes"]["texture"],1)
+	if Dataset["shoes"]["item"] ~= Number then
+		Dataset["shoes"]["item"] = Number
+		Dataset["shoes"]["texture"] = 0
+		SetPedComponentVariation(Ped,6,Dataset["shoes"]["item"],Dataset["shoes"]["texture"],1)
 
 		return true
 	end
@@ -680,26 +641,26 @@ end
 RegisterNetEvent("skinshop:toggleBackpack")
 AddEventHandler("skinshop:toggleBackpack",function(Infos)
 	local splitName = splitString(Infos,"-")
-	local Modelo = parseInt(splitName[1])
-	local Textura = parseInt(splitName[2])
+	local Model = parseInt(splitName[1])
+	local Texture = parseInt(splitName[2])
 
-	if skinData["backpack"]["item"] == Modelo then
-		skinData["backpack"]["item"] = 0
-		skinData["backpack"]["texture"] = 0
+	if Dataset["backpack"]["item"] == Model then
+		Dataset["backpack"]["item"] = 0
+		Dataset["backpack"]["texture"] = 0
 	else
-		skinData["backpack"]["texture"] = Textura
-		skinData["backpack"]["item"] = Modelo
+		Dataset["backpack"]["texture"] = Texture
+		Dataset["backpack"]["item"] = Model
 	end
 
-	SetPedComponentVariation(PlayerPedId(),5,skinData["backpack"]["item"],skinData["backpack"]["texture"],1)
+	SetPedComponentVariation(PlayerPedId(),5,skiDatasetnData["backpack"]["item"],Dataset["backpack"]["texture"],1)
 
-	vSERVER.updateClothes(skinData)
+	vSERVER.updateClothes(Dataset)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GETCUSTOMIZATION
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.getCustomization()
-	return skinData
+	return Dataset
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP:DEFIBRILLATOR
@@ -722,22 +683,20 @@ function Creative.Defibrillator()
 	return Defibrillator
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADHOVERFY
+-- THREADBACKPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 local BackWeight = false
 CreateThread(function()
 	while true do
-		if skinData["backpack"] then
-			if skinData["backpack"]["item"] ~= 0 and skinData["backpack"]["item"] >= 100 then
-				if not BackWeight then
-					TriggerServerEvent("vRP:BackpackWeight",true)
-					BackWeight = true
-				end
-			else
-				if BackWeight then
-					TriggerServerEvent("vRP:BackpackWeight",false)
-					BackWeight = false
-				end
+		if Dataset["backpack"]["item"] ~= 0 and Dataset["backpack"]["item"] >= 100 then
+			if not BackWeight then
+				TriggerServerEvent("vRP:BackpackWeight",true)
+				BackWeight = true
+			end
+		else
+			if BackWeight then
+				TriggerServerEvent("vRP:BackpackWeight",false)
+				BackWeight = false
 			end
 		end
 

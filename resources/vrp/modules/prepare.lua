@@ -121,6 +121,7 @@ vRP.Prepare("propertys/Buy","INSERT INTO propertys(Name,Interior,Passport,Serial
 vRP.Prepare("fines/List","SELECT * FROM fines WHERE Passport = @Passport")
 vRP.Prepare("fines/Remove","DELETE FROM fines WHERE Passport = @Passport AND id = @id")
 vRP.Prepare("fines/Check","SELECT * FROM fines WHERE Passport = @Passport AND id = @id")
+vRP.Prepare("fines/Add","INSERT INTO taxs(Passport,Name,Date,Hour,Value,Message) VALUES(@Passport,@Name,@Date,@Hour,@Value,@Message)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAXS
 -----------------------------------------------------------------------------------------------------------------------------------------

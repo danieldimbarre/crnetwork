@@ -227,19 +227,16 @@ $(document).on('click', '.clothing-menu-header-camera-btn', function(e){
 $(document).on('keydown', function() {
 	switch(event.keyCode) {
         case 68: // D
-			$.post('http://skinshop/rotate',JSON.stringify("left"));
+			$.post('http://skinshop/rotateLeft');
 			break;
         case 65: // A
-			$.post('http://skinshop/rotate',JSON.stringify("right"));
+			$.post('http://skinshop/rotateRight');
 			break;
         case 38: // UP
 			ChangeUp();
 			break;
         case 40: // DOWN
 			ChangeDown();
-			break;
-		case 88: // X
-			$.post('http://skinshop/handsup');
 			break;
     }
 });

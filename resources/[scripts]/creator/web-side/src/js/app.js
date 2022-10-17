@@ -149,7 +149,7 @@ $(document).ready(() => {
 		$("#face19").parent().parent().parent().find('#minRange').html(event.data.face19);
 		document.getElementById("face19").value = event.data.face19;
 
-		if(event.data.openCreator == true){
+		if(event.data.Open == true){
 			$("body").fadeIn();
 			$(".rangeSlider .slider").each(function( index ) {
 				$(this).css({
@@ -159,7 +159,7 @@ $(document).ready(() => {
 			});
 		}
 
-		if(event.data.openCreator == false){
+		if(event.data.Open == false){
 			$("body").fadeOut();
 		}
 	});

@@ -200,9 +200,9 @@ RegisterNUICallback("resetOutfit",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ROTATE
+-- ROTATERIGHT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("rotate",function(Data,Callback)
+RegisterNUICallback("rotateRight",function(Data,Callback)
 	local Ped = PlayerPedId()
 	local Heading = GetEntityHeading(Ped)
 	SetEntityHeading(Ped,Heading + 30)
@@ -210,16 +210,12 @@ RegisterNUICallback("rotate",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- HANDSUP
+-- ROTATELEFT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("handsup",function(Data,Callback)
+RegisterNUICallback("rotateLeft",function(Data,Callback)
 	local Ped = PlayerPedId()
-	if IsEntityPlayingAnim(Ped,"random@mugging3","handsup_standing_base",3) then
-		StopAnimTask(Ped,"random@mugging3","handsup_standing_base",8.0)
-		vRP.AnimActive()
-	else
-		vRP.playAnim(true,{ "random@mugging3","handsup_standing_base" },true)
-	end
+	local heading = GetEntityHeading(Ped)
+	SetEntityHeading(Ped,heading - 30)
 
 	Callback("Ok")
 end)

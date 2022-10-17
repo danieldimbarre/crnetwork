@@ -450,8 +450,8 @@ AddEventHandler("garages:Transfer",function(vehName)
 							end
 
 							local Datatable = vRP.GetSrvData("Chest:"..Passport..":"..vehName)
-							vRP.SetSrvData("Chest:"..OtherPassport..":"..vehName,Datatable,true)
-							vRP.RemSrvData("Chest:"..Passport..":"..vehName,true)
+							vRP.SetSrvData("Chest:"..OtherPassport..":"..vehName,Datatable)
+							vRP.RemSrvData("Chest:"..Passport..":"..vehName)
 
 							TriggerClientEvent("Notify",source,"verde","Transferência concluída.",5000)
 						end

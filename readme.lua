@@ -94,11 +94,11 @@ vRP.TakeItem(Passport: int,Item: string,Amount: int,Notify: bool,Slot: int)
 
 vRP.RemoveItem(Passport: int,Item: string,Amount: int,Notify: bool)
 
-vRP.GetSrvData(Key: string)
+vRP.GetSrvData(Key: string, Save: bool)
 
-vRP.SetSrvData(Key: string,Data: table)
+vRP.SetSrvData(Key: string,Data: table, Save: bool)
 
-vRP.RemSrvData(Key: string)
+vRP.RemSrvData(Key: string, Save: bool)
 
 vRP.TakeChest(Passport: int,Data: string,Amount: int,Slot: int,Target: int)
 

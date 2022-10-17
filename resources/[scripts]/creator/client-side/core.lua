@@ -11,7 +11,7 @@ vSERVER = Tunnel.getInterface("creator")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Cam = -1
+local cam = -1
 local myFace = { 0,100,0,100,0,0,0,0,0,0,0,-1,5,-1,-1,5,0,0,0,0,-1,5,0,-1,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
@@ -24,7 +24,7 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 		displayCreator(false)
 		SetNuiFocus(false,false)
 		vSERVER.updateFace(myFace)
-		SendNUIMessage({ openCreator = false })
+		SendNUIMessage({ Open = false })
 		TriggerEvent("skinshop:updateTattoo")
 	end
 
@@ -47,9 +47,9 @@ RegisterNUICallback("rotate",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DISPLAYCREATOR
+-- OPENCREATOR
 -----------------------------------------------------------------------------------------------------------------------------------------
-function displayCreator(enable)
+function OpenCreator(enable)
 	local Ped = PlayerPedId()
 
 	if enable then
@@ -58,9 +58,10 @@ function displayCreator(enable)
 
 		SetEntityCoords(Ped,239.41,-1381.01,33.73 - 1,0,0,1)
 		SetEntityHeading(Ped,136.07)
+
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
-		SendNUIMessage({ openCreator = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1, maxHaircolors = GetNumHairColors()-1, maxMakeupcolor = GetNumMakeupColors()-1, maxBeard = GetPedHeadOverlayNum(1)-1, maxEyebrow = GetPedHeadOverlayNum(2)-1, maxMakeup = GetPedHeadOverlayNum(4)-1, maxBlush = GetPedHeadOverlayNum(5)-1, maxLipstick = GetPedHeadOverlayNum(8)-1, fathers = myFace[1], mothers = myFace[41], kinship = myFace[2], eyecolor = myFace[3], skincolor = myFace[4], acne = myFace[5], stains = myFace[6], freckles = myFace[7], aging = myFace[8], hair = myFace[9], haircolor = myFace[10], haircolor2 = myFace[11], makeup = myFace[12], makeupintensity = myFace[13], makeupcolor = myFace[14], lipstick = myFace[15], lipstickintensity = myFace[16], lipstickcolor = myFace[17], eyebrow = myFace[18], eyebrowintensity = myFace[19], eyebrowcolor = myFace[20], beard = myFace[21], beardintensity = myFace[22], beardcolor = myFace[23], blush = myFace[24], blushintensity = myFace[25], blushcolor = myFace[26], face00 = myFace[27], face01 = myFace[28], face04 = myFace[29], face06 = myFace[30], face08 = myFace[31], face09 = myFace[32], face10 = myFace[33], face12 = myFace[34], face13 = myFace[35], face14 = myFace[36], face15 = myFace[37], face16 = myFace[38], face17 = myFace[39], face19 = myFace[40] })
+		SendNUIMessage({ Open = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1, maxHaircolors = GetNumHairColors()-1, maxMakeupcolor = GetNumMakeupColors()-1, maxBeard = GetPedHeadOverlayNum(1)-1, maxEyebrow = GetPedHeadOverlayNum(2)-1, maxMakeup = GetPedHeadOverlayNum(4)-1, maxBlush = GetPedHeadOverlayNum(5)-1, maxLipstick = GetPedHeadOverlayNum(8)-1, fathers = myFace[1], mothers = myFace[41], kinship = myFace[2], eyecolor = myFace[3], skincolor = myFace[4], acne = myFace[5], stains = myFace[6], freckles = myFace[7], aging = myFace[8], hair = myFace[9], haircolor = myFace[10], haircolor2 = myFace[11], makeup = myFace[12], makeupintensity = myFace[13], makeupcolor = myFace[14], lipstick = myFace[15], lipstickintensity = myFace[16], lipstickcolor = myFace[17], eyebrow = myFace[18], eyebrowintensity = myFace[19], eyebrowcolor = myFace[20], beard = myFace[21], beardintensity = myFace[22], beardcolor = myFace[23], blush = myFace[24], blushintensity = myFace[25], blushcolor = myFace[26], face00 = myFace[27], face01 = myFace[28], face04 = myFace[29], face06 = myFace[30], face08 = myFace[31], face09 = myFace[32], face10 = myFace[33], face12 = myFace[34], face13 = myFace[35], face14 = myFace[36], face15 = myFace[37], face16 = myFace[38], face17 = myFace[39], face19 = myFace[40] })
 
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })
@@ -68,23 +69,24 @@ function displayCreator(enable)
 		
 		SetPlayerInvincible(Ped,true)
 
-		if not DoesCamExist(Cam) then
-			Cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-			SetCamActive(Cam,true)
+		if not DoesCamExist(cam) then
+			cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
+			SetCamCoord(cam,GetEntityCoords(Ped))
+			SetCamRot(cam,0.0,0.0,0.0)
+			SetCamActive(cam,true)
 			RenderScriptCams(true,false,0,true,true)
-			SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.7)
-			SetCamRot(Cam,0.0,0.0,GetEntityHeading(Ped) + 180)
+			SetCamCoord(cam,GetEntityCoords(Ped))
 		end
 
 		local Coords = GetEntityCoords(Ped)
-		SetCamCoord(Cam,Coords["x"] + 0.2,Coords["y"] + 0.5,Coords["z"] + 0.7)
-		SetCamRot(Cam,0.0,0.0,150.0)
+		SetCamCoord(cam,Coords["x"] + 0.2,Coords["y"] + 0.5,Coords["z"] + 0.7)
+		SetCamRot(cam,0.0,0.0,150.0)
 
 		defaultCharacter()
 	else
 		RenderScriptCams(false,false,0,1,0)
 		SetPlayerInvincible(Ped,false)
-		DestroyCam(Cam,false)
+		DestroyCam(cam,false)
 
 		vRP.removeObjects()
 	end
@@ -126,7 +128,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("creator:Open")
 AddEventHandler("creator:Open",function()
-	displayCreator(true)
+	OpenCreator(true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATEFACE

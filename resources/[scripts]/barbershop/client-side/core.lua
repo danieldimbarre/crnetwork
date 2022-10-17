@@ -145,10 +145,11 @@ function OpenBarbershop(Enabled)
 
 		if not DoesCamExist(cam) then
 			cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
+			SetCamCoord(cam,GetEntityCoords(Ped))
+			SetCamRot(cam,0.0,0.0,0.0)
 			SetCamActive(cam,true)
 			RenderScriptCams(true,false,0,true,true)
-			SetCamCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.7)
-			SetCamRot(cam,0.0,0.0,GetEntityHeading(PlayerPedId()) + 180)
+			SetCamCoord(cam,GetEntityCoords(Ped))
 		end
 
 		local Coords = GetEntityCoords(Ped)

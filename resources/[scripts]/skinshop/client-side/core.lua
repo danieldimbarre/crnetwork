@@ -205,7 +205,7 @@ end)
 RegisterNUICallback("rotateRight",function(Data,Callback)
 	local Ped = PlayerPedId()
 	local Heading = GetEntityHeading(Ped)
-	SetEntityHeading(Ped,Heading + 30)
+	SetEntityHeading(Ped,Heading + 10)
 
 	Callback("Ok")
 end)
@@ -215,7 +215,7 @@ end)
 RegisterNUICallback("rotateLeft",function(Data,Callback)
 	local Ped = PlayerPedId()
 	local heading = GetEntityHeading(Ped)
-	SetEntityHeading(Ped,heading - 30)
+	SetEntityHeading(Ped,heading - 10)
 
 	Callback("Ok")
 end)
@@ -291,31 +291,37 @@ function CamActive()
 	end
 
 	local Ped = PlayerPedId()
-	local Heading = GetEntityHeading(Ped)
-	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
+	local Coords = GetEntityCoords(Ped)
+	local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
 
 	Cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
 	SetCamActive(Cam,true)
 	RenderScriptCams(true,false,0,true,true)
-	SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
-	SetCamRot(Cam,0.0,0.0,Heading + 180)
+	SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.5)
+	PointCamAtCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.15)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETUPCAM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("setupCam",function(Data,Callback)
+	local Ped = PlayerPedId()
+	local Pos = GetEntityCoords(Ped)
 	if Data["value"] == 1 then
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,0.75,0)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,0.75,0)
 		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
+		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] + 0.6)
 	elseif Data["value"] == 2 then
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,1.0,0)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
 		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
+		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] + 0.2)
 	elseif Data["value"] == 3 then
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,1.0,0)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
 		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
+		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] - 0.5)
 	else
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,2.0,0)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
 		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
+		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] + 0.5)
 	end
 
 	Callback("Ok")

@@ -1539,8 +1539,8 @@ function setCameraCoords()
 	end
 
 	local Ped = PlayerPedId()
-	local Coords = GetEntityCoords(PlayerPedId())
-	local CamCoords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0.0,2.0,0.0)
+	local Coords = GetEntityCoords(Ped)
+	local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0.0,2.0,0.0)
 
 	Cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
 	SetCamActive(Cam,true)

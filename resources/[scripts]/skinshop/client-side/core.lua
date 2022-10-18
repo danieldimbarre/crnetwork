@@ -298,30 +298,30 @@ function CamActive()
 	SetCamActive(Cam,true)
 	RenderScriptCams(true,false,0,true,true)
 	SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.5)
-	PointCamAtCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
+	PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETUPCAM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("setupCam",function(Data,Callback)
 	local Ped = PlayerPedId()
-	local Pos = GetEntityCoords(Ped)
+	local Coords = GetEntityCoords(Ped)
 	if Data["value"] == 1 then
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,0.75,0)
-		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
-		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] + 0.6)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,0.75,0)
+		SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.6)
+		PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
 	elseif Data["value"] == 2 then
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
-		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
-		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] + 0.2)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
+		SetCamCoord(Cam,Coords["x"],CamCoords["y"],CamCoords["z"] + 0.2)
+		PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
 	elseif Data["value"] == 3 then
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
-		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
-		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] - 0.5)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
+		SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] - 0.5)
+		PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
 	else
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
-		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
-		PointCamAtCoord(Cam,Pos["x"],Pos["y"],Pos["z"] + 0.5)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
+		SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.5)
+		PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
 	end
 
 	Callback("Ok")

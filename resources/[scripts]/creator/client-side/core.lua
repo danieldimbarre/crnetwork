@@ -79,9 +79,9 @@ function OpenCreator(enable)
 		end
 
 		local Coords = GetEntityCoords(Ped)
-		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0.0,0.75,0.0)
-		SetCamCoord(cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.6)
-		PointCamAtCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0.0,0.5,0.0)
+		SetCamCoord(cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.7)
+		PointCamAtCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.7)
 
 		defaultCharacter()
 	else

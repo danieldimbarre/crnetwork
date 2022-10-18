@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "1.1.3"
+version "1.1.5"
 
 ui_page "web-side/index.html"
 

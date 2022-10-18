@@ -153,10 +153,9 @@ function OpenBarbershop(Enabled)
 		end
 
 		local Coords = GetEntityCoords(Ped)
-		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0.0,2.0,0.0)
-		SetCamCoord(cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.7)
-		SetCamRot(cam,0.0,0.0,150.0)
-		PointCamAtCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.15)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0.0,0.75,0.0)
+		SetCamCoord(cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.6)
+		PointCamAtCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
 	else
 		RenderScriptCams(false,false,0,1,0)
 		SetPlayerInvincible(Ped,false)

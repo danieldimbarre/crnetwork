@@ -298,7 +298,7 @@ function CamActive()
 	SetCamActive(Cam,true)
 	RenderScriptCams(true,false,0,true,true)
 	SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.5)
-	PointCamAtCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.15)
+	PointCamAtCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETUPCAM

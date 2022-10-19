@@ -226,7 +226,7 @@ end
 -- NITRODISABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function NitroDisable()
-	local Vehicle = GetVehiclePedIsUsing(Ped)
+	local Vehicle = GetLastDrivenVehicle()
 
 	if NitroFlame then
 		vSERVER.ActiveNitro(VehToNet(Vehicle),false)

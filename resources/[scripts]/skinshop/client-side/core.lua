@@ -412,80 +412,80 @@ function ChangeDataset(Data)
 	local Variation = Data["articleNumber"]
 
 	if Data["clothingType"] == "pants" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			SetPedComponentVariation(Ped,4,Variation,0,1)
 			Dataset["pants"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedComponentVariation(Ped,4,GetPedDrawableVariation(Ped,4),Variation,1)
 			Dataset["pants"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "arms" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			SetPedComponentVariation(Ped,3,Variation,0,1)
 			Dataset["arms"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedComponentVariation(Ped,3,GetPedDrawableVariation(Ped,3),Variation,1)
 			Dataset["arms"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "tshirt" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			SetPedComponentVariation(Ped,8,Variation,0,1)
 			Dataset["tshirt"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedComponentVariation(Ped,8,GetPedDrawableVariation(Ped,8),Variation,1)
 			Dataset["tshirt"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "vest" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			SetPedComponentVariation(Ped,9,Variation,0,1)
 			Dataset["vest"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedComponentVariation(Ped,9,Dataset["vest"]["item"],Variation,1)
 			Dataset["vest"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "decals" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			SetPedComponentVariation(Ped,10,Variation,0,1)
 			Dataset["decals"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedComponentVariation(Ped,10,Dataset["decals"]["item"],Variation,1)
 			Dataset["decals"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "accessory" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			SetPedComponentVariation(Ped,7,Variation,0,1)
 			Dataset
 			["accessory"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedComponentVariation(Ped,7,Dataset["accessory"]["item"],Variation,1)
 			Dataset["accessory"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "torso" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			SetPedComponentVariation(Ped,11,Variation,0,1)
 			Dataset["torso"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedComponentVariation(Ped,11,GetPedDrawableVariation(Ped,11),Variation,1)
 			Dataset["torso"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "shoes" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			SetPedComponentVariation(Ped,6,Variation,0,1)
 			Dataset["shoes"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedComponentVariation(Ped,6,GetPedDrawableVariation(Ped,6),Variation,1)
 			Dataset["shoes"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "mask" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			SetPedComponentVariation(Ped,1,Variation,0,1)
 			Dataset["mask"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedComponentVariation(Ped,1,GetPedDrawableVariation(Ped,1),Variation,1)
 			Dataset["mask"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "hat" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			if Variation ~= -1 then
 				SetPedPropIndex(Ped,0,Variation,Dataset["hat"]["texture"],1)
 			else
@@ -493,24 +493,24 @@ function ChangeDataset(Data)
 			end
 
 			Dataset["hat"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedPropIndex(Ped,0,Dataset["hat"]["item"],Variation,1)
 			Dataset["hat"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "glass" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			if Variation ~= -1 then
 				SetPedPropIndex(Ped,1,Variation,Dataset["glass"]["texture"],1)
 				Dataset["glass"]["item"] = Variation
 			else
 				ClearPedProp(Ped,1)
 			end
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedPropIndex(Ped,1,Dataset["glass"]["item"],Variation,1)
 			Dataset["glass"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "ear" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			if Variation ~= -1 then
 				SetPedPropIndex(Ped,2,Variation,Dataset["ear"]["texture"],1)
 			else
@@ -518,12 +518,12 @@ function ChangeDataset(Data)
 			end
 
 			Dataset["ear"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedPropIndex(Ped,2,Dataset["ear"]["item"],Variation,1)
 			Dataset["ear"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "watch" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			if Variation ~= -1 then
 				SetPedPropIndex(Ped,6,Variation,Dataset["watch"]["texture"],1)
 			else
@@ -531,12 +531,12 @@ function ChangeDataset(Data)
 			end
 
 			Dataset["watch"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedPropIndex(Ped,6,Dataset["watch"]["item"],Variation,1)
 			Dataset["watch"]["texture"] = Variation
 		end
 	elseif Data["clothingType"] == "bracelet" then
-		if Data["types"] == "item" then
+		if Data["type"] == "item" then
 			if Variation ~= -1 then
 				SetPedPropIndex(Ped,7,Variation,Dataset["bracelet"]["texture"],1)
 			else
@@ -544,7 +544,7 @@ function ChangeDataset(Data)
 			end
 
 			Dataset["bracelet"]["item"] = Variation
-		elseif Data["types"] == "texture" then
+		elseif Data["type"] == "texture" then
 			SetPedPropIndex(Ped,7,Dataset["bracelet"]["item"],Variation,1)
 			Dataset["bracelet"]["texture"] = Variation
 		end

@@ -72,19 +72,19 @@ AddEventHandler("propertys:Buy",function(Name)
 	local Split = splitString(Name,"-")
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Consult = vRP.Query("propertys/Exist",{ name = Split[1] })
+		local Name = Split[1]
+		local Interior = Split[2]
+		local Consult = vRP.Query("propertys/Exist",{ name = Name })
 		if not Consult[1] then
 			TriggerClientEvent("dynamic:closeSystem",source)
 
 			if vRP.Request(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudeia de ideia") then
-				local Interior = Split[2]
-
 				if vRP.PaymentFull(Passport,Informations[Interior]["Price"]) then
 					Markers[Name] = true
 					local Serial = PropertysSerials()
 					vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
 					TriggerClientEvent("propertys:Markers",-1,Markers)
-					vRP.Query("propertys/Buy",{ name = Split[1], interior = Interior, passport = Passport, serial = Serial, vault = Informations[Interior]["Vault"], fridge = Informations[Interior]["Fridge"], tax = os.time() + 2592000 })
+					vRP.Query("propertys/Buy",{ name = Name, interior = Interior, passport = Passport, serial = Serial, vault = Informations[Interior]["Vault"], fridge = Informations[Interior]["Fridge"], tax = os.time() + 2592000 })
 				else
 					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 				end
@@ -407,12 +407,15 @@ AddEventHandler("Disconnect",function(Passport)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONRESOURCESTART
+-- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onResourceStart",function()
+CreateThread(function()
+	Wait(1000)
 	local Consult = vRP.Query("propertys/All")
 
 	for Index,v in pairs(Consult) do
 		Markers[v["Name"]] = true
 	end
+
+	TriggerClientEvent("propertys:Table",-1,Propertys,Interiors,Markers)
 end)

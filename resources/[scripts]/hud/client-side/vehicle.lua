@@ -162,7 +162,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NITROENABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function nitroEnable()
+function NitroEnable()
 	if GetGameTimer() >= NitroButton and not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
@@ -225,34 +225,31 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NITRODISABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function nitroDisable()
-	local Ped = PlayerPedId()
-	if IsPedInAnyVehicle(Ped) then
-		local Vehicle = GetVehiclePedIsUsing(Ped)
+function NitroDisable()
+	local Vehicle = GetVehiclePedIsUsing(Ped)
 
-		if NitroFlame then
-			vSERVER.ActiveNitro(VehToNet(Vehicle),false)
-			SetVehicleRocketBoostActive(Vehicle,false)
-			vSERVER.UpdateNitro(NitroFlame,NitroFuel)
-			SetVehicleBoostActive(Vehicle,false)
-			ModifyVehicleTopSpeed(Vehicle,0.0)
-			SetLightTrail(Vehicle,false)
-			NitroFlame = false
+	if NitroFlame then
+		vSERVER.ActiveNitro(VehToNet(Vehicle),false)
+		SetVehicleRocketBoostActive(Vehicle,false)
+		vSERVER.UpdateNitro(NitroFlame,NitroFuel)
+		SetVehicleBoostActive(Vehicle,false)
+		ModifyVehicleTopSpeed(Vehicle,0.0)
+		SetLightTrail(Vehicle,false)
+		NitroFlame = false
 
-			LocalPlayer["state"]["Nitro"] = false
-		end
+		LocalPlayer["state"]["Nitro"] = false
+	end
 
-		if PurgeActive then
-			SetPurgeSprays(Vehicle,false)
-			PurgeActive = false
-		end
+	if PurgeActive then
+		SetPurgeSprays(Vehicle,false)
+		PurgeActive = false
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACTIVENITRO
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("+activeNitro",nitroEnable)
-RegisterCommand("-activeNitro",nitroDisable)
+RegisterCommand("+activeNitro",NitroEnable)
+RegisterCommand("-activeNitro",NitroDisable)
 RegisterKeyMapping("+activeNitro","Ativação do nitro.","keyboard","LMENU")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETLIGHTTRAIL
@@ -443,6 +440,10 @@ CreateThread(function()
 				if SeatbeltLock then
 					SendNUIMessage({ Action = "Seatbelt", Status = false })
 					SeatbeltLock = false
+				end
+
+				if NitroFlame then
+					NitroDisable()
 				end
 			end
 		end

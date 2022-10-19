@@ -845,15 +845,15 @@ CreateThread(function()
 	local Consult = vRP.Query("propertys/Garages")
 	for _,v in pairs(Consult) do
 		local Name = v["Name"]
-		if not Propertys[Name] then
-			local Consult = json.decode(v["Garage"])
+		if not Propertys[Name] and v["Garage"] ~= "{}" then
+			local Table = json.decode(v["Garage"])
 			Garages[Name] = { name = "Garage", payment = false }
 
 			Propertys[Name] = {
-				["x"] = Consult["1"][1],
-				["y"] = Consult["1"][2],
-				["z"] = Consult["1"][3],
-				["1"] = Consult["2"]
+				["x"] = Table["1"][1],
+				["y"] = Table["1"][2],
+				["z"] = Table["1"][3],
+				["1"] = Table["2"]
 			}
 		end
 	end

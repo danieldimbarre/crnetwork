@@ -453,16 +453,16 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEATBELT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("Seatbelt",function(source)
+RegisterCommand("Beltz",function(source)
 	local Ped = PlayerPedId()
 	if IsPedInAnyVehicle(Ped) then
 		if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyPlane(Ped) then
 			if SeatbeltLock then
-				TriggerEvent("sounds:source","unbelt",0.5)
+				TriggerEvent("sounds:Private","unbelt",0.5)
 				SendNUIMessage({ Action = "Seatbelt", Status = false })
 				SeatbeltLock = false
 			else
-				TriggerEvent("sounds:source","belt",0.5)
+				TriggerEvent("sounds:Private","belt",0.5)
 				SendNUIMessage({ Action = "Seatbelt", Status = true })
 				SeatbeltLock = true
 			end
@@ -472,4 +472,4 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYMAPPING
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterKeyMapping("Seatbelt","Colocar/Retirar o cinto.","keyboard","G")
+RegisterKeyMapping("Beltz","Colocar/Retirar o cinto.","keyboard","G")

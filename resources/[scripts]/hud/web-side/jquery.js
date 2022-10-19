@@ -259,9 +259,9 @@ window.addEventListener("message",function(event){
 
 		case "Seatbelt":
 			if (!event["data"]["Status"]){
-				$(".Seatbelt").addClass("Gray").removeClass("Yellow");
+				$(".Seatbelt").addClass("Gray").removeClass("Green");
 			} else {
-				$(".Seatbelt").addClass("Yellow").removeClass("Gray");
+				$(".Seatbelt").addClass("Green").removeClass("Gray");
 			}
 		break;
 

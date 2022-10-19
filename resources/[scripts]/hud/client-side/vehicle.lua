@@ -30,6 +30,12 @@ local PurgeSprays = {}
 local PurgeParticles = {}
 local PurgeActive = false
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SEATBELT
+-----------------------------------------------------------------------------------------------------------------------------------------
+local SeatbeltSpeed = 0
+local SeatbeltLock = false
+local SeatbeltVelocity = vec3(0,0,0)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -380,3 +386,90 @@ end
 RegisterCommand("+SpaceVehicle",spaceEnable)
 RegisterCommand("-SpaceVehicle",spaceDisable)
 RegisterKeyMapping("+SpaceVehicle","Freio do veículo.","keyboard","SPACE")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FOWARDPED
+-----------------------------------------------------------------------------------------------------------------------------------------
+function FowardPed(Ped)
+	local Heading = GetEntityHeading(Ped) + 90.0
+	if Heading < 0.0 then
+		Heading = 360.0 + Heading
+	end
+
+	Heading = Heading * 0.0174533
+
+	return { x = math.cos(Heading) * 2.0, y = math.sin(Heading) * 2.0 }
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADBELT
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		local TimeDistance = 999
+		if LocalPlayer["state"]["Active"] then
+			local Ped = PlayerPedId()
+			if IsPedInAnyVehicle(Ped) then
+				if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyPlane(Ped) then
+					TimeDistance = 1
+
+					local Vehicle = GetVehiclePedIsUsing(Ped)
+					local Speed = GetEntitySpeed(Vehicle) * 3.6
+					if GetVehicleDoorLockStatus(Vehicle) == 2 or SeatbeltLock then
+						DisableControlAction(1,75,true)
+					end
+
+					if Speed ~= SeatbeltSpeed then
+						if (SeatbeltSpeed - Speed) >= 60 and not SeatbeltLock then
+							local FowardVeh = FowardPed(Ped)
+							local Coords = GetEntityCoords(Ped)
+
+							SetEntityCoords(Ped,Coords["x"] + FowardVeh["x"],Coords["y"] + FowardVeh["y"],Coords["z"] - 0.47,false,false,false,false)
+							SetEntityVelocity(Ped,SeatbeltVelocity["x"],SeatbeltVelocity["y"],SeatbeltVelocity["z"])
+							ApplyDamageToPed(Ped,50,false)
+
+							Wait(1)
+
+							SetPedToRagdoll(Ped,5000,5000,0,0,0,0)
+						end
+
+						SeatbeltVelocity = GetEntityVelocity(Vehicle)
+						SeatbeltSpeed = Speed
+					end
+				end
+			else
+				if SeatbeltSpeed ~= 0 then
+					SeatbeltSpeed = 0
+				end
+
+				if SeatbeltLock then
+					SendNUIMessage({ Action = "Seatbelt", Status = false })
+					SeatbeltLock = false
+				end
+			end
+		end
+
+		Wait(timeDistance)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SEATBELT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("Seatbelt",function(source)
+	local Ped = PlayerPedId()
+	if IsPedInAnyVehicle(Ped) then
+		if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyPlane(Ped) then
+			if SeatbeltLock then
+				TriggerEvent("sounds:source","unbelt",0.5)
+				SendNUIMessage({ Action = "Seatbelt", Status = false })
+				SeatbeltLock = false
+			else
+				TriggerEvent("sounds:source","belt",0.5)
+				SendNUIMessage({ Action = "Seatbelt", Status = true })
+				SeatbeltLock = true
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- KEYMAPPING
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterKeyMapping("Seatbelt","Colocar/Retirar o cinto.","keyboard","G")

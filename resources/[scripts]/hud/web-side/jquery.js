@@ -273,14 +273,6 @@ window.addEventListener("message",function(event){
 			}
 		break;
 
-		case "Seatbelt":
-			if (event["data"]["Status"] == false){
-				$(".Seatbelt").addClass("Gray").removeClass("Green");
-			} else {
-				$(".Seatbelt").addClass("Green").removeClass("Gray");
-			}
-		break;
-
 		case "Headlight":
 			if (event["data"]["Status"] == 1){
 				$(".Headlight").addClass("Gray").removeClass("Green").removeClass("Blue");

@@ -25,11 +25,17 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.updateSkin(Clothes)
+function Creative.updateSkin(Clothes,Creator)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Barbershop", dvalue = json.encode(Clothes) })
+
+		if Creator then
+			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Creator", dvalue = 1 })
+
+			TriggerEvent("vRP:BucketServer",source,"Exit")
+		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

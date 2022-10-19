@@ -18,7 +18,6 @@ local mySkin = { 0,100,0,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21 }
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSkin",function(Data,Callback)
-	myClothes = {}
 	myClothes = { mySkin[1],mySkin[2],mySkin[3],mySkin[4],mySkin[5],mySkin[6],mySkin[7],mySkin[8],tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintensity"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintensity"]),tonumber(Data["blushcolor"]),mySkin[9],mySkin[10],mySkin[11],mySkin[12],mySkin[13],mySkin[14],mySkin[15],mySkin[16],mySkin[17],mySkin[18],mySkin[19],mySkin[20],mySkin[21],mySkin[22],mySkin[23] }
 
 	if Data["value"] then
@@ -52,10 +51,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Apply")
 AddEventHandler("barbershop:Apply",function(status)
-	myClothes = {}
 	myClothes = { status[1] or 0, status[2] or 100, status[3] or 0, status[4] or 100, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or -1, status[13] or 5, status[14] or -1, status[15] or -1, status[16] or 5, status[17] or 0, status[18] or -1, status[19] or 0, status[20] or 0, status[21] or -1, status[22] or 5, status[23] or 0, status[24] or -1, status[25] or 5, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 21 }
 
-	mySkin = {}
 	mySkin = { status[1] or 0, status[2] or 100, status[3] or 0, status[4] or 100, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0,status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 21 }
 
 	local Ped = PlayerPedId()

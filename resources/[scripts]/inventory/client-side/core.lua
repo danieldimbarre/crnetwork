@@ -896,9 +896,9 @@ RegisterNUICallback("dropItem",function(Data,Callback)
 	if LocalPlayer["state"]["Network"] then
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
-		local _,cdz = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
+		local _,Z = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
 
-		vSERVER.Drops(Data["item"],Data["slot"],Data["amount"],Coords["x"],Coords["y"],cdz)
+		vSERVER.Drops(Data["item"],Data["slot"],Data["amount"],Coords["x"],Coords["y"],Z)
 	end
 
 	Callback("Ok")
@@ -966,15 +966,15 @@ RegisterNUICallback("requestInventory",function(Data,Callback)
 	if LocalPlayer["state"]["Route"] < 900000 then
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
-		local _,cdz = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
+		local _,Z = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
 
-		for k,v in pairs(Drops) do
-			local Distance = #(vec3(Coords["x"],Coords["y"],cdz) - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
+		for Index,v in pairs(Drops) do
+			local Distance = #(vec3(Coords["x"],Coords["y"],Z) - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
 			if Distance <= 0.9 then
 				local Number = #Items + 1
 
 				Items[Number] = v
-				Items[Number]["id"] = k
+				Items[Number]["id"] = Index
 			end
 		end
 	end
@@ -1013,7 +1013,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WHEELTREADS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local wheelChair = false
+local Wheelchair = false
 CreateThread(function()
 	while true do
 		local Ped = PlayerPedId()
@@ -1023,13 +1023,13 @@ CreateThread(function()
 			if Model == -1178021069 then
 				if not IsEntityPlayingAnim(Ped,"missfinale_c2leadinoutfin_c_int","_leadin_loop2_lester",3) then
 					vRP.playAnim(true,{"missfinale_c2leadinoutfin_c_int","_leadin_loop2_lester"},true)
-					wheelChair = true
+					Wheelchair = true
 				end
 			end
 		else
-			if wheelChair then
+			if Wheelchair then
 				vRP.removeObjects("one")
-				wheelChair = false
+				Wheelchair = false
 			end
 		end
 
@@ -1041,8 +1041,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local scanTable = {}
 local initSounds = {}
-local soundScanner = 999
-local userScanner = false
+local SoundScanner = 999
+local InitScanner = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SCANCOORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1172,12 +1172,12 @@ local scanCoords = {
 	{ -1980.27,-691.34,3.02,189.93 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SCANNERCOORDS
+-- INVENTORY:UPDATESCANNER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:updateScanner")
-AddEventHandler("inventory:updateScanner",function(status)
-	userScanner = status
-	soundScanner = 999
+AddEventHandler("inventory:updateScanner",function(Status)
+	InitScanner = Status
+	SoundScanner = 999
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSCANNER
@@ -1185,7 +1185,7 @@ end)
 CreateThread(function()
 	while true do
 		local TimeDistance = 999
-		if userScanner then
+		if InitScanner then
 			local Ped = PlayerPedId()
 			if not IsPedInAnyVehicle(Ped) then
 				local Coords = GetEntityCoords(Ped)
@@ -1193,7 +1193,7 @@ CreateThread(function()
 				for k,v in pairs(scanTable) do
 					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 					if Distance <= 7.25 then
-						soundScanner = 1000
+						SoundScanner = 1000
 
 						if not initSounds[k] then
 							initSounds[k] = true
@@ -1201,7 +1201,7 @@ CreateThread(function()
 
 						if Distance <= 1.25 then
 							TimeDistance = 1
-							soundScanner = 250
+							SoundScanner = 250
 
 							if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
 								TriggerEvent("inventory:MakeProducts","scanner")
@@ -1209,13 +1209,13 @@ CreateThread(function()
 								local rand = math.random(#scanCoords)
 								scanTable[k] = scanCoords[rand]
 								initSounds[k] = nil
-								soundScanner = 999
+								SoundScanner = 999
 							end
 						end
 					else
 						if initSounds[k] then
 							initSounds[k] = nil
-							soundScanner = 999
+							SoundScanner = 999
 						end
 					end
 				end
@@ -1230,11 +1230,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		if userScanner and (soundScanner == 1000 or soundScanner == 250) then
+		if InitScanner and (SoundScanner == 1000 or SoundScanner == 250) then
 			PlaySoundFrontend(-1,"MP_IDLE_TIMER","HUD_FRONTEND_DEFAULT_SOUNDSET")
 		end
 
-		Wait(soundScanner)
+		Wait(SoundScanner)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1307,7 +1307,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ATMLIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-local atmList = {
+local ATMList = {
 	["1"] = { 121.17,-3019.62,7.04 },
 	["2"] = { 797.69,-767.52,26.77 },
 	["3"] = { -1431.17,-447.73,35.91 },
@@ -1451,7 +1451,7 @@ function Creative.checkAtm(Coords)
 	local BombZone = false
 	local AtmSelected = false
 
-	for Number,v in pairs(atmList) do
+	for Number,v in pairs(ATMList) do
 		local Distance = #(vec3(Coords["x"],Coords["y"],Coords["z"]) - vec3(v[1],v[2],v[3]))
 		if Distance <= 1.0 then
 			BombZone = vec3(v[1],v[2],v[3] - 1)
@@ -2312,9 +2312,9 @@ CreateThread(function()
 		Wait(1)
 	until amountCoords == 25
 
-	for k,v in pairs(atmList) do
-		exports["target"]:AddCircleZone("Atm:"..k,vec3(v[1],v[2],v[3]),0.5,{
-			name = "Atm:"..k,
+	for Number,v in pairs(ATMList) do
+		exports["target"]:AddCircleZone("Atm:"..Number,vec3(v[1],v[2],v[3]),0.5,{
+			name = "Atm:"..Number,
 			heading = 3374176
 		},{
 			Distance = 1.0,

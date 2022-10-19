@@ -15,8 +15,8 @@ vSKINSHOP = Tunnel.getInterface("skinshop")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Lock = {}
-local Route = {}
 local Inside = {}
+local Markers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ AddEventHandler("propertys:Toggle",function(Name)
 			TriggerEvent("vRP:BucketServer",source,"Exit")
 		else
 			Inside[Passport] = Name
-			TriggerEvent("vRP:BucketServer",source,"Enter",Route[Name])
+			TriggerEvent("vRP:BucketServer",source,"Enter",Route(Name))
 		end
 	end
 end)
@@ -80,8 +80,10 @@ AddEventHandler("propertys:Buy",function(Name)
 				local Interior = Split[2]
 
 				if vRP.PaymentFull(Passport,Informations[Interior]["Price"]) then
+					Markers[Name] = true
 					local Serial = PropertysSerials()
 					vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
+					TriggerClientEvent("propertys:Markers",-1,Markers)
 					vRP.Query("propertys/Buy",{ name = Split[1], interior = Interior, passport = Passport, serial = Serial, vault = Informations[Interior]["Vault"], fridge = Informations[Interior]["Fridge"], tax = os.time() + 2592000 })
 				else
 					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -126,6 +128,11 @@ AddEventHandler("propertys:Sell",function(Name)
 				TriggerClientEvent("dynamic:closeSystem",source)
 
 				if vRP.Request(source,"Deseja vender a propriedade?","Sim, concluir a venda","Não, mudeia de ideia") then
+					if Markers[Name] then
+						Markers[Name] = nil
+						TriggerClientEvent("propertys:Markers",-1,Markers)
+					end
+
 					vRP.RemSrvData("Vault:"..Name)
 					vRP.RemSrvData("Fridge:"..Name)
 
@@ -377,20 +384,18 @@ function Creative.Update(Slot,Target,Amount,Name,Mode)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSTART
+-- ROUTE
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	local Number = 100000
-	for Name,_ in pairs(Propertys) do
-		Number = Number + 1
-		Route[Name] = Number
-	end
-end)
+function Route(Name)
+	local Split = splitString(Name,"ropertys")
+
+	return parseInt(100000 + Split[2])
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
-	TriggerClientEvent("propertys:Table",source,Propertys,Interiors)
+	TriggerClientEvent("propertys:Table",source,Propertys,Interiors,Markers)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
@@ -399,5 +404,15 @@ AddEventHandler("Disconnect",function(Passport)
 	if Inside[Passport] then
 		vRP.InsidePropertys(Passport,Propertys[Inside[Passport]])
 		Inside[Passport] = nil
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ONRESOURCESTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onResourceStart",function()
+	local Consult = vRP.Query("propertys/All")
+
+	for Index,v in pairs(Consult) do
+		Markers[v["Name"]] = true
 	end
 end)

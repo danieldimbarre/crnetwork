@@ -65,7 +65,7 @@ function cRP.bankWithdraw(amount)
 
 		local value = parseInt(amount)
 		if (vRP.InventoryWeight(Passport) + itemWeight("dollars") * value) <= vRP.GetWeight(Passport) then
-			if not vRP.WithdrawCash(Passport,source,value) then
+			if not vRP.WithdrawCash(Passport,value) then
 				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 			end
 		else

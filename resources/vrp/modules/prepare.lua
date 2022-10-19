@@ -103,6 +103,7 @@ vRP.Prepare("warehouse/Buy","INSERT INTO warehouse(name,password,Passport,tax) V
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS
 -----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("propertys/All","SELECT * FROM propertys")
 vRP.Prepare("propertys/Sell","DELETE FROM propertys WHERE Name = @name")
 vRP.Prepare("propertys/Exist","SELECT * FROM propertys WHERE Name = @name")
 vRP.Prepare("propertys/Serial","SELECT * FROM propertys WHERE Serial = @serial")

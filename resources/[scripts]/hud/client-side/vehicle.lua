@@ -33,8 +33,8 @@ local PurgeActive = false
 -- SEATBELT
 -----------------------------------------------------------------------------------------------------------------------------------------
 local SeatbeltSpeed = 0
-local Seatbelt = false
-local SeatbeltVelocity = vector3(0,0,0)
+local SeatbeltLock = false
+local SeatbeltVelocity = vec3(0,0,0)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -162,7 +162,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NITROENABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function nitroEnable()
+function NitroEnable()
 	if GetGameTimer() >= NitroButton and not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
@@ -225,34 +225,31 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NITRODISABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function nitroDisable()
-	local Ped = PlayerPedId()
-	if IsPedInAnyVehicle(Ped) then
-		local Vehicle = GetVehiclePedIsUsing(Ped)
+function NitroDisable()
+	local Vehicle = GetLastDrivenVehicle()
 
-		if NitroFlame then
-			vSERVER.ActiveNitro(VehToNet(Vehicle),false)
-			SetVehicleRocketBoostActive(Vehicle,false)
-			vSERVER.UpdateNitro(NitroFlame,NitroFuel)
-			SetVehicleBoostActive(Vehicle,false)
-			ModifyVehicleTopSpeed(Vehicle,0.0)
-			SetLightTrail(Vehicle,false)
-			NitroFlame = false
+	if NitroFlame then
+		vSERVER.ActiveNitro(VehToNet(Vehicle),false)
+		SetVehicleRocketBoostActive(Vehicle,false)
+		vSERVER.UpdateNitro(NitroFlame,NitroFuel)
+		SetVehicleBoostActive(Vehicle,false)
+		ModifyVehicleTopSpeed(Vehicle,0.0)
+		SetLightTrail(Vehicle,false)
+		NitroFlame = false
 
-			LocalPlayer["state"]["Nitro"] = false
-		end
+		LocalPlayer["state"]["Nitro"] = false
+	end
 
-		if PurgeActive then
-			SetPurgeSprays(Vehicle,false)
-			PurgeActive = false
-		end
+	if PurgeActive then
+		SetPurgeSprays(Vehicle,false)
+		PurgeActive = false
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACTIVENITRO
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("+activeNitro",nitroEnable)
-RegisterCommand("-activeNitro",nitroDisable)
+RegisterCommand("+activeNitro",NitroEnable)
+RegisterCommand("-activeNitro",NitroDisable)
 RegisterKeyMapping("+activeNitro","Ativação do nitro.","keyboard","LMENU")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FOWARDPED
@@ -473,3 +470,94 @@ end
 RegisterCommand("+SpaceVehicle",spaceEnable)
 RegisterCommand("-SpaceVehicle",spaceDisable)
 RegisterKeyMapping("+SpaceVehicle","Freio do veículo.","keyboard","SPACE")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FOWARDPED
+-----------------------------------------------------------------------------------------------------------------------------------------
+function FowardPed(Ped)
+	local Heading = GetEntityHeading(Ped) + 90.0
+	if Heading < 0.0 then
+		Heading = 360.0 + Heading
+	end
+
+	Heading = Heading * 0.0174533
+
+	return { x = math.cos(Heading) * 2.0, y = math.sin(Heading) * 2.0 }
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADBELT
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		local TimeDistance = 999
+		if LocalPlayer["state"]["Active"] then
+			local Ped = PlayerPedId()
+			if IsPedInAnyVehicle(Ped) then
+				if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyPlane(Ped) then
+					TimeDistance = 1
+
+					local Vehicle = GetVehiclePedIsUsing(Ped)
+					local Speed = GetEntitySpeed(Vehicle) * 3.6
+					if GetVehicleDoorLockStatus(Vehicle) == 2 or SeatbeltLock then
+						DisableControlAction(1,75,true)
+					end
+
+					if Speed ~= SeatbeltSpeed then
+						if (SeatbeltSpeed - Speed) >= 60 and not SeatbeltLock then
+							local FowardVeh = FowardPed(Ped)
+							local Coords = GetEntityCoords(Ped)
+
+							SetEntityCoords(Ped,Coords["x"] + FowardVeh["x"],Coords["y"] + FowardVeh["y"],Coords["z"] - 0.47,false,false,false,false)
+							SetEntityVelocity(Ped,SeatbeltVelocity["x"],SeatbeltVelocity["y"],SeatbeltVelocity["z"])
+							ApplyDamageToPed(Ped,50,false)
+
+							Wait(1)
+
+							SetPedToRagdoll(Ped,5000,5000,0,0,0,0)
+						end
+
+						SeatbeltVelocity = GetEntityVelocity(Vehicle)
+						SeatbeltSpeed = Speed
+					end
+				end
+			else
+				if SeatbeltSpeed ~= 0 then
+					SeatbeltSpeed = 0
+				end
+
+				if SeatbeltLock then
+					SendNUIMessage({ Action = "Seatbelt", Status = false })
+					SeatbeltLock = false
+				end
+
+				if NitroFlame then
+					NitroDisable()
+				end
+			end
+		end
+
+		Wait(timeDistance)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SEATBELT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("Beltz",function(source)
+	local Ped = PlayerPedId()
+	if IsPedInAnyVehicle(Ped) then
+		if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyPlane(Ped) then
+			if SeatbeltLock then
+				TriggerEvent("sounds:Private","unbelt",0.5)
+				SendNUIMessage({ Action = "Seatbelt", Status = false })
+				SeatbeltLock = false
+			else
+				TriggerEvent("sounds:Private","belt",0.5)
+				SendNUIMessage({ Action = "Seatbelt", Status = true })
+				SeatbeltLock = true
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- KEYMAPPING
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterKeyMapping("Beltz","Colocar/Retirar o cinto.","keyboard","G")

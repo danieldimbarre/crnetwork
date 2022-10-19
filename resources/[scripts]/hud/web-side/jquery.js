@@ -71,7 +71,7 @@ window.addEventListener("message",function(event){
 		break;
 
 		case "Body":
-			if (event["data"]["Status"] == true){
+			if (event["data"]["Status"]){
 				if ($("#Body").css("display") === "none"){
 					$("#Body").fadeIn(1000);
 				}
@@ -208,7 +208,7 @@ window.addEventListener("message",function(event){
 		break;
 
 		case "Vehicle":
-			if (event["data"]["Status"] == true){
+			if (event["data"]["Status"]){
 				if ($("#Vehicle").css("display") === "none"){
 					$("#Vehicle").fadeIn(1000);
 				}
@@ -250,15 +250,23 @@ window.addEventListener("message",function(event){
 		break;
 
 		case "Handbrake":
-			if (event["data"]["Status"] == false){
+			if (!event["data"]["Status"]){
 				$(".Handbrake").addClass("Gray").removeClass("Red");
 			} else {
 				$(".Handbrake").addClass("Red").removeClass("Gray");
 			}
 		break;
 
+		case "Seatbelt":
+			if (!event["data"]["Status"]){
+				$(".Seatbelt").addClass("Gray").removeClass("Green");
+			} else {
+				$(".Seatbelt").addClass("Green").removeClass("Gray");
+			}
+		break;
+
 		case "Drift":
-			if (event["data"]["Status"] == false){
+			if (!event["data"]["Status"]){
 				$(".Drift").addClass("Gray").removeClass("Yellow");
 			} else {
 				$(".Drift").addClass("Yellow").removeClass("Gray");
@@ -311,7 +319,7 @@ window.addEventListener("message",function(event){
 		break;
 
 		case "Weapons":
-			if (event["data"]["Status"] == true){
+			if (event["data"]["Status"]){
 				if ($("#NaviWeapons").css("display") === "none"){
 					$("#NaviWeapons").fadeIn(1000);
 				}

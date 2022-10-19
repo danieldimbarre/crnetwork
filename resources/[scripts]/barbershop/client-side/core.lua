@@ -38,11 +38,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("rotate",function(Data,Callback)
 	local Ped = PlayerPedId()
-	local heading = GetEntityHeading(Ped)
+	local Heading = GetEntityHeading(Ped)
 	if Data == "left" then
-		SetEntityHeading(Ped,heading + 10)
-	elseif Data == "right" then
-		SetEntityHeading(Ped,heading - 10)
+		SetEntityHeading(Ped,Heading + 10)
+	else
+		SetEntityHeading(Ped,Heading - 10)
 	end
 
 	Callback("Ok")

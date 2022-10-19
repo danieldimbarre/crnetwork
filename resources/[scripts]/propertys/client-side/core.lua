@@ -12,7 +12,9 @@ vSERVER = Tunnel.getInterface("propertys")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Init = ""
+local Blips = {}
 local Chest = ""
+local Markers = {}
 local Interior = ""
 local Propertys = {}
 local Informations = {}
@@ -200,13 +202,14 @@ end)
 -- PROPERTYS:TABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("propertys:Table")
-AddEventHandler("propertys:Table",function(pTable,iTable)
-	Propertys = pTable
-	Informations = iTable
+AddEventHandler("propertys:Table",function(PropTable,PropInfos,PropMarkers)
+	Markers = PropMarkers
+	Propertys = PropTable
+	Informations = PropInfos
 
 	local Table = {}
 
-	for _,v in pairs(Propertys) do
+	for Name,v in pairs(Propertys) do
 		table.insert(Table,{ v["x"],v["y"],v["z"],1.0,"E","Propriedade","Pressione para acessar" })
 	end
 
@@ -227,4 +230,38 @@ AddEventHandler("propertys:Table",function(pTable,iTable)
 	end
 
 	TriggerEvent("hoverfy:Insert",Table)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:BLIPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("propertys:Blips")
+AddEventHandler("propertys:Blips",function()
+	if json.encode(Blips) ~= "[]" then
+		for _,v in pairs(Blips) do
+			if DoesBlipExist(v) then
+				RemoveBlip(v)
+			end
+		end
+
+		Blips = {}
+
+		TriggerEvent("Notify","amarelo","Marcações desativadas.",10000)
+	else
+		for Name,v in pairs(Propertys) do
+			Blips[Name] = AddBlipForCoord(v["x"],v["y"],v["z"])
+			SetBlipSprite(Blips[Name],374)
+			SetBlipAsShortRange(Blips[Name],true)
+			SetBlipColour(Blips[Name],Markers[Name] and 35 or 43)
+			SetBlipScale(Blips[Name],0.4)
+		end
+
+		TriggerEvent("Notify","verde","Marcações ativadas.",10000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:MARKERS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("propertys:Markers")
+AddEventHandler("propertys:Markers",function(PropMarkers)
+	Markers = PropMarkers
 end)

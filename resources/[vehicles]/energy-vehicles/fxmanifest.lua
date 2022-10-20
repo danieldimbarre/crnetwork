@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 
-client_script "client-side/core.lua"
+client_script "client-side/*"
 
 files {
 	"audio/**/*",

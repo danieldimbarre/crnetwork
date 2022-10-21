@@ -672,7 +672,7 @@ AddEventHandler("skinshop:toggleBackpack",function(Infos)
 		Dataset["backpack"]["item"] = Model
 	end
 
-	SetPedComponentVariation(PlayerPedId(),5,skiDatasetnData["backpack"]["item"],Dataset["backpack"]["texture"],1)
+	SetPedComponentVariation(PlayerPedId(),5,Dataset["backpack"]["item"],Dataset["backpack"]["texture"],1)
 
 	vSERVER.updateClothes(Dataset)
 end)

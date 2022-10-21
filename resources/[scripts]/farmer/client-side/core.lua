@@ -11,8 +11,8 @@ function InputTargetPosition(Number,v)
 		exports["target"]:AddBoxZone("Farmer:"..Number,v["Coords"],v["Width"],v["Width"],{
 			name = "Farmer:"..Number,
 			heading = v["Heading"],
-			minZ = v["z"] - 1.0,
-			maxZ = v["z"] - 0.5
+			minZ = v["Coords"]["z"] - 1.0,
+			maxZ = v["Coords"]["z"] - 0.5
 		},{
 			shop = Number,
 			Distance = v["Distance"],

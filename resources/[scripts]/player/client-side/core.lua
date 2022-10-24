@@ -1058,34 +1058,20 @@ end)
 -- ELEVATOR
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Elevator = {
-	["Hospital"] = {{
-		["Coords"] = vector3(-664.27,326.48,78.12),
-		["Heading"] = 356,
-		["Label"] = "Térreo"
-	},{
-		["Coords"] = vector3(-664.27,326.48,83.09),
-		["Heading"] = 356,
-		["Label"] = "1° Andar"
-	},{
-		["Coords"] = vector3(-664.27,326.48,88.02),
-		["Heading"] = 356,
-		["Label"] = "2° Andar"
-	},{
-		["Coords"] = vector3(-664.27,326.48,92.74),
-		["Heading"] = 356,
-		["Label"] = "3° Andar"
-	},{
-		["Coords"] = vector3(-664.27,326.48,140.12),
-		["Heading"] = 356,
-		["Label"] = "Cobertura"
-	}}
+	["Hospital"] = {
+		{ ["Coords"] = vector3(-664.27,326.48,78.12), ["Heading"] = 356, ["Label"] = "Térreo" },
+		{ ["Coords"] = vector3(-664.27,326.48,83.09), ["Heading"] = 356, ["Label"] = "1° Andar" },
+		{ ["Coords"] = vector3(-664.27,326.48,88.02), ["Heading"] = 356, ["Label"] = "2° Andar" },
+		{ ["Coords"] = vector3(-664.27,326.48,92.74), ["Heading"] = 356, ["Label"] = "3° Andar" },
+		{ ["Coords"] = vector3(-664.27,326.48,140.12), ["Heading"] = 356, ["Label"] = "Cobertura" }
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADELEVATOR
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	local ElevatorList = {}
-	for Number,Table in pairs(ElevatorList) do
+	for Number,Table in pairs(Elevator) do
 		for Index,Floor in pairs(Table) do
 			for k,v in pairs(Table) do
 				if k ~= Index then

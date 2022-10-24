@@ -124,7 +124,7 @@ CreateThread(function()
 
 							if works[inService]["collectAnim"] ~= nil then
 								TriggerEvent("cancelando",true)
-								TriggerEvent("player:blockCommands",true)
+								TriggerEvent("player:Commands",true)
 								TriggerEvent("Progress",works[inService]["collectDuration"] + 500)
 								SetEntityHeading(ped,works[inService]["collectCoords"][inCollect][4])
 								SetEntityCoords(ped,works[inService]["collectCoords"][inCollect][1],works[inService]["collectCoords"][inCollect][2],works[inService]["collectCoords"][inCollect][3] - 1,1,0,0,0)
@@ -136,7 +136,7 @@ CreateThread(function()
 
 								Citizen.Wait(works[inService]["collectDuration"])
 
-								TriggerEvent("player:blockCommands",false)
+								TriggerEvent("player:Commands",false)
 								TriggerEvent("cancelando",false)
 								vRP.removeObjects()
 							end

@@ -133,7 +133,27 @@ local Objects = {
 	["119"] = { ["Coords"] = vec3(227.83,234.5,97.12), ["Heading"] = 56.37, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 	["120"] = { ["Coords"] = vec3(230.12,234.93,97.12), ["Heading"] = 332.08, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 	["121"] = { ["Coords"] = vec3(229.86,234.9,97.12), ["Heading"] = 354.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["122"] = { ["Coords"] = vec3(230.15,234.78,97.12), ["Heading"] = 339.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 }
+	["122"] = { ["Coords"] = vec3(230.15,234.78,97.12), ["Heading"] = 339.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	-- prop_box_ammo06a
+	["128"] = { ["Coords"] = vec3(574.01,132.56,98.48), ["Heading"] = 70.99, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["129"] = { ["Coords"] = vec3(344.79,929.2,202.44), ["Heading"] = 268.09, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["130"] = { ["Coords"] = vec3(-123.8,1896.67,196.34), ["Heading"] = 358.95, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["131"] = { ["Coords"] = vec3(-1099.85,2703.51,21.99), ["Heading"] = 221.35, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["132"] = { ["Coords"] = vec3(-2198.91,4243.21,46.92), ["Heading"] = 128.84, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["133"] = { ["Coords"] = vec3(-1487.02,4983.14,62.67), ["Heading"] = 174.11, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["134"] = { ["Coords"] = vec3(1346.49,6396.73,32.42), ["Heading"] = 90.94, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["135"] = { ["Coords"] = vec3(2535.72,4661.39,33.08), ["Heading"] = 316.4, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["136"] = { ["Coords"] = vec3(1155.62,-1334.48,33.72), ["Heading"] = 174.97, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["137"] = { ["Coords"] = vec3(1116.06,-2498.07,32.37), ["Heading"] = 193.39, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["138"] = { ["Coords"] = vec3(261.06,-3135.82,4.8), ["Heading"] = 88.83, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["139"] = { ["Coords"] = vec3(-1619.81,-1035.0,12.16), ["Heading"] = 50.84, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["140"] = { ["Coords"] = vec3(-3420.87,977.0,10.91), ["Heading"] = 226.29, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["141"] = { ["Coords"] = vec3(-1909.53,4624.93,56.07), ["Heading"] = 135.57, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["142"] = { ["Coords"] = vec3(894.51,3211.45,38.09), ["Heading"] = 273.04, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["143"] = { ["Coords"] = vec3(1791.71,4602.84,36.69), ["Heading"] = 185.86, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["144"] = { ["Coords"] = vec3(464.8,6462.03,28.76), ["Heading"] = 334.71, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["145"] = { ["Coords"] = vec3(63.22,6323.67,37.87), ["Heading"] = 301.22, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
+	["146"] = { ["Coords"] = vec3(-736.64,5594.98,40.66), ["Heading"] = 268.78, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 30.0, ["Model"] = "prop_mb_crate_01a", ["Event"] = "farmer:Weapons", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75, ["Perm"] = "Marabunta" },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FRUITMAN
@@ -303,6 +323,73 @@ AddEventHandler("farmer:Transporter",function(Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
 					vRP.GenerateItem(Passport,"pouch",1,true)
+					vRP.UpgradeStress(Passport,1)
+					vRPC.removeObjects(source)
+				else
+					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- AMMO
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("farmer:Ammo")
+AddEventHandler("farmer:Ammo",function(Number)
+	if Objects[Number] then
+		if GlobalState["Work"] >= Objects[Number]["Time"] then
+			local source = source
+			local Passport = vRP.Passport(source)
+			if Passport and vRP.hasGroup(Passport,Objects[Number]["Perm"]) then
+				local Amount = math.random(2,5)
+				if (vRP.InventoryWeight(Passport) + itemWeight("polvora") * Amount) <= vRP.GetWeight(Passport) then
+					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+					TriggerClientEvent("Progress",source,"Coletando",1000)
+					Objects[Number]["Time"] = GlobalState["Work"] + 10
+					Player(source)["state"]["Buttons"] = true
+					Player(source)["state"]["Cancel"] = true
+
+					Wait(1000)
+
+					TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["Time"])
+					Player(source)["state"]["Buttons"] = false
+					Player(source)["state"]["Cancel"] = false
+					vRP.GenerateItem(Passport,"polvora",Amount,true)
+					vRP.UpgradeStress(Passport,1)
+					vRPC.removeObjects(source)
+				else
+					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WEAPONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("farmer:Weapons")
+AddEventHandler("farmer:Weapons",function(Number)
+	if Objects[Number] then
+		if GlobalState["Work"] >= Objects[Number]["Time"] then
+			local source = source
+			local Passport = vRP.Passport(source)
+			if Passport and vRP.hasGroup(Passport,Objects[Number]["Perm"]) then
+				local Items = { "pistolbody","smgbody","riflebody" }
+				local Select = math.random(#Items)
+				if (vRP.InventoryWeight(Passport) + itemWeight(Items[Select])) <= vRP.GetWeight(Passport) then
+					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+					TriggerClientEvent("Progress",source,"Coletando",1000)
+					Objects[Number]["Time"] = GlobalState["Work"] + 10
+					Player(source)["state"]["Buttons"] = true
+					Player(source)["state"]["Cancel"] = true
+
+					Wait(1000)
+
+					TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["Time"])
+					Player(source)["state"]["Buttons"] = false
+					Player(source)["state"]["Cancel"] = false
+					vRP.GenerateItem(Passport,Items[Item],1,true)
 					vRP.UpgradeStress(Passport,1)
 					vRPC.removeObjects(source)
 				else

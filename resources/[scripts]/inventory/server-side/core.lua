@@ -2260,11 +2260,15 @@ end)
 -- DELIVER:UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("deliver:Update")
-AddEventHandler("deliver:Update",function(Selected)
+AddEventHandler("deliver:Update",function(Selected,Finish)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Selected then
-		Collect[Passport] = Selected
+		if Finish then
+			Collect[Passport] = nil
+		else
+			Collect[Passport] = Selected
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

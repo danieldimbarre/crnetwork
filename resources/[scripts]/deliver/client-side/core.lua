@@ -301,7 +301,7 @@ AddEventHandler("deliver:Starting",function(Init)
 					Selected = 1
 				end
 
-				TriggerServerEvent("deliver:Update",Selected)
+				TriggerServerEvent("deliver:Update",Selected,true)
 			else
 				if Locate ~= Init then
 					Selected = math.random(#Cds[Init])

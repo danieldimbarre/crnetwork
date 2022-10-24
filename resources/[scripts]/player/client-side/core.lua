@@ -1059,11 +1059,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Elevator = {
 	["Hospital"] = {
-		{ ["Coords"] = vector3(-664.27,326.48,78.12), ["Heading"] = 356, ["Label"] = "Térreo" },
-		{ ["Coords"] = vector3(-664.27,326.48,83.09), ["Heading"] = 356, ["Label"] = "1° Andar" },
-		{ ["Coords"] = vector3(-664.27,326.48,88.02), ["Heading"] = 356, ["Label"] = "2° Andar" },
-		{ ["Coords"] = vector3(-664.27,326.48,92.74), ["Heading"] = 356, ["Label"] = "3° Andar" },
-		{ ["Coords"] = vector3(-664.27,326.48,140.12), ["Heading"] = 356, ["Label"] = "Cobertura" }
+		{ ["Coords"] = vector3(-664.27,326.48,78.12), ["Label"] = "Térreo" },
+		{ ["Coords"] = vector3(-664.27,326.48,83.09), ["Label"] = "1° Andar" },
+		{ ["Coords"] = vector3(-664.27,326.48,88.02), ["Label"] = "2° Andar" },
+		{ ["Coords"] = vector3(-664.27,326.48,92.74), ["Label"] = "3° Andar" },
+		{ ["Coords"] = vector3(-664.27,326.48,140.12), ["Label"] = "Cobertura" }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1076,7 +1076,7 @@ CreateThread(function()
 			for k,v in pairs(Table) do
 				if k ~= Index then
 					table.insert(ElevatorList,{
-						event = "player:ElevatorTeleport",
+						event = "player:Elevaport",
 						label = v["Label"],
 						service = Number,
 						teleport = k,
@@ -1085,9 +1085,9 @@ CreateThread(function()
 				end
 			end
 
-			exports["target"]:AddBoxZone("Elevator:"..Number,Floor["Coords"],3,3, {
-				name = "Elevator:"..Number,
-				heading = Floor["Heading"],
+			exports["target"]:AddBoxZone("Elevator:"..Number.."-"..Index,Floor["Coords"],3,3,{
+				name = "Elevator:"..Number.."-"..Index,
+				heading = 3374176,
 				minZ = Floor["Coords"]["z"] - 1.5,
 				maxZ = Floor["Coords"]["z"] + 2
 			},{
@@ -1100,10 +1100,10 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PLAYER:ELEVATORTELEPORT
+-- PLAYER:ELEVAPORT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:ElevatorTeleport")
-AddEventHandler("player:ElevatorTeleport",function(Number,Floor)
+RegisterNetEvent("player:Elevaport")
+AddEventHandler("player:Elevaport",function(Number,Floor)
 	DoScreenFadeOut(0)
 
     local Ped = PlayerPedId()
@@ -1112,60 +1112,6 @@ AddEventHandler("player:ElevatorTeleport",function(Number,Floor)
     Wait(1000)
 
     DoScreenFadeIn(1000)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CARWASH
------------------------------------------------------------------------------------------------------------------------------------------
-local WashProgress = false
-local Wash = {
-	{ 24.27,-1391.96,28.7 },
-	{ 170.59,-1718.43,28.66 },
-	{ 167.69,-1715.92,28.66 },
-	{ -699.86,-932.84,18.38 }
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADCARWASH
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local TimeDistance = 999
-		local Ped = PlayerPedId()
-		if IsPedInAnyVehicle(Ped) and not WashProgress then
-			local Coords = GetEntityCoords(Ped)
-			local Vehicle = GetVehiclePedIsUsing(Ped)
-			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-				for _,v in pairs(Wash) do
-					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-					if Distance <= 2.5 then
-						TimeDistance = 1
-
-						if IsControlJustPressed(1,38) then
-							WashProgress = true
-
-							FreezeEntityPosition(Vehicle,true)
-
-							UseParticleFxAssetNextCall("core")
-							local Particle01 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",v[1],v[2],v[3],0.0,0.0,0.0,1.0,false,false,false,false)
-
-							UseParticleFxAssetNextCall("core")
-							local Particle02 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",v[1] + 2.5,v[2],v[3],0.0,0.0,0.0,1.0,false,false,false,false)
-
-							SetTimeout(15000,function()
-								TriggerServerEvent("CleanVehicle",VehToNet(Vehicle))
-
-								FreezeEntityPosition(Vehicle,false)
-								StopParticleFxLooped(Particle01,0)
-								StopParticleFxLooped(Particle02,0)
-								WashProgress = false
-							end)
-						end
-					end
-				end
-			end
-		end
-
-		Wait(TimeDistance)
-	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CARWASH

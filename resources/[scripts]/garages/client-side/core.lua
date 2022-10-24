@@ -659,7 +659,7 @@ CreateThread(function()
 					if Distance <= 1.25 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
+						if IsControlJustPressed(1,38) then
 							local Vehicles = vSERVER.Vehicles(Number)
 							if Vehicles then
 								exports["dynamic"]:AddButton("Guardar","Guardar o veículo mais próximo.","garages:Delete","",false,false)

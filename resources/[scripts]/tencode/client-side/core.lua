@@ -27,12 +27,10 @@ end)
 -- SENDCODE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("sendCode",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		SetNuiFocus(false,false)
-		SetCursorLocation(0.5,0.5)
-		vSERVER.sendCode(Data["code"])
-		SendNUIMessage({ tencode = false })
-	end
+	SetNuiFocus(false,false)
+	SetCursorLocation(0.5,0.5)
+	vSERVER.sendCode(Data["code"])
+	SendNUIMessage({ tencode = false })
 
 	Callback("Ok")
 end)
@@ -90,7 +88,7 @@ end)
 -- TOGGLERADAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleRadar",function()
-	if LocalPlayer["state"]["Network"] and not IsPauseMenuActive() then
+	if not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
 		if IsPedInAnyPoliceVehicle(Ped) and LocalPlayer["state"]["Police"] then
 			if policeRadar then
@@ -116,7 +114,7 @@ end)
 -- TENCODE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("enterTencodes",function()
-	if LocalPlayer["state"]["Police"] and LocalPlayer["state"]["Network"] and LocalPlayer["state"]["Route"] < 900000 and not IsPauseMenuActive() then
+	if LocalPlayer["state"]["Police"] and LocalPlayer["state"]["Route"] < 900000 and not IsPauseMenuActive() then
 		SetNuiFocus(true,true)
 		SetCursorLocation(0.5,0.1)
 		SendNUIMessage({ tencode = true })

@@ -17,7 +17,7 @@ RegisterNetEvent("tablet:Open")
 AddEventHandler("tablet:Open",function(Select)
 	if LocalPlayer["state"]["Route"] < 900000 then
 		local Ped = PlayerPedId()
-		if not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and GetEntityHealth(Ped) > 100 and LocalPlayer["state"]["Network"] then
+		if not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and GetEntityHealth(Ped) > 100 then
 			Open = Select
 			SetNuiFocus(true,true)
 			SetCursorLocation(0.5,0.5)
@@ -57,9 +57,7 @@ end)
 -- BUY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Buy",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Buy(Data["name"])
-	end
+	vSERVER.Buy(Data["name"])
 
 	Callback("Ok")
 end)
@@ -67,9 +65,7 @@ end)
 -- RENTAL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Rental",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Rental(Data["name"])
-	end
+	vSERVER.Rental(Data["name"])
 
 	Callback("Ok")
 end)
@@ -90,29 +86,27 @@ local benCoords = { 0.0,0.0,0.0 }
 -- DRIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Drive",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		if vSERVER.startDrive() then
-			SetNuiFocus(false,false)
-			SetCursorLocation(0.5,0.5)
-			SendNUIMessage({ action = "Close" })
+	if vSERVER.startDrive() then
+		SetNuiFocus(false,false)
+		SetCursorLocation(0.5,0.5)
+		SendNUIMessage({ action = "Close" })
 
-			local Ped = PlayerPedId()
-			local Coords = GetEntityCoords(Ped)
-			benCoords = { Coords["x"],Coords["y"],Coords["z"] }
+		local Ped = PlayerPedId()
+		local Coords = GetEntityCoords(Ped)
+		benCoords = { Coords["x"],Coords["y"],Coords["z"] }
 
-			LocalPlayer["state"]["Race"] = true
-			LocalPlayer["state"]["Commands"] = true
-			TriggerEvent("Notify","azul","Teste iniciado, para finalizar saia do veículo.",5000)
+		LocalPlayer["state"]["Race"] = true
+		LocalPlayer["state"]["Commands"] = true
+		TriggerEvent("Notify","azul","Teste iniciado, para finalizar saia do veículo.",5000)
 
-			Wait(1000)
+		Wait(1000)
 
-			vehCreate(Data["name"])
+		vehCreate(Data["name"])
 
-			Wait(1000)
+		Wait(1000)
 
-			SetPedIntoVehicle(Ped,vehDrive,-1)
-			benDrive = true
-		end
+		SetPedIntoVehicle(Ped,vehDrive,-1)
+		benDrive = true
 	end
 
 	Callback("Ok")

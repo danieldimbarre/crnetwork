@@ -40,7 +40,7 @@ end)
 -- DEPOSIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("deposit",function(Data,Callback)
-	if parseInt(Data["value"]) > 0 and LocalPlayer["state"]["Network"] then
+	if parseInt(Data["value"]) > 0 then
 		vSERVER.bankDeposit(Data["value"])
 	end
 
@@ -50,7 +50,7 @@ end)
 -- WITHDRAW
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("withdraw",function(Data,Callback)
-	if parseInt(Data["value"]) > 0 and LocalPlayer["state"]["Network"] then
+	if parseInt(Data["value"]) > 0 then
 		vSERVER.bankWithdraw(Data["value"])
 	end
 

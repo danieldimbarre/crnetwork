@@ -28,9 +28,7 @@ end)
 -- FUNCTIONCRAFT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("functionCraft",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.functionCrafting(Data["index"],Data["craft"],Data["amount"],Data["slot"])
-	end
+	vSERVER.functionCrafting(Data["index"],Data["craft"],Data["amount"],Data["slot"])
 
 	Callback("Ok")
 end)
@@ -38,9 +36,7 @@ end)
 -- FUNCTIONDESTROY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("functionDestroy",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.functionDestroy(Data["index"],Data["craft"],Data["amount"],Data["slot"])
-	end
+	vSERVER.functionDestroy(Data["index"],Data["craft"],Data["amount"],Data["slot"])
 
 	Callback("Ok")
 end)
@@ -48,9 +44,7 @@ end)
 -- POPULATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("populateSlot",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		TriggerServerEvent("crafting:populateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
-	end
+	TriggerServerEvent("crafting:populateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
 
 	Callback("Ok")
 end)
@@ -58,9 +52,7 @@ end)
 -- UPDATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSlot",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		TriggerServerEvent("crafting:updateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
-	end
+	TriggerServerEvent("crafting:updateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
 
 	Callback("Ok")
 end)

@@ -8,7 +8,7 @@ local numberBlips = 0
 -- NOTIFY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("enterNotifys",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and LocalPlayer["state"]["Network"] and not IsPauseMenuActive() then
+	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPauseMenuActive() then
 		SendNUIMessage({ action = "showAll" })
 	end
 end)

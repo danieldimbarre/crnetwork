@@ -1,5 +1,3 @@
-var Networked = false;
-// -------------------------------------------------------------------------------------------
 window.addEventListener("message",function(event){
 	switch (event["data"]["Action"]){
 		case "Show":
@@ -11,10 +9,3 @@ window.addEventListener("message",function(event){
 		break;
 	}
 });
-// -------------------------------------------------------------------------------------------
-setInterval(() => {
-	if (navigator.onLine != Networked){
-		Networked = navigator.onLine
-		$.post("http://slotmachine/Network",JSON.stringify({ status: Networked }));
-	}
-},500)

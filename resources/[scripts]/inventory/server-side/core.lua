@@ -2263,7 +2263,7 @@ RegisterServerEvent("deliver:Update")
 AddEventHandler("deliver:Update",function(Selected)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Collect[Passport] and Selected then
+	if Passport and Selected then
 		Collect[Passport] = Selected
 	end
 end)

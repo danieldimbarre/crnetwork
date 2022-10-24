@@ -107,9 +107,7 @@ end)
 -- REMOVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Remove",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		TriggerServerEvent("service:Remove",Data["passport"])
-	end
+	TriggerServerEvent("service:Remove",Data["passport"])
 
 	Callback("Ok")
 end)
@@ -117,9 +115,7 @@ end)
 -- ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Add",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		TriggerServerEvent("service:Add",Data["passport"])
-	end
+	TriggerServerEvent("service:Add",Data["passport"])
 
 	Callback("Ok")
 end)

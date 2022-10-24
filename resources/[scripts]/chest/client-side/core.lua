@@ -124,9 +124,7 @@ end)
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Take(Data["item"],Data["slot"],Data["amount"],Data["target"])
-	end
+	vSERVER.Take(Data["item"],Data["slot"],Data["amount"],Data["target"])
 
 	Callback("Ok")
 end)
@@ -134,9 +132,7 @@ end)
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Store",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"])
-	end
+	vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"])
 
 	Callback("Ok")
 end)
@@ -144,9 +140,7 @@ end)
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Update",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Update(Data["slot"],Data["target"],Data["amount"])
-	end
+	vSERVER.Update(Data["slot"],Data["target"],Data["amount"])
 
 	Callback("Ok")
 end)

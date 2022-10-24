@@ -162,9 +162,7 @@ end)
 -- DELIVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Deliver",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Deliver(Data["slot"])
-	end
+	vSERVER.Deliver(Data["slot"])
 
 	Callback("Ok")
 end)
@@ -173,18 +171,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Slot")
 AddEventHandler("inventory:Slot",function(Number,Amount)
-	if LocalPlayer["state"]["Network"] then
-		PushSlot = parseInt(Number)
-		vSERVER.UseItem(Number,Amount)
-	end
+	PushSlot = parseInt(Number)
+	vSERVER.UseItem(Number,Amount)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- USEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("useItem",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		TriggerEvent("inventory:Slot",Data["slot"],Data["amount"])
-	end
+	TriggerEvent("inventory:Slot",Data["slot"],Data["amount"])
 
 	Callback("Ok")
 end)
@@ -192,9 +186,7 @@ end)
 -- SENDITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("sendItem",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.SendItem(Data["slot"],Data["amount"])
-	end
+	vSERVER.SendItem(Data["slot"],Data["amount"])
 
 	Callback("Ok")
 end)
@@ -202,9 +194,7 @@ end)
 -- UPDATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSlot",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vRPS.invUpdate(Data["slot"],Data["target"],Data["amount"])
-	end
+	vRPS.invUpdate(Data["slot"],Data["target"],Data["amount"])
 
 	Callback("Ok")
 end)
@@ -213,9 +203,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Update")
 AddEventHandler("inventory:Update",function(action)
-	if LocalPlayer["state"]["Network"] then
-		SendNUIMessage({ action = action })
-	end
+	SendNUIMessage({ action = action })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:VERIFYWEAPON
@@ -263,7 +251,7 @@ end)
 -- OPENBACKPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("openBackpack",function()
-	if GetEntityHealth(PlayerPedId()) > 100 and not LocalPlayer["state"]["Buttons"] and LocalPlayer["state"]["Network"] and not IsPauseMenuActive() then
+	if GetEntityHealth(PlayerPedId()) > 100 and not LocalPlayer["state"]["Buttons"] and not IsPauseMenuActive() then
 		if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPlayerFreeAiming(PlayerId()) then
 			Backpack = true
 			SetNuiFocus(true,true)
@@ -893,13 +881,11 @@ end
 -- DROPITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("dropItem",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		local Ped = PlayerPedId()
-		local Coords = GetEntityCoords(Ped)
-		local _,Z = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
+	local Ped = PlayerPedId()
+	local Coords = GetEntityCoords(Ped)
+	local _,Z = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
 
-		vSERVER.Drops(Data["item"],Data["slot"],Data["amount"],Coords["x"],Coords["y"],Z)
-	end
+	vSERVER.Drops(Data["item"],Data["slot"],Data["amount"],Coords["x"],Coords["y"],Z)
 
 	Callback("Ok")
 end)
@@ -988,9 +974,7 @@ end)
 -- PICKUPITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("pickupItem",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Pickup(Data["id"],Data["amount"],Data["target"])
-	end
+	vSERVER.Pickup(Data["id"],Data["amount"],Data["target"])
 
 	Callback("Ok")
 end)
@@ -1203,7 +1187,7 @@ CreateThread(function()
 							TimeDistance = 1
 							SoundScanner = 250
 
-							if IsControlJustPressed(1,38) and LocalPlayer["state"]["Network"] then
+							if IsControlJustPressed(1,38) then
 								TriggerEvent("inventory:MakeProducts","scanner")
 
 								local rand = math.random(#scanCoords)

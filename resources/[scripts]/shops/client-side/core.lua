@@ -30,9 +30,7 @@ end)
 -- REQUESTBUY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("functionShops",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.functionShops(Data["shop"],Data["item"],Data["amount"],Data["slot"])
-	end
+	vSERVER.functionShops(Data["shop"],Data["item"],Data["amount"],Data["slot"])
 
 	Callback("Ok")
 end)
@@ -40,9 +38,7 @@ end)
 -- POPULATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("populateSlot",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		TriggerServerEvent("shops:populateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
-	end
+	TriggerServerEvent("shops:populateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
 
 	Callback("Ok")
 end)
@@ -50,9 +46,7 @@ end)
 -- UPDATESLOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSlot",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		TriggerServerEvent("shops:updateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
-	end
+	TriggerServerEvent("shops:updateSlot",Data["item"],Data["slot"],Data["target"],Data["amount"])
 
 	Callback("Ok")
 end)

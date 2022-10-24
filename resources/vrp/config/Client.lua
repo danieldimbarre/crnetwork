@@ -33,7 +33,7 @@ end)
 -- BIND
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("energyBind",function(source,args,rawCommand)
-	if GetGameTimer() >= cdBtns and LocalPlayer["state"]["Network"] then
+	if GetGameTimer() >= cdBtns then
 		cdBtns = GetGameTimer() + 1000
 
 		local Ped = PlayerPedId()

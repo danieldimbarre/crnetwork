@@ -25,7 +25,7 @@ CreateThread(function()
 	while true do
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
-		if not IsPedInAnyVehicle(Ped) and LocalPlayer["state"]["Network"] then
+		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
 
 			if Init == "" then
@@ -158,9 +158,7 @@ end)
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Take(Data["slot"],Data["amount"],Data["target"],Init,Chest)
-	end
+	vSERVER.Take(Data["slot"],Data["amount"],Data["target"],Init,Chest)
 
 	Callback("Ok")
 end)
@@ -168,9 +166,7 @@ end)
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Store",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"],Init,Chest)
-	end
+	vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"],Init,Chest)
 
 	Callback("Ok")
 end)
@@ -178,9 +174,7 @@ end)
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Update",function(Data,Callback)
-	if LocalPlayer["state"]["Network"] then
-		vSERVER.Update(Data["slot"],Data["target"],Data["amount"],Init,Chest)
-	end
+	vSERVER.Update(Data["slot"],Data["target"],Data["amount"],Init,Chest)
 
 	Callback("Ok")
 end)

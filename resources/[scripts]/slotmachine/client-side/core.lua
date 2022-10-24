@@ -163,10 +163,3 @@ end
 function Creative.UpdateMachines(Table)
 	Machines = Table
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- NETWORK
------------------------------------------------------------------------------------------------------------------------------------------
-LocalPlayer["state"]["Network"] = false
-RegisterNUICallback("Network",function(Data,Callback)
-	LocalPlayer["state"]["Network"] = Data["status"]
-end)

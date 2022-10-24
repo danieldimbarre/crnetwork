@@ -1602,7 +1602,7 @@ CreateThread(function()
 					if Distance <= 2 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and vSERVER.CheckWanted() and LocalPlayer["state"]["Network"] then
+						if IsControlJustPressed(1,38) and vSERVER.CheckWanted() then
 							openTattooShop()
 						end
 					end

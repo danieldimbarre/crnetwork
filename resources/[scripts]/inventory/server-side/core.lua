@@ -122,21 +122,21 @@ Objects = {
 	["45"] = { x = 63.22, y = 6323.67, z = 37.87, h = 301.22, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 18 },
 	["46"] = { x = -736.64, y = 5594.98, z = 40.66, h = 268.78, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 19 },
 
-	["47"] = { x = -2682.86, y = 2304.87, z = 20.85, h = 164.19, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 1 },
-	["48"] = { x = -1282.33, y = 2559.98, z = 17.4, h = 148.06, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 2 },
-	["49"] = { x = 159.65, y = 3118.8, z = 42.44, h = 16.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 3 },
-	["50"] = { x = 1061.43, y = 3527.62, z = 33.15, h = 255.93, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 4 },
-	["51"] = { x = 2370.22, y = 3156.55, z = 47.21, h = 221.77, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 5 },
-	["52"] = { x = 2520.51, y = 2637.83, z = 36.95, h = 314.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 6 },
-	["53"] = { x = 2572.37, y = 477.44, z = 107.68, h = 269.49, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 7 },
-	["54"] = { x = 1223.15, y = -1079.56, z = 37.53, h = 123.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 8 },
-	["55"] = { x = 1048.49, y = -247.53, z = 68.66, h = 149.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 9 },
-	["56"] = { x = 499.41, y = -529.38, z = 23.76, h = 262.13, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 10 },
-	["57"] = { x = 592.53, y = -2115.87, z = 4.76, h = 100.96, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 11 },
-	["58"] = { x = 523.43, y = -2578.67, z = 13.82, h = 318.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 12 },
-	["59"] = { x = -2.98, y = -1299.67, z = 28.28, h = 359.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 13 },
-	["60"] = { x = 183.11, y = -1086.93, z = 28.28, h = 348.57, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 14 },
-	["61"] = { x = 713.88, y = -850.95, z = 23.3, h = 271.63, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 15 }
+	["47"] = { x = -2682.86, y = 2304.87, z = 20.85, h = 164.19, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 1 },
+	["48"] = { x = -1282.33, y = 2559.98, z = 17.4, h = 148.06, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 2 },
+	["49"] = { x = 159.65, y = 3118.8, z = 42.44, h = 16.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 3 },
+	["50"] = { x = 1061.43, y = 3527.62, z = 33.15, h = 255.93, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 4 },
+	["51"] = { x = 2370.22, y = 3156.55, z = 47.21, h = 221.77, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 5 },
+	["52"] = { x = 2520.51, y = 2637.83, z = 36.95, h = 314.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 6 },
+	["53"] = { x = 2572.37, y = 477.44, z = 107.68, h = 269.49, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 7 },
+	["54"] = { x = 1223.15, y = -1079.56, z = 37.53, h = 123.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 8 },
+	["55"] = { x = 1048.49, y = -247.53, z = 68.66, h = 149.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 9 },
+	["56"] = { x = 499.41, y = -529.38, z = 23.76, h = 262.13, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 10 },
+	["57"] = { x = 592.53, y = -2115.87, z = 4.76, h = 100.96, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 11 },
+	["58"] = { x = 523.43, y = -2578.67, z = 13.82, h = 318.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 12 },
+	["59"] = { x = -2.98, y = -1299.67, z = 28.28, h = 359.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 13 },
+	["60"] = { x = 183.11, y = -1086.93, z = 28.28, h = 348.57, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 14 },
+	["61"] = { x = 713.88, y = -850.95, z = 23.3, h = 271.63, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 15 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS
@@ -396,30 +396,25 @@ LootItens = {
 		}
 	},
 	["Supplies"] = {
-		["Cooldown"] = 3600,
-		["List"] = {
-			{ ["item"] = "tarp", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "sheetmetal", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "roadsigns", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "leather", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "animalfat", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "cotton", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "plaster", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "sulfuric", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "saline", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "alcohol", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "syringe", ["min"] = 2, ["max"] = 3 },
-			{ ["item"] = "card01", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "card02", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "card04", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "card05", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "silk", ["min"] = 1, ["max"] = 3 }
-		}
-	},
-	["Ammos"] = {
 		["Cooldown"] = 10,
 		["List"] = {
+			-- { ["item"] = "tarp", ["min"] = 1, ["max"] = 1 },
+			-- { ["item"] = "sheetmetal", ["min"] = 1, ["max"] = 1 },
+			-- { ["item"] = "roadsigns", ["min"] = 1, ["max"] = 1 },
+			-- { ["item"] = "leather", ["min"] = 1, ["max"] = 3 },
+			-- { ["item"] = "animalfat", ["min"] = 1, ["max"] = 2 },
+			-- { ["item"] = "cotton", ["min"] = 1, ["max"] = 2 },
+			-- { ["item"] = "plaster", ["min"] = 1, ["max"] = 2 },
+			-- { ["item"] = "sulfuric", ["min"] = 1, ["max"] = 2 },
+			-- { ["item"] = "saline", ["min"] = 1, ["max"] = 2 },
+			-- { ["item"] = "alcohol", ["min"] = 1, ["max"] = 2 },
+			-- { ["item"] = "syringe", ["min"] = 2, ["max"] = 3 },
+			-- { ["item"] = "card01", ["min"] = 1, ["max"] = 1 },
+			-- { ["item"] = "card02", ["min"] = 1, ["max"] = 1 },
+			-- { ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
+			-- { ["item"] = "card04", ["min"] = 1, ["max"] = 1 },
+			-- { ["item"] = "card05", ["min"] = 1, ["max"] = 1 },
+			-- { ["item"] = "silk", ["min"] = 1, ["max"] = 3 },
 			{ ["item"] = "polvora", ["min"] = 2, ["max"] = 5 }
 		}
 	}

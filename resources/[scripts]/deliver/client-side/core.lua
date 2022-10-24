@@ -24,7 +24,7 @@ local initList = {
 	["BeanMachine"] = { 126.68,-1035.54,29.27,0.5,1.0,"Trabalhar",false },
 	["Lumberman"] = { 2433.45,5013.46,46.99,0.5,1.0,"Trabalhar",false },
 	["Transporter"] = { 229.16,231.91,97.04,0.25,1.0,"Trabalhar",false },
-	["Weapons"] = { 1247.81,-1582.1,58.18,0.25,1.0,"Trabalhar",true },
+	["Weapons"] = { 1247.81,-1582.1,58.18,0.25,1.5,"Trabalhar",true },
 	["Ammo"] = { 484.46,-1536.19,29.14,0.25,1.0,"Trabalhar",true }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -295,13 +295,15 @@ AddEventHandler("deliver:Starting",function(Init)
 			if Locate ~= Init then
 				Selected = 1
 			end
+
+			TriggerServerEvent("deliver:Update",Selected,true)
 		else
 			if initList[Init][7] then
 				if Locate ~= Init then
 					Selected = 1
 				end
 
-				TriggerServerEvent("deliver:Update",Selected,true)
+				TriggerServerEvent("deliver:Update",Selected)
 			else
 				if Locate ~= Init then
 					Selected = math.random(#Cds[Init])

@@ -4690,13 +4690,13 @@ Use = {
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
+				TriggerEvent("Salary:Add",Passport,"Premium01")
 				vRP.SetPremium(source)
 			end
 		else
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
+				TriggerEvent("Salary:Add",Passport,"Premium01")
 				vRP.UpgradePremium(Passport)
 			end
 		end
@@ -4706,13 +4706,13 @@ Use = {
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
+				TriggerEvent("Salary:Add",Passport,"Premium02")
 				vRP.SetPremium(source)
 			end
 		else
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
+				TriggerEvent("Salary:Add",Passport,"Premium02")
 				vRP.UpgradePremium(Passport)
 			end
 		end
@@ -4722,13 +4722,13 @@ Use = {
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
+				TriggerEvent("Salary:Add",Passport,"Premium03")
 				vRP.SetPremium(source)
 			end
 		else
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
+				TriggerEvent("Salary:Add",Passport,"Premium03")
 				vRP.UpgradePremium(Passport)
 			end
 		end

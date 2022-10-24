@@ -903,6 +903,9 @@ end
 local Salary = {}
 local SalaryValue = {
 	["Premium"] = 2000,
+	["Premium01"] = 900,
+	["Premium02"] = 1300,
+	["Premium03"] = 1900,
 	["Paramedic"] = 1000,
 	["Police"] = 1000
 }

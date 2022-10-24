@@ -23,7 +23,9 @@ local initList = {
 	["UwuCoffee"] = { -594.0,-1052.47,22.34,0.5,1.0,"Trabalhar",false },
 	["BeanMachine"] = { 126.68,-1035.54,29.27,0.5,1.0,"Trabalhar",false },
 	["Lumberman"] = { 2433.45,5013.46,46.99,0.5,1.0,"Trabalhar",false },
-	["Transporter"] = { 229.16,231.91,97.04,0.25,1.0,"Trabalhar",true }
+	["Transporter"] = { 229.16,231.91,97.04,0.25,1.0,"Trabalhar",false },
+	["Weapons"] = { -1866.39,2061.14,135.44,0.25,1.0,"Trabalhar",true },
+	["Ammo"] = { 1379.03,-2090.65,52.6,0.25,1.0,"Trabalhar",true }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -234,6 +236,44 @@ local Cds = {
 		{ 228.18,338.38,105.56 },
 		{ 381.86,326.44,103.56 },
 		{ 357.01,173.54,103.07 }
+	},
+	["Weapons"] = {
+		{ 574.01,132.56,98.48 },
+		{ 344.79,929.2,202.44 },
+		{ -123.8,1896.67,196.34 },
+		{ -1099.85,2703.51,21.99 },
+		{ -2198.91,4243.21,46.92 },
+		{ -1487.02,4983.14,62.67 },
+		{ 1346.49,6396.73,32.42 },
+		{ 2535.72,4661.39,33.08 },
+		{ 1155.62,-1334.48,33.72 },
+		{ 1116.06,-2498.07,32.37 },
+		{ 261.06,-3135.82,4.8 },
+		{ -1619.81,-1035.0,12.16 },
+		{ -3420.87,977.0,10.91, } 
+		{ -1909.53,4624.93,56.07 },
+		{ 894.51,3211.45,38.09 },
+		{ 1791.71,4602.84,36.69 },
+		{ 464.8,6462.03,28.76 },
+		{ 63.22,6323.67,37.87 },
+		{ -736.64,5594.98,40.66 }
+	},
+	["Ammo"] = {
+		{ -2682.86,2304.87,20.85 },
+		{ -1282.33,2559.98,17.4 },
+		{ 159.65,3118.8,42.44 },
+		{ 1061.43,3527.62,33.15 },
+		{ 2370.22,3156.55,47.21 },
+		{ 2520.51,2637.83,36.95 },
+		{ 2572.37,477.44,107.68 },
+		{ 1223.15,-1079.56,37.5 }3
+		{ 1048.49,-247.53,68.66 },
+		{ 499.41,-529.38,23.76, } 
+		{ 592.53,-2115.87,4.76, } 
+		{ 523.43,-2578.67,13.82 },
+		{ -2.98,-1299.67,28.28, } 
+		{ 183.11,-1086.93,28.28 },
+		{ 713.88,-850.95,23.3 }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -260,6 +300,8 @@ AddEventHandler("deliver:Starting",function(Init)
 				if Locate ~= Init then
 					Selected = 1
 				end
+
+				TriggerServerEvent("deliver:Update",Selected)
 			else
 				if Locate ~= Init then
 					Selected = math.random(#Cds[Init])
@@ -272,26 +314,28 @@ AddEventHandler("deliver:Starting",function(Init)
 			exports["target"]:LabelText("Deliver:"..Init,"Finalizar")
 			Marker(Cds[Locate][Selected][1],Cds[Locate][Selected][2],Cds[Locate][Selected][3])
 
-			while Starting do
-				local TimeDistance = 999
-				local Ped = PlayerPedId()
-				if not IsPedInAnyVehicle(Ped) then
-					local Coords = GetEntityCoords(Ped)
-					local Vector = vec3(Cds[Locate][Selected][1],Cds[Locate][Selected][2],Cds[Locate][Selected][3])
-					local Distance = #(Coords - Vector)
+			if not initList[Init][7] then
+				while Starting do
+					local TimeDistance = 999
+					local Ped = PlayerPedId()
+					if not IsPedInAnyVehicle(Ped) then
+						local Coords = GetEntityCoords(Ped)
+						local Vector = vec3(Cds[Locate][Selected][1],Cds[Locate][Selected][2],Cds[Locate][Selected][3])
+						local Distance = #(Coords - Vector)
 
-					if Distance <= 15.0 then
-						TimeDistance = 1
+						if Distance <= 15.0 then
+							TimeDistance = 1
 
-						if Distance <= 1.0 then
-							DrawText(Vector["x"],Vector["y"],Vector["z"],"E N T R E G A R",true)
-						else
-							DrawText(Vector["x"],Vector["y"],Vector["z"],"E N T R E G A R",false)
+							if Distance <= 1.0 then
+								DrawText(Vector["x"],Vector["y"],Vector["z"],"E N T R E G A R",true)
+							else
+								DrawText(Vector["x"],Vector["y"],Vector["z"],"E N T R E G A R",false)
+							end
 						end
 					end
-				end
 
-				Wait(TimeDistance)
+					Wait(TimeDistance)
+				end
 			end
 		end
 	end
@@ -323,6 +367,8 @@ function Creative.Update()
 		else
 			Selected = Selected + 1
 		end
+
+		TriggerServerEvent("deliver:Update",Selected)
 	else
 		Selected = math.random(#Cds[Locate])
 	end
@@ -330,7 +376,7 @@ function Creative.Update()
 	Marker(Cds[Locate][Selected][1],Cds[Locate][Selected][2],Cds[Locate][Selected][3])
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DRAWTEXT
+-- DRAWTEXT	
 -----------------------------------------------------------------------------------------------------------------------------------------
 function DrawText(x,y,z,text,color)
 	local onScreen,_x,_y = GetScreenCoordFromWorldCoord(x,y,z)

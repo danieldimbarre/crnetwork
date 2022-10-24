@@ -4018,9 +4018,9 @@ Use = {
 
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100 }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
-					TriggerClientEvent("Progress",source,"Plantando",25000)
+					TriggerClientEvent("Progress",source,"Plantando",15000)
 					atmTimers[NumberAtm] = os.time() + 10800
-					local explosionProgress = 25
+					local explosionProgress = 15
 
 					for Passports,Sources in pairs(Service) do
 						async(function()

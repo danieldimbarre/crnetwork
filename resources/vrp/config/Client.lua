@@ -46,7 +46,7 @@ RegisterCommand("energyBind",function(source,args,rawCommand)
 						tvRP.stopActived()
 					else
 						tvRP.playAnim(false,{"amb@world_human_sunbathe@male@front@idle_a","idle_a"},true)
-						tvRP.playAnim(false,{"jh_1_ig_3-2","cs_jewelass_dual-2"},true)
+						tvRP.playAnim(true,{"jh_1_ig_3-2","cs_jewelass_dual-2"},true)
 					end
 				end
 			end

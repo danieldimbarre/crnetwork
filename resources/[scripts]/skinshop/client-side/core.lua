@@ -650,7 +650,7 @@ end
 -- CHECKBACKPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.checkBackpackPremium()
-	if skinData["backpack"]["item"] ~= 0 and skinData["backpack"]["item"] >= 100 then
+	if Dataset["backpack"]["item"] ~= 0 and Dataset["backpack"]["item"] >= 100 then
 		return true
 	end
 	return false

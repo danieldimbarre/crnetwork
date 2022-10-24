@@ -2340,6 +2340,10 @@ AddEventHandler("Disconnect",function(Passport)
 	if Drugs[Passport] then
 		Drugs[Passport] = nil
 	end
+
+	if Collect[Passport] then
+		Collect[Passport] = nil
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

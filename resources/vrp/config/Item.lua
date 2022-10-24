@@ -2,8 +2,14 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	["creditcard"] = {
+		["Index"] = "creditcard",
+		["Name"] = "Cartão de Crédito",
+		["Type"] = "Comum",
+		["Weight"] = 0.25
+	},
 	["diagram"] = {
-		["Index"] = "Diagram",
+		["Index"] = "diagram",
 		["Name"] = "Diagrama",
 		["Type"] = "Comum",
 		["Weight"] = 0.75

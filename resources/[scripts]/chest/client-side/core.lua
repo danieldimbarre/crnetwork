@@ -22,7 +22,7 @@ local Chests = {
 	{ ["Name"] = "BurgerShot", ["Coords"] = vec3(-1203.11,-895.47,13.99), ["Mode"] = "2" },
 	{ ["Name"] = "PizzaThis", ["Coords"] = vec3(796.55,-749.32,31.26), ["Mode"] = "2" },
 	{ ["Name"] = "UwuCoffee", ["Coords"] = vec3(-572.65,-1049.74,26.61), ["Mode"] = "2" },
-	{ ["Name"] = "BeanMachine", ["Coords"] = vec3(123.04,-1043.76,29.27), ["Mode"] = "2" },
+	{ ["Name"] = "BeanMachine", ["Coords"] = vec3(122.67,-1040.42,29.27), ["Mode"] = "2" },
 	{ ["Name"] = "Ballas", ["Coords"] = vec3(-1.29,-1811.82,25.34), ["Mode"] = "2" },
 	{ ["Name"] = "Families", ["Coords"] = vec3(-162.64,-1613.1,33.65), ["Mode"] = "2" },
 	{ ["Name"] = "Vagos", ["Coords"] = vec3(326.17,-2000.24,24.2), ["Mode"] = "2" },

@@ -588,7 +588,7 @@ local List = {
 		}
 	},
 	["backpack"] = {
-		["List"] {
+		["List"] = {
 		    ["backpack"] = {
 				["amount"] = 1,
 				["destroy"] = false,

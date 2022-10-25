@@ -151,6 +151,13 @@ local shops = {
 			["silk"] = 5
 		}
 	},
+	["Dismantle"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["dismantle"] = 5000
+		}
+	},
 	["Departament"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",

@@ -583,20 +583,21 @@ local List = {
 					["sheetmetal"] = 2,
 					["tarp"] = 1,
 					["explosives"] = 3
-		
 				}
 			}	
 		}
 	},
 	["backpack"] = {
 		["List"] {
-			["amount"] = 1,
-			["destroy"] = false,
-			["require"] = {
-				["dollars"] = 3000,
-				["leather"] = 75,
-				["tarp"] = 5,
-				["rubber"] = 45   			
+		    ["backpack"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["dollars"] = 3000,
+					["leather"] = 75,
+					["tarp"] = 5,
+					["rubber"] = 45   			
+				}		
 			}
 		}			
 	}

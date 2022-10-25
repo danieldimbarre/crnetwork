@@ -40,37 +40,16 @@ local function tunnel_resolve(itable,key)
 			r = async()
 		end
 
-		local delay_data = { 0,0 }
-		local add_delay = delay_data[1]
-		delay_data[2] = delay_data[2] + add_delay
+		local rid = -1
+		if r then
+			rid = ids:gen()
+			callbacks[rid] = r
+		end
 
-		if delay_data[2] > 0 then
-			SetTimeout(delay_data[2],function()
-				delay_data[2] = delay_data[2] - add_delay
-				local rid = -1
-				if r then
-					rid = ids:gen()
-					callbacks[rid] = r
-				end
-
-				if SERVER then
-					TriggerRemoteEvent(iname..":tunnel_req",dest,fname,Message,identifier,rid)
-				else
-					TriggerRemoteEvent(iname..":tunnel_req",fname,Message,identifier,rid)
-				end
-			end)
+		if SERVER then
+			TriggerRemoteEvent(iname..":tunnel_req",dest,fname,Message,identifier,rid)
 		else
-			local rid = -1
-			if r then
-				rid = ids:gen()
-				callbacks[rid] = r
-			end
-
-			if SERVER then
-				TriggerRemoteEvent(iname..":tunnel_req",dest,fname,Message,identifier,rid)
-			else
-				TriggerRemoteEvent(iname..":tunnel_req",fname,Message,identifier,rid)
-			end
+			TriggerRemoteEvent(iname..":tunnel_req",fname,Message,identifier,rid)
 		end
 
 		if r then
@@ -84,6 +63,7 @@ local function tunnel_resolve(itable,key)
 	end
 
 	itable[key] = fcall
+
 	return fcall
 end
 
@@ -127,6 +107,7 @@ function Tunnel.getInterface(name,identifier)
 			callback(table.unpack(Message,1,table.maxn(Message)))
 		end
 	end)
+
 	return r
 end
 

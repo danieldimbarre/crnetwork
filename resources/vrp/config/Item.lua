@@ -262,9 +262,9 @@ local List = {
 		["Weight"] = 0.15,
 		["Economy"] = 0
 	},
-	["mushroomteaplus"] = {
-		["Index"] = "mushroomtea",
-		["Name"] = "Chá de Cogumelo",
+	["backpack"] = {
+		["Index"] = "backpack",
+		["Name"] = "Mochila",
 		["Description"] = "Aumenta a mochila em 10Kg.",
 		["Type"] = "Usável",
 		["Weight"] = 0.75,

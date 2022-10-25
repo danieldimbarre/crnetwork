@@ -314,7 +314,7 @@ end
 -- BLOCKITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 local BlockItem = {
-	["mushroomteaplus"] = true,
+	["backpack"] = true,
 	["mushroomtea"] = true,
 	["nigirizushi"] = true,
 	["sushi"] = true,

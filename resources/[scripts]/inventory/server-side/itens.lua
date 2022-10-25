@@ -3089,7 +3089,7 @@ Use = {
 		until not Active[Passport]
 	end,
 
-	["mushroomteaplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	["backpack"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if not vSKINSHOP.checkBackpackPremium(source) then
 			if vRP.GetWeight(Passport) < 100 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then

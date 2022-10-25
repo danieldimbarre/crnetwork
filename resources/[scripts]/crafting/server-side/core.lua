@@ -596,8 +596,7 @@ local List = {
 					["dollars"] = 3000,
 					["leather"] = 75,
 					["tarp"] = 5,
-					["rubber"] = 45   			
-				}		
+					["rubber"] = 45   					
 			}
 		}			
 	}

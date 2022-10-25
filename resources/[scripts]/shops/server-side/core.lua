@@ -126,7 +126,7 @@ local shops = {
 		}
 	},
 	["Beans"] = {
-		["mode"] = "Sell",
+		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
 			["cupcake"] = 70
@@ -278,7 +278,9 @@ local shops = {
 			["WEAPON_FLASHLIGHT"] = 975,
 			["pickaxe"] = 525,
 			["repairkit01"] = 525,
-			["repairkit02"] = 3225
+			["repairkit02"] = 3225,
+			["WEAPON_NAILGUN"] = 10000,
+			["WEAPON_NAIL_AMMO"] = 10
 		}
 	},
 	["Premium"] = {
@@ -297,11 +299,11 @@ local shops = {
 			["backschool"] = 50,
 			["backcyclist"] = 50,
 			["backcamping"] = 50,
-			["backalohomorawhite"] = 75,
-			["backalohomorablack"] = 75,
-			["backalohomorared"] = 75,
-			["backrudolphpurple"] = 75,
-			["backrudolphred"] = 75
+		--	["backalohomorawhite"] = 75,
+		--	["backalohomorablack"] = 75,
+		--	["backalohomorared"] = 75,
+		--	["backrudolphpurple"] = 75,
+		--	["backrudolphred"] = 75
 		}
 	},
 	["Hunting"] = {
@@ -329,17 +331,17 @@ local shops = {
 		["mode"] = "Sell",
 		["type"] = "Cash",
 		["List"] = {
-			["octopus"] = 14,
-			["shrimp"] = 14,
-			["carp"] = 12,
-			["horsefish"] = 12,
-			["tilapia"] = 14,
-			["codfish"] = 16,
-			["catfish"] = 16,
-			["goldenfish"] = 30,
-			["pirarucu"] = 26,
-			["pacu"] = 24,
-			["tambaqui"] = 28
+			["octopus"] = 32,
+			["shrimp"] = 32,
+			["carp"] = 32,
+			["horsefish"] = 32,
+			["tilapia"] = 35,
+			["codfish"] = 67,
+			["catfish"] = 42,
+			["goldenfish"] = 86,
+			["pirarucu"] = 46,
+			["pacu"] = 37,
+			["tambaqui"] = 42
 		}
 	},
 	["Hunting2"] = {
@@ -407,13 +409,13 @@ local shops = {
 		["mode"] = "Sell",
 		["type"] = "Cash",
 		["List"] = {
-			["emerald"] = 85,
-			["diamond"] = 75,
-			["ruby"] = 55,
-			["sapphire"] = 45,
-			["amethyst"] = 35,
-			["amber"] = 25,
-			["turquoise"] = 15
+			["emerald"] = 143,
+			["diamond"] = 132,
+			["ruby"] = 75,
+			["sapphire"] = 85,
+			["amethyst"] = 75,
+			["amber"] = 45,
+			["turquoise"] = 35
 		}
 	},
 	["coffeeMachine"] = {
@@ -482,6 +484,7 @@ local shops = {
 			["barrier"] = 250,
 			["handcuff"] = 425,
 			["WEAPON_SMG"] = 775,
+			["WEAPON_SMG_MK2"] = 835,
 			["WEAPON_PUMPSHOTGUN"] = 775,
 			["WEAPON_CARBINERIFLE"] = 775,
 			["WEAPON_CARBINERIFLE_MK2"] = 925,

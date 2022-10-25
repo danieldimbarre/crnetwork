@@ -209,7 +209,7 @@ local workGarages = {
 		"ambulancia",
 	},
 	["heliParamedic"] = {
-		"maverick2"
+		"supervolito"
 	},
 	["Police"] = {
 		"fordraptor",

@@ -2,8 +2,6 @@ local Tools = module("lib/Tools")
 
 local Proxy = {}
 
-local callbacks = setmetatable({},{ __mode = "v" })
-
 local function proxy_resolve(itable,key)
 	local mtable = getmetatable(itable)
 	local iname = mtable.name

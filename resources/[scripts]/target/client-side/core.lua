@@ -278,7 +278,7 @@ CreateThread(function()
 		}
 	})
 
-	AddBoxZone("CallBeanMachine",vec3(121.02,-1040.18,30.46),0.25,0.25,{
+	AddBoxZone("CallBeanMachine",vec3(121.02,-1040.18,29.44),0.25,0.25,{
 		name = "CallBeanMachine",
 		heading = 3374176,
 		minZ = 29.25,

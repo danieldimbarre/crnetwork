@@ -25,22 +25,26 @@
         {
             "name": "Policia",
             "number": "190",
-            "permission": "Police"
+            "permission": "Police",
+            "dev": true
         },
         {
             "name": "Paramédico",
             "number": "192",
-            "permission": "Paramedic"
+            "permission": "Paramedic",
+            "dev": true
         },
         {
             "name": "Mecânico",
             "number": "0800 042",
-            "permission": "Mechanic"
+            "permission": "Mechanic",
+            "dev": true
         },
         {
             "name": "Taxi",
             "number": "0800 075",
-            "permission": "Taxi"
+            "permission": "Taxi",
+            "dev": true
         }
     ]
 }

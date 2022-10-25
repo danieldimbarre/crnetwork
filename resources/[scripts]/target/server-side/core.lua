@@ -48,7 +48,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Calls = {}
 RegisterServerEvent("target:CallWorks")
-AddEventHandler("target:CallWorks",function(Perm)
+AddEventHandler("target:CallWorks",function(_,Perm)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

@@ -233,12 +233,12 @@ CreateThread(function()
 		minZ = 13.50,
 		maxZ = 14.00
 	},{
-		shop = "BurgerShot",
 		Distance = 1.0,
 		options = {
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
+				service = "BurgerShot",
 				tunnel = "police"
 			}
 		}
@@ -250,12 +250,12 @@ CreateThread(function()
 		minZ = 22.25,
 		maxZ = 22.50
 	},{
-		shop = "UwU Café",
 		Distance = 1.0,
 		options = {
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
+				service = "UwU Café",
 				tunnel = "police"
 			}
 		}
@@ -267,12 +267,12 @@ CreateThread(function()
 		minZ = 26.50,
 		maxZ = 27.00
 	},{
-		shop = "Pizza This",
 		Distance = 1.0,
 		options = {
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
+				service = "Pizza This",
 				tunnel = "police"
 			}
 		}
@@ -284,12 +284,12 @@ CreateThread(function()
 		minZ = 29.25,
 		maxZ = 29.75
 	},{
-		shop = "Bean Machine",
 		Distance = 1.0,
 		options = {
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
+				service = "Bean Machine",
 				tunnel = "police"
 			}
 		}
@@ -301,12 +301,12 @@ CreateThread(function()
 		minZ = 43.00,
 		maxZ = 43.25
 	},{
-		shop = "Paramedic",
 		Distance = 2.0,
 		options = {
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
+				service = "Paramedic",
 				tunnel = "police"
 			}
 		}

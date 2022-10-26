@@ -175,3 +175,22 @@ vRP.DowngradeSpending(Passport: int,Amount: int)
 vRP.UpgradeCardlimit(Passport: int,Amount: int)
 
 vRP.DowngradeCardlimit(Passport: int,Amount: int)
+
+
+-- Resource: Bank
+
+exports["bank"]:AddTaxs(Passport: int,Name: string,Value: int,Message: string)
+
+exports["bank"]:AddTransactions(Passport: int,Type: string,Value: int)
+
+exports["bank"]:AddFines(Passport: int,OtherPassport: int,Value: int,Message: string)
+
+exports["bank"]:Taxs(Passport: int)
+
+exports["bank"]:Fines(Passport: int)
+
+exports["bank"]:Invoices(Passport: int)
+
+exports["bank"]:Dependents(Passport: int)
+
+exports["bank"]:Transactions(Passport: int,Limit: int)

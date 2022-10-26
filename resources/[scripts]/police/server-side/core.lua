@@ -115,7 +115,7 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 				vRP.InitPrison(OtherPassport,Services)
 
 				if Value > 0 then
-					exports["bank"]:AddFines(Passport,OtherPassport,Value,Message)
+					exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)
 				end
 
 				TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Value).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..Message,13541152)
@@ -133,8 +133,13 @@ function cRP.searchUser(Passport)
 	if Passport then
 		local Identity = vRP.Identity(Passport)
 		if Identity then
-			local Value = exports["bank"]:Fines(Passport)
-			print(json.encode(Value,{ indent = true }))
+			local Fines = exports["bank"]:Fines(Passport)
+			local Value = 0
+
+			for _,v in pairs(Fines)
+				Value = Value + v["value"]
+			end
+
 			local Records = vRP.Query("prison/getRecords",{ nuser_id = Passport })
 			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],Value,Records }
 		end
@@ -155,7 +160,7 @@ function cRP.initFine(OtherPassport,Value,Message)
 			TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Multa:** $"..parseFormat(Value).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..Message,2316674)
 			TriggerClientEvent("Notify",source,"verde","Multa aplicada.",5000)
 			TriggerClientEvent("police:Update",source,"reloadFine")
-			exports["bank"]:AddFines(Passport,OtherPassport,Value,Message)
+			exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)
 
 			actived[Passport] = nil
 		end

@@ -128,16 +128,14 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEARCHUSER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.searchUser(OtherPassport)
+function cRP.searchUser(Passport)
 	local source = source
-	local Passport = vRP.Passport(source)
 	if Passport then
-		local OtherPassport = parseInt(OtherPassport)
-		local OtherSource = vRP.Source(OtherPassport)
-		local Identity = vRP.Identity(OtherPassport)
-		if Identity and OtherSource then
-			local Value = vRP.GetFine(OtherSource)
-			local Records = vRP.Query("prison/getRecords",{ nuser_id = OtherPassport })
+		local Identity = vRP.Identity(Passport)
+		if Identity then
+			local Value = exports["bank"]:Fines(Passport)
+			print(json.encode(Value,{ indent = true }))
+			local Records = vRP.Query("prison/getRecords",{ nuser_id = Passport })
 			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],Value,Records }
 		end
 	end

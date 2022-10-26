@@ -136,7 +136,7 @@ function cRP.searchUser(Passport)
 			local Fines = exports["bank"]:Fines(Passport)
 			local Value = 0
 
-			for _,v in pairs(Fines)
+			for _,v in pairs(Fines) do
 				Value = Value + v["value"]
 			end
 

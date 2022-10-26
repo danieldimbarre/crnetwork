@@ -1516,7 +1516,7 @@ function openTattooShop()
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 	vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
 
-	TriggerServerEvent("vRP:BucketClient","Enter")
+	-- TriggerServerEvent("vRP:BucketClient","Enter")
 	SendNUIMessage({ openNui = true, shop = atualShop, tattoo = Tattoos, model = Model })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1552,7 +1552,7 @@ end
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("close",function(Data,Callback)
-	TriggerServerEvent("vRP:BucketClient","Exit")
+	-- TriggerServerEvent("vRP:BucketClient","Exit")
 	TriggerEvent("skinshop:updateTattoo")
 	RenderScriptCams(false,true,250,1,0)
 	vSERVER.updateTattoo(Tattoos)

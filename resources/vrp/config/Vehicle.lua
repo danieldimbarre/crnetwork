@@ -7058,6 +7058,15 @@ local List = {
 		["Block"] = false,
 		["Gems"] = 0
 	},
+	["audia4"] = {
+		["Name"] = "Audi A4",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Type"] = "automobile",
+		["Block"] = false,
+		["Gems"] = 0
+	},
 	["maverick2"] = {
 		["Name"] = "Maverick",
 		["Weight"] = 0,

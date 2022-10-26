@@ -25,7 +25,7 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 		SetNuiFocus(false,false)
 		vSERVER.updateSkin(myClothes)
 		SendNUIMessage({ Open = false })
-		TriggerServerEvent("vRP:BucketClient","Exit")
+		-- TriggerServerEvent("vRP:BucketClient","Exit")
 	end
 
 	TriggerEvent("barbershop:Apply",myClothes)
@@ -128,7 +128,7 @@ function OpenBarbershop(Enabled)
 	if Enabled then
 		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
-		TriggerServerEvent("vRP:BucketClient","Enter")
+		-- TriggerServerEvent("vRP:BucketClient","Enter")
 
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)

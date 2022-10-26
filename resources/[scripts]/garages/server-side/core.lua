@@ -220,7 +220,8 @@ local workGarages = {
 		"wrsxr",
 		"fordmustanggt2",
 		"nspeedo",
-		"tacoma"
+		"tacoma",
+		"audia4"
 	},
 	["heliPolice"] = {
 		"maverick2",

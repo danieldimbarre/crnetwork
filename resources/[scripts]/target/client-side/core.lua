@@ -238,8 +238,7 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				service = "BurgerShot",
-				tunnel = "police"
+				tunnel = "server"
 			}
 		}
 	})
@@ -255,8 +254,7 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				service = "UwU Café",
-				tunnel = "police"
+				tunnel = "server"
 			}
 		}
 	})
@@ -272,8 +270,7 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				service = "Pizza This",
-				tunnel = "police"
+				tunnel = "server"
 			}
 		}
 	})
@@ -289,8 +286,7 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				service = "Bean Machine",
-				tunnel = "police"
+				tunnel = "server"
 			}
 		}
 	})
@@ -306,8 +302,7 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				service = "Paramedic",
-				tunnel = "police"
+				tunnel = "server"
 			}
 		}
 	})
@@ -1286,12 +1281,14 @@ RegisterNUICallback("Select",function(Data,Callback)
 		TriggerEvent(Data["event"],Data["service"])
 	elseif Data["tunnel"] == "server" then
 		TriggerServerEvent(Data["event"],Selected)
-	elseif Data["tunnel"] == "paramedic" then
-		TriggerServerEvent(Data["event"],Selected[1])
 	elseif Data["tunnel"] == "police" then
 		TriggerServerEvent(Data["event"],Selected,Data["service"])
 	elseif Data["tunnel"] == "teleport" then
 		TriggerEvent(Data["event"],Data["service"],Data["teleport"])
+	elseif Data["tunnel"] == "paramedic" then
+		TriggerServerEvent(Data["event"],Selected[1],Data["service"])
+	elseif Data["tunnel"] == "proserver" then
+		TriggerServerEvent(Data["event"],Data["service"])
 	end
 
 	Callback("Ok")

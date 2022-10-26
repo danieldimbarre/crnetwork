@@ -48,7 +48,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Calls = {}
 RegisterServerEvent("target:CallWorks")
-AddEventHandler("target:CallWorks",function(_,Perm)
+AddEventHandler("target:CallWorks",function(Perm)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -58,9 +58,9 @@ AddEventHandler("target:CallWorks",function(_,Perm)
 
 		if os.time() >= Calls[Perm] then
 			if Perm == "Paramedic" then
-				TriggerClientEvent("Notify",-1,"amarelo","Centro Médico Energy<br>Estamos em busca de doadores de sangue, seja solidário e ajude o próximo, procure um de nossos profissionais.",15000)
+				TriggerClientEvent("Notify",-1,"amarelo","<b>Pillbox Medical:</b> Estamos em busca de doadores de sangue, seja solidário e ajude o próximo, procure um de nossos profissionais.",15000)
 			else
-				TriggerClientEvent("Notify",-1,"amarelo",Perm.."<br>Estamos em busca de trabalhadores, compareça ao estabelecimento, procure um de nossos funcionários e consulte nosso serviço de entregas.",15000)
+				TriggerClientEvent("Notify",-1,"amarelo","<b>"..Perm..":</b> Estamos em busca de trabalhadores, compareça ao estabelecimento, procure um de nossos funcionários e consulte nosso serviço de entregas.",15000)
 			end
 
 			Calls[Perm] = os.time() + 600

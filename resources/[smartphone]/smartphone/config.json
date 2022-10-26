@@ -10,7 +10,7 @@
         "useGameClock": true,
         "phone_template": "XXX-XXX",
         "backgroundURL": "https://cdn.discordapp.com/attachments/1012153801173643376/1024428337533300826/background.jpg",
-        "disabledApps": []
+        "disabledApps": [ "paypal" ]
     },
     "call_mode": "pma-voice",
     "webhookURL": "https://cdn.discordapp.com/attachments/1012153801173643376/1034181531457044590/background.webp",

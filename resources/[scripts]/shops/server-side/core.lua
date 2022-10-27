@@ -89,6 +89,13 @@ local shops = {
 			["identity"] = 5000
 		}
 	},
+	["Bank"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["cardlimit"] = 250
+		}
+	},
 	["Identity2"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",

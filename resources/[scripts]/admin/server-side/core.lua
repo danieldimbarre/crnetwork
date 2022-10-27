@@ -401,7 +401,7 @@ RegisterCommand("announce",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") and Message[1] then
-			TriggerClientEvent("chat:ClientMessage",-1,"Governador",History:sub(9))
+			TriggerClientEvent('smartphone:createSMS',-1,'Prefeitura',History:sub(9))
 		end
 	end
 end)
@@ -410,7 +410,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("console",function(source,Message,History)
 	if source == 0 then
-		TriggerClientEvent("chat:ClientMessage",-1,"Governador",History:sub(9))
+		TriggerClientEvent('smartphone:createSMS',-1,'Prefeitura',History:sub(9))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

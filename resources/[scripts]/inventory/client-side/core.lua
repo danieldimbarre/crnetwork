@@ -2164,13 +2164,33 @@ local WeaConfig = {
 	},
 	["WEAPON_MICROSMG"] = {
 		["Bone"] = 24818,
-		["x"] = 0.22,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = 0.12,
 		["RotX"] = 0.0,
 		["RotY"] = 180.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_sb_microsmg"
+	},
+	["WEAPON_NAILGUN"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = 0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 180.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sb_nailgun"
+	},
+	["WEAPON_SAWNOFFSHOTGUN"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = 0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 180.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sg_sawnoffshotgun"
 	},
 	["WEAPON_TACTICALRIFLE"] = {
 		["Bone"] = 24818,

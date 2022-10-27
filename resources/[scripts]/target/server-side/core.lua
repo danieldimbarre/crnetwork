@@ -51,7 +51,7 @@ RegisterServerEvent("target:CallWorks")
 AddEventHandler("target:CallWorks",function(Perm)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and Perm then
 		if not Calls[Perm] then
 			Calls[Perm] = os.time()
 		end

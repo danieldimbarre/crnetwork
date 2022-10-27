@@ -238,7 +238,8 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				tunnel = "server"
+				tunnel = "proserver",
+				service = "BurgerShot"
 			}
 		}
 	})
@@ -254,7 +255,8 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				tunnel = "server"
+				tunnel = "proserver",
+				service = "UwuCoffee"
 			}
 		}
 	})
@@ -270,7 +272,8 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				tunnel = "server"
+				tunnel = "proserver",
+				service = "PizzaThis"
 			}
 		}
 	})
@@ -286,7 +289,8 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				tunnel = "server"
+				tunnel = "proserver",
+				service = "BeanMachine"
 			}
 		}
 	})
@@ -302,7 +306,8 @@ CreateThread(function()
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				tunnel = "server"
+				tunnel = "proserver",
+				service = "Paramedic"
 			}
 		}
 	})

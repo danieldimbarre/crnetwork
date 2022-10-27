@@ -10,9 +10,9 @@
   },
   "snowflake": {
     "database_prefix": "",
-    "vehicles": "vehicles",
+    "vehicles": "",
     "priority": "",
-    "homes": "propertys",
+    "homes": "",
     "esx": {
       "admin_group": "Admin",
       "default_group": "unemployed",

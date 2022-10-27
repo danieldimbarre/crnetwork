@@ -2423,6 +2423,16 @@ local List = {
 		["Weight"] = 8.75,
 		["Economy"] = 25000
 	},
+	["WEAPON_TACTICALRIFLE"] = {
+		["Index"] = "m16a4",
+		["Name"] = "M16A4",
+		["Repair"] = "repairkit04",
+		["Type"] = "Armamento",
+		["Ammo"] = "WEAPON_RIFLE_AMMO",
+		["Durability"] = 21,
+		["Weight"] = 8.75,
+		["Economy"] = 25000
+	},
 	["WEAPON_PUMPSHOTGUN"] = {
 		["Index"] = "mossberg590",
 		["Name"] = "Mossberg 590",

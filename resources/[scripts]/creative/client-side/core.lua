@@ -452,7 +452,7 @@ CreateThread(function()
 			local veh = GetVehiclePedIsUsing(Ped)
 			SetVehicleRadioEnabled(veh,false)
 
-			if IsControlJustPressed(1,51) then
+			if IsControlJustPressed(1,44) then
 				TriggerEvent("hud:Active",false)
 				vehCamera = true
 			end

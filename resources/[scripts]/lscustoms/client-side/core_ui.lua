@@ -171,6 +171,10 @@ function InitiateMenus(isMotorcycle)
 	populateMenu("mainMenu",22,"Xenons","none")
 	populateMenu("mainMenu",23,"Wheels","none")
 
+	if vehclass == 18 then
+		populateMenu("mainMenu",24,"Police Livery","none")
+	end
+
 	populateMenu("mainMenu",26,"Vehicle Extras","none")
 
 	populateMenu("mainMenu",25,"Plate Index","none")
@@ -330,6 +334,23 @@ function InitiateMenus(isMotorcycle)
 	end
 
 	finishPopulatingMenu("WindowTintMenu")
+
+	if vehclass == 18 then
+		local livCount = GetVehicleLiveryCount(vehicle)
+		if livCount > 0 then
+			local temporaryLivery = GetVehicleLivery(vehicle)
+			createMenu("PoliceLiveryMenu","Police Livery Customisation","Choose a Livery")
+			for i = 0,livCount - 1 do
+				populateMenu("PoliceLiveryMenu",i,"Livery 0"..i + 1,"$100")
+
+				if temporaryLivery == i then
+					updateItem2Text("PoliceLiveryMenu",i,"Instalado")
+				end
+			end
+
+			finishPopulatingMenu("PoliceLiveryMenu")
+		end
+	end
 
 	local temporaryPlate = GetVehicleNumberPlateTextIndex(vehicle)
 	createMenu("PlateIndexMenu","Plate Colour","Escolha o tipo")

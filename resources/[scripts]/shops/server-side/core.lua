@@ -313,11 +313,11 @@ local shops = {
 			["backschool"] = 50,
 			["backcyclist"] = 50,
 			["backcamping"] = 50,
-		--	["backalohomorawhite"] = 75,
-		--	["backalohomorablack"] = 75,
-		--	["backalohomorared"] = 75,
-		--	["backrudolphpurple"] = 75,
-		--	["backrudolphred"] = 75
+			-- ["backalohomorawhite"] = 75,
+			-- ["backalohomorablack"] = 75,
+			-- ["backalohomorared"] = 75,
+			-- ["backrudolphpurple"] = 75,
+			-- ["backrudolphred"] = 75
 		}
 	},
 	["Hunting"] = {

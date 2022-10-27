@@ -752,7 +752,8 @@ local weaponAmmos = {
 		"WEAPON_ASSAULTSMG",
 		"WEAPON_ASSAULTRIFLE_MK2",
 		"WEAPON_SPECIALCARBINE",
-		"WEAPON_SPECIALCARBINE_MK2"
+		"WEAPON_SPECIALCARBINE_MK2",
+		"WEAPON_TACTICALRIFLE"
 	},
 	["WEAPON_SHOTGUN_AMMO"] = {
 		"WEAPON_PUMPSHOTGUN",
@@ -1963,81 +1964,81 @@ local WeaConfig = {
 	},
 	["WEAPON_COLTXM177"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_coltxm177"
 	},
 	["WEAPON_CARBINERIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_carbinerifle"
 	},
 	["WEAPON_CARBINERIFLE_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_carbineriflemk2"
 	},
 	["WEAPON_ADVANCEDRIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.02,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = -0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_advancedrifle"
 	},
 	["WEAPON_BULLPUPRIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.02,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = -0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_bullpuprifle"
 	},
 	["WEAPON_BULLPUPRIFLE_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.02,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = -0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_bullpupriflemk2"
 	},
 	["WEAPON_SPECIALCARBINE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_specialcarbine"
 	},
 	["WEAPON_SPECIALCARBINE_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_specialcarbinemk2"
 	},
@@ -2055,8 +2056,8 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.12,
-		["RotX"] = 180.0,
+		["z"] = -0.12,
+		["RotX"] = 0.0,
 		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_fnfal"
@@ -2093,11 +2094,11 @@ local WeaConfig = {
 	},
 	["WEAPON_SMG"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.22,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = 0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 180.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_sb_smg"
 	},
@@ -2123,31 +2124,31 @@ local WeaConfig = {
 	},
 	["WEAPON_ASSAULTSMG"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.22,
 		["y"] = -0.14,
-		["z"] = -0.07,
+		["z"] = 0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 180.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_sb_assaultsmg"
 	},
 	["WEAPON_ASSAULTRIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.08,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.08,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_assaultrifle"
 	},
 	["WEAPON_ASSAULTRIFLE_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.08,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.08,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_assaultrifle"
 	},
@@ -2160,7 +2161,17 @@ local WeaConfig = {
 		["RotY"] = 135.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_sb_gusenberg"
-	}
+	},
+	["WEAPON_TACTICALRIFLE"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = 0.04,
+		["RotX"] = 0.0,
+		["RotY"] = 135.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_ar_tacticalrifle"
+	},
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:REMOVEWEAPON

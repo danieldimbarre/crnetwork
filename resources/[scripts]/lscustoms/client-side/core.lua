@@ -39,27 +39,72 @@ local isPurchaseSuccessful = false
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local bennysLocations = {
-	["police01"] = {
+	["Police01"] = {
 		pos = vector3(435.62,-976.14,25.7),
 		heading = 87.88,
 		permission = "Police"
 	},
-	["paramedic01"] = {
-		pos = vector3(-707.9,320.8,140.14),
-		heading = 340.00,
+	["HeliPolice01"] = {
+		pos = vector3(449.27,-981.34,43.69),
+		heading = 87.88,
+		permission = "Police"
+	},
+	["Police02"] = {
+		pos = vector3(-463.26,6033.79,31.34),
+		heading = 136.07,
+		permission = "Police"
+	},
+	["HeliPolice02"] = {
+		pos = vector3(-475.04,5988.45,31.73),
+		heading = 317.49,
+		permission = "Police"
+	},
+	["Police03"] = {
+		pos = vector3(380.75,-1625.51,29.28),
+		heading = 331.66,
+		permission = "Police"
+	},
+	["HeliPolice03"] = {
+		pos = vector3(384.12,-1623.63,29.67),
+		heading = 320.32,
+		permission = "Police"
+	},
+	["Police04"] = {
+		pos = vector3(1833.59,2542.09,45.54),
+		heading = 272.13,
+		permission = "Police"
+	},
+	["Paramedic01"] = {
+		pos = vector3(-670.16,340.8,77.9),
+		heading = 87.88,
 		permission = "Paramedic"
 	},
-	["bennys01"] = {
+	["HeliParamedic01"] = {
+		pos = vector3(-687.34,322.08,140.65),
+		heading = 172.92,
+		permission = "Paramedic"
+	},
+	["Paramedic02"] = {
+		pos = vector3(-261.6,6344.21,32.1),
+		heading = 269.3,
+		permission = "Paramedic"
+	},
+	["HeliParamedic02"] = {
+		pos = vector3(-273.13,6329.85,32.1),
+		heading = 133.23,
+		permission = "Paramedic"
+	},
+	["Mechanic01"] = {
 		pos = vector3(830.34,-806.03,25.81),
 		heading = 90.0,
 		permission = "Mechanic"
 	},
-	["bennys02"] = {
+	["Mechanic02"] = {
 		pos = vector3(831.72,-813.09,25.81),
 		heading = 90.0,
 		permission = "Mechanic"
 	},
-	["bennys03"] = {
+	["Mechanic03"] = {
 		pos = vector3(831.64,-819.79,25.81),
 		heading = 90.0,
 		permission = "Mechanic"

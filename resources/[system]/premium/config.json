@@ -20,7 +20,7 @@
     }
   },
   "requireOnlineToDelivery": false,
-  "plugins": [],
+  "plugins": [ "creative_network" ],
   "chat": {
     "enabled": false,
     "global": false,

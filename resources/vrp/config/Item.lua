@@ -8,6 +8,14 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.25
 	},
+	["cardlimit"] = {
+		["Index"] = "creditcard",
+		["Name"] = "Cartão Limite",
+		["Description"] = "Aumenta o limite do <b>Cartão de Crédito</b> em <b>$5.000</b>.",
+		["Type"] = "Comum",
+		["Weight"] = 0.25,
+		["Economy"] = 250
+	},
 	["diagram"] = {
 		["Index"] = "diagram",
 		["Name"] = "Diagrama",

@@ -994,7 +994,7 @@ local List = {
 	},
 	["gemstone"] = {
 		["Index"] = "gemstone",
-		["Name"] = "Gemstone",
+		["Name"] = "Gemas",
 		["Type"] = "Usável",
 		["Weight"] = 0.15,
 		["Economy"] = 2000

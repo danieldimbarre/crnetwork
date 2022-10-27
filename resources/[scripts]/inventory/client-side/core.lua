@@ -1964,7 +1964,7 @@ local WeaConfig = {
 	},
 	["WEAPON_COLTXM177"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -1974,7 +1974,7 @@ local WeaConfig = {
 	},
 	["WEAPON_CARBINERIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -1984,7 +1984,7 @@ local WeaConfig = {
 	},
 	["WEAPON_CARBINERIFLE_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -1994,7 +1994,7 @@ local WeaConfig = {
 	},
 	["WEAPON_ADVANCEDRIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.02,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -2004,7 +2004,7 @@ local WeaConfig = {
 	},
 	["WEAPON_BULLPUPRIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.02,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -2014,7 +2014,7 @@ local WeaConfig = {
 	},
 	["WEAPON_BULLPUPRIFLE_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.02,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -2024,7 +2024,7 @@ local WeaConfig = {
 	},
 	["WEAPON_SPECIALCARBINE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -2034,7 +2034,7 @@ local WeaConfig = {
 	},
 	["WEAPON_SPECIALCARBINE_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -2094,7 +2094,7 @@ local WeaConfig = {
 	},
 	["WEAPON_SMG"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = 0.12,
 		["RotX"] = 0.0,
@@ -2104,7 +2104,7 @@ local WeaConfig = {
 	},
 	["WEAPON_SMG_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.22,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = 0.12,
 		["RotX"] = 0.0,
@@ -2124,7 +2124,7 @@ local WeaConfig = {
 	},
 	["WEAPON_ASSAULTSMG"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = 0.12,
 		["RotX"] = 0.0,
@@ -2134,7 +2134,7 @@ local WeaConfig = {
 	},
 	["WEAPON_ASSAULTRIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.08,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -2144,7 +2144,7 @@ local WeaConfig = {
 	},
 	["WEAPON_ASSAULTRIFLE_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.08,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,
@@ -2156,15 +2156,25 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.12,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = 0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 180.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_sb_gusenberg"
 	},
+	["WEAPON_MICROSMG"] = {
+		["Bone"] = 24818,
+		["x"] = 0.22,
+		["y"] = -0.14,
+		["z"] = 0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 180.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sb_microsmg"
+	},
 	["WEAPON_TACTICALRIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.0,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = -0.12,
 		["RotX"] = 0.0,

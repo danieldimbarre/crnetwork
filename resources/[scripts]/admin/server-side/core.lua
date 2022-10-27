@@ -65,6 +65,25 @@ RegisterCommand("gem",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- GEMS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand('gems',function(source,Message)
+	if source == 0 then
+		local Passport = parseInt(Message[1])
+		local Amount = parseInt(Message[3])
+		
+		local Source = vRP.Source(Passport)
+		if Source then
+			vRP.UpgradeGemstone(Passport,Amount)
+		else
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Query("accounts/AddGems",{ license = Identity["license"], gems = Amount })
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("blips",function(source)

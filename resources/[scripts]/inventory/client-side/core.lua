@@ -2094,7 +2094,7 @@ local WeaConfig = {
 	},
 	["WEAPON_SMG"] = {
 		["Bone"] = 24818,
-		["x"] = 0.22,
+		["x"] = 0.0,
 		["y"] = -0.14,
 		["z"] = 0.12,
 		["RotX"] = 0.0,
@@ -2124,7 +2124,7 @@ local WeaConfig = {
 	},
 	["WEAPON_ASSAULTSMG"] = {
 		["Bone"] = 24818,
-		["x"] = 0.22,
+		["x"] = 0.0,
 		["y"] = -0.14,
 		["z"] = 0.12,
 		["RotX"] = 0.0,
@@ -2164,11 +2164,11 @@ local WeaConfig = {
 	},
 	["WEAPON_TACTICALRIFLE"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_carbinerifle_reh"
 	},

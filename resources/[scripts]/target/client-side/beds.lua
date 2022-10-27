@@ -114,7 +114,7 @@ AddEventHandler("target:Treatment",function(Number)
 			TriggerEvent("paramedic:Reset")
 
 			if GetEntityHealth(Ped) <= 100 then
-				vRP.revivePlayer(101)
+				exports["survival"]:Revive(101)
 			end
 
 			Treatment = true

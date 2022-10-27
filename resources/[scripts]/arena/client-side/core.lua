@@ -93,7 +93,7 @@ CreateThread(function()
 				if not Peds[Number] then
 					if LoadModel(v["Ped"]["Model"]) then
 						Peds[Number] = CreatePed(4,v["Ped"]["Model"],v["Ped"]["Coords"]["x"],v["Ped"]["Coords"]["y"],v["Ped"]["Coords"]["z"] - 1,v["Ped"]["Heading"],false,false)
-						SetPedArmour(Peds[Number],100)
+						SetPedArmour(Peds[Number],99)
 						SetEntityInvincible(Peds[Number],true)
 						FreezeEntityPosition(Peds[Number],true)
 						SetBlockingOfNonTemporaryEvents(Peds[Number],true)
@@ -140,21 +140,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("arena:Enter")
 AddEventHandler("arena:Enter",function(Number)
-	if Arena == "0" then
+	if Arena == "0" and vSERVER.CheckEnter(Zones[Number]["Route"],Number) then
+		Arena = Number
+		SendNUIMessage({ Action = "Show" })
 		LocalPlayer["state"]["Route"] = Zones[Number]["Route"]
-		TriggerServerEvent("arena:Enter",Zones[Number]["Route"])
+		TriggerServerEvent("arena:Players","+",Zones[Number]["Route"])
 
 		local Ped = PlayerPedId()
 		local Respawn = math.random(#Zones[Number]["Respawn"])
 		SetEntityCoords(Ped,Zones[Number]["Respawn"][Respawn][1],Zones[Number]["Respawn"][Respawn][2],Zones[Number]["Respawn"][Respawn][3],false,false,false,false)
-
-		Arena = Number
-
-		DoScreenFadeOut(0)
-		Wait(1000)
-		SendNUIMessage({ show = true })
-		TriggerEvent("sounds:Private","welcome",1.0)
-		DoScreenFadeIn(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -163,10 +157,16 @@ end)
 RegisterNetEvent("arena:Exit")
 AddEventHandler("arena:Exit",function()
 	if Arena ~= "0" then
-		SetEntityCoords(PlayerPedId(),Zones[Arena]["Exit"][1],Zones[Arena]["Exit"][2],Zones[Arena]["Exit"][3],false,false,false,false)
-		ClearPedBloodDamage(PlayerPedId())
-		SendNUIMessage({ show = false })
+		local Ped = PlayerPedId()
+		if GetEntityHealth(Ped) <= 100 then
+			exports["survival"]:Revive(200)
+		end
+
+		SetEntityCoords(Ped,Zones[Arena]["Exit"][1],Zones[Arena]["Exit"][2],Zones[Arena]["Exit"][3],false,false,false,false)
+		TriggerServerEvent("arena:Active",Arena)
+		SendNUIMessage({ Action = "Hide" })
 		TriggerEvent("resetEnergetic")
+		ClearPedBloodDamage(Ped)
 		KillStreek = 0
 		Arena = "0"
 	end
@@ -180,7 +180,7 @@ AddEventHandler("arena:Respawn",function()
 		local Ped = PlayerPedId()
 		local Respawn = math.random(#Zones[Arena]["Respawn"])
 		SetEntityCoords(Ped,Zones[Arena]["Respawn"][Respawn][1],Zones[Arena]["Respawn"][Respawn][2],Zones[Arena]["Respawn"][Respawn][3],false,false,false,false)
-		vRP.revivePlayer(200,true)
+		exports["survival"]:Revive(200,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -190,7 +190,7 @@ RegisterNetEvent("arena:Players")
 AddEventHandler("arena:Players",function(Route,Amount)
 	if LocalPlayer["state"]["Route"] == Route then
 		Players = Amount
-		SendNUIMessage({ Players = Players, Streek = KillStreek })
+		SendNUIMessage({ Action = "Players", Players = Players, Streek = KillStreek })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -198,16 +198,17 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("arena:ResetStreek")
 AddEventHandler("arena:ResetStreek",function()
-	SendNUIMessage({ Players = Players, Streek = 0 })
+	SendNUIMessage({ Action = "Players", Players = Players, Streek = 0 })
 	KillStreek = 0
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("gameEventTriggered",function(name,args)
+AddEventHandler("gameEventTriggered",function(name,Message)
 	if name == "CEventNetworkEntityDamage" and Arena ~= "0" then
-		if GetEntityHealth(args[1]) <= 100 and PlayerPedId() == args[2] and IsPedAPlayer(args[1]) then
-			SendNUIMessage({ Players = Players, Streek = KillStreek + 1 })
+		if GetEntityHealth(Message[1]) <= 100 and PlayerPedId() == Message[2] and IsPedAPlayer(Message[1]) then
+			SendNUIMessage({ Action = "Players", Players = Players, Streek = KillStreek + 1 })
+			TriggerServerEvent("arena:Feed",Arena)
 			KillStreek = KillStreek + 1
 		end
 	end
@@ -230,7 +231,7 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONTHREADSTART
+-- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for _,v in pairs(Zones) do

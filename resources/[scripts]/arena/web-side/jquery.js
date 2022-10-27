@@ -1,17 +1,15 @@
-$(document).ready(function(){
-	window.addEventListener("message",function(event){
-		if (event["data"]["show"] !== undefined){
-			if (event["data"]["show"] == true){
-				$("#Arena").css("display","block");
-			} else {
-				$("#Arena").css("display","none");
-			}
+window.addEventListener("message",function(event){
+	switch (event["data"]["Action"]){
+		case "Show":
+			$("#Arena").css("display","block");
+		break;
 
-			return
-		}
+		case "Hide":
+			$("#Arena").css("display","none");
+		break;
 
-		if (event["data"]["Players"] !== undefined){
+		case "Players":
 			$("#Arena").html(`<b>MORTES CONSECUTIVAS: ${event["data"]["Streek"]}</b><br><b>JOGADORES PARTICIPANTES: ${event["data"]["Players"]}</b>`);
-		}
-	});
+		break;
+	}
 });

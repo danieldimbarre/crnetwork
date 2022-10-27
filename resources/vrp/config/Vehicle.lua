@@ -1200,7 +1200,7 @@ local List = {
 		["Gems"] = 0
 	},
 	["sm722"] = {
-		["Name"] = "Mm722",
+		["Name"] = "Sm722",
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,

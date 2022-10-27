@@ -91,11 +91,11 @@ RegisterCommand("globalFunctions",function()
 				if not IsPedInAnyVehicle(Ped) then
 					exports["dynamic"]:AddButton("Rebocar","Colocar veículo na prancha do reboque.","towdriver:invokeTow","","vehicle",false)
 
-					if vRP.ClosestPed(2) then
-						exports["dynamic"]:AddButton("Colocar no Veículo","Colocar no veículo mais próximo.","player:cvFunctions","cv","ClosestPeds",true)
-						exports["dynamic"]:AddButton("Remover do Veículo","Remover do veículo mais próximo.","player:cvFunctions","rv","ClosestPeds",true)
+					if vRP.ClosestPed(3) then
+						exports["dynamic"]:AddButton("Colocar no Veículo","Colocar no veículo mais próximo.","player:cvFunctions","cv","closestpeds",true)
+						exports["dynamic"]:AddButton("Remover do Veículo","Remover do veículo mais próximo.","player:cvFunctions","rv","closestpeds",true)
 
-						exports["dynamic"]:SubMenu("Jogador","Pessoa mais próxima de você.","ClosestPeds")
+						exports["dynamic"]:SubMenu("Jogador","Pessoa mais próxima de você.","closestpeds")
 					end
 				else
 					exports["dynamic"]:AddButton("Sentar no Motorista","Sentar no banco do motorista.","player:seatPlayer","0","vehicle",false)

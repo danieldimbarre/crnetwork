@@ -34,10 +34,10 @@
       <CreateObject value="true" />
       <HudDamage value="0" />
       <HudSpeed value="0" />
-      <HudCapacity value="11" />
+      <HudCapacity value="12" />
       <HudAccuracy value="0" />
       <HudRange value="0" />
-      <ClipSize value="11" />
+      <ClipSize value="12" />
       <ReloadData ref="RELOAD_LARGE_WITH_EMPTIES" />
     </Item>
     <Item type="CWeaponComponentVariantModelInfo">

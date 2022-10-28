@@ -2009,7 +2009,7 @@ local WeaConfig = {
 		["RotX"] = 0.0,
 		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
-		["Model"] = "w_ar_carbineriflemk2"
+		["Model"] = "w_ar_carbinerifle"
 	},
 	["WEAPON_CARBINERIFLE_MK2"] = {
 		["Bone"] = 24818,
@@ -2259,7 +2259,7 @@ local WeaConfig = {
 		["RotX"] = 0.0,
 		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
-		["Model"] = "m6ic_frame_01"
+		["Model"] = "w_ar_carbineriflemk2"
 	},
 	["WEAPON_SCAR17FM"] = {
 		["Bone"] = 24818,

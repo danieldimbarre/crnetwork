@@ -539,8 +539,6 @@ local weaponAttachs = {
 		["WEAPON_MILITARYRIFLE"] = "COMPONENT_AT_AR_FLSH",
 		["WEAPON_HEAVYRIFLE"] = "COMPONENT_AT_AR_FLSH",
 		["WEAPON_TACTICALRIFLE"] = "COMPONENT_AT_AR_FLSH_REH",
-		["WEAPON_M6IC"] = "COMPONENT_M6IC_FLSH_01",
-		["WEAPON_SCAR17FM"] = "COMPONENT_SCAR_FLSH_08",
 		["WEAPON_SWMP9"] = "COMPONENT_SWMP9_FLSH_01"
 	},
 	["attachsCrosshair"] = {
@@ -560,9 +558,7 @@ local weaponAttachs = {
 		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_AT_SCOPE_MEDIUM_MK2",
 		["WEAPON_ASSAULTSMG"] = "COMPONENT_AT_SCOPE_MACRO",
 		["WEAPON_MILITARYRIFLE"] = "COMPONENT_AT_SCOPE_SMALL",
-		["WEAPON_HEAVYRIFLE"] = "COMPONENT_AT_SCOPE_MEDIUM",
-		["WEAPON_M6IC"] = "COMPONENT_M6IC_SCOPE_04",
-		["WEAPON_SCAR17FM"] = "COMPONENT_SCAR_SCOPE_08"
+		["WEAPON_HEAVYRIFLE"] = "COMPONENT_AT_SCOPE_MEDIUM"
 	},
 	["attachsMagazine"] = {
 		["WEAPON_PISTOL"] = "COMPONENT_PISTOL_CLIP_02",
@@ -593,8 +589,6 @@ local weaponAttachs = {
 		["WEAPON_MILITARYRIFLE"] = "COMPONENT_MILITARYRIFLE_CLIP_02",
 		["WEAPON_HEAVYRIFLE"] = "COMPONENT_HEAVYRIFLE_CLIP_02",
 		["WEAPON_TACTICALRIFLE"] = "COMPONENT_TACTICALRIFLE_CLIP_02",
-		["WEAPON_M45A1FM"] = "COMPONENT_M45A1FM_CLIP_02",
-		["WEAPON_SCAR17FM"] = "COMPONENT_SCAR_CLIP_02",
 		["WEAPON_SWMP9"] = "COMPONENT_SWMP9_CLIP_02"
 	},
 	["attachsSilencer"] = {
@@ -610,9 +604,7 @@ local weaponAttachs = {
 		["WEAPON_ASSAULTSMG"] = "COMPONENT_AT_AR_SUPP_02",
 		["WEAPON_MILITARYRIFLE"] = "COMPONENT_AT_AR_SUPP",
 		["WEAPON_HEAVYRIFLE"] = "COMPONENT_AT_AR_SUPP",
-		["WEAPON_TACTICALRIFLE"] = "COMPONENT_AT_AR_SUPP_02",
-		["WEAPON_M6IC"] = "COMPONENT_M6IC_STOCK_05",
-		["WEAPON_SCAR17FM"] = "COMPONENT_SCAR_BARREL_08"
+		["WEAPON_TACTICALRIFLE"] = "COMPONENT_AT_AR_SUPP_02"
 	},
 	["attachsGrip"] = {
 		["WEAPON_CARBINERIFLE"] = "COMPONENT_AT_AR_AFGRIP",
@@ -625,8 +617,7 @@ local weaponAttachs = {
 		["WEAPON_ASSAULTRIFLE"] = "COMPONENT_AT_AR_AFGRIP",
 		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_AT_AR_AFGRIP_02",
 		["WEAPON_HEAVYRIFLE"] = "COMPONENT_AT_AR_AFGRIP",
-		["WEAPON_TACTICALRIFLE"] = "COMPONENT_AT_AR_AFGRIP",
-		["WEAPON_M6IC"] = "COMPONENT_M6IC_SUPP_01"
+		["WEAPON_TACTICALRIFLE"] = "COMPONENT_AT_AR_AFGRIP"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -780,9 +771,7 @@ local weaponAmmos = {
 		"WEAPON_SPECIALCARBINE_MK2",
 		"WEAPON_MILITARYRIFLE",
 		"WEAPON_HEAVYRIFLE",
-		"WEAPON_TACTICALRIFLE",
-		"WEAPON_M6IC",
-		"WEAPON_SCAR17FM"
+		"WEAPON_TACTICALRIFLE"
 	},
 	["WEAPON_SHOTGUN_AMMO"] = {
 		"WEAPON_PUMPSHOTGUN",
@@ -2224,6 +2213,16 @@ local WeaConfig = {
 		["RotZ"] = 5.0,
 		["Model"] = "w_sg_sawnoff"
 	},
+	["WEAPON_MINISMG"] = {
+		["Bone"] = 24818,
+		["x"] = 0.22,
+		["y"] = -0.14,
+		["z"] = 0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 180.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sb_minismg"
+	},
 	["WEAPON_MILITARYRIFLE"] = {
 		["Bone"] = 24818,
 		["x"] = 0.12,
@@ -2253,26 +2252,6 @@ local WeaConfig = {
 		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_carbinerifle_reh"
-	},
-	["WEAPON_M6IC"] = {
-		["Bone"] = 24818,
-		["x"] = 0.12,
-		["y"] = -0.14,
-		["z"] = -0.12,
-		["RotX"] = 0.0,
-		["RotY"] = 360.0,
-		["RotZ"] = 5.0,
-		["Model"] = "w_ar_carbineriflemk2"
-	},
-	["WEAPON_SCAR17FM"] = {
-		["Bone"] = 24818,
-		["x"] = 0.12,
-		["y"] = -0.14,
-		["z"] = -0.12,
-		["RotX"] = 0.0,
-		["RotY"] = 360.0,
-		["RotZ"] = 5.0,
-		["Model"] = "MainBody1"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

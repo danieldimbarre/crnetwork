@@ -2534,26 +2534,6 @@ local List = {
 		["Weight"] = 7.75,
 		["Economy"] = 25000
 	},
-	["WEAPON_M6IC"] = {
-		["Index"] = "m6ic",
-		["Name"] = "LWRC M6IC",
-		["Repair"] = "repairkit04",
-		["Type"] = "Armamento",
-		["Ammo"] = "WEAPON_RIFLE_AMMO",
-		["Durability"] = 21,
-		["Weight"] = 7.75,
-		["Economy"] = 25000
-	},
-	["WEAPON_SCAR17FM"] = {
-		["Index"] = "scar17",
-		["Name"] = "SCAR-17S",
-		["Repair"] = "repairkit04",
-		["Type"] = "Armamento",
-		["Ammo"] = "WEAPON_RIFLE_AMMO",
-		["Durability"] = 21,
-		["Weight"] = 7.75,
-		["Economy"] = 25000
-	},
 	["WEAPON_SWMP9"] = {
 		["Index"] = "swmp9",
 		["Name"] = "M&P 9",

@@ -2213,7 +2213,7 @@ local WeaConfig = {
 	},
 	["WEAPON_SAWNOFFSHOTGUN"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.22,
 		["y"] = -0.14,
 		["z"] = 0.12,
 		["RotX"] = 0.0,

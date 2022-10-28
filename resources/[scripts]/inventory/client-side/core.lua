@@ -2252,7 +2252,17 @@ local WeaConfig = {
 		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_carbinerifle_reh"
-	}
+	},
+	["WEAPON_PRECISIONRIFLE"] = {
+		["Bone"] = 24818,
+		["x"] = -0.1,
+		["y"] = -0.14,
+		["z"] = 0.0,
+		["RotX"] = 0.0,
+		["RotY"] = 0.8,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sr_precisionrifle_reh"
+	},
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:REMOVEWEAPON

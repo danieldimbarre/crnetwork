@@ -794,6 +794,9 @@ local weaponAmmos = {
 	},
 	["WEAPON_PETROLCAN_AMMO"] = {
 		"WEAPON_PETROLCAN"
+	},
+	["WEAPON_SNIPER_AMMO"] = {
+		"WEAPON_PRECISIONRIFLE"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

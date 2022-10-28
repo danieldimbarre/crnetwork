@@ -438,6 +438,9 @@ local paletoBay = PolyZone:Create({
 -- THREADSHOTSFIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
 local ShotDelay = GetGameTimer()
+local ShotsWeapons = {
+	[GetHashKey("WEAPON_NAILGUN")] = true
+}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSHOT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -455,18 +458,8 @@ CreateThread(function()
 
 					local Vehicle = false
 					local Coords = GetEntityCoords(Ped)
-					if not IsPedCurrentWeaponSilenced(Ped) then
-						if (losSantos:isPointInside(Coords) or sandyShores:isPointInside(Coords) or paletoBay:isPointInside(Coords)) and not LocalPlayer["state"]["Police"] then
-							TriggerServerEvent("evidence:dropEvidence","blue")
-
-							if IsPedInAnyVehicle(Ped) then
-								Vehicle = true
-							end
-
-							vSERVER.shotsFired(Vehicle)
-						end
-					else
-						if math.random(100) >= 80 then
+					if not ShotsWeapons[GetSelectedPedWeapon(Ped)] then
+						if not IsPedCurrentWeaponSilenced(Ped) then
 							if (losSantos:isPointInside(Coords) or sandyShores:isPointInside(Coords) or paletoBay:isPointInside(Coords)) and not LocalPlayer["state"]["Police"] then
 								TriggerServerEvent("evidence:dropEvidence","blue")
 
@@ -475,6 +468,18 @@ CreateThread(function()
 								end
 
 								vSERVER.shotsFired(Vehicle)
+							end
+						else
+							if math.random(100) >= 80 then
+								if (losSantos:isPointInside(Coords) or sandyShores:isPointInside(Coords) or paletoBay:isPointInside(Coords)) and not LocalPlayer["state"]["Police"] then
+									TriggerServerEvent("evidence:dropEvidence","blue")
+
+									if IsPedInAnyVehicle(Ped) then
+										Vehicle = true
+									end
+
+									vSERVER.shotsFired(Vehicle)
+								end
 							end
 						end
 					end

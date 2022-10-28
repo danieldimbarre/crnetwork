@@ -2593,6 +2593,16 @@ local List = {
 		["Weight"] = 1.25,
 		["Economy"] = 50
 	},
+	["WEAPON_PRECISIONRIFLE"] = {
+		["Index"] = "remington700",
+		["Name"] = "Remington 700 PCR",
+		["Repair"] = "repairkit04",
+		["Type"] = "Armamento",
+		["Ammo"] = "WEAPON_SNIPER_AMMO",
+		["Durability"] = 21,
+		["Weight"] = 8.75,
+		["Economy"] = 55000
+	},
 	["GADGET_PARACHUTE"] = {
 		["Index"] = "parachute",
 		["Name"] = "Paraquedas",
@@ -2657,6 +2667,13 @@ local List = {
 		["Type"] = "Munição",
 		["Weight"] = 0.001,
 		["Economy"] = 0
+	},
+	["WEAPON_SNIPER_AMMO"] = {
+		["Index"] = "rifleammo",
+		["Name"] = "Munição de Sniper",
+		["Type"] = "Munição",
+		["Weight"] = 0.095,
+		["Economy"] = 50
 	},
 	["WEAPON_BRICK"] = {
 		["Index"] = "brick",

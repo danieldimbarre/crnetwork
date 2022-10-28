@@ -25,6 +25,7 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 		vBARBERSHOP.updateSkin(myFace,true)
 		SendNUIMessage({ Open = false })
 		TriggerEvent("skinshop:updateTattoo")
+		TriggerServerEvent("vRP:BucketClient","Exit")
 	end
 
 	TriggerEvent("barbershop:Apply",myFace)
@@ -54,6 +55,7 @@ function OpenCreator(enable)
 	if enable then
 		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+		TriggerServerEvent("vRP:BucketClient","Enter")
 
 		SetEntityCoords(Ped,239.41,-1381.01,33.73 - 1,0,0,1)
 		SetEntityHeading(Ped,136.07)

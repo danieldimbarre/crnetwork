@@ -134,7 +134,7 @@ function Creative.Respawn()
 	TriggerServerEvent("pma-voice:toggleMute",false)
 
 	DoScreenFadeOut(0)
-	SetEntityCoords(PlayerPedId(),AirportCoords,false,false,false,false)
+	SetEntityCoords(PlayerPedId(),332.8,-569.41,43.29)
 	SendNUIMessage({ Action = "Display", Mode = "none" })
 	Wait(1000)
 	DoScreenFadeIn(1000)

@@ -2534,16 +2534,6 @@ local List = {
 		["Weight"] = 7.75,
 		["Economy"] = 25000
 	},
-	["WEAPON_MP5SDDFM"] = {
-		["Index"] = "mp5sd",
-		["Name"] = "MP5-SD",
-		["Repair"] = "repairkit03",
-		["Type"] = "Armamento",
-		["Ammo"] = "WEAPON_SMG_AMMO",
-		["Durability"] = 21,
-		["Weight"] = 7.75,
-		["Economy"] = 25000
-	},
 	["WEAPON_SCAR17FM"] = {
 		["Index"] = "scar17",
 		["Name"] = "SCAR-17S",

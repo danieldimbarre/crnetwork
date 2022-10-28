@@ -2424,8 +2424,8 @@ local List = {
 		["Economy"] = 25000
 	},
 	["WEAPON_MILITARYRIFLE"] = {
-		["Index"] = "kh2002",
-		["Name"] = "KH-2002",
+		["Index"] = "steyrauga3",
+		["Name"] = "Steyr AUG A3",
 		["Repair"] = "repairkit04",
 		["Type"] = "Armamento",
 		["Ammo"] = "WEAPON_RIFLE_AMMO",

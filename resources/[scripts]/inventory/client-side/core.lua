@@ -725,7 +725,9 @@ local weaponAmmos = {
 		"WEAPON_HEAVYPISTOL",
 		"WEAPON_SNSPISTOL",
 		"WEAPON_SNSPISTOL_MK2",
-		"WEAPON_VINTAGEPISTOL"
+		"WEAPON_VINTAGEPISTOL",
+		"WEAPON_M45A1FM",
+		"WEAPON_SWMP9"
 	},
 	["WEAPON_NAIL_AMMO"] = {
 		"WEAPON_NAILGUN"
@@ -736,7 +738,8 @@ local weaponAmmos = {
 		"WEAPON_SMG",
 		"WEAPON_SMG_MK2",
 		"WEAPON_GUSENBERG",
-		"WEAPON_MACHINEPISTOL"
+		"WEAPON_MACHINEPISTOL",
+		"WEAPON_MP5SDDFM"
 	},
 	["WEAPON_RIFLE_AMMO"] = {
 		"WEAPON_FNFAL",
@@ -753,7 +756,9 @@ local weaponAmmos = {
 		"WEAPON_ASSAULTRIFLE_MK2",
 		"WEAPON_SPECIALCARBINE",
 		"WEAPON_SPECIALCARBINE_MK2",
-		"WEAPON_TACTICALRIFLE"
+		"WEAPON_TACTICALRIFLE",
+		"WEAPON_M6IC",
+		"WEAPON_SCAR17FM"
 	},
 	["WEAPON_SHOTGUN_AMMO"] = {
 		"WEAPON_PUMPSHOTGUN",
@@ -2201,6 +2206,36 @@ local WeaConfig = {
 		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_carbinerifle_reh"
+	},
+	["WEAPON_M6IC"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = -0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 360.0,
+		["RotZ"] = 5.0,
+		["Model"] = "m6ic"
+	},
+	["WEAPON_MP5SDDFM"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = 0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 180.0,
+		["RotZ"] = 5.0,
+		["Model"] = "mp5sd_fm"
+	},
+	["WEAPON_SCAR17FM"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = -0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 360.0,
+		["RotZ"] = 5.0,
+		["Model"] = "ScarFluffysMods"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

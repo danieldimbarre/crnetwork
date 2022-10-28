@@ -2354,8 +2354,8 @@ local List = {
 		["Economy"] = 775
 	},
 	["WEAPON_CARBINERIFLE"] = {
-		["Index"] = "m4a1",
-		["Name"] = "M4A1",
+		["Index"] = "tacticalrifle",
+		["Name"] = "Tactical Rifle",
 		["Repair"] = "repairkit04",
 		["Type"] = "Armamento",
 		["Ammo"] = "WEAPON_RIFLE_AMMO",
@@ -2516,7 +2516,7 @@ local List = {
 	},
 	["WEAPON_M6IC"] = {
 		["Index"] = "m6ic",
-		["Name"] = "M6IC",
+		["Name"] = "LWRC M6IC",
 		["Repair"] = "repairkit04",
 		["Type"] = "Armamento",
 		["Ammo"] = "WEAPON_RIFLE_AMMO",
@@ -2524,9 +2524,9 @@ local List = {
 		["Weight"] = 7.75,
 		["Economy"] = 25000
 	},
-	["WEAPON_M45A1"] = {
+	["WEAPON_M45A1FM"] = {
 		["Index"] = "m45a1",
-		["Name"] = "M45AI",
+		["Name"] = "M45A1",
 		["Repair"] = "repairkit02",
 		["Type"] = "Armamento",
 		["Ammo"] = "WEAPON_PISTOL_AMMO",
@@ -2534,9 +2534,9 @@ local List = {
 		["Weight"] = 7.75,
 		["Economy"] = 25000
 	},
-	["WEAPON_MP5SD"] = {
+	["WEAPON_MP5SDDFM"] = {
 		["Index"] = "mp5sd",
-		["Name"] = "MP5SD",
+		["Name"] = "MP5-SD",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
 		["Ammo"] = "WEAPON_SMG_AMMO",
@@ -2544,9 +2544,9 @@ local List = {
 		["Weight"] = 7.75,
 		["Economy"] = 25000
 	},
-	["WEAPON_SCAR17"] = {
+	["WEAPON_SCAR17FM"] = {
 		["Index"] = "scar17",
-		["Name"] = "SCAR17",
+		["Name"] = "SCAR-17S",
 		["Repair"] = "repairkit04",
 		["Type"] = "Armamento",
 		["Ammo"] = "WEAPON_RIFLE_AMMO",
@@ -2556,7 +2556,7 @@ local List = {
 	},
 	["WEAPON_SWMP9"] = {
 		["Index"] = "swmp9",
-		["Name"] = "SWMP9",
+		["Name"] = "M&P 9",
 		["Repair"] = "repairkit02",
 		["Type"] = "Armamento",
 		["Ammo"] = "WEAPON_PISTOL_AMMO",

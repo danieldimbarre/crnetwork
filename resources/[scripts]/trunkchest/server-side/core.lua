@@ -184,7 +184,7 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if not vRP.VehicleBlock(Entity[2]) then
+		if VehicleChest(Entity[2]) > 0 then
 			local PassportPlate = vRP.PassportPlate(Entity[1])
 
 			if PassportPlate then

@@ -116,11 +116,10 @@ RegisterCommand("god",function(source,Message)
 					vRP.UpgradeThirst(OtherPassport,100)
 					vRP.UpgradeHunger(OtherPassport,100)
 					vRP.DowngradeStress(OtherPassport,100)
-					vRPC.revivePlayer(ClosestPed,200)
+					vRP.Revive(ClosestPed,200)
 				end
 			else
-				vRP.SetArmour(source,99)
-				vRPC.revivePlayer(source,200)
+				vRP.Revive(source,200,true)
 				vRP.UpgradeThirst(Passport,100)
 				vRP.UpgradeHunger(Passport,100)
 				vRP.DowngradeStress(Passport,100)

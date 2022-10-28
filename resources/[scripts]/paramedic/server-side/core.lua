@@ -95,8 +95,8 @@ AddEventHandler("paramedic:Revive",function(entity)
 				vRPC.playAnim(source,false,{"mini@cpr@char_a@cpr_str","cpr_pumpchest"},true)
 
 				SetTimeout(10000,function()
+					vRP.Revive(entity,101)
 					vRPC.removeObjects(source)
-					vRPC.revivePlayer(entity,110)
 					vRP.UpgradeThirst(OtherPassport,10)
 					vRP.UpgradeHunger(OtherPassport,10)
 					Player(source)["state"]["Cancel"] = false

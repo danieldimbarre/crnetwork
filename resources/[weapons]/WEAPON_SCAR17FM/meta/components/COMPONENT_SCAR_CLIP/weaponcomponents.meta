@@ -98,7 +98,7 @@
 			<HudCapacity value="0"/>
 			<HudAccuracy value="0"/>
 			<HudRange value="0"/>
-			<ClipSize value="40"/>
+			<ClipSize value="20"/>
 			<ReloadData ref="RELOAD_DEFAULT" />
 		</Item>
 		<Item type="CWeaponComponentClipInfo">

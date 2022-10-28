@@ -1,11 +1,9 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "2.1.0"
+version "2.2.5"
 author "ImagicTheCat"
 creative_network "yes"
-
-ui_page "gui/index.html"
 
 client_scripts {
 	"config/Global.lua",
@@ -44,13 +42,11 @@ server_scripts {
 }
 
 files {
-	"lib/*",
-	"gui/*"
+	"lib/*"
 }
 
 escrow_ignore {
 	"lib/*",
-	"gui/*",
 	"config/*",
 	"modules/vrp.lua",
 	"modules/prepare.lua"

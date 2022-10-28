@@ -1,0 +1,1 @@
+AddTextEntry("WEAPON_M45A1FM", "M45A1 45 ACP")

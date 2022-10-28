@@ -2514,6 +2514,56 @@ local List = {
 		["Weight"] = 7.75,
 		["Economy"] = 25000
 	},
+	["WEAPON_M6IC"] = {
+		["Index"] = "m6ic",
+		["Name"] = "M6IC",
+		["Repair"] = "repairkit04",
+		["Type"] = "Armamento",
+		["Ammo"] = "WEAPON_RIFLE_AMMO",
+		["Durability"] = 21,
+		["Weight"] = 7.75,
+		["Economy"] = 25000
+	},
+	["WEAPON_M45A1"] = {
+		["Index"] = "m45a1",
+		["Name"] = "M45AI",
+		["Repair"] = "repairkit02",
+		["Type"] = "Armamento",
+		["Ammo"] = "WEAPON_PISTOL_AMMO",
+		["Durability"] = 21,
+		["Weight"] = 7.75,
+		["Economy"] = 25000
+	},
+	["WEAPON_MP5SD"] = {
+		["Index"] = "mp5sd",
+		["Name"] = "MP5SD",
+		["Repair"] = "repairkit03",
+		["Type"] = "Armamento",
+		["Ammo"] = "WEAPON_SMG_AMMO",
+		["Durability"] = 21,
+		["Weight"] = 7.75,
+		["Economy"] = 25000
+	},
+	["WEAPON_SCAR17"] = {
+		["Index"] = "scar17",
+		["Name"] = "SCAR17",
+		["Repair"] = "repairkit04",
+		["Type"] = "Armamento",
+		["Ammo"] = "WEAPON_RIFLE_AMMO",
+		["Durability"] = 21,
+		["Weight"] = 7.75,
+		["Economy"] = 25000
+	},
+	["WEAPON_SWMP9"] = {
+		["Index"] = "swmp9",
+		["Name"] = "SWMP9",
+		["Repair"] = "repairkit02",
+		["Type"] = "Armamento",
+		["Ammo"] = "WEAPON_PISTOL_AMMO",
+		["Durability"] = 21,
+		["Weight"] = 7.75,
+		["Economy"] = 25000
+	},
 	["WEAPON_ASSAULTSMG"] = {
 		["Index"] = "steyraug",
 		["Name"] = "Steyr AUG",

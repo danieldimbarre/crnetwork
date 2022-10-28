@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+
+<CWeaponComponentInfoBlob>
+	<Infos>
+		<Item type="CWeaponComponentInfo">
+			<Name>COMPONENT_SCAR_BODY_01</Name>
+			<Model>MainBody1</Model>
+			<LocName>"STOCK"</LocName>
+			<LocDesc>"STOCK"</LocDesc>
+			<AttachBone>AAPGun</AttachBone>
+			<WeaponAttachBone>WAPGun</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="false"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+		</Item>
+		<Item type="CWeaponComponentInfo">
+			<Name>COMPONENT_SCAR_BODY_02</Name>
+			<Model>MainBody2</Model>
+			<LocName>"STOCK2"</LocName>
+			<LocDesc>"STOCK2"</LocDesc>
+			<AttachBone>AAPGun</AttachBone>
+			<WeaponAttachBone>WAPGun</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="false"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+		</Item>
+	</Infos>
+	<InfoBlobName/>
+</CWeaponComponentInfoBlob>
+

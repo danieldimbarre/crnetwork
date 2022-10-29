@@ -621,7 +621,7 @@ local List = {
 				}
 			}
 		}
-	},		
+	},
 	["Backpack"] = {
 		["List"] = {
 		    ["backpack"] = {

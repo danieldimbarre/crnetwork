@@ -323,6 +323,7 @@ local List = {
 		}
 	},
 	["Aztecas"] = {
+		["perm"] = "Aztecas",
 		["List"] = {
 		    ["WEAPON_PISTOL_AMMO"] = {
 				["amount"] = 3,
@@ -351,6 +352,7 @@ local List = {
 		}
 	},	
 	["Marabunta"] = {
+		["perm"] = "Marabunta",
 		["List"] = {
 			["WEAPON_PISTOL"] = {
 				["amount"] = 1,
@@ -588,8 +590,9 @@ local List = {
 		}
 	},
 	["Triads"] = {
+		["perm"] = "Triads",
 		["List"] = {
-			["C4"] = {
+			["c4"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {

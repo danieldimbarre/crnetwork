@@ -589,8 +589,8 @@ local List = {
 			}	
 		}
 	},
-	["Triads"] = {
-		["perm"] = "Triads",
+	["Altruists"] = {
+		["perm"] = "Altruists",
 		["List"] = {
 			["c4"] = {
 				["amount"] = 1,

@@ -58,3 +58,48 @@ end
 function vRP.Revive(source,Health,Arena)
     return SURVIVAL.Revive(source,Health,Arena)
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VRP.SETPREMIUM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function vRP.setPremium(source,Type)
+	if Characters[source] then
+		vRP.Query("accounts/AddPremium",{ license = Characters[source]["license"], premium = os.time() + 259200, type = Type })
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VRP.UPGRADEPREMIUM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function vRP.upgradePremium(source)
+	if Characters[source] then
+		vRP.Query("accounts/updatePremium",{ license = Characters[source]["license"] })
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VRP.USERPREMIUM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function vRP.userPremium(Passport)
+	local source = vRP.Source(Passport)
+
+	if Characters[source] then
+		if Characters[source]["premium"] >= os.time() then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				local Account = vRP.Account(Identity["license"])
+				return true,Account["type"]
+			end
+		end
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VRP.LICENSEPREMIUM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function vRP.licensePremium(License)
+	local Account = vRP.Account(License)
+	if Account and Account["premium"] >= os.time() then
+		return true,Account["type"]
+	end
+
+	return false
+end

@@ -1105,12 +1105,18 @@ local List = {
 		Coords = { -280.72,6228.2,31.69,42.52 },
 		Model = "s_f_m_fembarber",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- CraftingTable
+	},
+	{ -- CraftingTable
 		Distance = 30,
 		Coords = { 2191.63,5595.93,53.77,255.12 },
 		Model = "s_m_m_gaffer_01",
 		anim = { "mini@repair","fixing_a_player" }
-	}
+	},
+	{ -- Triads
+		Distance = 30,
+		Coords = { -647.01,-1239.5,11.54,28.35 }, 
+		Model = "g_m_m_korboss_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADLIST

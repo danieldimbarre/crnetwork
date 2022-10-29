@@ -660,7 +660,7 @@ local List = {
 		["Name"] = "Bloqueador de Sinal",
 		["Type"] = "Usável",
 		["Weight"] = 0.75,
-		["Economy"] = 325
+		["Economy"] = 525
 	},
 	["pistolbody"] = {
 		["Index"] = "pistolbody",
@@ -1016,7 +1016,7 @@ local List = {
 		["Durability"] = 3,
 		["Weight"] = 3.75,
 		["Max"] = 1,
-		["Economy"] = 750
+		["Economy"] = 900
 	},
 	["bandage"] = {
 		["Index"] = "bandage",

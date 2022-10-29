@@ -587,13 +587,44 @@ local List = {
 			}	
 		}
 	},
+	["Triads"] = {
+		["List"] = {
+			["C4"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 5,
+					["tarp"] = 2,
+					["explosives"] = 5,
+				}
+			},
+			["blocksignal"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 5,
+					["aluminum"] = 10,
+					["rubber"] = 5,
+				}
+			},
+			["vest"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["roadsigns"] = 5,
+					["aluminum"] = 10,
+					["rubber"] = 5,
+					["sheetmetal"] = 5,
+				}
+			}
+		}
+	},		
 	["Backpack"] = {
 		["List"] = {
 		    ["backpack"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["dollars"] = 3000,
 					["leather"] = 75,
 					["tarp"] = 5,
 					["rubber"] = 45

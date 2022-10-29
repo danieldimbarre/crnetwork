@@ -595,7 +595,7 @@ local List = {
 				["require"] = {
 					["techtrash"] = 5,
 					["tarp"] = 2,
-					["explosives"] = 5,
+					["explosives"] = 5
 				}
 			},
 			["blocksignal"] = {
@@ -604,7 +604,7 @@ local List = {
 				["require"] = {
 					["techtrash"] = 5,
 					["aluminum"] = 10,
-					["rubber"] = 5,
+					["rubber"] = 5
 				}
 			},
 			["vest"] = {
@@ -614,7 +614,7 @@ local List = {
 					["roadsigns"] = 5,
 					["aluminum"] = 10,
 					["rubber"] = 5,
-					["sheetmetal"] = 5,
+					["sheetmetal"] = 5
 				}
 			}
 		}

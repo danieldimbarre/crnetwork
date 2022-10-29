@@ -939,6 +939,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Salary:Remove",function(Passport,Permission)
 	if Permission then
+		if Permission == "Premium" then
+			local Status,Type = vRP.userPremium(Passport)
+			if Status then
+				Permission = Premium[Type]
+			end
+		end
+
 		if Salary[Permission] then
 			if Salary[Permission][Passport] then
 				Salary[Permission][Passport] = nil

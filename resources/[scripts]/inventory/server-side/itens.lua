@@ -4701,7 +4701,7 @@ Use = {
 				vRP.setPremium(source,1)
 
 				if Status then
-					TriggerEvent("Salary:Remove",Passport,Premium[Type])
+					TriggerEvent("Salary:Remove",Passport,"Premium")
 				end
 			end
 		else
@@ -4722,7 +4722,7 @@ Use = {
 				vRP.setPremium(source,2)
 
 				if Status then
-					TriggerEvent("Salary:Remove",Passport,Premium[Type])
+					TriggerEvent("Salary:Remove",Passport,"Premium")
 				end
 			end
 		else
@@ -4743,7 +4743,7 @@ Use = {
 				vRP.setPremium(source,3)
 
 				if Status then
-					TriggerEvent("Salary:Remove",Passport,Premium[Type])
+					TriggerEvent("Salary:Remove",Passport,"Premium")
 				end
 			end
 		else

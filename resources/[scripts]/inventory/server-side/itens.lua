@@ -4699,6 +4699,10 @@ Use = {
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium01")
 				vRP.setPremium(source,1)
+
+				if Status then
+					TriggerEvent("Salary:Remove",Passport,Premium[Type])
+				end
 			end
 		else
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
@@ -4716,6 +4720,10 @@ Use = {
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium02")
 				vRP.setPremium(source,2)
+
+				if Status then
+					TriggerEvent("Salary:Remove",Passport,Premium[Type])
+				end
 			end
 		else
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
@@ -4733,6 +4741,10 @@ Use = {
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium03")
 				vRP.setPremium(source,3)
+
+				if Status then
+					TriggerEvent("Salary:Remove",Passport,Premium[Type])
+				end
 			end
 		else
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then

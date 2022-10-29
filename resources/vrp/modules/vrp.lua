@@ -82,7 +82,11 @@ function vRP.userPremium(Passport)
 
 	if Characters[source] then
 		if Characters[source]["premium"] >= os.time() then
-			return true,Characters[source]["type"]
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				local Account = vRP.Account(Identity["license"])
+				return true,Account["type"]
+			end
 		end
 	end
 

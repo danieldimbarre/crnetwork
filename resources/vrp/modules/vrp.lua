@@ -73,7 +73,7 @@ end
 function vRP.upgradePremium(source)
 	if Characters[source] then
 		vRP.Query("accounts/UpdatePremium",{ license = Characters[source]["license"], premium = 2592000 })
-		Characters[source]["premium"] = Characters[source]["premium"] + 2592000)
+		Characters[source]["premium"] = Characters[source]["premium"] + 2592000
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

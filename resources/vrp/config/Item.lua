@@ -276,7 +276,7 @@ local List = {
 		["Description"] = "Aumenta a mochila em 10Kg.",
 		["Type"] = "Usável",
 		["Weight"] = 0.75,
-		["Economy"] = 325
+		["Economy"] = 5000
 	},
 	["paramedicpass"] = {
 		["Index"] = "medicbag",

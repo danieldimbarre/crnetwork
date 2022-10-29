@@ -34,6 +34,7 @@ vRP.Prepare("accounts/AddPremium","UPDATE accounts SET premium = @premium, class
 vRP.Prepare("accounts/RemoveGems","UPDATE accounts SET gems = gems - @gems WHERE license = @license")
 vRP.Prepare("accounts/infosUpdatechars","UPDATE accounts SET chars = chars + 1 WHERE license = @license")
 vRP.Prepare("accounts/updatePremium","UPDATE accounts SET premium = premium + 2592000 WHERE license = @license")
+vRP.Prepare("accounts/UpdatePremium","UPDATE accounts SET premium = premium + @premium WHERE license = @license")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERDATA
 -----------------------------------------------------------------------------------------------------------------------------------------

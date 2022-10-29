@@ -63,7 +63,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.setPremium(source,Value)
 	if Characters[source] then
-		vRP.Query("accounts/AddPremium",{ license = Characters[source]["license"], premium = os.time() + 259200, class = Value })
+		vRP.Query("accounts/AddPremium",{ license = Characters[source]["license"], premium = os.time() + 2592000, class = Value })
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.upgradePremium(source)
 	if Characters[source] then
-		vRP.Query("accounts/updatePremium",{ license = Characters[source]["license"] })
+		vRP.Query("accounts/UpdatePremium",{ license = Characters[source]["license"], premium = 2592000 })
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -1112,10 +1112,10 @@ local List = {
 		Model = "s_m_m_gaffer_01",
 		anim = { "mini@repair","fixing_a_player" }
 	},
-	{ -- Triads
+	{ -- Altruists
 		Distance = 30,
-		Coords = { -647.01,-1239.5,11.54,28.35 }, 
-		Model = "g_m_m_korboss_01",
+		Coords = { -1109.09,4939.69,223.13 }, 
+		Model = "csb_cletus",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	}
 }

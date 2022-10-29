@@ -4693,49 +4693,52 @@ Use = {
 	end,
 
 	["premium01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.UserPremium(Passport) then
+		local Status,Type = vRP.userPremium(Passport)
+		if not Status or (Premium[Type] and "Premium01" ~= Premium[Type]) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium01")
-				vRP.SetPremium(source)
+				vRP.setPremium(source,1)
 			end
 		else
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium01")
-				vRP.UpgradePremium(Passport)
+				vRP.upgradePremium(Passport)
 			end
 		end
 	end,
 
 	["premium02"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.UserPremium(Passport) then
+		local Status,Type = vRP.userPremium(Passport)
+		if not Status or (Premium[Type] and "Premium02" ~= Premium[Type]) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium02")
-				vRP.SetPremium(source)
+				vRP.setPremium(source,2)
 			end
 		else
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium02")
-				vRP.UpgradePremium(Passport)
+				vRP.upgradePremium(Passport)
 			end
 		end
 	end,
 
 	["premium03"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.UserPremium(Passport) then
+		local Status,Type = vRP.userPremium(Passport)
+		if not Status or (Premium[Type] and "Premium03" ~= Premium[Type]) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium03")
-				vRP.SetPremium(source)
+				vRP.setPremium(source,3)
 			end
 		else
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium03")
-				vRP.UpgradePremium(Passport)
+				vRP.upgradePremium(Passport)
 			end
 		end
 	end,

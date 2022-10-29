@@ -1115,7 +1115,7 @@ local List = {
 	{ -- Triads
 		Distance = 30,
 		Coords = { -647.01,-1239.5,11.54,28.35 }, 
-		Model = "g_m_m_korboss_01",
+		Model = "s_m_m_gaffer_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

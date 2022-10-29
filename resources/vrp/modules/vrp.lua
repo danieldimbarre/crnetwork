@@ -77,28 +77,28 @@ function vRP.upgradePremium(source)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VRP.USERPREMIUM
+-- VRP.USERCLASSPREMIUM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function vRP.userPremium(Passport)
+function vRP.UserClassPremium(Passport)
 	local source = vRP.Source(Passport)
 
 	if Characters[source] then
 		if Characters[source]["premium"] >= os.time() then
 			local License = vRP.Identities(source)
 			local Account = vRP.Account(License)
-			return true,Account["class"]
+			return Account["class"]
 		end
 	end
 
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VRP.LICENSEPREMIUM
+-- VRP.LICENSECLASSPREMIUM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function vRP.licensePremium(License)
+function vRP.LicenseClassPremium(License)
 	local Account = vRP.Account(License)
 	if Account and Account["premium"] >= os.time() then
-		return true,Account["class"]
+		return Account["class"]
 	end
 
 	return false

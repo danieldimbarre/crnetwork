@@ -920,10 +920,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Salary:Add",function(Passport,Permission)
 	if Permission == "Premium" then
-		local Status,Type = vRP.userPremium(Passport)
-		if Status then
-			Permission = Premium[Type]
-		end
+		local Type = vRP.UserClassPremium(Passport)
+		Permission = Premium[Type]
 	end
 
 	if not Salary[Permission] then
@@ -940,10 +938,8 @@ end)
 AddEventHandler("Salary:Remove",function(Passport,Permission)
 	if Permission then
 		if Permission == "Premium" then
-			local Status,Type = vRP.userPremium(Passport)
-			if Status then
-				Permission = Premium[Type]
-			end
+			local Type = vRP.UserClassPremium(Passport)
+			Permission = Premium[Type]
 		end
 
 		if Salary[Permission] then

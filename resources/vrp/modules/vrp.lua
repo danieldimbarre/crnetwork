@@ -61,9 +61,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP.SETPREMIUM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function vRP.setPremium(source,Type)
+function vRP.setPremium(source,Value)
 	if Characters[source] then
-		vRP.Query("accounts/AddPremium",{ license = Characters[source]["license"], premium = os.time() + 259200, type = Type })
+		vRP.Query("accounts/AddPremium",{ license = Characters[source]["license"], premium = os.time() + 259200, class = Value })
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

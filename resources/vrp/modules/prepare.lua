@@ -30,7 +30,7 @@ vRP.Prepare("accounts/newAccount","INSERT INTO accounts(license) VALUES(@license
 vRP.Prepare("accounts/AddGems","UPDATE accounts SET gems = gems + @gems WHERE license = @license")
 vRP.Prepare("accounts/Rolepass","UPDATE accounts SET rolepass = @rolepass WHERE license = @license")
 vRP.Prepare("accounts/setPremium","UPDATE accounts SET premium = @premium WHERE license = @license")
-vRP.Prepare("accounts/AddPremium","UPDATE accounts SET premium = @premium, type = @type WHERE license = @license")
+vRP.Prepare("accounts/AddPremium","UPDATE accounts SET premium = @premium, class = @class WHERE license = @license")
 vRP.Prepare("accounts/RemoveGems","UPDATE accounts SET gems = gems - @gems WHERE license = @license")
 vRP.Prepare("accounts/infosUpdatechars","UPDATE accounts SET chars = chars + 1 WHERE license = @license")
 vRP.Prepare("accounts/updatePremium","UPDATE accounts SET premium = premium + 2592000 WHERE license = @license")

@@ -17,10 +17,6 @@ data_file "VEHICLE_LAYOUTS_FILE" "data/vehiclelayouts.meta"
 data_file "VEHICLE_METADATA_FILE" "data/vehicles.meta"
 data_file "VEHICLE_VARIATION_FILE" "data/carvariations.meta"
 
-data_file "AUDIO_WAVEPACK" "audio/r35sound/dlc_r35sound"
-data_file "AUDIO_GAMEDATA" "audio/r35sound/r35sound_game.dat"
-data_file "AUDIO_SOUNDDATA" "audio/r35sound/r35sound_sounds.dat"
-
 data_file "AUDIO_WAVEPACK" "audio/v8sultanrs/dlc_v8sultanrs"
 data_file "AUDIO_GAMEDATA" "audio/v8sultanrs/sultanrsv8_game.dat"
 data_file "AUDIO_SOUNDDATA" "audio/v8sultanrs/sultanrsv8_sounds.dat"

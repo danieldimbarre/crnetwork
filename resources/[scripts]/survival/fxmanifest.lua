@@ -5,7 +5,6 @@ lua54 "yes"
 ui_page "web-side/index.html"
 
 client_scripts {
-	"@vrp/config/Global.lua",
 	"@vrp/lib/Utils.lua",
 	"client-side/*"
 }

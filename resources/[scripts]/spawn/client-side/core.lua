@@ -43,7 +43,7 @@ AddEventHandler("onClientResourceStart",function(Resource)
 
 	Wait(5000)
 
-	DoScreenFadeOut(0)
+	DoScreenFadeIn(0)
 	DisplayRadar(false)
 	ShutdownLoadingScreen()
 	ShutdownLoadingScreenNui()
@@ -60,6 +60,10 @@ AddEventHandler("onClientResourceStart",function(Resource)
 	local Characters = vSERVER.Characters()
 	if parseInt(#Characters) > 0 then
 		for Number,v in pairs(Characters) do
+			if v["Skin"] == nil then
+				v["Skin"] = "mp_m_freemode_01"
+			end
+
 			if LoadModel(v["Skin"]) then
 				Peds[Number] = CreatePed(4,v["Skin"],Poords[Number][1],Poords[Number][2],Poords[Number][3],Poords[Number][4],false,false)
 				SetEntityInvincible(Peds[Number],true)
@@ -89,15 +93,11 @@ AddEventHandler("onClientResourceStart",function(Resource)
 
 	SendNUIMessage({ Action = "Spawn", Table = Characters })
 	SetNuiFocus(true,true)
-
-	DoScreenFadeIn(1000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERCHOSEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("CharacterChosen",function(Data,Callback)
-	DoScreenFadeOut(0)
-
 	for _,v in pairs(Peds) do
 		if DoesEntityExist(v) then
 			DeleteEntity(v)
@@ -145,8 +145,6 @@ AddEventHandler("spawn:justSpawn",function(Open,Barbershop)
 			TriggerEvent("barbershop:Open")
 		end
 	end
-
-	DoScreenFadeIn(1000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN:CLOSE
@@ -162,8 +160,6 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 	local Ped = PlayerPedId()
 
 	if Data["hash"] == "spawn" then
-		DoScreenFadeOut(0)
-
 		TriggerEvent("hud:Active",true)
 		SetNuiFocus(false,false)
 
@@ -177,10 +173,8 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 		Wait(1000)
 
 		TriggerServerEvent("vRP:justObjects")
-		DoScreenFadeIn(1000)
 	else
 		Destroy = false
-		DoScreenFadeOut(0)
 
 		Wait(1000)
 
@@ -189,8 +183,6 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 		local speed = 0.7
 		weight = 270.0
 		Destroy = true
-
-		DoScreenFadeIn(1000)
 
 		SetEntityCoords(Ped,Locate[Data["hash"]]["x"],Locate[Data["hash"]]["y"],Locate[Data["hash"]]["z"],false,false,false,false)
 		local Coords = GetEntityCoords(Ped)

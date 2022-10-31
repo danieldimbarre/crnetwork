@@ -73,7 +73,7 @@ body {
 	padding: 18px 0px;
 	margin-left: 10px;
 	margin-top: 10px;
-	background: #7c344d;
+	background: #21ac38;
 	width: 110px;
 	cursor: pointer;
 	text-transform: uppercase;
@@ -84,7 +84,7 @@ body {
 
 #reset:hover {
 	color: #95c5ab;
-	background: #2e6e4c;
+	background: #80e470;
 }
 
 .categories {
@@ -94,7 +94,7 @@ body {
 .category {
 	width: 50px;
 	height: 50px;
-	background: #7c344d;
+	background: #21ac38;
 	cursor: pointer;
 	float: left;
 	transition: all .1s ease-out;
@@ -106,64 +106,64 @@ body {
 
 .category:first-child {
 	margin: 0px 10px 10px 0px;
-	background: url(images/head.png) no-repeat center/30px 30px,#7c344d;
+	background: url(images/head.png) no-repeat center/30px 30px,#21ac38;
 }
 
 .category:first-child:hover, .category:first-child.selected {
-	background: url(images/head.png) no-repeat center/30px 30px,#2e6e4c;
+	background: url(images/head.png) no-repeat center/30px 30px,#80e470;
 }
 
 .category:nth-child(2) {
 	margin: 0px 10px 10px 0px;
-	background: url(images/arm-left.png) no-repeat center/30px 30px,#7c344d;
+	background: url(images/arm-left.png) no-repeat center/30px 30px,#21ac38;
 }
 
 .category:nth-child(2):hover, .category:nth-child(2).selected {
-	background: url(images/arm-left.png) no-repeat center/30px 30px,#2e6e4c;
+	background: url(images/arm-left.png) no-repeat center/30px 30px,#80e470;
 }
 
 .category:nth-child(3) {
 	margin-bottom: 10px;
-	background: url(images/arm-right.png) no-repeat center/30px 30px,#7c344d;
+	background: url(images/arm-right.png) no-repeat center/30px 30px,#21ac38;
 }
 
 .category:nth-child(3):hover, .category:nth-child(3).selected {
-	background: url(images/arm-right.png) no-repeat center/30px 30px,#2e6e4c;
+	background: url(images/arm-right.png) no-repeat center/30px 30px,#80e470;
 }
 
 .category:nth-child(4) {
 	margin-right: 10px;
-	background: url(images/chest.png) no-repeat center/30px 30px,#7c344d;
+	background: url(images/chest.png) no-repeat center/30px 30px,#21ac38;
 }
 
 .category:nth-child(4):hover, .category:nth-child(4).selected {
-	background: url(images/chest.png) no-repeat center/30px 30px,#2e6e4c;
+	background: url(images/chest.png) no-repeat center/30px 30px,#80e470;
 }
 
 .category:nth-child(5) {
 	margin-right: 10px;
-	background: url(images/leg-left.png) no-repeat center/30px 30px,#7c344d;
+	background: url(images/leg-left.png) no-repeat center/30px 30px,#21ac38;
 }
 
 .category:nth-child(5):hover, .category:nth-child(5).selected {
-	background: url(images/leg-left.png) no-repeat center/30px 30px,#2e6e4c;
+	background: url(images/leg-left.png) no-repeat center/30px 30px,#80e470;
 }
 
 .category:nth-child(6) {
-	background: url(images/leg-right.png) no-repeat center/30px 30px,#7c344d;
+	background: url(images/leg-right.png) no-repeat center/30px 30px,#21ac38;
 }
 
 .category:nth-child(6):hover, .category:nth-child(6).selected {
-	background: url(images/leg-right.png) no-repeat center/30px 30px,#2e6e4c;
+	background: url(images/leg-right.png) no-repeat center/30px 30px,#80e470;
 }
 
 .category:nth-child(7) {
 	margin-top: 10px;
-	background: url(images/head.png) no-repeat center/30px 30px,#7c344d;
+	background: url(images/head.png) no-repeat center/30px 30px,#21ac38;
 }
 
 .category:nth-child(7):hover, .category:nth-child(7).selected {
-	background: url(images/head.png) no-repeat center/30px 30px,#2e6e4c;
+	background: url(images/head.png) no-repeat center/30px 30px,#80e470;
 }
 
 .category-items {
@@ -189,5 +189,5 @@ body {
 
 .item:hover, .item.selected {
 	color: #6a4f1b;
-	background: #f1c267;
+	background: #2e6e4c;
 }

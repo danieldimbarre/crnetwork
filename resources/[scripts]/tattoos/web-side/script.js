@@ -29,7 +29,7 @@ const TattooStore = {
 
 			$("#items").append(`
 				<div class="item${selected}" tattoo-code="${tattoo.name}" tattoo-category="${category}" tattoo-index="${index}"
-				style="background-image: url('http://181.214.221.93/energy-images/${selectShop}/tattoo/${category}/${label}.png')"
+				style="background-image: url('http://181.214.221.96/energy-images/${selectShop}/tattoo/${category}/${label}.png')"
 				>
 				<div class="circle number">${label}</div>
 			`);

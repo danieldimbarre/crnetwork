@@ -6322,8 +6322,8 @@ local List = {
 		["Type"] = "automobile",
 		["Gems"] = 150
 	},
-	["civicModer"] = {
-		["Name"] = "CivicModer",
+	["civictyper"] = {
+		["Name"] = "Civic Type R",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
@@ -6722,8 +6722,32 @@ local List = {
 		["Type"] = "bike",
 		["Gems"] = 200
 	},
-	["s15"] = {
-		["Name"] = "NissanSilvia",
+	["silvias15"] = {
+		["Name"] = "Nissan Silvia S15",
+		["Weight"] = 30,
+		["Price"] = 200000,
+		["Mode"] = "rental",
+		["Type"] = "automobile",
+		["Gems"] = 150
+	},
+	["rangerover"] = {
+		["Name"] = "Range Rover",
+		["Weight"] = 30,
+		["Price"] = 200000,
+		["Mode"] = "rental",
+		["Type"] = "automobile",
+		["Gems"] = 150
+	},
+	["vwtouareg"] = {
+		["Name"] = "VW Touareg",
+		["Weight"] = 30,
+		["Price"] = 200000,
+		["Mode"] = "rental",
+		["Type"] = "automobile",
+		["Gems"] = 150
+	},
+	["teslamodels"] = {
+		["Name"] = "Tesla Model S",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",

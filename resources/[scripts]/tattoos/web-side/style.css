@@ -68,7 +68,7 @@ body {
 
 #reset {
 	float: left;
-	color: #d898ae;
+	/* color: #d898ae; */
 	text-align: center;
 	padding: 18px 0px;
 	margin-left: 10px;
@@ -83,7 +83,7 @@ body {
 }
 
 #reset:hover {
-	color: #95c5ab;
+	/* color: #95c5ab; */
 	background: #80e470;
 }
 
@@ -188,6 +188,6 @@ body {
 }
 
 .item:hover, .item.selected {
-	color: #6a4f1b;
+	color: #95c5ab;
 	background: #2e6e4c;
 }

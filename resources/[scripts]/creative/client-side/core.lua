@@ -482,7 +482,7 @@ CreateThread(function()
 				PopScaleformMovieFunctionVoid()
 
 				while vehCamera do
-					if IsControlJustPressed(1,154) then
+					if IsControlJustPressed(1,44) then
 						TriggerEvent("hud:Active",true)
 						vehCamera = false
 					end

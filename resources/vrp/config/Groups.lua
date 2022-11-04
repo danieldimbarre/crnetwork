@@ -3,86 +3,149 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 Groups = {
 	["Admin"] = {
-		["Admin"] = true
-	},
-	["Moderator"] = {
-		["Admin"] = true,
-		["Moderator"] = true
-	},
-	["setPolice"] = {
-		["setPolice"] = true
+		["Parent"] = {
+			["Admin"] = true
+		},
+		["Hierarchy"] = { "Administrador","Moderador","Suporte" },
+		["Service"] = {}
 	},
 	["Police"] = {
-		["Police"] = true
-	},
-	["waitPolice"] = {
-		["waitPolice"] = true
-	},
-	["setParamedic"] = {
-		["setParamedic"] = true
+		["Parent"] = {
+			["Police"] = true
+		},
+		["Hierarchy"] = { "Chefe","Capitão","Tenente","Sargento","Corporal","Oficial","Cadete" },
+		["Salary"] = { 2500,2250,2000,1750,1500,1500,1500 },
+		["Service"] = {}
 	},
 	["Paramedic"] = {
-		["Paramedic"] = true
-	},
-	["waitParamedic"] = {
-		["waitParamedic"] = true
-	},
-	["Emergency"] = {
-		["Police"] = true,
-		["Paramedic"] = true
+		["Parent"] = {
+			["Paramedic"] = true
+		},
+		["Hierarchy"] = { "Chefe","Conselheiro","Membro" },
+		["Salary"] = { 2500,2250,2000 },
+		["Service"] = {}
 	},
 	["Mechanic"] = {
-		["Mechanic"] = true
-	},
-	["waitMechanic"] = {
-		["waitMechanic"] = true
+		["Parent"] = {
+			["Mechanic"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["BurgerShot"] = {
-		["BurgerShot"] = true
+		["Parent"] = {
+			["BurgerShot"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["PizzaThis"] = {
-		["PizzaThis"] = true
+		["Parent"] = {
+			["PizzaThis"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["UwuCoffee"] = {
-		["UwuCoffee"] = true
+		["Parent"] = {
+			["UwuCoffee"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["BeanMachine"] = {
-		["BeanMachine"] = true
-	},
-	["Restaurants"] = {
-		["BurgerShot"] = true,
-		["PizzaThis"] = true,
-		["UwuCoffee"] = true,
-		["BeanMachine"] = true
+		["Parent"] = {
+			["BeanMachine"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["Ballas"] = {
-		["Ballas"] = true
+		["Parent"] = {
+			["Ballas"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["Vagos"] = {
-		["Vagos"] = true
+		["Parent"] = {
+			["Vagos"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["Families"] = {
-		["Families"] = true
+		["Parent"] = {
+			["Families"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["Aztecas"] = {
-		["Aztecas"] = true
+		["Parent"] = {
+			["Aztecas"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["Bloods"] = {
-		["Bloods"] = true
+		["Parent"] = {
+			["Bloods"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["Triads"] = {
-		["Triads"] = true
+		["Parent"] = {
+			["Triads"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["Razors"] = {
-		["Razors"] = true
-	},
-	["Marabunta"] = {
-		["Marabunta"] = true
-	},
-	["Lost"] = {
-		["Lost"] = true
+		["Parent"] = {
+			["Razors"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
 	},
 	["Altruists"] = {
-		["Altruists"] = true
+		["Parent"] = {
+			["Altruists"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
+	},
+	["Lost"] = {
+		["Parent"] = {
+			["Lost"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
+	},
+	["Marabunta"] = {
+		["Parent"] = {
+			["Marabunta"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Service"] = {}
+	},
+	["Emergency"] = {
+		["Parent"] = {
+			["Police"] = true,
+			["Paramedic"] = true
+		},
+		["Hierarchy"] = { "Chefe" },
+		["Service"] = {}
+	},
+	["Restaurants"] = {
+		["Parent"] = {
+			["BurgerShot"] = true,
+			["PizzaThis"] = true,
+			["UwuCoffee"] = true,
+			["BeanMachine"] = true
+		},
+		["Hierarchy"] = { "Chefe" },
+		["Service"] = {}
 	}
 }

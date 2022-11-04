@@ -21,7 +21,13 @@ vRP.Prepare("characters/lastCharacters","SELECT id FROM characters WHERE license
 vRP.Prepare("characters/UpgradeCardlimit","UPDATE characters SET cardlimit = cardlimit + @cardlimit WHERE id = @Passport")
 vRP.Prepare("characters/DowngradeCardlimit","UPDATE characters SET cardlimit = cardlimit - @cardlimit WHERE id = @Passport")
 vRP.Prepare("characters/countPersons","SELECT COUNT(license) as qtd FROM characters WHERE license = @license and deleted = 0")
-vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,phone,blood) VALUES(@license,@name,@name2,@sex,@phone,@blood)")
+
+if CreativeSpawn then
+	vRP.Prepare("characters/SetSkin","UPDATE characters SET skin = @skin WHERE id = @Passport")
+	vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,skin,phone,blood) VALUES(@license,@name,@name2,@sex,@skin,@phone,@blood)")
+else
+	vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,phone,blood) VALUES(@license,@name,@name2,@sex,@phone,@blood)")
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -30,11 +36,9 @@ vRP.Prepare("accounts/newAccount","INSERT INTO accounts(license) VALUES(@license
 vRP.Prepare("accounts/AddGems","UPDATE accounts SET gems = gems + @gems WHERE license = @license")
 vRP.Prepare("accounts/Rolepass","UPDATE accounts SET rolepass = @rolepass WHERE license = @license")
 vRP.Prepare("accounts/setPremium","UPDATE accounts SET premium = @premium WHERE license = @license")
-vRP.Prepare("accounts/AddPremium","UPDATE accounts SET premium = @premium, class = @class WHERE license = @license")
 vRP.Prepare("accounts/RemoveGems","UPDATE accounts SET gems = gems - @gems WHERE license = @license")
 vRP.Prepare("accounts/infosUpdatechars","UPDATE accounts SET chars = chars + 1 WHERE license = @license")
 vRP.Prepare("accounts/updatePremium","UPDATE accounts SET premium = premium + 2592000 WHERE license = @license")
-vRP.Prepare("accounts/UpdatePremium","UPDATE accounts SET premium = premium + @premium WHERE license = @license")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -110,6 +114,7 @@ vRP.Prepare("propertys/Sell","DELETE FROM propertys WHERE Name = @name")
 vRP.Prepare("propertys/Exist","SELECT * FROM propertys WHERE Name = @name")
 vRP.Prepare("propertys/Serial","SELECT * FROM propertys WHERE Serial = @serial")
 vRP.Prepare("propertys/Garages","SELECT * FROM propertys WHERE Garage IS NOT NULL")
+vRP.Prepare("propertys/AllUser","SELECT * FROM propertys WHERE Passport = @Passport")
 vRP.Prepare("propertys/Garage","UPDATE propertys SET Garage = @garage WHERE Name = @name")
 vRP.Prepare("propertys/Keys","UPDATE propertys SET Keys = Keys + @keys WHERE Name = @name")
 vRP.Prepare("propertys/Credentials","UPDATE propertys SET Serial = @serial WHERE Name = @name")

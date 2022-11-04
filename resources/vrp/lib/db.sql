@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `entitydata` (
   KEY `dkey` (`dkey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES ('Permissions:Admin', '{\"1\":true}');
+INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES ('Permissions:Admin', '{\"1\":1}');
 
 DROP TABLE IF EXISTS `fidentity`;
 CREATE TABLE IF NOT EXISTS `fidentity` (

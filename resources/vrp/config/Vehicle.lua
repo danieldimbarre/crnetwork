@@ -7,7 +7,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["polmav"] = {
@@ -15,7 +14,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["schwarzer"] = {
@@ -23,7 +21,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stalion"] = {
@@ -31,7 +28,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["longfin"] = {
@@ -39,7 +35,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["t20"] = {
@@ -47,7 +42,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 300000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["xls2"] = {
@@ -55,7 +49,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 410000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["emperor"] = {
@@ -63,7 +56,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 5000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["picador"] = {
@@ -71,7 +63,6 @@ local List = {
 		["Weight"] = 60,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["alkonost"] = {
@@ -79,7 +70,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["comet7"] = {
@@ -87,7 +77,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 300000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["buzzard2"] = {
@@ -95,7 +84,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["firetruk"] = {
@@ -103,7 +91,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dinghy5"] = {
@@ -111,7 +98,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["serrano"] = {
@@ -119,7 +105,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cargobob3"] = {
@@ -127,7 +112,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["caracara"] = {
@@ -135,7 +119,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["squaddie"] = {
@@ -143,7 +126,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["patriot3"] = {
@@ -151,7 +133,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 320000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gp1"] = {
@@ -159,7 +140,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["besra"] = {
@@ -167,7 +147,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["nero"] = {
@@ -175,7 +154,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rhapsody"] = {
@@ -183,7 +161,6 @@ local List = {
 		["Weight"] = 15,
 		["Price"] = 10000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["limo2"] = {
@@ -191,7 +168,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stalion2"] = {
@@ -199,7 +175,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gburrito2"] = {
@@ -207,7 +182,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["khamelion"] = {
@@ -215,7 +189,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["graintrailer"] = {
@@ -223,7 +196,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["zr3802"] = {
@@ -231,7 +203,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["trailerlarge"] = {
@@ -239,7 +210,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["sheriff2"] = {
@@ -247,7 +217,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["fusilade"] = {
@@ -255,7 +224,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["weevil"] = {
@@ -263,7 +231,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["faggio3"] = {
@@ -271,7 +238,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 2000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["massacro"] = {
@@ -279,7 +245,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["retinue"] = {
@@ -287,7 +252,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["streiter"] = {
@@ -295,7 +259,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["fixter"] = {
@@ -303,7 +266,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["towtruck"] = {
@@ -311,7 +273,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["windsor"] = {
@@ -319,7 +280,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ellie"] = {
@@ -327,7 +287,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["futo2"] = {
@@ -335,7 +294,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["italirsx"] = {
@@ -343,7 +301,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 280000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["kuruma"] = {
@@ -351,7 +308,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bati2"] = {
@@ -359,7 +315,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 240000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["zr380"] = {
@@ -367,7 +322,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sanchez2"] = {
@@ -375,7 +329,6 @@ local List = {
 		["Weight"] = 15,
 		["Price"] = 150000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["brutus3"] = {
@@ -383,7 +336,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cruiser"] = {
@@ -391,7 +343,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["bruiser"] = {
@@ -399,7 +350,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["menacer"] = {
@@ -407,7 +357,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["neon"] = {
@@ -415,7 +364,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 230000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["speedo4"] = {
@@ -423,7 +371,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["romero"] = {
@@ -431,7 +378,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["barracks2"] = {
@@ -439,7 +385,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gargoyle"] = {
@@ -447,7 +392,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 230000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["trailers4"] = {
@@ -455,7 +399,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["vader"] = {
@@ -463,7 +406,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 160000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["sovereign"] = {
@@ -471,7 +413,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["paragon"] = {
@@ -479,7 +420,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 160000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rebel"] = {
@@ -487,7 +427,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["manchez2"] = {
@@ -495,7 +434,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["omnisegt"] = {
@@ -503,7 +441,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dinghy2"] = {
@@ -511,7 +448,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["tenf2"] = {
@@ -519,7 +455,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["oracle2"] = {
@@ -527,7 +462,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["massacro2"] = {
@@ -535,7 +469,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 160000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["monroe"] = {
@@ -543,7 +476,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["apc"] = {
@@ -551,7 +483,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["diablous2"] = {
@@ -559,7 +490,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["asea"] = {
@@ -567,7 +497,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["prototipo"] = {
@@ -575,7 +504,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tiptruck"] = {
@@ -583,7 +511,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["freecrawler"] = {
@@ -591,7 +518,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dump"] = {
@@ -599,7 +525,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["speeder"] = {
@@ -607,7 +532,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["cheetah"] = {
@@ -615,7 +539,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pariah"] = {
@@ -623,7 +546,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dukes2"] = {
@@ -631,7 +553,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sandking"] = {
@@ -639,7 +560,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["f620"] = {
@@ -647,7 +567,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ingot"] = {
@@ -655,7 +574,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 15000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stromberg"] = {
@@ -663,7 +581,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["caracara2"] = {
@@ -671,7 +588,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rancherxl"] = {
@@ -679,7 +595,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rancherxl2"] = {
@@ -687,7 +602,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["boattrailer"] = {
@@ -695,7 +609,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["washington"] = {
@@ -703,7 +616,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["minivan2"] = {
@@ -711,7 +623,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["comet2"] = {
@@ -719,7 +630,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bombushka"] = {
@@ -727,7 +637,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["issi7"] = {
@@ -735,7 +644,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["phantom"] = {
@@ -743,7 +651,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stockade"] = {
@@ -751,7 +658,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cerberus2"] = {
@@ -759,7 +665,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pfister811"] = {
@@ -767,7 +672,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["elegy2"] = {
@@ -775,7 +679,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gburrito"] = {
@@ -783,7 +686,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["swift2"] = {
@@ -791,7 +693,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["blade"] = {
@@ -799,7 +700,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cargobob2"] = {
@@ -807,7 +707,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["thrust"] = {
@@ -815,7 +714,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 150000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["thruster"] = {
@@ -823,7 +721,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["schafter5"] = {
@@ -831,7 +728,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 400000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mamba"] = {
@@ -839,7 +735,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["kuruma2"] = {
@@ -847,7 +742,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["moonbeam"] = {
@@ -855,7 +749,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["surfer"] = {
@@ -863,7 +756,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["torero2"] = {
@@ -871,7 +763,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["primo"] = {
@@ -879,7 +770,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pbus"] = {
@@ -887,7 +777,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["hermes"] = {
@@ -895,7 +784,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["scarab"] = {
@@ -903,7 +791,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["hellion"] = {
@@ -911,7 +798,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["furia"] = {
@@ -919,7 +805,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 300000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["slamvan5"] = {
@@ -927,7 +812,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["proptrailer"] = {
@@ -935,7 +819,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["sabregt"] = {
@@ -943,7 +826,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["chernobog"] = {
@@ -951,7 +833,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["burrito4"] = {
@@ -959,7 +840,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["vamos"] = {
@@ -967,7 +847,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["scarab2"] = {
@@ -975,7 +854,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["scarab3"] = {
@@ -983,7 +861,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ambulance2"] = {
@@ -991,7 +868,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pounder"] = {
@@ -999,7 +875,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tornado6"] = {
@@ -1007,7 +882,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["virgo2"] = {
@@ -1015,7 +889,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["coquette4"] = {
@@ -1023,7 +896,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mule3"] = {
@@ -1031,7 +903,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["schafter4"] = {
@@ -1039,7 +910,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rogue"] = {
@@ -1047,7 +917,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["technical2"] = {
@@ -1055,7 +924,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["caddy2"] = {
@@ -1063,7 +931,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 25000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sm722"] = {
@@ -1071,7 +938,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tribike"] = {
@@ -1079,7 +945,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["entityxf"] = {
@@ -1087,7 +952,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 250000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dukes3"] = {
@@ -1095,7 +959,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dune3"] = {
@@ -1103,7 +966,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jackal"] = {
@@ -1111,7 +973,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["freighttrailer"] = {
@@ -1119,7 +980,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["paragon2"] = {
@@ -1127,7 +987,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["formula"] = {
@@ -1135,7 +994,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["peyote3"] = {
@@ -1143,7 +1001,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bjxl"] = {
@@ -1151,7 +1008,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["prairie"] = {
@@ -1159,7 +1015,6 @@ local List = {
 		["Weight"] = 15,
 		["Price"] = 15000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["verus"] = {
@@ -1167,7 +1022,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["oppressor2"] = {
@@ -1175,7 +1029,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 130000,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["ztype"] = {
@@ -1183,7 +1036,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 250000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["growler"] = {
@@ -1191,7 +1043,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["slamvan3"] = {
@@ -1199,7 +1050,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["revolter"] = {
@@ -1207,7 +1057,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["comet3"] = {
@@ -1215,7 +1064,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["panto"] = {
@@ -1223,7 +1071,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 15000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["slamvan4"] = {
@@ -1231,7 +1078,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rapidgt"] = {
@@ -1239,7 +1085,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dune"] = {
@@ -1247,7 +1092,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dominator7"] = {
@@ -1255,7 +1099,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["torero"] = {
@@ -1263,7 +1106,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ruiner3"] = {
@@ -1271,7 +1113,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["marquis"] = {
@@ -1279,7 +1120,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["gauntlet2"] = {
@@ -1287,7 +1127,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["toro2"] = {
@@ -1295,7 +1134,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["issi3"] = {
@@ -1303,7 +1141,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["armytanker"] = {
@@ -1311,7 +1148,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["impaler3"] = {
@@ -1319,7 +1155,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tailgater2"] = {
@@ -1327,7 +1162,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gauntlet3"] = {
@@ -1335,7 +1169,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["raiden"] = {
@@ -1343,7 +1176,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["surano"] = {
@@ -1351,7 +1183,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tribike2"] = {
@@ -1359,7 +1190,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["youga3"] = {
@@ -1367,7 +1197,6 @@ local List = {
 		["Weight"] = 70,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stryder"] = {
@@ -1375,7 +1204,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jester3"] = {
@@ -1383,7 +1211,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["brioso3"] = {
@@ -1391,7 +1218,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tornado4"] = {
@@ -1399,7 +1225,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["utillitruck"] = {
@@ -1407,7 +1232,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["airbus"] = {
@@ -1415,7 +1239,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bulldozer"] = {
@@ -1423,7 +1246,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dynasty"] = {
@@ -1431,7 +1253,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["fbi"] = {
@@ -1439,7 +1260,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["duster"] = {
@@ -1447,7 +1267,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["caddy"] = {
@@ -1455,7 +1274,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 30000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["btype"] = {
@@ -1463,7 +1281,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["marshall"] = {
@@ -1471,7 +1288,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bf400"] = {
@@ -1479,7 +1295,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["riot2"] = {
@@ -1487,7 +1302,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["lm87"] = {
@@ -1495,7 +1309,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bruiser3"] = {
@@ -1503,7 +1316,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ruiner2"] = {
@@ -1511,7 +1323,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["openwheel1"] = {
@@ -1519,7 +1330,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cypher"] = {
@@ -1527,7 +1337,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 260000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["chino"] = {
@@ -1535,7 +1344,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["alpha"] = {
@@ -1543,7 +1351,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jugular"] = {
@@ -1551,7 +1358,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jb700"] = {
@@ -1559,7 +1365,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["voltic"] = {
@@ -1567,7 +1372,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["frogger2"] = {
@@ -1575,7 +1379,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["hauler2"] = {
@@ -1583,7 +1386,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["hunter"] = {
@@ -1591,7 +1393,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["mule2"] = {
@@ -1599,7 +1400,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dominator4"] = {
@@ -1607,7 +1407,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["iwagen"] = {
@@ -1615,7 +1414,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 260000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tanker"] = {
@@ -1623,7 +1421,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["trailers3"] = {
@@ -1631,7 +1428,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["brioso2"] = {
@@ -1639,7 +1435,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 40000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["deviant"] = {
@@ -1647,7 +1442,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dominator5"] = {
@@ -1655,7 +1449,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["faggio"] = {
@@ -1663,7 +1456,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 2000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["phantom2"] = {
@@ -1671,7 +1463,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["locust"] = {
@@ -1679,7 +1470,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gb200"] = {
@@ -1687,7 +1477,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cutter"] = {
@@ -1695,7 +1484,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["velum"] = {
@@ -1703,7 +1491,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["dloader"] = {
@@ -1711,7 +1498,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["youga"] = {
@@ -1719,7 +1505,6 @@ local List = {
 		["Weight"] = 70,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cog552"] = {
@@ -1727,7 +1512,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 410000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["vetir"] = {
@@ -1735,7 +1519,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jubilee"] = {
@@ -1743,7 +1526,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["monster5"] = {
@@ -1751,7 +1533,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pranger"] = {
@@ -1759,7 +1540,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["shotaro"] = {
@@ -1767,7 +1547,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["felon2"] = {
@@ -1775,7 +1554,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sheriff"] = {
@@ -1783,7 +1561,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["double"] = {
@@ -1791,7 +1568,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["reever"] = {
@@ -1799,7 +1575,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["regina"] = {
@@ -1807,7 +1582,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stratum"] = {
@@ -1815,7 +1589,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 40000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["blimp3"] = {
@@ -1823,7 +1596,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["pcj"] = {
@@ -1831,7 +1603,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 100000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["scorcher"] = {
@@ -1839,7 +1610,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["rumpo2"] = {
@@ -1847,7 +1617,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["fbi2"] = {
@@ -1855,7 +1624,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["luxor2"] = {
@@ -1863,7 +1631,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["surge"] = {
@@ -1871,7 +1638,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ardent"] = {
@@ -1879,7 +1645,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cyclone"] = {
@@ -1887,7 +1652,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 300000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["shinobi"] = {
@@ -1895,7 +1659,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["seminole2"] = {
@@ -1903,7 +1666,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["coach"] = {
@@ -1911,7 +1673,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gauntlet"] = {
@@ -1919,7 +1680,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["phantom3"] = {
@@ -1927,7 +1687,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["molotok"] = {
@@ -1935,7 +1694,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["monster"] = {
@@ -1943,7 +1701,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dinghy3"] = {
@@ -1951,7 +1708,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["winky"] = {
@@ -1959,7 +1715,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rumpo"] = {
@@ -1967,7 +1722,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jet"] = {
@@ -1975,7 +1729,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["cerberus3"] = {
@@ -1983,7 +1736,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stinger"] = {
@@ -1991,7 +1743,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["premier"] = {
@@ -1999,7 +1750,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["neo"] = {
@@ -2007,7 +1757,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sultan2"] = {
@@ -2015,7 +1764,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bifta"] = {
@@ -2023,7 +1771,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["maverick"] = {
@@ -2031,7 +1778,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["pounder2"] = {
@@ -2039,7 +1785,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["vectre"] = {
@@ -2047,7 +1792,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tula"] = {
@@ -2055,7 +1799,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["cheetah2"] = {
@@ -2063,7 +1806,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["daemon2"] = {
@@ -2071,7 +1813,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 160000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["sc1"] = {
@@ -2079,7 +1820,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ninef2"] = {
@@ -2087,7 +1827,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["emperor2"] = {
@@ -2095,7 +1834,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 2000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sultanrs"] = {
@@ -2103,7 +1841,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dominator6"] = {
@@ -2111,7 +1848,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rcbandito"] = {
@@ -2119,7 +1855,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tiptruck2"] = {
@@ -2127,7 +1862,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dominator2"] = {
@@ -2135,7 +1869,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jetmax"] = {
@@ -2143,7 +1876,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["michelli"] = {
@@ -2151,7 +1883,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["riot"] = {
@@ -2159,7 +1890,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["fugitive"] = {
@@ -2167,7 +1897,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["journey"] = {
@@ -2175,7 +1904,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tropic2"] = {
@@ -2183,7 +1911,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["granger2"] = {
@@ -2191,7 +1918,6 @@ local List = {
 		["Weight"] = 65,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["buffalo2"] = {
@@ -2199,7 +1925,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["buffalo4"] = {
@@ -2207,7 +1932,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 250000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["turismo2"] = {
@@ -2215,7 +1939,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["freight"] = {
@@ -2223,7 +1946,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "train",
 		["Gems"] = 0
 	},
 	["vigero2"] = {
@@ -2231,7 +1953,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sentinel4"] = {
@@ -2239,7 +1960,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stretch"] = {
@@ -2247,7 +1967,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["freightcont1"] = {
@@ -2255,7 +1974,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "train",
 		["Gems"] = 0
 	},
 	["ignus"] = {
@@ -2263,7 +1981,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 250000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["enduro"] = {
@@ -2271,7 +1988,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 150000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["boxville3"] = {
@@ -2279,7 +1995,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["issi5"] = {
@@ -2287,7 +2002,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["seashark"] = {
@@ -2295,7 +2009,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["buzzard"] = {
@@ -2303,7 +2016,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["bruiser2"] = {
@@ -2311,7 +2023,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["oracle"] = {
@@ -2319,7 +2030,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["deathbike"] = {
@@ -2327,7 +2037,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["youga4"] = {
@@ -2335,7 +2044,6 @@ local List = {
 		["Weight"] = 70,
 		["Price"] = 90000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["entity2"] = {
@@ -2343,7 +2051,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 220000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["shamal"] = {
@@ -2351,7 +2058,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["ruiner"] = {
@@ -2359,7 +2065,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["nightblade"] = {
@@ -2367,7 +2072,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["paradise"] = {
@@ -2375,7 +2079,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cargoplane"] = {
@@ -2383,7 +2086,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["zhaba"] = {
@@ -2391,7 +2093,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["kosatka"] = {
@@ -2399,7 +2100,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "submarine",
 		["Gems"] = 0
 	},
 	["trailersmall"] = {
@@ -2407,7 +2107,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["police2"] = {
@@ -2415,7 +2114,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["zion3"] = {
@@ -2423,7 +2121,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["avarus"] = {
@@ -2431,7 +2128,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 120000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["lazer"] = {
@@ -2439,7 +2135,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["clique"] = {
@@ -2447,7 +2142,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["seasparrow"] = {
@@ -2455,7 +2149,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["volatus"] = {
@@ -2463,7 +2156,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["vagrant"] = {
@@ -2471,7 +2163,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["taipan"] = {
@@ -2479,7 +2170,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["blazer4"] = {
@@ -2487,7 +2177,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["barrage"] = {
@@ -2495,7 +2184,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["hotring"] = {
@@ -2503,7 +2191,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["asea2"] = {
@@ -2511,7 +2198,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mixer"] = {
@@ -2519,7 +2205,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["exemplar"] = {
@@ -2527,7 +2212,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["vindicator"] = {
@@ -2535,7 +2219,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 160000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["policeold1"] = {
@@ -2543,7 +2226,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["reaper"] = {
@@ -2551,7 +2233,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["btype3"] = {
@@ -2559,7 +2240,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["zeno"] = {
@@ -2567,7 +2247,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 250000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["swinger"] = {
@@ -2575,7 +2254,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["baller6"] = {
@@ -2583,7 +2261,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 410000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["insurgent2"] = {
@@ -2591,7 +2268,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["trash"] = {
@@ -2599,7 +2275,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sugoi"] = {
@@ -2607,7 +2282,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["hakuchou2"] = {
@@ -2615,7 +2289,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 270000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["lectro"] = {
@@ -2623,7 +2296,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 120000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["vagner"] = {
@@ -2631,7 +2303,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["trophytruck2"] = {
@@ -2639,7 +2310,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sanchez"] = {
@@ -2647,7 +2317,6 @@ local List = {
 		["Weight"] = 15,
 		["Price"] = 140000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["tractor"] = {
@@ -2655,7 +2324,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["flashgt"] = {
@@ -2663,7 +2331,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["wolfsbane"] = {
@@ -2671,7 +2338,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 100000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["visione"] = {
@@ -2679,7 +2345,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 230000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cargobob"] = {
@@ -2687,7 +2352,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["chimera"] = {
@@ -2695,7 +2359,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 130000,
 		["Mode"] = "bikes",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["euros"] = {
@@ -2703,7 +2366,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["volatol"] = {
@@ -2711,7 +2373,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["buccaneer"] = {
@@ -2719,7 +2380,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["supervolito2"] = {
@@ -2727,7 +2387,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["hotknife"] = {
@@ -2735,7 +2394,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["impaler2"] = {
@@ -2743,7 +2401,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["comet6"] = {
@@ -2751,7 +2408,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 190000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["microlight"] = {
@@ -2759,7 +2415,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["riata"] = {
@@ -2767,7 +2422,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["veto2"] = {
@@ -2775,7 +2429,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 20000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["police4"] = {
@@ -2783,7 +2436,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["nightshade"] = {
@@ -2791,7 +2443,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["howard"] = {
@@ -2799,7 +2450,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["bmx"] = {
@@ -2807,7 +2457,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["zorrusso"] = {
@@ -2815,7 +2464,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sabregt2"] = {
@@ -2823,7 +2471,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["blimp"] = {
@@ -2831,7 +2478,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["tampa"] = {
@@ -2839,7 +2485,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["policeb"] = {
@@ -2847,7 +2492,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["issi2"] = {
@@ -2855,7 +2499,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["virgo3"] = {
@@ -2863,7 +2506,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["yosemite"] = {
@@ -2871,7 +2513,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["krieger"] = {
@@ -2879,7 +2520,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 250000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["innovation"] = {
@@ -2887,7 +2527,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 150000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["blazer"] = {
@@ -2895,7 +2534,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["blazer2"] = {
@@ -2903,7 +2541,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["oppressor"] = {
@@ -2911,7 +2548,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 130000,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["outlaw"] = {
@@ -2919,7 +2555,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["komoda"] = {
@@ -2927,7 +2562,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["zion"] = {
@@ -2935,7 +2569,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bullet"] = {
@@ -2943,7 +2576,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["club"] = {
@@ -2951,7 +2583,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 65000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tulip"] = {
@@ -2959,7 +2590,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["valkyrie"] = {
@@ -2967,7 +2597,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["blazer5"] = {
@@ -2975,7 +2604,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jester4"] = {
@@ -2983,7 +2611,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cognoscenti2"] = {
@@ -2991,7 +2618,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 400000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["supervolito"] = {
@@ -2999,7 +2625,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["issi4"] = {
@@ -3007,7 +2632,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dune4"] = {
@@ -3015,7 +2639,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bodhi2"] = {
@@ -3023,7 +2646,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["caddy3"] = {
@@ -3031,7 +2653,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 20000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["comet4"] = {
@@ -3039,7 +2660,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["italigtb2"] = {
@@ -3047,7 +2667,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["deity"] = {
@@ -3055,7 +2674,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 300000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["huntley"] = {
@@ -3063,7 +2681,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["hakuchou"] = {
@@ -3071,7 +2688,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 240000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["gresley"] = {
@@ -3079,7 +2695,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["infernus"] = {
@@ -3087,7 +2702,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["insurgent"] = {
@@ -3095,7 +2709,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["turismor"] = {
@@ -3103,7 +2716,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 190000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["blista"] = {
@@ -3111,7 +2723,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 40000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sultan"] = {
@@ -3119,7 +2730,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["thrax"] = {
@@ -3127,7 +2737,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["seabreeze"] = {
@@ -3135,7 +2744,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["toros"] = {
@@ -3143,7 +2751,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 160000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["burrito3"] = {
@@ -3151,7 +2758,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["trophytruck"] = {
@@ -3159,7 +2765,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["landstalker2"] = {
@@ -3167,7 +2772,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["seashark3"] = {
@@ -3175,7 +2779,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["starling"] = {
@@ -3183,7 +2786,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["lynx"] = {
@@ -3191,7 +2793,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["metrotrain"] = {
@@ -3199,7 +2800,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "train",
 		["Gems"] = 0
 	},
 	["faction3"] = {
@@ -3207,7 +2807,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["vstr"] = {
@@ -3215,7 +2814,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["kanjosj"] = {
@@ -3223,7 +2821,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["trailersmall2"] = {
@@ -3231,7 +2828,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["cliffhanger"] = {
@@ -3239,7 +2835,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["cerberus"] = {
@@ -3247,7 +2842,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["issi6"] = {
@@ -3255,7 +2849,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["scrap"] = {
@@ -3263,7 +2856,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["brawler"] = {
@@ -3271,7 +2863,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["peyote"] = {
@@ -3279,7 +2870,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dune2"] = {
@@ -3287,7 +2877,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mammatus"] = {
@@ -3295,7 +2884,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["nimbus"] = {
@@ -3303,7 +2891,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["tractor3"] = {
@@ -3311,7 +2898,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bati"] = {
@@ -3319,7 +2905,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["dubsta"] = {
@@ -3327,7 +2912,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["docktrailer"] = {
@@ -3335,7 +2919,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["annihilator"] = {
@@ -3343,7 +2926,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["boxville"] = {
@@ -3351,7 +2933,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["insurgent3"] = {
@@ -3359,7 +2940,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["minivan"] = {
@@ -3367,7 +2947,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["zombieb"] = {
@@ -3375,7 +2954,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["schafter6"] = {
@@ -3383,7 +2961,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 320000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["baller3"] = {
@@ -3391,7 +2968,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tvtrailer"] = {
@@ -3399,7 +2975,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["dubsta2"] = {
@@ -3407,7 +2982,6 @@ local List = {
 		["Weight"] = 55,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tezeract"] = {
@@ -3415,7 +2989,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 300000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["greenwood"] = {
@@ -3423,7 +2996,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["granger"] = {
@@ -3431,7 +3003,6 @@ local List = {
 		["Weight"] = 65,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["schafter2"] = {
@@ -3439,7 +3010,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pony"] = {
@@ -3447,7 +3017,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["landstalker"] = {
@@ -3455,7 +3024,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["corsita"] = {
@@ -3463,7 +3031,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["hustler"] = {
@@ -3471,7 +3038,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["comet5"] = {
@@ -3479,7 +3045,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["penetrator"] = {
@@ -3487,7 +3052,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ambulance"] = {
@@ -3495,7 +3059,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["police3"] = {
@@ -3503,7 +3066,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sentinel"] = {
@@ -3511,7 +3073,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["miljet"] = {
@@ -3519,7 +3080,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["utillitruck2"] = {
@@ -3527,7 +3087,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["primo2"] = {
@@ -3535,7 +3094,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["radi"] = {
@@ -3543,7 +3101,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["seminole"] = {
@@ -3551,7 +3108,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["emerus"] = {
@@ -3559,7 +3115,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["vigero"] = {
@@ -3567,7 +3122,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["havok"] = {
@@ -3575,7 +3129,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["dukes"] = {
@@ -3583,7 +3136,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["hexer"] = {
@@ -3591,7 +3143,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["glendale2"] = {
@@ -3599,7 +3150,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cinquemila"] = {
@@ -3607,7 +3157,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dinghy4"] = {
@@ -3615,7 +3164,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["retinue2"] = {
@@ -3623,7 +3171,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["contender"] = {
@@ -3631,7 +3178,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["raptor"] = {
@@ -3639,7 +3185,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stanier"] = {
@@ -3647,7 +3192,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["toro"] = {
@@ -3655,7 +3199,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["dilettante2"] = {
@@ -3663,7 +3206,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pbus2"] = {
@@ -3671,7 +3213,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["futo"] = {
@@ -3679,7 +3220,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["buffalo3"] = {
@@ -3687,7 +3227,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["kanjo"] = {
@@ -3695,7 +3234,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["flatbed"] = {
@@ -3703,7 +3241,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["vacca"] = {
@@ -3711,7 +3248,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["xls"] = {
@@ -3719,7 +3255,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jb7002"] = {
@@ -3727,7 +3262,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bison3"] = {
@@ -3735,7 +3269,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stingergt"] = {
@@ -3743,7 +3276,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tyrant"] = {
@@ -3751,7 +3283,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sentinel3"] = {
@@ -3759,7 +3290,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["trailers2"] = {
@@ -3767,7 +3297,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["rebla"] = {
@@ -3775,7 +3304,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["handler"] = {
@@ -3783,7 +3311,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["docktug"] = {
@@ -3791,7 +3318,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["deathbike3"] = {
@@ -3799,7 +3325,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 65000,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["bestiagts"] = {
@@ -3807,7 +3332,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tug"] = {
@@ -3815,7 +3339,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["coquette2"] = {
@@ -3823,7 +3346,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["slamtruck"] = {
@@ -3831,7 +3353,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ruston"] = {
@@ -3839,7 +3360,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rallytruck"] = {
@@ -3847,7 +3367,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["buffalo"] = {
@@ -3855,7 +3374,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["patriot2"] = {
@@ -3863,7 +3381,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["savestra"] = {
@@ -3871,7 +3388,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["technical3"] = {
@@ -3879,7 +3395,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["deveste"] = {
@@ -3887,7 +3402,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["elegy"] = {
@@ -3895,7 +3409,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["s80"] = {
@@ -3903,7 +3416,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pyro"] = {
@@ -3911,7 +3423,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["fcr2"] = {
@@ -3919,7 +3430,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["forklift"] = {
@@ -3927,7 +3437,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["vortex"] = {
@@ -3935,7 +3444,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["monster3"] = {
@@ -3943,7 +3451,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["titan"] = {
@@ -3951,7 +3458,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["zombiea"] = {
@@ -3959,7 +3465,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["ninef"] = {
@@ -3967,7 +3472,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tailgater"] = {
@@ -3975,7 +3479,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mule4"] = {
@@ -3983,7 +3486,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["technical"] = {
@@ -3991,7 +3493,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["barracks"] = {
@@ -3999,7 +3500,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["nero2"] = {
@@ -4007,7 +3507,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["seashark2"] = {
@@ -4015,7 +3514,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["rhinehart"] = {
@@ -4023,7 +3521,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["khanjali"] = {
@@ -4031,7 +3528,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tourbus"] = {
@@ -4039,7 +3535,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["penumbra"] = {
@@ -4047,7 +3542,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["taxi"] = {
@@ -4055,7 +3549,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tenf"] = {
@@ -4063,7 +3556,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["seasparrow3"] = {
@@ -4071,7 +3563,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["blazer3"] = {
@@ -4079,7 +3570,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["baller2"] = {
@@ -4087,7 +3577,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["manana2"] = {
@@ -4095,7 +3584,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["felon"] = {
@@ -4103,7 +3591,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["slamvan6"] = {
@@ -4111,7 +3598,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["seven70"] = {
@@ -4119,7 +3605,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["baller5"] = {
@@ -4127,7 +3612,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 400000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["trailerlogs"] = {
@@ -4135,7 +3619,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["specter2"] = {
@@ -4143,7 +3626,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["veto"] = {
@@ -4151,7 +3633,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 20000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tropic"] = {
@@ -4159,7 +3640,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["tornado2"] = {
@@ -4167,7 +3647,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["feltzer3"] = {
@@ -4175,7 +3654,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["viseris"] = {
@@ -4183,7 +3661,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["velum2"] = {
@@ -4191,7 +3668,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["swift"] = {
@@ -4199,7 +3675,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["kamacho"] = {
@@ -4207,7 +3682,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 300000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["calico"] = {
@@ -4215,7 +3689,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 240000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gauntlet5"] = {
@@ -4223,7 +3696,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tr3"] = {
@@ -4231,7 +3703,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["impaler4"] = {
@@ -4239,7 +3710,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["scramjet"] = {
@@ -4247,7 +3717,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["zr3803"] = {
@@ -4255,7 +3724,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["asbo"] = {
@@ -4263,7 +3731,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["feltzer2"] = {
@@ -4271,7 +3738,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["fagaloa"] = {
@@ -4279,7 +3745,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tanker2"] = {
@@ -4287,7 +3752,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["faction2"] = {
@@ -4295,7 +3759,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mesa3"] = {
@@ -4303,7 +3766,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pony2"] = {
@@ -4311,7 +3773,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["speedo2"] = {
@@ -4319,7 +3780,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["policeold2"] = {
@@ -4327,7 +3787,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["impaler"] = {
@@ -4335,7 +3794,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rentalbus"] = {
@@ -4343,7 +3801,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dominator"] = {
@@ -4351,7 +3808,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["intruder"] = {
@@ -4359,7 +3815,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["squalo"] = {
@@ -4367,7 +3822,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["rapidgt2"] = {
@@ -4375,7 +3829,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 160000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gauntlet4"] = {
@@ -4383,7 +3836,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ratloader"] = {
@@ -4391,7 +3843,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["remus"] = {
@@ -4399,7 +3850,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rubble"] = {
@@ -4407,7 +3857,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tornado3"] = {
@@ -4415,7 +3864,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["postlude"] = {
@@ -4423,7 +3871,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["nebula"] = {
@@ -4431,7 +3878,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["youga2"] = {
@@ -4439,7 +3885,6 @@ local List = {
 		["Weight"] = 70,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bagger"] = {
@@ -4447,7 +3892,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 160000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["avisa"] = {
@@ -4455,7 +3899,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "submarine",
 		["Gems"] = 0
 	},
 	["lurcher"] = {
@@ -4463,7 +3906,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["verlierer2"] = {
@@ -4471,7 +3913,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["akuma"] = {
@@ -4479,7 +3920,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 240000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["cavalcade"] = {
@@ -4487,7 +3927,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["trflat"] = {
@@ -4495,7 +3934,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["mogul"] = {
@@ -4503,7 +3941,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["submersible"] = {
@@ -4511,7 +3948,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "submarine",
 		["Gems"] = 0
 	},
 	["guardian"] = {
@@ -4519,7 +3955,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 160000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["banshee"] = {
@@ -4527,7 +3962,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["vigilante"] = {
@@ -4535,7 +3969,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["fmj"] = {
@@ -4543,7 +3976,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tempesta"] = {
@@ -4551,7 +3983,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rhino"] = {
@@ -4559,7 +3990,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["slamvan"] = {
@@ -4567,7 +3997,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["osiris"] = {
@@ -4575,7 +4004,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 230000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["annihilator2"] = {
@@ -4583,7 +4011,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["cavalcade2"] = {
@@ -4591,7 +4018,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mule5"] = {
@@ -4599,7 +4025,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["akula"] = {
@@ -4607,7 +4032,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["freightcar"] = {
@@ -4615,7 +4039,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "train",
 		["Gems"] = 0
 	},
 	["sultan3"] = {
@@ -4623,7 +4046,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 250000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["schlagen"] = {
@@ -4631,7 +4053,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["openwheel2"] = {
@@ -4639,7 +4060,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sentinel2"] = {
@@ -4647,7 +4067,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["armytrailer"] = {
@@ -4655,7 +4074,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["seasparrow2"] = {
@@ -4663,7 +4081,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["baller7"] = {
@@ -4671,7 +4088,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 480000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["italigto"] = {
@@ -4679,7 +4095,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 220000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stockade3"] = {
@@ -4687,7 +4102,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["carbonizzare"] = {
@@ -4695,7 +4109,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["formula2"] = {
@@ -4703,7 +4116,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["penumbra2"] = {
@@ -4711,7 +4123,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 210000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rocoto"] = {
@@ -4719,7 +4130,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["brickade"] = {
@@ -4727,7 +4137,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["avenger"] = {
@@ -4735,7 +4144,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["voltic2"] = {
@@ -4743,7 +4151,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jester"] = {
@@ -4751,7 +4158,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["xa21"] = {
@@ -4759,7 +4165,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 260000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["valkyrie2"] = {
@@ -4767,7 +4172,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["buccaneer2"] = {
@@ -4775,7 +4179,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["raketrailer"] = {
@@ -4783,7 +4186,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["manchez"] = {
@@ -4791,7 +4193,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 170000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["taco"] = {
@@ -4799,7 +4200,6 @@ local List = {
 		["Weight"] = 15,
 		["Price"] = 2000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tractor2"] = {
@@ -4807,7 +4207,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tr2"] = {
@@ -4815,7 +4214,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["tr4"] = {
@@ -4823,7 +4221,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["rebel2"] = {
@@ -4831,7 +4228,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 85000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["schafter3"] = {
@@ -4839,7 +4235,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dominator3"] = {
@@ -4847,7 +4242,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["burrito2"] = {
@@ -4855,7 +4249,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["camper"] = {
@@ -4863,7 +4256,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["glendale"] = {
@@ -4871,7 +4263,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["kalahari"] = {
@@ -4879,7 +4270,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["specter"] = {
@@ -4887,7 +4277,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["baller"] = {
@@ -4895,7 +4284,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["voodoo2"] = {
@@ -4903,7 +4291,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["avenger2"] = {
@@ -4911,7 +4298,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["adder"] = {
@@ -4919,7 +4305,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 190000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["flatbed2"] = {
@@ -4927,7 +4312,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["conada"] = {
@@ -4935,7 +4319,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["tankercar"] = {
@@ -4943,7 +4326,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "train",
 		["Gems"] = 0
 	},
 	["airtug"] = {
@@ -4951,7 +4333,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["champion"] = {
@@ -4959,7 +4340,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 220000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mower"] = {
@@ -4967,7 +4347,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["blimp2"] = {
@@ -4975,7 +4354,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["sheava"] = {
@@ -4983,7 +4361,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["voodoo"] = {
@@ -4991,7 +4368,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rt3000"] = {
@@ -4999,7 +4375,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["nokota"] = {
@@ -5007,7 +4382,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["casco"] = {
@@ -5015,7 +4389,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["habanero"] = {
@@ -5023,7 +4396,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["baller4"] = {
@@ -5031,7 +4403,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bison"] = {
@@ -5039,7 +4410,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["zion2"] = {
@@ -5047,7 +4417,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bfinjection"] = {
@@ -5055,7 +4424,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["packer"] = {
@@ -5063,7 +4431,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 500,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["brutus"] = {
@@ -5071,7 +4438,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["draugur"] = {
@@ -5079,7 +4445,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["surfer2"] = {
@@ -5087,7 +4452,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 40000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["minitank"] = {
@@ -5095,7 +4459,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 1000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cuban800"] = {
@@ -5103,7 +4466,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["hauler"] = {
@@ -5111,7 +4473,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stunt"] = {
@@ -5119,7 +4480,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["burrito"] = {
@@ -5127,7 +4487,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cogcabrio"] = {
@@ -5135,7 +4494,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bison2"] = {
@@ -5143,7 +4501,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tampa3"] = {
@@ -5151,7 +4508,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["yosemite2"] = {
@@ -5159,7 +4515,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cargobob4"] = {
@@ -5167,7 +4522,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["astron"] = {
@@ -5175,7 +4529,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 220000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["trailers"] = {
@@ -5183,7 +4536,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["luxor"] = {
@@ -5191,7 +4543,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["fcr"] = {
@@ -5199,7 +4550,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 160000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["virgo"] = {
@@ -5207,7 +4557,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["everon"] = {
@@ -5215,7 +4564,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ratbike"] = {
@@ -5223,7 +4571,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 110000,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["rumpo3"] = {
@@ -5231,7 +4578,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 300000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["imperator"] = {
@@ -5239,7 +4585,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["deathbike2"] = {
@@ -5247,7 +4592,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 65000,
 		["Mode"] = nil,
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["burrito5"] = {
@@ -5255,7 +4599,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["chino2"] = {
@@ -5263,7 +4606,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["imorgon"] = {
@@ -5271,7 +4613,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tribike3"] = {
@@ -5279,7 +4620,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["bus"] = {
@@ -5287,7 +4627,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["boxville4"] = {
@@ -5295,7 +4634,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["windsor2"] = {
@@ -5303,7 +4641,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["rapidgt3"] = {
@@ -5311,7 +4648,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["banshee2"] = {
@@ -5319,7 +4655,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 190000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["skylift"] = {
@@ -5327,7 +4662,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["towtruck2"] = {
@@ -5335,7 +4669,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["brutus2"] = {
@@ -5343,7 +4676,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["zr350"] = {
@@ -5351,7 +4683,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 160000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["imperator2"] = {
@@ -5359,7 +4690,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["toreador"] = {
@@ -5367,7 +4697,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["esskey"] = {
@@ -5375,7 +4704,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 160000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["hydra"] = {
@@ -5383,7 +4711,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["yosemite3"] = {
@@ -5391,7 +4718,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["alphaz1"] = {
@@ -5399,7 +4725,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["trash2"] = {
@@ -5407,7 +4732,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["brioso"] = {
@@ -5415,7 +4739,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 30000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["frogger"] = {
@@ -5423,7 +4746,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["phoenix"] = {
@@ -5431,7 +4753,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["gt500"] = {
@@ -5439,7 +4760,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tyrus"] = {
@@ -5447,7 +4767,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 220000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["warrener"] = {
@@ -5455,7 +4774,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["bobcatxl"] = {
@@ -5463,7 +4781,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["utillitruck3"] = {
@@ -5471,7 +4788,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["peyote2"] = {
@@ -5479,7 +4795,6 @@ local List = {
 		["Weight"] = 45,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dubsta3"] = {
@@ -5487,7 +4802,6 @@ local List = {
 		["Weight"] = 55,
 		["Price"] = 140000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["patriot"] = {
@@ -5495,7 +4809,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ruiner4"] = {
@@ -5503,7 +4816,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["previon"] = {
@@ -5511,7 +4823,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 170000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cog55"] = {
@@ -5519,7 +4830,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["strikeforce"] = {
@@ -5527,7 +4837,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["novak"] = {
@@ -5535,7 +4844,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 150000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["z190"] = {
@@ -5543,7 +4851,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["halftrack"] = {
@@ -5551,7 +4858,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["slamvan2"] = {
@@ -5559,7 +4865,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["speedo"] = {
@@ -5567,7 +4872,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["boxville2"] = {
@@ -5575,7 +4879,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cognoscenti"] = {
@@ -5583,7 +4886,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["speeder2"] = {
@@ -5591,7 +4893,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["imperator3"] = {
@@ -5599,7 +4900,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["predator"] = {
@@ -5607,7 +4907,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["monster4"] = {
@@ -5615,7 +4914,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["faction"] = {
@@ -5623,7 +4921,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["jester2"] = {
@@ -5631,7 +4928,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ratloader2"] = {
@@ -5639,7 +4935,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sanctus"] = {
@@ -5647,7 +4942,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 190000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["tornado"] = {
@@ -5655,7 +4949,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 70000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["blista2"] = {
@@ -5663,7 +4956,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["nightshark"] = {
@@ -5671,7 +4963,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["benson"] = {
@@ -5679,7 +4970,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["emperor3"] = {
@@ -5687,7 +4977,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dinghy"] = {
@@ -5695,7 +4984,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["lguard"] = {
@@ -5703,7 +4991,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["autarch"] = {
@@ -5711,7 +4998,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 240000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["submersible2"] = {
@@ -5719,7 +5005,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "submarine",
 		["Gems"] = 0
 	},
 	["sadler2"] = {
@@ -5727,7 +5012,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["manana"] = {
@@ -5735,7 +5019,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sadler"] = {
@@ -5743,7 +5026,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["deluxo"] = {
@@ -5751,7 +5033,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["freightcont2"] = {
@@ -5759,7 +5040,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "train",
 		["Gems"] = 0
 	},
 	["furoregt"] = {
@@ -5767,7 +5047,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["cheburek"] = {
@@ -5775,7 +5054,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dodo"] = {
@@ -5783,7 +5061,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["armytrailer2"] = {
@@ -5791,7 +5068,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["asterope"] = {
@@ -5799,7 +5075,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 30000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["blista3"] = {
@@ -5807,7 +5082,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["moonbeam2"] = {
@@ -5815,7 +5089,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 120000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["barracks3"] = {
@@ -5823,7 +5096,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["biff"] = {
@@ -5831,7 +5103,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["daemon"] = {
@@ -5839,7 +5110,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 140000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["defiler"] = {
@@ -5847,7 +5117,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["cablecar"] = {
@@ -5855,7 +5124,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "train",
 		["Gems"] = 0
 	},
 	["baletrailer"] = {
@@ -5863,7 +5131,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "trailer",
 		["Gems"] = 0
 	},
 	["freightgrain"] = {
@@ -5871,7 +5138,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "train",
 		["Gems"] = 0
 	},
 	["tropos"] = {
@@ -5879,7 +5145,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["patrolboat"] = {
@@ -5887,7 +5152,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 10000,
 		["Mode"] = nil,
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["faggio2"] = {
@@ -5895,7 +5159,6 @@ local List = {
 		["Weight"] = 10,
 		["Price"] = 2000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["vestra"] = {
@@ -5903,7 +5166,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "plane",
 		["Gems"] = 0
 	},
 	["mesa2"] = {
@@ -5911,7 +5173,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["nemesis"] = {
@@ -5919,7 +5180,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 140000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["terbyte"] = {
@@ -5927,7 +5187,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tampa2"] = {
@@ -5935,7 +5194,6 @@ local List = {
 		["Weight"] = 35,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tigon"] = {
@@ -5943,7 +5201,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 220000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["stafford"] = {
@@ -5951,7 +5208,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["drafter"] = {
@@ -5959,7 +5215,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 160000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mesa"] = {
@@ -5967,7 +5222,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["sandking2"] = {
@@ -5975,7 +5229,6 @@ local List = {
 		["Weight"] = 55,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["coquette"] = {
@@ -5983,7 +5236,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["btype2"] = {
@@ -5991,7 +5243,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 130000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ruffian"] = {
@@ -5999,7 +5250,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 150000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["weevil2"] = {
@@ -6007,7 +5257,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["policet"] = {
@@ -6015,7 +5264,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dune5"] = {
@@ -6023,7 +5271,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tornado5"] = {
@@ -6031,7 +5278,6 @@ local List = {
 		["Weight"] = 50,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["pigalle"] = {
@@ -6039,7 +5285,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 80000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["suntrap"] = {
@@ -6047,7 +5292,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "boat",
 		["Gems"] = 0
 	},
 	["ripley"] = {
@@ -6055,7 +5299,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["coquette3"] = {
@@ -6063,7 +5306,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 160000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["omnis"] = {
@@ -6071,7 +5313,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 110000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["infernus2"] = {
@@ -6079,7 +5320,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["boxville5"] = {
@@ -6087,7 +5327,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["italigtb"] = {
@@ -6095,7 +5334,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 200000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["le7b"] = {
@@ -6103,7 +5341,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["crusader"] = {
@@ -6111,7 +5348,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["diablous"] = {
@@ -6119,7 +5355,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["wastelander"] = {
@@ -6127,7 +5362,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["police"] = {
@@ -6135,7 +5369,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["carbonrs"] = {
@@ -6143,7 +5376,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 180000,
 		["Mode"] = "bikes",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["mule"] = {
@@ -6151,7 +5383,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["mixer2"] = {
@@ -6159,7 +5390,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 100,
 		["Mode"] = nil,
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["superd"] = {
@@ -6167,7 +5397,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 90000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["fq2"] = {
@@ -6175,7 +5404,6 @@ local List = {
 		["Weight"] = 40,
 		["Price"] = 60000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["dilettante"] = {
@@ -6183,7 +5411,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 50000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["zentorno"] = {
@@ -6191,7 +5418,6 @@ local List = {
 		["Weight"] = 20,
 		["Price"] = 230000,
 		["Mode"] = "cars",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["ambulancia"] = {
@@ -6199,7 +5425,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["fordraptor"] = {
@@ -6207,7 +5432,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["wra45"] = {
@@ -6215,7 +5439,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["wrbmwx6"] = {
@@ -6223,7 +5446,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["audir82"] = {
@@ -6231,7 +5453,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tahoe"] = {
@@ -6239,7 +5460,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["wrsxr"] = {
@@ -6247,7 +5467,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "bike",
 		["Gems"] = 0
 	},
 	["fordmustanggt2"] = {
@@ -6255,7 +5474,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["nspeedo"] = {
@@ -6263,7 +5481,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["tacoma"] = {
@@ -6271,7 +5488,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["audia4"] = {
@@ -6279,7 +5495,6 @@ local List = {
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
-		["Type"] = "automobile",
 		["Gems"] = 0
 	},
 	["maverick2"] = {
@@ -6287,7 +5502,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = "work",
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["b412"] = {
@@ -6295,7 +5509,6 @@ local List = {
 		["Weight"] = 0,
 		["Price"] = 2000,
 		["Mode"] = "work",
-		["Type"] = "heli",
 		["Gems"] = 0
 	},
 	["f8t"] = {
@@ -6303,7 +5516,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["bmwi8"] = {
@@ -6311,7 +5523,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["bmwm4gts"] = {
@@ -6319,7 +5530,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["civictyper"] = {
@@ -6327,7 +5537,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["dodgechargersrt"] = {
@@ -6335,7 +5544,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["fordmustang"] = {
@@ -6343,7 +5551,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["lamborghinihuracan"] = {
@@ -6351,7 +5558,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["ferrari812"] = {
@@ -6359,7 +5565,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["ferrarif12"] = {
@@ -6367,7 +5572,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["ferrariitalia"] = {
@@ -6375,7 +5579,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["dodgecharger1970"] = {
@@ -6383,7 +5586,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["lancerevolutionx"] = {
@@ -6391,7 +5593,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["lancerevolution9"] = {
@@ -6399,7 +5600,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["m3e46"] = {
@@ -6407,7 +5607,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["mazdarx7"] = {
@@ -6415,7 +5614,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["mazdarx72"] = {
@@ -6423,7 +5621,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["dodgeramtrx"] = {
@@ -6431,7 +5628,6 @@ local List = {
 		["Weight"] = 80,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["mclarenp1"] = {
@@ -6439,7 +5635,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["mclarensenna"] = {
@@ -6447,7 +5642,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["mercedesgt63"] = {
@@ -6455,7 +5649,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["mustangfast"] = {
@@ -6463,7 +5656,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["nissangtr"] = {
@@ -6471,7 +5663,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["nissangtr2"] = {
@@ -6479,7 +5670,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["nissangtr3"] = {
@@ -6487,7 +5677,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["nissangtrnismo"] = {
@@ -6495,7 +5684,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["skyliner34"] = {
@@ -6503,7 +5691,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["subaruimpreza"] = {
@@ -6511,7 +5698,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["subarubrz"] = {
@@ -6519,7 +5705,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["toyotasupra"] = {
@@ -6527,7 +5712,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["toyotasupra2"] = {
@@ -6535,7 +5719,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["golfgti"] = {
@@ -6543,7 +5726,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["bmwm5e34"] = {
@@ -6551,7 +5733,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["golfmk7"] = {
@@ -6559,7 +5740,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["jeepcherokee"] = {
@@ -6567,7 +5747,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["porsche911"] = {
@@ -6575,7 +5754,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["350z"] = {
@@ -6583,7 +5761,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["shelbygt500"] = {
@@ -6591,7 +5768,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["bmwm1wb"] = {
@@ -6599,7 +5775,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["urus"] = {
@@ -6607,7 +5782,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["lamborghinihuracanlw"] = {
@@ -6615,7 +5789,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["panameramansory"] = {
@@ -6623,7 +5796,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["amarok"] = {
@@ -6631,7 +5803,6 @@ local List = {
 		["Weight"] = 80,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["ferrarif40"] = {
@@ -6639,7 +5810,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["astonmartindbs"] = {
@@ -6647,7 +5817,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["nissangtr50"] = {
@@ -6655,7 +5824,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["dodgechargerrt69"] = {
@@ -6663,7 +5831,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["bmwg20"] = {
@@ -6671,7 +5838,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["r1"] = {
@@ -6679,7 +5845,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "bike",
 		["Gems"] = 200
 	},
 	["r6"] = {
@@ -6687,7 +5852,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "bike",
 		["Gems"] = 200
 	},
 	["s1000rr"] = {
@@ -6695,7 +5859,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "bike",
 		["Gems"] = 200
 	},
 	["m1000rr"] = {
@@ -6703,7 +5866,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "bike",
 		["Gems"] = 200
 	},
 	["r1200"] = {
@@ -6711,7 +5873,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "bike",
 		["Gems"] = 200
 	},
 	["r1200gs"] = {
@@ -6719,7 +5880,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "bike",
 		["Gems"] = 200
 	},
 	["silvias15"] = {
@@ -6727,7 +5887,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["rangerover"] = {
@@ -6735,7 +5894,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["vwtouareg"] = {
@@ -6743,7 +5901,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["teslamodels"] = {
@@ -6751,7 +5908,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	},
 	["corvettec7"] = {
@@ -6759,7 +5915,6 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Type"] = "automobile",
 		["Gems"] = 150
 	}
 }
@@ -6805,16 +5960,6 @@ end
 function VehiclePrice(Name)
 	if List[Name] then
 		return List[Name]["Price"]
-	end
-
-	return false
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- VEHICLETYPE
------------------------------------------------------------------------------------------------------------------------------------------
-function VehicleType(Name)
-	if List[Name] then
-		return List[Name]["Type"]
 	end
 
 	return false

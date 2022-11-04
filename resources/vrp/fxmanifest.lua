@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "2.2.5"
+version "2.5.0"
 author "ImagicTheCat"
 creative_network "yes"
 
@@ -38,6 +38,7 @@ server_scripts {
 	"modules/prepare.lua",
 	"modules/queue.lua",
 	"modules/vehicles.lua",
+	"modules/salary.lua",
 	"config/Modules.lua"
 }
 

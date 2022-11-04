@@ -118,7 +118,7 @@ RegisterCommand("globalFunctions",function()
 
 			local Exclusivas = vSERVER.Exclusivas()
 			if parseInt(#Exclusivas) > 0 then
-				for k,v in pairs(Exclusivas) do
+				for _,v in pairs(Exclusivas) do
 					if v["type"] == "backpack" then
 						exports["dynamic"]:AddButton(v["name"],"Clique para colocar/remover.","skinshop:toggleBackpack",v["id"].."-"..v["texture"],"Exclusivas",false)
 					end
@@ -158,9 +158,9 @@ RegisterCommand("emergencyFunctions",function()
 				end
 
 				if LocalPlayer["state"]["Police"] then
-					exports["dynamic"]:AddButton("Remover Chapéu","Remover da pessoa mais próxima.","skinshop:removeProps","Hat","player",true)
-					exports["dynamic"]:AddButton("Remover Máscara","Remover da pessoa mais próxima.","skinshop:removeProps","Mask","player",true)
-					exports["dynamic"]:AddButton("Remover Óculos","Remover da pessoa mais próxima.","skinshop:removeProps","Glasses","player",true)
+					exports["dynamic"]:AddButton("Remover Chapéu","Remover da pessoa mais próxima.","skinshop:Remove","Hat","player",true)
+					exports["dynamic"]:AddButton("Remover Máscara","Remover da pessoa mais próxima.","skinshop:Remove","Mask","player",true)
+					exports["dynamic"]:AddButton("Remover Óculos","Remover da pessoa mais próxima.","skinshop:Remove","Glasses","player",true)
 
 					exports["dynamic"]:AddButton("Polícia","Fardamento de policial.","player:Preset","1","prePolice",true)
 					exports["dynamic"]:AddButton("GOE","Fardamento de policial.","player:Preset","2","prePolice",true)

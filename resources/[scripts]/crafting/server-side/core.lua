@@ -662,18 +662,19 @@ function Creative.requestCrafting(Type)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local inventoryShop = {}
-		for k,v in pairs(List[Type]["List"]) do
+		for _,v in pairs(List[Type]["List"]) do
 			local keyList = {}
-			for k,v in pairs(v["require"]) do
-				table.insert(keyList,{ name = itemName(k), amount = v })
+
+			for Item,v in pairs(v["require"]) do
+				keyList[#keyList + 1] = { name = itemName(Item), amount = v }
 			end
 
-			table.insert(inventoryShop,{ name = itemName(k), index = itemIndex(k), max = itemMaxAmount(k), economy = parseFormat(itemEconomy(k)), key = k, peso = itemWeight(k), list = keyList, amount = parseInt(v["amount"]), desc = itemDescription(k) })
+			inventoryShop[#inventoryShop + 1] = { name = itemName(Item), index = itemIndex(Item), max = itemMaxAmount(Item), economy = parseFormat(itemEconomy(Item)), key = Item, peso = itemWeight(Item), list = keyList, amount = parseInt(v["amount"]), desc = itemDescription(Item) }
 		end
 
 		local inventoryUser = {}
 		local inventory = vRP.Inventory(Passport)
-		for k,v in pairs(inventory) do
+		for Index,v in pairs(inventory) do
 			v["amount"] = parseInt(v["amount"])
 			v["name"] = itemName(v["item"])
 			v["peso"] = itemWeight(v["item"])
@@ -681,7 +682,7 @@ function Creative.requestCrafting(Type)
 			v["max"] = itemMaxAmount(v["item"])
 			v["economy"] = parseFormat(itemEconomy(v["item"]))
 			v["key"] = v["item"]
-			v["slot"] = k
+			v["slot"] = Index
 
 			local splitName = splitString(v["item"],"-")
 			if splitName[2] ~= nil then
@@ -697,7 +698,7 @@ function Creative.requestCrafting(Type)
 				v["days"] = 1
 			end
 
-			inventoryUser[k] = v
+			inventoryUser[Index] = v
 		end
 
 		return inventoryShop,inventoryUser,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport)
@@ -721,8 +722,8 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 			end
 
 			if (vRP.InventoryWeight(Passport) + (itemWeight(Item) * List[Type]["List"][Item]["amount"]) * Amount) <= vRP.GetWeight(Passport) then
-				for k,v in pairs(List[Type]["List"][Item]["require"]) do
-					local consultItem = vRP.InventoryItemAmount(Passport,k)
+				for Index,v in pairs(List[Type]["List"][Item]["require"]) do
+					local consultItem = vRP.InventoryItemAmount(Passport,Index)
 					if consultItem[1] < parseInt(v * Amount) then
 						return
 					end
@@ -733,8 +734,8 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 					end
 				end
 
-				for k,v in pairs(List[Type]["List"][Item]["require"]) do
-					local consultItem = vRP.InventoryItemAmount(Passport,k)
+				for Index,v in pairs(List[Type]["List"][Item]["require"]) do
+					local consultItem = vRP.InventoryItemAmount(Passport,Index)
 					vRP.RemoveItem(Passport,consultItem[2],parseInt(v * Amount))
 				end
 
@@ -767,11 +768,11 @@ function Creative.functionDestroy(Item,Type,Amount,Slot)
 				end
 
 				if vRP.TakeItem(Passport,Item,List[Type]["List"][splitName[1]]["amount"],Slot) then
-					for k,v in pairs(List[Type]["List"][splitName[1]]["require"]) do
+					for Index,v in pairs(List[Type]["List"][splitName[1]]["require"]) do
 						if parseInt(v) <= 1 then
-							vRP.GenerateItem(Passport,k,1)
+							vRP.GenerateItem(Passport,Index,1)
 						else
-							vRP.GenerateItem(Passport,k,v / 2)
+							vRP.GenerateItem(Passport,Index,v / 2)
 						end
 					end
 				end

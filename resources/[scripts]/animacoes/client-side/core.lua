@@ -18,14 +18,6 @@ local binoculos = false
 local tratamento = false
 local fov = (fov_max + fov_min) * 0.5
 -----------------------------------------------------------------------------------------------------------------------------------------
--- POLEDANCE
------------------------------------------------------------------------------------------------------------------------------------------
-local Poledance = {
-	{ 108.98,-1289.45,29.25,252.29 },
-	{ 102.40,-1290.06,29.25,320.32 },
-	{ 104.95,-1294.35,29.25,323.15 }
-}
------------------------------------------------------------------------------------------------------------------------------------------
 -- ANIMAÇÕES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local animacoes = {
@@ -118,42 +110,9 @@ local animacoes = {
 	["cuidar3"] = { dict = "mini@cpr@char_a@cpr_str", anim = "cpr_kol_idle", andar = true, loop = true },
 	["cansado"] = { dict = "rcmbarry", anim = "idle_d", andar = false, loop = true },
 	["alongar2"] = { dict = "mini@triathlon", anim = "idle_e", andar = false, loop = true },
-	["poledance"] = { dict = "mini@strip_club@pole_dance@pole_dance1", anim = "pd_dance_01", andar = false, loop = true, extra = function()
-		local Ped = PlayerPedId()
-		local Coords = GetEntityCoords(Ped)
-		for _,v in pairs(Poledance) do
-			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-			if Distance <= 1 then
-				SetEntityHeading(Ped,v[4])
-				SetEntityCoords(Ped,v[1],v[2],v[3] - 1,false,false,false,false)
-				break
-			end
-		end
-	end },
-	["poledance2"] = { dict = "mini@strip_club@pole_dance@pole_dance2", anim = "pd_dance_02", andar = false, loop = true, extra = function()
-		local Ped = PlayerPedId()
-		local Coords = GetEntityCoords(Ped)
-		for _,v in pairs(Poledance) do
-			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-			if Distance <= 1 then
-				SetEntityHeading(Ped,v[4])
-				SetEntityCoords(Ped,v[1],v[2],v[3] - 1,false,false,false,false)
-				break
-			end
-		end
-	end },
-	["poledance3"] = { dict = "mini@strip_club@pole_dance@pole_dance3", anim = "pd_dance_03", andar = false, loop = true, extra = function()
-		local Ped = PlayerPedId()
-		local Coords = GetEntityCoords(Ped)
-		for _,v in pairs(Poledance) do
-			local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-			if Distance <= 1 then
-				SetEntityHeading(Ped,v[4])
-				SetEntityCoords(Ped,v[1],v[2],v[3] - 1,false,false,false,false)
-				break
-			end
-		end
-	end },
+	["poledance"] = { dict = "mini@strip_club@pole_dance@pole_dance1", anim = "pd_dance_01", andar = false, loop = true },
+	["poledance2"] = { dict = "mini@strip_club@pole_dance@pole_dance2", anim = "pd_dance_02", andar = false, loop = true },
+	["poledance3"] = { dict = "mini@strip_club@pole_dance@pole_dance3", anim = "pd_dance_03", andar = false, loop = true },
 	["meleca"] = { dict = "anim@mp_player_intuppernose_pick", anim = "idle_a", andar = true, loop = true },
 	["bora"] = { dict = "missfam4", anim = "say_hurry_up_a_trevor", andar = true, loop = false },
 	["limpar"] = { dict = "missfbi3_camcrew", anim = "final_loop_guy", andar = true, loop = false },

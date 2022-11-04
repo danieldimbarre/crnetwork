@@ -86,12 +86,12 @@ local List = {
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for k,v in pairs(List) do
-		exports["target"]:AddCircleZone("Crafting:"..k,vec3(v[1],v[2],v[3]),0.5,{
-			name = "Crafting:"..k,
+	for Number,v in pairs(List) do
+		exports["target"]:AddCircleZone("Crafting:"..Number,vec3(v[1],v[2],v[3]),0.5,{
+			name = "Crafting:"..Number,
 			heading = 3374176
 		},{
-			shop = k,
+			shop = Number,
 			Distance = 1.0,
 			options = {
 				{

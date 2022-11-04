@@ -1010,7 +1010,7 @@ function TargetEnable()
 							if not Combustivel then
 								if GetSelectedPedWeapon(Ped) == 883325847 then
 									Selected[5] = true
-									table.insert(Menu,{ event = "engine:Supply", label = "Abastecer", tunnel = "client" })
+									Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }
 								else
 									if GlobalState["Plates"][Plate] then
 										if GetVehicleDoorLockStatus(Entity) == 1 then
@@ -1021,23 +1021,23 @@ function TargetEnable()
 													local Distance = #(Coords - cWheel)
 													if Distance <= 1.0 then
 														Selected[5] = Tyre
-														table.insert(Menu,{ event = "inventory:RemoveTyres", label = "Retirar Pneu", tunnel = "client" })
+														Menu[#Menu + 1] = { event = "inventory:RemoveTyres", label = "Retirar Pneu", tunnel = "client" }
 													end
 												end
 											end
 
-											table.insert(Menu,{ event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" })
-											table.insert(Menu,{ event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" })
+											Menu[#Menu + 1] = { event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" }
+											Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
 										end
 
-										table.insert(Menu,{ event = "garages:Key", label = "Criar Chave Cópia", tunnel = "police" })
-										table.insert(Menu,{ event = "inventory:applyPlate", label = "Trocar Placa", tunnel = "server" })
+										Menu[#Menu + 1] = { event = "garages:Key", label = "Criar Chave Cópia", tunnel = "police" }
+										Menu[#Menu + 1] = { event = "inventory:applyPlate", label = "Trocar Placa", tunnel = "server" }
 									end
 
 									if not IsThisModelABike(vehModel) then
 										local Rolling = GetEntityRoll(Entity)
 										if Rolling > 75.0 or Rolling < -75.0 then
-											table.insert(Menu,{ event = "player:RollVehicle", label = "Desvirar", tunnel = "server" })
+											Menu[#Menu + 1] = { event = "player:RollVehicle", label = "Desvirar", tunnel = "server" }
 										else
 											if GetEntityBoneIndexByName(Entity,"boot") ~= -1 then
 												local Trunk = GetEntityBoneIndexByName(Entity,"boot")
@@ -1045,44 +1045,44 @@ function TargetEnable()
 												local Distance = #(Coords - cTrunk)
 												if Distance <= 1.25 then
 													if GetVehicleDoorLockStatus(Entity) == 1 then
-														table.insert(Menu,{ event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" })
+														Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
 													end
 
-													table.insert(Menu,{ event = "inventory:StealTrunk", label = "Arrombar Porta-Malas", tunnel = "client" })
+													Menu[#Menu + 1] = { event = "inventory:StealTrunk", label = "Arrombar Porta-Malas", tunnel = "client" }
 												end
 											end
 										end
 									end
 
 									if LocalPlayer["state"]["Police"] then
-										table.insert(Menu,{ event = "police:Plate", label = "Verificar Placa", tunnel = "police" })
-										table.insert(Menu,{ event = "police:Impound", label = "Registrar Veículo", tunnel = "police" })
+										Menu[#Menu + 1] = { event = "police:Plate", label = "Verificar Placa", tunnel = "police" }
+										Menu[#Menu + 1] = { event = "police:Impound", label = "Registrar Veículo", tunnel = "police" }
 
 										if GlobalState["Plates"][Plate] then
-											table.insert(Menu,{ event = "police:Arrest", label = "Apreender Veículo", tunnel = "police" })
+											Menu[#Menu + 1] = { event = "police:Arrest", label = "Apreender Veículo", tunnel = "police" }
 										end
 									else
 										if Plate == "DISM"..(1000 + LocalPlayer["state"]["Passport"]) then
 											local Distance = #(Coords - vec3(Dismantles[Dismantleds][1],Dismantles[Dismantleds][2],Dismantles[Dismantleds][3]))
 											if Distance <= 10 then
-												table.insert(Menu,{ event = "inventory:Dismantle", label = "Desmanchar", tunnel = "client" })
+												Menu[#Menu + 1] = { event = "inventory:Dismantle", label = "Desmanchar", tunnel = "client" }
 											end
 										end
 
 										for k,v in pairs(Tows) do
 											local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 											if Distance <= 10 then
-												table.insert(Menu,{ event = "towdriver:Tow", label = "Rebocar", tunnel = "client" })
-												table.insert(Menu,{ event = "impound:Check", label = "Impound", tunnel = "police" })
+												Menu[#Menu + 1] = { event = "towdriver:Tow", label = "Rebocar", tunnel = "client" }
+												Menu[#Menu + 1] = { event = "impound:Check", label = "Impound", tunnel = "police" }
 											end
 										end
 									end
 
-									table.insert(Menu,{ event = "engine:Vehrify", label = "Verificar", tunnel = "client" })
+									Menu[#Menu + 1] = { event = "engine:Vehrify", label = "Verificar", tunnel = "client" }
 								end
 							else
 								Selected[5] = false
-								table.insert(Menu,{ event = "engine:Supply", label = "Abastecer", tunnel = "client" })
+								Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }
 							end
 
 							SendNUIMessage({ Action = "Valid", data = Menu })
@@ -1116,26 +1116,26 @@ function TargetEnable()
 							Selected = { source }
 
 							if LocalPlayer["state"]["Police"] then
-								table.insert(Menu,{ event = "police:runInspect", label = "Revistar", tunnel = "police" })
-								table.insert(Menu,{ event = "police:prisonClothes", label = "Uniforme Presidiário", tunnel = "police" })
+								Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
+								Menu[#Menu + 1] = { event = "police:prisonClothes", label = "Uniforme Presidiário", tunnel = "police" }
 							elseif LocalPlayer["state"]["Paramedic"] then
 								if GetEntityHealth(Entity) <= 100 then
-									table.insert(Menu,{ event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" })
+									Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
 								else
-									table.insert(Menu,{ event = "paramedic:Treatment", label = "Tratamento", tunnel = "paramedic" })
-									table.insert(Menu,{ event = "paramedic:Reposed", label = "Colocar de Repouso", tunnel = "paramedic" })
-									table.insert(Menu,{ event = "paramedic:Bandage", label = "Passar Ataduras", tunnel = "paramedic" })
-									table.insert(Menu,{ event = "paramedic:presetBurn", label = "Roupa de Queimadura", tunnel = "paramedic" })
-									table.insert(Menu,{ event = "paramedic:presetPlaster", label = "Colocar Gesso", tunnel = "paramedic" })
-									table.insert(Menu,{ event = "paramedic:extractBlood", label = "Extrair Sangue", tunnel = "paramedic" })
+									Menu[#Menu + 1] = { event = "paramedic:Treatment", label = "Tratamento", tunnel = "paramedic" }
+									Menu[#Menu + 1] = { event = "paramedic:Reposed", label = "Colocar de Repouso", tunnel = "paramedic" }
+									Menu[#Menu + 1] = { event = "paramedic:Bandage", label = "Passar Ataduras", tunnel = "paramedic" }
+									Menu[#Menu + 1] = { event = "paramedic:presetBurn", label = "Roupa de Queimadura", tunnel = "paramedic" }
+									Menu[#Menu + 1] = { event = "paramedic:presetPlaster", label = "Colocar Gesso", tunnel = "paramedic" }
+									Menu[#Menu + 1] = { event = "paramedic:extractBlood", label = "Extrair Sangue", tunnel = "paramedic" }
 								end
 
-								table.insert(Menu,{ event = "paramedic:Diagnostic", label = "Informações", tunnel = "paramedic" })
-								table.insert(Menu,{ event = "paramedic:Bed", label = "Deitar Paciente", tunnel = "paramedic" })
+								Menu[#Menu + 1] = { event = "paramedic:Diagnostic", label = "Informações", tunnel = "paramedic" }
+								Menu[#Menu + 1] = { event = "paramedic:Bed", label = "Deitar Paciente", tunnel = "paramedic" }
 							end
 
 							if IsEntityPlayingAnim(Entity,"random@mugging3","handsup_standing_base",3) then
-								table.insert(Menu,{ event = "player:checkShoes", label = "Roubar Sapatos", tunnel = "paramedic" })
+								Menu[#Menu + 1] = { event = "player:checkShoes", label = "Roubar Sapatos", tunnel = "paramedic" }
 							end
 
 							SendNUIMessage({ Action = "Valid", data = Menu })

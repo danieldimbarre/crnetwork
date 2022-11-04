@@ -117,7 +117,7 @@ end)
 RegisterCommand("e3",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			local Players = vRPC.ClosestPeds(source,50)
 			for _,v in pairs(Players) do
 				async(function()
@@ -898,81 +898,6 @@ function Creative.Bikepack()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SALARY
------------------------------------------------------------------------------------------------------------------------------------------
-local Salary = {}
-local SalaryValue = {
-	-- ["Premium"] = 2000,
-	["Premium01"] = 900,
-	["Premium02"] = 1300,
-	["Premium03"] = 1900,
-	["Paramedic"] = 1500,
-	["Police"] = 1500
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- SALARYS
------------------------------------------------------------------------------------------------------------------------------------------
-exports("Salarys",function()
-	return SalaryValue
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SALARY:ADD
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Salary:Add",function(Passport,Permission)
-	if Permission == "Premium" then
-		local Type = vRP.UserClassPremium(Passport)
-		Permission = Premium[Type]
-	end
-
-	if not Salary[Permission] then
-		Salary[Permission] = {}
-	end
-
-	if not Salary[Permission][Passport] then
-		Salary[Permission][Passport] = os.time() + 1800
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SALARY:REMOVE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Salary:Remove",function(Passport,Permission)
-	if Permission then
-		if Permission == "Premium" then
-			local Type = vRP.UserClassPremium(Passport)
-			Permission = Premium[Type]
-		end
-
-		if Salary[Permission] then
-			if Salary[Permission][Passport] then
-				Salary[Permission][Passport] = nil
-			end
-		end
-	else
-		for Permission,v in pairs(Salary) do
-			if Salary[Permission][Passport] then
-				Salary[Permission][Passport] = nil
-			end
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADSALARY
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		Wait(60000)
-
-		for Permission,_ in pairs(Salary) do
-			for Passport,Timer in pairs(Salary[Permission]) do
-				if os.time() >= Timer then
-					vRP.GiveBank(Passport,SalaryValue[Permission])
-					Salary[Permission][Passport] = os.time() + 1800
-				end
-			end
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
@@ -985,11 +910,5 @@ AddEventHandler("Disconnect",function(Passport)
 	if playerCarry[Passport] then
 		TriggerClientEvent("player:Commands",playerCarry[Passport],false)
 		playerCarry[Passport] = nil
-	end
-
-	for Permission,_ in pairs(Salary) do
-		if Salary[Permission][Passport] then
-			Salary[Permission][Passport] = nil
-		end
 	end
 end)

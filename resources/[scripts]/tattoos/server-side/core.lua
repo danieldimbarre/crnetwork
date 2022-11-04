@@ -22,12 +22,15 @@ function Creative.CheckWanted()
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- GETPLAYERS
+-- UPDATETATTOO
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.updateTattoo(status)
+function Creative.updateTattoo(Tattoos)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Tatuagens", dvalue = json.encode(status) })
+		local Tables = json.encode(Tattoos)
+		if Tables ~= "[]" then
+			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Tatuagens", dvalue = Tables })
+		end
 	end
 end

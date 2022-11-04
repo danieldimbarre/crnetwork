@@ -25,11 +25,14 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.updateSkin(Clothes,Creator)
+function Creative.updateSkin(Barbers,Creator)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Barbershop", dvalue = json.encode(Clothes) })
+		local Tables = json.encode(Barbers)
+		if Tables ~= "[]" then
+			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Barbershop", dvalue = Tables })
+		end
 
 		if Creator then
 			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Creator", dvalue = 1 })

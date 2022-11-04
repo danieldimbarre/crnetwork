@@ -177,7 +177,7 @@ function Creative.Clothes()
 		local Consult = vRP.GetSrvData("Wardrobe:"..Passport)
 
 		for Table,_ in pairs(Consult) do
-			table.insert(Clothes,{ ["name"] = Table })
+			Clothes[#Clothes + 1] = { ["name"] = Table }
 		end
 
 		return Clothes
@@ -418,4 +418,22 @@ CreateThread(function()
 	end
 
 	TriggerClientEvent("propertys:Table",-1,Propertys,Interiors,Markers)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHARACTERCHOSEN
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("CharacterChosen",function(Passport,source)
+	local Consult = vRP.Query("propertys/AllUser",{ Passport = Passport })
+	if Consult[1] then
+		local Tables = {}
+
+		for _,v in pairs(Consult) do
+			local Name = v["Name"]
+			if Propertys[Name] then
+				Tables[#Tables + 1] = { ["Coords"] = Propertys[Name] }
+			end
+		end
+
+		TriggerClientEvent("spawn:Increment",source,Tables)
+	end
 end)

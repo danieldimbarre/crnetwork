@@ -201,10 +201,9 @@ AddEventHandler("propertys:Table",function(PropTable,PropInfos,PropMarkers)
 	Propertys = PropTable
 	Informations = PropInfos
 
-	local Table = {}
-
-	for Name,v in pairs(Propertys) do
-		table.insert(Table,{ v["x"],v["y"],v["z"],1.0,"E","Propriedade","Pressione para acessar" })
+	local Tables = {}
+	for _,v in pairs(Propertys) do
+		Tables[#Tables + 1] = { v["x"],v["y"],v["z"],1.0,"E","Propriedade","Pressione para acessar" }
 	end
 
 	for _,Intern in pairs(Informations) do
@@ -219,11 +218,11 @@ AddEventHandler("propertys:Table",function(PropTable,PropInfos,PropMarkers)
 				Message = "Armário"
 			end
 
-			table.insert(Table,{ v["x"],v["y"],v["z"],1.0,"E",Message,"Pressione para acessar" })
+			Tables[#Tables + 1] = { v["x"],v["y"],v["z"],1.0,"E",Message,"Pressione para acessar" }
 		end
 	end
 
-	TriggerEvent("hoverfy:Insert",Table)
+	TriggerEvent("hoverfy:Insert",Tables)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:BLIPS

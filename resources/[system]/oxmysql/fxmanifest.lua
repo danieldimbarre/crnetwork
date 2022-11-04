@@ -2,7 +2,7 @@ fx_version "bodacious"
 game "gta5"
 lua54 "yes"
 
-version "2.5.1"
+version "2.5.2"
 
 dependencies {
 	"/server:5104"

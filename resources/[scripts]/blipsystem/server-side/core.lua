@@ -15,8 +15,8 @@ local Players = {}
 -- PLAYERLIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.playerList()
-	for k,v in pairs(Players) do
-		local Ped = GetPlayerPed(k)
+	for Source,v in pairs(Players) do
+		local Ped = GetPlayerPed(Source)
 		if DoesEntityExist(Ped) then
 			v["Coords"] = GetEntityCoords(Ped)
 		end
@@ -34,9 +34,9 @@ AddEventHandler("blipsystem:Enter",function(source,Service,Connect)
 		["service"] = Service
 	}
 
-	for k,v in pairs(Players) do
-		if k ~= source then
-			TriggerClientEvent("blipsystem:Enter",k,source,Players[source])
+	for Sources,_ in pairs(Players) do
+		if Sources ~= source then
+			TriggerClientEvent("blipsystem:Enter",Sources,source,Players[source])
 		end
 	end
 
@@ -52,9 +52,9 @@ AddEventHandler("blipsystem:Exit",function(source)
 		Players[source] = nil
 		TriggerClientEvent("blipsystem:Clear",source)
 
-		for k,v in pairs(Players) do
-			if k ~= source then
-				TriggerClientEvent("blipsystem:Exit",k,source)
+		for Sources,_ in pairs(Players) do
+			if Sources ~= source then
+				TriggerClientEvent("blipsystem:Exit",Sources,source)
 			end
 		end
 	end
@@ -66,8 +66,8 @@ AddEventHandler("Disconnect",function(Passport,source)
 	if Players[source] then
 		Players[source] = nil
 
-		for k,v in pairs(Players) do
-			TriggerClientEvent("blipsystem:Exit",k,source)
+		for Sources,_ in pairs(Players) do
+			TriggerClientEvent("blipsystem:Exit",Sources,source)
 		end
 	end
 end)

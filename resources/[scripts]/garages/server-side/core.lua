@@ -422,7 +422,7 @@ end)
 -- GARAGES:TRANSFER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("garages:Transfer")
-AddEventHandler("garages:Transfer",function(vehName)
+AddEventHandler("garages:Transfer",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

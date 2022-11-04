@@ -28,11 +28,11 @@ CreateThread(function()
 
 	for Index,v in pairs(Vehicles) do
 		if v["Mode"] == "cars" then
-			table.insert(Cars,{ k = Index, name = v["Name"], price = v["Price"], chest = v["Weight"], tax = v["Price"] * 0.10 })
+			Cars[#Cars + 1] = { k = Index, name = v["Name"], price = v["Price"], chest = v["Weight"], tax = v["Price"] * 0.10 }
 		elseif v["Mode"] == "bikes" then
-			table.insert(Bikes,{ k = Index, name = v["Name"], price = v["Price"], chest = v["Weight"], tax = v["Price"] * 0.10 })
+			Bikes[#Bikes + 1] = { k = Index, name = v["Name"], price = v["Price"], chest = v["Weight"], tax = v["Price"] * 0.10 }
 		elseif v["Mode"] == "rental" then
-			table.insert(Rental,{ k = Index, name = v["Name"], price = v["Gems"], chest = v["Weight"], tax = v["Price"] * 0.10 })
+			Rental[#Rental + 1] = { k = Index, name = v["Name"], price = v["Gems"], chest = v["Weight"], tax = v["Price"] * 0.10 }
 		end
 	end
 

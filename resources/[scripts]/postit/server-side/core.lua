@@ -27,7 +27,7 @@ function Creative.newPostIts(Coords)
 			if parseInt(Keyboard[2]) >= 3 and parseInt(Keyboard[2]) <= 15 then
 				if vRP.TakeItem(Passport,"postit",1,true) then
 					local Postit = GlobalState["Postit"]
-					table.insert(Postit,{ mathLength(Coords["x"]),mathLength(Coords["y"]),mathLength(Coords["z"]),string.sub(Keyboard[1],1,100),parseInt(Keyboard[2]),Passport,os.time() + 60 })
+					Postit[#Postit + 1] = { mathLength(Coords["x"]),mathLength(Coords["y"]),mathLength(Coords["z"]),string.sub(Keyboard[1],1,100),parseInt(Keyboard[2]),Passport,os.time() + 60 }
 					GlobalState:set("Postit",Postit,true)
 				end
 			end
@@ -43,7 +43,7 @@ function Creative.deletePostIts(id)
 	if Passport then
 		local Postit = GlobalState["Postit"]
 
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			TriggerClientEvent("Notify",source,"verde","Post-It do passaporte <b>"..Postit[id][6].."</b> removido.",10000)
 			Postit[id] = nil
 			GlobalState:set("Postit",Postit,true)

@@ -879,7 +879,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BurgerShot",Valuation * 0.05)
+					vRP.DirectChest("BurgerShot","100",Valuation * 0.05)
 					vRP.PutExperience(Passport,"Delivery",1)
 					vDELIVER.Update(source)
 				end
@@ -915,7 +915,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("PizzaThis",Valuation * 0.05)
+					vRP.DirectChest("PizzaThis","100",Valuation * 0.05)
 					vRP.PutExperience(Passport,"Delivery",1)
 					vDELIVER.Update(source)
 				end
@@ -951,7 +951,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("UwuCoffee",Valuation * 0.05)
+					vRP.DirectChest("UwuCoffee","100",Valuation * 0.05)
 					vRP.PutExperience(Passport,"Delivery",1)
 					vDELIVER.Update(source)
 				end
@@ -987,7 +987,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BeanMachine",Valuation * 0.05)
+					vRP.DirectChest("BeanMachine","100",Valuation * 0.05)
 					vRP.PutExperience(Passport,"Delivery",1)
 					vDELIVER.Update(source)
 				end
@@ -2004,7 +2004,7 @@ function Creative.Dismantle(Entity)
 					vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 				end
 
-				local Members = exports["vrp"]:Party(Passport,source,20)
+				local Members = exports["party"]:Room(Passport,source,20)
 				if #Members > 1 then
 					for _,v in pairs(Members) do
 						vRP.GenerateItem(v["Passport"],"dollars",AmountItens * #Members,true)
@@ -2264,8 +2264,14 @@ AddEventHandler("Disconnect",function(Passport)
 			Temporary[Passport] = nil
 		end
 
-		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Attachs", dvalue = json.encode(Attachs[Passport]) })
-		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Ammos", dvalue = json.encode(Ammos[Passport]) })
+		if json.encode(Attachs[Passport]) ~= "[]" then
+			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Attachs", dvalue = json.encode(Attachs[Passport]) })
+		end
+
+		if json.encode(Ammos[Passport]) ~= "[]" then
+			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Ammos", dvalue = json.encode(Ammos[Passport]) })
+		end
+
 		Attachs[Passport] = nil
 		Ammos[Passport] = nil
 	end

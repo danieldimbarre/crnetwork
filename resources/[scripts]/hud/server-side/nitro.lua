@@ -12,15 +12,3 @@ function Creative.UpdateNitro(Plate,Fuel)
 		GlobalState:set("Nitro",Nitro,true)
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- ACTIVENITRO
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.ActiveNitro(Net,Status)
-	local source = source
-	local Players = vRPC.Players(source)
-	for _,v in ipairs(Players) do
-		async(function()
-			TriggerClientEvent("hud:Nitro",v,Net,Status)
-		end)
-	end
-end

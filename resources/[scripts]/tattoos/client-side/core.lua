@@ -1236,13 +1236,13 @@ local Locations = {
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local Table = {}
+	local Tables = {}
 
-	for _,v in pairs(Locations) do
-		table.insert(Table,{ v[1],v[2],v[3],1.75,"E","Loja de Tatuagem","Pressione para abrir" })
+	for Number = 1,#Locations do
+		Tables[#Tables + 1] = { Locations[Number][1],Locations[Number][2],Locations[Number][3],2.0,"E","Loja de Roupas","Pressione para abrir" }
 	end
 
-	TriggerEvent("hoverfy:Insert",Table)
+	TriggerEvent("hoverfy:Insert",Tables)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADLOCATIONS

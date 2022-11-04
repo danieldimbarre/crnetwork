@@ -8,11 +8,11 @@ local Textform = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("hud:Textform")
 AddEventHandler("hud:Textform",function(Coords,Text,Seconds)
-	table.insert(Textform,{
+	Textform[#Textform + 1] = {
 		["Text"] = Text,
 		["Coords"] = Coords,
 		["Seconds"] = GetGameTimer() + Seconds
-	})
+	}
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTEXTFORM

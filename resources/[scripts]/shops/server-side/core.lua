@@ -538,7 +538,7 @@ function Creative.requestShop(name)
 		local shopSlots = 20
 		local inventoryShop = {}
 		for k,v in pairs(shops[name]["List"]) do
-			table.insert(inventoryShop,{ key = k, price = parseInt(v), name = itemName(k), index = itemIndex(k), peso = itemWeight(k), economy = parseFormat(itemEconomy(k)), max = itemMaxAmount(k), desc = itemDescription(k) })
+			inventoryShop[#inventoryShop + 1] = { key = k, price = parseInt(v), name = itemName(k), index = itemIndex(k), peso = itemWeight(k), economy = parseFormat(itemEconomy(k)), max = itemMaxAmount(k), desc = itemDescription(k) }
 		end
 
 		local inventoryUser = {}

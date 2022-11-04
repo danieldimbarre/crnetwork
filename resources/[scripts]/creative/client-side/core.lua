@@ -355,25 +355,25 @@ local Teleport = {
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for _,v in pairs(Blips) do
-		local blip = AddBlipForCoord(v[1],v[2],v[3])
-		SetBlipSprite(blip,v[4])
-		SetBlipDisplay(blip,4)
-		SetBlipAsShortRange(blip,true)
-		SetBlipColour(blip,v[5])
-		SetBlipScale(blip,v[7])
+	for Number = 1,#Blips do
+		local Blip = AddBlipForCoord(Blips[Number][1],Blips[Number][2],Blips[Number][3])
+		SetBlipSprite(Blip,Blips[Number][4])
+		SetBlipDisplay(Blip,4)
+		SetBlipAsShortRange(Blip,true)
+		SetBlipColour(Blip,Blips[Number][5])
+		SetBlipScale(Blip,Blips[Number][7])
 		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(v[6])
-		EndTextCommandSetBlipName(blip)
+		AddTextComponentString(Blips[Number][6])
+		EndTextCommandSetBlipName(Blip)
 	end
 
-	local Table = {}
+	local Tables = {}
 
-	for _,v in pairs(Teleport) do
-		table.insert(Table,{ v[1],v[2],v[3],1,"E","Porta de Acesso","Pressione para acessar" })
+	for Number = 1,#Teleport do
+		Tables[#Tables + 1] = { Teleport[Number][1],Teleport[Number][2],Teleport[Number][3],2.5,"E","Porta de Acesso","Pressione para acessar" }
 	end
 
-	TriggerEvent("hoverfy:Insert",Table)
+	TriggerEvent("hoverfy:Insert",Tables)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTELEPORT
@@ -385,7 +385,9 @@ CreateThread(function()
 			local Ped = PlayerPedId()
 			if not IsPedInAnyVehicle(Ped) then
 				local Coords = GetEntityCoords(Ped)
-				for k,v in pairs(Teleport) do
+
+				for Number = 1,#Teleport do
+					local v = Teleport[Number]
 					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
 					if Distance <= 1 then
 						TimeDistance = 1

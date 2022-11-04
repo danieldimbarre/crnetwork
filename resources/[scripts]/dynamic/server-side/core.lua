@@ -38,7 +38,7 @@ function Creative.Exclusivas()
 		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
 
 		for Index,v in pairs(Consult) do
-			table.insert(Clothes,{ ["name"] = Index, ["id"] = v["id"], ["texture"] = v["texture"] or 0, ["type"] = v["type"] })
+			Clothes[#Clothes + 1] = { ["name"] = Index, ["id"] = v["id"], ["texture"] = v["texture"] or 0, ["type"] = v["type"] }
 		end
 
 		return Clothes

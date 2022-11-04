@@ -69,7 +69,7 @@ end)
 RegisterCommand("blips",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			vRPC.BlipAdmin(source)
 		end
 	end
@@ -80,7 +80,7 @@ end)
 RegisterCommand("god",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			if Message[1] then
 				local OtherPassport = parseInt(Message[1])
 				local ClosestPed = vRP.Source(OtherPassport)
@@ -135,7 +135,7 @@ end)
 RegisterCommand("delete",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			local OtherPassport = parseInt(Message[1])
 			vRP.Query("characters/removeCharacter",{ id = OtherPassport })
 			TriggerClientEvent("Notify",source,"verde","Personagem <b>"..OtherPassport.."</b> deletado.",5000)
@@ -148,7 +148,7 @@ end)
 RegisterCommand("nc",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			vRPC.noClip(source)
 		end
 	end
@@ -159,7 +159,7 @@ end)
 RegisterCommand("kick",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
 			TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..Message[1].."</b> expulso.",5000)
 			vRP.Kick(Message[1],"Expulso da cidade.")
 		end
@@ -171,7 +171,7 @@ end)
 RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 then
 			local time = parseInt(Message[2])
 			local OtherPassport = parseInt(Message[1])
 			local Identity = vRP.Identity(OtherPassport)
@@ -189,7 +189,7 @@ end)
 RegisterCommand("unban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
 			local OtherPassport = parseInt(Message[1])
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
@@ -205,7 +205,7 @@ end)
 RegisterCommand("tpcds",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			local Keyboard = vKEYBOARD.keySingle(source,"Cordenadas:")
 			if Keyboard then
 				local Split = splitString(Keyboard[1],",")
@@ -220,7 +220,7 @@ end)
 RegisterCommand("cds",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
 			local heading = GetEntityHeading(Ped)
@@ -237,7 +237,7 @@ RegisterCommand("group",function(source,Message)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and Message[2] then
 			TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
-			vRP.SetPermission(Message[1],Message[2])
+			vRP.SetPermission(Message[1],Message[2],Message[3])
 		end
 	end
 end)
@@ -259,7 +259,7 @@ end)
 RegisterCommand("tptome",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
 			local ClosestPed = vRP.Source(Message[1])
 			if ClosestPed then
 				local Ped = GetPlayerPed(source)
@@ -276,7 +276,7 @@ end)
 RegisterCommand("tpto",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") and parseInt(Message[1]) > 0 then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
 			local ClosestPed = vRP.Source(Message[1])
 			if ClosestPed then
 				local Ped = GetPlayerPed(ClosestPed)
@@ -292,7 +292,7 @@ end)
 RegisterCommand("tpway",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			vCLIENT.teleportWay(source)
 		end
 	end
@@ -351,7 +351,7 @@ end)
 RegisterCommand("limparea",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
 			TriggerClientEvent("syncarea",source,Coords["x"],Coords["y"],Coords["z"],100)
@@ -364,7 +364,7 @@ end)
 RegisterCommand("players",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			TriggerClientEvent("Notify",source,"azul","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices(),5000)
 		end
 	end
@@ -450,10 +450,10 @@ RegisterCommand("itemall",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			local playerList = vRP.Players()
-			for PassportPlayer,_ in pairs(playerList) do
+			local List = vRP.Players()
+			for OtherPlayer,_ in pairs(List) do
 				async(function()
-					vRP.GenerateItem(PassportPlayer,tostring(Message[1]),parseInt(Message[2]),true)
+					vRP.GenerateItem(OtherPlayer,Message[1],Message[2],true)
 				end)
 			end
 

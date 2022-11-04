@@ -134,13 +134,15 @@ end)
 -- HELIBLIP
 -----------------------------------------------------------------------------------------------------------------------------------------
 function HeliBlip(Number)
-	Blip = AddBlipForCoord(Components[Number]["Objects"]["1"][1],Components[Number]["Objects"]["1"][2],Components[Number]["Objects"]["1"][3])
-	SetBlipSprite(Blip,43)
-	SetBlipDisplay(Blip,4)
-	SetBlipAsShortRange(Blip,true)
-	SetBlipColour(Blip,5)
-	SetBlipScale(Blip,0.8)
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString("Helicrash")
-	EndTextCommandSetBlipName(Blip)
+	if Components[Number] then
+		Blip = AddBlipForCoord(Components[Number]["Objects"]["1"][1],Components[Number]["Objects"]["1"][2],Components[Number]["Objects"]["1"][3])
+		SetBlipSprite(Blip,43)
+		SetBlipDisplay(Blip,4)
+		SetBlipAsShortRange(Blip,true)
+		SetBlipColour(Blip,5)
+		SetBlipScale(Blip,0.8)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString("Helicrash")
+		EndTextCommandSetBlipName(Blip)
+	end
 end

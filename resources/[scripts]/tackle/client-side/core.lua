@@ -45,12 +45,12 @@ end)
 -- TOUCHEDPLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function touchedPlayers()
-	local players = {}
+	local Players = {}
 	local Ped = PlayerPedId()
-	for k,v in ipairs(GetActivePlayers()) do
+	for _,v in ipairs(GetActivePlayers()) do
 		local uPed = GetPlayerPed(v)
 		if IsEntityTouchingEntity(Ped,uPed) and not IsPedInAnyVehicle(uPed) then
-			table.insert(players,v)
+			Players[#Players + 1] = v
 		end
 	end
 

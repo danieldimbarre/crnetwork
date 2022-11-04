@@ -3305,7 +3305,7 @@ Use = {
 			end
 
 			if vTASKBAR.taskFishing(source) then
-				local Members = exports["vrp"]:Party(Passport,source,10)
+				local Members = exports["party"]:Room(Passport,source,10)
 				local fishList = { "octopus","shrimp","carp","horsefish","tilapia","codfish","catfish" }
 
 				if parseInt(#Members) >= 4 then

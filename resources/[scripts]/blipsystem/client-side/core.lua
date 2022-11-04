@@ -32,62 +32,62 @@ CreateThread(function()
 					if not Pause then
 						Pause = true
 
-						for k,v in pairs(Blips) do
-							RemoveBlip(Blips[k])
-							Blips[k] = nil
+						for Number,_ in pairs(Blips) do
+							RemoveBlip(Blips[Number])
+							Blips[Number] = nil
 						end
 					end
 
-					local playerList = vSERVER.playerList()
+					local List = vSERVER.playerList()
 
-					for k,v in pairs(playerList) do
-						if Blips[k] then
-							SetBlipCoords(Blips[k],v["Coords"])
+					for Number,v in pairs(List) do
+						if Blips[Number] then
+							SetBlipCoords(Blips[Number],v["Coords"])
 						else
-							Blips[k] = AddBlipForCoord(v["Coords"])
-							SetBlipSprite(Blips[k],1)
-							SetBlipDisplay(Blips[k],4)
-							SetBlipAsShortRange(Blips[k],true)
-							SetBlipColour(Blips[k],Colors[v["service"]])
-							SetBlipScale(Blips[k],0.7)
+							Blips[Number] = AddBlipForCoord(v["Coords"])
+							SetBlipSprite(Blips[Number],1)
+							SetBlipDisplay(Blips[Number],4)
+							SetBlipAsShortRange(Blips[Number],true)
+							SetBlipColour(Blips[Number],Colors[v["service"]])
+							SetBlipScale(Blips[Number],0.7)
 							BeginTextCommandSetBlipName("STRING")
 							AddTextComponentString("! "..v["service"])
-							EndTextCommandSetBlipName(Blips[k])
+							EndTextCommandSetBlipName(Blips[Number])
 						end
 					end
 				else
 					if Pause then
 						Pause = false
 
-						for k,v in pairs(Blips) do
-							RemoveBlip(Blips[k])
-							Blips[k] = nil
+						for Number,_ in pairs(Blips) do
+							RemoveBlip(Blips[Number])
+							Blips[Number] = nil
 						end
 					end
 
-					local tableActive = activePlayers()
+					local Active = activePlayers()
 
-					for k,v in pairs(Players) do
-						if tableActive[k] then
-							if not Blips[k] then
-								local source = GetPlayerFromServerId(k)
+					for Number,v in pairs(Players) do
+						if Active[Number] then
+							if not Blips[Number] then
+								local source = GetPlayerFromServerId(Number)
 								local Ped = GetPlayerPed(source)
 
-								Blips[k] = AddBlipForEntity(Ped)
-								SetBlipSprite(Blips[k],1)
-								SetBlipDisplay(Blips[k],4)
-								SetBlipShowCone(Blips[k],true)
-								SetBlipAsShortRange(Blips[k],true)
-								SetBlipColour(Blips[k],Colors[v["service"]])
-								SetBlipScale(Blips[k],0.7)
+								Blips[Number] = AddBlipForEntity(Ped)
+								SetBlipSprite(Blips[Number],1)
+								SetBlipDisplay(Blips[Number],4)
+								SetBlipShowCone(Blips[Number],true)
+								SetBlipAsShortRange(Blips[Number],true)
+								SetBlipColour(Blips[Number],Colors[v["service"]])
+								SetBlipScale(Blips[Number],0.7)
 								BeginTextCommandSetBlipName("STRING")
 								AddTextComponentString("! "..v["service"])
-								EndTextCommandSetBlipName(Blips[k])
+								EndTextCommandSetBlipName(Blips[Number])
 							end
 						else
-							if Blips[k] then
-								RemoveBlip(Blips[k])
-								Blips[k] = nil
+							if Blips[Number] then
+								RemoveBlip(Blips[Number])
+								Blips[Number] = nil
 							end
 						end
 					end
@@ -133,8 +133,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("blipsystem:Clear")
 AddEventHandler("blipsystem:Clear",function()
-	for k,v in pairs(Blips) do
-		RemoveBlip(Blips[k])
+	for Number,_ in pairs(Blips) do
+		RemoveBlip(Blips[Number])
 	end
 
 	Pause = false
@@ -147,7 +147,7 @@ end)
 function activePlayers()
 	local PlayerList = {}
 
-	for k,v in ipairs(GetActivePlayers()) do
+	for _,v in ipairs(GetActivePlayers()) do
 		PlayerList[GetPlayerServerId(v)] = true
 	end
 

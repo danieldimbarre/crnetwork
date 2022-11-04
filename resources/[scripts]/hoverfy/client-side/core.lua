@@ -61,20 +61,20 @@ end)
 -- HOVERFY:INSERT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("hoverfy:Insert")
-AddEventHandler("hoverfy:Insert",function(innerTable)
-	for _,v in pairs(innerTable) do
-		local gridZone = getGridzone(v[1],v[2])
+AddEventHandler("hoverfy:Insert",function(Tables)
+	for Number = 1,#Tables do
+		local Grid = getGridzone(Tables[Number][1],Tables[Number][2])
 
-		if not Zone[gridZone] then
-			Zone[gridZone] = {}
+		if not Zone[Grid] then
+			Zone[Grid] = {}
 		end
 
-		Zone[gridZone][#Zone[gridZone] + 1] = {
-			["Coords"] = vec3(v[1],v[2],v[3]),
-			["Distance"] = v[4],
-			["key"] = v[5],
-			["title"] = v[6],
-			["legend"] = v[7]
+		Zone[Grid][#Zone[Grid] + 1] = {
+			["Coords"] = vec3(Tables[Number][1],Tables[Number][2],Tables[Number][3]),
+			["Distance"] = Tables[Number][4],
+			["key"] = Tables[Number][5],
+			["title"] = Tables[Number][6],
+			["legend"] = Tables[Number][7]
 		}
 	end
 end)

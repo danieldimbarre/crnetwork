@@ -17,7 +17,7 @@ local Starting = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITLIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-local initList = {
+local List = {
 	["BurgerShot"] = { -1191.32,-900.39,13.99,1.0,1.0,"Trabalhar",false },
 	["PizzaThis"] = { 806.89,-745.59,26.77,0.5,1.0,"Trabalhar",false },
 	["UwuCoffee"] = { -594.0,-1052.47,22.34,0.5,1.0,"Trabalhar",false },
@@ -29,12 +29,12 @@ local initList = {
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for k,v in pairs(initList) do
-		exports["target"]:AddCircleZone("Deliver:"..k,vec3(v[1],v[2],v[3]),v[4],{
-			name = "Deliver:"..k,
+	for Number,v in pairs(List) do
+		exports["target"]:AddCircleZone("Deliver:"..Number,vec3(v[1],v[2],v[3]),v[4],{
+			name = "Deliver:"..Number,
 			heading = 3374176
 		},{
-			shop = k,
+			shop = Number,
 			Distance = v[5],
 			options = {
 				{
@@ -256,7 +256,7 @@ AddEventHandler("deliver:Starting",function(Init)
 				Selected = 1
 			end
 		else
-			if initList[Init][7] then
+			if List[Init][7] then
 				if Locate ~= Init then
 					Selected = 1
 				end
@@ -317,7 +317,7 @@ end
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Update()
-	if initList[Locate][7] then
+	if List[Locate][7] then
 		if Selected >= #Cds[Locate] then
 			Selected = 1
 		else

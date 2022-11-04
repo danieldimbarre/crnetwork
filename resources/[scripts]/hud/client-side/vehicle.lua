@@ -39,6 +39,8 @@ local SeatbeltVelocity = vec3(0,0,0)
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
+	LoadPtfxAsset("veh_xs_vehicle_mods")
+
 	while true do
 		local TimeDistance = 999
 		if LocalPlayer["state"]["Active"] and Display then
@@ -185,8 +187,8 @@ function NitroEnable()
 										NitroFuel = NitroFuel - 1
 
 										if not NitroFlame then
-											vSERVER.ActiveNitro(VehToNet(Vehicle),true)
 											SetVehicleRocketBoostActive(Vehicle,true)
+											SetVehicleNitroEnabled(Vehicle,true)
 											SetVehicleBoostActive(Vehicle,true)
 											ModifyVehicleTopSpeed(Vehicle,50.0)
 											SetLightTrail(Vehicle,true)
@@ -194,9 +196,9 @@ function NitroEnable()
 										end
 									else
 										if NitroFlame then
-											vSERVER.ActiveNitro(VehToNet(Vehicle),false)
 											SetVehicleRocketBoostActive(Vehicle,false)
 											vSERVER.UpdateNitro(NitroFlame,NitroFuel)
+											SetVehicleNitroEnabled(Vehicle,false)
 											SetVehicleBoostActive(Vehicle,false)
 											ModifyVehicleTopSpeed(Vehicle,0.0)
 											SetLightTrail(Vehicle,false)
@@ -229,9 +231,9 @@ function NitroDisable()
 	local Vehicle = GetLastDrivenVehicle()
 
 	if NitroFlame then
-		vSERVER.ActiveNitro(VehToNet(Vehicle),false)
 		SetVehicleRocketBoostActive(Vehicle,false)
 		vSERVER.UpdateNitro(NitroFlame,NitroFuel)
+		SetVehicleNitroEnabled(Vehicle,false)
 		SetVehicleBoostActive(Vehicle,false)
 		ModifyVehicleTopSpeed(Vehicle,0.0)
 		SetLightTrail(Vehicle,false)
@@ -264,8 +266,8 @@ function SetLightTrail(Vehicle,Enable)
 		local LeftTrail = CreateLightTrail(Vehicle,GetEntityBoneIndexByName(Vehicle,"taillight_l"))
 		local RightTrail = CreateLightTrail(Vehicle,GetEntityBoneIndexByName(Vehicle,"taillight_r"))
 
-		table.insert(Particles,LeftTrail)
-		table.insert(Particles,RightTrail)
+		Particles[#Particles + 1] = LeftTrail
+		Particles[#Particles + 1] = RightTrail
 
 		LightTrails[Vehicle] = true
 		LightParticles[Vehicle] = Particles
@@ -325,8 +327,8 @@ function SetPurgeSprays(Vehicle,Enable)
 			local LeftPurge = CreatePurgeSprays(Vehicle,Offset["x"] - 0.5,Offset["y"] + 0.05,Offset["z"],40.0,-20.0,0.0,0.5)
 			local RightPurge = CreatePurgeSprays(Vehicle,Offset["x"] + 0.5,Offset["y"] + 0.05,Offset["z"],40.0,20.0,0.0,0.5)
 
-			table.insert(Particles,LeftPurge)
-			table.insert(Particles,RightPurge)
+			Particles[#Particles + 1] = LeftPurge
+			Particles[#Particles + 1] = RightPurge
 		end
 
 		PurgeSprays[Vehicle] = true
@@ -347,18 +349,6 @@ function CreatePurgeSprays(Vehicle,xOffset,yOffset,zOffset,xRot,yRot)
 	UseParticleFxAssetNextCall("core")
 	return StartNetworkedParticleFxNonLoopedOnEntity("ent_sht_steam",Vehicle,xOffset,yOffset,zOffset,xRot,yRot,0.0,0.5,false,false,false)
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- HUD:NITRO
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("hud:Nitro")
-AddEventHandler("hud:Nitro",function(Network,Status)
-	if NetworkDoesNetworkIdExist(Network) then
-		local Vehicle = NetToEnt(Network)
-		if DoesEntityExist(Vehicle) and LoadPtfxAsset("veh_xs_vehicle_mods") then
-			SetVehicleNitroEnabled(Vehicle,Status)
-		end
-	end
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPACEENABLE
 -----------------------------------------------------------------------------------------------------------------------------------------

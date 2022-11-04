@@ -209,8 +209,11 @@ end)
 -- INVENTORY:VERIFYWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:verifyWeapon")
-AddEventHandler("inventory:verifyWeapon",function(splitName)
-	if Weapon == splitName then
+AddEventHandler("inventory:verifyWeapon",function(Item)
+	local Split = splitString(Item,"-")
+	local Name = Split[1]
+
+	if Weapon == Name then
 		local Ped = PlayerPedId()
 		local weaponAmmo = GetAmmoInPedWeapon(Ped,Weapon)
 		if not vSERVER.verifyWeapon(Weapon,weaponAmmo) then
@@ -218,7 +221,7 @@ AddEventHandler("inventory:verifyWeapon",function(splitName)
 		end
 	else
 		if Weapon == "" then
-			vSERVER.existWeapon(splitName)
+			vSERVER.existWeapon(Name)
 		end
 	end
 end)
@@ -2166,7 +2169,10 @@ local WeaConfig = {
 -- INVENTORY:REMOVEWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:RemoveWeapon")
-AddEventHandler("inventory:RemoveWeapon",function(Name)
+AddEventHandler("inventory:RemoveWeapon",function(Item)
+	local Split = splitString(Item,"-")
+	local Name = Split[1]
+
 	if WeaObjects[Name] then
 		TriggerServerEvent("DeleteObject",0,Name)
 		WeaObjects[Name] = nil
@@ -2176,7 +2182,10 @@ end)
 -- INVENTORY:CREATEWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:CreateWeapon")
-AddEventHandler("inventory:CreateWeapon",function(Name)
+AddEventHandler("inventory:CreateWeapon",function(Item)
+	local Split = splitString(Item,"-")
+	local Name = Split[1]
+
 	if not WeaObjects[Name] and WeaConfig[Name] then
 		local Ped = PlayerPedId()
 		local Config = WeaConfig[Name]
@@ -2187,6 +2196,7 @@ AddEventHandler("inventory:CreateWeapon",function(Name)
 		if Progression then
 			WeaObjects[Name] = LoadNetwork(Network)
 			AttachEntityToEntity(WeaObjects[Name],Ped,Bone,Config["x"],Config["y"],Config["z"],Config["RotX"],Config["RotY"],Config["RotZ"],false,false,false,false,2,true)
+			SetEntityCompletelyDisableCollision(WeaObjects[Name],false,true)
 		end
 	end
 end)

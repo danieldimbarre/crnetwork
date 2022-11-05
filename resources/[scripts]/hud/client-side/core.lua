@@ -70,24 +70,24 @@ CreateThread(function()
 		if LocalPlayer["state"]["Active"] then
 			local Ped = PlayerPedId()
 
-		--[[	if IsPauseMenuActive() then
-				if not Pause then
+			if IsPauseMenuActive() then
+			--	if not Pause then
 					Pause = true
 
 					if Display then
 						SendNUIMessage({ Action = "Body", Status = false })
 					end
-				end
+			--	end
 			else
-				if Pause then
+			--	if Pause then
 					Pause = false
 
 					if Display then
 						SendNUIMessage({ Action = "Body", Status = true })
 					end
-				end
+			--	end
 
-				if Display then ]]
+				if Display then
 					local Coords = GetEntityCoords(Ped)
 					local Armouring = GetPedArmour(Ped)
 					local Healing = GetEntityHealth(Ped) - 100
@@ -120,8 +120,8 @@ CreateThread(function()
 					end
 
 					SendNUIMessage({ Action = "Clock", Hours = GlobalState["Hours"], Minutes = GlobalState["Minutes"] })
-			--[[	end
-			end]]
+				end
+			end
 
 			if Luck > 0 and LuckTimer <= GetGameTimer() then
 				Luck = Luck - 1

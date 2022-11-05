@@ -163,7 +163,8 @@ local Garages = {
 	["147"] = { name = "Garbageman", payment = false },
 	["148"] = { name = "Garbageman", payment = false },
 	["149"] = { name = "Taxi", payment = false },
-	["150"] = { name = "Trucker", payment = false }
+	["150"] = { name = "Trucker", payment = false },
+	["151"] = { name = "TowDriver", payment = false, perm = "Mechanic" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SIGNALREMOVE

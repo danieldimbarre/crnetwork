@@ -469,8 +469,8 @@ AddEventHandler("garages:Spawn",function(Table)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local splitName = splitString(Table,"-")
-		local garageName = splitName[2]
-		local vehName = splitName[1]
+		local Number = splitName[2]
+		local Name = splitName[1]
 
 		local Gemstone = VehicleGems(Name)
 		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })

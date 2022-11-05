@@ -168,7 +168,7 @@ local List = {
 		["Description"] = "Ativando o mesmo você assume a responsabilidade com o <b>Lester</b> de desmanchar um veículo.",
 		["Type"] = "Usável",
 		["Weight"] = 0.75,
-		["Economy"] = 125,
+		["Economy"] = 2000,
 		["Max"] = 1
 	},
 	["repairkit01"] = {

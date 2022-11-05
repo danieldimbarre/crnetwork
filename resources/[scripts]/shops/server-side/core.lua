@@ -162,7 +162,7 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["dismantle"] = 5000
+			["dismantle"] = 2000
 		}
 	},
 	["Departament"] = {

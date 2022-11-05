@@ -213,11 +213,11 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["tyres"] = 225,
-			["toolbox"] = 625,
-			["advtoolbox"] = 1525,
-			["WEAPON_CROWBAR"] = 725,
-			["WEAPON_WRENCH"] = 725
+			["tyres"] = 360,
+			["toolbox"] = 1000,
+			["advtoolbox"] = 2440,
+			["WEAPON_CROWBAR"] = 1450,
+			["WEAPON_WRENCH"] = 1450
 		}
 	},
 	["Fuel"] = {
@@ -308,7 +308,7 @@ local shops = {
 			["premium01"] = 100,
 			["premium02"] = 150,
 			["premium03"] = 200,
-			["rolepass"] = 100,
+			-- ["rolepass"] = 100,
 			["premiumplate"] = 50,
 			["newchars"] = 75,
 			["namechange"] = 50,

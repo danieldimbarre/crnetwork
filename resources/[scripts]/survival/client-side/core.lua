@@ -82,6 +82,11 @@ CreateThread(function()
 						end
 					end
 
+					if LocalPlayer["state"]["Route"] > 900000 and IsControlJustPressed(1,38) then
+						TriggerEvent("arena:ResetStreek")
+						TriggerEvent("arena:Respawn")
+					end
+
 					if GetGameTimer() >= Cooldown then
 						Cooldown = GetGameTimer() + 1000
 

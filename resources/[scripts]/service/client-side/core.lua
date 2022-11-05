@@ -85,7 +85,11 @@ AddEventHandler("service:Open",function(Title)
 	SetNuiFocus(true,true)
 	SetCursorLocation(0.5,0.5)
 
-	SendNUIMessage({ action = "openSystem", title = NameList[Title] })
+	if NameList[Title] then
+		Title = NameList[Title]
+	end
+
+	SendNUIMessage({ action = "openSystem", title = Title })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSESYSTEM

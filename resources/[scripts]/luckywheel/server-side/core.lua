@@ -36,22 +36,20 @@ function Creative.checkRolling()
 				return true
 			end
 
-			if not Players[Passport] then
-				if os.time() > Players[Passport] then
-					if vRP.PaymentBank(Passport,5000) then
-						Players[Passport] = os.time() + 10800
-						Active = os.time() + 20
-						return true
-					else
-						TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
-					end
-				else
+			if Players[Passport] then
+				if os.time() <= Players[Passport] then
 					local Cooldown = parseInt(Players[Passport] - os.time())
 					TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos.",5000)
+					return
 				end
+			end
+
+			if vRP.PaymentBank(Passport,5000) then
+				Players[Passport] = os.time() + 10800
+				Active = os.time() + 20
+				return true
 			else
-				local Cooldown = parseInt(Players[Passport] - os.time())
-				TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos.",5000)
+				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 			end
 		else
 			local Cooldown = parseInt(Active - os.time())

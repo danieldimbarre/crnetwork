@@ -662,7 +662,7 @@ function Creative.requestCrafting(Type)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local inventoryShop = {}
-		for _,v in pairs(List[Type]["List"]) do
+		for Item,v in pairs(List[Type]["List"]) do
 			local keyList = {}
 
 			for Item,v in pairs(v["require"]) do

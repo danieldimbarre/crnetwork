@@ -43,8 +43,8 @@ ArenaItens = {
 -- CHARACTERITENS (Itens recebidos ao criar o personagem)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CharacterItens = {
-	["water"] = 1,
-	["sandwich"] = 1,
+	["water"] = 2,
+	["sandwich"] = 3,
 	["cellphone"] = 1,
 	["dollars"] = 1000
 }

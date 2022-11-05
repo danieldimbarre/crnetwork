@@ -113,8 +113,6 @@ end)
 -- NEWCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("NewCharacter",function(Data,Callback)
-	DoScreenFadeOut(0)
-
 	for _,v in pairs(Peds) do
 		if DoesEntityExist(v) then
 			DeleteEntity(v)

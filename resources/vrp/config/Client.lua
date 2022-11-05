@@ -43,7 +43,7 @@ RegisterCommand("energyBind",function(source,args,rawCommand)
 					if IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@male@front@idle_a","idle_a",3) and IsEntityPlayingAnim(Ped,"jh_1_ig_3-2","cs_jewelass_dual-2",3) then
 						StopAnimTask(Ped,"amb@world_human_sunbathe@male@front@idle_a","idle_a",2.0)
 						StopAnimTask(Ped,"jh_1_ig_3-2","cs_jewelass_dual-2",2.0)
-						tvRP.stopActived()
+						tvRP.removeObjects("one")
 					else
 						tvRP.playAnim(false,{"amb@world_human_sunbathe@male@front@idle_a","idle_a"},true)
 						tvRP.playAnim(true,{"jh_1_ig_3-2","cs_jewelass_dual-2"},true)

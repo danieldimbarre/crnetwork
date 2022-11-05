@@ -54,6 +54,8 @@ AddEventHandler("barbershop:Debug",function()
 		TriggerClientEvent("tattoos:Apply",source,vRP.UserData(Passport,"Tatuagens"))
 		TriggerClientEvent("target:Debug",source)
 
+		vRP.removeObjects(source,"one")
+
 		local Ped = GetPlayerPed(source)
 		local Coords = GetEntityCoords(Ped)
 		TriggerClientEvent("syncarea",source,Coords["x"],Coords["y"],Coords["z"],1)

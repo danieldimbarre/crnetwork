@@ -8,9 +8,9 @@ set mysql_slow_query_warning 100
 start vrp
 
 start cfx-energy-proxies
+start [addons]
 start [maps]
 start [vehicles]
-start [clothes]
 start [system]
 start [smartphone]
 start [scripts]
@@ -83,7 +83,9 @@ sv_scriptHookAllowed 0
 
 #rcon_password
 
-sets tags "energy"
+set sv_listingHostOverride "energy-rp.com"
+
+sets tags "energy, roleplay"
 
 sets locale "pt-BR"
 

@@ -31,13 +31,14 @@ const Groups = () => {
 
 		$("#Content").html(`
 			${List.map((item) => (`
-				<div class="Line">
-					<div class="Line-Number">${item["Passport"]}</div>
-					<div class="Line-Name">${item["Name"]}</div>
-					<div class="Line-Phone">${item["Phone"]}</div>
-					<div class="Line-Status">${item["Status"] == undefined ? "<vermelho>Offline</vermelho>":"<verde>Online</verde>"}</div>
-					<div class="Line-Remove" data-passport="${item["Passport"]}">Remover</div>
-				</div>
+				<section class="Line">
+					<span>${item["Passport"]}</span>
+					<span>${item["Hierarchy"]}</span>
+					<span>${item["Name"]}</span>
+					<span>${item["Phone"]}</span>
+					<span>${item["Status"] == undefined ? "<vermelho>Offline</vermelho>":"<verde>Online</verde>"}</span>
+					<span class="Line-Remove" data-passport="${item["Passport"]}">Remover</span>
+				</section>
 			`)).join('')}
 		`);
 	});
@@ -57,5 +58,5 @@ $(document).on("click","#Cancel",function(e){
 /* ----------SAVE-BUTTON---------- */
 $(document).on("click","#Save",function(e){
 	$("#Modal").css("display","none");
-	$.post("http://service/Add",JSON.stringify({ passport: $(".Input").val() }));
+	$.post("http://service/Add",JSON.stringify({ passport: $(".InputPass").val(), rank: $(".InputRank").val() }));
 });

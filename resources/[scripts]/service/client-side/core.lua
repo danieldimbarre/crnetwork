@@ -19,8 +19,8 @@ local List = {
 	{ 310.23,-597.54,43.29,"Paramedic-1",1.0 },
 	{ -254.77,6331.03,32.79,"Paramedic-2",1.5 },
 	{ 1188.05,-1468.31,34.66,"Paramedic-3",1.5 },
-	{ 835.13,-827.3,26.14,"Ottos-1",1.5 },----ottos---
-	{ -35.98,-1070.2,28.39,"Bennys-1",1.5 },----bennys---
+	{ 835.13,-827.3,26.14,"Mechanic-1",1.5 },
+	{ -35.98,-1070.2,28.39,"Mechanic-2",1.5 },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -69,10 +69,9 @@ AddEventHandler("service:Label",function(Service,Text)
 		exports["target"]:LabelText("Service:Paramedic-1",Text)
 		exports["target"]:LabelText("Service:Paramedic-2",Text)
 		exports["target"]:LabelText("Service:Paramedic-3",Text)
-	elseif Service == "0ttos" then
-		exports["target"]:LabelText("Service:Ottos-1",Text)
-	elseif Service == "Bennys" then
-		exports["target"]:LabelText("Service:Bennys-1",Text)			
+	elseif Service == "Mechanic" then
+		exports["target"]:LabelText("Service:Mechanic-1",Text)
+		exports["target"]:LabelText("Service:Mechanic-2",Text)
 	else
 		exports["target"]:LabelText("Service:"..Service,Text)
 	end

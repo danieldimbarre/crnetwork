@@ -18,16 +18,19 @@ local List = {
 	{ 382.01,-1596.39,29.91,"Police-6",1.0 },
 	{ 310.23,-597.54,43.29,"Paramedic-1",1.0 },
 	{ -254.77,6331.03,32.79,"Paramedic-2",1.5 },
-	{ 1188.05,-1468.31,34.66,"Paramedic-3",1.5 }
+	{ 1188.05,-1468.31,34.66,"Paramedic-3",1.5 },
+	{ 835.13,-827.3,26.14,"Ottos-1",1.5 },----ottos---
+	{ -35.98,-1070.2,28.39,"Bennys-1",1.5 },----bennys---
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for k,v in pairs(List) do
-		exports["target"]:AddCircleZone("Service:"..v[4],vec3(v[1],v[2],v[3]),0.10,{
+		exports["target"]:AddCircleZone("Service:"..v[4],vec3(v[1],v[2],v[3]),0.5,{
 			name = "Service:"..v[4],
-			heading = 3374176
+			heading = 3374176,
+			useZ = true
 		},{
 			shop = k,
 			Distance = v[5],
@@ -66,6 +69,10 @@ AddEventHandler("service:Label",function(Service,Text)
 		exports["target"]:LabelText("Service:Paramedic-1",Text)
 		exports["target"]:LabelText("Service:Paramedic-2",Text)
 		exports["target"]:LabelText("Service:Paramedic-3",Text)
+	elseif Service == "0ttos" then
+		exports["target"]:LabelText("Service:Ottos-1",Text)
+	elseif Service == "Bennys" then
+		exports["target"]:LabelText("Service:Bennys-1",Text)			
 	else
 		exports["target"]:LabelText("Service:"..Service,Text)
 	end

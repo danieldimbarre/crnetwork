@@ -57,21 +57,21 @@
 					<AmmoInfo ref="AMMO_MG" />
 					<AimingInfo ref="MG_LOW_BASE_STRAFE" />
 					<ClipSize value="30" />
-					<AccuracySpread value="5.000000" />
+					<AccuracySpread value="0.100000" />
 					<AccurateModeAccuracyModifier value="0.500000" />
 					<RunAndGunAccuracyModifier value="2.000000" />
 					<RunAndGunAccuracyMinOverride value="-1.000000" />
 					<RecoilAccuracyMax value="0.500000" />
-					<RecoilErrorTime value="1.500000" />
+					<RecoilErrorTime value="0.001000" />
 					<RecoilRecoveryRate value="1.000000" />
-					<RecoilAccuracyToAllowHeadShotAI value="0.175000" />
+					<RecoilAccuracyToAllowHeadShotAI value="10.000000" />
 					<MinHeadShotDistanceAI value="0.000000" />
-					<MaxHeadShotDistanceAI value="5.000000" />
-					<HeadShotDamageModifierAI value="1.000000" />
+					<MaxHeadShotDistanceAI value="10.000000" />
+					<HeadShotDamageModifierAI value="4.000000" />
 					<RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
 					<MinHeadShotDistancePlayer value="0.000000" />
-					<MaxHeadShotDistancePlayer value="5.000000" />
-					<HeadShotDamageModifierPlayer value="1.000000" />
+					<MaxHeadShotDistancePlayer value="200.000000" />
+					<HeadShotDamageModifierPlayer value="50.000000" />
 					<Damage value="20.000000" />
 					<DamageTime value="0.000000" />
 					<DamageTimeInVehicle value="0.000000" />
@@ -214,8 +214,10 @@
 					<RunAndGunCameraHash>HIP_RUN_AND_GUN_CAMERA</RunAndGunCameraHash>
 					<CinematicShootingCameraHash>HIP_CINEMATIC_SHOOTING_CAMERA</CinematicShootingCameraHash>
 					<AlternativeOrScopedCameraHash>DEFAULT_THIRD_PERSON_PED_AIM_CAMERA</AlternativeOrScopedCameraHash>
-					<RunAndGunAlternativeOrScopedCameraHash>DEFAULT_THIRD_PERSON_PED_RUN_AND_GUN_CAMERA</RunAndGunAlternativeOrScopedCameraHash>
-					<CinematicShootingAlternativeOrScopedCameraHash>DEFAULT_THIRD_PERSON_PED_CINEMATIC_SHOOTING_CAMERA</CinematicShootingAlternativeOrScopedCameraHash>
+					<RunAndGunAlternativeOrScopedCameraHash>DEFAULT_THIRD_PERSON_PED_RUN_AND_GUN_CAMERA
+					</RunAndGunAlternativeOrScopedCameraHash>
+					<CinematicShootingAlternativeOrScopedCameraHash>DEFAULT_THIRD_PERSON_PED_CINEMATIC_SHOOTING_CAMERA
+					</CinematicShootingAlternativeOrScopedCameraHash>
 					<CameraFov value="35.000000" />
 					<FirstPersonAimFovMin value="42.000000" />
 					<FirstPersonAimFovMax value="47.000000" />
@@ -306,7 +308,10 @@
 					</AttachPoints>
 					<GunFeedBone>Gun_Feed</GunFeedBone>
 					<TargetSequenceGroup />
-					<WeaponFlags>IgnoreHelmets CarriedInHand Automatic Gun CanLockonOnFoot CanLockonInVehicle CanFreeAim TwoHanded AnimReload AnimCrouchFire UsableOnFoot UsableInCover AllowEarlyExitFromFireAnimAfterBulletFired NoLeftHandIKWhenBlocked AllowCloseQuarterKills HasLowCoverReloads HasLowCoverSwaps LongWeapon UseFPSAimIK UseFPSSecondaryMotion FPSOnlyExitFireAnimAfterRecoilEnds</WeaponFlags>
+					<WeaponFlags>CarriedInHand Automatic Gun CanLockonOnFoot CanLockonInVehicle CanFreeAim TwoHanded
+						AnimReload AnimCrouchFire UsableOnFoot UsableInCover AllowEarlyExitFromFireAnimAfterBulletFired
+						NoLeftHandIKWhenBlocked AllowCloseQuarterKills HasLowCoverReloads HasLowCoverSwaps LongWeapon
+						UseFPSAimIK UseFPSSecondaryMotion FPSOnlyExitFireAnimAfterRecoilEnds</WeaponFlags>
 					<TintSpecValues ref="TINT_DEFAULT" />
 					<FiringPatternAliases ref="FIRING_PATTERN_MG" />
 					<ReloadUpperBodyFixupExpressionData ref="default" />

@@ -102,10 +102,10 @@ end
 -- TASKMECHANIC
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskMechanic()
-	if taskBar(7500) then
-		if taskBar(5000) then
-			if taskBar(2500) then
-				if taskBar(1000) then
+	if taskBar(8500) then
+		if taskBar(7000) then
+			if taskBar(5500) then
+				if taskBar(4000) then
 					return true
 				end
 			end
@@ -212,20 +212,20 @@ end
 -- UPGRADEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.UpgradeVehicle()
-	if taskBar(2000) then
-		if taskBar(1750) then
-			if taskBar(1500) then
-				if taskBar(1250) then
-					if taskBar(1000) then
-						if taskBar(750) then
-							if taskBar(500) then
-								if taskBar(250) then
+	if taskBar(4000) then
+		if taskBar(3750) then
+			if taskBar(2500) then
+				-- if taskBar(1250) then
+				-- 	if taskBar(1000) then
+				-- 		if taskBar(750) then
+				-- 			if taskBar(500) then
+				-- 				if taskBar(250) then
 									return true
-								end
-							end
-						end
-					end
-				end
+				-- 				end
+				-- 			end
+				-- 		end
+				-- 	end
+				-- end
 			end
 		end
 	end

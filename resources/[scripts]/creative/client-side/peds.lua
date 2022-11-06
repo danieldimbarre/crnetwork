@@ -1117,6 +1117,18 @@ local List = {
 		Coords = { -1109.09,4939.69,223.13 }, 
 		Model = "csb_cletus",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
+	{ -- LockPick
+		Distance = 30,
+		Coords = { 1331.03,-1657.83,51.24 }, 
+		Model = "s_m_y_dealer_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
+	{ -- LockPick
+		Distance = 30,
+		Coords = { 121.3,-2468.84,6.1 }, 
+		Model = "s_m_y_dealer_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

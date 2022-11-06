@@ -5037,65 +5037,65 @@ Use = {
 		end
 	end,
 
-	["premium01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			local Status = vRP.UserPremium(Passport)
-			local Type = vRP.UserClassPremium(Passport)
-			if not Status or (Premium[Type] and "Premium01" ~= Premium[Type]) then
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium01")
-				vRP.setPremium(source,1)
+	-- ["premium01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	-- 	if vRP.TakeItem(Passport,Full,1,true,Slot) then
+	-- 		local Status = vRP.UserPremium(Passport)
+	-- 		local Type = vRP.UserClassPremium(Passport)
+	-- 		if not Status or (Premium[Type] and "Premium01" ~= Premium[Type]) then
+	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium01")
+	-- 			vRP.setPremium(source,1)
 
-				if Status then
-					TriggerEvent("Salary:Remove",Passport,"Premium")
-				end
-			else
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium01")
-				vRP.upgradePremium(Passport)
-			end
-		end
-	end,
+	-- 			if Status then
+	-- 				TriggerEvent("Salary:Remove",Passport,"Premium")
+	-- 			end
+	-- 		else
+	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium01")
+	-- 			vRP.upgradePremium(Passport)
+	-- 		end
+	-- 	end
+	-- end,
 
-	["premium02"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			local Status = vRP.UserPremium(Passport)
-			local Type = vRP.UserClassPremium(Passport)
-			if not Status or (Premium[Type] and "Premium02" ~= Premium[Type]) then
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium02")
-				vRP.setPremium(source,2)
+	-- ["premium02"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	-- 	if vRP.TakeItem(Passport,Full,1,true,Slot) then
+	-- 		local Status = vRP.UserPremium(Passport)
+	-- 		local Type = vRP.UserClassPremium(Passport)
+	-- 		if not Status or (Premium[Type] and "Premium02" ~= Premium[Type]) then
+	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium02")
+	-- 			vRP.setPremium(source,2)
 
-				if Status then
-					TriggerEvent("Salary:Remove",Passport,"Premium")
-				end
-			else
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium02")
-				vRP.upgradePremium(Passport)
-			end
-		end
-	end,
+	-- 			if Status then
+	-- 				TriggerEvent("Salary:Remove",Passport,"Premium")
+	-- 			end
+	-- 		else
+	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium02")
+	-- 			vRP.upgradePremium(Passport)
+	-- 		end
+	-- 	end
+	-- end,
 
-	["premium03"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			local Status = vRP.UserPremium(Passport)
-			local Type = vRP.UserClassPremium(Passport)
-			if not Status or (Premium[Type] and "Premium03" ~= Premium[Type]) then
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium03")
-				vRP.setPremium(source,3)
+	-- ["premium03"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	-- 	if vRP.TakeItem(Passport,Full,1,true,Slot) then
+	-- 		local Status = vRP.UserPremium(Passport)
+	-- 		local Type = vRP.UserClassPremium(Passport)
+	-- 		if not Status or (Premium[Type] and "Premium03" ~= Premium[Type]) then
+	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium03")
+	-- 			vRP.setPremium(source,3)
 
-				if Status then
-					TriggerEvent("Salary:Remove",Passport,"Premium")
-				end
-			else
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium03")
-				vRP.upgradePremium(Passport)
-			end
-		end
-	end,
+	-- 			if Status then
+	-- 				TriggerEvent("Salary:Remove",Passport,"Premium")
+	-- 			end
+	-- 		else
+	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium03")
+	-- 			vRP.upgradePremium(Passport)
+	-- 		end
+	-- 	end
+	-- end,
 
 	["pager"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local ClosestPed = vRPC.ClosestPed(source,2)

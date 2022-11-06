@@ -36,6 +36,8 @@ vRP.RemovePermission(Passport: int,Permission: string)
 
 vRP.HasGroup(Passport: int,Permission: string)
 
+vRP.HasService(Passport: int,Permission: string)
+
 vRP.NumPermission(Permission: string)
 
 vRP.AddPermission(source: int,Passport: int,Permission: string)

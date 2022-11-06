@@ -1219,7 +1219,7 @@ function Creative.requestPerm(Name,Type)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if List[Type]["perm"] ~= nil then
-			if vRP.HasGroup(Passport,List[Type]["perm"]) then
+			if vRP.HasService(Passport,List[Type]["perm"]) then
 				return true
 			end
 		else
@@ -1237,11 +1237,11 @@ function Creative.requestCrafting(Type)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local inventoryShop = {}
-		for _,v in pairs(List[Type]["List"]) do
+		for Item,v in pairs(List[Type]["List"]) do
 			local keyList = {}
 
-			for Item,v in pairs(v["require"]) do
-				keyList[#keyList + 1] = { name = itemName(Item), amount = v }
+			for Required,Amount in pairs(v["require"]) do
+				keyList[#keyList + 1] = { name = itemName(Required), amount = Amount }
 			end
 
 			inventoryShop[#inventoryShop + 1] = { name = itemName(Item), index = itemIndex(Item), max = itemMaxAmount(Item), economy = parseFormat(itemEconomy(Item)), key = Item, peso = itemWeight(Item), list = keyList, amount = parseInt(v["amount"]), desc = itemDescription(Item) }

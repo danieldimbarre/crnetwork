@@ -1505,7 +1505,7 @@ function Creative.Loot(Entity,Service)
 			end
 
 			if Objects[Entity]["perm"] then
-				if not vRP.HasGroup(Passport,Objects[Entity]["perm"]) then
+				if not vRP.HasService(Passport,Objects[Entity]["perm"]) then
 					return
 				end
 			end

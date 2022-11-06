@@ -516,9 +516,11 @@ AddEventHandler("garages:Spawn",function(Table)
 
 						local Network = Spawn[Plate][3]
 						local Network = NetworkGetEntityFromNetworkId(Network)
-						if DoesEntityExist(Network) and not IsPedAPlayer(Network) and GetEntityType(Network) == 2 and GetVehicleNumberPlateText(Network) == Plate then
-							vCLIENT.SearchBlip(source,GetEntityCoords(Network))
-							TriggerClientEvent("Notify",source,"amarelo","Rastreador do veículo foi ativado por <b>30</b> segundos, lembrando que se o mesmo estiver em movimento a localização pode ser imprecisa.",10000)
+						if DoesEntityExist(Network) and not IsPedAPlayer(Network) and GetEntityType(Network) == 2 then
+							if GetVehicleNumberPlateText(Network) == Plate then
+								vCLIENT.SearchBlip(source,GetEntityCoords(Network))
+								TriggerClientEvent("Notify",source,"amarelo","Rastreador do veículo foi ativado por <b>30</b> segundos, lembrando que se o mesmo estiver em movimento a localização pode ser imprecisa.",10000)
+							end
 						else
 							if Spawn[Plate] then
 								Spawn[Plate] = nil

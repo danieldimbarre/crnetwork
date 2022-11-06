@@ -110,13 +110,25 @@ RegisterCommand("god",function(source,Message)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
 			if Message[1] then
-				local OtherPassport = parseInt(Message[1])
-				local ClosestPed = vRP.Source(OtherPassport)
-				if ClosestPed then
-					vRP.UpgradeThirst(OtherPassport,100)
-					vRP.UpgradeHunger(OtherPassport,100)
-					vRP.DowngradeStress(OtherPassport,100)
-					vRP.Revive(ClosestPed,200)
+				if Message[1] == "all" then
+					local List = vRP.Players()
+					for OtherPassport,OtherSource in pairs(List) do
+						async(function()
+							vRP.UpgradeThirst(OtherPassport,100)
+							vRP.UpgradeHunger(OtherPassport,100)
+							vRP.DowngradeStress(OtherPassport,100)
+							vRP.Revive(OtherSource,200)
+						end)
+					end
+				else
+					local OtherPassport = parseInt(Message[1])
+					local ClosestPed = vRP.Source(OtherPassport)
+					if ClosestPed then
+						vRP.UpgradeThirst(OtherPassport,100)
+						vRP.UpgradeHunger(OtherPassport,100)
+						vRP.DowngradeStress(OtherPassport,100)
+						vRP.Revive(ClosestPed,200)
+					end
 				end
 			else
 				vRP.Revive(source,200,true)

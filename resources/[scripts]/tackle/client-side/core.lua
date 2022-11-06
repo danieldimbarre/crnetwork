@@ -54,5 +54,5 @@ function touchedPlayers()
 		end
 	end
 
-	return players
+	return Players
 end

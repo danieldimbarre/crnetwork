@@ -3422,11 +3422,26 @@ Use = {
 	["backpack"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if not vSKINSHOP.checkBackpackPremium(source) then
 			if vRP.GetWeight(Passport) < 100 then
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.SetWeight(Passport,10)
-					vRP.UpgradeThirst(Passport,20)
-					TriggerClientEvent("inventory:Update",source,"Backpack")
-				end
+				Active[Passport] = os.time() + 10
+				Player(source)["state"]["Buttons"] = true
+				TriggerClientEvent("inventory:Close",source)
+				TriggerClientEvent("Progress",source,"Vestindo",10000)
+				vRPC.playAnim(source,true,{"clothingtie","try_tie_negative_a"},true)
+
+				repeat
+					if os.time() >= parseInt(Active[Passport]) then
+						Active[Passport] = nil
+						vRPC.stopAnim(source,false)
+						Player(source)["state"]["Buttons"] = false
+
+						if vRP.TakeItem(Passport,Full,1,true,Slot) then
+							vRP.SetWeight(Passport,10)
+							vRP.UpgradeThirst(Passport,20)
+						end
+					end
+
+					Wait(100)
+				until not Active[Passport]
 			else
 				TriggerClientEvent("Notify",source,"vermelho","Inventário já alcançou o limite.",5000)
 			end

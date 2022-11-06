@@ -1043,7 +1043,7 @@ function TargetEnable()
 												local Trunk = GetEntityBoneIndexByName(Entity,"boot")
 												local cTrunk = GetWorldPositionOfEntityBone(Entity,Trunk)
 												local Distance = #(Coords - cTrunk)
-												if Distance <= 1.25 then
+												if Distance <= 1.75 then
 													if GetVehicleDoorLockStatus(Entity) == 1 then
 														Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
 													end

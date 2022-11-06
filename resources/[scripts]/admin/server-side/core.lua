@@ -132,6 +132,28 @@ RegisterCommand("god",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- GODA
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("goda",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) then
+			Message[1] = parseInt(Message[1])
+			if Message[1] then
+				local Players = vRPC.ClosestPeds(source,Message[1])
+				for _,v in pairs(Players) do
+					async(function()
+						vRP.UpgradeThirst(v[1],100)
+						vRP.UpgradeHunger(v[1],100)
+						vRP.DowngradeStress(v[1],100)
+						vRP.Revive(v[2],200)
+					end)
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("item",function(source,Message)

@@ -155,9 +155,10 @@ RegisterCommand("goda",function(source,Message)
 				local Players = vRPC.ClosestPeds(source,Message[1])
 				for _,v in pairs(Players) do
 					async(function()
-						vRP.UpgradeThirst(v[1],100)
-						vRP.UpgradeHunger(v[1],100)
-						vRP.DowngradeStress(v[1],100)
+						local OtherPassport = vRP.Passport(v[2])
+						vRP.UpgradeThirst(OtherPassport,100)
+						vRP.UpgradeHunger(OtherPassport,100)
+						vRP.DowngradeStress(OtherPassport,100)
 						vRP.Revive(v[2],200)
 					end)
 				end

@@ -23,7 +23,7 @@ AddEventHandler("impound:Check",function(entity)
 			Impound[entity[2].."-"..entity[1]] = nil
 
 			local VehRandom = 1000
-			local VehParts = math.random(4)
+			local VehParts = math.random(5)
 			local VehSelected = "suspension"
 			local AmountItens = math.random(4,5)
 			local Tow = vRP.GetExperience(Passport,"Tows")
@@ -43,6 +43,8 @@ AddEventHandler("impound:Check",function(entity)
 				VehSelected = "transmission"
 			elseif VehParts == 3 then
 				VehSelected = "brake"
+			elseif VehParts == 4 then
+				VehSelected = "shield"
 			end
 
 			if VehRandom <= 10 then
@@ -83,7 +85,7 @@ AddEventHandler("police:Impound",function(entity)
 			TriggerClientEvent("Notify",source,"verde","Veículo foi registrado.",5000)
 
 			if string.sub(entity[1],1,4) == "DISM" then
-				local VehParts = math.random(4)
+				local VehParts = math.random(5)
 				local VehSelected = "suspension"
 				local VehRandom = math.random(4500)
 				local AmountItens = math.random(4,5)
@@ -94,6 +96,8 @@ AddEventHandler("police:Impound",function(entity)
 					VehSelected = "transmission"
 				elseif VehParts == 3 then
 					VehSelected = "brake"
+				elseif VehParts == 4 then
+					VehSelected = "shield"
 				end
 
 				if VehRandom <= 10 then

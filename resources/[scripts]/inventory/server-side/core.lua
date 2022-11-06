@@ -1988,7 +1988,7 @@ function Creative.Dismantle(Entity)
 
 				local AmountItens = math.random(100,150)
 				local VehSelected = "suspension"
-				local VehParts = math.random(4)
+				local VehParts = math.random(5)
 				local VehRandom = 1000
 
 				if Class == "B" or Class == "B+" then
@@ -2008,6 +2008,8 @@ function Creative.Dismantle(Entity)
 					VehSelected = "transmission"
 				elseif VehParts == 3 then
 					VehSelected = "brake"
+				elseif VehParts == 4 then
+					VehSelected = "shield"
 				end
 
 				if VehRandom <= 10 then

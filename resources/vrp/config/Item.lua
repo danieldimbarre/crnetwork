@@ -162,6 +162,36 @@ local List = {
 		["Type"] = "Usável",
 		["Weight"] = 11.25
 	},
+	["shielda"] = {
+		["Index"] = "shielda",
+		["Name"] = "Blindagem",
+		["Type"] = "Usável",
+		["Weight"] = 13.25
+	},
+	["shieldb"] = {
+		["Index"] = "shieldb",
+		["Name"] = "Blindagem",
+		["Type"] = "Usável",
+		["Weight"] = 14.25
+	},
+	["shieldc"] = {
+		["Index"] = "shieldc",
+		["Name"] = "Blindagem",
+		["Type"] = "Usável",
+		["Weight"] = 15.25
+	},
+	["shieldd"] = {
+		["Index"] = "shieldd",
+		["Name"] = "Blindagem",
+		["Type"] = "Usável",
+		["Weight"] = 16.25
+	},
+	["shielde"] = {
+		["Index"] = "shielde",
+		["Name"] = "Blindagem",
+		["Type"] = "Usável",
+		["Weight"] = 17.25
+	},
 	["dismantle"] = {
 		["Index"] = "dismantle",
 		["Name"] = "Contrato",

@@ -49,7 +49,7 @@ function Creative.paymentMethod()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if (vRP.InventoryWeight(Passport) + 3) <= vRP.GetWeight(Passport) then
-			local VehParts = math.random(4)
+			local VehParts = math.random(5)
 			local VehSelected = "suspension"
 			local AmountItens = math.random(4,5)
 			local Tow = vRP.GetExperience(Passport,"Tows")
@@ -70,6 +70,8 @@ function Creative.paymentMethod()
 				VehSelected = "transmission"
 			elseif VehParts == 3 then
 				VehSelected = "brake"
+			elseif VehParts == 4 then
+				VehSelected = "shield"
 			end
 
 			if VehRandom <= 10 then

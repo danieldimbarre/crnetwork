@@ -665,8 +665,8 @@ function Creative.requestCrafting(Type)
 		for Item,v in pairs(List[Type]["List"]) do
 			local keyList = {}
 
-			for Item,v in pairs(v["require"]) do
-				keyList[#keyList + 1] = { name = itemName(Item), amount = v }
+			for Required,Amount in pairs(v["require"]) do
+				keyList[#keyList + 1] = { name = itemName(Required), amount = Amount }
 			end
 
 			inventoryShop[#inventoryShop + 1] = { name = itemName(Item), index = itemIndex(Item), max = itemMaxAmount(Item), economy = parseFormat(itemEconomy(Item)), key = Item, peso = itemWeight(Item), list = keyList, amount = parseInt(v["amount"]), desc = itemDescription(Item) }

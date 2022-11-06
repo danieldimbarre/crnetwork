@@ -3992,8 +3992,8 @@ Use = {
 					return
 				end
 
-				local Service = vRP.NumPermission("Police")
-				if parseInt(#Service) <= 5 then
+				local Service,Total = vRP.NumPermission("Police")
+				if Total <= 5 then
 					TriggerClientEvent("Notify",source,"azul","Caixa vazio, aguarde até que um transportador venha até o local efetuar reabastecimento do mesmo.",5000)
 					Player(source)["state"]["Buttons"] = false
 

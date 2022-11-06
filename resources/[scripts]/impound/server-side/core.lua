@@ -142,7 +142,7 @@ end)
 RegisterCommand("placa",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Police") and Message[1] then
+		if vRP.HasService(Passport,"Police") and Message[1] then
 			runPlate(source,Message[1])
 		end
 	end

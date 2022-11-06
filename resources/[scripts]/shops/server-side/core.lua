@@ -520,7 +520,7 @@ function Creative.requestPerm(Type)
 		end
 
 		if shops[Type]["perm"] ~= nil then
-			if not vRP.HasGroup(Passport,shops[Type]["perm"]) then
+			if not vRP.HasService(Passport,shops[Type]["perm"]) then
 				return false
 			end
 		end

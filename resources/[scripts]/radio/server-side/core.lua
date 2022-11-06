@@ -29,7 +29,7 @@ function Creative.Frequency(Number)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if Reserved[Number] then
-			if vRP.HasGroup(Passport,Reserved[Number]) then
+			if vRP.HasService(Passport,Reserved[Number]) then
 				return true
 			end
 		else

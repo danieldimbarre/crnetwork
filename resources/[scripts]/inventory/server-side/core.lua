@@ -459,6 +459,7 @@ function Creative.requestInventory()
 						end
 
 						if Identity then
+							v["Passport"] = Number
 							v["idPremium"] = "Nenhum"
 							v["idRolepass"] = "Inativo"
 							v["idBlood"] = Sanguine(Identity["blood"])
@@ -466,7 +467,11 @@ function Creative.requestInventory()
 
 							if Number == Passport and Split[1] == "identity" then
 								if Identity["premium"] > os.time() then
-									v["idPremium"] = MinimalTimers(Identity["premium"] - os.time())
+									local Groups = vRP.Hierarchy("Premium")
+									local Number = vRP.HasPermission(Passport,"Premium")
+
+									v["idVality"] = MinimalTimers(Identity["premium"] - os.time())
+									v["idPremium"] = Groups[Number]
 								end
 
 								if Identity["rolepass"] > 0 then
@@ -1508,7 +1513,7 @@ function Creative.Loot(Entity,Service)
 			end
 
 			if Objects[Entity]["perm"] then
-				if not vRP.HasGroup(Passport,Objects[Entity]["perm"]) then
+				if not vRP.HasService(Passport,Objects[Entity]["perm"]) then
 					return
 				end
 			end

@@ -57,12 +57,12 @@ function Creative.updateShops(action)
 	SendNUIMessage({ action = action })
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SHOPLIST
+-- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-local shopList = {
-	{ -542.87,-198.35,38.23,"Identity",false },
-	{ -551.27,-203.09,38.23,"Identity",false },
-	{ -544.76,-185.81,52.2,"Identity2",false },
+local List = {
+	{ -542.87,-198.35,38.23,"Identity",false,2.75 },
+	{ -551.27,-203.09,38.23,"Identity",false,2.75 },
+	{ -544.76,-185.81,52.2,"Identity2",false,2.75 },
 	{ 253.35,216.72,106.37,"Bank",false },
 	{ 257.24,227.78,106.33,"Bank",false },
 	{ -1271.55,-1411.49,4.36,"Digital",true },
@@ -120,36 +120,41 @@ local shopList = {
 	{ -3168.32,1087.46,20.84,"Ammunation",false },
 	{ 16.91,-1107.56,29.79,"Ammunation",false },
 	{ 814.84,-2155.14,29.62,"Ammunation",false },
-	{ -1082.25,-247.52,37.76,"Premium",false },
+	{ -1083.15,-245.88,37.76,"Premium",false,2.75 },
 	{ -1816.64,-1193.73,14.31,"Fishing",false },
-	{ 1523.69,3782.48,34.51,"Fishing2",true },
+	{ 1522.88,3783.63,34.47,"Fishing2",true,2.25 },
 	{ -695.56,5802.12,17.32,"Hunting",false },
 	{ -679.13,5839.52,17.32,"Hunting2",false },
 	{ -665.78,321.34,83.09,"Pharmacy",false },
+	-- { -172.89,6381.32,31.48,"Pharmacy",false },
+	-- { 1690.07,3581.68,35.62,"Pharmacy",false },
+	-- { 326.5,-1074.43,29.47,"Pharmacy",false },
+	-- { 114.39,-4.85,67.82,"Pharmacy",false },
+	{ 311.97,-597.66,43.29,"Paramedic",false },
 	-- { 311.97,-597.66,43.29,"Paramedic",false },
 	-- { 1822.70,3686.64,34.26,"Paramedic",false },
-	{ -674.38,339.24,83.09,"Paramedic",false },
 	{ -254.64,6326.95,32.82,"Paramedic",false },
-	{ -428.57,-1728.35,19.78,"Recycle",false },
-	{ 180.55,2793.45,45.65,"Recycle",false },
-	{ -195.79,6264.95,31.49,"Recycle",false },
+	{ 82.98,-1553.55,29.59,"Recycle",false },
+	{ 287.77,2843.9,44.7,"Recycle",false },
+	{ -413.97,6171.58,31.48,"Recycle",false },
 	{ 487.3,-997.08,30.68,"Police",false },
 	-- { 1838.43,3686.29,34.19,"Police",false },
 	{ -447.15,6016.51,36.99,"Police",false },
 	-- { 385.5,799.94,190.49,"Police",false },
 	{ 362.37,-1603.12,25.44,"Police",false },
-	{ -628.41,-238.36,38.05,"Miners",false },
+	{ -622.43,-229.71,38.05,"Miners",false },
 	{ -1403.52,-628.62,28.68,"Criminal",false },
+	-- { 112.41,3373.68,35.25,"Criminal2",false },
+	-- { 2013.95,4990.88,41.21,"Criminal3",false },
+	-- { 186.9,6374.75,32.33,"Criminal4",false },
+	-- { -653.12,-1502.67,5.22,"Criminal",false },
+	-- { 389.71,-942.61,29.42,"Criminal2",false },
+	-- { 154.98,-1472.47,29.35,"Criminal3",false },
+	-- { 488.1,-1456.11,29.28,"Criminal4",false },
 	-- { 169.76,-1535.88,29.25,"Weapons",false },
 	-- { 301.14,-195.75,61.57,"Weapons",false },
-	{ 836.01,-819.41,26.34,"Mechanic",false },
-	{ 836.0,-811.84,26.35,"Mechanic",false },
-	-- { 820.21,-906.87,25.68,"Mechanic",false },
-	-- { 815.75,-906.88,25.68,"Mechanic",false },
+	{ 836.58,-808.25,26.35,"Mechanic",false },
 	{ 836.72,-823.26,26.34,"Tools",false },
-	-- { 826.65,-901.39,25.68,"Tools",false },
-	-- { 822.51,-901.47,25.68,"Tools",false },
-	-- { 817.44,-902.29,25.68,"Tools",false },
 	{ -1636.74,-1092.17,13.08,"Oxy",false },
 	{ -1196.9,-901.58,13.99,"BurgerShot",false },
 	{ 806.22,-761.68,26.77,"PizzaThis",false },
@@ -179,11 +184,11 @@ local shopList = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:openSystem",function(shopId)
 	if LocalPlayer["state"]["Route"] < 900000 then
-		if vSERVER.requestPerm(shopList[shopId][4]) then
+		if vSERVER.requestPerm(List[shopId][4]) then
 			SetNuiFocus(true,true)
-			SendNUIMessage({ action = "showNUI", name = shopList[shopId][4], type = vSERVER.getShopType(shopList[shopId][4]) })
+			SendNUIMessage({ action = "showNUI", name = List[shopId][4], type = vSERVER.getShopType(List[shopId][4]) })
 
-			if shopList[shopId][5] then
+			if List[shopId][5] then
 				TriggerEvent("sounds:Private","shop",0.5)
 			end
 		end
@@ -274,13 +279,13 @@ end)
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for Number,v in pairs(shopList) do
-		exports["target"]:AddCircleZone("Shops:"..Number,vec3(v[1],v[2],v[3]),0.5,{
+	for Number,v in pairs(List) do
+		exports["target"]:AddCircleZone("Shops:"..Number,vec3(v[1],v[2],v[3]),0.35,{
 			name = "Shops:"..Number,
 			heading = 3374176
 		},{
 			shop = Number,
-			Distance = 1.75,
+			Distance = v[6] or 1.75,
 			options = {
 				{
 					event = "shops:openSystem",

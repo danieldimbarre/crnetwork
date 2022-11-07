@@ -38,7 +38,7 @@ end
 RegisterCommand("skin",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] then
-		if vRP.HasGroup(Passport,"Paramedic") or vRP.HasGroup(Passport,"Moderator") then
+		if vRP.HasService(Passport,"Paramedic") or vRP.HasGroup(Passport,"Moderator") then
 			local ClosestPed = vRP.Source(Message[1])
 			if ClosestPed then
 				vRPC.Skin(ClosestPed,Message[2])
@@ -57,7 +57,7 @@ AddEventHandler("skinshop:removeProps",function(Mode)
 	if Passport then
 		local ClosestPed = vRPC.ClosestPed(source,2)
 		if ClosestPed then
-			if vRP.HasGroup(Passport,"Police") then
+			if vRP.HasService(Passport,"Police") then
 				TriggerClientEvent("skinshop:set"..Mode,ClosestPed)
 			end
 		end

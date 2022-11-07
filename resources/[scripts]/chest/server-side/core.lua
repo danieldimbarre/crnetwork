@@ -24,7 +24,7 @@ function Creative.Permissions(Name,Mode)
 		if Mode == "Personal" then
 			Open[Passport] = { ["Name"] = Passport, ["Weight"] = 50, ["Logs"] = false, ["Save"] = true }
 			return true
-		elseif Mode == "Evidences" and vRP.HasGroup(Passport,"Police") then
+		elseif Mode == "Evidences" and vRP.HasService(Passport,"Police") then
 			local Keyboard = vKEYBOARD.keySingle(source,"Passaporte:")
 			if Keyboard then
 				Open[Passport] = { ["Name"] = "Evidences:"..Keyboard[1], ["Weight"] = 50, ["Logs"] = false, ["Save"] = true }
@@ -40,7 +40,7 @@ function Creative.Permissions(Name,Mode)
 			end
 
 			local Consult = vRP.Query("chests/GetChests",{ name = Name })
-			if Consult[1] and vRP.HasGroup(Passport,Consult[1]["perm"]) then
+			if Consult[1] and vRP.HasService(Passport,Consult[1]["perm"]) then
 				Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"], ["Save"] = true }
 				return true
 			end
@@ -258,7 +258,7 @@ AddEventHandler("chest:Upgrade",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,Name) then
+		if vRP.HasService(Passport,Name) then
 			if vRP.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
 				if vRP.PaymentFull(Passport,10000) then
 					vRP.Query("chests/UpdateChests",{ name = Name })

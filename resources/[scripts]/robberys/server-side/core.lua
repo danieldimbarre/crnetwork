@@ -808,8 +808,8 @@ AddEventHandler("robberys:Init",function(Number)
 				end
 
 				if os.time() >= Robberype[Robberys[Number]["type"]] then
-					local Service = vRP.NumPermission(Robberys[Number]["group"])
-					if parseInt(#Service) >= Robberys[Number]["population"] then
+					local Service,Total = vRP.NumPermission(Robberys[Number]["group"])
+					if Total >= Robberys[Number]["population"] then
 						local Consult = vRP.InventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
 						if Consult[1] >= Robberys[Number]["need"]["amount"] then
 							if not vRP.CheckDamaged(Consult[2]) then

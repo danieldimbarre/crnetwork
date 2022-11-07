@@ -43,8 +43,7 @@
         {
             "name": "Táxi",
             "number": "0800 075",
-            "permission": "Taxi",
-            "dev": true
+            "permission": "Taxi"
         }
     ]
 }

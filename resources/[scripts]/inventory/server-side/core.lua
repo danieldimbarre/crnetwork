@@ -830,7 +830,7 @@ function Creative.Deliver(Slot)
 				if vRP.TakeItem(Passport,Full,1,false,Slot) then
 					local Experience = vRP.GetExperience(Passport,"Transporter")
 					local Category = ClassCategory(Experience)
-					local Valuation = 60
+					local Valuation = 200
 
 					if Category == "B+" then
 						Valuation = Valuation + 10

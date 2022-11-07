@@ -298,7 +298,7 @@ end)
 RegisterCommand("group",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and Message[2] and Message[3] then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and Message[2] and Message[3] and Message[2] ~= "Admin" and Message[2] ~= "Premium" then
 			local Groups = vRP.Groups()
 			if Groups[Message[2]] then
 				TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
@@ -313,7 +313,7 @@ end)
 RegisterCommand("ungroup",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and Message[2] then
+		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and Message[2] and Message[2] ~= "Admin" and Message[2] ~= "Premium" then
 			local Groups = vRP.Groups()
 			if Groups[Message[2]] then
 				TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)

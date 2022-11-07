@@ -30,9 +30,12 @@ end)
 RegisterCommand("painel",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and Message[1] ~= "Premium" then
-		if vRP.HasPermission(Passport,Message[1],1) then
-			Panel[Passport] = Message[1]
-			TriggerClientEvent("service:Open",source,Message[1])
+		local Groups = vRP.Groups()
+		if Groups[Message[1]] then
+			if vRP.HasPermission(Passport,Message[1],1) then
+				Panel[Passport] = Message[1]
+				TriggerClientEvent("service:Open",source,Message[1])
+			end
 		end
 	end
 end)

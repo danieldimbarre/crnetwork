@@ -2,6 +2,29 @@
 <CVehicleModelInfoVariation>
   <variationData>
     <Item>
+      <modelName>audia4</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">12 12 12 12</indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>932016_audia4_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="240"/>
+    </Item>
+    <Item>
       <modelName>WRa45</modelName>
       <colors>
         <Item>
@@ -306,7 +329,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>0_default_modkit</Item>
+        <Item>932014_wrbmwx6_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -2406,7 +2429,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>fordraptor_modkit</Item>
+        <Item>932015_fordraptor_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>

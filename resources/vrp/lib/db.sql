@@ -55,19 +55,19 @@ CREATE TABLE IF NOT EXISTS `chests` (
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `chests` (`id`, `name`, `weight`, `perm`, `logs`) VALUES
-(1, 'Police', 500, 'Police', 1),
-(2, 'Paramedic', 500, 'Paramedic', 1),
-(3, 'BurgerShot', 250, 'BurgerShot', 0),
-(4, 'PizzaThis', 250, 'PizzaThis', 0),
-(5, 'UwuCoffee', 250, 'UwuCoffee', 0),
-(6, 'BeanMachine', 250, 'BeanMachine', 0),
-(7, 'Ballas', 250, 'Ballas', 0),
-(8, 'Families', 250, 'Families', 0),
-(9, 'Vagos', 250, 'Vagos', 0),
-(10, 'Aztecas', 250, 'Aztecas', 0),
-(11, 'Bloods', 250, 'Bloods', 0),
-(12, 'Triads', 250, 'Triads', 0),
-(13, 'Razors', 250, 'Razors', 0),
+(1, 'Police', 50000, 'Police', 1),
+(2, 'Paramedic', 50000, 'Paramedic', 1),
+(3, 'BurgerShot', 500, 'BurgerShot', 0),
+(4, 'PizzaThis', 500, 'PizzaThis', 0),
+(5, 'UwuCoffee', 500, 'UwuCoffee', 0),
+(6, 'BeanMachine', 500, 'BeanMachine', 0),
+(7, 'Ballas', 500, 'Ballas', 0),
+(8, 'Families', 500, 'Families', 0),
+(9, 'Vagos', 500, 'Vagos', 0),
+(10, 'Aztecas', 500, 'Aztecas', 0),
+(11, 'Bloods', 500, 'Bloods', 0),
+(12, 'Triads', 500, 'Triads', 0),
+(13, 'Razors', 500, 'Razors', 0),
 (14, 'Mechanic', 500, 'Mechanic', 0);
 
 DROP TABLE IF EXISTS `entitydata`;

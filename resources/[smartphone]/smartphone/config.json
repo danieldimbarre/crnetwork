@@ -39,6 +39,12 @@
             "number": "0800 042",
             "permission": "Mechanic",
             "dev": true
+        },
+        {
+            "name": "Taxi",
+            "number": "0800 075",
+            "permission": "Taxi",
+            "dev": true
         }
     ]
 }

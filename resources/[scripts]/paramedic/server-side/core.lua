@@ -313,10 +313,6 @@ AddEventHandler("paramedic:extractBlood",function(entity)
 									vRPC.downHealth(entity,50)
 									bloodTimers[OtherPassport] = os.time() + 10800
 									vRP.GenerateItem(Passport,"syringe0"..Identity["blood"],5,true)
-
-									if extractPerson[OtherPassport] then
-										extractPerson[OtherPassport] = nil
-									end
 								else
 									TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>3x "..itemName("syringe").."</b>.",5000)
 								end
@@ -327,6 +323,10 @@ AddEventHandler("paramedic:extractBlood",function(entity)
 					end
 				else
 					TriggerClientEvent("Notify",source,"amarelo","Sistema imunológico do paciente muito fraco.",5000)
+				end
+
+				if extractPerson[OtherPassport] then
+					extractPerson[OtherPassport] = nil
 				end
 			end
 		end

@@ -13,12 +13,11 @@ vSERVER = Tunnel.getInterface("barbershop")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local cam = -1
 local myClothes = { 0,100,0,100,0,0,0,0,0,0,0,-1,5,-1,-1,5,0,0,0,0,-1,5,0,-1,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21 }
-local mySkin = { 0,100,0,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSkin",function(Data,Callback)
-	myClothes = { mySkin[1],mySkin[2],mySkin[3],mySkin[4],mySkin[5],mySkin[6],mySkin[7],mySkin[8],tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintensity"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintensity"]),tonumber(Data["blushcolor"]),mySkin[9],mySkin[10],mySkin[11],mySkin[12],mySkin[13],mySkin[14],mySkin[15],mySkin[16],mySkin[17],mySkin[18],mySkin[19],mySkin[20],mySkin[21],mySkin[22],mySkin[23] }
+	myClothes = { myClothes[1],myClothes[2],myClothes[3],myClothes[4],myClothes[5],myClothes[6],myClothes[7],myClothes[8],tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintensity"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintensity"]),tonumber(Data["blushcolor"]),myClothes[9],myClothes[10],myClothes[11],myClothes[12],myClothes[13],myClothes[14],myClothes[15],myClothes[16],myClothes[17],myClothes[18],myClothes[19],myClothes[20],myClothes[21],myClothes[22],myClothes[23] }
 
 	if Data["value"] then
 		OpenBarbershop(false)
@@ -52,8 +51,6 @@ end)
 RegisterNetEvent("barbershop:Apply")
 AddEventHandler("barbershop:Apply",function(status)
 	myClothes = { status[1] or 0, status[2] or 100, status[3] or 0, status[4] or 100, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or -1, status[13] or 5, status[14] or -1, status[15] or -1, status[16] or 5, status[17] or 0, status[18] or -1, status[19] or 0, status[20] or 0, status[21] or -1, status[22] or 5, status[23] or 0, status[24] or -1, status[25] or 5, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 21 }
-
-	mySkin = { status[1] or 0, status[2] or 100, status[3] or 0, status[4] or 100, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0,status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 21 }
 
 	local Ped = PlayerPedId()
 
@@ -132,7 +129,7 @@ function OpenBarbershop(Enabled)
 
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
-		SendNUIMessage({ Open = true,hair = myClothes[9],haircolor = myClothes[10],haircolor2 = myClothes[11],eyebrow = myClothes[18],eyebrowintensity = myClothes[19],eyebrowcolor = myClothes[20],beard = myClothes[21],beardintensity = myClothes[22],beardcolor = myClothes[23],blush = myClothes[24],blushintensity = myClothes[25],blushcolor = myClothes[26],lipstick = myClothes[15],lipstickintensity = myClothes[16],lipstickcolor = myClothes[17],makeup = myClothes[12],makeupintensity = myClothes[13],makeupcolor = myClothes[14],maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1,maxHaircolors = GetNumHairColors()-1,maxMakeupcolor = GetNumMakeupColors()-1,maxBeard = GetPedHeadOverlayNum(1)-1,maxEyebrow = GetPedHeadOverlayNum(2)-1,maxMakeup = GetPedHeadOverlayNum(4)-1,maxBlush = GetPedHeadOverlayNum(5)-1,maxLipstick = GetPedHeadOverlayNum(8)-1 })
+		SendNUIMessage({ Open = true, hair = myClothes[9], haircolor = myClothes[10], haircolor2 = myClothes[11], eyebrow = myClothes[18], eyebrowintensity = myClothes[19], eyebrowcolor = myClothes[20], beard = myClothes[21], beardintensity = myClothes[22], beardcolor = myClothes[23], blush = myClothes[24], blushintensity = myClothes[25], blushcolor = myClothes[26], lipstick = myClothes[15], lipstickintensity = myClothes[16], lipstickcolor = myClothes[17], makeup = myClothes[12], makeupintensity = myClothes[13], makeupcolor = myClothes[14], maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1, maxHaircolors = GetNumHairColors()-1, maxMakeupcolor = GetNumMakeupColors()-1, maxBeard = GetPedHeadOverlayNum(1)-1, maxEyebrow = GetPedHeadOverlayNum(2)-1, maxMakeup = GetPedHeadOverlayNum(4)-1, maxBlush = GetPedHeadOverlayNum(5)-1, maxLipstick = GetPedHeadOverlayNum(8)-1 })
 
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })

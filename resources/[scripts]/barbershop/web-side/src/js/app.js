@@ -51,7 +51,7 @@ $(document).ready(() => {
 		document.getElementById("beardcolor").value = event.data.beardcolor;
 
 		$("#makeup").attr("max",event.data.maxMakeup);
-		$("#makeup").parent().parent().parent().find('#minRange').html(event.data.maxMakeup);
+		$("#makeup").parent().parent().parent().find('#minRange').html(event.data.makeup);
 		$("#makeup").parent().parent().parent().find('#maxRange').html(event.data.maxMakeup);
 		document.getElementById("makeup").value = event.data.makeup;
 		
@@ -59,12 +59,12 @@ $(document).ready(() => {
 		document.getElementById("makeupintensity").value = event.data.makeupintensity;
 		
 		$("#makeupcolor").attr("max",event.data.maxMakeupcolor);
-		$("#makeupcolor").parent().parent().parent().find('#minRange').html(event.data.maxMakeupcolor);
+		$("#makeupcolor").parent().parent().parent().find('#minRange').html(event.data.makeupcolor);
 		$("#makeupcolor").parent().parent().parent().find('#maxRange').html(event.data.maxMakeupcolor);
 		document.getElementById("makeupcolor").value = event.data.makeupcolor;
 		
 		$("#blush").attr("max",event.data.maxBlush);
-		$("#blush").parent().parent().parent().find('#minRange').html(event.data.maxBlush);
+		$("#blush").parent().parent().parent().find('#minRange').html(event.data.blush);
 		$("#blush").parent().parent().parent().find('#maxRange').html(event.data.maxBlush);
 		document.getElementById("blush").value = event.data.blush;
 
@@ -72,12 +72,12 @@ $(document).ready(() => {
 		document.getElementById("blushintensity").value = event.data.blushintensity;
 
 		$("#blushcolor").attr("max",event.data.maxMakeupcolor);
-		$("#blushcolor").parent().parent().parent().find('#minRange').html(event.data.maxMakeupcolor);
+		$("#blushcolor").parent().parent().parent().find('#minRange').html(event.data.blushcolor);
 		$("#blushcolor").parent().parent().parent().find('#maxRange').html(event.data.maxMakeupcolor);
 		document.getElementById("blushcolor").value = event.data.blushcolor;
 		
 		$("#lipstick").attr("max",event.data.maxLipstick);
-		$("#lipstick").parent().parent().parent().find('#minRange').html(event.data.maxLipstick);
+		$("#lipstick").parent().parent().parent().find('#minRange').html(event.data.lipstick);
 		$("#lipstick").parent().parent().parent().find('#maxRange').html(event.data.maxLipstick);
 		document.getElementById("lipstick").value = event.data.lipstick;
 
@@ -85,7 +85,7 @@ $(document).ready(() => {
 		document.getElementById("lipstickintensity").value = event.data.lipstickintensity;
 
 		$("#lipstickcolor").attr("max",event.data.maxMakeupcolor);
-		$("#lipstickcolor").parent().parent().parent().find('#minRange').html(event.data.maxMakeupcolor);
+		$("#lipstickcolor").parent().parent().parent().find('#minRange').html(event.data.lipstickcolor);
 		$("#lipstickcolor").parent().parent().parent().find('#maxRange').html(event.data.maxMakeupcolor);
 		document.getElementById("lipstickcolor").value = event.data.lipstickcolor;
 

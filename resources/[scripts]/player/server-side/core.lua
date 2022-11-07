@@ -305,7 +305,7 @@ local preset = {
 			["mask"] = { item = 0, texture = 0 },
 			["shoes"] = { item = 25, texture = 0 },
 			["tshirt"] = { item = 247, texture = 0 },
-			["torso"] = { item = 504, texture = 7 },
+			["torso"] = { item = 504, texture = 0 },
 			["accessory"] = { item = 0, texture = 0 },
 			["watch"] = { item = -1, texture = 0 },
 			["arms"] = { item = 14, texture = 0 },
@@ -477,7 +477,7 @@ local preset = {
 		},
 		["mp_f_freemode_01"] = {
 			["hat"] = { item = -1, texture = 0 },
-			["pants"] = { item = 178, texture = 10 },
+			["pants"] = { item = 178, texture = 0 },
 			["vest"] = { item = 57, texture = 3 },
 			["bracelet"] = { item = -1, texture = 0 },
 			["backpack"] = { item = 0, texture = 0 },

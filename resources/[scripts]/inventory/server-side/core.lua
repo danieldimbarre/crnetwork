@@ -1086,8 +1086,14 @@ function Creative.UseItem(Slot,Amount)
 			local Weapon,Hash,Ammo = vCLIENT.rechargeCheck(source,Item)
 
 			if Weapon then
-				if (Ammo + Amount) > 250 then
-					Amount = 250 - Ammo
+				if Hash == "WEAPON_PETROLCAN" then
+					if (Ammo + Amount) > 4500 then
+						Amount = 4500 - Ammo
+					end
+				else
+					if (Ammo + Amount) > 250 then
+						Amount = 250 - Ammo
+					end
 				end
 
 				if Item ~= itemAmmo(Hash) or Amount <= 0 then

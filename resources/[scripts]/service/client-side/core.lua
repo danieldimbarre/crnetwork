@@ -120,7 +120,7 @@ end)
 -- ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Add",function(Data,Callback)
-	TriggerServerEvent("service:Add",Data["passport"])
+	TriggerServerEvent("service:Add",Data["passport"],Data["rank"])
 
 	Callback("Ok")
 end)

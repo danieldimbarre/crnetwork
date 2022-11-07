@@ -10,6 +10,28 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("taxi",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- TAXI
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Taxi = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TOGGLESERVICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.toggleService()
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if Taxi[Passport] then
+			Taxi[Passport] = nil
+
+			vRP.RemovePermission(Passport,"Taxi")
+		else
+			Taxi[Passport] = true
+
+			vRP.SetPermission(Passport,"Taxi",2)
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENTSERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.paymentService()
@@ -19,3 +41,13 @@ function Creative.paymentService()
 		vRP.GenerateItem(Passport,"dollars",math.random(175,275),true)
 	end
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport)
+	if Taxi[Passport] then
+		Taxi[Passport] = nil
+
+		vRP.RemovePermission(Passport,"Taxi")
+	end
+end)

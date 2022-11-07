@@ -202,6 +202,7 @@ AddEventHandler("taxi:Starting",function(Init)
 			serviceStatus = false
 			exports["target"]:LabelText("Taxi:"..Init,"Trabalhar")
 			TriggerEvent("Notify","verde","Trabalho finalizado.",3000)
+			vSERVER.toggleService()
 
 			if DoesBlipExist(serviceBlip) then
 				RemoveBlip(serviceBlip)
@@ -236,6 +237,7 @@ AddEventHandler("taxi:Starting",function(Init)
 			serviceStatus = true
 			TriggerEvent("Notify","verde","Trabalho iniciado.",3000)
 			exports["target"]:LabelText("Taxi:"..Init,"Finalizar")
+			vSERVER.toggleService()
 
 			while serviceStatus do
 				local TimeDistance = 999

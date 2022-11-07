@@ -40,6 +40,13 @@ Groups = {
 		["Hierarchy"] = { "Chefe","Membro" },
 		["Service"] = {}
 	},
+	["Taxi"] = {
+		["Parent"] = {
+			["Taxi"] = true
+		},
+		["Hierarchy"] = { "Chefe","Membro" },
+		["Service"] = {}
+	},
 	["BurgerShot"] = {
 		["Parent"] = {
 			["BurgerShot"] = true

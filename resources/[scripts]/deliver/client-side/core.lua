@@ -15,7 +15,7 @@ local Locate = ""
 local Selected = 1
 local Starting = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INITLIST
+-- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
 	["BurgerShot"] = { -1191.32,-900.39,13.99,1.0,1.0,"Trabalhar",false },
@@ -316,7 +316,7 @@ AddEventHandler("deliver:Starting",function(Init)
 			exports["target"]:LabelText("Deliver:"..Init,"Finalizar")
 			Marker(Cds[Locate][Selected][1],Cds[Locate][Selected][2],Cds[Locate][Selected][3])
 
-			if not initList[Init][7] then
+			if not List[Init][7] then
 				while Starting do
 					local TimeDistance = 999
 					local Ped = PlayerPedId()

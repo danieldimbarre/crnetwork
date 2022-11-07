@@ -54,7 +54,7 @@ AddEventHandler("barbershop:Debug",function()
 		TriggerClientEvent("tattoos:Apply",source,vRP.UserData(Passport,"Tatuagens"))
 		TriggerClientEvent("target:Debug",source)
 
-		vRP.removeObjects(source,"one")
+		TriggerClientEvent("inventory:Cancel",source)
 
 		local Ped = GetPlayerPed(source)
 		local Coords = GetEntityCoords(Ped)

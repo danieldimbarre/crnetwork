@@ -24,7 +24,7 @@ function Creative.checkPermission(hasPerm)
 		if not hasPerm then
 			return true
 		else
-			if vRP.HasGroup(Passport,hasPerm) then
+			if vRP.HasService(Passport,hasPerm) then
 				return true
 			end
 		end

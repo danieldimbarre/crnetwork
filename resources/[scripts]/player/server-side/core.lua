@@ -105,7 +105,7 @@ RegisterCommand("e2",function(source,Message)
 	if Passport and vRP.GetHealth(source) > 100 then
 		local ClosestPed = vRPC.ClosestPed(source,2)
 		if ClosestPed then
-			if vRP.HasGroup(Passport,"Paramedic") then
+			if vRP.HasService(Passport,"Paramedic") then
 				TriggerClientEvent("emotes",ClosestPed,Message[1])
 			end
 		end
@@ -152,7 +152,7 @@ end)
 RegisterCommand("911",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
-		if vRP.HasGroup(Passport,"Police") then
+		if vRP.HasService(Passport,"Police") then
 			local Identity = vRP.Identity(Passport)
 			local Service = vRP.NumPermission("Police")
 			for Passports,Sources in pairs(Service) do
@@ -169,7 +169,7 @@ end)
 RegisterCommand("112",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
-		if vRP.HasGroup(Passport,"Paramedic") then
+		if vRP.HasService(Passport,"Paramedic") then
 			local Identity = vRP.Identity(Passport)
 			local Service = vRP.NumPermission("Paramedic")
 			for Passports,Sources in pairs(Service) do
@@ -256,7 +256,7 @@ AddEventHandler("player:cvFunctions",function(Mode)
 	if ClosestPed then
 		local Passport = vRP.Passport(source)
 		local Consult = vRP.InventoryItemAmount(Passport,"rope")
-		if vRP.HasGroup(Passport,"Emergency") or Consult[1] >= 1 then
+		if vRP.HasService(Passport,"Emergency") or Consult[1] >= 1 then
 			local Vehicle,Network = vRPC.VehicleList(source,5)
 			if Vehicle then
 				local Networked = NetworkGetEntityFromNetworkId(Network)
@@ -718,7 +718,7 @@ AddEventHandler("player:Preset",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Emergency") then
+		if vRP.HasService(Passport,"Emergency") then
 			local Model = vRP.ModelPlayer(source)
 
 			if Model == "mp_m_freemode_01" or "mp_f_freemode_01" then

@@ -644,7 +644,7 @@ function Creative.requestPerm(Name,Type)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if List[Type]["perm"] ~= nil then
-			if vRP.HasGroup(Passport,List[Type]["perm"]) then
+			if vRP.HasService(Passport,List[Type]["perm"]) then
 				return true
 			end
 		else

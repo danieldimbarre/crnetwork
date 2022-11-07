@@ -24,7 +24,7 @@ AddEventHandler("paramedic:Reposed",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 and vRP.GetHealth(entity) > 100 then
-		if vRP.HasGroup(Passport,"Paramedic") then
+		if vRP.HasService(Passport,"Paramedic") then
 			local Keyboard = vKEYBOARD.keySingle(source,"Minutos:")
 			if Keyboard then
 				if parseInt(Keyboard[1]) > 0 then
@@ -74,7 +74,7 @@ AddEventHandler("paramedic:Bed",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 then
-		if vRP.HasGroup(Passport,"Paramedic") then
+		if vRP.HasService(Passport,"Paramedic") then
 			TriggerClientEvent("target:BedDeitar",entity)
 		end
 	end
@@ -87,7 +87,7 @@ AddEventHandler("paramedic:Revive",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(entity) <= 100 then
-		if vRP.HasGroup(Passport,"Paramedic") then
+		if vRP.HasService(Passport,"Paramedic") then
 			if vSKINSHOP.Defibrillator(source) then
 				local OtherPassport = vRP.Passport(entity)
 				Player(source)["state"]["Cancel"] = true
@@ -115,7 +115,7 @@ AddEventHandler("paramedic:Bandage",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 and vRP.GetHealth(entity) > 100 then
-		if vRP.HasGroup(Passport,"Paramedic") then
+		if vRP.HasService(Passport,"Paramedic") then
 			if vCLIENT.Bleeding(entity) > 0 then
 				if vRP.TakeItem(Passport,"gauze",1) then
 					local Bandage = vCLIENT.Bandage(entity)
@@ -143,7 +143,7 @@ AddEventHandler("paramedic:Diagnostic",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 then
-		if vRP.HasGroup(Passport,"Paramedic") then
+		if vRP.HasService(Passport,"Paramedic") then
 			local Result = ""
 			local OtherPassport = vRP.Passport(entity)
 			local Identity = vRP.Identity(OtherPassport)
@@ -262,7 +262,7 @@ AddEventHandler("paramedic:presetBurn",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Emergency") then
+		if vRP.HasService(Passport,"Emergency") then
 			local Model = vRP.ModelPlayer(entity)
 			if Model == "mp_m_freemode_01" or "mp_f_freemode_01" then
 				TriggerClientEvent("updateRoupas",entity,preset["1"][Model])
@@ -278,7 +278,7 @@ AddEventHandler("paramedic:presetPlaster",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Emergency") then
+		if vRP.HasService(Passport,"Emergency") then
 			local Model = vRP.ModelPlayer(entity)
 			if Model == "mp_m_freemode_01" or "mp_f_freemode_01" then
 				TriggerClientEvent("updateRoupas",entity,preset["2"][Model])

@@ -138,7 +138,7 @@ function Creative.DoorsPermission(Number)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if GlobalState["Doors"][Number]["Perm"] ~= nil then
-			if vRP.HasGroup(Passport,GlobalState["Doors"][Number]["Perm"]) then
+			if vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
 				local Doors = GlobalState["Doors"]
 
 				Doors[Number]["Lock"] = not Doors[Number]["Lock"]

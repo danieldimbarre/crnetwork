@@ -326,10 +326,12 @@ const updateDrag = () => {
 			if (name == "Passaporte" || name == "Distintivo"){
 				var idName = $(this).attr("data-idName");
 				var idBlood = $(this).attr("data-idBlood");
+				var Passport = $(this).attr("data-Passport");
+				var idVality = $(this).attr("data-idVality");
 				var idPremium = $(this).attr("data-idPremium");
 				var idRolepass = $(this).attr("data-idRolepass");
 
-				contents = `<item>${name}</item>${description !== "undefined" ? "<br><description>"+description+"</description>":""}<br><legenda>Nome: <r>${idName}</r><br>Tipo Sangüineo: <r>${idBlood}</r><br>Rolepass: <r>${idRolepass}</r><br>Premium: <r>${idPremium}</r></legenda>`;
+				contents = `<item>${name} - ${Passport}</item>${description !== "undefined" ? "<br><description>"+description+"</description>":""}<br><legenda>Nome: <r>${idName}</r><br>Tipo Sangüineo: <r>${idBlood}</r><br>Rolepass: <r>${idRolepass}</r><br>Validade: <r>${idVality}</r><br>Premium: <r>${idPremium}</r></legenda>`;
 			}
 
 			$(this).tooltip({
@@ -389,7 +391,7 @@ const Backpack = () => {
 				if (actualPercent <= 1)
 					actualPercent = 1;
 
-				const item = `<div class="item populated" title="" data-max="${v["max"]}" data-economy="${v["economy"]}" data-description="${v["desc"]}" style="background-image: url('images/${v["index"]}.png'); background-position: center; background-repeat: no-repeat;" data-amount="${v["amount"]}" data-peso="${v["peso"]}" data-item-key="${v["key"]}" data-name-key="${v["name"]}" data-slot="${slot}" data-idName="${v["idName"]}" data-idBlood="${v["idBlood"]}" data-idPremium="${v["idPremium"]}" data-idRolepass="${v["idRolepass"]}" data-Suitcase="${v["Suitcase"]}" data-Vehkey="${v["Vehkey"]}">
+				const item = `<div class="item populated" title="" data-max="${v["max"]}" data-economy="${v["economy"]}" data-description="${v["desc"]}" style="background-image: url('images/${v["index"]}.png'); background-position: center; background-repeat: no-repeat;" data-amount="${v["amount"]}" data-peso="${v["peso"]}" data-item-key="${v["key"]}" data-name-key="${v["name"]}" data-slot="${slot}" data-idName="${v["idName"]}" data-idBlood="${v["idBlood"]}" data-idPremium="${v["idPremium"]}" data-idVality="${v["idVality"]}" data-idRolepass="${v["idRolepass"]}" data-Suitcase="${v["Suitcase"]}" data-Vehkey="${v["Vehkey"]}" data-Passport="${v["Passport"]}">
 					<div class="top">
 						<div class="itemWeight">${(v["peso"] * v["amount"]).toFixed(2)}</div>
 						<div class="itemAmount">${formatarNumero(v["amount"])}x</div>

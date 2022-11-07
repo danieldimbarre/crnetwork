@@ -610,8 +610,6 @@ RegisterCommand("custom",function(source,args,rawCommand)
 					else
 						if #CustomList ~= Number then
 							Text = Text..",\n"
-						else
-							Text = Text.."\n"
 						end
 
 						Text = Text..'["'..CustomList[Count]..'"] = { item = '..Custom[CustomList[Count]]["item"]..', texture = '..Custom[CustomList[Count]]["texture"]..' }'
@@ -619,6 +617,8 @@ RegisterCommand("custom",function(source,args,rawCommand)
 
 					Count = Count + 1
 				until Count == #CustomList + 1
+
+				Text = Text.."\n\n"
 
 				vRP.Archive("custom.txt",Text)
 			end

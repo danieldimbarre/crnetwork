@@ -856,7 +856,7 @@ local List = {
 	},
 	{ -- Jewelry
 		Distance = 15,
-		Coords = { -628.79,-238.7,38.05,311.82 },
+		Coords = { -622.43,-229.71,38.05,306.15 },
 		Model = "cs_gurk",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},

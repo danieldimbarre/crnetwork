@@ -5,17 +5,17 @@ set mysql_connection_string "server=127.0.0.1;uid=root;password=;database=databa
 set mysql_transaction_isolation_level 2
 set mysql_slow_query_warning 100
 
-start vrp
+ensure vrp
 
-start cfx-energy-proxies
-start [addons]
-start [maps]
-start [vehicles]
-start [system]
-start [smartphone]
-start [scripts]
-start [weapons]
+ensure [addons]
+ensure [maps]
+ensure [vehicles]
+ensure [system]
+ensure [smartphone]
+ensure [scripts]
+ensure [weapons]
 
+ensure cfx-energy-proxies
 ensure cfx-gabz-mapdata         #*THIS RESOURCE IS REQUIRED FOR ALL RESOURCES TO WORK. IT MUST BE STARTED FIRST*
 ensure cfx-gabz-scenarios       #*THIS RESOURCE IS OPTIONAL, IT REMOVES CONFLICTING PEDS SPAWNS*
 ensure cfx-gabz-pdprops         #*THIS RESOURCE IS REQUIRED IF YOU USE ANY PD. IT MUST BE START BEFORE PD'S*

@@ -157,7 +157,10 @@ $(document).ready(() => {
 			beardcolor: $('#beardcolor').val(),
 			blush: $('#blush').val(),
 			blushintensity: $('#blushintensity').val(),
-			blushcolor: $('#blushcolor').val()
+			blushcolor: $('#blushcolor').val(),
+			face00: $('#face00').val(),
+			face01: $('#face01').val(),
+			face04: $('#face04').val()
 		}));
 	});
 
@@ -201,7 +204,10 @@ function change(e) {
 		beardcolor: $('#beardcolor').val(),
 		blush: $('#blush').val(),
 		blushintensity: $('#blushintensity').val(),
-		blushcolor: $('#blushcolor').val()
+		blushcolor: $('#blushcolor').val(),
+		face00: $('#face00').val(),
+		face01: $('#face01').val(),
+		face04: $('#face04').val()
 	}));
 	
 	$(e).parent().parent().parent().find('#minRange').html($(e).val());

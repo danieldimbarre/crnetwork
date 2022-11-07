@@ -4,7 +4,7 @@
 UsableF7 = true
 Whitelisted = true
 CombatLogMinutes = 3
-SalarySeconds = 1800
+SalarySeconds = 3600
 BannedText = "Banido"
 CleanDeathInventory = true
 ServerName = "Energy"
@@ -29,7 +29,7 @@ MaintenanceText = "Servidor em manutenção"
 MaintenanceLicenses = {
 	["a8d3f197478d5ff41628e40752f40609ddb54014"] = true,	-- Jota
 	["20360424d67d70720007fecc2c0c358359b9117b"] = true,	-- Medeiros
-	["0f755ac983311dae4d301f976a25a7eee66d5121"] = true,	-- Alan
+	["00a9be497361d506f7972271d856a932ad2acdfd"] = true,	-- Alan
 	["233456cbc917bfd628fd301b94875b5735047a87"] = true,	-- Marcola
 	["b02266ba5f4fcff8d29b2e58ac1dd4806a52adcb"] = true,	-- Dexter
 }

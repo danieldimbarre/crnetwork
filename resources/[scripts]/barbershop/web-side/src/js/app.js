@@ -89,6 +89,15 @@ $(document).ready(() => {
 		$("#lipstickcolor").parent().parent().parent().find('#maxRange').html(event.data.maxMakeupcolor);
 		document.getElementById("lipstickcolor").value = event.data.lipstickcolor;
 
+		$("#face00").parent().parent().parent().find('#minRange').html(event.data.face00);
+		document.getElementById("face00").value = event.data.face00;
+
+		$("#face01").parent().parent().parent().find('#minRange').html(event.data.face01);
+		document.getElementById("face01").value = event.data.face01;
+
+		$("#face04").parent().parent().parent().find('#minRange').html(event.data.face04);
+		document.getElementById("face04").value = event.data.face04;
+
 		if(event.data.Open == true){
 			$("body").fadeIn();
 			$(".rangeSlider .slider").each(function( index ) {

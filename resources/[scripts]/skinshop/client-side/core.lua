@@ -271,7 +271,6 @@ function openMenu(Menus)
 	MaxValues()
 
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
-	vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
 
 	Previous = json.encode(Dataset)
 	-- TriggerServerEvent("vRP:BucketClient","Enter")

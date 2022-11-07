@@ -297,7 +297,7 @@ local preset = {
 		},
 		["mp_f_freemode_01"] = {
 			["hat"] = { item = -1, texture = 0 },
-			["pants"] = { item = 178, texture = 10 },
+			["pants"] = { item = 178, texture = 0 },
 			["vest"] = { item = 57, texture = 0 },
 			["bracelet"] = { item = -1, texture = 0 },
 			["backpack"] = { item = 0, texture = 0 },
@@ -332,6 +332,8 @@ local preset = {
 			["ear"] = { item = -1, texture = 0 }
 		},
 		["mp_f_freemode_01"] = {
+			["hat"] = { item = -1, texture = 0 },
+			["pants"] = { item = 178, texture = 0 },
 			["vest"] = { item = 58, texture = 0 },
 			["bracelet"] = { item = -1, texture = 0 },
 			["backpack"] = { item = 0, texture = 0 },
@@ -367,7 +369,7 @@ local preset = {
 		},
 		["mp_f_freemode_01"] = {
 			["hat"] = { item = 184, texture = 0 },
-			["pants"] = { item = 178, texture = 10 },
+			["pants"] = { item = 178, texture = 0 },
 			["vest"] = { item = 57, texture = 1 },
 			["bracelet"] = { item = -1, texture = 0 },
 			["backpack"] = { item = 0, texture = 0 },
@@ -403,7 +405,7 @@ local preset = {
 		},
 		["mp_f_freemode_01"] = {
 			["hat"] = { item = -1, texture = 0 },
-			["pants"] = { item = 178, texture = 10 },
+			["pants"] = { item = 178, texture = 0 },
 			["vest"] = { item = 57, texture = 2 },
 			["bracelet"] = { item = -1, texture = 0 },
 			["backpack"] = { item = 0, texture = 0 },
@@ -556,7 +558,7 @@ local preset = {
 			["shoes"] = { item = 1, texture = 0 },
 			["tshirt"] = { item = 67, texture = 0 },
 			["torso"] = { item = 501, texture = 0 },
-			["accessory"] = { item = 96, texture = 0 },
+			["accessory"] = { item = 133, texture = 0 },
 			["watch"] = { item = -1, texture = 0 },
 			["arms"] = { item = 88, texture = 0 },
 			["glass"] = { item = 0, texture = 0 },

@@ -28,7 +28,7 @@ body {
 }
 
 #Services {
-	width: 600px;
+	width: 700px;
 	height: 695px;
 	padding: 30px;
 	position: relative;
@@ -36,17 +36,19 @@ body {
 }
 
 #Content {
-	width: 600px;
-	overflow: auto;
+	width: 700px;
 	max-height: 595px;
+	overflow: auto;
 }
 
 .Line {
-	float: left;
-	width: 540px;
-	padding-top: 14px;
+	width: 640px;
+	display: flex;
+	gap: 0.4rem;
+	justify-items: center;
+	justify-content: space-around;
+	padding: 14px;
 	letter-spacing: 1px;
-	padding-bottom: 14px;
 	background: rgba(15,15,15,.75);
 }
 
@@ -61,30 +63,6 @@ body {
 	letter-spacing: 2px;
 	padding-bottom: 21px;
 	text-transform: uppercase;
-}
-
-.Line-Number {
-	float: left;
-	width: 50px;
-	text-align: center;
-}
-
-.Line-Name {
-	float: left;
-	width: 200px;
-	text-align: left;
-}
-
-.Line-Phone {
-	float: left;
-	width: 100px;
-	text-align: center;
-}
-
-.Line-Status {
-	float: left;
-	width: 100px;
-	text-align: center;
 }
 
 .Line-Remove {
@@ -117,7 +95,7 @@ vermelho {
 	width: 300px;
 	display: none;
 	padding: 30px;
-	color: #715611;
+	color: #fff;
 	position: absolute;
 	background: #6ede81;
 	box-shadow: 0 0 10px #181818;
@@ -131,7 +109,7 @@ vermelho {
 }
 
 .ModalTitle b {
-	color: #9c771c;
+	color: #ccc;
 	display: block;
 	font-size: 11px;
 	font-weight: 300;
@@ -141,7 +119,7 @@ vermelho {
 	border: 0;
 	float: left;
 	width: 115px;
-	color: #715611;
+	color: #fff;
 	padding: 10px 0;
 	margin-right: 10px;
 	letter-spacing: 1px;
@@ -152,7 +130,7 @@ vermelho {
 	margin-right: 0;
 }
 
-.Input {
+.InputPass, .InputRank {
 	border: 0;
 	color: #333;
 	float: left;
@@ -164,11 +142,11 @@ vermelho {
 	margin-bottom: 10px;
 }
 
-.Input:focus {
+.InputPass:focus, .InputRank:focus {
 	outline: 0;
 	color: #333;
 }
 
-.Input::placeholder {
+.InputPass::placeholder, .InputRank::placeholder {
 	color: #333;
 }

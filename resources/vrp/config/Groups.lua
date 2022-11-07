@@ -9,6 +9,14 @@ Groups = {
 		["Hierarchy"] = { "Administrador","Moderador","Suporte" },
 		["Service"] = {}
 	},
+	["Premium"] = {
+		["Parent"] = {
+			["Premium"] = true
+		},
+		["Hierarchy"] = { "Platina","Ouro","Prata","Bronze" },
+		["Salary"] = { 2500,2250,2000,1750 },
+		["Service"] = {}
+	},
 	["Police"] = {
 		["Parent"] = {
 			["Police"] = true

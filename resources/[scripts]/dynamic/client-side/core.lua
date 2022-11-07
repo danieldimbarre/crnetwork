@@ -176,7 +176,7 @@ RegisterCommand("emergencyFunctions",function()
 					exports["dynamic"]:AddButton("Medical Center","Fardamento de doutor.","player:Preset","8","preMedic",true)
 					exports["dynamic"]:AddButton("Medical Center","Fardamento de paramédico.","player:Preset","9","preMedic",true)
 					exports["dynamic"]:AddButton("Medical Center","Fardamento de paramédico interno.","player:Preset","10","preMedic",true)
-					exports["dynamic"]:AddButton("Medical Center","Fardamento de atendimentos.","player:Preset","11","preMedic",true)
+					-- exports["dynamic"]:AddButton("Medical Center","Fardamento de atendimentos.","player:Preset","11","preMedic",true)
 					exports["dynamic"]:AddButton("Medical Center","Fardamento de mergulhador.","player:Preset","12","preMedic",true)
 
 					exports["dynamic"]:SubMenu("Fardamentos","Todos os fardamentos médicos.","preMedic")

@@ -30,6 +30,7 @@ MaintenanceLicenses = {
 	["a8d3f197478d5ff41628e40752f40609ddb54014"] = true,	-- Jota
 	["20360424d67d70720007fecc2c0c358359b9117b"] = true,	-- Medeiros
 	["00a9be497361d506f7972271d856a932ad2acdfd"] = true,	-- Alan
+	["ead5484f9ed620360c07871da0b9a1e629aa2111"] = true,	-- Farol
 	["233456cbc917bfd628fd301b94875b5735047a87"] = true,	-- Marcola
 	["b02266ba5f4fcff8d29b2e58ac1dd4806a52adcb"] = true,	-- Dexter
 	["ffa594ec30eba123ddfd37cff86e755e54ece227"] = true,	-- Araújo

@@ -5434,14 +5434,14 @@ local List = {
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
-	["wra45"] = {
+	["WRa45"] = {
 		["Name"] = "Mercedes-Benz A45",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
-	["wrbmwx6"] = {
+	["WRbmwx6"] = {
 		["Name"] = "BMW X6",
 		["Weight"] = 25,
 		["Price"] = 1000,
@@ -5504,7 +5504,7 @@ local List = {
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
-	["b412"] = {
+	["B412"] = {
 		["Name"] = "B412",
 		["Weight"] = 0,
 		["Price"] = 2000,

@@ -214,8 +214,8 @@ local Works = {
 	},
 	["Police"] = {
 		"fordraptor",
-		"wra45",
-		"wrbmwx6",
+		"WRa45",
+		"WRbmwx6",
 		"audir82",
 		"tahoe",
 		"wrsxr",
@@ -226,7 +226,7 @@ local Works = {
 	},
 	["heliPolice"] = {
 		"maverick2",
-		"b412"
+		"B412"
 	},
 	["busPolice"] = {
 		"pbus",

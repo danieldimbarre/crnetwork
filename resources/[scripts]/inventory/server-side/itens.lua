@@ -5022,18 +5022,14 @@ Use = {
 	end,
 
 	["premium"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.UserPremium(Passport) then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
-				vRP.SetPermission(Passport,"Premium",1)
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerEvent("Salary:Add",Passport,"Premium")
+			vRP.SetPermission(Passport,"Premium",3)
+
+			if not vRP.UserPremium(Passport) then
 				vRP.SetPremium(source)
-			end
-		else
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
-				vRP.SetPermission(Passport,"Premium",1)
+			else
 				vRP.UpgradePremium(Passport)
 			end
 		end
@@ -5045,7 +5041,8 @@ Use = {
 	-- 		local Type = vRP.UserClassPremium(Passport)
 	-- 		if not Status or (Premium[Type] and "Premium01" ~= Premium[Type]) then
 	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
-	-- 			TriggerEvent("Salary:Add",Passport,"Premium01")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium")
+	-- 			vRP.SetPermission(Passport,"Premium",1)
 	-- 			vRP.setPremium(source,1)
 
 	-- 			if Status then
@@ -5053,7 +5050,8 @@ Use = {
 	-- 			end
 	-- 		else
 	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
-	-- 			TriggerEvent("Salary:Add",Passport,"Premium01")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium")
+	-- 			vRP.SetPermission(Passport,"Premium",1)
 	-- 			vRP.upgradePremium(Passport)
 	-- 		end
 	-- 	end
@@ -5065,7 +5063,8 @@ Use = {
 	-- 		local Type = vRP.UserClassPremium(Passport)
 	-- 		if not Status or (Premium[Type] and "Premium02" ~= Premium[Type]) then
 	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
-	-- 			TriggerEvent("Salary:Add",Passport,"Premium02")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium")
+	-- 			vRP.SetPermission(Passport,"Premium",2)
 	-- 			vRP.setPremium(source,2)
 
 	-- 			if Status then
@@ -5073,7 +5072,8 @@ Use = {
 	-- 			end
 	-- 		else
 	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
-	-- 			TriggerEvent("Salary:Add",Passport,"Premium02")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium")
+	-- 			vRP.SetPermission(Passport,"Premium",2)
 	-- 			vRP.upgradePremium(Passport)
 	-- 		end
 	-- 	end
@@ -5085,7 +5085,8 @@ Use = {
 	-- 		local Type = vRP.UserClassPremium(Passport)
 	-- 		if not Status or (Premium[Type] and "Premium03" ~= Premium[Type]) then
 	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
-	-- 			TriggerEvent("Salary:Add",Passport,"Premium03")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium")
+	-- 			vRP.SetPermission(Passport,"Premium",3)
 	-- 			vRP.setPremium(source,3)
 
 	-- 			if Status then
@@ -5093,7 +5094,8 @@ Use = {
 	-- 			end
 	-- 		else
 	-- 			TriggerClientEvent("inventory:Update",source,"Backpack")
-	-- 			TriggerEvent("Salary:Add",Passport,"Premium03")
+	-- 			TriggerEvent("Salary:Add",Passport,"Premium")
+	-- 			vRP.SetPermission(Passport,"Premium",3)
 	-- 			vRP.upgradePremium(Passport)
 	-- 		end
 	-- 	end

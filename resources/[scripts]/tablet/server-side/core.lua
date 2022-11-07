@@ -137,14 +137,23 @@ function Creative.startDrive()
 			Active[Passport] = true
 
 			if not exports["hud"]:Wanted(Passport) then
-				if vRP.Request(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
-					if vRP.PaymentFull(Passport,100) then
+				if vRP.UserPremium(Passport) then
+					if vRP.Request(source,"Iniciar o teste?","Sim, iniciar o teste","Não, volto depois") then
 						TriggerEvent("vRP:BucketServer",source,"Enter",Passport)
 						Active[Passport] = nil
 
 						return true
-					else
-						TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
+					end
+				else
+					if vRP.Request(source,"Iniciar o teste por <b>$100</b> dólares?","Sim, iniciar o teste","Não, volto depois") then
+						if vRP.PaymentFull(Passport,100) then
+							TriggerEvent("vRP:BucketServer",source,"Enter",Passport)
+							Active[Passport] = nil
+
+							return true
+						else
+							TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
+						end
 					end
 				end
 			end

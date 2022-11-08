@@ -330,7 +330,7 @@ local List = {
 		Distance = 30,
 		Coords = { -544.76,-185.81,52.2,303.31 },
 		Model = "ig_barry",
-		anim = { "anim@heists@prison_heistig1_p1_guard_checks_bus","loop" }
+		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
 	},
 	{ -------Razors MARABUTA LAVAGEM , C4 -----------
 		Distance = 3,
@@ -1037,6 +1037,12 @@ local List = {
 	{ -- Pescador
 		Distance = 30,
 		Coords = { -1816.64,-1193.73,14.31,334.49 },
+		Model = "a_f_y_eastsa_03",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
+	{ -- Pescador
+		Distance = 30,
+		Coords = { 1522.88,3783.63,34.47,218.27 },
 		Model = "a_f_y_eastsa_03",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},

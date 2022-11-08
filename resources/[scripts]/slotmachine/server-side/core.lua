@@ -380,10 +380,13 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SLOTSCHECKWIN
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Active = {}
 function Creative.CheckWin(Table,Result)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Machines[Table] then
+	if Passport and not Active[Passport] and Machines[Table] then
+		Active[Passport] = true
+
 		if Machines[Table]["win"] then
 			if Machines[Table]["win"]["a"] == Result["a"] and Machines[Table]["win"]["b"] == Result["b"] and Machines[Table]["win"]["c"] == Result["c"] then
 				local Total = 0
@@ -406,6 +409,8 @@ function Creative.CheckWin(Table,Result)
 
 			Machines[Table]["win"] = {}
 		end
+
+		Active[Passport] = nil
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

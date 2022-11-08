@@ -50,7 +50,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Apply")
 AddEventHandler("barbershop:Apply",function(Status)
-	if Number = 1,41 do
+	for Number = 1,41 do
 		Clothes[Number] = Status[Number] or 0
 	end
 

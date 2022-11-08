@@ -292,7 +292,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Barber(Ped,Status)
 	local Clothes = {}
-	if Number = 1,41 do
+	for Number = 1,41 do
 		Clothes[Number] = Status[Number] or 0
 	end
 

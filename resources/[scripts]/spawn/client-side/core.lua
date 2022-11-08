@@ -13,6 +13,7 @@ local Peds = {}
 local Camera = nil
 local Destroy = false
 local Close = false
+local Loading = true
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +56,7 @@ AddEventHandler("onClientResourceStart",function(Resource)
 	SetEntityVisible(Ped,false,false)
 	FreezeEntityPosition(Ped,true)
 	SetEntityInvincible(Ped,true)
-	SetEntityHealth(Ped,100)
+	SetEntityHealth(Ped,101)
 	SetPedArmour(Ped,0)
 
 	local Characters = vSERVER.Characters()
@@ -94,6 +95,7 @@ AddEventHandler("onClientResourceStart",function(Resource)
 
 	SendNUIMessage({ Action = "Spawn", Table = Characters })
 	SetNuiFocus(true,true)
+	Loading = false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERCHOSEN
@@ -347,14 +349,14 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("spawn",function(Message)
-	if Camera then
+RegisterCommand("spawn",function()
+	if Loading then
 		local Ped = PlayerPedId()
 		SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)
 		SetEntityVisible(Ped,false,false)
 		FreezeEntityPosition(Ped,true)
 		SetEntityInvincible(Ped,true)
-		SetEntityHealth(Ped,100)
+		SetEntityHealth(Ped,101)
 		SetPedArmour(Ped,0)
 
 		local Characters = vSERVER.Characters()

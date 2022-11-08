@@ -40,11 +40,11 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GIVEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function arc.giveItem(item, index)
+function arc.giveItem(item)
 	local source = source
 	local user_id = vRP.Passport(source)
 
-	for _, item in pairs(config.itens[item][index]) do
+	for _, item in pairs(config.itens[item]) do
 		vRP.GenerateItem(user_id, item[1], item[2], true)
 	end
 end

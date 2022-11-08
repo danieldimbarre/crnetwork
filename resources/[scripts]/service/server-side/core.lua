@@ -86,7 +86,7 @@ AddEventHandler("service:Add",function(Number,Rank)
     local Passport = vRP.Passport(source)
     if Passport and Panel[Passport] and Number > 1 and Passport ~= Number and vRP.Identity(Number) then
         if vRP.HasPermission(Passport,Panel[Passport],1) then
-            vRP.SetPermission(Number,Panel[Passport],parseInt(Rank))
+            vRP.SetPermission(Number,Panel[Passport],Rank)
 
             TriggerClientEvent("Notify",source,"verde","Passaporte adicionado.",5000)
             TriggerClientEvent("service:Update",source)

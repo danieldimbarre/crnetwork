@@ -86,7 +86,7 @@ function serviceDismantle()
 								repeat
 									if lock and lock <= GetGameTimer() then
 										SetVehicleTyreBurst(dismantleVehicle, partIndex, true, true)
-										vSERVER.giveItem(partType, partIndex)
+										vSERVER.giveItem(partType)
 										lock = nil
 									end
 									Wait(100)
@@ -96,7 +96,7 @@ function serviceDismantle()
 								repeat
 									if lock and lock <= GetGameTimer() then
 										SetVehicleDoorBroken(dismantleVehicle, partIndex, true)
-										vSERVER.giveItem(partType, partIndex)
+										vSERVER.giveItem(partType)
 										lock = nil
 									end
 									Wait(100)

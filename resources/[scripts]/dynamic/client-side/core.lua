@@ -188,11 +188,11 @@ RegisterCommand("emergencyFunctions",function()
 					exports["dynamic"]:SubMenu("Fardamentos","Todos os fardamentos policiais.","prePolice")
 					exports["dynamic"]:AddButton("Computador","Computador de bordo policial.","police:Mdt","",false,false)
 				elseif LocalPlayer["state"]["Paramedic"] then
-					exports["dynamic"]:AddButton("Diretor","Fardamento de doutor.","player:Preset","6","preMedic",true)
-					exports["dynamic"]:AddButton("Medicos Center","Fardamento de paramédico.","player:Preset","7","preMedic",true)
-					exports["dynamic"]:AddButton("Paramedico Center","Fardamento de paramédico interno.","player:Preset","8","preMedic",true)
-					exports["dynamic"]:AddButton("Enfermeiro","Fardamento de atendimentos.","player:Preset","9","preMedic",true)
-					--exports["dynamic"]:AddButton("Fire Departament","Fardamento de mergulhador.","player:Preset","10","preMedic",true)
+					exports["dynamic"]:AddButton("Medical Center","Fardamento de doutor.","player:Preset","6","preMedic",true)
+					exports["dynamic"]:AddButton("Medical Center","Fardamento de paramédico.","player:Preset","7","preMedic",true)
+					exports["dynamic"]:AddButton("Medical Center","Fardamento de paramédico interno.","player:Preset","8","preMedic",true)
+					exports["dynamic"]:AddButton("Fire Departament","Fardamento de atendimentos.","player:Preset","9","preMedic",true)
+					exports["dynamic"]:AddButton("Fire Departament","Fardamento de mergulhador.","player:Preset","10","preMedic",true)
 
 					exports["dynamic"]:SubMenu("Fardamentos","Todos os fardamentos médicos.","preMedic")
 				end

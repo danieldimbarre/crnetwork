@@ -49,7 +49,7 @@ CreateThread(function()
 						DeathTimer = 5
 					end
 
-					SendNUIMessage({ name = "Display", payload = true })
+					SendNUIMessage({ Action = "Display", Mode = "block" })
 					TriggerEvent("inventory:preventWeapon",false)
 					vRP.playAnim(false,{"dead","dead_a"},true)
 					TriggerEvent("inventory:Close")
@@ -92,13 +92,13 @@ CreateThread(function()
 
 						if DeathTimer > 0 then
 							DeathTimer = DeathTimer - 1
-							SendNUIMessage({ name = "Message", payload = "Você está inconsciente, aguarde "..DeathTimer.." segundos" })
+							SendNUIMessage({ Action = "Message", Message = "Você está inconsciente, aguarde "..DeathTimer.." segundos" })
 
 							if DeathTimer <= 0 then
 								if LocalPlayer["state"]["Route"] < 900000 then
-									SendNUIMessage({ name = "Message", payload = "Digite <color>/GG</color> para desistir imediatamente" })
+									SendNUIMessage({ Action = "Message", Message = "Digite <color>/GG</color> para desistir imediatamente" })
 								else
-									SendNUIMessage({ name = "Message", payload = "Pressione <color>E</color> para renascer dentro da arena" })
+									SendNUIMessage({ Action = "Message", Message = "Pressione <color>E</color> para renascer dentro da arena" })
 								end
 							end
 						end
@@ -140,7 +140,7 @@ function Creative.Respawn()
 
 	DoScreenFadeOut(0)
 	SetEntityCoords(PlayerPedId(),332.8,-569.41,43.29)
-	SendNUIMessage({ name = "Display", payload = false })
+	SendNUIMessage({ Action = "Display", Mode = "none" })
 	Wait(1000)
 	DoScreenFadeIn(1000)
 end
@@ -164,7 +164,7 @@ exports("Revive",function(Health,Arena)
 		ClearPedTasks(Ped)
 		NetworkSetFriendlyFireOption(true)
 
-		SendNUIMessage({ name = "Display", payload = false })
+		SendNUIMessage({ Action = "Display", Mode = "none" })
 
 		if LocalPlayer["state"]["Route"] < 900000 then
 			TriggerEvent("paramedic:Reset")

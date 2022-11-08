@@ -21,9 +21,9 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["amphetamine"] = 10,
-					["codeine"] = 10,
-					["plastic"] = 10,
+					["amphetamine"] = 1,
+					["codeine"] = 1,
+					["plastic"] = 1
 				}
 			},
 
@@ -41,35 +41,22 @@ local List = {
 			
 		}
 	},
-	["Vagos"] = {-------------cocaina e lockpick---------------
+	["Vagos"] = {
 		["perm"] = "Vagos",
 		["List"] = {
-			["tablemeth"] = {
+			["drugtoy"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["woodlog"] = 50,					
-					["aluminum"] = 200,
-					["sheetmetal"] = 200,
-				
+					["amphetamine"] = 1,
+					["codeine"] = 1,
+					["plastic"] = 1
 				}
-					
 			},
-			["lockpick"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {					
-					["aluminum"] = 15,
-					["sheetmetal"] = 15,
-					["metalcan"] = 15,
-				
-				}
-			
-            },
 		}
 	},
-	["Cartel"] = {----CARTEL ARMAS------------ norte ----
-		["perm"] = "Cartel",
+	["Aztecas"] = {----CARTEL ARMAS-----
+		["perm"] = "Aztecas",
 		["List"] = {
 
 			["WEAPON_MICROSMG"] = {
@@ -140,7 +127,7 @@ local List = {
 			
 		}
 	},
-	["Bloods"] = { ------------maconha,capuz------------ norte-----
+	["Bloods"] = { --maconha, c4, capuz---
 		["perm"] = "Bloods",
 		["List"] = {
 			["silk"] = {
@@ -148,7 +135,8 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["woodlog"] = 1,
-					
+					--["codeine"] = 1,
+					--["plastic"] = 1
 				}
 			},
 			["weedclone"] = {
@@ -162,217 +150,39 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["woodlog"] = 1,
-					["aluminum"] = 200,
-					["sheetmetal"] = 200,
-					
-				}
-			},
-			["hood"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["linha"] = 20,
-					["tecido"] = 20,
-					
-				}
-			},
-									
-		}
-	},
-	["Families"] = { ----------DISMANCHE, ALGEMA-----
-		["perm"] = "Families",
-		["List"] = {
-			["handcuff"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["portamala"] = 4,
-					["porta"] = 4,
-					["capo"] = 3,
-					["roda"] = 8,
-					
-				}
-			},
-			["macarico"] = {
-				["amount"] = 3,
-				["destroy"] = false,
-				["require"] = {
-					["portamala"] = 1,
-					["porta"] = 2,
-					["capo"] = 1,
-					["roda"] = 4,
-					
-				}
-			},
-									
-		}
-	},
-	["Triads"] = { ------MAFIAS armas------------------------------------------
-		["perm"] = "Triads",
-		["List"] = {
-
-			["WEAPON_MICROSMG"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["smgbody"] = 1,
-					["aluminum"] = 45,
-					["copper"] = 50,
-					["plastic"] = 45,
-					["glass"] = 45,
-					["rubber"] = 50
-				}
-			},
-
-			["WEAPON_SAWNOFFSHOTGUN"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["riflebody"] = 1,
-					["aluminum"] = 120,
-					["copper"] = 130,
-					["plastic"] = 150,
-					["glass"] = 150,
-					["rubber"] = 110,
-					["smgbody"] = 2,
-				}
-			},
-						
-			["WEAPON_PISTOL_MK2"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["pistolbody"] = 1,
-					["aluminum"] = 25,
-					["copper"] = 25,
-					["plastic"] = 30,
-					["sheetmetal"] = 35,
-					["rubber"] = 25
-				}
-			},
-
-			["WEAPON_ASSAULTRIFLE_MK2"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["riflebody"] = 1,
-					["aluminum"] = 125,
-					["copper"] = 150,
-					["plastic"] = 125,
-					["glass"] = 120,
-					["rubber"] = 110
-				}
-			},
-
-			["WEAPON_ADVANCEDRIFLE"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["riflebody"] = 1,
-					["aluminum"] = 125,
-					["copper"] = 150,
-					["plastic"] = 125,
-					["glass"] = 120,
-					["rubber"] = 110
-				}
-			},
-			
-		}
-	},
-	["Marabunta"] = {----------------LAVAGEM,C4----------------
-		["perm"] = "Marabunta",
-		["List"] = {
-			["dollars"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dirtydollars"] = 1,
-					
+					["woodlog"] = 50,
+					["techtrash"] = 50,
+					["aluminum"] = 100,
+					["sheetmetal"] = 100,
+					["pliers"] = 10,
+					["explosives"] = 3
 				}
 			},
 			["c4"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["explosives"] = 10,
-					["techtrash"] = 15,
-					["polvora"] = 25,
-					["rubber"] = 25,
-					
+					["techtrash"] = 3,
+					["explosives"] = 20,
+					["sheetmetal"] = 15,
+					["pliers"] = 2
 				}
+
 			},
-			
+			["handcuff"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["aluminum"] = 100,
+					--["explosives"] = 5,
+					["sheetmetal"] = 10,
+					["pliers"] = 5
+				}
+
+			},	
+
 		}
 	},
-	["Aztecas"] = {------------MEXICO EQUIPAMENTOS, PAGER---------------
-		["perm"] = "Aztecas",
-		["List"] = {
-			["pager"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["techtrash"] = 10,
-					["glass"] = 15,
-					["plastic"] = 15,
-					["copper"] = 8,
-					
-				}
-			},
-			["attachsCrosshair"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["plastic"] = 10,
-					["glass"] = 15,
-					["aluminum"] = 15,
-					["copper"] = 15,
-					
-				}
-			},
-			["attachsFlashlight"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["plastic"] = 10,
-					["glass"] = 15,
-					["aluminum"] = 15,
-					["copper"] = 15,
-					
-				}
-			},
-			["attachsGrip"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {					
-					["aluminum"] = 15,
-					["copper"] = 15,
-					
-				}
-			},
-			["attachsMagazine"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {					
-					["aluminum"] = 15,
-					["copper"] = 20,
-					
-				}
-			},
-			["attachsSilencer"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {					
-					["aluminum"] = 35,
-					["copper"] = 15,
-					
-					
-				}
-			},
-			
-		}
-	},
- ----------------------------------------CRIME--------------------------------------------------------
 	["Mercado"] = {
 		["List"] = {
 			["keyboard"] = {
@@ -927,6 +737,371 @@ local List = {
 			}
 		}
 	},
+	["Triads"] = { ------MAFIAS armas------------------------------------------
+		["perm"] = "Triads",
+		["List"] = {
+
+			["WEAPON_MICROSMG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 45,
+					["copper"] = 50,
+					["plastic"] = 45,
+					["glass"] = 45,
+					["rubber"] = 50
+				}
+			},
+
+			["WEAPON_SAWNOFFSHOTGUN"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 120,
+					["copper"] = 130,
+					["plastic"] = 150,
+					["glass"] = 150,
+					["rubber"] = 110,
+					["smgbody"] = 2,
+				}
+			},
+						
+			["WEAPON_PISTOL_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 25,
+					["copper"] = 25,
+					["plastic"] = 30,
+					["sheetmetal"] = 35,
+					["rubber"] = 25
+				}
+			},
+
+			["WEAPON_ASSAULTRIFLE_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 150,
+					["plastic"] = 125,
+					["glass"] = 120,
+					["rubber"] = 110
+				}
+			},
+
+			["WEAPON_ADVANCEDRIFLE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 150,
+					["plastic"] = 125,
+					["glass"] = 120,
+					["rubber"] = 110
+				}
+			}
+			
+		}
+	},
+	["Razors"] = {
+		["perm"] = "Razors",
+		["List"] = {
+			["WEAPON_PISTOL"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 45,
+					["copper"] = 45,
+					["plastic"] = 30,
+					["glass"] = 30,
+					["rubber"] = 30
+				}
+			},
+			["WEAPON_MACHINEPISTOL"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 75,
+					["copper"] = 75,
+					["plastic"] = 35,
+					["glass"] = 35,
+					["rubber"] = 35
+				}
+			},
+			["WEAPON_MICROSMG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 125,
+					["plastic"] = 75,
+					["glass"] = 75,
+					["rubber"] = 75
+				}
+			},
+			["WEAPON_REVOLVER"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 75,
+					["copper"] = 75,
+					["plastic"] = 35,
+					["glass"] = 35,
+					["rubber"] = 25
+				}
+			},
+			["WEAPON_PUMPSHOTGUN_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 125,
+					["plastic"] = 100,
+					["glass"] = 100,
+					["rubber"] = 100
+				}
+			},
+			["WEAPON_SAWNOFFSHOTGUN"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 125,
+					["plastic"] = 75,
+					["glass"] = 75,
+					["rubber"] = 75
+				}
+			},
+			["WEAPON_GUSENBERG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 125,
+					["plastic"] = 100,
+					["glass"] = 100,
+					["rubber"] = 100
+				}
+			},
+			["WEAPON_APPISTOL"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 45,
+					["copper"] = 45,
+					["plastic"] = 30,
+					["glass"] = 30,
+					["rubber"] = 30
+				}
+			},
+			["WEAPON_SNSPISTOL"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 35,
+					["copper"] = 35,
+					["plastic"] = 15,
+					["glass"] = 15,
+					["rubber"] = 10
+				}
+			},
+			["WEAPON_PISTOL50"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 75,
+					["copper"] = 75,
+					["plastic"] = 30,
+					["glass"] = 30,
+					["rubber"] = 25
+				}
+			},
+			["WEAPON_MINISMG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 125,
+					["plastic"] = 80,
+					["glass"] = 80,
+					["rubber"] = 75
+				}
+			},
+			["WEAPON_PISTOL_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 45,
+					["copper"] = 45,
+					["plastic"] = 25,
+					["glass"] = 25,
+					["rubber"] = 25
+				}
+			},
+			["WEAPON_SNSPISTOL_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 45,
+					["copper"] = 45,
+					["plastic"] = 25,
+					["glass"] = 25,
+					["rubber"] = 25
+				}
+			},
+			["WEAPON_VINTAGEPISTOL"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 45,
+					["copper"] = 25,
+					["plastic"] = 15,
+					["glass"] = 15,
+					["rubber"] = 15
+				}
+			},
+			["WEAPON_COMPACTRIFLE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 125,
+					["plastic"] = 75,
+					["glass"] = 75,
+					["rubber"] = 75
+				}
+			},
+			["WEAPON_ADVANCEDRIFLE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 225,
+					["copper"] = 225,
+					["plastic"] = 175,
+					["glass"] = 125,
+					["rubber"] = 125
+				}
+			},
+			["WEAPON_BULLPUPRIFLE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 225,
+					["copper"] = 225,
+					["plastic"] = 125,
+					["glass"] = 125,
+					["rubber"] = 125
+				}
+			},
+			["WEAPON_BULLPUPRIFLE_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 225,
+					["copper"] = 225,
+					["plastic"] = 125,
+					["glass"] = 125,
+					["rubber"] = 125
+				}
+			},
+			["WEAPON_SPECIALCARBINE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 225,
+					["copper"] = 225,
+					["plastic"] = 125,
+					["glass"] = 125,
+					["rubber"] = 125
+				}
+			},
+			["WEAPON_SPECIALCARBINE_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 225,
+					["copper"] = 225,
+					["plastic"] = 125,
+					["glass"] = 125,
+					["rubber"] = 125
+				}
+			},
+			["WEAPON_SMG_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 150,
+					["copper"] = 150,
+					["plastic"] = 100,
+					["glass"] = 75,
+					["rubber"] = 75
+				}
+			},
+			["WEAPON_ASSAULTRIFLE"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 225,
+					["copper"] = 225,
+					["plastic"] = 125,
+					["glass"] = 125,
+					["rubber"] = 125
+				}
+			},
+			["WEAPON_ASSAULTRIFLE_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 225,
+					["copper"] = 225,
+					["plastic"] = 125,
+					["glass"] = 125,
+					["rubber"] = 125
+				}
+			},
+			["WEAPON_ASSAULTSMG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 150,
+					["copper"] = 150,
+					["plastic"] = 100,
+					["glass"] = 75,
+					["rubber"] = 75
+				}
+			}
+		}
+	},
 	["Lixeiro"] = {
 		["List"] = {
 			["glass"] = {
@@ -966,75 +1141,75 @@ local List = {
 			}
 		}
 	},
-	-- ["Lester"] = {
-	-- 	["List"] = {
-	-- 		["vest"] = {
-	-- 			["amount"] = 1,
-	-- 			["destroy"] = false,
-	-- 			["require"] = {
-	-- 				["tarp"] = 1,
-	-- 				["roadsigns"] = 4,
-	-- 				["leather"] = 12,
-	-- 				["sheetmetal"] = 5
-	-- 			}
-	-- 		},
-	-- 		["blocksignal"] = {
-	-- 			["amount"] = 1,
-	-- 			["destroy"] = false,
-	-- 			["require"] = {
-	-- 				["aluminum"] = 3,
-	-- 				["tarp"] = 1,
-	-- 				["plastic"] = 6
-	-- 			}
-	-- 		},
-	-- 		["tablecoke"] = {
-	-- 			["amount"] = 1,
-	-- 			["destroy"] = false,
-	-- 			["require"] = {
-	-- 				["woodlog"] = 10,
-	-- 				["glass"] = 25,
-	-- 				["rubber"] = 15,
-	-- 				["aluminum"] = 10,
-	-- 				["sheetmetal"] = 2,
-	-- 				["tarp"] = 1,
-	-- 				["explosives"] = 3
-	-- 			}
-	-- 		},
-	-- 		["tablemeth"] = {
-	-- 			["amount"] = 1,
-	-- 			["destroy"] = false,
-	-- 			["require"] = {
-	-- 				["woodlog"] = 10,
-	-- 				["glass"] = 25,
-	-- 				["rubber"] = 15,
-	-- 				["aluminum"] = 10,
-	-- 				["sheetmetal"] = 2,
-	-- 				["tarp"] = 1,
-	-- 				["explosives"] = 3
-	-- 			}
-	-- 		},
-	-- 		["tableweed"] = {
-	-- 			["amount"] = 1,
-	-- 			["destroy"] = false,
-	-- 			["require"] = {
-	-- 				["woodlog"] = 10,
-	-- 				["glass"] = 25,
-	-- 				["rubber"] = 15,
-	-- 				["aluminum"] = 10,
-	-- 				["sheetmetal"] = 2,
-	-- 				["tarp"] = 1,
-	-- 				["explosives"] = 3
-	-- 			}
-	-- 		},
-	-- 		["weedclone"] = {
-	-- 			["amount"] = 1,
-	-- 			["destroy"] = false,
-	-- 			["require"] = {
-	-- 				["dollars"] = 50
-	-- 			}
-	-- 		}
-	-- 	}
-	-- }
+	["Lester"] = {
+		["List"] = {
+			["vest"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["tarp"] = 1,
+					["roadsigns"] = 4,
+					["leather"] = 12,
+					["sheetmetal"] = 5
+				}
+			},
+			["blocksignal"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["aluminum"] = 3,
+					["tarp"] = 1,
+					["plastic"] = 6
+				}
+			},
+			["tablecoke"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["woodlog"] = 10,
+					["glass"] = 25,
+					["rubber"] = 15,
+					["aluminum"] = 10,
+					["sheetmetal"] = 2,
+					["tarp"] = 1,
+					["explosives"] = 3
+				}
+			},
+			["tablemeth"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["woodlog"] = 10,
+					["glass"] = 25,
+					["rubber"] = 15,
+					["aluminum"] = 10,
+					["sheetmetal"] = 2,
+					["tarp"] = 1,
+					["explosives"] = 3
+				}
+			},
+			["tableweed"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["woodlog"] = 10,
+					["glass"] = 25,
+					["rubber"] = 15,
+					["aluminum"] = 10,
+					["sheetmetal"] = 2,
+					["tarp"] = 1,
+					["explosives"] = 3
+				}
+			},
+			["weedclone"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["dollars"] = 50
+				}
+			}
+		}
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTPERM

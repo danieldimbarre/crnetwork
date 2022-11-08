@@ -174,38 +174,38 @@ local List = {
 		Model = "s_m_m_trucker_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Ballas-----------------BALLAS COCAINA,BRINQUEDO ----------------
-		Distance = 3,
+	{ -- Ballas-----------------BALLAS DROGAS----------------
+		Distance = 100,
 		Coords = { 2430.8,4962.78,42.34,317.49 },
 		Model = "ig_g",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Families------------------DISMANCHE, ALGEMA------------
+	{ -- Families
 		Distance = 100,
-		Coords = { 2421.64,3125.33,36.87,25.52 },
-		Model = "s_m_m_trucker_01",
+		Coords = { -31.47,-1434.84,31.49,0.0 },
+		Model = "ig_g",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Vagos---------------------VAGOS META, LOCKPICK------------
-		Distance = 3,
+	{ -- Vagos
+		Distance = 100,
 		Coords = { 1388.17,3604.86,38.94,297.64 },
 		Model = "ig_g",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Aztecas ------------CARTEL ARMAS----
-		Distance = 3,
+		Distance = 100,
 		Coords = { 2327.91,2569.71,46.67,303.31 },
 		Model = "ig_g",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	{ -- Bloods---------------MACONHA,CAPUZ,------------
-		Distance = 3,
-		Coords = { 2198.08,5599.46,53.7,73.71 },
+	{ -- Bloods
+		Distance = 100,
+		Coords = { 230.55,-1753.35,28.98,232.45 },
 		Model = "ig_g",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Triads-- ------------MAFIA ARMAS----- 
-		Distance = 3,
+		Distance = 100,
 		Coords = { 441.79,6462.3,35.86,93.55 },
 		Model = "ig_chengsr",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
@@ -482,18 +482,18 @@ local List = {
 		Model = "g_m_y_famdnf_01",
 		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
 	},
-	-- { -- Police
-	-- 	Distance = 100,
-	-- 	Coords = { 392.56,-1632.1,29.28,28.35 },
-	-- 	Model = "s_f_y_cop_01",
-	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	-- },
-	-- { -- Police
-	-- 	Distance = 100,
-	-- 	Coords = { 381.17,-1634.05,29.28,343.0 },
-	-- 	Model = "s_f_y_cop_01",
-	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	-- },
+	{ -- Police
+		Distance = 100,
+		Coords = { 392.56,-1632.1,29.28,28.35 },
+		Model = "s_f_y_cop_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
+	{ -- Police
+		Distance = 100,
+		Coords = { 381.17,-1634.05,29.28,343.0 },
+		Model = "s_f_y_cop_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
 	{ -- Police
 		Distance = 100,
 		Coords = { 382.12,-1617.63,29.28,232.45 },
@@ -1087,13 +1087,7 @@ local List = {
 		Coords = { -280.72,6228.2,31.69,42.52 },
 		Model = "a_f_y_hipster_04",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Caçador------mexico-----------------
-		Distance = 3,
-		Coords = { 3817.06,4441.44,2.81,274.97 },
-		Model = "ig_chengsr",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADLIST

@@ -3355,6 +3355,34 @@ Use = {
 		end
 	end,
 
+	["coffee"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 5
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",5000)
+		vRPC.createObjects(source,"amb@world_human_aa_coffee@idle_a", "idle_a","p_amb_coffeecup_01",49,28422)
+
+		repeat
+			if os.time() >= parseInt(Active[Passport]) then
+				Active[Passport] = nil
+				vRPC.removeObjects(source,"one")
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeThirst(Passport,10)
+					vRP.UpgradeHunger(Passport,4)
+
+					if vCLIENT.Restaurant(source,"BeanMachine") then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
 	["coffeemilk"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
 		Active[Passport] = os.time() + 5

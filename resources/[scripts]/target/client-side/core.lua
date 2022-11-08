@@ -295,11 +295,11 @@ CreateThread(function()
 		}
 	})
 
-	AddBoxZone("CallParamedic",vec3(-678.48,326.42,83.18),0.25,0.25,{
+	AddBoxZone("CallParamedic",vec3(-678.14,326.62,82.96),0.25,0.25,{
 		name = "CallParamedic",
 		heading = 3374176,
-		minZ = 43.00,
-		maxZ = 43.25
+		minZ = 82.88,
+		maxZ = 83.00
 	},{
 		Distance = 2.0,
 		options = {

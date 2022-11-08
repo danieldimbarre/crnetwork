@@ -214,52 +214,75 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DATASET
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Dataset = {
+	["pants"] = { item = 0, texture = 0 },
+	["arms"] = { item = 0, texture = 0 },
+	["tshirt"] = { item = 1, texture = 0 },
+	["torso"] = { item = 0, texture = 0 },
+	["vest"] = { item = 0, texture = 0 },
+	["shoes"] = { item = 0, texture = 0 },
+	["mask"] = { item = 0, texture = 0 },
+	["backpack"] = { item = 0, texture = 0 },
+	["hat"] = { item = -1, texture = 0 },
+	["glass"] = { item = 0, texture = 0 },
+	["ear"] = { item = -1, texture = 0 },
+	["watch"] = { item = -1, texture = 0 },
+	["bracelet"] = { item = -1, texture = 0 },
+	["accessory"] = { item = 0, texture = 0 },
+	["decals"] = { item = 0, texture = 0 }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Clothes(Ped,data)
-	if not data["backpack"] then
-		data["backpack"] = {}
-		data["backpack"]["item"] = 0
-		data["backpack"]["texture"] = 0
+function Clothes(Ped,Data)
+	for Index,v in pairs(Dataset) do
+		if not Data[Index] then
+			Data[Index] = {
+				["item"] = v["item"],
+				["texture"] = v["texture"]
+			}
+		end
 	end
 
-	SetPedComponentVariation(Ped,4,data["pants"]["item"] or 0,data["pants"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,3,data["arms"]["item"] or 0,data["arms"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,5,data["backpack"]["item"] or 0,data["backpack"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,8,data["tshirt"]["item"] or 0,data["tshirt"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,9,data["vest"]["item"] or 0,data["vest"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,11,data["torso"]["item"] or 0,data["torso"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,6,data["shoes"]["item"] or 0,data["shoes"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,1,data["mask"]["item"] or 0,data["mask"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,10,data["decals"]["item"] or 0,data["decals"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,7,data["accessory"]["item"] or 0,data["accessory"]["texture"] or 0,1)
+	SetPedComponentVariation(Ped,4,Data["pants"]["item"],Data["pants"]["texture"],1)
+	SetPedComponentVariation(Ped,3,Data["arms"]["item"],Data["arms"]["texture"],1)
+	SetPedComponentVariation(Ped,5,Data["backpack"]["item"],Data["backpack"]["texture"],1)
+	SetPedComponentVariation(Ped,8,Data["tshirt"]["item"],Data["tshirt"]["texture"],1)
+	SetPedComponentVariation(Ped,9,Data["vest"]["item"],Data["vest"]["texture"],1)
+	SetPedComponentVariation(Ped,11,Data["torso"]["item"],Data["torso"]["texture"],1)
+	SetPedComponentVariation(Ped,6,Data["shoes"]["item"],Data["shoes"]["texture"],1)
+	SetPedComponentVariation(Ped,1,Data["mask"]["item"],Data["mask"]["texture"],1)
+	SetPedComponentVariation(Ped,10,Data["decals"]["item"],Data["decals"]["texture"],1)
+	SetPedComponentVariation(Ped,7,Data["accessory"]["item"],Data["accessory"]["texture"],1)
 
-	if data["hat"]["item"] ~= -1 and data["hat"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,0,data["hat"]["item"],data["hat"]["texture"],1)
+	if Data["hat"]["item"] ~= -1 and Data["hat"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,0,Data["hat"]["item"]Data["hat"]["texture"],1)
 	else
 		ClearPedProp(Ped,0)
 	end
 
-	if data["glass"]["item"] ~= -1 and data["glass"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,1,data["glass"]["item"],data["glass"]["texture"],1)
+	if Data["glass"]["item"] ~= -1 and Data["glass"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,1,Data["glass"]["item"],Data["glass"]["texture"],1)
 	else
 		ClearPedProp(Ped,1)
 	end
 
-	if data["ear"]["item"] ~= -1 and data["ear"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,2,data["ear"]["item"],data["ear"]["texture"],1)
+	if Data["ear"]["item"] ~= -1 and Data["ear"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,2,Data["ear"]["item"],Data["ear"]["texture"],1)
 	else
 		ClearPedProp(Ped,2)
 	end
 
-	if data["watch"]["item"] ~= -1 and data["watch"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,6,data["watch"]["item"],data["watch"]["texture"],1)
+	if Data["watch"]["item"] ~= -1 and Data["watch"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,6,Data["watch"]["item"],Data["watch"]["texture"],1)
 	else
 		ClearPedProp(Ped,6)
 	end
 
-	if data["bracelet"]["item"] ~= -1 and data["bracelet"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,7,data["bracelet"]["item"],data["bracelet"]["texture"],1)
+	if Data["bracelet"]["item"] ~= -1 and Data["bracelet"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,7,Data["bracelet"]["item"],Data["bracelet"]["texture"],1)
 	else
 		ClearPedProp(Ped,7)
 	end
@@ -268,7 +291,6 @@ end
 -- BARBER
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Barber(Ped,status)
-	myClothes = {}
 	myClothes = { status[1] or 0, status[2] or 0, status[3] or 0, status[4] or 0, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or 0, status[13] or 0, status[14] or 0, status[15] or 0, status[16] or 0, status[17] or 0, status[18] or 0, status[19] or 0, status[20] or 0, status[21] or 0, status[22] or 0, status[23] or 0, status[24] or 0, status[25] or 0, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 0 }
 
     local weightFace = myClothes[2] / 100 + 0.0

@@ -42,22 +42,27 @@ local bennysLocations = {
 	["mechanic01"] = {
 		pos = vec3(-32.76,-1065.91,27.77),
 		heading = 339.5,
-		permission = "Bennys"
+		permission = "Mechanic"
+	},
+	["mechanic01"] = {
+		pos = vec3(-42.03,-1049.84,28.39),
+		heading = 252.29,
+		permission = "Mechanic"
 	},
 	["mechanic02"] = {
 		pos = vec3(831.08,-820.19,25.73),
 		heading = 90.0,
-		permission = "Ottos"
+		permission = "Mechanic"
 	},
 	["mechanic03"] = {
 		pos = vec3(829.9,-812.72,25.73),
 		heading = 90.0,
-		permission = "Ottos"
+		permission = "Mechanic"
 	},
 	["mechanic04"] = {
 		pos = vec3(831.14,-805.89,25.73),
 		heading = 90.0,
-		permission = "Ottos"
+		permission = "Mechanic"
 	},
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

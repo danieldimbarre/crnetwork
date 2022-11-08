@@ -162,7 +162,9 @@ local Garages = {
 	["147"] = { name = "Garbageman", payment = false },
 	["148"] = { name = "Garbageman", payment = false },
 	["149"] = { name = "Taxi", payment = false },
-	["150"] = { name = "Trucker", payment = false }
+	["150"] = { name = "Trucker", payment = false },
+	["151"] = { name = "Mechanic", payment = false, perm = "Mechanic" },---Ottos--
+	["152"] = { name = "Mechanic", payment = false, perm = "Mechanic" },---Bennys---
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SIGNALREMOVE
@@ -205,10 +207,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Works = {
 	["Paramedic"] = {
-		"lguard",
-		"blazer2",
 		"ambulance2",
-		"firetruk"
+		"rmodetrongta"
+
 	},
 	["heliParamedic"] = {
 		"maverick2"
@@ -220,8 +221,7 @@ local Works = {
 		"energy500x",
 		"energyr1200p",
 	},
-	["heliPolice"] = {
-		"maverick2",
+	["heliPolice"] = {		
 		"energyheli",
 		"cougarfam",
 	},
@@ -273,6 +273,10 @@ local Works = {
 		"hauler2",
 		"packer",
 		"phantom"
+	},
+	["Mechanic"] = {
+		"flatbed",
+
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

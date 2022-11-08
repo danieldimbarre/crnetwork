@@ -79,8 +79,9 @@ local shops = {
 		}
 	},
 	["BeanMachine"] = {
-		["perm"] = "BeanMachine",
+		["mode"] = "Buy",
 		["Type"] = "Cash",
+		["perm"] = "BeanMachine",
 		["List"] = {
 			["coffeemilk"] = 70,
 			["sandwich"] = 15,
@@ -146,12 +147,13 @@ local shops = {
 	["Mechanic"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
+		["perm"] = "Mechanic",
 		["List"] = {
-			["tyres"] = 225,
-			["toolbox"] = 625,
-			["advtoolbox"] = 1525,
-			["WEAPON_CROWBAR"] = 725,
-			["WEAPON_WRENCH"] = 725
+			["tyres"] = 250,
+			["toolbox"] = 120,
+			["advtoolbox"] = 320,
+			["WEAPON_CROWBAR"] = 525,
+			["WEAPON_WRENCH"] = 525
 		}
 	},
 	["Fuel"] = {
@@ -194,6 +196,10 @@ local shops = {
 		["List"] = {
 			["badge02"] = 10,
 			["syringe"] = 2,
+			["syringe01"] = 10,
+			["syringe02"] = 10,
+			["syringe03"] = 10,
+			["syringe04"] = 10,
 			["bandage"] = 225,
 			["gauze"] = 100,
 			["gdtkit"] = 20,

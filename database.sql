@@ -43,6 +43,22 @@ CREATE TABLE IF NOT EXISTS `characters` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `chests` (`id`, `name`, `weight`, `perm`, `logs`) VALUES
+(1, 'Police', 500, 'Police', 1),
+(2, 'Paramedic', 500, 'Paramedic', 1),
+(3, 'BurgerShot', 250, 'BurgerShot', 0),
+(4, 'PizzaThis', 250, 'PizzaThis', 0),
+(5, 'UwuCoffee', 250, 'UwuCoffee', 0),
+(6, 'BeanMachine', 250, 'BeanMachine', 0),
+(7, 'Ballas', 250, 'Ballas', 0),
+(8, 'Families', 250, 'Families', 0),
+(9, 'Vagos', 250, 'Vagos', 0),
+(10, 'Aztecas', 250, 'Aztecas', 0),
+(11, 'Bloods', 250, 'Bloods', 0),
+(12, 'Triads', 250, 'Triads', 0),
+(13, 'Razors', 250, 'Razors', 0),
+(14, 'Mechanic', 500, 'Mechanic', 0);
+
 DROP TABLE IF EXISTS `chests`;
 CREATE TABLE IF NOT EXISTS `chests` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -72,6 +88,8 @@ CREATE TABLE IF NOT EXISTS `entitydata` (
   PRIMARY KEY (`dkey`),
   KEY `dkey` (`dkey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES ('Permissions:Admin', '{\"1\":1}');
 
 DROP TABLE IF EXISTS `fidentity`;
 CREATE TABLE IF NOT EXISTS `fidentity` (
@@ -229,4 +247,13 @@ CREATE TABLE IF NOT EXISTS `warehouse` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `entitydata` (`dkey`, `dvalue`) VALUES ('Permissions:Admin', '{\"1\":true}');
+DROP TABLE IF EXISTS `discord`;
+CREATE TABLE IF NOT EXISTS `discord` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `discord_id` varchar(50) DEFAULT NULL,
+  `channel_id` varchar(50) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `is_finished` tinyint(4) DEFAULT 0,
+  `created_at` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

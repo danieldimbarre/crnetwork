@@ -15,6 +15,7 @@ local Blips = {}
 local Points = 0
 local Objects = {}
 local Progress = 0
+local Circuits = {}
 local Checkpoint = 1
 local Actived = false
 local Ranking = false
@@ -27,12 +28,6 @@ LocalPlayer["state"]["Race"] = false
 -- THREADRACES
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for _,Info in pairs(Races) do
-		local Inits = AddBlipForRadius(Info["Init"]["x"],Info["Init"]["y"],Info["Init"]["z"],10.0)
-		SetBlipAlpha(Inits,200)
-		SetBlipColour(Inits,59)
-	end
-
 	while true do
 		local TimeDistance = 999
 		if not LocalPlayer["state"]["Race"] then
@@ -48,9 +43,9 @@ CreateThread(function()
 					Leave()
 				end
 
-				local Distance = #(Coords - vec3(Races[Race]["Coords"][Checkpoint][1][1],Races[Race]["Coords"][Checkpoint][1][2],Races[Race]["Coords"][Checkpoint][1][3]))
+				local Distance = #(Coords - vec3(Circuits[Race]["Coords"][Checkpoint][1][1],Circuits[Race]["Coords"][Checkpoint][1][2],Circuits[Race]["Coords"][Checkpoint][1][3]))
 				if Distance <= 5 then
-					if Checkpoint >= #Races[Race]["Coords"] then
+					if Checkpoint >= #Circuits[Race]["Coords"] then
 						SendNUIMessage({ Action = "Display", Status = false })
 						vSERVER.Finish(Race,Points)
 						CleanObjects()
@@ -74,7 +69,7 @@ CreateThread(function()
 					end
 				end
 			else
-				for Number,v in pairs(Races) do
+				for Number,v in pairs(Circuits) do
 					local Distance = #(Coords - v["Init"])
 					if Distance <= 25 then
 						local Vehicle = GetVehiclePedIsUsing(Ped)
@@ -86,11 +81,7 @@ CreateThread(function()
 								if IsControlJustPressed(1,47) then
 									Ranking = not Ranking
 
-									if Ranking then
-										SendNUIMessage({ Action = "Ranking", Ranking = vSERVER.Ranking(Number) })
-									else
-										SendNUIMessage({ Action = "Ranking", Ranking = false })
-									end
+									SendNUIMessage({ Action = "Ranking", Ranking = vSERVER.Ranking(Number) and Ranking or false })
 								end
 
 								if IsControlJustPressed(1,38) then
@@ -100,7 +91,7 @@ CreateThread(function()
 											Ranking = false
 										end
 
-										SendNUIMessage({ Action = "Display", Status = true, Max = #Races[Number]["Coords"] })
+										SendNUIMessage({ Action = "Display", Status = true, Max = #Circuits[Number]["Coords"] })
 										Progress = GetGameTimer() + (v["Timer"] * 1000)
 										Saved = GetGameTimer()
 										Checkpoint = 1
@@ -132,8 +123,8 @@ end)
 -- MAKEBLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function MakeBlips()
-	for Number = 1,#Races[Race]["Coords"] do
-		Blips[Number] = AddBlipForCoord(Races[Race]["Coords"][Number][1][1],Races[Race]["Coords"][Number][1][2],Races[Race]["Coords"][Number][1][3])
+	for Number = 1,#Circuits[Race]["Coords"] do
+		Blips[Number] = AddBlipForCoord(Circuits[Race]["Coords"][Number][1][1],Circuits[Race]["Coords"][Number][1][2],Circuits[Race]["Coords"][Number][1][3])
 		SetBlipSprite(Blips[Number],1)
 		SetBlipColour(Blips[Number],60)
 		SetBlipScale(Blips[Number],0.85)
@@ -154,8 +145,8 @@ function MakeObjects()
 	end
 
 	if LoadModel("prop_offroad_tyres02") then
-		Objects[1] = CreateObjectNoOffset("prop_offroad_tyres02",Races[Race]["Coords"][Checkpoint][2][1],Races[Race]["Coords"][Checkpoint][2][2],Races[Race]["Coords"][Checkpoint][2][3],false,false,false)
-		Objects[2] = CreateObjectNoOffset("prop_offroad_tyres02",Races[Race]["Coords"][Checkpoint][3][1],Races[Race]["Coords"][Checkpoint][3][2],Races[Race]["Coords"][Checkpoint][3][3],false,false,false)
+		Objects[1] = CreateObjectNoOffset("prop_offroad_tyres02",Circuits[Race]["Coords"][Checkpoint][2][1],Circuits[Race]["Coords"][Checkpoint][2][2],Circuits[Race]["Coords"][Checkpoint][2][3],false,false,false)
+		Objects[2] = CreateObjectNoOffset("prop_offroad_tyres02",Circuits[Race]["Coords"][Checkpoint][3][1],Circuits[Race]["Coords"][Checkpoint][3][2],Circuits[Race]["Coords"][Checkpoint][3][3],false,false,false)
 
 		PlaceObjectOnGroundProperly(Objects[1])
 		PlaceObjectOnGroundProperly(Objects[2])
@@ -206,6 +197,19 @@ function Leave()
 	CleanObjects()
 	CleanBlips()
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RACES:TABLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("races:Table")
+AddEventHandler("races:Table",function(Table)
+	Circuits = Table
+
+	for _,Info in pairs(Circuits) do
+		local Inits = AddBlipForRadius(Info["Init"]["x"],Info["Init"]["y"],Info["Init"]["z"],10.0)
+		SetBlipAlpha(Inits,200)
+		SetBlipColour(Inits,59)
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTYREEXPLODES
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -19,7 +19,3 @@ server_scripts {
 files {
 	"web-side/*"
 }
-
-shared_scripts {
-	"shared-side/*"
-}

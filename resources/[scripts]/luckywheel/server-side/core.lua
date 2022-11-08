@@ -114,14 +114,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LUCKYWHEEL:PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Active = {}
 RegisterServerEvent("luckywheel:Payment")
 AddEventHandler("luckywheel:Payment",function()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Payments[Passport] then
-		Active[Passport] = true
-
+	if Passport and Payments[Passport] then
 		if Payments[Passport] == 2 then
 			vRP.GiveBank(Passport,2500)
 		elseif Payments[Passport] == 3 or Payments[Passport] == 11 then
@@ -159,9 +156,6 @@ AddEventHandler("luckywheel:Payment",function()
 		elseif Payments[Passport] == 20 then
 			vRP.GiveBank(Passport,25000)
 		end
-
-		Payments[Passport] = nil
-		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

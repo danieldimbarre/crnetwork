@@ -456,7 +456,6 @@ function Creative.requestInventory()
 						end
 
 						if Identity then
-							v["Passport"] = Number
 							v["idPremium"] = "Nenhum"
 							v["idRolepass"] = "Inativo"
 							v["idBlood"] = Sanguine(Identity["blood"])
@@ -464,11 +463,7 @@ function Creative.requestInventory()
 
 							if Number == Passport and Split[1] == "identity" then
 								if Identity["premium"] > os.time() then
-									local Groups = vRP.Hierarchy("Premium")
-									local Number = vRP.HasPermission(Passport,"Premium")
-
-									v["idVality"] = MinimalTimers(Identity["premium"] - os.time())
-									v["idPremium"] = Groups[Number]
+									v["idPremium"] = MinimalTimers(Identity["premium"] - os.time())
 								end
 
 								if Identity["rolepass"] > 0 then
@@ -1086,14 +1081,8 @@ function Creative.UseItem(Slot,Amount)
 			local Weapon,Hash,Ammo = vCLIENT.rechargeCheck(source,Item)
 
 			if Weapon then
-				if Hash == "WEAPON_PETROLCAN" then
-					if (Ammo + Amount) > 4500 then
-						Amount = 4500 - Ammo
-					end
-				else
-					if (Ammo + Amount) > 250 then
-						Amount = 250 - Ammo
-					end
+				if (Ammo + Amount) > 250 then
+					Amount = 250 - Ammo
 				end
 
 				if Item ~= itemAmmo(Hash) or Amount <= 0 then
@@ -2015,7 +2004,7 @@ function Creative.Dismantle(Entity)
 					vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 				end
 
-				local Members = exports["vrp"]:Party(Passport,source,20)
+				local Members = exports["party"]:Room(Passport,source,20)
 				if #Members > 1 then
 					for _,v in pairs(Members) do
 						vRP.GenerateItem(v["Passport"],"dollars",AmountItens * #Members,true)

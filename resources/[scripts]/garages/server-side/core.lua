@@ -197,9 +197,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("platePlayers",function(Plate,Passport)
 	if not vRP.PassportPlate(Plate) then
-		local Plates = GlobalState["Plates"]
-		Plates[Plate] = Passport
-		GlobalState:set("Plates",Plates,true)
+		local Plate = GlobalState["Plates"]
+		Plate[Plate] = Passport
+		GlobalState:set("Plates",Plate,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -258,7 +258,7 @@ function Clothes(Ped,Data)
 	SetPedComponentVariation(Ped,7,Data["accessory"]["item"],Data["accessory"]["texture"],1)
 
 	if Data["hat"]["item"] ~= -1 and Data["hat"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,0,Data["hat"]["item"]Data["hat"]["texture"],1)
+		SetPedPropIndex(Ped,0,Data["hat"]["item"],Data["hat"]["texture"],1)
 	else
 		ClearPedProp(Ped,0)
 	end
@@ -290,62 +290,65 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BARBER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Barber(Ped,status)
-	myClothes = { status[1] or 0, status[2] or 0, status[3] or 0, status[4] or 0, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or 0, status[13] or 0, status[14] or 0, status[15] or 0, status[16] or 0, status[17] or 0, status[18] or 0, status[19] or 0, status[20] or 0, status[21] or 0, status[22] or 0, status[23] or 0, status[24] or 0, status[25] or 0, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 0 }
-
-    local weightFace = myClothes[2] / 100 + 0.0
-    local weightSkin = myClothes[4] / 100 + 0.0
-
-	SetPedHeadBlendData(Ped,myClothes[41],myClothes[1],0,myClothes[41],myClothes[1],0,weightFace,weightSkin,0.0,false)
-
-	SetPedEyeColor(Ped,myClothes[3])
-
-	if myClothes[5] == 0 then
-		SetPedHeadOverlay(Ped,0,myClothes[5],0.0)
-	else
-		SetPedHeadOverlay(Ped,0,myClothes[5],1.0)
+function Barber(Ped,Status)
+	local Clothes = {}
+	if Number = 1,41 do
+		Clothes[Number] = Status[Number] or 0
 	end
 
-	SetPedHeadOverlay(Ped,6,myClothes[6],1.0)
+    local Face = Clothes[2] / 100 + 0.0
+    local Skin = Clothes[4] / 100 + 0.0
 
-	if myClothes[7] == 0 then
-		SetPedHeadOverlay(Ped,9,myClothes[7],0.0)
+	SetPedHeadBlendData(Ped,Clothes[41],Clothes[1],0,Clothes[41],Clothes[1],0,Face,Skin,0.0,false)
+
+	SetPedEyeColor(Ped,Clothes[3])
+
+	if Clothes[5] == 0 then
+		SetPedHeadOverlay(Ped,0,Clothes[5],0.0)
 	else
-		SetPedHeadOverlay(Ped,9,myClothes[7],1.0)
+		SetPedHeadOverlay(Ped,0,Clothes[5],1.0)
 	end
 
-	SetPedHeadOverlay(Ped,3,myClothes[8],1.0)
+	SetPedHeadOverlay(Ped,6,Clothes[6],1.0)
 
-	SetPedComponentVariation(Ped,2,myClothes[9],0,1)
-	SetPedHairColor(Ped,myClothes[10],myClothes[11])
+	if Clothes[7] == 0 then
+		SetPedHeadOverlay(Ped,9,Clothes[7],0.0)
+	else
+		SetPedHeadOverlay(Ped,9,Clothes[7],1.0)
+	end
 
-	SetPedHeadOverlay(Ped,4,myClothes[12],myClothes[13] * 0.1)
-	SetPedHeadOverlayColor(Ped,4,1,myClothes[14],myClothes[14])
+	SetPedHeadOverlay(Ped,3,Clothes[8],1.0)
 
-	SetPedHeadOverlay(Ped,8,myClothes[15],myClothes[16] * 0.1)
-	SetPedHeadOverlayColor(Ped,8,1,myClothes[17],myClothes[17])
+	SetPedComponentVariation(Ped,2,Clothes[9],0,1)
+	SetPedHairColor(Ped,Clothes[10],Clothes[11])
 
-	SetPedHeadOverlay(Ped,2,myClothes[18],myClothes[19] * 0.1)
-	SetPedHeadOverlayColor(Ped,2,1,myClothes[20],myClothes[20])
+	SetPedHeadOverlay(Ped,4,Clothes[12],Clothes[13] * 0.1)
+	SetPedHeadOverlayColor(Ped,4,1,Clothes[14],Clothes[14])
 
-	SetPedHeadOverlay(Ped,1,myClothes[21],myClothes[22] * 0.1)
-	SetPedHeadOverlayColor(Ped,1,1,myClothes[23],myClothes[23])
+	SetPedHeadOverlay(Ped,8,Clothes[15],Clothes[16] * 0.1)
+	SetPedHeadOverlayColor(Ped,8,1,Clothes[17],Clothes[17])
 
-	SetPedHeadOverlay(Ped,5,myClothes[24],myClothes[25] * 0.1)
-	SetPedHeadOverlayColor(Ped,5,1,myClothes[26],myClothes[26])
+	SetPedHeadOverlay(Ped,2,Clothes[18],Clothes[19] * 0.1)
+	SetPedHeadOverlayColor(Ped,2,1,Clothes[20],Clothes[20])
 
-	SetPedFaceFeature(Ped,0,myClothes[27] * 0.1)
-	SetPedFaceFeature(Ped,1,myClothes[28] * 0.1)
-	SetPedFaceFeature(Ped,4,myClothes[29] * 0.1)
-	SetPedFaceFeature(Ped,6,myClothes[30] * 0.1)
-	SetPedFaceFeature(Ped,8,myClothes[31] * 0.1)
-	SetPedFaceFeature(Ped,9,myClothes[32] * 0.1)
-	SetPedFaceFeature(Ped,10,myClothes[33] * 0.1)
-	SetPedFaceFeature(Ped,12,myClothes[34] * 0.1)
-	SetPedFaceFeature(Ped,13,myClothes[35] * 0.1)
-	SetPedFaceFeature(Ped,14,myClothes[36] * 0.1)
-	SetPedFaceFeature(Ped,15,myClothes[37] * 0.1)
-	SetPedFaceFeature(Ped,16,myClothes[38] * 0.1)
-	SetPedFaceFeature(Ped,17,myClothes[39] * 0.1)
-	SetPedFaceFeature(Ped,19,myClothes[40] * 0.1)
+	SetPedHeadOverlay(Ped,1,Clothes[21],Clothes[22] * 0.1)
+	SetPedHeadOverlayColor(Ped,1,1,Clothes[23],Clothes[23])
+
+	SetPedHeadOverlay(Ped,5,Clothes[24],Clothes[25] * 0.1)
+	SetPedHeadOverlayColor(Ped,5,1,Clothes[26],Clothes[26])
+
+	SetPedFaceFeature(Ped,0,Clothes[27] * 0.1)
+	SetPedFaceFeature(Ped,1,Clothes[28] * 0.1)
+	SetPedFaceFeature(Ped,4,Clothes[29] * 0.1)
+	SetPedFaceFeature(Ped,6,Clothes[30] * 0.1)
+	SetPedFaceFeature(Ped,8,Clothes[31] * 0.1)
+	SetPedFaceFeature(Ped,9,Clothes[32] * 0.1)
+	SetPedFaceFeature(Ped,10,Clothes[33] * 0.1)
+	SetPedFaceFeature(Ped,12,Clothes[34] * 0.1)
+	SetPedFaceFeature(Ped,13,Clothes[35] * 0.1)
+	SetPedFaceFeature(Ped,14,Clothes[36] * 0.1)
+	SetPedFaceFeature(Ped,15,Clothes[37] * 0.1)
+	SetPedFaceFeature(Ped,16,Clothes[38] * 0.1)
+	SetPedFaceFeature(Ped,17,Clothes[39] * 0.1)
+	SetPedFaceFeature(Ped,19,Clothes[40] * 0.1)
 end

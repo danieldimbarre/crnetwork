@@ -113,8 +113,6 @@ AddEventHandler("barbershop:Apply",function(status)
 	SetPedFaceFeature(Ped,16,myClothes[38] * 0.1)
 	SetPedFaceFeature(Ped,17,myClothes[39] * 0.1)
 	SetPedFaceFeature(Ped,19,myClothes[40] * 0.1)
-
-	TriggerEvent("creator:updateFace",myClothes)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENBARBERSHOP

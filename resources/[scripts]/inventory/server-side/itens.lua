@@ -4723,7 +4723,7 @@ Use = {
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
 			TriggerClientEvent("inventory:Update",source,"Backpack")
 			TriggerEvent("Salary:Add",Passport,"Premium")
-			vRP.SetPermission(Passport,"Premium",3)
+			vRP.SetPermission(Passport,"Premium",1)
 
 			if not vRP.UserPremium(Passport) then
 				vRP.SetPremium(source)

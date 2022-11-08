@@ -130,12 +130,10 @@ local Garages = {
 
 	["69"] = { name = "Police", payment = false, perm = "Police" },
 
-	["70"] = { name = "dippolice", payment = false, perm = "Police" },
+	["70"] = { name = "Police", payment = false, perm = "Police" },
 	["71"] = { name = "heliPolice", payment = false, perm = "Police" },
-	["72"] = { name = "dippolice", payment = false, perm = "Police" },
-	["73"] = { name = "busPolice", payment = false, perm = "Police" },
+	["72"] = { name = "busPolice", payment = false, perm = "Police" },
 
-	-- Facs
 	["91"] = { name = "Ballas", payment = true, perm = "Ballas" },
 	["92"] = { name = "Families", payment = true, perm = "Families" },
 	["93"] = { name = "Vagos", payment = true, perm = "Vagos" },
@@ -214,42 +212,53 @@ local Works = {
 		"maverick2"
 	},
 	["Police"] = {
-		"audirs62",
-		"energycivic",
-		"energypassat",
-		"energy500x",
-		"energyr1200p",
+		"polvic",
+		"komodapol",
+		"r1250pol",
+		"nc700pol",
+		"polchar",
+		"ballerpol",
+		"elegy2pol",
+		"fugitivepol",
+		"kurumapol",
+		"oracle2pol",
+		"police3pol",
+		"policepol",
+		"policetpol",
+		"schafter2pol",
+		"sheriff2pol",
+		"sultanrspol",
+		"tailgater2pol",
+		"polcorv",
+		"polchall",
+		"poltang"
 	},
 	["heliPolice"] = {
+<<<<<<< HEAD
 		"maverick2",
 		"energyheli",
 		"cougarfam",
+=======
+		"maverick2"
+>>>>>>> parent of 23df371 (Merge branch 'main' into main)
 	},
 	["busPolice"] = {
-		"rmodroverp",
-		"energyc7",
-		"energyram2500",
-		"energyranger",
 		"pbus",
-		"riot",
-	},
-	["dippolice"] = {
-	    "rmodchargerp",
-		"rmodzl1police",
+		"riot"
 	},
 	["Driver"] = {
 		"bus"
 	},
 	["Boats"] = {
 		"dinghy",
-		-- "jetmax",
-		-- "marquis",
-		-- "seashark",
-		-- "speeder",
-		-- "squalo",
-		-- "suntrap",
-		-- "toro",
-		-- "tropic"
+		"jetmax",
+		"marquis",
+		"seashark",
+		"speeder",
+		"squalo",
+		"suntrap",
+		"toro",
+		"tropic"
 	},
 	["Transporter"] = {
 		"stockade"
@@ -259,8 +268,8 @@ local Works = {
 	},
 	["TowDriver"] = {
 		"flatbed",
-		-- "towtruck",
-		-- "towtruck2"
+		"towtruck",
+		"towtruck2"
 	},
 	["Garbageman"] = {
 		"trash"
@@ -634,7 +643,7 @@ end)
 RegisterCommand("car",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",1) and Message[1] then
+		if vRP.HasGroup(Passport,"Admin") and Message[1] then
 			local VehicleName = Message[1]
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
@@ -860,42 +869,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Signal",function(Plate)
 	return Signal[Plate]
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- VEH
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand('veh',function(source,args,rawCommand)
-	local user_id = vRP.Passport(source)
-	local vehName = string.lower(args[2])
-	local nuser_id = parseInt(args[3])
-	local player = vRP.Query('characters/Person',{ id = nuser_id })
-	if user_id and player[1] ~= nil then
-		if vRP.HasGroup(user_id,'Admin') and nuser_id > 0 and VehicleName(vehName) then
-			local identity = vRP.Identity(nuser_id)
-			local vehicle = vRP.Query('vehicles/selectVehicles',{ Passport = nuser_id, vehicle = vehName })
-			if args[1] == 'add' then
-				if vehicle[1] then
-					TriggerClientEvent('Notify',source,'amarelo','<b>'..identity['name']..' '..identity['name2']..'</b> já possui um <b>'..VehicleName(vehName)..'</b>.',7000)
-				else
-					vRP.Query('vehicles/addVehicles',{ Passport = nuser_id, vehicle = vehName, plate = vRP.GeneratePlate(), work = 'false' })
-					TriggerClientEvent('Notify',source,'verde','Veículo <b>'..VehicleName(vehName)..'</b> adicionado ao player <b>'..identity['name']..' '..identity['name2']..'</b>.',7000)
-				end
-			elseif args[1] == 'rem' then
-				if vehicle[1] then
-					vRP.Query('vehicles/removeVehicles',{ Passport = nuser_id, vehicle = vehName })
-					vRP.Query('entitydata/RemoveData',{ dkey = 'Mods:'..nuser_id..':'..vehName })
-					vRP.Query('entitydata/RemoveData',{ dkey = 'Chest:'..nuser_id..':'..vehName })
-					TriggerClientEvent('Notify',source,'verde','Veículo <b>'..VehicleName(vehName)..'</b> removido do player <b>'..identity['name']..' '..identity['name2']..'</b>.',7000)
-				else
-					TriggerClientEvent('Notify',source,'amarelo','<b>'..identity['name']..' '..identity['name2']..'</b> não possui um <b>'..VehicleName(vehName)..'</b>.',7000)
-				end
-			end
-		else
-			TriggerClientEvent('Notify',source,'vermelho','Veículo <b>'..vehName..'</b> não encontrado.',7000)
-		end
-	else
-		TriggerClientEvent('Notify',source,'vermelho','Player <b>'..nuser_id..'</b> não encontrado.',7000)
-	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

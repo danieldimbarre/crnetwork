@@ -28,7 +28,7 @@ body {
 }
 
 #Services {
-	width: 700px;
+	width: 600px;
 	height: 695px;
 	padding: 30px;
 	position: relative;
@@ -36,19 +36,17 @@ body {
 }
 
 #Content {
-	width: 700px;
-	max-height: 595px;
+	width: 600px;
 	overflow: auto;
+	max-height: 595px;
 }
 
 .Line {
-	width: 640px;
-	display: flex;
-	gap: 0.4rem;
-	justify-items: center;
-	justify-content: space-around;
-	padding: 14px;
+	float: left;
+	width: 540px;
+	padding-top: 14px;
 	letter-spacing: 1px;
+	padding-bottom: 14px;
 	background: rgba(15,15,15,.75);
 }
 
@@ -63,6 +61,30 @@ body {
 	letter-spacing: 2px;
 	padding-bottom: 21px;
 	text-transform: uppercase;
+}
+
+.Line-Number {
+	float: left;
+	width: 50px;
+	text-align: center;
+}
+
+.Line-Name {
+	float: left;
+	width: 200px;
+	text-align: left;
+}
+
+.Line-Phone {
+	float: left;
+	width: 100px;
+	text-align: center;
+}
+
+.Line-Status {
+	float: left;
+	width: 100px;
+	text-align: center;
 }
 
 .Line-Remove {
@@ -130,7 +152,7 @@ vermelho {
 	margin-right: 0;
 }
 
-.InputPass, .InputRank {
+.Input {
 	border: 0;
 	color: #333;
 	float: left;
@@ -142,11 +164,11 @@ vermelho {
 	margin-bottom: 10px;
 }
 
-.InputPass:focus, .InputRank:focus {
+.Input:focus {
 	outline: 0;
 	color: #333;
 }
 
-.InputPass::placeholder, .InputRank::placeholder {
+.Input::placeholder {
 	color: #333;
 }

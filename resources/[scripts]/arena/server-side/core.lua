@@ -35,7 +35,7 @@ function Creative.CheckEnter(Route,Number)
 	if Passport then
 		if Arenas[Number] then
 			if vRP.Request(source,"Prosseguir para a <b>Arena</b> pagando <b>$"..parseFormat(Arenas[Number]["Price"]).."</b> dólares?","Sim, por favor","Não, volto mais tarde") then
-				if vRP.PaymentFull(Passport,Arenas[Number]["Price"]) then
+				if vRP.PaymentBank(Passport,Arenas[Number]["Price"]) then
 					TriggerEvent("arena:Active",Number)
 					vRP.SaveTemporary(Passport,source,Route)
 

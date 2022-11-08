@@ -64,21 +64,21 @@
 					<AmmoInfo ref="NULL" />
 					<AimingInfo ref="FLASHLIGHT_TARGETING_RESTRAINTS" />
 					<ClipSize value="0" />
-					<AccuracySpread value="0.100000" />
+					<AccuracySpread value="0.000000" />
 					<AccurateModeAccuracyModifier value="0.500000" />
 					<RunAndGunAccuracyModifier value="2.000000" />
 					<RunAndGunAccuracyMinOverride value="-1.000000" />
-					<RecoilAccuracyMax value="0.500000" />
-					<RecoilErrorTime value="0.001000" />
+					<RecoilAccuracyMax value="1.000000" />
+					<RecoilErrorTime value="0.000000" />
 					<RecoilRecoveryRate value="1.000000" />
-					<RecoilAccuracyToAllowHeadShotAI value="10.000000" />
+					<RecoilAccuracyToAllowHeadShotAI value="0.175000" />
 					<MinHeadShotDistanceAI value="0.000000" />
-					<MaxHeadShotDistanceAI value="10.000000" />
-					<HeadShotDamageModifierAI value="4.000000" />
+					<MaxHeadShotDistanceAI value="5.000000" />
+					<HeadShotDamageModifierAI value="1.000000" />
 					<RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
 					<MinHeadShotDistancePlayer value="0.000000" />
-					<MaxHeadShotDistancePlayer value="200.000000" />
-					<HeadShotDamageModifierPlayer value="50.000000" />
+					<MaxHeadShotDistancePlayer value="5.000000" />
+					<HeadShotDamageModifierPlayer value="1.000000" />
 					<Damage value="0.000000" />
 					<DamageTime value="0.000000" />
 					<DamageTimeInVehicle value="0.000000" />
@@ -199,14 +199,14 @@
 					<NetworkPlayerDamageModifier value="1.000000" />
 					<NetworkPedDamageModifier value="1.000000" />
 					<NetworkHeadShotPlayerDamageModifier value="1.000000" />
-					<LockOnRange value="2.000000" />
-					<WeaponRange value="1.500000" />
+					<LockOnRange value="10.000000" />
+					<WeaponRange value="10.000000" />
 					<BulletDirectionOffsetInDegrees value="0.000000" />
 					<AiSoundRange value="-1.000000" />
 					<AiPotentialBlastEventRange value="-1.000000" />
-					<DamageFallOffRangeMin value="1.500000" />
-					<DamageFallOffRangeMax value="1.500000" />
-					<DamageFallOffModifier value="0.300000" />
+					<DamageFallOffRangeMin value="10.000000" />
+					<DamageFallOffRangeMax value="10.000000" />
+					<DamageFallOffModifier value="1.000000" />
 					<VehicleWeaponHash />
 					<DefaultCameraHash>FLASHLIGHT_AIM_CAMERA</DefaultCameraHash>
 					<AimCameraHash />
@@ -214,8 +214,7 @@
 					<CoverCameraHash>DEFAULT_THIRD_PERSON_PED_AIM_IN_COVER_CAMERA</CoverCameraHash>
 					<CoverReadyToFireCameraHash />
 					<RunAndGunCameraHash>FLASHLIGHT_AIM_CAMERA</RunAndGunCameraHash>
-					<CinematicShootingCameraHash>DEFAULT_THIRD_PERSON_PED_CINEMATIC_SHOOTING_CAMERA
-					</CinematicShootingCameraHash>
+					<CinematicShootingCameraHash>DEFAULT_THIRD_PERSON_PED_CINEMATIC_SHOOTING_CAMERA</CinematicShootingCameraHash>
 					<AlternativeOrScopedCameraHash />
 					<RunAndGunAlternativeOrScopedCameraHash />
 					<CinematicShootingAlternativeOrScopedCameraHash />
@@ -305,11 +304,7 @@
 					</AttachPoints>
 					<GunFeedBone />
 					<TargetSequenceGroup />
-					<WeaponFlags>CarriedInHand ArmourPenetrating CanFreeAim MeleeClub UsableOnFoot UsableClimbing
-						UsableInCover DoesRevivableDamage NonViolent AllowCloseQuarterKills HasLowCoverSwaps
-						DisableCombatRoll NoWheelStats QuitTransitionToIdleIntroOnWeaponChange
-						DisableLeftHandIkWhenOnFoot UseFPSAimIK AllowMeleeBlock CanBeAimedLikeGunWithoutFiring
-						HideReticule CanUseInVehMelee</WeaponFlags>
+					<WeaponFlags>CarriedInHand ArmourPenetrating CanFreeAim MeleeClub UsableOnFoot UsableClimbing UsableInCover DoesRevivableDamage NonViolent AllowCloseQuarterKills HasLowCoverSwaps DisableCombatRoll NoWheelStats QuitTransitionToIdleIntroOnWeaponChange DisableLeftHandIkWhenOnFoot UseFPSAimIK AllowMeleeBlock CanBeAimedLikeGunWithoutFiring HideReticule CanUseInVehMelee</WeaponFlags>
 					<TintSpecValues ref="TINT_DEFAULT" />
 					<FiringPatternAliases ref="NULL" />
 					<ReloadUpperBodyFixupExpressionData ref="default" />

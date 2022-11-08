@@ -24,7 +24,7 @@ RegisterNUICallback("updateSkin",function(Data,Callback)
 		SetNuiFocus(false,false)
 		vSERVER.updateSkin(myClothes)
 		SendNUIMessage({ Open = false })
-		-- TriggerServerEvent("vRP:BucketClient","Exit")
+		TriggerServerEvent("vRP:BucketClient","Exit")
 	end
 
 	TriggerEvent("barbershop:Apply",myClothes)
@@ -117,9 +117,9 @@ function OpenBarbershop(Enabled)
 	local Ped = PlayerPedId()
 
 	if Enabled then
-		-- vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
-		-- vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
-		-- TriggerServerEvent("vRP:BucketClient","Enter")
+		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
+		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+		TriggerServerEvent("vRP:BucketClient","Enter")
 
 		SetEntityHeading(PlayerPedId(),332.21)
 		SetFollowPedCamViewMode(0)

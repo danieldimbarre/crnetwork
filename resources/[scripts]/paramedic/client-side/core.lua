@@ -52,19 +52,19 @@ CreateThread(function()
 			BloodTimers = GetGameTimer() + 10000
 			BloodTick = BloodTick + 1
 
-			-- if BloodTick >= 3 and Bleeding >= 3 then
-			-- 	BloodTick = 0
-			-- 	local Nocaute = Bleeding * 1000
+			if BloodTick >= 3 and Bleeding >= 3 then
+				BloodTick = 0
+				local Nocaute = Bleeding * 1000
 
-			-- 	if not IsPedInAnyVehicle(Ped) then
-			-- 		SetPedToRagdoll(Ped,Nocaute,Nocaute,0,0,0,0)
-			-- 		TriggerEvent("inventory:Cancel")
-			-- 	end
+				if not IsPedInAnyVehicle(Ped) then
+					SetPedToRagdoll(Ped,Nocaute,Nocaute,0,0,0,0)
+					TriggerEvent("inventory:Cancel")
+				end
 
-			-- 	DoScreenFadeOut(1000)
-			-- 	Wait(Nocaute)
-			-- 	DoScreenFadeIn(1000)
-			-- end
+				DoScreenFadeOut(1000)
+				Wait(Nocaute)
+				DoScreenFadeIn(1000)
+			end
 		end
 
 		Wait(1000)

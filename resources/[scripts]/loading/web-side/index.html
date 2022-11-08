@@ -1,26 +1,11 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>#reliquia</title>
-        <script src="nui://game/ui/jquery.js"></script>
-        <link href="css.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <audio autoplay loop id="music">
-        <source src="audio.mp3" type="audio/mpeg">
-    </audio>
-    <script type="text/javascript">
-        var music = document.getElementById("music");
-        music.volume = 0.1;
-        document.addEventListener("keypress",(event) => {
-            if(event.key == "p"){
-                if(music.paused){
-                    music.play();
-                } else {
-                    music.pause();
-                }
-            }
-        });
-    </script>
-        <video src="video.webm" autoplay muted loop></video>
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Creative Network</title>
+		<link href="css.css" rel="stylesheet" type="text/css"/>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<video src="video.webm" autoplay muted loop></video>
+	</body>
 </html>

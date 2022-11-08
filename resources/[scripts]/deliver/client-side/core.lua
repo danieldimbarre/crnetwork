@@ -401,7 +401,7 @@ function DrawText(x,y,z,text,color)
 		local width = string.len(text) / 300
 
 		if color then
-			DrawRect(_x,_y + 0.0125,width,0.03,162,124,219,200)
+			DrawRect(_x,_y + 0.0125,width,0.03,33,172,56,200)
 		else
 			DrawRect(_x,_y + 0.0125,width,0.03,15,15,15,200)
 		end

@@ -56,8 +56,7 @@ CreateThread(function()
 			name = "Beds:"..Number,
 			heading = v["Heading"],
 			minZ = v["Coords"]["z"] - 0.01,
-			maxZ = v["Coords"]["z"] + 0.01,
-			debugPoly = true
+			maxZ = v["Coords"]["z"] + 0.01
 		},{
 			shop = Number,
 			Distance = v["Distance"],

@@ -122,8 +122,8 @@ local Garages = {
 	["61"] = { name = "Police", payment = false, perm = "Police" },
 	["62"] = { name = "heliPolice", payment = false, perm = "Police" },
 
-	-- ["63"] = { name = "Police", payment = false, perm = "Police" },
-	-- ["64"] = { name = "heliPolice", payment = false, perm = "Police" },
+	["63"] = { name = "Police", payment = false, perm = "Police" },
+	["64"] = { name = "heliPolice", payment = false, perm = "Police" },
 	["65"] = { name = "Police", payment = false, perm = "Police" },
 	["66"] = { name = "heliPolice", payment = false, perm = "Police" },
 	["67"] = { name = "Police", payment = false, perm = "Police" },

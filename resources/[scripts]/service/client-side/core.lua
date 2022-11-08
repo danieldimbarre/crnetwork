@@ -19,14 +19,15 @@ local NameList = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
 	{ 441.81,-982.05,30.83,"Police-1",1.0 },
-	{ -447.28,6013.01,32.41,"Police-2",1.0 },
-	{ 1840.20,2578.48,46.07,"Police-3",1.0 },
-	-- { 385.43,794.42,187.48,"Police-4",1.0 },
-	{ 382.01,-1596.39,29.91,"Police-5",1.0 },
-	{ -675.47,326.85,83.09,"Paramedic-1",1.0 },
-	-- { 310.23,-597.54,43.29,"Paramedic-2",1.0 },
-	{ -254.77,6331.03,32.79,"Paramedic-3",1.5 },
-	-- { 1188.05,-1468.31,34.66,"Paramedic-4",1.5 }
+	{ 1833.75,3678.34,34.27,"Police-2",1.0 },
+	{ -447.28,6013.01,32.41,"Police-3",1.0 },
+	{ 1840.20,2578.48,46.07,"Police-4",1.0 },
+	-- { 385.43,794.42,187.48,"Police-5",1.0 },
+	{ 382.01,-1596.39,29.91,"Police-6",1.0 },
+	-- { 310.23,-597.54,43.29,"Paramedic-1",1.0 },
+	{ -254.77,6331.03,32.79,"Paramedic-2",1.5 },
+	-- { 1188.05,-1468.31,34.66,"Paramedic-3",1.5 },
+	{ -675.47,326.85,83.09,"Paramedic-4",1.0 },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -67,13 +68,14 @@ AddEventHandler("service:Label",function(Service,Text)
 		exports["target"]:LabelText("Service:Police-1",Text)
 		exports["target"]:LabelText("Service:Police-2",Text)
 		exports["target"]:LabelText("Service:Police-3",Text)
-		-- exports["target"]:LabelText("Service:Police-4",Text)
-		exports["target"]:LabelText("Service:Police-5",Text)
-		-- exports["target"]:LabelText("Service:Police-6",Text)
+		exports["target"]:LabelText("Service:Police-4",Text)
+		-- exports["target"]:LabelText("Service:Police-5",Text)
+		exports["target"]:LabelText("Service:Police-6",Text)
 	elseif Service == "Paramedic" then
-		exports["target"]:LabelText("Service:Paramedic-1",Text)
+		-- exports["target"]:LabelText("Service:Paramedic-1",Text)
 		exports["target"]:LabelText("Service:Paramedic-2",Text)
 		-- exports["target"]:LabelText("Service:Paramedic-3",Text)
+		exports["target"]:LabelText("Service:Paramedic-4",Text)
 	else
 		exports["target"]:LabelText("Service:"..Service,Text)
 	end

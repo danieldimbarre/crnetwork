@@ -57,21 +57,21 @@
 					<AmmoInfo ref="NULL" />
 					<AimingInfo ref="UNARMED_TARGETING_RESTRAINTS" />
 					<ClipSize value="0" />
-					<AccuracySpread value="0.000000" />
+					<AccuracySpread value="0.100000" />
 					<AccurateModeAccuracyModifier value="0.500000" />
 					<RunAndGunAccuracyModifier value="2.000000" />
 					<RunAndGunAccuracyMinOverride value="-1.000000" />
-					<RecoilAccuracyMax value="1.000000" />
-					<RecoilErrorTime value="0.000000" />
+					<RecoilAccuracyMax value="0.500000" />
+					<RecoilErrorTime value="0.001000" />
 					<RecoilRecoveryRate value="1.000000" />
-					<RecoilAccuracyToAllowHeadShotAI value="0.175000" />
+					<RecoilAccuracyToAllowHeadShotAI value="10.000000" />
 					<MinHeadShotDistanceAI value="0.000000" />
-					<MaxHeadShotDistanceAI value="5.000000" />
-					<HeadShotDamageModifierAI value="1.000000" />
+					<MaxHeadShotDistanceAI value="10.000000" />
+					<HeadShotDamageModifierAI value="4.000000" />
 					<RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
 					<MinHeadShotDistancePlayer value="0.000000" />
-					<MaxHeadShotDistancePlayer value="5.000000" />
-					<HeadShotDamageModifierPlayer value="1.000000" />
+					<MaxHeadShotDistancePlayer value="200.000000" />
+					<HeadShotDamageModifierPlayer value="50.000000" />
 					<Damage value="0.000000" />
 					<DamageTime value="0.000000" />
 					<DamageTimeInVehicle value="0.000000" />
@@ -192,13 +192,13 @@
 					<NetworkPlayerDamageModifier value="1.000000" />
 					<NetworkPedDamageModifier value="1.000000" />
 					<NetworkHeadShotPlayerDamageModifier value="1.000000" />
-					<LockOnRange value="10.000000" />
-					<WeaponRange value="1.600000" />
+					<LockOnRange value="2.000000" />
+					<WeaponRange value="1.500000" />
 					<BulletDirectionOffsetInDegrees value="0.000000" />
 					<AiSoundRange value="-1.000000" />
 					<AiPotentialBlastEventRange value="-1.000000" />
-					<DamageFallOffRangeMin value="1.600000" />
-					<DamageFallOffRangeMax value="1.600000" />
+					<DamageFallOffRangeMin value="1.500000" />
+					<DamageFallOffRangeMax value="1.500000" />
 					<DamageFallOffModifier value="0.300000" />
 					<VehicleWeaponHash />
 					<DefaultCameraHash>MELEE_AIM_CAMERA</DefaultCameraHash>
@@ -288,7 +288,11 @@
 					<AttachPoints />
 					<GunFeedBone />
 					<TargetSequenceGroup />
-					<WeaponFlags>AllowMeleeBlock CarriedInHand ArmourPenetrating CanLockonOnFoot CanLockonInVehicle MeleeClub UsableOnFoot UsableClimbing UsableInCover DoesRevivableDamage AllowCloseQuarterKills HasLowCoverSwaps NoWheelStats QuitTransitionToIdleIntroOnWeaponChange DisableLeftHandIkWhenOnFoot UseFPSAimIK MeleeHatchet UseFPSSecondaryMotion AllowMeleeBlock DangerousLookingMeleeWeapon CanUseInVehMelee</WeaponFlags>
+					<WeaponFlags>AllowMeleeBlock CarriedInHand ArmourPenetrating CanLockonOnFoot CanLockonInVehicle
+						MeleeClub UsableOnFoot UsableClimbing UsableInCover DoesRevivableDamage AllowCloseQuarterKills
+						HasLowCoverSwaps NoWheelStats QuitTransitionToIdleIntroOnWeaponChange
+						DisableLeftHandIkWhenOnFoot UseFPSAimIK MeleeHatchet UseFPSSecondaryMotion AllowMeleeBlock
+						DangerousLookingMeleeWeapon CanUseInVehMelee</WeaponFlags>
 					<TintSpecValues ref="TINT_DEFAULT" />
 					<FiringPatternAliases ref="NULL" />
 					<ReloadUpperBodyFixupExpressionData ref="default" />

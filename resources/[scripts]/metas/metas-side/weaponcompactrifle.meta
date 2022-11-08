@@ -57,21 +57,21 @@
 					<AmmoInfo ref="AMMO_RIFLE" />
 					<AimingInfo ref="RIFLE_HI_BASE_STRAFE" />
 					<ClipSize value="30" />
-					<AccuracySpread value="3.500000" />
+					<AccuracySpread value="0.100000" />
 					<AccurateModeAccuracyModifier value="0.500000" />
 					<RunAndGunAccuracyModifier value="2.000000" />
 					<RunAndGunAccuracyMinOverride value="-1.000000" />
 					<RecoilAccuracyMax value="0.500000" />
-					<RecoilErrorTime value="3.000000" />
+					<RecoilErrorTime value="0.001000" />
 					<RecoilRecoveryRate value="2.500000" />
-					<RecoilAccuracyToAllowHeadShotAI value="0.175000" />
+					<RecoilAccuracyToAllowHeadShotAI value="10.000000" />
 					<MinHeadShotDistanceAI value="0.000000" />
-					<MaxHeadShotDistanceAI value="5.000000" />
-					<HeadShotDamageModifierAI value="1.000000" />
+					<MaxHeadShotDistanceAI value="10.000000" />
+					<HeadShotDamageModifierAI value="4.000000" />
 					<RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
 					<MinHeadShotDistancePlayer value="0.000000" />
-					<MaxHeadShotDistancePlayer value="5.000000" />
-					<HeadShotDamageModifierPlayer value="1.000000" />
+					<MaxHeadShotDistancePlayer value="200.000000" />
+					<HeadShotDamageModifierPlayer value="50.000000" />
 					<Damage value="20.000000" />
 					<DamageTime value="0.000000" />
 					<DamageTimeInVehicle value="0.000000" />
@@ -212,7 +212,8 @@
 					<CoverCameraHash>DEFAULT_THIRD_PERSON_PED_AIM_IN_COVER_CAMERA</CoverCameraHash>
 					<CoverReadyToFireCameraHash />
 					<RunAndGunCameraHash>DEFAULT_THIRD_PERSON_PED_RUN_AND_GUN_CAMERA</RunAndGunCameraHash>
-					<CinematicShootingCameraHash>DEFAULT_THIRD_PERSON_PED_CINEMATIC_SHOOTING_CAMERA</CinematicShootingCameraHash>
+					<CinematicShootingCameraHash>DEFAULT_THIRD_PERSON_PED_CINEMATIC_SHOOTING_CAMERA
+					</CinematicShootingCameraHash>
 					<AlternativeOrScopedCameraHash />
 					<RunAndGunAlternativeOrScopedCameraHash />
 					<CinematicShootingAlternativeOrScopedCameraHash />
@@ -311,7 +312,12 @@
 					</AttachPoints>
 					<GunFeedBone />
 					<TargetSequenceGroup />
-					<WeaponFlags>IgnoreHelmets CarriedInHand Automatic Gun CanLockonOnFoot CanLockonInVehicle CanFreeAim TwoHanded AnimReload AnimCrouchFire TreatAsOneHandedInCover UsableOnFoot UsableInCover AllowEarlyExitFromFireAnimAfterBulletFired NoLeftHandIKWhenBlocked AllowCloseQuarterKills HasLowCoverReloads HasLowCoverSwaps TorsoIKForWeaponBlock LongWeapon UseFPSAimIK UseFPSSecondaryMotion FPSOnlyExitFireAnimAfterRecoilEnds DisableLeftHandIkInDriveby</WeaponFlags>
+					<WeaponFlags>CarriedInHand Automatic Gun CanLockonOnFoot CanLockonInVehicle CanFreeAim TwoHanded
+						AnimReload AnimCrouchFire TreatAsOneHandedInCover UsableOnFoot UsableInCover
+						AllowEarlyExitFromFireAnimAfterBulletFired NoLeftHandIKWhenBlocked AllowCloseQuarterKills
+						HasLowCoverReloads HasLowCoverSwaps TorsoIKForWeaponBlock LongWeapon UseFPSAimIK
+						UseFPSSecondaryMotion FPSOnlyExitFireAnimAfterRecoilEnds DisableLeftHandIkInDriveby
+					</WeaponFlags>
 					<TintSpecValues ref="TINT_DEFAULT" />
 					<FiringPatternAliases ref="FIRING_PATTERN_RIFLE" />
 					<ReloadUpperBodyFixupExpressionData ref="default" />

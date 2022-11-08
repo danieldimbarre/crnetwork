@@ -4025,7 +4025,7 @@ Use = {
 						explosionProgress = explosionProgress - 1
 					until explosionProgress <= 0
 
-					Creative.DropServer(CoordsAtm,"dollars",math.random(2500,5000))
+					Creative.DropServer(CoordsAtm,"dirtydollars",math.random(2500,5000))
 					TriggerClientEvent("player:Residuals",source,"Resíduo de Explosivo.")
 					TriggerClientEvent("objects:Remover",-1,tostring(Number))
 					TriggerClientEvent("vRP:Explosion",source,Coords)

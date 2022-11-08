@@ -80,18 +80,18 @@ end)
 -- SERVICE:ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("service:Add")
-AddEventHandler("service:Add",function(Number)
-	local source = source
-	local Number = parseInt(Number)
-	local Passport = vRP.Passport(source)
-	if Passport and Panel[Passport] and Number > 1 and Passport ~= Number and vRP.Identity(Number) then
-		if vRP.HasPermission(Passport,Panel[Passport],1) then
-			vRP.SetPermission(Number,Panel[Passport])
+AddEventHandler("service:Add",function(Number,Rank)
+    local source = source
+    local Number = parseInt(Number)
+    local Passport = vRP.Passport(source)
+    if Passport and Panel[Passport] and Number > 1 and Passport ~= Number and vRP.Identity(Number) then
+        if vRP.HasPermission(Passport,Panel[Passport],1) then
+            vRP.SetPermission(Number,Panel[Passport],parseInt(Rank))
 
-			TriggerClientEvent("Notify",source,"verde","Passaporte adicionado.",5000)
-			TriggerClientEvent("service:Update",source)
-		end
-	end
+            TriggerClientEvent("Notify",source,"verde","Passaporte adicionado.",5000)
+            TriggerClientEvent("service:Update",source)
+        end
+    end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVICE:HIERARCHY

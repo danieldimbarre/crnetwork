@@ -22,17 +22,21 @@ local Chests = {
 	{ ["Name"] = "PizzaThis", ["Coords"] = vec3(796.55,-749.32,31.26), ["Mode"] = "2" },
 	{ ["Name"] = "UwuCoffee", ["Coords"] = vec3(-572.65,-1049.74,26.61), ["Mode"] = "2" },
 	{ ["Name"] = "BeanMachine", ["Coords"] = vec3(123.04,-1043.76,29.27), ["Mode"] = "2" },
-	{ ["Name"] = "Ballas", ["Coords"] = vec3(94.96,-1983.86,20.44), ["Mode"] = "2" },
-	{ ["Name"] = "Families", ["Coords"] = vec3(-30.36,-1434.1,31.49), ["Mode"] = "2" },
-	{ ["Name"] = "Vagos", ["Coords"] = vec3(347.04,-2067.86,20.86), ["Mode"] = "2" },
-	{ ["Name"] = "Aztecas", ["Coords"] = vec3(513.49,-1802.83,28.51), ["Mode"] = "2" },
-	{ ["Name"] = "Bloods", ["Coords"] = vec3(231.62,-1752.92,28.98), ["Mode"] = "2" },
-	{ ["Name"] = "Triads", ["Coords"] = vec3(-816.51,-696.17,32.13), ["Mode"] = "2" },
-	{ ["Name"] = "Razors", ["Coords"] = vec3(502.55,-70.36,58.15), ["Mode"] = "2" },
 	{ ["Name"] = "trayShot", ["Coords"] = vec3(-1195.20,-893.13,14.41), ["Mode"] = "3" },
 	{ ["Name"] = "trayDesserts", ["Coords"] = vec3(-584.01,-1059.30,22.41), ["Mode"] = "3" },
 	{ ["Name"] = "trayPizza", ["Coords"] = vec3(811.10,-752.78,26.74), ["Mode"] = "3" },
-	{ ["Name"] = "trayBean", ["Coords"] = vec3(121.8,-1037.27,29.25), ["Mode"] = "3" }
+	{ ["Name"] = "trayBean", ["Coords"] = vec3(121.8,-1037.27,29.25), ["Mode"] = "3" },
+	--------------------------------------------CRIME-------------------------------------------------------------------------------------
+    { ["Name"] = "Ballas", ["Coords"] = vec3(-1.72,-1811.68,29.15), ["Mode"] = "2" },    --------BALLAS COCAINA E BRINQUEDO------
+	{ ["Name"] = "Families", ["Coords"] = vec3(983.46,-125.55,78.89), ["Mode"] = "2" },----------DISMANCHE, ALGEMA-------
+	{ ["Name"] = "Vagos", ["Coords"] = vec3(326.62,-2000.71,24.2), ["Mode"] = "2" }, ----------VAGOS META,LOCKPICK-------
+	{ ["Name"] = "Cartel", ["Coords"] = vec3(-644.45,-1244.24,11.54), ["Mode"] = "2" },  ---------CARTEL ARMAS-------
+	{ ["Name"] = "Bloods", ["Coords"] = vec3(-163.83,-1619.09,33.65), ["Mode"] = "2" }, ---------------MACONHA,CAPUZ,------------
+	{ ["Name"] = "Triads", ["Coords"] = vec3(-816.51,-696.17,32.13), ["Mode"] = "2" },  ---------MAFIA ARMAS--------
+	{ ["Name"] = "Marabunta", ["Coords"] = vec3(1250.68,-1581.0,58.35), ["Mode"] = "2" },------MARABUTA LAVAGEM,C4------
+	{ ["Name"] = "Aztecas", ["Coords"] = vec3(484.83,-1533.59,29.28), ["Mode"] = "2" },------MEXICO EQUIPAMENTOS,PAGE
+
+	
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LABELS

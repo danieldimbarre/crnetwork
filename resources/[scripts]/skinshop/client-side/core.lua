@@ -124,8 +124,8 @@ local Skinshops = {
 	{ -586.89,-1049.92,22.34 }, -- Uwu Café
 	{ 300.2,-598.85,43.29 }, -- Hospital Sul
 	{ -256.56,6327.32,32.42 }, -- Hospital Norte
-	{ 841.11,-824.54,26.34 }, -- Mecânica Sul
-	{ 801.62,-830.37,26.34 }, -- Mecânica Sul
+	{ 840.15,-826.29,26.34 }, -- Mecânica Sul
+	-- { 801.62,-830.37,26.34 }, -- Mecânica Sul
 	{ 810.31,-760.23,31.26 } -- Pizza This
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -265,11 +265,11 @@ end
 function openMenu(Menus)
 	MaxValues()
 
-	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
-	vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+	-- vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
+	-- vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
 
 	Previous = json.encode(Dataset)
-	TriggerServerEvent("vRP:BucketClient","Enter")
+	-- TriggerServerEvent("vRP:BucketClient","Enter")
 	SendNUIMessage({ action = "open", menus = Menus, currentClothing = Dataset })
 
 	SetNuiFocus(true,true)
@@ -371,7 +371,7 @@ RegisterNUICallback("close",function(Data,Callback)
 		DestroyCam(Cam,false)
 	end
 
-	TriggerServerEvent("vRP:BucketClient","Exit")
+	-- TriggerServerEvent("vRP:BucketClient","Exit")
 	SetNuiFocus(false,false)
 	vRP.removeObjects()
 

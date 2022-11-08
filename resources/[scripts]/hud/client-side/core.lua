@@ -166,7 +166,7 @@ CreateThread(function()
 			end
 
 			if StressTimer <= GetGameTimer() then
-				StressTimer = GetGameTimer() + 10000
+				StressTimer = GetGameTimer() + 20000
 
 				if Stress >= 75 and GetEntityHealth(Ped) > 100 then
 					DoScreenFadeOut(0)

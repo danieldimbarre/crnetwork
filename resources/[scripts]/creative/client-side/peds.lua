@@ -530,18 +530,18 @@ local List = {
 		Model = "s_f_y_cop_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
-	-- { -- Police
-	-- 	Distance = 100,
-	-- 	Coords = { 1844.42,3707.33,33.97,255.12 },
-	-- 	Model = "s_f_y_cop_01",
-	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	-- },
-	-- { -- Police
-	-- 	Distance = 100,
-	-- 	Coords = { 1839.35,3691.23,33.97,269.3 },
-	-- 	Model = "s_f_y_cop_01",
-	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	-- },
+	{ -- Police
+		Distance = 100,
+		Coords = { 1844.42,3707.33,33.97,255.12 },
+		Model = "s_f_y_cop_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
+	{ -- Police
+		Distance = 100,
+		Coords = { 1839.35,3691.23,33.97,269.3 },
+		Model = "s_f_y_cop_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
 	{ -- Paramedic
 		Distance = 100,
 		Coords = { -271.7,6321.75,32.42,0.0 },

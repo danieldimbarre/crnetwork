@@ -135,7 +135,7 @@ local List = {
 	-- { 1822.70,3686.64,34.26,"Paramedic",false },
 	-- { -254.64,6326.95,32.82,"Paramedic",false },
 	{ -428.54,-1728.29,19.78,"Recycle",false },
-	{ 287.77,2843.9,44.7,"Recycle",false },
+	{ 180.07,2793.29,45.65,"Recycle",false },
 	{ -413.97,6171.58,31.48,"Recycle",false },
 	{ 487.3,-997.08,30.68,"Police",false },
 	-- { 1838.43,3686.29,34.19,"Police",false },

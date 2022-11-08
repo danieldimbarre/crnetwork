@@ -4,7 +4,7 @@
 UsableF7 = true
 Whitelisted = true
 CombatLogMinutes = 3
-SalarySeconds = 3600
+SalarySeconds = 1800
 BannedText = "Banido"
 CleanDeathInventory = true
 ServerName = "Energy"

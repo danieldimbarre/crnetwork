@@ -14,7 +14,7 @@ Groups = {
 			["Premium"] = true
 		},
 		["Hierarchy"] = { "VIP" },
-		["Salary"] = { 2000 },
+		["Salary"] = { 900 },
 		["Service"] = {}
 	},
 	["Police"] = {

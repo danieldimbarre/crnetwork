@@ -12,23 +12,23 @@ vBARBERSHOP = Tunnel.getInterface("barbershop")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local cam = -1
-local myFace = { 0,100,0,100,0,0,0,0,0,0,0,-1,5,-1,-1,5,0,0,0,0,-1,5,0,-1,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21 }
+local myClothes = { 0,100,0,100,0,0,0,0,0,0,0,-1,5,-1,-1,5,0,0,0,0,-1,5,0,-1,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSkin",function(Data,Callback)
-	myFace = { tonumber(Data["fathers"]),tonumber(Data["kinship"]),tonumber(Data["eyecolor"]),tonumber(Data["skincolor"]),tonumber(Data["acne"]),tonumber(Data["stains"]),tonumber(Data["freckles"]),tonumber(Data["aging"]),tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintensity"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintensity"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),tonumber(Data["face06"]),tonumber(Data["face08"]),tonumber(Data["face09"]),tonumber(Data["face10"]),tonumber(Data["face12"]),tonumber(Data["face13"]),tonumber(Data["face14"]),tonumber(Data["face15"]),tonumber(Data["face16"]),tonumber(Data["face17"]),tonumber(Data["face19"]),tonumber(Data["mothers"]) }
+	myClothes = { tonumber(Data["fathers"]),tonumber(Data["kinship"]),tonumber(Data["eyecolor"]),tonumber(Data["skincolor"]),tonumber(Data["acne"]),tonumber(Data["stains"]),tonumber(Data["freckles"]),tonumber(Data["aging"]),tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintensity"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintensity"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),tonumber(Data["face06"]),tonumber(Data["face08"]),tonumber(Data["face09"]),tonumber(Data["face10"]),tonumber(Data["face12"]),tonumber(Data["face13"]),tonumber(Data["face14"]),tonumber(Data["face15"]),tonumber(Data["face16"]),tonumber(Data["face17"]),tonumber(Data["face19"]),tonumber(Data["mothers"]) }
 
 	if Data["value"] then
 		OpenCreator(false)
 		SetNuiFocus(false,false)
-		vBARBERSHOP.updateSkin(myFace,true)
+		vBARBERSHOP.updateSkin(myClothes,true)
 		SendNUIMessage({ Open = false })
 		TriggerEvent("skinshop:updateTattoo")
 		TriggerServerEvent("vRP:BucketClient","Exit")
 	end
 
-	TriggerEvent("barbershop:Apply",myFace)
+	TriggerEvent("barbershop:Apply",myClothes)
 
 	Callback("Ok")
 end)
@@ -61,7 +61,7 @@ function OpenCreator(enable)
 
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
-		SendNUIMessage({ Open = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1, maxHaircolors = GetNumHairColors()-1, maxMakeupcolor = GetNumMakeupColors()-1, maxBeard = GetPedHeadOverlayNum(1)-1, maxEyebrow = GetPedHeadOverlayNum(2)-1, maxMakeup = GetPedHeadOverlayNum(4)-1, maxBlush = GetPedHeadOverlayNum(5)-1, maxLipstick = GetPedHeadOverlayNum(8)-1, fathers = myFace[1], mothers = myFace[41], kinship = myFace[2], eyecolor = myFace[3], skincolor = myFace[4], acne = myFace[5], stains = myFace[6], freckles = myFace[7], aging = myFace[8], hair = myFace[9], haircolor = myFace[10], haircolor2 = myFace[11], makeup = myFace[12], makeupintensity = myFace[13], makeupcolor = myFace[14], lipstick = myFace[15], lipstickintensity = myFace[16], lipstickcolor = myFace[17], eyebrow = myFace[18], eyebrowintensity = myFace[19], eyebrowcolor = myFace[20], beard = myFace[21], beardintensity = myFace[22], beardcolor = myFace[23], blush = myFace[24], blushintensity = myFace[25], blushcolor = myFace[26], face00 = myFace[27], face01 = myFace[28], face04 = myFace[29], face06 = myFace[30], face08 = myFace[31], face09 = myFace[32], face10 = myFace[33], face12 = myFace[34], face13 = myFace[35], face14 = myFace[36], face15 = myFace[37], face16 = myFace[38], face17 = myFace[39], face19 = myFace[40] })
+		SendNUIMessage({ Open = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2)-1, maxHaircolors = GetNumHairColors()-1, maxMakeupcolor = GetNumMakeupColors()-1, maxBeard = GetPedHeadOverlayNum(1)-1, maxEyebrow = GetPedHeadOverlayNum(2)-1, maxMakeup = GetPedHeadOverlayNum(4)-1, maxBlush = GetPedHeadOverlayNum(5)-1, maxLipstick = GetPedHeadOverlayNum(8)-1, fathers = myClothes[1], mothers = myClothes[41], kinship = myClothes[2], eyecolor = myClothes[3], skincolor = myClothes[4], acne = myClothes[5], stains = myClothes[6], freckles = myClothes[7], aging = myClothes[8], hair = myClothes[9], haircolor = myClothes[10], haircolor2 = myClothes[11], makeup = myClothes[12], makeupintensity = myClothes[13], makeupcolor = myClothes[14], lipstick = myClothes[15], lipstickintensity = myClothes[16], lipstickcolor = myClothes[17], eyebrow = myClothes[18], eyebrowintensity = myClothes[19], eyebrowcolor = myClothes[20], beard = myClothes[21], beardintensity = myClothes[22], beardcolor = myClothes[23], blush = myClothes[24], blushintensity = myClothes[25], blushcolor = myClothes[26], face00 = myClothes[27], face01 = myClothes[28], face04 = myClothes[29], face06 = myClothes[30], face08 = myClothes[31], face09 = myClothes[32], face10 = myClothes[33], face12 = myClothes[34], face13 = myClothes[35], face14 = myClothes[36], face15 = myClothes[37], face16 = myClothes[38], face17 = myClothes[39], face19 = myClothes[40] })
 
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })
@@ -123,6 +123,8 @@ function defaultCharacter()
     end
 
 	ClearAllPedProps(Ped)
+
+	TriggerEvent("barbershop:Apply",myClothes)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPEN
@@ -131,11 +133,3 @@ RegisterNetEvent("creator:Open")
 AddEventHandler("creator:Open",function()
 	OpenCreator(true)
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- UPDATEFACE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("creator:updateFace")
-AddEventHandler("creator:updateFace",function(status)
-	myFace = {}
-	myFace = status
-end) 

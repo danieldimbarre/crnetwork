@@ -295,17 +295,17 @@ CreateThread(function()
 		}
 	})
 
-	AddBoxZone("CallParamedic",vec3(311.83,-593.31,43.08),0.25,0.25,{
+	AddBoxZone("CallParamedic",vec3(-678.14,326.62,82.96),0.25,0.25,{
 		name = "CallParamedic",
 		heading = 3374176,
-		minZ = 43.00,
-		maxZ = 43.25
+		minZ = 82.88,
+		maxZ = 83.00
 	},{
 		Distance = 2.0,
 		options = {
 			{
 				event = "target:CallWorks",
-				label = "Buscar Entregadores",
+				label = "Buscar Doadores",
 				tunnel = "proserver",
 				service = "Paramedic"
 			}
@@ -572,7 +572,7 @@ CreateThread(function()
 		Distance = 1.0
 	})
 
-	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688 },{
+	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688,-50684386 },{
 		options = {
 			{
 				event = "inventory:Animals",

@@ -74,6 +74,16 @@ local bennysLocations = {
 		heading = 272.13,
 		permission = "Police"
 	},
+	["Police05"] = {
+		pos = vector3(1840.98,3694.03,33.97),
+		heading = 331.66,
+		permission = "Police"
+	},
+	["HeliPolice05"] = {
+		pos = vector3(1853.31,3706.24,33.97),
+		heading = 320.32,
+		permission = "Police"
+	},
 	["Paramedic01"] = {
 		pos = vector3(-670.16,340.8,77.9),
 		heading = 87.88,

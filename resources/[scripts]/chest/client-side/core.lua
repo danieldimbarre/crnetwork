@@ -12,7 +12,7 @@ vSERVER = Tunnel.getInterface("chest")
 local Chests = {
 	{ ["Name"] = "Police", ["Coords"] = vec3(360.43,-1600.48,25.83), ["Mode"] = "1" },
 	{ ["Name"] = "Police", ["Coords"] = vec3(486.46,-994.94,31.07), ["Mode"] = "1" },
-	-- { ["Name"] = "Police", ["Coords"] = vec3(1836.96,3685.16,34.80), ["Mode"] = "1" },
+	{ ["Name"] = "Police", ["Coords"] = vec3(1836.96,3685.16,34.80), ["Mode"] = "1" },
 	{ ["Name"] = "Police", ["Coords"] = vec3(-445.38,6019.65,37.38), ["Mode"] = "1" },
 	-- { ["Name"] = "Police", ["Coords"] = vec3(386.72,800.09,187.47), ["Mode"] = "1" },
 	{ ["Name"] = "Police", ["Coords"] = vec3(1844.31,2573.84,46.26), ["Mode"] = "1" },

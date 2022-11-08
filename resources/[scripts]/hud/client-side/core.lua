@@ -166,9 +166,9 @@ CreateThread(function()
 			end
 
 			if StressTimer <= GetGameTimer() then
-				StressTimer = GetGameTimer() + 10000
+				StressTimer = GetGameTimer() + 20000
 
-				if Stress >= 25 and GetEntityHealth(Ped) > 100 then
+				if Stress >= 75 and GetEntityHealth(Ped) > 100 then
 					DoScreenFadeOut(0)
 
 					if not IsPedInAnyVehicle(Ped) then

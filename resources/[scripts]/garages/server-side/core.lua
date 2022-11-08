@@ -122,8 +122,8 @@ local Garages = {
 	["61"] = { name = "Police", payment = false, perm = "Police" },
 	["62"] = { name = "heliPolice", payment = false, perm = "Police" },
 
-	-- ["63"] = { name = "Police", payment = false, perm = "Police" },
-	-- ["64"] = { name = "heliPolice", payment = false, perm = "Police" },
+	["63"] = { name = "Police", payment = false, perm = "Police" },
+	["64"] = { name = "heliPolice", payment = false, perm = "Police" },
 	["65"] = { name = "Police", payment = false, perm = "Police" },
 	["66"] = { name = "heliPolice", payment = false, perm = "Police" },
 	["67"] = { name = "Police", payment = false, perm = "Police" },
@@ -197,9 +197,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("platePlayers",function(Plate,Passport)
 	if not vRP.PassportPlate(Plate) then
-		local Plate = GlobalState["Plates"]
-		Plate[Plate] = Passport
-		GlobalState:set("Plates",Plate,true)
+		local Plates = GlobalState["Plates"]
+		Plates[Plate] = Passport
+		GlobalState:set("Plates",Plates,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

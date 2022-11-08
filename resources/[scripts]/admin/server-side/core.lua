@@ -150,9 +150,9 @@ RegisterCommand("goda",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
-			Message[1] = parseInt(Message[1])
-			if Message[1] then
-				local Players = vRPC.ClosestPeds(source,Message[1])
+			local Range = parseInt(Message[1])
+			if Range then
+				local Players = vRPC.ClosestPeds(source,Range)
 				for _,v in pairs(Players) do
 					async(function()
 						local OtherPassport = vRP.Passport(v[2])
@@ -186,7 +186,7 @@ RegisterCommand("item2",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
-			if Message[1] and Message[2] and Message[3] and itemBody(Message[1]) ~= nil then
+			if Message[1] and Message[2] and parseInt(Message[3]) > 0 and itemBody(Message[1]) ~= nil then
 				vRP.GenerateItem(Message[3],Message[1],parseInt(Message[2]),true)
 			end
 		end
@@ -301,8 +301,8 @@ RegisterCommand("group",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and Message[2] and Message[3] and Message[2] ~= "Admin" and Message[2] ~= "Premium" then
 			local Groups = vRP.Groups()
 			if Groups[Message[2]] then
-				TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
 				vRP.SetPermission(Message[1],Message[2],Message[3])
+				TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
 			end
 		end
 	end
@@ -316,8 +316,8 @@ RegisterCommand("ungroup",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and Message[2] and Message[2] ~= "Admin" and Message[2] ~= "Premium" then
 			local Groups = vRP.Groups()
 			if Groups[Message[2]] then
-				TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
 				vRP.RemovePermission(Message[1],Message[2])
+				TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
 			end
 		end
 	end
@@ -435,6 +435,34 @@ RegisterCommand("players",function(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
 			TriggerClientEvent("Notify",source,"azul","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices(),5000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PON
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("pon",function(source)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) then
+			local Text = ""
+			local List = vRP.Players()
+
+			for OtherPassport,_ in pairs(List) do
+				async(function()
+					if Text == "" then
+						Text = Text..OtherPassport
+					else
+						if OtherPassport ~= #List then
+							Text = Text..", "
+						end
+
+						Text = Text..OtherPassport
+					end
+				end)
+			end
+
+			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text,5000)
 		end
 	end
 end)

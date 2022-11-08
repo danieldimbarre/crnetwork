@@ -124,11 +124,7 @@ local Skinshops = {
 	{ -586.89,-1049.92,22.34 }, -- Uwu Café
 	{ 300.2,-598.85,43.29 }, -- Hospital Sul
 	{ -256.56,6327.32,32.42 }, -- Hospital Norte
-<<<<<<< HEAD
-	--{ 841.11,-824.54,26.34 }, -- Mecânica Sul
-=======
 	{ 841.11,-824.54,26.34 }, -- Mecânica Sul
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 	{ 801.62,-830.37,26.34 }, -- Mecânica Sul
 	{ 810.31,-760.23,31.26 } -- Pizza This
 }

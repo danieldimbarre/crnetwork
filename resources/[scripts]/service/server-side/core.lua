@@ -29,7 +29,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("painel",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and Message[1] then
+	if Passport and Message[1] and Message[1] ~= "Premium" then
 		if vRP.HasPermission(Passport,Message[1],1) then
 			Panel[Passport] = Message[1]
 			TriggerClientEvent("service:Open",source,Message[1])
@@ -80,15 +80,6 @@ end)
 -- SERVICE:ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("service:Add")
-<<<<<<< HEAD
-AddEventHandler("service:Add",function(Number,Rank)
-    local source = source
-    local Number = parseInt(Number)
-    local Passport = vRP.Passport(source)
-    if Passport and Panel[Passport] and Number > 1 and Passport ~= Number and vRP.Identity(Number) then
-        if vRP.HasPermission(Passport,Panel[Passport],1) then
-            vRP.SetPermission(Number,Panel[Passport],Rank)
-=======
 AddEventHandler("service:Add",function(Number)
 	local source = source
 	local Number = parseInt(Number)
@@ -96,7 +87,6 @@ AddEventHandler("service:Add",function(Number)
 	if Passport and Panel[Passport] and Number > 1 and Passport ~= Number and vRP.Identity(Number) then
 		if vRP.HasPermission(Passport,Panel[Passport],1) then
 			vRP.SetPermission(Number,Panel[Passport])
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 
 			TriggerClientEvent("Notify",source,"verde","Passaporte adicionado.",5000)
 			TriggerClientEvent("service:Update",source)

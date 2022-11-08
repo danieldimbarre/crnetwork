@@ -193,9 +193,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("platePlayers",function(Plate,Passport)
 	if not vRP.PassportPlate(Plate) then
-		local Plate = GlobalState["Plates"]
-		Plate[Plate] = Passport
-		GlobalState:set("Plates",Plate,true)
+		local Plates = GlobalState["Plates"]
+		Plates[Plate] = Passport
+		GlobalState:set("Plates",Plates,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -234,13 +234,7 @@ local Works = {
 		"poltang"
 	},
 	["heliPolice"] = {
-<<<<<<< HEAD
-		"maverick2",
-		"energyheli",
-		"cougarfam",
-=======
 		"maverick2"
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 	},
 	["busPolice"] = {
 		"pbus",

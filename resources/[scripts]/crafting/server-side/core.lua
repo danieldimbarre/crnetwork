@@ -33,64 +33,17 @@ local List = {
 					["copper"] = 1
 				}
 			},
-<<<<<<< HEAD
-			
-		}
-	},
-	["Vagos"] = {
-		["perm"] = "Vagos",
-		["List"] = {
-			["drugtoy"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["amphetamine"] = 1,
-					["codeine"] = 1,
-					["plastic"] = 1
-				}
-			},
-		}
-	},
-	["Aztecas"] = {----CARTEL ARMAS-----
-		["perm"] = "Aztecas",
-		["List"] = {
-
-			["WEAPON_MICROSMG"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["smgbody"] = 1,
-					["aluminum"] = 45,
-					["copper"] = 50,
-					["plastic"] = 45,
-					["glass"] = 45,
-					["rubber"] = 50
-=======
 			["WEAPON_SHOTGUN_AMMO"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["copper"] = 1
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 				}
 			},
 			["handcuff"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-<<<<<<< HEAD
-					["riflebody"] = 1,
-					["aluminum"] = 120,
-					["copper"] = 130,
-					["plastic"] = 150,
-					["glass"] = 150,
-					["rubber"] = 110,
-					["smgbody"] = 2,
-				}
-			},
-						
-			["WEAPON_PISTOL_MK2"] = {
-=======
 					["aluminum"] = 150,
 					["sheetmetal"] = 15
 				}
@@ -104,78 +57,10 @@ local List = {
 				}
 			},
 			["WEAPON_VINTAGEPISTOL"] = {
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["pistolbody"] = 1,
-<<<<<<< HEAD
-					["aluminum"] = 25,
-					["copper"] = 25,
-					["plastic"] = 30,
-					["sheetmetal"] = 35,
-					["rubber"] = 25
-				}
-			},
-
-			["WEAPON_ASSAULTRIFLE_MK2"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["riflebody"] = 1,
-					["aluminum"] = 125,
-					["copper"] = 150,
-					["plastic"] = 125,
-					["glass"] = 120,
-					["rubber"] = 110
-				}
-			},
-
-			["WEAPON_ADVANCEDRIFLE"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["riflebody"] = 1,
-					["aluminum"] = 125,
-					["copper"] = 150,
-					["plastic"] = 125,
-					["glass"] = 120,
-					["rubber"] = 110
-				}
-			}
-			
-		}
-	},
-	["Bloods"] = { --maconha, c4, capuz---
-		["perm"] = "Bloods",
-		["List"] = {
-			["silk"] = {
-				["amount"] = 3,
-				["destroy"] = false,
-				["require"] = {
-					["woodlog"] = 1,
-					--["codeine"] = 1,
-					--["plastic"] = 1
-				}
-			},
-			["weedclone"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 50
-				}
-			},
-			["tableweed"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["woodlog"] = 50,
-					["techtrash"] = 50,
-					["aluminum"] = 100,
-					["sheetmetal"] = 100,
-					["pliers"] = 10,
-					["explosives"] = 3
-=======
 					["aluminum"] = 60,
 					["copper"] = 40,
 					["plastic"] = 30,
@@ -299,34 +184,12 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["copper"] = 1
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 				}
 			},
 			["c4"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-<<<<<<< HEAD
-					["techtrash"] = 3,
-					["explosives"] = 20,
-					["sheetmetal"] = 15,
-					["pliers"] = 2
-				}
-
-			},
-			["handcuff"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["aluminum"] = 100,
-					--["explosives"] = 5,
-					["sheetmetal"] = 10,
-					["pliers"] = 5
-				}
-
-			},	
-
-=======
 					["techtrash"] = 1,
 					["explosives"] = 5,
 					["sheetmetal"] = 1,
@@ -541,7 +404,6 @@ local List = {
 					["dollars"] = 100
 				}
 			}
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 		}
 	},
 	["Mercado"] = {
@@ -1098,12 +960,6 @@ local List = {
 			}
 		}
 	},
-<<<<<<< HEAD
-	["Triads"] = { ------MAFIAS armas------------------------------------------
-		["perm"] = "Triads",
-		["List"] = {
-
-=======
 	["Triads"] = {
 		["perm"] = "Triads",
 		["List"] = {
@@ -1131,22 +987,11 @@ local List = {
 					["rubber"] = 35
 				}
 			},
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 			["WEAPON_MICROSMG"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["smgbody"] = 1,
-<<<<<<< HEAD
-					["aluminum"] = 45,
-					["copper"] = 50,
-					["plastic"] = 45,
-					["glass"] = 45,
-					["rubber"] = 50
-				}
-			},
-
-=======
 					["aluminum"] = 125,
 					["copper"] = 125,
 					["plastic"] = 75,
@@ -1178,23 +1023,10 @@ local List = {
 					["rubber"] = 100
 				}
 			},
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 			["WEAPON_SAWNOFFSHOTGUN"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-<<<<<<< HEAD
-					["riflebody"] = 1,
-					["aluminum"] = 120,
-					["copper"] = 130,
-					["plastic"] = 150,
-					["glass"] = 150,
-					["rubber"] = 110,
-					["smgbody"] = 2,
-				}
-			},
-						
-=======
 					["smgbody"] = 1,
 					["aluminum"] = 125,
 					["copper"] = 125,
@@ -1263,23 +1095,11 @@ local List = {
 					["rubber"] = 75
 				}
 			},
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 			["WEAPON_PISTOL_MK2"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["pistolbody"] = 1,
-<<<<<<< HEAD
-					["aluminum"] = 25,
-					["copper"] = 25,
-					["plastic"] = 30,
-					["sheetmetal"] = 35,
-					["rubber"] = 25
-				}
-			},
-
-			["WEAPON_ASSAULTRIFLE_MK2"] = {
-=======
 					["aluminum"] = 45,
 					["copper"] = 45,
 					["plastic"] = 25,
@@ -1312,43 +1132,22 @@ local List = {
 				}
 			},
 			["WEAPON_COMPACTRIFLE"] = {
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["riflebody"] = 1,
 					["aluminum"] = 125,
-<<<<<<< HEAD
-					["copper"] = 150,
-					["plastic"] = 125,
-					["glass"] = 120,
-					["rubber"] = 110
-				}
-			},
-
-=======
 					["copper"] = 125,
 					["plastic"] = 75,
 					["glass"] = 75,
 					["rubber"] = 75
 				}
 			},
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 			["WEAPON_ADVANCEDRIFLE"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["riflebody"] = 1,
-<<<<<<< HEAD
-					["aluminum"] = 125,
-					["copper"] = 150,
-					["plastic"] = 125,
-					["glass"] = 120,
-					["rubber"] = 110
-				}
-			}
-			
-=======
 					["aluminum"] = 225,
 					["copper"] = 225,
 					["plastic"] = 175,
@@ -1452,7 +1251,6 @@ local List = {
 					["rubber"] = 75
 				}
 			}
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 		}
 	},
 	["Razors"] = {

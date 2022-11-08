@@ -40,26 +40,6 @@ local isPurchaseSuccessful = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 local bennysLocations = {
 	["mechanic01"] = {
-<<<<<<< HEAD
-		pos = vec3(-32.76,-1065.91,27.77),
-		heading = 339.5,
-		permission = "Bennys"
-	},
-	["mechanic02"] = {
-		pos = vec3(831.08,-820.19,25.73),
-		heading = 90.0,
-		permission = "Ottos"
-	},
-	["mechanic03"] = {
-		pos = vec3(829.9,-812.72,25.73),
-		heading = 90.0,
-		permission = "Ottos"
-	},
-	["mechanic04"] = {
-		pos = vec3(831.14,-805.89,25.73),
-		heading = 90.0,
-		permission = "Ottos"
-=======
 		pos = vec3(450.4,-975.81,25.7),
 		heading = 90.00
 	},
@@ -74,7 +54,6 @@ local bennysLocations = {
 	["mechanic04"] = {
 		pos = vec3(-339.15,-136.66,39.01),
 		heading = 87.88
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 	},
 	["mechanic05"] = {
 		pos = vec3(-1155.12,-2005.7,13.18),

@@ -465,11 +465,7 @@ local preset = {
 			["torso"] = { item = 32, texture = 7 },
 			["accessory"] = { item = 126, texture = 0 },
 			["watch"] = { item = -1, texture = 0 },
-<<<<<<< HEAD
-			["arms"] = { item = 11, texture = 0 },
-=======
 			["arms"] = { item = 79, texture = 0 },
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 			["glass"] = { item = 0, texture = 0 },
 			["ear"] = { item = -1, texture = 0 }
 		},
@@ -505,11 +501,7 @@ local preset = {
 			["torso"] = { item = 249, texture = 0 },
 			["accessory"] = { item = 127, texture = 0 },
 			["watch"] = { item = -1, texture = 0 },
-<<<<<<< HEAD
-			["arms"] = { item = 11, texture = 0 },
-=======
 			["arms"] = { item = 86, texture = 0 },
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 			["glass"] = { item = 0, texture = 0 },
 			["ear"] = { item = -1, texture = 0 }
 		},
@@ -545,11 +537,7 @@ local preset = {
 			["torso"] = { item = 146, texture = 6 },
 			["accessory"] = { item = 127, texture = 0 },
 			["watch"] = { item = -1, texture = 0 },
-<<<<<<< HEAD
-			["arms"] = { item = 11, texture = 1 },
-=======
 			["arms"] = { item = 85, texture = 1 },
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 			["glass"] = { item = 0, texture = 0 },
 			["ear"] = { item = -1, texture = 0 }
 		},
@@ -585,11 +573,7 @@ local preset = {
 			["torso"] = { item = 396, texture = 0 },
 			["accessory"] = { item = 0, texture = 0 },
 			["watch"] = { item = -1, texture = 0 },
-<<<<<<< HEAD
-			["arms"] = { item = 11, texture = 0 },
-=======
 			["arms"] = { item = 83, texture = 0 },
->>>>>>> parent of 23df371 (Merge branch 'main' into main)
 			["glass"] = { item = 0, texture = 0 },
 			["ear"] = { item = -1, texture = 0 }
 		},

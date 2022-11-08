@@ -295,7 +295,7 @@ CreateThread(function()
 		}
 	})
 
-	AddBoxZone("CallParamedic",vec3(311.83,-593.31,43.08),0.25,0.25,{
+	AddBoxZone("CallParamedic",vec3(-678.48,326.42,83.18),0.25,0.25,{
 		name = "CallParamedic",
 		heading = 3374176,
 		minZ = 43.00,
@@ -305,7 +305,7 @@ CreateThread(function()
 		options = {
 			{
 				event = "target:CallWorks",
-				label = "Buscar Entregadores",
+				label = "Buscar Doadores",
 				tunnel = "proserver",
 				service = "Paramedic"
 			}

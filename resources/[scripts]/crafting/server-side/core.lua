@@ -628,8 +628,7 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["leather"] = 75,
-					["tarp"] = 5,
+					["leather"] = 20,
 					["rubber"] = 45
 				}
 			}

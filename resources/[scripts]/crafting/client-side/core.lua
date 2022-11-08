@@ -79,7 +79,7 @@ local List = {
 	["21"] = { 121.3,-2468.84,6.1,"Lockpick" }, 
 	["30"] = { 887.68,-3209.72,-98.2,"Aztecas" },
 	["31"] = { 896.47,-3217.41,-98.23,"Marabunta" },
-	["32"] = { 716.18,-963.96,30.4,"Backpack"},
+	["32"] = { 716.18,-963.96,30.4,"Backpack",262461191},
 	["33"] = { -1109.09,4939.69,223.13,"Altruists"}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -87,20 +87,34 @@ local List = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Number,v in pairs(List) do
-		exports["target"]:AddCircleZone("Crafting:"..Number,vec3(v[1],v[2],v[3]),0.5,{
-			name = "Crafting:"..Number,
-			heading = 3374176
-		},{
-			shop = Number,
-			Distance = 1.0,
-			options = {
-				{
-					event = "crafting:openSystem",
-					label = "Abrir",
-					tunnel = "shop"
+		if v[5] then
+			exports["target"]:AddTargetModel({ v[5] },{
+				shop = Number,
+				Distance = 1.0,
+				options = {
+					{
+						event = "crafting:openSystem",
+						label = "Abrir",
+						tunnel = "shop"
+					}
+				},
+			})
+		else
+			exports["target"]:AddCircleZone("Crafting:"..Number,vec3(v[1],v[2],v[3]),0.5,{
+				name = "Crafting:"..Number,
+				heading = 3374176
+			},{
+				shop = Number,
+				Distance = 1.0,
+				options = {
+					{
+						event = "crafting:openSystem",
+						label = "Abrir",
+						tunnel = "shop"
+					}
 				}
-			}
-		})
+			})
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

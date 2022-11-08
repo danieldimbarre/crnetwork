@@ -460,6 +460,7 @@ function Creative.requestInventory()
 
 						if Identity then
 							v["Passport"] = Number
+							v["idVality"] = "Nenhum"
 							v["idPremium"] = "Nenhum"
 							v["idRolepass"] = "Inativo"
 							v["idBlood"] = Sanguine(Identity["blood"])

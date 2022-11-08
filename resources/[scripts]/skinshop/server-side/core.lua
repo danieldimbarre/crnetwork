@@ -48,10 +48,10 @@ RegisterCommand("skin",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SKINSHOP:REMOVEPROPS
+-- SKINSHOP:REMOVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("skinshop:removeProps")
-AddEventHandler("skinshop:removeProps",function(Mode)
+RegisterServerEvent("skinshop:Remove")
+AddEventHandler("skinshop:Remove",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then

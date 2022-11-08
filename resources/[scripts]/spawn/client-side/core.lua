@@ -13,6 +13,7 @@ local Peds = {}
 local Camera = nil
 local Destroy = false
 local Close = false
+local Loading = true
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +56,7 @@ AddEventHandler("onClientResourceStart",function(Resource)
 	SetEntityVisible(Ped,false,false)
 	FreezeEntityPosition(Ped,true)
 	SetEntityInvincible(Ped,true)
-	SetEntityHealth(Ped,100)
+	SetEntityHealth(Ped,101)
 	SetPedArmour(Ped,0)
 
 	local Characters = vSERVER.Characters()
@@ -94,6 +95,7 @@ AddEventHandler("onClientResourceStart",function(Resource)
 
 	SendNUIMessage({ Action = "Spawn", Table = Characters })
 	SetNuiFocus(true,true)
+	Loading = false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERCHOSEN
@@ -227,52 +229,75 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DATASET
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Dataset = {
+	["pants"] = { item = 0, texture = 0 },
+	["arms"] = { item = 0, texture = 0 },
+	["tshirt"] = { item = 1, texture = 0 },
+	["torso"] = { item = 0, texture = 0 },
+	["vest"] = { item = 0, texture = 0 },
+	["shoes"] = { item = 0, texture = 0 },
+	["mask"] = { item = 0, texture = 0 },
+	["backpack"] = { item = 0, texture = 0 },
+	["hat"] = { item = -1, texture = 0 },
+	["glass"] = { item = 0, texture = 0 },
+	["ear"] = { item = -1, texture = 0 },
+	["watch"] = { item = -1, texture = 0 },
+	["bracelet"] = { item = -1, texture = 0 },
+	["accessory"] = { item = 0, texture = 0 },
+	["decals"] = { item = 0, texture = 0 }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Clothes(Ped,data)
-	if not data["backpack"] then
-		data["backpack"] = {}
-		data["backpack"]["item"] = 0
-		data["backpack"]["texture"] = 0
+function Clothes(Ped,Data)
+	for Index,v in pairs(Dataset) do
+		if not Data[Index] then
+			Data[Index] = {
+				["item"] = v["item"],
+				["texture"] = v["texture"]
+			}
+		end
 	end
 
-	SetPedComponentVariation(Ped,4,data["pants"]["item"] or 0,data["pants"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,3,data["arms"]["item"] or 0,data["arms"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,5,data["backpack"]["item"] or 0,data["backpack"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,8,data["tshirt"]["item"] or 0,data["tshirt"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,9,data["vest"]["item"] or 0,data["vest"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,11,data["torso"]["item"] or 0,data["torso"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,6,data["shoes"]["item"] or 0,data["shoes"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,1,data["mask"]["item"] or 0,data["mask"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,10,data["decals"]["item"] or 0,data["decals"]["texture"] or 0,1)
-	SetPedComponentVariation(Ped,7,data["accessory"]["item"] or 0,data["accessory"]["texture"] or 0,1)
+	SetPedComponentVariation(Ped,4,Data["pants"]["item"],Data["pants"]["texture"],1)
+	SetPedComponentVariation(Ped,3,Data["arms"]["item"],Data["arms"]["texture"],1)
+	SetPedComponentVariation(Ped,5,Data["backpack"]["item"],Data["backpack"]["texture"],1)
+	SetPedComponentVariation(Ped,8,Data["tshirt"]["item"],Data["tshirt"]["texture"],1)
+	SetPedComponentVariation(Ped,9,Data["vest"]["item"],Data["vest"]["texture"],1)
+	SetPedComponentVariation(Ped,11,Data["torso"]["item"],Data["torso"]["texture"],1)
+	SetPedComponentVariation(Ped,6,Data["shoes"]["item"],Data["shoes"]["texture"],1)
+	SetPedComponentVariation(Ped,1,Data["mask"]["item"],Data["mask"]["texture"],1)
+	SetPedComponentVariation(Ped,10,Data["decals"]["item"],Data["decals"]["texture"],1)
+	SetPedComponentVariation(Ped,7,Data["accessory"]["item"],Data["accessory"]["texture"],1)
 
-	if data["hat"]["item"] ~= -1 and data["hat"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,0,data["hat"]["item"],data["hat"]["texture"],1)
+	if Data["hat"]["item"] ~= -1 and Data["hat"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,0,Data["hat"]["item"],Data["hat"]["texture"],1)
 	else
 		ClearPedProp(Ped,0)
 	end
 
-	if data["glass"]["item"] ~= -1 and data["glass"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,1,data["glass"]["item"],data["glass"]["texture"],1)
+	if Data["glass"]["item"] ~= -1 and Data["glass"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,1,Data["glass"]["item"],Data["glass"]["texture"],1)
 	else
 		ClearPedProp(Ped,1)
 	end
 
-	if data["ear"]["item"] ~= -1 and data["ear"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,2,data["ear"]["item"],data["ear"]["texture"],1)
+	if Data["ear"]["item"] ~= -1 and Data["ear"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,2,Data["ear"]["item"],Data["ear"]["texture"],1)
 	else
 		ClearPedProp(Ped,2)
 	end
 
-	if data["watch"]["item"] ~= -1 and data["watch"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,6,data["watch"]["item"],data["watch"]["texture"],1)
+	if Data["watch"]["item"] ~= -1 and Data["watch"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,6,Data["watch"]["item"],Data["watch"]["texture"],1)
 	else
 		ClearPedProp(Ped,6)
 	end
 
-	if data["bracelet"]["item"] ~= -1 and data["bracelet"]["item"] ~= 0 then
-		SetPedPropIndex(Ped,7,data["bracelet"]["item"],data["bracelet"]["texture"],1)
+	if Data["bracelet"]["item"] ~= -1 and Data["bracelet"]["item"] ~= 0 then
+		SetPedPropIndex(Ped,7,Data["bracelet"]["item"],Data["bracelet"]["texture"],1)
 	else
 		ClearPedProp(Ped,7)
 	end
@@ -280,81 +305,83 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BARBER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Barber(Ped,status)
-	myClothes = {}
-	myClothes = { status[1] or 0, status[2] or 0, status[3] or 0, status[4] or 0, status[5] or 0, status[6] or 0, status[7] or 0, status[8] or 0, status[9] or 0, status[10] or 0, status[11] or 0, status[12] or 0, status[13] or 0, status[14] or 0, status[15] or 0, status[16] or 0, status[17] or 0, status[18] or 0, status[19] or 0, status[20] or 0, status[21] or 0, status[22] or 0, status[23] or 0, status[24] or 0, status[25] or 0, status[26] or 0, status[27] or 0, status[28] or 0, status[29] or 0, status[30] or 0, status[31] or 0, status[32] or 0, status[33] or 0, status[34] or 0, status[35] or 0, status[36] or 0, status[37] or 0, status[38] or 0, status[39] or 0, status[40] or 0, status[41] or 0 }
-
-    local weightFace = myClothes[2] / 100 + 0.0
-    local weightSkin = myClothes[4] / 100 + 0.0
-
-	SetPedHeadBlendData(Ped,myClothes[41],myClothes[1],0,myClothes[41],myClothes[1],0,weightFace,weightSkin,0.0,false)
-
-	SetPedEyeColor(Ped,myClothes[3])
-
-	if myClothes[5] == 0 then
-		SetPedHeadOverlay(Ped,0,myClothes[5],0.0)
-	else
-		SetPedHeadOverlay(Ped,0,myClothes[5],1.0)
+function Barber(Ped,Status)
+	local Clothes = {}
+	for Number = 1,41 do
+		Clothes[Number] = Status[Number] or 0
 	end
 
-	SetPedHeadOverlay(Ped,6,myClothes[6],1.0)
+    local Face = Clothes[2] / 100 + 0.0
+    local Skin = Clothes[4] / 100 + 0.0
 
-	if myClothes[7] == 0 then
-		SetPedHeadOverlay(Ped,9,myClothes[7],0.0)
+	SetPedHeadBlendData(Ped,Clothes[41],Clothes[1],0,Clothes[41],Clothes[1],0,Face,Skin,0.0,false)
+
+	SetPedEyeColor(Ped,Clothes[3])
+
+	if Clothes[5] == 0 then
+		SetPedHeadOverlay(Ped,0,Clothes[5],0.0)
 	else
-		SetPedHeadOverlay(Ped,9,myClothes[7],1.0)
+		SetPedHeadOverlay(Ped,0,Clothes[5],1.0)
 	end
 
-	SetPedHeadOverlay(Ped,3,myClothes[8],1.0)
+	SetPedHeadOverlay(Ped,6,Clothes[6],1.0)
 
-	SetPedComponentVariation(Ped,2,myClothes[9],0,1)
-	SetPedHairColor(Ped,myClothes[10],myClothes[11])
+	if Clothes[7] == 0 then
+		SetPedHeadOverlay(Ped,9,Clothes[7],0.0)
+	else
+		SetPedHeadOverlay(Ped,9,Clothes[7],1.0)
+	end
 
-	SetPedHeadOverlay(Ped,4,myClothes[12],myClothes[13] * 0.1)
-	if myClothes[14] == -1 then
+	SetPedHeadOverlay(Ped,3,Clothes[8],1.0)
+
+	SetPedComponentVariation(Ped,2,Clothes[9],0,1)
+	SetPedHairColor(Ped,Clothes[10],Clothes[11])
+
+	SetPedHeadOverlay(Ped,4,Clothes[12],Clothes[13] * 0.1)
+	if Clothes[14] == -1 then
         SetPedHeadOverlayColor(Ped,4,0,0,0)
     else
-	    SetPedHeadOverlayColor(Ped,4,2,myClothes[14],myClothes[14])
+	    SetPedHeadOverlayColor(Ped,4,2,Clothes[14],Clothes[14])
     end
 
-	SetPedHeadOverlay(Ped,8,myClothes[15],myClothes[16] * 0.1)
-	SetPedHeadOverlayColor(Ped,8,1,myClothes[17],myClothes[17])
+	SetPedHeadOverlay(Ped,8,Clothes[15],Clothes[16] * 0.1)
+	SetPedHeadOverlayColor(Ped,8,1,Clothes[17],Clothes[17])
 
-	SetPedHeadOverlay(Ped,2,myClothes[18],myClothes[19] * 0.1)
-	SetPedHeadOverlayColor(Ped,2,1,myClothes[20],myClothes[20])
+	SetPedHeadOverlay(Ped,2,Clothes[18],Clothes[19] * 0.1)
+	SetPedHeadOverlayColor(Ped,2,1,Clothes[20],Clothes[20])
 
-	SetPedHeadOverlay(Ped,1,myClothes[21],myClothes[22] * 0.1)
-	SetPedHeadOverlayColor(Ped,1,1,myClothes[23],myClothes[23])
+	SetPedHeadOverlay(Ped,1,Clothes[21],Clothes[22] * 0.1)
+	SetPedHeadOverlayColor(Ped,1,1,Clothes[23],Clothes[23])
 
-	SetPedHeadOverlay(Ped,5,myClothes[24],myClothes[25] * 0.1)
-	SetPedHeadOverlayColor(Ped,5,1,myClothes[26],myClothes[26])
+	SetPedHeadOverlay(Ped,5,Clothes[24],Clothes[25] * 0.1)
+	SetPedHeadOverlayColor(Ped,5,1,Clothes[26],Clothes[26])
 
-	SetPedFaceFeature(Ped,0,myClothes[27] * 0.1)
-	SetPedFaceFeature(Ped,1,myClothes[28] * 0.1)
-	SetPedFaceFeature(Ped,4,myClothes[29] * 0.1)
-	SetPedFaceFeature(Ped,6,myClothes[30] * 0.1)
-	SetPedFaceFeature(Ped,8,myClothes[31] * 0.1)
-	SetPedFaceFeature(Ped,9,myClothes[32] * 0.1)
-	SetPedFaceFeature(Ped,10,myClothes[33] * 0.1)
-	SetPedFaceFeature(Ped,12,myClothes[34] * 0.1)
-	SetPedFaceFeature(Ped,13,myClothes[35] * 0.1)
-	SetPedFaceFeature(Ped,14,myClothes[36] * 0.1)
-	SetPedFaceFeature(Ped,15,myClothes[37] * 0.1)
-	SetPedFaceFeature(Ped,16,myClothes[38] * 0.1)
-	SetPedFaceFeature(Ped,17,myClothes[39] * 0.1)
-	SetPedFaceFeature(Ped,19,myClothes[40] * 0.1)
+	SetPedFaceFeature(Ped,0,Clothes[27] * 0.1)
+	SetPedFaceFeature(Ped,1,Clothes[28] * 0.1)
+	SetPedFaceFeature(Ped,4,Clothes[29] * 0.1)
+	SetPedFaceFeature(Ped,6,Clothes[30] * 0.1)
+	SetPedFaceFeature(Ped,8,Clothes[31] * 0.1)
+	SetPedFaceFeature(Ped,9,Clothes[32] * 0.1)
+	SetPedFaceFeature(Ped,10,Clothes[33] * 0.1)
+	SetPedFaceFeature(Ped,12,Clothes[34] * 0.1)
+	SetPedFaceFeature(Ped,13,Clothes[35] * 0.1)
+	SetPedFaceFeature(Ped,14,Clothes[36] * 0.1)
+	SetPedFaceFeature(Ped,15,Clothes[37] * 0.1)
+	SetPedFaceFeature(Ped,16,Clothes[38] * 0.1)
+	SetPedFaceFeature(Ped,17,Clothes[39] * 0.1)
+	SetPedFaceFeature(Ped,19,Clothes[40] * 0.1)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("spawn",function(Message)
-	if Camera then
+RegisterCommand("spawn",function()
+	if Loading then
 		local Ped = PlayerPedId()
 		SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)
 		SetEntityVisible(Ped,false,false)
 		FreezeEntityPosition(Ped,true)
 		SetEntityInvincible(Ped,true)
-		SetEntityHealth(Ped,100)
+		SetEntityHealth(Ped,101)
 		SetPedArmour(Ped,0)
 
 		local Characters = vSERVER.Characters()
@@ -393,5 +420,6 @@ RegisterCommand("spawn",function(Message)
 
 		SendNUIMessage({ Action = "Spawn", Table = Characters })
 		SetNuiFocus(true,true)
+		Loading = false
 	end
 end)

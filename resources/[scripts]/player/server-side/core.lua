@@ -157,7 +157,7 @@ RegisterCommand("911",function(source,Message,History)
 			local Service = vRP.NumPermission("Police")
 			for Passports,Sources in pairs(Service) do
 				async(function()
-					TriggerClientEvent("chat:ClientMessage",Sources,Identity["name"],History:sub(4))
+					TriggerClientEvent("chat:ClientMessage",Sources,"<blue>"..Identity["name"].."</blue>",History:sub(4))
 				end)
 			end
 		end
@@ -174,7 +174,7 @@ RegisterCommand("112",function(source,Message,History)
 			local Service = vRP.NumPermission("Paramedic")
 			for Passports,Sources in pairs(Service) do
 				async(function()
-					TriggerClientEvent("Datatable",Sources,Identity["name"].." "..Identity["name2"],History:sub(4))
+					TriggerClientEvent("Datatable",Sources,"<red>"..Identity["name"].." "..Identity["name2"].."</red>",History:sub(4))
 				end)
 			end
 		end

@@ -544,6 +544,18 @@ local List = {
 	},
 	{ -- Paramedic
 		Distance = 100,
+		Coords = { -675.96,324.36,140.14,184.26 },
+		Model = "s_m_m_paramedic_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
+	{ -- Paramedic
+		Distance = 100,
+		Coords = { -673.83,335.36,78.12,351.5 },
+		Model = "s_m_m_paramedic_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
+	{ -- Paramedic
+		Distance = 100,
 		Coords = { -271.7,6321.75,32.42,0.0 },
 		Model = "s_m_m_paramedic_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }

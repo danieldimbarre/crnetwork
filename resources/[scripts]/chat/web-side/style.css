@@ -54,15 +54,15 @@ input::-webkit-inner-spin-button {
 }
 
 #ChatMessage red {
-	color: #ff0000;
-	font-size: 0.55vw;
-	text-shadow: none;
+	color: #ffafaf;
 }
 
 #ChatMessage black {
 	color: #666;
-	font-size: 0.55vw;
-	text-shadow: none;
+}
+
+#ChatMessage blue {
+	color: #afd4ff;
 }
 
 #ChatSubmit {

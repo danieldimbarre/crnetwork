@@ -78,11 +78,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEANREC
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("cleanrec",function(source,args,rawCommand)
+RegisterCommand("cleanrec",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and args[1] then
-		if vRP.HasPermission(Passport,"setPolice") then
-			local OtherPassport = parseInt(args[1])
+	if Passport and Message[1] then
+		if vRP.HasPermission(Passport,"Police",1) then
+			local OtherPassport = parseInt(Message[1])
 			if OtherPassport > 0 then
 				vRP.Query("prison/cleanRecords",{ nuser_id = OtherPassport })
 				TriggerClientEvent("Notify",source,"verde","Limpeza efetuada.",5000)

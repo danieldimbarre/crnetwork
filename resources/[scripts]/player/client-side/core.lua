@@ -1195,7 +1195,7 @@ CreateThread(function()
 			heading = 3374176
 		},{
 			shop = Number,
-			Distance = v[4] or 0.75,
+			Distance = v[4] or 0.5,
 			options = {
 				{
 					event = "player:Spending",

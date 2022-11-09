@@ -20,9 +20,12 @@ LocalPlayer["state"]["Target"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOWS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Tows = {
-	{ 406.91,-1644.46,29.28 }
-}
+local Tows = PolyZone:Create({
+	vector2(400.36,-1640.51),
+	vector2(409.59,-1629.53),
+	vector2(402.91,-1624.03),
+	vector2(393.78,-1634.91)
+},{ name = "Impound" })
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISMANTLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1069,12 +1072,9 @@ function TargetEnable()
 											end
 										end
 
-										for k,v in pairs(Tows) do
-											local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-											if Distance <= 10 then
-												Menu[#Menu + 1] = { event = "towdriver:Tow", label = "Rebocar", tunnel = "client" }
-												Menu[#Menu + 1] = { event = "impound:Check", label = "Impound", tunnel = "police" }
-											end
+										if Tows:isPointInside(Coords) then
+											Menu[#Menu + 1] = { event = "towdriver:Tow", label = "Rebocar", tunnel = "client" }
+											Menu[#Menu + 1] = { event = "impound:Check", label = "Impound", tunnel = "police" }
 										end
 									end
 

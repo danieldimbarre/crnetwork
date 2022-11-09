@@ -116,7 +116,7 @@ GlobalState["Doors"] = {
 	[152] = { Coords = vec3(493.07,-1541.83,29.44), Hash = 903896222, Lock = true, Distance = 1.5, Perm = "Aztecas" },
 	[153] = { Coords = vec3(486.01,-1530.39,29.44), Hash = 2103001488, Lock = true, Distance = 1.5, Perm = "Aztecas" },
 	[154] = { Coords = vec3(-1.87,-1808.82,25.54), Hash = -1351120742, Lock = true, Distance = 1.5, Perm = "Ballas" },
-	[155] = { Coords = vec3(-6.94,-1819.73,29.34), Hash = 373216819, Lock = true, Distance = 1.5, Perm = "Ballas" },
+	[155] = { Coords = vec3(0.20,-1823.30,29.73), Hash = -1052955611, Lock = true, Distance = 1.5, Perm = "Ballas" },
 	[156] = { Coords = vec3(-152.02,-1622.64,33.83), Hash = 1381046002, Lock = true, Distance = 1.5, Perm = "Families" },
 	[157] = { Coords = vec3(99.63,3615.91,40.63), Hash = 190770132, Lock = true, Distance = 1.5, Perm = "Lost" },
 	[158] = { Coords = vec3(1250.21,-1583.80,54.73), Hash = -955445187, Lock = true, Distance = 1.5, Perm = "Marabunta" },

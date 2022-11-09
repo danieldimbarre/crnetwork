@@ -13,8 +13,8 @@ Groups = {
 		["Parent"] = {
 			["Premium"] = true
 		},
-		["Hierarchy"] = { "Master","MVP","VIP" },
-		["Salary"] = { 1900,1300,900 },
+		["Hierarchy"] = { "VIP" },
+		["Salary"] = { 900 },
 		["Service"] = {}
 	},
 	["Police"] = {
@@ -22,7 +22,7 @@ Groups = {
 			["Police"] = true
 		},
 		["Hierarchy"] = { "Chefe","Oficial" },
-		["Salary"] = { 2000,2000 },
+		["Salary"] = { 3500,3500 },
 		["Service"] = {}
 	},
 	["Paramedic"] = {
@@ -30,7 +30,7 @@ Groups = {
 			["Paramedic"] = true
 		},
 		["Hierarchy"] = { "Chefe","Membro" },
-		["Salary"] = { 2000,2000 },
+		["Salary"] = { 3500,3500 },
 		["Service"] = {}
 	},
 	["Mechanic"] = {

@@ -928,7 +928,7 @@ AddEventHandler("player:Spending",function(_,Mode)
 					vRP.DowngradeCardlimit(Passport,Amount)
 					TriggerClientEvent("Notify",source,"verde","Diminuiu seu limite do cartão de débito.",5000)
 				else
-					TriggerClientEvent("Notify",source,"aviso","Limite insuficiente no cartão.",5000)
+					TriggerClientEvent("Notify",source,"amarelo","Limite insuficiente no cartão.",5000)
 				end
 			end
 		end

@@ -234,6 +234,24 @@ local List = {
 					["mushroom"] = 20,
 					["water"] = 1
 				}
+			},
+			["calzone"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["cheese"] = 1,
+					["bread"] = 2,
+					["milkbottle"] = 1
+				}
+			},
+			["cupcake"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["chocolate"] = 1,
+					["bread"] = 1,
+					["milkbottle"] = 1
+				}
 			}
 		}
 	},

@@ -45,7 +45,6 @@ local shops = {
 			["pizzamushroom"] = 125,
 			["pizzabanana"] = 125,
 			["pizzachocolate"] = 125,
-			["calzone"] = 125,
 			["mushroomtea"] = 300,
 			["chickenfries"] = 100,
 			["mushroom"] = 10
@@ -79,7 +78,9 @@ local shops = {
 			["dewars"] = 15,
 			["hennessy"] = 15,
 			["absolut"] = 15,
-			["mushroom"] = 10
+			["mushroom"] = 10,
+			["bread"] = 5,
+			["cheese"] = 10
 		}
 	},
 	["Identity"] = {

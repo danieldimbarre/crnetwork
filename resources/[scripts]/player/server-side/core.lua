@@ -898,6 +898,34 @@ function Creative.Bikepack()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:SPENDING
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("player:Spending")
+AddEventHandler("player:Spending",function(Mode)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local Split = splitString(Mode,"-")
+		if Split[1] == "upgrade" then
+			if Split[2] == "1" then
+				vRP.UpgradeCardlimit(Passport,10000)
+			elseif Split[2] == "2" then
+				vRP.UpgradeCardlimit(Passport,50000)
+			end
+
+			TriggerClientEvent("Notify",source,"sucesso","Aumentou seu limite do cartão de débito.",5000)
+		elseif Split[1] == "downgrade" then
+			if Split[2] == "1" then
+				vRP.DowngradeCardlimit(Passport,10000)
+			elseif Split[2] == "2" then
+				vRP.DowngradeCardlimit(Passport,50000)
+			end
+
+			TriggerClientEvent("Notify",source,"sucesso","Diminuiu seu limite do cartão de débito.",5000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)

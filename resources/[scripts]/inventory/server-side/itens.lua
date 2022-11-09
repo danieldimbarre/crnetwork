@@ -4705,12 +4705,6 @@ Use = {
 		end
 	end,
 
-	["cardlimit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			vRP.UpgradeCardlimit(Passport,5000)
-		end
-	end,
-
 	["rolepass"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if not vRP.CheckRolepass(source) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then

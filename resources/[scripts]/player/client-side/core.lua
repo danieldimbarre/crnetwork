@@ -1200,22 +1200,22 @@ CreateThread(function()
 				{
 					event = "player:Spending",
 					label = "Aumentar 10 mil de limite",
-					tunnel = "shop",
+					tunnel = "police",
 					service = "upgrade-1"
 				},{
 					event = "player:Spending",
 					label = "Aumentar 50 mil de limite",
-					tunnel = "shop",
+					tunnel = "police",
 					service = "upgrade-2"
 				},{
 					event = "player:Spending",
 					label = "Diminuir 10 mil de limite",
-					tunnel = "shop",
+					tunnel = "police",
 					service = "downgrade-1"
 				},{
 					event = "player:Spending",
 					label = "Diminuir 50 mil de limite",
-					tunnel = "shop",
+					tunnel = "police",
 					service = "downgrade-2"
 				}
 			}

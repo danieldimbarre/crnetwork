@@ -441,9 +441,9 @@ RegisterCommand("players",function(source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PON
+-- IDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("pon",function(source)
+RegisterCommand("ids",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then

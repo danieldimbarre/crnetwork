@@ -4732,7 +4732,7 @@ Use = {
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				TriggerEvent("Salary:Add",Passport,"Premium")
 				vRP.SetPermission(Passport,"Premium",1)
-				vRP.UpgradePremium(Passport)
+				vRP.UpgradePremium(source)
 			end
 		end
 	end,

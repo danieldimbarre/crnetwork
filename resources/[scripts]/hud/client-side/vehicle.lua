@@ -49,6 +49,7 @@ CreateThread(function()
 				TimeDistance = 100
 
 				if not IsMinimapRendering() then
+					SetBigmapActive(false,false)
 					DisplayRadar(true)
 				end
 
@@ -374,19 +375,6 @@ RegisterCommand("+SpaceVehicle",spaceEnable)
 RegisterCommand("-SpaceVehicle",spaceDisable)
 RegisterKeyMapping("+SpaceVehicle","Freio do veículo.","keyboard","SPACE")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- FOWARDPED
------------------------------------------------------------------------------------------------------------------------------------------
-function FowardPed(Ped)
-	local Heading = GetEntityHeading(Ped) + 90.0
-	if Heading < 0.0 then
-		Heading = 360.0 + Heading
-	end
-
-	Heading = Heading * 0.0174533
-
-	return { x = math.cos(Heading) * 2.0, y = math.sin(Heading) * 2.0 }
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- THREADBELT
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -406,16 +394,15 @@ CreateThread(function()
 
 					if Speed ~= SeatbeltSpeed then
 						if (SeatbeltSpeed - Speed) >= 60 and not SeatbeltLock then
-							local FowardVeh = FowardPed(Ped)
-							local Coords = GetEntityCoords(Ped)
+							SmashVehicleWindow(Vehicle,6)
+							SetEntityNoCollisionEntity(Ped,Vehicle,false)
+							SetEntityNoCollisionEntity(Vehicle,Ped,false)
+							TriggerServerEvent("hud:VehicleEject",SeatbeltVelocity)
 
-							SetEntityCoords(Ped,Coords["x"] + FowardVeh["x"],Coords["y"] + FowardVeh["y"],Coords["z"] - 0.47,false,false,false,false)
-							SetEntityVelocity(Ped,SeatbeltVelocity["x"],SeatbeltVelocity["y"],SeatbeltVelocity["z"])
-							ApplyDamageToPed(Ped,50,false)
+							Wait(500)
 
-							Wait(1)
-
-							SetPedToRagdoll(Ped,5000,5000,0,0,0,0)
+							SetEntityNoCollisionEntity(Ped,Vehicle,true)
+							SetEntityNoCollisionEntity(Vehicle,Ped,true)
 						end
 
 						SeatbeltVelocity = GetEntityVelocity(Vehicle)

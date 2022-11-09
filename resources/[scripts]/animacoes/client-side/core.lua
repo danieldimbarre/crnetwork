@@ -1045,7 +1045,7 @@ CreateThread(function()
 					ClearPedBloodDamage(Ped)
 					LocalPlayer["state"]["Cancel"] = false
 					LocalPlayer["state"]["Commands"] = false
-					TriggerEvent("Notify","verde","Tratamento concluido.",3000)
+					TriggerEvent("Notify","verde","Tratamento concluído.",3000)
 				end
 			end
 		end

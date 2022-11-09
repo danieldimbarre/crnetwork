@@ -16,7 +16,7 @@ RegisterCommand("volume",function(source,Message)
 		return
 	end
 
-	setVolume(tonumber(Message[1]))
+	setVolume(tonumber(Message[1]),Message[2])
 	TriggerEvent("Notify","amarelo","<b>Volume:</b> "..Message[1].."%",5000)
 end)
 

@@ -3591,7 +3591,7 @@ Use = {
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					vRP.UpgradeHunger(Passport,30)
 
-					if vCLIENT.Restaurant(source,"PizzaThis") then
+					if vCLIENT.Restaurant(source,"BeanMachine") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
 					end
 				end
@@ -4720,19 +4720,15 @@ Use = {
 	end,
 
 	["premium"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.UserPremium(Passport) then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
-				vRP.SetPermission(Passport,"Premium",1)
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerEvent("Salary:Add",Passport,"Premium")
+			vRP.SetPermission(Passport,"Premium",1)
+
+			if not vRP.UserPremium(Passport) then
 				vRP.SetPremium(source)
-			end
-		else
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
-				vRP.SetPermission(Passport,"Premium",1)
-				vRP.UpgradePremium(Passport)
+			else
+				vRP.UpgradePremium(source)
 			end
 		end
 	end,

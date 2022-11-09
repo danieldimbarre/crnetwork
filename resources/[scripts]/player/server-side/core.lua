@@ -915,7 +915,7 @@ AddEventHandler("player:Spending",function(_,Mode)
 					vRP.UpgradeCardlimit(Passport,50000)
 				end
 
-				TriggerClientEvent("Notify",source,"sucesso","Aumentou seu limite do cartão de débito.",5000)
+				TriggerClientEvent("Notify",source,"verde","Aumentou seu limite do cartão de débito.",5000)
 			elseif Split[1] == "downgrade" then
 				if Split[2] == "1" then
 					if Identity["cardlimit"] >= 10000 then
@@ -927,7 +927,7 @@ AddEventHandler("player:Spending",function(_,Mode)
 					end
 				end
 
-				TriggerClientEvent("Notify",source,"sucesso","Diminuiu seu limite do cartão de débito.",5000)
+				TriggerClientEvent("Notify",source,"verde","Diminuiu seu limite do cartão de débito.",5000)
 			end
 		end
 	end

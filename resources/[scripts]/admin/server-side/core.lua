@@ -18,22 +18,19 @@ vSKINSHOP = Tunnel.getInterface("skinshop")
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("ugroups",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if vRP.HasGroup(Passport,"Admin") then
-	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
-			local Messages = ""
-			local Groups = vRP.Groups()
-			local OtherPassport = Message[1]
-			for Permission,_ in pairs(Groups) do
-				local Data = vRP.DataGroups(Permission)
-				if Data[OtherPassport] then
-					Messages = Messages..Permission.."<br>"
-				end
+	if Passport and parseInt(Message[1]) > 0 then
+		local Messages = ""
+		local Groups = vRP.Groups()
+		local OtherPassport = Message[1]
+		for Permission,_ in pairs(Groups) do
+			local Data = vRP.DataGroups(Permission)
+			if Data[OtherPassport] then
+				Messages = Messages..Permission.."<br>"
 			end
+		end
 
-			if Messages ~= "" then
-				TriggerClientEvent("Notify",source,"verde",Messages,10000)
-			end
+		if Messages ~= "" then
+			TriggerClientEvent("Notify",source,"verde",Messages,10000)
 		end
 	end
 end)
@@ -442,9 +439,9 @@ RegisterCommand("players",function(source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- IDS
+-- PON
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("ids",function(source)
+RegisterCommand("pon",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
@@ -465,7 +462,7 @@ RegisterCommand("ids",function(source)
 				end)
 			end
 
-			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text,15000)
+			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text,5000)
 		end
 	end
 end)

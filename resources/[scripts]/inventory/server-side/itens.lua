@@ -3591,7 +3591,7 @@ Use = {
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					vRP.UpgradeHunger(Passport,30)
 
-					if vCLIENT.Restaurant(source,"PizzaThis") then
+					if vCLIENT.Restaurant(source,"BeanMachine") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
 					end
 				end

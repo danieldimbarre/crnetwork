@@ -23,19 +23,19 @@
     "item": "cellphone",
     "services": [
         {
-            "name": "Policia",
-            "number": "190",
+            "name": "Polícia",
+            "number": "911",
             "permission": "Police",
             "dev": true
         },
         {
-            "name": "Paramédico",
-            "number": "192",
+            "name": "Hospital",
+            "number": "112",
             "permission": "Paramedic",
             "dev": true
         },
         {
-            "name": "Mecânico",
+            "name": "Mecânica",
             "number": "0800 042",
             "permission": "Mechanic",
             "dev": true

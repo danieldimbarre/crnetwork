@@ -692,7 +692,15 @@ end)
 RegisterServerEvent("admin:DebugInformations")
 AddEventHandler("admin:DebugInformations",function(Entity)
 	local source = source
-	vKEYBOARD.keyCopy(source,"Hash:",Entity[2]..","..mathLength(Entity[4]["x"])..","..mathLength(Entity[4]["y"])..","..mathLength(Entity[4]["z"])..","..mathLength(Entity[5]))
+	vKEYBOARD.keyCopy(source,"Informations:",Entity[2]..","..mathLength(Entity[4]["x"])..","..mathLength(Entity[4]["y"])..","..mathLength(Entity[4]["z"])..","..mathLength(Entity[5]))
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADMIN:LOGS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("admin:Logs")
+AddEventHandler("admin:Logs",function(Info)
+	local source = source
+	vKEYBOARD.keyCopy(source,"Log:",Info)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TXADMIN:EVENTS:SERVERSHUTTINGDOWN

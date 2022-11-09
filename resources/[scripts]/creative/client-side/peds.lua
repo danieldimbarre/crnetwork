@@ -740,72 +740,72 @@ local List = {
 	-- 	Model = "mp_m_shopkeep_01",
 	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	-- },
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { 1696.88,3758.39,34.69,133.23 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { 248.17,-51.78,69.94,340.16 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { 841.18,-1030.12,28.19,266.46 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { -327.07,6082.22,31.46,130.4 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { -659.18,-938.47,21.82,85.04 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { -1309.43,-394.56,36.7,343.0 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { -1113.41,2698.19,18.55,127.56 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { 2564.83,297.46,108.73,269.3 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { -3168.32,1087.46,20.84,150.24 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { 16.91,-1107.56,29.79,158.75 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Ammu-Nation Store
-		Distance = 15,
-		Coords = { 814.84,-2155.14,29.62,357.17 },
-		Model = "ig_dale",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { 1696.88,3758.39,34.69,133.23 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { 248.17,-51.78,69.94,340.16 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { 841.18,-1030.12,28.19,266.46 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { -327.07,6082.22,31.46,130.4 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { -659.18,-938.47,21.82,85.04 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { -1309.43,-394.56,36.7,343.0 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { -1113.41,2698.19,18.55,127.56 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { 2564.83,297.46,108.73,269.3 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { -3168.32,1087.46,20.84,150.24 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { 16.91,-1107.56,29.79,158.75 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
+	-- { -- Ammu-Nation Store
+	-- 	Distance = 15,
+	-- 	Coords = { 814.84,-2155.14,29.62,357.17 },
+	-- 	Model = "ig_dale",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	-- },
 	{ -- Life Invader
 		Distance = 20,
 		Coords = { -1083.15,-245.88,37.76,209.77 },

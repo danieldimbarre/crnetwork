@@ -16,22 +16,35 @@ Proxy.addInterface("vRP",vRP)
 Tunnel.bindInterface("vRP",tvRP)
 REQUEST = Tunnel.getInterface("request")
 SURVIVAL = Tunnel.getInterface("survival")
+TAXI = Tunnel.getInterface("taxi")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE:SERVICE_REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("smartphone:service_request",function(Data)
 	local Answered = false
-	local Service = vRP.NumPermission(Data["service"]["permission"])
+	local Service = {}
+	
+	if Data["service"]["permission"] ~= "Taxi" then
+		Service = vRP.NumPermission(Data["service"]["permission"])
+	else
+		Service = TAXI.RequestList()
+	end
 
 	for Passport,Sources in pairs(Service) do
 		async(function()
-			TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Chamado de "..Data["name"], text = Data["content"], x = Data["location"][1], y = Data["location"][2], z = Data["location"][3], time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
+			if Data["service"]["permission"] ~= "Taxi" then
+				TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Chamado de "..Data["name"], text = Data["content"], x = Data["location"][1], y = Data["location"][2], z = Data["location"][3], time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
+			end
 
 			if vRP.Request(Sources,"Aceitar o chamado de <b>"..Data["name"].."?","Sim","Não") then
 				if not Answered then
 					Answered = true
 					TriggerClientEvent("smartphone:pusher",Data["source"],"SERVICE_RESPONSE",{})
 					TriggerClientEvent("smartphone:pusher",Sources,"GPS",{ location = Data["location"] })
+
+					if Data["service"]["permission"] == "Taxi" then
+						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Chamado de "..Data["name"], text = Data["content"], x = Data["location"][1], y = Data["location"][2], z = Data["location"][3], time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
+					end
 				else
 					TriggerClientEvent("Notify",Sources,"negado","Chamado atendido.",5000)
 				end

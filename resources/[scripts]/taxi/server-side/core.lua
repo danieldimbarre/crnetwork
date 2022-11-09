@@ -12,7 +12,7 @@ Tunnel.bindInterface("taxi",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAXI
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Taxi = {}
+local userList = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLESERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -20,16 +20,18 @@ function Creative.toggleService()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Taxi[Passport] then
-			Taxi[Passport] = nil
-
-			vRP.RemovePermission(Passport,"Taxi")
+		if userList[Passport] then
+			userList[Passport] = nil
 		else
-			Taxi[Passport] = true
-
-			vRP.SetPermission(Passport,"Taxi",2)
+			userList[Passport] = source
 		end
 	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REQUESTLIST
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.RequestList()
+	return userList
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENTSERVICE
@@ -45,9 +47,7 @@ end
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport)
-	if Taxi[Passport] then
-		Taxi[Passport] = nil
-
-		vRP.RemovePermission(Passport,"Taxi")
+	if userList[Passport] then
+		userList[Passport] = nil
 	end
 end)

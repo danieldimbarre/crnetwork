@@ -18,6 +18,9 @@ AddEventHandler("hud:Weapon",function(Status,Hash)
 			local Max = GetAmmoInPedWeapon(Ped,Hash)
 
 			if AmmoMax ~= Max or AmmoMin ~= Min then
+				AmmoMax = Max
+				AmmoMin = Min
+
 				if (Max - Min) <= 0 then
 					Max = 0
 				else
@@ -25,8 +28,6 @@ AddEventHandler("hud:Weapon",function(Status,Hash)
 				end
 
 				SendNUIMessage({ Action = "Weapons", Status = true, Min = Min, Max = Max, Name = itemName(Hash) })
-				AmmoMax = Max
-				AmmoMin = Min
 			end
 
 			Wait(100)

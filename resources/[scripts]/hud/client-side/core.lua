@@ -18,10 +18,10 @@ Display = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Road = ""
 local Gemstone = 0
 local Pause = false
-local Road = "Alta-Street"
-local Crossing = "Hawick Avenue"
+local Crossing = ""
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRINCIPAL
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -31,37 +31,37 @@ local Armour = 999
 -- THIRST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Thirst = 999
-local ThirstTimer = GetGameTimer()
+local ThirstTimer = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUNGER
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Hunger = 999
-local HungerTimer = GetGameTimer()
+local HungerTimer = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STRESS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Stress = 999
-local StressTimer = GetGameTimer()
+local StressTimer = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WANTED
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Wanted = 0
-local WantedTimer = GetGameTimer()
+local WantedTimer = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REPOSED
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Reposed = 0
-local ReposedTimer = GetGameTimer()
+local ReposedTimer = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LUCK
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Luck = 0
-local LuckTimer = GetGameTimer()
+local LuckTimer = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DEXTERITY
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Dexterity = 0
-local DexterityTimer = GetGameTimer()
+local DexterityTimer = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTIMER
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -71,23 +71,15 @@ CreateThread(function()
 			local Ped = PlayerPedId()
 
 			if IsPauseMenuActive() then
-				if not Pause then
-					Pause = true
-
-					if Display then
-						SendNUIMessage({ Action = "Body", Status = false })
-					end
-				end
+				SendNUIMessage({ Action = "Body", Status = false })
+				Pause = true
 			else
-				if Pause then
-					Pause = false
-
-					if Display then
-						SendNUIMessage({ Action = "Body", Status = true })
-					end
-				end
-
 				if Display then
+					if Pause then
+						SendNUIMessage({ Action = "Body", Status = true })
+						Pause = false
+					end
+
 					local Coords = GetEntityCoords(Ped)
 					local Armouring = GetPedArmour(Ped)
 					local Healing = GetEntityHealth(Ped) - 100
@@ -110,12 +102,12 @@ CreateThread(function()
 					end
 
 					if FullRoad ~= "" and Road ~= FullRoad then
-						SendNUIMessage({ Action = "Road", Name = Road })
+						SendNUIMessage({ Action = "Road", Name = FullRoad })
 						Road = FullRoad
 					end
 
 					if FullCross ~= "" and Crossing ~= FullCross then
-						SendNUIMessage({ Action = "Crossing", Name = Crossing })
+						SendNUIMessage({ Action = "Crossing", Name = FullCross })
 						Crossing = FullCross
 					end
 
@@ -197,7 +189,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("hud:Voip")
 AddEventHandler("hud:Voip",function(Number)
-	local Number = parseInt(Number)
 	local Target = { "Baixo","Normal","Médio","Alto","Megafone" }
 
 	SendNUIMessage({ Action = "Voip", Voip = Target[Number] })

@@ -909,25 +909,27 @@ AddEventHandler("player:Spending",function(_,Mode)
 		if Identity then
 			local Split = splitString(Mode,"-")
 			if Split[1] == "upgrade" then
-				if Split[2] == "1" then
-					vRP.UpgradeCardlimit(Passport,10000)
-				elseif Split[2] == "2" then
-					vRP.UpgradeCardlimit(Passport,50000)
-				end
+				local Amount = 10000
 
+				if Split[2] == "2" then
+					Amount = 50000
+				end
+				
+				vRP.UpgradeCardlimit(Passport,Amount)
 				TriggerClientEvent("Notify",source,"verde","Aumentou seu limite do cartão de débito.",5000)
 			elseif Split[1] == "downgrade" then
-				if Split[2] == "1" then
-					if Identity["cardlimit"] >= 10000 then
-						vRP.DowngradeCardlimit(Passport,10000)
-					end
-				elseif Split[2] == "2" then
-					if Identity["cardlimit"] >= 50000 then
-						vRP.DowngradeCardlimit(Passport,50000)
-					end
+				local Amount = 10000
+
+				if Split[2] == "2" then
+					Amount = 50000
 				end
 
-				TriggerClientEvent("Notify",source,"verde","Diminuiu seu limite do cartão de débito.",5000)
+				if Identity["cardlimit"] >= Amount then
+					vRP.DowngradeCardlimit(Passport,Amount)
+					TriggerClientEvent("Notify",source,"verde","Diminuiu seu limite do cartão de débito.",5000)
+				else
+					TriggerClientEvent("Notify",source,"aviso","Limite insuficiente no cartão.",5000)
+				end
 			end
 		end
 	end

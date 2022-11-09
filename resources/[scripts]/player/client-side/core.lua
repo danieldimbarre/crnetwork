@@ -1190,12 +1190,12 @@ local List = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Number,v in pairs(List) do
-		exports["target"]:AddCircleZone("Bank:"..Number,vec3(v[1],v[2],v[3]),0.7,{
-			name = "Bank:"..Number,
+		exports["target"]:AddCircleZone("Cardlimit:"..Number,vec3(v[1],v[2],v[3]),0.7,{
+			name = "Cardlimit:"..Number,
 			heading = 3374176
 		},{
 			shop = Number,
-			Distance = v[4] or 1.75,
+			Distance = v[4] or 0.75,
 			options = {
 				{
 					event = "player:Spending",

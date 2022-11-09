@@ -17,7 +17,7 @@ local Clothes = { 0,100,0,100,0,0,0,0,0,0,0,-1,5,-1,-1,5,0,0,0,0,-1,5,0,-1,5,0,0
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSkin",function(Data,Callback)
-	Clothes = { tonumber(Data["fathers"]),tonumber(Data["kinship"]),tonumber(Data["eyecolor"]),tonumber(Data["skincolor"]),tonumber(Data["acne"]),tonumber(Data["stains"]),tonumber(Data["freckles"]),tonumber(Data["aging"]),tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintensity"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintensity"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),tonumber(Data["face06"]),tonumber(Data["face08"]),tonumber(Data["face09"]),tonumber(Data["face10"]),tonumber(Data["face12"]),tonumber(Data["face13"]),tonumber(Data["face14"]),tonumber(Data["face15"]),tonumber(Data["face16"]),tonumber(Data["face17"]),tonumber(Data["face19"]),tonumber(Data["mothers"]) }
+	Clothes = { Clothes[1],Clothes[2],Clothes[3],Clothes[4],Clothes[5],Clothes[6],Clothes[7],Clothes[8],tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintensity"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintensity"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),Clothes[30],Clothes[31],Clothes[32],Clothes[33],Clothes[34],Clothes[35],Clothes[36],Clothes[37],Clothes[38],Clothes[39],Clothes[40],Clothes[41] }
 
 	if Data["value"] then
 		OpenBarbershop(false)
@@ -123,7 +123,6 @@ function OpenBarbershop(Enabled)
 
 	if Enabled then
 		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
-		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
 		-- TriggerServerEvent("vRP:BucketClient","Enter")
 
 		SetFollowPedCamViewMode(0)

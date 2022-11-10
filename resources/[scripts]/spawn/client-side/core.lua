@@ -376,6 +376,12 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("spawn",function()
 	if Loading then
+		for _,v in pairs(Peds) do
+			if DoesEntityExist(v) then
+				DeleteEntity(v)
+			end
+		end
+
 		local Ped = PlayerPedId()
 		SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)
 		SetEntityVisible(Ped,false,false)

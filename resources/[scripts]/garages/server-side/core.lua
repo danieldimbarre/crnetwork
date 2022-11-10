@@ -214,7 +214,6 @@ local Works = {
 	},
 	["Police"] = {
 		"fordraptor",
-		"WRa45",
 		"WRbmwx6",
 		"audir82",
 		"tahoe",

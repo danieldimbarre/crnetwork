@@ -2090,8 +2090,13 @@ function Creative.RemoveTyres(Entity)
 							if os.time() >= parseInt(Active[Passport]) then
 								Active[Passport] = nil
 
-								TriggerClientEvent("inventory:explodeTyres",source,Entity[4],Entity[1],Entity[5])
-								vRP.GenerateItem(Passport,"tyres",1,true)
+								local Vehicle = NetworkGetEntityFromNetworkId(Entity[4])
+								if DoesEntityExist(Vehicle) and not IsPedAPlayer(Vehicle) and GetEntityType(Vehicle) == 2 then
+									if vCLIENT.tyreHealth(source,Entity[4],Entity[5]) == 1000.0 then
+										TriggerClientEvent("inventory:explodeTyres",source,Entity[4],Entity[1],Entity[5])
+										vRP.GenerateItem(Passport,"tyres",1,true)
+									end
+								end
 							end
 
 							Wait(100)

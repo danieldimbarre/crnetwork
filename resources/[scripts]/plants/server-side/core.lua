@@ -60,7 +60,7 @@ AddEventHandler("plants:Collect",function(Number)
 
 					Wait(10000)
 
-					vRP.GenerateItem(Passport,"weedleaf-"..Temporary["Points"],1,true)
+					vRP.GenerateItem(Passport,"weedleaf-"..Temporary["Points"],math.random(3,5),true)
 					TriggerClientEvent("plants:Remover",-1,Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
@@ -117,6 +117,19 @@ AddEventHandler("plants:Cloning",function(Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLANTS:DESTROY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("plants:Destroy")
+AddEventHandler("plants:Destroy",function(Number)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and Plants[Number] then
+		Plants[Number] = nil
+		TriggerClientEvent("plants:Remover",-1,Number)
+		TriggerClientEvent("Notify",source,"sucesso","A plantação foi destruída.",5000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- INFORMATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Informations(Number)
@@ -137,7 +150,9 @@ function Creative.Informations(Number)
 				Cloning = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time())
 			end
 
-			return { Collect,Cloning }
+			local Destroy = "Destruir planta"
+
+			return { Collect,Cloning,Destroy }
 		end
 	end
 

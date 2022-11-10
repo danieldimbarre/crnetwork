@@ -67,6 +67,7 @@ AddEventHandler("plants:Informations",function(Number)
 	if Informations then
 		exports["dynamic"]:AddButton("Coletar",Informations[1],"plants:Collect",Number,false,true)
 		exports["dynamic"]:AddButton("Clonagem",Informations[2],"plants:Cloning",Number,false,true)
+		exports["dynamic"]:AddButton("Destruir",Informations[3],"plants:Destroy",Number,false,true)
 
 		exports["dynamic"]:openMenu()
 	end

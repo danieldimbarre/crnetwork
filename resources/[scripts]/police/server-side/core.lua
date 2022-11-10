@@ -136,7 +136,7 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 					exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)
 				end
 
-				TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Value).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..Message,13541152)
+				TriggerEvent("Discord","Police","**Policial:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,13541152)
 			end
 
 			actived[Passport] = nil
@@ -175,7 +175,7 @@ function cRP.initFine(OtherPassport,Value,Message)
 		if actived[Passport] == nil then
 			actived[Passport] = true
 
-			TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Multa:** $"..parseFormat(Value).."\n**Horário:** "..os.date("%H:%M:%S").."\n**Motivo:** "..Message,2316674)
+			TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,2316674)
 			TriggerClientEvent("Notify",source,"verde","Multa aplicada.",5000)
 			TriggerClientEvent("police:Update",source,"reloadFine")
 			exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)

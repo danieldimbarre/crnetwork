@@ -1720,7 +1720,7 @@ local List = {
 		["Type"] = "Usável",
 		["Weight"] = 2.25,
 		["Max"] = 2,
-		["Economy"] = 625
+		["Economy"] = 1000
 	},
 	["advtoolbox"] = {
 		["Index"] = "toolbox",
@@ -1729,7 +1729,7 @@ local List = {
 		["Weight"] = 3.25,
 		["Charges"] = 3,
 		["Max"] = 1,
-		["Economy"] = 1525
+		["Economy"] = 2440
 	},
 	["notepad"] = {
 		["Index"] = "notepad",
@@ -1744,7 +1744,7 @@ local List = {
 		["Type"] = "Usável",
 		["Weight"] = 2.75,
 		["Max"] = 4,
-		["Economy"] = 225
+		["Economy"] = 360
 	},
 	["cellphone"] = {
 		["Index"] = "cellphone",
@@ -2047,7 +2047,7 @@ local List = {
 		["Type"] = "Armamento",
 		["Durability"] = 7,
 		["Weight"] = 1.35,
-		["Economy"] = 725
+		["Economy"] = 1450
 	},
 	["WEAPON_GOLFCLUB"] = {
 		["Index"] = "golfclub",
@@ -2101,7 +2101,7 @@ local List = {
 		["Type"] = "Armamento",
 		["Durability"] = 7,
 		["Weight"] = 1.45,
-		["Economy"] = 725
+		["Economy"] = 1450
 	},
 	["WEAPON_KNUCKLE"] = {
 		["Index"] = "knuckle",

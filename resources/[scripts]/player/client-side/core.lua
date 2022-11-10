@@ -1172,3 +1172,53 @@ CreateThread(function()
 		Wait(TimeDistance)
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- LIST
+-----------------------------------------------------------------------------------------------------------------------------------------
+local List = {
+	{ -1212.63,-330.80,37.78 },
+	{ 149.85,-1040.71,29.37 },
+	{ -2962.56,482.95,15.70 },
+	{ -108.26,6470.85,31.63 },
+	{ 1175.05,2706.90,38.09 },
+	{ -351.02,-49.97,49.04 },
+	{ 314.13,-279.09,54.17 },
+	{ 253.61,217.56,106.27 }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	for Number,v in pairs(List) do
+		exports["target"]:AddCircleZone("Cardlimit:"..Number,vec3(v[1],v[2],v[3]),0.7,{
+			name = "Cardlimit:"..Number,
+			heading = 3374176
+		},{
+			shop = Number,
+			Distance = v[4] or 0.5,
+			options = {
+				{
+					event = "player:Spending",
+					label = "Aumentar 10 mil de limite",
+					tunnel = "police",
+					service = "upgrade-1"
+				},{
+					event = "player:Spending",
+					label = "Aumentar 50 mil de limite",
+					tunnel = "police",
+					service = "upgrade-2"
+				},{
+					event = "player:Spending",
+					label = "Diminuir 10 mil de limite",
+					tunnel = "police",
+					service = "downgrade-1"
+				},{
+					event = "player:Spending",
+					label = "Diminuir 50 mil de limite",
+					tunnel = "police",
+					service = "downgrade-2"
+				}
+			}
+		})
+	end
+end)

@@ -21,7 +21,7 @@ local DuiTextures = {
 		["Distance"] = 1.50,
 		["Dimension"] = 1.25,
 		["Label"] = "Quadro Branco",
-		["Permission"] = "setPolice",
+		["Permission"] = "Police",
 		["Coords"] = vec3(439.47,-985.85,35.99),
 		["Link"] = "https://i.imgur.com/A5v5SoM.png",
 		["Dict"] = "prop_planning_b1",
@@ -38,7 +38,7 @@ AddEventHandler("player:Texture",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if (DuiTextures[Name]["Permission"] and vRP.HasGroup(Passport,DuiTextures[Name]["Permission"])) or not DuiTextures[Name]["Permission"] then
+		if (DuiTextures[Name]["Permission"] and vRP.HasGroup(Passport,DuiTextures[Name]["Permission"]),1) or not DuiTextures[Name]["Permission"] then
 			local Keyboard = vKEYBOARD.keySingle(source,"Link:")
 			if Keyboard then
 				DuiTextures[Name]["Link"] = Keyboard[1]

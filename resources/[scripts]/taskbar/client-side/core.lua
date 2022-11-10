@@ -105,7 +105,7 @@ function Creative.taskMechanic()
 	if taskBar(7500) then
 		if taskBar(5000) then
 			if taskBar(2500) then
-				if taskBar(1000) then
+				if taskBar(2000) then
 					return true
 				end
 			end

@@ -17,6 +17,24 @@ vCLIENT = Tunnel.getInterface("police")
 vRP.Prepare("prison/cleanRecords","DELETE FROM prison WHERE nuser_id = @nuser_id")
 vRP.Prepare("prison/getRecords","SELECT * FROM prison WHERE nuser_id = @nuser_id ORDER BY id DESC")
 vRP.Prepare("prison/insertPrison","INSERT INTO prison(police,nuser_id,services,fines,text,date) VALUES(@police,@nuser_id,@services,@fines,@text,@date)")
+vRP.Prepare('prison/create',[[CREATE TABLE IF NOT EXISTS `prison` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`police` varchar(255) DEFAULT '0',
+		`nuser_id` int(11) NOT NULL DEFAULT '0',
+		`services` int(11) NOT NULL DEFAULT '0',
+		`fines` int(20) NOT NULL DEFAULT '0',
+		`text` longtext,
+		`date` text,
+		PRIMARY KEY (`id`),
+		KEY `id` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+]])
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CREATETABLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	vRP.Query('prison/create')
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------

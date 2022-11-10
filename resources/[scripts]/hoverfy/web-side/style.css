@@ -11,8 +11,8 @@ html,body {
 }
 
 #displayNotify {
-	right: 50px;
-	bottom: 150px;
+	right: 6vw;
+	bottom: 7vw;
 	display: none;
 	line-height: 16px;
 	position: absolute;

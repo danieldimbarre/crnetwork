@@ -26,8 +26,8 @@ input::-webkit-inner-spin-button {
 }
 
 #Doors {
-	right: 2vw;
-	bottom: 170px;
+	right: 6vw;
+	bottom: 9vw;
 	display: none;
 	line-height: 16px;
 	position: absolute;

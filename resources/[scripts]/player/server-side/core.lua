@@ -38,7 +38,7 @@ AddEventHandler("player:Texture",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if (DuiTextures[Name]["Permission"] and vRP.HasGroup(Passport,DuiTextures[Name]["Permission"]),1) or not DuiTextures[Name]["Permission"] then
+		if (DuiTextures[Name]["Permission"] and vRP.HasGroup(Passport,DuiTextures[Name]["Permission"],1) or not DuiTextures[Name]["Permission"] then
 			local Keyboard = vKEYBOARD.keySingle(source,"Link:")
 			if Keyboard then
 				DuiTextures[Name]["Link"] = Keyboard[1]

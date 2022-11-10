@@ -4434,7 +4434,7 @@ Use = {
 					TriggerClientEvent("setEnergetic",source,20,1.10)
 					vRP.UpgradeHunger(Passport,10)
 
-					if vCLIENT.Restaurant(source,"UwuCoffee") then
+					if vCLIENT.Restaurant(source,"UwuCoffee") or vCLIENT.Restaurant(source,"BeanMachine") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end

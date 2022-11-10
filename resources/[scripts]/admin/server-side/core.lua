@@ -469,6 +469,20 @@ RegisterCommand("ids",function(source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ID
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("id",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
+			local Identity = vRP.Identity(Message[1])
+			if Identity then
+				TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Message[1].."\n<b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."\n<b>Telefone:</b> "..Identity["phone"],5000)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ADMIN:COORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("admin:Coords")

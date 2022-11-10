@@ -20,7 +20,6 @@ Display = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Road = ""
 local Gemstone = 0
-local Pause = false
 local Crossing = ""
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRINCIPAL
@@ -72,13 +71,9 @@ CreateThread(function()
 
 			if IsPauseMenuActive() then
 				SendNUIMessage({ Action = "Body", Status = false })
-				Pause = true
 			else
 				if Display then
-					if Pause then
-						SendNUIMessage({ Action = "Body", Status = true })
-						Pause = false
-					end
+					SendNUIMessage({ Action = "Body", Status = true })
 
 					local Coords = GetEntityCoords(Ped)
 					local Armouring = GetPedArmour(Ped)

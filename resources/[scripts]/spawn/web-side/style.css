@@ -91,7 +91,7 @@ input::-webkit-inner-spin-button {
 	color: #999;
 	bottom: 3vw;
 	width: 20vw;
-	padding: 0.6vw;
+	padding: 1vw;
 	display: none;
 	font-size: 0.6vw;
 	line-height: 1vw;
@@ -102,7 +102,7 @@ input::-webkit-inner-spin-button {
 .SpawnMessage span {
 	color: #6ede81;
 	display: block;
-	font-size: 0.9vw;
+	font-size: 1.2vw;
 	letter-spacing: 0.1vw;
 	margin-bottom: 0.7vw;
 	font-family: "Gotham";

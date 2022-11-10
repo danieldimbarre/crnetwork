@@ -2093,7 +2093,13 @@ function Creative.RemoveTyres(Entity)
 								local Vehicle = NetworkGetEntityFromNetworkId(Entity[4])
 								if DoesEntityExist(Vehicle) and not IsPedAPlayer(Vehicle) and GetEntityType(Vehicle) == 2 then
 									if vCLIENT.tyreHealth(source,Entity[4],Entity[5]) == 1000.0 then
-										TriggerClientEvent("inventory:explodeTyres",source,Entity[4],Entity[1],Entity[5])
+										local Players = vRPC.Players(source)
+										for _,v in ipairs(Players) do
+											async(function()
+												TriggerClientEvent("inventory:explodeTyres",v,Entity[4],Entity[1],Entity[5])
+											end)
+										end
+
 										vRP.GenerateItem(Passport,"tyres",1,true)
 									end
 								end

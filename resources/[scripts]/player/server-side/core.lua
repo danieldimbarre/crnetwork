@@ -886,9 +886,9 @@ function Creative.Bikepack()
 			amountWeight = 15
 		elseif parseInt(myWeight) >= 45 and parseInt(myWeight) <= 79 then
 			amountWeight = 10
-		elseif parseInt(myWeight) >= 80 and parseInt(myWeight) <= 95 then
+		elseif parseInt(myWeight) >= 80 and parseInt(myWeight) <= 99 then
 			amountWeight = 5
-		elseif parseInt(myWeight) >= 100 and parseInt(myWeight) <= 148 then
+		elseif parseInt(myWeight) >= 100 and parseInt(myWeight) <= 149 then
 			amountWeight = 2
 		elseif parseInt(myWeight) >= 150 then
 			amountWeight = 1

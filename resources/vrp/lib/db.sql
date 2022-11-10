@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `prison` int(11) NOT NULL DEFAULT 0,
   `tracking` int(30) NOT NULL DEFAULT 0,
   `spending` int(20) NOT NULL DEFAULT 0,
-  `cardlimit` int(20) NOT NULL DEFAULT 5000,
+  `cardlimit` int(20) NOT NULL DEFAULT 10000,
   `deleted` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `license` (`license`),

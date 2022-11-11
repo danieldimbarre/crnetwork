@@ -9,7 +9,6 @@ client_scripts {
 }
 
 server_scripts {
-	"@inventory/server-side/core.lua",
 	"@vrp/lib/Utils.lua",
 	"server-side/*"
 }

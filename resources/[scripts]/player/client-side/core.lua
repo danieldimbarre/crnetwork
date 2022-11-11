@@ -1019,31 +1019,36 @@ end)
 -- PLAYER:RELATIONSHIP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:Relationship")
-AddEventHandler("player:Relationship",function(Group)
+AddEventHandler("player:Relationship",function(Group,Ungroup)
+	local Func = SetRelationshipBetweenGroups
+	if Ungroup then
+		Func = ClearRelationshipBetweenGroups
+	end
+
 	if Group == "Ballas" then
-		SetRelationshipBetweenGroups(2,GetHashKey("AMBIENT_GANG_BALLAS"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(2,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_BALLAS"))
+		Func(1,GetHashKey("AMBIENT_GANG_BALLAS"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_BALLAS"))
 	elseif Group == "Families" then
-		SetRelationshipBetweenGroups(2,GetHashKey("AMBIENT_GANG_FAMILY"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(2,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_FAMILY"))
+		Func(1,GetHashKey("AMBIENT_GANG_FAMILY"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_FAMILY"))
 	elseif Group == "Vagos" then
-		SetRelationshipBetweenGroups(2,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(2,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
-	-- elseif Group == "Aztecas" then
-	-- 	SetRelationshipBetweenGroups(2,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
-	-- 	SetRelationshipBetweenGroups(2,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
+		Func(1,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
+	elseif Group == "Aztecas" then
+		Func(1,GetHashKey("GANG_2"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("GANG_2"))
 	elseif Group == "Marabunta" then
-		SetRelationshipBetweenGroups(2,GetHashKey("AMBIENT_GANG_MARABUNTE"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(2,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MARABUNTE"))
+		Func(1,GetHashKey("AMBIENT_GANG_MARABUNTE"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MARABUNTE"))
 	elseif Group == "Triads" then
-		SetRelationshipBetweenGroups(2,GetHashKey("AMBIENT_GANG_WEICHENG"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(2,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_WEICHENG"))
+		Func(1,GetHashKey("AMBIENT_GANG_WEICHENG"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_WEICHENG"))
 	elseif Group == "Lost" then
-		SetRelationshipBetweenGroups(2,GetHashKey("AMBIENT_GANG_LOST"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(2,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
+		Func(1,GetHashKey("AMBIENT_GANG_LOST"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
 	elseif Group == "Altruists" then
-		SetRelationshipBetweenGroups(2,GetHashKey("AMBIENT_GANG_CULT"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(2,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_CULT"))
+		Func(1,GetHashKey("AMBIENT_GANG_CULT"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_CULT"))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

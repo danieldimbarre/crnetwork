@@ -305,6 +305,11 @@ RegisterCommand("group",function(source,Message)
 			if Groups[Message[2]] then
 				vRP.SetPermission(Message[1],Message[2],Message[3])
 				TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
+
+				local OtherSource = vRP.Source(Message[1])
+				if OtherSource then
+					TriggerClientEvent("player:Relationship",OtherSource,Message[2])
+				end
 			end
 		end
 	end
@@ -320,6 +325,11 @@ RegisterCommand("ungroup",function(source,Message)
 			if Groups[Message[2]] then
 				vRP.RemovePermission(Message[1],Message[2])
 				TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
+
+				local OtherSource = vRP.Source(Message[1])
+				if OtherSource then
+					TriggerClientEvent("player:Relationship",OtherSource,Message[2],true)
+				end
 			end
 		end
 	end

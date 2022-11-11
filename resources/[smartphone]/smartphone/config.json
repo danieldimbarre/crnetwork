@@ -17,7 +17,8 @@
     "instagram_verify": "Admin",
     "instagram_accounts": {
         "*": 1,
-        "Admin": 2
+        "Admin": 2,
+        "Premium": 3
     },
     "moderator": "Admin",
     "item": "cellphone",

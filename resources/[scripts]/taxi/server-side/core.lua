@@ -38,7 +38,13 @@ function Creative.paymentService()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		vRP.GenerateItem(Passport,"dollars",math.random(175,275),true)
+		local Valuation = math.random(175,275)
+
+		if vRP.UserPremium(Passport) then
+			Valuation = Valuation + (Valuation * 0.1)
+		end
+
+		vRP.GenerateItem(Passport,"dollars",Valuation,true)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

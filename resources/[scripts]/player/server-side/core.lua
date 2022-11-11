@@ -939,6 +939,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
 	TriggerClientEvent("player:DuiTable",source,DuiTextures)
+
+	local Groups = vRP.Groups()
+	for Permission,_ in pairs(Groups) do
+		if vRP.HasGroup(Passport,Permission) then
+			TriggerClientEvent("player:Relationship",source,Permission)
+		end
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

@@ -815,6 +815,10 @@ function Creative.Deliver(Slot)
 						end
 					end
 
+					if vRP.UserPremium(Passport) then
+						Valuation = Valuation + (Valuation * 0.1)
+					end
+
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
 					vRP.PutExperience(Passport,"Lumberman",1)
@@ -851,6 +855,10 @@ function Creative.Deliver(Slot)
 						end
 					end
 
+					if vRP.UserPremium(Passport) then
+						Valuation = Valuation + (Valuation * 0.1)
+					end
+
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
 					vRP.PutExperience(Passport,"Transporter",1)
@@ -884,6 +892,10 @@ function Creative.Deliver(Slot)
 						if Buffs["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
 						end
+					end
+
+					if vRP.UserPremium(Passport) then
+						Valuation = Valuation + (Valuation * 0.1)
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -922,6 +934,10 @@ function Creative.Deliver(Slot)
 						end
 					end
 
+					if vRP.UserPremium(Passport) then
+						Valuation = Valuation + (Valuation * 0.1)
+					end
+
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
 					vRP.DirectChest("PizzaThis","100",Valuation * 0.05)
@@ -958,6 +974,10 @@ function Creative.Deliver(Slot)
 						end
 					end
 
+					if vRP.UserPremium(Passport) then
+						Valuation = Valuation + (Valuation * 0.1)
+					end
+
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
 					vRP.DirectChest("UwuCoffee","100",Valuation * 0.05)
@@ -992,6 +1012,10 @@ function Creative.Deliver(Slot)
 						if Buffs["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
 						end
+					end
+
+					if vRP.UserPremium(Passport) then
+						Valuation = Valuation + (Valuation * 0.1)
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")

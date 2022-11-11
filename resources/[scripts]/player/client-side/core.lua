@@ -1034,9 +1034,9 @@ AddEventHandler("player:Relationship",function(Group,Ungroup)
 	elseif Group == "Vagos" then
 		Func(1,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
 		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
-	elseif Group == "Aztecas" then
-		Func(1,GetHashKey("GANG_2"),GetHashKey("PLAYER"))
-		Func(1,GetHashKey("PLAYER"),GetHashKey("GANG_2"))
+	-- elseif Group == "Aztecas" then
+	-- 	Func(1,GetHashKey("GANG_2"),GetHashKey("PLAYER"))
+	-- 	Func(1,GetHashKey("PLAYER"),GetHashKey("GANG_2"))
 	elseif Group == "Marabunta" then
 		Func(1,GetHashKey("AMBIENT_GANG_MARABUNTE"),GetHashKey("PLAYER"))
 		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MARABUNTE"))

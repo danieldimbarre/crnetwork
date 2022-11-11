@@ -76,6 +76,11 @@ AddEventHandler("service:Remove",function(Number)
 
 			TriggerClientEvent("service:Update",source)
 			TriggerClientEvent("Notify",source,"verde","Passaporte removido.",5000)
+			
+			local OtherSource = vRP.Source(Number)
+			if OtherSource then
+				TriggerClientEvent("player:Relationship",OtherSource,Panel[Passport],true)
+			end
 		end
 	end
 end)
@@ -93,6 +98,11 @@ AddEventHandler("service:Add",function(Number,Rank)
 
 			TriggerClientEvent("Notify",source,"verde","Passaporte adicionado.",5000)
 			TriggerClientEvent("service:Update",source)
+
+			local OtherSource = vRP.Source(Number)
+			if OtherSource then
+				TriggerClientEvent("player:Relationship",OtherSource,Panel[Passport])
+			end
 		end
 	end
 end)

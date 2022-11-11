@@ -40,12 +40,6 @@ function Creative.paymentService()
 	if Passport then
 		local Valuation = math.random(175,275)
 
-		if Buffs["Dexterity"][Passport] then
-			if Buffs["Dexterity"][Passport] > os.time() then
-				Valuation = Valuation + (Valuation * 0.1)
-			end
-		end
-
 		if vRP.UserPremium(Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end

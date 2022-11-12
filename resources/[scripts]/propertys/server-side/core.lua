@@ -138,7 +138,7 @@ AddEventHandler("propertys:Sell",function(Name)
 
 					vRP.Query("propertys/Sell",{ name = Name })
 					TriggerClientEvent("Notify",source,"amarelo","Venda concluída.",5000)
-					vRP.GiveBank(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.75)
+					vRP.GiveBank(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.25)
 				end
 			end
 		end

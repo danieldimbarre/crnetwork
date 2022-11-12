@@ -341,6 +341,56 @@ Use = {
 		end
 	end,
 
+	["homecont01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
+	["homecont02"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
+	["homecont03"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
+	["homecont04"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
+	["homecont05"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
+	["homecont06"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
+	["homecont07"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
+	["homecont08"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
+	["homecont09"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
+	["homecont010"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+		TriggerEvent("propertys:Buy",source,Full,string.sub(Full,10,10))
+	end,
+
 	["dices"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true

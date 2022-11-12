@@ -1263,6 +1263,86 @@ local List = {
 		["Weight"] = 0.25,
 		["Economy"] = 100000
 	},
+	["homecont01"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior 1.",
+		["Weight"] = 0.00,
+		["Economy"] = 125000
+	},
+	["homecont02"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior 2.",
+		["Weight"] = 0.00,
+		["Economy"] = 300000
+	},
+	["homecont03"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior 3.",
+		["Weight"] = 0.00,
+		["Economy"] = 75000
+	},
+	["homecont04"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior 4.",
+		["Weight"] = 0.00,
+		["Economy"] = 175000
+	},
+	["homecont05"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior 5.",
+		["Weight"] = 0.00,
+		["Economy"] = 125000
+	},
+	["homecont06"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior 6.",
+		["Weight"] = 0.00,
+		["Economy"] = 250000
+	},
+	["homecont07"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior 7.",
+		["Weight"] = 0.00,
+		["Economy"] = 75000
+	},
+	["homecont08"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior 8.",
+		["Weight"] = 0.00,
+		["Economy"] = 250000
+	},
+	["homecont09"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior 9.",
+		["Weight"] = 0.00,
+		["Economy"] = 175000
+	},
+	["homecont010"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do container.",
+		["Weight"] = 0.00,
+		["Economy"] = 100000
+	},
 	["milkbottle"] = {
 		["Index"] = "milkbottle",
 		["Name"] = "Garrafa de Leite",

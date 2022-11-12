@@ -18,12 +18,12 @@ vSERVER = Tunnel.getInterface("inventory")
 local Drops = {}
 local Types = ""
 local Weapon = ""
-local PushSlot = 1
+local UseSlots = 1
+local Actived = false
 local Backpack = false
-local weaponActive = false
-local putWeaponHands = false
-local storeWeaponHands = false
-local timeReload = GetGameTimer()
+local TakeWeapon = false
+local StoreWeapon = false
+local Reloaded = GetGameTimer()
 LocalPlayer["state"]["Buttons"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:CANCEL
@@ -94,16 +94,15 @@ end)
 RegisterNetEvent("inventory:CleanWeapons")
 AddEventHandler("inventory:CleanWeapons",function(Create)
 	if Weapon ~= "" then
-		if Create and PushSlot <= 5 then
+		if Create and UseSlots <= 5 then
 			TriggerEvent("inventory:CreateWeapon",Weapon)
 		end
 
-		RemoveWeaponFromPed(PlayerPedId(),Weapon)
-		SetPedAmmo(PlayerPedId(),Weapon,0)
+		RemoveAllPedWeapons(PlayerPedId(),true)
 	end
 
 	TriggerEvent("hud:Weapon",false)
-	weaponActive = false
+	Actived = false
 	Weapon = ""
 	Types = ""
 end)
@@ -171,7 +170,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Slot")
 AddEventHandler("inventory:Slot",function(Number,Amount)
-	PushSlot = parseInt(Number)
+	UseSlots = parseInt(Number)
 	vSERVER.UseItem(Number,Amount)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -215,8 +214,8 @@ AddEventHandler("inventory:verifyWeapon",function(Item)
 
 	if Weapon == Name then
 		local Ped = PlayerPedId()
-		local weaponAmmo = GetAmmoInPedWeapon(Ped,Weapon)
-		if not vSERVER.verifyWeapon(Weapon,weaponAmmo) then
+		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+		if not vSERVER.verifyWeapon(Weapon,Ammo) then
 			TriggerEvent("inventory:CleanWeapons",false)
 		end
 	else
@@ -229,38 +228,30 @@ end)
 -- INVENTORY:PREVENTWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:preventWeapon")
-AddEventHandler("inventory:preventWeapon",function(storeWeapons)
+AddEventHandler("inventory:preventWeapon",function()
 	if Weapon ~= "" then
 		local Ped = PlayerPedId()
-		local weaponAmmo = GetAmmoInPedWeapon(Ped,Weapon)
+		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
 
-		vSERVER.preventWeapon(Weapon,weaponAmmo)
-
-		if storeWeapons then
-			if Weapon ~= "" then
-				TriggerEvent("inventory:CreateWeapon",Weapon)
-				RemoveWeaponFromPed(Ped,Weapon)
-				SetPedAmmo(Ped,Weapon,0)
-			end
-		end
-
-		Types = ""
-		Weapon = ""
-		weaponActive = false
+		TriggerEvent("inventory:CreateWeapon",Weapon)
+		vSERVER.preventWeapon(Weapon,Ammo)
 		TriggerEvent("hud:Weapon",false)
+		RemoveAllPedWeapons(Ped,true)
+
+		Actived = false
+		Weapon = ""
+		Types = ""
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENBACKPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("openBackpack",function()
-	if GetEntityHealth(PlayerPedId()) > 100 and not LocalPlayer["state"]["Buttons"] and not IsPauseMenuActive() then
-		if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPlayerFreeAiming(PlayerId()) then
-			Backpack = true
-			SetNuiFocus(true,true)
-			SetCursorLocation(0.5,0.5)
-			SendNUIMessage({ action = "showMenu" })
-		end
+	if not IsPauseMenuActive() and GetEntityHealth(PlayerPedId()) > 100 and not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPlayerFreeAiming(PlayerId()) then
+		Backpack = true
+		SetNuiFocus(true,true)
+		SetCursorLocation(0.5,0.5)
+		SendNUIMessage({ action = "showMenu" })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -375,12 +366,10 @@ AddEventHandler("inventory:vehicleAlarm",function(Index,Plate)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PARACHUTECOLORS
+-- PARACHUTE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.parachuteColors()
-	local Ped = PlayerPedId()
-	GiveWeaponToPed(Ped,"GADGET_PARACHUTE",1,false,true)
-	SetPedParachuteTintIndex(Ped,math.random(7))
+	GiveWeaponToPed(PlayerPedId(),"GADGET_PARACHUTE",1,false,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FISHCOORDS
@@ -624,16 +613,16 @@ end
 -- PUTWEAPONHANDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.putWeaponHands(weaponName,weaponAmmo,attachs,weaponType)
-	if not putWeaponHands then
+	if not TakeWeapon then
 		if not weaponAmmo then
 			weaponAmmo = 0
 		end
 
 		if weaponAmmo > 0 then
-			weaponActive = true
+			Actived = true
 		end
 
-		putWeaponHands = true
+		TakeWeapon = true
 		LocalPlayer["state"]["Cancel"] = true
 
 		local Ped = PlayerPedId()
@@ -655,18 +644,18 @@ function Creative.putWeaponHands(weaponName,weaponAmmo,attachs,weaponType)
 			GiveWeaponToPed(Ped,weaponName,weaponAmmo,false,true)
 		end
 
-		if attachs ~= nil then
+		if attachs then
 			for nameItem,_ in pairs(attachs) do
 				Creative.putAttachs(nameItem,weaponName)
 			end
 		end
 
-		if weaponType ~= nil then
+		if weaponType then
 			Types = weaponType
 		end
 
+		TakeWeapon = false
 		Weapon = weaponName
-		putWeaponHands = false
 		LocalPlayer["state"]["Cancel"] = false
 
 		if itemAmmo(weaponName) then
@@ -686,12 +675,13 @@ end
 -- STOREWEAPONHANDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.storeWeaponHands()
-	if not storeWeaponHands then
-		storeWeaponHands = true
+	if not StoreWeapon then
+		StoreWeapon = true
+
+		local Last = Weapon
 		local Ped = PlayerPedId()
 		LocalPlayer["state"]["Cancel"] = true
-		local lastWeapon = Weapon
-		local weaponAmmo = GetAmmoInPedWeapon(Ped,Weapon)
+		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
 
 		if not IsPedInAnyVehicle(Ped) then
 			if LoadAnim("weapons@pistol@") then
@@ -703,13 +693,11 @@ function Creative.storeWeaponHands()
 			ClearPedTasks(Ped)
 		end
 
+		StoreWeapon = false
 		LocalPlayer["state"]["Cancel"] = false
-
 		TriggerEvent("inventory:CleanWeapons",true)
 
-		storeWeaponHands = false
-
-		return true,weaponAmmo,lastWeapon
+		return true,Ammo,Last
 	end
 
 	return false
@@ -781,7 +769,7 @@ function Creative.rechargeCheck(ammoType)
 	if weaponAmmos[ammoType] then
 		weaponAmmo = GetAmmoInPedWeapon(Ped,Weapon)
 
-		for k,v in pairs(weaponAmmos[ammoType]) do
+		for _,v in pairs(weaponAmmos[ammoType]) do
 			if Weapon == v then
 				weaponHash = Weapon
 				weaponStatus = true
@@ -795,9 +783,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RECHARGEWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.rechargeWeapon(weaponHash,ammoAmount)
-	SetPedAmmo(PlayerPedId(),weaponHash,ammoAmount)
-	weaponActive = true
+function Creative.rechargeWeapon(Hash,Ammo)
+	SetPedAmmo(PlayerPedId(),Hash,Ammo)
+	Actived = true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTOREWEAPON
@@ -805,21 +793,22 @@ end
 CreateThread(function()
 	while true do
 		local TimeDistance = 999
-		if weaponActive and Weapon ~= "" then
-			TimeDistance = 100
-			local Ped = PlayerPedId()
-			local weaponAmmo = GetAmmoInPedWeapon(Ped,Weapon)
+		if Actived and Weapon ~= "" then
+			TimeDistance = 10
 
-			if GetGameTimer() >= timeReload and IsPedReloading(Ped) then
-				vSERVER.preventWeapon(Weapon,weaponAmmo)
-				timeReload = GetGameTimer() + 1000
+			local Ped = PlayerPedId()
+			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+
+			if GetGameTimer() >= Reloaded and IsPedReloading(Ped) then
+				vSERVER.preventWeapon(Weapon,Ammo)
+				Reloaded = GetGameTimer() + 100
 			end
 
-			if weaponAmmo <= 0 or (Weapon == "WEAPON_PETROLCAN" and weaponAmmo <= 135 and IsPedShooting(Ped)) or IsPedSwimming(Ped) then
+			if Ammo <= 0 or (Weapon == "WEAPON_PETROLCAN" and Ammo <= 135 and IsPedShooting(Ped)) or IsPedSwimming(Ped) then
 				if Types ~= "" then
 					vSERVER.removeThrowing(Types)
 				else
-					vSERVER.preventWeapon(Weapon,weaponAmmo)
+					vSERVER.preventWeapon(Weapon,Ammo)
 				end
 
 				TriggerEvent("inventory:CleanWeapons",true)
@@ -1259,8 +1248,8 @@ function Creative.tyreStatus()
 		if IsEntityAVehicle(Vehicle) then
 			local Coords = GetEntityCoords(Ped)
 
-			for k,Tyre in pairs(tyreList) do
-				local Selected = GetEntityBoneIndexByName(Vehicle,k)
+			for Index,Tyre in pairs(tyreList) do
+				local Selected = GetEntityBoneIndexByName(Vehicle,Index)
 				if Selected ~= -1 then
 					local CoordsWheel = GetWorldPositionOfEntityBone(Vehicle,Selected)
 					local Distance = #(Coords - CoordsWheel)

@@ -2668,6 +2668,15 @@ local List = {
 		["Economy"] = 225,
 		["Max"] = 3
 	},
+	["WEAPON_FLASHBANG"] = {
+		["Index"] = "smokegrenade",
+		["Name"] = "Granada de Luz",
+		["Type"] = "Throwing",
+		["Vehicle"] = true,
+		["Weight"] = 0.95,
+		["Economy"] = 225,
+		["Max"] = 3
+	},
 	["pager"] = {
 		["Index"] = "pager",
 		["Name"] = "Pager",

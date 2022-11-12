@@ -87,7 +87,8 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["identity"] = 5000
+			["identity"] = 5000,
+			["badge03"] = 2000
 		}
 	},
 	["Identity2"] = {
@@ -367,6 +368,9 @@ local shops = {
 	["Hunting2"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
+		["required"] = {
+			["badge03"] = 1
+		}
 		["List"] = {
 			["switchblade"] = 525,
 			["WEAPON_MUSKET"] = 3250,
@@ -594,6 +598,15 @@ function Creative.requestPerm(Type)
 		if shops[Type]["perm"] ~= nil then
 			if not vRP.HasService(Passport,shops[Type]["perm"]) then
 				return false
+			end
+		end
+
+		if shops[Type]["required"] ~= nil then
+			for Index,v in pairs(List[Type]["List"]["require"]) do
+				local consultItem = vRP.InventoryItemAmount(Passport,Index)
+				if consultItem[1] < parseInt(v) then
+					return false
+				end
 			end
 		end
 

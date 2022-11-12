@@ -1263,75 +1263,75 @@ local List = {
 		["Weight"] = 0.25,
 		["Economy"] = 100000
 	},
-	["homecont01"] = {
+	["homecontEmerald"] = {
 		["Index"] = "contract",
 		["Name"] = "Contrato de Propriedade",
 		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do interior 1.",
+		["Description"] = "Assinatura de contrato do interior Emerald.",
 		["Weight"] = 0.00,
 		["Economy"] = 125000
 	},
-	["homecont02"] = {
+	["homecontDiamond"] = {
 		["Index"] = "contract",
 		["Name"] = "Contrato de Propriedade",
 		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do interior 2.",
+		["Description"] = "Assinatura de contrato do interior Diamond.",
 		["Weight"] = 0.00,
 		["Economy"] = 300000
 	},
-	["homecont03"] = {
+	["homecontRuby"] = {
 		["Index"] = "contract",
 		["Name"] = "Contrato de Propriedade",
 		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do interior 3.",
+		["Description"] = "Assinatura de contrato do interior Ruby.",
 		["Weight"] = 0.00,
 		["Economy"] = 75000
 	},
-	["homecont04"] = {
+	["homecontSapphire"] = {
 		["Index"] = "contract",
 		["Name"] = "Contrato de Propriedade",
 		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do interior 4.",
+		["Description"] = "Assinatura de contrato do interior Sapphire.",
 		["Weight"] = 0.00,
 		["Economy"] = 175000
 	},
-	["homecont05"] = {
+	["homecontAmethyst"] = {
 		["Index"] = "contract",
 		["Name"] = "Contrato de Propriedade",
 		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do interior 5.",
+		["Description"] = "Assinatura de contrato do interior Amethyst.",
 		["Weight"] = 0.00,
 		["Economy"] = 125000
 	},
-	["homecont06"] = {
+	["homecontAmber"] = {
 		["Index"] = "contract",
 		["Name"] = "Contrato de Propriedade",
 		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do interior 6.",
+		["Description"] = "Assinatura de contrato do interior Amber.",
 		["Weight"] = 0.00,
 		["Economy"] = 250000
 	},
-	["homecont07"] = {
+	["homecontTurquoise"] = {
 		["Index"] = "contract",
 		["Name"] = "Contrato de Propriedade",
 		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do interior 7.",
+		["Description"] = "Assinatura de contrato do interior Turquoise.",
 		["Weight"] = 0.00,
 		["Economy"] = 75000
 	},
-	["homecont08"] = {
+	["homecontAquamarine"] = {
 		["Index"] = "contract",
 		["Name"] = "Contrato de Propriedade",
 		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do interior 8.",
+		["Description"] = "Assinatura de contrato do interior Aquamarine.",
 		["Weight"] = 0.00,
 		["Economy"] = 250000
 	},
-	["homecont09"] = {
+	["homecontTopaz"] = {
 		["Index"] = "contract",
 		["Name"] = "Contrato de Propriedade",
 		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do interior 9.",
+		["Description"] = "Assinatura de contrato do interior Topaz.",
 		["Weight"] = 0.00,
 		["Economy"] = 175000
 	},

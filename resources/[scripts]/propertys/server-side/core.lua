@@ -79,7 +79,7 @@ AddEventHandler("propertys:Buy",function(Name)
 			TriggerClientEvent("dynamic:closeSystem",source)
 
 			if vRP.Request(source,"Deseja comprar a propriedade?","Sim, assinar papelada","Não, mudeia de ideia") then
-				if vRP.TakeItem(Passport,"homecont0"..Interior,1,true) or vRP.PaymentFull(Passport,Informations[Interior]["Price"]) then
+				if vRP.TakeItem(Passport,"homecont"..Interior,1,true) or vRP.PaymentFull(Passport,Informations[Interior]["Price"]) then
 					Markers[Name] = true
 					local Serial = PropertysSerials()
 					vRP.GiveItem(Passport,"propertys-"..Serial,3,true)

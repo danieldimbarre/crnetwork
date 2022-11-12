@@ -370,7 +370,7 @@ local shops = {
 		["type"] = "Cash",
 		["required"] = {
 			["badge03"] = 1
-		}
+		},
 		["List"] = {
 			["switchblade"] = 525,
 			["WEAPON_MUSKET"] = 3250,

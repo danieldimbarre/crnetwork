@@ -2758,7 +2758,7 @@ local List = {
 		["Max"] = 3
 	},
 	["WEAPON_FLASHBANG"] = {
-		["Index"] = "smokegrenade",
+		["Index"] = "flashbang",
 		["Name"] = "Granada de Luz",
 		["Type"] = "Throwing",
 		["Vehicle"] = true,

@@ -49,18 +49,10 @@ AddEventHandler("barbershop:Debug",function()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Datatable = vRP.Datatable(Passport)
-		if Datatable then
-			vRPC.Skin(source,Datatable["Skin"])
-
-			TriggerClientEvent("barbershop:Apply",source,vRP.UserData(Passport,"Barbershop"))
-			TriggerClientEvent("skinshop:Apply",source,vRP.UserData(Passport,"Clothings"))
-			TriggerClientEvent("tattoos:Apply",source,vRP.UserData(Passport,"Tatuagens"))
-			TriggerClientEvent("target:Debug",source)
-
-			vRP.Revive(source,Datatable["Health"])
-			vRP.SetArmour(source,Datatable["Armour"])
-		end
+		TriggerClientEvent("barbershop:Apply",source,vRP.UserData(Passport,"Barbershop"))
+		TriggerClientEvent("skinshop:Apply",source,vRP.UserData(Passport,"Clothings"))
+		TriggerClientEvent("tattoos:Apply",source,vRP.UserData(Passport,"Tatuagens"))
+		TriggerClientEvent("target:Debug",source)
 
 		TriggerClientEvent("inventory:Cancel",source)
 

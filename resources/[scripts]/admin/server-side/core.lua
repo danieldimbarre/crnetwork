@@ -120,6 +120,8 @@ RegisterCommand("god",function(source,Message)
 							vRP.UpgradeHunger(OtherPassport,100)
 							vRP.DowngradeStress(OtherPassport,100)
 							vRP.Revive(OtherSource,200)
+
+							TriggerClientEvent("paramedic:Reset",OtherSource)
 						end)
 					end
 				else
@@ -130,6 +132,8 @@ RegisterCommand("god",function(source,Message)
 						vRP.UpgradeHunger(OtherPassport,100)
 						vRP.DowngradeStress(OtherPassport,100)
 						vRP.Revive(ClosestPed,200)
+
+						TriggerClientEvent("paramedic:Reset",ClosestPed)
 					end
 				end
 			else
@@ -162,6 +166,8 @@ RegisterCommand("goda",function(source,Message)
 						vRP.UpgradeHunger(OtherPassport,100)
 						vRP.DowngradeStress(OtherPassport,100)
 						vRP.Revive(v[2],200)
+
+						TriggerClientEvent("paramedic:Reset",v[2])
 					end)
 				end
 			end
@@ -487,7 +493,7 @@ RegisterCommand("id",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
 			local Identity = vRP.Identity(Message[1])
 			if Identity then
-				TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Message[1].."\n<b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."\n<b>Telefone:</b> "..Identity["phone"],5000)
+				TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Message[1].."<br><b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."<br><b>Telefone:</b> "..Identity["phone"].."<br><b>Banco:</b> $"..parseFormat(Identity["bank"]),5000)
 			end
 		end
 	end

@@ -22,7 +22,7 @@ Groups = {
 			["Police"] = true
 		},
 		["Hierarchy"] = { "Chefe","Oficial" },
-		["Salary"] = { 3500,3500 },
+		["Salary"] = { 1000,1000 },
 		["Service"] = {}
 	},
 	["Paramedic"] = {
@@ -30,7 +30,7 @@ Groups = {
 			["Paramedic"] = true
 		},
 		["Hierarchy"] = { "Chefe","Membro" },
-		["Salary"] = { 3500,3500 },
+		["Salary"] = { 1000,1000 },
 		["Service"] = {}
 	},
 	["Mechanic"] = {

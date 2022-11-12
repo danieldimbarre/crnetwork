@@ -166,7 +166,7 @@ CreateThread(function()
 					Treatment = false
 					LocalPlayer["state"]["Cancel"] = false
 					LocalPlayer["state"]["Commands"] = false
-					TriggerEvent("Notify","amarelo","Tratamento concluido.",5000)
+					TriggerEvent("Notify","amarelo","Tratamento concluído.",5000)
 				end
 			end
 		end

@@ -15,6 +15,22 @@ vCLIENT = Tunnel.getInterface("inspect")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local openPlayer = {}
 local openSource = {}
+local openAdmin = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INV
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("inv",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin",2) and OtherPassport > 0 then
+			openPlayer[Passport] = OtherPassport
+			openAdmin[Passport] = OtherPassport
+
+			TriggerClientEvent("inspect:Open",source)
+		end
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:RUNINSPECT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -109,6 +125,10 @@ function Creative.resetInspect()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		if openAdmin[Passport] then
+			openAdmin[Passport] = nil
+		end
+
 		if openSource[Passport] then
 			TriggerClientEvent("player:Commands",openSource[Passport],false)
 			TriggerClientEvent("player:playerCarry",openSource[Passport],source)

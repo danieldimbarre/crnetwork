@@ -466,7 +466,7 @@ function Creative.requestInventory()
 							v["idBlood"] = Sanguine(Identity["blood"])
 							v["idName"] = Identity["name"].." "..Identity["name2"]
 
-							if Number == Passport and Split[1] == "identity" then
+							if Number == Passport then
 								if Identity["premium"] > os.time() then
 									local Groups = vRP.Hierarchy("Premium")
 									local Number = vRP.HasPermission(Passport,"Premium")

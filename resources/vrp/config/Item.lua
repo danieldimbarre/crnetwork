@@ -352,7 +352,7 @@ local List = {
 	["badge01"] = {
 		["Index"] = "badge01",
 		["Name"] = "Distintivo",
-		["Description"] = "<green>San Andreas Police Department</green>",
+		["Description"] = "<green>Departamento de Polícia de Energy</green>",
 		["Type"] = "Usável",
 		["Block"] = true,
 		["Weight"] = 0.75,
@@ -361,11 +361,20 @@ local List = {
 	["badge02"] = {
 		["Index"] = "badge02",
 		["Name"] = "Distintivo",
-		["Description"] = "<green>Emergency Medical Services</green>",
+		["Description"] = "<green>Centro Médico Energy</green>",
 		["Type"] = "Usável",
 		["Block"] = true,
 		["Weight"] = 0.75,
 		["Economy"] = 10
+	},
+	["badge03"] = {
+		["Index"] = "newlocate",
+		["Name"] = "Licença de Caça",
+		["Description"] = "<green>Licença para Caça</green>",
+		["Type"] = "Usável",
+		["Block"] = true,
+		["Weight"] = 0.75,
+		["Economy"] = 2000
 	},
 	["mushroomtea"] = {
 		["Index"] = "mushroomtea",
@@ -1247,12 +1256,92 @@ local List = {
 		["Weight"] = 0.25,
 		["Economy"] = 150000
 	},
+	["chip"] = {
+		["Index"] = "chip",
+		["Name"] = "Chip Telefônico",
+		["Type"] = "Usável",
+		["Description"] = "Troca o número telefônico.",
+		["Weight"] = 0.00,
+		["Economy"] = 75000
+	},
 	["namechange"] = {
 		["Index"] = "namechange",
 		["Name"] = "Troca de Nome",
 		["Type"] = "Usável",
 		["Description"] = "Troca o nome do personagem.",
 		["Weight"] = 0.25,
+		["Economy"] = 100000
+	},
+	["homecontEmerald"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior Emerald.",
+		["Weight"] = 0.00,
+		["Economy"] = 200000
+	},
+	["homecontDiamond"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior Diamond.",
+		["Weight"] = 0.00,
+		["Economy"] = 100000
+	},
+	["homecontRuby"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior Ruby.",
+		["Weight"] = 0.00,
+		["Economy"] = 200000
+	},
+	["homecontSapphire"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior Sapphire.",
+		["Weight"] = 0.00,
+		["Economy"] = 350000
+	},
+	["homecontAmethyst"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior Amethyst.",
+		["Weight"] = 0.00,
+		["Economy"] = 500000
+	},
+	["homecontAmber"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior Amber.",
+		["Weight"] = 0.00,
+		["Economy"] = 650000
+	},
+	["homecontTurquoise"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior Turquoise.",
+		["Weight"] = 0.00,
+		["Economy"] = 100000
+	},
+	["homecontAquamarine"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior Aquamarine.",
+		["Weight"] = 0.00,
+		["Economy"] = 100000
+	},
+	["homecontTopaz"] = {
+		["Index"] = "contract",
+		["Name"] = "Contrato de Propriedade",
+		["Type"] = "Usável",
+		["Description"] = "Assinatura de contrato do interior Topaz.",
+		["Weight"] = 0.00,
 		["Economy"] = 100000
 	},
 	["milkbottle"] = {
@@ -2662,6 +2751,15 @@ local List = {
 	["WEAPON_SMOKEGRENADE"] = {
 		["Index"] = "smokegrenade",
 		["Name"] = "Granada de Fumaça",
+		["Type"] = "Throwing",
+		["Vehicle"] = true,
+		["Weight"] = 0.95,
+		["Economy"] = 225,
+		["Max"] = 3
+	},
+	["WEAPON_FLASHBANG"] = {
+		["Index"] = "smokegrenade",
+		["Name"] = "Granada de Luz",
 		["Type"] = "Throwing",
 		["Vehicle"] = true,
 		["Weight"] = 0.95,

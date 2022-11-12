@@ -17,17 +17,18 @@ local openPlayer = {}
 local openSource = {}
 local openAdmin = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ADMIN:RUNINSPECT
+-- INV
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("admin:runInspect")
-AddEventHandler("admin:runInspect",function(OtherPassport)
-	local source = source
+RegisterCommand("inv",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		openPlayer[Passport] = OtherPassport
-		openAdmin[Passport] = OtherPassport
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin",2) and OtherPassport > 0 then
+			openPlayer[Passport] = OtherPassport
+			openAdmin[Passport] = OtherPassport
 
-		TriggerClientEvent("inspect:Open",source)
+			TriggerClientEvent("inspect:Open",source)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

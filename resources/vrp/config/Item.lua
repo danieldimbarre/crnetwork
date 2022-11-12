@@ -368,7 +368,7 @@ local List = {
 		["Economy"] = 10
 	},
 	["badge03"] = {
-		["Index"] = "badge01",
+		["Index"] = "newlocate",
 		["Name"] = "Licença de Caça",
 		["Description"] = "<green>Licença para Caça</green>",
 		["Type"] = "Usável",

@@ -40,7 +40,7 @@ AddEventHandler("slotmachine:Init",function(Entity)
 		end
 
 		if Selected ~= nil then
-			if vSERVER.checkTable(Selected) then
+			if vSERVER.Check(Selected) then
 				LocalPlayer["state"]["Cancel"] = true
 				LocalPlayer["state"]["Buttons"] = true
 
@@ -90,7 +90,7 @@ AddEventHandler("slotmachine:Init",function(Entity)
 									LocalPlayer["state"]["Cancel"] = false
 									LocalPlayer["state"]["Buttons"] = false
 									SetEntityCoords(Ped,Leave["x"],Leave["y"],Leave["z"] + 1.0,false,false,false,false)
-									vSERVER.cleanTable(Selected)
+									vSERVER.Clean(Selected)
 									vRP.removeObjects()
 
 									Spin01 = nil
@@ -154,7 +154,7 @@ function Creative.MachineSlots(Result)
 
 		Spinning = false
 
-		vSERVER.CheckWin(Selected,Result)
+		vSERVER.Winner(Selected,Result)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

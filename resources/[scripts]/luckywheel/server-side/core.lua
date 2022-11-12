@@ -9,17 +9,19 @@ vRP = Proxy.getInterface("vRP")
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
 Creative = {}
+vCLIENT = Tunnel.getInterface("luckywheel")
 Tunnel.bindInterface("luckywheel",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Bonus = {}
+local Actived = {}
 local Payments = {}
 local Active = os.time()
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHECKROLLING
+-- CHECK
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.checkRolling()
+function Creative.Check()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -42,7 +44,7 @@ function Creative.checkRolling()
 				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 			end
 		else
-			local Cooldown = parseInt(Active - os.time())
+			local Cooldown = Active - os.time()
 			TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos.",5000)
 		end
 	end
@@ -50,13 +52,12 @@ function Creative.checkRolling()
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LUCKYWHEEL:ROLLING
+-- ROLLING
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("luckywheel:Rolling")
-AddEventHandler("luckywheel:Rolling",function()
+function Creative.Rolling()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Payments[Passport] and os.time() < Active then
 		local Result = math.random(325)
 
 		if Result <= 10 or Result >= 218 then
@@ -101,26 +102,24 @@ AddEventHandler("luckywheel:Rolling",function()
 			Payments[Passport] = 20
 		end
 
-		TriggerClientEvent("luckywheel:Active",source)
+		vCLIENT.Active(source)
 
 		local Players = vRPC.Players(source)
 		for _,v in ipairs(Players) do
 			async(function()
-				TriggerClientEvent("luckywheel:Start",v,Payments[Passport])
+				vCLIENT.Start(v,Payments[Passport])
 			end)
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LUCKYWHEEL:PAYMENT
+-- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Active = {}
-RegisterServerEvent("luckywheel:Payment")
-AddEventHandler("luckywheel:Payment",function()
+function Creative.Payment()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Payments[Passport] then
-		Active[Passport] = true
+	if Passport and not Actived[Passport] and Payments[Passport] then
+		Actived[Passport] = true
 
 		if Payments[Passport] == 2 then
 			vRP.GiveBank(Passport,2500)
@@ -161,14 +160,18 @@ AddEventHandler("luckywheel:Payment",function()
 		end
 
 		Payments[Passport] = nil
-		Active[Passport] = nil
+		Actived[Passport] = nil
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport)
 	if Payments[Passport] then
 		Payments[Passport] = nil
+	end
+
+	if Actived[Passport] then
+		Actived[Passport] = nil
 	end
 end)

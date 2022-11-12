@@ -317,6 +317,30 @@ Use = {
 		end
 	end,
 
+	["chip"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+
+		local Keyboard = vKEYBOARD.keyDouble(source,"Três primeiros dígitos:","Três ultimos dígitos:")
+		if Keyboard then
+			local initCheck = sanitizeString(Keyboard[1],"0123456789",true)
+			local finiCheck = sanitizeString(Keyboard[2],"0123456789",true)
+
+			if string.len(initCheck) == 3 and string.len(finiCheck) == 3 then
+				if not vRP.UserPhone(Keyboard[1].."-"..Keyboard[2]) then
+					if vRP.TakeItem(Passport,Full,1,true,Slot) then
+						vRP.execute("characters/updatePhone",{ phone = Keyboard[1].."-"..Keyboard[2], id = Passport })
+						TriggerEvent("smartphone:updatePhoneNumber",user_id,Keyboard[1].."-"..Keyboard[2])
+						TriggerClientEvent("Notify",source,"verde","Telefone atualizado.",5000)
+					end
+				else
+					TriggerClientEvent("Notify",source,"amarelo","Número escolhido já possui um proprietário.",5000)
+				end
+			else
+				TriggerClientEvent("Notify",source,"amarelo","O número telefônico deve conter 6 dígitos e somente números.",5000)
+			end
+		end
+	end,
+
 	["dices"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true

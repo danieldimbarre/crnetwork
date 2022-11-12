@@ -306,6 +306,7 @@ local shops = {
 			["premiumplate"] = 50,
 			["newchars"] = 75,
 			["namechange"] = 50,
+			["chip"] = 60,
 			-- ["backschool"] = 50,
 			-- ["backcyclist"] = 50,
 			-- ["backcamping"] = 50,

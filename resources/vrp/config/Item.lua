@@ -1247,6 +1247,14 @@ local List = {
 		["Weight"] = 0.25,
 		["Economy"] = 150000
 	},
+	["chip"] = {
+		["Index"] = "chip",
+		["Name"] = "Chip Telefônico",
+		["Type"] = "Usável",
+		["Description"] = "Troca o número telefônico.",
+		["Weight"] = 0.00,
+		["Economy"] = 75000
+	},
 	["namechange"] = {
 		["Index"] = "namechange",
 		["Name"] = "Troca de Nome",

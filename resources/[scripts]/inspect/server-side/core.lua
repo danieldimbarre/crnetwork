@@ -127,8 +127,6 @@ function Creative.resetInspect()
 	if Passport then
 		if openAdmin[Passport] then
 			openAdmin[Passport] = nil
-			openPlayer[Passport] = nil
-			return
 		end
 
 		if openSource[Passport] then

@@ -1335,14 +1335,6 @@ local List = {
 		["Weight"] = 0.00,
 		["Economy"] = 175000
 	},
-	["homecont010"] = {
-		["Index"] = "contract",
-		["Name"] = "Contrato de Propriedade",
-		["Type"] = "Usável",
-		["Description"] = "Assinatura de contrato do container.",
-		["Weight"] = 0.00,
-		["Economy"] = 100000
-	},
 	["milkbottle"] = {
 		["Index"] = "milkbottle",
 		["Name"] = "Garrafa de Leite",

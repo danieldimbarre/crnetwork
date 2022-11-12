@@ -314,7 +314,16 @@ local shops = {
 			-- ["backalohomorablack"] = 75,
 			-- ["backalohomorared"] = 75,
 			-- ["backrudolphpurple"] = 75,
-			-- ["backrudolphred"] = 75
+			-- ["backrudolphred"] = 75,
+			["homecont01"] = 200,
+			["homecont02"] = 100,
+			["homecont03"] = 200,
+			["homecont04"] = 350,
+			["homecont05"] = 500,
+			["homecont06"] = 650,
+			-- ["homecont07"] = 100,
+			-- ["homecont08"] = 100,
+			-- ["homecont09"] = 100
 		}
 	},
 	["Hunting"] = {

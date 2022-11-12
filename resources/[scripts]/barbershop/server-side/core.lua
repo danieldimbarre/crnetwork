@@ -53,6 +53,9 @@ AddEventHandler("barbershop:Debug",function()
 		if Datatable then
 			vRPC.Skin(source,Datatable["Skin"])
 			vRP.SkinCharacter(Passport,Datatable["Skin"])
+
+			vRP.Revive(source,Datatable["Health"])
+			vRP.SetArmour(source,Datatable["Armour"])
 		end
 
 		TriggerClientEvent("barbershop:Apply",source,vRP.UserData(Passport,"Barbershop"))

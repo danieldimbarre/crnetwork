@@ -433,11 +433,11 @@ local shops = {
 		["mode"] = "Sell",
 		["type"] = "Cash",
 		["List"] = {
-			["emerald"] = 143,
-			["diamond"] = 132,
+			["emerald"] = 100,
+			["diamond"] = 90,
 			["ruby"] = 75,
-			["sapphire"] = 85,
-			["amethyst"] = 75,
+			["sapphire"] = 65,
+			["amethyst"] = 55,
 			["amber"] = 45,
 			["turquoise"] = 35
 		}

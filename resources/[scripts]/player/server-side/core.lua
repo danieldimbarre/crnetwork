@@ -174,7 +174,7 @@ RegisterCommand("112",function(source,Message,History)
 			local Service = vRP.NumPermission("Paramedic")
 			for Passports,Sources in pairs(Service) do
 				async(function()
-					TriggerClientEvent("Datatable",Sources,"<red>"..Identity["name"].." "..Identity["name2"].."</red>",History:sub(4))
+					TriggerClientEvent("chat:ClientMessage",Sources,"<red>"..Identity["name"].." "..Identity["name2"].."</red>",History:sub(4))
 				end)
 			end
 		end

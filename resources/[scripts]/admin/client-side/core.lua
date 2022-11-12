@@ -145,7 +145,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("admin:KickAll")
 AddEventHandler("admin:KickAll",function()
-	ShakeGameplayCam("MEDIUM_EXPLOSION_SHAKE",0.5)
+	ShakeGameplayCam("LARGE_EXPLOSION_SHAKE", 0.16)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADMIN:DEBUGTOGGLE

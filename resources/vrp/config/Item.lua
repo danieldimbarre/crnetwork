@@ -1269,7 +1269,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Assinatura de contrato do interior Emerald.",
 		["Weight"] = 0.00,
-		["Economy"] = 125000
+		["Economy"] = 200000
 	},
 	["homecontDiamond"] = {
 		["Index"] = "contract",
@@ -1277,7 +1277,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Assinatura de contrato do interior Diamond.",
 		["Weight"] = 0.00,
-		["Economy"] = 300000
+		["Economy"] = 100000
 	},
 	["homecontRuby"] = {
 		["Index"] = "contract",
@@ -1285,7 +1285,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Assinatura de contrato do interior Ruby.",
 		["Weight"] = 0.00,
-		["Economy"] = 75000
+		["Economy"] = 200000
 	},
 	["homecontSapphire"] = {
 		["Index"] = "contract",
@@ -1293,7 +1293,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Assinatura de contrato do interior Sapphire.",
 		["Weight"] = 0.00,
-		["Economy"] = 175000
+		["Economy"] = 350000
 	},
 	["homecontAmethyst"] = {
 		["Index"] = "contract",
@@ -1301,7 +1301,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Assinatura de contrato do interior Amethyst.",
 		["Weight"] = 0.00,
-		["Economy"] = 125000
+		["Economy"] = 500000
 	},
 	["homecontAmber"] = {
 		["Index"] = "contract",
@@ -1309,7 +1309,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Assinatura de contrato do interior Amber.",
 		["Weight"] = 0.00,
-		["Economy"] = 250000
+		["Economy"] = 650000
 	},
 	["homecontTurquoise"] = {
 		["Index"] = "contract",
@@ -1317,7 +1317,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Assinatura de contrato do interior Turquoise.",
 		["Weight"] = 0.00,
-		["Economy"] = 75000
+		["Economy"] = 100000
 	},
 	["homecontAquamarine"] = {
 		["Index"] = "contract",
@@ -1325,7 +1325,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Assinatura de contrato do interior Aquamarine.",
 		["Weight"] = 0.00,
-		["Economy"] = 250000
+		["Economy"] = 100000
 	},
 	["homecontTopaz"] = {
 		["Index"] = "contract",
@@ -1333,7 +1333,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Assinatura de contrato do interior Topaz.",
 		["Weight"] = 0.00,
-		["Economy"] = 175000
+		["Economy"] = 100000
 	},
 	["milkbottle"] = {
 		["Index"] = "milkbottle",

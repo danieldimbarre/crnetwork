@@ -552,8 +552,10 @@ RegisterCommand("kickall",function(source)
 	end
 
 	local List = vRP.Players()
-	for Passport,_ in pairs(List) do
-		vRP.Kick(Passport,"Desconectado, a cidade reiniciou.")
+	for OtherPlayer,OtherSource in pairs(List) do
+		TriggerClientEvent("admin:KickAll",OtherSource)
+		Wait(700)
+		vRP.Kick(OtherPlayer,"Desconectado, a cidade reiniciou.")
 		Wait(100)
 	end
 

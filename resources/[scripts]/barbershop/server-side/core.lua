@@ -56,6 +56,12 @@ AddEventHandler("barbershop:Debug",function()
 
 		TriggerClientEvent("inventory:Cancel",source)
 
+		local Datatable = vRP.Datatable(Passport)
+		if Datatable then
+			vRPC.Skin(source,Datatable["Skin"])
+			vRP.SkinCharacter(Passport,Datatable["Skin"])
+		end
+
 		local Ped = GetPlayerPed(source)
 		local Coords = GetEntityCoords(Ped)
 		TriggerClientEvent("syncarea",source,Coords["x"],Coords["y"],Coords["z"],1)

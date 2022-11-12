@@ -323,7 +323,7 @@ const updateDrag = () => {
 				contents = `<item>${name}</item><br><description>Contém <green>$${Suitcase}</green> dólares em espécie.</description><br><legenda>Economia: <r>$${economy}</r> <s>|</s> Máximo: <r>${max !== "undefined" ? max:"S/L"}</r></legenda>`;
 			}
 
-			if (name == "Passaporte" || name == "Distintivo"){
+			if (name == "Passaporte" || name == "Distintivo" || name == "Licença de Caça"){
 				var idName = $(this).attr("data-idName");
 				var idBlood = $(this).attr("data-idBlood");
 				var Passport = $(this).attr("data-Passport");

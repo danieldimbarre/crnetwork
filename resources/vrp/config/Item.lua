@@ -374,7 +374,7 @@ local List = {
 		["Type"] = "Usável",
 		["Block"] = true,
 		["Weight"] = 0.75,
-		["Economy"] = 10
+		["Economy"] = 2000
 	},
 	["mushroomtea"] = {
 		["Index"] = "mushroomtea",

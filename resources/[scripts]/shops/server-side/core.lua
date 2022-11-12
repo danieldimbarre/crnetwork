@@ -602,7 +602,7 @@ function Creative.requestPerm(Type)
 		end
 
 		if shops[Type]["required"] ~= nil then
-			for Index,v in pairs(List[Type]["List"]["require"]) do
+			for Index,v in pairs(List[Type]["require"]) do
 				local consultItem = vRP.InventoryItemAmount(Passport,Index)
 				if consultItem[1] < parseInt(v) then
 					return false

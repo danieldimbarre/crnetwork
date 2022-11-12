@@ -361,8 +361,16 @@ local List = {
 	["badge02"] = {
 		["Index"] = "badge02",
 		["Name"] = "Distintivo",
-		["Description"] = "<green>Emergency Medical Services</green>",
 		["Description"] = "<green>Centro Médico Energy</green>",
+		["Type"] = "Usável",
+		["Block"] = true,
+		["Weight"] = 0.75,
+		["Economy"] = 10
+	},
+	["badge03"] = {
+		["Index"] = "badge01",
+		["Name"] = "Licença de Caça",
+		["Description"] = "<green>Licença para Caça</green>",
 		["Type"] = "Usável",
 		["Block"] = true,
 		["Weight"] = 0.75,

@@ -493,7 +493,7 @@ RegisterCommand("id",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
 			local Identity = vRP.Identity(Message[1])
 			if Identity then
-				TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Message[1].."<br><b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."<br><b>Telefone:</b> "..Identity["phone"].."<br><b>Banco:</b> $"..Identity["bank"],5000)
+				TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Message[1].."<br><b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."<br><b>Telefone:</b> "..Identity["phone"].."<br><b>Banco:</b> $"..parseFormat(Identity["bank"]),5000)
 			end
 		end
 	end
@@ -663,7 +663,7 @@ RegisterCommand("inv",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
-			TriggerEvent("admin:runInspect",Message[1])
+			TriggerEvent("admin:runInspect",parseInt(Message[1]))
 		end
 	end
 end)

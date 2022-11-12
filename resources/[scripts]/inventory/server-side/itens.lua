@@ -329,7 +329,7 @@ Use = {
 				if not vRP.UserPhone(Keyboard[1].."-"..Keyboard[2]) then
 					if vRP.TakeItem(Passport,Full,1,true,Slot) then
 						vRP.execute("characters/updatePhone",{ phone = Keyboard[1].."-"..Keyboard[2], id = Passport })
-						TriggerEvent("smartphone:updatePhoneNumber",user_id,Keyboard[1].."-"..Keyboard[2])
+						TriggerEvent("smartphone:updatePhoneNumber",Passport,Keyboard[1].."-"..Keyboard[2])
 						TriggerClientEvent("Notify",source,"verde","Telefone atualizado.",5000)
 					end
 				else

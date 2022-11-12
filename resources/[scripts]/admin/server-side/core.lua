@@ -120,6 +120,8 @@ RegisterCommand("god",function(source,Message)
 							vRP.UpgradeHunger(OtherPassport,100)
 							vRP.DowngradeStress(OtherPassport,100)
 							vRP.Revive(OtherSource,200)
+
+							TriggerClientEvent("paramedic:Reset",OtherSource)
 						end)
 					end
 				else
@@ -130,6 +132,8 @@ RegisterCommand("god",function(source,Message)
 						vRP.UpgradeHunger(OtherPassport,100)
 						vRP.DowngradeStress(OtherPassport,100)
 						vRP.Revive(ClosestPed,200)
+
+						TriggerClientEvent("paramedic:Reset",ClosestPed)
 					end
 				end
 			else
@@ -162,6 +166,8 @@ RegisterCommand("goda",function(source,Message)
 						vRP.UpgradeHunger(OtherPassport,100)
 						vRP.DowngradeStress(OtherPassport,100)
 						vRP.Revive(v[2],200)
+
+						TriggerClientEvent("paramedic:Reset",v[2])
 					end)
 				end
 			end

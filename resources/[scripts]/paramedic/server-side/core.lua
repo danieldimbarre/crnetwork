@@ -58,6 +58,7 @@ AddEventHandler("paramedic:Treatment",function(entity)
 					bloodTimers[OtherPassport] = os.time() + 1800
 				end
 
+				TriggerClientEvent("paramedic:Reset",entity)
 				TriggerClientEvent("target:StartTreatment",entity)
 				TriggerClientEvent("Notify",source,"amarelo","Tratamento começou.",5000)
 			else

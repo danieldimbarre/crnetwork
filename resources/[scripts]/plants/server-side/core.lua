@@ -126,7 +126,7 @@ AddEventHandler("plants:Destroy",function(Number)
 	if Passport and Plants[Number] then
 		Plants[Number] = nil
 		TriggerClientEvent("plants:Remover",-1,Number)
-		TriggerClientEvent("Notify",source,"sucesso","A plantação foi destruída.",5000)
+		TriggerClientEvent("Notify",source,"verde","A plantação foi destruída.",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

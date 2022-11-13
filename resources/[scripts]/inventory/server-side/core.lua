@@ -386,9 +386,9 @@ LootItens = {
 		["List"] = {
 			-- { ["item"] = "roadsigns", ["min"] = 1, ["max"] = 1 },
 			-- { ["item"] = "techtrash", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "pistolbody", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "smgbody", ["min"] = 1, ["max"] = 1 },
 			{ ["item"] = "riflebody", ["min"] = 1, ["max"] = 1 },
+			{ ["item"] = "smgbody", ["min"] = 1, ["max"] = 1 },
+			{ ["item"] = "pistolbody", ["min"] = 1, ["max"] = 1 },
 			-- { ["item"] = "sheetmetal", ["min"] = 1, ["max"] = 2 },
 			-- { ["item"] = "explosives", ["min"] = 1, ["max"] = 2 },
 			-- { ["item"] = "aluminum", ["min"] = 2, ["max"] = 3 },
@@ -1486,6 +1486,13 @@ function Creative.VerifyObjects(Entity,Service)
 
 						if Service == "Lixeiro" then
 							local randItem = math.random(90)
+
+							if Buffs["Luck"][Passport] then
+								if Buffs["Luck"][Passport] > os.time() then
+									randItem = math.random(70)
+								end
+							end
+
 							if parseInt(randItem) >= 61 and parseInt(randItem) <= 70 then
 								itemSelect = { "metalcan",math.random(2) }
 							elseif parseInt(randItem) >= 51 and parseInt(randItem) <= 60 then
@@ -1715,7 +1722,15 @@ function Creative.StealTrunk(Entity)
 
 							if os.time() >= Trunks[Plate] then
 								local randItens = math.random(#StealItens)
-								if math.random(250) <= StealItens[randItens]["rand"] then
+								local randItem = math.random(250)
+
+								if Buffs["Luck"][Passport] then
+									if Buffs["Luck"][Passport] > os.time() then
+										randItem = math.random(175)
+									end
+								end
+
+								if randItem <= StealItens[randItens]["rand"] then
 									local randAmounts = math.random(StealItens[randItens]["min"],StealItens[randItens]["max"])
 
 									if (vRP.InventoryWeight(Passport) + itemWeight(StealItens[randItens]["item"]) * randAmounts) <= vRP.GetWeight(Passport) then
@@ -1816,13 +1831,34 @@ function Creative.Animals(Entity)
 										vRP.GenerateItem(Passport,"meat",1,true)
 									elseif parseInt(Animals[Model][netObjects]) == 3 then
 										local randItens = math.random(8)
+
+										if Buffs["Luck"][Passport] then
+											if Buffs["Luck"][Passport] > os.time() then
+												randItens = math.random(10)
+											end
+										end
+
 										vRP.GenerateItem(Passport,"animalfat",randItens,true)
 									elseif parseInt(Animals[Model][netObjects]) == 4 then
 										local randItens = math.random(4)
+
+										if Buffs["Luck"][Passport] then
+											if Buffs["Luck"][Passport] > os.time() then
+												randItens = math.random(6)
+											end
+										end
+
 										vRP.GenerateItem(Passport,"leather",randItens,true)
 									elseif parseInt(Animals[Model][netObjects]) >= 5 then
 										vRPC.removeObjects(source)
 										local randItens = math.random(2)
+
+										if Buffs["Luck"][Passport] then
+											if Buffs["Luck"][Passport] > os.time() then
+												randItens = math.random(4)
+											end
+										end
+
 										Animals[Model][netObjects] = nil
 										TriggerEvent("DeletePed",netObjects)
 										vRP.GenerateItem(Passport,"animalpelt",randItens,true)

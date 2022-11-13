@@ -372,7 +372,6 @@ local List = {
 		["Name"] = "Licença de Caça",
 		["Description"] = "<green>Licença para Caça</green>",
 		["Type"] = "Usável",
-		["Block"] = true,
 		["Weight"] = 0.75,
 		["Economy"] = 2000
 	},

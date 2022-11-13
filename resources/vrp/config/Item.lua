@@ -379,7 +379,7 @@ local List = {
 	["mushroomtea"] = {
 		["Index"] = "mushroomtea",
 		["Name"] = "Chá de Cogumelo",
-		-- ["Description"] = "Tempo pedalando reduzido para <green>10 minutos</green> por <green>60 minutos</green>, lembrando que o efeito passa desconectando da cidade.",
+		["Description"] = "Tempo pedalando reduzido para <green>10 minutos</green> por <green>60 minutos</green>, lembrando que o efeito passa desconectando da cidade.",
 		["Durability"] = 1,
 		["Type"] = "Usável",
 		["Weight"] = 0.75,
@@ -1343,6 +1343,14 @@ local List = {
 		["Description"] = "Assinatura de contrato do interior Topaz.",
 		["Weight"] = 0.00,
 		["Economy"] = 100000
+	},
+	["energetic"] = {
+		["Index"] = "energetic",
+		["Name"] = "Energético",
+		["Type"] = "Usável",
+		["Weight"] = 0.25,
+		["Max"] = 5,
+		["Economy"] = 15
 	},
 	["milkbottle"] = {
 		["Index"] = "milkbottle",

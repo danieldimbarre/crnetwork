@@ -2531,6 +2531,30 @@ Use = {
 		end
 	end,
 
+	["energetic"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 15
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",15000)
+		vRPC.createObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
+
+		repeat
+			if os.time() >= parseInt(Active[Passport]) then
+				Player(source)["state"]["Buttons"] = false
+				vRPC.removeObjects(source,"one")
+				Active[Passport] = nil
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					TriggerClientEvent("setEnergetic",source,25,1.15)
+					vRP.UpgradeThirst(Passport,20)
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
 	["absolut"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
 		Active[Passport] = os.time() + 10
@@ -3159,8 +3183,7 @@ Use = {
 				Active[Passport] = nil
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,40,1.20)
-					-- TriggerClientEvent("player:MushroomTea",source)
+					TriggerClientEvent("player:MushroomTea",source)
 					vRP.UpgradeThirst(Passport,20)
 				end
 			end

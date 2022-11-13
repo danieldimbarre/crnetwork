@@ -1116,8 +1116,12 @@ function TargetEnable()
 							Selected = { source }
 
 							if LocalPlayer["state"]["Police"] then
-								Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
-								Menu[#Menu + 1] = { event = "police:prisonClothes", label = "Uniforme Presidiário", tunnel = "police" }
+								if GetEntityHealth(Entity) <= 100 then
+									Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
+								else
+									Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
+									Menu[#Menu + 1] = { event = "police:prisonClothes", label = "Uniforme Presidiário", tunnel = "police" }
+								end
 							elseif LocalPlayer["state"]["Paramedic"] then
 								if GetEntityHealth(Entity) <= 100 then
 									Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }

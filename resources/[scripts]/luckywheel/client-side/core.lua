@@ -5,6 +5,8 @@ local Tunnel = module("vrp","lib/Tunnel")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
+Creative = {}
+Tunnel.bindInterface("luckywheel",Creative)
 vSERVER = Tunnel.getInterface("luckywheel")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -14,19 +16,17 @@ local Vehicle = nil
 local Active = false
 LocalPlayer["state"]["Cassino"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LUCKYWHEEL:ACTIVE
+-- ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("luckywheel:Active")
-AddEventHandler("luckywheel:Active",function()
+function Creative.Active()
 	if LocalPlayer["state"]["Cassino"] then
 		Active = true
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADCASSINO
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	Wait(1000)
 	while true do
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
@@ -74,10 +74,9 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LUCKYWHEEL:START
+-- START
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("luckywheel:Start")
-AddEventHandler("luckywheel:Start",function(Result)
+function Creative.Start(Result)
 	if Result ~= nil then
 		if LocalPlayer["state"]["Cassino"] then
 			if DoesEntityExist(Wheel) then
@@ -102,7 +101,7 @@ AddEventHandler("luckywheel:Start",function(Result)
 							rollingRatio = 0
 
 							if Active then
-								TriggerServerEvent("luckywheel:Payment")
+								vSERVER.Payment()
 								Active = false
 							end
 						end
@@ -118,15 +117,15 @@ AddEventHandler("luckywheel:Start",function(Result)
 			end)
 		end
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TARGETROLL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("luckywheel:Target")
 AddEventHandler("luckywheel:Target",function()
 	if LocalPlayer["state"]["Cassino"] then
-		if vSERVER.checkRolling() then
-			TriggerServerEvent("luckywheel:Rolling")
+		if vSERVER.Check() then
+			vSERVER.Rolling()
 		end
 	end
 end)

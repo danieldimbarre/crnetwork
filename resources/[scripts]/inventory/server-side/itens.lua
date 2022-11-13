@@ -2537,7 +2537,7 @@ Use = {
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
 		TriggerClientEvent("Progress",source,"Bebendo",15000)
-		vRPC.createObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
+		vRPC.createObjects(source,"mp_player_intdrink","loop_bottle","prop_energy_drink",49,60309,0.0,0.0,0.0,0.0,0.0,130.0)
 
 		repeat
 			if os.time() >= parseInt(Active[Passport]) then

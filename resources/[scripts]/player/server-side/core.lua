@@ -181,6 +181,28 @@ RegisterCommand("112",function(source,Message,History)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- P
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("p",function(source,Message,History)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
+		if vRP.HasService(Passport,"Police") then
+			TriggerClientEvent('smartphone:createSMS',-1,'Polícia',History:sub(7))
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- H
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("h",function(source,Message,History)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
+		if vRP.HasService(Passport,"Paramedic") then
+			TriggerClientEvent('smartphone:createSMS',-1,'Centro Médico',History:sub(14))
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SHOTSFIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.shotsFired(Vehicle)

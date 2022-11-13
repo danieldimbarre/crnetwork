@@ -14,6 +14,7 @@ vCLIENT = Tunnel.getInterface("slotmachine")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Active = {}
 local Players = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MACHINES
@@ -296,9 +297,9 @@ local mulTable = {
 	["7"] = 14
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHECKTABLE
+-- CHECK
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.checkTable(Table)
+function Creative.Check(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Machines[Table] then
@@ -312,9 +313,9 @@ function Creative.checkTable(Table)
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CLEANTABLE
+-- CLEAN
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.cleanTable(Table)
+function Creative.Clean(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Machines[Table] then
@@ -378,10 +379,9 @@ function Creative.StartSlots(Table)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SLOTSCHECKWIN
+-- WINNER
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Active = {}
-function Creative.CheckWin(Table,Result)
+function Creative.Winner(Table,Result)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Machines[Table] then

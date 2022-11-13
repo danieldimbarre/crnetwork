@@ -60,7 +60,7 @@ AddEventHandler("plants:Collect",function(Number)
 
 					Wait(10000)
 
-					vRP.GenerateItem(Passport,"weedleaf-"..Temporary["Points"],math.random(3,5),true)
+					vRP.GenerateItem(Passport,"weedleaf-"..Temporary["Points"],math.random(2,3),true)
 					TriggerClientEvent("plants:Remover",-1,Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false

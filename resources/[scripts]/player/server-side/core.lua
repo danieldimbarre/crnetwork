@@ -187,7 +187,7 @@ RegisterCommand("p",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasService(Passport,"Police") then
-			TriggerClientEvent('smartphone:createSMS',-1,'Polícia',History:sub(8))
+			TriggerClientEvent('smartphone:createSMS',-1,'Polícia',History:sub(2))
 		end
 	end
 end)
@@ -198,7 +198,7 @@ RegisterCommand("h",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasService(Passport,"Paramedic") then
-			TriggerClientEvent('smartphone:createSMS',-1,'Centro Médico',History:sub(15))
+			TriggerClientEvent('smartphone:createSMS',-1,'Centro Médico',History:sub(2))
 		end
 	end
 end)

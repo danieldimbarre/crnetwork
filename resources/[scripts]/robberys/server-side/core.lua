@@ -613,7 +613,7 @@ local Robberys = {
 		}
 	},
 	["34"] = {
-		["Coords"] = vec3(140.26,-1705.38,29.28),
+		["Coords"] = vec3(137.12,-1710.54,29.28),
 		["name"] = "Barbearia",
 		["type"] = "barbershop",
 		["cooldown"] = 5400,
@@ -627,11 +627,11 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
 		}
 	},
 	["35"] = {
-		["Coords"] = vec3(1216.21,-474.67,66.2),
+		["Coords"] = vec3(1210.2,-474.01,66.2),
 		["name"] = "Barbearia",
 		["type"] = "barbershop",
 		["cooldown"] = 5400,
@@ -645,11 +645,11 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
 		}
 	},
 	["36"] = {
-		["Coords"] = vec3(-1278.6,-1118.07,6.99),
+		["Coords"] = vec3(-1284.59,-1118.98,6.99),
 		["name"] = "Barbearia",
 		["type"] = "barbershop",
 		["cooldown"] = 5400,
@@ -663,7 +663,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
 		}
 	},
 	["37"] = {
@@ -681,10 +681,28 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
 		}
 	},
 	["38"] = {
+		["Coords"] = vec3(-34.04,-150.15,57.07),
+		["name"] = "Barbearia",
+		["type"] = "barbershop",
+		["cooldown"] = 5400,
+		["duration"] = 300,
+		["group"] = "Police",
+		["population"] = 6,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "card04",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
+		}
+	},
+	["39"] = {
 		["Coords"] = vec3(-1210.46,-336.45,38.10),
 		["name"] = "Banco Fleeca",
 		["type"] = "fleeca",
@@ -702,7 +720,7 @@ local Robberys = {
 			{ ["item"] = "goldbar", ["min"] = 225, ["max"] = 250 }
 		}
 	},
-	["39"] = {
+	["40"] = {
 		["Coords"] = vec3(-353.54,-55.44,49.36),
 		["name"] = "Banco Fleeca",
 		["type"] = "fleeca",
@@ -720,7 +738,7 @@ local Robberys = {
 			{ ["item"] = "goldbar", ["min"] = 225, ["max"] = 250 }
 		}
 	},
-	["40"] = {
+	["41"] = {
 		["Coords"] = vec3(311.51,-284.59,54.48),
 		["name"] = "Banco Fleeca",
 		["type"] = "fleeca",
@@ -738,7 +756,7 @@ local Robberys = {
 			{ ["item"] = "goldbar", ["min"] = 225, ["max"] = 250 }
 		}
 	},
-	["41"] = {
+	["42"] = {
 		["Coords"] = vec3(147.18,-1046.23,29.68),
 		["name"] = "Banco Fleeca",
 		["type"] = "fleeca",
@@ -756,7 +774,7 @@ local Robberys = {
 			{ ["item"] = "goldbar", ["min"] = 225, ["max"] = 250 }
 		}
 	},
-	["42"] = {
+	["43"] = {
 		["Coords"] = vec3(-2956.50,482.09,16.01),
 		["name"] = "Banco Fleeca",
 		["type"] = "fleeca",
@@ -774,7 +792,7 @@ local Robberys = {
 			{ ["item"] = "goldbar", ["min"] = 225, ["max"] = 250 }
 		}
 	},
-	["43"] = {
+	["44"] = {
 		["Coords"] = vec3(1175.69,2712.89,38.41),
 		["name"] = "Banco Fleeca",
 		["type"] = "fleeca",

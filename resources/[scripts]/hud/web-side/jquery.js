@@ -230,7 +230,7 @@ window.addEventListener("message",function(event){
 				if ($("#Vehicle").css("display") === "block"){
 					$("#Vehicle").fadeOut(1000);
 
-					document.getElementById('NaviBottom').style.animation="Right 0.2s forwards";
+					document.getElementById('NaviBottom').style.animation="Right 1.2s forwards";
 				}
 			}
 		break;

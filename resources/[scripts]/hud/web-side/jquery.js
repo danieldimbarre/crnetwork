@@ -102,6 +102,18 @@ window.addEventListener("message",function(event){
 			}
 		break;
 
+		case "Hood":
+			if (event["data"]["Status"]){
+				if ($("#Hood").css("display") === "none"){
+					$("#Hood").fadeIn(500);
+				}
+			} else {
+				if ($("#Hood").css("display") === "block"){
+					$("#Hood").fadeOut(500);
+				}
+			}
+		break;
+
 		case "Voice":
 			$(".Voip").css("color",event["data"]["Status"]);
 		break;
@@ -211,10 +223,14 @@ window.addEventListener("message",function(event){
 			if (event["data"]["Status"]){
 				if ($("#Vehicle").css("display") === "none"){
 					$("#Vehicle").fadeIn(1000);
+
+					document.getElementById('NaviBottom').style.animation="Left 0.7s forwards";
 				}
 			} else {
 				if ($("#Vehicle").css("display") === "block"){
 					$("#Vehicle").fadeOut(1000);
+
+					document.getElementById('NaviBottom').style.animation="Right 1.7s forwards";
 				}
 			}
 		break;

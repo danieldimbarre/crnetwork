@@ -21,6 +21,7 @@ Display = false
 local Road = ""
 local Gemstone = 0
 local Crossing = ""
+local Hood = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRINCIPAL
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -292,6 +293,32 @@ end)
 RegisterNetEvent("hud:Dexterity")
 AddEventHandler("hud:Dexterity",function(Seconds)
 	Dexterity = Seconds
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:TOGGLEHOOD
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:toggleHood")
+AddEventHandler("hud:toggleHood",function()
+	Hood = not Hood
+
+	if Hood then
+		SetPedComponentVariation(PlayerPedId(),1,69,0,1)
+	else
+		SetPedComponentVariation(PlayerPedId(),1,0,0,1)
+	end
+
+	SendNUIMessage({ Action = "Hood", Status = Hood })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:REMOVEHOOD
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:RemoveHood")
+AddEventHandler("hud:RemoveHood",function()
+	if Hood then
+		Hood = false
+		SendNUIMessage({ Action = "Hood", Status = Hood })
+		SetPedComponentVariation(PlayerPedId(),1,0,0,1)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:ADDGEMS

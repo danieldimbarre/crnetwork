@@ -1030,7 +1030,6 @@ function TargetEnable()
 											end
 
 											Menu[#Menu + 1] = { event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" }
-											Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
 										end
 
 										Menu[#Menu + 1] = { event = "garages:Key", label = "Criar Chave Cópia", tunnel = "police" }
@@ -1048,6 +1047,7 @@ function TargetEnable()
 												local Distance = #(Coords - cTrunk)
 												if Distance <= 1.75 then
 													if GetVehicleDoorLockStatus(Entity) == 1 then
+														Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
 														Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
 													end
 

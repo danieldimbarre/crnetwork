@@ -101,6 +101,24 @@ space {
 	text-shadow: 0.05vw 0.05vw #000;
 }
 
+@keyframes Left {
+	100% {
+		right: 13vw;
+	}
+	0% {
+		right: 2vw;
+	}
+}
+
+@keyframes Right {
+	100% {
+		right: 2vw;
+	}
+	0% {
+		right: 13vw;
+	}
+}
+
 .NaviText {
 	float: left;
 	width: 15.625vw;
@@ -215,7 +233,7 @@ space {
 	display: flex;
 	justify-content: center;
 	position: absolute;
-	bottom: 10em;
+	bottom: 1.5vw;
 	right: 2vw;
 }
 

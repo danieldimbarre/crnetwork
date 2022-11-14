@@ -223,10 +223,14 @@ window.addEventListener("message",function(event){
 			if (event["data"]["Status"]){
 				if ($("#Vehicle").css("display") === "none"){
 					$("#Vehicle").fadeIn(1000);
+
+					document.getElementById('NaviBottom').style.animation="Left 0.2s forwards";
 				}
 			} else {
 				if ($("#Vehicle").css("display") === "block"){
 					$("#Vehicle").fadeOut(1000);
+
+					document.getElementById('NaviBottom').style.animation="Right 0.2s forwards";
 				}
 			}
 		break;

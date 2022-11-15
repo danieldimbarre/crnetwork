@@ -21,13 +21,7 @@ vRP.Prepare("characters/lastCharacters","SELECT id FROM characters WHERE license
 vRP.Prepare("characters/UpgradeCardlimit","UPDATE characters SET cardlimit = cardlimit + @cardlimit WHERE id = @Passport")
 vRP.Prepare("characters/DowngradeCardlimit","UPDATE characters SET cardlimit = cardlimit - @cardlimit WHERE id = @Passport")
 vRP.Prepare("characters/countPersons","SELECT COUNT(license) as qtd FROM characters WHERE license = @license and deleted = 0")
-
-if CreativeSpawn then
-	vRP.Prepare("characters/SetSkin","UPDATE characters SET skin = @skin WHERE id = @Passport")
-	vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,skin,phone,blood) VALUES(@license,@name,@name2,@sex,@skin,@phone,@blood)")
-else
-	vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,phone,blood) VALUES(@license,@name,@name2,@sex,@phone,@blood)")
-end
+vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,phone,blood) VALUES(@license,@name,@name2,@sex,@phone,@blood)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------

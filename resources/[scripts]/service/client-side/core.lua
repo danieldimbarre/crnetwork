@@ -84,53 +84,53 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVICE:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("service:Open")
-AddEventHandler("service:Open",function(Title)
-	SetNuiFocus(true,true)
-	SetCursorLocation(0.5,0.5)
+-- RegisterNetEvent("service:Open")
+-- AddEventHandler("service:Open",function(Title)
+-- 	SetNuiFocus(true,true)
+-- 	SetCursorLocation(0.5,0.5)
 
-	if NameList[Title] then
-		Title = NameList[Title]
-	end
+-- 	if NameList[Title] then
+-- 		Title = NameList[Title]
+-- 	end
 
-	SendNUIMessage({ action = "openSystem", title = Title })
-end)
+-- 	SendNUIMessage({ action = "openSystem", title = Title })
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSESYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("closeSystem",function(Data,Callback)
-	SetNuiFocus(false,false)
-	SetCursorLocation(0.5,0.5)
-	SendNUIMessage({ action = "closeSystem" })
+-- RegisterNUICallback("closeSystem",function(Data,Callback)
+-- 	SetNuiFocus(false,false)
+-- 	SetCursorLocation(0.5,0.5)
+-- 	SendNUIMessage({ action = "closeSystem" })
 
-	Callback("Ok")
-end)
+-- 	Callback("Ok")
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Request",function(Data,Callback)
-	Callback({ Result = vSERVER.Request() })
-end)
+-- RegisterNUICallback("Request",function(Data,Callback)
+-- 	Callback({ Result = vSERVER.Request() })
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMOVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Remove",function(Data,Callback)
-	TriggerServerEvent("service:Remove",Data["passport"])
+-- RegisterNUICallback("Remove",function(Data,Callback)
+-- 	TriggerServerEvent("service:Remove",Data["passport"])
 
-	Callback("Ok")
-end)
+-- 	Callback("Ok")
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Add",function(Data,Callback)
-	TriggerServerEvent("service:Add",Data["passport"],Data["rank"])
+-- RegisterNUICallback("Add",function(Data,Callback)
+-- 	TriggerServerEvent("service:Add",Data["passport"],Data["rank"])
 
-	Callback("Ok")
-end)
+-- 	Callback("Ok")
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVICE:UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("service:Update")
-AddEventHandler("service:Update",function()
-	SendNUIMessage({ action = "Update" })
-end)
+-- RegisterNetEvent("service:Update")
+-- AddEventHandler("service:Update",function()
+-- 	SendNUIMessage({ action = "Update" })
+-- end)

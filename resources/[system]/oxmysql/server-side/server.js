@@ -15217,20 +15217,28 @@ var require_mysql2 = __commonJS({
 });
 
 // src/config/index.ts
-var resourceName, mysql_ui, mysql_slow_query_warning, mysql_connection_string, mysql_debug, mysql_transaction_isolation_level, parseUri, connectionOptions;
+function setDebug() {
+  try {
+    const debug = GetConvar("mysql_debug", "false");
+    mysql_debug = debug === "false" ? false : JSON.parse(debug);
+  } catch (e2) {
+    mysql_debug = true;
+  }
+}
+var resourceName, mysql_connection_string, mysql_ui, mysql_slow_query_warning, mysql_debug, mysql_transaction_isolation_level, parseUri, connectionOptions;
 var init_config = __esm({
   "src/config/index.ts"() {
     "use strict";
     resourceName = GetCurrentResourceName();
+    mysql_connection_string = GetConvar("mysql_connection_string", "");
     mysql_ui = GetConvar("mysql_ui", "false") === "true";
     mysql_slow_query_warning = GetConvarInt("mysql_slow_query_warning", 200);
-    mysql_connection_string = GetConvar("mysql_connection_string", "");
-    try {
-      const debug = GetConvar("mysql_debug", "false");
-      mysql_debug = debug === "false" ? false : JSON.parse(debug);
-    } catch (e2) {
-      mysql_debug = true;
-    }
+    setDebug();
+    setInterval(() => {
+      setDebug();
+      mysql_ui = GetConvar("mysql_ui", "false") === "true";
+      mysql_slow_query_warning = GetConvarInt("mysql_slow_query_warning", 200);
+    }, 1e3);
     mysql_transaction_isolation_level = (() => {
       const query = "SET TRANSACTION ISOLATION LEVEL";
       switch (GetConvarInt("mysql_transaction_isolation_level", 2)) {
@@ -21997,6 +22005,18 @@ var typeCast = (field, next) => {
 // src/database/index.ts
 var pool;
 var serverReady = false;
+async function waitForConnection() {
+  if (!serverReady) {
+    await new Promise((resolve) => {
+      (function wait() {
+        if (serverReady) {
+          return resolve();
+        }
+        setTimeout(wait);
+      })();
+    });
+  }
+}
 setTimeout(() => {
   pool = (0, import_mysql2.createPool)({
     connectTimeout: 6e4,
@@ -22137,23 +22157,15 @@ onNet(
 
 // src/utils/scheduleTick.ts
 init_config();
-var scheduleTick = async () => {
-  if (!serverReady) {
-    await new Promise((resolve) => {
-      (function wait() {
-        if (serverReady) {
-          return resolve();
-        }
-        setTimeout(wait);
-      })();
-    });
-  }
+async function scheduleTick() {
   ScheduleResourceTick(resourceName);
-};
+}
 
 // src/database/rawQuery.ts
 var rawQuery = async (type, invokingResource, query, parameters, cb, throwError) => {
-  await scheduleTick();
+  if (!serverReady)
+    await waitForConnection();
+  scheduleTick();
   [query, parameters, cb] = parseArguments(invokingResource, query, parameters, cb);
   return await new Promise((resolve, reject) => {
     pool.query(query, parameters, (err, result, _, executionTime) => {
@@ -22233,7 +22245,9 @@ ${JSON.stringify(
   parameters
 )}`;
 var rawTransaction = async (invokingResource, queries, parameters, callback) => {
-  await scheduleTick();
+  if (!serverReady)
+    await waitForConnection();
+  scheduleTick();
   const { transactions, cb } = parseTransaction(invokingResource, queries, parameters, callback);
   const connection = await pool.promise().getConnection();
   let response = false;
@@ -22290,7 +22304,7 @@ var executeType = (query) => {
       throw new Error(`Prepared statements only accept SELECT, INSERT, UPDATE, and DELETE methods.`);
   }
 };
-var parseExecute = (parameters) => {
+var parseExecute = (placeholders, parameters) => {
   if (!Array.isArray(parameters)) {
     if (typeof parameters === "object") {
       const arr = [];
@@ -22299,20 +22313,25 @@ var parseExecute = (parameters) => {
     } else
       throw new Error(`Parameters expected an array but received ${typeof parameters} instead`);
   }
-  return parameters;
-};
-var parseValues = (placeholders, parameters) => {
-  if (!Array.isArray(parameters)) {
-    if (typeof parameters === "object") {
+  if (!parameters.every(Array.isArray)) {
+    if (parameters.every((item) => typeof item === "object")) {
       const arr = [];
-      Object.entries(parameters).forEach((entry) => arr[parseInt(entry[0]) - 1] = entry[1]);
+      parameters.forEach((value, index) => {
+        arr[index] = new Array(placeholders);
+        if (!Array.isArray(value)) {
+          Object.entries(value).forEach((entry) => {
+            arr[index][parseInt(entry[0]) - 1] = entry[1];
+          });
+        } else
+          arr[index] = parameters[index];
+        for (let i2 = 0; i2 < placeholders; i2++) {
+          if (!arr[index][i2])
+            arr[index][i2] = null;
+        }
+      });
       parameters = arr;
     } else
-      throw new Error(`Parameters expected an array but received ${typeof parameters} instead`);
-  } else if (placeholders > parameters.length) {
-    for (let i2 = parameters.length; i2 < placeholders; i2++) {
-      parameters[i2] = null;
-    }
+      parameters = [[...parameters]];
   }
   return parameters;
 };
@@ -22320,21 +22339,25 @@ var parseValues = (placeholders, parameters) => {
 // src/database/rawExecute.ts
 var rawExecute = async (invokingResource, query, parameters, cb, throwError) => {
   const type = executeType(query);
-  parameters = parseExecute(parameters);
+  const placeholders = query.split("?").length - 1;
+  parameters = parseExecute(placeholders, parameters);
   let response = [];
-  if (!parameters.every(Array.isArray))
-    parameters = [[...parameters]];
-  await scheduleTick();
+  if (!serverReady)
+    await waitForConnection();
+  scheduleTick();
   return await new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
       if (err)
         return reject(err.message);
       if (parameters.length === 0)
         return reject(`Query received no parameters.`);
-      const placeholders = query.split("?").length - 1;
       parameters.forEach((values, index) => {
         const executionTime = process.hrtime();
-        values = parseValues(placeholders, values);
+        if (placeholders > values.length) {
+          for (let i2 = values.length; i2 < placeholders; i2++) {
+            values[i2] = null;
+          }
+        }
         connection.execute(query, values, (err2, results) => {
           if (err2) {
             connection.release();

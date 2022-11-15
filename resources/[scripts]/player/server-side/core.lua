@@ -968,6 +968,11 @@ AddEventHandler("Connect",function(Passport,source)
 			TriggerClientEvent("player:Relationship",source,Permission)
 		end
 	end
+
+	local Identity = vRP.Identity(Passport)
+	if Identity then
+		vRP.Query("accounts/dateLogin",{ license = Identity["license"], login = os.date("%d/%m/%Y") })
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

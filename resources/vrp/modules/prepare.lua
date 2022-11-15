@@ -26,7 +26,7 @@ vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("accounts/Account","SELECT * FROM accounts WHERE license = @license")
-vRP.prepare("accounts/dateLogin","UPDATE accounts SET login = @login WHERE license = @license")
+vRP.Prepare("accounts/dateLogin","UPDATE accounts SET login = @login WHERE license = @license")
 vRP.Prepare("accounts/newAccount","INSERT INTO accounts(license) VALUES(@license)")
 vRP.Prepare("accounts/AddGems","UPDATE accounts SET gems = gems + @gems WHERE license = @license")
 vRP.Prepare("accounts/Rolepass","UPDATE accounts SET rolepass = @rolepass WHERE license = @license")

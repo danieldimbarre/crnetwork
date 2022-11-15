@@ -218,7 +218,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BARBERSHOP:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("barbershop:Open")
-AddEventHandler("barbershop:Open",function()
-	OpenBarbershop(true)
-end)
+-- RegisterNetEvent("barbershop:Open")
+-- AddEventHandler("barbershop:Open",function()
+-- 	OpenBarbershop(true)
+-- end)

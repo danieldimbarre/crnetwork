@@ -21,25 +21,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Accessories_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\teef_diff_000_a_uni.ytd",
-          "IsDummy": false,
           "Position": 0,
-          "Id": "553fab8a-c060-4c66-9a12-81319e6aefa6"
+          "Id": "553fab8a-c060-4c66-9a12-81319e6aefa6",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\teef_diff_000_a_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 7,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\teef_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\teef_000_u.ydd",
+      "Name": "Accessories_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -60,82 +60,43 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Armor_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_diff_000_a_uni.ytd",
-          "IsDummy": false,
           "Position": 0,
-          "Id": "e5527c68-1710-4cb8-8872-7f0946954102"
-        }
-      ],
-      "IsDummy": false,
-      "DrawableSkinType": 0,
-      "DrawableType": 9,
-      "AudioPreset": 0,
-      "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_000_u.ydd"
-    },
-    {
-      "PedComponentFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "Flag5": false
-      },
-      "PedPropFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "UnkFlag5": false
-      },
-      "PedPropOptions": {
-        "CutHairs": false,
-        "HideHairs": false
-      },
-      "Position": 1,
-      "ClothType": 0,
-      "Name": "Armor_001",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
-      "Textures": [
-        {
+          "Id": "97585395-d616-4c57-a113-a87fe708f6df",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_diff_001_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "97585395-d616-4c57-a113-a87fe708f6df"
+          "IsDummy": false
         },
         {
+          "Position": 1,
+          "Id": "f12c437a-f4f7-46d5-ba8c-d5f1257d5eae",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_diff_001_b_uni.ytd",
-          "IsDummy": false,
-          "Position": 1,
-          "Id": "f12c437a-f4f7-46d5-ba8c-d5f1257d5eae"
+          "IsDummy": false
         },
         {
+          "Position": 2,
+          "Id": "8eeb1801-64aa-4a59-aab4-bf8877e13534",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_diff_001_c_uni.ytd",
-          "IsDummy": false,
-          "Position": 2,
-          "Id": "8eeb1801-64aa-4a59-aab4-bf8877e13534"
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_diff_001_d_uni.ytd",
-          "IsDummy": false,
           "Position": 3,
-          "Id": "997b0abf-4593-4227-80b0-53c25209e0c4"
+          "Id": "997b0abf-4593-4227-80b0-53c25209e0c4",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_diff_001_d_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 9,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_001_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_001_u.ydd",
+      "Name": "Armor_001",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -156,25 +117,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 2,
-      "ClothType": 0,
-      "Name": "Armor_002",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "ae6c7957-db38-43aa-b91b-a1cadb815102",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_diff_002_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "ae6c7957-db38-43aa-b91b-a1cadb815102"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 9,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_002_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\task_002_u.ydd",
+      "Name": "Armor_002",
+      "Position": 1
     },
     {
       "PedComponentFlags": {
@@ -195,37 +156,37 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Legs_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\lowr_diff_000_a_uni.ytd",
-          "IsDummy": false,
           "Position": 0,
-          "Id": "0923119b-7bf2-4d3b-8743-5605b369be37"
+          "Id": "0923119b-7bf2-4d3b-8743-5605b369be37",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\lowr_diff_000_a_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\lowr_diff_000_b_uni.ytd",
-          "IsDummy": false,
           "Position": 1,
-          "Id": "705578f0-0ace-4c90-aef4-795dbd09e9cc"
+          "Id": "705578f0-0ace-4c90-aef4-795dbd09e9cc",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\lowr_diff_000_b_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\lowr_diff_000_c_uni.ytd",
-          "IsDummy": false,
           "Position": 2,
-          "Id": "9aa0ac7b-5980-4dd6-809c-810e2cb2b99b"
+          "Id": "9aa0ac7b-5980-4dd6-809c-810e2cb2b99b",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\lowr_diff_000_c_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 4,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\lowr_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\lowr_000_u.ydd",
+      "Name": "Legs_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -246,25 +207,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 1,
-      "Name": "PropHead_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "eb156379-2acb-4007-bad5-89f0e2f9e04a",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_000_a.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "eb156379-2acb-4007-bad5-89f0e2f9e04a"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 1,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 12,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_000.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_000.ydd",
+      "Name": "PropHead_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -285,88 +246,37 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 1,
-      "ClothType": 1,
-      "Name": "PropHead_001",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "df66a5fe-fb07-47c0-8180-94bd1bf986b3",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_001_a.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "df66a5fe-fb07-47c0-8180-94bd1bf986b3"
+          "IsDummy": false
         },
         {
+          "Position": 1,
+          "Id": "de8d4f1b-2a82-4cf1-8c89-c5e2a57a744d",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_001_b.ytd",
-          "IsDummy": false,
-          "Position": 1,
-          "Id": "de8d4f1b-2a82-4cf1-8c89-c5e2a57a744d"
+          "IsDummy": false
         },
         {
+          "Position": 2,
+          "Id": "7f022051-170d-4381-a632-aa2cf12a3a19",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_001_c.ytd",
-          "IsDummy": false,
-          "Position": 2,
-          "Id": "7f022051-170d-4381-a632-aa2cf12a3a19"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
-      "DrawableSkinType": 0,
-      "DrawableType": 12,
-      "AudioPreset": 0,
-      "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_001.ydd"
-    },
-    {
-      "PedComponentFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "Flag5": false
-      },
-      "PedPropFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "UnkFlag5": false
-      },
-      "PedPropOptions": {
-        "CutHairs": false,
-        "HideHairs": false
-      },
-      "Position": 2,
       "ClothType": 1,
-      "Name": "PropHead_002",
+      "DrawableSkinType": 0,
       "FirstPersonModelFilePath": null,
       "MeshPhysicsFilePath": null,
-      "Textures": [
-        {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_002_a.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "9bc60039-8109-443c-928c-3adeb37f370e"
-        },
-        {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_002_b.ytd",
-          "IsDummy": false,
-          "Position": 1,
-          "Id": "b905de12-2056-4ee5-a744-214b9dad9a54"
-        },
-        {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_002_c.ytd",
-          "IsDummy": false,
-          "Position": 2,
-          "Id": "e04cbc5e-6a05-490e-b4c5-8804100cd166"
-        }
-      ],
-      "IsDummy": false,
-      "DrawableSkinType": 0,
       "DrawableType": 12,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_002.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_001.ydd",
+      "Name": "PropHead_001",
+      "Position": 1
     },
     {
       "PedComponentFlags": {
@@ -387,31 +297,82 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Shoes_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\feet_diff_000_a_uni.ytd",
-          "IsDummy": false,
           "Position": 0,
-          "Id": "e5138649-b19f-4a33-a921-7e2e15011968"
+          "Id": "9bc60039-8109-443c-928c-3adeb37f370e",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_002_a.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\feet_diff_000_b_uni.ytd",
-          "IsDummy": false,
           "Position": 1,
-          "Id": "d8ae541b-87fc-4120-910f-8cbb52faaf5b"
+          "Id": "b905de12-2056-4ee5-a744-214b9dad9a54",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_002_b.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 2,
+          "Id": "e04cbc5e-6a05-490e-b4c5-8804100cd166",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_diff_002_c.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 1,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
+      "DrawableType": 12,
+      "AudioPreset": 0,
+      "TargetGender": 0,
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\p_head_002.ydd",
+      "Name": "PropHead_002",
+      "Position": 2
+    },
+    {
+      "PedComponentFlags": {
+        "UnkFlag1": false,
+        "UnkFlag2": false,
+        "UnkFlag3": false,
+        "UnkFlag4": false,
+        "Flag5": false
+      },
+      "PedPropFlags": {
+        "UnkFlag1": false,
+        "UnkFlag2": false,
+        "UnkFlag3": false,
+        "UnkFlag4": false,
+        "UnkFlag5": false
+      },
+      "PedPropOptions": {
+        "CutHairs": false,
+        "HideHairs": false
+      },
+      "Textures": [
+        {
+          "Position": 0,
+          "Id": "e5138649-b19f-4a33-a921-7e2e15011968",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\feet_diff_000_a_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 1,
+          "Id": "d8ae541b-87fc-4120-910f-8cbb52faaf5b",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\feet_diff_000_b_uni.ytd",
+          "IsDummy": false
+        }
+      ],
+      "IsDummy": false,
+      "ClothType": 0,
+      "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 6,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\feet_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\feet_000_u.ydd",
+      "Name": "Shoes_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -432,49 +393,55 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Top_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "8dd5fa91-292e-4c4b-89fd-0ec1391e9dc2",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_000_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "8dd5fa91-292e-4c4b-89fd-0ec1391e9dc2"
+          "IsDummy": false
         },
         {
+          "Position": 1,
+          "Id": "57a01d40-01c5-43ba-a9b7-9b8ca73ed8ec",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_000_b_uni.ytd",
-          "IsDummy": false,
-          "Position": 1,
-          "Id": "57a01d40-01c5-43ba-a9b7-9b8ca73ed8ec"
+          "IsDummy": false
         },
         {
+          "Position": 2,
+          "Id": "e4f5b6ad-6eec-4966-9fb8-b4d8f8ba2007",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_000_c_uni.ytd",
-          "IsDummy": false,
-          "Position": 2,
-          "Id": "e4f5b6ad-6eec-4966-9fb8-b4d8f8ba2007"
+          "IsDummy": false
         },
         {
+          "Position": 3,
+          "Id": "af5a2184-d337-430e-ba4f-287252fa9137",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_000_d_uni.ytd",
-          "IsDummy": false,
-          "Position": 3,
-          "Id": "af5a2184-d337-430e-ba4f-287252fa9137"
+          "IsDummy": false
         },
         {
+          "Position": 4,
+          "Id": "60afd55f-f9c8-43ff-9af9-c8282bf230f2",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_000_e_uni.ytd",
-          "IsDummy": false,
-          "Position": 4,
-          "Id": "60afd55f-f9c8-43ff-9af9-c8282bf230f2"
+          "IsDummy": false
+        },
+        {
+          "Position": 5,
+          "Id": "980efe9b-4b99-4846-9b4d-26d0bf39eba4",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_000_f_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 11,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_000_u.ydd",
+      "Name": "Top_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -495,49 +462,61 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 1,
-      "ClothType": 0,
-      "Name": "Top_001",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "99b70025-94d8-4349-8183-1566f9fb27bf",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "99b70025-94d8-4349-8183-1566f9fb27bf"
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_b_uni.ytd",
-          "IsDummy": false,
           "Position": 1,
-          "Id": "1fdaef73-30ba-4fc2-aef8-80041562b159"
+          "Id": "1fdaef73-30ba-4fc2-aef8-80041562b159",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_b_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_c_uni.ytd",
-          "IsDummy": false,
           "Position": 2,
-          "Id": "a42a9060-0979-4f77-b642-5ee3b859e75e"
+          "Id": "a42a9060-0979-4f77-b642-5ee3b859e75e",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_c_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_d_uni.ytd",
-          "IsDummy": false,
           "Position": 3,
-          "Id": "089274e1-f836-4ac2-a23f-84fc3f2900f0"
+          "Id": "089274e1-f836-4ac2-a23f-84fc3f2900f0",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_d_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_e_uni.ytd",
-          "IsDummy": false,
           "Position": 4,
-          "Id": "edcafd59-c45d-4494-8bd9-0bd1281c82f4"
+          "Id": "edcafd59-c45d-4494-8bd9-0bd1281c82f4",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_e_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 5,
+          "Id": "a2386beb-9fdc-425a-a78e-db4824fc6892",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_f_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 6,
+          "Id": "fd248234-dd28-4e74-9086-1d36eb05d873",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_001_g_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 11,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_001_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_001_u.ydd",
+      "Name": "Top_001",
+      "Position": 1
     },
     {
       "PedComponentFlags": {
@@ -558,25 +537,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 2,
-      "ClothType": 0,
-      "Name": "Top_002",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "687e3d41-c6b7-48dc-95e6-691f91e30928",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_diff_002_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "687e3d41-c6b7-48dc-95e6-691f91e30928"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 11,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_002_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\jbib_002_u.ydd",
+      "Name": "Top_002",
+      "Position": 2
     },
     {
       "PedComponentFlags": {
@@ -597,25 +576,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Undershirt_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "0674b77d-df7e-4a30-b3b8-7eb0ca3f33ae",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_diff_000_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "0674b77d-df7e-4a30-b3b8-7eb0ca3f33ae"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_000_u.ydd",
+      "Name": "Undershirt_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -636,25 +615,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 1,
-      "ClothType": 0,
-      "Name": "Undershirt_001",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "4fba85c9-fb38-4229-826e-d6975355f952",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_diff_001_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "4fba85c9-fb38-4229-826e-d6975355f952"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_001_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_001_u.ydd",
+      "Name": "Undershirt_001",
+      "Position": 1
     },
     {
       "PedComponentFlags": {
@@ -675,25 +654,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 2,
-      "ClothType": 0,
-      "Name": "Undershirt_002",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "10594b73-b740-4014-969a-e2afda754ef7",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_diff_002_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "10594b73-b740-4014-969a-e2afda754ef7"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_002_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_002_u.ydd",
+      "Name": "Undershirt_002",
+      "Position": 2
     },
     {
       "PedComponentFlags": {
@@ -714,25 +693,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 3,
-      "ClothType": 0,
-      "Name": "Undershirt_003",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "bce9d48c-b7ae-422b-ac38-1899489ed289",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_diff_003_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "bce9d48c-b7ae-422b-ac38-1899489ed289"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_003_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_003_u.ydd",
+      "Name": "Undershirt_003",
+      "Position": 3
     },
     {
       "PedComponentFlags": {
@@ -753,25 +732,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 4,
-      "ClothType": 0,
-      "Name": "Undershirt_004",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "27abe79e-fe8a-4db8-8828-3b5c4361e8fc",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_diff_004_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "27abe79e-fe8a-4db8-8828-3b5c4361e8fc"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_004_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_004_u.ydd",
+      "Name": "Undershirt_004",
+      "Position": 4
     },
     {
       "PedComponentFlags": {
@@ -792,25 +771,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 5,
-      "ClothType": 0,
-      "Name": "Undershirt_005",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "6d4dfb2b-d040-4482-9f88-0e5b57ae0810",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_diff_005_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "6d4dfb2b-d040-4482-9f88-0e5b57ae0810"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_005_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\Police\\accs_005_u.ydd",
+      "Name": "Undershirt_005",
+      "Position": 5
     },
     {
       "PedComponentFlags": {
@@ -831,25 +810,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Accessories_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\teef_diff_000_a_uni.ytd",
-          "IsDummy": false,
           "Position": 0,
-          "Id": "c27f7de7-61c6-4961-b436-5b79385d3e3d"
+          "Id": "c27f7de7-61c6-4961-b436-5b79385d3e3d",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\teef_diff_000_a_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 7,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\teef_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\teef_000_u.ydd",
+      "Name": "Accessories_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -870,43 +849,43 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Armor_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "01f939f4-4736-415f-8ad4-c8b2788b6ebe",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_diff_000_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "01f939f4-4736-415f-8ad4-c8b2788b6ebe"
+          "IsDummy": false
         },
         {
+          "Position": 1,
+          "Id": "7581fe32-5684-4c86-a6e9-51909b4c9f24",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_diff_000_b_uni.ytd",
-          "IsDummy": false,
-          "Position": 1,
-          "Id": "7581fe32-5684-4c86-a6e9-51909b4c9f24"
+          "IsDummy": false
         },
         {
+          "Position": 2,
+          "Id": "0f7cdeb8-97ac-4657-9b8a-245a61139857",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_diff_000_c_uni.ytd",
-          "IsDummy": false,
-          "Position": 2,
-          "Id": "0f7cdeb8-97ac-4657-9b8a-245a61139857"
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_diff_000_d_uni.ytd",
-          "IsDummy": false,
           "Position": 3,
-          "Id": "78c52326-d3b9-40b9-a587-aa626860c6ee"
+          "Id": "78c52326-d3b9-40b9-a587-aa626860c6ee",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_diff_000_d_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 9,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_000_u.ydd",
+      "Name": "Armor_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -927,25 +906,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 1,
-      "ClothType": 0,
-      "Name": "Armor_001",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "fb847b16-8ebd-4b27-a55c-ccac4d380ccc",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_diff_001_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "fb847b16-8ebd-4b27-a55c-ccac4d380ccc"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 9,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_001_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\task_001_u.ydd",
+      "Name": "Armor_001",
+      "Position": 1
     },
     {
       "PedComponentFlags": {
@@ -966,37 +945,37 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Legs_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\lowr_diff_000_a_uni.ytd",
-          "IsDummy": false,
           "Position": 0,
-          "Id": "e9315e6a-6701-4f30-87b5-56490af9ed49"
+          "Id": "e9315e6a-6701-4f30-87b5-56490af9ed49",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\lowr_diff_000_a_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\lowr_diff_000_b_uni.ytd",
-          "IsDummy": false,
           "Position": 1,
-          "Id": "db56d63f-1205-4f78-a879-0a0a3a6f25a4"
+          "Id": "db56d63f-1205-4f78-a879-0a0a3a6f25a4",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\lowr_diff_000_b_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\lowr_diff_000_c_uni.ytd",
-          "IsDummy": false,
           "Position": 2,
-          "Id": "e2fa54b5-3937-44d3-b966-fc4a1c3ce98e"
+          "Id": "e2fa54b5-3937-44d3-b966-fc4a1c3ce98e",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\lowr_diff_000_c_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 4,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\lowr_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\lowr_000_u.ydd",
+      "Name": "Legs_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -1017,25 +996,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 1,
-      "Name": "PropHead_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "299d7e7a-5269-4022-b7d7-78ca8cbc5550",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_000_a.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "299d7e7a-5269-4022-b7d7-78ca8cbc5550"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 1,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 12,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_000.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_000.ydd",
+      "Name": "PropHead_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -1056,88 +1035,37 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 1,
-      "ClothType": 1,
-      "Name": "PropHead_001",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "ca7af164-4db6-4716-80ab-8b4b44046cf1",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_001_a.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "ca7af164-4db6-4716-80ab-8b4b44046cf1"
+          "IsDummy": false
         },
         {
+          "Position": 1,
+          "Id": "38543882-7c12-4d0d-94d8-7ebf1d981294",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_001_b.ytd",
-          "IsDummy": false,
-          "Position": 1,
-          "Id": "38543882-7c12-4d0d-94d8-7ebf1d981294"
+          "IsDummy": false
         },
         {
+          "Position": 2,
+          "Id": "cf82ae53-5671-49b7-bcfd-56a934a9787d",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_001_c.ytd",
-          "IsDummy": false,
-          "Position": 2,
-          "Id": "cf82ae53-5671-49b7-bcfd-56a934a9787d"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
-      "DrawableSkinType": 0,
-      "DrawableType": 12,
-      "AudioPreset": 0,
-      "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_001.ydd"
-    },
-    {
-      "PedComponentFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "Flag5": false
-      },
-      "PedPropFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "UnkFlag5": false
-      },
-      "PedPropOptions": {
-        "CutHairs": false,
-        "HideHairs": false
-      },
-      "Position": 2,
       "ClothType": 1,
-      "Name": "PropHead_002",
+      "DrawableSkinType": 0,
       "FirstPersonModelFilePath": null,
       "MeshPhysicsFilePath": null,
-      "Textures": [
-        {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_002_a.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "add9865e-74d3-4b8d-9d0b-835d44b6a8ca"
-        },
-        {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_002_b.ytd",
-          "IsDummy": false,
-          "Position": 1,
-          "Id": "8f16be0f-90c3-44ba-af63-0cec0e67183d"
-        },
-        {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_002_c.ytd",
-          "IsDummy": false,
-          "Position": 2,
-          "Id": "158d9b0a-d473-4332-9557-578246676976"
-        }
-      ],
-      "IsDummy": false,
-      "DrawableSkinType": 0,
       "DrawableType": 12,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_002.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_001.ydd",
+      "Name": "PropHead_001",
+      "Position": 1
     },
     {
       "PedComponentFlags": {
@@ -1158,49 +1086,106 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Top_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "add9865e-74d3-4b8d-9d0b-835d44b6a8ca",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_002_a.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 1,
+          "Id": "8f16be0f-90c3-44ba-af63-0cec0e67183d",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_002_b.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 2,
+          "Id": "158d9b0a-d473-4332-9557-578246676976",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_diff_002_c.ytd",
+          "IsDummy": false
+        }
+      ],
+      "IsDummy": false,
+      "ClothType": 1,
+      "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
+      "DrawableType": 12,
+      "AudioPreset": 0,
+      "TargetGender": 1,
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\p_head_002.ydd",
+      "Name": "PropHead_002",
+      "Position": 2
+    },
+    {
+      "PedComponentFlags": {
+        "UnkFlag1": false,
+        "UnkFlag2": false,
+        "UnkFlag3": false,
+        "UnkFlag4": false,
+        "Flag5": false
+      },
+      "PedPropFlags": {
+        "UnkFlag1": false,
+        "UnkFlag2": false,
+        "UnkFlag3": false,
+        "UnkFlag4": false,
+        "UnkFlag5": false
+      },
+      "PedPropOptions": {
+        "CutHairs": false,
+        "HideHairs": false
+      },
+      "Textures": [
+        {
+          "Position": 0,
+          "Id": "a8702e94-3cad-4f47-a3b6-d4b60d0c0e0d",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_000_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "a8702e94-3cad-4f47-a3b6-d4b60d0c0e0d"
+          "IsDummy": false
         },
         {
+          "Position": 1,
+          "Id": "caf1f800-bdd2-4d26-b78f-b17816f4ae97",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_000_b_uni.ytd",
-          "IsDummy": false,
-          "Position": 1,
-          "Id": "caf1f800-bdd2-4d26-b78f-b17816f4ae97"
+          "IsDummy": false
         },
         {
+          "Position": 2,
+          "Id": "ae0737a7-42fb-4c34-9999-84dd3f3f9c7c",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_000_c_uni.ytd",
-          "IsDummy": false,
-          "Position": 2,
-          "Id": "ae0737a7-42fb-4c34-9999-84dd3f3f9c7c"
+          "IsDummy": false
         },
         {
+          "Position": 3,
+          "Id": "c2f914d5-d7cb-4e45-8679-2bf992aa999c",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_000_d_uni.ytd",
-          "IsDummy": false,
-          "Position": 3,
-          "Id": "c2f914d5-d7cb-4e45-8679-2bf992aa999c"
+          "IsDummy": false
         },
         {
+          "Position": 4,
+          "Id": "87d0a81d-1695-4cf7-8138-acfc51f252b3",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_000_e_uni.ytd",
-          "IsDummy": false,
-          "Position": 4,
-          "Id": "87d0a81d-1695-4cf7-8138-acfc51f252b3"
+          "IsDummy": false
+        },
+        {
+          "Position": 5,
+          "Id": "c5c651da-8e54-4acd-8bc1-4fac8b6cd7a8",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_000_f_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 11,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_000_u.ydd",
+      "Name": "Top_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -1221,49 +1206,55 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 1,
-      "ClothType": 0,
-      "Name": "Top_001",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "7913841d-ec1e-4812-966e-a5b271c054fd",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "7913841d-ec1e-4812-966e-a5b271c054fd"
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_b_uni.ytd",
-          "IsDummy": false,
           "Position": 1,
-          "Id": "e7fb5d82-ce19-41f8-ac4e-ac95948be789"
+          "Id": "e7fb5d82-ce19-41f8-ac4e-ac95948be789",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_b_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_c_uni.ytd",
-          "IsDummy": false,
           "Position": 2,
-          "Id": "c6b0954a-a285-4a71-925a-0f24f7dbb7c3"
+          "Id": "c6b0954a-a285-4a71-925a-0f24f7dbb7c3",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_c_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_d_uni.ytd",
-          "IsDummy": false,
           "Position": 3,
-          "Id": "afaaede2-7b94-4f18-af2b-a75a156d5295"
+          "Id": "afaaede2-7b94-4f18-af2b-a75a156d5295",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_d_uni.ytd",
+          "IsDummy": false
         },
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_e_uni.ytd",
-          "IsDummy": false,
           "Position": 4,
-          "Id": "aad94b3d-e699-4ffa-a3df-04744cfb7eb6"
+          "Id": "aad94b3d-e699-4ffa-a3df-04744cfb7eb6",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_e_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 5,
+          "Id": "3f7443d0-5236-497d-bab5-6646cd16f557",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_diff_001_f_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 11,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_001_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\jbib_001_u.ydd",
+      "Name": "Top_001",
+      "Position": 1
     },
     {
       "PedComponentFlags": {
@@ -1284,25 +1275,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 0,
-      "ClothType": 0,
-      "Name": "Undershirt_000",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "36dc28ea-5328-4c6a-bd6d-698f92f6bee5",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_diff_000_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "36dc28ea-5328-4c6a-bd6d-698f92f6bee5"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_000_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_000_u.ydd",
+      "Name": "Undershirt_000",
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -1323,25 +1314,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 1,
-      "ClothType": 0,
-      "Name": "Undershirt_001",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "f28be7bd-0d2c-476d-abc3-74c0ab0f5ebe",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_diff_001_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "f28be7bd-0d2c-476d-abc3-74c0ab0f5ebe"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_001_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_001_u.ydd",
+      "Name": "Undershirt_001",
+      "Position": 1
     },
     {
       "PedComponentFlags": {
@@ -1362,25 +1353,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 2,
-      "ClothType": 0,
-      "Name": "Undershirt_002",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "b095d0d7-5e9a-40ea-8bf2-c6bc673383f9",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_diff_002_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "b095d0d7-5e9a-40ea-8bf2-c6bc673383f9"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_002_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_002_u.ydd",
+      "Name": "Undershirt_002",
+      "Position": 2
     },
     {
       "PedComponentFlags": {
@@ -1401,25 +1392,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 3,
-      "ClothType": 0,
-      "Name": "Undershirt_003",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "8503c3d5-a315-4594-b66a-eba0d18d2361",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_diff_003_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "8503c3d5-a315-4594-b66a-eba0d18d2361"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_003_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_003_u.ydd",
+      "Name": "Undershirt_003",
+      "Position": 3
     },
     {
       "PedComponentFlags": {
@@ -1440,25 +1431,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 4,
-      "ClothType": 0,
-      "Name": "Undershirt_004",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "5fae61b4-967c-49ae-a9a1-d3141c3c49dc",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_diff_004_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "5fae61b4-967c-49ae-a9a1-d3141c3c49dc"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_004_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_004_u.ydd",
+      "Name": "Undershirt_004",
+      "Position": 4
     },
     {
       "PedComponentFlags": {
@@ -1479,25 +1470,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 5,
-      "ClothType": 0,
-      "Name": "Undershirt_005",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
+          "Position": 0,
+          "Id": "82fd24b8-8f97-4058-b1bc-eff5e9f75b95",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_diff_005_a_uni.ytd",
-          "IsDummy": false,
-          "Position": 0,
-          "Id": "82fd24b8-8f97-4058-b1bc-eff5e9f75b95"
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_005_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_005_u.ydd",
+      "Name": "Undershirt_005",
+      "Position": 5
     },
     {
       "PedComponentFlags": {
@@ -1518,25 +1509,25 @@
         "CutHairs": false,
         "HideHairs": false
       },
-      "Position": 6,
-      "ClothType": 0,
-      "Name": "Undershirt_006",
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
       "Textures": [
         {
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_diff_006_a_uni.ytd",
-          "IsDummy": false,
           "Position": 0,
-          "Id": "c0172b79-baeb-4990-a060-cf5a8bf67b44"
+          "Id": "c0172b79-baeb-4990-a060-cf5a8bf67b44",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_diff_006_a_uni.ytd",
+          "IsDummy": false
         }
       ],
       "IsDummy": false,
+      "ClothType": 0,
       "DrawableSkinType": 0,
+      "FirstPersonModelFilePath": null,
+      "MeshPhysicsFilePath": null,
       "DrawableType": 8,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_006_u.ydd"
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\Police\\accs_006_u.ydd",
+      "Name": "Undershirt_006",
+      "Position": 6
     }
   ],
   "DecorationData": [],

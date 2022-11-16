@@ -1743,45 +1743,6 @@
       "Textures": [
         {
           "Position": 0,
-          "Id": "19738e40-a7cc-4b07-aa0d-0df241c3cfbb",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\lowr_diff_000_a_whi.ytd",
-          "IsDummy": false
-        }
-      ],
-      "IsDummy": false,
-      "ClothType": 0,
-      "DrawableSkinType": 1,
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
-      "DrawableType": 4,
-      "AudioPreset": 0,
-      "TargetGender": 0,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\lowr_000_r.ydd",
-      "Name": "Legs_000",
-      "Position": 0
-    },
-    {
-      "PedComponentFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "Flag5": false
-      },
-      "PedPropFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "UnkFlag5": false
-      },
-      "PedPropOptions": {
-        "CutHairs": false,
-        "HideHairs": false
-      },
-      "Textures": [
-        {
-          "Position": 0,
           "Id": "8b25575f-72eb-4d00-9c3b-7733d32f52cb",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\lowr_diff_001_a_whi.ytd",
           "IsDummy": false
@@ -1797,7 +1758,7 @@
       "TargetGender": 0,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\lowr_001_r.ydd",
       "Name": "Legs_001",
-      "Position": 1
+      "Position": 0
     },
     {
       "PedComponentFlags": {
@@ -1842,7 +1803,7 @@
       "TargetGender": 0,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\lowr_002_r.ydd",
       "Name": "Legs_002",
-      "Position": 2
+      "Position": 1
     },
     {
       "PedComponentFlags": {
@@ -1881,7 +1842,7 @@
       "TargetGender": 0,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\lowr_003_r.ydd",
       "Name": "Legs_003",
-      "Position": 3
+      "Position": 2
     },
     {
       "PedComponentFlags": {
@@ -1944,7 +1905,7 @@
       "TargetGender": 0,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\M\\lowr_004_r.ydd",
       "Name": "Legs_004",
-      "Position": 4
+      "Position": 3
     },
     {
       "PedComponentFlags": {
@@ -7194,45 +7155,6 @@
       "Textures": [
         {
           "Position": 0,
-          "Id": "b0520ffc-864e-4536-9933-2a5bdec44e9d",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\lowr_diff_003_a_whi.ytd",
-          "IsDummy": false
-        }
-      ],
-      "IsDummy": false,
-      "ClothType": 0,
-      "DrawableSkinType": 1,
-      "FirstPersonModelFilePath": null,
-      "MeshPhysicsFilePath": null,
-      "DrawableType": 4,
-      "AudioPreset": 0,
-      "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\lowr_003_r.ydd",
-      "Name": "Legs_003",
-      "Position": 3
-    },
-    {
-      "PedComponentFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "Flag5": false
-      },
-      "PedPropFlags": {
-        "UnkFlag1": false,
-        "UnkFlag2": false,
-        "UnkFlag3": false,
-        "UnkFlag4": false,
-        "UnkFlag5": false
-      },
-      "PedPropOptions": {
-        "CutHairs": false,
-        "HideHairs": false
-      },
-      "Textures": [
-        {
-          "Position": 0,
           "Id": "3180bb25-4fb8-4a54-b563-7c5e095ae7d6",
           "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\lowr_diff_004_a_whi.ytd",
           "IsDummy": false
@@ -7308,7 +7230,7 @@
       "TargetGender": 1,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\lowr_004_r.ydd",
       "Name": "Legs_004",
-      "Position": 4
+      "Position": 3
     },
     {
       "PedComponentFlags": {
@@ -7437,7 +7359,7 @@
       "TargetGender": 1,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\lowr_005_r.ydd",
       "Name": "Legs_005",
-      "Position": 5
+      "Position": 4
     },
     {
       "PedComponentFlags": {
@@ -7608,7 +7530,7 @@
       "TargetGender": 1,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\lowr_006_r.ydd",
       "Name": "Legs_006",
-      "Position": 6
+      "Position": 5
     },
     {
       "PedComponentFlags": {
@@ -7659,7 +7581,7 @@
       "TargetGender": 1,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\lowr_007_r.ydd",
       "Name": "Legs_007",
-      "Position": 7
+      "Position": 6
     },
     {
       "PedComponentFlags": {
@@ -7818,7 +7740,7 @@
       "TargetGender": 1,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\lowr_008_r.ydd",
       "Name": "Legs_008",
-      "Position": 8
+      "Position": 7
     },
     {
       "PedComponentFlags": {
@@ -7887,7 +7809,7 @@
       "TargetGender": 1,
       "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\lowr_009_r.ydd",
       "Name": "Legs_009",
-      "Position": 9
+      "Position": 8
     },
     {
       "PedComponentFlags": {

@@ -223,6 +223,63 @@ AddEventHandler("target:animDeitar",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:SENTAR
+-----------------------------------------------------------------------------------------------------------------------------------------
+local chairs = {
+	[-171943901] = 0.0,
+	[-109356459] = 0.5,
+	[1805980844] = 0.5,
+	[-99500382] = 0.3,
+	[1262298127] = 0.0,
+	[1737474779] = 0.5,
+	[2040839490] = 0.0,
+	[1037469683] = 0.4,
+	[867556671] = 0.4,
+	[-1521264200] = 0.0,
+	[-741944541] = 0.4,
+	[-591349326] = 0.5,
+	[-293380809] = 0.5,
+	[-628719744] = 0.5,
+	[-1317098115] = 0.5,
+	[1630899471] = 0.5,
+	[38932324] = 0.5,
+	[-523951410] = 0.5,
+	[725259233] = 0.5,
+	[764848282] = 0.5,
+	[2064599526] = 0.5,
+	[536071214] = 0.5,
+	[589738836] = 0.5,
+	[146905321] = 0.5,
+	[47332588] = 0.5,
+	[-1118419705] = 0.5,
+	[538002882] = -0.1,
+	[-377849416] = 0.5,
+	[96868307] = 0.5,
+	[-1195678770] = 0.7,
+	[-853526657] = -0.1,
+	[652816835] = 0.8
+}
+
+RegisterNetEvent("target:animSentar")
+AddEventHandler("target:animSentar",function()
+	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] then
+		local Ped = PlayerPedId()
+		if GetEntityHealth(Ped) > 101 then
+			local objCoords = GetEntityCoords(Selected[1])
+
+			FreezeEntityPosition(Selected[1],true)
+			SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + chairs[Selected[2]],1,0,0,0)
+			if chairs[Selected[2]] == 0.7 then
+				SetEntityHeading(Ped,GetEntityHeading(Selected[1]))
+			else
+				SetEntityHeading(Ped,GetEntityHeading(Selected[1]) - 180.0)
+			end
+
+			vRP.playAnim(false,{ task = "PROP_HUMAN_SEAT_CHAIR_MP_PLAYER" },false)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()

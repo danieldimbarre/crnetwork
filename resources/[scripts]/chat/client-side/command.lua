@@ -8,15 +8,15 @@ RegisterCommand("Chat",function()
 		local Tags = {}
 
 		if LocalPlayer["state"]["Police"] then
-			Tags[#Tags + 1] = "Polícia"
+			Tags[#Tags + 1] = "Police"
 		end
 
 		if LocalPlayer["state"]["Mechanic"] then
-			Tags[#Tags + 1] = "Mecânica"
+			Tags[#Tags + 1] = "Mechanic"
 		end
 
 		if LocalPlayer["state"]["Paramedic"] then
-			Tags[#Tags + 1] = "Hospital"
+			Tags[#Tags + 1] = "Paramedic"
 		end
 
 		SendNUIMessage({ Action = "Chat", Data = Tags, Block = Block })

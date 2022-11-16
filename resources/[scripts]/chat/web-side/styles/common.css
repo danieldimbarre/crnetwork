@@ -29,9 +29,9 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #FFB81D;
+    background: #21ac38;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgb(251, 193, 67);
+    background: #80e470;
 }

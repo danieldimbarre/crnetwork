@@ -4115,7 +4115,7 @@ Use = {
 					for Passports,Sources in pairs(Service) do
 						async(function()
 							vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 

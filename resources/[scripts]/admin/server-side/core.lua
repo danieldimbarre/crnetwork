@@ -648,12 +648,41 @@ end)
 RegisterCommand("reset",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin",2) and OtherPassport > 0 then
 			local Creator = vRP.UserData(Passport,"Creator")
 			if Creator == 1 then
-				vRP.Query("playerdata/SetData",{ Passport = parseInt(Message[1]), dkey = "Creator", dvalue = 0 })
+				vRP.Query("playerdata/SetData",{ Passport = OtherPassport, dkey = "Creator", dvalue = 0 })
 
 				TriggerClientEvent("Notify",source,"verde","Reset concluído.",5000)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BUCKET
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("bucket",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
+			local Route = parseInt(Message[1])
+			if Message[2] then
+				local OtherPassport = parseInt(Message[2])
+				local OtherSource = vRP.Source(OtherPassport)
+				if OtherSource then
+					if Route > 0 then
+						TriggerEvent("vRP:BucketServer",OtherSource,"Enter",Route)
+					else
+						TriggerEvent("vRP:BucketServer",OtherSource,"Exit")
+					end
+				end
+			else
+				if Route > 0 then
+					TriggerEvent("vRP:BucketServer",source,"Enter",Route)
+				else
+					TriggerEvent("vRP:BucketServer",source,"Exit")
+				end
 			end
 		end
 	end

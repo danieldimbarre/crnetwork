@@ -166,7 +166,7 @@ RegisterCommand("emergencyFunctions",function()
 					exports["dynamic"]:AddButton("GOE","Fardamento de policial.","player:Preset","2","prePolice",true)
 					exports["dynamic"]:AddButton("GTM","Fardamento de policial.","player:Preset","3","prePolice",true)
 					exports["dynamic"]:AddButton("GAR","Fardamento de policial.","player:Preset","4","prePolice",true)
-					-- exports["dynamic"]:AddButton("GIP","Fardamento de policial.","player:Preset","5","prePolice",true)
+					exports["dynamic"]:AddButton("GIP","Fardamento de policial.","player:Preset","5","prePolice",true)
 					exports["dynamic"]:AddButton("GRAER","Fardamento de policial.","player:Preset","6","prePolice",true)
 					-- exports["dynamic"]:AddButton("Penal","Fardamento de policial.","player:Preset","7","prePolice",true)
 

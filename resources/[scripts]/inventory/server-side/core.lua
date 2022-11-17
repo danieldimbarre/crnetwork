@@ -1964,7 +1964,11 @@ function Creative.MakeProducts(Table)
 
 			Player(source)["state"]["Buttons"] = true
 			Active[Passport] = os.time() + Products[Selected][Number]["timer"]
-			TriggerClientEvent("Progress",source,"Produzindo",Products[Selected][Number]["timer"] * 1000)
+			if Selected == "cemitery" then
+				TriggerClientEvent("Progress",source,"Roubando",Products[Selected][Number]["timer"] * 1000)
+			else
+				TriggerClientEvent("Progress",source,"Produzindo",Products[Selected][Number]["timer"] * 1000)
+			end
 
 			if Selected == "tablecoke" then
 				vRPC.playAnim(source,false,{"anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter"},true)

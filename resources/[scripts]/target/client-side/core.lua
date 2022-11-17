@@ -225,6 +225,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TARGET:SENTAR
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Previous = nil
 local chairs = {
 	[-171943901] = 0.0,
 	[-109356459] = 0.5,
@@ -257,26 +258,40 @@ local chairs = {
 	[96868307] = 0.5,
 	[-1195678770] = 0.7,
 	[-853526657] = -0.1,
-	[652816835] = 0.8
+	[652816835] = 0.8,
+	[-1086524442] = 0.5,
+	[-1222451822] = -0.2,
+	[-399437949] = -0.5,
+	[-992710074] = -0.2
 }
 
 RegisterNetEvent("target:animSentar")
 AddEventHandler("target:animSentar",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] then
+	if not Previous then
 		local Ped = PlayerPedId()
 		if GetEntityHealth(Ped) > 101 then
 			local objCoords = GetEntityCoords(Selected[1])
-
 			FreezeEntityPosition(Selected[1],true)
-			SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + chairs[Selected[2]],1,0,0,0)
-			if chairs[Selected[2]] == 0.7 then
-				SetEntityHeading(Ped,GetEntityHeading(Selected[1]))
-			else
-				SetEntityHeading(Ped,GetEntityHeading(Selected[1]) - 180.0)
-			end
 
-			vRP.playAnim(false,{ task = "PROP_HUMAN_SEAT_CHAIR_MP_PLAYER" },false)
+			local Heading = GetEntityHeading(Selected[1])
+			if not chairs[Selected[2]] == 0.7 then
+				Heading = GetEntityHeading(Selected[1]) - 180.0
+			end
+			TaskStartScenarioAtPosition(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT",objCoords["x"],objCoords["y"],objCoords["z"],Chairs[Number]["Heading"],-1,true,true)
+
+			Previous = GetEntityCoords(Ped)
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:UPCHAIR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("target:UpChair")
+AddEventHandler("target:UpChair",function()
+	if Previous then
+		local Ped = PlayerPedId()
+		SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
+		Previous = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

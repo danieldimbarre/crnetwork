@@ -254,8 +254,8 @@ Products = {
 		{ ["timer"] = 5, ["item"] = "WEAPON_SHOES", ["itemAmount"] = 2 },
 		{ ["timer"] = 5, ["item"] = "dices", ["itemAmount"] = 1 },
 		{ ["timer"] = 5, ["item"] = "cup", ["itemAmount"] = 1 },
-		{ ["timer"] = 5, ["item"] = "WEAPON_AMMO_PISTOL", ["itemAmount"] = 1 },
-		{ ["timer"] = 5, ["item"] = "WEAPON_AMMO_PISTOL", ["itemAmount"] = 3 }
+		{ ["timer"] = 5, ["item"] = "WEAPON_PISTOL_AMMO", ["itemAmount"] = 1 },
+		{ ["timer"] = 5, ["item"] = "WEAPON_PISTOL_AMMO", ["itemAmount"] = 3 }
 	},
 	["fishfillet"] = {
 		{ ["timer"] = 10, ["need"] = "fishfillet", ["needAmount"] = 1, ["item"] = "cookedfishfillet", ["itemAmount"] = 1 }

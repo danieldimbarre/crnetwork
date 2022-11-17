@@ -277,7 +277,7 @@ AddEventHandler("target:animSentar",function()
 			if not chairs[Selected[2]] == 0.7 then
 				Heading = GetEntityHeading(Selected[1]) - 180.0
 			end
-			TaskStartScenarioAtPosition(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT",objCoords["x"],objCoords["y"],objCoords["z"],Chairs[Number]["Heading"],-1,true,true)
+			TaskStartScenarioAtPosition(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT",objCoords["x"],objCoords["y"],objCoords["z"],Heading,-1,true,true)
 
 			Previous = GetEntityCoords(Ped)
 		end

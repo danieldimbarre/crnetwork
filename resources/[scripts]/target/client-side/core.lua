@@ -52,7 +52,7 @@ local Dismantles = {
 RegisterNetEvent("target:Dismantles")
 AddEventHandler("target:Dismantles",function()
 	Dismantleds = math.random(#Dismantles)
-	TriggerEvent("NotifyPush",{ title = "Localização do Desmanche", x = Dismantles[Dismantleds][1], y = Dismantles[Dismantleds][2], z = Dismantles[Dismantleds][3], blipColor = 60 })
+	TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Desmanche", x = Dismantles[Dismantleds][1], y = Dismantles[Dismantleds][2], z = Dismantles[Dismantleds][3], blipColor = 60 })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRELIST

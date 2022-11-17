@@ -2649,7 +2649,7 @@
         "UnkFlag5": false
       },
       "PedPropOptions": {
-        "CutHairs": false,
+        "CutHairs": true,
         "HideHairs": false
       },
       "Textures": [
@@ -2730,7 +2730,7 @@
         "UnkFlag5": false
       },
       "PedPropOptions": {
-        "CutHairs": false,
+        "CutHairs": true,
         "HideHairs": false
       },
       "Textures": [
@@ -8244,7 +8244,7 @@
         "UnkFlag5": false
       },
       "PedPropOptions": {
-        "CutHairs": false,
+        "CutHairs": true,
         "HideHairs": false
       },
       "Textures": [
@@ -8325,7 +8325,7 @@
         "UnkFlag5": false
       },
       "PedPropOptions": {
-        "CutHairs": false,
+        "CutHairs": true,
         "HideHairs": false
       },
       "Textures": [
@@ -14221,8 +14221,8 @@
     }
   ],
   "DecorationData": [],
-  "CollectionName": null,
-  "CollectionOutputPath": null,
-  "TargetResourceType": 0,
+  "CollectionName": "energy",
+  "CollectionOutputPath": "E:\\FiveM\\DurtyClothTool.App\\output",
+  "TargetResourceType": 2,
   "SaveVersion": 3
 }

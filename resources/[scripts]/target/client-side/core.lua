@@ -1223,6 +1223,7 @@ function TargetEnable()
 							if LocalPlayer["state"]["Police"] then
 								if GetEntityHealth(Entity) <= 100 then
 									Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
+									Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
 								else
 									Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
 									Menu[#Menu + 1] = { event = "police:prisonClothes", label = "Uniforme Presidiário", tunnel = "police" }

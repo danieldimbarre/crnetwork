@@ -161,9 +161,9 @@ Products = {
 	},
 	["tableweed"] = {
 		{ ["timer"] = 20, ["need"] = {
-			{ ["item"] = "silk", ["amount"] = 1 },
-			{ ["item"] = "weedleaf", ["amount"] = 1 }
-		}, ["needAmount"] = 1, ["item"] = "joint", ["itemAmount"] = 1 }
+			{ ["item"] = "silk", ["amount"] = 10 },
+			{ ["item"] = "weedleaf", ["amount"] = 10 }
+		}, ["needAmount"] = 10, ["item"] = "joint", ["itemAmount"] = 10 }
 	},
 	["burgershot1"] = {
 		{ ["timer"] = 10, ["item"] = "burgershot1", ["itemAmount"] = 1 }
@@ -253,7 +253,9 @@ Products = {
 		{ ["timer"] = 5, ["item"] = "WEAPON_BRICK", ["itemAmount"] = 3 },
 		{ ["timer"] = 5, ["item"] = "WEAPON_SHOES", ["itemAmount"] = 2 },
 		{ ["timer"] = 5, ["item"] = "dices", ["itemAmount"] = 1 },
-		{ ["timer"] = 5, ["item"] = "cup", ["itemAmount"] = 1 }
+		{ ["timer"] = 5, ["item"] = "cup", ["itemAmount"] = 1 },
+		{ ["timer"] = 5, ["item"] = "WEAPON_AMMO_PISTOL", ["itemAmount"] = 1 },
+		{ ["timer"] = 5, ["item"] = "WEAPON_AMMO_PISTOL", ["itemAmount"] = 3 }
 	},
 	["fishfillet"] = {
 		{ ["timer"] = 10, ["need"] = "fishfillet", ["needAmount"] = 1, ["item"] = "cookedfishfillet", ["itemAmount"] = 1 }
@@ -1914,7 +1916,7 @@ function Creative.MakeProducts(Table)
 					for Passports,Sources in pairs(Service) do
 						async(function()
 							vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 					return

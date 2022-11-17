@@ -34,6 +34,24 @@ local shops = {
 			["mushroom"] = 10
 		}
 	},
+	["BurgerShot-2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["hamburger2"] = 145,
+			["onionrings"] = 90,
+			["guarananatural"] = 95,
+			["orangejuice"] = 120,
+			["tangejuice"] = 120,
+			["grapejuice"] = 120,
+			["strawberryjuice"] = 120,
+			["bananajuice"] = 120,
+			["acerolajuice"] = 120,
+			["passionjuice"] = 120,
+			["mushroom"] = 30
+		}
+	},
 	["PizzaThis"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
@@ -48,6 +66,20 @@ local shops = {
 			["mushroomtea"] = 300,
 			["chickenfries"] = 100,
 			["mushroom"] = 10
+		}
+	},
+	["PizzaThis-2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["pizzamozzarella"] = 145,
+			["pizzamushroom"] = 145,
+			["pizzabanana"] = 145,
+			["pizzachocolate"] = 145,
+			["mushroomtea"] = 320,
+			["chickenfries"] = 120,
+			["mushroom"] = 30
 		}
 	},
 	["UwuCoffee"] = {
@@ -66,6 +98,21 @@ local shops = {
 			["mushroom"] = 10
 		}
 	},
+	["UwuCoffee-2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["nigirizushi"] = 70,
+			["sushi"] = 70,
+			["cupcake"] = 70,
+			["applelove"] = 70,
+			["milkshake"] = 120,
+			["cappuccino"] = 145,
+			["cookies"] = 55,
+			["mushroom"] = 30
+		}
+	},
 	["BeanMachine"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
@@ -81,6 +128,21 @@ local shops = {
 			["mushroom"] = 10,
 			["bread"] = 5,
 			["cheese"] = 10
+		}
+	},
+	["BeanMachine-2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["coffeemilk"] = 90,
+			["sandwich"] = 35,
+			["tacos"] = 45,
+			["chandon"] = 35,
+			["dewars"] = 35,
+			["hennessy"] = 35,
+			["absolut"] = 35,
+			["mushroom"] = 30
 		}
 	},
 	["Identity"] = {
@@ -143,7 +205,8 @@ local shops = {
 			["gauze"] = 100,
 			["analgesic"] = 125,
 			["sinkalmy"] = 375,
-			["ritmoneury"] = 475
+			["ritmoneury"] = 475,
+			["oxy"] = 35
 		}
 	},
 	["Weeds"] = {
@@ -247,7 +310,8 @@ local shops = {
 			["gauze"] = 100,
 			["analgesic"] = 125,
 			["sinkalmy"] = 375,
-			["ritmoneury"] = 475
+			["ritmoneury"] = 475,
+			["oxy"] = 35
 		}
 	},
 	["Paramedic"] = {
@@ -714,6 +778,13 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 
 										if Item == "WEAPON_PETROLCAN" then
 											vRP.GenerateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500,false)
+										end
+
+										if shops[Type]["shop"] then
+											local Split = splitString(Type,"-")
+											if Split[2] ~= nil then
+												vRP.DirectChest(Split[1],"100",Valuation * 0.05)
+											end
 										end
 									end
 

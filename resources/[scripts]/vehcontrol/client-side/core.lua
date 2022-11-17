@@ -71,26 +71,29 @@ function SetAirManuStateForVeh(Vehicle,Status)
 				ReleaseSoundId(AirSound[Vehicle])
 				AirSound[Vehicle] = nil
 			end
-
+			
 			if Status == 1 then
 				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_03",Vehicle,0,0,0)
+				PlaySoundFromEntity(AirSound[Vehicle],"SIRENS_AIRHORN",Vehicle,0,0,0)
 			elseif Status == 2 then
 				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_03",Vehicle,0,0,0)
+				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_03",Vehicle,0,0,0)
 			elseif Status == 3 then
 				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_FIRETRUCK_QUICK_01",Vehicle,0,0,0)
+				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_03",Vehicle,0,0,0)
 			elseif Status == 4 then
 				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_01",Vehicle,0,0,0)
+				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_FIRETRUCK_QUICK_01",Vehicle,0,0,0)
 			elseif Status == 5 then
 				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_02",Vehicle,0,0,0)
+				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_01",Vehicle,0,0,0)
 			elseif Status == 6 then
 				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_01",Vehicle,0,0,0)
+				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_02",Vehicle,0,0,0)
 			elseif Status == 7 then
+				AirSound[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_01",Vehicle,0,0,0)
+			elseif Status == 8 then
 				AirSound[Vehicle] = GetSoundId()
 				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_02",Vehicle,0,0,0)
 			end

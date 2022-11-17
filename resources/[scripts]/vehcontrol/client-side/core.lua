@@ -64,7 +64,7 @@ function SetLxSirenStateForVeh(Vehicle,Status)
 end
 ---------------------------------------------------------------------
 function SetAirManuStateForVeh(Vehicle,Status)
-	if DoesEntityExist(veVehicleh) and not IsEntityDead(Vehicle) then
+	if DoesEntityExist(Vehicle) and not IsEntityDead(Vehicle) then
 		if Status ~= AirStatus[Vehicle] then
 			if AirSound[Vehicle] ~= nil then
 				StopSound(AirSound[Vehicle])
@@ -212,7 +212,7 @@ CreateThread(function()
 						end
 
 						if LxStatus[Vehicle] < 1 then
-							if IsDisabledControlPressed(0,80) then
+							if IsDisabledControlPressed(1,80) then
 								ActiveManual = true
 							else
 								ActiveManual = false
@@ -221,7 +221,7 @@ CreateThread(function()
 							ActiveManual = false
 						end
 
-						if IsDisabledControlPressed(0,86) then
+						if IsDisabledControlPressed(1,86) then
 							ActiveHorn = true
 						else
 							ActiveHorn = false

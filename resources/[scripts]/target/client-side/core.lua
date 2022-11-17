@@ -210,16 +210,24 @@ local beds = {
 
 RegisterNetEvent("target:animDeitar")
 AddEventHandler("target:animDeitar",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] then
+	if not Previous then
 		local Ped = PlayerPedId()
-		if GetEntityHealth(Ped) > 101 then
-			local objCoords = GetEntityCoords(Selected[1])
-
-			SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + beds[Selected[2]][1],1,0,0,0)
-			SetEntityHeading(Ped,GetEntityHeading(Selected[1]) + beds[Selected[2]][2] - 180.0)
-
-			vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
-		end
+		Previous = GetEntityCoords(Ped)
+		local objCoords = GetEntityCoords(Selected[1])
+		SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + beds[Selected[2]][1],false,false,false,false)
+		vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
+		SetEntityHeading(Ped,GetEntityHeading(Selected[1]) + beds[Selected[2]][2] - 180.0)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:UPBED
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("target:UpBed")
+AddEventHandler("target:UpBed",function()
+	if Previous then
+		local Ped = PlayerPedId()
+		SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
+		Previous = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -274,19 +282,17 @@ RegisterNetEvent("target:animSentar")
 AddEventHandler("target:animSentar",function()
 	if not Previous then
 		local Ped = PlayerPedId()
-		if GetEntityHealth(Ped) > 101 then
-			local objCoords = GetEntityCoords(Selected[1])
-			FreezeEntityPosition(Selected[1],true)
+		local objCoords = GetEntityCoords(Selected[1])
+		FreezeEntityPosition(Selected[1],true)
 
-			local Heading = GetEntityHeading(Selected[1])
-			if chairs[Selected[2]] ~= 0.7 then
-				Heading = GetEntityHeading(Selected[1]) - 180.0
-			end
-
-			TaskStartScenarioAtPosition(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT",objCoords["x"],objCoords["y"],objCoords["z"] + chairs[Selected[2]],Heading,-1,true,true)
-
-			Previous = GetEntityCoords(Ped)
+		local Heading = GetEntityHeading(Selected[1])
+		if chairs[Selected[2]] ~= 0.7 then
+			Heading = GetEntityHeading(Selected[1]) - 180.0
 		end
+
+		TaskStartScenarioAtPosition(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT",objCoords["x"],objCoords["y"],objCoords["z"] + chairs[Selected[2]],Heading,-1,true,true)
+
+		Previous = GetEntityCoords(Ped)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

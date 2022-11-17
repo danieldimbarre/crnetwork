@@ -2649,7 +2649,7 @@
         "UnkFlag5": false
       },
       "PedPropOptions": {
-        "CutHairs": true,
+        "CutHairs": false,
         "HideHairs": false
       },
       "Textures": [
@@ -2730,7 +2730,7 @@
         "UnkFlag5": false
       },
       "PedPropOptions": {
-        "CutHairs": true,
+        "CutHairs": false,
         "HideHairs": false
       },
       "Textures": [
@@ -8244,7 +8244,7 @@
         "UnkFlag5": false
       },
       "PedPropOptions": {
-        "CutHairs": true,
+        "CutHairs": false,
         "HideHairs": false
       },
       "Textures": [
@@ -8325,7 +8325,7 @@
         "UnkFlag5": false
       },
       "PedPropOptions": {
-        "CutHairs": true,
+        "CutHairs": false,
         "HideHairs": false
       },
       "Textures": [

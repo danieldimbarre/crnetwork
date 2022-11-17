@@ -1376,7 +1376,7 @@ local List = {
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
 		["Scape"] = true,
-		["Max"] = 3,
+		["Max"] = 5,
 		["Economy"] = 30
 	},
 	["emptybottle"] = {

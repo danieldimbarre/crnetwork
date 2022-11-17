@@ -13,7 +13,7 @@ local AirStatus = {}
 ---------------------------------------------------------------------
 function TogMuteDfltSrnForVeh(Vehicle,Status)
 	if DoesEntityExist(Vehicle) and not IsEntityDead(Vehicle) then
-		DisableVehicleImpactExplosionActivation(Vehicle,Status)
+		SetVehicleHasMutedSirens(Vehicle,Status)
 	end
 end
 ---------------------------------------------------------------------
@@ -212,7 +212,7 @@ CreateThread(function()
 						end
 
 						if LxStatus[Vehicle] < 1 then
-							if IsDisabledControlPressed(1,80) then
+							if IsDisabledControlPressed(0,80) then
 								ActiveManual = true
 							else
 								ActiveManual = false
@@ -221,7 +221,7 @@ CreateThread(function()
 							ActiveManual = false
 						end
 
-						if IsDisabledControlPressed(1,86) then
+						if IsDisabledControlPressed(0,86) then
 							ActiveHorn = true
 						else
 							ActiveHorn = false

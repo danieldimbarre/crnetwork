@@ -39,17 +39,16 @@ local shops = {
 		["type"] = "Cash",
 		["shop"] = true,
 		["List"] = {
-			["hamburger2"] = 145,
-			["onionrings"] = 90,
-			["guarananatural"] = 95,
-			["orangejuice"] = 120,
-			["tangejuice"] = 120,
-			["grapejuice"] = 120,
-			["strawberryjuice"] = 120,
-			["bananajuice"] = 120,
-			["acerolajuice"] = 120,
-			["passionjuice"] = 120,
-			["mushroom"] = 30
+			["hamburger2"] = 200,
+			["onionrings"] = 145,
+			["guarananatural"] = 150,
+			["orangejuice"] = 175,
+			["tangejuice"] = 175,
+			["grapejuice"] = 175,
+			["strawberryjuice"] = 175,
+			["bananajuice"] = 175,
+			["acerolajuice"] = 175,
+			["passionjuice"] = 175
 		}
 	},
 	["PizzaThis"] = {
@@ -73,13 +72,12 @@ local shops = {
 		["type"] = "Cash",
 		["shop"] = true,
 		["List"] = {
-			["pizzamozzarella"] = 145,
-			["pizzamushroom"] = 145,
-			["pizzabanana"] = 145,
-			["pizzachocolate"] = 145,
-			["mushroomtea"] = 320,
-			["chickenfries"] = 120,
-			["mushroom"] = 30
+			["pizzamozzarella"] = 200,
+			["pizzamushroom"] = 200,
+			["pizzabanana"] = 200,
+			["pizzachocolate"] = 200,
+			["mushroomtea"] = 375,
+			["chickenfries"] = 175
 		}
 	},
 	["UwuCoffee"] = {
@@ -90,7 +88,6 @@ local shops = {
 			["bread"] = 5,
 			["nigirizushi"] = 50,
 			["sushi"] = 50,
-			["cupcake"] = 50,
 			["applelove"] = 50,
 			["milkshake"] = 100,
 			["cappuccino"] = 125,
@@ -103,14 +100,12 @@ local shops = {
 		["type"] = "Cash",
 		["shop"] = true,
 		["List"] = {
-			["nigirizushi"] = 70,
-			["sushi"] = 70,
-			["cupcake"] = 70,
-			["applelove"] = 70,
-			["milkshake"] = 120,
-			["cappuccino"] = 145,
-			["cookies"] = 55,
-			["mushroom"] = 30
+			["nigirizushi"] = 125,
+			["sushi"] = 125,
+			["applelove"] = 125,
+			["milkshake"] = 175,
+			["cappuccino"] = 200,
+			["cookies"] = 110
 		}
 	},
 	["BeanMachine"] = {
@@ -125,9 +120,12 @@ local shops = {
 			["dewars"] = 15,
 			["hennessy"] = 15,
 			["absolut"] = 15,
+			["calzone"] = 125,
+			["cupcake"] = 50,
 			["mushroom"] = 10,
 			["bread"] = 5,
-			["cheese"] = 10
+			["cheese"] = 10,
+			["coffee"] = 5
 		}
 	},
 	["BeanMachine-2"] = {
@@ -135,14 +133,15 @@ local shops = {
 		["type"] = "Cash",
 		["shop"] = true,
 		["List"] = {
-			["coffeemilk"] = 90,
-			["sandwich"] = 35,
-			["tacos"] = 45,
-			["chandon"] = 35,
-			["dewars"] = 35,
-			["hennessy"] = 35,
-			["absolut"] = 35,
-			["mushroom"] = 30
+			["coffeemilk"] = 145,
+			["sandwich"] = 65,
+			["tacos"] = 75,
+			["chandon"] = 65,
+			["dewars"] = 65,
+			["hennessy"] = 65,
+			["absolut"] = 65,
+			["calzone"] = 200,
+			["cupcake"] = 125
 		}
 	},
 	["Identity"] = {
@@ -510,7 +509,7 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["coffee"] = 20
+			["coffee"] = 5
 		}
 	},
 	["sodaMachine"] = {
@@ -549,7 +548,7 @@ local shops = {
 		["List"] = {
 			["hotdog"] = 15,
 			["hamburger"] = 25,
-			["coffee"] = 20,
+			["coffee"] = 5,
 			["cola"] = 15,
 			["soda"] = 15
 		}
@@ -783,7 +782,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 										if shops[Type]["shop"] then
 											local Split = splitString(Type,"-")
 											if Split[2] ~= nil then
-												vRP.DirectChest(Split[1],"100",Valuation * 0.05)
+												vRP.DirectChest(Split[1],"100",(shops[Type]["List"][Item] * Amount) * 0.05)
 											end
 										end
 									end

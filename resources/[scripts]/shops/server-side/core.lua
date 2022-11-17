@@ -31,6 +31,7 @@ local shops = {
 			["bananajuice"] = 100,
 			["acerolajuice"] = 100,
 			["passionjuice"] = 100,
+			["mushroomtea"] = 300,
 			["mushroom"] = 10
 		}
 	},
@@ -76,7 +77,6 @@ local shops = {
 			["pizzamushroom"] = 200,
 			["pizzabanana"] = 200,
 			["pizzachocolate"] = 200,
-			["mushroomtea"] = 375,
 			["chickenfries"] = 175
 		}
 	},
@@ -92,6 +92,7 @@ local shops = {
 			["milkshake"] = 100,
 			["cappuccino"] = 125,
 			["cookies"] = 35,
+			["mushroomtea"] = 300,
 			["mushroom"] = 10
 		}
 	},
@@ -122,6 +123,7 @@ local shops = {
 			["absolut"] = 15,
 			["calzone"] = 125,
 			["cupcake"] = 50,
+			["mushroomtea"] = 300,
 			["mushroom"] = 10,
 			["bread"] = 5,
 			["cheese"] = 10,

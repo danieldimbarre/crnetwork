@@ -448,7 +448,7 @@ local Button_LockCam = 22 -- (spacebar)
 local Button_ThermalVision = 157 -- (1)
 local Button_NightVision = 158 -- (2)
 local Button_Spotlight = 160 -- (3)
-local minHeightAboveGround = 80.0 -- Minimum height above ground to activate Heli Cam (in metres).
+local minHeightAboveGround = 60.0 -- Minimum height above ground to activate Heli Cam (in metres).
 
 local fov = (fov_max + fov_min) * 0.5
 
@@ -860,7 +860,7 @@ CreateThread(function()
 			SetVehicleRadioEnabled(heli,false)
 
 			if IsHeliHighEnough(heli) then
-				if IsControlJustPressed(1,Button_HeliCam) then
+				if IsControlJustPressed(0,Button_HeliCam) then
 					TriggerEvent("hud:Active",false)
 					vehCamera = true
 				end
@@ -890,7 +890,7 @@ CreateThread(function()
 			RenderScriptCams(true,false,0,1,0)
 			local locked_on = nil
 			while vehCamera and not IsEntityDead(lPed) and (GetVehiclePedIsIn(lPed) == heli) and IsHeliHighEnough(heli) do
-				if IsControlJustPressed(1,Button_HeliCam) then
+				if IsControlJustPressed(0,Button_HeliCam) then
 					TriggerEvent("hud:Active",true)
 					vehCamera = false
 					NightVisionToggle = false

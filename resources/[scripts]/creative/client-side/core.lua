@@ -452,6 +452,7 @@ local Spritefov_min = 0.04
 local Spritezoomspeed = 0.01
 local Spritefov = (Spritefov_max + Spritefov_min) * 0.5
 
+local cam = nil
 local entity_detected = nil
 local locked_on = nil
 
@@ -851,7 +852,7 @@ CreateThread(function()
 			Wait(0)
 			local lPed = PlayerPedId()
 			local heli = GetVehiclePedIsIn(lPed)
-			local cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA",true)
+			cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA",true)
 			AttachCamToEntity(cam,heli,0.0,2.0,-1.5,true)
 			SetCamRot(cam,0.0,0.0,GetEntityHeading(heli))
 			SetCamFov(cam,fov)

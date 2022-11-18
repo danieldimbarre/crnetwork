@@ -765,7 +765,7 @@ function ThermalAddVehicle()
     local success
     local rped = nil
     repeat
-    	local distance = #(playerped - pedveh)
+    	local distance = #(playerCoords - pedveh)
     	if (HasEntityClearLosToEntity(playerped,pedveh,17)) and (not IsVehicleSeatFree(pedveh,-1)) then
         	for _,vehBoneListItem in ipairs(vehBoneList) do
         		local getVehBoneIndex = GetEntityBoneIndexByName(pedveh,vehBoneListItem.vehBoneId)

@@ -1057,6 +1057,7 @@ function Creative.UseItem(Slot,Amount)
 					end
 
 					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
+					RemoveWeapons(source)
 				end
 			else
 				if not Ammos[Passport] then
@@ -1188,6 +1189,8 @@ AddEventHandler("inventory:saveTemporary",function(Passport)
 			["WEAPON_PISTOL_AMMO"] = 250
 		}
 	end
+
+	RemoveWeapons(vRP.Source(Passport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:APPLYTEMPORARY
@@ -1198,6 +1201,8 @@ AddEventHandler("inventory:applyTemporary",function(Passport)
 		Ammos[Passport] = Temporary[Passport]["Ammos"]
 		Temporary[Passport] = nil
 	end
+
+	RemoveWeapons(vRP.Source(Passport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CANCEL
@@ -1294,7 +1299,9 @@ function Creative.verifyWeapon(Item,Ammo)
 			local Hash = itemAmmo(Item)
 
 			if Hash and Ammos[Passport][Hash] then
-				Ammos[Passport][Hash] = parseInt(Ammo)
+				if Ammo and Ammo > 0 then
+					Ammos[Passport][Hash] = parseInt(Ammo)
+				end
 
 				if Attachs[Passport][Item] then
 					for Name,_ in pairs(Attachs[Passport][Item]) do
@@ -1311,41 +1318,14 @@ function Creative.verifyWeapon(Item,Ammo)
 
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
+
+			RemoveWeapons(source)
 
 			return false
 		end
 	end
 
 	return true
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- EXISTWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.existWeapon(Item)
-	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport and Ammos[Passport] and Attachs[Passport] then
-		if not vRP.ConsultItem(Passport,Item,1) then
-			local Hash = itemAmmo(Item)
-
-			if Hash and Ammos[Passport][Hash] then
-				if Attachs[Passport][Item] then
-					for Name,_ in pairs(Attachs[Passport][Item]) do
-						vRP.GenerateItem(Passport,Name,1)
-					end
-
-					Attachs[Passport][Item] = nil
-				end
-
-				if Ammos[Passport][Hash] > 0 then
-					vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
-					Ammos[Passport][Hash] = nil
-				end
-
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-			end
-		end
-	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DROPWEAPONS
@@ -1380,13 +1360,12 @@ function Creative.preventWeapon(Item,Ammo)
 	if Passport and Ammos[Passport] then
 		local Hash = itemAmmo(Item)
 
-		if Hash ~= nil then
-			if Ammos[Passport][Hash] then
-				if Ammo > 0 then
-					Ammos[Passport][Hash] = Ammo
-				else
-					Ammos[Passport][Hash] = nil
-				end
+		if Hash and Ammos[Passport][Hash] then
+			if Ammo > 0 then
+				Ammos[Passport][Hash] = Ammo
+			else
+				Ammos[Passport][Hash] = nil
+				RemoveWeapons(source)
 			end
 		end
 	end
@@ -1402,6 +1381,8 @@ AddEventHandler("inventory:CleanWeapons",function(Passport)
 	if Attachs[Passport] then
 		Attachs[Passport] = {}
 	end
+
+	RemoveWeapons(vRP.Source(Passport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VERIFYOBJECTS
@@ -2343,4 +2324,21 @@ AddEventHandler("Connect",function(Passport,source)
 			end
 		end
 	end
+
+	RemoveWeapons(source)
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REMOVEWEAPONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function RemoveWeapons(source)
+	if not source then
+		return
+	end
+
+	local Ped = GetPlayerPed(source)
+	local Weapon = GetSelectedPedWeapon(Ped)
+
+	RemoveWeaponFromPed(Ped,Weapon)
+	RemoveAllPedWeapons(Ped,true)
+	SetPedAmmo(Ped,Weapon,0)
+end

@@ -220,7 +220,7 @@ AddEventHandler("inventory:verifyWeapon",function(Item)
 		end
 	else
 		if Weapon == "" then
-			vSERVER.existWeapon(Name)
+			vSERVER.verifyWeapon(Name)
 		end
 	end
 end)

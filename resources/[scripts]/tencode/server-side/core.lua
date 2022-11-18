@@ -57,7 +57,7 @@ function Creative.sendCode(code)
 		for Passports,Sources in pairs(Service) do
 			async(function()
 				if code ~= 13 then
-					vRPC.playSound(Sources,"Event_Start_Text","GTAO_FM_Events_Soundset")
+					vRPC.PlaySound(Sources,"Event_Start_Text","GTAO_FM_Events_Soundset")
 				end
 
 				TriggerClientEvent("NotifyPush",Sources,{ code = code, title = codes[parseInt(code)]["text"], x = Coords["x"], y = Coords["y"], z = Coords["z"], name = Identity["name"].." "..Identity["name2"], time = "Recebido às "..os.date("%H:%M"), blipColor = codes[parseInt(code)]["blip"] })

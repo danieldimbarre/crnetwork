@@ -234,7 +234,7 @@ AddEventHandler("player:carryPlayer",function()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			if playerCarry[Passport] then
 				TriggerClientEvent("player:playerCarry",playerCarry[Passport],source)
 				TriggerClientEvent("player:Commands",playerCarry[Passport],false)

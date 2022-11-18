@@ -702,7 +702,7 @@ AddEventHandler("garages:LockVehicle",function(source,Network)
 		SetVehicleDoorsLocked(Network,1)
 	end
 
-	if not vRPC.inVehicle(source) then
+	if not vRP.InsideVehicle(source) then
 		vRPC.playAnim(source,true,{"anim@mp_player_intmenu@key_fob@","fob_click"},false)
 		Wait(350)
 		vRPC.stopAnim(source)

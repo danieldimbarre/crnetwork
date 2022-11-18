@@ -696,8 +696,8 @@ CreateThread( function()
 			if hour <= 9 then hour = "0"..hour end
 			if minute <= 9 then	minute = "0"..minute end
 			if second <= 9 then second = "0"..second end
-			if day <= 9 then day = "0"..day end
-			if month <= 9 then month = "0"..month end
+			-- if day <= 9 then day = "0"..day end
+			-- if month <= 9 then month = "0"..month end
             
             -- DrawDisplayText(0.21,0.34,month.."/"..day.."/"..(year - 2000))
             DrawDisplayText(0.21,0.36,hour..":"..minute..":"..second)

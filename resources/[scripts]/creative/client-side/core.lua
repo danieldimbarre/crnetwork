@@ -456,6 +456,10 @@ local cam = nil
 local entity_detected = nil
 local locked_on = nil
 
+local ThermalToggle = false
+local NightVisionToggle = false
+local SpotlightToggle = false
+
 local polmav_hash = {
 	[`supervolito`] = true,
 	[`maverick2`] = true,
@@ -632,48 +636,47 @@ function DrawDisplayText(x2,y2,text2)
     DrawText((x2 - 0.2), (y2 - 0.2) + 0.005)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADCAMERA
+-- THREADHELICAMINFORMATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread( function()
-    while true do 
-    	Wait(0)
-    	if vehCamera then
+function HelicamInformations()
+	CreateThread(function()
+		while vehCamera do 
 			local Ped = PlayerPedId()
-            local x,y,z = table.unpack(GetEntityCoords(Ped,true))
-            local NorthCoord = tostring(y * 10000000)
-            local WestCoord = tostring(x * 10000000)
-            DrawDisplayText(0.21,0.22,"/.:!| DEPARTAMENTO DA POLÍCIA MILITAR ENERGY ")
-            DrawDisplayText(0.69,0.22, math.ceil(GetEntityHeading(GetVehiclePedIsIn(Ped))).."°T")
-            DrawDisplayText(0.697,0.24,"V")
-            DrawDisplayText(0.21,0.24,string.sub(NorthCoord,1,3).."°"..string.sub(NorthCoord,4,5).."'"..string.sub(NorthCoord,6,7).."."..string.sub(NorthCoord,8,9))
-            DrawDisplayText(0.255,0.24,"N")
-            DrawDisplayText(0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
-            DrawDisplayText(0.315,0.24,"W")
-            DrawDisplayText(0.21,0.26,"SPD    "..math.ceil(3.6 * (GetEntitySpeed(Ped))))
-            DrawDisplayText(0.25,0.26,"KTS")
-            DrawDisplayText(0.27,0.26,"HDG")
-            DrawDisplayText(0.30,0.26,math.ceil(GetGameplayCamRelativeHeading()))
-            DrawDisplayText(0.315,0.26,"°T")
-            DrawDisplayText(0.21,0.28,"ALT    "..math.ceil(GetEntityHeightAboveGround(Ped) * 3.28084))
-            DrawDisplayText(0.25,0.28,"FT")
-            --N W
-            --SPD
-            DrawDisplayText(1.0 - 0.135 + 0.25,0.26,"MPG")
-            DrawDisplayText(1.0 - 0.135 + 0.27,0.26,"HDG")
-            --Heading
-            DrawDisplayText(1.0 - 0.135 + 0.315,0.26,"°T")
-            DrawDisplayText(1.0 - 0.135 + 0.21,0.28,"ELV    "..math.ceil(GetGameplayCamRelativePitch()))
-            DrawDisplayText(1.0 - 0.135 + 0.25,0.28,"FT")
+			local x,y,z = table.unpack(GetEntityCoords(Ped,true))
+			local NorthCoord = tostring(y * 10000000)
+			local WestCoord = tostring(x * 10000000)
+			DrawDisplayText(0.21,0.22,"/.:!| DEPARTAMENTO DA POLÍCIA MILITAR ENERGY ")
+			DrawDisplayText(0.69,0.22, math.ceil(GetEntityHeading(GetVehiclePedIsIn(Ped))).."°T")
+			DrawDisplayText(0.697,0.24,"V")
+			DrawDisplayText(0.21,0.24,string.sub(NorthCoord,1,3).."°"..string.sub(NorthCoord,4,5).."'"..string.sub(NorthCoord,6,7).."."..string.sub(NorthCoord,8,9))
+			DrawDisplayText(0.255,0.24,"N")
+			DrawDisplayText(0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
+			DrawDisplayText(0.315,0.24,"W")
+			DrawDisplayText(0.21,0.26,"SPD    "..math.ceil(3.6 * (GetEntitySpeed(Ped))))
+			DrawDisplayText(0.25,0.26,"KTS")
+			DrawDisplayText(0.27,0.26,"HDG")
+			DrawDisplayText(0.30,0.26,math.ceil(GetGameplayCamRelativeHeading()))
+			DrawDisplayText(0.315,0.26,"°T")
+			DrawDisplayText(0.21,0.28,"ALT    "..math.ceil(GetEntityHeightAboveGround(Ped) * 3.28084))
+			DrawDisplayText(0.25,0.28,"FT")
+			--N W
+			--SPD
+			DrawDisplayText(1.0 - 0.135 + 0.25,0.26,"MPG")
+			DrawDisplayText(1.0 - 0.135 + 0.27,0.26,"HDG")
+			--Heading
+			DrawDisplayText(1.0 - 0.135 + 0.315,0.26,"°T")
+			DrawDisplayText(1.0 - 0.135 + 0.21,0.28,"ELV    "..math.ceil(GetGameplayCamRelativePitch()))
+			DrawDisplayText(1.0 - 0.135 + 0.25,0.28,"FT")
 
-            DrawDisplayText(0.22,1.0 - 0.135 + 0.18,"HDIR")
-            DrawDisplayText(0.22,1.0 - 0.135 + 0.20,"M WH DDE")
-            DrawDisplayText(0.22,1.0 - 0.135 + 0.22,"FOC MAN")
-            DrawDisplayText(0.22,1.0 - 0.135 + 0.24,"EXP MAN")
-            DrawDisplayText(0.22,1.0 - 0.135 + 0.26,"W")
+			DrawDisplayText(0.22,1.0 - 0.135 + 0.18,"HDIR")
+			DrawDisplayText(0.22,1.0 - 0.135 + 0.20,"M WH DDE")
+			DrawDisplayText(0.22,1.0 - 0.135 + 0.22,"FOC MAN")
+			DrawDisplayText(0.22,1.0 - 0.135 + 0.24,"EXP MAN")
+			DrawDisplayText(0.22,1.0 - 0.135 + 0.26,"W")
 
-            local TextureDict = "helicopterhud"
-            local TextureName = "hud_line"
-            if not HasStreamedTextureDictLoaded(TextureDict) then
+			local TextureDict = "helicopterhud"
+			local TextureName = "hud_line"
+			if not HasStreamedTextureDictLoaded(TextureDict) then
 				RequestStreamedTextureDict(TextureDict, true)
 				while not HasStreamedTextureDictLoaded(TextureDict) do
 					Wait(0)
@@ -683,54 +686,52 @@ CreateThread( function()
 
 			DrawDisplayText(0.32,1.0 - 0.135 + 0.26,"N")
 
-            DrawDisplayText(0.37,1.0 - 0.135 + 0.26,"FT")
+			DrawDisplayText(0.37,1.0 - 0.135 + 0.26,"FT")
 
-            DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.18,"GEOPOINT")
+			DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.18,"GEOPOINT")
 			DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.20,"INS NAV")
-            DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.24,"TRK COR")
-            DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.28,"SLAVE READY")
+			DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.24,"TRK COR")
+			DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.28,"SLAVE READY")
 
-            hour = GetClockHours()
-			minute = GetClockMinutes()
-			second = GetClockSeconds()
 			-- day = GetClockDayOfMonth()
 			-- month = GetClockMonth()
 			-- year = GetClockYear()
 		
-			if hour <= 9 then hour = "0"..hour end
-			if minute <= 9 then	minute = "0"..minute end
-			if second <= 9 then second = "0"..second end
 			-- if day <= 9 then day = "0"..day end
 			-- if month <= 9 then month = "0"..month end
-            
-            -- DrawDisplayText(0.21,0.34,month.."/"..day.."/"..(year - 2000))
-            DrawDisplayText(0.21,0.36,hour..":"..minute..":"..second)
-            DrawDisplayText(0.245,0.36,"Z")
+			
+			-- DrawDisplayText(0.21,0.34,month.."/"..day.."/"..(year - 2000))
+			DrawDisplayText(0.21,0.36,GlobalState["Hours"]..":"..GlobalState["Minutes"])
+			DrawDisplayText(0.245,0.36,"Z")
 
-            local TextureDict = "helicopterhud"
-            local TextureName = "hud_target"
-            if not HasStreamedTextureDictLoaded(TextureDict) then
-				RequestStreamedTextureDict(TextureDict, true)
+			local TextureDict = "helicopterhud"
+			local TextureName = "hud_target"
+			if not HasStreamedTextureDictLoaded(TextureDict) then
+				RequestStreamedTextureDict(TextureDict,true)
 				while not HasStreamedTextureDictLoaded(TextureDict) do
 					Wait(0)
 				end
 			end
-            --DrawSprite(textureDict,textureName,X,Y,w,h,heading,r,g,b,a)
+			--DrawSprite(textureDict,textureName,X,Y,w,h,heading,r,g,b,a)
 			DrawSprite(TextureDict,TextureName,0.5,0.5,0.05,0.1,0.0,255,255,255,100)
 
 			local TextureDict = "cross"--helicopterhud cross srange_gen
-            local TextureName = "circle_checkpoints_cross"--hud_target circle_checkpoints_cross hit_cross
-            if not HasStreamedTextureDictLoaded(TextureDict) then
+			local TextureName = "circle_checkpoints_cross"--hud_target circle_checkpoints_cross hit_cross
+			if not HasStreamedTextureDictLoaded(TextureDict) then
 				RequestStreamedTextureDict(TextureDict, true)
 				while not HasStreamedTextureDictLoaded(TextureDict) do
 					Wait(0)
 				end
 			end
 			DrawSprite(TextureDict,TextureName,0.5,0.5,0.015,0.025,0.0,255,255,255,255)
-        end
-    end
-end)
 
+			Wait(4)
+		end
+	end)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THERMALADD
+-----------------------------------------------------------------------------------------------------------------------------------------
 function ThermalAdd()
     local playerped = PlayerPedId()
     local playerCoords = GetEntityCoords(playerped)
@@ -761,7 +762,9 @@ function ThermalAdd()
     until not success
     EndFindPed(handle)
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THERMALADDVEHICLE
+-----------------------------------------------------------------------------------------------------------------------------------------
 function ThermalAddVehicle()
 	local playerped = PlayerPedId()
     local playerCoords = GetEntityCoords(playerped)
@@ -795,11 +798,9 @@ function SpotlightAdd(cam)
 	DrawSpotLight(coords,forward_vector,255,255,255,2000.0,90.0,0.0,5.0,1.0)
 	--DrawSpotLight(posX,posY,posZ,dirX,dirY,dirZ,R,G,B,distance,brightness, hardness, radius, falloff)
 end
-
-local ThermalToggle = false
-local NightVisionToggle = false
-local SpotlightToggle = false
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DRAWHELITEXT3DS
+-----------------------------------------------------------------------------------------------------------------------------------------
 function DrawHeliText3Ds(x,y,z, text, scale)
     local onScreen,_x,_y = World3dToScreen2d(x,y,z)
     local px,py,pz = table.unpack(GetGameplayCamCoords())
@@ -815,50 +816,16 @@ function DrawHeliText3Ds(x,y,z, text, scale)
     local factor = (string.len(text))
     DrawRect(_x,_y + 0.02,factor / 84,scale / 12,41,11,41,100)
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADHELICAM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Helicam()
+	CreateThread(function()
+		while vehCamera do
+			local Ped = PlayerPedId()
+			local heli = GetVehiclePedIsIn(Ped)
 
-CreateThread(function()
-	while true do
-		Wait(0)
-
-		-- if ThermalToggle then
-        --   	ThermalAdd()
-        --   	ThermalAddVehicle() 
-        -- end
-
-        if NightVisionToggle then
-        	SetNightvision(true)
-        end
-	end
-end)
-
-CreateThread(function()
-	RegisterCommand('helicam',function() 
-		locked_on = nil
-       	ThermalToggle = false
-		NightVisionToggle = false
-		SpotlightToggle = false
-		ClearTimecycleModifier()
-		fov = (fov_max + fov_min) * 0.5
-		Spritefov = (Spritefov_max + Spritefov_min) * 0.5
-		RenderScriptCams(false,false,0,1,0)
-		DestroyCam(cam,false)
-		vehCamera = false
-    end)
-
-	while true do
-		Wait(0)
-
-		if vehCamera then
-			Wait(0)
-			local lPed = PlayerPedId()
-			local heli = GetVehiclePedIsIn(lPed)
-			cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA",true)
-			AttachCamToEntity(cam,heli,0.0,2.0,-1.5,true)
-			SetCamRot(cam,0.0,0.0,GetEntityHeading(heli))
-			SetCamFov(cam,fov)
-			RenderScriptCams(true,false,0,1,0)
-			locked_on = nil
-			while vehCamera and not IsEntityDead(lPed) and (GetVehiclePedIsIn(lPed) == heli) and IsHeliHighEnough(heli) do
+			if not IsEntityDead(Ped) and (GetVehiclePedIsIn(Ped) == heli) and IsHeliHighEnough(heli) then
 				if locked_on then
 					local coords = GetCamCoord(cam)
 					local forward_vector = RotAnglesToVec(GetCamRot(cam,2))
@@ -869,7 +836,7 @@ CreateThread(function()
 					DrawDisplayText(1.0 - 0.135 + 0.21,0.24,string.sub(NorthCoord,1,3).."°"..string.sub(NorthCoord,4,5).."'"..string.sub(NorthCoord,6,7).."."..string.sub(NorthCoord,8,9))
 					DrawDisplayText(1.0 - 0.135 + 0.255,0.24,"N")
 					DrawDisplayText(1.0 - 0.135 + 0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
-					DrawDisplayText(1.0 - 0.135 + 0.315,0.24,"W")
+					DrawDisplayText(1.0 - 0.135 + 0.315,0.24,"L")
 					DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    "..math.ceil(GetEntitySpeed(locked_on) * 3.6))
 					DrawDisplayText(1.0 - 0.135 + 0.30,0.26,math.ceil(GetEntityHeading(locked_on)))
 
@@ -908,7 +875,7 @@ CreateThread(function()
 					local zoomvalue = (1.0 / (fov_max - fov_min)) * (fov - fov_min)
 					CheckInputRotation(cam,zoomvalue)
 					entity_detected = GetEntityInView(cam)
- 					if SpotlightToggle then
+					if SpotlightToggle then
 						SpotlightAdd(cam)
 					end
 
@@ -921,39 +888,48 @@ CreateThread(function()
 						DrawDisplayText(1.0 - 0.135 + 0.30,0.28,"---")
 					end
 				end
+
 				HandleZoom(cam)
 				HandleHUDZoom(cam)
 				HideHUDThisFrame()
-				Wait(0)
+			else
+				vehCamera = false
+				ThermalToggle = false
+				NightVisionToggle = false
+				SpotlightToggle = false
+				SetNightvision(false)
+				StopScreenEffect("NG_blackout")
+				ClearTimecycleModifier()
+				fov = (fov_max + fov_min) * 0.5
+				Spritefov = (Spritefov_max + Spritefov_min) * 0.5
+				RenderScriptCams(false,false,0,1,0)
+				DestroyCam(cam,false)
 			end
 
-			ThermalToggle = false
-			NightVisionToggle = false
-			SpotlightToggle = false
-			vehCamera = false
-			ClearTimecycleModifier()
-			fov = (fov_max + fov_min) * 0.5
-			RenderScriptCams(false,false,0,1,0)
-			DestroyCam(cam,false)
+			Wait(4)
 		end
-	end
-end)
-
+	end)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ISPLAYERINPOLMAV
+-----------------------------------------------------------------------------------------------------------------------------------------
 function IsPlayerInPolmav()
-	if LocalPlayer["state"]["Police"] or LocalPlayer["state"]["Paramedic"] then
-		local vehicle = GetVehiclePedIsIn(PlayerPedId())
-		local model = GetEntityModel(vehicle)
-		if polmav_hash[model] then
-			return true
-		end
+	local vehicle = GetVehiclePedIsIn(PlayerPedId())
+	local model = GetEntityModel(vehicle)
+	if polmav_hash[model] then
+		return true
 	end
 	return false
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ISHELIHIGHENOUGH
+-----------------------------------------------------------------------------------------------------------------------------------------
 function IsHeliHighEnough(heli)
 	return GetEntityHeightAboveGround(heli) > minHeightAboveGround
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HIDEHUDTHISFRAME
+-----------------------------------------------------------------------------------------------------------------------------------------
 function HideHUDThisFrame()
 	HideHelpTextThisFrame()
 	HideHudAndRadarThisFrame()
@@ -968,7 +944,9 @@ function HideHUDThisFrame()
 	HideHudComponentThisFrame(15)
 	HideHudComponentThisFrame(18)
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECKINPUTROTATION
+-----------------------------------------------------------------------------------------------------------------------------------------
 function CheckInputRotation(cam,zoomvalue)
 	local rightAxisX = GetDisabledControlNormal(0,220)
 	local rightAxisY = GetDisabledControlNormal(0,221)
@@ -979,7 +957,9 @@ function CheckInputRotation(cam,zoomvalue)
 		SetCamRot(cam,new_x,0.0,new_z,2)
 	end
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HANDLEZOOM
+-----------------------------------------------------------------------------------------------------------------------------------------
 function HandleZoom(cam)
 	if IsControlJustPressed(1,241) then
 		fov = math.max(fov - zoomspeed,fov_min)
@@ -994,7 +974,7 @@ function HandleZoom(cam)
 		fov = current_fov
 	end
 
-	SetCamFov(cam, current_fov + (fov - current_fov) * 0.05)
+	SetCamFov(cam,current_fov + (fov - current_fov) * 0.05)
 	DrawDisplayText(0.35,1.0 - 0.135 + 0.26,math.ceil(current_fov))
 	if current_fov < 40.0 then
 		boneList = {
@@ -1061,21 +1041,23 @@ function HandleZoom(cam)
 		}
 	end
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HANDLEHUDZOOM
+-----------------------------------------------------------------------------------------------------------------------------------------
 function HandleHUDZoom(cam)
-	if IsControlJustPressed(0,241) then
+	if IsControlJustPressed(1,241) then
 		Spritefov = math.min(Spritefov + Spritezoomspeed,Spritefov_max)
 	end
-	if IsControlJustPressed(0,242) then
-		
+
+	if IsControlJustPressed(1,242) then
 		Spritefov = math.max(Spritefov - Spritezoomspeed,Spritefov_min)
 	end
 
 	local Spritecurrent_fov = GetCamFov(cam)
-
 	if math.abs(Spritefov - Spritecurrent_fov) < 0.01 then
 		Spritefov = Spritecurrent_fov
 	end
+
 	TextureDictArrow = "mpinventory"
 	TextureNameArrow = "mp_arrow"
 	if not HasStreamedTextureDictLoaded(TextureDictArrow) then
@@ -1086,7 +1068,9 @@ function HandleHUDZoom(cam)
 	end
 	DrawSprite(TextureDictArrow,TextureNameArrow,Spritefov,0.934,0.013,0.02,0.0,255,255,255,255)
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GETENTITYINVIEW
+-----------------------------------------------------------------------------------------------------------------------------------------
 function GetEntityInView(cam)
 	local coords = GetCamCoord(cam)
 	local forward_vector = RotAnglesToVec(GetCamRot(cam,2))
@@ -1117,25 +1101,31 @@ function GetEntityInView(cam)
 		return nil
 	end
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ROTANGLESTOVEC
+-----------------------------------------------------------------------------------------------------------------------------------------
 function RotAnglesToVec(rot)
 	local z = math.rad(rot.z)
 	local x = math.rad(rot.x)
 	local num = math.abs(math.cos(x))
 	return vector3(-math.sin(z) * num,math.cos(z) * num,math.sin(x))
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLATETEXT
+-----------------------------------------------------------------------------------------------------------------------------------------
 function PlateText(vehicle)
 	DrawDisplayText(1.0 - 0.135 + 0.21,0.30,"PLACA: "..GetVehicleNumberPlateText(vehicle))
 end
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RENDERVEHICLEINFO
+-----------------------------------------------------------------------------------------------------------------------------------------
 function RenderVehicleInfo(vehicle)
 	DrawDisplayText(1.0 - 0.135 + 0.30,0.26,math.ceil(GetEntityHeading(vehicle)))
 	--numberplate doesnt work so has to use the light bone and code out the exceptions
 	local HasPlateLight = GetEntityBoneIndexByName(vehicle,"platelight") 
 	
 	--Debug for Plate on Vehicle Pointed at
-	--DrawDisplayText(1.0-0.135+0.21, 0.32,  "~b~Plate: ~r~" .. GetVehicleNumberPlateText(vehicle).."\n~b~Plate Light ID Number: ~r~".. HasPlateLight)
+	--DrawDisplayText(1.0 - 0.135 + 0.21,0.32,"~b~Plate: ~r~" .. GetVehicleNumberPlateText(vehicle).."\n~b~Plate Light ID Number: ~r~"..HasPlateLight)
 	
 	--HAVE A PLATE BUT RETURN PLATELIGHT AS -1 SO SHOULD DISPLAY PLATE
 	if IsVehicleModel(vehicle,GetHashKey("Brioso")) then PlateText(vehicle)
@@ -1233,12 +1223,28 @@ function RenderVehicleInfo(vehicle)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- HELICAMFIX
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand('helicamfix',function() 
+	locked_on = nil
+	ThermalToggle = false
+	NightVisionToggle = false
+	SpotlightToggle = false
+	ClearTimecycleModifier()
+	fov = (fov_max + fov_min) * 0.5
+	Spritefov = (Spritefov_max + Spritefov_min) * 0.5
+	RenderScriptCams(false,false,0,1,0)
+	DestroyCam(cam,false)
+	vehCamera = false
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLEHELICAM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleHelicam",function()
-	if not IsPauseMenuActive() then
+	if not IsPauseMenuActive() and (LocalPlayer["state"]["Police"] or LocalPlayer["state"]["Paramedic"]) then
 		local Ped = PlayerPedId()
-		if IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+		local Veh = GetVehiclePedIsIn(Ped)
+		if IsPlayerInPolmav() and IsHeliHighEnough(Veh) then
 			if vehCamera then
 				TriggerEvent("hud:Active",true)
 				vehCamera = false
@@ -1256,6 +1262,13 @@ RegisterCommand("toggleHelicam",function()
 			else
 				TriggerEvent("hud:Active",false)
 				vehCamera = true
+
+				cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA",true)
+				AttachCamToEntity(cam,Veh,0.0,2.0,-1.5,true)
+				SetCamRot(cam,0.0,0.0,GetEntityHeading(Veh))
+				SetCamFov(cam,fov)
+				RenderScriptCams(true,false,0,1,0)
+				locked_on = nil
 			end
 		end
 	end
@@ -1264,9 +1277,10 @@ end)
 -- TOGGLETHERMAL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleThermal",function()
-	if not IsPauseMenuActive() then
+	if not IsPauseMenuActive() and LocalPlayer["state"]["Police"] then
 		local Ped = PlayerPedId()
-		if vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+		local Veh = GetVehiclePedIsIn(Ped)
+		if vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(Veh) then
 			if ThermalToggle then
 				StopScreenEffect("NG_blackout")
 				ClearTimecycleModifier()
@@ -1288,9 +1302,10 @@ end)
 -- TOGGLENIGHTVISION
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleNightvision",function()
-	if not IsPauseMenuActive() then
+	if not IsPauseMenuActive() and LocalPlayer["state"]["Police"] then
 		local Ped = PlayerPedId()
-		if vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+		local Veh = GetVehiclePedIsIn(Ped)
+		if vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(Veh) then
 			if NightVisionToggle then
 				SetNightvision(false)
 			else
@@ -1311,9 +1326,10 @@ end)
 -- TOGGLESPOTLIGHT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleSpotlight",function()
-	if not IsPauseMenuActive() then
+	if not IsPauseMenuActive() and (LocalPlayer["state"]["Police"] or LocalPlayer["state"]["Paramedic"]) then
 		local Ped = PlayerPedId()
-		if vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+		local Veh = GetVehiclePedIsIn(Ped)
+		if vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(Veh) then
 			if SpotlightToggle then
 
 			else
@@ -1333,10 +1349,10 @@ end)
 -- TOGGLEHELICAMLOCK
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleHelicamLock",function()
-	if not IsPauseMenuActive() then
+	if not IsPauseMenuActive() and LocalPlayer["state"]["Police"] then
 		local Ped = PlayerPedId()
 		local Veh = GetVehiclePedIsIn(Ped)
-		if vehCamera and entity_detected and IsPlayerInPolmav() and IsHeliHighEnough(Veh) and LocalPlayer["state"]["Police"] then
+		if vehCamera and entity_detected and IsPlayerInPolmav() and IsHeliHighEnough(Veh) then
 			if DoesEntityExist(entity_detected) then
 				if locked_on then
 					locked_on = nil
@@ -1358,6 +1374,18 @@ RegisterCommand("toggleHelicamLock",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- TOGGLERAPPEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("toggleRappel",function()
+	if not IsPauseMenuActive() and LocalPlayer["state"]["Police"] then
+		local Ped = PlayerPedId()
+		local Veh = GetVehiclePedIsIn(Ped)
+		if not vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(Veh) and (GetPedInVehicleSeat(Veh,1) == Ped or GetPedInVehicleSeat(Veh,2) == Ped) then
+			TaskRappelFromHeli(Ped,1)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYMAPPING
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterKeyMapping("toggleHelicam","Ativar/Desativar câmera do helicóptero.","keyboard","9")
@@ -1365,6 +1393,7 @@ RegisterKeyMapping("toggleThermal","Ativar/Desativar câmera termal.","keyboard"
 RegisterKeyMapping("toggleNightvision","Ativar/Desativar câmera de visão noturna.","keyboard","2")
 RegisterKeyMapping("toggleSpotlight","Ativar/Desativar lanterna.","keyboard","3")
 RegisterKeyMapping("toggleHelicamLock","Travar/Destravar câmera em veículos.","keyboard","SPACE")
+RegisterKeyMapping("toggleRappel","Acionar rapel no helicóptero.","keyboard","X")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ISLAND
 -----------------------------------------------------------------------------------------------------------------------------------------

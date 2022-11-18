@@ -825,6 +825,7 @@ function Helicam()
 		while vehCamera do
 			local Ped = PlayerPedId()
 			local heli = GetVehiclePedIsIn(Ped)
+			SetVehicleRadioEnabled(heli,false)
 
 			if not IsEntityDead(Ped) and (GetVehiclePedIsIn(Ped) == heli) and IsHeliHighEnough(heli) then
 				if locked_on then
@@ -1280,9 +1281,6 @@ RegisterCommand("toggleThermal",function()
 				SetNightvision(false)
 
 				SpotlightToggle = false
-				
-				ThermalAdd()
-				ThermalAddVehicle()
 			end
 
 			ThermalToggle = not ThermalToggle

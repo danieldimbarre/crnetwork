@@ -841,6 +841,7 @@ CreateThread(function()
 			local heli = GetVehiclePedIsIn(lPed)
 			if IsHeliHighEnough(heli) then
 				if IsControlJustPressed(1,Button_HeliCam) then
+					TriggerEvent("hud:Active",false)
 					vehCamera = true
 				end
 			else
@@ -870,6 +871,7 @@ CreateThread(function()
 			local locked_on = nil
 			while vehCamera and not IsEntityDead(lPed) and (GetVehiclePedIsIn(lPed) == heli) and IsHeliHighEnough(heli) do
 				if IsControlJustPressed(1,Button_HeliCam) then
+					TriggerEvent("hud:Active",true)
 					vehCamera = false
 					NightVisionToggle = false
 				end
@@ -979,9 +981,12 @@ CreateThread(function()
 end)
 
 function IsPlayerInPolmav()
-	local vehicle = GetVehiclePedIsIn(PlayerPedId())
-	if polmav_hash[vehicle] then
-		return true
+	if LocalPlayer["state"]["Police"] or LocalPlayer["state"]["Paramedic"] then
+		local vehicle = GetVehiclePedIsIn(PlayerPedId())
+		local model = GetEntityModel(vehicle)
+		if polmav_hash[model] then
+			return true
+		end
 	end
 	return false
 end

@@ -888,7 +888,7 @@ function Helicam()
 					end
 				end
 
-				if toggleThermal then
+				if ThermalToggle then
 					ThermalAdd()
 					ThermalAddVehicle()
 				end

@@ -1335,7 +1335,8 @@ end)
 RegisterCommand("toggleHelicamLock",function()
 	if not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
-		if vehCamera and entity_detected and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+		local Veh = GetVehiclePedIsIn(Ped)
+		if vehCamera and entity_detected and IsPlayerInPolmav() and IsHeliHighEnough(Veh) and LocalPlayer["state"]["Police"] then
 			if DoesEntityExist(entity_detected) then
 				if locked_on then
 					locked_on = nil
@@ -1345,7 +1346,7 @@ RegisterCommand("toggleHelicamLock",function()
 					cam = cam
 					DestroyCam(old_cam,false)
 					cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA",true)
-					AttachCamToEntity(cam,heli,0.0,0.0,-1.5,true)
+					AttachCamToEntity(cam,Veh,0.0,0.0,-1.5,true)
 					SetCamRot(cam,rot,2)
 					SetCamFov(cam,fov)
 					RenderScriptCams(true,false,0,1,0)

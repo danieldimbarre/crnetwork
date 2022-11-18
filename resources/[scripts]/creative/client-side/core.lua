@@ -461,9 +461,9 @@ local Spritezoomspeed = 0.01
 local Spritefov = (Spritefov_max + Spritefov_min) * 0.5
 
 local polmav_hash = {
-	[GetHashKey("supervolito")] = true,
-	[GetHashKey("maverick2")] = true,
-	[GetHashKey("B412")] = true
+	[`supervolito`] = true,
+	[`maverick2`] = true,
+	[`B412`] = true
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- COMPASS

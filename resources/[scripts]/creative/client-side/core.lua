@@ -891,7 +891,6 @@ function Helicam()
 
 				HandleZoom(cam)
 				HandleHUDZoom(cam)
-				HideHUDThisFrame()
 			else
 				vehCamera = false
 				ThermalToggle = false
@@ -926,23 +925,6 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function IsHeliHighEnough(heli)
 	return GetEntityHeightAboveGround(heli) > minHeightAboveGround
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- HIDEHUDTHISFRAME
------------------------------------------------------------------------------------------------------------------------------------------
-function HideHUDThisFrame()
-	HideHelpTextThisFrame()
-	HideHudAndRadarThisFrame()
-	HideHudComponentThisFrame(19)
-	HideHudComponentThisFrame(1)
-	HideHudComponentThisFrame(2)
-	HideHudComponentThisFrame(3)
-	HideHudComponentThisFrame(4)
-	HideHudComponentThisFrame(13)
-	HideHudComponentThisFrame(11)
-	HideHudComponentThisFrame(12)
-	HideHudComponentThisFrame(15)
-	HideHudComponentThisFrame(18)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKINPUTROTATION

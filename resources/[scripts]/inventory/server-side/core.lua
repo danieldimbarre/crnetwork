@@ -1108,8 +1108,8 @@ function Creative.UseItem(Slot,Amount)
 					Ammos[Passport][Item] = parseInt(Ammo) + Amount
 
 					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),Amount,itemName(Full) })
-					vCLIENT.rechargeWeapon(source,Hash,Ammos[Passport][Item])
 					TriggerClientEvent("inventory:Update",source,"Backpack")
+					vCLIENT.rechargeWeapon(source,Hash,Amount)
 				end
 			end
 		elseif itemType(Full) == "Throwing" then
@@ -1293,25 +1293,23 @@ function Creative.verifyWeapon(Item,Ammo)
 		if not vRP.ConsultItem(Passport,Item,1) then
 			local Hash = itemAmmo(Item)
 
-			if Hash ~= nil then
-				if Ammos[Passport][Hash] then
-					Ammos[Passport][Hash] = parseInt(Ammo)
+			if Hash and Ammos[Passport][Hash] then
+				Ammos[Passport][Hash] = parseInt(Ammo)
 
-					if Attachs[Passport][Item] ~= nil then
-						for Name,_ in pairs(Attachs[Passport][Item]) do
-							vRP.GenerateItem(Passport,Name,1)
-						end
-
-						Attachs[Passport][Item] = nil
+				if Attachs[Passport][Item] then
+					for Name,_ in pairs(Attachs[Passport][Item]) do
+						vRP.GenerateItem(Passport,Name,1)
 					end
 
-					if Ammos[Passport][Hash] > 0 then
-						vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
-						Ammos[Passport][Hash] = nil
-					end
-
-					TriggerClientEvent("inventory:Update",source,"Backpack")
+					Attachs[Passport][Item] = nil
 				end
+
+				if Ammos[Passport][Hash] > 0 then
+					vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
+					Ammos[Passport][Hash] = nil
+				end
+
+				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
 
 			return false
@@ -1330,23 +1328,21 @@ function Creative.existWeapon(Item)
 		if not vRP.ConsultItem(Passport,Item,1) then
 			local Hash = itemAmmo(Item)
 
-			if Hash ~= nil then
-				if Ammos[Passport][Hash] then
-					if Attachs[Passport][Item] ~= nil then
-						for nameAttachs,_ in pairs(Attachs[Passport][Item]) do
-							vRP.GenerateItem(Passport,nameAttachs,1)
-						end
-
-						Attachs[Passport][Item] = nil
+			if Hash and Ammos[Passport][Hash] then
+				if Attachs[Passport][Item] then
+					for Name,_ in pairs(Attachs[Passport][Item]) do
+						vRP.GenerateItem(Passport,Name,1)
 					end
 
-					if Ammos[Passport][Hash] > 0 then
-						vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
-						Ammos[Passport][Hash] = nil
-					end
-
-					TriggerClientEvent("inventory:Update",source,"Backpack")
+					Attachs[Passport][Item] = nil
 				end
+
+				if Ammos[Passport][Hash] > 0 then
+					vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
+					Ammos[Passport][Hash] = nil
+				end
+
+				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
 		end
 	end

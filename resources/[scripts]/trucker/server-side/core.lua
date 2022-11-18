@@ -94,7 +94,7 @@ function Creative.Payment(Service)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.CheckRolepass(source) and vRP.UserPremium(Passport) then
+		if vRP.CheckRolepass(source) or vRP.UserPremium(Passport) then
 			Trucker[Passport] = os.time() + 10800
 		else
 			Trucker[Passport] = os.time() + 21600

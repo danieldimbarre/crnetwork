@@ -806,8 +806,8 @@ local SpotlightToggle = false
 
 function DrawHeliText3Ds(x,y,z, text, scale)
     local onScreen,_x,_y = World3dToScreen2d(x,y,z)
-    local px,py,pz=table.unpack(GetGameplayCamCoords())
-    SetTextScale(scale, scale)
+    local px,py,pz = table.unpack(GetGameplayCamCoords())
+    SetTextScale(scale,scale)
     SetTextFont(10)
     SetTextProportional(1)
     SetTextColour(255,255,0,215)
@@ -829,8 +829,8 @@ CreateThread(function()
 		ClearTimecycleModifier()
 		fov = (fov_max + fov_min) * 0.5
 		Spritefov = (Spritefov_max + Spritefov_min) * 0.5
-		RenderScriptCams(false, false, 0, 1, 0)
-		DestroyCam(cam, false)
+		RenderScriptCams(false,false,0,1,0)
+		DestroyCam(cam,false)
 		vehCamera = false
     end)
 
@@ -839,6 +839,8 @@ CreateThread(function()
 		if IsPlayerInPolmav() then
 			local lPed = PlayerPedId()
 			local heli = GetVehiclePedIsIn(lPed)
+			SetVehicleRadioEnabled(heli,false)
+
 			if IsHeliHighEnough(heli) then
 				if IsControlJustPressed(1,Button_HeliCam) then
 					TriggerEvent("hud:Active",false)

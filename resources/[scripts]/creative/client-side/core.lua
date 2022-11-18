@@ -443,7 +443,7 @@ local fov_min = 7.5
 local zoomspeed = 12.0
 local speed_lr = 16.0
 local speed_ud = 8.0
-local Button_HeliCam = 163 -- (9)
+local Button_HeliCam = 44 -- (Q)
 local Button_LockCam = 22 -- (spacebar)
 local Button_ThermalVision = 157 -- (1)
 local Button_NightVision = 158 -- (2)
@@ -860,7 +860,7 @@ CreateThread(function()
 			SetVehicleRadioEnabled(heli,false)
 
 			if IsHeliHighEnough(heli) then
-				if IsControlJustPressed(0,Button_HeliCam) then
+				if IsControlJustPressed(1,Button_HeliCam) then
 					TriggerEvent("hud:Active",false)
 					vehCamera = true
 				end
@@ -890,7 +890,7 @@ CreateThread(function()
 			RenderScriptCams(true,false,0,1,0)
 			local locked_on = nil
 			while vehCamera and not IsEntityDead(lPed) and (GetVehiclePedIsIn(lPed) == heli) and IsHeliHighEnough(heli) do
-				if IsControlJustPressed(0,Button_HeliCam) then
+				if IsControlJustPressed(1,Button_HeliCam) then
 					TriggerEvent("hud:Active",true)
 					vehCamera = false
 					NightVisionToggle = false

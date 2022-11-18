@@ -1269,6 +1269,9 @@ RegisterCommand("toggleHelicam",function()
 				SetCamFov(cam,fov)
 				RenderScriptCams(true,false,0,1,0)
 				locked_on = nil
+
+				Helicam()
+				HelicamInformations()
 			end
 		end
 	end

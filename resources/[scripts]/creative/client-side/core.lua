@@ -651,7 +651,7 @@ function HelicamInformations()
 			DrawDisplayText(0.21,0.24,string.sub(NorthCoord,1,3).."°"..string.sub(NorthCoord,4,5).."'"..string.sub(NorthCoord,6,7).."."..string.sub(NorthCoord,8,9))
 			DrawDisplayText(0.255,0.24,"N")
 			DrawDisplayText(0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
-			DrawDisplayText(0.315,0.24,"W")
+			DrawDisplayText(0.315,0.24,"L")
 			DrawDisplayText(0.21,0.26,"SPD    "..math.ceil(3.6 * (GetEntitySpeed(Ped))))
 			DrawDisplayText(0.25,0.26,"KTS")
 			DrawDisplayText(0.27,0.26,"HDG")
@@ -751,6 +751,7 @@ function ThermalAdd()
 				boneList2 = {
 				--[[SKEL_Spine1 --]] { boneId =  24816, X1 = -0.3, Y1 = -0.3, Z1 = -0.3, X2 = 0.4, Y2 = 0.3, Z2 = 0.7 },
 				}
+
         		for _,boneListItem2 in pairs(boneList2) do
         			local x,y,z = table.unpack(vector3(GetPedBoneCoords(ped,boneListItem2.boneId)))
 					DrawThermal(x + boneListItem2.X1,y + boneListItem2.Y1,z + boneListItem2.Z1,x + boneListItem2.X2,y + boneListItem2.Y2,z + boneListItem2.Z2)
@@ -758,7 +759,7 @@ function ThermalAdd()
 			end
         	
         end
-        success, ped = FindNextPed(handle)
+        success,ped = FindNextPed(handle)
     until not success
     EndFindPed(handle)
 end
@@ -887,6 +888,11 @@ function Helicam()
 						DrawDisplayText(1.0 - 0.135 + 0.30,0.26,"---")
 						DrawDisplayText(1.0 - 0.135 + 0.30,0.28,"---")
 					end
+				end
+
+				if toggleThermal then
+					ThermalAdd()
+					ThermalAddVehicle()
 				end
 
 				HandleZoom(cam)

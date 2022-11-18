@@ -556,7 +556,7 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 	local Slot = tostring(Slot)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRPC.inVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
+		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
 			if itemBlock(Item) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				return
@@ -599,7 +599,7 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 				Player(source)["state"]["Buttons"] = true
 				Player(source)["state"]["Cancel"] = true
 
-				if not vRPC.inVehicle(source) then
+				if not vRP.InsideVehicle(source) then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					Active[Passport] = os.time() + 100
 
@@ -670,7 +670,7 @@ function Creative.Pickup(Number,Amount,Slot)
 						Player(source)["state"]["Buttons"] = true
 						Player(source)["state"]["Cancel"] = true
 
-						if not vRPC.inVehicle(source) then
+						if not vRP.InsideVehicle(source) then
 							vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 							Active[Passport] = os.time() + 100
 
@@ -1037,7 +1037,7 @@ function Creative.UseItem(Slot,Amount)
 				return
 			end
 
-			if vRPC.inVehicle(source) then
+			if vRP.InsideVehicle(source) then
 				if not itemVehicle(Full) then
 					return
 				end
@@ -1811,7 +1811,7 @@ function Creative.MakeProducts(Table)
 					local Service = vRP.NumPermission("Police")
 					for Passports,Sources in pairs(Service) do
 						async(function()
-							vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
@@ -2118,7 +2118,7 @@ function Creative.StealPeds()
 				local Service = vRP.NumPermission("Police")
 				for Passports,Sources in pairs(Service) do
 					async(function()
-						vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 						TriggerClientEvent("NotifyPush",Sources,{ code = 32, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
@@ -2178,7 +2178,7 @@ function Creative.DrugPeds()
 				local Service = vRP.NumPermission("Police")
 				for Passports,Sources in pairs(Service) do
 					async(function()
-						vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end

@@ -206,8 +206,7 @@ local shops = {
 			["gauze"] = 100,
 			["analgesic"] = 125,
 			["sinkalmy"] = 375,
-			["ritmoneury"] = 475,
-			["oxy"] = 35
+			["ritmoneury"] = 475
 		}
 	},
 	["Weeds"] = {
@@ -311,8 +310,7 @@ local shops = {
 			["gauze"] = 100,
 			["analgesic"] = 125,
 			["sinkalmy"] = 375,
-			["ritmoneury"] = 475,
-			["oxy"] = 35
+			["ritmoneury"] = 475
 		}
 	},
 	["Paramedic"] = {

@@ -730,12 +730,12 @@ end)
 function ThermalAdd()
     local playerped = PlayerPedId()
     local playerCoords = GetEntityCoords(playerped)
-    local handle, ped = FindFirstPed()
+    local handle,ped = FindFirstPed()
     local success
     repeat
 		SetTimecycleModifier("NG_blackout")
 		SetTimecycleModifierStrength(0.992)
-        local distance = #(playerped - ped)
+        local distance = #(playerCoords - ped)
         if HasEntityClearLosToEntity(playerped,ped,17) then
         	if IsPedHuman(ped) and not IsPedInAnyVehicle(ped,false) then
         		for _,boneListItem in pairs(boneList) do

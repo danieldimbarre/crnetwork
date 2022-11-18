@@ -1326,9 +1326,9 @@ RegisterCommand("toggleSpotlight",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TOGGLELOCK
+-- TOGGLEHELICAMLOCK
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("toggleLock",function()
+RegisterCommand("toggleHelicamLock",function()
 	if not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
 		if vehCamera and entity_detected and DoesEntityExist(entity_detected) and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
@@ -1357,7 +1357,7 @@ RegisterKeyMapping("toggleHelicam","Ativar/Desativar câmera do helicóptero.","
 RegisterKeyMapping("toggleThermal","Ativar/Desativar câmera termal.","keyboard","1")
 RegisterKeyMapping("toggleNightvision","Ativar/Desativar câmera de visão noturna.","keyboard","2")
 RegisterKeyMapping("toggleSpotlight","Ativar/Desativar lanterna.","keyboard","3")
-RegisterKeyMapping("toggleLock","Travar/Destravar câmera em veículos.","keyboard","SPACE")
+RegisterKeyMapping("toggleHelicamLock","Travar/Destravar câmera em veículos.","keyboard","SPACE")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ISLAND
 -----------------------------------------------------------------------------------------------------------------------------------------

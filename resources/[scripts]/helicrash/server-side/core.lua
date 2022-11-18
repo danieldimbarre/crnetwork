@@ -23,6 +23,22 @@ local Components = {
 			["2"] = { 2616.68,4472.48,37.96,218.27,"prop_mil_crate_01" },
 			["3"] = { 2605.93,4468.87,38.33,127.56,"prop_mil_crate_01" },
 			["4"] = { 2605.56,4481.69,37.39,8.51,"prop_mil_crate_01" }
+		},
+	},
+	{
+		["Objects"] = {
+			["1"] = { -1756.5,-3047.85,14.14,317.49,"prop_crashed_heli" },
+			["2"] = { -1748.37,-3040.2,14.14,136.07,"prop_mil_crate_01" },
+			["3"] = { -1773.2,-3047.84,14.14,314.65,"prop_mil_crate_01" },
+			["4"] = { -1768.87,-3037.05,14.14,246.62,"prop_mil_crate_01" }
+		}
+	},
+	{
+		["Objects"] = {
+			["1"] = { -1978.82,-616.56,7.3,289.14,"prop_crashed_heli" },
+			["2"] = { -1971.66,-607.31,9.0,155.91,"prop_mil_crate_01" },
+			["3"] = { -1983.42,-607.55,7.94,206.93,"prop_mil_crate_01" },
+			["4"] = { -1975.17,-626.51,6.77,351.5,"prop_mil_crate_01" }
 		}
 	}
 }
@@ -83,6 +99,19 @@ AddEventHandler("helicrash:AmountBoxes",function()
 		TriggerClientEvent("helicrash:ClearEvent",-1)
 		Selected = false
 		Boxes = 0
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HELICRASH
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("helicrash",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) then
+			if not Timers[Message[1]..":"..Message[2]] then
+				Timers[Message[1]..":"..Message[2]] = true
+			end
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

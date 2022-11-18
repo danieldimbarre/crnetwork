@@ -22038,8 +22038,6 @@ setTimeout(() => {
 init_config();
 var convertNamedPlaceholders = connectionOptions.namedPlaceholders && require_named_placeholders()();
 var parseArguments = (invokingResource, query, parameters, cb) => {
-  if (typeof query !== "string")
-    throw new Error(`Query expected a string but received ${typeof query} instead`);
   if (convertNamedPlaceholders && parameters && typeof parameters === "object" && !Array.isArray(parameters)) {
     if (query.includes(":") || query.includes("@")) {
       const placeholders = convertNamedPlaceholders(query, parameters);
@@ -22071,9 +22069,11 @@ var parseArguments = (invokingResource, query, parameters, cb) => {
         for (let i2 = 0; i2 < diff; i2++)
           parameters[queryParams.length + i2] = null;
       } else if (diff < 0) {
-        throw new Error(`${invokingResource} was unable to execute a query!
-        Expected ${queryParams.length} parameters, but received ${parameters.length}.
-        ${`${query} ${JSON.stringify(parameters)}`}`);
+        throw new Error(
+          `${invokingResource} was unable to execute a query!
+Expected ${queryParams.length} parameters, but received ${parameters.length}.
+${`${query} ${JSON.stringify(parameters)}`}`
+        );
       }
     }
   }
@@ -22162,12 +22162,17 @@ async function scheduleTick() {
 }
 
 // src/database/rawQuery.ts
-var rawQuery = async (type, invokingResource, query, parameters, cb, throwError) => {
-  if (!serverReady)
-    await waitForConnection();
-  scheduleTick();
+var rawQuery = (type, invokingResource, query, parameters, cb, throwError) => {
+  if (typeof query !== "string")
+    throw new Error(
+      `${invokingResource} was unable to execute a query!
+Expected query to be a string but received ${typeof query} instead.`
+    );
   [query, parameters, cb] = parseArguments(invokingResource, query, parameters, cb);
-  return await new Promise((resolve, reject) => {
+  scheduleTick();
+  return new Promise(async (resolve, reject) => {
+    if (!serverReady)
+      await waitForConnection();
     pool.query(query, parameters, (err, result, _, executionTime) => {
       if (err)
         return reject(err);
@@ -22337,20 +22342,25 @@ var parseExecute = (placeholders, parameters) => {
 };
 
 // src/database/rawExecute.ts
-var rawExecute = async (invokingResource, query, parameters, cb, throwError) => {
+var rawExecute = (invokingResource, query, parameters, cb, throwError) => {
+  if (typeof query !== "string")
+    throw new Error(
+      `${invokingResource} was unable to execute a query!
+Expected query to be a string but received ${typeof query} instead.`
+    );
   const type = executeType(query);
   const placeholders = query.split("?").length - 1;
   parameters = parseExecute(placeholders, parameters);
+  if (parameters.length === 0)
+    throw new Error(`Query received no parameters.`);
   let response = [];
-  if (!serverReady)
-    await waitForConnection();
   scheduleTick();
-  return await new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
+    if (!serverReady)
+      await waitForConnection();
     pool.getConnection((err, connection) => {
       if (err)
         return reject(err.message);
-      if (parameters.length === 0)
-        return reject(`Query received no parameters.`);
       parameters.forEach((values, index) => {
         const executionTime = process.hrtime();
         if (placeholders > values.length) {

@@ -725,7 +725,7 @@ function HelicamInformations()
 			end
 			DrawSprite(TextureDict,TextureName,0.5,0.5,0.015,0.025,0.0,255,255,255,255)
 
-			Wait(4)
+			Wait(1)
 		end
 	end)
 end
@@ -738,9 +738,6 @@ function ThermalAdd()
     local handle,ped = FindFirstPed()
     local success
     repeat
-		SetTimecycleModifier("NG_blackout")
-		SetTimecycleModifierStrength(0.992)
-        local distance = #(playerCoords - ped)
         if HasEntityClearLosToEntity(playerped,ped,17) then
         	if IsPedHuman(ped) and not IsPedInAnyVehicle(ped,false) then
         		for _,boneListItem in pairs(boneList) do
@@ -762,6 +759,7 @@ function ThermalAdd()
         success,ped = FindNextPed(handle)
     until not success
     EndFindPed(handle)
+	return
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THERMALADDVEHICLE
@@ -769,12 +767,11 @@ end
 function ThermalAddVehicle()
 	local playerped = PlayerPedId()
     local playerCoords = GetEntityCoords(playerped)
-	local handle, pedveh = FindFirstVehicle()
+	local handle,pedveh = FindFirstVehicle()
     local success
     local rped = nil
     repeat
-    	local distance = #(playerCoords - pedveh)
-    	if (HasEntityClearLosToEntity(playerped,pedveh,17)) and (not IsVehicleSeatFree(pedveh,-1)) then
+    	if HasEntityClearLosToEntity(playerped,pedveh,17) then
         	for _,vehBoneListItem in ipairs(vehBoneList) do
         		local getVehBoneIndex = GetEntityBoneIndexByName(pedveh,vehBoneListItem.vehBoneId)
         		local worldVehBone = GetWorldPositionOfEntityBone(pedveh,getVehBoneIndex)
@@ -785,7 +782,7 @@ function ThermalAddVehicle()
     	success,pedveh = FindNextVehicle(handle)
     until not success
     EndFindVehicle(handle)
-    return rped
+    return
 end
 
 function DrawThermal(x1,y1,z1,x2,y2,z2)
@@ -912,7 +909,7 @@ function Helicam()
 				DestroyCam(cam,false)
 			end
 
-			Wait(4)
+			Wait(1)
 		end
 	end)
 end
@@ -1281,6 +1278,9 @@ RegisterCommand("toggleThermal",function()
 				SetNightvision(false)
 
 				SpotlightToggle = false
+
+				SetTimecycleModifier("NG_blackout")
+				SetTimecycleModifierStrength(0.992)
 			end
 
 			ThermalToggle = not ThermalToggle

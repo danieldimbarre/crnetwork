@@ -452,6 +452,9 @@ local Spritefov_min = 0.04
 local Spritezoomspeed = 0.01
 local Spritefov = (Spritefov_max + Spritefov_min) * 0.5
 
+local entity_detected = nil
+local locked_on = nil
+
 local polmav_hash = {
 	[`supervolito`] = true,
 	[`maverick2`] = true,
@@ -853,7 +856,7 @@ CreateThread(function()
 			SetCamRot(cam,0.0,0.0,GetEntityHeading(heli))
 			SetCamFov(cam,fov)
 			RenderScriptCams(true,false,0,1,0)
-			local locked_on = nil
+			locked_on = nil
 			while vehCamera and not IsEntityDead(lPed) and (GetVehiclePedIsIn(lPed) == heli) and IsHeliHighEnough(heli) do
 				if locked_on then
 					local coords = GetCamCoord(cam)
@@ -902,8 +905,8 @@ CreateThread(function()
 					end
 				else
 					local zoomvalue = (1.0 / (fov_max - fov_min)) * (fov - fov_min)
-					CheckInputRotation(cam, zoomvalue)
-					local entity_detected = GetEntityInView(cam)
+					CheckInputRotation(cam,zoomvalue)
+					entity_detected = GetEntityInView(cam)
  					if SpotlightToggle then
 						SpotlightAdd(cam)
 					end
@@ -1331,21 +1334,23 @@ end)
 RegisterCommand("toggleHelicamLock",function()
 	if not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
-		if vehCamera and entity_detected and DoesEntityExist(entity_detected) and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
-			if locked_on then
-				locked_on = nil
-				local rot = GetCamRot(cam,2)
-				local fov = GetCamFov(cam)
-				local old
-				cam = cam
-				DestroyCam(old_cam,false)
-				cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA",true)
-				AttachCamToEntity(cam,heli,0.0,0.0,-1.5,true)
-				SetCamRot(cam,rot,2)
-				SetCamFov(cam,fov)
-				RenderScriptCams(true,false,0,1,0)
-			else
-				locked_on = entity_detected
+		if vehCamera and entity_detected and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+			if DoesEntityExist(entity_detected) then
+				if locked_on then
+					locked_on = nil
+					local rot = GetCamRot(cam,2)
+					local fov = GetCamFov(cam)
+					local old
+					cam = cam
+					DestroyCam(old_cam,false)
+					cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA",true)
+					AttachCamToEntity(cam,heli,0.0,0.0,-1.5,true)
+					SetCamRot(cam,rot,2)
+					SetCamFov(cam,fov)
+					RenderScriptCams(true,false,0,1,0)
+				else
+					locked_on = entity_detected
+				end
 			end
 		end
 	end

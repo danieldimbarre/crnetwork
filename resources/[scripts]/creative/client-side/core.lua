@@ -438,15 +438,12 @@ end)
 -- VEHCAMERA
 -----------------------------------------------------------------------------------------------------------------------------------------
 local vehCamera = false
------------------------------------------------------------------------------------------------------------------------------------------
--- VEHCAMERA
------------------------------------------------------------------------------------------------------------------------------------------
 local fov_max = 90.0
 local fov_min = 7.5
 local zoomspeed = 12.0
 local speed_lr = 16.0
 local speed_ud = 8.0
-local Button_HeliCam = 44 -- (Q)
+local Button_HeliCam = 163 -- (9)
 local Button_LockCam = 22 -- (spacebar)
 local Button_ThermalVision = 157 -- (1)
 local Button_NightVision = 158 -- (2)
@@ -549,17 +546,17 @@ function degreesToIntercardinalDirection( dgr )
 	elseif dgr >= 22.5 and dgr < 67.5 then
 		return "NE"
 	elseif dgr >= 67.5 and dgr < 112.5 then
-		return "E"
+		return "L"
 	elseif dgr >= 112.5 and dgr < 157.5 then
 		return "SE"
 	elseif dgr >= 157.5 and dgr < 202.5 then
 		return "S"
 	elseif dgr >= 202.5 and dgr < 247.5 then
-		return "SW"
+		return "SO"
 	elseif dgr >= 247.5 and dgr < 292.5 then
-		return "W"
+		return "O"
 	elseif dgr >= 292.5 and dgr < 337.5 then
-		return "NW"
+		return "NO"
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -821,6 +818,27 @@ function DrawHeliText3Ds(x,y,z, text, scale)
 end
 
 CreateThread(function()
+	RegisterCommand('helicam',function() 
+		HeliCam_Contols = not HeliCam_Contols
+		Wait(20000)
+		HeliCam_Contols = not HeliCam_Contols
+    end)
+
+	while true do
+		Wait(0)
+
+		-- if ThermalToggle then
+        --   	ThermalAdd()
+        --   	ThermalAddVehicle() 
+        -- end
+
+        if NightVisionToggle then
+        	SetNightvision(true)
+        end
+	end
+end)
+
+CreateThread(function()
 	RegisterCommand('helicamuifix',function() 
 		locked_on = nil
        	ThermalToggle = false
@@ -878,14 +896,14 @@ CreateThread(function()
 					NightVisionToggle = false
 				end
 
-				-- if IsControlJustPressed(1,Button_ThermalVision) then
-				-- 	NightVisionToggle = false
-				-- 	SpotlightToggle = false
-				-- 	ThermalToggle = not ThermalToggle
-				-- else
-				-- 	StopScreenEffect(ScreenEffectType)
-				-- 	ClearTimecycleModifier()
-    			-- end
+				if IsControlJustPressed(1,Button_ThermalVision) then
+					NightVisionToggle = false
+					SpotlightToggle = false
+					ThermalToggle = not ThermalToggle
+				else
+					StopScreenEffect(ScreenEffectType)
+					ClearTimecycleModifier()
+    			end
 
     			if IsControlJustPressed(1,Button_NightVision) then
 					ThermalToggle = false
@@ -915,7 +933,7 @@ CreateThread(function()
 					DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    "..math.ceil(GetEntitySpeed(locked_on) * 2.236936))
 					DrawDisplayText(1.0 - 0.135 + 0.30,0.26,math.ceil(GetEntityHeading(locked_on)))
 
-					local distancetoentity = #(GetPlayerPed(-1) - locked_on)
+					local distancetoentity = #(GetEntityCoords(PlayerPedId()) - locked_on)
 					DrawDisplayText(1.0 - 0.135 + 0.27,0.28,"SLT")
 					DrawDisplayText(1.0 - 0.135 + 0.315,0.28,"M")
 					DrawDisplayText(1.0 - 0.135 + 0.30,0.28,math.ceil(distancetoentity))
@@ -1169,7 +1187,7 @@ function RotAnglesToVec(rot)
 end
 
 function PlateText(vehicle)
-	DrawDisplayText(1.0 - 0.135 + 0.21,0.30,"Plate: "..GetVehicleNumberPlateText(vehicle))
+	DrawDisplayText(1.0 - 0.135 + 0.21,0.30,"PLACA: "..GetVehicleNumberPlateText(vehicle))
 end
 
 function RenderVehicleInfo(vehicle)

@@ -1111,7 +1111,7 @@ function HandleHUDZoom(cam)
 
 	if math.abs(Spritefov - Spritecurrent_fov) < 0.01 then
 		Spritefov = Spritecurrent_fov
-	en
+	end
 	TextureDictArrow = "mpinventory"
 	TextureNameArrow = "mp_arrow"
 	if not HasStreamedTextureDictLoaded(TextureDictArrow) then

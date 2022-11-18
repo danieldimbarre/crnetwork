@@ -896,6 +896,7 @@ function Helicam()
 				HandleZoom(cam)
 				HandleHUDZoom(cam)
 			else
+				TriggerEvent("hud:Active",true)
 				vehCamera = false
 				ThermalToggle = false
 				NightVisionToggle = false
@@ -1211,17 +1212,20 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HELICAMFIX
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand('helicamfix',function() 
-	locked_on = nil
-	ThermalToggle = false
-	NightVisionToggle = false
-	SpotlightToggle = false
-	ClearTimecycleModifier()
-	fov = (fov_max + fov_min) * 0.5
-	Spritefov = (Spritefov_max + Spritefov_min) * 0.5
-	RenderScriptCams(false,false,0,1,0)
-	DestroyCam(cam,false)
-	vehCamera = false
+RegisterCommand('helicamfix',function()
+	if vehCamera then
+		locked_on = nil
+		ThermalToggle = false
+		NightVisionToggle = false
+		SpotlightToggle = false
+		ClearTimecycleModifier()
+		fov = (fov_max + fov_min) * 0.5
+		Spritefov = (Spritefov_max + Spritefov_min) * 0.5
+		RenderScriptCams(false,false,0,1,0)
+		DestroyCam(cam,false)
+		vehCamera = false
+		TriggerEvent("hud:Active",true)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLEHELICAM

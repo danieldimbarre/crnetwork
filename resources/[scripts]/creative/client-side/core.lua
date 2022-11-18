@@ -443,11 +443,6 @@ local fov_min = 7.5
 local zoomspeed = 12.0
 local speed_lr = 16.0
 local speed_ud = 8.0
-local Button_HeliCam = 44 -- (Q)
-local Button_LockCam = 22 -- (spacebar)
-local Button_ThermalVision = 157 -- (1)
-local Button_NightVision = 158 -- (2)
-local Button_Spotlight = 160 -- (3)
 local minHeightAboveGround = 60.0 -- Minimum height above ground to activate Heli Cam (in metres).
 
 local fov = (fov_max + fov_min) * 0.5
@@ -650,7 +645,7 @@ CreateThread( function()
             DrawDisplayText(0.255,0.24,"N")
             DrawDisplayText(0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
             DrawDisplayText(0.315,0.24,"W")
-            DrawDisplayText(0.21,0.26,"SPD    "..math.ceil(1.94384 * (GetEntitySpeed(Ped))))
+            DrawDisplayText(0.21,0.26,"SPD    "..math.ceil(3.6 * (GetEntitySpeed(Ped))))
             DrawDisplayText(0.25,0.26,"KTS")
             DrawDisplayText(0.27,0.26,"HDG")
             DrawDisplayText(0.30,0.26,math.ceil(GetGameplayCamRelativeHeading()))
@@ -694,9 +689,9 @@ CreateThread( function()
             hour = GetClockHours()
 			minute = GetClockMinutes()
 			second = GetClockSeconds()
-			day = GetClockDayOfMonth()
-			month = GetClockMonth()
-			year = GetClockYear()
+			-- day = GetClockDayOfMonth()
+			-- month = GetClockMonth()
+			-- year = GetClockYear()
 		
 			if hour <= 9 then hour = "0"..hour end
 			if minute <= 9 then	minute = "0"..minute end
@@ -704,9 +699,9 @@ CreateThread( function()
 			if day <= 9 then day = "0"..day end
 			if month <= 9 then month = "0"..month end
             
-            DrawDisplayText(0.21,0.34,month.."/"..day.."/"..(year - 2000))
+            -- DrawDisplayText(0.21,0.34,month.."/"..day.."/"..(year - 2000))
             DrawDisplayText(0.21,0.36,hour..":"..minute..":"..second)
-            DrawDisplayText(0.245,0.36, "Z")
+            DrawDisplayText(0.245,0.36,"Z")
 
             local TextureDict = "helicopterhud"
             local TextureName = "hud_target"
@@ -743,17 +738,17 @@ function ThermalAdd()
         local distance = #(playerped - ped)
         if HasEntityClearLosToEntity(playerped,ped,17) then
         	if IsPedHuman(ped) and not IsPedInAnyVehicle(ped,false) then
-        		for _, boneListItem in pairs(boneList) do
+        		for _,boneListItem in pairs(boneList) do
         			local x,y,z = table.unpack(vector3(GetPedBoneCoords(ped,boneListItem.boneId)))
-					DrawThermal(x+boneListItem.X1,y + boneListItem.Y1,z + boneListItem.Z1,x + boneListItem.X2,y + boneListItem.Y2,z + boneListItem.Z2)
+					DrawThermal(x + boneListItem.X1,y + boneListItem.Y1,z + boneListItem.Z1,x + boneListItem.X2,y + boneListItem.Y2,z + boneListItem.Z2)
         		end
 			else
 				boneList2 = {
 				--[[SKEL_Spine1 --]] { boneId =  24816, X1 = -0.3, Y1 = -0.3, Z1 = -0.3, X2 = 0.4, Y2 = 0.3, Z2 = 0.7 },
 				}
-        		for _, boneListItem2 in pairs(boneList2) do
+        		for _,boneListItem2 in pairs(boneList2) do
         			local x,y,z = table.unpack(vector3(GetPedBoneCoords(ped,boneListItem2.boneId)))
-					DrawThermal(x+boneListItem2.X1,y + boneListItem2.Y1,z + boneListItem2.Z1,x + boneListItem2.X2,y + boneListItem2.Y2,z + boneListItem2.Z2)
+					DrawThermal(x + boneListItem2.X1,y + boneListItem2.Y1,z + boneListItem2.Z1,x + boneListItem2.X2,y + boneListItem2.Y2,z + boneListItem2.Z2)
         		end
 			end
         	
@@ -771,15 +766,15 @@ function ThermalAddVehicle()
     local rped = nil
     repeat
     	local distance = #(playerped - pedveh)
-    	if (HasEntityClearLosToEntity(playerped,pedveh,17)) and (not IsVehicleSeatFree(pedveh,-1)) and (not IsVehicleModel(pedveh,"polmav")) then
-        	for _, vehBoneListItem in ipairs(vehBoneList) do
-        		local getVehBoneIndex = GetEntityBoneIndexByName(pedveh, vehBoneListItem.vehBoneId)
-        		local worldVehBone = GetWorldPositionOfEntityBone(pedveh, getVehBoneIndex)
+    	if (HasEntityClearLosToEntity(playerped,pedveh,17)) and (not IsVehicleSeatFree(pedveh,-1)) then
+        	for _,vehBoneListItem in ipairs(vehBoneList) do
+        		local getVehBoneIndex = GetEntityBoneIndexByName(pedveh,vehBoneListItem.vehBoneId)
+        		local worldVehBone = GetWorldPositionOfEntityBone(pedveh,getVehBoneIndex)
         		local x,y,z = table.unpack(vector3(worldVehBone))	
 				DrawThermal(x + vehBoneListItem.X1,y + vehBoneListItem.Y1,z + vehBoneListItem.Z1,x + vehBoneListItem.X2,y + vehBoneListItem.Y2,z + vehBoneListItem.Z2)
     		end
     	end
-    	success, pedveh = FindNextVehicle(handle)
+    	success,pedveh = FindNextVehicle(handle)
     until not success
     EndFindVehicle(handle)
     return rped
@@ -818,12 +813,6 @@ function DrawHeliText3Ds(x,y,z, text, scale)
 end
 
 CreateThread(function()
-	RegisterCommand('helicam',function() 
-		HeliCam_Contols = not HeliCam_Contols
-		Wait(20000)
-		HeliCam_Contols = not HeliCam_Contols
-    end)
-
 	while true do
 		Wait(0)
 
@@ -839,7 +828,7 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-	RegisterCommand('helicamuifix',function() 
+	RegisterCommand('helicam',function() 
 		locked_on = nil
        	ThermalToggle = false
 		NightVisionToggle = false
@@ -854,30 +843,6 @@ CreateThread(function()
 
 	while true do
 		Wait(0)
-		if IsPlayerInPolmav() then
-			local lPed = PlayerPedId()
-			local heli = GetVehiclePedIsIn(lPed)
-			SetVehicleRadioEnabled(heli,false)
-
-			if IsHeliHighEnough(heli) then
-				if IsControlJustPressed(1,Button_HeliCam) then
-					TriggerEvent("hud:Active",false)
-					vehCamera = true
-				end
-			else
-				ThermalToggle = false
-				NightVisionToggle = false
-				SetNightvision(false)
-				SpotlightToggle = false
-				vehCamera = false
-				StopScreenEffect(ScreenEffectType)
-				ClearTimecycleModifier()
-				fov = (fov_max + fov_min) * 0.5
-				Spritefov = (Spritefov_max + Spritefov_min) * 0.5
-				RenderScriptCams(false,false,0,1,0)
-				DestroyCam(cam, false)
-			end
-		end
 
 		if vehCamera then
 			Wait(0)
@@ -890,39 +855,10 @@ CreateThread(function()
 			RenderScriptCams(true,false,0,1,0)
 			local locked_on = nil
 			while vehCamera and not IsEntityDead(lPed) and (GetVehiclePedIsIn(lPed) == heli) and IsHeliHighEnough(heli) do
-				if IsControlJustPressed(1,Button_HeliCam) then
-					TriggerEvent("hud:Active",true)
-					vehCamera = false
-					NightVisionToggle = false
-				end
-
-				if IsControlJustPressed(1,Button_ThermalVision) then
-					NightVisionToggle = false
-					SpotlightToggle = false
-					ThermalToggle = not ThermalToggle
-				else
-					StopScreenEffect(ScreenEffectType)
-					ClearTimecycleModifier()
-    			end
-
-    			if IsControlJustPressed(1,Button_NightVision) then
-					ThermalToggle = false
-					SpotlightToggle = false
-					NightVisionToggle = not NightVisionToggle
-				else
-					SetNightvision(false)
-    			end
-
-    			if IsControlJustPressed(1,Button_Spotlight) then
-    				ThermalToggle = false
-    				NightVisionToggle = false
-    				SpotlightToggle = not SpotlightToggle
-				end
-
 				if locked_on then
 					local coords = GetCamCoord(cam)
 					local forward_vector = RotAnglesToVec(GetCamRot(cam,2))
-					--DrawLine(coords, coords+(forward_vector*100.0), 255,0,0,255) -- debug line to show LOS of cam
+					--DrawLine(coords,coords + (forward_vector * 100.0),255,0,0,255) -- debug line to show LOS of cam
 					local x, y, z = table.unpack(coords + (forward_vector * 100.0))
 					local NorthCoord = tostring(y * 10000000)
 					local WestCoord = tostring(x * 10000000)
@@ -930,7 +866,7 @@ CreateThread(function()
 					DrawDisplayText(1.0 - 0.135 + 0.255,0.24,"N")
 					DrawDisplayText(1.0 - 0.135 + 0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
 					DrawDisplayText(1.0 - 0.135 + 0.315,0.24,"W")
-					DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    "..math.ceil(GetEntitySpeed(locked_on) * 2.236936))
+					DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    "..math.ceil(GetEntitySpeed(locked_on) * 3.6))
 					DrawDisplayText(1.0 - 0.135 + 0.30,0.26,math.ceil(GetEntityHeading(locked_on)))
 
 					local distancetoentity = #(GetEntityCoords(PlayerPedId()) - locked_on)
@@ -947,9 +883,10 @@ CreateThread(function()
 						if IsEntityAVehicle(locked_on) then
 							RenderVehicleInfo(locked_on)
 						end
-						if IsControlJustPressed(0,Button_LockCam) or not HasEntityClearLosToEntity(heli,locked_on,17) then
+
+						if not HasEntityClearLosToEntity(heli,locked_on,17) then
 							locked_on = nil
-							local rot = GetCamRot(cam,2) -- All this because I can't seem to get the camera unlocked from the entity
+							local rot = GetCamRot(cam,2)
 							local fov = GetCamFov(cam)
 							local old
 							cam = cam
@@ -961,7 +898,7 @@ CreateThread(function()
 							RenderScriptCams(true,false,0,1,0)
 						end
 					else
-						locked_on = nil -- Cam will auto unlock when entity doesn't exist anyway
+						locked_on = nil
 					end
 				else
 					local zoomvalue = (1.0 / (fov_max - fov_min)) * (fov - fov_min)
@@ -970,12 +907,10 @@ CreateThread(function()
  					if SpotlightToggle then
 						SpotlightAdd(cam)
 					end
+
 					if DoesEntityExist(entity_detected) then
 						if IsEntityAVehicle(entity_detected) then
 							RenderVehicleInfo(entity_detected)
-						end
-						if IsControlJustPressed(0, Button_LockCam) then
-							locked_on = entity_detected
 						end
 					else
 						DrawDisplayText(1.0 - 0.135 + 0.30,0.26,"---")
@@ -1158,23 +1093,23 @@ function GetEntityInView(cam)
     DrawDisplayText(1.0 - 0.135 + 0.21,0.24,string.sub(NorthCoord,1,3).."°"..string.sub(NorthCoord,4,5).."'"..string.sub(NorthCoord,6,7).."."..string.sub(NorthCoord,8,9))
     DrawDisplayText(1.0 - 0.135 + 0.255,0.24,"N")
     DrawDisplayText(1.0 - 0.135 + 0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
-    DrawDisplayText(1.0 - 0.135 + 0.315,0.24,"W")
+    DrawDisplayText(1.0 - 0.135 + 0.315,0.24,"L")
 	-- local rayhandle = CastRayPointToPoint(coords, coords + (forward_vector * 200.0), 10, GetVehiclePedIsIn(PlayerPedId()), 0)
 	local rayhandle = StartShapeTestRay(coords,coords + (forward_vector * 10000.0),10,GetVehiclePedIsIn(PlayerPedId()),4,0,7)
 	-- StartShapeTestRay(x1,y1,z1,x2,y2,z2,flags: 4 = ped,2 = vehicle -1 = everything,ent: ignores these entities,p8:7)
 	-- local _,_,_,_, entityHit = GetRaycastResult(rayhandle)
 	local retval,hit,endCoords,surfaceNormal,entityHit = GetShapeTestResult(rayhandle)
 	local distancetoentity = #(coords - endCoords)
-    DrawDisplayText(1.0-0.135+0.27, 0.28,  "SLT")
-    DrawDisplayText(1.0-0.135+0.315, 0.28, "M")
+    DrawDisplayText(1.0 - 0.135 + 0.27,0.28,"SLT")
+    DrawDisplayText(1.0 - 0.135 + 0.315,0.28,"M")
 	if entityHit > 0 then
-		DrawDisplayText(1.0-0.135+0.30, 0.28,  math.ceil(distancetoentity))
-		local entitySpeed = (GetEntitySpeed(entityHit)) * 2.236936
-		DrawDisplayText(1.0-0.135+0.21, 0.26,"SPD    "..math.ceil(entitySpeed))
+		DrawDisplayText(1.0 - 0.135 + 0.30,0.28,math.ceil(distancetoentity))
+		local entitySpeed = (GetEntitySpeed(entityHit)) * 3.6
+		DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    "..math.ceil(entitySpeed))
 		return entityHit
 	else
-		DrawDisplayText(1.0-0.135+0.30, 0.28,"---")
-		DrawDisplayText(1.0-0.135+0.21, 0.26,"SPD    0")
+		DrawDisplayText(1.0 - 0.135 + 0.30,0.28,"---")
+		DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    0")
 		return nil
 	end
 end
@@ -1293,6 +1228,136 @@ function RenderVehicleInfo(vehicle)
 		PlateText(vehicle)
 	end
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TOGGLEHELICAM
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("toggleHelicam",function()
+	if not IsPauseMenuActive() then
+		local Ped = PlayerPedId()
+		if IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+			if vehCamera then
+				TriggerEvent("hud:Active",true)
+				vehCamera = false
+
+				ThermalToggle = false
+				NightVisionToggle = false
+				SetNightvision(false)
+				SpotlightToggle = false
+				StopScreenEffect("NG_blackout")
+				ClearTimecycleModifier()
+				fov = (fov_max + fov_min) * 0.5
+				Spritefov = (Spritefov_max + Spritefov_min) * 0.5
+				RenderScriptCams(false,false,0,1,0)
+				DestroyCam(cam,false)
+			else
+				TriggerEvent("hud:Active",false)
+				vehCamera = true
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TOGGLETHERMAL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("toggleThermal",function()
+	if not IsPauseMenuActive() then
+		local Ped = PlayerPedId()
+		if vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+			if ThermalToggle then
+				StopScreenEffect("NG_blackout")
+				ClearTimecycleModifier()
+			else
+				NightVisionToggle = false
+				SetNightvision(false)
+
+				SpotlightToggle = false
+				
+				ThermalAdd()
+				ThermalAddVehicle()
+			end
+
+			ThermalToggle = not ThermalToggle
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TOGGLENIGHTVISION
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("toggleNightvision",function()
+	if not IsPauseMenuActive() then
+		local Ped = PlayerPedId()
+		if vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+			if NightVisionToggle then
+				SetNightvision(false)
+			else
+				ThermalToggle = false
+				StopScreenEffect("NG_blackout")
+				ClearTimecycleModifier()
+
+				SpotlightToggle = false
+
+				SetNightvision(true)
+			end
+
+			NightVisionToggle = not NightVisionToggle
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TOGGLESPOTLIGHT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("toggleSpotlight",function()
+	if not IsPauseMenuActive() then
+		local Ped = PlayerPedId()
+		if vehCamera and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+			if SpotlightToggle then
+
+			else
+				ThermalToggle = false
+				StopScreenEffect("NG_blackout")
+				ClearTimecycleModifier()
+
+    			NightVisionToggle = false
+				SetNightvision(false)
+			end
+
+			SpotlightToggle = not SpotlightToggle
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TOGGLELOCK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("toggleLock",function()
+	if not IsPauseMenuActive() then
+		local Ped = PlayerPedId()
+		if vehCamera and entity_detected and DoesEntityExist(entity_detected) and IsPlayerInPolmav() and IsHeliHighEnough(GetVehiclePedIsIn(Ped)) and LocalPlayer["state"]["Police"] then
+			if locked_on then
+				locked_on = nil
+				local rot = GetCamRot(cam,2)
+				local fov = GetCamFov(cam)
+				local old
+				cam = cam
+				DestroyCam(old_cam,false)
+				cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA",true)
+				AttachCamToEntity(cam,heli,0.0,0.0,-1.5,true)
+				SetCamRot(cam,rot,2)
+				SetCamFov(cam,fov)
+				RenderScriptCams(true,false,0,1,0)
+			else
+				locked_on = entity_detected
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- KEYMAPPING
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterKeyMapping("toggleHelicam","Ativar/Desativar câmera do helicóptero.","keyboard","9")
+RegisterKeyMapping("toggleThermal","Ativar/Desativar câmera termal.","keyboard","1")
+RegisterKeyMapping("toggleNightvision","Ativar/Desativar câmera de visão noturna.","keyboard","2")
+RegisterKeyMapping("toggleSpotlight","Ativar/Desativar lanterna.","keyboard","3")
+RegisterKeyMapping("toggleLock","Travar/Destravar câmera em veículos.","keyboard","SPACE")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ISLAND
 -----------------------------------------------------------------------------------------------------------------------------------------

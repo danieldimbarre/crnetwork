@@ -18,7 +18,7 @@
     "instagram_accounts": {
         "*": 1,
         "Admin": 2,
-        "Premium": 3
+        "Premium": 2
     },
     "moderator": "Admin",
     "item": "cellphone",

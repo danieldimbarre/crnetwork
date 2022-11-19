@@ -66,7 +66,7 @@ end)
 RegisterNetEvent("helicrash:Active")
 AddEventHandler("helicrash:Active",function(Number)
 	Active = Number
-	-- HeliBlip(Active)
+	HeliBlip(Active)
 
 	if Objects["1"] then
 		for Number,v in pairs(Objects) do
@@ -127,7 +127,7 @@ AddEventHandler("helicrash:Table",function(Table,Number)
 	Components = Table
 
 	if Active then
-		-- HeliBlip(Active)
+		HeliBlip(Active)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

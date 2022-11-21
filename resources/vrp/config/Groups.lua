@@ -39,7 +39,7 @@ Groups = {
 		["Parent"] = {
 			["Mechanic"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -47,14 +47,14 @@ Groups = {
 		["Parent"] = {
 			["Taxi"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {}
 	},
 	["BurgerShot"] = {
 		["Parent"] = {
 			["BurgerShot"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -62,7 +62,7 @@ Groups = {
 		["Parent"] = {
 			["PizzaThis"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -70,7 +70,7 @@ Groups = {
 		["Parent"] = {
 			["UwuCoffee"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -78,7 +78,7 @@ Groups = {
 		["Parent"] = {
 			["BeanMachine"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -86,7 +86,7 @@ Groups = {
 		["Parent"] = {
 			["Ballas"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -94,7 +94,7 @@ Groups = {
 		["Parent"] = {
 			["Vagos"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -102,7 +102,7 @@ Groups = {
 		["Parent"] = {
 			["Families"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -110,7 +110,7 @@ Groups = {
 		["Parent"] = {
 			["Aztecas"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -118,7 +118,7 @@ Groups = {
 		["Parent"] = {
 			["Bloods"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -126,7 +126,7 @@ Groups = {
 		["Parent"] = {
 			["Triads"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -134,7 +134,7 @@ Groups = {
 		["Parent"] = {
 			["Razors"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -142,7 +142,7 @@ Groups = {
 		["Parent"] = {
 			["Altruists"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -150,7 +150,7 @@ Groups = {
 		["Parent"] = {
 			["Lost"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -158,7 +158,7 @@ Groups = {
 		["Parent"] = {
 			["Marabunta"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},

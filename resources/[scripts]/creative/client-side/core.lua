@@ -190,6 +190,77 @@ local Blips = {
 	{ -1816.64,-1193.73,14.31,642,62,"Comércio",0.5 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADINIT
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Emitters = {
+    'LOS_SANTOS_AMMUNATION_GUN_RANGE',
+    'LOS_SANTOS_VANILLA_UNICORN_01_STAGE',
+    'LOS_SANTOS_VANILLA_UNICORN_02_MAIN_ROOM',
+    'LOS_SANTOS_VANILLA_UNICORN_03_BACK_ROOM'
+}
+
+local Ambient = {
+	{ "AZL_DLC_Hei4_Island_Disabled_Zones",false,true },
+	{ "AZL_DLC_Hei4_Island_Zones",true,true }
+}
+
+local Scenario = {
+	"WORLD_VEHICLE_STREETRACE"
+	"WORLD_VEHICLE_SALTON_DIRT_BIKE"
+	"WORLD_VEHICLE_SALTON"
+	"WORLD_VEHICLE_POLICE_NEXT_TO_CAR"
+	"WORLD_VEHICLE_POLICE_CAR"
+	"WORLD_VEHICLE_POLICE_BIKE"
+	"WORLD_VEHICLE_MILITARY_PLANES_SMALL"
+	"WORLD_VEHICLE_MILITARY_PLANES_BIG"
+	"WORLD_VEHICLE_MECHANIC"
+	"WORLD_VEHICLE_EMPTY"
+	"WORLD_VEHICLE_BUSINESSMEN"
+	"WORLD_VEHICLE_BIKE_OFF_ROAD_RACE"
+}
+
+local AudioScene = {
+	"FBI_HEIST_H5_MUTE_AMBIENCE_SCENE"
+	"CHARACTER_CHANGE_IN_SKY_SCENE"
+}
+
+local AudioFlag = {
+	"PlayerOnDLCHeist4Island"
+	"PoliceScannerDisabled"
+	"DisableFlightMusic"
+}
+
+CreateThread(function()
+	AddTextEntry("FE_THDR_GTAO","Energy")
+
+	for _,v in pairs(Emitters) do
+        SetStaticEmitterEnabled(v,false)
+    end
+
+	for _,v in pairs(Ambient) do
+        SetAmbientZoneListStatePersistent(v[1],v[2],v[3])
+    end
+
+	for _,v in pairs(Scenario) do
+        SetScenarioTypeEnabled(v[1],false)
+    end
+
+	for _,v in pairs(AudioScene) do
+        StartAudioScene(v[1])
+    end
+
+	for _,v in pairs(AudioFlag) do
+        SetAudioFlag(v[1],true)
+    end
+	
+	SetRandomEventFlag(false)
+
+	-- SwitchTrainTrack(0,true)
+	-- SwitchTrainTrack(3,true)
+	-- SetTrainTrackSpawnFrequency(0,120000)
+	-- SetRandomTrains(true)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTIMERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -221,23 +292,23 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		SetWeaponDamageModifierThisFrame("WEAPON_BAT",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_KATANA",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_HAMMER",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_WRENCH",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_UNARMED",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_HATCHET",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_CROWBAR",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_MACHETE",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_POOLCUE",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_KNUCKLE",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_KARAMBIT",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_GOLFCLUB",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_BATTLEAXE",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_FLASHLIGHT",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_NIGHTSTICK",0.35)
-		SetWeaponDamageModifierThisFrame("WEAPON_STONE_HATCHET",0.25)
-		SetWeaponDamageModifierThisFrame("WEAPON_SMOKEGRENADE",0.0)
+		SetWeaponDamageModifier("WEAPON_BAT",0.25)
+		SetWeaponDamageModifier("WEAPON_KATANA",0.25)
+		SetWeaponDamageModifier("WEAPON_HAMMER",0.25)
+		SetWeaponDamageModifier("WEAPON_WRENCH",0.25)
+		SetWeaponDamageModifier("WEAPON_UNARMED",0.25)
+		SetWeaponDamageModifier("WEAPON_HATCHET",0.25)
+		SetWeaponDamageModifier("WEAPON_CROWBAR",0.25)
+		SetWeaponDamageModifier("WEAPON_MACHETE",0.25)
+		SetWeaponDamageModifier("WEAPON_POOLCUE",0.25)
+		SetWeaponDamageModifier("WEAPON_KNUCKLE",0.25)
+		SetWeaponDamageModifier("WEAPON_KARAMBIT",0.25)
+		SetWeaponDamageModifier("WEAPON_GOLFCLUB",0.25)
+		SetWeaponDamageModifier("WEAPON_BATTLEAXE",0.25)
+		SetWeaponDamageModifier("WEAPON_FLASHLIGHT",0.25)
+		SetWeaponDamageModifier("WEAPON_NIGHTSTICK",0.35)
+		SetWeaponDamageModifier("WEAPON_STONE_HATCHET",0.25)
+		SetWeaponDamageModifier("WEAPON_SMOKEGRENADE",0.0)
 
 		RemoveAllPickupsOfType("PICKUP_WEAPON_KNIFE")
 		RemoveAllPickupsOfType("PICKUP_WEAPON_PISTOL")
@@ -304,6 +375,11 @@ CreateThread(function()
 			DisableControlAction(1,140,true)
 			DisableControlAction(1,141,true)
 			DisableControlAction(1,142,true)
+		end
+
+		if IsPedInAnyHeli(PlayerPedId()) then
+			local veh = GetVehiclePedIsUsing(PlayerPedId())
+			SetVehicleRadioEnabled(veh,false)
 		end
 
 		if GetPlayerWantedLevel(PlayerId()) ~= 0 then
@@ -505,43 +581,43 @@ function DrawCompassText(str,x,y,style )
 		style = {}
 	end
 	
-	SetTextFont( (style.font ~= nil) and style.font or 0 )
-	SetTextScale( 0.0, (style.size ~= nil) and style.size or 1.0 )
-	SetTextProportional( 1 )
+	SetTextFont((style.font ~= nil) and style.font or 0)
+	SetTextScale(0.0,(style.size ~= nil) and style.size or 1.0)
+	SetTextProportional(1)
 	
 	if style.colour ~= nil then
-		SetTextColour( style.colour.r ~= nil and style.colour.r or 255, style.colour.g ~= nil and style.colour.g or 255, style.colour.b ~= nil and style.colour.b or 255, style.colour.a ~= nil and style.colour.a or 255 )
+		SetTextColour( style.colour.r ~= nil and style.colour.r or 255,style.colour.g ~= nil and style.colour.g or 255,style.colour.b ~= nil and style.colour.b or 255,style.colour.a ~= nil and style.colour.a or 255)
 	else
-		SetTextColour( 255, 255, 255, 255 )
+		SetTextColour(255,255,255,255)
 	end
 	
 	if style.shadow ~= nil then
-		SetTextDropShadow( style.shadow.distance ~= nil and style.shadow.distance or 0, style.shadow.r ~= nil and style.shadow.r or 0, style.shadow.g ~= nil and style.shadow.g or 0, style.shadow.b ~= nil and style.shadow.b or 0, style.shadow.a ~= nil and style.shadow.a or 255 )
+		SetTextDropShadow(style.shadow.distance ~= nil and style.shadow.distance or 0,style.shadow.r ~= nil and style.shadow.r or 0,style.shadow.g ~= nil and style.shadow.g or 0,style.shadow.b ~= nil and style.shadow.b or 0,style.shadow.a ~= nil and style.shadow.a or 255)
 	else
-		SetTextDropShadow( 0, 0, 0, 0, 255 )
+		SetTextDropShadow(0,0,0,0,255)
 	end
 	
 	if style.border ~= nil then
-		SetTextEdge( style.border.size ~= nil and style.border.size or 1, style.border.r ~= nil and style.border.r or 0, style.border.g ~= nil and style.border.g or 0, style.border.b ~= nil and style.border.b or 0, style.border.a ~= nil and style.shadow.a or 255 )
+		SetTextEdge(style.border.size ~= nil and style.border.size or 1,style.border.r ~= nil and style.border.r or 0,style.border.g ~= nil and style.border.g or 0,style.border.b ~= nil and style.border.b or 0,style.border.a ~= nil and style.shadow.a or 255)
 	end
 	
 	if style.centered ~= nil and style.centered == true then
-		SetTextCentre( true )
+		SetTextCentre(true)
 	end
 	
 	if style.outline ~= nil and style.outline == true then
 		SetTextOutline()
 	end
 	
-	SetTextEntry( "STRING" )
-	AddTextComponentString( str )
+	SetTextEntry("STRING")
+	AddTextComponentString(str)
 	
-	DrawText( x, y )
+	DrawText(x,y)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DEGREESTOINTERCARDINALDIRECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-function degreesToIntercardinalDirection( dgr )
+function degreesToIntercardinalDirection(dgr)
 	dgr = dgr % 360.0
 	
 	if (dgr >= 0.0 and dgr < 22.5) or dgr >= 337.5 then
@@ -565,17 +641,16 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADCAMERA
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	if compass.position.centered then
-		compass.position.x = compass.position.x - compass.width / 2
-	end
+function Compass()
+	CreateThread(function()
+		if compass.position.centered then
+			compass.position.x = compass.position.x - compass.width / 2
+		end
 
-	while true do 
-		Wait(0)
-		if vehCamera then
+		while vehCamera do 
 			local pxDegree = compass.width / compass.fov
 			local playerHeadingDegrees = 0
-
+			
 			if compass.followGameplayCam then
 				local camRot = GetGameplayCamRot(0)
 				playerHeadingDegrees = 360.0 - ((camRot.z + 360.0) % 360.0)
@@ -621,8 +696,10 @@ CreateThread(function()
 				tickDegree = tickDegree + compass.ticksBetweenCardinals
 				tickPosition = tickPosition + pxDegree * compass.ticksBetweenCardinals
 			end
+
+			Wait(4)
 		end
-	end
+	end)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWDISPLAYTEXT
@@ -822,7 +899,6 @@ function Helicam()
 		while vehCamera do
 			local Ped = PlayerPedId()
 			local heli = GetVehiclePedIsIn(Ped)
-			SetVehicleRadioEnabled(heli,false)
 
 			if not IsEntityDead(Ped) and (GetVehiclePedIsIn(Ped) == heli) and IsHeliHighEnough(heli) then
 				if locked_on then

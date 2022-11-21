@@ -21,8 +21,8 @@ Groups = {
 		["Parent"] = {
 			["Police"] = true
 		},
-		["Hierarchy"] = { "Chefe","Oficial" },
-		["Salary"] = { 1000,1000 },
+		["Hierarchy"] = { "Comando","Major","Capitão","Tenente","Sargento","Cabo","Soldado","Recruta" },
+		["Salary"] = { 2000,1500,1500,1500,1500,1500,1500,1500 },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -30,8 +30,8 @@ Groups = {
 		["Parent"] = {
 			["Paramedic"] = true
 		},
-		["Hierarchy"] = { "Chefe","Membro" },
-		["Salary"] = { 1000,1000 },
+		["Hierarchy"] = { "Diretor","Supervisor","Médico","Enfermeiro","Paramédico" },
+		["Salary"] = { 2000,1500,1500,1500,1500 },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -48,8 +48,7 @@ Groups = {
 			["Taxi"] = true
 		},
 		["Hierarchy"] = { "Chefe","Membro" },
-		["Service"] = {},
-		["Type"] = "Work"
+		["Service"] = {}
 	},
 	["BurgerShot"] = {
 		["Parent"] = {

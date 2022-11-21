@@ -14,10 +14,10 @@
     },
     "call_mode": "pma-voice",
     "webhookURL": "https://cdn.discordapp.com/attachments/1012153801173643376/1034181531457044590/background.webp",
-    "instagram_verify": "Admin",
+    "instagram_verify": [ "Admin","Premium" ],
     "instagram_accounts": {
         "*": 1,
-        "Premium": 2
+        "Admin": 2
     },
     "moderator": "Admin",
     "item": "cellphone",

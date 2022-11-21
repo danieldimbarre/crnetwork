@@ -8,6 +8,7 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Boxes = 0
 local Selected = false
+local Date = false
 local Cooldown = os.time()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TIMERS
@@ -150,6 +151,7 @@ local Loots = {
 CreateThread(function()
 	while true do
 		if Timers[os.date("%H:%M")] and os.time() >= Cooldown then
+			Date = os.date("%H:%M")
 			Boxes = 0
 			Selected = math.random(#Components)
 			local Crashed = Components[Selected]
@@ -183,6 +185,10 @@ AddEventHandler("helicrash:AmountBoxes",function()
 		TriggerClientEvent("helicrash:ClearEvent",-1)
 		Selected = false
 		Boxes = 0
+
+		if Timers[Date] then
+			Timers[Date] = nil
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -194,6 +200,8 @@ RegisterCommand("helicrash",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) then
 			if not Timers[Message[1]..":"..Message[2]] then
 				Timers[Message[1]..":"..Message[2]] = true
+
+				TriggerClientEvent("Notify",source,"verde","Helicrash definido para às "..Message[1]..":"..Message[2]..".",5000)
 			end
 		end
 	end

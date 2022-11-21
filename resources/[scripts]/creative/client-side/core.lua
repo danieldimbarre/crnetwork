@@ -519,7 +519,7 @@ local fov_min = 7.5
 local zoomspeed = 12.0
 local speed_lr = 16.0
 local speed_ud = 8.0
-local minHeightAboveGround = 60.0 -- Minimum height above ground to activate Heli Cam (in metres).
+local minHeightAboveGround = 1.0 -- Minimum height above ground to activate Heli Cam (in metres).
 
 local fov = (fov_max + fov_min) * 0.5
 

@@ -149,37 +149,37 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- 911
 -----------------------------------------------------------------------------------------------------------------------------------------
--- RegisterCommand("911",function(source,Message,History)
--- 	local Passport = vRP.Passport(source)
--- 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
--- 		if vRP.HasService(Passport,"Police") then
--- 			local Identity = vRP.Identity(Passport)
--- 			local Service = vRP.NumPermission("Police")
--- 			for Passports,Sources in pairs(Service) do
--- 				async(function()
--- 					TriggerClientEvent("chat:ClientMessage",Sources,"<blue>"..Identity["name"].."</blue>",History:sub(4))
--- 				end)
--- 			end
--- 		end
--- 	end
--- end)
+RegisterCommand("911",function(source,Message,History)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
+		if vRP.HasService(Passport,"Police") then
+			local Identity = vRP.Identity(Passport)
+			local Service = vRP.NumPermission("Police")
+			for Passports,Sources in pairs(Service) do
+				async(function()
+					TriggerClientEvent("chat:ClientMessage",Sources,Identity["name"].." "..Identity["name2"],History:sub(4),"Polícia")
+				end)
+			end
+		end
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- 112
 -----------------------------------------------------------------------------------------------------------------------------------------
--- RegisterCommand("112",function(source,Message,History)
--- 	local Passport = vRP.Passport(source)
--- 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
--- 		if vRP.HasService(Passport,"Paramedic") then
--- 			local Identity = vRP.Identity(Passport)
--- 			local Service = vRP.NumPermission("Paramedic")
--- 			for Passports,Sources in pairs(Service) do
--- 				async(function()
--- 					TriggerClientEvent("chat:ClientMessage",Sources,"<red>"..Identity["name"].." "..Identity["name2"].."</red>",History:sub(4))
--- 				end)
--- 			end
--- 		end
--- 	end
--- end)
+RegisterCommand("112",function(source,Message,History)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
+		if vRP.HasService(Passport,"Paramedic") then
+			local Identity = vRP.Identity(Passport)
+			local Service = vRP.NumPermission("Paramedic")
+			for Passports,Sources in pairs(Service) do
+				async(function()
+					TriggerClientEvent("chat:ClientMessage",Sources,Identity["name"].." "..Identity["name2"],History:sub(4),"Hospital")
+				end)
+			end
+		end
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- P
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -194,6 +194,8 @@ RegisterCommand("helicrash",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) then
 			if not Timers[Message[1]..":"..Message[2]] then
 				Timers[Message[1]..":"..Message[2]] = true
+
+				TriggerClientEvent("Notify",source,"verde","Helicrash definido para às "..Message[1]..":"..Message[2]..".",5000)
 			end
 		end
 	end

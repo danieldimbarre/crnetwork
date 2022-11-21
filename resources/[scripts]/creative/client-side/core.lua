@@ -1338,6 +1338,7 @@ RegisterCommand("toggleHelicam",function()
 
 				Helicam()
 				HelicamInformations()
+				Compass()
 			end
 		end
 	end

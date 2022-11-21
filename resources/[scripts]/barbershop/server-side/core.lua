@@ -44,20 +44,26 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DEBUG
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Debug = {}
 RegisterServerEvent("barbershop:Debug")
 AddEventHandler("barbershop:Debug",function()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Debug[Passport] or os.time() > Debug[Passport] then
 		TriggerClientEvent("barbershop:Apply",source,vRP.UserData(Passport,"Barbershop"))
 		TriggerClientEvent("skinshop:Apply",source,vRP.UserData(Passport,"Clothings"))
 		TriggerClientEvent("tattoos:Apply",source,vRP.UserData(Passport,"Tatuagens"))
 		TriggerClientEvent("target:Debug",source)
+		TriggerEvent("DebugObjects",Passport)
 
-		TriggerClientEvent("inventory:Cancel",source)
-
-		local Ped = GetPlayerPed(source)
-		local Coords = GetEntityCoords(Ped)
-		TriggerClientEvent("syncarea",source,Coords["x"],Coords["y"],Coords["z"],1)
+		Debug[Passport] = os.time() + 300
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport)
+	if Debug[Passport] then
+		Debug[Passport] = nil
 	end
 end)

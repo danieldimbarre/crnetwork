@@ -41,7 +41,7 @@ CreateThread(function()
 	while true do
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
-		if IsPedInAnyPoliceVehicle(Ped) and LocalPlayer["state"]["Police"] then
+		if IsPedInAnyPoliceVehicle(Ped) and not IsPedInAnyHeli(Ped) and LocalPlayer["state"]["Police"] then
 			if policeRadar then
 				if not policeFreeze then
 					TimeDistance = 100

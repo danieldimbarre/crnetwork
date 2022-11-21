@@ -14,7 +14,7 @@ AddEventHandler("vRP:Active",function(Passport,Name)
 	-- SetDiscordRichPresenceAssetSmall("creative")
 	SetDiscordRichPresenceAssetText("Energy")
 	-- SetDiscordRichPresenceAssetSmallText("Creative Network")
-	SetDiscordRichPresenceAction(0,"Entrar na Cidade","https://discord.gg/8Z64czXtq6/")
+	SetDiscordRichPresenceAction(0,"Entrar na Cidade","https://discord.gg/energy-rp/")
 	SetDiscordRichPresenceAction(1,"Nosso Instagram","https://www.instagram.com/cidadeenergy/")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

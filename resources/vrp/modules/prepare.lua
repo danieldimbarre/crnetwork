@@ -21,17 +21,12 @@ vRP.Prepare("characters/lastCharacters","SELECT id FROM characters WHERE license
 vRP.Prepare("characters/UpgradeCardlimit","UPDATE characters SET cardlimit = cardlimit + @cardlimit WHERE id = @Passport")
 vRP.Prepare("characters/DowngradeCardlimit","UPDATE characters SET cardlimit = cardlimit - @cardlimit WHERE id = @Passport")
 vRP.Prepare("characters/countPersons","SELECT COUNT(license) as qtd FROM characters WHERE license = @license and deleted = 0")
-
-if CreativeSpawn then
-	vRP.Prepare("characters/SetSkin","UPDATE characters SET skin = @skin WHERE id = @Passport")
-	vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,skin,phone,blood) VALUES(@license,@name,@name2,@sex,@skin,@phone,@blood)")
-else
-	vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,phone,blood) VALUES(@license,@name,@name2,@sex,@phone,@blood)")
-end
+vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,phone,blood) VALUES(@license,@name,@name2,@sex,@phone,@blood)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("accounts/Account","SELECT * FROM accounts WHERE license = @license")
+vRP.Prepare("accounts/dateLogin","UPDATE accounts SET login = @login WHERE license = @license")
 vRP.Prepare("accounts/newAccount","INSERT INTO accounts(license) VALUES(@license)")
 vRP.Prepare("accounts/AddGems","UPDATE accounts SET gems = gems + @gems WHERE license = @license")
 vRP.Prepare("accounts/Rolepass","UPDATE accounts SET rolepass = @rolepass WHERE license = @license")

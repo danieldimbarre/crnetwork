@@ -52,7 +52,7 @@ local Dismantles = {
 RegisterNetEvent("target:Dismantles")
 AddEventHandler("target:Dismantles",function()
 	Dismantleds = math.random(#Dismantles)
-	TriggerEvent("NotifyPush",{ title = "Localização do Desmanche", x = Dismantles[Dismantleds][1], y = Dismantles[Dismantleds][2], z = Dismantles[Dismantleds][3], blipColor = 60 })
+	TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Desmanche", x = Dismantles[Dismantleds][1], y = Dismantles[Dismantleds][2], z = Dismantles[Dismantleds][3], blipColor = 60 })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRELIST
@@ -201,8 +201,6 @@ local Fuels = {
 -- TARGET:ANIMDEITAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 local beds = {
-	[1631638868] = { 0.0,0.0 },
-	[2117668672] = { 0.0,0.0 },
 	[-1498379115] = { 1.0,90.0 },
 	[-1519439119] = { 1.0,0.0 },
 	[-289946279] = { 1.0,0.0 }
@@ -210,16 +208,101 @@ local beds = {
 
 RegisterNetEvent("target:animDeitar")
 AddEventHandler("target:animDeitar",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] then
+	if not Previous then
 		local Ped = PlayerPedId()
-		if GetEntityHealth(Ped) > 101 then
-			local objCoords = GetEntityCoords(Selected[1])
+		Previous = GetEntityCoords(Ped)
+		local objCoords = GetEntityCoords(Selected[1])
+		SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + beds[Selected[2]][1],false,false,false,false)
+		vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
+		SetEntityHeading(Ped,GetEntityHeading(Selected[1]) + beds[Selected[2]][2] - 180.0)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:UPBED
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("target:UpBed")
+AddEventHandler("target:UpBed",function()
+	if Previous then
+		local Ped = PlayerPedId()
+		SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
+		Previous = nil
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:SENTAR
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Previous = nil
+local chairs = {
+	[-171943901] = 0.0,
+	[-109356459] = 0.5,
+	[1805980844] = 0.5,
+	[-99500382] = 0.3,
+	[1262298127] = 0.0,
+	[1737474779] = 0.5,
+	[2040839490] = 0.0,
+	[1037469683] = 0.4,
+	[867556671] = 0.4,
+	[-1521264200] = 0.0,
+	[-741944541] = 0.4,
+	[-591349326] = 0.5,
+	[-293380809] = 0.5,
+	[-628719744] = 0.5,
+	[-1317098115] = 0.5,
+	[1630899471] = 0.5,
+	[38932324] = 0.5,
+	[-523951410] = 0.5,
+	[725259233] = 0.5,
+	[764848282] = 0.5,
+	[2064599526] = 0.5,
+	[536071214] = 0.5,
+	[589738836] = 0.5,
+	[146905321] = 0.5,
+	[47332588] = 0.5,
+	[-1118419705] = 0.5,
+	[538002882] = -0.1,
+	[-377849416] = 0.5,
+	[96868307] = 0.5,
+	[-1195678770] = 0.7,
+	[-853526657] = -0.1,
+	[652816835] = 0.8,
+	[-1086524442] = 0.8,
+	[-1222451822] = 0.5,
+	[-399437949] = 0.5,
+	[-992710074] = -0.2,
+	[1816935351] = 0.5,
+	[1889748069] = 0.5,
+	[-1692811878] = 0.5,
+	[1577885496] = 0.5,
+	[2129125614] = 0.5,
+	[736919402] = 0.5
+}
 
-			SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + beds[Selected[2]][1],1,0,0,0)
-			SetEntityHeading(Ped,GetEntityHeading(Selected[1]) + beds[Selected[2]][2] - 180.0)
+RegisterNetEvent("target:animSentar")
+AddEventHandler("target:animSentar",function()
+	if not Previous then
+		local Ped = PlayerPedId()
+		local objCoords = GetEntityCoords(Selected[1])
+		FreezeEntityPosition(Selected[1],true)
 
-			vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
+		local Heading = GetEntityHeading(Selected[1])
+		if chairs[Selected[2]] ~= 0.7 then
+			Heading = GetEntityHeading(Selected[1]) - 180.0
 		end
+
+		TaskStartScenarioAtPosition(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT",objCoords["x"],objCoords["y"],objCoords["z"] + chairs[Selected[2]],Heading,-1,true,true)
+
+		Previous = GetEntityCoords(Ped)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:UPCHAIR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("target:UpChair")
+AddEventHandler("target:UpChair",function()
+	if Previous then
+		local Ped = PlayerPedId()
+		SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
+		Previous = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -492,6 +575,28 @@ CreateThread(function()
 			},{
 				event = "target:BedDestroy",
 				label = "Destruir",
+				tunnel = "client"
+			}
+		},
+		Distance = 1.0
+	})
+
+	AddTargetModel({ -1498379115,-1519439119,-289946279 },{
+		options = {
+			{
+				event = "target:animDeitar",
+				label = "Deitar",
+				tunnel = "client"
+			}
+		},
+		Distance = 1.0
+	})
+
+	AddTargetModel({ -171943901,-109356459,1805980844,-99500382,1262298127,1737474779,2040839490,1037469683,867556671,-1521264200,-741944541,-591349326,-293380809,-628719744,-1317098115,1630899471,38932324,-523951410,725259233,764848282,2064599526,536071214,589738836,146905321,47332588,-1118419705,538002882,-377849416,96868307,-1195678770,-853526657,652816835,-1086524442,-1222451822,-399437949,-992710074,1816935351,1889748069,-1692811878,1577885496,2129125614,736919402 },{
+		options = {
+			{
+				event = "target:animSentar",
+				label = "Sentar",
 				tunnel = "client"
 			}
 		},
@@ -1118,6 +1223,7 @@ function TargetEnable()
 							if LocalPlayer["state"]["Police"] then
 								if GetEntityHealth(Entity) <= 100 then
 									Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
+									Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
 								else
 									Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
 									Menu[#Menu + 1] = { event = "police:prisonClothes", label = "Uniforme Presidiário", tunnel = "police" }

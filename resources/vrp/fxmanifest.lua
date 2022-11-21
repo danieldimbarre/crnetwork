@@ -1,9 +1,10 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "2.8.0"
+version "3.0.6"
 author "ImagicTheCat"
 creative_network "yes"
+creator "yes"
 
 client_scripts {
 	"config/Global.lua",

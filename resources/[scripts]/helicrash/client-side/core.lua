@@ -142,7 +142,7 @@ function HeliBlip(Number)
 		SetBlipColour(Blip,5)
 		SetBlipScale(Blip,0.8)
 		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("Helicrash")
+		AddTextComponentString("Helicóptero")
 		EndTextCommandSetBlipName(Blip)
 	end
 end

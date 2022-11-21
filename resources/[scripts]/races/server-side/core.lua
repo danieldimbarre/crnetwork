@@ -71,7 +71,7 @@ function Creative.Start(Number)
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						TriggerClientEvent("Notify",Sources,"amarelo","Detectamos um corredor clandestino nas ruas.",5000)
-						vRPC.playSound(Sources,"Beep_Red","DLC_HEIST_HACKING_SNAKE_SOUNDS")
+						vRPC.PlaySound(Sources,"Beep_Red","DLC_HEIST_HACKING_SNAKE_SOUNDS")
 					end)
 				end
 			end

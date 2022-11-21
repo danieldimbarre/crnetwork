@@ -35,7 +35,7 @@ Use = {
 							TriggerClientEvent("sounds:Private",source,"bandage",0.5)
 							Healths[Passport] = os.time() + 30
 							vRP.UpgradeStress(Passport,2)
-							vRPC.updateHealth(source,15)
+							vRPC.UpgradeHealth(source,15)
 						end
 					end
 
@@ -64,7 +64,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRPC.downHealth(source,100)
+					vRPC.DowngradeHealth(source,100)
 				end
 			end
 
@@ -90,7 +90,7 @@ Use = {
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
 							Healths[Passport] = os.time() + 15
 							vRP.UpgradeStress(Passport,1)
-							vRPC.updateHealth(source,8)
+							vRPC.UpgradeHealth(source,8)
 						end
 					end
 
@@ -123,7 +123,7 @@ Use = {
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
 							Healths[Passport] = os.time() + 15
 							vRP.UpgradeStress(Passport,1)
-							vRPC.updateHealth(source,8)
+							vRPC.UpgradeHealth(source,8)
 						end
 					end
 
@@ -627,7 +627,7 @@ Use = {
 
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
 							Healths[Passport] = os.time() + 60
-							vRPC.updateHealth(source,40)
+							vRPC.UpgradeHealth(source,40)
 						end
 					end
 
@@ -813,7 +813,7 @@ Use = {
 	end,
 
 	["firecracker"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) and not vCLIENT.checkCracker(source) then
+		if not vRP.InsideVehicle(source) and not vCLIENT.checkCracker(source) then
 			Active[Passport] = os.time() + 3
 			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("inventory:Close",source)
@@ -938,7 +938,7 @@ Use = {
 	end,
 
 	["nitro"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate = vRPC.VehicleList(source,4)
 			if Vehicle then
 				vRPC.AnimActive(source)
@@ -1023,7 +1023,7 @@ Use = {
 
 	["advtoolbox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split then
-			if not vRPC.inVehicle(source) then
+			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate = vRPC.VehicleList(source,4)
 				if Vehicle then
 					vRPC.AnimActive(source)
@@ -1060,7 +1060,7 @@ Use = {
 	end,
 
 	["enginea"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1122,7 +1122,7 @@ Use = {
 	end,
 
 	["engineb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1184,7 +1184,7 @@ Use = {
 	end,
 
 	["enginec"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1246,7 +1246,7 @@ Use = {
 	end,
 
 	["engined"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1308,7 +1308,7 @@ Use = {
 	end,
 
 	["enginee"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1370,7 +1370,7 @@ Use = {
 	end,
 
 	["brakea"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1432,7 +1432,7 @@ Use = {
 	end,
 
 	["brakeb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1494,7 +1494,7 @@ Use = {
 	end,
 
 	["brakec"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1556,7 +1556,7 @@ Use = {
 	end,
 
 	["braked"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1618,7 +1618,7 @@ Use = {
 	end,
 
 	["brakee"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1680,7 +1680,7 @@ Use = {
 	end,
 
 	["transmissiona"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1742,7 +1742,7 @@ Use = {
 	end,
 
 	["transmissionb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1804,7 +1804,7 @@ Use = {
 	end,
 
 	["transmissionc"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1866,7 +1866,7 @@ Use = {
 	end,
 
 	["transmissiond"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1928,7 +1928,7 @@ Use = {
 	end,
 
 	["transmissione"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				local PassportPlate = vRP.PassportPlate(Plate)
@@ -1990,7 +1990,7 @@ Use = {
 	end,
 
 	["suspensiona"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				if vCLIENT.CheckCar(source,Vehicle) then
@@ -2056,7 +2056,7 @@ Use = {
 	end,
 
 	["suspensionb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				if vCLIENT.CheckCar(source,Vehicle) then
@@ -2122,7 +2122,7 @@ Use = {
 	end,
 
 	["suspensionc"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				if vCLIENT.CheckCar(source,Vehicle) then
@@ -2188,7 +2188,7 @@ Use = {
 	end,
 
 	["suspensiond"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				if vCLIENT.CheckCar(source,Vehicle) then
@@ -2254,7 +2254,7 @@ Use = {
 	end,
 
 	["suspensione"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 			if Vehicle then
 				if vCLIENT.CheckCar(source,Vehicle) then
@@ -2320,7 +2320,7 @@ Use = {
 	end,
 
 	["toolbox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate = vRPC.VehicleList(source,4)
 			if Vehicle then
 				vRPC.AnimActive(source)
@@ -2358,7 +2358,7 @@ Use = {
 					return
 				end
 
-				if vRPC.inVehicle(source) then
+				if vRP.InsideVehicle(source) then
 					vRPC.AnimActive(source)
 					vGARAGE.StartHotwired(source)
 					Active[Passport] = os.time() + 100
@@ -2484,7 +2484,7 @@ Use = {
 	["blocksignal"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if not Player(source)["state"]["Handcuff"] then
 			local Vehicle,Network,Plate = vRPC.VehicleList(source,4)
-			if Vehicle and vRPC.inVehicle(source) then
+			if Vehicle and vRP.InsideVehicle(source) then
 				if not exports["garages"]:Signal(Plate) then
 					vRPC.AnimActive(source)
 					vGARAGE.StartHotwired(source)
@@ -4114,8 +4114,8 @@ Use = {
 
 					for Passports,Sources in pairs(Service) do
 						async(function()
-							vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 
@@ -4599,7 +4599,7 @@ Use = {
 	end,
 
 	["tyres"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			if not vCLIENT.checkWeapon(source,"WEAPON_WRENCH") then
 				TriggerClientEvent("Notify",source,"amarelo","<b>Chave Inglesa</b> não encontrada.",5000)
 				return
@@ -4637,7 +4637,7 @@ Use = {
 	end,
 
 	["premiumplate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRPC.inVehicle(source) then
+		if vRP.InsideVehicle(source) then
 			TriggerClientEvent("inventory:Close",source)
 
 			local vehModel = vRPC.VehicleName(source)
@@ -4680,7 +4680,7 @@ Use = {
 	end,
 
 	["handcuff"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			local ClosestPed = vRPC.ClosestPed(source,1)
 			if ClosestPed then
 				Player(source)["state"]["Cancel"] = true
@@ -4727,7 +4727,7 @@ Use = {
 	end,
 
 	["rope"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRPC.inVehicle(source) then
+		if not vRP.InsideVehicle(source) then
 			if Carry[Passport] then
 				TriggerClientEvent("player:ropeCarry",Carry[Passport],source)
 				TriggerClientEvent("player:Commands",Carry[Passport],false)

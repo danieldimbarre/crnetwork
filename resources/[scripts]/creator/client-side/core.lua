@@ -127,9 +127,9 @@ function defaultCharacter()
 	TriggerEvent("barbershop:Apply",myClothes)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- OPEN
+-- BARBERSHOP:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("creator:Open")
-AddEventHandler("creator:Open",function()
+RegisterNetEvent("barbershop:Open")
+AddEventHandler("barbershop:Open",function()
 	OpenCreator(true)
 end)

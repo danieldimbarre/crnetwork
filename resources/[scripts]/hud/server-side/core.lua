@@ -43,7 +43,7 @@ end)
 RegisterCommand("timeset",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			GlobalState["Hours"] = parseInt(Message[1])
 			GlobalState["Minutes"] = parseInt(Message[2])
 

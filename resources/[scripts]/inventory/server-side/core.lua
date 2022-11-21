@@ -161,9 +161,9 @@ Products = {
 	},
 	["tableweed"] = {
 		{ ["timer"] = 20, ["need"] = {
-			{ ["item"] = "silk", ["amount"] = 1 },
-			{ ["item"] = "weedleaf", ["amount"] = 1 }
-		}, ["needAmount"] = 1, ["item"] = "joint", ["itemAmount"] = 1 }
+			{ ["item"] = "silk", ["amount"] = 10 },
+			{ ["item"] = "weedleaf", ["amount"] = 10 }
+		}, ["needAmount"] = 10, ["item"] = "joint", ["itemAmount"] = 10 }
 	},
 	["burgershot1"] = {
 		{ ["timer"] = 10, ["item"] = "burgershot1", ["itemAmount"] = 1 }
@@ -253,7 +253,9 @@ Products = {
 		{ ["timer"] = 5, ["item"] = "WEAPON_BRICK", ["itemAmount"] = 3 },
 		{ ["timer"] = 5, ["item"] = "WEAPON_SHOES", ["itemAmount"] = 2 },
 		{ ["timer"] = 5, ["item"] = "dices", ["itemAmount"] = 1 },
-		{ ["timer"] = 5, ["item"] = "cup", ["itemAmount"] = 1 }
+		{ ["timer"] = 5, ["item"] = "cup", ["itemAmount"] = 1 },
+		{ ["timer"] = 5, ["item"] = "WEAPON_PISTOL_AMMO", ["itemAmount"] = 1 },
+		{ ["timer"] = 5, ["item"] = "WEAPON_PISTOL_AMMO", ["itemAmount"] = 3 }
 	},
 	["fishfillet"] = {
 		{ ["timer"] = 10, ["need"] = "fishfillet", ["needAmount"] = 1, ["item"] = "cookedfishfillet", ["itemAmount"] = 1 }
@@ -466,7 +468,7 @@ function Creative.requestInventory()
 							v["idBlood"] = Sanguine(Identity["blood"])
 							v["idName"] = Identity["name"].." "..Identity["name2"]
 
-							if Number == Passport then
+							if Number == Passport and Split[1] == "identity" then
 								if Identity["premium"] > os.time() then
 									local Groups = vRP.Hierarchy("Premium")
 									local Number = vRP.HasPermission(Passport,"Premium")
@@ -560,7 +562,7 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 	local Slot = tostring(Slot)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRPC.inVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
+		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
 			if itemBlock(Item) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				return
@@ -603,7 +605,7 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 				Player(source)["state"]["Buttons"] = true
 				Player(source)["state"]["Cancel"] = true
 
-				if not vRPC.inVehicle(source) then
+				if not vRP.InsideVehicle(source) then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					Active[Passport] = os.time() + 100
 
@@ -674,7 +676,7 @@ function Creative.Pickup(Number,Amount,Slot)
 						Player(source)["state"]["Buttons"] = true
 						Player(source)["state"]["Cancel"] = true
 
-						if not vRPC.inVehicle(source) then
+						if not vRP.InsideVehicle(source) then
 							vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 							Active[Passport] = os.time() + 100
 
@@ -1065,7 +1067,7 @@ function Creative.UseItem(Slot,Amount)
 				return
 			end
 
-			if vRPC.inVehicle(source) then
+			if vRP.InsideVehicle(source) then
 				if not itemVehicle(Full) then
 					return
 				end
@@ -1085,6 +1087,7 @@ function Creative.UseItem(Slot,Amount)
 					end
 
 					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
+					RemoveWeapons(source)
 				end
 			else
 				if not Ammos[Passport] then
@@ -1136,8 +1139,8 @@ function Creative.UseItem(Slot,Amount)
 					Ammos[Passport][Item] = parseInt(Ammo) + Amount
 
 					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),Amount,itemName(Full) })
-					vCLIENT.rechargeWeapon(source,Hash,Ammos[Passport][Item])
 					TriggerClientEvent("inventory:Update",source,"Backpack")
+					vCLIENT.rechargeWeapon(source,Hash,Amount)
 				end
 			end
 		elseif itemType(Full) == "Throwing" then
@@ -1216,6 +1219,8 @@ AddEventHandler("inventory:saveTemporary",function(Passport)
 			["WEAPON_PISTOL_AMMO"] = 250
 		}
 	end
+
+	RemoveWeapons(vRP.Source(Passport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:APPLYTEMPORARY
@@ -1226,6 +1231,8 @@ AddEventHandler("inventory:applyTemporary",function(Passport)
 		Ammos[Passport] = Temporary[Passport]["Ammos"]
 		Temporary[Passport] = nil
 	end
+
+	RemoveWeapons(vRP.Source(Passport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CANCEL
@@ -1321,63 +1328,34 @@ function Creative.verifyWeapon(Item,Ammo)
 		if not vRP.ConsultItem(Passport,Item,1) then
 			local Hash = itemAmmo(Item)
 
-			if Hash ~= nil then
-				if Ammos[Passport][Hash] then
+			if Hash and Ammos[Passport][Hash] then
+				if Ammo and Ammo > 0 then
 					Ammos[Passport][Hash] = parseInt(Ammo)
-
-					if Attachs[Passport][Item] ~= nil then
-						for Name,_ in pairs(Attachs[Passport][Item]) do
-							vRP.GenerateItem(Passport,Name,1)
-						end
-
-						Attachs[Passport][Item] = nil
-					end
-
-					if Ammos[Passport][Hash] > 0 then
-						vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
-						Ammos[Passport][Hash] = nil
-					end
-
-					TriggerClientEvent("inventory:Update",source,"Backpack")
 				end
+
+				if Attachs[Passport][Item] then
+					for Name,_ in pairs(Attachs[Passport][Item]) do
+						vRP.GenerateItem(Passport,Name,1)
+					end
+
+					Attachs[Passport][Item] = nil
+				end
+
+				if Ammos[Passport][Hash] > 0 then
+					vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
+					Ammos[Passport][Hash] = nil
+				end
+
+				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
+
+			RemoveWeapons(source)
 
 			return false
 		end
 	end
 
 	return true
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- EXISTWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.existWeapon(Item)
-	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport and Ammos[Passport] and Attachs[Passport] then
-		if not vRP.ConsultItem(Passport,Item,1) then
-			local Hash = itemAmmo(Item)
-
-			if Hash ~= nil then
-				if Ammos[Passport][Hash] then
-					if Attachs[Passport][Item] ~= nil then
-						for nameAttachs,_ in pairs(Attachs[Passport][Item]) do
-							vRP.GenerateItem(Passport,nameAttachs,1)
-						end
-
-						Attachs[Passport][Item] = nil
-					end
-
-					if Ammos[Passport][Hash] > 0 then
-						vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
-						Ammos[Passport][Hash] = nil
-					end
-
-					TriggerClientEvent("inventory:Update",source,"Backpack")
-				end
-			end
-		end
-	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DROPWEAPONS
@@ -1412,13 +1390,12 @@ function Creative.preventWeapon(Item,Ammo)
 	if Passport and Ammos[Passport] then
 		local Hash = itemAmmo(Item)
 
-		if Hash ~= nil then
-			if Ammos[Passport][Hash] then
-				if Ammo > 0 then
-					Ammos[Passport][Hash] = Ammo
-				else
-					Ammos[Passport][Hash] = nil
-				end
+		if Hash and Ammos[Passport][Hash] then
+			if Ammo > 0 then
+				Ammos[Passport][Hash] = Ammo
+			else
+				Ammos[Passport][Hash] = nil
+				RemoveWeapons(source)
 			end
 		end
 	end
@@ -1434,6 +1411,8 @@ AddEventHandler("inventory:CleanWeapons",function(Passport)
 	if Attachs[Passport] then
 		Attachs[Passport] = {}
 	end
+
+	RemoveWeapons(vRP.Source(Passport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VERIFYOBJECTS
@@ -1913,8 +1892,8 @@ function Creative.MakeProducts(Table)
 					local Service = vRP.NumPermission("Police")
 					for Passports,Sources in pairs(Service) do
 						async(function()
-							vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 					return
@@ -1962,7 +1941,11 @@ function Creative.MakeProducts(Table)
 
 			Player(source)["state"]["Buttons"] = true
 			Active[Passport] = os.time() + Products[Selected][Number]["timer"]
-			TriggerClientEvent("Progress",source,"Produzindo",Products[Selected][Number]["timer"] * 1000)
+			if Selected == "cemitery" then
+				TriggerClientEvent("Progress",source,"Roubando",Products[Selected][Number]["timer"] * 1000)
+			else
+				TriggerClientEvent("Progress",source,"Produzindo",Products[Selected][Number]["timer"] * 1000)
+			end
 
 			if Selected == "tablecoke" then
 				vRPC.playAnim(source,false,{"anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter"},true)
@@ -2227,7 +2210,7 @@ function Creative.StealPeds()
 				local Service = vRP.NumPermission("Police")
 				for Passports,Sources in pairs(Service) do
 					async(function()
-						vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 						TriggerClientEvent("NotifyPush",Sources,{ code = 32, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
@@ -2287,7 +2270,7 @@ function Creative.DrugPeds()
 				local Service = vRP.NumPermission("Police")
 				for Passports,Sources in pairs(Service) do
 					async(function()
-						vRPC.playSound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
@@ -2452,4 +2435,21 @@ AddEventHandler("Connect",function(Passport,source)
 			end
 		end
 	end
+
+	RemoveWeapons(source)
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REMOVEWEAPONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function RemoveWeapons(source)
+	if not source then
+		return
+	end
+
+	local Ped = GetPlayerPed(source)
+	local Weapon = GetSelectedPedWeapon(Ped)
+
+	RemoveWeaponFromPed(Ped,Weapon)
+	RemoveAllPedWeapons(Ped,true)
+	SetPedAmmo(Ped,Weapon,0)
+end

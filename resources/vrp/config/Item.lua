@@ -352,7 +352,7 @@ local List = {
 	["badge01"] = {
 		["Index"] = "badge01",
 		["Name"] = "Distintivo",
-		["Description"] = "<green>Departamento de Polícia de Energy</green>",
+		["Description"] = "<green>Departamento da Polícia Militar Energy</green>",
 		["Type"] = "Usável",
 		["Block"] = true,
 		["Weight"] = 0.75,
@@ -1376,7 +1376,7 @@ local List = {
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
 		["Scape"] = true,
-		["Max"] = 3,
+		["Max"] = 5,
 		["Economy"] = 30
 	},
 	["emptybottle"] = {

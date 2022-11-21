@@ -79,7 +79,7 @@ AddEventHandler("police:Impound",function(entity)
 		if not Impound[entity[2].."-"..entity[1]] then
 			Impound[entity[2].."-"..entity[1]] = true
 			TriggerEvent("towdriver:Call",source,entity[2],entity[1])
-			vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
+			vRPC.PlaySound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
 			TriggerClientEvent("Notify",source,"verde","Veículo foi registrado.",5000)
 
 			if string.sub(entity[1],1,4) == "DISM" then
@@ -154,14 +154,14 @@ function runPlate(source,Plate)
 	local Passport = vRP.PassportPlate(Plate)
 	if Passport then
 		local Identity = vRP.Identity(Passport["Passport"])
-		vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
+		vRPC.PlaySound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
 		TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Identity["id"].."<br><b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."<br><b>Nº:</b> "..Identity["phone"],10000)
 	else
 		if not plateSave[Plate] then
 			plateSave[Plate] = { plateName[math.random(#plateName)].." "..plateName2[math.random(#plateName2)],vRP.GeneratePhone() }
 		end
 
-		vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
+		vRPC.PlaySound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
 		TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> 9.999<br><b>Nome:</b> "..plateSave[Plate][1].."<br><b>Nº:</b> "..plateSave[Plate][2],10000)
 	end
 end

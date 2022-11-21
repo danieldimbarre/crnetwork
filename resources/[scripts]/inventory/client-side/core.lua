@@ -220,7 +220,7 @@ AddEventHandler("inventory:verifyWeapon",function(Item)
 		end
 	else
 		if Weapon == "" then
-			vSERVER.existWeapon(Name)
+			vSERVER.verifyWeapon(Name)
 		end
 	end
 end)
@@ -806,7 +806,7 @@ end
 -- RECHARGEWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.rechargeWeapon(Hash,Ammo)
-	SetPedAmmo(PlayerPedId(),Hash,Ammo)
+	AddAmmoToPed(PlayerPedId(),Hash,Ammo)
 	Actived = true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

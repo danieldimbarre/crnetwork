@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `gems` int(20) NOT NULL DEFAULT 0,
   `rolepass` int(20) NOT NULL DEFAULT 0,
   `premium` int(20) NOT NULL DEFAULT 0,
+  `login` varchar(25) NOT NULL DEFAULT '00/00/0000',
   `discord` varchar(50) NOT NULL DEFAULT '0',
   `license` varchar(50) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE,

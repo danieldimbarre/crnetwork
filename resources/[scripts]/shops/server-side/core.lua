@@ -31,7 +31,25 @@ local shops = {
 			["bananajuice"] = 100,
 			["acerolajuice"] = 100,
 			["passionjuice"] = 100,
+			["mushroomtea"] = 300,
 			["mushroom"] = 10
+		}
+	},
+	["BurgerShot-2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["hamburger2"] = 200,
+			["onionrings"] = 145,
+			["guarananatural"] = 150,
+			["orangejuice"] = 175,
+			["tangejuice"] = 175,
+			["grapejuice"] = 175,
+			["strawberryjuice"] = 175,
+			["bananajuice"] = 175,
+			["acerolajuice"] = 175,
+			["passionjuice"] = 175
 		}
 	},
 	["PizzaThis"] = {
@@ -50,6 +68,18 @@ local shops = {
 			["mushroom"] = 10
 		}
 	},
+	["PizzaThis-2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["pizzamozzarella"] = 200,
+			["pizzamushroom"] = 200,
+			["pizzabanana"] = 200,
+			["pizzachocolate"] = 200,
+			["chickenfries"] = 175
+		}
+	},
 	["UwuCoffee"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
@@ -58,12 +88,25 @@ local shops = {
 			["bread"] = 5,
 			["nigirizushi"] = 50,
 			["sushi"] = 50,
-			["cupcake"] = 50,
 			["applelove"] = 50,
 			["milkshake"] = 100,
 			["cappuccino"] = 125,
 			["cookies"] = 35,
+			["mushroomtea"] = 300,
 			["mushroom"] = 10
+		}
+	},
+	["UwuCoffee-2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["nigirizushi"] = 125,
+			["sushi"] = 125,
+			["applelove"] = 125,
+			["milkshake"] = 175,
+			["cappuccino"] = 200,
+			["cookies"] = 110
 		}
 	},
 	["BeanMachine"] = {
@@ -78,9 +121,29 @@ local shops = {
 			["dewars"] = 15,
 			["hennessy"] = 15,
 			["absolut"] = 15,
+			["calzone"] = 125,
+			["cupcake"] = 50,
+			["mushroomtea"] = 300,
 			["mushroom"] = 10,
 			["bread"] = 5,
-			["cheese"] = 10
+			["cheese"] = 10,
+			["coffee"] = 5
+		}
+	},
+	["BeanMachine-2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["coffeemilk"] = 145,
+			["sandwich"] = 65,
+			["tacos"] = 75,
+			["chandon"] = 65,
+			["dewars"] = 65,
+			["hennessy"] = 65,
+			["absolut"] = 65,
+			["calzone"] = 200,
+			["cupcake"] = 125
 		}
 	},
 	["Identity"] = {
@@ -102,13 +165,21 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["cellphone"] = 725
+			["cellphone"] = 725,
+			["radio"] = 975,
+			["camera"] = 275,
+			["scanner"] = 6750
 		}
 	},
 	["Brewery"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
-		["List"] = {}
+		["List"] = {
+			["chandon"] = 15,
+			["dewars"] = 15,
+			["hennessy"] = 15,
+			["absolut"] = 15
+		}
 	},
 	["Organic"] = {
 		["mode"] = "Sell",
@@ -446,7 +517,7 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["coffee"] = 20
+			["coffee"] = 5
 		}
 	},
 	["sodaMachine"] = {
@@ -485,7 +556,7 @@ local shops = {
 		["List"] = {
 			["hotdog"] = 15,
 			["hamburger"] = 25,
-			["coffee"] = 20,
+			["coffee"] = 5,
 			["cola"] = 15,
 			["soda"] = 15
 		}
@@ -524,12 +595,15 @@ local shops = {
 			["badge01"] = 10,
 			-- ["WEAPON_MOLOTOV"] = 75,
 			-- ["WEAPON_SMOKEGRENADE"] = 75,
+			-- ["WEAPON_FLASHBANG"] = 75,
 			-- ["attachsFlashlight"] = 1750,
 			-- ["attachsCrosshair"] = 1750,
 			-- ["attachsSilencer"] = 1750,
 			-- ["attachsMagazine"] = 1750,
 			-- ["attachsGrip"] = 1750,
-			["megaphone"] = 525
+			["megaphone"] = 525,
+			["radio"] = 975,
+			["binoculars"] = 275
 		}
 	},
 	["Criminal"] = {
@@ -714,6 +788,13 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 
 										if Item == "WEAPON_PETROLCAN" then
 											vRP.GenerateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500,false)
+										end
+
+										if shops[Type]["shop"] then
+											local Split = splitString(Type,"-")
+											if Split[2] ~= nil then
+												vRP.DirectChest(Split[1],"100",(shops[Type]["List"][Item] * Amount) * 0.05)
+											end
 										end
 									end
 

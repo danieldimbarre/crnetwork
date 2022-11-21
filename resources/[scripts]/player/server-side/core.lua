@@ -453,7 +453,7 @@ local preset = {
 			["decals"] = { item = 0, texture = 0 },
 			["mask"] = { item = 121, texture = 0 },
 			["shoes"] = { item = 25, texture = 0 },
-			["tshirt"] = { item = 122, texture = 0 },
+			["tshirt"] = { item = 195, texture = 0 },
 			["torso"] = { item = 414, texture = 6 },
 			["accessory"] = { item = 154, texture = 0 },
 			["watch"] = { item = -1, texture = 0 },

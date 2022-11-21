@@ -242,15 +242,15 @@ CreateThread(function()
     end
 
 	for _,v in pairs(Scenario) do
-        SetScenarioTypeEnabled(v[1],false)
+        SetScenarioTypeEnabled(v,false)
     end
 
 	for _,v in pairs(AudioScene) do
-        StartAudioScene(v[1])
+        StartAudioScene(v)
     end
 
 	for _,v in pairs(AudioFlag) do
-        SetAudioFlag(v[1],true)
+        SetAudioFlag(v,true)
     end
 	
 	SetRandomEventFlag(false)
@@ -1457,10 +1457,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYMAPPING
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterKeyMapping("toggleHelicam","Ativar/Desativar câmera do helicóptero.","keyboard","9")
-RegisterKeyMapping("toggleThermal","Ativar/Desativar câmera termal.","keyboard","1")
-RegisterKeyMapping("toggleNightvision","Ativar/Desativar câmera de visão noturna.","keyboard","2")
-RegisterKeyMapping("toggleSpotlight","Ativar/Desativar lanterna.","keyboard","3")
+RegisterKeyMapping("toggleHelicam","Ativar/Desativar câmera do helicóptero.","keyboard","6")
+RegisterKeyMapping("toggleThermal","Ativar/Desativar câmera termal.","keyboard","7")
+RegisterKeyMapping("toggleNightvision","Ativar/Desativar câmera de visão noturna.","keyboard","8")
+RegisterKeyMapping("toggleSpotlight","Ativar/Desativar lanterna.","keyboard","9")
 RegisterKeyMapping("toggleHelicamLock","Travar/Destravar câmera em veículos.","keyboard","SPACE")
 RegisterKeyMapping("toggleRappel","Acionar rapel no helicóptero.","keyboard","X")
 -----------------------------------------------------------------------------------------------------------------------------------------

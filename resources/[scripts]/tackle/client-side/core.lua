@@ -10,24 +10,21 @@ CreateThread(function()
 				TimeDistance = 1
 
 				if IsControlJustReleased(1,51) then
-					local Players = touchedPlayers()
-					if #Players > 0 then
-						local tackled = {}
-						local Coords = GetEntityForwardVector(Ped)
+					local tackled = {}
+					local Coords = GetEntityForwardVector(Ped)
 
-						SetPedToRagdollWithFall(Ped,2500,1500,0,Coords,1.0,0.0,0.0,0.0,0.0,0.0,0.0)
+					SetPedToRagdollWithFall(Ped,2500,1500,0,Coords,1.0,0.0,0.0,0.0,0.0,0.0,0.0)
 
-						while IsPedRagdoll(Ped) do
-							for _,v in ipairs(Players) do
-								if not tackled[v] then
-									tackled[v] = true
-									TriggerEvent("inventory:Cancel")
-									TriggerServerEvent("tackle:Update",GetPlayerServerId(v),{ Coords["x"],Coords["y"],Coords["z"] })
-								end
+					while IsPedRagdoll(Ped) do
+						for _,v in ipairs(touchedPlayers()) do
+							if not tackled[v] then
+								tackled[v] = true
+								TriggerEvent("inventory:Cancel")
+								TriggerServerEvent("tackle:Update",GetPlayerServerId(v),{ Coords["x"],Coords["y"],Coords["z"] })
 							end
-
-							Wait(1)
 						end
+
+						Wait(1)
 					end
 				end
 			end

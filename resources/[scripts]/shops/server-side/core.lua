@@ -165,13 +165,21 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["cellphone"] = 725
+			["cellphone"] = 725,
+			["radio"] = 975,
+			["camera"] = 275,
+			["scanner"] = 6750
 		}
 	},
 	["Brewery"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
-		["List"] = {}
+		["List"] = {
+			["chandon"] = 15,
+			["dewars"] = 15,
+			["hennessy"] = 15,
+			["absolut"] = 15
+		}
 	},
 	["Organic"] = {
 		["mode"] = "Sell",
@@ -594,7 +602,8 @@ local shops = {
 			-- ["attachsMagazine"] = 1750,
 			-- ["attachsGrip"] = 1750,
 			["megaphone"] = 525,
-			["radio"] = 975
+			["radio"] = 975,
+			["binoculars"] = 275
 		}
 	},
 	["Criminal"] = {

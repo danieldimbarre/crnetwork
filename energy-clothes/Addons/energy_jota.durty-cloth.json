@@ -6057,27 +6057,129 @@
       "Textures": [
         {
           "Position": 0,
-          "Id": "8115adad-07bf-455c-ab13-491eda735000",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_001_a_whi.ytd",
+          "Id": "6bdc9bd2-c205-4be2-9164-cdadb5ecf54b",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_a_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 1,
-          "Id": "e409184b-db7f-4d39-99a2-6787b3c44982",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_001_b_whi.ytd",
+          "Id": "f8b113f2-963c-42f5-82cb-1c445662088a",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_b_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 2,
+          "Id": "14f848f1-bf77-4320-b9ca-7fd712d720ff",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_c_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 3,
+          "Id": "9e2f5887-5f6d-4f89-aa7d-00e8296f40f1",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_d_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 4,
+          "Id": "1cc5530e-47dc-4376-abe1-96a1cab24e55",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_e_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 5,
+          "Id": "2c0665a9-c73f-4570-a263-31495fd6be91",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_f_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 6,
+          "Id": "793cb41d-d832-43b7-8e42-91561290322b",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_g_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 7,
+          "Id": "2500f2ed-84dc-4470-988b-b272da4a0b22",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_h_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 8,
+          "Id": "402d3deb-2e46-42a3-80c9-f735c6f03071",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_i_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 9,
+          "Id": "55790613-e6c9-410a-bf4c-656272f5caf0",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_j_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 10,
+          "Id": "ab0b3566-d309-4c48-b78c-0b702299cdf6",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_k_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 11,
+          "Id": "55e9358e-ff41-4736-95f6-254d0b177e06",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_l_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 12,
+          "Id": "61740426-6964-465f-b9c4-899c20e77868",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_m_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 13,
+          "Id": "829b82ff-94d9-4623-8f0f-fcfcfbb65484",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_n_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 14,
+          "Id": "4d0d7e2f-5e37-494b-b3f7-e52e96e95ba1",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_o_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 15,
+          "Id": "43224873-2f3a-4f08-b017-bdc8b9d49c88",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_p_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 16,
+          "Id": "7e57373c-17b3-435c-89e9-3825893a69fa",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_q_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 17,
+          "Id": "b4a86e8c-8c8b-419f-861a-bcba4344590c",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_r_uni.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 18,
+          "Id": "6a395eff-5a1b-4c5d-91de-5be0dba49019",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_002_s_uni.ytd",
           "IsDummy": false
         }
       ],
       "IsDummy": false,
       "ClothType": 0,
-      "DrawableSkinType": 1,
+      "DrawableSkinType": 0,
       "FirstPersonModelFilePath": null,
       "MeshPhysicsFilePath": null,
       "DrawableType": 4,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_001_r.ydd",
-      "Name": "Legs_001",
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_002_u.ydd",
+      "Name": "Legs_002",
       "Position": 0
     },
     {
@@ -6102,74 +6204,38 @@
       "Textures": [
         {
           "Position": 0,
-          "Id": "76f15d00-a054-4419-853c-7916847450c1",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_a_whi.ytd",
+          "Id": "6c37247c-89f6-4c8a-94e5-f13dcce19377",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_a_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 1,
-          "Id": "8c17ac51-cf53-4bc9-b2c4-cfe43f5d79f7",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_b_whi.ytd",
+          "Id": "36fc6cda-abff-4557-a21c-631c7e100d2f",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_b_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 2,
-          "Id": "56585610-fba6-4dba-9f77-4091147b3950",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_c_whi.ytd",
+          "Id": "11571a89-8ba0-4291-96ad-bc3bb42f2f27",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_c_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 3,
-          "Id": "39aada2a-996f-4327-a87a-92ae6d4ea987",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_d_whi.ytd",
+          "Id": "09b40aec-f79f-40f0-acf1-fa35c00aa3e5",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_d_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 4,
-          "Id": "43c2f5d8-997a-4c6c-a474-3856c3855354",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_e_whi.ytd",
+          "Id": "96735b54-05fa-43a8-80c2-a90bf1feabe0",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_e_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 5,
-          "Id": "f019f537-4048-4f8c-b5b5-1b547fe80abc",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_f_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 6,
-          "Id": "ae7e7b76-134f-458e-bceb-609f64e0308c",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_g_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 7,
-          "Id": "9c5c9c9b-8f31-4b82-98ea-8dd5ae7e2331",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_h_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 8,
-          "Id": "783535b4-ea2c-49c6-8904-5727b1159725",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_i_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 9,
-          "Id": "a993a5c5-52b2-48d6-b88b-6f85b08315d8",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_j_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 10,
-          "Id": "d0229a05-bf0f-4fa0-b2e0-d1aaa0cff855",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_k_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 11,
-          "Id": "9e599deb-dbfa-451a-bcd9-77c41e483ba1",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_005_l_whi.ytd",
+          "Id": "7945d6dc-5613-4684-8109-449f6add87ae",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_f_whi.ytd",
           "IsDummy": false
         }
       ],
@@ -6181,8 +6247,8 @@
       "DrawableType": 4,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_005_r.ydd",
-      "Name": "Legs_005",
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_006_r.ydd",
+      "Name": "Legs_006",
       "Position": 1
     },
     {
@@ -6207,38 +6273,44 @@
       "Textures": [
         {
           "Position": 0,
-          "Id": "d28e87db-bff6-4a8e-88a3-0d9006cfe87c",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_a_whi.ytd",
+          "Id": "8afc33dd-7b5f-4d89-8661-dc3c589e5540",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_007_a_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 1,
-          "Id": "f2f1c287-de47-41f9-aef6-03e4cb7a5ce1",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_b_whi.ytd",
+          "Id": "4d013b13-0ef0-498a-aaf6-92d59fed37bb",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_007_b_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 2,
-          "Id": "dd1c671f-d59a-4e07-9221-c43b8db96bb0",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_c_whi.ytd",
+          "Id": "df09150b-daed-4c9a-8481-e12f1f4d2434",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_007_c_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 3,
-          "Id": "d29c908b-2444-4124-b778-56f74eb45019",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_d_whi.ytd",
+          "Id": "e23e3021-e373-473e-8351-730d04180f8c",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_007_d_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 4,
-          "Id": "9d66a629-30b1-47fc-a015-d317ef67b979",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_e_whi.ytd",
+          "Id": "38bcdb74-d87a-4860-be7c-d5bcf5230e46",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_007_e_whi.ytd",
           "IsDummy": false
         },
         {
           "Position": 5,
-          "Id": "08c010aa-da68-463b-8623-120a54bbd695",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_006_f_whi.ytd",
+          "Id": "b4510c0e-68db-47a8-b771-a65cec38d6ca",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_007_f_whi.ytd",
+          "IsDummy": false
+        },
+        {
+          "Position": 6,
+          "Id": "e0f82e43-2a0b-4fd1-9316-abbb73d9ad9a",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_007_g_whi.ytd",
           "IsDummy": false
         }
       ],
@@ -6250,8 +6322,8 @@
       "DrawableType": 4,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_006_r.ydd",
-      "Name": "Legs_006",
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_007_r.ydd",
+      "Name": "Legs_007",
       "Position": 2
     },
     {
@@ -6276,111 +6348,81 @@
       "Textures": [
         {
           "Position": 0,
-          "Id": "3e99c020-2583-486d-b43d-8cea7cceec1d",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_a_whi.ytd",
+          "Id": "24c751ac-eedd-4cae-947a-461dd0e7ac15",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_a_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 1,
-          "Id": "8d49af21-924d-4525-af1f-4292b674204f",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_b_whi.ytd",
+          "Id": "24e75298-c673-4621-a5a3-183b6fb2c0cb",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_b_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 2,
-          "Id": "33fa5746-40f6-4076-a2bd-ca3a1136df35",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_c_whi.ytd",
+          "Id": "bd861b3d-2fed-4498-894a-776ca332e46f",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_c_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 3,
-          "Id": "54ea0c9c-7c17-47b6-9f29-cf4871a7e62c",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_d_whi.ytd",
+          "Id": "ba2d4afd-9e63-43e8-98bd-c6e0f0304dfe",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_d_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 4,
-          "Id": "2b837b4f-9270-4c42-b653-834401e21303",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_e_whi.ytd",
+          "Id": "981b0993-0eca-4d80-b9bf-224e947a64cd",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_e_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 5,
-          "Id": "f8343d12-45ae-45a7-aa4f-8f4668ddd95b",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_f_whi.ytd",
+          "Id": "8ef31917-af27-497e-bcab-a0d044349583",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_f_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 6,
-          "Id": "c8793755-fcce-4f83-863d-62253cdb15f7",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_g_whi.ytd",
+          "Id": "652dea36-4435-45e1-9463-342d3bfd10d6",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_g_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 7,
-          "Id": "a89ae5b6-95b7-4f4e-a9f4-620753d9b47e",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_h_whi.ytd",
+          "Id": "c1565e33-a129-4b36-8ab0-fd83f2385870",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_h_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 8,
-          "Id": "0da34294-7d61-4e39-ae9d-a39b86113a7e",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_i_whi.ytd",
+          "Id": "9936e90a-03b0-4b0d-9b0f-19199f23b588",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_i_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 9,
-          "Id": "6165d4c4-cc05-4d41-b117-92c2dc6a03ee",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_j_whi.ytd",
+          "Id": "93852779-18ee-40ea-8ff3-6775596a58bc",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_j_uni.ytd",
           "IsDummy": false
         },
         {
           "Position": 10,
-          "Id": "af2155a3-9972-444d-8d9e-5e332593d757",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_k_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 11,
-          "Id": "3696347a-14d0-4755-8f02-4febe1bda2fb",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_l_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 12,
-          "Id": "33232b87-e9bd-4e9a-ad5a-e77007441a72",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_m_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 13,
-          "Id": "7a50f98a-ac99-4ce0-a080-6aba70ce4d27",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_n_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 14,
-          "Id": "0bf8bbb2-b743-4237-991c-559a1d437737",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_o_whi.ytd",
-          "IsDummy": false
-        },
-        {
-          "Position": 15,
-          "Id": "a7aa1ee7-e53f-4916-a437-776737e40c24",
-          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_010_p_whi.ytd",
+          "Id": "9b84ae27-3f0e-4a7c-b3c5-93b2c5e7f25e",
+          "FilePath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_diff_011_k_uni.ytd",
           "IsDummy": false
         }
       ],
       "IsDummy": false,
       "ClothType": 0,
-      "DrawableSkinType": 1,
+      "DrawableSkinType": 0,
       "FirstPersonModelFilePath": null,
       "MeshPhysicsFilePath": null,
       "DrawableType": 4,
       "AudioPreset": 0,
       "TargetGender": 1,
-      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_010_r.ydd",
-      "Name": "Legs_010",
+      "MainPath": "E:\\FiveM\\crnetwork\\energy-clothes\\Addons\\stream\\F\\JOTA R DA GROTA\\lowr_011_u.ydd",
+      "Name": "Legs_011",
       "Position": 3
     },
     {

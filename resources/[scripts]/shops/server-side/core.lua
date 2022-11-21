@@ -587,12 +587,14 @@ local shops = {
 			["badge01"] = 10,
 			-- ["WEAPON_MOLOTOV"] = 75,
 			-- ["WEAPON_SMOKEGRENADE"] = 75,
+			-- ["WEAPON_FLASHBANG"] = 75,
 			-- ["attachsFlashlight"] = 1750,
 			-- ["attachsCrosshair"] = 1750,
 			-- ["attachsSilencer"] = 1750,
 			-- ["attachsMagazine"] = 1750,
 			-- ["attachsGrip"] = 1750,
-			["megaphone"] = 525
+			["megaphone"] = 525,
+			["radio"] = 975
 		}
 	},
 	["Criminal"] = {

@@ -275,9 +275,10 @@ local shops = {
 			["WEAPON_WRENCH"] = 580
 		}
 	},
-	["Tools"] = {
+	["Mechanic-2"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
+		["shop"] = true,
 		["List"] = {
 			["tyres"] = 360,
 			["toolbox"] = 1000,

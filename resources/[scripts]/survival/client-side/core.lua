@@ -57,8 +57,6 @@ CreateThread(function()
 					TimeDistance = 1
 					SetEntityHealth(Ped,100)
 
-					TriggerServerEvent("pma-voice:toggleMute",true)
-
 					DisableControlAction(1,18,true)
 					DisableControlAction(1,22,true)
 					DisableControlAction(1,24,true)

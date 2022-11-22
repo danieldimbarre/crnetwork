@@ -873,11 +873,13 @@ end
 -- DROPITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("dropItem",function(Data,Callback)
-	local Ped = PlayerPedId()
-	local Coords = GetEntityCoords(Ped)
-	local _,Z = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
+	if not TakeWeapon then
+		local Ped = PlayerPedId()
+		local Coords = GetEntityCoords(Ped)
+		local _,Z = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
 
-	vSERVER.Drops(Data["item"],Data["slot"],Data["amount"],Coords["x"],Coords["y"],Z)
+		vSERVER.Drops(Data["item"],Data["slot"],Data["amount"],Coords["x"],Coords["y"],Z)
+	end
 
 	Callback("Ok")
 end)

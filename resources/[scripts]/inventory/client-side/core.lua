@@ -24,6 +24,7 @@ local Backpack = false
 local TakeWeapon = false
 local StoreWeapon = false
 local Reloaded = GetGameTimer()
+local UseCooldown = GetGameTimer()
 LocalPlayer["state"]["Buttons"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:CANCEL
@@ -177,7 +178,10 @@ end)
 -- USEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("useItem",function(Data,Callback)
-	TriggerEvent("inventory:Slot",Data["slot"],Data["amount"])
+	if GetGameTimer() >= UseCooldown then
+		TriggerEvent("inventory:Slot",Data["slot"],Data["amount"])
+		UseCooldown = GetGameTimer() + 1000
+	end
 
 	Callback("Ok")
 end)
@@ -692,11 +696,13 @@ function Creative.storeWeaponHands()
 			ClearPedTasks(Ped)
 		end
 
+		local Ammos = GetAmmoInPedWeapon(Ped,Weapon)
+
 		StoreWeapon = false
 		LocalPlayer["state"]["Cancel"] = false
 		TriggerEvent("inventory:CleanWeapons",true)
 
-		return true,GetAmmoInPedWeapon(Ped,Weapon),Last
+		return true,Ammos,Last
 	end
 
 	return false

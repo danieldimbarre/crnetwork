@@ -2483,8 +2483,7 @@ Use = {
 			Active[Passport] = os.time() + 100
 			Player(source)["state"]["Buttons"] = true
 
-			local taskResult = vTASKBAR.taskDoors(source)
-			if taskResult then
+			if vTASKBAR.taskHandcuff(source) then
 				Brokenpick = 900
 				Player(source)["state"]["Handcuff"] = false
 				vRPC.removeObjects(source)
@@ -4717,7 +4716,7 @@ Use = {
 
 					vRPC.removeObjects(ClosestPed)
 				else
-					if not vTASKBAR.taskDoors(ClosestPed) then
+					if not vTASKBAR.taskHandcuff(ClosestPed) then
 						TriggerClientEvent("radio:RadioClean",ClosestPed)
 						TriggerClientEvent("player:playerCarry",ClosestPed,source,"handcuff")
 						vRPC.playAnim(source,false,{"mp_arrest_paired","cop_p2_back_left"},false)

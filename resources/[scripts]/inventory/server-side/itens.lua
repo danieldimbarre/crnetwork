@@ -2478,6 +2478,29 @@ Use = {
 					Active[Passport] = nil
 				end
 			end
+		else
+			local Brokenpick = 950
+			Active[Passport] = os.time() + 100
+			Player(source)["state"]["Buttons"] = true
+
+			local taskResult = vTASKBAR.taskDoors(source)
+			if taskResult then
+				Brokenpick = 900
+				Player(source)["state"]["Handcuff"] = false
+				vRPC.removeObjects(source)
+				
+				Player(source)["state"]["Commands"] = false
+			end
+
+			if math.random(1000) >= Brokenpick then
+				if vRP.TakeItem(Passport,Full,1,false) then
+					vRP.GiveItem(Passport,"lockpick-0",1,false)
+					TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+				end
+			end
+
+			Player(source)["state"]["Buttons"] = false
+			Active[Passport] = nil
 		end
 	end,
 
@@ -4694,20 +4717,22 @@ Use = {
 
 					vRPC.removeObjects(ClosestPed)
 				else
-					TriggerClientEvent("hud:RadioClean",ClosestPed)
-					TriggerClientEvent("player:playerCarry",ClosestPed,source,"handcuff")
-					vRPC.playAnim(source,false,{"mp_arrest_paired","cop_p2_back_left"},false)
-					vRPC.playAnim(ClosestPed,false,{"mp_arrest_paired","crook_p2_back_left"},false)
+					if not vTASKBAR.taskDoors(ClosestPed) then
+						TriggerClientEvent("radio:RadioClean",ClosestPed)
+						TriggerClientEvent("player:playerCarry",ClosestPed,source,"handcuff")
+						vRPC.playAnim(source,false,{"mp_arrest_paired","cop_p2_back_left"},false)
+						vRPC.playAnim(ClosestPed,false,{"mp_arrest_paired","crook_p2_back_left"},false)
 
-					Wait(3500)
+						Wait(3500)
 
-					vRPC.removeObjects(source)
-					Player(ClosestPed)["state"]["Handcuff"] = true
-					Player(ClosestPed)["state"]["Commands"] = true
-					TriggerClientEvent("inventory:Close",ClosestPed)
-					TriggerClientEvent("sounds:Private",source,"cuff",0.5)
-					TriggerClientEvent("sounds:Private",ClosestPed,"cuff",0.5)
-					TriggerClientEvent("player:playerCarry",ClosestPed,source)
+						vRPC.removeObjects(source)
+						Player(ClosestPed)["state"]["Handcuff"] = true
+						Player(ClosestPed)["state"]["Commands"] = true
+						TriggerClientEvent("inventory:Close",ClosestPed)
+						TriggerClientEvent("sounds:Private",source,"cuff",0.5)
+						TriggerClientEvent("sounds:Private",ClosestPed,"cuff",0.5)
+						TriggerClientEvent("player:playerCarry",ClosestPed,source)
+					end
 				end
 
 				Player(source)["state"]["Cancel"] = false
@@ -4735,7 +4760,7 @@ Use = {
 				vRPC.removeObjects(source)
 				Carry[Passport] = nil
 			else
-				local ClosestPed = vRPC.ClosestPed(source,3)
+				local ClosestPed = vRPC.ClosestPed(source,4)
 				if ClosestPed then
 					if vRP.GetHealth(ClosestPed) <= 100 or Player(ClosestPed)["state"]["Handcuff"] then
 						Carry[Passport] = ClosestPed

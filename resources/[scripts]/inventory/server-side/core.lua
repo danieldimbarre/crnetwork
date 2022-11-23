@@ -1061,6 +1061,10 @@ function Creative.UseItem(Slot,Amount)
 			return
 		end
 
+		if Player(source)["state"]["Handcuff"] and Item ~= "lockpick" then
+			return
+		end
+
 		if itemType(Full) == "Armamento" and parseInt(Slot) <= 5 then
 			if vCLIENT.CheckArms(source) then
 				TriggerClientEvent("Notify",source,"amarelo","Mão machucada.",5000)

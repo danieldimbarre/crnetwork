@@ -1057,7 +1057,7 @@ function Creative.UseItem(Slot,Amount)
 			end
 		end
 
-		if (vCLIENT.checkWater(source) and Item ~= "soap") or (not vCLIENT.checkWater(source) and Item == "soap") then
+		if (vCLIENT.checkWater(source) and (Item ~= "soap" and Item ~= "rope")) or (not vCLIENT.checkWater(source) and Item == "soap") then
 			return
 		end
 
@@ -1425,6 +1425,8 @@ function Creative.VerifyObjects(Entity,Service)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
+		local ServiceList,Total = 0,0
+
 		if Service == "Lixeiro" then
 			if not vRPC.LastVehicle(source,"trash") then
 				TriggerClientEvent("Notify",source,"amarelo","Precisa utilizar o veículo do <b>Lixeiro</b>.",3000)
@@ -1437,7 +1439,7 @@ function Creative.VerifyObjects(Entity,Service)
 				return
 			end
 
-			local ServiceList,Total = vRP.NumPermission("Police")
+			ServiceList,Total = vRP.NumPermission("Police")
 			if Total <= 1 then
 				TriggerClientEvent("Notify",source,"azul","Parquímetro vazio, aguarde até que um cidadão venha até o local efetuar reabastecimento do mesmo.",5000)
 				return
@@ -2250,7 +2252,7 @@ function Creative.StealPeds()
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 32, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end
@@ -2310,7 +2312,7 @@ function Creative.DrugPeds()
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end

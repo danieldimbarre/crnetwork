@@ -165,6 +165,84 @@ local OpenItens = {
 			{ ["Item"] = "analgesic", ["Amount"] = 4 },
 			{ ["Item"] = "dollars", ["Amount"] = 200 }
 		}
+	},
+	["WEAPON_HATCHET"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_BAT"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_KATANA"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_KARAMBIT"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_BATTLEAXE"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_CROWBAR"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_GOLFCLUB"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_HAMMER"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_MACHETE"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_POOLCUE"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_STONE_HATCHET"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_WRENCH"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_KNUCKLE"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

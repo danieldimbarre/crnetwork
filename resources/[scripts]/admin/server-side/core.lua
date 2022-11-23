@@ -113,24 +113,24 @@ RegisterCommand("god",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) then
 			if Message[1] then
 				if Message[1] == "all" then
-					local List = vRP.Players()
-					for OtherPassport,OtherSource in pairs(List) do
+					local List = vRPC.Players(source)
+					for OtherPlayer,OtherSource in pairs(List) do
 						async(function()
-							vRP.UpgradeThirst(OtherPassport,100)
-							vRP.UpgradeHunger(OtherPassport,100)
-							vRP.DowngradeStress(OtherPassport,100)
+							vRP.UpgradeThirst(OtherPlayer,100)
+							vRP.UpgradeHunger(OtherPlayer,100)
+							vRP.DowngradeStress(OtherPlayer,100)
 							vRP.Revive(OtherSource,200)
 
 							TriggerClientEvent("paramedic:Reset",OtherSource)
 						end)
 					end
 				else
-					local OtherPassport = parseInt(Message[1])
-					local ClosestPed = vRP.Source(OtherPassport)
+					local OtherPlayer = parseInt(Message[1])
+					local ClosestPed = vRP.Source(OtherPlayer)
 					if ClosestPed then
-						vRP.UpgradeThirst(OtherPassport,100)
-						vRP.UpgradeHunger(OtherPassport,100)
-						vRP.DowngradeStress(OtherPassport,100)
+						vRP.UpgradeThirst(OtherPlayer,100)
+						vRP.UpgradeHunger(OtherPlayer,100)
+						vRP.DowngradeStress(OtherPlayer,100)
 						vRP.Revive(ClosestPed,200)
 
 						TriggerClientEvent("paramedic:Reset",ClosestPed)
@@ -161,10 +161,10 @@ RegisterCommand("goda",function(source,Message)
 				local Players = vRPC.ClosestPeds(source,Range)
 				for _,v in pairs(Players) do
 					async(function()
-						local OtherPassport = vRP.Passport(v[2])
-						vRP.UpgradeThirst(OtherPassport,100)
-						vRP.UpgradeHunger(OtherPassport,100)
-						vRP.DowngradeStress(OtherPassport,100)
+						local OtherPlayer = vRP.Passport(v[2])
+						vRP.UpgradeThirst(OtherPlayer,100)
+						vRP.UpgradeHunger(OtherPlayer,100)
+						vRP.DowngradeStress(OtherPlayer,100)
 						vRP.Revive(v[2],200)
 
 						TriggerClientEvent("paramedic:Reset",v[2])
@@ -452,7 +452,7 @@ RegisterCommand("players",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
-			TriggerClientEvent("Notify",source,"azul","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices(),5000)
+			TriggerClientEvent("Notify",source,"azul","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices()..".",5000)
 		end
 	end
 end)
@@ -464,23 +464,20 @@ RegisterCommand("ids",function(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
 			local Text = ""
-			local List = vRP.Players()
-
-			for OtherPassport,_ in pairs(List) do
-				async(function()
-					if Text == "" then
-						Text = Text..OtherPassport
-					else
-						if OtherPassport ~= #List then
-							Text = Text..", "
-						end
-
-						Text = Text..OtherPassport
+			local List = vRPC.Players(source)
+			for OtherPlayer,_ in pairs(List) do
+				if Text == "" then
+					Text = Text..OtherPlayer
+				else
+					if OtherPlayer ~= #List then
+						Text = Text..", "
 					end
-				end)
+
+					Text = Text..OtherPlayer
+				end
 			end
 
-			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text,5000)
+			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",5000)
 		end
 	end
 end)
@@ -551,7 +548,7 @@ RegisterCommand("kickall",function(source)
 		end
 	end
 
-	local List = vRP.Players()
+	local List = vRPC.Players(source)
 	for OtherPlayer,OtherSource in pairs(List) do
 		TriggerClientEvent("admin:KickAll",OtherSource)
 		Wait(1000)
@@ -581,7 +578,7 @@ RegisterCommand("itemall",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
-			local List = vRP.Players()
+			local List = vRPC.Players(source)
 			for OtherPlayer,_ in pairs(List) do
 				async(function()
 					vRP.GenerateItem(OtherPlayer,Message[1],Message[2],true)

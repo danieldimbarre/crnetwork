@@ -172,6 +172,7 @@ RegisterCommand("emergencyFunctions",function()
 
 					exports["dynamic"]:SubMenu("Fardamentos","Todos os fardamentos policiais.","prePolice")
 					exports["dynamic"]:AddButton("Computador","Computador de bordo policial.","police:Mdt","",false,false)
+					exports["dynamic"]:AddButton("Invadir","Invadir a propriedade.","propertys:Invade","",false,true)
 				elseif LocalPlayer["state"]["Paramedic"] then
 					exports["dynamic"]:AddButton("Centro Médico","Fardamento de doutor.","player:Preset","8","preMedic",true)
 					exports["dynamic"]:AddButton("Centro Médico","Fardamento de paramédico.","player:Preset","9","preMedic",true)

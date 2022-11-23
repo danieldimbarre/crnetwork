@@ -1437,10 +1437,9 @@ function Creative.VerifyObjects(Entity,Service)
 				return
 			end
 
-			local Services,Total = vRP.NumPermission("Police")
+			local ServiceList,Total = vRP.NumPermission("Police")
 			if Total <= 1 then
 				TriggerClientEvent("Notify",source,"azul","Parquímetro vazio, aguarde até que um cidadão venha até o local efetuar reabastecimento do mesmo.",5000)
-
 				return
 			end
 		end
@@ -1517,7 +1516,7 @@ function Creative.VerifyObjects(Entity,Service)
 								itemSelect = { "dollars",math.random(75) }
 							end
 
-							for Passports,Sources in pairs(Services) do
+							for Passports,Sources in pairs(ServiceList) do
 								async(function()
 									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 									TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Parquímetro", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })

@@ -1465,19 +1465,19 @@ function Creative.VerifyObjects(Entity,Service)
 
 				if Service == "Parquimetro" then
 					Active[Passport] = os.time() + 10
-					TriggerClientEvent("Progress",source,10000)
-
+					TriggerClientEvent("Progress",source,"Roubando",10000)
 					vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+					Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 1800 }
 				else
 					Active[Passport] = os.time() + 5
 					TriggerClientEvent("Progress",source,"Vasculhando",5000)
 					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+					Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 3600 }
 				end
 
 				verifyObjects[Passport] = { Model,Hash }
 				Player(source)["state"]["Buttons"] = true
 				TriggerClientEvent("inventory:Close",source)
-				Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 3600 }
 
 				repeat
 					if os.time() >= parseInt(Active[Passport]) then
@@ -1517,7 +1517,7 @@ function Creative.VerifyObjects(Entity,Service)
 								itemSelect = { "dollars",math.random(75) }
 							end
 
-							for Passports,Sources in pairs(Service) do
+							for Passports,Sources in pairs(Services) do
 								async(function()
 									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 									TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Parquímetro", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })

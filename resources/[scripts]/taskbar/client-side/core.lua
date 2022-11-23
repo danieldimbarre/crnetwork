@@ -212,7 +212,7 @@ end
 -- TASKHANDCUFF
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskHandcuff()
-	if taskBar(250) then
+	if taskBar(1) then
 		return true
 	end
 

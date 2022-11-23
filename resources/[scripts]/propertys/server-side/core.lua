@@ -18,6 +18,22 @@ local Lock = {}
 local Inside = {}
 local Markers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- NEARESTHOMES
+-----------------------------------------------------------------------------------------------------------------------------------------
+function nearestHomes(source)
+	local Ped = GetPlayerPed(source)
+	local Coords = GetEntityCoords(Ped)
+
+	for Name,v in pairs(Propertys) do
+		local Distance = #(Coords - vector3(v[1],v[2],v[3]))
+		if Distance <= 1 then
+			return Name
+		end
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Propertys(Name)
@@ -60,6 +76,22 @@ AddEventHandler("propertys:Toggle",function(Name)
 		else
 			Inside[Passport] = Name
 			TriggerEvent("vRP:BucketServer",source,"Enter",Route(Name))
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:INVADE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("propertys:Invade")
+AddEventHandler("propertys:Invade",function()
+	local source = source
+	local Name = nearestHomes(source)
+	if Name then
+		local Passport = vRP.Passport(source)
+		if Passport then
+			if vRP.HasService(Passport,"Police") then
+				TriggerClientEvent("propertys:Enter",source,Name)
+			end
 		end
 	end
 end)
@@ -387,7 +419,7 @@ end
 -- ROUTE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Route(Name)
-	local Split = splitString(Name,"ropertys")
+	local Split = splitString(Name,"Propertys")
 
 	return parseInt(100000 + Split[2])
 end

@@ -113,7 +113,7 @@ RegisterCommand("god",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) then
 			if Message[1] then
 				if Message[1] == "all" then
-					local List = vRPC.Players(source)
+					local List = vRP.Players()
 					for OtherPlayer,OtherSource in pairs(List) do
 						async(function()
 							vRP.UpgradeThirst(OtherPlayer,100)
@@ -464,16 +464,13 @@ RegisterCommand("ids",function(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
 			local Text = ""
-			local List = vRPC.Players(source)
+			local List = vRP.Players()
+
 			for OtherPlayer,_ in pairs(List) do
 				if Text == "" then
 					Text = Text..OtherPlayer
 				else
-					if OtherPlayer ~= #List then
-						Text = Text..", "
-					end
-
-					Text = Text..OtherPlayer
+					Text = Text..", "..OtherPlayer
 				end
 			end
 
@@ -578,7 +575,7 @@ RegisterCommand("itemall",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
-			local List = vRPC.Players(source)
+			local List = vRP.Players()
 			for OtherPlayer,_ in pairs(List) do
 				async(function()
 					vRP.GenerateItem(OtherPlayer,Message[1],Message[2],true)

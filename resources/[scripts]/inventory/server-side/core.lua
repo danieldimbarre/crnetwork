@@ -1057,7 +1057,11 @@ function Creative.UseItem(Slot,Amount)
 			end
 		end
 
-		if (vCLIENT.checkWater(source) and Item ~= "soap") or (not vCLIENT.checkWater(source) and Item == "soap") then
+		if (vCLIENT.checkWater(source) and (Item ~= "soap" and Item ~= "rope")) or (not vCLIENT.checkWater(source) and Item == "soap") then
+			return
+		end
+
+		if Player(source)["state"]["Handcuff"] and Item ~= "lockpick" then
 			return
 		end
 
@@ -1421,9 +1425,23 @@ function Creative.VerifyObjects(Entity,Service)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
+		local ServiceList,Total = 0,0
+
 		if Service == "Lixeiro" then
 			if not vRPC.LastVehicle(source,"trash") then
 				TriggerClientEvent("Notify",source,"amarelo","Precisa utilizar o veículo do <b>Lixeiro</b>.",3000)
+				return
+			end
+		elseif Service == "Parquimetro" then
+			local consultItem = vRP.InventoryItemAmount(Passport,"pliers")
+			if consultItem[1] <= 0 then
+				TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>1x "..itemName("pliers").."</b>.",5000)
+				return
+			end
+
+			ServiceList,Total = vRP.NumPermission("Police")
+			if Total <= 1 then
+				TriggerClientEvent("Notify",source,"azul","Parquímetro vazio, aguarde até que um cidadão venha até o local efetuar reabastecimento do mesmo.",5000)
 				return
 			end
 		end
@@ -1446,14 +1464,21 @@ function Creative.VerifyObjects(Entity,Service)
 					end
 				end
 
-				Active[Passport] = os.time() + 5
-				TriggerClientEvent("Progress",source,"Vasculhando",5000)
-				vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+				if Service == "Parquimetro" then
+					Active[Passport] = os.time() + 10
+					TriggerClientEvent("Progress",source,"Roubando",10000)
+					vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+					Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 1800 }
+				else
+					Active[Passport] = os.time() + 5
+					TriggerClientEvent("Progress",source,"Vasculhando",5000)
+					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+					Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 3600 }
+				end
 
 				verifyObjects[Passport] = { Model,Hash }
 				Player(source)["state"]["Buttons"] = true
 				TriggerClientEvent("inventory:Close",source)
-				Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 3600 }
 
 				repeat
 					if os.time() >= parseInt(Active[Passport]) then
@@ -1482,6 +1507,22 @@ function Creative.VerifyObjects(Entity,Service)
 								itemSelect = { "plasticbottle",math.random(2) }
 							elseif parseInt(randItem) <= 20 then
 								itemSelect = { "glassbottle",math.random(2) }
+							end
+						elseif Service == "Parquimetro" then
+							local randItem = math.random(35)
+							if parseInt(randItem) >= 21 and parseInt(randItem) <= 30 then
+								itemSelect = { "goldcoin",math.random(3,6) }
+							elseif parseInt(randItem) >= 11 and parseInt(randItem) <= 20 then
+								itemSelect = { "silvercoin",math.random(6,12) }
+							elseif parseInt(randItem) >= 0 and parseInt(randItem) <= 10 then
+								itemSelect = { "dollars",math.random(75) }
+							end
+
+							for Passports,Sources in pairs(ServiceList) do
+								async(function()
+									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+									TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Parquímetro", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+								end)
 							end
 						end
 
@@ -2211,7 +2252,7 @@ function Creative.StealPeds()
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 32, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end
@@ -2271,7 +2312,7 @@ function Creative.DrugPeds()
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end

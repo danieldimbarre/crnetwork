@@ -1803,7 +1803,6 @@ local List = {
 	["lockpick"] = {
 		["Index"] = "lockpick",
 		["Name"] = "Lockpick de Alumínio",
-		["Description"] = "Utilizada para roubar veículos.",
 		["Repair"] = "repairkit01",
 		["Type"] = "Usável",
 		["Durability"] = 3,

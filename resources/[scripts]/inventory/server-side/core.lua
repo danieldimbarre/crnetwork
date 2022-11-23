@@ -1430,6 +1430,19 @@ function Creative.VerifyObjects(Entity,Service)
 				TriggerClientEvent("Notify",source,"amarelo","Precisa utilizar o veículo do <b>Lixeiro</b>.",3000)
 				return
 			end
+		elseif Service == "Parquimetro" then
+			local consultItem = vRP.InventoryItemAmount(Passport,"pliers")
+			if consultItem[1] <= 0 then
+				TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>1x "..itemName("pliers").."</b>.",5000)
+				return
+			end
+
+			local Services,Total = vRP.NumPermission("Police")
+			if Total <= 1 then
+				TriggerClientEvent("Notify",source,"azul","Parquímetro vazio, aguarde até que um cidadão venha até o local efetuar reabastecimento do mesmo.",5000)
+
+				return
+			end
 		end
 
 		if Entity[1] ~= nil and Entity[2] ~= nil and Entity[4] ~= nil then
@@ -1450,9 +1463,16 @@ function Creative.VerifyObjects(Entity,Service)
 					end
 				end
 
-				Active[Passport] = os.time() + 5
-				TriggerClientEvent("Progress",source,"Vasculhando",5000)
-				vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+				if Service == "Parquimetro" then
+					Active[Passport] = os.time() + 10
+					TriggerClientEvent("Progress",source,10000)
+
+					vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+				else
+					Active[Passport] = os.time() + 5
+					TriggerClientEvent("Progress",source,"Vasculhando",5000)
+					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+				end
 
 				verifyObjects[Passport] = { Model,Hash }
 				Player(source)["state"]["Buttons"] = true
@@ -1486,6 +1506,22 @@ function Creative.VerifyObjects(Entity,Service)
 								itemSelect = { "plasticbottle",math.random(2) }
 							elseif parseInt(randItem) <= 20 then
 								itemSelect = { "glassbottle",math.random(2) }
+							end
+						elseif Service == "Parquimetro" then
+							local randItem = math.random(35)
+							if parseInt(randItem) >= 21 and parseInt(randItem) <= 30 then
+								itemSelect = { "goldcoin",math.random(3,6) }
+							elseif parseInt(randItem) >= 11 and parseInt(randItem) <= 20 then
+								itemSelect = { "silvercoin",math.random(6,12) }
+							elseif parseInt(randItem) >= 0 and parseInt(randItem) <= 10 then
+								itemSelect = { "dollars",math.random(75) }
+							end
+
+							for Passports,Sources in pairs(Service) do
+								async(function()
+									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+									TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Parquímetro", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+								end)
 							end
 						end
 

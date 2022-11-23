@@ -548,7 +548,7 @@ RegisterCommand("kickall",function(source)
 		end
 	end
 
-	local List = vRPC.Players(source)
+	local List = vRP.Players()
 	for OtherPlayer,OtherSource in pairs(List) do
 		TriggerClientEvent("admin:KickAll",OtherSource)
 		Wait(1000)

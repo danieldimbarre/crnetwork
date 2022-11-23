@@ -4760,7 +4760,7 @@ Use = {
 				vRPC.removeObjects(source)
 				Carry[Passport] = nil
 			else
-				local ClosestPed = vRPC.ClosestPed(source,4)
+				local ClosestPed = vRPC.ClosestPed(source,3)
 				if ClosestPed then
 					if vRP.GetHealth(ClosestPed) <= 100 or Player(ClosestPed)["state"]["Handcuff"] then
 						Carry[Passport] = ClosestPed

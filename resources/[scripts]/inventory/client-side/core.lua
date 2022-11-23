@@ -681,7 +681,6 @@ function Creative.storeWeaponHands()
 		local Last = Weapon
 		local Ped = PlayerPedId()
 		LocalPlayer["state"]["Cancel"] = true
-		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
 
 		if not IsPedInAnyVehicle(Ped) then
 			if LoadAnim("weapons@pistol@") then
@@ -697,7 +696,7 @@ function Creative.storeWeaponHands()
 		LocalPlayer["state"]["Cancel"] = false
 		TriggerEvent("inventory:CleanWeapons",true)
 
-		return true,Ammo,Last
+		return true,GetAmmoInPedWeapon(Ped,Weapon),Last
 	end
 
 	return false
@@ -873,7 +872,7 @@ end
 -- DROPITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("dropItem",function(Data,Callback)
-	if not TakeWeapon then
+	if not TakeWeapon and not StoreWeapon then
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
 		local _,Z = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])

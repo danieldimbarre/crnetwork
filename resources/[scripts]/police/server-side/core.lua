@@ -123,7 +123,7 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 				local OtherSource = vRP.Source(OtherPassport)
 				if OtherSource then
 					vCLIENT.syncPrison(OtherSource,true,false)
-					TriggerClientEvent("hud:RadioClean",OtherSource)
+					TriggerClientEvent("radio:RadioClean",OtherSource)
 				end
 
 				vRP.Query("prison/insertPrison",{ police = Identity["name"].." "..Identity["name2"], nuser_id = parseInt(OtherPassport), services = Services, fines = Value, text = Message, date = os.date("%d/%m/%Y").." ás "..os.date("%H:%M") })

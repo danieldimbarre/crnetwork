@@ -743,7 +743,7 @@ CreateThread(function()
 	AddTargetModel({ -1940238623,2108567945 },{
 		options = {
 			{
-				event = "inventory:verifyObjects",
+				event = "inventory:VerifyObjects",
 				label = "Roubar",
 				tunnel = "shop",
 				service = "Parquimetro"

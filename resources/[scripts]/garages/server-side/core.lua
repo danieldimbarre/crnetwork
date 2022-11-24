@@ -714,6 +714,11 @@ end)
 -- DELETE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Delete(Network,Health,Engine,Body,Fuel,Doors,Windows,Tyres,Plate)
+	if Plates[Plate] then
+		Plate = Plates[Plate][2]
+		Plates[Plate] = nil
+	end
+
 	if Spawn[Plate] then
 		local Passport = Spawn[Plate][1]
 		local vehName = Spawn[Plate][2]

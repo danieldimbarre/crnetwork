@@ -745,9 +745,26 @@ RegisterCommand("bucket",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DM
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("dm",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
+			local OtherSource = vRP.Source(Message[1])
+			if OtherSource then
+				local Keyboard = vKEYBOARD.keySingle(source,"Mensagem:")
+				if Keyboard then
+					TriggerClientEvent("chat:ClientMessage",OtherSource,"Prefeitura",Keyboard[1],"DM")
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CUSTOM
 -----------------------------------------------------------------------------------------------------------------------------------------
-local CustomList = {
+local List = {
 	[1] = "hat",
 	[2] = "pants",
 	[3] = "vest",
@@ -776,17 +793,13 @@ RegisterCommand("custom",function(source,args,rawCommand)
 
 				repeat
 					if Text == "" then
-						Text = '["'..CustomList[Count]..'"] = { item = '..Custom[CustomList[Count]]["item"]..', texture = '..Custom[CustomList[Count]]["texture"]..' }'
+						Text = '["'..List[Count]..'"] = { item = '..Custom[List[Count]]["item"]..', texture = '..Custom[List[Count]]["texture"]..' }'
 					else
-						if #CustomList ~= Count then
-							Text = Text..",\n"
-						end
-
-						Text = Text..'["'..CustomList[Count]..'"] = { item = '..Custom[CustomList[Count]]["item"]..', texture = '..Custom[CustomList[Count]]["texture"]..' }'
+						Text = Text..',\n["'..List[Count]..'"] = { item = '..Custom[List[Count]]["item"]..', texture = '..Custom[List[Count]]["texture"]..' }'
 					end
 
 					Count = Count + 1
-				until Count == #CustomList + 1
+				until Count == #List + 1
 
 				Text = Text.."\n\n"
 

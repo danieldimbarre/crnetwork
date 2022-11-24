@@ -261,13 +261,13 @@ function Creative.Store(Item,Slot,Amount,Target)
 			return true
 		end
 
-		if OpenItens[Item] and OpenItens[Item]["Open"] == Open[Passport]["Name"] then
+		local Split = splitString(Item,"-")
+		if OpenItens[Split[1]] and OpenItens[Split[1]]["Open"] == Open[Passport]["Name"] then
 			if vRP.TakeItem(Passport,Item,1) then
-				for _,v in pairs(OpenItens[Item]["Table"]) do
+				for _,v in pairs(OpenItens[Split[1]]["Table"]) do
 					vRP.GenerateItem(Passport,v["Item"],v["Amount"])
 				end
 			end
-
 			TriggerClientEvent("chest:Update",source,"Refresh")
 
 			return true
@@ -323,7 +323,7 @@ function Creative.Update(Slot,Target,Amount)
 	if Passport and Open[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.Update(Passport,"stackChest:"..Open[Passport]["Name"],Slot,Target,Amount) then
+		if vRP.UpdateChest(Passport,"Chest:"..Open[Passport]["Name"],Slot,Target,Amount) then
 			TriggerClientEvent("chest:Update",source,"Refresh")
 		end
 	end

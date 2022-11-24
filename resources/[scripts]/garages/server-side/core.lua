@@ -714,12 +714,6 @@ end)
 -- DELETE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Delete(Network,Health,Engine,Body,Fuel,Doors,Windows,Tyres,Plate)
-	if GlobalState["Plates"][Plate] then
-		local Plates = Plate
-		Plate = GlobalState["Plates"][Plate][2]
-		TriggerEvent("plateReveryone",Plates)
-	end
-
 	if Spawn[Plate] then
 		local Passport = Spawn[Plate][1]
 		local vehName = Spawn[Plate][2]

@@ -46,7 +46,7 @@ RegisterCommand("clearinv",function(source,Message)
 			TriggerClientEvent("Notify",source,"verde","Limpeza concluída.",5000)
 			vRP.ClearInventory(Message[1])
 
-			TriggerEvent("Discord","Admin","**clearinv**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3042892)
+			TriggerEvent("Discord","Admin","**clearinv**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 		end
 	end
 end)
@@ -157,11 +157,11 @@ RegisterCommand("god",function(source,Message)
 			end
 
 			if List then
-				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text,3042892)
+				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text,3553599)
 			elseif OtherPlayer then
-				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPlayer,3042892)
+				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPlayer,3553599)
 			else
-				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Passport,3042892)
+				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Passport,3553599)
 			end
 		end
 	end
@@ -195,7 +195,7 @@ RegisterCommand("goda",function(source,Message)
 					end)
 				end
 
-				TriggerEvent("Discord","Admin","**goda**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text,3042892)
+				TriggerEvent("Discord","Admin","**goda**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text,3553599)
 			end
 		end
 	end
@@ -211,7 +211,7 @@ RegisterCommand("item",function(source,Message)
 				local Amount = parseInt(Message[2])
 				vRP.GenerateItem(Passport,Message[1],Amount,true)
 
-				TriggerEvent("Discord","Admin","**item**\n\n**Passaporte:** "..Passport.."\n**Item:** "..Amount.."x "..itemName(Message[1]),3042892)
+				TriggerEvent("Discord","Admin","**item**\n\n**Passaporte:** "..Passport.."\n**Item:** "..Amount.."x "..itemName(Message[1]),3553599)
 			end
 		end
 	end
@@ -227,7 +227,7 @@ RegisterCommand("item2",function(source,Message)
 				local Amount = parseInt(Message[2])
 				vRP.GenerateItem(Message[3],Message[1],Amount,true)
 
-				TriggerEvent("Discord","Admin","**item2**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[3].."\n**Item:** "..Amount.."x "..itemName(Message[1]),3042892)
+				TriggerEvent("Discord","Admin","**item2**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[3].."\n**Item:** "..Amount.."x "..itemName(Message[1]),3553599)
 			end
 		end
 	end
@@ -243,7 +243,7 @@ RegisterCommand("delete",function(source,Message)
 			vRP.Query("characters/removeCharacter",{ id = OtherPassport })
 			TriggerClientEvent("Notify",source,"verde","Personagem <b>"..OtherPassport.."</b> deletado.",5000)
 
-			TriggerEvent("Discord","Admin","**delete**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3042892)
+			TriggerEvent("Discord","Admin","**delete**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
 		end
 	end
 end)
@@ -268,7 +268,7 @@ RegisterCommand("kick",function(source,Message)
 			TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..Message[1].."</b> expulso.",5000)
 			vRP.Kick(Message[1],"Expulso da cidade.")
 
-			TriggerEvent("Discord","Admin","**kick**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3042892)
+			TriggerEvent("Discord","Admin","**kick**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 		end
 	end
 end)
@@ -287,7 +287,7 @@ RegisterCommand("ban",function(source,Message)
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = time })
 				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..time.."</b> dias.",5000)
 
-				TriggerEvent("Discord","Admin","**ban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Tempo:** "..time.." dias",3042892)
+				TriggerEvent("Discord","Admin","**ban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Tempo:** "..time.." dias",3553599)
 			end
 		end
 	end
@@ -305,7 +305,7 @@ RegisterCommand("unban",function(source,Message)
 				vRP.Query("banneds/RemoveBanned",{ license = Identity["license"] })
 				TriggerClientEvent("Notify",source,"verde","Passaporte <b>"..OtherPassport.."</b> desbanido.",5000)
 
-				TriggerEvent("Discord","Admin","**unban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3042892)
+				TriggerEvent("Discord","Admin","**unban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
 			end
 		end
 	end
@@ -361,7 +361,7 @@ RegisterCommand("group",function(source,Message)
 					TriggerClientEvent("player:Relationship",OtherSource,Message[2])
 				end
 
-				TriggerEvent("Discord","Admin","**group**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Grupo:** "..Message[2].."\n**Rank:** "..Message[3],3042892)
+				TriggerEvent("Discord","Admin","**group**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Grupo:** "..Message[2].."\n**Rank:** "..Message[3],3553599)
 			end
 		end
 	end
@@ -383,7 +383,7 @@ RegisterCommand("ungroup",function(source,Message)
 					TriggerClientEvent("player:Relationship",OtherSource,Message[2],true)
 				end
 
-				TriggerEvent("Discord","Admin","**ungroup**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Grupo:** "..Message[2],3042892)
+				TriggerEvent("Discord","Admin","**ungroup**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Grupo:** "..Message[2],3553599)
 			end
 		end
 	end
@@ -572,7 +572,7 @@ RegisterCommand("announce",function(source,Message,History)
 		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
 			TriggerClientEvent('smartphone:createSMS',-1,'Prefeitura',History:sub(9))
 
-			TriggerEvent("Discord","Admin","**announce**\n\n**Passaporte:** "..Passport.."\n**Text:** "..History:sub(9),3042892)
+			TriggerEvent("Discord","Admin","**announce**\n\n**Passaporte:** "..Passport.."\n**Text:** "..History:sub(9),3553599)
 		end
 	end
 end)
@@ -641,7 +641,7 @@ RegisterCommand("itemall",function(source,Message)
 
 			TriggerClientEvent("Notify",source,"verde","Envio concluído.",10000)
 
-			TriggerEvent("Discord","Admin","**itemall**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text.."\n**Item:** "..Message[2].."x "..itemName(Message[1]),3042892)
+			TriggerEvent("Discord","Admin","**itemall**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text.."\n**Item:** "..Message[2].."x "..itemName(Message[1]),3553599)
 		end
 	end
 end)
@@ -690,7 +690,7 @@ RegisterCommand("spectate",function(source,Message)
 						TriggerClientEvent("admin:initSpectate",source,nsource)
 						Spectate[Passport] = nsource
 
-						TriggerEvent("Discord","Admin","**spectate**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3042892)
+						TriggerEvent("Discord","Admin","**spectate**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 					end
 				end
 			end
@@ -711,7 +711,7 @@ RegisterCommand("reset",function(source,Message)
 
 				TriggerClientEvent("Notify",source,"verde","Reset concluído.",5000)
 
-				TriggerEvent("Discord","Admin","**reset**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3042892)
+				TriggerEvent("Discord","Admin","**reset**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
 			end
 		end
 	end

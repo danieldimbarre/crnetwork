@@ -370,15 +370,15 @@ Use = {
 		local cards = { "A","2","3","4","5","6","7","8","9","10","J","Q","K" }
 
 		local naipe = math.random(4)
-		local naipes = { "<black>♣</black>","<red>♠</red>","<black>♦</black>","<red>♥</red>" }
+		local naipes = { "♣️","♠️","♦️","♥️" }
 
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
+		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.","Baralho")
 
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
+				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.","Baralho")
 			end)
 		end
 	end,
@@ -399,12 +399,12 @@ Use = {
 		local Coins = math.random(2)
 		local Sides = { "Cara","Coroa" }
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
+		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins],"Moeda")
 
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins])
+				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins],"Moeda")
 			end)
 		end
 	end,
@@ -425,12 +425,12 @@ Use = {
 		local Coins = math.random(2)
 		local Sides = { "Cara","Coroa" }
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
+		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins],"Moeda")
 
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins])
+				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins],"Moeda")
 			end)
 		end
 	end,

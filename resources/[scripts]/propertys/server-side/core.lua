@@ -421,7 +421,7 @@ end
 function Route(Name)
 	local Split = splitString(Name,"Propertys")
 
-	return parseInt(100000 + Split[2])
+	return 100000 + parseInt(Split[2])
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

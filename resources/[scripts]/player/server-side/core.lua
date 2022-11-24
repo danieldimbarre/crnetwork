@@ -188,6 +188,8 @@ RegisterCommand("p",function(source,Message,History)
 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasService(Passport,"Police") then
 			TriggerClientEvent('smartphone:createSMS',-1,'Polícia',History:sub(2))
+
+			TriggerEvent("Discord","Police","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
 		end
 	end
 end)
@@ -199,6 +201,8 @@ RegisterCommand("h",function(source,Message,History)
 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasService(Passport,"Paramedic") then
 			TriggerClientEvent('smartphone:createSMS',-1,'Centro Médico',History:sub(2))
+
+			TriggerEvent("Discord","Paramedic","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
 		end
 	end
 end)

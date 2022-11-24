@@ -323,7 +323,7 @@ function Creative.Update(Slot,Target,Amount)
 	if Passport and Open[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.Update(Passport,"Chest:"..Open[Passport]["Name"],Slot,Target,Amount) then
+		if vRP.UpdateChest(Passport,"Chest:"..Open[Passport]["Name"],Slot,Target,Amount) then
 			TriggerClientEvent("chest:Update",source,"Refresh")
 		end
 	end

@@ -522,7 +522,7 @@ RegisterCommand("ids",function(source)
 				end
 			end
 
-			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",5000)
+			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",10000)
 		end
 	end
 end)

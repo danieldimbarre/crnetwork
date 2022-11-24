@@ -58,18 +58,21 @@ CREATE TABLE IF NOT EXISTS `chests` (
 INSERT INTO `chests` (`id`, `name`, `weight`, `perm`, `logs`) VALUES
 (1, 'Police', 50000, 'Police', 1),
 (2, 'Paramedic', 50000, 'Paramedic', 1),
-(3, 'BurgerShot', 500, 'BurgerShot', 0),
-(4, 'PizzaThis', 500, 'PizzaThis', 0),
-(5, 'UwuCoffee', 500, 'UwuCoffee', 0),
-(6, 'BeanMachine', 500, 'BeanMachine', 0),
-(7, 'Ballas', 500, 'Ballas', 0),
-(8, 'Families', 500, 'Families', 0),
-(9, 'Vagos', 500, 'Vagos', 0),
-(10, 'Aztecas', 500, 'Aztecas', 0),
-(11, 'Bloods', 500, 'Bloods', 0),
-(12, 'Triads', 500, 'Triads', 0),
-(13, 'Razors', 500, 'Razors', 0),
-(14, 'Mechanic', 500, 'Mechanic', 0);
+(3, 'BurgerShot', 500, 'BurgerShot', 1),
+(4, 'PizzaThis', 500, 'PizzaThis', 1),
+(5, 'UwuCoffee', 500, 'UwuCoffee', 1),
+(6, 'BeanMachine', 500, 'BeanMachine', 1),
+(7, 'Ballas', 500, 'Ballas', 1),
+(8, 'Families', 500, 'Families', 1),
+(9, 'Vagos', 500, 'Vagos', 1),
+(10, 'Aztecas', 500, 'Aztecas', 1),
+(11, 'Bloods', 500, 'Bloods', 1),
+(12, 'Triads', 500, 'Triads', 1),
+(13, 'Razors', 500, 'Razors', 1),
+(14, 'Mechanic', 500, 'Mechanic', 1),
+(15, 'Altruists', 500, 'Altruists', 1),
+(16, 'Lost', 500, 'Lost', 1),
+(17, 'Marabunta', 500, 'Marabunta', 1);
 
 DROP TABLE IF EXISTS `entitydata`;
 CREATE TABLE IF NOT EXISTS `entitydata` (

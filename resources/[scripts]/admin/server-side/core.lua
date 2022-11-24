@@ -45,6 +45,8 @@ RegisterCommand("clearinv",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
 			TriggerClientEvent("Notify",source,"verde","Limpeza concluída.",5000)
 			vRP.ClearInventory(Message[1])
+
+			TriggerEvent("Discord","Admin","**clearinv**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3042892)
 		end
 	end
 end)
@@ -113,6 +115,7 @@ RegisterCommand("god",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) then
 			if Message[1] then
 				if Message[1] == "all" then
+					local Text = ""
 					local List = vRP.Players()
 					for OtherPlayer,OtherSource in pairs(List) do
 						async(function()
@@ -122,6 +125,12 @@ RegisterCommand("god",function(source,Message)
 							vRP.Revive(OtherSource,200)
 
 							TriggerClientEvent("paramedic:Reset",OtherSource)
+
+							if Text == "" then
+								Text = Text..OtherPlayer
+							else
+								Text = Text..", "..OtherPlayer
+							end
 						end)
 					end
 				else
@@ -146,6 +155,14 @@ RegisterCommand("god",function(source,Message)
 
 				vRPC.removeObjects(source)
 			end
+
+			if List then
+				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text,3042892)
+			elseif OtherPlayer then
+				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPlayer,3042892)
+			else
+				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Passport,3042892)
+			end
 		end
 	end
 end)
@@ -158,6 +175,7 @@ RegisterCommand("goda",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) then
 			local Range = parseInt(Message[1])
 			if Range then
+				local Text = ""
 				local Players = vRPC.ClosestPeds(source,Range)
 				for _,v in pairs(Players) do
 					async(function()
@@ -168,8 +186,16 @@ RegisterCommand("goda",function(source,Message)
 						vRP.Revive(v[2],200)
 
 						TriggerClientEvent("paramedic:Reset",v[2])
+
+						if Text == "" then
+							Text = Text..OtherPlayer
+						else
+							Text = Text..", "..OtherPlayer
+						end
 					end)
 				end
+
+				TriggerEvent("Discord","Admin","**goda**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text,3042892)
 			end
 		end
 	end
@@ -182,7 +208,10 @@ RegisterCommand("item",function(source,Message)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
 			if Message[1] and Message[2] and itemBody(Message[1]) ~= nil then
-				vRP.GenerateItem(Passport,Message[1],parseInt(Message[2]),true)
+				local Amount = parseInt(Message[2])
+				vRP.GenerateItem(Passport,Message[1],Amount,true)
+
+				TriggerEvent("Discord","Admin","**item**\n\n**Passaporte:** "..Passport.."\n**Item:** "..Amount.."x "..itemName(Message[1]),3042892)
 			end
 		end
 	end
@@ -195,7 +224,10 @@ RegisterCommand("item2",function(source,Message)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
 			if Message[1] and Message[2] and parseInt(Message[3]) > 0 and itemBody(Message[1]) ~= nil then
-				vRP.GenerateItem(Message[3],Message[1],parseInt(Message[2]),true)
+				local Amount = parseInt(Message[2])
+				vRP.GenerateItem(Message[3],Message[1],Amount,true)
+
+				TriggerEvent("Discord","Admin","**item2**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[3].."\n**Item:** "..Amount.."x "..itemName(Message[1]),3042892)
 			end
 		end
 	end
@@ -210,6 +242,8 @@ RegisterCommand("delete",function(source,Message)
 			local OtherPassport = parseInt(Message[1])
 			vRP.Query("characters/removeCharacter",{ id = OtherPassport })
 			TriggerClientEvent("Notify",source,"verde","Personagem <b>"..OtherPassport.."</b> deletado.",5000)
+
+			TriggerEvent("Discord","Admin","**delete**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3042892)
 		end
 	end
 end)
@@ -233,6 +267,8 @@ RegisterCommand("kick",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
 			TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..Message[1].."</b> expulso.",5000)
 			vRP.Kick(Message[1],"Expulso da cidade.")
+
+			TriggerEvent("Discord","Admin","**kick**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3042892)
 		end
 	end
 end)
@@ -250,6 +286,8 @@ RegisterCommand("ban",function(source,Message)
 				vRP.Kick(OtherPassport,"Banido.")
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = time })
 				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..time.."</b> dias.",5000)
+
+				TriggerEvent("Discord","Admin","**ban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Tempo:** "..time.." dias",3042892)
 			end
 		end
 	end
@@ -266,6 +304,8 @@ RegisterCommand("unban",function(source,Message)
 			if Identity then
 				vRP.Query("banneds/RemoveBanned",{ license = Identity["license"] })
 				TriggerClientEvent("Notify",source,"verde","Passaporte <b>"..OtherPassport.."</b> desbanido.",5000)
+
+				TriggerEvent("Discord","Admin","**unban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3042892)
 			end
 		end
 	end
@@ -306,7 +346,11 @@ end)
 RegisterCommand("group",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and Message[2] and Message[3] and Message[2] ~= "Admin" and Message[2] ~= "Premium" then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and Message[2] and Message[3] then
+			if (Message[2] == "Admin" or Message[2] == "Premium") and not vRP.HasGroup(Passport,"Admin",1) then
+				return
+			end
+
 			local Groups = vRP.Groups()
 			if Groups[Message[2]] then
 				vRP.SetPermission(Message[1],Message[2],Message[3])
@@ -316,6 +360,8 @@ RegisterCommand("group",function(source,Message)
 				if OtherSource then
 					TriggerClientEvent("player:Relationship",OtherSource,Message[2])
 				end
+
+				TriggerEvent("Discord","Admin","**group**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Grupo:** "..Message[2].."\n**Rank:** "..Message[3],3042892)
 			end
 		end
 	end
@@ -336,6 +382,8 @@ RegisterCommand("ungroup",function(source,Message)
 				if OtherSource then
 					TriggerClientEvent("player:Relationship",OtherSource,Message[2],true)
 				end
+
+				TriggerEvent("Discord","Admin","**ungroup**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Grupo:** "..Message[2],3042892)
 			end
 		end
 	end
@@ -474,7 +522,7 @@ RegisterCommand("ids",function(source)
 				end
 			end
 
-			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",5000)
+			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",10000)
 		end
 	end
 end)
@@ -484,7 +532,7 @@ end)
 RegisterCommand("id",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
+		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
 			local Identity = vRP.Identity(Message[1])
 			if Identity then
 				TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Message[1].."<br><b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."<br><b>Telefone:</b> "..Identity["phone"].."<br><b>Banco:</b> $"..parseFormat(Identity["bank"]),5000)
@@ -523,6 +571,8 @@ RegisterCommand("announce",function(source,Message,History)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
 			TriggerClientEvent('smartphone:createSMS',-1,'Prefeitura',History:sub(9))
+
+			TriggerEvent("Discord","Admin","**announce**\n\n**Passaporte:** "..Passport.."\n**Text:** "..History:sub(9),3042892)
 		end
 	end
 end)
@@ -575,14 +625,23 @@ RegisterCommand("itemall",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
+			local Text = ""
 			local List = vRP.Players()
 			for OtherPlayer,_ in pairs(List) do
 				async(function()
+					if Text == "" then
+						Text = Text..OtherPlayer
+					else
+						Text = Text..", "..OtherPlayer
+					end
+
 					vRP.GenerateItem(OtherPlayer,Message[1],Message[2],true)
 				end)
 			end
 
 			TriggerClientEvent("Notify",source,"verde","Envio concluído.",10000)
+
+			TriggerEvent("Discord","Admin","**itemall**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text.."\n**Item:** "..Message[2].."x "..itemName(Message[1]),3042892)
 		end
 	end
 end)
@@ -630,6 +689,8 @@ RegisterCommand("spectate",function(source,Message)
 						Wait(1000)
 						TriggerClientEvent("admin:initSpectate",source,nsource)
 						Spectate[Passport] = nsource
+
+						TriggerEvent("Discord","Admin","**spectate**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3042892)
 					end
 				end
 			end
@@ -649,6 +710,8 @@ RegisterCommand("reset",function(source,Message)
 				vRP.Query("playerdata/SetData",{ Passport = OtherPassport, dkey = "Creator", dvalue = 0 })
 
 				TriggerClientEvent("Notify",source,"verde","Reset concluído.",5000)
+
+				TriggerEvent("Discord","Admin","**reset**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3042892)
 			end
 		end
 	end
@@ -682,9 +745,26 @@ RegisterCommand("bucket",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DM
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("dm",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
+			local OtherSource = vRP.Source(Message[1])
+			if OtherSource then
+				local Keyboard = vKEYBOARD.keySingle(source,"Mensagem:")
+				if Keyboard then
+					TriggerClientEvent("chat:ClientMessage",OtherSource,"Prefeitura",Keyboard[1],"DM")
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CUSTOM
 -----------------------------------------------------------------------------------------------------------------------------------------
-local CustomList = {
+local List = {
 	[1] = "hat",
 	[2] = "pants",
 	[3] = "vest",
@@ -713,17 +793,13 @@ RegisterCommand("custom",function(source,args,rawCommand)
 
 				repeat
 					if Text == "" then
-						Text = '["'..CustomList[Count]..'"] = { item = '..Custom[CustomList[Count]]["item"]..', texture = '..Custom[CustomList[Count]]["texture"]..' }'
+						Text = '["'..List[Count]..'"] = { item = '..Custom[List[Count]]["item"]..', texture = '..Custom[List[Count]]["texture"]..' }'
 					else
-						if #CustomList ~= Count then
-							Text = Text..",\n"
-						end
-
-						Text = Text..'["'..CustomList[Count]..'"] = { item = '..Custom[CustomList[Count]]["item"]..', texture = '..Custom[CustomList[Count]]["texture"]..' }'
+						Text = Text..',\n["'..List[Count]..'"] = { item = '..Custom[List[Count]]["item"]..', texture = '..Custom[List[Count]]["texture"]..' }'
 					end
 
 					Count = Count + 1
-				until Count == #CustomList + 1
+				until Count == #List + 1
 
 				Text = Text.."\n\n"
 

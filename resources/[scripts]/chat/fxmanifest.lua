@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "1.0.6"
+version "1.1.1"
 
 ui_page "web-side/index.html"
 
@@ -21,6 +21,7 @@ files {
 }
 
 shared_scripts {
+	"@vrp/config/Global.lua",
 	"shared-side/*"
 }
 

@@ -689,7 +689,7 @@ CreateThread(function()
 				tunnel = "shop"
 			}
 		},
-		Distance = 1.0
+		Distance = 1.5
 	})
 
 	AddTargetModel({ 1281992692,1158960338,1511539537,-78626473,-429560270 },{

@@ -155,7 +155,7 @@ local List = {
 	{ 836.73,-823.74,26.32,"Mechanic-2",false },
 	{ -1636.74,-1092.17,13.08,"Oxy",false },
 	{ -1196.9,-901.58,13.99,"BurgerShot",false },
-	{ -1196.24,-891.29,13.99,"BurgerShot-2",true },
+	{ -1195.68,-891.21,13.99,"BurgerShot-2",true },
 	{ 806.22,-761.68,26.77,"PizzaThis",false },
 	{ 810.88,-750.69,26.77,"PizzaThis-2",true },
 	{ -588.5,-1066.23,22.34,"UwuCoffee",false },

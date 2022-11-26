@@ -102,8 +102,10 @@ function Creative.Cancel()
 		if Payments[Passport] then
 			Payments[Passport] = nil
 			TriggerEvent("blipsystem:Exit",source)
+			return true
 		end
 	end
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

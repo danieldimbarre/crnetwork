@@ -24,10 +24,13 @@ RegisterCommand("inv",function(source,Message)
 	if Passport then
 		local OtherPassport = parseInt(Message[1])
 		if vRP.HasGroup(Passport,"Admin",2) and OtherPassport > 0 then
-			openPlayer[Passport] = OtherPassport
-			openAdmin[Passport] = OtherPassport
+			local OtherSource = vRP.Source(OtherPassport)
+			if OtherSource then
+				openPlayer[Passport] = OtherPassport
+				openAdmin[Passport] = OtherPassport
 
-			TriggerClientEvent("inspect:Open",source)
+				TriggerClientEvent("inspect:Open",source)
+			end
 		end
 	end
 end)

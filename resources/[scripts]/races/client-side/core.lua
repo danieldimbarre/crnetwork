@@ -200,11 +200,17 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Leave()
 	SendNUIMessage({ Action = "Display", Status = false })
-	vSERVER.Cancel()
 	Actived = false
 
 	CleanObjects()
 	CleanBlips()
+
+	if vSERVER.Cancel() then
+		Wait(3000)
+
+		local Vehicle = GetPlayersLastVehicle()
+		NetworkExplodeVehicle(Vehicle,true,true,false)
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTYREEXPLODES

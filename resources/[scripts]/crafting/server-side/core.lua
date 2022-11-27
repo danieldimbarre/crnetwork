@@ -565,19 +565,20 @@ local List = {
 	},				
 	["CraftingTable"] = {
 		["List"] = {
-			--["tablecoke"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["woodlog"] = 10,
-			--		["glass"] = 25,
-			--		["rubber"] = 15,
-			--		["aluminum"] = 10,
-			--		["sheetmetal"] = 2,
-			--		["tarp"] = 1,
-			--		["explosives"] = 3
-			--	}
-			--},
+			["tablecoke"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["dollars"] = 5000,
+					["woodlog"] = 10,
+					["glass"] = 25,
+					["rubber"] = 15,
+					["aluminum"] = 10,
+					["sheetmetal"] = 2,
+					["tarp"] = 1,
+					["explosives"] = 3
+				}
+			},
 			--["tablemeth"] = {
 			--	["amount"] = 1,
 			--	["destroy"] = false,

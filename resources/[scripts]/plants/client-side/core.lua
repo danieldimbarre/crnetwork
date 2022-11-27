@@ -42,7 +42,7 @@ CreateThread(function()
 						}
 					})
 
-					createModels(k,v["Coords"])
+					createModels(k,v["Coords"],v["Model"])
 				end
 			else
 				if Objects[k] then
@@ -75,10 +75,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEMODELS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function createModels(Number,Coords)
-	if LoadModel("bkr_prop_weed_med_01a") then
-		Objects[Number] = CreateObjectNoOffset("bkr_prop_weed_med_01a",Coords[1],Coords[2],Coords[3],false,false,false)
-		SetModelAsNoLongerNeeded("bkr_prop_weed_med_01a")
+function createModels(Number,Coords,Model)
+	if LoadModel(Model) then
+		Objects[Number] = CreateObjectNoOffset(Model,Coords[1],Coords[2],Coords[3],false,false,false)
+		SetModelAsNoLongerNeeded(Model)
 		PlaceObjectOnGroundProperly(Objects[Number])
 		FreezeEntityPosition(Objects[Number],true)
 	end

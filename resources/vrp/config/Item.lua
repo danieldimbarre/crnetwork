@@ -1203,6 +1203,12 @@ local List = {
 		["Weight"] = 0.15,
 		["Economy"] = 5
 	},
+	["cokeclone"] = {
+		["Index"] = "cokeclone",
+		["Name"] = "Clonagem de Cocaína",
+		["Type"] = "Usável",
+		["Weight"] = 0.15
+	},
 	["meth"] = {
 		["Index"] = "meth",
 		["Name"] = "Metanfetamina",

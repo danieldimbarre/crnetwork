@@ -88,12 +88,12 @@ end)
 RegisterServerEvent("propertys:Invade")
 AddEventHandler("propertys:Invade",function()
 	local source = source
-	local Name = nearestHomes(source)
-	if Name then
+	local Name,Interior = nearestHomes(source)
+	if Name and Interior then
 		local Passport = vRP.Passport(source)
 		if Passport then
 			if vRP.HasService(Passport,"Police") then
-				TriggerClientEvent("propertys:Enter",source,Name)
+				TriggerClientEvent("propertys:Enter",source,Name,Interior)
 			end
 		end
 	end

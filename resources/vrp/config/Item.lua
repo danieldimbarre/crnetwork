@@ -1204,7 +1204,7 @@ local List = {
 		["Economy"] = 5
 	},
 	["cokeclone"] = {
-		["Index"] = "cokeclone",
+		["Index"] = "weedclone",
 		["Name"] = "Clonagem de Cocaína",
 		["Type"] = "Usável",
 		["Weight"] = 0.15

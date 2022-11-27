@@ -422,6 +422,17 @@ LootItens = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLANTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+Plants = {
+	["weedclone"] = 1,
+	["weedleaf"] = 2,
+	["joint"] = 3,
+	["cokeclone"] = 1,
+	["cokeleaf"] = 2,
+	["cocaine"] = 3
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTINVENTORY
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.requestInventory()
@@ -512,11 +523,11 @@ function Creative.requestInventory()
 					v["days"] = 1
 				end
 
-				if Split[1] == "weedclone" or Split[1] == "weedleaf" or Split[1] == "joint" then
+				if Plants[Split[1]] then
 					local Item = "da clonagem"
-					if Split[1] == "weedleaf" then
+					if Plants[Split[1]] == 2 then
 						Item = "da folha"
-					elseif Split[1] == "joint" then
+					elseif Plants[Split[1]] == 3 then
 						Item = "do baseado"
 					end
 

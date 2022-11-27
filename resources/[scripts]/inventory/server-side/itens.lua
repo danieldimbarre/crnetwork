@@ -4053,7 +4053,37 @@ Use = {
 							Points = parseInt(Split[2])
 						end
 
-						exports["plants"]:Plants(Coords,Route,Points)
+						exports["plants"]:Plants(Coords,Route,Points,"bkr_prop_weed_med_01a")
+					-- end
+
+					vRPC.removeObjects(source)
+				end
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["cokeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01b"
+		local Application,Coords = vRPC.objectCoords(source,Hash)
+		if Application then
+			if not vCLIENT.objectExist(source,Coords,Hash) then
+				if vRP.TakeItem(Passport,Full,1,false,Slot) then
+					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+
+					-- if vTASKBAR.Weeds(source) then
+						local Points = 0
+						local Route = GetPlayerRoutingBucket(source)
+
+						if Split[2] ~= nil then
+							Points = parseInt(Split[2])
+						end
+
+						exports["plants"]:Plants(Coords,Route,Points,"bkr_prop_weed_med_01b")
 					-- end
 
 					vRPC.removeObjects(source)

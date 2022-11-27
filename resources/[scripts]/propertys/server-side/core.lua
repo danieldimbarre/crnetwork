@@ -27,7 +27,10 @@ function nearestHomes(source)
 	for Name,v in pairs(Propertys) do
 		local Distance = #(Coords - vector3(v[1],v[2],v[3]))
 		if Distance <= 1 then
-			return Name
+			local Consult = vRP.Query("propertys/Exist",{ name = Name })
+			if Consult[1] then
+				return Name,Consult[1]["Interior"]
+			end
 		end
 	end
 
@@ -85,12 +88,12 @@ end)
 RegisterServerEvent("propertys:Invade")
 AddEventHandler("propertys:Invade",function()
 	local source = source
-	local Name = nearestHomes(source)
-	if Name then
+	local Name,Interior = nearestHomes(source)
+	if Name and Interior then
 		local Passport = vRP.Passport(source)
 		if Passport then
 			if vRP.HasService(Passport,"Police") then
-				TriggerClientEvent("propertys:Enter",source,Name)
+				TriggerClientEvent("propertys:Enter",source,Name,Interior)
 			end
 		end
 	end

@@ -15,9 +15,16 @@ Tunnel.bindInterface("plants",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Plants = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- TYPES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Types = {
+	["bkr_prop_weed_med_01a"] = { "weedleaf","weedclone" },
+	["bkr_prop_weed_med_01b"] = { "cokeleaf","cokeclone" }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PLANTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Plants",function(Coords,Route,Points)
+exports("Plants",function(Coords,Route,Points,Model)
 	local Number = 0
 
 	repeat
@@ -28,7 +35,8 @@ exports("Plants",function(Coords,Route,Points)
 		["Coords"] = { mathLength(Coords["x"]),mathLength(Coords["y"]),mathLength(Coords["z"]) },
 		["Time"] = os.time() + 7200,
 		["Points"] = Points,
-		["Route"] = Route
+		["Route"] = Route,
+		["Model"] = Model
 	}
 
 	TriggerClientEvent("plants:New",-1,tostring(Number),Plants[tostring(Number)])
@@ -50,7 +58,12 @@ AddEventHandler("plants:Collect",function(Number)
 			if (Plants[Number]["Time"] - os.time()) <= 3600 then
 				local Temporary = Plants[Number]
 
-				if (vRP.InventoryWeight(Passport) + itemWeight("weedleaf")) <= vRP.GetWeight(Passport) then
+				local Item = ""
+				if Types[Temporary["Model"]] then
+					Item = Types[Temporary["Model"]][1]
+				end
+
+				if (vRP.InventoryWeight(Passport) + itemWeight(Item)) <= vRP.GetWeight(Passport) then
 					Plants[Number] = nil
 					Player(source)["state"]["Cancel"] = true
 					Player(source)["state"]["Buttons"] = true
@@ -60,7 +73,7 @@ AddEventHandler("plants:Collect",function(Number)
 
 					Wait(10000)
 
-					vRP.GenerateItem(Passport,"weedleaf-"..Temporary["Points"],math.random(2,3),true)
+					vRP.GenerateItem(Passport,Item.."-"..Temporary["Points"],math.random(2,3),true)
 					TriggerClientEvent("plants:Remover",-1,Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
@@ -89,7 +102,12 @@ AddEventHandler("plants:Cloning",function(Number)
 			if os.time() >= Plants[Number]["Time"] then
 				local Temporary = Plants[Number]
 
-				if (vRP.InventoryWeight(Passport) + itemWeight("weedclone") * 2) <= vRP.GetWeight(Passport) then
+				local Item = ""
+				if Types[Temporary["Model"]] then
+					Item = Types[Temporary["Model"]][2]
+				end
+
+				if (vRP.InventoryWeight(Passport) + itemWeight(Item) * 2) <= vRP.GetWeight(Passport) then
 					Plants[Number] = nil
 					Player(source)["state"]["Cancel"] = true
 					Player(source)["state"]["Buttons"] = true
@@ -104,7 +122,7 @@ AddEventHandler("plants:Cloning",function(Number)
 						Points = 100
 					end
 
-					vRP.GenerateItem(Passport,"weedclone-"..Points,2,true)
+					vRP.GenerateItem(Passport,Item.."-"..Points,2,true)
 					TriggerClientEvent("plants:Remover",-1,Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false

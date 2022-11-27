@@ -25,7 +25,6 @@ local List = {
 		["Name"] = "Megafone",
 		["Type"] = "Usável",
 		["Durability"] = 7,
-		["Block"] = true,
 		["Weight"] = 3.25
 	},
 	["sprays01"] = {
@@ -1203,6 +1202,12 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.15,
 		["Economy"] = 5
+	},
+	["cokeclone"] = {
+		["Index"] = "weedclone",
+		["Name"] = "Clonagem de Cocaína",
+		["Type"] = "Usável",
+		["Weight"] = 0.15
 	},
 	["meth"] = {
 		["Index"] = "meth",

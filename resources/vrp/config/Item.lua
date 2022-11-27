@@ -25,7 +25,6 @@ local List = {
 		["Name"] = "Megafone",
 		["Type"] = "Usável",
 		["Durability"] = 7,
-		["Block"] = true,
 		["Weight"] = 3.25
 	},
 	["sprays01"] = {

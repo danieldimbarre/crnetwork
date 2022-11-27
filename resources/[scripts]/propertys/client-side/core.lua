@@ -129,11 +129,16 @@ end)
 -- PROPERTYS:ENTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("propertys:Enter")
-AddEventHandler("propertys:Enter",function(Name)
+AddEventHandler("propertys:Enter",function(Name,Invade)
 	Init = Name
 	local Ped = PlayerPedId()
 	TriggerEvent("dynamic:closeSystem")
 	TriggerServerEvent("propertys:Toggle",Init)
+
+	if Invade then
+		Interior = Invade
+	end
+
 	SetEntityCoords(Ped,Informations[Interior]["Exit"],false,false,false,false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

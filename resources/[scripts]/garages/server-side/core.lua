@@ -72,6 +72,9 @@ function Creative.ServerVehicle(Model,x,y,z,Heading,Plate,Nitrox,Doors,Body,Fuel
 			GlobalState:set("Nitro",Nitro,true)
 		end
 
+		local Bucket = GetPlayerRoutingBucket(source)
+		SetEntityRoutingBucket(Vehicle,Bucket)
+
 		return true,Network,Vehicle
 	end
 

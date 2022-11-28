@@ -28,6 +28,7 @@ GlobalState["Plates"] = {}
 -- SERVERVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.ServerVehicle(Model,x,y,z,Heading,Plate,Nitrox,Doors,Body,Fuel)
+	local source = source
 	local Randomize = 0
 	local Vehicle = CreateVehicle(Model,x,y,z,Heading,true,true)
 

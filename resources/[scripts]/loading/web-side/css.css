@@ -1,11 +1,11 @@
 * {
+	margin: auto;
 	box-sizing: border-box;
 }
 
-body {
+html,body {
 	margin: 0;
-	font-family: Arial;
-	font-size: 17px;
+	z-index: 0;
 }
 
 video {

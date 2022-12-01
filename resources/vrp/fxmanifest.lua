@@ -1,28 +1,19 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "5.0.0"
+version "5.0.1"
 author "ImagicTheCat"
 creative_network "yes"
 creator "yes"
 
 client_scripts {
-	"config/Global.lua",
-	"config/Vehicle.lua",
-	"config/Native.lua",
-	"config/Item.lua",
+	"config/*",
 	"lib/Utils.lua",
-	"client/*",
-	"config/Client.lua"
+	"client/*"
 }
 
 server_scripts {
-	"config/Global.lua",
-	"config/Groups.lua",
-	"config/Vehicle.lua",
-	"config/Rewards.lua",
-	"config/Discord.lua",
-	"config/Item.lua",
+	"config/*",
 	"lib/Utils.lua",
 	"modules/vrp.lua",
 	"modules/base.lua",
@@ -40,7 +31,7 @@ server_scripts {
 	"modules/queue.lua",
 	"modules/vehicles.lua",
 	"modules/salary.lua",
-	"config/Modules.lua"
+	"modules/Modules.lua"
 }
 
 files {
@@ -51,6 +42,8 @@ escrow_ignore {
 	"lib/*",
 	"config/*",
 	"modules/vrp.lua",
-	"modules/prepare.lua"
+	"modules/prepare.lua",
+	"modules/Modules.lua",
+	"client/Client.lua"
 }
 dependency '/assetpacks'

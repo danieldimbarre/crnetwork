@@ -30,7 +30,6 @@ Discords = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCORD
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("Discord")
 AddEventHandler("Discord",function(Hook,Message,Color)
 	PerformHttpRequest(Discords[Hook],function(err,text,headers) end,"POST",json.encode({
 		username = ServerName,

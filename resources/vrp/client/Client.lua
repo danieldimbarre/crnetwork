@@ -37,7 +37,6 @@ end)
 RegisterCommand("energyBind",function(source,args,rawCommand)
 	if GetGameTimer() >= cdBtns then
 		cdBtns = GetGameTimer() + 1000
-
 		local Ped = PlayerPedId()
 		if not IsPauseMenuActive() and not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Cassino"] and not Phone and GetEntityHealth(Ped) > 101 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
 			if args[1] == "0" then
@@ -55,5 +54,7 @@ RegisterCommand("energyBind",function(source,args,rawCommand)
 		end
 	end
 end)
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REGISTERKEYMAPPING
+-----------------------------------------------------------------------------------------------------------------------------------------
 RegisterKeyMapping("energyBind 0","Interação do botão 0.","keyboard","0")

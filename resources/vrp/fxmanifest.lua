@@ -14,7 +14,12 @@ client_scripts {
 }
 
 server_scripts {
-	"config/*",
+	"config/Global.lua",
+	"config/Groups.lua",
+	"config/Vehicle.lua",
+	"config/Rewards.lua",
+	"config/Discord.lua",
+	"config/Item.lua",
 	"lib/Utils.lua",
 	"modules/vrp.lua",
 	"modules/base.lua",

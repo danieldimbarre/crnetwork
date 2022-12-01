@@ -3241,7 +3241,7 @@ function itemMaxAmount(Item)
 		return List[Item]["Max"]
 	end
 
-	return false
+	return nil
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMSCAPE
@@ -3267,7 +3267,7 @@ function itemDescription(Item)
 		return List[Item]["Description"]
 	end
 
-	return false
+	return nil
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMDURABILITY

@@ -48,7 +48,7 @@ function Creative.sendCode(code)
 					vRPC.PlaySound(Sources,"Event_Start_Text","GTAO_FM_Events_Soundset")
 				end
 
-				TriggerClientEvent("NotifyPush",Sources,{ code = code, title = codes[parseInt(code)]["text"], x = Coords["x"], y = Coords["y"], z = Coords["z"], name = Identity["name"].." "..Identity["name2"], time = "Recebido às "..os.date("%H:%M"), blipColor = codes[parseInt(code)]["blip"] })
+				TriggerClientEvent("NotifyPush",Sources,{ code = code, title = codes[code]["text"], x = Coords["x"], y = Coords["y"], z = Coords["z"], name = Identity["name"].." "..Identity["name2"], time = "Recebido às "..os.date("%H:%M"), blipColor = codes[code]["blip"] })
 			end)
 		end
 	end

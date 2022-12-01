@@ -4053,7 +4053,7 @@ Use = {
 							Points = parseInt(Split[2])
 						end
 
-						exports["plants"]:Plants(Coords,Route,Points,"bkr_prop_weed_med_01a")
+						exports["plants"]:Plants(Coords,Route,Points,Hash)
 					-- end
 
 					vRPC.removeObjects(source)
@@ -4083,7 +4083,7 @@ Use = {
 							Points = parseInt(Split[2])
 						end
 
-						exports["plants"]:Plants(Coords,Route,Points,"bkr_prop_weed_med_01b")
+						exports["plants"]:Plants(Coords,Route,Points,Hash)
 					-- end
 
 					vRPC.removeObjects(source)

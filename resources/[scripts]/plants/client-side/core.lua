@@ -76,11 +76,13 @@ end)
 -- CREATEMODELS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function createModels(Number,Coords,Model)
-	if LoadModel(Model) then
-		Objects[Number] = CreateObjectNoOffset(Model,Coords[1],Coords[2],Coords[3],false,false,false)
-		SetModelAsNoLongerNeeded(Model)
-		PlaceObjectOnGroundProperly(Objects[Number])
-		FreezeEntityPosition(Objects[Number],true)
+	if Model then
+		if LoadModel(Model) then
+			Objects[Number] = CreateObjectNoOffset(Model,Coords[1],Coords[2],Coords[3],false,false,false)
+			SetModelAsNoLongerNeeded(Model)
+			PlaceObjectOnGroundProperly(Objects[Number])
+			FreezeEntityPosition(Objects[Number],true)
+		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

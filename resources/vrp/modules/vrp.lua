@@ -49,11 +49,11 @@ end)
 -- VRP.REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.Request(source,Message,Accept,Reject)
-    return REQUEST.Function(source,Message,Accept or "Sim",Reject or "Não")
+	return REQUEST.Function(source,Message,Accept or "Sim",Reject or "Não")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP.REVIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.Revive(source,Health,Arena)
-    return SURVIVAL.Revive(source,Health,Arena)
+	return SURVIVAL.Revive(source,Health,Arena)
 end

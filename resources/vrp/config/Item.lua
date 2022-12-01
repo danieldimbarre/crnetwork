@@ -3159,7 +3159,7 @@ function itemIndex(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
+	if List[Item] and List[Item]["Index"] then
 		return List[Item]["Index"]
 	end
 
@@ -3172,7 +3172,7 @@ function itemName(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
+	if List[Item] and List[Item]["Name"] then
 		return List[Item]["Name"]
 	end
 
@@ -3185,7 +3185,7 @@ function itemType(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
+	if List[Item] and List[Item]["Type"] then
 		return List[Item]["Type"]
 	end
 
@@ -3198,7 +3198,7 @@ function itemAmmo(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
+	if List[Item] and List[Item]["Ammo"] then
 		return List[Item]["Ammo"]
 	end
 
@@ -3211,8 +3211,8 @@ function itemVehicle(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Vehicle"] or false
+	if List[Item] and List[Item]["Vehicle"] then
+		return List[Item]["Vehicle"]
 	end
 
 	return false
@@ -3224,8 +3224,8 @@ function itemWeight(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Weight"] or 0.0
+	if List[Item] and List[Item]["Weight"] then
+		return List[Item]["Weight"] + 0.0
 	end
 
 	return 0.0
@@ -3237,11 +3237,11 @@ function itemMaxAmount(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Max"] or nil
+	if List[Item] and List[Item]["Max"] then
+		return List[Item]["Max"]
 	end
 
-	return nil
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMSCAPE
@@ -3250,11 +3250,11 @@ function itemScape(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Scape"] or nil
+	if List[Item] and List[Item]["Scape"] then
+		return List[Item]["Scape"]
 	end
 
-	return nil
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMDESCRIPTION
@@ -3263,11 +3263,11 @@ function itemDescription(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Description"] or nil
+	if List[Item] and List[Item]["Description"] then
+		return List[Item]["Description"]
 	end
 
-	return nil
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMDURABILITY
@@ -3276,8 +3276,8 @@ function itemDurability(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Durability"] or false
+	if List[Item] and List[Item]["Durability"] then
+		return List[Item]["Durability"]
 	end
 
 	return false
@@ -3289,11 +3289,11 @@ function itemCharges(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Charges"] or nil
+	if List[Item] and List[Item]["Charges"] then
+		return List[Item]["Charges"]
 	end
 
-	return nil
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMECONOMY
@@ -3302,11 +3302,11 @@ function itemEconomy(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Economy"] or nil
+	if List[Item] and List[Item]["Economy"] then
+		return List[Item]["Economy"]
 	end
 
-	return nil
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMBLOCK
@@ -3315,11 +3315,11 @@ function itemBlock(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Block"] or nil
+	if List[Item] and List[Item]["Block"] then
+		return List[Item]["Block"]
 	end
 
-	return nil
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMREPAIR
@@ -3328,8 +3328,8 @@ function itemRepair(Item)
 	local Split = splitString(Item,"-")
 	local Item = Split[1]
 
-	if List[Item] then
-		return List[Item]["Repair"] or false
+	if List[Item] and List[Item]["Repair"] then
+		return List[Item]["Repair"]
 	end
 
 	return false

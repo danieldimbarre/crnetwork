@@ -1,28 +1,20 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "3.0.6"
+version "5.0.0"
 author "ImagicTheCat"
 creative_network "yes"
 creator "yes"
 
 client_scripts {
-	"config/Global.lua",
-	"config/Vehicle.lua",
-	"config/Native.lua",
-	"config/Item.lua",
+	"config/*",
 	"lib/Utils.lua",
 	"client/*",
 	"config/Client.lua"
 }
 
 server_scripts {
-	"config/Global.lua",
-	"config/Groups.lua",
-	"config/Vehicle.lua",
-	"config/Rewards.lua",
-	"config/Discord.lua",
-	"config/Item.lua",
+	"config/*",
 	"lib/Utils.lua",
 	"modules/vrp.lua",
 	"modules/base.lua",
@@ -33,7 +25,7 @@ server_scripts {
 	"modules/inventory.lua",
 	"modules/money.lua",
 	"modules/party.lua",
-	"modules/pass.lua",
+	"modules/rolepass.lua",
 	"modules/player.lua",
 	"modules/premium.lua",
 	"modules/prepare.lua",

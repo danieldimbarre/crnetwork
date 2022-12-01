@@ -92,7 +92,7 @@ CreateThread(function()
 			heading = 3374176
 		},{
 			shop = Number,
-			Distance = 1.0,
+			Distance = 1.5,
 			options = {
 				{
 					event = "crafting:openSystem",

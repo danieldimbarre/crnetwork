@@ -20,7 +20,7 @@ body {
 }
 
 #midCode {
-	width: 498px;
+	width: 235px;
 	margin: 0 auto;
 }
 
@@ -44,16 +44,26 @@ body {
 	border-right: 0;
 }
 
-#topRadar {
-	right: 632px;
-	width: 225px;
-	bottom: 50px;
+#divRadar {
+	bottom: 3vw;
+	width: 100%;
 	display: none;
+	position: fixed;
+	cursor: default;
+}
+
+#midRadar {
+	width: 431px;
+	margin: 0 auto;
+}
+
+#topRadar {
+	float: left;
 	font-size: 12px;
 	text-align: right;
 	line-height: 20px;
 	padding: 10px 15px;
-	position: absolute;
+	margin-right: 2px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	text-shadow: 1px 1px #000;
@@ -61,15 +71,11 @@ body {
 }
 
 #botRadar {
-	right: 387px;
-	width: 225px;
-	bottom: 50px;
-	display: none;
+	float: left;
 	font-size: 12px;
 	text-align: right;
 	line-height: 20px;
 	padding: 10px 15px;
-	position: absolute;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	text-shadow: 1px 1px #000;

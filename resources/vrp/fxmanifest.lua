@@ -7,7 +7,10 @@ creative_network "yes"
 creator "yes"
 
 client_scripts {
-	"config/*",
+	"config/Global.lua",
+	"config/Vehicle.lua",
+	"config/Native.lua",
+	"config/Item.lua",
 	"lib/Utils.lua",
 	"client/*",
 	"config/Client.lua"

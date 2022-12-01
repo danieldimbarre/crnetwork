@@ -172,12 +172,12 @@ const updateDrag = () => {
 		create: function(event,ui){
 			var max = $(this).attr("data-max");
 			var economy = $(this).attr("data-economy");
-			var desc = $(this).attr("data-description");
+			var description = $(this).attr("data-description");
 			var name = $(this).attr("data-name-key");
 			var recipe = $(this).attr("data-list");
 
 			$(this).tooltip({
-				content: `<item>${name}</item>${desc !== "undefined" ? "<br><description>"+desc+"</description>":""}<br><legenda>Economia: <r>$${economy}</r> <s>|</s> Máximo: <r>${max !== "undefined" ? max:"S/L"}</r></legenda><br><legenda>${recipe}</legenda>`,
+				content: `<item>${name}</item>${description !== "false" ? "<br><description>"+description+"</description>":""}<br><legenda>Economia: <r>$${economy}</r> <s>|</s> Máximo: <r>${max !== "undefined" ? max:"S/L"}</r></legenda><br><legenda>${recipe}</legenda>`,
 				position: { my: "center top+10", at: "center bottom", collision: "flipfit" },
 				show: { duration: 10 },
 				hide: { duration: 10 }

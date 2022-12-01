@@ -199,7 +199,7 @@ local polyPrison = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREAD - SYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-Citizen.CreateThread(function()
+CreateThread(function()
 	SetNuiFocus(false,false)
 
 	while true do
@@ -222,7 +222,7 @@ Citizen.CreateThread(function()
 					SetEntityCoords(ped,inLocates[inSelect][1],inLocates[inSelect][2],inLocates[inSelect][3] - 1,1,0,0,0)
 					vRP.playAnim(false,{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"},true)
 					TriggerEvent("Progress","Vasculhando",10000)
-					Citizen.Wait(10000)
+					Wait(10000)
 
 					LocalPlayer["state"]["Commands"] = false
 					LocalPlayer["state"]["Cancel"] = false
@@ -237,14 +237,14 @@ Citizen.CreateThread(function()
 					inDeath = true
 				else
 					if GetGameTimer() >= timeDeath then
-						vRP.revivePlayer(125)
+						exports["survival"]:Revive(125)
 						inDeath = false
 					end
 				end
 			end
 		end
 
-		Citizen.Wait(timeDistance)
+		Wait(timeDistance)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -264,20 +264,19 @@ local runAway = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADRUNAWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		local timeDistance = 999
 		if inPrison then
 			local ped = PlayerPedId()
 			local coords = GetEntityCoords(ped)
-			local distance = #(coords - vec3(coordsLeaver[1],coordsLeaver[2],coordsLeaver[3]))
 
 			if not polyPrison:isPointInside(coords) then
 				SetEntityCoords(ped,coordsIntern[1],coordsIntern[2],coordsIntern[3],1,0,0,0)
 			end
 		end
 
-		Citizen.Wait(timeDistance)
+		Wait(timeDistance)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

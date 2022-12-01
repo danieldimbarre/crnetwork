@@ -608,8 +608,8 @@ local List = {
 			}	
 		}
 	},
-	["Altruists"] = {
-		["perm"] = "Altruists",
+	["Mechanic"] = {
+		["perm"] = "Mechanic",
 		["List"] = {
 			["c4"] = {
 				["amount"] = 1,
@@ -629,14 +629,20 @@ local List = {
 					["rubber"] = 5
 				}
 			},
-			["vest"] = {
+			["notebook"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["roadsigns"] = 5,
-					["aluminum"] = 10,
-					["rubber"] = 5,
-					["sheetmetal"] = 5
+					["techtrash"] = 10,
+					["battery"] = 10,
+					["aluminum"] = 20
+				}
+			},
+			["dismantle"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["dollars"] = 100,
 				}
 			}
 		}

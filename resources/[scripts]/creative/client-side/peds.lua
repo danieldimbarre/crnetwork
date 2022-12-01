@@ -332,12 +332,12 @@ local List = {
 		Model = "ig_barry",
 		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
 	},
-	{ -- Dismantle
-		Distance = 20,
-		Coords = { 1569.67,-2129.67,78.33,201.26 },
-		Model = "s_m_y_construct_02",
-		anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
-	},
+	--{ -- Dismantle
+	--	Distance = 20,
+	--	Coords = { 1569.67,-2129.67,78.33,201.26 },
+	--	Model = "s_m_y_construct_02",
+	--	anim = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	--},
 	-- { -- Black Market
 	-- 	Distance = 20,
 	-- 	Coords = { 2431.86,4967.66,42.34,133.23 },
@@ -1130,12 +1130,12 @@ local List = {
 		Model = "s_m_m_gaffer_01",
 		anim = { "mini@repair","fixing_a_player" }
 	},
-	{ -- Altruists
-		Distance = 30,
-		Coords = { -1109.09,4939.69,223.13 }, 
-		Model = "csb_cletus",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
+	-- { -- Altruists
+	-- 	Distance = 30,
+	-- 	Coords = { -1109.09,4939.69,223.13 }, 
+	-- 	Model = "csb_cletus",
+	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	--},
 	{ -- LockPick
 		Distance = 30,
 		Coords = { 1330.96,-1657.72,51.24,170.08 }, 

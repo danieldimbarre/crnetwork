@@ -52,7 +52,7 @@ exports("Wanted",function(Passport,source)
 				local Service = vRP.NumPermission("Police")
 				for Passports,Sources in pairs(Service) do
 					async(function()
-						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Digitais Encontradas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alerta de procurado", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Digitais Encontradas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alerta de procurado", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end

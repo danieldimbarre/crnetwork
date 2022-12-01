@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "3.0.6"
+version "5.0.0"
 author "ImagicTheCat"
 creative_network "yes"
 creator "yes"
@@ -33,7 +33,7 @@ server_scripts {
 	"modules/inventory.lua",
 	"modules/money.lua",
 	"modules/party.lua",
-	"modules/pass.lua",
+	"modules/rolepass.lua",
 	"modules/player.lua",
 	"modules/premium.lua",
 	"modules/prepare.lua",

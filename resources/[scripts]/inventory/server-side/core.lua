@@ -1532,7 +1532,7 @@ function Creative.VerifyObjects(Entity,Service)
 							for Passports,Sources in pairs(ServiceList) do
 								async(function()
 									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-									TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Parquímetro", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Parquímetro", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 								end)
 							end
 						end
@@ -1789,7 +1789,7 @@ function Creative.StealTrunk(Entity)
 					local Service = vRP.NumPermission("Police")
 					for Passports,Sources in pairs(Service) do
 						async(function()
-							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehModels).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehModels).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 						end)
 					end
 				end
@@ -1945,7 +1945,7 @@ function Creative.MakeProducts(Table)
 					for Passports,Sources in pairs(Service) do
 						async(function()
 							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 					return
@@ -2263,7 +2263,7 @@ function Creative.StealPeds()
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end
@@ -2323,7 +2323,7 @@ function Creative.DrugPeds()
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end

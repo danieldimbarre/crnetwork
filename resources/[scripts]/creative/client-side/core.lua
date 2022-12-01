@@ -231,9 +231,6 @@ local AudioFlag = {
 }
 
 CreateThread(function()
-	AddTextEntry("FE_THDR_GTAO","Energy")
-	ReplaceHudColour(116,18)
-
 	for _,v in pairs(Emitters) do
         SetStaticEmitterEnabled(v,false)
     end
@@ -364,12 +361,12 @@ CreateThread(function()
 			SetScenarioPedDensityMultiplierThisFrame(0.0,0.0)
 			SetPedDensityMultiplierThisFrame(0.0)
 		else
-			SetVehicleDensityMultiplierThisFrame(0.50)
-			SetRandomVehicleDensityMultiplierThisFrame(0.50)
-			SetParkedVehicleDensityMultiplierThisFrame(1.0)
+			SetVehicleDensityMultiplierThisFrame(0.30)
+			SetRandomVehicleDensityMultiplierThisFrame(0.30)
+			SetParkedVehicleDensityMultiplierThisFrame(0.50)
 			SetAmbientVehicleRangeMultiplierThisFrame(1.0)
-			SetScenarioPedDensityMultiplierThisFrame(1.0,1.0)
-			SetPedDensityMultiplierThisFrame(1.0)
+			SetScenarioPedDensityMultiplierThisFrame(0.50,0.50)
+			SetPedDensityMultiplierThisFrame(0.30)
 		end
 
 		if IsPedArmed(PlayerPedId(),6) then

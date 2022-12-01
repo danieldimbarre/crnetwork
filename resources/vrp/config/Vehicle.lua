@@ -5938,7 +5938,7 @@ end
 -- VEHICLENAME
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleName(Name)
-	if List[Name] then
+	if List[Name] and List[Name]["Name"] then
 		return List[Name]["Name"]
 	end
 
@@ -5948,7 +5948,7 @@ end
 -- VEHICLECHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleChest(Name)
-	if List[Name] then
+	if List[Name] and List[Name]["Weight"] then
 		return List[Name]["Weight"]
 	end
 
@@ -5958,7 +5958,7 @@ end
 -- VEHICLEPRICE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehiclePrice(Name)
-	if List[Name] then
+	if List[Name] and List[Name]["Price"] then
 		return List[Name]["Price"]
 	end
 
@@ -5968,17 +5968,17 @@ end
 -- VEHICLEMODE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleMode(Name)
-	if List[Name] then
+	if List[Name] and List[Name]["Mode"] then
 		return List[Name]["Mode"]
 	end
 
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VEHICLEGEMS
+-- VEHICLEGEMSTONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleGems(Name)
-	if List[Name] then
+	if List[Name] and List[Name]["Gems"] then
 		return List[Name]["Gems"]
 	end
 

@@ -28,7 +28,6 @@ GlobalState["Plates"] = {}
 -- SERVERVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.ServerVehicle(Model,x,y,z,Heading,Plate,Nitrox,Doors,Body,Fuel)
-	local source = source
 	local Randomize = 0
 	local Vehicle = CreateVehicle(Model,x,y,z,Heading,true,true)
 
@@ -72,9 +71,6 @@ function Creative.ServerVehicle(Model,x,y,z,Heading,Plate,Nitrox,Doors,Body,Fuel
 			Nitro[Plate] = Nitrox or 0
 			GlobalState:set("Nitro",Nitro,true)
 		end
-
-		local Bucket = GetPlayerRoutingBucket(source)
-		SetEntityRoutingBucket(Vehicle,Bucket)
 
 		return true,Network,Vehicle
 	end

@@ -154,33 +154,31 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPLITSTRING
 -----------------------------------------------------------------------------------------------------------------------------------------
-function splitString(str,symbol)
-	local Number = 1
-	local tableResult = {}
+function splitString(Full,Symbol)
+	local Table = {}
 
-	if not symbol then
-		symbol = "-"
+	if not Symbol then
+		Symbol = "-"
 	end
 
-	for str in string.gmatch(str,"([^"..symbol.."]+)") do
-		tableResult[Number] = str
-		Number = Number + 1
+	for Full in string.gmatch(Full,"([^"..Symbol.."]+)") do
+		Table[#Table + 1] = Full
 	end
 
-	return tableResult
+	return Table
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MATHLEGTH
 -----------------------------------------------------------------------------------------------------------------------------------------
-function mathLength(n)
-	return math.ceil(n * 100) / 100
+function mathLength(Number)
+	return math.ceil(Number * 100) / 100
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARSEFORMAT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function parseFormat(Number)
-	local left,num,right = string.match(parseInt(Number),"^([^%d]*%d)(%d*)(.-)$")
-	return left..(num:reverse():gsub("(%d%d%d)","%1."):reverse())..right
+	local Left,Number,Right = string.match(parseInt(Number),"^([^%d]*%d)(%d*)(.-)$")
+	return Left..(Number:reverse():gsub("(%d%d%d)","%1."):reverse())..Right
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- COMPLETETIMERS

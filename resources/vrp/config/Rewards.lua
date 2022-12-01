@@ -28,5 +28,6 @@ Rewards = {
 	[27] = { ["item"] = "uwucoffeepass", ["amount"] = 3 },
 	[28] = { ["item"] = "mechanicpass", ["amount"] = 3 },
 	[29] = { ["item"] = "paramedicpass", ["amount"] = 3 },
-	[30] = { ["item"] = "rentalveh", ["amount"] = 1 }
+	[30] = { ["item"] = "gemstone", ["amount"] = 10 },
+	[31] = { ["item"] = "rentalveh", ["amount"] = 1 }
 }

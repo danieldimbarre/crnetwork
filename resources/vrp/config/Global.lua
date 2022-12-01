@@ -7,6 +7,7 @@ CombatLogMinutes = 3
 SalarySeconds = 1800
 BannedText = "Banido"
 CleanDeathInventory = true
+ClearInventoryPremium = false
 ServerName = "Energy"
 ReleaseText = "Envie na sala liberação"
 SpawnCoords = vec3(239.41,-1381.01,33.73)

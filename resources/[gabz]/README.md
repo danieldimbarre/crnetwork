@@ -65,6 +65,7 @@ Follow these steps to properly update your Gabz resources. Not following these s
     ensure cfx-gabz-lostsc
     ensure cfx-gabz-lscustoms
     ensure cfx-gabz-marabunta
+    ensure cfx-gabz-mba
     ensure cfx-gabz-mirrorpark1
     ensure cfx-gabz-mirrorpark2
     ensure cfx-gabz-mrpd

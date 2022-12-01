@@ -17,13 +17,11 @@ window.addEventListener("message",function(event){
 	}
 
 	if (event["data"]["radar"] == true){
-		$("#topRadar").css("display","block");
-		$("#botRadar").css("display","block");
+		$("#divRadar").css("display","block");
 	}
 
 	if (event["data"]["radar"] == false){
-		$("#topRadar").css("display","none");
-		$("#botRadar").css("display","none");
+		$("#divRadar").css("display","none");
 	}
 
 	if (event["data"]["radar"] == "top"){

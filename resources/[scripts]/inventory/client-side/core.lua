@@ -1851,9 +1851,9 @@ function Creative.Dismantle(Experience)
 		local RandomY = math.random(25,100)
 
 		if math.random(2) >= 2 then
-			TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Veículo", x = disCoords[disSelect][1] + RandomX + 0.0, y = disCoords[disSelect][2] - RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
+			TriggerEvent("NotifyPush",{ code = "QTH", title = "Localização do Veículo", x = disCoords[disSelect][1] + RandomX + 0.0, y = disCoords[disSelect][2] - RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
 		else
-			TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Veículo", x = disCoords[disSelect][1] - RandomX + 0.0, y = disCoords[disSelect][2] + RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
+			TriggerEvent("NotifyPush",{ code = "QTH", title = "Localização do Veículo", x = disCoords[disSelect][1] - RandomX + 0.0, y = disCoords[disSelect][2] + RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
 		end
 	end
 end
@@ -1913,58 +1913,61 @@ local disPeds = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISWEAPONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local disWeapons = { "WEAPON_HEAVYPISTOL","WEAPON_SMG","WEAPON_ASSAULTSMG","WEAPON_APPISTOL","WEAPON_SPECIALCARBINE","WEAPON_PUMPSHOTGUN" }
+local disWeapons = { "WEAPON_KATANA","WEAPON_BAT","WEAPON_POOLCUE","WEAPON_NAILGUN" }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:DISPED
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:DisPed")
 AddEventHandler("inventory:DisPed",function()
-local Ped = PlayerPedId()
-	local Rand = math.random(#disPeds)
+	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
-	local Weapon = math.random(#disWeapons)
-	local cX = Coords["x"] + math.random(-25.0,25.0)
-	local cY = Coords["y"] + math.random(-25.0,25.0)
-	local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
-	local Entity,EntityNet = vRPS.CreatePed(disPeds[Rand],EntCoords["x"],EntCoords["y"],EntCoords["z"],3374176,4)
-	if Entity then
-		Wait(1000)
 
-		local SpawnEntity = 0
-		local NetEntity = NetworkGetEntityFromNetworkId(EntityNet)
-		while not DoesEntityExist(NetEntity) and SpawnEntity <= 1000 do
-			NetEntity = NetworkGetEntityFromNetworkId(EntityNet)
-			SpawnEntity = SpawnEntity + 1
-			Wait(1)
+	for i = 0,3 do
+		local Rand = math.random(#disPeds)
+		local Weapon = math.random(#disWeapons)
+		local cX = Coords["x"] + math.random(-25.0,25.0)
+		local cY = Coords["y"] + math.random(-25.0,25.0)
+		local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
+		local Entity,EntityNet = vRPS.CreatePed(disPeds[Rand],EntCoords["x"],EntCoords["y"],EntCoords["z"],3374176,4)
+		if Entity then
+			Wait(1000)
+
+			local SpawnEntity = 0
+			local NetEntity = NetworkGetEntityFromNetworkId(EntityNet)
+			while not DoesEntityExist(NetEntity) and SpawnEntity <= 1000 do
+				NetEntity = NetworkGetEntityFromNetworkId(EntityNet)
+				SpawnEntity = SpawnEntity + 1
+				Wait(1)
+			end
+
+			SpawnEntity = 0
+			local NetControl = NetworkRequestControlOfEntity(NetEntity)
+			while not NetControl and SpawnEntity <= 1000 do
+				NetControl = NetworkRequestControlOfEntity(NetEntity)
+				SpawnEntity = SpawnEntity + 1
+				Wait(1)
+			end
+
+			SetPedArmour(NetEntity,99)
+			SetPedAccuracy(NetEntity,100)
+			SetPedRelationshipGroupHash(NetEntity,GetHashKey("HATES_PLAYER"))
+			SetPedKeepTask(NetEntity,true)
+			SetCanAttackFriendly(NetEntity,false,true)
+			TaskCombatPed(NetEntity,Ped,0,16)
+			SetPedCombatAttributes(NetEntity,46,true)
+			SetPedCombatAbility(NetEntity,0)
+			SetPedCombatAttributes(NetEntity,0,true)
+			GiveWeaponToPed(NetEntity,disWeapons[Weapon],100,false,true)
+			SetPedDropsWeaponsWhenDead(NetEntity,false)
+			SetPedCombatRange(NetEntity,2)
+			SetPedFleeAttributes(NetEntity,0,0)
+			SetPedConfigFlag(NetEntity,58,true)
+			SetPedConfigFlag(NetEntity,75,true)
+			SetPedFiringPattern(NetEntity,-957453492)
+			SetBlockingOfNonTemporaryEvents(NetEntity,true)
+
+			SetModelAsNoLongerNeeded(disPeds[Rand])
 		end
-
-		SpawnEntity = 0
-		local NetControl = NetworkRequestControlOfEntity(NetEntity)
-		while not NetControl and SpawnEntity <= 1000 do
-			NetControl = NetworkRequestControlOfEntity(NetEntity)
-			SpawnEntity = SpawnEntity + 1
-			Wait(1)
-		end
-
-		SetPedArmour(NetEntity,99)
-		SetPedAccuracy(NetEntity,100)
-		SetPedRelationshipGroupHash(NetEntity,GetHashKey("HATES_PLAYER"))
-		SetPedKeepTask(NetEntity,true)
-		SetCanAttackFriendly(NetEntity,false,true)
-		TaskCombatPed(NetEntity,Ped,0,16)
-		SetPedCombatAttributes(NetEntity,46,true)
-		SetPedCombatAbility(NetEntity,0)
-		SetPedCombatAttributes(NetEntity,0,true)
-		GiveWeaponToPed(NetEntity,disWeapons[Weapon],-1,false,true)
-		SetPedDropsWeaponsWhenDead(NetEntity,false)
-		SetPedCombatRange(NetEntity,2)
-		SetPedFleeAttributes(NetEntity,0,0)
-		SetPedConfigFlag(NetEntity,58,true)
-		SetPedConfigFlag(NetEntity,75,true)
-		SetPedFiringPattern(NetEntity,-957453492)
-		SetBlockingOfNonTemporaryEvents(NetEntity,true)
-
-		SetModelAsNoLongerNeeded(disPeds[Rand])
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

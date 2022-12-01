@@ -2383,7 +2383,7 @@ Use = {
 							local Service = vRP.NumPermission("Police")
 							for Passports,Sources in pairs(Service) do
 								async(function()
-									TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 								end)
 							end
 						end
@@ -2418,7 +2418,7 @@ Use = {
 								local Service = vRP.NumPermission("Police")
 								for Passports,Sources in pairs(Service) do
 									async(function()
-										TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+										TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 									end)
 								end
 							end
@@ -2459,7 +2459,7 @@ Use = {
 								local Service = vRP.NumPermission("Police")
 								for Passports,Sources in pairs(Service) do
 									async(function()
-										TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+										TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 									end)
 								end
 							end
@@ -4053,7 +4053,7 @@ Use = {
 							Points = parseInt(Split[2])
 						end
 
-						exports["plants"]:Plants(Coords,Route,Points,"bkr_prop_weed_med_01a")
+						exports["plants"]:Plants(Coords,Route,Points,Hash)
 					-- end
 
 					vRPC.removeObjects(source)
@@ -4083,7 +4083,7 @@ Use = {
 							Points = parseInt(Split[2])
 						end
 
-						exports["plants"]:Plants(Coords,Route,Points,"bkr_prop_weed_med_01b")
+						exports["plants"]:Plants(Coords,Route,Points,Hash)
 					-- end
 
 					vRPC.removeObjects(source)
@@ -4161,13 +4161,13 @@ Use = {
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100 }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
 					TriggerClientEvent("Progress",source,"Plantando",15000)
-					atmTimers[NumberAtm] = os.time() + 10800
+					atmTimers[NumberAtm] = os.time() + 1200
 					local explosionProgress = 15
 
 					for Passports,Sources in pairs(Service) do
 						async(function()
 							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 

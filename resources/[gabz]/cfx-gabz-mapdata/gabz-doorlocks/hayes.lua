@@ -23,8 +23,8 @@ table.insert(Config.DoorList, {
 -- Entry 1 (garage door)
 table.insert(Config.DoorList, {
 	authorizedJobs = { ['mechanic']=0 },
-	textCoords = vector3(-1414.868, -436.3676, 34.90352),
-	objCoords = vector3(-1414.868, -436.3676, 34.90352),
+	textCoords = vector3(-1414.868, -436.3676, 34.77352),
+	objCoords = vector3(-1414.868, -436.3676, 34.77352),
 	objHeading = 31.990060806274,
 	objHash = 1715394473, -- denis3d_hayes_auto_shuttergate 		
 	maxDistance = 5.5,
@@ -44,8 +44,8 @@ table.insert(Config.DoorList, {
 -- Entry 2 (garage door)
 table.insert(Config.DoorList, {
 	authorizedJobs = { ['mechanic']=0 },
-	textCoords = vector3(-1421.118, -440.272, 34.90352),
-	objCoords = vector3(-1421.118, -440.272, 34.90352),
+	textCoords = vector3(-1421.118, -440.272, 34.77352),
+	objCoords = vector3(-1421.118, -440.272, 34.77352),
 	objHeading = 31.999959945678,
 	objHash = 1715394473, -- denis3d_hayes_auto_shuttergate		
 	maxDistance = 5.5,
@@ -65,8 +65,8 @@ table.insert(Config.DoorList, {
 -- Entry 3 (garage door)
 table.insert(Config.DoorList, {
 	authorizedJobs = { ['mechanic']=0 },
-	textCoords = vector3(-1427.326, -444.1516, 34.90352),
-	objCoords = vector3(-1427.326, -444.1516, 34.90352),
+	textCoords = vector3(-1427.326, -444.1516, 34.77352),
+	objCoords = vector3(-1427.326, -444.1516, 34.77352),
 	objHeading = 32.01089477539,
 	objHash = 1715394473, -- denis3d_hayes_auto_shuttergate		
 	maxDistance = 5.5,

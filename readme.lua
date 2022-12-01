@@ -1,182 +1,279 @@
-vRP.Identities(source: int)
+-- Server Events
 
-vRP.Archive(Archive: string,Text: string)
+vRP.Prepare(Name,Query)
 
-vRP.Prepare(Name: string,Query: string)
+vRP.Query(Name,Params)
 
-vRP.Query(Name: string,Params: string)
+vRP.Identities(source)
 
-vRP.Banned(License: string)
+vRP.Archive(Archive,Text)
 
-vRP.Account(License: string)
+vRP.Banned(License)
 
-vRP.UserData(Passport: int,Key: string)
+vRP.Account(License)
 
-vRP.InsidePropertys(Passport: int,Coords)
+vRP.UserData(Passport,Key)
 
-vRP.Inventory(Passport: int)
+vRP.InsidePropertys(Passport,Coords)
 
-vRP.SkinCharacter(Passport: int,Hash: string)
+vRP.Inventory(Passport)
 
-vRP.Passport(source: int)
+vRP.SaveTemporary(Passport,source,Route)
 
-vRP.Source(Passport: int)
+vRP.ApplyTemporary(Passport,source)
 
-vRP.Datatable(Passport: int)
+vRP.SkinCharacter(Passport,Hash)
 
-vRP.Kick(Passport: int,Reason: string)
+vRP.Passport(source)
 
-vRP.DataGroups(Group: string)
+vRP.Players()
 
-vRP.HasPermission(Passport: int,Permission: string)
+vRP.Source(Passport)
 
-vRP.SetPermission(Passport: int,Permission: string)
+vRP.Datatable(Passport)
 
-vRP.RemovePermission(Passport: int,Permission: string)
+vRP.Kick(source,Reason)
 
-vRP.HasGroup(Passport: int,Permission: string)
+vRP.CharacterChosen(source,Passport,Model)
 
-vRP.HasService(Passport: int,Permission: string)
+vRP.WeedReturn(Passport)
 
-vRP.NumPermission(Permission: string)
+vRP.WeedTimer(Passport,Time)
 
-vRP.AddPermission(source: int,Passport: int,Permission: string)
+vRP.ChemicalReturn(Passport)
 
-vRP.BlankPermission(Passport: int,Permission: string)
+vRP.ChemicalTimer(Passport,Time)
 
-vRP.Identity(Passport: int)
+vRP.AlcoholReturn(Passport)
 
-vRP.InitPrison(source: int,Passport: int,Amount: int)
+vRP.AlcoholTimer(Passport,Time)
 
-vRP.UpdatePrison(Passport: int,source: int,Amount: int)
+vRP.Groups()
 
-vRP.UpgradeChars(source: int)
+vRP.DataGroups(Permission)
 
-vRP.UserGemstone(License: string)
+vRP.GetUserType(Passport,Type)
 
-vRP.UpgradeGemstone(source: int,Amount: int)
+vRP.Hierarchy(Permission)
 
-vRP.UpgradeNames(source: int,Passport: int,Name: string,Name2: string)
+vRP.NumPermission(Permission)
 
-vRP.UpgradePhone(source: int,Passport: int,Phone: string)
+vRP.ServiceToggle(Source,Passport,Permission,Silenced)
 
-vRP.PassportPlate(Plate: string)
+vRP.ServiceEnter(Source,Passport,Permission,Silenced)
 
-vRP.UserPhone(Phone: string)
+vRP.ServiceLeave(Source,Passport,Permission,Silenced)
 
-vRP.GenerateString(Format: string)
+vRP.SetPermission(Passport,Permission,Level,Mode)
 
-vRP.ConsultItem(Passport: int,Item: string,Amount)
+vRP.RemovePermission(Passport,Permission)
 
-vRP.GetWeight(Passport: int)
+vRP.HasPermission(Passport,Permission,Level)
 
-vRP.SetWeight(Passport: int,Amount: int)
+vRP.HasGroup(Passport,Permission,Level)
 
-vRP.SwapSlot(Passport: int,Slot: int,Target: int)
+vRP.HasService(Passport,Permission)
 
-vRP.InventoryWeight(Passport: int)
+vRP.FalseIdentity(Passport)
 
-vRP.CheckDamaged(Item: string)
+vRP.Identity(Passport)
 
-vRP.ChestWeight(Data: table)
+vRP.InitPrison(Passport,Amount)
 
-vRP.InventoryItemAmount(Passport: int,Item: string)
+vRP.UpdatePrison(Passport,Amount)
 
-vRP.InventoryFull(Passport: int,Item: string)
+vRP.UpgradeSpending(Passport,Amount)
 
-vRP.ItemAmount(Passport: int,Item: string)
+vRP.DowngradeSpending(Passport,Amount)
 
-vRP.GiveItem(Passport: int,Item: string,Amount: int,Notify: bool,Slot: int)
+vRP.UpgradeCardlimit(Passport,Amount)
 
-vRP.GenerateItem(Passport: int,Item: string,Amount: int,Notify: bool,Slot: int)
+vRP.DowngradeCardlimit(Passport,Amount)
 
-vRP.MaxItens(Passport: int,Item: string,Amount: int)
+vRP.UpgradeChars(source)
 
-vRP.TakeItem(Passport: int,Item: string,Amount: int,Notify: bool,Slot: int)
+vRP.UserGemstone(License)
 
-vRP.RemoveItem(Passport: int,Item: string,Amount: int,Notify: bool)
+vRP.UpgradeGemstone(Passport,Amount)
 
-vRP.GetSrvData(Key: string, Save: bool)
+vRP.UpgradeNames(Passport,Name,Name2)
 
-vRP.SetSrvData(Key: string,Data: table, Save: bool)
+vRP.UpgradePhone(Passport,Phone)
 
-vRP.RemSrvData(Key: string, Save: bool)
+vRP.PassportPlate(Plate)
 
-vRP.TakeChest(Passport: int,Data: string,Amount: int,Slot: int,Target: int)
+vRP.UserPhone(Phone)
 
-vRP.StoreChest(Passport: int,Data: string,Amount: int,Weight: int,Slot: int,Target: int)
+vRP.GenerateString(Format)
 
-vRP.UpdateChest(Passport: int,Data: string,Slot: int,Target: int,Amount: int)
+vRP.GeneratePlate()
 
-vRP.DirectChest(Chest: string,Amount: int)
+vRP.GeneratePhone()
 
-vRP.UserBank(Passport: int,Mode: string)
+vRP.ConsultItem(Passport,Item,Amount)
 
-vRP.GiveBank(Passport: int,Amount: int,Mode: string)
+vRP.GetWeight(Passport)
 
-vRP.RemoveBank(Passport: int,Amount: int,Mode: string)
+vRP.SetWeight(Passport,Amount)
 
-vRP.GetBank(source: int)
+vRP.SwapSlot(Passport,Slot,Target)
 
-vRP.GetFine(source: int)
+vRP.InventoryWeight(Passport)
 
-vRP.GiveFine(Passport: int,Amount: int,source: int)
+vRP.CheckDamaged(Item)
 
-vRP.RemoveFine(Passport: int,Amount: int,source: int)
+vRP.ChestWeight(Data)
 
-vRP.PaymentGems(source: int,Amount: int)
+vRP.InventoryItemAmount(Passport,Item)
 
-vRP.PaymentBank(source: int,Passport: int,Amount: int)
+vRP.InventoryFull(Passport,Item)
 
-vRP.PaymentFull(Passport: int,source: int,Amount: int)
+vRP.ItemAmount(Passport,Item)
 
-vRP.WithdrawCash(Passport: int,source: int,Amount: int)
+vRP.GiveItem(Passport,Item,Amount,Notify,Slot)
 
-vRP.UpdateRolepass(source: int,Day: int)
+vRP.GenerateItem(Passport,Item,Amount,Notify,Slot)
 
-vRP.CheckRolepass(source: int)
+vRP.MaxItens(Passport,Item,Amount)
 
-vRP.UpgradeThirst(Passport: int,Amount: int)
+vRP.TakeItem(Passport,Item,Amount,Notify,Slot)
 
-vRP.UpgradeHunger(Passport: int,Amount: int)
+vRP.RemoveItem(Passport,Item,Amount,Notify)
 
-vRP.UpgradeStress(Passport: int,Amount: int)
+vRP.GetSrvData(Key,Save)
 
-vRP.DowngradeThirst(Passport: int,Amount: int)
+vRP.SetSrvData(Key,Data,Save)
 
-vRP.DowngradeHunger(Passport: int,Amount: int)
+vRP.RemSrvData(Key,Save)
 
-vRP.DowngradeStress(Passport: int,Amount: int)
+tvRP.invUpdate(Slot,Target,Amount)
 
-vRP.GetHealth(source: int)
+vRP.TakeChest(Passport,Data,Amount,Slot,Target)
 
-vRP.ModelPlayer(source: int)
+vRP.StoreChest(Passport,Data,Amount,Weight,Slot,Target)
 
-vRP.GetExperience(Passport: int,Work: string)
+vRP.UpdateChest(Passport,Data,Slot,Target,Amount)
 
-vRP.PutExperience(Passport: int,Work: string,Number: int)
+vRP.DirectChest(Chest,Slot,Amount)
 
-vRP.SetArmour(source: int,Amount: int)
+vRP.GiveBank(Passport,Amount)
 
-vRP.Teleport(source: int,x: number,y: number,z: number)
+vRP.RemoveBank(Passport,Amount)
 
-vRP.GetEntityCoords(source: int)
+vRP.GetBank(source)
 
-vRP.SetPremium(source: int)
+vRP.GetFine(source)
 
-vRP.UpgradePremium(source: int)
+vRP.GiveFine(Passport,Amount)
 
-vRP.UserPremium(Passport: int)
+vRP.RemoveFine(Passport,Amount)
 
-vRP.LicensePremium(License: string)
+vRP.PaymentGems(Passport,Amount)
 
-vRP.UpgradeSpending(Passport: int,Amount: int)
+vRP.PaymentBank(Passport,Amount,IgnoreLimit)
 
-vRP.DowngradeSpending(Passport: int,Amount: int)
+vRP.PaymentFull(Passport,Amount,IgnoreLimit)
 
-vRP.UpgradeCardlimit(Passport: int,Amount: int)
+vRP.WithdrawCash(Passport,Amount)
 
-vRP.DowngradeCardlimit(Passport: int,Amount: int)
+vRP.ClearInventory(Passport)
+
+vRP.UpgradeThirst(Passport,Amount)
+
+vRP.UpgradeHunger(Passport,Amount)
+
+vRP.UpgradeStress(Passport,Amount)
+
+vRP.DowngradeThirst(Passport,Amount)
+
+vRP.DowngradeHunger(Passport,Amount)
+
+vRP.DowngradeStress(Passport,Amount)
+
+tvRP.Foods()
+
+vRP.GetHealth(source)
+
+vRP.ModelPlayer(source)
+
+vRP.GetExperience(Passport,Work)
+
+vRP.PutExperience(Passport,Work,Number)
+
+vRP.SetArmour(source,Amount)
+
+vRP.Teleport(source,x,y,z)
+
+vRP.GetEntityCoords(source)
+
+vRP.InsideVehicle(source)
+
+vRP.RemoveWeapons(source)
+
+tvRP.CreatePed(Model,x,y,z,heading,typ)
+
+tvRP.CreateObject(Model,x,y,z,Weapon)
+
+vRP.SetPremium(source)
+
+vRP.UpgradePremium(source)
+
+vRP.UserPremium(Passport)
+
+vRP.LicensePremium(License)
+
+vRP.UpdateRolepass(source,Day)
+
+vRP.CheckRolepass(source)
+
+vRP.Request(source,Message,Accept,Reject)
+
+vRP.Revive(source,Health,Arena)
+
+
+-- Client Events
+
+tvRP.BlipAdmin()
+
+tvRP.ClosestPeds(Radius)
+
+tvRP.ClosestPed(Radius)
+
+tvRP.Players()
+
+tvRP.PlaySound(Dict,Name)
+
+tvRP.ClosestVehicle(Radius)
+
+tvRP.VehicleList(Radius)
+
+tvRP.VehicleName()
+
+tvRP.VehicleModel(Vehicle)
+
+tvRP.LastVehicle(Name)
+
+tvRP.createObjects(Dict,Anim,Prop,Flag,Hands,Height,Pos1,Pos2,Pos3,Pos4,Pos5)
+
+tvRP.removeObjects(Mode)
+
+tvRP.noClip()
+
+tvRP.objectCoords(Model)
+
+tvRP.playAnim(Upper,Sequency,Loop)
+
+tvRP.stopAnim(Upper)
+
+tvRP.AnimActive()
+
+tvRP.SetHealth(Health)
+
+tvRP.UpgradeHealth(Number)
+
+tvRP.DowngradeHealth(Number)
+
+tvRP.Skin(Hash)
 
 
 -- Resource: Bank

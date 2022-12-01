@@ -366,10 +366,10 @@ CreateThread(function()
 		else
 			SetVehicleDensityMultiplierThisFrame(0.50)
 			SetRandomVehicleDensityMultiplierThisFrame(0.50)
-			SetParkedVehicleDensityMultiplierThisFrame(1.0)
-			SetAmbientVehicleRangeMultiplierThisFrame(1.0)
-			SetScenarioPedDensityMultiplierThisFrame(1.0,1.0)
-			SetPedDensityMultiplierThisFrame(1.0)
+			SetParkedVehicleDensityMultiplierThisFrame(0.50)
+			SetAmbientVehicleRangeMultiplierThisFrame(0.50)
+			SetScenarioPedDensityMultiplierThisFrame(0.50,0.50)
+			SetPedDensityMultiplierThisFrame(0.50)
 		end
 
 		if IsPedArmed(PlayerPedId(),6) then

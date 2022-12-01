@@ -14,33 +14,21 @@ Tunnel.bindInterface("tencode",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local codes = {
-	[10] = {
-		text = "Confronto em andamento",
-		blip = 6
+	["QTI"] = {
+		text = "Deslocamento",
+		blip = 38
 	},
-	[13] = {
-		text = "Oficial ferido",
-		blip = 1
-	},
-	[20] = {
+	["QTH"] = {
 		text = "Localização",
 		blip = 38
 	},
-	[32] = {
-		text = "Homem armado",
-		blip = 83
-	},
-	[38] = {
-		text = "Parando veículo suspeito",
-		blip = 61
-	},
-	[50] = {
-		text = "Acidente de trânsito",
-		blip = 77
-	},
-	[78] = {
+	["QRR"] = {
 		text = "Reforço solicitado",
 		blip = 4
+	},
+	["QRT"] = {
+		text = "Policial ferido",
+		blip = 1
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -56,7 +44,7 @@ function Creative.sendCode(code)
 		local Service = vRP.NumPermission("Police")
 		for Passports,Sources in pairs(Service) do
 			async(function()
-				if code ~= 13 then
+				if code ~= "QRT" then
 					vRPC.PlaySound(Sources,"Event_Start_Text","GTAO_FM_Events_Soundset")
 				end
 

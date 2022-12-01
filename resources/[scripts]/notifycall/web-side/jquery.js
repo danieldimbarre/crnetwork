@@ -48,7 +48,7 @@ $(document).ready(function(){
 
 		const html = `<div class="notification">
 			<div class="content">
-				${data["code"] === undefined ? "" : `<div class="code">10-${data["code"]}</div>`}
+				${data["code"] === undefined ? "" : `<div class="code">${data["code"]}</div>`}
 
 				<div class="titulo">${data["title"]}</div>
 

@@ -471,7 +471,7 @@ local List = {
 		["Name"] = "Nitro",
 		["Type"] = "Usável",
 		["Weight"] = 7.25,
-		["Economy"] = 400
+		["Economy"] = 1500
 	},
 	["postit"] = {
 		["Index"] = "postit",

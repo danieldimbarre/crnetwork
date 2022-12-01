@@ -644,6 +644,21 @@ local List = {
 				["require"] = {
 					["dollars"] = 100,
 				}
+			},
+			["plate"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["sheetmetal"] = 5,
+					["roadsigns"] = 3
+				}
+			},
+			["nitro"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["dollars"] = 10000,
+				}
 			}
 		}
 	},

@@ -12,7 +12,7 @@ body {
 }
 
 #divCode {
-	top: 100px;
+	top: 6vw;
 	width: 100%;
 	display: none;
 	position: fixed;
@@ -45,7 +45,7 @@ body {
 }
 
 #divRadar {
-	bottom: 3vw;
+	bottom: 2vw;
 	width: 100%;
 	display: none;
 	position: fixed;

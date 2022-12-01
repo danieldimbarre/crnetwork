@@ -231,9 +231,6 @@ local AudioFlag = {
 }
 
 CreateThread(function()
-	AddTextEntry("FE_THDR_GTAO","Energy")
-	ReplaceHudColour(116,18)
-
 	for _,v in pairs(Emitters) do
         SetStaticEmitterEnabled(v,false)
     end

@@ -241,7 +241,7 @@ const updateDrag = () => {
 			var description = $(this).attr("data-description");
 
 			$(this).tooltip({
-				content: `<item>${name}</item>${description !== "false" ? "<br><description>"+description+"</description>":""}<br><legenda>Economia: <r>$${economy}</r> <s>|</s> Máximo: <r>${max !== "undefined" ? max:"S/L"}</r></legenda>`,
+				content: `<item>${name}</item>${description !== "false" ? "<br><description>"+description+"</description>":""}<br><legenda>Economia: <r>$${economy}</r> <s>|</s> Máximo: <r>${max !== "false" ? max:"S/L"}</r></legenda>`,
 				position: { my: "center top+10", at: "center bottom", collision: "flipfit" },
 				show: { duration: 10 },
 				hide: { duration: 10 }

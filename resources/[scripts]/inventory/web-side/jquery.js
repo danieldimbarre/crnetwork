@@ -320,7 +320,7 @@ const updateDrag = () => {
 			var contents = `<item>${name}</item>${description !== "false" ? "<br><description>"+description+"</description>":""}<br><legenda>${Vehkey !== "undefined" ? "Placa: <r>"+ Vehkey +"</r>":`Economia: <r>$${economy}</r>`} <s>|</s> Máximo: <r>${max !== "undefined" ? max:"S/L"}</r></legenda>`;
 
 			if (Suitcase !== "undefined"){
-				contents = `<item>${name}</item><br><description>Contém <green>$${Suitcase}</green> dólares em espécie.</description><br><legenda>Economia: <r>$${economy}</r> <s>|</s> Máximo: <r>${max !== "undefined" ? max:"S/L"}</r></legenda>`;
+				contents = `<item>${name}</item><br><description>Contém <green>$${Suitcase}</green> dólares em espécie.</description><br><legenda>Economia: <r>$${economy}</r> <s>|</s> Máximo: <r>${max !== "false" ? max:"S/L"}</r></legenda>`;
 			}
 
 			if (name == "Passaporte" || name == "Distintivo" || name == "Licença de Caça"){

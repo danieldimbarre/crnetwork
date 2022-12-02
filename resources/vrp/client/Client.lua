@@ -24,7 +24,7 @@ CreateThread(function()
 	RequestIpl("RC12B_Default")
 	AddTextEntry("FE_THDR_GTAO","Energy")
 
-	Wait(5000)
+	Wait(15000)
 
 	ReplaceHudColour(116,18)
 end)

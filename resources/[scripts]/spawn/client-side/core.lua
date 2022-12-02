@@ -36,11 +36,7 @@ local Locate = {
 -- SPAWN:OPENED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("spawn:Opened",function()
-	DoScreenFadeIn(0)
-	DisplayRadar(false)
-	ShutdownLoadingScreen()
-	ShutdownLoadingScreenNui()
-	TriggerServerEvent("Queue:Connect")
+	Wait(5000)
 
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)
@@ -53,14 +49,15 @@ AddEventHandler("spawn:Opened",function()
 	local Characters = vSERVER.Characters()
 	if parseInt(#Characters) > 0 then
 		for Number,v in pairs(Characters) do
-			if v["Skin"] == nil then
+			if not v["Skin"] then
 				v["Skin"] = "mp_m_freemode_01"
 			end
 
 			if LoadModel(v["Skin"]) then
-				Peds[Number] = CreatePed(4,v["Skin"],Poords[Number][1],Poords[Number][2],Poords[Number][3],Poords[Number][4],false,false)
+				Peds[Number] = CreatePed(0,v["Skin"],Poords[Number][1],Poords[Number][2],Poords[Number][3],Poords[Number][4],false,false)
 				SetEntityInvincible(Peds[Number],true)
 				FreezeEntityPosition(Peds[Number],true)
+				SetPedComponentVariation(Peds[Number],5,0,0,1)
 				SetBlockingOfNonTemporaryEvents(Peds[Number],true)
 				SetModelAsNoLongerNeeded(v["Skin"])
 
@@ -71,21 +68,26 @@ AddEventHandler("spawn:Opened",function()
 				Clothes(Peds[Number],v["Clothes"])
 				Barber(Peds[Number],v["Barber"])
 
-				for Hash,Component in pairs(v["Tattoos"]) do
-					SetPedDecoration(Peds[Number],GetHashKey(Component[1]),GetHashKey(Hash))
+				for Index,Overlay in pairs(v["Tattoos"]) do
+					AddPedDecorationFromHashes(Peds[Number],Component[1],Hash)
 				end
 			end
 		end
 	end
 
 	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-	SetCamActive(Camera,true)
-	RenderScriptCams(true,true,1,true,true)
 	SetCamCoord(Camera,231.99,-1389.94,31.0)
-	SetCamRot(Camera,0.0,0.0,320.25,2)
+	RenderScriptCams(true,true,0,true,true)
+	SetCamRot(Camera,0.0,0.0,320.0,2)
+	SetCamActive(Camera,true)
 
 	SendNUIMessage({ Action = "Spawn", Table = Characters })
+	TriggerServerEvent("Queue:Connect")
 	SetNuiFocus(true,true)
+
+	if IsScreenFadedOut() then
+		DoScreenFadeIn(500)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERCHOSEN
@@ -114,17 +116,20 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("spawn:justSpawn")
 AddEventHandler("spawn:justSpawn",function(Open,Barbershop)
+	if DoesCamExist(Camera) then
+		RenderScriptCams(false,false,0,false,false)
+		SetCamActive(Camera,false)
+		DestroyCam(Camera,false)
+		Camera = nil
+	end
+
 	local Ped = PlayerPedId()
-	RenderScriptCams(false,false,0,true,true)
-	SetCamActive(Camera,false)
-	DestroyCam(Camera,true)
-	Camera = nil
 
 	if Open then
 		local Coords = GetEntityCoords(Ped)
 		Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",Coords["x"],Coords["y"],Coords["z"] + 200.0,270.00,0.0,0.0,80.0,0,0)
+		RenderScriptCams(true,true,0,true,true)
 		SetCamActive(Camera,true)
-		RenderScriptCams(true,false,1,true,true)
 
 		SendNUIMessage({ Action = "Location", Table = Locate })
 	else
@@ -153,19 +158,18 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 	local Ped = PlayerPedId()
 
 	if Data["hash"] == "spawn" then
-		TriggerEvent("hud:Active",true)
-		SetNuiFocus(false,false)
-
-		RenderScriptCams(false,false,0,true,true)
-		SetEntityVisible(Ped,true,false)
-		SetCamActive(Camera,false)
-		DestroyCam(Camera,true)
-		Destroy = false
-		Camera = nil
-
-		Wait(1000)
+		if DoesCamExist(Camera) then
+			RenderScriptCams(false,false,0,false,false)
+			SetCamActive(Camera,false)
+			DestroyCam(Camera,false)
+			Camera = nil
+		end
 
 		TriggerServerEvent("vRP:justObjects")
+		SetEntityVisible(Ped,true,false)
+		TriggerEvent("hud:Active",true)
+		SetNuiFocus(false,false)
+		Destroy = false
 	else
 		Destroy = false
 

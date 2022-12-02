@@ -3951,13 +3951,11 @@ Use = {
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
 			if not vCLIENT.objectExist(source,Coords,Hash) then
-				local spawnObjects = 0
 				local mHash = GetHashKey(Hash)
 				local Object = CreateObject(mHash,Coords["x"],Coords["y"],Coords["z"] - 0.86,true,true,false)
 
-				while not DoesEntityExist(Object) and spawnObjects <= 1000 do
-					spawnObjects = spawnObjects + 1
-					Wait(1)
+				while not DoesEntityExist(Object) do
+					Wait(100)
 				end
 
 				if DoesEntityExist(Object) then

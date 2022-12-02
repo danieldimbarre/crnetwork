@@ -1478,11 +1478,9 @@ CreateThread(function()
 							ClearPedSecondaryTask(Selected)
 							ClearPedTasksImmediately(Selected)
 
-							local SelectedTimers = 0
 							local SelectedControl = NetworkRequestControlOfEntity(Selected)
-							while not SelectedControl and SelectedTimers <= 1000 do
+							while not SelectedControl do
 								SelectedControl = NetworkRequestControlOfEntity(Selected)
-								SelectedTimers = SelectedTimers + 1
 							end
 
 							TaskSetBlockingOfNonTemporaryEvents(Selected,true)
@@ -1589,14 +1587,13 @@ CreateThread(function()
 							ClearPedSecondaryTask(Selected)
 							ClearPedTasksImmediately(Selected)
 
-							local SelectedTimers = 0
 							local SelectedRobbery = 500
 							LocalPlayer["state"]["Buttons"] = true
 							LocalPlayer["state"]["Commands"] = true
+
 							local SelectedControl = NetworkRequestControlOfEntity(Selected)
-							while not SelectedControl and SelectedTimers <= 1000 do
+							while not SelectedControl do
 								SelectedControl = NetworkRequestControlOfEntity(Selected)
-								SelectedTimers = SelectedTimers + 1
 							end
 
 							TaskSetBlockingOfNonTemporaryEvents(Selected,true)
@@ -1908,21 +1905,7 @@ local Ped = PlayerPedId()
 	if Entity then
 		Wait(1000)
 
-		local SpawnEntity = 0
-		local NetEntity = NetworkGetEntityFromNetworkId(EntityNet)
-		while not DoesEntityExist(NetEntity) and SpawnEntity <= 1000 do
-			NetEntity = NetworkGetEntityFromNetworkId(EntityNet)
-			SpawnEntity = SpawnEntity + 1
-			Wait(1)
-		end
-
-		SpawnEntity = 0
-		local NetControl = NetworkRequestControlOfEntity(NetEntity)
-		while not NetControl and SpawnEntity <= 1000 do
-			NetControl = NetworkRequestControlOfEntity(NetEntity)
-			SpawnEntity = SpawnEntity + 1
-			Wait(1)
-		end
+		local NetEntity = LoadNetwork(EntityNet)
 
 		SetPedArmour(NetEntity,99)
 		SetPedAccuracy(NetEntity,100)

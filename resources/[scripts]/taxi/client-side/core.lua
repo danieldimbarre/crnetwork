@@ -300,21 +300,7 @@ function generatePassenger(vehicle)
 	if myObject then
 		Wait(1000)
 
-		local spawnPassenger = 0
-		currentPassenger = NetworkGetEntityFromNetworkId(objNet)
-		while not DoesEntityExist(currentPassenger) and spawnPassenger <= 1000 do
-			currentPassenger = NetworkGetEntityFromNetworkId(objNet)
-			spawnPassenger = spawnPassenger + 1
-			Wait(1)
-		end
-
-		spawnPassenger = 0
-		local pedControl = NetworkRequestControlOfEntity(currentPassenger)
-		while not pedControl and spawnPassenger <= 1000 do
-			pedControl = NetworkRequestControlOfEntity(currentPassenger)
-			spawnPassenger = spawnPassenger + 1
-			Wait(1)
-		end
+		currentPassenger = LoadNetwork(objNet)
 
 		TaskEnterVehicle(currentPassenger,vehicle,-1,2,1.0,1,0)
 		SetEntityInvincible(currentPassenger,true)

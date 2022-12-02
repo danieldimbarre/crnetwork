@@ -2,12 +2,10 @@
 -- LOADMODEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadModel(Hash)
-	local Time = 1000
 	local Hash = GetHashKey(Hash)
 
-	while not HasModelLoaded(Hash) or Time < 0 do
+	while not HasModelLoaded(Hash) do
 		RequestModel(Hash)
-		Time = Time - 1
 		Wait(1)
 	end
 
@@ -17,11 +15,8 @@ end
 -- LOADANIM
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadAnim(Dict)
-	local Time = 1000
-
-	while not HasAnimDictLoaded(Dict) or Time < 0 do
+	while not HasAnimDictLoaded(Dict) do
 		RequestAnimDict(Dict)
-		Time = Time - 1
 		Wait(1)
 	end
 
@@ -31,11 +26,8 @@ end
 -- LOADTEXTURE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadTexture(Library)
-	local Time = 1000
-
-	while not HasStreamedTextureDictLoaded(Library) or Time < 0 do
+	while not HasStreamedTextureDictLoaded(Library) do
 		RequestStreamedTextureDict(Library,false)
-		Time = Time - 1
 		Wait(1)
 	end
 
@@ -45,11 +37,8 @@ end
 -- LOADMOVEMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadMovement(Library)
-	local Time = 1000
-
-	while not HasAnimSetLoaded(Library) or Time < 0 do
+	while not HasAnimSetLoaded(Library) do
 		RequestAnimSet(Library)
-		Time = Time - 1
 		Wait(1)
 	end
 
@@ -59,11 +48,8 @@ end
 -- LOADPTFXASSET
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadPtfxAsset(Library)
-	local Time = 1000
-
-	while not HasNamedPtfxAssetLoaded(Library) or Time < 0 do
+	while not HasNamedPtfxAssetLoaded(Library) do
 		RequestNamedPtfxAsset(Library)
-		Time = Time - 1
 		Wait(1)
 	end
 
@@ -73,19 +59,15 @@ end
 -- LOADNETWORK
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadNetwork(Network)
-	local TimeNetwork = 1000
 	local Network = NetworkGetEntityFromNetworkId(Network)
-	while not DoesEntityExist(Network) or TimeNetwork < 0 do
+	while not DoesEntityExist(Network) do
 		Network = NetworkGetEntityFromNetworkId(Network)
-		TimeNetwork = TimeNetwork - 1
 		Wait(1)
 	end
 
-	local TimeControl = 1000
 	local Control = NetworkRequestControlOfEntity(Network)
-	while not Control or TimeControl < 0 do
+	while not Control do
 		Control = NetworkRequestControlOfEntity(Network)
-		TimeControl = TimeControl - 1
 		Wait(1)
 	end
 

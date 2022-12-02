@@ -61,7 +61,7 @@ function setRadioChannel(channel)
 	radioEnabled = true
 	type_check({ channel,"number" })
 	TriggerServerEvent("pma-voice:setPlayerRadio",channel)
-	radioChannel = channel
+	radioChannel = parseInt(channel)
 
 	sendUIMessage({ radioChannel = channel, radioEnabled = radioEnabled })
 end
@@ -106,11 +106,11 @@ RegisterCommand("+radiotalk",function()
 					SetControlNormal(0,249,1.0)
 					SetControlNormal(1,249,1.0)
 					SetControlNormal(2,249,1.0)
-					DisableControlAction(1,24,true)
-					DisableControlAction(1,25,true)
-					DisableControlAction(1,257,true)
-					DisableControlAction(1,140,true)
-					DisableControlAction(1,142,true)
+					DisableControlAction(0,24,true)
+					DisableControlAction(0,25,true)
+					DisableControlAction(0,257,true)
+					DisableControlAction(0,140,true)
+					DisableControlAction(0,142,true)
 				end
 			end)
 		end
@@ -137,8 +137,8 @@ end,false)
 
 RegisterKeyMapping("+radiotalk","Dialogar no rádio.","keyboard","CAPITAL")
 
-function syncRadio(_radioChannel)
-	radioChannel = _radioChannel
+function syncRadio(channel)
+	radioChannel = parseInt(channel)
 end
 
 RegisterNetEvent("pma-voice:clSetPlayerRadio",syncRadio)

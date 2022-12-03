@@ -143,7 +143,7 @@ function Creative.DoorsPermission(Number)
 				local consultItem = vRP.InventoryItemAmount(Passport,"lockpick")
 				if consultItem[1] >= 1 then
 					if vRP.CheckDamaged(consultItem[2]) then
-						TriggerClientEvent("Notify",source,"vermelho","<b>"..itemName("lockpick").."</b> danificado.",5000)
+						TriggerClientEvent("Notify",source,"vermelho","<b>Lockpick de Alumínio</b> danificado.",5000)
 						return
 					end
 

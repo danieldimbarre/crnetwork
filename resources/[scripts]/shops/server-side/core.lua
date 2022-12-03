@@ -485,7 +485,7 @@ local shops = {
 			["acetone"] = 15,
 			["cotton"] = 20,
 			["plaster"] = 15,
-			["sulfuric"] = 12,
+			["sulfuric"] = 5,
 			["saline"] = 20,
 			["alcohol"] = 15
 		}

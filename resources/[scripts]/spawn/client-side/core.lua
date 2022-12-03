@@ -69,7 +69,7 @@ AddEventHandler("spawn:Opened",function()
 				Barber(Peds[Number],v["Barber"])
 
 				for Index,Overlay in pairs(v["Tattoos"]) do
-					AddPedDecorationFromHashes(Peds[Number],Component[1],Hash)
+					AddPedDecorationFromHashes(Peds[Number],Overlay[1],Index)
 				end
 			end
 		end

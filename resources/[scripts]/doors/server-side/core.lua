@@ -10,6 +10,7 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 Creative = {}
 Tunnel.bindInterface("doors",Creative)
+vTASKBAR = Tunnel.getInterface("taskbar")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -138,24 +139,52 @@ function Creative.DoorsPermission(Number)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if GlobalState["Doors"][Number]["Perm"] ~= nil then
-			if vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
-				local Doors = GlobalState["Doors"]
+			if not vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
+				local consultItem = vRP.InventoryItemAmount(Passport,"lockpick")
+				if consultItem[1] >= 1 then
+					if vRP.CheckDamaged(consultItem[2]) then
+						TriggerClientEvent("Notify",source,"vermelho","<b>Lockpick de Alumínio</b> danificado.",5000)
+						return
+					end
 
-				Doors[Number]["Lock"] = not Doors[Number]["Lock"]
+					if not vTASKBAR.taskDoors(source) then
+						return
+					end
 
-				if Doors[Number]["Other"] ~= nil then
-					local Second = Doors[Number]["Other"]
-					Doors[Second]["Lock"] = not Doors[Second]["Lock"]
+					if math.random(100) >= 50 then
+						if vRP.TakeItem(Passport,consultItem[1],1,false) then
+							vRP.GiveItem(Passport,"lockpick-0",1,false)
+							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+						end
+					end
+
+					local Coords = vRP.GetEntityCoords(source)
+					local Service = vRP.NumPermission("Police")
+					for Passports,Sources in pairs(Service) do
+						async(function()
+							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Tranca de Porta Violada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						end)
+					end
 				end
-
-				GlobalState:set("Doors",Doors,true)
-
-				TriggerClientEvent("doors:Update",-1,Number,Doors[Number]["Lock"])
-
-				vRPC.playAnim(source,true,{"anim@heists@keycard@","exit"},false)
-				Wait(350)
-				vRPC.stopAnim(source)
 			end
+
+			local Doors = GlobalState["Doors"]
+
+			Doors[Number]["Lock"] = not Doors[Number]["Lock"]
+
+			if Doors[Number]["Other"] ~= nil then
+				local Second = Doors[Number]["Other"]
+				Doors[Second]["Lock"] = not Doors[Second]["Lock"]
+			end
+
+			GlobalState:set("Doors",Doors,true)
+
+			TriggerClientEvent("doors:Update",-1,Number,Doors[Number]["Lock"])
+
+			vRPC.playAnim(source,true,{"anim@heists@keycard@","exit"},false)
+			Wait(350)
+			vRPC.stopAnim(source)
 		end
 	end
 end

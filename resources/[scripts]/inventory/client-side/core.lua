@@ -1910,7 +1910,7 @@ local disPeds = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISWEAPONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local disWeapons = { "WEAPON_KATANA","WEAPON_BAT","WEAPON_POOLCUE","WEAPON_NAILGUN" }
+local disWeapons = { "WEAPON_KATANA","WEAPON_BAT","WEAPON_POOLCUE" }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:DISPED
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1940,7 +1940,7 @@ AddEventHandler("inventory:DisPed",function()
 			SetPedCombatAttributes(NetEntity,46,true)
 			SetPedCombatAbility(NetEntity,0)
 			SetPedCombatAttributes(NetEntity,0,true)
-			GiveWeaponToPed(NetEntity,disWeapons[Weapon],100,false,true)
+			GiveWeaponToPed(NetEntity,disWeapons[Weapon],-1,false,true)
 			SetPedDropsWeaponsWhenDead(NetEntity,false)
 			SetPedCombatRange(NetEntity,2)
 			SetPedFleeAttributes(NetEntity,0,0)

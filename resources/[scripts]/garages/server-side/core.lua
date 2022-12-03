@@ -28,11 +28,9 @@ GlobalState["Plates"] = {}
 -- SERVERVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.ServerVehicle(Model,x,y,z,Heading,Plate,Nitrox,Doors,Body,Fuel)
-	local Randomize = 0
 	local Vehicle = CreateVehicle(Model,x,y,z,Heading,true,true)
 
-	while not DoesEntityExist(Vehicle) and Randomize <= 1000 do
-		Randomize = Randomize + 1
+	while not DoesEntityExist(Vehicle) do
 		Wait(100)
 	end
 

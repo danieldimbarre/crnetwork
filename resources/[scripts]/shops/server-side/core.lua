@@ -205,18 +205,6 @@ local shops = {
 			["cupcake"] = 70
 		}
 	},
-	["Pills"] = {
-		["mode"] = "Buy",
-		["type"] = "Cash",
-		["List"] = {
-			["medkit"] = 575,
-			["bandage"] = 225,
-			["gauze"] = 100,
-			["analgesic"] = 125,
-			["sinkalmy"] = 375,
-			["ritmoneury"] = 475
-		}
-	},
 	["Weeds"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
@@ -319,7 +307,8 @@ local shops = {
 			["gauze"] = 100,
 			["analgesic"] = 125,
 			["sinkalmy"] = 375,
-			["ritmoneury"] = 475
+			["ritmoneury"] = 475,
+			["sulfuric"] = 5
 		}
 	},
 	["Paramedic"] = {

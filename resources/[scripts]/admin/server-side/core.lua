@@ -629,6 +629,7 @@ RegisterCommand("itemall",function(source,Message)
 		if vRP.HasGroup(Passport,"Admin",2) then
 			local Text = ""
 			local List = vRP.Players()
+
 			for OtherPlayer,_ in pairs(List) do
 				async(function()
 					if Text == "" then
@@ -760,6 +761,30 @@ RegisterCommand("dm",function(source,Message)
 					TriggerClientEvent("chat:ClientMessage",OtherSource,"Prefeitura",Keyboard[1],"DM")
 				end
 			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SERVICES
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("services",function(source)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) then
+			local Text = ""
+			local Groups = vRP.Groups()
+
+			for Permission,_ in pairs(Groups) do
+				local _,Total = vRP.NumPermission(Permission)
+
+				if Text == "" then
+					Text = Text.."<b>"..Permission..":</b> "..Total
+				else
+					Text = Text.."<br><b>"..Permission..":</b> "..Total
+				end
+			end
+
+			TriggerClientEvent("Notify",source,"azul",Text,15000)
 		end
 	end
 end)

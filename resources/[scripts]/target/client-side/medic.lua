@@ -27,12 +27,10 @@ AddEventHandler("target:BedPickup",function(Selected)
 	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] then
 		local Ped = PlayerPedId()
 		if GetEntityHealth(Ped) > 100 then
-			local spawnObjects = 0
 			local uObject = NetworkGetEntityFromNetworkId(Selected[3])
 			local objectControl = NetworkRequestControlOfEntity(uObject)
-			while not objectControl and spawnObjects <= 1000 do
+			while not objectControl do
 				objectControl = NetworkRequestControlOfEntity(uObject)
-				spawnObjects = spawnObjects + 1
 				Wait(1)
 			end
 

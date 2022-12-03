@@ -601,7 +601,7 @@ Use = {
 		repeat
 			if os.time() >= parseInt(Active[Passport]) then
 				Active[Passport] = nil
-				vRP.DowngradeStress(Passport,5)
+				vRP.DowngradeStress(Passport,15)
 				vRPC.removeObjects(source,"one")
 				Player(source)["state"]["Buttons"] = false
 			end

@@ -160,8 +160,11 @@ RegisterCommand("kick",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
-			TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..Message[1].."</b> expulso.",5000)
-			vRP.Kick(Message[1],"Expulso da cidade.")
+			local OtherSource = vRP.Source(Message[1])
+			if OtherSource then
+				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..Message[1].."</b> expulso.",5000)
+				vRP.Kick(OtherSource,"Expulso da cidade.")
+			end
 		end
 	end
 end)
@@ -172,13 +175,17 @@ RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 then
-			local time = parseInt(Message[2])
+			local Days = parseInt(Message[2])
 			local OtherPassport = parseInt(Message[1])
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
-				vRP.Kick(OtherPassport,"Banido.")
-				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = time })
-				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..time.."</b> dias.",5000)
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = Days })
+				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.",5000)
+
+				local OtherSource = vRP.Source(OtherPassport)
+				if OtherSource then
+					vRP.Kick(OtherSource,"Banido.")
+				end
 			end
 		end
 	end

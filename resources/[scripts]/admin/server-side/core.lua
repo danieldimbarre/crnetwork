@@ -264,11 +264,10 @@ end)
 RegisterCommand("kick",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local OtherPassport = parseInt(Message[1])
-		if vRP.HasGroup(Passport,"Admin",2) and OtherPassport then
-			local OtherSource = vRP.Source(OtherPassport)
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
+			local OtherSource = vRP.Source(Message[1])
 			if OtherSource then
-				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> expulso.",5000)
+				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..Message[1].."</b> expulso.",5000)
 				vRP.Kick(OtherSource,"Expulso da cidade.")
 
 				TriggerEvent("Discord","Admin","**kick**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,nil)
@@ -283,16 +282,18 @@ RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 then
-			local time = parseInt(Message[2])
+			local Days = parseInt(Message[2])
 			local OtherPassport = parseInt(Message[1])
 			local Identity = vRP.Identity(OtherPassport)
-			local OtherSource = vRP.Source(OtherPassport)
-			if Identity and OtherSource then
-				vRP.Kick(OtherSource,"Banido.")
-				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = time })
-				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..time.."</b> dias.",5000)
-
+			if Identity then
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = Days })
+				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.",5000)
 				TriggerEvent("Discord","Admin","**ban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Tempo:** "..time.." dias",nil)
+
+				local OtherSource = vRP.Source(OtherPassport)
+				if OtherSource then
+					vRP.Kick(OtherSource,"Banido.")
+				end
 			end
 		end
 	end

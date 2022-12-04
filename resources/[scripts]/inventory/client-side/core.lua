@@ -1478,18 +1478,12 @@ CreateThread(function()
 							ClearPedSecondaryTask(Selected)
 							ClearPedTasksImmediately(Selected)
 
-							local SelectedControl = NetworkRequestControlOfEntity(Selected)
-							while not SelectedControl do
-								SelectedControl = NetworkRequestControlOfEntity(Selected)
-							end
-
 							TaskSetBlockingOfNonTemporaryEvents(Selected,true)
 							SetBlockingOfNonTemporaryEvents(Selected,true)
 							SetEntityAsMissionEntity(Selected,true,true)
 							SetPedDropsWeaponsWhenDead(Selected,false)
 							TaskTurnPedToFaceEntity(Selected,Ped,3.0)
 							SetPedSuffersCriticalHits(Selected,false)
-							SetPedAsNoLongerNeeded(Selected)
 							StealPeds[Selected] = true
 
 							local SelectedRobbery = 500
@@ -1591,18 +1585,12 @@ CreateThread(function()
 							LocalPlayer["state"]["Buttons"] = true
 							LocalPlayer["state"]["Commands"] = true
 
-							local SelectedControl = NetworkRequestControlOfEntity(Selected)
-							while not SelectedControl do
-								SelectedControl = NetworkRequestControlOfEntity(Selected)
-							end
-
 							TaskSetBlockingOfNonTemporaryEvents(Selected,true)
 							SetBlockingOfNonTemporaryEvents(Selected,true)
 							SetEntityAsMissionEntity(Selected,true,true)
 							SetPedDropsWeaponsWhenDead(Selected,false)
 							TaskTurnPedToFaceEntity(Selected,Ped,3.0)
 							SetPedSuffersCriticalHits(Selected,false)
-							SetPedAsNoLongerNeeded(Selected)
 							DrugsPeds[Selected] = true
 
 							while true do

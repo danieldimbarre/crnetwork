@@ -207,6 +207,19 @@ RegisterCommand("h",function(source,Message,History)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- M
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("m",function(source,Message,History)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
+		if vRP.HasGroup(Passport,"Mechanic") then
+			TriggerClientEvent('smartphone:createSMS',-1,'Mecânica',History:sub(2))
+
+			TriggerEvent("Discord","Mechanic","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SHOTSFIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.shotsFired(Vehicle)

@@ -243,6 +243,42 @@ local OpenItens = {
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
+	},
+	["lockpick"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card01"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card02"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card03"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card04"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card05"] = {
+		["Open"] = "Police",
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

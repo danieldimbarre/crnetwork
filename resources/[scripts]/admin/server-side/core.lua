@@ -51,6 +51,23 @@ RegisterCommand("clearinv",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CLEARCHEST
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("clearchest",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[2] then
+			local Consult = vRP.Query("chests/GetChests",{ name = Message[2] })
+			if Consult[1] then
+				TriggerClientEvent("Notify",source,"verde","Limpeza concluída.",5000)
+				vRP.SetSrvData("Chest:"..Message[2],"{}",true)
+				
+				TriggerEvent("Discord","Admin","**clearchest**\n\n**Passaporte:** "..Passport.."\n**Chest:** "..Message[2],nil)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- GEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("gem",function(source,Message)

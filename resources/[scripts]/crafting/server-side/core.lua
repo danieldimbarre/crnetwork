@@ -347,26 +347,26 @@ local List = {
 				["amount"] = 3,
 				["destroy"] = false,
 				["require"] = {
-					["copper"] = 3,
+					["copper"] = 2,
 					["polvora"] = 3
 				}
 			},
-			--["WEAPON_SMG_AMMO"] = {
-			--	["amount"] = 3,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["copper"] = 5,
-			--		["polvora"] = 3
-			--	}
-			--},
-			--["WEAPON_RIFLE_AMMO"] = {
-			--	["amount"] = 3,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["copper"] = 8,
-			--		["polvora"] = 3
-			--	}
-			--}
+			-- ["WEAPON_SMG_AMMO"] = {
+			-- 	["amount"] = 3,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["copper"] = 5,
+			-- 		["polvora"] = 3
+			-- 	}
+			-- },
+			-- ["WEAPON_RIFLE_AMMO"] = {
+			-- 	["amount"] = 3,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["copper"] = 8,
+			-- 		["polvora"] = 3
+			-- 	}
+			-- }
 		}
 	},	
 	["Marabunta"] = {
@@ -377,190 +377,289 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["pistolbody"] = 1,
-					["aluminum"] = 120,
-					["copper"] = 175,
+					["aluminum"] = 45,
+					["copper"] = 45,
+					["plastic"] = 30,
+					["glass"] = 30,
+					["rubber"] = 30
 				}
-			},		
-			--["WEAPON_MACHINEPISTOL"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["pistolbody"] = 1,
-			--		["aluminum"] = 150,
-			--		["copper"] = 185,
-			--	}
-			--},
+			},
+			["WEAPON_MACHINEPISTOL"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 75,
+					["copper"] = 75,
+					["plastic"] = 35,
+					["glass"] = 35,
+					["rubber"] = 35
+				}
+			},
+			-- ["WEAPON_MICROSMG"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["smgbody"] = 1,
+			-- 		["aluminum"] = 125,
+			-- 		["copper"] = 125,
+			-- 		["plastic"] = 75,
+			-- 		["glass"] = 75,
+			-- 		["rubber"] = 75
+			-- 	}
+			-- },
+			-- ["WEAPON_REVOLVER"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["pistolbody"] = 1,
+			-- 		["aluminum"] = 75,
+			-- 		["copper"] = 75,
+			-- 		["plastic"] = 35,
+			-- 		["glass"] = 35,
+			-- 		["rubber"] = 25
+			-- 	}
+			-- },
+			-- ["WEAPON_PUMPSHOTGUN_MK2"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["smgbody"] = 1,
+			-- 		["aluminum"] = 125,
+			-- 		["copper"] = 125,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 100,
+			-- 		["rubber"] = 100
+			-- 	}
+			-- },
+			-- ["WEAPON_SAWNOFFSHOTGUN"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["smgbody"] = 1,
+			-- 		["aluminum"] = 125,
+			-- 		["copper"] = 125,
+			-- 		["plastic"] = 75,
+			-- 		["glass"] = 75,
+			-- 		["rubber"] = 75
+			-- 	}
+			-- },
+			-- ["WEAPON_GUSENBERG"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["riflebody"] = 1,
+			-- 		["aluminum"] = 125,
+			-- 		["copper"] = 125,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 100,
+			-- 		["rubber"] = 100
+			-- 	}
+			-- },
+			-- ["WEAPON_APPISTOL"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["pistolbody"] = 1,
+			-- 		["aluminum"] = 45,
+			-- 		["copper"] = 45,
+			-- 		["plastic"] = 30,
+			-- 		["glass"] = 30,
+			-- 		["rubber"] = 30
+			-- 	}
+			-- },
 			["WEAPON_SNSPISTOL"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["pistolbody"] = 1,
-					["aluminum"] = 120,
-					["copper"] = 175,
+					["aluminum"] = 35,
+					["copper"] = 35,
+					["plastic"] = 15,
+					["glass"] = 15,
+					["rubber"] = 10
 				}
 			},
-			--["WEAPON_PISTOL50"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["pistolbody"] = 1,
-			--		["aluminum"] = 120,
-			--		["copper"] = 175,
-			--	}
-			--},
-			--["WEAPON_PISTOL_MK2"] = {
-			--	["amount"] = 1,				
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["pistolbody"] = 1,
-			--		["aluminum"] = 120,
-			--		["copper"] = 175,
-			--	}
-			--},
+			-- ["WEAPON_PISTOL50"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["pistolbody"] = 1,
+			-- 		["aluminum"] = 75,
+			-- 		["copper"] = 75,
+			-- 		["plastic"] = 30,
+			-- 		["glass"] = 30,
+			-- 		["rubber"] = 25
+			-- 	}
+			-- },
+			-- ["WEAPON_MINISMG"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["smgbody"] = 1,
+			-- 		["aluminum"] = 125,
+			-- 		["copper"] = 125,
+			-- 		["plastic"] = 80,
+			-- 		["glass"] = 80,
+			-- 		["rubber"] = 75
+			-- 	}
+			-- },
+			["WEAPON_PISTOL_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["pistolbody"] = 1,
+					["aluminum"] = 45,
+					["copper"] = 45,
+					["plastic"] = 25,
+					["glass"] = 25,
+					["rubber"] = 25
+				}
+			},
 			["WEAPON_SNSPISTOL_MK2"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["pistolbody"] = 1,
-					["aluminum"] = 120,
-					["copper"] = 175,
+					["aluminum"] = 45,
+					["copper"] = 45,
+					["plastic"] = 25,
+					["glass"] = 25,
+					["rubber"] = 25
 				}
 			},
-			--["WEAPON_MINISMG"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["smgbody"] = 1,
-			--		["aluminum"] = 180,
-			--		["copper"] = 215,
-			--	}
-			--},
-			--["WEAPON_MICROSMG"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["smgbody"] = 1,
-			--		["aluminum"] = 180,
-			--		["copper"] = 215,
-			--	}	
-			--},
-			--["WEAPON_COMPACTRIFLE"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["smgbody"] = 1,
-			--		["aluminum"] = 180,
-			--		["copper"] = 215,
-			--	}
-			--},
-			--["WEAPON_ADVANCEDRIFLE"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_BULLPUPRIFLE"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_BULLPUPRIFLE_MK2"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_SPECIALCARBINE"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_SPECIALCARBINE_MK2"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_PUMPSHOTGUN_MK2"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_SAWNOFFSHOTGUN"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_SMG_MK2"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_ASSAULTRIFLE"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_ASSAULTRIFLE_MK2"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_ASSAULTSMG"] = {--
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["smgbody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,
-			--	}
-			--},
-			--["WEAPON_GUSENBERG"] = {
-			--	["amount"] = 1,
-			--	["destroy"] = false,
-			--	["require"] = {
-			--		["riflebody"] = 2,
-			--		["aluminum"] = 220,
-			--		["copper"] = 256,	--
-			--	}
-			--}
+			-- ["WEAPON_VINTAGEPISTOL"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["pistolbody"] = 1,
+			-- 		["aluminum"] = 45,
+			-- 		["copper"] = 25,
+			-- 		["plastic"] = 15,
+			-- 		["glass"] = 15,
+			-- 		["rubber"] = 15
+			-- 	}
+			-- },
+			-- ["WEAPON_COMPACTRIFLE"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["riflebody"] = 1,
+			-- 		["aluminum"] = 125,
+			-- 		["copper"] = 125,
+			-- 		["plastic"] = 75,
+			-- 		["glass"] = 75,
+			-- 		["rubber"] = 75
+			-- 	}
+			-- },
+			-- ["WEAPON_ADVANCEDRIFLE"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["riflebody"] = 1,
+			-- 		["aluminum"] = 225,
+			-- 		["copper"] = 225,
+			-- 		["plastic"] = 175,
+			-- 		["glass"] = 125,
+			-- 		["rubber"] = 125
+			-- 	}
+			-- },
+			-- ["WEAPON_BULLPUPRIFLE"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["riflebody"] = 1,
+			-- 		["aluminum"] = 225,
+			-- 		["copper"] = 225,
+			-- 		["plastic"] = 125,
+			-- 		["glass"] = 125,
+			-- 		["rubber"] = 125
+			-- 	}
+			-- },
+			-- ["WEAPON_BULLPUPRIFLE_MK2"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["riflebody"] = 1,
+			-- 		["aluminum"] = 225,
+			-- 		["copper"] = 225,
+			-- 		["plastic"] = 125,
+			-- 		["glass"] = 125,
+			-- 		["rubber"] = 125
+			-- 	}
+			-- },
+			-- ["WEAPON_SPECIALCARBINE"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["riflebody"] = 1,
+			-- 		["aluminum"] = 225,
+			-- 		["copper"] = 225,
+			-- 		["plastic"] = 125,
+			-- 		["glass"] = 125,
+			-- 		["rubber"] = 125
+			-- 	}
+			-- },
+			-- ["WEAPON_SPECIALCARBINE_MK2"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["riflebody"] = 1,
+			-- 		["aluminum"] = 225,
+			-- 		["copper"] = 225,
+			-- 		["plastic"] = 125,
+			-- 		["glass"] = 125,
+			-- 		["rubber"] = 125
+			-- 	}
+			-- },
+			-- ["WEAPON_SMG_MK2"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["smgbody"] = 1,
+			-- 		["aluminum"] = 150,
+			-- 		["copper"] = 150,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 75,
+			-- 		["rubber"] = 75
+			-- 	}
+			-- },
+			-- ["WEAPON_ASSAULTRIFLE"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["riflebody"] = 1,
+			-- 		["aluminum"] = 225,
+			-- 		["copper"] = 225,
+			-- 		["plastic"] = 125,
+			-- 		["glass"] = 125,
+			-- 		["rubber"] = 125
+			-- 	}
+			-- },
+			-- ["WEAPON_ASSAULTRIFLE_MK2"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["riflebody"] = 1,
+			-- 		["aluminum"] = 225,
+			-- 		["copper"] = 225,
+			-- 		["plastic"] = 125,
+			-- 		["glass"] = 125,
+			-- 		["rubber"] = 125
+			-- 	}
+			-- },
+			-- ["WEAPON_ASSAULTSMG"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["smgbody"] = 1,
+			-- 		["aluminum"] = 150,
+			-- 		["copper"] = 150,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 75,
+			-- 		["rubber"] = 75
+			-- 	}
+			-- }
 		}
 	},				
 	["CraftingTable"] = {
@@ -658,6 +757,13 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["dollars"] = 10000,
+				}
+			},
+			["credential"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["dollars"] = 500,
 				}
 			}
 		}

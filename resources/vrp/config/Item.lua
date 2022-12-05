@@ -156,7 +156,7 @@ local List = {
 		["Index"] = "suspensionc",
 		["Name"] = "Suspensão",
 		["Type"] = "Usável",
-		["Economy"] = 20000
+		["Economy"] = 20000,
 		["Weight"] = 9.25
 	},
 	["suspensiond"] = {

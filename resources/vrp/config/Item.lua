@@ -448,7 +448,7 @@ local List = {
 		["Name"] = "Credencial",
 		["Type"] = "Comum",
 		["Weight"] = 0.75,
-		["Economy"] = 1000
+		["Economy"] = 800
 	},
 	["racetrophy"] = {
 		["Index"] = "racetrophy",

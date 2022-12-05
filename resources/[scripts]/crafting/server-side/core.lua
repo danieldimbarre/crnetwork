@@ -659,6 +659,13 @@ local List = {
 				["require"] = {
 					["dollars"] = 10000,
 				}
+			},
+			["credential"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["dollars"] = 500,
+				}
 			}
 		}
 	},

@@ -37,120 +37,140 @@ local List = {
 		["Index"] = "enginea",
 		["Name"] = "Motor",
 		["Type"] = "Usável",
+		["Economy"] = 15000,
 		["Weight"] = 9.25
 	},
 	["engineb"] = {
 		["Index"] = "engineb",
 		["Name"] = "Motor",
 		["Type"] = "Usável",
+		["Economy"] = 17500,
 		["Weight"] = 10.25
 	},
 	["enginec"] = {
 		["Index"] = "enginec",
 		["Name"] = "Motor",
 		["Type"] = "Usável",
+		["Economy"] = 20000,
 		["Weight"] = 11.25
 	},
 	["engined"] = {
 		["Index"] = "engined",
 		["Name"] = "Motor",
 		["Type"] = "Usável",
+		["Economy"] = 22500,
 		["Weight"] = 12.25
 	},
 	["enginee"] = {
 		["Index"] = "enginee",
 		["Name"] = "Motor",
 		["Type"] = "Usável",
+		["Economy"] = 25000,
 		["Weight"] = 13.25
 	},
 	["transmissiona"] = {
 		["Index"] = "transmissiona",
 		["Name"] = "Transmissão",
 		["Type"] = "Usável",
+		["Economy"] = 15000,
 		["Weight"] = 9.25
 	},
 	["transmissionb"] = {
 		["Index"] = "transmissionb",
 		["Name"] = "Transmissão",
 		["Type"] = "Usável",
+		["Economy"] = 17500,
 		["Weight"] = 10.25
 	},
 	["transmissionc"] = {
 		["Index"] = "transmissionc",
 		["Name"] = "Transmissão",
 		["Type"] = "Usável",
+		["Economy"] = 20000,
 		["Weight"] = 11.25
 	},
 	["transmissiond"] = {
 		["Index"] = "transmissiond",
 		["Name"] = "Transmissão",
 		["Type"] = "Usável",
+		["Economy"] = 22500,
 		["Weight"] = 12.25
 	},
 	["transmissione"] = {
 		["Index"] = "transmissione",
 		["Name"] = "Transmissão",
 		["Type"] = "Usável",
+		["Economy"] = 25000,
 		["Weight"] = 13.25
 	},
 	["brakea"] = {
 		["Index"] = "brakea",
 		["Name"] = "Freios",
 		["Type"] = "Usável",
+		["Economy"] = 15000,
 		["Weight"] = 7.25
 	},
 	["brakeb"] = {
 		["Index"] = "brakeb",
 		["Name"] = "Freios",
 		["Type"] = "Usável",
+		["Economy"] = 17500,
 		["Weight"] = 8.25
 	},
 	["brakec"] = {
 		["Index"] = "brakec",
 		["Name"] = "Freios",
 		["Type"] = "Usável",
+		["Economy"] = 20000,
 		["Weight"] = 9.25
 	},
 	["braked"] = {
 		["Index"] = "braked",
 		["Name"] = "Freios",
 		["Type"] = "Usável",
+		["Economy"] = 22500,
 		["Weight"] = 10.25
 	},
 	["brakee"] = {
 		["Index"] = "brakee",
 		["Name"] = "Freios",
 		["Type"] = "Usável",
+		["Economy"] = 25000,
 		["Weight"] = 11.25
 	},
 	["suspensiona"] = {
 		["Index"] = "suspensiona",
 		["Name"] = "Suspensão",
 		["Type"] = "Usável",
+		["Economy"] = 15000,
 		["Weight"] = 7.25
 	},
 	["suspensionb"] = {
 		["Index"] = "suspensionb",
 		["Name"] = "Suspensão",
 		["Type"] = "Usável",
+		["Economy"] = 17500,
 		["Weight"] = 8.25
 	},
 	["suspensionc"] = {
 		["Index"] = "suspensionc",
 		["Name"] = "Suspensão",
 		["Type"] = "Usável",
+		["Economy"] = 20000
 		["Weight"] = 9.25
 	},
 	["suspensiond"] = {
 		["Index"] = "suspensiond",
 		["Name"] = "Suspensão",
 		["Type"] = "Usável",
+		["Economy"] = 22500,
 		["Weight"] = 10.25
 	},
 	["suspensione"] = {
 		["Index"] = "suspensione",
 		["Name"] = "Suspensão",
 		["Type"] = "Usável",
+		["Economy"] = 25000,
 		["Weight"] = 11.25
 	},
 	["dismantle"] = {

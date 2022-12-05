@@ -141,31 +141,33 @@ function Creative.DoorsPermission(Number)
 		if GlobalState["Doors"][Number]["Perm"] ~= nil then
 			if not vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
 				local consultItem = vRP.InventoryItemAmount(Passport,"lockpick")
-				if consultItem[1] >= 1 then
-					if vRP.CheckDamaged(consultItem[2]) then
-						TriggerClientEvent("Notify",source,"vermelho","<b>Lockpick de Alumínio</b> danificado.",5000)
-						return
-					end
+				if consultItem[1] <= 0 then
+					return
+				end
 
-					if not vTASKBAR.taskDoors(source) then
-						return
-					end
+				if vRP.CheckDamaged(consultItem[2]) then
+					TriggerClientEvent("Notify",source,"vermelho","<b>Lockpick de Alumínio</b> danificado.",5000)
+					return
+				end
 
-					if math.random(100) >= 50 then
-						if vRP.TakeItem(Passport,consultItem[1],1,false) then
-							vRP.GiveItem(Passport,"lockpick-0",1,false)
-							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
-						end
-					end
+				if not vTASKBAR.taskDoors(source) then
+					return
+				end
 
-					local Coords = vRP.GetEntityCoords(source)
-					local Service = vRP.NumPermission("Police")
-					for Passports,Sources in pairs(Service) do
-						async(function()
-							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Tranca de Porta Violada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
-						end)
+				if math.random(100) >= 50 then
+					if vRP.TakeItem(Passport,consultItem[1],1,false) then
+						vRP.GiveItem(Passport,"lockpick-0",1,false)
+						TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
 					end
+				end
+
+				local Coords = vRP.GetEntityCoords(source)
+				local Service = vRP.NumPermission("Police")
+				for Passports,Sources in pairs(Service) do
+					async(function()
+						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Tranca de Porta Violada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+					end)
 				end
 			end
 

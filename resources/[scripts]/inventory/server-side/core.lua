@@ -425,12 +425,12 @@ LootItens = {
 -- PLANTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Plants = {
-	["weedclone"] = 1,
-	["weedleaf"] = 2,
-	["joint"] = 3,
-	["cokeclone"] = 1,
-	["cokeleaf"] = 2,
-	["cocaine"] = 3
+	["weedclone"] = "da clonagem",
+	["weedleaf"] = "da folha",
+	["joint"] = "do baseado",
+	["cokeclone"] = "da clonagem",
+	["cokeleaf"] = "da folha",
+	["cocaine"] = "da cocaína"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTINVENTORY
@@ -524,14 +524,7 @@ function Creative.requestInventory()
 				end
 
 				if Plants[Split[1]] then
-					local Item = "da clonagem"
-					if Plants[Split[1]] == 2 then
-						Item = "da folha"
-					elseif Plants[Split[1]] == 3 then
-						Item = "do baseado"
-					end
-
-					v["desc"] = "A pureza "..Item.." se encontra em <green>"..(Split[2] or 0).."%</green>."
+					v["desc"] = "A pureza "..Plants[Split[1]].." se encontra em <green>"..(Split[2] or 0).."%</green>."
 				end
 
 				Inv[Index] = v
@@ -2041,7 +2034,7 @@ function Creative.MakeProducts(Table)
 						if type(Products[Selected][Number]["need"]) == "table" then
 							for k,v in pairs(Need) do
 								local Split = splitString(v[1],"-")
-								if Split[1] == "weedleaf" and Split[2] ~= nil then
+								if (Split[1] == "weedleaf" or Split[1] == "cokeleaf") and Split[2] ~= nil then
 									Points = Split[2]
 								end
 
@@ -2053,7 +2046,7 @@ function Creative.MakeProducts(Table)
 					end
 
 					if Products[Selected][Number]["item"] then
-						if Selected == "tableweed" then
+						if Selected == "tableweed" or Selected == "tablecoke" then
 							vRP.GenerateItem(Passport,Products[Selected][Number]["item"].."-"..Points,Products[Selected][Number]["itemAmount"],true)
 						else
 							vRP.GenerateItem(Passport,Products[Selected][Number]["item"],Products[Selected][Number]["itemAmount"],true)

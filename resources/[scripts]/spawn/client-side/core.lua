@@ -38,6 +38,10 @@ local Locate = {
 AddEventHandler("spawn:Opened",function()
 	Wait(5000)
 
+	if IsScreenFadedOut() then
+		DoScreenFadeIn(0)
+	end
+
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)
 	SetEntityVisible(Ped,false,false)
@@ -46,7 +50,17 @@ AddEventHandler("spawn:Opened",function()
 	SetEntityHealth(Ped,100)
 	SetPedArmour(Ped,0)
 
+	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
+	SetCamCoord(Camera,231.99,-1389.94,31.0)
+	RenderScriptCams(true,true,0,true,true)
+	SetCamRot(Camera,0.0,0.0,320.0,2)
+	SetCamActive(Camera,true)
+
 	local Characters = vSERVER.Characters()
+	SendNUIMessage({ Action = "Spawn", Table = Characters })
+	TriggerServerEvent("Queue:Connect")
+	SetNuiFocus(true,true)
+
 	if parseInt(#Characters) > 0 then
 		for Number,v in pairs(Characters) do
 			if not v["Skin"] then
@@ -73,20 +87,6 @@ AddEventHandler("spawn:Opened",function()
 				end
 			end
 		end
-	end
-
-	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-	SetCamCoord(Camera,231.99,-1389.94,31.0)
-	RenderScriptCams(true,true,0,true,true)
-	SetCamRot(Camera,0.0,0.0,320.0,2)
-	SetCamActive(Camera,true)
-
-	SendNUIMessage({ Action = "Spawn", Table = Characters })
-	TriggerServerEvent("Queue:Connect")
-	SetNuiFocus(true,true)
-
-	if IsScreenFadedOut() then
-		DoScreenFadeIn(500)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

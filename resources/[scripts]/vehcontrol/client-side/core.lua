@@ -45,6 +45,34 @@ function SetLxSirenStateForVeh(Vehicle,State)
 				LxSirenSend[Vehicle] = GetSoundId()
 				PlaySoundFromEntity(LxSirenSend[Vehicle],"VEHICLES_HORNS_POLICE_WARNING",Vehicle,0,0,0)
 				TogMuteDfltSrnForVeh(Vehicle,true)
+			elseif State == 4 then
+				LxSirenSend[Vehicle] = GetSoundId()	
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_03",Vehicle,0,0,0)
+				TogMuteDfltSrnForVeh(Vehicle,true)
+			elseif State == 5 then
+				LxSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_03",Vehicle,0,0,0)
+				TogMuteDfltSrnForVeh(Vehicle,true)
+			elseif State == 6 then
+				LxSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_FIRETRUCK_QUICK_01",Vehicle,0,0,0)
+				TogMuteDfltSrnForVeh(Vehicle,true)
+			elseif State == 7 then
+				LxSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_01",Vehicle,0,0,0)
+				TogMuteDfltSrnForVeh(Vehicle,true)
+			elseif State == 8 then
+				LxSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_02",Vehicle,0,0,0)
+				TogMuteDfltSrnForVeh(Vehicle,true)
+			elseif State == 9 then
+				LxSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_01",Vehicle,0,0,0)
+				TogMuteDfltSrnForVeh(Vehicle,true)
+			elseif State == 10 then
+				LxSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_02",Vehicle,0,0,0)
+				TogMuteDfltSrnForVeh(Vehicle,true)
 			else
 				TogMuteDfltSrnForVeh(Vehicle,true)
 			end
@@ -74,6 +102,27 @@ function SetAirManuStateForVeh(Vehicle,State)
 			elseif State == 3 then
 				AirSirenSend[Vehicle] = GetSoundId()
 				PlaySoundFromEntity(AirSirenSend[Vehicle],"VEHICLES_HORNS_SIREN_2",Vehicle,0,0,0)
+			elseif State == 4 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_03",Vehicle,0,0,0)
+			elseif State == 5 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_03",Vehicle,0,0,0)
+			elseif State == 6 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_FIRETRUCK_QUICK_01",Vehicle,0,0,0)
+			elseif State == 7 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_01",Vehicle,0,0,0)
+			elseif State == 8 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_02",Vehicle,0,0,0)
+			elseif State == 9 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_01",Vehicle,0,0,0)
+			elseif State == 10 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_02",Vehicle,0,0,0)
 			end
 
 			AirSirenState[Vehicle] = State

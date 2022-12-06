@@ -238,7 +238,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if GetVehicleClass(Vehicle) >= 14 and GetVehicleClass(Vehicle) <= 16 and GetVehicleClass(Vehicle) ~= 21 then
+				if GetVehicleClass(Vehicle) >= 14 and GetVehicleClass(Vehicle) <= 18 and GetVehicleClass(Vehicle) ~= 21 then
 					if CountCast > DelayCast then
 						CountCast = 0
 

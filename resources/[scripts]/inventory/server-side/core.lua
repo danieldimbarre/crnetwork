@@ -2034,7 +2034,7 @@ function Creative.MakeProducts(Table)
 						if type(Products[Selected][Number]["need"]) == "table" then
 							for k,v in pairs(Need) do
 								local Split = splitString(v[1],"-")
-								if Split[1] == "weedleaf" and Split[2] ~= nil then
+								if (Split[1] == "weedleaf" or Split[1] == "cokeleaf") and Split[2] ~= nil then
 									Points = Split[2]
 								end
 
@@ -2046,7 +2046,7 @@ function Creative.MakeProducts(Table)
 					end
 
 					if Products[Selected][Number]["item"] then
-						if Selected == "tableweed" then
+						if Selected == "tableweed" or Selected == "tablecoke" then
 							vRP.GenerateItem(Passport,Products[Selected][Number]["item"].."-"..Points,Products[Selected][Number]["itemAmount"],true)
 						else
 							vRP.GenerateItem(Passport,Products[Selected][Number]["item"],Products[Selected][Number]["itemAmount"],true)

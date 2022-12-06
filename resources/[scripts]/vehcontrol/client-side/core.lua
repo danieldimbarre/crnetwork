@@ -1,218 +1,164 @@
----------------------------------------------------------------------
-local CountSend = 0
-local TimerSend = 0
-local DelaySend = 1000
-local SirenTemporary = 0
-local MuteTemporary = false
----------------------------------------------------------------------
-local LxSound = {}
-local LxStatus = {}
----------------------------------------------------------------------
-local AirSound = {}
-local AirStatus = {}
----------------------------------------------------------------------
-function TogMuteDfltSrnForVeh(Vehicle,Status)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VARCAST
+-----------------------------------------------------------------------------------------------------------------------------------------
+local CountCast = 0
+local DelayCast = 1000
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VARLX
+-----------------------------------------------------------------------------------------------------------------------------------------
+local LxSirenSend = {}
+local LxSirenState = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VARAIR
+-----------------------------------------------------------------------------------------------------------------------------------------
+local AirSirenSend = {}
+local AirSirenState = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TOGMUTEDFLTSRNFORVEH
+-----------------------------------------------------------------------------------------------------------------------------------------
+function TogMuteDfltSrnForVeh(Vehicle,Toggle)
 	if DoesEntityExist(Vehicle) and not IsEntityDead(Vehicle) then
-		DisableVehicleImpactExplosionActivation(Vehicle,Status)
+		SetVehicleHasMutedSirens(Vehicle,Toggle)
 	end
 end
----------------------------------------------------------------------
-function SetLxSirenStateForVeh(Vehicle,Status)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SETLXSIRENSTATEFORVEH
+-----------------------------------------------------------------------------------------------------------------------------------------
+function SetLxSirenStateForVeh(Vehicle,State)
 	if DoesEntityExist(Vehicle) and not IsEntityDead(Vehicle) then
-		if Status ~= LxStatus[Vehicle] then
-			if LxSound[Vehicle] ~= nil then
-				StopSound(LxSound[Vehicle])
-				ReleaseSoundId(LxSound[Vehicle])
-				LxSound[Vehicle] = nil
+		if State ~= LxSirenState[Vehicle] then
+			if LxSirenSend[Vehicle] then
+				StopSound(LxSirenSend[Vehicle])
+				ReleaseSoundId(LxSirenSend[Vehicle])
+				LxSirenSend[Vehicle] = nil
 			end
 
-			if Status == 1 then
-				LxSound[Vehicle] = GetSoundId()	
-				PlaySoundFromEntity(LxSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_03",Vehicle,0,0,0)
+			if State == 1 then
+				LxSirenSend[Vehicle] = GetSoundId()	
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"VEHICLES_HORNS_SIREN_1",Vehicle,0,0,0)
 				TogMuteDfltSrnForVeh(Vehicle,true)
-			elseif Status == 2 then
-				LxSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(LxSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_03",Vehicle,0,0,0)
+			elseif State == 2 then
+				LxSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"VEHICLES_HORNS_SIREN_2",Vehicle,0,0,0)
 				TogMuteDfltSrnForVeh(Vehicle,true)
-			elseif Status == 3 then
-				LxSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(LxSound[Vehicle],"RESIDENT_VEHICLES_SIREN_FIRETRUCK_QUICK_01",Vehicle,0,0,0)
-				TogMuteDfltSrnForVeh(Vehicle,true)
-			elseif Status == 4 then
-				LxSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(LxSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_01",Vehicle,0,0,0)
-				TogMuteDfltSrnForVeh(Vehicle,true)
-			elseif Status == 5 then
-				LxSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(LxSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_02",Vehicle,0,0,0)
-				TogMuteDfltSrnForVeh(Vehicle,true)
-			elseif Status == 6 then
-				LxSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(LxSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_01",Vehicle,0,0,0)
-				TogMuteDfltSrnForVeh(Vehicle,true)
-			elseif Status == 7 then
-				LxSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(LxSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_02",Vehicle,0,0,0)
+			elseif State == 3 then
+				LxSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(LxSirenSend[Vehicle],"VEHICLES_HORNS_POLICE_WARNING",Vehicle,0,0,0)
 				TogMuteDfltSrnForVeh(Vehicle,true)
 			else
 				TogMuteDfltSrnForVeh(Vehicle,true)
 			end
 
-			LxStatus[Vehicle] = Status
+			LxSirenState[Vehicle] = State
 		end
 	end
 end
----------------------------------------------------------------------
-function SetAirManuStateForVeh(Vehicle,Status)
-	if DoesEntityExist(veVehicleh) and not IsEntityDead(Vehicle) then
-		if Status ~= AirStatus[Vehicle] then
-			if AirSound[Vehicle] ~= nil then
-				StopSound(AirSound[Vehicle])
-				ReleaseSoundId(AirSound[Vehicle])
-				AirSound[Vehicle] = nil
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SETAIRMANUSTATEFORVEH
+-----------------------------------------------------------------------------------------------------------------------------------------
+function SetAirManuStateForVeh(Vehicle,State)
+	if DoesEntityExist(Vehicle) and not IsEntityDead(Vehicle) then
+		if State ~= AirSirenState[Vehicle] then
+			if AirSirenSend[Vehicle] then
+				StopSound(AirSirenSend[Vehicle])
+				ReleaseSoundId(AirSirenSend[Vehicle])
+				AirSirenSend[Vehicle] = nil
 			end
 
-			if Status == 1 then
-				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_03",Vehicle,0,0,0)
-			elseif Status == 2 then
-				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_03",Vehicle,0,0,0)
-			elseif Status == 3 then
-				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_FIRETRUCK_QUICK_01",Vehicle,0,0,0)
-			elseif Status == 4 then
-				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_01",Vehicle,0,0,0)
-			elseif Status == 5 then
-				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_WAIL_02",Vehicle,0,0,0)
-			elseif Status == 6 then
-				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_01",Vehicle,0,0,0)
-			elseif Status == 7 then
-				AirSound[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(AirSound[Vehicle],"RESIDENT_VEHICLES_SIREN_QUICK_02",Vehicle,0,0,0)
+			if State == 1 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"SIRENS_AIRHORN",Vehicle,0,0,0)
+			elseif State == 2 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"VEHICLES_HORNS_SIREN_1",Vehicle,0,0,0)
+			elseif State == 3 then
+				AirSirenSend[Vehicle] = GetSoundId()
+				PlaySoundFromEntity(AirSirenSend[Vehicle],"VEHICLES_HORNS_SIREN_2",Vehicle,0,0,0)
 			end
 
-			AirStatus[Vehicle] = Status
+			AirSirenState[Vehicle] = State
 		end
 	end
 end
----------------------------------------------------------------------
-CreateThread(function()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADVEHICLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+Citizen.CreateThread(function()
 	while true do
 		local TimeDistance = 999
-		if CountSend > 400 then
-			CountSend = 0
-
-			for k,v in pairs(LxStatus) do
-				if v > 0 then
-					if not DoesEntityExist(k) or IsEntityDead(k) then
-						if LxSound[k] ~= nil then
-							StopSound(LxSound[k])
-							ReleaseSoundId(LxSound[k])
-							LxSound[k] = nil
-							LxStatus[k] = nil
-						end
-					end
-				end
-			end
-
-			for k,v in pairs(AirStatus) do
-				if v then
-					if not DoesEntityExist(k) or IsEntityDead(k) or IsVehicleSeatFree(k,-1) then
-						if AirSound[k] ~= nil then
-							StopSound(AirSound[k])
-							ReleaseSoundId(AirSound[k])
-							AirSound[k] = nil
-							AirStatus[k] = nil
-						end
-					end
-				end
-			end
-		else
-			CountSend = CountSend + 1
-		end
-
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
+				DisableControlAction(0,84,true)
+				DisableControlAction(0,83,true)
+
 				if GetVehicleClass(Vehicle) == 18 then
-					TimeDistance = 1
+					TimeDistance = 0
+
 					local ActiveHorn = false
 					local ActiveManual = false
 
+					DisableControlAction(0,19,true)
+					DisableControlAction(0,80,true)
+					DisableControlAction(0,81,true)
+					DisableControlAction(0,82,true)
+					DisableControlAction(0,85,true)
+					DisableControlAction(0,86,true)
+					DisableControlAction(0,172,true)
+
 					SetVehRadioStation(Vehicle,"OFF")
-					DisableControlAction(1,86,true)
-					DisableControlAction(1,19,true)
-					DisableControlAction(1,85,true)
-					DisableControlAction(1,80,true)
 					SetVehicleRadioEnabled(Vehicle,false)
 
-					if LxStatus[Vehicle] ~= 1 and LxStatus[Vehicle] ~= 2 and LxStatus[Vehicle] ~= 3 and LxStatus[Vehicle] ~= 4 and LxStatus[Vehicle] ~= 5 and LxStatus[Vehicle] ~= 6 and LxStatus[Vehicle] ~= 7 then
-						LxStatus[Vehicle] = 0
+					if not LxSirenState[Vehicle] or (LxSirenState[Vehicle] < 0 or LxSirenState[Vehicle] > 3) then
+						LxSirenState[Vehicle] = 0
 					end
 
-					if AirStatus[Vehicle] ~= 1 and AirStatus[Vehicle] ~= 2 and AirStatus[Vehicle] ~= 3 and AirStatus[Vehicle] ~= 4 and AirStatus[Vehicle] ~= 5 and AirStatus[Vehicle] ~= 6 and AirStatus[Vehicle] ~= 7 then
-						AirStatus[Vehicle] = 0
+					if not AirSirenState[Vehicle] or (AirSirenState[Vehicle] < 0 or AirSirenState[Vehicle] > 3) then
+						AirSirenState[Vehicle] = 0
 					end
 
-					TogMuteDfltSrnForVeh(Vehicle,true)
-
-					if not IsVehicleSirenOn(Vehicle) and LxStatus[Vehicle] > 0 then
+					if not IsVehicleSirenOn(Vehicle) and LxSirenState[Vehicle] > 0 then
 						SetLxSirenStateForVeh(Vehicle,0)
-						TimerSend = DelaySend
+						CountCast = DelayCast
 					end
 
 					if not IsPauseMenuActive() then
-						if IsDisabledControlJustReleased(0,85) then
+						if IsDisabledControlJustReleased(0,85) or IsDisabledControlJustReleased(0,246) then
 							if IsVehicleSirenOn(Vehicle) then
 								SetVehicleSiren(Vehicle,false)
 							else
 								SetVehicleSiren(Vehicle,true)
-								TimerSend = DelaySend
+								CountCast = DelayCast
 							end
-						elseif IsDisabledControlJustReleased(0,19) then
-							if LxStatus[Vehicle] == 0 then
+						elseif IsDisabledControlJustReleased(0,19) or IsDisabledControlJustReleased(0,82) then
+							if LxSirenState[Vehicle] == 0 then
 								if IsVehicleSirenOn(Vehicle) then
 									SetLxSirenStateForVeh(Vehicle,1)
-									TimerSend = DelaySend
+									CountCast = DelayCast
 								end
 							else
 								SetLxSirenStateForVeh(Vehicle,0)
-								TimerSend = DelaySend
+								CountCast = DelayCast
 							end
 						end
 
-						if LxStatus[Vehicle] > 0 then
-							if IsDisabledControlJustReleased(0,80) then
+						if LxSirenState[Vehicle] > 0 then
+							if IsDisabledControlJustReleased(0,80) or IsDisabledControlJustReleased(0,81) then
 								if IsVehicleSirenOn(Vehicle) then
-									local Status = 1
-
-									if LxStatus[Vehicle] == 1 then
-										Status = 2
-									elseif LxStatus[Vehicle] == 2 then
-										Status = 3
-									elseif LxStatus[Vehicle] == 3 then
-										Status = 4
-									elseif LxStatus[Vehicle] == 4 then
-										Status = 5
-									elseif LxStatus[Vehicle] == 5 then
-										Status = 6
-									elseif LxStatus[Vehicle] == 6 then
-										Status = 7
+									local NewState = 1
+									if LxSirenState[Vehicle] == 1 or LxSirenState[Vehicle] == 2 then
+										NewState = LxSirenState[Vehicle] + 1
 									end
 
-									SetLxSirenStateForVeh(Vehicle,Status)
-									TimerSend = DelaySend
+									SetLxSirenStateForVeh(Vehicle,NewState)
+									CountCast = DelayCast
 								end
 							end
 						end
 
-						if LxStatus[Vehicle] < 1 then
-							if IsDisabledControlPressed(1,80) then
+						if LxSirenState[Vehicle] < 1 then
+							if IsDisabledControlPressed(0,80) or IsDisabledControlPressed(0,81) then
 								ActiveManual = true
 							else
 								ActiveManual = false
@@ -221,45 +167,37 @@ CreateThread(function()
 							ActiveManual = false
 						end
 
-						if IsDisabledControlPressed(1,86) then
+						if IsDisabledControlPressed(0,86) then
 							ActiveHorn = true
 						else
 							ActiveHorn = false
 						end
 					end
 
-					local HornStatus = 0
+					local ManualState = 0
 					if ActiveHorn and not ActiveManual then
-						HornStatus = 1
+						ManualState = 1
 					elseif not ActiveHorn and ActiveManual then
-						HornStatus = 2
+						ManualState = 2
 					elseif ActiveHorn and ActiveManual then
-						HornStatus = 3
+						ManualState = 3
 					end
 
-					if HornStatus == 1 then
-						if LxStatus[Vehicle] > 0 and not MuteTemporary then
-							SirenTemporary = LxStatus[Vehicle]
-							SetLxSirenStateForVeh(Vehicle,0)
-							MuteTemporary = true
+					if AirSirenState[Vehicle] ~= ManualState then
+						SetAirManuStateForVeh(Vehicle,ManualState)
+						CountCast = DelayCast
+					end
+				end
+
+				if GetVehicleClass(Vehicle) >= 14 and GetVehicleClass(Vehicle) <= 16 and GetVehicleClass(Vehicle) ~= 21 then
+					if CountCast > DelayCast then
+						CountCast = 0
+
+						if GetVehicleClass(Vehicle) == 18 then
+							Entity(Vehicle)["state"]:set("Sirens",{ LxSirenState[Vehicle],AirSirenState[Vehicle] },true)
 						end
 					else
-						if MuteTemporary then
-							SetLxSirenStateForVeh(Vehicle,SirenTemporary)
-							MuteTemporary = false
-						end
-					end
-
-					if AirStatus[Vehicle] ~= HornStatus then
-						SetAirManuStateForVeh(Vehicle,HornStatus)
-						TimerSend = DelaySend
-					end
-
-					if TimerSend > DelaySend then
-						TimerSend = 0
-						TriggerServerEvent("vehcontrol:Server",LxStatus[Vehicle],AirStatus[Vehicle],VehToNet(Vehicle))
-					else
-						TimerSend = TimerSend + 1
+						CountCast = CountCast + 1
 					end
 				end
 			end
@@ -268,20 +206,17 @@ CreateThread(function()
 		Wait(TimeDistance)
 	end
 end)
----------------------------------------------------------------------
-RegisterNetEvent("vehcontrol:Client")
-AddEventHandler("vehcontrol:Client",function(Siren,Air,Network,source)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Sirens",nil,function(Name,Key,Value)
+	local Network = parseInt(Name:gsub("entity:",""))
 	if NetworkDoesNetworkIdExist(Network) then
-		local Vehicle = NetToEnt(Network)
+		local Vehicle = NetToVeh(Network)
 		if DoesEntityExist(Vehicle) then
-			local Player = GetPlayerFromServerId(source)
-			local Ped = GetPlayerPed(Player)
-
-			if Ped ~= PlayerPedId() then
-				TogMuteDfltSrnForVeh(Vehicle,true)
-				SetAirManuStateForVeh(Vehicle,Air)
-				SetLxSirenStateForVeh(Vehicle,Siren)
-			end
+			TogMuteDfltSrnForVeh(Vehicle,true)
+			SetLxSirenStateForVeh(Vehicle,Value[1])
+			SetAirManuStateForVeh(Vehicle,Value[2])
 		end
 	end
 end)

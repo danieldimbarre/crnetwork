@@ -24,13 +24,13 @@
     "services": [
         {
             "name": "Polícia",
-            "number": "911",
+            "number": "190",
             "permission": "Police",
             "dev": true
         },
         {
             "name": "Hospital",
-            "number": "112",
+            "number": "193",
             "permission": "Paramedic",
             "dev": true
         },

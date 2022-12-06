@@ -425,12 +425,12 @@ LootItens = {
 -- PLANTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Plants = {
-	["weedclone"] = 1,
-	["weedleaf"] = 2,
-	["joint"] = 3,
-	["cokeclone"] = 1,
-	["cokeleaf"] = 2,
-	["cocaine"] = 3
+	["weedclone"] = "da clonagem",
+	["weedleaf"] = "da folha",
+	["joint"] = "do baseado",
+	["cokeclone"] = "da clonagem",
+	["cokeleaf"] = "da folha",
+	["cocaine"] = "da cocaína"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTINVENTORY
@@ -524,14 +524,7 @@ function Creative.requestInventory()
 				end
 
 				if Plants[Split[1]] then
-					local Item = "da clonagem"
-					if Plants[Split[1]] == 2 then
-						Item = "da folha"
-					elseif Plants[Split[1]] == 3 then
-						Item = "do baseado"
-					end
-
-					v["desc"] = "A pureza "..Item.." se encontra em <green>"..(Split[2] or 0).."%</green>."
+					v["desc"] = "A pureza "..Plants[Split[1]].." se encontra em <green>"..(Split[2] or 0).."%</green>."
 				end
 
 				Inv[Index] = v

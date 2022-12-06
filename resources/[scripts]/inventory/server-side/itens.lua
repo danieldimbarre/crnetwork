@@ -524,9 +524,14 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					local Points = 0
+					if Split[2] ~= nil then
+						Points = parseInt(Split[2])
+					end
+
 					vRP.ChemicalTimer(Passport,10)
 					TriggerClientEvent("setCocaine",source)
-					TriggerClientEvent("setEnergetic",source,15,1.20)
+					TriggerClientEvent("setEnergetic",source,15,1.20 + (0.1 * Points))
 				end
 			end
 

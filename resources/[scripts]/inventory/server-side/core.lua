@@ -2168,7 +2168,7 @@ function Creative.RemoveTyres(Entity)
 								if DoesEntityExist(Vehicle) and not IsPedAPlayer(Vehicle) and GetEntityType(Vehicle) == 2 then
 									if vCLIENT.tyreHealth(source,Entity[4],Entity[5]) == 1000.0 then
 										local Players = vRPC.Players(source)
-										for _,v in ipairs(Players) do
+										for _,v in pairs(Players) do
 											async(function()
 												TriggerClientEvent("inventory:explodeTyres",v,Entity[4],Entity[1],Entity[5])
 											end)
@@ -2333,7 +2333,7 @@ AddEventHandler("player:RollVehicle",function(Entity)
 				Player(source)["state"]["Buttons"] = false
 
 				local Players = vRPC.Players(source)
-				for _,v in ipairs(Players) do
+				for _,v in pairs(Players) do
 					async(function()
 						TriggerClientEvent("target:RollVehicle",v,Entity[4])
 					end)

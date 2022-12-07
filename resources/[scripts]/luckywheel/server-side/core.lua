@@ -115,7 +115,7 @@ function Creative.Rolling()
 		vCLIENT.Active(source)
 
 		local Players = vRPC.Players(source)
-		for _,v in ipairs(Players) do
+		for _,v in pairs(Players) do
 			async(function()
 				vCLIENT.Start(v,Payments[Passport])
 			end)

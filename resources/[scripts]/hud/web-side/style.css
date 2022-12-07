@@ -186,7 +186,7 @@ space {
 #NaviMiddle > .NaviBlock > .NaviButton > svg > .Circle, .stats > .NaviButton > svg > .Circle {
 	fill: none;
 	transition: all 1s;
-	stroke-width: 14px;
+	stroke-width: 4px;
 	stroke-dashoffset: 0;
 	stroke-dasharray: 100;
 }

@@ -438,12 +438,12 @@ space {
 }
 
 .fuel circle:nth-child(1) {
-	stroke: #db2a3b;
+	stroke: #ac2121;
 	stroke-dashoffset: calc(440 - (440 * 13) / 100);
 }
 
 .fuel circle:nth-child(2) {
-	stroke: #75030f;
+	stroke: #6d1616;
 }
 
 .Gray {

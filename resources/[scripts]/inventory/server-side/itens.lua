@@ -349,8 +349,6 @@ Use = {
 		local naipes = { "<black>♣</black>","<red>♠</red>","<black>♦</black>","<red>♥</red>" }
 
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
-
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
@@ -375,8 +373,6 @@ Use = {
 		local Coins = math.random(2)
 		local Sides = { "Cara","Coroa" }
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
-
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
@@ -401,8 +397,6 @@ Use = {
 		local Coins = math.random(2)
 		local Sides = { "Cara","Coroa" }
 		local Identity = vRP.Identity(Passport)
-		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],Sides[Coins])
-
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()

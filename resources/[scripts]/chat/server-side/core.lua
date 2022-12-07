@@ -15,7 +15,6 @@ AddEventHandler("chat:ServerMessage",function(Message)
 	if Passport then
 		local Identity = vRP.Identity(Passport)
 		local Messages = Message:gsub("[<>]","")
-		TriggerClientEvent("chat:ClientMessage",source,Identity["name"].." "..Identity["name2"],Messages)
 
 		local Players = vRPC.ClosestPeds(source,10)
 		for _,v in pairs(Players) do

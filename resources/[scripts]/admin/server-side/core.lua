@@ -196,13 +196,13 @@ RegisterCommand("goda",function(source,Message)
 				local Players = vRPC.ClosestPeds(source,Range)
 				for _,v in pairs(Players) do
 					async(function()
-						local OtherPlayer = vRP.Passport(v[2])
+						local OtherPlayer = vRP.Passport(v)
 						vRP.UpgradeThirst(OtherPlayer,100)
 						vRP.UpgradeHunger(OtherPlayer,100)
 						vRP.DowngradeStress(OtherPlayer,100)
-						vRP.Revive(v[2],200)
+						vRP.Revive(v,200)
 
-						TriggerClientEvent("paramedic:Reset",v[2])
+						TriggerClientEvent("paramedic:Reset",v)
 
 						if Text == "" then
 							Text = Text..OtherPlayer

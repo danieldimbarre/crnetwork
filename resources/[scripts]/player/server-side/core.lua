@@ -68,7 +68,7 @@ RegisterCommand("me",function(source,Message,History)
 		local message = string.sub(History:sub(4),1,100)
 
 		local Players = vRPC.Players(source)
-		for _,v in ipairs(Players) do
+		for _,v in pairs(Players) do
 			async(function()
 				TriggerClientEvent("showme:pressMe",v,source,message,10)
 			end)
@@ -121,7 +121,7 @@ RegisterCommand("e3",function(source,Message)
 			local Players = vRPC.ClosestPeds(source,50)
 			for _,v in pairs(Players) do
 				async(function()
-					TriggerClientEvent("emotes",v[2],Message[1])
+					TriggerClientEvent("emotes",v,Message[1])
 				end)
 			end
 		end
@@ -138,7 +138,7 @@ AddEventHandler("player:Doors",function(Number)
 		local Vehicle,Network = vRPC.VehicleList(source,5)
 		if Vehicle then
 			local Players = vRPC.Players(source)
-			for _,v in ipairs(Players) do
+			for _,v in pairs(Players) do
 				async(function()
 					TriggerClientEvent("player:syncDoors",v,Network,Number)
 				end)

@@ -147,9 +147,9 @@ AddEventHandler("player:Doors",function(Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- 911
+-- 190
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("911",function(source,Message,History)
+RegisterCommand("190",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasService(Passport,"Police") then
@@ -164,9 +164,9 @@ RegisterCommand("911",function(source,Message,History)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- 112
+-- 193
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("112",function(source,Message,History)
+RegisterCommand("193",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
 		if vRP.HasService(Passport,"Paramedic") then
@@ -963,11 +963,11 @@ AddEventHandler("player:Spending",function(_,Mode)
 					Amount = 50000
 				end
 
-				if Identity["cardlimit"] >= Amount then
-					vRP.DowngradeCardlimit(Passport,Amount)
-					TriggerClientEvent("Notify",source,"verde","Diminuiu seu limite do cartão de débito.",5000)
+				if Identity["spending"] >= Amount then
+					vRP.DowngradeSpending(Passport,Amount)
+					TriggerClientEvent("Notify",source,"verde","Diminuiu seu gasto do cartão de débito.",5000)
 				else
-					TriggerClientEvent("Notify",source,"amarelo","Limite insuficiente no cartão.",5000)
+					TriggerClientEvent("Notify",source,"amarelo","Gasto insuficiente no cartão.",5000)
 				end
 			end
 		end

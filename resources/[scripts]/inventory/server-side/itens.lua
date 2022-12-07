@@ -378,7 +378,7 @@ Use = {
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.","Baralho")
+				TriggerClientEvent("chat:ClientMessage",v,Identity["name"].." "..Identity["name2"],"Tirou "..cards[card]..naipes[naipe].." do baralho.")
 			end)
 		end
 	end,
@@ -404,7 +404,7 @@ Use = {
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins],"Moeda")
+				TriggerClientEvent("chat:ClientMessage",v,Identity["name"].." "..Identity["name2"],Sides[Coins])
 			end)
 		end
 	end,
@@ -430,7 +430,7 @@ Use = {
 		local Players = vRPC.ClosestPeds(source,5)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("chat:ClientMessage",v[2],Identity["name"].." "..Identity["name2"],Sides[Coins],"Moeda")
+				TriggerClientEvent("chat:ClientMessage",v,Identity["name"].." "..Identity["name2"],Sides[Coins])
 			end)
 		end
 	end,

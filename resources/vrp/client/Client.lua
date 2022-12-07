@@ -1,8 +1,38 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
+-- LOCALPLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Phone = false
+LocalPlayer["state"]["Name"] = ""
+LocalPlayer["state"]["Route"] = 0
+LocalPlayer["state"]["Passport"] = 0
+LocalPlayer["state"]["Cancel"] = false
+LocalPlayer["state"]["Active"] = false
+LocalPlayer["state"]["Handcuff"] = false
+LocalPlayer["state"]["Commands"] = false
+LocalPlayer["state"]["disablePhone"] = false
+LocalPlayer["state"]["Player"] = GetPlayerServerId(PlayerId())
 local cdBtns = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLIENTSTATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+LocalPlayer["state"]["Admin"] = false
+LocalPlayer["state"]["Police"] = false
+LocalPlayer["state"]["Paramedic"] = false
+LocalPlayer["state"]["Mechanic"] = false
+LocalPlayer["state"]["Taxi"] = false
+LocalPlayer["state"]["BurgerShot"] = false
+LocalPlayer["state"]["PizzaThis"] = false
+LocalPlayer["state"]["UwuCoffee"] = false
+LocalPlayer["state"]["BeanMachine"] = false
+LocalPlayer["state"]["Ballas"] = false
+LocalPlayer["state"]["Vagos"] = false
+LocalPlayer["state"]["Families"] = false
+LocalPlayer["state"]["Aztecas"] = false
+LocalPlayer["state"]["Bloods"] = false
+LocalPlayer["state"]["Triads"] = false
+LocalPlayer["state"]["Razors"] = false
+LocalPlayer["state"]["Altruists"] = false
+LocalPlayer["state"]["Lost"] = false
+LocalPlayer["state"]["Marabunta"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -23,16 +53,8 @@ end)
 CreateThread(function()
 	RequestIpl("RC12B_Default")
 	AddTextEntry("FE_THDR_GTAO","Energy")
-
 	Wait(15000)
-
 	ReplaceHudColour(116,18)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SMARTPHONE:STATUS
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("vRP:Phone",function(Status)
-	Phone = Status
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BIND
@@ -41,7 +63,7 @@ RegisterCommand("energyBind",function(source,args,rawCommand)
 	if GetGameTimer() >= cdBtns then
 		cdBtns = GetGameTimer() + 1000
 		local Ped = PlayerPedId()
-		if not IsPauseMenuActive() and not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Cassino"] and not Phone and GetEntityHealth(Ped) > 101 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
+		if not IsPauseMenuActive() and not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Cassino"] and not LocalPlayer["state"]["disablePhone"] and GetEntityHealth(Ped) > 101 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
 			if args[1] == "0" then
 				if not IsPedInAnyVehicle(Ped) and not IsPedArmed(Ped,6) and not IsPedSwimming(Ped) then
 					if IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@male@front@idle_a","idle_a",3) and IsEntityPlayingAnim(Ped,"jh_1_ig_3-2","cs_jewelass_dual-2",3) then

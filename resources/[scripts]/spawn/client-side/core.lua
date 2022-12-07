@@ -44,6 +44,8 @@ AddEventHandler("spawn:Opened",function()
 
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)
+	LocalPlayer["state"]["Invincible"] = true
+	LocalPlayer["state"]["Invisible"] = true
 	SetEntityVisible(Ped,false,false)
 	FreezeEntityPosition(Ped,true)
 	SetEntityInvincible(Ped,true)
@@ -126,7 +128,7 @@ AddEventHandler("spawn:justSpawn",function(Open,Barbershop)
 	local Ped = PlayerPedId()
 
 	if Open then
-		local Coords = GetEntityCoords(Ped)
+		local Coords = Barbershop
 		Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",Coords["x"],Coords["y"],Coords["z"] + 200.0,270.00,0.0,0.0,80.0,0,0)
 		RenderScriptCams(true,true,0,true,true)
 		SetCamActive(Camera,true)
@@ -134,6 +136,7 @@ AddEventHandler("spawn:justSpawn",function(Open,Barbershop)
 		SendNUIMessage({ Action = "Location", Table = Locate })
 	else
 		SetEntityVisible(Ped,true,false)
+		LocalPlayer["state"]["Invisible"] = false
 		TriggerEvent("hud:Active",true)
 		SetNuiFocus(false,false)
 		Destroy = false
@@ -167,6 +170,7 @@ RegisterNUICallback("Chosen",function(Data,Callback)
 
 		TriggerServerEvent("vRP:justObjects")
 		SetEntityVisible(Ped,true,false)
+		LocalPlayer["state"]["Invisible"] = false
 		TriggerEvent("hud:Active",true)
 		SetNuiFocus(false,false)
 		Destroy = false

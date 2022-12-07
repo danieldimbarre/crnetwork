@@ -430,8 +430,8 @@ RegisterCommand("kickall",function(source)
 	end
 
 	local List = vRP.Players()
-	for Passport,_ in pairs(List) do
-		vRP.Kick(Passport,"Desconectado, a cidade reiniciou.")
+	for _,Sources in pairs(List) do
+		vRP.Kick(Sources,"Desconectado, a cidade reiniciou.")
 		Wait(100)
 	end
 

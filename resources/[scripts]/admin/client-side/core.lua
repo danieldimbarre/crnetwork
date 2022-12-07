@@ -123,8 +123,8 @@ AddEventHandler("admin:initSpectate",function(source)
 		local Pid = GetPlayerFromServerId(source)
 		local Ped = GetPlayerPed(Pid)
 
-		NetworkSetInSpectatorMode(true,Ped)
 		LocalPlayer["state"]["Spectate"] = true
+		NetworkSetInSpectatorMode(true,Ped)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

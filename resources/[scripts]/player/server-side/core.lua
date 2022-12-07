@@ -115,7 +115,7 @@ RegisterCommand("e3",function(source,Message)
 			local Players = vRPC.ClosestPeds(source,50)
 			for _,v in pairs(Players) do
 				async(function()
-					TriggerClientEvent("emotes",v[2],Message[1])
+					TriggerClientEvent("emotes",v,Message[1])
 				end)
 			end
 		end

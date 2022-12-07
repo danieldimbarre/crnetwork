@@ -619,13 +619,11 @@ RegisterCommand("kickall",function(source)
 	end
 
 	local List = vRP.Players()
-	for OtherPlayer,OtherSource in pairs(List) do
-		async(function()
-			TriggerClientEvent("admin:KickAll",OtherSource)
-			Wait(1000)
-			vRP.Kick(OtherSource,"Desconectado, a cidade reiniciou.")
-			Wait(100)
-		end)
+	for _,Sources in pairs(List) do
+		TriggerClientEvent("admin:KickAll",Sources)
+		Wait(1000)
+		vRP.Kick(Sources,"Desconectado, a cidade reiniciou.")
+		Wait(100)
 	end
 
 	TriggerEvent("SaveServer",false)

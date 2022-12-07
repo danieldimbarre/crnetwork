@@ -32,6 +32,7 @@ CreateThread(function()
 					NetworkResurrectLocalPlayer(Coords,0.0)
 
 					NetworkSetFriendlyFireOption(false)
+					LocalPlayer["state"]["Invincible"] = true
 					SetEntityInvincible(Ped,true)
 					SetEntityHealth(Ped,100)
 
@@ -132,6 +133,7 @@ function Creative.Respawn()
 	ClearPedBloodDamage(PlayerPedId())
 	SetEntityHealth(PlayerPedId(),200)
 	SetEntityInvincible(PlayerPedId(),false)
+	LocalPlayer["state"]["Invincible"] = false
 
 	TriggerEvent("paramedic:Reset")
 	TriggerEvent("inventory:CleanWeapons")
@@ -152,6 +154,7 @@ exports("Revive",function(Health,Arena)
 
 	SetEntityHealth(Ped,Health)
 	SetEntityInvincible(Ped,false)
+	LocalPlayer["state"]["Invincible"] = false
 
 	if Arena then
 		SetPedArmour(Ped,99)

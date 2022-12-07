@@ -1057,7 +1057,7 @@ function Creative.UseItem(Slot,Amount)
 					end
 
 					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
-					RemoveWeapons(source)
+					exports["inventory"]:CleanWeapons(Passport,false)
 				end
 			else
 				if not Ammos[Passport] then
@@ -1169,6 +1169,8 @@ end
 -- INVENTORY:SAVETEMPORARY
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("inventory:saveTemporary",function(Passport)
+	exports["inventory"]:CleanWeapons(Passport,false)
+
 	if not Temporary[Passport] and Ammos[Passport] and Attachs[Passport] then
 		Temporary[Passport] = {
 			["Ammos"] = Ammos[Passport],
@@ -1189,20 +1191,18 @@ AddEventHandler("inventory:saveTemporary",function(Passport)
 			["WEAPON_PISTOL_AMMO"] = 250
 		}
 	end
-
-	RemoveWeapons(vRP.Source(Passport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:APPLYTEMPORARY
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("inventory:applyTemporary",function(Passport)
+	exports["inventory"]:CleanWeapons(Passport,true)
+
 	if Temporary[Passport] and Ammos[Passport] and Attachs[Passport] then
 		Attachs[Passport] = Temporary[Passport]["Attachs"]
 		Ammos[Passport] = Temporary[Passport]["Ammos"]
 		Temporary[Passport] = nil
 	end
-
-	RemoveWeapons(vRP.Source(Passport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CANCEL
@@ -1319,7 +1319,7 @@ function Creative.verifyWeapon(Item,Ammo)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
 
-			RemoveWeapons(source)
+			exports["inventory"]:CleanWeapons(Passport,true)
 
 			return false
 		end
@@ -1365,25 +1365,11 @@ function Creative.preventWeapon(Item,Ammo)
 				Ammos[Passport][Hash] = Ammo
 			else
 				Ammos[Passport][Hash] = nil
-				RemoveWeapons(source)
+				exports["inventory"]:CleanWeapons(Passport,true)
 			end
 		end
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:CLEANWEAPONS
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("inventory:CleanWeapons",function(Passport)
-	if Ammos[Passport] then
-		Ammos[Passport] = {}
-	end
-
-	if Attachs[Passport] then
-		Attachs[Passport] = {}
-	end
-
-	RemoveWeapons(vRP.Source(Passport))
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VERIFYOBJECTS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -2319,21 +2305,23 @@ AddEventHandler("Connect",function(Passport,source)
 			end
 		end
 	end
-
-	RemoveWeapons(source)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REMOVEWEAPONS
+-- CLEANWEAPONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function RemoveWeapons(source)
-	if not source then
-		return
+exports("CleanWeapons",function(Passport,Clean)
+	local source = vRP.Source(Passport)
+	if source then
+		local Ped = GetPlayerPed(source)
+		local Weapon = GetSelectedPedWeapon(Ped)
+
+		RemoveWeaponFromPed(Ped,Weapon)
+		RemoveAllPedWeapons(Ped,false)
+		SetPedAmmo(Ped,Weapon,0)
+
+		if Clean then
+			Attachs[Passport] = {}
+			Ammos[Passport] = {}
+		end
 	end
-
-	local Ped = GetPlayerPed(source)
-	local Weapon = GetSelectedPedWeapon(Ped)
-
-	RemoveWeaponFromPed(Ped,Weapon)
-	RemoveAllPedWeapons(Ped,true)
-	SetPedAmmo(Ped,Weapon,0)
-end
+end)

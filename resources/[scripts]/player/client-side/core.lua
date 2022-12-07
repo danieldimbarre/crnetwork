@@ -1222,12 +1222,12 @@ CreateThread(function()
 					service = "upgrade-2"
 				},{
 					event = "player:Spending",
-					label = "Diminuir 10 mil de limite",
+					label = "Diminuir 10 mil de gasto",
 					tunnel = "police",
 					service = "downgrade-1"
 				},{
 					event = "player:Spending",
-					label = "Diminuir 50 mil de limite",
+					label = "Diminuir 50 mil de gasto",
 					tunnel = "police",
 					service = "downgrade-2"
 				}

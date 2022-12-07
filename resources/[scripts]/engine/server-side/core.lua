@@ -15,6 +15,26 @@ Tunnel.bindInterface("engine",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Vehicles = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- FUEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("fuel",function(source)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) then
+			local Vehicle,Network,Plate = vRPC.VehicleList(source,10)
+			if Vehicle then
+				local Players = vRPC.Players(source)
+
+				for _,v in ipairs(Players) do
+					async(function()
+						TriggerClientEvent("engine:syncFuel",v,Plate,100,Network)
+					end)
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENTFUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.paymentFuel(Price,Plate,vehFuel,LastFuel,Network)

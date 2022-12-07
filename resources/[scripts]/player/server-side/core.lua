@@ -963,11 +963,11 @@ AddEventHandler("player:Spending",function(_,Mode)
 					Amount = 50000
 				end
 
-				if Identity["cardlimit"] >= Amount then
-					vRP.DowngradeCardlimit(Passport,Amount)
-					TriggerClientEvent("Notify",source,"verde","Diminuiu seu limite do cartão de débito.",5000)
+				if Identity["spending"] >= Amount then
+					vRP.DowngradeSpending(Passport,Amount)
+					TriggerClientEvent("Notify",source,"verde","Diminuiu seu gasto do cartão de débito.",5000)
 				else
-					TriggerClientEvent("Notify",source,"amarelo","Limite insuficiente no cartão.",5000)
+					TriggerClientEvent("Notify",source,"amarelo","Gasto insuficiente no cartão.",5000)
 				end
 			end
 		end

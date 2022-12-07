@@ -56,7 +56,10 @@ AddEventHandler("barbershop:Debug",function()
 		TriggerClientEvent("target:Debug",source)
 		TriggerEvent("DebugObjects",Passport)
 
-		Debug[Passport] = os.time() + 300
+		Debug[Passport] = os.time() + 10
+	else
+		local Cooldown = parseInt(Debug[Passport] - os.time())
+		TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..MinimalTimers(Cooldown).."</b>.",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

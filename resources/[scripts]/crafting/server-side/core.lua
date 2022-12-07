@@ -663,6 +663,7 @@ local List = {
 		}
 	},				
 	["CraftingTable"] = {
+		["Perm"] = { "Ballas","Families","Vagos","Altruits" },
 		["List"] = {
 			["tablecoke"] = {
 				["amount"] = 1,
@@ -789,8 +790,16 @@ function Creative.requestPerm(Name,Type)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if List[Type]["perm"] ~= nil then
-			if vRP.HasService(Passport,List[Type]["perm"]) then
-				return true
+			if type(List[Type]["perm"]) == "table" then
+				for _,Permission in pairs(List[Type]["perm"]) do
+					if vRP.HasService(Passport,Permission) then
+						return true
+					end
+				end
+			else
+				if vRP.HasService(Passport,List[Type]["perm"]) then
+					return true
+				end
 			end
 		else
 			return true

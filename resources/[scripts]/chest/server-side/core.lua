@@ -224,9 +224,8 @@ function Creative.Take(Item,Slot,Amount,Target)
 			TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
 
 			if string.sub(Open[Passport]["Name"],1,9) == "Helicrash" and vRP.ChestWeight(Result) <= 0 then
-				TriggerClientEvent("helicrash:RemoveBox",-1,string.sub(Open[Passport]["Name"],10,11))
 				TriggerClientEvent("chest:Close",source)
-				TriggerEvent("helicrash:AmountBoxes")
+				exports["helicrash"]:Box()
 			end
 
 			if Open[Passport]["Logs"] then

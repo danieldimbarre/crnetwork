@@ -12,3 +12,7 @@ server_scripts {
 	"@vrp/lib/Utils.lua",
 	"server-side/*"
 }
+
+shared_scripts {
+	"shared-side/*"
+}

@@ -24,7 +24,7 @@ function Creative.paymentFuel(Price,Plate,vehFuel,LastFuel,Network)
 		local Players = vRPC.Players(source)
 
 		if vRP.PaymentFull(Passport,Price) then
-			for _,v in ipairs(Players) do
+			for _,v in pairs(Players) do
 				async(function()
 					TriggerClientEvent("engine:syncFuel",v,Plate,vehFuel,Network)
 				end)

@@ -332,7 +332,7 @@ Use = {
 
 		local Dice = math.random(6)
 		local Players = vRPC.Players(source)
-		for _,v in ipairs(Players) do
+		for _,v in pairs(Players) do
 			async(function()
 				TriggerClientEvent("showme:pressMe",v,source,"<img src='images/"..Dice..".png'>",10,true)
 			end)
@@ -1006,7 +1006,7 @@ Use = {
 					if vTASKBAR.taskMechanic(source) then
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
 							local Players = vRPC.Players(source)
-							for _,v in ipairs(Players) do
+							for _,v in pairs(Players) do
 								async(function()
 									TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
 								end)
@@ -2303,7 +2303,7 @@ Use = {
 				if vTASKBAR.taskMechanic(source) then
 					if vRP.TakeItem(Passport,Full,1,true,Slot) then
 						local Players = vRPC.Players(source)
-						for _,v in ipairs(Players) do
+						for _,v in pairs(Players) do
 							async(function()
 								TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
 							end)
@@ -4512,7 +4512,7 @@ Use = {
 						if vTASKBAR.taskTyre(source) then
 							if vRP.TakeItem(Passport,Full,1,true,Slot) then
 								local Players = vRPC.Players(source)
-								for _,v in ipairs(Players) do
+								for _,v in pairs(Players) do
 									async(function()
 										TriggerClientEvent("inventory:repairTyre",v,Network,Tyre,Plate)
 									end)

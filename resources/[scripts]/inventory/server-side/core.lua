@@ -2196,7 +2196,7 @@ AddEventHandler("player:RollVehicle",function(Entity)
 				Player(source)["state"]["Buttons"] = false
 
 				local Players = vRPC.Players(source)
-				for _,v in ipairs(Players) do
+				for _,v in pairs(Players) do
 					async(function()
 						TriggerClientEvent("target:RollVehicle",v,Entity[4])
 					end)

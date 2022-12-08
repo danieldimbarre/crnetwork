@@ -61,6 +61,14 @@ RegisterCommand("helicrash",function(source,Message)
 			local Hours = parseInt(Message[1])
 			local Minutes = parseInt(Message[2])
 
+			if Hours <= 9 then
+				Hours = "0"..Hours
+			end
+
+			if Minutes <= 9 then
+				Minutes = "0"..Minutes
+			end
+
 			if not Timers[Hours..":"..Minutes] then
 				Timers[Hours..":"..Minutes] = true
 				TriggerClientEvent("Notify",source,"verde","Helicrash definido para às "..Hours..":"..Minutes..".",5000)

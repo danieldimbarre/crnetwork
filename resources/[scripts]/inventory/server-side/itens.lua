@@ -1067,7 +1067,7 @@ Use = {
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
 												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ key = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
 										end
 
@@ -1129,7 +1129,7 @@ Use = {
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
 												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ key = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
 										end
 
@@ -1191,7 +1191,7 @@ Use = {
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
 												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ key = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
 										end
 
@@ -1253,7 +1253,7 @@ Use = {
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
 												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ key = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
 										end
 
@@ -1315,7 +1315,7 @@ Use = {
 											if vRP.TakeItem(Passport,Full,1,false,Slot) then
 												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
 												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ key = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
 											end
 										end
 

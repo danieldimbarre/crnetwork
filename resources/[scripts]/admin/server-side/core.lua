@@ -520,33 +520,45 @@ end)
 -- PLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("players",function(source)
-	local Passport = vRP.Passport(source)
-	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
-			TriggerClientEvent("Notify",source,"azul","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices()..".",5000)
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if not vRP.HasGroup(Passport,"Admin",2) then
+			return
 		end
+	end
+
+	if source ~= 0 then
+		TriggerClientEvent("Notify",source,"azul","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices()..".",5000)
+	else
+		print("^2Jogadores Conectados:^7 "..GetNumPlayerIndices())
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- IDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("ids",function(source)
-	local Passport = vRP.Passport(source)
-	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
-			local Text = ""
-			local List = vRP.Players()
-
-			for OtherPlayer,_ in pairs(List) do
-				if Text == "" then
-					Text = Text..OtherPlayer
-				else
-					Text = Text..", "..OtherPlayer
-				end
-			end
-
-			TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",10000)
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if not vRP.HasGroup(Passport,"Admin",2) then
+			return
 		end
+	end
+
+	local Text = ""
+	local List = vRP.Players()
+
+	for OtherPlayer,_ in pairs(List) do
+		if Text == "" then
+			Text = Text..OtherPlayer
+		else
+			Text = Text..", "..OtherPlayer
+		end
+	end
+
+	if source ~= 0 then
+		TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",10000)
+	else
+		print("^2IDs Conectados:^7 "..Text)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

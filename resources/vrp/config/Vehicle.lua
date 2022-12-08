@@ -5516,406 +5516,406 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["bmwi8"] = {
 		["Name"] = "BMW I8",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["bmwm4gts"] = {
 		["Name"] = "BMW M4",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["civictyper"] = {
 		["Name"] = "Civic Type R",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["dodgechargersrt"] = {
 		["Name"] = "Dodge Charger SRT",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["fordmustang"] = {
 		["Name"] = "Ford Mustang",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["lamborghinihuracan"] = {
 		["Name"] = "Lamborghini Huracan",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["ferrari812"] = {
 		["Name"] = "Ferrari 812",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["ferrarif12"] = {
 		["Name"] = "Ferrari F12",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["ferrariitalia"] = {
 		["Name"] = "Ferrari Italia",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["dodgecharger1970"] = {
 		["Name"] = "Dodge Charger 1970",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["lancerevolutionx"] = {
 		["Name"] = "Lancer Evolution X",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["lancerevolution9"] = {
 		["Name"] = "Lancer Evolution 9",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["m3e46"] = {
 		["Name"] = "BMW M3",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["mazdarx7"] = {
 		["Name"] = "Mazda RX7",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["mazdarx72"] = {
 		["Name"] = "Mazda RX7-2",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["dodgeramtrx"] = {
 		["Name"] = "Dodge RAM",
 		["Weight"] = 80,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["mclarenp1"] = {
 		["Name"] = "McLaren P1",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["mclarensenna"] = {
 		["Name"] = "McLaren Senna",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["mercedesgt63"] = {
 		["Name"] = "Mercedes GT 63",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["mustangfast"] = {
 		["Name"] = "Mustang Fast",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["nissangtr"] = {
 		["Name"] = "Nissan GTR",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["nissangtr2"] = {
 		["Name"] = "Nissan GTR-2",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["nissangtr3"] = {
 		["Name"] = "Nissan GTR-3",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["nissangtrnismo"] = {
 		["Name"] = "Nissan Nismo",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["skyliner34"] = {
 		["Name"] = "Skyline R34",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["subaruimpreza"] = {
 		["Name"] = "Subaru Impreza",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["subarubrz"] = {
 		["Name"] = "Subaru BRZ",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["toyotasupra"] = {
 		["Name"] = "Toyota Supra",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["toyotasupra2"] = {
 		["Name"] = "Toyota Supra GR",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["golfgti"] = {
 		["Name"] = "Golf GTI",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["bmwm5e34"] = {
 		["Name"] = "BMW M5",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["golfmk7"] = {
 		["Name"] = "Golf MK7",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["jeepcherokee"] = {
 		["Name"] = "Jeep Cherokee",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["porsche911"] = {
 		["Name"] = "Porsche 911",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["350z"] = {
 		["Name"] = "350z",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["shelbygt500"] = {
 		["Name"] = "Shelby GT500",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["bmwm1wb"] = {
 		["Name"] = "BMW M1",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["urus"] = {
 		["Name"] = "Urus",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["lamborghinihuracanlw"] = {
 		["Name"] = "Lamborghini Huracan LW",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["panameramansory"] = {
 		["Name"] = "Panamera",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["amarok"] = {
 		["Name"] = "Amarok",
 		["Weight"] = 80,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["ferrarif40"] = {
 		["Name"] = "Ferrari F40",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["astonmartindbs"] = {
 		["Name"] = "Aston Martin",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["nissangtr50"] = {
 		["Name"] = "Nissan GTR50",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["dodgechargerrt69"] = {
 		["Name"] = "Dodge Charger 69",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["bmwg20"] = {
 		["Name"] = "BMW G20",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["r1"] = {
 		["Name"] = "R1",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 200
+		["Gems"] = 100
 	},
 	["r6"] = {
 		["Name"] = "R6",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 200
+		["Gems"] = 100
 	},
 	["s1000rr"] = {
 		["Name"] = "S1000RR",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 200
+		["Gems"] = 100
 	},
 	["m1000rr"] = {
 		["Name"] = "M1000RR",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 200
+		["Gems"] = 100
 	},
 	["r1200"] = {
 		["Name"] = "R1200",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 200
+		["Gems"] = 100
 	},
 	["r1200gs"] = {
 		["Name"] = "R1200GS",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 200
+		["Gems"] = 100
 	},
 	["silvias15"] = {
 		["Name"] = "Nissan Silvia S15",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["rangerover"] = {
 		["Name"] = "Range Rover",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["vwtouareg"] = {
 		["Name"] = "VW Touareg",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["teslamodels"] = {
 		["Name"] = "Tesla Model S",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	},
 	["corvettec7"] = {
 		["Name"] = "Chevrolet Corvette C7",
 		["Weight"] = 30,
 		["Price"] = 200000,
 		["Mode"] = "rental",
-		["Gems"] = 150
+		["Gems"] = 100
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

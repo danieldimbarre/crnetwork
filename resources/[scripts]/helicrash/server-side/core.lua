@@ -64,6 +64,9 @@ RegisterCommand("helicrash",function(source,Message)
 			if not Timers[Hours..":"..Minutes] then
 				Timers[Hours..":"..Minutes] = true
 				TriggerClientEvent("Notify",source,"verde","Helicrash definido para às "..Hours..":"..Minutes..".",5000)
+			else
+				Timers[Hours..":"..Minutes] = nil
+				TriggerClientEvent("Notify",source,"verde","Helicrash das "..Hours..":"..Minutes.." removido.",5000)
 			end
 		end
 	end

@@ -208,8 +208,6 @@ vRP.GetEntityCoords(source)
 
 vRP.InsideVehicle(source)
 
-vRP.RemoveWeapons(source)
-
 tvRP.CreatePed(Model,x,y,z,heading,typ)
 
 tvRP.CreateObject(Model,x,y,z,Weapon)

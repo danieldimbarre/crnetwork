@@ -51,3 +51,20 @@ exports("Box",function()
 		end
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HELICRASH
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("helicrash",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[2] then
+			local Hours = parseInt(Message[1])
+			local Minutes = parseInt(Message[2])
+
+			if not Timers[Hours..":"..Minutes] then
+				Timers[Hours..":"..Minutes] = true
+				TriggerClientEvent("Notify",source,"verde","Helicrash definido para às "..Hours..":"..Minutes..".",5000)
+			end
+		end
+	end
+end)

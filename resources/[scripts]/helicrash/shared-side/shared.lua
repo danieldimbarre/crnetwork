@@ -54,16 +54,76 @@ Timers = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Loots = {
 	{
-		["1"] = { item = "syringe", amount = 1 },
-		["2"] = { item = "syringe", amount = 2 },
-		["3"] = { item = "syringe", amount = 3 },
-		["4"] = { item = "syringe", amount = 4 },
-		["5"] = { item = "syringe", amount = 5 }
-	},{
-		["1"] = { item = "syringe", amount = 1 },
-		["2"] = { item = "syringe", amount = 2 },
-		["3"] = { item = "syringe", amount = 3 },
-		["4"] = { item = "syringe", amount = 4 },
-		["5"] = { item = "syringe", amount = 5 }
-	}
+        ["1"] = { item = "WEAPON_PISTOL", amount = 1 },
+        ["2"] = { item = "energetic", amount = 1 },
+        ["3"] = { item = "backpack", amount = 2 },
+        ["4"] = { item = "hamburger2", amount = 5 },
+        ["5"] = { item = "gauze", amount = 5 }
+    },{
+        ["1"] = { item = "WEAPON_PISTOL", amount = 1 },
+        ["2"] = { item = "backpack", amount = 2 },
+        ["3"] = { item = "bananajuice", amount = 5 },
+        ["4"] = { item = "hamburger2", amount = 5 },
+        ["5"] = { item = "bandage", amount = 5 }
+    },{
+        ["1"] = { item = "backpack", amount = 1 },
+        ["2"] = { item = "dollars", amount = 2000 },
+        ["3"] = { item = "medkit", amount = 3 },
+        ["4"] = { item = "vest", amount = 1 },
+        ["5"] = { item = "WEAPON_KATANA", amount = 1 }
+    },{
+        ["1"] = { item = "explosives", amount = 5 },
+        ["2"] = { item = "tarp", amount = 10 },
+        ["3"] = { item = "techtrash", amount = 10 },
+        ["4"] = { item = "WEAPON_KARAMBIT", amount = 1 },
+        ["5"] = { item = "blocksignal", amount = 2 }
+    },{
+        ["1"] = { item = "advtoolbox", amount = 2 },
+        ["2"] = { item = "tyres", amount = 5 },
+        ["3"] = { item = "repairkit01", amount = 3 },
+        ["4"] = { item = "dollars", amount = 1000 },
+        ["5"] = { item = "WEAPON_WRENCH", amount = 5 }
+    },{
+        ["1"] = { item = "advtoolbox", amount = 1 },
+        ["2"] = { item = "tyres", amount = 5 },
+        ["3"] = { item = "notebook", amount = 1 },
+        ["4"] = { item = "nitro", amount = 2 },
+        ["5"] = { item = "WEAPON_CROWBAR", amount = 1 }
+    },{
+        ["1"] = { item = "dismantle", amount = 2 },
+        ["2"] = { item = "transmissiona", amount = 1 },
+        ["3"] = { item = "firecracker", amount = 3 },
+        ["4"] = { item = "oxy", amount = 8 },
+        ["5"] = { item = "dildo", amount = 1 }
+    },{
+        ["1"] = { item = "spray04", amount = 1 },
+        ["2"] = { item = "soap", amount = 1 },
+        ["3"] = { item = "brush", amount = 1 },
+        ["4"] = { item = "spray03", amount = 1 },
+        ["5"] = { item = "spray01", amount = 1 }
+    },{
+        ["1"] = { item = "blender", amount = 1 },
+        ["2"] = { item = "pan", amount = 1 },
+        ["3"] = { item = "dish", amount = 1 },
+        ["4"] = { item = "cup", amount = 1 },
+        ["5"] = { item = "switch", amount = 1 }
+    },{
+        ["1"] = { item = "domino", amount = 1 },
+        ["2"] = { item = "floppy", amount = 1 },
+        ["3"] = { item = "playstation", amount = 1 },
+        ["4"] = { item = "legos", amount = 1 },
+        ["5"] = { item = "ominitrix", amount = 1 }
+    },{
+        ["1"] = { item = "watch", amount = 1 },
+        ["2"] = { item = "goldcoin", amount = 1 },
+        ["3"] = { item = "goldring", amount = 1 },
+        ["4"] = { item = "bracelet", amount = 1 },
+        ["5"] = { item = "rimel", amount = 1 }
+    },{
+        ["1"] = { item = "watch", amount = 1 },
+        ["2"] = { item = "goldcoin", amount = 1 },
+        ["3"] = { item = "goldring", amount = 1 },
+        ["4"] = { item = "bracelet", amount = 1 },
+        ["5"] = { item = "rimel", amount = 1 }
+    }
 }

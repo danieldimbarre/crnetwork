@@ -399,7 +399,7 @@ RegisterCommand("ungroup",function(source,Message)
 			local Groups = vRP.Groups()
 			if Groups[Message[2]] then
 				vRP.RemovePermission(Message[1],Message[2])
-				TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
+				TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[2].."</b> do passaporte <b>"..Message[1].."</b>.",5000)
 
 				local OtherSource = vRP.Source(Message[1])
 				if OtherSource then
@@ -816,6 +816,42 @@ RegisterCommand("services",function(source)
 			end
 
 			TriggerClientEvent("Notify",source,"azul",Text,15000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VEH
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("veh",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(Message[2])
+		if vRP.HasGroup(Passport,"Admin",2) and OtherPassport > 0 and Message[3] then
+			if VehicleExist(Message[3]) then
+				if Message[1] == "add" then
+					local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport, vehicle = Message[3] })
+					if Vehicle[1] then
+						TriggerClientEvent("Notify",source,"amarelo","Passaporte já possui um <b>"..Message[3].."</b>.",5000)
+					else
+						vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "true" })
+
+						TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[3].."</b> ao passaporte <b>"..OtherPassport.."</b>.",5000)
+					end
+				elseif Message[1] == "rem" then
+					local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport, vehicle = Message[3] })
+					if Vehicle[1] then
+						vRP.Query("vehicles/removeVehicles",{ Passport = OtherPassport, vehicle = Message[3] })
+						vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..OtherPassport..":"..Message[3] })
+						vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..OtherPassport..":"..Message[3] })
+
+						TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[3].."</b> do passaporte <b>"..OtherPassport.."</b>.",5000)
+					else
+						TriggerClientEvent("Notify",source,"amarelo","Passaporte não possuí um <b>"..Message[3].."</b>.",5000)
+					end
+				end
+			else
+				TriggerClientEvent("Notify",source,"amarelo","Esse modelo de veículo não existe.",5000)
+			end
 		end
 	end
 end)

@@ -6,4 +6,4 @@ files {
     "stream/*/**"
 }
 
-data_file "DLC_ITYP_REQUEST" "stream/Badges/v_badges.ytyp"
+data_file "DLC_ITYP_REQUEST" "stream/cokeclone/bag_coca_plant.ytyp"

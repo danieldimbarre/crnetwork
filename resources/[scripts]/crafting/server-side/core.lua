@@ -351,14 +351,14 @@ local List = {
 					["polvora"] = 3
 				}
 			},
-			-- ["WEAPON_SMG_AMMO"] = {
-			-- 	["amount"] = 3,
-			-- 	["destroy"] = false,
-			-- 	["require"] = {
-			-- 		["copper"] = 5,
-			-- 		["polvora"] = 3
-			-- 	}
-			-- },
+			 ["WEAPON_SMG_AMMO"] = {
+			 	["amount"] = 3,
+			 	["destroy"] = false,
+			 	["require"] = {
+			 		["copper"] = 2 ,
+			 		["polvora"] = 3
+			 	}
+			},
 			-- ["WEAPON_RIFLE_AMMO"] = {
 			-- 	["amount"] = 3,
 			-- 	["destroy"] = false,
@@ -392,22 +392,22 @@ local List = {
 					["aluminum"] = 75,
 					["copper"] = 75,
 					["plastic"] = 35,
-					["glass"] = 35,
+					["glass"] = 3
 					["rubber"] = 35
 				}
 			},
-			-- ["WEAPON_MICROSMG"] = {
-			-- 	["amount"] = 1,
-			-- 	["destroy"] = false,
-			-- 	["require"] = {
-			-- 		["smgbody"] = 1,
-			-- 		["aluminum"] = 125,
-			-- 		["copper"] = 125,
-			-- 		["plastic"] = 75,
-			-- 		["glass"] = 75,
-			-- 		["rubber"] = 75
-			-- 	}
-			-- },
+			 ["WEAPON_MICROSMG"] = {
+				["amount"] = 1,
+			 	["destroy"] = false,
+			 	["require"] = {
+			 		["smgbody"] = 1,
+			 		["aluminum"] = 125,
+			 		["copper"] = 125,
+			 		["plastic"] = 75,
+			 		["glass"] = 75,
+			 		["rubber"] = 75
+			 	}
+			},
 			-- ["WEAPON_REVOLVER"] = {
 			-- 	["amount"] = 1,
 			-- 	["destroy"] = false,

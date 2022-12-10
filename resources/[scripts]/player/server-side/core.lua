@@ -962,8 +962,12 @@ AddEventHandler("player:Spending",function(_,Mode)
 					TriggerClientEvent("Notify",source,"negado","Se torne Premium agora mesmo e tenha disponível limite acima de <b>R$"..parseFormat(Limit).."</b> no cartão de débito.",5000)
 				end
 			elseif Split[1] == "downgrade" then
-				vRP.DowngradeSpending(Passport,Identity["spending"])
-				TriggerClientEvent("Notify",source,"verde","Pagou sua fatura do cartão de débito.",5000)
+				if Identity["spending"] > 0 then
+					vRP.DowngradeSpending(Passport,Identity["spending"])
+					TriggerClientEvent("Notify",source,"verde","Pagou sua fatura do cartão de débito.",5000)
+				else
+					TriggerClientEvent("Notify",source,"negado","Não existe fatura em aberto no cartão de débito.",5000)
+				end
 			end
 		end
 	end

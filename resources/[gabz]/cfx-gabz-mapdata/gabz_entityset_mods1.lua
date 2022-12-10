@@ -206,20 +206,20 @@ local interiors = {
             { name = 'gabz_studio_six', enable = true },
         }
     },
-    {
-        ipl = 'gabz_ammu_big_milo_01',
-        coords = { x = 10.90700000, y = -1105.65800000, z = 28.79693000 },
-        entitySets = {
-            { name = 'shooting_range_targets', enable = true },
-        }
-    },
-    {
-        ipl = 'gabz_ammu_big_milo_02',
-        coords = { x = 821.14400000, y = -2154.89200000, z = 28.61892000 },
-        entitySets = {
-            { name = 'shooting_range_targets', enable = true },
-        }
-    },
+    -- {
+    --     ipl = 'gabz_ammu_big_milo_01',
+    --     coords = { x = 10.90700000, y = -1105.65800000, z = 28.79693000 },
+    --     entitySets = {
+    --         { name = 'shooting_range_targets', enable = true },
+    --     }
+    -- },
+    -- {
+    --     ipl = 'gabz_ammu_big_milo_02',
+    --     coords = { x = 821.14400000, y = -2154.89200000, z = 28.61892000 },
+    --     entitySets = {
+    --         { name = 'shooting_range_targets', enable = true },
+    --     }
+    -- },
     {
         ipl = 'gabz_sm_pb_milo',
         coords = { x = 260.01200000, y = 220.73300000, z = 108.64600000 },

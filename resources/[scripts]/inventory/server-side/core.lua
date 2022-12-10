@@ -2385,14 +2385,14 @@ end)
 AddEventHandler("Disconnect",function(Passport)
 	if Ammos[Passport] and Attachs[Passport] then
 		if Temporary[Passport] then
-			Ammos[Passport] = Temporary[Passport]["Ammos"]
-			Attachs[Passport] = Temporary[Passport]["Attachs"]
-			Temporary[Passport] = nil
+			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Attachs", dvalue = json.encode(Temporary[Passport]["Attachs"]) })
+			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Ammos", dvalue = json.encode(Temporary[Passport]["Ammos"]) })
+		else
+			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Attachs", dvalue = json.encode(Attachs[Passport]) })
+			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Ammos", dvalue = json.encode(Ammos[Passport]) })
 		end
 
-		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Attachs", dvalue = json.encode(Attachs[Passport]) })
-		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Ammos", dvalue = json.encode(Ammos[Passport]) })
-
+		Temporary[Passport] = nil
 		Attachs[Passport] = nil
 		Ammos[Passport] = nil
 	end

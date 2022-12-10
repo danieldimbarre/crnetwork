@@ -1222,14 +1222,9 @@ CreateThread(function()
 					service = "upgrade-2"
 				},{
 					event = "player:Spending",
-					label = "Diminuir 10 mil de gasto",
+					label = "Pagar fatura do cartão",
 					tunnel = "police",
 					service = "downgrade-1"
-				},{
-					event = "player:Spending",
-					label = "Diminuir 50 mil de gasto",
-					tunnel = "police",
-					service = "downgrade-2"
 				}
 			}
 		})

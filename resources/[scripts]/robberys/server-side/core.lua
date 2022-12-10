@@ -415,7 +415,7 @@ local Robberys = {
 		}
 	},
 	["23"] = {
-		["Coords"] = vec3(1698.11,3756.61,34.89),
+		["Coords"] = vec3(1693.58,3761.61,34.89),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -433,7 +433,7 @@ local Robberys = {
 		}
 	},
 	["24"] = {
-		["Coords"] = vec3(246.67,-50.70,70.14),
+		["Coords"] = vec3(252.86,-51.62,70.14),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -451,7 +451,7 @@ local Robberys = {
 		}
 	},
 	["25"] = {
-		["Coords"] = vec3(841.66,-1028.05,28.39),
+		["Coords"] = vec3(841.06,-1034.76,28.39),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -469,7 +469,7 @@ local Robberys = {
 		}
 	},
 	["26"] = {
-		["Coords"] = vec3(-325.97,6080.37,31.65),
+		["Coords"] = vec3(-330.29,6085.55,31.65),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -487,7 +487,7 @@ local Robberys = {
 		}
 	},
 	["27"] = {
-		["Coords"] = vec3(-659.67,-940.23,22.02),
+		["Coords"] = vec3(-660.92,-934.1,22.02),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -505,7 +505,7 @@ local Robberys = {
 		}
 	},
 	["28"] = {
-		["Coords"] = vec3(-1311.33,-393.58,36.89),
+		["Coords"] = vec3(-1304.97,-395.81,36.89),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -523,7 +523,7 @@ local Robberys = {
 		}
 	},
 	["29"] = {
-		["Coords"] = vec3(-1112.59,2696.53,18.75),
+		["Coords"] = vec3(-1117.61,2700.27,18.75),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -541,7 +541,7 @@ local Robberys = {
 		}
 	},
 	["30"] = {
-		["Coords"] = vec3(2565.34,299.25,108.93),
+		["Coords"] = vec3(2566.6,293.14,108.93),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -559,7 +559,7 @@ local Robberys = {
 		}
 	},
 	["31"] = {
-		["Coords"] = vec3(-3166.59,1086.19,21.03),
+		["Coords"] = vec3(-3172.51,1089.42,21.03),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -577,7 +577,7 @@ local Robberys = {
 		}
 	},
 	["32"] = {
-		["Coords"] = vec3(18.52,-1108.84,29.96),
+		["Coords"] = vec3(23.69,-1106.46,29.96),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,
@@ -595,7 +595,7 @@ local Robberys = {
 		}
 	},
 	["33"] = {
-		["Coords"] = vec3(812.88,-2154.50,29.78),
+		["Coords"] = vec3(808.87,-2158.5,29.78),
 		["name"] = "Loja de Armas",
 		["type"] = "ammunation",
 		["cooldown"] = 5400,

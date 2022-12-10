@@ -959,7 +959,7 @@ AddEventHandler("player:Spending",function(_,Mode)
 					vRP.UpgradeCardlimit(Passport,Amount)
 					TriggerClientEvent("Notify",source,"verde","Aumentou seu limite do cartão de débito.",5000)
 				else
-					TriggerClientEvent("Notify",source,"negado","Limite total gratuito de <b>R$"..parseFormat(Limit).."</b> no cartão de débito.",5000)
+					TriggerClientEvent("Notify",source,"negado","Se torne Premium agora mesmo e tenha disponível limite acima de <b>R$"..parseFormat(Limit).."</b> no cartão de débito.",5000)
 				end
 			elseif Split[1] == "downgrade" then
 				vRP.DowngradeSpending(Passport,Identity["spending"])

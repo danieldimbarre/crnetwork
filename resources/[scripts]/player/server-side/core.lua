@@ -939,6 +939,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:SPENDING
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Limit = 1000000
 RegisterServerEvent("player:Spending")
 AddEventHandler("player:Spending",function(_,Mode)
 	local source = source
@@ -954,21 +955,15 @@ AddEventHandler("player:Spending",function(_,Mode)
 					Amount = 50000
 				end
 				
-				vRP.UpgradeCardlimit(Passport,Amount)
-				TriggerClientEvent("Notify",source,"verde","Aumentou seu limite do cartão de débito.",5000)
-			elseif Split[1] == "downgrade" then
-				local Amount = 10000
-
-				if Split[2] == "2" then
-					Amount = 50000
-				end
-
-				if Identity["spending"] >= Amount then
-					vRP.DowngradeSpending(Passport,Amount)
-					TriggerClientEvent("Notify",source,"verde","Diminuiu seu gasto do cartão de débito.",5000)
+				if (Identity["cardlimit"] + Amount <= 1000000) or vRP.LicensePremium(Identity["license"]) then
+					vRP.UpgradeCardlimit(Passport,Amount)
+					TriggerClientEvent("Notify",source,"verde","Aumentou seu limite do cartão de débito.",5000)
 				else
-					TriggerClientEvent("Notify",source,"amarelo","Gasto insuficiente no cartão.",5000)
+					TriggerClientEvent("Notify",source,"negado","Limite total gratuito de <b>R$"..parseFormat(Limit).."</b> no cartão de débito.",5000)
 				end
+			elseif Split[1] == "downgrade" then
+				vRP.DowngradeSpending(Passport,Identity["spending"])
+				TriggerClientEvent("Notify",source,"verde","Pagou sua fatura do cartão de débito.",5000)
 			end
 		end
 	end

@@ -1048,31 +1048,37 @@ function Creative.UseItem(Slot,Amount)
 
 				if Check then
 					local wHash = itemAmmo(Hash)
-					if wHash ~= nil then
-						if not Ammos[Passport] then
-							Ammos[Passport] = {}
-						end
+					if wHash then
+						if Ammo > 0 then
+							if not Ammos[Passport] then
+								Ammos[Passport] = {}
+							end
 
-						Ammos[Passport][wHash] = parseInt(Ammo)
+							Ammos[Passport][wHash] = Ammo
+						else
+							if Ammos[Passport] and Ammos[Passport][wHash] then
+								Ammos[Passport][wHash] = nil
+							end
+						end
 					end
 
 					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
 					exports["inventory"]:CleanWeapons(Passport,false)
 				end
 			else
-				if not Ammos[Passport] then
-					Ammos[Passport] = {}
+				local wHash = itemAmmo(Item)
+				if wHash then
+					if not Ammos[Passport] then
+						Ammos[Passport] = {}
+					end
+
+					if not Ammos[Passport][wHash] then
+						Ammos[Passport][wHash] = 0
+					end
 				end
 
 				if not Attachs[Passport] then
 					Attachs[Passport] = {}
-				end
-
-				local wHash = itemAmmo(Item)
-				if wHash ~= nil then
-					if not Ammos[Passport][wHash] then
-						Ammos[Passport][wHash] = 0
-					end
 				end
 
 				if not Attachs[Passport][Item] then
@@ -1106,7 +1112,7 @@ function Creative.UseItem(Slot,Amount)
 						Ammos[Passport] = {}
 					end
 
-					Ammos[Passport][Item] = parseInt(Ammo) + Amount
+					Ammos[Passport][Item] = Ammo + Amount
 
 					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),Amount,itemName(Full) })
 					TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -1119,12 +1125,12 @@ function Creative.UseItem(Slot,Amount)
 
 				if Check then
 					local wHash = itemAmmo(Hash)
-					if wHash ~= nil then
+					if wHash then
 						if not Ammos[Passport] then
 							Ammos[Passport] = {}
 						end
 
-						Ammos[Passport][wHash] = parseInt(Ammo)
+						Ammos[Passport][wHash] = Ammo
 					end
 
 					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
@@ -2233,14 +2239,14 @@ end)
 AddEventHandler("Disconnect",function(Passport)
 	if Ammos[Passport] and Attachs[Passport] then
 		if Temporary[Passport] then
-			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Attachs", dvalue = json.encode(Temporary[Passport]["Attachs"]) })
-			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Ammos", dvalue = json.encode(Temporary[Passport]["Ammos"]) })
-		else
-			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Attachs", dvalue = json.encode(Attachs[Passport]) })
-			vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Ammos", dvalue = json.encode(Ammos[Passport]) })
+			Ammos[Passport] = Temporary[Passport]["Ammos"]
+			Attachs[Passport] = Temporary[Passport]["Attachs"]
+			Temporary[Passport] = nil
 		end
 
-		Temporary[Passport] = nil
+		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Attachs", dvalue = json.encode(Attachs[Passport]) })
+		vRP.Query("playerdata/SetData",{ Passport = Passport, dkey = "Ammos", dvalue = json.encode(Ammos[Passport]) })
+
 		Attachs[Passport] = nil
 		Ammos[Passport] = nil
 	end
@@ -2287,13 +2293,8 @@ end)
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
-	if not Ammos[Passport] then
-		Ammos[Passport] = vRP.UserData(Passport,"Ammos")
-	end
-
-	if not Attachs[Passport] then
-		Attachs[Passport] = vRP.UserData(Passport,"Attachs")
-	end
+	Ammos[Passport] = vRP.UserData(Passport,"Ammos")
+	Attachs[Passport] = vRP.UserData(Passport,"Attachs")
 
 	TriggerClientEvent("objects:Table",source,Objects)
 	TriggerClientEvent("drops:Table",source,Drops)

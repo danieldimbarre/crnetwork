@@ -1126,14 +1126,21 @@ function Creative.UseItem(Slot,Amount)
 				if Check then
 					local wHash = itemAmmo(Hash)
 					if wHash then
-						if not Ammos[Passport] then
-							Ammos[Passport] = {}
-						end
+						if Ammo > 0 then
+							if not Ammos[Passport] then
+								Ammos[Passport] = {}
+							end
 
-						Ammos[Passport][wHash] = Ammo
+							Ammos[Passport][wHash] = Ammo
+						else
+							if Ammos[Passport] and Ammos[Passport][wHash] then
+								Ammos[Passport][wHash] = nil
+							end
+						end
 					end
 
 					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
+					exports["inventory"]:CleanWeapons(Passport,false)
 				end
 			else
 				if vCLIENT.putWeaponHands(source,Item,1,nil,Full) then
@@ -1143,21 +1150,21 @@ function Creative.UseItem(Slot,Amount)
 		elseif Item == "attachsFlashlight" or Item == "attachsCrosshair" or Item == "attachsSilencer" or Item == "attachsMagazine" or Item == "attachsGrip" then
 			local Weapon = vCLIENT.returnWeapon(source)
 			if Weapon then
-				if not Attachs[Passport] then
-					Attachs[Passport] = {}
-				end
+				if vCLIENT.checkAttachs(source,Item,Weapon) then
+					if not Attachs[Passport] then
+						Attachs[Passport] = {}
+					end
 
-				if not Attachs[Passport][Weapon] then
-					Attachs[Passport][Weapon] = {}
-				end
+					if not Attachs[Passport][Weapon] then
+						Attachs[Passport][Weapon] = {}
+					end
 
-				if not Attachs[Passport][Weapon][Item] then
-					if vCLIENT.checkAttachs(source,Item,Weapon) then
+					if not Attachs[Passport][Weapon][Item] then
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
 							TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
 							TriggerClientEvent("inventory:Update",source,"Backpack")
-							vCLIENT.putAttachs(source,Item,Weapon)
 							Attachs[Passport][Weapon][Item] = true
+							vCLIENT.putAttachs(source,Item,Weapon)
 						end
 					else
 						TriggerClientEvent("Notify",source,"amarelo","O armamento não possui suporte ao componente.",5000)

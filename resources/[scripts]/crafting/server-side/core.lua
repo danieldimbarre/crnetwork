@@ -355,7 +355,7 @@ local List = {
 			 	["amount"] = 3,
 			 	["destroy"] = false,
 			 	["require"] = {
-			 		["copper"] = 2 ,
+			 		["copper"] = 2,
 			 		["polvora"] = 3
 			 	}
 			},
@@ -392,11 +392,11 @@ local List = {
 					["aluminum"] = 75,
 					["copper"] = 75,
 					["plastic"] = 35,
-					["glass"] = 3
+					["glass"] = 35,
 					["rubber"] = 35
 				}
 			},
-			 ["WEAPON_MICROSMG"] = {
+			["WEAPON_MICROSMG"] = {
 				["amount"] = 1,
 			 	["destroy"] = false,
 			 	["require"] = {

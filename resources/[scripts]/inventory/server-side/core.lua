@@ -1104,6 +1104,7 @@ function Creative.UseItem(Slot,Amount)
 					exports["inventory"]:CleanWeapons(Passport,false)
 				end
 			else
+				Ammo = 0
 				local wHash = itemAmmo(Item)
 				if wHash then
 					if not Ammos[Passport] then
@@ -1112,6 +1113,8 @@ function Creative.UseItem(Slot,Amount)
 
 					if not Ammos[Passport][wHash] then
 						Ammos[Passport][wHash] = 0
+					else
+						Ammo = Ammos[Passport][wHash]
 					end
 				end
 
@@ -1123,7 +1126,7 @@ function Creative.UseItem(Slot,Amount)
 					Attachs[Passport][Item] = {}
 				end
 
-				if vCLIENT.putWeaponHands(source,Item,Ammos[Passport][wHash],Attachs[Passport][Item]) then
+				if vCLIENT.putWeaponHands(source,Item,Ammo,Attachs[Passport][Item]) then
 					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
 				end
 			end

@@ -8,6 +8,7 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OBJECTS
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Active = {}
 local Objects = {
 	["1"] = { ["Coords"] = vec3(2119.2,5084.76,44.84), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.0, ["Show"] = 150.0, ["Model"] = "prop_veg_crop_orange", ["Event"] = "farmer:Fruitman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
 	["2"] = { ["Coords"] = vec3(2109.66,5068.44,42.82), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.0, ["Show"] = 150.0, ["Model"] = "prop_veg_crop_orange", ["Event"] = "farmer:Fruitman",["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
@@ -144,7 +145,9 @@ AddEventHandler("farmer:Fruitman",function(Number)
 		if GlobalState["Work"] >= Objects[Number]["Time"] then
 			local source = source
 			local Passport = vRP.Passport(source)
-			if Passport then
+			if Passport and not Active[Passport] then
+				Active[Passport] = true
+
 				local Ped = GetPlayerPed(source)
 				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") then
 					local Amount = math.random(3,5)
@@ -184,6 +187,8 @@ AddEventHandler("farmer:Fruitman",function(Number)
 				else
 					TriggerClientEvent("Notify",source,"amarelo","<b>Machado</b> não encontrado.",5000)
 				end
+
+				Active[Passport] = nil
 			end
 		end
 	end
@@ -197,7 +202,9 @@ AddEventHandler("farmer:Minerman",function(Number)
 		if GlobalState["Work"] >= Objects[Number]["Time"] then
 			local source = source
 			local Passport = vRP.Passport(source)
-			if Passport then
+			if Passport and not Active[Passport] then
+				Active[Passport] = true
+
 				if vRP.ConsultItem(Passport,"pickaxe",1) then
 					local Amount = math.random(2)
 					if (vRP.InventoryWeight(Passport) + itemWeight("geode") * Amount) <= vRP.GetWeight(Passport) then
@@ -227,6 +234,8 @@ AddEventHandler("farmer:Minerman",function(Number)
 				else
 					TriggerClientEvent("Notify",source,"amarelo","<b>Picareta</b> não encontrada.",5000)
 				end
+
+				Active[Passport] = nil
 			end
 		end
 	end
@@ -240,7 +249,9 @@ AddEventHandler("farmer:Lumberman",function(Number)
 		if GlobalState["Work"] >= Objects[Number]["Time"] then
 			local source = source
 			local Passport = vRP.Passport(source)
-			if Passport then
+			if Passport and not Active[Passport] then
+				Active[Passport] = true
+
 				local Ped = GetPlayerPed(source)
 				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") then
 					local Amount = math.random(3,5)
@@ -276,6 +287,8 @@ AddEventHandler("farmer:Lumberman",function(Number)
 				else
 					TriggerClientEvent("Notify",source,"amarelo","<b>Machado</b> não encontrado.",5000)
 				end
+
+				Active[Passport] = nil
 			end
 		end
 	end
@@ -289,7 +302,9 @@ AddEventHandler("farmer:Transporter",function(Number)
 		if GlobalState["Work"] >= Objects[Number]["Time"] then
 			local source = source
 			local Passport = vRP.Passport(source)
-			if Passport then
+			if Passport and not Active[Passport] then
+				Active[Passport] = true
+
 				if (vRP.InventoryWeight(Passport) + itemWeight("pouch")) <= vRP.GetWeight(Passport) then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					TriggerClientEvent("Progress",source,"Coletando",1000)
@@ -308,6 +323,8 @@ AddEventHandler("farmer:Transporter",function(Number)
 				else
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 				end
+
+				Active[Passport] = nil
 			end
 		end
 	end
@@ -317,4 +334,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
 	TriggerClientEvent("farmer:Table",source,Objects)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport,source)
+	if Active[Passport] then
+		Active[Passport] = nil
+	end
 end)

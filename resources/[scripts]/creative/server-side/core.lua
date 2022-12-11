@@ -35,36 +35,33 @@ local List = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTPERM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.requestPerm(Type)
+function Creative.RequestPerm(Permission)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if Type ~= nil then
-			if not vRP.HasGroup(Passport,Type) then
-				return false
-			end
+	if Passport and Permission then
+		if vRP.HasGroup(Passport,Permission) then
+			return true
 		end
-
-		return true
 	end
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUESTPERM
+-- SYNCBUCKET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("creative:SyncBucket")
 AddEventHandler("creative:SyncBucket",function(Index)
 	local source = source
-
-	if List[Index] then
-		if Players[source] then
-			Players[source] = nil
+	local Passport = vRP.Passport(source)
+	if Passport and List[Index] then
+		if Players[Passport] then
+			Players[Passport] = nil
 		end
 
 		if List[Index]["Route"] ~= 0 then
-			Players[source] = Index
+			Players[Passport] = Index
 		end
 
-		if Players[source] then
+		if Players[Passport] then
 			TriggerEvent("vRP:BucketServer",source,"Enter",List[Index]["Route"])
 		else
 			TriggerEvent("vRP:BucketServer",source,"Exit")
@@ -74,10 +71,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Disconnect",function(Passport,source)
-	if Players[source] then
-		vRP.InsidePropertys(Passport,List[Players[source]]["Other"])
-
-		Players[source] = nil
+AddEventHandler("Disconnect",function(Passport)
+	if Players[Passport] then
+		vRP.InsidePropertys(Passport,List[Players[Passport]]["Other"])
+		Players[Passport] = nil
 	end
 end)

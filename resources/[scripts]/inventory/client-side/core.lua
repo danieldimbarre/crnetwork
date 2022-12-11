@@ -652,7 +652,7 @@ function Creative.putWeaponHands(Name,Ammo,Components,Type)
 
 		if Components then
 			for nameItem,_ in pairs(Components) do
-				Creative.Attachs(nameItem,Name)
+				Creative.putAttachs(nameItem,Name)
 			end
 		end
 

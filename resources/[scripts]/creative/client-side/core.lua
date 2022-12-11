@@ -475,7 +475,7 @@ CreateThread(function()
 					if Distance <= 1 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and vSERVER.requestPerm(v[7]) then
+						if IsControlJustPressed(1,38) and vSERVER.RequestPerm(v[7]) then
 							SetEntityCoords(Ped,v[4],v[5],v[6],false,false,false,false)
 
 							if k == 13 or k == 14 then

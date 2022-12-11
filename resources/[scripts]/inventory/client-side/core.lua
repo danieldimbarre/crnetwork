@@ -631,13 +631,13 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PUTWEAPONHANDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.putWeaponHands(weaponName,weaponAmmo,attachs,weaponType)
+function Creative.putWeaponHands(Name,Ammo,Components,Type)
 	if not TakeWeapon then
-		if not weaponAmmo then
-			weaponAmmo = 0
+		if not Ammo then
+			Ammo = 0
 		end
 
-		if weaponAmmo > 0 then
+		if Ammo > 0 then
 			Actived = true
 		end
 
@@ -652,36 +652,37 @@ function Creative.putWeaponHands(weaponName,weaponAmmo,attachs,weaponType)
 
 			Wait(200)
 
-			TriggerEvent("inventory:RemoveWeapon",weaponName)
-			GiveWeaponToPed(Ped,weaponName,weaponAmmo,false,true)
+			Weapon = Name
+			TriggerEvent("inventory:RemoveWeapon",Name)
+			GiveWeaponToPed(Ped,Name,Ammo,false,true)
 
 			Wait(300)
 
 			ClearPedTasks(Ped)
 		else
-			TriggerEvent("inventory:RemoveWeapon",weaponName)
-			GiveWeaponToPed(Ped,weaponName,weaponAmmo,false,true)
+			Weapon = Name
+			TriggerEvent("inventory:RemoveWeapon",Name)
+			GiveWeaponToPed(Ped,Name,Ammo,false,true)
 		end
 
-		if attachs then
-			for nameItem,_ in pairs(attachs) do
-				Creative.putAttachs(nameItem,weaponName)
+		if Components then
+			for nameItem,_ in pairs(Components) do
+				Creative.putAttachs(nameItem,Name)
 			end
 		end
 
-		if weaponType then
-			Types = weaponType
+		if Type then
+			Types = Type
 		end
 
 		TakeWeapon = false
-		Weapon = weaponName
 		LocalPlayer["state"]["Cancel"] = false
 
-		if itemAmmo(weaponName) then
-			TriggerEvent("hud:Weapon",true,weaponName)
+		if itemAmmo(Name) then
+			TriggerEvent("hud:Weapon",true,Name)
 		end
 
-		if vSERVER.dropWeapons(weaponName) then
+		if vSERVER.dropWeapons(Name) then
 			TriggerEvent("inventory:CleanWeapons",true)
 		end
 

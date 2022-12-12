@@ -2,6 +2,34 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	["xmas"] = {
+		["Index"] = "packdollars",
+		["Name"] = "Presente de Natal - Comum",
+		["Type"] = "Comum",
+		["Weight"] = 0.25,
+		["Economy"] = 0
+	},
+	["xmas2"] = {
+		["Index"] = "packdollars",
+		["Name"] = "Presente de Natal - Raro",
+		["Type"] = "Comum",
+		["Weight"] = 0.55,
+		["Economy"] = 0
+	},
+	["xmas3"] = {
+		["Index"] = "packdollars",
+		["Name"] = "Presente de Natal - Épico",
+		["Type"] = "Comum",
+		["Weight"] = 0.75,
+		["Economy"] = 0
+	},
+	["xmas4"] = {
+		["Index"] = "packdollars",
+		["Name"] = "Presente de Natal - Lendário",
+		["Type"] = "Comum",
+		["Weight"] = 0.85,
+		["Economy"] = 0
+	},
 	["creditcard"] = {
 		["Index"] = "creditcard",
 		["Name"] = "Cartão de Crédito",

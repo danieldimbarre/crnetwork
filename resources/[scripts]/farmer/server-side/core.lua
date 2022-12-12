@@ -135,6 +135,8 @@ local Objects = {
 	["120"] = { ["Coords"] = vec3(230.12,234.93,97.12), ["Heading"] = 332.08, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 	["121"] = { ["Coords"] = vec3(229.86,234.9,97.12), ["Heading"] = 354.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 	["122"] = { ["Coords"] = vec3(230.15,234.78,97.12), ["Heading"] = 339.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 }
+
+	["200"] = { ["Coords"] = vec3(211.76,-934.97,24.28), ["Heading"] = 240.95, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 50.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FRUITMAN
@@ -318,6 +320,60 @@ AddEventHandler("farmer:Transporter",function(Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
 					vRP.GenerateItem(Passport,"pouch",1,true)
+					vRP.UpgradeStress(Passport,1)
+					vRPC.removeObjects(source)
+				else
+					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+				end
+
+				Active[Passport] = nil
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- XMAS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("farmer:Xmas")
+AddEventHandler("farmer:Xmas",function(Number)
+	if Objects[Number] then
+		if GlobalState["Work"] >= Objects[Number]["Time"] then
+			local source = source
+			local Passport = vRP.Passport(source)
+			if Passport and not Active[Passport] then
+				Active[Passport] = true
+
+				local itemSelect = { "",1 }
+				local randItem = math.random(100)
+				if parseInt(randItem) >= 51 and parseInt(randItem) <= 70 then
+					itemSelect = { "giftxmas",math.random(2) }
+				elseif parseInt(randItem) >= 31 and parseInt(randItem) <= 50 then
+					itemSelect = { "giftxmas2",math.random(2) }
+				elseif parseInt(randItem) >= 11 and parseInt(randItem) <= 30 then
+					itemSelect = { "giftxmas3",math.random(2) }
+				elseif parseInt(randItem) <= 10 then
+					itemSelect = { "giftxmas4",1 }
+				end
+
+				if ((vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport)) or (itemSelect[1] == "") then
+					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+					TriggerClientEvent("Progress",source,"Coletando",1000)
+					Objects[Number]["Time"] = GlobalState["Work"] + math.random(3600,10800)
+					Player(source)["state"]["Buttons"] = true
+					Player(source)["state"]["Cancel"] = true
+
+					Wait(1000)
+
+					TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["Time"])
+					Player(source)["state"]["Buttons"] = false
+					Player(source)["state"]["Cancel"] = false
+
+					if itemSelect[1] == "" then
+						TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
+					else
+						vRP.GenerateItem(Passport,Items[Select],Amount,true)
+					end
+
 					vRP.UpgradeStress(Passport,1)
 					vRPC.removeObjects(source)
 				else

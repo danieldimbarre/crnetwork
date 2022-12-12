@@ -56,11 +56,11 @@ end)
 RegisterCommand("clearchest",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) and Message[2] then
-			local Consult = vRP.Query("chests/GetChests",{ name = Message[2] })
+		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
+			local Consult = vRP.Query("chests/GetChests",{ name = Message[1] })
 			if Consult[1] then
 				TriggerClientEvent("Notify",source,"verde","Limpeza concluída.",5000)
-				vRP.SetSrvData("Chest:"..Message[2],"{}",true)
+				vRP.SetSrvData("Chest:"..Message[1],"[]",true)
 				
 				TriggerEvent("Discord","Admin","**clearchest**\n\n**Passaporte:** "..Passport.."\n**Chest:** "..Message[2],nil)
 			end

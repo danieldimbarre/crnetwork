@@ -134,9 +134,9 @@ local Objects = {
 	["119"] = { ["Coords"] = vec3(227.83,234.5,97.12), ["Heading"] = 56.37, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 	["120"] = { ["Coords"] = vec3(230.12,234.93,97.12), ["Heading"] = 332.08, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 	["121"] = { ["Coords"] = vec3(229.86,234.9,97.12), ["Heading"] = 354.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["122"] = { ["Coords"] = vec3(230.15,234.78,97.12), ["Heading"] = 339.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 }
+	["122"] = { ["Coords"] = vec3(230.15,234.78,97.12), ["Heading"] = 339.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 
-	["123"] = { ["Coords"] = vec3(211.76,-934.97,24.28), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+	["123"] = { ["Coords"] = vec3(211.76,-934.97,24.28), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FRUITMAN

@@ -101,10 +101,17 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-if GlobalState["Helicrash"] then
-	Active = GlobalState["Helicrash"]
-	HeliBlip(Active)
-end
+RegisterNetEvent("onClientResourceStart")
+AddEventHandler("onClientResourceStart",function(Resource)
+	if (GetCurrentResourceName() ~= Resource) then
+		return
+	end
+
+	if GlobalState["Helicrash"] then
+		Active = GlobalState["Helicrash"]
+		HeliBlip(Active)
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HELIBLIP
 -----------------------------------------------------------------------------------------------------------------------------------------

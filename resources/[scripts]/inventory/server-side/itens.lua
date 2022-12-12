@@ -13,6 +13,132 @@ Geodes = {
 	{ ["item"] = "copper", ["min"] = 1, ["max"] = 2 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- XMAS
+-----------------------------------------------------------------------------------------------------------------------------------------
+Xmas = {
+	["xmas"] = {
+		{ ["item"] = "cannedsoup", ["min"] = 1, ["max"] = 7 },
+		{ ["item"] = "canofbeans", ["min"] = 1, ["max"] = 7 },
+		{ ["item"] = "toolbox", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "chocolate", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "silverring", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "legos", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "pan", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "fan", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "teddy", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "repairkit01", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "uwucoffeepass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "pizzathispass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "burgershotpass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_SNOWBALL", ["min"] = 2, ["max"] = 7 },
+		{ ["item"] = "WEAPON_BRICK", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "cappuccino", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "cupcake", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "milkbottle", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "coffee", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "coffeemilk", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "card01", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "card02", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "radio", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "fishingrod", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "switchblade", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "cookies", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "cigarette", ["min"] = 1, ["max"] = 20 }
+	},
+	["xmas2"] = {
+		{ ["item"] = "advtoolbox", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "credential", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "absolut", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "chandon", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "dewars", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "hennessy", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "repairkit02", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "camera", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "keyboard", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "mouse", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "playstation", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "xbox", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "paramedicpass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "mechanicpass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "card04", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "medkit", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "shrimp", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "octopus", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "marshmallow", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "lighter", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "GADGET_PARACHUTE", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_SHOES", ["min"] = 2, ["max"] = 2 },
+		{ ["item"] = "ominitrix", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "dices", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "domino", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "deck", ["min"] = 1, ["max"] = 1 }
+	},
+	["xmas3"] = {
+		{ ["item"] = "repairkit03", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "firecracker", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "dildo", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "rimel", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "blender", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "lampshade", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "slipper", ["min"] = 2, ["max"] = 2 },
+		{ ["item"] = "pendrive", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "mushroomtea", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "luckywheelpass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "codfish", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "catfish", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "joint", ["min"] = 1, ["max"] = 4 },
+		{ ["item"] = "cocaine", ["min"] = 1, ["max"] = 4 },
+		{ ["item"] = "meth", ["min"] = 1, ["max"] = 4 },
+		{ ["item"] = "oxy", ["min"] = 3, ["max"] = 6 },
+		{ ["item"] = "vape", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_CROWBAR", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_WRENCH", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_MUSKET_AMMO", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "amethyst", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "amber", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "turquoise", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "pliers", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "goldring", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "watch", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "bracelet", ["min"] = 1, ["max"] = 2 }
+	},
+	["xmas4"] = {
+		{ ["item"] = "emerald", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "diamond", ["min"] = 2, ["max"] = 2 },
+		{ ["item"] = "ruby", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "rentalveh", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "repairkit04", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "engineb", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "transmissionb", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "brakeb", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "suspensionb", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "nitro", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "notebook", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "backpack", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "blocksignal", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "card05", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "goldenfish", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "pirarucu", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "drugtoy", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "energetic", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "plate", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "lockpick", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "tyres", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "cellphone", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "hood", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "dollars", ["min"] = 50, ["max"] = 1000 },
+		{ ["item"] = "rose", ["min"] = 1, ["max"] = 8 },
+		{ ["item"] = "WEAPON_KATANA", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_KARAMBIT", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "cup", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "pager", ["min"] = 1, ["max"] = 1 }
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- USE
 -----------------------------------------------------------------------------------------------------------------------------------------
 Use = {
@@ -4850,6 +4976,62 @@ Use = {
 					end
 				end
 			end
+		end
+	end,
+
+	["xmas"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Xmas[Full])
+		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
+
+		if (vRP.InventoryWeight(Passport) + (itemWeight(Xmas[Full][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+			end
+		else
+			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+		end
+	end,
+
+	["xmas2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Xmas[Full])
+		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
+
+		if (vRP.InventoryWeight(Passport) + (itemWeight(Xmas[Full][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+			end
+		else
+			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+		end
+	end,
+
+	["xmas3"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Xmas[Full])
+		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
+
+		if (vRP.InventoryWeight(Passport) + (itemWeight(Xmas[Full][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+			end
+		else
+			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+		end
+	end,
+
+	["xmas4"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Xmas[Full])
+		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
+
+		if (vRP.InventoryWeight(Passport) + (itemWeight(Xmas[Full][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+			end
+		else
+			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 		end
 	end
 }

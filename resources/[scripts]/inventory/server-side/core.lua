@@ -1373,7 +1373,7 @@ function Creative.verifyWeapon(Item,Ammo)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
 
-			exports["inventory"]:CleanWeapons(Passport,true)
+			exports["inventory"]:CleanWeapons(Passport,false)
 
 			return false
 		end
@@ -1419,7 +1419,7 @@ function Creative.preventWeapon(Item,Ammo)
 				Ammos[Passport][Hash] = Ammo
 			else
 				Ammos[Passport][Hash] = nil
-				exports["inventory"]:CleanWeapons(Passport,true)
+				exports["inventory"]:CleanWeapons(Passport,false)
 			end
 		end
 	end

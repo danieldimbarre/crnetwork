@@ -4977,7 +4977,7 @@ Use = {
 				end
 			end
 		end
-	end
+	end,
 
 	["xmas"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Selected = math.random(#Xmas[Full])
@@ -5033,5 +5033,5 @@ Use = {
 		else
 			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 		end
-	end,
+	end
 }

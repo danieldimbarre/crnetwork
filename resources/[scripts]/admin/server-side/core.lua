@@ -395,7 +395,11 @@ end)
 RegisterCommand("ungroup",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and Message[2] and Message[2] ~= "Admin" and Message[2] ~= "Premium" then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and Message[2] then
+			if (Message[2] == "Admin" or Message[2] == "Premium") and not vRP.HasGroup(Passport,"Admin",1) then
+				return
+			end
+
 			local Groups = vRP.Groups()
 			if Groups[Message[2]] then
 				vRP.RemovePermission(Message[1],Message[2])

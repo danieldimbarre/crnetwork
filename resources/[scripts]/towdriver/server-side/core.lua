@@ -72,15 +72,15 @@ function Creative.paymentMethod()
 				VehSelected = "brake"
 			end
 
-			if VehRandom <= 10 then
+			if VehRandom <= 20 then
 				vRP.GenerateItem(Passport,VehSelected.."e",1,true)
-			elseif VehRandom >= 10 and VehRandom <= 30 then
+			elseif VehRandom >= 20 and VehRandom <= 60 then
 				vRP.GenerateItem(Passport,VehSelected.."d",1,true)
-			elseif VehRandom >= 31 and VehRandom <= 60 then
+			elseif VehRandom >= 61 and VehRandom <= 120 then
 				vRP.GenerateItem(Passport,VehSelected.."c",1,true)
-			elseif VehRandom >= 61 and VehRandom <= 100 then
+			elseif VehRandom >= 121 and VehRandom <= 200 then
 				vRP.GenerateItem(Passport,VehSelected.."b",1,true)
-			elseif VehRandom >= 101 and VehRandom <= 150 then
+			elseif VehRandom >= 201 and VehRandom <= 300 then
 				vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 			end
 

@@ -1,6 +1,6 @@
 local volumes = {
-	["radio"] = 60 / 100,
-	["call"] = 60 / 100
+	["radio"] = 100 / 100,
+	["call"] = 100 / 100
 }
 
 mode = 2

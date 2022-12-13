@@ -2113,15 +2113,15 @@ function Creative.Dismantle(Entity)
 					VehSelected = "brake"
 				end
 
-				if VehRandom <= 10 then
+				if VehRandom <= 50 then
 					vRP.GenerateItem(Passport,VehSelected.."e",1,true)
-				elseif VehRandom >= 10 and VehRandom <= 30 then
+				elseif VehRandom >= 51 and VehRandom <= 150 then
 					vRP.GenerateItem(Passport,VehSelected.."d",1,true)
-				elseif VehRandom >= 31 and VehRandom <= 60 then
+				elseif VehRandom >= 151 and VehRandom <= 300 then
 					vRP.GenerateItem(Passport,VehSelected.."c",1,true)
-				elseif VehRandom >= 61 and VehRandom <= 100 then
+				elseif VehRandom >= 301 and VehRandom <= 500 then
 					vRP.GenerateItem(Passport,VehSelected.."b",1,true)
-				elseif VehRandom >= 101 and VehRandom <= 150 then
+				elseif VehRandom >= 501 and VehRandom <= 750 then
 					vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 				end
 

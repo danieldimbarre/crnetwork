@@ -7,8 +7,3 @@ client_scripts {
 	"@vrp/lib/Utils.lua",
 	"client-side/*"
 }
-
-server_scripts {
-	"@vrp/lib/Utils.lua",
-	"server-side/*"
-}

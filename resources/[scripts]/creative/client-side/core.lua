@@ -426,13 +426,7 @@ local Teleport = {
 	{ -75.0,-824.54,321.29,-71.05,-801.01,44.23 },
 
 	{ 236.23,229.27,97.11,234.24,229.94,97.11 },
-	{ 234.24,229.94,97.11,236.23,229.27,97.11 },
-
-	{ 848.79,3003.35,44.52,893.2,-3189.75,-97.04,"Aztecas" },
-	{ 893.2,-3189.75,-97.04,848.79,3003.35,44.52,"Aztecas" },
-
-	{ -391.17,4354.86,57.68,874.62,-3194.57,-96.67,"Marabunta" },
-	{ 874.62,-3194.57,-96.67,-391.17,4354.86,57.68,"Marabunta" }
+	{ 234.24,229.94,97.11,236.23,229.27,97.11 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -475,7 +469,7 @@ CreateThread(function()
 					if Distance <= 1 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and vSERVER.RequestPerm(v[7]) then
+						if IsControlJustPressed(1,38) then
 							SetEntityCoords(Ped,v[4],v[5],v[6],false,false,false,false)
 
 							if k == 13 or k == 14 then
@@ -494,10 +488,6 @@ CreateThread(function()
 								until not Finishing
 		
 								EndFindObject(Handle)
-							end
-
-							if v[7] then
-								TriggerServerEvent("creative:SyncBucket",k)
 							end
 						end
 					end

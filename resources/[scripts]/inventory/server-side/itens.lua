@@ -4997,13 +4997,9 @@ Use = {
 		local Selected = math.random(#Xmas[Full])
 		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
 
-		if (vRP.InventoryWeight(Passport) + (itemWeight(Xmas[Full][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-			end
-		else
-			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+			TriggerClientEvent("inventory:Update",source,"Backpack")
 		end
 	end,
 
@@ -5011,13 +5007,9 @@ Use = {
 		local Selected = math.random(#Xmas[Full])
 		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
 
-		if (vRP.InventoryWeight(Passport) + (itemWeight(Xmas[Full][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-			end
-		else
-			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+			TriggerClientEvent("inventory:Update",source,"Backpack")
 		end
 	end,
 
@@ -5025,13 +5017,9 @@ Use = {
 		local Selected = math.random(#Xmas[Full])
 		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
 
-		if (vRP.InventoryWeight(Passport) + (itemWeight(Xmas[Full][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-			end
-		else
-			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+			TriggerClientEvent("inventory:Update",source,"Backpack")
 		end
 	end,
 
@@ -5039,13 +5027,9 @@ Use = {
 		local Selected = math.random(#Xmas[Full])
 		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
 
-		if (vRP.InventoryWeight(Passport) + (itemWeight(Xmas[Full][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
-			end
-		else
-			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+			TriggerClientEvent("inventory:Update",source,"Backpack")
 		end
 	end
 }

@@ -159,11 +159,11 @@ Citizen.CreateThread(function()
 					SetVehRadioStation(Vehicle,"OFF")
 					SetVehicleRadioEnabled(Vehicle,false)
 
-					if not LxSirenState[Vehicle] or (LxSirenState[Vehicle] < 0 or LxSirenState[Vehicle] > 3) then
+					if not LxSirenState[Vehicle] or (LxSirenState[Vehicle] < 0 or LxSirenState[Vehicle] > 10) then
 						LxSirenState[Vehicle] = 0
 					end
 
-					if not AirSirenState[Vehicle] or (AirSirenState[Vehicle] < 0 or AirSirenState[Vehicle] > 3) then
+					if not AirSirenState[Vehicle] or (AirSirenState[Vehicle] < 0 or AirSirenState[Vehicle] > 10) then
 						AirSirenState[Vehicle] = 0
 					end
 
@@ -196,7 +196,7 @@ Citizen.CreateThread(function()
 							if IsDisabledControlJustReleased(0,80) or IsDisabledControlJustReleased(0,81) then
 								if IsVehicleSirenOn(Vehicle) then
 									local NewState = 1
-									if LxSirenState[Vehicle] == 1 or LxSirenState[Vehicle] == 2 then
+									if LxSirenState[Vehicle] >= 1 or LxSirenState[Vehicle] <= 9 then
 										NewState = LxSirenState[Vehicle] + 1
 									end
 

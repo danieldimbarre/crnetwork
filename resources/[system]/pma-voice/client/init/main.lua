@@ -9,6 +9,7 @@ radioEnabled = false
 radioData = {}
 callData = {}
 submixIndicies = {}
+local mutedPlayers = {}
 
 function setVolume(volume,volumeType)
 	type_check({ volume, "number" })
@@ -49,7 +50,7 @@ end)
 
 local radioEffectId = CreateAudioSubmix("Radio")
 SetAudioSubmixEffectRadioFx(radioEffectId,0)
-SetAudioSubmixEffectParamInt(radioEffectId,0,GetHashKey('default'),1)
+SetAudioSubmixEffectParamInt(radioEffectId,0,GetHashKey("default"),1)
 SetAudioSubmixOutputVolumes(radioEffectId,0,1.0,0.25,0.0,0.0,1.0,1.0)
 AddAudioSubmixOutput(radioEffectId,0)
 submixIndicies["radio"] = radioEffectId
@@ -63,7 +64,7 @@ exports("registerCustomSubmix",function(callback)
 	local submixTable = callback()
 	type_check({ submixTable,"table" })
 	local submixName,submixId = submixTable[1],submixTable[2]
-	type_check({ submixName,"string" },{ submixId, "number" })
+	type_check({ submixName,"string" },{ submixId,"number" })
 	submixIndicies[submixName] = submixId
 end)
 TriggerEvent("pma-voice:registerCustomSubmixes")
@@ -87,6 +88,8 @@ end
 
 local disableSubmixReset = {}
 function toggleVoice(plySource,enabled,moduleType)
+	if mutedPlayers[plySource] then return end
+
 	local distance = currentTargets[plySource]
 	if enabled and (not distance or distance > 4.0) then
 		MumbleSetVolumeOverrideByServerId(plySource,enabled and volumes[moduleType])
@@ -134,10 +137,6 @@ function playerTargets(...)
 end
 
 function playMicClicks(clickType)
-	if micClicks ~= "true" then
-		return
-	end
-
 	sendUIMessage({
 		sound = (clickType and "audio_on" or "audio_off"),
 		volume = (clickType and 0.1 or 0.03)
@@ -177,6 +176,20 @@ function resyncVolume(volumeType,newVolume)
 		updateVolumes(callData,newVolume)
 	end
 end
+
+function toggleMutePlayer(Status)
+	local source = LocalPlayer["state"]["Player"]
+	if Status then
+		mutedPlayers[source] = true
+		MumbleSetVolumeOverrideByServerId(source,0.0)
+		TriggerServerEvent("pma-voice:toggleMute",true)
+	else
+		mutedPlayers[source] = nil
+		MumbleSetVolumeOverrideByServerId(source,-1.0)
+		TriggerServerEvent("pma-voice:toggleMute",false)
+	end
+end
+exports("Mute",toggleMutePlayer)
 
 exports("setVoiceProperty",setVoiceProperty)
 exports("SetMumbleProperty",setVoiceProperty)

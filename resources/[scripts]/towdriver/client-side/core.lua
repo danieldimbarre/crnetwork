@@ -23,7 +23,7 @@ local timeService = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITLOCATES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local initLocates = {
+local Impounds = {
 	{ 409.42,-1623.16,29.28 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -85,12 +85,12 @@ local vehRescue = {
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for k,v in pairs(initLocates) do
-		exports["target"]:AddCircleZone("TowDriver:"..k,vec3(v[1],v[2],v[3]),0.5,{
-			name = "TowDriver:"..k,
+	for Number,v in pairs(Impounds) do
+		exports["target"]:AddCircleZone("Impounds:"..Number,vec3(v[1],v[2],v[3]),0.5,{
+			name = "Impounds:"..Number,
 			heading = 3374176
 		},{
-			shop = k,
+			shop = Number,
 			Distance = 1.5,
 			options = {
 				{
@@ -157,11 +157,9 @@ RegisterNetEvent("towdriver:Tow")
 AddEventHandler("towdriver:Tow",function(entity)
 	if entity[2] == vehModels[spawnSelect] then
 		spawnVehicle = false
-		vSERVER.paymentMethod()
 		spawnSelect = math.random(#vehModels)
+		vSERVER.paymentMethod(entity[4],entity[1])
 		spawnCoords = math.random(#vehRescue[serviceLocate])
-
-		TriggerServerEvent("garages:deleteVehicle",entity[4],entity[1])
 
 		TriggerEvent("NotifyPush",{ code = "QTH", title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], name = "Aguardando reboque.", blipColor = 2 })
 	end

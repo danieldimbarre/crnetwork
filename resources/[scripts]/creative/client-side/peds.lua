@@ -1130,7 +1130,7 @@ local List = {
 		Model = "s_m_m_gaffer_01",
 		anim = { "mini@repair","fixing_a_player" }
 	},
-	-- { -- Altruists
+	-- { -- Tribo
 	-- 	Distance = 30,
 	-- 	Coords = { -1109.09,4939.69,223.13 }, 
 	-- 	Model = "csb_cletus",

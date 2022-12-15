@@ -1,0 +1,1 @@
+AmountCharactersPremium = 0

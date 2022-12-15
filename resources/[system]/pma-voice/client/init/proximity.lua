@@ -88,6 +88,12 @@ RegisterNetEvent("onPlayerDropped",function(serverId)
 	end
 end)
 
+local listenerOverride = false
+exports("setListenerOverride",function(enabled)
+	type_check({ enabled,"boolean" })
+	listenerOverride = enabled
+end)
+
 local lastRadioStatus = false
 local lastTalkingStatus = false
 local voiceState = "proximity"
@@ -108,10 +114,11 @@ CreateThread(function()
 
 		if voiceState == "proximity" then
 			addNearbyPlayers()
-			local isSpectating = NetworkIsInSpectatorMode()
-			if isSpectating and not isListenerEnabled then
+			local cam = GetRenderingCam() or -1
+			local isSpectating = NetworkIsInSpectatorMode() or cam ~= -1
+			if not isListenerEnabled and (isSpectating or listenerOverride) then
 				setSpectatorMode(true)
-			elseif not isSpectating and isListenerEnabled then
+			elseif isListenerEnabled and not isSpectating and not listenerOverride then
 				setSpectatorMode(false)
 			end
 		end

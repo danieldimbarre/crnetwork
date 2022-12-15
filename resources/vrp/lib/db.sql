@@ -70,7 +70,7 @@ INSERT INTO `chests` (`id`, `name`, `weight`, `perm`, `logs`) VALUES
 (12, 'Triads', 500, 'Triads', 1),
 (13, 'Razors', 500, 'Razors', 1),
 (14, 'Mechanic', 500, 'Mechanic', 1),
-(15, 'Altruists', 500, 'Altruists', 1),
+(15, 'Tribo', 500, 'Tribo', 1),
 (16, 'Lost', 500, 'Lost', 1),
 (17, 'Marabunta', 500, 'Marabunta', 1);
 

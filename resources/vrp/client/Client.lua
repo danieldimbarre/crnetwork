@@ -30,7 +30,7 @@ LocalPlayer["state"]["Aztecas"] = false
 LocalPlayer["state"]["Bloods"] = false
 LocalPlayer["state"]["Triads"] = false
 LocalPlayer["state"]["Razors"] = false
-LocalPlayer["state"]["Altruists"] = false
+LocalPlayer["state"]["Tribo"] = false
 LocalPlayer["state"]["Lost"] = false
 LocalPlayer["state"]["Marabunta"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -61,7 +61,7 @@ function setRadioChannel(channel)
 	radioEnabled = true
 	type_check({ channel,"number" })
 	TriggerServerEvent("pma-voice:setPlayerRadio",channel)
-	radioChannel = parseInt(channel)
+	radioChannel = channel
 
 	sendUIMessage({ radioChannel = channel, radioEnabled = radioEnabled })
 end
@@ -123,7 +123,7 @@ RegisterCommand("-radiotalk",function()
 		return
 	end
 
-	if radioChannel > 0 or radioEnabled and radioPressed then
+	if (radioChannel > 0 or radioEnabled) and radioPressed then
 		radioPressed = false
 		MumbleClearVoiceTargetPlayers(voiceTarget)
 		playerTargets(MumbleIsPlayerTalking(PlayerId()) and callData or {})
@@ -137,8 +137,8 @@ end,false)
 
 RegisterKeyMapping("+radiotalk","Dialogar no rádio.","keyboard","CAPITAL")
 
-function syncRadio(channel)
-	radioChannel = parseInt(channel)
+function syncRadio(_radioChannel)
+	radioChannel = _radioChannel
 end
 
 RegisterNetEvent("pma-voice:clSetPlayerRadio",syncRadio)

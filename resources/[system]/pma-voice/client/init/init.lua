@@ -18,14 +18,11 @@ CreateThread(function()
 
 	sendUIMessage({ uiEnabled = true, voiceModes = json.encode(Cfg.voiceModes), voiceMode = mode - 1 })
 
-	local radioChannel = LocalPlayer["state"]["radioChannel"]
-	local callChannel = LocalPlayer["state"]["callChannel"]
-
-	if radioChannel ~= 0 then
-		setRadioChannel(not radioChannel and 0 or radioChannel)
+	if LocalPlayer.state.radioChannel ~= 0 then
+		setRadioChannel(LocalPlayer.state.radioChannel)
 	end
 
-	if callChannel ~= 0 then
-		setCallChannel(not callChannel and 0 or callChannel)
+	if LocalPlayer.state.callChannel ~= 0 then
+		setCallChannel(LocalPlayer.state.callChannel)
 	end
 end)

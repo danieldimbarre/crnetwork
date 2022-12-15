@@ -138,9 +138,9 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work"
 	},
-	["Altruists"] = {
+	["Tribo"] = {
 		["Parent"] = {
-			["Altruists"] = true
+			["Tribo"] = true
 		},
 		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},

@@ -6,7 +6,7 @@ ui_page "ui/index.html"
 shared_script "shared.lua"
 
 client_scripts {
-	"@vrp/configs/Native.lua",
+	"@vrp/config/Native.lua",
 	"client/init/proximity.lua",
 	"client/init/init.lua",
 	"client/init/main.lua",

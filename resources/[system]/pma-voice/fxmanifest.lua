@@ -6,23 +6,22 @@ ui_page "ui/index.html"
 shared_script "shared.lua"
 
 client_scripts {
-	"@vrp/config/Native.lua",
-	"@vrp/lib/Utils.lua",
-
-	"client/*",
-	"client/**/*",
-	"client/**/**/*"
+	"@vrp/configs/Native.lua",
+	"client/init/proximity.lua",
+	"client/init/init.lua",
+	"client/init/main.lua",
+	"client/init/submix.lua",
+	"client/module/*.lua",
+	"client/*.lua"
 }
 
 server_scripts {
-	"@vrp/lib/Utils.lua",
-
-	"server/*",
-	"server/**/*",
-	"server/**/**/*"
+	"server/**/*.lua"
 }
 
 files {
-	"ui/*",
-	"ui/**/*"
+	"ui/*.ogg",
+	"ui/css/*.css",
+	"ui/js/*.js",
+	"ui/index.html"
 }

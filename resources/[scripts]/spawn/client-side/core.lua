@@ -36,12 +36,6 @@ local Locate = {
 -- SPAWN:OPENED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("spawn:Opened",function()
-	Wait(5000)
-
-	if IsScreenFadedOut() then
-		DoScreenFadeIn(0)
-	end
-
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,231.99,-1389.94,30.48,false,false,false,false)
 	LocalPlayer["state"]["Invincible"] = true
@@ -59,9 +53,6 @@ AddEventHandler("spawn:Opened",function()
 	SetCamActive(Camera,true)
 
 	local Characters = vSERVER.Characters()
-	SendNUIMessage({ Action = "Spawn", Table = Characters })
-	TriggerServerEvent("Queue:Connect")
-	SetNuiFocus(true,true)
 
 	if parseInt(#Characters) > 0 then
 		for Number,v in pairs(Characters) do
@@ -89,6 +80,16 @@ AddEventHandler("spawn:Opened",function()
 				end
 			end
 		end
+	end
+
+	Wait(5000)
+
+	SendNUIMessage({ Action = "Spawn", Table = Characters })
+	TriggerServerEvent("Queue:Connect")
+	SetNuiFocus(true,true)
+
+	if IsScreenFadedOut() then
+		DoScreenFadeIn(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

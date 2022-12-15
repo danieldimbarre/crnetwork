@@ -378,7 +378,7 @@ AddEventHandler("farmer:Xmas",function(Number)
 				if ((vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport)) or (itemSelect[1] == "") then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					TriggerClientEvent("Progress",source,"Coletando",1000)
-					Objects[Number]["Time"] = GlobalState["Work"] + 7200
+					Objects[Number]["Time"] = GlobalState["Work"] + math.random(600,800)
 					Player(source)["state"]["Buttons"] = true
 					Player(source)["state"]["Cancel"] = true
 

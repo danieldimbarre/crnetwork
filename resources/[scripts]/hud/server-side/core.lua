@@ -36,7 +36,7 @@ CreateThread(function()
 			
 		end
 
-		if (GlobalState["Hours"] >= 0 and GlobalState["Hours"] <= 6) or (GlobalState["Hours"] >= 18 and GlobalState["Hours"] <= 23) then
+		if (GlobalState["Hours"] >= 0 and GlobalState["Hours"] <= 5) or (GlobalState["Hours"] >= 18 and GlobalState["Hours"] <= 23) then
 			TimeDistance = 2454
 		end
 

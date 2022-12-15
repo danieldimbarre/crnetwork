@@ -22,6 +22,7 @@ GlobalState["Weather"] = "SNOWLIGHT"
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
+		local TimeDistance = 10000
 		GlobalState["Work"] = GlobalState["Work"] + 1
 		GlobalState["Minutes"] = GlobalState["Minutes"] + 1
 
@@ -32,9 +33,14 @@ CreateThread(function()
 			if GlobalState["Hours"] >= 24 then
 				GlobalState["Hours"] = 0
 			end
+			
 		end
 
-		Wait(10000)
+		if GlobalState["Hours"] >= 6 and GlobalState["Hours"] <= 18 then
+			TimeDistance = 5000
+		end
+
+		Wait(TimeDistance)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

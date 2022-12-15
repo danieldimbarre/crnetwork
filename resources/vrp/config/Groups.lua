@@ -47,7 +47,7 @@ Groups = {
 		["Parent"] = {
 			["Taxi"] = true
 		},
-		["Hierarchy"] = { "Chefe","Gerente","Membro" },
+		["Hierarchy"] = { "Chefe","Membro" },
 		["Service"] = {}
 	},
 	["BurgerShot"] = {

@@ -395,7 +395,6 @@ AddEventHandler("farmer:Xmas",function(Number)
 						TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Pegou:** "..itemSelect[2].."x "..itemName(itemSelect[1]),9317187)
 					end
 
-
 					vRP.UpgradeStress(Passport,1)
 					vRPC.removeObjects(source)
 				else

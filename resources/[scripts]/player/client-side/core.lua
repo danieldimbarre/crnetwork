@@ -1054,7 +1054,7 @@ AddEventHandler("player:Relationship",function(Group,Ungroup)
 	elseif Group == "Lost" then
 		Func(1,GetHashKey("AMBIENT_GANG_LOST"),GetHashKey("PLAYER"))
 		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
-	elseif Group == "Altruists" then
+	elseif Group == "Tribo" then
 		Func(1,GetHashKey("AMBIENT_GANG_CULT"),GetHashKey("PLAYER"))
 		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_CULT"))
 	end

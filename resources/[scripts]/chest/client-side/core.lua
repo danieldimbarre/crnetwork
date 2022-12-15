@@ -31,7 +31,7 @@ local Chests = {
 	{ ["Name"] = "Bloods", ["Coords"] = vec3(231.62,-1752.92,28.98), ["Mode"] = "2" },
 	{ ["Name"] = "Triads", ["Coords"] = vec3(-653.47,-1229.82,11.54), ["Mode"] = "2" },
 	{ ["Name"] = "Razors", ["Coords"] = vec3(502.55,-70.36,58.15), ["Mode"] = "2" },
-	{ ["Name"] = "Altruists", ["Coords"] = vec3(-1111.09,4946.13,218.36), ["Mode"] = "2" },
+	{ ["Name"] = "Tribo", ["Coords"] = vec3(-1111.09,4946.13,218.36), ["Mode"] = "2" },
 	{ ["Name"] = "Marabunta", ["Coords"] = vec3(1254.15,-1571.59,58.74), ["Mode"] = "2" },
 	{ ["Name"] = "Lost", ["Coords"] = vec3(103.18,3604.63,40.49), ["Mode"] = "2" },
 	{ ["Name"] = "trayShot", ["Coords"] = vec3(-1195.20,-893.13,14.41), ["Mode"] = "3" },

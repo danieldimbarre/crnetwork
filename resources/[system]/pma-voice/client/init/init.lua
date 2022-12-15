@@ -1,7 +1,11 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+AddEventHandler("onClientResourceStart",function(Resource)
+	if Resource ~= GetCurrentResourceName() then
+		return
+	end
+
 	local success = pcall(function()
 		local micClicksKvp = GetResourceKvpString("pma-voice_enableMicClicks")
 		if not micClicksKvp then
@@ -16,16 +20,16 @@ CreateThread(function()
 		micClicks = "true"
 	end
 
-	sendUIMessage({ uiEnabled = true, voiceModes = json.encode(Cfg.voiceModes), voiceMode = mode - 1 })
+	sendUIMessage({ uiEnabled = 1, voiceModes = json.encode(Cfg.voiceModes), voiceMode = mode - 1 })
 
-	local radioChannel = LocalPlayer["state"]["radioChannel"]
-	local callChannel = LocalPlayer["state"]["callChannel"]
+	local radioChannel = LocalPlayer["state"]["radioChannel"] or 0
+	local callChannel = LocalPlayer["state"]["callChannel"] or 0
 
 	if radioChannel ~= 0 then
-		setRadioChannel(not radioChannel and 0 or radioChannel)
+		setRadioChannel(radioChannel)
 	end
 
 	if callChannel ~= 0 then
-		setCallChannel(not callChannel and 0 or callChannel)
+		setCallChannel(callChannel)
 	end
 end)

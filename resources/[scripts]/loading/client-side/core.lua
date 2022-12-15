@@ -7,8 +7,8 @@ AddEventHandler("onClientResourceStart",function(Resource)
 		return
 	end
 
+	DoScreenFadeOut(0)
 	DisplayRadar(false)
 	ShutdownLoadingScreen()
-	ShutdownLoadingScreenNui()
 	TriggerEvent("spawn:Opened")
 end)

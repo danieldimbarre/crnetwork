@@ -45,7 +45,7 @@ CreateThread(function()
 						TriggerEvent("inventory:Cancel")
 						TriggerEvent("inventory:CleanWeapons")
 						TriggerServerEvent("paramedic:bloodDeath")
-						TriggerServerEvent("pma-voice:toggleMute",true)
+						exports["pma-voice"]:Mute(true)
 					else
 						DeathTimer = 5
 					end
@@ -138,7 +138,7 @@ function Creative.Respawn()
 	TriggerEvent("paramedic:Reset")
 	TriggerEvent("inventory:CleanWeapons")
 	LocalPlayer["state"]["Handcuff"] = false
-	TriggerServerEvent("pma-voice:toggleMute",false)
+	exports["pma-voice"]:Mute(false)
 
 	DoScreenFadeOut(0)
 	SetEntityCoords(PlayerPedId(),-1042.36,-2745.73,21.35)
@@ -171,7 +171,7 @@ exports("Revive",function(Health,Arena)
 
 		if LocalPlayer["state"]["Route"] < 900000 then
 			TriggerEvent("paramedic:Reset")
-			TriggerServerEvent("pma-voice:toggleMute",false)
+			exports["pma-voice"]:Mute(false)
 		end
 	end
 end)

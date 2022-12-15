@@ -57,7 +57,7 @@ end)
 local LastMode = 2
 
 RegisterCommand("cycleproximity",function()
-	if playerMuted then return end
+	if disableProximityCycle then return end
 
 	local newMode = mode + 1
 	if newMode <= 4 then

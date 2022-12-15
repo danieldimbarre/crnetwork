@@ -2390,6 +2390,21 @@ CreateThread(function()
 					event = "Bank",
 					label = "Abrir",
 					tunnel = "client"
+				},{
+					event = "player:Spending",
+					label = "Aumentar 10 mil de limite",
+					tunnel = "police",
+					service = "upgrade-1"
+				},{
+					event = "player:Spending",
+					label = "Aumentar 50 mil de limite",
+					tunnel = "police",
+					service = "upgrade-2"
+				},{
+					event = "player:Spending",
+					label = "Pagar fatura do cartão",
+					tunnel = "police",
+					service = "downgrade-1"
 				}
 			}
 		})

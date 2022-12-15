@@ -10,6 +10,8 @@ function syncRadioData(radioTable,localPlyRadioName)
 		end
 	end
 
+	sendUIMessage({ radioChannel = radioChannel, radioEnabled = radioEnabled })
+
 	radioNames[playerServerId] = localPlyRadioName
 end
 
@@ -40,6 +42,8 @@ function removePlayerFromRadio(plySource)
 			end
 		end
 
+		sendUIMessage({ radioChannel = 0, radioEnabled = radioEnabled })
+
 		radioNames = {}
 		radioData = {}
 		playerTargets(MumbleIsPlayerTalking(PlayerId()) and callData or {})
@@ -61,7 +65,7 @@ function setRadioChannel(channel)
 	radioEnabled = true
 	type_check({ channel,"number" })
 	TriggerServerEvent("pma-voice:setPlayerRadio",channel)
-	radioChannel = parseInt(channel)
+	radioChannel = channel
 
 	sendUIMessage({ radioChannel = channel, radioEnabled = radioEnabled })
 end
@@ -101,7 +105,7 @@ RegisterCommand("+radiotalk",function()
 			CreateThread(function()
 				TriggerEvent("pma-voice:radioActive",true)
 
-				while radioPressed do
+				while radioPressed and not LocalPlayer["state"]["disableRadio"] do
 					Wait(0)
 					SetControlNormal(0,249,1.0)
 					SetControlNormal(1,249,1.0)
@@ -123,7 +127,7 @@ RegisterCommand("-radiotalk",function()
 		return
 	end
 
-	if radioChannel > 0 or radioEnabled and radioPressed then
+	if (radioChannel > 0 or radioEnabled) and radioPressed then
 		radioPressed = false
 		MumbleClearVoiceTargetPlayers(voiceTarget)
 		playerTargets(MumbleIsPlayerTalking(PlayerId()) and callData or {})
@@ -137,8 +141,8 @@ end,false)
 
 RegisterKeyMapping("+radiotalk","Dialogar no rádio.","keyboard","CAPITAL")
 
-function syncRadio(channel)
-	radioChannel = parseInt(channel)
+function syncRadio(_channel)
+	radioChannel = _channel
 end
 
 RegisterNetEvent("pma-voice:clSetPlayerRadio",syncRadio)

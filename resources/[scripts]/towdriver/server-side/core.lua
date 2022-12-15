@@ -13,6 +13,7 @@ Tunnel.bindInterface("towdriver",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITENSLIST
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Active = {}
 local userList = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLESERVICE
@@ -33,21 +34,27 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("towdriver:Call",function(source,vehName,Plate)
 	local Ped = GetPlayerPed(source)
-	local Coords = GetEntityCoords(Ped)
+	if DoesEntityExist(Ped) then
+		local Coords = GetEntityCoords(Ped)
 
-	for k,v in pairs(userList) do
-		async(function()
-			TriggerClientEvent("NotifyPush",v,{ code = 51, title = "Registro de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 33 })
-		end)
+		for k,v in pairs(userList) do
+			async(function()
+				TriggerClientEvent("NotifyPush",v,{ code = 51, title = "Registro de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 33 })
+			end)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENTMETHOD
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.paymentMethod()
+function Creative.paymentMethod(Network,Plate)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Active[Passport] then
+		Active[Passport] = true
+
+		TriggerServerEvent("garages:deleteVehicle",Network,Plate)
+
 		if (vRP.InventoryWeight(Passport) + 3) <= vRP.GetWeight(Passport) then
 			local VehParts = math.random(4)
 			local VehSelected = "suspension"
@@ -94,6 +101,8 @@ function Creative.paymentMethod()
 		else
 			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 		end
+
+		Active[Passport] = nil
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -115,5 +124,9 @@ end)
 AddEventHandler("Disconnect",function(Passport)
 	if userList[Passport] then
 		userList[Passport] = nil
+	end
+
+	if Active[Passport] then
+		Active[Passport] = nil
 	end
 end)

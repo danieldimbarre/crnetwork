@@ -53,7 +53,7 @@ function Creative.paymentMethod(Network,Plate)
 	if Passport and not Active[Passport] then
 		Active[Passport] = true
 
-		TriggerServerEvent("garages:deleteVehicle",Network,Plate)
+		TriggerEvent("garages:deleteVehicle",Network,Plate)
 
 		if (vRP.InventoryWeight(Passport) + 3) <= vRP.GetWeight(Passport) then
 			local VehParts = math.random(4)

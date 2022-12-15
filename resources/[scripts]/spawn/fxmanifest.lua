@@ -24,4 +24,8 @@ files {
 shared_scripts {
 	"shared-side/*"
 }
+
+escrow_ignore {
+	"shared-side/*"
+}
 dependency '/assetpacks'

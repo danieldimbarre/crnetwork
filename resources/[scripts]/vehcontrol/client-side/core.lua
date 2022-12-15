@@ -196,7 +196,7 @@ Citizen.CreateThread(function()
 							if IsDisabledControlJustReleased(0,80) or IsDisabledControlJustReleased(0,81) then
 								if IsVehicleSirenOn(Vehicle) then
 									local NewState = 1
-									if LxSirenState[Vehicle] >= 1 or LxSirenState[Vehicle] <= 9 then
+									if LxSirenState[Vehicle] >= 1 and LxSirenState[Vehicle] <= 9 then
 										NewState = LxSirenState[Vehicle] + 1
 									end
 

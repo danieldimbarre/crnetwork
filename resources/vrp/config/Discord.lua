@@ -25,7 +25,8 @@ Discords = {
 	["Altruists"] = "https://discord.com/api/webhooks/1040347207129374811/cMU_ytcCfS9_1uqzzxcM6KCiWNKKQ8rMMWz4ObFCL2tYQzagb75Ip7h-rvgOnBdgHZ43",
 	["Lost"] = "https://discord.com/api/webhooks/1040347237139619870/hXdrOs8a-6IiREA88MfBQyHkwJm27g-rip7MwFaIesIBmQn-Z6s62xxmWQqi3cgrd8Ac",
 	["Marabunta"] = "https://discord.com/api/webhooks/1040347269049884672/D4L2w8hThTDeMXJ2JqB-NwzY4mNk0OD5pFaM6PJC1VlqIRc8yUV_fRw-vlj6wJFz_KMR",
-	["Admin"] = "https://discord.com/api/webhooks/1045336214615621744/GKzEkrK0f_ABpr_yqHynzQhTLPuvb5fjORcVn6wWDCSkni0dU9H6dGGaqrX1JMOI6MAa"
+	["Admin"] = "https://discord.com/api/webhooks/1045336214615621744/GKzEkrK0f_ABpr_yqHynzQhTLPuvb5fjORcVn6wWDCSkni0dU9H6dGGaqrX1JMOI6MAa",
+	["Event"] = "https://discord.com/api/webhooks/1052781157500080258/Sd3VbyQhQGiRN5l0g0sxyYCobbiokN5bwjy-cLsAeFl7k8aSbGS1Gtyw41k4YZMuW7o4"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCORD

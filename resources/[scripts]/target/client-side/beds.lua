@@ -105,6 +105,8 @@ RegisterNetEvent("target:Treatment")
 AddEventHandler("target:Treatment",function(Number)
 	if not Previous then
 		if vSERVER.CheckIn() then
+			LocalPlayer["state"]["Commands"] = true
+			LocalPlayer["state"]["Cancel"] = true
 			local Ped = PlayerPedId()
 			Previous = GetEntityCoords(Ped)
 			SetEntityCoords(Ped,Beds[Number]["Coords"]["x"],Beds[Number]["Coords"]["y"],Beds[Number]["Coords"]["z"] - 1,false,false,false,false)
@@ -112,8 +114,6 @@ AddEventHandler("target:Treatment",function(Number)
 			SetEntityHeading(Ped,Beds[Number]["Heading"])
 
 			TriggerEvent("inventory:preventWeapon",true)
-			LocalPlayer["state"]["Commands"] = true
-			LocalPlayer["state"]["Cancel"] = true
 			TriggerEvent("paramedic:Reset")
 
 			if GetEntityHealth(Ped) <= 100 then

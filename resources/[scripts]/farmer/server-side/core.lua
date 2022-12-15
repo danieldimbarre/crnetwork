@@ -378,7 +378,7 @@ AddEventHandler("farmer:Xmas",function(Number)
 				if ((vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport)) or (itemSelect[1] == "") then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					TriggerClientEvent("Progress",source,"Coletando",1000)
-					Objects[Number]["Time"] = GlobalState["Work"] + math.random(3600,10800)
+					Objects[Number]["Time"] = GlobalState["Work"] + math.random(600,800)
 					Player(source)["state"]["Buttons"] = true
 					Player(source)["state"]["Cancel"] = true
 
@@ -392,6 +392,7 @@ AddEventHandler("farmer:Xmas",function(Number)
 						TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
 					else
 						vRP.GenerateItem(Passport,itemSelect[1],itemSelect[2],true)
+						TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Pegou:** "..itemSelect[2].."x "..itemName(itemSelect[1]),9317187)
 					end
 
 					vRP.UpgradeStress(Passport,1)

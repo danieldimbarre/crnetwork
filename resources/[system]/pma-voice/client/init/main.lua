@@ -5,7 +5,7 @@ local volumes = {
 
 mode = 2
 radioPressed = false
-radioEnabled = true
+radioEnabled = false
 radioData = {}
 callData = {}
 submixIndicies = {}

@@ -10,8 +10,6 @@ function syncRadioData(radioTable,localPlyRadioName)
 		end
 	end
 
-	sendUIMessage({ radioChannel = radioChannel, radioEnabled = radioEnabled })
-
 	radioNames[playerServerId] = localPlyRadioName
 end
 
@@ -41,8 +39,6 @@ function removePlayerFromRadio(plySource)
 				toggleVoice(tgt,false,"radio")
 			end
 		end
-
-		sendUIMessage({ radioChannel = 0, radioEnabled = radioEnabled })
 
 		radioNames = {}
 		radioData = {}
@@ -105,7 +101,7 @@ RegisterCommand("+radiotalk",function()
 			CreateThread(function()
 				TriggerEvent("pma-voice:radioActive",true)
 
-				while radioPressed and not LocalPlayer["state"]["disableRadio"] do
+				while radioPressed do
 					Wait(0)
 					SetControlNormal(0,249,1.0)
 					SetControlNormal(1,249,1.0)
@@ -141,8 +137,8 @@ end,false)
 
 RegisterKeyMapping("+radiotalk","Dialogar no rádio.","keyboard","CAPITAL")
 
-function syncRadio(_channel)
-	radioChannel = _channel
+function syncRadio(_radioChannel)
+	radioChannel = _radioChannel
 end
 
 RegisterNetEvent("pma-voice:clSetPlayerRadio",syncRadio)

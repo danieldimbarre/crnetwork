@@ -110,7 +110,6 @@ CreateThread(function()
 			lastRadioStatus = radioPressed
 			lastTalkingStatus = curTalkingStatus
 			TriggerEvent("hud:Voice",curTalkingStatus)
-			sendUIMessage({ usingRadio = lastRadioStatus, talking = lastTalkingStatus })
 		end
 
 		if voiceState == "proximity" then

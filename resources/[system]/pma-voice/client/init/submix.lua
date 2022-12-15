@@ -7,5 +7,6 @@ AddStateBagChangeHandler("submix","",function(bagName,_,value)
 		MumbleSetSubmixForServerId(tgtId,-1)
 		return
 	end
+
 	MumbleSetSubmixForServerId(tgtId,submixIndicies[value])
 end)

@@ -4207,7 +4207,7 @@ Use = {
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
 
-		local Hash = "bkr_prop_weed_med_01b"
+		local Hash = "bag_coca_plant"
 		local Application,Coords = vRPC.objectCoords(source,Hash)
 		if Application then
 			if not vCLIENT.objectExist(source,Coords,Hash) then

@@ -444,18 +444,18 @@ local List = {
 			-- 		["rubber"] = 75
 			-- 	}
 			-- },
-			-- ["WEAPON_GUSENBERG"] = {
-			-- 	["amount"] = 1,
-			-- 	["destroy"] = false,
-			-- 	["require"] = {
-			-- 		["riflebody"] = 1,
-			-- 		["aluminum"] = 125,
-			-- 		["copper"] = 125,
-			-- 		["plastic"] = 100,
-			-- 		["glass"] = 100,
-			-- 		["rubber"] = 100
-			-- 	}
-			-- },
+			["WEAPON_GUSENBERG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["riflebody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 125,
+					["plastic"] = 100,
+					["glass"] = 100,
+					["rubber"] = 100
+				}
+			},
 			-- ["WEAPON_APPISTOL"] = {
 			-- 	["amount"] = 1,
 			-- 	["destroy"] = false,
@@ -492,18 +492,18 @@ local List = {
 			-- 		["rubber"] = 25
 			-- 	}
 			-- },
-			-- ["WEAPON_MINISMG"] = {
-			-- 	["amount"] = 1,
-			-- 	["destroy"] = false,
-			-- 	["require"] = {
-			-- 		["smgbody"] = 1,
-			-- 		["aluminum"] = 125,
-			-- 		["copper"] = 125,
-			-- 		["plastic"] = 80,
-			-- 		["glass"] = 80,
-			-- 		["rubber"] = 75
-			-- 	}
-			-- },
+			["WEAPON_MINISMG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 125,
+					["copper"] = 125,
+					["plastic"] = 80,
+					["glass"] = 80,
+					["rubber"] = 75
+				}
+			},
 			["WEAPON_PISTOL_MK2"] = {
 				["amount"] = 1,
 				["destroy"] = false,
@@ -612,18 +612,18 @@ local List = {
 			-- 		["rubber"] = 125
 			-- 	}
 			-- },
-			-- ["WEAPON_SMG_MK2"] = {
-			-- 	["amount"] = 1,
-			-- 	["destroy"] = false,
-			-- 	["require"] = {
-			-- 		["smgbody"] = 1,
-			-- 		["aluminum"] = 150,
-			-- 		["copper"] = 150,
-			-- 		["plastic"] = 100,
-			-- 		["glass"] = 75,
-			-- 		["rubber"] = 75
-			-- 	}
-			-- },
+			["WEAPON_SMG_MK2"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 150,
+					["copper"] = 150,
+					["plastic"] = 100,
+					["glass"] = 75,
+					["rubber"] = 75
+				}
+			},
 			-- ["WEAPON_ASSAULTRIFLE"] = {
 			-- 	["amount"] = 1,
 			-- 	["destroy"] = false,
@@ -648,18 +648,18 @@ local List = {
 			-- 		["rubber"] = 125
 			-- 	}
 			-- },
-			-- ["WEAPON_ASSAULTSMG"] = {
-			-- 	["amount"] = 1,
-			-- 	["destroy"] = false,
-			-- 	["require"] = {
-			-- 		["smgbody"] = 1,
-			-- 		["aluminum"] = 150,
-			-- 		["copper"] = 150,
-			-- 		["plastic"] = 100,
-			-- 		["glass"] = 75,
-			-- 		["rubber"] = 75
-			-- 	}
-			-- }
+			["WEAPON_ASSAULTSMG"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["smgbody"] = 1,
+					["aluminum"] = 150,
+					["copper"] = 150,
+					["plastic"] = 100,
+					["glass"] = 75,
+					["rubber"] = 75
+				}
+			}
 		}
 	},				
 	["CraftingTable"] = {

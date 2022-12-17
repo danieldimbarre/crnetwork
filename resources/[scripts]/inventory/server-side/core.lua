@@ -149,9 +149,9 @@ Products = {
 	},
 	["tablecoke"] = {
 		{ ["timer"] = 20, ["need"] = {
-			{ ["item"] = "sulfuric", ["amount"] = 1 },
-			{ ["item"] = "cokeleaf", ["amount"] = 1 }
-		}, ["needAmount"] = 1, ["item"] = "cocaine", ["itemAmount"] = 3 }
+			{ ["item"] = "sulfuric", ["amount"] = 10 },
+			{ ["item"] = "cokeleaf", ["amount"] = 10 }
+		}, ["needAmount"] = 10, ["item"] = "cocaine", ["itemAmount"] = 10 }
 	},
 	["tablemeth"] = {
 		{ ["timer"] = 20, ["need"] = {

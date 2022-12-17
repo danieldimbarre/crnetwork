@@ -334,6 +334,30 @@ RegisterCommand("unban",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- AL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("al",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin") and OtherPassport > 0 then
+			vRP.Query("accounts/updateWhitelist",{ id = OtherPassport, whitelist = 1 })
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- UNAL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("unal",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin") and OtherPassport > 0 then
+			vRP.Query("accounts/updateWhitelist",{ id = OtherPassport, whitelist = 0 })
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- TPCDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("tpcds",function(source)

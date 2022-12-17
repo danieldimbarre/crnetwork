@@ -809,6 +809,42 @@ local Robberys = {
 		["payment"] = {
 			{ ["item"] = "goldbar", ["min"] = 225, ["max"] = 250 }
 		}
+	},
+	["45"] = {
+		["Coords"] = vec3(890.77,-2120.76,31.22),
+		["name"] = "Bobcat",
+		["type"] = "bobcat",
+		["cooldown"] = 21600,
+		["duration"] = 480,
+		["group"] = "Police",
+		["population"] = 8,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pendrive",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "goldbar", ["min"] = 150, ["max"] = 200 }
+		}
+	},
+	["46"] = {
+		["Coords"] = vec3(-631.3,-230.1,38.33),
+		["name"] = "Joalheria",
+		["type"] = "jewelry",
+		["cooldown"] = 21600,
+		["duration"] = 480,
+		["group"] = "Police",
+		["population"] = 8,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pendrive",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "goldbar", ["min"] = 150, ["max"] = 200 }
+		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

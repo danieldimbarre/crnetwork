@@ -5000,7 +5000,7 @@ Use = {
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
 			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),9317187)
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),13541152)
 		end
 	end,
 
@@ -5011,7 +5011,7 @@ Use = {
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
 			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),9317187)
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),13541152)
 		end
 	end,
 
@@ -5022,7 +5022,7 @@ Use = {
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
 			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),9317187)
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),13541152)
 		end
 	end,
 
@@ -5033,7 +5033,7 @@ Use = {
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
 			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),9317187)
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),13541152)
 		end
 	end
 }

@@ -365,16 +365,14 @@ AddEventHandler("farmer:Xmas",function(Number)
 
 				local itemSelect = { "",1 }
 				local randItem = math.random(100)
-				if randItem <= 31 then
-					if randItem >= 17 and randItem <= 31 then
-						itemSelect = { "xmas",math.random(2) }
-					elseif randItem >= 7 and randItem <= 16 then
-						itemSelect = { "xmas2",math.random(2) }
-					elseif randItem >= 2 and randItem <= 6 then
-						itemSelect = { "xmas3",math.random(2) }
-					elseif randItem <= 1 then
-						itemSelect = { "xmas4",1 }
-					end
+				if randItem >= 31 and randItem <= 50 then
+					itemSelect = { "xmas",math.random(2) }
+				elseif randItem >= 16 and randItem <= 30 then
+					itemSelect = { "xmas2",math.random(2) }
+				elseif randItem >= 6 and randItem <= 15 then
+					itemSelect = { "xmas3",math.random(2) }
+				elseif randItem <= 5 then
+					itemSelect = { "xmas4",1 }
 				end
 
 				if ((vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport)) or (itemSelect[1] == "") then

@@ -365,20 +365,22 @@ AddEventHandler("farmer:Xmas",function(Number)
 
 				local itemSelect = { "",1 }
 				local randItem = math.random(100)
-				if parseInt(randItem) >= 51 and parseInt(randItem) <= 70 then
-					itemSelect = { "xmas",math.random(2) }
-				elseif parseInt(randItem) >= 31 and parseInt(randItem) <= 50 then
-					itemSelect = { "xmas2",math.random(2) }
-				elseif parseInt(randItem) >= 11 and parseInt(randItem) <= 30 then
-					itemSelect = { "xmas3",math.random(2) }
-				elseif parseInt(randItem) <= 10 then
-					itemSelect = { "xmas4",1 }
+				if randItem <= 31 then
+					if randItem >= 17 and randItem <= 31 then
+						itemSelect = { "xmas",math.random(2) }
+					elseif randItem >= 7 and randItem <= 16 then
+						itemSelect = { "xmas2",math.random(2) }
+					elseif randItem >= 2 and randItem <= 6 then
+						itemSelect = { "xmas3",math.random(2) }
+					elseif randItem <= 1 then
+						itemSelect = { "xmas4",1 }
+					end
 				end
 
 				if ((vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport)) or (itemSelect[1] == "") then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					TriggerClientEvent("Progress",source,"Coletando",1000)
-					Objects[Number]["Time"] = GlobalState["Work"] + math.random(600,800)
+					Objects[Number]["Time"] = GlobalState["Work"] + math.random(700,900)
 					Player(source)["state"]["Buttons"] = true
 					Player(source)["state"]["Cancel"] = true
 

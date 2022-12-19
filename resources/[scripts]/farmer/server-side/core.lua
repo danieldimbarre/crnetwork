@@ -434,13 +434,15 @@ AddEventHandler("farmer:Xmas",function(Number)
 
 					repeat
 						Rand = math.random(#EventLocs)
-						Wait(1)
-					until EventUsable[tostring(Rand)]
 
+						Wait(1)
+					until not EventUsable[tostring(Rand)]
+
+					local Index = tostring(Rand)
 					if Rand == 13 then
-						EventUsable[tostring(Rand)] = { ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 					else
-						EventUsable[tostring(Rand)] = { ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 					end
 
 					EventUsable[Objects[Number]["Number"]] = nil

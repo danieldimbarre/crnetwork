@@ -118,7 +118,7 @@ end)
 RegisterCommand("blips",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
+		if vRP.HasGroup(Passport,"Admin") then
 			vRPC.BlipAdmin(source)
 		end
 	end

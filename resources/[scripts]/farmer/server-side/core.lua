@@ -431,7 +431,7 @@ AddEventHandler("farmer:Xmas",function(Number)
 
 					repeat
 						Rand = math.random(#EventLocs)
-					until not EventUsable[Rand]
+					until EventUsable[Rand]
 
 					if Rand == 13 then
 						EventUsable[Rand] = { ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }

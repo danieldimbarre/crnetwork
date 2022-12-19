@@ -412,11 +412,11 @@ AddEventHandler("farmer:Xmas",function(Number)
 				local itemSelect = { "",1 }
 				local randItem = math.random(100)
 				if randItem >= 31 and randItem <= 50 then
-					itemSelect = { "xmas",math.random(2) }
+					itemSelect = { "xmas",1 }
 				elseif randItem >= 16 and randItem <= 30 then
-					itemSelect = { "xmas2",math.random(2) }
+					itemSelect = { "xmas2",1 }
 				elseif randItem >= 6 and randItem <= 15 then
-					itemSelect = { "xmas3",math.random(2) }
+					itemSelect = { "xmas3",1 }
 				elseif randItem <= 5 then
 					itemSelect = { "xmas4",1 }
 				end

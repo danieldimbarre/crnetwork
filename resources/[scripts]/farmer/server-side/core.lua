@@ -431,6 +431,7 @@ AddEventHandler("farmer:Xmas",function(Number)
 
 					repeat
 						Rand = math.random(#EventLocs)
+						Wait(1)
 					until EventUsable[Rand]
 
 					if Rand == 13 then

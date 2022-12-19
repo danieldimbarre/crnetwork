@@ -5830,7 +5830,7 @@ local List = {
 		["Name"] = "Dodge Charger 69",
 		["Weight"] = 30,
 		["Price"] = 200000,
-		["Mode"] = "rental",
+		["Mode"] = nil,
 		["Gems"] = 100
 	},
 	["bmwg20"] = {

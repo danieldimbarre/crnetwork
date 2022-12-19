@@ -40,7 +40,7 @@ AddEventHandler("lscustoms:attemptPurchase",function(type,mod)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if type == "engines" or type == "brakes" or type == "transmission" or type == "suspension" then
+		if type == "engines" or type == "brakes" or type == "transmission" or type == "suspension" or type == "shield" then
 			local Price = vehicleCustomisationPrices[type][mod]
 
 			if vRP.PaymentFull(Passport,Price) then

@@ -135,29 +135,80 @@ local Objects = {
 	["120"] = { ["Coords"] = vec3(230.12,234.93,97.12), ["Heading"] = 332.08, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 	["121"] = { ["Coords"] = vec3(229.86,234.9,97.12), ["Heading"] = 354.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 	["122"] = { ["Coords"] = vec3(230.15,234.78,97.12), ["Heading"] = 339.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-
-	["123"] = { ["Coords"] = vec3(211.76,-934.97,25.04), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["124"] = { ["Coords"] = vec3(-66.64,-822.06,322.05), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["125"] = { ["Coords"] = vec3(-271.33,-2032.08,30.90), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["126"] = { ["Coords"] = vec3(-1037.63,-2737.54,20.92), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["127"] = { ["Coords"] = vec3(454.46,5571.88,781.92), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["128"] = { ["Coords"] = vec3(-10.28,-1439.07,31.86), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["129"] = { ["Coords"] = vec3(-680.47,324.76,83.85), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["130"] = { ["Coords"] = vec3(-2291.03,225.37,168.36), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["131"] = { ["Coords"] = vec3(-1888.37,2049.66,141.74), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["132"] = { ["Coords"] = vec3(-432.05,1111.61,328.54), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["133"] = { ["Coords"] = vec3(102.9,6614.18,33.20), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["134"] = { ["Coords"] = vec3(-74.3,6223.93,31.85), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["135"] = { ["Coords"] = vec3(961.71,36.59,72.4), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["136"] = { ["Coords"] = vec3(689.21,585.79,131.21), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["137"] = { ["Coords"] = vec3(2477.28,-384.06,95.15), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["138"] = { ["Coords"] = vec3(2435.9,4966.9,47.57), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["139"] = { ["Coords"] = vec3(1582.66,6459.9,26.78), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["140"] = { ["Coords"] = vec3(1209.1,-3120.06,6.10), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["141"] = { ["Coords"] = vec3(121.8,-3075.17,6.76), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["142"] = { ["Coords"] = vec3(919.98,-1794.03,22.80), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["143"] = { ["Coords"] = vec3(1111.88,-647.24,57.58), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 },
 }
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- EVENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+local EventUsable = {}
+local EventLocs = {
+	[1] = vec3(211.76,-934.97,25.04),
+	[2] = vec3(-66.64,-822.06,322.05),
+	[3] = vec3(-271.33,-2032.08,30.90),
+	[4] = vec3(-1037.63,-2737.54,20.92),
+	[5] = vec3(454.46,5571.88,781.92),
+	[6] = vec3(-10.28,-1439.07,31.86),
+	[7] = vec3(-680.47,324.76,83.85),
+	[8] = vec3(-2291.03,225.37,168.36),
+	[9] = vec3(-1888.37,2049.66,141.74),
+	[10] = vec3(-432.05,1111.61,328.54),
+	[11] = vec3(102.9,6614.18,33.20),
+	[12] = vec3(-74.3,6223.93,31.85),
+	[13] = vec3(961.71,36.59,72.4),
+	[14] = vec3(689.21,585.79,131.21),
+	[15] = vec3(2477.28,-384.06,95.15),
+	[16] = vec3(2435.9,4966.9,47.57),
+	[17] = vec3(1582.66,6459.9,26.78),
+	[18] = vec3(1209.1,-3120.06,6.10),
+	[19] = vec3(121.8,-3075.17,6.76),
+	[20] = vec3(919.98,-1794.03,22.80),
+	[21] = vec3(1111.88,-647.24,57.58),
+	[22] = vec3(1390.78,1153.94,114.73),
+	[23] = vec3(2561.85,2592.85,38.82),
+	[24] = vec3(1993.9,3052.66,47.97),
+	[25] = vec3(1894.81,3713.87,33.53),
+	[26] = vec3(2343.87,3140.76,48.97),
+	[27] = vec3(804.47,2152.86,53.85),
+	[28] = vec3(733.24,2523.99,73.97),
+	[29] = vec3(555.9,2675.13,42.92),
+	[30] = vec3(191.68,3079.57,44.23),
+	[31] = vec3(1123.22,2642.63,38.91),
+	[32] = vec3(992.55,2717.65,40.26),
+	[33] = vec3(-45.87,1944.16,190.93),
+	[34] = vec3(311.98,2792.14,60.27),
+	[35] = vec3(389.41,3584.92,34.06),
+	[36] = vec3(2632.83,3258.76,56.21),
+	[37] = vec3(2749.47,3472.69,51.75),
+	[38] = vec3(2897.46,4397.99,50.99),
+	[39] = vec3(2334.51,4857.46,42.56),
+	[40] = vec3(1667.12,4739.04,42.75),
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADEVENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	local Number = 150
+	local Count = 10
+
+	repeat
+		local Rand = math.random(#EventLocs)
+		local Index = tostring(Rand)
+		
+		if not EventUsable[Index] then
+			if Rand == 13 then
+				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+			else
+				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+			end
+
+			Objects[tostring(Number)] = EventUsable[Index]
+
+			Number = Number + 1
+			Count = Count - 1
+		end
+
+		Wait(10)
+	until Count <= 0
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FRUITMAN
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -366,11 +417,11 @@ AddEventHandler("farmer:Xmas",function(Number)
 				local itemSelect = { "",1 }
 				local randItem = math.random(100)
 				if randItem >= 31 and randItem <= 50 then
-					itemSelect = { "xmas",math.random(2) }
+					itemSelect = { "xmas",1 }
 				elseif randItem >= 16 and randItem <= 30 then
-					itemSelect = { "xmas2",math.random(2) }
+					itemSelect = { "xmas2",1 }
 				elseif randItem >= 6 and randItem <= 15 then
-					itemSelect = { "xmas3",math.random(2) }
+					itemSelect = { "xmas3",1 }
 				elseif randItem <= 5 then
 					itemSelect = { "xmas4",1 }
 				end
@@ -378,13 +429,31 @@ AddEventHandler("farmer:Xmas",function(Number)
 				if ((vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport)) or (itemSelect[1] == "") then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					TriggerClientEvent("Progress",source,"Coletando",1000)
+
+					local Rand = 1
+
+					repeat
+						Rand = math.random(#EventLocs)
+
+						Wait(1)
+					until not EventUsable[tostring(Rand)]
+
+					local Index = tostring(Rand)
+					if Rand == 13 then
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+					else
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+					end
+
+					EventUsable[Objects[Number]["Number"]] = nil
+					Objects[Number]["Coords"] = EventLocs[Rand]
 					Objects[Number]["Time"] = GlobalState["Work"] + math.random(700,900)
 					Player(source)["state"]["Buttons"] = true
 					Player(source)["state"]["Cancel"] = true
 
 					Wait(1000)
 
-					TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["Time"])
+					TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["Time"],Objects[Number]["Coords"])
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
 

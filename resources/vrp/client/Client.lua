@@ -46,19 +46,12 @@ AddEventHandler("vRP:Active",function(Passport,Name)
 	-- SetDiscordRichPresenceAssetSmallText("Creative Network")
 	SetDiscordRichPresenceAction(0,"Entrar na Cidade","https://discord.gg/energy-rp/")
 	SetDiscordRichPresenceAction(1,"Nosso Instagram","https://www.instagram.com/cidadeenergy/")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADSTART
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	RequestIpl("rc12b_fixed")
-	RequestIpl("rc12b_default")
-	RequestIpl("rc12b_hospitalinterior_lod")
-	RequestIpl("rc12b_hospitalinterior")
 
+	RequestIpl("rc12b_default")
 	AddTextEntry("FE_THDR_GTAO","Energy")
 
 	Wait(30000)
+
 	ReplaceHudColour(116,18)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

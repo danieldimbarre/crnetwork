@@ -17,6 +17,7 @@ local Meth = 0
 local Drunk = 0
 local Cocaine = 0
 local Energetic = 0
+local Move = 0
 local Residuals = nil
 LocalPlayer["state"]["Tea"] = 3600
 LocalPlayer["state"]["Handcuff"] = false
@@ -114,9 +115,11 @@ end)
 -- SETENERGETIC
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("setEnergetic")
-AddEventHandler("setEnergetic",function(Timer,Number)
+AddEventHandler("setEnergetic",function(Timer,Number,Override)
 	Energetic = Energetic + Timer
+	Move = Override
 	SetRunSprintMultiplierForPlayer(PlayerId(),Number)
+	SetSwimMultiplierForPlayer(PlayerId(),Number)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESETENERGETIC
@@ -125,6 +128,7 @@ RegisterNetEvent("resetEnergetic")
 AddEventHandler("resetEnergetic",function()
 	if Energetic > 0 then
 		SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
+		SetSwimMultiplierForPlayer(PlayerId(),1.0)
 		Energetic = 0
 	end
 end)
@@ -136,9 +140,11 @@ CreateThread(function()
 		if Energetic > 0 then
 			Energetic = Energetic - 1
 			RestorePlayerStamina(PlayerId(),1.0)
+			SetPedMoveRateOverride(PlayerPedId(),Move)
 
 			if Energetic <= 0 or GetEntityHealth(PlayerPedId()) <= 100 then
 				SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
+				SetSwimMultiplierForPlayer(PlayerId(),1.0)
 				Energetic = 0
 			end
 		end

@@ -985,6 +985,8 @@ AddEventHandler("Connect",function(Passport,source)
 	-- 	end
 	-- end
 
+	TriggerClientEvent("player:Relationship2",source)
+
 	local Identity = vRP.Identity(Passport)
 	if Identity then
 		vRP.Query("accounts/dateLogin",{ license = Identity["license"], login = os.date("%d/%m/%Y") })

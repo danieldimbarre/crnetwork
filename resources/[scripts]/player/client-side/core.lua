@@ -1060,6 +1060,28 @@ AddEventHandler("player:Relationship",function(Group,Ungroup)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:RELATIONSHIP2
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("player:Relationship2")
+AddEventHandler("player:Relationship2",function()
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_BALLAS"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_BALLAS"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_FAMILY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_FAMILY"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_SALVA"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_SALVA"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_MARABUNTE"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MARABUNTE"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_WEICHENG"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_WEICHENG"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_LOST"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_CULT"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_CULT"))
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- FPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local commandFps = false

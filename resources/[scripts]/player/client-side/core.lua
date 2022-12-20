@@ -115,8 +115,9 @@ end)
 -- SETENERGETIC
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("setEnergetic")
-AddEventHandler("setEnergetic",function(Timer,Number,Move)
+AddEventHandler("setEnergetic",function(Timer,Number,Override)
 	Energetic = Energetic + Timer
+	Move = Override
 	SetRunSprintMultiplierForPlayer(PlayerId(),Number)
 	SetSwimMultiplierForPlayer(PlayerId(),Number)
 end)

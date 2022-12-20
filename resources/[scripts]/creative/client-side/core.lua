@@ -364,7 +364,7 @@ CreateThread(function()
 			SetVehicleDensityMultiplierThisFrame(0.40)
 			SetRandomVehicleDensityMultiplierThisFrame(0.40)
 			SetParkedVehicleDensityMultiplierThisFrame(0.7)
-			SetAmbientVehicleRangeMultiplierThisFrame(0.7)
+			SetAmbientVehicleRangeMultiplierThisFrame(1.0)
 			SetScenarioPedDensityMultiplierThisFrame(0.7,0.7)
 			SetPedDensityMultiplierThisFrame(0.7)
 		end

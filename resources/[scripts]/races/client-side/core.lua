@@ -49,7 +49,7 @@ CreateThread(function()
 				end
 
 				local Distance = #(Coords - vec3(Races[Race]["Coords"][Checkpoint][1][1],Races[Race]["Coords"][Checkpoint][1][2],Races[Race]["Coords"][Checkpoint][1][3]))
-				if Distance <= 5 then
+				if Distance <= 6.75 then
 					if Checkpoint >= #Races[Race]["Coords"] then
 						SendNUIMessage({ Action = "Display", Status = false })
 						vSERVER.Finish(Race,Points)

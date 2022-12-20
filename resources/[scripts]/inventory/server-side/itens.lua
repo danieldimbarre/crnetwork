@@ -664,8 +664,8 @@ Use = {
 					end
 
 					vRP.ChemicalTimer(Passport,10)
-					TriggerClientEvent("setEnergetic",source,15,1.90 + (0.1 * Points))
 					TriggerClientEvent("setCocaine",source)
+					TriggerClientEvent("setEnergetic",source,15,1.25 + (0.1 * Points))
 				end
 			end
 
@@ -2707,7 +2707,7 @@ Use = {
 				Active[Passport] = nil
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,25,1.80)
+					TriggerClientEvent("setEnergetic",source,25,1.15)
 					vRP.UpgradeThirst(Passport,20)
 				end
 			end
@@ -3345,7 +3345,7 @@ Use = {
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					TriggerClientEvent("player:MushroomTea",source)
-					TriggerClientEvent("setEnergetic",source,25,1.8)
+					TriggerClientEvent("setEnergetic",source,25,1.15)
 					vRP.UpgradeThirst(Passport,20)
 				end
 			end
@@ -3417,7 +3417,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,10,1.50)
+					TriggerClientEvent("setEnergetic",source,10,1.10)
 					vRP.UpgradeThirst(Passport,25)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
@@ -3607,7 +3607,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,10,1.50)
+					TriggerClientEvent("setEnergetic",source,10,1.10)
 					vRP.UpgradeThirst(Passport,20)
 					vRP.UpgradeHunger(Passport,8)
 
@@ -3852,7 +3852,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,20,1.50)
+					TriggerClientEvent("setEnergetic",source,20,1.10)
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
@@ -4640,7 +4640,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,20,1.50)
+					TriggerClientEvent("setEnergetic",source,20,1.10)
 					vRP.UpgradeHunger(Passport,10)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
@@ -4668,7 +4668,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,20,1.50)
+					TriggerClientEvent("setEnergetic",source,20,1.10)
 					vRP.UpgradeHunger(Passport,10)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") or vCLIENT.Restaurant(source,"BeanMachine") then
@@ -4742,7 +4742,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,20,1.50)
+					TriggerClientEvent("setEnergetic",source,20,1.10)
 					vRP.UpgradeHunger(Passport,8)
 				end
 			end

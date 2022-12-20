@@ -99,7 +99,7 @@ end)
 RegisterCommand("cleanrec",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] then
-		if vRP.HasPermission(Passport,"Police",1) then
+		if vRP.HasGroup(Passport,"Police",1) then
 			local OtherPassport = parseInt(Message[1])
 			if OtherPassport > 0 then
 				vRP.Query("prison/cleanRecords",{ nuser_id = OtherPassport })

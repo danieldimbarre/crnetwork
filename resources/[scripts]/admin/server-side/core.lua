@@ -300,7 +300,7 @@ RegisterCommand("ban",function(source,Message)
 			if Identity then
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = Days })
 				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.",5000)
-				TriggerEvent("Discord","Admin","**ban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Tempo:** "..time.." dias",nil)
+				TriggerEvent("Discord","Admin","**ban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Tempo:** "..Days.." dias",nil)
 
 				local OtherSource = vRP.Source(OtherPassport)
 				if OtherSource then

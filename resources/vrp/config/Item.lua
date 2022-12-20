@@ -425,10 +425,11 @@ local List = {
 	["mushroomtea"] = {
 		["Index"] = "mushroomtea",
 		["Name"] = "Chá de Cogumelo",
-		["Description"] = "Tempo pedalando reduzido para <green>10 minutos</green> por <green>60 minutos</green>, lembrando que o efeito passa desconectando da cidade.",
+		-- ["Description"] = "Tempo pedalando reduzido para <green>10 minutos</green> por <green>60 minutos</green>, lembrando que o efeito passa desconectando da cidade.",
 		["Durability"] = 3,
 		["Type"] = "Usável",
 		["Weight"] = 0.75,
+		["Max"] = 10,
 		["Economy"] = 325
 	},
 	["nigirizushi"] = {

@@ -51,14 +51,14 @@ end)
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
+	AddTextEntry("FE_THDR_GTAO","Energy")
+
+	Wait(30000)
+
 	RequestIpl("rc12b_fixed")
 	RequestIpl("rc12b_default")
 	RequestIpl("rc12b_hospitalinterior_lod")
 	RequestIpl("rc12b_hospitalinterior")
-
-	AddTextEntry("FE_THDR_GTAO","Energy")
-
-	Wait(30000)
 	ReplaceHudColour(116,18)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

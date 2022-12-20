@@ -269,7 +269,6 @@ function openMenu(Menus)
 	vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
 
 	Previous = json.encode(Dataset)
-	TriggerServerEvent("vRP:BucketClient","Enter")
 	SendNUIMessage({ action = "open", menus = Menus, currentClothing = Dataset })
 
 	SetNuiFocus(true,true)
@@ -371,7 +370,6 @@ RegisterNUICallback("close",function(Data,Callback)
 		DestroyCam(Cam,false)
 	end
 
-	TriggerServerEvent("vRP:BucketClient","Exit")
 	SetNuiFocus(false,false)
 	vRP.removeObjects()
 

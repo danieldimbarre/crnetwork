@@ -665,7 +665,7 @@ Use = {
 
 					vRP.ChemicalTimer(Passport,10)
 					TriggerClientEvent("setCocaine",source)
-					TriggerClientEvent("setEnergetic",source,15,1.39 + (0.1 * Points),10)
+					TriggerClientEvent("setEnergetic",source,15,1.39 + (0.1 * Points),(0.1 * Points))
 				end
 			end
 
@@ -2707,7 +2707,7 @@ Use = {
 				Active[Passport] = nil
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,25,1.25,8)
+					TriggerClientEvent("setEnergetic",source,25,1.25,10)
 					vRP.UpgradeThirst(Passport,20)
 				end
 			end

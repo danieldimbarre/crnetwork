@@ -118,6 +118,7 @@ RegisterNetEvent("setEnergetic")
 AddEventHandler("setEnergetic",function(Timer,Number,Move)
 	Energetic = Energetic + Timer
 	SetRunSprintMultiplierForPlayer(PlayerId(),Number)
+	SetSwimMultiplierForPlayer(PlayerId(),Number)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESETENERGETIC
@@ -126,6 +127,7 @@ RegisterNetEvent("resetEnergetic")
 AddEventHandler("resetEnergetic",function()
 	if Energetic > 0 then
 		SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
+		SetSwimMultiplierForPlayer(PlayerId(),1.0)
 		Energetic = 0
 	end
 end)
@@ -141,6 +143,7 @@ CreateThread(function()
 
 			if Energetic <= 0 or GetEntityHealth(PlayerPedId()) <= 100 then
 				SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
+				SetSwimMultiplierForPlayer(PlayerId(),1.0)
 				Energetic = 0
 			end
 		end

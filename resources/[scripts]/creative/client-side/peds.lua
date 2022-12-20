@@ -542,6 +542,12 @@ local List = {
 		Model = "s_f_y_cop_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
+	{ -- Police
+		Distance = 100,
+		Coords = { 1846.41,2587.44,45.66,266.46 },
+		Model = "s_f_y_cop_01",
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},
 	{ -- Paramedic
 		Distance = 100,
 		Coords = { -675.96,324.36,140.14,184.26 },

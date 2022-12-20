@@ -79,11 +79,11 @@ RegisterCommand("gem",function(source,Message)
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
 				TriggerClientEvent("Notify",source,"verde","Gemas entregues.",5000)
-				vRP.Query("accounts/AddGems",{ license = Identity["license"], gems = Amount })
+				vRP.UpgradeGemstone(OtherPassport,Amount)
 
 				local OtherSource = vRP.Source(OtherPassport)
 				if OtherSource then
-					TriggerClientEvent("Notify",OtherSource,"azul","Você recebeu "..Amount.."x Gemas.",5000)
+					TriggerClientEvent("Notify",OtherSource,"azul","Você recebeu <b>"..Amount.."x Gemas</b>.",5000)
 				end
 
 				TriggerEvent("Discord","Gemstone","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Gemas:** "..Amount.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
@@ -98,17 +98,12 @@ RegisterCommand('gems',function(source,Message)
 	if source == 0 then
 		local Passport = parseInt(Message[1])
 		local Amount = parseInt(Message[2])
+
+		vRP.UpgradeGemstone(Passport,Amount)
 		
 		local Source = vRP.Source(Passport)
 		if Source then
-			vRP.UpgradeGemstone(Passport,Amount)
-
-			TriggerClientEvent("Notify",Source,"azul","Você recebeu "..Amount.."x Gemas.",5000)
-		else
-			local Identity = vRP.Identity(Passport)
-			if Identity then
-				vRP.Query("accounts/AddGems",{ license = Identity["license"], gems = Amount })
-			end
+			TriggerClientEvent("Notify",Source,"azul","Você recebeu <b>"..Amount.."x Gemas</b>.",5000)
 		end
 	end
 end)
@@ -305,7 +300,7 @@ RegisterCommand("ban",function(source,Message)
 			if Identity then
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = Days })
 				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.",5000)
-				TriggerEvent("Discord","Admin","**ban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Tempo:** "..time.." dias",nil)
+				TriggerEvent("Discord","Admin","**ban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Tempo:** "..Days.." dias",nil)
 
 				local OtherSource = vRP.Source(OtherPassport)
 				if OtherSource then

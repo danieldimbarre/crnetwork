@@ -38,6 +38,8 @@ MaintenanceLicenses = {
 	["233456cbc917bfd628fd301b94875b5735047a87"] = true,	-- Marcola
 	["b02266ba5f4fcff8d29b2e58ac1dd4806a52adcb"] = true,	-- Dexter
 	["ffa594ec30eba123ddfd37cff86e755e54ece227"] = true,	-- Araújo
+	["1218c328aa64b2bb66fdc3f7625f59a9e691790a"] = true,	-- Bueno
+	["27677847ff22fe09849fa43b4da97de86e623823"] = true,	-- Andrade
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ARENA (Itens recebidos ao entrar na arena)

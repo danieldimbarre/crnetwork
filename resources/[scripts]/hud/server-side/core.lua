@@ -16,7 +16,7 @@ Tunnel.bindInterface("hud",Creative)
 GlobalState["Work"] = 0
 GlobalState["Hours"] = 12
 GlobalState["Minutes"] = 0
-GlobalState["Weather"] = "SNOWLIGHT"
+GlobalState["Weather"] = "EXTRASUNNY"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYNC
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -33,7 +33,6 @@ CreateThread(function()
 			if GlobalState["Hours"] >= 24 then
 				GlobalState["Hours"] = 0
 			end
-			
 		end
 
 		if (GlobalState["Hours"] >= 0 and GlobalState["Hours"] <= 5) or (GlobalState["Hours"] >= 18 and GlobalState["Hours"] <= 23) then

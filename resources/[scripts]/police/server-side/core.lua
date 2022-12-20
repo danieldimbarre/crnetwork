@@ -99,7 +99,7 @@ end)
 RegisterCommand("cleanrec",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] then
-		if vRP.HasPermission(Passport,"Police",1) then
+		if vRP.HasGroup(Passport,"Police",1) then
 			local OtherPassport = parseInt(Message[1])
 			if OtherPassport > 0 then
 				vRP.Query("prison/cleanRecords",{ nuser_id = OtherPassport })
@@ -126,7 +126,7 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 					TriggerClientEvent("radio:RadioClean",OtherSource)
 				end
 
-				vRP.Query("prison/insertPrison",{ police = Identity["name"].." "..Identity["name2"], nuser_id = parseInt(OtherPassport), services = Services, fines = Value, text = Message, date = os.date("%d/%m/%Y").." ás "..os.date("%H:%M") })
+				vRP.Query("prison/insertPrison",{ police = Identity["name"].." "..Identity["name2"], nuser_id = parseInt(OtherPassport), services = Services, fines = Value, text = Message, date = os.date("%d/%m/%Y").." às "..os.date("%H:%M") })
 				vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
 				TriggerClientEvent("Notify",source,"verde","Prisão efetuada.",5000)
 				TriggerClientEvent("police:Update",source,"reloadPrison")

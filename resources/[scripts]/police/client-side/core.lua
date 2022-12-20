@@ -71,9 +71,9 @@ local inDeath = false
 local inPrison = false
 local inTimer = GetGameTimer()
 local timeDeath = GetGameTimer()
-local coordsIntern = { 1679.94,2513.07,45.56 }
-local coordsExtern = { 1896.15,2604.44,45.75 }
-local coordsLeaver = { 1834.09,2594.34,46.02 }
+local coordsIntern = vec3(1679.94,2513.07,45.56)
+local coordsExtern = vec3(1837.2,2589.26,46.02)
+local coordsLeaver = vec3(1834.09,2594.34,46.02)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------

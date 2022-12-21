@@ -195,9 +195,9 @@ CreateThread(function()
 		
 		if not EventUsable[Index] then
 			if Rand == 13 then
-				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 			else
-				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 			end
 
 			Objects[tostring(Number)] = EventUsable[Index]
@@ -403,10 +403,10 @@ AddEventHandler("farmer:Transporter",function(Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- XMAS
+-- EVENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("farmer:Xmas")
-AddEventHandler("farmer:Xmas",function(Number)
+RegisterServerEvent("farmer:Event")
+AddEventHandler("farmer:Event",function(Number)
 	if Objects[Number] then
 		if GlobalState["Work"] >= Objects[Number]["Time"] then
 			local source = source
@@ -438,9 +438,9 @@ AddEventHandler("farmer:Xmas",function(Number)
 
 					local Index = tostring(Rand)
 					if Rand == 13 then
-						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 					else
-						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 					end
 
 					EventUsable[Objects[Number]["Number"]] = nil

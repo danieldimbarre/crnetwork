@@ -473,7 +473,7 @@ end)
 RegisterCommand("tpway",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
+		if vRP.HasGroup(Passport,"Admin") then
 			vCLIENT.teleportWay(source)
 		end
 	end
@@ -728,7 +728,7 @@ local Spectate = {}
 RegisterCommand("spectate",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
+		if vRP.HasGroup(Passport,"Admin") then
 			if Spectate[Passport] then
 				local Ped = GetPlayerPed(Spectate[Passport])
 				if DoesEntityExist(Ped) then

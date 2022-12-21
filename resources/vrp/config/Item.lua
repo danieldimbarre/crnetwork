@@ -2,30 +2,23 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
-	["xmas"] = {
-		["Index"] = "packdollars",
-		["Name"] = "Presente de Natal - Comum",
+	["present01"] = {
+		["Index"] = "present01",
+		["Name"] = "Presente - Pequeno",
 		["Type"] = "Comum",
 		["Weight"] = 0.25,
 		["Economy"] = 0
 	},
-	["xmas2"] = {
-		["Index"] = "packdollars",
-		["Name"] = "Presente de Natal - Raro",
+	["present02"] = {
+		["Index"] = "present02",
+		["Name"] = "Presente - Médio",
 		["Type"] = "Comum",
 		["Weight"] = 0.55,
 		["Economy"] = 0
 	},
-	["xmas3"] = {
-		["Index"] = "packdollars",
-		["Name"] = "Presente de Natal - Épico",
-		["Type"] = "Comum",
-		["Weight"] = 0.75,
-		["Economy"] = 0
-	},
-	["xmas4"] = {
-		["Index"] = "packdollars",
-		["Name"] = "Presente de Natal - Lendário",
+	["present03"] = {
+		["Index"] = "present03",
+		["Name"] = "Presente - Grande",
 		["Type"] = "Comum",
 		["Weight"] = 0.85,
 		["Economy"] = 0
@@ -560,6 +553,20 @@ local List = {
 	["attachsGrip"] = {
 		["Index"] = "attachsGrip",
 		["Name"] = "Empunhadura",
+		["Type"] = "Usável",
+		["Weight"] = 1.15,
+		["Economy"] = 1750
+	},
+	["attachsMazzleBrake"] = {
+		["Index"] = "attachsMazzleBrake",
+		["Name"] = "Quebra Chamas",
+		["Type"] = "Usável",
+		["Weight"] = 1.15,
+		["Economy"] = 1750
+	},
+	["attachsMazzleBoost"] = {
+		["Index"] = "attachsMazzleBoost",
+		["Name"] = "Compensador",
 		["Type"] = "Usável",
 		["Weight"] = 1.15,
 		["Economy"] = 1750

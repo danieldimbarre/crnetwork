@@ -13,10 +13,10 @@ Geodes = {
 	{ ["item"] = "copper", ["min"] = 1, ["max"] = 2 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- XMAS
+-- EVENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-Xmas = {
-	["xmas"] = {
+Event = {
+	["present01"] = {
 		{ ["item"] = "cannedsoup", ["min"] = 1, ["max"] = 7 },
 		{ ["item"] = "canofbeans", ["min"] = 1, ["max"] = 7 },
 		{ ["item"] = "toolbox", ["min"] = 1, ["max"] = 2 },
@@ -44,9 +44,16 @@ Xmas = {
 		{ ["item"] = "enginea", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "transmissiona", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "brakea", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "suspensiona", ["min"] = 1, ["max"] = 1 }
+		{ ["item"] = "suspensiona", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "bandage", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "firecracker", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "dildo", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "rimel", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "blender", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "lampshade", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "slipper", ["min"] = 2, ["max"] = 2 },
 	},
-	["xmas2"] = {
+	["present02"] = {
 		{ ["item"] = "gauze", ["min"] = 1, ["max"] = 2 },
 		{ ["item"] = "advtoolbox", ["min"] = 1, ["max"] = 2 },
 		{ ["item"] = "credential", ["min"] = 1, ["max"] = 2 },
@@ -72,47 +79,23 @@ Xmas = {
 		{ ["item"] = "dices", ["min"] = 1, ["max"] = 2 },
 		{ ["item"] = "domino", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "deck", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "amethyst", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "amber", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "turquoise", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "codfish", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "catfish", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "pliers", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "engineb", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "transmissionb", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "brakeb", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "suspensionb", ["min"] = 1, ["max"] = 1 }
 	},
-	["xmas3"] = {
-		{ ["item"] = "bandage", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "repairkit03", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "firecracker", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "dildo", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "rimel", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "blender", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "lampshade", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "slipper", ["min"] = 2, ["max"] = 2 },
-		{ ["item"] = "pendrive", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "codfish", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "catfish", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "joint", ["min"] = 1, ["max"] = 4 },
-		{ ["item"] = "cocaine", ["min"] = 1, ["max"] = 4 },
-		{ ["item"] = "meth", ["min"] = 1, ["max"] = 4 },
-		{ ["item"] = "oxy", ["min"] = 3, ["max"] = 6 },
+	["present03"] = {
 		{ ["item"] = "vape", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "WEAPON_CROWBAR", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "WEAPON_WRENCH", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "WEAPON_MUSKET_AMMO", ["min"] = 1, ["max"] = 5 },
-		{ ["item"] = "amethyst", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "amber", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "turquoise", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "pliers", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "goldring", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "watch", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "bracelet", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "enginec", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "transmissionc", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "brakec", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "suspensionc", ["min"] = 1, ["max"] = 1 }
-	},
-	["xmas4"] = {
+		{ ["item"] = "goldring", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "watch", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "bracelet", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "mushroomtea", ["min"] = 1, ["max"] = 2 },
 		{ ["item"] = "uwucoffeepass", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "pizzathispass", ["min"] = 1, ["max"] = 1 },
@@ -125,15 +108,17 @@ Xmas = {
 		{ ["item"] = "ruby", ["min"] = 1, ["max"] = 2 },
 		{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
 		{ ["item"] = "rentalveh", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "repairkit03", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "repairkit04", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "engined", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "transmissiond", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "braked", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "suspensiond", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "enginec", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "transmissionc", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "brakec", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "suspensionc", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "nitro", ["min"] = 1, ["max"] = 2 },
 		{ ["item"] = "notebook", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "backpack", ["min"] = 1, ["max"] = 3 },
 		{ ["item"] = "blocksignal", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "card05", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "goldenfish", ["min"] = 1, ["max"] = 3 },
 		{ ["item"] = "pirarucu", ["min"] = 1, ["max"] = 3 },
@@ -148,7 +133,13 @@ Xmas = {
 		{ ["item"] = "rose", ["min"] = 1, ["max"] = 8 },
 		{ ["item"] = "WEAPON_KATANA", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "WEAPON_KARAMBIT", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_CROWBAR", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_WRENCH", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "joint", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "cocaine", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "meth", ["min"] = 1, ["max"] = 5 },
 		{ ["item"] = "cup", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "pendrive", ["min"] = 1, ["max"] = 1 },
 		{ ["item"] = "pager", ["min"] = 1, ["max"] = 1 }
 	}
 }
@@ -4995,47 +4986,36 @@ Use = {
 		end
 	end,
 
-	["xmas"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		local Selected = math.random(#Xmas[Full])
-		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
+	["present01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Event[Full])
+		local Rand = math.random(Event[Full][Selected]["min"],Event[Full][Selected]["max"])
 
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+			vRP.GenerateItem(Passport,Event[Full][Selected]["item"],Rand,false)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),13541152)
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Event[Full][Selected]["item"]),13541152)
 		end
 	end,
 
-	["xmas2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		local Selected = math.random(#Xmas[Full])
-		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
+	["present02"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Event[Full])
+		local Rand = math.random(Event[Full][Selected]["min"],Event[Full][Selected]["max"])
 
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+			vRP.GenerateItem(Passport,Event[Full][Selected]["item"],Rand,false)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),13541152)
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Event[Full][Selected]["item"]),13541152)
 		end
 	end,
 
-	["xmas3"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		local Selected = math.random(#Xmas[Full])
-		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
+	["present03"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Event[Full])
+		local Rand = math.random(Event[Full][Selected]["min"],Event[Full][Selected]["max"])
 
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
+			vRP.GenerateItem(Passport,Event[Full][Selected]["item"],Rand,false)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),13541152)
-		end
-	end,
-
-	["xmas4"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		local Selected = math.random(#Xmas[Full])
-		local Rand = math.random(Xmas[Full][Selected]["min"],Xmas[Full][Selected]["max"])
-
-		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			vRP.GenerateItem(Passport,Xmas[Full][Selected]["item"],Rand,false)
-			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Xmas[Full][Selected]["item"]),13541152)
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Event[Full][Selected]["item"]),13541152)
 		end
 	end
 }

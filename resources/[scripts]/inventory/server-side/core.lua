@@ -1208,10 +1208,10 @@ function Creative.UseItem(Slot,Amount)
 							vCLIENT.putAttachs(source,Item,Weapon)
 						end
 					else
-						TriggerClientEvent("Notify",source,"amarelo","O armamento não possui suporte ao componente.",5000)
+						TriggerClientEvent("Notify",source,"amarelo","O armamento já possui o componente equipado.",5000)
 					end
 				else
-					TriggerClientEvent("Notify",source,"amarelo","O armamento já possui o componente equipado.",5000)
+					TriggerClientEvent("Notify",source,"amarelo","O armamento não possui suporte ao componente.",5000)
 				end
 			end
 		elseif Use[Item] then

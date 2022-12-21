@@ -195,9 +195,9 @@ CreateThread(function()
 		
 		if not EventUsable[Index] then
 			if Rand == 13 then
-				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 			else
-				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 			end
 
 			Objects[tostring(Number)] = EventUsable[Index]
@@ -403,10 +403,10 @@ AddEventHandler("farmer:Transporter",function(Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- XMAS
+-- EVENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("farmer:Xmas")
-AddEventHandler("farmer:Xmas",function(Number)
+RegisterServerEvent("farmer:Event")
+AddEventHandler("farmer:Event",function(Number)
 	if Objects[Number] then
 		if GlobalState["Work"] >= Objects[Number]["Time"] then
 			local source = source
@@ -416,14 +416,12 @@ AddEventHandler("farmer:Xmas",function(Number)
 
 				local itemSelect = { "",1 }
 				local randItem = math.random(100)
-				if randItem >= 31 and randItem <= 50 then
-					itemSelect = { "xmas",1 }
-				elseif randItem >= 16 and randItem <= 30 then
-					itemSelect = { "xmas2",1 }
-				elseif randItem >= 6 and randItem <= 15 then
-					itemSelect = { "xmas3",1 }
+				if randItem >= 21 and randItem <= 45 then
+					itemSelect = { "present01",1 }
+				elseif randItem >= 6 and randItem <= 20 then
+					itemSelect = { "present02",1 }
 				elseif randItem <= 5 then
-					itemSelect = { "xmas4",1 }
+					itemSelect = { "present03",1 }
 				end
 
 				if ((vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport)) or (itemSelect[1] == "") then
@@ -440,9 +438,9 @@ AddEventHandler("farmer:Xmas",function(Number)
 
 					local Index = tostring(Rand)
 					if Rand == 13 then
-						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 					else
-						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Xmas", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
 					end
 
 					EventUsable[Objects[Number]["Number"]] = nil

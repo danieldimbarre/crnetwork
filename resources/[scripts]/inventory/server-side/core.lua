@@ -1188,7 +1188,7 @@ function Creative.UseItem(Slot,Amount)
 					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
 				end
 			end
-		elseif Item == "attachsFlashlight" or Item == "attachsCrosshair" or Item == "attachsSilencer" or Item == "attachsMagazine" or Item == "attachsGrip" then
+		elseif Item == "attachsFlashlight" or Item == "attachsCrosshair" or Item == "attachsSilencer" or Item == "attachsMagazine" or Item == "attachsGrip" or Item == "attachsMazzleBrake" or Item == "attachsMazzleBoost" then
 			local Weapon = vCLIENT.returnWeapon(source)
 			if Weapon then
 				if vCLIENT.checkAttachs(source,Item,Weapon) then
@@ -1208,10 +1208,10 @@ function Creative.UseItem(Slot,Amount)
 							vCLIENT.putAttachs(source,Item,Weapon)
 						end
 					else
-						TriggerClientEvent("Notify",source,"amarelo","O armamento não possui suporte ao componente.",5000)
+						TriggerClientEvent("Notify",source,"amarelo","O armamento já possui o componente equipado.",5000)
 					end
 				else
-					TriggerClientEvent("Notify",source,"amarelo","O armamento já possui o componente equipado.",5000)
+					TriggerClientEvent("Notify",source,"amarelo","O armamento não possui suporte ao componente.",5000)
 				end
 			end
 		elseif Use[Item] then

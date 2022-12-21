@@ -790,7 +790,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 
 									TriggerClientEvent("sounds:Private",source,"cash",0.1)
 
-									TriggerEvent("Discord",Type,"**Passaporte:** "..Passport.."\n**Comprou:** "..Amount.."x "..itemName(Item),3042892)
+									TriggerEvent("Discord",Type,"**Passaporte:** "..Passport.."\n**Comprou:** "..Amount.."x "..itemName(Item),10181046)
 								else
 									TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 								end
@@ -800,7 +800,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 								vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 								TriggerClientEvent("sounds:Private",source,"cash",0.1)
 
-								TriggerEvent("Discord",Type,"**Passaporte:** "..Passport.."\n**Comprou:** "..Amount.."x "..itemName(Item),3042892)
+								TriggerEvent("Discord",Type,"**Passaporte:** "..Passport.."\n**Comprou:** "..Amount.."x "..itemName(Item),10181046)
 							else
 								TriggerClientEvent("Notify",source,"vermelho","<b>"..itemName(shops[Type]["item"]).."</b> insuficiente.",5000)
 							end
@@ -810,7 +810,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 								vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 								TriggerClientEvent("Notify",source,"verde","Comprou <b>"..Amount.."x "..itemName(Item).."</b> por <b>"..shops[Type]["List"][Item] * Amount.." Gemas</b>.",5000)
 
-								TriggerEvent("Discord",Type,"**Passaporte:** "..Passport.."\n**Comprou:** "..Amount.."x "..itemName(Item),3042892)
+								TriggerEvent("Discord",Type,"**Passaporte:** "..Passport.."\n**Comprou:** "..Amount.."x "..itemName(Item),10181046)
 							else
 								TriggerClientEvent("Notify",source,"vermelho","<b>Gemas</b> insuficientes.",5000)
 							end

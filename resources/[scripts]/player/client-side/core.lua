@@ -187,8 +187,8 @@ end)
 -- SETCOCAINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("setCocaine")
-AddEventHandler("setCocaine",function()
-	Cocaine = Cocaine + 30
+AddEventHandler("setCocaine",function(Number)
+	Cocaine = Cocaine + Number
 
 	if not GetScreenEffectIsActive("MinigameTransitionIn") then
 		StartScreenEffect("MinigameTransitionIn",0,true)

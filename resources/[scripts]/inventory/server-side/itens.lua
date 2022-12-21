@@ -655,8 +655,8 @@ Use = {
 					end
 
 					vRP.ChemicalTimer(Passport,10)
-					TriggerClientEvent("setCocaine",source)
 					local Cooldown = 0.1 * Points
+					TriggerClientEvent("setCocaine",source,5 + Cooldown)
 					TriggerClientEvent("setEnergetic",source,5 + Cooldown,1.39 + Cooldown,Cooldown + 0.0)
 				end
 			end

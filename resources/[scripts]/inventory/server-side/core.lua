@@ -1188,7 +1188,7 @@ function Creative.UseItem(Slot,Amount)
 					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
 				end
 			end
-		elseif Item == "attachsFlashlight" or Item == "attachsCrosshair" or Item == "attachsSilencer" or Item == "attachsMagazine" or Item == "attachsGrip" then
+		elseif Item == "attachsFlashlight" or Item == "attachsCrosshair" or Item == "attachsSilencer" or Item == "attachsMagazine" or Item == "attachsGrip" or Item == "attachsMazzleBrake" or Item == "attachsMazzleBoost" then
 			local Weapon = vCLIENT.returnWeapon(source)
 			if Weapon then
 				if vCLIENT.checkAttachs(source,Item,Weapon) then

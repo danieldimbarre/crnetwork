@@ -77,10 +77,10 @@ Objects = {
 	["1"] = { x = 594.59, y = 146.52, z = 97.30, h = 70.04, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
 	["2"] = { x = 660.44, y = 268.29, z = 102.04, h = 152.09, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
 	["3"] = { x = 552.54, y = -198.45, z = 53.75, h = 89.32, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	-- ["4"] = { x = 339.75, y = -580.95, z = 73.42, h = 67.19, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
+	["4"] = { x = -651.42, y = 328.19, z = 140.14, h = 260.79, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
 	["5"] = { x = 696.12, y = -965.69, z = 23.26, h = 271.33, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
 	["6"] = { x = 1152.45, y = -1531.51, z = 34.65, h = 144.89, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	-- ["7"] = { x = 1382.1, y = -2081.97, z = 51.25, h = 220.16, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
+	["7"] = { x = 1382.1, y = -2081.97, z = 51.25, h = 220.16, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
 	["8"] = { x = 589.32, y = -2802.73, z = 5.32, h = 328.01, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
 	["9"] = { x = -453.19, y = -2810.47, z = 6.56, h = 225.82, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
 	["10"] = { x = -1007.18, y = -2836.12, z = 13.20, h = 149.3, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
@@ -122,21 +122,23 @@ Objects = {
 	["45"] = { x = 63.22, y = 6323.67, z = 37.87, h = 301.22, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 18 },
 	["46"] = { x = -736.64, y = 5594.98, z = 40.66, h = 268.78, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 19 },
 
-	["47"] = { x = -2682.86, y = 2304.87, z = 20.85, h = 164.19, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 1 },
-	["48"] = { x = -1282.33, y = 2559.98, z = 17.4, h = 148.06, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 2 },
-	["49"] = { x = 159.65, y = 3118.8, z = 42.44, h = 16.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 3 },
-	["50"] = { x = 1061.43, y = 3527.62, z = 33.15, h = 255.93, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 4 },
-	["51"] = { x = 2370.22, y = 3156.55, z = 47.21, h = 221.77, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 5 },
-	["52"] = { x = 2520.51, y = 2637.83, z = 36.95, h = 314.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 6 },
-	["53"] = { x = 2572.37, y = 477.44, z = 107.68, h = 269.49, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 7 },
-	["54"] = { x = 1223.15, y = -1079.56, z = 37.53, h = 123.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 8 },
-	["55"] = { x = 1048.49, y = -247.53, z = 68.66, h = 149.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 9 },
-	["56"] = { x = 499.41, y = -529.38, z = 23.76, h = 262.13, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 10 },
-	["57"] = { x = 592.53, y = -2115.87, z = 4.76, h = 100.96, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 11 },
-	["58"] = { x = 523.43, y = -2578.67, z = 13.82, h = 318.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 12 },
-	["59"] = { x = -2.98, y = -1299.67, z = 28.28, h = 359.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 13 },
-	["60"] = { x = 713.88, y = -850.95, z = 23.3, h = 271.63, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 14 }
-	-- ["61"] = { x = 183.11, y = -1086.93, z = 28.28, h = 348.57, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies", perm = "Aztecas", id = 15 },
+	["47"] = { x = -2682.86, y = 2304.87, z = 20.85, h = 164.19, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 1 },
+	["48"] = { x = -1282.33, y = 2559.98, z = 17.4, h = 148.06, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 2 },
+	["49"] = { x = 159.65, y = 3118.8, z = 42.44, h = 16.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 3 },
+	["50"] = { x = 1061.43, y = 3527.62, z = 33.15, h = 255.93, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 4 },
+	["51"] = { x = 2370.22, y = 3156.55, z = 47.21, h = 221.77, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 5 },
+	["52"] = { x = 2520.51, y = 2637.83, z = 36.95, h = 314.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 6 },
+	["53"] = { x = 2572.37, y = 477.44, z = 107.68, h = 269.49, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 7 },
+	["54"] = { x = 1223.15, y = -1079.56, z = 37.53, h = 123.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 8 },
+	["55"] = { x = 1048.49, y = -247.53, z = 68.66, h = 149.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 9 },
+	["56"] = { x = 499.41, y = -529.38, z = 23.76, h = 262.13, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 10 },
+	["57"] = { x = 592.53, y = -2115.87, z = 4.76, h = 100.96, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 11 },
+	["58"] = { x = 523.43, y = -2578.67, z = 13.82, h = 318.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 12 },
+	["59"] = { x = -2.98, y = -1299.67, z = 28.28, h = 359.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 13 },
+	["60"] = { x = 713.88, y = -850.95, z = 23.3, h = 271.63, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 14 },
+	-- ["61"] = { x = 183.11, y = -1086.93, z = 28.28, h = 348.57, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 15 },
+
+	["62"] = { x = 1562.37, y = 3566.33, z = 34.12, h = 0.0, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS
@@ -378,45 +380,35 @@ LootItens = {
 			{ ["item"] = "cotton", ["min"] = 1, ["max"] = 3 },
 			{ ["item"] = "plaster", ["min"] = 1, ["max"] = 3 },
 			{ ["item"] = "saline", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "sulfuric", ["min"] = 1, ["max"] = 3 }
+			{ ["item"] = "sulfuric", ["min"] = 2, ["max"] = 3 },
+			{ ["item"] = "silk", ["min"] = 2, ["max"] = 3 }
 		}
 	},
-	["Weapons"] = {
+	["Weapons"] = {	
 		["Cooldown"] = 10,
 		["List"] = {
-			-- { ["item"] = "roadsigns", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "techtrash", ["min"] = 1, ["max"] = 1 },
 			{ ["item"] = "riflebody", ["min"] = 1, ["max"] = 1 },
 			{ ["item"] = "smgbody", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "pistolbody", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "sheetmetal", ["min"] = 1, ["max"] = 2 },
-			-- { ["item"] = "explosives", ["min"] = 1, ["max"] = 2 },
-			-- { ["item"] = "aluminum", ["min"] = 2, ["max"] = 3 },
-			-- { ["item"] = "copper", ["min"] = 2, ["max"] = 3 }
+			{ ["item"] = "pistolbody", ["min"] = 1, ["max"] = 1 }
+		}
+	},
+	["Ammo"] = {	
+		["Cooldown"] = 10,
+		["List"] = {
+			{ ["item"] = "polvora", ["min"] = 2, ["max"] = 5 }
 		}
 	},
 	["Supplies"] = {
-		["Random"] = true,
-		["Cooldown"] = 10,
+		["Cooldown"] = 3600,
 		["List"] = {
-			{ ["item"] = "tarp", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "sheetmetal", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "roadsigns", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "leather", ["min"] = 1, ["max"] = 3 },
-			-- { ["item"] = "animalfat", ["min"] = 1, ["max"] = 2 },
-			-- { ["item"] = "cotton", ["min"] = 1, ["max"] = 2 },
-			-- { ["item"] = "plaster", ["min"] = 1, ["max"] = 2 },
-			-- { ["item"] = "sulfuric", ["min"] = 1, ["max"] = 2 },
-			-- { ["item"] = "saline", ["min"] = 1, ["max"] = 2 },
-			-- { ["item"] = "alcohol", ["min"] = 1, ["max"] = 2 },
-			-- { ["item"] = "syringe", ["min"] = 2, ["max"] = 3 },
-			-- { ["item"] = "card01", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "card02", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "card04", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "card05", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "silk", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "polvora", ["min"] = 2, ["max"] = 5 }
+			{ ["item"] = "tarp", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "sheetmetal", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "roadsigns", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "leather", ["min"] = 2, ["max"] = 3 },
+			{ ["item"] = "plaster", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "sheetmetal", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "explosives", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "techtrash", ["min"] = 2, ["max"] = 2 },
 		}
 	}
 }

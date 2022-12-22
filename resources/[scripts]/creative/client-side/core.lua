@@ -472,7 +472,7 @@ CreateThread(function()
 				for Number = 1,#Teleport do
 					local v = Teleport[Number]
 					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-					if Distance <= 1 then
+					if Distance <= 2.5 then
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) then

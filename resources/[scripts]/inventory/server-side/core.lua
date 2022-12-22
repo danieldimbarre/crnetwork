@@ -398,12 +398,13 @@ LootItens = {
 		}
 	},
 	["Supplies"] = {
+		["Random"] = true,
 		["Cooldown"] = 10,
 		["List"] = {
-			-- { ["item"] = "tarp", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "sheetmetal", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "roadsigns", ["min"] = 1, ["max"] = 1 },
-			-- { ["item"] = "leather", ["min"] = 1, ["max"] = 3 },
+			{ ["item"] = "tarp", ["min"] = 1, ["max"] = 1 },
+			{ ["item"] = "sheetmetal", ["min"] = 1, ["max"] = 1 },
+			{ ["item"] = "roadsigns", ["min"] = 1, ["max"] = 1 },
+			{ ["item"] = "leather", ["min"] = 1, ["max"] = 3 },
 			-- { ["item"] = "animalfat", ["min"] = 1, ["max"] = 2 },
 			-- { ["item"] = "cotton", ["min"] = 1, ["max"] = 2 },
 			-- { ["item"] = "plaster", ["min"] = 1, ["max"] = 2 },
@@ -1607,19 +1608,34 @@ function Creative.Loot(Entity,Service)
 					vRPC.stopAnim(source,false)
 					Player(source)["state"]["Buttons"] = false
 
-					local randItem = math.random(#LootItens[Service]["List"])
-					local randAmount = math.random(LootItens[Service]["List"][randItem]["min"],LootItens[Service]["List"][randItem]["max"])
-					local itemSelect = { LootItens[Service]["List"][randItem]["item"],randAmount }
+					if not LootItens[Service]["Random"] then
+						local randItem = math.random(#LootItens[Service]["List"])
+						local randAmount = math.random(LootItens[Service]["List"][randItem]["min"],LootItens[Service]["List"][randItem]["max"])
+						local itemSelect = { LootItens[Service]["List"][randItem]["item"],randAmount }
 
-					if (vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport) then
-						vRP.GenerateItem(Passport,itemSelect[1],itemSelect[2],true)
+						if (vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport) then
+							vRP.GenerateItem(Passport,itemSelect[1],itemSelect[2],true)
+
+							if Collect[Passport] then
+								vDELIVER.Update(source)
+							end
+						else
+							TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+							Boxes[Entity][Passport] = nil
+						end
+					else
+						for _,v in pairs(LootItens[Service]["List"]) do
+							local randAmount = math.random(v["min"],v["max"])
+							if (vRP.InventoryWeight(Passport) + itemWeight(v["item"]) * randAmount) <= vRP.GetWeight(Passport) then
+								vRP.GenerateItem(Passport,v["item"],randAmount,true)
+							else
+								TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+							end
+						end
 
 						if Collect[Passport] then
 							vDELIVER.Update(source)
 						end
-					else
-						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
-						Boxes[Entity][Passport] = nil
 					end
 
 					Loots[Passport] = nil

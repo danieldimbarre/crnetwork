@@ -366,7 +366,17 @@ local List = {
 			-- 		["copper"] = 8,
 			-- 		["polvora"] = 3
 			-- 	}
-			-- }
+			-- },
+			["vest"] = {
+                ["amount"] = 1,
+                ["destroy"] = false,
+                ["require"] = {
+                    ["tarp"] = 1,
+                    ["roadsigns"] = 4,
+                    ["leather"] = 12,
+                    ["sheetmetal"] = 5
+                }
+            }
 		}
 	},	
 	["Marabunta"] = {
@@ -661,7 +671,77 @@ local List = {
 				}
 			}
 		}
-	},				
+	},
+	["Triads"] = {
+		["perm"] = "Triads",
+		["List"] = {
+			["attachsFlashlight"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 2,
+					["glass"] = 1,
+					["plastic"] = 3
+				}
+			},
+			["attachsCrosshair"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 2,
+					["glass"] = 2,
+					["aluminum"] = 1
+				}
+			},
+			["attachsSilencer"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 6,
+					["sheetmetal"] = 6
+				}
+			},
+			["attachsMagazine"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 4,
+					["sheetmetal"] = 3
+				}
+			},
+			["attachsGrip"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 2,
+					["aluminum"] = 3
+				}
+			},
+			["attachsMazzleBrake"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 6,
+					["sheetmetal"] = 6
+				}
+			},
+			["attachsMazzleBoost"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 6,
+					["sheetmetal"] = 6
+				}
+			}
+		}
+	},
 	["CraftingTable"] = {
 		["perm"] = { "Ballas","Families","Vagos","Altruits" },
 		["List"] = {

@@ -138,7 +138,21 @@ Objects = {
 	["60"] = { x = 713.88, y = -850.95, z = 23.3, h = 271.63, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 14 },
 	-- ["61"] = { x = 183.11, y = -1086.93, z = 28.28, h = 348.57, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammo", perm = "Aztecas", id = 15 },
 
-	["62"] = { x = 1562.37, y = 3566.33, z = 34.12, h = 0.0, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["62"] = { x = 1562.37, y = 3566.33, z = 33.12, h = 0.0, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["63"] = { x = 3603.31, y = 3663.08, z = 32.87, h = 76.54, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["64"] = { x = -951.73, y = -3049.3, z = 12.93, h = 184.26, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["65"] = { x = 61.57, y = 131.27, z = 79.53, h = 161.58, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["66"] = { x = -86.87, y = 6503.06, z = 40.37, h = 0.0, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["67"] = { x = 2523.9, y = 4098.98, z = 37.62, h = 243.78, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["68"] = { x = 1643.93, y = 4856.67, z = 41.01, h = 8.51, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["69"] = { x = 2359.65, y = 3120.4, z = 46.21, h = 73.71, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["70"] = { x = 1195.35, y = 2630.91, z = 36.81, h = 8.51, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["71"] = { x = 619.27, y = 2785.14, z = 42.47, h = 11.34, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["72"] = { x = 558.57, y = 2666.96, z = 45.96, h = 14.18, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["73"] = { x = 225.14, y = 2588.23, z = 44.53, h = 286.3, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["74"] = { x = -26.05, y = -1291.52, z = 28.5, h = 82.21, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["75"] = { x = 751.57, y = -1860.52, z = 28.28, h = 357.17, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
+	["76"] = { x = -429.27, y = -2169.23, z = 9.33, h = 0.0, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS

@@ -192,124 +192,114 @@ function InitiateMenus(isMotorcycle)
 		populateMenu("mainMenu",26,"Vehicle Extras","none")
 
 		populateMenu("mainMenu",25,"Plate Index","none")
+	end
 
-		finishPopulatingMenu("mainMenu")
+	finishPopulatingMenu("mainMenu")
 
-		for k,v in ipairs(vehicleCustomisation) do 
-			local validMods,amountValidMods = CheckValidMods(v["category"],v["id"])
-			local currentMod,currentModName = GetCurrentMod(v["id"])
+	for k,v in ipairs(vehicleCustomisation) do 
+		local validMods,amountValidMods = CheckValidMods(v["category"],v["id"])
+		local currentMod,currentModName = GetCurrentMod(v["id"])
 
-			if amountValidMods > 0 or v["id"] == 18 then
-				if v["id"] == 11 or v["id"] == 12 or v["id"] == 13 or v["id"] == 15 or v["id"] == 16 then
-					local tempNum = 0
+		if amountValidMods > 0 or v["id"] == 18 then
+			if v["id"] == 11 or v["id"] == 12 or v["id"] == 13 or v["id"] == 15 or v["id"] == 16 then
+				local tempNum = 0
 
-					createMenu(v["category"]:gsub("%s+","").."Menu",v["category"],"Choose an Upgrade")
+				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"],"Choose an Upgrade")
 
-					for m,n in pairs(validMods) do
-						tempNum = tempNum + 1
+				for m,n in pairs(validMods) do
+					tempNum = tempNum + 1
 
-						populateMenu(v["category"]:gsub("%s+","").."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices[v["type"]][tempNum])
+					populateMenu(v["category"]:gsub("%s+","").."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices[v["type"]][tempNum])
 
-						if currentMod == n["id"] then
-							updateItem2Text(v["category"]:gsub("%s+","").."Menu",n["id"],"Instalado")
-						end
+					if currentMod == n["id"] then
+						updateItem2Text(v["category"]:gsub("%s+","").."Menu",n["id"],"Instalado")
 					end
-
-					finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
-				elseif v["id"] == 18 then
-					local currentTurboState = GetCurrentTurboState()
-					createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customisation","Ativar / Desativar turbo")
-
-					populateMenu(v["category"]:gsub("%s+","").."Menu",0,"Desativado","$7500")
-					populateMenu(v["category"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["turbo"])
-
-					updateItem2Text(v["category"]:gsub("%s+","").."Menu",currentTurboState,"Instalado")
-
-					finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
-				else
-					createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customisation","Choose a Mod")
-
-					for m,n in pairs(validMods) do
-						populateMenu(v["category"]:gsub("%s+","").."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["cosmetics"])
-
-						if currentMod == n["id"] then
-							updateItem2Text(v["category"]:gsub("%s+","").."Menu",n["id"],"Instalado")
-						end
-					end
-
-					finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
 				end
-			end
-		end
-
-		createMenu("ResprayMenu","Respray","Choose a Colour Category")
-
-		populateMenu("ResprayMenu",0,"Primary Colour","none")
-		populateMenu("ResprayMenu",1,"Secondary Colour","none")
-		populateMenu("ResprayMenu",2,"Pearlescent Colour","none")
-		populateMenu("ResprayMenu",3,"Wheel Colour","none")
-		populateMenu("ResprayMenu",4,"Interior Colour","none")
-		populateMenu("ResprayMenu",5,"Dashboard Colour","none")
-
-		finishPopulatingMenu("ResprayMenu")
-
-		createMenu("ResprayTypeMenu","Respray Types","Escolha um tipo de cor")
-
-		for k,v in ipairs(vehicleResprayOptions) do
-			populateMenu("ResprayTypeMenu",v["id"],v["category"],"none")
-		end
-
-		finishPopulatingMenu("ResprayTypeMenu")
-
-		for k,v in ipairs(vehicleResprayOptions) do 
-			createMenu(v["category"].."Menu",v["category"],"Escolha uma cor")
-
-			for m,n in ipairs(v["colours"]) do
-				populateMenu(v["category"].."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["respray"])
-			end
-
-			finishPopulatingMenu(v["category"].."Menu")
-		end
-
-		createMenu("WheelsMenu","Wheel Categories","Choose a Category")
-
-		for k,v in ipairs(vehicleWheelOptions) do 
-			if isMotorcycle then
-				if v["id"] == -1 or v["id"] == 20 or v["id"] == 6 then
-					populateMenu("WheelsMenu",v["id"],v["category"],"none")
-				end
-			else
-				populateMenu("WheelsMenu",v["id"],v["category"],"none")
-			end
-		end
-
-		finishPopulatingMenu("WheelsMenu")
-
-		for k,v in ipairs(vehicleWheelOptions) do 
-			if v["id"] == -1 then
-				local currentCustomWheelState = GetCurrentCustomWheelState()
-				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"],"Ativar / Desativar rodas")
-
-				populateMenu(v["category"]:gsub("%s+","").."Menu",0,"Desativado","$0")
-				populateMenu(v["category"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["customwheels"])
-
-				updateItem2Text(v["category"]:gsub("%s+","").."Menu",currentCustomWheelState,"Instalado")
 
 				finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
-			elseif v["id"] ~= 20 then
-				if isMotorcycle then
-					if v["id"] == 6 then
-						local validMods,amountValidMods = CheckValidMods(v["category"],v.wheelID,v["id"])
+			elseif v["id"] == 18 then
+				local currentTurboState = GetCurrentTurboState()
+				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customisation","Ativar / Desativar turbo")
 
-						createMenu(v["category"].."Menu",v["category"].." Wheels","Choose a Wheel")
+				populateMenu(v["category"]:gsub("%s+","").."Menu",0,"Desativado","$7500")
+				populateMenu(v["category"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["turbo"])
 
-						for m,n in pairs(validMods) do
-							populateMenu(v["category"].."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["wheels"])
-						end
+				updateItem2Text(v["category"]:gsub("%s+","").."Menu",currentTurboState,"Instalado")
 
-						finishPopulatingMenu(v["category"].."Menu")
+				finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
+			else
+				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customisation","Choose a Mod")
+
+				for m,n in pairs(validMods) do
+					populateMenu(v["category"]:gsub("%s+","").."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["cosmetics"])
+
+					if currentMod == n["id"] then
+						updateItem2Text(v["category"]:gsub("%s+","").."Menu",n["id"],"Instalado")
 					end
-				else
+				end
+
+				finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
+			end
+		end
+	end
+
+	createMenu("ResprayMenu","Respray","Choose a Colour Category")
+
+	populateMenu("ResprayMenu",0,"Primary Colour","none")
+	populateMenu("ResprayMenu",1,"Secondary Colour","none")
+	populateMenu("ResprayMenu",2,"Pearlescent Colour","none")
+	populateMenu("ResprayMenu",3,"Wheel Colour","none")
+	populateMenu("ResprayMenu",4,"Interior Colour","none")
+	populateMenu("ResprayMenu",5,"Dashboard Colour","none")
+
+	finishPopulatingMenu("ResprayMenu")
+
+	createMenu("ResprayTypeMenu","Respray Types","Escolha um tipo de cor")
+
+	for k,v in ipairs(vehicleResprayOptions) do
+		populateMenu("ResprayTypeMenu",v["id"],v["category"],"none")
+	end
+
+	finishPopulatingMenu("ResprayTypeMenu")
+
+	for k,v in ipairs(vehicleResprayOptions) do 
+		createMenu(v["category"].."Menu",v["category"],"Escolha uma cor")
+
+		for m,n in ipairs(v["colours"]) do
+			populateMenu(v["category"].."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["respray"])
+		end
+
+		finishPopulatingMenu(v["category"].."Menu")
+	end
+
+	createMenu("WheelsMenu","Wheel Categories","Choose a Category")
+
+	for k,v in ipairs(vehicleWheelOptions) do 
+		if isMotorcycle then
+			if v["id"] == -1 or v["id"] == 20 or v["id"] == 6 then
+				populateMenu("WheelsMenu",v["id"],v["category"],"none")
+			end
+		else
+			populateMenu("WheelsMenu",v["id"],v["category"],"none")
+		end
+	end
+
+	finishPopulatingMenu("WheelsMenu")
+
+	for k,v in ipairs(vehicleWheelOptions) do 
+		if v["id"] == -1 then
+			local currentCustomWheelState = GetCurrentCustomWheelState()
+			createMenu(v["category"]:gsub("%s+","").."Menu",v["category"],"Ativar / Desativar rodas")
+
+			populateMenu(v["category"]:gsub("%s+","").."Menu",0,"Desativado","$0")
+			populateMenu(v["category"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["customwheels"])
+
+			updateItem2Text(v["category"]:gsub("%s+","").."Menu",currentCustomWheelState,"Instalado")
+
+			finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
+		elseif v["id"] ~= 20 then
+			if isMotorcycle then
+				if v["id"] == 6 then
 					local validMods,amountValidMods = CheckValidMods(v["category"],v.wheelID,v["id"])
 
 					createMenu(v["category"].."Menu",v["category"].." Wheels","Choose a Wheel")
@@ -320,134 +310,144 @@ function InitiateMenus(isMotorcycle)
 
 					finishPopulatingMenu(v["category"].."Menu")
 				end
-			end
-		end
+			else
+				local validMods,amountValidMods = CheckValidMods(v["category"],v.wheelID,v["id"])
 
-		local currentWheelSmokeR,currentWheelSmokeG,currentWheelSmokeB = GetCurrentVehicleWheelSmokeColour()
-		createMenu("TyreSmokeMenu","Tyre Smoke Customisation","Escolha uma cor")
+				createMenu(v["category"].."Menu",v["category"].." Wheels","Choose a Wheel")
 
-		for k,v in ipairs(vehicleTyreSmokeOptions) do
-			populateMenu("TyreSmokeMenu",k,v["name"],"$"..vehicleCustomisationPrices["wheelsmoke"])
-
-			if v["r"] == currentWheelSmokeR and v["g"] == currentWheelSmokeG and v["b"] == currentWheelSmokeB then
-				updateItem2Text("TyreSmokeMenu",k,"Instalado")
-			end
-		end
-
-		finishPopulatingMenu("TyreSmokeMenu")
-
-		local currentWindowTint = GetCurrentWindowTint()
-		createMenu("WindowTintMenu","Window Tint Customisation","Choose a Tint")
-
-		for k,v in ipairs(vehicleWindowTintOptions) do
-			populateMenu("WindowTintMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["windowtint"])
-
-			if currentWindowTint == v["id"] then
-				updateItem2Text("WindowTintMenu",v["id"],"Instalado")
-			end
-		end
-
-		finishPopulatingMenu("WindowTintMenu")
-
-		local temporaryPlate = GetVehicleNumberPlateTextIndex(vehicle)
-		createMenu("PlateIndexMenu","Plate Colour","Escolha o tipo")
-
-		local plateTypes = {
-			"San Andreas Cosmo",
-			"San Andreas Supermesh",
-			"San Andreas Outsider",
-			"San Andreas Slicer",
-			"San Andreas Elquatro",
-			"San Andreas Dubbed"
-		}
-
-		for i = 0,#plateTypes - 1 do
-			populateMenu("PlateIndexMenu",i,plateTypes[i+1],"$1000")
-
-			if temporaryPlate == i then
-				updateItem2Text("PlateIndexMenu",i,"Instalado")
-			end
-		end
-		finishPopulatingMenu("PlateIndexMenu")
-
-		createMenu("VehicleExtrasMenu","Vehicle Extras Customisation","Toggle Extras")
-
-		for i = 1,12 do
-			if DoesExtraExist(vehicle,i) then
-				if IsVehicleExtraTurnedOn(vehicle,i) then
-					populateMenu("VehicleExtrasMenu",i,"Extra 0"..i,"Ativado")
-				else
-					populateMenu("VehicleExtrasMenu",i,"Extra 0"..i,"Desativado")
+				for m,n in pairs(validMods) do
+					populateMenu(v["category"].."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["wheels"])
 				end
+
+				finishPopulatingMenu(v["category"].."Menu")
 			end
 		end
-
-		finishPopulatingMenu("VehicleExtrasMenu")
-
-		createMenu("NeonsMenu","Neon Customisation","Choose a Category")
-
-		for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
-			populateMenu("NeonsMenu",v["id"],v["name"],"none")
-		end
-
-		populateMenu("NeonsMenu",-1,"Neon Colours","none")
-		finishPopulatingMenu("NeonsMenu")
-
-		for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
-			local currentNeonState = GetCurrentNeonState(v["id"])
-			createMenu(v["name"]:gsub("%s+","").."Menu","Neon Customisation","Ativar / Desativar Neon")
-
-			populateMenu(v["name"]:gsub("%s+","").."Menu",0,"Desativado","$0")
-			populateMenu(v["name"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["neonside"])
-
-			updateItem2Text(v["name"]:gsub("%s+","").."Menu",currentNeonState,"Instalado")
-
-			finishPopulatingMenu(v["name"]:gsub("%s+","").."Menu")
-		end
-
-		local currentNeonR,currentNeonG,currentNeonB = GetCurrentNeonColour()
-		createMenu("NeonColoursMenu","Neon Colours","Escolha uma cor")
-
-		for k,v in ipairs(vehicleNeonOptions["neonColours"]) do
-			populateMenu("NeonColoursMenu",k,vehicleNeonOptions["neonColours"][k]["name"],"$"..vehicleCustomisationPrices["neoncolours"])
-
-			if currentNeonR == vehicleNeonOptions["neonColours"][k]["r"] and currentNeonG == vehicleNeonOptions["neonColours"][k]["g"] and currentNeonB == vehicleNeonOptions["neonColours"][k]["b"] then
-				updateItem2Text("NeonColoursMenu",k,"Instalado")
-			end
-		end
-
-		finishPopulatingMenu("NeonColoursMenu")
-
-		createMenu("XenonsMenu","Xenon Customisation","Escolha a categoria")
-
-		populateMenu("XenonsMenu",0,"Headlights","none")
-		populateMenu("XenonsMenu",1,"Xenon Colours","none")
-
-		finishPopulatingMenu("XenonsMenu")
-
-		local currentXenonState = GetCurrentXenonState()
-		createMenu("HeadlightsMenu","Headlights Customisation","Ativar / Desativar Xenons")
-
-		populateMenu("HeadlightsMenu",0,"Desativado","$0")
-		populateMenu("HeadlightsMenu",1,"Ativado","$"..vehicleCustomisationPrices["headlights"])
-
-		updateItem2Text("HeadlightsMenu",currentXenonState,"Instalado")
-
-		finishPopulatingMenu("HeadlightsMenu")
-
-		local currentXenonColour = GetCurrentXenonColour()
-		createMenu("XenonColoursMenu","Xenon Colours","Escolha uma cor")
-
-		for k,v in ipairs(vehicleXenonOptions["xenonColours"]) do
-			populateMenu("XenonColoursMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["xenoncolours"])
-
-			if currentXenonColour == v["id"] then
-				updateItem2Text("XenonColoursMenu",v["id"],"Instalado")
-			end
-		end
-
-		finishPopulatingMenu("XenonColoursMenu")
 	end
+
+	local currentWheelSmokeR,currentWheelSmokeG,currentWheelSmokeB = GetCurrentVehicleWheelSmokeColour()
+	createMenu("TyreSmokeMenu","Tyre Smoke Customisation","Escolha uma cor")
+
+	for k,v in ipairs(vehicleTyreSmokeOptions) do
+		populateMenu("TyreSmokeMenu",k,v["name"],"$"..vehicleCustomisationPrices["wheelsmoke"])
+
+		if v["r"] == currentWheelSmokeR and v["g"] == currentWheelSmokeG and v["b"] == currentWheelSmokeB then
+			updateItem2Text("TyreSmokeMenu",k,"Instalado")
+		end
+	end
+
+	finishPopulatingMenu("TyreSmokeMenu")
+
+	local currentWindowTint = GetCurrentWindowTint()
+	createMenu("WindowTintMenu","Window Tint Customisation","Choose a Tint")
+
+	for k,v in ipairs(vehicleWindowTintOptions) do
+		populateMenu("WindowTintMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["windowtint"])
+
+		if currentWindowTint == v["id"] then
+			updateItem2Text("WindowTintMenu",v["id"],"Instalado")
+		end
+	end
+
+	finishPopulatingMenu("WindowTintMenu")
+
+	local temporaryPlate = GetVehicleNumberPlateTextIndex(vehicle)
+	createMenu("PlateIndexMenu","Plate Colour","Escolha o tipo")
+
+	local plateTypes = {
+		"San Andreas Cosmo",
+		"San Andreas Supermesh",
+		"San Andreas Outsider",
+		"San Andreas Slicer",
+		"San Andreas Elquatro",
+		"San Andreas Dubbed"
+	}
+
+	for i = 0,#plateTypes - 1 do
+		populateMenu("PlateIndexMenu",i,plateTypes[i+1],"$1000")
+
+		if temporaryPlate == i then
+			updateItem2Text("PlateIndexMenu",i,"Instalado")
+		end
+	end
+	finishPopulatingMenu("PlateIndexMenu")
+
+	createMenu("VehicleExtrasMenu","Vehicle Extras Customisation","Toggle Extras")
+
+	for i = 1,12 do
+		if DoesExtraExist(vehicle,i) then
+			if IsVehicleExtraTurnedOn(vehicle,i) then
+				populateMenu("VehicleExtrasMenu",i,"Extra 0"..i,"Ativado")
+			else
+				populateMenu("VehicleExtrasMenu",i,"Extra 0"..i,"Desativado")
+			end
+		end
+	end
+
+	finishPopulatingMenu("VehicleExtrasMenu")
+
+	createMenu("NeonsMenu","Neon Customisation","Choose a Category")
+
+	for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
+		populateMenu("NeonsMenu",v["id"],v["name"],"none")
+	end
+
+	populateMenu("NeonsMenu",-1,"Neon Colours","none")
+	finishPopulatingMenu("NeonsMenu")
+
+	for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
+		local currentNeonState = GetCurrentNeonState(v["id"])
+		createMenu(v["name"]:gsub("%s+","").."Menu","Neon Customisation","Ativar / Desativar Neon")
+
+		populateMenu(v["name"]:gsub("%s+","").."Menu",0,"Desativado","$0")
+		populateMenu(v["name"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["neonside"])
+
+		updateItem2Text(v["name"]:gsub("%s+","").."Menu",currentNeonState,"Instalado")
+
+		finishPopulatingMenu(v["name"]:gsub("%s+","").."Menu")
+	end
+
+	local currentNeonR,currentNeonG,currentNeonB = GetCurrentNeonColour()
+	createMenu("NeonColoursMenu","Neon Colours","Escolha uma cor")
+
+	for k,v in ipairs(vehicleNeonOptions["neonColours"]) do
+		populateMenu("NeonColoursMenu",k,vehicleNeonOptions["neonColours"][k]["name"],"$"..vehicleCustomisationPrices["neoncolours"])
+
+		if currentNeonR == vehicleNeonOptions["neonColours"][k]["r"] and currentNeonG == vehicleNeonOptions["neonColours"][k]["g"] and currentNeonB == vehicleNeonOptions["neonColours"][k]["b"] then
+			updateItem2Text("NeonColoursMenu",k,"Instalado")
+		end
+	end
+
+	finishPopulatingMenu("NeonColoursMenu")
+
+	createMenu("XenonsMenu","Xenon Customisation","Escolha a categoria")
+
+	populateMenu("XenonsMenu",0,"Headlights","none")
+	populateMenu("XenonsMenu",1,"Xenon Colours","none")
+
+	finishPopulatingMenu("XenonsMenu")
+
+	local currentXenonState = GetCurrentXenonState()
+	createMenu("HeadlightsMenu","Headlights Customisation","Ativar / Desativar Xenons")
+
+	populateMenu("HeadlightsMenu",0,"Desativado","$0")
+	populateMenu("HeadlightsMenu",1,"Ativado","$"..vehicleCustomisationPrices["headlights"])
+
+	updateItem2Text("HeadlightsMenu",currentXenonState,"Instalado")
+
+	finishPopulatingMenu("HeadlightsMenu")
+
+	local currentXenonColour = GetCurrentXenonColour()
+	createMenu("XenonColoursMenu","Xenon Colours","Escolha uma cor")
+
+	for k,v in ipairs(vehicleXenonOptions["xenonColours"]) do
+		populateMenu("XenonColoursMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["xenoncolours"])
+
+		if currentXenonColour == v["id"] then
+			updateItem2Text("XenonColoursMenu",v["id"],"Instalado")
+		end
+	end
+
+	finishPopulatingMenu("XenonColoursMenu")
 end
 
 function DestroyMenus()

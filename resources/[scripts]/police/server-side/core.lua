@@ -38,8 +38,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local actived = {}
-local prisonMarkers = {}
+local Actived = {}
+local Reduces = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRESET
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -115,8 +115,8 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if actived[Passport] == nil then
-			actived[Passport] = true
+		if not Actived[Passport] then
+			Actived[Passport] = true
 
 			local Identity = vRP.Identity(Passport)
 			if Identity then
@@ -139,7 +139,7 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 				TriggerEvent("Discord","Police","**Policial:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,13541152)
 			end
 
-			actived[Passport] = nil
+			Actived[Passport] = nil
 		end
 	end
 end
@@ -172,40 +172,18 @@ function cRP.initFine(OtherPassport,Value,Message)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Value > 0 then
-		if actived[Passport] == nil then
-			actived[Passport] = true
+		if not Actived[Passport] then
+			Actived[Passport] = true
 
 			TriggerEvent("Discord","Police","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,2316674)
 			TriggerClientEvent("Notify",source,"verde","Multa aplicada.",5000)
 			TriggerClientEvent("police:Update",source,"reloadFine")
 			exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)
 
-			actived[Passport] = nil
+			Actived[Passport] = nil
 		end
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- PRISONSYNC
------------------------------------------------------------------------------------------------------------------------------------------
--- Citizen.CreateThread(function()
--- 	while true do
--- 		for k,v in pairs(prisonMarkers) do
--- 			if prisonMarkers[k][1] > 0 then
--- 				prisonMarkers[k][1] = prisonMarkers[k][1] - 1
-
--- 				if prisonMarkers[k][1] <= 0 then
--- 					if vRP.Source(prisonMarkers[k][2]) then
--- 						TriggerEvent("blipsystem:serviceExit",k)
--- 					end
-
--- 					prisonMarkers[k] = nil
--- 				end
--- 			end
--- 		end
-
--- 		Citizen.Wait(1000)
--- 	end
--- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REDUCEPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -216,11 +194,63 @@ function cRP.reducePrison()
 		vRP.UpdatePrison(Passport,math.random(2))
 
 		local Identity = vRP.Identity(Passport)
-		if parseInt(Identity["prison"]) <= 0 then
+		if Identity["prison"] <= 0 then
 			vCLIENT.syncPrison(source,false,true)
 		else
 			vCLIENT.asyncServices(source)
 		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- POLICE:REDUCES
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("police:Reduces")
+AddEventHandler("police:Reduces",function(Number)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local Identity = vRP.Identity(Passport)
+		if Identity["prison"] > 0 then
+			if not Reduces[Number] then
+				Reduces[Number] = {}
+			end
+
+			if Reduces[Number][Passport] then
+				if os.time() > Reduces[Number][Passport] then
+					reduceFunction(source,Passport,Number)
+				else
+					TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
+				end
+			else
+				reduceFunction(source,Passport,Number)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REDUCEFUNCTION
+-----------------------------------------------------------------------------------------------------------------------------------------
+function reduceFunction(source,Passport,Number)
+	vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+	TriggerClientEvent("Progress",source,"Vasculhando",10000)
+	Reduces[Number][Passport] = os.time() + 600
+	Player(source)["state"]["Buttons"] = true
+	Player(source)["state"]["Cancel"] = true
+	local timeProgress = 10
+
+	repeat
+		Wait(1000)
+		timeProgress = timeProgress - 1
+	until timeProgress <= 0
+
+	vRP.UpdatePrison(Passport,math.random(2))
+	Player(source)["state"]["Buttons"] = false
+	Player(source)["state"]["Cancel"] = false
+	vRPC.removeObjects(source)
+
+	local Identity = vRP.Identity(Passport)
+	if Identity["prison"] <= 0 then
+		vCLIENT.syncPrison(source,false,true)
 	end
 end
 --------------------------------------------------------------------------------------------------------------------------------------------------
@@ -228,8 +258,8 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
 	local Identity = vRP.Identity(Passport)
-	if parseInt(Identity["prison"]) > 0 then
-		TriggerClientEvent("Notify",source,"azul","Restam <b>"..parseInt(Identity["prison"]).." serviços</b>.",5000)
+	if Identity["prison"] > 0 then
+		TriggerClientEvent("Notify",source,"azul","Restam <b>"..Identity["prison"].." serviços</b>.",5000)
 		vCLIENT.syncPrison(source,true,true)
 	end
 end)

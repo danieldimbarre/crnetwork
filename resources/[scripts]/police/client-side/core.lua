@@ -66,63 +66,77 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local inSelect = 1
-local inDeath = false
-local inPrison = false
-local inTimer = GetGameTimer()
-local timeDeath = GetGameTimer()
-local coordsIntern = vec3(1679.94,2513.07,45.56)
-local coordsExtern = vec3(1837.2,2589.26,46.02)
-local coordsLeaver = vec3(1834.09,2594.34,46.02)
+local InDeath = false
+local InPrison = false
+local TimeDeath = GetGameTimer()
+local CoordsIntern = vec3(1679.94,2513.07,45.56)
+local CoordsExtern = vec3(1837.2,2589.26,46.02)
+local CoordsLeaver = vec3(1834.09,2594.34,46.02)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("checkPrison",function()
-	return inPrison
+	return InPrison
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SERVICES
+-- REDUCES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local inLocates = {
-	{ 1772.89,2536.78,45.56,246.62 },
-	{ 1760.7,2519.03,45.56,260.79 },
-	{ 1758.27,2508.99,45.56,260.79 },
-	{ 1757.89,2507.81,45.56,255.12 },
-	{ 1737.37,2504.68,45.56,170.08 },
-	{ 1719.86,2502.73,45.56,260.79 },
-	{ 1706.99,2481.05,45.56,226.78 },
-	{ 1700.22,2474.79,45.56,229.61 },
-	{ 1679.53,2480.26,45.56,136.07 },
-	{ 1643.86,2490.76,45.56,187.09 },
-	{ 1635.7,2490.19,45.56,189.93 },
-	{ 1634.68,2490.11,45.56,181.42 },
-	{ 1622.39,2507.78,45.56,96.38 },
-	{ 1618.41,2521.4,45.56,141.74 },
-	{ 1609.77,2539.59,45.56,133.23 },
-	{ 1607.37,2541.43,45.56,102.05 },
-	{ 1606.28,2542.57,45.56,136.07 },
-	{ 1608.95,2567.03,45.56,48.19 },
-	{ 1624.83,2567.9,45.56,274.97 },
-	{ 1624.78,2567.15,45.56,263.63 },
-	{ 1629.9,2564.37,45.56,5.67 },
-	{ 1642.2,2565.22,45.56,2.84 },
-	{ 1643.98,2565.08,45.56,31.19 },
-	{ 1652.52,2564.39,45.56,2.84 },
-	{ 1665.09,2567.66,45.56,5.67 },
-	{ 1716.03,2568.78,45.56,85.04 },
-	{ 1715.95,2567.97,45.56,85.04 },
-	{ 1715.97,2567.13,45.56,85.04 },
-	{ 1768.78,2565.74,45.56,5.67 },
-	{ 1695.25,2506.62,45.56,53.86 },
-	{ 1630.53,2526.15,45.56,325.99 },
-	{ 1627.89,2543.56,45.56,226.78 },
-	{ 1636.13,2553.62,45.56,0.0 },
-	{ 1657.59,2549.32,45.56,138.9 },
-	{ 1649.73,2538.35,45.56,62.37 },
-	{ 1699.07,2535.87,45.56,153.08 },
-	{ 1699.63,2534.6,45.56,87.88 },
-	{ 1699.35,2532.08,45.56,93.55 }
+local reduceList = {
+	["1"] = { 1698.86,2472.69,45.56 },
+	["2"] = { 1698.48,2472.36,45.56 },
+	["3"] = { 1635.66,2490.23,45.56 },
+	["4"] = { 1634.63,2490.1,45.56 },
+	["5"] = { 1618.41,2521.55,45.56 },
+	["6"] = { 1607.39,2541.39,45.56 },
+	["7"] = { 1606.3,2542.63,45.56 },
+	["8"] = { 1624.83,2567.86,45.56 },
+	["9"] = { 1624.78,2567.12,45.56 },
+	["10"] = { 1643.77,2565.0,45.56 },
+	["11"] = { 1665.05,2567.68,45.56 },
+	["12"] = { 1715.97,2567.16,45.56 },
+	["13"] = { 1715.97,2567.95,45.56 },
+	["14"] = { 1716.02,2568.78,45.56 },
+	["15"] = { 1768.79,2565.76,45.56 },
+	["16"] = { 1769.77,2565.7,45.56 },
+	["17"] = { 1772.72,2536.83,45.56 },
+	["18"] = { 1758.19,2508.99,45.56 },
+	["19"] = { 1757.87,2507.77,45.56 },
+	["20"] = { 1719.9,2502.66,45.56 },
+	["21"] = { 1695.28,2506.62,45.56 },
+	["22"] = { 1663.84,2515.34,45.56 },
+	["23"] = { 1664.44,2516.1,45.56 },
+	["24"] = { 1628.63,2543.64,45.56 },
+	["25"] = { 1636.16,2553.61,45.56 },
+	["26"] = { 1648.41,2536.3,45.56 },
+	["27"] = { 1657.61,2549.28,45.56 },
+	["28"] = { 1649.78,2538.35,45.56 },
+	["29"] = { 1699.18,2535.8,45.56 },
+	["30"] = { 1699.57,2534.67,45.56 },
+	["31"] = { 1699.39,2532.1,45.56 },
+	["32"] = { 1777.42,2560.84,45.66 },
+	["33"] = { 1784.21,2561.16,45.66 }
 }
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	for Number,v in pairs(reduceList) do
+		exports["target"]:AddCircleZone("Prison:"..Number,vec3(v[1],v[2],v[3]),0.75,{
+			name = "Prison:"..Number,
+			heading = 3374176
+		},{
+			shop = Number,
+			Distance = 1.0,
+			options = {
+				{
+					event = "police:Reduces",
+					tunnel = "server",
+					label = "Vasculhar"
+				}
+			}
+		})
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLYPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -197,108 +211,63 @@ local polyPrison = PolyZone:Create({
 	vector2(1655.68,2396.55)
 },{ name = "Prison" })
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREAD - SYSTEM
+-- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	SetNuiFocus(false,false)
 
 	while true do
-		local timeDistance = 999
-		if inPrison then
-			local ped = PlayerPedId()
-			local coords = GetEntityCoords(ped)
-			local distance = #(coords - vec3(inLocates[inSelect][1],inLocates[inSelect][2],inLocates[inSelect][3]))
+		local TimeDistance = 999
+		if InPrison then
+			local Ped = PlayerPedId()
 
-			if distance <= 150 then
-				timeDistance = 1
-				DrawText3D(inLocates[inSelect][1],inLocates[inSelect][2],inLocates[inSelect][3],"~g~E~w~   VASCULHAR")
-
-				if distance <= 1 and GetGameTimer() >= inTimer and IsControlJustPressed(1,38) and not IsPedInAnyVehicle(ped) then
-					inTimer = GetGameTimer() + 3000
-
-					LocalPlayer["state"]["Cancel"] = true
-					LocalPlayer["state"]["Commands"] = true
-					SetEntityHeading(ped,inLocates[inSelect][4])
-					SetEntityCoords(ped,inLocates[inSelect][1],inLocates[inSelect][2],inLocates[inSelect][3] - 1,1,0,0,0)
-					vRP.playAnim(false,{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"},true)
-					TriggerEvent("Progress","Vasculhando",10000)
-					Wait(10000)
-
-					LocalPlayer["state"]["Commands"] = false
-					LocalPlayer["state"]["Cancel"] = false
-					vSERVER.reducePrison()
-					vRP.removeObjects()
-				end
-			end
-
-			if GetEntityHealth(ped) <= 100 then
-				if not inDeath then
-					timeDeath = GetGameTimer() + 60000
-					inDeath = true
+			if GetEntityHealth(Ped) <= 100 then
+				if not InDeath then
+					TimeDeath = GetGameTimer() + 60000
+					InDeath = true
 				else
-					if GetGameTimer() >= timeDeath then
+					if GetGameTimer() >= TimeDeath then
 						exports["survival"]:Revive(125)
-						inDeath = false
+						InDeath = false
 					end
 				end
 			end
 		end
 
-		Wait(timeDistance)
+		Wait(TimeDistance)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- RUNAWAY
------------------------------------------------------------------------------------------------------------------------------------------
-local runAway = {
-	{ 1647.26,2763.14,45.76 },
-	{ 1565.97,2682.8,45.53 },
-	{ 1529.94,2585.13,45.53 },
-	{ 1535.6,2467.81,45.58 },
-	{ 1658.73,2390.01,45.51 },
-	{ 1763.9,2405.9,45.6 },
-	{ 1829.03,2473.42,45.31 },
-	{ 1851.78,2703.64,45.76 },
-	{ 1774.36,2767.32,45.66 }
-}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADRUNAWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		local timeDistance = 999
-		if inPrison then
-			local ped = PlayerPedId()
-			local coords = GetEntityCoords(ped)
+		local TimeDistance = 999
+		if InPrison then
+			local Ped = PlayerPedId()
+			local Coords = GetEntityCoords(Ped)
 
-			if not polyPrison:isPointInside(coords) then
-				SetEntityCoords(ped,coordsIntern[1],coordsIntern[2],coordsIntern[3],1,0,0,0)
+			if not polyPrison:isPointInside(Coords) then
+				SetEntityCoords(Ped,CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)
 			end
 		end
 
-		Wait(timeDistance)
+		Wait(TimeDistance)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SYNCPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.syncPrison(status,teleport)
-	if teleport then
-		if status then
-			SetEntityCoords(PlayerPedId(),coordsIntern[1],coordsIntern[2],coordsIntern[3],1,0,0,0)
+function cRP.syncPrison(Status,Teleport)
+	if Teleport then
+		if Status then
+			SetEntityCoords(PlayerPedId(),CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)
 		else
-			SetEntityCoords(PlayerPedId(),coordsExtern[1],coordsExtern[2],coordsExtern[3],1,0,0,0)
+			SetEntityCoords(PlayerPedId(),CoordsExtern[1],CoordsExtern[2],CoordsExtern[3],1,0,0,0)
 		end
 	end
 
-	inPrison = status
-	inSelect = math.random(#inLocates)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- ASYNCSERVICES
------------------------------------------------------------------------------------------------------------------------------------------
-function cRP.asyncServices()
-	inSelect = math.random(#inLocates)
+	InPrison = Status
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT3D

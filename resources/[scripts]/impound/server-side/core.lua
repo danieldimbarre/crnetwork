@@ -29,7 +29,7 @@ AddEventHandler("impound:Check",function(entity)
 			local VehRandom = 1000
 			local VehParts = math.random(4)
 			local VehSelected = "suspension"
-			local AmountItens = math.random(4,5)
+			local AmountItens = math.random(10,10)
 			local Tow = vRP.GetExperience(Passport,"Tows")
 			local Class = ClassCategory(Tow)
 
@@ -49,15 +49,15 @@ AddEventHandler("impound:Check",function(entity)
 				VehSelected = "brake"
 			end
 
-			if VehRandom <= 10 then
+			if VehRandom <= 20 then
 				vRP.GenerateItem(Passport,VehSelected.."e",1,true)
-			elseif VehRandom >= 10 and VehRandom <= 30 then
+			elseif VehRandom >= 20 and VehRandom <= 60 then
 				vRP.GenerateItem(Passport,VehSelected.."d",1,true)
-			elseif VehRandom >= 31 and VehRandom <= 60 then
+			elseif VehRandom >= 61 and VehRandom <= 120 then
 				vRP.GenerateItem(Passport,VehSelected.."c",1,true)
-			elseif VehRandom >= 61 and VehRandom <= 100 then
+			elseif VehRandom >= 121 and VehRandom <= 200 then
 				vRP.GenerateItem(Passport,VehSelected.."b",1,true)
-			elseif VehRandom >= 101 and VehRandom <= 150 then
+			elseif VehRandom >= 201 and VehRandom <= 300 then
 				vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 			end
 
@@ -66,6 +66,7 @@ AddEventHandler("impound:Check",function(entity)
 			vRP.GenerateItem(Passport,"rubber",AmountItens,true)
 			vRP.GenerateItem(Passport,"copper",AmountItens,true)
 			vRP.GenerateItem(Passport,"aluminum",AmountItens,true)
+
 			vRP.PutExperience(Passport,"Tows",1)
 
 			TriggerClientEvent("garages:Delete",source,entity[3])
@@ -92,7 +93,7 @@ AddEventHandler("police:Impound",function(entity)
 				local VehParts = math.random(4)
 				local VehSelected = "suspension"
 				local VehRandom = math.random(4500)
-				local AmountItens = math.random(4,5)
+				local AmountItens = math.random(10,10)
 
 				if VehParts <= 1 then
 					VehSelected = "engine"
@@ -102,15 +103,15 @@ AddEventHandler("police:Impound",function(entity)
 					VehSelected = "brake"
 				end
 
-				if VehRandom <= 10 then
+				if VehRandom <= 20 then
 					vRP.GenerateItem(Passport,VehSelected.."e",1,true)
-				elseif VehRandom >= 10 and VehRandom <= 30 then
+				elseif VehRandom >= 20 and VehRandom <= 60 then
 					vRP.GenerateItem(Passport,VehSelected.."d",1,true)
-				elseif VehRandom >= 31 and VehRandom <= 60 then
+				elseif VehRandom >= 61 and VehRandom <= 120 then
 					vRP.GenerateItem(Passport,VehSelected.."c",1,true)
-				elseif VehRandom >= 61 and VehRandom <= 100 then
+				elseif VehRandom >= 121 and VehRandom <= 200 then
 					vRP.GenerateItem(Passport,VehSelected.."b",1,true)
-				elseif VehRandom >= 101 and VehRandom <= 150 then
+				elseif VehRandom >= 201 and VehRandom <= 300 then
 					vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 				end
 

@@ -89,116 +89,106 @@ Citizen.CreateThread(function()
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
 			local Vehicle = GetVehiclePedIsUsing(Ped)
-			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-				DisableControlAction(0,84,true)
-				DisableControlAction(0,83,true)
+			if GetPedInVehicleSeat(Vehicle,-1) == Ped and GetVehicleClass(Vehicle) == 18 then
+				TimeDistance = 0
 
-				if GetVehicleClass(Vehicle) == 18 then
-					TimeDistance = 0
+				local ActiveHorn = false
+				local ActiveManual = false
 
-					local ActiveHorn = false
-					local ActiveManual = false
+				DisableControlAction(0,19,true)
+				DisableControlAction(0,80,true)
+				DisableControlAction(0,81,true)
+				DisableControlAction(0,82,true)
+				DisableControlAction(0,85,true)
+				DisableControlAction(0,86,true)
+				DisableControlAction(0,172,true)
 
-					DisableControlAction(0,19,true)
-					DisableControlAction(0,80,true)
-					DisableControlAction(0,81,true)
-					DisableControlAction(0,82,true)
-					DisableControlAction(0,85,true)
-					DisableControlAction(0,86,true)
-					DisableControlAction(0,172,true)
+				SetVehRadioStation(Vehicle,"OFF")
+				SetVehicleRadioEnabled(Vehicle,false)
 
-					SetVehRadioStation(Vehicle,"OFF")
-					SetVehicleRadioEnabled(Vehicle,false)
+				if not LxSirenState[Vehicle] or (LxSirenState[Vehicle] < 0 or LxSirenState[Vehicle] > 3) then
+					LxSirenState[Vehicle] = 0
+				end
 
-					if not LxSirenState[Vehicle] or (LxSirenState[Vehicle] < 0 or LxSirenState[Vehicle] > 3) then
-						LxSirenState[Vehicle] = 0
-					end
+				if not AirSirenState[Vehicle] or (AirSirenState[Vehicle] < 0 or AirSirenState[Vehicle] > 3) then
+					AirSirenState[Vehicle] = 0
+				end
 
-					if not AirSirenState[Vehicle] or (AirSirenState[Vehicle] < 0 or AirSirenState[Vehicle] > 3) then
-						AirSirenState[Vehicle] = 0
-					end
+				if not IsVehicleSirenOn(Vehicle) and LxSirenState[Vehicle] > 0 then
+					SetLxSirenStateForVeh(Vehicle,0)
+					CountCast = DelayCast
+				end
 
-					if not IsVehicleSirenOn(Vehicle) and LxSirenState[Vehicle] > 0 then
-						SetLxSirenStateForVeh(Vehicle,0)
-						CountCast = DelayCast
-					end
-
-					if not IsPauseMenuActive() then
-						if IsDisabledControlJustReleased(0,85) or IsDisabledControlJustReleased(0,246) then
+				if not IsPauseMenuActive() then
+					if IsDisabledControlJustReleased(0,85) or IsDisabledControlJustReleased(0,246) then
+						if IsVehicleSirenOn(Vehicle) then
+							SetVehicleSiren(Vehicle,false)
+						else
+							SetVehicleSiren(Vehicle,true)
+							CountCast = DelayCast
+						end
+					elseif IsDisabledControlJustReleased(0,19) or IsDisabledControlJustReleased(0,82) then
+						if LxSirenState[Vehicle] == 0 then
 							if IsVehicleSirenOn(Vehicle) then
-								SetVehicleSiren(Vehicle,false)
-							else
-								SetVehicleSiren(Vehicle,true)
+								SetLxSirenStateForVeh(Vehicle,1)
 								CountCast = DelayCast
 							end
-						elseif IsDisabledControlJustReleased(0,19) or IsDisabledControlJustReleased(0,82) then
-							if LxSirenState[Vehicle] == 0 then
-								if IsVehicleSirenOn(Vehicle) then
-									SetLxSirenStateForVeh(Vehicle,1)
-									CountCast = DelayCast
+						else
+							SetLxSirenStateForVeh(Vehicle,0)
+							CountCast = DelayCast
+						end
+					end
+
+					if LxSirenState[Vehicle] > 0 then
+						if IsDisabledControlJustReleased(0,80) or IsDisabledControlJustReleased(0,81) then
+							if IsVehicleSirenOn(Vehicle) then
+								local NewState = 1
+								if LxSirenState[Vehicle] == 1 or LxSirenState[Vehicle] == 2 then
+									NewState = LxSirenState[Vehicle] + 1
 								end
-							else
-								SetLxSirenStateForVeh(Vehicle,0)
+
+								SetLxSirenStateForVeh(Vehicle,NewState)
 								CountCast = DelayCast
 							end
 						end
+					end
 
-						if LxSirenState[Vehicle] > 0 then
-							if IsDisabledControlJustReleased(0,80) or IsDisabledControlJustReleased(0,81) then
-								if IsVehicleSirenOn(Vehicle) then
-									local NewState = 1
-									if LxSirenState[Vehicle] == 1 or LxSirenState[Vehicle] == 2 then
-										NewState = LxSirenState[Vehicle] + 1
-									end
-
-									SetLxSirenStateForVeh(Vehicle,NewState)
-									CountCast = DelayCast
-								end
-							end
-						end
-
-						if LxSirenState[Vehicle] < 1 then
-							if IsDisabledControlPressed(0,80) or IsDisabledControlPressed(0,81) then
-								ActiveManual = true
-							else
-								ActiveManual = false
-							end
+					if LxSirenState[Vehicle] < 1 then
+						if IsDisabledControlPressed(0,80) or IsDisabledControlPressed(0,81) then
+							ActiveManual = true
 						else
 							ActiveManual = false
 						end
-
-						if IsDisabledControlPressed(0,86) then
-							ActiveHorn = true
-						else
-							ActiveHorn = false
-						end
+					else
+						ActiveManual = false
 					end
 
-					local ManualState = 0
-					if ActiveHorn and not ActiveManual then
-						ManualState = 1
-					elseif not ActiveHorn and ActiveManual then
-						ManualState = 2
-					elseif ActiveHorn and ActiveManual then
-						ManualState = 3
-					end
-
-					if AirSirenState[Vehicle] ~= ManualState then
-						SetAirManuStateForVeh(Vehicle,ManualState)
-						CountCast = DelayCast
+					if IsDisabledControlPressed(0,86) then
+						ActiveHorn = true
+					else
+						ActiveHorn = false
 					end
 				end
 
-				if GetVehicleClass(Vehicle) >= 14 and GetVehicleClass(Vehicle) <= 16 and GetVehicleClass(Vehicle) ~= 21 then
-					if CountCast > DelayCast then
-						CountCast = 0
+				local ManualState = 0
+				if ActiveHorn and not ActiveManual then
+					ManualState = 1
+				elseif not ActiveHorn and ActiveManual then
+					ManualState = 2
+				elseif ActiveHorn and ActiveManual then
+					ManualState = 3
+				end
 
-						if GetVehicleClass(Vehicle) == 18 then
-							Entity(Vehicle)["state"]:set("Sirens",{ LxSirenState[Vehicle],AirSirenState[Vehicle] },true)
-						end
-					else
-						CountCast = CountCast + 1
-					end
+				if AirSirenState[Vehicle] ~= ManualState then
+					SetAirManuStateForVeh(Vehicle,ManualState)
+					CountCast = DelayCast
+				end
+
+				if CountCast > DelayCast then
+					CountCast = 0
+					Entity(Vehicle)["state"]:set("Sirens",{ LxSirenState[Vehicle],AirSirenState[Vehicle] },true)
+				else
+					CountCast = CountCast + 1
 				end
 			end
 		end

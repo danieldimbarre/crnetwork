@@ -153,46 +153,31 @@ function InitiateMenus(isMotorcycle)
 
 	createMenu("mainMenu","Welcome to Benny's Original Motorworks","Choose a Category")
 
+	for k,v in ipairs(vehicleCustomisation) do 
+		local validMods,amountValidMods = CheckValidMods(v["category"],v["id"])
+
+		if amountValidMods > 0 or v["id"] == 18 then
+			populateMenu("mainMenu",v["id"],v["category"],"none")
+		end
+	end
+
+	populateMenu("mainMenu",-1,"Respray","none")
+
+	if not isMotorcycle then
+		populateMenu("mainMenu",-2,"Window Tint","none")
+		populateMenu("mainMenu",-3,"Neons","none")
+	end
+
+	populateMenu("mainMenu",22,"Xenons","none")
+	populateMenu("mainMenu",23,"Wheels","none")
+
 	if vehclass == 18 then
 		populateMenu("mainMenu",24,"Police Livery","none")
-
-		local livCount = GetVehicleLiveryCount(vehicle)
-		if livCount > 0 then
-			local temporaryLivery = GetVehicleLivery(vehicle)
-			createMenu("PoliceLiveryMenu","Police Livery Customisation","Choose a Livery")
-			for i = 0,livCount - 1 do
-				populateMenu("PoliceLiveryMenu",i,"Livery 0"..i + 1,"$100")
-
-				if temporaryLivery == i then
-					updateItem2Text("PoliceLiveryMenu",i,"Instalado")
-				end
-			end
-
-			finishPopulatingMenu("PoliceLiveryMenu")
-		end
-	else
-		for k,v in ipairs(vehicleCustomisation) do 
-			local validMods,amountValidMods = CheckValidMods(v["category"],v["id"])
-
-			if amountValidMods > 0 or v["id"] == 18 then
-				populateMenu("mainMenu",v["id"],v["category"],"none")
-			end
-		end
-
-		populateMenu("mainMenu",-1,"Respray","none")
-
-		if not isMotorcycle then
-			populateMenu("mainMenu",-2,"Window Tint","none")
-			populateMenu("mainMenu",-3,"Neons","none")
-		end
-
-		populateMenu("mainMenu",22,"Xenons","none")
-		populateMenu("mainMenu",23,"Wheels","none")
-
-		populateMenu("mainMenu",26,"Vehicle Extras","none")
-
-		populateMenu("mainMenu",25,"Plate Index","none")
 	end
+
+	populateMenu("mainMenu",26,"Vehicle Extras","none")
+
+	populateMenu("mainMenu",25,"Plate Index","none")
 
 	finishPopulatingMenu("mainMenu")
 
@@ -349,6 +334,23 @@ function InitiateMenus(isMotorcycle)
 	end
 
 	finishPopulatingMenu("WindowTintMenu")
+
+	if vehclass == 18 then
+		local livCount = GetVehicleLiveryCount(vehicle)
+		if livCount > 0 then
+			local temporaryLivery = GetVehicleLivery(vehicle)
+			createMenu("PoliceLiveryMenu","Police Livery Customisation","Choose a Livery")
+			for i = 0,livCount - 1 do
+				populateMenu("PoliceLiveryMenu",i,"Livery 0"..i + 1,"$100")
+
+				if temporaryLivery == i then
+					updateItem2Text("PoliceLiveryMenu",i,"Instalado")
+				end
+			end
+
+			finishPopulatingMenu("PoliceLiveryMenu")
+		end
+	end
 
 	local temporaryPlate = GetVehicleNumberPlateTextIndex(vehicle)
 	createMenu("PlateIndexMenu","Plate Colour","Escolha o tipo")

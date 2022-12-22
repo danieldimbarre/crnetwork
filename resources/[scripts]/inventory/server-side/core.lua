@@ -298,8 +298,6 @@ StealPeds = {
 	{ ["item"] = "pager", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "camera", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "binoculars", ["min"] = 1, ["max"] = 1 },
-	{ ["item"] = "hennessy", ["min"] = 1, ["max"] = 3 },
-	{ ["item"] = "dewars", ["min"] = 1, ["max"] = 3 },
 	{ ["item"] = "teddy", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "chocolate", ["min"] = 1, ["max"] = 2 },
 	{ ["item"] = "notepad", ["min"] = 1, ["max"] = 3 },

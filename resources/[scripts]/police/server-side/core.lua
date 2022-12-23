@@ -99,12 +99,10 @@ end)
 RegisterCommand("cleanrec",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] then
-		if vRP.HasGroup(Passport,"Police",1) then
-			local OtherPassport = parseInt(Message[1])
-			if OtherPassport > 0 then
-				vRP.Query("prison/cleanRecords",{ nuser_id = OtherPassport })
-				TriggerClientEvent("Notify",source,"verde","Limpeza efetuada.",5000)
-			end
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Police",1) and OtherPassport > 0 then
+			vRP.Query("prison/cleanRecords",{ nuser_id = OtherPassport })
+			TriggerClientEvent("Notify",source,"verde","Limpeza efetuada.",5000)
 		end
 	end
 end)
@@ -151,7 +149,6 @@ function cRP.searchUser(Passport)
 	if Passport then
 		local Identity = vRP.Identity(Passport)
 		if Identity then
-			local Source = vRP.Source(Passport)
 			local Fines = exports["bank"]:Fines(Passport)
 			local Value = 0
 
@@ -160,13 +157,17 @@ function cRP.searchUser(Passport)
 			end
 
 			local Wanted = "Não"
-			if exports["hud"]:Wanted(Passport,Source,true) then
-				Wanted = "Sim"
-			end
-
 			local Runaway = "Não"
-			if not vCLIENT.checkPrison(Source) and Identity["prison"] > 0 then
-				Runaway = "Sim, deve "..Identity["prison"].." serviços"
+
+			local Source = vRP.Source(Passport)
+			if Source then
+				if exports["hud"]:Wanted(Passport,Source,true) then
+					Wanted = "Sim"
+				end
+
+				if not vCLIENT.checkPrison(Source) and Identity["prison"] > 0 then
+					Runaway = "Sim, deve "..Identity["prison"].." serviços"
+				end
 			end
 
 			local Records = vRP.Query("prison/getRecords",{ nuser_id = Passport })
@@ -192,23 +193,6 @@ function cRP.initFine(OtherPassport,Value,Message)
 			exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)
 
 			Actived[Passport] = nil
-		end
-	end
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- REDUCEPRISON
------------------------------------------------------------------------------------------------------------------------------------------
-function cRP.reducePrison()
-	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport then
-		vRP.UpdatePrison(Passport,math.random(2))
-
-		local Identity = vRP.Identity(Passport)
-		if Identity["prison"] <= 0 then
-			vCLIENT.syncPrison(source,false,true)
-		else
-			vCLIENT.asyncServices(source)
 		end
 	end
 end
@@ -264,13 +248,14 @@ function reduceFunction(source,Passport,Number)
 		timeProgress = timeProgress - 1
 	until timeProgress <= 0
 
-	vRP.UpdatePrison(Passport,math.random(2))
+	vRP.UpdatePrison(Passport,math.random(2,3))
 	Player(source)["state"]["Buttons"] = false
 	Player(source)["state"]["Cancel"] = false
 	vRPC.removeObjects(source)
 
 	local Identity = vRP.Identity(Passport)
 	if Identity["prison"] <= 0 then
+		vRP.Query("characters/resetPrison",{ Passport = Passport })
 		vCLIENT.syncPrison(source,false,true)
 	end
 end

@@ -213,48 +213,48 @@ local polyPrison = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	SetNuiFocus(false,false)
+-- CreateThread(function()
+-- 	SetNuiFocus(false,false)
 
-	while true do
-		local TimeDistance = 999
-		if InPrison then
-			local Ped = PlayerPedId()
+-- 	while true do
+-- 		local TimeDistance = 999
+-- 		if InPrison then
+-- 			local Ped = PlayerPedId()
 
-			if GetEntityHealth(Ped) <= 100 then
-				if not InDeath then
-					TimeDeath = GetGameTimer() + 60000
-					InDeath = true
-				else
-					if GetGameTimer() >= TimeDeath then
-						exports["survival"]:Revive(125)
-						InDeath = false
-					end
-				end
-			end
-		end
+-- 			if GetEntityHealth(Ped) <= 100 then
+-- 				if not InDeath then
+-- 					TimeDeath = GetGameTimer() + 60000
+-- 					InDeath = true
+-- 				else
+-- 					if GetGameTimer() >= TimeDeath then
+-- 						exports["survival"]:Revive(125)
+-- 						InDeath = false
+-- 					end
+-- 				end
+-- 			end
+-- 		end
 
-		Wait(TimeDistance)
-	end
-end)
+-- 		Wait(TimeDistance)
+-- 	end
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADRUNAWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local TimeDistance = 999
-		if InPrison then
-			local Ped = PlayerPedId()
-			local Coords = GetEntityCoords(Ped)
+-- CreateThread(function()
+-- 	while true do
+-- 		local TimeDistance = 999
+-- 		if InPrison then
+-- 			local Ped = PlayerPedId()
+-- 			local Coords = GetEntityCoords(Ped)
 
-			if not polyPrison:isPointInside(Coords) then
-				SetEntityCoords(Ped,CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)
-			end
-		end
+-- 			if not polyPrison:isPointInside(Coords) then
+-- 				SetEntityCoords(Ped,CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)
+-- 			end
+-- 		end
 
-		Wait(TimeDistance)
-	end
-end)
+-- 		Wait(TimeDistance)
+-- 	end
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SYNCPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------

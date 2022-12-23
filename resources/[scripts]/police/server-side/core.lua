@@ -34,6 +34,7 @@ vRP.Prepare('prison/create',[[CREATE TABLE IF NOT EXISTS `prison` (
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Actived = {}
 local Reduces = {}
+local PrisonMarkers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRESET
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -191,13 +192,45 @@ function cRP.initFine(OtherPassport,Value,Message)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PRISONSYNC
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		for k,v in pairs(PrisonMarkers) do
+			if PrisonMarkers[k][1] > 0 then
+				PrisonMarkers[k][1] = PrisonMarkers[k][1] - 1
+
+				if PrisonMarkers[k][1] <= 0 then
+					if vRP.Source(PrisonMarkers[k][2]) then
+						TriggerEvent("blipsystem:serviceExit",k)
+					end
+
+					PrisonMarkers[k] = nil
+				end
+			end
+		end
+
+		Wait(1000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- WANTED
 -----------------------------------------------------------------------------------------------------------------------------------------
 function cRP.Wanted()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		PrisonMarkers[source] = { 600,Passport }
 		TriggerEvent("Wanted",source,Passport,600)
+
+		local Service = vRP.NumPermission("Police")
+		for Passports,Sources in pairs(Service) do
+			async(function()
+				TriggerClientEvent("Notify",Sources,"amarelo","Recebemos a informação de um fugitivo da Penitenciária.",5000)
+			end)
+		end
+
+		TriggerEvent("blipsystem:Enter",source,"Prisioneiro")
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -232,7 +265,7 @@ end)
 function reduceFunction(source,Passport,Number)
 	vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
 	TriggerClientEvent("Progress",source,"Vasculhando",10000)
-	Reduces[Number][Passport] = os.time() + 600
+	Reduces[Number][Passport] = os.time() + 180
 	Player(source)["state"]["Buttons"] = true
 	Player(source)["state"]["Cancel"] = true
 	local timeProgress = 10

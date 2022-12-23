@@ -14,9 +14,9 @@ vCLIENT = Tunnel.getInterface("police")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PREPRARES
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("prison/cleanRecords","DELETE FROM prison WHERE nuser_id = @nuser_id")
-vRP.Prepare("prison/getRecords","SELECT * FROM prison WHERE nuser_id = @nuser_id ORDER BY id DESC")
-vRP.Prepare("prison/insertPrison","INSERT INTO prison(police,nuser_id,services,fines,text,date) VALUES(@police,@nuser_id,@services,@fines,@text,@date)")
+vRP.Prepare("prison/cleanRecords","DELETE FROM prison WHERE nuser_id = @Passport")
+vRP.Prepare("prison/getRecords","SELECT * FROM prison WHERE nuser_id = @Passport ORDER BY id DESC")
+vRP.Prepare("prison/insertPrison","INSERT INTO prison(police,nuser_id,services,fines,text,date) VALUES(@Police,@Passport,@Services,@Fines,@Text,@Date)")
 vRP.Prepare('prison/create',[[CREATE TABLE IF NOT EXISTS `prison` (
 		`id` int(11) NOT NULL AUTO_INCREMENT,
 		`police` varchar(255) DEFAULT '0',
@@ -29,12 +29,6 @@ vRP.Prepare('prison/create',[[CREATE TABLE IF NOT EXISTS `prison` (
 		KEY `id` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ]])
------------------------------------------------------------------------------------------------------------------------------------------
--- CREATETABLE
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	vRP.Query('prison/create')
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -101,7 +95,7 @@ RegisterCommand("cleanrec",function(source,Message)
 	if Passport and Message[1] then
 		local OtherPassport = parseInt(Message[1])
 		if vRP.HasGroup(Passport,"Police",1) and OtherPassport > 0 then
-			vRP.Query("prison/cleanRecords",{ nuser_id = OtherPassport })
+			vRP.Query("prison/cleanRecords",{ Passport = OtherPassport })
 			TriggerClientEvent("Notify",source,"verde","Limpeza efetuada.",5000)
 		end
 	end
@@ -124,7 +118,7 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 					TriggerClientEvent("radio:RadioClean",OtherSource)
 				end
 
-				vRP.Query("prison/insertPrison",{ police = Identity["name"].." "..Identity["name2"], nuser_id = parseInt(OtherPassport), services = Services, fines = Value, text = Message, date = os.date("%d/%m/%Y").." às "..os.date("%H:%M") })
+				vRP.Query("prison/insertPrison",{ Police = Identity["name"].." "..Identity["name2"], Passport = parseInt(OtherPassport), Services = Services, Fines = Value, Text = Message, Date = os.date("%d/%m/%Y").." às "..os.date("%H:%M") })
 				vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
 				TriggerClientEvent("Notify",source,"verde","Prisão efetuada.",5000)
 				TriggerClientEvent("police:Update",source,"reloadPrison")
@@ -170,7 +164,7 @@ function cRP.searchUser(Passport)
 				end
 			end
 
-			local Records = vRP.Query("prison/getRecords",{ nuser_id = Passport })
+			local Records = vRP.Query("prison/getRecords",{ Passport = Passport })
 			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],Value,Wanted,Runaway,Records }
 		end
 	end

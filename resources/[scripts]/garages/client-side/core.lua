@@ -716,6 +716,9 @@ CreateThread(function()
 									end
 
 									exports["dynamic"]:openMenu()
+
+									Wait(1000)
+									exports.smartphone:close()
 								end
 							end
 						end

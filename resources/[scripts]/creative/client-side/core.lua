@@ -193,10 +193,11 @@ local Blips = {
 -- THREADINIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Emitters = {
-    'LOS_SANTOS_AMMUNATION_GUN_RANGE',
-    'LOS_SANTOS_VANILLA_UNICORN_01_STAGE',
-    'LOS_SANTOS_VANILLA_UNICORN_02_MAIN_ROOM',
-    'LOS_SANTOS_VANILLA_UNICORN_03_BACK_ROOM'
+	'LOS_SANTOS_AMMUNATION_GUN_RANGE',
+	'LOS_SANTOS_VANILLA_UNICORN_01_STAGE',
+	'LOS_SANTOS_VANILLA_UNICORN_02_MAIN_ROOM',
+    'LOS_SANTOS_VANILLA_UNICORN_03_BACK_ROOM',
+	'se_dlc_biker_tequilala_exterior_emitter'
 }
 
 local Ambient = {

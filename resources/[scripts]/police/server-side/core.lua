@@ -116,6 +116,7 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 				if OtherSource then
 					vCLIENT.syncPrison(OtherSource,true,false)
 					TriggerClientEvent("radio:RadioClean",OtherSource)
+					TriggerClientEvent("Notify",OtherSource,"azul","Restam <b>"..Identity["prison"] + Services.." serviços</b>.",5000)
 				end
 
 				vRP.Query("prison/insertPrison",{ Police = Identity["name"].." "..Identity["name2"], Passport = parseInt(OtherPassport), Services = Services, Fines = Value, Text = Message, Date = os.date("%d/%m/%Y").." às "..os.date("%H:%M") })
@@ -250,7 +251,7 @@ function reduceFunction(source,Passport,Number)
 	local Identity = vRP.Identity(Passport)
 	if Identity["prison"] <= 0 then
 		vRP.Query("characters/resetPrison",{ Passport = Passport })
-		vCLIENT.syncPrison(source,false,true)
+		vCLIENT.syncPrison(source,false,false)
 	end
 end
 --------------------------------------------------------------------------------------------------------------------------------------------------

@@ -281,6 +281,6 @@ AddEventHandler("Connect",function(Passport,source)
 	local Identity = vRP.Identity(Passport)
 	if Identity["prison"] > 0 then
 		TriggerClientEvent("Notify",source,"azul","Restam <b>"..Identity["prison"].." serviços</b>.",5000)
-		vCLIENT.syncPrison(source,true,true)
+		vCLIENT.syncPrison(source,true,false)
 	end
 end)

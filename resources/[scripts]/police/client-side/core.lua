@@ -259,10 +259,9 @@ function Runaway()
 			local Coords = GetEntityCoords(Ped)
 
 			if not polyPrison:isPointInside(Coords) then
-				-- SetEntityCoords(Ped,CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)
+				vSERVER.Wanted()
 
-				TriggerEvent("Wanted",nil,nil,600)
-				break
+				InPrison = false
 			end
 
 			Wait(TimeDistance)

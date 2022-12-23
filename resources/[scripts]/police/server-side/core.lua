@@ -151,6 +151,7 @@ function cRP.searchUser(Passport)
 	if Passport then
 		local Identity = vRP.Identity(Passport)
 		if Identity then
+			local Source = vRP.Source(Passport)
 			local Fines = exports["bank"]:Fines(Passport)
 			local Value = 0
 
@@ -159,12 +160,12 @@ function cRP.searchUser(Passport)
 			end
 
 			local Wanted = "Não"
-			if exports["hud"]:Wanted(Passport,source,true) then
+			if exports["hud"]:Wanted(Passport,Source,true) then
 				Wanted = "Sim"
 			end
 
 			local Runaway = "Não"
-			if vCLIENT.checkPrison(source) then
+			if not vCLIENT.checkPrison(Source) and Identity["prison"] > 0 then
 				Runaway = "Sim, deve "..Identity["prison"].." serviços"
 			end
 
@@ -209,6 +210,16 @@ function cRP.reducePrison()
 		else
 			vCLIENT.asyncServices(source)
 		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WANTED
+-----------------------------------------------------------------------------------------------------------------------------------------
+function cRP.Wanted()
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		TriggerEvent("Wanted",source,Passport,600)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

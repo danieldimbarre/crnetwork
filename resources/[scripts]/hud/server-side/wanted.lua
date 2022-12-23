@@ -6,13 +6,7 @@ local Wanted = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WANTED
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Wanted",function(Source,Passport,Seconds)
-	local Source = Source
-	if not Source and not Passport then
-		Source = source
-		Passport = vRP.Passport(source)
-	end
-
+AddEventHandler("Wanted",function(source,Passport,Seconds)
 	if Wanted[Passport] then
 		if os.time() > Wanted[Passport] then
 			Wanted[Passport] = os.time() + Seconds
@@ -23,7 +17,7 @@ AddEventHandler("Wanted",function(Source,Passport,Seconds)
 		Wanted[Passport] = os.time() + Seconds
 	end
 
-	TriggerClientEvent("hud:Wanted",Source,Wanted[Passport] - os.time())
+	TriggerClientEvent("hud:Wanted",source,Wanted[Passport] - os.time())
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WANTED

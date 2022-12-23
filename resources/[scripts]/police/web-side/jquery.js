@@ -61,8 +61,8 @@ const functionSearch = (passaporte) => {
 							<b>Nome:</b> ${data["result"][1]}<br>
 							<b>Telefone:</b> ${data["result"][2]}<br>
 							<b>Multas:</b> $${formatarNumero(data["result"][3])}<br>
-							<b>Procurado:</b> $${data["result"][4]}<br>
-							<b>Foragido:</b> $${data["result"][5]}<br>
+							<b>Procurado:</b> ${data["result"][4]}<br>
+							<b>Foragido:</b> ${data["result"][5]}<br>
 						</div>
 
 						${data["result"][6].map((data) => (`

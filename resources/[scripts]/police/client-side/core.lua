@@ -37,7 +37,12 @@ end)
 -- SEARCHUSER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("searchUser",function(data,cb)
-	cb({ result = vSERVER.searchUser(data["passaporte"]) })
+	local Result,Runaway = vSERVER.searchUser(data["passaporte"])
+	if Runaway then
+		Result[5] = "Sim, deve "..Identity["prison"].." serviços"
+	end
+
+	cb({ result = Result })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENSYSTEM
@@ -76,6 +81,12 @@ local CoordsLeaver = vec3(1834.09,2594.34,46.02)
 -- CHECKPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("checkPrison",function()
+	return InPrison
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECKPRISON
+-----------------------------------------------------------------------------------------------------------------------------------------
+function cRP.checkPrison()
 	return InPrison
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -240,34 +251,41 @@ local polyPrison = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADRUNAWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CreateThread(function()
--- 	while true do
--- 		local TimeDistance = 999
--- 		if InPrison then
--- 			local Ped = PlayerPedId()
--- 			local Coords = GetEntityCoords(Ped)
+function Runaway()
+	CreateThread(function()
+		while InPrison do
+			local TimeDistance = 999
+			local Ped = PlayerPedId()
+			local Coords = GetEntityCoords(Ped)
 
--- 			if not polyPrison:isPointInside(Coords) then
--- 				SetEntityCoords(Ped,CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)
--- 			end
--- 		end
+			if not polyPrison:isPointInside(Coords) then
+				-- SetEntityCoords(Ped,CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)
 
--- 		Wait(TimeDistance)
--- 	end
--- end)
+				TriggerEvent("Wanted",nil,nil,600)
+				break
+			end
+
+			Wait(TimeDistance)
+		end
+	end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SYNCPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
 function cRP.syncPrison(Status,Teleport)
-	if Teleport then
-		if Status then
+	InPrison = Status
+
+	if Status then
+		Runaway()
+
+		if Teleport then
 			SetEntityCoords(PlayerPedId(),CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)
-		else
+		end
+	else
+		if Teleport then
 			SetEntityCoords(PlayerPedId(),CoordsExtern[1],CoordsExtern[2],CoordsExtern[3],1,0,0,0)
 		end
 	end
-
-	InPrison = Status
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT3D

@@ -158,14 +158,18 @@ function cRP.searchUser(Passport)
 				Value = Value + v["value"]
 			end
 
+			local Wanted = "Não"
+			if exports["hud"]:Wanted(Passport,source,true) then
+				Wanted = "Sim"
+			end
+
 			local Runaway = "Não"
-			local Source = vRP.Source(Passport)
-			if Source and Identity["prison"] > 0 and exports["police"]:checkPrison(Source) then
+			if vCLIENT.checkPrison(source) then
 				Runaway = "Sim, deve "..Identity["prison"].." serviços"
 			end
 
 			local Records = vRP.Query("prison/getRecords",{ nuser_id = Passport })
-			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],Value,Runaway,Records }
+			return { true,Identity["name"].." "..Identity["name2"],Identity["phone"],Value,Wanted,Runaway,Records }
 		end
 	end
 

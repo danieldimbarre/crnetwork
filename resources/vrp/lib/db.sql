@@ -73,6 +73,17 @@ INSERT INTO `chests` (`id`, `name`, `weight`, `perm`, `logs`) VALUES
 (15, 'Tribo', 500, 'Tribo', 1),
 (16, 'Lost', 500, 'Lost', 1),
 (17, 'Marabunta', 500, 'Marabunta', 1);
+(18, 'Ballas', 500, 'Ballas-2', 1),
+(19, 'Families', 500, 'Families-2', 1),
+(20, 'Vagos', 500, 'Vagos-2', 1),
+(21, 'Aztecas', 500, 'Aztecas-2', 1),
+(22, 'Bloods', 500, 'Bloods-2', 1),
+(23, 'Triads', 500, 'Triads-2', 1),
+(24, 'Razors', 500, 'Razors-2', 1),
+(25, 'Mechanic', 500, 'Mechanic-2', 1),
+(26, 'Tribo', 500, 'Tribo-2', 1),
+(27, 'Lost', 500, 'Lost-2', 1),
+(28, 'Marabunta', 500, 'Marabunta-2', 1);
 
 DROP TABLE IF EXISTS `entitydata`;
 CREATE TABLE IF NOT EXISTS `entitydata` (

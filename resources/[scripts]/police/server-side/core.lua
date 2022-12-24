@@ -297,14 +297,24 @@ AddEventHandler("Connect",function(Passport,source)
 	local Identity = vRP.Identity(Passport)
 	if Identity["prison"] > 0 then
 		TriggerClientEvent("Notify",source,"azul","Restam <b>"..Identity["prison"].." serviços</b>.",5000)
-	end
-	
-	local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
-	if Consult[1]["fugitive"] == 0 then
-		vCLIENT.syncPrison(source,true,false)
-	else
-		if PrisonMarkers[Passport] then
-			TriggerEvent("blipsystem:Enter",source,"Prisioneiro")
+
+		local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
+		if Consult[1]["fugitive"] == 0 then
+			vCLIENT.syncPrison(source,true,false)
+		else
+			if PrisonMarkers[Passport] then
+				PrisonMarkers[Passport] = 600
+				TriggerEvent("Wanted",source,Passport,600)
+
+				local Service = vRP.NumPermission("Police")
+				for Passports,Sources in pairs(Service) do
+					async(function()
+						TriggerClientEvent("Notify",Sources,"amarelo","Recebemos a informação de um fugitivo da Penitenciária.",5000)
+					end)
+				end
+
+				TriggerEvent("blipsystem:Enter",source,"Prisioneiro")
+			end
 		end
 	end
 end)

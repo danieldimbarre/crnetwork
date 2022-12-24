@@ -926,6 +926,18 @@ RegisterCommand("generate",function(source,Message)
 	elseif Message[1] == "car" then
 		List = VehicleGlobal()
 	elseif Message[1] == "anim" then
+		if source == 0 then
+			local Players = vRP.Players()
+			if #Players <= 0 then
+				return
+			end
+
+			for _,OtherSource in pairs(Players) do
+				source = OtherSource
+				break
+			end
+		end
+
 		List = vANIM.AnimList(source)
 	end
 

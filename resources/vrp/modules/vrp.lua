@@ -35,7 +35,7 @@ AddEventHandler("smartphone:service_request",function(Data)
 					TriggerClientEvent("smartphone:pusher",Data["source"],"SERVICE_RESPONSE",{})
 					TriggerClientEvent("smartphone:pusher",Sources,"GPS",{ location = Data["location"] })
 				else
-					TriggerClientEvent("Notify",Sources,"negado","Chamado atendido.",5000)
+					TriggerClientEvent("Notify",Sources,"vermelho","Chamado atendido.",5000)
 				end
 			end
 		end)

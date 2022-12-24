@@ -8,7 +8,7 @@ vRP = Proxy.getInterface("vRP")
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
 Creative = {}
-Tunnel.bindInterface("admin",Creative)
+Tunnel.bindInterface("animacoes",Creative)
 vSERVER = Tunnel.getInterface("inventory")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES

@@ -198,7 +198,7 @@ CreateThread(function()
 
 				if PrisonMarkers[k][1] <= 0 then
 					if vRP.Source(PrisonMarkers[k][2]) then
-						TriggerEvent("blipsystem:serviceExit",k)
+						TriggerEvent("blipsystem:Exit",k)
 					end
 
 					PrisonMarkers[k] = nil
@@ -216,6 +216,7 @@ function cRP.Wanted()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		vRP.Query("characters/setFugitive",{ id = Passport, Fugitive = 1 })
 		PrisonMarkers[source] = { 600,Passport }
 		TriggerEvent("Wanted",source,Passport,600)
 
@@ -227,7 +228,6 @@ function cRP.Wanted()
 		end
 
 		TriggerEvent("blipsystem:Enter",source,"Prisioneiro")
-		vRP.Query("characters/setFugitive",{ id = Passport, Fugitive = 1 })
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -282,7 +282,7 @@ function reduceFunction(source,Passport,Number)
 		vRP.Query("characters/resetPrison",{ id = Passport })
 		vCLIENT.syncPrison(source,false,false)
 
-		if Identity["prison"] == 1 then
+		if Identity["fugitive"] == 1 then
 			vRP.Query("characters/setFugitive",{ id = Passport, Fugitive = 0 })
 		end
 	end
@@ -298,5 +298,14 @@ AddEventHandler("Connect",function(Passport,source)
 		if Identity["fugitive"] == 0 then
 			vCLIENT.syncPrison(source,true,false)
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport,source)
+	if PrisonMarkers[source] then
+		PrisonMarkers[source] = nil
+		TriggerEvent("blipsystem:Exit",source)
 	end
 end)

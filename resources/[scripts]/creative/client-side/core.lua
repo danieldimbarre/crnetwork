@@ -193,10 +193,11 @@ local Blips = {
 -- THREADINIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Emitters = {
-    'LOS_SANTOS_AMMUNATION_GUN_RANGE',
-    'LOS_SANTOS_VANILLA_UNICORN_01_STAGE',
-    'LOS_SANTOS_VANILLA_UNICORN_02_MAIN_ROOM',
-    'LOS_SANTOS_VANILLA_UNICORN_03_BACK_ROOM'
+	'LOS_SANTOS_AMMUNATION_GUN_RANGE',
+	'LOS_SANTOS_VANILLA_UNICORN_01_STAGE',
+	'LOS_SANTOS_VANILLA_UNICORN_02_MAIN_ROOM',
+    'LOS_SANTOS_VANILLA_UNICORN_03_BACK_ROOM',
+	'se_dlc_biker_tequilala_exterior_emitter'
 }
 
 local Ambient = {
@@ -472,7 +473,7 @@ CreateThread(function()
 				for Number = 1,#Teleport do
 					local v = Teleport[Number]
 					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-					if Distance <= 1 then
+					if Distance <= 2.5 then
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) then

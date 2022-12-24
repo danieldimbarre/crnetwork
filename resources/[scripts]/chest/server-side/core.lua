@@ -40,9 +40,19 @@ function Creative.Permissions(Name,Mode)
 			end
 
 			local Consult = vRP.Query("chests/GetChests",{ name = Name })
-			if Consult[1] and vRP.HasService(Passport,Consult[1]["perm"]) then
-				Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"], ["Save"] = true }
-				return true
+			if Consult[1] then
+				local Split = splitString(Consult[1]["perm"],"-")
+				if Split[2] ~= nil then
+					if vRP.HasGroup(Passport,Split[1],parseInt(Split[2])) then
+						Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"], ["Save"] = true }
+						return true
+					end
+				else
+					if vRP.HasService(Passport,Consult[1]["perm"]) then
+						Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"], ["Save"] = true }
+						return true
+					end
+				end
 			end
 		end
 	end

@@ -20,20 +20,31 @@ local Chests = {
 	-- { ["Name"] = "Paramedic", ["Coords"] = vec3(306.17,-601.98,43.25), ["Mode"] = "2" },
 	{ ["Name"] = "Paramedic", ["Coords"] = vec3(-258.00,6332.62,32.72), ["Mode"] = "2" },
 	{ ["Name"] = "Mechanic", ["Coords"] = vec3(841.69,-824.51,26.34), ["Mode"] = "2" },
+	{ ["Name"] = "Mechanic-2", ["Coords"] = vec3(799.13,-831.17,26.34), ["Mode"] = "2" },
 	{ ["Name"] = "BurgerShot", ["Coords"] = vec3(-1203.11,-895.47,13.99), ["Mode"] = "2" },
 	{ ["Name"] = "PizzaThis", ["Coords"] = vec3(796.55,-749.32,31.26), ["Mode"] = "2" },
 	{ ["Name"] = "UwuCoffee", ["Coords"] = vec3(-572.65,-1049.74,26.61), ["Mode"] = "2" },
 	{ ["Name"] = "BeanMachine", ["Coords"] = vec3(122.67,-1040.42,29.27), ["Mode"] = "2" },
 	{ ["Name"] = "Ballas", ["Coords"] = vec3(-1.29,-1811.82,25.34), ["Mode"] = "2" },
+	{ ["Name"] = "Ballas-2", ["Coords"] = vec3(-2.09,-1811.84,29.15), ["Mode"] = "2" },
 	{ ["Name"] = "Families", ["Coords"] = vec3(-162.64,-1613.1,33.65), ["Mode"] = "2" },
+	{ ["Name"] = "Families-2", ["Coords"] = vec3(-164.06,-1619.39,33.65), ["Mode"] = "2" },
 	{ ["Name"] = "Vagos", ["Coords"] = vec3(326.17,-2000.24,24.2), ["Mode"] = "2" },
+	{ ["Name"] = "Vagos-2", ["Coords"] = vec3(339.75,-1980.68,24.2), ["Mode"] = "2" },
 	{ ["Name"] = "Aztecas", ["Coords"] = vec3(495.7,-1527.89,29.28), ["Mode"] = "2" },
-	{ ["Name"] = "Bloods", ["Coords"] = vec3(231.62,-1752.92,28.98), ["Mode"] = "2" },
-	{ ["Name"] = "Triads", ["Coords"] = vec3(-653.47,-1229.82,11.54), ["Mode"] = "2" },
+	{ ["Name"] = "Aztecas-2", ["Coords"] = vec3(484.71,-1533.11,29.28), ["Mode"] = "2" },
+	-- { ["Name"] = "Bloods", ["Coords"] = vec3(231.62,-1752.92,28.98), ["Mode"] = "2" },
+	-- { ["Name"] = "Bloods-2", ["Coords"] = vec3(231.62,-1752.92,28.98), ["Mode"] = "2" },
+	{ ["Name"] = "Triads", ["Coords"] = vec3(-653.01,-1230.54,11.54), ["Mode"] = "2" },
+	{ ["Name"] = "Triads-2", ["Coords"] = vec3(-644.49,-1244.69,11.54), ["Mode"] = "2" },
 	{ ["Name"] = "Razors", ["Coords"] = vec3(502.55,-70.36,58.15), ["Mode"] = "2" },
+	{ ["Name"] = "Razors-2", ["Coords"] = vec3(499.67,-73.47,58.15), ["Mode"] = "2" },
 	{ ["Name"] = "Tribo", ["Coords"] = vec3(-1111.09,4946.13,218.36), ["Mode"] = "2" },
+	{ ["Name"] = "Tribo-2", ["Coords"] = vec3(-1103.89,4938.57,218.36), ["Mode"] = "2" },
 	{ ["Name"] = "Marabunta", ["Coords"] = vec3(1254.15,-1571.59,58.74), ["Mode"] = "2" },
+	{ ["Name"] = "Marabunta-2", ["Coords"] = vec3(1251.24,-1580.96,58.35), ["Mode"] = "2" },
 	{ ["Name"] = "Lost", ["Coords"] = vec3(103.18,3604.63,40.49), ["Mode"] = "2" },
+	{ ["Name"] = "Lost-2", ["Coords"] = vec3(101.31,3619.81,40.49), ["Mode"] = "2" },
 	{ ["Name"] = "trayShot", ["Coords"] = vec3(-1195.20,-893.13,14.41), ["Mode"] = "3" },
 	{ ["Name"] = "trayDesserts", ["Coords"] = vec3(-584.01,-1059.30,22.41), ["Mode"] = "3" },
 	{ ["Name"] = "trayPizza", ["Coords"] = vec3(811.10,-752.78,26.74), ["Mode"] = "3" },
@@ -91,11 +102,11 @@ local Labels = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Name,v in pairs(Chests) do
-		exports["target"]:AddCircleZone("Chest:"..Name,v["Coords"],1.0,{
+		exports["target"]:AddCircleZone("Chest:"..Name,v["Coords"],0.5,{
 			name = "Chest:"..Name,
 			heading = 3374176
 		},{
-			Distance = 1.5,
+			Distance = 1.0,
 			shop = v["Name"],
 			options = Labels[v["Mode"]]
 		})

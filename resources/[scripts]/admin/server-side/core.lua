@@ -879,6 +879,28 @@ RegisterCommand("veh",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CHANNEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("channel",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
+			local Text = ""
+			local Channel = exports["pma-voice"]:getPlayersInRadioChannel(tonumber(Message[1]))
+
+			for Sources,_ in pairs(Channel) do
+				if Text == "" then
+					Text = Text..vRP.Passport(Sources)
+				else
+					Text = Text..", "..vRP.Passport(Sources)
+				end
+			end
+
+			TriggerClientEvent("Notify",source,"azul","Canal <b>"..Message[1].."</b>: "..Text,10000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CUSTOM
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {

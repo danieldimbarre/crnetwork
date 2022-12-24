@@ -901,6 +901,8 @@ AddEventHandler("robberys:Init",function(Number)
 					for k,v in pairs(Robberys[Number]["payment"]) do
 						vRP.GenerateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
 					end
+
+					TriggerEvent("Wanted",source,Passport,600)
 				else
 					local Cooldown = parseInt(Robberys[Number]["timavaiable"] - os.time())
 					TriggerClientEvent("Notify",source,"azul","Desencriptação em andamento, aguarde <b>"..Cooldown.."</b> segundos.",5000)

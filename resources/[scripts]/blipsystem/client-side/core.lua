@@ -18,7 +18,7 @@ local Pause = false
 local Colors = {
 	["Police"] = 63,
 	["Paramedic"] = 6,
-	["Prisioneiro"] = 33,
+	["Prisioneiro"] = 47,
 	["Corredor"] = 2
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -50,6 +50,7 @@ CreateThread(function()
 							SetBlipAsShortRange(Blips[Number],true)
 							SetBlipColour(Blips[Number],Colors[v["service"]])
 							SetBlipScale(Blips[Number],0.7)
+							SetBlipCategory(Blips[Number],7)
 							BeginTextCommandSetBlipName("STRING")
 							AddTextComponentString("! "..v["service"])
 							EndTextCommandSetBlipName(Blips[Number])
@@ -80,6 +81,7 @@ CreateThread(function()
 								SetBlipAsShortRange(Blips[Number],true)
 								SetBlipColour(Blips[Number],Colors[v["service"]])
 								SetBlipScale(Blips[Number],0.7)
+								SetBlipCategory(Blips[Number],7)
 								BeginTextCommandSetBlipName("STRING")
 								AddTextComponentString("! "..v["service"])
 								EndTextCommandSetBlipName(Blips[Number])

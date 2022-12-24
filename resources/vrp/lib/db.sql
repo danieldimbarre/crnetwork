@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `blood` int(1) NOT NULL DEFAULT 1,
   `fines` int(20) NOT NULL DEFAULT 0,
   `prison` int(11) NOT NULL DEFAULT 0,
+  `fugitive` int(1) NOT NULL DEFAULT 0,
   `tracking` int(30) NOT NULL DEFAULT 0,
   `spending` int(20) NOT NULL DEFAULT 0,
   `cardlimit` int(20) NOT NULL DEFAULT 10000,

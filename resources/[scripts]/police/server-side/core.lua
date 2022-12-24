@@ -157,7 +157,7 @@ function cRP.searchUser(Passport)
 			end
 			
 			local Runaway = "Não"
-			if Identity["fugitive"] == 1 and Identity["prison"] > 0 then
+			if vRP.Query("characters/Fugitive",{ id = Passport }) == 1 and Identity["prison"] > 0 then
 				Runaway = "Sim, deve "..Identity["prison"].." serviços"
 			end
 

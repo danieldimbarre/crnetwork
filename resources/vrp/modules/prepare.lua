@@ -23,6 +23,7 @@ vRP.Prepare("characters/DowngradeCardlimit","UPDATE characters SET cardlimit = c
 vRP.Prepare("characters/countPersons","SELECT COUNT(license) as qtd FROM characters WHERE license = @license and deleted = 0")
 vRP.Prepare("characters/newCharacter","INSERT INTO characters(license,name,name2,sex,phone,blood) VALUES(@license,@name,@name2,@sex,@phone,@blood)")
 vRP.Prepare("characters/resetPrison","UPDATE characters SET prison = 0 WHERE id = @Passport")
+vRP.Prepare("characters/Fugitive","SELECT fugitive FROM characters WHERE id = @id")
 vRP.Prepare("characters/setFugitive","UPDATE characters SET fugitive = @Fugitive WHERE id = @Passport")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS

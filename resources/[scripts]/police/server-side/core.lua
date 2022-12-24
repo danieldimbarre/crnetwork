@@ -158,7 +158,7 @@ function cRP.searchUser(Passport)
 			
 			local Runaway = "Não"
 			local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
-			if Consult["fugitive"] == 1 and Identity["prison"] > 0 then
+			if Consult[1]["fugitive"] == 1 and Identity["prison"] > 0 then
 				Runaway = "Sim, deve "..Identity["prison"].." serviços"
 			end
 
@@ -285,7 +285,7 @@ function reduceFunction(source,Passport,Number)
 		vCLIENT.syncPrison(source,false,false)
 
 		local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
-		if Consult["fugitive"] == 1 then
+		if Consult[1]["fugitive"] == 1 then
 			vRP.Query("characters/setFugitive",{ Passport = Passport, Fugitive = 0 })
 		end
 	end
@@ -300,7 +300,7 @@ AddEventHandler("Connect",function(Passport,source)
 	end
 	
 	local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
-	if Consult["fugitive"] == 0 then
+	if Consult[1]["fugitive"] == 0 then
 		vCLIENT.syncPrison(source,true,false)
 	else
 		if PrisonMarkers[Passport] then

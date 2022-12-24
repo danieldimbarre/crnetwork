@@ -883,21 +883,29 @@ end)
 -- CHANNEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("channel",function(source,Message)
-	local Passport = vRP.Passport(source)
-	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
-			local Text = ""
-			local Channel = exports["pma-voice"]:getPlayersInRadioChannel(tonumber(Message[1]))
-
-			for Sources,_ in pairs(Channel) do
-				if Text == "" then
-					Text = Text..vRP.Passport(Sources)
-				else
-					Text = Text..", "..vRP.Passport(Sources)
-				end
+	if Message[1] then
+		if source ~= 0 then
+			local Passport = vRP.Passport(source)
+			if not vRP.HasGroup(Passport,"Admin") then
+				return
 			end
+		end
 
-			TriggerClientEvent("Notify",source,"azul","Canal <b>"..Message[1].."</b>: "..Text,10000)
+		local Text = ""
+		local Channel = exports["pma-voice"]:getPlayersInRadioChannel(tonumber(Message[1]))
+
+		for Sources,_ in pairs(Channel) do
+			if Text == "" then
+				Text = Text..vRP.Passport(Sources)
+			else
+				Text = Text..", "..vRP.Passport(Sources)
+			end
+		end
+
+		if source ~= 0 then
+			TriggerClientEvent("Notify",source,"azul","Canal <b>"..Message[1].."</b>: "..Text,15000)
+		else
+			print("^2Canal "..Message[1]..":^7 "..Text)
 		end
 	end
 end)
@@ -905,30 +913,32 @@ end)
 -- GENERATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("generate",function(source,Message)
-	local Passport = vRP.Passport(source)
-	if Passport and Message[1] then
-		if vRP.HasGroup(Passport,"Admin") then
-			local List = {}
-			if Message[1] == "item" then
-				List = itemList()
-			elseif Message[1] == "car" then
-				List = VehicleGlobal()
-			elseif Message[1] == "anim" then
-				List = vANIM.AnimList(source)
-			end
-
-			if List then
-				local Text = "**"..Message[1].."**"
-
-				for Index,_ in pairsByKeys(List) do
-					Text = Text.."\n"..Index
-				end
-
-				Text = Text.."\n\n"
-
-				vRP.Archive("generate.txt",Text)
-			end
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if not vRP.HasGroup(Passport,"Admin") then
+			return
 		end
+	end
+
+	local List = {}
+	if Message[1] == "item" then
+		List = itemList()
+	elseif Message[1] == "car" then
+		List = VehicleGlobal()
+	elseif Message[1] == "anim" then
+		List = vANIM.AnimList(source)
+	end
+
+	if List then
+		local Text = "**"..Message[1].."**"
+
+		for Index,_ in pairsByKeys(List) do
+			Text = Text.."\n"..Index
+		end
+
+		Text = Text.."\n\n"
+
+		vRP.Archive("generate.txt",Text)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

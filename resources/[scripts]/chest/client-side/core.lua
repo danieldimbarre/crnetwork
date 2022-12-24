@@ -102,11 +102,11 @@ local Labels = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Name,v in pairs(Chests) do
-		exports["target"]:AddCircleZone("Chest:"..Name,v["Coords"],1.0,{
+		exports["target"]:AddCircleZone("Chest:"..Name,v["Coords"],0.5,{
 			name = "Chest:"..Name,
 			heading = 3374176
 		},{
-			Distance = 1.5,
+			Distance = 1.0,
 			shop = v["Name"],
 			options = Labels[v["Mode"]]
 		})

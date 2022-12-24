@@ -151,12 +151,9 @@ function cRP.searchUser(Passport)
 				Value = Value + v["value"]
 			end
 
-			local Source = vRP.Source(Passport)
 			local Wanted = "Não"
-			if Source then
-				if exports["hud"]:Wanted(Passport,Source,true) then
-					Wanted = "Sim"
-				end
+			if exports["hud"]:Wanted(Passport) then
+				Wanted = "Sim"
 			end
 			
 			local Runaway = "Não"

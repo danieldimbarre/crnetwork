@@ -32,30 +32,28 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WANTED
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Wanted",function(Passport,source,Check)
+exports("Wanted",function(Passport,source)
 	local source = parseInt(source)
 	local Passport = parseInt(Passport)
 
 	if Wanted[Passport] then
 		if Wanted[Passport] > os.time() then
-			if not Check then
-				if not Call[Passport] then
-					Call[Passport] = os.time()
-				end
+			if not Call[Passport] then
+				Call[Passport] = os.time()
+			end
 
-				if Call[Passport] <= os.time() and source > 0 then
-					Call[Passport] = os.time() + 60
+			if Call[Passport] <= os.time() and source > 0 then
+				Call[Passport] = os.time() + 60
 
-					TriggerClientEvent("Notify",source,"amarelo","Você foi denunciado, parece que suas digitais<br>estão no banco de dados do governo como procurado.",5000)
+				TriggerClientEvent("Notify",source,"amarelo","Você foi denunciado, parece que suas digitais<br>estão no banco de dados do governo como procurado.",5000)
 
-					local Ped = GetPlayerPed(source)
-					local Coords = GetEntityCoords(Ped)
-					local Service = vRP.NumPermission("Police")
-					for Passports,Sources in pairs(Service) do
-						async(function()
-							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Digitais Encontradas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alerta de procurado", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
-						end)
-					end
+				local Ped = GetPlayerPed(source)
+				local Coords = GetEntityCoords(Ped)
+				local Service = vRP.NumPermission("Police")
+				for Passports,Sources in pairs(Service) do
+					async(function()
+						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Digitais Encontradas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alerta de procurado", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+					end)
 				end
 			end
 			

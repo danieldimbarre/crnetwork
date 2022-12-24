@@ -123,7 +123,7 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 				vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
 				TriggerClientEvent("Notify",source,"verde","Prisão efetuada.",5000)
 				TriggerClientEvent("police:Update",source,"reloadPrison")
-				vRP.InitPrison(OtherPassport,Services)
+				vRP.InitPrison(OtherPassport,Identity["prison"] + Services)
 
 				if Value > 0 then
 					exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)

@@ -6,7 +6,7 @@ vRP.Prepare("characters/getPhone","SELECT id FROM characters WHERE phone = @phon
 vRP.Prepare("characters/updatePhone","UPDATE characters SET phone = @phone WHERE id = @id")
 vRP.Prepare("characters/removeCharacter","UPDATE characters SET deleted = 1 WHERE id = @id")
 vRP.Prepare("characters/addFines","UPDATE characters SET fines = fines + @fines WHERE id = @id")
-vRP.Prepare("characters/setPrison","UPDATE characters SET prison = prison + @prison WHERE id = @Passport")
+vRP.Prepare("characters/setPrison","UPDATE characters SET prison = @prison WHERE id = @Passport")
 vRP.Prepare("characters/removeFines","UPDATE characters SET fines = fines - @fines WHERE id = @id")
 vRP.Prepare("characters/addBank","UPDATE characters SET bank = bank + @amount WHERE id = @Passport")
 vRP.Prepare("characters/remBank","UPDATE characters SET bank = bank - @amount WHERE id = @Passport")

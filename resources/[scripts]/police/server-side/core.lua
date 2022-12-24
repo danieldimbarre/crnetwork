@@ -216,7 +216,7 @@ function cRP.Wanted()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		vRP.Query("characters/setFugitive",{ id = Passport, Fugitive = 1 })
+		vRP.Query("characters/setFugitive",{ Passport = Passport, Fugitive = 1 })
 		PrisonMarkers[source] = { 600,Passport }
 		TriggerEvent("Wanted",source,Passport,600)
 
@@ -283,7 +283,7 @@ function reduceFunction(source,Passport,Number)
 		vCLIENT.syncPrison(source,false,false)
 
 		if Identity["fugitive"] == 1 then
-			vRP.Query("characters/setFugitive",{ id = Passport, Fugitive = 0 })
+			vRP.Query("characters/setFugitive",{ Passport = Passport, Fugitive = 0 })
 		end
 	end
 end

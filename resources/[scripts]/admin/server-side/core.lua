@@ -999,7 +999,7 @@ RegisterCommand("custom",function(source)
 					Count = Count + 1
 				until Count == #List + 1
 
-				Text = Text.."\n\n"
+				Text = Text.."\n"
 
 				vRP.Archive("custom.txt",Text)
 			end

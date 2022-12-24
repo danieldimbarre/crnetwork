@@ -932,11 +932,17 @@ RegisterCommand("generate",function(source,Message)
 	if List then
 		local Text = "**"..Message[1].."**"
 
-		for Index,_ in pairsByKeys(List) do
-			Text = Text.."\n"..Index
+		for Index,v in pairsByKeys(List) do
+			if Message[1] == "car" then
+				if v["Mode"] == "rental" then
+					Text = Text.."\n"..Index
+				end
+			else
+				Text = Text.."\n"..Index
+			end
 		end
 
-		Text = Text.."\n\n"
+		Text = Text.."\n"
 
 		vRP.Archive("generate.txt",Text)
 	end

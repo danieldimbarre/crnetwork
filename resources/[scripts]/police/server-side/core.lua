@@ -129,6 +129,15 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 					exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)
 				end
 
+				local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
+				if Consult[1]["fugitive"] == 1 then
+					vRP.Query("characters/setFugitive",{ Passport = Passport, Fugitive = 0 })
+				end
+
+				if exports["hud"]:Wanted(Passport) then
+					TriggerEvent("Wanted:Remove",source,Passport)
+				end
+
 				TriggerEvent("Discord","Police","**Policial:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,13541152)
 			end
 

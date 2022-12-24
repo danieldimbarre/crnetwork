@@ -11,6 +11,7 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("admin",Creative)
 vCLIENT = Tunnel.getInterface("admin")
+vANIM = Tunnel.getInterface("animacoes")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -901,6 +902,36 @@ RegisterCommand("channel",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- GENERATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("generate",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] then
+		if vRP.HasGroup(Passport,"Admin") then
+			local List = {}
+			if Message[1] == "item" then
+				List = itemList()
+			elseif Message[1] == "car" then
+				List = VehicleGlobal()
+			elseif Message[1] == "anim" then
+				List = vANIM.AnimList(source)
+			end
+
+			if List then
+				local Text = "**"..Message[1].."**"
+
+				for Index,_ in pairsByKeys(List) do
+					Text = Text.."\n"..Index
+				end
+
+				Text = Text.."\n\n"
+
+				vRP.Archive("generate.txt",Text)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CUSTOM
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
@@ -921,7 +952,7 @@ local List = {
 	[15] = "ear"
 }
 
-RegisterCommand("custom",function(source,args,rawCommand)
+RegisterCommand("custom",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
@@ -980,6 +1011,26 @@ end)
 AddEventHandler("txAdmin:events:serverShuttingDown",function(eventData)
     TriggerEvent("SaveServer")
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PAIRSBYKEYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function pairsByKeys(t,f)
+    local a = {}
+    for n in pairs(t) do
+        table.insert(a,n)
+    end
+    table.sort(a,f)
+    local i = 0
+    local iter = function()
+        i = i + 1
+        if not a[i] then
+            return nil
+        else
+            return a[i],t[a[i]]
+        end
+    end
+    return iter
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TXADMIN:EVENTS:SCHEDULEDRESTART
 -----------------------------------------------------------------------------------------------------------------------------------------

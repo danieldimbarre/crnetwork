@@ -1967,7 +1967,7 @@ AddEventHandler("robberys:Init",function(Number)
 						if Consult[1] >= Robberys[Number]["need"]["amount"] then
 							if not vRP.CheckDamaged(Consult[2]) then
 								if Robberys[Number]["type"] == "register" then
-									Robberype[Robberys[Number]["type"]] = os.time() + Robberys[Number]["cooldown"]
+									Robberype[Robberys[Number]["type"]] = os.time()
 
 									vRP.UpgradeStress(Passport,10)
 									TriggerClientEvent("Progress",source,"Roubando",30000)

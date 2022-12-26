@@ -2116,13 +2116,13 @@ function Creative.Dismantle(Entity)
 
 				if Class == "B" or Class == "B+" then
 					VehRandom = math.random(4500)
-					AmountItens = math.random(150,200)
+					AmountItens = math.random(200,300)
 				elseif Class == "A" or Class == "A+" then
 					VehRandom = math.random(3500)
-					AmountItens = math.random(200,250)
+					AmountItens = math.random(300,400)
 				elseif Class == "S" or Class == "S+" then
 					VehRandom = math.random(2500)
-					AmountItens = math.random(250,300)
+					AmountItens = math.random(400,500)
 				end
 
 				if VehParts <= 1 then

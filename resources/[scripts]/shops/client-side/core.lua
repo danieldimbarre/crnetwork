@@ -153,6 +153,8 @@ local List = {
 	-- { 301.14,-195.75,61.57,"Weapons",false },
 	{ 837.17,-808.15,26.35,"Mechanic",false },
 	{ 836.73,-823.74,26.32,"Mechanic-2",false },
+	{ 1690.09,3588.45,36.6,"Mechanic-2",false }, -- SANDY
+	{ 97.46,6618.8,33.41,"Mechanic-2",false }, -- PALETO
 	{ -1636.74,-1092.17,13.08,"Oxy",false },
 	{ -1196.9,-901.58,13.99,"BurgerShot",false },
 	{ -1195.68,-891.21,13.99,"BurgerShot-2",true },

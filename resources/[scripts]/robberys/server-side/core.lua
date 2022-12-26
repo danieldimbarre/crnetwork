@@ -14,6 +14,7 @@ Tunnel.bindInterface("robberys",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Robberype = {}
+local Active = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -845,7 +846,43 @@ local Robberys = {
 		["payment"] = {
 			{ ["item"] = "goldbar", ["min"] = 150, ["max"] = 200 }
 		}
-	}
+	},
+	["47"] = {
+		["Coords"] = vec3(419.54,-809.85,29.49),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 300, ["max"] = 450 }
+		}
+	},
+	["48"] = {
+		["Coords"] = vec3(422.56,-809.85,29.49),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 300, ["max"] = 450 }
+		}
+	},
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROBBERYS:INIT
@@ -867,19 +904,48 @@ AddEventHandler("robberys:Init",function(Number)
 						local Consult = vRP.InventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
 						if Consult[1] >= Robberys[Number]["need"]["amount"] then
 							if not vRP.CheckDamaged(Consult[2]) then
-								if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
+								if Robberys[Number]["type"] == "register" then
 									Robberype[Robberys[Number]["type"]] = os.time() + Robberys[Number]["cooldown"]
-									Robberys[Number]["timavaiable"] = os.time() + Robberys[Number]["duration"]
-									Robberys[Number]["avaiable"] = true
+
+									vRP.UpgradeStress(Passport,10)
+									TriggerClientEvent("Progress",source,"Roubando",35000)
+									Player(source)["state"]["Buttons"] = true
+									vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
 
 									for Passports,Sources in pairs(Service) do
 										async(function()
 											TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
-											vRPC.PlaySound(Sources,"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
+											vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 										end)
 									end
 
-									TriggerClientEvent("Notify",source,"verde","Progresso de desencriptação do sistema iniciado, o mesmo vai estar concluído em <b>"..Robberys[Number]["duration"].."</b> segundos.",5000)
+									Active[Passport] = os.time() + Robberys[Number]["duration"]
+									
+									repeat
+										if os.time() >= Active[Passport] then
+											Active[Passport] = nil
+											TriggerEvent("Wanted",source,Passport,300)
+										end
+
+										vRP.GenerateItem(Passport,"dollars",math.random(50,65),true)
+										
+										Wait(1000)
+									until not Active[Passport]
+								else
+									if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
+										Robberype[Robberys[Number]["type"]] = os.time() + Robberys[Number]["cooldown"]
+										Robberys[Number]["timavaiable"] = os.time() + Robberys[Number]["duration"]
+										Robberys[Number]["avaiable"] = true
+
+										for Passports,Sources in pairs(Service) do
+											async(function()
+												TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
+												vRPC.PlaySound(Sources,"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
+											end)
+										end
+
+										TriggerClientEvent("Notify",source,"verde","Progresso de desencriptação do sistema iniciado, o mesmo vai estar concluído em <b>"..Robberys[Number]["duration"].."</b> segundos.",5000)
+									end
 								end
 							else
 								TriggerClientEvent("Notify",source,"vermelho","<b>"..itemName(Robberys[Number]["need"]["item"]).."</b> danificado.",5000)
@@ -909,6 +975,15 @@ AddEventHandler("robberys:Init",function(Number)
 				end
 			end
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ROBBERYS:CANCEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("robberys:Cancel")
+AddEventHandler("robberys:Cancel",function(source,Passport)
+	if Active[Passport] then
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

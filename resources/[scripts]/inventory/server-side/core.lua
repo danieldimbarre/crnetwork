@@ -1333,6 +1333,8 @@ function Creative.Cancel()
 		if GetPlayerRoutingBucket(source) > 900000 then
 			TriggerEvent("arena:Cancel",source,Passport)
 		end
+
+		TriggerEvent("robberys:Cancel",source,Passport)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1480,6 +1482,13 @@ function Creative.VerifyObjects(Entity,Service)
 					TriggerClientEvent("Progress",source,"Roubando",10000)
 					vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 					Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 1800 }
+
+					for Passports,Sources in pairs(ServiceList) do
+						async(function()
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Parquímetro", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						end)
+					end
 				else
 					Active[Passport] = os.time() + 5
 					TriggerClientEvent("Progress",source,"Vasculhando",5000)
@@ -1508,32 +1517,25 @@ function Creative.VerifyObjects(Entity,Service)
 								end
 							end
 
-							if parseInt(randItem) >= 61 and parseInt(randItem) <= 70 then
+							if randItem >= 61 and randItem <= 70 then
 								itemSelect = { "metalcan",math.random(2) }
-							elseif parseInt(randItem) >= 51 and parseInt(randItem) <= 60 then
+							elseif randItem >= 51 and randItem <= 60 then
 								itemSelect = { "battery",math.random(2) }
-							elseif parseInt(randItem) >= 41 and parseInt(randItem) <= 50 then
+							elseif randItem >= 41 and randItem <= 50 then
 								itemSelect = { "elastic",math.random(2) }
-							elseif parseInt(randItem) >= 21 and parseInt(randItem) <= 40 then
+							elseif randItem >= 21 and randItem <= 40 then
 								itemSelect = { "plasticbottle",math.random(2) }
-							elseif parseInt(randItem) <= 20 then
+							elseif randItem <= 20 then
 								itemSelect = { "glassbottle",math.random(2) }
 							end
 						elseif Service == "Parquimetro" then
 							local randItem = math.random(35)
-							if parseInt(randItem) >= 21 and parseInt(randItem) <= 30 then
+							if randItem >= 21 and randItem <= 30 then
 								itemSelect = { "goldcoin",math.random(3,6) }
-							elseif parseInt(randItem) >= 11 and parseInt(randItem) <= 20 then
+							elseif randItem >= 11 and randItem <= 20 then
 								itemSelect = { "silvercoin",math.random(6,12) }
-							elseif parseInt(randItem) >= 0 and parseInt(randItem) <= 10 then
+							elseif randItem <= 10 then
 								itemSelect = { "dollars",math.random(75) }
-							end
-
-							for Passports,Sources in pairs(ServiceList) do
-								async(function()
-									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Parquímetro", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
-								end)
 							end
 						end
 

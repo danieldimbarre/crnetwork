@@ -1012,7 +1012,7 @@ local List = {
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { 422.7,-810.25,29.49,357.17 },
+		Coords = { 430.42,-807.92,29.49,87.88 },
 		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},

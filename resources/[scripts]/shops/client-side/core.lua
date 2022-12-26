@@ -178,7 +178,7 @@ local List = {
 	{ 1200.68,2707.35,38.22,"Clothes",false },
 	{ -3172.39,1055.31,20.86,"Clothes",false },
 	{ -1096.53,2711.1,19.11,"Clothes",false },
-	{ 422.7,-810.25,29.49,"Clothes",false },
+	{ 430.42,-807.92,29.49,"Clothes",false },
 	{ 963.34,19.26,71.46,"Clothes",false },
 	{ -1174.54,-1571.4,4.35,"Weeds",false },
 	-- { 1569.67,-2129.67,78.33,"Dismantle",false }

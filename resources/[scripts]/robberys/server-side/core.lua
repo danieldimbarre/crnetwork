@@ -1973,6 +1973,7 @@ AddEventHandler("robberys:Init",function(Number)
 									TriggerClientEvent("Progress",source,"Roubando",30000)
 									Player(source)["state"]["Buttons"] = true
 									vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
+									TriggerEvent("Wanted",source,Passport,300)
 
 									for Passports,Sources in pairs(Service) do
 										async(function()
@@ -1984,19 +1985,17 @@ AddEventHandler("robberys:Init",function(Number)
 									Active[Passport] = os.time() + Robberys[Number]["duration"]
 									
 									repeat
+										Wait(1000)
+
 										if os.time() >= Active[Passport] then
 											Active[Passport] = nil
 											vRPC.stopAnim(source,false)
 											Player(source)["state"]["Buttons"] = false
-
-											TriggerEvent("Wanted",source,Passport,300)
 										end
 
 										for k,v in pairs(Robberys[Number]["payment"]) do
 											vRP.GenerateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
 										end
-										
-										Wait(1000)
 									until not Active[Passport]
 								else
 									if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
@@ -2051,6 +2050,8 @@ RegisterServerEvent("robberys:Cancel")
 AddEventHandler("robberys:Cancel",function(source,Passport)
 	if Active[Passport] then
 		Active[Passport] = nil
+		Player(source)["state"]["Buttons"] = false
+		TriggerClientEvent("Progress",source,"Cancelando",1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

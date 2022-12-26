@@ -934,79 +934,79 @@ local List = {
 	-- },
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { 78.26,-1388.91,29.37,178.59 },
+		Coords = { 70.55,-1391.32,29.37,266.46 },
 		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { -706.73,-151.38,37.41,116.23 },
+		Coords = { -709.12,-146.91,37.41,116.23 },
 		Model = "s_f_m_shop_high",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { -166.69,-301.55,39.73,249.45 },
+		Coords = { -168.42,-306.3,39.73,249.45 },
 		Model = "s_f_m_shop_high",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { -817.5,-1074.03,11.32,119.06 },
+		Coords = { -823.47,-1068.65,11.32,209.77 },
 		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { -1197.33,-778.98,17.32,31.19 },
+		Coords = { -1185.83,-772.0,17.32,85.04 },
 		Model = "s_f_y_shop_mid",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { -1447.84,-240.03,49.81,45.36 },
+		Coords = { -1444.31,-236.25,49.81,45.36 },
 		Model = "s_f_m_shop_high",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { -0.07,6511.8,31.88,311.82 },
+		Coords = { 7.01,6507.99,31.88,39.69 },
 		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { 1691.6,4818.47,42.06,2.84 },
+		Coords = { 1698.76,4822.07,42.06,96.38 },
 		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { 123.21,-212.34,54.56,255.12 },
+		Coords = { 117.46,-224.63,54.56,314.65 },
 		Model = "s_f_y_shop_mid",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { 621.24,2753.37,42.09,90.71 },
+		Coords = { 621.47,2766.93,42.09,155.91 },
 		Model = "s_f_y_shop_mid",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { 1200.68,2707.35,38.22,85.04 },
+		Coords = { 1197.97,2714.88,38.22,187.09 },
 		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { -3172.39,1055.31,20.86,246.62 },
+		Coords = { -3178.64,1043.56,20.86,308.98 },
 		Model = "s_f_y_shop_mid",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Loja de Roupas
 		Distance = 20,
-		Coords = { -1096.53,2711.1,19.11,127.56 },
+		Coords = { -1103.53,2715.05,19.11,223.94 },
 		Model = "s_f_y_shop_low",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},

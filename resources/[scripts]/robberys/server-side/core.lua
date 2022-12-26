@@ -1968,6 +1968,7 @@ AddEventHandler("robberys:Init",function(Number)
 							if not vRP.CheckDamaged(Consult[2]) then
 								if Robberys[Number]["type"] == "register" then
 									Robberype[Robberys[Number]["type"]] = os.time()
+									Active[Passport] = os.time() + Robberys[Number]["duration"]
 
 									vRP.UpgradeStress(Passport,10)
 									TriggerClientEvent("Progress",source,"Roubando",30000)
@@ -1981,8 +1982,6 @@ AddEventHandler("robberys:Init",function(Number)
 											vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 										end)
 									end
-
-									Active[Passport] = os.time() + Robberys[Number]["duration"]
 									
 									repeat
 										if os.time() >= Active[Passport] then

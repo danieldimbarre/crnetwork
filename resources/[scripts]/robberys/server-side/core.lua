@@ -1970,7 +1970,7 @@ AddEventHandler("robberys:Init",function(Number)
 									Robberype[Robberys[Number]["type"]] = os.time() + Robberys[Number]["cooldown"]
 
 									vRP.UpgradeStress(Passport,10)
-									TriggerClientEvent("Progress",source,"Roubando",35000)
+									TriggerClientEvent("Progress",source,"Roubando",30000)
 									Player(source)["state"]["Buttons"] = true
 									vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
 
@@ -1986,6 +1986,9 @@ AddEventHandler("robberys:Init",function(Number)
 									repeat
 										if os.time() >= Active[Passport] then
 											Active[Passport] = nil
+											vRPC.stopAnim(source,false)
+											Player(source)["state"]["Buttons"] = false
+
 											TriggerEvent("Wanted",source,Passport,300)
 										end
 

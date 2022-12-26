@@ -346,11 +346,11 @@ AddEventHandler("garages:Impound",function(vehName)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local VehiclePrice = VehiclePrice(vehName)
+		local Price = VehiclePrice(vehName) * 0.25
 		TriggerClientEvent("dynamic:closeSystem",source)
 
-		if vRP.Request(source,"A liberação do veículo tem o custo de <b>$"..parseFormat(VehiclePrice * 0.25).."</b> dólares, deseja prosseguir com a liberação do mesmo?","Sim, efetuar o pagamento","Não, decido depois") then
-			if vRP.PaymentFull(Passport,VehiclePrice * 0.25) then
+		if vRP.Request(source,"A liberação do veículo tem o custo de <b>$"..parseFormat(VehiclePrice).."</b> dólares, deseja prosseguir com a liberação do mesmo?","Sim, efetuar o pagamento","Não, decido depois") then
+			if vRP.PaymentFull(Passport,VehiclePrice) then
 				vRP.Query("vehicles/paymentArrest",{ Passport = Passport, vehicle = vehName })
 				TriggerClientEvent("Notify",source,"verde","Veículo liberado.",5000)
 			else
@@ -371,11 +371,13 @@ AddEventHandler("garages:Tax",function(Name)
 		if Consult[1] and Consult[1]["tax"] <= os.time() then
 			local Price = VehiclePrice(Name) * 0.10
 
-			if vRP.PaymentFull(Passport,Price) then
-				vRP.Query("vehicles/updateVehiclesTax",{ Passport = Passport, vehicle = Name })
-				TriggerClientEvent("Notify",source,"verde","Pagamento concluído.",5000)
-			else
-				TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
+			if vRP.Request(source,"A taxa do veículo tem o custo de <b>$"..parseFormat(Price).."</b> dólares, deseja prosseguir com o pagamento do mesmo?","Sim, efetuar o pagamento","Não, decido depois") then
+				if vRP.PaymentFull(Passport,Price) then
+					vRP.Query("vehicles/updateVehiclesTax",{ Passport = Passport, vehicle = Name })
+					TriggerClientEvent("Notify",source,"verde","Pagamento concluído.",5000)
+				else
+					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
+				end
 			end
 		end
 	end

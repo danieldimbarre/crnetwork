@@ -1944,24 +1944,6 @@ local Robberys = {
 		["payment"] = {
 			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
 		}
-	},
-	["108"] = {
-		["Coords"] = vec3(,26.17),
-		["name"] = "Caixa Registradora",
-		["type"] = "register",
-		["cooldown"] = 1800,
-		["duration"] = 30,
-		["group"] = "Police",
-		["population"] = 5,
-		["avaiable"] = false,
-		["timavaiable"] = 0,
-		["need"] = {
-			["item"] = "pliers",
-			["amount"] = 1
-		},
-		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
-		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

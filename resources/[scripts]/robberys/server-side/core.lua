@@ -1985,8 +1985,6 @@ AddEventHandler("robberys:Init",function(Number)
 									Active[Passport] = os.time() + Robberys[Number]["duration"]
 									
 									repeat
-										Wait(1000)
-
 										if os.time() >= Active[Passport] then
 											Active[Passport] = nil
 											vRPC.stopAnim(source,false)
@@ -1996,6 +1994,8 @@ AddEventHandler("robberys:Init",function(Number)
 										for k,v in pairs(Robberys[Number]["payment"]) do
 											vRP.GenerateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
 										end
+
+										Wait(1000)
 									until not Active[Passport]
 								else
 									if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then

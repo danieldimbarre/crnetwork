@@ -1098,6 +1098,11 @@ AddEventHandler("player:Relationship2",function()
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
 	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_CULT"),GetHashKey("PLAYER"))
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_CULT"))
+
+	SetRelationshipBetweenGroups(1,GetHashKey("SECURITY_GUARD"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("SECURITY_GUARD"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PRIVATE_SECURITY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("PRIVATE_SECURITY"))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FPS

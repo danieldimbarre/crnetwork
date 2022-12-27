@@ -122,36 +122,35 @@ Objects = {
 	["45"] = { x = 63.22, y = 6323.67, z = 37.87, h = 301.22, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 18 },
 	["46"] = { x = -736.64, y = 5594.98, z = 40.66, h = 268.78, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 19 },
 
-	["47"] = { x = -2682.86, y = 2304.87, z = 20.85, h = 164.19, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 1 },
-	["48"] = { x = -1282.33, y = 2559.98, z = 17.4, h = 148.06, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 2 },
-	["49"] = { x = 159.65, y = 3118.8, z = 42.44, h = 16.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 3 },
-	["50"] = { x = 1061.43, y = 3527.62, z = 33.15, h = 255.93, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 4 },
-	["51"] = { x = 2370.22, y = 3156.55, z = 47.21, h = 221.77, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 5 },
-	["52"] = { x = 2520.51, y = 2637.83, z = 36.95, h = 314.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 6 },
-	["53"] = { x = 2572.37, y = 477.44, z = 107.68, h = 269.49, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 7 },
-	["54"] = { x = 1223.15, y = -1079.56, z = 37.53, h = 123.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 8 },
-	["55"] = { x = 1048.49, y = -247.53, z = 68.66, h = 149.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 9 },
-	["56"] = { x = 499.41, y = -529.38, z = 23.76, h = 262.13, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 10 },
-	["57"] = { x = 592.53, y = -2115.87, z = 4.76, h = 100.96, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 11 },
-	["58"] = { x = 523.43, y = -2578.67, z = 13.82, h = 318.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 12 },
-	["59"] = { x = -2.98, y = -1299.67, z = 28.28, h = 359.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 13 },
-	["60"] = { x = 713.88, y = -850.95, z = 23.3, h = 271.63, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Ammos", perm = "Aztecas", id = 14 },
-
-	["61"] = { x = 1562.37, y = 3566.33, z = 33.12, h = 0.0, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["62"] = { x = 3603.31, y = 3663.08, z = 32.87, h = 76.54, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["63"] = { x = -951.73, y = -3049.3, z = 12.93, h = 184.26, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["64"] = { x = 61.57, y = 131.27, z = 79.53, h = 161.58, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["65"] = { x = -86.87, y = 6503.06, z = 40.37, h = 0.0, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["66"] = { x = 2523.9, y = 4098.98, z = 37.62, h = 243.78, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["67"] = { x = 1643.93, y = 4856.67, z = 41.01, h = 8.51, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["68"] = { x = 2359.65, y = 3120.4, z = 46.21, h = 73.71, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["69"] = { x = 1195.35, y = 2630.91, z = 36.81, h = 8.51, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["70"] = { x = 619.27, y = 2785.14, z = 42.47, h = 11.34, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["71"] = { x = 558.57, y = 2666.96, z = 45.96, h = 14.18, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["72"] = { x = 225.14, y = 2588.23, z = 44.53, h = 286.3, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["73"] = { x = -26.05, y = -1291.52, z = 28.5, h = 82.21, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["74"] = { x = 751.57, y = -1860.52, z = 28.28, h = 357.17, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" },
-	["75"] = { x = -429.27, y = -2169.23, z = 9.33, h = 0.0, object = "prop_box_wood02a_pu", item = "", Distance = 50, mode = "Supplies" }
+	["47"] = { x = -2682.86, y = 2304.87, z = 20.85, h = 164.19, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["48"] = { x = -1282.33, y = 2559.98, z = 17.4, h = 148.06, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["49"] = { x = 159.65, y = 3118.8, z = 42.44, h = 16.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["50"] = { x = 1061.43, y = 3527.62, z = 33.15, h = 255.93, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["51"] = { x = 2370.22, y = 3156.55, z = 47.21, h = 221.77, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["52"] = { x = 2520.51, y = 2637.83, z = 36.95, h = 314.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["53"] = { x = 2572.37, y = 477.44, z = 107.68, h = 269.49, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["54"] = { x = 1223.15, y = -1079.56, z = 37.53, h = 123.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["55"] = { x = 1048.49, y = -247.53, z = 68.66, h = 149.33, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["56"] = { x = 499.41, y = -529.38, z = 23.76, h = 262.13, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["57"] = { x = 592.53, y = -2115.87, z = 4.76, h = 100.96, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["58"] = { x = 523.43, y = -2578.67, z = 13.82, h = 318.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["59"] = { x = -2.98, y = -1299.67, z = 28.28, h = 359.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["60"] = { x = 713.88, y = -850.95, z = 23.3, h = 271.63, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["61"] = { x = 1562.37, y = 3566.33, z = 33.12, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["62"] = { x = 3603.31, y = 3663.08, z = 32.87, h = 76.54, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["63"] = { x = -951.73, y = -3049.3, z = 12.93, h = 184.26, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["64"] = { x = 61.57, y = 131.27, z = 79.53, h = 161.58, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["65"] = { x = -86.87, y = 6503.06, z = 40.37, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["66"] = { x = 2523.9, y = 4098.98, z = 37.62, h = 243.78, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["67"] = { x = 1643.93, y = 4856.67, z = 41.01, h = 8.51, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["68"] = { x = 2359.65, y = 3120.4, z = 46.21, h = 73.71, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["69"] = { x = 1195.35, y = 2630.91, z = 36.81, h = 8.51, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["70"] = { x = 619.27, y = 2785.14, z = 42.47, h = 11.34, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["71"] = { x = 558.57, y = 2666.96, z = 45.96, h = 14.18, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["72"] = { x = 225.14, y = 2588.23, z = 44.53, h = 286.3, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["73"] = { x = -26.05, y = -1291.52, z = 28.5, h = 82.21, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["74"] = { x = 751.57, y = -1860.52, z = 28.28, h = 357.17, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["75"] = { x = -429.27, y = -2169.23, z = 9.33, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS
@@ -400,15 +399,9 @@ LootItens = {
 	["Weapons"] = {	
 		["Cooldown"] = 10,
 		["List"] = {
-			{ ["item"] = "riflebody", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "smgbody", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "pistolbody", ["min"] = 1, ["max"] = 1 }
-		}
-	},
-	["Ammos"] = {	
-		["Cooldown"] = 10,
-		["List"] = {
-			{ ["item"] = "polvora", ["min"] = 2, ["max"] = 5 }
+			{ ["item"] = "riflebody", ["min"] = 1, ["max"] = 2 },
+			{ ["item"] = "smgbody", ["min"] = 1, ["max"] = 2 },
+			{ ["item"] = "pistolbody", ["min"] = 1, ["max"] = 3 }
 		}
 	},
 	["Supplies"] = {

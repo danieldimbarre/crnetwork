@@ -344,27 +344,39 @@ local List = {
 		["perm"] = "Aztecas",
 		["List"] = {
 		    ["WEAPON_PISTOL_AMMO"] = {
-				["amount"] = 3,
+				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["copper"] = 2,
-					["polvora"] = 3
+					["copper"] = 1,
+					["sulfur"] = 2,
+					["charcoal"] = 3
 				}
 			},
 			 ["WEAPON_SMG_AMMO"] = {
-			 	["amount"] = 3,
+			 	["amount"] = 1,
 			 	["destroy"] = false,
 			 	["require"] = {
-			 		["copper"] = 2,
-			 		["polvora"] = 3
+					["copper"] = 1,
+					["sulfur"] = 2,
+					["charcoal"] = 3
 			 	}
 			},
-			-- ["WEAPON_RIFLE_AMMO"] = {
-			-- 	["amount"] = 3,
+			-- ["WEAPON_SHOTGUN_AMMO"] = {
+			-- 	["amount"] = 1,
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
-			-- 		["copper"] = 8,
-			-- 		["polvora"] = 3
+			-- 		["copper"] = 1,
+			-- 		["sulfur"] = 2,
+			-- 		["charcoal"] = 3
+			-- 	}
+			-- },
+			-- ["WEAPON_RIFLE_AMMO"] = {
+			-- 	["amount"] = 1,
+			-- 	["destroy"] = false,
+			-- 	["require"] = {
+			-- 		["aluminum"] = 1,
+			-- 		["sulfur"] = 2,
+			-- 		["charcoal"] = 3
 			-- 	}
 			-- },
 			["vest"] = {

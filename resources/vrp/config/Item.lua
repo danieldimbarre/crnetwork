@@ -1982,6 +1982,20 @@ local List = {
 		["Weight"] = 0.095,
 		["Economy"] = 30
 	},
+	["sulfur"] = {
+		["Index"] = "sulfur",
+		["Name"] = "Enxofre",
+		["Type"] = "Comum",
+		["Weight"] = 0.075,
+		["Economy"] = 8
+	},
+	["charcoal"] = {
+		["Index"] = "charcoal",
+		["Name"] = "Carvão",
+		["Type"] = "Comum",
+		["Weight"] = 0.075,
+		["Economy"] = 8
+	},
 	["ritmoneury"] = {
 		["Index"] = "ritmoneury",
 		["Name"] = "Ritmoneury",
@@ -2738,28 +2752,28 @@ local List = {
 		["Name"] = "Munição de Pistola",
 		["Type"] = "Munição",
 		["Weight"] = 0.035,
-		["Economy"] = 30
+		["Economy"] = 40
 	},
 	["WEAPON_SMG_AMMO"] = {
 		["Index"] = "smgammo",
 		["Name"] = "Munição de Sub",
 		["Type"] = "Munição",
 		["Weight"] = 0.045,
-		["Economy"] = 35
+		["Economy"] = 45
 	},
 	["WEAPON_RIFLE_AMMO"] = {
 		["Index"] = "rifleammo",
 		["Name"] = "Munição de Rifle",
 		["Type"] = "Munição",
 		["Weight"] = 0.055,
-		["Economy"] = 35
+		["Economy"] = 45
 	},
 	["WEAPON_SHOTGUN_AMMO"] = {
 		["Index"] = "shotgunammo",
 		["Name"] = "Munição de Escopeta",
 		["Type"] = "Munição",
 		["Weight"] = 0.075,
-		["Economy"] = 30
+		["Economy"] = 40
 	},
 	["WEAPON_MUSKET_AMMO"] = {
 		["Index"] = "musketammo",
@@ -3187,12 +3201,6 @@ local List = {
 		["Durability"] = 7,
 		["Weight"] = 0.75,
 		["Economy"] = 325
-	},
-	["polvora"] = {
-		["Index"] = "polvora",
-		["Name"] = "Polvora",
-		["Type"] = "Comum",
-		["Weight"] = 0.25
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

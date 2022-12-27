@@ -14,6 +14,7 @@ Tunnel.bindInterface("robberys",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Robberype = {}
+local Active = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -845,6 +846,1104 @@ local Robberys = {
 		["payment"] = {
 			{ ["item"] = "goldbar", ["min"] = 150, ["max"] = 200 }
 		}
+	},
+	["47"] = {
+		["Coords"] = vec3(81.74,-1388.91,29.37),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["48"] = {
+		["Coords"] = vec3(78.26,-1388.91,29.37),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["49"] = {
+		["Coords"] = vec3(-706.73,-151.38,37.41),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["50"] = {
+		["Coords"] = vec3(-166.69,-301.55,39.73),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["51"] = {
+		["Coords"] = vec3(-817.5,-1074.03,11.32),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["52"] = {
+		["Coords"] = vec3(-815.73,-1077.04,11.32),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["53"] = {
+		["Coords"] = vec3(-1196.78,-778.57,17.32),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["54"] = {
+		["Coords"] = vec3(-1197.83,-779.65,17.32),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["55"] = {
+		["Coords"] = vec3(-1447.84,-240.03,49.81),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["56"] = {
+		["Coords"] = vec3(-0.07,6511.8,31.88),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["57"] = {
+		["Coords"] = vec3(-2.42,6514.33,31.88),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["58"] = {
+		["Coords"] = vec3(1691.6,4818.47,42.06),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["59"] = {
+		["Coords"] = vec3(122.97,-212.95,54.56),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["60"] = {
+		["Coords"] = vec3(123.28,-211.47,54.56),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["61"] = {
+		["Coords"] = vec3(621.22,2753.98,42.09),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["62"] = {
+		["Coords"] = vec3(621.54,2752.56,42.09),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["63"] = {
+		["Coords"] = vec3(1200.68,2707.35,38.22),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["64"] = {
+		["Coords"] = vec3(1200.7,2703.84,38.22),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["65"] = {
+		["Coords"] = vec3(-3172.68,1054.71,20.86),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["66"] = {
+		["Coords"] = vec3(-3172.25,1056.19,20.86),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["67"] = {
+		["Coords"] = vec3(-1096.53,2711.1,19.11),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["68"] = {
+		["Coords"] = vec3(-1094.22,2708.54,19.11),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["69"] = {
+		["Coords"] = vec3(422.7,-810.25,29.49),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["70"] = {
+		["Coords"] = vec3(419.2,-810.32,29.49),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["71"] = {
+		["Coords"] = vec3(25.44,-1345.7,29.49),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["72"] = {
+		["Coords"] = vec3(25.47,-1347.86,29.49),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["73"] = {
+		["Coords"] = vec3(2557.8,381.79,108.61),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["74"] = {
+		["Coords"] = vec3(2555.65,381.85,108.61),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["75"] = {
+		["Coords"] = vec3(1164.21,-322.89,69.2),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["76"] = {
+		["Coords"] = vec3(1164.44,-324.53,69.2),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["77"] = {
+		["Coords"] = vec3(-706.63,-913.68,19.21),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["78"] = {
+		["Coords"] = vec3(-706.63,-915.72,19.21),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["79"] = {
+		["Coords"] = vec3(-47.19,-1757.67,29.34),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["80"] = {
+		["Coords"] = vec3(-48.5,-1759.22,29.34),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["81"] = {
+		["Coords"] = vec3(373.39,325.65,103.56),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["82"] = {
+		["Coords"] = vec3(373.89,327.75,103.56),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["83"] = {
+		["Coords"] = vec3(373.39,325.65,12.82),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["84"] = {
+		["Coords"] = vec3(373.89,327.75,12.82),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["85"] = {
+		["Coords"] = vec3(1728.51,6414.3,35.03),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["86"] = {
+		["Coords"] = vec3(1729.44,6416.24,35.03),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["87"] = {
+		["Coords"] = vec3(1961.23,3740.04,32.33),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["88"] = {
+		["Coords"] = vec3(1960.13,3741.89,32.33),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["89"] = {
+		["Coords"] = vec3(2680.74,3281.31,55.23),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["90"] = {
+		["Coords"] = vec3(2677.11,3281.04,55.23),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["91"] = {
+		["Coords"] = vec3(1698.31,4923.38,42.06),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["92"] = {
+		["Coords"] = vec3(1696.64,4924.54,42.06),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["93"] = {
+		["Coords"] = vec3(-1820.46,793.82,138.08),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["94"] = {
+		["Coords"] = vec3(-1819.09,792.32,138.08),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["95"] = {
+		["Coords"] = vec3(1393.08,3605.96,34.98),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["96"] = {
+		["Coords"] = vec3(-2967.02,390.91,15.05),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["97"] = {
+		["Coords"] = vec3(-3038.74,585.65,7.9),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["98"] = {
+		["Coords"] = vec3(-3040.79,584.97,7.9),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["99"] = {
+		["Coords"] = vec3(1134.82,-982.36,46.4),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["100"] = {
+		["Coords"] = vec3(1165.96,2710.21,38.15),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["101"] = {
+		["Coords"] = vec3(-1486.67,-378.46,40.15),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["102"] = {
+		["Coords"] = vec3(-1222.33,-907.82,12.32),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["103"] = {
+		["Coords"] = vec3(160.84,6640.53,31.69),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["104"] = {
+		["Coords"] = vec3(162.35,6642.07,31.69),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["105"] = {
+		["Coords"] = vec3(-160.67,6321.81,31.58),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["106"] = {
+		["Coords"] = vec3(548.01,2671.76,42.16),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
+	},
+	["107"] = {
+		["Coords"] = vec3(548.32,2669.62,42.16),
+		["name"] = "Caixa Registradora",
+		["type"] = "register",
+		["cooldown"] = 1800,
+		["duration"] = 30,
+		["group"] = "Police",
+		["population"] = 5,
+		["avaiable"] = false,
+		["timavaiable"] = 0,
+		["need"] = {
+			["item"] = "pliers",
+			["amount"] = 1
+		},
+		["payment"] = {
+			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -867,19 +1966,51 @@ AddEventHandler("robberys:Init",function(Number)
 						local Consult = vRP.InventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
 						if Consult[1] >= Robberys[Number]["need"]["amount"] then
 							if not vRP.CheckDamaged(Consult[2]) then
-								if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
-									Robberype[Robberys[Number]["type"]] = os.time() + Robberys[Number]["cooldown"]
-									Robberys[Number]["timavaiable"] = os.time() + Robberys[Number]["duration"]
-									Robberys[Number]["avaiable"] = true
+								if Robberys[Number]["type"] == "register" then
+									Robberype[Robberys[Number]["type"]] = os.time()
+									Active[Passport] = os.time() + Robberys[Number]["duration"]
+
+									vRP.UpgradeStress(Passport,10)
+									TriggerClientEvent("Progress",source,"Roubando",30000)
+									Player(source)["state"]["Buttons"] = true
+									vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
+									TriggerEvent("Wanted",source,Passport,300)
 
 									for Passports,Sources in pairs(Service) do
 										async(function()
 											TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
-											vRPC.PlaySound(Sources,"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
+											vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
 										end)
 									end
+									
+									repeat
+										if os.time() >= Active[Passport] then
+											Active[Passport] = nil
+											vRPC.stopAnim(source,false)
+											Player(source)["state"]["Buttons"] = false
+										end
 
-									TriggerClientEvent("Notify",source,"verde","Progresso de desencriptação do sistema iniciado, o mesmo vai estar concluído em <b>"..Robberys[Number]["duration"].."</b> segundos.",5000)
+										for k,v in pairs(Robberys[Number]["payment"]) do
+											vRP.GenerateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
+										end
+
+										Wait(1000)
+									until not Active[Passport]
+								else
+									if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
+										Robberype[Robberys[Number]["type"]] = os.time() + Robberys[Number]["cooldown"]
+										Robberys[Number]["timavaiable"] = os.time() + Robberys[Number]["duration"]
+										Robberys[Number]["avaiable"] = true
+
+										for Passports,Sources in pairs(Service) do
+											async(function()
+												TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
+												vRPC.PlaySound(Sources,"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
+											end)
+										end
+
+										TriggerClientEvent("Notify",source,"verde","Progresso de desencriptação do sistema iniciado, o mesmo vai estar concluído em <b>"..Robberys[Number]["duration"].."</b> segundos.",5000)
+									end
 								end
 							else
 								TriggerClientEvent("Notify",source,"vermelho","<b>"..itemName(Robberys[Number]["need"]["item"]).."</b> danificado.",5000)
@@ -909,6 +2040,17 @@ AddEventHandler("robberys:Init",function(Number)
 				end
 			end
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ROBBERYS:CANCEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("robberys:Cancel")
+AddEventHandler("robberys:Cancel",function(source,Passport)
+	if Active[Passport] then
+		Active[Passport] = nil
+		Player(source)["state"]["Buttons"] = false
+		TriggerClientEvent("Progress",source,"Cancelando",1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

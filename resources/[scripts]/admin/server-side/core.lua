@@ -580,7 +580,7 @@ RegisterCommand("ids",function(source)
 	end
 
 	if source ~= 0 then
-		TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",10000)
+		TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",20000)
 	else
 		print("^2IDs Conectados:^7 "..Text)
 	end
@@ -903,7 +903,7 @@ RegisterCommand("channel",function(source,Message)
 		end
 
 		if source ~= 0 then
-			TriggerClientEvent("Notify",source,"azul","Canal <b>"..Message[1].."</b>: "..Text,15000)
+			TriggerClientEvent("Notify",source,"azul","Canal <b>"..Message[1].."</b>: "..Text..".",15000)
 		else
 			print("^2Canal "..Message[1]..":^7 "..Text)
 		end

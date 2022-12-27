@@ -140,16 +140,28 @@ CreateThread(function()
 		if Energetic > 0 then
 			Energetic = Energetic - 1
 			RestorePlayerStamina(PlayerId(),1.0)
-			SetPedMoveRateOverride(PlayerPedId(),Move)
 
 			if Energetic <= 0 or GetEntityHealth(PlayerPedId()) <= 100 then
 				SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
 				SetSwimMultiplierForPlayer(PlayerId(),1.0)
 				Energetic = 0
+				Move = 1.0
 			end
 		end
 
 		Wait(1000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADMOVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		if Energetic > 0 then
+			SetPedMoveRateOverride(PlayerPedId(),Move)
+		end
+
+		Wait(100)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

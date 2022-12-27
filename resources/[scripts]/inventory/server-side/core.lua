@@ -1527,7 +1527,7 @@ function Creative.VerifyObjects(Entity,Service)
 							elseif randItem >= 11 and randItem <= 20 then
 								itemSelect = { "silvercoin",math.random(6,12) }
 							elseif randItem <= 10 then
-								itemSelect = { "dollars",math.random(75) }
+								itemSelect = { "dollarsz",math.random(75) }
 							end
 						end
 
@@ -2142,11 +2142,11 @@ function Creative.Dismantle(Entity)
 				local Members = exports["vrp"]:Party(Passport,source,20)
 				if #Members > 1 then
 					for _,v in pairs(Members) do
-						vRP.GenerateItem(v["Passport"],"dollars",AmountItens * #Members,true)
+						vRP.GenerateItem(v["Passport"],"dollarsz",AmountItens * #Members,true)
 						vRP.PutExperience(v["Passport"],"Dismantle",2)
 					end
 				else
-					vRP.GenerateItem(Passport,"dollars",AmountItens,true)
+					vRP.GenerateItem(Passport,"dollarsz",AmountItens,true)
 					vRP.PutExperience(Passport,"Dismantle",1)
 				end
 
@@ -2317,7 +2317,7 @@ function Creative.DrugPeds()
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
-			vRP.GenerateItem(Passport,"dollars",Drugs[Passport][3] + (Points * 2),true)
+			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3] + (Points * 2),true)
 			TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
 			Percentage = Percentage - Points
 

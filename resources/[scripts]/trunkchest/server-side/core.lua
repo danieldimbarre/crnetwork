@@ -127,7 +127,7 @@ function Creative.storeItem(Item,Slot,Amount,Target)
 		if Amount <= 0 then Amount = 1 end
 		local vehName = Vehicle[Passport]["Model"]
 
-		if (storeVehs[vehName] and not storeVehs[vehName][Item]) or Item == "dollars" or itemBlock(Item) then
+		if (storeVehs[vehName] and not storeVehs[vehName][Item]) or Item == "dollars"  or Item == "dollarsz" or itemBlock(Item) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 			TriggerClientEvent("Notify",source,"amarelo","Armazenamento proibido.",5000)
 			goto scapeInventory

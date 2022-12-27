@@ -982,6 +982,7 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
 	if Passport then
+		local consumePendrive = ""
 		if Amount <= 0 then Amount = 1 end
 
 		if List[Type]["List"][Item] then
@@ -1002,6 +1003,8 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 					TriggerClientEvent("Notify",source,"vermelho","Pendrive danificado.",5000)
 					return
 				end
+
+				consumePendrive = consultItem[2]
 			end
 
 			if (vRP.InventoryWeight(Passport) + (itemWeight(Item) * List[Type]["List"][Item]["amount"]) * Amount) <= vRP.GetWeight(Passport) then
@@ -1025,7 +1028,7 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 				vRP.GenerateItem(Passport,Item,List[Type]["List"][Item]["amount"] * Amount,false,Slot)
 
 				if List[Type]["Type"] == "Wash" then
-					vRP.RemoveItem(Passport,"pendrive",1)
+					vRP.RemoveItem(Passport,consumePendrive,1)
 				end
 			else
 				TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)

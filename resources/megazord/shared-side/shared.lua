@@ -1,4 +1,4 @@
-Webhook = "https://discord.com/api/webhooks/1052276963915604030/7w-3cE0Lqy2lW4zrflSjbBqsKEie_c-pRRBDroiyx1p9E8vnburUO0RyPrutpO-omjny"
+Webhook = "https://discord.com/api/webhooks/1057126986230804500/OuFssDz9_j6yCI4AUiQ1NrQVu8_wth94f0DXt-XTg-2veGWGmHKpjERtcGFFTEA6j8s1"
 Explodes = {
 	[0] = "Grenade",
 	[1] = "GrenadeLauncher",

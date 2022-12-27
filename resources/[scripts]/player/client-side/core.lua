@@ -140,16 +140,28 @@ CreateThread(function()
 		if Energetic > 0 then
 			Energetic = Energetic - 1
 			RestorePlayerStamina(PlayerId(),1.0)
-			SetPedMoveRateOverride(PlayerPedId(),Move)
 
 			if Energetic <= 0 or GetEntityHealth(PlayerPedId()) <= 100 then
 				SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
 				SetSwimMultiplierForPlayer(PlayerId(),1.0)
 				Energetic = 0
+				Move = 1.0
 			end
 		end
 
 		Wait(1000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADMOVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		if Energetic > 0 then
+			SetPedMoveRateOverride(PlayerPedId(),Move)
+		end
+
+		Wait(100)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1086,6 +1098,11 @@ AddEventHandler("player:Relationship2",function()
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
 	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_CULT"),GetHashKey("PLAYER"))
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_CULT"))
+
+	SetRelationshipBetweenGroups(1,GetHashKey("SECURITY_GUARD"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("SECURITY_GUARD"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PRIVATE_SECURITY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("PRIVATE_SECURITY"))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FPS

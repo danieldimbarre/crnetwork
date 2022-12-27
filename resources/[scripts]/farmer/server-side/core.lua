@@ -185,30 +185,30 @@ local EventLocs = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADEVENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	local Number = 150
-	local Count = 10
+-- CreateThread(function()
+-- 	local Number = 150
+-- 	local Count = 10
 
-	repeat
-		local Rand = math.random(#EventLocs)
-		local Index = tostring(Rand)
+-- 	repeat
+-- 		local Rand = math.random(#EventLocs)
+-- 		local Index = tostring(Rand)
 		
-		if not EventUsable[Index] then
-			if Rand == 13 then
-				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
-			else
-				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
-			end
+-- 		if not EventUsable[Index] then
+-- 			if Rand == 13 then
+-- 				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+-- 			else
+-- 				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+-- 			end
 
-			Objects[tostring(Number)] = EventUsable[Index]
+-- 			Objects[tostring(Number)] = EventUsable[Index]
 
-			Number = Number + 1
-			Count = Count - 1
-		end
+-- 			Number = Number + 1
+-- 			Count = Count - 1
+-- 		end
 
-		Wait(10)
-	until Count <= 0
-end)
+-- 		Wait(10)
+-- 	until Count <= 0
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FRUITMAN
 -----------------------------------------------------------------------------------------------------------------------------------------

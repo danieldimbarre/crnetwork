@@ -886,7 +886,7 @@ local List = {
 		}
 	},
 	["Dollarsz"] = {
-		["Type"] = "Wash"
+		["Type"] = "Wash",
 		["List"] = {
 			["dollars"] = {
 				["amount"] = 1000,

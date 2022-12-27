@@ -687,6 +687,12 @@ local List = {
 	["Triads"] = {
 		["perm"] = "Triads",
 		["List"] = {
+			
+		}
+	},
+	["Lost"] = {
+		["perm"] = "Lost",
+		["List"] = {
 			["attachsFlashlight"] = {
 				["amount"] = 1,
 				["destroy"] = false,

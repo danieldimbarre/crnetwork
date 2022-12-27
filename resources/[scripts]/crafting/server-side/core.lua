@@ -886,12 +886,12 @@ local List = {
 		}
 	},
 	["Dollarsz"] = {
+		["Type"] = "Wash"
 		["List"] = {
 			["dollars"] = {
 				["amount"] = 1000,
 				["destroy"] = false,
 				["require"] = {
-					["pendrive"] = 1,
 					["dollarsz"] = 2000
 				}
 			}
@@ -991,6 +991,19 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 				return
 			end
 
+			if List[Type]["Type"] == "Wash" then
+				local consultItem = vRP.InventoryItemAmount(Passport,"pendrive")
+				if consultItem[1] <= 0 then
+					TriggerClientEvent("Notify",source,"vermelho","Pendrive não encontrado.",5000)
+					return
+				end
+
+				if vRP.CheckDamaged(consultItem[2]) then
+					TriggerClientEvent("Notify",source,"vermelho","Pendrive danificado.",5000)
+					return
+				end
+			end
+
 			if (vRP.InventoryWeight(Passport) + (itemWeight(Item) * List[Type]["List"][Item]["amount"]) * Amount) <= vRP.GetWeight(Passport) then
 				for Index,v in pairs(List[Type]["List"][Item]["require"]) do
 					local consultItem = vRP.InventoryItemAmount(Passport,Index)
@@ -1010,6 +1023,10 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 				end
 
 				vRP.GenerateItem(Passport,Item,List[Type]["List"][Item]["amount"] * Amount,false,Slot)
+
+				if List[Type]["Type"] == "Wash" then
+					vRP.RemoveItem(Passport,"pendrive",1)
+				end
 			else
 				TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 			end

@@ -1,8 +1,8 @@
-fx_version 'cerulean'
-game { 'gta5' }
+fx_version "bodacious"
+game "gta5"
 
 files {
-    'peds.meta'
+    "data/*"
 }
 
-data_file 'PED_METADATA_FILE' 'peds.meta'
+data_file "PED_METADATA_FILE" "data/peds.meta"

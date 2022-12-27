@@ -22,6 +22,7 @@ local Residuals = nil
 LocalPlayer["state"]["Tea"] = 3600
 LocalPlayer["state"]["Handcuff"] = false
 LocalPlayer["state"]["Commands"] = false
+LocalPlayer["state"]["Textform"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:COMMANDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1098,11 +1099,30 @@ AddEventHandler("player:Relationship2",function()
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
 	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_CULT"),GetHashKey("PLAYER"))
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_CULT"))
-
 	SetRelationshipBetweenGroups(1,GetHashKey("SECURITY_GUARD"),GetHashKey("PLAYER"))
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("SECURITY_GUARD"))
 	SetRelationshipBetweenGroups(1,GetHashKey("PRIVATE_SECURITY"),GetHashKey("PLAYER"))
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("PRIVATE_SECURITY"))
+	SetRelationshipBetweenGroups(1,GetHashKey("ARMY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("ARMY"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GANG_1"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_1"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GANG_2"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_2"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GANG_9"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_9"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GANG_10"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_10"))
+	SetRelationshipBetweenGroups(1,GetHashKey("COP"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("COP"))
+	SetRelationshipBetweenGroups(1,GetHashKey("CIVMALE"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("CIVMALE"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GUARD_DOG"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GUARD_DOG"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AGGRESSIVE_INVESTIGATE"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AGGRESSIVE_INVESTIGATE"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_HILLBILLY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_HILLBILLY"))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FPS
@@ -1268,4 +1288,10 @@ CreateThread(function()
 			}
 		})
 	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("cl",function(source)
+	LocalPlayer["state"]["Textform"] = not LocalPlayer["state"]["Textform"]
 end)

@@ -1112,6 +1112,8 @@ AddEventHandler("player:Relationship2",function()
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_9"))
 	SetRelationshipBetweenGroups(1,GetHashKey("GANG_10"),GetHashKey("PLAYER"))
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_10"))
+	SetRelationshipBetweenGroups(1,GetHashKey("COP"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("COP"))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FPS

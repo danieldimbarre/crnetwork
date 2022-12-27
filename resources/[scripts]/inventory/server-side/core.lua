@@ -152,8 +152,8 @@ Objects = {
 	["74"] = { x = 751.57, y = -1860.52, z = 28.28, h = 357.17, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 	["75"] = { x = -429.27, y = -2169.23, z = 9.33, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 	
-	["76"] = { x = 442.83, y = -985.87, z = 43.69, h = 272.13, object = "prop_gas_pump_old2", item = "", Distance = 50, mode = "Gasoline" },
-	["77"] = { x = -697.93, y = 319.61, z = 140.14, h = 178.59, object = "prop_gas_pump_old2", item = "", Distance = 50, mode = "Gasoline" }
+	["76"] = { x = 442.83, y = -985.87, z = 42.69, h = 272.13, object = "prop_gas_pump_old2", item = "", Distance = 50, mode = "Gasoline" },
+	["77"] = { x = -697.93, y = 319.61, z = 139.14, h = 178.59, object = "prop_gas_pump_old2", item = "", Distance = 50, mode = "Gasoline" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS

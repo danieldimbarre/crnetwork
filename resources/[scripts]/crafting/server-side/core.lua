@@ -886,7 +886,6 @@ local List = {
 		}
 	},
 	["Dollarsz"] = {
-		["perm"] = "Fleeca",
 		["list"] = {
 			["dollars"] = {
 				["amount"] = 1000,

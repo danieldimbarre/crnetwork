@@ -475,8 +475,6 @@ local shops = {
 			["firecracker"] = 50,
 			["fishingrod"] = 365,
 			["scuba"] = 485,
-			["silvercoin"] = 10,
-			["goldcoin"] = 20,
 			["techtrash"] = 60,
 			["tarp"] = 20,
 			["sheetmetal"] = 20,
@@ -600,7 +598,7 @@ local shops = {
 	},
 	["Criminal"] = {
 		["mode"] = "Sell",
-		["type"] = "Cash",
+		["type"] = "Cashz",
 		["List"] = {
 			["keyboard"] = 75,
 			["mouse"] = 75,
@@ -640,7 +638,9 @@ local shops = {
 			["card03"] = 375,
 			["card04"] = 275,
 			["card05"] = 425,
-			["pendrive"] = 325
+			["pendrive"] = 325,
+			["silvercoin"] = 10,
+			["goldcoin"] = 20
 		}
 	}
 }
@@ -834,18 +834,25 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 							end
 						end
 
-						if shops[Type]["type"] == "Cash" then
-							if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
-								if itemPrice > 0 then
-									vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)
-									TriggerClientEvent("sounds:Private",source,"cash",0.1)
-								end
-							end
-						elseif shops[Type]["type"] == "Consume" then
+						if shops[Type]["type"] == "Consume" then
 							if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
 								if itemPrice > 0 then
 									vRP.GenerateItem(Passport,shops[Type]["item"],parseInt(itemPrice * Amount),false)
 									TriggerClientEvent("sounds:Private",source,"cash",0.1)
+								end
+							end
+						else
+							if shops[Type]["type"] == "Cash" or shops[Type]["type"] == "Cashz" then
+								if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
+									if itemPrice > 0 then
+										if shops[Type]["type"] == "Cashz"
+											vRP.GenerateItem(Passport,"dollarsz",parseInt(itemPrice * Amount),false)
+										else
+											vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)
+										end
+
+										TriggerClientEvent("sounds:Private",source,"cash",0.1)
+									end
 								end
 							end
 						end

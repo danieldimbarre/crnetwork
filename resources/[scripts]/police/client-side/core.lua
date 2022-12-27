@@ -272,6 +272,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function cRP.syncPrison(Status,Teleport)
 	InPrison = Status
+	DoScreenFadeOut(0)
+	Wait(1000)
 
 	if Status then
 		Runaway()
@@ -284,6 +286,8 @@ function cRP.syncPrison(Status,Teleport)
 			SetEntityCoords(PlayerPedId(),CoordsExtern[1],CoordsExtern[2],CoordsExtern[3],1,0,0,0)
 		end
 	end
+
+	DoScreenFadeIn(1000)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT3D

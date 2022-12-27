@@ -102,6 +102,32 @@ RegisterCommand("cleanrec",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CLEANSRV
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("cleansrv",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] then
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Police",1) and OtherPassport > 0 then
+			local OtherSource = vRP.Source(OtherPassport)
+			if OtherSource then
+				local Consult = vRP.Query("characters/Fugitive",{ id = OtherPassport })
+				if Consult[1]["fugitive"] == 1 then
+					vRP.Query("characters/setFugitive",{ Passport = OtherPassport, Fugitive = 0 })
+				end
+
+				if exports["hud"]:Wanted(Passport) then
+					TriggerEvent("Wanted:Remove",source,Passport)
+				end
+
+				vRP.Query("characters/resetPrison",{ id = OtherPassport })
+				vCLIENT.syncPrison(OtherSource,false,false)
+				TriggerClientEvent("Notify",source,"verde","Liberação efetuada.",5000)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- INITPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
 function cRP.initPrison(OtherPassport,Services,Value,Message)
@@ -117,6 +143,12 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 				if OtherSource then
 					vCLIENT.syncPrison(OtherSource,true,true)
 					TriggerClientEvent("radio:RadioClean",OtherSource)
+
+					if Player(OtherSource)["state"]["Handcuff"] then
+						Player(OtherSource)["state"]["Handcuff"] = false
+						Player(OtherSource)["state"]["Commands"] = false
+						vRPC.removeObjects(OtherSource)
+					end
 				end
 
 				vRP.Query("prison/insertPrison",{ Police = Identity["name"].." "..Identity["name2"], Passport = parseInt(OtherPassport), Services = Services, Fines = Value, Text = Message, Date = os.date("%d/%m/%Y").." às "..os.date("%H:%M") })
@@ -290,13 +322,13 @@ function reduceFunction(source,Passport,Number)
 
 	local Identity = vRP.Identity(Passport)
 	if Identity["prison"] <= 0 then
-		vRP.Query("characters/resetPrison",{ id = Passport })
-		vCLIENT.syncPrison(source,false,false)
-
 		local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
 		if Consult[1]["fugitive"] == 1 then
 			vRP.Query("characters/setFugitive",{ Passport = Passport, Fugitive = 0 })
 		end
+
+		vRP.Query("characters/resetPrison",{ id = Passport })
+		vCLIENT.syncPrison(source,false,false)
 	end
 end
 --------------------------------------------------------------------------------------------------------------------------------------------------

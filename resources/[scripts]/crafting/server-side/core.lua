@@ -687,7 +687,13 @@ local List = {
 	["Triads"] = {
 		["perm"] = "Triads",
 		["List"] = {
-			
+			["dollars"] = {
+				["amount"] = 1700,
+				["destroy"] = false,
+				["require"] = {
+					["dollarsz"] = 2000
+				}
+			}
 		}
 	},
 	["Lost"] = {
@@ -878,7 +884,20 @@ local List = {
 				}
 			}
 		}
-	}
+	},
+	["Dollarsz"] = {
+		["perm"] = "Fleeca",
+		["list"] = {
+			["dollars"] = {
+				["amount"] = 1000,
+				["destroy"] = false,
+				["require"] = {
+					["pendrive"] = 1,
+					["dollarsz"] = 2000
+				}
+			}
+		}
+	},
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTPERM

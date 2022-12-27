@@ -34,7 +34,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["2"] = {
@@ -52,7 +52,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["3"] = {
@@ -70,7 +70,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["4"] = {
@@ -88,7 +88,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["5"] = {
@@ -106,7 +106,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["6"] = {
@@ -124,7 +124,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["7"] = {
@@ -142,7 +142,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["8"] = {
@@ -160,7 +160,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["9"] = {
@@ -178,7 +178,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["10"] = {
@@ -196,7 +196,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["11"] = {
@@ -214,7 +214,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["12"] = {
@@ -232,7 +232,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["13"] = {
@@ -250,7 +250,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["14"] = {
@@ -268,7 +268,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["15"] = {
@@ -286,7 +286,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["16"] = {
@@ -304,7 +304,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["17"] = {
@@ -322,7 +322,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["18"] = {
@@ -340,7 +340,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["19"] = {
@@ -358,7 +358,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["20"] = {
@@ -376,7 +376,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["21"] = {
@@ -394,7 +394,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["22"] = {
@@ -412,7 +412,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["23"] = {
@@ -430,7 +430,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["24"] = {
@@ -448,7 +448,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["25"] = {
@@ -466,7 +466,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["26"] = {
@@ -484,7 +484,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["27"] = {
@@ -502,7 +502,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["28"] = {
@@ -520,7 +520,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["29"] = {
@@ -538,7 +538,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["30"] = {
@@ -556,7 +556,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["31"] = {
@@ -574,7 +574,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["32"] = {
@@ -592,7 +592,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["33"] = {
@@ -610,7 +610,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30000, ["max"] = 45000 }
+			{ ["item"] = "dollarsz", ["min"] = 30000, ["max"] = 45000 }
 		}
 	},
 	["34"] = {
@@ -628,7 +628,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
+			{ ["item"] = "dollarsz", ["min"] = 15000, ["max"] = 20000 }
 		}
 	},
 	["35"] = {
@@ -646,7 +646,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
+			{ ["item"] = "dollarsz", ["min"] = 15000, ["max"] = 20000 }
 		}
 	},
 	["36"] = {
@@ -664,7 +664,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
+			{ ["item"] = "dollarsz", ["min"] = 15000, ["max"] = 20000 }
 		}
 	},
 	["37"] = {
@@ -682,7 +682,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
+			{ ["item"] = "dollarsz", ["min"] = 15000, ["max"] = 20000 }
 		}
 	},
 	["38"] = {
@@ -700,7 +700,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 15000, ["max"] = 20000 }
+			{ ["item"] = "dollarsz", ["min"] = 15000, ["max"] = 20000 }
 		}
 	},
 	["39"] = {
@@ -862,7 +862,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["48"] = {
@@ -880,7 +880,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["49"] = {
@@ -898,7 +898,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["50"] = {
@@ -916,7 +916,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["51"] = {
@@ -934,7 +934,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["52"] = {
@@ -952,7 +952,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["53"] = {
@@ -970,7 +970,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["54"] = {
@@ -988,7 +988,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["55"] = {
@@ -1006,7 +1006,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["56"] = {
@@ -1024,7 +1024,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["57"] = {
@@ -1042,7 +1042,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["58"] = {
@@ -1060,7 +1060,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["59"] = {
@@ -1078,7 +1078,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["60"] = {
@@ -1096,7 +1096,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["61"] = {
@@ -1114,7 +1114,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["62"] = {
@@ -1132,7 +1132,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["63"] = {
@@ -1150,7 +1150,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["64"] = {
@@ -1168,7 +1168,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["65"] = {
@@ -1186,7 +1186,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["66"] = {
@@ -1204,7 +1204,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["67"] = {
@@ -1222,7 +1222,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["68"] = {
@@ -1240,7 +1240,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["69"] = {
@@ -1258,7 +1258,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["70"] = {
@@ -1276,7 +1276,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["71"] = {
@@ -1294,7 +1294,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["72"] = {
@@ -1312,7 +1312,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["73"] = {
@@ -1330,7 +1330,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["74"] = {
@@ -1348,7 +1348,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["75"] = {
@@ -1366,7 +1366,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["76"] = {
@@ -1384,7 +1384,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["77"] = {
@@ -1402,7 +1402,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["78"] = {
@@ -1420,7 +1420,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["79"] = {
@@ -1438,7 +1438,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["80"] = {
@@ -1456,7 +1456,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["81"] = {
@@ -1474,7 +1474,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["82"] = {
@@ -1492,7 +1492,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["83"] = {
@@ -1510,7 +1510,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["84"] = {
@@ -1528,7 +1528,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["85"] = {
@@ -1546,7 +1546,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["86"] = {
@@ -1564,7 +1564,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["87"] = {
@@ -1582,7 +1582,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["88"] = {
@@ -1600,7 +1600,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["89"] = {
@@ -1618,7 +1618,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["90"] = {
@@ -1636,7 +1636,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["91"] = {
@@ -1654,7 +1654,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["92"] = {
@@ -1672,7 +1672,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["93"] = {
@@ -1690,7 +1690,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["94"] = {
@@ -1708,7 +1708,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["95"] = {
@@ -1726,7 +1726,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["96"] = {
@@ -1744,7 +1744,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["97"] = {
@@ -1762,7 +1762,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["98"] = {
@@ -1780,7 +1780,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["99"] = {
@@ -1798,7 +1798,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["100"] = {
@@ -1816,7 +1816,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["101"] = {
@@ -1834,7 +1834,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["102"] = {
@@ -1852,7 +1852,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["103"] = {
@@ -1870,7 +1870,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["104"] = {
@@ -1888,7 +1888,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["105"] = {
@@ -1906,7 +1906,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["106"] = {
@@ -1924,7 +1924,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	},
 	["107"] = {
@@ -1942,7 +1942,7 @@ local Robberys = {
 			["amount"] = 1
 		},
 		["payment"] = {
-			{ ["item"] = "dollars", ["min"] = 30, ["max"] = 35 }
+			{ ["item"] = "dollarsz", ["min"] = 30, ["max"] = 35 }
 		}
 	}
 }

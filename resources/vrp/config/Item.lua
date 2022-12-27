@@ -2045,6 +2045,34 @@ local List = {
 		["Weight"] = 0.0,
 		["Economy"] = 1
 	},
+	["dollarsz"] = {
+		["Index"] = "dollarsz",
+		["Name"] = "Dólares Marcados",
+		["Type"] = "Comum",
+		["Weight"] = 0.0,
+		["Economy"] = 1
+	},
+	["dollars100"] = {
+		["Index"] = "packdollars",
+		["Name"] = "Entrega Frágil",
+		["Type"] = "Comum",
+		["Weight"] = 0.25,
+		["Economy"] = 1000
+	},
+	["dollars500"] = {
+		["Index"] = "packdollars",
+		["Name"] = "Entrega Frágil",
+		["Type"] = "Comum",
+		["Weight"] = 0.50,
+		["Economy"] = 5000
+	},
+	["dollars1000"] = {
+		["Index"] = "packdollars",
+		["Name"] = "Entrega Frágil",
+		["Type"] = "Comum",
+		["Weight"] = 0.75,
+		["Economy"] = 10000
+	},
 	["battery"] = {
 		["Index"] = "battery",
 		["Name"] = "Pilhas",

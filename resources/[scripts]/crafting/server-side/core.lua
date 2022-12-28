@@ -687,7 +687,13 @@ local List = {
 	["Triads"] = {
 		["perm"] = "Triads",
 		["List"] = {
-			
+			["dollars"] = {
+				["amount"] = 1700,
+				["destroy"] = false,
+				["require"] = {
+					["dollarsz"] = 2000
+				}
+			}
 		}
 	},
 	["Lost"] = {
@@ -878,7 +884,19 @@ local List = {
 				}
 			}
 		}
-	}
+	},
+	["Dollarsz"] = {
+		["Type"] = "Wash",
+		["List"] = {
+			["dollars"] = {
+				["amount"] = 1000,
+				["destroy"] = false,
+				["require"] = {
+					["dollarsz"] = 2000
+				}
+			}
+		}
+	},
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTPERM
@@ -964,6 +982,7 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
 	if Passport then
+		local consumePendrive = ""
 		if Amount <= 0 then Amount = 1 end
 
 		if List[Type]["List"][Item] then
@@ -971,6 +990,21 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 				TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
 				TriggerClientEvent("crafting:Update",source,"requestCrafting")
 				return
+			end
+
+			if List[Type]["Type"] == "Wash" then
+				local consultItem = vRP.InventoryItemAmount(Passport,"pendrive")
+				if consultItem[1] <= 0 then
+					TriggerClientEvent("Notify",source,"vermelho","Pendrive não encontrado.",5000)
+					return
+				end
+
+				if vRP.CheckDamaged(consultItem[2]) then
+					TriggerClientEvent("Notify",source,"vermelho","Pendrive danificado.",5000)
+					return
+				end
+
+				consumePendrive = consultItem[2]
 			end
 
 			if (vRP.InventoryWeight(Passport) + (itemWeight(Item) * List[Type]["List"][Item]["amount"]) * Amount) <= vRP.GetWeight(Passport) then
@@ -992,6 +1026,10 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 				end
 
 				vRP.GenerateItem(Passport,Item,List[Type]["List"][Item]["amount"] * Amount,false,Slot)
+
+				if List[Type]["Type"] == "Wash" then
+					vRP.RemoveItem(Passport,consumePendrive,1)
+				end
 			else
 				TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 			end

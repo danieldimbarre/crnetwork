@@ -15,6 +15,7 @@ Tunnel.bindInterface("robberys",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Robberype = {}
 local Active = {}
+local Register = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1967,35 +1968,44 @@ AddEventHandler("robberys:Init",function(Number)
 						if Consult[1] >= Robberys[Number]["need"]["amount"] then
 							if not vRP.CheckDamaged(Consult[2]) then
 								if Robberys[Number]["type"] == "register" then
-									Robberype[Robberys[Number]["type"]] = os.time()
-									Active[Passport] = os.time() + Robberys[Number]["duration"]
-
-									vRP.UpgradeStress(Passport,10)
-									TriggerClientEvent("Progress",source,"Roubando",30000)
-									Player(source)["state"]["Buttons"] = true
-									vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
-									TriggerEvent("Wanted",source,Passport,300)
-
-									for Passports,Sources in pairs(Service) do
-										async(function()
-											TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
-											vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-										end)
+									if not Register[Number] then
+										Register[Number] = os.time()
 									end
+
+									if os.time() >= Register[Number] then
+										Register[Number] = os.time() + Robberys[Number]["cooldown"]
+										Active[Passport] = os.time() + Robberys[Number]["duration"]
+
+										vRP.UpgradeStress(Passport,10)
+										TriggerClientEvent("Progress",source,"Roubando",30000)
+										Player(source)["state"]["Buttons"] = true
+										vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
+										TriggerEvent("Wanted",source,Passport,300)
+
+										for Passports,Sources in pairs(Service) do
+											async(function()
+												TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
+												vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+											end)
+										end
 									
-									repeat
-										if os.time() >= Active[Passport] then
-											Active[Passport] = nil
-											vRPC.stopAnim(source,false)
-											Player(source)["state"]["Buttons"] = false
-										end
+										repeat
+											if os.time() >= Active[Passport] then
+												Active[Passport] = nil
+												vRPC.stopAnim(source,false)
+												Player(source)["state"]["Buttons"] = false
+											end
 
-										for k,v in pairs(Robberys[Number]["payment"]) do
-											vRP.GenerateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
-										end
+											for k,v in pairs(Robberys[Number]["payment"]) do
+												vRP.GenerateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
+											end
 
-										Wait(1000)
-									until not Active[Passport]
+											Wait(1000)
+										until not Active[Passport]
+									else
+										local Cooldown = parseInt(Register[Number] - os.time())
+										TriggerClientEvent("Notify",source,"azul","Cofre está vazio, aguarde <b>"..Cooldown.."</b> segundos.",5000)
+									end
 								else
 									if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
 										Robberype[Robberys[Number]["type"]] = os.time() + Robberys[Number]["cooldown"]

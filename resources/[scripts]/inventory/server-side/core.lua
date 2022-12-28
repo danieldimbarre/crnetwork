@@ -2549,10 +2549,10 @@ AddEventHandler("Connect",function(Passport,source)
 	TriggerClientEvent("objects:Table",source,Objects)
 	TriggerClientEvent("drops:Table",source,Drops)
 
-	for Name,_ in pairs(Buffs) do
-		if Buffs[Name][Passport] then
-			if os.time() < Buffs[Name][Passport] then
-				TriggerClientEvent("hud:"..Name,source,Buffs[Name][Passport] - os.time())
+	for Name,_ in pairs(GlobalState["Buffs"]) do
+		if GlobalState["Buffs"][Name][Passport] then
+			if os.time() < GlobalState["Buffs"][Name][Passport] then
+				TriggerClientEvent("hud:"..Name,source,GlobalState["Buffs"][Name][Passport] - os.time())
 			end
 		end
 	end

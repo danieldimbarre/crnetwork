@@ -20,9 +20,6 @@ local Energetic = 0
 local Move = 0
 local Residuals = nil
 LocalPlayer["state"]["Tea"] = 3600
-LocalPlayer["state"]["Handcuff"] = false
-LocalPlayer["state"]["Commands"] = false
-LocalPlayer["state"]["Textform"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:COMMANDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1128,7 +1125,7 @@ end)
 -- FPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local commandFps = false
-RegisterCommand("fps",function(source,args,rawCommand)
+RegisterCommand("fps",function()
 	commandFps = not commandFps
 
 	if commandFps then
@@ -1292,6 +1289,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CL
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("cl",function(source)
+RegisterCommand("cl",function()
 	LocalPlayer["state"]["Textform"] = not LocalPlayer["state"]["Textform"]
 end)

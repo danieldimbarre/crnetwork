@@ -845,7 +845,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 							if shops[Type]["type"] == "Cash" or shops[Type]["type"] == "Cashz" then
 								if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
 									if itemPrice > 0 then
-										if shops[Type]["type"] == "Cashz"
+										if shops[Type]["type"] == "Cashz" then
 											vRP.GenerateItem(Passport,"dollarsz",parseInt(itemPrice * Amount),false)
 										else
 											vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)

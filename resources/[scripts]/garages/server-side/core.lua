@@ -285,7 +285,7 @@ function Creative.Vehicles(Number)
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Wanted(Passport) then
 		if Garages[Number]["perm"] then
-			if not vRP.HasService(Passport,Garages[Number]["perm"]) and not Player(source)["state"][perm] then
+			if not vRP.HasService(Passport,Garages[Number]["perm"]) and not Player(source)["state"][Garages[Number]["perm"]] then
 				return false
 			end
 		end

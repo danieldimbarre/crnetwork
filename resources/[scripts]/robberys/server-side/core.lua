@@ -1989,6 +1989,7 @@ AddEventHandler("robberys:Init",function(Number)
 											end)
 										end
 									
+										local Amount = 0
 										repeat
 											if os.time() >= Active[Passport] then
 												Active[Passport] = nil
@@ -1997,11 +1998,16 @@ AddEventHandler("robberys:Init",function(Number)
 											end
 
 											for k,v in pairs(Robberys[Number]["payment"]) do
-												vRP.GenerateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
+												local Payment = math.random(v["min"],v["max"])
+												vRP.GenerateItem(Passport,v["item"],Payment,true)
 											end
+
+											Amount = Amount + Payment
 
 											Wait(1000)
 										until not Active[Passport]
+
+										TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number.."\n**Roubou:** "..Amount.."x "..itemName(v["item"]),3042892)
 									else
 										local Cooldown = parseInt(Register[Number] - os.time())
 										TriggerClientEvent("Notify",source,"azul","Cofre está vazio, aguarde <b>"..Cooldown.."</b> segundos.",5000)
@@ -2020,6 +2026,7 @@ AddEventHandler("robberys:Init",function(Number)
 										end
 
 										TriggerClientEvent("Notify",source,"verde","Progresso de desencriptação do sistema iniciado, o mesmo vai estar concluído em <b>"..Robberys[Number]["duration"].."</b> segundos.",5000)
+										TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number,9317187)
 									end
 								end
 							else
@@ -2040,7 +2047,9 @@ AddEventHandler("robberys:Init",function(Number)
 					Robberys[Number]["avaiable"] = false
 
 					for k,v in pairs(Robberys[Number]["payment"]) do
-						vRP.GenerateItem(Passport,v["item"],math.random(v["min"],v["max"]),true)
+						local Amount = math.random(v["min"],v["max"])
+						vRP.GenerateItem(Passport,v["item"],Amount,true)
+						TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number.."\n**Roubou:** "..Amount.."x "..itemName(v["item"]),3042892)
 					end
 
 					TriggerEvent("Wanted",source,Passport,600)

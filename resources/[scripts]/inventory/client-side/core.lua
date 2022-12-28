@@ -1837,7 +1837,6 @@ local DismantleCategory = {
 		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_STONE_HATCHET","WEAPON_MACHETE" },
 		["Model"] = { "asbo","brioso","club","weevil","felon","felon2","jackal","oracle","zion","zion2","buccaneer","virgo",
 		"voodoo","bifta","rancherxl","bjxl","cavalcade","gresley","habanero","rocoto","primo","stratum","pigalle","peyote","manana","streiter" }
-	}
 	},
 	["A"] = {
 		["Number"] = 8,
@@ -1846,7 +1845,6 @@ local DismantleCategory = {
 		"sabregt2","tampa","rebel","baller","cavalcade2","fq2","huntley","landstalker","patriot","radi","xls","blista2",
 		"retinue","stingergt","surano","specter","sultan","schwarzer","schafter2","ruston","rapidgt","raiden","ninef",
 		"ninef2","omnis","massacro","jester","feltzer2","futo","carbonizzare" }
-		}
 	},
 	["A+"] = {
 		["Number"] = 10,

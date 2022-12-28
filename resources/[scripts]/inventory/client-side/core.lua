@@ -1938,17 +1938,31 @@ local disPeds = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISWEAPONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local disWeapons = { "WEAPON_KATANA","WEAPON_BAT","WEAPON_POOLCUE" }
------------------------------------------------------------------------------------------------------------------------------------------
--- DISNUMBER
------------------------------------------------------------------------------------------------------------------------------------------
-local disNumber = {
-	["B"] = 4,
-	["B+"] = 6,
-	["A"] = 8,
-	["A+"] = 10,
-	["S"] = 12,
-	["S+"] = 14,
+local disWeapons = {
+	["B"] = {
+		["Number"] = 4,
+		["Weapons"] = { "","WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_STONE_HATCHET" }
+	},
+	["B+"] = { 
+		["Number"] = 6,
+		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_STONE_HATCHET","WEAPON_MACHETE" }
+	},
+	["A"] = { 
+		["Number"] = 8,
+		["Weapons"] = { "WEAPON_BAT","WEAPON_POOLCUE","WEAPON_GOLFCLUB","WEAPON_MACHETE" }
+	},
+	["A+"] = { 
+		["Number"] = 10,
+		["Weapons"] = { "WEAPON_BAT","WEAPON_POOLCUE","WEAPON_GOLFCLUB","WEAPON_MACHETE" }
+	},
+	["S"] = { 
+		["Number"] = 12,
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_NAILGUN" }
+	},
+	["S+"] = { 
+		["Number"] = 14,
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_NAILGUN" }
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:DISPED
@@ -1959,9 +1973,9 @@ AddEventHandler("inventory:DisPed",function(Experience)
 	local Coords = GetEntityCoords(Ped)
 	local Category = ClassCategory(Experience)
 
-	for i = 1,disNumber[Category] do
+	for i = 1,disNumber[Category]["Number"] do
 		local Rand = math.random(#disPeds)
-		local Weapon = math.random(#disWeapons)
+		local Weapon = math.random(#disWeapons[Category]["Weapons"])
 		local cX = Coords["x"] + math.random(-25.0,25.0)
 		local cY = Coords["y"] + math.random(-25.0,25.0)
 		local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
@@ -1980,7 +1994,7 @@ AddEventHandler("inventory:DisPed",function(Experience)
 			SetPedCombatAttributes(NetEntity,46,true)
 			SetPedCombatAbility(NetEntity,0)
 			SetPedCombatAttributes(NetEntity,0,true)
-			GiveWeaponToPed(NetEntity,disWeapons[Weapon],-1,false,true)
+			GiveWeaponToPed(NetEntity,disWeapons[Category]["Weapons"][Weapon],-1,false,true)
 			SetPedDropsWeaponsWhenDead(NetEntity,false)
 			SetPedCombatRange(NetEntity,2)
 			SetPedFleeAttributes(NetEntity,0,0)

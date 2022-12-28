@@ -140,7 +140,7 @@ CreateThread(function()
 			name = "Chest:"..Name,
 			heading = 3374176
 		},{
-			Distance = 1.0,
+			Distance = v["Distance"],
 			shop = v["Name"],
 			options = Labels[v["Mode"]]
 		})

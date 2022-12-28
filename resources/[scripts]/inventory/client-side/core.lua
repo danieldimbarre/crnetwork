@@ -1973,7 +1973,7 @@ AddEventHandler("inventory:DisPed",function(Experience)
 	local Coords = GetEntityCoords(Ped)
 	local Category = ClassCategory(Experience)
 
-	for i = 1,disNumber[Category]["Number"] do
+	for i = 1,disWeapons[Category]["Number"] do
 		local Rand = math.random(#disPeds)
 		local Weapon = math.random(#disWeapons[Category]["Weapons"])
 		local cX = Coords["x"] + math.random(-25.0,25.0)

@@ -1828,35 +1828,48 @@ local disCoords = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 local DismantleCategory = {
 	["B"] = {
-		"panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina"
+		["Number"] = 4,
+		["Weapons"] = { "","WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_STONE_HATCHET" },
+		["Model"] = { "panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina"}
 	},
 	["B+"] = {
-		"asbo","brioso","club","weevil","felon","felon2","jackal","oracle","zion","zion2","buccaneer","virgo",
-		"voodoo","bifta","rancherxl","bjxl","cavalcade","gresley","habanero","rocoto","primo","stratum","pigalle",
-		"peyote","manana","streiter"
+		["Number"] = 6,
+		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_STONE_HATCHET","WEAPON_MACHETE" },
+		["Model"] = { "asbo","brioso","club","weevil","felon","felon2","jackal","oracle","zion","zion2","buccaneer","virgo",
+		"voodoo","bifta","rancherxl","bjxl","cavalcade","gresley","habanero","rocoto","primo","stratum","pigalle","peyote","manana","streiter" }
+	}
 	},
 	["A"] = {
-		"exemplar","windsor","windsor2","blade","clique","dominator","faction2","gauntlet","moonbeam","nightshade",
+		["Number"] = 8,
+		["Weapons"] = { "WEAPON_BAT","WEAPON_POOLCUE","WEAPON_GOLFCLUB","WEAPON_MACHETE" },
+		["Model"] = { "exemplar","windsor","windsor2","blade","clique","dominator","faction2","gauntlet","moonbeam","nightshade",
 		"sabregt2","tampa","rebel","baller","cavalcade2","fq2","huntley","landstalker","patriot","radi","xls","blista2",
 		"retinue","stingergt","surano","specter","sultan","schwarzer","schafter2","ruston","rapidgt","raiden","ninef",
-		"ninef2","omnis","massacro","jester","feltzer2","futo","carbonizzare"
+		"ninef2","omnis","massacro","jester","feltzer2","futo","carbonizzare" }
+		}
 	},
 	["A+"] = {
-		"voltic","sc1","sultanrs","tempesta","nero","nero2","reaper","gp1","infernus","bullet","banshee2","turismo2","retinue",
+		["Number"] = 10,
+		["Weapons"] = { "WEAPON_BAT","WEAPON_POOLCUE","WEAPON_GOLFCLUB","WEAPON_MACHETE" },
+		["Model"] = { "voltic","sc1","sultanrs","tempesta","nero","nero2","reaper","gp1","infernus","bullet","banshee2","turismo2","retinue",
 		"mamba","infernus2","feltzer3","coquette2","futo2","zr350","tampa2","sugoi","sultan2","schlagen","penumbra","pariah",
-		"paragon","jester3","gb200","elegy","furoregt"
+		"paragon","jester3","gb200","elegy","furoregt" }
 	},
 	["S"] = {
-		"zentorno","xa21","visione","vagner","vacca","turismor","t20","osiris","italigtb","entityxf","cheetah","autarch","sultan3",
-		"cypher","vectre","growler","comet6","jester4","euros","calico","neon","kuruma","issi7","italigto","komoda","elegy2","coquette4"
+		["Number"] = 12,
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" },
+		["Model"] = { "zentorno","xa21","visione","vagner","vacca","turismor","t20","osiris","italigtb","entityxf","cheetah","autarch","sultan3",
+		"cypher","vectre","growler","comet6","jester4","euros","calico","neon","kuruma","issi7","italigto","komoda","elegy2","coquette4" }
 	},
 	["S+"] = {
-		"mazdarx72","rangerover","civictyper","subaruimpreza","corvettec7","ferrariitalia","mustang1969","vwtouareg",
+		["Number"] = 14,
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" },
+		["Model"] = { "mazdarx72","rangerover","civictyper","subaruimpreza","corvettec7","ferrariitalia","mustang1969","vwtouareg",
 		"mercedesg65","bugattiatlantic","m8competition","audirs6","audir8","silvias15","camaro","mercedesamg63",
 		"dodgechargerrt69","skyliner342","astonmartindbs","panameramansory","lamborghinihuracanlw","lancerevolutionx",
 		"porsche911","jeepcherokee","dodgecharger1970","golfgti","subarubrz","nissangtr","mustangfast","golfmk7",
 		"lancerevolution9","shelbygt500","ferrari812","bmwm4gts","ferrarif12","bmwm5e34","toyotasupra2","escalade2021",
-		"fordmustang","mclarensenna","lamborghinihuracan","acuransx","toyotasupra","escaladegt900","bentleybacalar"
+		"fordmustang","mclarensenna","lamborghinihuracan","acuransx","toyotasupra","escaladegt900","bentleybacalar" }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1869,8 +1882,8 @@ function Creative.Dismantle(Experience)
 		disPlate = "DISM"..(1000 + LocalPlayer["state"]["Passport"])
 
 		local Category = ClassCategory(Experience)
-		local ModelRandom = math.random(#DismantleCategory[Category])
-		disModel = DismantleCategory[Category][ModelRandom]
+		local ModelRandom = math.random(#DismantleCategory[Category]["Model"])
+		disModel = DismantleCategory[Category]["Model"][ModelRandom]
 
 		local RandomX = math.random(25,100)
 		local RandomY = math.random(25,100)
@@ -1936,35 +1949,6 @@ local disPeds = {
 	"ig_denise","ig_devin","a_m_y_dhill_01","ig_dom","a_m_y_downtown_01","ig_dreyfuss"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DISWEAPONS
------------------------------------------------------------------------------------------------------------------------------------------
-local disWeapons = {
-	["B"] = {
-		["Number"] = 4,
-		["Weapons"] = { "","WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_STONE_HATCHET" }
-	},
-	["B+"] = { 
-		["Number"] = 6,
-		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_STONE_HATCHET","WEAPON_MACHETE" }
-	},
-	["A"] = { 
-		["Number"] = 8,
-		["Weapons"] = { "WEAPON_BAT","WEAPON_POOLCUE","WEAPON_GOLFCLUB","WEAPON_MACHETE" }
-	},
-	["A+"] = { 
-		["Number"] = 10,
-		["Weapons"] = { "WEAPON_BAT","WEAPON_POOLCUE","WEAPON_GOLFCLUB","WEAPON_MACHETE" }
-	},
-	["S"] = { 
-		["Number"] = 12,
-		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" }
-	},
-	["S+"] = { 
-		["Number"] = 14,
-		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" }
-	}
-}
------------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:DISPED
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:DisPed")
@@ -1973,9 +1957,9 @@ AddEventHandler("inventory:DisPed",function(Experience)
 	local Coords = GetEntityCoords(Ped)
 	local Category = ClassCategory(Experience)
 
-	for i = 1,disWeapons[Category]["Number"] do
+	for i = 1,DismantleCategory[Category]["Number"] do
 		local Rand = math.random(#disPeds)
-		local Weapon = math.random(#disWeapons[Category]["Weapons"])
+		local Weapon = math.random(#DismantleCategory[Category]["Weapons"])
 		local cX = Coords["x"] + math.random(-25.0,25.0)
 		local cY = Coords["y"] + math.random(-25.0,25.0)
 		local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
@@ -1994,7 +1978,7 @@ AddEventHandler("inventory:DisPed",function(Experience)
 			SetPedCombatAttributes(NetEntity,46,true)
 			SetPedCombatAbility(NetEntity,0)
 			SetPedCombatAttributes(NetEntity,0,true)
-			GiveWeaponToPed(NetEntity,disWeapons[Category]["Weapons"][Weapon],-1,false,true)
+			GiveWeaponToPed(NetEntity,DismantleCategory[Category]["Weapons"][Weapon],-1,false,true)
 			SetPedDropsWeaponsWhenDead(NetEntity,false)
 			SetPedCombatRange(NetEntity,2)
 			SetPedFleeAttributes(NetEntity,0,0)

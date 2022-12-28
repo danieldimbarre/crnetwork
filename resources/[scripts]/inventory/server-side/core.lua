@@ -45,7 +45,7 @@ Collect = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BUFFS
 -----------------------------------------------------------------------------------------------------------------------------------------
-Buffs = {
+GlobalState["Buffs"] = {
 	["Dexterity"] = {},
 	["Luck"] = {}
 }
@@ -815,8 +815,8 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 100
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
 						end
 					end
@@ -827,7 +827,15 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.PutExperience(Passport,"Lumberman",1)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Lumberman",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -855,8 +863,8 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 50
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
 						end
 					end
@@ -867,7 +875,15 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.PutExperience(Passport,"Transporter",1)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+			
+					vRP.PutExperience(Passport,"Transporter",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -894,8 +910,8 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 75
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
 						end
 					end
@@ -907,7 +923,15 @@ function Creative.Deliver(Slot)
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
 					vRP.DirectChest("BurgerShot","100",Valuation * 0.05)
-					vRP.PutExperience(Passport,"Delivery",1)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Delivery",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -934,8 +958,8 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 75
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
 						end
 					end
@@ -947,7 +971,15 @@ function Creative.Deliver(Slot)
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
 					vRP.DirectChest("PizzaThis","100",Valuation * 0.05)
-					vRP.PutExperience(Passport,"Delivery",1)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Delivery",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -974,8 +1006,8 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 75
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
 						end
 					end
@@ -987,7 +1019,15 @@ function Creative.Deliver(Slot)
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
 					vRP.DirectChest("UwuCoffee","100",Valuation * 0.05)
-					vRP.PutExperience(Passport,"Delivery",1)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Delivery",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -1014,8 +1054,8 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 75
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
 						end
 					end
@@ -1027,7 +1067,15 @@ function Creative.Deliver(Slot)
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
 					vRP.DirectChest("BeanMachine","100",Valuation * 0.05)
-					vRP.PutExperience(Passport,"Delivery",1)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Delivery",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -1506,8 +1554,8 @@ function Creative.VerifyObjects(Entity,Service)
 						if Service == "Lixeiro" then
 							local randItem = math.random(90)
 
-							if Buffs["Luck"][Passport] then
-								if Buffs["Luck"][Passport] > os.time() then
+							if GlobalState["Buffs"]["Luck"][Passport] then
+								if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
 									randItem = math.random(70)
 								end
 							end
@@ -1767,8 +1815,8 @@ function Creative.StealTrunk(Entity)
 								local randItens = math.random(#StealItens)
 								local randItem = math.random(250)
 
-								if Buffs["Luck"][Passport] then
-									if Buffs["Luck"][Passport] > os.time() then
+								if GlobalState["Buffs"]["Luck"][Passport] then
+									if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
 										randItem = math.random(175)
 									end
 								end
@@ -1875,8 +1923,8 @@ function Creative.Animals(Entity)
 									elseif parseInt(Animals[Model][netObjects]) == 3 then
 										local randItens = math.random(8)
 
-										if Buffs["Luck"][Passport] then
-											if Buffs["Luck"][Passport] > os.time() then
+										if GlobalState["Buffs"]["Luck"][Passport] then
+											if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
 												randItens = math.random(10)
 											end
 										end
@@ -1885,8 +1933,8 @@ function Creative.Animals(Entity)
 									elseif parseInt(Animals[Model][netObjects]) == 4 then
 										local randItens = math.random(4)
 
-										if Buffs["Luck"][Passport] then
-											if Buffs["Luck"][Passport] > os.time() then
+										if GlobalState["Buffs"]["Luck"][Passport] then
+											if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
 												randItens = math.random(6)
 											end
 										end
@@ -1896,8 +1944,8 @@ function Creative.Animals(Entity)
 										vRPC.removeObjects(source)
 										local randItens = math.random(2)
 
-										if Buffs["Luck"][Passport] then
-											if Buffs["Luck"][Passport] > os.time() then
+										if GlobalState["Buffs"]["Luck"][Passport] then
+											if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
 												randItens = math.random(4)
 											end
 										end
@@ -2146,11 +2194,27 @@ function Creative.Dismantle(Entity)
 				if #Members > 1 then
 					for _,v in pairs(Members) do
 						vRP.GenerateItem(v["Passport"],"dollarsz",AmountItens * #Members,true)
-						vRP.PutExperience(v["Passport"],"Dismantle",2)
+
+						local Experience = 2
+						if GlobalState["Buffs"]["Luck"][v["Passport"]] then
+							if GlobalState["Buffs"]["Luck"][v["Passport"]] > os.time() then
+								Experience = Experience * 2
+							end
+						end
+
+						vRP.PutExperience(v["Passport"],"Dismantle",Experience)
 					end
 				else
 					vRP.GenerateItem(Passport,"dollarsz",AmountItens,true)
-					vRP.PutExperience(Passport,"Dismantle",1)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Dismantle",Experience)
 				end
 
 				vRP.GenerateItem(Passport,"dismantle",1,true)
@@ -2396,6 +2460,8 @@ end)
 -- INVENTORY:BUFFSERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("inventory:BuffServer",function(source,Passport,Name,Amount)
+	local Buffs = GlobalState["Buffs"]
+
 	if not Buffs[Name][Passport] then
 		Buffs[Name][Passport] = 0
 	end
@@ -2410,6 +2476,7 @@ AddEventHandler("inventory:BuffServer",function(source,Passport,Name,Amount)
 		end
 	end
 
+	GlobalState:set("Buffs",Buffs,true)
 	TriggerClientEvent("hud:"..Name,source,Buffs[Name][Passport] - os.time())
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

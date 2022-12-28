@@ -67,7 +67,14 @@ AddEventHandler("impound:Check",function(entity)
 			vRP.GenerateItem(Passport,"copper",AmountItens,true)
 			vRP.GenerateItem(Passport,"aluminum",AmountItens,true)
 
-			vRP.PutExperience(Passport,"Tows",1)
+			local Experience = 1
+			if GlobalState["Buffs"]["Luck"][Passport] then
+				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+					Experience = Experience * 2
+				end
+			end
+
+			vRP.PutExperience(Passport,"Tows",Experience)
 
 			TriggerClientEvent("garages:Delete",source,entity[3])
 		end

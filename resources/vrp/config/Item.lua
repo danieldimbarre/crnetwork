@@ -1086,7 +1086,7 @@ local List = {
 		["Name"] = "Kit Médico",
 		["Type"] = "Usável",
 		["Weight"] = 0.75,
-		["Max"] = 1,
+		["Max"] = 2,
 		["Economy"] = 575
 	},
 	["pouch"] = {

@@ -143,6 +143,12 @@ local Garages = {
 	["100"] = { name = "Tribo", payment = true, perm = "Tribo" },
 	-- ["101"] = { name = "Gang", payment = true, perm = "Gang" },
 
+	-- Restaurants
+	["111"] = { name = "Restaurants", payment = false, perm = "BurgerShot" },
+	["112"] = { name = "Restaurants", payment = false, perm = "PizzaThis" },
+	["113"] = { name = "Restaurants", payment = false, perm = "UwuCoffee" },
+	["114"] = { name = "Restaurants", payment = false, perm = "BeanMachine" },
+
 	-- Boats
 	["121"] = { name = "Boats", payment = false },
 	["122"] = { name = "Boats", payment = false },
@@ -266,6 +272,9 @@ local Works = {
 	},
 	["Biker"] = {
 		"bmx"
+	},
+	["Restaurants"] = {
+		"faggio"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -276,7 +285,7 @@ function Creative.Vehicles(Number)
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Wanted(Passport) then
 		if Garages[Number]["perm"] then
-			if not vRP.HasService(Passport,Garages[Number]["perm"]) then
+			if not vRP.HasService(Passport,Garages[Number]["perm"]) and not Player(source)["state"][perm] then
 				return false
 			end
 		end

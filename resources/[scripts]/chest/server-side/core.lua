@@ -34,16 +34,17 @@ function Creative.Permissions(Name,Mode)
 			Open[Passport] = { ["Name"] = Name, ["Weight"] = 50, ["Logs"] = false, ["Save"] = false }
 			return true
 		else
-			if Name == "trayShot" or Name == "trayDesserts" or Name == "trayPizza" or Name == "trayBean" then
+			local NameSplit = splitString(Name,"-")
+			if NameSplit[1] == "trayShot" or NameSplit[1] == "trayDesserts" or NameSplit[1] == "trayPizza" or NameSplit[1] == "trayBean" then
 				Open[Passport] = { ["Name"] = Name, ["Weight"] = 15, ["Logs"] = false, ["Save"] = true }
 				return true
 			end
 
 			local Consult = vRP.Query("chests/GetChests",{ name = Name })
 			if Consult[1] then
-				local Split = splitString(Consult[1]["perm"],"-")
-				if Split[2] ~= nil then
-					if vRP.HasGroup(Passport,Split[1],parseInt(Split[2])) then
+				local PermSplit = splitString(Consult[1]["perm"],"-")
+				if PermSplit[2] ~= nil then
+					if vRP.HasGroup(Passport,PermSplit[1],parseInt(PermSplit[2])) then
 						Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"], ["Save"] = true }
 						return true
 					end

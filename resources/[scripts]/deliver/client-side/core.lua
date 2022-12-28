@@ -264,10 +264,6 @@ local Cds = {
 RegisterNetEvent("deliver:Starting")
 AddEventHandler("deliver:Starting",function(Init)
 	if Cds[Init] then
-		if List[Init][8] then
-			LocalPlayer["state"][Init] = not LocalPlayer["state"][Init]
-		end
-
 		if Starting then
 			Starting = false
 			exports["target"]:LabelText("Deliver:"..Init,"Trabalhar")

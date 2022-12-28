@@ -1957,11 +1957,11 @@ local disWeapons = {
 	},
 	["S"] = { 
 		["Number"] = 12,
-		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_NAILGUN" }
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" }
 	},
 	["S+"] = { 
 		["Number"] = 14,
-		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_NAILGUN" }
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

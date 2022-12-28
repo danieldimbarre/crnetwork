@@ -1940,14 +1940,26 @@ local disPeds = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 local disWeapons = { "WEAPON_KATANA","WEAPON_BAT","WEAPON_POOLCUE" }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DISNUMBER
+-----------------------------------------------------------------------------------------------------------------------------------------
+local disNumber = {
+	["B"] = 4,
+	["B+"] = 6,
+	["A"] = 8,
+	["A+"] = 10,
+	["S"] = 12,
+	["S+"] = 14,
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:DISPED
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:DisPed")
-AddEventHandler("inventory:DisPed",function()
+AddEventHandler("inventory:DisPed",function(Experience)
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
+	local Category = ClassCategory(Experience)
 
-	for i = 0,3 do
+	for i = 1,disNumber[Category] do
 		local Rand = math.random(#disPeds)
 		local Weapon = math.random(#disWeapons)
 		local cX = Coords["x"] + math.random(-25.0,25.0)

@@ -842,14 +842,24 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 								end
 							end
 						else
-							if shops[Type]["type"] == "Cash" or shops[Type]["type"] == "Cashz" then
+							if shops[Type]["type"] == "Cash" then
 								if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
 									if itemPrice > 0 then
-										if shops[Type]["type"] == "Cashz" then
-											vRP.GenerateItem(Passport,"dollarsz",parseInt(itemPrice * Amount),false)
-										else
-											vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)
+										if GlobalState["Buffs"]["Dexterity"][Passport] then
+											if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
+												itemPrice = itemPrice + (itemPrice * 0.1)
+											end
 										end
+
+										vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)
+
+										TriggerClientEvent("sounds:Private",source,"cash",0.1)
+									end
+								end
+							elseif shops[Type]["type"] == "Cashz" then
+								if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
+									if itemPrice > 0 then
+										vRP.GenerateItem(Passport,"dollarsz",parseInt(itemPrice * Amount),false)
 
 										TriggerClientEvent("sounds:Private",source,"cash",0.1)
 									end

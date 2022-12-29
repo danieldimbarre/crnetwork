@@ -322,13 +322,13 @@ function reduceFunction(source,Passport,Number)
 
 	local Identity = vRP.Identity(Passport)
 	if Identity["prison"] <= 0 then
+		vCLIENT.syncPrison(source,false,false)
+		vRP.Query("characters/resetPrison",{ id = Passport })
+
 		local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
 		if Consult[1]["fugitive"] == 1 then
 			vRP.Query("characters/setFugitive",{ Passport = Passport, Fugitive = 0 })
 		end
-
-		vRP.Query("characters/resetPrison",{ id = Passport })
-		vCLIENT.syncPrison(source,false,false)
 	end
 end
 --------------------------------------------------------------------------------------------------------------------------------------------------

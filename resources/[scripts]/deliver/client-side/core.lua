@@ -18,13 +18,13 @@ local Starting = false
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
-	["BurgerShot"] = { -1191.32,-900.39,13.99,1.0,1.0,"Trabalhar",false },
-	["PizzaThis"] = { 806.89,-745.59,26.77,0.5,1.0,"Trabalhar",false },
-	["UwuCoffee"] = { -594.0,-1052.47,22.34,0.5,1.0,"Trabalhar",false },
-	["BeanMachine"] = { 126.68,-1035.54,29.27,0.5,1.0,"Trabalhar",false },
-	["Lumberman"] = { 2433.45,5013.46,46.99,0.5,1.0,"Trabalhar",false },
-	["Transporter"] = { 229.16,231.91,97.04,0.25,1.0,"Trabalhar",false },
-	["Weapons"] = { 1247.81,-1582.1,58.18,0.25,1.5,"Trabalhar",true }
+	["BurgerShot"] = { -1191.32,-900.39,13.99,1.0,1.0,"Trabalhar",false,true },
+	["PizzaThis"] = { 806.89,-745.59,26.77,0.5,1.0,"Trabalhar",false,true },
+	["UwuCoffee"] = { -594.0,-1052.47,22.34,0.5,1.0,"Trabalhar",false,true },
+	["BeanMachine"] = { 126.68,-1035.54,29.27,0.5,1.0,"Trabalhar",false,true },
+	["Lumberman"] = { 2433.45,5013.46,46.99,0.5,1.0,"Trabalhar",false,false },
+	["Transporter"] = { 229.16,231.91,97.04,0.25,1.0,"Trabalhar",false,false },
+	["Weapons"] = { 1247.81,-1582.1,58.18,0.25,1.5,"Trabalhar",true,false }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART

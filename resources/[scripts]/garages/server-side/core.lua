@@ -143,6 +143,12 @@ local Garages = {
 	["100"] = { name = "Tribo", payment = true, perm = "Tribo" },
 	-- ["101"] = { name = "Gang", payment = true, perm = "Gang" },
 
+	-- Restaurants
+	["111"] = { name = "Restaurants", payment = true },
+	["112"] = { name = "Restaurants", payment = true },
+	["113"] = { name = "Restaurants", payment = true },
+	["114"] = { name = "Restaurants", payment = true },
+
 	-- Boats
 	["121"] = { name = "Boats", payment = false },
 	["122"] = { name = "Boats", payment = false },
@@ -266,6 +272,9 @@ local Works = {
 	},
 	["Biker"] = {
 		"bmx"
+	},
+	["Restaurants"] = {
+		"faggio"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -468,7 +477,7 @@ AddEventHandler("garages:Spawn",function(Table)
 		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 
 		if not vehicle[1] then
-			if Gemstone > 0 then
+			if parseInt(Gemstone) > 0 then
 				if vRP.Request(source,"Alugar o veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.."</b> gemas?","Sim, concluír aluguel","Não, mudei de ideia") then
 					if vRP.PaymentGems(Passport,Gemstone) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = Name, plate = vRP.GeneratePlate(), work = "true" })
@@ -483,7 +492,7 @@ AddEventHandler("garages:Spawn",function(Table)
 				end
 			else
 				local Price = VehiclePrice(Name)
-				if Price > 0 then
+				if parseInt(Price) > 0 then
 					if vRP.Request(source,"Comprar <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
 						if vRP.PaymentFull(Passport,Price) then
 							vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = Name, plate = vRP.GeneratePlate(), work = "true" })

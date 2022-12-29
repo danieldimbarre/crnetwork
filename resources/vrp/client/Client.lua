@@ -9,6 +9,7 @@ LocalPlayer["state"]["Active"] = false
 LocalPlayer["state"]["Handcuff"] = false
 LocalPlayer["state"]["Commands"] = false
 LocalPlayer["state"]["disablePhone"] = false
+LocalPlayer["state"]["Textform"] = false
 LocalPlayer["state"]["Player"] = GetPlayerServerId(PlayerId())
 local cdBtns = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------

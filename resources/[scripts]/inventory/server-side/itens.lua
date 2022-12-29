@@ -2543,7 +2543,7 @@ Use = {
 						if vTASKBAR.UpgradeVehicle(source) then
 							Brokenpick = 900
 							Active[Passport] = os.time() + 30
-							TriggerClientEvent("inventory:DisPed",source)
+							TriggerClientEvent("inventory:DisPed",source,Dismantle[Passport])
 							TriggerClientEvent("Progress",source,"Usando",30000)
 
 							if math.random(100) >= 25 then

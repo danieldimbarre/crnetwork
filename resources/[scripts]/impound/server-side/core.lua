@@ -187,7 +187,7 @@ AddEventHandler("police:Arrest",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.Request(source,"Apreender o veículo?","Sim, concluír apreensão","Não, mudei de ideia") then
+		if vRP.Request(source,"Apreender o veículo?","Sim, concluir apreensão","Não, mudei de ideia") then
 			local Passport = vRP.PassportPlate(entity[1])
 			if Passport then
 				local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })

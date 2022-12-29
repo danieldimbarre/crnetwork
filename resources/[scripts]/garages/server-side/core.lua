@@ -401,10 +401,12 @@ AddEventHandler("garages:Sell",function(Name)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
 		local Mode = VehicleMode(Name)
+		Active[Passport] = true
+
 		if Mode == "rental" or Mode == "work" then
+			Active[Passport] = nil
 			return
 		end
-		Active[Passport] = true
 
 		local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 		if Consult[1] then

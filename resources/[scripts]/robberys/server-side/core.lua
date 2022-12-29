@@ -16,6 +16,7 @@ Tunnel.bindInterface("robberys",Creative)
 local Robberype = {}
 local Active = {}
 local Register = {}
+local Actived = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1954,8 +1955,8 @@ RegisterServerEvent("robberys:Init")
 AddEventHandler("robberys:Init",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] then
-		Active[Passport] = true
+	if Passport and not Actived[Passport] then
+		Actived[Passport] = true
 
 		if Robberys[Number] then
 			if not Robberys[Number]["avaiable"] then
@@ -2061,7 +2062,7 @@ AddEventHandler("robberys:Init",function(Number)
 			end
 		end
 
-		Active[Passport] = nil
+		Actived[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

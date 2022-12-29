@@ -1954,7 +1954,9 @@ RegisterServerEvent("robberys:Init")
 AddEventHandler("robberys:Init",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Active[Passport] then
+		Active[Passport] = true
+
 		if Robberys[Number] then
 			if not Robberys[Number]["avaiable"] then
 				if not Robberype[Robberys[Number]["type"]] then
@@ -2058,6 +2060,8 @@ AddEventHandler("robberys:Init",function(Number)
 				end
 			end
 		end
+
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

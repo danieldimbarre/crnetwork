@@ -2009,7 +2009,7 @@ AddEventHandler("robberys:Init",function(Number)
 											Wait(1000)
 										until not Active[Passport]
 
-										TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number.."\n**Roubou:** "..Amount.."x "..itemName(v["item"]),3042892)
+										TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number.."\n**Roubou:** "..Amount.."x "..itemName("dollarsz"),3042892)
 									else
 										local Cooldown = parseInt(Register[Number] - os.time())
 										TriggerClientEvent("Notify",source,"azul","Cofre está vazio, aguarde <b>"..Cooldown.."</b> segundos.",5000)

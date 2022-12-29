@@ -851,6 +851,10 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 											end
 										end
 
+										if vRP.UserPremium(Passport) then
+											itemPrice = itemPrice + (itemPrice * 0.1)
+										end
+
 										vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)
 
 										TriggerClientEvent("sounds:Private",source,"cash",0.1)

@@ -1549,44 +1549,50 @@ function Creative.VerifyObjects(Entity,Service)
 						vRPC.stopAnim(source,false)
 						Player(source)["state"]["Buttons"] = false
 
-						local itemSelect = { "",1 }
+						local itemSelect = ""
+						local itemAmount = 1
 
 						if Service == "Lixeiro" then
 							local randItem = math.random(90)
+							local itemAmount = math.random(2)
 
 							if GlobalState["Buffs"]["Luck"][Passport] then
 								if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
 									randItem = math.random(70)
+									itemAmount = math.random(3,4)
 								end
 							end
 
 							if randItem >= 61 and randItem <= 70 then
-								itemSelect = { "metalcan",math.random(2) }
+								itemSelect = "metalcan"
 							elseif randItem >= 51 and randItem <= 60 then
-								itemSelect = { "battery",math.random(2) }
+								itemSelect = "battery"
 							elseif randItem >= 41 and randItem <= 50 then
-								itemSelect = { "elastic",math.random(2) }
+								itemSelect = "elastic"
 							elseif randItem >= 21 and randItem <= 40 then
-								itemSelect = { "plasticbottle",math.random(2) }
+								itemSelect = "plasticbottle"
 							elseif randItem <= 20 then
-								itemSelect = { "glassbottle",math.random(2) }
+								itemSelect = "glassbottle"
 							end
 						elseif Service == "Parquimetro" then
 							local randItem = math.random(35)
 							if randItem >= 21 and randItem <= 30 then
-								itemSelect = { "goldcoin",math.random(3,6) }
+								itemSelect = "goldcoin"
+								itemAmount = math.random(3,6)								
 							elseif randItem >= 11 and randItem <= 20 then
-								itemSelect = { "silvercoin",math.random(6,12) }
+								itemSelect = "silvercoin"
+								itemAmount = math.random(6,12)								
 							elseif randItem <= 10 then
-								itemSelect = { "dollarsz",math.random(75) }
+								itemSelect = "dollarsz"
+								itemAmount = math.random(75)								
 							end
 						end
 
-						if itemSelect[1] == "" then
+						if itemSelect == "" then
 							TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
 						else
-							if (vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport) then
-								vRP.GenerateItem(Passport,itemSelect[1],itemSelect[2],true)
+							if (vRP.InventoryWeight(Passport) + itemWeight(itemSelect) * itemAmount) <= vRP.GetWeight(Passport) then
+								vRP.GenerateItem(Passport,itemSelect,itemAmount,true)
 								vRP.UpgradeStress(Passport,1)
 							else
 								TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
@@ -2195,7 +2201,7 @@ function Creative.Dismantle(Entity)
 					for _,v in pairs(Members) do
 						vRP.GenerateItem(v["Passport"],"dollarsz",AmountItens * #Members,true)
 
-						local Experience = 2
+						local Experience = 1
 						if GlobalState["Buffs"]["Luck"][v["Passport"]] then
 							if GlobalState["Buffs"]["Luck"][v["Passport"]] > os.time() then
 								Experience = Experience * 2

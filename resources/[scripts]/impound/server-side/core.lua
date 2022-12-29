@@ -29,9 +29,10 @@ AddEventHandler("impound:Check",function(entity)
 			local VehRandom = 1000
 			local VehParts = math.random(4)
 			local VehSelected = "suspension"
-			local AmountItens = math.random(10,10)
+			local AmountItens = math.random(4,5)
 			local Tow = vRP.GetExperience(Passport,"Tows")
 			local Class = ClassCategory(Tow)
+			local Experience = 1
 
 			if Class == "B" or Class == "B+" then
 				VehRandom = math.random(4500)
@@ -47,6 +48,14 @@ AddEventHandler("impound:Check",function(entity)
 				VehSelected = "transmission"
 			elseif VehParts == 3 then
 				VehSelected = "brake"
+			end
+
+			if GlobalState["Buffs"]["Luck"][Passport] then
+				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+					Experience = Experience * 2
+					AmountItens = math.random(6,7)
+					VehRandom = VehRandom - 300
+				end
 			end
 
 			if VehRandom <= 20 then
@@ -66,13 +75,6 @@ AddEventHandler("impound:Check",function(entity)
 			vRP.GenerateItem(Passport,"rubber",AmountItens,true)
 			vRP.GenerateItem(Passport,"copper",AmountItens,true)
 			vRP.GenerateItem(Passport,"aluminum",AmountItens,true)
-
-			local Experience = 1
-			if GlobalState["Buffs"]["Luck"][Passport] then
-				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
-					Experience = Experience * 2
-				end
-			end
 
 			vRP.PutExperience(Passport,"Tows",Experience)
 
@@ -100,7 +102,7 @@ AddEventHandler("police:Impound",function(entity)
 				local VehParts = math.random(4)
 				local VehSelected = "suspension"
 				local VehRandom = math.random(4500)
-				local AmountItens = math.random(10,10)
+				local AmountItens = math.random(4,5)
 
 				if VehParts <= 1 then
 					VehSelected = "engine"
@@ -108,6 +110,13 @@ AddEventHandler("police:Impound",function(entity)
 					VehSelected = "transmission"
 				elseif VehParts == 3 then
 					VehSelected = "brake"
+				end
+
+				if GlobalState["Buffs"]["Luck"][Passport] then
+					if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+						AmountItens = math.random(6,7)
+						VehRandom = VehRandom - 300
+					end
 				end
 
 				if VehRandom <= 20 then

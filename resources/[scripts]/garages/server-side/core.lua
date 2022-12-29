@@ -20,6 +20,7 @@ local Spawn = {}
 local Signal = {}
 local Searched = {}
 local Propertys = {}
+local Active = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -398,9 +399,12 @@ RegisterServerEvent("garages:Sell")
 AddEventHandler("garages:Sell",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Active[Passport] then
 		local Mode = VehicleMode(Name)
+		Active[Passport] = true
+
 		if Mode == "rental" or Mode == "work" then
+			Active[Passport] = nil
 			return
 		end
 
@@ -414,9 +418,13 @@ AddEventHandler("garages:Sell",function(Name)
 					vRP.Query("vehicles/removeVehicles",{ Passport = Passport, vehicle = Name })
 					vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..Passport..":"..Name })
 					vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..Passport..":"..Name })
+
+					TriggerEvent("Discord","Garages","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..Price,3042892)
 				end
 			end
 		end
+
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -58,10 +58,11 @@ function Creative.paymentMethod(Network,Plate)
 		if (vRP.InventoryWeight(Passport) + 3) <= vRP.GetWeight(Passport) then
 			local VehParts = math.random(4)
 			local VehSelected = "suspension"
-			local AmountItens = math.random(10,10)
+			local AmountItens = math.random(4,5)
 			local Tow = vRP.GetExperience(Passport,"Tows")
 			local Class = ClassCategory(Tow)
 			local VehRandom = 1000
+			local Experience = 1
 
 			if Class == "B" or Class == "B+" then
 				VehRandom = math.random(4500)
@@ -77,6 +78,14 @@ function Creative.paymentMethod(Network,Plate)
 				VehSelected = "transmission"
 			elseif VehParts == 3 then
 				VehSelected = "brake"
+			end
+
+			if GlobalState["Buffs"]["Luck"][Passport] then
+				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+					Experience = Experience * 2
+					AmountItens = math.random(6,7)
+					VehRandom = VehRandom - 300
+				end
 			end
 
 			if VehRandom <= 20 then
@@ -96,13 +105,6 @@ function Creative.paymentMethod(Network,Plate)
 			vRP.GenerateItem(Passport,"rubber",AmountItens,true)
 			vRP.GenerateItem(Passport,"copper",AmountItens,true)
 			vRP.GenerateItem(Passport,"aluminum",AmountItens,true)
-
-			local Experience = 1
-			if GlobalState["Buffs"]["Luck"][Passport] then
-				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
-					Experience = Experience * 2
-				end
-			end
 
 			vRP.PutExperience(Passport,"Tows",Experience)
 		else

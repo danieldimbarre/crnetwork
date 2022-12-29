@@ -360,7 +360,7 @@ end)
 CreateThread(function()
 	while true do
 		local TimeDistance = 100
-		if LocalPlayer["state"]["Handcuff"] or LocalPlayer["state"]["Target"] then
+		if LocalPlayer["state"]["Handcuff"] or LocalPlayer["state"]["Target"] or inTrash or inTrunk then
 			TimeDistance = 1
 			DisableControlAction(1,18,true)
 			DisableControlAction(1,21,true)
@@ -636,38 +636,15 @@ AddEventHandler("player:enterTrunk",function(Entity)
 	if not inTrunk then
 		LocalPlayer["state"]["Commands"] = true
 		LocalPlayer["state"]["Invisible"] = true
-		SetEntityVisible(PlayerPedId(),false,false)
-		AttachEntityToEntity(PlayerPedId(),Entity[3],-1,0.0,-2.2,0.5,0.0,0.0,0.0,false,false,false,false,20,true)
-		inTrunk = true
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- PLAYER:CHECKTRUNK
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:checkTrunk")
-AddEventHandler("player:checkTrunk",function()
-	if inTrunk then
-		local Ped = PlayerPedId()
-		local Vehicle = GetEntityAttachedTo(Ped)
-		if DoesEntityExist(Vehicle) then
-			inTrunk = false
-			DetachEntity(Ped,false,false)
-			SetEntityVisible(Ped,true,false)
-			LocalPlayer["state"]["Commands"] = false
-			LocalPlayer["state"]["Invisible"] = false
-			SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADINTRUNK
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local TimeDistance = 999
 
-		if inTrunk then
-			local Ped = PlayerPedId()
+		local Ped = PlayerPedId()
+		SetEntityVisible(Ped,false,false)
+		AttachEntityToEntity(Ped,Entity[3],-1,0.0,-2.2,0.5,0.0,0.0,0.0,false,false,false,false,20,true)
+		inTrunk = true
+
+		while inTrunk do
+			Wait(1)
+
 			local Vehicle = GetEntityAttachedTo(Ped)
 			if DoesEntityExist(Vehicle) then
 				TimeDistance = 1
@@ -683,21 +660,37 @@ CreateThread(function()
 					inTrunk = false
 					DetachEntity(Ped,false,false)
 					SetEntityVisible(Ped,true,false)
-					LocalPlayer["state"]["Commands"] = false
 					LocalPlayer["state"]["Invisible"] = false
 					SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
+					LocalPlayer["state"]["Commands"] = false
 				end
 			else
 				inTrunk = false
 				DetachEntity(Ped,false,false)
 				SetEntityVisible(Ped,true,false)
-				LocalPlayer["state"]["Commands"] = false
 				LocalPlayer["state"]["Invisible"] = false
 				SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
+				LocalPlayer["state"]["Commands"] = false
 			end
 		end
-
-		Wait(TimeDistance)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:CHECKTRUNK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("player:checkTrunk")
+AddEventHandler("player:checkTrunk",function()
+	if inTrunk then
+		local Ped = PlayerPedId()
+		local Vehicle = GetEntityAttachedTo(Ped)
+		if DoesEntityExist(Vehicle) then
+			inTrunk = false
+			DetachEntity(Ped,false,false)
+			SetEntityVisible(Ped,true,false)
+			LocalPlayer["state"]["Invisible"] = false
+			SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
+			LocalPlayer["state"]["Commands"] = false
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -852,10 +845,10 @@ RegisterNetEvent("player:enterTrash")
 AddEventHandler("player:enterTrash",function(Entity)
 	if not inTrash then
 		LocalPlayer["state"]["Commands"] = true
+		LocalPlayer["state"]["Invisible"] = true
 
 		local Ped = PlayerPedId()
 		FreezeEntityPosition(Ped,true)
-		LocalPlayer["state"]["Invisible"] = true
 		SetEntityVisible(Ped,false,false)
 		SetEntityCoords(Ped,Entity[4],false,false,false,false)
 
@@ -1290,5 +1283,10 @@ end)
 -- CL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("cl",function()
-	LocalPlayer["state"]["Textform"] = not LocalPlayer["state"]["Textform"]
+	if not LocalPlayer["state"]["Textform"] then
+		LocalPlayer["state"]["Textform"] = true
+
+		Wait(15000)
+		LocalPlayer["state"]["Textform"] = false
+	end
 end)

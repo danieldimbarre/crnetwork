@@ -17,6 +17,7 @@ vSKINSHOP = Tunnel.getInterface("skinshop")
 local Lock = {}
 local Inside = {}
 local Markers = {}
+local Active = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NEARESTHOMES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -156,7 +157,9 @@ RegisterServerEvent("propertys:Sell")
 AddEventHandler("propertys:Sell",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Active[Passport] then
+		Active[Passport] = true
+
 		local Consult = vRP.Query("propertys/Exist",{ name = Name })
 		if Consult[1] then
 			if parseInt(Consult[1]["Passport"]) == Passport then
@@ -173,10 +176,15 @@ AddEventHandler("propertys:Sell",function(Name)
 
 					vRP.Query("propertys/Sell",{ name = Name })
 					TriggerClientEvent("Notify",source,"amarelo","Venda concluída.",5000)
-					vRP.GiveBank(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.25)
+					local Price = Informations[Consult[1]["Interior"]]["Price"] * 0.25
+					vRP.GiveBank(Passport,Price)
+
+					TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..Price,3042892)
 				end
 			end
 		end
+
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

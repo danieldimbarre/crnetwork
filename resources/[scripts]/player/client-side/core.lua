@@ -1283,5 +1283,10 @@ end)
 -- CL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("cl",function()
-	LocalPlayer["state"]["Textform"] = not LocalPlayer["state"]["Textform"]
+	if not LocalPlayer["state"]["Textform"] then
+		LocalPlayer["state"]["Textform"] = true
+
+		Wait(15000)
+		LocalPlayer["state"]["Textform"] = false
+	end
 end)

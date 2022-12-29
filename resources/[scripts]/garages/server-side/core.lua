@@ -20,6 +20,7 @@ local Spawn = {}
 local Signal = {}
 local Searched = {}
 local Propertys = {}
+local Active = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -398,11 +399,12 @@ RegisterServerEvent("garages:Sell")
 AddEventHandler("garages:Sell",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Active[Passport] then
 		local Mode = VehicleMode(Name)
 		if Mode == "rental" or Mode == "work" then
 			return
 		end
+		Active[Passport] = true
 
 		local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 		if Consult[1] then
@@ -417,6 +419,8 @@ AddEventHandler("garages:Sell",function(Name)
 				end
 			end
 		end
+
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

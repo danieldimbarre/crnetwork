@@ -2000,9 +2000,8 @@ AddEventHandler("robberys:Init",function(Number)
 											for k,v in pairs(Robberys[Number]["payment"]) do
 												local Payment = math.random(v["min"],v["max"])
 												vRP.GenerateItem(Passport,v["item"],Payment,true)
+												Amount = Amount + Payment
 											end
-
-											Amount = Amount + Payment
 
 											Wait(1000)
 										until not Active[Passport]

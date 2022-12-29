@@ -27,7 +27,9 @@ Discords = {
 	["Marabunta"] = "https://discord.com/api/webhooks/1040347269049884672/D4L2w8hThTDeMXJ2JqB-NwzY4mNk0OD5pFaM6PJC1VlqIRc8yUV_fRw-vlj6wJFz_KMR",
 	["Admin"] = "https://discord.com/api/webhooks/1045336214615621744/GKzEkrK0f_ABpr_yqHynzQhTLPuvb5fjORcVn6wWDCSkni0dU9H6dGGaqrX1JMOI6MAa",
 	["Event"] = "https://discord.com/api/webhooks/1052781157500080258/Sd3VbyQhQGiRN5l0g0sxyYCobbiokN5bwjy-cLsAeFl7k8aSbGS1Gtyw41k4YZMuW7o4",
-	["Robberys"] = "https://discord.com/api/webhooks/1057776186509512735/aRbCBVfGUazRJ19GjyxFPgAn3cyzLp4BPQNcvoKqzEolLFKTM5FHcjvyvha9ybnVL254"
+	["Robberys"] = "https://discord.com/api/webhooks/1057776186509512735/aRbCBVfGUazRJ19GjyxFPgAn3cyzLp4BPQNcvoKqzEolLFKTM5FHcjvyvha9ybnVL254",
+	["Garages"] = "https://discord.com/api/webhooks/1058076961332805692/hy54NqOzNrH5MKpT23F6dGipcfMU0MzFV8O7DIOjyJjbUsiDlzibG4u-LzJiQg4e3d2Y",
+	["Propertys"] = "https://discord.com/api/webhooks/1058077202362683392/Gt62IfE1N7t-UOQIz-qJhBRjtFR8DdJTcWrmvZuhiFqYhcWe3RCQuYO51JzzQTi5GK7h"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCORD

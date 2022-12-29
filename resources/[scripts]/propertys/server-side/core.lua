@@ -176,7 +176,10 @@ AddEventHandler("propertys:Sell",function(Name)
 
 					vRP.Query("propertys/Sell",{ name = Name })
 					TriggerClientEvent("Notify",source,"amarelo","Venda concluída.",5000)
-					vRP.GiveBank(Passport,Informations[Consult[1]["Interior"]]["Price"] * 0.25)
+					local Price = Informations[Consult[1]["Interior"]]["Price"] * 0.25
+					vRP.GiveBank(Passport,Price)
+
+					TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..Price,3042892)
 				end
 			end
 		end

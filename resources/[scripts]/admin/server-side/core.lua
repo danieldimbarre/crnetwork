@@ -857,7 +857,7 @@ RegisterCommand("veh",function(source,Message)
 					if Vehicle[1] then
 						TriggerClientEvent("Notify",source,"amarelo","Passaporte já possui um <b>"..Message[3].."</b>.",5000)
 					else
-						vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "true" })
+						vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
 
 						TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[3].."</b> ao passaporte <b>"..OtherPassport.."</b>.",5000)
 					end

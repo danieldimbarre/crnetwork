@@ -8,10 +8,9 @@ LocalPlayer["state"]["Cancel"] = false
 LocalPlayer["state"]["Active"] = false
 LocalPlayer["state"]["Handcuff"] = false
 LocalPlayer["state"]["Commands"] = false
-LocalPlayer["state"]["disablePhone"] = false
-LocalPlayer["state"]["Textform"] = false
+LocalPlayer["state"]["usingPhone"] = false
 LocalPlayer["state"]["Player"] = GetPlayerServerId(PlayerId())
-local cdBtns = GetGameTimer()
+LocalPlayer["state"]["Textform"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLIENTSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -58,11 +57,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BIND
 -----------------------------------------------------------------------------------------------------------------------------------------
+local cdBtns = GetGameTimer()
 RegisterCommand("energyBind",function(source,args,rawCommand)
 	if GetGameTimer() >= cdBtns then
 		cdBtns = GetGameTimer() + 1000
 		local Ped = PlayerPedId()
-		if not IsPauseMenuActive() and not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Cassino"] and not LocalPlayer["state"]["disablePhone"] and GetEntityHealth(Ped) > 101 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
+		if not IsPauseMenuActive() and not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Cassino"] and not LocalPlayer["state"]["usingPhone"] and GetEntityHealth(Ped) > 101 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
 			if args[1] == "0" then
 				if not IsPedInAnyVehicle(Ped) and not IsPedArmed(Ped,6) and not IsPedSwimming(Ped) then
 					if IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@male@front@idle_a","idle_a",3) and IsEntityPlayingAnim(Ped,"jh_1_ig_3-2","cs_jewelass_dual-2",3) then

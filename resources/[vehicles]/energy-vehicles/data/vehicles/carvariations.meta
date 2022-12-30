@@ -1405,46 +1405,6 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>manchez2</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-		        151
-            129
-            0
-            156
-            0
-            111
-            111
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>438_manchez2_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1200"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>nspeedo</modelName>
       <colors>
         <Item>
@@ -1477,29 +1437,6 @@
       </colors>
       <kits>
         <Item>932015_fordraptor_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Police guv plate</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1200"/>
-      <sirenSettings value="240"/>
-    </Item>
-    <Item>
-      <modelName>audirs5</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">111 3 3 3</indices>
-          <liveries/>
-        </Item>
-      </colors>
-      <kits>
-        <Item>audirs5_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>

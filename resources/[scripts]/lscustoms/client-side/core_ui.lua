@@ -189,7 +189,7 @@ function InitiateMenus(isMotorcycle)
 		end
 
 		populateMenu("mainMenu",26,"Vehicle Extras","none")
-		createMenu("VehicleExtrasMenu","Vehicle Extras Customization","Ativar / Desativar Extras")
+		createMenu("VehicleExtrasMenu","Vehicle Extras Customization","Ativar / Desativar extras")
 
 		for i = 1,12 do
 			if DoesExtraExist(vehicle,i) then
@@ -241,7 +241,7 @@ function InitiateMenus(isMotorcycle)
 
 				finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
 			else
-				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customization","Escolha um Mod")
+				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customization","Escolha uma modificação")
 
 				for m,n in pairs(validMods) do
 					populateMenu(v["category"]:gsub("%s+","").."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["cosmetics"])
@@ -302,7 +302,7 @@ function InitiateMenus(isMotorcycle)
 	for k,v in ipairs(vehicleWheelOptions) do 
 		if v["id"] == -1 then
 			local currentCustomWheelState = GetCurrentCustomWheelState()
-			createMenu(v["category"]:gsub("%s+","").."Menu",v["category"],"Ativar / Desativar rodas")
+			createMenu(v["category"]:gsub("%s+","").."Menu",v["category"],"Ativar / Desativar rodas personalizadas")
 
 			populateMenu(v["category"]:gsub("%s+","").."Menu",0,"Desativado","$0")
 			populateMenu(v["category"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["customwheels"])
@@ -315,7 +315,7 @@ function InitiateMenus(isMotorcycle)
 				if v["id"] == 6 then
 					local validMods,amountValidMods = CheckValidMods(v["category"],v.wheelID,v["id"])
 
-					createMenu(v["category"].."Menu",v["category"].." Wheels","Escolha uma Roda")
+					createMenu(v["category"].."Menu",v["category"].." Wheels","Escolha uma roda")
 
 					for m,n in pairs(validMods) do
 						populateMenu(v["category"].."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["wheels"])
@@ -395,7 +395,7 @@ function InitiateMenus(isMotorcycle)
 
 	for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
 		local currentNeonState = GetCurrentNeonState(v["id"])
-		createMenu(v["name"]:gsub("%s+","").."Menu","Neon Customization","Ativar / Desativar Neon")
+		createMenu(v["name"]:gsub("%s+","").."Menu","Neon Customization","Ativar / Desativar neon")
 
 		populateMenu(v["name"]:gsub("%s+","").."Menu",0,"Desativado","$0")
 		populateMenu(v["name"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["neonside"])
@@ -426,7 +426,7 @@ function InitiateMenus(isMotorcycle)
 	finishPopulatingMenu("XenonsMenu")
 
 	local currentXenonState = GetCurrentXenonState()
-	createMenu("HeadlightsMenu","Headlights Customization","Ativar / Desativar Xenons")
+	createMenu("HeadlightsMenu","Headlights Customization","Ativar / Desativar xenons")
 
 	populateMenu("HeadlightsMenu",0,"Desativado","$0")
 	populateMenu("HeadlightsMenu",1,"Ativado","$"..vehicleCustomisationPrices["headlights"])

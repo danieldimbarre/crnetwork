@@ -5722,7 +5722,7 @@ local List = {
 		["Gems"] = 100
 	},
 	["golfgti"] = {
-		["Name"] = "Golf GTI",
+		["Name"] = "Volkswagen Golf GTI",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",
@@ -5736,7 +5736,7 @@ local List = {
 		["Gems"] = 100
 	},
 	["golfmk7"] = {
-		["Name"] = "Golf MK7",
+		["Name"] = "Volkswagen Golf MK7",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",
@@ -5897,7 +5897,7 @@ local List = {
 		["Gems"] = 100
 	},
 	["vwtouareg"] = {
-		["Name"] = "VW Touareg",
+		["Name"] = "Volkswagen Touareg",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",

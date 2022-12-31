@@ -220,11 +220,11 @@ vehicleWindowTintOptions = {
 
 vehicleWheelOptions = {
 	{
-		category = "Custom Tyres",
+		category = "Pneus personalizados",
 		id = -1,
 		wheelID = 23
 	},{
-		category = "Tyre Smoke",
+		category = "Fumaça do pneu",
 		id = 20,
 		wheelID = 23
 	},{
@@ -293,22 +293,22 @@ vehicleTyreSmokeOptions = {
 
 vehicleResprayCategories = {
 	{
-		category = "Primary Colour",
+		category = "Cor primária",
 		id = 0
 	},{
-		category = "Secondary Colour",
+		category = "Cor secundária",
 		id = 1
 	},{
-		category = "Pearlescent Colour",
+		category = "Cor perolada",
 		id = 2
 	},{
-		category = "Wheel Colour",
+		category = "Cor da roda",
 		id = 3
 	},{
-		category = "Dashboard Colour",
+		category = "Cor interna",
 		id = 4
 	},{
-		category = "Interior Colour",
+		category = "Cor do painel",
 		id = 5
 	}
 }
@@ -436,10 +436,10 @@ vehicleResprayOptions = {
 vehicleNeonOptions = {
 	category = "Neons",
 	neonTypes = {
-		{ name = "Front Neon", id = 2 },
-		{ name = "Rear Neon", id = 3 },
-		{ name = "Left Neon", id = 0 },
-		{ name = "Right Neon", id = 1 }
+		{ name = "Neon dianteiro", id = 2 },
+		{ name = "Neon traseiro", id = 3 },
+		{ name = "Neon esquerdo", id = 0 },
+		{ name = "Neon direito", id = 1 }
 	},
 	neonColours = {
 		{ name = "White", r = 222, g = 222, b = 255 },

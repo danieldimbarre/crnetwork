@@ -77,7 +77,7 @@ local function isMenuActive(menu)
 				menuActive = false
 			end
 		end
-	elseif menu == "ResprayMenu" then
+	elseif menu == "PinturaMenu" then
 		for k,v in pairs(vehicleResprayOptions) do
 			if (v["category"]:gsub("%s+","").."Menu") == currentMenu then
 				menuActive = true
@@ -87,7 +87,7 @@ local function isMenuActive(menu)
 				menuActive = false
 			end
 		end
-	elseif menu == "WheelsMenu" then
+	elseif menu == "RodasMenu" then
 		for k,v in pairs(vehicleWheelOptions) do
 			if (v["category"]:gsub("%s+","").."Menu") == currentMenu then
 				menuActive = true
@@ -121,27 +121,27 @@ local function updateCurrentMenuItemID(id,item,item2)
 		if currentCategory ~= 18 then
 			PreviewMod(currentCategory,currentMenuItemID)
 		end
-	elseif isMenuActive("ResprayMenu") then
+	elseif isMenuActive("PinturaMenu") then
 		PreviewColour(currentResprayCategory,currentResprayType,currentMenuItemID)
-	elseif isMenuActive("WheelsMenu") then
+	elseif isMenuActive("RodasMenu") then
 		if currentWheelCategory ~= -1 and currentWheelCategory ~= 20 then
 			PreviewWheel(currentCategory,currentMenuItemID,currentWheelCategory)
 		end
 	elseif isMenuActive("NeonsSideMenu") then
 		PreviewNeon(currentNeonSide,currentMenuItemID)
-	elseif currentMenu == "WindowTintMenu" then
+	elseif currentMenu == "JanelasMenu" then
 		PreviewWindowTint(currentMenuItemID)
-	elseif currentMenu == "NeonColoursMenu" then
+	elseif currentMenu == "CordoNeonMenu" then
 		local r = vehicleNeonOptions["neonColours"][currentMenuItemID]["r"]
 		local g = vehicleNeonOptions["neonColours"][currentMenuItemID]["g"]
 		local b = vehicleNeonOptions["neonColours"][currentMenuItemID]["b"]
 
 		PreviewNeonColour(r,g,b)
-	elseif currentMenu == "XenonColoursMenu" then
+	elseif currentMenu == "CordoXenonMenu" then
 		PreviewXenonColour(currentMenuItemID)
-	elseif currentMenu == "PoliceLiveryMenu" then
+	elseif currentMenu == "EstampaPolicialMenu" then
 		PreviewPoliceLivery(currentMenuItemID)
-	elseif currentMenu == "PlateIndexMenu" then
+	elseif currentMenu == "PlacaMenu" then
 		PreviewPlateIndex(currentMenuItemID)
 	end
 end
@@ -161,51 +161,51 @@ function InitiateMenus(isMotorcycle)
 		end
 	end
 
-	populateMenu("mainMenu",-1,"Respray","none")
+	populateMenu("mainMenu",-1,"Pintura","none")
 
 	if not isMotorcycle then
-		populateMenu("mainMenu",-2,"Window Tint","none")
+		populateMenu("mainMenu",-2,"Janelas","none")
 		populateMenu("mainMenu",-3,"Neons","none")
 	end
 
 	populateMenu("mainMenu",22,"Xenons","none")
-	populateMenu("mainMenu",23,"Wheels","none")
+	populateMenu("mainMenu",23,"Rodas","none")
 
 	if vehclass == 18 then
-		populateMenu("mainMenu",24,"Police Livery","none")
+		populateMenu("mainMenu",24,"Estampa Policial","none")
 		local livCount = GetVehicleLiveryCount(vehicle)
 		if livCount > 0 then
 			local temporaryLivery = GetVehicleLivery(vehicle)
-			createMenu("PoliceLiveryMenu","Customização de Estampa Policial","Escolha uma estampa")
+			createMenu("EstampaPolicialMenu","Customização de Estampa Policial","Escolha uma estampa")
 			for i = 0,livCount - 1 do
-				populateMenu("PoliceLiveryMenu",i,"Estampa 0"..i + 1,"$100")
+				populateMenu("EstampaPolicialMenu",i,"Estampa 0"..i + 1,"$100")
 
 				if temporaryLivery == i then
-					updateItem2Text("PoliceLiveryMenu",i,"Instalado")
+					updateItem2Text("EstampaPolicialMenu",i,"Instalado")
 				end
 			end
 
-			finishPopulatingMenu("PoliceLiveryMenu")
+			finishPopulatingMenu("EstampaPolicialMenu")
 		end
 
-		populateMenu("mainMenu",26,"Vehicle Extras","none")
-		createMenu("VehicleExtrasMenu","Customização de Extras","Ativar / Desativar extras")
+		populateMenu("mainMenu",26,"Extras","none")
+		createMenu("ExtrasMenu","Customização de Extras","Ativar / Desativar extras")
 
 		for i = 1,12 do
 			if DoesExtraExist(vehicle,i) then
 				if IsVehicleExtraTurnedOn(vehicle,i) then
-					populateMenu("VehicleExtrasMenu",i,"Extras 0"..i,"Ativado")
+					populateMenu("ExtrasMenu",i,"Extras 0"..i,"Ativado")
 				else
-					populateMenu("VehicleExtrasMenu",i,"Extras 0"..i,"Desativado")
+					populateMenu("ExtrasMenu",i,"Extras 0"..i,"Desativado")
 				end
 			end
 		end
 
-		finishPopulatingMenu("VehicleExtrasMenu")
+		finishPopulatingMenu("ExtrasMenu")
 	end
 
 
-	populateMenu("mainMenu",25,"Plate Index","none")
+	populateMenu("mainMenu",25,"Placa","none")
 
 	finishPopulatingMenu("mainMenu")
 
@@ -256,24 +256,24 @@ function InitiateMenus(isMotorcycle)
 		end
 	end
 
-	createMenu("ResprayMenu","Pintura","Escolha uma categoria de cores")
+	createMenu("PinturaMenu","Pintura","Escolha uma categoria de cores")
 
-	populateMenu("ResprayMenu",0,"Cor primária","none")
-	populateMenu("ResprayMenu",1,"Cor secundária","none")
-	populateMenu("ResprayMenu",2,"Cor perolada","none")
-	populateMenu("ResprayMenu",3,"Cor da roda","none")
-	populateMenu("ResprayMenu",4,"Cor interna","none")
-	populateMenu("ResprayMenu",5,"Cor do painel","none")
+	populateMenu("PinturaMenu",0,"Cor primária","none")
+	populateMenu("PinturaMenu",1,"Cor secundária","none")
+	populateMenu("PinturaMenu",2,"Cor perolada","none")
+	populateMenu("PinturaMenu",3,"Cor da roda","none")
+	populateMenu("PinturaMenu",4,"Cor interna","none")
+	populateMenu("PinturaMenu",5,"Cor do painel","none")
 
-	finishPopulatingMenu("ResprayMenu")
+	finishPopulatingMenu("PinturaMenu")
 
-	createMenu("ResprayTypeMenu","Tipos de Pintura","Escolha um tipo de cor")
+	createMenu("TiposdePinturaMenu","Tipos de Pintura","Escolha um tipo de cor")
 
 	for k,v in ipairs(vehicleResprayOptions) do
-		populateMenu("ResprayTypeMenu",v["id"],v["category"],"none")
+		populateMenu("TiposdePinturaMenu",v["id"],v["category"],"none")
 	end
 
-	finishPopulatingMenu("ResprayTypeMenu")
+	finishPopulatingMenu("TiposdePinturaMenu")
 
 	for k,v in ipairs(vehicleResprayOptions) do 
 		createMenu(v["category"].."Menu",v["category"],"Escolha uma cor")
@@ -285,19 +285,19 @@ function InitiateMenus(isMotorcycle)
 		finishPopulatingMenu(v["category"].."Menu")
 	end
 
-	createMenu("WheelsMenu","Customização das Rodas","Escolha uma categoria")
+	createMenu("RodasMenu","Customização das Rodas","Escolha uma categoria")
 
 	for k,v in ipairs(vehicleWheelOptions) do 
 		if isMotorcycle then
 			if v["id"] == -1 or v["id"] == 20 or v["id"] == 6 then
-				populateMenu("WheelsMenu",v["id"],v["category"],"none")
+				populateMenu("RodasMenu",v["id"],v["category"],"none")
 			end
 		else
-			populateMenu("WheelsMenu",v["id"],v["category"],"none")
+			populateMenu("RodasMenu",v["id"],v["category"],"none")
 		end
 	end
 
-	finishPopulatingMenu("WheelsMenu")
+	finishPopulatingMenu("RodasMenu")
 
 	for k,v in ipairs(vehicleWheelOptions) do 
 		if v["id"] == -1 then
@@ -338,33 +338,33 @@ function InitiateMenus(isMotorcycle)
 	end
 
 	local currentWheelSmokeR,currentWheelSmokeG,currentWheelSmokeB = GetCurrentVehicleWheelSmokeColour()
-	createMenu("TyreSmokeMenu","Customização da Fumaça do Pneu","Escolha uma cor")
+	createMenu("FumaçadopneuMenu","Customização da Fumaça do Pneu","Escolha uma cor")
 
 	for k,v in ipairs(vehicleTyreSmokeOptions) do
-		populateMenu("TyreSmokeMenu",k,v["name"],"$"..vehicleCustomisationPrices["wheelsmoke"])
+		populateMenu("FumaçadopneuMenu",k,v["name"],"$"..vehicleCustomisationPrices["wheelsmoke"])
 
 		if v["r"] == currentWheelSmokeR and v["g"] == currentWheelSmokeG and v["b"] == currentWheelSmokeB then
-			updateItem2Text("TyreSmokeMenu",k,"Instalado")
+			updateItem2Text("FumaçadopneuMenu",k,"Instalado")
 		end
 	end
 
-	finishPopulatingMenu("TyreSmokeMenu")
+	finishPopulatingMenu("FumaçadopneuMenu")
 
 	local currentWindowTint = GetCurrentWindowTint()
-	createMenu("WindowTintMenu","Customização da Tonalidade das Janelas","Escolha uma tonalidade")
+	createMenu("JanelasMenu","Customização da Tonalidade das Janelas","Escolha uma tonalidade")
 
 	for k,v in ipairs(vehicleWindowTintOptions) do
-		populateMenu("WindowTintMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["windowtint"])
+		populateMenu("JanelasMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["windowtint"])
 
 		if currentWindowTint == v["id"] then
-			updateItem2Text("WindowTintMenu",v["id"],"Instalado")
+			updateItem2Text("JanelasMenu",v["id"],"Instalado")
 		end
 	end
 
-	finishPopulatingMenu("WindowTintMenu")
+	finishPopulatingMenu("JanelasMenu")
 
 	local temporaryPlate = GetVehicleNumberPlateTextIndex(vehicle)
-	createMenu("PlateIndexMenu","Customização do Tipo de Placa","Escolha o tipo")
+	createMenu("PlacaMenu","Customização do Tipo de Placa","Escolha o tipo")
 
 	local plateTypes = {
 		"San Andreas Cosmo",
@@ -376,13 +376,13 @@ function InitiateMenus(isMotorcycle)
 	}
 
 	for i = 0,#plateTypes - 1 do
-		populateMenu("PlateIndexMenu",i,plateTypes[i+1],"$1000")
+		populateMenu("PlacaMenu",i,plateTypes[i+1],"$1000")
 
 		if temporaryPlate == i then
-			updateItem2Text("PlateIndexMenu",i,"Instalado")
+			updateItem2Text("PlacaMenu",i,"Instalado")
 		end
 	end
-	finishPopulatingMenu("PlateIndexMenu")
+	finishPopulatingMenu("PlacaMenu")
 
 	createMenu("NeonsMenu","Customização do Neon","Escolha uma categoria")
 
@@ -390,7 +390,7 @@ function InitiateMenus(isMotorcycle)
 		populateMenu("NeonsMenu",v["id"],v["name"],"none")
 	end
 
-	populateMenu("NeonsMenu",-1,"Neon Colours","none")
+	populateMenu("NeonsMenu",-1,"Cor do Neon","none")
 	finishPopulatingMenu("NeonsMenu")
 
 	for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
@@ -406,47 +406,47 @@ function InitiateMenus(isMotorcycle)
 	end
 
 	local currentNeonR,currentNeonG,currentNeonB = GetCurrentNeonColour()
-	createMenu("NeonColoursMenu","Customização das Cores do Neon","Escolha uma cor")
+	createMenu("CordoNeonMenu","Customização da Cor do Neon","Escolha uma cor")
 
 	for k,v in ipairs(vehicleNeonOptions["neonColours"]) do
-		populateMenu("NeonColoursMenu",k,vehicleNeonOptions["neonColours"][k]["name"],"$"..vehicleCustomisationPrices["neoncolours"])
+		populateMenu("CordoNeonMenu",k,vehicleNeonOptions["neonColours"][k]["name"],"$"..vehicleCustomisationPrices["neoncolours"])
 
 		if currentNeonR == vehicleNeonOptions["neonColours"][k]["r"] and currentNeonG == vehicleNeonOptions["neonColours"][k]["g"] and currentNeonB == vehicleNeonOptions["neonColours"][k]["b"] then
-			updateItem2Text("NeonColoursMenu",k,"Instalado")
+			updateItem2Text("CordoNeonMenu",k,"Instalado")
 		end
 	end
 
-	finishPopulatingMenu("NeonColoursMenu")
+	finishPopulatingMenu("CordoNeonMenu")
 
 	createMenu("XenonsMenu","Customização do Xenon","Escolha a categoria")
 
-	populateMenu("XenonsMenu",0,"Headlights","none")
-	populateMenu("XenonsMenu",1,"Xenon Colours","none")
+	populateMenu("XenonsMenu",0,"Xenon","none")
+	populateMenu("XenonsMenu",1,"Cor do Xenon","none")
 
 	finishPopulatingMenu("XenonsMenu")
 
 	local currentXenonState = GetCurrentXenonState()
-	createMenu("HeadlightsMenu","Customização dos Faróis","Ativar / Desativar xenons")
+	createMenu("XenonMenu","Customização do Xenon","Ativar / Desativar xenons")
 
-	populateMenu("HeadlightsMenu",0,"Desativado","$0")
-	populateMenu("HeadlightsMenu",1,"Ativado","$"..vehicleCustomisationPrices["headlights"])
+	populateMenu("XenonMenu",0,"Desativado","$0")
+	populateMenu("XenonMenu",1,"Ativado","$"..vehicleCustomisationPrices["headlights"])
 
-	updateItem2Text("HeadlightsMenu",currentXenonState,"Instalado")
+	updateItem2Text("XenonMenu",currentXenonState,"Instalado")
 
-	finishPopulatingMenu("HeadlightsMenu")
+	finishPopulatingMenu("XenonMenu")
 
 	local currentXenonColour = GetCurrentXenonColour()
-	createMenu("XenonColoursMenu","Customização das Cores do Xenon","Escolha uma cor")
+	createMenu("CordoXenonMenu","Customização da Cor do Xenon","Escolha uma cor")
 
 	for k,v in ipairs(vehicleXenonOptions["xenonColours"]) do
-		populateMenu("XenonColoursMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["xenoncolours"])
+		populateMenu("CordoXenonMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["xenoncolours"])
 
 		if currentXenonColour == v["id"] then
-			updateItem2Text("XenonColoursMenu",v["id"],"Instalado")
+			updateItem2Text("CordoXenonMenu",v["id"],"Instalado")
 		end
 	end
 
-	finishPopulatingMenu("XenonColoursMenu")
+	finishPopulatingMenu("CordoXenonMenu")
 end
 
 function DestroyMenus()
@@ -535,7 +535,7 @@ function MenuManager(state)
 						updateMenuStatus("Dólares insuficientes.")
 					end
 				end
-			elseif isMenuActive("ResprayMenu") then
+			elseif isMenuActive("PinturaMenu") then
 				if AttemptPurchase("respray") then
 					ApplyColour(currentResprayCategory,currentResprayType,currentMenuItemID)
 					playSoundEffect("respray",1.0)
@@ -544,7 +544,7 @@ function MenuManager(state)
 				else
 					updateMenuStatus("Dólares insuficientes.")
 				end
-			elseif isMenuActive("WheelsMenu") then
+			elseif isMenuActive("RodasMenu") then
 				if currentWheelCategory == 20 then
 					if AttemptPurchase("wheelsmoke") then
 						local r = vehicleTyreSmokeOptions[currentMenuItemID]["r"]
@@ -610,23 +610,23 @@ function MenuManager(state)
 					toggleMenu(true,currentMenu)
 					updateMenuHeading(currentMenu)
 					updateMenuSubheading(currentMenu)
-				elseif currentMenu == "ResprayMenu" then
-					currentMenu = "ResprayTypeMenu"
+				elseif currentMenu == "PinturaMenu" then
+					currentMenu = "TiposdePinturaMenu"
 					currentResprayCategory = currentMenuItemID
 
-					toggleMenu(false,"ResprayMenu")
+					toggleMenu(false,"PinturaMenu")
 					toggleMenu(true,currentMenu)
 					updateMenuHeading(currentMenu)
 					updateMenuSubheading(currentMenu)
-				elseif currentMenu == "ResprayTypeMenu" then
+				elseif currentMenu == "TiposdePinturaMenu" then
 					currentMenu = currentMenuItem:gsub("%s+","").."Menu"
 					currentResprayType = currentMenuItemID
 
-					toggleMenu(false,"ResprayTypeMenu")
+					toggleMenu(false,"TiposdePinturaMenu")
 					toggleMenu(true,currentMenu)
 					updateMenuHeading(currentMenu)
 					updateMenuSubheading(currentMenu)
-				elseif currentMenu == "WheelsMenu" then
+				elseif currentMenu == "RodasMenu" then
 					local currentWheel,currentWheelName,currentWheelType = GetCurrentWheel()
 
 					currentMenu = currentMenuItem:gsub("%s+","").."Menu"
@@ -636,7 +636,7 @@ function MenuManager(state)
 						updateItem2Text(currentMenu,currentWheel,"Instalado")
 					end
 
-					toggleMenu(false,"WheelsMenu")
+					toggleMenu(false,"RodasMenu")
 					toggleMenu(true,currentMenu)
 					updateMenuHeading(currentMenu)
 					updateMenuSubheading(currentMenu)
@@ -655,7 +655,7 @@ function MenuManager(state)
 					toggleMenu(true,currentMenu)
 					updateMenuHeading(currentMenu)
 					updateMenuSubheading(currentMenu)
-				elseif currentMenu == "WindowTintMenu" then
+				elseif currentMenu == "JanelasMenu" then
 					if AttemptPurchase("windowtint") then
 						ApplyWindowTint(currentMenuItemID)
 						playSoundEffect("respray",1.0)
@@ -664,7 +664,7 @@ function MenuManager(state)
 					else
 						updateMenuStatus("Dólares insuficientes.")
 					end
-				elseif currentMenu == "NeonColoursMenu" then
+				elseif currentMenu == "CordoNeonMenu" then
 					if AttemptPurchase("neoncolours") then
 						local r = vehicleNeonOptions["neonColours"][currentMenuItemID]["r"]
 						local g = vehicleNeonOptions["neonColours"][currentMenuItemID]["g"]
@@ -677,7 +677,7 @@ function MenuManager(state)
 					else
 						updateMenuStatus("Dólares insuficientes.")
 					end
-				elseif currentMenu == "HeadlightsMenu" then
+				elseif currentMenu == "XenonMenu" then
 					if AttemptPurchase("headlights") then
 						ApplyXenonLights(currentCategory,currentMenuItemID)
 						playSoundEffect("wrench",0.25)
@@ -686,7 +686,7 @@ function MenuManager(state)
 					else
 						updateMenuStatus("Dólares insuficientes.")
 					end
-				elseif currentMenu == "XenonColoursMenu" then
+				elseif currentMenu == "CordoXenonMenu" then
 					if AttemptPurchase("xenoncolours") then
 						ApplyXenonColour(currentMenuItemID)
 						playSoundEffect("respray",1.0)
@@ -695,7 +695,7 @@ function MenuManager(state)
 					else
 						updateMenuStatus("Dólares insuficientes.")
 					end
-				elseif currentMenu == "PoliceLiveryMenu" then
+				elseif currentMenu == "EstampaPolicialMenu" then
 					if AttemptPurchase("policelivery") then
 						ApplyPoliceLivery(currentMenuItemID)
 						playSoundEffect("wrench",0.25)
@@ -704,7 +704,7 @@ function MenuManager(state)
 					else
 						updateMenuStatus("Dólares insuficientes.")   
 					end
-				elseif currentMenu == "PlateIndexMenu" then
+				elseif currentMenu == "PlacaMenu" then
 					if AttemptPurchase("plateindex") then
 						ApplyPlateIndex(currentMenuItemID)
 						playSoundEffect("wrench",0.25)
@@ -713,7 +713,7 @@ function MenuManager(state)
 					else
 						updateMenuStatus("Dólares insuficientes.")
 					end
-				elseif currentMenu == "VehicleExtrasMenu" then
+				elseif currentMenu == "ExtrasMenu" then
 					ApplyExtra(currentMenuItemID)
 					playSoundEffect("wrench",0.25)
 
@@ -729,7 +729,7 @@ function MenuManager(state)
 				end
 			end
 		else
-			if currentMenu == "VehicleExtrasMenu" then
+			if currentMenu == "ExtrasMenu" then
 				ApplyExtra(currentMenuItemID)
 				playSoundEffect("wrench",0.25)
 
@@ -759,17 +759,17 @@ function MenuManager(state)
 			toggleMenu(true,currentMenu)
 			updateMenuHeading(currentMenu)
 			updateMenuSubheading(currentMenu)
-		elseif isMenuActive("ResprayMenu") then
+		elseif isMenuActive("PinturaMenu") then
 			toggleMenu(false,currentMenu)
 
-			currentMenu = "ResprayTypeMenu"
+			currentMenu = "TiposdePinturaMenu"
 
 			RestoreOriginalColours()
 
 			toggleMenu(true,currentMenu)
 			updateMenuHeading(currentMenu)
 			updateMenuSubheading(currentMenu)
-		elseif isMenuActive("WheelsMenu") then            
+		elseif isMenuActive("RodasMenu") then            
 			if currentWheelCategory ~= 20 and currentWheelCategory ~= -1 then
 				local currentWheel = GetOriginalWheel()
 
@@ -780,7 +780,7 @@ function MenuManager(state)
 
 			toggleMenu(false,currentMenu)
 
-			currentMenu = "WheelsMenu"
+			currentMenu = "RodasMenu"
 
 			toggleMenu(true,currentMenu)
 			updateMenuHeading(currentMenu)
@@ -798,18 +798,18 @@ function MenuManager(state)
 		else
 			if currentMenu == "mainMenu" then
 				ExitBennys()
-			elseif currentMenu == "ResprayMenu" or currentMenu == "WindowTintMenu" or currentMenu == "WheelsMenu" or currentMenu == "NeonsMenu" or currentMenu == "XenonsMenu" or currentMenu == "PoliceLiveryMenu" or currentMenu == "PlateIndexMenu" or currentMenu == "VehicleExtrasMenu" then
+			elseif currentMenu == "PinturaMenu" or currentMenu == "JanelasMenu" or currentMenu == "RodasMenu" or currentMenu == "NeonsMenu" or currentMenu == "XenonsMenu" or currentMenu == "EstampaPolicialMenu" or currentMenu == "PlacaMenu" or currentMenu == "ExtrasMenu" then
 				toggleMenu(false,currentMenu)
 
-				if currentMenu == "WindowTintMenu" then
+				if currentMenu == "JanelasMenu" then
 					RestoreOriginalWindowTint()
 				end
 
-				if currentMenu == "PoliceLiveryMenu" then
+				if currentMenu == "EstampaPolicialMenu" then
 					RestorePoliceLivery()
 				end
 
-				if currentMenu == "PlateIndexMenu" then
+				if currentMenu == "PlacaMenu" then
 					RestorePlateIndex()
 				end
 
@@ -818,15 +818,15 @@ function MenuManager(state)
 				toggleMenu(true,currentMenu)
 				updateMenuHeading(currentMenu)
 				updateMenuSubheading(currentMenu)
-			elseif currentMenu == "ResprayTypeMenu" then
+			elseif currentMenu == "TiposdePinturaMenu" then
 				toggleMenu(false,currentMenu)
 
-				currentMenu = "ResprayMenu"
+				currentMenu = "PinturaMenu"
 
 				toggleMenu(true,currentMenu)
 				updateMenuHeading(currentMenu)
 				updateMenuSubheading(currentMenu)
-			elseif currentMenu == "NeonColoursMenu" then
+			elseif currentMenu == "CordoNeonMenu" then
 				toggleMenu(false,currentMenu)
 
 				currentMenu = "NeonsMenu"
@@ -836,7 +836,7 @@ function MenuManager(state)
 				toggleMenu(true,currentMenu)
 				updateMenuHeading(currentMenu)
 				updateMenuSubheading(currentMenu)
-			elseif currentMenu == "HeadlightsMenu" then
+			elseif currentMenu == "XenonMenu" then
 				toggleMenu(false,currentMenu)
 
 				currentMenu = "XenonsMenu"
@@ -844,7 +844,7 @@ function MenuManager(state)
 				toggleMenu(true,currentMenu)
 				updateMenuHeading(currentMenu)
 				updateMenuSubheading(currentMenu)
-			elseif currentMenu == "XenonColoursMenu" then
+			elseif currentMenu == "CordoXenonMenu" then
 				toggleMenu(false,currentMenu)
 
 				currentMenu = "XenonsMenu"

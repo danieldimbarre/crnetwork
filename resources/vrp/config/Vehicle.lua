@@ -5928,21 +5928,21 @@ local List = {
 		["Name"] = "Porsche 911 Carrera S",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["mclaren570s"] = {
 		["Name"] = "McLaren 570S",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["porsche718"] = {
 		["Name"] = "Porsche 718 Cayman GTS",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["bmwm8"] = {
@@ -5963,7 +5963,7 @@ local List = {
 		["Name"] = "Lamborghini Aventador LP 750-4",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["audirs7"] = {
@@ -5977,7 +5977,7 @@ local List = {
 		["Name"] = "Audi RS5",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["subaruwrx"] = {
@@ -5991,7 +5991,7 @@ local List = {
 		["Name"] = "Audi R8 V10",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["CESTA"] = {
@@ -6012,7 +6012,7 @@ local List = {
 		["Name"] = "Honda CB 500X",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["sorvete"] = {
@@ -6026,7 +6026,7 @@ local List = {
 		["Name"] = "Audi R8",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["audirs6"] = {
@@ -6040,28 +6040,28 @@ local List = {
 		["Name"] = "BMW M8 Competition",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["bugattiatlantic"] = {
 		["Name"] = "Bugatti Atlantic",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["aventador"] = {
 		["Name"] = "Lamborghini Aventador",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["bentleybacalar"] = {
 		["Name"] = "Bentley Bacalar",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["mercedesg65"] = {
@@ -6075,21 +6075,21 @@ local List = {
 		["Name"] = "Mustang 1969",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["camaro"] = {
 		["Name"] = "Chevrolet Camaro",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["mercedesamg63"] = {
 		["Name"] = "Mercedes-AMG C63 S",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["wheelchair"] = {
@@ -6103,14 +6103,14 @@ local List = {
 		["Name"] = "Cadillac Escalade",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["escaladegt900"] = {
 		["Name"] = "Cadillac Escalade ESV",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	},
 	["acuransx"] = {
@@ -6152,7 +6152,7 @@ local List = {
 		["Name"] = "Mitsubishi Eclipse",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 0
 	}
 }

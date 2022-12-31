@@ -158,8 +158,12 @@ Locations = {
     { ["Coords"] = vec3(696.03,1204.03,325.59), ["Type"] = "Battery" },
     { ["Coords"] = vec3(707.81,1201.28,325.86), ["Type"] = "Rocket" },
     { ["Coords"] = vec3(719.93,1198.22,326.13), ["Type"] = "Fountain" },
-    { ["Coords"] = vec3(1732.11,1194.36,326.14), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(731.93,1194.65,326.2), ["Type"] = "Battery" },
     { ["Coords"] = vec3(743.78,1191.62,325.91), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(758.25,1273.72,443.69), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(670.37,1277.98,360.3), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(798.8,1275.97,360.28), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(747.86,1260.49,360.28), ["Type"] = "Fountain" },
 
     { ["Coords"] = vec3(-636.97,307.68,140.14), ["Type"] = "Battery" },
     { ["Coords"] = vec3(-716.9,314.62,140.14), ["Type"] = "Rocket" },

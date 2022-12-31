@@ -36,7 +36,7 @@ CreateThread(function()
 			Cooldown = os.time() + 3600
 		end
 
-		if Firework[os.date("%H:%M-%d/%m")] and os.time() >= Cooldown then
+		if Burn[os.date("%H:%M-%d/%m")] and os.time() >= Cooldown then
 			TriggerClientEvent('smartphone:createSMS',-1,'Prefeitura',"A Prefeitura de Energy deseja a todos os seus cidadões um feliz e próspero Ano Novo! Feliz "..os.date("%Y").."!")
 			GlobalState["Firework"] = true
 			Cooldown = os.time() + 900

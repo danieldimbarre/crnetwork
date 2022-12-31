@@ -171,22 +171,22 @@ local Vehicles = {
 	},{
 		["Coords"] = vec3(-54.61,-1096.86,25.98),
 		["heading"] = 31.19,
-		["Model"] = "fordmustang",
+		["Model"] = "nissangtr",
 		["Distance"] = 100
 	},{
 		["Coords"] = vec3(-47.57,-1092.05,25.98),
 		["heading"] = 283.47,
-		["Model"] = "m1000rr",
+		["Model"] = "subaruimpreza",
 		["Distance"] = 100
 	},{
 		["Coords"] = vec3(-37.02,-1093.42,25.98),
 		["heading"] = 206.93,
-		["Model"] = "f8t",
+		["Model"] = "skyliner34",
 		["Distance"] = 100
 	},{
 		["Coords"] = vec3(-49.78,-1083.86,25.98),
 		["heading"] = 65.2,
-		["Model"] = "neon",
+		["Model"] = "silvias15",
 		["Distance"] = 100
 	}
 }

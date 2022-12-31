@@ -24,104 +24,104 @@ vehicleCustomisation = {
 		category = "Spoiler",
 		id = 0
 	},{
-		category = "Front Bumper",
+		category = "Para-choques dianteiro",
 		id = 1
 	},{
-		category = "Rear Bumper",
+		category = "Para-choques traseiro",
 		id = 2
 	},{
-		category = "Side Skirt",
+		category = "Saias",
 		id = 3
 	},{
-		category = "Exhaust",
+		category = "Escapamento",
 		id = 4
 	},{
-		category = "Roll Cage",
+		category = "Santantônio",
 		id = 5
 	},{
-		category = "Grille",
+		category = "Grade do radiador",
 		id = 6
 	},{
-		category = "Hood",
+		category = "Capô",
 		id = 7
 	},{
-		category = "Left Fender",
+		category = "Para-lamas dianteiro",
 		id = 8
 	},{
-		category = "Right Fender",
+		category = "Para-lamas traseiro",
 		id = 9
 	},{
-		category = "Roof",
+		category = "Teto",
 		id = 10
 	},{
-		category = "Vanity Plates",
+		category = "Placas de enfeite",
 		id = 25
 	},{
 		category = "Trim A",
 		id = 27
 	},{
-		category = "Ornaments",
+		category = "Enfeites",
 		id = 28
 	},{
-		category = "Dashboard",
+		category = "Painel",
 		id = 29
 	},{
-		category = "Dial",
+		category = "Velocímetro",
 		id = 30
 	},{
-		category = "Door Speaker",
+		category = "Portas",
 		id = 31
 	},{
-		category = "Seats",
+		category = "Assentos",
 		id = 32
 	},{
-		category = "Steering Wheel",
+		category = "Volantes",
 		id = 33
 	},{
-		category = "Shifter Leaver",
+		category = "Câmbios",
 		id = 34
 	},{
-		category = "Plaque",
+		category = "Placa interna",
 		id = 35
 	},{
-		category = "Speaker",
+		category = "Alto-falantes",
 		id = 36
 	},{
-		category = "Trunk",
+		category = "Porta-malas",
 		id = 37
 	},{
-		category = "Hydraulic",
+		category = "Hidráulica",
 		id = 38
 	},{
-		category = "Engine Block",
+		category = "Bloco do motor",
 		id = 39
 	},{
-		category = "Air Filter",
+		category = "Filtros de ar",
 		id = 40
 	},{
-		category = "Strut",
+		category = "Suporte",
 		id = 41
 	},{
 		category = "Arch Cover",
 		id = 42
 	},{
-		category = "Aerial",
+		category = "Antenas",
 		id = 43
 	},{
 		category = "Trim B",
 		id = 44
 	},{
-		category = "Fuel Tank",
+		category = "Tanque",
 		id = 45
 	},{
-		category = "Window",
+		category = "Janelas",
 		id = 46
 	},{
-		category = "Livery",
+		category = "Estampa",
 		id = 48
 	},{
 		id = 14,
-		category = "Horns",
+		category = "Buzinas",
 		hornNames = {
 			{ name = "Truck Horn", id = 0 },
 			{ name = "Cop Horn", id = 1 },
@@ -177,27 +177,27 @@ vehicleCustomisation = {
 			{ name = "Festive 3", id = 51 }
 		}
 	},{
-		category = "Engine Upgrade",
+		category = "Motor",
 		type = "engines",
 		id = 11
 	},{
-		category = "Brake Upgrade",
+		category = "Freios",
 		type = "brakes",
 		id = 12
 	},{
-		category = "Transmission Upgrade",
+		category = "Transmissão",
 		type = "transmission",
 		id = 13
 	},{
-		category = "Suspension Upgrade",
+		category = "Suspensão",
 		type = "suspension",
 		id = 15
 	},{
-		category = "Shielding Upgrade",
+		category = "Blindagem",
 		type = "shield",
 		id = 16
 	},{
-		category = "Turbo Upgrade",
+		category = "Turbo",
 		id = 18
 	}
 }
@@ -220,11 +220,11 @@ vehicleWindowTintOptions = {
 
 vehicleWheelOptions = {
 	{
-		category = "Custom Tyres",
+		category = "Pneus personalizados",
 		id = -1,
 		wheelID = 23
 	},{
-		category = "Tyre Smoke",
+		category = "Fumaça do pneu",
 		id = 20,
 		wheelID = 23
 	},{
@@ -293,22 +293,22 @@ vehicleTyreSmokeOptions = {
 
 vehicleResprayCategories = {
 	{
-		category = "Primary Colour",
+		category = "Cor primária",
 		id = 0
 	},{
-		category = "Secondary Colour",
+		category = "Cor secundária",
 		id = 1
 	},{
-		category = "Pearlescent Colour",
+		category = "Cor perolada",
 		id = 2
 	},{
-		category = "Wheel Colour",
+		category = "Cor da roda",
 		id = 3
 	},{
-		category = "Dashboard Colour",
+		category = "Cor interna",
 		id = 4
 	},{
-		category = "Interior Colour",
+		category = "Cor do painel",
 		id = 5
 	}
 }
@@ -436,10 +436,10 @@ vehicleResprayOptions = {
 vehicleNeonOptions = {
 	category = "Neons",
 	neonTypes = {
-		{ name = "Front Neon", id = 2 },
-		{ name = "Rear Neon", id = 3 },
-		{ name = "Left Neon", id = 0 },
-		{ name = "Right Neon", id = 1 }
+		{ name = "Neon dianteiro", id = 2 },
+		{ name = "Neon traseiro", id = 3 },
+		{ name = "Neon esquerdo", id = 0 },
+		{ name = "Neon direito", id = 1 }
 	},
 	neonColours = {
 		{ name = "White", r = 222, g = 222, b = 255 },

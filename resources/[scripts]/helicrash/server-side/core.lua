@@ -12,6 +12,7 @@ local Cooldown = os.time()
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 GlobalState["Helicrash"] = false
+GlobalState["Firework"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -33,6 +34,15 @@ CreateThread(function()
 			TriggerClientEvent("Notify",-1,"azul","Mayday! Mayday! Tivemos problemas técnicos em nossos motores e estamos em queda livre.",30000)
 			GlobalState["Helicrash"] = Selected
 			Cooldown = os.time() + 3600
+		end
+
+		if Burn[os.date("%H:%M-%d/%m")] and os.time() >= Cooldown then
+			TriggerClientEvent('smartphone:createSMS',-1,'Prefeitura',"A Prefeitura de Energy deseja a todos os seus cidadões um feliz e próspero Ano Novo! Feliz "..os.date("%Y").."!")
+			GlobalState["Firework"] = true
+			Cooldown = os.time() + 900
+
+			Wait(900000)
+			GlobalState["Firework"] = false
 		end
 
 		Wait(1000)
@@ -77,5 +87,17 @@ RegisterCommand("helicrash",function(source,Message)
 				TriggerClientEvent("Notify",source,"verde","Helicrash das "..Hours..":"..Minutes.." removido.",5000)
 			end
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FIREWORK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("firework",function(source)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin",2) then
+    	GlobalState["Firework"] = true
+
+		Wait(900000)
+		GlobalState["Firework"] = false
 	end
 end)

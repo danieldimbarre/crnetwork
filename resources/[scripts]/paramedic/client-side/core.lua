@@ -65,6 +65,8 @@ CreateThread(function()
 				-- Wait(Nocaute)
 				-- DoScreenFadeIn(1000)
 
+				TriggerServerEvent("evidence:dropEvidence","yellow")
+
 				TriggerEvent("Notify","blood","Sangramento encontrado.",3000)
 			end
 		end

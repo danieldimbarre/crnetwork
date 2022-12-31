@@ -114,11 +114,8 @@ AddEventHandler("onClientResourceStart",function(Resource)
 	end
 
 	if GlobalState["Firework"] then
-		for i = 1,#Config.FireworkLocations,1 do
-			local Coords = Config.FireworkLocations[i]["Coords"]
-			local Type = Config.FireworkLocations[i]["Type"]
-
-			TriggerEvent("firework:"..Type,Coords)
+		for i = 1,#Locations,1 do
+			TriggerEvent("firework:"..Locations[i]["Type"],Locations[i]["Coords"])
 		end
 	end
 end)

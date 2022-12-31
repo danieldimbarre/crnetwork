@@ -66,10 +66,10 @@ vehicleCustomisation = {
 		category = "Painel",
 		id = 29
 	},{
-		category = "Dial",
+		category = "Velocímetro",
 		id = 30
 	},{
-		category = "Door Speaker",
+		category = "Portas",
 		id = 31
 	},{
 		category = "Assentos",
@@ -81,10 +81,10 @@ vehicleCustomisation = {
 		category = "Câmbios",
 		id = 34
 	},{
-		category = "Plaque",
+		category = "Placa interna",
 		id = 35
 	},{
-		category = "Speaker",
+		category = "Alto-falantes",
 		id = 36
 	},{
 		category = "Porta-malas",
@@ -99,13 +99,13 @@ vehicleCustomisation = {
 		category = "Filtros de ar",
 		id = 40
 	},{
-		category = "Strut",
+		category = "Suporte",
 		id = 41
 	},{
 		category = "Arch Cover",
 		id = 42
 	},{
-		category = "Aerial",
+		category = "Antenas",
 		id = 43
 	},{
 		category = "Trim B",

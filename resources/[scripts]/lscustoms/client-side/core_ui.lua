@@ -161,24 +161,24 @@ function InitiateMenus(isMotorcycle)
 		end
 	end
 
-	populateMenu("mainMenu",-1,"Pintura","none")
+	populateMenu("mainMenu",-1,"Respray","none")
 
 	if not isMotorcycle then
-		populateMenu("mainMenu",-2,"Janelas","none")
+		populateMenu("mainMenu",-2,"Window Tint","none")
 		populateMenu("mainMenu",-3,"Neons","none")
 	end
 
 	populateMenu("mainMenu",22,"Xenons","none")
-	populateMenu("mainMenu",23,"Rodas","none")
+	populateMenu("mainMenu",23,"Wheels","none")
 
 	if vehclass == 18 then
-		populateMenu("mainMenu",24,"Estampa policial","none")
+		populateMenu("mainMenu",24,"Police Livery","none")
 		local livCount = GetVehicleLiveryCount(vehicle)
 		if livCount > 0 then
 			local temporaryLivery = GetVehicleLivery(vehicle)
-			createMenu("PoliceLiveryMenu","Customização da estampa policial","Escolha uma estampa")
+			createMenu("PoliceLiveryMenu","Police Livery Customization","Escolha uma estampa")
 			for i = 0,livCount - 1 do
-				populateMenu("PoliceLiveryMenu",i,"Estampa 0"..i + 1,"$100")
+				populateMenu("PoliceLiveryMenu",i,"Livery 0"..i + 1,"$100")
 
 				if temporaryLivery == i then
 					updateItem2Text("PoliceLiveryMenu",i,"Instalado")
@@ -188,8 +188,8 @@ function InitiateMenus(isMotorcycle)
 			finishPopulatingMenu("PoliceLiveryMenu")
 		end
 
-		populateMenu("mainMenu",26,"Extras do veículo","none")
-		createMenu("VehicleExtrasMenu","Personalização de extras do veículo","Ativar / Desativar extras")
+		populateMenu("mainMenu",26,"Vehicle Extras","none")
+		createMenu("VehicleExtrasMenu","Vehicle Extras Customization","Ativar / Desativar extras")
 
 		for i = 1,12 do
 			if DoesExtraExist(vehicle,i) then
@@ -205,7 +205,7 @@ function InitiateMenus(isMotorcycle)
 	end
 
 
-	populateMenu("mainMenu",25,"Placa","none")
+	populateMenu("mainMenu",25,"Plate Index","none")
 
 	finishPopulatingMenu("mainMenu")
 
@@ -256,18 +256,18 @@ function InitiateMenus(isMotorcycle)
 		end
 	end
 
-	createMenu("ResprayMenu","Pintura","Escolha uma categoria de cores")
+	createMenu("ResprayMenu","Respray","Escolha uma categoria de cores")
 
-	populateMenu("ResprayMenu",0,"Cor primária","none")
-	populateMenu("ResprayMenu",1,"Cor secundária","none")
-	populateMenu("ResprayMenu",2,"Cor perolada","none")
-	populateMenu("ResprayMenu",3,"Cor da roda","none")
-	populateMenu("ResprayMenu",4,"Cor interna","none")
-	populateMenu("ResprayMenu",5,"Cor do painel","none")
+	populateMenu("ResprayMenu",0,"Primary Colour","none")
+	populateMenu("ResprayMenu",1,"Secondary Colour","none")
+	populateMenu("ResprayMenu",2,"Pearlescent Colour","none")
+	populateMenu("ResprayMenu",3,"Wheel Colour","none")
+	populateMenu("ResprayMenu",4,"Interior Colour","none")
+	populateMenu("ResprayMenu",5,"Dashboard Colour","none")
 
 	finishPopulatingMenu("ResprayMenu")
 
-	createMenu("ResprayTypeMenu","Tipos de pintura","Escolha um tipo de cor")
+	createMenu("ResprayTypeMenu","Respray Types","Escolha um tipo de cor")
 
 	for k,v in ipairs(vehicleResprayOptions) do
 		populateMenu("ResprayTypeMenu",v["id"],v["category"],"none")
@@ -285,7 +285,7 @@ function InitiateMenus(isMotorcycle)
 		finishPopulatingMenu(v["category"].."Menu")
 	end
 
-	createMenu("WheelsMenu","Categorias de rodas","Escolha uma categoria")
+	createMenu("WheelsMenu","Wheel Categories","Escolha uma categoria")
 
 	for k,v in ipairs(vehicleWheelOptions) do 
 		if isMotorcycle then
@@ -338,7 +338,7 @@ function InitiateMenus(isMotorcycle)
 	end
 
 	local currentWheelSmokeR,currentWheelSmokeG,currentWheelSmokeB = GetCurrentVehicleWheelSmokeColour()
-	createMenu("TyreSmokeMenu","Customização da fumaça do pneu","Escolha uma cor")
+	createMenu("TyreSmokeMenu","Tyre Smoke Customization","Escolha uma cor")
 
 	for k,v in ipairs(vehicleTyreSmokeOptions) do
 		populateMenu("TyreSmokeMenu",k,v["name"],"$"..vehicleCustomisationPrices["wheelsmoke"])
@@ -351,7 +351,7 @@ function InitiateMenus(isMotorcycle)
 	finishPopulatingMenu("TyreSmokeMenu")
 
 	local currentWindowTint = GetCurrentWindowTint()
-	createMenu("WindowTintMenu","Personalização da tonalidade das janelas","Escolha uma tonalidade")
+	createMenu("WindowTintMenu","Window Tint Customization","Escolha uma tonalidade")
 
 	for k,v in ipairs(vehicleWindowTintOptions) do
 		populateMenu("WindowTintMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["windowtint"])
@@ -364,7 +364,7 @@ function InitiateMenus(isMotorcycle)
 	finishPopulatingMenu("WindowTintMenu")
 
 	local temporaryPlate = GetVehicleNumberPlateTextIndex(vehicle)
-	createMenu("PlateIndexMenu","Personalização da placa","Escolha o tipo")
+	createMenu("PlateIndexMenu","Plate Colour","Escolha o tipo")
 
 	local plateTypes = {
 		"San Andreas Cosmo",
@@ -384,13 +384,13 @@ function InitiateMenus(isMotorcycle)
 	end
 	finishPopulatingMenu("PlateIndexMenu")
 
-	createMenu("NeonsMenu","Personalização do neon","Escolha uma categoria")
+	createMenu("NeonsMenu","Neon Customization","Escolha uma categoria")
 
 	for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
 		populateMenu("NeonsMenu",v["id"],v["name"],"none")
 	end
 
-	populateMenu("NeonsMenu",-1,"Cores do neon","none")
+	populateMenu("NeonsMenu",-1,"Neon Colours","none")
 	finishPopulatingMenu("NeonsMenu")
 
 	for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
@@ -406,7 +406,7 @@ function InitiateMenus(isMotorcycle)
 	end
 
 	local currentNeonR,currentNeonG,currentNeonB = GetCurrentNeonColour()
-	createMenu("NeonColoursMenu","Cores do neon","Escolha uma cor")
+	createMenu("NeonColoursMenu","Neon Colours","Escolha uma cor")
 
 	for k,v in ipairs(vehicleNeonOptions["neonColours"]) do
 		populateMenu("NeonColoursMenu",k,vehicleNeonOptions["neonColours"][k]["name"],"$"..vehicleCustomisationPrices["neoncolours"])
@@ -418,15 +418,15 @@ function InitiateMenus(isMotorcycle)
 
 	finishPopulatingMenu("NeonColoursMenu")
 
-	createMenu("XenonsMenu","Personalização do xenon","Escolha a categoria")
+	createMenu("XenonsMenu","Xenon Customization","Escolha a categoria")
 
-	populateMenu("XenonsMenu",0,"Faróis","none")
-	populateMenu("XenonsMenu",1,"Cores de xenon","none")
+	populateMenu("XenonsMenu",0,"Headlights","none")
+	populateMenu("XenonsMenu",1,"Xenon Colours","none")
 
 	finishPopulatingMenu("XenonsMenu")
 
 	local currentXenonState = GetCurrentXenonState()
-	createMenu("HeadlightsMenu","Personalização dos faróis","Ativar / Desativar xenons")
+	createMenu("HeadlightsMenu","Headlights Customization","Ativar / Desativar xenons")
 
 	populateMenu("HeadlightsMenu",0,"Desativado","$0")
 	populateMenu("HeadlightsMenu",1,"Ativado","$"..vehicleCustomisationPrices["headlights"])
@@ -436,7 +436,7 @@ function InitiateMenus(isMotorcycle)
 	finishPopulatingMenu("HeadlightsMenu")
 
 	local currentXenonColour = GetCurrentXenonColour()
-	createMenu("XenonColoursMenu","Cores de xenon","Escolha uma cor")
+	createMenu("XenonColoursMenu","Xenon Colours","Escolha uma cor")
 
 	for k,v in ipairs(vehicleXenonOptions["xenonColours"]) do
 		populateMenu("XenonColoursMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["xenoncolours"])

@@ -85,6 +85,8 @@ AddEventHandler("target:PutBed",function(Number)
 		SetEntityCoords(Ped,Beds[Number]["Coords"]["x"],Beds[Number]["Coords"]["y"],Beds[Number]["Coords"]["z"] - 1,false,false,false,false)
 		vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
 		SetEntityHeading(Ped,Beds[Number]["Heading"])
+
+		ThreadBeds()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -105,6 +107,7 @@ RegisterNetEvent("target:Treatment")
 AddEventHandler("target:Treatment",function(Number)
 	if not Previous then
 		if vSERVER.CheckIn() then
+			LocalPlayer["state"]["Buttons"] = true
 			LocalPlayer["state"]["Commands"] = true
 			LocalPlayer["state"]["Cancel"] = true
 			local Ped = PlayerPedId()
@@ -113,6 +116,7 @@ AddEventHandler("target:Treatment",function(Number)
 			vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
 			SetEntityHeading(Ped,Beds[Number]["Heading"])
 
+			ThreadBeds()
 			TriggerEvent("inventory:preventWeapon",true)
 			TriggerEvent("paramedic:Reset")
 
@@ -121,6 +125,8 @@ AddEventHandler("target:Treatment",function(Number)
 			end
 
 			Treatment = true
+
+			ThreadTreatment()
 		end
 	end
 end)
@@ -130,31 +136,43 @@ end)
 RegisterNetEvent("target:StartTreatment")
 AddEventHandler("target:StartTreatment",function()
 	if not Treatment then
+		LocalPlayer["state"]["Buttons"] = true
 		LocalPlayer["state"]["Commands"] = true
 		LocalPlayer["state"]["Cancel"] = true
 		Treatment = true
+
+		ThreadTreatment()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADBEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local Ped = PlayerPedId()
-		if Previous and not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) then
-			SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
-			Previous = nil
-		end
+function ThreadBeds()
+	CreateThread(function()
+		while Previous do
+			local Ped = PlayerPedId()
+			if not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) then
+				SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
+				Previous = nil
 
-		Citizen.Wait(10000)
-	end
-end)
+				if Treatment then
+					Treatment = false
+					LocalPlayer["state"]["Cancel"] = false
+					LocalPlayer["state"]["Commands"] = false
+					LocalPlayer["state"]["Buttons"] = false
+				end
+			end
+
+			Wait(1000)
+		end
+	end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTREATMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		if Treatment then
+function ThreadTreatment()
+	CreateThread(function()
+		while Treatment do
 			if GetGameTimer() >= TreatmentTimer then
 				local Ped = PlayerPedId()
 				local Health = GetEntityHealth(Ped)
@@ -166,11 +184,12 @@ CreateThread(function()
 					Treatment = false
 					LocalPlayer["state"]["Cancel"] = false
 					LocalPlayer["state"]["Commands"] = false
+					LocalPlayer["state"]["Buttons"] = false
 					TriggerEvent("Notify","amarelo","Tratamento concluído.",5000)
 				end
 			end
-		end
 
-		Wait(1000)
-	end
-end)
+			Wait(1000)
+		end
+	end)
+end

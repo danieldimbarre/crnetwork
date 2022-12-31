@@ -5931,13 +5931,6 @@ local List = {
 		["Mode"] = nil,
 		["Gems"] = 0
 	},
-	["velar"] = {
-		["Name"] = "Range Rover Velar",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = nil,
-		["Gems"] = 0
-	},
 	["mclaren570s"] = {
 		["Name"] = "McLaren 570S",
 		["Weight"] = 30,

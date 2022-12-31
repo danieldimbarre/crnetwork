@@ -47,7 +47,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>a45_modkit</Item>
+        <Item>WRa45_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -84,7 +84,7 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="1"/>
-      <sirenSettings value="240"/>
+      <sirenSettings value="2400"/>
     </Item>
     <Item>
       <modelName>wrsxr</modelName>
@@ -311,7 +311,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>porsche911s_911_modkit</Item>
+        <Item>porsche911s_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -409,57 +409,6 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>nissangtrth</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            0 
-            0 
-            6 
-            156
-		      	0
-		      	0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>11621_agtr35_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="25"/>
-          </Item>
-          <Item>
-            <Name>White Plate 2</Name>
-            <Value value="50"/>
-          </Item>
-          <Item>
-            <Name>Blue Plate</Name>
-            <Value value="10"/>
-          </Item>
-          <Item>
-            <Name>Yellow Plate</Name>
-            <Value value="15"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>fordmustanggt2</modelName>
       <colors>
         <Item>
@@ -509,7 +458,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>9521_gt63_modkit</Item>
+        <Item>mercedesgt632_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -591,96 +540,6 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>skyliner33</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            111 
-            0 
-            156 
-            89
-			89
-		    5 
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>10879_skyliner33_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="0"/>
-          </Item>
-          <Item>
-            <Name>White Plate 2</Name>
-            <Value value="0"/>
-          </Item>
-          <Item>
-            <Name>Blue Plate</Name>
-            <Value value="80"/>
-          </Item>
-          <Item>
-            <Name>Yellow Plate</Name>
-            <Value value="20"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="665"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>riata2</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            1 
-            0 
-            18 
-            112
-            93
-            65		
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>10273_riata_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>audir8v10</modelName>
       <colors>
         <Item>
@@ -754,43 +613,6 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="1"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>velar</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            63 
-            70
-            63
-            156 
-          </indices>
-          <liveries>
-            <Item value="true"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>0_default_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1200"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>
@@ -1081,7 +903,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>1665_rmodlp750_modkit</Item>
+        <Item>aventador750_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -1118,7 +940,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>2291_m1000rr_kit</Item>
+        <Item>m1000rr_kit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -1390,7 +1212,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>977_trx_modkit</Item>
+        <Item>dodgeramtrx_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -1508,29 +1330,6 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="1"/>
-      <sirenSettings value="240"/>
-    </Item>
-    <Item>
-      <modelName>fordraptor</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">12 12 12 12</indices>
-          <liveries/>
-        </Item>
-      </colors>
-      <kits>
-        <Item>fordraptor_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Police guv plate</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1200"/>
       <sirenSettings value="240"/>
     </Item>
     <Item>
@@ -1916,7 +1715,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>6999_gs1200_modkit</Item>
+        <Item>r1200_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>

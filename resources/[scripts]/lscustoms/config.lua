@@ -24,46 +24,46 @@ vehicleCustomisation = {
 		category = "Spoiler",
 		id = 0
 	},{
-		category = "Front Bumper",
+		category = "Para-choques dianteiro",
 		id = 1
 	},{
-		category = "Rear Bumper",
+		category = "Para-choques traseiro",
 		id = 2
 	},{
-		category = "Side Skirt",
+		category = "Saias",
 		id = 3
 	},{
-		category = "Exhaust",
+		category = "Escapamento",
 		id = 4
 	},{
-		category = "Roll Cage",
+		category = "Santantônio",
 		id = 5
 	},{
-		category = "Grille",
+		category = "Grade do radiador",
 		id = 6
 	},{
-		category = "Hood",
+		category = "Capô",
 		id = 7
 	},{
-		category = "Left Fender",
+		category = "Para-lamas dianteiro",
 		id = 8
 	},{
-		category = "Right Fender",
+		category = "Para-lamas traseiro",
 		id = 9
 	},{
-		category = "Roof",
+		category = "Teto",
 		id = 10
 	},{
-		category = "Vanity Plates",
+		category = "Placas de enfeite",
 		id = 25
 	},{
 		category = "Trim A",
 		id = 27
 	},{
-		category = "Ornaments",
+		category = "Enfeites",
 		id = 28
 	},{
-		category = "Dashboard",
+		category = "Painel",
 		id = 29
 	},{
 		category = "Dial",
@@ -72,13 +72,13 @@ vehicleCustomisation = {
 		category = "Door Speaker",
 		id = 31
 	},{
-		category = "Seats",
+		category = "Assentos",
 		id = 32
 	},{
-		category = "Steering Wheel",
+		category = "Volantes",
 		id = 33
 	},{
-		category = "Shifter Leaver",
+		category = "Câmbios",
 		id = 34
 	},{
 		category = "Plaque",
@@ -87,16 +87,16 @@ vehicleCustomisation = {
 		category = "Speaker",
 		id = 36
 	},{
-		category = "Trunk",
+		category = "Porta-malas",
 		id = 37
 	},{
-		category = "Hydraulic",
+		category = "Hidráulica",
 		id = 38
 	},{
-		category = "Engine Block",
+		category = "Bloco do motor",
 		id = 39
 	},{
-		category = "Air Filter",
+		category = "Filtros de ar",
 		id = 40
 	},{
 		category = "Strut",
@@ -111,17 +111,17 @@ vehicleCustomisation = {
 		category = "Trim B",
 		id = 44
 	},{
-		category = "Fuel Tank",
+		category = "Tanque",
 		id = 45
 	},{
-		category = "Window",
+		category = "Janelas",
 		id = 46
 	},{
-		category = "Livery",
+		category = "Estampa",
 		id = 48
 	},{
 		id = 14,
-		category = "Horns",
+		category = "Buzinas",
 		hornNames = {
 			{ name = "Truck Horn", id = 0 },
 			{ name = "Cop Horn", id = 1 },
@@ -177,27 +177,27 @@ vehicleCustomisation = {
 			{ name = "Festive 3", id = 51 }
 		}
 	},{
-		category = "Engine Upgrade",
+		category = "Motor",
 		type = "engines",
 		id = 11
 	},{
-		category = "Brake Upgrade",
+		category = "Freios",
 		type = "brakes",
 		id = 12
 	},{
-		category = "Transmission Upgrade",
+		category = "Transmissão",
 		type = "transmission",
 		id = 13
 	},{
-		category = "Suspension Upgrade",
+		category = "Suspensão",
 		type = "suspension",
 		id = 15
 	},{
-		category = "Shielding Upgrade",
+		category = "Blindagem",
 		type = "shield",
 		id = 16
 	},{
-		category = "Turbo Upgrade",
+		category = "Turbo",
 		id = 18
 	}
 }

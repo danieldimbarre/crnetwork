@@ -176,9 +176,9 @@ function InitiateMenus(isMotorcycle)
 		local livCount = GetVehicleLiveryCount(vehicle)
 		if livCount > 0 then
 			local temporaryLivery = GetVehicleLivery(vehicle)
-			createMenu("PoliceLiveryMenu","Police Livery Customization","Escolha uma estampa")
+			createMenu("PoliceLiveryMenu","Customização de estampa policial","Escolha uma estampa")
 			for i = 0,livCount - 1 do
-				populateMenu("PoliceLiveryMenu",i,"Livery 0"..i + 1,"$100")
+				populateMenu("PoliceLiveryMenu",i,"Estampa 0"..i + 1,"$100")
 
 				if temporaryLivery == i then
 					updateItem2Text("PoliceLiveryMenu",i,"Instalado")
@@ -189,7 +189,7 @@ function InitiateMenus(isMotorcycle)
 		end
 
 		populateMenu("mainMenu",26,"Vehicle Extras","none")
-		createMenu("VehicleExtrasMenu","Vehicle Extras Customization","Ativar / Desativar extras")
+		createMenu("VehicleExtrasMenu","Personalização de extras do veículo","Ativar / Desativar extras")
 
 		for i = 1,12 do
 			if DoesExtraExist(vehicle,i) then
@@ -258,12 +258,12 @@ function InitiateMenus(isMotorcycle)
 
 	createMenu("ResprayMenu","Respray","Escolha uma categoria de cores")
 
-	populateMenu("ResprayMenu",0,"Primary Colour","none")
-	populateMenu("ResprayMenu",1,"Secondary Colour","none")
-	populateMenu("ResprayMenu",2,"Pearlescent Colour","none")
-	populateMenu("ResprayMenu",3,"Wheel Colour","none")
-	populateMenu("ResprayMenu",4,"Interior Colour","none")
-	populateMenu("ResprayMenu",5,"Dashboard Colour","none")
+	populateMenu("ResprayMenu",0,"Cor primária","none")
+	populateMenu("ResprayMenu",1,"Cor secundária","none")
+	populateMenu("ResprayMenu",2,"Cor perolada","none")
+	populateMenu("ResprayMenu",3,"Cor da roda","none")
+	populateMenu("ResprayMenu",4,"Cor interna","none")
+	populateMenu("ResprayMenu",5,"Cor do painel","none")
 
 	finishPopulatingMenu("ResprayMenu")
 

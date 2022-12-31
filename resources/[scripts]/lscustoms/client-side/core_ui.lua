@@ -151,7 +151,7 @@ function InitiateMenus(isMotorcycle)
 	local vehicle = GetVehiclePedIsUsing(Ped)
 	local vehclass = GetVehicleClass(vehicle)
 
-	createMenu("mainMenu","Welcome to Benny's Original Motorworks","Choose a Category")
+	createMenu("mainMenu","Bem-vindo à Benny's Original Motorworks","Escolha uma categoria")
 
 	for k,v in ipairs(vehicleCustomisation) do 
 		local validMods,amountValidMods = CheckValidMods(v["category"],v["id"])
@@ -173,9 +173,37 @@ function InitiateMenus(isMotorcycle)
 
 	if vehclass == 18 then
 		populateMenu("mainMenu",24,"Police Livery","none")
+		local livCount = GetVehicleLiveryCount(vehicle)
+		if livCount > 0 then
+			local temporaryLivery = GetVehicleLivery(vehicle)
+			createMenu("PoliceLiveryMenu","Police Livery Customization","Escolha uma estampa")
+			for i = 0,livCount - 1 do
+				populateMenu("PoliceLiveryMenu",i,"Livery 0"..i + 1,"$100")
+
+				if temporaryLivery == i then
+					updateItem2Text("PoliceLiveryMenu",i,"Instalado")
+				end
+			end
+
+			finishPopulatingMenu("PoliceLiveryMenu")
+		end
+
+		populateMenu("mainMenu",26,"Vehicle Extras","none")
+		createMenu("VehicleExtrasMenu","Vehicle Extras Customization","Ativar / Desativar Extras")
+
+		for i = 1,12 do
+			if DoesExtraExist(vehicle,i) then
+				if IsVehicleExtraTurnedOn(vehicle,i) then
+					populateMenu("VehicleExtrasMenu",i,"Extra 0"..i,"Ativado")
+				else
+					populateMenu("VehicleExtrasMenu",i,"Extra 0"..i,"Desativado")
+				end
+			end
+		end
+
+		finishPopulatingMenu("VehicleExtrasMenu")
 	end
 
-	populateMenu("mainMenu",26,"Vehicle Extras","none")
 
 	populateMenu("mainMenu",25,"Plate Index","none")
 
@@ -189,7 +217,7 @@ function InitiateMenus(isMotorcycle)
 			if v["id"] == 11 or v["id"] == 12 or v["id"] == 13 or v["id"] == 15 or v["id"] == 16 then
 				local tempNum = 0
 
-				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"],"Choose an Upgrade")
+				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"],"Escolha uma atualização")
 
 				for m,n in pairs(validMods) do
 					tempNum = tempNum + 1
@@ -204,7 +232,7 @@ function InitiateMenus(isMotorcycle)
 				finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
 			elseif v["id"] == 18 then
 				local currentTurboState = GetCurrentTurboState()
-				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customisation","Ativar / Desativar turbo")
+				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customization","Ativar / Desativar turbo")
 
 				populateMenu(v["category"]:gsub("%s+","").."Menu",0,"Desativado","$7500")
 				populateMenu(v["category"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["turbo"])
@@ -213,7 +241,7 @@ function InitiateMenus(isMotorcycle)
 
 				finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
 			else
-				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customisation","Choose a Mod")
+				createMenu(v["category"]:gsub("%s+","").."Menu",v["category"].." Customization","Escolha um Mod")
 
 				for m,n in pairs(validMods) do
 					populateMenu(v["category"]:gsub("%s+","").."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["cosmetics"])
@@ -228,7 +256,7 @@ function InitiateMenus(isMotorcycle)
 		end
 	end
 
-	createMenu("ResprayMenu","Respray","Choose a Colour Category")
+	createMenu("ResprayMenu","Respray","Escolha uma categoria de cores")
 
 	populateMenu("ResprayMenu",0,"Primary Colour","none")
 	populateMenu("ResprayMenu",1,"Secondary Colour","none")
@@ -257,7 +285,7 @@ function InitiateMenus(isMotorcycle)
 		finishPopulatingMenu(v["category"].."Menu")
 	end
 
-	createMenu("WheelsMenu","Wheel Categories","Choose a Category")
+	createMenu("WheelsMenu","Wheel Categories","Escolha uma categoria")
 
 	for k,v in ipairs(vehicleWheelOptions) do 
 		if isMotorcycle then
@@ -287,7 +315,7 @@ function InitiateMenus(isMotorcycle)
 				if v["id"] == 6 then
 					local validMods,amountValidMods = CheckValidMods(v["category"],v.wheelID,v["id"])
 
-					createMenu(v["category"].."Menu",v["category"].." Wheels","Choose a Wheel")
+					createMenu(v["category"].."Menu",v["category"].." Wheels","Escolha uma Roda")
 
 					for m,n in pairs(validMods) do
 						populateMenu(v["category"].."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["wheels"])
@@ -298,7 +326,7 @@ function InitiateMenus(isMotorcycle)
 			else
 				local validMods,amountValidMods = CheckValidMods(v["category"],v.wheelID,v["id"])
 
-				createMenu(v["category"].."Menu",v["category"].." Wheels","Choose a Wheel")
+				createMenu(v["category"].."Menu",v["category"].." Wheels","Escolha uma roda")
 
 				for m,n in pairs(validMods) do
 					populateMenu(v["category"].."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices["wheels"])
@@ -310,7 +338,7 @@ function InitiateMenus(isMotorcycle)
 	end
 
 	local currentWheelSmokeR,currentWheelSmokeG,currentWheelSmokeB = GetCurrentVehicleWheelSmokeColour()
-	createMenu("TyreSmokeMenu","Tyre Smoke Customisation","Escolha uma cor")
+	createMenu("TyreSmokeMenu","Tyre Smoke Customization","Escolha uma cor")
 
 	for k,v in ipairs(vehicleTyreSmokeOptions) do
 		populateMenu("TyreSmokeMenu",k,v["name"],"$"..vehicleCustomisationPrices["wheelsmoke"])
@@ -323,7 +351,7 @@ function InitiateMenus(isMotorcycle)
 	finishPopulatingMenu("TyreSmokeMenu")
 
 	local currentWindowTint = GetCurrentWindowTint()
-	createMenu("WindowTintMenu","Window Tint Customisation","Choose a Tint")
+	createMenu("WindowTintMenu","Window Tint Customization","Escolha uma tonalidade")
 
 	for k,v in ipairs(vehicleWindowTintOptions) do
 		populateMenu("WindowTintMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["windowtint"])
@@ -334,23 +362,6 @@ function InitiateMenus(isMotorcycle)
 	end
 
 	finishPopulatingMenu("WindowTintMenu")
-
-	if vehclass == 18 then
-		local livCount = GetVehicleLiveryCount(vehicle)
-		if livCount > 0 then
-			local temporaryLivery = GetVehicleLivery(vehicle)
-			createMenu("PoliceLiveryMenu","Police Livery Customisation","Choose a Livery")
-			for i = 0,livCount - 1 do
-				populateMenu("PoliceLiveryMenu",i,"Livery 0"..i + 1,"$100")
-
-				if temporaryLivery == i then
-					updateItem2Text("PoliceLiveryMenu",i,"Instalado")
-				end
-			end
-
-			finishPopulatingMenu("PoliceLiveryMenu")
-		end
-	end
 
 	local temporaryPlate = GetVehicleNumberPlateTextIndex(vehicle)
 	createMenu("PlateIndexMenu","Plate Colour","Escolha o tipo")
@@ -373,21 +384,7 @@ function InitiateMenus(isMotorcycle)
 	end
 	finishPopulatingMenu("PlateIndexMenu")
 
-	createMenu("VehicleExtrasMenu","Vehicle Extras Customisation","Toggle Extras")
-
-	for i = 1,12 do
-		if DoesExtraExist(vehicle,i) then
-			if IsVehicleExtraTurnedOn(vehicle,i) then
-				populateMenu("VehicleExtrasMenu",i,"Extra 0"..i,"Ativado")
-			else
-				populateMenu("VehicleExtrasMenu",i,"Extra 0"..i,"Desativado")
-			end
-		end
-	end
-
-	finishPopulatingMenu("VehicleExtrasMenu")
-
-	createMenu("NeonsMenu","Neon Customisation","Choose a Category")
+	createMenu("NeonsMenu","Neon Customization","Escolha uma categoria")
 
 	for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
 		populateMenu("NeonsMenu",v["id"],v["name"],"none")
@@ -398,7 +395,7 @@ function InitiateMenus(isMotorcycle)
 
 	for k,v in ipairs(vehicleNeonOptions["neonTypes"]) do
 		local currentNeonState = GetCurrentNeonState(v["id"])
-		createMenu(v["name"]:gsub("%s+","").."Menu","Neon Customisation","Ativar / Desativar Neon")
+		createMenu(v["name"]:gsub("%s+","").."Menu","Neon Customization","Ativar / Desativar Neon")
 
 		populateMenu(v["name"]:gsub("%s+","").."Menu",0,"Desativado","$0")
 		populateMenu(v["name"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["neonside"])
@@ -421,7 +418,7 @@ function InitiateMenus(isMotorcycle)
 
 	finishPopulatingMenu("NeonColoursMenu")
 
-	createMenu("XenonsMenu","Xenon Customisation","Escolha a categoria")
+	createMenu("XenonsMenu","Xenon Customization","Escolha a categoria")
 
 	populateMenu("XenonsMenu",0,"Headlights","none")
 	populateMenu("XenonsMenu",1,"Xenon Colours","none")
@@ -429,7 +426,7 @@ function InitiateMenus(isMotorcycle)
 	finishPopulatingMenu("XenonsMenu")
 
 	local currentXenonState = GetCurrentXenonState()
-	createMenu("HeadlightsMenu","Headlights Customisation","Ativar / Desativar Xenons")
+	createMenu("HeadlightsMenu","Headlights Customization","Ativar / Desativar Xenons")
 
 	populateMenu("HeadlightsMenu",0,"Desativado","$0")
 	populateMenu("HeadlightsMenu",1,"Ativado","$"..vehicleCustomisationPrices["headlights"])
@@ -566,7 +563,7 @@ function MenuManager(state)
 						local currentWheel = GetCurrentWheel()
 
 						if currentWheel == -1 then
-							updateMenuStatus("Can't Apply Custom Tyres to Stock Wheels")
+							updateMenuStatus("Não é possível aplicar pneus personalizados a rodas originais")
 						else
 							if AttemptPurchase("customwheels") then
 								ApplyCustomWheel(currentMenuItemID)
@@ -582,7 +579,7 @@ function MenuManager(state)
 						local currentCustomWheelState = GetOriginalCustomWheel()
 
 						if currentCustomWheelState and currentWheel == -1 then
-							updateMenuStatus("Can't Apply Stock Wheels With Custom Tyres")
+							updateMenuStatus("Não é possível aplicar rodas originais com pneus personalizados")
 						else
 							if AttemptPurchase("wheels") then
 								ApplyWheel(currentCategory,currentMenuItemID,currentWheelCategory)

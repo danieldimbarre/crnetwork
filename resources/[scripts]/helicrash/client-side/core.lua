@@ -4,6 +4,7 @@
 local Blip = nil
 local Objects = {}
 local Active = false
+local FxAsset = "scr_indep_fireworks"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -111,6 +112,15 @@ AddEventHandler("onClientResourceStart",function(Resource)
 		Active = GlobalState["Helicrash"]
 		HeliBlip(Active)
 	end
+
+	if GlobalState["Firework"] then
+		for i = 1,#Config.FireworkLocations,1 do
+			local Coords = Config.FireworkLocations[i]["Coords"]
+			local Type = Config.FireworkLocations[i]["Type"]
+
+			TriggerEvent("firework:"..Type,Coords)
+		end
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HELIBLIP
@@ -128,3 +138,151 @@ function HeliBlip(Number)
 		EndTextCommandSetBlipName(Blip)
 	end
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Firework",nil,function(Name,Key,Value)
+	if Value then
+		for i = 1,#Locations,1 do
+			TriggerEvent("firework:"..Locations[i]["Type"],Locations[i]["Coords"])
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FIREWORK:BATTERY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("firework:Battery")
+AddEventHandler("firework:Battery",function(Coords)
+    RequestNamedPtfxAsset(FxAsset)
+    while not HasNamedPtfxAssetLoaded(FxAsset) do
+        Wait(1)
+	end
+	
+	UseParticleFxAsset(FxAsset)
+	local Particle = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle2 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle3 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle4 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle5 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle6 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle7 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle8 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(4000)
+	UseParticleFxAsset(FxAsset)
+	local Particle9 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_trailburst",Coords,0.0,0.0,0.0,math.random() * 0.5 + 1.8,false,false,false,false)
+
+	if GlobalState["Firework"] then
+		TriggerEvent("firework:Battery",Coords)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FIREWORK:ROCKET
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("firework:Rocket")
+AddEventHandler("firework:Rocket",function(Coords)
+	while not HasNamedPtfxAssetLoaded(FxAsset) do
+        Wait(1)
+    end
+
+    UseParticleFxAsset(FxAsset)
+    local Particle = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle2 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle3 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle4 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle5 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle6 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle7 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle8 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle9 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle10 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle11 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle12 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle13 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle14 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+    local Particle15 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst",Coords,0.0,0.0,0.0,2.5,false,false,false,false)
+	Wait(1500)
+
+	if GlobalState["Firework"] then
+		TriggerEvent("firework:rocket",Coords)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FIREWORK:FOUNTAIN
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("firework:Fountain")
+AddEventHandler("firework:Fountain",function(Coords)
+	RequestNamedPtfxAsset(FxAsset)
+    while not HasNamedPtfxAssetLoaded(FxAsset) do
+        Wait(1)
+	end
+	
+	UseParticleFxAsset(FxAsset)
+	local Particle = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle2 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle3 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle4 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(1500)
+	UseParticleFxAsset(FxAsset)
+	local Particle5 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain",Coords,0.0,0.0,0.0,math.random() * 0.5 + 0.8,false,false,false,false)
+	Wait(2500)
+	UseParticleFxAsset(FxAsset)
+	local Particle6 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain",Coords,0.0,0.0,0.0,math.random() * 1.5 + 1.8,false,false,false,false)
+	Wait(2500)
+	UseParticleFxAsset(FxAsset)
+	local Particle7 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain",Coords,0.0,0.0,0.0,math.random() * 1.5 + 1.8,false,false,false,false)
+	Wait(2500)
+	UseParticleFxAsset(FxAsset)
+	local Particle8 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain",Coords,0.0,0.0,0.0,math.random() * 1.5 + 1.8,false,false,false,false)
+
+	if GlobalState["Firework"] then
+		TriggerEvent("firework:rocket",Coords)
+	end
+end)

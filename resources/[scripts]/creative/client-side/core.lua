@@ -456,7 +456,7 @@ CreateThread(function()
 	local Tables = {}
 
 	for Number = 1,#Teleport do
-		Tables[#Tables + 1] = { Teleport[Number][1],Teleport[Number][2],Teleport[Number][3],2.5,"E","Porta de Acesso","Pressione para acessar" }
+		Tables[#Tables + 1] = { Teleport[Number][1],Teleport[Number][2],Teleport[Number][3],1.0,"E","Porta de Acesso","Pressione para acessar" }
 	end
 
 	TriggerEvent("hoverfy:Insert",Tables)
@@ -475,7 +475,7 @@ CreateThread(function()
 				for Number = 1,#Teleport do
 					local v = Teleport[Number]
 					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-					if Distance <= 2.5 then
+					if Distance <= 1.0 then
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) then

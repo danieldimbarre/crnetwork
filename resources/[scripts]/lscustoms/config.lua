@@ -114,7 +114,7 @@ vehicleCustomisation = {
 		category = "Tanque",
 		id = 45
 	},{
-		category = "Janelas",
+		category = "Janela",
 		id = 46
 	},{
 		category = "Estampa",

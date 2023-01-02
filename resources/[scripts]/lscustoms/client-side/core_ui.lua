@@ -97,7 +97,7 @@ local function isMenuActive(menu)
 				menuActive = false
 			end
 		end
-	elseif menu == "NeonsSideMenu" then
+	elseif menu == "NeonsMenu" then
 		for k,v in pairs(vehicleNeonOptions["neonTypes"]) do
 			if (v["name"]:gsub("%s+","").."Menu") == currentMenu then
 				menuActive = true
@@ -127,7 +127,7 @@ local function updateCurrentMenuItemID(id,item,item2)
 		if currentWheelCategory ~= -1 and currentWheelCategory ~= 20 then
 			PreviewWheel(currentCategory,currentMenuItemID,currentWheelCategory)
 		end
-	elseif isMenuActive("NeonsSideMenu") then
+	elseif isMenuActive("NeonsMenu") then
 		PreviewNeon(currentNeonSide,currentMenuItemID)
 	elseif currentMenu == "JanelasMenu" then
 		PreviewWindowTint(currentMenuItemID)
@@ -592,7 +592,7 @@ function MenuManager(state)
 						end
 					end
 				end
-			elseif isMenuActive("NeonsSideMenu") then
+			elseif isMenuActive("NeonsMenu") then
 				if AttemptPurchase("neonside") then
 					playSoundEffect("wrench",0.25)
 					ApplyNeon(currentNeonSide,currentMenuItemID)
@@ -785,7 +785,7 @@ function MenuManager(state)
 			toggleMenu(true,currentMenu)
 			updateMenuHeading(currentMenu)
 			updateMenuSubheading(currentMenu)
-		elseif isMenuActive("NeonsSideMenu") then
+		elseif isMenuActive("NeonsMenu") then
 			toggleMenu(false,currentMenu)
 
 			currentMenu = "NeonsMenu"

@@ -13,6 +13,7 @@ Tunnel.bindInterface("player",Creative)
 vCLIENT = Tunnel.getInterface("player")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
+vPOLICE = Tunnel.getInterface("police")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DUITEXTURES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -855,7 +856,7 @@ RegisterServerEvent("player:Outfit")
 AddEventHandler("player:Outfit",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) and not exports["police"]:checkPrison(source) then
+	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) and not vPOLICE.checkPrison(source) then
 		if Mode == "aplicar" then
 			local result = vRP.GetSrvData("Outfit:"..Passport)
 			if result["pants"] ~= nil then

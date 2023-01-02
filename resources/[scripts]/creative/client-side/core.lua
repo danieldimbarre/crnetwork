@@ -284,9 +284,12 @@ CreateThread(function()
 		SetPedModelIsSuppressed(GetHashKey("s_m_y_prismuscl_01"),true)
 		SetPedModelIsSuppressed(GetHashKey("u_m_y_prisoner_01"),true)
 		SetPedModelIsSuppressed(GetHashKey("s_m_y_prisoner_01"),true)
+
 		SetPedModelIsSuppressed(GetHashKey("a_m_m_acult_01"),true)
 		SetPedModelIsSuppressed(GetHashKey("a_m_o_acult_01"),true)
 		SetPedModelIsSuppressed(GetHashKey("a_m_y_acult_01"),true)
+
+		SetPedModelIsSuppressed(GetHashKey("a_m_m_hasjew_01"),true)
 
 		Wait(1000)
 	end

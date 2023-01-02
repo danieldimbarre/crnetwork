@@ -189,6 +189,16 @@ AddEventHandler("target:SitChair",function(Number)
 		local Coords = Chairs[Number]["Coords"]
 		TaskStartScenarioAtPosition(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT",Coords["x"],Coords["y"],Coords["z"],Chairs[Number]["Heading"] + 1.0,-1,true,true)
 		Previous = GetEntityCoords(Ped)
+
+		while Previous do
+			Wait(1000)
+
+			local Ped = PlayerPedId()
+			if not IsScriptedScenarioPedUsingConditionalAnim(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT","") then
+				SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
+				Previous = nil
+			end
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

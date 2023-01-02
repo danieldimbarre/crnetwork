@@ -221,36 +221,39 @@ local polyPrison = PolyZone:Create({
 	vector2(1655.68,2396.55)
 },{ name = "Prison" })
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SETNUIFOCUS
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	SetNuiFocus(false,false)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CreateThread(function()
--- 	SetNuiFocus(false,false)
+function ThreadSystem()
+	CreateThread(function()
+		while InPrison do
+			local Ped = PlayerPedId()
 
--- 	while true do
--- 		local TimeDistance = 999
--- 		if InPrison then
--- 			local Ped = PlayerPedId()
+			if GetEntityHealth(Ped) <= 100 then
+				if not InDeath then
+					TimeDeath = os.time() + 60
+					InDeath = true
+				else
+					if os.time() >= TimeDeath then
+						exports["survival"]:Revive(125)
+						InDeath = false
+					end
+				end
+			end
 
--- 			if GetEntityHealth(Ped) <= 100 then
--- 				if not InDeath then
--- 					TimeDeath = GetGameTimer() + 60000
--- 					InDeath = true
--- 				else
--- 					if GetGameTimer() >= TimeDeath then
--- 						exports["survival"]:Revive(125)
--- 						InDeath = false
--- 					end
--- 				end
--- 			end
--- 		end
-
--- 		Wait(TimeDistance)
--- 	end
--- end)
+			Wait(1000)
+		end
+	end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADRUNAWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Runaway()
+function ThreadRunaway()
 	CreateThread(function()
 		while InPrison do
 			local TimeDistance = 999
@@ -276,7 +279,8 @@ function cRP.syncPrison(Status,Teleport)
 	Wait(1000)
 
 	if Status then
-		Runaway()
+		ThreadSystem()
+		ThreadRunaway()
 
 		if Teleport then
 			SetEntityCoords(PlayerPedId(),CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)

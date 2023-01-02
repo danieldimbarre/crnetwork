@@ -150,6 +150,8 @@ end)
 function ThreadBeds()
 	CreateThread(function()
 		while Previous do
+			Wait(1000)
+
 			local Ped = PlayerPedId()
 			if not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) then
 				SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
@@ -162,8 +164,6 @@ function ThreadBeds()
 					LocalPlayer["state"]["Buttons"] = false
 				end
 			end
-
-			Wait(1000)
 		end
 	end)
 end

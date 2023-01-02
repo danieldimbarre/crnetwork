@@ -32,8 +32,8 @@ local Impounds = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 local vehModels = {
 	"baller","jackal","mule","youga","mesa","nemesis","primo","biff","bison","seminole","zion2","landstalker","panto",
-	"boxville2","premier","scrap","rhapsody","pcj","jester","superd","sentinel","bus","sentinel2","blazer2","asea",
-	"regina","pounder","huntley","tornado","rubble","tribike","bjxl","patriot","ingot","serrano","fq2","bobcatxl",
+	"boxville2","premier","rhapsody","pcj","jester","superd","sentinel","sentinel2","blazer2","asea",
+	"regina","huntley","tornado","rubble","tribike","bjxl","patriot","ingot","serrano","fq2","bobcatxl",
 	"journey","bfinjection","sanchez2","surfer2","caddy2","rebel2","bagger","dilettante","blista","hexer",
 	"buffalo","emperor2","fugitive","rocoto","dukes","thrust","faggio2","double","camper","massacro","feltzer2",
 	"sabregt","ninef2","banshee","infernus","bullet","coquette","phoenix","cavalcade","stratum","minivan","picador",

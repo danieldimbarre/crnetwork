@@ -73,7 +73,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local InDeath = false
 local InPrison = false
-local TimeDeath = GetGameTimer()
+local TimeDeath = os.time()
 local CoordsIntern = vec3(1679.94,2513.07,45.56)
 local CoordsExtern = vec3(1837.2,2589.26,46.02)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -221,12 +221,14 @@ CreateThread(function()
 	SetNuiFocus(false,false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSYSTEM
+-- THREADPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ThreadSystem()
+function ThreadPrison()
 	CreateThread(function()
 		while InPrison do
+			local TimeDistance = 999
 			local Ped = PlayerPedId()
+			local Coords = GetEntityCoords(Ped)
 
 			if GetEntityHealth(Ped) <= 100 then
 				if not InDeath then
@@ -239,20 +241,6 @@ function ThreadSystem()
 					end
 				end
 			end
-
-			Wait(1000)
-		end
-	end)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADRUNAWAY
------------------------------------------------------------------------------------------------------------------------------------------
-function ThreadRunaway()
-	CreateThread(function()
-		while InPrison do
-			local TimeDistance = 999
-			local Ped = PlayerPedId()
-			local Coords = GetEntityCoords(Ped)
 
 			if not polyPrison:isPointInside(Coords) then
 				vSERVER.Wanted()
@@ -273,8 +261,7 @@ function Creative.SyncPrison(Status,Teleport)
 	Wait(1000)
 
 	if Status then
-		ThreadSystem()
-		ThreadRunaway()
+		ThreadPrison()
 
 		if Teleport then
 			SetEntityCoords(PlayerPedId(),CoordsIntern[1],CoordsIntern[2],CoordsIntern[3],1,0,0,0)

@@ -431,11 +431,11 @@ local Teleport = {
 	{ -71.05,-801.01,44.23,-75.0,-824.54,321.29 },
 	{ -75.0,-824.54,321.29,-71.05,-801.01,44.23 },
 
-	{ 236.23,229.27,97.11,234.24,229.94,97.11 },
-	{ 234.24,229.94,97.11,236.23,229.27,97.11 },
+	{ 236.23,229.27,97.11,234.24,229.94,97.11,961976194 },
+	{ 234.24,229.94,97.11,236.23,229.27,97.11,961976194 },
 
-	{ 888.44,-2130.56,31.22,888.53,-2127.62,31.22 },
-	{ 888.53,-2127.62,31.22,888.44,-2130.56,31.22 }
+	{ 888.44,-2130.56,31.22,888.53,-2127.62,31.22,290638124 },
+	{ 888.53,-2127.62,31.22,888.44,-2130.56,31.22,290638124 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -481,38 +481,40 @@ CreateThread(function()
 						if IsControlJustPressed(1,38) then
 							SetEntityCoords(Ped,v[4],v[5],v[6],false,false,false,false)
 
-							if k == 13 or k == 14 then
-								local Finishing = false
-								local Handle,Object = FindFirstObject()
-		
-								repeat
-									local Coords2 = GetEntityCoords(Object)
-									local Distance = #(Coords2 - Coords)
-		
-									if Distance < 3.0 and GetEntityModel(Object) == 961976194 then
-										FreezeEntityPosition(Object,true)
-									end
-		
-									Finishing,Object = FindNextObject(Handle)
-								until not Finishing
-		
-								EndFindObject(Handle)
-							elseif k == 15 or k == 16 then
-								local Finishing = false
-								local Handle,Object = FindFirstObject()
-		
-								repeat
-									local Coords2 = GetEntityCoords(Object)
-									local Distance = #(Coords2 - Coords)
-		
-									if Distance < 3.0 and GetEntityModel(Object) == 290638124 then
-										FreezeEntityPosition(Object,true)
-									end
-		
-									Finishing,Object = FindNextObject(Handle)
-								until not Finishing
-		
-								EndFindObject(Handle)
+							if v[7] then
+								if v[7] == 961976194 then
+									local Finishing = false
+									local Handle,Object = FindFirstObject()
+			
+									repeat
+										local Coords2 = GetEntityCoords(Object)
+										local Distance = #(Coords2 - Coords)
+			
+										if Distance < 3.0 and GetEntityModel(Object) == 961976194 then
+											FreezeEntityPosition(Object,true)
+										end
+			
+										Finishing,Object = FindNextObject(Handle)
+									until not Finishing
+			
+									EndFindObject(Handle)
+								elseif v[7] == 290638124 then
+									local Finishing = false
+									local Handle,Object = FindFirstObject()
+			
+									repeat
+										local Coords2 = GetEntityCoords(Object)
+										local Distance = #(Coords2 - Coords)
+			
+										if Distance < 3.0 and GetEntityModel(Object) == 290638124 then
+											FreezeEntityPosition(Object,true)
+										end
+			
+										Finishing,Object = FindNextObject(Handle)
+									until not Finishing
+			
+									EndFindObject(Handle)
+								end
 							end
 						end
 					end

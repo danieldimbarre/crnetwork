@@ -30,7 +30,7 @@ Groups = {
 			["Police"] = true
 		},
 		["Hierarchy"] = { "Comando","Major","Capitão","Tenente","Sargento","Cabo","Soldado","Recruta" },
-		["Salary"] = { 2000,1500,1500,1500,1500,1500,1500,1500 },
+		["Salary"] = { 2500,2400,2300,2200,2200,2100,2100,2000 },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -39,7 +39,7 @@ Groups = {
 			["Paramedic"] = true
 		},
 		["Hierarchy"] = { "Diretor","Supervisor","Médico","Enfermeiro","Paramédico" },
-		["Salary"] = { 2000,1500,1500,1500,1500 },
+		["Salary"] = { 2500,2300,2200,2100,2000 },
 		["Service"] = {},
 		["Type"] = "Work"
 	},

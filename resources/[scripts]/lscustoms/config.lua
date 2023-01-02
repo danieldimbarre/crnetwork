@@ -204,7 +204,7 @@ vehicleCustomisation = {
 
 vehicleWindowTintOptions = {
 	{
-		name = "None",
+		name = "Original",
 		id = 0
 	},{
 		name = "Pure Black",

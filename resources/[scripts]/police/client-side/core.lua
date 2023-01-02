@@ -73,7 +73,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local InDeath = false
 local InPrison = false
-local TimeDeath = os.time()
+local TimeDeath = GetGameTimer()
 local CoordsIntern = vec3(1679.94,2513.07,45.56)
 local CoordsExtern = vec3(1837.2,2589.26,46.02)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -232,10 +232,10 @@ function ThreadPrison()
 
 			if GetEntityHealth(Ped) <= 100 then
 				if not InDeath then
-					TimeDeath = os.time() + 60
+					TimeDeath = GetGameTimer() + 60000
 					InDeath = true
 				else
-					if os.time() >= TimeDeath then
+					if GetGameTimer() >= TimeDeath then
 						exports["survival"]:Revive(125)
 						InDeath = false
 					end

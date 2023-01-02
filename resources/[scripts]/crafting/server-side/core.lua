@@ -348,8 +348,8 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["copper"] = 1,
-					["sulfur"] = 2,
-					["charcoal"] = 3
+					["sulfur"] = 1,
+					["charcoal"] = 1
 				}
 			},
 			 ["WEAPON_SMG_AMMO"] = {
@@ -357,8 +357,8 @@ local List = {
 			 	["destroy"] = false,
 			 	["require"] = {
 					["copper"] = 1,
-					["sulfur"] = 2,
-					["charcoal"] = 3
+					["sulfur"] = 1,
+					["charcoal"] = 1
 			 	}
 			},
 			-- ["WEAPON_SHOTGUN_AMMO"] = {
@@ -366,8 +366,8 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["copper"] = 1,
-			-- 		["sulfur"] = 2,
-			-- 		["charcoal"] = 3
+			-- 		["sulfur"] = 1,
+			-- 		["charcoal"] = 1
 			-- 	}
 			-- },
 			-- ["WEAPON_RIFLE_AMMO"] = {
@@ -375,8 +375,8 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["aluminum"] = 1,
-			-- 		["sulfur"] = 2,
-			-- 		["charcoal"] = 3
+			-- 		["sulfur"] = 1,
+			-- 		["charcoal"] = 1
 			-- 	}
 			-- },
 			["vest"] = {
@@ -399,11 +399,11 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["pistolbody"] = 1,
-					["aluminum"] = 45,
-					["copper"] = 45,
-					["plastic"] = 30,
-					["glass"] = 30,
-					["rubber"] = 30
+					["aluminum"] = 36,
+					["copper"] = 36,
+					["plastic"] = 24,
+					["glass"] = 24,
+					["rubber"] = 24
 				}
 			},
 			["WEAPON_MACHINEPISTOL"] = {
@@ -411,11 +411,11 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["smgbody"] = 1,
-					["aluminum"] = 75,
-					["copper"] = 75,
-					["plastic"] = 35,
-					["glass"] = 35,
-					["rubber"] = 35
+					["aluminum"] = 60,
+					["copper"] = 60,
+					["plastic"] = 28,
+					["glass"] = 28,
+					["rubber"] = 28
 				}
 			},
 			["WEAPON_MICROSMG"] = {
@@ -423,11 +423,11 @@ local List = {
 			 	["destroy"] = false,
 			 	["require"] = {
 			 		["smgbody"] = 1,
-			 		["aluminum"] = 125,
-			 		["copper"] = 125,
-			 		["plastic"] = 75,
-			 		["glass"] = 75,
-			 		["rubber"] = 75
+			 		["aluminum"] = 100,
+			 		["copper"] = 100,
+			 		["plastic"] = 60,
+			 		["glass"] = 60,
+			 		["rubber"] = 60
 			 	}
 			},
 			-- ["WEAPON_REVOLVER"] = {
@@ -435,11 +435,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["pistolbody"] = 1,
-			-- 		["aluminum"] = 75,
-			-- 		["copper"] = 75,
-			-- 		["plastic"] = 35,
-			-- 		["glass"] = 35,
-			-- 		["rubber"] = 25
+			-- 		["aluminum"] = 60,
+			-- 		["copper"] = 60,
+			-- 		["plastic"] = 28,
+			-- 		["glass"] = 28,
+			-- 		["rubber"] = 20
 			-- 	}
 			-- },
 			-- ["WEAPON_PUMPSHOTGUN_MK2"] = {
@@ -447,11 +447,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["smgbody"] = 1,
-			-- 		["aluminum"] = 125,
-			-- 		["copper"] = 125,
-			-- 		["plastic"] = 100,
-			-- 		["glass"] = 100,
-			-- 		["rubber"] = 100
+			-- 		["aluminum"] = 100,
+			-- 		["copper"] = 100,
+			-- 		["plastic"] = 80,
+			-- 		["glass"] = 80,
+			-- 		["rubber"] = 80
 			-- 	}
 			-- },
 			-- ["WEAPON_SAWNOFFSHOTGUN"] = {
@@ -459,11 +459,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["smgbody"] = 1,
-			-- 		["aluminum"] = 125,
-			-- 		["copper"] = 125,
-			-- 		["plastic"] = 75,
-			-- 		["glass"] = 75,
-			-- 		["rubber"] = 75
+			-- 		["aluminum"] = 100,
+			-- 		["copper"] = 100,
+			-- 		["plastic"] = 60,
+			-- 		["glass"] = 60,
+			-- 		["rubber"] = 60
 			-- 	}
 			-- },
 			["WEAPON_GUSENBERG"] = {
@@ -471,11 +471,11 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["riflebody"] = 1,
-					["aluminum"] = 125,
-					["copper"] = 125,
-					["plastic"] = 100,
-					["glass"] = 100,
-					["rubber"] = 100
+					["aluminum"] = 100,
+					["copper"] = 100,
+					["plastic"] = 80,
+					["glass"] = 80,
+					["rubber"] = 80
 				}
 			},
 			-- ["WEAPON_APPISTOL"] = {
@@ -483,11 +483,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["pistolbody"] = 1,
-			-- 		["aluminum"] = 45,
-			-- 		["copper"] = 45,
-			-- 		["plastic"] = 30,
-			-- 		["glass"] = 30,
-			-- 		["rubber"] = 30
+			-- 		["aluminum"] = 36,
+			-- 		["copper"] = 36,
+			-- 		["plastic"] = 24,
+			-- 		["glass"] = 24,
+			-- 		["rubber"] = 24
 			-- 	}
 			-- },
 			["WEAPON_SNSPISTOL"] = {
@@ -495,11 +495,11 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["pistolbody"] = 1,
-					["aluminum"] = 35,
-					["copper"] = 35,
-					["plastic"] = 15,
-					["glass"] = 15,
-					["rubber"] = 10
+					["aluminum"] = 28,
+					["copper"] = 28,
+					["plastic"] = 12,
+					["glass"] = 12,
+					["rubber"] = 8
 				}
 			},
 			-- ["WEAPON_PISTOL50"] = {
@@ -507,11 +507,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["pistolbody"] = 1,
-			-- 		["aluminum"] = 75,
-			-- 		["copper"] = 75,
-			-- 		["plastic"] = 30,
-			-- 		["glass"] = 30,
-			-- 		["rubber"] = 25
+			-- 		["aluminum"] = 60,
+			-- 		["copper"] = 60,
+			-- 		["plastic"] = 26,
+			-- 		["glass"] = 26,
+			-- 		["rubber"] = 20
 			-- 	}
 			-- },
 			["WEAPON_MINISMG"] = {
@@ -519,11 +519,11 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["smgbody"] = 1,
-					["aluminum"] = 125,
-					["copper"] = 125,
-					["plastic"] = 80,
-					["glass"] = 80,
-					["rubber"] = 75
+					["aluminum"] = 100,
+					["copper"] = 100,
+					["plastic"] = 64,
+					["glass"] = 64,
+					["rubber"] = 60
 				}
 			},
 			["WEAPON_PISTOL_MK2"] = {
@@ -531,11 +531,11 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["pistolbody"] = 1,
-					["aluminum"] = 45,
-					["copper"] = 45,
-					["plastic"] = 25,
-					["glass"] = 25,
-					["rubber"] = 25
+					["aluminum"] = 36,
+					["copper"] = 36,
+					["plastic"] = 20,
+					["glass"] = 20,
+					["rubber"] = 20
 				}
 			},
 			["WEAPON_SNSPISTOL_MK2"] = {
@@ -543,11 +543,11 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["pistolbody"] = 1,
-					["aluminum"] = 45,
-					["copper"] = 45,
-					["plastic"] = 25,
-					["glass"] = 25,
-					["rubber"] = 25
+					["aluminum"] = 36,
+					["copper"] = 36,
+					["plastic"] = 20,
+					["glass"] = 20,
+					["rubber"] = 20
 				}
 			},
 			-- ["WEAPON_VINTAGEPISTOL"] = {
@@ -555,11 +555,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["pistolbody"] = 1,
-			-- 		["aluminum"] = 45,
-			-- 		["copper"] = 25,
-			-- 		["plastic"] = 15,
-			-- 		["glass"] = 15,
-			-- 		["rubber"] = 15
+			-- 		["aluminum"] = 36,
+			-- 		["copper"] = 20,
+			-- 		["plastic"] = 12,
+			-- 		["glass"] = 12,
+			-- 		["rubber"] = 12
 			-- 	}
 			-- },
 			-- ["WEAPON_COMPACTRIFLE"] = {
@@ -567,11 +567,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["riflebody"] = 1,
-			-- 		["aluminum"] = 125,
-			-- 		["copper"] = 125,
-			-- 		["plastic"] = 75,
-			-- 		["glass"] = 75,
-			-- 		["rubber"] = 75
+			-- 		["aluminum"] = 100,
+			-- 		["copper"] = 100,
+			-- 		["plastic"] = 60,
+			-- 		["glass"] = 60,
+			-- 		["rubber"] = 60
 			-- 	}
 			-- },
 			-- ["WEAPON_ADVANCEDRIFLE"] = {
@@ -579,11 +579,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["riflebody"] = 1,
-			-- 		["aluminum"] = 225,
-			-- 		["copper"] = 225,
-			-- 		["plastic"] = 175,
-			-- 		["glass"] = 125,
-			-- 		["rubber"] = 125
+			-- 		["aluminum"] = 180,
+			-- 		["copper"] = 180,
+			-- 		["plastic"] = 140,
+			-- 		["glass"] = 100,
+			-- 		["rubber"] = 100
 			-- 	}
 			-- },
 			-- ["WEAPON_BULLPUPRIFLE"] = {
@@ -591,11 +591,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["riflebody"] = 1,
-			-- 		["aluminum"] = 225,
-			-- 		["copper"] = 225,
-			-- 		["plastic"] = 125,
-			-- 		["glass"] = 125,
-			-- 		["rubber"] = 125
+			-- 		["aluminum"] = 180,
+			-- 		["copper"] = 180,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 100,
+			-- 		["rubber"] = 100
 			-- 	}
 			-- },
 			-- ["WEAPON_BULLPUPRIFLE_MK2"] = {
@@ -603,11 +603,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["riflebody"] = 1,
-			-- 		["aluminum"] = 225,
-			-- 		["copper"] = 225,
-			-- 		["plastic"] = 125,
-			-- 		["glass"] = 125,
-			-- 		["rubber"] = 125
+			-- 		["aluminum"] = 180,
+			-- 		["copper"] = 180,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 100,
+			-- 		["rubber"] = 100
 			-- 	}
 			-- },
 			-- ["WEAPON_SPECIALCARBINE"] = {
@@ -615,11 +615,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["riflebody"] = 1,
-			-- 		["aluminum"] = 225,
-			-- 		["copper"] = 225,
-			-- 		["plastic"] = 125,
-			-- 		["glass"] = 125,
-			-- 		["rubber"] = 125
+			-- 		["aluminum"] = 180,
+			-- 		["copper"] = 180,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 100,
+			-- 		["rubber"] = 100
 			-- 	}
 			-- },
 			-- ["WEAPON_SPECIALCARBINE_MK2"] = {
@@ -627,11 +627,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["riflebody"] = 1,
-			-- 		["aluminum"] = 225,
-			-- 		["copper"] = 225,
-			-- 		["plastic"] = 125,
-			-- 		["glass"] = 125,
-			-- 		["rubber"] = 125
+			-- 		["aluminum"] = 180,
+			-- 		["copper"] = 180,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 100,
+			-- 		["rubber"] = 100
 			-- 	}
 			-- },
 			["WEAPON_SMG_MK2"] = {
@@ -639,11 +639,11 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["smgbody"] = 1,
-					["aluminum"] = 150,
-					["copper"] = 150,
-					["plastic"] = 100,
-					["glass"] = 75,
-					["rubber"] = 75
+					["aluminum"] = 120,
+					["copper"] = 120,
+					["plastic"] = 80,
+					["glass"] = 60,
+					["rubber"] = 60
 				}
 			},
 			-- ["WEAPON_ASSAULTRIFLE"] = {
@@ -651,11 +651,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["riflebody"] = 1,
-			-- 		["aluminum"] = 225,
-			-- 		["copper"] = 225,
-			-- 		["plastic"] = 125,
-			-- 		["glass"] = 125,
-			-- 		["rubber"] = 125
+			-- 		["aluminum"] = 180,
+			-- 		["copper"] = 180,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 100,
+			-- 		["rubber"] = 100
 			-- 	}
 			-- },
 			-- ["WEAPON_ASSAULTRIFLE_MK2"] = {
@@ -663,11 +663,11 @@ local List = {
 			-- 	["destroy"] = false,
 			-- 	["require"] = {
 			-- 		["riflebody"] = 1,
-			-- 		["aluminum"] = 225,
-			-- 		["copper"] = 225,
-			-- 		["plastic"] = 125,
-			-- 		["glass"] = 125,
-			-- 		["rubber"] = 125
+			-- 		["aluminum"] = 180,
+			-- 		["copper"] = 180,
+			-- 		["plastic"] = 100,
+			-- 		["glass"] = 100,
+			-- 		["rubber"] = 100
 			-- 	}
 			-- },
 			["WEAPON_ASSAULTSMG"] = {
@@ -675,11 +675,11 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["smgbody"] = 1,
-					["aluminum"] = 150,
-					["copper"] = 150,
-					["plastic"] = 100,
-					["glass"] = 75,
-					["rubber"] = 75
+					["aluminum"] = 120,
+					["copper"] = 120,
+					["plastic"] = 80,
+					["glass"] = 60,
+					["rubber"] = 60
 				}
 			}
 		}

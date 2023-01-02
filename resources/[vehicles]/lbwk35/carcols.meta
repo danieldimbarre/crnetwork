@@ -3,7 +3,7 @@
 <CVehicleModelInfoVarGlobal>     
   <Kits>
     <Item>
-      <kitName>0_default_modkit</kitName>
+      <kitName>lbwk35_modkit</kitName>
       <id value="0" />	 	  
       <kitType>MKT_SPECIAL</kitType>
       <visibleMods>

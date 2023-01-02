@@ -164,6 +164,11 @@ vRP.Prepare("investments/Add","INSERT INTO investments(Passport,Deposit,Last) VA
 vRP.Prepare("investments/Invest","UPDATE investments SET Deposit = Deposit + @Value, Last = UNIX_TIMESTAMP() + 86400 WHERE Passport = @Passport")
 vRP.Prepare("investments/Actives","UPDATE investments SET Monthly = Monthly + FLOOR((Deposit + Liquid) * 0.10), Liquid = Liquid + FLOOR((Deposit + Liquid) * 0.025), Last = UNIX_TIMESTAMP() + 86400 WHERE Last < UNIX_TIMESTAMP()")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SMARTPHONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("smartphone/instaCheck","SELECT * FROM smartphone_instagram WHERE username = @Username")
+vRP.Prepare("smartphone/twitterCheck","SELECT * FROM smartphone_twitter_profiles WHERE username = @Username")
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()

@@ -19,8 +19,6 @@ local shops = {
 		["type"] = "Cash",
 		["perm"] = "BurgerShot",
 		["List"] = {
-			["bread"] = 5,
-			["cheese"] = 10,
 			["hamburger2"] = 125,
 			["onionrings"] = 70,
 			["guarananatural"] = 75,
@@ -31,8 +29,7 @@ local shops = {
 			["bananajuice"] = 100,
 			["acerolajuice"] = 100,
 			["passionjuice"] = 100,
-			["mushroomtea"] = 300,
-			["mushroom"] = 10
+			["mushroomtea"] = 300
 		}
 	},
 	["BurgerShot-2"] = {
@@ -57,15 +54,13 @@ local shops = {
 		["type"] = "Cash",
 		["perm"] = "PizzaThis",
 		["List"] = {
-			["bread"] = 5,
-			["cheese"] = 10,
 			["pizzamozzarella"] = 125,
 			["pizzamushroom"] = 125,
 			["pizzabanana"] = 125,
 			["pizzachocolate"] = 125,
-			["mushroomtea"] = 300,
+			["calzone"] = 125,
 			["chickenfries"] = 100,
-			["mushroom"] = 10
+			["mushroomtea"] = 300
 		}
 	},
 	["PizzaThis-2"] = {
@@ -77,6 +72,7 @@ local shops = {
 			["pizzamushroom"] = 200,
 			["pizzabanana"] = 200,
 			["pizzachocolate"] = 200,
+			["calzone"] = 200,
 			["chickenfries"] = 175
 		}
 	},
@@ -85,15 +81,13 @@ local shops = {
 		["type"] = "Cash",
 		["perm"] = "UwuCoffee",
 		["List"] = {
-			["bread"] = 5,
 			["nigirizushi"] = 50,
 			["sushi"] = 50,
 			["applelove"] = 50,
 			["milkshake"] = 100,
 			["cappuccino"] = 125,
 			["cookies"] = 35,
-			["mushroomtea"] = 300,
-			["mushroom"] = 10
+			["mushroomtea"] = 300
 		}
 	},
 	["UwuCoffee-2"] = {
@@ -117,17 +111,8 @@ local shops = {
 			["coffeemilk"] = 70,
 			["sandwich"] = 15,
 			["tacos"] = 25,
-			["chandon"] = 15,
-			["dewars"] = 15,
-			["hennessy"] = 15,
-			["absolut"] = 15,
-			["calzone"] = 125,
 			["cupcake"] = 50,
-			["mushroomtea"] = 300,
-			["mushroom"] = 10,
-			["bread"] = 5,
-			["cheese"] = 10,
-			["coffee"] = 5
+			["mushroomtea"] = 300
 		}
 	},
 	["BeanMachine-2"] = {
@@ -138,11 +123,6 @@ local shops = {
 			["coffeemilk"] = 145,
 			["sandwich"] = 65,
 			["tacos"] = 75,
-			["chandon"] = 65,
-			["dewars"] = 65,
-			["hennessy"] = 65,
-			["absolut"] = 65,
-			["calzone"] = 200,
 			["cupcake"] = 125
 		}
 	},
@@ -224,7 +204,9 @@ local shops = {
 		["type"] = "Cash",
 		["List"] = {
 			["hamburger"] = 25,
-			["sandwich"] = 15,
+			["bread"] = 5,
+			["cheese"] = 10,
+			["mushroom"] = 10,
 			["sugar"] = 5,
 			["postit"] = 20,
 			["notepad"] = 10,

@@ -8,8 +8,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("police",cRP)
+Creative = {}
+Tunnel.bindInterface("police",Creative)
 vCLIENT = Tunnel.getInterface("police")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PREPRARES
@@ -116,12 +116,12 @@ RegisterCommand("cleansrv",function(source,Message)
 					vRP.Query("characters/setFugitive",{ Passport = OtherPassport, Fugitive = 0 })
 				end
 
-				if exports["hud"]:Wanted(Passport) then
-					TriggerEvent("Wanted:Remove",source,Passport)
+				if exports["hud"]:Wanted(OtherPassport) then
+					TriggerEvent("Wanted:Remove",source,OtherPassport)
 				end
 
 				vRP.Query("characters/resetPrison",{ id = OtherPassport })
-				vCLIENT.syncPrison(OtherSource,false,false)
+				vCLIENT.SyncPrison(OtherSource,false,false)
 				TriggerClientEvent("Notify",source,"verde","Liberação efetuada.",5000)
 			end
 		end
@@ -130,7 +130,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.initPrison(OtherPassport,Services,Value,Message)
+function Creative.initPrison(OtherPassport,Services,Value,Message)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -141,7 +141,7 @@ function cRP.initPrison(OtherPassport,Services,Value,Message)
 			if Identity then
 				local OtherSource = vRP.Source(OtherPassport)
 				if OtherSource then
-					vCLIENT.syncPrison(OtherSource,true,true)
+					vCLIENT.SyncPrison(OtherSource,true,true)
 					TriggerClientEvent("radio:RadioClean",OtherSource)
 
 					if Player(OtherSource)["state"]["Handcuff"] then
@@ -180,7 +180,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEARCHUSER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.searchUser(Passport)
+function Creative.searchUser(Passport)
 	local source = source
 	if Passport then
 		local Identity = vRP.Identity(Passport)
@@ -213,7 +213,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITFINE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.initFine(OtherPassport,Value,Message)
+function Creative.initFine(OtherPassport,Value,Message)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Value > 0 then
@@ -255,7 +255,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WANTED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cRP.Wanted()
+function Creative.Wanted()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -315,21 +315,26 @@ function reduceFunction(source,Passport,Number)
 		timeProgress = timeProgress - 1
 	until timeProgress <= 0
 
-	vRP.UpdatePrison(Passport,math.random(2,3))
-	Player(source)["state"]["Buttons"] = false
-	Player(source)["state"]["Cancel"] = false
-	vRPC.removeObjects(source)
-
+	local Reduce = math.random(2,3)
 	local Identity = vRP.Identity(Passport)
-	if Identity["prison"] <= 0 then
-		vCLIENT.syncPrison(source,false,false)
+	if Identity["prison"] - Reduce <= 0 then
+		vCLIENT.SyncPrison(source,false,false)
 		vRP.Query("characters/resetPrison",{ id = Passport })
+
+		if exports["hud"]:Wanted(Passport) then
+			TriggerEvent("Wanted:Remove",source,Passport)
+		end
 
 		local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
 		if Consult[1]["fugitive"] == 1 then
 			vRP.Query("characters/setFugitive",{ Passport = Passport, Fugitive = 0 })
 		end
 	end
+
+	vRP.UpdatePrison(Passport,Reduce)
+	Player(source)["state"]["Buttons"] = false
+	Player(source)["state"]["Cancel"] = false
+	vRPC.removeObjects(source)
 end
 --------------------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
@@ -341,7 +346,7 @@ AddEventHandler("Connect",function(Passport,source)
 
 		local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
 		if Consult[1]["fugitive"] == 0 then
-			vCLIENT.syncPrison(source,true,false)
+			vCLIENT.SyncPrison(source,true,false)
 		else
 			if PrisonMarkers[Passport] then
 				PrisonMarkers[Passport] = 600

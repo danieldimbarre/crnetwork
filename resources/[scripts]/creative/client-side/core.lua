@@ -284,9 +284,12 @@ CreateThread(function()
 		SetPedModelIsSuppressed(GetHashKey("s_m_y_prismuscl_01"),true)
 		SetPedModelIsSuppressed(GetHashKey("u_m_y_prisoner_01"),true)
 		SetPedModelIsSuppressed(GetHashKey("s_m_y_prisoner_01"),true)
+
 		SetPedModelIsSuppressed(GetHashKey("a_m_m_acult_01"),true)
 		SetPedModelIsSuppressed(GetHashKey("a_m_o_acult_01"),true)
 		SetPedModelIsSuppressed(GetHashKey("a_m_y_acult_01"),true)
+
+		SetPedModelIsSuppressed(GetHashKey("a_m_m_hasjew_01"),true)
 
 		Wait(1000)
 	end
@@ -431,11 +434,11 @@ local Teleport = {
 	{ -71.05,-801.01,44.23,-75.0,-824.54,321.29 },
 	{ -75.0,-824.54,321.29,-71.05,-801.01,44.23 },
 
-	{ 236.23,229.27,97.11,234.24,229.94,97.11 },
-	{ 234.24,229.94,97.11,236.23,229.27,97.11 },
+	{ 236.23,229.27,97.11,234.24,229.94,97.11,961976194 },
+	{ 234.24,229.94,97.11,236.23,229.27,97.11,961976194 },
 
-	{ 888.44,-2130.56,31.22,888.53,-2127.62,31.22 },
-	{ 888.53,-2127.62,31.22,888.44,-2130.56,31.22 }
+	{ 888.44,-2130.56,31.22,888.53,-2127.62,31.22,290638124 },
+	{ 888.53,-2127.62,31.22,888.44,-2130.56,31.22,290638124 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -456,7 +459,7 @@ CreateThread(function()
 	local Tables = {}
 
 	for Number = 1,#Teleport do
-		Tables[#Tables + 1] = { Teleport[Number][1],Teleport[Number][2],Teleport[Number][3],2.5,"E","Porta de Acesso","Pressione para acessar" }
+		Tables[#Tables + 1] = { Teleport[Number][1],Teleport[Number][2],Teleport[Number][3],1.0,"E","Porta de Acesso","Pressione para acessar" }
 	end
 
 	TriggerEvent("hoverfy:Insert",Tables)
@@ -475,44 +478,46 @@ CreateThread(function()
 				for Number = 1,#Teleport do
 					local v = Teleport[Number]
 					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-					if Distance <= 2.5 then
+					if Distance <= 1.0 then
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) then
 							SetEntityCoords(Ped,v[4],v[5],v[6],false,false,false,false)
 
-							if k == 13 or k == 14 then
-								local Finishing = false
-								local Handle,Object = FindFirstObject()
-		
-								repeat
-									local Coords2 = GetEntityCoords(Object)
-									local Distance = #(Coords2 - Coords)
-		
-									if Distance < 3.0 and GetEntityModel(Object) == 961976194 then
-										FreezeEntityPosition(Object,true)
-									end
-		
-									Finishing,Object = FindNextObject(Handle)
-								until not Finishing
-		
-								EndFindObject(Handle)
-							elseif k == 15 or k == 16 then
-								local Finishing = false
-								local Handle,Object = FindFirstObject()
-		
-								repeat
-									local Coords2 = GetEntityCoords(Object)
-									local Distance = #(Coords2 - Coords)
-		
-									if Distance < 3.0 and GetEntityModel(Object) == 290638124 then
-										FreezeEntityPosition(Object,true)
-									end
-		
-									Finishing,Object = FindNextObject(Handle)
-								until not Finishing
-		
-								EndFindObject(Handle)
+							if v[7] then
+								if v[7] == 961976194 then
+									local Finishing = false
+									local Handle,Object = FindFirstObject()
+			
+									repeat
+										local Coords2 = GetEntityCoords(Object)
+										local Distance = #(Coords2 - Coords)
+			
+										if Distance < 3.0 and GetEntityModel(Object) == v[7] then
+											FreezeEntityPosition(Object,true)
+										end
+			
+										Finishing,Object = FindNextObject(Handle)
+									until not Finishing
+			
+									EndFindObject(Handle)
+								elseif v[7] == 290638124 then
+									local Finishing = false
+									local Handle,Object = FindFirstObject()
+			
+									repeat
+										local Coords2 = GetEntityCoords(Object)
+										local Distance = #(Coords2 - Coords)
+			
+										if Distance < 3.0 and GetEntityModel(Object) == v[7] then
+											FreezeEntityPosition(Object,true)
+										end
+			
+										Finishing,Object = FindNextObject(Handle)
+									until not Finishing
+			
+									EndFindObject(Handle)
+								end
 							end
 						end
 					end

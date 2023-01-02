@@ -600,6 +600,29 @@ RegisterCommand("id",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("check",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[2] then
+		if vRP.HasGroup(Passport,"Admin",2) then
+			if Message[1] == "insta" or Message[1] == "twitter" then
+				local Consult = vRP.Query("smartphone/"..Message[1].."Check",{ Username = Message[2] })
+			else
+				return
+			end
+
+			if not Consult[1] then
+				return
+			end
+
+			TriggerClientEvent("Notify",source,"verde","<b>Username</b>: "..Message[2].."<br><b>Passaporte<b>: "..Consult[1]["user_id"],5000)
+
+			TriggerEvent("Discord","Admin","**"..Message[1].."**\n\n**Passaporte:** "..Passport.."\n**Username:** "..Message[1].."\n**Para:** "..Consult[1]["user_id"],3553599)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ADMIN:COORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("admin:Coords")

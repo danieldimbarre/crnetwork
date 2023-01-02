@@ -75,6 +75,13 @@ local List = {
 					["mushroom"] = 20,
 					["water"] = 1
 				}
+			},
+			["chocolate"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["cocoa"] = 1
+				}
 			}
 		}
 	},
@@ -118,12 +125,51 @@ local List = {
 					["chocolate"] = 2
 				}
 			},
+			["calzone"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["cheese"] = 1,
+					["bread"] = 2,
+					["milkbottle"] = 1
+				}
+			},
+			["bananajuice"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["water"] = 1,
+					["banana"] = 5
+				}
+			},
+			["grapejuice"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["water"] = 1,
+					["grape"] = 5
+				}
+			},
 			["mushroomtea"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["mushroom"] = 20,
 					["water"] = 1
+				}
+			},
+			["cheese"] = {
+				["amount"] = 3,
+				["destroy"] = false,
+				["require"] = {
+					["milkbottle"] = 1
+				}
+			},
+			["chocolate"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["cocoa"] = 1
 				}
 			}
 		}
@@ -140,6 +186,13 @@ local List = {
 					["cheese"] = 1,
 					["ketchup"] = 1,
 					["animalfat"] = 2
+				}
+			},
+			["fries"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["potato"] = 2
 				}
 			},
 			["guarananatural"] = {
@@ -166,28 +219,12 @@ local List = {
 					["tange"] = 5
 				}
 			},
-			["grapejuice"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["water"] = 1,
-					["grape"] = 5
-				}
-			},
 			["strawberryjuice"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
 					["water"] = 1,
 					["strawberry"] = 5
-				}
-			},
-			["bananajuice"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["water"] = 1,
-					["banana"] = 5
 				}
 			},
 			["acerolajuice"] = {
@@ -213,6 +250,20 @@ local List = {
 					["mushroom"] = 20,
 					["water"] = 1
 				}
+			},
+			["cheese"] = {
+				["amount"] = 3,
+				["destroy"] = false,
+				["require"] = {
+					["milkbottle"] = 1
+				}
+			},
+			["chocolate"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["cocoa"] = 1
+				}
 			}
 		}
 	},
@@ -223,24 +274,7 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["coffee"] = 1,
-					["milkbottle"] = 1
-				}
-			},
-			["mushroomtea"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["mushroom"] = 20,
-					["water"] = 1
-				}
-			},
-			["calzone"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["cheese"] = 1,
-					["bread"] = 2,
+					["coffee2"] = 3,
 					["milkbottle"] = 1
 				}
 			},
@@ -251,6 +285,36 @@ local List = {
 					["chocolate"] = 1,
 					["bread"] = 1,
 					["milkbottle"] = 1
+				}
+			},
+			["sandwich"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["bread"] = 1,
+					["cheese"] = 1
+				}
+			},
+			["mushroomtea"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["mushroom"] = 20,
+					["water"] = 1
+				}
+			},
+			["cheese"] = {
+				["amount"] = 3,
+				["destroy"] = false,
+				["require"] = {
+					["milkbottle"] = 1
+				}
+			},
+			["chocolate"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["cocoa"] = 1
 				}
 			}
 		}

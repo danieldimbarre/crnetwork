@@ -1451,7 +1451,7 @@ local List = {
 	},
 	["coffee"] = {
 		["Index"] = "coffee",
-		["Name"] = "Copo de Café",
+		["Name"] = "Café",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
 		["Max"] = 3,
@@ -1582,6 +1582,20 @@ local List = {
 	["mushroom"] = {
 		["Index"] = "mushroom",
 		["Name"] = "Cogumelo",
+		["Type"] = "Usável",
+		["Weight"] = 0.25,
+		["Economy"] = 10
+	},
+	["cocoa"] = {
+		["Index"] = "cocoa",
+		["Name"] = "Cocoa",
+		["Type"] = "Usável",
+		["Weight"] = 0.25,
+		["Economy"] = 10
+	},
+	["potato"] = {
+		["Index"] = "potato",
+		["Name"] = "Batata",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
 		["Economy"] = 10
@@ -2169,6 +2183,14 @@ local List = {
 		["Name"] = "Hennessy",
 		["Type"] = "Usável",
 		["Durability"] = 3,
+		["Weight"] = 0.55,
+		["Economy"] = 15
+	},
+	["wine"] = {
+		["Index"] = "wine",
+		["Name"] = "Vinho",
+		["Type"] = "Usável",
+		["Durability"] = 7,
 		["Weight"] = 0.55,
 		["Economy"] = 15
 	},

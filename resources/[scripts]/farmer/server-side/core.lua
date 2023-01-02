@@ -222,10 +222,16 @@ AddEventHandler("farmer:Fruitman",function(Number)
 				Active[Passport] = true
 
 				local Ped = GetPlayerPed(source)
-				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") then
+				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") or GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_STONE_HATCHET") or GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_BATTLEAXE") then
 					local Amount = math.random(3,5)
-					local Items = { "acerola","banana","guarana","tomato","passion","grape","tange","orange","apple","strawberry","coffee2" }
+					local Items = { "acerola","banana","guarana","tomato","passion","grape","tange","orange","apple","strawberry","coffee2","mushroom","cocoa","potato" }
 					local Select = math.random(#Items)
+
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Amount = math.random(5,7)
+						end
+					end
 
 					if (vRP.InventoryWeight(Passport) + itemWeight(Items[Select]) * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
@@ -280,6 +286,13 @@ AddEventHandler("farmer:Minerman",function(Number)
 
 				if vRP.ConsultItem(Passport,"pickaxe",1) then
 					local Amount = math.random(2)
+
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Amount = math.random(2,3)
+						end
+					end
+
 					if (vRP.InventoryWeight(Passport) + itemWeight("geode") * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.createObjects(source,"melee@large_wpn@streamed_core","ground_attack_on_spot","prop_tool_pickaxe",1,18905,0.10,-0.1,0.0,-92.0,260.0,5.0)
 						TriggerClientEvent("Progress",source,"Mineirando",10000)
@@ -328,6 +341,13 @@ AddEventHandler("farmer:Lumberman",function(Number)
 				local Ped = GetPlayerPed(source)
 				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") then
 					local Amount = math.random(3,5)
+
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Amount = math.random(5,7)
+						end
+					end
+
 					if (vRP.InventoryWeight(Passport) + itemWeight("woodlog") * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
 						TriggerClientEvent("Progress",source,"Cortando",11000)

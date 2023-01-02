@@ -490,7 +490,7 @@ CreateThread(function()
 										local Coords2 = GetEntityCoords(Object)
 										local Distance = #(Coords2 - Coords)
 			
-										if Distance < 3.0 and GetEntityModel(Object) == 961976194 then
+										if Distance < 3.0 and GetEntityModel(Object) == v[7] then
 											FreezeEntityPosition(Object,true)
 										end
 			
@@ -506,7 +506,7 @@ CreateThread(function()
 										local Coords2 = GetEntityCoords(Object)
 										local Distance = #(Coords2 - Coords)
 			
-										if Distance < 3.0 and GetEntityModel(Object) == 290638124 then
+										if Distance < 3.0 and GetEntityModel(Object) == v[7] then
 											FreezeEntityPosition(Object,true)
 										end
 			

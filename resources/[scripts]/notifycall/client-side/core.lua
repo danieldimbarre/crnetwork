@@ -92,6 +92,7 @@ end)
 -- SETWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("phoneCall",function(Data,Callback)
+	exports.smartphone:callPlayer(Data["phone"])
 	SendNUIMessage({ action = "hideAll" })
 
 	Callback("Ok")

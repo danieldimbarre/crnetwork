@@ -204,16 +204,16 @@ vehicleCustomisation = {
 
 vehicleWindowTintOptions = {
 	{
-		name = "Original",
+		name = "Nenhuma",
 		id = 0
 	},{
-		name = "Pure Black",
+		name = "Fumê escuro",
 		id = 1    
 	},{
-		name = "Darksmoke",
+		name = "Fumê intermediário",
 		id = 2
 	},{
-		name = "Lightsmoke",
+		name = "Fumê claro",
 		id = 3
 	}
 }

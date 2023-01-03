@@ -1490,8 +1490,9 @@ local List = {
 		["Type"] = "Usável",
 		["Durability"] = 3,
 		["Weight"] = 0.25,
+		["Scape"] = true,
 		["Max"] = 3,
-		["Economy"] = 125
+		["Economy"] = 95
 	},
 	["soda"] = {
 		["Index"] = "soda",
@@ -1767,6 +1768,7 @@ local List = {
 		["Type"] = "Usável",
 		["Durability"] = 3,
 		["Weight"] = 0.55,
+		["Scape"] = true,
 		["Max"] = 3,
 		["Economy"] = 25
 	},
@@ -1788,7 +1790,7 @@ local List = {
 		["Weight"] = 0.55,
 		["Scape"] = true,
 		["Max"] = 3,
-		["Economy"] = 95
+		["Economy"] = 125
 	},
 	["chickenfries"] = {
 		["Index"] = "chickenfries",
@@ -2137,8 +2139,9 @@ local List = {
 		["Type"] = "Usável",
 		["Durability"] = 3,
 		["Weight"] = 0.25,
+		["Scape"] = true,
 		["Max"] = 3,
-		["Economy"] = 15
+		["Economy"] = 150
 	},
 	["rose"] = {
 		["Index"] = "rose",

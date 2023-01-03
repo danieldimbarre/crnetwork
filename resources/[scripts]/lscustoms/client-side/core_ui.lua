@@ -97,7 +97,7 @@ local function isMenuActive(menu)
 				menuActive = false
 			end
 		end
-	elseif menu == "NeonsSideMenu" then
+	elseif menu == "NeonsMenu" then
 		for k,v in pairs(vehicleNeonOptions["neonTypes"]) do
 			if (v["name"]:gsub("%s+","").."Menu") == currentMenu then
 				menuActive = true
@@ -127,9 +127,9 @@ local function updateCurrentMenuItemID(id,item,item2)
 		if currentWheelCategory ~= -1 and currentWheelCategory ~= 20 then
 			PreviewWheel(currentCategory,currentMenuItemID,currentWheelCategory)
 		end
-	elseif isMenuActive("NeonsSideMenu") then
+	elseif isMenuActive("NeonsMenu") then
 		PreviewNeon(currentNeonSide,currentMenuItemID)
-	elseif currentMenu == "JanelasMenu" then
+	elseif currentMenu == "PelículasMenu" then
 		PreviewWindowTint(currentMenuItemID)
 	elseif currentMenu == "CordoNeonMenu" then
 		local r = vehicleNeonOptions["neonColours"][currentMenuItemID]["r"]
@@ -164,7 +164,7 @@ function InitiateMenus(isMotorcycle)
 	populateMenu("mainMenu",-1,"Pintura","none")
 
 	if not isMotorcycle then
-		populateMenu("mainMenu",-2,"Janelas","none")
+		populateMenu("mainMenu",-2,"Películas","none")
 		populateMenu("mainMenu",-3,"Neons","none")
 	end
 
@@ -351,17 +351,17 @@ function InitiateMenus(isMotorcycle)
 	finishPopulatingMenu("FumaçadopneuMenu")
 
 	local currentWindowTint = GetCurrentWindowTint()
-	createMenu("JanelasMenu","Customização da Tonalidade das Janelas","Escolha uma tonalidade")
+	createMenu("PelículasMenu","Customização da Película","Escolha uma tonalidade")
 
 	for k,v in ipairs(vehicleWindowTintOptions) do
-		populateMenu("JanelasMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["windowtint"])
+		populateMenu("PelículasMenu",v["id"],v["name"],"$"..vehicleCustomisationPrices["windowtint"])
 
 		if currentWindowTint == v["id"] then
-			updateItem2Text("JanelasMenu",v["id"],"Instalado")
+			updateItem2Text("PelículasMenu",v["id"],"Instalado")
 		end
 	end
 
-	finishPopulatingMenu("JanelasMenu")
+	finishPopulatingMenu("PelículasMenu")
 
 	local temporaryPlate = GetVehicleNumberPlateTextIndex(vehicle)
 	createMenu("PlacaMenu","Customização do Tipo de Placa","Escolha o tipo")
@@ -592,7 +592,7 @@ function MenuManager(state)
 						end
 					end
 				end
-			elseif isMenuActive("NeonsSideMenu") then
+			elseif isMenuActive("NeonsMenu") then
 				if AttemptPurchase("neonside") then
 					playSoundEffect("wrench",0.25)
 					ApplyNeon(currentNeonSide,currentMenuItemID)
@@ -655,7 +655,7 @@ function MenuManager(state)
 					toggleMenu(true,currentMenu)
 					updateMenuHeading(currentMenu)
 					updateMenuSubheading(currentMenu)
-				elseif currentMenu == "JanelasMenu" then
+				elseif currentMenu == "PelículasMenu" then
 					if AttemptPurchase("windowtint") then
 						ApplyWindowTint(currentMenuItemID)
 						playSoundEffect("respray",1.0)
@@ -785,7 +785,7 @@ function MenuManager(state)
 			toggleMenu(true,currentMenu)
 			updateMenuHeading(currentMenu)
 			updateMenuSubheading(currentMenu)
-		elseif isMenuActive("NeonsSideMenu") then
+		elseif isMenuActive("NeonsMenu") then
 			toggleMenu(false,currentMenu)
 
 			currentMenu = "NeonsMenu"
@@ -798,10 +798,10 @@ function MenuManager(state)
 		else
 			if currentMenu == "mainMenu" then
 				ExitBennys()
-			elseif currentMenu == "PinturaMenu" or currentMenu == "JanelasMenu" or currentMenu == "RodasMenu" or currentMenu == "NeonsMenu" or currentMenu == "XenonsMenu" or currentMenu == "EstampaPolicialMenu" or currentMenu == "PlacaMenu" or currentMenu == "ExtrasMenu" then
+			elseif currentMenu == "PinturaMenu" or currentMenu == "PelículasMenu" or currentMenu == "RodasMenu" or currentMenu == "NeonsMenu" or currentMenu == "XenonsMenu" or currentMenu == "EstampaPolicialMenu" or currentMenu == "PlacaMenu" or currentMenu == "ExtrasMenu" then
 				toggleMenu(false,currentMenu)
 
-				if currentMenu == "JanelasMenu" then
+				if currentMenu == "PelículasMenu" then
 					RestoreOriginalWindowTint()
 				end
 

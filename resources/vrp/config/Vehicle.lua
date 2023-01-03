@@ -6141,18 +6141,25 @@ local List = {
 		["Mode"] = nil,
 		["Gems"] = 100
 	},
-	["lbwk35"] = {
-		["Name"] = "Nissan GTR-R35 LBWK Silhouette",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = nil,
-		["Gems"] = 100
-	},
 	["eclipse"] = {
 		["Name"] = "Mitsubishi Eclipse",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",
+		["Gems"] = 100
+	},
+	["gtrpit"] = {
+		["Name"] = "Nissan GTR Pit",
+		["Weight"] = 30,
+		["Price"] = 100000,
+		["Mode"] = nil,
+		["Gems"] = 100
+	},
+	["HFM_LFA"] = {
+		["Name"] = "Lexus LFA",
+		["Weight"] = 30,
+		["Price"] = 100000,
+		["Mode"] = nil,
 		["Gems"] = 100
 	}
 }

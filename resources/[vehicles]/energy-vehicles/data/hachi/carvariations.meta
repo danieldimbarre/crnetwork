@@ -383,5 +383,79 @@
       <lightSettings value="697"/>
       <sirenSettings value="0"/>
     </Item>
+    <Item>
+      <modelName>gtrpit</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">2 2 2 2</indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>2839_gtrpit_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>HFM_LFA</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111
+            28
+            0
+            2
+            0
+            0
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>66666660227_HFM_LFA_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="80"/>
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="20"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="999"/>
+      <sirenSettings value="0"/>
+    </Item>
   </variationData>
 </CVehicleModelInfoVariation>

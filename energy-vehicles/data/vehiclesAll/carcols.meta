@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <CVehicleModelInfoVarGlobal>
 	<Kits>
 		<Item>
@@ -28973,7 +28972,6 @@
 			<liveryNames />
 		</Item>
 	</Kits>
-
 	<Lights>
 		<Item>
 			<id value="2000" />
@@ -29108,7 +29106,6 @@
 			<name>Creative</name>
 		</Item>
 	</Lights>
-
 	<Wheels>
 		<Item>
 			<Item>

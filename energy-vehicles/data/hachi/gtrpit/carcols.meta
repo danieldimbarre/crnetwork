@@ -8,8 +8,8 @@
       <kitType>MKT_SPECIAL</kitType> 
       <visibleMods>
         <Item>
-          <modelName>gtr_livery1</modelName>
-          <modShopLabel>gtr_livery1</modShopLabel>
+          <modelName>gtrpit_livery1</modelName>
+          <modShopLabel>gtrpit_livery1</modShopLabel>
           <linkedModels>
 		  </linkedModels>
           <turnOffBones />

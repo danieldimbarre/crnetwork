@@ -4533,7 +4533,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,10)
+					vRP.UpgradeHunger(Passport,50)
 
 					if vCLIENT.Restaurant(source,"BeanMachine") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)

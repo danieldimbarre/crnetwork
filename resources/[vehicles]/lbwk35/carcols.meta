@@ -149,6 +149,41 @@
           <type>VMT_ARMOUR</type>
         </Item>
         <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="30" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
           <identifier>HORN_TRUCK</identifier>
           <modifier value="1766676233" />
           <audioApply value="1.000000" />
@@ -393,7 +428,7 @@
           <weight value="0" />
           <type>VMT_HORN</type>
         </Item>
-		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		    <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
 	    	<Item>
           <identifier>LUXORY_HORN_1</identifier>
           <modifier value="676333254" />
@@ -401,7 +436,7 @@
           <weight value="0" />
           <type>VMT_HORN</type>
         </Item>
-		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		    <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
     		<Item>
           <identifier>LUXURY_HORN_2</identifier>
           <modifier value="2099578296" />
@@ -409,48 +444,13 @@
           <weight value="0" />
           <type>VMT_HORN</type>
         </Item>
-		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		    <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
 	    	<Item>
           <identifier>LUXURY_HORN_3</identifier>
           <modifier value="1373384483" />
           <audioApply value="1.000000" />
           <weight value="0" />
           <type>VMT_HORN</type>
-        </Item>
-        <Item>
-          <identifier />
-          <modifier value="10" />
-          <audioApply value="1.000000" />
-          <weight value="0" />
-          <type>VMT_SUSPENSION</type>
-        </Item>
-        <Item>
-          <identifier />
-          <modifier value="20" />
-          <audioApply value="1.000000" />
-          <weight value="0" />
-          <type>VMT_SUSPENSION</type>
-        </Item>
-        <Item>
-          <identifier />
-          <modifier value="30" />
-          <audioApply value="1.000000" />
-          <weight value="0" />
-          <type>VMT_SUSPENSION</type>
-        </Item>
-        <Item>
-          <identifier />
-          <modifier value="40" />
-          <audioApply value="1.000000" />
-          <weight value="0" />
-          <type>VMT_SUSPENSION</type>
-        </Item>
-        <Item>
-          <identifier />
-          <modifier value="50" />
-          <audioApply value="1.000000" />
-          <weight value="0" />
-          <type>VMT_SUSPENSION</type>
         </Item>
       </statMods>
       <slotNames />

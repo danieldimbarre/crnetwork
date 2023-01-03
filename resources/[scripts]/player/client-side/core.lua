@@ -21,6 +21,7 @@ local Residuals = nil
 LocalPlayer["state"]["Tea"] = 3600
 LocalPlayer["state"]["Handcuff"] = false
 LocalPlayer["state"]["Commands"] = false
+LocalPlayer["state"]["Rope"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:COMMANDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -50,17 +51,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:ROPECARRY
 -----------------------------------------------------------------------------------------------------------------------------------------
-local ropeCarry = false
 RegisterNetEvent("player:ropeCarry")
-AddEventHandler("player:ropeCarry",function(entity)
-	ropeCarry = not ropeCarry
-
-	if not ropeCarry then
+AddEventHandler("player:ropeCarry",function(Entity)
+	if LocalPlayer["state"]["Rope"] then
 		DetachEntity(PlayerPedId(),false,false)
-		ropeCarry = false
+		LocalPlayer["state"]:set("Rope",false,true)
 	else
-		AttachEntityToEntity(PlayerPedId(),GetPlayerPed(GetPlayerFromServerId(entity)),0,0.20,0.12,0.63,0.5,0.5,0.0,false,false,false,false,2,false)
-		ropeCarry = true
+		LocalPlayer["state"]:set("Rope",true,true)
+		AttachEntityToEntity(PlayerPedId(),GetPlayerPed(GetPlayerFromServerId(Entity)),0,0.20,0.12,0.63,0.5,0.5,0.0,false,false,false,false,2,false)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -69,14 +67,14 @@ end)
 CreateThread(function()
 	while true do
 		local TimeDistance = 999
-		if ropeCarry then
+		if LocalPlayer["state"]["Rope"] then
 			TimeDistance = 1
 			local Ped = PlayerPedId()
 			if not IsEntityPlayingAnim(Ped,"nm","firemans_carry",3) then
 				vRP.playAnim(false,{"nm","firemans_carry"},true)
 			end
 
-			DisableControlAction(1,23,true)
+			DisableControlAction(0,23,true)
 		end
 
 		Wait(TimeDistance)

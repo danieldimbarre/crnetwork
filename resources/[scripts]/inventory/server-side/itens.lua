@@ -4637,8 +4637,8 @@ Use = {
 						TriggerClientEvent("player:Commands",Carry[Passport],true)
 						TriggerClientEvent("inventory:Close",Carry[Passport])
 
-						vRPC.playAnim(source,true,{"missfinale_c2mcs_1","fin_c2_mcs_1_camman"},true)
 						vRPC.playAnim(ClosestPed,false,{"nm","firemans_carry"},true)
+						vRPC.playAnim(source,true,{"missfinale_c2mcs_1","fin_c2_mcs_1_camman"},true)
 					end
 				end
 			end

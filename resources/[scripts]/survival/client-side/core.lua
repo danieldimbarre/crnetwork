@@ -72,7 +72,7 @@ CreateThread(function()
 					DisableControlAction(1,257,true)
 					DisablePlayerFiring(Ped,true)
 
-					if not IsEntityPlayingAnim(Ped,"dead","dead_a",3) and not IsPedInAnyVehicle(Ped) and not IsEntityPlayingAnim(Ped,"nm","firemans_carry",3) then
+					if not IsEntityPlayingAnim(Ped,"dead","dead_a",3) and not IsPedInAnyVehicle(Ped) and not LocalPlayer["state"]["Rope"] then
 						vRP.playAnim(false,{"dead","dead_a"},true)
 					end
 

@@ -116,6 +116,8 @@ vRP.GetWeight(Passport)
 
 vRP.SetWeight(Passport,Amount)
 
+vRP.RemoveWeight(Passport,Amount)
+
 vRP.SwapSlot(Passport,Slot,Target)
 
 vRP.InventoryWeight(Passport)

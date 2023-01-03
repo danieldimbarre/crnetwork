@@ -2,7 +2,7 @@
 
 <CVehicleModelInfoVariation>
   <variationData>
-     <Item>
+    <Item>
       <modelName>rx8hachi</modelName>
       <colors>
         <Item>
@@ -23,7 +23,7 @@
             <Item value="false" />
           </liveries>
         </Item>
-		<Item>
+		    <Item>
           <indices content="char_array">
             13 
             0
@@ -42,7 +42,9 @@
           </liveries>
         </Item>
       </colors>
-      <kits><Item>0_default_modkit</Item></kits>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
       <windowsWithExposedEdges />
       <plateProbabilities>
         <Probabilities>

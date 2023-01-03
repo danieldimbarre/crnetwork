@@ -42,7 +42,9 @@
           </liveries>
         </Item>
       </colors>
-      <kits><Item>0_default_modkit</Item></kits>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
       <windowsWithExposedEdges />
       <plateProbabilities>
         <Probabilities>

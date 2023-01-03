@@ -2952,7 +2952,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,50)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"PizzaThis") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end
@@ -3008,7 +3008,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,50)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"PizzaThis") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end
@@ -3445,7 +3445,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,25)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",420)
 					end
 				end
 			end
@@ -3607,7 +3607,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,4)
 
 					if vCLIENT.Restaurant(source,"BeanMachine") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",180)
 					end
 				end
 			end
@@ -3636,7 +3636,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,8)
 
 					if vCLIENT.Restaurant(source,"BeanMachine") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",420)
 					end
 				end
 			end
@@ -3663,7 +3663,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3690,7 +3690,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3717,7 +3717,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3744,7 +3744,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3771,7 +3771,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3798,7 +3798,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,25)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3852,7 +3852,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3880,7 +3880,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3907,7 +3907,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3934,7 +3934,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,15)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
 					end
 				end
 			end
@@ -3961,7 +3961,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,50)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
 					end
 				end
 			end
@@ -4536,7 +4536,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,50)
 
 					if vCLIENT.Restaurant(source,"BeanMachine") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
 					end
 				end
 			end
@@ -4561,10 +4561,6 @@ Use = {
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					vRP.UpgradeHunger(Passport,15)
-
-					if vCLIENT.Restaurant(source,"BeanMachine") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
-					end
 				end
 			end
 
@@ -4590,7 +4586,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,10)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
 					end
 				end
 			end
@@ -4617,7 +4613,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,15)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",180)
 					end
 				end
 			end
@@ -4644,7 +4640,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,15)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",180)
 					end
 				end
 			end
@@ -4672,7 +4668,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,10)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
 					end
 				end
 			end
@@ -4700,7 +4696,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,10)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") or vCLIENT.Restaurant(source,"BeanMachine") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
 					end
 				end
 			end

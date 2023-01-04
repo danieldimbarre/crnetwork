@@ -1589,7 +1589,7 @@ local List = {
 	},
 	["cocoa"] = {
 		["Index"] = "cocoa",
-		["Name"] = "Cocoa",
+		["Name"] = "Cacau",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
 		["Economy"] = 10

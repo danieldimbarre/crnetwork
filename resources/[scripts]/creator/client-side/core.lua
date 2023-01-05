@@ -97,8 +97,8 @@ function OpenCreator(enable,Options)
 		vRP.removeObjects()
 
 		if Change then
-			Change = false
 			SetEntityCoords(Ped,Change,0,0,1)
+			Change = false
 		end
 	end
 end

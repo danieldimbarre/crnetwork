@@ -5949,7 +5949,7 @@ local List = {
 		["Name"] = "BMW M8",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 100
 	},
 	["golf75r"] = {
@@ -5970,14 +5970,7 @@ local List = {
 		["Name"] = "Audi RS7",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
-		["Gems"] = 100
-	},
-	["rs52018"] = {
-		["Name"] = "Audi RS5",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 100
 	},
 	["subaruwrx"] = {
@@ -6015,13 +6008,6 @@ local List = {
 		["Mode"] = "rental",
 		["Gems"] = 100
 	},
-	["sorvete"] = {
-		["Name"] = "Sorvete",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = nil,
-		["Gems"] = 100
-	},
 	["audir8"] = {
 		["Name"] = "Audi R8",
 		["Weight"] = 30,
@@ -6033,7 +6019,7 @@ local List = {
 		["Name"] = "Audi RS6",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 100
 	},
 	["m8competition"] = {
@@ -6129,13 +6115,6 @@ local List = {
 	},
 	["rx8hachi"] = {
 		["Name"] = "Mazda RX-8 HR",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = nil,
-		["Gems"] = 100
-	},
-	["350zhachi"] = {
-		["Name"] = "Nissan Fairlady 350z Stardast",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,

@@ -353,6 +353,7 @@ local shops = {
 			["newchars"] = 75,
 			["namechange"] = 50,
 			["chip"] = 60,
+			["facechange"] = 25,
 			-- ["backschool"] = 50,
 			-- ["backcyclist"] = 50,
 			-- ["backcamping"] = 50,

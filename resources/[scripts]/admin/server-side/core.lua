@@ -159,7 +159,7 @@ RegisterCommand("god",function(source,Message)
 					end
 				end
 			else
-				vRP.Revive(source,200,true)
+				vRP.Revive(source,200)
 				vRP.UpgradeThirst(Passport,100)
 				vRP.UpgradeHunger(Passport,100)
 				vRP.DowngradeStress(Passport,100)

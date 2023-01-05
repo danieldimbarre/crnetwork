@@ -3,19 +3,17 @@
 <CVehicleModelInfoVariation>
   <variationData>
     <Item>
-      <modelName>lexlfa10</modelName>
+      <modelName>lfa</modelName>
       <colors>
         <Item>
           <indices content="char_array">
-            111
-            29
-            111
-            31 
-			2	    
-			27
+            0
+            0
+            0
+            0
           </indices>
           <liveries>
-            <Item value="false" />
+            <Item value="true" />
             <Item value="false" />
             <Item value="false" />
             <Item value="false" />
@@ -27,8 +25,8 @@
         </Item>
       </colors>
       <kits>
-        <Item>0_default_modkit</Item>
-      </kits>
+        <Item>6368676_lfa_modkit</Item>
+	      </kits>
       <windowsWithExposedEdges />
       <plateProbabilities>
         <Probabilities>
@@ -38,8 +36,9 @@
           </Item>
         </Probabilities>
       </plateProbabilities>
-      <lightSettings value="909" />
-      <sirenSettings value="0" />
-    </Item>
+      <lightSettings value="999" />        
+	      <sirenSettings value="0" />
+    </Item>       
+
   </variationData>
 </CVehicleModelInfoVariation>

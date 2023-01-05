@@ -55,6 +55,10 @@ data_file "AUDIO_WAVEPACK" "audio/lambov10/dlc_lambov10"
 data_file "AUDIO_GAMEDATA" "audio/lambov10/lambov10_game.dat"
 data_file "AUDIO_SOUNDDATA" "audio/lambov10/lambov10_sounds.dat"
 
+data_file "AUDIO_WAVEPACK" "audio/lfasound/dlc_lfasound"
+data_file "AUDIO_GAMEDATA" "audio/lfasound/lfasound_game.dat"
+data_file "AUDIO_SOUNDDATA" "audio/lfasound/lfasound_sounds.dat"
+
 data_file "AUDIO_WAVEPACK" "audio/n4g63t/dlc_n4g63t"
 data_file "AUDIO_GAMEDATA" "audio/n4g63t/n4g63t_game.dat"
 data_file "AUDIO_SOUNDDATA" "audio/n4g63t/n4g63t_sounds.dat"

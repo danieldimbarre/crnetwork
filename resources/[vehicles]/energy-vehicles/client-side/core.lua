@@ -1067,4 +1067,6 @@ CreateThread(function()
 	AddTextEntryByHash(GetHashKey("gtrpit_spl_7"),"Tunagem 26")
 	AddTextEntryByHash(GetHashKey("gtrpit_spl_8"),"Tunagem 27")
 	AddTextEntryByHash(GetHashKey("gtrpit_spl_9"),"Tunagem 28")
+
+	AddTextEntryByHash(GetHashKey("lfa_bumf_1"),"Tunagem 01")
 end)

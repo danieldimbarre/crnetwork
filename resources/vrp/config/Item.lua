@@ -1314,7 +1314,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Limite de personagem em +1.",
 		["Weight"] = 0.25,
-		["Economy"] = 150000
+		["Economy"] = 125000
 	},
 	["chip"] = {
 		["Index"] = "chip",
@@ -1322,7 +1322,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Troca o número telefônico.",
 		["Weight"] = 0.00,
-		["Economy"] = 75000
+		["Economy"] = 110000
 	},
 	["namechange"] = {
 		["Index"] = "namechange",
@@ -1331,6 +1331,14 @@ local List = {
 		["Description"] = "Troca o nome do personagem.",
 		["Weight"] = 0.25,
 		["Economy"] = 100000
+	},
+	["facechange"] = {
+		["Index"] = "greencard",
+		["Name"] = "Troca de Rosto",
+		["Type"] = "Usável",
+		["Description"] = "Troca o rosto do personagem.",
+		["Weight"] = 0.25,
+		["Economy"] = 75000
 	},
 	["homecontEmerald"] = {
 		["Index"] = "contract",

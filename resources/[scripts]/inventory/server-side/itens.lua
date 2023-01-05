@@ -447,8 +447,7 @@ Use = {
 		local Keyboard = vKEYBOARD.keyDouble(source,"Nome:","Sobrenome:")
 		if Keyboard then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				TriggerClientEvent("Notify",source,"verde","Passaporte atualizado.",5000)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("Notify",source,"verde","Nome atualizado.",5000)
 				vRP.UpgradeNames(Passport,Keyboard[1],Keyboard[2])
 			end
 		end
@@ -475,6 +474,14 @@ Use = {
 			else
 				TriggerClientEvent("Notify",source,"amarelo","O número telefônico deve conter 6 dígitos e somente números.",5000)
 			end
+		end
+	end,
+
+	["facechange"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			TriggerClientEvent("barbershop:Open",source,true)
 		end
 	end,
 

@@ -165,19 +165,19 @@ Products = {
 		}, ["needAmount"] = 1, ["item"] = "paper", ["itemAmount"] = 1 }
 	},
 	["tablecoke"] = {
-		{ ["timer"] = 20, ["need"] = {
+		{ ["perm"] = "Facs", ["timer"] = 20, ["need"] = {
 			{ ["item"] = "sulfuric", ["amount"] = 10 },
 			{ ["item"] = "cokeleaf", ["amount"] = 10 }
 		}, ["needAmount"] = 10, ["item"] = "cocaine", ["itemAmount"] = 10 }
 	},
 	["tablemeth"] = {
-		{ ["timer"] = 20, ["need"] = {
+		{ ["perm"] = "Facs", ["timer"] = 20, ["need"] = {
 			{ ["item"] = "saline", ["amount"] = 1 },
 			{ ["item"] = "acetone", ["amount"] = 1 }
 		}, ["needAmount"] = 1, ["item"] = "meth", ["itemAmount"] = 3 }
 	},
 	["tableweed"] = {
-		{ ["timer"] = 20, ["need"] = {
+		{ ["perm"] = "Facs", ["timer"] = 20, ["need"] = {
 			{ ["item"] = "silk", ["amount"] = 10 },
 			{ ["item"] = "weedleaf", ["amount"] = 10 }
 		}, ["needAmount"] = 10, ["item"] = "joint", ["itemAmount"] = 10 }
@@ -1496,7 +1496,7 @@ function Creative.VerifyObjects(Entity,Service)
 			end
 
 			ServiceList,Total = vRP.NumPermission("Police")
-			if Total <= 1 then
+			if Total <= 3 then
 				TriggerClientEvent("Notify",source,"azul","Parquímetro vazio, aguarde até que um cidadão venha até o local efetuar reabastecimento do mesmo.",5000)
 				return
 			end
@@ -2021,6 +2021,12 @@ function Creative.MakeProducts(Table)
 			local Need = {}
 			local Consult = {}
 			local Number = math.random(#Products[Selected])
+
+			if Products[Selected][Number]["perm"] then
+				if not vRP.HasService(Passport,Products[Selected][Number]["perm"]) then
+					return
+				end
+			end
 
 			if Products[Selected][Number]["item"] then
 				if vRP.MaxItens(Passport,Products[Selected][Number]["item"],Products[Selected][Number]["itemAmount"]) then

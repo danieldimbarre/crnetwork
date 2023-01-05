@@ -138,7 +138,7 @@ CreateThread(function()
 			if HungerTimer <= GetGameTimer() then
 				HungerTimer = GetGameTimer() + 10000
 
-				if Hunger < 25 and GetEntityHealth(Ped) > 100 then
+				if Hunger < 10 and GetEntityHealth(Ped) > 100 then
 					ApplyDamageToPed(Ped,math.random(2),false)
 					TriggerEvent("Notify","hunger","Sofrendo de fome.",2500)
 				end
@@ -147,7 +147,7 @@ CreateThread(function()
 			if ThirstTimer <= GetGameTimer() then
 				ThirstTimer = GetGameTimer() + 10000
 
-				if Thirst < 25 and GetEntityHealth(Ped) > 100 then
+				if Thirst < 10 and GetEntityHealth(Ped) > 100 then
 					ApplyDamageToPed(Ped,math.random(2),false)
 					TriggerEvent("Notify","thirst","Sofrendo de sede.",2500)
 				end
@@ -156,7 +156,7 @@ CreateThread(function()
 			if StressTimer <= GetGameTimer() then
 				StressTimer = GetGameTimer() + 20000
 
-				if Stress >= 75 and GetEntityHealth(Ped) > 100 then
+				if Stress >= 80 and GetEntityHealth(Ped) > 100 then
 					DoScreenFadeOut(0)
 
 					if not IsPedInAnyVehicle(Ped) then

@@ -112,10 +112,6 @@
  <txdRelationships>
     <Item>
       <parent>vehicles_specter_interior</parent>
-      <child>lfa_1</child>
-    </Item>
-    <Item>
-      <parent>lfa_1</parent>
       <child>lfa</child>
     </Item>
  </txdRelationships>

@@ -1070,3 +1070,67 @@ CreateThread(function()
 		Wait(TimeDistance)
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BENNYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("bennys",function(source,Message)
+	local Ped = PlayerPedId()
+	local vehicle = GetVehiclePedIsUsing(Ped)
+	if GetPedInVehicleSeat(vehicle,-1) == Ped then
+		if vSERVER.checkPermission("Admin") then
+			local isMotorcycle = false
+
+			if Message[1] == "bikes" then
+				if GetVehicleClass(vehicle) == 8 then
+					isMotorcycle = true
+				else
+					goto skipBennys
+				end
+			else
+				if GetVehicleClass(vehicle) == 8 then
+					isMotorcycle = true
+				else
+					isMotorcycle = false
+				end
+			end
+
+			SetVehicleModKit(vehicle,0)
+			FreezeEntityPosition(vehicle,true)
+			SetVehicleOnGroundProperly(vehicle)
+
+			originalCategory = nil
+			originalMod = nil
+			originalPrimaryColour = nil
+			originalSecondaryColour = nil
+			originalPearlescentColour = nil
+			originalWheelColour = nil
+			originalDashColour = nil
+			originalInterColour = nil
+			originalWindowTint = nil
+			originalWheelCategory = nil
+			originalWheel = nil
+			originalWheelType = nil
+			originalCustomWheels = nil
+			originalNeonLightState = nil
+			originalNeonLightSide = nil
+			originalNeonColourR = nil
+			originalNeonColourG = nil
+			originalNeonColourB = nil
+			originalXenonColour = nil
+			originalPoliceLivery = nil
+			originalPlateIndex = nil
+
+			InitiateMenus(isMotorcycle)
+
+			DisplayMenuContainer(true)
+			DisplayMenu(true,"mainMenu")
+			TriggerEvent("player:inBennys",true)
+			PlaySoundFrontend(-1,"OK","HUD_FRONTEND_DEFAULT_SOUNDSET",1)
+			TriggerServerEvent("lscustoms:inVehicle",VehToNet(vehicle),GetVehicleNumberPlateText(vehicle))
+
+			disableControls()
+
+			::skipBennys::
+		end
+	end
+end)

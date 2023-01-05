@@ -882,7 +882,7 @@ RegisterCommand("veh",function(source,Message)
 					else
 						vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
 
-						TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[3].."</b> ao passaporte <b>"..OtherPassport.."</b>.",5000)
+						TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..VehicleName(Message[3]).."</b> ao passaporte <b>"..OtherPassport.."</b>.",5000)
 					end
 				elseif Message[1] == "rem" then
 					local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport, vehicle = Message[3] })
@@ -891,9 +891,9 @@ RegisterCommand("veh",function(source,Message)
 						vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..OtherPassport..":"..Message[3] })
 						vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..OtherPassport..":"..Message[3] })
 
-						TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[3].."</b> do passaporte <b>"..OtherPassport.."</b>.",5000)
+						TriggerClientEvent("Notify",source,"verde","Removido <b>"..VehicleName(Message[3]).."</b> do passaporte <b>"..OtherPassport.."</b>.",5000)
 					else
-						TriggerClientEvent("Notify",source,"amarelo","Passaporte não possuí um <b>"..Message[3].."</b>.",5000)
+						TriggerClientEvent("Notify",source,"amarelo","Passaporte não possuí um <b>"..VehicleName(Message[3]).."</b>.",5000)
 					end
 				end
 			else

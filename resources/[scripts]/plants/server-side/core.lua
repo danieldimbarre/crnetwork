@@ -55,6 +55,10 @@ AddEventHandler("plants:Collect",function(Number)
 			TriggerClientEvent("dynamic:closeSystem",source)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
+			if not vRP.HasService(Passport,"Facs") then
+				return
+			end
+
 			if (Plants[Number]["Time"] - os.time()) <= 3600 then
 				local Temporary = Plants[Number]
 
@@ -99,6 +103,10 @@ AddEventHandler("plants:Cloning",function(Number)
 			TriggerClientEvent("dynamic:closeSystem",source)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
+			if not vRP.HasService(Passport,"Facs") then
+				return
+			end
+
 			if os.time() >= Plants[Number]["Time"] then
 				local Temporary = Plants[Number]
 

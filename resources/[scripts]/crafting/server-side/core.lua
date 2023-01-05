@@ -831,7 +831,7 @@ local List = {
 		}
 	},
 	["CraftingTable"] = {
-		["perm"] = { "Ballas","Families","Vagos","Tribo" },
+		["perm"] = "Facs",
 		["List"] = {
 			["tablecoke"] = {
 				["amount"] = 1,

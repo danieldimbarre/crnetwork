@@ -187,5 +187,15 @@ Groups = {
 		},
 		["Hierarchy"] = { "Chefe" },
 		["Service"] = {}
+	},
+	["Facs"] = {
+		["Parent"] = {
+			["Ballas"] = true,
+			["Vagos"] = true,
+			["Families"] = true,
+			["Tribo"] = true
+		},
+		["Hierarchy"] = { "Chefe" },
+		["Service"] = {}
 	}
 }

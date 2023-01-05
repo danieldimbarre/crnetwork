@@ -12,6 +12,7 @@ vBARBERSHOP = Tunnel.getInterface("barbershop")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local cam = -1
+local Change = nil
 local myClothes = { 0,100,0,100,0,0,0,0,0,0,0,-1,5,-1,-1,5,0,0,0,0,-1,5,0,-1,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
@@ -49,10 +50,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENCREATOR
 -----------------------------------------------------------------------------------------------------------------------------------------
-function OpenCreator(enable)
+function OpenCreator(enable,Options)
 	local Ped = PlayerPedId()
 
 	if enable then
+		if Options then
+			Change = GetEntityCoords(Ped)
+		end
+
 		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 		TriggerServerEvent("vRP:BucketClient","Enter")
 
@@ -90,6 +95,11 @@ function OpenCreator(enable)
 		DestroyCam(cam,false)
 
 		vRP.removeObjects()
+
+		if Change then
+			Change = false
+			SetEntityCoords(Ped,Change,0,0,1)
+		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -130,6 +140,6 @@ end
 -- BARBERSHOP:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Open")
-AddEventHandler("barbershop:Open",function()
-	OpenCreator(true)
+AddEventHandler("barbershop:Open",function(Item)
+	OpenCreator(true,Item)
 end)

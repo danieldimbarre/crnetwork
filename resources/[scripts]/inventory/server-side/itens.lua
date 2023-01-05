@@ -481,7 +481,7 @@ Use = {
 		TriggerClientEvent("inventory:Close",source)
 
 		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			TriggerClientEvent("barbershop:Open",source)
+			TriggerClientEvent("barbershop:Open",source,true)
 		end
 	end,
 

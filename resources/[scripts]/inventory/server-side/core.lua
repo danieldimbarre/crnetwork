@@ -538,7 +538,6 @@ end
 -- DROPSERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.DropServer(Coords,Item,Amount)
-	local source = source
 	local Number = 0
 
 	repeat
@@ -555,7 +554,7 @@ function Creative.DropServer(Coords,Item,Amount)
 		["days"] = 1,
 		["durability"] = 0,
 		["charges"] = nil,
-		["route"] = GetPlayerRoutingBucket(source)
+		["route"] = 0
 	}
 
 	TriggerClientEvent("drops:Adicionar",-1,tostring(Number),Drops[tostring(Number)])
@@ -605,7 +604,8 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 					["index"] = itemIndex(Item),
 					["days"] = Days,
 					["durability"] = Durability,
-					["charges"] = Charges
+					["charges"] = Charges,
+					["route"] = GetPlayerRoutingBucket(source)
 				}
 
 				Player(source)["state"]["Buttons"] = true
@@ -645,63 +645,65 @@ function Creative.Pickup(Number,Amount,Slot)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				return
 			else
-				if (vRP.InventoryWeight(Passport) + itemWeight(Drops[Number]["key"]) * Amount) <= vRP.GetWeight(Passport) then
-					if not Drops[Number] or Drops[Number]["amount"] < Amount then
-						TriggerClientEvent("inventory:Update",source,"Backpack")
-						return
-					end
+				if Drops[Number]["route"] == GetPlayerRoutingBucket(source) then
+					if (vRP.InventoryWeight(Passport) + itemWeight(Drops[Number]["key"]) * Amount) <= vRP.GetWeight(Passport) then
+						if not Drops[Number] or Drops[Number]["amount"] < Amount then
+							TriggerClientEvent("inventory:Update",source,"Backpack")
+							return
+						end
 
-					if vRP.MaxItens(Passport,Drops[Number]["key"],Amount) then
-						TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
-						TriggerClientEvent("inventory:Update",source,"Backpack")
-						return
-					end
+						if vRP.MaxItens(Passport,Drops[Number]["key"],Amount) then
+							TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
+							TriggerClientEvent("inventory:Update",source,"Backpack")
+							return
+						end
 
-					if Drops[Number] then
-						local inventory = vRP.Inventory(Passport)
-						if inventory[Slot] and Drops[Number]["key"] then
-							if inventory[Slot]["item"] == Drops[Number]["key"] then
-								vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false,Slot)
+						if Drops[Number] then
+							local inventory = vRP.Inventory(Passport)
+							if inventory[Slot] and Drops[Number]["key"] then
+								if inventory[Slot]["item"] == Drops[Number]["key"] then
+									vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false,Slot)
+								else
+									vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false)
+								end
 							else
-								vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false)
+								if Drops[Number] then
+									vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false,Slot)
+								end
 							end
-						else
-							if Drops[Number] then
-								vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false,Slot)
+
+							Drops[Number]["amount"] = Drops[Number]["amount"] - Amount
+							if Drops[Number]["amount"] <= 0 then
+								TriggerClientEvent("drops:Remover",-1,Number)
+								Drops[Number] = nil
+							else
+								TriggerClientEvent("drops:Atualizar",-1,Number,Drops[Number]["amount"])
 							end
-						end
 
-						Drops[Number]["amount"] = Drops[Number]["amount"] - Amount
-						if Drops[Number]["amount"] <= 0 then
-							TriggerClientEvent("drops:Remover",-1,Number)
-							Drops[Number] = nil
+							Player(source)["state"]["Buttons"] = true
+							Player(source)["state"]["Cancel"] = true
+
+							if not vRP.InsideVehicle(source) then
+								vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+								Active[Passport] = os.time() + 100
+
+								SetTimeout(1000,function()
+									vRPC.removeObjects(source)
+									Active[Passport] = nil
+								end)
+							end
+
+							TriggerClientEvent("inventory:Update",source,"Backpack")
+							Player(source)["state"]["Buttons"] = false
+							Player(source)["state"]["Cancel"] = false
 						else
-							TriggerClientEvent("drops:Atualizar",-1,Number,Drops[Number]["amount"])
+							TriggerClientEvent("inventory:Update",source,"Backpack")
 						end
-
-						Player(source)["state"]["Buttons"] = true
-						Player(source)["state"]["Cancel"] = true
-
-						if not vRP.InsideVehicle(source) then
-							vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
-							Active[Passport] = os.time() + 100
-
-							SetTimeout(1000,function()
-								vRPC.removeObjects(source)
-								Active[Passport] = nil
-							end)
-						end
-
-						TriggerClientEvent("inventory:Update",source,"Backpack")
-						Player(source)["state"]["Buttons"] = false
-						Player(source)["state"]["Cancel"] = false
 					else
+						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 						TriggerClientEvent("inventory:Update",source,"Backpack")
+						return
 					end
-				else
-					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
-					TriggerClientEvent("inventory:Update",source,"Backpack")
-					return
 				end
 			end
 		else

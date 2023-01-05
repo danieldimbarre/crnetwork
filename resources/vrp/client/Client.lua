@@ -10,6 +10,7 @@ LocalPlayer["state"]["Handcuff"] = false
 LocalPlayer["state"]["Commands"] = false
 LocalPlayer["state"]["usingPhone"] = false
 LocalPlayer["state"]["Player"] = GetPlayerServerId(PlayerId())
+LocalPlayer["state"]["Rope"] = false
 LocalPlayer["state"]["Textform"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLIENTSTATE

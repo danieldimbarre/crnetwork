@@ -2,61 +2,6 @@
 <CVehicleModelInfoVariation>
   <variationData>
     <Item>
-      <modelName>350zhachi</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            36 
-            0
-            41
-            156 
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            13 
-            0
-            0
-            156 
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>0_default_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="657"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>gtrpit</modelName>
       <colors>
         <Item>
@@ -89,18 +34,19 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>HFM_LFA</modelName>
+      <modelName>lexlfa10</modelName>
       <colors>
         <Item>
           <indices content="char_array">
             111
-            28
-            0
-            2
-            0
-            0
+            29
+            111
+            31 
+			2	    
+			27
           </indices>
           <liveries>
+            <Item value="false"/>
             <Item value="false"/>
             <Item value="false"/>
             <Item value="false"/>
@@ -112,22 +58,18 @@
         </Item>
       </colors>
       <kits>
-        <Item>66666660227_HFM_LFA_modkit</Item>
+        <Item>0_default_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
         <Probabilities>
           <Item>
             <Name>Standard White</Name>
-            <Value value="80"/>
-          </Item>
-          <Item>
-            <Name>White Plate 2</Name>
-            <Value value="20"/>
+            <Value value="100"/>
           </Item>
         </Probabilities>
       </plateProbabilities>
-      <lightSettings value="999"/>
+      <lightSettings value="909"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>

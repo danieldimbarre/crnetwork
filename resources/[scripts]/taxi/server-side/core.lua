@@ -10,9 +10,10 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("taxi",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TAXI
+-- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Taxi = {}
+local Active = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLESERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +38,8 @@ end
 function Creative.paymentService()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Active[Passport] then
+		Active[Passport] = true
 		local Valuation = math.random(175,275)
 
 		if GlobalState["Buffs"]["Dexterity"][Passport] then
@@ -51,6 +53,7 @@ function Creative.paymentService()
 		end
 
 		vRP.GenerateItem(Passport,"dollars",Valuation,true)
+		Active[Passport] = nil
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

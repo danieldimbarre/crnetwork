@@ -1828,40 +1828,40 @@ local disCoords = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 local DismantleCategory = {
 	["B"] = {
-		["Number"] = 4,
+		["Number"] = 5,
 		["Weapons"] = { "WEAPON_SNSPISTOL" },
 		["Model"] = { "panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina"}
 	},
 	["B+"] = {
 		["Number"] = 6,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Weapons"] = { "WEAPON_HEAVYPISTOL" },
 		["Model"] = { "asbo","brioso","club","weevil","felon","felon2","jackal","oracle","zion","zion2","buccaneer","virgo",
 		"voodoo","bifta","rancherxl","bjxl","cavalcade","gresley","habanero","rocoto","primo","stratum","pigalle","peyote","manana","streiter" }
 	},
 	["A"] = {
-		["Number"] = 8,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Number"] = 7,
+		["Weapons"] = { "WEAPON_HEAVYPISTOL","WEAPON_SMG" },
 		["Model"] = { "exemplar","windsor","windsor2","blade","clique","dominator","faction2","gauntlet","moonbeam","nightshade",
 		"sabregt2","tampa","rebel","baller","cavalcade2","fq2","huntley","landstalker","patriot","radi","xls","blista2",
 		"retinue","stingergt","surano","specter","sultan","schwarzer","schafter2","ruston","rapidgt","raiden","ninef",
 		"ninef2","omnis","massacro","jester","feltzer2","futo","carbonizzare" }
 	},
 	["A+"] = {
-		["Number"] = 10,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Number"] = 8,
+		["Weapons"] = { "WEAPON_APPISTOL","WEAPON_PUMPSHOTGUN" },
 		["Model"] = { "voltic","sc1","sultanrs","tempesta","nero","nero2","reaper","gp1","infernus","bullet","banshee2","turismo2","retinue",
 		"mamba","infernus2","feltzer3","coquette2","futo2","zr350","tampa2","sugoi","sultan2","schlagen","penumbra","pariah",
 		"paragon","jester3","gb200","elegy","furoregt" }
 	},
 	["S"] = {
-		["Number"] = 12,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Number"] = 9,
+		["Weapons"] = { "WEAPON_ASSAULTSMG" },
 		["Model"] = { "zentorno","xa21","visione","vagner","vacca","turismor","t20","osiris","italigtb","entityxf","cheetah","autarch","sultan3",
 		"cypher","vectre","growler","comet6","jester4","euros","calico","neon","kuruma","issi7","italigto","komoda","elegy2","coquette4" }
 	},
 	["S+"] = {
-		["Number"] = 14,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Number"] = 10,
+		["Weapons"] = { "WEAPON_SPECIALCARBINE" },
 		["Model"] = { "mazdarx72","rangerover","civictyper","subaruimpreza","corvettec7","ferrariitalia","mustang1969","vwtouareg",
 		"mercedesg65","bugattiatlantic","m8competition","audirs6","audir8","silvias15","camaro","mercedesamg63",
 		"dodgechargerrt69","skyliner342","astonmartindbs","panameramansory","lamborghinihuracanlw","lancerevolutionx",
@@ -1963,29 +1963,31 @@ AddEventHandler("inventory:DisPed",function(Experience)
 		local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
 		local Entity,EntityNet = vRPS.CreatePed(disPeds[Rand],EntCoords["x"],EntCoords["y"],EntCoords["z"],3374176,4)
 		if Entity then
-			Wait(1000)
+			async(function()
+				Wait(1000)
 
-			local NetEntity = LoadNetwork(EntityNet)
+				local NetEntity = LoadNetwork(EntityNet)
 
-			SetPedArmour(NetEntity,99)
-			SetPedAccuracy(NetEntity,100)
-			SetPedRelationshipGroupHash(NetEntity,GetHashKey("HATES_PLAYER"))
-			SetPedKeepTask(NetEntity,true)
-			SetCanAttackFriendly(NetEntity,false,true)
-			TaskCombatPed(NetEntity,Ped,0,16)
-			SetPedCombatAttributes(NetEntity,46,true)
-			SetPedCombatAbility(NetEntity,0)
-			SetPedCombatAttributes(NetEntity,0,true)
-			GiveWeaponToPed(NetEntity,DismantleCategory[Category]["Weapons"][Weapon],-1,false,true)
-			SetPedDropsWeaponsWhenDead(NetEntity,false)
-			SetPedCombatRange(NetEntity,2)
-			SetPedFleeAttributes(NetEntity,0,0)
-			SetPedConfigFlag(NetEntity,58,true)
-			SetPedConfigFlag(NetEntity,75,true)
-			SetPedFiringPattern(NetEntity,-957453492)
-			SetBlockingOfNonTemporaryEvents(NetEntity,true)
+				SetPedArmour(NetEntity,99)
+				SetPedAccuracy(NetEntity,100)
+				SetPedRelationshipGroupHash(NetEntity,GetHashKey("HATES_PLAYER"))
+				SetPedKeepTask(NetEntity,true)
+				SetCanAttackFriendly(NetEntity,false,true)
+				TaskCombatPed(NetEntity,Ped,0,16)
+				SetPedCombatAttributes(NetEntity,46,true)
+				SetPedCombatAbility(NetEntity,0)
+				SetPedCombatAttributes(NetEntity,0,true)
+				GiveWeaponToPed(NetEntity,DismantleCategory[Category]["Weapons"][Weapon],-1,false,true)
+				SetPedDropsWeaponsWhenDead(NetEntity,false)
+				SetPedCombatRange(NetEntity,2)
+				SetPedFleeAttributes(NetEntity,0,0)
+				SetPedConfigFlag(NetEntity,58,true)
+				SetPedConfigFlag(NetEntity,75,true)
+				SetPedFiringPattern(NetEntity,-957453492)
+				SetBlockingOfNonTemporaryEvents(NetEntity,true)
 
-			SetModelAsNoLongerNeeded(disPeds[Rand])
+				SetModelAsNoLongerNeeded(disPeds[Rand])
+			end)
 		end
 	end
 end)

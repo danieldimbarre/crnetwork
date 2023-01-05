@@ -538,6 +538,7 @@ end
 -- DROPSERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.DropServer(Coords,Item,Amount)
+	local source = source
 	local Number = 0
 
 	repeat

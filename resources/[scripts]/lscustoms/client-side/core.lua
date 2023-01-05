@@ -1077,7 +1077,7 @@ RegisterCommand("bennys",function(source,Message)
 	if vSERVER.checkPermission("Admin") then
 		local vehicle = GetVehiclePedIsUsing(Ped)
 		if GetPedInVehicleSeat(vehicle,-1) == Ped then
-			if vSERVER.checkPermission(v["permission"]) then
+			if vSERVER.checkPermission("Admin") then
 				local isMotorcycle = false
 
 				if Message[1] == "bikes" then

@@ -6134,7 +6134,7 @@ local List = {
 		["Mode"] = nil,
 		["Gems"] = 100
 	},
-	["lexlfa10"] = {
+	["lfa"] = {
 		["Name"] = "Lexus LFA",
 		["Weight"] = 30,
 		["Price"] = 100000,

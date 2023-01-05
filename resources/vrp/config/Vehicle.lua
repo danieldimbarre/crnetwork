@@ -6114,7 +6114,7 @@ local List = {
 		["Gems"] = 100
 	},
 	["rx8hachi"] = {
-		["Name"] = "Mazda RX-8 HR",
+		["Name"] = "Mazda RX8 HR",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,
@@ -6136,6 +6136,13 @@ local List = {
 	},
 	["lfa"] = {
 		["Name"] = "Lexus LFA",
+		["Weight"] = 30,
+		["Price"] = 100000,
+		["Mode"] = nil,
+		["Gems"] = 100
+	},
+	["gxrx7"] = {
+		["Name"] = "Mazda RX7 GX",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,

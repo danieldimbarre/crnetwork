@@ -81,7 +81,7 @@
       <frequency value="10"/>
       <swankness>SWANKNESS_3</swankness>
       <maxNum value="10"/>
-      <flags>FLAG_SPORTS FLAG_HAS_LIVERY FLAG_PARKING_SENSORS FLAG_RICH_CAR </flags>
+      <flags>FLAG_SPORTS FLAG_HAS_LIVERY FLAG_PARKING_SENSORS FLAG_RICH_CAR FLAG_INCREASE_CAMBER_WITH_SUSPENSION_MOD FLAG_DROP_SUSPENSION_WHEN_STOPPED</flags>
       <type>VEHICLE_TYPE_CAR</type>
       <plateType>VPT_BACK_PLATES</plateType>
       <dashboardType>VDT_BANSHEE</dashboardType>

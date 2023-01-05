@@ -4313,7 +4313,7 @@ Use = {
 				end
 
 				local Service,Total = vRP.NumPermission("Police")
-				if Total <= 5 then
+				if Total <= 8 then
 					TriggerClientEvent("Notify",source,"azul","Caixa vazio, aguarde até que um transportador venha até o local efetuar reabastecimento do mesmo.",5000)
 					Player(source)["state"]["Buttons"] = false
 

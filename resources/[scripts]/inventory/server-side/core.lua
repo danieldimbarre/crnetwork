@@ -1496,7 +1496,7 @@ function Creative.VerifyObjects(Entity,Service)
 			end
 
 			ServiceList,Total = vRP.NumPermission("Police")
-			if Total <= 1 then
+			if Total <= 3 then
 				TriggerClientEvent("Notify",source,"azul","Parquímetro vazio, aguarde até que um cidadão venha até o local efetuar reabastecimento do mesmo.",5000)
 				return
 			end

@@ -993,10 +993,12 @@ CreateThread(function()
 			local Coords = GetEntityCoords(Ped)
 
 			for _,v in pairs(Drops) do
-				local Distance = #(Coords - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
-				if Distance <= 50 then
-					TimeDistance = 1
-					DrawMarker(21,v["Coords"][1],v["Coords"][2],v["Coords"][3] + 0.25,0.0,0.0,0.0,0.0,180.0,0.0,0.25,0.35,0.25,162,124,219,200,0,0,0,1)
+				if LocalPlayer["state"]["Route"] == v["route"] then
+					local Distance = #(Coords - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
+					if Distance <= 50 then
+						TimeDistance = 1
+						DrawMarker(21,v["Coords"][1],v["Coords"][2],v["Coords"][3] + 0.25,0.0,0.0,0.0,0.0,180.0,0.0,0.25,0.35,0.25,162,124,219,200,0,0,0,1)
+					end
 				end
 			end
 		end
@@ -1016,12 +1018,14 @@ RegisterNUICallback("requestInventory",function(Data,Callback)
 		local _,Z = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
 
 		for Index,v in pairs(Drops) do
-			local Distance = #(vec3(Coords["x"],Coords["y"],Z) - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
-			if Distance <= 0.9 then
-				local Number = #Items + 1
+			if LocalPlayer["state"]["Route"] == v["route"] then
+				local Distance = #(vec3(Coords["x"],Coords["y"],Z) - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
+				if Distance <= 0.9 then
+					local Number = #Items + 1
 
-				Items[Number] = v
-				Items[Number]["id"] = Index
+					Items[Number] = v
+					Items[Number]["id"] = Index
+				end
 			end
 		end
 	end

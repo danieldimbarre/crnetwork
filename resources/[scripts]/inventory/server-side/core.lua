@@ -553,7 +553,8 @@ function Creative.DropServer(Coords,Item,Amount)
 		["index"] = itemIndex(Item),
 		["days"] = 1,
 		["durability"] = 0,
-		["charges"] = nil
+		["charges"] = nil,
+		["route"] = GetPlayerRoutingBucket(source)
 	}
 
 	TriggerClientEvent("drops:Adicionar",-1,tostring(Number),Drops[tostring(Number)])

@@ -247,7 +247,7 @@ CreateThread(function()
 							if DoesEntityExist(currentPassenger) then
 								vSERVER.paymentService()
 								Wait(1000)
-								TaskLeaveVehicle(currentPassenger,vehicle,262144)
+								TaskLeaveVehicle(currentPassenger,vehicle,0)
 								TaskWanderStandard(currentPassenger,10.0,10)
 								Wait(1000)
 								SetVehicleDoorShut(vehicle,3,0)

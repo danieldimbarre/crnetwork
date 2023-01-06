@@ -161,7 +161,7 @@ AddEventHandler("towdriver:Tow",function(entity)
 		spawnVehicle = false
 		spawnSelect = math.random(#vehModels)
 		plateVehicle = "TOWD"..(1000 + LocalPlayer["state"]["Passport"])
-		vSERVER.paymentMethod(entity[4],entity[1])
+		vSERVER.Payment(entity[4],entity[1])
 		spawnCoords = math.random(#vehRescue[serviceLocate])
 
 		TriggerEvent("NotifyPush",{ code = "QTH", title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], vehicle = VehicleName(vehModels[spawnSelect]).." - "..plateVehicle, name = "Aguardando reboque.", blipColor = 2 })

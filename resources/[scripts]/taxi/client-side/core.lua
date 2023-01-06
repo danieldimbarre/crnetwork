@@ -257,7 +257,7 @@ AddEventHandler("taxi:Starting",function(Init)
 								FreezeEntityPosition(vehicle,true)
 
 								if DoesEntityExist(currentPassenger) then
-									vSERVER.paymentService()
+									vSERVER.Payment()
 									Wait(1000)
 									TaskLeaveVehicle(currentPassenger,vehicle,0)
 									TaskWanderStandard(currentPassenger,10.0,10)

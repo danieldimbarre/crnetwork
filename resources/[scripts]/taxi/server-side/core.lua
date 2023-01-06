@@ -33,9 +33,9 @@ function Creative.toggleService()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PAYMENTSERVICE
+-- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.paymentService()
+function Creative.Payment()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Taxi[Passport] then

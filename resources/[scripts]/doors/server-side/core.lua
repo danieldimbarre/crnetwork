@@ -96,7 +96,7 @@ GlobalState["Doors"] = {
 	-- [91] = { Coords = vec3(320.26,-574.34,43.43), Hash = -1700911976, Lock = true, Distance = 1.5, Perm = "Paramedic", Other = 90 },
 	-- [92] = { Coords = vec3(323.23,-575.42,43.43), Hash = -434783486, Lock = true, Distance = 1.5, Perm = "Paramedic", Other = 93 },
 	-- [93] = { Coords = vec3(325.65,-576.30,43.43), Hash = -1700911976, Lock = true, Distance = 1.5, Perm = "Paramedic", Other = 92 },
-	[94] = { Coords = vec3(475.39,-989.82,26.35), Hash = -692649124, Lock = true, Distance = 1.5, Perm = "Police" },
+	[94] = { Coords = vec3(475.39,-989.82,26.35), Hash = -692649124, Lock = true, Distance = 1.5, Perm = "Police-2" },
 
 	-- [101] = { Coords = vec3(805.03,-747.97,27.25), Hash = 95403626, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 102 },
 	-- [102] = { Coords = vec3(803.98,-747.97,27.25), Hash = -49173194, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 101 },
@@ -138,8 +138,13 @@ function Creative.DoorsPermission(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if GlobalState["Doors"][Number]["Perm"] ~= nil then
-			if not vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
+		if GlobalState["Doors"][Number]["Perm"] then
+			local PermSplit = splitString(GlobalState["Doors"][Number]["Perm"],"-")
+			if PermSplit[2] then
+				Number = parseInt(PermSplit[2])
+			end
+
+			if (not PermSplit[2] and not vRP.HasGroup(Passport,GlobalState["Doors"][Number]["Perm"])) and (PermSplit[2] and not vRP.HasGroup(Passport,PermSplit[1],parseInt(PermSplit[2]))) then
 				local consultItem = vRP.InventoryItemAmount(Passport,"lockpick")
 				if consultItem[1] <= 0 then
 					return
@@ -170,23 +175,23 @@ function Creative.DoorsPermission(Number)
 					end)
 				end
 			end
-
-			local Doors = GlobalState["Doors"]
-
-			Doors[Number]["Lock"] = not Doors[Number]["Lock"]
-
-			if Doors[Number]["Other"] ~= nil then
-				local Second = Doors[Number]["Other"]
-				Doors[Second]["Lock"] = not Doors[Second]["Lock"]
-			end
-
-			GlobalState:set("Doors",Doors,true)
-
-			TriggerClientEvent("doors:Update",-1,Number,Doors[Number]["Lock"])
-
-			vRPC.playAnim(source,true,{"anim@heists@keycard@","exit"},false)
-			Wait(350)
-			vRPC.stopAnim(source)
 		end
+
+		local Doors = GlobalState["Doors"]
+
+		Doors[Number]["Lock"] = not Doors[Number]["Lock"]
+
+		if Doors[Number]["Other"] ~= nil then
+			local Second = Doors[Number]["Other"]
+			Doors[Second]["Lock"] = not Doors[Second]["Lock"]
+		end
+
+		GlobalState:set("Doors",Doors,true)
+
+		TriggerClientEvent("doors:Update",-1,Number,Doors[Number]["Lock"])
+
+		vRPC.playAnim(source,true,{"anim@heists@keycard@","exit"},false)
+		Wait(350)
+		vRPC.stopAnim(source)
 	end
 end

@@ -38,7 +38,7 @@ end
 function Creative.paymentService()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] then
+	if Passport and not Active[Passport] and Taxi[Passport] then
 		Active[Passport] = true
 		local Valuation = math.random(175,275)
 

@@ -42,67 +42,80 @@ local bennysLocations = {
 	["Police01"] = {
 		pos = vector3(435.62,-976.14,25.7),
 		heading = 87.88,
-		permission = "Police"
+		permission = "Police",
+		service = true
 	},
 	["HeliPolice01"] = {
 		pos = vector3(449.27,-981.34,43.69),
 		heading = 87.88,
-		permission = "Police"
+		permission = "Police",
+		service = true
 	},
 	["Police02"] = {
 		pos = vector3(-463.26,6033.79,31.34),
 		heading = 136.07,
-		permission = "Police"
+		permission = "Police",
+		service = true
 	},
 	["HeliPolice02"] = {
 		pos = vector3(-475.04,5988.45,31.73),
 		heading = 317.49,
-		permission = "Police"
+		permission = "Police",
+		service = true
 	},
 	["Police03"] = {
 		pos = vector3(380.75,-1625.51,29.28),
 		heading = 331.66,
-		permission = "Police"
+		permission = "Police",
+		service = true
 	},
 	["HeliPolice03"] = {
 		pos = vector3(384.12,-1623.63,29.67),
 		heading = 320.32,
-		permission = "Police"
+		permission = "Police",
+		service = true
 	},
 	["Police04"] = {
 		pos = vector3(1833.59,2542.09,45.54),
 		heading = 272.13,
-		permission = "Police"
+		permission = "Police",
+		service = true
 	},
 	["Police05"] = {
 		pos = vector3(1840.98,3694.03,33.97),
 		heading = 331.66,
-		permission = "Police"
+		permission = "Police",
+		service = true
 	},
 	["HeliPolice05"] = {
 		pos = vector3(1853.31,3706.24,33.97),
 		heading = 320.32,
-		permission = "Police"
+		permission = "Police",
+		service = true
 	},
 	["Paramedic01"] = {
 		pos = vector3(-670.16,340.8,77.9),
 		heading = 87.88,
-		permission = "Paramedic"
+		permission = "Paramedic",
+		service = true
 	},
 	["HeliParamedic01"] = {
 		pos = vector3(-687.34,322.08,140.65),
 		heading = 172.92,
-		permission = "Paramedic"
+		permission = "Paramedic",
+		service = true
 	},
 	["Paramedic02"] = {
 		pos = vector3(-261.6,6344.21,32.1),
 		heading = 269.3,
-		permission = "Paramedic"
+		permission = "Paramedic",
+		service = true
 	},
 	["HeliParamedic02"] = {
 		pos = vector3(-273.13,6329.85,32.1),
 		heading = 133.23,
-		permission = "Paramedic"
+		permission = "Paramedic",
+		service = true
 	},
 	["Mechanic01"] = {
 		pos = vector3(830.34,-806.03,25.81),
@@ -118,6 +131,11 @@ local bennysLocations = {
 		pos = vector3(831.64,-819.79,25.81),
 		heading = 90.0,
 		permission = "Mechanic"
+	},
+	["Bikes01"] = {
+		pos = vector3(-31.89,-1066.06,28.39),
+		heading = 90.0,
+		bikes = true
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1005,6 +1023,7 @@ CreateThread(function()
 
 								if IsControlJustPressed(1,38) and vSERVER.checkPermission(v["permission"]) then
 									local isMotorcycle = false
+									local isService = false
 
 									if v["bikes"] then
 										if GetVehicleClass(vehicle) == 8 then
@@ -1017,6 +1036,14 @@ CreateThread(function()
 											isMotorcycle = true
 										else
 											isMotorcycle = false
+										end
+									end
+
+									if v["service"] then
+										if GetVehicleClass(vehicle) == 18 then
+											isService = true
+										else
+											goto skipBennys
 										end
 									end
 
@@ -1048,7 +1075,7 @@ CreateThread(function()
 									originalPoliceLivery = nil
 									originalPlateIndex = nil
 
-									InitiateMenus(isMotorcycle)
+									InitiateMenus(isMotorcycle,isService)
 
 									DisplayMenuContainer(true)
 									DisplayMenu(true,"mainMenu")
@@ -1079,6 +1106,7 @@ RegisterCommand("bennys",function(source,Message)
 	if GetPedInVehicleSeat(vehicle,-1) == Ped then
 		if vSERVER.checkPermission("Admin") then
 			local isMotorcycle = false
+			local isService = false
 
 			if Message[1] == "bikes" then
 				if GetVehicleClass(vehicle) == 8 then
@@ -1120,7 +1148,7 @@ RegisterCommand("bennys",function(source,Message)
 			originalPoliceLivery = nil
 			originalPlateIndex = nil
 
-			InitiateMenus(isMotorcycle)
+			InitiateMenus(isMotorcycle,isService)
 
 			DisplayMenuContainer(true)
 			DisplayMenu(true,"mainMenu")

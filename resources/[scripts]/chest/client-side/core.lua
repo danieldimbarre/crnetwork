@@ -50,7 +50,7 @@ local Chests = {
 	{ ["Name"] = "Marabunta-2", ["Coords"] = vec3(1251.24,-1580.96,58.35), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Lost", ["Coords"] = vec3(103.18,3604.63,40.49), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Lost-2", ["Coords"] = vec3(101.31,3619.81,40.49), ["Mode"] = "2", ["Distance"] = 1.0 },
-	{ ["Name"] = "Dracing", ["Coords"] = vec3(808.37,-892.03,25.68), ["Mode"] = "2", ["Distance"] = 1.0 },
+	{ ["Name"] = "Dracing", ["Coords"] = vec3(815.31,-889.37,25.68), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Dracing-2", ["Coords"] = vec3(835.31,-886.31,25.68), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "trayShot-1", ["Coords"] = vec3(-1193.89,-894.34,14.41), ["Mode"] = "3", ["Distance"] = 1.5 },
 	{ ["Name"] = "trayShot-2", ["Coords"] = vec3(-1194.94,-892.87,14.41), ["Mode"] = "3", ["Distance"] = 1.5 },

@@ -1951,9 +1951,9 @@ local List = {
 	["vigero2"] = {
 		["Name"] = "Vigero 2",
 		["Weight"] = 40,
-		["Price"] = 100,
+		["Price"] = 100000,
 		["Mode"] = nil,
-		["Gems"] = 0
+		["Gems"] = 100
 	},
 	["sentinel4"] = {
 		["Name"] = "Sentinel 4",

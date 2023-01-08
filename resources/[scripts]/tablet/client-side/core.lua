@@ -227,7 +227,7 @@ CreateThread(function()
 
 							local Livery = GetVehicleLiveryCount(initVehicles[k])
 							if Livery > 0 then
-								SetVehicleLivery(initVehicles[k],#Livery)
+								SetVehicleLivery(initVehicles[k],Livery)
 							end
 						end
 					end

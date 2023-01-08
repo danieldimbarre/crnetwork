@@ -1205,7 +1205,7 @@ Use = {
 	end,
 
 	["enginea"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1271,7 +1271,7 @@ Use = {
 	end,
 
 	["engineb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1337,7 +1337,7 @@ Use = {
 	end,
 
 	["enginec"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1403,7 +1403,7 @@ Use = {
 	end,
 
 	["engined"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1469,7 +1469,7 @@ Use = {
 	end,
 
 	["enginee"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1535,7 +1535,7 @@ Use = {
 	end,
 
 	["brakea"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1601,7 +1601,7 @@ Use = {
 	end,
 
 	["brakeb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1667,7 +1667,7 @@ Use = {
 	end,
 
 	["brakec"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1733,7 +1733,7 @@ Use = {
 	end,
 
 	["braked"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1799,7 +1799,7 @@ Use = {
 	end,
 
 	["brakee"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1865,7 +1865,7 @@ Use = {
 	end,
 
 	["transmissiona"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1931,7 +1931,7 @@ Use = {
 	end,
 
 	["transmissionb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -1997,7 +1997,7 @@ Use = {
 	end,
 
 	["transmissionc"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -2063,7 +2063,7 @@ Use = {
 	end,
 
 	["transmissiond"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -2129,7 +2129,7 @@ Use = {
 	end,
 
 	["transmissione"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -2195,7 +2195,7 @@ Use = {
 	end,
 
 	["suspensiona"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -2265,7 +2265,7 @@ Use = {
 	end,
 
 	["suspensionb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -2335,7 +2335,7 @@ Use = {
 	end,
 
 	["suspensionc"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -2405,7 +2405,7 @@ Use = {
 	end,
 
 	["suspensiond"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then
@@ -2475,7 +2475,7 @@ Use = {
 	end,
 
 	["suspensione"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.HasService(Passport,"Dracing") then
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
 			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
 				if Vehicle then

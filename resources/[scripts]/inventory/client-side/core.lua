@@ -2393,6 +2393,15 @@ local UwUCoffee = PolyZone:Create({
 	vector2(-565.33,-1047.50)
 },{ name = "UwUCoffee" })
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DRACING
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Dracing = PolyZone:Create({
+	vector2(813.45,-907.55),
+	vector2(813.55,-892.81),
+	vector2(842.06,-892.58),
+	vector2(839.37,-909.34)
+},{ name = "Dracing" })
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- RESTAURANT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Restaurant(Name)
@@ -2414,6 +2423,10 @@ function Creative.Restaurant(Name)
 		end
 	elseif Name == "UwuCoffee" then
 		if UwUCoffee:isPointInside(Coords) then
+			Return = true
+		end
+	elseif Name == "Dracing" then
+		if Dracing:isPointInside(Coords) then
 			Return = true
 		end
 	end

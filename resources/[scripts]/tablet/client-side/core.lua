@@ -192,7 +192,8 @@ local Vehicles = {
 		["Coords"] = vec3(808.28,-905.06,25.68),
 		["heading"] = 308.98,
 		["Model"] = "gtrpit",
-		["Distance"] = 30
+		["Distance"] = 30,
+		["Tuning"] = true
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -215,6 +216,20 @@ CreateThread(function()
 						FreezeEntityPosition(initVehicles[k],true)
 						SetVehicleDoorsLocked(initVehicles[k],2)
 						SetModelAsNoLongerNeeded(v["Model"])
+
+						if v["Tuning"] then
+							SetVehicleModKit(initVehicles[k],0)
+							SetVehicleMod(initVehicles[k],11,GetNumVehicleMods(initVehicles[k],11)-1,false)
+							SetVehicleMod(initVehicles[k],12,GetNumVehicleMods(initVehicles[k],12)-1,false)
+							SetVehicleMod(initVehicles[k],13,GetNumVehicleMods(initVehicles[k],13)-1,false)
+							SetVehicleMod(initVehicles[k],15,GetNumVehicleMods(initVehicles[k],15)-1,false)
+							ToggleVehicleMod(initVehicles[k],18,true)
+
+							local Livery = GetVehicleLiveryCount(initVehicles[k])
+							if Livery > 0 then
+								SetVehicleLivery(initVehicles[k],#Livery)
+							end
+						end
 					end
 				end
 			else

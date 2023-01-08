@@ -188,6 +188,12 @@ local Vehicles = {
 		["heading"] = 65.2,
 		["Model"] = "silvias15",
 		["Distance"] = 100
+	},{
+		["Coords"] = vec3(808.28,-905.06,25.68),
+		["heading"] = 308.98,
+		["Model"] = "gtrpit",
+		["Distance"] = 40,
+		["Tuning"] = true
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -210,6 +216,57 @@ CreateThread(function()
 						FreezeEntityPosition(initVehicles[k],true)
 						SetVehicleDoorsLocked(initVehicles[k],2)
 						SetModelAsNoLongerNeeded(v["Model"])
+
+						if v["Tuning"] then
+							SetVehicleModKit(initVehicles[k],0)
+							SetVehicleWheelType(initVehicles[k],7)
+							SetVehicleMod(initVehicles[k],0,GetNumVehicleMods(initVehicles[k],0)-1,false)
+							SetVehicleMod(initVehicles[k],1,GetNumVehicleMods(initVehicles[k],1)-1,false)
+							SetVehicleMod(initVehicles[k],2,GetNumVehicleMods(initVehicles[k],2)-1,false)
+							SetVehicleMod(initVehicles[k],3,GetNumVehicleMods(initVehicles[k],3)-1,false)
+							SetVehicleMod(initVehicles[k],4,GetNumVehicleMods(initVehicles[k],4)-1,false)
+							SetVehicleMod(initVehicles[k],5,GetNumVehicleMods(initVehicles[k],5)-1,false)
+							SetVehicleMod(initVehicles[k],6,GetNumVehicleMods(initVehicles[k],6)-1,false)
+							SetVehicleMod(initVehicles[k],7,GetNumVehicleMods(initVehicles[k],7)-1,false)
+							SetVehicleMod(initVehicles[k],8,GetNumVehicleMods(initVehicles[k],8)-1,false)
+							SetVehicleMod(initVehicles[k],9,GetNumVehicleMods(initVehicles[k],9)-1,false)
+							SetVehicleMod(initVehicles[k],10,GetNumVehicleMods(initVehicles[k],10)-1,false)
+							SetVehicleMod(initVehicles[k],11,GetNumVehicleMods(initVehicles[k],11)-1,false)
+							SetVehicleMod(initVehicles[k],12,GetNumVehicleMods(initVehicles[k],12)-1,false)
+							SetVehicleMod(initVehicles[k],13,GetNumVehicleMods(initVehicles[k],13)-1,false)
+							SetVehicleMod(initVehicles[k],14,16,false)
+							SetVehicleMod(initVehicles[k],15,GetNumVehicleMods(initVehicles[k],15)-2,false)
+							SetVehicleMod(initVehicles[k],16,GetNumVehicleMods(initVehicles[k],16)-1,false)
+							ToggleVehicleMod(initVehicles[k],17,true)
+							ToggleVehicleMod(initVehicles[k],18,true)
+							ToggleVehicleMod(initVehicles[k],19,true)
+							ToggleVehicleMod(initVehicles[k],20,true)
+							ToggleVehicleMod(initVehicles[k],21,true)
+							ToggleVehicleMod(initVehicles[k],22,true)
+							SetVehicleMod(initVehicles[k],23,1,false)
+							SetVehicleMod(initVehicles[k],24,1,false)
+							SetVehicleMod(initVehicles[k],25,GetNumVehicleMods(initVehicles[k],25)-1,false)
+							SetVehicleMod(initVehicles[k],27,GetNumVehicleMods(initVehicles[k],27)-1,false)
+							SetVehicleMod(initVehicles[k],28,GetNumVehicleMods(initVehicles[k],28)-1,false)
+							SetVehicleMod(initVehicles[k],30,GetNumVehicleMods(initVehicles[k],30)-1,false)
+							SetVehicleMod(initVehicles[k],33,GetNumVehicleMods(initVehicles[k],33)-1,false)
+							SetVehicleMod(initVehicles[k],34,GetNumVehicleMods(initVehicles[k],34)-1,false)
+							SetVehicleMod(initVehicles[k],35,GetNumVehicleMods(initVehicles[k],35)-1,false)
+							SetVehicleMod(initVehicles[k],38,GetNumVehicleMods(initVehicles[k],38)-1,true)
+							SetVehicleTyreSmokeColor(initVehicles[k],0,0,0)
+							SetVehicleWindowTint(initVehicles[k],1)
+							SetVehicleTyresCanBurst(initVehicles[k],false)
+							SetVehicleNumberPlateTextIndex(initVehicles[k],5)
+							SetVehicleModColor_1(initVehicles[k],0,0,0)
+							SetVehicleModColor_2(initVehicles[k],0,0)
+							SetVehicleExtraColours(initVehicles[k],0,0)
+							SetVehicleNeonLightsColour(initVehicles[k],0,0,0)
+
+							local Livery = GetVehicleLiveryCount(initVehicles[k])
+							if Livery > 0 then
+								SetVehicleLivery(initVehicles[k],Livery)
+							end
+						end
 					end
 				end
 			else

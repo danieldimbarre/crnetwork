@@ -11,6 +11,7 @@ vSERVER = Tunnel.getInterface("chest")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Chests = {
 	{ ["Name"] = "Police", ["Coords"] = vec3(360.43,-1600.48,25.83), ["Mode"] = "1", ["Distance"] = 1.0 },
+	{ ["Name"] = "Police", ["Coords"] = vec3(473.13,-990.69,26.27), ["Mode"] = "1", ["Distance"] = 1.0 },
 	{ ["Name"] = "Police-2", ["Coords"] = vec3(486.46,-994.94,31.07), ["Mode"] = "1", ["Distance"] = 1.0 },
 	{ ["Name"] = "Police-3", ["Coords"] = vec3(1836.96,3685.16,34.80), ["Mode"] = "1", ["Distance"] = 1.0 },
 	{ ["Name"] = "Police-4", ["Coords"] = vec3(-445.38,6019.65,37.38), ["Mode"] = "1", ["Distance"] = 1.0 },
@@ -49,6 +50,8 @@ local Chests = {
 	{ ["Name"] = "Marabunta-2", ["Coords"] = vec3(1251.24,-1580.96,58.35), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Lost", ["Coords"] = vec3(103.18,3604.63,40.49), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Lost-2", ["Coords"] = vec3(101.31,3619.81,40.49), ["Mode"] = "2", ["Distance"] = 1.0 },
+	{ ["Name"] = "Dracing", ["Coords"] = vec3(815.31,-889.37,25.68), ["Mode"] = "2", ["Distance"] = 1.0 },
+	{ ["Name"] = "Dracing-2", ["Coords"] = vec3(835.31,-886.31,25.68), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "trayShot-1", ["Coords"] = vec3(-1193.89,-894.34,14.41), ["Mode"] = "3", ["Distance"] = 1.5 },
 	{ ["Name"] = "trayShot-2", ["Coords"] = vec3(-1194.94,-892.87,14.41), ["Mode"] = "3", ["Distance"] = 1.5 },
 	{ ["Name"] = "trayShot-3", ["Coords"] = vec3(-1188.89,-880.56,13.99), ["Mode"] = "3", ["Distance"] = 1.5 },

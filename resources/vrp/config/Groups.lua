@@ -170,6 +170,14 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work"
 	},
+	["Dracing"] = {
+		["Parent"] = {
+			["Dracing"] = true
+		},
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
+		["Service"] = {},
+		["Type"] = "Work"
+	},
 	["Emergency"] = {
 		["Parent"] = {
 			["Police"] = true,

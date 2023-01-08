@@ -97,7 +97,8 @@ GlobalState["Doors"] = {
 	-- [92] = { Coords = vec3(323.23,-575.42,43.43), Hash = -434783486, Lock = true, Distance = 1.5, Perm = "Paramedic", Other = 93 },
 	-- [93] = { Coords = vec3(325.65,-576.30,43.43), Hash = -1700911976, Lock = true, Distance = 1.5, Perm = "Paramedic", Other = 92 },
 	[94] = { Coords = vec3(475.39,-989.82,26.35), Hash = -692649124, Lock = true, Distance = 1.5, Perm = "Police" },
-
+	[95] = { Coords = vec3(384.43,-1601.95,30.04), Hash = -1335406364, Lock = true, Distance = 1.5, Perm = "Police" },
+	[96] = { Coords = vec3(374.64,-1613.63,30.04), Hash = -1335406364, Lock = true, Distance = 1.5, Perm = "Police" },
 	-- [101] = { Coords = vec3(805.03,-747.97,27.25), Hash = 95403626, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 102 },
 	-- [102] = { Coords = vec3(803.98,-747.97,27.25), Hash = -49173194, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 101 },
 	-- [103] = { Coords = vec3(794.29,-757.62,27.25), Hash = 95403626, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 104 },
@@ -111,6 +112,7 @@ GlobalState["Doors"] = {
 	[111] = { Coords = vec3(797.81,-763.26,31.75), Hash = 1984391163, Lock = true, Distance = 1.5, Perm = "PizzaThis" },
 	[112] = { Coords = vec3(797.92,-758.19,31.75), Hash = 1984391163, Lock = true, Distance = 1.5, Perm = "PizzaThis" },
 	[113] = { Coords = vec3(806.83,-764.04,31.75), Hash = 1984391163, Lock = true, Distance = 1.5, Perm = "PizzaThis" },
+	[120] = { Coords = vec3(835.61,-908.61,29.35), Hash = 2055788206, Lock = true, Distance = 7, Perm = "Dracing" },
 
 	[150] = { Coords = vec3(-1111.63,4938.29,218.52), Hash = 825709191, Lock = true, Distance = 1.5, Perm = "Tribo" },
 	[151] = { Coords = vec3(-1102.26,4940.41,218.52), Hash = 825709191, Lock = true, Distance = 1.5, Perm = "Tribo" },
@@ -138,8 +140,10 @@ function Creative.DoorsPermission(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if GlobalState["Doors"][Number]["Perm"] ~= nil then
-			if not vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
+		if GlobalState["Doors"][Number]["Perm"] then
+			local PermSplit = splitString(GlobalState["Doors"][Number]["Perm"],"-")
+
+			if (not PermSplit[2] and not vRP.HasGroup(Passport,GlobalState["Doors"][Number]["Perm"])) or (PermSplit[2] and not vRP.HasGroup(Passport,PermSplit[1],parseInt(PermSplit[2]))) then
 				local consultItem = vRP.InventoryItemAmount(Passport,"lockpick")
 				if consultItem[1] <= 0 then
 					return
@@ -170,23 +174,23 @@ function Creative.DoorsPermission(Number)
 					end)
 				end
 			end
-
-			local Doors = GlobalState["Doors"]
-
-			Doors[Number]["Lock"] = not Doors[Number]["Lock"]
-
-			if Doors[Number]["Other"] ~= nil then
-				local Second = Doors[Number]["Other"]
-				Doors[Second]["Lock"] = not Doors[Second]["Lock"]
-			end
-
-			GlobalState:set("Doors",Doors,true)
-
-			TriggerClientEvent("doors:Update",-1,Number,Doors[Number]["Lock"])
-
-			vRPC.playAnim(source,true,{"anim@heists@keycard@","exit"},false)
-			Wait(350)
-			vRPC.stopAnim(source)
 		end
+
+		local Doors = GlobalState["Doors"]
+
+		Doors[Number]["Lock"] = not Doors[Number]["Lock"]
+
+		if Doors[Number]["Other"] ~= nil then
+			local Second = Doors[Number]["Other"]
+			Doors[Second]["Lock"] = not Doors[Second]["Lock"]
+		end
+
+		GlobalState:set("Doors",Doors,true)
+
+		TriggerClientEvent("doors:Update",-1,Number,Doors[Number]["Lock"])
+
+		vRPC.playAnim(source,true,{"anim@heists@keycard@","exit"},false)
+		Wait(350)
+		vRPC.stopAnim(source)
 	end
 end

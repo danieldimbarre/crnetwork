@@ -45,9 +45,9 @@ AddEventHandler("towdriver:Call",function(source,vehName,vehPlate)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PAYMENTMETHOD
+-- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.paymentMethod(Network,Plate)
+function Creative.Payment(Network,Plate)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then

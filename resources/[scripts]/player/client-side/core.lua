@@ -557,7 +557,7 @@ function Creative.removeVehicle()
 	if not inBennys then
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
-			TaskLeaveVehicle(Ped,GetVehiclePedIsUsing(Ped),16)
+			TaskLeaveVehicle(Ped,GetVehiclePedIsUsing(Ped),0)
 		end
 	end
 end

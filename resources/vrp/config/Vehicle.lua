@@ -1951,9 +1951,9 @@ local List = {
 	["vigero2"] = {
 		["Name"] = "Vigero 2",
 		["Weight"] = 40,
-		["Price"] = 100,
+		["Price"] = 100000,
 		["Mode"] = nil,
-		["Gems"] = 0
+		["Gems"] = 100
 	},
 	["sentinel4"] = {
 		["Name"] = "Sentinel 4",
@@ -6143,6 +6143,13 @@ local List = {
 	},
 	["gxrx7"] = {
 		["Name"] = "Mazda RX7 GX",
+		["Weight"] = 30,
+		["Price"] = 100000,
+		["Mode"] = nil,
+		["Gems"] = 100
+	},
+	["silviaflick"] = {
+		["Name"] = "Nissan Silvia",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,

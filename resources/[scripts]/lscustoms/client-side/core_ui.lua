@@ -146,7 +146,7 @@ local function updateCurrentMenuItemID(id,item,item2)
 	end
 end
 
-function InitiateMenus(isMotorcycle)
+function InitiateMenus(isMotorcycle,isService)
 	local Ped = PlayerPedId()
 	local vehicle = GetVehiclePedIsUsing(Ped)
 	local vehclass = GetVehicleClass(vehicle)
@@ -156,8 +156,10 @@ function InitiateMenus(isMotorcycle)
 	for k,v in ipairs(vehicleCustomisation) do 
 		local validMods,amountValidMods = CheckValidMods(v["category"],v["id"])
 
-		if amountValidMods > 0 or v["id"] == 18 then
-			populateMenu("mainMenu",v["id"],v["category"],"none")
+		if amountValidMods > 0 then
+			if not isService or (isService and v["id"] ~= 11 and v["id"] ~= 12 and v["id"] ~= 13 and v["id"] ~= 15 and v["id"] ~= 16 and v["id"] ~= 18) then
+				populateMenu("mainMenu",v["id"],v["category"],"none")
+			end
 		end
 	end
 
@@ -170,6 +172,10 @@ function InitiateMenus(isMotorcycle)
 
 	populateMenu("mainMenu",22,"Xenons","none")
 	populateMenu("mainMenu",23,"Rodas","none")
+
+	populateMenu("mainMenu",25,"Placa","none")
+
+	finishPopulatingMenu("mainMenu")
 
 	if vehclass == 18 then
 		populateMenu("mainMenu",24,"Estampa Policial","none")
@@ -204,17 +210,12 @@ function InitiateMenus(isMotorcycle)
 		finishPopulatingMenu("ExtrasMenu")
 	end
 
-
-	populateMenu("mainMenu",25,"Placa","none")
-
-	finishPopulatingMenu("mainMenu")
-
 	for k,v in ipairs(vehicleCustomisation) do 
 		local validMods,amountValidMods = CheckValidMods(v["category"],v["id"])
 		local currentMod,currentModName = GetCurrentMod(v["id"])
 
 		if amountValidMods > 0 or v["id"] == 18 then
-			if v["id"] == 11 or v["id"] == 12 or v["id"] == 13 or v["id"] == 15 or v["id"] == 16 then
+			if (v["id"] == 11 or v["id"] == 12 or v["id"] == 13 or v["id"] == 15 or v["id"] == 16) and not isService then
 				local tempNum = 0
 
 				createMenu(v["category"]:gsub("%s+","").."Menu","Customização do "..v["category"],"Escolha uma atualização")
@@ -230,7 +231,7 @@ function InitiateMenus(isMotorcycle)
 				end
 
 				finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
-			elseif v["id"] == 18 then
+			elseif v["id"] == 18 and not isService then
 				local currentTurboState = GetCurrentTurboState()
 				createMenu(v["category"]:gsub("%s+","").."Menu","Customização do "..v["category"],"Ativar / Desativar turbo")
 

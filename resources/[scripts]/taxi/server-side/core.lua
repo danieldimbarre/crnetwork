@@ -33,12 +33,12 @@ function Creative.toggleService()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PAYMENTSERVICE
+-- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.paymentService()
+function Creative.Payment()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] then
+	if Passport and not Active[Passport] and Taxi[Passport] then
 		Active[Passport] = true
 		local Valuation = math.random(175,275)
 
@@ -53,6 +53,7 @@ function Creative.paymentService()
 		end
 
 		vRP.GenerateItem(Passport,"dollars",Valuation,true)
+		TriggerEvent("Discord","Taxi","**Passaporte:** "..Passport.."\n**Recompensa:** "..Valuation.."x "..itemName("dollars"),9317187)
 		Active[Passport] = nil
 	end
 end

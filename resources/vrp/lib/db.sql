@@ -95,7 +95,9 @@ INSERT INTO `chests` (`id`, `name`, `weight`, `perm`, `logs`) VALUES
 (36, 'Lost', 500, 'Lost', 1),
 (37, 'Lost-2', 250, 'Lost-2', 1),
 (38, 'Marabunta', 500, 'Marabunta', 1),
-(39, 'Marabunta-2', 250, 'Marabunta-2', 1);
+(39, 'Marabunta-2', 250, 'Marabunta-2', 1),
+(40, 'Dracing', 500, 'Dracing', 1),
+(41, 'Dracing-2', 250, 'Dracing-2', 1);
 
 DROP TABLE IF EXISTS `entitydata`;
 CREATE TABLE IF NOT EXISTS `entitydata` (

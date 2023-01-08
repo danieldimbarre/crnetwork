@@ -260,15 +260,11 @@ CreateThread(function()
 							SetVehicleModColor_1(initVehicles[k],0,0,0)
 							SetVehicleModColor_2(initVehicles[k],0,0)
 							SetVehicleExtraColours(initVehicles[k],0,0)
-							SetVehicleNeonLightEnabled(initVehicles[k],0,true)
-							SetVehicleNeonLightEnabled(initVehicles[k],1,true)
-							SetVehicleNeonLightEnabled(initVehicles[k],2,true)
-							SetVehicleNeonLightEnabled(initVehicles[k],3,true)
 							SetVehicleNeonLightsColour(initVehicles[k],0,0,0)
 
 							local Livery = GetVehicleLiveryCount(initVehicles[k])
 							if Livery > 0 then
-								SetVehicleLivery(initVehicles[k],Livery - 1)
+								SetVehicleLivery(initVehicles[k],Livery)
 							end
 						end
 					end

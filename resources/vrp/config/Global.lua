@@ -41,6 +41,12 @@ MaintenanceLicenses = {
 	["ffa594ec30eba123ddfd37cff86e755e54ece227"] = true,	-- Araújo
 	["1218c328aa64b2bb66fdc3f7625f59a9e691790a"] = true,	-- Bueno
 	["27677847ff22fe09849fa43b4da97de86e623823"] = true,	-- Andrade
+	["889de531e80d24421494510dd8916d9d2611aa87"] = true,	-- Gabriel
+	["f7c77168ca3339283ea1114ee7fdcc46e46621d7"] = true,	-- Lopes
+	["5f56b3f1455b82b2a933c651404e8812b38df978"] = true,	-- Rave
+	["c9221de91050ddb64b5cf7c011eee286e5690fad"] = true,	-- Mjhow
+	["6fa33b250dc66148a29d4b0a70c27fb9d942d5b4"] = true,	-- Flick
+	["741bd6c9749f7d766f361a6c831302e868b67d16"] = true,	-- Dcosta
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ARENA (Itens recebidos ao entrar na arena)

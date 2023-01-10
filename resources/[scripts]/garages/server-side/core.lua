@@ -811,14 +811,14 @@ AddEventHandler("garages:Propertys",function(Name)
 		local Hash = "prop_offroad_tyres02"
 		local Application,Coords,Heading = vRPC.objectCoords(source,Hash)
 		if Application then
-			if #(Coords - exports["propertys"]:Coords(Name)) <= 25 then
+			if #(Coords - exports["propertys"]:Coords(Name)) <= 40 then
 				TriggerClientEvent("Notify",source,"amarelo","Selecione o local do veículo.",5000)
 
 				local Open = Coords
 				local Hash = "patriot"
 				local Application,Coords,Heading = vRPC.objectCoords(source,Hash)
 				if Application then
-					if #(Coords - exports["propertys"]:Coords(Name)) <= 25 then
+					if #(Coords - Open) <= 25 then
 						local New = {
 							["1"] = { mathLength(Open["x"]),mathLength(Open["y"]),mathLength(Open["z"] + 1) },
 							["2"] = { mathLength(Coords["x"]),mathLength(Coords["y"]),mathLength(Coords["z"] + 1),mathLength(Heading) }
@@ -836,7 +836,7 @@ AddEventHandler("garages:Propertys",function(Name)
 						vRP.Query("propertys/Garage",{ name = Name, garage = json.encode(New) })
 						TriggerClientEvent("garages:Propertys",-1,Propertys)
 					else
-						TriggerClientEvent("Notify",source,"amarelo","A garagem precisa ser próximo da entrada.",5000)
+						TriggerClientEvent("Notify",source,"amarelo","O veículo precisa ser próximo da garagem.",5000)
 					end
 				end
 			else

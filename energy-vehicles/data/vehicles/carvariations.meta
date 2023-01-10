@@ -2,6 +2,158 @@
 <CVehicleModelInfoVariation>
   <variationData>
     <Item>
+      <modelName>audia4</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">12 12 12 12 0 0</indices>
+          <liveries />
+        </Item>
+      </colors>
+      <kits>
+        <Item>932016_audia4_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="240"/>
+    </Item>
+    <Item>
+      <modelName>WRa45</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+			12 
+            12
+            12
+            12	
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>WRa45_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities/>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="55668"/>
+    </Item>
+    <Item>
+      <modelName>WRgt63</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            12
+            12
+            12
+            12
+            12
+            12
+          </indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="2400"/>
+    </Item>
+    <Item>
+      <modelName>wrsxr</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            0
+            0
+            11
+            156
+            0
+            0
+          </indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_bike_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="28"/>
+      <sirenSettings value="33"/>
+    </Item>
+    <Item>
+      <modelName>WRBmwx6</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+			12 
+            12
+            12
+            12
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>932014_wrbmwx6_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="55670"/>
+    </Item>
+    <Item>
       <modelName>m3e46</modelName>
       <colors>
         <Item>
@@ -206,6 +358,82 @@
       </plateProbabilities>
       <lightSettings value="999"/>
       <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>fordmustanggt2</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+					12
+					12
+					12
+					12</indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="240"/>
+    </Item>
+    <Item>
+      <modelName>mercedesgt632</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+          0
+          0
+          0
+          0
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>mercedesgt632_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="25"/>
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="50"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="10"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="15"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="240"/>
     </Item>
     <Item>
       <modelName>350tj</modelName>
@@ -415,6 +643,43 @@
       </plateProbabilities>
       <lightSettings value="1200"/>
       <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>audir82</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+           12
+           12
+           12
+           12
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>audir82_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="240"/>
     </Item>
     <Item>
       <modelName>B412</modelName>
@@ -879,6 +1144,112 @@
       </plateProbabilities>
       <lightSettings value="1200"/>
       <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>nspeedo</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">111 3 3 3</indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="240"/>
+    </Item>
+    <Item>
+      <modelName>fordraptor</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">12 12 12 12</indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>932015_fordraptor_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="240"/>
+    </Item>
+    <Item>
+      <modelName>tahoe</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">12 12 12 12</indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>tahoe_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="240"/>
+    </Item>
+    <Item>
+      <modelName>tacoma</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            12 
+            12
+            12
+            12
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="240"/>
     </Item>
     <Item>
       <modelName>r1200</modelName>

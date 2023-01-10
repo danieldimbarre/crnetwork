@@ -43,12 +43,14 @@ Discords = {
 	["Lost-2"] = "https://discord.com/api/webhooks/1060916467706642452/Jv4JqjDXi6fF0hpv_r8hGIuCN3xrxYHTeJ3IVKZ-_tyAvwU22Y__Wt730T_wr_sh6RZp",
 	["Marabunta"] = "https://discord.com/api/webhooks/1040347269049884672/D4L2w8hThTDeMXJ2JqB-NwzY4mNk0OD5pFaM6PJC1VlqIRc8yUV_fRw-vlj6wJFz_KMR",
 	["Marabunta-2"] = "https://discord.com/api/webhooks/1060916504306139176/eXUWt5_XP3MZ6Jj76t2bxGoxwFR3Zmxf4ZXhO0XxJECk8S3AmMrvz4o8cpgZf1YTyjQA",
+	["Dracing"] = "https://discord.com/api/webhooks/1062133013103779880/Hnt0EZ7EDfqP8igdr4STHeEPqFYCXCGguiorknXhL1TwqPFxUcHSLMKvdterpWMBiANz",
+	["Dracing-2"] = "https://discord.com/api/webhooks/1062132962394636328/8WCsGtvKKLZXWIz4TmpfLx8l7vaZQ9ong9rmyGzwV4H92nwjddtrS02l2jX8Toiqiohr",
 	["Admin"] = "https://discord.com/api/webhooks/1045336214615621744/GKzEkrK0f_ABpr_yqHynzQhTLPuvb5fjORcVn6wWDCSkni0dU9H6dGGaqrX1JMOI6MAa",
 	["Event"] = "https://discord.com/api/webhooks/1052781157500080258/Sd3VbyQhQGiRN5l0g0sxyYCobbiokN5bwjy-cLsAeFl7k8aSbGS1Gtyw41k4YZMuW7o4",
 	["Robberys"] = "https://discord.com/api/webhooks/1057776186509512735/aRbCBVfGUazRJ19GjyxFPgAn3cyzLp4BPQNcvoKqzEolLFKTM5FHcjvyvha9ybnVL254",
 	["Garages"] = "https://discord.com/api/webhooks/1058076961332805692/hy54NqOzNrH5MKpT23F6dGipcfMU0MzFV8O7DIOjyJjbUsiDlzibG4u-LzJiQg4e3d2Y",
 	["Propertys"] = "https://discord.com/api/webhooks/1058077202362683392/Gt62IfE1N7t-UOQIz-qJhBRjtFR8DdJTcWrmvZuhiFqYhcWe3RCQuYO51JzzQTi5GK7h",
-	["Taxi"] = "https://discord.com/api/webhooks/1060935246167674942/s_QlGDdgRE6m6599Q6lBE0oEjwp9fR85u3-6mYl6sn3TGOxxZhiqCpvef8TKg1vlya_9"
+	["Taxi"] = "https://discord.com/api/webhooks/1060935246167674942/s_QlGDdgRE6m6599Q6lBE0oEjwp9fR85u3-6mYl6sn3TGOxxZhiqCpvef8TKg1vlya_9",
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCORD

@@ -1782,10 +1782,10 @@ local List = {
 	},
 	["pounder2"] = {
 		["Name"] = "Pounder 2",
-		["Weight"] = 40,
-		["Price"] = 100,
-		["Mode"] = nil,
-		["Gems"] = 0
+		["Weight"] = 300,
+		["Price"] = 100000,
+		["Mode"] = "rental",
+		["Gems"] = 200
 	},
 	["vectre"] = {
 		["Name"] = "Vectre",
@@ -5380,10 +5380,10 @@ local List = {
 	},
 	["mule"] = {
 		["Name"] = "Mule",
-		["Weight"] = 40,
-		["Price"] = 100,
-		["Mode"] = nil,
-		["Gems"] = 0
+		["Weight"] = 200,
+		["Price"] = 100000,
+		["Mode"] = "rental",
+		["Gems"] = 100
 	},
 	["mixer2"] = {
 		["Name"] = "Mixer 2",

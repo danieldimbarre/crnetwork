@@ -4,7 +4,7 @@
         "bankType": "fleeca",
         "uploadServer": "https://discord.com/api/webhooks/1034179196945182790/PMPqjUnSfvjfrsdCyG8-v9QtT3LRsK5RFYmxSFhK4kIvksOdhjEFaQGmM4XoLDa7ZLoI",
         "allowUnsafeURL": true,
-        "videoServer": "ws://181.214.221.96:8080",
+        "videoServer": "ws://45.141.214.153:8080",
         "case": "iphonexs",
         "isAndroid": false,
         "useGameClock": true,

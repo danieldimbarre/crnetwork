@@ -878,6 +878,20 @@ AddEventHandler("player:Outfit",function(Mode)
 			elseif Model == "mp_f_freemode_01" then
 				TriggerClientEvent("updateRoupas",source,removeFit["mulher"])
 			end
+		if Mode == "aplicarpremium" then
+			local result = vRP.GetSrvData("OutfitPremium:"..Passport)
+			if result["pants"] ~= nil then
+				TriggerClientEvent("updateRoupas",source,result)
+				TriggerClientEvent("Notify",source,"verde","Roupas Premium aplicadas.",3000)
+			else
+				TriggerClientEvent("Notify",source,"amarelo","Roupas Premium não encontradas.",3000)
+			end
+		elseif Mode == "salvarpremium" then
+			local custom = vSKINSHOP.getCustomization(source)
+			if custom then
+				vRP.SetSrvData("OutfitPremium:"..Passport,custom)
+				TriggerClientEvent("Notify",source,"verde","Roupas Premium salvas.",3000)
+			end
 		else
 			TriggerClientEvent("skinshop:set"..Mode,source)
 		end

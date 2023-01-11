@@ -6118,7 +6118,7 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,
-		["Gems"] = 100
+		["Gems"] = 300
 	},
 	["eclipse"] = {
 		["Name"] = "Mitsubishi Eclipse",
@@ -6139,21 +6139,28 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,
-		["Gems"] = 100
+		["Gems"] = 300
 	},
 	["gxrx7"] = {
 		["Name"] = "Mazda RX7 GX",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,
-		["Gems"] = 100
+		["Gems"] = 300
 	},
 	["silviaflick"] = {
 		["Name"] = "Nissan Silvia",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,
-		["Gems"] = 100
+		["Gems"] = 300
+	},
+	["r32lara"] = {
+		["Name"] = "Nissan Skyline R32",
+		["Weight"] = 30,
+		["Price"] = 100000,
+		["Mode"] = nil,
+		["Gems"] = 300
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

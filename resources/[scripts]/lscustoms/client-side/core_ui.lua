@@ -173,12 +173,16 @@ function InitiateMenus(isMotorcycle,isService)
 	populateMenu("mainMenu",22,"Xenons","none")
 	populateMenu("mainMenu",23,"Rodas","none")
 
+	if isService and vehclass == 18 then
+		populateMenu("mainMenu",24,"Estampa Policial","none")
+		populateMenu("mainMenu",26,"Extras","none")
+	end
+
 	populateMenu("mainMenu",25,"Placa","none")
 
 	finishPopulatingMenu("mainMenu")
 
-	if vehclass == 18 then
-		populateMenu("mainMenu",24,"Estampa Policial","none")
+	if isService and vehclass == 18 then
 		local livCount = GetVehicleLiveryCount(vehicle)
 		if livCount > 0 then
 			local temporaryLivery = GetVehicleLivery(vehicle)
@@ -194,7 +198,6 @@ function InitiateMenus(isMotorcycle,isService)
 			finishPopulatingMenu("EstampaPolicialMenu")
 		end
 
-		populateMenu("mainMenu",26,"Extras","none")
 		createMenu("ExtrasMenu","Customização de Extras","Ativar / Desativar extras")
 
 		for i = 1,12 do

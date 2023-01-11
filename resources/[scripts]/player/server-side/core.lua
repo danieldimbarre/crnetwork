@@ -878,7 +878,7 @@ AddEventHandler("player:Outfit",function(Mode)
 			elseif Model == "mp_f_freemode_01" then
 				TriggerClientEvent("updateRoupas",source,removeFit["mulher"])
 			end
-		if Mode == "aplicarpremium" then
+		elseif Mode == "aplicarpremium" then
 			local result = vRP.GetSrvData("OutfitPremium:"..Passport)
 			if result["pants"] ~= nil then
 				TriggerClientEvent("updateRoupas",source,result)

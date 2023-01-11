@@ -79,8 +79,12 @@ RegisterCommand("globalFunctions",function()
 			exports["dynamic"]:AddButton("Chapéu","Colocar/Retirar o chapéu.","player:Outfit","Hat","clothes",true)
 			exports["dynamic"]:AddButton("Máscara","Colocar/Retirar a máscara.","player:Outfit","Mask","clothes",true)
 			exports["dynamic"]:AddButton("Óculos","Colocar/Retirar o óculos.","player:Outfit","Glasses","clothes",true)
+			exports["dynamic"]:AddButton("Remover","Retirar suas vestimentas do corpo.","player:Outfit","remover","clothes",true)
 			exports["dynamic"]:AddButton("Vestir","Vestir-se com as vestimentas guardadas.","player:Outfit","aplicar","clothes",true)
 			exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","player:Outfit","salvar","clothes",true)
+
+			exports["dynamic"]:AddButton("Vestir","Vestir-se com as vestimentas guardadas.","player:Outfit","aplicarpremium","premiumclothes",true)
+			exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","player:Outfit","salvarpremium","premiumclothes",true)
 
 			exports["dynamic"]:AddButton("Propriedades","Marcar/Desmarcar propriedades no mapa.","propertys:Blips","","others",false)
 			exports["dynamic"]:AddButton("Ferimentos","Verificar ferimentos no corpo.","paramedic:Injuries","","others",false)
@@ -133,6 +137,7 @@ RegisterCommand("globalFunctions",function()
 			end
 
 			exports["dynamic"]:SubMenu("Roupas","Colocar/Retirar roupas.","clothes")
+			exports["dynamic"]:SubMenu("Roupas Premium","Colocar/Salvar roupas premium.","premiumclothes")
 			exports["dynamic"]:SubMenu("Experiência","Todas as suas habilidades.","Experience")
 			exports["dynamic"]:SubMenu("Outros","Todas as funções do personagem.","others")
 

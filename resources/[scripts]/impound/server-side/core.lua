@@ -197,15 +197,15 @@ AddEventHandler("police:Arrest",function(entity)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.Request(source,"Apreender o veículo?","Sim, concluir apreensão","Não, mudei de ideia") then
-			local Passport = vRP.PassportPlate(entity[1])
-			if Passport then
-				local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })
+			local Plate = vRP.PassportPlate(entity[1])
+			if Plate then
+				local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Plate["Passport"], vehicle = entity[2] })
 				if Vehicle[1] then
 					if Vehicle[1]["arrest"] <= os.time() then
-						vRP.Query("vehicles/arrestVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })
+						vRP.Query("vehicles/arrestVehicles",{ Passport = Plate["Passport"], vehicle = entity[2] })
 						TriggerClientEvent("Notify",source,"verde","Veículo apreendido.",5000)
 
-						TriggerEvent("Discord","Police","**Passaporte:** "..Passport["Passport"].."\n**Apreendeu:** "..Vehicle[1]["vehicle"].."\n**Placa**: "..Vehicle[1]["plate"],15105570)
+						TriggerEvent("Discord","Police","**Passaporte:** "..Passport.."\n**Apreendeu:** "..Vehicle[1]["vehicle"].."\n**Placa**: "..Vehicle[1]["plate"].."\n**Proprietário**: "..Plate["Passport"],15105570)
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Veículo já se encontra apreendido.",5000)
 					end

@@ -5630,13 +5630,6 @@ local List = {
 		["Mode"] = "rental",
 		["Gems"] = 100
 	},
-	["mclarenp1"] = {
-		["Name"] = "McLaren P1",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = "rental",
-		["Gems"] = 100
-	},
 	["mclarensenna"] = {
 		["Name"] = "McLaren Senna",
 		["Weight"] = 30,

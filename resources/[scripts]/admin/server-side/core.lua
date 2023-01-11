@@ -239,6 +239,7 @@ RegisterCommand("item2",function(source,Message)
 			if Message[1] and Message[2] and parseInt(Message[3]) > 0 and itemBody(Message[1]) ~= nil then
 				local Amount = parseInt(Message[2])
 				vRP.GenerateItem(Message[3],Message[1],Amount,true)
+				TriggerClientEvent("Notify",Source,"verde","Você enviou <b>"..Amount.."x "..itemName(Message[1]).."</b> para o passaporte <b>"..Message[3].."</b>.",5000)
 
 				TriggerEvent("Discord","Admin","**item2**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[3].."\n**Item:** "..Amount.."x "..itemName(Message[1]),3553599)
 			end

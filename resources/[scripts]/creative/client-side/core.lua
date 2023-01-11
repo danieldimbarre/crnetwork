@@ -166,6 +166,7 @@ local Blips = {
 	{ 820.61,-813.38,26.2,402,26,"Mecânica",0.7 },
 	{ 1698.16,3584.91,35.54,402,26,"Mecânica",0.7 }, -- SANDY
 	{ 112.3,6615.09,31.86,402,26,"Mecânica",0.7 }, -- PALETO
+	{ 835.56,-914.04,25.68,643,43,"D'Racing",0.6 },
 	{ 2953.93,2787.49,41.5,617,62,"Minerador",0.6 },
 	{ 1322.93,-1652.29,52.27,75,13,"Loja de Tatuagem",0.5 },
 	{ -1154.42,-1425.9,4.95,75,13,"Loja de Tatuagem",0.5 },
@@ -370,9 +371,9 @@ CreateThread(function()
 			SetScenarioPedDensityMultiplierThisFrame(0.0,0.0)
 			SetPedDensityMultiplierThisFrame(0.0)
 		else
-			SetVehicleDensityMultiplierThisFrame(0.30)
-			SetRandomVehicleDensityMultiplierThisFrame(0.30)
-			SetParkedVehicleDensityMultiplierThisFrame(0.6)
+			SetVehicleDensityMultiplierThisFrame(0.50)
+			SetRandomVehicleDensityMultiplierThisFrame(0.50)
+			SetParkedVehicleDensityMultiplierThisFrame(1.0)
 			SetAmbientVehicleRangeMultiplierThisFrame(1.0)
 			SetScenarioPedDensityMultiplierThisFrame(0.6,0.6)
 			SetPedDensityMultiplierThisFrame(0.6)

@@ -6132,7 +6132,7 @@ local List = {
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,
-		["Gems"] = 100
+		["Gems"] = 300
 	},
 	["lfa"] = {
 		["Name"] = "Lexus LFA",

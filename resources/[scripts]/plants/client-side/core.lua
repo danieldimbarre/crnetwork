@@ -28,8 +28,8 @@ CreateThread(function()
 					exports["target"]:AddBoxZone("Plants:"..k,vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]),0.4,0.4,{
 						name = "Plants:"..k,
 						heading = 3374176,
-						minZ = v["Coords"][3] + 0.50,
-						maxZ = v["Coords"][3] + 1.50
+						minZ = v["Coords"][3],
+						maxZ = v["Coords"][3] + 2.00
 					},{
 						shop = k,
 						Distance = 1.5,

@@ -1117,6 +1117,14 @@ RegisterCommand("bennys",function(source,Message)
 				end
 			end
 
+			if Message[1] == "police" then
+				if GetVehicleClass(vehicle) == 18 then
+					isService = true
+				else
+					goto skipBennys
+				end
+			end
+
 			SetVehicleModKit(vehicle,0)
 			FreezeEntityPosition(vehicle,true)
 			SetVehicleOnGroundProperly(vehicle)

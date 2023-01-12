@@ -673,7 +673,6 @@ Use = {
 					local Cooldown = 0.1 * Points
 					vRP.DowngradeHunger(Passport,5 + Cooldown)
 					vRP.DowngradeThirst(Passport,5 + Cooldown)
-					vRP.DowngradeStress(Passport,5 + Cooldown)
 					TriggerClientEvent("setCocaine",source,5 + Cooldown)
 					TriggerClientEvent("setEnergetic",source,5 + Cooldown,1.39 + Cooldown,1.0 + (Cooldown / 5))
 				end
@@ -705,10 +704,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setMeth",source)
 					Armors[Passport] = os.time() + 60
 					vRP.ChemicalTimer(Passport,10)
 					vRP.SetArmour(source,10)
+					vRP.UpgradeStress(Passport,5)
+					TriggerClientEvent("setMeth",source)
 				end
 			end
 

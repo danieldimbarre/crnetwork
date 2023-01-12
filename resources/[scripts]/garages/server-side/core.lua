@@ -412,7 +412,7 @@ AddEventHandler("garages:Sell",function(Name)
 		local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 		if Consult[1] then
 			local Price = VehiclePrice(Name) * 0.5
-			if vRP.Request(source,"Vender o veículo <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b>?","Sim, concluír venda","Não, mudei de ideia") then
+			if vRP.Request(source,"Vender o veículo <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b>?","Sim, concluir venda","Não, mudei de ideia") then
 				local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 				if Consult[1] then
 					vRP.GiveBank(Passport,Price)
@@ -487,7 +487,7 @@ AddEventHandler("garages:Spawn",function(Table)
 
 		if not vehicle[1] then
 			if parseInt(Gemstone) > 0 then
-				if vRP.Request(source,"Alugar o veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.."</b> gemas?","Sim, concluír aluguel","Não, mudei de ideia") then
+				if vRP.Request(source,"Alugar o veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.."</b> gemas?","Sim, concluir aluguel","Não, mudei de ideia") then
 					if vRP.PaymentGems(Passport,Gemstone) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = Name, plate = vRP.GeneratePlate(), work = "true" })
 						TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.",5000)
@@ -502,7 +502,7 @@ AddEventHandler("garages:Spawn",function(Table)
 			else
 				local Price = VehiclePrice(Name)
 				if parseInt(Price) > 0 then
-					if vRP.Request(source,"Comprar <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
+					if vRP.Request(source,"Comprar <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b> dólares?","Sim, concluir pagamento","Não, mudei de ideia") then
 						if vRP.PaymentFull(Passport,Price) then
 							vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = Name, plate = vRP.GeneratePlate(), work = "true" })
 							vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
@@ -563,7 +563,7 @@ AddEventHandler("garages:Spawn",function(Table)
 				else
 					if vehicle[1]["rental"] ~= 0 then
 						if vehicle[1]["rental"] <= os.time() then
-							if vRP.Request(source,"Atualizar o aluguel do veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.." gemas</b>?","Sim, concluír pagamento","Não, mudei de ideia") then
+							if vRP.Request(source,"Atualizar o aluguel do veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.." gemas</b>?","Sim, concluir pagamento","Não, mudei de ideia") then
 								if vRP.PaymentGems(Passport,Gemstone) then
 									vRP.Query("vehicles/rentalVehiclesUpdate",{ Passport = Passport, vehicle = Name })
 									TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..VehicleName(Name).."</b> atualizado.",5000)

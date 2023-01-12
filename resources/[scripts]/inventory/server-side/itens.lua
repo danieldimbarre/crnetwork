@@ -637,9 +637,10 @@ Use = {
 						end
 
 						vRP.WeedTimer(Passport,1)
-						vRP.DowngradeHunger(Passport,5 + (0.1 * Points))
-						vRP.DowngradeThirst(Passport,5 + (0.1 * Points))
-						vRP.DowngradeStress(Passport,5 + (0.1 * Points))
+						local Cooldown = 0.1 * Points
+						vRP.DowngradeHunger(Passport,5 + Cooldown)
+						vRP.DowngradeThirst(Passport,5 + Cooldown)
+						vRP.DowngradeStress(Passport,5 + Cooldown)
 						vPLAYER.movementClip(source,"move_m@shadyped@a")
 					end
 				end
@@ -670,6 +671,9 @@ Use = {
 
 					vRP.ChemicalTimer(Passport,10)
 					local Cooldown = 0.1 * Points
+					vRP.DowngradeHunger(Passport,5 + Cooldown)
+					vRP.DowngradeThirst(Passport,5 + Cooldown)
+					vRP.DowngradeStress(Passport,5 + Cooldown)
 					TriggerClientEvent("setCocaine",source,5 + Cooldown)
 					TriggerClientEvent("setEnergetic",source,5 + Cooldown,1.39 + Cooldown,1.0 + (Cooldown / 5))
 				end

@@ -227,7 +227,8 @@ local Works = {
 		"fordmustanggt2",
 		"nspeedo",
 		"tacoma",
-		"audia4"
+		"audia4",
+		"WRa45"
 	},
 	["heliPolice"] = {
 		"maverick2",

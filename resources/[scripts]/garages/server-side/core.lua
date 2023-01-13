@@ -282,7 +282,7 @@ local Works = {
 	["Exclusives"] = {
 		"rx8hachi",
 		"gxrx7",
-		"silvia",
+		"s14khr",
 		"180sxrb",
 		"er34h"
 	}

@@ -6142,7 +6142,7 @@ local List = {
 		["Gems"] = 300
 	},
 	["silvia"] = {
-		["Name"] = "Nissan Silvia",
+		["Name"] = "Nissan Silvia S15 Mak",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,

@@ -203,7 +203,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskDoors()
 	if taskBar(1000) then
-		return true
+		if taskBar(750) then
+			if taskBar(500) then
+				if taskBar(250) then
+					return true
+				end
+			end
+		end
 	end
 
 	return false

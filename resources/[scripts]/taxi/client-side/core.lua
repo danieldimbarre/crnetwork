@@ -210,7 +210,7 @@ AddEventHandler("taxi:Starting",function(Init)
 				end
 
 				if currentPassenger ~= nil then
-					TriggerServerEvent("DeletePed",currentPassenger)
+					TriggerServerEvent("DeletePed",PedToNet(currentPassenger))
 					currentPassenger = nil
 				end
 
@@ -262,11 +262,11 @@ AddEventHandler("taxi:Starting",function(Init)
 										Wait(1000)
 										SetVehicleDoorShut(vehicle,3,0)
 										Wait(1000)
+										lastPassenger = PedToNet(currentPassenger)
 									end
 
 									FreezeEntityPosition(vehicle,false)
 
-									lastPassenger = PedToNet(currentPassenger)
 									lastPosition = selectPosition
 									currentStatus = false
 

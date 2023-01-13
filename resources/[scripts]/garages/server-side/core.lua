@@ -522,6 +522,10 @@ AddEventHandler("garages:Spawn",function(Table)
 			else
 				local Price = VehiclePrice(Name)
 				if parseInt(Price) > 0 then
+					if Mode == "exclusive" then
+						Price = 100
+					end
+
 					if vRP.Request(source,"Comprar <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b> dólares?","Sim, concluir pagamento","Não, mudei de ideia") then
 						if vRP.PaymentFull(Passport,Price) then
 							vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = Name, plate = vRP.GeneratePlate(), work = "true" })

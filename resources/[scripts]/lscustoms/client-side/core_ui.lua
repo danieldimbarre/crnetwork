@@ -156,7 +156,7 @@ function InitiateMenus(isMotorcycle,isService)
 	for k,v in ipairs(vehicleCustomisation) do 
 		local validMods,amountValidMods = CheckValidMods(v["category"],v["id"])
 
-		if amountValidMods > 0 then
+		if amountValidMods > 0 or v["id"] == 18 then
 			if not isService or (isService and v["id"] ~= 11 and v["id"] ~= 12 and v["id"] ~= 13 and v["id"] ~= 15 and v["id"] ~= 16 and v["id"] ~= 18) then
 				populateMenu("mainMenu",v["id"],v["category"],"none")
 			end

@@ -218,32 +218,36 @@ function InitiateMenus(isMotorcycle,isService)
 		local currentMod,currentModName = GetCurrentMod(v["id"])
 
 		if amountValidMods > 0 or v["id"] == 18 then
-			if (v["id"] == 11 or v["id"] == 12 or v["id"] == 13 or v["id"] == 15 or v["id"] == 16) and not isService then
-				local tempNum = 0
+			if v["id"] == 11 or v["id"] == 12 or v["id"] == 13 or v["id"] == 15 or v["id"] == 16 then
+				if not isService then
+					local tempNum = 0
 
-				createMenu(v["category"]:gsub("%s+","").."Menu","Customização do "..v["category"],"Escolha uma atualização")
+					createMenu(v["category"]:gsub("%s+","").."Menu","Customização do "..v["category"],"Escolha uma atualização")
 
-				for m,n in pairs(validMods) do
-					tempNum = tempNum + 1
+					for m,n in pairs(validMods) do
+						tempNum = tempNum + 1
 
-					populateMenu(v["category"]:gsub("%s+","").."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices[v["type"]][tempNum])
+						populateMenu(v["category"]:gsub("%s+","").."Menu",n["id"],n["name"],"$"..vehicleCustomisationPrices[v["type"]][tempNum])
 
-					if currentMod == n["id"] then
-						updateItem2Text(v["category"]:gsub("%s+","").."Menu",n["id"],"Instalado")
+						if currentMod == n["id"] then
+							updateItem2Text(v["category"]:gsub("%s+","").."Menu",n["id"],"Instalado")
+						end
 					end
+
+					finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
 				end
+			elseif v["id"] == 18 then
+				if not isService then
+					local currentTurboState = GetCurrentTurboState()
+					createMenu(v["category"]:gsub("%s+","").."Menu","Customização do "..v["category"],"Ativar / Desativar turbo")
 
-				finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
-			elseif v["id"] == 18 and not isService then
-				local currentTurboState = GetCurrentTurboState()
-				createMenu(v["category"]:gsub("%s+","").."Menu","Customização do "..v["category"],"Ativar / Desativar turbo")
+					populateMenu(v["category"]:gsub("%s+","").."Menu",0,"Desativado","$7500")
+					populateMenu(v["category"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["turbo"])
 
-				populateMenu(v["category"]:gsub("%s+","").."Menu",0,"Desativado","$7500")
-				populateMenu(v["category"]:gsub("%s+","").."Menu",1,"Ativado","$"..vehicleCustomisationPrices["turbo"])
+					updateItem2Text(v["category"]:gsub("%s+","").."Menu",currentTurboState,"Instalado")
 
-				updateItem2Text(v["category"]:gsub("%s+","").."Menu",currentTurboState,"Instalado")
-
-				finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
+					finishPopulatingMenu(v["category"]:gsub("%s+","").."Menu")
+				end
 			else
 				createMenu(v["category"]:gsub("%s+","").."Menu","Customização do "..v["category"],"Escolha uma modificação")
 

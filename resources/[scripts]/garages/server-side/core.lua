@@ -505,12 +505,8 @@ AddEventHandler("garages:Spawn",function(Table)
 		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 
 		if not vehicle[1] then
-			if parseInt(Gemstone) > 0 then
-				local Mode = VehicleMode(Name)
-				if Mode == "exclusive" then
-					Gemstone = 0
-				end
-
+			local Mode = VehicleMode(Name)
+			if parseInt(Gemstone) > 0 and Mode ~= "exclusive" then
 				if vRP.Request(source,"Alugar o veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.."</b> gemas?","Sim, concluir aluguel","Não, mudei de ideia") then
 					if vRP.PaymentGems(Passport,Gemstone) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = Name, plate = vRP.GeneratePlate(), work = "true" })

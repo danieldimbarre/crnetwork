@@ -5652,35 +5652,35 @@ local List = {
 		["Gems"] = 100
 	},
 	["nissangtr"] = {
-		["Name"] = "Nissan GTR",
+		["Name"] = "Nissan GT-R",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",
 		["Gems"] = 100
 	},
 	["nissangtr2"] = {
-		["Name"] = "Nissan GTR-2",
+		["Name"] = "Nissan GT-R 2",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",
 		["Gems"] = 100
 	},
 	["nissangtr3"] = {
-		["Name"] = "Nissan GTR-3",
+		["Name"] = "Nissan GT-R 3",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",
 		["Gems"] = 100
 	},
 	["nissangtrnismo"] = {
-		["Name"] = "Nissan GTR Nismo",
+		["Name"] = "Nissan GT-R Nismo",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",
 		["Gems"] = 100
 	},
 	["skyliner34"] = {
-		["Name"] = "Nissan Skyline GTR R34",
+		["Name"] = "Nissan Skyline GT-R R34",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",
@@ -5813,7 +5813,7 @@ local List = {
 		["Gems"] = 100
 	},
 	["nissangtr50"] = {
-		["Name"] = "Nissan GTR50",
+		["Name"] = "Nissan GT-R 50",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = "rental",
@@ -5914,7 +5914,7 @@ local List = {
 		["Name"] = "Nissan Silvia S14 KHR",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 100
 	},
 	["porsche911s"] = {
@@ -5970,7 +5970,7 @@ local List = {
 		["Name"] = "Subaru Impreza WRX",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 100
 	},
 	["audir8v10"] = {
@@ -5988,7 +5988,7 @@ local List = {
 		["Gems"] = 100
 	},
 	["nissangtr4"] = {
-		["Name"] = "Nissan GTR-4",
+		["Name"] = "Nissan GT-R 4",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,
@@ -6100,7 +6100,7 @@ local List = {
 		["Gems"] = 100
 	},
 	["skyliner342"] = {
-		["Name"] = "Nissan Skyline GTR R34-2",
+		["Name"] = "Nissan Skyline GT-R R34-2",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,
@@ -6110,7 +6110,7 @@ local List = {
 		["Name"] = "Mazda RX8 HR",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["eclipse"] = {
@@ -6121,38 +6121,59 @@ local List = {
 		["Gems"] = 100
 	},
 	["gtrpit"] = {
-		["Name"] = "Nissan GTR Pit",
+		["Name"] = "Nissan GT-R Pit",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["lfa"] = {
 		["Name"] = "Lexus LFA",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["gxrx7"] = {
 		["Name"] = "Mazda RX7 GX",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
-	["silviaflick"] = {
-		["Name"] = "Nissan Silvia",
+	["silvia"] = {
+		["Name"] = "Nissan Silvia S15 Mak",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["r32lara"] = {
-		["Name"] = "Nissan Skyline R32",
+		["Name"] = "Nissan Skyline GT-R R32",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
+		["Gems"] = 300
+	},
+	["180sxrb"] = {
+		["Name"] = "Nissan 180sx Rocket Bunny",
+		["Weight"] = 30,
+		["Price"] = 100000,
+		["Mode"] = "exclusive",
+		["Gems"] = 300
+	},
+	["er34h"] = {
+		["Name"] = "Nissan Skyline GT-R ER34",
+		["Weight"] = 30,
+		["Price"] = 100000,
+		["Mode"] = "exclusive",
+		["Gems"] = 300
+	},
+	["r33"] = {
+		["Name"] = "Nissan Skyline GT-R R33",
+		["Weight"] = 30,
+		["Price"] = 100000,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	}
 }

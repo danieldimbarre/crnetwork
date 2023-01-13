@@ -137,12 +137,12 @@ local Garages = {
 	["93"] = { name = "Vagos", payment = true, perm = "Vagos" },
 	["94"] = { name = "Aztecas", payment = true, perm = "Aztecas" },
 	-- ["95"] = { name = "Bloods", payment = true, perm = "Bloods" },
-	-- ["96"] = { name = "Triads", payment = true, perm = "Triads" },
+	["96"] = { name = "Triads", payment = true, perm = "Triads" },
 	-- ["97"] = { name = "Razors", payment = true, perm = "Razors" },
 	["98"] = { name = "Marabunta", payment = true, perm = "Marabunta" },
 	["99"] = { name = "Lost", payment = true, perm = "Lost" },
 	["100"] = { name = "Tribo", payment = true, perm = "Tribo" },
-	-- ["101"] = { name = "Gang", payment = true, perm = "Gang" },
+	["101"] = { name = "Dracing", payment = true, perm = "Dracing" },
 
 	-- Restaurants
 	["111"] = { name = "Restaurants", payment = true },
@@ -170,7 +170,8 @@ local Garages = {
 	["149"] = { name = "Taxi", payment = false },
 	["150"] = { name = "Trucker", payment = false },
 	["151"] = { name = "TowDriver", payment = false, perm = "Mechanic" },
-	["152"] = { name = "Biker", payment = false }
+	["152"] = { name = "Biker", payment = false },
+	["153"] = { name = "Exclusives", payment = false, perm = "Dracing-2" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SIGNALREMOVE
@@ -277,6 +278,13 @@ local Works = {
 	},
 	["Restaurants"] = {
 		"faggio"
+	},
+	["Exclusives"] = {
+		"rx8hachi",
+		"gxrx7",
+		"s14khr",
+		"180sxrb",
+		"er34h"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -287,7 +295,12 @@ function Creative.Vehicles(Number)
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Wanted(Passport) then
 		if Garages[Number]["perm"] then
-			if not vRP.HasService(Passport,Garages[Number]["perm"]) then
+			local Split = splitString(Garages[Number]["perm"],"-")
+			if parseInt(Split[2]) > 0 then
+				if not vRP.HasGroup(Passport,Split[1],parseInt(Split[2])) then
+					return false
+				end
+			elseif not vRP.HasService(Passport,Garages[Number]["perm"]) then
 				return false
 			end
 		end
@@ -404,7 +417,7 @@ AddEventHandler("garages:Sell",function(Name)
 		local Mode = VehicleMode(Name)
 		Active[Passport] = true
 
-		if Mode == "rental" or Mode == "work" then
+		if Mode == "rental" or Mode == "work" or Mode == "exclusive" then
 			Active[Passport] = nil
 			return
 		end
@@ -412,7 +425,7 @@ AddEventHandler("garages:Sell",function(Name)
 		local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 		if Consult[1] then
 			local Price = VehiclePrice(Name) * 0.5
-			if vRP.Request(source,"Vender o veículo <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b>?","Sim, concluír venda","Não, mudei de ideia") then
+			if vRP.Request(source,"Vender o veículo <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b>?","Sim, concluir venda","Não, mudei de ideia") then
 				local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 				if Consult[1] then
 					vRP.GiveBank(Passport,Price)
@@ -436,6 +449,12 @@ AddEventHandler("garages:Transfer",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		local Mode = VehicleMode(Name)
+
+		if Mode == "rental" or Mode == "work" or Mode == "exclusive" then
+			return
+		end
+
 		local myVehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 		if myVehicle[1] then
 			TriggerClientEvent("dynamic:closeSystem",source)
@@ -486,8 +505,9 @@ AddEventHandler("garages:Spawn",function(Table)
 		local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 
 		if not vehicle[1] then
-			if parseInt(Gemstone) > 0 then
-				if vRP.Request(source,"Alugar o veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.."</b> gemas?","Sim, concluír aluguel","Não, mudei de ideia") then
+			local Mode = VehicleMode(Name)
+			if parseInt(Gemstone) > 0 and Mode ~= "exclusive" then
+				if vRP.Request(source,"Alugar o veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.."</b> gemas?","Sim, concluir aluguel","Não, mudei de ideia") then
 					if vRP.PaymentGems(Passport,Gemstone) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = Name, plate = vRP.GeneratePlate(), work = "true" })
 						TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.",5000)
@@ -502,7 +522,11 @@ AddEventHandler("garages:Spawn",function(Table)
 			else
 				local Price = VehiclePrice(Name)
 				if parseInt(Price) > 0 then
-					if vRP.Request(source,"Comprar <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
+					if Mode == "exclusive" then
+						Price = 100
+					end
+
+					if vRP.Request(source,"Comprar <b>"..VehicleName(Name).."</b> por <b>$"..parseFormat(Price).."</b> dólares?","Sim, concluir pagamento","Não, mudei de ideia") then
 						if vRP.PaymentFull(Passport,Price) then
 							vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = Name, plate = vRP.GeneratePlate(), work = "true" })
 							vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
@@ -563,7 +587,7 @@ AddEventHandler("garages:Spawn",function(Table)
 				else
 					if vehicle[1]["rental"] ~= 0 then
 						if vehicle[1]["rental"] <= os.time() then
-							if vRP.Request(source,"Atualizar o aluguel do veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.." gemas</b>?","Sim, concluír pagamento","Não, mudei de ideia") then
+							if vRP.Request(source,"Atualizar o aluguel do veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.." gemas</b>?","Sim, concluir pagamento","Não, mudei de ideia") then
 								if vRP.PaymentGems(Passport,Gemstone) then
 									vRP.Query("vehicles/rentalVehiclesUpdate",{ Passport = Passport, vehicle = Name })
 									TriggerClientEvent("Notify",source,"verde","Aluguel do veículo <b>"..VehicleName(Name).."</b> atualizado.",5000)

@@ -14,6 +14,7 @@ Tunnel.bindInterface("taxi",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Taxi = {}
 local Active = {}
+local Timers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLESERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -21,16 +22,31 @@ function Creative.toggleService()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Taxi[Passport] then
-			Taxi[Passport] = nil
-
-			vRP.RemovePermission(Passport,"Taxi")
-		else
-			Taxi[Passport] = true
-
-			vRP.SetPermission(Passport,"Taxi",2)
+		if not Timers[Passport] then
+			Timers[Passport] = os.time()
 		end
+
+		if os.time() >= Timers[Passport] then
+			Timers[Passport] = os.time() + 10
+
+			if Taxi[Passport] then
+				Taxi[Passport] = nil
+
+				vRP.RemovePermission(Passport,"Taxi")
+			else
+				Taxi[Passport] = true
+
+				vRP.SetPermission(Passport,"Taxi",2)
+			end
+
+			return true
+		end
+	else
+		local Cooldown = parseInt(Timers[Passport] - os.time())
+		TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos para iniciar o trabalho novamente.",5000)
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENT

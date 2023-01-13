@@ -57,7 +57,7 @@ function Creative.Rental(vehName)
 				Text = "Alugar o veículo <b>"..VehicleName(vehName).."</b> usando o vale?"
 			end
 
-			if vRP.Request(source,Text,"Sim, concluír pagamento","Não, mudei de ideia") then
+			if vRP.Request(source,Text,"Sim, concluir pagamento","Não, mudei de ideia") then
 				if vRP.TakeItem(Passport,"rentalveh",1,true) or vRP.PaymentGems(Passport,VehiclePrice) then
 					local vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 					if vehicle[1] then
@@ -111,7 +111,7 @@ function Creative.Buy(vehName)
 					end
 				else
 					local VehiclePrice = VehiclePrice(vehName)
-					if vRP.Request(source,"Comprar <b>"..VehicleName(vehName).."</b> por <b>$"..parseFormat(VehiclePrice).."</b> dólares?","Sim, concluír pagamento","Não, mudei de ideia") then
+					if vRP.Request(source,"Comprar <b>"..VehicleName(vehName).."</b> por <b>$"..parseFormat(VehiclePrice).."</b> dólares?","Sim, concluir pagamento","Não, mudei de ideia") then
 						if vRP.PaymentFull(Passport,VehiclePrice) then
 							vRP.Query("vehicles/addVehicles",{ Passport = Passport, vehicle = vehName, plate = vRP.GeneratePlate(), work = "false" })
 							TriggerClientEvent("Notify",source,"verde","Compra concluída.",5000)

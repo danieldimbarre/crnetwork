@@ -1516,6 +1516,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 local DrugsPeds = {}
 local StealPeds = {}
+local DrugsWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_SNSPISTOL" }
+local StealWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_SNSPISTOL" }
 local DrugsTimer = GetGameTimer()
 local StealTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1573,28 +1575,44 @@ CreateThread(function()
 									end
 
 									if SelectedRobbery <= 0 then
-										if LoadModel("prop_paper_bag_small") then
-											local Object = CreateObject("prop_paper_bag_small",Coords["x"],Coords["y"],Coords["z"],false,false,false)
-											AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,-0.05,0.05,180.0,0.0,0.0,false,false,false,false,2,true)
-											
-											if LoadAnim("mp_safehouselost@") then
-												TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+										if math.random(100) < 80 then
+											if LoadModel("prop_paper_bag_small") then
+												local Object = CreateObject("prop_paper_bag_small",Coords["x"],Coords["y"],Coords["z"],false,false,false)
+												AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,-0.05,0.05,180.0,0.0,0.0,false,false,false,false,2,true)
+												
+												if LoadAnim("mp_safehouselost@") then
+													TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+												end
+
+												Wait(3000)
+
+												if DoesEntityExist(Object) then
+													DeleteEntity(Object)
+												end
+
+												vSERVER.StealPeds()
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
+
+												LocalPlayer["state"]["Buttons"] = false
+												LocalPlayer["state"]["Commands"] = false
+
+												break
 											end
-
-											Wait(3000)
-
-											if DoesEntityExist(Object) then
-												DeleteEntity(Object)
+										else
+											if math.random(100) >= 75 then
+												Wait(1000)
+				
+												GiveWeaponToPed(Selected,GetHashKey(StealWeapons[math.random(#StealWeapons)]),255,true,true)
+												TaskShootAtEntity(Selected,Ped,25000,GetHashKey("FIRING_PATTERN_FULL_AUTO"))
+				
+												SetTimeout(25000,function()
+													ClearPedSecondaryTask(Selected)
+													TaskWanderStandard(Selected,10.0,10)
+													TaskReactAndFleePed(Selected,Ped)
+													SetPedKeepTask(Selected,true)
+												end)
 											end
-
-											vSERVER.StealPeds()
-											ClearPedSecondaryTask(Selected)
-											TaskWanderStandard(Selected,10.0,10)
-
-											LocalPlayer["state"]["Buttons"] = false
-											LocalPlayer["state"]["Commands"] = false
-
-											break
 										end
 									end
 								else
@@ -1668,31 +1686,47 @@ CreateThread(function()
 									SelectedRobbery = SelectedRobbery - 1
 
 									if SelectedRobbery <= 0 then
-										if LoadModel("prop_anim_cash_note") then
-											local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
-											AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,0.0,0.0,90.0,0.0,0.0,false,false,false,false,2,true)
-											vRP.createObjects("mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
-											SetModelAsNoLongerNeeded("prop_anim_cash_note")
+										if math.random(100) < 80 then
+											if LoadModel("prop_anim_cash_note") then
+												local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
+												AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,0.0,0.0,90.0,0.0,0.0,false,false,false,false,2,true)
+												vRP.createObjects("mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
+												SetModelAsNoLongerNeeded("prop_anim_cash_note")
 
-											if LoadAnim("mp_safehouselost@") then
-												TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+												if LoadAnim("mp_safehouselost@") then
+													TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+												end
+
+												Wait(3000)
+
+												if DoesEntityExist(Object) then
+													DeleteEntity(Object)
+												end
+
+												vRP.removeObjects()
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
+												vSERVER.DrugPeds()
+
+												LocalPlayer["state"]["Buttons"] = false
+												LocalPlayer["state"]["Commands"] = false
+
+												break
 											end
-
-											Wait(3000)
-
-											if DoesEntityExist(Object) then
-												DeleteEntity(Object)
+										else
+											if math.random(100) >= 75 then
+												Wait(1000)
+				
+												GiveWeaponToPed(Selected,GetHashKey(DrugsWeapons[math.random(#DrugsWeapons)]),255,true,true)
+												TaskShootAtEntity(Selected,Ped,25000,GetHashKey("FIRING_PATTERN_FULL_AUTO"))
+				
+												SetTimeout(25000,function()
+													ClearPedSecondaryTask(Selected)
+													TaskWanderStandard(Selected,10.0,10)
+													TaskReactAndFleePed(Selected,Ped)
+													SetPedKeepTask(Selected,true)
+												end)
 											end
-
-											vRP.removeObjects()
-											ClearPedSecondaryTask(Selected)
-											TaskWanderStandard(Selected,10.0,10)
-											vSERVER.DrugPeds()
-
-											LocalPlayer["state"]["Buttons"] = false
-											LocalPlayer["state"]["Commands"] = false
-
-											break
 										end
 									end
 								else

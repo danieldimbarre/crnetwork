@@ -4,7 +4,8 @@
 Geodes = {
 	[1] = {
 		{ ["item"] = "sulfur", ["min"] = 5, ["max"] = 7 },
-		{ ["item"] = "charcoal", ["min"] = 5, ["max"] = 7 }
+		{ ["item"] = "charcoal", ["min"] = 5, ["max"] = 7 },
+		{ ["item"] = "copper", ["min"] = 5, ["max"] = 7 }
 	},
 	[2] = {
 		{ ["item"] = "emerald", ["min"] = 1, ["max"] = 1 },
@@ -14,8 +15,7 @@ Geodes = {
 		{ ["item"] = "amethyst", ["min"] = 1, ["max"] = 3 },
 		{ ["item"] = "amber", ["min"] = 1, ["max"] = 3 },
 		{ ["item"] = "turquoise", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "aluminum", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "copper", ["min"] = 1, ["max"] = 2 }
+		{ ["item"] = "aluminum", ["min"] = 1, ["max"] = 2 }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -602,6 +602,12 @@ Use = {
 			local Type = math.random(#Geodes)
 			local Selected = math.random(#Geodes[Type])
 			local Rand = math.random(Geodes[Type][Selected]["min"],Geodes[Type][Selected]["max"])
+
+			if GlobalState["Buffs"]["Luck"][Passport] then
+				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+					Rand = Rand + 2
+				end
+			end
 
 			if (vRP.InventoryWeight(Passport) + (itemWeight(Geodes[Type][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
@@ -3656,7 +3662,7 @@ Use = {
 				local Members = exports["vrp"]:Party(Passport,source,10)
 				local fishList = { "octopus","shrimp","carp","horsefish","tilapia","codfish","catfish" }
 
-				if parseInt(#Members) >= 4 then
+				if #Members >= 4 then
 					fishList = { "octopus","shrimp","carp","horsefish","tilapia","codfish","catfish","goldenfish","pirarucu","pacu","tambaqui" }
 				end
 

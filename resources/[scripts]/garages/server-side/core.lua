@@ -417,7 +417,7 @@ AddEventHandler("garages:Sell",function(Name)
 		local Mode = VehicleMode(Name)
 		Active[Passport] = true
 
-		if Mode == "rental" or Mode == "work" then
+		if Mode == "rental" or Mode == "work" or Mode == "exclusive" then
 			Active[Passport] = nil
 			return
 		end
@@ -449,6 +449,12 @@ AddEventHandler("garages:Transfer",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		local Mode = VehicleMode(Name)
+
+		if Mode == "rental" or Mode == "work" or Mode == "exclusive" then
+			return
+		end
+
 		local myVehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
 		if myVehicle[1] then
 			TriggerClientEvent("dynamic:closeSystem",source)
@@ -500,6 +506,11 @@ AddEventHandler("garages:Spawn",function(Table)
 
 		if not vehicle[1] then
 			if parseInt(Gemstone) > 0 then
+				local Mode = VehicleMode(Name)
+				if Mode == "exclusive" then
+					Gemstone = 0
+				end
+
 				if vRP.Request(source,"Alugar o veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.."</b> gemas?","Sim, concluir aluguel","Não, mudei de ideia") then
 					if vRP.PaymentGems(Passport,Gemstone) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = Name, plate = vRP.GeneratePlate(), work = "true" })

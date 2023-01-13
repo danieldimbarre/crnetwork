@@ -5914,7 +5914,7 @@ local List = {
 		["Name"] = "Nissan Silvia S14 KHR",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 100
 	},
 	["porsche911s"] = {
@@ -5970,7 +5970,7 @@ local List = {
 		["Name"] = "Subaru Impreza WRX",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 100
 	},
 	["audir8v10"] = {
@@ -6110,7 +6110,7 @@ local List = {
 		["Name"] = "Mazda RX8 HR",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["eclipse"] = {
@@ -6124,56 +6124,56 @@ local List = {
 		["Name"] = "Nissan GT-R Pit",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["lfa"] = {
 		["Name"] = "Lexus LFA",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["gxrx7"] = {
 		["Name"] = "Mazda RX7 GX",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["silvia"] = {
 		["Name"] = "Nissan Silvia S15 Mak",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["r32lara"] = {
 		["Name"] = "Nissan Skyline GT-R R32",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["180sxrb"] = {
 		["Name"] = "Nissan 180sx Rocket Bunny",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["er34h"] = {
 		["Name"] = "Nissan Skyline GT-R ER34",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	},
 	["r33"] = {
 		["Name"] = "Nissan Skyline GT-R R33",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 300
 	}
 }

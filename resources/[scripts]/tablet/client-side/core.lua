@@ -191,7 +191,7 @@ local Vehicles = {
 	},{
 		["Coords"] = vec3(808.28,-905.06,25.68),
 		["heading"] = 308.98,
-		["Model"] = "gtrpit",
+		["Model"] = "gxrx7",
 		["Distance"] = 40,
 		["Tuning"] = true
 	}

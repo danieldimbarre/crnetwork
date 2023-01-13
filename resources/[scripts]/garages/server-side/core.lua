@@ -170,7 +170,8 @@ local Garages = {
 	["149"] = { name = "Taxi", payment = false },
 	["150"] = { name = "Trucker", payment = false },
 	["151"] = { name = "TowDriver", payment = false, perm = "Mechanic" },
-	["152"] = { name = "Biker", payment = false }
+	["152"] = { name = "Biker", payment = false },
+	["153"] = { name = "Exclusives", payment = false, perm = "Dracing-2" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SIGNALREMOVE
@@ -277,6 +278,15 @@ local Works = {
 	},
 	["Restaurants"] = {
 		"faggio"
+	},
+	["Exclusives"] = {
+		"s14khr",
+		"rx8hachi",
+		"gxrx7",
+		"silvia",
+		"180sxrb",
+		"er34h",
+		"r33"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -287,7 +297,8 @@ function Creative.Vehicles(Number)
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Wanted(Passport) then
 		if Garages[Number]["perm"] then
-			if not vRP.HasService(Passport,Garages[Number]["perm"]) then
+			local Split = splitString(Garages[Number]["perm"],"-")
+			if (Split[2] and not vRP.HasGroup(Passport,Split[1],Split[2])) or not vRP.HasService(Passport,Garages[Number]["perm"]) then
 				return false
 			end
 		end

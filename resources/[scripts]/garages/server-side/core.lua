@@ -296,8 +296,8 @@ function Creative.Vehicles(Number)
 	if Passport and not exports["hud"]:Wanted(Passport) then
 		if Garages[Number]["perm"] then
 			local Split = splitString(Garages[Number]["perm"],"-")
-			if (parseInt(Split[2]) > 0 then
-				if not vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) then
+			if parseInt(Split[2]) > 0 then
+				if not vRP.HasGroup(Passport,Split[1],parseInt(Split[2])) then
 					return false
 				end
 			elseif not vRP.HasService(Passport,Garages[Number]["perm"]) then

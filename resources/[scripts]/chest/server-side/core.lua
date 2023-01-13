@@ -204,7 +204,7 @@ function Creative.Store(Item,Slot,Amount,Target)
 		if OpenItens[Split[1]] and OpenItens[Split[1]]["Open"] == Open[Passport]["Name"] then
 			if vRP.TakeItem(Passport,Item,1) then
 				for _,v in pairs(OpenItens[Split[1]]["Table"]) do
-					vRP.GenerateItem(Passport,v["Item"],v["Amount"])
+					vRP.GenerateItem(Passport,v["Item"],v["Amount"],true)
 				end
 			end
 			TriggerClientEvent("chest:Update",source,"Refresh")

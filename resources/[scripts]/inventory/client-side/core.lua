@@ -1725,6 +1725,7 @@ CreateThread(function()
 									if SelectedRobbery <= 0 then
 										if math.random(100) >= 50 then
 											if LoadModel("prop_anim_cash_note") then
+												PlayPedAmbientSpeechNative(Selected,"GENERIC_HI","SPEECH_PARAMS_STANDARD")
 												local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
 												AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,0.0,0.0,90.0,0.0,0.0,false,false,false,false,2,true)
 												vRP.createObjects("mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)

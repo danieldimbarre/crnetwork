@@ -86,6 +86,7 @@ AddEventHandler("target:PutBed",function(Number)
 		vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
 		SetEntityHeading(Ped,Beds[Number]["Heading"])
 
+		Wait(1000)
 		ThreadBeds()
 	end
 end)
@@ -116,7 +117,6 @@ AddEventHandler("target:Treatment",function(Number)
 			vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
 			SetEntityHeading(Ped,Beds[Number]["Heading"])
 
-			ThreadBeds()
 			TriggerEvent("inventory:preventWeapon",true)
 			TriggerEvent("paramedic:Reset")
 
@@ -126,6 +126,8 @@ AddEventHandler("target:Treatment",function(Number)
 
 			Treatment = true
 
+			Wait(1000)
+			ThreadBeds()
 			ThreadTreatment()
 		end
 	end
@@ -140,7 +142,9 @@ AddEventHandler("target:StartTreatment",function()
 		LocalPlayer["state"]["Commands"] = true
 		LocalPlayer["state"]["Cancel"] = true
 		Treatment = true
+		TriggerEvent("Notify","amarelo","Tratamento começou.",5000)
 
+		Wait(1000)
 		ThreadTreatment()
 	end
 end)
@@ -149,21 +153,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function ThreadBeds()
 	CreateThread(function()
-		while Previous do
-			Wait(1000)
-
+		while Previous do			
 			local Ped = PlayerPedId()
-			if not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) then
+			if not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) or LocalPlayer["state"]["usingPhone"] then
 				SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
 				Previous = nil
-
-				if Treatment then
-					Treatment = false
-					LocalPlayer["state"]["Cancel"] = false
-					LocalPlayer["state"]["Commands"] = false
-					LocalPlayer["state"]["Buttons"] = false
-				end
+				vRP.removeObjects()
 			end
+
+			Wait(1000)
 		end
 	end)
 end
@@ -186,6 +184,14 @@ function ThreadTreatment()
 					LocalPlayer["state"]["Commands"] = false
 					LocalPlayer["state"]["Buttons"] = false
 					TriggerEvent("Notify","amarelo","Tratamento concluído.",5000)
+				end
+
+				if Treatment and (not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) or LocalPlayer["state"]["usingPhone"]) then
+					Treatment = false
+					LocalPlayer["state"]["Cancel"] = false
+					LocalPlayer["state"]["Commands"] = false
+					LocalPlayer["state"]["Buttons"] = false
+					TriggerEvent("Notify","amarelo","Tratamento cancelado.",5000)
 				end
 			end
 

@@ -54,20 +54,20 @@ GlobalState["Buffs"] = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 DrugsList = {
 	["cocaine"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 186, ["Max"] = 215 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["meth"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 186, ["Max"] = 215 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["joint"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 186, ["Max"] = 215 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["oxy"] = {
 		Price = { ["Min"] = 107, ["Max"] = 121 },
-		Amount = { ["Min"] = 2, ["Max"] = 3 }
+		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -2177,13 +2177,13 @@ function Creative.Dismantle(Entity)
 
 				if Class == "B" or Class == "B+" then
 					VehRandom = math.random(4500)
-					AmountItens = math.random(200,300)
+					AmountItens = math.random(125,225)
 				elseif Class == "A" or Class == "A+" then
 					VehRandom = math.random(3500)
-					AmountItens = math.random(300,400)
+					AmountItens = math.random(225,325)
 				elseif Class == "S" or Class == "S+" then
 					VehRandom = math.random(2500)
-					AmountItens = math.random(400,500)
+					AmountItens = math.random(325,425)
 				end
 
 				if VehParts <= 1 then
@@ -2208,8 +2208,13 @@ function Creative.Dismantle(Entity)
 
 				local Members = exports["vrp"]:Party(Passport,source,20)
 				if #Members > 1 then
+					local Amount = #Members
 					for _,v in pairs(Members) do
-						vRP.GenerateItem(v["Passport"],"dollarsz",AmountItens * #Members,true)
+						if Amount > 10 then
+							Amount = 10
+						end
+
+						vRP.GenerateItem(v["Passport"],"dollarsz",AmountItens * Amount,true)
 
 						local Experience = 1
 						if GlobalState["Buffs"]["Luck"][v["Passport"]] then
@@ -2331,6 +2336,28 @@ AddEventHandler("inventory:Drink",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CALLPOLICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.CallPolice(Drugs)
+	local source = source
+	local Title = "Assalto a mão armada"
+
+	if Drugs then
+		Title = "Venda de Drogas"
+		TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
+	end
+
+	local Ped = GetPlayerPed(source)
+	local Coords = GetEntityCoords(Ped)
+	local Service = vRP.NumPermission("Police")
+	for Passports,Sources in pairs(Service) do
+		async(function()
+			vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+			TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Title, x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+		end)
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- STEALPEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.StealPeds()
@@ -2394,13 +2421,19 @@ function Creative.DrugPeds()
 	if Passport and Drugs[Passport] then
 		local Points = 0
 		local Percentage = 95
+		local Service = vRP.NumPermission("Police")
 		local Split = splitString(Drugs[Passport][1],"-")
 		if Split[2] ~= nil then
 			Points = parseInt(Split[2])
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
-			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3] + (Points * 2),true)
+			if #Service >= 7 then
+				Drugs[Passport][3] = Drugs[Passport][3] + (Points * 3)
+			end
+
+			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3],true)
+			
 			TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
 			Percentage = Percentage - Points
 
@@ -2411,7 +2444,6 @@ function Creative.DrugPeds()
 			if math.random(100) >= Percentage then
 				local Ped = GetPlayerPed(source)
 				local Coords = GetEntityCoords(Ped)
-				local Service = vRP.NumPermission("Police")
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")

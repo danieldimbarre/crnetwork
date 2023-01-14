@@ -886,6 +886,28 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ADRENALINE
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Adrenaline = {
+	vec3(1978.98,5171.98,47.63)
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADRENALINEDISTANCE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.adrenalineDistance()
+	local Ped = PlayerPedId()
+	local Coords = GetEntityCoords(Ped)
+
+	for k,v in pairs(Adrenaline) do
+		local Distance = #(Coords - v)
+		if Distance <= 5 then
+			return true
+		end
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- FIRECRACKER
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Firecracker = GetGameTimer()
@@ -1516,6 +1538,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 local DrugsPeds = {}
 local StealPeds = {}
+local DrugsWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE","WEAPON_SNSPISTOL" }
+local StealWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE","WEAPON_SNSPISTOL" }
 local DrugsTimer = GetGameTimer()
 local StealTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1530,7 +1554,7 @@ CreateThread(function()
 			local Handler,Selected = FindFirstPed()
 
 			repeat
-				if not IsEntityDead(Selected) and not StealPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
+				if not IsEntityDead(Selected) and not StealPeds[Selected] and not DrugsPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
 					local Coords = GetEntityCoords(Ped)
 					local pCoords = GetEntityCoords(Selected)
 					local Distance = #(Coords - pCoords)
@@ -1556,58 +1580,93 @@ CreateThread(function()
 							LocalPlayer["state"]["Buttons"] = true
 							LocalPlayer["state"]["Commands"] = true
 
-							if LoadAnim("random@mugging3") then
-								TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
-							end
+							if math.random(100) >= 60 then
+								vSERVER.CallPolice()
 
-							while true do
-								local Coords = GetEntityCoords(Ped)
-								local pCoords = GetEntityCoords(Selected)
-								local Distance = #(Coords - pCoords)
+								LocalPlayer["state"]["Buttons"] = false
+								LocalPlayer["state"]["Commands"] = false
 
-								if Distance <= 2 and (IsPedInMeleeCombat(Ped) or IsPlayerFreeAiming(Pid)) then
-									SelectedRobbery = SelectedRobbery - 1
+								local Weapon = StealWeapons[math.random(#StealWeapons)]
+								SetPedArmour(Selected,99)
+								SetPedAccuracy(Selected,100)
+								SetPedRelationshipGroupHash(Selected,GetHashKey("HATES_PLAYER"))
+								SetPedKeepTask(Selected,true)
+								SetCanAttackFriendly(Selected,false,true)
+								TaskCombatPed(Selected,Ped,0,16)
+								SetPedCombatAttributes(Selected,46,true)
+								SetPedCombatAbility(Selected,0)
+								SetPedCombatAttributes(Selected,0,true)
+								GiveWeaponToPed(Selected,Weapon,-1,false,true)
+								SetPedDropsWeaponsWhenDead(Selected,false)
+								SetPedCombatRange(Selected,2)
+								SetPedFleeAttributes(Selected,0,0)
+								SetPedConfigFlag(Selected,58,true)
+								SetPedConfigFlag(Selected,75,true)
+								SetPedFiringPattern(Selected,-957453492)
+								SetBlockingOfNonTemporaryEvents(Selected,true)
 
-									if not IsEntityPlayingAnim(Selected,"random@mugging3","handsup_standing_base",3) then
-										TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
-									end
+								SetModelAsNoLongerNeeded(GetEntityModel(Selected))
 
-									if SelectedRobbery <= 0 then
-										if LoadModel("prop_paper_bag_small") then
-											local Object = CreateObject("prop_paper_bag_small",Coords["x"],Coords["y"],Coords["z"],false,false,false)
-											AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,-0.05,0.05,180.0,0.0,0.0,false,false,false,false,2,true)
-											
-											if LoadAnim("mp_safehouselost@") then
-												TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
-											end
-
-											Wait(3000)
-
-											if DoesEntityExist(Object) then
-												DeleteEntity(Object)
-											end
-
-											vSERVER.StealPeds()
-											ClearPedSecondaryTask(Selected)
-											TaskWanderStandard(Selected,10.0,10)
-
-											LocalPlayer["state"]["Buttons"] = false
-											LocalPlayer["state"]["Commands"] = false
-
-											break
-										end
-									end
-								else
-									ClearPedSecondaryTask(Selected)
+								SetTimeout(60000,function()
+									ClearPedTasks(Selected)
 									TaskWanderStandard(Selected,10.0,10)
-
-									LocalPlayer["state"]["Buttons"] = false
-									LocalPlayer["state"]["Commands"] = false
-
-									break
+									TaskReactAndFleePed(Selected,Ped)
+									SetPedKeepTask(Selected,true)
+								end)
+							else
+								if LoadAnim("random@mugging3") then
+									TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
 								end
-
-								Wait(1)
+	
+								while true do
+									local Coords = GetEntityCoords(Ped)
+									local pCoords = GetEntityCoords(Selected)
+									local Distance = #(Coords - pCoords)
+	
+									if Distance <= 2 and (IsPedInMeleeCombat(Ped) or IsPlayerFreeAiming(Pid)) then
+										SelectedRobbery = SelectedRobbery - 1
+	
+										if not IsEntityPlayingAnim(Selected,"random@mugging3","handsup_standing_base",3) then
+											TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
+										end
+	
+										if SelectedRobbery <= 0 then
+											if LoadModel("prop_paper_bag_small") then
+												local Object = CreateObject("prop_paper_bag_small",Coords["x"],Coords["y"],Coords["z"],false,false,false)
+												AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,-0.05,0.05,180.0,0.0,0.0,false,false,false,false,2,true)
+												
+												if LoadAnim("mp_safehouselost@") then
+													TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+												end
+	
+												Wait(3000)
+	
+												if DoesEntityExist(Object) then
+													DeleteEntity(Object)
+												end
+	
+												vSERVER.StealPeds()
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
+	
+												LocalPlayer["state"]["Buttons"] = false
+												LocalPlayer["state"]["Commands"] = false
+	
+												break
+											end
+										end
+									else
+										ClearPedSecondaryTask(Selected)
+										TaskWanderStandard(Selected,10.0,10)
+	
+										LocalPlayer["state"]["Buttons"] = false
+										LocalPlayer["state"]["Commands"] = false
+	
+										break
+									end
+	
+									Wait(1)
+								end
 							end
 						end
 					end
@@ -1632,7 +1691,7 @@ CreateThread(function()
 			local Handler,Selected = FindFirstPed()
 
 			repeat
-				if not IsEntityDead(Selected) and not DrugsPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
+				if not IsEntityDead(Selected) and not DrugsPeds[Selected] and not StealPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
 					local Coords = GetEntityCoords(Ped)
 					local pCoords = GetEntityCoords(Selected)
 					local Distance = #(Coords - pCoords)
@@ -1668,29 +1727,73 @@ CreateThread(function()
 									SelectedRobbery = SelectedRobbery - 1
 
 									if SelectedRobbery <= 0 then
-										if LoadModel("prop_anim_cash_note") then
-											local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
-											AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,0.0,0.0,90.0,0.0,0.0,false,false,false,false,2,true)
-											vRP.createObjects("mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
-											SetModelAsNoLongerNeeded("prop_anim_cash_note")
+										if math.random(100) >= 50 then
+											if LoadModel("prop_anim_cash_note") then
+												PlayPedAmbientSpeechNative(Selected,"GENERIC_HI","SPEECH_PARAMS_STANDARD")
+												local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
+												AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,0.0,0.0,90.0,0.0,0.0,false,false,false,false,2,true)
+												vRP.createObjects("mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
+												SetModelAsNoLongerNeeded("prop_anim_cash_note")
 
-											if LoadAnim("mp_safehouselost@") then
-												TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+												if LoadAnim("mp_safehouselost@") then
+													TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+												end
+
+												Wait(3000)
+
+												if DoesEntityExist(Object) then
+													DeleteEntity(Object)
+												end
+
+												vRP.removeObjects()
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
+												vSERVER.DrugPeds()
+
+												LocalPlayer["state"]["Buttons"] = false
+												LocalPlayer["state"]["Commands"] = false
+
+												break
 											end
-
-											Wait(3000)
-
-											if DoesEntityExist(Object) then
-												DeleteEntity(Object)
-											end
-
-											vRP.removeObjects()
-											ClearPedSecondaryTask(Selected)
-											TaskWanderStandard(Selected,10.0,10)
-											vSERVER.DrugPeds()
+										else
+											vSERVER.CallPolice(true)
 
 											LocalPlayer["state"]["Buttons"] = false
 											LocalPlayer["state"]["Commands"] = false
+
+											if math.random(100) >= 50 then
+												local Weapon = DrugsWeapons[math.random(#DrugsWeapons)]
+												SetPedArmour(Selected,99)
+												SetPedAccuracy(Selected,100)
+												SetPedRelationshipGroupHash(Selected,GetHashKey("HATES_PLAYER"))
+												SetPedKeepTask(Selected,true)
+												SetCanAttackFriendly(Selected,false,true)
+												TaskCombatPed(Selected,Ped,0,16)
+												SetPedCombatAttributes(Selected,46,true)
+												SetPedCombatAbility(Selected,0)
+												SetPedCombatAttributes(Selected,0,true)
+												GiveWeaponToPed(Selected,Weapon,-1,false,true)
+												SetPedDropsWeaponsWhenDead(Selected,false)
+												SetPedCombatRange(Selected,2)
+												SetPedFleeAttributes(Selected,0,0)
+												SetPedConfigFlag(Selected,58,true)
+												SetPedConfigFlag(Selected,75,true)
+												SetPedFiringPattern(Selected,-957453492)
+												SetBlockingOfNonTemporaryEvents(Selected,true)
+
+												SetModelAsNoLongerNeeded(GetEntityModel(Selected))
+
+												SetTimeout(60000,function()
+													ClearPedTasks(Selected)
+													TaskWanderStandard(Selected,10.0,10)
+													TaskReactAndFleePed(Selected,Ped)
+													SetPedKeepTask(Selected,true)
+												end)
+											else
+												PlayPedAmbientSpeechNative(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
+											end
 
 											break
 										end
@@ -1991,6 +2094,10 @@ AddEventHandler("inventory:DisPed",function(Experience)
 				SetBlockingOfNonTemporaryEvents(NetEntity,true)
 
 				SetModelAsNoLongerNeeded(disPeds[Rand])
+
+				Wait(120000)
+
+				TriggerServerEvent("DeletePed",PedToNet(NetEntity))
 			end)
 		end
 	end

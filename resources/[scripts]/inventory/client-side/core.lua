@@ -1606,6 +1606,13 @@ CreateThread(function()
 								SetBlockingOfNonTemporaryEvents(Selected,true)
 
 								SetModelAsNoLongerNeeded(GetEntityModel(Selected))
+
+								SetTimeout(60000,function()
+									ClearPedTasks(Selected)
+									TaskWanderStandard(Selected,10.0,10)
+									TaskReactAndFleePed(Selected,Ped)
+									SetPedKeepTask(Selected,true)
+								end)
 							else
 								if LoadAnim("random@mugging3") then
 									TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
@@ -1775,6 +1782,13 @@ CreateThread(function()
 												SetBlockingOfNonTemporaryEvents(Selected,true)
 
 												SetModelAsNoLongerNeeded(GetEntityModel(Selected))
+
+												SetTimeout(60000,function()
+													ClearPedTasks(Selected)
+													TaskWanderStandard(Selected,10.0,10)
+													TaskReactAndFleePed(Selected,Ped)
+													SetPedKeepTask(Selected,true)
+												end)
 											else
 												PlayPedAmbientSpeechNative(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
 												ClearPedSecondaryTask(Selected)

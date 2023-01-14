@@ -1603,6 +1603,13 @@ CreateThread(function()
 								SetPedConfigFlag(Selected,75,true)
 								SetPedFiringPattern(Selected,-957453492)
 								SetBlockingOfNonTemporaryEvents(Selected,true)
+
+								SetModelAsNoLongerNeeded(GetEntityModel(Selected))
+
+								SetTimeout(80000,function()
+									ClearPedSecondaryTask(Selected)
+									TaskWanderStandard(Selected,10.0,10)
+								end)
 							else
 								if LoadAnim("random@mugging3") then
 									TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
@@ -1769,10 +1776,12 @@ CreateThread(function()
 												SetPedFiringPattern(Selected,-957453492)
 												SetBlockingOfNonTemporaryEvents(Selected,true)
 
-												Wait(80000)
+												SetModelAsNoLongerNeeded(GetEntityModel(Selected))
 
-												ClearPedSecondaryTask(Selected)
-												TaskWanderStandard(Selected,10.0,10)
+												SetTimeout(80000,function()
+													ClearPedSecondaryTask(Selected)
+													TaskWanderStandard(Selected,10.0,10)
+												end)
 											else
 												ClearPedSecondaryTask(Selected)
 												TaskWanderStandard(Selected,10.0,10)

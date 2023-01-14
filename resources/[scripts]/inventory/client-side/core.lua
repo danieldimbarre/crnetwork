@@ -1609,6 +1609,8 @@ CreateThread(function()
 								SetTimeout(80000,function()
 									ClearPedSecondaryTask(Selected)
 									TaskWanderStandard(Selected,10.0,10)
+									TaskReactAndFleePed(Selected,Ped)
+									SetPedKeepTask(Selected,true)
 								end)
 							else
 								if LoadAnim("random@mugging3") then
@@ -1781,8 +1783,11 @@ CreateThread(function()
 												SetTimeout(80000,function()
 													ClearPedSecondaryTask(Selected)
 													TaskWanderStandard(Selected,10.0,10)
+													TaskReactAndFleePed(Selected,Ped)
+													SetPedKeepTask(Selected,true)
 												end)
 											else
+												PlayAmbientSpeech1(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
 												ClearPedSecondaryTask(Selected)
 												TaskWanderStandard(Selected,10.0,10)
 											end

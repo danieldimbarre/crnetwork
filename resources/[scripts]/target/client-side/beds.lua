@@ -142,6 +142,7 @@ AddEventHandler("target:StartTreatment",function()
 		LocalPlayer["state"]["Commands"] = true
 		LocalPlayer["state"]["Cancel"] = true
 		Treatment = true
+		TriggerEvent("Notify","amarelo","Tratamento começou.",5000)
 
 		Wait(1000)
 		ThreadTreatment()
@@ -155,9 +156,9 @@ function ThreadBeds()
 		while Previous do			
 			local Ped = PlayerPedId()
 			if not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) or LocalPlayer["state"]["usingPhone"] then
-				vRP.removeObjects()
 				SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
 				Previous = nil
+				vRP.removeObjects()
 			end
 
 			Wait(1000)

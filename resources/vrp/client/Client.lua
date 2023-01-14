@@ -34,6 +34,7 @@ LocalPlayer["state"]["Razors"] = false
 LocalPlayer["state"]["Tribo"] = false
 LocalPlayer["state"]["Lost"] = false
 LocalPlayer["state"]["Marabunta"] = false
+LocalPlayer["state"]["Dracing"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------

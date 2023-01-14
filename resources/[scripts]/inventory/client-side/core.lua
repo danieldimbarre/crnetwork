@@ -1606,11 +1606,8 @@ CreateThread(function()
 
 								SetModelAsNoLongerNeeded(GetEntityModel(Selected))
 
-								SetTimeout(80000,function()
-									ClearPedSecondaryTask(Selected)
-									TaskWanderStandard(Selected,10.0,10)
-									TaskReactAndFleePed(Selected,Ped)
-									SetPedKeepTask(Selected,true)
+								SetTimeout(120000,function()
+									TriggerServerEvent("DeletePed",PedToNet(Selected))
 								end)
 							else
 								if LoadAnim("random@mugging3") then
@@ -1780,14 +1777,11 @@ CreateThread(function()
 
 												SetModelAsNoLongerNeeded(GetEntityModel(Selected))
 
-												SetTimeout(80000,function()
-													ClearPedSecondaryTask(Selected)
-													TaskWanderStandard(Selected,10.0,10)
-													TaskReactAndFleePed(Selected,Ped)
-													SetPedKeepTask(Selected,true)
+												SetTimeout(120000,function()
+													TriggerServerEvent("DeletePed",PedToNet(Selected))
 												end)
 											else
-												PlayAmbientSpeech1(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
+												PlayPedAmbientSpeechNative(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
 												ClearPedSecondaryTask(Selected)
 												TaskWanderStandard(Selected,10.0,10)
 											end

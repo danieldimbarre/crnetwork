@@ -143,6 +143,7 @@ AddEventHandler("target:StartTreatment",function()
 		LocalPlayer["state"]["Cancel"] = true
 		Treatment = true
 
+		Wait(1000)
 		ThreadTreatment()
 	end
 end)

@@ -155,14 +155,13 @@ function Creative.DoorsPermission(Number)
 				end
 
 				if not vTASKBAR.taskDoors(source) then
-					return
-				end
-
-				if math.random(100) >= 50 then
-					if vRP.TakeItem(Passport,consultItem[1],1,false) then
-						vRP.GiveItem(Passport,"lockpick-0",1,false)
-						TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+					if math.random(100) >= 50 then
+						if vRP.TakeItem(Passport,consultItem[2],1,false) then
+							vRP.GiveItem(Passport,"lockpick-0",1,false)
+							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+						end
 					end
+					return
 				end
 
 				local Coords = vRP.GetEntityCoords(source)

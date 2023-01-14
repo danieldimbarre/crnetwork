@@ -54,20 +54,20 @@ GlobalState["Buffs"] = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 DrugsList = {
 	["cocaine"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 186, ["Max"] = 215 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["meth"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 186, ["Max"] = 215 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["joint"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 186, ["Max"] = 215 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["oxy"] = {
 		Price = { ["Min"] = 107, ["Max"] = 121 },
-		Amount = { ["Min"] = 2, ["Max"] = 3 }
+		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -2407,7 +2407,7 @@ function Creative.DrugPeds()
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
 			if #Service >= 7 then
-				Drugs[Passport][3] = Drugs[Passport][3] + (Points * 2)
+				Drugs[Passport][3] = Drugs[Passport][3] + (Points * 3)
 			end
 
 			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3],true)

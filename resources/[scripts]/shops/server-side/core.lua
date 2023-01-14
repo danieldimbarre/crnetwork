@@ -275,13 +275,6 @@ local shops = {
 			["riflebody"] = 625
 		}
 	},
-	["Oxy"] = {
-		["mode"] = "Buy",
-		["type"] = "Cash",
-		["List"] = {
-			["oxy"] = 35
-		}
-	},
 	["Pharmacy"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",

@@ -1538,8 +1538,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 local DrugsPeds = {}
 local StealPeds = {}
-local DrugsWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_SNSPISTOL" }
-local StealWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_SNSPISTOL" }
+local DrugsWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE","WEAPON_SNSPISTOL" }
+local StealWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE","WEAPON_SNSPISTOL" }
 local DrugsTimer = GetGameTimer()
 local StealTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------

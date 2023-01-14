@@ -650,6 +650,13 @@
         </Item>
         <Item>
           <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
           <modifier value="20" />
           <audioApply value="1.000000" />
           <weight value="0" />
@@ -664,46 +671,11 @@
         </Item>
         <Item>
           <identifier />
-          <modifier value="30" />
+          <modifier value="40" />
           <audioApply value="1.000000" />
           <weight value="0" />
           <type>VMT_SUSPENSION</type>
         </Item>
-        <Item>
-          <identifier />
-          <modifier value="50" />
-          <audioApply value="1.000000" />
-          <weight value="0" />
-          <type>VMT_SUSPENSION</type>
-        </Item>
-        		<Item>
-		  <identifier />
-		  <modifier value="1" />
-		  <audioApply value="0.250000" />
-		  <weight value="0" />
-		  <type>VMT_WHEELS_REAR_OR_HYDRAULICS</type>
-		</Item>
-		<Item>
-		  <identifier />
-		  <modifier value="1" />
-		  <audioApply value="0.500000" />
-		  <weight value="0" />
-		  <type>VMT_WHEELS_REAR_OR_HYDRAULICS</type>
-		</Item>
-		<Item>
-		  <identifier />
-		  <modifier value="1" />
-		  <audioApply value="0.750000" />
-		  <weight value="0" />
-		  <type>VMT_WHEELS_REAR_OR_HYDRAULICS</type>
-		</Item>
-		<Item>
-		  <identifier />
-		  <modifier value="1" />
-		  <audioApply value="1.000000" />
-		  <weight value="0" />
-		  <type>VMT_WHEELS_REAR_OR_HYDRAULICS</type>
-		</Item>
       </statMods>
       <slotNames />
       <liveryNames />

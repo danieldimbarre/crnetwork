@@ -157,7 +157,7 @@ function ThreadBeds()
 				SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
 				Previous = nil
 
-				if Treatment then
+				if Treatment and LocalPlayer["state"]["usingPhone"] then
 					Treatment = false
 					LocalPlayer["state"]["Cancel"] = false
 					LocalPlayer["state"]["Commands"] = false

@@ -126,6 +126,7 @@ AddEventHandler("target:Treatment",function(Number)
 
 			Treatment = true
 
+			Wait(1000)
 			ThreadBeds()
 			ThreadTreatment()
 		end

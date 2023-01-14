@@ -1554,7 +1554,7 @@ CreateThread(function()
 			local Handler,Selected = FindFirstPed()
 
 			repeat
-				if not IsEntityDead(Selected) and not StealPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
+				if not IsEntityDead(Selected) and not StealPeds[Selected] and not DrugsPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
 					local Coords = GetEntityCoords(Ped)
 					local pCoords = GetEntityCoords(Selected)
 					local Distance = #(Coords - pCoords)
@@ -1582,6 +1582,8 @@ CreateThread(function()
 
 							if math.random(100) >= 60 then
 								Wait(1000)
+								LocalPlayer["state"]["Buttons"] = false
+								LocalPlayer["state"]["Commands"] = false
 
 								GiveWeaponToPed(Selected,GetHashKey(StealWeapons[math.random(#StealWeapons)]),255,true,true)
 								TaskShootAtEntity(Selected,Ped,25000,GetHashKey("FIRING_PATTERN_FULL_AUTO"))
@@ -1670,7 +1672,7 @@ CreateThread(function()
 			local Handler,Selected = FindFirstPed()
 
 			repeat
-				if not IsEntityDead(Selected) and not DrugsPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
+				if not IsEntityDead(Selected) and not DrugsPeds[Selected] and not StealPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
 					local Coords = GetEntityCoords(Ped)
 					local pCoords = GetEntityCoords(Selected)
 					local Distance = #(Coords - pCoords)
@@ -1746,13 +1748,15 @@ CreateThread(function()
 												GiveWeaponToPed(Selected,GetHashKey(DrugsWeapons[math.random(#DrugsWeapons)]),255,true,true)
 												TaskShootAtEntity(Selected,Ped,25000,GetHashKey("FIRING_PATTERN_FULL_AUTO"))
 				
-												SetTimeout(25000,function()
-													ClearPedSecondaryTask(Selected)
-													TaskWanderStandard(Selected,10.0,10)
-													TaskReactAndFleePed(Selected,Ped)
-													SetPedKeepTask(Selected,true)
-												end)
+												Wait(25000)
+
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
+												TaskReactAndFleePed(Selected,Ped)
+												SetPedKeepTask(Selected,true)
 											end
+
+											break
 										end
 									end
 								else

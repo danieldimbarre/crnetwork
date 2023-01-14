@@ -2356,7 +2356,7 @@ function Creative.CallPolice(Drugs)
 			TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Title, x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 		end)
 	end
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STEALPEDS
 -----------------------------------------------------------------------------------------------------------------------------------------

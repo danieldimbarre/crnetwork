@@ -11,10 +11,7 @@ vSERVER = Tunnel.getInterface("admin")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVISIBLABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Debug = false
 local Freeze = false
-LocalPlayer["state"]["Spectate"] = false
-LocalPlayer["state"]["Debug"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TELEPORTWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -152,13 +149,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("admin:DebugToggle")
 AddEventHandler("admin:DebugToggle",function()
-	Debug = not Debug
-	LocalPlayer["state"]["Debug"] = Debug
-
-    if Debug then
+    if not LocalPlayer["state"]["Debug"] then
+		LocalPlayer["state"]["Debug"] = true
         debugOn()
         TriggerEvent("Notify","amarelo","Debug ON.",5000)
     else
+		LocalPlayer["state"]["Debug"] = false
         TriggerEvent("Notify","amarelo","Debug OFF.",5000)
     end
 end)
@@ -272,7 +268,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function debugOn()
 	CreateThread(function()
-		while Debug do
+		while LocalPlayer["state"]["Debug"] do
 			local Ped = PlayerPedId()
 			local Coords = GetEntityCoords(Ped)
 

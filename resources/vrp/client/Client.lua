@@ -1,40 +1,50 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCALPLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-LocalPlayer["state"]["Name"] = ""
-LocalPlayer["state"]["Route"] = 0
-LocalPlayer["state"]["Passport"] = 0
-LocalPlayer["state"]["Cancel"] = false
-LocalPlayer["state"]["Active"] = false
-LocalPlayer["state"]["Handcuff"] = false
-LocalPlayer["state"]["Commands"] = false
-LocalPlayer["state"]["usingPhone"] = false
-LocalPlayer["state"]["Player"] = GetPlayerServerId(PlayerId())
-LocalPlayer["state"]["Rope"] = false
-LocalPlayer["state"]["Textform"] = false
------------------------------------------------------------------------------------------------------------------------------------------
--- CLIENTSTATE
------------------------------------------------------------------------------------------------------------------------------------------
-LocalPlayer["state"]["Admin"] = false
-LocalPlayer["state"]["Police"] = false
-LocalPlayer["state"]["Paramedic"] = false
-LocalPlayer["state"]["Mechanic"] = false
-LocalPlayer["state"]["Taxi"] = false
-LocalPlayer["state"]["BurgerShot"] = false
-LocalPlayer["state"]["PizzaThis"] = false
-LocalPlayer["state"]["UwuCoffee"] = false
-LocalPlayer["state"]["BeanMachine"] = false
-LocalPlayer["state"]["Ballas"] = false
-LocalPlayer["state"]["Vagos"] = false
-LocalPlayer["state"]["Families"] = false
-LocalPlayer["state"]["Aztecas"] = false
-LocalPlayer["state"]["Bloods"] = false
-LocalPlayer["state"]["Triads"] = false
-LocalPlayer["state"]["Razors"] = false
-LocalPlayer["state"]["Tribo"] = false
-LocalPlayer["state"]["Lost"] = false
-LocalPlayer["state"]["Marabunta"] = false
-LocalPlayer["state"]["Dracing"] = false
+LocalPlayer["state"]:set("Route",0,false)
+LocalPlayer["state"]:set("Name","",false)
+LocalPlayer["state"]:set("Rope",false,false)
+LocalPlayer["state"]:set("Passport",0,false)
+LocalPlayer["state"]:set("Cancel",false,true)
+LocalPlayer["state"]:set("Active",false,false)
+LocalPlayer["state"]:set("Handcuff",false,true)
+LocalPlayer["state"]:set("Commands",false,true)
+LocalPlayer["state"]:set("Spectate",false,false)
+LocalPlayer["state"]:set("Invisible",false,false)
+LocalPlayer["state"]:set("Invincible",false,false)
+LocalPlayer["state"]:set("usingPhone",false,false)
+LocalPlayer["state"]:set("Player",GetPlayerServerId(PlayerId()),false)
+LocalPlayer["state"]:set("Nitro",false,true)
+LocalPlayer["state"]:set("Debug",false,false)
+LocalPlayer["state"]:set("Textform",false,false)
+LocalPlayer["state"]:set("Tea",3600,false)
+
+LocalPlayer["state"]:set("Admin",false,false)
+LocalPlayer["state"]:set("Police",false,false)
+LocalPlayer["state"]:set("Paramedic",false,false)
+LocalPlayer["state"]:set("Mechanic",false,false)
+LocalPlayer["state"]:set("Taxi",false,false)
+LocalPlayer["state"]:set("BurgerShot",false,false)
+LocalPlayer["state"]:set("PizzaThis",false,false)
+LocalPlayer["state"]:set("UwuCoffee",false,false)
+LocalPlayer["state"]:set("BeanMachine",false,false)
+LocalPlayer["state"]:set("Ballas",false,false)
+LocalPlayer["state"]:set("Vagos",false,false)
+LocalPlayer["state"]:set("Families",false,false)
+LocalPlayer["state"]:set("Aztecas",false,false)
+LocalPlayer["state"]:set("Bloods",false,false)
+LocalPlayer["state"]:set("Triads",false,false)
+LocalPlayer["state"]:set("Razors",false,false)
+LocalPlayer["state"]:set("Tribo",false,false)
+LocalPlayer["state"]:set("Lost",false,false)
+LocalPlayer["state"]:set("Marabunta",false,false)
+LocalPlayer["state"]:set("Dracing",false,false)
+
+LocalPlayer["state"]:set("Buttons",false,true)
+LocalPlayer["state"]:set("Cassino",false,false)
+LocalPlayer["state"]:set("Race",false,false)
+LocalPlayer["state"]:set("Target",false,false)
+LocalPlayer["state"]:set("Bed",false,false)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------

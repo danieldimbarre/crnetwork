@@ -1089,6 +1089,13 @@ local List = {
 		["Max"] = 2,
 		["Economy"] = 575
 	},
+	["adrenaline"] = {
+		["Index"] = "syringe",
+		["Name"] = "Adrenaline",
+		["Type"] = "Comum",
+		["Weight"] = 0.35,
+		["Economy"] = 975
+	},
 	["pouch"] = {
 		["Index"] = "pouch",
 		["Name"] = "Malote",

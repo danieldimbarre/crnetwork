@@ -869,6 +869,45 @@ Use = {
 		until not Active[Passport]
 	end,
 
+	["adrenaline"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Distance = vCLIENT.adrenalineDistance(source)
+		local Service = vRP.NumPermission("Paramedic")
+		if #Service > 0 and not Distance then
+			return
+		end
+
+		local ClosestPed = vRPC.ClosestPed(source,2)
+		if ClosestPed then
+			local OtherPassport = vRP.Passport(ClosestPed)
+			if OtherPassport then
+				if vRP.GetHealth(ClosestPed) <= 100 then
+					Active[Passport] = os.time() + 15
+					Player(source)["state"]["Buttons"] = true
+					TriggerClientEvent("inventory:Close",source)
+					TriggerClientEvent("Progress",source,"Usando",15000)
+					vRPC.playAnim(source,false,{"mini@cpr@char_a@cpr_str","cpr_pumpchest"},true)
+
+					repeat
+						if os.time() >= parseInt(Active[Passport]) then
+							Active[Passport] = nil
+							vRPC.removeObjects(source)
+							Player(source)["state"]["Buttons"] = false
+
+							if vRP.TakeItem(Passport,Full,1,true,Slot) then
+								vRP.UpgradeThirst(OtherPassport,10)
+								vRP.UpgradeHunger(OtherPassport,10)
+								vRP.Revive(ClosestPed,110)
+								TriggerClientEvent("paramedic:Reset",ClosestPed)
+							end
+						end
+
+						Wait(100)
+					until not Active[Passport]
+				end
+			end
+		end
+	end,
+
 	["evidence01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Microscope = {
 			{ 482.95,-988.61,30.68 },

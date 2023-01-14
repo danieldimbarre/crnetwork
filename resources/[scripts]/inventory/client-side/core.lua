@@ -1558,24 +1558,36 @@ CreateThread(function()
 							LocalPlayer["state"]["Buttons"] = true
 							LocalPlayer["state"]["Commands"] = true
 
-							if LoadAnim("random@mugging3") then
-								TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
-							end
+							if math.random(100) >= 60 then
+								Wait(1000)
 
-							while true do
-								local Coords = GetEntityCoords(Ped)
-								local pCoords = GetEntityCoords(Selected)
-								local Distance = #(Coords - pCoords)
+								GiveWeaponToPed(Selected,GetHashKey(StealWeapons[math.random(#StealWeapons)]),255,true,true)
+								TaskShootAtEntity(Selected,Ped,25000,GetHashKey("FIRING_PATTERN_FULL_AUTO"))
 
-								if Distance <= 2 and (IsPedInMeleeCombat(Ped) or IsPlayerFreeAiming(Pid)) then
-									SelectedRobbery = SelectedRobbery - 1
-
-									if not IsEntityPlayingAnim(Selected,"random@mugging3","handsup_standing_base",3) then
-										TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
-									end
-
-									if SelectedRobbery <= 0 then
-										if math.random(100) < 80 then
+								SetTimeout(25000,function()
+									ClearPedSecondaryTask(Selected)
+									TaskWanderStandard(Selected,10.0,10)
+									TaskReactAndFleePed(Selected,Ped)
+									SetPedKeepTask(Selected,true)
+								end)
+							else
+								if LoadAnim("random@mugging3") then
+									TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
+								end
+	
+								while true do
+									local Coords = GetEntityCoords(Ped)
+									local pCoords = GetEntityCoords(Selected)
+									local Distance = #(Coords - pCoords)
+	
+									if Distance <= 2 and (IsPedInMeleeCombat(Ped) or IsPlayerFreeAiming(Pid)) then
+										SelectedRobbery = SelectedRobbery - 1
+	
+										if not IsEntityPlayingAnim(Selected,"random@mugging3","handsup_standing_base",3) then
+											TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
+										end
+	
+										if SelectedRobbery <= 0 then
 											if LoadModel("prop_paper_bag_small") then
 												local Object = CreateObject("prop_paper_bag_small",Coords["x"],Coords["y"],Coords["z"],false,false,false)
 												AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,-0.05,0.05,180.0,0.0,0.0,false,false,false,false,2,true)
@@ -1583,49 +1595,35 @@ CreateThread(function()
 												if LoadAnim("mp_safehouselost@") then
 													TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
 												end
-
+	
 												Wait(3000)
-
+	
 												if DoesEntityExist(Object) then
 													DeleteEntity(Object)
 												end
-
+	
 												vSERVER.StealPeds()
 												ClearPedSecondaryTask(Selected)
 												TaskWanderStandard(Selected,10.0,10)
-
+	
 												LocalPlayer["state"]["Buttons"] = false
 												LocalPlayer["state"]["Commands"] = false
-
+	
 												break
 											end
-										else
-											if math.random(100) >= 75 then
-												Wait(1000)
-				
-												GiveWeaponToPed(Selected,GetHashKey(StealWeapons[math.random(#StealWeapons)]),255,true,true)
-												TaskShootAtEntity(Selected,Ped,25000,GetHashKey("FIRING_PATTERN_FULL_AUTO"))
-				
-												SetTimeout(25000,function()
-													ClearPedSecondaryTask(Selected)
-													TaskWanderStandard(Selected,10.0,10)
-													TaskReactAndFleePed(Selected,Ped)
-													SetPedKeepTask(Selected,true)
-												end)
-											end
 										end
+									else
+										ClearPedSecondaryTask(Selected)
+										TaskWanderStandard(Selected,10.0,10)
+	
+										LocalPlayer["state"]["Buttons"] = false
+										LocalPlayer["state"]["Commands"] = false
+	
+										break
 									end
-								else
-									ClearPedSecondaryTask(Selected)
-									TaskWanderStandard(Selected,10.0,10)
-
-									LocalPlayer["state"]["Buttons"] = false
-									LocalPlayer["state"]["Commands"] = false
-
-									break
+	
+									Wait(1)
 								end
-
-								Wait(1)
 							end
 						end
 					end
@@ -1686,7 +1684,7 @@ CreateThread(function()
 									SelectedRobbery = SelectedRobbery - 1
 
 									if SelectedRobbery <= 0 then
-										if math.random(100) < 80 then
+										if math.random(100) >= 50 then
 											if LoadModel("prop_anim_cash_note") then
 												local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
 												AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,0.0,0.0,90.0,0.0,0.0,false,false,false,false,2,true)
@@ -1714,9 +1712,15 @@ CreateThread(function()
 												break
 											end
 										else
-											if math.random(100) >= 75 then
+											ClearPedSecondaryTask(Selected)
+											TaskWanderStandard(Selected,10.0,10)
+
+											LocalPlayer["state"]["Buttons"] = false
+											LocalPlayer["state"]["Commands"] = false
+
+											if math.random(100) >= 50 then
 												Wait(1000)
-				
+
 												GiveWeaponToPed(Selected,GetHashKey(DrugsWeapons[math.random(#DrugsWeapons)]),255,true,true)
 												TaskShootAtEntity(Selected,Ped,25000,GetHashKey("FIRING_PATTERN_FULL_AUTO"))
 				

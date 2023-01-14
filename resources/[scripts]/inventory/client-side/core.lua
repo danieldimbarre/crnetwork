@@ -1585,15 +1585,23 @@ CreateThread(function()
 								LocalPlayer["state"]["Buttons"] = false
 								LocalPlayer["state"]["Commands"] = false
 
-								GiveWeaponToPed(Selected,GetHashKey(StealWeapons[math.random(#StealWeapons)]),255,true,true)
-								TaskShootAtEntity(Selected,Ped,25000,GetHashKey("FIRING_PATTERN_FULL_AUTO"))
-
-								SetTimeout(25000,function()
-									ClearPedSecondaryTask(Selected)
-									TaskWanderStandard(Selected,10.0,10)
-									TaskReactAndFleePed(Selected,Ped)
-									SetPedKeepTask(Selected,true)
-								end)
+								SetPedArmour(Selected,99)
+								SetPedAccuracy(Selected,100)
+								SetPedRelationshipGroupHash(Selected,GetHashKey("HATES_PLAYER"))
+								SetPedKeepTask(Selected,true)
+								SetCanAttackFriendly(Selected,false,true)
+								TaskCombatPed(Selected,Ped,0,16)
+								SetPedCombatAttributes(Selected,46,true)
+								SetPedCombatAbility(Selected,0)
+								SetPedCombatAttributes(Selected,0,true)
+								GiveWeaponToPed(Selected,StealWeapons[math.random(#StealWeapons)]),-1,false,true)
+								SetPedDropsWeaponsWhenDead(Selected,false)
+								SetPedCombatRange(Selected,2)
+								SetPedFleeAttributes(Selected,0,0)
+								SetPedConfigFlag(Selected,58,true)
+								SetPedConfigFlag(Selected,75,true)
+								SetPedFiringPattern(Selected,-957453492)
+								SetBlockingOfNonTemporaryEvents(Selected,true)
 							else
 								if LoadAnim("random@mugging3") then
 									TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
@@ -1745,15 +1753,28 @@ CreateThread(function()
 											if math.random(100) >= 50 then
 												Wait(1000)
 
-												GiveWeaponToPed(Selected,GetHashKey(DrugsWeapons[math.random(#DrugsWeapons)]),255,true,true)
-												TaskShootAtEntity(Selected,Ped,25000,GetHashKey("FIRING_PATTERN_FULL_AUTO"))
-				
-												Wait(25000)
+												SetPedArmour(Selected,99)
+												SetPedAccuracy(Selected,100)
+												SetPedRelationshipGroupHash(Selected,GetHashKey("HATES_PLAYER"))
+												SetPedKeepTask(Selected,true)
+												SetCanAttackFriendly(Selected,false,true)
+												TaskCombatPed(Selected,Ped,0,16)
+												SetPedCombatAttributes(Selected,46,true)
+												SetPedCombatAbility(Selected,0)
+												SetPedCombatAttributes(Selected,0,true)
+												GiveWeaponToPed(Selected,StealWeapons[math.random(#StealWeapons)]),-1,false,true)
+												SetPedDropsWeaponsWhenDead(Selected,false)
+												SetPedCombatRange(Selected,2)
+												SetPedFleeAttributes(Selected,0,0)
+												SetPedConfigFlag(Selected,58,true)
+												SetPedConfigFlag(Selected,75,true)
+												SetPedFiringPattern(Selected,-957453492)
+												SetBlockingOfNonTemporaryEvents(Selected,true)
+
+												Wait(80000)
 
 												ClearPedSecondaryTask(Selected)
 												TaskWanderStandard(Selected,10.0,10)
-												TaskReactAndFleePed(Selected,Ped)
-												SetPedKeepTask(Selected,true)
 											end
 
 											break

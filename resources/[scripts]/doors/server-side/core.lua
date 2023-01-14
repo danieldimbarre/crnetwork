@@ -155,7 +155,7 @@ function Creative.DoorsPermission(Number)
 				end
 
 				if not vTASKBAR.taskDoors(source) then
-					if math.random(100) >= 50 then
+					if math.random(100) >= 60 then
 						if vRP.TakeItem(Passport,consultItem[2],1,false) then
 							vRP.GiveItem(Passport,"lockpick-0",1,false)
 							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })

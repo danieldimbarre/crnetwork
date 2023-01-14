@@ -1586,6 +1586,7 @@ CreateThread(function()
 								LocalPlayer["state"]["Buttons"] = false
 								LocalPlayer["state"]["Commands"] = false
 
+								local Weapon = StealWeapons[math.random(#StealWeapons)]
 								SetPedArmour(Selected,99)
 								SetPedAccuracy(Selected,100)
 								SetPedRelationshipGroupHash(Selected,GetHashKey("HATES_PLAYER"))
@@ -1595,7 +1596,7 @@ CreateThread(function()
 								SetPedCombatAttributes(Selected,46,true)
 								SetPedCombatAbility(Selected,0)
 								SetPedCombatAttributes(Selected,0,true)
-								GiveWeaponToPed(Selected,StealWeapons[math.random(#StealWeapons)],-1,false,true)
+								GiveWeaponToPed(Selected,Weapon,-1,false,true)
 								SetPedDropsWeaponsWhenDead(Selected,false)
 								SetPedCombatRange(Selected,2)
 								SetPedFleeAttributes(Selected,0,0)
@@ -1606,8 +1607,13 @@ CreateThread(function()
 
 								SetModelAsNoLongerNeeded(GetEntityModel(Selected))
 
-								SetTimeout(120000,function()
-									TriggerServerEvent("DeletePed",Selected)
+								SetTimeout(25000,function()
+									RemoveWeaponFromPed(Selected)
+									ClearPedTasks(Selected,Weapon)
+									TaskWanderStandard(Selected,10.0,10)
+									TaskReactAndFleePed(Selected,Ped)
+									SetPedKeepTask(Selected,true)
+									SetPedRelationshipGroupHash(Selected,GetHashKey("CIVMALE"))
 								end)
 							else
 								if LoadAnim("random@mugging3") then
@@ -1758,6 +1764,7 @@ CreateThread(function()
 											LocalPlayer["state"]["Commands"] = false
 
 											if math.random(100) >= 50 then
+												local Weapon = DrugsWeapons[math.random(#DrugsWeapons)]
 												SetPedArmour(Selected,99)
 												SetPedAccuracy(Selected,100)
 												SetPedRelationshipGroupHash(Selected,GetHashKey("HATES_PLAYER"))
@@ -1767,7 +1774,7 @@ CreateThread(function()
 												SetPedCombatAttributes(Selected,46,true)
 												SetPedCombatAbility(Selected,0)
 												SetPedCombatAttributes(Selected,0,true)
-												GiveWeaponToPed(Selected,DrugsWeapons[math.random(#DrugsWeapons)],-1,false,true)
+												GiveWeaponToPed(Selected,Weapon,-1,false,true)
 												SetPedDropsWeaponsWhenDead(Selected,false)
 												SetPedCombatRange(Selected,2)
 												SetPedFleeAttributes(Selected,0,0)
@@ -1778,8 +1785,13 @@ CreateThread(function()
 
 												SetModelAsNoLongerNeeded(GetEntityModel(Selected))
 
-												SetTimeout(120000,function()
-													TriggerServerEvent("DeletePed",Selected)
+												SetTimeout(25000,function()
+													RemoveWeaponFromPed(Selected)
+													ClearPedTasks(Selected,Weapon)
+													TaskWanderStandard(Selected,10.0,10)
+													TaskReactAndFleePed(Selected,Ped)
+													SetPedKeepTask(Selected,true)
+													SetPedRelationshipGroupHash(Selected,GetHashKey("CIVMALE"))
 												end)
 											else
 												PlayPedAmbientSpeechNative(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
@@ -2089,7 +2101,7 @@ AddEventHandler("inventory:DisPed",function(Experience)
 
 				Wait(120000)
 
-				TriggerServerEvent("DeletePed",NetEntity)
+				TriggerServerEvent("DeletePed",PedToNet(NetEntity))
 			end)
 		end
 	end

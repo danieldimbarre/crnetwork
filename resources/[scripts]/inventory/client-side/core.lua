@@ -1607,7 +1607,7 @@ CreateThread(function()
 								SetModelAsNoLongerNeeded(GetEntityModel(Selected))
 
 								SetTimeout(120000,function()
-									TriggerServerEvent("DeletePed",PedToNet(Selected))
+									TriggerServerEvent("DeletePed",Selected)
 								end)
 							else
 								if LoadAnim("random@mugging3") then
@@ -1779,7 +1779,7 @@ CreateThread(function()
 												SetModelAsNoLongerNeeded(GetEntityModel(Selected))
 
 												SetTimeout(120000,function()
-													TriggerServerEvent("DeletePed",PedToNet(Selected))
+													TriggerServerEvent("DeletePed",Selected)
 												end)
 											else
 												PlayPedAmbientSpeechNative(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
@@ -2086,6 +2086,10 @@ AddEventHandler("inventory:DisPed",function(Experience)
 				SetBlockingOfNonTemporaryEvents(NetEntity,true)
 
 				SetModelAsNoLongerNeeded(disPeds[Rand])
+
+				Wait(120000)
+
+				TriggerServerEvent("DeletePed",NetEntity)
 			end)
 		end
 	end

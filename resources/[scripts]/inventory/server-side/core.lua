@@ -2336,6 +2336,28 @@ AddEventHandler("inventory:Drink",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CALLPOLICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.CallPolice(Drugs)
+	local source = source
+	local Title = "Assalto a mão armada"
+
+	if Drugs then
+		Title = "Venda de Drogas"
+		TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
+	end
+
+	local Ped = GetPlayerPed(source)
+	local Coords = GetEntityCoords(Ped)
+	local Service = vRP.NumPermission("Police")
+	for Passports,Sources in pairs(Service) do
+		async(function()
+			vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+			TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Title, x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+		end)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- STEALPEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.StealPeds()

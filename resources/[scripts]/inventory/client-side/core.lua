@@ -1581,7 +1581,8 @@ CreateThread(function()
 							LocalPlayer["state"]["Commands"] = true
 
 							if math.random(100) >= 60 then
-								Wait(1000)
+								vSERVER.CallPolice()
+
 								LocalPlayer["state"]["Buttons"] = false
 								LocalPlayer["state"]["Commands"] = false
 
@@ -1744,15 +1745,12 @@ CreateThread(function()
 												break
 											end
 										else
-											ClearPedSecondaryTask(Selected)
-											TaskWanderStandard(Selected,10.0,10)
+											vSERVER.CallPolice(true)
 
 											LocalPlayer["state"]["Buttons"] = false
 											LocalPlayer["state"]["Commands"] = false
 
 											if math.random(100) >= 50 then
-												Wait(1000)
-
 												SetPedArmour(Selected,99)
 												SetPedAccuracy(Selected,100)
 												SetPedRelationshipGroupHash(Selected,GetHashKey("HATES_PLAYER"))
@@ -1773,6 +1771,9 @@ CreateThread(function()
 
 												Wait(80000)
 
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
+											else
 												ClearPedSecondaryTask(Selected)
 												TaskWanderStandard(Selected,10.0,10)
 											end

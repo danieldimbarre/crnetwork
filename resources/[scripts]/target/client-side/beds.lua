@@ -153,11 +153,12 @@ function ThreadBeds()
 	CreateThread(function()
 		while Previous do			
 			local Ped = PlayerPedId()
-			if not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) then
+			if not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) or LocalPlayer["state"]["usingPhone"] then
+				vRP.removeObjects()
 				SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
 				Previous = nil
 
-				if Treatment and LocalPlayer["state"]["usingPhone"] then
+				if Treatment then
 					Treatment = false
 					LocalPlayer["state"]["Cancel"] = false
 					LocalPlayer["state"]["Commands"] = false

@@ -33,6 +33,7 @@ RegisterCommand("ugroups",function(source,Message)
 
 			if Messages ~= "" then
 				TriggerClientEvent("Notify",source,"verde",Messages,10000)
+				TriggerEvent("Discord","Admin","**ugroups**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 			end
 		end
 	end
@@ -339,6 +340,7 @@ RegisterCommand("al",function(source,Message)
 		local OtherPassport = parseInt(Message[1])
 		if vRP.HasGroup(Passport,"Admin") and OtherPassport > 0 then
 			vRP.Query("accounts/updateWhitelist",{ id = OtherPassport, whitelist = 1 })
+			TriggerEvent("Discord","Admin","**al**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
 		end
 	end
 end)
@@ -351,6 +353,7 @@ RegisterCommand("unal",function(source,Message)
 		local OtherPassport = parseInt(Message[1])
 		if vRP.HasGroup(Passport,"Admin") and OtherPassport > 0 then
 			vRP.Query("accounts/updateWhitelist",{ id = OtherPassport, whitelist = 0 })
+			TriggerEvent("Discord","Admin","**unal**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
 		end
 	end
 end)
@@ -365,6 +368,7 @@ RegisterCommand("tpcds",function(source)
 			if Keyboard then
 				local Split = splitString(Keyboard[1],",")
 				vRP.Teleport(source,Split[1] or 0,Split[2] or 0,Split[3] or 0)
+				TriggerEvent("Discord","Admin","**tpcds**\n\n**Passaporte:** "..Passport.."\n**Cds:** "..Split[1] or 0,Split[2] or 0,Split[3] or 0,3553599)
 			end
 		end
 	end
@@ -449,6 +453,7 @@ RegisterCommand("tptome",function(source,Message)
 				local Coords = GetEntityCoords(Ped)
 
 				vRP.Teleport(ClosestPed,Coords["x"],Coords["y"],Coords["z"])
+				TriggerEvent("Discord","Admin","**tptome**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 			end
 		end
 	end
@@ -465,6 +470,7 @@ RegisterCommand("tpto",function(source,Message)
 				local Ped = GetPlayerPed(ClosestPed)
 				local Coords = GetEntityCoords(Ped)
 				vRP.Teleport(source,Coords["x"],Coords["y"],Coords["z"])
+				TriggerEvent("Discord","Admin","**tpto**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 			end
 		end
 	end
@@ -510,7 +516,11 @@ RegisterCommand("tuning",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
-			TriggerClientEvent("admin:vehicleTuning",source)
+			local Vehicle,Network,Plate = vRPC.VehicleList(source,10)
+			if Vehicle then
+				TriggerClientEvent("admin:vehicleTuning",source,Network,Plate)
+				TriggerEvent("Discord","Admin","**tuning**\n\n**Passaporte:** "..Passport.."\n**Placa:** "..Plate,3553599)
+			end
 		end
 	end
 end)
@@ -524,6 +534,7 @@ RegisterCommand("fix",function(source)
 			local Vehicle,Network,Plate = vRPC.VehicleList(source,10)
 			if Vehicle then
 				TriggerClientEvent("inventory:repairAdmin",source,Network,Plate)
+				TriggerEvent("Discord","Admin","**fix**\n\n**Passaporte:** "..Passport.."\n**Placa:** "..Plate,3553599)
 			end
 		end
 	end
@@ -538,6 +549,7 @@ RegisterCommand("limparea",function(source)
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
 			TriggerClientEvent("syncarea",source,Coords["x"],Coords["y"],Coords["z"],100)
+			TriggerEvent("Discord","Admin","**limparea**\n\n**Passaporte:** "..Passport,3553599)
 		end
 	end
 end)
@@ -596,6 +608,7 @@ RegisterCommand("id",function(source,Message)
 			local Identity = vRP.Identity(Message[1])
 			if Identity then
 				TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Message[1].."<br><b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."<br><b>Telefone:</b> "..Identity["phone"].."<br><b>Banco:</b> $"..parseFormat(Identity["bank"]),5000)
+				TriggerEvent("Discord","Admin","**id**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 			end
 		end
 	end
@@ -676,6 +689,8 @@ RegisterCommand("kickall",function(source)
 		if not vRP.HasGroup(Passport,"Admin",2) then
 			return
 		end
+
+		TriggerEvent("Discord","Admin","**kickall**\n\n**Passaporte:** "..Passport,3553599)
 	end
 
 	local List = vRP.Players()
@@ -695,6 +710,8 @@ RegisterCommand("save",function(source)
 		if not vRP.HasGroup(Passport,"Admin",2) then
 			return
 		end
+
+		TriggerEvent("Discord","Admin","**save**\n\n**Passaporte:** "..Passport,3553599)
 	end
 
 	TriggerEvent("SaveServer",false)
@@ -864,6 +881,7 @@ RegisterCommand("services",function(source)
 			end
 
 			TriggerClientEvent("Notify",source,"azul",Text,15000)
+			TriggerEvent("Discord","Admin","**services**\n\n**Passaporte:** "..Passport,3553599)
 		end
 	end
 end)
@@ -884,6 +902,7 @@ RegisterCommand("veh",function(source,Message)
 						vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
 
 						TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..VehicleName(Message[3]).."</b> ao passaporte <b>"..OtherPassport.."</b>.",5000)
+						TriggerEvent("Discord","Admin","**veh add**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Veículo:** "..Message[3],3553599)
 					end
 				elseif Message[1] == "rem" then
 					local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport, vehicle = Message[3] })
@@ -893,6 +912,7 @@ RegisterCommand("veh",function(source,Message)
 						vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..OtherPassport..":"..Message[3] })
 
 						TriggerClientEvent("Notify",source,"verde","Removido <b>"..VehicleName(Message[3]).."</b> do passaporte <b>"..OtherPassport.."</b>.",5000)
+							TriggerEvent("Discord","Admin","**veh rem**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Veículo:** "..Message[3],3553599)
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Passaporte não possuí um <b>"..VehicleName(Message[3]).."</b>.",5000)
 					end

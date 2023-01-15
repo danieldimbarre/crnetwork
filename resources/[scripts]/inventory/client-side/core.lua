@@ -1537,8 +1537,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 local DrugsPeds = {}
 local StealPeds = {}
-local DrugsWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE","WEAPON_SNSPISTOL" }
-local StealWeapons = { "","WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE","WEAPON_SNSPISTOL" }
+local DrugsWeapons = { "WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE","WEAPON_SNSPISTOL" }
+local StealWeapons = { "WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE","WEAPON_SNSPISTOL" }
 local DrugsTimer = GetGameTimer()
 local StealTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1644,7 +1644,7 @@ CreateThread(function()
 													DeleteEntity(Object)
 												end
 	
-												vSERVER.StealPeds()
+												vSERVER.StealPeds(Selected)
 												ClearPedSecondaryTask(Selected)
 												TaskWanderStandard(Selected,10.0,10)
 	
@@ -1698,7 +1698,7 @@ CreateThread(function()
 					if Distance <= 1 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and GetGameTimer() >= DrugsTimer and vSERVER.AmountDrugs() then
+						if IsControlJustPressed(1,38) and GetGameTimer() >= DrugsTimer and vSERVER.AmountDrugs(Selected) then
 							DrugsTimer = GetGameTimer() + 5000
 
 							ClearPedTasks(Selected)

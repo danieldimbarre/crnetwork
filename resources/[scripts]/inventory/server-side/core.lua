@@ -42,6 +42,7 @@ Dismantle = {}
 verifyObjects = {}
 verifyAnimals = {}
 Collect = {}
+Peds = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BUFFS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -2360,44 +2361,53 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STEALPEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.StealPeds()
+function Creative.StealPeds(Selected)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Rand = math.random(#StealPeds)
 		local Amount = math.random(StealPeds[Rand]["min"],StealPeds[Rand]["max"])
 
-		if vRP.MaxItens(Passport,StealPeds[Rand]["item"],Amount) then
-			TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
-			return true
-		end
+		if not Peds[Selected] then
+			Peds[Selected] = true
 
-		if (vRP.InventoryWeight(Passport) + itemWeight(StealPeds[Rand]["item"]) * Amount) <= vRP.GetWeight(Passport) then
-			vRP.GenerateItem(Passport,StealPeds[Rand]["item"],Amount,true)
+			if vRP.MaxItens(Passport,StealPeds[Rand]["item"],Amount) then
+				Peds[Selected] = nil
+				TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
+				return true
+			end
 
-			if math.random(100) >= 80 then
-				local Ped = GetPlayerPed(source)
-				local Coords = GetEntityCoords(Ped)
-				local Service = vRP.NumPermission("Police")
-				for Passports,Sources in pairs(Service) do
-					async(function()
-						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
-					end)
-				end
+			if (vRP.InventoryWeight(Passport) + itemWeight(StealPeds[Rand]["item"]) * Amount) <= vRP.GetWeight(Passport) then
+				vRP.GenerateItem(Passport,StealPeds[Rand]["item"],Amount,true)
+			else
+				TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 			end
 		else
-			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+			TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
+		end
+
+		if math.random(100) >= 80 then
+			local Ped = GetPlayerPed(source)
+			local Coords = GetEntityCoords(Ped)
+			local Service = vRP.NumPermission("Police")
+			for Passports,Sources in pairs(Service) do
+				async(function()
+					vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+				end)
+			end
 		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- AMOUNTDRUGS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.AmountDrugs()
+function Creative.AmountDrugs(Selected)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Peds[Selected] then
+		Peds[Selected] = true
+
 		for k,v in pairs(DrugsList) do
 			local Amount = math.random(v["Amount"]["Min"],v["Amount"]["Max"])
 			local Price = math.random(v["Price"]["Min"],v["Price"]["Max"])
@@ -2408,6 +2418,8 @@ function Creative.AmountDrugs()
 				return true
 			end
 		end
+
+		Peds[Selected] = nil
 	end
 
 	return false

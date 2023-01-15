@@ -139,7 +139,7 @@ GlobalState["Doors"] = {
 function Creative.DoorsPermission(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not GlobalState["Doors"][Number]["Block"] then
 		if GlobalState["Doors"][Number]["Perm"] then
 			local PermSplit = splitString(GlobalState["Doors"][Number]["Perm"],"-")
 

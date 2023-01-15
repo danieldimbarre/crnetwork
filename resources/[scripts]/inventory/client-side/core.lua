@@ -1579,7 +1579,7 @@ CreateThread(function()
 							LocalPlayer["state"]["Buttons"] = true
 							LocalPlayer["state"]["Commands"] = true
 
-							if math.random(100) >= 60 then
+							if math.random(100) >= 75 then
 								vSERVER.CallPolice()
 
 								LocalPlayer["state"]["Buttons"] = false
@@ -1760,7 +1760,7 @@ CreateThread(function()
 											LocalPlayer["state"]["Buttons"] = false
 											LocalPlayer["state"]["Commands"] = false
 
-											if math.random(100) >= 50 then
+											if math.random(100) >= 80 then
 												local Weapon = DrugsWeapons[math.random(#DrugsWeapons)]
 												SetPedArmour(Selected,99)
 												SetPedAccuracy(Selected,100)

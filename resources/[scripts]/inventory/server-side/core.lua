@@ -2421,19 +2421,19 @@ function Creative.DrugPeds()
 	if Passport and Drugs[Passport] then
 		local Points = 0
 		local Percentage = 95
-		local Service = vRP.NumPermission("Police")
 		local Split = splitString(Drugs[Passport][1],"-")
 		if Split[2] ~= nil then
 			Points = parseInt(Split[2])
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
+			local Service = vRP.NumPermission("Police")
 			if #Service >= 7 then
 				Drugs[Passport][3] = Drugs[Passport][3] + (Points * 3)
 			end
 
 			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3],true)
-			
+
 			TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
 			Percentage = Percentage - Points
 

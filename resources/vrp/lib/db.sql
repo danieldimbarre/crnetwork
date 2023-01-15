@@ -89,7 +89,7 @@ INSERT INTO `chests` (`id`, `name`, `weight`, `perm`, `logs`) VALUES
 (30, 'Razors', 500, 'Razors', 1),
 (31, 'Razors-2', 250, 'Razors-2', 1),
 (32, 'Mechanic', 500, 'Mechanic', 1),
-(33, 'Mechanic-2', 250, 'Mechanic-2', 1),
+(33, 'Mechanic-2', 250, 'Mechanic-3', 1),
 (34, 'Tribo', 500, 'Tribo', 1),
 (35, 'Tribo-2', 250, 'Tribo-2', 1),
 (36, 'Lost', 500, 'Lost', 1),

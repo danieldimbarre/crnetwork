@@ -877,7 +877,7 @@ local List = {
 		}
 	},
 	["Mechanic"] = {
-		["perm"] = "Mechanic",
+		["perm"] = "Mechanic-3",
 		["List"] = {
 			["c4"] = {
 				["amount"] = 1,
@@ -969,15 +969,17 @@ function Creative.requestPerm(Name,Type)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if List[Type]["perm"] ~= nil then
+		if List[Type]["perm"] then
+			local Split = splitString(List[Type]["perm"],"-")
+
 			if type(List[Type]["perm"]) == "table" then
 				for _,Permission in pairs(List[Type]["perm"]) do
-					if vRP.HasService(Passport,Permission) then
+					if (Split[2] and vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) or vRP.HasService(Passport,Permission) then
 						return true
 					end
 				end
 			else
-				if vRP.HasService(Passport,List[Type]["perm"]) then
+				if (Split[2] and vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) or vRP.HasService(Passport,List[Type]["perm"]) then
 					return true
 				end
 			end

@@ -21,7 +21,7 @@ local Chests = {
 	-- { ["Name"] = "Paramedic-2", ["Coords"] = vec3(306.17,-601.98,43.25), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Paramedic-3", ["Coords"] = vec3(-258.00,6332.62,32.72), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Mechanic", ["Coords"] = vec3(841.69,-824.51,26.34), ["Mode"] = "2", ["Distance"] = 1.0 },
-	{ ["Name"] = "Mechanic-2", ["Coords"] = vec3(799.13,-831.17,26.34), ["Mode"] = "2", ["Distance"] = 1.0 },
+	{ ["Name"] = "Mechanic-2", ["Coords"] = vec3(145.68,-3007.79,7.04), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "BurgerShot", ["Coords"] = vec3(-1203.11,-895.47,13.99), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "BurgerShot-2", ["Coords"] = vec3(-1175.56,-897.91,13.99), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "PizzaThis", ["Coords"] = vec3(802.22,-756.78,26.77), ["Mode"] = "2", ["Distance"] = 1.0 },

@@ -43,16 +43,10 @@ function Creative.Permissions(Name,Mode)
 			local Consult = vRP.Query("chests/GetChests",{ name = Name })
 			if Consult[1] then
 				local PermSplit = splitString(Consult[1]["perm"],"-")
-				if PermSplit[2] ~= nil then
-					if vRP.HasGroup(Passport,PermSplit[1],parseInt(PermSplit[2])) then
-						Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"], ["Save"] = true }
-						return true
-					end
-				else
-					if vRP.HasService(Passport,Consult[1]["perm"]) then
-						Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"], ["Save"] = true }
-						return true
-					end
+
+				if (PermSplit[2] and vRP.HasGroup(Passport,PermSplit[1],parseInt(PermSplit[2]))) or vRP.HasService(Passport,Consult[1]["perm"]) then
+					Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"], ["Save"] = true }
+					return true
 				end
 			end
 		end
@@ -274,7 +268,9 @@ AddEventHandler("chest:Upgrade",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasService(Passport,Name) then
+		local Split = splitString(Name,"-")
+
+		if (Split[2] and vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) or vRP.HasService(Passport,Name) then
 			if vRP.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
 				if vRP.PaymentFull(Passport,10000) then
 					vRP.Query("chests/UpdateChests",{ name = Name })

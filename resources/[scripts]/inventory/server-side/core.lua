@@ -2427,8 +2427,8 @@ function Creative.DrugPeds()
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
-			local Service = vRP.NumPermission("Police")
-			if #Service >= 7 then
+			local Service,Total = vRP.NumPermission("Police")
+			if Total >= 7 then
 				Drugs[Passport][3] = Drugs[Passport][3] + (Points * 3)
 			end
 

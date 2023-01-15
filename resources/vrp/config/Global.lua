@@ -12,7 +12,7 @@ ServerName = "Energy"
 ReleaseText = "Envie na sala liberação"
 SpawnCoords = vec3(239.41,-1381.01,33.73)
 BackArenaPos = vec3(-1046.43,-474.55,36.78)
-BackPrison = vec3(1896.15,2604.44,45.75)
+BackPrison = vec3(1841.62,2585.94,46.02)
 BackpackWeightDefault = 30
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BASE

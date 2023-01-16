@@ -159,7 +159,7 @@ function Creative.DoorsPermission(Number)
 		if GlobalState["Doors"][Number]["Perm"] then
 			local Split = splitString(GlobalState["Doors"][Number]["Perm"],"-")
 
-			if (Split[2] and not vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) or not vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
+			if (Split[2] and not vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) and not vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
 				local consultItem = vRP.InventoryItemAmount(Passport,"lockpick")
 				if consultItem[1] <= 0 then
 					return

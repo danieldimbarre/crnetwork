@@ -68,11 +68,11 @@ GlobalState["Doors"] = {
 	[52] = { Coords = vec3(368.26,-1605.01,29.94), Hash = -674638964, Lock = true, Distance = 1.5, Perm = "Police" },
 	[53] = { Coords = vec3(375.07,-1598.43,25.34), Hash = -674638964, Lock = true, Distance = 1.5, Perm = "Police" },
 	[54] = { Coords = vec3(375.87,-1599.10,25.34), Hash = -674638964, Lock = true, Distance = 1.5, Perm = "Police" },
-	[61] = { Coords = vec3(1813.55,3675.05,34.39), Hash = 2010487154, Lock = true, Distance = 1.5, Perm = "Police" },
-	[62] = { Coords = vec3(1810.13,3676.46,34.39), Hash = 2010487154, Lock = true, Distance = 1.5, Perm = "Police" },
-	[63] = { Coords = vec3(1808.62,3679.06,34.39), Hash = 2010487154, Lock = true, Distance = 1.5, Perm = "Police" },
-	[64] = { Coords = vec3(1807.13,3681.66,34.39), Hash = 2010487154, Lock = true, Distance = 1.5, Perm = "Police" },
-	[65] = { Coords = vec3(391.86,-1636.07,29.97), Hash = -1156020871, Lock = true, Distance = 1.5, Perm = "Police" },
+	[55] = { Coords = vec3(1813.55,3675.05,34.39), Hash = 2010487154, Lock = true, Distance = 1.5, Perm = "Police" },
+	[56] = { Coords = vec3(1810.13,3676.46,34.39), Hash = 2010487154, Lock = true, Distance = 1.5, Perm = "Police" },
+	[57] = { Coords = vec3(1808.62,3679.06,34.39), Hash = 2010487154, Lock = true, Distance = 1.5, Perm = "Police" },
+	[58] = { Coords = vec3(1807.13,3681.66,34.39), Hash = 2010487154, Lock = true, Distance = 1.5, Perm = "Police" },
+	[59] = { Coords = vec3(391.86,-1636.07,29.97), Hash = -1156020871, Lock = true, Distance = 1.5, Perm = "Police" },
 	-- [71] = { Coords = vec3(309.13,-597.75,43.43), Hash = 854291622, Lock = true, Distance = 1.5, Perm = "Paramedic" },
 	-- [72] = { Coords = vec3(307.11,-569.56,43.43), Hash = 854291622, Lock = true, Distance = 1.5, Perm = "Emergency" },
 	-- [73] = { Coords = vec3(336.16,-580.14,43.43), Hash = 854291622, Lock = true, Distance = 1.5, Perm = "Paramedic" },
@@ -159,7 +159,7 @@ function Creative.DoorsPermission(Number)
 		if GlobalState["Doors"][Number]["Perm"] then
 			local Split = splitString(GlobalState["Doors"][Number]["Perm"],"-")
 
-			if (Split[2] and not vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) and not vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
+			if (Split[2] and not vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) or (not Split[2] and not vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"])) then
 				local consultItem = vRP.InventoryItemAmount(Passport,"lockpick")
 				if consultItem[1] <= 0 then
 					return

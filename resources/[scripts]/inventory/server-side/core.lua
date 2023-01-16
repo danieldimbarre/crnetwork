@@ -2517,6 +2517,20 @@ AddEventHandler("deliver:Update",function(Selected,Finish)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:OBJECTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("inventory:Objects")
+AddEventHandler("inventory:Objects",function(Type)
+	local source = source
+	local Blips = {}
+
+	for k,v in ipairs(Objects) do
+		if v["mode"] == "Suplies" then
+
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:BUFFSERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("inventory:BuffServer",function(source,Passport,Name,Amount)
@@ -2606,6 +2620,7 @@ AddEventHandler("Connect",function(Passport,source)
 	Ammos[Passport] = vRP.UserData(Passport,"Ammos")
 	Attachs[Passport] = vRP.UserData(Passport,"Attachs")
 
+	TriggerClientEvent("inventory:Table",source,Objects)
 	TriggerClientEvent("objects:Table",source,Objects)
 	TriggerClientEvent("drops:Table",source,Drops)
 

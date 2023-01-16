@@ -15,6 +15,8 @@ vSERVER = Tunnel.getInterface("inventory")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Objects = {}
+local Blips = {}
 local Drops = {}
 local Types = ""
 local Weapon = ""
@@ -2580,5 +2582,48 @@ CreateThread(function()
 				}
 			}
 		})
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:TABLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:Table")
+AddEventHandler("inventory:Table",function(ObjTable)
+	Objects = ObjTable
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- OBJECTS:BLIPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("objects:Blips")
+AddEventHandler("objects:Blips",function(Mode)
+	if json.encode(Blips) ~= "[]" then
+		for _,v in pairs(Blips) do
+			if DoesBlipExist(v) then
+				RemoveBlip(v)
+			end
+		end
+
+		Blips = {}
+
+		TriggerEvent("Notify","amarelo","Marcações desativadas.",10000)
+	else
+		for Number,v in pairs(Objects) do
+			if v["mode"] == Mode then
+				local RandomX = math.random(1,10)
+				local RandomY = math.random(1,10)
+
+				if math.random(2) >= 2 then
+					Blips[Number] = AddBlipForRadius(v["x"] + RandomX + 0.0,v["y"] - RandomY + 0.0,v["z"],10.0)
+				else
+					Blips[Number] = AddBlipForRadius(v["x"] - RandomX + 0.0,v["y"] + RandomY + 0.0,v["z"],10.0)
+				end
+
+				SetBlipAlpha(Blips[Number],200)
+				SetBlipAsShortRange(Blips[Number],true)
+				SetBlipColour(Blips[Number],2)
+			end
+		end
+
+		TriggerEvent("Notify","verde","Marcações ativadas.",10000)
 	end
 end)

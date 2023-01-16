@@ -99,6 +99,10 @@ GlobalState["Doors"] = {
 	[94] = { Coords = vec3(475.39,-989.82,26.35), Hash = -692649124, Lock = true, Distance = 1.5, Perm = "Police" },
 	[95] = { Coords = vec3(384.43,-1601.95,30.04), Hash = -1335406364, Lock = true, Distance = 1.5, Perm = "Police" },
 	[96] = { Coords = vec3(374.64,-1613.63,30.04), Hash = -1335406364, Lock = true, Distance = 1.5, Perm = "Police" },
+	[97] = { Coords = vec3(1776.2,2552.57,45.75), Hash = 1373390714, Lock = true, Distance = 1.5, Perm = "Police" },
+	[98] = { Coords = vec3(1791.6,2551.47,45.76), Hash = 1373390714, Lock = true, Distance = 1.5, Perm = "Police" },
+	[99] = { Coords = vec3(1819.08,2594.88,46.09), Hash = 1373390714, Lock = true, Distance = 1.5, Perm = "Police" },
+	[100] = { Coords = vec3(1831.35,2595.0,46.04), Hash = -684929024, Lock = true, Distance = 1.5, Perm = "Police" },
 	-- [101] = { Coords = vec3(805.03,-747.97,27.25), Hash = 95403626, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 102 },
 	-- [102] = { Coords = vec3(803.98,-747.97,27.25), Hash = -49173194, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 101 },
 	-- [103] = { Coords = vec3(794.29,-757.62,27.25), Hash = 95403626, Lock = true, Distance = 1.5, Perm = "PizzaThis", Other = 104 },
@@ -131,7 +135,19 @@ GlobalState["Doors"] = {
 	[164] = { Coords = vec3(-643.14,-1229.26,11.68), Hash = 1215119726, Lock = true, Distance = 1.5, Perm = "Triads", Other = 165 },
 	[165] = { Coords = vec3(-644.47,-1227.16,11.68), Hash = -636132164, Lock = true, Distance = 1.5, Perm = "Triads", Other = 164 },
 	[166] = { Coords = vec3(324.71,-1991.08,24.36), Hash = 2118614536, Lock = true, Distance = 1.5, Perm = "Vagos" },
-	[167] = { Coords = vec3(336.74,-1991.84,24.36), Hash = 2118614536, Lock = true, Distance = 1.5, Perm = "Vagos" }
+	[167] = { Coords = vec3(336.74,-1991.84,24.36), Hash = 2118614536, Lock = true, Distance = 1.5, Perm = "Vagos" },
+	[168] = { Coords = vec3(153.87,-3023.88,10.74), Hash = -456733639, Lock = true, Distance = 7, Perm = "Mechanic-3" },
+	[169] = { Coords = vec3(153.43,-3034.05,10.94), Hash = -456733639, Lock = true, Distance = 7, Perm = "Mechanic-3" },
+	[170] = { Coords = vec3(1820.77,2620.78,45.96), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[171] = { Coords = vec3(1845.79,2698.63,45.96), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[172] = { Coords = vec3(1773.11,2759.7,45.89), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[173] = { Coords = vec3(1651.17,2755.44,45.88), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[174] = { Coords = vec3(1572.67,2679.2,45.73), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[175] = { Coords = vec3(1537.82,2586.0,45.69), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[176] = { Coords = vec3(1543.25,2471.3,45.72), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[177] = { Coords = vec3(1658.59,2397.73,45.72), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[178] = { Coords = vec3(1759.63,2412.84,45.72), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[179] = { Coords = vec3(1821.18,2476.27,45.69), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOORSPERMISSION
@@ -141,9 +157,9 @@ function Creative.DoorsPermission(Number)
 	local Passport = vRP.Passport(source)
 	if Passport and not GlobalState["Doors"][Number]["Block"] then
 		if GlobalState["Doors"][Number]["Perm"] then
-			local PermSplit = splitString(GlobalState["Doors"][Number]["Perm"],"-")
+			local Split = splitString(GlobalState["Doors"][Number]["Perm"],"-")
 
-			if (not PermSplit[2] and not vRP.HasGroup(Passport,GlobalState["Doors"][Number]["Perm"])) or (PermSplit[2] and not vRP.HasGroup(Passport,PermSplit[1],parseInt(PermSplit[2]))) then
+			if (Split[2] and not vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) or not vRP.HasService(Passport,GlobalState["Doors"][Number]["Perm"]) then
 				local consultItem = vRP.InventoryItemAmount(Passport,"lockpick")
 				if consultItem[1] <= 0 then
 					return

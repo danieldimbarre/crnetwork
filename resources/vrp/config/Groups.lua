@@ -47,7 +47,7 @@ Groups = {
 		["Parent"] = {
 			["Mechanic"] = true
 		},
-		["Hierarchy"] = { "Chefe","Gerente","Membro" },
+		["Hierarchy"] = { "Chefe","Gerente","Membro","Mecânico" },
 		["Service"] = {},
 		["Type"] = "Work"
 	},

@@ -131,6 +131,16 @@ local bennysLocations = {
 		pos = vector3(831.64,-819.79,25.81),
 		heading = 90.0,
 		permission = "Mechanic"
+	},
+	["Mechanic04"] = {
+		pos = vector3(-1423.8,-449.8,35.91),
+		heading = 31.19,
+		permission = "Mechanic"
+	},
+	["Mechanic05"] = {
+		pos = vector3(-1416.89,-446.86,35.91),
+		heading = 31.19,
+		permission = "Mechanic"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

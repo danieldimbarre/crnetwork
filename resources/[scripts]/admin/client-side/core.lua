@@ -72,17 +72,20 @@ end
 -- VEHICLETUNING
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("admin:vehicleTuning")
-AddEventHandler("admin:vehicleTuning",function()
-	local Ped = PlayerPedId()
-	if IsPedInAnyVehicle(Ped) then
-		local vehicle = GetVehiclePedIsUsing(Ped)
+AddEventHandler("admin:vehicleTuning",function(Index,Plate)
+	if NetworkDoesNetworkIdExist(Index) then
+		local Vehicle = NetToEnt(Index)
+		if DoesEntityExist(Vehicle) then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
 
-		SetVehicleModKit(vehicle,0)
-		SetVehicleMod(vehicle,11,GetNumVehicleMods(vehicle,11) - 1,false)
-		SetVehicleMod(vehicle,12,GetNumVehicleMods(vehicle,12) - 1,false)
-		SetVehicleMod(vehicle,13,GetNumVehicleMods(vehicle,13) - 1,false)
-		SetVehicleMod(vehicle,15,GetNumVehicleMods(vehicle,15) - 1,false)
-		ToggleVehicleMod(vehicle,18,true)
+				SetVehicleModKit(Vehicle,0)
+				SetVehicleMod(Vehicle,11,GetNumVehicleMods(Vehicle,11) - 1,false)
+				SetVehicleMod(Vehicle,12,GetNumVehicleMods(Vehicle,12) - 1,false)
+				SetVehicleMod(Vehicle,13,GetNumVehicleMods(Vehicle,13) - 1,false)
+				SetVehicleMod(Vehicle,15,GetNumVehicleMods(Vehicle,15) - 1,false)
+				ToggleVehicleMod(Vehicle,18,true)
+			end
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

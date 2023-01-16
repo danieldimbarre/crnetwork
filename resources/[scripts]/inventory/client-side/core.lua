@@ -2613,9 +2613,9 @@ AddEventHandler("objects:Blips",function(Mode)
 				local RandomY = math.random(1,10)
 
 				if math.random(2) >= 2 then
-					Blips[Number] = AddBlipForRadius(v["x"] + RandomX + 0.0,v["y"] - RandomY + 0.0,v["z"],10.0)
+					Blips[Number] = AddBlipForRadius(v["x"] + RandomX + 0.0,v["y"] - RandomY + 0.0,v["z"],20.0)
 				else
-					Blips[Number] = AddBlipForRadius(v["x"] - RandomX + 0.0,v["y"] + RandomY + 0.0,v["z"],10.0)
+					Blips[Number] = AddBlipForRadius(v["x"] - RandomX + 0.0,v["y"] + RandomY + 0.0,v["z"],20.0)
 				end
 
 				SetBlipAlpha(Blips[Number],200)

@@ -6,13 +6,13 @@
       <colors>
         <Item>
           <indices content="char_array">12 12 12 12 0 0</indices>
-          <liveries />
+          <liveries/>
         </Item>
       </colors>
       <kits>
         <Item>932016_audia4_modkit</Item>
       </kits>
-      <windowsWithExposedEdges />
+      <windowsWithExposedEdges/>
       <plateProbabilities>
         <Probabilities>
           <Item>
@@ -1650,6 +1650,29 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="10"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>eclipse</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">0 0 4 0 0 0</indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>eclipse_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
       <sirenSettings value="0"/>
     </Item>
   </variationData>

@@ -741,7 +741,7 @@ CreateThread(function()
 		Distance = 0.75
 	})
 
-	AddTargetModel({ 3965551402 },{
+	AddTargetModel({ -329415894 },{
 		options = {
 			{
 				event = "chest:Open",

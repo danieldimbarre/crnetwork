@@ -5737,7 +5737,7 @@ local List = {
 	},
 	["jeepcherokee"] = {
 		["Name"] = "Cherokee",
-		["Weight"] = 30,
+		["Weight"] = 80,
 		["Price"] = 100000,
 		["Mode"] = "rental",
 		["Gems"] = 100
@@ -5772,7 +5772,7 @@ local List = {
 	},
 	["urus"] = {
 		["Name"] = "Urus",
-		["Weight"] = 30,
+		["Weight"] = 80,
 		["Price"] = 100000,
 		["Mode"] = "rental",
 		["Gems"] = 100
@@ -5884,7 +5884,7 @@ local List = {
 	},
 	["rangerover"] = {
 		["Name"] = "Range Rover",
-		["Weight"] = 30,
+		["Weight"] = 80,
 		["Price"] = 100000,
 		["Mode"] = "rental",
 		["Gems"] = 100
@@ -6047,7 +6047,7 @@ local List = {
 		["Name"] = "G 65",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "rental",
 		["Gems"] = 100
 	},
 	["mustang1969"] = {

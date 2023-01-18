@@ -40,7 +40,7 @@ AddEventHandler("doors:Update",function(Number,Status)
 		DoorSystemSetDoorState(Second,Status and 1 or 0,true)
 	end
 
-	if Display[Number] and Text then
+	if Display[Number] and GlobalState["Doors"][Number]["Text"] then
 		SendNUIMessage({ Action = "Doors", Status = true, Text = Status and "Trancado" or "Destrancado" })
 	end
 end)

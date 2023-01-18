@@ -962,7 +962,7 @@ local List = {
 		}
 	},
 	["Paramedic"] = {
-		["perm"] = "Paramedic",
+		["perm"] = "Paramedic-2",
 		["List"] = {
 			["adrenaline"] = {
 				["amount"] = 1,

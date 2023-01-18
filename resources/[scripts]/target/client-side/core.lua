@@ -741,6 +741,18 @@ CreateThread(function()
 		Distance = 0.75
 	})
 
+	AddTargetModel({ 3965551402 },{
+		options = {
+			{
+				event = "chest:Open",
+				label = "Abrir",
+				tunnel = "entity",
+				service = "Custom"
+			}
+		},
+		Distance = 0.75
+	})
+
 	AddTargetModel({ -1940238623,2108567945 },{
 		options = {
 			{

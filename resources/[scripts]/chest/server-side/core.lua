@@ -271,7 +271,7 @@ AddEventHandler("chest:Upgrade",function(Name)
 		local Split = splitString(Name,"-")
 
 		if (Split[2] and vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) or vRP.HasService(Passport,Name) then
-			if vRP.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
+			if vRP.Request(source,"Aumentar <b>10kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
 				if vRP.PaymentFull(Passport,10000) then
 					vRP.Query("chests/UpdateChests",{ name = Name })
 					TriggerClientEvent("Notify",source,"verde","Compra concluída.",3000)

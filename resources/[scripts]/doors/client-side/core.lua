@@ -40,7 +40,7 @@ AddEventHandler("doors:Update",function(Number,Status)
 		DoorSystemSetDoorState(Second,Status and 1 or 0,true)
 	end
 
-	if Display[Number] then
+	if Display[Number] and Text then
 		SendNUIMessage({ Action = "Doors", Status = true, Text = Status and "Trancado" or "Destrancado" })
 	end
 end)
@@ -59,7 +59,7 @@ CreateThread(function()
 				if Distance <= v["Distance"] then
 					TimeDistance = 1
 
-					if not Display[Number] then
+					if not Display[Number] and v["Text"] then
 						SendNUIMessage({ Action = "Doors", Status = true, Text = v["Lock"] and "Trancado" or "Destrancado" })
 						Display[Number] = true
 					end

@@ -175,7 +175,7 @@ AddEventHandler("propertys:Sell",function(Name)
 					vRP.RemSrvData("Fridge:"..Name)
 
 					vRP.Query("propertys/Sell",{ name = Name })
-					TriggerClientEvent("Notify",source,"amarelo","Venda concluída.",5000)
+					TriggerClientEvent("Notify",source,"verde","Venda concluída.",5000)
 					local Price = Informations[Consult[1]["Interior"]]["Price"] * 0.25
 					vRP.GiveBank(Passport,Price)
 
@@ -204,6 +204,45 @@ AddEventHandler("propertys:Credentials",function(Name)
 					local Serial = PropertysSerials()
 					vRP.Query("propertys/Credentials",{ name = Name, serial = Serial })
 					vRP.GiveItem(Passport,"propertys-"..Serial,Consult[1]["Keys"],true)
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:INVADE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("propertys:Invade")
+AddEventHandler("propertys:Invade",function()
+	local source = source
+	local Name,Interior = nearestHomes(source)
+	if Name and Interior then
+		local Passport = vRP.Passport(source)
+		if Passport then
+			if vRP.HasService(Passport,"Police") then
+				TriggerClientEvent("propertys:Enter",source,Name,Interior)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:VAULT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("propertys:Vault")
+AddEventHandler("propertys:Vault",function(Name)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local Consult = vRP.Query("propertys/Exist",{ name = Name })
+		if Consult[1] then
+			if parseInt(Consult[1]["Passport"]) == Passport or vRP.InventoryFull(Passport,"propertys-"..Consult[1]["Serial"]) then
+				if vRP.Request(source,"Aumentar <b>10kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
+					if vRP.PaymentFull(Passport,10000) then
+						vRP.Query("propertys/Vault",{ name = Name, weight = 10 })
+						TriggerClientEvent("Notify",source,"verde","Compra concluída.",3000)
+					else
+						TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
+					end
 				end
 			end
 		end

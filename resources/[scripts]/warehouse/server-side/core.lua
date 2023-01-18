@@ -64,13 +64,13 @@ function Creative.Warehouse(Name)
 					end
 				end
 			else
-				if vRP.Request(source,"Gostaria de comprar o armazém por <b>$100.000</b>?","Sim, por favor","Não, decido depois") then
+				if vRP.Request(source,"Gostaria de comprar o armazém por <b>$200.000</b>?","Sim, por favor","Não, decido depois") then
 					local Keyboard = vKEYBOARD.keyWord(source,"Senha:")
 					if Keyboard then
 						local Password = sanitizeString(Keyboard[1],"0123456789",true)
 						if string.len(Password) >= 4 and string.len(Password) <= 20 then
 							if vRP.Request(source,"Finalizar a compra usando a senha <b>"..Password.."</b>?","Sim, por favor","Não, decido depois") then
-								if vRP.PaymentFull(Passport,100000) then
+								if vRP.PaymentFull(Passport,200000) then
 									vRP.Query("warehouse/Buy",{ name = Name, Passport = Passport, password = Password })
 									return true
 								else
@@ -89,7 +89,7 @@ function Creative.Warehouse(Name)
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- WAREHOUSEUPGRADE
+-- WAREHOUSE:UPGRADE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("warehouse:Upgrade")
 AddEventHandler("warehouse:Upgrade",function(Name)
@@ -98,13 +98,36 @@ AddEventHandler("warehouse:Upgrade",function(Name)
 	if Passport then
 		local Warehouse = vRP.Query("warehouse/Informations",{ name = Name })
 		if Warehouse[1] then
-			if vRP.Request(source,"Aumentar <b>10Kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
+			if vRP.Request(source,"Aumentar <b>10kg</b> por <b>$10.000</b> dólares?","Sim, efetuar pagamento","Não, decido depois") then
 				if vRP.PaymentFull(Passport,10000) then
 					vRP.Query("warehouse/Upgrade",{ name = Name })
 					TriggerClientEvent("Notify",source,"verde","Aumento concluído.",3000)
 				else
 					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WAREHOUSE:SELL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("warehouse:Sell")
+AddEventHandler("warehouse:Sell",function(Name)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local Warehouse = vRP.Query("warehouse/Informations",{ name = Name })
+		if Warehouse[1] then
+			if vRP.Request(source,"Deseja vender o armazém?","Sim, concluir a venda","Não, mudeia de ideia") then
+				vRP.RemSrvData("Warehouse:"..Name)
+
+				vRP.Query("warehouse/Sell",{ name = Name })
+				TriggerClientEvent("Notify",source,"verde","Venda concluída.",5000)
+				local Price = Informations[Name]["Price"] * 0.20
+				vRP.GiveBank(Passport,Price)
+
+				TriggerEvent("Discord","Warehouse","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..Price,3042892)
 			end
 		end
 	end

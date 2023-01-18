@@ -62,7 +62,7 @@ AddEventHandler("vRP:Active",function(Passport,Name)
 	RequestIpl("rc12b_default")
 	AddTextEntry("FE_THDR_GTAO","Energy")
 
-	Wait(30000)
+	Wait(5000)
 
 	ReplaceHudColour(116,18)
 end)

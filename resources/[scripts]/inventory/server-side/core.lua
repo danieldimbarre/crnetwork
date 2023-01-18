@@ -55,15 +55,15 @@ GlobalState["Buffs"] = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 DrugsList = {
 	["cocaine"] = {
-		Price = { ["Min"] = 186, ["Max"] = 215 },
+		Price = { ["Min"] = 286, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["meth"] = {
-		Price = { ["Min"] = 186, ["Max"] = 215 },
+		Price = { ["Min"] = 286, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["joint"] = {
-		Price = { ["Min"] = 186, ["Max"] = 215 },
+		Price = { ["Min"] = 286, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["oxy"] = {
@@ -153,8 +153,28 @@ Objects = {
 	["74"] = { x = 751.57, y = -1860.52, z = 28.28, h = 357.17, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 	["75"] = { x = -429.27, y = -2169.23, z = 9.33, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 	
-	["76"] = { x = 442.83, y = -985.87, z = 42.69, h = 272.13, object = "prop_gas_pump_old2", item = "", Distance = 50, mode = "Gasoline" },
-	["77"] = { x = -697.93, y = 319.61, z = 139.14, h = 178.59, object = "prop_gas_pump_old2", item = "", Distance = 50, mode = "Gasoline" }
+	["76"] = { x = 442.83, y = -985.87, z = 42.69, h = 272.13, object = "prop_gas_pump_old2", item = "", Distance = 150, mode = "Gasoline" },
+	["77"] = { x = -697.93, y = 319.61, z = 138.19, h = 178.59, object = "prop_gas_pump_old2", item = "", Distance = 150, mode = "Gasoline" },
+	["78"] = { x = 2958.86, y = 2753.9, z = 42.71, h = 17.01, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
+	["79"] = { x = 1532.77, y = 3780.12, z = 33.51, h = 32.6, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
+	["80"] = { x = 488.09, y = -998.98, z = 29.68, h = 90.71, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["81"] = { x = -697.93, y = 319.61, z = 139.09, h = 178.59, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["82"] = { x = 97.01, y = -96.29, z = -25.20, h = 133.23, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["83"] = { x = 122.58, y = -111.75, z = -24.59, h = 11.34, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["84"] = { x = 157.14, y = -160.16, z = -20.19, h = 31.19, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["85"] = { x = 47.35, y = -48.4, z = -25.01, h = 51.03, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["86"] = { x = 84.81, y = 86.7, z = -25.01, h = 87.88, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["87"] = { x = 365.53, y = -1600.49, z = 24.44, h = 232.45, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["88"] = { x = 1836.76, y = 3687.87, z = 33.19, h = 209.77, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["89"] = { x = -443.88, y = 6018.68, z = 35.99, h = 136.07, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["90"] = { x = -4.99, y = -1822.0, z = 28.15, h = 232.45, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["91"] = { x = -157.22, y = -1613.59, z = 32.65, h = 335.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["92"] = { x = 329.54, y = -1992.93, z = 24.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["93"] = { x = 495.24, y = -1538.37, z = 23.20, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["94"] = { x = -1110.84, y = 4941.59, z = 217.36, h = 72.29, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["95"] = { x = 1256.71, y = -1571.92, z = 57.35, h = 35.44, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["96"] = { x = 109.75, y = 3615.54, z = 39.49, h = 270.71, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["97"] = { x = -641.09, y = -1246.16, z = 10.81, h = 83.63, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS
@@ -626,6 +646,8 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
+
+				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Dropou:** "..Amount.."x "..itemName(Item),3042892)
 			end
 		else
 			TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -768,6 +790,8 @@ function Creative.SendItem(Slot,Amount)
 
 						Wait(100)
 					until not Active[Passport]
+
+					TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Enviou:** "..Amount.."x "..itemName(Item).."\n**Para:** "..OtherPassport,3042892)
 				else
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 				end
@@ -1083,6 +1107,45 @@ function Creative.Deliver(Slot)
 					vRP.PutExperience(Passport,"Delivery",Experience)
 					vDELIVER.Update(source)
 				end
+			end
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TRASH
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Trash(Slot,Amount)
+	local source = source
+	local Slot = tostring(Slot)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
+			local Inventory = vRP.Inventory(Passport)
+			if not Inventory[Slot] or not Inventory[Slot]["item"] then
+				return
+			end
+
+			local Split = splitString(Inventory[Slot]["item"],"-")
+			local Full = Inventory[Slot]["item"]
+			local Item = Split[1]
+
+			if vRP.TakeItem(Passport,Full,Amount,true,Slot) then
+				Player(source)["state"]["Buttons"] = true
+				Player(source)["state"]["Cancel"] = true
+
+				if not vRP.InsideVehicle(source) then
+					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+					Active[Passport] = os.time() + 100
+
+					SetTimeout(1000,function()
+						vRPC.removeObjects(source)
+						Active[Passport] = nil
+					end)
+				end
+
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				Player(source)["state"]["Buttons"] = false
+				Player(source)["state"]["Cancel"] = false
 			end
 		end
 	end
@@ -2415,7 +2478,8 @@ function Creative.AmountDrugs(Selected)
 			local Consult = vRP.InventoryItemAmount(Passport,k)
 			if Consult[1] >= Amount then
 				Drugs[Passport] = { Consult[2],Amount,Price * Amount }
-				return true
+				local Service,Total = vRP.NumPermission("Police")
+				return true,Total
 			end
 		end
 
@@ -2439,12 +2503,7 @@ function Creative.DrugPeds()
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
-			local Service,Total = vRP.NumPermission("Police")
-			if Total >= 7 then
-				Drugs[Passport][3] = Drugs[Passport][3] + (Points * 3)
-			end
-
-			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3],true)
+			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3] + (Points * 2),true)
 
 			TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
 			Percentage = Percentage - Points
@@ -2456,6 +2515,7 @@ function Creative.DrugPeds()
 			if math.random(100) >= Percentage then
 				local Ped = GetPlayerPed(source)
 				local Coords = GetEntityCoords(Ped)
+				local Service = vRP.NumPermission("Police")
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")

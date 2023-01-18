@@ -164,14 +164,17 @@ Objects = {
 	["84"] = { x = 157.14, y = -160.16, z = -20.19, h = 31.19, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
 	["85"] = { x = 47.35, y = -48.4, z = -25.01, h = 51.03, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
 	["86"] = { x = 84.81, y = 86.7, z = -25.01, h = 87.88, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["87"] = { x = -4.99, y = -1822.0, z = 28.15, h = 232.45, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["88"] = { x = -157.22, y = -1613.59, z = 32.65, h = 335.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["89"] = { x = 329.54, y = -1992.93, z = 24.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["90"] = { x = 495.24, y = -1538.37, z = 23.20, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["91"] = { x = -1110.84, y = 4941.59, z = 217.36, h = 72.29, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["92"] = { x = 1256.71, y = -1571.92, z = 57.35, h = 35.44, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["93"] = { x = 109.75, y = 3615.54, z = 39.49, h = 270.71, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["94"] = { x = -641.09, y = -1246.16, z = 10.81, h = 83.63, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
+	["87"] = { x = 365.53, y = -1600.49, z = 25.44, h = 232.45, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["88"] = { x = 1836.76, y = 3687.87, z = 34.19, h = 209.77, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["89"] = { x = -443.88, y = 6018.68, z = 36.99, h = 136.07, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["90"] = { x = -4.99, y = -1822.0, z = 28.15, h = 232.45, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["91"] = { x = -157.22, y = -1613.59, z = 32.65, h = 335.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["92"] = { x = 329.54, y = -1992.93, z = 24.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["93"] = { x = 495.24, y = -1538.37, z = 23.20, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["94"] = { x = -1110.84, y = 4941.59, z = 217.36, h = 72.29, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["95"] = { x = 1256.71, y = -1571.92, z = 57.35, h = 35.44, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["96"] = { x = 109.75, y = 3615.54, z = 39.49, h = 270.71, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["97"] = { x = -641.09, y = -1246.16, z = 10.81, h = 83.63, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS

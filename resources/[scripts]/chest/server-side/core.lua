@@ -172,193 +172,193 @@ local OpenItens = {
 		}
 	},
 	["lockpick"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["card01"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["card02"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["card03"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["card04"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["card05"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["c4"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["pliers"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["pliers"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["rope"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["pendrive"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["credential"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["explosives"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["pistolbody"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["smgbody"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["riflebody"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["silvercoin"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 10 }
 		}
 	},
 	["goldcoin"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 10 }
 		}
 	},
 	["WEAPON_NAILGUN"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_HATCHET"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_BAT"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_KATANA"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_KARAMBIT"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_BATTLEAXE"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_CROWBAR"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_GOLFCLUB"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_HAMMER"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_MACHETE"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_POOLCUE"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_STONE_HATCHET"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_WRENCH"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
 	},
 	["WEAPON_KNUCKLE"] = {
-		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" },
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}

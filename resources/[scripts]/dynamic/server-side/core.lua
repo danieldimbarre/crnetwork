@@ -10,19 +10,32 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("dynamic",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- WORKS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Works = {
+	["Dismantle"] = "Desmanche",
+	["Tows"] = "Reboque",
+	["Delivery"] = "Entregador",
+	["Transporter"] = "Transportador",
+	["Lumberman"] = "Lenhador"
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- EXPERIENCE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Experience()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		local Experiences = {
-			["Desmanche"] = vRP.GetExperience(Passport,"Dismantle"),
-			["Reboque"] = vRP.GetExperience(Passport,"Tows"),
-			["Entregador"] = vRP.GetExperience(Passport,"Delivery"),
-			["Transportador"] = vRP.GetExperience(Passport,"Transporter"),
-			["Lenhador"] = vRP.GetExperience(Passport,"Lumberman")
-		}
+	local Datatable = vRP.Datatable(Passport)
+	if Passport and Datatable then
+		local Experiences = {}
+
+		for Index,v in pairs(Works) do
+			if Datatable[Index] then
+				Experiences[v] = Datatable[Index]
+			else
+				Experiences[v] = 0
+			end
+		end
 
 		return Experiences
 	end

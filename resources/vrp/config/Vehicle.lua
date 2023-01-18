@@ -5428,70 +5428,70 @@ local List = {
 		["Gems"] = 0
 	},
 	["fordraptor"] = {
-		["Name"] = "Raptor",
+		["Name"] = "Raptor Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
 	["WRa45"] = {
-		["Name"] = "A45",
+		["Name"] = "A45 Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
 	["WRbmwx6"] = {
-		["Name"] = "X6",
+		["Name"] = "X6 Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
 	["audir82"] = {
-		["Name"] = "R82",
+		["Name"] = "R8 Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
 	["tahoe"] = {
-		["Name"] = "Tahoe",
+		["Name"] = "Tahoe Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
 	["wrsxr"] = {
-		["Name"] = "S 1000 XR",
+		["Name"] = "S 1000 XR Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
 	["fordmustanggt2"] = {
-		["Name"] = "Mustang GT",
+		["Name"] = "Mustang GT Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
 	["nspeedo"] = {
-		["Name"] = "Van",
+		["Name"] = "Van Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
 	["tacoma"] = {
-		["Name"] = "Tacoma",
+		["Name"] = "Tacoma Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
 	["audia4"] = {
-		["Name"] = "A4",
+		["Name"] = "A4 Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",

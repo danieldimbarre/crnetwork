@@ -154,19 +154,24 @@ Objects = {
 	["75"] = { x = -429.27, y = -2169.23, z = 9.33, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 	
 	["76"] = { x = 442.83, y = -985.87, z = 42.69, h = 272.13, object = "prop_gas_pump_old2", item = "", Distance = 150, mode = "Gasoline" },
-	["77"] = { x = -697.93, y = 319.61, z = 139.14, h = 178.59, object = "prop_gas_pump_old2", item = "", Distance = 150, mode = "Gasoline" },
-	["78"] = { x = 2953.26, y = 2739.96, z = 44.01, h = 209.77, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
-	["79"] = { x = 1532.77, y = 3780.12, z = 34.51, h = 212.6, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
-	["80"] = { x = 488.09, y = -998.98, z = 30.68, h = 90.71, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["77"] = { x = -697.93, y = 319.61, z = 138.19, h = 178.59, object = "prop_gas_pump_old2", item = "", Distance = 150, mode = "Gasoline" },
+	["78"] = { x = 2953.26, y = 2739.96, z = 43.06, h = 209.77, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
+	["79"] = { x = 1532.77, y = 3780.12, z = 33.56, h = 212.6, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
+	["80"] = { x = 488.09, y = -998.98, z = 29.73, h = 90.71, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
 	["81"] = { x = -697.93, y = 319.61, z = 139.14, h = 178.59, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["82"] = { x = 97.01, y = -96.29, z = -24.2, h = 133.23, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["83"] = { x = 122.58, y = -111.75, z = -23.59, h = 11.34, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["84"] = { x = 157.14, y = -160.16, z = -19.19, h = 31.19, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["85"] = { x = 47.35, y = -48.4, z = -24.01, h = 51.03, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["86"] = { x = 84.99, y = 86.79, z = -24.01, h = 87.88, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["87"] = { x = -4.99, y = -1822.0, z = 29.15, h = 45.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["88"] = { x = -157.22, y = -1613.59, z = 33.65, h = 155.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["89"] = { x = 329.54, y = -1992.93, z = 24.2, h = 45.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
+	["82"] = { x = 97.01, y = -96.29, z = -25.15, h = 133.23, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["83"] = { x = 122.58, y = -111.75, z = -24.54, h = 11.34, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["84"] = { x = 157.14, y = -160.16, z = -20.14, h = 31.19, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["85"] = { x = 47.35, y = -48.4, z = -24.96, h = 51.03, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["86"] = { x = 84.99, y = 86.79, z = -24.96, h = 87.88, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["87"] = { x = -4.99, y = -1822.0, z = 28.2, h = 232.45, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["88"] = { x = -157.22, y = -1613.59, z = 32.7, h = 335.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["89"] = { x = 329.54, y = -1992.93, z = 24.2, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["90"] = { x = 495.24, y = -1538.37, z = 23.25, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["91"] = { x = -1110.84, y = 4941.59, z = 217.41, h = 72.29, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["92"] = { x = 1256.71, y = -1571.92, z = 57.4, h = 35.44, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["93"] = { x = 109.75, y = 3615.54, z = 39.54, h = 270.71, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["94"] = { x = -641.09, y = -1246.16, z = 10.86, h = 83.63, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS

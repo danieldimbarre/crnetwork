@@ -152,6 +152,19 @@ input::placeholder {
 	background: rgba(15,15,15,.75);
 }
 
+.invMiddle div:nth-child(5), .invMiddle input:nth-child(5) {
+	border: 0;
+	width: 70%;
+	outline: none;
+	color: #ccc;
+	padding: 16px 0;
+	font-size: 12px;
+	text-align: center;
+	margin-bottom: 16px;
+	letter-spacing: 1px;
+	background: rgba(15,15,15,.75);
+}
+
 #weight {
 	max-width: 596px;
 }

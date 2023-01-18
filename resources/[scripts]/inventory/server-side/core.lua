@@ -155,7 +155,7 @@ Objects = {
 	
 	["76"] = { x = 442.83, y = -985.87, z = 42.69, h = 272.13, object = "prop_gas_pump_old2", item = "", Distance = 150, mode = "Gasoline" },
 	["77"] = { x = -697.93, y = 319.61, z = 138.19, h = 178.59, object = "prop_gas_pump_old2", item = "", Distance = 150, mode = "Gasoline" },
-	["78"] = { x = 2958.86, y = 2753.9, z = 43.66, h = 17.01, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
+	["78"] = { x = 2958.86, y = 2753.9, z = 42.71, h = 17.01, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
 	["79"] = { x = 1532.77, y = 3780.12, z = 33.51, h = 32.6, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
 	["80"] = { x = 488.09, y = -998.98, z = 29.68, h = 90.71, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
 	["81"] = { x = -697.93, y = 319.61, z = 139.09, h = 178.59, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },

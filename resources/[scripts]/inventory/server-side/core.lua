@@ -646,6 +646,8 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
+
+				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Dropou:** "..Amount.."x "..itemName(Item),3042892)
 			end
 		else
 			TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -788,6 +790,8 @@ function Creative.SendItem(Slot,Amount)
 
 						Wait(100)
 					until not Active[Passport]
+
+					TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Enviou:** "..Amount.."x "..itemName(Item).."\n**Para:** "..OtherPassport,3042892)
 				else
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 				end

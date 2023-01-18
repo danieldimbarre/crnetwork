@@ -1237,9 +1237,7 @@ function TargetEnable()
 							if LocalPlayer["state"]["Police"] then
 								if GetEntityHealth(Entity) <= 100 then
 									Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
-									Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
 								else
-									Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
 									Menu[#Menu + 1] = { event = "police:prisonClothes", label = "Uniforme Presidiário", tunnel = "police" }
 								end
 							elseif LocalPlayer["state"]["Paramedic"] then
@@ -1260,6 +1258,10 @@ function TargetEnable()
 
 							if IsEntityPlayingAnim(Entity,"random@mugging3","handsup_standing_base",3) then
 								Menu[#Menu + 1] = { event = "player:checkShoes", label = "Roubar Sapatos", tunnel = "paramedic" }
+							end
+
+							if GetEntityHealth(Entity) > 100 then
+								Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
 							end
 
 							SendNUIMessage({ Action = "Valid", data = Menu })

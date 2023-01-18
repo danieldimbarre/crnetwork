@@ -96,7 +96,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GEMS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand('gems',function(source,Message)
+RegisterCommand("gems",function(source,Message)
 	if source == 0 then
 		local Passport = parseInt(Message[1])
 		local Amount = parseInt(Message[2])
@@ -666,7 +666,7 @@ RegisterCommand("announce",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
-			TriggerClientEvent('smartphone:createSMS',-1,'Prefeitura',History:sub(9))
+			TriggerClientEvent("Notify",-1,"azul","Prefeitura",History:sub(9))
 
 			TriggerEvent("Discord","Admin","**announce**\n\n**Passaporte:** "..Passport.."\n**Text:** "..History:sub(9),3553599)
 		end
@@ -677,7 +677,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("console",function(source,Message,History)
 	if source == 0 then
-		TriggerClientEvent('smartphone:createSMS',-1,'Prefeitura',History:sub(9))
+		TriggerClientEvent("Notify",-1,"azul","Prefeitura",History:sub(9))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

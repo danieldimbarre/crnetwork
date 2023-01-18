@@ -55,15 +55,15 @@ GlobalState["Buffs"] = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 DrugsList = {
 	["cocaine"] = {
-		Price = { ["Min"] = 186, ["Max"] = 215 },
+		Price = { ["Min"] = 286, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["meth"] = {
-		Price = { ["Min"] = 186, ["Max"] = 215 },
+		Price = { ["Min"] = 286, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["joint"] = {
-		Price = { ["Min"] = 186, ["Max"] = 215 },
+		Price = { ["Min"] = 286, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["oxy"] = {
@@ -2415,7 +2415,8 @@ function Creative.AmountDrugs(Selected)
 			local Consult = vRP.InventoryItemAmount(Passport,k)
 			if Consult[1] >= Amount then
 				Drugs[Passport] = { Consult[2],Amount,Price * Amount }
-				return true
+				local Service,Total = vRP.NumPermission("Police")
+				return true,Total
 			end
 		end
 
@@ -2439,12 +2440,7 @@ function Creative.DrugPeds()
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
-			local Service,Total = vRP.NumPermission("Police")
-			if Total >= 7 then
-				Drugs[Passport][3] = Drugs[Passport][3] + (Points * 3)
-			end
-
-			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3],true)
+			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3] + (Points * 2),true)
 
 			TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
 			Percentage = Percentage - Points
@@ -2456,6 +2452,7 @@ function Creative.DrugPeds()
 			if math.random(100) >= Percentage then
 				local Ped = GetPlayerPed(source)
 				local Coords = GetEntityCoords(Ped)
+				local Service = vRP.NumPermission("Police")
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")

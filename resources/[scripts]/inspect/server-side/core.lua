@@ -42,13 +42,15 @@ AddEventHandler("police:runInspect",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 then
-		openSource[Passport] = Entity[1]
-		openPlayer[Passport] = vRP.Passport(Entity[1])
+		if vRP.HasService(Passport,"Police") or (vRP.Request(Entity[1],"Aceitar a <b>revista</b> da pessoa mais próxima?","Sim, pode revistar","Não, vou resistir")) then
+			openSource[Passport] = Entity[1]
+			openPlayer[Passport] = vRP.Passport(Entity[1])
 
-		TriggerClientEvent("player:playerCarry",Entity[1],source,"handcuff")
-		TriggerClientEvent("player:Commands",Entity[1],true)
-		TriggerClientEvent("inventory:Close",Entity[1])
-		TriggerClientEvent("inspect:Open",source)
+			TriggerClientEvent("player:playerCarry",Entity[1],source,"handcuff")
+			TriggerClientEvent("player:Commands",Entity[1],true)
+			TriggerClientEvent("inventory:Close",Entity[1])
+			TriggerClientEvent("inspect:Open",source)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

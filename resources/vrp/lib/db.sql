@@ -188,7 +188,7 @@ DROP TABLE IF EXISTS `warehouse`;
 CREATE TABLE IF NOT EXISTS `warehouse` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `weight` int(10) NOT NULL DEFAULT 200,
+  `weight` int(10) NOT NULL DEFAULT 100,
   `password` varchar(50) NOT NULL,
   `Passport` int(10) NOT NULL DEFAULT 0,
   `tax` int(20) NOT NULL DEFAULT 0,

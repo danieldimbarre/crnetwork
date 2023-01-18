@@ -51,6 +51,7 @@ Discords = {
 	["Garages"] = "https://discord.com/api/webhooks/1058076961332805692/hy54NqOzNrH5MKpT23F6dGipcfMU0MzFV8O7DIOjyJjbUsiDlzibG4u-LzJiQg4e3d2Y",
 	["Propertys"] = "https://discord.com/api/webhooks/1058077202362683392/Gt62IfE1N7t-UOQIz-qJhBRjtFR8DdJTcWrmvZuhiFqYhcWe3RCQuYO51JzzQTi5GK7h",
 	["Taxi"] = "https://discord.com/api/webhooks/1060935246167674942/s_QlGDdgRE6m6599Q6lBE0oEjwp9fR85u3-6mYl6sn3TGOxxZhiqCpvef8TKg1vlya_9",
+	["Warehouse"] = "https://discord.com/api/webhooks/1065313939505819780/uKdReZ5tY0RhJfSoGSiKRpPzxuLS29glNQe8u7P2tzQBT5_WO8fRQR8eBCf3MZIWBq1i"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCORD

@@ -104,7 +104,8 @@ vRP.Prepare("warehouse/Upgrade","UPDATE warehouse SET weight = weight + 10 WHERE
 vRP.Prepare("warehouse/Password","UPDATE warehouse SET password = @password WHERE name = @name")
 vRP.Prepare("warehouse/Acess","SELECT * FROM warehouse WHERE name = @name AND password = @password")
 vRP.Prepare("warehouse/Tax","UPDATE warehouse SET tax = UNIX_TIMESTAMP() + 2592000 WHERE name = @name")
-vRP.Prepare("warehouse/Buy","INSERT INTO warehouse(name,password,Passport,tax) VALUES(@name,@password,@Passport,UNIX_TIMESTAMP() + 2592000)")
+vRP.Prepare("warehouse/Buy","INSERT INTO warehouse(name,weight,password,Passport,tax) VALUES(@name,@weight,@password,@Passport,UNIX_TIMESTAMP() + 2592000)")
+vRP.Prepare("warehouse/Sell","DELETE FROM warehouse WHERE name = @name")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS
 -----------------------------------------------------------------------------------------------------------------------------------------

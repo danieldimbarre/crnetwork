@@ -1129,7 +1129,7 @@ function Creative.Trash(Slot,Amount)
 			local Full = Inventory[Slot]["item"]
 			local Item = Split[1]
 
-			if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
+			if vRP.TakeItem(Passport,Full,Amount,true,Slot) then
 				Player(source)["state"]["Buttons"] = true
 				Player(source)["state"]["Cancel"] = true
 

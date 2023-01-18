@@ -61,7 +61,7 @@ const updateDrag = () => {
 			if(amount > itemAmount)
 				amount = itemAmount;
 
-			$(".populated, .empty, .use, .send, .deliver").off("draggable droppable");
+			$(".populated, .empty, .use, .send, .deliver, .trash").off("draggable droppable");
 
 			let clone1 = ui.draggable.clone();
 			let slot2 = $(this).data("slot"); 
@@ -153,7 +153,7 @@ const updateDrag = () => {
 			if(amount > itemAmount)
 				amount = itemAmount;
 
-			$(".populated, .empty, .use, .send, .deliver").off("draggable droppable");
+			$(".populated, .empty, .use, .send, .deliver, .trash").off("draggable droppable");
 
 			if(ui.draggable.data("item-key") == $(this).data("item-key")){
 				let newSlotAmount = amount + parseInt($(this).data("amount"));
@@ -282,6 +282,30 @@ const updateDrag = () => {
 
 			$.post("http://inventory/Deliver",JSON.stringify({
 				slot: itemData.slot
+			}));
+
+			$(".amount").val("");
+		}
+	});
+
+	$(".trash").droppable({
+		hoverClass: "hoverControl",
+		drop: function(event,ui){
+			if(ui.draggable.parent()[0] == undefined) return;
+
+			const shiftPressed = event.shiftKey;
+			const origin = ui.draggable.parent()[0].className;
+			if (origin === undefined || origin === "invRight") return;
+			itemData = { key: ui.draggable.data("item-key"), slot: ui.draggable.data("slot") };
+
+			if (itemData.key === undefined) return;
+
+			let amount = $(".amount").val();
+			if (shiftPressed) amount = ui.draggable.data("amount");
+
+			$.post("http://inventory/Trash",JSON.stringify({
+				slot: itemData.slot,
+				amount: parseInt(amount)
 			}));
 
 			$(".amount").val("");

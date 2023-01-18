@@ -1108,6 +1108,45 @@ function Creative.Deliver(Slot)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- TRASH
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Trash(Slot,Amount)
+	local source = source
+	local Slot = tostring(Slot)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
+			local Inventory = vRP.Inventory(Passport)
+			if not Inventory[Slot] or not Inventory[Slot]["item"] then
+				return
+			end
+
+			local Split = splitString(Inventory[Slot]["item"],"-")
+			local Full = Inventory[Slot]["item"]
+			local Item = Split[1]
+
+			if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
+				Player(source)["state"]["Buttons"] = true
+				Player(source)["state"]["Cancel"] = true
+
+				if not vRP.InsideVehicle(source) then
+					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+					Active[Passport] = os.time() + 100
+
+					SetTimeout(1000,function()
+						vRPC.removeObjects(source)
+						Active[Passport] = nil
+					end)
+				end
+
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				Player(source)["state"]["Buttons"] = false
+				Player(source)["state"]["Cancel"] = false
+			end
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- USEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.UseItem(Slot,Amount)

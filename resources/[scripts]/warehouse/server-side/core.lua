@@ -196,7 +196,7 @@ AddEventHandler("warehouse:Sell",function(Name)
 
 				vRP.Query("warehouse/Sell",{ name = Name })
 				TriggerClientEvent("Notify",source,"verde","Venda concluída.",5000)
-				local Price = Informations[Name]["Price"] * 0.25
+				local Price = Informations[Name]["Price"] * 0.20
 				vRP.GiveBank(Passport,Price)
 
 				TriggerEvent("Discord","Warehouse","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..Price,3042892)

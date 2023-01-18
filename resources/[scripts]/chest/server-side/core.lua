@@ -172,7 +172,193 @@ local OpenItens = {
 		}
 	},
 	["lockpick"] = {
-		["Open"] = "Police-2",
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card01"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card02"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card03"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card04"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["card05"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["c4"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["pliers"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["pliers"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["rope"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["pendrive"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["credential"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["explosives"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["pistolbody"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["smgbody"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["riflebody"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["silvercoin"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 10 }
+		}
+	},
+	["goldcoin"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 10 }
+		}
+	},
+	["WEAPON_NAILGUN"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_HATCHET"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_BAT"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_KATANA"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_KARAMBIT"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_BATTLEAXE"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_CROWBAR"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_GOLFCLUB"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_HAMMER"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_MACHETE"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_POOLCUE"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_STONE_HATCHET"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_WRENCH"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
+		["Table"] = {
+			{ ["Item"] = "dollars", ["Amount"] = 20 }
+		}
+	},
+	["WEAPON_KNUCKLE"] = {
+		["Open"] = { "Police","Police-2","Police-3","Police-4","Police-5","Police-6" }
 		["Table"] = {
 			{ ["Item"] = "dollars", ["Amount"] = 20 }
 		}
@@ -195,15 +381,29 @@ function Creative.Store(Item,Slot,Amount,Target)
 		end
 
 		local Split = splitString(Item,"-")
-		if OpenItens[Split[1]] and OpenItens[Split[1]]["Open"] == Open[Passport]["Name"] then
-			if vRP.TakeItem(Passport,Item,1) then
-				for _,v in pairs(OpenItens[Split[1]]["Table"]) do
-					vRP.GenerateItem(Passport,v["Item"],v["Amount"],true)
+		if OpenItens[Split[1]] then
+			local Perm = false
+			if type(OpenItens[Split[1]]["Open"]) == "string" and OpenItens[Split[1]]["Open"] == Open[Passport]["Name"] then
+				Perm = true
+			elseif type(OpenItens[Split[1]]["Open"]) == "table" then
+				for _,Permission in pairs(OpenItens[Split[1]]["Open"]) do
+					if (Split[2] and vRP.HasGroup(Passport,Split[1],parseInt(Split[2]))) or vRP.HasService(Passport,Permission) then
+						Perm = true
+						break
+					end
 				end
 			end
-			TriggerClientEvent("chest:Update",source,"Refresh")
 
-			return true
+			if Perm then
+				if vRP.TakeItem(Passport,Item,1) then
+					for _,v in pairs(OpenItens[Split[1]]["Table"]) do
+						vRP.GenerateItem(Passport,v["Item"],v["Amount"],true)
+					end
+				end
+				TriggerClientEvent("chest:Update",source,"Refresh")
+				
+				return true
+			end
 		end
 
 		if vRP.StoreChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target) then

@@ -147,7 +147,8 @@ GlobalState["Doors"] = {
 	[176] = { Coords = vec3(1543.25,2471.3,45.72), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
 	[177] = { Coords = vec3(1658.59,2397.73,45.72), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
 	[178] = { Coords = vec3(1759.63,2412.84,45.72), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
-	[179] = { Coords = vec3(1821.18,2476.27,45.69), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true }
+	[179] = { Coords = vec3(1821.18,2476.27,45.69), Hash = -1033001619, Lock = true, Distance = 1.5, Perm = "Admin", Block = true },
+	[180] = { Coords = vec3(29.58,-24.25,-23.91), Hash = 520341586, Lock = true, Distance = 1.5, Perm = "Admin", Block = true }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOORSPERMISSION

@@ -1738,7 +1738,7 @@ CreateThread(function()
 										SelectedRobbery = SelectedRobbery - 1
 
 										if SelectedRobbery <= 0 then
-											if (Total < 7 and math.random(100) >= 60) or (Total >= 7 and math.random(100) >= 40) then
+											if (Total < 7 and math.random(100) >= 80) or (Total >= 7 and math.random(100) >= 40) then
 												if LoadModel("prop_anim_cash_note") then
 													PlayPedAmbientSpeechNative(Selected,"GENERIC_HI","SPEECH_PARAMS_STANDARD")
 													local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)

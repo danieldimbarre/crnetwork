@@ -44,6 +44,13 @@ local Beds = {
 	{ ["Coords"] = vec3(-254.39,6313.88,32.35), ["Heading"] = 317.49, ["Distance"] = 1.25 },
 	{ ["Coords"] = vec3(-256.1,6315.58,32.35), ["Heading"] = 317.49, ["Distance"] = 1.25 },
 	{ ["Coords"] = vec3(-258.03,6317.12,32.35), ["Heading"] = 317.49, ["Distance"] = 1.25 },
+	-- Prison
+	{ ["Coords"] = vec3(1761.88,2591.57,45.66), ["Heading"] = 90.01, ["Distance"] = 1.25 },
+	{ ["Coords"] = vec3(1761.88,2594.65,45.66), ["Heading"] = 90.01, ["Distance"] = 1.25 },
+	{ ["Coords"] = vec3(1761.88,2597.73,45.66), ["Heading"] = 90.01, ["Distance"] = 1.25 },
+	{ ["Coords"] = vec3(1771.98,2597.96,45.66), ["Heading"] = 270.01, ["Distance"] = 1.25 },
+	{ ["Coords"] = vec3(1771.98,2594.88,45.66), ["Heading"] = 270.01, ["Distance"] = 1.25 },
+	{ ["Coords"] = vec3(1771.98,2591.8,45.66), ["Heading"] = 270.01, ["Distance"] = 1.25 },
 	-- Clandestine
 	{ ["Coords"] = vec3(-471.87,6287.56,13.63), ["Heading"] = 53.86, ["Distance"] = 1.75 }
 }

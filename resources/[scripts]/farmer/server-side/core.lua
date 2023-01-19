@@ -235,6 +235,7 @@ AddEventHandler("farmer:Fruitman",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				local ObjectsActive = Objects[Number]["Time"]
 				Objects[Number]["Time"] = GlobalState["Work"] + 5
 
 				local Ped = GetPlayerPed(source)
@@ -280,6 +281,7 @@ AddEventHandler("farmer:Fruitman",function(Number)
 						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 					end
 				else
+					Objects[Number]["Time"] = ObjectsActive
 					TriggerClientEvent("Notify",source,"amarelo","<b>Machado</b> não encontrado.",5000)
 				end
 
@@ -336,8 +338,8 @@ AddEventHandler("farmer:Minerman",function(Number)
 						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 					end
 				else
-					TriggerClientEvent("Notify",source,"amarelo","<b>Picareta</b> não encontrada.",5000)
 					Objects[Number]["Time"] = ObjectsActive
+					TriggerClientEvent("Notify",source,"amarelo","<b>Picareta</b> não encontrada.",5000)
 				end
 
 				Active[Passport] = nil
@@ -356,6 +358,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				local ObjectsActive = Objects[Number]["Time"]
 				Objects[Number]["Time"] = GlobalState["Work"] + 5
 
 				local Ped = GetPlayerPed(source)
@@ -398,6 +401,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 					end
 				else
+					Objects[Number]["Time"] = ObjectsActive
 					TriggerClientEvent("Notify",source,"amarelo","<b>Machado</b> não encontrado.",5000)
 				end
 
@@ -417,6 +421,7 @@ AddEventHandler("farmer:Transporter",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				local ObjectsActive = Objects[Number]["Time"]
 				Objects[Number]["Time"] = GlobalState["Work"] + 5
 
 				if (vRP.InventoryWeight(Passport) + itemWeight("pouch")) <= vRP.GetWeight(Passport) then
@@ -435,6 +440,7 @@ AddEventHandler("farmer:Transporter",function(Number)
 					vRP.UpgradeStress(Passport,1)
 					vRPC.removeObjects(source)
 				else
+					Objects[Number]["Time"] = ObjectsActive
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 				end
 
@@ -454,6 +460,7 @@ AddEventHandler("farmer:Event",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				local ObjectsActive = Objects[Number]["Time"]
 				Objects[Number]["Time"] = GlobalState["Work"] + math.random(700,900)
 
 				local itemSelect = { "",1 }
@@ -506,6 +513,7 @@ AddEventHandler("farmer:Event",function(Number)
 					vRP.UpgradeStress(Passport,1)
 					vRPC.removeObjects(source)
 				else
+					Objects[Number]["Time"] = ObjectsActive
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 				end
 

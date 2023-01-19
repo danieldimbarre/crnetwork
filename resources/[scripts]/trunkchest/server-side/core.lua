@@ -173,7 +173,7 @@ function Creative.takeItem(Slot,Amount,Target)
 		if vRP.TakeChest(Passport,Vehicle[Passport]["Data"],Amount,Slot,Target) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 
-			TriggerEvent("Discord","Trunkchest","**Passaporte:** "..Passport.."\n**Veículo:** "..Vehicle[Passport]["Data"].."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
+			TriggerEvent("Discord","Trunkchest","**Passaporte:** "..Passport.."\n**Veículo:** "..Vehicle[Passport]["Data"].."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
 		else
 			if Vehicle[Passport] then
 				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])

@@ -235,6 +235,7 @@ AddEventHandler("farmer:Fruitman",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				Objects[Number]["Time"] = GlobalState["Work"] + 5
 
 				local Ped = GetPlayerPed(source)
 				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") or GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_STONE_HATCHET") or GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_BATTLEAXE") then
@@ -251,7 +252,7 @@ AddEventHandler("farmer:Fruitman",function(Number)
 					if (vRP.InventoryWeight(Passport) + itemWeight(Items[Select]) * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
 						TriggerClientEvent("Progress",source,"Colhendo",11000)
-						Objects[Number]["Time"] = GlobalState["Work"] + 25
+						Objects[Number]["Time"] = GlobalState["Work"] + 20
 						Player(source)["state"]["Buttons"] = true
 						Player(source)["state"]["Cancel"] = true
 
@@ -298,7 +299,8 @@ AddEventHandler("farmer:Minerman",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
-
+				Objects[Number]["Time"] = GlobalState["Work"] + 15
+				
 				if vRP.ConsultItem(Passport,"pickaxe",1) then
 					local Amount = math.random(2)
 
@@ -311,7 +313,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 					if (vRP.InventoryWeight(Passport) + itemWeight("geode") * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.createObjects(source,"melee@large_wpn@streamed_core","ground_attack_on_spot","prop_tool_pickaxe",1,18905,0.10,-0.1,0.0,-92.0,260.0,5.0)
 						TriggerClientEvent("Progress",source,"Mineirando",10000)
-						Objects[Number]["Time"] = GlobalState["Work"] + 15
+						Objects[Number]["Time"] = GlobalState["Work"] + 10
 						Player(source)["state"]["Buttons"] = true
 						Player(source)["state"]["Cancel"] = true
 						local timeProgress = 10
@@ -352,6 +354,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				Objects[Number]["Time"] = GlobalState["Work"] + 5
 
 				local Ped = GetPlayerPed(source)
 				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") then
@@ -366,7 +369,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 					if (vRP.InventoryWeight(Passport) + itemWeight("woodlog") * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
 						TriggerClientEvent("Progress",source,"Cortando",11000)
-						Objects[Number]["Time"] = GlobalState["Work"] + 15
+						Objects[Number]["Time"] = GlobalState["Work"] + 10
 						Player(source)["state"]["Buttons"] = true
 						Player(source)["state"]["Cancel"] = true
 						local timeProgress = 10
@@ -412,11 +415,12 @@ AddEventHandler("farmer:Transporter",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				Objects[Number]["Time"] = GlobalState["Work"] + 5
 
 				if (vRP.InventoryWeight(Passport) + itemWeight("pouch")) <= vRP.GetWeight(Passport) then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					TriggerClientEvent("Progress",source,"Coletando",1000)
-					Objects[Number]["Time"] = GlobalState["Work"] + 10
+					Objects[Number]["Time"] = GlobalState["Work"] + 5
 					Player(source)["state"]["Buttons"] = true
 					Player(source)["state"]["Cancel"] = true
 
@@ -448,6 +452,7 @@ AddEventHandler("farmer:Event",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				Objects[Number]["Time"] = GlobalState["Work"] + math.random(700,900)
 
 				local itemSelect = { "",1 }
 				local randItem = math.random(100)
@@ -480,7 +485,6 @@ AddEventHandler("farmer:Event",function(Number)
 
 					EventUsable[Objects[Number]["Number"]] = nil
 					Objects[Number]["Coords"] = EventLocs[Rand]
-					Objects[Number]["Time"] = GlobalState["Work"] + math.random(700,900)
 					Player(source)["state"]["Buttons"] = true
 					Player(source)["state"]["Cancel"] = true
 

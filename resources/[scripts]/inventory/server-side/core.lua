@@ -1146,6 +1146,8 @@ function Creative.Trash(Slot,Amount)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
+
+				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Lixo:** "..Amount.."x "..itemName(Item),13541152)
 			end
 		end
 	end

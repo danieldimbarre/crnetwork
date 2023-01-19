@@ -647,7 +647,7 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
 
-				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Dropou:** "..Amount.."x "..itemName(Item),3042892)
+				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Dropou:** "..Amount.."x "..itemName(Item),9317187)
 			end
 		else
 			TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -1146,6 +1146,8 @@ function Creative.Trash(Slot,Amount)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
+
+				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Lixo:** "..Amount.."x "..itemName(Item),13541152)
 			end
 		end
 	end

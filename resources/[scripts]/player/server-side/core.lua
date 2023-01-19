@@ -61,6 +61,17 @@ AddEventHandler("player:Stress",function(Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:KICKSYSTEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("player:KickSystem")
+AddEventHandler("player:KickSystem",function(Message)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		vRP.Kick(Passport,Message)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ME
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("me",function(source,Message,History)
@@ -878,7 +889,7 @@ AddEventHandler("player:Outfit",function(Mode)
 			elseif Model == "mp_f_freemode_01" then
 				TriggerClientEvent("updateRoupas",source,removeFit["mulher"])
 			end
-		elseif Mode == "aplicarpremium" then
+		elseif Mode == "aplicarpremium" and vRP.UserPremium(Passport) then
 			local result = vRP.GetSrvData("OutfitPremium:"..Passport)
 			if result["pants"] ~= nil then
 				TriggerClientEvent("updateRoupas",source,result)
@@ -886,7 +897,7 @@ AddEventHandler("player:Outfit",function(Mode)
 			else
 				TriggerClientEvent("Notify",source,"amarelo","Roupas Premium não encontradas.",3000)
 			end
-		elseif Mode == "salvarpremium" then
+		elseif Mode == "salvarpremium" and vRP.UserPremium(Passport) then
 			local custom = vSKINSHOP.getCustomization(source)
 			if custom then
 				vRP.SetSrvData("OutfitPremium:"..Passport,custom)

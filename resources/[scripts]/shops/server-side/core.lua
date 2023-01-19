@@ -536,7 +536,7 @@ local shops = {
 			["water"] = 30
 		}
 	},
-	["Police"] = {
+	["Polices"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["perm"] = "Police",

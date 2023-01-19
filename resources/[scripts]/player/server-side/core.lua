@@ -61,6 +61,17 @@ AddEventHandler("player:Stress",function(Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:KICKSYSTEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("player:KickSystem")
+AddEventHandler("player:KickSystem",function(Message)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		vRP.Kick(Passport,Message)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ME
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("me",function(source,Message,History)

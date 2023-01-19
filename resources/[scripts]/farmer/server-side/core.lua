@@ -299,7 +299,8 @@ AddEventHandler("farmer:Minerman",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
-				Objects[Number]["Time"] = GlobalState["Work"] + 15
+				local ObjectsActive = Objects[Number]["Time"]
+				Objects[Number]["Time"] = GlobalState["Work"] + 5
 				
 				if vRP.ConsultItem(Passport,"pickaxe",1) then
 					local Amount = math.random(2)
@@ -336,6 +337,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 					end
 				else
 					TriggerClientEvent("Notify",source,"amarelo","<b>Picareta</b> não encontrada.",5000)
+					Objects[Number]["Time"] = ObjectsActive
 				end
 
 				Active[Passport] = nil

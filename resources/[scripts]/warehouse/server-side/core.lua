@@ -11,6 +11,10 @@ Creative = {}
 Tunnel.bindInterface("warehouse",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Active = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- WAREHOUSE:PASSWORD
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("warehouse:Password")
@@ -39,7 +43,9 @@ end)
 function Creative.Warehouse(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Active[Name] then
+		Active[Name] = Passporte
+
 		if not exports["hud"]:Wanted(Passport) then
 			local Warehouse = vRP.Query("warehouse/Informations",{ name = Name })
 			if Warehouse[1] then
@@ -48,11 +54,13 @@ function Creative.Warehouse(Name)
 					local Warehouse = vRP.Query("warehouse/Acess",{ name = Name, password = Keyboard[1] })
 					if Warehouse[1] then
 						if Warehouse[1]["tax"] > os.time() then
+							Active[Name] = nil
 							return true
 						else
 							if vRP.Request(source,"Pagar o aluguel do armazém por <b>$20.000</b>?","Sim, por favor","Não, decido depois") then
 								if vRP.PaymentFull(Passport,20000) then
 									vRP.Query("warehouse/Tax",{ name = Name })
+									Active[Name] = nil
 									return true
 								else
 									TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -72,6 +80,7 @@ function Creative.Warehouse(Name)
 							if vRP.Request(source,"Finalizar a compra usando a senha <b>"..Password.."</b>?","Sim, por favor","Não, decido depois") then
 								if vRP.PaymentFull(Passport,200000) then
 									vRP.Query("warehouse/Buy",{ name = Name, Passport = Passport, password = Password })
+									Active[Name] = nil
 									return true
 								else
 									TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
@@ -84,6 +93,8 @@ function Creative.Warehouse(Name)
 				end
 			end
 		end
+
+		Active[Name] = nil
 	end
 
 	return false

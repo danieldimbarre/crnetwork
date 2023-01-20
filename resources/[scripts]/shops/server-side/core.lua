@@ -714,7 +714,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.getShopType(Type)
     return shops[Type]["mode"]
-end---------------------------------------------------------------------------------------------------------------------------------
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- FUNCTIONSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.functionShops(Type,Item,Amount,Slot)
@@ -746,7 +747,12 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 
 								if vRP.PaymentFull(Passport,shops[Type]["List"][Item] * Amount) then
 									if Item == "identity" or string.sub(Item,1,5) == "badge" then
-										vRP.GiveItem(Passport,Item.."-"..Passport,Amount,false,Slot)
+										local Split = splitString(Item,"-")
+										if Split[1] == "badge04" then
+											vRP.GiveItem(Passport,Split[1].."-"..Passport,Amount,false,Slot)
+										else
+											vRP.GiveItem(Passport,Item.."-"..Passport,Amount,false,Slot)
+										end
 									elseif Item == "fidentity" then
 										local Identity = vRP.Identity(Passport)
 										if Identity then

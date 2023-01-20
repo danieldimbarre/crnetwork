@@ -169,12 +169,20 @@ Objects = {
 	["89"] = { x = -443.88, y = 6018.68, z = 35.99, h = 136.07, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
 	["90"] = { x = -4.99, y = -1822.0, z = 28.15, h = 232.45, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["91"] = { x = -157.22, y = -1613.59, z = 32.65, h = 335.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["92"] = { x = 329.54, y = -1992.93, z = 24.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["93"] = { x = 495.24, y = -1538.37, z = 23.20, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["92"] = { x = 329.54, y = -1992.93, z = 23.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["93"] = { x = 495.24, y = -1538.37, z = 28.28, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["94"] = { x = -1110.84, y = 4941.59, z = 217.36, h = 72.29, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["95"] = { x = 1256.71, y = -1571.92, z = 57.35, h = 35.44, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["96"] = { x = 109.75, y = 3615.54, z = 39.49, h = 270.71, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["97"] = { x = -641.09, y = -1246.16, z = 10.81, h = 83.63, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
+	["97"] = { x = -817.43, y = -702.77, z = 27.05, h = 0.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["98"] = { x = 487.98, y = -100.73, z = 62.15, h = 343.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["99"] = { x = 986.76, y = -96.88, z = 73.85, h = 133.23, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["100"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+
+	["150"] = { x = 1273.82, y = -224.46, z = 97.57, h = 178.59, object = "prop_skip_06a", item = "", Distance = 150, mode = "Construct" },
+	["151"] = { x = 1281.08, y = -227.07, z = 97.47, h = 189.93, object = "prop_conc_blocks01a", item = "", Distance = 150, mode = "Construct" },
+	["152"] = { x = 1282.12, y = -216.01, z = 98.45, h = 354.34, object = "prop_woodpile_01a", item = "", Distance = 150, mode = "Construct" },
+	["153"] = { x = 1276.08, y = -230.3, z = 97.18, h = 136.07, object = "prop_wheelbarrow01a", item = "", Distance = 150, mode = "Construct" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS
@@ -500,7 +508,7 @@ function Creative.requestInventory()
 							v["idBlood"] = Sanguine(Identity["blood"])
 							v["idName"] = Identity["name"].." "..Identity["name2"]
 
-							if Number == Passport and Split[1] == "identity" then
+							if Number == Passport and (Split[1] == "identity" or string.sub(v["item"],1,5) == "badge") then
 								if Identity["premium"] > os.time() then
 									local Groups = vRP.Hierarchy("Premium")
 									local Number = vRP.HasPermission(Passport,"Premium")
@@ -1120,6 +1128,8 @@ function Creative.Trash(Slot,Amount)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
+			if Amount <= 0 then Amount = 1 end
+
 			local Inventory = vRP.Inventory(Passport)
 			if not Inventory[Slot] or not Inventory[Slot]["item"] then
 				return

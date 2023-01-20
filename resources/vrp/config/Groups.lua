@@ -146,9 +146,9 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work"
 	},
-	["Razors"] = {
+	["YoungBoys"] = {
 		["Parent"] = {
-			["Razors"] = true
+			["YoungBoys"] = true
 		},
 		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},

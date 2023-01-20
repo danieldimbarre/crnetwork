@@ -315,7 +315,7 @@ function reduceFunction(source,Passport,Number)
 		timeProgress = timeProgress - 1
 	until timeProgress <= 0
 
-	local Reduce = math.random(2,3)
+	local Reduce = 5
 	local Identity = vRP.Identity(Passport)
 	if Identity["prison"] - Reduce <= 0 then
 		vCLIENT.SyncPrison(source,false,false)

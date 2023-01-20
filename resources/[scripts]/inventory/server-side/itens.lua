@@ -4153,7 +4153,7 @@ Use = {
 		local Hash = "bkr_prop_coke_table01a"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -4177,7 +4177,7 @@ Use = {
 		local Hash = "bkr_prop_meth_table01a"
 		local Application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if Application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -4201,7 +4201,7 @@ Use = {
 		local Hash = "bkr_prop_weed_table_01a"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -4225,32 +4225,34 @@ Use = {
 		local Hash = "spray_01"
 		local Application,Coords,Heading = vRPC.objectCoords(source,Hash)
 		if Application then
-			vRPC.AnimActive(source)
-			Active[Passport] = os.time() + 5
-			Player(source)["state"]["Buttons"] = true
-			TriggerClientEvent("inventory:Close",source)
-			TriggerClientEvent("Progress",source,"Pichando",5000)
-			vRPC.createObjects(source,"switch@franklin@lamar_tagging_wall","lamar_tagging_exit_loop_lamar","prop_cs_spray_can",1,28422,0.0,0.0,0.0,0.0,0.0,0.0)
+			if GetPlayerRoutingBucket(source) == 0 then
+				vRPC.AnimActive(source)
+				Active[Passport] = os.time() + 5
+				Player(source)["state"]["Buttons"] = true
+				TriggerClientEvent("inventory:Close",source)
+				TriggerClientEvent("Progress",source,"Pichando",5000)
+				vRPC.createObjects(source,"switch@franklin@lamar_tagging_wall","lamar_tagging_exit_loop_lamar","prop_cs_spray_can",1,28422,0.0,0.0,0.0,0.0,0.0,0.0)
 
-			repeat
-				if os.time() >= parseInt(Active[Passport]) then
-					Active[Passport] = nil
-					vRPC.removeObjects(source)
+				repeat
+					if os.time() >= parseInt(Active[Passport]) then
+						Active[Passport] = nil
+						vRPC.removeObjects(source)
 
-					if vRP.TakeItem(Passport,Full,1,true,Slot) then
-						local Number = 0
+						if vRP.TakeItem(Passport,Full,1,true,Slot) then
+							local Number = 0
 
-						repeat
-							Number = Number + 1
-						until not Objects[tostring(Number)]
+							repeat
+								Number = Number + 1
+							until not Objects[tostring(Number)]
 
-						Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100, mode = "Spray" }
-						TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
+							Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100, mode = "Spray" }
+							TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
+						end
 					end
-				end
 
-				Wait(100)
-			until not Active[Passport]
+					Wait(100)
+				until not Active[Passport]
+			end
 		end
 
 		Player(source)["state"]["Buttons"] = false
@@ -4263,7 +4265,7 @@ Use = {
 		local Hash = "prop_beach_fire"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -4287,7 +4289,7 @@ Use = {
 		local Hash = "prop_mp_barrier_02b"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -4311,7 +4313,7 @@ Use = {
 		local Hash = "xm_prop_x17_bag_med_01a"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -4422,7 +4424,7 @@ Use = {
 		if Application then
 			local CoordsAtm,NumberAtm = vCLIENT.checkAtm(source,Coords)
 
-			if CoordsAtm then
+			if CoordsAtm and GetPlayerRoutingBucket(source) == 0 then
 				if not atmTimers[NumberAtm] then
 					atmTimers[NumberAtm] = os.time()
 				end

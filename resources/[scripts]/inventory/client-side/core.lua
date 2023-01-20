@@ -1716,7 +1716,7 @@ CreateThread(function()
 										SelectedRobbery = SelectedRobbery - 1
 
 										if SelectedRobbery <= 0 then
-											if (Total < 7 and math.random(100) >= 80) or (Total >= 7 and math.random(100) >= 40) then
+											if (Total < 7 and math.random(100) >= 60) or (Total >= 7 and math.random(100) >= 30) then
 												if LoadModel("prop_anim_cash_note") then
 													PlayPedAmbientSpeechNative(Selected,"GENERIC_HI","SPEECH_PARAMS_STANDARD")
 													local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
@@ -1750,39 +1750,9 @@ CreateThread(function()
 												LocalPlayer["state"]["Buttons"] = false
 												LocalPlayer["state"]["Commands"] = false
 
-												if (Total < 7 and math.random(100) >= 50) or (Total >= 7 and math.random(100) >= 80) then
-													local Weapon = DrugsWeapons[math.random(#DrugsWeapons)]
-													SetPedArmour(Selected,99)
-													SetPedAccuracy(Selected,100)
-													SetPedRelationshipGroupHash(Selected,GetHashKey("HATES_PLAYER"))
-													SetPedKeepTask(Selected,true)
-													SetCanAttackFriendly(Selected,false,true)
-													TaskCombatPed(Selected,Ped,0,16)
-													SetPedCombatAttributes(Selected,46,true)
-													SetPedCombatAbility(Selected,0)
-													SetPedCombatAttributes(Selected,0,true)
-													GiveWeaponToPed(Selected,Weapon,-1,false,true)
-													SetPedDropsWeaponsWhenDead(Selected,false)
-													SetPedCombatRange(Selected,2)
-													SetPedFleeAttributes(Selected,0,0)
-													SetPedConfigFlag(Selected,58,true)
-													SetPedConfigFlag(Selected,75,true)
-													SetPedFiringPattern(Selected,-957453492)
-													SetBlockingOfNonTemporaryEvents(Selected,true)
-
-													SetModelAsNoLongerNeeded(GetEntityModel(Selected))
-
-													SetTimeout(60000,function()
-														ClearPedTasks(Selected)
-														TaskWanderStandard(Selected,10.0,10)
-														TaskReactAndFleePed(Selected,Ped)
-														SetPedKeepTask(Selected,true)
-													end)
-												else
-													PlayPedAmbientSpeechNative(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
-													ClearPedSecondaryTask(Selected)
-													TaskWanderStandard(Selected,10.0,10)
-												end
+												PlayPedAmbientSpeechNative(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
 
 												break
 											end

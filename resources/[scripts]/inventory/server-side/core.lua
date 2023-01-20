@@ -508,7 +508,7 @@ function Creative.requestInventory()
 							v["idBlood"] = Sanguine(Identity["blood"])
 							v["idName"] = Identity["name"].." "..Identity["name2"]
 
-							if Number == Passport and Split[1] == "identity" then
+							if Number == Passport and (Split[1] == "identity" or string.sub(v["item"],1,5) == "badge") then
 								if Identity["premium"] > os.time() then
 									local Groups = vRP.Hierarchy("Premium")
 									local Number = vRP.HasPermission(Passport,"Premium")
@@ -1128,6 +1128,8 @@ function Creative.Trash(Slot,Amount)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
+			if Amount <= 0 then Amount = 1 end
+
 			local Inventory = vRP.Inventory(Passport)
 			if not Inventory[Slot] or not Inventory[Slot]["item"] then
 				return

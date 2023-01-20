@@ -133,7 +133,8 @@ local shops = {
 		["type"] = "Cash",
 		["List"] = {
 			["identity"] = 5000,
-			["badge03"] = 2000
+			["badge03"] = 2000,
+			["badge04-Law"] = 5000
 		}
 	},
 	["Identity2"] = {
@@ -736,6 +737,13 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 					if (vRP.InventoryWeight(Passport) + itemWeight(Item) * Amount) <= vRP.GetWeight(Passport) then
 						if shops[Type]["type"] == "Cash" then
 							if shops[Type]["List"][Item] then
+								local Split = splitString(Item,"-")
+								if Split[1] == "badge04" then
+									if Split[2] and not vRP.HasService(Passport,Split[2]) then
+										return
+									end
+								end
+
 								if vRP.PaymentFull(Passport,shops[Type]["List"][Item] * Amount) then
 									if Item == "identity" or string.sub(Item,1,5) == "badge" then
 										vRP.GiveItem(Passport,Item.."-"..Passport,Amount,false,Slot)

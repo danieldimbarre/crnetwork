@@ -70,7 +70,7 @@ AddEventHandler("paramedic:Treatment",function(entity)
 						TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>1x "..itemName("syringe0"..Identity["blood"]).."</b>.",5000)
 					end
 				else
-					TriggerClientEvent("Notify",source,"negado","Dólares insuficientes.",5000)
+					TriggerClientEvent("Notify",source,"negado","<b>Dólares</b> insuficientes.",5000)
 				end
 			end
 		else

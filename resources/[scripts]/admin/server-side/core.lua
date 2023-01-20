@@ -666,7 +666,7 @@ RegisterCommand("announce",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
-			TriggerClientEvent("Notify",-1,"verde","Prefeitura: "..History:sub(9),60000)
+			TriggerClientEvent("Notify",-1,"verde","<b>Prefeitura:</b> "..History:sub(9),60000)
 
 			TriggerEvent("Discord","Admin","**announce**\n\n**Passaporte:** "..Passport.."\n**Text:** "..History:sub(9),3553599)
 		end
@@ -677,7 +677,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("console",function(source,Message,History)
 	if source == 0 then
-		TriggerClientEvent("Notify",-1,"verde","Prefeitura: "..History:sub(9),60000)
+		TriggerClientEvent("Notify",-1,"verde","<b>Prefeitura:</b> "..History:sub(9),60000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

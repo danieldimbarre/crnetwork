@@ -844,7 +844,7 @@ AddEventHandler("garages:Propertys",function(Name)
 		local Hash = "prop_offroad_tyres02"
 		local Application,Coords,Heading = vRPC.objectCoords(source,Hash)
 		if Application then
-			if #(Coords - exports["propertys"]:Coords(Name)) <= 40 then
+			if #(Coords - exports["propertys"]:Coords(Name)) <= 50 then
 				TriggerClientEvent("Notify",source,"amarelo","Selecione o local do veículo.",5000)
 
 				local Open = Coords

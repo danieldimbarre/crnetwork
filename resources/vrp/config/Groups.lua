@@ -43,6 +43,14 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work"
 	},
+	["Law"] = {
+		["Parent"] = {
+			["Law"] = true
+		},
+		["Hierarchy"] = { "Juiz","Promotor","Advogado" },
+		["Service"] = {},
+		["Type"] = "Work"
+	},
 	["Mechanic"] = {
 		["Parent"] = {
 			["Mechanic"] = true

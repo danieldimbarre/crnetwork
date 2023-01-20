@@ -870,12 +870,6 @@ Use = {
 	end,
 
 	["adrenaline"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		local Distance = vCLIENT.adrenalineDistance(source)
-		local Service = vRP.NumPermission("Paramedic")
-		if #Service > 0 and not Distance then
-			return
-		end
-
 		local ClosestPed = vRPC.ClosestPed(source,2)
 		if ClosestPed then
 			local OtherPassport = vRP.Passport(ClosestPed)

@@ -138,17 +138,23 @@ GlobalState["Doors"] = {
 	[167] = { Coords = vec3(336.74,-1991.84,24.36), Hash = 2118614536, Lock = true, Text = true, Distance = 1.5, Perm = "Vagos" },
 	[168] = { Coords = vec3(153.87,-3023.88,10.74), Hash = -456733639, Lock = true, Text = true, Distance = 7, Perm = "Mechanic-3" },
 	[169] = { Coords = vec3(153.43,-3034.05,10.94), Hash = -456733639, Lock = true, Text = true, Distance = 7, Perm = "Mechanic-3" },
-	[170] = { Coords = vec3(1820.77,2620.78,45.96), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[171] = { Coords = vec3(1845.79,2698.63,45.96), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[172] = { Coords = vec3(1773.11,2759.7,45.89), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[173] = { Coords = vec3(1651.17,2755.44,45.88), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[174] = { Coords = vec3(1572.67,2679.2,45.73), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[175] = { Coords = vec3(1537.82,2586.0,45.69), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[176] = { Coords = vec3(1543.25,2471.3,45.72), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[177] = { Coords = vec3(1658.59,2397.73,45.72), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[178] = { Coords = vec3(1759.63,2412.84,45.72), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[179] = { Coords = vec3(1821.18,2476.27,45.69), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
-	[180] = { Coords = vec3(29.58,-24.25,-23.91), Hash = 520341586, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true }
+	[170] = { Coords = vec3(-816.6,-694.39,28.21), Hash = 693644064, Lock = true, Text = true, Distance = 7, Perm = "Bloods" },
+	[171] = { Coords = vec3(-816.6,-702.34,28.21), Hash = 693644064, Lock = true, Text = true, Distance = 7, Perm = "Bloods" },
+	[172] = { Coords = vec3(-820.31,-703.12,28.21), Hash = 1403720845, Lock = true, Text = true, Distance = 1.5, Perm = "Bloods", Other = 173 },
+	[173] = { Coords = vec3(-822.31,-703.12,28.21), Hash = 75593271, Lock = true, Text = true, Distance = 1.5, Perm = "Bloods", Other = 172 },
+	[174] = { Coords = vec3(-816.22,-739.37,25.54), Hash = -700626879, Lock = true, Text = true, Distance = 7, Perm = "Bloods", Other = 172 },
+
+	[200] = { Coords = vec3(1820.77,2620.78,45.96), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[201] = { Coords = vec3(1845.79,2698.63,45.96), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[202] = { Coords = vec3(1773.11,2759.7,45.89), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[203] = { Coords = vec3(1651.17,2755.44,45.88), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[204] = { Coords = vec3(1572.67,2679.2,45.73), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[205] = { Coords = vec3(1537.82,2586.0,45.69), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[206] = { Coords = vec3(1543.25,2471.3,45.72), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[207] = { Coords = vec3(1658.59,2397.73,45.72), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[208] = { Coords = vec3(1759.63,2412.84,45.72), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[209] = { Coords = vec3(1821.18,2476.27,45.69), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
+	[210] = { Coords = vec3(29.58,-24.25,-23.91), Hash = 520341586, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOORSPERMISSION

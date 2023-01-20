@@ -180,9 +180,9 @@ Objects = {
 	["100"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 
 	["150"] = { x = 1273.82, y = -224.46, z = 97.57, h = 178.59, object = "prop_skip_06a", item = "", Distance = 150, mode = "Construct" },
-	["150"] = { x = 1281.08, y = -227.07, z = 98.47, h = 189.93, object = "prop_conc_blocks01a", item = "", Distance = 150, mode = "Construct" },
-	["150"] = { x = 1282.12, y = -216.01, z = 99.45, h = 354.34, object = "prop_woodpile_01a", item = "", Distance = 150, mode = "Construct" },
-	["150"] = { x = 1276.08, y = -230.3, z = 98.18, h = 136.07, object = "prop_wheelbarrow01a", item = "", Distance = 150, mode = "Construct" }
+	["151"] = { x = 1281.08, y = -227.07, z = 97.47, h = 189.93, object = "prop_conc_blocks01a", item = "", Distance = 150, mode = "Construct" },
+	["152"] = { x = 1282.12, y = -216.01, z = 98.45, h = 354.34, object = "prop_woodpile_01a", item = "", Distance = 150, mode = "Construct" },
+	["153"] = { x = 1276.08, y = -230.3, z = 97.18, h = 136.07, object = "prop_wheelbarrow01a", item = "", Distance = 150, mode = "Construct" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS

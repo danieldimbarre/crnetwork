@@ -1158,7 +1158,7 @@ local List = {
 		Distance = 30,
 		Coords = { 1281.42,-230.62,98.17,48.19 },
 		Model = "s_m_y_construct_01",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss }" }
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Contruct
 		Distance = 30,

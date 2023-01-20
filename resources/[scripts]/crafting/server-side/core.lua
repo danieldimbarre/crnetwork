@@ -764,8 +764,8 @@ local List = {
 		["perm"] = "Lost",
 		["List"] = {}
 	},
-	["Razors"] = {
-		["perm"] = "Razors",
+	["YoungBoys"] = {
+		["perm"] = "YoungBoys",
 		["List"] = {
 			["attachsFlashlight"] = {
 				["amount"] = 1,

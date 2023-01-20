@@ -177,7 +177,9 @@ Objects = {
 	["97"] = { x = -817.43, y = -702.77, z = 27.05, h = 0.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["98"] = { x = 487.98, y = -100.73, z = 62.15, h = 343.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["99"] = { x = 986.76, y = -96.88, z = 73.85, h = 133.23, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["100"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
+	["100"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+
+	["150"] = { x = 1267.96, y = -273.28, z = 79.9, h = 170.08, object = "prop_skip_01a", item = "", Distance = 150, mode = "Construct" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS

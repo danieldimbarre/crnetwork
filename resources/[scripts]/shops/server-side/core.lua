@@ -737,15 +737,15 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 					if (vRP.InventoryWeight(Passport) + itemWeight(Item) * Amount) <= vRP.GetWeight(Passport) then
 						if shops[Type]["type"] == "Cash" then
 							if shops[Type]["List"][Item] then
+								local Split = splitString(Item,"-")
+								if Split[1] == "badge04" then
+									if Split[2] and not vRP.HasService(Passport,Split[2]) then
+										return
+									end
+								end
+
 								if vRP.PaymentFull(Passport,shops[Type]["List"][Item] * Amount) then
 									if Item == "identity" or string.sub(Item,1,5) == "badge" then
-										if Item == "badge04" then
-											local Split = splitName(Item,"-")
-											if Split[2] and not vRP.HasService(Passport,Split[2]) then
-												return
-											end
-										end
-
 										vRP.GiveItem(Passport,Item.."-"..Passport,Amount,false,Slot)
 									elseif Item == "fidentity" then
 										local Identity = vRP.Identity(Passport)

@@ -169,12 +169,15 @@ Objects = {
 	["89"] = { x = -443.88, y = 6018.68, z = 35.99, h = 136.07, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
 	["90"] = { x = -4.99, y = -1822.0, z = 28.15, h = 232.45, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["91"] = { x = -157.22, y = -1613.59, z = 32.65, h = 335.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["92"] = { x = 329.54, y = -1992.93, z = 24.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["93"] = { x = 495.24, y = -1538.37, z = 23.20, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["92"] = { x = 329.54, y = -1992.93, z = 23.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["93"] = { x = 495.24, y = -1538.37, z = 28.28, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["94"] = { x = -1110.84, y = 4941.59, z = 217.36, h = 72.29, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["95"] = { x = 1256.71, y = -1571.92, z = 57.35, h = 35.44, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["96"] = { x = 109.75, y = 3615.54, z = 39.49, h = 270.71, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["97"] = { x = -641.09, y = -1246.16, z = 10.81, h = 83.63, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
+	["97"] = { x = -817.43, y = -702.77, z = 27.05, h = 0.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["98"] = { x = 487.98, y = -100.73, z = 62.15, h = 343.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["99"] = { x = 986.76, y = -96.88, z = 73.85, h = 133.23, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["100"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS

@@ -195,8 +195,8 @@ local Vehicles = {
 		["Distance"] = 40,
 		["Tuning"] = true
 	},{
-		["Coords"] = vec3(1265.28,-292.31,79.38),
-		["heading"] = 300.48,
+		["Coords"] = vec3(1277.48,-239.44,96.68),
+		["heading"] = 226.78,
 		["Model"] = "mixer2",
 		["Distance"] = 150
 	}

@@ -762,6 +762,80 @@ local List = {
 	},
 	["Lost"] = {
 		["perm"] = "Lost",
+		["List"] = {}
+	},
+	["Razors"] = {
+		["perm"] = "Razors",
+		["List"] = {
+			["attachsFlashlight"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 2,
+					["glass"] = 1,
+					["plastic"] = 3
+				}
+			},
+			["attachsCrosshair"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 2,
+					["glass"] = 2,
+					["aluminum"] = 1
+				}
+			},
+			["attachsSilencer"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 6,
+					["sheetmetal"] = 6
+				}
+			},
+			["attachsMagazine"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 4,
+					["sheetmetal"] = 3
+				}
+			},
+			["attachsGrip"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 2,
+					["aluminum"] = 3
+				}
+			},
+			["attachsMazzleBrake"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 6,
+					["sheetmetal"] = 6
+				}
+			},
+			["attachsMazzleBoost"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["roadsigns"] = 6,
+					["sheetmetal"] = 6
+				}
+			}
+		}
+	},
+	["Bloods"] = {
+		["perm"] = "Bloods",
 		["List"] = {
 			["attachsFlashlight"] = {
 				["amount"] = 1,

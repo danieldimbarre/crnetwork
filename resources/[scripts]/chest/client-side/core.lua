@@ -35,7 +35,7 @@ local Chests = {
 	{ ["Name"] = "Families", ["Coords"] = vec3(-162.64,-1613.1,33.65), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Families-2", ["Coords"] = vec3(-164.06,-1619.39,33.65), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Vagos", ["Coords"] = vec3(326.17,-2000.24,24.2), ["Mode"] = "2", ["Distance"] = 1.0 },
-	{ ["Name"] = "Vagos-2", ["Coords"] = vec3(339.75,-1980.68,24.2), ["Mode"] = "2", ["Distance"] = 1.0 },
+	{ ["Name"] = "Vagos-2", ["Coords"] = vec3(339.75,-1980.68,24.2), ["Mode"] = "2", ["Distance"] = 1.5 },
 	{ ["Name"] = "Aztecas", ["Coords"] = vec3(495.7,-1527.89,29.28), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Aztecas-2", ["Coords"] = vec3(484.71,-1533.11,29.28), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Bloods", ["Coords"] = vec3(-817.01,-716.14,23.78), ["Mode"] = "2", ["Distance"] = 1.0 },

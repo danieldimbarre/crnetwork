@@ -200,9 +200,9 @@ local interiors = {
         entitySets = {
             { name = 'gabz_studio_one', enable = true },
             { name = 'gabz_studio_two', enable = true },
-            { name = 'gabz_studio_three', enable = true },
-            { name = 'gabz_studio_four', enable = true },
-            { name = 'gabz_studio_five', enable = true },
+            { name = 'gabz_studio_three', enable = false },
+            { name = 'gabz_studio_four', enable = false },
+            { name = 'gabz_studio_five', enable = false },
             { name = 'gabz_studio_six', enable = true },
         }
     },

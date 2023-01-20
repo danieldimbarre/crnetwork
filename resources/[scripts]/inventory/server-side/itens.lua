@@ -4,8 +4,7 @@
 Geodes = {
 	[1] = {
 		{ ["item"] = "sulfur", ["min"] = 5, ["max"] = 7 },
-		{ ["item"] = "charcoal", ["min"] = 5, ["max"] = 7 },
-		{ ["item"] = "copper", ["min"] = 5, ["max"] = 7 }
+		{ ["item"] = "charcoal", ["min"] = 5, ["max"] = 7 }
 	},
 	[2] = {
 		{ ["item"] = "emerald", ["min"] = 1, ["max"] = 1 },
@@ -15,7 +14,8 @@ Geodes = {
 		{ ["item"] = "amethyst", ["min"] = 1, ["max"] = 3 },
 		{ ["item"] = "amber", ["min"] = 1, ["max"] = 3 },
 		{ ["item"] = "turquoise", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "aluminum", ["min"] = 1, ["max"] = 2 }
+		{ ["item"] = "aluminum", ["min"] = 3, ["max"] = 5 },
+		{ ["item"] = "copper", ["min"] = 3, ["max"] = 5 }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

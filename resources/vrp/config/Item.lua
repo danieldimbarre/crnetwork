@@ -370,7 +370,7 @@ local List = {
 		["Index"] = "geode",
 		["Name"] = "Geodo",
 		["Type"] = "Usável",
-		["Weight"] = 0.75,
+		["Weight"] = 1.00,
 		["Economy"] = 10
 	},
 	["pickaxe"] = {

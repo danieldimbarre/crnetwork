@@ -1158,13 +1158,13 @@ local List = {
 		Distance = 30,
 		Coords = { 1281.42,-230.62,98.17,48.19},
 		Model = "s_m_y_construct_01",
-		anim = { "missfam4","base" }
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss }
 	},
 	{ -- Contruct
 		Distance = 30,
 		Coords = { 1277.48,-236.43,97.81,311.82},
 		Model = "s_m_y_construct_02",
-		anim = { "WORLD_HUMAN_SMOKING" }
+		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},
 	{ -- Contruct
 		Distance = 30,
@@ -1223,11 +1223,7 @@ CreateThread(function()
 
 						if List[Number]["anim"] ~= nil then
 							if LoadAnim(List[Number]["anim"][1]) then
-								if List[Number]["anim"][2] then
-									TaskPlayAnim(localPeds[Number],List[Number]["anim"][1],List[Number]["anim"][2],8.0,8.0,-1,1,0,0,0,0)
-								else
-									vRP.playAnim(true,{ task = List[Number]["anim"][1] },true)
-								end
+								TaskPlayAnim(localPeds[Number],List[Number]["anim"][1],List[Number]["anim"][2],8.0,8.0,-1,1,0,0,0,0)
 							end
 						end
 					end

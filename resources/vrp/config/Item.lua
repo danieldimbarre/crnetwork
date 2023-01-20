@@ -410,10 +410,18 @@ local List = {
 	["badge03"] = {
 		["Index"] = "newlocate",
 		["Name"] = "Licença de Caça",
-		["Description"] = "<green>Licença para Caça</green>",
 		["Type"] = "Usável",
+		["Block"] = true,
 		["Weight"] = 0.75,
 		["Economy"] = 2000
+	},
+	["badge04"] = {
+		["Index"] = "bluecard",
+		["Name"] = "OAB",
+		["Type"] = "Usável",
+		["Block"] = true,
+		["Weight"] = 0.75,
+		["Economy"] = 5000
 	},
 	["mushroomtea"] = {
 		["Index"] = "mushroomtea",

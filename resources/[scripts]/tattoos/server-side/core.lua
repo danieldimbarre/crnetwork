@@ -15,7 +15,7 @@ Tunnel.bindInterface("tattoos",Creative)
 function Creative.CheckWanted()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["hud"]:Wanted(Passport,source) then
+	if Passport and not exports["hud"]:Wanted(Passport,source) and #exports["bank"]:Fines(Passport) <= 0 then
 		return true
 	end
 

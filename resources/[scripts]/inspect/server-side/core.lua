@@ -180,7 +180,7 @@ function Creative.takeItem(Item,Slot,Target,Amount)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if openSource[Passport] then
+		if openSource[Passport] and vRP.HasService(Passport,"Police") then
 			if DoesEntityExist(GetPlayerPed(openSource[Passport])) then
 				if vRP.MaxItens(Passport,Item,Amount) then
 					TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)

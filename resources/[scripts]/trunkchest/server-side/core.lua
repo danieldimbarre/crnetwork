@@ -189,13 +189,7 @@ function Creative.chestClose()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Vehicle[Passport] then
-		local Players = vRPC.Players(source)
-		for _,v in pairs(Players) do
-			async(function()
-				TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"close")
-			end)
-		end
-
+		TriggerClientEvent("player:syncDoorsOptions",source,Vehicle[Passport]["Net"],"close")
 		Vehicle[Passport] = nil
 	end
 end
@@ -224,12 +218,7 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 
 				if GetVehicleDoorLockStatus(Network) <= 1 then
 					TriggerClientEvent("trunkchest:Open",source)
-					local Players = vRPC.Players(source)
-					for _,v in pairs(Players) do
-						async(function()
-							TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"open")
-						end)
-					end
+					TriggerClientEvent("player:syncDoorsOptions",source,Vehicle[Passport]["Net"],"open")
 				else
 					TriggerClientEvent("Notify",source,"amarelo","Veículo trancado.",5000)
 					Vehicle[Passport] = nil

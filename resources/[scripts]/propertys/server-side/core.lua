@@ -179,7 +179,7 @@ AddEventHandler("propertys:Sell",function(Name)
 					local Price = Informations[Consult[1]["Interior"]]["Price"] * 0.25
 					vRP.GiveBank(Passport,Price)
 
-					TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..Price,13541152)
+					TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..parseFormat(Price),13541152)
 				end
 			end
 		end

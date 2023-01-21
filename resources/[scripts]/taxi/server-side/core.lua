@@ -68,8 +68,8 @@ function Creative.Payment()
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 
-		vRP.GenerateItem(Passport,"dollars",Valuation,true)
-		TriggerEvent("Discord","Taxi","**Passaporte:** "..Passport.."\n**Recompensa:** "..Valuation.."x "..itemName("dollars"),9317187)
+		vRP.GenerateItem(Passport,"dollars",parseInt(Valuation),true)
+		TriggerEvent("Discord","Taxi","**Passaporte:** "..Passport.."\n**Recompensa:** "..parseFormat(Valuation).."x "..itemName("dollars"),9317187)
 		Active[Passport] = nil
 	end
 end

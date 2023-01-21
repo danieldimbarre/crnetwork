@@ -3,8 +3,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
-vRP = Proxy.getInterface("vRP")
 vRPC = Tunnel.getInterface("vRP")
+vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -192,7 +192,9 @@ function Creative.chestClose()
 		local Players = vRPC.Players(source)
 		for _,v in pairs(Players) do
 			async(function()
-				TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"close")
+				if v then
+					TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"close")
+				end
 			end)
 		end
 
@@ -227,7 +229,9 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 					local Players = vRPC.Players(source)
 					for _,v in pairs(Players) do
 						async(function()
-							TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"open")
+							if v then
+								TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"open")
+							end
 						end)
 					end
 				else

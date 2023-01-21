@@ -198,7 +198,7 @@ RegisterCommand("p",function(source,Message,History)
 		if vRP.HasService(Passport,"Police") then
 			TriggerClientEvent("Notify",-1,"verde","<b>O 1º BPM de Energy informa:</b> "..History:sub(2),30000)
 
-			TriggerEvent("Discord","Police","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
+			TriggerEvent("Discord","Polices","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
 		end
 	end
 end)
@@ -864,7 +864,7 @@ RegisterServerEvent("player:Outfit")
 AddEventHandler("player:Outfit",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) and not vPOLICE.checkPrison(source) then
+	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) and #exports["bank"]:Fines(Passport) <= 0 and not vPOLICE.checkPrison(source) then
 		if Mode == "aplicar" then
 			local result = vRP.GetSrvData("Outfit:"..Passport)
 			if result["pants"] ~= nil then

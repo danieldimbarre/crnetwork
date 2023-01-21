@@ -294,7 +294,7 @@ local Works = {
 function Creative.Vehicles(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["hud"]:Wanted(Passport) then
+	if Passport and not exports["hud"]:Wanted(Passport) and #exports["bank"]:Fines(Passport) <= 0 then
 		if Garages[Number]["perm"] then
 			local Split = splitString(Garages[Number]["perm"],"-")
 			if parseInt(Split[2]) > 0 then
@@ -441,7 +441,7 @@ AddEventHandler("garages:Sell",function(Name)
 					vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..Passport..":"..Name })
 					vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..Passport..":"..Name })
 
-					TriggerEvent("Discord","Garages","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..Price,3042892)
+					TriggerEvent("Discord","Garages","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..parseFormat(Price),3042892)
 				end
 			end
 		end

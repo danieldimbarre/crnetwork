@@ -294,7 +294,7 @@ local Works = {
 function Creative.Vehicles(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["hud"]:Wanted(Passport) then
+	if Passport and not exports["hud"]:Wanted(Passport) and not exports["bank"]:Fines(Passport) then
 		if Garages[Number]["perm"] then
 			local Split = splitString(Garages[Number]["perm"],"-")
 			if parseInt(Split[2]) > 0 then

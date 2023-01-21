@@ -441,7 +441,7 @@ AddEventHandler("garages:Sell",function(Name)
 					vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..Passport..":"..Name })
 					vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..Passport..":"..Name })
 
-					TriggerEvent("Discord","Garages","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..Price,3042892)
+					TriggerEvent("Discord","Garages","**Passaporte:** "..Passport.."\n**Vendeu:** "..Name.."\n**Valor:** $"..parseFormat(Price),3042892)
 				end
 			end
 		end

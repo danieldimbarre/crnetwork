@@ -198,7 +198,7 @@ RegisterCommand("p",function(source,Message,History)
 		if vRP.HasService(Passport,"Police") then
 			TriggerClientEvent("Notify",-1,"verde","<b>O 1º BPM de Energy informa:</b> "..History:sub(2),30000)
 
-			TriggerEvent("Discord","Police","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
+			TriggerEvent("Discord","Polices","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
 		end
 	end
 end)

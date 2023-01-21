@@ -3,8 +3,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
-vRP = Proxy.getInterface("vRP")
 vRPC = Tunnel.getInterface("vRP")
+vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -189,7 +189,13 @@ function Creative.chestClose()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Vehicle[Passport] then
-		TriggerClientEvent("player:syncDoorsOptions",source,Vehicle[Passport]["Net"],"close")
+		local Players = vRPC.Players(source)
+		for _,v in pairs(Players) do
+			async(function()
+				TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"close")
+			end)
+		end
+
 		Vehicle[Passport] = nil
 	end
 end
@@ -218,7 +224,12 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 
 				if GetVehicleDoorLockStatus(Network) <= 1 then
 					TriggerClientEvent("trunkchest:Open",source)
-					TriggerClientEvent("player:syncDoorsOptions",source,Vehicle[Passport]["Net"],"open")
+					local Players = vRPC.Players(source)
+					for _,v in pairs(Players) do
+						async(function()
+							TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"open")
+						end)
+					end
 				else
 					TriggerClientEvent("Notify",source,"amarelo","Veículo trancado.",5000)
 					Vehicle[Passport] = nil

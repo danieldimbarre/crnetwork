@@ -13,6 +13,7 @@ local Chests = {
 	{ ["Name"] = "Police", ["Coords"] = vec3(360.43,-1600.48,25.83), ["Mode"] = "1", ["Distance"] = 1.0 },
 	{ ["Name"] = "Police", ["Coords"] = vec3(473.13,-990.69,26.27), ["Mode"] = "1", ["Distance"] = 1.0 },
 	{ ["Name"] = "Police-2", ["Coords"] = vec3(486.46,-994.94,31.07), ["Mode"] = "1", ["Distance"] = 1.0 },
+	{ ["Name"] = "Police-2", ["Coords"] = vec3(475.34,-1004.67,26.27), ["Mode"] = "1", ["Distance"] = 1.0 },
 	{ ["Name"] = "Police-3", ["Coords"] = vec3(1836.96,3685.16,34.80), ["Mode"] = "1", ["Distance"] = 1.0 },
 	{ ["Name"] = "Police-4", ["Coords"] = vec3(-445.38,6019.65,37.38), ["Mode"] = "1", ["Distance"] = 1.0 },
 	-- { ["Name"] = "Police-5", ["Coords"] = vec3(386.72,800.09,187.47), ["Mode"] = "1", ["Distance"] = 1.0 },

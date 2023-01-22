@@ -1125,6 +1125,7 @@ end
 function Creative.Trash(Slot,Amount)
 	local source = source
 	local Slot = tostring(Slot)
+	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
@@ -2512,6 +2513,10 @@ function Creative.DrugPeds()
 		local Split = splitString(Drugs[Passport][1],"-")
 		if Split[2] ~= nil then
 			Points = parseInt(Split[2])
+		end
+
+		if Points == 100 then
+			Drugs[Passport][2] = Drugs[Passport][2] + 1
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then

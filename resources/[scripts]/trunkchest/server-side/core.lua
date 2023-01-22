@@ -192,9 +192,7 @@ function Creative.chestClose()
 		local Players = vRPC.Players(source)
 		for _,v in pairs(Players) do
 			async(function()
-				if v then
-					TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"close")
-				end
+				TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"close")
 			end)
 		end
 
@@ -229,9 +227,7 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 					local Players = vRPC.Players(source)
 					for _,v in pairs(Players) do
 						async(function()
-							if v then
-								TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"open")
-							end
+							TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"open")
 						end)
 					end
 				else

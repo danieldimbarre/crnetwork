@@ -422,7 +422,7 @@ function Creative.Store(Item,Slot,Amount,Target,Name,Mode)
 				if vRP.StoreChest(Passport,Mode..":"..Name,Amount,Consult[1][Mode],Slot,Target) then
 					TriggerClientEvent("propertys:Update",source)
 
-					TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
+					TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Propriedade:** "..Mode..":"..Name.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
 				else
 					local Result = vRP.GetSrvData(Mode..":"..Name)
 					TriggerClientEvent("propertys:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Consult[1][Mode])
@@ -444,7 +444,7 @@ function Creative.Take(Slot,Amount,Target,Name,Mode)
 		if vRP.TakeChest(Passport,Mode..":"..Name,Amount,Slot,Target) then
 			TriggerClientEvent("propertys:Update",source)
 
-			TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
+			TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Propriedade:** "..Mode..":"..Name.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
 		else
 			local Consult = vRP.Query("propertys/Exist",{ name = Name })
 			if Consult[1] then

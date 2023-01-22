@@ -2514,6 +2514,10 @@ function Creative.DrugPeds()
 			Points = parseInt(Split[2])
 		end
 
+		if Points == 100 then
+			Drugs[Passport][2] = Drugs[Passport][2] + 1
+		end
+
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
 			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3] + (Points * 2),true)
 

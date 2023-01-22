@@ -1125,6 +1125,7 @@ end
 function Creative.Trash(Slot,Amount)
 	local source = source
 	local Slot = tostring(Slot)
+	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then

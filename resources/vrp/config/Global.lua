@@ -43,7 +43,6 @@ MaintenanceLicenses = {
 	["b02266ba5f4fcff8d29b2e58ac1dd4806a52adcb"] = true,	-- Dexter
 	["ffa594ec30eba123ddfd37cff86e755e54ece227"] = true,	-- Araújo
 	["1218c328aa64b2bb66fdc3f7625f59a9e691790a"] = true,	-- Bueno
-	["27677847ff22fe09849fa43b4da97de86e623823"] = true,	-- Andrade
 	["889de531e80d24421494510dd8916d9d2611aa87"] = true,	-- Gabriel
 	["f7c77168ca3339283ea1114ee7fdcc46e46621d7"] = true,	-- Lopes
 	["5f56b3f1455b82b2a933c651404e8812b38df978"] = true,	-- Rave
@@ -140,5 +139,5 @@ Queue = {
 	["Counts"] = 0,
 	["Connecting"] = {},
 	["Threads"] = 0,
-	["Max"] = 250
+	["Max"] = 2048
 }

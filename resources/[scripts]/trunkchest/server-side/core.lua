@@ -163,7 +163,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.takeItem(Slot,Amount,Target)
+function Creative.takeItem(Item,Slot,Amount,Target)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)

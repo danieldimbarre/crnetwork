@@ -164,7 +164,7 @@ end)
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
-	vSERVER.Take(Data["slot"],Data["amount"],Data["target"],Init,Chest)
+	vSERVER.Take(Data["item"],Data["slot"],Data["amount"],Data["target"],Init,Chest)
 
 	Callback("Ok")
 end)

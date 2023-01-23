@@ -210,22 +210,6 @@ AddEventHandler("propertys:Credentials",function(Name)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PROPERTYS:INVADE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("propertys:Invade")
-AddEventHandler("propertys:Invade",function()
-	local source = source
-	local Name,Interior = nearestHomes(source)
-	if Name and Interior then
-		local Passport = vRP.Passport(source)
-		if Passport then
-			if vRP.HasService(Passport,"Police") then
-				TriggerClientEvent("propertys:Enter",source,Name,Interior)
-			end
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:VAULT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("propertys:Vault")
@@ -421,11 +405,11 @@ function Creative.Store(Item,Slot,Amount,Target,Name,Mode)
 			else
 				if vRP.StoreChest(Passport,Mode..":"..Name,Amount,Consult[1][Mode],Slot,Target) then
 					TriggerClientEvent("propertys:Update",source)
-
-					TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Propriedade:** "..Mode..":"..Name.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
 				else
 					local Result = vRP.GetSrvData(Mode..":"..Name)
 					TriggerClientEvent("propertys:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Consult[1][Mode])
+
+					TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Propriedade:** "..Mode..":"..Name.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
 				end
 			end
 		end
@@ -443,13 +427,13 @@ function Creative.Take(Slot,Amount,Target,Name,Mode)
 
 		if vRP.TakeChest(Passport,Mode..":"..Name,Amount,Slot,Target) then
 			TriggerClientEvent("propertys:Update",source)
-
-			TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Propriedade:** "..Mode..":"..Name.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
 		else
 			local Consult = vRP.Query("propertys/Exist",{ name = Name })
 			if Consult[1] then
 				local Result = vRP.GetSrvData(Mode..":"..Name)
 				TriggerClientEvent("propertys:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Consult[1][Mode])
+
+				TriggerEvent("Discord","Propertys","**Passaporte:** "..Passport.."\n**Propriedade:** "..Mode..":"..Name.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
 			end
 		end
 	end

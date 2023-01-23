@@ -2489,10 +2489,22 @@ function Creative.AmountDrugs(Selected)
 			local Price = math.random(v["Price"]["Min"],v["Price"]["Max"])
 
 			local Consult = vRP.InventoryItemAmount(Passport,k)
-			if Consult[1] >= Amount then
-				Drugs[Passport] = { Consult[2],Amount,Price * Amount }
-				local Service,Total = vRP.NumPermission("Police")
-				return true,Total
+			if Consult[1] then
+				local Points = 0
+				local Split = splitString(Consult[2],"-")
+				if Split[2] ~= nil then
+					Points = parseInt(Split[2])
+				end
+
+				if Points >= 100 then
+					Amount = Amount + 1
+				end
+
+				if Consult[1] >= Amount then
+					Drugs[Passport] = { Consult[2],Amount,Price * Amount }
+					local Service,Total = vRP.NumPermission("Police")
+					return true,Total
+				end
 			end
 		end
 
@@ -2513,10 +2525,6 @@ function Creative.DrugPeds()
 		local Split = splitString(Drugs[Passport][1],"-")
 		if Split[2] ~= nil then
 			Points = parseInt(Split[2])
-		end
-
-		if Points == 100 then
-			Drugs[Passport][2] = Drugs[Passport][2] + 1
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then

@@ -206,7 +206,7 @@ RegisterServerEvent("trunkchest:openTrunk")
 AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Vehicle[Passport] then
 		if VehicleChest(Entity[2]) > 0 then
 			local PassportPlate = vRP.PassportPlate(Entity[1])
 
@@ -241,8 +241,17 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Disconnect",function(Passport)
+AddEventHandler("Disconnect",function(Passport,source)
+	local source = source
+
 	if Vehicle[Passport] then
+		local Players = vRPC.Players(source)
+		for _,v in pairs(Players) do
+			async(function()
+				TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"close")
+			end)
+		end
+
 		Vehicle[Passport] = nil
 	end
 end)

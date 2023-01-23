@@ -241,17 +241,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Disconnect",function(Passport,source)
-	local source = source
-
+AddEventHandler("Disconnect",function(Passport)
 	if Vehicle[Passport] then
-		local Players = vRPC.Players(source)
-		for _,v in pairs(Players) do
-			async(function()
-				TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"close")
-			end)
-		end
-
 		Vehicle[Passport] = nil
 	end
 end)

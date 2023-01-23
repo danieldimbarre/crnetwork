@@ -148,12 +148,12 @@ function Creative.storeItem(Item,Slot,Amount,Target)
 
 		if vRP.StoreChest(Passport,Vehicle[Passport]["Data"],Amount,Vehicle[Passport]["Weight"],Slot,Target) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
-
-			TriggerEvent("Discord","Trunkchest","**Passaporte:** "..Passport.."\n**Veículo:** "..Vehicle[Passport]["Data"].."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
 		else
 			if Vehicle[Passport] then
 				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
 				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Vehicle[Passport]["Weight"])
+
+				TriggerEvent("Discord","Trunkchest","**Passaporte:** "..Passport.."\n**Veículo:** "..Vehicle[Passport]["Data"].."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
 			end
 		end
 	end
@@ -172,12 +172,12 @@ function Creative.takeItem(Slot,Amount,Target)
 
 		if vRP.TakeChest(Passport,Vehicle[Passport]["Data"],Amount,Slot,Target) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
-
-			TriggerEvent("Discord","Trunkchest","**Passaporte:** "..Passport.."\n**Veículo:** "..Vehicle[Passport]["Data"].."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
 		else
 			if Vehicle[Passport] then
 				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
 				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Vehicle[Passport]["Weight"])
+
+				TriggerEvent("Discord","Trunkchest","**Passaporte:** "..Passport.."\n**Veículo:** "..Vehicle[Passport]["Data"].."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
 			end
 		end
 	end

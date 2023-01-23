@@ -239,11 +239,11 @@ function Creative.storeItem(Item,Slot,Amount,Target,Name)
 		if Consult[1] then
 			if vRP.StoreChest(Passport,"Warehouse:"..Name,Amount,Consult[1]["weight"],Slot,Target) then
 				TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
-
-				TriggerEvent("Discord","Warehouse","**Passaporte:** "..Passport.."\n**Armazém:** Warehouse:"..Name.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
 			else
 				local result = vRP.GetSrvData("Warehouse:"..Name)
 				TriggerClientEvent("warehouse:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Consult[1]["weight"])
+
+				TriggerEvent("Discord","Warehouse","**Passaporte:** "..Passport.."\n**Armazém:** Warehouse:"..Name.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
 			end
 		end
 	end
@@ -264,11 +264,11 @@ function Creative.takeItem(Item,Slot,Amount,Target,Name)
 		if Consult[1] then
 			if vRP.TakeChest(Passport,"Warehouse:"..Name,Amount,Slot,Target) then
 				TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
-
-				TriggerEvent("Discord","Warehouse","**Passaporte:** "..Passport.."\n**Armazém:** Warehouse:"..Name.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
 			else
 				local result = vRP.GetSrvData("Warehouse:"..Name)
 				TriggerClientEvent("warehouse:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Consult[1]["weight"])
+
+				TriggerEvent("Discord","Warehouse","**Passaporte:** "..Passport.."\n**Armazém:** Warehouse:"..Name.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
 			end
 		end
 	end

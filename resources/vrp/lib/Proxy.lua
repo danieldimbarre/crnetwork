@@ -30,7 +30,7 @@ local function proxy_resolve(itable,key)
 
 		local Message = {...}
 
-		TriggerEvent(iname..":proxy",fname,Message,identifier,rid)
+		TriggerEvent(iname..":proxy",fname, Message, identifier, rid)
     
 		if not no_wait then
 			return r:wait()

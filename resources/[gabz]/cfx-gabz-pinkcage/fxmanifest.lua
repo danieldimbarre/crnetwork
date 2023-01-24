@@ -12,10 +12,6 @@ dependencies {
     'cfx-gabz-mapdata', -- ⚠️PLEASE READ⚠️; Requires [cfx-gabz-mapdata] to work properly.
 }
 
-server_scripts {
-    'version_check.lua',
-}
-
 escrow_ignore {
     'stream/**/*.ytd',
 }

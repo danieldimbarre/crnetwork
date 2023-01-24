@@ -26,29 +26,36 @@ end
 -- SANGUINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Sanguine(Number)
-	local Types = {
-		[1] = "A+",
-		[2] = "B+",
-		[3] = "A-",
-		[4] = "B-"
-	}
+	local Types = { "A+","B+","A-","B-" }
 
 	return Types[Number]
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TABLE.MAXN
 -----------------------------------------------------------------------------------------------------------------------------------------
-function table.maxn(t)
-	local max = 0
+function table.maxn(Table)
+	local Number = 0
 
-	for k,v in pairs(t) do
-		local n = tonumber(k)
-		if n and n > max then
-			max = n
+	for Index,_ in pairs(Table) do
+		local Next = tonumber(Index)
+		if Next and Next > Number then
+			Number = Next
 		end
 	end
 
-	return max
+	return Number
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- COUNTTALBE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function CountTable(Table)
+	local Number = 0
+
+	for _,v in pairs(Table) do
+		Number = Number + 1
+	end
+
+	return Number
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MODULE
@@ -115,10 +122,8 @@ function parseInt(Value)
 	local Result = 0
 	local Number = tonumber(Value)
 
-	if Number ~= nil then
-		if Number > 0 then
-			Result = math.floor(Number)
-		end
+	if Number and Number > 0 then
+		Result = math.floor(Number)
 	end
 
 	return Result
@@ -168,6 +173,26 @@ function splitString(Full,Symbol)
 	return Table
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SPLITONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function SplitOne(Name,Symbol)
+	if not Symbol then
+		Symbol = "-"
+	end
+
+	return splitString(Name,Symbol)[1]
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SPLITTWO
+-----------------------------------------------------------------------------------------------------------------------------------------
+function SplitTwo(Name,Symbol)
+	if not Symbol then
+		Symbol = "-"
+	end
+
+	return splitString(Name,Symbol)[2]
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- MATHLEGTH
 -----------------------------------------------------------------------------------------------------------------------------------------
 function mathLength(Number)
@@ -176,8 +201,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARSEFORMAT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function parseFormat(Number)
-	local Left,Number,Right = string.match(parseInt(Number),"^([^%d]*%d)(%d*)(.-)$")
+function parseFormat(Value)
+	local Value = parseInt(Value)
+	local Left,Number,Right = string.match(Value,"^([^%d]*%d)(%d*)(.-)$")
 	return Left..(Number:reverse():gsub("(%d%d%d)","%1."):reverse())..Right
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -409,7 +435,7 @@ local BlockItem = {
 -- BLOCKCHEST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function BlockChest(Item)
-	local Split = splitString(Item,"-")
+	local Split = splitString(Item)
 	local Item = Split[1]
 
 	if BlockItem[Item] then

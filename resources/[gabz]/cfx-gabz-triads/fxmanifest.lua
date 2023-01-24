@@ -10,7 +10,7 @@ dependencies {
     '/server:4960',     -- ⚠️PLEASE READ⚠️; Requires at least SERVER build 4960.
     '/gameBuild:2189',  -- ⚠️PLEASE READ⚠️; Requires at least GAME build 2189.
     'cfx-gabz-mapdata', -- ⚠️PLEASE READ⚠️; Requires [cfx-gabz-mapdata] to work properly.
-    'cfx-gabz-catcafe', -- ⚠️PLEASE READ⚠️; Requires [cfx-gabz-catcafe] for the collision to work properly.
+    'cfx-gabz-catcafe', -- ⚠️PLEASE READ⚠️; Requires [cfx-gabz-catcafe] for the collisions to work properly.
 }
 
 escrow_ignore {

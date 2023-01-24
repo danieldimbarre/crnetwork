@@ -130,9 +130,9 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work"
 	},
-	["Bloods"] = {
+	["YoungBoys"] = {
 		["Parent"] = {
-			["Bloods"] = true
+			["YoungBoys"] = true
 		},
 		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},
@@ -146,9 +146,9 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work"
 	},
-	["YoungBoys"] = {
+	["Razors"] = {
 		["Parent"] = {
-			["YoungBoys"] = true
+			["Razors"] = true
 		},
 		["Hierarchy"] = { "Chefe","Gerente","Membro" },
 		["Service"] = {},

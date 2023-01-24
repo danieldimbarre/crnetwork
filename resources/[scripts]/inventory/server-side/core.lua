@@ -440,13 +440,18 @@ LootItens = {
 		["Cooldown"] = 3600,
 		["List"] = {
 			{ ["item"] = "tarp", ["min"] = 2, ["max"] = 2 },
-			{ ["item"] = "sheetmetal", ["min"] = 2, ["max"] = 2 },
-			{ ["item"] = "roadsigns", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "sheetmetal", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "sheetmetal", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "sheetmetal", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "roadsigns", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "roadsigns", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "roadsigns", ["min"] = 3, ["max"] = 5 },
 			{ ["item"] = "leather", ["min"] = 2, ["max"] = 3 },
 			{ ["item"] = "plaster", ["min"] = 2, ["max"] = 2 },
-			{ ["item"] = "sheetmetal", ["min"] = 2, ["max"] = 2 },
 			{ ["item"] = "explosives", ["min"] = 2, ["max"] = 2 },
-			{ ["item"] = "techtrash", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 }
 		}
 	}
 }

@@ -30,7 +30,7 @@ end)
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("takeItem",function(Data,Callback)
-	vSERVER.takeItem(Data["slot"],Data["amount"],Data["target"])
+	vSERVER.takeItem(Data["item"],Data["slot"],Data["amount"],Data["target"])
 
 	Callback("Ok")
 end)

@@ -2751,17 +2751,6 @@ local List = {
 		["Weight"] = 7.75,
 		["Economy"] = 25000
 	},
-	["WEAPON_SWMP9"] = {
-		["Index"] = "swmp9",
-		["Name"] = "M&P 9",
-		["Repair"] = "repairkit02",
-		["Type"] = "Armamento",
-		["Ammo"] = "WEAPON_PISTOL_AMMO",
-		["Durability"] = 14,
-		["Vehicle"] = true,
-		["Weight"] = 2.75,
-		["Economy"] = 6225
-	},
 	["WEAPON_ASSAULTSMG"] = {
 		["Index"] = "steyraug",
 		["Name"] = "Steyr AUG",

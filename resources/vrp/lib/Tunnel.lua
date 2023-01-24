@@ -79,7 +79,7 @@ function Tunnel.bindInterface(name,interface)
 			rets = { f(table.unpack(Message,1,table.maxn(Message))) }
 		end
 
-		if rid >= 0 then
+		if rid and rid >= 0 then
 			if SERVER then
 				TriggerRemoteEvent(name..":"..identifier..":tunnel_res",source,rid,rets)
 			else

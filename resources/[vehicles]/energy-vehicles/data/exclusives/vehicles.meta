@@ -983,14 +983,14 @@
       <txdName>rx8hachi</txdName>
       <handlingId>rx8hachi</handlingId>
       <gameName>rx8hachi</gameName>
-      <vehicleMakeName>Ferrari</vehicleMakeName>
+      <vehicleMakeName>Mazda</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
       <animConvRoofDictName>null</animConvRoofDictName>
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected/>
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>TURISMOR</audioNameHash>
+      <audioNameHash>rx7bpeng</audioNameHash>
       <layout>LAYOUT_LOW</layout>
       <coverBoundOffsets>TURISMOR_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -1038,10 +1038,10 @@
       <steerWheelMult value="1.000000"/>
       <HDTextureDist value="5.000000"/>
       <lodDistances content="float_array">
-        15.000000
-        30.000000
-        60.000000
-        120.000000
+        300.000000
+        300.000000
+        400.000000
+        400.000000
         500.000000
         500.000000
       </lodDistances>

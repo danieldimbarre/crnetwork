@@ -163,7 +163,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.takeItem(Slot,Amount,Target)
+function Creative.takeItem(Item,Slot,Amount,Target)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -206,7 +206,7 @@ RegisterServerEvent("trunkchest:openTrunk")
 AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Vehicle[Passport] then
 		if VehicleChest(Entity[2]) > 0 then
 			local PassportPlate = vRP.PassportPlate(Entity[1])
 

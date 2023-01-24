@@ -418,7 +418,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Take(Slot,Amount,Target,Name,Mode)
+function Creative.Take(Item,Slot,Amount,Target,Name,Mode)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)

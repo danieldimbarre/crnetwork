@@ -764,8 +764,8 @@ local List = {
 		["perm"] = "Lost",
 		["List"] = {}
 	},
-	["YoungBoys"] = {
-		["perm"] = "YoungBoys",
+	["Razors"] = {
+		["perm"] = "Razors",
 		["List"] = {
 			["attachsFlashlight"] = {
 				["amount"] = 1,
@@ -834,14 +834,14 @@ local List = {
 			}
 		}
 	},
-	["Bloods"] = {
-		["perm"] = "Bloods",
+	["YoungBoys"] = {
+		["perm"] = "YoungBoys",
 		["List"] = {
 			["attachsFlashlight"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["techtrash"] = 10,
+					["techtrash"] = 5,
 					["roadsigns"] = 2,
 					["glass"] = 1,
 					["plastic"] = 3
@@ -851,7 +851,7 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["techtrash"] = 10,
+					["techtrash"] = 5,
 					["roadsigns"] = 2,
 					["glass"] = 2,
 					["aluminum"] = 1
@@ -861,7 +861,7 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["techtrash"] = 10,
+					["techtrash"] = 5,
 					["roadsigns"] = 6,
 					["sheetmetal"] = 6
 				}
@@ -870,7 +870,7 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["techtrash"] = 10,
+					["techtrash"] = 5,
 					["roadsigns"] = 4,
 					["sheetmetal"] = 3
 				}
@@ -879,7 +879,7 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["techtrash"] = 10,
+					["techtrash"] = 5,
 					["roadsigns"] = 2,
 					["aluminum"] = 3
 				}
@@ -888,7 +888,7 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["techtrash"] = 10,
+					["techtrash"] = 5,
 					["roadsigns"] = 6,
 					["sheetmetal"] = 6
 				}
@@ -897,7 +897,7 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["techtrash"] = 10,
+					["techtrash"] = 5,
 					["roadsigns"] = 6,
 					["sheetmetal"] = 6
 				}

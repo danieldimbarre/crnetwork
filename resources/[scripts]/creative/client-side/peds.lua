@@ -198,7 +198,7 @@ local List = {
 	-- 	Model = "ig_g",
 	-- 	anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	-- },
-	-- { -- Bloods
+	-- { -- YoungBoys
 	-- 	Distance = 100,
 	-- 	Coords = { 230.55,-1753.35,28.98,232.45 },
 	-- 	Model = "ig_g",

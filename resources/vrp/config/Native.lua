@@ -2,19 +2,23 @@
 -- LOADMODEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadModel(Hash)
-	local Hash = GetHashKey(Hash)
-
-	while not HasModelLoaded(Hash) do
+	if IsModelInCdimage(Hash) and IsModelValid(Hash) then
 		RequestModel(Hash)
-		Wait(1)
+		while not HasModelLoaded(Hash) do
+			RequestModel(Hash)
+			Wait(1)
+		end
+
+		return true
 	end
 
-	return true
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOADANIM
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadAnim(Dict)
+	RequestAnimDict(Dict)
 	while not HasAnimDictLoaded(Dict) do
 		RequestAnimDict(Dict)
 		Wait(1)
@@ -26,6 +30,7 @@ end
 -- LOADTEXTURE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadTexture(Library)
+	RequestStreamedTextureDict(Library,false)
 	while not HasStreamedTextureDictLoaded(Library) do
 		RequestStreamedTextureDict(Library,false)
 		Wait(1)
@@ -37,6 +42,7 @@ end
 -- LOADMOVEMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadMovement(Library)
+	RequestAnimSet(Library)
 	while not HasAnimSetLoaded(Library) do
 		RequestAnimSet(Library)
 		Wait(1)
@@ -48,6 +54,7 @@ end
 -- LOADPTFXASSET
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadPtfxAsset(Library)
+	RequestNamedPtfxAsset(Library)
 	while not HasNamedPtfxAssetLoaded(Library) do
 		RequestNamedPtfxAsset(Library)
 		Wait(1)
@@ -59,17 +66,28 @@ end
 -- LOADNETWORK
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadNetwork(Network)
-	local Network = NetworkGetEntityFromNetworkId(Network)
-	while not DoesEntityExist(Network) do
-		Network = NetworkGetEntityFromNetworkId(Network)
+	local Cooldown = 100
+	local Object = NetworkGetEntityFromNetworkId(Network)
+	while not DoesEntityExist(Object) and Cooldown > 0 do
+		Cooldown = Cooldown - 1
+		Object = NetworkGetEntityFromNetworkId(Network)
+
 		Wait(1)
 	end
 
-	local Control = NetworkRequestControlOfEntity(Network)
-	while not Control do
-		Control = NetworkRequestControlOfEntity(Network)
-		Wait(1)
+	if DoesEntityExist(Object) then
+		NetworkRequestControlOfEntity(Object)
+		while not NetworkHasControlOfEntity(Object) do
+			Wait(1)
+		end
+
+		SetEntityAsMissionEntity(Object,true,true)
+		while not IsEntityAMissionEntity(Object) do
+			Wait(1)
+		end
+
+		return Object
 	end
 
-	return Network
+	return false
 end

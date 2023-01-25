@@ -6,6 +6,7 @@ Discords = {
 	["Disconnect"] = "https://discord.com/api/webhooks/1035719123159765062/0v2-JJ5xztffhpr50eSp-uzy_vfFdAQ63Rdg-heG6IAcJn87s_0sMEscSjhTo_wXLcXa",
 	["Airport"] = "https://discord.com/api/webhooks/1035719242970038374/4kVRLdCzfpOVT54Cllr9fmYt-zOdYw7zkUW6kB4_G7xiYptc2Mh7ls1iGo_9XHGwA1Gp",
 	["Deaths"] = "https://discord.com/api/webhooks/1035719352642703400/fC6uKw06EvXmkNUW7PcwkVK5q-EfN7_T3JzhFCyvoHp-9Bwx1ulkkHDyltdj-Wf0sLEJ",
+	["Polices"] = "https://discord.com/api/webhooks/1065610912532275241/XT_f1m1JPhBUtngS7qGFpMTSqSdmulsN3ljiUlc8qGZqLArLnraDZMMRVl-4MAxeM9U5",
 	["Police"] = "https://discord.com/api/webhooks/1022874777792282724/ImMiQ61Mc0u5dlHcLNRaaYx3TBKs0ODAvYo1CpEwM9Ht0aw3-7lU0dkQdrnR3BfcI5pw",
 	["Police-2"] = "https://discord.com/api/webhooks/1060915160967024763/NliPips9fYs-jsDFC2_jccM9MAO7MFK-dFEVIkmxBD6pSuI5JbzFQrBwLkSIM4NGeVlw",
 	["Police-3"] = "https://discord.com/api/webhooks/1060915247998844970/oc3V6aL4E05eIwk3nrfy1GSVHwQtG6jK6vwFTu-5p5_Vj5ovdJsISzBuTkCmdrmplXLN",
@@ -56,7 +57,7 @@ Discords = {
 	["Warehouse"] = "https://discord.com/api/webhooks/1065313939505819780/uKdReZ5tY0RhJfSoGSiKRpPzxuLS29glNQe8u7P2tzQBT5_WO8fRQR8eBCf3MZIWBq1i",
 	["Trunkchest"] = "https://discord.com/api/webhooks/1065328061786112090/Abs3Gln3MHUjRgo_nj1-JSLUP8WD7hS9IDVtAzuBdNcs01zwEWDZz3OtICsxRbo6-QDt",
 	["Inventory"] = "https://discord.com/api/webhooks/1065377148388524044/zggAyvRv0vYkWJs4Nxt87m7W6K6xijU8_Goz3pKcRLRASIa2hTfkHCVGdHYZh8_2PA_J",
-	["Polices"] = "https://discord.com/api/webhooks/1065610912532275241/XT_f1m1JPhBUtngS7qGFpMTSqSdmulsN3ljiUlc8qGZqLArLnraDZMMRVl-4MAxeM9U5"
+	["Premium"] = "https://discord.com/api/webhooks/1067585953411112981/FRUdmT6LiP9aJ_bhTs5RqarvQASDKmeH7OyuY_UIZsPxXMoDfxb7FLlDwG1FCwHzjU9e"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCORD

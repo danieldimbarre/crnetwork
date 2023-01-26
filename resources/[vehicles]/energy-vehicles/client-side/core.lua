@@ -107,6 +107,9 @@ CreateThread(function()
 	AddTextEntryByHash(GetHashKey("audia4_csign_c8"),"8")
 	AddTextEntryByHash(GetHashKey("audia4_csign_c9"),"9")
 
+	AddTextEntryByHash(GetHashKey("audir8_rollcage"),"Tunagem 01")
+	AddTextEntryByHash(GetHashKey("audir8_wing_1"),"Tunagem 02")
+
 	AddTextEntryByHash(GetHashKey("audir82_csign_a0"),"0")
 	AddTextEntryByHash(GetHashKey("audir82_csign_a1"),"1")
 	AddTextEntryByHash(GetHashKey("audir82_csign_a2"),"2")
@@ -137,6 +140,8 @@ CreateThread(function()
 	AddTextEntryByHash(GetHashKey("audir82_csign_c7"),"7")
 	AddTextEntryByHash(GetHashKey("audir82_csign_c8"),"8")
 	AddTextEntryByHash(GetHashKey("audir82_csign_c9"),"9")
+
+	AddTextEntryByHash(GetHashKey("aventador750_boot"),"Tunagem 01")
 
 	AddTextEntryByHash(GetHashKey("bmwi8_grill_1"),"Tunagem 01")
 	AddTextEntryByHash(GetHashKey("bmwi8_grill_2"),"Tunagem 02")
@@ -217,7 +222,10 @@ CreateThread(function()
 	AddTextEntryByHash(GetHashKey("fordraptor_csign_c8"),"8")
 	AddTextEntryByHash(GetHashKey("fordraptor_csign_c9"),"9")
 
-	AddTextEntryByHash(GetHashKey("aventador750_boot"),"Tunagem 01")
+	AddTextEntryByHash(GetHashKey("jeepcherokee_cage"),"Tunagem 01")
+	AddTextEntryByHash(GetHashKey("jeepcherokee_rooflight"),"Tunagem 02")
+	AddTextEntryByHash(GetHashKey("jeepcherokee_skirt"),"Tunagem 03")
+	AddTextEntryByHash(GetHashKey("jeepcherokee_wing_1"),"Tunagem 04")
 
 	AddTextEntryByHash(GetHashKey("m3e46_bumr_1"),"Tunagem 01")
 	AddTextEntryByHash(GetHashKey("m3e46_exh_1"),"Tunagem 02")

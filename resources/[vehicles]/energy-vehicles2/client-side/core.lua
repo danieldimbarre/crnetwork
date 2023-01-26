@@ -9,9 +9,6 @@ CreateThread(function()
 	AddTextEntryByHash(GetHashKey("350z_wing_3"),"Tunagem 05")
 	AddTextEntryByHash(GetHashKey("350z_wing_4"),"Tunagem 06")
 
-	AddTextEntryByHash(GetHashKey("audir8_rollcage"),"Tunagem 01")
-	AddTextEntryByHash(GetHashKey("audir8_wing_1"),"Tunagem 02")
-
 	AddTextEntryByHash(GetHashKey("civictyper_bumf"),"Tunagem 01")
 	AddTextEntryByHash(GetHashKey("civictyper_bumf_2"),"Tunagem 02")
 	AddTextEntryByHash(GetHashKey("civictyper_fk8"),"Tunagem 03")
@@ -173,11 +170,6 @@ CreateThread(function()
 	AddTextEntryByHash(GetHashKey("golfmk7_rollcage_2"),"Tunagem 02")
 	AddTextEntryByHash(GetHashKey("golfmk7_wing_1"),"Tunagem 03")
 	AddTextEntryByHash(GetHashKey("golfmk7_wing_2"),"Tunagem 04")
-
-	AddTextEntryByHash(GetHashKey("jeepcherokee_cage"),"Tunagem 01")
-	AddTextEntryByHash(GetHashKey("jeepcherokee_rooflight"),"Tunagem 02")
-	AddTextEntryByHash(GetHashKey("jeepcherokee_skirt"),"Tunagem 03")
-	AddTextEntryByHash(GetHashKey("jeepcherokee_wing_1"),"Tunagem 04")
 
 	AddTextEntryByHash(GetHashKey("lancerevolution9_bumf_1"),"Tunagem 01")
 	AddTextEntryByHash(GetHashKey("lancerevolution9_bumf_2"),"Tunagem 02")

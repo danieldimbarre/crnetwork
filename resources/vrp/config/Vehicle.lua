@@ -5616,13 +5616,6 @@ local List = {
 		["Mode"] = "rental",
 		["Gems"] = 100
 	},
-	["mazdarx72"] = {
-		["Name"] = "RX7-2",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = nil,
-		["Gems"] = 100
-	},
 	["dodgeramtrx"] = {
 		["Name"] = "RAM 1500 TRX",
 		["Weight"] = 80,
@@ -5945,13 +5938,6 @@ local List = {
 		["Mode"] = "rental",
 		["Gems"] = 100
 	},
-	["golf75r"] = {
-		["Name"] = "Golf 7.5R",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = nil,
-		["Gems"] = 100
-	},
 	["aventador750"] = {
 		["Name"] = "Aventador LP 750-4",
 		["Weight"] = 30,
@@ -5982,13 +5968,6 @@ local List = {
 	},
 	["CESTA"] = {
 		["Name"] = "Cesta",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = nil,
-		["Gems"] = 100
-	},
-	["nissangtr4"] = {
-		["Name"] = "GT-R 4",
 		["Weight"] = 30,
 		["Price"] = 100000,
 		["Mode"] = nil,
@@ -6092,18 +6071,11 @@ local List = {
 		["Mode"] = "rental",
 		["Gems"] = 100
 	},
-	["acuransx"] = {
-		["Name"] = "NSX",
-		["Weight"] = 30,
-		["Price"] = 100000,
-		["Mode"] = nil,
-		["Gems"] = 100
-	},
 	["skyliner342"] = {
 		["Name"] = "Skyline GT-R R34-2",
 		["Weight"] = 30,
 		["Price"] = 100000,
-		["Mode"] = nil,
+		["Mode"] = "exclusive",
 		["Gems"] = 100
 	},
 	["rx8hachi"] = {

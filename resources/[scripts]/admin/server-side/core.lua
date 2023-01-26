@@ -614,6 +614,22 @@ RegisterCommand("id",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SOURCE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("source",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local Source = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin") and Source > 0 then
+			local OtherPassport = vRP.Passport(Source)
+			if OtherPassport then
+				TriggerClientEvent("Notify",source,"azul","<b>Source:</b> "..Source.."<br><b>Passaporte:</b> "..OtherPassport,5000)
+				TriggerEvent("Discord","Admin","**source**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECK
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("check",function(source,Message)

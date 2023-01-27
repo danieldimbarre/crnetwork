@@ -285,8 +285,7 @@ local shops = {
 			["gauze"] = 100,
 			["analgesic"] = 125,
 			["sinkalmy"] = 375,
-			["ritmoneury"] = 475,
-			["sulfuric"] = 5
+			["ritmoneury"] = 475
 		}
 	},
 	["Paramedic"] = {
@@ -541,7 +540,13 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["adrenaline"] = 1200
+			["adrenaline"] = 1200,
+			["sulfuric"] = 5,
+			["acetone"] = 5,
+			["amphetamine"] = 5,
+			["codeine"] = 5,
+			["saline"] = 5,
+			["alcohol"] = 5
 		}
 	},
 	["Polices"] = {

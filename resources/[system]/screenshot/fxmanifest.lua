@@ -1,5 +1,6 @@
 fx_version 'bodacious'
 game "gta5"
+lua54 "yes"
 
 client_script 'dist/client.js'
 server_script 'dist/server.js'

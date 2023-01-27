@@ -1,4 +1,5 @@
 games {'gta5'}
+lua54 'yes'
 
 fx_version 'cerulean'
 

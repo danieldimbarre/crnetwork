@@ -2170,7 +2170,22 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>gxrx7_fbp1</modelName>
+          <modelName>gxrx7_livery6</modelName>
+          <modShopLabel>gxrx7_livery6</modShopLabel>
+          <linkedModels/>
+          <turnOffBones/>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000"/>
+          <weight value="20"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+        </Item>
+        <Item>
+          <modelName>rx_fbp1</modelName>
           <modShopLabel>RX7_Custom_Bumper1</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2195,7 +2210,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_fbp2</modelName>
+          <modelName>rx_fbp2</modelName>
           <modShopLabel>RX7_Custom_Bumper2</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2220,7 +2235,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_fbp3</modelName>
+          <modelName>rx_fbp3</modelName>
           <modShopLabel>RX7_Custom_Bumper3</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2245,7 +2260,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_fbp4</modelName>
+          <modelName>rx_fbp4</modelName>
           <modShopLabel>RX7_Custom_Bumper4</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2270,7 +2285,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_fbp5</modelName>
+          <modelName>rx_fbp5</modelName>
           <modShopLabel>RX7_Custom_Bumper5</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2295,7 +2310,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_fbp6</modelName>
+          <modelName>rx_fbp6</modelName>
           <modShopLabel>RX7_Custom_Bumper6</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2320,7 +2335,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_fbp7</modelName>
+          <modelName>rx_fbp7</modelName>
           <modShopLabel>RX7_Custom_Bumper7</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2345,56 +2360,10 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_ff1</modelName>
-          <modShopLabel>RX7_Custom_Front_Fenders1</modShopLabel>
-          <linkedModels/>
-          <turnOffBones>
-            <Item>misc_d</Item>
-          </turnOffBones>
-          <type>VMT_WING_R</type>
-          <bone>chassis</bone>
-          <collisionBone>chassis</collisionBone>
-          <cameraPos>VMCP_DEFAULT</cameraPos>
-          <audioApply value="1.00000000"/>
-          <weight value="0"/>
-          <turnOffExtra value="false"/>
-          <disableBonnetCamera value="false"/>
-          <allowBonnetSlide value="true"/>
-          <weaponSlot value="0"/>
-          <weaponSlotSecondary value="0"/>
-          <disableProjectileDriveby value="false"/>
-          <disableDriveby value="false"/>
-          <disableDrivebySeat value="0"/>
-          <disableDrivebySeatSecondary value="0"/>
-        </Item>
-        <Item>
-          <modelName>gxrx7_ff2</modelName>
-          <modShopLabel>RX7_Custom_Front_Fenders2</modShopLabel>
-          <linkedModels/>
-          <turnOffBones>
-            <Item>misc_d</Item>
-          </turnOffBones>
-          <type>VMT_WING_R</type>
-          <bone>chassis</bone>
-          <collisionBone>chassis</collisionBone>
-          <cameraPos>VMCP_DEFAULT</cameraPos>
-          <audioApply value="1.00000000"/>
-          <weight value="0"/>
-          <turnOffExtra value="false"/>
-          <disableBonnetCamera value="false"/>
-          <allowBonnetSlide value="true"/>
-          <weaponSlot value="0"/>
-          <weaponSlotSecondary value="0"/>
-          <disableProjectileDriveby value="false"/>
-          <disableDriveby value="false"/>
-          <disableDrivebySeat value="0"/>
-          <disableDrivebySeatSecondary value="0"/>
-        </Item>
-        <Item>
-          <modelName>gxrx7_heal1l</modelName>
+          <modelName>rx_heal1l</modelName>
           <modShopLabel>FUTO2_SLEEPC</modShopLabel>
           <linkedModels>
-            <Item>gxrx7_heal1r</Item>
+            <Item>rx_heal1r</Item>
           </linkedModels>
           <turnOffBones>
             <Item>misc_b</Item>
@@ -2411,10 +2380,10 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>gxrx7_heal3l</modelName>
+          <modelName>rx_heal3l</modelName>
           <modShopLabel>FUTO2_SLEEPB</modShopLabel>
           <linkedModels>
-            <Item>gxrx7_heal3r</Item>
+            <Item>rx_heal3r</Item>
           </linkedModels>
           <turnOffBones>
             <Item>misc_b</Item>
@@ -2431,7 +2400,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>gxrx7_rbp1</modelName>
+          <modelName>rx_rbp1</modelName>
           <modShopLabel>RX7_Custom_Rear_Bumper1</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2454,7 +2423,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_rbp2</modelName>
+          <modelName>rx_rbp2</modelName>
           <modShopLabel>RX7_Custom_Rear_Bumper2</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2477,7 +2446,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_rbp3</modelName>
+          <modelName>rx_rbp3</modelName>
           <modShopLabel>RX7_Custom_Rear_Bumper3</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2500,7 +2469,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_rbp4</modelName>
+          <modelName>rx_rbp4</modelName>
           <modShopLabel>RX7_Custom_Rear_Bumper4</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2523,7 +2492,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_rbp5</modelName>
+          <modelName>rx_rbp5</modelName>
           <modShopLabel>RX7_Custom_Rear_Bumper5</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2546,7 +2515,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_rbp6</modelName>
+          <modelName>rx_rbp6</modelName>
           <modShopLabel>RX7_Custom_Rear_Bumper6</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2569,7 +2538,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_rbp7</modelName>
+          <modelName>rx_rbp7</modelName>
           <modShopLabel>RX7_Custom_Rear_Bumper7</modShopLabel>
           <linkedModels/>
           <turnOffBones>
@@ -2592,53 +2561,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_rf1</modelName>
-          <modShopLabel>RX7_Custom_rear_Fenders1</modShopLabel>
-          <linkedModels/>
-          <turnOffBones>
-            <Item>misc_e</Item>
-          </turnOffBones>
-          <type>VMT_WING_L</type>
-          <bone>chassis</bone>
-          <collisionBone>chassis</collisionBone>
-          <cameraPos>VMCP_DEFAULT</cameraPos>
-          <audioApply value="1.00000000"/>
-          <weight value="0"/>
-          <turnOffExtra value="false"/>
-          <disableBonnetCamera value="false"/>
-          <allowBonnetSlide value="true"/>
-          <weaponSlot value="0"/>
-          <weaponSlotSecondary value="0"/>
-          <disableProjectileDriveby value="false"/>
-          <disableDriveby value="false"/>
-          <disableDrivebySeat value="0"/>
-          <disableDrivebySeatSecondary value="0"/>
-        </Item>
-        <Item>
-          <modelName>gxrx7_rf2</modelName>
-          <modShopLabel>RX7_Custom_rearvFenders2</modShopLabel>
-          <linkedModels/>
-          <turnOffBones>
-            <Item>misc_e</Item>
-          </turnOffBones>
-          <type>VMT_WING_L</type>
-          <bone>chassis</bone>
-          <collisionBone>chassis</collisionBone>
-          <cameraPos>VMCP_DEFAULT</cameraPos>
-          <audioApply value="1.00000000"/>
-          <weight value="0"/>
-          <turnOffExtra value="false"/>
-          <disableBonnetCamera value="false"/>
-          <allowBonnetSlide value="true"/>
-          <weaponSlot value="0"/>
-          <weaponSlotSecondary value="0"/>
-          <disableProjectileDriveby value="false"/>
-          <disableDriveby value="false"/>
-          <disableDrivebySeat value="0"/>
-          <disableDrivebySeatSecondary value="0"/>
-        </Item>
-        <Item>
-          <modelName>gxrx7_sk1</modelName>
+          <modelName>rx_sk1</modelName>
           <modShopLabel>RX7_Custom_Skirt1</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -2659,7 +2582,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_sk2</modelName>
+          <modelName>rx_sk2</modelName>
           <modShopLabel>RX7_Custom_Skirt2</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -2680,7 +2603,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_sk3</modelName>
+          <modelName>rx_sk3</modelName>
           <modShopLabel>RX7_Custom_Skirt3</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -2701,7 +2624,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_sk4</modelName>
+          <modelName>rx_sk4</modelName>
           <modShopLabel>RX7_Custom_Skirt4</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -2722,7 +2645,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_sk5</modelName>
+          <modelName>rx_sk5</modelName>
           <modShopLabel>RX7_Custom_Skirt5</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -2743,7 +2666,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_sk6</modelName>
+          <modelName>rx_sk6</modelName>
           <modShopLabel>RX7_Custom_Skirt6</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -2764,7 +2687,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_sk7</modelName>
+          <modelName>rx_sk7</modelName>
           <modShopLabel>RX7_Custom_Skirt7</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -2785,7 +2708,7 @@
           <disableDrivebySeatSecondary value="0"/>
         </Item>
         <Item>
-          <modelName>gxrx7_tail1</modelName>
+          <modelName>rx_tail1</modelName>
           <modShopLabel>RX7 Custom Tailight1</modShopLabel>
           <turnOffBones>
             <Item>misc_i</Item>
@@ -2801,7 +2724,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>gxrx7_tail2</modelName>
+          <modelName>rx_tail2</modelName>
           <modShopLabel>RX7 Custom Tailight2</modShopLabel>
           <turnOffBones>
             <Item>misc_i</Item>
@@ -2817,7 +2740,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>gxrx7_tail3</modelName>
+          <modelName>rx_tail3</modelName>
           <modShopLabel>RX7 Custom Tailight3</modShopLabel>
           <turnOffBones>
             <Item>misc_i</Item>
@@ -2833,7 +2756,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>gxrx7_tail4</modelName>
+          <modelName>rx_tail4</modelName>
           <modShopLabel>RX7 Custom Tailight4</modShopLabel>
           <turnOffBones>
             <Item>misc_i</Item>
@@ -2849,7 +2772,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>gxrx7_tail5</modelName>
+          <modelName>rx_tail5</modelName>
           <modShopLabel>RX7 Custom Tailight5</modShopLabel>
           <turnOffBones>
             <Item>misc_i</Item>
@@ -2865,7 +2788,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>gxrx7_tail6</modelName>
+          <modelName>rx_tail6</modelName>
           <modShopLabel>RX7 Custom Tailight6</modShopLabel>
           <turnOffBones>
             <Item>misc_i</Item>
@@ -3648,19 +3571,19 @@
       </visibleMods>
       <linkMods>
         <Item>
-          <modelName>gxrx7_heal1r</modelName>
+          <modelName>rx_heal1r</modelName>
           <bone>chassis</bone>
           <collisionBone>chassis</collisionBone>
           <turnOffExtra value="false"/>
         </Item>
         <Item>
-          <modelName>gxrx7_heal2r</modelName>
+          <modelName>rx_heal2r</modelName>
           <bone>chassis</bone>
           <collisionBone>chassis</collisionBone>
           <turnOffExtra value="false"/>
         </Item>
         <Item>
-          <modelName>gxrx7_heal3r</modelName>
+          <modelName>rx_heal3r</modelName>
           <bone>chassis</bone>
           <collisionBone>chassis</collisionBone>
           <turnOffExtra value="false"/>

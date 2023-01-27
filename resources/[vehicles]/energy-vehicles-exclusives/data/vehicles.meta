@@ -593,7 +593,7 @@
       <wheelScale value="0.226700"/>
       <wheelScaleRear value="0.226700"/>
       <dirtLevelMin value="0.000000"/>
-      <dirtLevelMax value="0.000000"/>
+      <dirtLevelMax value="0.000010"/>
       <envEffScaleMin value="0.000000"/>
       <envEffScaleMax value="1.000000"/>
       <envEffScaleMin2 value="0.000000"/>
@@ -622,7 +622,7 @@
       <frequency value="100"/>
       <swankness>SWANKNESS_4</swankness>
       <maxNum value="999"/>
-      <flags>FLAG_INCREASE_CAMBER_WITH_SUSPENSION_MOD</flags>
+      <flags>FLAG_SPORTS FLAG_EXTRAS_STRONG FLAG_RICH_CAR FLAG_NO_BROKEN_DOWN_SCENARIO FLAG_HAS_INTERIOR_EXTRAS FLAG_RECESSED_TAILLIGHT_CORONAS FLAG_RECESSED_HEADLIGHT_CORONAS FLAG_INCREASE_CAMBER_WITH_SUSPENSION_MOD FLAG_HAS_LIVERY</flags>
       <type>VEHICLE_TYPE_CAR</type>
       <plateType>VPT_BACK_PLATES</plateType>
       <dashboardType>VDT_ZTYPE</dashboardType>

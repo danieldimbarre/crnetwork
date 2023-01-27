@@ -458,14 +458,14 @@ local shops = {
 			["sheetmetal"] = 20,
 			["roadsigns"] = 20,
 			["explosives"] = 30,
-			["codeine"] = 15,
-			["amphetamine"] = 20,
-			["acetone"] = 15,
+			["codeine"] = 5,
+			["amphetamine"] = 5,
+			["acetone"] = 5,
 			["cotton"] = 20,
 			["plaster"] = 15,
 			["sulfuric"] = 5,
-			["saline"] = 20,
-			["alcohol"] = 15
+			["saline"] = 5,
+			["alcohol"] = 5
 		}
 	},
 	["Miners"] = {

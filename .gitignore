@@ -40,3 +40,4 @@ server.cfg
 
 # Test Resources
 resources/\[tests\]/
+*.zip

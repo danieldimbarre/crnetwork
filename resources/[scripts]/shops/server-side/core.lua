@@ -537,6 +537,13 @@ local shops = {
 			["water"] = 30
 		}
 	},
+	["PharmacyIlegal"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["adrenaline"] = 1200
+		}
+	},
 	["Polices"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",

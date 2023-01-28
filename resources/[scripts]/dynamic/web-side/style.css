@@ -55,7 +55,7 @@ body, html {
 	content: "";
 	position: absolute;
 	border-radius: 5px;
-	background: #515151;
+	background: #898989;
 }
 
 .btn:hover, .normalbutton:hover {
@@ -74,7 +74,7 @@ body, html {
 }
 
 .description {
-	color: #515151;
+	color: #898989;
 	font-size: 11px;
 	margin-top: 13px;
 	text-align: left;
@@ -107,7 +107,7 @@ body, html {
 	content: "";
 	position: absolute;
 	border-radius: 5px;
-	background: #515151;
+	background: #898989;
 }
 
 .amarelo:hover::before {

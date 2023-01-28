@@ -73,7 +73,7 @@ local Robberys = {
 	{ ["item"] = "pliers", ["min"] = 1, ["max"] = 2 },
 	{ ["item"] = "lampshade", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "slipper", ["min"] = 1, ["max"] = 1 },
-	{ ["item"] = "soap", ["min"] = 1, ["max"] = 1 }
+	{ ["item"] = "soap", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "card01", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "card02", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },

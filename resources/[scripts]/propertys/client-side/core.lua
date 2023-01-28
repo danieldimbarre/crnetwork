@@ -230,7 +230,7 @@ AddEventHandler("propertys:Enter",function(Name,Invade,Robbery)
 			local Ped = PlayerPedId()
 			local Speed = GetEntitySpeed(Ped)
 			if Speed > 2 then
-				Timers = GetGameTimer() + 5000
+				Timers = GetGameTimer() + 10000
 				TriggerServerEvent("propertys:CallPolice",Init)
 			end
 		end

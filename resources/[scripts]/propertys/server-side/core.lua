@@ -576,19 +576,19 @@ end)
 -- PROPERTYS:ROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("propertys:Robberys")
-AddEventHandler("propertys:Robberys",function(Property)
+AddEventHandler("propertys:Robberys",function(Property,Index)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Property then
-		if not Theft[Property] then
-			Theft[Property] = os.time()
+	if Passport and Property and Index then
+		local Robbery = Property..Index
+
+		if not Theft[Robbery] then
+			Theft[Robbery] = os.time()
 		end
 
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 		Active[Passport] = os.time() + 100
 		local Service,Total = vRP.NumPermission("Police")
-
-		local Split = splitString(Property,"-")
 
 		if vTASKBAR.stealTrunk(source) then
 			Active[Passport] = os.time() + 10
@@ -601,15 +601,15 @@ AddEventHandler("propertys:Robberys",function(Property)
 					vRPC.stopAnim(source,false)
 					Player(source)["state"]["Buttons"] = false
 
-					if os.time() >= Theft[Property] then
-						if GlobalState["Buffs"]["Luck"][Passport] then
-							if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
-								randItem = math.random(175)
-							end
-						end
-
+					if os.time() >= Theft[Robbery] then
 						local Selected = math.random(#Robberys)
 						local Value = parseInt(math.random(Robberys[Selected]["min"],Robberys[Selected]["max"]))
+
+						if GlobalState["Buffs"]["Luck"][Passport] then
+							if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+								Value = Value + 2
+							end
+						end
 
 						if (vRP.InventoryWeight(Passport) + (itemWeight(Robberys[Selected]["item"]) * Value)) <= vRP.GetWeight(Passport) then
 							local Random = 80
@@ -619,10 +619,10 @@ AddEventHandler("propertys:Robberys",function(Property)
 
 							if math.random(100) <= Random then
 								vRP.GenerateItem(Passport,Robberys[Selected]["item"],Value,true)
-								Theft[Property] = os.time() + 3600
+								Theft[Robbery] = os.time() + 3600
 							else
 								TriggerClientEvent("Notify",source,"amarelo","Compartimento vazio.",5000)
-								Theft[Property] = os.time() + 3600
+								Theft[Robbery] = os.time() + 3600
 							end
 						else
 							TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
@@ -636,7 +636,7 @@ AddEventHandler("propertys:Robberys",function(Property)
 							for Passports,Sources in pairs(Service) do
 								async(function()
 									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Split[1]]["x"], y = Propertys[Split[1]]["y"], z = Propertys[Split[1]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Property]["x"], y = Propertys[Property]["y"], z = Propertys[Property]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 								end)
 							end
 						end
@@ -655,7 +655,7 @@ AddEventHandler("propertys:Robberys",function(Property)
 			for Passports,Sources in pairs(Service) do
 				async(function()
 					vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Split[1]]["x"], y = Propertys[Split[1]]["y"], z = Propertys[Split[1]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Property]["x"], y = Propertys[Property]["y"], z = Propertys[Property]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 				end)
 			end
 		end
@@ -668,14 +668,14 @@ RegisterServerEvent("propertys:CallPolice")
 AddEventHandler("propertys:CallPolice",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Name and Theft[Name] then
+	if Passport and Name then
 		TriggerEvent("Wanted",source,Passport,120)
 
 		local Service = vRP.NumPermission("Police")
 		for Passports,Sources in pairs(Service) do
 			async(function()
 				vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-				TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Split[1]]["x"], y = Propertys[Split[1]]["y"], z = Propertys[Split[1]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+				TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Name]["x"], y = Propertys[Name]["y"], z = Propertys[Name]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 			end)
 		end
 	end
@@ -718,7 +718,7 @@ function EnterHomes(source,Passport,Name)
 		Interior = Consult[1]["Interior"]
 	end
 
-	TriggerClientEvent("propertys:Enter",source,Name,Interior,true)
+	TriggerClientEvent("propertys:Enter",source,Name,Interior,Name)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESETTHEFT

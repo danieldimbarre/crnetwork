@@ -21,7 +21,7 @@ local Informations = {}
 local Thef = false
 local Timers = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ThefTCOORDS
+-- THEFTCOORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local TheftCoords = {
 	["Emerald"] = {
@@ -79,22 +79,29 @@ local TheftCoords = {
 CreateThread(function()
 	for Name,v in pairs(TheftCoords) do
 		for Index,Coords in pairs(v) do
-			exports["target"]:AddCircleZone("Propertys:"..Name.."-"..Index,Coords,0.5,{
-				name = "Propertys:"..Name.."-"..Index,
+			exports["target"]:AddCircleZone("Propertys:"..Index,Coords,0.5,{
+				name = "Propertys:"..Index,
 				heading = 3374176
 			},{
 				Distance = 1.2,
-				shop = Name.."-"..Index,
+				shop = Index,
 				options = {
 					{
 						event = "propertys:Robberys",
 						label = "Roubar",
-						tunnel = "server"
+						tunnel = "shop",
+						service = "Normal"
 					}
 				}
 			})
 		end
 	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:ROBBERYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("propertys:Robberys",function(Prop)
+	TriggerServerEvent("propertys:Robberys",Int,Prop)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM

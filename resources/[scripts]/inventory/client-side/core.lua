@@ -2020,9 +2020,10 @@ RegisterNetEvent("inventory:DisPed")
 AddEventHandler("inventory:DisPed",function(Experience)
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
-	local Category = ClassCategory(Experience)
-
+	
 	if Experience then
+		local Category = ClassCategory(Experience)
+
 		for i = 1,DismantleCategory[Category]["Number"] do
 			local Rand = math.random(#disPeds)
 			local Weapon = math.random(#DismantleCategory[Category]["Weapons"])

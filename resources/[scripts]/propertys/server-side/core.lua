@@ -12,6 +12,7 @@ Creative = {}
 Tunnel.bindInterface("propertys",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vSKINSHOP = Tunnel.getInterface("skinshop")
+vTASKBAR = Tunnel.getInterface("taskbar")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------

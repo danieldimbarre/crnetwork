@@ -586,11 +586,12 @@ AddEventHandler("propertys:Robberys",function(Property)
 
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 		Active[Passport] = os.time() + 100
+		local Service = vRP.NumPermission("Police")
 
 		if vTASKBAR.stealTrunk(source) then
-			Active[Passport] = os.time() + 20
+			Active[Passport] = os.time() + 10
 			Player(source)["state"]["Buttons"] = true
-			TriggerClientEvent("Progress",source,"Vasculhando",20000)
+			TriggerClientEvent("Progress",source,"Roubando",10000)
 
 			repeat
 				if os.time() >= parseInt(Active[Passport]) then
@@ -605,7 +606,6 @@ AddEventHandler("propertys:Robberys",function(Property)
 							end
 						end
 
-						local Service = vRP.NumPermission("Police")
 						local Selected = math.random(#Robberys)
 						local Value = parseInt(math.random(Robberys[Selected]["min"],Robberys[Selected]["max"]))
 
@@ -667,16 +667,14 @@ AddEventHandler("propertys:CallPolice",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Name and Theft[Name] then
-		if math.random(1500) >= 950 then
-			TriggerEvent("Wanted",source,Passport,120)
+		TriggerEvent("Wanted",source,Passport,120)
 
-			local Service = vRP.NumPermission("Police")
-			for Passports,Sources in pairs(Service) do
-				async(function()
-					vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Name]["x"], y = Propertys[Name]["y"], z = Propertys[Name]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
-				end)
-			end
+		local Service = vRP.NumPermission("Police")
+		for Passports,Sources in pairs(Service) do
+			async(function()
+				vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+				TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Name]["x"], y = Propertys[Name]["y"], z = Propertys[Name]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+			end)
 		end
 	end
 end)

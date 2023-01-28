@@ -84,10 +84,10 @@ CreateThread(function()
 				heading = 3374176
 			},{
 				Distance = 1.2,
-				shop = Name,
+				shop = Name.."-"..Index,
 				options = {
 					{
-						event = "propertys:Robbery",
+						event = "propertys:Robberys",
 						label = "Roubar",
 						tunnel = "server"
 					}

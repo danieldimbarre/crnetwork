@@ -574,33 +574,75 @@ end)
 -- PROPERTYS:ROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("propertys:Robberys")
-AddEventHandler("propertys:Robberys",function(Name)
+AddEventHandler("propertys:Robberys",function(Property)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Name and Theft[Name] then
-		local Service = vRP.NumPermission("Police")
-		local Selected = math.random(#Robberys)
-		local Value = parseInt(math.random(Robberys[Selected]["min"],Robberys[Selected]["max"]))
+	if Passport and Property and not Theft[Property] then
+		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+		Active[Passport] = os.time() + 100
 
-		if (vRP.InventoryWeight(Passport) + (itemWeight(Robberys[Selected]["item"]) * Value)) <= vRP.GetWeight(Passport) then
-			local Random = 80
-			if #Service <= 20 then
-				Random = 40
-			end
+		if vTASKBAR.stealTrunk(source) then
+			Active[Passport] = os.time() + 20
+			Player(source)["state"]["Buttons"] = true
+			TriggerClientEvent("Progress",source,"Vasculhando",20000)
 
-			if math.random(100) <= Random then
-				vRP.GenerateItem(Passport,Robberys[Selected]["item"],Value,true)
-			else
-				TriggerClientEvent("Notify",source,"amarelo","Compartimento vazio.",5000)
-			end
+			repeat
+				if os.time() >= parseInt(Active[Passport]) then
+					Active[Passport] = nil
+					vRPC.stopAnim(source,false)
+					Player(source)["state"]["Buttons"] = false
+
+					if os.time() >= Theft[Property] then
+						if GlobalState["Buffs"]["Luck"][Passport] then
+							if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+								randItem = math.random(175)
+							end
+						end
+
+						local Service = vRP.NumPermission("Police")
+						local Selected = math.random(#Robberys)
+						local Value = parseInt(math.random(Robberys[Selected]["min"],Robberys[Selected]["max"]))
+
+						if (vRP.InventoryWeight(Passport) + (itemWeight(Robberys[Selected]["item"]) * Value)) <= vRP.GetWeight(Passport) then
+							local Random = 80
+							if #Service <= 20 then
+								Random = 40
+							end
+
+							if math.random(100) <= Random then
+								vRP.GenerateItem(Passport,Robberys[Selected]["item"],Value,true)
+								Theft[Property] = os.time() + 3600
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Compartimento vazio.",5000)
+								Theft[Property] = os.time() + 3600
+							end
+						else
+							TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+						end
+
+						vRP.UpgradeStress(Passport,1)
+
+						if math.random(1000) >= 950 then
+							TriggerEvent("Wanted",source,Passport,120)
+				
+							for Passports,Sources in pairs(Service) do
+								async(function()
+									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Name]["x"], y = Propertys[Name]["y"], z = Propertys[Name]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+								end)
+							end
+						end
+					else
+						TriggerClientEvent("Notify",source,"amarelo","Compartimento vazio.",5000)
+					end
+				end
+
+				Wait(100)
+			until not Active[Passport]
 		else
-			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
-		end
-
-		vRP.UpgradeStress(Passport,1)
-
-		if math.random(1000) >= 950 then
 			TriggerEvent("Wanted",source,Passport,120)
+			vRPC.stopAnim(source,false)
+			Active[Passport] = nil
 
 			for Passports,Sources in pairs(Service) do
 				async(function()

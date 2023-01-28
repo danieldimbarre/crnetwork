@@ -588,6 +588,8 @@ AddEventHandler("propertys:Robberys",function(Property)
 		Active[Passport] = os.time() + 100
 		local Service,Total = vRP.NumPermission("Police")
 
+		local Split = splitString(Property,"-")
+
 		if vTASKBAR.stealTrunk(source) then
 			Active[Passport] = os.time() + 10
 			Player(source)["state"]["Buttons"] = true
@@ -634,7 +636,7 @@ AddEventHandler("propertys:Robberys",function(Property)
 							for Passports,Sources in pairs(Service) do
 								async(function()
 									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Name]["x"], y = Propertys[Name]["y"], z = Propertys[Name]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Split[1]]["x"], y = Propertys[Split[1]]["y"], z = Propertys[Split[1]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 								end)
 							end
 						end
@@ -653,7 +655,7 @@ AddEventHandler("propertys:Robberys",function(Property)
 			for Passports,Sources in pairs(Service) do
 				async(function()
 					vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Name]["x"], y = Propertys[Name]["y"], z = Propertys[Name]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Split[1]]["x"], y = Propertys[Split[1]]["y"], z = Propertys[Split[1]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 				end)
 			end
 		end
@@ -673,7 +675,7 @@ AddEventHandler("propertys:CallPolice",function(Name)
 		for Passports,Sources in pairs(Service) do
 			async(function()
 				vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-				TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Name]["x"], y = Propertys[Name]["y"], z = Propertys[Name]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+				TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Split[1]]["x"], y = Propertys[Split[1]]["y"], z = Propertys[Split[1]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 			end)
 		end
 	end

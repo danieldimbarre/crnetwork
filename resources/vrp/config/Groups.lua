@@ -29,8 +29,8 @@ Groups = {
 		["Parent"] = {
 			["Police"] = true
 		},
-		["Hierarchy"] = { "Comando","Major","Capitão","Tenente","Sargento","Cabo","Soldado","Recruta" },
-		["Salary"] = { 2500,2400,2300,2200,2200,2100,2100,2000 },
+		["Hierarchy"] = { "Comando","Major","Capitão","Tenente","Sargento","Cabo","Soldado","Aluno" },
+		["Salary"] = { 2700,2600,2500,2400,2300,2200,2100,2000 },
 		["Service"] = {},
 		["Type"] = "Work"
 	},
@@ -186,6 +186,38 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work"
 	},
+	["Favela01"] = {
+		["Parent"] = {
+			["Favela01"] = true
+		},
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
+		["Service"] = {},
+		["Type"] = "Work"
+	},
+	["Favela02"] = {
+		["Parent"] = {
+			["Favela02"] = true
+		},
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
+		["Service"] = {},
+		["Type"] = "Work"
+	},
+	["Favela03"] = {
+		["Parent"] = {
+			["Favela03"] = true
+		},
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
+		["Service"] = {},
+		["Type"] = "Work"
+	},
+	["Favela04"] = {
+		["Parent"] = {
+			["Favela04"] = true
+		},
+		["Hierarchy"] = { "Chefe","Gerente","Membro" },
+		["Service"] = {},
+		["Type"] = "Work"
+	},
 	["Emergency"] = {
 		["Parent"] = {
 			["Police"] = true,
@@ -210,6 +242,16 @@ Groups = {
 			["Vagos"] = true,
 			["Families"] = true,
 			["Tribo"] = true
+		},
+		["Hierarchy"] = { "Chefe" },
+		["Service"] = {}
+	},
+	["Favelas"] = {
+		["Parent"] = {
+			["Favela01"] = true,
+			["Favela02"] = true,
+			["Favela03"] = true,
+			["Favela04"] = true
 		},
 		["Hierarchy"] = { "Chefe" },
 		["Service"] = {}

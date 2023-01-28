@@ -971,15 +971,6 @@ local List = {
 					["rubber"] = 5
 				}
 			},
-			["notebook"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["techtrash"] = 10,
-					["battery"] = 10,
-					["aluminum"] = 20
-				}
-			},
 			["dismantle"] = {
 				["amount"] = 1,
 				["destroy"] = false,
@@ -993,20 +984,6 @@ local List = {
 				["require"] = {
 					["sheetmetal"] = 5,
 					["roadsigns"] = 3
-				}
-			},
-			["nitro"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 10000,
-				}
-			},
-			["credential"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["dollars"] = 500,
 				}
 			}
 		}
@@ -1046,6 +1023,34 @@ local List = {
 					["syringe02"] = 1,
 					["syringe03"] = 1,
 					["syringe04"] = 1
+				}
+			}
+		}
+	},
+	["Dracing"] = {
+		["perm"] = "Dracing-2",
+		["List"] = {
+			["notebook"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["techtrash"] = 10,
+					["battery"] = 10,
+					["aluminum"] = 20
+				}
+			},
+			["nitro"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["dollars"] = 10000,
+				}
+			},
+			["credential"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["dollars"] = 500,
 				}
 			}
 		}

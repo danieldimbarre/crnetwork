@@ -198,10 +198,10 @@ Products = {
 		}, ["needAmount"] = 10, ["item"] = "cocaine", ["itemAmount"] = 10 }
 	},
 	["tablemeth"] = {
-		{ ["perm"] = "Facs", ["timer"] = 20, ["need"] = {
-			{ ["item"] = "saline", ["amount"] = 1 },
-			{ ["item"] = "acetone", ["amount"] = 1 }
-		}, ["needAmount"] = 1, ["item"] = "meth", ["itemAmount"] = 3 }
+		{ ["perm"] = "Favelas", ["timer"] = 20, ["need"] = {
+			{ ["item"] = "amphetamine", ["amount"] = 10 },
+			{ ["item"] = "acetone", ["amount"] = 10 }
+		}, ["needAmount"] = 10, ["item"] = "meth", ["itemAmount"] = 10 }
 	},
 	["tableweed"] = {
 		{ ["perm"] = "Facs", ["timer"] = 20, ["need"] = {

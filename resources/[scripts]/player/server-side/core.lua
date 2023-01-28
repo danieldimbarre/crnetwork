@@ -229,6 +229,19 @@ RegisterCommand("m",function(source,Message,History)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- D
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("D",function(source,Message,History)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
+		if vRP.HasGroup(Passport,"Dracing") then
+			TriggerClientEvent("Notify",-1,"verde","<b>A D'racing informa:</b> "..History:sub(2),30000)
+
+			TriggerEvent("Discord","Dracing","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SHOTSFIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.shotsFired(Vehicle)

@@ -2745,6 +2745,58 @@ Use = {
 					vRPC.removeObjects(source)
 					Active[Passport] = nil
 				end
+			else
+				if exports["hud"]:Wanted(Passport) then
+					return
+				end
+
+				local Property = exports["propertys"]:HomesTheft(source)
+				if Property then
+					TriggerClientEvent("inventory:Close",source)
+					vRPC.removeObjects(source)
+					vRP.UpgradeStress(Passport,2)
+					Active[Passport] = os.time() + 100
+					Player(source)["state"]["Buttons"] = true
+					vRPC.playAnim(source,false,{"missheistfbi3b_ig7","lift_fibagent_loop"},false)
+					local Brokenpick = 950
+
+					if vTASKBAR.taskLockpick(source) then
+						Brokenpick = 900
+						exports["propertys"]:EnterHomes(source,Passport,Property)
+					else
+						exports["propertys"]:ResetTheft(Property)
+
+						if math.random(100) >= 50 then
+							TriggerClientEvent("Notify",source,"amarelo","A vizinhança foi avisada de um suposto roubo.",5000)
+							TriggerClientEvent("inventory:DisPed",source)
+							local Players = vRPC.Players(source)
+							for _,v in ipairs(Players) do
+								async(function()
+									TriggerClientEvent("sounds:source",v,"alarm",1.0)
+								end)
+							end
+
+							local Coords = vRP.GetEntityCoords(source)
+							local Service = vRP.NumPermission("Police")
+							for Passports,Sources in pairs(Service) do
+								async(function()
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+								end)
+							end
+						end
+					end
+
+					if math.random(1000) >= Brokenpick then
+						if vRP.TakeItem(Passport,Full,1,false) then
+							vRP.GiveItem(Passport,"lockpick-0",1,false)
+							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+						end
+					end
+
+					Player(source)["state"]["Buttons"] = false
+					vRPC.stopAnim(source,false)
+					Active[Passport] = nil
+				end
 			end
 		else
 			local Brokenpick = 950

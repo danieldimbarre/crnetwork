@@ -38,11 +38,12 @@ input::-webkit-inner-spin-button {
 	text-shadow: 1px 1px #000;
 	color: rgba(255,255,255,0.75);
 	background: rgba(15,15,15,.75);
+	border-radius: 5px;
 }
 
 #Survival color {
-	color: #92ac29;
+	color: #00e076;
 }
 #Survival color2 {
-	color: #bd962e;
+	color: #009C52;
 }

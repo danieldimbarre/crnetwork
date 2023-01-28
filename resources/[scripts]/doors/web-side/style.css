@@ -33,6 +33,7 @@ input::-webkit-inner-spin-button {
 	position: absolute;
 	padding: 15px 20px 13px 15px;
 	text-shadow: 1px 1px #232630;
+	border-radius: 5px;
 	background: rgba(15,15,15,.75);
 }
 
@@ -44,7 +45,8 @@ input::-webkit-inner-spin-button {
 	bottom: 20%;
 	content: "";
 	position: absolute;
-	background: #6ede81;
+	border-radius: 5px;
+	background: #00e076;
 }
 
 #Doors > .Button {

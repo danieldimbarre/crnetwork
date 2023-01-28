@@ -2660,7 +2660,7 @@ Use = {
 					if math.random(1000) >= Brokenpick then
 						if vRP.TakeItem(Passport,Full,1,false) then
 							vRP.GiveItem(Passport,"lockpick-0",1,false)
-							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+							TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
 						end
 					end
 
@@ -2737,7 +2737,7 @@ Use = {
 					if math.random(1000) >= Brokenpick then
 						if vRP.TakeItem(Passport,Full,1,false) then
 							vRP.GiveItem(Passport,"lockpick-0",1,false)
-							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+							TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
 						end
 					end
 
@@ -2789,7 +2789,7 @@ Use = {
 					if math.random(1000) >= Brokenpick then
 						if vRP.TakeItem(Passport,Full,1,false) then
 							vRP.GiveItem(Passport,"lockpick-0",1,false)
-							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+							TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
 						end
 					end
 
@@ -2814,7 +2814,7 @@ Use = {
 			if math.random(1000) >= Brokenpick then
 				if vRP.TakeItem(Passport,Full,1,false) then
 					vRP.GiveItem(Passport,"lockpick-0",1,false)
-					TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+					TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
 				end
 			end
 

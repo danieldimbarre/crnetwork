@@ -28,7 +28,7 @@ window.addEventListener("message",function(event){
 
 		case "Valid":
 			$(".Text").html("");
-			$(".Eye").css("color","#6ede81");
+			$(".Eye").css("color","#00e076");
 
 			$.each(event["data"]["data"],function(index,item){
 				$(".Text").append("<div id='Target-" + index + "'<li>" + item["label"] + "</li></div>");

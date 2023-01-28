@@ -29,6 +29,7 @@ body {
 	margin-right: 10px;
 	flex-direction: column;
 	text-shadow: 1px 1px #000;
+	border-radius: 5px;
 	background: rgba(15,15,15,.75);
 	background-size: 86% !important;
 	background-position: center !important;
@@ -44,7 +45,7 @@ body {
 
 .item .nameItem {
 	width: 100%;
-	color: #CCC;
+	color: #ccc;
 	margin-top: 87px;
 	font-size: .68rem;
 	padding: 8px 10px;
@@ -54,20 +55,20 @@ body {
 	letter-spacing: 1px;
 	text-overflow: ellipsis;
 	text-transform: uppercase;
-	background: #111;
+	background: rgba(10,10,10,.75);
 }
 
 .itemWeight {
-	color: #333;
+	color: #ccc;
 	padding: 8px;
-	font-size: .60rem;
+	font-size: .70rem;
 	position: absolute;
 	letter-spacing: 1px;
 	text-shadow: 0 0 #000;
 	text-transform: uppercase;
-	border-top-left-radius: 3px;
-	border-bottom-right-radius: 3px;
-	background: rgba(255,255,255,0.75);
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background: rgba(10,10,10,.75);
 }
 
 .itemAmount {
@@ -75,5 +76,5 @@ body {
 	width: 115px;
 	font-size: .70rem;
 	text-align: right;
-	padding: 15px 15px 0 0;
+	padding: 10px 10px 5px 0;
 }

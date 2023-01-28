@@ -183,7 +183,7 @@ function Creative.DoorsPermission(Number)
 					if math.random(100) >= 60 then
 						if vRP.TakeItem(Passport,consultItem[2],1,false) then
 							vRP.GiveItem(Passport,"lockpick-0",1,false)
-							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+							TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
 						end
 					end
 					return

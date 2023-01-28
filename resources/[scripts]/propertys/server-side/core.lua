@@ -586,7 +586,7 @@ AddEventHandler("propertys:Robberys",function(Property)
 
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 		Active[Passport] = os.time() + 100
-		local Service = vRP.NumPermission("Police")
+		local Service,Total = vRP.NumPermission("Police")
 
 		if vTASKBAR.stealTrunk(source) then
 			Active[Passport] = os.time() + 10
@@ -611,7 +611,7 @@ AddEventHandler("propertys:Robberys",function(Property)
 
 						if (vRP.InventoryWeight(Passport) + (itemWeight(Robberys[Selected]["item"]) * Value)) <= vRP.GetWeight(Passport) then
 							local Random = 80
-							if #Service <= 20 then
+							if Total >= 10 then
 								Random = 40
 							end
 

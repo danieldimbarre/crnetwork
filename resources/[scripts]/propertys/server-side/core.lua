@@ -579,7 +579,11 @@ RegisterServerEvent("propertys:Robberys")
 AddEventHandler("propertys:Robberys",function(Property)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Property and not Theft[Property] then
+	if Passport and Property then
+		if not Theft[Property] then
+			Theft[Property] = os.time()
+		end
+
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 		Active[Passport] = os.time() + 100
 

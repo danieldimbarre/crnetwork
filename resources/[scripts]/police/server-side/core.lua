@@ -11,6 +11,7 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("police",Creative)
 vCLIENT = Tunnel.getInterface("police")
+vTASKBAR = Tunnel.getInterface("taskbar")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PREPRARES
 -----------------------------------------------------------------------------------------------------------------------------------------

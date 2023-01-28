@@ -66,7 +66,10 @@ end)
 RegisterServerEvent("player:KickSystem")
 AddEventHandler("player:KickSystem",function(Message)
 	local source = source
-	vRP.Kick(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and not vRP.HasGroup(Passport,"Admin",1) then
+		vRP.Kick(source,Message)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ME

@@ -89,21 +89,23 @@ local TheftCoords = {
 -- THREADROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for Name,v in pairs(Chests) do
-		exports["target"]:AddCircleZone("Propertys:"..Name,v,0.5,{
-			name = "Propertys:"..Name,
-			heading = 3374176
-		},{
-			Distance = 1.2,
-			shop = Name,
-			options = {
-				{
-					event = "propertys:Robbery",
-					label = "Roubar",
-					tunnel = "server"
+	for Name,v in pairs(TheftCoords) do
+		for Index,Coords in pairs(v) do
+			exports["target"]:AddCircleZone("Propertys:"..Name.."-"..Index,Coords,0.5,{
+				name = "Propertys:"..Name.."-"..Index,
+				heading = 3374176
+			},{
+				Distance = 1.2,
+				shop = Name,
+				options = {
+					{
+						event = "propertys:Robbery",
+						label = "Roubar",
+						tunnel = "server"
+					}
 				}
-			}
-		})
+			})
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

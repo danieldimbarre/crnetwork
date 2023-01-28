@@ -76,12 +76,12 @@ Loots = {
         ["1"] = { item = "attachsFlashlight", amount = math.random(2,3) },
         ["2"] = { item = "attachsCrosshair", amount = math.random(2,3) },
         ["3"] = { item = "attachsMagazine", amount = math.random(2,3) },
-        ["4"] = { item = "dollarsz", amount = math.random(4000,000) }
+        ["4"] = { item = "dollarsz", amount = math.random(4000,5000) }
     },{
         ["1"] = { item = "attachsGrip", amount = math.random(2,3) },
         ["2"] = { item = "attachsMazzleBrake", amount = math.random(2,3) },
         ["3"] = { item = "attachsMazzleBoost", amount = math.random(2,3) },
-        ["4"] = { item = "dollarsz", amount = math.random(4000,000) }
+        ["4"] = { item = "dollarsz", amount = math.random(4000,5000) }
     }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

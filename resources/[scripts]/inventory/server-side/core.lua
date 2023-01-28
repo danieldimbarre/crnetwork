@@ -2318,8 +2318,6 @@ function Creative.Dismantle(Entity)
 					vRP.PutExperience(Passport,"Dismantle",Experience)
 				end
 
-				vRP.GenerateItem(Passport,"dismantle",1,true)
-
 				if math.random(1000) <= 100 then
 					vRP.GenerateItem(Passport,"plate",1,true)
 				end

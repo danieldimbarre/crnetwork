@@ -446,7 +446,7 @@ LootItens = {
 			{ ["item"] = "roadsigns", ["min"] = 3, ["max"] = 5 },
 			{ ["item"] = "leather", ["min"] = 2, ["max"] = 3 },
 			{ ["item"] = "plaster", ["min"] = 2, ["max"] = 2 },
-			{ ["item"] = "explosives", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "explosives", ["min"] = 5, ["max"] = 7 },
 			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 },
 			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 },
 			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 }

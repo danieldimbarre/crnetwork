@@ -573,10 +573,10 @@ AddEventHandler("CharacterChosen",function(Passport,source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PROPERTYS:ROBBERYS
+-- PROPERTYS:ROBBERY
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("propertys:Robberys")
-AddEventHandler("propertys:Robberys",function(Property,Prop)
+RegisterServerEvent("propertys:Robbery")
+AddEventHandler("propertys:Robbery",function(Property,Prop)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Property and Prop then

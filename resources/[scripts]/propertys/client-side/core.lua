@@ -101,7 +101,7 @@ end)
 -- PROPERTYS:ROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("propertys:Robberys",function(Prop)
-	TriggerServerEvent("propertys:Robberys",Init,Prop)
+	TriggerServerEvent("propertys:Robbery",Init,Prop)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM

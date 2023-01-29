@@ -9,7 +9,7 @@
 html,body {
 	margin: 0;
 	padding: 0;
-	color: #fff;
+	color: #ccc;
 	cursor: default;
 	font-size: 0.6vw;
 	overflow: hidden;
@@ -128,7 +128,7 @@ space {
 }
 
 .NaviText > span {
-	opacity: .5;
+	color: #898989;
 	display: block;
 	font-size: 0.7vw;
 	letter-spacing: 0.05vw;
@@ -216,7 +216,7 @@ space {
 	margin: 0;
 	box-sizing: border-box;
 	font-family: "Gotham";
-	color: white;
+	color: #fff;
 }
 
 #Vehicle {
@@ -320,7 +320,7 @@ space {
 }
 
 .stats-progress {
-	background: #ff0000;
+	background: #db2a3b;
 }
 
 .stats-car {
@@ -383,7 +383,7 @@ space {
 }
 
 .speed circle:nth-child(1) {
-	stroke: #999;
+	stroke: #898989;
 	stroke-dashoffset: calc(440 - (440 * 46) / 100);
 }
 
@@ -410,12 +410,12 @@ space {
 }
 
 .march circle:nth-child(1) {
-	stroke: #125515;
+	stroke: #00592f;
 	stroke-dashoffset: calc(440 - (440 * 18) / 100);
 }
 
 .march circle:nth-child(2) {
-	stroke: #2adb6e;
+	stroke: #00e076;
 	stroke-dashoffset: calc(440 - (440 * 0) / 100);
 }
 
@@ -457,13 +457,13 @@ space {
 }
 
 .Green {
-	fill: #83d52b;
-	color: #83d52b;
+	fill: #00e076;
+	color: #00e076;
 }
 
 .Red {
-	fill: #f43252;
-	color: #f43252;
+	fill: #db2a3b;
+	color: #db2a3b;
 }
 
 .Blue {

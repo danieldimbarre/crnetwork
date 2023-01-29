@@ -2020,7 +2020,7 @@ RegisterNetEvent("inventory:DisPed")
 AddEventHandler("inventory:DisPed",function(Experience)
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
-	
+
 	if Experience then
 		local Category = ClassCategory(Experience)
 

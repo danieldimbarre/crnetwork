@@ -576,11 +576,11 @@ end)
 -- PROPERTYS:ROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("propertys:Robberys")
-AddEventHandler("propertys:Robberys",function(Property,Index)
+AddEventHandler("propertys:Robberys",function(Property,Prop)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Property and Index then
-		local Robbery = Property..Index
+	if Passport and Property and Prop then
+		local Robbery = Property.."-"..Prop
 
 		if not Theft[Robbery] then
 			Theft[Robbery] = os.time()

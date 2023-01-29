@@ -89,19 +89,12 @@ CreateThread(function()
 					{
 						event = "propertys:Robberys",
 						label = "Roubar",
-						tunnel = "shop",
-						service = "Normal"
+						tunnel = "server"
 					}
 				}
 			})
 		end
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- PROPERTYS:ROBBERYS
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("propertys:Robberys",function(Prop)
-	TriggerServerEvent("propertys:Robbery",Init,Prop)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM

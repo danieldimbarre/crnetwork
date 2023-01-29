@@ -575,12 +575,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:ROBBERY
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("propertys:Robbery")
-AddEventHandler("propertys:Robbery",function(Property,Prop)
+RegisterServerEvent("propertys:Robberys")
+AddEventHandler("propertys:Robberys",function(Prop)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Property and Prop then
-		local Robbery = Property.."-"..Prop
+	if Passport and Inside[Passport] and Prop then
+		local Robbery = Inside[Passport].."-"..Prop
 
 		if not Theft[Robbery] then
 			Theft[Robbery] = os.time()
@@ -636,7 +636,7 @@ AddEventHandler("propertys:Robbery",function(Property,Prop)
 							for Passports,Sources in pairs(Service) do
 								async(function()
 									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Property]["x"], y = Propertys[Property]["y"], z = Propertys[Property]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Inside[Passport]]["x"], y = Propertys[Inside[Passport]]["y"], z = Propertys[Inside[Passport]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 								end)
 							end
 						end
@@ -655,7 +655,7 @@ AddEventHandler("propertys:Robbery",function(Property,Prop)
 			for Passports,Sources in pairs(Service) do
 				async(function()
 					vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Property]["x"], y = Propertys[Property]["y"], z = Propertys[Property]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Inside[Passport]]["x"], y = Propertys[Inside[Passport]]["y"], z = Propertys[Inside[Passport]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 				end)
 			end
 		end

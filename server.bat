@@ -1,1 +1,1 @@
-artifacts\FXServer.exe +set gamename gta5 +exec server.cfg
+artifacts\FXServer.exe +exec server.cfg

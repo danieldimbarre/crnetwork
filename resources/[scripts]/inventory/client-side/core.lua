@@ -633,7 +633,7 @@ function Creative.putWeaponHands(Name,Ammo,Components,Type)
 		end
 
 		TakeWeapon = true
-		LocalPlayer["state"]["Cancel"] = true
+		LocalPlayer["state"]:set("Cancel",true,true)
 
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
@@ -667,7 +667,7 @@ function Creative.putWeaponHands(Name,Ammo,Components,Type)
 		end
 
 		TakeWeapon = false
-		LocalPlayer["state"]["Cancel"] = false
+		LocalPlayer["state"]:set("Cancel",false,true)
 
 		if itemAmmo(Name) then
 			TriggerEvent("hud:Weapon",true,Name)
@@ -691,7 +691,7 @@ function Creative.storeWeaponHands()
 
 		local Last = Weapon
 		local Ped = PlayerPedId()
-		LocalPlayer["state"]["Cancel"] = true
+		LocalPlayer["state"]:set("Cancel",true,true)
 
 		if not IsPedInAnyVehicle(Ped) then
 			if LoadAnim("weapons@pistol@") then
@@ -706,8 +706,8 @@ function Creative.storeWeaponHands()
 		local Ammos = GetAmmoInPedWeapon(Ped,Weapon)
 
 		StoreWeapon = false
-		LocalPlayer["state"]["Cancel"] = false
 		TriggerEvent("inventory:CleanWeapons",true)
+		LocalPlayer["state"]:set("Cancel",false,true)
 
 		return true,Ammos,Last
 	end

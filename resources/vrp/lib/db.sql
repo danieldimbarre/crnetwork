@@ -66,7 +66,7 @@ INSERT INTO `chests` (`id`, `name`, `weight`, `perm`, `logs`) VALUES
 (7, 'Paramedic', 10000, 'Paramedic', 1),
 (8, 'Paramedic-2', 10000, 'Paramedic', 1),
 (9, 'Paramedic-3', 10000, 'Paramedic', 1),
-(10, 'Paramedic-4', 10000, 'Paramedic-3', 1),
+(10, 'Paramedic-4', 500, 'Paramedic-3', 1),
 (11, 'BurgerShot', 500, 'BurgerShot', 1),
 (12, 'BurgerShot-2', 500, 'BurgerShot', 1),
 (13, 'PizzaThis', 500, 'PizzaThis', 1),

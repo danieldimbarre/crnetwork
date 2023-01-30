@@ -69,7 +69,7 @@ AddEventHandler("vRP:Active",function(Passport,Name)
 
 	Wait(5000)
 
-	ReplaceHudColour(116,18)
+	ReplaceHudColourWithRgba(116,0,224,118,255)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BIND

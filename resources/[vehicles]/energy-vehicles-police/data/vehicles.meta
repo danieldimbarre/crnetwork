@@ -1556,7 +1556,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected/>
       <ptfxAssetName>veh_mustangcmd</ptfxAssetName>
-      <audioNameHash>DOMINATOR</audioNameHash>
+      <audioNameHash>hemisound</audioNameHash>
       <layout>LAYOUT_LOW_INFERNUS</layout>
       <coverBoundOffsets>ZENTORNO_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>

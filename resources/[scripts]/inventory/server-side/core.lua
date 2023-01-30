@@ -1364,7 +1364,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PREVENTWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.PreventWeapons(Item,Ammo)
+function Creative.preventWeapon(Item,Ammo)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Ammos[Passport] then

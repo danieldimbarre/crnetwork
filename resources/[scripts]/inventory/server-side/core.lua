@@ -198,10 +198,10 @@ Products = {
 		}, ["needAmount"] = 10, ["item"] = "cocaine", ["itemAmount"] = 10 }
 	},
 	["tablemeth"] = {
-		{ ["perm"] = "Facs", ["timer"] = 20, ["need"] = {
-			{ ["item"] = "saline", ["amount"] = 1 },
-			{ ["item"] = "acetone", ["amount"] = 1 }
-		}, ["needAmount"] = 1, ["item"] = "meth", ["itemAmount"] = 3 }
+		{ ["perm"] = "Favelas", ["timer"] = 20, ["need"] = {
+			{ ["item"] = "amphetamine", ["amount"] = 10 },
+			{ ["item"] = "acetone", ["amount"] = 10 }
+		}, ["needAmount"] = 10, ["item"] = "meth", ["itemAmount"] = 10 }
 	},
 	["tableweed"] = {
 		{ ["perm"] = "Facs", ["timer"] = 20, ["need"] = {
@@ -446,7 +446,7 @@ LootItens = {
 			{ ["item"] = "roadsigns", ["min"] = 3, ["max"] = 5 },
 			{ ["item"] = "leather", ["min"] = 2, ["max"] = 3 },
 			{ ["item"] = "plaster", ["min"] = 2, ["max"] = 2 },
-			{ ["item"] = "explosives", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "explosives", ["min"] = 5, ["max"] = 7 },
 			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 },
 			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 },
 			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 }
@@ -1232,7 +1232,7 @@ function Creative.UseItem(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
+					TriggerClientEvent("itensNotify",source,{ "-",itemIndex(Hash),1,itemName(Hash) })
 					exports["inventory"]:CleanWeapons(Passport,false)
 				end
 			else
@@ -1259,7 +1259,7 @@ function Creative.UseItem(Slot,Amount)
 				end
 
 				if vCLIENT.putWeaponHands(source,Item,Ammo,Attachs[Passport][Item]) then
-					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
+					TriggerClientEvent("itensNotify",source,{ "+",itemIndex(Full),1,itemName(Full) })
 				end
 			end
 		elseif itemType(Full) == "Munição" then
@@ -1287,7 +1287,7 @@ function Creative.UseItem(Slot,Amount)
 
 					Ammos[Passport][Item] = Ammo + Amount
 
-					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),Amount,itemName(Full) })
+					TriggerClientEvent("itensNotify",source,{ "+",itemIndex(Full),Amount,itemName(Full) })
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vCLIENT.rechargeWeapon(source,Hash,Amount)
 				end
@@ -1312,12 +1312,12 @@ function Creative.UseItem(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
+					TriggerClientEvent("itensNotify",source,{ "-",itemIndex(Hash),1,itemName(Hash) })
 					exports["inventory"]:CleanWeapons(Passport,false)
 				end
 			else
 				if vCLIENT.putWeaponHands(source,Item,1,nil,Full) then
-					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
+					TriggerClientEvent("itensNotify",source,{ "+",itemIndex(Full),1,itemName(Full) })
 				end
 			end
 		elseif Item == "attachsFlashlight" or Item == "attachsCrosshair" or Item == "attachsSilencer" or Item == "attachsMagazine" or Item == "attachsGrip" or Item == "attachsMazzleBrake" or Item == "attachsMazzleBoost" then
@@ -1334,7 +1334,7 @@ function Creative.UseItem(Slot,Amount)
 
 					if not Attachs[Passport][Weapon][Item] then
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
-							TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
+							TriggerClientEvent("itensNotify",source,{ "+",itemIndex(Full),1,itemName(Full) })
 							TriggerClientEvent("inventory:Update",source,"Backpack")
 							Attachs[Passport][Weapon][Item] = true
 							vCLIENT.putAttachs(source,Item,Weapon)
@@ -2317,8 +2317,6 @@ function Creative.Dismantle(Entity)
 
 					vRP.PutExperience(Passport,"Dismantle",Experience)
 				end
-
-				vRP.GenerateItem(Passport,"dismantle",1,true)
 
 				if math.random(1000) <= 100 then
 					vRP.GenerateItem(Passport,"plate",1,true)

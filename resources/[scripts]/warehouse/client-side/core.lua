@@ -97,10 +97,6 @@ CreateThread(function()
 					label = "Abrir",
 					tunnel = "shop"
 				},{
-					event = "warehouse:Upgrade",
-					label = "Aumentar",
-					tunnel = "server"
-				},{
 					event = "warehouse:Password",
 					label = "Trocar Senha",
 					tunnel = "server"

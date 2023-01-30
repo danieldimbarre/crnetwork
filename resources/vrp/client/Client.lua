@@ -40,6 +40,10 @@ LocalPlayer["state"]:set("Tribo",false,false)
 LocalPlayer["state"]:set("Lost",false,false)
 LocalPlayer["state"]:set("Marabunta",false,false)
 LocalPlayer["state"]:set("Dracing",false,false)
+LocalPlayer["state"]:set("Favela01",false,false)
+LocalPlayer["state"]:set("Favela02",false,false)
+LocalPlayer["state"]:set("Favela03",false,false)
+LocalPlayer["state"]:set("Favela04",false,false)
 
 LocalPlayer["state"]:set("Buttons",false,true)
 LocalPlayer["state"]:set("Cassino",false,false)
@@ -65,7 +69,7 @@ AddEventHandler("vRP:Active",function(Passport,Name)
 
 	Wait(5000)
 
-	ReplaceHudColour(116,18)
+	ReplaceHudColourWithRgba(116,0,224,118,255)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BIND

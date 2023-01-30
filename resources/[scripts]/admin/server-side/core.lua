@@ -20,20 +20,26 @@ vSKINSHOP = Tunnel.getInterface("skinshop")
 RegisterCommand("ugroups",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
+		if Message[1] then
+			if not vRP.HasGroup(Passport,"Admin") then
+				return
+			end
+
+			Passport = parseInt(Message[1])
+		end
+		
+		if Passport > 0 then
 			local Messages = ""
 			local Groups = vRP.Groups()
-			local OtherPassport = Message[1]
 			for Permission,_ in pairs(Groups) do
 				local Data = vRP.DataGroups(Permission)
-				if Data[OtherPassport] then
+				if Data[Passport] then
 					Messages = Messages..Permission.."<br>"
 				end
 			end
 
 			if Messages ~= "" then
 				TriggerClientEvent("Notify",source,"verde",Messages,10000)
-				TriggerEvent("Discord","Admin","**ugroups**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 			end
 		end
 	end
@@ -112,11 +118,20 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Blips = {}
 RegisterCommand("blips",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
+			if not Blips[Passport] then
+				Blips[Passport] = true
+			else
+				Blips[Passport] = nil
+			end
+
 			vRPC.BlipAdmin(source)
+
+			TriggerEvent("Discord","Admin","**blips**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Blips[Passport],3553599)
 		end
 	end
 end)
@@ -265,11 +280,20 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NC
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Noclip = {}
 RegisterCommand("nc",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
+			if not Noclip[Passport] then
+				Noclip[Passport] = true
+			else
+				Noclip[Passport] = nil
+			end
+
 			vRPC.noClip(source)
+
+			TriggerEvent("Discord","Admin","**blips**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Noclip[Passport],3553599)
 		end
 	end
 end)
@@ -1136,5 +1160,13 @@ end
 AddEventHandler("Disconnect",function(Passport)
 	if Spectate[Passport] then
 		Spectate[Passport] = nil
+	end
+
+	if Blips[Passport] then
+		Blips[Passport] = nil
+	end
+
+	if Noclip[Passport] then
+		Noclip[Passport] = nil
 	end
 end)

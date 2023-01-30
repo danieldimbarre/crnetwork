@@ -18,6 +18,84 @@ local Markers = {}
 local Interior = ""
 local Propertys = {}
 local Informations = {}
+local Thef = false
+local Timers = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THEFTCOORDS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local TheftCoords = {
+	["Emerald"] = {
+		vec3(25.39,-20.13,-24.01),
+		vec3(23.97,-20.68,-24.01),
+		vec3(19.07,-29.69,-24.01),
+		vec3(30.62,-28.19,-24.01)
+	},
+	["Diamond"] = {
+		vec3(51.54,-53.8,-24.01),
+		vec3(45.95,-46.48,-24.01),
+		vec3(54.44,-45.33,-24.01)
+	},
+	["Ruby"] = {
+		vec3(104.18,-96.84,-24.01),
+		vec3(99.04,-103.27,-24.01),
+		vec3(96.53,-98.03,-24.2),
+		vec3(96.91,-108.13,-24.2)
+	},
+	["Sapphire"] = {
+		vec3(71.78,86.03,-24.2),
+		vec3(66.54,81.56,-24.2),
+		vec3(91.36,76.1,-24.2),
+		vec3(88.59,77.39,-24.2),
+		vec3(88.3,69.57,-24.2),
+		vec3(83.89,81.95,-24.01),
+		vec3(60.19,70.16,-24.6)
+	},
+	["Amethyst"] = {
+		vec3(165.69,-147.98,-17.79),
+		vec3(166.79,-149.55,-17.79),
+		vec3(159.46,-152.56,-17.79),
+		vec3(157.14,-160.16,-19.19),
+		vec3(149.71,-165.48,-19.19),
+		vec3(138.85,-152.03,-19.19),
+		vec3(160.09,-156.67,-19.19),
+		vec3(150.4,-157.34,-23.99)
+	},
+	["Amber"] = {
+		vec3(122.59,-111.75,-23.59),
+		vec3(127.99,-112.24,-23.59),
+		vec3(129.87,-124.0,-23.99),
+		vec3(120.15,-123.04,-23.99),
+		vec3(120.27,-123.62,-27.4),
+		vec3(129.45,-124.63,-27.38),
+		vec3(129.09,-121.58,-27.38),
+		vec3(122.34,-116.17,-31.21),
+		vec3(122.26,-110.26,-23.59),
+		vec3(124.49,-118.62,-27.4)
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADROBBERYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	for Name,v in pairs(TheftCoords) do
+		for Index,Coords in pairs(v) do
+			exports["target"]:AddCircleZone("Propertys:"..Index,Coords,0.5,{
+				name = "Propertys:"..Index,
+				heading = 3374176
+			},{
+				Distance = 1.2,
+				shop = Index,
+				options = {
+					{
+						event = "propertys:Robberys",
+						label = "Roubar",
+						tunnel = "server"
+					}
+				}
+			})
+		end
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -83,11 +161,12 @@ CreateThread(function()
 								Interior = ""
 								Chest = ""
 								Init = ""
-							elseif (Line == "Vault" or Line == "Fridge") and IsControlJustPressed(1,38) then
+								Thef = false
+							elseif not Thef and (Line == "Vault" or Line == "Fridge") and IsControlJustPressed(1,38) then
 								SendNUIMessage({ Action = "Show" })
 								SetNuiFocus(true,true)
 								Chest = Line
-							elseif Line == "Clothes" and IsControlJustPressed(1,38) then
+							elseif not Thef and Line == "Clothes" and IsControlJustPressed(1,38) then
 								ClothesMenu()
 							end
 						end
@@ -130,7 +209,7 @@ end)
 -- PROPERTYS:ENTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("propertys:Enter")
-AddEventHandler("propertys:Enter",function(Name,Invade)
+AddEventHandler("propertys:Enter",function(Name,Invade,Robbery)
 	Init = Name
 	local Ped = PlayerPedId()
 	TriggerEvent("dynamic:closeSystem")
@@ -140,7 +219,24 @@ AddEventHandler("propertys:Enter",function(Name,Invade)
 		Interior = Invade
 	end
 
+	if Robbery then
+		Thef = true
+	end
+
 	SetEntityCoords(Ped,Informations[Interior]["Exit"],false,false,false,false)
+
+	while Thef do
+		if GetGameTimer() <= Timers then
+			local Ped = PlayerPedId()
+			local Speed = GetEntitySpeed(Ped)
+			if Speed > 2 then
+				Timers = GetGameTimer() + 10000
+				TriggerServerEvent("propertys:CallPolice",Init)
+			end
+		end
+
+		Wait(1000)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUEST

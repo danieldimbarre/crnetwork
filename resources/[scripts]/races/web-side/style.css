@@ -15,7 +15,7 @@ html,body {
 
 #Ranking {
 	top: 400px;
-	right: 50px;
+	right: 6vw;
 	color: #ccc;
 	width: 465px;
 	display: none;
@@ -65,7 +65,7 @@ html,body {
 	padding: 3px 0;
 	text-shadow: none;
 	text-align: center;
-	background: #6ede81;
+	background: #00e076;
 }
 
 .raceName {
@@ -98,10 +98,10 @@ key {
 }
 
 #Scoreboard {
-	left: 4.7vw;
+	left: 6vw;
 	bottom: 18vw;
 	display: none;
-	color: #6ede81;
+	color: #00e076;
 	text-align: left;
 	line-height: 30px;
 	letter-spacing: 2px;

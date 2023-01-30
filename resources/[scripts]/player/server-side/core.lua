@@ -66,7 +66,10 @@ end)
 RegisterServerEvent("player:KickSystem")
 AddEventHandler("player:KickSystem",function(Message)
 	local source = source
-	vRP.Kick(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and not vRP.HasGroup(Passport,"Admin",1) then
+		vRP.Kick(source,Message)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ME
@@ -225,6 +228,19 @@ RegisterCommand("m",function(source,Message,History)
 			TriggerClientEvent("Notify",-1,"verde","<b>A Mecânica informa:</b> "..History:sub(2),30000)
 
 			TriggerEvent("Discord","Mechanic","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- D
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("D",function(source,Message,History)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] and vRP.GetHealth(source) > 100 then
+		if vRP.HasGroup(Passport,"Dracing") then
+			TriggerClientEvent("Notify",-1,"verde","<b>A D'racing informa:</b> "..History:sub(2),30000)
+
+			TriggerEvent("Discord","Dracing","**Passaporte:** "..Passport.."\n**Mensagem:** "..History:sub(2),9807270)
 		end
 	end
 end)

@@ -87,7 +87,7 @@ RegisterCommand("globalFunctions",function()
 			exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","player:Outfit","salvarpremium","premiumclothes",true)
 
 			exports["dynamic"]:AddButton("Propriedades","Marcar/Desmarcar propriedades no mapa.","propertys:Blips","","others",false)
-			exports["dynamic"]:AddButton("Suprimentos","Marcar/Desmarcar caixas de seuprimentos no mapa.","objects:Blips","Supplies","others",false)
+			exports["dynamic"]:AddButton("Caixas","Marcar/Desmarcar caixas no mapa.","objects:Blips","Supplies","others",false)
 			exports["dynamic"]:AddButton("Ferimentos","Verificar ferimentos no corpo.","paramedic:Injuries","","others",false)
 			exports["dynamic"]:AddButton("Desbugar","Recarregar o personagem.","barbershop:Debug","","others",true)
 

@@ -37,7 +37,7 @@ body {
 
 #midCode div:hover {
 	color: #4a380c;
-	background: #6ede81;
+	background: #00e076;
 }
 
 #midCode div:last-child {
@@ -103,6 +103,6 @@ legend {
 	letter-spacing: 2px;
 	text-shadow: none;
 	margin-bottom: 5px;
-	background: #6ede81;
+	background: #00e076;
 	padding-right: 5px;
 }

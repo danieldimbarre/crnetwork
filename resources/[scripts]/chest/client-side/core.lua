@@ -21,6 +21,7 @@ local Chests = {
 	{ ["Name"] = "Paramedic", ["Coords"] = vec3(-681.02,328.9,88.01), ["Mode"] = "2", ["Distance"] = 1.0 },
 	-- { ["Name"] = "Paramedic-2", ["Coords"] = vec3(306.17,-601.98,43.25), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Paramedic-3", ["Coords"] = vec3(-258.00,6332.62,32.72), ["Mode"] = "2", ["Distance"] = 1.0 },
+	{ ["Name"] = "Paramedic-4", ["Coords"] = vec3(-470.38,6291.05,13.61), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Mechanic", ["Coords"] = vec3(841.69,-824.51,26.34), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "Mechanic-2", ["Coords"] = vec3(145.68,-3007.79,7.04), ["Mode"] = "2", ["Distance"] = 1.0 },
 	{ ["Name"] = "BurgerShot", ["Coords"] = vec3(-1203.11,-895.47,13.99), ["Mode"] = "2", ["Distance"] = 1.0 },
@@ -94,6 +95,9 @@ local Chests = {
 	{ ["Name"] = "trayBean-5", ["Coords"] = vec3(117.47,-1047.41,29.27), ["Mode"] = "3", ["Distance"] = 1.5 },
 	{ ["Name"] = "trayBean-6", ["Coords"] = vec3(115.09,-1044.68,28.91), ["Mode"] = "3", ["Distance"] = 1.5 },
 	{ ["Name"] = "trayBean-6", ["Coords"] = vec3(124.26,-1029.18,28.91), ["Mode"] = "3", ["Distance"] = 1.5 },
+
+	{ ["Name"] = "Favela01", ["Coords"] = vec3(1346.05,-198.07,120.58), ["Mode"] = "2", ["Distance"] = 1.0 },
+	{ ["Name"] = "Favela01-2", ["Coords"] = vec3(1337.5,-199.09,123.49), ["Mode"] = "2", ["Distance"] = 1.0 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LABELS

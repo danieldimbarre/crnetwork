@@ -2020,11 +2020,51 @@ RegisterNetEvent("inventory:DisPed")
 AddEventHandler("inventory:DisPed",function(Experience)
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
-	local Category = ClassCategory(Experience)
 
-	for i = 1,DismantleCategory[Category]["Number"] do
+	if Experience then
+		local Category = ClassCategory(Experience)
+
+		for i = 1,DismantleCategory[Category]["Number"] do
+			local Rand = math.random(#disPeds)
+			local Weapon = math.random(#DismantleCategory[Category]["Weapons"])
+			local cX = Coords["x"] + math.random(-25.0,25.0)
+			local cY = Coords["y"] + math.random(-25.0,25.0)
+			local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
+			local Entity,EntityNet = vRPS.CreatePed(disPeds[Rand],EntCoords["x"],EntCoords["y"],EntCoords["z"],3374176,4)
+			if Entity then
+				async(function()
+					Wait(1000)
+
+					local NetEntity = LoadNetwork(EntityNet)
+
+					SetPedArmour(NetEntity,99)
+					SetPedAccuracy(NetEntity,100)
+					SetPedRelationshipGroupHash(NetEntity,GetHashKey("HATES_PLAYER"))
+					SetPedKeepTask(NetEntity,true)
+					SetCanAttackFriendly(NetEntity,false,true)
+					TaskCombatPed(NetEntity,Ped,0,16)
+					SetPedCombatAttributes(NetEntity,46,true)
+					SetPedCombatAbility(NetEntity,0)
+					SetPedCombatAttributes(NetEntity,0,true)
+					GiveWeaponToPed(NetEntity,DismantleCategory[Category]["Weapons"][Weapon],-1,false,true)
+					SetPedDropsWeaponsWhenDead(NetEntity,false)
+					SetPedCombatRange(NetEntity,2)
+					SetPedFleeAttributes(NetEntity,0,0)
+					SetPedConfigFlag(NetEntity,58,true)
+					SetPedConfigFlag(NetEntity,75,true)
+					SetPedFiringPattern(NetEntity,-957453492)
+					SetBlockingOfNonTemporaryEvents(NetEntity,true)
+
+					SetModelAsNoLongerNeeded(disPeds[Rand])
+
+					Wait(120000)
+
+					TriggerServerEvent("DeletePed",PedToNet(NetEntity))
+				end)
+			end
+		end
+	else
 		local Rand = math.random(#disPeds)
-		local Weapon = math.random(#DismantleCategory[Category]["Weapons"])
 		local cX = Coords["x"] + math.random(-25.0,25.0)
 		local cY = Coords["y"] + math.random(-25.0,25.0)
 		local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
@@ -2044,7 +2084,7 @@ AddEventHandler("inventory:DisPed",function(Experience)
 				SetPedCombatAttributes(NetEntity,46,true)
 				SetPedCombatAbility(NetEntity,0)
 				SetPedCombatAttributes(NetEntity,0,true)
-				GiveWeaponToPed(NetEntity,DismantleCategory[Category]["Weapons"][Weapon],-1,false,true)
+				GiveWeaponToPed(NetEntity,"WEAPON_BAT",-1,false,true)
 				SetPedDropsWeaponsWhenDead(NetEntity,false)
 				SetPedCombatRange(NetEntity,2)
 				SetPedFleeAttributes(NetEntity,0,0)

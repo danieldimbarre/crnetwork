@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
+vRPC = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
@@ -11,6 +12,7 @@ Creative = {}
 Tunnel.bindInterface("propertys",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vSKINSHOP = Tunnel.getInterface("skinshop")
+vTASKBAR = Tunnel.getInterface("taskbar")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -18,6 +20,69 @@ local Lock = {}
 local Inside = {}
 local Markers = {}
 local Active = {}
+local Theft = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THEFTINTERIORS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local TheftInteriors = {
+	"Emerald",
+	"Diamond",
+	"Ruby",
+	"Sapphire",
+	"Amethyst",
+	"Amber"
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ROBBERYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Robberys = {
+	{ ["item"] = "notepad", ["min"] = 1, ["max"] = 5 },
+	{ ["item"] = "keyboard", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "mouse", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "silverring", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "goldring", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "watch", ["min"] = 2, ["max"] = 4 },
+	{ ["item"] = "playstation", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "xbox", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "legos", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "ominitrix", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "bracelet", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "dildo", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
+	{ ["item"] = "amethyst", ["min"] = 1, ["max"] = 4 },
+	{ ["item"] = "amber", ["min"] = 1, ["max"] = 4 },
+	{ ["item"] = "turquoise", ["min"] = 1, ["max"] = 5 },
+	{ ["item"] = "spray01", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "spray02", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "spray03", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "spray04", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "brick", ["min"] = 1, ["max"] = 5 },
+	{ ["item"] = "dices", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "dish", ["min"] = 1, ["max"] = 3 },
+	{ ["item"] = "pan", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "sneakers", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "fan", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "rimel", ["min"] = 1, ["max"] = 3 },
+	{ ["item"] = "blender", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "switch", ["min"] = 1, ["max"] = 3 },
+	{ ["item"] = "brush", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "domino", ["min"] = 1, ["max"] = 3 },
+	{ ["item"] = "floppy", ["min"] = 1, ["max"] = 4 },
+	{ ["item"] = "horseshoe", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "cup", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "deck", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "eraser", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "pliers", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "lampshade", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "slipper", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "soap", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "card01", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "card02", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "card04", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "card05", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "pendrive", ["min"] = 1, ["max"] = 1 }
+}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NEARESTHOMES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -26,7 +91,7 @@ function nearestHomes(source)
 	local Coords = GetEntityCoords(Ped)
 
 	for Name,v in pairs(Propertys) do
-		local Distance = #(Coords - vector3(v[1],v[2],v[3]))
+		local Distance = #(Coords - v)
 		if Distance <= 1 then
 			local Consult = vRP.Query("propertys/Exist",{ name = Name })
 			if Consult[1] then
@@ -507,3 +572,163 @@ AddEventHandler("CharacterChosen",function(Passport,source)
 		TriggerClientEvent("spawn:Increment",source,Tables)
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:ROBBERY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("propertys:Robberys")
+AddEventHandler("propertys:Robberys",function(Prop)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and Inside[Passport] and Prop then
+		local Robbery = Inside[Passport].."-"..Prop
+
+		if not Theft[Robbery] then
+			Theft[Robbery] = os.time()
+		end
+
+		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+		Active[Passport] = os.time() + 100
+		local Service,Total = vRP.NumPermission("Police")
+
+		if vTASKBAR.stealTrunk(source) then
+			Active[Passport] = os.time() + 10
+			Player(source)["state"]["Buttons"] = true
+			TriggerClientEvent("Progress",source,"Roubando",10000)
+
+			repeat
+				if os.time() >= parseInt(Active[Passport]) then
+					Active[Passport] = nil
+					vRPC.stopAnim(source,false)
+					Player(source)["state"]["Buttons"] = false
+
+					if os.time() >= Theft[Robbery] then
+						local Selected = math.random(#Robberys)
+						local Value = parseInt(math.random(Robberys[Selected]["min"],Robberys[Selected]["max"]))
+
+						if GlobalState["Buffs"]["Luck"][Passport] then
+							if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+								Value = Value + 2
+							end
+						end
+
+						if (vRP.InventoryWeight(Passport) + (itemWeight(Robberys[Selected]["item"]) * Value)) <= vRP.GetWeight(Passport) then
+							local Random = 80
+							if Total >= 10 then
+								Random = 40
+							end
+
+							if math.random(100) <= Random then
+								vRP.GenerateItem(Passport,Robberys[Selected]["item"],Value,true)
+								Theft[Robbery] = os.time() + 3600
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Compartimento vazio.",5000)
+								Theft[Robbery] = os.time() + 3600
+							end
+						else
+							TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+						end
+
+						vRP.UpgradeStress(Passport,1)
+
+						if math.random(1000) >= 950 then
+							TriggerEvent("Wanted",source,Passport,120)
+				
+							for Passports,Sources in pairs(Service) do
+								async(function()
+									vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Inside[Passport]]["x"], y = Propertys[Inside[Passport]]["y"], z = Propertys[Inside[Passport]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+								end)
+							end
+						end
+					else
+						TriggerClientEvent("Notify",source,"amarelo","Compartimento vazio.",5000)
+					end
+				end
+
+				Wait(100)
+			until not Active[Passport]
+		else
+			TriggerEvent("Wanted",source,Passport,120)
+			vRPC.stopAnim(source,false)
+			Active[Passport] = nil
+
+			for Passports,Sources in pairs(Service) do
+				async(function()
+					vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Inside[Passport]]["x"], y = Propertys[Inside[Passport]]["y"], z = Propertys[Inside[Passport]]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+				end)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:CALLPOLICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("propertys:CallPolice")
+AddEventHandler("propertys:CallPolice",function(Name)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and Name then
+		TriggerEvent("Wanted",source,Passport,120)
+
+		local Service = vRP.NumPermission("Police")
+		for Passports,Sources in pairs(Service) do
+			async(function()
+				vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+				TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Propertys[Name]["x"], y = Propertys[Name]["y"], z = Propertys[Name]["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+			end)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HOMESTHEFT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function HomesTheft(source)
+	local Ped = GetPlayerPed(source)
+	local Coords = GetEntityCoords(Ped)
+
+	for Name,v in pairs(Propertys) do
+		local Distance = #(Coords - v)
+		if Distance <= 1.0 then
+			if Theft[Name] then
+				if os.time() >= Theft[Name] then
+					Theft[Name] = os.time() + 1800
+					return Name
+				else
+					local Cooldown = parseInt(Theft[Name] - os.time())
+					TriggerClientEvent("Notify",source,"azul","Vizinhança em alerta, aguarde <b>"..parseFormat(Cooldown).."</b> segundos até que fique tranquilo.",5000)
+					return false
+				end
+			else
+				Theft[Name] = os.time() + 1800
+				return Name
+			end
+		end
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ENTERHOMES
+-----------------------------------------------------------------------------------------------------------------------------------------
+function EnterHomes(source,Passport,Name)
+	local Interior = TheftInteriors[math.random(#TheftInteriors)]
+	local Consult = vRP.Query("propertys/Exist",{ name = Name })
+	if Consult[1] then
+		Interior = Consult[1]["Interior"]
+	end
+
+	TriggerClientEvent("propertys:Enter",source,Name,Interior,Name)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RESETTHEFT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ResetTheft(Name)
+	Theft[Name] = nil
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- EXPORTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("ResetTheft",ResetTheft)
+exports("HomesTheft",HomesTheft)
+exports("EnterHomes",EnterHomes)

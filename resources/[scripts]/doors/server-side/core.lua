@@ -143,6 +143,8 @@ GlobalState["Doors"] = {
 	[172] = { Coords = vec3(-820.31,-703.12,28.21), Hash = 1403720845, Lock = true, Text = true, Distance = 1.5, Perm = "YoungBoys", Other = 173 },
 	[173] = { Coords = vec3(-822.31,-703.12,28.21), Hash = 75593271, Lock = true, Text = true, Distance = 1.5, Perm = "YoungBoys", Other = 172 },
 	[174] = { Coords = vec3(-816.22,-739.37,25.54), Hash = -700626879, Lock = true, Text = true, Distance = 7, Perm = "YoungBoys", Other = 172 },
+	[175] = { Coords = vec3(-1146.69,-1991.94,16.17), Hash = -550347177, Lock = true, Text = true, Distance = 7, Perm = "Dracing" },
+	[176] = { Coords = vec3(154.94,-3017.32,7.2), Hash = -2023754432, Lock = true, Text = true, Distance = 1.5, Perm = "Mechanic-3" },
 
 	[200] = { Coords = vec3(1820.77,2620.78,45.96), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
 	[201] = { Coords = vec3(1845.79,2698.63,45.96), Hash = -1033001619, Lock = true, Text = false, Distance = 1.5, Perm = "Admin", Block = true },
@@ -181,7 +183,7 @@ function Creative.DoorsPermission(Number)
 					if math.random(100) >= 60 then
 						if vRP.TakeItem(Passport,consultItem[2],1,false) then
 							vRP.GiveItem(Passport,"lockpick-0",1,false)
-							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+							TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
 						end
 					end
 					return

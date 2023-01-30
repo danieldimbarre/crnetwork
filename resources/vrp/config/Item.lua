@@ -1313,7 +1313,7 @@ local List = {
 		["Name"] = "Premium",
 		["Type"] = "Usável",
 		["Weight"] = 0.15,
-		["Economy"] = 150000
+		["Economy"] = 100000
 	},
 	["premiumplate"] = {
 		["Index"] = "platepremium",
@@ -1321,7 +1321,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Personaliza a placa do veículo.",
 		["Weight"] = 0.75,
-		["Economy"] = 100000
+		["Economy"] = 50000
 	},
 	["newchars"] = {
 		["Index"] = "newchars",
@@ -1329,7 +1329,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Limite de personagem em +1.",
 		["Weight"] = 0.25,
-		["Economy"] = 125000
+		["Economy"] = 75000
 	},
 	["chip"] = {
 		["Index"] = "chip",
@@ -1337,7 +1337,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Troca o número telefônico.",
 		["Weight"] = 0.00,
-		["Economy"] = 110000
+		["Economy"] = 60000
 	},
 	["namechange"] = {
 		["Index"] = "namechange",
@@ -1345,7 +1345,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Troca o nome do personagem.",
 		["Weight"] = 0.25,
-		["Economy"] = 100000
+		["Economy"] = 50000
 	},
 	["facechange"] = {
 		["Index"] = "greencard",
@@ -1353,7 +1353,7 @@ local List = {
 		["Type"] = "Usável",
 		["Description"] = "Troca o rosto do personagem.",
 		["Weight"] = 0.25,
-		["Economy"] = 75000
+		["Economy"] = 25000
 	},
 	["homecontEmerald"] = {
 		["Index"] = "contract",

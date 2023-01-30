@@ -97,14 +97,16 @@ INSERT INTO `chests` (`id`, `name`, `weight`, `perm`, `logs`) VALUES
 (38, 'Lost-2', 250, 'Lost-2', 1),
 (39, 'Marabunta', 500, 'Marabunta', 1),
 (40, 'Marabunta-2', 250, 'Marabunta-2', 1),
-(41, 'Favela01', 500, 'Favela01', 1),
-(42, 'Favela01-2', 250, 'Favela01-2', 1),
-(43, 'Favela02', 500, 'Favela02', 1),
-(44, 'Favela02-2', 250, 'Favela02-2', 1),
-(45, 'Favela03', 500, 'Favela03', 1),
-(46, 'Favela03-2', 250, 'Favela03-2', 1),
-(47, 'Favela04', 500, 'Favela04', 1),
-(48, 'Favela04-2', 250, 'Favela04-2', 1);
+(41, 'Dracing', 500, 'Dracing', 1),
+(42, 'Dracing-2', 250, 'Dracing-2', 1),
+(43, 'Favela01', 500, 'Favela01', 1),
+(44, 'Favela01-2', 250, 'Favela01-2', 1),
+(45, 'Favela02', 500, 'Favela02', 1),
+(46, 'Favela02-2', 250, 'Favela02-2', 1),
+(47, 'Favela03', 500, 'Favela03', 1),
+(48, 'Favela03-2', 250, 'Favela03-2', 1),
+(49, 'Favela04', 500, 'Favela04', 1),
+(50, 'Favela04-2', 250, 'Favela04-2', 1);
 
 DROP TABLE IF EXISTS `entitydata`;
 CREATE TABLE IF NOT EXISTS `entitydata` (

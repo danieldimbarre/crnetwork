@@ -428,7 +428,8 @@ function Creative.Take(Item,Slot,Amount,Target)
 	if Passport and Open[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.ChestWeight(Result) > 0 and Item == "diagram" then
+		local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
+		if vRP.ChestWeight(Result) > 50 and Item == "diagram" then
 			if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
 				vRP.Query("chests/UpdateChests",{ name = Open[Passport]["Name"] })
 				TriggerClientEvent("chest:Update",source,"Refresh")
@@ -437,7 +438,7 @@ function Creative.Take(Item,Slot,Amount,Target)
 			if vRP.TakeChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Slot,Target) then
 				TriggerClientEvent("chest:Update",source,"Refresh")
 			else
-				local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
+				Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
 				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
 
 				if string.sub(Open[Passport]["Name"],1,9) == "Helicrash" and vRP.ChestWeight(Result) <= 0 then

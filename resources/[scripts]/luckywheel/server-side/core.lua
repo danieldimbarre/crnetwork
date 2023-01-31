@@ -131,6 +131,22 @@ function Creative.Payment()
 	if Passport and not Actived[Passport] and Payments[Passport] then
 		Actived[Passport] = true
 
+		if os.time() <= Active[Passport] then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
+				vRP.Kick(source,"Banido.")
+
+				local Cooldown = parseInt(Active[Passport] - os.time())
+				TriggerEvent("Discord","Hackers","**Luckywheel**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
+
+				Actived[Passport] = nil
+				return
+			end
+		end
+
+		Luckywheel[Passport] = os.time() + 
+
 		if Payments[Passport] == 2 then
 			vRP.GiveBank(Passport,2500)
 		elseif Payments[Passport] == 3 or Payments[Passport] == 11 then

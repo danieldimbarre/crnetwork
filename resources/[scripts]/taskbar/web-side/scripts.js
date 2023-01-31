@@ -16,11 +16,7 @@ let animation_loop;
 // ---------------------------------------------------------------------------------------------
 window.addEventListener("message",function(event){
 	if (event.data.type == "open"){
-		if (event.data.time == 1){
-			time = 6
-		} else {
-			time = (event.data.time / 1000) + 10
-		}
+		time = (event.data.time / 1000)
 
 		draw(time);
 	} else if (event.data.type == "close"){

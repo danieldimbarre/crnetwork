@@ -10,13 +10,12 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 Creative = {}
 Tunnel.bindInterface("robberys",Creative)
+vTASKBAR = Tunnel.getInterface("taskbar")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Robberype = {}
 local Active = {}
-local Register = {}
-local Actived = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROBBERYS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -854,7 +853,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -872,7 +871,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -890,7 +889,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -908,7 +907,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -926,7 +925,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -944,7 +943,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -962,7 +961,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -980,7 +979,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -998,7 +997,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1016,7 +1015,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1034,7 +1033,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1052,7 +1051,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1070,7 +1069,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1088,7 +1087,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1106,7 +1105,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1124,7 +1123,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1142,7 +1141,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1160,7 +1159,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1178,7 +1177,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1196,7 +1195,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1214,7 +1213,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1232,7 +1231,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1250,7 +1249,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1268,7 +1267,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1286,7 +1285,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1304,7 +1303,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1322,7 +1321,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1340,7 +1339,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1358,7 +1357,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1376,7 +1375,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1394,7 +1393,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1412,7 +1411,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1430,7 +1429,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1448,7 +1447,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1466,7 +1465,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1484,7 +1483,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1502,7 +1501,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1520,7 +1519,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1538,7 +1537,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1556,7 +1555,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1574,7 +1573,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1592,7 +1591,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1610,7 +1609,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1628,7 +1627,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1646,7 +1645,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1664,7 +1663,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1682,7 +1681,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1700,7 +1699,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1718,7 +1717,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1736,7 +1735,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1754,7 +1753,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1772,7 +1771,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1790,7 +1789,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1808,7 +1807,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1826,7 +1825,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1844,7 +1843,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1862,7 +1861,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1880,7 +1879,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1898,7 +1897,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1916,7 +1915,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1934,7 +1933,7 @@ local Robberys = {
 		["name"] = "Caixa Registradora",
 		["type"] = "register",
 		["cooldown"] = 1800,
-		["duration"] = 30,
+		["duration"] = 10,
 		["group"] = "Police",
 		["population"] = 8,
 		["avaiable"] = false,
@@ -1955,106 +1954,114 @@ RegisterServerEvent("robberys:Init")
 AddEventHandler("robberys:Init",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Actived[Passport] then
-		Actived[Passport] = true
+	if Passport and not Active[Passport] then
+		Active[Passport] = true
 
 		if Robberys[Number] then
 			if not Robberys[Number]["avaiable"] then
-				if not Robberype[Robberys[Number]["type"]] then
-					Robberype[Robberys[Number]["type"]] = os.time()
+				if not Robberype[Robberys[Number]] then
+					Robberype[Robberys[Number]] = os.time()
 				end
 
-				if os.time() >= Robberype[Robberys[Number]["type"]] then
-					local Service,Total = vRP.NumPermission(Robberys[Number]["group"])
-					if Total >= Robberys[Number]["population"] then
-						local Consult = vRP.InventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
-						if Consult[1] >= Robberys[Number]["need"]["amount"] then
-							if not vRP.CheckDamaged(Consult[2]) then
-								if Robberys[Number]["type"] == "register" then
-									if not Register[Number] then
-										Register[Number] = os.time()
+				local Consult = vRP.InventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
+				if Consult[1] >= Robberys[Number]["need"]["amount"] then
+					if not vRP.CheckDamaged(Consult[2]) then
+						if vTASKBAR.taskRobberys(Robberys[Number]["type"]) then
+							if os.time() >= Robberype[Robberys[Number]] then
+								local Service,Total = vRP.NumPermission(Robberys[Number]["group"])
+								if Total >= Robberys[Number]["population"] then
+									vRP.UpgradeStress(Passport,10)
+
+									Robberype[Robberys[Number]] = os.time() + Robberys[Number]["cooldown"]
+									Robberys[Number]["timavaiable"] = os.time() + Robberys[Number]["duration"]
+									Robberys[Number]["avaiable"] = true
+
+									for Passports,Sources in pairs(Service) do
+										async(function()
+											TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
+											vRPC.PlaySound(Sources,"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
+										end)
 									end
 
-									if os.time() >= Register[Number] then
-										Register[Number] = os.time() + Robberys[Number]["cooldown"]
+									if Robberys[Number]["type"] == "register" then
+										vRPC.AnimActive(source)
 										Active[Passport] = os.time() + Robberys[Number]["duration"]
-
-										vRP.UpgradeStress(Passport,10)
-										TriggerClientEvent("Progress",source,"Roubando",30000)
 										Player(source)["state"]["Buttons"] = true
-										vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
-										TriggerEvent("Wanted",source,Passport,300)
+										TriggerClientEvent("Progress",source,"Abrindo",10000)
+										vRPC.playAnim(source,false,{"missfbi_s4mop","clean_mop_back_player"},true)
 
-										for Passports,Sources in pairs(Service) do
-											async(function()
-												TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
-												vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-											end)
-										end
-									
-										local Amount = 0
 										repeat
 											if os.time() >= Active[Passport] then
 												Active[Passport] = nil
-												vRPC.stopAnim(source,false)
 												Player(source)["state"]["Buttons"] = false
+												vRPC.removeObjects(source)
 											end
-
-											for k,v in pairs(Robberys[Number]["payment"]) do
-												local Payment = math.random(v["min"],v["max"])
-												vRP.GenerateItem(Passport,v["item"],Payment,true)
-												Amount = Amount + Payment
-											end
-
-											Wait(1000)
+				
+											Wait(100)
 										until not Active[Passport]
 
-										TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number.."\n**Roubou:** "..Amount.."x "..itemName("dollarsz"),3042892)
+
+										TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number,9317187)
 									else
-										local Cooldown = parseInt(Register[Number] - os.time())
-										TriggerClientEvent("Notify",source,"azul","Cofre está vazio, aguarde <b>"..Cooldown.."</b> segundos.",5000)
+										if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
+											TriggerClientEvent("Notify",source,"verde","Progresso de desencriptação do sistema iniciado, o mesmo vai estar concluído em <b>"..Robberys[Number]["duration"].."</b> segundos.",5000)
+											TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number,9317187)
+										end
 									end
 								else
-									if vRP.TakeItem(Passport,Consult[2],Robberys[Number]["need"]["amount"]) then
-										Robberype[Robberys[Number]["type"]] = os.time() + Robberys[Number]["cooldown"]
-										Robberys[Number]["timavaiable"] = os.time() + Robberys[Number]["duration"]
-										Robberys[Number]["avaiable"] = true
-
-										for Passports,Sources in pairs(Service) do
-											async(function()
-												TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
-												vRPC.PlaySound(Sources,"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
-											end)
-										end
-
-										TriggerClientEvent("Notify",source,"verde","Progresso de desencriptação do sistema iniciado, o mesmo vai estar concluído em <b>"..Robberys[Number]["duration"].."</b> segundos.",5000)
-										TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number,9317187)
-									end
+									TriggerClientEvent("Notify",source,"vermelho","Contingente indisponível.",5000)
 								end
 							else
-								TriggerClientEvent("Notify",source,"vermelho","<b>"..itemName(Robberys[Number]["need"]["item"]).."</b> danificado.",5000)
+								local Cooldown = parseInt(Robberype[Robberys[Number]] - os.time())
+								TriggerClientEvent("Notify",source,"azul","Cofre está vazio, aguarde <b>"..Cooldown.."</b> segundos.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>"..Robberys[Number]["need"]["amount"].."x "..itemName(Robberys[Number]["need"]["item"]).."</b>.",5000)
+							vRP.UpgradeStress(Passport,1)
 						end
 					else
-						TriggerClientEvent("Notify",source,"vermelho","Contingente indisponível.",5000)
+						TriggerClientEvent("Notify",source,"vermelho","<b>"..itemName(Robberys[Number]["need"]["item"]).."</b> danificado.",5000)
 					end
 				else
-					local Cooldown = parseInt(Robberype[Robberys[Number]["type"]] - os.time())
-					TriggerClientEvent("Notify",source,"azul","Cofre está vazio, aguarde <b>"..Cooldown.."</b> segundos.",5000)
+					TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>"..Robberys[Number]["need"]["amount"].."x "..itemName(Robberys[Number]["need"]["item"]).."</b>.",5000)
 				end
 			else
 				if os.time() >= Robberys[Number]["timavaiable"] then
 					Robberys[Number]["avaiable"] = false
 
-					for k,v in pairs(Robberys[Number]["payment"]) do
-						local Amount = math.random(v["min"],v["max"])
-						vRP.GenerateItem(Passport,v["item"],Amount,true)
-						TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number.."\n**Roubou:** "..Amount.."x "..itemName(v["item"]),3042892)
-					end
+					if Robberys[Number]["type"] ~= "register" then
+						for k,v in pairs(Robberys[Number]["payment"]) do
+							local Amount = math.random(v["min"],v["max"])
+							vRP.GenerateItem(Passport,v["item"],Amount,true)
+							TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number.."\n**Roubou:** "..Amount.."x "..itemName(v["item"]),3042892)
+						end
 
-					TriggerEvent("Wanted",source,Passport,600)
+						TriggerEvent("Wanted",source,Passport,600)
+					else
+						vRPC.AnimActive(source)
+						Active[Passport] = os.time() + (Robberys[Number]["duration"] * 3)
+						Player(source)["state"]["Buttons"] = true
+						TriggerClientEvent("Progress",source,"Roubando",30000)
+						vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
+
+						local Amount = 0
+						repeat
+							if os.time() >= Active[Passport] then
+								Active[Passport] = nil
+								vRPC.stopAnim(source,false)
+								Player(source)["state"]["Buttons"] = false
+							end
+
+							for k,v in pairs(Robberys[Number]["payment"]) do
+								local Payment = math.random(v["min"],v["max"])
+								vRP.GenerateItem(Passport,v["item"],Payment,true)
+								Amount = Amount + Payment
+							end
+
+							Wait(1000)
+						until not Active[Passport]
+
+						TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number.."\n**Roubou:** "..Amount.."x "..itemName("dollarsz"),3042892)
+					end
 				else
 					local Cooldown = parseInt(Robberys[Number]["timavaiable"] - os.time())
 					TriggerClientEvent("Notify",source,"azul","Desencriptação em andamento, aguarde <b>"..Cooldown.."</b> segundos.",5000)
@@ -2062,7 +2069,7 @@ AddEventHandler("robberys:Init",function(Number)
 			end
 		end
 
-		Actived[Passport] = nil
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

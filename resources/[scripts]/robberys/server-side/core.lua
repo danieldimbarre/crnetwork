@@ -1966,7 +1966,7 @@ AddEventHandler("robberys:Init",function(Number)
 				local Consult = vRP.InventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
 				if Consult[1] >= Robberys[Number]["need"]["amount"] then
 					if not vRP.CheckDamaged(Consult[2]) then
-						if vTASKBAR.taskRobberys(Robberys[Number]["type"]) then
+						if vTASKBAR.taskRobberys(source,Robberys[Number]["type"]) then
 							if os.time() >= Robberype[Number] then
 								local Service,Total = vRP.NumPermission(Robberys[Number]["group"])
 								if Total >= Robberys[Number]["population"] then
@@ -2049,6 +2049,8 @@ AddEventHandler("robberys:Init",function(Number)
 								Active[Passport] = nil
 								vRPC.stopAnim(source,false)
 								Player(source)["state"]["Buttons"] = false
+
+								TriggerEvent("Wanted",source,Passport,300)
 							end
 
 							for k,v in pairs(Robberys[Number]["payment"]) do

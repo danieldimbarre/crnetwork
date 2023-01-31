@@ -54,7 +54,7 @@ $(document).ready(function(){
 
 				${data["name"] === undefined ? "" : `<div class="content-line"><i class="fa fa-user"></i>  ${data["name"]}</div>`}
 
-				${data["street"] === undefined ? "" : `<div class="content-line"><i class="fas fa-map-marker-alt fa-lg"></i>  ${data["street"]}</div>`}
+				${data["street"] === undefined ? "" : `<div class="content-line"><i class="fas fa-map-marker-alt"></i>  ${data["street"]}</div>`}
 
 				${data["criminal"] === undefined ? "" : `<div class="content-line"><i class="fa fa-triangle-exclamation"></i>  ${data["criminal"]}</div>`}
 

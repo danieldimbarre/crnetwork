@@ -1,16 +1,17 @@
-body,td,th { font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: #666; cursor: default; vertical-align: baseline; outline: 0; line-height: 1; margin: 0; padding: 0; word-wrap: break-word; }
-a,a:link,a:visited,a:active,a:hover { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #666; text-decoration: none; }
+body,td,th { font-size: 12px; font-family: "Roboto"; color: #ccc; cursor: default; vertical-align: baseline; outline: 0; line-height: 1; margin: 0; padding: 0; word-wrap: break-word; }
+a,a:link,a:visited,a:active,a:hover { font-family: "Roboto"; font-size: 12px; color: #ccc; text-decoration: none; }
 div,span,applet,object,iframe,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr { border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent; margin:0; padding:0; }
 :focus { outline:0; }
 img { border:none; }
 ::-webkit-scrollbar { width: 0; }
-::selection { background: transparent; color: #666; }
-::-moz-selection { background: transparent; color: #666; }
+::selection { background: transparent; color: #00e076 }
+::-moz-selection { background: transparent; color: #00e076 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
 }
+::placeholder{ color: #898989 }
 /* ---------------------------------------------------------------------------------------------------------------- */
 #mainPage {
 	top: 50%;
@@ -23,7 +24,7 @@ input::-webkit-inner-spin-button {
 	border: 5px solid #000;
 	border-radius: 5px;
 	transform: translate(-50%,-50%);
-	background: #ccc url("images/background.png") no-repeat;
+	background: #000 url("images/background.png") no-repeat;
 }
 /* ---------------------------------------------------------------------------------------------------------------- */
 #header {
@@ -42,37 +43,31 @@ input::-webkit-inner-spin-button {
 
 #mainMenu li {
 	float: left;
-	color: #ccc;
+	color: #898989;
 	font-weight: 700;
 	margin-right: 3px;
 	padding: 21px 20px;
 	list-style-type: none;
 	letter-spacing: 0.7px;
 	text-transform: uppercase;
-	text-shadow: 0 1px #000;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	text-shadow: 1px 1px #000;
 }
 
 #mainMenu li:hover {
-	color: #898989;
+	color: #ccc;
 	padding: 21px 20px;
-	background: #ccc;
-	text-shadow: 0 0 #000;
+	background: #00592f;
+	text-shadow: 1px 1px #000;
 }
 
 #mainMenu li.active {
-	color: #898989;
-	margin-top: -5px;
-	background: #ccc;
-	padding: 24px 20px 23px;
-	text-shadow: 0 0 #000;
-}
-
-#mainMenu li::selection {
 	color: #ccc;
-}
-
-#mainMenu li.active::selection, #mainMenu li:hover::selection {
-	color: #898989;
+	margin-top: -5px;
+	background: #00592f;
+	padding: 24px 20px 23px;
+	text-shadow: 1px 1px #000;
 }
 /* ---------------------------------------------------------------------------------------------------------------- */
 #content {
@@ -86,6 +81,7 @@ input::-webkit-inner-spin-button {
 #titleContent {
 	float: left;
 	width: 1125px;
+	color: #ccc;
 	font-size: 20px;
 	font-weight: 700;
 	margin-top: -46px;
@@ -95,6 +91,7 @@ input::-webkit-inner-spin-button {
 	text-transform: uppercase;
 	position: absolute !important;
 	border-bottom: 1px dotted #000;
+	text-shadow: 1px 1px #000;
 }
 /* ---------------------------------------------------------------------------------------------------------------- */
 #pageLeft {
@@ -103,7 +100,9 @@ input::-webkit-inner-spin-button {
 	max-width: 695px;
 	max-height: 414px;
 	overflow-y: scroll;
+	text-shadow: 1px 1px #000;
 }
+
 #pageRight {
 	float: left;
 	min-width: 424px;
@@ -114,29 +113,35 @@ input::-webkit-inner-spin-button {
 	min-height: 414px;
 	max-height: 414px;
 	border-left: 1px dotted #000;
+	text-shadow: 1px 1px #000;
 }
 
 #pageRight h2 {
+	color: #ccc;
 	padding: 0;
 	margin: 5px 0 10px;
 }
 /* ----- SEARCH ---------------------------------------------------------------------------------------------------- */
 .inputSearch {
 	border: 0;
+	color: #ccc;
 	float: right;
 	width: 150px;
 	padding: 10px;
 	margin-right: 10px;
-	border-bottom: 1px solid #000;
+	border-radius: 5px;
+	background: rgba(15,15,15,0.75);
+	text-shadow: 1px 1px #000;
 }
 
 .buttonSearch {
 	border: 0;
 	float: right;
-	color: #00e076;
+	color: #ccc;
 	padding: 10px 15px;
+	border-radius: 5px;
 	background: #00592f;
-	border-bottom: 1px solid #000;
+	text-shadow: 1px 1px #000;
 }
 
 .buttonSearch:hover {
@@ -158,7 +163,7 @@ input::-webkit-inner-spin-button {
 	max-width: 655px;
 	margin-bottom: 10px;
 	padding-bottom: 10px;
-	border-bottom: 1px dotted #000;
+	border-radius: 5px;
 }
 
 .searchBox {
@@ -167,11 +172,13 @@ input::-webkit-inner-spin-button {
 	padding: 20px;
 	font-size: 13px;
 	color: #898989;
-	background: #fff;
 	line-height: 22px;
+	border-radius: 5px;
+	background: rgba(15,15,15,0.95);
+	border: 1px solid #898989;
 }
 
-.searchBox b,.recordBox {
+.searchBox b,.recordBox b {
 	color: #ccc;
 }
 
@@ -190,12 +197,14 @@ input::-webkit-inner-spin-button {
 	margin-top: 10px;
 	line-height: 22px;
 	color: #898989;
-	background: rgba(255,255,255,0.75);
+	border-radius: 5px;
+	background: rgba(15,15,15,0.75);
+	border: 1px solid #898989;
 }
 
 .recordBox:hover {
 	transition: all 0.9s;
-	background: rgba(255,255,255,0.95);
+	background: rgba(15,15,15,0.95);
 }
 
 .logsBox {
@@ -213,40 +222,48 @@ input::-webkit-inner-spin-button {
 }
 /* ----- PRISON ---------------------------------------------------------------------------------------------------- */
 .inputPrison {
-	border: 0;
+	color: #ccc;
 	float: left;
 	width: 225px;
 	padding: 15px;
 	margin-right: 10px;
-	border-bottom: 1px solid #000;
+	border-radius: 5px;
+	border: 1px solid #898989;
+	background: rgba(15,15,15,0.95);
 }
 
 .inputPrison2 {
-	border: 0;
+	color: #ccc;
 	float: left;
 	width: 225px;
 	padding: 15px;
-	border-bottom: 1px solid #000;
+	border-radius: 5px;
+	border: 1px solid #898989;
+	background: rgba(15,15,15,0.95);
 }
 
 .textareaPrison {
-	border: 0;
+	color: #ccc;
 	float: left;
 	width: 695px;
 	resize: none;
 	height: 200px;
 	padding: 15px;
 	margin-top: 10px;
+	border-radius: 5px;
+	border: 1px solid #898989;
+	background: rgba(15,15,15,0.95);
 }
 
 .buttonPrison {
-	border: 0;
 	float: right;
-	color: #00e076;
+	color: #ccc;
 	margin-top: 10px;
 	padding: 10px 15px;
+	border-radius: 5px;
 	background: #00592f;
-	border-bottom: 1px solid #000;
+	border: 1px solid #898989;
+	text-shadow: 1px 1px #000;
 }
 
 .buttonPrison:hover {
@@ -255,40 +272,48 @@ input::-webkit-inner-spin-button {
 }
 /* ----- FINE ---------------------------------------------------------------------------------------------------- */
 .inputFine {
-	border: 0;
+	color: #ccc;
 	float: left;
 	width: 342px;
 	padding: 15px;
 	margin-right: 10px;
-	border-bottom: 1px solid #000;
+	border-radius: 5px;
+	border: 1px solid #898989;
+	background: rgba(15,15,15,0.95);
 }
 
 .inputFine2 {
-	border: 0;
+	color: #ccc;
 	float: left;
 	width: 343px;
 	padding: 15px;
-	border-bottom: 1px solid #000;
+	border-radius: 5px;
+	border: 1px solid #898989;
+	background: rgba(15,15,15,0.95);
 }
 
 .textareaFine {
-	border: 0;
+	color: #ccc;
 	float: left;
 	width: 695px;
 	resize: none;
 	height: 200px;
 	padding: 15px;
 	margin-top: 10px;
+	border-radius: 5px;
+	border: 1px solid #898989;
+	background: rgba(15,15,15,0.95);
 }
 
 .buttonFine {
-	border: 0;
 	float: right;
-	color: #00e076;
+	color: #ccc;
 	margin-top: 10px;
 	padding: 10px 15px;
 	background: #00592f;
-	border-bottom: 1px solid #000;
+	border-radius: 5px;
+	border: 1px solid #898989;
+	text-shadow: 1px 1px #000;
 }
 
 .buttonFine:hover {
@@ -296,8 +321,8 @@ input::-webkit-inner-spin-button {
 	transition: all 0.9s;
 }
 
-s {
-	color: #00e076;
+s, b {
+	color: #009c52;
 	font-weight: 700;
 	text-decoration: none;
 }

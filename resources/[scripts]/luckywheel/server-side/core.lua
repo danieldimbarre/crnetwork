@@ -137,8 +137,7 @@ function Creative.Payment()
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
 				vRP.Kick(source,"Banido.")
 
-				local Cooldown = parseInt(Active[Passport] - os.time())
-				TriggerEvent("Discord","Hackers","**Luckywheel**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
+				TriggerEvent("Discord","Hackers","**Luckywheel**\n\n**Passaporte:** "..Passport,9317187)
 
 				Actived[Passport] = nil
 				return

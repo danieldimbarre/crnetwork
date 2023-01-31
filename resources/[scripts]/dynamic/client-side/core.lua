@@ -163,11 +163,11 @@ RegisterCommand("emergencyFunctions",function()
 					exports["dynamic"]:SubMenu("Jogador","Pessoa mais próxima de você.","player")
 				end
 
-				if LocalPlayer["state"]["Police"] then
-					exports["dynamic"]:AddButton("Remover Chapéu","Remover da pessoa mais próxima.","skinshop:Remove","Hat","player",true)
-					exports["dynamic"]:AddButton("Remover Máscara","Remover da pessoa mais próxima.","skinshop:Remove","Mask","player",true)
-					exports["dynamic"]:AddButton("Remover Óculos","Remover da pessoa mais próxima.","skinshop:Remove","Glasses","player",true)
+				exports["dynamic"]:AddButton("Remover Máscara","Remover da pessoa mais próxima.","skinshop:Remove","Mask","player",true)
+				exports["dynamic"]:AddButton("Remover Chapéu","Remover da pessoa mais próxima.","skinshop:Remove","Hat","player",true)
+				exports["dynamic"]:AddButton("Remover Óculos","Remover da pessoa mais próxima.","skinshop:Remove","Glasses","player",true)
 
+				if LocalPlayer["state"]["Police"] then
 					exports["dynamic"]:AddButton("Polícia","Fardamento de policial.","player:Preset","1","prePolice",true)
 					exports["dynamic"]:AddButton("GOE","Fardamento de policial.","player:Preset","2","prePolice",true)
 					exports["dynamic"]:AddButton("GTM","Fardamento de policial.","player:Preset","3","prePolice",true)

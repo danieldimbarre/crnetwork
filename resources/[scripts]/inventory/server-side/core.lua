@@ -1470,7 +1470,7 @@ end
 function Creative.checkInventory()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Active[Passport] ~= nil then
+	if Passport and Active[Passport] then
 		return false
 	end
 
@@ -1482,35 +1482,31 @@ end
 function Creative.verifyWeapon(Item,Ammo)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Ammos[Passport] and Attachs[Passport] then
-		if not vRP.ConsultItem(Passport,Item,1) then
-			local Hash = itemAmmo(Item)
-
-			if Hash and Ammos[Passport][Hash] then
-				if Ammo and Ammo > 0 then
-					Ammos[Passport][Hash] = parseInt(Ammo)
-				end
-
-				if Attachs[Passport][Item] then
-					for Name,_ in pairs(Attachs[Passport][Item]) do
-						vRP.GenerateItem(Passport,Name,1)
-					end
-
-					Attachs[Passport][Item] = nil
-				end
-
-				if Ammos[Passport][Hash] > 0 then
-					vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
-					Ammos[Passport][Hash] = nil
-				end
-
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+	if Passport and not vRP.ConsultItem(Passport,Item,1) then
+		local Ammunation = itemAmmo(Item)
+		if Ammunation and Ammos[Passport] and Ammos[Passport][Ammunation] then
+			if Ammo and Ammo > 0 then
+				Ammos[Passport][Ammunation] = Ammo
 			end
 
-			exports["inventory"]:CleanWeapons(Passport,false)
-
-			return false
+			if Ammos[Passport][Ammunation] > 0 then
+				vRP.GenerateItem(Passport,Ammunation,Ammos[Passport][Ammunation])
+				Ammos[Passport][Ammunation] = nil
+			end
 		end
+
+		if Attachs[Passport] and Attachs[Passport][Item] then
+			for Component,_ in pairs(Attachs[Passport][Item]) do
+				vRP.GenerateItem(Passport,Component,1)
+			end
+
+			Attachs[Passport][Item] = nil
+		end
+
+		TriggerClientEvent("inventory:Update",source,"Backpack")
+		exports["inventory"]:CleanWeapons(Passport,false)
+
+		return false
 	end
 
 	return true
@@ -1521,10 +1517,8 @@ end
 function Creative.dropWeapons(Item)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Item ~= "" and Item ~= nil then
-		if not vRP.ConsultItem(Passport,Item,1) then
-			return true
-		end
+	if Passport and Item ~= "" and Item and not vRP.ConsultItem(Passport,Item,1) then
+		return true
 	end
 
 	return false
@@ -1546,13 +1540,13 @@ function Creative.preventWeapon(Item,Ammo)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Ammos[Passport] then
-		local Hash = itemAmmo(Item)
+		local Ammunation = itemAmmo(Item)
 
-		if Hash and Ammos[Passport][Hash] then
+		if Ammunation and Ammos[Passport][Ammunation] then
 			if Ammo > 0 then
-				Ammos[Passport][Hash] = Ammo
+				Ammos[Passport][Ammunation] = Ammo
 			else
-				Ammos[Passport][Hash] = nil
+				Ammos[Passport][Ammunation] = nil
 				exports["inventory"]:CleanWeapons(Passport,false)
 			end
 		end

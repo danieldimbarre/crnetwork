@@ -20,27 +20,28 @@ vSKINSHOP = Tunnel.getInterface("skinshop")
 RegisterCommand("ugroups",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Message[1] then
-			if not vRP.HasGroup(Passport,"Admin") then
+		local OtherPassport = tostring(Passport)
+		local Messages = ""
+
+		if Message[1] and vRP.HasGroup(Passport,"Admin") then
+			OtherPassport = Message[1]
+			Messages = "<b>Passaporte:</b> "..Message[1].."<br>"
+
+			if parseInt(OtherPassport) <= 0 then
 				return
 			end
-
-			Passport = parseInt(Message[1])
 		end
-		
-		if Passport > 0 then
-			local Messages = ""
-			local Groups = vRP.Groups()
-			for Permission,_ in pairs(Groups) do
-				local Data = vRP.DataGroups(Permission)
-				if Data[Passport] then
-					Messages = Messages..Permission.."<br>"
-				end
-			end
 
-			if Messages ~= "" then
-				TriggerClientEvent("Notify",source,"verde",Messages,10000)
+		local Groups = vRP.Groups()
+		for Permission,_ in pairs(Groups) do
+			local Data = vRP.DataGroups(Permission)
+			if Data[OtherPassport] then
+				Messages = Messages..Permission.."<br>"
 			end
+		end
+
+		if Messages ~= "" then
+			TriggerClientEvent("Notify",source,"verde",Messages,10000)
 		end
 	end
 end)

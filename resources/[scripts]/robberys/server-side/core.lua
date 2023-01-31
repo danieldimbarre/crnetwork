@@ -1959,20 +1959,20 @@ AddEventHandler("robberys:Init",function(Number)
 
 		if Robberys[Number] then
 			if not Robberys[Number]["avaiable"] then
-				if not Robberype[Robberys[Number]] then
-					Robberype[Robberys[Number]] = os.time()
+				if not Robberype[Number] then
+					Robberype[Number] = os.time()
 				end
 
 				local Consult = vRP.InventoryItemAmount(Passport,Robberys[Number]["need"]["item"])
 				if Consult[1] >= Robberys[Number]["need"]["amount"] then
 					if not vRP.CheckDamaged(Consult[2]) then
 						if vTASKBAR.taskRobberys(Robberys[Number]["type"]) then
-							if os.time() >= Robberype[Robberys[Number]] then
+							if os.time() >= Robberype[Number] then
 								local Service,Total = vRP.NumPermission(Robberys[Number]["group"])
 								if Total >= Robberys[Number]["population"] then
 									vRP.UpgradeStress(Passport,10)
 
-									Robberype[Robberys[Number]] = os.time() + Robberys[Number]["cooldown"]
+									Robberype[Number] = os.time() + Robberys[Number]["cooldown"]
 									Robberys[Number]["timavaiable"] = os.time() + Robberys[Number]["duration"]
 									Robberys[Number]["avaiable"] = true
 
@@ -2012,7 +2012,7 @@ AddEventHandler("robberys:Init",function(Number)
 									TriggerClientEvent("Notify",source,"vermelho","Contingente indisponível.",5000)
 								end
 							else
-								local Cooldown = parseInt(Robberype[Robberys[Number]] - os.time())
+								local Cooldown = parseInt(Robberype[Number] - os.time())
 								TriggerClientEvent("Notify",source,"azul","Cofre está vazio, aguarde <b>"..Cooldown.."</b> segundos.",5000)
 							end
 						else

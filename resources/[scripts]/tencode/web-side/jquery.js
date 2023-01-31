@@ -25,11 +25,11 @@ window.addEventListener("message",function(event){
 	}
 
 	if (event["data"]["radar"] == "top"){
-		$("#topRadar").html("<legend>RADAR DIANTEIRO</legend><c>PLACA:</c> <v>"+ event["data"]["plate"] +"</v><br><c>MODELO:</c> <v>"+ event["data"]["Model"] +"</v><br><c>VELOCIDADE:</c> <v>"+ parseInt(event["data"]["speed"]) +" KMH</v>");
+		$("#topRadar").html("<legend>RADAR DIANTEIRO</legend><c>PLACA:</c> "+ event["data"]["plate"] +"<br><c>MODELO:</c> <v>"+ event["data"]["Model"] +"</v><br><c>VELOCIDADE:</c> "+ parseInt(event["data"]["speed"]) +" KMH");
 	}
 
 	if (event["data"]["radar"] == "bot"){
-		$("#botRadar").html("<legend>RADAR TRASEIRO</legend><c>PLACA:</c> <v>"+ event["data"]["plate"] +"</v><br><c>MODELO:</c> <v>"+ event["data"]["Model"] +"</v><br><c>VELOCIDADE:</c> <v>"+ parseInt(event["data"]["speed"]) +" KMH</v>");
+		$("#botRadar").html("<legend>RADAR TRASEIRO</legend><c>PLACA:</c> "+ event["data"]["plate"] +"<br><c>MODELO:</c> <v>"+ event["data"]["Model"] +"</v><br><c>VELOCIDADE:</c> "+ parseInt(event["data"]["speed"]) +" KMH");
 	}
 });
 /* ---------------------------------------------------------------------------------------------------------------- */

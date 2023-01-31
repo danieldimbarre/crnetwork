@@ -38,10 +38,18 @@ body {
 
 #midCode div:hover {
 	color: #ccc;
-	background: #00e076;
+	text-shadow: 1px 1px #000;
+	background: rgba(0,224,118,.75);
+}
+
+#midCode div:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 #midCode div:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 	border-right: 0;
 }
 
@@ -105,7 +113,7 @@ legend {
 	margin-top: 5px;
 	font-size: 10px;
 	letter-spacing: 2px;
-	text-shadow: none;
+	text-shadow: 1px 1px #000;
 	margin-bottom: 5px;
 	border-radius: 5px;
 	background: #00e076;

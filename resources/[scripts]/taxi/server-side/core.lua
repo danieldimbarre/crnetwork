@@ -26,7 +26,7 @@ function Creative.toggleService()
 			Timers[Passport] = os.time()
 		end
 
-		if os.time() >= Timers[Passport] then
+		if os.time() > Timers[Passport] then
 			Timers[Passport] = os.time() + 10
 
 			if Taxi[Passport] then
@@ -40,10 +40,10 @@ function Creative.toggleService()
 			end
 
 			return true
+		else
+			local Cooldown = parseInt(Timers[Passport] - os.time())
+			TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos para iniciar o trabalho novamente.",5000)
 		end
-	else
-		local Cooldown = parseInt(Timers[Passport] - os.time())
-		TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos para iniciar o trabalho novamente.",5000)
 	end
 
 	return false
@@ -57,7 +57,7 @@ function Creative.Payment()
 	if Passport and not Active[Passport] then
 		Active[Passport] = true
 		
-		if Taxi[Passport] <= os.time() then
+		if Taxi[Passport] > os.time() then
 			local Identity = vRP.Identity(Passport)
 			if Identity then
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
@@ -67,11 +67,12 @@ function Creative.Payment()
 				TriggerEvent("Discord","Hackers","**Taxi**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
 
 				Active[Passport] = nil
+				Timers[Passport] = nil
 				return
 			end
 		end
 
-		Taxi[Passport] = os.time() + 60
+		Taxi[Passport] = os.time() + 40
 		local Valuation = math.random(175,275)
 
 		if GlobalState["Buffs"]["Dexterity"][Passport] then
@@ -96,5 +97,9 @@ AddEventHandler("Disconnect",function(Passport)
 		Taxi[Passport] = nil
 
 		vRP.RemovePermission(Passport,"Taxi")
+	end
+
+	if Timers[Passport] then
+		Timers[Passport] = nil
 	end
 end)

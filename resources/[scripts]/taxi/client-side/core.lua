@@ -237,69 +237,13 @@ AddEventHandler("taxi:Starting",function(Init)
 				TriggerEvent("Notify","verde","Trabalho iniciado.",3000)
 				exports["target"]:LabelText("Taxi:"..Init,"Finalizar")
 
-				while serviceStatus do
-					local TimeDistance = 999
-					local Ped = PlayerPedId()
-					if IsPedInAnyVehicle(Ped) then
-						local Coords = GetEntityCoords(Ped)
-						local vehicle = GetVehiclePedIsUsing(Ped)
-						local Distance = #(Coords - vec3(stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3]))
-						if Distance <= 100 then
-							TimeDistance = 1
-
-							DrawMarker(1,stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3] - 3,0,0,0,0,0,0,5.0,5.0,3.0,255,255,255,25,0,0,0,0)
-							DrawMarker(21,stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3],0,0,0,0,180.0,130.0,1.5,1.5,1.0,162,124,219,200,0,0,0,1)
-
-							if IsControlJustPressed(1,38) and Distance <= 2.5 and GetEntityModel(vehicle) == -956048545 then
-								if currentStatus then
-									FreezeEntityPosition(vehicle,true)
-
-									if DoesEntityExist(currentPassenger) then
-										vSERVER.Payment()
-										Wait(1000)
-										TaskLeaveVehicle(currentPassenger,vehicle,0)
-										TaskWanderStandard(currentPassenger,10.0,10)
-										Wait(1000)
-										SetVehicleDoorShut(vehicle,3,0)
-										Wait(1000)
-										lastPassenger = PedToNet(currentPassenger)
-									end
-
-									FreezeEntityPosition(vehicle,false)
-
-									lastPosition = selectPosition
-									currentStatus = false
-
-									repeat
-										if lastPosition == selectPosition then
-											selectPosition = math.random(#stopVehicle[locateSelect])
-										end
-										Wait(1)
-									until lastPosition ~= selectPosition
-
-									blipPassenger()
-
-									Wait(5000)
-
-									if lastPassenger ~= nil then
-										TriggerServerEvent("DeletePed",lastPassenger)
-										lastPassenger = nil
-									end
-								else
-									generatePassenger(vehicle)
-								end
-							end
-						end
-					end
-
-					Wait(TimeDistance)
-				end
+				ThreadSystem()
 			end
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
+-- GENERATEPASSANGER
 -----------------------------------------------------------------------------------------------------------------------------------------
 function generatePassenger(vehicle)
 	if lastPassenger ~= nil then
@@ -333,6 +277,70 @@ function generatePassenger(vehicle)
 		currentStatus = true
 		blipPassenger()
 	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSYSTEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ThreadSystem()
+	CreateThread(function()
+		while serviceStatus do
+			local TimeDistance = 999
+			local Ped = PlayerPedId()
+			if IsPedInAnyVehicle(Ped) then
+				local Coords = GetEntityCoords(Ped)
+				local vehicle = GetVehiclePedIsUsing(Ped)
+				local Distance = #(Coords - vec3(stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3]))
+				if Distance <= 100 then
+					TimeDistance = 1
+
+					DrawMarker(1,stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3] - 3,0,0,0,0,0,0,5.0,5.0,3.0,255,255,255,25,0,0,0,0)
+					DrawMarker(21,stopVehicle[locateSelect][selectPosition][1],stopVehicle[locateSelect][selectPosition][2],stopVehicle[locateSelect][selectPosition][3],0,0,0,0,180.0,130.0,1.5,1.5,1.0,162,124,219,200,0,0,0,1)
+
+					if IsControlJustPressed(1,38) and Distance <= 2.5 and GetEntityModel(vehicle) == -956048545 then
+						if currentStatus then
+							FreezeEntityPosition(vehicle,true)
+
+							if DoesEntityExist(currentPassenger) then
+								vSERVER.Payment()
+								Wait(1000)
+								TaskLeaveVehicle(currentPassenger,vehicle,0)
+								TaskWanderStandard(currentPassenger,10.0,10)
+								Wait(1000)
+								SetVehicleDoorShut(vehicle,3,0)
+								Wait(1000)
+								lastPassenger = PedToNet(currentPassenger)
+							end
+
+							FreezeEntityPosition(vehicle,false)
+
+							lastPosition = selectPosition
+							currentStatus = false
+
+							repeat
+								if lastPosition == selectPosition then
+									selectPosition = math.random(#stopVehicle[locateSelect])
+								end
+								Wait(1)
+							until lastPosition ~= selectPosition
+
+							blipPassenger()
+
+							Wait(5000)
+
+							if lastPassenger ~= nil then
+								TriggerServerEvent("DeletePed",lastPassenger)
+								lastPassenger = nil
+							end
+						else
+							generatePassenger(vehicle)
+						end
+					end
+				end
+			end
+
+			Wait(TimeDistance)
+		end
+	end)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MAKEBLIPMARKED

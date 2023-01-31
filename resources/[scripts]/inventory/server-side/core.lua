@@ -962,7 +962,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BurgerShot","100",Valuation * 0.05)
+					vRP.DirectChest("BurgerShot","500",Valuation * 0.05)
 
 					local Experience = 1
 					if GlobalState["Buffs"]["Luck"][Passport] then
@@ -1010,7 +1010,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("PizzaThis","100",Valuation * 0.05)
+					vRP.DirectChest("PizzaThis","500",Valuation * 0.05)
 
 					local Experience = 1
 					if GlobalState["Buffs"]["Luck"][Passport] then
@@ -1058,7 +1058,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("UwuCoffee","100",Valuation * 0.05)
+					vRP.DirectChest("UwuCoffee","500",Valuation * 0.05)
 
 					local Experience = 1
 					if GlobalState["Buffs"]["Luck"][Passport] then
@@ -1106,7 +1106,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BeanMachine","100",Valuation * 0.05)
+					vRP.DirectChest("BeanMachine","500",Valuation * 0.05)
 
 					local Experience = 1
 					if GlobalState["Buffs"]["Luck"][Passport] then

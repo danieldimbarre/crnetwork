@@ -792,9 +792,8 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 
 										if shops[Type]["shop"] then
 											local Split = splitString(Type,"-")
-											if Split[2] ~= nil then
-												vRP.DirectChest(Split[1],"100",(shops[Type]["List"][Item] * Amount) * 0.05)
-											end
+											
+											vRP.DirectChest(Split[1],"500",(shops[Type]["List"][Item] * Amount) * 0.05)
 										end
 									end
 

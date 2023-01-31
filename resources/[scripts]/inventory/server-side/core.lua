@@ -175,12 +175,7 @@ Objects = {
 	["95"] = { x = -817.43, y = -702.77, z = 27.05, h = 0.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["96"] = { x = 487.98, y = -100.73, z = 62.15, h = 343.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
 	["97"] = { x = 986.76, y = -96.88, z = 73.85, h = 133.23, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["98"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-
-	["150"] = { x = 1273.82, y = -224.46, z = 97.57, h = 178.59, object = "prop_skip_06a", item = "", Distance = 150, mode = "Construct" },
-	["151"] = { x = 1281.08, y = -227.07, z = 97.47, h = 189.93, object = "prop_conc_blocks01a", item = "", Distance = 150, mode = "Construct" },
-	["152"] = { x = 1282.12, y = -216.01, z = 98.45, h = 354.34, object = "prop_woodpile_01a", item = "", Distance = 150, mode = "Construct" },
-	["153"] = { x = 1276.08, y = -230.3, z = 97.18, h = 136.07, object = "prop_wheelbarrow01a", item = "", Distance = 150, mode = "Construct" }
+	["98"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS

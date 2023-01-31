@@ -52,15 +52,15 @@ $(document).ready(function(){
 
 				<div class="titulo">${data["title"]}</div>
 
-				${data["name"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["name"]}</div>`}
+				${data["name"] === undefined ? "" : `<div class="content-line"><i class="fa fa-user"></i>  ${data["name"]}</div>`}
 
-				${data["street"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["street"]}</div>`}
+				${data["street"] === undefined ? "" : `<div class="content-line"><i class="fas fa-map-marker-alt fa-lg"></i>  ${data["street"]}</div>`}
 
-				${data["criminal"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["criminal"]}</div>`}
+				${data["criminal"] === undefined ? "" : `<div class="content-line"><i class="fa fa-triangle-exclamation"></i>  ${data["criminal"]}</div>`}
 
-				${data["vehicle"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["vehicle"]}</div>`}
+				${data["vehicle"] === undefined ? "" : `<div class="content-line"><i class="fa fa-car"></i>  ${data["vehicle"]}</div>`}
 
-				${data["time"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["time"]}</div>`}
+				${data["time"] === undefined ? "" : `<div class="content-line"><i class="fa fa-clock"></i>  ${data["time"]}</div>`}
 			</div>
 
 			<div class="buttons">

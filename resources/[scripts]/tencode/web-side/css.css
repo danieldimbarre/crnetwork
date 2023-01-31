@@ -17,6 +17,7 @@ body {
 	display: none;
 	position: fixed;
 	cursor: default;
+	border-radius: 5px;
 }
 
 #midCode {
@@ -31,12 +32,12 @@ body {
 	padding: 10px 15px;
 	letter-spacing: 2px;
 	background: rgba(15,15,15,.75);
-	border-right: 1px solid rgba(20,20,20,.75);
+	border-right: 1px solid #000;
 	font-family: "Roboto";
 }
 
 #midCode div:hover {
-	color: #4a380c;
+	color: #ccc;
 	background: #00e076;
 }
 
@@ -67,6 +68,7 @@ body {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	text-shadow: 1px 1px #000;
+	border-radius: 5px;
 	background: rgba(15,15,15,.75);
 }
 
@@ -79,15 +81,17 @@ body {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	text-shadow: 1px 1px #000;
+	border-radius: 5px;
 	background: rgba(15,15,15,.75);
 }
 
 c {
-	color: #929292;
+	color: #898989;
 	float: left;
 }
 
 v {
+	color: #ccc;
 	width: 125px;
 	float: right;
 	white-space: nowrap;
@@ -97,12 +101,13 @@ v {
 legend {
 	text-align: center;
 	display: block;
-	color: #715611;
+	color: #ccc;
 	margin-top: 5px;
 	font-size: 10px;
 	letter-spacing: 2px;
 	text-shadow: none;
 	margin-bottom: 5px;
+	border-radius: 5px;
 	background: #00e076;
 	padding-right: 5px;
 }

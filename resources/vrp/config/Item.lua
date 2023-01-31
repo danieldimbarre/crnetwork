@@ -1102,7 +1102,7 @@ local List = {
 		["Name"] = "Adrenaline",
 		["Type"] = "Comum",
 		["Weight"] = 0.35,
-		["Economy"] = 975
+		["Economy"] = 600
 	},
 	["pouch"] = {
 		["Index"] = "pouch",

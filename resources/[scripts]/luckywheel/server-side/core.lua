@@ -128,10 +128,10 @@ end
 function Creative.Payment()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Actived[Passport] and Payments[Passport] then
+	if Passport and not Actived[Passport] then
 		Actived[Passport] = true
 
-		if os.time() <= Active[Passport] then
+		if not Payments[Passport] then
 			local Identity = vRP.Identity(Passport)
 			if Identity then
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
@@ -144,8 +144,6 @@ function Creative.Payment()
 				return
 			end
 		end
-
-		Luckywheel[Passport] = os.time() + 
 
 		if Payments[Passport] == 2 then
 			vRP.GiveBank(Passport,2500)

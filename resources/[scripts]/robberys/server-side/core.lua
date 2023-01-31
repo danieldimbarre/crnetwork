@@ -1995,11 +1995,12 @@ AddEventHandler("robberys:Init",function(Number)
 												Active[Passport] = nil
 												Player(source)["state"]["Buttons"] = false
 												vRPC.removeObjects(source)
+
+												TriggerClientEvent("Notify",source,"verde","Registradora <b>aberta</b>, agora pegue o que puder.",5000)
 											end
 				
 											Wait(100)
 										until not Active[Passport]
-
 
 										TriggerEvent("Discord","Robberys","**Passaporte:** "..Passport.."\n**Ação:** "..Robberys[Number]["name"].."-"..Number,9317187)
 									else

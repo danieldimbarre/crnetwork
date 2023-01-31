@@ -264,9 +264,9 @@ function Creative.taskRobberys(Register)
 								end
 							end
 						end
+					else
+						return true
 					end
-
-					return true
 				end
 			end
 		end

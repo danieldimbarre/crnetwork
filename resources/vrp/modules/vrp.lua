@@ -43,6 +43,7 @@ AddEventHandler("smartphone:service_request",function(Data)
 
 	SetTimeout(30000,function()
 		if not Answered then
+			Answered = true
 			TriggerClientEvent("smartphone:pusher",Data["source"],"SERVICE_REJECT",{})
 		end
 	end)

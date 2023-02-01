@@ -847,7 +847,13 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -895,7 +901,13 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -942,7 +954,13 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -990,7 +1008,13 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -1038,7 +1062,13 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -1086,7 +1116,13 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")

@@ -107,7 +107,13 @@ function Creative.Payment(Service)
 		end
 
 		if vRP.UserPremium(Passport) then
-			Trucker[Passport] = os.time() + 10800
+			if vRP.HasGroup(Passport,"Premium",1) then
+				Trucker[Passport] = os.time() + 10800
+			elseif vRP.HasGroup(Passport,"Premium",2) then
+				Trucker[Passport] = os.time() + 7200
+			elseif vRP.HasGroup(Passport,"Premium",3) then
+				Trucker[Passport] = os.time() + 3600
+			end
 		else
 			Trucker[Passport] = os.time() + 21600
 		end

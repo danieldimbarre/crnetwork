@@ -2516,8 +2516,10 @@ function Creative.AmountDrugs(Selected)
 					Points = 0
 				elseif Points >= 25 and Points <= 50 then
 					Points = (Points * 0.1) * 6
-				elseif Points >= 51 and Points <= 99 then
-					Points = (Points * 0.1) * 10
+				elseif Points >= 51 and Points <= 75 then
+					Points = (Points * 0.1) * 9
+				elseif Points >= 76 and Points <= 99 then
+					Points = (Points * 0.1) * 12
 				elseif Points >= 100 then
 					Points = Points * 2
 

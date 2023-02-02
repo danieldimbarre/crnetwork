@@ -288,16 +288,3 @@ function Creative.updateWarehouse(Slot,Target,Amount,Name)
 		end
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADSTART
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	Wait(1000)
-	local Consult = vRP.Query("propertys/All")
-
-	for Index,v in pairs(Consult) do
-		Markers[v["Name"]] = true
-	end
-
-	TriggerClientEvent("propertys:Table",-1,Propertys,Interiors,Markers)
-end)

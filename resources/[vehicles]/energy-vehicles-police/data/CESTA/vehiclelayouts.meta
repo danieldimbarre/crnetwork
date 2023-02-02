@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleMetadataMgr>
+  <ClipSetMaps/>
+  <VehicleDriveByInfos/>
+  <VehicleDriveByAnimInfos/>
+  <VehicleCoverBoundOffsetInfos/>
+  <FirstPersonDriveByLookAroundData/>
+  <VehicleSeatInfos/>
+  <VehicleSeatAnimInfos/>
+  <VehicleEntryPointInfos>
+    <Item type="CVehicleEntryPointInfo">
+      <Name>ENTRY_POINT_CESTA_WARP_RIGHT</Name>
+      <DoorBoneName/>
+      <SecondDoorBoneName/>
+      <DoorHandleBoneName/>
+      <WindowId>INVALID</WindowId>
+      <VehicleSide>SIDE_RIGHT</VehicleSide>
+      <AccessableSeats>
+        <Item ref="SEAT_TRAILER_AA_TURRET"/>
+      </AccessableSeats>
+      <VehicleExtraPointsInfo ref="NULL"/>
+      <Flags>MPWarpInOut</Flags>
+      <BlockJackReactionSides/>
+    </Item>
+  </VehicleEntryPointInfos>
+  <VehicleLayoutInfos>
+    <Item type="CVehicleLayoutInfo">
+      <Name>LAYOUT_TRAILER_CESTA</Name>
+      <Seats>
+        <Item>
+          <SeatInfo ref="SEAT_TRAILER_AA_TURRET"/>
+          <SeatAnimInfo ref="SEAT_ANIM_LOW_FRONT_RIGHT"/>
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_CESTA_WARP_RIGHT"/>
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_TRAILER_AA_TURRET_LEFT"/>
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims DisableJackingAndBusting</LayoutFlags>
+      <BicycleInfo ref="NULL"/>
+      <AnimRateSet ref="NULL"/>
+      <HandsUpClipSetId>busted_vehicle_van</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.006700" y="0.330000" z="0.270000"/>
+      <MaxXAcceleration value="4.000000"/>
+      <BodyLeanXApproachSpeed value="5.000000"/>
+      <BodyLeanXSmallDelta value="0.300000"/>
+      <LookBackApproachSpeedScale value="1.000000"/>
+      <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@van@ds@idle_a</Item>
+        <Item>clipset@veh@van@ds@idle_b</Item>
+        <Item>clipset@veh@van@ds@idle_c</Item>
+        <Item>clipset@veh@van@ds@idle_d</Item>
+        <Item>clipset@veh@van@ds@idle_e</Item>
+      </FirstPersonAdditiveIdleClipSets>
+      <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_a</Item>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_b</Item>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_c</Item>
+      </FirstPersonRoadRageClipSets>
+      <CellphoneClipsets>
+        <CellphoneClipsetDS>ANIM_GROUP_CELLPHONE_IN_CAR_DS</CellphoneClipsetDS>
+        <CellphoneClipsetPS>ANIM_GROUP_CELLPHONE_IN_CAR_PS</CellphoneClipsetPS>
+        <CellphoneClipsetDS_FPS>ANIM_GROUP_CELLPHONE_IN_CAR_DS_FPS</CellphoneClipsetDS_FPS>
+        <CellphoneClipsetPS_FPS>ANIM_GROUP_CELLPHONE_IN_CAR_DS_FPS</CellphoneClipsetPS_FPS>
+      </CellphoneClipsets>
+    </Item>
+  </VehicleLayoutInfos>
+  <AnimRateSets/>
+  <BicycleInfos/>
+  <POVTuningInfos/>
+  <EntryAnimVariations/>
+  <VehicleExtraPointsInfos/>
+  <DrivebyWeaponGroups/>
+  <VehicleExplosionInfos/>
+  <VehicleScenarioLayoutInfos/>
+  <SeatOverrideAnimInfos/>
+  <InVehicleOverrideInfos/>
+</CVehicleMetadataMgr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

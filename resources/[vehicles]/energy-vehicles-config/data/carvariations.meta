@@ -25,6 +25,765 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
+      <modelName>180sxrb</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            0
+            0
+            0
+            0 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>981111_180sxrb_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="20"/>
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="20"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="20"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="20"/>
+          </Item>
+          <Item>
+            <Name>yankton plate</Name>
+            <Value value="20"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="999"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>s14khr</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            110 
+            0 
+            110
+            110
+			110
+			5 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>18911_s14khr_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="0"/>
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="0"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="80"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="20"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="665"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>silvia</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            70
+            39
+            0
+            147
+            0
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>10752_silvia_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities/>
+      </plateProbabilities>
+      <lightSettings value="0"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>terrortarga</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            36 
+            0
+            41
+            156 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            13 
+            0
+            0
+            156 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="697"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>ambulancia</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            27
+            27
+            0
+            156
+            0
+            0
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police gov plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="198"/>
+    </Item>
+    <Item>
+      <modelName>B412</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            <Item value="12"/>
+            <Item value="12"/>
+            <Item value="12"/>
+            <Item value="12"/>
+          </indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits/>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities/>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="83687"/>
+    </Item>
+    <Item>
+      <modelName>broncopol</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111 
+            111
+            111
+            5
+			134
+			134
+			134
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>616548_broncopol_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="60"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="10"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="30"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>falcongar</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111 
+            111
+            111
+            5
+			0
+			0 
+			2
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>616546_falcongar_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="60"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="10"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="30"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>fchatchpol</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111
+            111
+            111
+            5
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>676548_fchatchpol_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>fcsedanpol</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111
+            111
+            111
+            5
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>616547_fcsedanpol_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>g310gtm</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            21
+            111
+            111
+            5
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="1312345"/>
+    </Item>
+    <Item>
+      <modelName>er34h</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            065
+            065
+            0
+            156 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>65012_er34h_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="25"/>
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="50"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="10"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="15"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="98881"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>maverick2</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">147 147 147 147 147 147</indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits/>
+      <windowsWithExposedEdges/>
+      <plateProbabilities/>
+      <lightSettings value="2000"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>mustangcmd</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            21 
+            111 
+            111 
+            5
+			134
+			134
+			134
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>676549_mustangcmd_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="25"/>
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="50"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="10"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="15"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>rangergoe</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            21
+            111
+            111
+            5
+            134
+			134
+			134
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>676550_rangergoe_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>territorypol</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111 
+            111
+            111
+            5
+			134
+			134
+			134
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>616551_territorypol_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="60"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="10"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="30"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>transitpol</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            134 
+            134 
+            134 
+            5
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>616552_transitpol_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities/>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>wheelchair</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">147 147 147 147 147 147</indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="2000"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
       <modelName>polas350</modelName>
       <colors>
         <Item>
@@ -14866,6 +15625,382 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="2000"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>gtrpit</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">2 2 2 2</indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>2839_gtrpit_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>gxrx7</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111
+            0
+            0
+            0 
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>65011_gxrx7_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="46"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>lfa</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            0
+            0
+            0
+            0
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>6368676_lfa_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="999"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>r32lara</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            112
+            0
+            0
+            0
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            4
+            154
+            4
+            2
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            0
+            154
+            10
+            2
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            4
+            154
+            4
+            2
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            29
+            158
+            0
+            0
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>1097_r32_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>r33</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111 
+            0 
+            156 
+            0
+			0
+		    0
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>1163_r33_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="0"/>
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="0"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="80"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="20"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>rx8hachi</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            36 
+            0
+            41
+            156 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            13 
+            0
+            0
+            156 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="696"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>s13neverlift</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            36 
+            0
+            41
+            156 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            13 
+            0
+            0
+            156 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="699"/>
       <sirenSettings value="0"/>
     </Item>
   </variationData>

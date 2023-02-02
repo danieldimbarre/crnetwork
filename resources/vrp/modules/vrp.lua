@@ -60,3 +60,14 @@ end
 function vRP.Revive(source,Health,Arena)
 	return SURVIVAL.Revive(source,Health,Arena)
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSAVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		local TimeDistance = 10000
+		TriggerEvent("SaveServer",false)
+
+		Wait(TimeDistance)
+	end
+end)

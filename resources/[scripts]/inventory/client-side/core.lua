@@ -1896,18 +1896,21 @@ local disCoords = {
 local DismantleCategory = {
 	["B"] = {
 		["Number"] = 5,
+		["Ammo"] = 1,
 		["Weapons"] = { "WEAPON_SNSPISTOL" },
-		["Model"] = { "panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina"}
+		["Model"] = { "panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina" }
 	},
 	["B+"] = {
 		["Number"] = 6,
-		["Weapons"] = { "WEAPON_HEAVYPISTOL" },
+		["Ammo"] = 2,
+		["Weapons"] = { "WEAPON_SNSPISTOL" },
 		["Model"] = { "asbo","brioso","club","weevil","felon","felon2","jackal","oracle","zion","zion2","buccaneer","virgo",
 		"voodoo","bifta","rancherxl","bjxl","cavalcade","gresley","habanero","rocoto","primo","stratum","pigalle","peyote","manana","streiter" }
 	},
 	["A"] = {
 		["Number"] = 7,
-		["Weapons"] = { "WEAPON_HEAVYPISTOL","WEAPON_SMG" },
+		["Ammo"] = 2,
+		["Weapons"] = { "WEAPON_SNSPISTOL" },
 		["Model"] = { "exemplar","windsor","windsor2","blade","clique","dominator","faction2","gauntlet","moonbeam","nightshade",
 		"sabregt2","tampa","rebel","baller","cavalcade2","fq2","huntley","landstalker","patriot","radi","xls","blista2",
 		"retinue","stingergt","surano","specter","sultan","schwarzer","schafter2","ruston","rapidgt","raiden","ninef",
@@ -1915,20 +1918,23 @@ local DismantleCategory = {
 	},
 	["A+"] = {
 		["Number"] = 8,
-		["Weapons"] = { "WEAPON_APPISTOL","WEAPON_PUMPSHOTGUN" },
+		["Ammo"] = 2,
+		["Weapons"] = { "WEAPON_SNSPISTOL" },
 		["Model"] = { "voltic","sc1","sultanrs","tempesta","nero","nero2","reaper","gp1","infernus","bullet","banshee2","turismo2","retinue",
 		"mamba","infernus2","feltzer3","coquette2","futo2","zr350","tampa2","sugoi","sultan2","schlagen","penumbra","pariah",
 		"paragon","jester3","gb200","elegy","furoregt" }
 	},
 	["S"] = {
 		["Number"] = 9,
-		["Weapons"] = { "WEAPON_ASSAULTSMG" },
+		["Ammo"] = 3,
+		["Weapons"] = { "WEAPON_SNSPISTOL" },
 		["Model"] = { "zentorno","xa21","visione","vagner","vacca","turismor","t20","osiris","italigtb","entityxf","cheetah","autarch","sultan3",
 		"cypher","vectre","growler","comet6","jester4","euros","calico","neon","kuruma","issi7","italigto","komoda","elegy2","coquette4" }
 	},
 	["S+"] = {
 		["Number"] = 10,
-		["Weapons"] = { "WEAPON_SPECIALCARBINE" },
+		["Ammo"] = 3,
+		["Weapons"] = { "WEAPON_SNSPISTOL" },
 		["Model"] = { "mazdarx72","rangerover","civictyper","subaruimpreza","corvettec7","ferrariitalia","mustang1969","vwtouareg",
 		"mercedesg65","bugattiatlantic","m8competition","audirs6","audir8","silvias15","camaro","mercedesamg63",
 		"dodgechargerrt69","skyliner342","astonmartindbs","panameramansory","lamborghinihuracanlw","lancerevolutionx",
@@ -2023,10 +2029,25 @@ AddEventHandler("inventory:DisPed",function(Experience)
 
 	if Experience then
 		local Category = ClassCategory(Experience)
+		local Spawn = {}
+		local Max = DismantleCategory[Category]["Number"]
+
+		repeat
+			local Random = parseInt(math.random(DismantleCategory[Category]["Number"]))
+
+			if not Spawn[Random] then
+				Max = Max - 1
+			end
+		until Max <= 0
 
 		for i = 1,DismantleCategory[Category]["Number"] do
 			local Rand = math.random(#disPeds)
-			local Weapon = math.random(#DismantleCategory[Category]["Weapons"])
+			local Weapon = DismantleCategory[Category]["Weapons"][math.random(#DismantleCategory[Category]["Weapons"])]
+
+			if Spawn[i] then
+				Weapon = "WEAPON_SNSPISTOL"
+			end
+
 			local cX = Coords["x"] + math.random(-25.0,25.0)
 			local cY = Coords["y"] + math.random(-25.0,25.0)
 			local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
@@ -2046,7 +2067,7 @@ AddEventHandler("inventory:DisPed",function(Experience)
 					SetPedCombatAttributes(NetEntity,46,true)
 					SetPedCombatAbility(NetEntity,0)
 					SetPedCombatAttributes(NetEntity,0,true)
-					GiveWeaponToPed(NetEntity,DismantleCategory[Category]["Weapons"][Weapon],-1,false,true)
+					GiveWeaponToPed(NetEntity,Weapon,-1,false,true)
 					SetPedDropsWeaponsWhenDead(NetEntity,false)
 					SetPedCombatRange(NetEntity,2)
 					SetPedFleeAttributes(NetEntity,0,0)

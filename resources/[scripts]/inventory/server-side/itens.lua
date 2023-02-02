@@ -782,7 +782,7 @@ Use = {
 
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
 							Healths[Passport] = os.time() + 60
-							vRPC.UpgradeHealth(source,40)
+							vRPC.UpgradeHealth(source,50)
 						end
 					end
 

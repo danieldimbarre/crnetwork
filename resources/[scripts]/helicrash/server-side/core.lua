@@ -41,8 +41,13 @@ CreateThread(function()
 			GlobalState["Firework"] = true
 			Cooldown = os.time() + 900
 
-			Wait(900000)
-			GlobalState["Firework"] = false
+			SetTimeout(900000,function()
+				GlobalState["Firework"] = false
+			end)
+		end
+
+		if Backup[os.date("%M")] then
+			TriggerEvent("SaveServer",false)
 		end
 
 		Wait(1000)

@@ -659,7 +659,7 @@ local List = {
 		["Index"] = "techtrash",
 		["Name"] = "Lixo Eletrônico",
 		["Type"] = "Comum",
-		["Weight"] = 0.75,
+		["Weight"] = 0.15,
 		["Economy"] = 125
 	},
 	["tarp"] = {
@@ -673,14 +673,14 @@ local List = {
 		["Index"] = "sheetmetal",
 		["Name"] = "Chapa de Metal",
 		["Type"] = "Comum",
-		["Weight"] = 0.75,
+		["Weight"] = 0.15,
 		["Economy"] = 50
 	},
 	["roadsigns"] = {
 		["Index"] = "roadsigns",
 		["Name"] = "Placas de Trânsito",
 		["Type"] = "Comum",
-		["Weight"] = 0.65,
+		["Weight"] = 0.15,
 		["Economy"] = 50
 	},
 	["leather"] = {
@@ -764,14 +764,14 @@ local List = {
 		["Index"] = "sulfuric",
 		["Name"] = "Ácido Sulfúrico",
 		["Type"] = "Usável",
-		["Weight"] = 0.55,
+		["Weight"] = 0.15,
 		["Economy"] = 30
 	},
 	["saline"] = {
 		["Index"] = "saline",
 		["Name"] = "Soro Fisiológico",
 		["Type"] = "Comum",
-		["Weight"] = 0.55,
+		["Weight"] = 0.15,
 		["Economy"] = 25
 	},
 	["defibrillator"] = {
@@ -787,7 +787,7 @@ local List = {
 		["Index"] = "alcohol",
 		["Name"] = "Álcool",
 		["Type"] = "Comum",
-		["Weight"] = 0.65,
+		["Weight"] = 0.15,
 		["Economy"] = 40
 	},
 	["notebook"] = {
@@ -1101,7 +1101,7 @@ local List = {
 		["Index"] = "syringe",
 		["Name"] = "Adrenaline",
 		["Type"] = "Comum",
-		["Weight"] = 0.35,
+		["Weight"] = 0.15,
 		["Economy"] = 600
 	},
 	["pouch"] = {
@@ -1291,7 +1291,7 @@ local List = {
 		["Index"] = "acetone",
 		["Name"] = "Acetona",
 		["Type"] = "Comum",
-		["Weight"] = 0.25,
+		["Weight"] = 0.15,
 		["Economy"] = 40
 	},
 	["drugtoy"] = {

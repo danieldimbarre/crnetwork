@@ -55,15 +55,15 @@ GlobalState["Buffs"] = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 DrugsList = {
 	["cocaine"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 300, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["meth"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 300, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["joint"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 300, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["oxy"] = {
@@ -2305,8 +2305,8 @@ function Creative.Dismantle(Entity)
 				if #Members > 1 then
 					local Amount = #Members
 					for _,v in pairs(Members) do
-						if Amount > 10 then
-							Amount = 10
+						if Amount > 5 then
+							Amount = 5
 						end
 
 						vRP.GenerateItem(v["Passport"],"dollarsz",AmountItens * Amount,true)
@@ -2512,10 +2512,20 @@ function Creative.AmountDrugs(Selected)
 					Points = parseInt(Split[2])
 				end
 
-				if Points >= 100 then
+				if Points < 25 then
+					Points = 0
+				elseif Points >= 25 and Points <= 50 then
+					Points = (Points * 0.1) * 6
+				elseif Points >= 51 and Points <= 99 then
+					Points = (Points * 0.1) * 10
+				elseif Points >= 100 then
+					Points = Points * 2
+
 					Amount = Amount + 1
 				end
 
+				Price = Price + Points
+				
 				if Consult[1] >= Amount then
 					Drugs[Passport] = { Consult[2],Amount,Price * Amount }
 					local Service,Total = vRP.NumPermission("Police")
@@ -2544,7 +2554,7 @@ function Creative.DrugPeds()
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
-			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3] + (Points * 2),true)
+			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3],true)
 
 			TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
 			Percentage = Percentage - Points

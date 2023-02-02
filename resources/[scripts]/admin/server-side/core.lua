@@ -157,7 +157,7 @@ RegisterCommand("god",function(source,Message)
 							TriggerClientEvent("paramedic:Reset",OtherSource)
 
 							if Text == "" then
-								Text = Text..OtherPlayer
+								Text = sOtherPlayer
 							else
 								Text = Text..", "..OtherPlayer
 							end
@@ -218,7 +218,7 @@ RegisterCommand("goda",function(source,Message)
 						TriggerClientEvent("paramedic:Reset",v)
 
 						if Text == "" then
-							Text = Text..OtherPlayer
+							Text = OtherPlayer
 						else
 							Text = Text..", "..OtherPlayer
 						end
@@ -611,7 +611,7 @@ RegisterCommand("ids",function(source)
 
 	for OtherPlayer,_ in pairs(List) do
 		if Text == "" then
-			Text = Text..OtherPlayer
+			Text = OtherPlayer
 		else
 			Text = Text..", "..OtherPlayer
 		end
@@ -770,7 +770,7 @@ RegisterCommand("itemall",function(source,Message)
 			for OtherPlayer,_ in pairs(List) do
 				async(function()
 					if Text == "" then
-						Text = Text..OtherPlayer
+						Text = OtherPlayer
 					else
 						Text = Text..", "..OtherPlayer
 					end
@@ -911,18 +911,33 @@ RegisterCommand("services",function(source)
 			local Text = ""
 			local Groups = vRP.Groups()
 
-			for Permission,_ in pairs(Groups) do
-				local _,Total = vRP.NumPermission(Permission)
+			if Message[1] then
+				if Groups[Message[1]] then
+					local Data = vRP.DataGroups(Message[1])
 
-				if Text == "" then
-					Text = Text.."<b>"..Permission..":</b> "..Total
-				else
-					Text = Text.."<br><b>"..Permission..":</b> "..Total
+					for Passport,Level in pairs(Data) do
+						if Text == "" then
+							Text = "<b>"..Passport..":</b> "..Level
+						else
+							Text = Text.."<br><b>"..Passport..":</b> "..Level
+						end
+					end
+				end
+			else
+				for Permission,_ in pairs(Groups) do
+					local _,Total = vRP.NumPermission(Permission)
+	
+					if Text == "" then
+						Text = "<b>"..Permission..":</b> "..Total.."/"..#vRP.DataGroups(Permission)
+					else
+						Text = Text.."<br><b>"..Permission..":</b> "..Total.."/"..#vRP.DataGroups(Permission)
+					end
 				end
 			end
 
-			TriggerClientEvent("Notify",source,"azul",Text,15000)
-			TriggerEvent("Discord","Admin","**services**\n\n**Passaporte:** "..Passport,3553599)
+			if Messages ~= "" then
+				TriggerClientEvent("Notify",source,"azul",Text,15000)
+			end
 		end
 	end
 end)
@@ -981,7 +996,7 @@ RegisterCommand("channel",function(source,Message)
 
 		for Sources,_ in pairs(Channel) do
 			if Text == "" then
-				Text = Text..vRP.Passport(Sources)
+				Text = vRP.Passport(Sources)
 			else
 				Text = Text..", "..vRP.Passport(Sources)
 			end

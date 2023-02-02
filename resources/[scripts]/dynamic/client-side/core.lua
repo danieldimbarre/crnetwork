@@ -87,6 +87,7 @@ RegisterCommand("globalFunctions",function()
 			exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","player:Outfit","salvarpremium","premiumclothes",true)
 
 			exports["dynamic"]:AddButton("Propriedades","Marcar/Desmarcar propriedades no mapa.","propertys:Blips","","others",false)
+			exports["dynamic"]:AddButton("Armazéns","Marcar/Desmarcar armazéns no mapa.","warehouse:Blips","","others",false)
 			exports["dynamic"]:AddButton("Caixas","Marcar/Desmarcar caixas no mapa.","objects:Blips","Supplies","others",false)
 			exports["dynamic"]:AddButton("Ferimentos","Verificar ferimentos no corpo.","paramedic:Injuries","","others",false)
 			exports["dynamic"]:AddButton("Desbugar","Recarregar o personagem.","barbershop:Debug","","others",true)
@@ -134,7 +135,7 @@ RegisterCommand("globalFunctions",function()
 
 			local Experience = vSERVER.Experience()
 			for Name,Exp in pairs(Experience) do
-				exports["dynamic"]:AddButton(Name,"Você possuí <yellow>"..Exp.." pontos</yellow> na classe <yellow>"..ClassCategory(Exp).."</yellow>.","","","Experience",false)
+				exports["dynamic"]:AddButton(Name,"Você possui <yellow>"..Exp.." pontos</yellow> na classe <yellow>"..ClassCategory(Exp).."</yellow>.","","","Experience",false)
 			end
 
 			exports["dynamic"]:SubMenu("Roupas","Colocar/Retirar roupas.","clothes")

@@ -718,7 +718,7 @@ function EnterHomes(source,Passport,Name)
 		Interior = Consult[1]["Interior"]
 	end
 
-	TriggerClientEvent("propertys:Enter",source,Name,Interior,Name)
+	TriggerClientEvent("propertys:Enter",source,Name,Interior,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESETTHEFT

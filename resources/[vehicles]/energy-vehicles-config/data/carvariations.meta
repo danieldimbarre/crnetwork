@@ -2282,45 +2282,6 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>lfa</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            111
-            29
-            111
-            31
-            2
-            27
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>7777_sclass_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>m4</modelName>
       <colors>
         <Item>
@@ -3465,80 +3426,6 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="58"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>v242</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            74
-            63
-            0
-            156
-          </indices>
-          <liveries>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            58
-            2
-            0
-            156
-          </indices>
-          <liveries>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            38
-            6
-            0
-            156
-          </indices>
-          <liveries>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            126
-            130
-            0
-            156
-          </indices>
-          <liveries>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            97
-            94
-            0
-            156
-          </indices>
-          <liveries>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>4752_v242_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Yellow Plate</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="2"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>
@@ -5245,259 +5132,6 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>raid</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            0
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            99
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            116
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            73
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            28
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            49
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            53
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            88
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            14
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            4
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            8
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            5
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            36
-            1
-            3
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>5021_raid_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>cp9a</modelName>
       <colors>
         <Item>
@@ -5624,61 +5258,6 @@
       </colors>
       <kits>
         <Item>2214_e36pandem_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>mig</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            0
-            0
-            6
-            156
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            29
-            0
-            0
-            156
-          </indices>
-          <liveries>
-            <Item value="true"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>4439_mig_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -6352,43 +5931,6 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="11233"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>s14boss</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            27
-            0
-            0
-            156
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>0_default_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="2"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>
@@ -7790,55 +7332,6 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="1524"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>rx7rb</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            30
-            160
-            30
-            160
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>718_rx7rb_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="25"/>
-          </Item>
-          <Item>
-            <Name>White Plate 2</Name>
-            <Value value="50"/>
-          </Item>
-          <Item>
-            <Name>Blue Plate</Name>
-            <Value value="10"/>
-          </Item>
-          <Item>
-            <Name>Yellow Plate</Name>
-            <Value value="15"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="43"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>
@@ -9489,55 +8982,6 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="100"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>revolution6str</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            4
-            0
-            111
-            0
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>510_revolution6str_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="25"/>
-          </Item>
-          <Item>
-            <Name>White Plate 2</Name>
-            <Value value="50"/>
-          </Item>
-          <Item>
-            <Name>Blue Plate</Name>
-            <Value value="10"/>
-          </Item>
-          <Item>
-            <Name>Yellow Plate</Name>
-            <Value value="15"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="2"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>
@@ -12342,43 +11786,6 @@
       <sirenSettings value="55670"/>
     </Item>
     <Item>
-      <modelName>m3e46</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            147 
-            73
-            4
-            0 
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>19851985_m3e46_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>cb500x</modelName>
       <colors>
         <Item>
@@ -13854,38 +13261,6 @@
       </colors>
       <kits>
         <Item>porsche911_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="2000"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>r1</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">147 147 147 147 147 147</indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>r1_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -15701,13 +15076,15 @@
       <colors>
         <Item>
           <indices content="char_array">
-            0
-            0
-            0
-            0
+            111
+            29
+            111
+            31
+            2
+            27
           </indices>
           <liveries>
-            <Item value="true"/>
+            <Item value="false"/>
             <Item value="false"/>
             <Item value="false"/>
             <Item value="false"/>
@@ -15730,7 +15107,7 @@
           </Item>
         </Probabilities>
       </plateProbabilities>
-      <lightSettings value="999"/>
+      <lightSettings value="1"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>

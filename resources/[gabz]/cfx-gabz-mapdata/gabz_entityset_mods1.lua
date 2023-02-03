@@ -1194,5 +1194,5 @@ CreateThread(function()
             RefreshInterior(interiorID)
         end
     end
-    print("^5[GABZ]^7 Interiors datas loaded.")
+    -- print("^5[GABZ]^7 Interiors datas loaded.")
 end)

@@ -9383,38 +9383,6 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>tractorcv8</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            109
-            109
-            0
-            156
-          </indices>
-          <liveries/>
-        </Item>
-      </colors>
-      <kits>
-        <Item>872_tractorc_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Blue Plate</Name>
-            <Value value="5"/>
-          </Item>
-          <Item>
-            <Name>Yellow Plate</Name>
-            <Value value="95"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="15"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>UNICYCLE</modelName>
       <colors>
         <Item>

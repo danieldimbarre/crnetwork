@@ -18,6 +18,7 @@ local Markers = {}
 local Interior = ""
 local Propertys = {}
 local Informations = {}
+local Objects = {}
 local Thef = false
 local Timers = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------

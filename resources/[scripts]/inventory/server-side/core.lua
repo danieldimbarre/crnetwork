@@ -1483,6 +1483,8 @@ function Creative.Cancel()
 		end
 
 		TriggerEvent("robberys:Cancel",source,Passport)
+
+		TriggerEvent("propertys:Cancel",source,Passport)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

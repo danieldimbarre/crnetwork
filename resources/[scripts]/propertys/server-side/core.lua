@@ -687,6 +687,8 @@ RegisterServerEvent("propertys:Cancel")
 AddEventHandler("propertys:Cancel",function(source,Passport)
 	if Active[Passport] then
 		Active[Passport] = nil
+		Player(source)["state"]["Buttons"] = false
+		TriggerClientEvent("Progress",source,"Cancelando",1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

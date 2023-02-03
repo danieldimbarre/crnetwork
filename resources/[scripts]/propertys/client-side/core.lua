@@ -231,7 +231,7 @@ AddEventHandler("propertys:Enter",function(Name,Invade,Robbery)
 		end
 
 		while Thef do
-			if GetGameTimer() <= Timers then
+			if GetGameTimer() > Timers then
 				local Ped = PlayerPedId()
 				local Speed = GetEntitySpeed(Ped)
 				if Speed > 2 then

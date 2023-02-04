@@ -14,8 +14,6 @@ files {
 
 data_file "FIVEM_LOVES_YOU_4B38E96CC036038F" "metas-side/events.meta"
 
-data_file "WEAPONCOMPONENTSINFO_FILE" "metas-side/weaponcomponents.meta"
-
 data_file "WEAPONINFO_FILE_PATCH" "metas-side/weapons.meta"
 data_file "WEAPONINFO_FILE_PATCH" "metas-side/weaponsnowball.meta"
 data_file "WEAPONINFO_FILE_PATCH" "metas-side/weapons_assaultrifle_mk2.meta"

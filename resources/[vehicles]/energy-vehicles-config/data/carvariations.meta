@@ -742,6 +742,43 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
+      <modelName>WRStrx</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            0
+            0
+            0
+            0
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="13421"/>
+    </Item>
+    <Item>
       <modelName>polas350</modelName>
       <colors>
         <Item>
@@ -12042,6 +12079,43 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
+      <modelName>gxrx7</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111
+            0
+            0
+            0 
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>65011_gxrx7_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="46"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
       <modelName>audia4</modelName>
       <colors>
         <Item>
@@ -13840,43 +13914,6 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="2000"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>gxrx7</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            111
-            0
-            0
-            0 
-          </indices>
-          <liveries>
-            <Item value="true"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>65011_gxrx7_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="46"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>

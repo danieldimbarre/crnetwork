@@ -1897,20 +1897,20 @@ local DismantleCategory = {
 	["B"] = {
 		["Number"] = 5,
 		["Ammo"] = 1,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Weapons"] = { "WEAPON_BAT","WEAPON_HAMMER","WEAPON_MACHETE","WEAPON_FLASHLIGHT" },
 		["Model"] = { "panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina" }
 	},
 	["B+"] = {
 		["Number"] = 6,
 		["Ammo"] = 2,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Weapons"] = { "WEAPON_BAT","WEAPON_HAMMER","WEAPON_MACHETE","WEAPON_FLASHLIGHT" },
 		["Model"] = { "asbo","brioso","club","weevil","felon","felon2","jackal","oracle","zion","zion2","buccaneer","virgo",
 		"voodoo","bifta","rancherxl","bjxl","cavalcade","gresley","habanero","rocoto","primo","stratum","pigalle","peyote","manana","streiter" }
 	},
 	["A"] = {
 		["Number"] = 7,
 		["Ammo"] = 2,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_GOLFCLUB","WEAPON_POOLCUE","WEAPON_STONE_HATCHET" },
 		["Model"] = { "exemplar","windsor","windsor2","blade","clique","dominator","faction2","gauntlet","moonbeam","nightshade",
 		"sabregt2","tampa","rebel","baller","cavalcade2","fq2","huntley","landstalker","patriot","radi","xls","blista2",
 		"retinue","stingergt","surano","specter","sultan","schwarzer","schafter2","ruston","rapidgt","raiden","ninef",
@@ -1919,7 +1919,7 @@ local DismantleCategory = {
 	["A+"] = {
 		["Number"] = 8,
 		["Ammo"] = 2,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_GOLFCLUB","WEAPON_POOLCUE","WEAPON_STONE_HATCHET" },
 		["Model"] = { "voltic","sc1","sultanrs","tempesta","nero","nero2","reaper","gp1","infernus","bullet","banshee2","turismo2","retinue",
 		"mamba","infernus2","feltzer3","coquette2","futo2","zr350","tampa2","sugoi","sultan2","schlagen","penumbra","pariah",
 		"paragon","jester3","gb200","elegy","furoregt" }
@@ -1927,14 +1927,14 @@ local DismantleCategory = {
 	["S"] = {
 		["Number"] = 9,
 		["Ammo"] = 3,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" },
 		["Model"] = { "zentorno","xa21","visione","vagner","vacca","turismor","t20","osiris","italigtb","entityxf","cheetah","autarch","sultan3",
 		"cypher","vectre","growler","comet6","jester4","euros","calico","neon","kuruma","issi7","italigto","komoda","elegy2","coquette4" }
 	},
 	["S+"] = {
 		["Number"] = 10,
 		["Ammo"] = 3,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" },
 		["Model"] = { "mazdarx72","rangerover","civictyper","subaruimpreza","corvettec7","ferrariitalia","mustang1969","vwtouareg",
 		"mercedesg65","bugattiatlantic","m8competition","audirs6","audir8","silvias15","camaro","mercedesamg63",
 		"dodgechargerrt69","skyliner342","astonmartindbs","panameramansory","lamborghinihuracanlw","lancerevolutionx",

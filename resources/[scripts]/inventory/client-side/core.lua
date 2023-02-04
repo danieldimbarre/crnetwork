@@ -2041,7 +2041,7 @@ AddEventHandler("inventory:DisPed",function(Experience)
 			end
 
 			Wait(1)
-		until Max > 0
+		until Max <= 0
 
 		for i = 1,DismantleCategory[Category]["Number"] do
 			local Rand = math.random(#disPeds)

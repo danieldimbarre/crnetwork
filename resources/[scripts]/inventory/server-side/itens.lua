@@ -2672,10 +2672,9 @@ Use = {
 					Active[Passport] = os.time() + 100
 					Player(source)["state"]["Buttons"] = true
 					TriggerClientEvent("inventory:Close",source)
+					vRPC.playAnim(source,false,{"missfbi_s4mop","clean_mop_back_player"},true)
 
 					if string.sub(Plate,1,4) == "DISM" then
-						vRPC.playAnim(source,true,{"missfbi_s4mop","clean_mop_back_player"},true)
-
 						if vTASKBAR.UpgradeVehicle(source) then
 							Brokenpick = 900
 							Active[Passport] = os.time() + 30
@@ -2710,8 +2709,6 @@ Use = {
 							until not Active[Passport]
 						end
 					else
-						vRPC.playAnim(source,false,{"missfbi_s4mop","clean_mop_back_player"},true)
-
 						if vTASKBAR.taskLockpick(source) then
 							Brokenpick = 900
 

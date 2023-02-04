@@ -24,7 +24,7 @@ function Creative.checkExist()
 			Trucker[Passport] = os.time()
 		end
 
-		if os.time() > Trucker[Passport] then
+		if os.time() >= Trucker[Passport] then
 			return true
 		else
 			local truckerTimers = parseInt(Trucker[Passport] - os.time())

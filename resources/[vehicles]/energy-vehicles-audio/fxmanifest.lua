@@ -99,6 +99,11 @@ data_file "AUDIO_GAMEDATA" "audioconfig/hemisound_game.dat"
 data_file "AUDIO_SOUNDDATA" "audioconfig/hemisound_sounds.dat"
 data_file "AUDIO_WAVEPACK" "sfx/dlc_hemisound"
 
+data_file "AUDIO_SYNTHDATA" "audioconfig/kc46nisr34ztune_amp.dat"
+data_file "AUDIO_GAMEDATA" "audioconfig/kc46nisr34ztune_game.dat"
+data_file "AUDIO_SOUNDDATA" "audioconfig/kc46nisr34ztune_sounds.dat"
+data_file "AUDIO_WAVEPACK" "sfx/dlc_kc46nisr34ztune"
+
 data_file "AUDIO_GAMEDATA" "audioconfig/lambov10_game.dat"
 data_file "AUDIO_SOUNDDATA" "audioconfig/lambov10_sounds.dat"
 data_file "AUDIO_WAVEPACK" "sfx/dlc_lambov10"

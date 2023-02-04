@@ -2,29 +2,6 @@
 <CVehicleModelInfoVariation>
   <variationData>
     <Item>
-      <modelName>eclipse</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">0 0 4 0 0 0</indices>
-          <liveries/>
-        </Item>
-      </colors>
-      <kits>
-        <Item>eclipse_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>180sxrb</modelName>
       <colors>
         <Item>
@@ -78,16 +55,14 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>s14khr</modelName>
+      <modelName>er34h</modelName>
       <colors>
         <Item>
           <indices content="char_array">
-            110 
-            0 
-            110
-            110
-			110
-			5 
+            065
+            065
+            0
+            156 
           </indices>
           <liveries>
             <Item value="false"/>
@@ -102,30 +77,30 @@
         </Item>
       </colors>
       <kits>
-        <Item>18911_s14khr_modkit</Item>
+        <Item>65012_er34h_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
         <Probabilities>
           <Item>
             <Name>Standard White</Name>
-            <Value value="0"/>
+            <Value value="25"/>
           </Item>
           <Item>
             <Name>White Plate 2</Name>
-            <Value value="0"/>
+            <Value value="50"/>
           </Item>
           <Item>
             <Name>Blue Plate</Name>
-            <Value value="80"/>
+            <Value value="10"/>
           </Item>
           <Item>
             <Name>Yellow Plate</Name>
-            <Value value="20"/>
+            <Value value="15"/>
           </Item>
         </Probabilities>
       </plateProbabilities>
-      <lightSettings value="665"/>
+      <lightSettings value="98881"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>
@@ -481,55 +456,6 @@
       <sirenSettings value="2481246"/>
     </Item>
     <Item>
-      <modelName>er34h</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            065
-            065
-            0
-            156 
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>65012_er34h_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="25"/>
-          </Item>
-          <Item>
-            <Name>White Plate 2</Name>
-            <Value value="50"/>
-          </Item>
-          <Item>
-            <Name>Blue Plate</Name>
-            <Value value="10"/>
-          </Item>
-          <Item>
-            <Name>Yellow Plate</Name>
-            <Value value="15"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="98881"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>g310gtm</modelName>
       <colors>
         <Item>
@@ -565,6 +491,38 @@
       </plateProbabilities>
       <lightSettings value="1"/>
       <sirenSettings value="1312345"/>
+    </Item>
+    <Item>
+      <modelName>gtrpit</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">2 2 2 2</indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>2839_gtrpit_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="0"/>
     </Item>
     <Item>
       <modelName>maverick2</modelName>
@@ -12084,38 +12042,6 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>gtrpit</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">2 2 2 2</indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>2839_gtrpit_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1200"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>audia4</modelName>
       <colors>
         <Item>
@@ -13917,6 +13843,66 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
+      <modelName>gxrx7</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111
+            0
+            0
+            0 
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>65011_gxrx7_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="46"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>eclipse</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">0 0 4 0 0 0</indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>eclipse_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
       <modelName>teslamodels</modelName>
       <colors>
         <Item>
@@ -15485,43 +15471,6 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>gxrx7</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            111
-            0
-            0
-            0 
-          </indices>
-          <liveries>
-            <Item value="true"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>65011_gxrx7_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="46"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
       <modelName>lfa</modelName>
       <colors>
         <Item>
@@ -15674,9 +15623,9 @@
       <colors>
         <Item>
           <indices content="char_array">
+            0 
             111 
             0 
-            156 
             0
 			0
 		    0
@@ -15694,7 +15643,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>1163_r33_modkit</Item>
+        <Item>1163_r33flick_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -15718,7 +15667,7 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="0"/>
-      <sirenSettings value="0"/>
+      <sirenSettings value="55668"/>
     </Item>
     <Item>
       <modelName>rx8hachi</modelName>
@@ -15828,6 +15777,57 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="699"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>s14khr</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            110 
+            0 
+            110
+            110
+			110
+			5 
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>18911_s14khr_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="0"/>
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="0"/>
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="80"/>
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="20"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="665"/>
       <sirenSettings value="0"/>
     </Item>
   </variationData>

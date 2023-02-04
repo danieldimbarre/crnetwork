@@ -480,7 +480,7 @@ CreateThread(function()
 		SetBlipColour(Blip,Blips[Number][5])
 		SetBlipScale(Blip,Blips[Number][7])
 		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(Blips[Number][6])
+		AddTextComponentSubstringPlayerName(Blips[Number][6])
 		EndTextCommandSetBlipName(Blip)
 	end
 

@@ -199,8 +199,11 @@ AddEventHandler("warehouse:Blips",function()
 			Blips[Name] = AddBlipForCoord(v[1],v[2],v[3])
 			SetBlipSprite(Blips[Name],50)
 			SetBlipAsShortRange(Blips[Name],true)
-			SetBlipColour(Blips[Name],"Armazém")
+			SetBlipColour(Blips[Name],5)
 			SetBlipScale(Blips[Name],0.4)
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentSubstringPlayerName("Armazém")
+			EndTextCommandSetBlipName(Blips[Name])
 		end
 
 		TriggerEvent("Notify","verde","Marcações ativadas.",10000)

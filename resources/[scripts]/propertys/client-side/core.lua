@@ -354,6 +354,9 @@ AddEventHandler("propertys:Blips",function()
 			SetBlipAsShortRange(Blips[Name],true)
 			SetBlipColour(Blips[Name],Markers[Name] and 35 or 43)
 			SetBlipScale(Blips[Name],0.4)
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentSubstringPlayerName("Propriedade")
+			EndTextCommandSetBlipName(Blips[Name])
 		end
 
 		TriggerEvent("Notify","verde","Marcações ativadas.",10000)

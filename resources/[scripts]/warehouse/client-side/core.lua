@@ -197,7 +197,7 @@ AddEventHandler("warehouse:Blips",function()
 		TriggerEvent("Notify","amarelo","Marcações desativadas.",10000)
 	else
 		for Name,v in pairs(List) do
-			Blips[Name] = AddBlipForCoord(v["x"],v["y"],v["z"])
+			Blips[Name] = AddBlipForCoord(v[1],v[2],v[3])
 			SetBlipSprite(Blips[Name],50)
 			SetBlipAsShortRange(Blips[Name],true)
 			SetBlipColour(Blips[Name],Markers[Name] and 5)

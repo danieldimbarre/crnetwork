@@ -12,7 +12,6 @@ client_scripts {
 }
 
 server_scripts {
-	"@PolyZone/client.lua",
 	"@vrp/lib/Utils.lua",
 	"server-side/*"
 }

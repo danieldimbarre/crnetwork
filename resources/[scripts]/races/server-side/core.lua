@@ -14,6 +14,7 @@ Tunnel.bindInterface("races",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Payments = {}
+local Hackers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FINISH
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -33,16 +34,36 @@ function Creative.Finish(Number,Points)
 		end
 
 		if Payments[Passport] then
+			if not Hackers[Passport] then
+				Hackers[Passport] = os.time()
+			end
+	
+			if Hackers[Passport] > os.time() then
+				local Identity = vRP.Identity(Passport)
+				if Identity then
+					vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
+					vRP.Kick(source,"Banido.")
+	
+					local Cooldown = parseInt(Hackers[Passport] - os.time())
+					TriggerEvent("Discord","Hackers","**Races**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
+	
+					Active[Passport] = nil
+					return
+				end
+			end
+
+			Hackers[Passport] = os.time() + 60
+
 			local Rand = math.random(Races[Number]["Payment"][1],Races[Number]["Payment"][1])
 			vRP.GenerateItem(Passport,"dollarsz",Rand,true)
-
+			
 			local Ranking = vRP.Query("races/TopFive",{ Race = Number })
 			if Ranking[1] then
 				if parseInt(Ranking[1]["Points"]) > parseInt(Points) then
 					vRP.GenerateItem(Passport,"racetrophy",1,true)
 				end
 			end
-
+			
 			TriggerEvent("blipsystem:Exit",source)
 			Payments[Passport] = nil
 		end

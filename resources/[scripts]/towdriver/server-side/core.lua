@@ -15,7 +15,7 @@ Tunnel.bindInterface("towdriver",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
 local userList = {}
-local Towdriver = {}
+local Hackers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLESERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -54,19 +54,25 @@ function Creative.Payment(Network,Plate)
 	if Passport and not Active[Passport] then
 		Active[Passport] = true
 
-		if os.time() <= Towdriver[Passport] then
+		if not Hackers[Passport] then
+			Hackers[Passport] = os.time()
+		end
+
+		if Hackers[Passport] > os.time() then
 			local Identity = vRP.Identity(Passport)
 			if Identity then
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
 				vRP.Kick(source,"Banido.")
 
-				local Cooldown = parseInt(Towdriver[Passport] - os.time())
+				local Cooldown = parseInt(Hackers[Passport] - os.time())
 				TriggerEvent("Discord","Hackers","**Towdriver**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
 
 				Active[Passport] = nil
 				return
 			end
 		end
+
+		Hackers[Passport] = os.time() + 40
 
 		TriggerEvent("garages:deleteVehicle",Network,Plate)
 

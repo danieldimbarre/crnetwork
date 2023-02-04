@@ -94,7 +94,7 @@ function Creative.Payment(Service)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if os.time() <= Trucker[Passport] then
+		if Trucker[Passport] > os.time() then
 			local Identity = vRP.Identity(Passport)
 			if Identity then
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })

@@ -200,8 +200,7 @@ local List = {
 		["Description"] = "Ativando o mesmo você assume a responsabilidade com o <b>Lester</b> de desmanchar um veículo.",
 		["Type"] = "Usável",
 		["Weight"] = 0.75,
-		["Economy"] = 200,
-		["Max"] = 1
+		["Economy"] = 200
 	},
 	["repairkit01"] = {
 		["Index"] = "repairkit01",
@@ -363,7 +362,6 @@ local List = {
 		["Name"] = "C4",
 		["Type"] = "Usável",
 		["Weight"] = 2.75,
-		["Max"] = 1,
 		["Economy"] = 625
 	},
 	["geode"] = {

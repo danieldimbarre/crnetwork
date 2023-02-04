@@ -1244,7 +1244,7 @@ local List = {
 		["Index"] = "joint",
 		["Name"] = "Baseado",
 		["Type"] = "Usável",
-		["Weight"] = 0.45
+		["Weight"] = 0.25
 	},
 	["codeine"] = {
 		["Index"] = "codeine",
@@ -1264,7 +1264,7 @@ local List = {
 		["Index"] = "cocaine",
 		["Name"] = "Cocaína",
 		["Type"] = "Usável",
-		["Weight"] = 0.50,
+		["Weight"] = 0.25,
 		["Economy"] = 35
 	},
 	["cokeleaf"] = {
@@ -1284,7 +1284,7 @@ local List = {
 		["Index"] = "meth",
 		["Name"] = "Metanfetamina",
 		["Type"] = "Usável",
-		["Weight"] = 0.50,
+		["Weight"] = 0.25,
 		["Economy"] = 35
 	},
 	["acetone"] = {

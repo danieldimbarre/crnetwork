@@ -151,10 +151,10 @@ local List = {
 	-- { 488.1,-1456.11,29.28,"Criminal4",false },
 	-- { 169.76,-1535.88,29.25,"Weapons",false },
 	-- { 301.14,-195.75,61.57,"Weapons",false },
-	{ 837.17,-808.15,26.35,"Mechanic",false },
-	{ 836.73,-823.74,26.32,"Mechanic-2",false },
-	{ -1408.56,-447.69,35.91,"Mechanic",false },
-	{ -1407.32,-443.45,35.91,"Mechanic-2",false },
+	{ -218.81,-1337.75,31.29,"Mechanic",false }, -- Bennys
+	{ -197.94,-1317.22,31.29,"Mechanic-2",false }, -- Bennys
+	{ -1408.56,-447.69,35.91,"Mechanic",false }, -- Hayes
+	{ -1407.32,-443.45,35.91,"Mechanic-2",false }, -- Hayes
 	{ 1690.09,3588.45,36.6,"Mechanic-2",false },
 	{ 97.46,6618.8,33.41,"Mechanic-2",false },
 	{ -1196.9,-901.58,13.99,"BurgerShot",false },

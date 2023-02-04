@@ -117,6 +117,8 @@ GlobalState["Doors"] = {
 	[112] = { Coords = vec3(797.92,-758.19,31.75), Hash = 1984391163, Lock = true, Text = true, Distance = 1.5, Perm = "PizzaThis" },
 	[113] = { Coords = vec3(806.83,-764.04,31.75), Hash = 1984391163, Lock = true, Text = true, Distance = 1.5, Perm = "PizzaThis" },
 	[120] = { Coords = vec3(835.61,-908.61,29.35), Hash = 2055788206, Lock = true, Text = true, Distance = 7, Perm = "Dracing" },
+	[122] = { Coords = vec3(-197.44,-1339.14,31.47), Hash = -147325430, Lock = true, Text = true, Distance = 1.5, Perm = "Mechanic" },
+	[123] = { Coords = vec3(-197.44,-1322.07,31.47), Hash = -147325430, Lock = true, Text = true, Distance = 1.5, Perm = "Mechanic" },
 
 	[150] = { Coords = vec3(-1111.63,4938.29,218.52), Hash = 825709191, Lock = true, Text = true, Distance = 1.5, Perm = "Tribo" },
 	[151] = { Coords = vec3(-1102.26,4940.41,218.52), Hash = 825709191, Lock = true, Text = true, Distance = 1.5, Perm = "Tribo" },

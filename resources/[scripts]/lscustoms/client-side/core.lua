@@ -118,18 +118,18 @@ local bennysLocations = {
 		service = true
 	},
 	["Mechanic01"] = {
-		pos = vector3(830.34,-806.03,25.81),
-		heading = 90.0,
+		pos = vector3(-195.48,-1326.96,31.29),
+		heading = 85.04,
 		permission = "Mechanic"
 	},
 	["Mechanic02"] = {
-		pos = vector3(831.72,-813.09,25.81),
-		heading = 90.0,
+		pos = vector3(-208.65,-1334.61,31.29),
+		heading = 0.0,
 		permission = "Mechanic"
 	},
 	["Mechanic03"] = {
-		pos = vector3(831.64,-819.79,25.81),
-		heading = 90.0,
+		pos = vector3(-214.29,-1335.05,31.32),
+		heading = 0.0,
 		permission = "Mechanic"
 	},
 	["Mechanic04"] = {

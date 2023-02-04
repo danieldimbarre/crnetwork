@@ -15,10 +15,11 @@ Tunnel.bindInterface("taxi",Creative)
 local Taxi = {}
 local Active = {}
 local Timers = {}
+local Hackers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLESERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.toggleService()
+function Creative.toggleService(Service)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -29,13 +30,9 @@ function Creative.toggleService()
 		if os.time() >= Timers[Passport] then
 			Timers[Passport] = os.time() + 10
 
-			if Taxi[Passport] then
-				Taxi[Passport] = nil
-
+			if Service then
 				vRP.RemovePermission(Passport,"Taxi")
 			else
-				Taxi[Passport] = os.time()
-
 				vRP.SetPermission(Passport,"Taxi",2)
 			end
 
@@ -57,13 +54,17 @@ function Creative.Payment()
 	if Passport and not Active[Passport] then
 		Active[Passport] = true
 		
-		if Taxi[Passport] > os.time() then
+		if not Hackers[Passport] then
+			Hackers[Passport] = os.time()
+		end
+
+		if Hackers[Passport] > os.time() then
 			local Identity = vRP.Identity(Passport)
 			if Identity then
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
 				vRP.Kick(source,"Banido.")
 
-				local Cooldown = parseInt(Taxi[Passport] - os.time())
+				local Cooldown = parseInt(Hackers[Passport] - os.time())
 				TriggerEvent("Discord","Hackers","**Taxi**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
 
 				Active[Passport] = nil
@@ -72,7 +73,7 @@ function Creative.Payment()
 			end
 		end
 
-		Taxi[Passport] = os.time() + 40
+		Hackers[Passport] = os.time() + 40
 		local Valuation = math.random(175,275)
 
 		if GlobalState["Buffs"]["Dexterity"][Passport] then
@@ -99,9 +100,7 @@ end
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport)
-	if Taxi[Passport] then
-		Taxi[Passport] = nil
-
+	if vRP.HasGroup(Passport,"Taxi") then
 		vRP.RemovePermission(Passport,"Taxi")
 	end
 

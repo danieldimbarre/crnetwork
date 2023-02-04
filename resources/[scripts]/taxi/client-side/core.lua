@@ -198,7 +198,7 @@ end)
 RegisterNetEvent("taxi:Starting")
 AddEventHandler("taxi:Starting",function(Init)
 	if stopVehicle[Init] and spawnPeds[Init] then
-		if vSERVER.toggleService() then
+		if vSERVER.toggleService(serviceStatus) then
 			if serviceStatus then
 				serviceStatus = false
 				exports["target"]:LabelText("Taxi:"..Init,"Trabalhar")

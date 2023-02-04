@@ -26,7 +26,7 @@ function Creative.toggleService()
 			Timers[Passport] = os.time()
 		end
 
-		if os.time() > Timers[Passport] then
+		if os.time() >= Timers[Passport] then
 			Timers[Passport] = os.time() + 10
 
 			if Taxi[Passport] then
@@ -42,7 +42,7 @@ function Creative.toggleService()
 			return true
 		else
 			local Cooldown = parseInt(Timers[Passport] - os.time())
-			TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos para iniciar o trabalho novamente.",5000)
+			TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos para iniciar/finalizar o trabalho.",5000)
 		end
 	end
 

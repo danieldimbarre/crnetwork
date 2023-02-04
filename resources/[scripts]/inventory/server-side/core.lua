@@ -2510,7 +2510,6 @@ function Creative.AmountDrugs(Selected)
 			if Consult[1] then
 				local Points = 0
 				local Split = splitString(Consult[2],"-")
-				local Service,Total = vRP.NumPermission("Police")
 				if Split[2] ~= nil then
 					Points = parseInt(Split[2])
 				end
@@ -2525,15 +2524,12 @@ function Creative.AmountDrugs(Selected)
 					Points = (Points * 0.1) * 12
 				elseif Points >= 100 then
 					Points = Points * 2
-
-					if Total >= 7 then
-						Amount = Amount + 1
-					end
 				end
 
 				Price = Price + Points
 				
 				if Consult[1] >= Amount then
+					local Service,Total = vRP.NumPermission("Police")
 					Drugs[Passport] = { Consult[2],Amount,Price * Amount }
 					return true,Total
 				end

@@ -128,8 +128,21 @@ end
 function Creative.Payment()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Actived[Passport] and Payments[Passport] then
+	if Passport and not Actived[Passport] then
 		Actived[Passport] = true
+
+		if not Payments[Passport] then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
+				vRP.Kick(source,"Banido.")
+
+				TriggerEvent("Discord","Hackers","**Luckywheel**\n\n**Passaporte:** "..Passport,9317187)
+
+				Actived[Passport] = nil
+				return
+			end
+		end
 
 		if Payments[Passport] == 2 then
 			vRP.GiveBank(Passport,2500)

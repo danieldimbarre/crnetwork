@@ -782,7 +782,7 @@ Use = {
 
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
 							Healths[Passport] = os.time() + 60
-							vRPC.UpgradeHealth(source,40)
+							vRPC.UpgradeHealth(source,50)
 						end
 					end
 
@@ -5172,6 +5172,44 @@ Use = {
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				vRP.SetPermission(Passport,"Premium",1)
 				vRP.UpgradePremium(source)
+			else
+				TriggerClientEvent("Notify",source,"aviso","Você já possui um Premium <b>ativo<b> no momento.")
+			end
+		end
+	end,
+
+	["premium2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not vRP.UserPremium(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				vRP.SetPermission(Passport,"Premium",2)
+				vRP.SetPremium(source)
+			end
+		else
+			if vRP.HasPermission(Passport,"Premium",2) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				vRP.SetPermission(Passport,"Premium",2)
+				vRP.UpgradePremium(source)
+			else
+				TriggerClientEvent("Notify",source,"aviso","Você já possui um Premium <b>ativo<b> no momento.")
+			end
+		end
+	end,
+
+	["premium3"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not vRP.UserPremium(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				vRP.SetPermission(Passport,"Premium",3)
+				vRP.SetPremium(source)
+			end
+		else
+			if vRP.HasPermission(Passport,"Premium",3) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				vRP.SetPermission(Passport,"Premium",3)
+				vRP.UpgradePremium(source)
+			else
+				TriggerClientEvent("Notify",source,"aviso","Você já possui um Premium <b>ativo<b> no momento.")
 			end
 		end
 	end,

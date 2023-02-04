@@ -27,7 +27,7 @@ AddEventHandler("smartphone:service_request",function(Data)
 
 	for Passport,Sources in pairs(Service) do
 		async(function()
-			TriggerClientEvent("NotifyPush",Sources,{ code = "QTH", phone = Identity["phone"], title = "Chamado de "..Data["name"], text = Data["content"], x = Data["location"][1], y = Data["location"][2], z = Data["location"][3], time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
+			TriggerClientEvent("NotifyPush",Sources,{ code = "QTH", phone = Identity["phone"], title = "Chamado", name = Data["name"].." "..Data["name2"], text = Data["content"], x = Data["location"][1], y = Data["location"][2], z = Data["location"][3], time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
 
 			if vRP.Request(Sources,"Aceitar o chamado de <b>"..Data["name"].."?","Sim","Não") then
 				if not Answered then
@@ -43,6 +43,7 @@ AddEventHandler("smartphone:service_request",function(Data)
 
 	SetTimeout(30000,function()
 		if not Answered then
+			Answered = true
 			TriggerClientEvent("smartphone:pusher",Data["source"],"SERVICE_REJECT",{})
 		end
 	end)

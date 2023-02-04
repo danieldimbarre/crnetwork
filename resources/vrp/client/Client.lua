@@ -3,8 +3,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 LocalPlayer["state"]:set("Route",0,false)
 LocalPlayer["state"]:set("Name","",false)
-LocalPlayer["state"]:set("Rope",false,false)
 LocalPlayer["state"]:set("Passport",0,false)
+LocalPlayer["state"]:set("Rope",false,false)
 LocalPlayer["state"]:set("Cancel",false,true)
 LocalPlayer["state"]:set("Active",false,false)
 LocalPlayer["state"]:set("Handcuff",false,true)

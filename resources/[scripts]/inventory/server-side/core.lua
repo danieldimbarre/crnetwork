@@ -55,15 +55,15 @@ GlobalState["Buffs"] = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 DrugsList = {
 	["cocaine"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 300, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["meth"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 500, ["Max"] = 515 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["joint"] = {
-		Price = { ["Min"] = 286, ["Max"] = 315 },
+		Price = { ["Min"] = 300, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["oxy"] = {
@@ -151,36 +151,21 @@ Objects = {
 	["72"] = { x = 751.57, y = -1860.52, z = 28.28, h = 357.17, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 	["73"] = { x = -429.27, y = -2169.23, z = 9.33, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 
-	["74"] = { x = 442.83, y = -985.87, z = 42.69, h = 272.13, object = "prop_gas_pump_old2", item = "", Distance = 150, mode = "Gasoline" },
-	["75"] = { x = -697.93, y = 319.61, z = 138.19, h = 178.59, object = "prop_gas_pump_old2", item = "", Distance = 150, mode = "Gasoline" },
-	["76"] = { x = 2958.86, y = 2753.9, z = 42.71, h = 17.01, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
-	["77"] = { x = 1532.77, y = 3780.12, z = 33.51, h = 32.6, object = "prop_dumpster_4a", item = "", Distance = 150, mode = "Trash" },
-	["78"] = { x = 488.09, y = -998.98, z = 29.68, h = 90.71, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["79"] = { x = -697.93, y = 319.61, z = 139.09, h = 178.59, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["80"] = { x = 97.01, y = -96.29, z = -25.20, h = 133.23, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["81"] = { x = 122.58, y = -111.75, z = -24.59, h = 11.34, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["82"] = { x = 157.14, y = -160.16, z = -20.19, h = 31.19, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["83"] = { x = 47.35, y = -48.4, z = -25.01, h = 51.03, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["84"] = { x = 84.81, y = 86.7, z = -25.01, h = 87.88, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["85"] = { x = 365.53, y = -1600.49, z = 24.44, h = 232.45, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["86"] = { x = 1836.76, y = 3687.87, z = 33.19, h = 209.77, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["87"] = { x = -443.88, y = 6018.68, z = 35.99, h = 136.07, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
-	["88"] = { x = -4.99, y = -1822.0, z = 28.15, h = 232.45, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["89"] = { x = -157.22, y = -1613.59, z = 32.65, h = 335.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["90"] = { x = 329.54, y = -1992.93, z = 23.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["91"] = { x = 495.24, y = -1538.37, z = 28.28, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["92"] = { x = -1110.84, y = 4941.59, z = 217.36, h = 72.29, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["93"] = { x = 1256.71, y = -1571.92, z = 57.35, h = 35.44, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["94"] = { x = 109.75, y = 3615.54, z = 39.49, h = 270.71, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["95"] = { x = -817.43, y = -702.77, z = 27.05, h = 0.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["96"] = { x = 487.98, y = -100.73, z = 62.15, h = 343.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["97"] = { x = 986.76, y = -96.88, z = 73.85, h = 133.23, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-	["98"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
-
-	["150"] = { x = 1273.82, y = -224.46, z = 97.57, h = 178.59, object = "prop_skip_06a", item = "", Distance = 150, mode = "Construct" },
-	["151"] = { x = 1281.08, y = -227.07, z = 97.47, h = 189.93, object = "prop_conc_blocks01a", item = "", Distance = 150, mode = "Construct" },
-	["152"] = { x = 1282.12, y = -216.01, z = 98.45, h = 354.34, object = "prop_woodpile_01a", item = "", Distance = 150, mode = "Construct" },
-	["153"] = { x = 1276.08, y = -230.3, z = 97.18, h = 136.07, object = "prop_wheelbarrow01a", item = "", Distance = 150, mode = "Construct" }
+	["74"] = { x = 122.58, y = -111.75, z = -24.59, h = 11.34, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["75"] = { x = 157.14, y = -160.16, z = -20.19, h = 31.19, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["76"] = { x = 47.35, y = -48.4, z = -25.01, h = 51.03, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["77"] = { x = 84.81, y = 86.7, z = -25.01, h = 87.88, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["78"] = { x = -4.99, y = -1822.0, z = 28.15, h = 232.45, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["79"] = { x = -157.22, y = -1613.59, z = 32.65, h = 335.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["80"] = { x = 329.54, y = -1992.93, z = 23.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["81"] = { x = 495.24, y = -1538.37, z = 28.28, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["82"] = { x = -1110.84, y = 4941.59, z = 217.36, h = 72.29, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["83"] = { x = 1256.71, y = -1571.92, z = 57.35, h = 35.44, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["84"] = { x = 109.75, y = 3615.54, z = 39.49, h = 270.71, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["85"] = { x = -817.43, y = -702.77, z = 27.05, h = 0.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["86"] = { x = 487.98, y = -100.73, z = 62.15, h = 343.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["87"] = { x = 986.76, y = -96.88, z = 73.85, h = 133.23, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["88"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS
@@ -862,7 +847,13 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -910,7 +901,13 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -957,12 +954,18 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BurgerShot","100",Valuation * 0.05)
+					vRP.DirectChest("BurgerShot","500",Valuation * 0.05)
 
 					local Experience = 1
 					if GlobalState["Buffs"]["Luck"][Passport] then
@@ -1005,12 +1008,18 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("PizzaThis","100",Valuation * 0.05)
+					vRP.DirectChest("PizzaThis","500",Valuation * 0.05)
 
 					local Experience = 1
 					if GlobalState["Buffs"]["Luck"][Passport] then
@@ -1053,12 +1062,18 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("UwuCoffee","100",Valuation * 0.05)
+					vRP.DirectChest("UwuCoffee","500",Valuation * 0.05)
 
 					local Experience = 1
 					if GlobalState["Buffs"]["Luck"][Passport] then
@@ -1101,12 +1116,18 @@ function Creative.Deliver(Slot)
 					end
 
 					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
+						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BeanMachine","100",Valuation * 0.05)
+					vRP.DirectChest("BeanMachine","500",Valuation * 0.05)
 
 					local Experience = 1
 					if GlobalState["Buffs"]["Luck"][Passport] then
@@ -1462,6 +1483,8 @@ function Creative.Cancel()
 		end
 
 		TriggerEvent("robberys:Cancel",source,Passport)
+
+		TriggerEvent("propertys:Cancel",source,Passport)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1470,7 +1493,7 @@ end
 function Creative.checkInventory()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Active[Passport] ~= nil then
+	if Passport and Active[Passport] then
 		return false
 	end
 
@@ -1482,35 +1505,31 @@ end
 function Creative.verifyWeapon(Item,Ammo)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Ammos[Passport] and Attachs[Passport] then
-		if not vRP.ConsultItem(Passport,Item,1) then
-			local Hash = itemAmmo(Item)
-
-			if Hash and Ammos[Passport][Hash] then
-				if Ammo and Ammo > 0 then
-					Ammos[Passport][Hash] = parseInt(Ammo)
-				end
-
-				if Attachs[Passport][Item] then
-					for Name,_ in pairs(Attachs[Passport][Item]) do
-						vRP.GenerateItem(Passport,Name,1)
-					end
-
-					Attachs[Passport][Item] = nil
-				end
-
-				if Ammos[Passport][Hash] > 0 then
-					vRP.GenerateItem(Passport,Hash,Ammos[Passport][Hash])
-					Ammos[Passport][Hash] = nil
-				end
-
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+	if Passport and not vRP.ConsultItem(Passport,Item,1) then
+		local Ammunation = itemAmmo(Item)
+		if Ammunation and Ammos[Passport] and Ammos[Passport][Ammunation] then
+			if Ammo and Ammo > 0 then
+				Ammos[Passport][Ammunation] = Ammo
 			end
 
-			exports["inventory"]:CleanWeapons(Passport,false)
-
-			return false
+			if Ammos[Passport][Ammunation] > 0 then
+				vRP.GenerateItem(Passport,Ammunation,Ammos[Passport][Ammunation])
+				Ammos[Passport][Ammunation] = nil
+			end
 		end
+
+		if Attachs[Passport] and Attachs[Passport][Item] then
+			for Component,_ in pairs(Attachs[Passport][Item]) do
+				vRP.GenerateItem(Passport,Component,1)
+			end
+
+			Attachs[Passport][Item] = nil
+		end
+
+		TriggerClientEvent("inventory:Update",source,"Backpack")
+		exports["inventory"]:CleanWeapons(Passport,false)
+
+		return false
 	end
 
 	return true
@@ -1521,10 +1540,8 @@ end
 function Creative.dropWeapons(Item)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Item ~= "" and Item ~= nil then
-		if not vRP.ConsultItem(Passport,Item,1) then
-			return true
-		end
+	if Passport and Item ~= "" and Item and not vRP.ConsultItem(Passport,Item,1) then
+		return true
 	end
 
 	return false
@@ -1546,13 +1563,13 @@ function Creative.preventWeapon(Item,Ammo)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Ammos[Passport] then
-		local Hash = itemAmmo(Item)
+		local Ammunation = itemAmmo(Item)
 
-		if Hash and Ammos[Passport][Hash] then
+		if Ammunation and Ammos[Passport][Ammunation] then
 			if Ammo > 0 then
-				Ammos[Passport][Hash] = Ammo
+				Ammos[Passport][Ammunation] = Ammo
 			else
-				Ammos[Passport][Hash] = nil
+				Ammos[Passport][Ammunation] = nil
 				exports["inventory"]:CleanWeapons(Passport,false)
 			end
 		end
@@ -2290,8 +2307,8 @@ function Creative.Dismantle(Entity)
 				if #Members > 1 then
 					local Amount = #Members
 					for _,v in pairs(Members) do
-						if Amount > 10 then
-							Amount = 10
+						if Amount > 5 then
+							Amount = 5
 						end
 
 						vRP.GenerateItem(v["Passport"],"dollarsz",AmountItens * Amount,true)
@@ -2497,13 +2514,23 @@ function Creative.AmountDrugs(Selected)
 					Points = parseInt(Split[2])
 				end
 
-				if Points >= 100 then
-					Amount = Amount + 1
+				if Points < 25 then
+					Points = 0
+				elseif Points >= 25 and Points <= 50 then
+					Points = (Points * 0.1) * 6
+				elseif Points >= 51 and Points <= 75 then
+					Points = (Points * 0.1) * 9
+				elseif Points >= 76 and Points <= 99 then
+					Points = (Points * 0.1) * 12
+				elseif Points >= 100 then
+					Points = Points * 2
 				end
 
+				Price = Price + Points
+				
 				if Consult[1] >= Amount then
-					Drugs[Passport] = { Consult[2],Amount,Price * Amount }
 					local Service,Total = vRP.NumPermission("Police")
+					Drugs[Passport] = { Consult[2],Amount,Price * Amount }
 					return true,Total
 				end
 			end
@@ -2529,7 +2556,7 @@ function Creative.DrugPeds()
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
-			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3] + (Points * 2),true)
+			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3],true)
 
 			TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
 			Percentage = Percentage - Points

@@ -135,7 +135,7 @@ AddEventHandler("target:Treatment",function(Number)
 
 			Wait(1000)
 			ThreadBeds()
-			ThreadTreatment()
+			ThreadTreatment(true)
 		end
 	end
 end)
@@ -175,13 +175,21 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTREATMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ThreadTreatment()
+function ThreadTreatment(Bed)
 	CreateThread(function()
 		while Treatment do
 			if GetGameTimer() >= TreatmentTimer then
 				local Ped = PlayerPedId()
 				local Health = GetEntityHealth(Ped)
 				TreatmentTimer = GetGameTimer() + 1000
+
+				if Health <= 100 and Treatment and ((Bed and (not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) or LocalPlayer["state"]["usingPhone"])) or not Bed) then
+					Treatment = false
+					LocalPlayer["state"]["Cancel"] = false
+					LocalPlayer["state"]["Commands"] = false
+					LocalPlayer["state"]["Buttons"] = false
+					TriggerEvent("Notify","amarelo","Tratamento cancelado.",5000)
+				end
 
 				if Health < 200 then
 					SetEntityHealth(Ped,Health + 1)
@@ -191,14 +199,6 @@ function ThreadTreatment()
 					LocalPlayer["state"]["Commands"] = false
 					LocalPlayer["state"]["Buttons"] = false
 					TriggerEvent("Notify","amarelo","Tratamento concluído.",5000)
-				end
-
-				if Treatment and (not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) or LocalPlayer["state"]["usingPhone"]) then
-					Treatment = false
-					LocalPlayer["state"]["Cancel"] = false
-					LocalPlayer["state"]["Commands"] = false
-					LocalPlayer["state"]["Buttons"] = false
-					TriggerEvent("Notify","amarelo","Tratamento cancelado.",5000)
 				end
 			end
 

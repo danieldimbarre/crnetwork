@@ -10,6 +10,7 @@ vSERVER = Tunnel.getInterface("warehouse")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Warehouse = ""
+local Blips = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -177,4 +178,34 @@ end)
 RegisterNetEvent("warehouse:Weight")
 AddEventHandler("warehouse:Weight",function(invPeso,invMaxpeso,warehousePeso,warehouseMaxpeso)
 	SendNUIMessage({ action = "updateWeight", invPeso = invPeso, invMaxpeso = invMaxpeso, warehousePeso = warehousePeso, warehouseMaxpeso = warehouseMaxpeso })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WAREHOUSE:BLIPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("warehouse:Blips")
+AddEventHandler("warehouse:Blips",function()
+	if json.encode(Blips) ~= "[]" then
+		for _,v in pairs(Blips) do
+			if DoesBlipExist(v) then
+				RemoveBlip(v)
+			end
+		end
+
+		Blips = {}
+
+		TriggerEvent("Notify","amarelo","Marcações desativadas.",10000)
+	else
+		for Name,v in pairs(List) do
+			Blips[Name] = AddBlipForCoord(v[1],v[2],v[3])
+			SetBlipSprite(Blips[Name],50)
+			SetBlipAsShortRange(Blips[Name],true)
+			SetBlipColour(Blips[Name],5)
+			SetBlipScale(Blips[Name],0.4)
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentSubstringPlayerName("Armazém")
+			EndTextCommandSetBlipName(Blips[Name])
+		end
+
+		TriggerEvent("Notify","verde","Marcações ativadas.",10000)
+	end
 end)

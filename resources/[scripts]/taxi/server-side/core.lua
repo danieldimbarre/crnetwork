@@ -34,16 +34,16 @@ function Creative.toggleService()
 
 				vRP.RemovePermission(Passport,"Taxi")
 			else
-				Taxi[Passport] = true
+				Taxi[Passport] = os.time()
 
 				vRP.SetPermission(Passport,"Taxi",2)
 			end
 
 			return true
+		else
+			local Cooldown = parseInt(Timers[Passport] - os.time())
+			TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos para iniciar/finalizar o trabalho.",5000)
 		end
-	else
-		local Cooldown = parseInt(Timers[Passport] - os.time())
-		TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos para iniciar o trabalho novamente.",5000)
 	end
 
 	return false
@@ -54,8 +54,25 @@ end
 function Creative.Payment()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Taxi[Passport] then
+	if Passport and not Active[Passport] then
 		Active[Passport] = true
+		
+		if Taxi[Passport] > os.time() then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
+				vRP.Kick(source,"Banido.")
+
+				local Cooldown = parseInt(Taxi[Passport] - os.time())
+				TriggerEvent("Discord","Hackers","**Taxi**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
+
+				Active[Passport] = nil
+				Timers[Passport] = nil
+				return
+			end
+		end
+
+		Taxi[Passport] = os.time() + 40
 		local Valuation = math.random(175,275)
 
 		if GlobalState["Buffs"]["Dexterity"][Passport] then
@@ -65,11 +82,16 @@ function Creative.Payment()
 		end
 
 		if vRP.UserPremium(Passport) then
-			Valuation = Valuation + (Valuation * 0.1)
+			if vRP.HasGroup(Passport,"Premium",1) then
+				Valuation = Valuation + (Valuation * 0.1)
+			elseif vRP.HasGroup(Passport,"Premium",2) then
+				Valuation = Valuation + (Valuation * 0.15)
+			elseif vRP.HasGroup(Passport,"Premium",3) then
+				Valuation = Valuation + (Valuation * 0.2)
+			end
 		end
 
 		vRP.GenerateItem(Passport,"dollars",parseInt(Valuation),true)
-		TriggerEvent("Discord","Taxi","**Passaporte:** "..Passport.."\n**Recompensa:** "..parseFormat(Valuation).."x "..itemName("dollars"),9317187)
 		Active[Passport] = nil
 	end
 end
@@ -81,5 +103,9 @@ AddEventHandler("Disconnect",function(Passport)
 		Taxi[Passport] = nil
 
 		vRP.RemovePermission(Passport,"Taxi")
+	end
+
+	if Timers[Passport] then
+		Timers[Passport] = nil
 	end
 end)

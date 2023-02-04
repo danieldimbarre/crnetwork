@@ -52,20 +52,20 @@ $(document).ready(function(){
 
 				<div class="titulo">${data["title"]}</div>
 
-				${data["name"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["name"]}</div>`}
+				${data["name"] === undefined ? "" : `<div class="content-line"><i class="fa-solid fa-user"></i>  ${data["name"]}</div>`}
 
-				${data["street"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["street"]}</div>`}
+				${data["street"] === undefined ? "" : `<div class="content-line"><i class="fa-solid fa-location-dot"></i>  ${data["street"]}</div>`}
 
-				${data["criminal"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["criminal"]}</div>`}
+				${data["criminal"] === undefined ? "" : `<div class="content-line"><i class="fa-solid fa-triangle-exclamation"></i>  ${data["criminal"]}</div>`}
 
-				${data["vehicle"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["vehicle"]}</div>`}
+				${data["vehicle"] === undefined ? "" : `<div class="content-line"><i class="fa-solid fa-car"></i>  ${data["vehicle"]}</div>`}
 
-				${data["time"] === undefined ? "" : `<div class="content-line"><i class="fa fa-arrow-right"></i>  ${data["time"]}</div>`}
+				${data["time"] === undefined ? "" : `<div class="content-line"><i class="fa-solid fa-clock"></i>  ${data["time"]}</div>`}
 			</div>
 
 			<div class="buttons">
-				<div class="chamados" id="loc" data-x="${data["x"]}" data-y="${data["y"]}"><i class="fas fa-map-marker-alt fa-lg"></i></div>
-				${data["phone"] === undefined ? "" : `<div class="chamados" id="phone" data-phone="${data["phone"]}"><i class="fas fa-phone-alt"></i></div>`}
+				<div class="chamados" id="loc" data-x="${data["x"]}" data-y="${data["y"]}"><i class="fa-solid fa-location-dot fa-xl"></i></div>
+				${data["phone"] === undefined ? "" : `<div class="chamados" id="phone" data-phone="${data["phone"]}"><i class="fa-solid fa-phone fa-xl"></i></div>`}
 			</div>
 
 			${data["text"] === undefined ? "" : `<div class="texto">${data["text"]}</div>`}

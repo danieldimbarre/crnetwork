@@ -96,7 +96,7 @@ Error generating stack: `+i.message+`
         font-weight: 500;
         font-size: 1.25vw;
         line-height: 1.875vw;
-        color: #00BC7E;
+        color: #00E076;
         margin-top: -1vw;
     }
 `,T1=Be.div`
@@ -112,7 +112,7 @@ Error generating stack: `+i.message+`
 `,_1=Be.div`
     width: 11.771vw;
     height: 2.24vw;
-    background: linear-gradient(92.51deg, rgba(0, 188, 126, 0.1) -5.33%, rgba(0, 157, 105, 0.1) 100.68%);
+    background: linear-gradient(92.51deg, rgba(0, 156, 82, 0.1) -5.33%, rgba(0, 224, 118, 0.1) 100.68%);
     border-radius: 0.365vw;
     display: flex;
     justify-content: space-between;
@@ -124,32 +124,32 @@ Error generating stack: `+i.message+`
         font-weight: 500;
         font-size: 0.729vw;
         line-height: 1.094vw;
-        color: #00BC7E;
+        color: #00E076;
         text-align: center;
 
         &::placeholder {
-            color: rgba(0, 188, 126, 0.2);
+            color: rgba(0, 156, 82, 0.2);
         }
     }
 
     button {
         width: 5.208vw;
         height: 100%;
-        background: linear-gradient(92.51deg, rgba(0, 188, 126, 0.1) -5.33%, rgba(0, 157, 105, 0.1) 100.68%);
+        background: linear-gradient(92.51deg, rgba(0, 156, 82, 0.1) -5.33%, rgba(0, 224, 118, 0.1) 100.68%);
         border-radius: 0.365vw;
         font-weight: 600;
         font-size: 0.625vw;
         line-height: 0.938vw;
-        color: #00BC7E;
+        color: #00E076;
         cursor: pointer;
         transition: all ease .4s;
 
         &:hover {
-            background: linear-gradient(92.51deg, rgba(0, 188, 126, 0.2) -5.33%, rgba(0, 157, 105, 0.2) 100.68%);
+            background: linear-gradient(92.51deg, rgba(0, 156, 82, 0.2) -5.33%, rgba(0, 224, 118, 0.2) 100.68%);
         }
 
         &:active {
-            background: linear-gradient(92.51deg, rgba(0, 188, 126, 0.1) -5.33%, rgba(0, 157, 105, 0.1) 100.68%);
+            background: linear-gradient(92.51deg, rgba(0, 156, 82, 0.1) -5.33%, rgba(0, 224, 118, 0.1) 100.68%);
         }
     }
 `,A1=()=>{const{data:e,setData:t}=Xu(),[n,r]=C.exports.useState(0);function o(){Wr("invite",{user_id:n},{id:4,online:!0,role_id:e.members.length,name:"John Doe",phone:"000-000",role:"Membro"}).then(s=>{if(typeof s=="object"){const l={...e};l.members.push(s),t(l),r(0)}})}function i(s){const l=Math.abs(parseInt(s));r(l)}return gt(P1,{children:[gt(E1,{children:[B("span",{children:"Painel"}),B("p",{children:e.groupName})]}),gt(T1,{children:[B("p",{children:"Adicionar membro"}),gt(_1,{children:[B("input",{type:"number",value:n===0?"":n,onChange:s=>i(s.target.value),placeholder:"PASSAPORTE"}),B("button",{onClick:o,children:"ADICIONAR"})]})]})]})};var R1="./assets/arrowUp.bcb64d0d.svg",V1="./assets/arrowDown.97a668ce.svg",L1="./assets/close.c9cc2f16.svg";const M1=Be.div`
@@ -204,14 +204,14 @@ Error generating stack: `+i.message+`
     top: 50%;
     height: 0.417vw;
     ${e=>e.actived?wo`
-        background: #00BC7E;
-        box-shadow: 0vw 0vw 0.521vw rgba(0, 188, 126, 0.4);
+        background: #00E076;
+        box-shadow: 0vw 0vw 0.521vw rgba(0, 156, 82, 0.4);
     `:wo`
-        background: #F64740;
+        background: #DB2A3B;
         box-shadow: 0vw 0vw 0.521vw rgba(246, 71, 64, 0.4);
     `}
     border-radius: 0.156vw;
-`,z1={green:{background:"rgba(0, 188, 126, 0.08)"},yellow:{background:"rgba(188, 135, 0, 0.08)"},red:{background:"rgba(246, 71, 64, 0.08)"}},kl=Be.button`
+`,z1={green:{background:"rgba(0, 156, 82, 0.08)"},yellow:{background:"rgba(188, 135, 0, 0.08)"},red:{background:"rgba(246, 71, 64, 0.08)"}},kl=Be.button`
     outline: none;
     border: none;
     width: 1.458vw;
@@ -237,7 +237,7 @@ Error generating stack: `+i.message+`
     display: flex;
     align-items: center;
     ${e=>e.isPair?wo`
-        background: rgba(0, 188, 126, 0.03);
+        background: rgba(0, 156, 82, 0.03);
     `:wo`
         background: none;
     `}

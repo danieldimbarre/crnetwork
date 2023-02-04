@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-version "1.5.0"
+version "1.6.0"
 
 ui_page "web-side/index.html"
 
@@ -21,12 +21,10 @@ files {
 }
 
 shared_scripts {
-	"@vrp/config/Global.lua",
 	"shared-side/*"
 }
 
 escrow_ignore {
-	"client-side/command.lua",
 	"shared-side/*"
 }
 dependency '/assetpacks'

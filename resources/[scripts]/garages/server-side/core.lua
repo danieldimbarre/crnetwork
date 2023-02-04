@@ -282,7 +282,6 @@ local Works = {
 	},
 	["Exclusives"] = {
 		"rx8hachi",
-		"gxrx7",
 		"s14khr",
 		"180sxrb",
 		"er34h",
@@ -402,16 +401,19 @@ AddEventHandler("garages:Tax",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
-		if Consult[1] and Consult[1]["tax"] <= os.time() then
-			local Price = VehiclePrice(Name) * 0.10
+		local Gemstone = VehicleGems(Name)
+		if Gemstone <= 0 then
+			local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = Name })
+			if Consult[1] and Consult[1]["tax"] <= os.time() then
+				local Price = VehiclePrice(Name) * 0.10
 
-			if vRP.Request(source,"A taxa do veículo tem o custo de <b>$"..parseFormat(Price).."</b> dólares, deseja prosseguir com o pagamento do mesmo?","Sim, efetuar o pagamento","Não, decido depois") then
-				if vRP.PaymentFull(Passport,Price) then
-					vRP.Query("vehicles/updateVehiclesTax",{ Passport = Passport, vehicle = Name })
-					TriggerClientEvent("Notify",source,"verde","Pagamento concluído.",5000)
-				else
-					TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
+				if vRP.Request(source,"A taxa do veículo tem o custo de <b>$"..parseFormat(Price).."</b> dólares, deseja prosseguir com o pagamento do mesmo?","Sim, efetuar o pagamento","Não, decido depois") then
+					if vRP.PaymentFull(Passport,Price) then
+						vRP.Query("vehicles/updateVehiclesTax",{ Passport = Passport, vehicle = Name })
+						TriggerClientEvent("Notify",source,"verde","Pagamento concluído.",5000)
+					else
+						TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
+					end
 				end
 			end
 		end
@@ -591,7 +593,7 @@ AddEventHandler("garages:Spawn",function(Table)
 					TriggerClientEvent("Notify",source,"amarelo","Rastreador está desativado.",5000)
 				end
 			else
-				if vehicle[1]["tax"] <= os.time() then
+				if vehicle[1]["tax"] <= os.time() and Gemstone <= 0 then
 					TriggerClientEvent("Notify",source,"amarelo","Taxa do veículo atrasada.",5000)
 				elseif vehicle[1]["arrest"] >= os.time() then
 					TriggerClientEvent("Notify",source,"amarelo","Veículo apreendido, dirija-se até o <b>Impound</b> e efetue o pagamento da liberação do mesmo.",5000)
@@ -627,7 +629,11 @@ AddEventHandler("garages:Spawn",function(Table)
 
 								if Exist then
 									vCLIENT.CreateVehicle(-1,Name,Network,vehicle[1]["engine"],vehicle[1]["health"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
-									TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
+
+									if Gemstone <= 0 then
+										TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
+									end
+
 									TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
 									Spawn[Plate] = { Passport,Name,Network }
 
@@ -643,7 +649,11 @@ AddEventHandler("garages:Spawn",function(Table)
 
 										if Exist then
 											vCLIENT.CreateVehicle(-1,Name,Network,vehicle[1]["engine"],vehicle[1]["health"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
-											TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
+
+											if Gemstone <= 0 then
+												TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
+											end
+
 											TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
 											Spawn[Plate] = { Passport,Name,Network }
 											vRP.PaymentFull(Passport,Price)

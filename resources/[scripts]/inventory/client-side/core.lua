@@ -690,7 +690,7 @@ function Creative.putWeaponHands(Name,Ammo,Components,Type)
 		end
 
 		TakeWeapon = true
-		LocalPlayer["state"]["Cancel"] = true
+		LocalPlayer["state"]:set("Cancel",true,true)
 
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
@@ -724,7 +724,7 @@ function Creative.putWeaponHands(Name,Ammo,Components,Type)
 		end
 
 		TakeWeapon = false
-		LocalPlayer["state"]["Cancel"] = false
+		LocalPlayer["state"]:set("Cancel",false,true)
 
 		if itemAmmo(Name) then
 			TriggerEvent("hud:Weapon",true,Name)
@@ -748,7 +748,7 @@ function Creative.storeWeaponHands()
 
 		local Last = Weapon
 		local Ped = PlayerPedId()
-		LocalPlayer["state"]["Cancel"] = true
+		LocalPlayer["state"]:set("Cancel",true,true)
 
 		if not IsPedInAnyVehicle(Ped) then
 			if LoadAnim("weapons@pistol@") then
@@ -763,8 +763,8 @@ function Creative.storeWeaponHands()
 		local Ammos = GetAmmoInPedWeapon(Ped,Weapon)
 
 		StoreWeapon = false
-		LocalPlayer["state"]["Cancel"] = false
 		TriggerEvent("inventory:CleanWeapons",true)
+		LocalPlayer["state"]:set("Cancel",false,true)
 
 		return true,Ammos,Last
 	end
@@ -1896,18 +1896,21 @@ local disCoords = {
 local DismantleCategory = {
 	["B"] = {
 		["Number"] = 5,
-		["Weapons"] = { "WEAPON_SNSPISTOL" },
-		["Model"] = { "panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina"}
+		["Ammo"] = 1,
+		["Weapons"] = { "WEAPON_BAT","WEAPON_HAMMER","WEAPON_MACHETE","WEAPON_FLASHLIGHT" },
+		["Model"] = { "panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina" }
 	},
 	["B+"] = {
 		["Number"] = 6,
-		["Weapons"] = { "WEAPON_HEAVYPISTOL" },
+		["Ammo"] = 2,
+		["Weapons"] = { "WEAPON_BAT","WEAPON_HAMMER","WEAPON_MACHETE","WEAPON_FLASHLIGHT" },
 		["Model"] = { "asbo","brioso","club","weevil","felon","felon2","jackal","oracle","zion","zion2","buccaneer","virgo",
 		"voodoo","bifta","rancherxl","bjxl","cavalcade","gresley","habanero","rocoto","primo","stratum","pigalle","peyote","manana","streiter" }
 	},
 	["A"] = {
 		["Number"] = 7,
-		["Weapons"] = { "WEAPON_HEAVYPISTOL","WEAPON_SMG" },
+		["Ammo"] = 2,
+		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_GOLFCLUB","WEAPON_POOLCUE","WEAPON_STONE_HATCHET" },
 		["Model"] = { "exemplar","windsor","windsor2","blade","clique","dominator","faction2","gauntlet","moonbeam","nightshade",
 		"sabregt2","tampa","rebel","baller","cavalcade2","fq2","huntley","landstalker","patriot","radi","xls","blista2",
 		"retinue","stingergt","surano","specter","sultan","schwarzer","schafter2","ruston","rapidgt","raiden","ninef",
@@ -1915,20 +1918,23 @@ local DismantleCategory = {
 	},
 	["A+"] = {
 		["Number"] = 8,
-		["Weapons"] = { "WEAPON_APPISTOL","WEAPON_PUMPSHOTGUN" },
+		["Ammo"] = 2,
+		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_GOLFCLUB","WEAPON_POOLCUE","WEAPON_STONE_HATCHET" },
 		["Model"] = { "voltic","sc1","sultanrs","tempesta","nero","nero2","reaper","gp1","infernus","bullet","banshee2","turismo2","retinue",
 		"mamba","infernus2","feltzer3","coquette2","futo2","zr350","tampa2","sugoi","sultan2","schlagen","penumbra","pariah",
 		"paragon","jester3","gb200","elegy","furoregt" }
 	},
 	["S"] = {
 		["Number"] = 9,
-		["Weapons"] = { "WEAPON_ASSAULTSMG" },
+		["Ammo"] = 3,
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" },
 		["Model"] = { "zentorno","xa21","visione","vagner","vacca","turismor","t20","osiris","italigtb","entityxf","cheetah","autarch","sultan3",
 		"cypher","vectre","growler","comet6","jester4","euros","calico","neon","kuruma","issi7","italigto","komoda","elegy2","coquette4" }
 	},
 	["S+"] = {
 		["Number"] = 10,
-		["Weapons"] = { "WEAPON_SPECIALCARBINE" },
+		["Ammo"] = 3,
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" },
 		["Model"] = { "mazdarx72","rangerover","civictyper","subaruimpreza","corvettec7","ferrariitalia","mustang1969","vwtouareg",
 		"mercedesg65","bugattiatlantic","m8competition","audirs6","audir8","silvias15","camaro","mercedesamg63",
 		"dodgechargerrt69","skyliner342","astonmartindbs","panameramansory","lamborghinihuracanlw","lancerevolutionx",
@@ -2023,10 +2029,28 @@ AddEventHandler("inventory:DisPed",function(Experience)
 
 	if Experience then
 		local Category = ClassCategory(Experience)
+		local Spawn = {}
+		local Max = DismantleCategory[Category]["Ammo"]
+
+		repeat
+			local Random = math.random(DismantleCategory[Category]["Number"])
+
+			if not Spawn[Random] then
+				Spawn[Random] = true
+				Max = Max - 1
+			end
+
+			Wait(1)
+		until Max <= 0
 
 		for i = 1,DismantleCategory[Category]["Number"] do
 			local Rand = math.random(#disPeds)
-			local Weapon = math.random(#DismantleCategory[Category]["Weapons"])
+			local Weapon = DismantleCategory[Category]["Weapons"][math.random(#DismantleCategory[Category]["Weapons"])]
+
+			if Spawn[i] then
+				Weapon = "WEAPON_SNSPISTOL"
+			end
+
 			local cX = Coords["x"] + math.random(-25.0,25.0)
 			local cY = Coords["y"] + math.random(-25.0,25.0)
 			local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
@@ -2046,7 +2070,7 @@ AddEventHandler("inventory:DisPed",function(Experience)
 					SetPedCombatAttributes(NetEntity,46,true)
 					SetPedCombatAbility(NetEntity,0)
 					SetPedCombatAttributes(NetEntity,0,true)
-					GiveWeaponToPed(NetEntity,DismantleCategory[Category]["Weapons"][Weapon],-1,false,true)
+					GiveWeaponToPed(NetEntity,Weapon,-1,false,true)
 					SetPedDropsWeaponsWhenDead(NetEntity,false)
 					SetPedCombatRange(NetEntity,2)
 					SetPedFleeAttributes(NetEntity,0,0)

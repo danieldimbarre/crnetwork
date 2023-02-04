@@ -322,7 +322,7 @@ AddEventHandler("paramedic:extractBlood",function(entity)
 
 							if os.time() >= bloodTimers[OtherPassport] then
 								if vRP.TakeItem(Passport,"syringe",3) then
-									vRPC.DowngradeHealth(entity,50)
+									vRPC.DowngradeHealth(entity,10)
 									bloodTimers[OtherPassport] = os.time() + 10800
 									vRP.GenerateItem(Passport,"syringe0"..Identity["blood"],5,true)
 								else

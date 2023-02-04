@@ -200,8 +200,7 @@ local List = {
 		["Description"] = "Ativando o mesmo você assume a responsabilidade com o <b>Lester</b> de desmanchar um veículo.",
 		["Type"] = "Usável",
 		["Weight"] = 0.75,
-		["Economy"] = 200,
-		["Max"] = 1
+		["Economy"] = 200
 	},
 	["repairkit01"] = {
 		["Index"] = "repairkit01",
@@ -363,7 +362,6 @@ local List = {
 		["Name"] = "C4",
 		["Type"] = "Usável",
 		["Weight"] = 2.75,
-		["Max"] = 1,
 		["Economy"] = 625
 	},
 	["geode"] = {
@@ -659,7 +657,7 @@ local List = {
 		["Index"] = "techtrash",
 		["Name"] = "Lixo Eletrônico",
 		["Type"] = "Comum",
-		["Weight"] = 0.75,
+		["Weight"] = 0.15,
 		["Economy"] = 125
 	},
 	["tarp"] = {
@@ -673,14 +671,14 @@ local List = {
 		["Index"] = "sheetmetal",
 		["Name"] = "Chapa de Metal",
 		["Type"] = "Comum",
-		["Weight"] = 0.75,
+		["Weight"] = 0.15,
 		["Economy"] = 50
 	},
 	["roadsigns"] = {
 		["Index"] = "roadsigns",
 		["Name"] = "Placas de Trânsito",
 		["Type"] = "Comum",
-		["Weight"] = 0.65,
+		["Weight"] = 0.15,
 		["Economy"] = 50
 	},
 	["leather"] = {
@@ -764,14 +762,14 @@ local List = {
 		["Index"] = "sulfuric",
 		["Name"] = "Ácido Sulfúrico",
 		["Type"] = "Usável",
-		["Weight"] = 0.55,
+		["Weight"] = 0.15,
 		["Economy"] = 30
 	},
 	["saline"] = {
 		["Index"] = "saline",
 		["Name"] = "Soro Fisiológico",
 		["Type"] = "Comum",
-		["Weight"] = 0.55,
+		["Weight"] = 0.15,
 		["Economy"] = 25
 	},
 	["defibrillator"] = {
@@ -787,7 +785,7 @@ local List = {
 		["Index"] = "alcohol",
 		["Name"] = "Álcool",
 		["Type"] = "Comum",
-		["Weight"] = 0.65,
+		["Weight"] = 0.15,
 		["Economy"] = 40
 	},
 	["notebook"] = {
@@ -1101,8 +1099,8 @@ local List = {
 		["Index"] = "syringe",
 		["Name"] = "Adrenaline",
 		["Type"] = "Comum",
-		["Weight"] = 0.35,
-		["Economy"] = 975
+		["Weight"] = 0.15,
+		["Economy"] = 600
 	},
 	["pouch"] = {
 		["Index"] = "pouch",
@@ -1244,7 +1242,7 @@ local List = {
 		["Index"] = "joint",
 		["Name"] = "Baseado",
 		["Type"] = "Usável",
-		["Weight"] = 0.45
+		["Weight"] = 0.25
 	},
 	["codeine"] = {
 		["Index"] = "codeine",
@@ -1264,7 +1262,7 @@ local List = {
 		["Index"] = "cocaine",
 		["Name"] = "Cocaína",
 		["Type"] = "Usável",
-		["Weight"] = 0.50,
+		["Weight"] = 0.25,
 		["Economy"] = 35
 	},
 	["cokeleaf"] = {
@@ -1284,14 +1282,14 @@ local List = {
 		["Index"] = "meth",
 		["Name"] = "Metanfetamina",
 		["Type"] = "Usável",
-		["Weight"] = 0.50,
+		["Weight"] = 0.25,
 		["Economy"] = 35
 	},
 	["acetone"] = {
 		["Index"] = "acetone",
 		["Name"] = "Acetona",
 		["Type"] = "Comum",
-		["Weight"] = 0.25,
+		["Weight"] = 0.15,
 		["Economy"] = 40
 	},
 	["drugtoy"] = {
@@ -1310,10 +1308,24 @@ local List = {
 	},
 	["premium"] = {
 		["Index"] = "premium",
-		["Name"] = "Premium",
+		["Name"] = "VIP",
 		["Type"] = "Usável",
 		["Weight"] = 0.15,
 		["Economy"] = 100000
+	},
+	["premium2"] = {
+		["Index"] = "premium2",
+		["Name"] = "MVP",
+		["Type"] = "Usável",
+		["Weight"] = 0.15,
+		["Economy"] = 200000
+	},
+	["premium3"] = {
+		["Index"] = "premium3",
+		["Name"] = "Master",
+		["Type"] = "Usável",
+		["Weight"] = 0.15,
+		["Economy"] = 300000
 	},
 	["premiumplate"] = {
 		["Index"] = "platepremium",

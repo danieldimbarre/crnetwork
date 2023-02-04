@@ -24,7 +24,7 @@ function Creative.checkExist()
 			Trucker[Passport] = os.time()
 		end
 
-		if os.time() >= Trucker[Passport] then
+		if os.time() > Trucker[Passport] then
 			return true
 		else
 			local truckerTimers = parseInt(Trucker[Passport] - os.time())
@@ -94,8 +94,26 @@ function Creative.Payment(Service)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.CheckRolepass(source) or vRP.UserPremium(Passport) then
-			Trucker[Passport] = os.time() + 10800
+		if os.time() <= Trucker[Passport] then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
+				vRP.Kick(source,"Banido.")
+
+				local Cooldown = parseInt(Trucker[Passport] - os.time())
+				TriggerEvent("Discord","Hackers","**Trucker**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
+				return
+			end
+		end
+
+		if vRP.UserPremium(Passport) then
+			if vRP.HasGroup(Passport,"Premium",1) then
+				Trucker[Passport] = os.time() + 10800
+			elseif vRP.HasGroup(Passport,"Premium",2) then
+				Trucker[Passport] = os.time() + 7200
+			elseif vRP.HasGroup(Passport,"Premium",3) then
+				Trucker[Passport] = os.time() + 3600
+			end
 		else
 			Trucker[Passport] = os.time() + 21600
 		end

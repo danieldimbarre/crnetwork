@@ -13,8 +13,8 @@ Groups = {
 		["Parent"] = {
 			["Premium"] = true
 		},
-		["Hierarchy"] = { "VIP" },
-		["Salary"] = { 900,400 },
+		["Hierarchy"] = { "VIP","MVP","Master" },
+		["Salary"] = { 900,1200,1500 },
 		["Service"] = {}
 	},
 	["Nitro"] = {

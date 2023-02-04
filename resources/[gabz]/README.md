@@ -38,10 +38,11 @@ Follow these steps to properly update your Gabz resources. Not following these s
     ensure cfx-gabz-ammunation
     ensure cfx-gabz-arcade
     ensure cfx-gabz-aztecas
+    ensure cfx-gabz-bahama
     ensure cfx-gabz-ballas
     ensure cfx-gabz-barber
     ensure cfx-gabz-beanmachine
-    #ensure cfx-gabz-bennys         #*READ BELOW*!
+    ensure cfx-gabz-bennys
     ensure cfx-gabz-binco
     ensure cfx-gabz-bobcat
     ensure cfx-gabz-bowling
@@ -57,9 +58,8 @@ Follow these steps to properly update your Gabz resources. Not following these s
     ensure cfx-gabz-harmony
     ensure cfx-gabz-haters
     ensure cfx-gabz-hayes
-    #ensure cfx-gabz-hub            #*READ BELOW*!
     ensure cfx-gabz-import
-    #ensure cfx-gabz-impound        #*READ BELOW*!
+    ensure cfx-gabz-impound
     ensure cfx-gabz-lamesapd        #*THIS RESOURCE REQUIRES [CFX-GABZ-PDPROPS] TO WORK PROPERLY*
     ensure cfx-gabz-lost
     ensure cfx-gabz-lostsc
@@ -72,10 +72,11 @@ Follow these steps to properly update your Gabz resources. Not following these s
     ensure cfx-gabz-ottos
     ensure cfx-gabz-pacificbank     #*THIS RESOURCE REQUIRES [CFX-GABZ-PDPROPS] TO WORK PROPERLY*
     ensure cfx-gabz-paletobank
+    ensure cfx-gabz-paletocamp
     ensure cfx-gabz-paletoliquor
     ensure cfx-gabz-paletopd        #*THIS RESOURCE REQUIRES [CFX-GABZ-PDPROPS] TO WORK PROPERLY*
     ensure cfx-gabz-parkranger
-    #ensure cfx-gabz-pdm            #*READ BELOW*!
+    ensure cfx-gabz-pdm
     ensure cfx-gabz-pillbox
     ensure cfx-gabz-pinkcage
     ensure cfx-gabz-pizzeria        #*THIS RESOURCE IS MANDATORY IF YOU USE [CFX-GABZ-OTTOS]*
@@ -92,24 +93,11 @@ Follow these steps to properly update your Gabz resources. Not following these s
     ensure cfx-gabz-vagos
     ensure cfx-gabz-vbmarket
     ensure cfx-gabz-vu
+    ensure cfx-gabz-weedcamp
     ensure cfx-gabz-yachts
 
 4. clear your server cache
 5. DONE!
-
--------
-
-#### IMPORTANT!!!
-
-You *CANNOT* use these 4 resources at the same time
-
-1. [cfx-gabz-bennys] contains Benny's as a standalone
-2. [cfx-gabz-impound] contains Impound Lot as a standalone
-3. [cfx-gabz-pdm] contains PDM as a standalone
-4. [cfx-gabz-hub] contains all of the above (benny's + impound + pdm)
-
-` You can only start ONE of these resources. You will have either ONE standalone interior running, or all THREE together (by running cfx-gabz-hub) `
-` Running TWO will lead to crashes and/or collision and lighting issues. `
 
 -------
 

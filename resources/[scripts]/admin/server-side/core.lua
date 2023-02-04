@@ -20,27 +20,28 @@ vSKINSHOP = Tunnel.getInterface("skinshop")
 RegisterCommand("ugroups",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Message[1] then
-			if not vRP.HasGroup(Passport,"Admin") then
+		local OtherPassport = tostring(Passport)
+		local Messages = ""
+
+		if Message[1] and vRP.HasGroup(Passport,"Admin") then
+			OtherPassport = Message[1]
+			Messages = "<b>Passaporte:</b> "..Message[1].."<br>"
+
+			if parseInt(OtherPassport) <= 0 then
 				return
 			end
-
-			Passport = parseInt(Message[1])
 		end
-		
-		if Passport > 0 then
-			local Messages = ""
-			local Groups = vRP.Groups()
-			for Permission,_ in pairs(Groups) do
-				local Data = vRP.DataGroups(Permission)
-				if Data[Passport] then
-					Messages = Messages..Permission.."<br>"
-				end
-			end
 
-			if Messages ~= "" then
-				TriggerClientEvent("Notify",source,"verde",Messages,10000)
+		local Groups = vRP.Groups()
+		for Permission,_ in pairs(Groups) do
+			local Data = vRP.DataGroups(Permission)
+			if Data[OtherPassport] then
+				Messages = Messages..Permission.."<br>"
 			end
+		end
+
+		if Messages ~= "" then
+			TriggerClientEvent("Notify",source,"verde",Messages,10000)
 		end
 	end
 end)
@@ -156,7 +157,7 @@ RegisterCommand("god",function(source,Message)
 							TriggerClientEvent("paramedic:Reset",OtherSource)
 
 							if Text == "" then
-								Text = Text..OtherPlayer
+								Text = sOtherPlayer
 							else
 								Text = Text..", "..OtherPlayer
 							end
@@ -217,7 +218,7 @@ RegisterCommand("goda",function(source,Message)
 						TriggerClientEvent("paramedic:Reset",v)
 
 						if Text == "" then
-							Text = Text..OtherPlayer
+							Text = OtherPlayer
 						else
 							Text = Text..", "..OtherPlayer
 						end
@@ -610,7 +611,7 @@ RegisterCommand("ids",function(source)
 
 	for OtherPlayer,_ in pairs(List) do
 		if Text == "" then
-			Text = Text..OtherPlayer
+			Text = OtherPlayer
 		else
 			Text = Text..", "..OtherPlayer
 		end
@@ -769,7 +770,7 @@ RegisterCommand("itemall",function(source,Message)
 			for OtherPlayer,_ in pairs(List) do
 				async(function()
 					if Text == "" then
-						Text = Text..OtherPlayer
+						Text = OtherPlayer
 					else
 						Text = Text..", "..OtherPlayer
 					end
@@ -910,18 +911,33 @@ RegisterCommand("services",function(source)
 			local Text = ""
 			local Groups = vRP.Groups()
 
-			for Permission,_ in pairs(Groups) do
-				local _,Total = vRP.NumPermission(Permission)
+			if Message[1] then
+				if Groups[Message[1]] then
+					local Data = vRP.DataGroups(Message[1])
 
-				if Text == "" then
-					Text = Text.."<b>"..Permission..":</b> "..Total
-				else
-					Text = Text.."<br><b>"..Permission..":</b> "..Total
+					for Passport,Level in pairs(Data) do
+						if Text == "" then
+							Text = "<b>"..Passport..":</b> "..Level
+						else
+							Text = Text.."<br><b>"..Passport..":</b> "..Level
+						end
+					end
+				end
+			else
+				for Permission,_ in pairs(Groups) do
+					local _,Total = vRP.NumPermission(Permission)
+	
+					if Text == "" then
+						Text = "<b>"..Permission..":</b> "..Total.."/"..#vRP.DataGroups(Permission)
+					else
+						Text = Text.."<br><b>"..Permission..":</b> "..Total.."/"..#vRP.DataGroups(Permission)
+					end
 				end
 			end
 
-			TriggerClientEvent("Notify",source,"azul",Text,15000)
-			TriggerEvent("Discord","Admin","**services**\n\n**Passaporte:** "..Passport,3553599)
+			if Messages ~= "" then
+				TriggerClientEvent("Notify",source,"azul",Text,15000)
+			end
 		end
 	end
 end)
@@ -980,7 +996,7 @@ RegisterCommand("channel",function(source,Message)
 
 		for Sources,_ in pairs(Channel) do
 			if Text == "" then
-				Text = Text..vRP.Passport(Sources)
+				Text = vRP.Passport(Sources)
 			else
 				Text = Text..", "..vRP.Passport(Sources)
 			end
@@ -1121,7 +1137,7 @@ end)
 -- TXADMIN:EVENTS:SERVERSHUTTINGDOWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("txAdmin:events:serverShuttingDown",function(eventData)
-    TriggerEvent("SaveServer")
+    TriggerEvent("SaveServer",false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAIRSBYKEYS
@@ -1143,17 +1159,6 @@ function pairsByKeys(t,f)
     end
     return iter
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- TXADMIN:EVENTS:SCHEDULEDRESTART
------------------------------------------------------------------------------------------------------------------------------------------
--- AddEventHandler("txAdmin:events:scheduledRestart",function(eventData)
--- 	if eventData.secondsRemaining == 60 then
---         CreateThread(function()
---             Wait(30000)
---             TriggerEvent("SaveServer")
---         end)
---     end
--- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------

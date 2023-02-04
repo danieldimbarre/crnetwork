@@ -5,6 +5,7 @@
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button { -webkit-appearance: none; }
 :focus { outline: 0; }
+::selection { background: transparent; color: #00E076; }
 
 body {
 	margin: 0;
@@ -31,6 +32,7 @@ body {
 .main-wrapper {
 	width: 300px;
 	padding: 20px 40px 40px;
+	border-radius: 5px;
 	background: rgba(15,15,15,.75);
 }
 
@@ -51,19 +53,21 @@ body {
 }
 
 .body input {
-	color: #333;
-	border: none;
+	color: #898989;
+	border: 1px solid #000;
 	padding: 10px;
-	background: #ccc;
+	border-radius: 5px;
+	background: rgba(10,10,10,.75);
 }
 
 .body textarea {
-	color: #333;
-	border: none;
+	color: #898989;
+	border: 1px solid #00E076;
 	resize: none;
 	padding: 10px;
 	height: 100px;
-	background: #fff;
+	border-radius: 5px;
+	background: rgba(10,10,10,.75);
 }
 
 .footer {
@@ -76,10 +80,12 @@ body {
 
 .btn {
 	border: 0;
-	color: #715611;
+	color: #ccc;
 	width: 230px;
 	padding: 20px 0;
 	margin-top: 10px;
 	letter-spacing: 1px;
+	border-radius: 5px;
+	text-shadow: 1px 1px #000;
 	background: #00e076;
 }

@@ -338,9 +338,8 @@ local shops = {
 		["List"] = {
 			-- ["gemstone"] = 1,
 			["premium"] = 100,
-			-- ["premium01"] = 100,
-			-- ["premium02"] = 150,
-			-- ["premium03"] = 200,
+			["premium02"] = 200,
+			-- ["premium03"] = 300,
 			-- ["rolepass"] = 100,
 			["premiumplate"] = 50,
 			["newchars"] = 75,
@@ -792,9 +791,8 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 
 										if shops[Type]["shop"] then
 											local Split = splitString(Type,"-")
-											if Split[2] ~= nil then
-												vRP.DirectChest(Split[1],"100",(shops[Type]["List"][Item] * Amount) * 0.05)
-											end
+											
+											vRP.DirectChest(Split[1],"500",(shops[Type]["List"][Item] * Amount) * 0.05)
 										end
 									end
 
@@ -860,7 +858,13 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 										end
 
 										if vRP.UserPremium(Passport) then
-											itemPrice = itemPrice + (itemPrice * 0.1)
+											if vRP.HasGroup(Passport,"Premium",1) then
+												itemPrice = itemPrice + (itemPrice * 0.1)
+											elseif vRP.HasGroup(Passport,"Premium",2) then
+												itemPrice = itemPrice + (itemPrice * 0.15)
+											elseif vRP.HasGroup(Passport,"Premium",3) then
+												itemPrice = itemPrice + (itemPrice * 0.2)
+											end
 										end
 
 										vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)

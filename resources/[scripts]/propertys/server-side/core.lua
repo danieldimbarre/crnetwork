@@ -681,6 +681,17 @@ AddEventHandler("propertys:CallPolice",function(Name)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:CANCEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("propertys:Cancel")
+AddEventHandler("propertys:Cancel",function(source,Passport)
+	if Active[Passport] then
+		Active[Passport] = nil
+		Player(source)["state"]["Buttons"] = false
+		TriggerClientEvent("Progress",source,"Cancelando",1000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- HOMESTHEFT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function HomesTheft(source)
@@ -718,7 +729,7 @@ function EnterHomes(source,Passport,Name)
 		Interior = Consult[1]["Interior"]
 	end
 
-	TriggerClientEvent("propertys:Enter",source,Name,Interior,Name)
+	TriggerClientEvent("propertys:Enter",source,Name,Interior,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESETTHEFT

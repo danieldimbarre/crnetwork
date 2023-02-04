@@ -34,7 +34,7 @@ $(document).ready(function(){
 				buttons.push(b);
 			}
 		} else if(item["addmenu"] == true){
-			var aa = (`<button data-menu="`+item["menuid"]+`" class="b btn"><div class="title">`+item["title"]+`</div><div class="description" >`+item["description"]+`</div><i class="fas fa-chevron-right" style="float:right;margin-top:-10%"></i></button>`)
+			var aa = (`<button data-menu="`+item["menuid"]+`" class="b btn"><div class="title">`+item["title"]+`</div><div class="description" >`+item["description"]+`</div><i class="fa-solid fa-chevron-right" style="float:right;margin-top:-10%"></i></button>`)
 			$(".Container").append(aa);
 			submenus.push(aa);
 		}

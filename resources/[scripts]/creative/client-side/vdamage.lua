@@ -163,9 +163,9 @@ CreateThread(function()
 					Body["New"] = 100.0
 				end
 
-				if Engine["Current"] < 100.0 then
-					Engine["New"] = 100.0
-				end
+				-- if Engine["Current"] < 100.0 then
+				-- 	Engine["New"] = 100.0
+				-- end
 
 				if Engine["New"] ~= Engine["Current"] then
 					SetVehicleEngineHealth(Vehicle,Engine["New"])

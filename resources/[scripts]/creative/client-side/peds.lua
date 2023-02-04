@@ -1141,36 +1141,6 @@ local List = {
 		Coords = { 121.28,-2468.84,6.1,56.7}, 
 		Model = "s_m_y_dealer_01",
 		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Contruct
-		Distance = 30,
-		Coords = { 1281.42,-230.62,98.17,48.19 },
-		Model = "s_m_y_construct_01",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Contruct
-		Distance = 30,
-		Coords = { 1277.48,-236.43,97.81,311.82 },
-		Model = "s_m_y_construct_02",
-		anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},
-	{ -- Contruct
-		Distance = 30,
-		Coords = { 1275.22,-224.57,98.59,87.88 },
-		Model = "s_m_m_gardener_01",
-		anim = { "amb@prop_human_movie_bulb@base","base" }
-	},
-	{ -- Contruct
-		Distance = 30,
-		Coords = { 1281.01,-215.52,99.4,93.55 },
-		Model = "s_m_y_garbage",
-		anim = { "anim@amb@clubhouse@bar@bartender@","base_bartender" }
-	},
-	{ -- Contruct
-		Distance = 30,
-		Coords = { 1279.96,-213.85,99.63,187.09 },
-		Model = "s_m_y_construct_02",
-		anim = { "missfbi3_camcrew","final_loop_guy" }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

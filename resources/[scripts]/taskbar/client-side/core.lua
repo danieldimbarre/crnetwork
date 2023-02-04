@@ -56,7 +56,7 @@ end
 -- TASKTABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskTable()
-	if taskBar(2000) then
+	if taskBar(12000) then
 		return true
 	end
 
@@ -66,7 +66,7 @@ end
 -- TASKONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskOne()
-	if taskBar(1500) then
+	if taskBar(11500) then
 		return true
 	end
 
@@ -76,8 +76,8 @@ end
 -- TASKTWO
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskTwo()
-	if taskBar(2000) then
-		if taskBar(1500) then
+	if taskBar(12000) then
+		if taskBar(11500) then
 			return true
 		end
 	end
@@ -88,9 +88,9 @@ end
 -- TASKTHREE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskThree()
-	if taskBar(2500) then
-		if taskBar(2000) then
-			if taskBar(1500) then
+	if taskBar(12500) then
+		if taskBar(12000) then
+			if taskBar(11500) then
 				return true
 			end
 		end
@@ -102,10 +102,10 @@ end
 -- TASKMECHANIC
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskMechanic()
-	if taskBar(7500) then
-		if taskBar(5000) then
-			if taskBar(2500) then
-				if taskBar(2000) then
+	if taskBar(17500) then
+		if taskBar(15000) then
+			if taskBar(12500) then
+				if taskBar(12000) then
 					return true
 				end
 			end
@@ -118,8 +118,8 @@ end
 -- TASKTYRE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskTyre()
-	if taskBar(7500) then
-		if taskBar(5000) then
+	if taskBar(17500) then
+		if taskBar(15000) then
 			return true
 		end
 	end
@@ -130,8 +130,8 @@ end
 -- TASKFISHING
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskFishing()
-	if taskBar(20000) then
-		if taskBar(10000) then
+	if taskBar(12000) then
+		if taskBar(11000) then
 			return true
 		end
 	end
@@ -142,9 +142,9 @@ end
 -- TASKTHREE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskLockpick()
-	if taskBar(2500) then
-		if taskBar(2000) then
-			if taskBar(1500) then
+	if taskBar(12500) then
+		if taskBar(12000) then
+			if taskBar(11500) then
 				return true
 			end
 		end
@@ -156,10 +156,10 @@ end
 -- STEALTRUNK
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.stealTrunk()
-	if taskBar(4500) then
-		if taskBar(3500) then
-			if taskBar(2500) then
-				if taskBar(1500) then
+	if taskBar(14500) then
+		if taskBar(13500) then
+			if taskBar(12500) then
+				if taskBar(11500) then
 					return true
 				end
 			end
@@ -172,10 +172,10 @@ end
 -- WEEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Weeds()
-	if taskBar(1000) then
-		if taskBar(750) then
-			if taskBar(500) then
-				if taskBar(250) then
+	if taskBar(11000) then
+		if taskBar(10750) then
+			if taskBar(10500) then
+				if taskBar(10250) then
 					return true
 				end
 			end
@@ -188,9 +188,9 @@ end
 -- TASKTHREE
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("taskThree",function()
-	if taskBar(2500) then
-		if taskBar(2000) then
-			if taskBar(1500) then
+	if taskBar(12500) then
+		if taskBar(12000) then
+			if taskBar(11500) then
 				return true
 			end
 		end
@@ -202,10 +202,10 @@ end)
 -- TASKDOORS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskDoors()
-	if taskBar(1000) then
-		if taskBar(750) then
-			if taskBar(500) then
-				if taskBar(250) then
+	if taskBar(11000) then
+		if taskBar(10750) then
+			if taskBar(10500) then
+				if taskBar(10250) then
 					return true
 				end
 			end
@@ -218,7 +218,7 @@ end
 -- TASKHANDCUFF
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.taskHandcuff()
-	if taskBar(1) then
+	if taskBar(7000) then
 		return true
 	end
 
@@ -228,18 +228,44 @@ end
 -- UPGRADEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.UpgradeVehicle()
-	if taskBar(2000) then
-		if taskBar(1750) then
-			if taskBar(1500) then
-				if taskBar(1250) then
-					if taskBar(1000) then
-						if taskBar(750) then
-							if taskBar(500) then
-								if taskBar(250) then
+	if taskBar(12000) then
+		if taskBar(11750) then
+			if taskBar(11500) then
+				if taskBar(11250) then
+					if taskBar(11000) then
+						if taskBar(10750) then
+							if taskBar(10500) then
+								if taskBar(10250) then
 									return true
 								end
 							end
 						end
+					end
+				end
+			end
+		end
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TASKROBBERYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.taskRobberys(Register)
+	if taskBar(12000) then
+		if taskBar(11750) then
+			if taskBar(11500) then
+				if taskBar(11250) then
+					if Register ~= "register" and taskBar(11000) then
+						if taskBar(10750) then
+							if taskBar(10500) then
+								if taskBar(10250) then
+									return true
+								end
+							end
+						end
+					else
+						return true
 					end
 				end
 			end

@@ -2039,6 +2039,8 @@ AddEventHandler("inventory:DisPed",function(Experience)
 				Spawn[Random] = true
 				Max = Max - 1
 			end
+
+			Wait(1)
 		until Max <= 0
 
 		for i = 1,DismantleCategory[Category]["Number"] do

@@ -117,27 +117,37 @@ local bennysLocations = {
 		permission = "Paramedic",
 		service = true
 	},
-	["Mechanic01"] = {
+	["Bennys01"] = {
 		pos = vector3(-195.48,-1326.96,31.29),
 		heading = 85.04,
 		permission = "Mechanic"
 	},
-	["Mechanic02"] = {
+	["Bennys02"] = {
 		pos = vector3(-208.65,-1334.61,31.29),
 		heading = 0.0,
 		permission = "Mechanic"
 	},
-	["Mechanic03"] = {
+	["Bennys03"] = {
 		pos = vector3(-214.29,-1335.05,31.32),
 		heading = 0.0,
 		permission = "Mechanic"
 	},
-	["Mechanic04"] = {
+	["Bennys04"] = {
+		pos = vector3(-201.81,-1318.72,31.29),
+		heading = 171.77,
+		permission = "Mechanic"
+	},
+	["Bennys05"] = {
+		pos = vector3(-220.97,-1318.7,31.29),
+		heading = 199.89,
+		permission = "Mechanic"
+	},
+	["Hayes01"] = {
 		pos = vector3(-1423.8,-449.8,35.91),
 		heading = 31.19,
 		permission = "Mechanic"
 	},
-	["Mechanic05"] = {
+	["Hayes02"] = {
 		pos = vector3(-1416.89,-446.86,35.91),
 		heading = 31.19,
 		permission = "Mechanic"

@@ -10,7 +10,6 @@ vSERVER = Tunnel.getInterface("warehouse")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Warehouse = ""
-local Markers = {}
 local Blips = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LIST
@@ -200,7 +199,7 @@ AddEventHandler("warehouse:Blips",function()
 			Blips[Name] = AddBlipForCoord(v[1],v[2],v[3])
 			SetBlipSprite(Blips[Name],50)
 			SetBlipAsShortRange(Blips[Name],true)
-			SetBlipColour(Blips[Name],Markers[Name] and 5)
+			SetBlipColour(Blips[Name],"Armazém")
 			SetBlipScale(Blips[Name],0.4)
 		end
 

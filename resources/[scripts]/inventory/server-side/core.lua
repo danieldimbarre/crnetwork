@@ -59,7 +59,7 @@ DrugsList = {
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["meth"] = {
-		Price = { ["Min"] = 300, ["Max"] = 315 },
+		Price = { ["Min"] = 500, ["Max"] = 515 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["joint"] = {

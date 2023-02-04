@@ -2030,10 +2030,10 @@ AddEventHandler("inventory:DisPed",function(Experience)
 	if Experience then
 		local Category = ClassCategory(Experience)
 		local Spawn = {}
-		local Max = DismantleCategory[Category]["Number"]
+		local Max = DismantleCategory[Category]["Ammo"]
 
 		repeat
-			local Random = math.random(DismantleCategory[Category]["Ammo"])
+			local Random = math.random(DismantleCategory[Category]["Number"])
 
 			if not Spawn[Random] then
 				Spawn[Random] = true

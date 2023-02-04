@@ -2033,7 +2033,7 @@ AddEventHandler("inventory:DisPed",function(Experience)
 		local Max = DismantleCategory[Category]["Number"]
 
 		repeat
-			local Random = parseInt(math.random(DismantleCategory[Category]["Number"]))
+			local Random = math.random(DismantleCategory[Category]["Ammo"])
 
 			if not Spawn[Random] then
 				Max = Max - 1

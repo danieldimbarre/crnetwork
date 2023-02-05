@@ -568,7 +568,7 @@
     <Item>
       <modelName>B412</modelName>
       <txdName>B412</txdName>
-      <handlingId>SVOLITO</handlingId>
+      <handlingId>B412</handlingId>
       <gameName>B412</gameName>
       <vehicleMakeName>BELL</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
@@ -1626,8 +1626,8 @@
     <Item>
       <modelName>maverick2</modelName>
       <txdName>maverick2</txdName>
-      <handlingId>POLMAV</handlingId>
-      <gameName>MAVERICK</gameName>
+      <handlingId>maverick2</handlingId>
+      <gameName>MAVERICK2</gameName>
       <vehicleMakeName>maverick2</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>

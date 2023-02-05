@@ -305,7 +305,7 @@
       </SubHandlingData>
     </Item>
     <Item type="CHandlingData">
-      <handlingName>SVOLITO</handlingName>
+      <handlingName>B412</handlingName>
       <fMass value="6500.0"/>
       <fInitialDragCoeff value="8.5"/>
       <fPercentSubmerged value="75.0"/>
@@ -932,7 +932,7 @@
       </SubHandlingData>
     </Item>
     <Item type="CHandlingData">
-      <handlingName>polmav</handlingName>
+      <handlingName>maverick2</handlingName>
       <fMass value="6500.0"/>
       <fInitialDragCoeff value="8.5"/>
       <fPercentSubmerged value="75.0"/>

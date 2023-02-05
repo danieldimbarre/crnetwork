@@ -451,7 +451,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected/>
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>ambulance</audioNameHash>
+      <audioNameHash>cvpiv8</audioNameHash>
       <layout>LAYOUT_VAN_BOXVILLE</layout>
       <coverBoundOffsets>SPEEDO_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -691,7 +691,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected/>
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>CONTENDER</audioNameHash>
+      <audioNameHash>fordvoodoo</audioNameHash>
       <layout>LAYOUT_BISON</layout>
       <coverBoundOffsets>BISON_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -1525,7 +1525,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected/>
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>daemon</audioNameHash>
+      <audioNameHash>bmws1krreng</audioNameHash>
       <layout>LAYOUT_BIKE_DIRT</layout>
       <coverBoundOffsets>BIKE_COVER_OFFSET_INFO</coverBoundOffsets>
       <POVTuningInfo>PCJ_POV_TUNING</POVTuningInfo>

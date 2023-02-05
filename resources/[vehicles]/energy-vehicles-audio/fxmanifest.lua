@@ -35,6 +35,11 @@ data_file "AUDIO_GAMEDATA" "audioconfig/aventadorv12_game.dat"
 data_file "AUDIO_SOUNDDATA" "audioconfig/aventadorv12_sounds.dat"
 data_file "AUDIO_WAVEPACK" "sfx/dlc_aventadorv12"
 
+data_file "AUDIO_SYNTHDATA" "audioconfig/bmws1krreng_amp.dat"
+data_file "AUDIO_GAMEDATA" "audioconfig/bmws1krreng_game.dat"
+data_file "AUDIO_SOUNDDATA" "audioconfig/bmws1krreng_sounds.dat"
+data_file "AUDIO_WAVEPACK" "sfx/dlc_bmws1krreng"
+
 data_file "AUDIO_SYNTHDATA" "audioconfig/bnr34ffeng_amp.dat"
 data_file "AUDIO_GAMEDATA" "audioconfig/bnr34ffeng_game.dat"
 data_file "AUDIO_SOUNDDATA" "audioconfig/bnr34ffeng_sounds.dat"

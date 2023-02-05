@@ -14,6 +14,21 @@ vCLIENT = Tunnel.getInterface("player")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SKIN
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("skin",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] and Message[2] then
+		if vRP.HasService(Passport,"Paramedic") then
+			local ClosestPed = vRP.Source(Message[1])
+			if ClosestPed then
+				vRPC.Skin(ClosestPed,Message[2])
+				vRP.SkinCharacter(parseInt(Message[1]),Message[2])
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- DUITEXTURES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local DuiTextures = {

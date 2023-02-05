@@ -21,13 +21,11 @@ SURVIVAL = Tunnel.getInterface("survival")
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("smartphone:service_request",function(Data)
 	local Service = vRP.NumPermission(Data["service"]["permission"])
-	local Passport = vRP.Passport(Data["source"])
-	local Identity = vRP.Identity(Passport)
 	local Answered = false
 
 	for Passport,Sources in pairs(Service) do
 		async(function()
-			TriggerClientEvent("NotifyPush",Sources,{ code = "QTH", phone = Identity["phone"], title = "Chamado", name = Data["name"], text = Data["content"], x = Data["location"][1], y = Data["location"][2], z = Data["location"][3], time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
+			TriggerClientEvent("NotifyPush",Sources,{ code = "QTH", phone = Data["phone"], title = "Chamado", name = Data["name"], text = Data["content"], x = Data["location"][1], y = Data["location"][2], z = Data["location"][3], time = "Recebido às "..os.date("%H:%M"), blipColor = 2 })
 
 			if vRP.Request(Sources,"Aceitar o chamado de <b>"..Data["name"].."?","Sim","Não") then
 				if not Answered then
@@ -41,7 +39,7 @@ AddEventHandler("smartphone:service_request",function(Data)
 		end)
 	end
 
-	SetTimeout(30000,function()
+	SetTimeout(180000,function()
 		if not Answered then
 			Answered = true
 			TriggerClientEvent("smartphone:pusher",Data["source"],"SERVICE_REJECT",{})

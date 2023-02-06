@@ -2,7 +2,9 @@ $(document).ready(() => {
     updateSlider();
 
     $("#defaultbtn").click(function(){
-        exports["vstancer"].ResetWheelPreset(GetVehiclePedIsUsing(PlayerPedId()));
+        $.post("http://notebook/reset",JSON.stringify({}),(data) => {
+        
+        });
 
         setSliderValues({
             boost: 0.25,

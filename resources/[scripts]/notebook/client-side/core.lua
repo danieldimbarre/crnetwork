@@ -57,6 +57,15 @@ RegisterNUICallback("save",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- RESET
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("reset",function(Data,Callback)
+	exports["vstancer"]:ResetWheelPreset(GetVehiclePedIsUsing(PlayerPedId()))
+
+	local Reset = exports["vstancer"]:GetWheelPreset(vehicle)
+	Callback({ trackf = Reset[1], trackr = Reset[3], camberf = Reset[2], camberr = Reset[4] })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- NOTEBOOK:OPENSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("notebook:openSystem")

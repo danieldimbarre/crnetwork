@@ -30,7 +30,6 @@ function vehicleData(Vehicle)
 	exports["vstancer"]:SetRearTrackWidth(Vehicle,trackr * -1)
 	exports["vstancer"]:SetFrontCamber(Vehicle,camberf * -1)
 	exports["vstancer"]:SetRearCamber(Vehicle,camberr * -1)
-end
 
 	return vehBoost,Reset
 end

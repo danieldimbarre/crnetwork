@@ -1048,7 +1048,7 @@ end)
 -- PICKUPITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("pickupItem",function(Data,Callback)
-	vSERVER.Pickup(Data["id"],Data["amount"],Data["target"])
+	vSERVER.Pickup(Data["id"],Data["amount"],Data["target"],Drops[Data["id"]]["Coords"])
 
 	Callback("Ok")
 end)

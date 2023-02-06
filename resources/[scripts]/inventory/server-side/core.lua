@@ -643,7 +643,7 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
 
-				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Dropou:** "..Amount.."x "..itemName(Item),9317187)
+				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Dropou:** "..Amount.."x "..itemName(Item).."\n**Cds:** ("..x..","..y..","..z..")",9317187)
 			end
 		else
 			TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -653,7 +653,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PICKUP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Pickup(Number,Amount,Slot)
+function Creative.Pickup(Number,Amount,Slot,Coords)
 	local source = source
 	local Slot = tostring(Slot)
 	local Number = tostring(Number)
@@ -715,6 +715,8 @@ function Creative.Pickup(Number,Amount,Slot)
 							TriggerClientEvent("inventory:Update",source,"Backpack")
 							Player(source)["state"]["Buttons"] = false
 							Player(source)["state"]["Cancel"] = false
+
+							TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Pegou:** "..Amount.."x "..itemName(Drops[Number]["key"]).."\n**Cds:** ("..Coords[1]..","..Coords[2]..","..Coords[3]..")",3042892)
 						else
 							TriggerClientEvent("inventory:Update",source,"Backpack")
 						end
@@ -787,7 +789,7 @@ function Creative.SendItem(Slot,Amount)
 						Wait(100)
 					until not Active[Passport]
 
-					TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Enviou:** "..Amount.."x "..itemName(Item).."\n**Para:** "..OtherPassport,3042892)
+					TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Enviou:** "..Amount.."x "..itemName(Item).."\n**Para:** "..OtherPassport,10181046)
 				else
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 				end

@@ -60,10 +60,11 @@ end)
 -- RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("reset",function(Data,Callback)
-	exports["vstancer"]:ResetWheelPreset(GetVehiclePedIsUsing(PlayerPedId()))
+	local Vehicle = GetVehiclePedIsUsing(PlayerPedId())
+	exports["vstancer"]:ResetWheelPreset(Vehicle)
 
-	local Reset = exports["vstancer"]:GetWheelPreset(vehicle)
-	Callback({ trackf = Reset[1], trackr = Reset[3], camberf = Reset[2], camberr = Reset[4] })
+	local Reset = exports["vstancer"]:GetWheelPreset(Vehicle)
+	Callback({ trackf = Reset[1] * -1, trackr = Reset[3] * -1, camberf = Reset[2], camberr = Reset[4] })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NOTEBOOK:OPENSYSTEM

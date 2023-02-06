@@ -19,8 +19,8 @@ vPOLICE = Tunnel.getInterface("police")
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skin",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and Message[1] and Message[2] then
-		if vRP.HasService(Passport,"Paramedic") then
+	if Passport and Message[2] then
+		if vRP.HasService(Passport,"Paramedic") or vRP.HasGroup(Passport,"Admin",2) then
 			local ClosestPed = vRP.Source(Message[1])
 			if ClosestPed then
 				vRPC.Skin(ClosestPed,Message[2])

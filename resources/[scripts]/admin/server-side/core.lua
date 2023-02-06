@@ -157,7 +157,7 @@ RegisterCommand("god",function(source,Message)
 							TriggerClientEvent("paramedic:Reset",OtherSource)
 
 							if Text == "" then
-								Text = sOtherPlayer
+								Text = OtherPlayer
 							else
 								Text = Text..", "..OtherPlayer
 							end
@@ -294,7 +294,7 @@ RegisterCommand("nc",function(source)
 
 			vRPC.noClip(source)
 
-			TriggerEvent("Discord","Admin","**blips**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Noclip[Passport],3553599)
+			TriggerEvent("Discord","Admin","**nc**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Noclip[Passport],3553599)
 		end
 	end
 end)

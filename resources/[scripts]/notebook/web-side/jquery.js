@@ -17,8 +17,8 @@ $(document).ready(() => {
                 clutchdown: 6.0,
                 trackf: data["trackf"],
                 trackr: data["trackr"],
-                camberf: data["camberf"],
-                camberr: data["camberr"]
+                camberf: 0.0,
+                camberr: 0.0
             });
         });
     });

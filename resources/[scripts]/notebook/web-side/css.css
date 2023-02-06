@@ -87,15 +87,15 @@ body:focus,
 .display-limiter .tablet-container section .values-field .field-area .text {
     display: flex;
     justify-content: space-between;
-}
-
-.display-limiter .tablet-container section .values-field .field-area .text label,
-.display-limiter .tablet-container section .values-field .field-area .text p {
     font-weight: 500;
     color: #ccc;
     font-size: 12px;
     padding: 18px 0px 3px;
     letter-spacing: 2px;
+}
+
+.display-limiter .tablet-container section .values-field .field-area .text p {
+    color: #898989;
 }
 
 .display-limiter .tablet-container section .button-field {
@@ -112,11 +112,15 @@ body:focus,
     border: 0px;
     color: #ccc;
     text-shadow: 1px 1px #000;
-    background-color: #00e076;
+    background-color: #00592F;
     cursor: pointer;
     width: 100%;
     padding: 15px 0;
     border-radius: 5px;
+}
+
+.display-limiter .tablet-container section .button-field button:hover {
+    background-color: #00e076;
 }
 
 .display-limiter .tablet-container section .button-field button:last-child {
@@ -145,12 +149,16 @@ input[type=range].styled-slider:focus {
 input[type=range].styled-slider::-webkit-slider-thumb {
     width: 8px;
     height: 10px;
-    background: #00e076;
+    background: #00C96A;
     border: none;
     -webkit-box-shadow: none;
     box-shadow: none;
     margin-top: calc(6px * 0.5 - 10px * 0.5);
     -webkit-appearance: none;
+}
+
+input[type=range].styled-slider::-webkit-slider-thumb:hover {
+    background: #00E076;
 }
 
 input[type=range].styled-slider::-webkit-slider-runnable-track {
@@ -162,7 +170,7 @@ input[type=range].styled-slider::-webkit-slider-runnable-track {
 }
 
 input[type=range].styled-slider.slider-progress::-webkit-slider-runnable-track {
-    background: rgba(75,75,75,.75);
+    background: rgba(0,89,47,.75);
 }
 
 input[type=range].styled-slider::-moz-range-thumb {

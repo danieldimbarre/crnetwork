@@ -3,10 +3,7 @@ local Cooldown = GetGameTimer()
 -- VEHICLEDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vehicleData(Vehicle)
-	local trackf = exports["vstancer"]:GetFrontTrackWidth(Vehicle)[1] * -1
-	local trackr = exports["vstancer"]:GetRearTrackWidth(Vehicle)[1] * -1
-	local camberf = exports["vstancer"]:GetFrontCamber(Vehicle)[1] * -1
-	local camberr = exports["vstancer"]:GetRearCamber(Vehicle)[1] * -1
+	local Wheels = exports["vstancer"]:GetWheelPreset(Vehicle)
 
 	local vehBoost = {
 		boost = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fInitialDriveForce"),
@@ -15,24 +12,24 @@ function vehicleData(Vehicle)
 		trafront = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fTractionBiasFront"),
 		clutchup = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleUpShift"),
 		clutchdown = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift"),
-		trackf = trackf,
-		trackr = trackr,
-		camberf = camberf,
-		camberr = camberr
+		trackf = mathLength(Wheels[1] * -1),
+		camberf = mathLength(Wheels[2] * -1),
+		trackr = mathLength(Wheels[3] * -1),
+		camberr = mathLength(Wheels[4] * -1)
 	}
 
-	exports["vstancer"]:ResetWheelPreset(Vehicle)
-	local Reset = {
-		trackfReset = exports["vstancer"]:GetFrontTrackWidth(Vehicle)[1] * -1,
-		trackrReset = exports["vstancer"]:GetRearTrackWidth(Vehicle)[1] * -1,
-	}
+	if exports["vstancer"]:ResetWheelPreset(Vehicle) then
+		local Preset = exports["vstancer"]:GetWheelPreset(Vehicle)
 
-	exports["vstancer"]:SetFrontTrackWidth(Vehicle,trackf * -1)
-	exports["vstancer"]:SetRearTrackWidth(Vehicle,trackr * -1)
-	exports["vstancer"]:SetFrontCamber(Vehicle,camberf * -1)
-	exports["vstancer"]:SetRearCamber(Vehicle,camberr * -1)
+		local Reset = {
+			trackfReset = mathLength(Preset[1] * -1),
+			trackrReset = mathLength(Preset[3] * -1),
+		}
 
-	return { vehBoost,Reset }
+		exports["vstancer"]:SetWheelPreset(Vehicle,Wheels[1] * -1,Wheels[2] * -1,Wheels[3] * -1,Wheels[4] * -1)
+
+		return { vehBoost,Reset }
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVEDATA
@@ -45,10 +42,7 @@ function saveData(Vehicle,data)
 	SetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleUpShift",data["clutchup"] * 1.0)
 	SetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift",data["clutchdown"] * 1.0)
 
-	exports["vstancer"]:SetFrontTrackWidth(Vehicle,data["trackf"] * -1)
-	exports["vstancer"]:SetRearTrackWidth(Vehicle,data["trackr"] * -1)
-	exports["vstancer"]:SetFrontCamber(Vehicle,data["camberf"] * -1)
-	exports["vstancer"]:SetRearCamber(Vehicle,data["camberr"] * -1)
+	exports["vstancer"]:SetWheelPreset(Vehicle,data["trackf"] * -1,data["camberf"] * -1,data["trackr"] * -1,data["camberr"] * -1)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLEMENU
@@ -88,7 +82,7 @@ RegisterNUICallback("reset",function(Data,Callback)
 		exports["vstancer"]:ResetWheelPreset(Vehicle)
 
 		local Reset = exports["vstancer"]:GetWheelPreset(Vehicle)
-		Callback({ trackf = Reset[1] * -1, trackr = Reset[3] * -1, camberf = Reset[2], camberr = Reset[4] })
+		Callback({ trackf = mathLength(Reset[1] * -1), trackr = mathLength(Reset[3] * -1) })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

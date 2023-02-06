@@ -21,7 +21,7 @@ RegisterCommand("fuel",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
-			local Vehicle,Network,Plate = vRPC.VehicleList(source,10)
+			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,10)
 			if Vehicle then
 				local Players = vRPC.Players(source)
 
@@ -30,6 +30,8 @@ RegisterCommand("fuel",function(source)
 						TriggerClientEvent("engine:syncFuel",v,Plate,100,Network)
 					end)
 				end
+
+				TriggerEvent("Discord","Admin","**fuel**\n\n**Passaporte:** "..Passport.."\n**Para:** "..VehicleName(vehName).."\n**Placa:** "..Plate,3553599)
 			end
 		end
 	end

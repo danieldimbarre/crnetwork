@@ -20,11 +20,13 @@ vPOLICE = Tunnel.getInterface("police")
 RegisterCommand("skin",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[2] then
-		if vRP.HasService(Passport,"Paramedic") or vRP.HasGroup(Passport,"Admin",2) then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			local ClosestPed = vRP.Source(Message[1])
 			if ClosestPed then
 				vRPC.Skin(ClosestPed,Message[2])
 				vRP.SkinCharacter(parseInt(Message[1]),Message[2])
+
+				TriggerEvent("Discord","Admin","**skin**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1].."\n**Skin:** "..Message[2],3553599)
 			end
 		end
 	end

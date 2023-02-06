@@ -791,9 +791,9 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["techtrash"] = 10,
-					["roadsigns"] = 6,
-					["sheetmetal"] = 6
+					["techtrash"] = 50,
+					["roadsigns"] = 60,
+					["sheetmetal"] = 60
 				}
 			},
 			["attachsMagazine"] = {

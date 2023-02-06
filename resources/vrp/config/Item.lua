@@ -547,7 +547,7 @@ local List = {
 		["Name"] = "Silenciador",
 		["Type"] = "Usável",
 		["Weight"] = 1.15,
-		["Economy"] = 1750
+		["Economy"] = 12500
 	},
 	["attachsMagazine"] = {
 		["Index"] = "attachsMagazine",

@@ -1,4 +1,4 @@
-local Cooldown = GetGameTime()
+local Cooldown = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -62,8 +62,8 @@ end)
 -- SAVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("save",function(Data,Callback)
-	if Cooldown <= GetGameTime() then
-		Cooldown = GetGameTime() + 2000
+	if Cooldown <= GetGameTimer() then
+		Cooldown = GetGameTimer() + 2000
 
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
@@ -81,8 +81,8 @@ end)
 -- RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("reset",function(Data,Callback)
-	if Cooldown <= GetGameTime() then
-		Cooldown = GetGameTime() + 2000
+	if Cooldown <= GetGameTimer() then
+		Cooldown = GetGameTimer() + 2000
 
 		local Vehicle = GetVehiclePedIsUsing(PlayerPedId())
 		exports["vstancer"]:ResetWheelPreset(Vehicle)

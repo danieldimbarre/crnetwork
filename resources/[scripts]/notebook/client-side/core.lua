@@ -8,7 +8,11 @@ function vehicleData(Vehicle)
 		lowspeed = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fLowSpeedTractionLossMult"),
 		trafront = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fTractionBiasFront"),
 		clutchup = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleUpShift"),
-		clutchdown = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift")
+		clutchdown = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift"),
+		trackf = exports["vstancer"]:GetFrontTrackWidth(vehicle),
+		trackr = exports["vstancer"]:GetRearTrackWidth(vehicle),
+		camberf = exports["vstancer"]:GetFrontCamber(vehicle),
+		camberr = exports["vstancer"]:GetRearCamber(vehicle)
 	}
 
 	return vehBoost
@@ -23,6 +27,11 @@ function saveData(Vehicle,data)
 	SetVehicleHandlingFloat(Vehicle,"CHandlingData","fTractionBiasFront",data["trafront"] * 1.0)
 	SetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleUpShift",data["clutchup"] * 1.0)
 	SetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift",data["clutchdown"] * 1.0)
+
+	exports["vstancer"]:SetFrontTrackWidth(vehicle,data["trackf"])
+	exports["vstancer"]:SetRearTrackWidth(vehicle,data["trackr"])
+	exports["vstancer"]:SetFrontCamber(vehicle,data["camberf"])
+	exports["vstancer"]:SetRearCamber(vehicle,data["camberr"])
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLEMENU
@@ -57,6 +66,7 @@ AddEventHandler("notebook:openSystem",function()
 		local vehicle = GetVehiclePedIsUsing(Ped)
 		if GetPedInVehicleSeat(vehicle,-1) == Ped then
 			SetNuiFocus(true,true)
+
 			SendNUIMessage({ type = "togglemenu", state = true, data = vehicleData(vehicle) })
 		end
 	end

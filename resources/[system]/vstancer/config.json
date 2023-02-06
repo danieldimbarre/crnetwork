@@ -1,11 +1,13 @@
 {
   "Debug": false,
+  "DisableMenu": true,
   "ExposeCommand": false,
   "ExposeEvent": false,
   "ScriptRange": 150.0,
   "Timer": 1000,
   "ToggleMenuControl": 167,
   "FloatStep": 0.01,
+  "EnableWheelMod": true,
   "FrontLimits": {
     "PositionX": 0.25,
     "RotationY": 0.2

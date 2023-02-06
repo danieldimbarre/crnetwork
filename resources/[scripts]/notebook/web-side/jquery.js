@@ -1,3 +1,10 @@
+var vstancer = {
+    trackf: 0.0,
+    trackr: 0.0,
+    camberf: 0.0,
+    camberr: 0.0
+}
+
 $(document).ready(() => {
     updateSlider();
 
@@ -8,7 +15,11 @@ $(document).ready(() => {
             lowspeed: 0.30,
             trafront: 0.48,
             clutchup: 7.0,
-            clutchdown: 6.0
+            clutchdown: 6.0,
+            trackf: trackf,
+            trackr: trackr,
+            camberf: camberf,
+            camberr: camberr
         });
     });
 
@@ -45,6 +56,10 @@ $(document).ready(() => {
         $(".styled-slider").each(function(){
             if (values[this.id] != null) {
                 $(this).val(values[this.id]);
+
+                if(vstancer[this.id] != null ){
+                    vstancer[this.id] = values[this.id];
+                }
             }
         });
 
@@ -59,6 +74,10 @@ $(document).ready(() => {
             trafront: $("#trafront").val(),
             clutchup: $("#clutchup").val(),
             clutchdown: $("#clutchdown").val(),
+            trackf: $("#trackf").val(),
+            trackr: $("#trackr").val(),
+            camberf: $("#camberf").val(),
+            camberr: $("#camberr").val(),
         };
     }
 

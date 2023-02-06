@@ -1,6 +1,6 @@
 var Reset = {
-    trackf: 0.0,
-    trackr: 0.0
+    "trackf": 0.0,
+    "trackr": 0.0
 }
 
 $(document).ready(() => {
@@ -35,8 +35,8 @@ $(document).ready(() => {
             }
 
             if (event.data.reset != null){
-                Reset[trackf] = event.data.reset[1];
-                Reset[trackr] = event.data.reset[2];
+                Reset["trackf"] = event.data.reset[1];
+                Reset["trackr"] = event.data.reset[2];
             }
         }
     });

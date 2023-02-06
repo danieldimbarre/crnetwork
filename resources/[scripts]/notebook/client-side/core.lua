@@ -32,7 +32,7 @@ function vehicleData(Vehicle)
 	exports["vstancer"]:SetFrontCamber(Vehicle,camberf * -1)
 	exports["vstancer"]:SetRearCamber(Vehicle,camberr * -1)
 
-	return vehBoost,Reset
+	return { vehBoost,Reset }
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVEDATA

@@ -30,13 +30,11 @@ $(document).ready(() => {
     window.addEventListener("message",function(event){
         if (event.data.type == "togglemenu"){
             menuToggle(event.data.state,false);
-            if (event.data.data != null){
-                setSliderValues(event.data.data);
-            }
 
-            if (event.data.reset != null){
-                Reset["trackf"] = event.data.reset[1];
-                Reset["trackr"] = event.data.reset[2];
+            if (event.data.data != null){
+                Reset["trackf"] = event.data.data[2].trackfReset;
+                Reset["trackr"] = event.data.data[2].trackrReset;
+                setSliderValues(event.data.data[1]);
             }
         }
     });

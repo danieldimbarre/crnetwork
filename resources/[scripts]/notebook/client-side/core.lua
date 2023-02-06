@@ -2,6 +2,11 @@
 -- VEHICLEDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vehicleData(Vehicle)
+	local trackf = exports["vstancer"]:GetFrontTrackWidth(Vehicle)[1] * -1
+	local trackr = exports["vstancer"]:GetRearTrackWidth(Vehicle)[1] * -1
+	local camberf = exports["vstancer"]:GetFrontCamber(Vehicle)[1] * -1
+	local camberr = exports["vstancer"]:GetRearCamber(Vehicle)[1] * -1
+
 	local vehBoost = {
 		boost = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fInitialDriveForce"),
 		curve = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fTractionCurveLateral"),
@@ -9,13 +14,25 @@ function vehicleData(Vehicle)
 		trafront = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fTractionBiasFront"),
 		clutchup = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleUpShift"),
 		clutchdown = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift"),
-		trackf = exports["vstancer"]:GetFrontTrackWidth(Vehicle)[1] * -1,
-		trackr = exports["vstancer"]:GetRearTrackWidth(Vehicle)[1] * -1,
-		camberf = exports["vstancer"]:GetFrontCamber(Vehicle)[1] * -1,
-		camberr = exports["vstancer"]:GetRearCamber(Vehicle)[1] * -1
+		trackf = trackf,
+		trackr = trackr,
+		camberf = camberf,
+		camberr = camberr
 	}
 
-	return vehBoost
+	exports["vstancer"]:ResetWheelPreset(Vehicle)
+	local Reset = {
+		trackfReset = exports["vstancer"]:GetFrontTrackWidth(Vehicle)[1] * -1,
+		trackrReset = exports["vstancer"]:GetRearTrackWidth(Vehicle)[1] * -1,
+	}
+
+	exports["vstancer"]:SetFrontTrackWidth(Vehicle,trackf * -1)
+	exports["vstancer"]:SetRearTrackWidth(Vehicle,trackr * -1)
+	exports["vstancer"]:SetFrontCamber(Vehicle,camberf * -1)
+	exports["vstancer"]:SetRearCamber(Vehicle,camberr * -1)
+end
+
+	return vehBoost,Reset
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVEDATA
@@ -77,8 +94,7 @@ AddEventHandler("notebook:openSystem",function()
 		if GetPedInVehicleSeat(vehicle,-1) == Ped then
 			SetNuiFocus(true,true)
 
-			local Reset = exports["vstancer"]:GetWheelPreset(Vehicle)
-			SendNUIMessage({ type = "togglemenu", state = true, data = vehicleData(vehicle), reset = { Reset[1],Reset[3] } })
+			SendNUIMessage({ type = "togglemenu", state = true, data = vehicleData(vehicle) })
 		end
 	end
 end)

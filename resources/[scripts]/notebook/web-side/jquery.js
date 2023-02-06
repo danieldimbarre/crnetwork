@@ -1,25 +1,16 @@
-var vstancer = {
-    trackf: 0.0,
-    trackr: 0.0,
-    camberf: 0.0,
-    camberr: 0.0
-}
-
 $(document).ready(() => {
     updateSlider();
 
     $("#defaultbtn").click(function(){
+        exports["vstancer"].ResetWheelPreset(GetVehiclePedIsUsing(PlayerPedId()));
+
         setSliderValues({
             boost: 0.25,
             curve: 22.5,
             lowspeed: 0.30,
             trafront: 0.48,
             clutchup: 7.0,
-            clutchdown: 6.0,
-            trackf: trackf,
-            trackr: trackr,
-            camberf: camberf,
-            camberr: camberr
+            clutchdown: 6.0
         });
     });
 

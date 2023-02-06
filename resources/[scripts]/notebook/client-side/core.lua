@@ -9,10 +9,10 @@ function vehicleData(Vehicle)
 		trafront = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fTractionBiasFront"),
 		clutchup = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleUpShift"),
 		clutchdown = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift"),
-		trackf = exports["vstancer"]:GetFrontTrackWidth(Vehicle),
-		trackr = exports["vstancer"]:GetRearTrackWidth(Vehicle),
-		camberf = exports["vstancer"]:GetFrontCamber(Vehicle),
-		camberr = exports["vstancer"]:GetRearCamber(Vehicle)
+		trackf = exports["vstancer"]:GetFrontTrackWidth(Vehicle)[1] * -1,
+		trackr = exports["vstancer"]:GetRearTrackWidth(Vehicle)[1] * -1,
+		camberf = exports["vstancer"]:GetFrontCamber(Vehicle)[1] * -1,
+		camberr = exports["vstancer"]:GetRearCamber(Vehicle)[1] * -1
 	}
 
 	return vehBoost

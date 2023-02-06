@@ -9,10 +9,10 @@ function vehicleData(Vehicle)
 		trafront = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fTractionBiasFront"),
 		clutchup = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleUpShift"),
 		clutchdown = GetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift"),
-		trackf = exports["vstancer"]:GetFrontTrackWidth(vehicle),
-		trackr = exports["vstancer"]:GetRearTrackWidth(vehicle),
-		camberf = exports["vstancer"]:GetFrontCamber(vehicle),
-		camberr = exports["vstancer"]:GetRearCamber(vehicle)
+		trackf = exports["vstancer"]:GetFrontTrackWidth(Vehicle),
+		trackr = exports["vstancer"]:GetRearTrackWidth(Vehicle),
+		camberf = exports["vstancer"]:GetFrontCamber(Vehicle),
+		camberr = exports["vstancer"]:GetRearCamber(Vehicle)
 	}
 
 	return vehBoost
@@ -28,10 +28,10 @@ function saveData(Vehicle,data)
 	SetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleUpShift",data["clutchup"] * 1.0)
 	SetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift",data["clutchdown"] * 1.0)
 
-	exports["vstancer"]:SetFrontTrackWidth(vehicle,data["trackf"])
-	exports["vstancer"]:SetRearTrackWidth(vehicle,data["trackr"])
-	exports["vstancer"]:SetFrontCamber(vehicle,data["camberf"])
-	exports["vstancer"]:SetRearCamber(vehicle,data["camberr"])
+	exports["vstancer"]:SetFrontTrackWidth(Vehicle,data["trackf"])
+	exports["vstancer"]:SetRearTrackWidth(Vehicle,data["trackr"])
+	exports["vstancer"]:SetFrontCamber(Vehicle,data["camberf"])
+	exports["vstancer"]:SetRearCamber(Vehicle,data["camberr"])
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLEMENU

@@ -1146,13 +1146,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FPS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local commandFps = false
 RegisterCommand("fps",function()
-	commandFps = not commandFps
-
-	if commandFps then
+	if not LocalPlayer["state"]["Fps"] then
+		LocalPlayer["state"]:set("Fps",true,true)
 		SetTimecycleModifier("cinema")
 	else
+		LocalPlayer["state"]:set("Fps",false,true)
 		ClearTimecycleModifier()
 	end
 end)

@@ -541,7 +541,7 @@ function Helicam()
 					--stops underwater ped and submarine tracking but means boats cant be tracked
 					if DoesEntityExist(locked_on) and not IsEntityInWater(locked_on) then
 						PointCamAtEntity(cam,locked_on,0.0,0.0,0.0,true)
-						if IsEntityAVehicle(locked_on) then
+						if IsEntityAVehicle(locked_on) and policeRadar and not policeFreeze then
 							local vehHash = vRP.VehicleModel(locked_on)
 							local vehSpeed = GetEntitySpeed(locked_on) * 3.6
 							local Plate = GetVehicleNumberPlateText(locked_on)
@@ -575,7 +575,7 @@ function Helicam()
 					end
 
 					if DoesEntityExist(entity_detected) then
-						if IsEntityAVehicle(entity_detected) then
+						if IsEntityAVehicle(entity_detected) and policeRadar and not policeFreeze then
 							local vehHash = vRP.VehicleModel(entity_detected)
 							local vehSpeed = GetEntitySpeed(entity_detected) * 3.6
 							local Plate = GetVehicleNumberPlateText(entity_detected)
@@ -599,7 +599,13 @@ function Helicam()
 				NightVisionToggle = false
 				SpotlightToggle = false
 				SetNightvision(false)
-				StopScreenEffect("NG_blackout")
+
+				if LocalPlayer["state"]["Fps"] then
+					SetTimecycleModifier("cinema")
+				else
+					ClearTimecycleModifier()
+				end
+
 				fov = (fov_max + fov_min) * 0.5
 				Spritefov = (Spritefov_max + Spritefov_min) * 0.5
 				RenderScriptCams(false,false,0,1,0)
@@ -925,7 +931,13 @@ RegisterCommand("toggleHelicam",function()
 				NightVisionToggle = false
 				SetNightvision(false)
 				SpotlightToggle = false
-				StopScreenEffect("NG_blackout")
+				
+				if LocalPlayer["state"]["Fps"] then
+					SetTimecycleModifier("cinema")
+				else
+					ClearTimecycleModifier()
+				end
+
 				fov = (fov_max + fov_min) * 0.5
 				Spritefov = (Spritefov_max + Spritefov_min) * 0.5
 				RenderScriptCams(false,false,0,1,0)
@@ -965,7 +977,7 @@ RegisterCommand("toggleThermal",function()
 		local Veh = GetVehiclePedIsIn(Ped)
 		if vehCamera and CheckHeli() and IsHeliHighEnough(Veh) then
 			if ThermalToggle then
-				StopScreenEffect("NG_blackout")
+				SetTimecycleModifier("MP_heli_cam")
 			else
 				NightVisionToggle = false
 				SetNightvision(false)
@@ -992,7 +1004,7 @@ RegisterCommand("toggleNightvision",function()
 				SetNightvision(false)
 			else
 				ThermalToggle = false
-				StopScreenEffect("NG_blackout")
+				SetTimecycleModifier("MP_heli_cam")
 
 				SpotlightToggle = false
 
@@ -1015,7 +1027,7 @@ RegisterCommand("toggleSpotlight",function()
 
 			else
 				ThermalToggle = false
-				StopScreenEffect("NG_blackout")
+				SetTimecycleModifier("MP_heli_cam")
 
     			NightVisionToggle = false
 				SetNightvision(false)

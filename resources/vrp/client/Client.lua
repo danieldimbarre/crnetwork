@@ -50,6 +50,7 @@ LocalPlayer["state"]:set("Cassino",false,false)
 LocalPlayer["state"]:set("Race",false,false)
 LocalPlayer["state"]:set("Target",false,false)
 LocalPlayer["state"]:set("Bed",false,false)
+LocalPlayer["state"]:set("Fps",false,false)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -388,6 +388,10 @@ function Creative.Winner(Table,Result)
 	if Passport and not Active[Passport] and Machines[Table] then
 		Active[Passport] = true
 
+		if not Hackers[Passport] then
+			Hackers[Passport] = os.time()
+		end
+
 		if Hackers[Passport] > os.time() then
 			local Identity = vRP.Identity(Passport)
 			if Identity then

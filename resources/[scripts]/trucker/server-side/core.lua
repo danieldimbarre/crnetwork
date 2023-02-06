@@ -27,8 +27,8 @@ function Creative.checkExist()
 		if os.time() >= Trucker[Passport] then
 			return true
 		else
-			local truckerTimers = parseInt(Trucker[Passport] - os.time())
-			TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..MinimalTimers(truckerTimers).."</b> para trabalhar novamente.",5000)
+			local Cooldown = parseInt(Trucker[Passport] - os.time())
+			TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..MinimalTimers(Cooldown).."</b> para trabalhar novamente.",5000)
 		end
 	end
 

@@ -64,10 +64,6 @@ Discords = {
 -- DISCORD
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Discord",function(Hook,Message,Color)
-	if type(Color) == "string" then
-		Color = "0x"..Color
-	end
-
 	PerformHttpRequest(Discords[Hook],function(err,text,headers) end,"POST",json.encode({
 		username = ServerName,
 		embeds = { { color = Color, description = Message } }

@@ -1979,7 +1979,9 @@ AddEventHandler("robberys:Init",function(Number)
 									for Passports,Sources in pairs(Service) do
 										async(function()
 											TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Robberys[Number]["name"], x = Robberys[Number]["Coords"]["x"], y = Robberys[Number]["Coords"]["y"], z = Robberys[Number]["Coords"]["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 22 })
-											vRPC.PlaySound(Sources,"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
+											if Robberys[Number]["type"] ~= "register" then
+												vRPC.PlaySound(Sources,"Beep_Green","DLC_HEIST_HACKING_SNAKE_SOUNDS")
+											end
 										end)
 									end
 

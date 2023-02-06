@@ -32,9 +32,9 @@ $(document).ready(() => {
             menuToggle(event.data.state,false);
 
             if (event.data.data != null){
-                Reset["trackf"] = event.data.data[2].trackfReset;
-                Reset["trackr"] = event.data.data[2].trackrReset;
-                setSliderValues(event.data.data[1]);
+                Reset["trackf"] = event.data.data[1].trackfReset;
+                Reset["trackr"] = event.data.data[1].trackrReset;
+                setSliderValues(event.data.data[0]);
             }
         }
     });

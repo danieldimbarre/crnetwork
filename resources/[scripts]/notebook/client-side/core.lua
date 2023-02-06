@@ -1,3 +1,4 @@
+local Cooldown = GetGameTime()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -61,26 +62,34 @@ end)
 -- SAVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("save",function(Data,Callback)
-	local Ped = PlayerPedId()
-	if IsPedInAnyVehicle(Ped) then
-		local vehicle = GetVehiclePedIsUsing(Ped)
-		if GetPedInVehicleSeat(vehicle,-1) == Ped then
-			TriggerEvent("Notify","verde","Modificações aplicadas.",5000)
-			saveData(vehicle,Data)
-		end
-	end
+	if Cooldown <= GetGameTime() then
+		Cooldown = GetGameTime() + 2000
 
-	Callback("Ok")
+		local Ped = PlayerPedId()
+		if IsPedInAnyVehicle(Ped) then
+			local vehicle = GetVehiclePedIsUsing(Ped)
+			if GetPedInVehicleSeat(vehicle,-1) == Ped then
+				TriggerEvent("Notify","verde","Modificações aplicadas.",5000)
+				saveData(vehicle,Data)
+			end
+		end
+
+		Callback("Ok")
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("reset",function(Data,Callback)
-	local Vehicle = GetVehiclePedIsUsing(PlayerPedId())
-	exports["vstancer"]:ResetWheelPreset(Vehicle)
+	if Cooldown <= GetGameTime() then
+		Cooldown = GetGameTime() + 2000
 
-	local Reset = exports["vstancer"]:GetWheelPreset(Vehicle)
-	Callback({ trackf = Reset[1] * -1, trackr = Reset[3] * -1, camberf = Reset[2], camberr = Reset[4] })
+		local Vehicle = GetVehiclePedIsUsing(PlayerPedId())
+		exports["vstancer"]:ResetWheelPreset(Vehicle)
+
+		local Reset = exports["vstancer"]:GetWheelPreset(Vehicle)
+		Callback({ trackf = Reset[1] * -1, trackr = Reset[3] * -1, camberf = Reset[2], camberr = Reset[4] })
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NOTEBOOK:OPENSYSTEM

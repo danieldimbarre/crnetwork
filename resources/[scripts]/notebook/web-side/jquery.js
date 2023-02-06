@@ -3,16 +3,18 @@ $(document).ready(() => {
 
     $("#defaultbtn").click(function(){
         $.post("http://notebook/reset",JSON.stringify({}),(data) => {
-        
-        });
-
-        setSliderValues({
-            boost: 0.25,
-            curve: 22.5,
-            lowspeed: 0.30,
-            trafront: 0.48,
-            clutchup: 7.0,
-            clutchdown: 6.0
+            setSliderValues({
+                boost: 0.25,
+                curve: 22.5,
+                lowspeed: 0.30,
+                trafront: 0.48,
+                clutchup: 7.0,
+                clutchdown: 6.0,
+                trackf: data["trackf"],
+                trackr: data["trackr"],
+                camberf: data["camberf"],
+                camberr: data["camberr"]
+            });
         });
     });
 
@@ -49,10 +51,6 @@ $(document).ready(() => {
         $(".styled-slider").each(function(){
             if (values[this.id] != null) {
                 $(this).val(values[this.id]);
-
-                if(vstancer[this.id] != null ){
-                    vstancer[this.id] = values[this.id];
-                }
             }
         });
 

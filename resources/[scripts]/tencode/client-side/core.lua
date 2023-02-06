@@ -973,7 +973,11 @@ RegisterCommand("toggleThermal",function()
 		local Veh = GetVehiclePedIsIn(Ped)
 		if vehCamera and CheckHeli() and IsHeliHighEnough(Veh) then
 			if ThermalToggle then
-				SetTimecycleModifier("MP_heli_cam")
+				if LocalPlayer["state"]["Fps"] then
+					SetTimecycleModifier("cinema")
+				else
+					ClearTimecycleModifier()
+				end
 			else
 				NightVisionToggle = false
 				SetNightvision(false)
@@ -999,7 +1003,12 @@ RegisterCommand("toggleNightvision",function()
 				SetNightvision(false)
 			else
 				ThermalToggle = false
-				SetTimecycleModifier("MP_heli_cam")
+
+				if LocalPlayer["state"]["Fps"] then
+					SetTimecycleModifier("cinema")
+				else
+					ClearTimecycleModifier()
+				end
 
 				SpotlightToggle = false
 
@@ -1021,7 +1030,12 @@ RegisterCommand("toggleSpotlight",function()
 
 			else
 				ThermalToggle = false
-				SetTimecycleModifier("MP_heli_cam")
+
+				if LocalPlayer["state"]["Fps"] then
+					SetTimecycleModifier("cinema")
+				else
+					ClearTimecycleModifier()
+				end
 
     			NightVisionToggle = false
 				SetNightvision(false)

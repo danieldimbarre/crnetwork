@@ -364,15 +364,15 @@ function HelicamInformations()
 			-- DrawDisplayText(0.22,1.0 - 0.135 + 0.24,"EXP MAN")
 			-- DrawDisplayText(0.22,1.0 - 0.135 + 0.26,"W")
 
-			local TextureDict = "helicopterhud"
-			local TextureName = "hud_line"
-			if not HasStreamedTextureDictLoaded(TextureDict) then
-				RequestStreamedTextureDict(TextureDict, true)
-				while not HasStreamedTextureDictLoaded(TextureDict) do
-					Wait(0)
-				end
-			end
-			DrawSprite(TextureDict,TextureName,0.075,0.94,0.1,0.01,0.0,255,255,255,255)
+			-- local TextureDict = "helicopterhud"
+			-- local TextureName = "hud_line"
+			-- if not HasStreamedTextureDictLoaded(TextureDict) then
+			-- 	RequestStreamedTextureDict(TextureDict, true)
+			-- 	while not HasStreamedTextureDictLoaded(TextureDict) do
+			-- 		Wait(0)
+			-- 	end
+			-- end
+			-- DrawSprite(TextureDict,TextureName,0.075,0.94,0.1,0.01,0.0,255,255,255,255)
 
 			-- DrawDisplayText(0.32,1.0 - 0.135 + 0.26,"N")
 
@@ -403,10 +403,10 @@ function HelicamInformations()
 				end
 			end
 			--DrawSprite(textureDict,textureName,X,Y,w,h,heading,r,g,b,a)
-			DrawSprite(TextureDict,TextureName,0.5,0.5,0.05,0.1,0.0,255,255,255,100)
+			DrawSprite(TextureDict,TextureName,0.5,0.5,0.05,0.1,0.0,0,224,118,255)
 
-			local TextureDict = "cross"--helicopterhud cross srange_gen
-			local TextureName = "circle_checkpoints_cross"--hud_target circle_checkpoints_cross hit_cross
+			local TextureDict = "srange_gen"--helicopterhud cross srange_gen
+			local TextureName = "hit_cross"--hud_target circle_checkpoints_cross hit_cross
 			if not HasStreamedTextureDictLoaded(TextureDict) then
 				RequestStreamedTextureDict(TextureDict, true)
 				while not HasStreamedTextureDictLoaded(TextureDict) do

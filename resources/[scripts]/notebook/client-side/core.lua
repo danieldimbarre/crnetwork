@@ -26,7 +26,7 @@ function vehicleData(Vehicle)
 			trackrReset = mathLength(Preset[3] * -1),
 		}
 
-		exports["vstancer"]:SetWheelPreset(Vehicle,Wheels[1] * -1,Wheels[2] * -1,Wheels[3] * -1,Wheels[4] * -1)
+		exports["vstancer"]:SetWheelPreset(Vehicle,Wheels[1],Wheels[2],Wheels[3],Wheels[4])
 
 		return { vehBoost,Reset }
 	end

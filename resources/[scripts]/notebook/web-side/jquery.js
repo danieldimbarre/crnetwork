@@ -45,9 +45,9 @@ $(document).ready(() => {
 
     function menuToggle(bool,send = false){
         if (bool){
-            $(".display-limiter").fadeIn(300).css('display','flex');
+            $(".display-limiter").fadeIn(500).css('display','flex');
         } else {
-            $(".display-limiter").fadeOut(300).css('display','none');
+            $(".display-limiter").fadeOut(500).css('display','none');
         }
 
         if (send){

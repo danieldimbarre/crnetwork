@@ -3,13 +3,13 @@ window.addEventListener("message",function(event){
 		case "Doors":
 			if (event["data"]["Status"] == true){
 				if ($("#Doors").css("display") === "none"){
-					$("#Doors").css("display","block");
+					$("#Doors").fadeIn(500).css("display","block");
 				}
 
 				$("#Doors > .Text > b").html(event["data"]["Text"]);
 			} else {
 				if ($("#Doors").css("display") === "block"){
-					$("#Doors").css("display","none");
+					$("#Doors").fadeOut(500).css("display","none");
 				}
 			}
 		break;

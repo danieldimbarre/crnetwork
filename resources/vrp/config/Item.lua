@@ -44,6 +44,7 @@ local List = {
 	["megaphone"] = {
 		["Index"] = "megaphone",
 		["Name"] = "Megafone",
+		["Repair"] = "repairkit01",
 		["Type"] = "Usável",
 		["Durability"] = 7,
 		["Weight"] = 3.25

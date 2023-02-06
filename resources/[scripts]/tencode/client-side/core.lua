@@ -88,16 +88,14 @@ end)
 -- TOGGLERADAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleRadar",function()
-	if not IsPauseMenuActive() then
-		local Ped = PlayerPedId()
-		if IsPedInAnyPoliceVehicle(Ped) and LocalPlayer["state"]["Police"] then
-			if policeRadar then
-				policeRadar = false
-				SendNUIMessage({ radar = false })
-			else
-				policeRadar = true
-				SendNUIMessage({ radar = true })
-			end
+	local Ped = PlayerPedId()
+	if IsPedInAnyPoliceVehicle(Ped) and not IsPedInAnyHeli(Ped) and LocalPlayer["state"]["Police"] and not IsPauseMenuActive() then
+		if policeRadar then
+			policeRadar = false
+			SendNUIMessage({ radar = false })
+		else
+			policeRadar = true
+			SendNUIMessage({ radar = true })
 		end
 	end
 end)
@@ -333,38 +331,38 @@ end
 function HelicamInformations()
 	CreateThread(function()
 		while vehCamera do 
-			local Ped = PlayerPedId()
-			local x,y,z = table.unpack(GetEntityCoords(Ped,true))
-			local NorthCoord = tostring(y * 10000000)
-			local WestCoord = tostring(x * 10000000)
-			DrawDisplayText(0.21,0.22,"/.:!| DEPARTAMENTO DA POLÍCIA MILITAR ENERGY ")
-			DrawDisplayText(0.69,0.22, math.ceil(GetEntityHeading(GetVehiclePedIsIn(Ped))).."°T")
-			DrawDisplayText(0.697,0.24,"V")
-			DrawDisplayText(0.21,0.24,string.sub(NorthCoord,1,3).."°"..string.sub(NorthCoord,4,5).."'"..string.sub(NorthCoord,6,7).."."..string.sub(NorthCoord,8,9))
-			DrawDisplayText(0.255,0.24,"N")
-			DrawDisplayText(0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
-			DrawDisplayText(0.315,0.24,"L")
-			DrawDisplayText(0.21,0.26,"SPD    "..math.ceil(3.6 * (GetEntitySpeed(Ped))))
-			DrawDisplayText(0.25,0.26,"KTS")
-			DrawDisplayText(0.27,0.26,"HDG")
-			DrawDisplayText(0.30,0.26,math.ceil(GetGameplayCamRelativeHeading()))
-			DrawDisplayText(0.315,0.26,"°T")
-			DrawDisplayText(0.21,0.28,"ALT    "..math.ceil(GetEntityHeightAboveGround(Ped) * 3.28084))
-			DrawDisplayText(0.25,0.28,"FT")
+			-- local Ped = PlayerPedId()
+			-- local x,y,z = table.unpack(GetEntityCoords(Ped,true))
+			-- local NorthCoord = tostring(y * 10000000)
+			-- local WestCoord = tostring(x * 10000000)
+			-- DrawDisplayText(0.21,0.22,"/.:!| DEPARTAMENTO DA POLÍCIA MILITAR ENERGY ")
+			-- DrawDisplayText(0.69,0.22, math.ceil(GetEntityHeading(GetVehiclePedIsIn(Ped))).."°T")
+			-- DrawDisplayText(0.697,0.24,"V")
+			-- DrawDisplayText(0.21,0.24,string.sub(NorthCoord,1,3).."°"..string.sub(NorthCoord,4,5).."'"..string.sub(NorthCoord,6,7).."."..string.sub(NorthCoord,8,9))
+			-- DrawDisplayText(0.255,0.24,"N")
+			-- DrawDisplayText(0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
+			-- DrawDisplayText(0.315,0.24,"L")
+			-- DrawDisplayText(0.21,0.26,"SPD    "..math.ceil(3.6 * (GetEntitySpeed(Ped))))
+			-- DrawDisplayText(0.25,0.26,"KTS")
+			-- DrawDisplayText(0.27,0.26,"HDG")
+			-- DrawDisplayText(0.30,0.26,math.ceil(GetGameplayCamRelativeHeading()))
+			-- DrawDisplayText(0.315,0.26,"°T")
+			-- DrawDisplayText(0.21,0.28,"ALT    "..math.ceil(GetEntityHeightAboveGround(Ped) * 3.28084))
+			-- DrawDisplayText(0.25,0.28,"FT")
 			--N W
 			--SPD
-			DrawDisplayText(1.0 - 0.135 + 0.25,0.26,"MPG")
-			DrawDisplayText(1.0 - 0.135 + 0.27,0.26,"HDG")
+			-- DrawDisplayText(1.0 - 0.135 + 0.25,0.26,"MPG")
+			-- DrawDisplayText(1.0 - 0.135 + 0.27,0.26,"HDG")
 			--Heading
-			DrawDisplayText(1.0 - 0.135 + 0.315,0.26,"°T")
-			DrawDisplayText(1.0 - 0.135 + 0.21,0.28,"ELV    "..math.ceil(GetGameplayCamRelativePitch()))
-			DrawDisplayText(1.0 - 0.135 + 0.25,0.28,"FT")
+			-- DrawDisplayText(1.0 - 0.135 + 0.315,0.26,"°T")
+			-- DrawDisplayText(1.0 - 0.135 + 0.21,0.28,"ELV    "..math.ceil(GetGameplayCamRelativePitch()))
+			-- DrawDisplayText(1.0 - 0.135 + 0.25,0.28,"FT")
 
-			DrawDisplayText(0.22,1.0 - 0.135 + 0.18,"HDIR")
-			DrawDisplayText(0.22,1.0 - 0.135 + 0.20,"M WH DDE")
-			DrawDisplayText(0.22,1.0 - 0.135 + 0.22,"FOC MAN")
-			DrawDisplayText(0.22,1.0 - 0.135 + 0.24,"EXP MAN")
-			DrawDisplayText(0.22,1.0 - 0.135 + 0.26,"W")
+			-- DrawDisplayText(0.22,1.0 - 0.135 + 0.18,"HDIR")
+			-- DrawDisplayText(0.22,1.0 - 0.135 + 0.20,"M WH DDE")
+			-- DrawDisplayText(0.22,1.0 - 0.135 + 0.22,"FOC MAN")
+			-- DrawDisplayText(0.22,1.0 - 0.135 + 0.24,"EXP MAN")
+			-- DrawDisplayText(0.22,1.0 - 0.135 + 0.26,"W")
 
 			local TextureDict = "helicopterhud"
 			local TextureName = "hud_line"
@@ -376,14 +374,14 @@ function HelicamInformations()
 			end
 			DrawSprite(TextureDict,TextureName,0.075,0.94,0.1,0.01,0.0,255,255,255,255)
 
-			DrawDisplayText(0.32,1.0 - 0.135 + 0.26,"N")
+			-- DrawDisplayText(0.32,1.0 - 0.135 + 0.26,"N")
 
-			DrawDisplayText(0.37,1.0 - 0.135 + 0.26,"FT")
+			-- DrawDisplayText(0.37,1.0 - 0.135 + 0.26,"FT")
 
-			DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.18,"GEOPOINT")
-			DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.20,"INS NAV")
-			DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.24,"TRK COR")
-			DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.28,"SLAVE READY")
+			-- DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.18,"GEOPOINT")
+			-- DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.20,"INS NAV")
+			-- DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.24,"TRK COR")
+			-- DrawDisplayText(1.0 - 0.135 + 0.27,1.0 - 0.135 + 0.28,"SLAVE READY")
 
 			-- day = GetClockDayOfMonth()
 			-- month = GetClockMonth()
@@ -393,8 +391,8 @@ function HelicamInformations()
 			-- if month <= 9 then month = "0"..month end
 			
 			-- DrawDisplayText(0.21,0.34,month.."/"..day.."/"..(year - 2000))
-			DrawDisplayText(0.21,0.36,GlobalState["Hours"]..":"..GlobalState["Minutes"])
-			DrawDisplayText(0.245,0.36,"Z")
+			-- DrawDisplayText(0.21,0.36,GlobalState["Hours"]..":"..GlobalState["Minutes"])
+			-- DrawDisplayText(0.245,0.36,"Z")
 
 			local TextureDict = "helicopterhud"
 			local TextureName = "hud_target"
@@ -590,8 +588,8 @@ function Helicam()
 					ThermalAddVehicle()
 				end
 
-				HandleZoom(cam)
-				HandleHUDZoom(cam)
+				-- HandleZoom(cam)
+				-- HandleHUDZoom(cam)
 			else
 				TriggerEvent("hud:Active",true)
 				vehCamera = false
@@ -943,10 +941,8 @@ RegisterCommand("toggleHelicam",function()
 				RenderScriptCams(false,false,0,1,0)
 				DestroyCam(cam,false)
 
-				if policeRadar then
-					policeRadar = false
-					SendNUIMessage({ radar = false })
-				end
+				policeRadar = false
+				SendNUIMessage({ radar = false })
 			else
 				TriggerEvent("hud:Active",false)
 				vehCamera = true
@@ -959,8 +955,11 @@ RegisterCommand("toggleHelicam",function()
 				locked_on = nil
 
 				Helicam()
-				-- HelicamInformations()
+				HelicamInformations()
 				-- Compass()
+
+				policeRadar = true
+				SendNUIMessage({ radar = true })
 			end
 		end
 	end
@@ -994,8 +993,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleNightvision",function()
 	if not IsPauseMenuActive() and LocalPlayer["state"]["Police"] then
-		local Ped = PlayerPedId()
-		local Veh = GetVehiclePedIsIn(Ped)
+		local Veh = GetVehiclePedIsIn(PlayerPedId())
 		if vehCamera and CheckHeli() and IsHeliHighEnough(Veh) then
 			if NightVisionToggle then
 				SetNightvision(false)
@@ -1017,8 +1015,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleSpotlight",function()
 	if not IsPauseMenuActive() and (LocalPlayer["state"]["Police"] or LocalPlayer["state"]["Paramedic"]) then
-		local Ped = PlayerPedId()
-		local Veh = GetVehiclePedIsIn(Ped)
+		local Veh = GetVehiclePedIsIn(PlayerPedId())
 		if vehCamera and CheckHeli() and IsHeliHighEnough(Veh) then
 			if SpotlightToggle then
 
@@ -1039,8 +1036,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("toggleHelicamLock",function()
 	if not IsPauseMenuActive() and LocalPlayer["state"]["Police"] then
-		local Ped = PlayerPedId()
-		local Veh = GetVehiclePedIsIn(Ped)
+		local Veh = GetVehiclePedIsIn(PlayerPedId())
 		if vehCamera and entity_detected and CheckHeli() and IsHeliHighEnough(Veh) then
 			if DoesEntityExist(entity_detected) then
 				if locked_on then

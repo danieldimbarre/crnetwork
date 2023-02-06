@@ -1,3 +1,8 @@
+var Reset = {
+    trackf: 0.0,
+    trackr: 0.0
+}
+
 $(document).ready(() => {
     updateSlider();
 
@@ -27,6 +32,11 @@ $(document).ready(() => {
             menuToggle(event.data.state,false);
             if (event.data.data != null){
                 setSliderValues(event.data.data);
+            }
+
+            if (event.data.reset != null){
+                Reset[trackf] = event.data.reset[1];
+                Reset[trackr] = event.data.reset[2];
             }
         }
     });
@@ -75,6 +85,11 @@ $(document).ready(() => {
     function updateSlider() {
         for (let e of document.querySelectorAll('input[type="range"].slider-progress')){
             e.style.setProperty('--value',e.value);
+            if(e.id == "trackf" || e.id == "trackr"){
+                e.min = Number(Reset[e.id]) - 0.25;
+                e.max = Number(Reset[e.id]) + 0.25;
+            }
+
             e.style.setProperty('--min',e.min == '' ? '0' : e.min);
             e.style.setProperty('--max',e.max == '' ? '100' : e.max);
             e.addEventListener('input',() => e.style.setProperty('--value',e.value));

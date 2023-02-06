@@ -28,10 +28,10 @@ function saveData(Vehicle,data)
 	SetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleUpShift",data["clutchup"] * 1.0)
 	SetVehicleHandlingFloat(Vehicle,"CHandlingData","fClutchChangeRateScaleDownShift",data["clutchdown"] * 1.0)
 
-	exports["vstancer"]:SetFrontTrackWidth(Vehicle,data["trackf"])
-	exports["vstancer"]:SetRearTrackWidth(Vehicle,data["trackr"])
-	exports["vstancer"]:SetFrontCamber(Vehicle,data["camberf"])
-	exports["vstancer"]:SetRearCamber(Vehicle,data["camberr"])
+	exports["vstancer"]:SetFrontTrackWidth(Vehicle,data["trackf"] * -1)
+	exports["vstancer"]:SetRearTrackWidth(Vehicle,data["trackr"] * -1)
+	exports["vstancer"]:SetFrontCamber(Vehicle,data["camberf"] * -1)
+	exports["vstancer"]:SetRearCamber(Vehicle,data["camberr"] * -1)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLEMENU
@@ -77,7 +77,8 @@ AddEventHandler("notebook:openSystem",function()
 		if GetPedInVehicleSeat(vehicle,-1) == Ped then
 			SetNuiFocus(true,true)
 
-			SendNUIMessage({ type = "togglemenu", state = true, data = vehicleData(vehicle) })
+			local Reset = exports["vstancer"]:GetWheelPreset(Vehicle)
+			SendNUIMessage({ type = "togglemenu", state = true, data = vehicleData(vehicle), reset = { Reset[1],Reset[3] } })
 		end
 	end
 end)

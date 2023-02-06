@@ -653,7 +653,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PICKUP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Pickup(Number,Amount,Slot,Coords)
+function Creative.Pickup(Number,Amount,Slot)
 	local source = source
 	local Slot = tostring(Slot)
 	local Number = tostring(Number)
@@ -691,6 +691,8 @@ function Creative.Pickup(Number,Amount,Slot,Coords)
 								end
 							end
 
+							TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Pegou:** "..Amount.."x "..itemName(Drops[Number]["key"]).."\n**Cds:** ("..Drops[Number]["Coords"][1]..","..Drops[Number]["Coords"][2]..","..Drops[Number]["Coords"][3]..")",3042892)
+
 							Drops[Number]["amount"] = Drops[Number]["amount"] - Amount
 							if Drops[Number]["amount"] <= 0 then
 								TriggerClientEvent("drops:Remover",-1,Number)
@@ -715,8 +717,6 @@ function Creative.Pickup(Number,Amount,Slot,Coords)
 							TriggerClientEvent("inventory:Update",source,"Backpack")
 							Player(source)["state"]["Buttons"] = false
 							Player(source)["state"]["Cancel"] = false
-
-							TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Pegou:** "..Amount.."x "..itemName(Drops[Number]["key"]).."\n**Cds:** ("..Coords[1]..","..Coords[2]..","..Coords[3]..")",3042892)
 						else
 							TriggerClientEvent("inventory:Update",source,"Backpack")
 						end

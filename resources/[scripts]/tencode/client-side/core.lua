@@ -588,7 +588,7 @@ function Helicam()
 					ThermalAddVehicle()
 				end
 
-				-- HandleZoom(cam)
+				HandleZoom(cam)
 				-- HandleHUDZoom(cam)
 			else
 				TriggerEvent("hud:Active",true)
@@ -666,7 +666,7 @@ function HandleZoom(cam)
 	end
 
 	SetCamFov(cam,current_fov + (fov - current_fov) * 0.05)
-	DrawDisplayText(0.35,1.0 - 0.135 + 0.26,math.ceil(current_fov))
+	-- DrawDisplayText(0.35,1.0 - 0.135 + 0.26,math.ceil(current_fov))
 	if current_fov < 40.0 then
 		boneList = {
 			{ boneId = 11816, X1 = -0.2, Y1 = -0.2, Z1 = 0.2, X2 = 0.2, Y2 = 0.2, Z2 = 0.6 },

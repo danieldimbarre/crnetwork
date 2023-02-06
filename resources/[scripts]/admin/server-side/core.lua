@@ -252,13 +252,15 @@ end)
 RegisterCommand("item2",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
-			if Message[1] and Message[2] and parseInt(Message[3]) > 0 and itemBody(Message[1]) ~= nil then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[3] and itemBody(Message[1]) then
+			local OtherPassport = parseInt(Message[3])
+			if OtherPassport > 0 then
 				local Amount = parseInt(Message[2])
+				local Item = itemName(Message[1])
 				vRP.GenerateItem(Message[3],Message[1],Amount,true)
-				TriggerClientEvent("Notify",source,"verde","Você enviou <b>"..Amount.."x "..itemName(Message[1]).."</b> para o passaporte <b>"..Message[3].."</b>.",5000)
+				TriggerClientEvent("Notify",source,"verde","Você enviou <b>"..Amount.."x "..Item.."</b> para o passaporte <b>"..OtherPassport.."</b>.",5000)
 
-				TriggerEvent("Discord","Admin","**item2**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[3].."\n**Item:** "..Amount.."x "..itemName(Message[1]),3553599)
+				TriggerEvent("Discord","Admin","**item2*\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Item:** "..Amount.."x "..Item,3553599)
 			end
 		end
 	end
@@ -271,10 +273,12 @@ RegisterCommand("delete",function(source,Message)
 	if Passport and Message[1] then
 		if vRP.HasGroup(Passport,"Admin",2) then
 			local OtherPassport = parseInt(Message[1])
-			vRP.Query("characters/removeCharacter",{ id = OtherPassport })
-			TriggerClientEvent("Notify",source,"verde","Personagem <b>"..OtherPassport.."</b> deletado.",5000)
+			if OtherPassport > 0 then
+				vRP.Query("characters/removeCharacter",{ id = OtherPassport })
+				TriggerClientEvent("Notify",source,"verde","Personagem <b>"..OtherPassport.."</b> deletado.",5000)
 
-			TriggerEvent("Discord","Admin","**delete**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
+				TriggerEvent("Discord","Admin","**delete**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
+			end
 		end
 	end
 end)

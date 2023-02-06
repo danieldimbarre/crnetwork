@@ -170,7 +170,7 @@ function Creative.initPrison(OtherPassport,Services,Value,Message)
 					TriggerEvent("Wanted:Remove",source,Passport)
 				end
 
-				TriggerEvent("Discord","Polices","**Policial:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,13541152)
+				TriggerEvent("Discord","Polices","**Policial:** "..Passport.."\n**Passaporte:** "..OtherPassport.."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,13541152)
 			end
 
 			Actived[Passport] = nil
@@ -220,7 +220,7 @@ function Creative.initFine(OtherPassport,Value,Message)
 		if not Actived[Passport] then
 			Actived[Passport] = true
 
-			TriggerEvent("Discord","Polices","**Por:** "..parseFormat(Passport).."\n**Passaporte:** "..parseFormat(OtherPassport).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,2316674)
+			TriggerEvent("Discord","Polices","**Policial:** "..Passport.."\n**Passaporte:** "..OtherPassport.."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,2316674)
 			TriggerClientEvent("Notify",source,"verde","Multa aplicada.",5000)
 			TriggerClientEvent("police:Update",source,"reloadFine")
 			exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)

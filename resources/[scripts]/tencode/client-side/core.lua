@@ -135,7 +135,7 @@ local fov_min = 7.5
 local zoomspeed = 12.0
 local speed_lr = 16.0
 local speed_ud = 8.0
-local minHeightAboveGround = 1.0 -- Minimum height above ground to activate Heli Cam (in metres).
+local minHeightAboveGround = 5.0 -- Minimum height above ground to activate Heli Cam (in metres).
 
 local fov = (fov_max + fov_min) * 0.5
 
@@ -768,29 +768,29 @@ function GetEntityInView(cam)
 	local coords = GetCamCoord(cam)
 	local forward_vector = RotAnglesToVec(GetCamRot(cam,2))
 	-- DrawLine(coords, coords+(forward_vector*100.0), 255,0,0,255) -- debug line to show LOS of cam
-	local x,y,z = table.unpack(coords + (forward_vector * 100.0))
-    local NorthCoord = tostring(y * 10000000)
-    local WestCoord = tostring(x * 10000000)
-    DrawDisplayText(1.0 - 0.135 + 0.21,0.24,string.sub(NorthCoord,1,3).."°"..string.sub(NorthCoord,4,5).."'"..string.sub(NorthCoord,6,7).."."..string.sub(NorthCoord,8,9))
-    DrawDisplayText(1.0 - 0.135 + 0.255,0.24,"N")
-    DrawDisplayText(1.0 - 0.135 + 0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
-    DrawDisplayText(1.0 - 0.135 + 0.315,0.24,"L")
+	-- local x,y,z = table.unpack(coords + (forward_vector * 100.0))
+    -- local NorthCoord = tostring(y * 10000000)
+    -- local WestCoord = tostring(x * 10000000)
+    -- DrawDisplayText(1.0 - 0.135 + 0.21,0.24,string.sub(NorthCoord,1,3).."°"..string.sub(NorthCoord,4,5).."'"..string.sub(NorthCoord,6,7).."."..string.sub(NorthCoord,8,9))
+    -- DrawDisplayText(1.0 - 0.135 + 0.255,0.24,"N")
+    -- DrawDisplayText(1.0 - 0.135 + 0.27,0.24,string.sub(WestCoord,1,3).."°"..string.sub(WestCoord,4,5).."'"..string.sub(WestCoord,6,7).."."..string.sub(WestCoord,8,9))
+    -- DrawDisplayText(1.0 - 0.135 + 0.315,0.24,"L")
 	-- local rayhandle = CastRayPointToPoint(coords, coords + (forward_vector * 200.0), 10, GetVehiclePedIsIn(PlayerPedId()), 0)
 	local rayhandle = StartShapeTestRay(coords,coords + (forward_vector * 10000.0),10,GetVehiclePedIsIn(PlayerPedId()),4,0,7)
 	-- StartShapeTestRay(x1,y1,z1,x2,y2,z2,flags: 4 = ped,2 = vehicle -1 = everything,ent: ignores these entities,p8:7)
 	-- local _,_,_,_, entityHit = GetRaycastResult(rayhandle)
 	local retval,hit,endCoords,surfaceNormal,entityHit = GetShapeTestResult(rayhandle)
-	local distancetoentity = #(coords - endCoords)
-    DrawDisplayText(1.0 - 0.135 + 0.27,0.28,"SLT")
-    DrawDisplayText(1.0 - 0.135 + 0.315,0.28,"M")
+	-- local distancetoentity = #(coords - endCoords)
+    -- DrawDisplayText(1.0 - 0.135 + 0.27,0.28,"SLT")
+    -- DrawDisplayText(1.0 - 0.135 + 0.315,0.28,"M")
 	if entityHit > 0 then
-		DrawDisplayText(1.0 - 0.135 + 0.30,0.28,math.ceil(distancetoentity))
-		local entitySpeed = (GetEntitySpeed(entityHit)) * 3.6
-		DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    "..math.ceil(entitySpeed))
+		-- DrawDisplayText(1.0 - 0.135 + 0.30,0.28,math.ceil(distancetoentity))
+		-- local entitySpeed = (GetEntitySpeed(entityHit)) * 3.6
+		-- DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    "..math.ceil(entitySpeed))
 		return entityHit
 	else
-		DrawDisplayText(1.0 - 0.135 + 0.30,0.28,"---")
-		DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    0")
+		-- DrawDisplayText(1.0 - 0.135 + 0.30,0.28,"---")
+		-- DrawDisplayText(1.0 - 0.135 + 0.21,0.26,"SPD    0")
 		return nil
 	end
 end
@@ -813,7 +813,7 @@ end
 -- RENDERVEHICLEINFO
 -----------------------------------------------------------------------------------------------------------------------------------------
 function RenderVehicleInfo(vehicle)
-	DrawDisplayText(1.0 - 0.135 + 0.30,0.26,math.ceil(GetEntityHeading(vehicle)))
+	-- DrawDisplayText(1.0 - 0.135 + 0.30,0.26,math.ceil(GetEntityHeading(vehicle)))
 	--numberplate doesnt work so has to use the light bone and code out the exceptions
 	local HasPlateLight = GetEntityBoneIndexByName(vehicle,"platelight") 
 	
@@ -942,6 +942,11 @@ RegisterCommand("toggleHelicam",function()
 				Spritefov = (Spritefov_max + Spritefov_min) * 0.5
 				RenderScriptCams(false,false,0,1,0)
 				DestroyCam(cam,false)
+
+				if policeRadar then
+					policeRadar = false
+					SendNUIMessage({ radar = false })
+				end
 			else
 				TriggerEvent("hud:Active",false)
 				vehCamera = true
@@ -956,14 +961,6 @@ RegisterCommand("toggleHelicam",function()
 				Helicam()
 				-- HelicamInformations()
 				-- Compass()
-
-				if policeRadar then
-					policeRadar = false
-					SendNUIMessage({ radar = false })
-				else
-					policeRadar = true
-					SendNUIMessage({ radar = true })
-				end
 			end
 		end
 	end

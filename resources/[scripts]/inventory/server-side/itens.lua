@@ -1211,7 +1211,7 @@ Use = {
 
 	["advtoolbox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split then
-			if not vRP.InsideVehicle(source) and not vENGINE.InGallon(source) then
+			if not vRP.InsideVehicle(source) then
 				local Vehicle,Network,Plate = vRPC.VehicleList(source,4)
 				if Vehicle then
 					vRPC.AnimActive(source)
@@ -2601,7 +2601,7 @@ Use = {
 	end,
 
 	["toolbox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) and not vENGINE.InGallon(source) then
+		if not vRP.InsideVehicle(source) then
 			local Vehicle,Network,Plate = vRPC.VehicleList(source,4)
 			if Vehicle then
 				vRPC.AnimActive(source)

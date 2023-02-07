@@ -7,6 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
+Energy = {}
+Tunnel.bindInterface("inventory",Energy)
 vSERVER = Tunnel.getInterface("engine")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -17,6 +19,13 @@ local fuelPrice = 0
 local fuelNui = false
 local fuelSupply = false
 local fuelEnter = GetGameTimer()
+local Gallon = false
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INGALLON
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Energy.InGallon()
+	return Gallon
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -124,7 +133,7 @@ AddEventHandler("engine:Supply",function(Entity)
 	fuelLast = GetVehicleFuelLevel(Vehicle)
 
 	if fuelLast < 99.0 then
-		local Gallon = Entity[5]
+		Gallon = Entity[5]
 		if not fuelNui and not Gallon then
 			SendNUIMessage({ Action = "Show" })
 			fuelNui = true
@@ -193,6 +202,7 @@ function finishFuel(Gallon,Plate,vFuel,Network)
 
 		SendNUIMessage({ Action = "Hide" })
 	else
+		Gallon = false
 		TriggerServerEvent("engine:tryFuel",Plate,vFuel)
 	end
 

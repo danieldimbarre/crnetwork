@@ -124,10 +124,10 @@ RegisterCommand("blips",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			if not Blips[Passport] then
-				Blips[Passport] = true
+			if not Blips[Passport] or Blips[Passport] == "desativado" then
+				Blips[Passport] = "ativado"
 			else
-				Blips[Passport] = nil
+				Blips[Passport] = "desativado"
 			end
 
 			vRPC.BlipAdmin(source)
@@ -290,10 +290,10 @@ RegisterCommand("nc",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			if not Noclip[Passport] then
-				Noclip[Passport] = true
+			if not Noclip[Passport] or Noclip[Passport] == "desativado" then
+				Noclip[Passport] = "ativado"
 			else
-				Noclip[Passport] = nil
+				Noclip[Passport] = "desativado"
 			end
 
 			vRPC.noClip(source)
@@ -910,38 +910,36 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("services",function(source)
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
-			local Text = ""
-			local Groups = vRP.Groups()
+	if Passport and vRP.HasGroup(Passport,"Admin",2) then
+		local Text = ""
+		local Groups = vRP.Groups()
 
-			if Message[1] then
-				if Groups[Message[1]] then
-					local Data = vRP.DataGroups(Message[1])
+		if Message[1] then
+			if Groups[Message[1]] then
+				local Data = vRP.DataGroups(Message[1])
 
-					for Passport,Level in pairs(Data) do
-						if Text == "" then
-							Text = "<b>"..Passport..":</b> "..Level
-						else
-							Text = Text.."<br><b>"..Passport..":</b> "..Level
-						end
-					end
-				end
-			else
-				for Permission,_ in pairs(Groups) do
-					local _,Total = vRP.NumPermission(Permission)
-	
+				for Passport,Level in pairs(Data) do
 					if Text == "" then
-						Text = "<b>"..Permission..":</b> "..Total.."/"..#vRP.DataGroups(Permission)
+						Text = "<b>"..Passport..":</b> "..Level
 					else
-						Text = Text.."<br><b>"..Permission..":</b> "..Total.."/"..#vRP.DataGroups(Permission)
+						Text = Text.."<br><b>"..Passport..":</b> "..Level
 					end
 				end
 			end
+		else
+			for Permission,_ in pairs(Groups) do
+				local _,Total = vRP.NumPermission(Permission)
 
-			if Messages ~= "" then
-				TriggerClientEvent("Notify",source,"azul",Text,15000)
+				if Text == "" then
+					Text = "<b>"..Permission..":</b> "..Total
+				else
+					Text = Text.."<br><b>"..Permission..":</b> "..Total
+				end
 			end
+		end
+
+		if Messages ~= "" then
+			TriggerClientEvent("Notify",source,"azul",Text,15000)
 		end
 	end
 end)

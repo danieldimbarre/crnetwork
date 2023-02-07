@@ -124,15 +124,19 @@ RegisterCommand("blips",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			if not Blips[Passport] or Blips[Passport] == "desativado" then
-				Blips[Passport] = "ativado"
+			local Text = ""
+
+			if not Blips[Passport] then
+				Blips[Passport] = true
+				Text = "ativado"
 			else
-				Blips[Passport] = "desativado"
+				Blips[Passport] = nil
+				Text = "desativado"
 			end
 
 			vRPC.BlipAdmin(source)
 
-			TriggerEvent("Discord","Admin","**blips**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Blips[Passport],3553599)
+			TriggerEvent("Discord","Admin","**blips**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Text,3553599)
 		end
 	end
 end)
@@ -290,15 +294,19 @@ RegisterCommand("nc",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			if not Noclip[Passport] or Noclip[Passport] == "desativado" then
-				Noclip[Passport] = "ativado"
+			local Text = ""
+
+			if not Noclip[Passport] then
+				Noclip[Passport] = true
+				Text = "ativado"
 			else
-				Noclip[Passport] = "desativado"
+				Noclip[Passport] = nil
+				Text = "desativado"
 			end
 
 			vRPC.noClip(source)
 
-			TriggerEvent("Discord","Admin","**nc**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Noclip[Passport],3553599)
+			TriggerEvent("Discord","Admin","**nc**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Text,3553599)
 		end
 	end
 end)
@@ -908,7 +916,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVICES
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("services",function(source)
+RegisterCommand("services",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",2) then
 		local Text = ""
@@ -918,7 +926,7 @@ RegisterCommand("services",function(source)
 			if Groups[Message[1]] then
 				local Data = vRP.DataGroups(Message[1])
 
-				for Passport,Level in pairs(Data) do
+				for Passport,Level in pairsKeys(Data) do
 					if Text == "" then
 						Text = "<b>"..Passport..":</b> "..Level
 					else
@@ -927,7 +935,7 @@ RegisterCommand("services",function(source)
 				end
 			end
 		else
-			for Permission,_ in pairs(Groups) do
+			for Permission,_ in pairsKeys(Groups) do
 				local _,Total = vRP.NumPermission(Permission)
 
 				if Text == "" then
@@ -938,8 +946,8 @@ RegisterCommand("services",function(source)
 			end
 		end
 
-		if Messages ~= "" then
-			TriggerClientEvent("Notify",source,"azul",Text,15000)
+		if Text ~= "" then
+			TriggerClientEvent("Notify",source,"azul",Text,20000)
 		end
 	end
 end)
@@ -1046,7 +1054,7 @@ RegisterCommand("generate",function(source,Message)
 	if List then
 		local Text = "**"..Message[1].."**"
 
-		for Index,v in pairsByKeys(List) do
+		for Index,v in pairsKeys(List) do
 			if Message[1] == "car" then
 				if v["Mode"] == "rental" then
 					Text = Text.."\n"..Index
@@ -1141,26 +1149,6 @@ end)
 AddEventHandler("txAdmin:events:serverShuttingDown",function(eventData)
     TriggerEvent("SaveServer",false)
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- PAIRSBYKEYS
------------------------------------------------------------------------------------------------------------------------------------------
-function pairsByKeys(t,f)
-    local a = {}
-    for n in pairs(t) do
-        table.insert(a,n)
-    end
-    table.sort(a,f)
-    local i = 0
-    local iter = function()
-        i = i + 1
-        if not a[i] then
-            return nil
-        else
-            return a[i],t[a[i]]
-        end
-    end
-    return iter
-end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -1319,14 +1319,14 @@ local List = {
 		["Name"] = "MVP",
 		["Type"] = "Usável",
 		["Weight"] = 0.15,
-		["Economy"] = 200000
+		["Economy"] = 150000
 	},
 	["premium3"] = {
 		["Index"] = "premium3",
 		["Name"] = "Master",
 		["Type"] = "Usável",
 		["Weight"] = 0.15,
-		["Economy"] = 300000
+		["Economy"] = 200000
 	},
 	["premiumplate"] = {
 		["Index"] = "platepremium",

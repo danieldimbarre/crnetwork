@@ -128,10 +128,10 @@ RegisterCommand("blips",function(source)
 
 			if not Blips[Passport] then
 				Blips[Passport] = true
-				Text = "ativado"
+				Text = "Ativado"
 			else
 				Blips[Passport] = nil
-				Text = "desativado"
+				Text = "Desativado"
 			end
 
 			vRPC.BlipAdmin(source)
@@ -298,10 +298,10 @@ RegisterCommand("nc",function(source)
 
 			if not Noclip[Passport] then
 				Noclip[Passport] = true
-				Text = "ativado"
+				Text = "Ativado"
 			else
 				Noclip[Passport] = nil
-				Text = "desativado"
+				Text = "Desativado"
 			end
 
 			vRPC.noClip(source)

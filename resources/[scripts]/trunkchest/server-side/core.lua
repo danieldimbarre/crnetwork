@@ -196,7 +196,10 @@ function Creative.chestClose()
 			end)
 		end
 
+		vRPC.stopAnim(source,false)
 		Vehicle[Passport] = nil
+		Player(source)["state"]["Buttons"] = false
+		Player(source)["state"]["Cancel"] = false
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -223,13 +226,17 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 				local Network = NetworkGetEntityFromNetworkId(Vehicle[Passport]["Net"])
 
 				if GetVehicleDoorLockStatus(Network) <= 1 then
-					TriggerClientEvent("trunkchest:Open",source)
+					Player(source)["state"]["Buttons"] = true
+					Player(source)["state"]["Cancel"] = true
+					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+
 					local Players = vRPC.Players(source)
 					for _,v in pairs(Players) do
 						async(function()
 							TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"open")
 						end)
 					end
+					TriggerClientEvent("trunkchest:Open",source)
 				else
 					TriggerClientEvent("Notify",source,"amarelo","Veículo trancado.",5000)
 					Vehicle[Passport] = nil

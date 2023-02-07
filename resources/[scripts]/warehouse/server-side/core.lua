@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
+vRPC = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
@@ -154,6 +155,10 @@ function Creative.openWarehouse(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		Player(source)["state"]["Buttons"] = true
+		Player(source)["state"]["Cancel"] = true
+		vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+
 		local myInventory = {}
 		local Inv = vRP.Inventory(Passport)
 		for Index,v in pairs(Inv) do

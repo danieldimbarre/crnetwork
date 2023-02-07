@@ -8,7 +8,7 @@ vRP = Proxy.getInterface("vRP")
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
 Energy = {}
-Tunnel.bindInterface("inventory",Energy)
+Tunnel.bindInterface("engine",Energy)
 vSERVER = Tunnel.getInterface("engine")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES

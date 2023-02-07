@@ -1222,20 +1222,33 @@ Use = {
 					vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
 					if vTASKBAR.taskMechanic(source) then
-						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							local Players = vRPC.Players(source)
-							for _,v in pairs(Players) do
-								async(function()
-									TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
-								end)
+						Active[Passport] = os.time() + 20
+						TriggerClientEvent("Progress",source,"Consertando",20000)
+
+						repeat
+							if os.time() >= parseInt(Active[Passport]) then
+								Active[Passport] = nil
+								vRPC.removeObjects(source)
+								Player(source)["state"]["Buttons"] = false
+
+								if vRP.TakeItem(Passport,Full,1,true,Slot) then
+									local Players = vRPC.Players(source)
+									for _,v in pairs(Players) do
+										async(function()
+											TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
+										end)
+									end
+		
+									local Number = parseInt(Split[2]) - 1
+		
+									if Number >= 1 then
+										vRP.GiveItem(Passport,"advtoolbox-"..Number,1,false)
+									end
+								end
 							end
 
-							local Number = parseInt(Split[2]) - 1
-
-							if Number >= 1 then
-								vRP.GiveItem(Passport,"advtoolbox-"..Number,1,false)
-							end
-						end
+							Wait(100)
+						until not Active[Passport]
 					end
 
 					TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
@@ -2599,14 +2612,27 @@ Use = {
 				vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
 				if vTASKBAR.taskMechanic(source) then
-					if vRP.TakeItem(Passport,Full,1,true,Slot) then
-						local Players = vRPC.Players(source)
-						for _,v in pairs(Players) do
-							async(function()
-								TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
-							end)
+					Active[Passport] = os.time() + 20
+					TriggerClientEvent("Progress",source,"Consertando",20000)
+
+					repeat
+						if os.time() >= parseInt(Active[Passport]) then
+							Active[Passport] = nil
+							vRPC.removeObjects(source)
+							Player(source)["state"]["Buttons"] = false
+
+							if vRP.TakeItem(Passport,Full,1,true,Slot) then
+								local Players = vRPC.Players(source)
+								for _,v in pairs(Players) do
+									async(function()
+										TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
+									end)
+								end
+							end
 						end
-					end
+
+						Wait(100)
+					until not Active[Passport]
 				end
 
 				TriggerClientEvent("player:syncHoodOptions",source,Network,"close")

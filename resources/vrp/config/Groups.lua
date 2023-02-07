@@ -59,13 +59,6 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work"
 	},
-	["Taxi"] = {
-		["Parent"] = {
-			["Taxi"] = true
-		},
-		["Hierarchy"] = { "Chefe","Membro" },
-		["Service"] = {}
-	},
 	["BurgerShot"] = {
 		["Parent"] = {
 			["BurgerShot"] = true

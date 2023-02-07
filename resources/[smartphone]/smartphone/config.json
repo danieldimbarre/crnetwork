@@ -41,11 +41,6 @@
             "dev": true
         },
         {
-            "name": "Táxi",
-            "number": "0800 075",
-            "permission": "Taxi"
-        },
-        {
             "name": "Defensoria",
             "number": "0800 773",
             "permission": "Law",

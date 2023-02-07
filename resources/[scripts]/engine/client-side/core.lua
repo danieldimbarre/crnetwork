@@ -124,7 +124,6 @@ AddEventHandler("engine:Supply",function(Entity)
 	fuelLast = GetVehicleFuelLevel(Vehicle)
 
 	if fuelLast < 99.0 then
-		LocalPlayer["state"]["Buttons"] = true
 		local Gallon = Entity[5]
 		if not fuelNui and not Gallon then
 			SendNUIMessage({ Action = "Show" })
@@ -198,7 +197,6 @@ function finishFuel(Gallon,Plate,vFuel,Network)
 		TriggerServerEvent("engine:tryFuel",Plate,vFuel)
 	end
 
-	LocalPlayer["state"]["Buttons"] = false
 	vRP.removeObjects()
 	fuelSupply = false
 	fuelNui = false

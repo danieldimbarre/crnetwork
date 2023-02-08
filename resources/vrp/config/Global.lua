@@ -41,17 +41,16 @@ MaintenanceLicenses = {
 	["a8d3f197478d5ff41628e40752f40609ddb54014"] = true,	-- Jota
 	["20360424d67d70720007fecc2c0c358359b9117b"] = true,	-- Medeiros
 	["00a9be497361d506f7972271d856a932ad2acdfd"] = true,	-- Alan
+	["741bd6c9749f7d766f361a6c831302e868b67d16"] = true,	-- Dcosta
+	["6fa33b250dc66148a29d4b0a70c27fb9d942d5b4"] = true,	-- Flick
 	["ead5484f9ed620360c07871da0b9a1e629aa2111"] = true,	-- Farol
 	["233456cbc917bfd628fd301b94875b5735047a87"] = true,	-- Marcola
-	["b02266ba5f4fcff8d29b2e58ac1dd4806a52adcb"] = true,	-- Dexter
 	["ffa594ec30eba123ddfd37cff86e755e54ece227"] = true,	-- Araújo
+	["b02266ba5f4fcff8d29b2e58ac1dd4806a52adcb"] = true,	-- Dexter
 	["1218c328aa64b2bb66fdc3f7625f59a9e691790a"] = true,	-- Bueno
-	["889de531e80d24421494510dd8916d9d2611aa87"] = true,	-- Gabriel
 	["f7c77168ca3339283ea1114ee7fdcc46e46621d7"] = true,	-- Lopes
 	["5f56b3f1455b82b2a933c651404e8812b38df978"] = true,	-- Rave
-	["c9221de91050ddb64b5cf7c011eee286e5690fad"] = true,	-- Mjhow
-	["6fa33b250dc66148a29d4b0a70c27fb9d942d5b4"] = true,	-- Flick
-	["741bd6c9749f7d766f361a6c831302e868b67d16"] = true,	-- Dcosta
+	["bcee5475f92c3d54d2bbd31d8df5d2d2bb2f8a36"] = true,	-- DL
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ARENA (Itens recebidos ao entrar na arena)

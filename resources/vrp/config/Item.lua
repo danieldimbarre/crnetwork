@@ -2034,20 +2034,6 @@ local List = {
 		["Weight"] = 0.095,
 		["Economy"] = 30
 	},
-	["sulfur"] = {
-		["Index"] = "sulfur",
-		["Name"] = "Enxofre",
-		["Type"] = "Comum",
-		["Weight"] = 0.075,
-		["Economy"] = 8
-	},
-	["charcoal"] = {
-		["Index"] = "charcoal",
-		["Name"] = "Carvão",
-		["Type"] = "Comum",
-		["Weight"] = 0.075,
-		["Economy"] = 8
-	},
 	["ritmoneury"] = {
 		["Index"] = "ritmoneury",
 		["Name"] = "Ritmoneury",

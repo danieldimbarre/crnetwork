@@ -414,10 +414,13 @@ LootItens = {
 	},
 	["Weapons"] = {	
 		["Cooldown"] = 10,
+		["Random"] = true,
 		["List"] = {
-			{ ["item"] = "riflebody", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "smgbody", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "pistolbody", ["min"] = 1, ["max"] = 3 }
+			{ ["item"] = "plastic", ["min"] = 4, ["max"] = 5 },
+			{ ["item"] = "glass", ["min"] = 4, ["max"] = 5 },
+			{ ["item"] = "rubber", ["min"] = 4, ["max"] = 5 },
+			{ ["item"] = "copper", ["min"] = 4, ["max"] = 5 },
+			{ ["item"] = "aluminum", ["min"] = 4, ["max"] = 5 }
 		}
 	},
 	["Supplies"] = {

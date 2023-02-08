@@ -61,22 +61,16 @@ local DataCategory = {
 -- SKINSHOP:APPLY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("skinshop:Apply")
-AddEventHandler("skinshop:Apply",function(status)
-	if status["pants"] ~= nil then
-		Dataset = status
+AddEventHandler("skinshop:Apply",function(Table)
+	for Index,v in pairs(Dataset) do
+		if not Table[Index] then
+			Table[Index] = v
+		end
 	end
 
+	Dataset = Table
 	ApplyDataset(Dataset)
 	vSERVER.updateClothes(Dataset)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- UPDATEROUPAS
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("updateRoupas")
-AddEventHandler("updateRoupas",function(custom)
-	Dataset = custom
-	ApplyDataset(custom)
-	vSERVER.updateClothes(custom)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATETATTOO

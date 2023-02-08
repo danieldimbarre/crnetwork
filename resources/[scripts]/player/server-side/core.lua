@@ -922,7 +922,7 @@ AddEventHandler("player:Outfit",function(Mode)
 		elseif Mode == "aplicarpremium" and vRP.UserPremium(Passport) then
 			local result = vRP.GetSrvData("OutfitPremium:"..Passport)
 			if result["pants"] ~= nil then
-				TriggerClientEvent("updateRoupas",source,result)
+				TriggerClientEvent("skinshop:Apply",source,result)
 				TriggerClientEvent("Notify",source,"verde","Roupas Premium aplicadas.",3000)
 			else
 				TriggerClientEvent("Notify",source,"amarelo","Roupas Premium não encontradas.",3000)

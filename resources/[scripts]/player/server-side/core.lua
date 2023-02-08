@@ -659,7 +659,7 @@ AddEventHandler("player:Preset",function(Number)
 			local Model = vRP.ModelPlayer(source)
 
 			if Model == "mp_m_freemode_01" or "mp_f_freemode_01" then
-				TriggerClientEvent("updateRoupas",source,preset[Number][Model])
+				TriggerClientEvent("skinshop:Apply",source,preset[Number][Model])
 			end
 		end
 	end
@@ -757,7 +757,7 @@ AddEventHandler("player:Outfit",function(Mode)
 		if Mode == "aplicar" then
 			local result = vRP.GetSrvData("Outfit:"..Passport)
 			if result["pants"] ~= nil then
-				TriggerClientEvent("updateRoupas",source,result)
+				TriggerClientEvent("skinshop:Apply",source,result)
 				TriggerClientEvent("Notify",source,"verde","Roupas aplicadas.",3000)
 			else
 				TriggerClientEvent("Notify",source,"amarelo","Roupas não encontradas.",3000)
@@ -771,9 +771,9 @@ AddEventHandler("player:Outfit",function(Mode)
 		elseif Mode == "remover" then
 			local Model = vRP.ModelPlayer(source)
 			if Model == "mp_m_freemode_01" then
-				TriggerClientEvent("updateRoupas",source,removeFit["homem"])
+				TriggerClientEvent("skinshop:Apply",source,removeFit["homem"])
 			elseif Model == "mp_f_freemode_01" then
-				TriggerClientEvent("updateRoupas",source,removeFit["mulher"])
+				TriggerClientEvent("skinshop:Apply",source,removeFit["mulher"])
 			end
 		else
 			TriggerClientEvent("skinshop:set"..Mode,source)

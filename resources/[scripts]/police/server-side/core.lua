@@ -115,7 +115,7 @@ AddEventHandler("police:prisonClothes",function(entity)
 	if Passport and vRP.GetHealth(source) > 100 then
 		local mHash = vRP.ModelPlayer(entity[1])
 		if mHash == "mp_m_freemode_01" or mHash == "mp_f_freemode_01" then
-			TriggerClientEvent("updateRoupas",entity[1],Preset[mHash])
+			TriggerClientEvent("skinshop:Apply",entity[1],Preset[mHash])
 		end
 	end
 end)

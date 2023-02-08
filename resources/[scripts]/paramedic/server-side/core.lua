@@ -265,7 +265,7 @@ AddEventHandler("paramedic:presetBurn",function(entity)
 		if vRP.HasService(Passport,"Emergency") then
 			local Model = vRP.ModelPlayer(entity)
 			if Model == "mp_m_freemode_01" or "mp_f_freemode_01" then
-				TriggerClientEvent("updateRoupas",entity,preset["1"][Model])
+				TriggerClientEvent("skinshop:Apply",entity,preset["1"][Model])
 			end
 		end
 	end
@@ -281,7 +281,7 @@ AddEventHandler("paramedic:presetPlaster",function(entity)
 		if vRP.HasService(Passport,"Emergency") then
 			local Model = vRP.ModelPlayer(entity)
 			if Model == "mp_m_freemode_01" or "mp_f_freemode_01" then
-				TriggerClientEvent("updateRoupas",entity,preset["2"][Model])
+				TriggerClientEvent("skinshop:Apply",entity,preset["2"][Model])
 			end
 		end
 	end

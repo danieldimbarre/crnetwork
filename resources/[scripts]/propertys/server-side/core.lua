@@ -192,17 +192,18 @@ AddEventHandler("propertys:Clothes",function(Mode)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Split = splitString(Mode,"-")
-		local Consult = vRP.GetSrvData("Wardrobe:"..Passport)
+		local Consult = vRP.GetSrvData("Wardrobe:"..Passport,true)
 		local Name = Split[2]
 
 		if Split[1] == "save" then
-			local Keyboard = vKEYBOARD.keySingle(source,"Salvar como:")
+			local Keyboard = vKEYBOARD.keySingle(source,"Nome")
 			if Keyboard then
 				local Name = Keyboard[1]
+				local NameCheck = sanitizeString(Keyboard[1],"abcdefghijklmnopqrstuvwxyz0123456789",true)
 
-				if not Consult[Name] then
-					Consult[Name] = vSKINSHOP.getCustomization(source)
-					vRP.SetSrvData("Wardrobe:"..Passport,Consult)
+				if not Consult[NameCheck] then
+					Consult[NameCheck] = vSKINSHOP.Customization(source)
+					vRP.SetSrvData("Wardrobe:"..Passport,Consult,true)
 					TriggerClientEvent("propertys:ClothesReset",source)
 					TriggerClientEvent("Notify",source,"verde","<b>"..Name.."</b> adicionado.",5000)
 				else
@@ -210,17 +211,17 @@ AddEventHandler("propertys:Clothes",function(Mode)
 				end
 			end
 		elseif Split[1] == "delete" then
-			if Consult[Name] ~= nil then
+			if Consult[Name] then
 				Consult[Name] = nil
-				vRP.SetSrvData("Wardrobe:"..Passport,Consult)
+				vRP.SetSrvData("Wardrobe:"..Passport,Consult,true)
 				TriggerClientEvent("propertys:ClothesReset",source)
 				TriggerClientEvent("Notify",source,"verde","<b>"..Name.."</b> removido.",5000)
 			else
 				TriggerClientEvent("Notify",source,"amarelo","A vestimenta salva não se encontra mais em seu armário.",5000)
 			end
 		elseif Split[1] == "apply" then
-			if Consult[Name] ~= nil then
-				TriggerClientEvent("updateRoupas",source,Consult[Name])
+			if Consult[Name] then
+				TriggerClientEvent("skinshop:Apply",source,Consult[Name])
 				TriggerClientEvent("Notify",source,"verde","<b>"..Name.."</b> aplicado.",5000)
 			else
 				TriggerClientEvent("Notify",source,"amarelo","A vestimenta salva não se encontra mais em seu armário.",5000)

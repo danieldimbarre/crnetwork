@@ -67,9 +67,9 @@ RegisterNUICallback("save",function(Data,Callback)
 				saveData(vehicle,Data)
 			end
 		end
-
-		Callback("Ok")
 	end
+
+	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESET
@@ -84,6 +84,8 @@ RegisterNUICallback("reset",function(Data,Callback)
 		local Reset = exports["vstancer"]:GetWheelPreset(Vehicle)
 		Callback({ trackf = mathLength(Reset[1] * -1), trackr = mathLength(Reset[3] * -1) })
 	end
+
+	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NOTEBOOK:OPENSYSTEM

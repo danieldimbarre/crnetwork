@@ -8,7 +8,7 @@ let degrees = 0;
 let new_degrees = 0;
 let time = 0;
 let color = "#00e076";
-let bgcolor = "rgba(81,81,81,.50)";
+let bgcolor = "rgba(15,15,15,.50)";
 let bgcolor2 = "#ccc";
 let key_to_press;
 let g_start,g_end;
@@ -56,7 +56,9 @@ function init(){
 	ctx.stroke();
 
 	ctx.fillStyle = bgcolor2;
-	ctx.font = "100px sans-serif";
+	ctx.font = "100px Roboto";
+	ctx.shadowColor = "black";
+	ctx.shadowBlur = 5;
 	let text_width = ctx.measureText(key_to_press).width;
 	ctx.fillText(key_to_press, W / 2 - text_width / 2, H / 2 + 35);
 }

@@ -242,6 +242,34 @@
       <sirenSettings value="83687"/>
     </Item>
     <Item>
+      <modelName>bcat</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            22
+            13
+            4
+            13
+          </indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_suv_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0"/>
+      <sirenSettings value="72"/>
+    </Item>
+    <Item>
       <modelName>broncopol</modelName>
       <colors>
         <Item>
@@ -402,38 +430,6 @@
       <sirenSettings value="2481246"/>
     </Item>
     <Item>
-      <modelName>g310gtm</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">147 147 147 147 147 147</indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>0_bike_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="1"/>
-      <sirenSettings value="1312345"/>
-    </Item>
-    <Item>
       <modelName>gtrpit</modelName>
       <colors>
         <Item>
@@ -464,6 +460,38 @@
       </plateProbabilities>
       <lightSettings value="1200"/>
       <sirenSettings value="0"/>
+    </Item>
+    <Item>
+      <modelName>g310gtm</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">147 147 147 147 147 147</indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_bike_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="1312345"/>
     </Item>
     <Item>
       <modelName>maverick2</modelName>
@@ -706,34 +734,6 @@
       </plateProbabilities>
       <lightSettings value="18"/>
       <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>bcat</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            22
-            13
-            4
-            13
-          </indices>
-          <liveries/>
-        </Item>
-      </colors>
-      <kits>
-        <Item>0_suv_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Police guv plate</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="0"/>
-      <sirenSettings value="72"/>
     </Item>
     <Item>
       <modelName>emsaw139</modelName>
@@ -11612,6 +11612,43 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
+      <modelName>gxrx7</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111
+            0
+            0
+            0 
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>65011_gxrx7_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="46"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
       <modelName>tempestacustom</modelName>
       <colors>
         <Item>
@@ -11970,43 +12007,6 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="108"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>gxrx7</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            111
-            0
-            0
-            0 
-          </indices>
-          <liveries>
-            <Item value="true"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>65011_gxrx7_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="46"/>
       <sirenSettings value="0"/>
     </Item>
     <Item>

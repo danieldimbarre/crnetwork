@@ -570,7 +570,13 @@ RegisterCommand("fix",function(source)
 		if vRP.HasGroup(Passport,"Admin",2) then
 			local Vehicle,Network,Plate = vRPC.VehicleList(source,10)
 			if Vehicle then
-				TriggerClientEvent("inventory:repairAdmin",source,Network,Plate)
+				local Players = vRPC.Players(source)
+				for _,v in pairs(Players) do
+					async(function()
+						TriggerClientEvent("inventory:repairAdmin",v,Network,Plate)
+					end)
+				end
+
 				TriggerEvent("Discord","Admin","**fix**\n\n**Passaporte:** "..Passport.."\n**Placa:** "..Plate,3553599)
 			end
 		end

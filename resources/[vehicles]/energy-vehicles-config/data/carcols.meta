@@ -111140,7 +111140,7 @@
       <liveryNames/>
     </Item>
     <Item>
-      <kitName>9445_penumbra3_modkit</kitName>
+      <kitName>9445_penumbracustom_modkit</kitName>
       <id value="9445"/>
       <kitType>MKT_SPECIAL</kitType>
       <visibleMods>
@@ -113939,12 +113939,12 @@
       <liveryNames/>
     </Item>
     <Item>
-      <kitName>4099_boxville7_modkit</kitName>
+      <kitName>4099_nrgboxville_modkit</kitName>
       <id value="4099"/>
       <kitType>MKT_SPECIAL</kitType>
       <visibleMods>
         <Item>
-          <modelName>boxville7_livery1</modelName>
+          <modelName>nrgboxville_livery1</modelName>
           <modShopLabel>BOX_LIV1</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -113959,7 +113959,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>boxville7_livery2</modelName>
+          <modelName>nrgboxville_livery2</modelName>
           <modShopLabel>BOX_LIV2</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -113974,7 +113974,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>boxville7_livery3</modelName>
+          <modelName>nrgboxville_livery3</modelName>
           <modShopLabel>BOX_LIV3</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -113989,7 +113989,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>boxville7_livery4</modelName>
+          <modelName>nrgboxville_livery4</modelName>
           <modShopLabel>BOX_LIV4</modShopLabel>
           <linkedModels/>
           <turnOffBones/>
@@ -114004,7 +114004,7 @@
           <allowBonnetSlide value="true"/>
         </Item>
         <Item>
-          <modelName>boxville7_livery5</modelName>
+          <modelName>nrgboxville_livery5</modelName>
           <modShopLabel>BOX_LIV5</modShopLabel>
           <linkedModels/>
           <turnOffBones/>

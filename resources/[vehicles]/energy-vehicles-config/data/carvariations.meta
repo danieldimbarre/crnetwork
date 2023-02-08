@@ -2416,7 +2416,7 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>deluxo2</modelName>
+      <modelName>deluxocustom</modelName>
       <colors>
         <Item>
           <indices content="char_array">
@@ -2425,7 +2425,7 @@
             6
             0
             19
-            156
+            156 
           </indices>
           <liveries>
             <Item value="false"/>
@@ -9746,7 +9746,7 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>penumbra3</modelName>
+      <modelName>penumbracustom</modelName>
       <colors>
         <Item>
           <indices content="char_array">
@@ -10225,7 +10225,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>9445_penumbra3_modkit</Item>
+        <Item>9445_penumbracustom_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
@@ -10240,7 +10240,7 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
-      <modelName>boxville7</modelName>
+      <modelName>nrgboxville</modelName>
       <colors>
         <Item>
           <indices content="char_array">
@@ -10328,7 +10328,7 @@
         </Item>
       </colors>
       <kits>
-        <Item>4099_boxville7_modkit</Item>
+        <Item>4099_nrgboxville_modkit</Item>
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>

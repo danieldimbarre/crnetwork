@@ -114,7 +114,7 @@ end)
 -- CRAFTING:OPENSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("crafting:openSystem",function(Number)
-	if List[Number] then
+	if List[Number] and GetEntityHealth(PlayerPedId()) > 100 then
 		if vSERVER.requestPerm(Number,List[Number][4]) then
 			SetNuiFocus(true,true)
 			SendNUIMessage({ action = "showNUI", name = List[Number][4] })

@@ -23,8 +23,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("trunkchest:Open")
 AddEventHandler("trunkchest:Open",function()
-	SetNuiFocus(true,true)
-	SendNUIMessage({ action = "showMenu" })
+	if GetEntityHealth(PlayerPedId()) > 100 then
+		SetNuiFocus(true,true)
+		SendNUIMessage({ action = "showMenu" })
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM

@@ -187,7 +187,7 @@ local List = {
 -- SHOPS:OPENSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:openSystem",function(shopId)
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		if vSERVER.requestPerm(List[shopId][4]) then
 			SetNuiFocus(true,true)
 			SendNUIMessage({ action = "showNUI", name = List[shopId][4], type = vSERVER.getShopType(List[shopId][4]) })
@@ -202,7 +202,7 @@ end)
 -- SHOPS:COFFEEMACHINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:coffeeMachine",function()
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		SendNUIMessage({ action = "showNUI", name = "coffeeMachine", type = "Buy" })
 		SetNuiFocus(true,true)
 	end
@@ -211,7 +211,7 @@ end)
 -- SHOPS:SODAMACHINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:sodaMachine",function()
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		SendNUIMessage({ action = "showNUI", name = "sodaMachine", type = "Buy" })
 		SetNuiFocus(true,true)
 	end
@@ -220,7 +220,7 @@ end)
 -- SHOPS:DONUTMACHINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:donutMachine",function()
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		SendNUIMessage({ action = "showNUI", name = "donutMachine", type = "Buy" })
 		SetNuiFocus(true,true)
 	end
@@ -229,7 +229,7 @@ end)
 -- SHOPS:BURGERMACHINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:burgerMachine",function()
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		SendNUIMessage({ action = "showNUI", name = "burgerMachine", type = "Buy" })
 		SetNuiFocus(true,true)
 	end
@@ -238,7 +238,7 @@ end)
 -- SHOPS:HOTDOGMACHINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:hotdogMachine",function()
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		SendNUIMessage({ action = "showNUI", name = "hotdogMachine", type = "Buy" })
 		SetNuiFocus(true,true)
 	end
@@ -247,7 +247,7 @@ end)
 -- SHOPS:CHIHUAHUA
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:Chihuahua",function()
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		SendNUIMessage({ action = "showNUI", name = "Chihuahua", type = "Buy" })
 		SetNuiFocus(true,true)
 	end
@@ -265,7 +265,7 @@ end)
 -- SHOPS:MEDICBAG
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:medicBag",function()
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		if vSERVER.requestPerm("Paramedic") then
 			SetNuiFocus(true,true)
 			SendNUIMessage({ action = "showNUI", name = "Paramedic", type = "Buy" })
@@ -276,8 +276,10 @@ end)
 -- SHOPS:FUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:Fuel",function()
-	SendNUIMessage({ action = "showNUI", name = "Fuel", type = "Buy" })
-	SetNuiFocus(true,true)
+	if  and GetEntityHealth(PlayerPedId()) > 100 then
+		SendNUIMessage({ action = "showNUI", name = "Fuel", type = "Buy" })
+		SetNuiFocus(true,true)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART

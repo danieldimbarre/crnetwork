@@ -177,7 +177,7 @@ end)
 -- CHEST:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("chest:Open",function(Name,Init)
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		if vSERVER.Permissions(Name,Init) then
 			SetNuiFocus(true,true)
 			SendNUIMessage({ Action = "Open" })

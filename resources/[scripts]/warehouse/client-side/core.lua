@@ -116,7 +116,7 @@ end)
 -- WAREHOUSE:OPENSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("warehouse:openSystem",function(Number)
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		if vSERVER.Warehouse(Number) then
 			Warehouse = Number
 			SetNuiFocus(true,true)

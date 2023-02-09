@@ -418,17 +418,37 @@ function Creative.Store(Item,Slot,Amount,Target)
 		end
 
 		if Open[Passport]["Mode"] == "Restaurants" then
-			Slot = Shop
-		end
+			Target = Shop
 
-		if vRP.StoreChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target) then
+			local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
+			if vRP.ChestWeight(Result) + (itemWeight(Split[1]) * Amount) <= Open[Passport]["Weight"] then
+				if Result[Target] then
+					Result[Target]["amount"] = Result[Target]["amount"] + Amount
+				else
+					Result[Target] = { ["item"] = Split[1], ["amount"] = Amount }
+				end
+
+				vRP.RemoveItem(Passport,Item,Amount,true)
+				vRP.SetSrvData("Chest:"..Open[Passport]["Name"],Result,Open[Passport]["Save"])
+				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
+
+				if Open[Passport]["Logs"] then
+					TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
+				end
+			end
+
 			TriggerClientEvent("chest:Update",source,"Refresh")
 		else
-			local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
-			TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
-
-			if Open[Passport]["Logs"] then
-				TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
+			if vRP.StoreChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target) then
+				TriggerClientEvent("chest:Update",source,"Refresh")
+			else
+				local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
+				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
+				TriggerClientEvent("chest:Update",source,"Refresh")
+	
+				if Open[Passport]["Logs"] then
+					TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
+				end
 			end
 		end
 	end
@@ -443,28 +463,33 @@ function Creative.Take(Item,Slot,Amount,Target)
 	if Passport and Open[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
-		if vRP.ChestWeight(Result) > 50 and Item == "diagram" then
-			if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
-				vRP.Query("chests/UpdateChests",{ name = Open[Passport]["Name"] })
-				TriggerClientEvent("chest:Update",source,"Refresh")
+		if Open[Passport]["Mode"] ~= "Restaurants" then
+			local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
+			if vRP.ChestWeight(Result) > 50 and Item == "diagram" then
+				if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
+					vRP.Query("chests/UpdateChests",{ name = Open[Passport]["Name"] })
+					TriggerClientEvent("chest:Update",source,"Refresh")
+				end
+			else
+				if vRP.TakeChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Slot,Target) then
+					TriggerClientEvent("chest:Update",source,"Refresh")
+				else
+					Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
+					TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
+					TriggerClientEvent("chest:Update",source,"Refresh")
+
+					if string.sub(Open[Passport]["Name"],1,9) == "Helicrash" and vRP.ChestWeight(Result) <= 0 then
+						TriggerClientEvent("chest:Close",source)
+						exports["helicrash"]:Box()
+					end
+
+					if Open[Passport]["Logs"] then
+						TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
+					end
+				end
 			end
 		else
-			if vRP.TakeChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Slot,Target) then
-				TriggerClientEvent("chest:Update",source,"Refresh")
-			else
-				Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
-				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
-
-				if string.sub(Open[Passport]["Name"],1,9) == "Helicrash" and vRP.ChestWeight(Result) <= 0 then
-					TriggerClientEvent("chest:Close",source)
-					exports["helicrash"]:Box()
-				end
-
-				if Open[Passport]["Logs"] then
-					TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
-				end
-			end
+			TriggerClientEvent("chest:Update",source,"Refresh")
 		end
 	end
 end

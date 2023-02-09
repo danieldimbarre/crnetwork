@@ -503,7 +503,7 @@ function BlockRestaurant(Restaurant,Item)
 	local Split = splitString(Item)
 	local Item = Split[1]
 
-	if BlockShop[Restaurant]["List"][Item] then
+	if BlockShop[Restaurant] then
 		return BlockShop[Restaurant]["Money"],BlockShop[Restaurant]["List"][Item]
 	end
 

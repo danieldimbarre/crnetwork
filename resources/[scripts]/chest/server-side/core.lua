@@ -39,7 +39,7 @@ function Creative.Permissions(Name,Mode)
 				local PermSplit = splitString(Consult[1]["perm"],"-")
 
 				if (PermSplit[2] and vRP.HasGroup(Passport,PermSplit[1],parseInt(PermSplit[2]))) or vRP.HasService(Passport,Consult[1]["perm"]) then
-					Open[Passport] = { ["Name"] = Name, ["Weight"] = 50, ["Mode"] = Mode, ["Logs"] = false, ["Save"] = true }
+					Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Mode"] = Mode, ["Logs"] = false, ["Save"] = true }
 					return true
 				end
 			end

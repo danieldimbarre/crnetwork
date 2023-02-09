@@ -276,7 +276,7 @@ end)
 -- SHOPS:FUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:Fuel",function()
-	if  and GetEntityHealth(PlayerPedId()) > 100 then
+	if GetEntityHealth(PlayerPedId()) > 100 then
 		SendNUIMessage({ action = "showNUI", name = "Fuel", type = "Buy" })
 		SetNuiFocus(true,true)
 	end

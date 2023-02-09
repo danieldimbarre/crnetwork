@@ -392,9 +392,9 @@ function Creative.Store(Item,Slot,Amount,Target)
 	if Passport and Open[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		local Restaurant = splitString(Open[Passport]["Name"],"-")
-		local _,Shop = BlockRestaurant(Restaurant[1],Item)
-		if itemBlock(Item) or (Open[Passport]["Mode"] == "Restaurants" and not Shop) then
+		local Name = splitString(Open[Passport]["Name"],"-")
+		local _,Shop = BlockRestaurant(Name[1],Item)
+		if itemBlock(Item) or (Open[Passport]["Mode"] == "Restaurants" and not Shop) or Name[1] == "Helicrash" then
 			TriggerClientEvent("chest:Update",source,"Refresh")
 			return
 		end
@@ -486,7 +486,8 @@ function Creative.Take(Item,Slot,Amount,Target)
 					TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
 					TriggerClientEvent("chest:Update",source,"Refresh")
 
-					if string.sub(Open[Passport]["Name"],1,9) == "Helicrash" and vRP.ChestWeight(Result) <= 0 then
+					local Split = splitString(Open[Passport]["Name"])
+					if Split[1] == "Helicrash" and vRP.ChestWeight(Result) <= 0 then
 						TriggerClientEvent("chest:Close",source)
 						exports["helicrash"]:Box()
 					end

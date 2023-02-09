@@ -193,7 +193,7 @@ space {
 }
 
 .stats > .NaviButton > svg > .Nitro {
-	stroke-width: 8px;
+	stroke-width: 4px;
 	stroke-dashoffset: 100;
 }
 
@@ -253,6 +253,12 @@ space {
 
 .VisorSpeed p {
 	font-size: 5em;
+	color: #898989;
+}
+
+.VisorSpeed p gray {
+	font-size: 1em;
+	color: #898989 !important;
 }
 
 .VisorSpeed > div {
@@ -265,23 +271,11 @@ space {
 	font-family: "Roboto" !important;
 }
 
-.VisorSpeed gray {
-	font-size: 1em;
-	font-weight: 300;
-	color: #898989 !important;
-	margin-top: 5px !important;
-}
-
 .NumMarch {
 	position: absolute;
 	top: 1.6em;
 	font-size: 2em;
 	color: #ccc;
-}
-
-.VisorSpeed p:nth-child(2) {
-	font-weight: 500;
-	font-size: 2.5em;
 }
 
 .stats {

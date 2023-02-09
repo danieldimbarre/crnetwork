@@ -31,9 +31,12 @@ CreateThread(function()
 
 					for _,w in pairs(Loots[Loot]) do
 						for Slot,v in pairs(v) do
-							local Durability = itemDurability(v["item"])
-							if Durability then
-								Loots[Loot][Slot]["item"] = Loots[Loot][Slot]["item"].."-"..parseInt(os.time() + (86400 * (Durability - (Durability / math.random(2,5)))))
+							local Split = splitString(v["item"])
+							if Split[2] then
+								local Durability = itemDurability(v["item"])
+								if Durability then
+									Loots[Loot][Slot]["item"] = Loots[Loot][Slot]["item"].."-"..parseInt(os.time() + (86400 * (Durability - (Durability / math.random(2,5)))))
+								end
 							end
 						end
 					end

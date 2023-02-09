@@ -10,6 +10,7 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("shops",Creative)
 vCLIENT = Tunnel.getInterface("shops")
+vCHEST = Tunnel.getInterface("chest")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -31,7 +32,7 @@ local shops = {
 			["mushroomtea"] = 300
 		}
 	},
-	["BurgerShot-2"] = {
+	["BurgerShot-3"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["shop"] = true,
@@ -63,7 +64,7 @@ local shops = {
 			["mushroomtea"] = 300
 		}
 	},
-	["PizzaThis-2"] = {
+	["PizzaThis-3"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["shop"] = true,
@@ -92,7 +93,7 @@ local shops = {
 			["mushroomtea"] = 300
 		}
 	},
-	["UwuCoffee-2"] = {
+	["UwuCoffee-3"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["shop"] = true,
@@ -117,7 +118,7 @@ local shops = {
 			["mushroomtea"] = 300
 		}
 	},
-	["BeanMachine-2"] = {
+	["BeanMachine-3"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["shop"] = true,
@@ -248,7 +249,7 @@ local shops = {
 			["WEAPON_WRENCH"] = 580
 		}
 	},
-	["Mechanic-2"] = {
+	["Mechanic-3"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["shop"] = true,
@@ -757,6 +758,16 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 									end
 								end
 
+								if shops[Type]["shop"] then
+									local Restaurant = vCHEST.Restaurants(source)
+									if Restaurant then
+										local Result = vRP.GetSrvData("Chest:"..Restaurant[shops[Type]["List"][Item]][1],true)
+										if Result[Restaurant[shops[Type]["List"][Item]][2]]["item"] ~= shops[Type]["List"][Item] or Result[Restaurant[shops[Type]["List"][Item]][2]]["item"] < Amount then
+											return
+										end
+									end
+								end
+
 								if vRP.PaymentFull(Passport,shops[Type]["List"][Item] * Amount) then
 									if Item == "identity" or string.sub(Item,1,5) == "badge" then
 										local Split = splitString(Item,"-")
@@ -781,16 +792,19 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 											end
 										end
 									else
-										vRP.GenerateItem(Passport,Item,Amount,false,Slot)
-
-										if Item == "WEAPON_PETROLCAN" then
-											vRP.GenerateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500,false)
-										end
-
 										if shops[Type]["shop"] then
-											local Split = splitString(Type,"-")
-											
-											vRP.DirectChest(Split[1],"500",(shops[Type]["List"][Item] * Amount) * 0.05)
+											if vRP.TakeChest(Passport,"Chest:"..Restaurant[shops[Type]["List"][Item]][1],Amount,Slot) then
+												vCLIENT.updateShops(source,"requestShop")
+												return
+											else
+												vRP.DirectChest(Type,"500",(shops[Type]["List"][Item] * Amount) * 0.05)
+											end
+										else
+											vRP.GenerateItem(Passport,Item,Amount,false,Slot)
+
+											if Item == "WEAPON_PETROLCAN" then
+												vRP.GenerateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500,false)
+											end
 										end
 									end
 

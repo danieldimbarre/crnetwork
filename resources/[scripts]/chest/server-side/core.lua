@@ -22,7 +22,7 @@ function Creative.Permissions(Name,Mode)
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Wanted(Passport) then
 		if Mode == "Personal" then
-			Open[Passport] = { ["Name"] = Passport, ["Weight"] = 50, ["Logs"] = false, ["Save"] = true }
+			Open[Passport] = { ["Name"] = Passport, ["Weight"] = 50, ["Mode"] = Mode, ["Logs"] = false, ["Save"] = true }
 			return true
 		elseif Mode == "Evidences" and vRP.HasService(Passport,"Police") then
 			local Keyboard = vKEYBOARD.keySingle(source,"Passaporte:")
@@ -31,12 +31,22 @@ function Creative.Permissions(Name,Mode)
 				return true
 			end
 		elseif Mode == "Custom" then
-			Open[Passport] = { ["Name"] = Name, ["Weight"] = 50, ["Logs"] = false, ["Save"] = false }
+			Open[Passport] = { ["Name"] = Name, ["Weight"] = 50, ["Mode"] = Mode, ["Logs"] = false, ["Save"] = false }
 			return true
+		elseif Mode == "Restaurants" then
+			local Consult = vRP.Query("chests/GetChests",{ name = Name })
+			if Consult[1] then
+				local PermSplit = splitString(Consult[1]["perm"],"-")
+
+				if (PermSplit[2] and vRP.HasGroup(Passport,PermSplit[1],parseInt(PermSplit[2]))) or vRP.HasService(Passport,Consult[1]["perm"]) then
+					Open[Passport] = { ["Name"] = Name, ["Weight"] = 50, ["Mode"] = Mode, ["Logs"] = false, ["Save"] = true }
+					return true
+				end
+			end
 		else
 			local NameSplit = splitString(Name,"-")
 			if NameSplit[1] == "trayShot" or NameSplit[1] == "trayDesserts" or NameSplit[1] == "trayPizza" or NameSplit[1] == "trayBean" then
-				Open[Passport] = { ["Name"] = Name, ["Weight"] = 15, ["Logs"] = false, ["Save"] = true }
+				Open[Passport] = { ["Name"] = Name, ["Weight"] = 15, ["Mode"] = Mode, ["Logs"] = false, ["Save"] = true }
 				return true
 			end
 
@@ -45,7 +55,7 @@ function Creative.Permissions(Name,Mode)
 				local PermSplit = splitString(Consult[1]["perm"],"-")
 
 				if (PermSplit[2] and vRP.HasGroup(Passport,PermSplit[1],parseInt(PermSplit[2]))) or vRP.HasService(Passport,Consult[1]["perm"]) then
-					Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Logs"] = Consult[1]["logs"], ["Save"] = true }
+					Open[Passport] = { ["Name"] = Name, ["Weight"] = Consult[1]["weight"], ["Mode"] = Mode, ["Logs"] = Consult[1]["logs"], ["Save"] = true }
 					return true
 				end
 			end
@@ -365,6 +375,22 @@ local OpenItens = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- RESTAURANTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Restaurants = {
+	["hamburger2"] = { "BurgerShot","499" },
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RESTAURANT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Restaurant(Item)
+	if Restaurants[Item] then
+		return Restaurants[Item]
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Store(Item,Slot,Amount,Target)
@@ -374,10 +400,9 @@ function Creative.Store(Item,Slot,Amount,Target)
 	if Passport and Open[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if itemBlock(Item) then
+		if itemBlock(Item) or (Open[Passport]["Mode"] == "Restaurants" and not BlockChest(Item)) then
 			TriggerClientEvent("chest:Update",source,"Refresh")
-
-			return true
+			return
 		end
 
 		local Split = splitString(Item,"-")
@@ -400,20 +425,33 @@ function Creative.Store(Item,Slot,Amount,Target)
 						vRP.GenerateItem(Passport,v["Item"],v["Amount"] * Amount,true)
 					end
 				end
+
 				TriggerClientEvent("chest:Update",source,"Refresh")
-				
-				return true
+				return
 			end
 		end
 
-		if vRP.StoreChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target) then
-			TriggerClientEvent("chest:Update",source,"Refresh")
+		if Open[Passport]["Mode"] == "Restaurants" and Restaurants[Split[1]] then
+			if vRP.StoreChest(Passport,"Chest:"..Restaurants[Split[1]][1],Amount,Open[Passport]["Weight"],Restaurants[Split[1]][2],Target) then
+				TriggerClientEvent("chest:Update",source,"Refresh")
+			else
+				local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
+				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
+	
+				if Open[Passport]["Logs"] then
+					TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
+				end
+			end
 		else
-			local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
-			TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
-
-			if Open[Passport]["Logs"] then
-				TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
+			if vRP.StoreChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target) then
+				TriggerClientEvent("chest:Update",source,"Refresh")
+			else
+				local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
+				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
+	
+				if Open[Passport]["Logs"] then
+					TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
+				end
 			end
 		end
 	end

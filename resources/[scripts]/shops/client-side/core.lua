@@ -152,19 +152,17 @@ local List = {
 	-- { 169.76,-1535.88,29.25,"Weapons",false },
 	-- { 301.14,-195.75,61.57,"Weapons",false },
 	{ -218.81,-1337.75,31.29,"Mechanic",false }, -- Bennys
-	{ -197.94,-1317.22,31.29,"Mechanic-2",false }, -- Bennys
-	{ -1408.56,-447.69,35.91,"Mechanic",false }, -- Hayes
-	{ -1407.32,-443.45,35.91,"Mechanic-2",false }, -- Hayes
-	{ 1690.09,3588.45,36.6,"Mechanic-2",false },
-	{ 97.46,6618.8,33.41,"Mechanic-2",false },
+	{ -197.94,-1317.22,31.29,"Mechanic-3",false }, -- Bennys
+	{ 1690.09,3588.45,36.6,"Mechanic-3",false },
+	{ 97.46,6618.8,33.41,"Mechanic-3",false },
 	{ -1196.9,-901.58,13.99,"BurgerShot",false },
-	{ -1195.68,-891.21,13.99,"BurgerShot-2",true },
+	{ -1195.68,-891.21,13.99,"BurgerShot-3",true },
 	{ 806.22,-761.68,26.77,"PizzaThis",false },
-	{ 810.88,-750.69,26.77,"PizzaThis-2",true },
+	{ 810.88,-750.69,26.77,"PizzaThis-3",true },
 	{ -588.5,-1066.23,22.34,"UwuCoffee",false },
-	{ -585.49,-1063.02,22.34,"UwuCoffee-2",true },
+	{ -585.49,-1063.02,22.34,"UwuCoffee-3",true },
 	{ 124.01,-1036.72,29.27,"BeanMachine",false },
-	{ 121.52,-1038.39,29.27,"BeanMachine-2",true },
+	{ 121.52,-1038.39,29.27,"BeanMachine-3",true },
 	-- { -1127.26,-1439.35,5.22,"Clothes",false },
 	{ 70.55,-1391.32,29.37,"Clothes",false },
 	{ -709.12,-146.91,37.41,"Clothes",false },

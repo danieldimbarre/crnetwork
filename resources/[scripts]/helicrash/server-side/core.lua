@@ -42,7 +42,7 @@ CreateThread(function()
 				end
 			end
 
-			TriggerClientEvent("Notify",-1,"azul","Mayday! Mayday! Tivemos problemas técnicos em nossos motores e estamos em queda livre.",30000)
+			TriggerClientEvent("Notify",-1,"azul","Mayday! Mayday! Tivemos problemas técnicos em nossos motores e estamos em queda livre.",60000)
 			GlobalState["Helicrash"] = Selected
 			GlobalState["HelicrashCooldown"] = os.time() + 600
 			Cooldown = os.time() + 3600

@@ -58,7 +58,7 @@ Discords = {
 	["Trunkchest"] = "https://discord.com/api/webhooks/1065328061786112090/Abs3Gln3MHUjRgo_nj1-JSLUP8WD7hS9IDVtAzuBdNcs01zwEWDZz3OtICsxRbo6-QDt",
 	["Inventory"] = "https://discord.com/api/webhooks/1065377148388524044/zggAyvRv0vYkWJs4Nxt87m7W6K6xijU8_Goz3pKcRLRASIa2hTfkHCVGdHYZh8_2PA_J",
 	["Premium"] = "https://discord.com/api/webhooks/1067585953411112981/FRUdmT6LiP9aJ_bhTs5RqarvQASDKmeH7OyuY_UIZsPxXMoDfxb7FLlDwG1FCwHzjU9e",
-	["dollarsz"] = "https://discord.com/api/webhooks/1072158590145675359/G4Qm00M_dB31ubEMQmO65mz0hAZFvedFSZblIhJAVbsfccAeBZVAmknFbtQ-z9wmoKHn"
+	["Wash"] = "https://discord.com/api/webhooks/1072158590145675359/G4Qm00M_dB31ubEMQmO65mz0hAZFvedFSZblIhJAVbsfccAeBZVAmknFbtQ-z9wmoKHn"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCORD

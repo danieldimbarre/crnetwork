@@ -1157,10 +1157,8 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 
 				if List[Type]["Type"] == "Wash" then
 					vRP.RemoveItem(Passport,consumePendrive,1)
-				end
 
-				if consumePendrive ~= "" then
-					TriggerEvent("Discord",consultItem[2],"**Passaporte:** "..Passport.."\n**Gerou:** "..List[Type]["List"][Item]["amount"] * Amount.."x "..itemName(Item),3042892)
+					TriggerEvent("Discord",List[Type]["Type"],"**Passaporte:** "..Passport.."\n**Gerou:** "..List[Type]["List"][Item]["amount"] * Amount.."x "..itemName(Item),3042892)
 				end
 			else
 				TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)

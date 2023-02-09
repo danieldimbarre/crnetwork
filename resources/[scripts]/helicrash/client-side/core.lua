@@ -32,7 +32,7 @@ CreateThread(function()
 								minZ = v[1]["z"] - 1.00,
 								maxZ = v[1]["z"] + 0.25
 							},{
-								shop = "Helicrash"..Number,
+								shop = "Helicrash-"..Number,
 								Distance = 1.75,
 								options = {
 									{

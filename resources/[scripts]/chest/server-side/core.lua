@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
+vRPC = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
@@ -31,6 +32,13 @@ function Creative.Permissions(Name,Mode)
 				return true
 			end
 		elseif Mode == "Custom" then
+			local Split = splitString(Name)
+			if Split[1] == "Helicrash" and GlobalState["HelicrashCooldown"] > os.time() then
+				vRPC.DowngradeHealth(source,10)
+				TriggerClientEvent("Notify",source,"aviso","A caixa ainda está quente! Aguarde <b>"..parseInt(GlobalState["HelicrashCooldown"] - os.time()).."</b> segundos.",3000)
+				return
+			end
+
 			Open[Passport] = { ["Name"] = Name, ["Weight"] = 50, ["Mode"] = Mode, ["Logs"] = false, ["Save"] = false }
 			return true
 		elseif Mode == "Restaurants" then

@@ -12,6 +12,7 @@ local Cooldown = os.time()
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 GlobalState["Helicrash"] = false
+GlobalState["HelicrashCooldown"] = os.time()
 GlobalState["Firework"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SYSTEM
@@ -26,13 +27,14 @@ CreateThread(function()
 					Boxes = Boxes + 1
 
 					local Loot = math.random(#Loots)
-					vRP.RemSrvData("Chest:Helicrash"..Number,false)
-					vRP.SetSrvData("Chest:Helicrash"..Number,Loots[Loot],false)
+					vRP.RemSrvData("Chest:Helicrash-"..Number,false)
+					vRP.SetSrvData("Chest:Helicrash-"..Number,Loots[Loot],false)
 				end
 			end
 
 			TriggerClientEvent("Notify",-1,"azul","Mayday! Mayday! Tivemos problemas técnicos em nossos motores e estamos em queda livre.",30000)
 			GlobalState["Helicrash"] = Selected
+			GlobalState["HelicrashCooldown"] = os.time() + 600
 			Cooldown = os.time() + 3600
 		end
 

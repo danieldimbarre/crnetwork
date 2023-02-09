@@ -27,7 +27,7 @@ AddEventHandler("NotifyPush",function(data)
 
 	numberBlips = numberBlips + 1
 
-	timeBlips[numberBlips] = 60
+	timeBlips[numberBlips] = data["cooldown"] or 60
 	showBlips[numberBlips] = AddBlipForCoord(data["x"],data["y"],data["z"])
 
 	SetBlipSprite(showBlips[numberBlips],270)
@@ -39,7 +39,7 @@ AddEventHandler("NotifyPush",function(data)
 	AddTextComponentString(data["title"])
 	EndTextCommandSetBlipName(showBlips[numberBlips])
 
-	if parseInt(data["code"]) == 13 then
+	if data["code"] == 13 then
 		TriggerEvent("sounds:Private","deathcop",0.7)
 	end
 end)

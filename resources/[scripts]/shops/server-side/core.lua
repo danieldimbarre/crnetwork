@@ -763,6 +763,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 									if Restaurant then
 										local Result = vRP.GetSrvData("Chest:"..Type,true)
 										if Result[Restaurant[shops[Type]["List"][Item]][2]]["item"] ~= shops[Type]["List"][Item] or Result[Restaurant[shops[Type]["List"][Item]][2]]["item"] < Amount then
+											TriggerClientEvent("Notify",source,"vermelho","<b>Estoque</b> insuficiente.",5000)
 											return
 										end
 									end

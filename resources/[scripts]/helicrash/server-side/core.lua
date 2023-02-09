@@ -47,7 +47,7 @@ CreateThread(function()
 		end
 
 		if Backup[os.date("%M")] then
-			TriggerEvent("SaveServer",true)
+			TriggerEvent("SaveServer",false)
 		end
 
 		Wait(1000)

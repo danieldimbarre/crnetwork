@@ -375,22 +375,6 @@ local OpenItens = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- RESTAURANTS
------------------------------------------------------------------------------------------------------------------------------------------
-local Restaurants = {
-	["hamburger2"] = { "BurgerShot-2","499" },
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- RESTAURANT
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Restaurant(Item)
-	if Restaurants[Item] then
-		return Restaurants[Item]
-	end
-
-	return false
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Store(Item,Slot,Amount,Target)
@@ -400,7 +384,9 @@ function Creative.Store(Item,Slot,Amount,Target)
 	if Passport and Open[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if itemBlock(Item) or (Open[Passport]["Mode"] == "Restaurants" and not BlockChest(Item)) then
+		local Restaurant = splitString(Open[Passport]["Name"],"-")
+		local _,Shop = BlockRestaurant(Restaurant[1],Item)
+		if itemBlock(Item) or (Open[Passport]["Mode"] == "Restaurants" and not Shop) then
 			TriggerClientEvent("chest:Update",source,"Refresh")
 			return
 		end
@@ -431,27 +417,18 @@ function Creative.Store(Item,Slot,Amount,Target)
 			end
 		end
 
-		if Open[Passport]["Mode"] == "Restaurants" and Restaurants[Split[1]] then
-			if vRP.StoreChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Restaurants[Split[1]][2],Target) then
-				TriggerClientEvent("chest:Update",source,"Refresh")
-			else
-				local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
-				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
-	
-				if Open[Passport]["Logs"] then
-					TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
-				end
-			end
+		if Open[Passport]["Mode"] == "Restaurants" then
+			Slot = Shop
+		end
+
+		if vRP.StoreChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target) then
+			TriggerClientEvent("chest:Update",source,"Refresh")
 		else
-			if vRP.StoreChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target) then
-				TriggerClientEvent("chest:Update",source,"Refresh")
-			else
-				local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
-				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
-	
-				if Open[Passport]["Logs"] then
-					TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
-				end
+			local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])
+			TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
+
+			if Open[Passport]["Logs"] then
+				TriggerEvent("Discord",Open[Passport]["Name"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
 			end
 		end
 	end

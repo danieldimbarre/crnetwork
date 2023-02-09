@@ -445,6 +445,71 @@ function BlockChest(Item)
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- BLOCKSHOP
+-----------------------------------------------------------------------------------------------------------------------------------------
+local BlockShop = {
+	["BurgerShop"] = {
+		["Money"] = "BurgerShop-2",
+		["List"] = {
+			["hamburger"] = "491",
+			["hamburger2"] = "492",
+			["onionrings"] = "493",
+			["fries"] = "494",
+			["orangejuice"] = "495",
+			["tangejuice"] = "496",
+			["strawberryjuice"] = "497",
+			["acerolajuice"] = "498",
+			["passionjuice"] = "499"
+		}
+	},
+	["PizzaThis"] = {
+		["Money"] = "PizzaThis-2",
+		["List"] = {
+			["pizzamozzarella"] = "492",
+			["pizzamushroom"] = "493",
+			["pizzabanana"] = "494",
+			["pizzachocolate"] = "495",
+			["calzone"] = "496",
+			["chickenfries"] = "497",
+			["grapejuice"] = "498",
+			["bananajuice"] = "499"
+		}
+	},
+	["UwuCoffee"] = {
+		["Money"] = "UwuCoffee-2",
+		["List"] = {
+			["nigirizushi"] = "494",
+			["sushi"] = "495",
+			["milkshake"] = "496",
+			["cappuccino"] = "497",
+			["applelove"] = "498",
+			["cookies"] = "499"
+		}
+	},
+	["BeanMachine"] = {
+		["Money"] = "BeanMachine-2",
+		["List"] = {
+			["coffeemilk"] = "496",
+			["cupcake"] = "497",
+			["sandwich"] = "498",
+			["tacos"] = "499"
+		}
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BLOCKRESTAURANT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function BlockRestaurant(Restaurant,Item)
+	local Split = splitString(Item)
+	local Item = Split[1]
+
+	if BlockShop[Restaurant]["List"][Item] then
+		return BlockShop[Restaurant]["Money"],BlockShop[Restaurant]["List"][Item]
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PAIRSKEYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function pairsKeys(t,f)

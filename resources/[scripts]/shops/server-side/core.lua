@@ -10,7 +10,6 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("shops",Creative)
 vCLIENT = Tunnel.getInterface("shops")
-vCHEST = Tunnel.getInterface("chest")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -759,10 +758,10 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 								end
 
 								if shops[Type]["shop"] then
-									local Restaurant = vCHEST.Restaurants(source)
-									if Restaurant then
+									local Chest,Target = vRP.BlockRestaurant(Type,Item)
+									if Chest,Target then
 										local Result = vRP.GetSrvData("Chest:"..Type,true)
-										if Result[Restaurant[shops[Type]["List"][Item]][2]]["item"] ~= shops[Type]["List"][Item] or Result[Restaurant[shops[Type]["List"][Item]][2]]["item"] < Amount then
+										if Result[Target]["item"] ~= Item or Result[Target]["item"] < Amount then
 											TriggerClientEvent("Notify",source,"vermelho","<b>Estoque</b> insuficiente.",5000)
 											return
 										end
@@ -794,11 +793,11 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 										end
 									else
 										if shops[Type]["shop"] then
-											if vRP.TakeChest(Passport,"Chest:"..Type,Amount,Slot) then
+											if vRP.TakeChest(Passport,"Chest:"..Type,Amount,Slot,Target) then
 												vCLIENT.updateShops(source,"requestShop")
 												return
 											else
-												vRP.DirectChest(Restaurant[shops[Type]["List"][Item]][1],"500",(shops[Type]["List"][Item] * Amount) * 0.05)
+												vRP.DirectChest(Chest,"500",(shops[Type]["List"][Item] * Amount) * 0.05)
 											end
 										else
 											vRP.GenerateItem(Passport,Item,Amount,false,Slot)

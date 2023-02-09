@@ -29,12 +29,10 @@ CreateThread(function()
 					local Loot = math.random(#Loots)
 					vRP.RemSrvData("Chest:Helicrash-"..Number,false)
 
-					for _,w in pairs(Loots[Loot]) do
-						for Slot,l in pairs(w) do
-							local Durability = itemDurability(l["item"])
-							if Durability then
-								Loots[Loot][Slot]["item"] = Loots[Loot][Slot]["item"].."-"..parseInt(os.time() + (86400 * (Durability - (Durability / math.random(2,5)))))
-							end
+					for Slot,w in pairs(Loots[Loot]) do
+						local Durability = itemDurability(w["item"])
+						if Durability then
+							Loots[Loot][Slot]["item"] = Loots[Loot][Slot]["item"].."-"..parseInt(os.time() + (86400 * (Durability - (Durability / math.random(2,5)))))
 						end
 					end
 

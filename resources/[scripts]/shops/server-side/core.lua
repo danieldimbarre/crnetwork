@@ -797,7 +797,6 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 										end
 									else
 										if shops[Type]["shop"] and Chest then
-											print(Type,Amount,Target,Slot)
 											if vRP.TakeChest(Passport,"Chest:"..Type,Amount,Target,Slot) then
 												vCLIENT.updateShops(source,"requestShop")
 												return

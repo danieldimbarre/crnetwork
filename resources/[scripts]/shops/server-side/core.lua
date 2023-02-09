@@ -761,7 +761,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 								if shops[Type]["shop"] then
 									local Restaurant = vCHEST.Restaurants(source)
 									if Restaurant then
-										local Result = vRP.GetSrvData("Chest:"..Restaurant[shops[Type]["List"][Item]][1],true)
+										local Result = vRP.GetSrvData("Chest:"..Type,true)
 										if Result[Restaurant[shops[Type]["List"][Item]][2]]["item"] ~= shops[Type]["List"][Item] or Result[Restaurant[shops[Type]["List"][Item]][2]]["item"] < Amount then
 											return
 										end
@@ -793,11 +793,11 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 										end
 									else
 										if shops[Type]["shop"] then
-											if vRP.TakeChest(Passport,"Chest:"..Restaurant[shops[Type]["List"][Item]][1],Amount,Slot) then
+											if vRP.TakeChest(Passport,"Chest:"..Type,Amount,Slot) then
 												vCLIENT.updateShops(source,"requestShop")
 												return
 											else
-												vRP.DirectChest(Type,"500",(shops[Type]["List"][Item] * Amount) * 0.05)
+												vRP.DirectChest(Restaurant[shops[Type]["List"][Item]][1],"500",(shops[Type]["List"][Item] * Amount) * 0.05)
 											end
 										else
 											vRP.GenerateItem(Passport,Item,Amount,false,Slot)

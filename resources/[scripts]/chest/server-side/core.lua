@@ -378,7 +378,7 @@ local OpenItens = {
 -- RESTAURANTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Restaurants = {
-	["hamburger2"] = { "BurgerShot","499" },
+	["hamburger2"] = { "BurgerShot-2","499" },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESTAURANT
@@ -432,7 +432,7 @@ function Creative.Store(Item,Slot,Amount,Target)
 		end
 
 		if Open[Passport]["Mode"] == "Restaurants" and Restaurants[Split[1]] then
-			if vRP.StoreChest(Passport,"Chest:"..Restaurants[Split[1]][1],Amount,Open[Passport]["Weight"],Restaurants[Split[1]][2],Target) then
+			if vRP.StoreChest(Passport,"Chest:"..Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Restaurants[Split[1]][2],Target) then
 				TriggerClientEvent("chest:Update",source,"Refresh")
 			else
 				local Result = vRP.GetSrvData("Chest:"..Open[Passport]["Name"],Open[Passport]["Save"])

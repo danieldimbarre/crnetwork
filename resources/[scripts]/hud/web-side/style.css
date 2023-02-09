@@ -16,6 +16,7 @@ html,body {
 	font-family: "Roboto";
 	box-sizing: border-box;
 	background: transparent;
+	text-shadow: 1px 1px #000;
 }
 
 :focus { outline: 0; }
@@ -264,6 +265,13 @@ space {
 	font-family: "Roboto" !important;
 }
 
+.VisorSpeed gray {
+	font-size: 1em;
+	font-weight: 300;
+	color: #898989 !important;
+	margin-top: 5px !important;
+}
+
 .NumMarch {
 	position: absolute;
 	top: 1.6em;
@@ -376,7 +384,7 @@ space {
 
 .speed circle, .march circle, .fuel circle {
 	fill: transparent;
-	stroke-width: .5em;
+	stroke-width: .25em;
 	stroke-dasharray: 440;
 	transition: 200ms ease-in-out;
 	stroke-dashoffset: calc(440 - (440 * 50) / 100);
@@ -480,8 +488,9 @@ space {
 	text-align: center;
 	position: absolute;
 	letter-spacing: 0.1vw;
-	background: #141414;
+	background: rgba(15,15,15,.75);
 	word-wrap: break-word;
+	border-radius: 5px;
 }
 
 #Hood {

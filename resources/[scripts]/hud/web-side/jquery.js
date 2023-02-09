@@ -241,7 +241,7 @@ window.addEventListener("message",function(event){
 		break;
 
 		case "Speed":
-			var Max = 250;
+			var Max = 270;
 			var Speed = parseInt(event["data"]["Number"]);
 
 			if (Speed > Max)
@@ -251,9 +251,9 @@ window.addEventListener("message",function(event){
 			$(".SpeedProgress").css("stroke-dashoffset",(440 - (440 * SpeedValue) / 100));
 
 			if (Speed < 10){
-				Speed = "00" + Speed
+				Speed = "<gray>00</gray>" + Speed
 			} else if (Speed >= 10 && Speed < 100){
-				Speed = "0" + Speed
+				Speed = "<gray>0</gray>" + Speed
 			}				
 
 			$(".NumSpeed").html(Speed);

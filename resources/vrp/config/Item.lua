@@ -2025,14 +2025,14 @@ local List = {
 		["Name"] = "Alumínio",
 		["Type"] = "Comum",
 		["Weight"] = 0.075,
-		["Economy"] = 30
+		["Economy"] = 20
 	},
 	["copper"] = {
 		["Index"] = "copper",
 		["Name"] = "Cobre",
 		["Type"] = "Comum",
 		["Weight"] = 0.095,
-		["Economy"] = 30
+		["Economy"] = 20
 	},
 	["ritmoneury"] = {
 		["Index"] = "ritmoneury",
@@ -2816,14 +2816,14 @@ local List = {
 		["Name"] = "Munição de Pistola",
 		["Type"] = "Munição",
 		["Weight"] = 0.035,
-		["Economy"] = 40
+		["Economy"] = 35
 	},
 	["WEAPON_SMG_AMMO"] = {
 		["Index"] = "smgammo",
 		["Name"] = "Munição de Sub",
 		["Type"] = "Munição",
 		["Weight"] = 0.045,
-		["Economy"] = 45
+		["Economy"] = 40
 	},
 	["WEAPON_RIFLE_AMMO"] = {
 		["Index"] = "rifleammo",

@@ -25,9 +25,6 @@ local shops = {
 			["guarananatural"] = 75,
 			["orangejuice"] = 100,
 			["tangejuice"] = 100,
-			["strawberryjuice"] = 100,
-			["acerolajuice"] = 100,
-			["passionjuice"] = 100,
 			["mushroomtea"] = 300
 		}
 	},
@@ -36,15 +33,12 @@ local shops = {
 		["type"] = "Cash",
 		["shop"] = true,
 		["List"] = {
-			["hamburger2"] = 200,
-			["onionrings"] = 175,
-			["fries"] = 145,
-			["guarananatural"] = 150,
-			["orangejuice"] = 175,
-			["tangejuice"] = 175,
-			["strawberryjuice"] = 175,
-			["acerolajuice"] = 175,
-			["passionjuice"] = 175
+			["hamburger2"] = 150,
+			["onionrings"] = 125,
+			["fries"] = 95,
+			["guarananatural"] = 100,
+			["orangejuice"] = 125,
+			["tangejuice"] = 125
 		}
 	},
 	["PizzaThis"] = {
@@ -68,14 +62,14 @@ local shops = {
 		["type"] = "Cash",
 		["shop"] = true,
 		["List"] = {
-			["pizzamozzarella"] = 200,
-			["pizzamushroom"] = 200,
-			["pizzabanana"] = 200,
-			["pizzachocolate"] = 200,
-			["calzone"] = 200,
-			["chickenfries"] = 175,
-			["grapejuice"] = 175,
-			["bananajuice"] = 175
+			["pizzamozzarella"] = 150,
+			["pizzamushroom"] = 150,
+			["pizzabanana"] = 150,
+			["pizzachocolate"] = 150,
+			["calzone"] = 150,
+			["chickenfries"] = 125,
+			["grapejuice"] = 125,
+			["bananajuice"] = 125
 		}
 	},
 	["UwuCoffee"] = {
@@ -89,6 +83,8 @@ local shops = {
 			["milkshake"] = 100,
 			["cappuccino"] = 125,
 			["cookies"] = 35,
+			["strawberryjuice"] = 100,
+			["passionjuice"] = 100,
 			["mushroomtea"] = 300
 		}
 	},
@@ -97,12 +93,14 @@ local shops = {
 		["type"] = "Cash",
 		["shop"] = true,
 		["List"] = {
-			["nigirizushi"] = 125,
-			["sushi"] = 125,
-			["applelove"] = 125,
-			["milkshake"] = 175,
-			["cappuccino"] = 200,
-			["cookies"] = 110
+			["nigirizushi"] = 75,
+			["sushi"] = 75,
+			["applelove"] = 75,
+			["milkshake"] = 125,
+			["cappuccino"] = 150,
+			["cookies"] = 60,
+			["strawberryjuice"] = 125,
+			["passionjuice"] = 125
 		}
 	},
 	["BeanMachine"] = {
@@ -114,6 +112,7 @@ local shops = {
 			["sandwich"] = 125,
 			["tacos"] = 25,
 			["cupcake"] = 50,
+			["acerolajuice"] = 100,
 			["mushroomtea"] = 300
 		}
 	},
@@ -122,10 +121,11 @@ local shops = {
 		["type"] = "Cash",
 		["shop"] = true,
 		["List"] = {
-			["coffeemilk"] = 145,
-			["sandwich"] = 200,
-			["tacos"] = 75,
-			["cupcake"] = 125
+			["coffeemilk"] = 95,
+			["sandwich"] = 150,
+			["tacos"] = 25,
+			["cupcake"] = 75,
+			["acerolajuice"] = 125
 		}
 	},
 	["Identity"] = {
@@ -165,20 +165,23 @@ local shops = {
 		}
 	},
 	["Organic"] = {
-		["mode"] = "Sell",
+		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["tomato"] = 10,
-			["banana"] = 10,
-			["guarana"] = 10,
-			["acerola"] = 10,
-			["passion"] = 10,
-			["grape"] = 10,
-			["tange"] = 10,
-			["orange"] = 10,
-			["apple"] = 10,
-			["strawberry"] = 10,
-			["coffee2"] = 10
+			["tomato"] = 20,
+			["banana"] = 20,
+			["guarana"] = 20,
+			["acerola"] = 20,
+			["passion"] = 20,
+			["grape"] = 20,
+			["tange"] = 20,
+			["orange"] = 20,
+			["apple"] = 20,
+			["strawberry"] = 20,
+			["coffee2"] = 20,
+			["mushroom"] = 20,
+			["cocoa"] = 20,
+			["potato"] = 20
 		}
 	},
 	["Beans"] = {
@@ -206,7 +209,6 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["hamburger"] = 25,
 			["bread"] = 5,
 			["cheese"] = 10,
 			["mushroom"] = 10,
@@ -384,7 +386,10 @@ local shops = {
 			["strawberry"] = 10,
 			["coffee2"] = 10,
 			["animalfat"] = 10,
-			["leather"] = 20
+			["leather"] = 20,
+			["mushroom"] = 10,
+			["cocoa"] = 10,
+			["potato"] = 10
 		}
 	},
 	["Fishing"] = {

@@ -1544,98 +1544,98 @@ local List = {
 		["Name"] = "Maça",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["orange"] = {
 		["Index"] = "orange",
 		["Name"] = "Laranja",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["strawberry"] = {
 		["Index"] = "strawberry",
 		["Name"] = "Morango",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["coffee2"] = {
 		["Index"] = "coffee2",
 		["Name"] = "Grão de Café",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["grape"] = {
 		["Index"] = "grape",
 		["Name"] = "Uva",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["tange"] = {
 		["Index"] = "tange",
 		["Name"] = "Tangerina",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["banana"] = {
 		["Index"] = "banana",
 		["Name"] = "Banana",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["guarana"] = {
 		["Index"] = "guarana",
 		["Name"] = "Guaraná",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["acerola"] = {
 		["Index"] = "acerola",
 		["Name"] = "Acerola",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["passion"] = {
 		["Index"] = "passion",
 		["Name"] = "Maracujá",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["tomato"] = {
 		["Index"] = "tomato",
 		["Name"] = "Tomate",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["mushroom"] = {
 		["Index"] = "mushroom",
 		["Name"] = "Cogumelo",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["cocoa"] = {
 		["Index"] = "cocoa",
 		["Name"] = "Cacau",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["potato"] = {
 		["Index"] = "potato",
 		["Name"] = "Batata",
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
-		["Economy"] = 10
+		["Economy"] = 20
 	},
 	["sugar"] = {
 		["Index"] = "sugar",

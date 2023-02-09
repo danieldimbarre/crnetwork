@@ -3810,7 +3810,6 @@ Use = {
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					vRP.UpgradeThirst(Passport,10)
-					vRP.UpgradeHunger(Passport,4)
 
 					if vCLIENT.Restaurant(source,"BeanMachine") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",180)
@@ -3838,8 +3837,7 @@ Use = {
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					TriggerClientEvent("setEnergetic",source,10,1.10,1.2)
-					vRP.UpgradeThirst(Passport,20)
-					vRP.UpgradeHunger(Passport,8)
+					vRP.UpgradeThirst(Passport,10)
 
 					if vCLIENT.Restaurant(source,"BeanMachine") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",420)
@@ -3947,6 +3945,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					TriggerClientEvent("setEnergetic",source,10,1.10,1.2)
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
@@ -4028,7 +4027,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,30)
+					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
@@ -4137,7 +4136,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,15)
+					vRP.UpgradeHunger(Passport,25)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
@@ -4164,7 +4163,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,50)
+					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
@@ -4191,7 +4190,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,20)
+					vRP.UpgradeHunger(Passport,10)
 				end
 			end
 
@@ -4214,7 +4213,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,20)
+					vRP.UpgradeHunger(Passport,10)
 				end
 			end
 
@@ -4741,7 +4740,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,50)
+					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"BeanMachine") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
@@ -4791,7 +4790,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,10)
+					vRP.UpgradeHunger(Passport,15)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
@@ -4845,6 +4844,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					TriggerClientEvent("setEnergetic",source,15,1.10,1.2)
 					vRP.UpgradeThirst(Passport,15)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then

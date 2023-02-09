@@ -82,7 +82,23 @@ local List = {
 				["require"] = {
 					["cocoa"] = 1
 				}
-			}
+			},
+			["strawberryjuice"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["water"] = 1,
+					["strawberry"] = 5
+				}
+			},
+			["passionjuice"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["water"] = 1,
+					["passion"] = 5
+				}
+			},
 		}
 	},
 	["PizzaThis"] = {
@@ -219,30 +235,6 @@ local List = {
 					["tange"] = 5
 				}
 			},
-			["strawberryjuice"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["water"] = 1,
-					["strawberry"] = 5
-				}
-			},
-			["acerolajuice"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["water"] = 1,
-					["acerola"] = 5
-				}
-			},
-			["passionjuice"] = {
-				["amount"] = 1,
-				["destroy"] = false,
-				["require"] = {
-					["water"] = 1,
-					["passion"] = 5
-				}
-			},
 			["mushroomtea"] = {
 				["amount"] = 1,
 				["destroy"] = false,
@@ -315,6 +307,14 @@ local List = {
 				["destroy"] = false,
 				["require"] = {
 					["cocoa"] = 1
+				}
+			},
+			["acerolajuice"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["water"] = 1,
+					["acerola"] = 5
 				}
 			}
 		}

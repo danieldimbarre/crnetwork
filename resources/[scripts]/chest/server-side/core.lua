@@ -35,7 +35,7 @@ function Creative.Permissions(Name,Mode)
 			local Split = splitString(Name)
 			if Split[1] == "Helicrash" and GlobalState["HelicrashCooldown"] > os.time() then
 				vRPC.DowngradeHealth(source,10)
-				TriggerClientEvent("Notify",source,"aviso","A caixa ainda está quente! Aguarde <b>"..parseInt(GlobalState["HelicrashCooldown"] - os.time()).."</b> segundos.",3000)
+				TriggerClientEvent("Notify",source,"amarelo","A caixa ainda está quente! Aguarde <b>"..parseInt(GlobalState["HelicrashCooldown"] - os.time()).."</b> segundos.",3000)
 				return
 			end
 

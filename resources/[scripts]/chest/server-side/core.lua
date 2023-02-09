@@ -33,10 +33,13 @@ function Creative.Permissions(Name,Mode)
 			end
 		elseif Mode == "Custom" then
 			local Split = splitString(Name)
-			if Split[1] == "Helicrash" and GlobalState["HelicrashCooldown"] > os.time() then
-				vRPC.DowngradeHealth(source,10)
-				TriggerClientEvent("Notify",source,"amarelo","A caixa ainda está quente! Aguarde <b>"..parseInt(GlobalState["HelicrashCooldown"] - os.time()).."</b> segundos.",3000)
-				return
+			if Split[1] == "Helicrash" then
+				local Result = vRP.GetSrvData("Chest:"..Name,false)
+				if GlobalState["HelicrashCooldown"] > os.time() and #Result <= 0 then
+					vRPC.DowngradeHealth(source,10)
+					TriggerClientEvent("Notify",source,"amarelo","A caixa ainda está quente! Aguarde <b>"..parseInt(GlobalState["HelicrashCooldown"] - os.time()).."</b> segundos.",3000)
+					return
+				end
 			end
 
 			Open[Passport] = { ["Name"] = Name, ["Weight"] = 50, ["Mode"] = Mode, ["Logs"] = false, ["Save"] = false }

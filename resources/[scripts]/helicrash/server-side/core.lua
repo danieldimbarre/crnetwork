@@ -28,6 +28,16 @@ CreateThread(function()
 
 					local Loot = math.random(#Loots)
 					vRP.RemSrvData("Chest:Helicrash-"..Number,false)
+
+					for _,w in pairs(Loots[Loot]) do
+						for Slot,v in pairs(v) do
+							local Durability = itemDurability(v["item"])
+							if Durability then
+								Loots[Loot][Slot]["item"] = Loots[Loot][Slot]["item"].."-"..parseInt(os.time() + (86400 * (Durability - (Durability / math.random(2,5)))))
+							end
+						end
+					end
+
 					vRP.SetSrvData("Chest:Helicrash-"..Number,Loots[Loot],false)
 				end
 			end
@@ -48,8 +58,9 @@ CreateThread(function()
 			end)
 		end
 
-		if Backup[os.date("%M")] then
+		if Backup[os.date("%M")] and os.time() >= Cooldown then
 			TriggerEvent("SaveServer",false)
+			Cooldown = os.time() + 60
 		end
 
 		Wait(1000)
@@ -88,10 +99,10 @@ RegisterCommand("helicrash",function(source,Message)
 
 			if not Timers[Hours..":"..Minutes] then
 				Timers[Hours..":"..Minutes] = true
-				TriggerClientEvent("Notify",source,"verde","Helicrash definido para às "..Hours..":"..Minutes..".",5000)
+				TriggerClientEvent("Notify",source,"verde","Helicrash definido para às <b>"..Hours..":"..Minutes.."</b>.",5000)
 			else
 				Timers[Hours..":"..Minutes] = nil
-				TriggerClientEvent("Notify",source,"verde","Helicrash das "..Hours..":"..Minutes.." removido.",5000)
+				TriggerClientEvent("Notify",source,"verde","Helicrash das <b>"..Hours..":"..Minutes.."</b> removido.",5000)
 			end
 		end
 	end

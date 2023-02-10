@@ -1,7 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SInteriorOrderData>
-    <startFrom value="4200" />
-    <proxies>
+	<startFrom value="2078" />
+	<proxies>
+		<!-- ./input/cfx-energy -->
+		<Item>BarragemEnergy</Item>
+		<Item>ch3_06_long_4</Item>
+		<Item>ch3_06_long_5</Item>
+		<Item>hei_ch3_06_critical_2</Item>
+		<Item>hei_ch3_06_long_4</Item>
+		<Item>hei_ch3_06_long_5</Item>
+		<Item>hei_ch3_06_strm_1</Item>
+		<Item>apa_ss1_11_strm_0</Item>
+		<Item>apa_ss1_11_strm_1</Item>
+		<Item>apa_ss1_occl_02</Item>
+		<Item>apa_ss1_rd1</Item>
+		<Item>apa_ss1_rd1_long_0</Item>
+		<Item>apa_ss1_rd1_strm_0</Item>
+		<Item>shmann_ehos_mlo</Item>
+		<Item>hei_id2_15_strm_0</Item>
+		<Item>hei_id2_occl_02</Item>
+		<Item>mec_ymap_brod</Item>
+		<Item>Pharmacy</Item>
+		<Item>apa_ch2_03</Item>
+		<Item>apa_ch2_03_long_5</Item>
+		<Item>apa_ch2_03_long_6</Item>
+		<Item>apa_ch2_03_strm_0</Item>
+		<Item>apa_ch2_03_strm_1</Item>
+		<Item>ch2_03</Item>
+		<Item>ch2_03_critical_2</Item>
+		<Item>ch2_03_long_5</Item>
+		<Item>ch2_03_long_6</Item>
+		<Item>ch2_03_strm_0</Item>
+		<Item>ch2_03_strm_1</Item>
+		<Item>vinewood</Item>
+		<!-- ./input/cfx-summerz -->
+		<Item>bs_distantlights</Item>
+		<Item>bs_extprops</Item>
+		<Item>bs_int</Item>
+		<Item>bs_int_lod1</Item>
+		<Item>bs_lodlights</Item>
+		<Item>bs_streetlights</Item>
+		<Item>hei_sm_19</Item>
+		<Item>hei_vb_03</Item>
+		<Item>hei_vb_03_strm_0</Item>
+		<Item>hei_vb_rd_strm_0</Item>
+		<Item>vb_03_strm_0</Item>
+		<Item>vb_occl_01</Item>
+		<Item>vw_distlodlights_small024</Item>
+		<Item>vw_lodlights_small024</Item>
+		<Item>hopital2</Item>
+		<Item>cs4_occl_03</Item>
+		<Item>zn_fishing_mlo</Item>
+		<Item>hei_cs1_16_strm_0</Item>
+		<Item>int_genstore_milo_</Item>
+		<Item>cs1_occl_10</Item>
+		<Item>v_clinick</Item>
+		<Item>creativeFranklin</Item>
+		<Item>creativeLostudios</Item>
+		<Item>creativeOneFloors</Item>
+		<Item>creativeSquare</Item>
+		<Item>creativeThreeFloors</Item>
+		<Item>creativeTwoFloors</Item>
+		<Item>creativeWarehouseL</Item>
+		<Item>creativeWarehouseM</Item>
+		<Item>creativeWarehouseS</Item>
+		<Item>objectsPrison</Item>
+		<Item>trashs</Item>
+		<Item>yoga</Item>
+		<Item>vegetation</Item>
+		<Item>weazel_milo</Item>
 		<!-- cfx-gabz-247 -->
 		<Item>gabz_247store01_milo_</Item>
 		<Item>gabz_247store02_milo_</Item>

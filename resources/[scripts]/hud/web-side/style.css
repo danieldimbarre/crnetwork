@@ -378,7 +378,7 @@ space {
 
 .speed circle, .march circle, .fuel circle {
 	fill: transparent;
-	stroke-width: .25em;
+	stroke-width: .375rem;
 	stroke-dasharray: 440;
 	transition: 200ms ease-in-out;
 	stroke-dashoffset: calc(440 - (440 * 50) / 100);

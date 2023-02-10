@@ -802,7 +802,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 												return
 											else
 												vRP.GenerateItem(Passport,Item,Amount,false,Slot)
-												vRP.DirectChest(Chest,"500",(shops[Type]["List"][Item] * Amount) * 0.05)
+												vRP.DirectChest(Chest,"500",shops[Type]["List"][Item] * Amount)
 											end
 										else
 											vRP.GenerateItem(Passport,Item,Amount,false,Slot)

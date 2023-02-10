@@ -31,7 +31,7 @@ RegisterCommand("fuel",function(source)
 					end)
 				end
 
-				TriggerEvent("Discord","Admin","**fuel**\n\n**Passaporte:** "..Passport.."\n**Para:** "..VehicleName(vehName).."\n**Placa:** "..Plate,3553599)
+				TriggerEvent("Discord","Admin","**fuel**\n\n**Passaporte:** "..Passport.."\n**Veículo:** "..VehicleName(vehName).."\n**Placa:** "..Plate,3553599)
 			end
 		end
 	end

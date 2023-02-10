@@ -1029,6 +1029,22 @@ AddEventHandler("player:Spending",function(_,Mode)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:CARWASH
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("player:CarWash")
+AddEventHandler("player:CarWash",function(Coords)
+	local source = source
+	local Vehicle,Network,Plate = vRPC.VehicleList(source,10)
+	if Vehicle then
+		local Players = vRPC.Players(source)
+		for _,v in pairs(Players) do
+			async(function()
+				TriggerClientEvent("player:CarWash",v,Network,Plate,Coords)
+			end)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)

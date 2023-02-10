@@ -1219,10 +1219,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local WashProgress = false
 local Wash = {
-	{ 24.27,-1391.96,28.7 },
-	{ 170.59,-1718.43,28.66 },
-	{ 167.69,-1715.92,28.66 },
-	{ -699.86,-932.84,18.38 }
+	vec3(24.27,-1391.96,28.7),
+	vec3(170.59,-1718.43,28.66),
+	vec3(167.69,-1715.92,28.66),
+	vec3(-699.86,-932.84,18.38)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADCARWASH
@@ -1236,7 +1236,7 @@ CreateThread(function()
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
 				for _,v in pairs(Wash) do
-					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
+					local Distance = #(Coords - v)
 					if Distance <= 2.5 then
 						TimeDistance = 1
 
@@ -1244,19 +1244,12 @@ CreateThread(function()
 							WashProgress = true
 
 							FreezeEntityPosition(Vehicle,true)
-
-							UseParticleFxAssetNextCall("core")
-							local Particle01 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",v[1],v[2],v[3],0.0,0.0,0.0,1.0,false,false,false,false)
-
-							UseParticleFxAssetNextCall("core")
-							local Particle02 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",v[1] + 2.5,v[2],v[3],0.0,0.0,0.0,1.0,false,false,false,false)
+							TriggerServerEvent("player:CarWash",v)
 
 							SetTimeout(15000,function()
 								TriggerServerEvent("CleanVehicle",VehToNet(Vehicle))
 
 								FreezeEntityPosition(Vehicle,false)
-								StopParticleFxLooped(Particle01,0)
-								StopParticleFxLooped(Particle02,0)
 								WashProgress = false
 							end)
 						end
@@ -1266,6 +1259,29 @@ CreateThread(function()
 		end
 
 		Wait(TimeDistance)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:CARWASH
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("player:CarWash")
+AddEventHandler("player:CarWash",function(Index,Plate,Coords)
+	if NetworkDoesNetworkIdExist(Index) then
+		local Vehicle = NetToEnt(Index)
+		if DoesEntityExist(Vehicle) then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
+				UseParticleFxAsset("core")
+				local Particle01 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",Coords,0.0,0.0,0.0,1.0,false,false,false,false)
+
+				UseParticleFxAsset("core")
+				local Particle02 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",Coords["x"] + 2.5,Coords["y"],Coords["z"],0.0,0.0,0.0,1.0,false,false,false,false)
+
+				SetTimeout(15000,function()
+					StopParticleFxLooped(Particle01,false)
+					StopParticleFxLooped(Particle02,false)
+				end)
+			end
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

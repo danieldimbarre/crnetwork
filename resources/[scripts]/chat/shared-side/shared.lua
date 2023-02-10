@@ -33,9 +33,13 @@ Block = {
 	"vagabunda",
 	"puta",
 	"escroto",
-	"piranha",
+	"rapariga",
 	"pretinho",
 	"escurinho",
 	"negrinho",
-	"piranha"
+	"fdp",
+	"prego",
+	"primata",
+	"viado",
+	"prostituta"
 }

@@ -166,6 +166,14 @@ function ThreadBeds()
 				SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
 				Previous = nil
 				vRP.removeObjects()
+
+				if Treatment then
+					Treatment = false
+					LocalPlayer["state"]["Cancel"] = false
+					LocalPlayer["state"]["Commands"] = false
+					LocalPlayer["state"]["Buttons"] = false
+					TriggerEvent("Notify","amarelo","Tratamento cancelado.",5000)
+				end
 			end
 
 			Wait(1000)
@@ -175,7 +183,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTREATMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ThreadTreatment(Bed)
+function ThreadTreatment()
 	CreateThread(function()
 		while Treatment do
 			if GetGameTimer() >= TreatmentTimer then
@@ -183,7 +191,7 @@ function ThreadTreatment(Bed)
 				local Health = GetEntityHealth(Ped)
 				TreatmentTimer = GetGameTimer() + 1000
 
-				if Health <= 100 and Treatment and ((Bed and (not IsEntityPlayingAnim(Ped,"anim@gangops@morgue@table@","body_search",3) or LocalPlayer["state"]["usingPhone"])) or not Bed) then
+				if Health <= 100 and Treatment then
 					Treatment = false
 					LocalPlayer["state"]["Cancel"] = false
 					LocalPlayer["state"]["Commands"] = false

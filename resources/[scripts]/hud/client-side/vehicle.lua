@@ -50,6 +50,7 @@ CreateThread(function()
 				if not IsMinimapRendering() then
 					SetBigmapActive(false,false)
 					DisplayRadar(true)
+					SetRadarZoom(1100)
 				end
 
 				local Vehicle = GetVehiclePedIsUsing(Ped)

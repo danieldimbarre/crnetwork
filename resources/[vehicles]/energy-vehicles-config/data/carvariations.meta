@@ -419,12 +419,7 @@
       </kits>
       <windowsWithExposedEdges/>
       <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
+        <Probabilities/>
       </plateProbabilities>
       <lightSettings value="1"/>
       <sirenSettings value="2481246"/>

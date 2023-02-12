@@ -37,7 +37,7 @@ local vehModels = {
 	"journey","bfinjection","sanchez2","surfer2","caddy2","rebel2","bagger","dilettante","blista","hexer",
 	"buffalo","emperor2","fugitive","rocoto","dukes","thrust","faggio2","double","camper","massacro","feltzer2",
 	"sabregt","ninef2","banshee","infernus","bullet","coquette","phoenix","cavalcade","stratum","minivan","picador",
-	"taco","glendale","intruder","ruffian","schafter2","asterope","mixer2","rumpo","exemplar","surfer","cavalcade2"
+	"taco","glendale","intruder","ruffian","schafter2","asterope","rumpo","exemplar","surfer","cavalcade2"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHRESCUE

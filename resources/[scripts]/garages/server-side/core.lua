@@ -317,7 +317,7 @@ function Creative.Vehicles(Number)
 			if Consult[1] then
 				if parseInt(Consult[1]["Passport"]) == Passport or vRP.InventoryFull(Passport,"propertys-"..Consult[1]["Serial"]) then
 					if os.time() > Consult[1]["Tax"] then
-						TriggerClientEvent("Notify",source,"amarelo","Aluguel atrasado, procure um <b>Corretor de Imóveis</b>.",5000)
+						TriggerClientEvent("Notify",source,"amarelo","Hipoteca atrasada.",5000)
 						return false
 					end
 				else

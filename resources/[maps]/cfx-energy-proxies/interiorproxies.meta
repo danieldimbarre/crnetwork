@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SInteriorOrderData>
-	<startFrom value="2078" />
+	<startFrom value="2043" />
 	<proxies>
 		<!-- ./input/cfx-energy -->
 		<Item>BarragemEnergy</Item>
@@ -33,6 +33,8 @@
 		<Item>ch2_03_strm_0</Item>
 		<Item>ch2_03_strm_1</Item>
 		<Item>vinewood</Item>
+		<!-- ./input/cfx-energy-carnaval -->
+		<Item>carnavalajna</Item>
 		<!-- ./input/cfx-summerz -->
 		<Item>bs_distantlights</Item>
 		<Item>bs_extprops</Item>

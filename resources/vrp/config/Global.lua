@@ -90,10 +90,10 @@ StartClothes = {
 	["mp_m_freemode_01"] = {
 		["pants"] = { item = 0, texture = 0 },
 		["arms"] = { item = 0, texture = 0 },
-		["tshirt"] = { item = 1, texture = 0 },
+		["tshirt"] = { item = 15, texture = 0 },
 		["torso"] = { item = 0, texture = 0 },
 		["vest"] = { item = 0, texture = 0 },
-		["shoes"] = { item = 0, texture = 0 },
+		["shoes"] = { item = 1, texture = 0 },
 		["mask"] = { item = 0, texture = 0 },
 		["backpack"] = { item = 0, texture = 0 },
 		["hat"] = { item = -1, texture = 0 },

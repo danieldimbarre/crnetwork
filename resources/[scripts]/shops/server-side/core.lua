@@ -266,7 +266,8 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["WEAPON_PETROLCAN"] = 250
+			["WEAPON_PETROLCAN"] = 250,
+			["WEAPON_PETROLCAN_AMMO"] = 0.02
 		}
 	},
 	["Weapons"] = {
@@ -806,10 +807,6 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 											end
 										else
 											vRP.GenerateItem(Passport,Item,Amount,false,Slot)
-
-											if Item == "WEAPON_PETROLCAN" then
-												vRP.GenerateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500,false)
-											end
 										end
 									end
 

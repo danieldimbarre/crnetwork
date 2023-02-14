@@ -3102,7 +3102,7 @@ Use = {
 					vRP.DowngradeStress(Passport,5)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"UwuCoffee") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end
@@ -3186,7 +3186,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,50)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"UwuCoffee") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end
@@ -3242,7 +3242,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,50)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"BeanMachine") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end

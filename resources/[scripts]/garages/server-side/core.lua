@@ -300,52 +300,56 @@ local Works = {
 function Creative.Vehicles(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["hud"]:Wanted(Passport) and #exports["bank"]:Fines(Passport) <= 0 then
-		if Garages[Number]["perm"] then
-			local Split = splitString(Garages[Number]["perm"],"-")
-			if parseInt(Split[2]) > 0 then
-				if not vRP.HasGroup(Passport,Split[1],parseInt(Split[2])) then
-					return false
-				end
-			elseif not vRP.HasService(Passport,Garages[Number]["perm"]) then
-				return false
-			end
-		end
-
-		if string.sub(Number,1,9) == "Propertys" then
-			local Consult = vRP.Query("propertys/Exist",{ name = Number })
-			if Consult[1] then
-				if parseInt(Consult[1]["Passport"]) == Passport or vRP.InventoryFull(Passport,"propertys-"..Consult[1]["Serial"]) then
-					if os.time() > Consult[1]["Tax"] then
-						TriggerClientEvent("Notify",source,"amarelo","Hipoteca atrasada.",5000)
+	if Passport and not exports["hud"]:Wanted(Passport) then
+		if #exports["bank"]:Fines(Passport) <= 0 then
+			if Garages[Number]["perm"] then
+				local Split = splitString(Garages[Number]["perm"],"-")
+				if parseInt(Split[2]) > 0 then
+					if not vRP.HasGroup(Passport,Split[1],parseInt(Split[2])) then
 						return false
 					end
-				else
+				elseif not vRP.HasService(Passport,Garages[Number]["perm"]) then
 					return false
 				end
 			end
-		end
 
-		local Vehicle = {}
-		local Garage = Garages[Number]["name"]
-		if Works[Garage] then
-			for _,v in pairs(Works[Garage]) do
-				if VehicleExist(v) then
-					Vehicle[#Vehicle + 1] = { ["Model"] = v, ["name"] = VehicleName(v) }
-				end
-			end
-		else
-			local Consult = vRP.Query("vehicles/UserVehicles",{ Passport = Passport })
-			for _,v in pairs(Consult) do
-				if VehicleExist(v["vehicle"]) then
-					if v["work"] == "false" then
-						Vehicle[#Vehicle + 1] = { ["Model"] = v["vehicle"], ["name"] = VehicleName(v["vehicle"]) }
+			if string.sub(Number,1,9) == "Propertys" then
+				local Consult = vRP.Query("propertys/Exist",{ name = Number })
+				if Consult[1] then
+					if parseInt(Consult[1]["Passport"]) == Passport or vRP.InventoryFull(Passport,"propertys-"..Consult[1]["Serial"]) then
+						if os.time() > Consult[1]["Tax"] then
+							TriggerClientEvent("Notify",source,"amarelo","Hipoteca atrasada.",5000)
+							return false
+						end
+					else
+						return false
 					end
 				end
 			end
-		end
 
-		return Vehicle
+			local Vehicle = {}
+			local Garage = Garages[Number]["name"]
+			if Works[Garage] then
+				for _,v in pairs(Works[Garage]) do
+					if VehicleExist(v) then
+						Vehicle[#Vehicle + 1] = { ["Model"] = v, ["name"] = VehicleName(v) }
+					end
+				end
+			else
+				local Consult = vRP.Query("vehicles/UserVehicles",{ Passport = Passport })
+				for _,v in pairs(Consult) do
+					if VehicleExist(v["vehicle"]) then
+						if v["work"] == "false" then
+							Vehicle[#Vehicle + 1] = { ["Model"] = v["vehicle"], ["name"] = VehicleName(v["vehicle"]) }
+						end
+					end
+				end
+			end
+
+			return Vehicle
+		else
+			TriggerClientEvent("Notify",source,"amarelo","<b>Multas</b> pendentes.",5000)
+		end
 	end
 
 	return false

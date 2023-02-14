@@ -897,44 +897,48 @@ RegisterServerEvent("player:Outfit")
 AddEventHandler("player:Outfit",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) and #exports["bank"]:Fines(Passport) <= 0 and not vPOLICE.checkPrison(source) then
-		if Mode == "aplicar" then
-			local result = vRP.GetSrvData("Outfit:"..Passport)
-			if result["pants"] ~= nil then
-				TriggerClientEvent("skinshop:Apply",source,result)
-				TriggerClientEvent("Notify",source,"verde","Roupas aplicadas.",3000)
+	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) and not vPOLICE.checkPrison(source) then
+		if #exports["bank"]:Fines(Passport) <= 0 then
+			if Mode == "aplicar" then
+				local result = vRP.GetSrvData("Outfit:"..Passport)
+				if result["pants"] ~= nil then
+					TriggerClientEvent("skinshop:Apply",source,result)
+					TriggerClientEvent("Notify",source,"verde","Roupas aplicadas.",3000)
+				else
+					TriggerClientEvent("Notify",source,"amarelo","Roupas não encontradas.",3000)
+				end
+			elseif Mode == "salvar" then
+				local custom = vSKINSHOP.getCustomization(source)
+				if custom then
+					vRP.SetSrvData("Outfit:"..Passport,custom)
+					TriggerClientEvent("Notify",source,"verde","Roupas salvas.",3000)
+				end
+			elseif Mode == "remover" then
+				local Model = vRP.ModelPlayer(source)
+				if Model == "mp_m_freemode_01" then
+					TriggerClientEvent("skinshop:Apply",source,removeFit["homem"])
+				elseif Model == "mp_f_freemode_01" then
+					TriggerClientEvent("skinshop:Apply",source,removeFit["mulher"])
+				end
+			elseif Mode == "aplicarpremium" and vRP.UserPremium(Passport) then
+				local result = vRP.GetSrvData("OutfitPremium:"..Passport)
+				if result["pants"] ~= nil then
+					TriggerClientEvent("skinshop:Apply",source,result)
+					TriggerClientEvent("Notify",source,"verde","Roupas Premium aplicadas.",3000)
+				else
+					TriggerClientEvent("Notify",source,"amarelo","Roupas Premium não encontradas.",3000)
+				end
+			elseif Mode == "salvarpremium" and vRP.UserPremium(Passport) then
+				local custom = vSKINSHOP.getCustomization(source)
+				if custom then
+					vRP.SetSrvData("OutfitPremium:"..Passport,custom)
+					TriggerClientEvent("Notify",source,"verde","Roupas Premium salvas.",3000)
+				end
 			else
-				TriggerClientEvent("Notify",source,"amarelo","Roupas não encontradas.",3000)
-			end
-		elseif Mode == "salvar" then
-			local custom = vSKINSHOP.getCustomization(source)
-			if custom then
-				vRP.SetSrvData("Outfit:"..Passport,custom)
-				TriggerClientEvent("Notify",source,"verde","Roupas salvas.",3000)
-			end
-		elseif Mode == "remover" then
-			local Model = vRP.ModelPlayer(source)
-			if Model == "mp_m_freemode_01" then
-				TriggerClientEvent("skinshop:Apply",source,removeFit["homem"])
-			elseif Model == "mp_f_freemode_01" then
-				TriggerClientEvent("skinshop:Apply",source,removeFit["mulher"])
-			end
-		elseif Mode == "aplicarpremium" and vRP.UserPremium(Passport) then
-			local result = vRP.GetSrvData("OutfitPremium:"..Passport)
-			if result["pants"] ~= nil then
-				TriggerClientEvent("skinshop:Apply",source,result)
-				TriggerClientEvent("Notify",source,"verde","Roupas Premium aplicadas.",3000)
-			else
-				TriggerClientEvent("Notify",source,"amarelo","Roupas Premium não encontradas.",3000)
-			end
-		elseif Mode == "salvarpremium" and vRP.UserPremium(Passport) then
-			local custom = vSKINSHOP.getCustomization(source)
-			if custom then
-				vRP.SetSrvData("OutfitPremium:"..Passport,custom)
-				TriggerClientEvent("Notify",source,"verde","Roupas Premium salvas.",3000)
+				TriggerClientEvent("skinshop:set"..Mode,source)
 			end
 		else
-			TriggerClientEvent("skinshop:set"..Mode,source)
+			TriggerClientEvent("Notify",source,"amarelo","<b>Multas</b> pendentes.",5000)
 		end
 	end
 end)

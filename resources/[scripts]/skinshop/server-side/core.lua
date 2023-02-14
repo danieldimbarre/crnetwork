@@ -16,8 +16,12 @@ Tunnel.bindInterface("skinshop",Creative)
 function Creative.CheckWanted()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport,source) and #exports["bank"]:Fines(Passport) <= 0 then
-		return true
+	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport,source) then
+		if #exports["bank"]:Fines(Passport) <= 0 then
+			return true
+		else
+			TriggerClientEvent("Notify",source,"amarelo","<b>Multas</b> pendentes.",5000)
+		end
 	end
 
 	return false

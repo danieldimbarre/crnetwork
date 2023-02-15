@@ -1795,8 +1795,10 @@ function Creative.Loot(Entity,Service)
 						for _,v in pairs(LootItens[Service]["List"]) do
 							local randAmount = math.random(v["min"],v["max"])
 
-							if LootItens[Service]["Boost"] then
-								randAmount = 10
+							if LootItens[Service]["Boost"] and GlobalState["Buffs"]["Luck"][Passport] then
+								if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+									randAmount = 10
+								end
 							end
 
 							if (vRP.InventoryWeight(Passport) + itemWeight(v["item"]) * randAmount) <= vRP.GetWeight(Passport) then

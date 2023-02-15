@@ -2,19 +2,15 @@
 -- GEOGES
 -----------------------------------------------------------------------------------------------------------------------------------------
 Geodes = {
-	[1] = {
-		{ ["item"] = "copper", ["min"] = 4, ["max"] = 5 },
-		{ ["item"] = "aluminum", ["min"] = 4, ["max"] = 5 }
-	},
-	[2] = {
-		{ ["item"] = "emerald", ["min"] = 1, ["max"] = 1 },
-		{ ["item"] = "diamond", ["min"] = 2, ["max"] = 2 },
-		{ ["item"] = "ruby", ["min"] = 1, ["max"] = 2 },
-		{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "amethyst", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "amber", ["min"] = 1, ["max"] = 3 },
-		{ ["item"] = "turquoise", ["min"] = 1, ["max"] = 3 }
-	}
+	{ ["item"] = "emerald", ["min"] = 1, ["max"] = 1 },
+	{ ["item"] = "diamond", ["min"] = 2, ["max"] = 2 },
+	{ ["item"] = "ruby", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
+	{ ["item"] = "amethyst", ["min"] = 1, ["max"] = 3 },
+	{ ["item"] = "amber", ["min"] = 1, ["max"] = 3 },
+	{ ["item"] = "turquoise", ["min"] = 1, ["max"] = 3 },
+	{ ["item"] = "aluminum", ["min"] = 1, ["max"] = 2 },
+	{ ["item"] = "copper", ["min"] = 1, ["max"] = 2 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EVENT
@@ -597,9 +593,8 @@ Use = {
 
 	["geode"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.ConsultItem(Passport,"WEAPON_HAMMER",1) then
-			local Type = math.random(#Geodes)
-			local Selected = math.random(#Geodes[Type])
-			local Rand = math.random(Geodes[Type][Selected]["min"],Geodes[Type][Selected]["max"])
+			local Selected = math.random(#Geodes)
+			local Rand = math.random(Geodes[Selected]["min"],Geodes[Selected]["max"])
 
 			if GlobalState["Buffs"]["Luck"][Passport] then
 				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
@@ -607,9 +602,9 @@ Use = {
 				end
 			end
 
-			if (vRP.InventoryWeight(Passport) + (itemWeight(Geodes[Type][Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
+			if (vRP.InventoryWeight(Passport) + (itemWeight(Geodes[Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.GenerateItem(Passport,Geodes[Type][Selected]["item"],Rand,false)
+					vRP.GenerateItem(Passport,Geodes[Selected]["item"],Rand,false)
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 				end
 			else

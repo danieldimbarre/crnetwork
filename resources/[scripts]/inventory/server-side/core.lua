@@ -2636,20 +2636,6 @@ AddEventHandler("deliver:Update",function(Selected,Finish)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:OBJECTS
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:Objects")
-AddEventHandler("inventory:Objects",function(Type)
-	local source = source
-	local Blips = {}
-
-	for k,v in ipairs(Objects) do
-		if v["mode"] == "Suplies" then
-
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:BUFFSERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("inventory:BuffServer",function(source,Passport,Name,Amount)

@@ -96471,7 +96471,7 @@
       <animConvRoofWindowsAffected/>
       <ptfxAssetName>veh_xs_vehicle_mods</ptfxAssetName>
       <audioNameHash>r34sound</audioNameHash>
-      <layout>LAYOUT_LOW</layout>
+      <layout>LAYOUT_LOW_RHD</layout>
       <coverBoundOffsets>ELEGY_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
       <scenarioLayout/>

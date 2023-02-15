@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SInteriorOrderData>
-	<startFrom value="2043" />
+	<startFrom value="2109" />
 	<proxies>
 		<!-- ./input/cfx-energy -->
 		<Item>BarragemEnergy</Item>
+		<Item>bkr_id1_rd_strm_3</Item>
 		<Item>ch3_06_long_4</Item>
 		<Item>ch3_06_long_5</Item>
 		<Item>hei_ch3_06_critical_2</Item>

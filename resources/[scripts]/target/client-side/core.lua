@@ -1118,7 +1118,7 @@ function TargetEnable()
 				end
 
 				if GetEntityType(Entity) ~= 0 then
-					if IsEntityAVehicle(Entity) then
+					if IsEntityAVehicle(Entity) and GetEntityHealth(Ped) > 100 then
 						local Plate = GetVehicleNumberPlateText(Entity)
 						if #(Coords - entCoords) <= 1.0 and Plate ~= "PDMSPORT" then
 							local Network = nil

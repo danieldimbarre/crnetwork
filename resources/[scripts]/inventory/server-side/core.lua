@@ -415,12 +415,13 @@ LootItens = {
 	["Weapons"] = {	
 		["Cooldown"] = 10,
 		["Random"] = true,
+		["Boost"] = true,
 		["List"] = {
-			{ ["item"] = "plastic", ["min"] = 4, ["max"] = 5 },
-			{ ["item"] = "glass", ["min"] = 4, ["max"] = 5 },
-			{ ["item"] = "rubber", ["min"] = 4, ["max"] = 5 },
-			{ ["item"] = "copper", ["min"] = 4, ["max"] = 5 },
-			{ ["item"] = "aluminum", ["min"] = 4, ["max"] = 5 }
+			{ ["item"] = "plastic", ["min"] = 5, ["max"] = 5 },
+			{ ["item"] = "glass", ["min"] = 5, ["max"] = 5 },
+			{ ["item"] = "rubber", ["min"] = 5, ["max"] = 5 },
+			{ ["item"] = "copper", ["min"] = 5, ["max"] = 5 },
+			{ ["item"] = "aluminum", ["min"] = 5, ["max"] = 5 }
 		}
 	},
 	["Supplies"] = {
@@ -1773,6 +1774,11 @@ function Creative.Loot(Entity,Service)
 					if not LootItens[Service]["Random"] then
 						local randItem = math.random(#LootItens[Service]["List"])
 						local randAmount = math.random(LootItens[Service]["List"][randItem]["min"],LootItens[Service]["List"][randItem]["max"])
+
+						if LootItens[Service]["Boost"] then
+							randAmount = randAmount + 2
+						end
+
 						local itemSelect = { LootItens[Service]["List"][randItem]["item"],randAmount }
 
 						if (vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport) then
@@ -1788,6 +1794,11 @@ function Creative.Loot(Entity,Service)
 					else
 						for _,v in pairs(LootItens[Service]["List"]) do
 							local randAmount = math.random(v["min"],v["max"])
+
+							if LootItens[Service]["Boost"] then
+								randAmount = 10
+							end
+
 							if (vRP.InventoryWeight(Passport) + itemWeight(v["item"]) * randAmount) <= vRP.GetWeight(Passport) then
 								vRP.GenerateItem(Passport,v["item"],randAmount,true)
 							else

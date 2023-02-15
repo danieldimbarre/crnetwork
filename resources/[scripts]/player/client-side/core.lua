@@ -662,11 +662,11 @@ local inTrunk = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:enterTrunk")
 AddEventHandler("player:enterTrunk",function(Entity)
-	if not inTrunk then
+	local Ped = PlayerPedId()
+	if not inTrunk and GetEntityHealth(Ped) > 100 then
 		LocalPlayer["state"]["Commands"] = true
 		LocalPlayer["state"]["Invisible"] = true
 
-		local Ped = PlayerPedId()
 		SetEntityVisible(Ped,false,false)
 		AttachEntityToEntity(Ped,Entity[3],-1,0.0,-2.2,0.5,0.0,0.0,0.0,false,false,false,false,20,true)
 		inTrunk = true
@@ -709,8 +709,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:checkTrunk")
 AddEventHandler("player:checkTrunk",function()
-	if inTrunk then
-		local Ped = PlayerPedId()
+	local Ped = PlayerPedId()
+	if inTrunk and GetEntityHealth(Ped) > 100 then
 		local Vehicle = GetEntityAttachedTo(Ped)
 		if DoesEntityExist(Vehicle) then
 			inTrunk = false
@@ -872,11 +872,11 @@ local inTrash = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:enterTrash")
 AddEventHandler("player:enterTrash",function(Entity)
-	if not inTrash then
+	local Ped = PlayerPedId()
+	if not inTrash and GetEntityHealth(Ped) > 100 then
 		LocalPlayer["state"]["Commands"] = true
 		LocalPlayer["state"]["Invisible"] = true
 
-		local Ped = PlayerPedId()
 		FreezeEntityPosition(Ped,true)
 		SetEntityVisible(Ped,false,false)
 		SetEntityCoords(Ped,Entity[4],false,false,false,false)
@@ -903,8 +903,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:checkTrash")
 AddEventHandler("player:checkTrash",function()
-	if inTrash then
-		local Ped = PlayerPedId()
+	local Ped = PlayerPedId()
+	if inTrash and GetEntityHealth(Ped) > 100 then
 		FreezeEntityPosition(Ped,false)
 		SetEntityVisible(Ped,true,false)
 		LocalPlayer["state"]["Invisible"] = false

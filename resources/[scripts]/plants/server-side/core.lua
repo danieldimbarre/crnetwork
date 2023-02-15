@@ -59,15 +59,16 @@ AddEventHandler("plants:Collect",function(Number)
 				return
 			end
 
-			if (Plants[Number]["Time"] - os.time()) <= 3600 then
+			if (Plants[Number]["Time"] - os.time()) <= 5400 then
 				local Temporary = Plants[Number]
 
 				local Item = ""
 				if Types[Temporary["Model"]] then
 					Item = Types[Temporary["Model"]][1]
+					Plant = Types[Temporary["Model"]][2]
 				end
 
-				if (vRP.InventoryWeight(Passport) + itemWeight(Item)) <= vRP.GetWeight(Passport) then
+				if (vRP.InventoryWeight(Passport) + itemWeight(Item) + itemWeight(Plant)) <= vRP.GetWeight(Passport) then
 					Plants[Number] = nil
 					Player(source)["state"]["Cancel"] = true
 					Player(source)["state"]["Buttons"] = true
@@ -78,6 +79,7 @@ AddEventHandler("plants:Collect",function(Number)
 					Wait(10000)
 
 					vRP.GenerateItem(Passport,Item.."-"..Temporary["Points"],math.random(2,3),true)
+					vRP.GenerateItem(Passport,Plant.."-"..Temporary["Points"],1,true)
 					TriggerClientEvent("plants:Remover",-1,Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
@@ -167,8 +169,8 @@ function Creative.Informations(Number)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
 			local Collect = "A coleta está disponível"
-			if (Plants[Number]["Time"] - os.time()) > 3600 then
-				Collect = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time() - 3600)
+			if (Plants[Number]["Time"] - os.time()) > 5400 then
+				Collect = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time() - 5400)
 			end
 
 			local Cloning = "A clonagem está disponível"

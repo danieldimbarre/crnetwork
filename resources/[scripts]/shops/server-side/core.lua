@@ -476,13 +476,13 @@ local shops = {
 		["mode"] = "Sell",
 		["type"] = "Cash",
 		["List"] = {
-			["emerald"] = 90,
-			["diamond"] = 81,
-			["ruby"] = 67,
-			["sapphire"] = 58,
-			["amethyst"] = 49,
-			["amber"] = 40,
-			["turquoise"] = 31
+			["emerald"] = 85,
+			["diamond"] = 75,
+			["ruby"] = 55,
+			["sapphire"] = 45,
+			["amethyst"] = 35,
+			["amber"] = 25,
+			["turquoise"] = 15
 		}
 	},
 	["coffeeMachine"] = {

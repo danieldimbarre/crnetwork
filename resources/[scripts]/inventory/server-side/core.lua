@@ -2291,13 +2291,13 @@ function Creative.Dismantle(Entity)
 
 				if Class == "B" or Class == "B+" then
 					VehRandom = math.random(4500)
-					AmountItens = math.random(125,225)
+					AmountItens = math.random(150,200)
 				elseif Class == "A" or Class == "A+" then
 					VehRandom = math.random(3500)
-					AmountItens = math.random(225,325)
+					AmountItens = math.random(200,250)
 				elseif Class == "S" or Class == "S+" then
 					VehRandom = math.random(2500)
-					AmountItens = math.random(325,425)
+					AmountItens = math.random(250,300)
 				end
 
 				if VehParts <= 1 then
@@ -2308,15 +2308,15 @@ function Creative.Dismantle(Entity)
 					VehSelected = "brake"
 				end
 
-				if VehRandom <= 50 then
+				if VehRandom <= 10 then
 					vRP.GenerateItem(Passport,VehSelected.."e",1,true)
-				elseif VehRandom >= 51 and VehRandom <= 150 then
+				elseif VehRandom >= 10 and VehRandom <= 30 then
 					vRP.GenerateItem(Passport,VehSelected.."d",1,true)
-				elseif VehRandom >= 151 and VehRandom <= 300 then
+				elseif VehRandom >= 31 and VehRandom <= 60 then
 					vRP.GenerateItem(Passport,VehSelected.."c",1,true)
-				elseif VehRandom >= 301 and VehRandom <= 500 then
+				elseif VehRandom >= 61 and VehRandom <= 100 then
 					vRP.GenerateItem(Passport,VehSelected.."b",1,true)
-				elseif VehRandom >= 501 and VehRandom <= 750 then
+				elseif VehRandom >= 101 and VehRandom <= 150 then
 					vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 				end
 

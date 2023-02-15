@@ -169,23 +169,22 @@ RegisterCommand("emergencyFunctions",function()
 				exports["dynamic"]:AddButton("Remover Óculos","Remover da pessoa mais próxima.","skinshop:Remove","Glasses","player",true)
 
 				if LocalPlayer["state"]["Police"] then
-					exports["dynamic"]:AddButton("Polícia","Fardamento de policial.","player:Preset","1","prePolice",true)
-					exports["dynamic"]:AddButton("GOE","Fardamento de policial.","player:Preset","2","prePolice",true)
+					exports["dynamic"]:AddButton("Aluno","Fardamento de policial.","player:Preset","1","prePolice",true)
+					exports["dynamic"]:AddButton("Polícia","Fardamento de policial.","player:Preset","2","prePolice",true)
 					exports["dynamic"]:AddButton("GTM","Fardamento de policial.","player:Preset","3","prePolice",true)
 					exports["dynamic"]:AddButton("GAR","Fardamento de policial.","player:Preset","4","prePolice",true)
-					exports["dynamic"]:AddButton("GIP","Fardamento de policial.","player:Preset","5","prePolice",true)
-					exports["dynamic"]:AddButton("GRAER","Fardamento de policial.","player:Preset","6","prePolice",true)
-					exports["dynamic"]:AddButton("Aluno","Fardamento de policial.","player:Preset","7","prePolice",true)
+					exports["dynamic"]:AddButton("GRAER","Fardamento de policial.","player:Preset","5","prePolice",true)
+					exports["dynamic"]:AddButton("GIP","Fardamento de policial.","player:Preset","6","prePolice",true)
+					exports["dynamic"]:AddButton("GOE","Fardamento de policial.","player:Preset","7","prePolice",true)
 
 					exports["dynamic"]:SubMenu("Fardamentos","Todos os fardamentos policiais.","prePolice")
 					exports["dynamic"]:AddButton("Computador","Computador de bordo policial.","police:Mdt","",false,false)
 					exports["dynamic"]:AddButton("Invadir","Invadir a propriedade.","propertys:Invade","",false,true)
 				elseif LocalPlayer["state"]["Paramedic"] then
-					exports["dynamic"]:AddButton("Centro Médico","Fardamento de doutor.","player:Preset","8","preMedic",true)
-					exports["dynamic"]:AddButton("Centro Médico","Fardamento de paramédico.","player:Preset","9","preMedic",true)
-					exports["dynamic"]:AddButton("Centro Médico","Fardamento de paramédico interno.","player:Preset","10","preMedic",true)
-					-- exports["dynamic"]:AddButton("Centro Médico","Fardamento de atendimentos.","player:Preset","11","preMedic",true)
-					exports["dynamic"]:AddButton("Centro Médico","Fardamento de mergulhador.","player:Preset","12","preMedic",true)
+					exports["dynamic"]:AddButton("Paramédico","Fardamento de paramédico.","player:Preset","9","preMedic",true)
+					exports["dynamic"]:AddButton("Paramédico Interno","Fardamento de paramédico interno.","player:Preset","10","preMedic",true)
+					exports["dynamic"]:AddButton("Mergulhador","Fardamento de mergulhador.","player:Preset","11","preMedic",true)
+					exports["dynamic"]:AddButton("Doutor","Fardamento de doutor.","player:Preset","12","preMedic",true)
 
 					exports["dynamic"]:SubMenu("Fardamentos","Todos os fardamentos médicos.","preMedic")
 				end

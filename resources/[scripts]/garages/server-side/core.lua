@@ -640,6 +640,8 @@ AddEventHandler("garages:Spawn",function(Table)
 
 									if Gemstone <= 0 then
 										TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
+									else
+										TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["rental"] - os.time()),1000)
 									end
 
 									TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
@@ -660,6 +662,8 @@ AddEventHandler("garages:Spawn",function(Table)
 
 											if Gemstone <= 0 then
 												TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
+											else
+												TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["rental"] - os.time()),1000)
 											end
 
 											TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
@@ -680,7 +684,13 @@ AddEventHandler("garages:Spawn",function(Table)
 
 							if Exist then
 								vCLIENT.CreateVehicle(-1,Name,Network,vehicle[1]["engine"],vehicle[1]["health"],Mods,vehicle[1]["windows"],vehicle[1]["tyres"])
-								TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
+
+								if Gemstone <= 0 then
+									TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["tax"] - os.time()),1000)
+								else
+									TriggerClientEvent("Notify",source,"azul",CompleteTimers(vehicle[1]["rental"] - os.time()),1000)
+								end
+
 								TriggerEvent("engine:tryFuel",Plate,vehicle[1]["fuel"])
 								Spawn[Plate] = { Passport,Name,Network }
 

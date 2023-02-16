@@ -5427,6 +5427,90 @@ local List = {
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
+	["bcat"] = {
+		["Name"] = "Blindado Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["broncopol"] = {
+		["Name"] = "Bronco Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["falcongar"] = {
+		["Name"] = "GT F Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["fchatchpol"] = {
+		["Name"] = "Focus RS Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["fcsedanpol"] = {
+		["Name"] = "Focus Sedan Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["fordtransitpol"] = {
+		["Name"] = "Transit Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["g310gtm"] = {
+		["Name"] = "G310 GS Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["mustangcmd"] = {
+		["Name"] = "Mustang Mach 1 Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["tenere1200pol"] = {
+		["Name"] = "Tenere 1200 Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["territorypol"] = {
+		["Name"] = "Territory Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["tiger1200"] = {
+		["Name"] = "Tiger 1200 Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["wrstrx"] = {
+		["Name"] = "RAM Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
 	["fordraptor"] = {
 		["Name"] = "Raptor Policial",
 		["Weight"] = 25,
@@ -6077,6 +6161,13 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "exclusive",
 		["Gems"] = 100
+	},
+	["lc500"] = {
+		["Name"] = "LC 500",
+		["Weight"] = 30,
+		["Price"] = 100000,
+		["Mode"] = "exclusive",
+		["Gems"] = 300
 	},
 	["rx8hachi"] = {
 		["Name"] = "RX8 HR",

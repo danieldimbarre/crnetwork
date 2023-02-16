@@ -481,6 +481,29 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
+      <modelName>fordraptor</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">147 147 147 147 147 147</indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>932015_fordraptor_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="240"/>
+    </Item>
+    <Item>
       <modelName>fordtransitpol</modelName>
       <colors>
         <Item>
@@ -597,6 +620,29 @@
       <sirenSettings value="2481246"/>
     </Item>
     <Item>
+      <modelName>nspeedo</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">147 147 147 147 147 147</indices>
+          <liveries/>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police guv plate</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1200"/>
+      <sirenSettings value="240"/>
+    </Item>
+    <Item>
       <modelName>rangergoe</modelName>
       <colors>
         <Item>
@@ -649,6 +695,38 @@
       </plateProbabilities>
       <lightSettings value="1"/>
       <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>tacoma</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">147 147 147 147 147 147</indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="240"/>
     </Item>
     <Item>
       <modelName>tenere1200pol</modelName>
@@ -713,6 +791,43 @@
       </plateProbabilities>
       <lightSettings value="1"/>
       <sirenSettings value="2481246"/>
+    </Item>
+    <Item>
+      <modelName>gxrx7</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111
+            0
+            0
+            0 
+          </indices>
+          <liveries>
+            <Item value="true"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>65011_gxrx7_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="46"/>
+      <sirenSettings value="0"/>
     </Item>
     <Item>
       <modelName>tiger1200pol</modelName>
@@ -804,43 +919,6 @@
       </plateProbabilities>
       <lightSettings value="1"/>
       <sirenSettings value="13421"/>
-    </Item>
-    <Item>
-      <modelName>gxrx7</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            111
-            0
-            0
-            0 
-          </indices>
-          <liveries>
-            <Item value="true"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>65011_gxrx7_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="46"/>
-      <sirenSettings value="0"/>
     </Item>
     <Item>
       <modelName>polas350</modelName>
@@ -13302,6 +13380,45 @@
       <sirenSettings value="0"/>
     </Item>
     <Item>
+      <modelName>lfa</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            111
+            29
+            111
+            31
+            2
+            27
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+            <Item value="false"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>6368676_lfa_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="0"/>
+    </Item>
+    <Item>
       <modelName>tenere1200</modelName>
       <colors>
         <Item>
@@ -13390,45 +13507,6 @@
       <windowsWithExposedEdges/>
       <plateProbabilities>
         <Probabilities/>
-      </plateProbabilities>
-      <lightSettings value="1"/>
-      <sirenSettings value="0"/>
-    </Item>
-    <Item>
-      <modelName>lfa</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            111
-            29
-            111
-            31
-            2
-            27
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>6368676_lfa_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges/>
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100"/>
-          </Item>
-        </Probabilities>
       </plateProbabilities>
       <lightSettings value="1"/>
       <sirenSettings value="0"/>
@@ -15448,7 +15526,7 @@
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="0"/>
-      <sirenSettings value="55668"/>
+      <sirenSettings value="0"/>
     </Item>
     <Item>
       <modelName>r34lara</modelName>

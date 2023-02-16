@@ -872,7 +872,7 @@ AddEventHandler("player:Outfit",function(Mode)
 					TriggerClientEvent("Notify",source,"amarelo","Roupas não encontradas.",3000)
 				end
 			elseif Mode == "salvar" then
-				local custom = vSKINSHOP.getCustomization(source)
+				local custom = vSKINSHOP.Customization(source)
 				if custom then
 					vRP.SetSrvData("Outfit:"..Passport,custom)
 					TriggerClientEvent("Notify",source,"verde","Roupas salvas.",3000)
@@ -893,7 +893,7 @@ AddEventHandler("player:Outfit",function(Mode)
 					TriggerClientEvent("Notify",source,"amarelo","Roupas Premium não encontradas.",3000)
 				end
 			elseif Mode == "salvarpremium" and vRP.UserPremium(Passport) then
-				local custom = vSKINSHOP.getCustomization(source)
+				local custom = vSKINSHOP.Customization(source)
 				if custom then
 					vRP.SetSrvData("OutfitPremium:"..Passport,custom)
 					TriggerClientEvent("Notify",source,"verde","Roupas Premium salvas.",3000)

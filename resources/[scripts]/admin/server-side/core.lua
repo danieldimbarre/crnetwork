@@ -1104,7 +1104,7 @@ RegisterCommand("custom",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") then
-			local Custom = vSKINSHOP.getCustomization(source)
+			local Custom = vSKINSHOP.Customization(source)
 			if Custom then
 				local Text = ""
 				local Count = 1

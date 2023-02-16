@@ -971,7 +971,11 @@ RegisterCommand("veh",function(source,Message)
 					if Vehicle[1] then
 						TriggerClientEvent("Notify",source,"amarelo","Passaporte já possui um <b>"..Message[3].."</b>.",5000)
 					else
-						vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
+						if VehicleMode(Message[3]) == "rental" or VehicleMode(Message[3]) == "exclusive" then
+							vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
+						else
+							vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
+						end
 
 						TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..VehicleName(Message[3]).."</b> ao passaporte <b>"..OtherPassport.."</b>.",5000)
 						TriggerEvent("Discord","Admin","**veh add**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Veículo:** "..Message[3],3553599)

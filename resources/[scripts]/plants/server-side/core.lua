@@ -63,6 +63,7 @@ AddEventHandler("plants:Collect",function(Number)
 				local Temporary = Plants[Number]
 
 				local Item = ""
+				local Plant = ""
 				if Types[Temporary["Model"]] then
 					Item = Types[Temporary["Model"]][1]
 					Plant = Types[Temporary["Model"]][2]

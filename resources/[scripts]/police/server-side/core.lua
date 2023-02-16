@@ -133,48 +133,46 @@ end)
 function Creative.initPrison(OtherPassport,Services,Value,Message)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if not Actived[Passport] then
-			Actived[Passport] = true
+	if Passport and not Actived[Passport] then
+		Actived[Passport] = true
 
-			local Identity = vRP.Identity(Passport)
-			if Identity then
-				local OtherSource = vRP.Source(OtherPassport)
-				if OtherSource then
-					vCLIENT.SyncPrison(OtherSource,true,true)
-					TriggerClientEvent("radio:RadioClean",OtherSource)
+		local Identity = vRP.Identity(Passport)
+		if Identity then
+			local OtherSource = vRP.Source(OtherPassport)
+			if OtherSource then
+				vCLIENT.SyncPrison(OtherSource,true,true)
+				TriggerClientEvent("radio:RadioClean",OtherSource)
 
-					if Player(OtherSource)["state"]["Handcuff"] then
-						Player(OtherSource)["state"]["Handcuff"] = false
-						Player(OtherSource)["state"]["Commands"] = false
-						vRPC.removeObjects(OtherSource)
-					end
+				if Player(OtherSource)["state"]["Handcuff"] then
+					Player(OtherSource)["state"]["Handcuff"] = false
+					Player(OtherSource)["state"]["Commands"] = false
+					vRPC.removeObjects(OtherSource)
 				end
-
-				vRP.Query("prison/insertPrison",{ Police = Identity["name"].." "..Identity["name2"], Passport = parseInt(OtherPassport), Services = Services, Fines = Value, Text = Message, Date = os.date("%d/%m/%Y").." às "..os.date("%H:%M") })
-				vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
-				TriggerClientEvent("Notify",source,"verde","Prisão efetuada.",5000)
-				TriggerClientEvent("police:Update",source,"reloadPrison")
-				vRP.InitPrison(OtherPassport,Identity["prison"] + Services)
-
-				if Value > 0 then
-					exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)
-				end
-
-				local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
-				if Consult[1]["fugitive"] == 1 then
-					vRP.Query("characters/setFugitive",{ Passport = Passport, Fugitive = 0 })
-				end
-
-				if exports["hud"]:Wanted(Passport) then
-					TriggerEvent("Wanted:Remove",source,Passport)
-				end
-
-				TriggerEvent("Discord","Polices","**Policial:** "..Passport.."\n**Passaporte:** "..OtherPassport.."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,13541152)
 			end
 
-			Actived[Passport] = nil
+			vRP.Query("prison/insertPrison",{ Police = Identity["name"].." "..Identity["name2"], Passport = parseInt(OtherPassport), Services = Services, Fines = Value, Text = Message, Date = os.date("%d/%m/%Y").." às "..os.date("%H:%M") })
+			vRPC.playSound(source,"Event_Message_Purple","GTAO_FM_Events_Soundset")
+			TriggerClientEvent("Notify",source,"verde","Prisão efetuada.",5000)
+			TriggerClientEvent("police:Update",source,"reloadPrison")
+			vRP.InitPrison(OtherPassport,Identity["prison"] + Services)
+
+			if Value > 0 then
+				exports["bank"]:AddFines(OtherPassport,Passport,Value,Message)
+			end
+
+			local Consult = vRP.Query("characters/Fugitive",{ id = Passport })
+			if Consult[1]["fugitive"] == 1 then
+				vRP.Query("characters/setFugitive",{ Passport = Passport, Fugitive = 0 })
+			end
+
+			if exports["hud"]:Wanted(Passport) then
+				TriggerEvent("Wanted:Remove",source,Passport)
+			end
+
+			TriggerEvent("Discord","Polices","**Policial:** "..Passport.."\n**Passaporte:** "..OtherPassport.."\n**Serviços:** "..parseFormat(Services).."\n**Multa:** $"..parseFormat(Value).."\n**Motivo:** "..Message,13541152)
 		end
+
+		Actived[Passport] = nil
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

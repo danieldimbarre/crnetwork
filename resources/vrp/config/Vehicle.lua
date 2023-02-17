@@ -5497,7 +5497,7 @@ local List = {
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
-	["tiger1200"] = {
+	["tiger1200pol"] = {
 		["Name"] = "Tiger 1200 Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,

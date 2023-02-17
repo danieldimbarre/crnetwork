@@ -972,7 +972,7 @@ RegisterCommand("veh",function(source,Message)
 						TriggerClientEvent("Notify",source,"amarelo","Passaporte já possui um <b>"..Message[3].."</b>.",5000)
 					else
 						if VehicleMode(Message[3]) == "rental" or VehicleMode(Message[3]) == "exclusive" then
-							vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
+							vRP.Query("vehicles/rentalVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
 						else
 							vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
 						end

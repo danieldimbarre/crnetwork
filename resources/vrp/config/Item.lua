@@ -429,6 +429,7 @@ local List = {
 		["Durability"] = 3,
 		["Type"] = "Usável",
 		["Weight"] = 0.75,
+		["Scape"] = true,
 		["Max"] = 10,
 		["Economy"] = 325
 	},

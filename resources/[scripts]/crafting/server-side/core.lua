@@ -1036,7 +1036,7 @@ local List = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					[""] = 1
+					["drugtoy"] = 1
 				}
 			}
 		}

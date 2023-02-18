@@ -44040,7 +44040,7 @@
       </SubHandlingData>
     </Item>
     <Item type="CHandlingData">
-      <handlingName>UH1FOREST</handlingName>
+      <handlingName>UH1HPOL</handlingName>
       <fMass value="6500.000000"/>
       <fInitialDragCoeff value="10.000000"/>
       <fPercentSubmerged value="75.000000"/>

@@ -5462,6 +5462,13 @@ local List = {
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
+	["fordraptor"] = {
+		["Name"] = "Raptor Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
 	["fordtransitpol"] = {
 		["Name"] = "Transit Policial",
 		["Weight"] = 25,
@@ -5476,8 +5483,50 @@ local List = {
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
+	["m2police"] = {
+		["Name"] = "M2 Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["maverick2"] = {
+		["Name"] = "Maverick",
+		["Weight"] = 0,
+		["Price"] = 2000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
 	["mustangcmd"] = {
 		["Name"] = "Mustang Mach 1 Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["nc700pol"] = {
+		["Name"] = "NC 700 Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["nspeedo"] = {
+		["Name"] = "Van Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["r1250pol"] = {
+		["Name"] = "R 1250 Policial",
+		["Weight"] = 25,
+		["Price"] = 1000,
+		["Mode"] = "work",
+		["Gems"] = 0
+	},
+	["tacoma"] = {
+		["Name"] = "Tacoma Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
@@ -5504,15 +5553,15 @@ local List = {
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
-	["wrstrx"] = {
-		["Name"] = "RAM Policial",
+	["uh1hpol"] = {
+		["Name"] = "UH-1H Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
-	["fordraptor"] = {
-		["Name"] = "Raptor Policial",
+	["wrstrx"] = {
+		["Name"] = "RAM Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
 		["Mode"] = "work",
@@ -5560,31 +5609,10 @@ local List = {
 		["Mode"] = "work",
 		["Gems"] = 0
 	},
-	["nspeedo"] = {
-		["Name"] = "Van Policial",
-		["Weight"] = 25,
-		["Price"] = 1000,
-		["Mode"] = "work",
-		["Gems"] = 0
-	},
-	["tacoma"] = {
-		["Name"] = "Tacoma Policial",
-		["Weight"] = 25,
-		["Price"] = 1000,
-		["Mode"] = "work",
-		["Gems"] = 0
-	},
 	["audia4"] = {
 		["Name"] = "A4 Policial",
 		["Weight"] = 25,
 		["Price"] = 1000,
-		["Mode"] = "work",
-		["Gems"] = 0
-	},
-	["maverick2"] = {
-		["Name"] = "Maverick",
-		["Weight"] = 0,
-		["Price"] = 2000,
 		["Mode"] = "work",
 		["Gems"] = 0
 	},

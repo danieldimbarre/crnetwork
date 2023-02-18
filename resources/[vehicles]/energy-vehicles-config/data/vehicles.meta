@@ -3490,9 +3490,9 @@
       </firstPersonDrivebyData>
     </Item>
     <Item>
-      <modelName>uh1forest</modelName>
-      <txdName>uh1forest</txdName>
-      <handlingId>uh1forest</handlingId>
+      <modelName>uh1hpol</modelName>
+      <txdName>uh1hpol</txdName>
+      <handlingId>uh1hpol</handlingId>
       <gameName>VALKYRIE</gameName>
       <vehicleMakeName/>
       <expressionDictName>null</expressionDictName>
@@ -98155,7 +98155,7 @@
     </Item>
     <Item>
       <parent>vehicles_jet_interior</parent>
-      <child>uh1forest</child>
+      <child>uh1hpol</child>
     </Item>
     <Item>
       <parent>vehicles_schaf_interior</parent>

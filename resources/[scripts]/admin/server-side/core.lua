@@ -577,7 +577,9 @@ RegisterCommand("fix",function(source)
 					end)
 				end
 
-				TriggerEvent("Discord","Admin","**fix**\n\n**Passaporte:** "..Passport.."\n**Veículo:** "..VehicleName(vehName).."\n**Placa:** "..Plate,3553599)
+				if VehicleExist(vehName) then
+					TriggerEvent("Discord","Admin","**fix**\n\n**Passaporte:** "..Passport.."\n**Veículo:** "..VehicleName(vehName).."\n**Placa:** "..Plate,3553599)
+				end
 			end
 		end
 	end

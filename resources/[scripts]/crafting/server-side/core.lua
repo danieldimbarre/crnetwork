@@ -1203,6 +1203,7 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 						if os.time() >= parseInt(Active[Passport]) then
 							Player(source)["state"]["Buttons"] = false
 							Active[Passport] = nil
+							vRPC.stopAnim(source,false)
 
 							for Index,v in pairs(List[Type]["List"][Item]["require"]) do
 								local consultItem = vRP.InventoryItemAmount(Passport,Index)

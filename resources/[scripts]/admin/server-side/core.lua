@@ -446,7 +446,7 @@ RegisterCommand("group",function(source,Message)
 					TriggerClientEvent("player:Relationship",OtherSource,Message[2])
 				end
 
-				TriggerEvent("Discord","Admin","**group**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Grupo:** "..Message[2].."\n**Rank:** "..Message[3],3553599)
+				TriggerEvent("Discord","Admin","**group**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1].."\n**Grupo:** "..Message[2].."\n**Rank:** "..Message[3],3553599)
 			end
 		end
 	end
@@ -472,7 +472,7 @@ RegisterCommand("ungroup",function(source,Message)
 					TriggerClientEvent("player:Relationship",OtherSource,Message[2],true)
 				end
 
-				TriggerEvent("Discord","Admin","**ungroup**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Grupo:** "..Message[2],3553599)
+				TriggerEvent("Discord","Admin","**ungroup**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1].."\n**Grupo:** "..Message[2],3553599)
 			end
 		end
 	end

@@ -122,6 +122,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CRAFTING:OPENSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("crafting:openSystem")
 AddEventHandler("crafting:openSystem",function(Craft)
 	if GetEntityHealth(PlayerPedId()) > 100 then
 		if List[Craft] then

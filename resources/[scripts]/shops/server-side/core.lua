@@ -215,7 +215,7 @@ local shops = {
 			["sugar"] = 5,
 			["postit"] = 20,
 			["notepad"] = 10,
-			["emptybottle"] = 30,
+			["emptybottle"] = 5,
 			["cigarette"] = 10,
 			["lighter"] = 175,
 			["rose"] = 25,
@@ -537,7 +537,7 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["water"] = 30
+			["water"] = 10
 		}
 	},
 	["PharmacyIlegal"] = {

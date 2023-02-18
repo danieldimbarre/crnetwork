@@ -583,14 +583,14 @@ local List = {
 		["Index"] = "cheese",
 		["Name"] = "Queijo",
 		["Type"] = "Comum",
-		["Weight"] = 0.55,
+		["Weight"] = 0.05,
 		["Economy"] = 10
 	},
 	["silk"] = {
 		["Index"] = "silk",
 		["Name"] = "Seda",
 		["Type"] = "Comum",
-		["Weight"] = 0.15,
+		["Weight"] = 0.05,
 		["Economy"] = 5
 	},
 	["tablecoke"] = {
@@ -666,7 +666,7 @@ local List = {
 		["Index"] = "tarp",
 		["Name"] = "Lona",
 		["Type"] = "Comum",
-		["Weight"] = 0.65,
+		["Weight"] = 0.05,
 		["Economy"] = 50
 	},
 	["sheetmetal"] = {
@@ -694,7 +694,7 @@ local List = {
 		["Index"] = "explosives",
 		["Name"] = "Explosivos",
 		["Type"] = "Comum",
-		["Weight"] = 0.55,
+		["Weight"] = 0.05,
 		["Economy"] = 75
 	},
 	["animalfat"] = {
@@ -779,7 +779,7 @@ local List = {
 		["Name"] = "Desfibrilador",
 		["Repair"] = "repairkit01",
 		["Type"] = "Usável",
-		["Durability"] = 3,
+		["Durability"] = 7,
 		["Weight"] = 3.75,
 		["Economy"] = 325
 	},
@@ -919,7 +919,7 @@ local List = {
 		["Name"] = "Combo",
 		["Type"] = "Comum",
 		["Weight"] = 1.25,
-		["Max"] = 2,
+		["Max"] = 10,
 		["Economy"] = 120
 	},
 	["uwucoffee4"] = {
@@ -951,7 +951,7 @@ local List = {
 		["Name"] = "Combo",
 		["Type"] = "Comum",
 		["Weight"] = 1.25,
-		["Max"] = 2,
+		["Max"] = 10,
 		["Economy"] = 120
 	},
 	["beanmachine4"] = {
@@ -1078,8 +1078,7 @@ local List = {
 		["Type"] = "Usável",
 		["Durability"] = 3,
 		["Weight"] = 3.75,
-		["Max"] = 1,
-		["Economy"] = 900
+		["Economy"] = 1000
 	},
 	["bandage"] = {
 		["Index"] = "bandage",
@@ -1291,14 +1290,14 @@ local List = {
 		["Index"] = "acetone",
 		["Name"] = "Acetona",
 		["Type"] = "Comum",
-		["Weight"] = 0.15,
+		["Weight"] = 0.10,
 		["Economy"] = 40
 	},
 	["drugtoy"] = {
 		["Index"] = "drugtoy",
 		["Name"] = "Brinquedo",
 		["Type"] = "Comum",
-		["Weight"] = 0.50,
+		["Weight"] = 0.10,
 		["Economy"] = 100
 	},
 	["rolepass"] = {
@@ -1455,7 +1454,7 @@ local List = {
 		["Type"] = "Usável",
 		["Weight"] = 0.25,
 		["Scape"] = true,
-		["Max"] = 5,
+		["Max"] = 15,
 		["Economy"] = 35
 	},
 	["guarananatural"] = {
@@ -1475,7 +1474,7 @@ local List = {
 		["Weight"] = 0.25,
 		["Scape"] = true,
 		["Max"] = 5,
-		["Economy"] = 30
+		["Economy"] = 10
 	},
 	["emptybottle"] = {
 		["Index"] = "emptybottle",
@@ -1483,8 +1482,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.15,
 		["Scape"] = true,
-		["Max"] = 5,
-		["Economy"] = 30
+		["Economy"] = 5
 	},
 	["coffee"] = {
 		["Index"] = "coffee",
@@ -1544,98 +1542,98 @@ local List = {
 		["Index"] = "apple",
 		["Name"] = "Maça",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["orange"] = {
 		["Index"] = "orange",
 		["Name"] = "Laranja",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["strawberry"] = {
 		["Index"] = "strawberry",
 		["Name"] = "Morango",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["coffee2"] = {
 		["Index"] = "coffee2",
 		["Name"] = "Grão de Café",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["grape"] = {
 		["Index"] = "grape",
 		["Name"] = "Uva",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["tange"] = {
 		["Index"] = "tange",
 		["Name"] = "Tangerina",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["banana"] = {
 		["Index"] = "banana",
 		["Name"] = "Banana",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["guarana"] = {
 		["Index"] = "guarana",
 		["Name"] = "Guaraná",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["acerola"] = {
 		["Index"] = "acerola",
 		["Name"] = "Acerola",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["passion"] = {
 		["Index"] = "passion",
 		["Name"] = "Maracujá",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["tomato"] = {
 		["Index"] = "tomato",
 		["Name"] = "Tomate",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["mushroom"] = {
 		["Index"] = "mushroom",
 		["Name"] = "Cogumelo",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["cocoa"] = {
 		["Index"] = "cocoa",
 		["Name"] = "Cacau",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["potato"] = {
 		["Index"] = "potato",
 		["Name"] = "Batata",
 		["Type"] = "Usável",
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Economy"] = 20
 	},
 	["sugar"] = {
@@ -1736,7 +1734,7 @@ local List = {
 		["Index"] = "ketchup",
 		["Name"] = "Ketchup",
 		["Type"] = "Comum",
-		["Weight"] = 0.75,
+		["Weight"] = 0.05,
 		["Economy"] = 75
 	},
 	["cannedsoup"] = {
@@ -1759,14 +1757,14 @@ local List = {
 		["Index"] = "meat",
 		["Name"] = "Carne Animal",
 		["Type"] = "Comum",
-		["Weight"] = 0.75,
+		["Weight"] = 0.15,
 		["Economy"] = 16
 	},
 	["fishfillet"] = {
 		["Index"] = "fishfillet",
 		["Name"] = "Filé de Peixe",
 		["Type"] = "Comum",
-		["Weight"] = 0.75,
+		["Weight"] = 0.15,
 		["Economy"] = 10
 	},
 	["marshmallow"] = {
@@ -1774,7 +1772,7 @@ local List = {
 		["Name"] = "Marshmallow",
 		["Type"] = "Usável",
 		["Durability"] = 3,
-		["Weight"] = 0.25,
+		["Weight"] = 0.05,
 		["Scape"] = true,
 		["Max"] = 3,
 		["Economy"] = 35
@@ -1784,7 +1782,7 @@ local List = {
 		["Name"] = "Filé de Peixe Cozido",
 		["Type"] = "Usável",
 		["Durability"] = 3,
-		["Weight"] = 0.55,
+		["Weight"] = 0.15,
 		["Scape"] = true,
 		["Max"] = 3,
 		["Economy"] = 35
@@ -1794,7 +1792,7 @@ local List = {
 		["Name"] = "Carne Animal Cozida",
 		["Type"] = "Usável",
 		["Durability"] = 3,
-		["Weight"] = 0.55,
+		["Weight"] = 0.15,
 		["Scape"] = true,
 		["Max"] = 3,
 		["Economy"] = 35

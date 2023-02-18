@@ -1074,7 +1074,7 @@ local List = {
 function Creative.requestPerm(Type)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Active[Passport] then
+	if Passport and not Active[Passport] then
 		if List[Type]["perm"] then
 			local Split = splitString(List[Type]["perm"],"-")
 

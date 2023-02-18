@@ -1073,7 +1073,7 @@ local List = {
 function Creative.requestPerm(Type)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and Active[Passport] then
 		if List[Type]["perm"] then
 			local Split = splitString(List[Type]["perm"],"-")
 
@@ -1152,7 +1152,7 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Active[Passport] then
 		local consumePendrive = ""
 		if Amount <= 0 then Amount = 1 end
 
@@ -1196,6 +1196,7 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 					Active[Passport] = os.time() + List[Type]["anim"][3]
 					TriggerClientEvent("Progress",source,"Produzindo",List[Type]["anim"][3] * 1000)
 					vRPC.playAnim(source,false,{List[Type]["anim"][1],List[Type]["anim"][2]},true)
+					TriggerClientEvent("crafting:Close",source)
 
 					repeat
 						if os.time() >= parseInt(Active[Passport]) then

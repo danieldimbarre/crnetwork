@@ -7,11 +7,20 @@ local Tunnel = module("vrp","lib/Tunnel")
 -----------------------------------------------------------------------------------------------------------------------------------------
 vSERVER = Tunnel.getInterface("crafting")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CRAFTING:CLOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("crafting:Close")
+AddEventHandler("crafting:Close",function()
+	SetNuiFocus(false,false)
+	SetCursorLocation(0.5,0.5)
+
+	SendNUIMessage({ action = "hideMenu" })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("invClose",function(Data,Callback)
-	SetNuiFocus(false,false)
-	SendNUIMessage({ action = "hideNUI" })
+	TriggerEvent("crafting:Close")
 
 	Callback("Ok")
 end)

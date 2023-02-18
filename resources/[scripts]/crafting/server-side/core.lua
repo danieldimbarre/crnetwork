@@ -1030,7 +1030,7 @@ local List = {
 	},
 	["tablemeth"] = {
 		["perm"] = "Favelas",
-		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 },
+		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",1 },
 		["List"] = {
 		    ["meth"] = {
 				["amount"] = 1,
@@ -1043,26 +1043,28 @@ local List = {
 	},
 	["tablecoke"] = {
 		["perm"] = "Facs",
-		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 },
+		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",1 },
 		["List"] = {
 		    ["cocaine"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["drugtoy"] = 1
+					["sulfuric"] = 1,
+					["cokeleaf"] = 1
 				}
 			}
 		}
 	},
 	["tableweed"] = {
 		["perm"] = "Facs",
-		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 },
+		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",1 },
 		["List"] = {
 		    ["joint"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["drugtoy"] = 1
+					["silk"] = 1,
+					["weedleaf"] = 1
 				}
 			}
 		}
@@ -1194,8 +1196,8 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 
 				if List[Type]["anim"] then
 					Player(source)["state"]["Buttons"] = true
-					Active[Passport] = os.time() + List[Type]["anim"][3]
-					TriggerClientEvent("Progress",source,"Produzindo",List[Type]["anim"][3] * 1000)
+					Active[Passport] = os.time() + (List[Type]["anim"][3] * Amount)
+					TriggerClientEvent("Progress",source,"Produzindo",List[Type]["anim"][3] * Amount * 1000)
 					vRPC.playAnim(source,false,{List[Type]["anim"][1],List[Type]["anim"][2]},true)
 					TriggerClientEvent("crafting:Close",source)
 

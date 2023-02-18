@@ -1029,7 +1029,7 @@ local List = {
 	},
 	["tablemeth"] = {
 		["perm"] = "Favelas",
-		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 }
+		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 },
 		["List"] = {
 		    ["drugtoy"] = {
 				["amount"] = 1,
@@ -1042,7 +1042,7 @@ local List = {
 	},
 	["tablecoke"] = {
 		["perm"] = "Facs",
-		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 }
+		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 },
 		["List"] = {
 		    ["drugtoy"] = {
 				["amount"] = 1,
@@ -1055,7 +1055,7 @@ local List = {
 	},
 	["tableweed"] = {
 		["perm"] = "Facs",
-		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 }
+		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 },
 		["List"] = {
 		    ["drugtoy"] = {
 				["amount"] = 1,

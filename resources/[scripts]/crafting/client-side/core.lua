@@ -14,7 +14,7 @@ AddEventHandler("crafting:Close",function()
 	SetNuiFocus(false,false)
 	SetCursorLocation(0.5,0.5)
 
-	SendNUIMessage({ action = "hideMenu" })
+	SendNUIMessage({ action = "hideNUI" })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE

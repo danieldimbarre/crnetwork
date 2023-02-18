@@ -11,6 +11,10 @@ Creative = {}
 Tunnel.bindInterface("crafting",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Active = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
@@ -1023,8 +1027,9 @@ local List = {
 			}
 		}
 	},
-	["Favelas"] = {
-		["perm"] = "Facs",
+	["tablemeth"] = {
+		["perm"] = "Favelas",
+		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 }
 		["List"] = {
 		    ["drugtoy"] = {
 				["amount"] = 1,
@@ -1034,12 +1039,38 @@ local List = {
 				}
 			}
 		}
+	},
+	["tablecoke"] = {
+		["perm"] = "Facs",
+		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 }
+		["List"] = {
+		    ["drugtoy"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["cocaine"] = 1
+				}
+			}
+		}
+	},
+	["tableweed"] = {
+		["perm"] = "Facs",
+		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 }
+		["List"] = {
+		    ["drugtoy"] = {
+				["amount"] = 1,
+				["destroy"] = false,
+				["require"] = {
+					["joint"] = 1
+				}
+			}
+		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTPERM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.requestPerm(Name,Type)
+function Creative.requestPerm(Type)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -1160,17 +1191,40 @@ function Creative.functionCrafting(Item,Type,Amount,Slot)
 					end
 				end
 
-				for Index,v in pairs(List[Type]["List"][Item]["require"]) do
-					local consultItem = vRP.InventoryItemAmount(Passport,Index)
-					vRP.RemoveItem(Passport,consultItem[2],parseInt(v * Amount))
-				end
+				if List[Type]["anim"] then
+					Player(source)["state"]["Buttons"] = true
+					Active[Passport] = os.time() + List[Type]["anim"][3]
+					TriggerClientEvent("Progress",source,"Produzindo",List[Type]["anim"][3] * 1000)
+					vRPC.playAnim(source,false,{List[Type]["anim"][1],List[Type]["anim"][2]},true)
 
-				vRP.GenerateItem(Passport,Item,List[Type]["List"][Item]["amount"] * Amount,false,Slot)
+					repeat
+						if os.time() >= parseInt(Active[Passport]) then
+							Player(source)["state"]["Buttons"] = false
+							Active[Passport] = nil
 
-				if List[Type]["Type"] == "Wash" then
-					vRP.RemoveItem(Passport,consumePendrive,1)
+							for Index,v in pairs(List[Type]["List"][Item]["require"]) do
+								local consultItem = vRP.InventoryItemAmount(Passport,Index)
+								vRP.RemoveItem(Passport,consultItem[2],parseInt(v * Amount))
+							end
 
-					TriggerEvent("Discord",List[Type]["Type"],"**Passaporte:** "..Passport.."\n**Gerou:** "..List[Type]["List"][Item]["amount"] * Amount.."x "..itemName(Item),3042892)
+							vRP.GenerateItem(Passport,Item,List[Type]["List"][Item]["amount"] * Amount,false,Slot)
+						end
+		
+						Wait(100)
+					until not Active[Passport]
+				else
+					for Index,v in pairs(List[Type]["List"][Item]["require"]) do
+						local consultItem = vRP.InventoryItemAmount(Passport,Index)
+						vRP.RemoveItem(Passport,consultItem[2],parseInt(v * Amount))
+					end
+	
+					vRP.GenerateItem(Passport,Item,List[Type]["List"][Item]["amount"] * Amount,false,Slot)
+	
+					if List[Type]["Type"] == "Wash" then
+						vRP.RemoveItem(Passport,consumePendrive,1)
+	
+						TriggerEvent("Discord",List[Type]["Type"],"**Passaporte:** "..Passport.."\n**Gerou:** "..List[Type]["List"][Item]["amount"] * Amount.."x "..itemName(Item),3042892)
+					end
 				end
 			else
 				TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
@@ -1252,5 +1306,16 @@ AddEventHandler("crafting:updateSlot",function(Item,Slot,Target,Amount)
 		end
 
 		TriggerClientEvent("crafting:Update",source,"requestCrafting")
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CANCEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("crafting:Cancel")
+AddEventHandler("crafting:Cancel",function(source,Passport)
+	if Active[Passport] then
+		Active[Passport] = nil
+		Player(source)["state"]["Buttons"] = false
+		TriggerClientEvent("Progress",source,"Cancelando",1000)
 	end
 end)

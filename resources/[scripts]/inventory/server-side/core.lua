@@ -178,22 +178,22 @@ Products = {
 		}, ["needAmount"] = 1, ["item"] = "paper", ["itemAmount"] = 1 }
 	},
 	["tablecoke"] = {
-		{ ["perm"] = "Facs", ["timer"] = 20, ["need"] = {
-			{ ["item"] = "sulfuric", ["amount"] = 10 },
-			{ ["item"] = "cokeleaf", ["amount"] = 10 }
-		}, ["needAmount"] = 10, ["item"] = "cocaine", ["itemAmount"] = 10 }
+		{ ["perm"] = "Facs", ["event"] = {
+			["name"] = "crafting:openSystem",
+			["state"] = "client"
+		}}
 	},
 	["tablemeth"] = {
-		{ ["perm"] = "Favelas", ["timer"] = 20, ["need"] = {
-			{ ["item"] = "amphetamine", ["amount"] = 10 },
-			{ ["item"] = "acetone", ["amount"] = 10 }
-		}, ["needAmount"] = 10, ["item"] = "meth", ["itemAmount"] = 10 }
+		{ ["perm"] = "Favelas", ["event"] = {
+			["name"] = "crafting:openSystem",
+			["state"] = "client"
+		}}
 	},
 	["tableweed"] = {
-		{ ["perm"] = "Facs", ["timer"] = 20, ["need"] = {
-			{ ["item"] = "silk", ["amount"] = 10 },
-			{ ["item"] = "weedleaf", ["amount"] = 10 }
-		}, ["needAmount"] = 10, ["item"] = "joint", ["itemAmount"] = 10 }
+		{ ["perm"] = "Facs", ["event"] = {
+			["name"] = "crafting:openSystem",
+			["state"] = "client"
+		}}
 	},
 	["burgershot1"] = {
 		{ ["timer"] = 10, ["item"] = "burgershot1", ["itemAmount"] = 1 }
@@ -1483,6 +1483,8 @@ function Creative.Cancel()
 		TriggerEvent("robberys:Cancel",source,Passport)
 
 		TriggerEvent("propertys:Cancel",source,Passport)
+
+		TriggerEvent("crafting:Cancel",source,Passport)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -2137,6 +2139,16 @@ function Creative.MakeProducts(Table)
 				if not vRP.HasService(Passport,Products[Selected][Number]["perm"]) then
 					return
 				end
+			end
+
+			if Products[Selected][Number]["event"] then
+				if Products[Selected][Number]["event"]["state"] == "client" then
+					TriggerClientEvent(source,Products[Selected][Number]["event"]["name"],Selected)
+				else
+					TriggerEvent(Products[Selected][Number]["event"]["name"],Selected)
+				end
+
+				return
 			end
 
 			if Products[Selected][Number]["item"] then

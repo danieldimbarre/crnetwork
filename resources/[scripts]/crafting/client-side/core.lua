@@ -87,8 +87,7 @@ local List = {
 	["35"] = { -466.19,6288.18,13.61,"Paramedic" },
 	["36"] = { 512.46,-71.12,58.15,"Razors" },
 	["37"] = { -827.79,-716.16,23.78,"YoungBoys" },
-	["38"] = { -1159.01,-2026.2,14.09,"Dracing" },
-	["39"] = { 1338.93,-198.02,123.49,"Favelas" }
+	["38"] = { -1159.01,-2026.2,14.09,"Dracing" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -114,11 +113,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CRAFTING:OPENSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("crafting:openSystem",function(Number)
-	if List[Number] and GetEntityHealth(PlayerPedId()) > 100 then
-		if vSERVER.requestPerm(Number,List[Number][4]) then
+AddEventHandler("crafting:openSystem",function(Craft)
+	if GetEntityHealth(PlayerPedId()) > 100 then
+		if List[Craft] then
+			Craft = List[Craft][4]
+		end
+
+		if vSERVER.requestPerm(Craft) then
 			SetNuiFocus(true,true)
-			SendNUIMessage({ action = "showNUI", name = List[Number][4] })
+			SendNUIMessage({ action = "showNUI", name = Craft })
 		end
 	end
 end)

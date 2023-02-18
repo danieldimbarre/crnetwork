@@ -2143,7 +2143,7 @@ function Creative.MakeProducts(Table)
 
 			if Products[Selected][Number]["event"] then
 				if Products[Selected][Number]["event"]["state"] == "client" then
-					TriggerClientEvent(source,Products[Selected][Number]["event"]["name"],Selected)
+					TriggerClientEvent(Products[Selected][Number]["event"]["name"],source,Selected)
 				else
 					TriggerEvent(Products[Selected][Number]["event"]["name"],Selected)
 				end

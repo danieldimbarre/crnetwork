@@ -1031,11 +1031,11 @@ local List = {
 		["perm"] = "Favelas",
 		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 },
 		["List"] = {
-		    ["drugtoy"] = {
+		    ["meth"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["meth"] = 1
+					[""] = 1
 				}
 			}
 		}
@@ -1044,11 +1044,11 @@ local List = {
 		["perm"] = "Facs",
 		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 },
 		["List"] = {
-		    ["drugtoy"] = {
+		    ["cocaine"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["cocaine"] = 1
+					["drugtoy"] = 1
 				}
 			}
 		}
@@ -1057,11 +1057,11 @@ local List = {
 		["perm"] = "Facs",
 		["anim"] = { "anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter",20 },
 		["List"] = {
-		    ["drugtoy"] = {
+		    ["joint"] = {
 				["amount"] = 1,
 				["destroy"] = false,
 				["require"] = {
-					["joint"] = 1
+					["drugtoy"] = 1
 				}
 			}
 		}

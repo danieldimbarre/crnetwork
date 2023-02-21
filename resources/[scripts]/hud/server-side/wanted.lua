@@ -22,6 +22,16 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WANTED
 -----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Wanted:Remove",function(source,Passport)
+	if Wanted[Passport] then
+		Wanted[Passport] = nil
+	end
+
+	TriggerClientEvent("hud:Wanted",source,0)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WANTED
+-----------------------------------------------------------------------------------------------------------------------------------------
 exports("Wanted",function(Passport,source)
 	local source = parseInt(source)
 	local Passport = parseInt(Passport)
@@ -42,11 +52,11 @@ exports("Wanted",function(Passport,source)
 				local Service = vRP.NumPermission("Police")
 				for Passports,Sources in pairs(Service) do
 					async(function()
-						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Digitais Encontrada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alerta de procurado", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Digitais Encontradas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alerta de procurado", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end
-
+			
 			return true
 		end
 	end

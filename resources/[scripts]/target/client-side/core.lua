@@ -16,13 +16,15 @@ local Models = {}
 local Selected = {}
 local Sucess = false
 local Dismantleds = 1
-LocalPlayer["state"]["Target"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOWS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Tows = {
-	{ -142.24,-1174.19,23.76 }
-}
+local Tows = PolyZone:Create({
+	vector2(-226.21,-1185.91),
+	vector2(-248.83,-1184.86),
+	vector2(-246.61,-1158.93),
+	vector2(-226.11,-1159.46)
+},{ name = "Impound" })
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISMANTLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -39,7 +41,7 @@ local Dismantles = {
 	{ -93.07,-2549.6,6.0 },
 	{ -1537.85,-577.49,25.71 },
 	{ 820.07,-488.43,30.46 },
-	{ 819.53,-822.27,26.18 },
+	-- { 819.53,-822.27,26.18 },
 	{ 1078.62,-2325.56,30.25 },
 	{ 1204.69,-3116.71,5.54 }
 }
@@ -49,7 +51,7 @@ local Dismantles = {
 RegisterNetEvent("target:Dismantles")
 AddEventHandler("target:Dismantles",function()
 	Dismantleds = math.random(#Dismantles)
-	TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Desmanche", x = Dismantles[Dismantleds][1], y = Dismantles[Dismantleds][2], z = Dismantles[Dismantleds][3], blipColor = 60 })
+	TriggerEvent("NotifyPush",{ code = "QTH", title = "Localização do Desmanche", x = Dismantles[Dismantleds][1], y = Dismantles[Dismantleds][2], z = Dismantles[Dismantleds][3], blipColor = 60 })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRELIST
@@ -66,140 +68,140 @@ local tyreList = {
 -- FUELS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Fuels = {
-	{ 273.83,-1253.46,28.29 },
-	{ 273.83,-1261.29,28.29 },
-	{ 273.83,-1268.63,28.29 },
-	{ 265.06,-1253.46,28.29 },
-	{ 265.06,-1261.29,28.29 },
-	{ 265.06,-1268.63,28.29 },
-	{ 256.43,-1253.46,28.29 },
-	{ 256.43,-1261.29,28.29 },
-	{ 256.43,-1268.63,28.29 },
-	{ 2680.90,3266.40,54.39 },
-	{ 2678.51,3262.33,54.39 },
-	{ -2104.53,-311.01,12.16 },
-	{ -2105.39,-319.21,12.16 },
-	{ -2106.06,-325.57,12.16 },
-	{ -2097.48,-326.48,12.16 },
-	{ -2096.81,-320.11,12.16 },
-	{ -2096.09,-311.90,12.16 },
-	{ -2087.21,-312.81,12.16 },
-	{ -2088.08,-321.03,12.16 },
-	{ -2088.75,-327.39,12.16 },
-	{ -2551.39,2327.11,32.24 },
-	{ -2558.02,2326.70,32.24 },
-	{ -2558.48,2334.13,32.24 },
-	{ -2552.60,2334.46,32.24 },
-	{ -2558.77,2341.48,32.24 },
-	{ -2552.39,2341.89,32.24 },
-	{ 186.97,6606.21,31.06 },
-	{ 179.67,6604.93,31.06 },
-	{ 172.33,6603.63,31.06 },
-	{ 818.99,-1026.24,25.44 },
-	{ 810.7,-1026.24,25.44 },
-	{ 810.7,-1030.94,25.44 },
-	{ 818.99,-1030.94,25.44 },
-	{ 818.99,-1026.24,25.44 },
-	{ 827.3,-1026.24,25.64 },
-	{ 827.3,-1030.94,25.64 },
-	{ 1207.07,-1398.16,34.39 },
-	{ 1204.2,-1401.03,34.39 },
-	{ 1210.07,-1406.9,34.39 },
-	{ 1212.94,-1404.03,34.39 },
-	{ 1178.97,-339.54,68.37 },
-	{ 1186.4,-338.23,68.36 },
-	{ 1184.89,-329.7,68.31 },
-	{ 1177.46,-331.01,68.32 },
-	{ 1175.71,-322.3,68.36 },
-	{ 1183.13,-320.99,68.36 },
-	{ 629.64,263.84,102.27 },
-	{ 629.64,273.97,102.27 },
-	{ 620.99,273.97,102.27 },
-	{ 621.0,263.84,102.27 },
-	{ 612.44,263.84,102.27 },
-	{ 612.43,273.96,102.27 },
-	{ 2588.41,358.56,107.66 },
-	{ 2588.65,364.06,107.66 },
-	{ 2581.18,364.39,107.66 },
-	{ 2580.94,358.89,107.66 },
-	{ 2573.55,359.21,107.66 },
-	{ 2573.79,364.71,107.66 },
-	{ 174.99,-1568.44,28.33 },
-	{ 181.81,-1561.96,28.33 },
-	{ 176.03,-1555.91,28.33 },
-	{ 169.3,-1562.26,28.33 },
-	{ -329.81,-1471.63,29.73 },
-	{ -324.74,-1480.41,29.73 },
-	{ -317.26,-1476.09,29.73 },
-	{ -322.33,-1467.31,29.73 },
-	{ -314.92,-1463.03,29.73 },
-	{ -309.85,-1471.79,29.73 },
-	{ 1786.08,3329.86,40.42 },
-	{ 1785.04,3331.48,40.35 },
-	{ 50.31,2778.54,57.05 },
-	{ 48.92,2779.59,57.05 },
-	{ 264.98,2607.18,43.99 },
-	{ 263.09,2606.8,43.99 },
-	{ 1035.45,2674.44,38.71 },
-	{ 1043.22,2674.45,38.71 },
-	{ 1043.22,2667.92,38.71 },
-	{ 1035.45,2667.91,38.71 },
-	{ 1209.59,2658.36,36.9 },
-	{ 1208.52,2659.43,36.9 },
-	{ 1205.91,2662.05,36.9 },
-	{ 2539.8,2594.81,36.96 },
-	{ 2001.55,3772.21,31.4 },
-	{ 2003.92,3773.48,31.4 },
-	{ 2006.21,3774.96,31.4 },
-	{ 2009.26,3776.78,31.4 },
-	{ 1684.6,4931.66,41.23 },
-	{ 1690.1,4927.81,41.23 },
-	{ 1705.74,6414.61,31.77 },
-	{ 1701.73,6416.49,31.77 },
-	{ 1697.76,6418.35,31.77 },
-	{ -97.06,6416.77,30.65 },
-	{ -91.29,6422.54,30.65 },
-	{ -1808.71,799.96,137.69 },
-	{ -1803.62,794.4,137.69 },
-	{ -1797.22,800.56,137.66 },
-	{ -1802.31,806.12,137.66 },
-	{ -1795.93,811.97,137.7 },
-	{ -1790.83,806.41,137.7 },
-	{ -1438.07,-268.69,45.41 },
-	{ -1444.5,-274.23,45.41 },
-	{ -1435.5,-284.68,45.41 },
-	{ -1429.07,-279.15,45.41 },
-	{ -732.64,-932.51,18.22 },
-	{ -732.64,-939.32,18.22 },
-	{ -724.0,-939.32,18.22 },
-	{ -724.0,-932.51,18.22 },
-	{ -715.43,-932.51,18.22 },
-	{ -715.43,-939.32,18.22 },
-	{ -532.28,-1212.71,17.33 },
-	{ -529.51,-1213.96,17.33 },
-	{ -524.92,-1216.15,17.33 },
-	{ -522.23,-1217.42,17.33 },
-	{ -518.52,-1209.5,17.33 },
-	{ -521.21,-1208.23,17.33 },
-	{ -525.8,-1206.04,17.33 },
-	{ -528.57,-1204.8,17.33 },
-	{ -72.03,-1765.1,28.53 },
-	{ -69.45,-1758.01,28.55 },
-	{ -77.59,-1755.05,28.81 },
-	{ -80.17,-1762.14,28.8 },
-	{ -63.61,-1767.93,28.27 },
-	{ -61.03,-1760.85,28.31 },
-	{ 814.53,-789.63,25.251 },
-	{ 812.96,-789.63,25.251 },
-	{ 807.00,-789.63,25.251 },
-	{ 805.42,-789.63,25.251 }
+	{ 273.83,-1253.46,28.29,2.5 },
+	{ 273.83,-1261.29,28.29,2.5 },
+	{ 273.83,-1268.63,28.29,2.5 },
+	{ 265.06,-1253.46,28.29,2.5 },
+	{ 265.06,-1261.29,28.29,2.5 },
+	{ 265.06,-1268.63,28.29,2.5 },
+	{ 256.43,-1253.46,28.29,2.5 },
+	{ 256.43,-1261.29,28.29,2.5 },
+	{ 256.43,-1268.63,28.29,2.5 },
+	{ 2680.90,3266.40,54.39,2.5 },
+	{ 2678.51,3262.33,54.39,2.5 },
+	{ -2104.53,-311.01,12.16,2.5 },
+	{ -2105.39,-319.21,12.16,2.5 },
+	{ -2106.06,-325.57,12.16,2.5 },
+	{ -2097.48,-326.48,12.16,2.5 },
+	{ -2096.81,-320.11,12.16,2.5 },
+	{ -2096.09,-311.90,12.16,2.5 },
+	{ -2087.21,-312.81,12.16,2.5 },
+	{ -2088.08,-321.03,12.16,2.5 },
+	{ -2088.75,-327.39,12.16,2.5 },
+	{ -2551.39,2327.11,32.24,2.5 },
+	{ -2558.02,2326.70,32.24,2.5 },
+	{ -2558.48,2334.13,32.24,2.5 },
+	{ -2552.60,2334.46,32.24,2.5 },
+	{ -2558.77,2341.48,32.24,2.5 },
+	{ -2552.39,2341.89,32.24,2.5 },
+	{ 186.97,6606.21,31.06,2.5 },
+	{ 179.67,6604.93,31.06,2.5 },
+	{ 172.33,6603.63,31.06,2.5 },
+	{ 818.99,-1026.24,25.44,2.5 },
+	{ 810.7,-1026.24,25.44,2.5 },
+	{ 810.7,-1030.94,25.44,2.5 },
+	{ 818.99,-1030.94,25.44,2.5 },
+	{ 818.99,-1026.24,25.44,2.5 },
+	{ 827.3,-1026.24,25.64,2.5 },
+	{ 827.3,-1030.94,25.64,2.5 },
+	{ 1207.07,-1398.16,34.39,2.5 },
+	{ 1204.2,-1401.03,34.39,2.5 },
+	{ 1210.07,-1406.9,34.39,2.5 },
+	{ 1212.94,-1404.03,34.39,2.5 },
+	{ 1178.97,-339.54,68.37,2.5 },
+	{ 1186.4,-338.23,68.36,2.5 },
+	{ 1184.89,-329.7,68.31,2.5 },
+	{ 1177.46,-331.01,68.32,2.5 },
+	{ 1175.71,-322.3,68.36,2.5 },
+	{ 1183.13,-320.99,68.36,2.5 },
+	{ 629.64,263.84,102.27,2.5 },
+	{ 629.64,273.97,102.27,2.5 },
+	{ 620.99,273.97,102.27,2.5 },
+	{ 621.0,263.84,102.27,2.5 },
+	{ 612.44,263.84,102.27,2.5 },
+	{ 612.43,273.96,102.27,2.5 },
+	{ 2588.41,358.56,107.66,2.5 },
+	{ 2588.65,364.06,107.66,2.5 },
+	{ 2581.18,364.39,107.66,2.5 },
+	{ 2580.94,358.89,107.66,2.5 },
+	{ 2573.55,359.21,107.66,2.5 },
+	{ 2573.79,364.71,107.66,2.5 },
+	{ 174.99,-1568.44,28.33,2.5 },
+	{ 181.81,-1561.96,28.33,2.5 },
+	{ 176.03,-1555.91,28.33,2.5 },
+	{ 169.3,-1562.26,28.33,2.5 },
+	{ -329.81,-1471.63,29.73,2.5 },
+	{ -324.74,-1480.41,29.73,2.5 },
+	{ -317.26,-1476.09,29.73,2.5 },
+	{ -322.33,-1467.31,29.73,2.5 },
+	{ -314.92,-1463.03,29.73,2.5 },
+	{ -309.85,-1471.79,29.73,2.5 },
+	{ 1786.08,3329.86,40.42,2.5 },
+	{ 1785.04,3331.48,40.35,2.5 },
+	{ 50.31,2778.54,57.05,2.5 },
+	{ 48.92,2779.59,57.05,2.5 },
+	{ 264.98,2607.18,43.99,2.5 },
+	{ 263.09,2606.8,43.99,2.5 },
+	{ 1035.45,2674.44,38.71,2.5 },
+	{ 1043.22,2674.45,38.71,2.5 },
+	{ 1043.22,2667.92,38.71,2.5 },
+	{ 1035.45,2667.91,38.71,2.5 },
+	{ 1209.59,2658.36,36.9,2.5 },
+	{ 1208.52,2659.43,36.9,2.5 },
+	{ 1205.91,2662.05,36.9,2.5 },
+	{ 2539.8,2594.81,36.96,2.5 },
+	{ 2001.55,3772.21,31.4,2.5 },
+	{ 2003.92,3773.48,31.4,2.5 },
+	{ 2006.21,3774.96,31.4,2.5 },
+	{ 2009.26,3776.78,31.4,2.5 },
+	{ 1684.6,4931.66,41.23,2.5 },
+	{ 1690.1,4927.81,41.23,2.5 },
+	{ 1705.74,6414.61,31.77,2.5 },
+	{ 1701.73,6416.49,31.77,2.5 },
+	{ 1697.76,6418.35,31.77,2.5 },
+	{ -97.06,6416.77,30.65,2.5 },
+	{ -91.29,6422.54,30.65,2.5 },
+	{ -1808.71,799.96,137.69,2.5 },
+	{ -1803.62,794.4,137.69,2.5 },
+	{ -1797.22,800.56,137.66,2.5 },
+	{ -1802.31,806.12,137.66,2.5 },
+	{ -1795.93,811.97,137.7,2.5 },
+	{ -1790.83,806.41,137.7,2.5 },
+	{ -1438.07,-268.69,45.41,2.5 },
+	{ -1444.5,-274.23,45.41,2.5 },
+	{ -1435.5,-284.68,45.41,2.5 },
+	{ -1429.07,-279.15,45.41,2.5 },
+	{ -732.64,-932.51,18.22,2.5 },
+	{ -732.64,-939.32,18.22,2.5 },
+	{ -724.0,-939.32,18.22,2.5 },
+	{ -724.0,-932.51,18.22,2.5 },
+	{ -715.43,-932.51,18.22,2.5 },
+	{ -715.43,-939.32,18.22,2.5 },
+	{ -532.28,-1212.71,17.33,2.5 },
+	{ -529.51,-1213.96,17.33,2.5 },
+	{ -524.92,-1216.15,17.33,2.5 },
+	{ -522.23,-1217.42,17.33,2.5 },
+	{ -518.52,-1209.5,17.33,2.5 },
+	{ -521.21,-1208.23,17.33,2.5 },
+	{ -525.8,-1206.04,17.33,2.5 },
+	{ -528.57,-1204.8,17.33,2.5 },
+	{ -72.03,-1765.1,28.53,2.5 },
+	{ -69.45,-1758.01,28.55,2.5 },
+	{ -77.59,-1755.05,28.81,2.5 },
+	{ -80.17,-1762.14,28.8,2.5 },
+	{ -63.61,-1767.93,28.27,2.5 },
+	{ -61.03,-1760.85,28.31,2.5 },
+	{ 814.53,-789.63,25.251,2.5 },
+	{ 812.96,-789.63,25.251,2.5 },
+	{ 807.00,-789.63,25.251,2.5 },
+	{ 805.42,-789.63,25.251,2.5 },
+	{ 442.83,-985.87,42.69,10.0 },
+	{ -697.93,319.61,139.14,10.0 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TARGET:ANIMDEITAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 local beds = {
-	[1631638868] = { 0.0,0.0 },
-	[2117668672] = { 0.0,0.0 },
 	[-1498379115] = { 1.0,90.0 },
 	[-1519439119] = { 1.0,0.0 },
 	[-289946279] = { 1.0,0.0 }
@@ -207,16 +209,103 @@ local beds = {
 
 RegisterNetEvent("target:animDeitar")
 AddEventHandler("target:animDeitar",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] then
+	if not Previous then
 		local Ped = PlayerPedId()
-		if GetEntityHealth(Ped) > 101 then
-			local objCoords = GetEntityCoords(Selected[1])
+		Previous = GetEntityCoords(Ped)
+		local objCoords = GetEntityCoords(Selected[1])
+		SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + beds[Selected[2]][1],false,false,false,false)
+		vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
+		SetEntityHeading(Ped,GetEntityHeading(Selected[1]) + beds[Selected[2]][2] - 180.0)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:UPBED
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("target:UpBed")
+AddEventHandler("target:UpBed",function()
+	if Previous then
+		local Ped = PlayerPedId()
+		SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
+		Previous = nil
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:SENTAR
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Previous = nil
+local chairs = {
+	[-171943901] = 0.0,
+	[-109356459] = 0.5,
+	[1805980844] = 0.5,
+	[-99500382] = 0.3,
+	[1262298127] = 0.0,
+	[1737474779] = 0.5,
+	[2040839490] = 0.0,
+	[1037469683] = 0.4,
+	[867556671] = 0.4,
+	[-1521264200] = 0.0,
+	[-741944541] = 0.4,
+	[-591349326] = 0.5,
+	[-293380809] = 0.5,
+	[-628719744] = 0.5,
+	[-1317098115] = 0.5,
+	[1630899471] = 0.5,
+	[38932324] = 0.5,
+	[-523951410] = 0.5,
+	[725259233] = 0.5,
+	[764848282] = 0.5,
+	[2064599526] = 0.5,
+	[536071214] = 0.5,
+	[589738836] = 0.5,
+	[146905321] = 0.5,
+	[47332588] = 0.5,
+	[-1118419705] = 0.5,
+	[538002882] = -0.1,
+	[-377849416] = 0.5,
+	[96868307] = 0.5,
+	[-1195678770] = 0.7,
+	[-853526657] = -0.1,
+	[652816835] = 0.8,
+	[-1086524442] = 0.8,
+	[-1222451822] = 0.5,
+	[-399437949] = 0.5,
+	[-992710074] = 0.69,
+	[1816935351] = 0.5,
+	[1889748069] = 0.5,
+	[-1692811878] = 0.5,
+	[1577885496] = 0.5,
+	[2129125614] = 0.5,
+	[736919402] = 0.5,
+	[444105316] = 0.5,
+	[448106647] = 0.5,
+}
 
-			SetEntityCoords(Ped,objCoords["x"],objCoords["y"],objCoords["z"] + beds[Selected[2]][1],1,0,0,0)
-			SetEntityHeading(Ped,GetEntityHeading(Selected[1]) + beds[Selected[2]][2] - 180.0)
+RegisterNetEvent("target:animSentar")
+AddEventHandler("target:animSentar",function()
+	if not Previous then
+		local Ped = PlayerPedId()
+		local objCoords = GetEntityCoords(Selected[1])
+		FreezeEntityPosition(Selected[1],true)
 
-			vRP.playAnim(false,{"anim@gangops@morgue@table@","body_search"},true)
+		local Heading = GetEntityHeading(Selected[1])
+		if chairs[Selected[2]] ~= 0.7 then
+			Heading = GetEntityHeading(Selected[1]) - 180.0
 		end
+
+		TaskStartScenarioAtPosition(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT",objCoords["x"],objCoords["y"],objCoords["z"] + chairs[Selected[2]],Heading,-1,true,true)
+
+		Previous = GetEntityCoords(Ped)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:UPCHAIR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("target:UpChair")
+AddEventHandler("target:UpChair",function()
+	if Previous then
+		local Ped = PlayerPedId()
+		SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 1,false,false,false,false)
+		Previous = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -233,13 +322,13 @@ CreateThread(function()
 		minZ = 13.50,
 		maxZ = 14.00
 	},{
-		shop = "BurgerShot",
 		Distance = 1.0,
 		options = {
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				tunnel = "server"
+				tunnel = "proserver",
+				service = "BurgerShot"
 			}
 		}
 	})
@@ -250,13 +339,13 @@ CreateThread(function()
 		minZ = 22.25,
 		maxZ = 22.50
 	},{
-		shop = "UwU Café",
 		Distance = 1.0,
 		options = {
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				tunnel = "server"
+				tunnel = "proserver",
+				service = "UwuCoffee"
 			}
 		}
 	})
@@ -267,47 +356,47 @@ CreateThread(function()
 		minZ = 26.50,
 		maxZ = 27.00
 	},{
-		shop = "Pizza This",
 		Distance = 1.0,
 		options = {
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				tunnel = "server"
+				tunnel = "proserver",
+				service = "PizzaThis"
 			}
 		}
 	})
 
-	AddBoxZone("CallBeanMachine",vec3(122.22,-1036.56,29.44),0.25,0.25,{
+	AddBoxZone("CallBeanMachine",vec3(121.02,-1040.18,29.44),0.25,0.25,{
 		name = "CallBeanMachine",
 		heading = 3374176,
 		minZ = 29.25,
 		maxZ = 29.75
 	},{
-		shop = "Bean Machine",
 		Distance = 1.0,
 		options = {
 			{
 				event = "target:CallWorks",
 				label = "Buscar Entregadores",
-				tunnel = "server"
+				tunnel = "proserver",
+				service = "BeanMachine"
 			}
 		}
 	})
 
-	AddBoxZone("CallParamedic",vec3(311.83,-593.31,43.08),0.25,0.25,{
+	AddBoxZone("CallParamedic",vec3(-678.14,326.62,82.96),0.25,0.25,{
 		name = "CallParamedic",
 		heading = 3374176,
-		minZ = 43.00,
-		maxZ = 43.25
+		minZ = 82.88,
+		maxZ = 83.00
 	},{
-		shop = "Paramedic",
 		Distance = 2.0,
 		options = {
 			{
 				event = "target:CallWorks",
-				label = "Buscar Entregadores",
-				tunnel = "server"
+				label = "Buscar Doadores",
+				tunnel = "proserver",
+				service = "Paramedic"
 			}
 		}
 	})
@@ -495,6 +584,28 @@ CreateThread(function()
 		Distance = 1.0
 	})
 
+	AddTargetModel({ -1498379115,-1519439119,-289946279 },{
+		options = {
+			{
+				event = "target:animDeitar",
+				label = "Deitar",
+				tunnel = "client"
+			}
+		},
+		Distance = 1.0
+	})
+
+	AddTargetModel({ -171943901,-109356459,1805980844,-99500382,1262298127,1737474779,2040839490,1037469683,867556671,-1521264200,-741944541,-591349326,-293380809,-628719744,-1317098115,1630899471,38932324,-523951410,725259233,764848282,2064599526,536071214,589738836,146905321,47332588,-1118419705,538002882,-377849416,96868307,-1195678770,-853526657,652816835,-1086524442,-1222451822,-399437949,-992710074,1816935351,1889748069,-1692811878,1577885496,2129125614,736919402,444105316 },{
+		options = {
+			{
+				event = "target:animSentar",
+				label = "Sentar",
+				tunnel = "client"
+			}
+		},
+		Distance = 1.0
+	})
+
 	AddTargetModel({ 690372739 },{
 		options = {
 			{
@@ -572,7 +683,7 @@ CreateThread(function()
 		Distance = 1.0
 	})
 
-	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688 },{
+	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688,-50684386 },{
 		options = {
 			{
 				event = "inventory:Animals",
@@ -580,7 +691,7 @@ CreateThread(function()
 				tunnel = "shop"
 			}
 		},
-		Distance = 1.0
+		Distance = 1.5
 	})
 
 	AddTargetModel({ 1281992692,1158960338,1511539537,-78626473,-429560270 },{
@@ -626,6 +737,30 @@ CreateThread(function()
 				label = "Abrir",
 				tunnel = "entity",
 				service = "Custom"
+			}
+		},
+		Distance = 0.75
+	})
+
+	AddTargetModel({ -329415894 },{
+		options = {
+			{
+				event = "chest:Open",
+				label = "Abrir",
+				tunnel = "entity",
+				service = "Custom"
+			}
+		},
+		Distance = 0.75
+	})
+
+	AddTargetModel({ -1940238623,2108567945 },{
+		options = {
+			{
+				event = "inventory:VerifyObjects",
+				label = "Roubar",
+				tunnel = "shop",
+				service = "Parquimetro"
 			}
 		},
 		Distance = 0.75
@@ -983,7 +1118,7 @@ function TargetEnable()
 				end
 
 				if GetEntityType(Entity) ~= 0 then
-					if IsEntityAVehicle(Entity) then
+					if IsEntityAVehicle(Entity) and GetEntityHealth(Ped) > 100 then
 						local Plate = GetVehicleNumberPlateText(Entity)
 						if #(Coords - entCoords) <= 1.0 and Plate ~= "PDMSPORT" then
 							local Network = nil
@@ -1001,7 +1136,7 @@ function TargetEnable()
 
 							for k,v in pairs(Fuels) do
 								local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-								if Distance <= 2.5 then
+								if Distance <= v[4] then
 									Combustivel = true
 									break
 								end
@@ -1027,7 +1162,6 @@ function TargetEnable()
 											end
 
 											Menu[#Menu + 1] = { event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" }
-											Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
 										end
 
 										Menu[#Menu + 1] = { event = "garages:Key", label = "Criar Chave Cópia", tunnel = "police" }
@@ -1043,8 +1177,9 @@ function TargetEnable()
 												local Trunk = GetEntityBoneIndexByName(Entity,"boot")
 												local cTrunk = GetWorldPositionOfEntityBone(Entity,Trunk)
 												local Distance = #(Coords - cTrunk)
-												if Distance <= 1.25 then
+												if Distance <= 1.75 then
 													if GetVehicleDoorLockStatus(Entity) == 1 then
+														Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
 														Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
 													end
 
@@ -1069,12 +1204,9 @@ function TargetEnable()
 											end
 										end
 
-										for k,v in pairs(Tows) do
-											local Distance = #(Coords - vec3(v[1],v[2],v[3]))
-											if Distance <= 10 then
-												Menu[#Menu + 1] = { event = "towdriver:Tow", label = "Rebocar", tunnel = "client" }
-												Menu[#Menu + 1] = { event = "impound:Check", label = "Impound", tunnel = "police" }
-											end
+										if Tows:isPointInside(Coords) then
+											Menu[#Menu + 1] = { event = "towdriver:Tow", label = "Rebocar", tunnel = "client" }
+											Menu[#Menu + 1] = { event = "impound:Check", label = "Impound", tunnel = "police" }
 										end
 									end
 
@@ -1116,8 +1248,12 @@ function TargetEnable()
 							Selected = { source }
 
 							if LocalPlayer["state"]["Police"] then
-								Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
-								Menu[#Menu + 1] = { event = "police:prisonClothes", label = "Uniforme Presidiário", tunnel = "police" }
+								if GetEntityHealth(Entity) <= 100 then
+									Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
+									Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
+								else
+									Menu[#Menu + 1] = { event = "police:prisonClothes", label = "Uniforme Presidiário", tunnel = "police" }
+								end
 							elseif LocalPlayer["state"]["Paramedic"] then
 								if GetEntityHealth(Entity) <= 100 then
 									Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
@@ -1136,6 +1272,10 @@ function TargetEnable()
 
 							if IsEntityPlayingAnim(Entity,"random@mugging3","handsup_standing_base",3) then
 								Menu[#Menu + 1] = { event = "player:checkShoes", label = "Roubar Sapatos", tunnel = "paramedic" }
+							end
+
+							if GetEntityHealth(Entity) > 100 then
+								Menu[#Menu + 1] = { event = "police:runInspect", label = "Revistar", tunnel = "police" }
 							end
 
 							SendNUIMessage({ Action = "Valid", data = Menu })
@@ -1161,38 +1301,77 @@ function TargetEnable()
 							SendNUIMessage({ Action = "Left" })
 						end
 					else
-						for k,v in pairs(Models) do
+						if LocalPlayer["state"]["Debug"] then
 							if DoesEntityExist(Entity) then
-								if k == GetEntityModel(Entity) then
-									if #(Coords - entCoords) <= Models[k]["Distance"] then
-										local objNet = nil
-										if NetworkGetEntityIsNetworked(Entity) then
-											objNet = ObjToNet(Entity)
+								local Model = GetEntityModel(Entity)
+								if #(Coords - entCoords) <= 10 then
+									local objNet = nil
+									if NetworkGetEntityIsNetworked(Entity) then
+										objNet = ObjToNet(Entity)
+									end
+									local Menu = {}
+
+									Selected = { Entity,Model,objNet,GetEntityCoords(Entity),GetEntityHeading(Entity) }
+									
+									table.insert(Menu,{ event = "admin:DebugInformations", label = "Informações", tunnel = "server" })
+
+									SendNUIMessage({ Action = "Valid", data = Menu })
+
+									Sucess = true
+									while Sucess do
+										local Ped = PlayerPedId()
+										local Coords = GetEntityCoords(Ped)
+										local _,entCoords,Entity = RayCastGamePlayCamera()
+
+										if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+											SetCursorLocation(0.5,0.5)
+											SetNuiFocus(true,true)
 										end
 
-										Selected = { Entity,k,objNet,GetEntityCoords(Entity) }
-
-										SendNUIMessage({ Action = "Valid", data = Models[k]["options"] })
-
-										Sucess = true
-										while Sucess do
-											local Ped = PlayerPedId()
-											local Coords = GetEntityCoords(Ped)
-											local _,entCoords,Entity = RayCastGamePlayCamera()
-
-											if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
-												SetCursorLocation(0.5,0.5)
-												SetNuiFocus(true,true)
-											end
-
-											if GetEntityType(Entity) == 0 or #(Coords - entCoords) > Models[k]["Distance"] then
-												Sucess = false
-											end
-
-											Wait(1)
+										if GetEntityType(Entity) == 0 or #(Coords - entCoords) > 10 then
+											Sucess = false
 										end
 
-										SendNUIMessage({ Action = "Left" })
+										Wait(1)
+									end
+
+									SendNUIMessage({ Action = "Left" })
+								end
+							end
+						else
+							for k,v in pairs(Models) do
+								if DoesEntityExist(Entity) then
+									if k == GetEntityModel(Entity) then
+										if #(Coords - entCoords) <= Models[k]["Distance"] then
+											local objNet = nil
+											if NetworkGetEntityIsNetworked(Entity) then
+												objNet = ObjToNet(Entity)
+											end
+
+											Selected = { Entity,k,objNet,GetEntityCoords(Entity) }
+
+											SendNUIMessage({ Action = "Valid", data = Models[k]["options"] })
+
+											Sucess = true
+											while Sucess do
+												local Ped = PlayerPedId()
+												local Coords = GetEntityCoords(Ped)
+												local _,entCoords,Entity = RayCastGamePlayCamera()
+
+												if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+													SetCursorLocation(0.5,0.5)
+													SetNuiFocus(true,true)
+												end
+
+												if GetEntityType(Entity) == 0 or #(Coords - entCoords) > Models[k]["Distance"] then
+													Sucess = false
+												end
+
+												Wait(1)
+											end
+
+											SendNUIMessage({ Action = "Left" })
+										end
 									end
 								end
 							end
@@ -1249,6 +1428,8 @@ RegisterNUICallback("Select",function(Data,Callback)
 		TriggerServerEvent(Data["event"],Selected)
 	elseif Data["tunnel"] == "police" then
 		TriggerServerEvent(Data["event"],Selected,Data["service"])
+	elseif Data["tunnel"] == "teleport" then
+		TriggerEvent(Data["event"],Data["service"],Data["teleport"])
 	elseif Data["tunnel"] == "paramedic" then
 		TriggerServerEvent(Data["event"],Selected[1],Data["service"])
 	elseif Data["tunnel"] == "proserver" then

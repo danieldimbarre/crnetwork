@@ -83,7 +83,7 @@ end)
 -- SKINSHOPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Skinshops = {
-	{ -1124.28,-1442.92,5.22 },
+	-- { -1124.28,-1442.92,5.22 },
 	{ 74.88,-1400.08,29.37 },
 	{ 80.42,-1400.13,29.37 },
 	{ -709.09,-143.23,37.41 },
@@ -108,19 +108,25 @@ local Skinshops = {
 	{ -1103.47,2702.0,19.11 },
 	{ 426.08,-799.02,29.49 },
 	{ 420.55,-799.1,29.49 },
-	{ 1210.61,-1474.0,34.85 }, -- Bombeiros
+	{ 965.78,19.05,71.46 }, -- Cassino
+	-- { 1210.61,-1474.0,34.85 }, -- Bombeiros
 	{ -1181.86,-900.55,13.99 }, -- BurgerShot
 	{ 461.46,-998.05,31.19 }, -- Departamento LSPD
-	{ 387.29,799.17,187.45 }, -- Departamento Ranger
-	{ 1841.13,3679.86,34.19 }, -- Departamento Sheriff
+	-- { 387.29,799.17,187.45 }, -- Departamento Ranger
+	-- { 1841.13,3679.86,34.19 }, -- Departamento Sheriff
 	{ -437.49,6009.62,36.99 }, -- Departamento Sheriff
 	{ 361.77,-1593.19,25.9 }, -- Departamento State
 	{ -586.89,-1049.92,22.34 }, -- Uwu Café
-	{ 300.2,-598.85,43.29 }, -- Hospital Sul
+	{ 810.31,-760.23,31.26 }, -- Pizza This
+	{ -1183.7,-898.03,13.99 }, -- BurgerShot
+	-- { 300.2,-598.85,43.29 }, -- Hospital Sul
+	{ -663.98,322.24,92.74 }, -- Hospital Sul
 	{ -256.56,6327.32,32.42 }, -- Hospital Norte
-	{ 841.11,-824.54,26.34 }, -- Mecânica Sul
-	{ 801.62,-830.37,26.34 }, -- Mecânica Sul
-	{ 810.31,-760.23,31.26 } -- Pizza This
+	{ -194.13,-1337.78,31.29 }, -- Bennys
+	{ 819.06,-890.42,25.68 }, -- Dracing
+	-- { 841.11,-824.54,26.34 }, -- Ottos
+	-- { 801.62,-830.37,26.34 }, -- Ottos
+
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -194,7 +200,7 @@ end)
 RegisterNUICallback("rotateRight",function(Data,Callback)
 	local Ped = PlayerPedId()
 	local Heading = GetEntityHeading(Ped)
-	SetEntityHeading(Ped,Heading + 30)
+	SetEntityHeading(Ped,Heading - 10)
 
 	Callback("Ok")
 end)
@@ -204,7 +210,7 @@ end)
 RegisterNUICallback("rotateLeft",function(Data,Callback)
 	local Ped = PlayerPedId()
 	local heading = GetEntityHeading(Ped)
-	SetEntityHeading(Ped,heading - 30)
+	SetEntityHeading(Ped,heading + 10)
 
 	Callback("Ok")
 end)
@@ -260,9 +266,9 @@ function openMenu(Menus)
 	MaxValues()
 
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
-	vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
 
 	Previous = json.encode(Dataset)
+	-- TriggerServerEvent("vRP:BucketClient","Enter")
 	SendNUIMessage({ action = "open", menus = Menus, currentClothing = Dataset })
 
 	SetNuiFocus(true,true)
@@ -279,31 +285,37 @@ function CamActive()
 	end
 
 	local Ped = PlayerPedId()
-	local Heading = GetEntityHeading(Ped)
-	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
+	local Coords = GetEntityCoords(Ped)
+	local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
 
 	Cam = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
 	SetCamActive(Cam,true)
 	RenderScriptCams(true,false,0,true,true)
-	SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
-	SetCamRot(Cam,0.0,0.0,Heading + 180)
+	SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.5)
+	PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETUPCAM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("setupCam",function(Data,Callback)
+	local Ped = PlayerPedId()
+	local Coords = GetEntityCoords(Ped)
 	if Data["value"] == 1 then
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,0.75,0)
-		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,0.75,0)
+		SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.6)
+		PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.6)
 	elseif Data["value"] == 2 then
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,1.0,0)
-		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
+		SetCamCoord(Cam,Coords["x"],CamCoords["y"],CamCoords["z"] + 0.2)
+		PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.2)
 	elseif Data["value"] == 3 then
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,1.0,0)
-		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0)
+		SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] - 0.5)
+		PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] - 0.5)
 	else
-		local Coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0,2.0,0)
-		SetCamCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0)
+		SetCamCoord(Cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.5)
+		PointCamAtCoord(Cam,Coords["x"],Coords["y"],Coords["z"] + 0.5)
 	end
 
 	Callback("Ok")
@@ -364,6 +376,7 @@ RegisterNUICallback("close",function(Data,Callback)
 		DestroyCam(Cam,false)
 	end
 
+	-- TriggerServerEvent("vRP:BucketClient","Exit")
 	SetNuiFocus(false,false)
 	vRP.removeObjects()
 
@@ -628,6 +641,15 @@ function Creative.checkShoes()
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECKBACKPACK
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.checkBackpackPremium()
+	if Dataset["backpack"]["item"] ~= 0 and Dataset["backpack"]["item"] >= 100 then
+		return true
+	end
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLEBACKPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("skinshop:toggleBackpack")
@@ -649,9 +671,9 @@ AddEventHandler("skinshop:toggleBackpack",function(Infos)
 	vSERVER.updateClothes(Dataset)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- GETCUSTOMIZATION
+-- CUSTOMIZATION
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.getCustomization()
+function Creative.Customization()
 	return Dataset
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

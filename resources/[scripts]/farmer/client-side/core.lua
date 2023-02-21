@@ -80,7 +80,7 @@ end)
 -- FARMER:REMOVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("farmer:Remover")
-AddEventHandler("farmer:Remover",function(Number,Timers)
+AddEventHandler("farmer:Remover",function(Number,Timers,Coords)
 	if Objects[Number] then
 		Objects[Number]["Time"] = Timers
 
@@ -91,6 +91,10 @@ AddEventHandler("farmer:Remover",function(Number,Timers)
 				DeleteEntity(Displayed[Number])
 				Displayed[Number] = nil
 			end
+		end
+
+		if Coords then
+			Objects[Number]["Coords"] = Coords
 		end
 	end
 end)

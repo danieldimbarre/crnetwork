@@ -54,16 +54,20 @@ CreateThread(function()
 
 			if BloodTick >= 3 and Bleeding >= 3 then
 				BloodTick = 0
-				local Nocaute = Bleeding * 1000
+				-- local Nocaute = Bleeding * 1000
 
-				if not IsPedInAnyVehicle(Ped) then
-					SetPedToRagdoll(Ped,Nocaute,Nocaute,0,0,0,0)
-					TriggerEvent("inventory:Cancel")
-				end
+				-- if not IsPedInAnyVehicle(Ped) then
+				-- 	SetPedToRagdoll(Ped,Nocaute,Nocaute,0,0,0,0)
+				-- 	TriggerEvent("inventory:Cancel")
+				-- end
 
-				DoScreenFadeOut(1000)
-				Wait(Nocaute)
-				DoScreenFadeIn(1000)
+				-- DoScreenFadeOut(1000)
+				-- Wait(Nocaute)
+				-- DoScreenFadeIn(1000)
+
+				TriggerServerEvent("evidence:dropEvidence","yellow")
+
+				TriggerEvent("Notify","blood","Sangramento encontrado.",3000)
 			end
 		end
 
@@ -144,9 +148,9 @@ end
 -- ARMS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Arms",function()
-	if Damaged[18905] or Damaged[18905] or Damaged[60309] or Damaged[36029] or Damaged[57005] or Damaged[28422] or Damaged[6286] then
-		return true
-	end
+	-- if Damaged[18905] or Damaged[18905] or Damaged[60309] or Damaged[36029] or Damaged[57005] or Damaged[28422] or Damaged[6286] then
+	-- 	return true
+	-- end
 
 	return false
 end)

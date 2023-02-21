@@ -61,7 +61,7 @@ const updateDrag = () => {
 			if(amount > itemAmount)
 				amount = itemAmount;
 
-			$(".populated, .empty, .use, .send, .deliver").off("draggable droppable");
+			$(".populated, .empty, .use, .send, .deliver, .trash").off("draggable droppable");
 
 			let clone1 = ui.draggable.clone();
 			let slot2 = $(this).data("slot"); 
@@ -153,7 +153,7 @@ const updateDrag = () => {
 			if(amount > itemAmount)
 				amount = itemAmount;
 
-			$(".populated, .empty, .use, .send, .deliver").off("draggable droppable");
+			$(".populated, .empty, .use, .send, .deliver, .trash").off("draggable droppable");
 
 			if(ui.draggable.data("item-key") == $(this).data("item-key")){
 				let newSlotAmount = amount + parseInt($(this).data("amount"));
@@ -288,6 +288,30 @@ const updateDrag = () => {
 		}
 	});
 
+	$(".trash").droppable({
+		hoverClass: "hoverControl",
+		drop: function(event,ui){
+			if(ui.draggable.parent()[0] == undefined) return;
+
+			const shiftPressed = event.shiftKey;
+			const origin = ui.draggable.parent()[0].className;
+			if (origin === undefined || origin === "invRight") return;
+			itemData = { key: ui.draggable.data("item-key"), slot: ui.draggable.data("slot") };
+
+			if (itemData.key === undefined) return;
+
+			let amount = $(".amount").val();
+			if (shiftPressed) amount = ui.draggable.data("amount");
+
+			$.post("http://inventory/Trash",JSON.stringify({
+				slot: itemData.slot,
+				amount: parseInt(amount)
+			}));
+
+			$(".amount").val("");
+		}
+	});
+
 	$(".populated").on("auxclick", e => {
 		if (e["which"] === 3){
 			const item = e["target"];
@@ -323,7 +347,7 @@ const updateDrag = () => {
 				contents = `<item>${name}</item><br><description>Contém <green>$${Suitcase}</green> dólares em espécie.</description><br><legenda>Economia: <r>$${economy}</r> <s>|</s> Máximo: <r>${max !== "false" ? max:"S/L"}</r></legenda>`;
 			}
 
-			if (name == "Passaporte" || name == "Distintivo"){
+			if (name == "Passaporte" || name == "Distintivo" || name == "Licença de Caça" || name == "OAB"){
 				var idName = $(this).attr("data-idName");
 				var idBlood = $(this).attr("data-idBlood");
 				var Passport = $(this).attr("data-Passport");
@@ -331,7 +355,7 @@ const updateDrag = () => {
 				var idPremium = $(this).attr("data-idPremium");
 				var idRolepass = $(this).attr("data-idRolepass");
 
-				contents = `<item>${name} - ${Passport}</item>${description !== "false" ? "<br><description>"+description+"</description>":""}<br><legenda>Nome: <r>${idName}</r><br>Tipo Sangüineo: <r>${idBlood}</r><br>Rolepass: <r>${idRolepass}</r><br>Validade: <r>${idVality}</r><br>Premium: <r>${idPremium}</r></legenda>`;
+				contents = `<item>${name} - ${Passport}</item>${description !== "false" ? "<br><description>"+description+"</description>":""}<br><legenda>Nome: <r>${idName}</r><br>Tipo Sanguíneo: <r>${idBlood}</r><br>Rolepass: <r>${idRolepass}</r><br>Validade: <r>${idVality}</r><br>Premium: <r>${idPremium}</r></legenda>`;
 			}
 
 			$(this).tooltip({

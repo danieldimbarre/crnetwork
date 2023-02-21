@@ -17,7 +17,11 @@ function Creative.CheckWanted()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport,source) then
-		return true
+		if #exports["bank"]:Fines(Passport) <= 0 then
+			return true
+		else
+			TriggerClientEvent("Notify",source,"amarelo","<b>Multas</b> pendentes.",5000)
+		end
 	end
 
 	return false
@@ -42,7 +46,7 @@ AddEventHandler("skinshop:Remove",function(Mode)
 	if Passport then
 		local ClosestPed = vRPC.ClosestPed(source,2)
 		if ClosestPed then
-			if vRP.HasService(Passport,"Police") then
+			if vRP.HasService(Passport,"Police") or vRP.HasService(Passport,"Paramedic") then
 				TriggerClientEvent("skinshop:set"..Mode,ClosestPed)
 			end
 		end

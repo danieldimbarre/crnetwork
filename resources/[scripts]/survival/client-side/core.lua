@@ -93,7 +93,7 @@ CreateThread(function()
 
 						if DeathTimer > 0 then
 							DeathTimer = DeathTimer - 1
-							SendNUIMessage({ Action = "Message", Message = "Você está inconsciente, aguarde "..DeathTimer.." segundos" })
+							SendNUIMessage({ Action = "Message", Message = "Você está inconsciente, aguarde <color>"..DeathTimer.."</color> segundos" })
 
 							if DeathTimer <= 0 then
 								if LocalPlayer["state"]["Route"] < 900000 then
@@ -141,7 +141,7 @@ function Creative.Respawn()
 	exports["pma-voice"]:Mute(false)
 
 	DoScreenFadeOut(0)
-	SetEntityCoords(PlayerPedId(),332.8,-569.41,43.29)
+	SetEntityCoords(PlayerPedId(),-1042.36,-2745.73,21.35)
 	SendNUIMessage({ Action = "Display", Mode = "none" })
 	Wait(1000)
 	DoScreenFadeIn(1000)

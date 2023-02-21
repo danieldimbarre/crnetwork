@@ -13,6 +13,137 @@ Geodes = {
 	{ ["item"] = "copper", ["min"] = 1, ["max"] = 2 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- EVENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+Event = {
+	["present01"] = {
+		{ ["item"] = "cannedsoup", ["min"] = 1, ["max"] = 7 },
+		{ ["item"] = "canofbeans", ["min"] = 1, ["max"] = 7 },
+		{ ["item"] = "toolbox", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "chocolate", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "silverring", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "legos", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "pan", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "fan", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "teddy", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "repairkit01", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "WEAPON_SNOWBALL", ["min"] = 2, ["max"] = 7 },
+		{ ["item"] = "WEAPON_BRICK", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "cappuccino", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "cupcake", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "milkbottle", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "coffee", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "coffeemilk", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "card01", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "card02", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "radio", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "fishingrod", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "switchblade", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "cookies", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "cigarette", ["min"] = 1, ["max"] = 20 },
+		{ ["item"] = "enginea", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "transmissiona", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "brakea", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "suspensiona", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "bandage", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "firecracker", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "dildo", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "rimel", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "blender", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "lampshade", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "slipper", ["min"] = 2, ["max"] = 2 },
+	},
+	["present02"] = {
+		{ ["item"] = "gauze", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "advtoolbox", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "credential", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "absolut", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "chandon", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "dewars", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "hennessy", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "repairkit02", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "camera", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "keyboard", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "mouse", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "playstation", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "xbox", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "card04", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "medkit", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "shrimp", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "octopus", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "marshmallow", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "lighter", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "GADGET_PARACHUTE", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_SHOES", ["min"] = 2, ["max"] = 2 },
+		{ ["item"] = "ominitrix", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "dices", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "domino", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "deck", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "amethyst", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "amber", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "turquoise", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "codfish", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "catfish", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "pliers", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "engineb", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "transmissionb", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "brakeb", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "suspensionb", ["min"] = 1, ["max"] = 1 }
+	},
+	["present03"] = {
+		{ ["item"] = "vape", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "goldring", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "watch", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "bracelet", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "mushroomtea", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "uwucoffeepass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "pizzathispass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "burgershotpass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "luckywheelpass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "paramedicpass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "mechanicpass", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "emerald", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "diamond", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "ruby", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "sapphire", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "rentalveh", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "repairkit03", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "repairkit04", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "enginec", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "transmissionc", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "brakec", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "suspensionc", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "nitro", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "notebook", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "backpack", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "blocksignal", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "card05", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "goldenfish", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "pirarucu", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "drugtoy", ["min"] = 1, ["max"] = 3 },
+		{ ["item"] = "energetic", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "plate", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "lockpick", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "tyres", ["min"] = 1, ["max"] = 2 },
+		{ ["item"] = "cellphone", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "hood", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "dollars", ["min"] = 50, ["max"] = 1000 },
+		{ ["item"] = "rose", ["min"] = 1, ["max"] = 8 },
+		{ ["item"] = "WEAPON_KATANA", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_KARAMBIT", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_CROWBAR", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "WEAPON_WRENCH", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "joint", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "cocaine", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "meth", ["min"] = 1, ["max"] = 5 },
+		{ ["item"] = "cup", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "pendrive", ["min"] = 1, ["max"] = 1 },
+		{ ["item"] = "pager", ["min"] = 1, ["max"] = 1 }
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- USE
 -----------------------------------------------------------------------------------------------------------------------------------------
 Use = {
@@ -310,10 +441,41 @@ Use = {
 		local Keyboard = vKEYBOARD.keyDouble(source,"Nome:","Sobrenome:")
 		if Keyboard then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				TriggerClientEvent("Notify",source,"verde","Passaporte atualizado.",5000)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("Notify",source,"verde","Nome atualizado.",5000)
 				vRP.UpgradeNames(Passport,Keyboard[1],Keyboard[2])
 			end
+		end
+	end,
+
+	["chip"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+
+		local Keyboard = vKEYBOARD.keyDouble(source,"Três primeiros dígitos:","Três ultimos dígitos:")
+		if Keyboard then
+			local initCheck = sanitizeString(Keyboard[1],"0123456789",true)
+			local finiCheck = sanitizeString(Keyboard[2],"0123456789",true)
+
+			if string.len(initCheck) == 3 and string.len(finiCheck) == 3 then
+				if not vRP.UserPhone(Keyboard[1].."-"..Keyboard[2]) then
+					if vRP.TakeItem(Passport,Full,1,true,Slot) then
+						vRP.Query("characters/updatePhone",{ phone = Keyboard[1].."-"..Keyboard[2], id = Passport })
+						TriggerEvent("smartphone:updatePhoneNumber",Passport,Keyboard[1].."-"..Keyboard[2])
+						TriggerClientEvent("Notify",source,"verde","Telefone atualizado.",5000)
+					end
+				else
+					TriggerClientEvent("Notify",source,"amarelo","Número escolhido já possui um proprietário.",5000)
+				end
+			else
+				TriggerClientEvent("Notify",source,"amarelo","O número telefônico deve conter 6 dígitos e somente números.",5000)
+			end
+		end
+	end,
+
+	["facechange"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			TriggerClientEvent("barbershop:Open",source,true)
 		end
 	end,
 
@@ -346,7 +508,7 @@ Use = {
 		local cards = { "A","2","3","4","5","6","7","8","9","10","J","Q","K" }
 
 		local naipe = math.random(4)
-		local naipes = { "<black>♣</black>","<red>♠</red>","<black>♦</black>","<red>♥</red>" }
+		local naipes = { "♣️","♠️","♦️","♥️" }
 
 		local Identity = vRP.Identity(Passport)
 		local Players = vRPC.ClosestPeds(source,5)
@@ -434,6 +596,12 @@ Use = {
 			local Selected = math.random(#Geodes)
 			local Rand = math.random(Geodes[Selected]["min"],Geodes[Selected]["max"])
 
+			if GlobalState["Buffs"]["Luck"][Passport] then
+				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+					Rand = Rand + 2
+				end
+			end
+
 			if (vRP.InventoryWeight(Passport) + (itemWeight(Geodes[Selected]["item"]) * Rand)) <= vRP.GetWeight(Passport) then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					vRP.GenerateItem(Passport,Geodes[Selected]["item"],Rand,false)
@@ -468,9 +636,10 @@ Use = {
 						end
 
 						vRP.WeedTimer(Passport,1)
-						vRP.DowngradeHunger(Passport,5 + (0.1 * Points))
-						vRP.DowngradeThirst(Passport,5 + (0.1 * Points))
-						vRP.DowngradeStress(Passport,5 + (0.1 * Points))
+						local Cooldown = 0.1 * Points
+						vRP.DowngradeHunger(Passport,5 + Cooldown)
+						vRP.DowngradeThirst(Passport,5 + Cooldown)
+						vRP.DowngradeStress(Passport,5 + Cooldown)
 						vPLAYER.movementClip(source,"move_m@shadyped@a")
 					end
 				end
@@ -494,9 +663,17 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					local Points = 0
+					if Split[2] ~= nil then
+						Points = parseInt(Split[2])
+					end
+
 					vRP.ChemicalTimer(Passport,10)
-					TriggerClientEvent("setCocaine",source)
-					TriggerClientEvent("setEnergetic",source,15,1.20)
+					local Cooldown = 0.1 * Points
+					vRP.DowngradeHunger(Passport,5 + Cooldown)
+					vRP.DowngradeThirst(Passport,5 + Cooldown)
+					TriggerClientEvent("setCocaine",source,5 + Cooldown)
+					TriggerClientEvent("setEnergetic",source,5 + Cooldown,1.39 + Cooldown,1.0 + (Cooldown / 5))
 				end
 			end
 
@@ -526,10 +703,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setMeth",source)
 					Armors[Passport] = os.time() + 60
 					vRP.ChemicalTimer(Passport,10)
 					vRP.SetArmour(source,10)
+					vRP.UpgradeStress(Passport,5)
+					TriggerClientEvent("setMeth",source)
 				end
 			end
 
@@ -571,7 +749,7 @@ Use = {
 		repeat
 			if os.time() >= parseInt(Active[Passport]) then
 				Active[Passport] = nil
-				vRP.DowngradeStress(Passport,5)
+				vRP.DowngradeStress(Passport,15)
 				vRPC.removeObjects(source,"one")
 				Player(source)["state"]["Buttons"] = false
 			end
@@ -597,7 +775,7 @@ Use = {
 
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
 							Healths[Passport] = os.time() + 60
-							vRPC.UpgradeHealth(source,40)
+							vRPC.UpgradeHealth(source,50)
 						end
 					end
 
@@ -682,6 +860,39 @@ Use = {
 
 			Wait(100)
 		until not Active[Passport]
+	end,
+
+	["adrenaline"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local ClosestPed = vRPC.ClosestPed(source,2)
+		if ClosestPed then
+			local OtherPassport = vRP.Passport(ClosestPed)
+			if OtherPassport then
+				if vRP.GetHealth(ClosestPed) <= 100 then
+					Active[Passport] = os.time() + 15
+					Player(source)["state"]["Buttons"] = true
+					TriggerClientEvent("inventory:Close",source)
+					TriggerClientEvent("Progress",source,"Usando",15000)
+					vRPC.playAnim(source,false,{"mini@cpr@char_a@cpr_str","cpr_pumpchest"},true)
+
+					repeat
+						if os.time() >= parseInt(Active[Passport]) then
+							Active[Passport] = nil
+							vRPC.removeObjects(source)
+							Player(source)["state"]["Buttons"] = false
+
+							if vRP.TakeItem(Passport,Full,1,true,Slot) then
+								vRP.UpgradeThirst(OtherPassport,10)
+								vRP.UpgradeHunger(OtherPassport,10)
+								vRP.Revive(ClosestPed,110)
+								TriggerClientEvent("paramedic:Reset",ClosestPed)
+							end
+						end
+
+						Wait(100)
+					until not Active[Passport]
+				end
+			end
+		end
 	end,
 
 	["evidence01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -993,7 +1204,7 @@ Use = {
 
 	["advtoolbox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split then
-			if not vRP.InsideVehicle(source) then
+			if not vRP.InsideVehicle(source) and not vENGINE.Fueling(source) then
 				local Vehicle,Network,Plate = vRPC.VehicleList(source,4)
 				if Vehicle then
 					vRPC.AnimActive(source)
@@ -1004,20 +1215,33 @@ Use = {
 					vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
 					if vTASKBAR.taskMechanic(source) then
-						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							local Players = vRPC.Players(source)
-							for _,v in pairs(Players) do
-								async(function()
-									TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
-								end)
+						Active[Passport] = os.time() + 20
+						TriggerClientEvent("Progress",source,"Consertando",20000)
+
+						repeat
+							if os.time() >= parseInt(Active[Passport]) then
+								Active[Passport] = nil
+								vRPC.removeObjects(source)
+								Player(source)["state"]["Buttons"] = false
+
+								if vRP.TakeItem(Passport,Full,1,true,Slot) then
+									local Players = vRPC.Players(source)
+									for _,v in pairs(Players) do
+										async(function()
+											TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
+										end)
+									end
+		
+									local Number = parseInt(Split[2]) - 1
+		
+									if Number >= 1 then
+										vRP.GiveItem(Passport,"advtoolbox-"..Number,1,false)
+									end
+								end
 							end
 
-							local Number = parseInt(Split[2]) - 1
-
-							if Number >= 1 then
-								vRP.GiveItem(Passport,"advtoolbox-"..Number,1,false)
-							end
-						end
+							Wait(100)
+						until not Active[Passport]
 					end
 
 					TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
@@ -1030,1267 +1254,1347 @@ Use = {
 	end,
 
 	["enginea"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["11"] then
-							Datatable["mods"]["11"] = -1
-						end
+							if not Datatable["mods"]["11"] then
+								Datatable["mods"]["11"] = -1
+							end
 
-						if Datatable["mods"]["11"] == -1 then
-							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["11"] == -1 then
+								if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["engineb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["11"] then
-							Datatable["mods"]["11"] = -1
-						end
+							if not Datatable["mods"]["11"] then
+								Datatable["mods"]["11"] = -1
+							end
 
-						if Datatable["mods"]["11"] == 0 then
-							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["11"] == 0 then
+								if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["enginec"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["11"] then
-							Datatable["mods"]["11"] = -1
-						end
+							if not Datatable["mods"]["11"] then
+								Datatable["mods"]["11"] = -1
+							end
 
-						if Datatable["mods"]["11"] == 1 then
-							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["11"] == 1 then
+								if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["engined"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["11"] then
-							Datatable["mods"]["11"] = -1
-						end
+							if not Datatable["mods"]["11"] then
+								Datatable["mods"]["11"] = -1
+							end
 
-						if Datatable["mods"]["11"] == 2 then
-							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["11"] == 2 then
+								if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["enginee"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["11"] then
-							Datatable["mods"]["11"] = -1
-						end
+							if not Datatable["mods"]["11"] then
+								Datatable["mods"]["11"] = -1
+							end
 
-						if Datatable["mods"]["11"] == 3 then
-							if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["11"] == 3 then
+								if Datatable["mods"]["11"] >= vCLIENT.CheckMods(source,Vehicle,11) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Motor</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["11"] = Datatable["mods"]["11"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,11,Datatable["mods"]["11"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Motor</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["brakea"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["12"] then
-							Datatable["mods"]["12"] = -1
-						end
+							if not Datatable["mods"]["12"] then
+								Datatable["mods"]["12"] = -1
+							end
 
-						if Datatable["mods"]["12"] == -1 then
-							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["12"] == -1 then
+								if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["brakeb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["12"] then
-							Datatable["mods"]["12"] = -1
-						end
+							if not Datatable["mods"]["12"] then
+								Datatable["mods"]["12"] = -1
+							end
 
-						if Datatable["mods"]["12"] == 0 then
-							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["12"] == 0 then
+								if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["brakec"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["12"] then
-							Datatable["mods"]["12"] = -1
-						end
+							if not Datatable["mods"]["12"] then
+								Datatable["mods"]["12"] = -1
+							end
 
-						if Datatable["mods"]["12"] == 1 then
-							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["12"] == 1 then
+								if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["braked"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["12"] then
-							Datatable["mods"]["12"] = -1
-						end
+							if not Datatable["mods"]["12"] then
+								Datatable["mods"]["12"] = -1
+							end
 
-						if Datatable["mods"]["12"] == 2 then
-							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["12"] == 2 then
+								if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["brakee"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["12"] then
-							Datatable["mods"]["12"] = -1
-						end
+							if not Datatable["mods"]["12"] then
+								Datatable["mods"]["12"] = -1
+							end
 
-						if Datatable["mods"]["12"] == 3 then
-							if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["12"] == 3 then
+								if Datatable["mods"]["12"] >= vCLIENT.CheckMods(source,Vehicle,12) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite do <b>Freio</b> atingido.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["12"] = Datatable["mods"]["12"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,12,Datatable["mods"]["12"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo do <b>Freio</b> incorreto.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["transmissiona"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["13"] then
-							Datatable["mods"]["13"] = -1
-						end
+							if not Datatable["mods"]["13"] then
+								Datatable["mods"]["13"] = -1
+							end
 
-						if Datatable["mods"]["13"] == -1 then
-							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["13"] == -1 then
+								if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["transmissionb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["13"] then
-							Datatable["mods"]["13"] = -1
-						end
+							if not Datatable["mods"]["13"] then
+								Datatable["mods"]["13"] = -1
+							end
 
-						if Datatable["mods"]["13"] == 0 then
-							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["13"] == 0 then
+								if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["transmissionc"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["13"] then
-							Datatable["mods"]["13"] = -1
-						end
+							if not Datatable["mods"]["13"] then
+								Datatable["mods"]["13"] = -1
+							end
 
-						if Datatable["mods"]["13"] == 1 then
-							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["13"] == 1 then
+								if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["transmissiond"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["13"] then
-							Datatable["mods"]["13"] = -1
-						end
+							if not Datatable["mods"]["13"] then
+								Datatable["mods"]["13"] = -1
+							end
 
-						if Datatable["mods"]["13"] == 2 then
-							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["13"] == 2 then
+								if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["transmissione"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				local PassportPlate = vRP.PassportPlate(Plate)
-				if PassportPlate then
-					local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-					if parseInt(#Datatable) > 0 then
-						Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					local PassportPlate = vRP.PassportPlate(Plate)
+					if PassportPlate then
+						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+						if parseInt(#Datatable) > 0 then
+							Datatable = json.decode(Datatable[1]["dvalue"])
 
-						if not Datatable["mods"]["13"] then
-							Datatable["mods"]["13"] = -1
-						end
+							if not Datatable["mods"]["13"] then
+								Datatable["mods"]["13"] = -1
+							end
 
-						if Datatable["mods"]["13"] == 3 then
-							if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
-								TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
-							else
-								vRPC.AnimActive(source)
-								Active[Passport] = os.time() + 1000
-								Player(source)["state"]["Buttons"] = true
-								TriggerClientEvent("inventory:Close",source)
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-								vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+							if Datatable["mods"]["13"] == 3 then
+								if Datatable["mods"]["13"] >= vCLIENT.CheckMods(source,Vehicle,13) then
+									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Transmissão</b> atingida.",5000)
+								else
+									vRPC.AnimActive(source)
+									Active[Passport] = os.time() + 1000
+									Player(source)["state"]["Buttons"] = true
+									TriggerClientEvent("inventory:Close",source)
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-								if vTASKBAR.UpgradeVehicle(source) then
-									Active[Passport] = os.time() + 120
-									TriggerClientEvent("Progress",source,"Aplicando",120000)
+									if vTASKBAR.UpgradeVehicle(source) then
+										Active[Passport] = os.time() + 120
+										TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-									repeat
-										if os.time() >= parseInt(Active[Passport]) then
-											Active[Passport] = nil
-											vRPC.removeObjects(source)
-											Player(source)["state"]["Buttons"] = false
+										repeat
+											if os.time() >= parseInt(Active[Passport]) then
+												Active[Passport] = nil
+												vRPC.removeObjects(source)
+												Player(source)["state"]["Buttons"] = false
 
-											if vRP.TakeItem(Passport,Full,1,false,Slot) then
-												Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
-												vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
-												vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												if vRP.TakeItem(Passport,Full,1,false,Slot) then
+													Datatable["mods"]["13"] = Datatable["mods"]["13"] + 1
+													vCLIENT.ActiveMods(source,Network,Plate,13,Datatable["mods"]["13"])
+													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+												end
 											end
-										end
 
-										Wait(100)
-									until not Active[Passport]
+											Wait(100)
+										until not Active[Passport]
+									end
+
+									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+									Player(source)["state"]["Buttons"] = false
+									vRPC.stopAnim(source,false)
+									Active[Passport] = nil
 								end
-
-								TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-								Player(source)["state"]["Buttons"] = false
-								vRPC.stopAnim(source,false)
-								Active[Passport] = nil
+							else
+								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
 							end
 						else
-							TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Transmissão</b> incorreta.",5000)
+							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
-					else
-						TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 					end
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["suspensiona"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				if vCLIENT.CheckCar(source,Vehicle) then
-					local PassportPlate = vRP.PassportPlate(Plate)
-					if PassportPlate then
-						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
-							Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					if vCLIENT.CheckCar(source,Vehicle) then
+						local PassportPlate = vRP.PassportPlate(Plate)
+						if PassportPlate then
+							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+							if parseInt(#Datatable) > 0 then
+								Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if not Datatable["mods"]["15"] then
-								Datatable["mods"]["15"] = -1
-							end
+								if not Datatable["mods"]["15"] then
+									Datatable["mods"]["15"] = -1
+								end
 
-							if Datatable["mods"]["15"] == -1 then
-								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
-									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
-								else
-									vRPC.AnimActive(source)
-									Active[Passport] = os.time() + 1000
-									Player(source)["state"]["Buttons"] = true
-									TriggerClientEvent("inventory:Close",source)
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+								if Datatable["mods"]["15"] == -1 then
+									if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
+										TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
+									else
+										vRPC.AnimActive(source)
+										Active[Passport] = os.time() + 1000
+										Player(source)["state"]["Buttons"] = true
+										TriggerClientEvent("inventory:Close",source)
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+										vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-									if vTASKBAR.UpgradeVehicle(source) then
-										Active[Passport] = os.time() + 120
-										TriggerClientEvent("Progress",source,"Aplicando",120000)
+										if vTASKBAR.UpgradeVehicle(source) then
+											Active[Passport] = os.time() + 120
+											TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-										repeat
-											if os.time() >= parseInt(Active[Passport]) then
-												Active[Passport] = nil
-												vRPC.removeObjects(source)
-												Player(source)["state"]["Buttons"] = false
+											repeat
+												if os.time() >= parseInt(Active[Passport]) then
+													Active[Passport] = nil
+													vRPC.removeObjects(source)
+													Player(source)["state"]["Buttons"] = false
 
-												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
-													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													if vRP.TakeItem(Passport,Full,1,false,Slot) then
+														Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+														vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
+														vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													end
 												end
-											end
 
-											Wait(100)
-										until not Active[Passport]
+												Wait(100)
+											until not Active[Passport]
+										end
+
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+										Player(source)["state"]["Buttons"] = false
+										vRPC.stopAnim(source,false)
+										Active[Passport] = nil
 									end
-
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-									Player(source)["state"]["Buttons"] = false
-									vRPC.stopAnim(source,false)
-									Active[Passport] = nil
+								else
+									TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
 								end
 							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+								TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
+					else
+						TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 					end
-				else
-					TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["suspensionb"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				if vCLIENT.CheckCar(source,Vehicle) then
-					local PassportPlate = vRP.PassportPlate(Plate)
-					if PassportPlate then
-						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
-							Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					if vCLIENT.CheckCar(source,Vehicle) then
+						local PassportPlate = vRP.PassportPlate(Plate)
+						if PassportPlate then
+							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+							if parseInt(#Datatable) > 0 then
+								Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if not Datatable["mods"]["15"] then
-								Datatable["mods"]["15"] = -1
-							end
+								if not Datatable["mods"]["15"] then
+									Datatable["mods"]["15"] = -1
+								end
 
-							if Datatable["mods"]["15"] == 0 then
-								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
-									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
-								else
-									vRPC.AnimActive(source)
-									Active[Passport] = os.time() + 1000
-									Player(source)["state"]["Buttons"] = true
-									TriggerClientEvent("inventory:Close",source)
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+								if Datatable["mods"]["15"] == 0 then
+									if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
+										TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
+									else
+										vRPC.AnimActive(source)
+										Active[Passport] = os.time() + 1000
+										Player(source)["state"]["Buttons"] = true
+										TriggerClientEvent("inventory:Close",source)
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+										vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-									if vTASKBAR.UpgradeVehicle(source) then
-										Active[Passport] = os.time() + 120
-										TriggerClientEvent("Progress",source,"Aplicando",120000)
+										if vTASKBAR.UpgradeVehicle(source) then
+											Active[Passport] = os.time() + 120
+											TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-										repeat
-											if os.time() >= parseInt(Active[Passport]) then
-												Active[Passport] = nil
-												vRPC.removeObjects(source)
-												Player(source)["state"]["Buttons"] = false
+											repeat
+												if os.time() >= parseInt(Active[Passport]) then
+													Active[Passport] = nil
+													vRPC.removeObjects(source)
+													Player(source)["state"]["Buttons"] = false
 
-												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
-													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													if vRP.TakeItem(Passport,Full,1,false,Slot) then
+														Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+														vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
+														vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													end
 												end
-											end
 
-											Wait(100)
-										until not Active[Passport]
+												Wait(100)
+											until not Active[Passport]
+										end
+
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+										Player(source)["state"]["Buttons"] = false
+										vRPC.stopAnim(source,false)
+										Active[Passport] = nil
 									end
-
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-									Player(source)["state"]["Buttons"] = false
-									vRPC.stopAnim(source,false)
-									Active[Passport] = nil
+								else
+									TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
 								end
 							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+								TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
+					else
+						TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 					end
-				else
-					TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["suspensionc"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				if vCLIENT.CheckCar(source,Vehicle) then
-					local PassportPlate = vRP.PassportPlate(Plate)
-					if PassportPlate then
-						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
-							Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					if vCLIENT.CheckCar(source,Vehicle) then
+						local PassportPlate = vRP.PassportPlate(Plate)
+						if PassportPlate then
+							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+							if parseInt(#Datatable) > 0 then
+								Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if not Datatable["mods"]["15"] then
-								Datatable["mods"]["15"] = -1
-							end
+								if not Datatable["mods"]["15"] then
+									Datatable["mods"]["15"] = -1
+								end
 
-							if Datatable["mods"]["15"] == 1 then
-								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
-									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
-								else
-									vRPC.AnimActive(source)
-									Active[Passport] = os.time() + 1000
-									Player(source)["state"]["Buttons"] = true
-									TriggerClientEvent("inventory:Close",source)
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+								if Datatable["mods"]["15"] == 1 then
+									if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
+										TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
+									else
+										vRPC.AnimActive(source)
+										Active[Passport] = os.time() + 1000
+										Player(source)["state"]["Buttons"] = true
+										TriggerClientEvent("inventory:Close",source)
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+										vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-									if vTASKBAR.UpgradeVehicle(source) then
-										Active[Passport] = os.time() + 120
-										TriggerClientEvent("Progress",source,"Aplicando",120000)
+										if vTASKBAR.UpgradeVehicle(source) then
+											Active[Passport] = os.time() + 120
+											TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-										repeat
-											if os.time() >= parseInt(Active[Passport]) then
-												Active[Passport] = nil
-												vRPC.removeObjects(source)
-												Player(source)["state"]["Buttons"] = false
+											repeat
+												if os.time() >= parseInt(Active[Passport]) then
+													Active[Passport] = nil
+													vRPC.removeObjects(source)
+													Player(source)["state"]["Buttons"] = false
 
-												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
-													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													if vRP.TakeItem(Passport,Full,1,false,Slot) then
+														Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+														vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
+														vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													end
 												end
-											end
 
-											Wait(100)
-										until not Active[Passport]
+												Wait(100)
+											until not Active[Passport]
+										end
+
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+										Player(source)["state"]["Buttons"] = false
+										vRPC.stopAnim(source,false)
+										Active[Passport] = nil
 									end
-
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-									Player(source)["state"]["Buttons"] = false
-									vRPC.stopAnim(source,false)
-									Active[Passport] = nil
+								else
+									TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
 								end
 							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+								TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
+					else
+						TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 					end
-				else
-					TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["suspensiond"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				if vCLIENT.CheckCar(source,Vehicle) then
-					local PassportPlate = vRP.PassportPlate(Plate)
-					if PassportPlate then
-						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
-							Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					if vCLIENT.CheckCar(source,Vehicle) then
+						local PassportPlate = vRP.PassportPlate(Plate)
+						if PassportPlate then
+							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+							if parseInt(#Datatable) > 0 then
+								Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if not Datatable["mods"]["15"] then
-								Datatable["mods"]["15"] = -1
-							end
+								if not Datatable["mods"]["15"] then
+									Datatable["mods"]["15"] = -1
+								end
 
-							if Datatable["mods"]["15"] == 2 then
-								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
-									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
-								else
-									vRPC.AnimActive(source)
-									Active[Passport] = os.time() + 1000
-									Player(source)["state"]["Buttons"] = true
-									TriggerClientEvent("inventory:Close",source)
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+								if Datatable["mods"]["15"] == 2 then
+									if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
+										TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
+									else
+										vRPC.AnimActive(source)
+										Active[Passport] = os.time() + 1000
+										Player(source)["state"]["Buttons"] = true
+										TriggerClientEvent("inventory:Close",source)
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+										vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-									if vTASKBAR.UpgradeVehicle(source) then
-										Active[Passport] = os.time() + 120
-										TriggerClientEvent("Progress",source,"Aplicando",120000)
+										if vTASKBAR.UpgradeVehicle(source) then
+											Active[Passport] = os.time() + 120
+											TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-										repeat
-											if os.time() >= parseInt(Active[Passport]) then
-												Active[Passport] = nil
-												vRPC.removeObjects(source)
-												Player(source)["state"]["Buttons"] = false
+											repeat
+												if os.time() >= parseInt(Active[Passport]) then
+													Active[Passport] = nil
+													vRPC.removeObjects(source)
+													Player(source)["state"]["Buttons"] = false
 
-												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
-													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													if vRP.TakeItem(Passport,Full,1,false,Slot) then
+														Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+														vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
+														vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													end
 												end
-											end
 
-											Wait(100)
-										until not Active[Passport]
+												Wait(100)
+											until not Active[Passport]
+										end
+
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+										Player(source)["state"]["Buttons"] = false
+										vRPC.stopAnim(source,false)
+										Active[Passport] = nil
 									end
-
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-									Player(source)["state"]["Buttons"] = false
-									vRPC.stopAnim(source,false)
-									Active[Passport] = nil
+								else
+									TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
 								end
 							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+								TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
+					else
+						TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 					end
-				else
-					TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["suspensione"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
-			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
-			if Vehicle then
-				if vCLIENT.CheckCar(source,Vehicle) then
-					local PassportPlate = vRP.PassportPlate(Plate)
-					if PassportPlate then
-						local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
-						if parseInt(#Datatable) > 0 then
-							Datatable = json.decode(Datatable[1]["dvalue"])
+		if vRP.HasService(Passport,"Dracing") and vCLIENT.Restaurant(source,"Dracing") then
+			if not vRP.InsideVehicle(source) then
+				local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,4)
+				if Vehicle then
+					if vCLIENT.CheckCar(source,Vehicle) then
+						local PassportPlate = vRP.PassportPlate(Plate)
+						if PassportPlate then
+							local Datatable = vRP.Query("entitydata/GetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName })
+							if parseInt(#Datatable) > 0 then
+								Datatable = json.decode(Datatable[1]["dvalue"])
 
-							if not Datatable["mods"]["15"] then
-								Datatable["mods"]["15"] = -1
-							end
+								if not Datatable["mods"]["15"] then
+									Datatable["mods"]["15"] = -1
+								end
 
-							if Datatable["mods"]["15"] == 3 then
-								if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
-									TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
-								else
-									vRPC.AnimActive(source)
-									Active[Passport] = os.time() + 1000
-									Player(source)["state"]["Buttons"] = true
-									TriggerClientEvent("inventory:Close",source)
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
-									vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
+								if Datatable["mods"]["15"] == 3 then
+									if Datatable["mods"]["15"] >= vCLIENT.CheckMods(source,Vehicle,15) then
+										TriggerClientEvent("Notify",source,"amarelo","Limite da <b>Suspensão</b> atingida.",5000)
+									else
+										vRPC.AnimActive(source)
+										Active[Passport] = os.time() + 1000
+										Player(source)["state"]["Buttons"] = true
+										TriggerClientEvent("inventory:Close",source)
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"open")
+										vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-									if vTASKBAR.UpgradeVehicle(source) then
-										Active[Passport] = os.time() + 120
-										TriggerClientEvent("Progress",source,"Aplicando",120000)
+										if vTASKBAR.UpgradeVehicle(source) then
+											Active[Passport] = os.time() + 120
+											TriggerClientEvent("Progress",source,"Aplicando",120000)
 
-										repeat
-											if os.time() >= parseInt(Active[Passport]) then
-												Active[Passport] = nil
-												vRPC.removeObjects(source)
-												Player(source)["state"]["Buttons"] = false
+											repeat
+												if os.time() >= parseInt(Active[Passport]) then
+													Active[Passport] = nil
+													vRPC.removeObjects(source)
+													Player(source)["state"]["Buttons"] = false
 
-												if vRP.TakeItem(Passport,Full,1,false,Slot) then
-													Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
-													vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
-													vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													if vRP.TakeItem(Passport,Full,1,false,Slot) then
+														Datatable["mods"]["15"] = Datatable["mods"]["15"] + 1
+														vCLIENT.ActiveMods(source,Network,Plate,15,Datatable["mods"]["15"])
+														vRP.Query("entitydata/SetData",{ dkey = "Mods:"..PassportPlate["Passport"]..":"..vehName, dvalue = json.encode(Datatable) })
+													end
 												end
-											end
 
-											Wait(100)
-										until not Active[Passport]
+												Wait(100)
+											until not Active[Passport]
+										end
+
+										TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
+										Player(source)["state"]["Buttons"] = false
+										vRPC.stopAnim(source,false)
+										Active[Passport] = nil
 									end
-
-									TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
-									Player(source)["state"]["Buttons"] = false
-									vRPC.stopAnim(source,false)
-									Active[Passport] = nil
+								else
+									TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
 								end
 							else
-								TriggerClientEvent("Notify",source,"amarelo","Modelo da <b>Suspensão</b> incorreta.",5000)
+								TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 							end
-						else
-							TriggerClientEvent("Notify",source,"amarelo","Dirija-se até uma mecânica e efetue uma revisão.",5000)
 						end
+					else
+						TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 					end
-				else
-					TriggerClientEvent("Notify",source,"amarelo","O veículo <b>"..VehicleName(vehName).."</b> não possui suspensão.",5000)
 				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Dirija-se até a Dracing para instalação dessa peça.",5000)
 		end
 	end,
 
 	["toolbox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vRP.InsideVehicle(source) then
+		if not vRP.InsideVehicle(source) and not vENGINE.Fueling(source) then
 			local Vehicle,Network,Plate = vRPC.VehicleList(source,4)
 			if Vehicle then
 				vRPC.AnimActive(source)
@@ -2301,14 +2605,27 @@ Use = {
 				vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
 				if vTASKBAR.taskMechanic(source) then
-					if vRP.TakeItem(Passport,Full,1,true,Slot) then
-						local Players = vRPC.Players(source)
-						for _,v in pairs(Players) do
-							async(function()
-								TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
-							end)
+					Active[Passport] = os.time() + 20
+					TriggerClientEvent("Progress",source,"Consertando",20000)
+
+					repeat
+						if os.time() >= parseInt(Active[Passport]) then
+							Active[Passport] = nil
+							vRPC.removeObjects(source)
+							Player(source)["state"]["Buttons"] = false
+
+							if vRP.TakeItem(Passport,Full,1,true,Slot) then
+								local Players = vRPC.Players(source)
+								for _,v in pairs(Players) do
+									async(function()
+										TriggerClientEvent("inventory:repairVehicle",v,Network,Plate)
+									end)
+								end
+							end
 						end
-					end
+
+						Wait(100)
+					until not Active[Passport]
 				end
 
 				TriggerClientEvent("player:syncHoodOptions",source,Network,"close")
@@ -2353,7 +2670,7 @@ Use = {
 							local Service = vRP.NumPermission("Police")
 							for Passports,Sources in pairs(Service) do
 								async(function()
-									TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 								end)
 							end
 						end
@@ -2362,7 +2679,7 @@ Use = {
 					if math.random(1000) >= Brokenpick then
 						if vRP.TakeItem(Passport,Full,1,false) then
 							vRP.GiveItem(Passport,"lockpick-0",1,false)
-							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+							TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
 						end
 					end
 
@@ -2380,7 +2697,7 @@ Use = {
 						if vTASKBAR.UpgradeVehicle(source) then
 							Brokenpick = 900
 							Active[Passport] = os.time() + 30
-							TriggerClientEvent("inventory:DisPed",source)
+							TriggerClientEvent("inventory:DisPed",source,Dismantle[Passport])
 							TriggerClientEvent("Progress",source,"Usando",30000)
 
 							if math.random(100) >= 25 then
@@ -2388,7 +2705,7 @@ Use = {
 								local Service = vRP.NumPermission("Police")
 								for Passports,Sources in pairs(Service) do
 									async(function()
-										TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+										TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 									end)
 								end
 							end
@@ -2429,7 +2746,7 @@ Use = {
 								local Service = vRP.NumPermission("Police")
 								for Passports,Sources in pairs(Service) do
 									async(function()
-										TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+										TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 									end)
 								end
 							end
@@ -2439,7 +2756,7 @@ Use = {
 					if math.random(1000) >= Brokenpick then
 						if vRP.TakeItem(Passport,Full,1,false) then
 							vRP.GiveItem(Passport,"lockpick-0",1,false)
-							TriggerClientEvent("itensNotify",source,{ "quebrou","lockpick",1,"Lockpick de Alumínio" })
+							TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
 						end
 					end
 
@@ -2447,7 +2764,81 @@ Use = {
 					vRPC.removeObjects(source)
 					Active[Passport] = nil
 				end
+			else
+				if exports["hud"]:Wanted(Passport) then
+					return
+				end
+
+				local Property = exports["propertys"]:HomesTheft(source)
+				if Property then
+					TriggerClientEvent("inventory:Close",source)
+					vRPC.removeObjects(source)
+					vRP.UpgradeStress(Passport,2)
+					Active[Passport] = os.time() + 100
+					Player(source)["state"]["Buttons"] = true
+					vRPC.playAnim(source,false,{"missheistfbi3b_ig7","lift_fibagent_loop"},false)
+					local Brokenpick = 950
+
+					if vTASKBAR.taskLockpick(source) then
+						Brokenpick = 900
+						exports["propertys"]:EnterHomes(source,Passport,Property)
+					else
+						exports["propertys"]:ResetTheft(Property)
+
+						if math.random(100) >= 50 then
+							TriggerClientEvent("Notify",source,"amarelo","A vizinhança foi avisada de um suposto roubo.",5000)
+							TriggerClientEvent("inventory:DisPed",source)
+							local Players = vRPC.Players(source)
+							for _,v in ipairs(Players) do
+								async(function()
+									TriggerClientEvent("sounds:source",v,"alarm",1.0)
+								end)
+							end
+
+							local Coords = vRP.GetEntityCoords(source)
+							local Service = vRP.NumPermission("Police")
+							for Passports,Sources in pairs(Service) do
+								async(function()
+									TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Propriedade", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+								end)
+							end
+						end
+					end
+
+					if math.random(1000) >= Brokenpick then
+						if vRP.TakeItem(Passport,Full,1,false) then
+							vRP.GiveItem(Passport,"lockpick-0",1,false)
+							TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
+						end
+					end
+
+					Player(source)["state"]["Buttons"] = false
+					vRPC.stopAnim(source,false)
+					Active[Passport] = nil
+				end
 			end
+		else
+			local Brokenpick = 950
+			Active[Passport] = os.time() + 100
+			Player(source)["state"]["Buttons"] = true
+
+			if vTASKBAR.taskHandcuff(source) then
+				Brokenpick = 900
+				Player(source)["state"]["Handcuff"] = false
+				vRPC.removeObjects(source)
+				
+				Player(source)["state"]["Commands"] = false
+			end
+
+			if math.random(1000) >= Brokenpick then
+				if vRP.TakeItem(Passport,Full,1,false) then
+					vRP.GiveItem(Passport,"lockpick-0",1,false)
+					TriggerClientEvent("itensNotify",source,{ "-","lockpick",1,"Lockpick de Alumínio" })
+				end
+			end
+
+			Player(source)["state"]["Buttons"] = false
+			Active[Passport] = nil
 		end
 	end,
 
@@ -2499,6 +2890,30 @@ Use = {
 		else
 			TriggerClientEvent("Notify",source,"amarelo","Você possui um contrato ativo.",5000)
 		end
+	end,
+
+	["energetic"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 15
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",15000)
+		vRPC.createObjects(source,"mp_player_intdrink","loop_bottle","prop_energy_drink",49,60309,0.0,0.0,0.0,0.0,0.0,130.0)
+
+		repeat
+			if os.time() >= parseInt(Active[Passport]) then
+				Player(source)["state"]["Buttons"] = false
+				vRPC.removeObjects(source,"one")
+				Active[Passport] = nil
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					TriggerClientEvent("setEnergetic",source,20,1.25,2.0)
+					vRP.UpgradeThirst(Passport,20)
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
 	end,
 
 	["absolut"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2601,6 +3016,31 @@ Use = {
 		until not Active[Passport]
 	end,
 
+	["wine"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 10
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",10000)
+		vRPC.createObjects(source,"amb@world_human_drinking@beer@male@idle_a","idle_a","prop_wine_bot_01",49,28422,0.0,0.0,-0.10,0.0,0.0,0.0)
+
+		repeat
+			if os.time() >= parseInt(Active[Passport]) then
+				Active[Passport] = nil
+				vRPC.removeObjects(source,"one")
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.AlcoholTimer(Passport,1)
+					vRP.UpgradeThirst(Passport,20)
+					TriggerClientEvent("setDrunkTime",source,90)
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
 	["scanner"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
 		Scanners[Passport] = true
@@ -2657,7 +3097,7 @@ Use = {
 					vRP.DowngradeStress(Passport,5)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"UwuCoffee") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end
@@ -2713,7 +3153,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,50)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"PizzaThis") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end
@@ -2741,7 +3181,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,50)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"UwuCoffee") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end
@@ -2769,7 +3209,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,50)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"PizzaThis") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end
@@ -2797,7 +3237,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,50)
 					vRP.GenerateItem(Passport,"emptybottle",1)
 
-					if vCLIENT.Restaurant(source,"BurgerShot") then
+					if vCLIENT.Restaurant(source,"BeanMachine") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
 					end
 				end
@@ -3083,11 +3523,34 @@ Use = {
 		until not Active[Passport]
 	end,
 
-	["mushroomteaplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.TakeItem(Passport,Full,1,true,Slot) then
-			vRP.SetWeight(Passport,10)
-			vRP.UpgradeThirst(Passport,20)
-			TriggerClientEvent("inventory:Update",source,"Backpack")
+	["backpack"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not vSKINSHOP.checkBackpackPremium(source) then
+			if vRP.GetWeight(Passport) < 100 then
+				Active[Passport] = os.time() + 10
+				Player(source)["state"]["Buttons"] = true
+				TriggerClientEvent("inventory:Close",source)
+				TriggerClientEvent("Progress",source,"Vestindo",10000)
+				vRPC.playAnim(source,true,{"clothingtie","try_tie_negative_a"},true)
+
+				repeat
+					if os.time() >= parseInt(Active[Passport]) then
+						Active[Passport] = nil
+						vRPC.stopAnim(source,false)
+						Player(source)["state"]["Buttons"] = false
+
+						if vRP.TakeItem(Passport,Full,1,true,Slot) then
+							vRP.SetWeight(Passport,10)
+							vRP.UpgradeThirst(Passport,20)
+						end
+					end
+
+					Wait(100)
+				until not Active[Passport]
+			else
+				TriggerClientEvent("Notify",source,"vermelho","Inventário já alcançou o limite.",5000)
+			end
+		else
+			TriggerClientEvent("Notify",source,"vermelho","Remova sua mochila das costas.",5000)
 		end
 	end,
 
@@ -3107,6 +3570,7 @@ Use = {
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					TriggerClientEvent("player:MushroomTea",source)
+					TriggerClientEvent("setEnergetic",source,20,1.25,1.7)
 					vRP.UpgradeThirst(Passport,20)
 				end
 			end
@@ -3131,7 +3595,7 @@ Use = {
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					vRP.GenerateItem(Passport,"emptybottle",1)
-					vRP.UpgradeThirst(Passport,20)
+					vRP.UpgradeThirst(Passport,15)
 				end
 			end
 
@@ -3155,7 +3619,7 @@ Use = {
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					vRP.GenerateItem(Passport,"emptybottle",1)
-					vRP.UpgradeThirst(Passport,20)
+					vRP.UpgradeThirst(Passport,15)
 				end
 			end
 
@@ -3178,11 +3642,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,10,1.10)
+					TriggerClientEvent("setEnergetic",source,10,1.10,1.2)
 					vRP.UpgradeThirst(Passport,25)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",420)
 					end
 				end
 			end
@@ -3302,7 +3766,7 @@ Use = {
 				local Members = exports["vrp"]:Party(Passport,source,10)
 				local fishList = { "octopus","shrimp","carp","horsefish","tilapia","codfish","catfish" }
 
-				if parseInt(#Members) >= 4 then
+				if #Members >= 4 then
 					fishList = { "octopus","shrimp","carp","horsefish","tilapia","codfish","catfish","goldenfish","pirarucu","pacu","tambaqui" }
 				end
 
@@ -3325,6 +3789,33 @@ Use = {
 		end
 	end,
 
+	["coffee"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 5
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",5000)
+		vRPC.createObjects(source,"amb@world_human_aa_coffee@idle_a", "idle_a","p_amb_coffeecup_01",49,28422)
+
+		repeat
+			if os.time() >= parseInt(Active[Passport]) then
+				Active[Passport] = nil
+				vRPC.removeObjects(source,"one")
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeThirst(Passport,15)
+
+					if vCLIENT.Restaurant(source,"BeanMachine") then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",180)
+					end
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
 	["coffeemilk"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
 		Active[Passport] = os.time() + 5
@@ -3340,12 +3831,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,10,1.10)
+					TriggerClientEvent("setEnergetic",source,10,1.10,1.2)
 					vRP.UpgradeThirst(Passport,20)
-					vRP.UpgradeHunger(Passport,8)
 
 					if vCLIENT.Restaurant(source,"BeanMachine") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",420)
 					end
 				end
 			end
@@ -3372,7 +3862,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3399,7 +3889,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3426,7 +3916,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3450,10 +3940,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					TriggerClientEvent("setEnergetic",source,10,1.10,1.2)
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3480,7 +3971,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3504,10 +3995,10 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,25)
+					vRP.UpgradeHunger(Passport,20)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3531,7 +4022,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,30)
+					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
 						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
@@ -3558,10 +4049,10 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,30)
+					vRP.UpgradeHunger(Passport,20)
 
 					if vCLIENT.Restaurant(source,"PizzaThis") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3585,11 +4076,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,20,1.10)
-					vRP.UpgradeHunger(Passport,30)
+					TriggerClientEvent("setEnergetic",source,20,1.10,1.5)
+					vRP.UpgradeHunger(Passport,20)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3616,7 +4107,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,30)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",420)
 					end
 				end
 			end
@@ -3643,7 +4134,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,15)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
 					end
 				end
 			end
@@ -3667,10 +4158,10 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,50)
+					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
 					end
 				end
 			end
@@ -3694,7 +4185,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,20)
+					vRP.UpgradeHunger(Passport,10)
 				end
 			end
 
@@ -3717,7 +4208,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,20)
+					vRP.UpgradeHunger(Passport,10)
 				end
 			end
 
@@ -3732,7 +4223,7 @@ Use = {
 		local Hash = "bkr_prop_coke_table01a"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -3756,7 +4247,7 @@ Use = {
 		local Hash = "bkr_prop_meth_table01a"
 		local Application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if Application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -3780,7 +4271,7 @@ Use = {
 		local Hash = "bkr_prop_weed_table_01a"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -3804,32 +4295,34 @@ Use = {
 		local Hash = "spray_01"
 		local Application,Coords,Heading = vRPC.objectCoords(source,Hash)
 		if Application then
-			vRPC.AnimActive(source)
-			Active[Passport] = os.time() + 5
-			Player(source)["state"]["Buttons"] = true
-			TriggerClientEvent("inventory:Close",source)
-			TriggerClientEvent("Progress",source,"Pichando",5000)
-			vRPC.createObjects(source,"switch@franklin@lamar_tagging_wall","lamar_tagging_exit_loop_lamar","prop_cs_spray_can",1,28422,0.0,0.0,0.0,0.0,0.0,0.0)
+			if GetPlayerRoutingBucket(source) == 0 then
+				vRPC.AnimActive(source)
+				Active[Passport] = os.time() + 5
+				Player(source)["state"]["Buttons"] = true
+				TriggerClientEvent("inventory:Close",source)
+				TriggerClientEvent("Progress",source,"Pichando",5000)
+				vRPC.createObjects(source,"switch@franklin@lamar_tagging_wall","lamar_tagging_exit_loop_lamar","prop_cs_spray_can",1,28422,0.0,0.0,0.0,0.0,0.0,0.0)
 
-			repeat
-				if os.time() >= parseInt(Active[Passport]) then
-					Active[Passport] = nil
-					vRPC.removeObjects(source)
+				repeat
+					if os.time() >= parseInt(Active[Passport]) then
+						Active[Passport] = nil
+						vRPC.removeObjects(source)
 
-					if vRP.TakeItem(Passport,Full,1,true,Slot) then
-						local Number = 0
+						if vRP.TakeItem(Passport,Full,1,true,Slot) then
+							local Number = 0
 
-						repeat
-							Number = Number + 1
-						until not Objects[tostring(Number)]
+							repeat
+								Number = Number + 1
+							until not Objects[tostring(Number)]
 
-						Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100, mode = "Spray" }
-						TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
+							Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100, mode = "Spray" }
+							TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
+						end
 					end
-				end
 
-				Wait(100)
-			until not Active[Passport]
+					Wait(100)
+				until not Active[Passport]
+			end
 		end
 
 		Player(source)["state"]["Buttons"] = false
@@ -3842,7 +4335,7 @@ Use = {
 		local Hash = "prop_beach_fire"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -3866,7 +4359,7 @@ Use = {
 		local Hash = "prop_mp_barrier_02b"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -3890,7 +4383,7 @@ Use = {
 		local Hash = "xm_prop_x17_bag_med_01a"
 		local application,Coords,heading = vRPC.objectCoords(source,Hash)
 		if application then
-			if not vCLIENT.objectExist(source,Coords,Hash) then
+			if not vCLIENT.objectExist(source,Coords,Hash) and GetPlayerRoutingBucket(source) == 0 then
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Number = 0
 
@@ -3918,7 +4411,7 @@ Use = {
 				if vRP.TakeItem(Passport,Full,1,false,Slot) then
 					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
 
-					if vTASKBAR.Weeds(source) then
+					-- if vTASKBAR.Weeds(source) then
 						local Points = 0
 						local Route = GetPlayerRoutingBucket(source)
 
@@ -3926,8 +4419,38 @@ Use = {
 							Points = parseInt(Split[2])
 						end
 
-						exports["plants"]:Plants(Coords,Route,Points)
-					end
+						exports["plants"]:Plants(Coords,Route,Points,Hash)
+					-- end
+
+					vRPC.removeObjects(source)
+				end
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["cokeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bag_coca_plant"
+		local Application,Coords = vRPC.objectCoords(source,Hash)
+		if Application then
+			if not vCLIENT.objectExist(source,Coords,Hash) then
+				if vRP.TakeItem(Passport,Full,1,false,Slot) then
+					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+
+					-- if vTASKBAR.Weeds(source) then
+						local Points = 0
+						local Route = GetPlayerRoutingBucket(source)
+
+						if Split[2] ~= nil then
+							Points = parseInt(Split[2])
+						end
+
+						exports["plants"]:Plants(Coords,Route,Points,Hash)
+					-- end
 
 					vRPC.removeObjects(source)
 				end
@@ -3971,7 +4494,7 @@ Use = {
 		if Application then
 			local CoordsAtm,NumberAtm = vCLIENT.checkAtm(source,Coords)
 
-			if CoordsAtm then
+			if CoordsAtm and GetPlayerRoutingBucket(source) == 0 then
 				if not atmTimers[NumberAtm] then
 					atmTimers[NumberAtm] = os.time()
 				end
@@ -3985,7 +4508,7 @@ Use = {
 				end
 
 				local Service,Total = vRP.NumPermission("Police")
-				if Total <= 5 then
+				if Total <= 8 then
 					TriggerClientEvent("Notify",source,"azul","Caixa vazio, aguarde até que um transportador venha até o local efetuar reabastecimento do mesmo.",5000)
 					Player(source)["state"]["Buttons"] = false
 
@@ -4001,14 +4524,14 @@ Use = {
 
 					Objects[tostring(Number)] = { x = mathLength(Coords["x"]), y = mathLength(Coords["y"]), z = mathLength(Coords["z"]), h = mathLength(Heading), object = Hash, item = Full, Distance = 100 }
 					TriggerClientEvent("objects:Adicionar",-1,tostring(Number),Objects[tostring(Number)])
-					TriggerClientEvent("Progress",source,"Plantando",25000)
-					atmTimers[NumberAtm] = os.time() + 10800
-					local explosionProgress = 25
+					TriggerClientEvent("Progress",source,"Plantando",15000)
+					atmTimers[NumberAtm] = os.time() + 1200
+					local explosionProgress = 15
 
 					for Passports,Sources in pairs(Service) do
 						async(function()
 							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Caixa Eletrônico", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
 
@@ -4017,7 +4540,7 @@ Use = {
 						explosionProgress = explosionProgress - 1
 					until explosionProgress <= 0
 
-					Creative.DropServer(CoordsAtm,"dollars",math.random(2500,5000))
+					Creative.DropServer(CoordsAtm,"dollarsz",math.random(2500,5000))
 					TriggerClientEvent("player:Residuals",source,"Resíduo de Explosivo.")
 					TriggerClientEvent("objects:Remover",-1,tostring(Number))
 					TriggerClientEvent("vRP:Explosion",source,Coords)
@@ -4212,10 +4735,10 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,10)
+					vRP.UpgradeHunger(Passport,40)
 
 					if vCLIENT.Restaurant(source,"BeanMachine") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
 					end
 				end
 			end
@@ -4262,10 +4785,10 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,10)
+					vRP.UpgradeHunger(Passport,15)
 
 					if vCLIENT.Restaurant(source,"BurgerShot") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
 					end
 				end
 			end
@@ -4292,7 +4815,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,15)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",180)
 					end
 				end
 			end
@@ -4316,10 +4839,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,15)
+					TriggerClientEvent("setEnergetic",source,15,1.15,1.3)
+					vRP.UpgradeThirst(Passport,30)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",480)
 					end
 				end
 			end
@@ -4343,11 +4867,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,20,1.10)
+					TriggerClientEvent("setEnergetic",source,10,1.10,1.5)
 					vRP.UpgradeHunger(Passport,10)
 
 					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
 					end
 				end
 			end
@@ -4371,11 +4895,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,20,1.10)
+					TriggerClientEvent("setEnergetic",source,10,1.10,1.5)
 					vRP.UpgradeHunger(Passport,10)
 
-					if vCLIENT.Restaurant(source,"UwuCoffee") then
-						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					if vCLIENT.Restaurant(source,"UwuCoffee") or vCLIENT.Restaurant(source,"BeanMachine") then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",180)
 					end
 				end
 			end
@@ -4422,6 +4946,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					TriggerClientEvent("setEnergetic",source,10,1.10,1.5)
 					vRP.UpgradeHunger(Passport,8)
 				end
 			end
@@ -4445,7 +4970,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("setEnergetic",source,20,1.10)
+					TriggerClientEvent("setEnergetic",source,10,1.10,1.5)
 					vRP.UpgradeHunger(Passport,8)
 				end
 			end
@@ -4587,20 +5112,22 @@ Use = {
 
 					vRPC.removeObjects(ClosestPed)
 				else
-					TriggerClientEvent("hud:RadioClean",ClosestPed)
-					TriggerClientEvent("player:playerCarry",ClosestPed,source,"handcuff")
-					vRPC.playAnim(source,false,{"mp_arrest_paired","cop_p2_back_left"},false)
-					vRPC.playAnim(ClosestPed,false,{"mp_arrest_paired","crook_p2_back_left"},false)
+					if not vTASKBAR.taskHandcuff(ClosestPed) then
+						TriggerClientEvent("radio:RadioClean",ClosestPed)
+						TriggerClientEvent("player:playerCarry",ClosestPed,source,"handcuff")
+						vRPC.playAnim(source,false,{"mp_arrest_paired","cop_p2_back_left"},false)
+						vRPC.playAnim(ClosestPed,false,{"mp_arrest_paired","crook_p2_back_left"},false)
 
-					Wait(3500)
+						Wait(3500)
 
-					vRPC.removeObjects(source)
-					Player(ClosestPed)["state"]["Handcuff"] = true
-					Player(ClosestPed)["state"]["Commands"] = true
-					TriggerClientEvent("inventory:Close",ClosestPed)
-					TriggerClientEvent("sounds:Private",source,"cuff",0.5)
-					TriggerClientEvent("sounds:Private",ClosestPed,"cuff",0.5)
-					TriggerClientEvent("player:playerCarry",ClosestPed,source)
+						vRPC.removeObjects(source)
+						Player(ClosestPed)["state"]["Handcuff"] = true
+						Player(ClosestPed)["state"]["Commands"] = true
+						TriggerClientEvent("inventory:Close",ClosestPed)
+						TriggerClientEvent("sounds:Private",source,"cuff",0.5)
+						TriggerClientEvent("sounds:Private",ClosestPed,"cuff",0.5)
+						TriggerClientEvent("player:playerCarry",ClosestPed,source)
+					end
 				end
 
 				Player(source)["state"]["Cancel"] = false
@@ -4657,16 +5184,52 @@ Use = {
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
 				vRP.SetPermission(Passport,"Premium",1)
 				vRP.SetPremium(source)
 			end
 		else
 			if vRP.HasPermission(Passport,"Premium",1) and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
-				TriggerEvent("Salary:Add",Passport,"Premium")
 				vRP.SetPermission(Passport,"Premium",1)
 				vRP.UpgradePremium(source)
+			else
+				TriggerClientEvent("Notify",source,"aviso","Você já possui um Premium <b>ativo<b> no momento.")
+			end
+		end
+	end,
+
+	["premium2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not vRP.UserPremium(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				vRP.SetPermission(Passport,"Premium",2)
+				vRP.SetPremium(source)
+			end
+		else
+			if vRP.HasPermission(Passport,"Premium",2) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				vRP.SetPermission(Passport,"Premium",2)
+				vRP.UpgradePremium(source)
+			else
+				TriggerClientEvent("Notify",source,"aviso","Você já possui um Premium <b>ativo<b> no momento.")
+			end
+		end
+	end,
+
+	["premium3"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not vRP.UserPremium(Passport) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				vRP.SetPermission(Passport,"Premium",3)
+				vRP.SetPremium(source)
+			end
+		else
+			if vRP.HasPermission(Passport,"Premium",3) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				vRP.SetPermission(Passport,"Premium",3)
+				vRP.UpgradePremium(source)
+			else
+				TriggerClientEvent("Notify",source,"aviso","Você já possui um Premium <b>ativo<b> no momento.")
 			end
 		end
 	end,
@@ -4692,6 +5255,39 @@ Use = {
 					end
 				end
 			end
+		end
+	end,
+
+	["present01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Event[Full])
+		local Rand = math.random(Event[Full][Selected]["min"],Event[Full][Selected]["max"])
+
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			vRP.GenerateItem(Passport,Event[Full][Selected]["item"],Rand,false)
+			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Event[Full][Selected]["item"]),13541152)
+		end
+	end,
+
+	["present02"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Event[Full])
+		local Rand = math.random(Event[Full][Selected]["min"],Event[Full][Selected]["max"])
+
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			vRP.GenerateItem(Passport,Event[Full][Selected]["item"],Rand,false)
+			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Event[Full][Selected]["item"]),13541152)
+		end
+	end,
+
+	["present03"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Selected = math.random(#Event[Full])
+		local Rand = math.random(Event[Full][Selected]["min"],Event[Full][Selected]["max"])
+
+		if vRP.TakeItem(Passport,Full,1,true,Slot) then
+			vRP.GenerateItem(Passport,Event[Full][Selected]["item"],Rand,false)
+			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Recebeu:** "..Rand.."x "..itemName(Event[Full][Selected]["item"]),13541152)
 		end
 	end
 }

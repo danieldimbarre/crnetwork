@@ -15,7 +15,7 @@ html,body {
 
 #Ranking {
 	top: 400px;
-	right: 50px;
+	right: 6vw;
 	color: #ccc;
 	width: 465px;
 	display: none;
@@ -26,6 +26,7 @@ html,body {
 	text-shadow: 1px 1px #000;
 	position: absolute !important;
 	background: rgba(15,15,15,.50);
+	border-radius: 5px;
 }
 
 #raceTitle {
@@ -40,13 +41,13 @@ html,body {
 	font-size: 11px;
 	width: 425px;
 	float: left;
-	color: #999;
+	color: #898989;
 }
 
 #raceButtom {
 	text-align: right;
 	font-size: 11px;
-	color: #777777;
+	color: #898989;
 	width: 425px;
 	float: left;
 }
@@ -56,16 +57,17 @@ html,body {
 	margin-bottom: 5px;
 	width: 425px;
 	float: left;
+	border-radius: 5px;
 }
 
 .racePosition {
 	float: left;
 	width: 40px;
-	color: #715611;
+	color: #ccc;
 	padding: 3px 0;
-	text-shadow: none;
+	text-shadow: 1px 1px #000;
 	text-align: center;
-	background: #fec026;
+	background: #00e076;
 }
 
 .raceName {
@@ -78,7 +80,7 @@ html,body {
 }
 
 .raceVehicle {
-	color: #888;
+	color: #898989;
 	float: left;
 	width: 135px;
 	padding: 3px 0;
@@ -87,21 +89,21 @@ html,body {
 }
 
 .racePoints {
-	color: #888;
+	color: #898989;
 	float: left;
 	width: 50px;
 	padding: 3px 0;
 }
 
 key {
-	color: #ccc;
+	color: #00e076;
 }
 
 #Scoreboard {
-	left: 4.7vw;
+	left: 6vw;
 	bottom: 18vw;
 	display: none;
-	color: #fec026;
+	color: #00e076;
 	text-align: left;
 	line-height: 30px;
 	letter-spacing: 2px;
@@ -112,7 +114,7 @@ key {
 #Scoreboard s {
 	width: 120px;
 	float: right;
-	color: #e5e5e5;
+	color: #ccc;
 	font-size: 20px;
 	text-align: right;
 	text-decoration: none;

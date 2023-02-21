@@ -18,8 +18,8 @@ local Pause = false
 local Colors = {
 	["Police"] = 63,
 	["Paramedic"] = 6,
-	["Prisioneiro"] = 33,
-	["Corredor"] = 32
+	["Prisioneiro"] = 47,
+	["Corredor"] = 2
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADBLIPS

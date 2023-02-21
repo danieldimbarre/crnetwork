@@ -68,74 +68,162 @@ local Objects = {
 	["55"] = { ["Coords"] = vec3(2954.26,2802.48,41.74), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_e", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
 	["56"] = { ["Coords"] = vec3(2964.23,2786.72,39.75), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_d", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
 	["57"] = { ["Coords"] = vec3(2947.96,2783.56,39.93), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_f", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["58"] = { ["Coords"] = vec3(2947.11,2808.9,41.6), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_e", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["59"] = { ["Coords"] = vec3(2933.33,2806.94,42.17), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_d", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["60"] = { ["Coords"] = vec3(2925.57,2801.41,41.62), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_f", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["61"] = { ["Coords"] = vec3(2932.59,2792.34,40.37), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_e", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["62"] = { ["Coords"] = vec3(2931.75,2784.11,39.26), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_d", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["63"] = { ["Coords"] = vec3(2940.11,2776.75,39.28), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_f", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["64"] = { ["Coords"] = vec3(2942.76,2768.71,39.5), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_e", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["65"] = { ["Coords"] = vec3(2953.31,2775.01,39.36), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_d", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["66"] = { ["Coords"] = vec3(2941.31,2773.11,39.26), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_f", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["67"] = { ["Coords"] = vec3(2965.55,2778.64,39.14), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_e", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["68"] = { ["Coords"] = vec3(2976.9,2781.12,38.72), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_d", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["69"] = { ["Coords"] = vec3(2972.93,2793.51,40.64), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_f", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["70"] = { ["Coords"] = vec3(2966.38,2802.82,41.42), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_e", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["71"] = { ["Coords"] = vec3(2953.88,2786.17,41.37), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_d", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
+	["72"] = { ["Coords"] = vec3(2946.32,2793.33,40.57), ["Heading"] = 3374176, ["Height"] = 1.25, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_rock_1_f", ["Event"] = "farmer:Minerman", ["Label"] = "Mineirar", ["Time"] = 0, ["Distance"] = 2.0 },
 
-	["58"] = { ["Coords"] = vec3(2386.34,5099.58,47.55), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["59"] = { ["Coords"] = vec3(2397.96,5087.04,47.31), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["60"] = { ["Coords"] = vec3(2401.23,5099.75,46.4), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["61"] = { ["Coords"] = vec3(2391.37,5110.17,46.39), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["62"] = { ["Coords"] = vec3(2410.42,5089.48,46.51), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["63"] = { ["Coords"] = vec3(2420.39,5070.15,46.62), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["64"] = { ["Coords"] = vec3(2424.72,5082.12,46.71), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["65"] = { ["Coords"] = vec3(2434.98,5062.41,46.34), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["66"] = { ["Coords"] = vec3(2411.24,5079.37,46.88), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["67"] = { ["Coords"] = vec3(2433.39,5074.77,46.32), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["68"] = { ["Coords"] = vec3(2410.41,5127.09,47.25), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["69"] = { ["Coords"] = vec3(2416.61,5116.57,46.88), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["70"] = { ["Coords"] = vec3(2426.6,5122.74,46.98), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["71"] = { ["Coords"] = vec3(2434.38,5111.16,47.08), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["72"] = { ["Coords"] = vec3(2436.03,5098.54,46.45), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["73"] = { ["Coords"] = vec3(2444.76,5087.11,46.34), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["74"] = { ["Coords"] = vec3(2452.11,5073.92,46.32), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["75"] = { ["Coords"] = vec3(2459.98,5082.81,46.94), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["76"] = { ["Coords"] = vec3(2475.47,5086.5,46.13), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["77"] = { ["Coords"] = vec3(2463.86,5101.53,46.45), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["78"] = { ["Coords"] = vec3(2450.84,5107.65,46.89), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["79"] = { ["Coords"] = vec3(2461.8,5063.75,46.78), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["80"] = { ["Coords"] = vec3(2473.81,5048.59,46.44), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["81"] = { ["Coords"] = vec3(2487.0,5035.03,46.79), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["82"] = { ["Coords"] = vec3(2487.67,5053.43,49.29), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["83"] = { ["Coords"] = vec3(2504.84,5049.0,51.44), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
-	["84"] = { ["Coords"] = vec3(2502.22,5069.15,46.51), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["73"] = { ["Coords"] = vec3(2386.34,5099.58,47.55), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["74"] = { ["Coords"] = vec3(2397.96,5087.04,47.31), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["75"] = { ["Coords"] = vec3(2401.23,5099.75,46.4), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["76"] = { ["Coords"] = vec3(2391.37,5110.17,46.39), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["77"] = { ["Coords"] = vec3(2410.42,5089.48,46.51), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["78"] = { ["Coords"] = vec3(2420.39,5070.15,46.62), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["79"] = { ["Coords"] = vec3(2424.72,5082.12,46.71), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["80"] = { ["Coords"] = vec3(2434.98,5062.41,46.34), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["81"] = { ["Coords"] = vec3(2411.24,5079.37,46.88), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["82"] = { ["Coords"] = vec3(2433.39,5074.77,46.32), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["83"] = { ["Coords"] = vec3(2410.41,5127.09,47.25), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["84"] = { ["Coords"] = vec3(2416.61,5116.57,46.88), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["85"] = { ["Coords"] = vec3(2426.6,5122.74,46.98), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["86"] = { ["Coords"] = vec3(2434.38,5111.16,47.08), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["87"] = { ["Coords"] = vec3(2436.03,5098.54,46.45), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["88"] = { ["Coords"] = vec3(2444.76,5087.11,46.34), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["89"] = { ["Coords"] = vec3(2452.11,5073.92,46.32), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["90"] = { ["Coords"] = vec3(2459.98,5082.81,46.94), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["91"] = { ["Coords"] = vec3(2475.47,5086.5,46.13), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["92"] = { ["Coords"] = vec3(2463.86,5101.53,46.45), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["93"] = { ["Coords"] = vec3(2450.84,5107.65,46.89), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["94"] = { ["Coords"] = vec3(2461.8,5063.75,46.78), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["95"] = { ["Coords"] = vec3(2473.81,5048.59,46.44), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["96"] = { ["Coords"] = vec3(2487.0,5035.03,46.79), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["97"] = { ["Coords"] = vec3(2487.67,5053.43,49.29), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_cedar_s_01", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["98"] = { ["Coords"] = vec3(2504.84,5049.0,51.44), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_w_r_cedar_dead", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
+	["99"] = { ["Coords"] = vec3(2502.22,5069.15,46.51), ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_tree_pine_02", ["Event"] = "farmer:Lumberman", ["Label"] = "Derrubar", ["Time"] = 0, ["Distance"] = 1.5 },
 
-	["85"] = { ["Coords"] = vec3(228.48,235.48,97.12), ["Heading"] = 32.44, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["86"] = { ["Coords"] = vec3(228.71,235.44,97.12), ["Heading"] = 7.44, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["87"] = { ["Coords"] = vec3(228.44,235.3,97.12), ["Heading"] = 22.44, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["88"] = { ["Coords"] = vec3(228.72,235.28,97.12), ["Heading"] = 357.44, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["89"] = { ["Coords"] = vec3(229.02,235.32,97.12), ["Heading"] = 346.67, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["90"] = { ["Coords"] = vec3(229.31,235.26,97.12), ["Heading"] = 358.04, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["91"] = { ["Coords"] = vec3(229.58,235.15,97.12), ["Heading"] = 331.58, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["92"] = { ["Coords"] = vec3(229.89,235.06,97.12), ["Heading"] = 346.58, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["93"] = { ["Coords"] = vec3(229.03,235.15,97.12), ["Heading"] = 199.87, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["94"] = { ["Coords"] = vec3(229.3,235.08,97.12), ["Heading"] = 207.43, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["95"] = { ["Coords"] = vec3(229.61,235.0,97.12), ["Heading"] = 199.93, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["96"] = { ["Coords"] = vec3(227.32,234.62,97.12), ["Heading"] = 41.08, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["97"] = { ["Coords"] = vec3(227.17,234.37,97.12), ["Heading"] = 48.62, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["98"] = { ["Coords"] = vec3(227.4,234.43,97.12), ["Heading"] = 48.62, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["99"] = { ["Coords"] = vec3(227.08,234.14,97.12), ["Heading"] = 33.62, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["100"] = { ["Coords"] = vec3(227.29,234.19,97.12), ["Heading"] = 39.18, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["101"] = { ["Coords"] = vec3(227.59,234.42,97.12), ["Heading"] = 39.85, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["102"] = { ["Coords"] = vec3(232.0,234.28,97.12), ["Heading"] = 315.85, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["103"] = { ["Coords"] = vec3(231.74,234.38,97.12), ["Heading"] = 319.51, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["104"] = { ["Coords"] = vec3(231.47,234.42,97.12), ["Heading"] = 319.51, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["105"] = { ["Coords"] = vec3(232.05,233.99,97.12), ["Heading"] = 304.51, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["106"] = { ["Coords"] = vec3(231.8,234.15,97.12), ["Heading"] = 319.51, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["107"] = { ["Coords"] = vec3(231.52,234.24,97.12), ["Heading"] = 332.01, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["108"] = { ["Coords"] = vec3(231.24,234.5,97.12), ["Heading"] = 315.84, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["109"] = { ["Coords"] = vec3(230.98,234.67,97.12), ["Heading"] = 341.86, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["110"] = { ["Coords"] = vec3(230.7,234.76,97.12), ["Heading"] = 348.41, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["111"] = { ["Coords"] = vec3(230.4,234.87,97.12), ["Heading"] = 350.93, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["112"] = { ["Coords"] = vec3(231.03,234.48,97.12), ["Heading"] = 325.93, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["113"] = { ["Coords"] = vec3(230.77,234.61,97.12), ["Heading"] = 350.93, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["114"] = { ["Coords"] = vec3(230.46,234.7,97.12), ["Heading"] = 348.43, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["115"] = { ["Coords"] = vec3(231.27,234.32,97.12), ["Heading"] = 319.74, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["116"] = { ["Coords"] = vec3(228.46,235.11,97.12), ["Heading"] = 220.57, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["117"] = { ["Coords"] = vec3(228.23,234.91,97.12), ["Heading"] = 28.05, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["118"] = { ["Coords"] = vec3(228.04,234.71,97.12), ["Heading"] = 41.37, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["119"] = { ["Coords"] = vec3(227.83,234.5,97.12), ["Heading"] = 56.37, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["120"] = { ["Coords"] = vec3(230.12,234.93,97.12), ["Heading"] = 332.08, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["121"] = { ["Coords"] = vec3(229.86,234.9,97.12), ["Heading"] = 354.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
-	["122"] = { ["Coords"] = vec3(230.15,234.78,97.12), ["Heading"] = 339.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 }
+	["100"] = { ["Coords"] = vec3(228.48,235.48,97.12), ["Heading"] = 32.44, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["101"] = { ["Coords"] = vec3(228.71,235.44,97.12), ["Heading"] = 7.44, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["102"] = { ["Coords"] = vec3(228.44,235.3,97.12), ["Heading"] = 22.44, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["103"] = { ["Coords"] = vec3(228.72,235.28,97.12), ["Heading"] = 357.44, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["104"] = { ["Coords"] = vec3(229.02,235.32,97.12), ["Heading"] = 346.67, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["105"] = { ["Coords"] = vec3(229.31,235.26,97.12), ["Heading"] = 358.04, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["106"] = { ["Coords"] = vec3(229.58,235.15,97.12), ["Heading"] = 331.58, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["107"] = { ["Coords"] = vec3(229.89,235.06,97.12), ["Heading"] = 346.58, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["108"] = { ["Coords"] = vec3(229.03,235.15,97.12), ["Heading"] = 199.87, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["109"] = { ["Coords"] = vec3(229.3,235.08,97.12), ["Heading"] = 207.43, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["110"] = { ["Coords"] = vec3(229.61,235.0,97.12), ["Heading"] = 199.93, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["111"] = { ["Coords"] = vec3(227.32,234.62,97.12), ["Heading"] = 41.08, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["112"] = { ["Coords"] = vec3(227.17,234.37,97.12), ["Heading"] = 48.62, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["113"] = { ["Coords"] = vec3(227.4,234.43,97.12), ["Heading"] = 48.62, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["114"] = { ["Coords"] = vec3(227.08,234.14,97.12), ["Heading"] = 33.62, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["115"] = { ["Coords"] = vec3(227.29,234.19,97.12), ["Heading"] = 39.18, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["116"] = { ["Coords"] = vec3(227.59,234.42,97.12), ["Heading"] = 39.85, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["117"] = { ["Coords"] = vec3(232.0,234.28,97.12), ["Heading"] = 315.85, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["118"] = { ["Coords"] = vec3(231.74,234.38,97.12), ["Heading"] = 319.51, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["119"] = { ["Coords"] = vec3(231.47,234.42,97.12), ["Heading"] = 319.51, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["120"] = { ["Coords"] = vec3(232.05,233.99,97.12), ["Heading"] = 304.51, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["121"] = { ["Coords"] = vec3(231.8,234.15,97.12), ["Heading"] = 319.51, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["122"] = { ["Coords"] = vec3(231.52,234.24,97.12), ["Heading"] = 332.01, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["123"] = { ["Coords"] = vec3(231.24,234.5,97.12), ["Heading"] = 315.84, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["124"] = { ["Coords"] = vec3(230.98,234.67,97.12), ["Heading"] = 341.86, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["125"] = { ["Coords"] = vec3(230.7,234.76,97.12), ["Heading"] = 348.41, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["126"] = { ["Coords"] = vec3(230.4,234.87,97.12), ["Heading"] = 350.93, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["127"] = { ["Coords"] = vec3(231.03,234.48,97.12), ["Heading"] = 325.93, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["128"] = { ["Coords"] = vec3(230.77,234.61,97.12), ["Heading"] = 350.93, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["129"] = { ["Coords"] = vec3(230.46,234.7,97.12), ["Heading"] = 348.43, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["130"] = { ["Coords"] = vec3(231.27,234.32,97.12), ["Heading"] = 319.74, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["131"] = { ["Coords"] = vec3(228.46,235.11,97.12), ["Heading"] = 220.57, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["132"] = { ["Coords"] = vec3(228.23,234.91,97.12), ["Heading"] = 28.05, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["133"] = { ["Coords"] = vec3(228.04,234.71,97.12), ["Heading"] = 41.37, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["134"] = { ["Coords"] = vec3(227.83,234.5,97.12), ["Heading"] = 56.37, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["135"] = { ["Coords"] = vec3(230.12,234.93,97.12), ["Heading"] = 332.08, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["136"] = { ["Coords"] = vec3(229.86,234.9,97.12), ["Heading"] = 354.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
+	["137"] = { ["Coords"] = vec3(230.15,234.78,97.12), ["Heading"] = 339.13, ["Height"] = 1.0, ["Width"] = 0.25, ["Show"] = 20.0, ["Model"] = "prop_money_bag_01", ["Event"] = "farmer:Transporter", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 0.75 },
 }
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- EVENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+local EventUsable = {}
+local EventLocs = {
+	[1] = vec3(211.76,-934.97,25.04),
+	[2] = vec3(-66.64,-822.06,322.05),
+	[3] = vec3(-271.33,-2032.08,30.90),
+	[4] = vec3(-1037.63,-2737.54,20.92),
+	[5] = vec3(454.46,5571.88,781.92),
+	[6] = vec3(-10.28,-1439.07,31.86),
+	[7] = vec3(-680.47,324.76,83.85),
+	[8] = vec3(-2291.03,225.37,168.36),
+	[9] = vec3(-1888.37,2049.66,141.74),
+	[10] = vec3(-432.05,1111.61,328.54),
+	[11] = vec3(102.9,6614.18,33.20),
+	[12] = vec3(-74.3,6223.93,31.85),
+	[13] = vec3(961.71,36.59,72.4),
+	[14] = vec3(689.21,585.79,131.21),
+	[15] = vec3(2477.28,-384.06,95.15),
+	[16] = vec3(2435.9,4966.9,47.57),
+	[17] = vec3(1582.66,6459.9,26.78),
+	[18] = vec3(1209.1,-3120.06,6.10),
+	[19] = vec3(121.8,-3075.17,6.76),
+	[20] = vec3(919.98,-1794.03,22.80),
+	[21] = vec3(1111.88,-647.24,57.58),
+	[22] = vec3(1390.78,1153.94,114.73),
+	[23] = vec3(2561.85,2592.85,38.82),
+	[24] = vec3(1993.9,3052.66,47.97),
+	[25] = vec3(1894.81,3713.87,33.53),
+	[26] = vec3(2343.87,3140.76,48.97),
+	[27] = vec3(804.47,2152.86,53.85),
+	[28] = vec3(733.24,2523.99,73.97),
+	[29] = vec3(555.9,2675.13,42.92),
+	[30] = vec3(191.68,3079.57,44.23),
+	[31] = vec3(1123.22,2642.63,38.91),
+	[32] = vec3(992.55,2717.65,40.26),
+	[33] = vec3(-45.87,1944.16,190.93),
+	[34] = vec3(311.98,2792.14,60.27),
+	[35] = vec3(389.41,3584.92,34.06),
+	[36] = vec3(2632.83,3258.76,56.21),
+	[37] = vec3(2749.47,3472.69,51.75),
+	[38] = vec3(2897.46,4397.99,50.99),
+	[39] = vec3(2334.51,4857.46,42.56),
+	[40] = vec3(1667.12,4739.04,42.75),
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADEVENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CreateThread(function()
+-- 	local Number = 200
+-- 	local Count = 10
+
+-- 	repeat
+-- 		local Rand = math.random(#EventLocs)
+-- 		local Index = tostring(Rand)
+		
+-- 		if not EventUsable[Index] then
+-- 			if Rand == 13 then
+-- 				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+-- 			else
+-- 				EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+-- 			end
+
+-- 			Objects[tostring(Number)] = EventUsable[Index]
+
+-- 			Number = Number + 1
+-- 			Count = Count - 1
+-- 		end
+
+-- 		Wait(10)
+-- 	until Count <= 0
+-- end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FRUITMAN
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -147,17 +235,25 @@ AddEventHandler("farmer:Fruitman",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				local ObjectsActive = Objects[Number]["Time"]
+				Objects[Number]["Time"] = GlobalState["Work"] + 5
 
 				local Ped = GetPlayerPed(source)
-				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") then
+				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") or GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_STONE_HATCHET") or GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_BATTLEAXE") then
 					local Amount = math.random(3,5)
-					local Items = { "acerola","banana","guarana","tomato","passion","grape","tange","orange","apple","strawberry","coffee2" }
+					local Items = { "acerola","banana","guarana","tomato","passion","grape","tange","orange","apple","strawberry","coffee2","mushroom","cocoa","potato" }
 					local Select = math.random(#Items)
+
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Amount = math.random(5,7)
+						end
+					end
 
 					if (vRP.InventoryWeight(Passport) + itemWeight(Items[Select]) * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
 						TriggerClientEvent("Progress",source,"Colhendo",11000)
-						Objects[Number]["Time"] = GlobalState["Work"] + 25
+						Objects[Number]["Time"] = GlobalState["Work"] + 20
 						Player(source)["state"]["Buttons"] = true
 						Player(source)["state"]["Cancel"] = true
 
@@ -185,6 +281,7 @@ AddEventHandler("farmer:Fruitman",function(Number)
 						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 					end
 				else
+					Objects[Number]["Time"] = ObjectsActive
 					TriggerClientEvent("Notify",source,"amarelo","<b>Machado</b> não encontrado.",5000)
 				end
 
@@ -204,13 +301,22 @@ AddEventHandler("farmer:Minerman",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
-
+				local ObjectsActive = Objects[Number]["Time"]
+				Objects[Number]["Time"] = GlobalState["Work"] + 5
+				
 				if vRP.ConsultItem(Passport,"pickaxe",1) then
 					local Amount = math.random(2)
+
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Amount = math.random(2,3)
+						end
+					end
+
 					if (vRP.InventoryWeight(Passport) + itemWeight("geode") * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.createObjects(source,"melee@large_wpn@streamed_core","ground_attack_on_spot","prop_tool_pickaxe",1,18905,0.10,-0.1,0.0,-92.0,260.0,5.0)
 						TriggerClientEvent("Progress",source,"Mineirando",10000)
-						Objects[Number]["Time"] = GlobalState["Work"] + 15
+						Objects[Number]["Time"] = GlobalState["Work"] + 10
 						Player(source)["state"]["Buttons"] = true
 						Player(source)["state"]["Cancel"] = true
 						local timeProgress = 10
@@ -232,6 +338,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 					end
 				else
+					Objects[Number]["Time"] = ObjectsActive
 					TriggerClientEvent("Notify",source,"amarelo","<b>Picareta</b> não encontrada.",5000)
 				end
 
@@ -251,14 +358,23 @@ AddEventHandler("farmer:Lumberman",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				local ObjectsActive = Objects[Number]["Time"]
+				Objects[Number]["Time"] = GlobalState["Work"] + 5
 
 				local Ped = GetPlayerPed(source)
 				if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") then
 					local Amount = math.random(3,5)
+
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Amount = math.random(5,7)
+						end
+					end
+
 					if (vRP.InventoryWeight(Passport) + itemWeight("woodlog") * Amount) <= vRP.GetWeight(Passport) then
 						vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
 						TriggerClientEvent("Progress",source,"Cortando",11000)
-						Objects[Number]["Time"] = GlobalState["Work"] + 15
+						Objects[Number]["Time"] = GlobalState["Work"] + 10
 						Player(source)["state"]["Buttons"] = true
 						Player(source)["state"]["Cancel"] = true
 						local timeProgress = 10
@@ -285,6 +401,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 					end
 				else
+					Objects[Number]["Time"] = ObjectsActive
 					TriggerClientEvent("Notify",source,"amarelo","<b>Machado</b> não encontrado.",5000)
 				end
 
@@ -304,11 +421,13 @@ AddEventHandler("farmer:Transporter",function(Number)
 			local Passport = vRP.Passport(source)
 			if Passport and not Active[Passport] then
 				Active[Passport] = true
+				local ObjectsActive = Objects[Number]["Time"]
+				Objects[Number]["Time"] = GlobalState["Work"] + 5
 
 				if (vRP.InventoryWeight(Passport) + itemWeight("pouch")) <= vRP.GetWeight(Passport) then
 					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 					TriggerClientEvent("Progress",source,"Coletando",1000)
-					Objects[Number]["Time"] = GlobalState["Work"] + 10
+					Objects[Number]["Time"] = GlobalState["Work"] + 5
 					Player(source)["state"]["Buttons"] = true
 					Player(source)["state"]["Cancel"] = true
 
@@ -321,6 +440,80 @@ AddEventHandler("farmer:Transporter",function(Number)
 					vRP.UpgradeStress(Passport,1)
 					vRPC.removeObjects(source)
 				else
+					Objects[Number]["Time"] = ObjectsActive
+					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+				end
+
+				Active[Passport] = nil
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- EVENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("farmer:Event")
+AddEventHandler("farmer:Event",function(Number)
+	if Objects[Number] then
+		if GlobalState["Work"] >= Objects[Number]["Time"] then
+			local source = source
+			local Passport = vRP.Passport(source)
+			if Passport and not Active[Passport] then
+				Active[Passport] = true
+				local ObjectsActive = Objects[Number]["Time"]
+				Objects[Number]["Time"] = GlobalState["Work"] + math.random(700,900)
+
+				local itemSelect = { "",1 }
+				local randItem = math.random(100)
+				if randItem >= 21 and randItem <= 45 then
+					itemSelect = { "present01",1 }
+				elseif randItem >= 6 and randItem <= 20 then
+					itemSelect = { "present02",1 }
+				elseif randItem <= 5 then
+					itemSelect = { "present03",1 }
+				end
+
+				if ((vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport)) or (itemSelect[1] == "") then
+					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+					TriggerClientEvent("Progress",source,"Coletando",1000)
+
+					local Rand = 1
+
+					repeat
+						Rand = math.random(#EventLocs)
+
+						Wait(1)
+					until not EventUsable[tostring(Rand)]
+
+					local Index = tostring(Rand)
+					if Rand == 13 then
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "ch_prop_ch_diamond_xmastree", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+					else
+						EventUsable[Index] = { ["Number"] = Index, ["Coords"] = EventLocs[Rand], ["Heading"] = 3374176, ["Height"] = 1.5, ["Width"] = 1.5, ["Show"] = 150.0, ["Model"] = "prop_xmas_tree_int", ["Event"] = "farmer:Event", ["Label"] = "Pegar", ["Time"] = 0, ["Distance"] = 1.5 }
+					end
+
+					EventUsable[Objects[Number]["Number"]] = nil
+					Objects[Number]["Coords"] = EventLocs[Rand]
+					Player(source)["state"]["Buttons"] = true
+					Player(source)["state"]["Cancel"] = true
+
+					Wait(1000)
+
+					TriggerClientEvent("farmer:Remover",-1,Number,Objects[Number]["Time"],Objects[Number]["Coords"])
+					Player(source)["state"]["Buttons"] = false
+					Player(source)["state"]["Cancel"] = false
+
+					if itemSelect[1] == "" then
+						TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
+					else
+						vRP.GenerateItem(Passport,itemSelect[1],itemSelect[2],true)
+						TriggerEvent("Discord","Event","**Passaporte:** "..Passport.."\n**Pegou:** "..itemSelect[2].."x "..itemName(itemSelect[1]),3042892)
+					end
+
+					vRP.UpgradeStress(Passport,1)
+					vRPC.removeObjects(source)
+				else
+					Objects[Number]["Time"] = ObjectsActive
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 				end
 

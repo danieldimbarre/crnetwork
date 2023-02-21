@@ -12,18 +12,19 @@ vSERVER = Tunnel.getInterface("barbershop")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local cam = -1
-local Clothes = {}
+local Clothes = { 0,100,0,100,0,0,0,0,0,0,0,-1,5,-1,-1,5,0,0,0,0,-1,5,0,-1,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("updateSkin",function(Data,Callback)
-	Clothes = { tonumber(Data["fathers"]),tonumber(Data["kinship"]),tonumber(Data["eyecolor"]),tonumber(Data["skincolor"]),tonumber(Data["acne"]),tonumber(Data["stains"]),tonumber(Data["freckles"]),tonumber(Data["aging"]),tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintentisy"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintentisy"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),tonumber(Data["face06"]),tonumber(Data["face08"]),tonumber(Data["face09"]),tonumber(Data["face10"]),tonumber(Data["face12"]),tonumber(Data["face13"]),tonumber(Data["face14"]),tonumber(Data["face15"]),tonumber(Data["face16"]),tonumber(Data["face17"]),tonumber(Data["face19"]),tonumber(Data["mothers"]) }
+	Clothes = { Clothes[1],Clothes[2],Clothes[3],Clothes[4],Clothes[5],Clothes[6],Clothes[7],Clothes[8],tonumber(Data["hair"]),tonumber(Data["haircolor"]),tonumber(Data["haircolor2"]),tonumber(Data["makeup"]),tonumber(Data["makeupintensity"]),tonumber(Data["makeupcolor"]),tonumber(Data["lipstick"]),tonumber(Data["lipstickintensity"]),tonumber(Data["lipstickcolor"]),tonumber(Data["eyebrow"]),tonumber(Data["eyebrowintensity"]),tonumber(Data["eyebrowcolor"]),tonumber(Data["beard"]),tonumber(Data["beardintensity"]),tonumber(Data["beardcolor"]),tonumber(Data["blush"]),tonumber(Data["blushintensity"]),tonumber(Data["blushcolor"]),tonumber(Data["face00"]),tonumber(Data["face01"]),tonumber(Data["face04"]),Clothes[30],Clothes[31],Clothes[32],Clothes[33],Clothes[34],Clothes[35],Clothes[36],Clothes[37],Clothes[38],Clothes[39],Clothes[40],Clothes[41] }
 
 	if Data["value"] then
 		OpenBarbershop(false)
 		SetNuiFocus(false,false)
 		vSERVER.updateSkin(Clothes)
 		SendNUIMessage({ Open = false })
+		-- TriggerServerEvent("vRP:BucketClient","Exit")
 	end
 
 	TriggerEvent("barbershop:Apply",Clothes)
@@ -49,8 +50,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Apply")
 AddEventHandler("barbershop:Apply",function(Status)
-	for Number = 1,41 do
-		Clothes[Number] = Status[Number] or 0
+	for Number = 1,#Status do
+		Clothes[Number] = Status[Number] or Clothes[Number]
 	end
 
     local Face = Clothes[2] / 100 + 0.0
@@ -81,7 +82,11 @@ AddEventHandler("barbershop:Apply",function(Status)
 	SetPedHairColor(Ped,Clothes[10],Clothes[11])
 
 	SetPedHeadOverlay(Ped,4,Clothes[12],Clothes[13] * 0.1)
-	SetPedHeadOverlayColor(Ped,4,1,Clothes[14],Clothes[14])
+	if Clothes[14] == -1 then
+        SetPedHeadOverlayColor(Ped,4,0,0,0)
+    else
+	    SetPedHeadOverlayColor(Ped,4,2,Clothes[14],Clothes[14])
+    end
 
 	SetPedHeadOverlay(Ped,8,Clothes[15],Clothes[16] * 0.1)
 	SetPedHeadOverlayColor(Ped,8,1,Clothes[17],Clothes[17])
@@ -118,12 +123,11 @@ function OpenBarbershop(Enabled)
 
 	if Enabled then
 		vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
-		vRP.playAnim(true,{"missfam5_yoga","a2_pose"},true)
+		-- TriggerServerEvent("vRP:BucketClient","Enter")
 
-		SetEntityHeading(PlayerPedId(),332.21)
 		SetFollowPedCamViewMode(0)
 		SetNuiFocus(true,true)
-		SendNUIMessage({ Open = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2) - 1, fathers = Clothes[1], mothers = Clothes[41], kinship = Clothes[2], eyecolor = Clothes[3], skincolor = Clothes[4], acne = Clothes[5], stains = Clothes[6], freckles = Clothes[7], aging = Clothes[8], hair = Clothes[9], haircolor = Clothes[10], haircolor2 = Clothes[11], makeup = Clothes[12], makeupintensity = Clothes[13], makeupcolor = Clothes[14], lipstick = Clothes[15], lipstickintensity = Clothes[16], lipstickcolor = Clothes[17], eyebrow = Clothes[18], eyebrowintensity = Clothes[19], eyebrowcolor = Clothes[20], beard = Clothes[21], beardintentisy = Clothes[22], beardcolor = Clothes[23], blush = Clothes[24], blushintentisy = Clothes[25], blushcolor = Clothes[26], face00 = Clothes[27], face01 = Clothes[28], face04 = Clothes[29], face06 = Clothes[30], face08 = Clothes[31], face09 = Clothes[32], face10 = Clothes[33], face12 = Clothes[34], face13 = Clothes[35], face14 = Clothes[36], face15 = Clothes[37], face16 = Clothes[38], face17 = Clothes[39], face19 = Clothes[40] })
+		SendNUIMessage({ Open = true, maxHair = GetNumberOfPedDrawableVariations(Ped,2) - 1, maxHaircolors = GetNumHairColors() - 1, maxMakeupcolor = GetNumMakeupColors() - 1, maxBeard = GetPedHeadOverlayNum(1) - 1, maxEyebrow = GetPedHeadOverlayNum(2) - 1, maxMakeup = GetPedHeadOverlayNum(4) - 1, maxBlush = GetPedHeadOverlayNum(5) - 1, maxLipstick = GetPedHeadOverlayNum(8) - 1, hair = Clothes[9], haircolor = Clothes[10], haircolor2 = Clothes[11], makeup = Clothes[12], makeupintensity = Clothes[13], makeupcolor = Clothes[14], lipstick = Clothes[15], lipstickintensity = Clothes[16], lipstickcolor = Clothes[17], eyebrow = Clothes[18], eyebrowintensity = Clothes[19], eyebrowcolor = Clothes[20], beard = Clothes[21], beardintensity = Clothes[22], beardcolor = Clothes[23], blush = Clothes[24], blushintensity = Clothes[25], blushcolor = Clothes[26], face00 = Clothes[27], face01 = Clothes[28], face04 = Clothes[29] })
 
 		if IsDisabledControlJustReleased(0,24) or IsDisabledControlJustReleased(0,142) then
 			SendNUIMessage({ type = "click" })
@@ -141,8 +145,9 @@ function OpenBarbershop(Enabled)
 		end
 
 		local Coords = GetEntityCoords(Ped)
-		SetCamCoord(cam,Coords["x"] + 0.2,Coords["y"] + 0.5,Coords["z"] + 0.7)
-		SetCamRot(cam,0.0,0.0,150.0)
+		local CamCoords = GetOffsetFromEntityInWorldCoords(Ped,0.0,0.5,0.0)
+		SetCamCoord(cam,CamCoords["x"],CamCoords["y"],CamCoords["z"] + 0.7)
+		PointCamAtCoord(cam,Coords["x"],Coords["y"],Coords["z"] + 0.7)
 	else
 		RenderScriptCams(false,false,0,1,0)
 		SetPlayerInvincible(Ped,false)
@@ -213,7 +218,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BARBERSHOP:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("barbershop:Open")
-AddEventHandler("barbershop:Open",function()
-	OpenBarbershop(true)
-end)
+-- RegisterNetEvent("barbershop:Open")
+-- AddEventHandler("barbershop:Open",function()
+-- 	OpenBarbershop(true)
+-- end)

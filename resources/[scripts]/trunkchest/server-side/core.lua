@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
+vRPC = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
@@ -99,6 +100,18 @@ local storeVehs = {
 		["elastic"] = true,
 		["metalcan"] = true,
 		["battery"] = true
+	},
+	["taxi"] = {
+		[""] = true
+	},
+	["flatbed"] = {
+		[""] = true
+	},
+	["towtruck"] = {
+		[""] = true
+	},
+	["towtruck2"] = {
+		[""] = true
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -127,7 +140,7 @@ function Creative.storeItem(Item,Slot,Amount,Target)
 		if Amount <= 0 then Amount = 1 end
 		local vehName = Vehicle[Passport]["Model"]
 
-		if (storeVehs[vehName] and not storeVehs[vehName][Item]) or Item == "dollars" or itemBlock(Item) then
+		if (storeVehs[vehName] and not storeVehs[vehName][Item]) or Item == "dollars"  or Item == "dollarsz" or itemBlock(Item) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 			TriggerClientEvent("Notify",source,"amarelo","Armazenamento proibido.",5000)
 			goto scapeInventory
@@ -139,6 +152,8 @@ function Creative.storeItem(Item,Slot,Amount,Target)
 			if Vehicle[Passport] then
 				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
 				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Vehicle[Passport]["Weight"])
+
+				TriggerEvent("Discord","Trunkchest","**Passaporte:** "..Passport.."\n**Veículo:** "..Vehicle[Passport]["Data"].."\n**Guardou:** "..Amount.."x "..itemName(Item),3042892)
 			end
 		end
 	end
@@ -148,7 +163,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.takeItem(Slot,Amount,Target)
+function Creative.takeItem(Item,Slot,Amount,Target)
 	local source = source
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
@@ -161,6 +176,8 @@ function Creative.takeItem(Slot,Amount,Target)
 			if Vehicle[Passport] then
 				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
 				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Vehicle[Passport]["Weight"])
+
+				TriggerEvent("Discord","Trunkchest","**Passaporte:** "..Passport.."\n**Veículo:** "..Vehicle[Passport]["Data"].."\n**Retirou:** "..Amount.."x "..itemName(Item),9317187)
 			end
 		end
 	end
@@ -172,8 +189,17 @@ function Creative.chestClose()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Vehicle[Passport] then
-		TriggerClientEvent("player:syncDoorsOptions",source,Vehicle[Passport]["Net"],"close")
+		local Players = vRPC.Players(source)
+		for _,v in pairs(Players) do
+			async(function()
+				TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"close")
+			end)
+		end
+
+		vRPC.stopAnim(source,false)
 		Vehicle[Passport] = nil
+		Player(source)["state"]["Buttons"] = false
+		Player(source)["state"]["Cancel"] = false
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -183,7 +209,7 @@ RegisterServerEvent("trunkchest:openTrunk")
 AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Vehicle[Passport] then
 		if VehicleChest(Entity[2]) > 0 then
 			local PassportPlate = vRP.PassportPlate(Entity[1])
 
@@ -200,8 +226,17 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 				local Network = NetworkGetEntityFromNetworkId(Vehicle[Passport]["Net"])
 
 				if GetVehicleDoorLockStatus(Network) <= 1 then
+					Player(source)["state"]["Buttons"] = true
+					Player(source)["state"]["Cancel"] = true
+					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+
+					local Players = vRPC.Players(source)
+					for _,v in pairs(Players) do
+						async(function()
+							TriggerClientEvent("player:syncDoorsOptions",v,Vehicle[Passport]["Net"],"open")
+						end)
+					end
 					TriggerClientEvent("trunkchest:Open",source)
-					TriggerClientEvent("player:syncDoorsOptions",source,Vehicle[Passport]["Net"],"open")
 				else
 					TriggerClientEvent("Notify",source,"amarelo","Veículo trancado.",5000)
 					Vehicle[Passport] = nil

@@ -17,6 +17,8 @@ vDELIVER = Tunnel.getInterface("deliver")
 vCLIENT = Tunnel.getInterface("inventory")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vPARAMEDIC = Tunnel.getInterface("paramedic")
+vSKINSHOP = Tunnel.getInterface("skinshop")
+vENGINE = Tunnel.getInterface("engine")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -40,10 +42,12 @@ atmTimers = {}
 Dismantle = {}
 verifyObjects = {}
 verifyAnimals = {}
+Collect = {}
+Peds = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BUFFS
 -----------------------------------------------------------------------------------------------------------------------------------------
-Buffs = {
+GlobalState["Buffs"] = {
 	["Dexterity"] = {},
 	["Luck"] = {}
 }
@@ -52,73 +56,73 @@ Buffs = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 DrugsList = {
 	["cocaine"] = {
-		Price = { ["Min"] = 75, ["Max"] = 85 },
-		Amount = { ["Min"] = 2, ["Max"] = 3 }
+		Price = { ["Min"] = 300, ["Max"] = 315 },
+		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["meth"] = {
-		Price = { ["Min"] = 75, ["Max"] = 85 },
-		Amount = { ["Min"] = 2, ["Max"] = 3 }
+		Price = { ["Min"] = 500, ["Max"] = 515 },
+		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["joint"] = {
-		Price = { ["Min"] = 175, ["Max"] = 200 },
+		Price = { ["Min"] = 300, ["Max"] = 315 },
 		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	},
 	["oxy"] = {
-		Price = { ["Min"] = 75, ["Max"] = 85 },
-		Amount = { ["Min"] = 2, ["Max"] = 3 }
+		Price = { ["Min"] = 107, ["Max"] = 121 },
+		Amount = { ["Min"] = 1, ["Max"] = 2 }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OBJECTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Objects = {
-	["1"] = { x = 594.59, y = 146.52, z = 97.30, h = 70.04, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["2"] = { x = 660.44, y = 268.29, z = 102.04, h = 152.09, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["3"] = { x = 552.54, y = -198.45, z = 53.75, h = 89.32, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["4"] = { x = 339.75, y = -580.95, z = 73.42, h = 67.19, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["5"] = { x = 696.12, y = -965.69, z = 23.26, h = 271.33, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["6"] = { x = 1152.45, y = -1531.51, z = 34.65, h = 144.89, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["7"] = { x = 1382.1, y = -2081.97, z = 51.25, h = 220.16, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["8"] = { x = 589.32, y = -2802.73, z = 5.32, h = 328.01, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["9"] = { x = -453.19, y = -2810.47, z = 6.56, h = 225.82, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["10"] = { x = -1007.18, y = -2836.12, z = 13.20, h = 149.3, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["11"] = { x = -2018.21, y = -361.03, z = 47.36, h = 324.55, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["12"] = { x = -1727.77, y = 250.26, z = 61.65, h = 24.7, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["13"] = { x = -1089.6, y = 2717.05, z = 18.33, h = 40.52, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["14"] = { x = 321.27, y = 2874.98, z = 42.71, h = 27.62, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["15"] = { x = 1163.47, y = 2722.09, z = 37.26, h = 179.11, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["16"] = { x = 1745.86, y = 3326.69, z = 40.30, h = 115.55, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["17"] = { x = 2013.4, y = 3934.36, z = 31.65, h = 236.38, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["18"] = { x = 2526.3, y = 4191.6, z = 44.53, h = 236.44, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["19"] = { x = 2874.05, y = 4861.57, z = 61.35, h = 87.57, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["20"] = { x = 1985.16, y = 6200.39, z = 41.33, h = 330.21, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["21"] = { x = 1552.97, y = 6610.24, z = 2.12, h = 145.64, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["22"] = { x = -298.32, y = 6392.66, z = 29.87, h = 302.99, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["23"] = { x = -813.88, y = 5384.45, z = 33.77, h = 356.87, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["24"] = { x = -1606.5, y = 5259.26, z = 1.35, h = 114.45, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["25"] = { x = -199.22, y = 3638.8, z = 63.70, h = 39.84, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["26"] = { x = -1487.45, y = 2688.99, z = 2.94, h = 317.89, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
-	["27"] = { x = -3266.12, y = 1139.82, z = 1.91, h = 249.17, object = "sm_prop_smug_crate_s_medical", item = "", Distance = 50, mode = "Medic" },
+	["1"] = { x = 594.59, y = 146.52, z = 97.30, h = 70.04, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 1 },
+	["2"] = { x = 660.44, y = 268.29, z = 102.04, h = 152.09, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 2 },
+	["3"] = { x = 552.54, y = -198.45, z = 53.75, h = 89.32, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 3 },
+	["4"] = { x = -621.95, y = 325.1, z = 81.24, h = 266.46, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 4 },
+	["5"] = { x = 696.12, y = -965.69, z = 23.26, h = 271.33, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 5 },
+	["6"] = { x = 1152.45, y = -1531.51, z = 34.65, h = 144.89, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 6 },
+	["7"] = { x = 1382.1, y = -2081.97, z = 51.25, h = 220.16, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 7 },
+	["8"] = { x = 589.32, y = -2802.73, z = 5.32, h = 328.01, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 8 },
+	["9"] = { x = -453.19, y = -2810.47, z = 6.56, h = 225.82, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 9 },
+	["10"] = { x = -1007.18, y = -2836.12, z = 13.20, h = 149.3, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 10 },
+	["11"] = { x = -2018.21, y = -361.03, z = 47.36, h = 324.55, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 11 },
+	["12"] = { x = -1727.77, y = 250.26, z = 61.65, h = 24.7, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 12 },
+	["13"] = { x = -1089.6, y = 2717.05, z = 18.33, h = 40.52, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 13 },
+	["14"] = { x = 321.27, y = 2874.98, z = 42.71, h = 27.62, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 14 },
+	["15"] = { x = 1163.47, y = 2722.09, z = 37.26, h = 179.11, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 15 },
+	["16"] = { x = 1745.86, y = 3326.69, z = 40.30, h = 115.55, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 16 },
+	["17"] = { x = 2013.4, y = 3934.36, z = 31.65, h = 236.38, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 17 },
+	["18"] = { x = 2526.3, y = 4191.6, z = 44.53, h = 236.44, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 18 },
+	["19"] = { x = 2874.05, y = 4861.57, z = 61.35, h = 87.57, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 19 },
+	["20"] = { x = 1985.16, y = 6200.39, z = 41.33, h = 330.21, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 20 },
+	["21"] = { x = 1552.97, y = 6610.24, z = 2.12, h = 145.64, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 21 },
+	["22"] = { x = -298.32, y = 6392.66, z = 29.87, h = 302.99, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 22 },
+	["23"] = { x = -813.88, y = 5384.45, z = 33.77, h = 356.87, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 23 },
+	["24"] = { x = -1606.5, y = 5259.26, z = 1.35, h = 114.45, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 24 },
+	["25"] = { x = -199.22, y = 3638.8, z = 63.70, h = 39.84, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 25 },
+	["26"] = { x = -1487.45, y = 2688.99, z = 2.94, h = 317.89, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 26 },
+	["27"] = { x = -3266.12, y = 1139.82, z = 1.91, h = 249.17, object = "hei_prop_drug_statue_box_big", item = "", Distance = 50, mode = "Medic", perm = "Favelas", id = 27 },
 
-	["28"] = { x = 574.01, y = 132.56, z = 98.48, h = 70.99, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["29"] = { x = 344.79, y = 929.2, z = 202.44, h = 268.09, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["30"] = { x = -123.8, y = 1896.67, z = 196.34, h = 358.95, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["31"] = { x = -1099.85, y = 2703.51, z = 21.99, h = 221.35, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["32"] = { x = -2198.91, y = 4243.21, z = 46.92, h = 128.84, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["33"] = { x = -1487.02, y = 4983.14, z = 62.67, h = 174.11, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["34"] = { x = 1346.49, y = 6396.73, z = 32.42, h = 90.94, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["35"] = { x = 2535.72, y = 4661.39, z = 33.08, h = 316.4, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["36"] = { x = 1155.62, y = -1334.48, z = 33.72, h = 174.97, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["37"] = { x = 1116.06, y = -2498.07, z = 32.37, h = 193.39, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["38"] = { x = 261.06, y = -3135.82, z = 4.8, h = 88.83, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["39"] = { x = -1619.81, y = -1035.0, z = 12.16, h = 50.84, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["40"] = { x = -3420.87, y = 977.0, z = 10.91, h = 226.29, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["41"] = { x = -1909.53, y = 4624.93, z = 56.07, h = 135.57, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["42"] = { x = 894.51, y = 3211.45, z = 38.09, h = 273.04, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["43"] = { x = 1791.71, y = 4602.84, z = 36.69, h = 185.86, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["44"] = { x = 464.8, y = 6462.03, z = 28.76, h = 334.71, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["45"] = { x = 63.22, y = 6323.67, z = 37.87, h = 301.22, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
-	["46"] = { x = -736.64, y = 5594.98, z = 40.66, h = 268.78, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons" },
+	["28"] = { x = 574.01, y = 132.56, z = 98.48, h = 70.99, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 1 },
+	["29"] = { x = 344.79, y = 929.2, z = 202.44, h = 268.09, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 2 },
+	["30"] = { x = -123.8, y = 1896.67, z = 196.34, h = 358.95, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 3 },
+	["31"] = { x = -1099.85, y = 2703.51, z = 21.99, h = 221.35, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 4 },
+	["32"] = { x = -2198.91, y = 4243.21, z = 46.92, h = 128.84, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 5 },
+	["33"] = { x = -1487.02, y = 4983.14, z = 62.67, h = 174.11, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 6 },
+	["34"] = { x = 1346.49, y = 6396.73, z = 32.42, h = 90.94, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 7 },
+	["35"] = { x = 2535.72, y = 4661.39, z = 33.08, h = 316.4, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 8 },
+	["36"] = { x = 1155.62, y = -1334.48, z = 33.72, h = 174.97, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 9 },
+	["37"] = { x = 1116.06, y = -2498.07, z = 32.37, h = 193.39, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 10 },
+	["38"] = { x = 261.06, y = -3135.82, z = 4.8, h = 88.83, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 11 },
+	["39"] = { x = -1619.81, y = -1035.0, z = 12.16, h = 50.84, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 12 },
+	["40"] = { x = -3420.87, y = 977.0, z = 10.91, h = 226.29, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 13 },
+	["41"] = { x = -1909.53, y = 4624.93, z = 56.07, h = 135.57, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 14 },
+	["42"] = { x = 894.51, y = 3211.45, z = 38.09, h = 273.04, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 15 },
+	["43"] = { x = 1791.71, y = 4602.84, z = 36.69, h = 185.86, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 16 },
+	["44"] = { x = 464.8, y = 6462.03, z = 28.76, h = 334.71, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 17 },
+	["45"] = { x = 63.22, y = 6323.67, z = 37.87, h = 301.22, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 18 },
+	["46"] = { x = -736.64, y = 5594.98, z = 40.66, h = 268.78, object = "prop_mb_crate_01a", item = "", Distance = 50, mode = "Weapons", perm = "Marabunta", id = 19 },
 
 	["47"] = { x = -2682.86, y = 2304.87, z = 20.85, h = 164.19, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 	["48"] = { x = -1282.33, y = 2559.98, z = 17.4, h = 148.06, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
@@ -133,8 +137,36 @@ Objects = {
 	["57"] = { x = 592.53, y = -2115.87, z = 4.76, h = 100.96, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 	["58"] = { x = 523.43, y = -2578.67, z = 13.82, h = 318.38, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
 	["59"] = { x = -2.98, y = -1299.67, z = 28.28, h = 359.37, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
-	["60"] = { x = 183.11, y = -1086.93, z = 28.28, h = 348.57, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
-	["61"] = { x = 713.88, y = -850.95, z = 23.3, h = 271.63, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" }
+	["60"] = { x = 713.88, y = -850.95, z = 23.3, h = 271.63, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["61"] = { x = 1562.37, y = 3566.33, z = 33.12, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["62"] = { x = 3603.31, y = 3663.08, z = 32.87, h = 76.54, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["63"] = { x = -951.73, y = -3049.3, z = 12.93, h = 184.26, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["64"] = { x = 61.57, y = 131.27, z = 79.53, h = 161.58, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["65"] = { x = -86.87, y = 6503.06, z = 40.37, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["66"] = { x = 2523.9, y = 4098.98, z = 37.62, h = 243.78, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["67"] = { x = 1643.93, y = 4856.67, z = 41.01, h = 8.51, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["68"] = { x = 1195.35, y = 2630.91, z = 36.81, h = 8.51, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["69"] = { x = 619.27, y = 2785.14, z = 42.47, h = 11.34, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["70"] = { x = 558.57, y = 2666.96, z = 45.96, h = 14.18, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["71"] = { x = 225.14, y = 2588.23, z = 44.53, h = 286.3, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["72"] = { x = 751.57, y = -1860.52, z = 28.28, h = 357.17, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+	["73"] = { x = -429.27, y = -2169.23, z = 9.33, h = 0.0, object = "gr_prop_gr_rsply_crate03a", item = "", Distance = 50, mode = "Supplies" },
+
+	["74"] = { x = 122.58, y = -111.75, z = -24.59, h = 11.34, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["75"] = { x = 157.14, y = -160.16, z = -20.19, h = 31.19, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["76"] = { x = 47.35, y = -48.4, z = -25.01, h = 51.03, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["77"] = { x = 84.81, y = 86.7, z = -25.01, h = 87.88, object = "prop_bin_10b", item = "", Distance = 20, mode = "Trash" },
+	["78"] = { x = -4.99, y = -1822.0, z = 28.15, h = 232.45, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["79"] = { x = -157.22, y = -1613.59, z = 32.65, h = 335.91, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["80"] = { x = 329.54, y = -1992.93, z = 23.15, h = 225.36, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["81"] = { x = 495.24, y = -1538.37, z = 28.28, h = 228.19, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["82"] = { x = -1110.84, y = 4941.59, z = 217.36, h = 72.29, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["83"] = { x = 1256.71, y = -1571.92, z = 57.35, h = 35.44, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["84"] = { x = 109.75, y = 3615.54, z = 39.49, h = 270.71, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["85"] = { x = -817.43, y = -702.77, z = 27.05, h = 0.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["86"] = { x = 487.98, y = -100.73, z = 62.15, h = 343.0, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["87"] = { x = 986.76, y = -96.88, z = 73.85, h = 133.23, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" },
+	["88"] = { x = 131.16, y = -3007.09, z = 6.04, h = 175.75, object = "prop_watercooler", item = "", Distance = 20, mode = "Water" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRODUCTS
@@ -146,22 +178,22 @@ Products = {
 		}, ["needAmount"] = 1, ["item"] = "paper", ["itemAmount"] = 1 }
 	},
 	["tablecoke"] = {
-		{ ["timer"] = 20, ["need"] = {
-			{ ["item"] = "sulfuric", ["amount"] = 1 },
-			{ ["item"] = "cokeleaf", ["amount"] = 1 }
-		}, ["needAmount"] = 1, ["item"] = "cocaine", ["itemAmount"] = 3 }
+		{ ["perm"] = "Facs", ["event"] = {
+			["name"] = "crafting:openSystem",
+			["state"] = "client"
+		}}
 	},
 	["tablemeth"] = {
-		{ ["timer"] = 20, ["need"] = {
-			{ ["item"] = "saline", ["amount"] = 1 },
-			{ ["item"] = "acetone", ["amount"] = 1 }
-		}, ["needAmount"] = 1, ["item"] = "meth", ["itemAmount"] = 3 }
+		{ ["perm"] = "Favelas", ["event"] = {
+			["name"] = "crafting:openSystem",
+			["state"] = "client"
+		}}
 	},
 	["tableweed"] = {
-		{ ["timer"] = 20, ["need"] = {
-			{ ["item"] = "silk", ["amount"] = 1 },
-			{ ["item"] = "weedleaf", ["amount"] = 1 }
-		}, ["needAmount"] = 1, ["item"] = "joint", ["itemAmount"] = 1 }
+		{ ["perm"] = "Facs", ["event"] = {
+			["name"] = "crafting:openSystem",
+			["state"] = "client"
+		}}
 	},
 	["burgershot1"] = {
 		{ ["timer"] = 10, ["item"] = "burgershot1", ["itemAmount"] = 1 }
@@ -251,7 +283,9 @@ Products = {
 		{ ["timer"] = 5, ["item"] = "WEAPON_BRICK", ["itemAmount"] = 3 },
 		{ ["timer"] = 5, ["item"] = "WEAPON_SHOES", ["itemAmount"] = 2 },
 		{ ["timer"] = 5, ["item"] = "dices", ["itemAmount"] = 1 },
-		{ ["timer"] = 5, ["item"] = "cup", ["itemAmount"] = 1 }
+		{ ["timer"] = 5, ["item"] = "cup", ["itemAmount"] = 1 },
+		{ ["timer"] = 5, ["item"] = "WEAPON_PISTOL_AMMO", ["itemAmount"] = 1 },
+		{ ["timer"] = 5, ["item"] = "WEAPON_PISTOL_AMMO", ["itemAmount"] = 3 }
 	},
 	["fishfillet"] = {
 		{ ["timer"] = 10, ["need"] = "fishfillet", ["needAmount"] = 1, ["item"] = "cookedfishfillet", ["itemAmount"] = 1 }
@@ -294,8 +328,6 @@ StealPeds = {
 	{ ["item"] = "pager", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "camera", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "binoculars", ["min"] = 1, ["max"] = 1 },
-	{ ["item"] = "hennessy", ["min"] = 1, ["max"] = 3 },
-	{ ["item"] = "dewars", ["min"] = 1, ["max"] = 3 },
 	{ ["item"] = "teddy", ["min"] = 1, ["max"] = 1 },
 	{ ["item"] = "chocolate", ["min"] = 1, ["max"] = 2 },
 	{ ["item"] = "notepad", ["min"] = 1, ["max"] = 3 },
@@ -366,55 +398,52 @@ StealItens = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 LootItens = {
 	["Medic"] = {
-		["Cooldown"] = 3600,
+		["Cooldown"] = 10,
 		["List"] = {
-			{ ["item"] = "alcohol", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "syringe", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "codeine", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "amphetamine", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "acetone", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "cotton", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "plaster", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "saline", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "sulfuric", ["min"] = 1, ["max"] = 3 }
+			{ ["item"] = "drugtoy", ["min"] = 5, ["max"] = 5 }
 		}
 	},
-	["Weapons"] = {
-		["Cooldown"] = 7200,
+	["Weapons"] = {	
+		["Cooldown"] = 10,
+		["Random"] = true,
+		["Boost"] = true,
 		["List"] = {
-			{ ["item"] = "roadsigns", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "techtrash", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "pistolbody", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "smgbody", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "riflebody", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "sheetmetal", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "explosives", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "aluminum", ["min"] = 2, ["max"] = 3 },
-			{ ["item"] = "copper", ["min"] = 2, ["max"] = 3 }
+			{ ["item"] = "plastic", ["min"] = 5, ["max"] = 5 },
+			{ ["item"] = "glass", ["min"] = 5, ["max"] = 5 },
+			{ ["item"] = "rubber", ["min"] = 5, ["max"] = 5 },
+			{ ["item"] = "copper", ["min"] = 5, ["max"] = 5 },
+			{ ["item"] = "aluminum", ["min"] = 5, ["max"] = 5 }
 		}
 	},
 	["Supplies"] = {
 		["Cooldown"] = 3600,
 		["List"] = {
-			{ ["item"] = "tarp", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "sheetmetal", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "roadsigns", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "leather", ["min"] = 1, ["max"] = 3 },
-			{ ["item"] = "animalfat", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "cotton", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "plaster", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "sulfuric", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "saline", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "alcohol", ["min"] = 1, ["max"] = 2 },
-			{ ["item"] = "syringe", ["min"] = 2, ["max"] = 3 },
-			{ ["item"] = "card01", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "card02", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "card03", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "card04", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "card05", ["min"] = 1, ["max"] = 1 },
-			{ ["item"] = "silk", ["min"] = 1, ["max"] = 3 }
+			{ ["item"] = "tarp", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "sheetmetal", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "sheetmetal", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "sheetmetal", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "roadsigns", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "roadsigns", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "roadsigns", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "leather", ["min"] = 2, ["max"] = 3 },
+			{ ["item"] = "plaster", ["min"] = 2, ["max"] = 2 },
+			{ ["item"] = "explosives", ["min"] = 5, ["max"] = 7 },
+			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 },
+			{ ["item"] = "techtrash", ["min"] = 3, ["max"] = 5 }
 		}
 	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLANTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+Plants = {
+	["weedclone"] = "da clonagem",
+	["weedleaf"] = "da folha",
+	["joint"] = "do baseado",
+	["cokeclone"] = "da clonagem",
+	["cokeleaf"] = "da folha",
+	["cocaine"] = "da cocaína"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTINVENTORY
@@ -457,12 +486,13 @@ function Creative.requestInventory()
 
 						if Identity then
 							v["Passport"] = Number
+							v["idVality"] = "Nenhum"
 							v["idPremium"] = "Nenhum"
 							v["idRolepass"] = "Inativo"
 							v["idBlood"] = Sanguine(Identity["blood"])
 							v["idName"] = Identity["name"].." "..Identity["name2"]
 
-							if Number == Passport and Split[1] == "identity" then
+							if Number == Passport and (Split[1] == "identity" or string.sub(v["item"],1,5) == "badge") then
 								if Identity["premium"] > os.time() then
 									local Groups = vRP.Hierarchy("Premium")
 									local Number = vRP.HasPermission(Passport,"Premium")
@@ -506,15 +536,8 @@ function Creative.requestInventory()
 					v["days"] = 1
 				end
 
-				if Split[1] == "weedclone" or Split[1] == "weedleaf" or Split[1] == "joint" then
-					local Item = "da clonagem"
-					if Split[1] == "weedleaf" then
-						Item = "da folha"
-					elseif Split[1] == "joint" then
-						Item = "do baseado"
-					end
-
-					v["desc"] = "A pureza "..Item.." se encontra em <green>"..(Split[2] or 0).."%</green>."
+				if Plants[Split[1]] then
+					v["desc"] = "A pureza "..Plants[Split[1]].." se encontra em <green>"..(Split[2] or 0).."%</green>."
 				end
 
 				Inv[Index] = v
@@ -543,7 +566,8 @@ function Creative.DropServer(Coords,Item,Amount)
 		["index"] = itemIndex(Item),
 		["days"] = 1,
 		["durability"] = 0,
-		["charges"] = nil
+		["charges"] = nil,
+		["route"] = 0
 	}
 
 	TriggerClientEvent("drops:Adicionar",-1,tostring(Number),Drops[tostring(Number)])
@@ -593,7 +617,8 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 					["index"] = itemIndex(Item),
 					["days"] = Days,
 					["durability"] = Durability,
-					["charges"] = Charges
+					["charges"] = Charges,
+					["route"] = GetPlayerRoutingBucket(source)
 				}
 
 				Player(source)["state"]["Buttons"] = true
@@ -613,6 +638,8 @@ function Creative.Drops(Item,Slot,Amount,x,y,z)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
+
+				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Dropou:** "..Amount.."x "..itemName(Item).."\n**Cds:** ("..x..","..y..","..z..")",9317187)
 			end
 		else
 			TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -633,63 +660,67 @@ function Creative.Pickup(Number,Amount,Slot)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				return
 			else
-				if (vRP.InventoryWeight(Passport) + itemWeight(Drops[Number]["key"]) * Amount) <= vRP.GetWeight(Passport) then
-					if not Drops[Number] or Drops[Number]["amount"] < Amount then
-						TriggerClientEvent("inventory:Update",source,"Backpack")
-						return
-					end
+				if Drops[Number]["route"] == GetPlayerRoutingBucket(source) then
+					if (vRP.InventoryWeight(Passport) + itemWeight(Drops[Number]["key"]) * Amount) <= vRP.GetWeight(Passport) then
+						if not Drops[Number] or Drops[Number]["amount"] < Amount then
+							TriggerClientEvent("inventory:Update",source,"Backpack")
+							return
+						end
 
-					if vRP.MaxItens(Passport,Drops[Number]["key"],Amount) then
-						TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
-						TriggerClientEvent("inventory:Update",source,"Backpack")
-						return
-					end
+						if vRP.MaxItens(Passport,Drops[Number]["key"],Amount) then
+							TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
+							TriggerClientEvent("inventory:Update",source,"Backpack")
+							return
+						end
 
-					if Drops[Number] then
-						local inventory = vRP.Inventory(Passport)
-						if inventory[Slot] and Drops[Number]["key"] then
-							if inventory[Slot]["item"] == Drops[Number]["key"] then
-								vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false,Slot)
+						if Drops[Number] then
+							local inventory = vRP.Inventory(Passport)
+							if inventory[Slot] and Drops[Number]["key"] then
+								if inventory[Slot]["item"] == Drops[Number]["key"] then
+									vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false,Slot)
+								else
+									vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false)
+								end
 							else
-								vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false)
+								if Drops[Number] then
+									vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false,Slot)
+								end
 							end
-						else
-							if Drops[Number] then
-								vRP.GiveItem(Passport,Drops[Number]["key"],Amount,false,Slot)
+
+							TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Pegou:** "..Amount.."x "..itemName(Drops[Number]["key"]).."\n**Cds:** ("..Drops[Number]["Coords"][1]..","..Drops[Number]["Coords"][2]..","..Drops[Number]["Coords"][3]..")",3042892)
+
+							Drops[Number]["amount"] = Drops[Number]["amount"] - Amount
+							if Drops[Number]["amount"] <= 0 then
+								TriggerClientEvent("drops:Remover",-1,Number)
+								Drops[Number] = nil
+							else
+								TriggerClientEvent("drops:Atualizar",-1,Number,Drops[Number]["amount"])
 							end
-						end
 
-						Drops[Number]["amount"] = Drops[Number]["amount"] - Amount
-						if Drops[Number]["amount"] <= 0 then
-							TriggerClientEvent("drops:Remover",-1,Number)
-							Drops[Number] = nil
+							Player(source)["state"]["Buttons"] = true
+							Player(source)["state"]["Cancel"] = true
+
+							if not vRP.InsideVehicle(source) then
+								vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+								Active[Passport] = os.time() + 100
+
+								SetTimeout(1000,function()
+									vRPC.removeObjects(source)
+									Active[Passport] = nil
+								end)
+							end
+
+							TriggerClientEvent("inventory:Update",source,"Backpack")
+							Player(source)["state"]["Buttons"] = false
+							Player(source)["state"]["Cancel"] = false
 						else
-							TriggerClientEvent("drops:Atualizar",-1,Number,Drops[Number]["amount"])
+							TriggerClientEvent("inventory:Update",source,"Backpack")
 						end
-
-						Player(source)["state"]["Buttons"] = true
-						Player(source)["state"]["Cancel"] = true
-
-						if not vRP.InsideVehicle(source) then
-							vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
-							Active[Passport] = os.time() + 100
-
-							SetTimeout(1000,function()
-								vRPC.removeObjects(source)
-								Active[Passport] = nil
-							end)
-						end
-
-						TriggerClientEvent("inventory:Update",source,"Backpack")
-						Player(source)["state"]["Buttons"] = false
-						Player(source)["state"]["Cancel"] = false
 					else
+						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 						TriggerClientEvent("inventory:Update",source,"Backpack")
+						return
 					end
-				else
-					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
-					TriggerClientEvent("inventory:Update",source,"Backpack")
-					return
 				end
 			end
 		else
@@ -753,6 +784,8 @@ function Creative.SendItem(Slot,Amount)
 
 						Wait(100)
 					until not Active[Passport]
+
+					TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Enviou:** "..Amount.."x "..itemName(Item).."\n**Para:** "..OtherPassport,10181046)
 				else
 					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 				end
@@ -805,15 +838,33 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 100
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
+						end
+					end
+
+					if vRP.UserPremium(Passport) then
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
 						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.PutExperience(Passport,"Lumberman",1)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Lumberman",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -827,7 +878,7 @@ function Creative.Deliver(Slot)
 				if vRP.TakeItem(Passport,Full,1,false,Slot) then
 					local Experience = vRP.GetExperience(Passport,"Transporter")
 					local Category = ClassCategory(Experience)
-					local Valuation = 60
+					local Valuation = 200
 
 					if Category == "B+" then
 						Valuation = Valuation + 10
@@ -841,15 +892,33 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 50
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
+						end
+					end
+
+					if vRP.UserPremium(Passport) then
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
 						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.PutExperience(Passport,"Transporter",1)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+			
+					vRP.PutExperience(Passport,"Transporter",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -876,16 +945,34 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 75
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
+						end
+					end
+
+					if vRP.UserPremium(Passport) then
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
 						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BurgerShot","100",Valuation * 0.05)
-					vRP.PutExperience(Passport,"Delivery",1)
+					vRP.DirectChest("BurgerShot","500",Valuation * 0.05)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Delivery",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -912,16 +999,34 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 75
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
+						end
+					end
+
+					if vRP.UserPremium(Passport) then
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
 						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("PizzaThis","100",Valuation * 0.05)
-					vRP.PutExperience(Passport,"Delivery",1)
+					vRP.DirectChest("PizzaThis","500",Valuation * 0.05)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Delivery",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -948,16 +1053,34 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 75
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
+						end
+					end
+
+					if vRP.UserPremium(Passport) then
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
 						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("UwuCoffee","100",Valuation * 0.05)
-					vRP.PutExperience(Passport,"Delivery",1)
+					vRP.DirectChest("UwuCoffee","500",Valuation * 0.05)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Delivery",Experience)
 					vDELIVER.Update(source)
 				end
 			end
@@ -984,18 +1107,80 @@ function Creative.Deliver(Slot)
 						Valuation = Valuation + 75
 					end
 
-					if Buffs["Dexterity"][Passport] then
-						if Buffs["Dexterity"][Passport] > os.time() then
+					if GlobalState["Buffs"]["Dexterity"][Passport] then
+						if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
 							Valuation = Valuation + (Valuation * 0.1)
+						end
+					end
+
+					if vRP.UserPremium(Passport) then
+						if vRP.HasGroup(Passport,"Premium",1) then
+							Valuation = Valuation + (Valuation * 0.1)
+						elseif vRP.HasGroup(Passport,"Premium",2) then
+							Valuation = Valuation + (Valuation * 0.15)
+						elseif vRP.HasGroup(Passport,"Premium",3) then
+							Valuation = Valuation + (Valuation * 0.2)
 						end
 					end
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BeanMachine","100",Valuation * 0.05)
-					vRP.PutExperience(Passport,"Delivery",1)
+					vRP.DirectChest("BeanMachine","500",Valuation * 0.05)
+
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Delivery",Experience)
 					vDELIVER.Update(source)
 				end
+			end
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TRASH
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Trash(Slot,Amount)
+	local source = source
+	local Slot = tostring(Slot)
+	local Amount = parseInt(Amount)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if not Active[Passport] and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and GetPlayerRoutingBucket(source) < 900000 then
+			if Amount <= 0 then Amount = 1 end
+
+			local Inventory = vRP.Inventory(Passport)
+			if not Inventory[Slot] or not Inventory[Slot]["item"] then
+				return
+			end
+
+			local Split = splitString(Inventory[Slot]["item"],"-")
+			local Full = Inventory[Slot]["item"]
+			local Item = Split[1]
+
+			if vRP.TakeItem(Passport,Full,Amount,true,Slot) then
+				Player(source)["state"]["Buttons"] = true
+				Player(source)["state"]["Cancel"] = true
+
+				if not vRP.InsideVehicle(source) then
+					vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+					Active[Passport] = os.time() + 100
+
+					SetTimeout(1000,function()
+						vRPC.removeObjects(source)
+						Active[Passport] = nil
+					end)
+				end
+
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				Player(source)["state"]["Buttons"] = false
+				Player(source)["state"]["Cancel"] = false
+
+				TriggerEvent("Discord","Inventory","**Passaporte:** "..Passport.."\n**Lixo:** "..Amount.."x "..itemName(Item),13541152)
 			end
 		end
 	end
@@ -1027,7 +1212,11 @@ function Creative.UseItem(Slot,Amount)
 			end
 		end
 
-		if (vCLIENT.checkWater(source) and Item ~= "soap") or (not vCLIENT.checkWater(source) and Item == "soap") then
+		if (vCLIENT.checkWater(source) and (Item ~= "soap" and Item ~= "rope")) or (not vCLIENT.checkWater(source) and Item == "soap") then
+			return
+		end
+
+		if Player(source)["state"]["Handcuff"] and Item ~= "lockpick" then
 			return
 		end
 
@@ -1062,7 +1251,7 @@ function Creative.UseItem(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
+					TriggerClientEvent("itensNotify",source,{ "-",itemIndex(Hash),1,itemName(Hash) })
 					exports["inventory"]:CleanWeapons(Passport,false)
 				end
 			else
@@ -1089,7 +1278,7 @@ function Creative.UseItem(Slot,Amount)
 				end
 
 				if vCLIENT.putWeaponHands(source,Item,Ammo,Attachs[Passport][Item]) then
-					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
+					TriggerClientEvent("itensNotify",source,{ "+",itemIndex(Full),1,itemName(Full) })
 				end
 			end
 		elseif itemType(Full) == "Munição" then
@@ -1117,7 +1306,7 @@ function Creative.UseItem(Slot,Amount)
 
 					Ammos[Passport][Item] = Ammo + Amount
 
-					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),Amount,itemName(Full) })
+					TriggerClientEvent("itensNotify",source,{ "+",itemIndex(Full),Amount,itemName(Full) })
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vCLIENT.rechargeWeapon(source,Hash,Amount)
 				end
@@ -1142,15 +1331,15 @@ function Creative.UseItem(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("itensNotify",source,{ "guardou",itemIndex(Hash),1,itemName(Hash) })
+					TriggerClientEvent("itensNotify",source,{ "-",itemIndex(Hash),1,itemName(Hash) })
 					exports["inventory"]:CleanWeapons(Passport,false)
 				end
 			else
 				if vCLIENT.putWeaponHands(source,Item,1,nil,Full) then
-					TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
+					TriggerClientEvent("itensNotify",source,{ "+",itemIndex(Full),1,itemName(Full) })
 				end
 			end
-		elseif Item == "attachsFlashlight" or Item == "attachsCrosshair" or Item == "attachsSilencer" or Item == "attachsMagazine" or Item == "attachsGrip" then
+		elseif Item == "attachsFlashlight" or Item == "attachsCrosshair" or Item == "attachsSilencer" or Item == "attachsMagazine" or Item == "attachsGrip" or Item == "attachsMazzleBrake" or Item == "attachsMazzleBoost" then
 			local Weapon = vCLIENT.returnWeapon(source)
 			if Weapon then
 				if vCLIENT.checkAttachs(source,Item,Weapon) then
@@ -1164,16 +1353,16 @@ function Creative.UseItem(Slot,Amount)
 
 					if not Attachs[Passport][Weapon][Item] then
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
-							TriggerClientEvent("itensNotify",source,{ "equipou",itemIndex(Full),1,itemName(Full) })
+							TriggerClientEvent("itensNotify",source,{ "+",itemIndex(Full),1,itemName(Full) })
 							TriggerClientEvent("inventory:Update",source,"Backpack")
 							Attachs[Passport][Weapon][Item] = true
 							vCLIENT.putAttachs(source,Item,Weapon)
 						end
 					else
-						TriggerClientEvent("Notify",source,"amarelo","O armamento não possui suporte ao componente.",5000)
+						TriggerClientEvent("Notify",source,"amarelo","O armamento já possui o componente equipado.",5000)
 					end
 				else
-					TriggerClientEvent("Notify",source,"amarelo","O armamento já possui o componente equipado.",5000)
+					TriggerClientEvent("Notify",source,"amarelo","O armamento não possui suporte ao componente.",5000)
 				end
 			end
 		elseif Use[Item] then
@@ -1290,6 +1479,12 @@ function Creative.Cancel()
 		if GetPlayerRoutingBucket(source) > 900000 then
 			TriggerEvent("arena:Cancel",source,Passport)
 		end
+
+		TriggerEvent("robberys:Cancel",source,Passport)
+
+		TriggerEvent("propertys:Cancel",source,Passport)
+
+		TriggerEvent("crafting:Cancel",source,Passport)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1387,9 +1582,23 @@ function Creative.VerifyObjects(Entity,Service)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
+		local ServiceList,Total = 0,0
+
 		if Service == "Lixeiro" then
 			if not vRPC.LastVehicle(source,"trash") then
 				TriggerClientEvent("Notify",source,"amarelo","Precisa utilizar o veículo do <b>Lixeiro</b>.",3000)
+				return
+			end
+		elseif Service == "Parquimetro" then
+			local consultItem = vRP.InventoryItemAmount(Passport,"pliers")
+			if consultItem[1] <= 0 then
+				TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>1x "..itemName("pliers").."</b>.",5000)
+				return
+			end
+
+			ServiceList,Total = vRP.NumPermission("Police")
+			if Total <= 3 then
+				TriggerClientEvent("Notify",source,"azul","Parquímetro vazio, aguarde até que um cidadão venha até o local efetuar reabastecimento do mesmo.",5000)
 				return
 			end
 		end
@@ -1412,14 +1621,28 @@ function Creative.VerifyObjects(Entity,Service)
 					end
 				end
 
-				Active[Passport] = os.time() + 5
-				TriggerClientEvent("Progress",source,"Vasculhando",5000)
-				vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+				if Service == "Parquimetro" then
+					Active[Passport] = os.time() + 10
+					TriggerClientEvent("Progress",source,"Roubando",10000)
+					vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+					Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 1800 }
+
+					for Passports,Sources in pairs(ServiceList) do
+						async(function()
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Parquímetro", x = Coords["x"], y = Coords["y"], z = Coords["z"], time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						end)
+					end
+				else
+					Active[Passport] = os.time() + 5
+					TriggerClientEvent("Progress",source,"Vasculhando",5000)
+					vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+					Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 3600 }
+				end
 
 				verifyObjects[Passport] = { Model,Hash }
 				Player(source)["state"]["Buttons"] = true
 				TriggerClientEvent("inventory:Close",source)
-				Trashs[Model][Hash] = { ["Coords"] = Coords, ["timer"] = os.time() + 3600 }
 
 				repeat
 					if os.time() >= parseInt(Active[Passport]) then
@@ -1427,28 +1650,50 @@ function Creative.VerifyObjects(Entity,Service)
 						vRPC.stopAnim(source,false)
 						Player(source)["state"]["Buttons"] = false
 
-						local itemSelect = { "",1 }
+						local itemSelect = ""
+						local itemAmount = 1
 
 						if Service == "Lixeiro" then
 							local randItem = math.random(90)
-							if parseInt(randItem) >= 61 and parseInt(randItem) <= 70 then
-								itemSelect = { "metalcan",math.random(2) }
-							elseif parseInt(randItem) >= 51 and parseInt(randItem) <= 60 then
-								itemSelect = { "battery",math.random(2) }
-							elseif parseInt(randItem) >= 41 and parseInt(randItem) <= 50 then
-								itemSelect = { "elastic",math.random(2) }
-							elseif parseInt(randItem) >= 21 and parseInt(randItem) <= 40 then
-								itemSelect = { "plasticbottle",math.random(2) }
-							elseif parseInt(randItem) <= 20 then
-								itemSelect = { "glassbottle",math.random(2) }
+							local itemAmount = math.random(2)
+
+							if GlobalState["Buffs"]["Luck"][Passport] then
+								if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+									randItem = math.random(70)
+									itemAmount = math.random(3,4)
+								end
+							end
+
+							if randItem >= 61 and randItem <= 70 then
+								itemSelect = "metalcan"
+							elseif randItem >= 51 and randItem <= 60 then
+								itemSelect = "battery"
+							elseif randItem >= 41 and randItem <= 50 then
+								itemSelect = "elastic"
+							elseif randItem >= 21 and randItem <= 40 then
+								itemSelect = "plasticbottle"
+							elseif randItem <= 20 then
+								itemSelect = "glassbottle"
+							end
+						elseif Service == "Parquimetro" then
+							local randItem = math.random(35)
+							if randItem >= 21 and randItem <= 30 then
+								itemSelect = "goldcoin"
+								itemAmount = math.random(3,6)								
+							elseif randItem >= 11 and randItem <= 20 then
+								itemSelect = "silvercoin"
+								itemAmount = math.random(6,12)								
+							elseif randItem <= 10 then
+								itemSelect = "dollarsz"
+								itemAmount = math.random(75)								
 							end
 						end
 
-						if itemSelect[1] == "" then
+						if itemSelect == "" then
 							TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
 						else
-							if (vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport) then
-								vRP.GenerateItem(Passport,itemSelect[1],itemSelect[2],true)
+							if (vRP.InventoryWeight(Passport) + itemWeight(itemSelect) * itemAmount) <= vRP.GetWeight(Passport) then
+								vRP.GenerateItem(Passport,itemSelect,itemAmount,true)
 								vRP.UpgradeStress(Passport,1)
 							else
 								TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
@@ -1494,6 +1739,17 @@ function Creative.Loot(Entity,Service)
 				end
 			end
 
+			
+			if Objects[Entity]["id"] then
+				if not Collect[Passport] then
+					return
+				end
+
+				if Objects[Entity]["id"] ~= Collect[Passport] then
+					return
+				end
+			end
+
 			Loots[Passport] = Entity
 			Active[Passport] = os.time() + 5
 			Player(source)["state"]["Buttons"] = true
@@ -1508,15 +1764,46 @@ function Creative.Loot(Entity,Service)
 					vRPC.stopAnim(source,false)
 					Player(source)["state"]["Buttons"] = false
 
-					local randItem = math.random(#LootItens[Service]["List"])
-					local randAmount = math.random(LootItens[Service]["List"][randItem]["min"],LootItens[Service]["List"][randItem]["max"])
-					local itemSelect = { LootItens[Service]["List"][randItem]["item"],randAmount }
+					if not LootItens[Service]["Random"] then
+						local randItem = math.random(#LootItens[Service]["List"])
+						local randAmount = math.random(LootItens[Service]["List"][randItem]["min"],LootItens[Service]["List"][randItem]["max"])
 
-					if (vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport) then
-						vRP.GenerateItem(Passport,itemSelect[1],itemSelect[2],true)
+						if LootItens[Service]["Boost"] then
+							randAmount = randAmount + 2
+						end
+
+						local itemSelect = { LootItens[Service]["List"][randItem]["item"],randAmount }
+
+						if (vRP.InventoryWeight(Passport) + itemWeight(itemSelect[1]) * itemSelect[2]) <= vRP.GetWeight(Passport) then
+							vRP.GenerateItem(Passport,itemSelect[1],itemSelect[2],true)
+
+							if Collect[Passport] then
+								vDELIVER.Update(source)
+							end
+						else
+							TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+							Boxes[Entity][Passport] = nil
+						end
 					else
-						TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
-						Boxes[Entity][Passport] = nil
+						for _,v in pairs(LootItens[Service]["List"]) do
+							local randAmount = math.random(v["min"],v["max"])
+
+							if LootItens[Service]["Boost"] and GlobalState["Buffs"]["Luck"][Passport] then
+								if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+									randAmount = 10
+								end
+							end
+
+							if (vRP.InventoryWeight(Passport) + itemWeight(v["item"]) * randAmount) <= vRP.GetWeight(Passport) then
+								vRP.GenerateItem(Passport,v["item"],randAmount,true)
+							else
+								TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+							end
+						end
+
+						if Collect[Passport] then
+							vDELIVER.Update(source)
+						end
 					end
 
 					Loots[Passport] = nil
@@ -1645,7 +1932,15 @@ function Creative.StealTrunk(Entity)
 
 							if os.time() >= Trunks[Plate] then
 								local randItens = math.random(#StealItens)
-								if math.random(250) <= StealItens[randItens]["rand"] then
+								local randItem = math.random(250)
+
+								if GlobalState["Buffs"]["Luck"][Passport] then
+									if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+										randItem = math.random(175)
+									end
+								end
+
+								if randItem <= StealItens[randItens]["rand"] then
 									local randAmounts = math.random(StealItens[randItens]["min"],StealItens[randItens]["max"])
 
 									if (vRP.InventoryWeight(Passport) + itemWeight(StealItens[randItens]["item"]) * randAmounts) <= vRP.GetWeight(Passport) then
@@ -1673,7 +1968,7 @@ function Creative.StealTrunk(Entity)
 					local Service = vRP.NumPermission("Police")
 					for Passports,Sources in pairs(Service) do
 						async(function()
-							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehModels).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehModels).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 44 })
 						end)
 					end
 				end
@@ -1746,13 +2041,34 @@ function Creative.Animals(Entity)
 										vRP.GenerateItem(Passport,"meat",1,true)
 									elseif parseInt(Animals[Model][netObjects]) == 3 then
 										local randItens = math.random(8)
+
+										if GlobalState["Buffs"]["Luck"][Passport] then
+											if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+												randItens = math.random(10)
+											end
+										end
+
 										vRP.GenerateItem(Passport,"animalfat",randItens,true)
 									elseif parseInt(Animals[Model][netObjects]) == 4 then
 										local randItens = math.random(4)
+
+										if GlobalState["Buffs"]["Luck"][Passport] then
+											if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+												randItens = math.random(6)
+											end
+										end
+
 										vRP.GenerateItem(Passport,"leather",randItens,true)
 									elseif parseInt(Animals[Model][netObjects]) >= 5 then
 										vRPC.removeObjects(source)
 										local randItens = math.random(2)
+
+										if GlobalState["Buffs"]["Luck"][Passport] then
+											if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+												randItens = math.random(4)
+											end
+										end
+
 										Animals[Model][netObjects] = nil
 										TriggerEvent("DeletePed",netObjects)
 										vRP.GenerateItem(Passport,"animalpelt",randItens,true)
@@ -1808,15 +2124,32 @@ function Creative.MakeProducts(Table)
 					for Passports,Sources in pairs(Service) do
 						async(function()
 							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+							TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Roubo de Pertences", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Alarme de segurança", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 						end)
 					end
+					return
 				end
 			end
 
 			local Need = {}
 			local Consult = {}
 			local Number = math.random(#Products[Selected])
+
+			if Products[Selected][Number]["perm"] then
+				if not vRP.HasService(Passport,Products[Selected][Number]["perm"]) then
+					return
+				end
+			end
+
+			if Products[Selected][Number]["event"] then
+				if Products[Selected][Number]["event"]["state"] == "client" then
+					TriggerClientEvent(Products[Selected][Number]["event"]["name"],source,Selected)
+				else
+					TriggerEvent(Products[Selected][Number]["event"]["name"],Selected)
+				end
+
+				return
+			end
 
 			if Products[Selected][Number]["item"] then
 				if vRP.MaxItens(Passport,Products[Selected][Number]["item"],Products[Selected][Number]["itemAmount"]) then
@@ -1855,7 +2188,11 @@ function Creative.MakeProducts(Table)
 
 			Player(source)["state"]["Buttons"] = true
 			Active[Passport] = os.time() + Products[Selected][Number]["timer"]
-			TriggerClientEvent("Progress",source,"Produzindo",Products[Selected][Number]["timer"] * 1000)
+			if Selected == "cemitery" then
+				TriggerClientEvent("Progress",source,"Roubando",Products[Selected][Number]["timer"] * 1000)
+			else
+				TriggerClientEvent("Progress",source,"Produzindo",Products[Selected][Number]["timer"] * 1000)
+			end
 
 			if Selected == "tablecoke" then
 				vRPC.playAnim(source,false,{"anim@amb@business@coc@coc_unpack_cut@","fullcut_cycle_v6_cokecutter"},true)
@@ -1899,7 +2236,7 @@ function Creative.MakeProducts(Table)
 						if type(Products[Selected][Number]["need"]) == "table" then
 							for k,v in pairs(Need) do
 								local Split = splitString(v[1],"-")
-								if Split[1] == "weedleaf" and Split[2] ~= nil then
+								if (Split[1] == "weedleaf" or Split[1] == "cokeleaf") and Split[2] ~= nil then
 									Points = Split[2]
 								end
 
@@ -1911,7 +2248,7 @@ function Creative.MakeProducts(Table)
 					end
 
 					if Products[Selected][Number]["item"] then
-						if Selected == "tableweed" then
+						if Selected == "tableweed" or Selected == "tablecoke" then
 							vRP.GenerateItem(Passport,Products[Selected][Number]["item"].."-"..Points,Products[Selected][Number]["itemAmount"],true)
 						else
 							vRP.GenerateItem(Passport,Products[Selected][Number]["item"],Products[Selected][Number]["itemAmount"],true)
@@ -1990,16 +2327,35 @@ function Creative.Dismantle(Entity)
 
 				local Members = exports["vrp"]:Party(Passport,source,20)
 				if #Members > 1 then
+					local Amount = #Members
 					for _,v in pairs(Members) do
-						vRP.GenerateItem(v["Passport"],"dollars",AmountItens * #Members,true)
-						vRP.PutExperience(v["Passport"],"Dismantle",2)
+						if Amount > 5 then
+							Amount = 5
+						end
+
+						vRP.GenerateItem(v["Passport"],"dollarsz",AmountItens * Amount,true)
+
+						local Experience = 1
+						if GlobalState["Buffs"]["Luck"][v["Passport"]] then
+							if GlobalState["Buffs"]["Luck"][v["Passport"]] > os.time() then
+								Experience = Experience * 2
+							end
+						end
+
+						vRP.PutExperience(v["Passport"],"Dismantle",Experience)
 					end
 				else
-					vRP.GenerateItem(Passport,"dollars",AmountItens,true)
-					vRP.PutExperience(Passport,"Dismantle",1)
-				end
+					vRP.GenerateItem(Passport,"dollarsz",AmountItens,true)
 
-				vRP.GenerateItem(Passport,"dismantle",1,true)
+					local Experience = 1
+					if GlobalState["Buffs"]["Luck"][Passport] then
+						if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+							Experience = Experience * 2
+						end
+					end
+
+					vRP.PutExperience(Passport,"Dismantle",Experience)
+				end
 
 				if math.random(1000) <= 100 then
 					vRP.GenerateItem(Passport,"plate",1,true)
@@ -2046,7 +2402,13 @@ function Creative.RemoveTyres(Entity)
 								local Vehicle = NetworkGetEntityFromNetworkId(Entity[4])
 								if DoesEntityExist(Vehicle) and not IsPedAPlayer(Vehicle) and GetEntityType(Vehicle) == 2 then
 									if vCLIENT.tyreHealth(source,Entity[4],Entity[5]) == 1000.0 then
-										TriggerClientEvent("inventory:explodeTyres",source,Entity[4],Entity[1],Entity[5])
+										local Players = vRPC.Players(source)
+										for _,v in pairs(Players) do
+											async(function()
+												TriggerClientEvent("inventory:explodeTyres",v,Entity[4],Entity[1],Entity[5])
+											end)
+										end
+
 										vRP.GenerateItem(Passport,"tyres",1,true)
 									end
 								end
@@ -2091,56 +2453,112 @@ AddEventHandler("inventory:Drink",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CALLPOLICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.CallPolice(Drugs)
+	local source = source
+	local Title = "Assalto a mão armada"
+
+	if Drugs then
+		Title = "Venda de Drogas"
+		TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
+	end
+
+	local Ped = GetPlayerPed(source)
+	local Coords = GetEntityCoords(Ped)
+	local Service = vRP.NumPermission("Police")
+	for Passports,Sources in pairs(Service) do
+		async(function()
+			vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+			TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = Title, x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+		end)
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- STEALPEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.StealPeds()
+function Creative.StealPeds(Selected)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Rand = math.random(#StealPeds)
 		local Amount = math.random(StealPeds[Rand]["min"],StealPeds[Rand]["max"])
 
-		if vRP.MaxItens(Passport,StealPeds[Rand]["item"],Amount) then
-			TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
-			return true
-		end
+		if not Peds[Selected] then
+			Peds[Selected] = true
 
-		if (vRP.InventoryWeight(Passport) + itemWeight(StealPeds[Rand]["item"]) * Amount) <= vRP.GetWeight(Passport) then
-			vRP.GenerateItem(Passport,StealPeds[Rand]["item"],Amount,true)
+			if vRP.MaxItens(Passport,StealPeds[Rand]["item"],Amount) then
+				Peds[Selected] = nil
+				TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)
+				return true
+			end
 
-			if math.random(100) >= 80 then
-				local Ped = GetPlayerPed(source)
-				local Coords = GetEntityCoords(Ped)
-				local Service = vRP.NumPermission("Police")
-				for Passports,Sources in pairs(Service) do
-					async(function()
-						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 32, title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
-					end)
-				end
+			if (vRP.InventoryWeight(Passport) + itemWeight(StealPeds[Rand]["item"]) * Amount) <= vRP.GetWeight(Passport) then
+				vRP.GenerateItem(Passport,StealPeds[Rand]["item"],Amount,true)
+			else
+				TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 			end
 		else
-			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+			TriggerClientEvent("Notify",source,"amarelo","Nada encontrado.",5000)
+		end
+
+		if math.random(100) >= 80 then
+			local Ped = GetPlayerPed(source)
+			local Coords = GetEntityCoords(Ped)
+			local Service = vRP.NumPermission("Police")
+			for Passports,Sources in pairs(Service) do
+				async(function()
+					vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+					TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Assalto a mão armada", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+				end)
+			end
 		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- AMOUNTDRUGS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.AmountDrugs()
+function Creative.AmountDrugs(Selected)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Peds[Selected] then
+		Peds[Selected] = true
+
 		for k,v in pairs(DrugsList) do
 			local Amount = math.random(v["Amount"]["Min"],v["Amount"]["Max"])
 			local Price = math.random(v["Price"]["Min"],v["Price"]["Max"])
 
 			local Consult = vRP.InventoryItemAmount(Passport,k)
-			if Consult[1] >= Amount then
-				Drugs[Passport] = { Consult[2],Amount,Price * Amount }
-				return true
+			if Consult[1] then
+				local Points = 0
+				local Split = splitString(Consult[2],"-")
+				if Split[2] ~= nil then
+					Points = parseInt(Split[2])
+				end
+
+				if Points < 25 then
+					Points = 0
+				elseif Points >= 25 and Points <= 50 then
+					Points = (Points * 0.1) * 6
+				elseif Points >= 51 and Points <= 75 then
+					Points = (Points * 0.1) * 9
+				elseif Points >= 76 and Points <= 99 then
+					Points = (Points * 0.1) * 12
+				elseif Points >= 100 then
+					Points = Points * 2
+				end
+
+				Price = Price + Points
+				
+				if Consult[1] >= Amount then
+					local Service,Total = vRP.NumPermission("Police")
+					Drugs[Passport] = { Consult[2],Amount,Price * Amount }
+					return true,Total
+				end
 			end
 		end
+
+		Peds[Selected] = nil
 	end
 
 	return false
@@ -2160,7 +2578,8 @@ function Creative.DrugPeds()
 		end
 
 		if vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2],true) then
-			vRP.GenerateItem(Passport,"dollars",Drugs[Passport][3] + (Points * 2),true)
+			vRP.GenerateItem(Passport,"dollarsz",Drugs[Passport][3],true)
+
 			TriggerClientEvent("player:Residuals",source,"Resíduo Orgânico.")
 			Percentage = Percentage - Points
 
@@ -2175,7 +2594,7 @@ function Creative.DrugPeds()
 				for Passports,Sources in pairs(Service) do
 					async(function()
 						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-						TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
+						TriggerClientEvent("NotifyPush",Sources,{ code = "QRU", title = "Venda de Drogas", x = Coords["x"], y = Coords["y"], z = Coords["z"], criminal = "Ligação Anônima", time = "Recebido às "..os.date("%H:%M"), blipColor = 16 })
 					end)
 				end
 			end
@@ -2218,9 +2637,26 @@ AddEventHandler("player:RollVehicle",function(Entity)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DELIVER:UPDATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("deliver:Update")
+AddEventHandler("deliver:Update",function(Selected,Finish)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and Selected then
+		if Finish then
+			Collect[Passport] = nil
+		else
+			Collect[Passport] = Selected
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:BUFFSERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("inventory:BuffServer",function(source,Passport,Name,Amount)
+	local Buffs = GlobalState["Buffs"]
+
 	if not Buffs[Name][Passport] then
 		Buffs[Name][Passport] = 0
 	end
@@ -2235,6 +2671,7 @@ AddEventHandler("inventory:BuffServer",function(source,Passport,Name,Amount)
 		end
 	end
 
+	GlobalState:set("Buffs",Buffs,true)
 	TriggerClientEvent("hud:"..Name,source,Buffs[Name][Passport] - os.time())
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -2292,6 +2729,10 @@ AddEventHandler("Disconnect",function(Passport)
 	if Drugs[Passport] then
 		Drugs[Passport] = nil
 	end
+
+	if Collect[Passport] then
+		Collect[Passport] = nil
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
@@ -2300,13 +2741,14 @@ AddEventHandler("Connect",function(Passport,source)
 	Ammos[Passport] = vRP.UserData(Passport,"Ammos")
 	Attachs[Passport] = vRP.UserData(Passport,"Attachs")
 
+	TriggerClientEvent("inventory:Table",source,Objects)
 	TriggerClientEvent("objects:Table",source,Objects)
 	TriggerClientEvent("drops:Table",source,Drops)
 
-	for Name,_ in pairs(Buffs) do
-		if Buffs[Name][Passport] then
-			if os.time() < Buffs[Name][Passport] then
-				TriggerClientEvent("hud:"..Name,source,Buffs[Name][Passport] - os.time())
+	for Name,_ in pairs(GlobalState["Buffs"]) do
+		if GlobalState["Buffs"][Name][Passport] then
+			if os.time() < GlobalState["Buffs"][Name][Passport] then
+				TriggerClientEvent("hud:"..Name,source,GlobalState["Buffs"][Name][Passport] - os.time())
 			end
 		end
 	end

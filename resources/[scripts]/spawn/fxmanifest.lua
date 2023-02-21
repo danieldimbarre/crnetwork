@@ -1,6 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
+version "1.5.0"
 
 ui_page "web-side/index.html"
 
@@ -19,3 +20,12 @@ files {
 	"web-side/*",
 	"web-side/**/*"
 }
+
+shared_scripts {
+	"shared-side/*"
+}
+
+escrow_ignore {
+	"shared-side/*"
+}
+dependency '/assetpacks'

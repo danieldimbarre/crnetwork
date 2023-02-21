@@ -17,11 +17,8 @@ local Meth = 0
 local Drunk = 0
 local Cocaine = 0
 local Energetic = 0
+local Move = 0
 local Residuals = nil
-LocalPlayer["state"]["Tea"] = 3600
-LocalPlayer["state"]["Handcuff"] = false
-LocalPlayer["state"]["Commands"] = false
-LocalPlayer["state"]["Rope"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:COMMANDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -109,12 +106,47 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADAWAY
+-----------------------------------------------------------------------------------------------------------------------------------------
+local AwayTimers = GetGameTimer()
+local AwaySystem = { 0.0,0.0,1800 }
+
+CreateThread(function()
+	while true do
+		if GetGameTimer() >= AwayTimers then
+			AwayTimers = GetGameTimer() + 10000
+
+			local Ped = PlayerPedId()
+			local Coords = GetEntityCoords(Ped)
+			if Coords["x"] == AwaySystem[1] and Coords["y"] == AwaySystem[2] then
+				if AwaySystem[3] > 0 then
+					AwaySystem[3] = AwaySystem[3] - 10
+
+					if AwaySystem[3] == 60 or AwaySystem[3] == 30 then
+						TriggerEvent("Notify","amarelo","Mova-se e evite ser desconectado.",3000)
+					end
+				else
+					TriggerServerEvent("player:KickSystem","Desconectado, muito tempo ausente.")
+				end
+			else
+				AwaySystem[1] = Coords["x"]
+				AwaySystem[2] = Coords["y"]
+				AwaySystem[3] = 1800
+			end
+		end
+
+		Wait(10000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SETENERGETIC
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("setEnergetic")
-AddEventHandler("setEnergetic",function(Timer,Number)
+AddEventHandler("setEnergetic",function(Timer,Number,Override)
 	Energetic = Energetic + Timer
+	Move = Override
 	SetRunSprintMultiplierForPlayer(PlayerId(),Number)
+	SetSwimMultiplierForPlayer(PlayerId(),Number)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RESETENERGETIC
@@ -123,6 +155,7 @@ RegisterNetEvent("resetEnergetic")
 AddEventHandler("resetEnergetic",function()
 	if Energetic > 0 then
 		SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
+		SetSwimMultiplierForPlayer(PlayerId(),1.0)
 		Energetic = 0
 	end
 end)
@@ -137,11 +170,25 @@ CreateThread(function()
 
 			if Energetic <= 0 or GetEntityHealth(PlayerPedId()) <= 100 then
 				SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
+				SetSwimMultiplierForPlayer(PlayerId(),1.0)
 				Energetic = 0
+				Move = 1.0
 			end
 		end
 
 		Wait(1000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADMOVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		if Energetic > 0 then
+			SetPedMoveRateOverride(PlayerPedId(),Move)
+		end
+
+		Wait(100)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -179,8 +226,8 @@ end)
 -- SETCOCAINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("setCocaine")
-AddEventHandler("setCocaine",function()
-	Cocaine = Cocaine + 30
+AddEventHandler("setCocaine",function(Number)
+	Cocaine = Cocaine + Number
 
 	if not GetScreenEffectIsActive("MinigameTransitionIn") then
 		StartScreenEffect("MinigameTransitionIn",0,true)
@@ -342,7 +389,7 @@ end)
 CreateThread(function()
 	while true do
 		local TimeDistance = 100
-		if LocalPlayer["state"]["Handcuff"] or LocalPlayer["state"]["Target"] then
+		if LocalPlayer["state"]["Handcuff"] or LocalPlayer["state"]["Target"] or inTrash or inTrunk then
 			TimeDistance = 1
 			DisableControlAction(1,18,true)
 			DisableControlAction(1,21,true)
@@ -436,6 +483,9 @@ local paletoBay = PolyZone:Create({
 -- THREADSHOTSFIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
 local ShotDelay = GetGameTimer()
+local ShotsWeapons = {
+	[GetHashKey("WEAPON_NAILGUN")] = true
+}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSHOT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -453,18 +503,8 @@ CreateThread(function()
 
 					local Vehicle = false
 					local Coords = GetEntityCoords(Ped)
-					if not IsPedCurrentWeaponSilenced(Ped) then
-						if (losSantos:isPointInside(Coords) or sandyShores:isPointInside(Coords) or paletoBay:isPointInside(Coords)) and not LocalPlayer["state"]["Police"] then
-							TriggerServerEvent("evidence:dropEvidence","blue")
-
-							if IsPedInAnyVehicle(Ped) then
-								Vehicle = true
-							end
-
-							vSERVER.shotsFired(Vehicle)
-						end
-					else
-						if math.random(100) >= 80 then
+					if not ShotsWeapons[GetSelectedPedWeapon(Ped)] then
+						if not IsPedCurrentWeaponSilenced(Ped) then
 							if (losSantos:isPointInside(Coords) or sandyShores:isPointInside(Coords) or paletoBay:isPointInside(Coords)) and not LocalPlayer["state"]["Police"] then
 								TriggerServerEvent("evidence:dropEvidence","blue")
 
@@ -473,6 +513,18 @@ CreateThread(function()
 								end
 
 								vSERVER.shotsFired(Vehicle)
+							end
+						else
+							if math.random(100) >= 80 then
+								if (losSantos:isPointInside(Coords) or sandyShores:isPointInside(Coords) or paletoBay:isPointInside(Coords)) and not LocalPlayer["state"]["Police"] then
+									TriggerServerEvent("evidence:dropEvidence","blue")
+
+									if IsPedInAnyVehicle(Ped) then
+										Vehicle = true
+									end
+
+									vSERVER.shotsFired(Vehicle)
+								end
 							end
 						end
 					end
@@ -610,41 +662,18 @@ local inTrunk = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:enterTrunk")
 AddEventHandler("player:enterTrunk",function(Entity)
-	if not inTrunk then
+	local Ped = PlayerPedId()
+	if not inTrunk and GetEntityHealth(Ped) > 100 then
 		LocalPlayer["state"]["Commands"] = true
 		LocalPlayer["state"]["Invisible"] = true
-		SetEntityVisible(PlayerPedId(),false,false)
-		AttachEntityToEntity(PlayerPedId(),Entity[3],-1,0.0,-2.2,0.5,0.0,0.0,0.0,false,false,false,false,20,true)
-		inTrunk = true
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- PLAYER:CHECKTRUNK
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:checkTrunk")
-AddEventHandler("player:checkTrunk",function()
-	if inTrunk then
-		local Ped = PlayerPedId()
-		local Vehicle = GetEntityAttachedTo(Ped)
-		if DoesEntityExist(Vehicle) then
-			inTrunk = false
-			DetachEntity(Ped,false,false)
-			SetEntityVisible(Ped,true,false)
-			LocalPlayer["state"]["Commands"] = false
-			LocalPlayer["state"]["Invisible"] = false
-			SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADINTRUNK
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local TimeDistance = 999
 
-		if inTrunk then
-			local Ped = PlayerPedId()
+		SetEntityVisible(Ped,false,false)
+		AttachEntityToEntity(Ped,Entity[3],-1,0.0,-2.2,0.5,0.0,0.0,0.0,false,false,false,false,20,true)
+		inTrunk = true
+
+		while inTrunk do
+			Wait(1)
+
 			local Vehicle = GetEntityAttachedTo(Ped)
 			if DoesEntityExist(Vehicle) then
 				TimeDistance = 1
@@ -660,21 +689,37 @@ CreateThread(function()
 					inTrunk = false
 					DetachEntity(Ped,false,false)
 					SetEntityVisible(Ped,true,false)
-					LocalPlayer["state"]["Commands"] = false
 					LocalPlayer["state"]["Invisible"] = false
 					SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
+					LocalPlayer["state"]["Commands"] = false
 				end
 			else
 				inTrunk = false
 				DetachEntity(Ped,false,false)
 				SetEntityVisible(Ped,true,false)
-				LocalPlayer["state"]["Commands"] = false
 				LocalPlayer["state"]["Invisible"] = false
 				SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
+				LocalPlayer["state"]["Commands"] = false
 			end
 		end
-
-		Wait(TimeDistance)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:CHECKTRUNK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("player:checkTrunk")
+AddEventHandler("player:checkTrunk",function()
+	local Ped = PlayerPedId()
+	if inTrunk and GetEntityHealth(Ped) > 100 then
+		local Vehicle = GetEntityAttachedTo(Ped)
+		if DoesEntityExist(Vehicle) then
+			inTrunk = false
+			DetachEntity(Ped,false,false)
+			SetEntityVisible(Ped,true,false)
+			LocalPlayer["state"]["Invisible"] = false
+			SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
+			LocalPlayer["state"]["Commands"] = false
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -827,12 +872,12 @@ local inTrash = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:enterTrash")
 AddEventHandler("player:enterTrash",function(Entity)
-	if not inTrash then
+	local Ped = PlayerPedId()
+	if not inTrash and GetEntityHealth(Ped) > 100 then
 		LocalPlayer["state"]["Commands"] = true
-
-		local Ped = PlayerPedId()
-		FreezeEntityPosition(Ped,true)
 		LocalPlayer["state"]["Invisible"] = true
+
+		FreezeEntityPosition(Ped,true)
 		SetEntityVisible(Ped,false,false)
 		SetEntityCoords(Ped,Entity[4],false,false,false,false)
 
@@ -858,8 +903,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:checkTrash")
 AddEventHandler("player:checkTrash",function()
-	if inTrash then
-		local Ped = PlayerPedId()
+	local Ped = PlayerPedId()
+	if inTrash and GetEntityHealth(Ped) > 100 then
 		FreezeEntityPosition(Ped,false)
 		SetEntityVisible(Ped,true,false)
 		LocalPlayer["state"]["Invisible"] = false
@@ -1020,27 +1065,164 @@ end)
 -- PLAYER:RELATIONSHIP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:Relationship")
-AddEventHandler("player:Relationship",function(Group)
-	if Group == "Ballas" then
-		SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_BALLAS"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_BALLAS"))
-	elseif Group == "Families" then
-		SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_FAMILY"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_FAMILY"))
-	elseif Group == "Vagos" then
-		SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
-		SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
+AddEventHandler("player:Relationship",function(Group,Ungroup)
+	local Func = SetRelationshipBetweenGroups
+	if Ungroup then
+		Func = ClearRelationshipBetweenGroups
 	end
+
+	if Group == "Ballas" then
+		Func(1,GetHashKey("AMBIENT_GANG_BALLAS"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_BALLAS"))
+	elseif Group == "Families" then
+		Func(1,GetHashKey("AMBIENT_GANG_FAMILY"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_FAMILY"))
+	elseif Group == "Vagos" then
+		Func(1,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
+	elseif Group == "Aztecas" then
+		Func(1,GetHashKey("AMBIENT_GANG_SALVA"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_SALVA"))
+	elseif Group == "Marabunta" then
+		Func(1,GetHashKey("AMBIENT_GANG_MARABUNTE"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MARABUNTE"))
+	elseif Group == "Triads" then
+		Func(1,GetHashKey("AMBIENT_GANG_WEICHENG"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_WEICHENG"))
+	elseif Group == "Lost" then
+		Func(1,GetHashKey("AMBIENT_GANG_LOST"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
+	elseif Group == "Tribo" then
+		Func(1,GetHashKey("AMBIENT_GANG_CULT"),GetHashKey("PLAYER"))
+		Func(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_CULT"))
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:RELATIONSHIP2
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("player:Relationship2")
+AddEventHandler("player:Relationship2",function()
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_BALLAS"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_BALLAS"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_FAMILY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_FAMILY"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_SALVA"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_SALVA"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_MARABUNTE"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MARABUNTE"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_WEICHENG"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_WEICHENG"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_LOST"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_CULT"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_CULT"))
+	SetRelationshipBetweenGroups(1,GetHashKey("SECURITY_GUARD"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("SECURITY_GUARD"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PRIVATE_SECURITY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("PRIVATE_SECURITY"))
+	SetRelationshipBetweenGroups(1,GetHashKey("ARMY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("ARMY"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GANG_1"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_1"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GANG_2"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_2"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GANG_9"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_9"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GANG_10"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GANG_10"))
+	SetRelationshipBetweenGroups(1,GetHashKey("COP"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("COP"))
+	SetRelationshipBetweenGroups(1,GetHashKey("CIVMALE"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("CIVMALE"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GUARD_DOG"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("GUARD_DOG"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AGGRESSIVE_INVESTIGATE"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AGGRESSIVE_INVESTIGATE"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_HILLBILLY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_HILLBILLY"))
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("fps",function()
+	if not LocalPlayer["state"]["Fps"] then
+		LocalPlayer["state"]:set("Fps",true,true)
+		SetTimecycleModifier("cinema")
+	else
+		LocalPlayer["state"]:set("Fps",false,true)
+		ClearTimecycleModifier()
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ELEVATOR
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Elevator = {
+	["Hospital"] = {
+		{ ["Coords"] = vector3(-664.27,326.48,78.12), ["Label"] = "Garagem" },
+		{ ["Coords"] = vector3(-664.27,326.48,83.09), ["Label"] = "Térreo" },
+		{ ["Coords"] = vector3(-664.27,326.48,88.02), ["Label"] = "1° Andar" },
+		{ ["Coords"] = vector3(-664.27,326.48,92.74), ["Label"] = "2° Andar" },
+		{ ["Coords"] = vector3(-664.27,326.48,140.12), ["Label"] = "Cobertura" }
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADELEVATOR
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	local ElevatorList = {}
+	for Number,Table in pairs(Elevator) do
+		for Index,Floor in pairs(Table) do
+			for k,v in pairs(Table) do
+				if k ~= Index then
+					table.insert(ElevatorList,{
+						event = "player:Elevaport",
+						label = v["Label"],
+						service = Number,
+						teleport = k,
+						tunnel = "teleport"
+					})
+				end
+			end
+
+			exports["target"]:AddBoxZone("Elevator:"..Number.."-"..Index,Floor["Coords"],3,3,{
+				name = "Elevator:"..Number.."-"..Index,
+				heading = 3374176,
+				minZ = Floor["Coords"]["z"] - 1.5,
+				maxZ = Floor["Coords"]["z"] + 2
+			},{
+				Distance = 1.5,
+				options = ElevatorList
+			})
+
+			ElevatorList = {}
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:ELEVAPORT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("player:Elevaport")
+AddEventHandler("player:Elevaport",function(Number,Floor)
+	DoScreenFadeOut(0)
+
+    local Ped = PlayerPedId()
+    SetEntityCoords(Ped,Elevator[Number][Floor]["Coords"])
+
+    Wait(1000)
+
+    DoScreenFadeIn(1000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CARWASH
 -----------------------------------------------------------------------------------------------------------------------------------------
 local WashProgress = false
 local Wash = {
-	{ 24.27,-1391.96,28.7 },
-	{ 170.59,-1718.43,28.66 },
-	{ 167.69,-1715.92,28.66 },
-	{ -699.86,-932.84,18.38 }
+	vec3(24.27,-1391.96,28.7),
+	vec3(170.59,-1718.43,28.66),
+	vec3(167.69,-1715.92,28.66),
+	vec3(-699.86,-932.84,18.38)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADCARWASH
@@ -1054,7 +1236,7 @@ CreateThread(function()
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			if GetPedInVehicleSeat(Vehicle,-1) == Ped then
 				for _,v in pairs(Wash) do
-					local Distance = #(Coords - vec3(v[1],v[2],v[3]))
+					local Distance = #(Coords - v)
 					if Distance <= 2.5 then
 						TimeDistance = 1
 
@@ -1062,19 +1244,12 @@ CreateThread(function()
 							WashProgress = true
 
 							FreezeEntityPosition(Vehicle,true)
-
-							UseParticleFxAssetNextCall("core")
-							local Particle01 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",v[1],v[2],v[3],0.0,0.0,0.0,1.0,false,false,false,false)
-
-							UseParticleFxAssetNextCall("core")
-							local Particle02 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",v[1] + 2.5,v[2],v[3],0.0,0.0,0.0,1.0,false,false,false,false)
+							TriggerServerEvent("player:CarWash",v)
 
 							SetTimeout(15000,function()
 								TriggerServerEvent("CleanVehicle",VehToNet(Vehicle))
 
 								FreezeEntityPosition(Vehicle,false)
-								StopParticleFxLooped(Particle01,0)
-								StopParticleFxLooped(Particle02,0)
 								WashProgress = false
 							end)
 						end
@@ -1084,5 +1259,78 @@ CreateThread(function()
 		end
 
 		Wait(TimeDistance)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:CARWASH
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("player:CarWash")
+AddEventHandler("player:CarWash",function(Index,Plate,Coords)
+	if NetworkDoesNetworkIdExist(Index) then
+		local Vehicle = NetToEnt(Index)
+		if DoesEntityExist(Vehicle) then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
+				UseParticleFxAsset("core")
+				local Particle01 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",Coords,0.0,0.0,0.0,1.0,false,false,false,false)
+
+				UseParticleFxAsset("core")
+				local Particle02 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p",Coords["x"] + 2.5,Coords["y"],Coords["z"],0.0,0.0,0.0,1.0,false,false,false,false)
+
+				SetTimeout(15000,function()
+					StopParticleFxLooped(Particle01,false)
+					StopParticleFxLooped(Particle02,false)
+				end)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- LIST
+-----------------------------------------------------------------------------------------------------------------------------------------
+local List = {
+	vec3(-1.43,-1826.59,29.15), -- Ballas
+	vec3(-157.06,-1612.76,33.65), -- Families
+	vec3(336.24,-1988.82,24.2), -- Vagos
+	vec3(494.79,-1529.9,29.28), -- Aztecas
+	vec3(-1108.1,4940.08,223.13), -- Tribo
+	vec3(1254.45,-1566.56,58.35), -- Marabunta
+	vec3(101.58,3604.91,40.49), -- Lost
+	vec3(-646.81,-1238.62,11.54) -- Triads
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	for Number,v in pairs(List) do
+		exports["target"]:AddCircleZone("Drink:"..Number,vec3(v[1],v[2],v[3]),0.5,{
+			name = "Drink:"..Number,
+			heading = 3374176
+		},{
+			Distance = 0.75,
+			options = {
+				{
+					event = "inventory:MakeProducts",
+					label = "Encher",
+					tunnel = "products",
+					service = "emptybottle"
+				},
+				{
+					event = "inventory:Drink",
+					label = "Beber",
+					tunnel = "server"
+				}
+			}
+		})
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("cl",function()
+	if not LocalPlayer["state"]["Textform"] then
+		LocalPlayer["state"]["Textform"] = true
+
+		Wait(15000)
+		LocalPlayer["state"]["Textform"] = false
 	end
 end)

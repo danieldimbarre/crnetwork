@@ -26,13 +26,14 @@ input::-webkit-inner-spin-button {
 }
 
 #Doors {
-	right: 50px;
-	bottom: 170px;
+	right: 6vw;
+	bottom: 9vw;
 	display: none;
 	line-height: 16px;
 	position: absolute;
 	padding: 15px 20px 13px 15px;
-	text-shadow: 1px 1px #232630;
+	text-shadow: 1px 1px #000;
+	border-radius: 5px;
 	background: rgba(15,15,15,.75);
 }
 
@@ -44,7 +45,8 @@ input::-webkit-inner-spin-button {
 	bottom: 20%;
 	content: "";
 	position: absolute;
-	background: #fec026;
+	border-radius: 5px;
+	background: #00e076;
 }
 
 #Doors > .Button {
@@ -59,13 +61,13 @@ input::-webkit-inner-spin-button {
 
 #Doors > .Text {
 	float: left;
-	color: #666666;
+	color: #898989;
 	font-size: 11px;
 	letter-spacing: 1px;
 }
 
 #Doors > .Text > b {
-	color: #c0c0c0;
+	color: #ccc;
 	display: block;
 	font-size: 12px;
 	font-weight: 300;

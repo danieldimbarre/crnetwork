@@ -155,16 +155,16 @@ CreateThread(function()
 					Same = true
 				end
 
-				if Health["Current"] < 100 then
-					Health["New"] = 100
+				if Health["Current"] < 0.0 then
+					Health["New"] = 0.0
 				end
 
-				if Body["Current"] < 100.0 then
-					Body["New"] = 100.0
+				if Body["Current"] < 0.0 then
+					Body["New"] = 0.0
 				end
 
-				if Engine["Current"] < 100.0 then
-					Engine["New"] = 100.0
+				if Engine["Current"] < -4000.0 then
+					Engine["New"] = -4000.0
 				end
 
 				if Engine["New"] ~= Engine["Current"] then

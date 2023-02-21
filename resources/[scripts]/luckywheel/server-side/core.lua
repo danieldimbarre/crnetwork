@@ -17,6 +17,7 @@ Tunnel.bindInterface("luckywheel",Creative)
 local Bonus = {}
 local Actived = {}
 local Payments = {}
+local Players = {}
 local Active = os.time()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECK
@@ -37,7 +38,16 @@ function Creative.Check()
 				return true
 			end
 
+			if Players[Passport] then
+				if os.time() <= Players[Passport] then
+					local Cooldown = parseInt(Players[Passport] - os.time())
+					TriggerClientEvent("Notify",source,"azul","Aguarde <b>"..Cooldown.."</b> segundos.",5000)
+					return
+				end
+			end
+
 			if vRP.PaymentBank(Passport,5000) then
+				Players[Passport] = os.time() + 10800
 				Active = os.time() + 20
 				return true
 			else
@@ -118,8 +128,21 @@ end
 function Creative.Payment()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Actived[Passport] and Payments[Passport] then
+	if Passport and not Actived[Passport] then
 		Actived[Passport] = true
+
+		if not Payments[Passport] then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
+				vRP.Kick(source,"Banido.")
+
+				TriggerEvent("Discord","Hackers","**Luckywheel**\n\n**Passaporte:** "..Passport,9317187)
+
+				Actived[Passport] = nil
+				return
+			end
+		end
 
 		if Payments[Passport] == 2 then
 			vRP.GiveBank(Passport,2500)
@@ -144,7 +167,7 @@ function Creative.Payment()
 		elseif Payments[Passport] == 16 then
 			vRP.GiveBank(Passport,17500)
 		elseif Payments[Passport] == 19 then
-			local vehName = "silvias15"
+			local vehName = "vigero2"
 			local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, vehicle = vehName })
 			if Vehicle[1] then
 				if Vehicle[1]["rental"] <= os.time() then

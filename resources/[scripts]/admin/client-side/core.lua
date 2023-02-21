@@ -11,7 +11,7 @@ vSERVER = Tunnel.getInterface("admin")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVISIBLABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-LocalPlayer["state"]["Spectate"] = false
+local Freeze = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TELEPORTWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -72,17 +72,20 @@ end
 -- VEHICLETUNING
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("admin:vehicleTuning")
-AddEventHandler("admin:vehicleTuning",function()
-	local Ped = PlayerPedId()
-	if IsPedInAnyVehicle(Ped) then
-		local vehicle = GetVehiclePedIsUsing(Ped)
+AddEventHandler("admin:vehicleTuning",function(Index,Plate)
+	if NetworkDoesNetworkIdExist(Index) then
+		local Vehicle = NetToEnt(Index)
+		if DoesEntityExist(Vehicle) then
+			if GetVehicleNumberPlateText(Vehicle) == Plate then
 
-		SetVehicleModKit(vehicle,0)
-		SetVehicleMod(vehicle,11,GetNumVehicleMods(vehicle,11) - 1,false)
-		SetVehicleMod(vehicle,12,GetNumVehicleMods(vehicle,12) - 1,false)
-		SetVehicleMod(vehicle,13,GetNumVehicleMods(vehicle,13) - 1,false)
-		SetVehicleMod(vehicle,15,GetNumVehicleMods(vehicle,15) - 1,false)
-		ToggleVehicleMod(vehicle,18,true)
+				SetVehicleModKit(Vehicle,0)
+				SetVehicleMod(Vehicle,11,GetNumVehicleMods(Vehicle,11) - 1,false)
+				SetVehicleMod(Vehicle,12,GetNumVehicleMods(Vehicle,12) - 1,false)
+				SetVehicleMod(Vehicle,13,GetNumVehicleMods(Vehicle,13) - 1,false)
+				SetVehicleMod(Vehicle,15,GetNumVehicleMods(Vehicle,15) - 1,false)
+				ToggleVehicleMod(Vehicle,18,true)
+			end
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -137,3 +140,228 @@ AddEventHandler("admin:resetSpectate",function()
 		LocalPlayer["state"]["Spectate"] = false
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADMIN:KICKALL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("admin:KickAll")
+AddEventHandler("admin:KickAll",function()
+	ShakeGameplayCam("LARGE_EXPLOSION_SHAKE", 0.16)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADMIN:DEBUGTOGGLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("admin:DebugToggle")
+AddEventHandler("admin:DebugToggle",function()
+    if not LocalPlayer["state"]["Debug"] then
+		LocalPlayer["state"]["Debug"] = true
+        debugOn()
+        TriggerEvent("Notify","amarelo","Debug ON.",5000)
+    else
+		LocalPlayer["state"]["Debug"] = false
+        TriggerEvent("Notify","amarelo","Debug OFF.",5000)
+    end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CANPEDBEUSED
+-----------------------------------------------------------------------------------------------------------------------------------------
+function canPedBeUsed(Ped)
+    if Ped == nil then
+        return false
+    end
+
+    if Ped == PlayerPedId() then
+        return false
+    end
+
+    if not DoesEntityExist(Ped) then
+        return false
+    end
+    return true
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GETVEHICLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function GetVehicle()
+    local PlayerPed = PlayerPedId()
+    local PlayerCoords = GetEntityCoords(PlayerPed)
+    local Handle,Veh = FindFirstVehicle()
+    local Success
+    local Rped = nil
+    local DistanceFrom
+    repeat
+        local VehCoords = GetEntityCoords(Veh)
+        local Distance = #(PlayerCoords - VehCoords)
+        if canPedBeUsed(ped) and Distance < 30.0 and (DistanceFrom == nil or Distance < DistanceFrom) then
+            DistanceFrom = Distance
+            Rped = Veh
+
+	    	if IsEntityTouchingEntity(PlayerPed,Veh) then
+	    		DrawText3Ds(VehCoords["x"],VehCoords["y"],VehCoords["z"] + 1, "Veh: "..Veh.." Model: "..GetEntityModel(Veh).." IN CONTACT")
+	    	else
+	    		DrawText3Ds(VehCoords["x"],VehCoords["y"],VehCoords["z"] + 1, "Veh: "..Veh.." Model: "..GetEntityModel(Veh))
+	    	end
+        end
+        Success,Veh = FindNextVehicle(Handle)
+    until not Success
+    EndFindVehicle(Handle)
+    return Rped
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GETOBJECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function GetObject()
+    local PlayerPed = PlayerPedId()
+    local PlayerCoords = GetEntityCoords(PlayerPed)
+    local Handle,Obj = FindFirstObject()
+    local Success
+    local Rped = nil
+    local DistanceFrom
+    repeat
+        local ObjCoords = GetEntityCoords(Obj)
+        local Distance = #(PlayerCoords - ObjCoords)
+        if Distance < 10.0 then
+            DistanceFrom = Distance
+            Rped = Obj
+
+	    	if IsEntityTouchingEntity(PlayerPed,Obj) then
+	    		DrawText3Ds(ObjCoords["x"],ObjCoords["y"],ObjCoords["z"] + 1,"Obj: "..Obj.." Model: "..GetEntityModel(Obj).." IN CONTACT")
+	    	else
+	    		DrawText3Ds(ObjCoords["x"],ObjCoords["y"],ObjCoords["z"] + 1,"Obj: "..Obj.." Model: "..GetEntityModel(Obj))
+	    	end
+
+			-- FreezeEntityPosition(Obj,Freeze)
+        end
+        Success,Obj = FindNextObject(Handle)
+    until not Success
+    EndFindObject(Handle)
+    return Rped
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GETPED
+-----------------------------------------------------------------------------------------------------------------------------------------
+function GetPed()
+    local PlayerPed = PlayerPedId()
+    local PlayerCoords = GetEntityCoords(PlayerPed)
+    local Handle,Ped = FindFirstPed()
+    local Success
+    local Rped = nil
+    local DistanceFrom
+    repeat
+        local PedCoords = GetEntityCoords(Ped)
+        local Distance = #(PlayerCoords - PedCoords)
+        if canPedBeUsed(Ped) and Distance < 30.0 and (DistanceFrom == nil or Distance < DistanceFrom) then
+            DistanceFrom = Distance
+            Rped = Ped
+
+	    	if IsEntityTouchingEntity(PlayerPed,Ped) then
+	    		DrawText3Ds(PedCoords["x"],PedCoords["y"],PedCoords["z"],"Ped: "..Ped.." Model: "..GetEntityModel(Ped).." Relationship HASH: "..GetPedRelationshipGroupHash(Ped).." IN CONTACT")
+	    	else
+	    		DrawText3Ds(PedCoords["x"],PedCoords["y"],PedCoords["z"],"Ped: "..Ped.." Model: "..GetEntityModel(Ped).." Relationship HASH: "..GetPedRelationshipGroupHash(Ped))
+	    	end
+
+            FreezeEntityPosition(Ped,Freeze)
+        end
+        Success,Ped = FindNextPed(Handle)
+    until not Success
+    EndFindPed(Handle)
+    return Rped
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADDEBUG
+-----------------------------------------------------------------------------------------------------------------------------------------
+function debugOn()
+	CreateThread(function()
+		while LocalPlayer["state"]["Debug"] do
+			local Ped = PlayerPedId()
+			local Coords = GetEntityCoords(Ped)
+
+			local CoordsFor = GetOffsetFromEntityInWorldCoords(Ped,0,1.0,0.0)
+			local CoordsBack = GetOffsetFromEntityInWorldCoords(Ped,0,-1.0,0.0)
+			local CoordsLef = GetOffsetFromEntityInWorldCoords(Ped,1.0,0.0,0.0)
+			local CoordsRig = GetOffsetFromEntityInWorldCoords(Ped,-1.0,0.0,0.0) 
+
+			local CoordsFor2 = GetOffsetFromEntityInWorldCoords(Ped,0,2.0,0.0)
+			local CoordsBack2 = GetOffsetFromEntityInWorldCoords(Ped,0,-2.0,0.0)
+			local CoordsLef2 = GetOffsetFromEntityInWorldCoords(Ped,2.0,0.0,0.0)
+			local CoordsRig2 = GetOffsetFromEntityInWorldCoords(Ped,-2.0,0.0,0.0)    
+
+			-- local StreetHash,StreetCrossing = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
+			-- StreetName = GetStreetNameFromHashKey(StreetHash)
+
+			-- drawTxtS(0.8,0.50,0.4,0.4,0.30,"Heading: "..GetEntityHeading(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.52,0.4,0.4,0.30,"Coords: "..Coords,55,155,55,255)
+			-- drawTxtS(0.8,0.54,0.4,0.4,0.30,"Attached Ent: "..GetEntityAttachedTo(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.56,0.4,0.4,0.30,"H a G: "..GetEntityHeightAboveGround(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.58,0.4,0.4,0.30,"Health: "..GetEntityHealth(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.60,0.4,0.4,0.30,"Model: "..GetEntityModel(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.62,0.4,0.4,0.30,"Speed: "..GetEntitySpeed(Ped),55,155,55,255)
+			-- drawTxtS(0.8,0.64,0.4,0.4,0.30,"Frame Time: "..GetFrameTime(),55,155,55,255)
+			-- drawTxtS(0.8,0.66,0.4,0.4,0.30,"Street: "..StreetName,55,155,55,255)
+			
+			
+			DrawLine(Coords,CoordsFor,255,0,0,115)
+			DrawLine(Coords,CoordsBack,255,0,0,115)
+
+			DrawLine(Coords,CoordsLef,255,255,0,115)
+			DrawLine(Coords,CoordsRig,255,255,0,115)
+
+			DrawLine(CoordsFor,CoordsFor2,255,0,255,115)
+			DrawLine(CoordsBack,CoordsBack2,255,0,255,115)
+
+			DrawLine(CoordsLef,CoordsLef2,255,255,255,115)
+			DrawLine(CoordsRig,CoordsRig2,255,255,255,115)
+
+			GetPed()
+			GetVehicle()
+			GetObject()
+
+			if IsControlJustReleased(1,38) then
+				Freeze = not Freeze
+
+				if Freeze then
+					TriggerEvent("Notify","amarelo","Freeze ON.",5000)
+				else
+					TriggerEvent("Notify","amarelo","Freeze OFF.",5000)
+				end
+			end
+
+			Wait(1)
+		end
+	end)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DRAWTXTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function drawTxtS(x,y,width,height,scale,text,r,g,b,a)
+    SetTextFont(0)
+    SetTextProportional(0)
+    SetTextScale(0.25,0.25)
+    SetTextColour(r,g,b,a)
+    SetTextDropShadow(0,0,0,0,255)
+    SetTextEdge(1,0,0,0,255)
+    SetTextDropShadow()
+    SetTextOutline()
+    SetTextEntry("STRING")
+    AddTextComponentString(text)
+    DrawText(x - width / 2,y - height / 2 + 0.005)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DRAWTEXT3DS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function DrawText3Ds(x,y,z,text)
+    local onScreen,_x,_y = World3dToScreen2d(x,y,z)
+
+	if onScreen then
+		SetTextScale(0.35,0.35)
+		SetTextFont(4)
+		SetTextProportional(1)
+		SetTextColour(204,204,204,175)
+		BeginTextCommandDisplayText("STRING")
+		SetTextCentre(1)
+		AddTextComponentSubstringKeyboardDisplay(text)
+		EndTextCommandDisplayText(_x,_y)
+		DrawText(_x,_y)
+		local width = string.len(text) / 300
+		DrawRect(_x,_y + 0.0125,width,0.03,15,15,15,200)
+	end
+end

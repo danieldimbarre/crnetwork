@@ -29,8 +29,8 @@ input::-webkit-inner-spin-button {
 #Radio {
 	bottom: 0;
 	right: 50px;
-	width: 253px;
-	height: 532px;
+	width: 180px;
+	height: 380px;
 	display: none;
 	position: absolute;
 	background: url("images/Radio.png");
@@ -38,30 +38,30 @@ input::-webkit-inner-spin-button {
 
 .RadioInative {
 	float: left;
-	width: 33px;
-	height: 31px;
-	margin-top: 179px;
-	margin-left: 108px;
+	width: 26px;
+	height: 39px;
+	margin-top: 127px;
+	margin-left: 77px;
 }
 
 .RadioActive {
 	float: left;
-	width: 59px;
-	height: 43px;
-	margin-top: 203px;
-	margin-left: 53px;
+	width: 41px;
+	height: 33px;
+	margin-top: -22px;
+	margin-left: 139px;
 }
 
 .RadioFrequency {
 	border: 0;
 	float: left;
-	width: 129px;
-	height: 77px;
-	font-size: 35px;
-	margin-top: 150px;
-	margin-left: 62px;
+	width: 108px;
+	height: 94px;
+	font-size: 33px;
+	margin-top: 90px;
+	margin-left: 38px;
 	text-align: center;
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 	background: transparent;
 	font-family: "DSEG7Classic";
 }

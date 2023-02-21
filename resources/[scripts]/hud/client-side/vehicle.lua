@@ -17,7 +17,6 @@ local ActualVehicle = nil
 local NitroFuel = 0
 local NitroFlame = false
 local NitroButton = GetGameTimer()
-LocalPlayer["state"]["Nitro"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LIGHTTRAILS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -51,6 +50,7 @@ CreateThread(function()
 				if not IsMinimapRendering() then
 					SetBigmapActive(false,false)
 					DisplayRadar(true)
+					SetRadarZoom(1100)
 				end
 
 				local Vehicle = GetVehiclePedIsUsing(Ped)

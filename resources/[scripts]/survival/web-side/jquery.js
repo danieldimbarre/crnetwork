@@ -2,7 +2,7 @@
 window.addEventListener("message",function(event){
 	switch (event["data"]["Action"]){
 		case "Display":
-			$("#Survival").css("display",event["data"]["Mode"]);
+			$("#SurvivalDiv").css("display",event["data"]["Mode"]);
 		break;
 
 		case "Message":

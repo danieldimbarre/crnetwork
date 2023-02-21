@@ -22,6 +22,7 @@ GlobalState["Weather"] = "EXTRASUNNY"
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
+		local TimeDistance = 10000
 		GlobalState["Work"] = GlobalState["Work"] + 1
 		GlobalState["Minutes"] = GlobalState["Minutes"] + 1
 
@@ -34,7 +35,11 @@ CreateThread(function()
 			end
 		end
 
-		Wait(10000)
+		if (GlobalState["Hours"] >= 0 and GlobalState["Hours"] <= 5) or (GlobalState["Hours"] >= 18 and GlobalState["Hours"] <= 23) then
+			TimeDistance = 2454
+		end
+
+		Wait(TimeDistance)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -43,7 +48,7 @@ end)
 RegisterCommand("timeset",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[2] then
 			GlobalState["Hours"] = parseInt(Message[1])
 			GlobalState["Minutes"] = parseInt(Message[2])
 

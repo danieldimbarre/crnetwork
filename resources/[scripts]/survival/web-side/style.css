@@ -3,7 +3,6 @@ html,body {
 	padding: 0;
 	color: #fff;
 	cursor: default;
-	font-size: 13px;
 	overflow: hidden;
 	font-family: "Roboto";
 	box-sizing: border-box;
@@ -22,10 +21,29 @@ input::-webkit-inner-spin-button {
 	margin: 0;
 }
 
-#Survival {
-	left: 50px;
-	bottom: 50px;
+#SurvivalDiv {
+	width: 100%;
+	bottom: 3vw;
 	display: none;
-	position: absolute;
+	position: fixed;
+}
+
+#Survival {
+	width: 300px;
+	margin: 0 auto;
+	font-size: 13px;
+	line-height: 20px;
+	padding: 15px 20px;
+	text-align: center;
 	text-shadow: 1px 1px #000;
+	color: #ccc;
+	background: rgba(15,15,15,.75);
+	border-radius: 5px;
+}
+
+#Survival color {
+	color: #00e076;
+}
+#Survival color2 {
+	color: #009C52;
 }

@@ -7,20 +7,16 @@ let H = canvas.height;
 let degrees = 0;
 let new_degrees = 0;
 let time = 0;
-let color = "#CCC";
-let bgcolor = "rgba(15,15,15,.75)";
-let bgcolor2 = "#fec026";
+let color = "#00e076";
+let bgcolor = "rgba(15,15,15,.50)";
+let bgcolor2 = "#ccc";
 let key_to_press;
 let g_start,g_end;
 let animation_loop;
 // ---------------------------------------------------------------------------------------------
 window.addEventListener("message",function(event){
 	if (event.data.type == "open"){
-		if (event.data.time == 1){
-			time = 4
-		} else {
-			time = (event.data.time / 1000) + 10
-		}
+		time = (event.data.time / 1000)
 
 		draw(time);
 	} else if (event.data.type == "close"){
@@ -42,25 +38,27 @@ function init(){
 
 	ctx.beginPath();
 	ctx.strokeStyle = bgcolor;
-	ctx.lineWidth = 20;
+	ctx.lineWidth = 15;
 	ctx.arc(W / 2, H / 2, 100, 0, Math.PI * 2, false);
 	ctx.stroke();
 
 	ctx.beginPath();
 	ctx.strokeStyle = bgcolor2;
-	ctx.lineWidth = 20;
+	ctx.lineWidth = 15;
 	ctx.arc(W / 2, H / 2, 100, g_start - 90 * Math.PI / 180, g_end - 90 * Math.PI / 180, false);
 	ctx.stroke();
 
 	let radians = degrees * Math.PI / 180;
 	ctx.beginPath();
 	ctx.strokeStyle = color;
-	ctx.lineWidth = 20;
+	ctx.lineWidth = 15;
 	ctx.arc(W / 2, H / 2, 100, 0 - 90 * Math.PI / 180, radians - 90 * Math.PI / 180, false);
 	ctx.stroke();
 
-	ctx.fillStyle = color;
-	ctx.font = "100px sans-serif";
+	ctx.fillStyle = bgcolor2;
+	ctx.font = "100px Roboto";
+	ctx.shadowColor = "black";
+	ctx.shadowBlur = 5;
 	let text_width = ctx.measureText(key_to_press).width;
 	ctx.fillText(key_to_press, W / 2 - text_width / 2, H / 2 + 35);
 }

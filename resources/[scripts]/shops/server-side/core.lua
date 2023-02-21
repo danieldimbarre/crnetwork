@@ -19,19 +19,26 @@ local shops = {
 		["type"] = "Cash",
 		["perm"] = "BurgerShot",
 		["List"] = {
-			["bread"] = 5,
-			["cheese"] = 10,
 			["hamburger2"] = 125,
-			["onionrings"] = 70,
+			["onionrings"] = 100,
+			["fries"] = 70,
 			["guarananatural"] = 75,
 			["orangejuice"] = 100,
 			["tangejuice"] = 100,
-			["grapejuice"] = 100,
-			["strawberryjuice"] = 100,
-			["bananajuice"] = 100,
-			["acerolajuice"] = 100,
-			["passionjuice"] = 100,
-			["mushroom"] = 10
+			["mushroomtea"] = 300
+		}
+	},
+	["BurgerShot-3"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["hamburger2"] = 150,
+			["onionrings"] = 125,
+			["fries"] = 95,
+			["guarananatural"] = 100,
+			["orangejuice"] = 125,
+			["tangejuice"] = 125
 		}
 	},
 	["PizzaThis"] = {
@@ -39,16 +46,30 @@ local shops = {
 		["type"] = "Cash",
 		["perm"] = "PizzaThis",
 		["List"] = {
-			["bread"] = 5,
-			["cheese"] = 10,
 			["pizzamozzarella"] = 125,
 			["pizzamushroom"] = 125,
 			["pizzabanana"] = 125,
 			["pizzachocolate"] = 125,
 			["calzone"] = 125,
-			["mushroomtea"] = 300,
 			["chickenfries"] = 100,
-			["mushroom"] = 10
+			["grapejuice"] = 100,
+			["bananajuice"] = 100,
+			["mushroomtea"] = 300
+		}
+	},
+	["PizzaThis-3"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["pizzamozzarella"] = 150,
+			["pizzamushroom"] = 150,
+			["pizzabanana"] = 150,
+			["pizzachocolate"] = 150,
+			["calzone"] = 150,
+			["chickenfries"] = 125,
+			["grapejuice"] = 125,
+			["bananajuice"] = 125
 		}
 	},
 	["UwuCoffee"] = {
@@ -56,36 +77,64 @@ local shops = {
 		["type"] = "Cash",
 		["perm"] = "UwuCoffee",
 		["List"] = {
-			["bread"] = 5,
 			["nigirizushi"] = 50,
 			["sushi"] = 50,
-			["cupcake"] = 50,
 			["applelove"] = 50,
 			["milkshake"] = 100,
 			["cappuccino"] = 125,
 			["cookies"] = 35,
-			["mushroom"] = 10
+			["strawberryjuice"] = 100,
+			["passionjuice"] = 100,
+			["mushroomtea"] = 300
+		}
+	},
+	["UwuCoffee-3"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["nigirizushi"] = 75,
+			["sushi"] = 75,
+			["applelove"] = 75,
+			["milkshake"] = 125,
+			["cappuccino"] = 150,
+			["cookies"] = 60,
+			["strawberryjuice"] = 125,
+			["passionjuice"] = 125
 		}
 	},
 	["BeanMachine"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
 		["perm"] = "BeanMachine",
-		["Type"] = "Cash",
 		["List"] = {
 			["coffeemilk"] = 70,
-			["sandwich"] = 15,
+			["sandwich"] = 125,
 			["tacos"] = 25,
-			["chandon"] = 15,
-			["dewars"] = 15,
-			["hennessy"] = 15,
-			["absolut"] = 15,
-			["mushroom"] = 10
+			["cupcake"] = 50,
+			["acerolajuice"] = 100,
+			["mushroomtea"] = 300
+		}
+	},
+	["BeanMachine-3"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["coffeemilk"] = 95,
+			["sandwich"] = 150,
+			["tacos"] = 25,
+			["cupcake"] = 75,
+			["acerolajuice"] = 125
 		}
 	},
 	["Identity"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["identity"] = 5000
+			["identity"] = 5000,
+			["badge03"] = 2000,
+			["badge04-Law"] = 5000
 		}
 	},
 	["Identity2"] = {
@@ -95,6 +144,53 @@ local shops = {
 			["fidentity"] = 10000
 		}
 	},
+	["Digital"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["cellphone"] = 725,
+			["radio"] = 975,
+			["camera"] = 275,
+			["scanner"] = 6750
+		}
+	},
+	["Brewery"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["chandon"] = 15,
+			["dewars"] = 15,
+			["hennessy"] = 15,
+			["absolut"] = 15
+		}
+	},
+	["Organic"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["tomato"] = 20,
+			["banana"] = 20,
+			["guarana"] = 20,
+			["acerola"] = 20,
+			["passion"] = 20,
+			["grape"] = 20,
+			["tange"] = 20,
+			["orange"] = 20,
+			["apple"] = 20,
+			["strawberry"] = 20,
+			["coffee2"] = 20,
+			["mushroom"] = 20,
+			["cocoa"] = 20,
+			["potato"] = 20
+		}
+	},
+	["Beans"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["cupcake"] = 70
+		}
+	},
 	["Weeds"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
@@ -102,14 +198,24 @@ local shops = {
 			["silk"] = 5
 		}
 	},
+	["Dismantle"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["dismantle"] = 2000
+		}
+	},
 	["Departament"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
+			["bread"] = 5,
+			["cheese"] = 10,
+			["mushroom"] = 10,
 			["sugar"] = 5,
 			["postit"] = 20,
 			["notepad"] = 10,
-			["emptybottle"] = 30,
+			["emptybottle"] = 5,
 			["cigarette"] = 10,
 			["lighter"] = 175,
 			["rose"] = 25,
@@ -135,19 +241,33 @@ local shops = {
 	["Mechanic"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
+		["perm"] = "Mechanic",
 		["List"] = {
-			["tyres"] = 225,
-			["toolbox"] = 625,
-			["advtoolbox"] = 1525,
-			["WEAPON_CROWBAR"] = 725,
-			["WEAPON_WRENCH"] = 725
+			["tyres"] = 180,
+			["toolbox"] = 500,
+			["advtoolbox"] = 1220,
+			["WEAPON_CROWBAR"] = 580,
+			["WEAPON_WRENCH"] = 580
+		}
+	},
+	["Mechanic-3"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["shop"] = true,
+		["List"] = {
+			["tyres"] = 360,
+			["toolbox"] = 1000,
+			["advtoolbox"] = 2440,
+			["WEAPON_CROWBAR"] = 1450,
+			["WEAPON_WRENCH"] = 1450
 		}
 	},
 	["Fuel"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["WEAPON_PETROLCAN"] = 250
+			["WEAPON_PETROLCAN"] = 250,
+			["WEAPON_PETROLCAN_AMMO"] = 0.02
 		}
 	},
 	["Weapons"] = {
@@ -159,13 +279,6 @@ local shops = {
 			["riflebody"] = 625
 		}
 	},
-	["Oxy"] = {
-		["mode"] = "Buy",
-		["type"] = "Cash",
-		["List"] = {
-			["oxy"] = 35
-		}
-	},
 	["Pharmacy"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
@@ -173,7 +286,9 @@ local shops = {
 			["medkit"] = 575,
 			["bandage"] = 225,
 			["gauze"] = 100,
-			["analgesic"] = 125
+			["analgesic"] = 125,
+			["sinkalmy"] = 375,
+			["ritmoneury"] = 475
 		}
 	},
 	["Paramedic"] = {
@@ -183,13 +298,13 @@ local shops = {
 		["List"] = {
 			["badge02"] = 10,
 			["syringe"] = 2,
-			["bandage"] = 225,
-			["gauze"] = 100,
+			["bandage"] = 180,
+			["gauze"] = 80,
 			["gdtkit"] = 20,
-			["medkit"] = 575,
-			["sinkalmy"] = 375,
-			["analgesic"] = 125,
-			["ritmoneury"] = 475,
+			["medkit"] = 460,
+			["sinkalmy"] = 300,
+			["analgesic"] = 100,
+			["ritmoneury"] = 380,
 			["wheelchair"] = 2750,
 			["defibrillator"] = 325,
 			["medicbag"] = 425,
@@ -210,32 +325,48 @@ local shops = {
 			["WEAPON_POOLCUE"] = 975,
 			["WEAPON_STONE_HATCHET"] = 975,
 			["WEAPON_KNUCKLE"] = 975,
-			["WEAPON_KARAMBIT"] = 975,
-			["WEAPON_KATANA"] = 975,
+			-- ["WEAPON_KARAMBIT"] = 975,
+			-- ["WEAPON_KATANA"] = 975,
 			["WEAPON_FLASHLIGHT"] = 975,
 			["pickaxe"] = 525,
 			["repairkit01"] = 525,
-			["repairkit02"] = 3225
+			["repairkit02"] = 3225,
+			["WEAPON_NAILGUN"] = 10000,
+			["WEAPON_NAIL_AMMO"] = 10
 		}
 	},
 	["Premium"] = {
 		["mode"] = "Buy",
 		["type"] = "Premium",
 		["List"] = {
-			["gemstone"] = 1,
-			["premium"] = 75,
-			["rolepass"] = 100,
+			-- ["gemstone"] = 1,
+			["premium"] = 100,
+			["premium2"] = 150,
+			-- ["premium3"] = 200,
+			-- ["rolepass"] = 100,
 			["premiumplate"] = 50,
 			["newchars"] = 75,
 			["namechange"] = 50,
-			["backschool"] = 50,
-			["backcyclist"] = 50,
-			["backcamping"] = 50,
-			["backalohomorawhite"] = 75,
-			["backalohomorablack"] = 75,
-			["backalohomorared"] = 75,
-			["backrudolphpurple"] = 75,
-			["backrudolphred"] = 75
+			["chip"] = 60,
+			["facechange"] = 25,
+			["diagram"] = 10,
+			-- ["backschool"] = 50,
+			-- ["backcyclist"] = 50,
+			-- ["backcamping"] = 50,
+			-- ["backalohomorawhite"] = 75,
+			-- ["backalohomorablack"] = 75,
+			-- ["backalohomorared"] = 75,
+			-- ["backrudolphpurple"] = 75,
+			-- ["backrudolphred"] = 75,
+			["homecontEmerald"] = 200,
+			["homecontDiamond"] = 100,
+			["homecontRuby"] = 200,
+			["homecontSapphire"] = 350,
+			["homecontAmethyst"] = 500,
+			["homecontAmber"] = 650,
+			-- ["homecontTurquoise"] = 100,
+			-- ["homecontAquamarine"] = 100,
+			-- ["homecontTopaz"] = 100
 		}
 	},
 	["Hunting"] = {
@@ -256,29 +387,35 @@ local shops = {
 			["strawberry"] = 10,
 			["coffee2"] = 10,
 			["animalfat"] = 10,
-			["leather"] = 20
+			["leather"] = 20,
+			["mushroom"] = 10,
+			["cocoa"] = 10,
+			["potato"] = 10
 		}
 	},
 	["Fishing"] = {
 		["mode"] = "Sell",
 		["type"] = "Cash",
 		["List"] = {
-			["octopus"] = 14,
-			["shrimp"] = 14,
-			["carp"] = 12,
-			["horsefish"] = 12,
-			["tilapia"] = 14,
-			["codfish"] = 16,
-			["catfish"] = 16,
-			["goldenfish"] = 30,
-			["pirarucu"] = 26,
-			["pacu"] = 24,
-			["tambaqui"] = 28
+			["octopus"] = 17,
+			["shrimp"] = 17,
+			["carp"] = 14,
+			["horsefish"] = 14,
+			["tilapia"] = 17,
+			["codfish"] = 19,
+			["catfish"] = 19,
+			["goldenfish"] = 36,
+			["pirarucu"] = 31,
+			["pacu"] = 29,
+			["tambaqui"] = 34
 		}
 	},
 	["Hunting2"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
+		["required"] = {
+			["badge03"] = 1
+		},
 		["List"] = {
 			["switchblade"] = 525,
 			["WEAPON_MUSKET"] = 3250,
@@ -302,8 +439,8 @@ local shops = {
 			["plastic"] = 10,
 			["glass"] = 10,
 			["rubber"] = 10,
-			["aluminum"] = 15,
-			["copper"] = 15,
+			["aluminum"] = 10,
+			["copper"] = 10,
 			["radio"] = 485,
 			["rope"] = 435,
 			["cellphone"] = 325,
@@ -320,21 +457,19 @@ local shops = {
 			["firecracker"] = 50,
 			["fishingrod"] = 365,
 			["scuba"] = 485,
-			["silvercoin"] = 10,
-			["goldcoin"] = 20,
 			["techtrash"] = 60,
 			["tarp"] = 20,
 			["sheetmetal"] = 20,
 			["roadsigns"] = 20,
 			["explosives"] = 30,
-			["codeine"] = 15,
-			["amphetamine"] = 20,
-			["acetone"] = 15,
+			["codeine"] = 5,
+			["amphetamine"] = 5,
+			["acetone"] = 5,
 			["cotton"] = 20,
 			["plaster"] = 15,
-			["sulfuric"] = 12,
-			["saline"] = 20,
-			["alcohol"] = 15
+			["sulfuric"] = 5,
+			["saline"] = 5,
+			["alcohol"] = 5
 		}
 	},
 	["Miners"] = {
@@ -354,7 +489,7 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["coffee"] = 20
+			["coffee"] = 5
 		}
 	},
 	["sodaMachine"] = {
@@ -393,7 +528,7 @@ local shops = {
 		["List"] = {
 			["hotdog"] = 15,
 			["hamburger"] = 25,
-			["coffee"] = 20,
+			["coffee"] = 5,
 			["cola"] = 15,
 			["soda"] = 15
 		}
@@ -402,10 +537,23 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["List"] = {
-			["water"] = 30
+			["water"] = 10
 		}
 	},
-	["Police"] = {
+	["PharmacyIlegal"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["List"] = {
+			["adrenaline"] = 1200,
+			["sulfuric"] = 5,
+			["acetone"] = 5,
+			["amphetamine"] = 5,
+			["codeine"] = 5,
+			["saline"] = 5,
+			["alcohol"] = 5
+		}
+	},
+	["Polices"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["perm"] = "Police",
@@ -416,31 +564,39 @@ local shops = {
 			["barrier"] = 250,
 			["handcuff"] = 425,
 			["WEAPON_SMG"] = 775,
+			["WEAPON_SMG_MK2"] = 835,
 			["WEAPON_PUMPSHOTGUN"] = 775,
 			["WEAPON_CARBINERIFLE"] = 775,
 			["WEAPON_CARBINERIFLE_MK2"] = 925,
+			["WEAPON_HEAVYRIFLE"] = 985,
 			["WEAPON_STUNGUN"] = 525,
 			["WEAPON_COMBATPISTOL"] = 625,
 			["WEAPON_HEAVYPISTOL"] = 725,
 			["WEAPON_NIGHTSTICK"] = 125,
+			["WEAPON_FLASHLIGHT"] = 125,
 			["WEAPON_PISTOL_AMMO"] = 4,
 			["WEAPON_SMG_AMMO"] = 5,
 			["WEAPON_RIFLE_AMMO"] = 6,
 			["WEAPON_SHOTGUN_AMMO"] = 5,
 			["badge01"] = 10,
-			["WEAPON_MOLOTOV"] = 75,
-			["WEAPON_SMOKEGRENADE"] = 75,
+			-- ["WEAPON_MOLOTOV"] = 75,
+			-- ["WEAPON_SMOKEGRENADE"] = 75,
+			-- ["WEAPON_FLASHBANG"] = 75,
 			["attachsFlashlight"] = 1750,
 			["attachsCrosshair"] = 1750,
 			["attachsSilencer"] = 1750,
 			["attachsMagazine"] = 1750,
 			["attachsGrip"] = 1750,
-			["megaphone"] = 525
+			["attachsMazzleBrake"] = 1750,
+			["attachsMazzleBoost"] = 1750,
+			["megaphone"] = 525,
+			["radio"] = 975,
+			["binoculars"] = 275
 		}
 	},
 	["Criminal"] = {
 		["mode"] = "Sell",
-		["type"] = "Cash",
+		["type"] = "Cashz",
 		["List"] = {
 			["keyboard"] = 75,
 			["mouse"] = 75,
@@ -452,13 +608,7 @@ local shops = {
 			["blender"] = 75,
 			["switch"] = 45,
 			["cup"] = 100,
-			["lampshade"] = 75
-		}
-	},
-	["Criminal2"] = {
-		["mode"] = "Sell",
-		["type"] = "Cash",
-		["List"] = {
+			["lampshade"] = 75,
 			["watch"] = 75,
 			["bracelet"] = 75,
 			["dildo"] = 75,
@@ -469,13 +619,7 @@ local shops = {
 			["slipper"] = 75,
 			["rimel"] = 75,
 			["brush"] = 75,
-			["soap"] = 75
-		}
-	},
-	["Criminal3"] = {
-		["mode"] = "Sell",
-		["type"] = "Cash",
-		["List"] = {
+			["soap"] = 75,
 			["eraser"] = 75,
 			["legos"] = 75,
 			["ominitrix"] = 75,
@@ -483,13 +627,7 @@ local shops = {
 			["domino"] = 45,
 			["floppy"] = 45,
 			["horseshoe"] = 75,
-			["deck"] = 75
-		}
-	},
-	["Criminal4"] = {
-		["mode"] = "Sell",
-		["type"] = "Cash",
-		["List"] = {
+			["deck"] = 75,
 			["goldbar"] = 525,
 			["pliers"] = 55,
 			["pager"] = 125,
@@ -498,7 +636,9 @@ local shops = {
 			["card03"] = 375,
 			["card04"] = 275,
 			["card05"] = 425,
-			["pendrive"] = 325
+			["pendrive"] = 325,
+			["silvercoin"] = 10,
+			["goldcoin"] = 20
 		}
 	}
 }
@@ -522,6 +662,15 @@ function Creative.requestPerm(Type)
 		if shops[Type]["perm"] ~= nil then
 			if not vRP.HasService(Passport,shops[Type]["perm"]) then
 				return false
+			end
+		end
+
+		if shops[Type]["required"] ~= nil then
+			for Index,v in pairs(shops[Type]["required"]) do
+				local consultItem = vRP.InventoryItemAmount(Passport,Index)
+				if consultItem[1] < parseInt(v) then
+					return false
+				end
 			end
 		end
 
@@ -583,7 +732,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.getShopType(Type)
     return shops[Type]["mode"]
-end---------------------------------------------------------------------------------------------------------------------------------
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- FUNCTIONSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.functionShops(Type,Item,Amount,Slot)
@@ -606,9 +756,31 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 					if (vRP.InventoryWeight(Passport) + itemWeight(Item) * Amount) <= vRP.GetWeight(Passport) then
 						if shops[Type]["type"] == "Cash" then
 							if shops[Type]["List"][Item] then
+								local Split = splitString(Item,"-")
+								if Split[1] == "badge04" then
+									if Split[2] and not vRP.HasService(Passport,Split[2]) then
+										return
+									end
+								end
+
+								local Restaurant = splitString(Type)
+								local Chest,Target = BlockRestaurant(Restaurant[1],Item)
+								if shops[Type]["shop"] then
+									local Result = vRP.GetSrvData("Chest:"..Type,true)
+									if not Result[Target] or Result[Target]["item"] ~= Item or Result[Target]["amount"] < Amount then
+										TriggerClientEvent("Notify",source,"vermelho","<b>Estoque</b> insuficiente.",5000)
+										return
+									end
+								end
+
 								if vRP.PaymentFull(Passport,shops[Type]["List"][Item] * Amount) then
 									if Item == "identity" or string.sub(Item,1,5) == "badge" then
-										vRP.GiveItem(Passport,Item.."-"..Passport,Amount,false,Slot)
+										local Split = splitString(Item,"-")
+										if Split[1] == "badge04" then
+											vRP.GiveItem(Passport,Split[1].."-"..Passport,Amount,false,Slot)
+										else
+											vRP.GiveItem(Passport,Item.."-"..Passport,Amount,false,Slot)
+										end
 									elseif Item == "fidentity" then
 										local Identity = vRP.Identity(Passport)
 										if Identity then
@@ -625,14 +797,25 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 											end
 										end
 									else
-										vRP.GenerateItem(Passport,Item,Amount,false,Slot)
+										if shops[Type]["shop"] then
+											if vRP.TakeChest(Passport,"Chest:"..Type,Amount,Target,Slot) then
+												vCLIENT.updateShops(source,"requestShop")
+												return
+											else
+												vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 
-										if Item == "WEAPON_PETROLCAN" then
-											vRP.GenerateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500,false)
+												if Chest then
+													vRP.DirectChest(Chest,"500",shops[Type]["List"][Item] * Amount)
+												end
+											end
+										else
+											vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 										end
 									end
 
 									TriggerClientEvent("sounds:Private",source,"cash",0.1)
+
+									TriggerEvent("Discord",Type,"**Passaporte:** "..Passport.."\n**Comprou:** "..Amount.."x "..itemName(Item),10181046)
 								else
 									TriggerClientEvent("Notify",source,"vermelho","<b>Dólares</b> insuficientes.",5000)
 								end
@@ -641,6 +824,8 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 							if vRP.TakeItem(Passport,shops[Type]["item"],parseInt(shops[Type]["List"][Item] * Amount)) then
 								vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 								TriggerClientEvent("sounds:Private",source,"cash",0.1)
+
+								TriggerEvent("Discord",Type,"**Passaporte:** "..Passport.."\n**Comprou:** "..Amount.."x "..itemName(Item),10181046)
 							else
 								TriggerClientEvent("Notify",source,"vermelho","<b>"..itemName(shops[Type]["item"]).."</b> insuficiente.",5000)
 							end
@@ -649,6 +834,8 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 								TriggerClientEvent("sounds:Private",source,"cash",0.1)
 								vRP.GenerateItem(Passport,Item,Amount,false,Slot)
 								TriggerClientEvent("Notify",source,"verde","Comprou <b>"..Amount.."x "..itemName(Item).."</b> por <b>"..shops[Type]["List"][Item] * Amount.." Gemas</b>.",5000)
+
+								TriggerEvent("Discord",Type,"**Passaporte:** "..Passport.."\n**Comprou:** "..Amount.."x "..itemName(Item),10181046)
 							else
 								TriggerClientEvent("Notify",source,"vermelho","<b>Gemas</b> insuficientes.",5000)
 							end
@@ -670,18 +857,45 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 							end
 						end
 
-						if shops[Type]["type"] == "Cash" then
-							if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
-								if itemPrice > 0 then
-									vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)
-									TriggerClientEvent("sounds:Private",source,"cash",0.1)
-								end
-							end
-						elseif shops[Type]["type"] == "Consume" then
+						if shops[Type]["type"] == "Consume" then
 							if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
 								if itemPrice > 0 then
 									vRP.GenerateItem(Passport,shops[Type]["item"],parseInt(itemPrice * Amount),false)
 									TriggerClientEvent("sounds:Private",source,"cash",0.1)
+								end
+							end
+						else
+							if shops[Type]["type"] == "Cash" then
+								if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
+									if itemPrice > 0 then
+										if GlobalState["Buffs"]["Dexterity"][Passport] then
+											if GlobalState["Buffs"]["Dexterity"][Passport] > os.time() then
+												itemPrice = itemPrice + (itemPrice * 0.1)
+											end
+										end
+
+										if vRP.UserPremium(Passport) then
+											if vRP.HasGroup(Passport,"Premium",1) then
+												itemPrice = itemPrice + (itemPrice * 0.1)
+											elseif vRP.HasGroup(Passport,"Premium",2) then
+												itemPrice = itemPrice + (itemPrice * 0.15)
+											elseif vRP.HasGroup(Passport,"Premium",3) then
+												itemPrice = itemPrice + (itemPrice * 0.2)
+											end
+										end
+
+										vRP.GenerateItem(Passport,"dollars",parseInt(itemPrice * Amount),false)
+
+										TriggerClientEvent("sounds:Private",source,"cash",0.1)
+									end
+								end
+							elseif shops[Type]["type"] == "Cashz" then
+								if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
+									if itemPrice > 0 then
+										vRP.GenerateItem(Passport,"dollarsz",parseInt(itemPrice * Amount),false)
+
+										TriggerClientEvent("sounds:Private",source,"cash",0.1)
+									end
 								end
 							end
 						end

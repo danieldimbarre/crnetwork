@@ -79,10 +79,16 @@ RegisterCommand("globalFunctions",function()
 			exports["dynamic"]:AddButton("Chapéu","Colocar/Retirar o chapéu.","player:Outfit","Hat","clothes",true)
 			exports["dynamic"]:AddButton("Máscara","Colocar/Retirar a máscara.","player:Outfit","Mask","clothes",true)
 			exports["dynamic"]:AddButton("Óculos","Colocar/Retirar o óculos.","player:Outfit","Glasses","clothes",true)
+			exports["dynamic"]:AddButton("Remover","Retirar suas vestimentas do corpo.","player:Outfit","remover","clothes",true)
 			exports["dynamic"]:AddButton("Vestir","Vestir-se com as vestimentas guardadas.","player:Outfit","aplicar","clothes",true)
 			exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","player:Outfit","salvar","clothes",true)
 
+			exports["dynamic"]:AddButton("Vestir","Vestir-se com as vestimentas guardadas.","player:Outfit","aplicarpremium","premiumclothes",true)
+			exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","player:Outfit","salvarpremium","premiumclothes",true)
+
 			exports["dynamic"]:AddButton("Propriedades","Marcar/Desmarcar propriedades no mapa.","propertys:Blips","","others",false)
+			exports["dynamic"]:AddButton("Armazéns","Marcar/Desmarcar armazéns no mapa.","warehouse:Blips","","others",false)
+			exports["dynamic"]:AddButton("Caixas","Marcar/Desmarcar caixas no mapa.","objects:Blips","Supplies","others",false)
 			exports["dynamic"]:AddButton("Ferimentos","Verificar ferimentos no corpo.","paramedic:Injuries","","others",false)
 			exports["dynamic"]:AddButton("Desbugar","Recarregar o personagem.","barbershop:Debug","","others",true)
 
@@ -129,10 +135,11 @@ RegisterCommand("globalFunctions",function()
 
 			local Experience = vSERVER.Experience()
 			for Name,Exp in pairs(Experience) do
-				exports["dynamic"]:AddButton(Name,"Você possuí <yellow>"..Exp.." pontos</yellow> na classe <yellow>"..ClassCategory(Exp).."</yellow>.","","","Experience",false)
+				exports["dynamic"]:AddButton(Name,"Você possui <yellow>"..Exp.." pontos</yellow> na classe <yellow>"..ClassCategory(Exp).."</yellow>.","","","Experience",false)
 			end
 
 			exports["dynamic"]:SubMenu("Roupas","Colocar/Retirar roupas.","clothes")
+			exports["dynamic"]:SubMenu("Roupas Premium","Colocar/Salvar roupas premium.","premiumclothes")
 			exports["dynamic"]:SubMenu("Experiência","Todas as suas habilidades.","Experience")
 			exports["dynamic"]:SubMenu("Outros","Todas as funções do personagem.","others")
 
@@ -157,25 +164,27 @@ RegisterCommand("emergencyFunctions",function()
 					exports["dynamic"]:SubMenu("Jogador","Pessoa mais próxima de você.","player")
 				end
 
-				if LocalPlayer["state"]["Police"] then
-					exports["dynamic"]:AddButton("Remover Chapéu","Remover da pessoa mais próxima.","skinshop:Remove","Hat","player",true)
-					exports["dynamic"]:AddButton("Remover Máscara","Remover da pessoa mais próxima.","skinshop:Remove","Mask","player",true)
-					exports["dynamic"]:AddButton("Remover Óculos","Remover da pessoa mais próxima.","skinshop:Remove","Glasses","player",true)
+				exports["dynamic"]:AddButton("Remover Máscara","Remover da pessoa mais próxima.","skinshop:Remove","Mask","player",true)
+				exports["dynamic"]:AddButton("Remover Chapéu","Remover da pessoa mais próxima.","skinshop:Remove","Hat","player",true)
+				exports["dynamic"]:AddButton("Remover Óculos","Remover da pessoa mais próxima.","skinshop:Remove","Glasses","player",true)
 
-					exports["dynamic"]:AddButton("Sheriff","Fardamento de oficial.","player:Preset","1","prePolice",true)
-					exports["dynamic"]:AddButton("State Police","Fardamento de oficial.","player:Preset","2","prePolice",true)
-					exports["dynamic"]:AddButton("Park Ranger","Fardamento de oficial.","player:Preset","3","prePolice",true)
-					exports["dynamic"]:AddButton("Los Santos Police","Fardamento de oficial.","player:Preset","4","prePolice",true)
-					exports["dynamic"]:AddButton("Los Santos Police","Fardamento de oficial.","player:Preset","5","prePolice",true)
+				if LocalPlayer["state"]["Police"] then
+					exports["dynamic"]:AddButton("Aluno","Fardamento de policial.","player:Preset","1","prePolice",true)
+					exports["dynamic"]:AddButton("Polícia","Fardamento de policial.","player:Preset","2","prePolice",true)
+					exports["dynamic"]:AddButton("GTM","Fardamento de policial.","player:Preset","3","prePolice",true)
+					exports["dynamic"]:AddButton("GAR","Fardamento de policial.","player:Preset","4","prePolice",true)
+					exports["dynamic"]:AddButton("GRAER","Fardamento de policial.","player:Preset","5","prePolice",true)
+					exports["dynamic"]:AddButton("GIP","Fardamento de policial.","player:Preset","6","prePolice",true)
+					exports["dynamic"]:AddButton("GOE","Fardamento de policial.","player:Preset","7","prePolice",true)
 
 					exports["dynamic"]:SubMenu("Fardamentos","Todos os fardamentos policiais.","prePolice")
 					exports["dynamic"]:AddButton("Computador","Computador de bordo policial.","police:Mdt","",false,false)
+					exports["dynamic"]:AddButton("Invadir","Invadir a propriedade.","propertys:Invade","",false,true)
 				elseif LocalPlayer["state"]["Paramedic"] then
-					exports["dynamic"]:AddButton("Medical Center","Fardamento de doutor.","player:Preset","6","preMedic",true)
-					exports["dynamic"]:AddButton("Medical Center","Fardamento de paramédico.","player:Preset","7","preMedic",true)
-					exports["dynamic"]:AddButton("Medical Center","Fardamento de paramédico interno.","player:Preset","8","preMedic",true)
-					exports["dynamic"]:AddButton("Fire Departament","Fardamento de atendimentos.","player:Preset","9","preMedic",true)
-					exports["dynamic"]:AddButton("Fire Departament","Fardamento de mergulhador.","player:Preset","10","preMedic",true)
+					exports["dynamic"]:AddButton("Paramédico","Fardamento de paramédico.","player:Preset","8","preMedic",true)
+					exports["dynamic"]:AddButton("Paramédico Interno","Fardamento de paramédico interno.","player:Preset","9","preMedic",true)
+					exports["dynamic"]:AddButton("Mergulhador","Fardamento de mergulhador.","player:Preset","10","preMedic",true)
+					exports["dynamic"]:AddButton("Doutor","Fardamento de doutor.","player:Preset","11","preMedic",true)
 
 					exports["dynamic"]:SubMenu("Fardamentos","Todos os fardamentos médicos.","preMedic")
 				end

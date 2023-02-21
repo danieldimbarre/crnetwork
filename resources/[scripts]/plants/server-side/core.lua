@@ -15,9 +15,16 @@ Tunnel.bindInterface("plants",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Plants = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- TYPES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Types = {
+	["bkr_prop_weed_med_01a"] = { "weedleaf","weedclone" },
+	["bag_coca_plant"] = { "cokeleaf","cokeclone" }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PLANTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Plants",function(Coords,Route,Points)
+exports("Plants",function(Coords,Route,Points,Model)
 	local Number = 0
 
 	repeat
@@ -26,9 +33,10 @@ exports("Plants",function(Coords,Route,Points)
 
 	Plants[tostring(Number)] = {
 		["Coords"] = { mathLength(Coords["x"]),mathLength(Coords["y"]),mathLength(Coords["z"]) },
-		["Time"] = os.time() + 10800,
+		["Time"] = os.time() + 7200,
 		["Points"] = Points,
-		["Route"] = Route
+		["Route"] = Route,
+		["Model"] = Model
 	}
 
 	TriggerClientEvent("plants:New",-1,tostring(Number),Plants[tostring(Number)])
@@ -47,10 +55,21 @@ AddEventHandler("plants:Collect",function(Number)
 			TriggerClientEvent("dynamic:closeSystem",source)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
-			if os.time() >= Plants[Number]["Time"] then
+			if not vRP.HasService(Passport,"Facs") then
+				return
+			end
+
+			if (Plants[Number]["Time"] - os.time()) <= 5400 then
 				local Temporary = Plants[Number]
 
-				if (vRP.InventoryWeight(Passport) + itemWeight("weedleaf")) <= vRP.GetWeight(Passport) then
+				local Item = ""
+				local Plant = ""
+				if Types[Temporary["Model"]] then
+					Item = Types[Temporary["Model"]][1]
+					Plant = Types[Temporary["Model"]][2]
+				end
+
+				if (vRP.InventoryWeight(Passport) + itemWeight(Item) + itemWeight(Plant)) <= vRP.GetWeight(Passport) then
 					Plants[Number] = nil
 					Player(source)["state"]["Cancel"] = true
 					Player(source)["state"]["Buttons"] = true
@@ -60,7 +79,8 @@ AddEventHandler("plants:Collect",function(Number)
 
 					Wait(10000)
 
-					vRP.GenerateItem(Passport,"weedleaf-"..Temporary["Points"],1,true)
+					vRP.GenerateItem(Passport,Item.."-"..Temporary["Points"],math.random(2,3),true)
+					vRP.GenerateItem(Passport,Plant.."-"..Temporary["Points"],1,true)
 					TriggerClientEvent("plants:Remover",-1,Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
@@ -86,10 +106,19 @@ AddEventHandler("plants:Cloning",function(Number)
 			TriggerClientEvent("dynamic:closeSystem",source)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
-			if (Plants[Number]["Time"] - os.time()) <= 5400 then
+			if not vRP.HasService(Passport,"Facs") then
+				return
+			end
+
+			if os.time() >= Plants[Number]["Time"] then
 				local Temporary = Plants[Number]
 
-				if (vRP.InventoryWeight(Passport) + itemWeight("weedclone") * 2) <= vRP.GetWeight(Passport) then
+				local Item = ""
+				if Types[Temporary["Model"]] then
+					Item = Types[Temporary["Model"]][2]
+				end
+
+				if (vRP.InventoryWeight(Passport) + itemWeight(Item) * 2) <= vRP.GetWeight(Passport) then
 					Plants[Number] = nil
 					Player(source)["state"]["Cancel"] = true
 					Player(source)["state"]["Buttons"] = true
@@ -104,7 +133,7 @@ AddEventHandler("plants:Cloning",function(Number)
 						Points = 100
 					end
 
-					vRP.GenerateItem(Passport,"weedclone-"..Points,2,true)
+					vRP.GenerateItem(Passport,Item.."-"..Points,2,true)
 					TriggerClientEvent("plants:Remover",-1,Number)
 					Player(source)["state"]["Buttons"] = false
 					Player(source)["state"]["Cancel"] = false
@@ -114,6 +143,19 @@ AddEventHandler("plants:Cloning",function(Number)
 				end
 			end
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLANTS:DESTROY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("plants:Destroy")
+AddEventHandler("plants:Destroy",function(Number)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and Plants[Number] then
+		Plants[Number] = nil
+		TriggerClientEvent("plants:Remover",-1,Number)
+		TriggerClientEvent("Notify",source,"verde","A plantação foi destruída.",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -128,16 +170,18 @@ function Creative.Informations(Number)
 			TriggerClientEvent("Notify",source,"vermelho","A plantação apodreceu.",5000)
 		else
 			local Collect = "A coleta está disponível"
-			if os.time() < Plants[Number]["Time"] then
-				Collect = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time())
+			if (Plants[Number]["Time"] - os.time()) > 5400 then
+				Collect = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time() - 5400)
 			end
 
 			local Cloning = "A clonagem está disponível"
-			if (Plants[Number]["Time"] - os.time()) > 5400 then
-				Cloning = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time() - 5400)
+			if os.time() < Plants[Number]["Time"] then
+				Cloning = "Aguarde "..Calculate(Plants[Number]["Time"] - os.time())
 			end
 
-			return { Collect,Cloning }
+			local Destroy = "Destruir planta"
+
+			return { Collect,Cloning,Destroy }
 		end
 	end
 

@@ -20,10 +20,6 @@ local Actived = false
 local Ranking = false
 local TyreExplodes = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LOCALPLAYER
------------------------------------------------------------------------------------------------------------------------------------------
-LocalPlayer["state"]["Race"] = false
------------------------------------------------------------------------------------------------------------------------------------------
 -- THREADRACES
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -49,7 +45,7 @@ CreateThread(function()
 				end
 
 				local Distance = #(Coords - vec3(Races[Race]["Coords"][Checkpoint][1][1],Races[Race]["Coords"][Checkpoint][1][2],Races[Race]["Coords"][Checkpoint][1][3]))
-				if Distance <= 5 then
+				if Distance <= 7.5 then
 					if Checkpoint >= #Races[Race]["Coords"] then
 						SendNUIMessage({ Action = "Display", Status = false })
 						vSERVER.Finish(Race,Points)
@@ -200,11 +196,17 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Leave()
 	SendNUIMessage({ Action = "Display", Status = false })
-	vSERVER.Cancel()
 	Actived = false
 
 	CleanObjects()
 	CleanBlips()
+
+	if vSERVER.Cancel() then
+		Wait(3000)
+
+		local Vehicle = GetPlayersLastVehicle()
+		NetworkExplodeVehicle(Vehicle,true,true,false)
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTYREEXPLODES

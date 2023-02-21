@@ -9,21 +9,19 @@ $(document).ready(function(){
 /* ---------------------------------------------------------------------------------------------------------------- */
 window.addEventListener("message",function(event){
 	if (event["data"]["tencode"] == true){
-		$("#divCode").css("display","block");
+		$("#divCode").fadeIn(500).css("display","block");
 	}
 
 	if (event["data"]["tencode"] == false){
-		$("#divCode").css("display","none");
+		$("#divCode").fadeOut(500).css("display","none");
 	}
 
 	if (event["data"]["radar"] == true){
-		$("#topRadar").css("display","block");
-		$("#botRadar").css("display","block");
+		$("#divRadar").fadeIn(500).css("display","block");
 	}
 
 	if (event["data"]["radar"] == false){
-		$("#topRadar").css("display","none");
-		$("#botRadar").css("display","none");
+		$("#divRadar").fadeOut(500).css("display","none");
 	}
 
 	if (event["data"]["radar"] == "top"){

@@ -2,6 +2,8 @@
 -- VRP
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
+local Proxy = module("vrp","lib/Proxy")
+vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -10,6 +12,7 @@ vSERVER = Tunnel.getInterface("warehouse")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Warehouse = ""
+local Blips = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -52,7 +55,33 @@ local List = {
 	["36"] = { 108.89,6326.23,31.37,3.0 },
 	["37"] = { 96.49,6329.04,31.37,3.0 },
 	["38"] = { 93.55,6335.0,31.37,3.0 },
-	["39"] = { -246.59,6068.58,32.33,3.0 }
+	["39"] = { -246.59,6068.58,32.33,3.0 },
+	["40"] = { 333.22,-994.33,29.34,3.0 },
+	["41"] = { 40.07,-1022.55,29.52,3.0 },
+	["42"] = { -34.87,-661.04,33.48,3.0 },
+	["43"] = { -326.07,-1267.72,31.29,3.0 },
+	["44"] = { -701.72,-2241.32,4.89,3.0 },
+	["45"] = { -964.97,-2067.13,9.4,3.0 },
+	["46"] = { -592.57,-1765.01,23.19,3.0 },
+	["47"] = { -440.42,-1693.49,19.23,3.0 },
+	["48"] = { -200.95,-1378.53,31.26,3.0 },
+	["49"] = { -157.54,-1292.53,31.32,3.0 },
+	["50"] = { -164.25,-1292.59,31.32,3.0 },
+	["51"] = { -1151.44,-2170.76,13.26,3.0 },
+	["52"] = { -985.91,-2225.48,8.86,3.0 },
+	["53"] = { -252.71,-2586.26,6.0,3.0 },
+	["54"] = { -211.56,-2584.29,6.0,3.0 },
+	["55"] = { -192.67,-2658.81,6.0,3.0 },
+	["56"] = { -192.64,-2679.56,6.02,3.0 },
+	["57"] = { -192.58,-2707.3,6.02,3.0 },
+	["58"] = { -170.2,-2707.64,6.0,3.0 },
+	["59"] = { -170.28,-2686.66,6.0,3.0 },
+	["60"] = { -170.22,-2659.13,6.0,3.0 },
+	["61"] = { -326.1,-1278.64,31.29,3.0 },
+	["62"] = { -326.05,-1284.01,31.31,3.0 },
+	["63"] = { -324.38,-1348.23,31.37,3.0 },
+	["64"] = { -320.21,-1400.83,31.76,3.0 },
+	["65"] = { 3.54,-1310.43,30.16,3.0 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -71,12 +100,12 @@ CreateThread(function()
 					label = "Abrir",
 					tunnel = "shop"
 				},{
-					event = "warehouse:Upgrade",
-					label = "Aumentar",
-					tunnel = "server"
-				},{
 					event = "warehouse:Password",
 					label = "Trocar Senha",
+					tunnel = "server"
+				},{
+					event = "warehouse:Sell",
+					label = "Vender",
 					tunnel = "server"
 				}
 			}
@@ -87,7 +116,7 @@ end)
 -- WAREHOUSE:OPENSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("warehouse:openSystem",function(Number)
-	if LocalPlayer["state"]["Route"] < 900000 then
+	if LocalPlayer["state"]["Route"] < 900000 and GetEntityHealth(PlayerPedId()) > 100 then
 		if vSERVER.Warehouse(Number) then
 			Warehouse = Number
 			SetNuiFocus(true,true)
@@ -103,6 +132,9 @@ RegisterNUICallback("invClose",function(Data,Callback)
 	SetNuiFocus(false,false)
 	Warehouse = ""
 
+	vRP.stopAnim(false)
+	LocalPlayer["state"]["Buttons"] = false
+	LocalPlayer["state"]["Cancel"] = false
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -151,4 +183,34 @@ end)
 RegisterNetEvent("warehouse:Weight")
 AddEventHandler("warehouse:Weight",function(invPeso,invMaxpeso,warehousePeso,warehouseMaxpeso)
 	SendNUIMessage({ action = "updateWeight", invPeso = invPeso, invMaxpeso = invMaxpeso, warehousePeso = warehousePeso, warehouseMaxpeso = warehouseMaxpeso })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WAREHOUSE:BLIPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("warehouse:Blips")
+AddEventHandler("warehouse:Blips",function()
+	if json.encode(Blips) ~= "[]" then
+		for _,v in pairs(Blips) do
+			if DoesBlipExist(v) then
+				RemoveBlip(v)
+			end
+		end
+
+		Blips = {}
+
+		TriggerEvent("Notify","amarelo","Marcações desativadas.",10000)
+	else
+		for Name,v in pairs(List) do
+			Blips[Name] = AddBlipForCoord(v[1],v[2],v[3])
+			SetBlipSprite(Blips[Name],50)
+			SetBlipAsShortRange(Blips[Name],true)
+			SetBlipColour(Blips[Name],5)
+			SetBlipScale(Blips[Name],0.4)
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentSubstringPlayerName("Armazém")
+			EndTextCommandSetBlipName(Blips[Name])
+		end
+
+		TriggerEvent("Notify","verde","Marcações ativadas.",10000)
+	end
 end)

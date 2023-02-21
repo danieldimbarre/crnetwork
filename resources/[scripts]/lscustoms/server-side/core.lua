@@ -43,13 +43,13 @@ AddEventHandler("lscustoms:attemptPurchase",function(type,mod)
 		if type == "engines" or type == "brakes" or type == "transmission" or type == "suspension" or type == "shield" then
 			local Price = vehicleCustomisationPrices[type][mod]
 
-			if vRP.PaymentFull(Passport,Price) then
+			if vRP.PaymentBank(Passport,Price) then
 				TriggerClientEvent("lscustoms:purchaseSuccessful",source)
 			else
 				TriggerClientEvent("lscustoms:purchaseFailed",source)
 			end
 		else
-			if vRP.PaymentFull(Passport,vehicleCustomisationPrices[type]) then
+			if vRP.PaymentBank(Passport,vehicleCustomisationPrices[type]) then
 				TriggerClientEvent("lscustoms:purchaseSuccessful",source)
 			else
 				TriggerClientEvent("lscustoms:purchaseFailed",source)

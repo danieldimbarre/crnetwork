@@ -23,14 +23,16 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("trunkchest:Open")
 AddEventHandler("trunkchest:Open",function()
-	SetNuiFocus(true,true)
-	SendNUIMessage({ action = "showMenu" })
+	if GetEntityHealth(PlayerPedId()) > 100 then
+		SetNuiFocus(true,true)
+		SendNUIMessage({ action = "showMenu" })
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("takeItem",function(Data,Callback)
-	vSERVER.takeItem(Data["slot"],Data["amount"],Data["target"])
+	vSERVER.takeItem(Data["item"],Data["slot"],Data["amount"],Data["target"])
 
 	Callback("Ok")
 end)

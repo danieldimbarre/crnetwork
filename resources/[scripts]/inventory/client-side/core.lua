@@ -15,6 +15,8 @@ vSERVER = Tunnel.getInterface("inventory")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Objects = {}
+local Blips = {}
 local Drops = {}
 local Types = ""
 local Weapon = ""
@@ -25,7 +27,6 @@ local TakeWeapon = false
 local StoreWeapon = false
 local Reloaded = GetGameTimer()
 local UseCooldown = GetGameTimer()
-LocalPlayer["state"]["Buttons"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WEAPONS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -169,6 +170,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Deliver",function(Data,Callback)
 	vSERVER.Deliver(Data["slot"])
+
+	Callback("Ok")
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TRASH
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("Trash",function(Data,Callback)
+	vSERVER.Trash(Data["slot"],Data["amount"])
 
 	Callback("Ok")
 end)
@@ -537,7 +546,11 @@ local weaponAttachs = {
 		["WEAPON_SMG_MK2"] = "COMPONENT_AT_AR_FLSH",
 		["WEAPON_ASSAULTRIFLE"] = "COMPONENT_AT_AR_FLSH",
 		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_AT_AR_FLSH",
-		["WEAPON_ASSAULTSMG"] = "COMPONENT_AT_AR_FLSH"
+		["WEAPON_ASSAULTSMG"] = "COMPONENT_AT_AR_FLSH",
+		["WEAPON_MILITARYRIFLE"] = "COMPONENT_AT_AR_FLSH",
+		["WEAPON_HEAVYRIFLE"] = "COMPONENT_AT_AR_FLSH",
+		["WEAPON_TACTICALRIFLE"] = "COMPONENT_AT_AR_FLSH_REH",
+		["WEAPON_SWMP9"] = "COMPONENT_SWMP9_FLSH_01"
 	},
 	["attachsCrosshair"] = {
 		["WEAPON_PISTOL_MK2"] = "COMPONENT_AT_PI_RAIL",
@@ -554,7 +567,9 @@ local weaponAttachs = {
 		["WEAPON_SMG_MK2"] = "COMPONENT_AT_SCOPE_SMALL_SMG_MK2",
 		["WEAPON_ASSAULTRIFLE"] = "COMPONENT_AT_SCOPE_MACRO",
 		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_AT_SCOPE_MEDIUM_MK2",
-		["WEAPON_ASSAULTSMG"] = "COMPONENT_AT_SCOPE_MACRO"
+		["WEAPON_ASSAULTSMG"] = "COMPONENT_AT_SCOPE_MACRO",
+		["WEAPON_MILITARYRIFLE"] = "COMPONENT_AT_SCOPE_SMALL",
+		["WEAPON_HEAVYRIFLE"] = "COMPONENT_AT_SCOPE_MEDIUM"
 	},
 	["attachsMagazine"] = {
 		["WEAPON_PISTOL"] = "COMPONENT_PISTOL_CLIP_02",
@@ -580,31 +595,73 @@ local weaponAttachs = {
 		["WEAPON_SMG_MK2"] = "COMPONENT_SMG_MK2_CLIP_02",
 		["WEAPON_ASSAULTRIFLE"] = "COMPONENT_ASSAULTRIFLE_CLIP_02",
 		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_ASSAULTRIFLE_MK2_CLIP_02",
+		["WEAPON_COLTXM177"] = "COMPONENT_COLTXM177_CLIP_01",
+		["WEAPON_FNFAL"] = "COMPONENT_FNFAL_CLIP_01",
+		["WEAPON_PARAFAL"] = "COMPONENT_PARAFAL_CLIP_01",
 		["WEAPON_ASSAULTSMG"] = "COMPONENT_ASSAULTSMG_CLIP_02",
-		["WEAPON_GUSENBERG"] = "COMPONENT_GUSENBERG_CLIP_02"
+		["WEAPON_GUSENBERG"] = "COMPONENT_GUSENBERG_CLIP_02",
+		["WEAPON_MILITARYRIFLE"] = "COMPONENT_MILITARYRIFLE_CLIP_02",
+		["WEAPON_HEAVYRIFLE"] = "COMPONENT_HEAVYRIFLE_CLIP_02",
+		["WEAPON_TACTICALRIFLE"] = "COMPONENT_TACTICALRIFLE_CLIP_02",
+		["WEAPON_SWMP9"] = "COMPONENT_SWMP9_CLIP_02"
 	},
 	["attachsSilencer"] = {
 		["WEAPON_PISTOL"] = "COMPONENT_AT_PI_SUPP_02",
+		["WEAPON_PISTOL_MK2"] = "COMPONENT_PISTOL_MK2_CLIP_02",
 		["WEAPON_APPISTOL"] = "COMPONENT_AT_PI_SUPP",
+		["WEAPON_HEAVYPISTOL"] = "COMPONENT_AT_PI_SUPP",
 		["WEAPON_MACHINEPISTOL"] = "COMPONENT_AT_PI_SUPP",
+		["WEAPON_MICROSMG"] = "COMPONENT_AT_AR_SUPP_02",
+		["WEAPON_SNSPISTOL_MK2"] = "COMPONENT_AT_PI_SUPP_02",
+		["WEAPON_VINTAGEPISTOL"] = "COMPONENT_AT_PI_SUPP",
+		["WEAPON_PISTOL50"] = "COMPONENT_AT_AR_SUPP_02",
+		["WEAPON_COMBATPISTOL"] = "COMPONENT_AT_PI_SUPP",
+		["WEAPON_CARBINERIFLE"] = "COMPONENT_AT_AR_SUPP",
+		["WEAPON_CARBINERIFLE_MK2"] = "COMPONENT_AT_AR_SUPP",
 		["WEAPON_BULLPUPRIFLE"] = "COMPONENT_AT_AR_SUPP",
+		["WEAPON_BULLPUPRIFLE_MK2"] = "COMPONENT_AT_AR_SUPP",
+		["WEAPON_SPECIALCARBINE"] = "COMPONENT_AT_AR_SUPP_02",
+		["WEAPON_SPECIALCARBINE_MK2"] = "COMPONENT_AT_AR_SUPP_02",
+		["WEAPON_PUMPSHOTGUN"] = "COMPONENT_AT_SR_SUPP",
 		["WEAPON_PUMPSHOTGUN_MK2"] = "COMPONENT_AT_SR_SUPP_03",
 		["WEAPON_SMG"] = "COMPONENT_AT_PI_SUPP",
 		["WEAPON_SMG_MK2"] = "COMPONENT_AT_PI_SUPP",
-		["WEAPON_CARBINERIFLE"] = "COMPONENT_AT_AR_SUPP",
+		["WEAPON_ASSAULTRIFLE"] = "COMPONENT_AT_AR_SUPP_02",
+		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_AT_AR_SUPP_02",
 		["WEAPON_COLTXM177"] = "COMPONENT_COLTXM177_SUPP",
-		["WEAPON_ASSAULTSMG"] = "COMPONENT_AT_AR_SUPP_02"
+		["WEAPON_ASSAULTSMG"] = "COMPONENT_AT_AR_SUPP_02",
+		["WEAPON_MILITARYRIFLE"] = "COMPONENT_AT_AR_SUPP",
+		["WEAPON_HEAVYRIFLE"] = "COMPONENT_AT_AR_SUPP",
+		["WEAPON_TACTICALRIFLE"] = "COMPONENT_AT_AR_SUPP_02"
 	},
 	["attachsGrip"] = {
 		["WEAPON_CARBINERIFLE"] = "COMPONENT_AT_AR_AFGRIP",
 		["WEAPON_CARBINERIFLE_MK2"] = "COMPONENT_AT_AR_AFGRIP_02",
-		["WEAPON_BULLPUPRIFLE_MK2"] = "COMPONENT_AT_MUZZLE_01",
+		["WEAPON_BULLPUPRIFLE"] = "COMPONENT_AT_AR_AFGRIP",
+		["WEAPON_BULLPUPRIFLE_MK2"] = "COMPONENT_AT_AR_AFGRIP_02",
 		["WEAPON_SPECIALCARBINE"] = "COMPONENT_AT_AR_AFGRIP",
+		["WEAPON_SPECIALCARBINE_MK2"] = "COMPONENT_AT_AR_AFGRIP_02",
+		["WEAPON_ASSAULTRIFLE"] = "COMPONENT_AT_AR_AFGRIP",
+		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_AT_AR_AFGRIP_02",
+		["WEAPON_HEAVYRIFLE"] = "COMPONENT_AT_AR_AFGRIP",
+		["WEAPON_TACTICALRIFLE"] = "COMPONENT_AT_AR_AFGRIP"
+	},
+	["attachsMazzleBrake"] = {
+		["WEAPON_CARBINERIFLE_MK2"] = "COMPONENT_AT_MUZZLE_01",
+		["WEAPON_BULLPUPRIFLE_MK2"] = "COMPONENT_AT_MUZZLE_01",
 		["WEAPON_SPECIALCARBINE_MK2"] = "COMPONENT_AT_MUZZLE_01",
 		["WEAPON_PUMPSHOTGUN_MK2"] = "COMPONENT_AT_MUZZLE_08",
 		["WEAPON_SMG_MK2"] = "COMPONENT_AT_MUZZLE_01",
-		["WEAPON_ASSAULTRIFLE"] = "COMPONENT_AT_AR_AFGRIP",
-		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_AT_AR_AFGRIP_02"
+		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_AT_MUZZLE_01"
+	},
+	["attachsMazzleBoost"] = {
+		["WEAPON_PISTOL_MK2"] = "COMPONENT_AT_PI_COMP",
+		["WEAPON_SNSPISTOL_MK2"] = "COMPONENT_AT_PI_COMP_02",
+		["WEAPON_CARBINERIFLE_MK2"] = "COMPONENT_AT_MUZZLE_02",
+		["WEAPON_BULLPUPRIFLE_MK2"] = "COMPONENT_AT_MUZZLE_02",
+		["WEAPON_SPECIALCARBINE_MK2"] = "COMPONENT_AT_MUZZLE_02",
+		["WEAPON_SMG_MK2"] = "COMPONENT_AT_MUZZLE_02",
+		["WEAPON_ASSAULTRIFLE_MK2"] = "COMPONENT_AT_MUZZLE_02"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -728,7 +785,8 @@ local weaponAmmos = {
 		"WEAPON_HEAVYPISTOL",
 		"WEAPON_SNSPISTOL",
 		"WEAPON_SNSPISTOL_MK2",
-		"WEAPON_VINTAGEPISTOL"
+		"WEAPON_VINTAGEPISTOL",
+		"WEAPON_SWMP9"
 	},
 	["WEAPON_NAIL_AMMO"] = {
 		"WEAPON_NAILGUN"
@@ -739,7 +797,8 @@ local weaponAmmos = {
 		"WEAPON_SMG",
 		"WEAPON_SMG_MK2",
 		"WEAPON_GUSENBERG",
-		"WEAPON_MACHINEPISTOL"
+		"WEAPON_MACHINEPISTOL",
+		"WEAPON_ASSAULTSMG"
 	},
 	["WEAPON_RIFLE_AMMO"] = {
 		"WEAPON_FNFAL",
@@ -752,10 +811,12 @@ local weaponAmmos = {
 		"WEAPON_BULLPUPRIFLE_MK2",
 		"WEAPON_ADVANCEDRIFLE",
 		"WEAPON_ASSAULTRIFLE",
-		"WEAPON_ASSAULTSMG",
 		"WEAPON_ASSAULTRIFLE_MK2",
 		"WEAPON_SPECIALCARBINE",
-		"WEAPON_SPECIALCARBINE_MK2"
+		"WEAPON_SPECIALCARBINE_MK2",
+		"WEAPON_MILITARYRIFLE",
+		"WEAPON_HEAVYRIFLE",
+		"WEAPON_TACTICALRIFLE"
 	},
 	["WEAPON_SHOTGUN_AMMO"] = {
 		"WEAPON_PUMPSHOTGUN",
@@ -767,6 +828,9 @@ local weaponAmmos = {
 	},
 	["WEAPON_PETROLCAN_AMMO"] = {
 		"WEAPON_PETROLCAN"
+	},
+	["WEAPON_SNIPER_AMMO"] = {
+		"WEAPON_PRECISIONRIFLE"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -938,10 +1002,12 @@ CreateThread(function()
 			local Coords = GetEntityCoords(Ped)
 
 			for _,v in pairs(Drops) do
-				local Distance = #(Coords - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
-				if Distance <= 50 then
-					TimeDistance = 1
-					DrawMarker(21,v["Coords"][1],v["Coords"][2],v["Coords"][3] + 0.25,0.0,0.0,0.0,0.0,180.0,0.0,0.25,0.35,0.25,162,124,219,200,0,0,0,1)
+				if LocalPlayer["state"]["Route"] == v["route"] then
+					local Distance = #(Coords - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
+					if Distance <= 50 then
+						TimeDistance = 1
+						DrawMarker(21,v["Coords"][1],v["Coords"][2],v["Coords"][3] + 0.25,0.0,0.0,0.0,0.0,180.0,0.0,0.25,0.35,0.25,162,124,219,200,0,0,0,1)
+					end
 				end
 			end
 		end
@@ -961,12 +1027,14 @@ RegisterNUICallback("requestInventory",function(Data,Callback)
 		local _,Z = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
 
 		for Index,v in pairs(Drops) do
-			local Distance = #(vec3(Coords["x"],Coords["y"],Z) - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
-			if Distance <= 0.9 then
-				local Number = #Items + 1
+			if LocalPlayer["state"]["Route"] == v["route"] then
+				local Distance = #(vec3(Coords["x"],Coords["y"],Z) - vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]))
+				if Distance <= 0.9 then
+					local Number = #Items + 1
 
-				Items[Number] = v
-				Items[Number]["id"] = Index
+					Items[Number] = v
+					Items[Number]["id"] = Index
+				end
 			end
 		end
 	end
@@ -1432,7 +1500,8 @@ local ATMList = {
 	["132"] = { -1243.12,-1455.52,4.31 },
 	["133"] = { -1242.01,-1454.75,4.31 },
 	["134"] = { -1240.89,-1453.96,4.31 },
-	["135"] = { 822.93,-825.94,26.32 }
+	["135"] = { 822.93,-825.94,26.32 },
+	["136"] = { -682.29,325.51,83.07 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKATM
@@ -1457,6 +1526,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 local DrugsPeds = {}
 local StealPeds = {}
+local DrugsWeapons = { "WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE" }
+local StealWeapons = { "WEAPON_KATANA","WEAPON_KARAMBIT","WEAPON_BAT","WEAPON_HATCHET","WEAPON_POOLCUE","WEAPON_SNSPISTOL" }
 local DrugsTimer = GetGameTimer()
 local StealTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1471,7 +1542,7 @@ CreateThread(function()
 			local Handler,Selected = FindFirstPed()
 
 			repeat
-				if not IsEntityDead(Selected) and not StealPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
+				if not IsEntityDead(Selected) and not StealPeds[Selected] and not DrugsPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
 					local Coords = GetEntityCoords(Ped)
 					local pCoords = GetEntityCoords(Selected)
 					local Distance = #(Coords - pCoords)
@@ -1497,58 +1568,93 @@ CreateThread(function()
 							LocalPlayer["state"]["Buttons"] = true
 							LocalPlayer["state"]["Commands"] = true
 
-							if LoadAnim("random@mugging3") then
-								TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
-							end
+							if math.random(100) >= 75 then
+								vSERVER.CallPolice()
 
-							while true do
-								local Coords = GetEntityCoords(Ped)
-								local pCoords = GetEntityCoords(Selected)
-								local Distance = #(Coords - pCoords)
+								LocalPlayer["state"]["Buttons"] = false
+								LocalPlayer["state"]["Commands"] = false
 
-								if Distance <= 2 and (IsPedInMeleeCombat(Ped) or IsPlayerFreeAiming(Pid)) then
-									SelectedRobbery = SelectedRobbery - 1
+								local Weapon = StealWeapons[math.random(#StealWeapons)]
+								SetPedArmour(Selected,99)
+								SetPedAccuracy(Selected,100)
+								SetPedRelationshipGroupHash(Selected,GetHashKey("HATES_PLAYER"))
+								SetPedKeepTask(Selected,true)
+								SetCanAttackFriendly(Selected,false,true)
+								TaskCombatPed(Selected,Ped,0,16)
+								SetPedCombatAttributes(Selected,46,true)
+								SetPedCombatAbility(Selected,0)
+								SetPedCombatAttributes(Selected,0,true)
+								GiveWeaponToPed(Selected,Weapon,-1,false,true)
+								SetPedDropsWeaponsWhenDead(Selected,false)
+								SetPedCombatRange(Selected,2)
+								SetPedFleeAttributes(Selected,0,0)
+								SetPedConfigFlag(Selected,58,true)
+								SetPedConfigFlag(Selected,75,true)
+								SetPedFiringPattern(Selected,-957453492)
+								SetBlockingOfNonTemporaryEvents(Selected,true)
 
-									if not IsEntityPlayingAnim(Selected,"random@mugging3","handsup_standing_base",3) then
-										TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
-									end
+								SetModelAsNoLongerNeeded(GetEntityModel(Selected))
 
-									if SelectedRobbery <= 0 then
-										if LoadModel("prop_paper_bag_small") then
-											local Object = CreateObject("prop_paper_bag_small",Coords["x"],Coords["y"],Coords["z"],false,false,false)
-											AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,-0.05,0.05,180.0,0.0,0.0,false,false,false,false,2,true)
-											
-											if LoadAnim("mp_safehouselost@") then
-												TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
-											end
-
-											Wait(3000)
-
-											if DoesEntityExist(Object) then
-												DeleteEntity(Object)
-											end
-
-											vSERVER.StealPeds()
-											ClearPedSecondaryTask(Selected)
-											TaskWanderStandard(Selected,10.0,10)
-
-											LocalPlayer["state"]["Buttons"] = false
-											LocalPlayer["state"]["Commands"] = false
-
-											break
-										end
-									end
-								else
-									ClearPedSecondaryTask(Selected)
+								SetTimeout(60000,function()
+									ClearPedTasks(Selected)
 									TaskWanderStandard(Selected,10.0,10)
-
-									LocalPlayer["state"]["Buttons"] = false
-									LocalPlayer["state"]["Commands"] = false
-
-									break
+									TaskReactAndFleePed(Selected,Ped)
+									SetPedKeepTask(Selected,true)
+								end)
+							else
+								if LoadAnim("random@mugging3") then
+									TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
 								end
-
-								Wait(1)
+	
+								while true do
+									local Coords = GetEntityCoords(Ped)
+									local pCoords = GetEntityCoords(Selected)
+									local Distance = #(Coords - pCoords)
+	
+									if Distance <= 2 and (IsPedInMeleeCombat(Ped) or IsPlayerFreeAiming(Pid)) then
+										SelectedRobbery = SelectedRobbery - 1
+	
+										if not IsEntityPlayingAnim(Selected,"random@mugging3","handsup_standing_base",3) then
+											TaskPlayAnim(Selected,"random@mugging3","handsup_standing_base",8.0,8.0,-1,16,0,0,0,0)
+										end
+	
+										if SelectedRobbery <= 0 then
+											if LoadModel("prop_paper_bag_small") then
+												local Object = CreateObject("prop_paper_bag_small",Coords["x"],Coords["y"],Coords["z"],false,false,false)
+												AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,-0.05,0.05,180.0,0.0,0.0,false,false,false,false,2,true)
+												
+												if LoadAnim("mp_safehouselost@") then
+													TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+												end
+	
+												Wait(3000)
+	
+												if DoesEntityExist(Object) then
+													DeleteEntity(Object)
+												end
+	
+												vSERVER.StealPeds(Selected)
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
+	
+												LocalPlayer["state"]["Buttons"] = false
+												LocalPlayer["state"]["Commands"] = false
+	
+												break
+											end
+										end
+									else
+										ClearPedSecondaryTask(Selected)
+										TaskWanderStandard(Selected,10.0,10)
+	
+										LocalPlayer["state"]["Buttons"] = false
+										LocalPlayer["state"]["Commands"] = false
+	
+										break
+									end
+	
+									Wait(1)
+								end
 							end
 						end
 					end
@@ -1573,7 +1679,7 @@ CreateThread(function()
 			local Handler,Selected = FindFirstPed()
 
 			repeat
-				if not IsEntityDead(Selected) and not DrugsPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
+				if not IsEntityDead(Selected) and not DrugsPeds[Selected] and not StealPeds[Selected] and not IsPedDeadOrDying(Selected) and GetPedArmour(Selected) <= 0 and not IsPedAPlayer(Selected) and not IsPedInAnyVehicle(Selected) and GetPedType(Selected) ~= 28 then
 					local Coords = GetEntityCoords(Ped)
 					local pCoords = GetEntityCoords(Selected)
 					local Distance = #(Coords - pCoords)
@@ -1581,72 +1687,89 @@ CreateThread(function()
 					if Distance <= 1 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and GetGameTimer() >= DrugsTimer and vSERVER.AmountDrugs() then
-							DrugsTimer = GetGameTimer() + 5000
+						if IsControlJustPressed(1,38) and GetGameTimer() >= DrugsTimer then
+							local Status,Total = vSERVER.AmountDrugs(Selected)
+							if Status then
+								DrugsTimer = GetGameTimer() + 5000
 
-							ClearPedTasks(Selected)
-							ClearPedSecondaryTask(Selected)
-							ClearPedTasksImmediately(Selected)
+								ClearPedTasks(Selected)
+								ClearPedSecondaryTask(Selected)
+								ClearPedTasksImmediately(Selected)
 
-							local SelectedRobbery = 500
-							LocalPlayer["state"]["Buttons"] = true
-							LocalPlayer["state"]["Commands"] = true
+								local SelectedRobbery = 500
+								LocalPlayer["state"]["Buttons"] = true
+								LocalPlayer["state"]["Commands"] = true
 
-							TaskSetBlockingOfNonTemporaryEvents(Selected,true)
-							SetBlockingOfNonTemporaryEvents(Selected,true)
-							SetEntityAsMissionEntity(Selected,true,true)
-							SetPedDropsWeaponsWhenDead(Selected,false)
-							TaskTurnPedToFaceEntity(Selected,Ped,3.0)
-							SetPedSuffersCriticalHits(Selected,false)
-							DrugsPeds[Selected] = true
+								TaskSetBlockingOfNonTemporaryEvents(Selected,true)
+								SetBlockingOfNonTemporaryEvents(Selected,true)
+								SetEntityAsMissionEntity(Selected,true,true)
+								SetPedDropsWeaponsWhenDead(Selected,false)
+								TaskTurnPedToFaceEntity(Selected,Ped,3.0)
+								SetPedSuffersCriticalHits(Selected,false)
+								DrugsPeds[Selected] = true
 
-							while true do
-								local Coords = GetEntityCoords(Ped)
-								local pCoords = GetEntityCoords(Selected)
-								local Distance = #(Coords - pCoords)
+								while true do
+									local Coords = GetEntityCoords(Ped)
+									local pCoords = GetEntityCoords(Selected)
+									local Distance = #(Coords - pCoords)
 
-								if Distance <= 2 then
-									SelectedRobbery = SelectedRobbery - 1
+									if Distance <= 2 then
+										SelectedRobbery = SelectedRobbery - 1
 
-									if SelectedRobbery <= 0 then
-										if LoadModel("prop_anim_cash_note") then
-											local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
-											AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,0.0,0.0,90.0,0.0,0.0,false,false,false,false,2,true)
-											vRP.createObjects("mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
-											SetModelAsNoLongerNeeded("prop_anim_cash_note")
+										if SelectedRobbery <= 0 then
+											if (Total < 7 and math.random(100) >= 60) or (Total >= 7 and math.random(100) >= 30) then
+												if LoadModel("prop_anim_cash_note") then
+													PlayPedAmbientSpeechNative(Selected,"GENERIC_HI","SPEECH_PARAMS_STANDARD")
+													local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
+													AttachEntityToEntity(Object,Selected,GetPedBoneIndex(Selected,28422),0.0,0.0,0.0,90.0,0.0,0.0,false,false,false,false,2,true)
+													vRP.createObjects("mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
+													SetModelAsNoLongerNeeded("prop_anim_cash_note")
 
-											if LoadAnim("mp_safehouselost@") then
-												TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+													if LoadAnim("mp_safehouselost@") then
+														TaskPlayAnim(Selected,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
+													end
+
+													Wait(3000)
+
+													if DoesEntityExist(Object) then
+														DeleteEntity(Object)
+													end
+
+													vRP.removeObjects()
+													ClearPedSecondaryTask(Selected)
+													TaskWanderStandard(Selected,10.0,10)
+													vSERVER.DrugPeds()
+
+													LocalPlayer["state"]["Buttons"] = false
+													LocalPlayer["state"]["Commands"] = false
+
+													break
+												end
+											else
+												vSERVER.CallPolice(true)
+
+												LocalPlayer["state"]["Buttons"] = false
+												LocalPlayer["state"]["Commands"] = false
+
+												PlayPedAmbientSpeechNative(Selected,"GENERIC_NO","SPEECH_PARAMS_STANDARD")
+												ClearPedSecondaryTask(Selected)
+												TaskWanderStandard(Selected,10.0,10)
+
+												break
 											end
-
-											Wait(3000)
-
-											if DoesEntityExist(Object) then
-												DeleteEntity(Object)
-											end
-
-											vRP.removeObjects()
-											ClearPedSecondaryTask(Selected)
-											TaskWanderStandard(Selected,10.0,10)
-											vSERVER.DrugPeds()
-
-											LocalPlayer["state"]["Buttons"] = false
-											LocalPlayer["state"]["Commands"] = false
-
-											break
 										end
+									else
+										ClearPedSecondaryTask(Selected)
+										TaskWanderStandard(Selected,10.0,10)
+
+										LocalPlayer["state"]["Buttons"] = false
+										LocalPlayer["state"]["Commands"] = false
+
+										break
 									end
-								else
-									ClearPedSecondaryTask(Selected)
-									TaskWanderStandard(Selected,10.0,10)
 
-									LocalPlayer["state"]["Buttons"] = false
-									LocalPlayer["state"]["Commands"] = false
-
-									break
+									Wait(1)
 								end
-
-								Wait(1)
 							end
 						end
 					end
@@ -1773,35 +1896,52 @@ local disCoords = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 local DismantleCategory = {
 	["B"] = {
-		"panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina"
+		["Number"] = 5,
+		["Ammo"] = 1,
+		["Weapons"] = { "WEAPON_BAT","WEAPON_HAMMER","WEAPON_MACHETE","WEAPON_FLASHLIGHT" },
+		["Model"] = { "panto","prairie","rhapsody","blista","dilettante","emperor2","emperor","bfinjection","ingot","regina" }
 	},
 	["B+"] = {
-		"asbo","brioso","club","weevil","felon","felon2","jackal","oracle","zion","zion2","buccaneer","virgo",
-		"voodoo","bifta","rancherxl","bjxl","cavalcade","gresley","habanero","rocoto","primo","stratum","pigalle",
-		"peyote","manana","streiter"
+		["Number"] = 6,
+		["Ammo"] = 2,
+		["Weapons"] = { "WEAPON_BAT","WEAPON_HAMMER","WEAPON_MACHETE","WEAPON_FLASHLIGHT" },
+		["Model"] = { "asbo","brioso","club","weevil","felon","felon2","jackal","oracle","zion","zion2","buccaneer","virgo",
+		"voodoo","bifta","rancherxl","bjxl","cavalcade","gresley","habanero","rocoto","primo","stratum","pigalle","peyote","manana","streiter" }
 	},
 	["A"] = {
-		"exemplar","windsor","windsor2","blade","clique","dominator","faction2","gauntlet","moonbeam","nightshade",
+		["Number"] = 7,
+		["Ammo"] = 2,
+		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_GOLFCLUB","WEAPON_POOLCUE","WEAPON_STONE_HATCHET" },
+		["Model"] = { "exemplar","windsor","windsor2","blade","clique","dominator","faction2","gauntlet","moonbeam","nightshade",
 		"sabregt2","tampa","rebel","baller","cavalcade2","fq2","huntley","landstalker","patriot","radi","xls","blista2",
 		"retinue","stingergt","surano","specter","sultan","schwarzer","schafter2","ruston","rapidgt","raiden","ninef",
-		"ninef2","omnis","massacro","jester","feltzer2","futo","carbonizzare"
+		"ninef2","omnis","massacro","jester","feltzer2","futo","carbonizzare" }
 	},
 	["A+"] = {
-		"voltic","sc1","sultanrs","tempesta","nero","nero2","reaper","gp1","infernus","bullet","banshee2","turismo2","retinue",
+		["Number"] = 8,
+		["Ammo"] = 2,
+		["Weapons"] = { "WEAPON_HATCHET","WEAPON_BATTLEAXE","WEAPON_GOLFCLUB","WEAPON_POOLCUE","WEAPON_STONE_HATCHET" },
+		["Model"] = { "voltic","sc1","sultanrs","tempesta","nero","nero2","reaper","gp1","infernus","bullet","banshee2","turismo2","retinue",
 		"mamba","infernus2","feltzer3","coquette2","futo2","zr350","tampa2","sugoi","sultan2","schlagen","penumbra","pariah",
-		"paragon","jester3","gb200","elegy","furoregt"
+		"paragon","jester3","gb200","elegy","furoregt" }
 	},
 	["S"] = {
-		"zentorno","xa21","visione","vagner","vacca","turismor","t20","osiris","italigtb","entityxf","cheetah","autarch","sultan3",
-		"cypher","vectre","growler","comet6","jester4","euros","calico","neon","kuruma","issi7","italigto","komoda","elegy2","coquette4"
+		["Number"] = 9,
+		["Ammo"] = 3,
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" },
+		["Model"] = { "zentorno","xa21","visione","vagner","vacca","turismor","t20","osiris","italigtb","entityxf","cheetah","autarch","sultan3",
+		"cypher","vectre","growler","comet6","jester4","euros","calico","neon","kuruma","issi7","italigto","komoda","elegy2","coquette4" }
 	},
 	["S+"] = {
-		"mazdarx72","rangerover","civictyper","subaruimpreza","corvettec7","ferrariitalia","mustang1969","vwtouareg",
+		["Number"] = 10,
+		["Ammo"] = 3,
+		["Weapons"] = { "WEAPON_KATANA","WEAPON_KARAMBIT" },
+		["Model"] = { "mazdarx72","rangerover","civictyper","subaruimpreza","corvettec7","ferrariitalia","mustang1969","vwtouareg",
 		"mercedesg65","bugattiatlantic","m8competition","audirs6","audir8","silvias15","camaro","mercedesamg63",
 		"dodgechargerrt69","skyliner342","astonmartindbs","panameramansory","lamborghinihuracanlw","lancerevolutionx",
 		"porsche911","jeepcherokee","dodgecharger1970","golfgti","subarubrz","nissangtr","mustangfast","golfmk7",
 		"lancerevolution9","shelbygt500","ferrari812","bmwm4gts","ferrarif12","bmwm5e34","toyotasupra2","escalade2021",
-		"fordmustang","mclarensenna","lamborghinihuracan","acuransx","toyotasupra","escaladegt900","bentleybacalar"
+		"fordmustang","mclarensenna","lamborghinihuracan","acuransx","toyotasupra","escaladegt900","bentleybacalar" }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1814,16 +1954,16 @@ function Creative.Dismantle(Experience)
 		disPlate = "DISM"..(1000 + LocalPlayer["state"]["Passport"])
 
 		local Category = ClassCategory(Experience)
-		local ModelRandom = math.random(#DismantleCategory[Category])
-		disModel = DismantleCategory[Category][ModelRandom]
+		local ModelRandom = math.random(#DismantleCategory[Category]["Model"])
+		disModel = DismantleCategory[Category]["Model"][ModelRandom]
 
 		local RandomX = math.random(25,100)
 		local RandomY = math.random(25,100)
 
 		if math.random(2) >= 2 then
-			TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Veículo", x = disCoords[disSelect][1] + RandomX + 0.0, y = disCoords[disSelect][2] - RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
+			TriggerEvent("NotifyPush",{ code = "QTH", title = "Localização do Veículo", x = disCoords[disSelect][1] + RandomX + 0.0, y = disCoords[disSelect][2] - RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
 		else
-			TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Veículo", x = disCoords[disSelect][1] - RandomX + 0.0, y = disCoords[disSelect][2] + RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
+			TriggerEvent("NotifyPush",{ code = "QTH", title = "Localização do Veículo", x = disCoords[disSelect][1] - RandomX + 0.0, y = disCoords[disSelect][2] + RandomY + 0.0, z = disCoords[disSelect][3], vehicle = VehicleName(disModel).." - "..disPlate, blipColor = 60 })
 		end
 	end
 end
@@ -1881,46 +2021,110 @@ local disPeds = {
 	"ig_denise","ig_devin","a_m_y_dhill_01","ig_dom","a_m_y_downtown_01","ig_dreyfuss"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DISWEAPONS
------------------------------------------------------------------------------------------------------------------------------------------
-local disWeapons = { "WEAPON_HEAVYPISTOL","WEAPON_SMG","WEAPON_ASSAULTSMG","WEAPON_APPISTOL","WEAPON_SPECIALCARBINE","WEAPON_PUMPSHOTGUN" }
------------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:DISPED
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:DisPed")
-AddEventHandler("inventory:DisPed",function()
-local Ped = PlayerPedId()
-	local Rand = math.random(#disPeds)
+AddEventHandler("inventory:DisPed",function(Experience)
+	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
-	local Weapon = math.random(#disWeapons)
-	local cX = Coords["x"] + math.random(-25.0,25.0)
-	local cY = Coords["y"] + math.random(-25.0,25.0)
-	local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
-	local Entity,EntityNet = vRPS.CreatePed(disPeds[Rand],EntCoords["x"],EntCoords["y"],EntCoords["z"],3374176,4)
-	if Entity then
-		Wait(1000)
 
-		local NetEntity = LoadNetwork(EntityNet)
+	if Experience then
+		local Category = ClassCategory(Experience)
+		local Spawn = {}
+		local Max = DismantleCategory[Category]["Ammo"]
 
-		SetPedArmour(NetEntity,99)
-		SetPedAccuracy(NetEntity,100)
-		SetPedRelationshipGroupHash(NetEntity,GetHashKey("HATES_PLAYER"))
-		SetPedKeepTask(NetEntity,true)
-		SetCanAttackFriendly(NetEntity,false,true)
-		TaskCombatPed(NetEntity,Ped,0,16)
-		SetPedCombatAttributes(NetEntity,46,true)
-		SetPedCombatAbility(NetEntity,0)
-		SetPedCombatAttributes(NetEntity,0,true)
-		GiveWeaponToPed(NetEntity,disWeapons[Weapon],-1,false,true)
-		SetPedDropsWeaponsWhenDead(NetEntity,false)
-		SetPedCombatRange(NetEntity,2)
-		SetPedFleeAttributes(NetEntity,0,0)
-		SetPedConfigFlag(NetEntity,58,true)
-		SetPedConfigFlag(NetEntity,75,true)
-		SetPedFiringPattern(NetEntity,-957453492)
-		SetBlockingOfNonTemporaryEvents(NetEntity,true)
+		repeat
+			local Random = math.random(DismantleCategory[Category]["Number"])
 
-		SetModelAsNoLongerNeeded(disPeds[Rand])
+			if not Spawn[Random] then
+				Spawn[Random] = true
+				Max = Max - 1
+			end
+
+			Wait(1)
+		until Max <= 0
+
+		for i = 1,DismantleCategory[Category]["Number"] do
+			local Rand = math.random(#disPeds)
+			local Weapon = DismantleCategory[Category]["Weapons"][math.random(#DismantleCategory[Category]["Weapons"])]
+
+			if Spawn[i] then
+				Weapon = "WEAPON_SNSPISTOL"
+			end
+
+			local cX = Coords["x"] + math.random(-25.0,25.0)
+			local cY = Coords["y"] + math.random(-25.0,25.0)
+			local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
+			local Entity,EntityNet = vRPS.CreatePed(disPeds[Rand],EntCoords["x"],EntCoords["y"],EntCoords["z"],3374176,4)
+			if Entity then
+				async(function()
+					Wait(1000)
+
+					local NetEntity = LoadNetwork(EntityNet)
+
+					SetPedArmour(NetEntity,99)
+					SetPedAccuracy(NetEntity,100)
+					SetPedRelationshipGroupHash(NetEntity,GetHashKey("HATES_PLAYER"))
+					SetPedKeepTask(NetEntity,true)
+					SetCanAttackFriendly(NetEntity,false,true)
+					TaskCombatPed(NetEntity,Ped,0,16)
+					SetPedCombatAttributes(NetEntity,46,true)
+					SetPedCombatAbility(NetEntity,0)
+					SetPedCombatAttributes(NetEntity,0,true)
+					GiveWeaponToPed(NetEntity,Weapon,-1,false,true)
+					SetPedDropsWeaponsWhenDead(NetEntity,false)
+					SetPedCombatRange(NetEntity,2)
+					SetPedFleeAttributes(NetEntity,0,0)
+					SetPedConfigFlag(NetEntity,58,true)
+					SetPedConfigFlag(NetEntity,75,true)
+					SetPedFiringPattern(NetEntity,-957453492)
+					SetBlockingOfNonTemporaryEvents(NetEntity,true)
+
+					SetModelAsNoLongerNeeded(disPeds[Rand])
+
+					Wait(120000)
+
+					TriggerServerEvent("DeletePed",PedToNet(NetEntity))
+				end)
+			end
+		end
+	else
+		local Rand = math.random(#disPeds)
+		local cX = Coords["x"] + math.random(-25.0,25.0)
+		local cY = Coords["y"] + math.random(-25.0,25.0)
+		local Hit,EntCoords = GetSafeCoordForPed(cX,cY,Coords["z"],false,16)
+		local Entity,EntityNet = vRPS.CreatePed(disPeds[Rand],EntCoords["x"],EntCoords["y"],EntCoords["z"],3374176,4)
+		if Entity then
+			async(function()
+				Wait(1000)
+
+				local NetEntity = LoadNetwork(EntityNet)
+
+				SetPedArmour(NetEntity,99)
+				SetPedAccuracy(NetEntity,100)
+				SetPedRelationshipGroupHash(NetEntity,GetHashKey("HATES_PLAYER"))
+				SetPedKeepTask(NetEntity,true)
+				SetCanAttackFriendly(NetEntity,false,true)
+				TaskCombatPed(NetEntity,Ped,0,16)
+				SetPedCombatAttributes(NetEntity,46,true)
+				SetPedCombatAbility(NetEntity,0)
+				SetPedCombatAttributes(NetEntity,0,true)
+				GiveWeaponToPed(NetEntity,"WEAPON_BAT",-1,false,true)
+				SetPedDropsWeaponsWhenDead(NetEntity,false)
+				SetPedCombatRange(NetEntity,2)
+				SetPedFleeAttributes(NetEntity,0,0)
+				SetPedConfigFlag(NetEntity,58,true)
+				SetPedConfigFlag(NetEntity,75,true)
+				SetPedFiringPattern(NetEntity,-957453492)
+				SetBlockingOfNonTemporaryEvents(NetEntity,true)
+
+				SetModelAsNoLongerNeeded(disPeds[Rand])
+
+				Wait(120000)
+
+				TriggerServerEvent("DeletePed",PedToNet(NetEntity))
+			end)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1942,9 +2146,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.12,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_coltxm177"
 	},
@@ -1952,9 +2156,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.12,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_carbinerifle"
 	},
@@ -1962,9 +2166,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.12,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_carbineriflemk2"
 	},
@@ -1972,9 +2176,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.02,
 		["y"] = -0.14,
-		["z"] = -0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_advancedrifle"
 	},
@@ -1982,9 +2186,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.02,
 		["y"] = -0.14,
-		["z"] = -0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_bullpuprifle"
 	},
@@ -1992,9 +2196,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.02,
 		["y"] = -0.14,
-		["z"] = -0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_bullpupriflemk2"
 	},
@@ -2002,9 +2206,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.12,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_specialcarbine"
 	},
@@ -2012,9 +2216,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.12,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_specialcarbinemk2"
 	},
@@ -2032,8 +2236,8 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.0,
 		["y"] = -0.14,
-		["z"] = 0.12,
-		["RotX"] = 180.0,
+		["z"] = -0.12,
+		["RotX"] = 0.0,
 		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_fnfal"
@@ -2072,15 +2276,15 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.12,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = 0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 180.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_sb_smg"
 	},
 	["WEAPON_SMG_MK2"] = {
 		["Bone"] = 24818,
-		["x"] = 0.22,
+		["x"] = 0.12,
 		["y"] = -0.14,
 		["z"] = 0.12,
 		["RotX"] = 0.0,
@@ -2100,11 +2304,11 @@ local WeaConfig = {
 	},
 	["WEAPON_ASSAULTSMG"] = {
 		["Bone"] = 24818,
-		["x"] = 0.12,
+		["x"] = 0.08,
 		["y"] = -0.14,
-		["z"] = -0.07,
+		["z"] = 0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 180.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_sb_assaultsmg"
 	},
@@ -2112,9 +2316,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.08,
 		["y"] = -0.14,
-		["z"] = 0.08,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_assaultrifle"
 	},
@@ -2122,9 +2326,9 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.08,
 		["y"] = -0.14,
-		["z"] = 0.08,
+		["z"] = -0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 360.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_ar_assaultrifle"
 	},
@@ -2132,11 +2336,91 @@ local WeaConfig = {
 		["Bone"] = 24818,
 		["x"] = 0.12,
 		["y"] = -0.14,
-		["z"] = 0.04,
+		["z"] = 0.12,
 		["RotX"] = 0.0,
-		["RotY"] = 135.0,
+		["RotY"] = 180.0,
 		["RotZ"] = 5.0,
 		["Model"] = "w_sb_gusenberg"
+	},
+	["WEAPON_MICROSMG"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = 0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 180.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sb_microsmg"
+	},
+	["WEAPON_NAILGUN"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.18,
+		["z"] = 0.0,
+		["RotX"] = 0.0,
+		["RotY"] = 90.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sb_nailgun"
+	},
+	["WEAPON_SAWNOFFSHOTGUN"] = {
+		["Bone"] = 24818,
+		["x"] = 0.22,
+		["y"] = -0.14,
+		["z"] = 0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 180.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sg_sawnoff"
+	},
+	["WEAPON_MINISMG"] = {
+		["Bone"] = 24818,
+		["x"] = 0.22,
+		["y"] = -0.14,
+		["z"] = 0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 180.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sb_minismg"
+	},
+	["WEAPON_MILITARYRIFLE"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = -0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 360.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_ar_bullpuprifleh4"
+	},
+	["WEAPON_HEAVYRIFLE"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = -0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 360.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_ar_heavyrifleh"
+	},
+	["WEAPON_TACTICALRIFLE"] = {
+		["Bone"] = 24818,
+		["x"] = 0.12,
+		["y"] = -0.14,
+		["z"] = -0.12,
+		["RotX"] = 0.0,
+		["RotY"] = 360.0,
+		["RotZ"] = 5.0,
+		["Model"] = "w_ar_carbinerifle_reh"
+	},
+	["WEAPON_PRECISIONRIFLE"] = {
+		["Bone"] = 24818,
+		["x"] = -0.1,
+		["y"] = -0.14,
+		["z"] = 0.0,
+		["RotX"] = 0.0,
+		["RotY"] = 0.8,
+		["RotZ"] = 5.0,
+		["Model"] = "w_sr_precisionrifle_reh"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -2241,6 +2525,15 @@ local UwUCoffee = PolyZone:Create({
 	vector2(-565.33,-1047.50)
 },{ name = "UwUCoffee" })
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DRACING
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Dracing = PolyZone:Create({
+	vector2(813.45,-907.55),
+	vector2(813.55,-892.81),
+	vector2(842.06,-892.58),
+	vector2(839.37,-909.34)
+},{ name = "Dracing" })
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- RESTAURANT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Restaurant(Name)
@@ -2262,6 +2555,10 @@ function Creative.Restaurant(Name)
 		end
 	elseif Name == "UwuCoffee" then
 		if UwUCoffee:isPointInside(Coords) then
+			Return = true
+		end
+	elseif Name == "Dracing" then
+		if Dracing:isPointInside(Coords) then
 			Return = true
 		end
 	end
@@ -2291,8 +2588,66 @@ CreateThread(function()
 					event = "Bank",
 					label = "Abrir",
 					tunnel = "client"
+				},{
+					event = "player:Spending",
+					label = "Aumentar 10 mil de limite",
+					tunnel = "police",
+					service = "upgrade-1"
+				},{
+					event = "player:Spending",
+					label = "Aumentar 50 mil de limite",
+					tunnel = "police",
+					service = "upgrade-2"
+				},{
+					event = "player:Spending",
+					label = "Pagar fatura do cartão",
+					tunnel = "police",
+					service = "downgrade-1"
 				}
 			}
 		})
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:TABLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:Table")
+AddEventHandler("inventory:Table",function(ObjTable)
+	Objects = ObjTable
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- OBJECTS:BLIPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("objects:Blips")
+AddEventHandler("objects:Blips",function(Mode)
+	if json.encode(Blips) ~= "[]" then
+		for _,v in pairs(Blips) do
+			if DoesBlipExist(v) then
+				RemoveBlip(v)
+			end
+		end
+
+		Blips = {}
+
+		TriggerEvent("Notify","amarelo","Marcações desativadas.",10000)
+	else
+		for Number,v in pairs(Objects) do
+			if v["mode"] == Mode then
+				local RandomX = math.random(1,10)
+				local RandomY = math.random(1,10)
+
+				if math.random(2) >= 2 then
+					Blips[Number] = AddBlipForRadius(v["x"] + RandomX + 0.0,v["y"] - RandomY + 0.0,v["z"],20.0)
+				else
+					Blips[Number] = AddBlipForRadius(v["x"] - RandomX + 0.0,v["y"] + RandomY + 0.0,v["z"],20.0)
+				end
+
+				SetBlipAlpha(Blips[Number],200)
+				SetBlipAsShortRange(Blips[Number],true)
+				SetBlipColour(Blips[Number],2)
+			end
+		end
+
+		TriggerEvent("Notify","verde","Marcações ativadas.",10000)
 	end
 end)

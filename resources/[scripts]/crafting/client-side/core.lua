@@ -7,11 +7,20 @@ local Tunnel = module("vrp","lib/Tunnel")
 -----------------------------------------------------------------------------------------------------------------------------------------
 vSERVER = Tunnel.getInterface("crafting")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CRAFTING:CLOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("crafting:Close")
+AddEventHandler("crafting:Close",function()
+	SetNuiFocus(false,false)
+	SetCursorLocation(0.5,0.5)
+
+	SendNUIMessage({ action = "hideNUI" })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("invClose",function(Data,Callback)
-	SetNuiFocus(false,false)
-	SendNUIMessage({ action = "hideNUI" })
+	TriggerEvent("crafting:Close")
 
 	Callback("Ok")
 end)
@@ -70,20 +79,24 @@ local List = {
 	["1"] = { 82.45,-1553.26,29.59,"Lixeiro" },
 	["2"] = { 287.36,2843.6,44.7,"Lixeiro" },
 	["3"] = { -413.68,6171.99,31.48,"Lixeiro" },
-	["4"] = { 1272.26,-1712.57,54.76,"Lester" },
-	["5"] = { 46.21,-1749.45,29.64,"Mercado" },
-	["6"] = { 2747.81,3472.91,55.67,"Mercado" },
-	["7"] = { 807.67,-757.51,26.77,"PizzaThis" },
-	["8"] = { -1198.04,-899.07,13.99,"BurgerShot" },
-	["9"] = { -590.37,-1059.77,22.34,"UwuCoffee" },
-	["10"] = { 122.69,-1041.57,29.56,"BeanMachine" },
-	["11"] = { 95.58,-1985.56,20.44,"Ballas" },
-	["12"] = { -31.47,-1434.84,31.49,"Families" },
-	["13"] = { 347.45,-2069.06,20.89,"Vagos" },
-	["14"] = { 512.29,-1803.52,28.51,"Aztecas" },
-	["15"] = { 230.55,-1753.35,28.98,"Bloods" },
-	["16"] = { -818.26,-717.89,23.78,"Triads" },
-	["17"] = { 501.38,-66.92,58.15,"Razors" }
+	["4"] = { 2192.6,5595.66,53.75,"CraftingTable" },
+	["10"] = { 807.67,-757.51,26.77,"PizzaThis" },
+	["11"] = { -1198.04,-899.07,13.99,"BurgerShot" },
+	["12"] = { -590.37,-1059.77,22.34,"UwuCoffee" },
+	["13"] = { 122.69,-1041.57,29.56,"BeanMachine" },
+	["20"] = { 1330.96,-1657.72,51.24,"Lockpick" },
+	["21"] = { 121.3,-2468.84,6.1,"Lockpick" }, 
+	["22"] = { 715.98,-963.08,30.6,"Backpack" },
+	["23"] = { -1652.58,-1070.06,12.15,"Dollarsz" },
+	["30"] = { 494.19,-1525.52,29.28,"Aztecas" },
+	["31"] = { 1249.07,-1573.42,58.35,"Marabunta" },
+	["32"] = { -654.13,-1228.77,11.54,"Triads" },
+	["33"] = { 129.32,-3031.46,7.04,"Mechanic" },
+	["34"] = { 109.94,3618.66,40.49,"Lost" },
+	["35"] = { -466.19,6288.18,13.61,"Paramedic" },
+	["36"] = { 512.46,-71.12,58.15,"Razors" },
+	["37"] = { -827.79,-716.16,23.78,"YoungBoys" },
+	["38"] = { -1159.01,-2026.2,14.09,"Dracing" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTART
@@ -95,7 +108,7 @@ CreateThread(function()
 			heading = 3374176
 		},{
 			shop = Number,
-			Distance = 1.0,
+			Distance = 1.5,
 			options = {
 				{
 					event = "crafting:openSystem",
@@ -109,11 +122,16 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CRAFTING:OPENSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("crafting:openSystem",function(Number)
-	if List[Number] then
-		if vSERVER.requestPerm(Number,List[Number][4]) then
+RegisterNetEvent("crafting:openSystem")
+AddEventHandler("crafting:openSystem",function(Craft)
+	if GetEntityHealth(PlayerPedId()) > 100 then
+		if List[Craft] then
+			Craft = List[Craft][4]
+		end
+
+		if vSERVER.requestPerm(Craft) then
 			SetNuiFocus(true,true)
-			SendNUIMessage({ action = "showNUI", name = List[Number][4] })
+			SendNUIMessage({ action = "showNUI", name = Craft })
 		end
 	end
 end)

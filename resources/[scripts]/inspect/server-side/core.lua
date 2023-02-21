@@ -15,6 +15,25 @@ vCLIENT = Tunnel.getInterface("inspect")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local openPlayer = {}
 local openSource = {}
+local openAdmin = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INV
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("inv",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin",2) and OtherPassport > 0 then
+			local OtherSource = vRP.Source(OtherPassport)
+			if OtherSource then
+				openPlayer[Passport] = OtherPassport
+				openAdmin[Passport] = OtherPassport
+
+				TriggerClientEvent("inspect:Open",source)
+			end
+		end
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE:RUNINSPECT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -23,13 +42,15 @@ AddEventHandler("police:runInspect",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 then
-		openSource[Passport] = Entity[1]
-		openPlayer[Passport] = vRP.Passport(Entity[1])
+		if vRP.HasService(Passport,"Police") or (vRP.Request(Entity[1],"Aceitar a <b>revista</b> da pessoa mais próxima?","Sim, pode revistar","Não, vou resistir")) then
+			openSource[Passport] = Entity[1]
+			openPlayer[Passport] = vRP.Passport(Entity[1])
 
-		TriggerClientEvent("player:playerCarry",Entity[1],source,"handcuff")
-		TriggerClientEvent("player:Commands",Entity[1],true)
-		TriggerClientEvent("inventory:Close",Entity[1])
-		TriggerClientEvent("inspect:Open",source)
+			TriggerClientEvent("player:playerCarry",Entity[1],source,"handcuff")
+			TriggerClientEvent("player:Commands",Entity[1],true)
+			TriggerClientEvent("inventory:Close",Entity[1])
+			TriggerClientEvent("inspect:Open",source)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -109,6 +130,10 @@ function Creative.resetInspect()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		if openAdmin[Passport] then
+			openAdmin[Passport] = nil
+		end
+
 		if openSource[Passport] then
 			TriggerClientEvent("player:Commands",openSource[Passport],false)
 			TriggerClientEvent("player:playerCarry",openSource[Passport],source)
@@ -155,7 +180,7 @@ function Creative.takeItem(Item,Slot,Target,Amount)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if openSource[Passport] then
+		if openSource[Passport] and vRP.HasService(Passport,"Police") then
 			if DoesEntityExist(GetPlayerPed(openSource[Passport])) then
 				if vRP.MaxItens(Passport,Item,Amount) then
 					TriggerClientEvent("Notify",source,"amarelo","Limite atingido.",3000)

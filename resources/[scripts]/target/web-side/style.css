@@ -46,8 +46,12 @@ body {
 .Text div {
 	display: table;
 	margin: 0 0 6px;
+	border-radius: 5px;
+	padding: 10px 15px 10px 15px;
+	background: rgba(15,15,15,.75);
 }
 
 .Text div:hover {
-	color: #fec026;
+	color: #00e076;
+	background: rgba(10,10,10,.75);
 }

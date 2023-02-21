@@ -11,16 +11,28 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("admin",Creative)
 vCLIENT = Tunnel.getInterface("admin")
+vANIM = Tunnel.getInterface("animacoes")
 vKEYBOARD = Tunnel.getInterface("keyboard")
+vSKINSHOP = Tunnel.getInterface("skinshop")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UGROUPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("ugroups",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and parseInt(Message[1]) > 0 then
+	if Passport then
+		local OtherPassport = tostring(Passport)
 		local Messages = ""
+
+		if Message[1] and vRP.HasGroup(Passport,"Admin") then
+			OtherPassport = Message[1]
+			Messages = "<b>Passaporte:</b> "..Message[1].."<br>"
+
+			if parseInt(OtherPassport) <= 0 then
+				return
+			end
+		end
+
 		local Groups = vRP.Groups()
-		local OtherPassport = Message[1]
 		for Permission,_ in pairs(Groups) do
 			local Data = vRP.DataGroups(Permission)
 			if Data[OtherPassport] then
@@ -39,9 +51,28 @@ end)
 RegisterCommand("clearinv",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 then
 			TriggerClientEvent("Notify",source,"verde","Limpeza concluída.",5000)
 			vRP.ClearInventory(Message[1])
+
+			TriggerEvent("Discord","Admin","**clearinv**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLEARCHEST
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("clearchest",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
+			local Consult = vRP.Query("chests/GetChests",{ name = Message[1] })
+			if Consult[1] then
+				TriggerClientEvent("Notify",source,"verde","Limpeza concluída.",5000)
+				vRP.SetSrvData("Chest:"..Message[1],{},true)
+				
+				TriggerEvent("Discord","Admin","**clearchest**\n\n**Passaporte:** "..Passport.."\n**Chest:** "..Message[2],3553599)
+			end
 		end
 	end
 end)
@@ -51,26 +82,61 @@ end)
 RegisterCommand("gem",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 then
+		if vRP.HasGroup(Passport,"Admin",1) and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 then
 			local Amount = parseInt(Message[2])
 			local OtherPassport = parseInt(Message[1])
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
 				TriggerClientEvent("Notify",source,"verde","Gemas entregues.",5000)
-				vRP.Query("accounts/AddGems",{ license = Identity["license"], gems = Amount })
+				vRP.UpgradeGemstone(OtherPassport,Amount)
+
+				local OtherSource = vRP.Source(OtherPassport)
+				if OtherSource then
+					TriggerClientEvent("Notify",OtherSource,"azul","Você recebeu <b>"..Amount.."x Gemas</b>.",5000)
+				end
+
 				TriggerEvent("Discord","Gemstone","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Gemas:** "..Amount.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
 			end
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- GEMS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("gems",function(source,Message)
+	if source == 0 then
+		local Passport = parseInt(Message[1])
+		local Amount = parseInt(Message[2])
+
+		vRP.UpgradeGemstone(Passport,Amount)
+		
+		local Source = vRP.Source(Passport)
+		if Source then
+			TriggerClientEvent("Notify",Source,"azul","Você recebeu <b>"..Amount.."x Gemas</b>.",5000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Blips = {}
 RegisterCommand("blips",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
+		if vRP.HasGroup(Passport,"Admin") then
+			local Text = ""
+
+			if not Blips[Passport] then
+				Blips[Passport] = true
+				Text = "Ativado"
+			else
+				Blips[Passport] = nil
+				Text = "Desativado"
+			end
+
 			vRPC.BlipAdmin(source)
+
+			TriggerEvent("Discord","Admin","**blips**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Text,3553599)
 		end
 	end
 end)
@@ -82,16 +148,39 @@ RegisterCommand("god",function(source,Message)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
 			if Message[1] then
-				local OtherPassport = parseInt(Message[1])
-				local ClosestPed = vRP.Source(OtherPassport)
-				if ClosestPed then
-					vRP.UpgradeThirst(OtherPassport,100)
-					vRP.UpgradeHunger(OtherPassport,100)
-					vRP.DowngradeStress(OtherPassport,100)
-					vRP.Revive(ClosestPed,200)
+				if Message[1] == "all" then
+					local Text = ""
+					local List = vRP.Players()
+					for OtherPlayer,OtherSource in pairs(List) do
+						async(function()
+							vRP.UpgradeThirst(OtherPlayer,100)
+							vRP.UpgradeHunger(OtherPlayer,100)
+							vRP.DowngradeStress(OtherPlayer,100)
+							vRP.Revive(OtherSource,200)
+
+							TriggerClientEvent("paramedic:Reset",OtherSource)
+
+							if Text == "" then
+								Text = OtherPlayer
+							else
+								Text = Text..", "..OtherPlayer
+							end
+						end)
+					end
+				else
+					local OtherPlayer = parseInt(Message[1])
+					local ClosestPed = vRP.Source(OtherPlayer)
+					if ClosestPed then
+						vRP.UpgradeThirst(OtherPlayer,100)
+						vRP.UpgradeHunger(OtherPlayer,100)
+						vRP.DowngradeStress(OtherPlayer,100)
+						vRP.Revive(ClosestPed,200)
+
+						TriggerClientEvent("paramedic:Reset",ClosestPed)
+					end
 				end
 			else
-				vRP.Revive(source,200,true)
+				vRP.Revive(source,200)
 				vRP.UpgradeThirst(Passport,100)
 				vRP.UpgradeHunger(Passport,100)
 				vRP.DowngradeStress(Passport,100)
@@ -99,6 +188,48 @@ RegisterCommand("god",function(source,Message)
 				TriggerClientEvent("paramedic:Reset",source)
 
 				vRPC.removeObjects(source)
+			end
+
+			if List then
+				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text,3553599)
+			elseif OtherPlayer then
+				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPlayer,3553599)
+			else
+				TriggerEvent("Discord","Admin","**god**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Passport,3553599)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GODA
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("goda",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) then
+			local Range = parseInt(Message[1])
+			if Range then
+				local Text = ""
+				local Players = vRPC.ClosestPeds(source,Range)
+				for _,v in pairs(Players) do
+					async(function()
+						local OtherPlayer = vRP.Passport(v)
+						vRP.UpgradeThirst(OtherPlayer,100)
+						vRP.UpgradeHunger(OtherPlayer,100)
+						vRP.DowngradeStress(OtherPlayer,100)
+						vRP.Revive(v,200)
+
+						TriggerClientEvent("paramedic:Reset",v)
+
+						if Text == "" then
+							Text = OtherPlayer
+						else
+							Text = Text..", "..OtherPlayer
+						end
+					end)
+				end
+
+				TriggerEvent("Discord","Admin","**goda**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text,3553599)
 			end
 		end
 	end
@@ -109,9 +240,12 @@ end)
 RegisterCommand("item",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			if Message[1] and Message[2] and itemBody(Message[1]) ~= nil then
-				vRP.GenerateItem(Passport,Message[1],parseInt(Message[2]),true)
+				local Amount = parseInt(Message[2])
+				vRP.GenerateItem(Passport,Message[1],Amount,true)
+
+				TriggerEvent("Discord","Admin","**item**\n\n**Passaporte:** "..Passport.."\n**Item:** "..Amount.."x "..itemName(Message[1]),3553599)
 			end
 		end
 	end
@@ -122,9 +256,15 @@ end)
 RegisterCommand("item2",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") then
-			if Message[1] and Message[2] and Message[3] and itemBody(Message[1]) ~= nil then
-				vRP.GenerateItem(Message[3],Message[1],parseInt(Message[2]),true)
+		if vRP.HasGroup(Passport,"Admin",2) and Message[3] and itemBody(Message[1]) then
+			local OtherPassport = parseInt(Message[3])
+			if OtherPassport > 0 then
+				local Amount = parseInt(Message[2])
+				local Item = itemName(Message[1])
+				vRP.GenerateItem(Message[3],Message[1],Amount,true)
+				TriggerClientEvent("Notify",source,"verde","Você enviou <b>"..Amount.."x "..Item.."</b> para o passaporte <b>"..OtherPassport.."</b>.",5000)
+
+				TriggerEvent("Discord","Admin","**item2*\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Item:** "..Amount.."x "..Item,3553599)
 			end
 		end
 	end
@@ -137,19 +277,36 @@ RegisterCommand("delete",function(source,Message)
 	if Passport and Message[1] then
 		if vRP.HasGroup(Passport,"Admin",2) then
 			local OtherPassport = parseInt(Message[1])
-			vRP.Query("characters/removeCharacter",{ id = OtherPassport })
-			TriggerClientEvent("Notify",source,"verde","Personagem <b>"..OtherPassport.."</b> deletado.",5000)
+			if OtherPassport > 0 then
+				vRP.Query("characters/removeCharacter",{ id = OtherPassport })
+				TriggerClientEvent("Notify",source,"verde","Personagem <b>"..OtherPassport.."</b> deletado.",5000)
+
+				TriggerEvent("Discord","Admin","**delete**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
+			end
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NC
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Noclip = {}
 RegisterCommand("nc",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
+		if vRP.HasGroup(Passport,"Admin") then
+			local Text = ""
+
+			if not Noclip[Passport] then
+				Noclip[Passport] = true
+				Text = "Ativado"
+			else
+				Noclip[Passport] = nil
+				Text = "Desativado"
+			end
+
 			vRPC.noClip(source)
+
+			TriggerEvent("Discord","Admin","**nc**\n\n**Passaporte:** "..Passport.."\n**Situação:** "..Text,3553599)
 		end
 	end
 end)
@@ -164,6 +321,8 @@ RegisterCommand("kick",function(source,Message)
 			if OtherSource then
 				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..Message[1].."</b> expulso.",5000)
 				vRP.Kick(OtherSource,"Expulso da cidade.")
+
+				TriggerEvent("Discord","Admin","**kick**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
 			end
 		end
 	end
@@ -181,6 +340,7 @@ RegisterCommand("ban",function(source,Message)
 			if Identity then
 				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = Days })
 				TriggerClientEvent("Notify",source,"amarelo","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.",5000)
+				TriggerEvent("Discord","Admin","**ban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Tempo:** "..Days.." dias",3553599)
 
 				local OtherSource = vRP.Source(OtherPassport)
 				if OtherSource then
@@ -202,7 +362,35 @@ RegisterCommand("unban",function(source,Message)
 			if Identity then
 				vRP.Query("banneds/RemoveBanned",{ license = Identity["license"] })
 				TriggerClientEvent("Notify",source,"verde","Passaporte <b>"..OtherPassport.."</b> desbanido.",5000)
+
+				TriggerEvent("Discord","Admin","**unban**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
 			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- AL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("al",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin") and OtherPassport > 0 then
+			vRP.Query("accounts/updateWhitelist",{ id = OtherPassport, whitelist = 1 })
+			TriggerEvent("Discord","Admin","**al**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- UNAL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("unal",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin") and OtherPassport > 0 then
+			vRP.Query("accounts/updateWhitelist",{ id = OtherPassport, whitelist = 0 })
+			TriggerEvent("Discord","Admin","**unal**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
 		end
 	end
 end)
@@ -213,10 +401,11 @@ RegisterCommand("tpcds",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin",2) then
-			local Keyboard = vKEYBOARD.keySingle(source,"Cordenadas:")
+			local Keyboard = vKEYBOARD.keySingle(source,"Coordenadas:")
 			if Keyboard then
 				local Split = splitString(Keyboard[1],",")
 				vRP.Teleport(source,Split[1] or 0,Split[2] or 0,Split[3] or 0)
+				TriggerEvent("Discord","Admin","**tpcds**\n\n**Passaporte:** "..Passport.."\n**Cds:** "..Split[1] or 0,Split[2] or 0,Split[3] or 0,3553599)
 			end
 		end
 	end
@@ -232,7 +421,7 @@ RegisterCommand("cds",function(source)
 			local Coords = GetEntityCoords(Ped)
 			local heading = GetEntityHeading(Ped)
 
-			vKEYBOARD.keyCopy(source,"Cordenadas:",mathLength(Coords["x"])..","..mathLength(Coords["y"])..","..mathLength(Coords["z"])..","..mathLength(heading))
+			vKEYBOARD.keyCopy(source,"Coordenadas:",mathLength(Coords["x"])..","..mathLength(Coords["y"])..","..mathLength(Coords["z"])..","..mathLength(heading))
 		end
 	end
 end)
@@ -242,9 +431,23 @@ end)
 RegisterCommand("group",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and Message[2] then
-			TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
-			vRP.SetPermission(Message[1],Message[2],Message[3])
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and Message[2] and Message[3] then
+			if (Message[2] == "Admin" or Message[2] == "Premium") and not vRP.HasGroup(Passport,"Admin",1) then
+				return
+			end
+
+			local Groups = vRP.Groups()
+			if Groups[Message[2]] then
+				vRP.SetPermission(Message[1],Message[2],Message[3])
+				TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
+
+				local OtherSource = vRP.Source(Message[1])
+				if OtherSource then
+					TriggerClientEvent("player:Relationship",OtherSource,Message[2])
+				end
+
+				TriggerEvent("Discord","Admin","**group**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1].."\n**Grupo:** "..Message[2].."\n**Rank:** "..Message[3],3553599)
+			end
 		end
 	end
 end)
@@ -254,9 +457,23 @@ end)
 RegisterCommand("ungroup",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and Message[2] then
-			TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.",5000)
-			vRP.RemovePermission(Message[1],Message[2])
+		if vRP.HasGroup(Passport,"Admin",2) and parseInt(Message[1]) > 0 and Message[2] then
+			if (Message[2] == "Admin" or Message[2] == "Premium") and not vRP.HasGroup(Passport,"Admin",1) then
+				return
+			end
+
+			local Groups = vRP.Groups()
+			if Groups[Message[2]] then
+				vRP.RemovePermission(Message[1],Message[2])
+				TriggerClientEvent("Notify",source,"verde","Removido <b>"..Message[2].."</b> do passaporte <b>"..Message[1].."</b>.",5000)
+
+				local OtherSource = vRP.Source(Message[1])
+				if OtherSource then
+					TriggerClientEvent("player:Relationship",OtherSource,Message[2],true)
+				end
+
+				TriggerEvent("Discord","Admin","**ungroup**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1].."\n**Grupo:** "..Message[2],3553599)
+			end
 		end
 	end
 end)
@@ -273,6 +490,7 @@ RegisterCommand("tptome",function(source,Message)
 				local Coords = GetEntityCoords(Ped)
 
 				vRP.Teleport(ClosestPed,Coords["x"],Coords["y"],Coords["z"])
+				TriggerEvent("Discord","Admin","**tptome**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 			end
 		end
 	end
@@ -289,6 +507,7 @@ RegisterCommand("tpto",function(source,Message)
 				local Ped = GetPlayerPed(ClosestPed)
 				local Coords = GetEntityCoords(Ped)
 				vRP.Teleport(source,Coords["x"],Coords["y"],Coords["z"])
+				TriggerEvent("Discord","Admin","**tpto**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 			end
 		end
 	end
@@ -299,13 +518,13 @@ end)
 RegisterCommand("tpway",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin",2) then
+		if vRP.HasGroup(Passport,"Admin") then
 			vCLIENT.teleportWay(source)
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TPWAY
+-- LIMBO
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("limbo",function(source)
 	local Passport = vRP.Passport(source)
@@ -322,7 +541,7 @@ RegisterCommand("hash",function(source)
 		if vRP.HasGroup(Passport,"Admin") then
 			local vehicle = vRPC.VehicleHash(source)
 			if vehicle then
-				vRP.Archive("hash.txt",vehicle)
+				vKEYBOARD.keyCopy(source,"Hash:",vehicle)
 			end
 		end
 	end
@@ -333,8 +552,12 @@ end)
 RegisterCommand("tuning",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") then
-			TriggerClientEvent("admin:vehicleTuning",source)
+		if vRP.HasGroup(Passport,"Admin",2) then
+			local Vehicle,Network,Plate = vRPC.VehicleList(source,10)
+			if Vehicle then
+				TriggerClientEvent("admin:vehicleTuning",source,Network,Plate)
+				TriggerEvent("Discord","Admin","**tuning**\n\n**Passaporte:** "..Passport.."\n**Placa:** "..Plate,3553599)
+			end
 		end
 	end
 end)
@@ -344,10 +567,19 @@ end)
 RegisterCommand("fix",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") then
-			local Vehicle,Network,Plate = vRPC.VehicleList(source,10)
+		if vRP.HasGroup(Passport,"Admin",2) then
+			local Vehicle,Network,Plate,vehName = vRPC.VehicleList(source,10)
 			if Vehicle then
-				TriggerClientEvent("inventory:repairAdmin",source,Network,Plate)
+				local Players = vRPC.Players(source)
+				for _,v in pairs(Players) do
+					async(function()
+						TriggerClientEvent("inventory:repairAdmin",v,Network,Plate)
+					end)
+				end
+
+				if VehicleExist(vehName) then
+					TriggerEvent("Discord","Admin","**fix**\n\n**Passaporte:** "..Passport.."\n**Veículo:** "..VehicleName(vehName).."\n**Placa:** "..Plate,3553599)
+				end
 			end
 		end
 	end
@@ -362,6 +594,7 @@ RegisterCommand("limparea",function(source)
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
 			TriggerClientEvent("syncarea",source,Coords["x"],Coords["y"],Coords["z"],100)
+			TriggerEvent("Discord","Admin","**limparea**\n\n**Passaporte:** "..Passport,3553599)
 		end
 	end
 end)
@@ -369,10 +602,98 @@ end)
 -- PLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("players",function(source)
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if not vRP.HasGroup(Passport,"Admin",2) then
+			return
+		end
+	end
+
+	if source ~= 0 then
+		TriggerClientEvent("Notify",source,"azul","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices()..".",5000)
+	else
+		print("^2Jogadores Conectados:^7 "..GetNumPlayerIndices())
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- IDS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("ids",function(source)
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if not vRP.HasGroup(Passport,"Admin",2) then
+			return
+		end
+	end
+
+	local Text = ""
+	local List = vRP.Players()
+
+	for OtherPlayer,_ in pairs(List) do
+		if Text == "" then
+			Text = OtherPlayer
+		else
+			Text = Text..", "..OtherPlayer
+		end
+	end
+
+	if source ~= 0 then
+		TriggerClientEvent("Notify",source,"azul","<b>IDs Conectados:</b> "..Text..".",20000)
+	else
+		print("^2IDs Conectados:^7 "..Text)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ID
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("id",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
+		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
+			local Identity = vRP.Identity(Message[1])
+			if Identity then
+				TriggerClientEvent("Notify",source,"azul","<b>Passaporte:</b> "..Message[1].."<br><b>Nome:</b> "..Identity["name"].." "..Identity["name2"].."<br><b>Telefone:</b> "..Identity["phone"].."<br><b>Banco:</b> $"..parseFormat(Identity["bank"]),5000)
+				TriggerEvent("Discord","Admin","**id**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SOURCE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("source",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local Source = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin") and Source > 0 then
+			local OtherPassport = vRP.Passport(Source)
+			if OtherPassport then
+				TriggerClientEvent("Notify",source,"azul","<b>Source:</b> "..Source.."<br><b>Passaporte:</b> "..OtherPassport,5000)
+				TriggerEvent("Discord","Admin","**source**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("check",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[2] then
 		if vRP.HasGroup(Passport,"Admin",2) then
-			TriggerClientEvent("Notify",source,"azul","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices(),5000)
+			if Message[1] == "insta" or Message[1] == "twitter" then
+				local Consult = vRP.Query("smartphone/"..Message[1].."Check",{ Username = Message[2] })
+			else
+				return
+			end
+
+			if not Consult[1] then
+				return
+			end
+
+			TriggerClientEvent("Notify",source,"verde","<b>Username</b>: "..Message[2].."<br><b>Passaporte<b>: "..Consult[1]["user_id"],5000)
+
+			TriggerEvent("Discord","Admin","**"..Message[1].."**\n\n**Passaporte:** "..Passport.."\n**Username:** "..Message[1].."\n**Para:** "..Consult[1]["user_id"],3553599)
 		end
 	end
 end)
@@ -390,7 +711,7 @@ function Creative.buttonTxt()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") then
+		if vRP.HasGroup(Passport,"Admin",2) then
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
 			local heading = GetEntityHeading(Ped)
@@ -405,8 +726,10 @@ end
 RegisterCommand("announce",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") and Message[1] then
-			TriggerClientEvent("chat:ClientMessage",-1,"Governador",History:sub(9))
+		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
+			TriggerClientEvent("Notify",-1,"verde","<b>Prefeitura:</b> "..History:sub(9),60000)
+
+			TriggerEvent("Discord","Admin","**announce**\n\n**Passaporte:** "..Passport.."\n**Text:** "..History:sub(9),3553599)
 		end
 	end
 end)
@@ -415,7 +738,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("console",function(source,Message,History)
 	if source == 0 then
-		TriggerClientEvent("chat:ClientMessage",-1,"Governador",History:sub(9))
+		TriggerClientEvent("Notify",-1,"verde","<b>Prefeitura:</b> "..History:sub(9),60000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -424,9 +747,11 @@ end)
 RegisterCommand("kickall",function(source)
 	if source ~= 0 then
 		local Passport = vRP.Passport(source)
-		if not vRP.HasGroup(Passport,"Admin") then
+		if not vRP.HasGroup(Passport,"Admin",2) then
 			return
 		end
+
+		TriggerEvent("Discord","Admin","**kickall**\n\n**Passaporte:** "..Passport,3553599)
 	end
 
 	local List = vRP.Players()
@@ -443,9 +768,11 @@ end)
 RegisterCommand("save",function(source)
 	if source ~= 0 then
 		local Passport = vRP.Passport(source)
-		if not vRP.HasGroup(Passport,"Admin") then
+		if not vRP.HasGroup(Passport,"Admin",2) then
 			return
 		end
+
+		TriggerEvent("Discord","Admin","**save**\n\n**Passaporte:** "..Passport,3553599)
 	end
 
 	TriggerEvent("SaveServer",false)
@@ -456,15 +783,25 @@ end)
 RegisterCommand("itemall",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.HasGroup(Passport,"Admin") then
+		if vRP.HasGroup(Passport,"Admin",2) then
+			local Text = ""
 			local List = vRP.Players()
+
 			for OtherPlayer,_ in pairs(List) do
 				async(function()
+					if Text == "" then
+						Text = OtherPlayer
+					else
+						Text = Text..", "..OtherPlayer
+					end
+
 					vRP.GenerateItem(OtherPlayer,Message[1],Message[2],true)
 				end)
 			end
 
 			TriggerClientEvent("Notify",source,"verde","Envio concluído.",10000)
+
+			TriggerEvent("Discord","Admin","**itemall**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Text.."\n**Item:** "..Message[2].."x "..itemName(Message[1]),3553599)
 		end
 	end
 end)
@@ -512,6 +849,8 @@ RegisterCommand("spectate",function(source,Message)
 						Wait(1000)
 						TriggerClientEvent("admin:initSpectate",source,nsource)
 						Spectate[Passport] = nsource
+
+						TriggerEvent("Discord","Admin","**spectate**\n\n**Passaporte:** "..Passport.."\n**Para:** "..Message[1],3553599)
 					end
 				end
 			end
@@ -519,10 +858,322 @@ RegisterCommand("spectate",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- RESET
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("reset",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(Message[1])
+		if vRP.HasGroup(Passport,"Admin",2) and OtherPassport > 0 then
+			local Creator = vRP.UserData(Passport,"Creator")
+			if Creator == 1 then
+				vRP.Query("playerdata/SetData",{ Passport = OtherPassport, dkey = "Creator", dvalue = 0 })
+
+				TriggerClientEvent("Notify",source,"verde","Reset concluído.",5000)
+
+				TriggerEvent("Discord","Admin","**reset**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport,3553599)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BUCKET
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("bucket",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
+			local Route = parseInt(Message[1])
+			if Message[2] then
+				local OtherPassport = parseInt(Message[2])
+				local OtherSource = vRP.Source(OtherPassport)
+				if OtherSource then
+					if Route > 0 then
+						TriggerEvent("vRP:BucketServer",OtherSource,"Enter",Route)
+					else
+						TriggerEvent("vRP:BucketServer",OtherSource,"Exit")
+					end
+				end
+			else
+				if Route > 0 then
+					TriggerEvent("vRP:BucketServer",source,"Enter",Route)
+				else
+					TriggerEvent("vRP:BucketServer",source,"Exit")
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DM
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("dm",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin",2) and Message[1] then
+			local OtherSource = vRP.Source(Message[1])
+			if OtherSource then
+				local Keyboard = vKEYBOARD.keySingle(source,"Mensagem:")
+				if Keyboard then
+					TriggerClientEvent("chat:ClientMessage",OtherSource,"Prefeitura",Keyboard[1],"DM")
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SERVICES
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("services",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin",2) then
+		local Text = ""
+		local Groups = vRP.Groups()
+
+		if Message[1] then
+			if Groups[Message[1]] then
+				local Data = vRP.DataGroups(Message[1])
+
+				for Passport,Level in pairsKeys(Data) do
+					if Text == "" then
+						Text = "<b>"..Passport..":</b> "..Level
+					else
+						Text = Text.."<br><b>"..Passport..":</b> "..Level
+					end
+				end
+			end
+		else
+			for Permission,_ in pairsKeys(Groups) do
+				local _,Total = vRP.NumPermission(Permission)
+
+				if Text == "" then
+					Text = "<b>"..Permission..":</b> "..Total
+				else
+					Text = Text.."<br><b>"..Permission..":</b> "..Total
+				end
+			end
+		end
+
+		if Text ~= "" then
+			TriggerClientEvent("Notify",source,"azul",Text,20000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VEH
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("veh",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local OtherPassport = parseInt(Message[2])
+		if vRP.HasGroup(Passport,"Admin",2) and OtherPassport > 0 and Message[3] then
+			if VehicleExist(Message[3]) then
+				if Message[1] == "add" then
+					local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport, vehicle = Message[3] })
+					if Vehicle[1] then
+						TriggerClientEvent("Notify",source,"amarelo","Passaporte já possui um <b>"..Message[3].."</b>.",5000)
+					else
+						if VehicleMode(Message[3]) == "rental" or VehicleMode(Message[3]) == "exclusive" then
+							vRP.Query("vehicles/rentalVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
+						else
+							vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, vehicle = Message[3], plate = vRP.GeneratePlate(), work = "false" })
+						end
+
+						TriggerClientEvent("Notify",source,"verde","Adicionado <b>"..VehicleName(Message[3]).."</b> ao passaporte <b>"..OtherPassport.."</b>.",5000)
+						TriggerEvent("Discord","Admin","**veh add**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Veículo:** "..Message[3],3553599)
+					end
+				elseif Message[1] == "rem" then
+					local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport, vehicle = Message[3] })
+					if Vehicle[1] then
+						vRP.Query("vehicles/removeVehicles",{ Passport = OtherPassport, vehicle = Message[3] })
+						vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..OtherPassport..":"..Message[3] })
+						vRP.Query("entitydata/RemoveData",{ dkey = "Chest:"..OtherPassport..":"..Message[3] })
+
+						TriggerClientEvent("Notify",source,"verde","Removido <b>"..VehicleName(Message[3]).."</b> do passaporte <b>"..OtherPassport.."</b>.",5000)
+							TriggerEvent("Discord","Admin","**veh rem**\n\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Veículo:** "..Message[3],3553599)
+					else
+						TriggerClientEvent("Notify",source,"amarelo","Passaporte não possuí um <b>"..VehicleName(Message[3]).."</b>.",5000)
+					end
+				end
+			else
+				TriggerClientEvent("Notify",source,"amarelo","Esse modelo de veículo não existe.",5000)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHANNEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("channel",function(source,Message)
+	if Message[1] then
+		if source ~= 0 then
+			local Passport = vRP.Passport(source)
+			if not vRP.HasGroup(Passport,"Admin") then
+				return
+			end
+		end
+
+		local Text = ""
+		local Channel = exports["pma-voice"]:getPlayersInRadioChannel(tonumber(Message[1]))
+
+		for Sources,_ in pairs(Channel) do
+			if Text == "" then
+				Text = vRP.Passport(Sources)
+			else
+				Text = Text..", "..vRP.Passport(Sources)
+			end
+		end
+
+		if source ~= 0 then
+			TriggerClientEvent("Notify",source,"azul","Canal <b>"..Message[1].."</b>: "..Text..".",15000)
+		else
+			print("^2Canal "..Message[1]..":^7 "..Text)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GENERATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("generate",function(source,Message)
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if not vRP.HasGroup(Passport,"Admin") then
+			return
+		end
+	end
+
+	local List = {}
+	if Message[1] == "item" then
+		List = itemList()
+	elseif Message[1] == "car" then
+		List = VehicleGlobal()
+	elseif Message[1] == "anim" then
+		if source == 0 then
+			local Players = vRP.Players()
+			if #Players <= 0 then
+				return
+			end
+
+			for _,OtherSource in pairs(Players) do
+				source = OtherSource
+				break
+			end
+		end
+
+		List = vANIM.AnimList(source)
+	end
+
+	if List then
+		local Text = "**"..Message[1].."**"
+
+		for Index,v in pairsKeys(List) do
+			if Message[1] == "car" then
+				if v["Mode"] == "rental" then
+					Text = Text.."\n"..Index
+				end
+			else
+				Text = Text.."\n"..Index
+			end
+		end
+
+		Text = Text.."\n"
+
+		vRP.Archive("generate.txt",Text)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CUSTOM
+-----------------------------------------------------------------------------------------------------------------------------------------
+local List = {
+	[1] = "hat",
+	[2] = "pants",
+	[3] = "vest",
+	[4] = "bracelet",
+	[5] = "backpack",
+	[6] = "decals",
+	[7] = "mask",
+	[8] = "shoes",
+	[9] = "tshirt",
+	[10] = "torso",
+	[11] = "accessory",
+	[12] = "watch",
+	[13] = "arms",
+	[14] = "glass",
+	[15] = "ear"
+}
+
+RegisterCommand("custom",function(source)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin") then
+			local Custom = vSKINSHOP.Customization(source)
+			if Custom then
+				local Text = ""
+				local Count = 1
+
+				repeat
+					if Text == "" then
+						Text = '["'..List[Count]..'"] = { item = '..Custom[List[Count]]["item"]..', texture = '..Custom[List[Count]]["texture"]..' }'
+					else
+						Text = Text..',\n["'..List[Count]..'"] = { item = '..Custom[List[Count]]["item"]..', texture = '..Custom[List[Count]]["texture"]..' }'
+					end
+
+					Count = Count + 1
+				until Count == #List + 1
+
+				Text = Text.."\n"
+
+				vRP.Archive("custom.txt",Text)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DEBUG
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("debug",function(source,args,rawCommand)
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.HasGroup(Passport,"Admin") then
+			TriggerClientEvent("admin:DebugToggle",source)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADMIN:DEBUGINFORMATIONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("admin:DebugInformations")
+AddEventHandler("admin:DebugInformations",function(Entity)
+	local source = source
+	vKEYBOARD.keyCopy(source,"Informations:",Entity[2]..","..mathLength(Entity[4]["x"])..","..mathLength(Entity[4]["y"])..","..mathLength(Entity[4]["z"])..","..mathLength(Entity[5]))
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADMIN:LOGS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("admin:Logs")
+AddEventHandler("admin:Logs",function(Info)
+	local source = source
+	vKEYBOARD.keyCopy(source,"Log:",Info)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TXADMIN:EVENTS:SERVERSHUTTINGDOWN
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("txAdmin:events:serverShuttingDown",function(eventData)
+    TriggerEvent("SaveServer",false)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport)
 	if Spectate[Passport] then
 		Spectate[Passport] = nil
+	end
+
+	if Blips[Passport] then
+		Blips[Passport] = nil
+	end
+
+	if Noclip[Passport] then
+		Noclip[Passport] = nil
 	end
 end)

@@ -11,6 +11,7 @@ client_scripts {
 }
 
 server_scripts {
+	"@vrp/config/Vehicle.lua",
 	"@vrp/lib/Utils.lua",
 	"server-side/*"
 }

@@ -53,16 +53,28 @@ AddEventHandler("paramedic:Treatment",function(entity)
 		local OtherPassport = vRP.Passport(entity)
 		local Identity = vRP.Identity(OtherPassport)
 		if Identity then
-			if vRP.TakeItem(Passport,"syringe0"..Identity["blood"],1) then
-				if not bloodTimers[OtherPassport] then
-					bloodTimers[OtherPassport] = os.time() + 1800
-				end
+			if vRP.Request(entity,"Iniciar o tratamento por <b>$400</b> dólares?","Sim, iniciar tratamento","Não, volto mais tarde") then
+				if Identity["bank"] >= 400 then
+					if vRP.TakeItem(Passport,"syringe0"..Identity["blood"],1) then
+						if vRP.PaymentFull(OtherPassport,400) then
+							if not bloodTimers[OtherPassport] then
+								bloodTimers[OtherPassport] = os.time() + 1800
+							end
 
-				TriggerClientEvent("target:StartTreatment",entity)
-				TriggerClientEvent("Notify",source,"amarelo","Tratamento começou.",5000)
-			else
-				TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>1x "..itemName("syringe0"..Identity["blood"]).."</b>.",5000)
+							vRP.GiveBank(Passport,400)
+							TriggerClientEvent("paramedic:Reset",entity)
+							TriggerClientEvent("target:StartTreatment",entity)
+							TriggerClientEvent("Notify",source,"amarelo","Tratamento começou.",5000)
+						end
+					else
+						TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>1x "..itemName("syringe0"..Identity["blood"]).."</b>.",5000)
+					end
+				else
+					TriggerClientEvent("Notify",source,"negado","<b>Dólares</b> insuficientes.",5000)
+				end
 			end
+		else
+			TriggerClientEvent("Notify",source,"amarelo","Paciente recusou o tratamento.",5000)
 		end
 	end
 end)
@@ -87,7 +99,7 @@ AddEventHandler("paramedic:Revive",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(entity) <= 100 then
-		if vRP.HasService(Passport,"Paramedic") then
+		if vRP.HasService(Passport,"Paramedic") or vRP.HasService(Passport,"Police") then
 			if vSKINSHOP.Defibrillator(source) then
 				local OtherPassport = vRP.Passport(entity)
 				Player(source)["state"]["Cancel"] = true
@@ -310,13 +322,9 @@ AddEventHandler("paramedic:extractBlood",function(entity)
 
 							if os.time() >= bloodTimers[OtherPassport] then
 								if vRP.TakeItem(Passport,"syringe",3) then
-									vRPC.DowngradeHealth(entity,50)
+									vRPC.DowngradeHealth(entity,10)
 									bloodTimers[OtherPassport] = os.time() + 10800
 									vRP.GenerateItem(Passport,"syringe0"..Identity["blood"],5,true)
-
-									if extractPerson[OtherPassport] then
-										extractPerson[OtherPassport] = nil
-									end
 								else
 									TriggerClientEvent("Notify",source,"amarelo","Precisa de <b>3x "..itemName("syringe").."</b>.",5000)
 								end
@@ -327,6 +335,10 @@ AddEventHandler("paramedic:extractBlood",function(entity)
 					end
 				else
 					TriggerClientEvent("Notify",source,"amarelo","Sistema imunológico do paciente muito fraco.",5000)
+				end
+
+				if extractPerson[OtherPassport] then
+					extractPerson[OtherPassport] = nil
 				end
 			end
 		end

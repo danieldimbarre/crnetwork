@@ -321,7 +321,7 @@ const Chest = () => {
 			}
 		}
 
-		for (let x = 1; x <= 100; x++){
+		for (let x = 1; x <= 500; x++){
 			const slot = x.toString();
 
 			if (data.Chest[slot] !== undefined){

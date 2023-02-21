@@ -16,6 +16,7 @@ vCLIENT = Tunnel.getInterface("slotmachine")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
 local Players = {}
+local Hackers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MACHINES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -387,8 +388,28 @@ function Creative.Winner(Table,Result)
 	if Passport and not Active[Passport] and Machines[Table] then
 		Active[Passport] = true
 
+		if not Hackers[Passport] then
+			Hackers[Passport] = os.time()
+		end
+
+		if Hackers[Passport] > os.time() then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
+				vRP.Kick(source,"Banido.")
+
+				local Cooldown = parseInt(Hackers[Passport] - os.time())
+				TriggerEvent("Discord","Hackers","**Slotmachine**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
+
+				Active[Passport] = nil
+				return
+			end
+		end
+
 		if Machines[Table]["win"] then
 			if Machines[Table]["win"]["a"] == Result["a"] and Machines[Table]["win"]["b"] == Result["b"] and Machines[Table]["win"]["c"] == Result["c"] then
+				Hackers[Passport] = os.time() + 3
+
 				local Total = 0
 				local Spin01 = winTable[Result["a"]]
 				local Spin02 = winTable[Result["b"]]

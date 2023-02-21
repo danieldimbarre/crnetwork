@@ -18,12 +18,14 @@ local Timer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("radio:RadioNui")
 AddEventHandler("radio:RadioNui",function()
-	SetNuiFocus(true,true)
-	SetCursorLocation(0.9,0.9)
-	SendNUIMessage({ Action = "Radio", Show = true })
+	if not exports["police"]:checkPrison() then
+		SetNuiFocus(true,true)
+		SetCursorLocation(0.9,0.9)
+		SendNUIMessage({ Action = "Radio", Show = true })
 
-	if not IsPedInAnyVehicle(PlayerPedId()) then
-		vRP.createObjects("cellphone@","cellphone_text_in","prop_cs_hand_radio",50,28422)
+		if not IsPedInAnyVehicle(PlayerPedId()) then
+			vRP.createObjects("cellphone@","cellphone_text_in","prop_cs_hand_radio",50,28422)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

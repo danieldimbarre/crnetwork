@@ -12,15 +12,16 @@ body {
 }
 
 #divCode {
-	top: 100px;
+	top: 6vw;
 	width: 100%;
 	display: none;
 	position: fixed;
 	cursor: default;
+	border-radius: 5px;
 }
 
 #midCode {
-	width: 498px;
+	width: 235px;
 	margin: 0 auto;
 }
 
@@ -31,57 +32,74 @@ body {
 	padding: 10px 15px;
 	letter-spacing: 2px;
 	background: rgba(15,15,15,.75);
-	border-right: 1px solid rgba(20,20,20,.75);
+	border-right: 1px solid #000;
 	font-family: "Roboto";
 }
 
 #midCode div:hover {
-	color: #4a380c;
-	background: #fec026;
+	color: #ccc;
+	text-shadow: 1px 1px #000;
+	background: rgba(0,224,118,.75);
+}
+
+#midCode div:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 #midCode div:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 	border-right: 0;
 }
 
-#topRadar {
-	right: 632px;
-	width: 225px;
-	bottom: 50px;
+#divRadar {
+	bottom: 2vw;
+	width: 100%;
 	display: none;
+	position: fixed;
+	cursor: default;
+}
+
+#midRadar {
+	width: 431px;
+	margin: 0 auto;
+}
+
+#topRadar {
+	float: left;
 	font-size: 12px;
 	text-align: right;
 	line-height: 20px;
 	padding: 10px 15px;
-	position: absolute;
+	margin-right: 2px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	text-shadow: 1px 1px #000;
+	border-radius: 5px;
 	background: rgba(15,15,15,.75);
 }
 
 #botRadar {
-	right: 387px;
-	width: 225px;
-	bottom: 50px;
-	display: none;
+	float: left;
 	font-size: 12px;
 	text-align: right;
 	line-height: 20px;
 	padding: 10px 15px;
-	position: absolute;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	text-shadow: 1px 1px #000;
+	border-radius: 5px;
 	background: rgba(15,15,15,.75);
 }
 
 c {
-	color: #929292;
+	color: #898989;
 	float: left;
 }
 
 v {
+	color: #ccc;
 	width: 125px;
 	float: right;
 	white-space: nowrap;
@@ -91,12 +109,13 @@ v {
 legend {
 	text-align: center;
 	display: block;
-	color: #715611;
+	color: #ccc;
 	margin-top: 5px;
 	font-size: 10px;
 	letter-spacing: 2px;
-	text-shadow: none;
+	text-shadow: 1px 1px #000;
 	margin-bottom: 5px;
-	background: #fec026;
+	border-radius: 5px;
+	background: #00e076;
 	padding-right: 5px;
 }

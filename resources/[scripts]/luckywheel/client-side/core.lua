@@ -36,11 +36,11 @@ CreateThread(function()
 				if not LocalPlayer["state"]["Cassino"] then
 					LocalPlayer["state"]["Cassino"] = true
 
-					if LoadModel("sabregt2") and LoadModel("vw_prop_vw_luckywheel_02a") then
+					if LoadModel("vigero2") and LoadModel("vw_prop_vw_luckywheel_02a") then
 						Wheel = CreateObjectNoOffset("vw_prop_vw_luckywheel_02a",990.28,42.84,71.77,false,false,false)
 						SetEntityHeading(Wheel,328.16)
 
-						Vehicle = CreateVehicle("sabregt2",975.7,40.31,70.91,200.0,false,false)
+						Vehicle = CreateVehicle("vigero2",975.7,40.31,70.91,200.0,false,false)
 						SetVehicleNumberPlateText(Vehicle,"PDMSPORT")
 						SetVehicleOnGroundProperly(Vehicle)
 						FreezeEntityPosition(Vehicle,true)
@@ -49,7 +49,7 @@ CreateThread(function()
 						SetVehicleColours(Vehicle,0,1)
 
 						SetModelAsNoLongerNeeded("vw_prop_vw_luckywheel_02a")
-						SetModelAsNoLongerNeeded("sabregt2")
+						SetModelAsNoLongerNeeded("vigero2")
 					end
 				end
 			else

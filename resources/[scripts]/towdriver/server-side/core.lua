@@ -15,6 +15,7 @@ Tunnel.bindInterface("towdriver",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
 local userList = {}
+local Hackers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOGGLESERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -32,26 +33,46 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOWDRIVER:CALL
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("towdriver:Call",function(source,vehName,Plate)
+AddEventHandler("towdriver:Call",function(source,vehName,vehPlate)
 	local Ped = GetPlayerPed(source)
 	if DoesEntityExist(Ped) then
 		local Coords = GetEntityCoords(Ped)
 
 		for k,v in pairs(userList) do
 			async(function()
-				TriggerClientEvent("NotifyPush",v,{ code = 51, title = "Registro de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..Plate, time = "Recebido às "..os.date("%H:%M"), blipColor = 33 })
+				TriggerClientEvent("NotifyPush",v,{ code = "QTH", title = "Registro de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(vehName).." - "..vehPlate, time = "Recebido às "..os.date("%H:%M"), blipColor = 33 })
 			end)
 		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PAYMENTMETHOD
+-- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.paymentMethod(Network,Plate)
+function Creative.Payment(Network,Plate)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
 		Active[Passport] = true
+
+		if not Hackers[Passport] then
+			Hackers[Passport] = os.time()
+		end
+
+		if Hackers[Passport] > os.time() then
+			local Identity = vRP.Identity(Passport)
+			if Identity then
+				vRP.Query("banneds/InsertBanned",{ license = Identity["license"], time = 999999999 })
+				vRP.Kick(source,"Banido.")
+
+				local Cooldown = parseInt(Hackers[Passport] - os.time())
+				TriggerEvent("Discord","Hackers","**Towdriver**\n\n**Passaporte:** "..Passport.."\n**Tempo:** "..Cooldown,9317187)
+
+				Active[Passport] = nil
+				return
+			end
+		end
+
+		Hackers[Passport] = os.time() + 40
 
 		TriggerEvent("garages:deleteVehicle",Network,Plate)
 
@@ -62,6 +83,7 @@ function Creative.paymentMethod(Network,Plate)
 			local Tow = vRP.GetExperience(Passport,"Tows")
 			local Class = ClassCategory(Tow)
 			local VehRandom = 1000
+			local Experience = 1
 
 			if Class == "B" or Class == "B+" then
 				VehRandom = math.random(4500)
@@ -77,6 +99,14 @@ function Creative.paymentMethod(Network,Plate)
 				VehSelected = "transmission"
 			elseif VehParts == 3 then
 				VehSelected = "brake"
+			end
+
+			if GlobalState["Buffs"]["Luck"][Passport] then
+				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+					Experience = Experience * 2
+					AmountItens = math.random(6,7)
+					VehRandom = VehRandom - 300
+				end
 			end
 
 			if VehRandom <= 10 then
@@ -97,7 +127,7 @@ function Creative.paymentMethod(Network,Plate)
 			vRP.GenerateItem(Passport,"copper",AmountItens,true)
 			vRP.GenerateItem(Passport,"aluminum",AmountItens,true)
 
-			vRP.PutExperience(Passport,"Tows",1)
+			vRP.PutExperience(Passport,"Tows",Experience)
 		else
 			TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
 		end

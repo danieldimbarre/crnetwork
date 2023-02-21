@@ -32,6 +32,7 @@ AddEventHandler("impound:Check",function(entity)
 			local AmountItens = math.random(4,5)
 			local Tow = vRP.GetExperience(Passport,"Tows")
 			local Class = ClassCategory(Tow)
+			local Experience = 1
 
 			if Class == "B" or Class == "B+" then
 				VehRandom = math.random(4500)
@@ -49,15 +50,23 @@ AddEventHandler("impound:Check",function(entity)
 				VehSelected = "brake"
 			end
 
-			if VehRandom <= 10 then
+			if GlobalState["Buffs"]["Luck"][Passport] then
+				if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+					Experience = Experience * 2
+					AmountItens = math.random(6,7)
+					VehRandom = VehRandom - 300
+				end
+			end
+
+			if VehRandom <= 20 then
 				vRP.GenerateItem(Passport,VehSelected.."e",1,true)
-			elseif VehRandom >= 10 and VehRandom <= 30 then
+			elseif VehRandom >= 20 and VehRandom <= 60 then
 				vRP.GenerateItem(Passport,VehSelected.."d",1,true)
-			elseif VehRandom >= 31 and VehRandom <= 60 then
+			elseif VehRandom >= 61 and VehRandom <= 120 then
 				vRP.GenerateItem(Passport,VehSelected.."c",1,true)
-			elseif VehRandom >= 61 and VehRandom <= 100 then
+			elseif VehRandom >= 121 and VehRandom <= 200 then
 				vRP.GenerateItem(Passport,VehSelected.."b",1,true)
-			elseif VehRandom >= 101 and VehRandom <= 150 then
+			elseif VehRandom >= 201 and VehRandom <= 300 then
 				vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 			end
 
@@ -66,7 +75,8 @@ AddEventHandler("impound:Check",function(entity)
 			vRP.GenerateItem(Passport,"rubber",AmountItens,true)
 			vRP.GenerateItem(Passport,"copper",AmountItens,true)
 			vRP.GenerateItem(Passport,"aluminum",AmountItens,true)
-			vRP.PutExperience(Passport,"Tows",1)
+
+			vRP.PutExperience(Passport,"Tows",Experience)
 
 			TriggerClientEvent("garages:Delete",source,entity[3])
 		end
@@ -102,15 +112,22 @@ AddEventHandler("police:Impound",function(entity)
 					VehSelected = "brake"
 				end
 
-				if VehRandom <= 10 then
+				if GlobalState["Buffs"]["Luck"][Passport] then
+					if GlobalState["Buffs"]["Luck"][Passport] > os.time() then
+						AmountItens = math.random(6,7)
+						VehRandom = VehRandom - 300
+					end
+				end
+
+				if VehRandom <= 20 then
 					vRP.GenerateItem(Passport,VehSelected.."e",1,true)
-				elseif VehRandom >= 10 and VehRandom <= 30 then
+				elseif VehRandom >= 20 and VehRandom <= 60 then
 					vRP.GenerateItem(Passport,VehSelected.."d",1,true)
-				elseif VehRandom >= 31 and VehRandom <= 60 then
+				elseif VehRandom >= 61 and VehRandom <= 120 then
 					vRP.GenerateItem(Passport,VehSelected.."c",1,true)
-				elseif VehRandom >= 61 and VehRandom <= 100 then
+				elseif VehRandom >= 121 and VehRandom <= 200 then
 					vRP.GenerateItem(Passport,VehSelected.."b",1,true)
-				elseif VehRandom >= 101 and VehRandom <= 150 then
+				elseif VehRandom >= 201 and VehRandom <= 300 then
 					vRP.GenerateItem(Passport,VehSelected.."a",1,true)
 				end
 
@@ -179,14 +196,16 @@ AddEventHandler("police:Arrest",function(entity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.Request(source,"Apreender o veículo?","Sim, concluír apreensão","Não, mudei de ideia") then
-			local Passport = vRP.PassportPlate(entity[1])
-			if Passport then
-				local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })
+		if vRP.Request(source,"Apreender o veículo?","Sim, concluir apreensão","Não, mudei de ideia") then
+			local Plate = vRP.PassportPlate(entity[1])
+			if Plate then
+				local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Plate["Passport"], vehicle = entity[2] })
 				if Vehicle[1] then
 					if Vehicle[1]["arrest"] <= os.time() then
-						vRP.Query("vehicles/arrestVehicles",{ Passport = Passport["Passport"], vehicle = entity[2] })
+						vRP.Query("vehicles/arrestVehicles",{ Passport = Plate["Passport"], vehicle = entity[2] })
 						TriggerClientEvent("Notify",source,"verde","Veículo apreendido.",5000)
+
+						TriggerEvent("Discord","Polices","**Passaporte:** "..Passport.."\n**Apreendeu:** "..Vehicle[1]["vehicle"].."\n**Placa**: "..Vehicle[1]["plate"].."\n**Proprietário**: "..Plate["Passport"],15105570)
 					else
 						TriggerClientEvent("Notify",source,"amarelo","Veículo já se encontra apreendido.",5000)
 					end

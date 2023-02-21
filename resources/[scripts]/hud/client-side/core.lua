@@ -21,6 +21,7 @@ Display = false
 local Road = ""
 local Gemstone = 0
 local Crossing = ""
+local Hood = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRINCIPAL
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -69,39 +70,45 @@ CreateThread(function()
 		if LocalPlayer["state"]["Active"] then
 			local Ped = PlayerPedId()
 
-			if Display then
-				local Coords = GetEntityCoords(Ped)
-				local Armouring = GetPedArmour(Ped)
-				local Healing = GetEntityHealth(Ped) - 100
-				local MinRoad,MinCross = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
-				local FullRoad = GetStreetNameFromHashKey(MinRoad)
-				local FullCross = GetStreetNameFromHashKey(MinCross)
+			if IsPauseMenuActive() then
+				SendNUIMessage({ Action = "Body", Status = false })
+			else
+				if Display then
+					SendNUIMessage({ Action = "Body", Status = true })
 
-				if Health ~= Healing then
-					if Healing < 0 then
-						Healing = 0
+					local Coords = GetEntityCoords(Ped)
+					local Armouring = GetPedArmour(Ped)
+					local Healing = GetEntityHealth(Ped) - 100
+					local MinRoad,MinCross = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
+					local FullRoad = GetStreetNameFromHashKey(MinRoad)
+					local FullCross = GetStreetNameFromHashKey(MinCross)
+
+					if Health ~= Healing then
+						if Healing < 0 then
+							Healing = 0
+						end
+
+						SendNUIMessage({ Action = "Health", Number = Healing })
+						Health = Healing
 					end
 
-					SendNUIMessage({ Action = "Health", Number = Healing })
-					Health = Healing
-				end
+					if Armour ~= Armouring then
+						SendNUIMessage({ Action = "Armour", Number = Armouring })
+						Armour = Armouring
+					end
 
-				if Armour ~= Armouring then
-					SendNUIMessage({ Action = "Armour", Number = Armouring })
-					Armour = Armouring
-				end
+					if FullRoad ~= "" and Road ~= FullRoad then
+						SendNUIMessage({ Action = "Road", Name = FullRoad })
+						Road = FullRoad
+					end
 
-				if FullRoad ~= "" and Road ~= FullRoad then
-					SendNUIMessage({ Action = "Road", Name = FullRoad })
-					Road = FullRoad
-				end
+					if FullCross ~= "" and Crossing ~= FullCross then
+						SendNUIMessage({ Action = "Crossing", Name = FullCross })
+						Crossing = FullCross
+					end
 
-				if FullCross ~= "" and Crossing ~= FullCross then
-					SendNUIMessage({ Action = "Crossing", Name = FullCross })
-					Crossing = FullCross
+					SendNUIMessage({ Action = "Clock", Hours = GlobalState["Hours"], Minutes = GlobalState["Minutes"] })
 				end
-
-				SendNUIMessage({ Action = "Clock", Hours = GlobalState["Hours"], Minutes = GlobalState["Minutes"] })
 			end
 
 			if Luck > 0 and LuckTimer <= GetGameTimer() then
@@ -131,7 +138,7 @@ CreateThread(function()
 			if HungerTimer <= GetGameTimer() then
 				HungerTimer = GetGameTimer() + 10000
 
-				if Hunger < 25 and GetEntityHealth(Ped) > 100 then
+				if Hunger < 10 and GetEntityHealth(Ped) > 100 then
 					ApplyDamageToPed(Ped,math.random(2),false)
 					TriggerEvent("Notify","hunger","Sofrendo de fome.",2500)
 				end
@@ -140,16 +147,16 @@ CreateThread(function()
 			if ThirstTimer <= GetGameTimer() then
 				ThirstTimer = GetGameTimer() + 10000
 
-				if Thirst < 25 and GetEntityHealth(Ped) > 100 then
+				if Thirst < 10 and GetEntityHealth(Ped) > 100 then
 					ApplyDamageToPed(Ped,math.random(2),false)
 					TriggerEvent("Notify","thirst","Sofrendo de sede.",2500)
 				end
 			end
 
 			if StressTimer <= GetGameTimer() then
-				StressTimer = GetGameTimer() + 10000
+				StressTimer = GetGameTimer() + 20000
 
-				if Stress >= 25 and GetEntityHealth(Ped) > 100 then
+				if Stress >= 80 and GetEntityHealth(Ped) > 100 then
 					DoScreenFadeOut(0)
 
 					if not IsPedInAnyVehicle(Ped) then
@@ -286,6 +293,32 @@ end)
 RegisterNetEvent("hud:Dexterity")
 AddEventHandler("hud:Dexterity",function(Seconds)
 	Dexterity = Seconds
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:TOGGLEHOOD
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:toggleHood")
+AddEventHandler("hud:toggleHood",function()
+	Hood = not Hood
+
+	if Hood then
+		SetPedComponentVariation(PlayerPedId(),1,69,0,1)
+	else
+		SetPedComponentVariation(PlayerPedId(),1,0,0,1)
+	end
+
+	SendNUIMessage({ Action = "Hood", Status = Hood })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:REMOVEHOOD
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:RemoveHood")
+AddEventHandler("hud:RemoveHood",function()
+	if Hood then
+		Hood = false
+		SendNUIMessage({ Action = "Hood", Status = Hood })
+		SetPedComponentVariation(PlayerPedId(),1,0,0,1)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:ADDGEMS

@@ -1,5 +1,12 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- COMPONETS
+-- BACKUP
+-----------------------------------------------------------------------------------------------------------------------------------------
+Backup = {
+    ["00"] = true,
+    ["30"] = true
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- COMPONENTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Components = {
 	{
@@ -42,28 +49,109 @@ Components = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TIMERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-Timers = {
-	["14:00"] = true,
-	["17:00"] = true,
-	["20:00"] = true,
-	["23:00"] = true,
-	["02:00"] = true
-}
+Timers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOOTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Loots = {
 	{
-		["1"] = { item = "syringe", amount = 1 },
-		["2"] = { item = "syringe", amount = 2 },
-		["3"] = { item = "syringe", amount = 3 },
-		["4"] = { item = "syringe", amount = 4 },
-		["5"] = { item = "syringe", amount = 5 }
-	},{
-		["1"] = { item = "syringe", amount = 1 },
-		["2"] = { item = "syringe", amount = 2 },
-		["3"] = { item = "syringe", amount = 3 },
-		["4"] = { item = "syringe", amount = 4 },
-		["5"] = { item = "syringe", amount = 5 }
-	}
+        ["1"] = { item = "WEAPON_PISTOL_MK2", amount = 2 },
+        ["2"] = { item = "c4", amount = 3 },
+        ["3"] = { item = "vest", amount = 1 },
+        ["4"] = { item = "dollarsz", amount = math.random(4000,5000) }
+    },{
+        ["1"] = { item = "WEAPON_MACHINEPISTOL", amount = 2 },
+        ["2"] = { item = "WEAPON_PISTOL", amount = 3 },
+        ["3"] = { item = "adrenaline", amount = 5 },
+        ["4"] = { item = "dollarsz", amount = math.random(4000,5000) }
+    },{
+        ["1"] = { item = "WEAPON_MINISMG", amount = 2 },
+        ["2"] = { item = "WEAPON_PISTOL_AMMO", amount = math.random(500,600) },
+        ["3"] = { item = "plate", amount = 3 },
+        ["4"] = { item = "dollarsz", amount = math.random(4000,5000) }
+    },{
+        ["1"] = { item = "WEAPON_SMG_MK2", amount = 2 },
+        ["2"] = { item = "WEAPON_PISTOL_AMMO", amount = math.random(500,600) },
+        ["3"] = { item = "WEAPON_SMG_AMMO", amount = math.random(500,600) },
+        ["4"] = { item = "dollarsz", amount = math.random(4000,5000) }
+    },{
+        ["1"] = { item = "WEAPON_ASSAULTSMG", amount = 2 },
+        ["2"] = { item = "nitro", amount = 1 },
+        ["3"] = { item = "WEAPON_SMG_AMMO", amount = math.random(500,600) },
+        ["4"] = { item = "dollarsz", amount = math.random(4000,5000) }
+    },{
+        ["1"] = { item = "attachsFlashlight", amount = math.random(2,3) },
+        ["2"] = { item = "attachsCrosshair", amount = math.random(2,3) },
+        ["3"] = { item = "attachsMagazine", amount = math.random(2,3) },
+        ["4"] = { item = "dollarsz", amount = math.random(4000,5000) }
+    },{
+        ["1"] = { item = "attachsGrip", amount = math.random(2,3) },
+        ["2"] = { item = "attachsMazzleBrake", amount = math.random(2,3) },
+        ["3"] = { item = "attachsMazzleBoost", amount = math.random(2,3) },
+        ["4"] = { item = "dollarsz", amount = math.random(4000,5000) }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BURN
+-----------------------------------------------------------------------------------------------------------------------------------------
+Burn = {
+    ["00:00-01/01"] = true
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- LOCATIONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+Locations = {
+	{ ["Coords"] = vec3(-1826.41,-1270.17,8.61), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(-1879.1,-1213.37,13.01), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(-1832.18,-1156.97,13.01), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-1782.19,-1198.93,13.01), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(-1830.21,-1191.15,28.36), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(-1675.64,-1172.62,13.01), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-1701.86,-1108.73,18.69), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(-1627.19,-1026.83,17.39), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(-1653.98,-989.56,19.04), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-1660.41,-1074.65,20.44), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(-1463.34,-773.38,23.78), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(-1452.34,-782.49,23.83), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-1609.46,-1046.05,13.09), ["Type"] = "Battery" },
+
+    { ["Coords"] = vec3(-2023.83,-1038.0,5.58), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(-2043.83,-1031.52,11.98), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-2110.15,-1009.92,8.96), ["Type"] = "Battery" },
+
+    { ["Coords"] = vec3(214.75,-920.9,60.71), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(177.5,-951.79,30.89), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(163.47,-971.76,30.95), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(174.45,-985.14,30.95), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(193.73,-957.95,30.95), ["Type"] = "Fountain" },
+
+    { ["Coords"] = vec3(696.03,1204.03,325.59), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(707.81,1201.28,325.86), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(719.93,1198.22,326.13), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(731.93,1194.65,326.2), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(743.78,1191.62,325.91), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(758.25,1273.72,443.69), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(670.37,1277.98,360.3), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(798.8,1275.97,360.28), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(747.86,1260.49,360.28), ["Type"] = "Fountain" },
+
+    { ["Coords"] = vec3(-636.97,307.68,140.14), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(-716.9,314.62,140.14), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(-714.92,337.39,140.14), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-635.53,331.52,140.14), ["Type"] = "Battery" },
+
+    { ["Coords"] = vec3(-75.07,-819.2,326.18), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(-54.43,-826.58,295.71), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(-95.93,-811.45,295.71), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-80.08,-832.45,322.37), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(-70.37,-806.0,322.4), ["Type"] = "Rocket" },
+
+    { ["Coords"] = vec3(-286.49,-1912.02,58.3), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-275.32,-1921.49,58.3), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(-246.03,-2027.09,56.3), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(-253.04,-2035.59,56.3), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-362.24,-2024.83,58.3), ["Type"] = "Battery" },
+    { ["Coords"] = vec3(-373.37,-2015.81,58.3), ["Type"] = "Rocket" },
+    { ["Coords"] = vec3(-402.67,-1910.34,56.3), ["Type"] = "Fountain" },
+    { ["Coords"] = vec3(-395.51,-1901.59,56.3), ["Type"] = "Battery" }
 }

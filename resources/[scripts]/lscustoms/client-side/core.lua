@@ -39,89 +39,118 @@ local isPurchaseSuccessful = false
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local bennysLocations = {
-	["mechanic01"] = {
-		pos = vec3(450.4,-975.81,25.7),
-		heading = 90.00
+	["Police01"] = {
+		pos = vector3(435.62,-976.14,25.7),
+		heading = 87.88,
+		permission = "Police",
+		service = true
 	},
-	["mechanic02"] = {
-		pos = vec3(435.28,-975.86,25.7),
-		heading = 90.00
+	["HeliPolice01"] = {
+		pos = vector3(449.27,-981.34,43.69),
+		heading = 87.88,
+		permission = "Police",
+		service = true
 	},
-	["mechanic03"] = {
-		pos = vec3(333.34,-574.76,28.80),
-		heading = 340.00
+	["Police02"] = {
+		pos = vector3(-463.26,6033.79,31.34),
+		heading = 136.07,
+		permission = "Police",
+		service = true
 	},
-	["mechanic04"] = {
-		pos = vec3(-339.15,-136.66,39.01),
-		heading = 87.88
+	["HeliPolice02"] = {
+		pos = vector3(-475.04,5988.45,31.73),
+		heading = 317.49,
+		permission = "Police",
+		service = true
 	},
-	["mechanic05"] = {
-		pos = vec3(-1155.12,-2005.7,13.18),
-		heading = 334.49
+	["Police03"] = {
+		pos = vector3(380.75,-1625.51,29.28),
+		heading = 331.66,
+		permission = "Police",
+		service = true
 	},
-	["mechanic06"] = {
-		pos = vec3(1174.98,2640.4,37.74),
-		heading = 1.0
+	["HeliPolice03"] = {
+		pos = vector3(384.12,-1623.63,29.67),
+		heading = 320.32,
+		permission = "Police",
+		service = true
 	},
-	["mechanic07"] = {
-		pos = vec3(1182.14,2639.94,37.74),
-		heading = 1.0
+	["Police04"] = {
+		pos = vector3(1833.59,2542.09,45.54),
+		heading = 272.13,
+		permission = "Police",
+		service = true
 	},
-	["mechanic08"] = {
-		pos = vec3(110.63,6626.54,31.78),
-		heading = 224.94
+	["Police05"] = {
+		pos = vector3(1840.98,3694.03,33.97),
+		heading = 331.66,
+		permission = "Police",
+		service = true
 	},
-	["mechanic09"] = {
-		pos = vec3(105.26,6621.59,31.78),
-		heading = 223.94
+	["HeliPolice05"] = {
+		pos = vector3(1853.31,3706.24,33.97),
+		heading = 320.32,
+		permission = "Police",
+		service = true
 	},
-	["mechanic10"] = {
-		pos = vec3(731.7,-1088.84,21.84),
-		heading = 87.88
+	["Paramedic01"] = {
+		pos = vector3(-670.16,340.8,77.9),
+		heading = 87.88,
+		permission = "Paramedic",
+		service = true
 	},
-	["mechanic11"] = {
-		pos = vec3(-1178.37,-2845.97,13.93),
-		heading = 331.66
+	["HeliParamedic01"] = {
+		pos = vector3(-687.34,322.08,140.65),
+		heading = 172.92,
+		permission = "Paramedic",
+		service = true
 	},
-	["mechanic12"] = {
-		pos = vec3(-222.63,-1330.03,30.57),
-		heading = 272.13
+	["Paramedic02"] = {
+		pos = vector3(-261.6,6344.21,32.1),
+		heading = 269.3,
+		permission = "Paramedic",
+		service = true
 	},
-	["mechanic13"] = {
-		pos = vec3(-32.76,-1065.91,27.77),
-		heading = 339.5
+	["HeliParamedic02"] = {
+		pos = vector3(-273.13,6329.85,32.1),
+		heading = 133.23,
+		permission = "Paramedic",
+		service = true
 	},
-	["mechanic14"] = {
-		pos = vec3(135.97,-3030.56,6.71),
-		heading = 178.59
+	["Bennys01"] = {
+		pos = vector3(-195.48,-1326.96,31.29),
+		heading = 85.04,
+		permission = "Mechanic"
 	},
-	["mechanic15"] = {
-		pos = vec3(144.91,-3030.35,6.71),
-		heading = 0.0
+	["Bennys02"] = {
+		pos = vector3(-208.65,-1334.61,31.29),
+		heading = 0.0,
+		permission = "Mechanic"
 	},
-	["mechanic16"] = {
-		pos = vec3(-1423.62,-450.23,35.28),
-		heading = 32.00
+	["Bennys03"] = {
+		pos = vector3(-214.29,-1335.05,31.32),
+		heading = 0.0,
+		permission = "Mechanic"
 	},
-	["mechanic17"] = {
-		pos = vec3(-1417.29,-446.25,35.28),
-		heading = 32.00
+	["Bennys04"] = {
+		pos = vector3(-201.81,-1318.72,31.29),
+		heading = 171.77,
+		permission = "Mechanic"
 	},
-	["mechanic18"] = {
-		pos = vec3(936.6,-970.85,38.91),
-		heading = 273.00
+	["Bennys05"] = {
+		pos = vector3(-220.97,-1318.7,31.29),
+		heading = 199.89,
+		permission = "Mechanic"
 	},
-	["mechanic19"] = {
-		pos = vec3(380.35,-1626.4,29.1),
-		heading = 320.32
+	["Hayes01"] = {
+		pos = vector3(-1423.8,-449.8,35.91),
+		heading = 31.19,
+		permission = "Mechanic"
 	},
-	["mechanic20"] = {
-		pos = vec3(1881.54,3700.57,33.35),
-		heading = 28.35
-	},
-	["mechanic21"] = {
-		pos = vec3(374.39,797.98,187.2),
-		heading = 178.59
+	["Hayes02"] = {
+		pos = vector3(-1416.89,-446.86,35.91),
+		heading = 31.19,
+		permission = "Mechanic"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -977,6 +1006,18 @@ AddEventHandler("lscustoms:purchaseFailed",function()
 	attemptingPurchase = false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	local Table = {}
+
+	for _,v in pairs(bennysLocations) do
+		table.insert(Table,{ v["pos"]["x"],v["pos"]["y"],v["pos"]["z"],2.5,"E","Tunagem","Pressione para abrir" })
+	end
+
+	TriggerEvent("hoverfy:Insert",Table)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADOPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -997,6 +1038,7 @@ CreateThread(function()
 
 								if IsControlJustPressed(1,38) and vSERVER.checkPermission(v["permission"]) then
 									local isMotorcycle = false
+									local isService = false
 
 									if v["bikes"] then
 										if GetVehicleClass(vehicle) == 8 then
@@ -1009,6 +1051,14 @@ CreateThread(function()
 											isMotorcycle = true
 										else
 											isMotorcycle = false
+										end
+									end
+
+									if v["service"] then
+										if GetVehicleClass(vehicle) == 18 then
+											isService = true
+										else
+											goto skipBennys
 										end
 									end
 
@@ -1040,7 +1090,7 @@ CreateThread(function()
 									originalPoliceLivery = nil
 									originalPlateIndex = nil
 
-									InitiateMenus(isMotorcycle)
+									InitiateMenus(isMotorcycle,isService)
 
 									DisplayMenuContainer(true)
 									DisplayMenu(true,"mainMenu")
@@ -1060,5 +1110,78 @@ CreateThread(function()
 		end
 
 		Wait(TimeDistance)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BENNYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("bennys",function(source,Message)
+	local Ped = PlayerPedId()
+	local vehicle = GetVehiclePedIsUsing(Ped)
+	if GetPedInVehicleSeat(vehicle,-1) == Ped then
+		if vSERVER.checkPermission("Admin") then
+			local isMotorcycle = false
+			local isService = false
+
+			if Message[1] == "bikes" then
+				if GetVehicleClass(vehicle) == 8 then
+					isMotorcycle = true
+				else
+					goto skipBennys
+				end
+			else
+				if GetVehicleClass(vehicle) == 8 then
+					isMotorcycle = true
+				else
+					isMotorcycle = false
+				end
+			end
+
+			if Message[1] == "police" then
+				if GetVehicleClass(vehicle) == 18 then
+					isService = true
+				else
+					goto skipBennys
+				end
+			end
+
+			SetVehicleModKit(vehicle,0)
+			FreezeEntityPosition(vehicle,true)
+			SetVehicleOnGroundProperly(vehicle)
+
+			originalCategory = nil
+			originalMod = nil
+			originalPrimaryColour = nil
+			originalSecondaryColour = nil
+			originalPearlescentColour = nil
+			originalWheelColour = nil
+			originalDashColour = nil
+			originalInterColour = nil
+			originalWindowTint = nil
+			originalWheelCategory = nil
+			originalWheel = nil
+			originalWheelType = nil
+			originalCustomWheels = nil
+			originalNeonLightState = nil
+			originalNeonLightSide = nil
+			originalNeonColourR = nil
+			originalNeonColourG = nil
+			originalNeonColourB = nil
+			originalXenonColour = nil
+			originalPoliceLivery = nil
+			originalPlateIndex = nil
+
+			InitiateMenus(isMotorcycle,isService)
+
+			DisplayMenuContainer(true)
+			DisplayMenu(true,"mainMenu")
+			TriggerEvent("player:inBennys",true)
+			PlaySoundFrontend(-1,"OK","HUD_FRONTEND_DEFAULT_SOUNDSET",1)
+			TriggerServerEvent("lscustoms:inVehicle",VehToNet(vehicle),GetVehicleNumberPlateText(vehicle))
+
+			disableControls()
+
+			::skipBennys::
+		end
 	end
 end)

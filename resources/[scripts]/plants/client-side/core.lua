@@ -28,8 +28,8 @@ CreateThread(function()
 					exports["target"]:AddBoxZone("Plants:"..k,vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3]),0.4,0.4,{
 						name = "Plants:"..k,
 						heading = 3374176,
-						minZ = v["Coords"][3] + 0.50,
-						maxZ = v["Coords"][3] + 1.50
+						minZ = v["Coords"][3],
+						maxZ = v["Coords"][3] + 2.00
 					},{
 						shop = k,
 						Distance = 1.5,
@@ -42,7 +42,7 @@ CreateThread(function()
 						}
 					})
 
-					createModels(k,v["Coords"])
+					createModels(k,v["Coords"],v["Model"])
 				end
 			else
 				if Objects[k] then
@@ -67,6 +67,7 @@ AddEventHandler("plants:Informations",function(Number)
 	if Informations then
 		exports["dynamic"]:AddButton("Coletar",Informations[1],"plants:Collect",Number,false,true)
 		exports["dynamic"]:AddButton("Clonagem",Informations[2],"plants:Cloning",Number,false,true)
+		exports["dynamic"]:AddButton("Destruir",Informations[3],"plants:Destroy",Number,false,true)
 
 		exports["dynamic"]:openMenu()
 	end
@@ -74,12 +75,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEMODELS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function createModels(Number,Coords)
-	if LoadModel("bkr_prop_weed_med_01a") then
-		Objects[Number] = CreateObjectNoOffset("bkr_prop_weed_med_01a",Coords[1],Coords[2],Coords[3],false,false,false)
-		SetModelAsNoLongerNeeded("bkr_prop_weed_med_01a")
-		PlaceObjectOnGroundProperly(Objects[Number])
-		FreezeEntityPosition(Objects[Number],true)
+function createModels(Number,Coords,Model)
+	if Model then
+		if LoadModel(Model) then
+			Objects[Number] = CreateObjectNoOffset(Model,Coords[1],Coords[2],Coords[3],false,false,false)
+			SetModelAsNoLongerNeeded(Model)
+			PlaceObjectOnGroundProperly(Objects[Number])
+			FreezeEntityPosition(Objects[Number],true)
+		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -30,13 +30,13 @@ window.addEventListener("message",function(event){
 		case "Display":
 			if (event["data"]["Status"]){
 				if ($("#Scoreboard").css("display") === "none"){
-					$("#Scoreboard").css("display","block");
+					$("#Scoreboard").fadeIn(500).css("display","block");
 					Max = event["data"]["Max"];
 					Checkpoint = 1;
 				}
 			} else {
 				if ($("#Scoreboard").css("display") === "block"){
-					$("#Scoreboard").css("display","none");
+					$("#Scoreboard").fadeOut(500).css("display","none");
 				}
 			}
 		break;

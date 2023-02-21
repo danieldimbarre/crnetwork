@@ -19,6 +19,7 @@ local spawnCoords = 0
 local inService = false
 local serviceLocate = 1
 local spawnVehicle = false
+local plateVehicle = nil
 local timeService = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INITLOCATES
@@ -30,13 +31,13 @@ local Impounds = {
 -- VEHMODELS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local vehModels = {
-	"baller","jackal","mule","youga","mesa","nemesis","primo","biff","bison","seminole","zion2","landstalker","panto",
-	"boxville2","premier","scrap","rhapsody","pcj","jester","superd","sentinel","bus","sentinel2","blazer2","asea",
-	"regina","pounder","huntley","tornado","rubble","tribike","bjxl","patriot","ingot","serrano","fq2","bobcatxl",
+	"baller","jackal","youga","mesa","nemesis","primo","bison","seminole","zion2","landstalker","panto",
+	"boxville2","premier","rhapsody","pcj","jester","superd","sentinel","sentinel2","blazer2","asea",
+	"regina","huntley","tornado","rubble","tribike","bjxl","patriot","ingot","serrano","fq2","bobcatxl",
 	"journey","bfinjection","sanchez2","surfer2","caddy2","rebel2","bagger","dilettante","blista","hexer",
 	"buffalo","emperor2","fugitive","rocoto","dukes","thrust","faggio2","double","camper","massacro","feltzer2",
 	"sabregt","ninef2","banshee","infernus","bullet","coquette","phoenix","cavalcade","stratum","minivan","picador",
-	"taco","glendale","intruder","ruffian","schafter2","asterope","mixer2","rumpo","exemplar","surfer","cavalcade2"
+	"taco","glendale","intruder","ruffian","schafter2","asterope","rumpo","exemplar","surfer","cavalcade2"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHRESCUE
@@ -121,8 +122,9 @@ AddEventHandler("towdriver:Toggle",function(id)
 			serviceLocate = id
 			spawnSelect = math.random(#vehModels)
 			spawnCoords = math.random(#vehRescue[serviceLocate])
+			plateVehicle = "TOWD"..(1000 + LocalPlayer["state"]["Passport"])
 
-			TriggerEvent("NotifyPush",{ code = 20, title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], name = "Aguardando reboque", blipColor = 2 })
+			TriggerEvent("NotifyPush",{ code = "QTH", title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], vehicle = VehicleName(vehModels[spawnSelect]).." - "..plateVehicle, name = "Aguardando reboque", blipColor = 2 })
 		end
 
 		vSERVER.toggleService()
@@ -143,7 +145,7 @@ CreateThread(function()
 				local vehName = vehModels[spawnSelect]
 				local heading = vehRescue[serviceLocate][spawnCoords][4]
 
-				vGARAGE.ServerVehicle(vehName,vehRescue[serviceLocate][spawnCoords][1],vehRescue[serviceLocate][spawnCoords][2],vehRescue[serviceLocate][spawnCoords][3],heading,nil,0,nil,100)
+				vGARAGE.ServerVehicle(vehName,vehRescue[serviceLocate][spawnCoords][1],vehRescue[serviceLocate][spawnCoords][2],vehRescue[serviceLocate][spawnCoords][3],heading,plateVehicle,0,nil,100)
 			end
 		end
 
@@ -151,17 +153,18 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TOWDRIVER:TOGGLE
+-- TOWDRIVER:TOW
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("towdriver:Tow")
 AddEventHandler("towdriver:Tow",function(entity)
 	if entity[2] == vehModels[spawnSelect] then
 		spawnVehicle = false
 		spawnSelect = math.random(#vehModels)
-		vSERVER.paymentMethod(entity[4],entity[1])
+		plateVehicle = "TOWD"..(1000 + LocalPlayer["state"]["Passport"])
+		vSERVER.Payment(entity[4],entity[1])
 		spawnCoords = math.random(#vehRescue[serviceLocate])
 
-		TriggerEvent("NotifyPush",{ code = 20, title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], name = "Aguardando reboque.", blipColor = 2 })
+		TriggerEvent("NotifyPush",{ code = "QTH", title = "Registro de Veículo", x = vehRescue[serviceLocate][spawnCoords][1], y = vehRescue[serviceLocate][spawnCoords][2], z = vehRescue[serviceLocate][spawnCoords][3], vehicle = VehicleName(vehModels[spawnSelect]).." - "..plateVehicle, name = "Aguardando reboque.", blipColor = 2 })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -28,7 +28,7 @@ window.addEventListener("message",function(event){
 
 		case "Valid":
 			$(".Text").html("");
-			$(".Eye").css("color","#fec026");
+			$(".Eye").css("color","#00e076");
 
 			$.each(event["data"]["data"],function(index,item){
 				$(".Text").append("<div id='Target-" + index + "'<li>" + item["label"] + "</li></div>");
@@ -36,6 +36,7 @@ window.addEventListener("message",function(event){
 				$("#Target-" + index).data("Target",item["event"]);
 				$("#Target-" + index).data("Tunnel",item["tunnel"]);
 				$("#Target-" + index).data("Service",item["service"]);
+				$("#Target-" + index).data("Teleport",item["teleport"]);
 			});
 		break;
 
@@ -54,8 +55,9 @@ $(document).on("mousedown",(event) => {
 		let Target = $("#" + event["target"]["id"]).data("Target");
 		let Tunnel = $("#" + event["target"]["id"]).data("Tunnel");
 		let Service = $("#" + event["target"]["id"]).data("Service");
+		let Teleport = $("#" + event["target"]["id"]).data("Teleport");
 
-		$.post("http://target/Select",JSON.stringify({ event: Target, tunnel: Tunnel, service: Service }));
+		$.post("http://target/Select",JSON.stringify({ event: Target, tunnel: Tunnel, service: Service, teleport: Teleport }));
 
 		$(".Text").html("");
 		$(".Eye").css("color","#ccc");

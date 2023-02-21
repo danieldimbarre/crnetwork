@@ -765,7 +765,7 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 
 								local Restaurant = splitString(Type)
 								local Chest,Target = BlockRestaurant(Restaurant[1],Item)
-								if shops[Type]["shop"] and Chest then
+								if shops[Type]["shop"] then
 									local Result = vRP.GetSrvData("Chest:"..Type,true)
 									if not Result[Target] or Result[Target]["item"] ~= Item or Result[Target]["amount"] < Amount then
 										TriggerClientEvent("Notify",source,"vermelho","<b>Estoque</b> insuficiente.",5000)
@@ -797,13 +797,16 @@ function Creative.functionShops(Type,Item,Amount,Slot)
 											end
 										end
 									else
-										if shops[Type]["shop"] and Chest then
+										if shops[Type]["shop"] then
 											if vRP.TakeChest(Passport,"Chest:"..Type,Amount,Target,Slot) then
 												vCLIENT.updateShops(source,"requestShop")
 												return
 											else
 												vRP.GenerateItem(Passport,Item,Amount,false,Slot)
-												vRP.DirectChest(Chest,"500",shops[Type]["List"][Item] * Amount)
+
+												if Chest then
+													vRP.DirectChest(Chest,"500",shops[Type]["List"][Item] * Amount)
+												end
 											end
 										else
 											vRP.GenerateItem(Passport,Item,Amount,false,Slot)

@@ -14,6 +14,32 @@ vCLIENT = Tunnel.getInterface("player")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- DEBUG
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Debug = {}
+RegisterServerEvent("player:Debug")
+AddEventHandler("player:Debug",function()
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and not Debug[Passport] or os.time() > Debug[Passport] then
+		TriggerClientEvent("barbershop:Apply",source,vRP.UserData(Passport,"Barbershop"))
+		TriggerClientEvent("skinshop:Apply",source,vRP.UserData(Passport,"Clothings"))
+		TriggerClientEvent("tattoos:Apply",source,vRP.UserData(Passport,"Tatuagens"))
+		TriggerClientEvent("target:Debug",source)
+		TriggerEvent("DebugObjects",Passport)
+
+		Debug[Passport] = os.time() + 300
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport)
+	if Debug[Passport] then
+		Debug[Passport] = nil
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skin",function(source,Message)

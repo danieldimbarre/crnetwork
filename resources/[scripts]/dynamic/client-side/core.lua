@@ -84,7 +84,7 @@ RegisterCommand("globalFunctions",function()
 
 			exports["dynamic"]:AddButton("Propriedades","Marcar/Desmarcar propriedades no mapa.","propertys:Blips","","others",false)
 			exports["dynamic"]:AddButton("Ferimentos","Verificar ferimentos no corpo.","paramedic:Injuries","","others",false)
-			exports["dynamic"]:AddButton("Desbugar","Recarregar o personagem.","barbershop:Debug","","others",true)
+			exports["dynamic"]:AddButton("Desbugar","Recarregar o personagem.","player:Debug","","others",true)
 
 			local Vehicle = vRP.ClosestVehicle(7)
 			if IsEntityAVehicle(Vehicle) then

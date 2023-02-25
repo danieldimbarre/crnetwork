@@ -293,3 +293,8 @@ exports["bank"]:Invoices(Passport: int)
 exports["bank"]:Dependents(Passport: int)
 
 exports["bank"]:Transactions(Passport: int,Limit: int)
+
+
+-- MySQL
+
+ALTER TABLE characters ADD created int(20) Default 0 NOT NULL;

@@ -93,6 +93,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("phoneCall",function(Data,Callback)
 	SendNUIMessage({ action = "hideAll" })
-
 	Callback("Ok")
+		
+	pcall(function()
+		exports.smartphone:callPlayer(Data.phone)
+	end)
 end)

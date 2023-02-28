@@ -19,6 +19,7 @@ Display = false
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Road = ""
+local Hood = false
 local Gemstone = 0
 local Crossing = ""
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -318,5 +319,18 @@ AddEventHandler("hud:Radio",function(Frequency)
 		SendNUIMessage({ Action = "Frequency", Frequency = Frequency.."Mhz" })
 	else
 		SendNUIMessage({ Action = "Frequency", Frequency = Frequency })
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:HOOD
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Hood")
+AddEventHandler("hud:Hood",function()
+	if Hood then
+		DoScreenFadeIn(0)
+		Hood = false
+	else
+		DoScreenFadeOut(0)
+		Hood = true
 	end
 end)

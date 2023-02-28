@@ -4611,11 +4611,9 @@ Use = {
 
 	["hood"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local ClosestPed = vRPC.ClosestPed(source,2)
-		if ClosestPed then
-			if Player(ClosestPed)["state"]["Handcuff"] then
-				TriggerClientEvent("hud:toggleHood",ClosestPed)
-				TriggerClientEvent("inventory:Close",ClosestPed)
-			end
+		if ClosestPed and Player(ClosestPed)["state"]["Handcuff"] then
+			TriggerClientEvent("hud:Hood",ClosestPed)
+			TriggerClientEvent("inventory:Close",ClosestPed)
 		end
 	end,
 

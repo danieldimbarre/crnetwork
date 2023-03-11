@@ -170,18 +170,18 @@ end)
 -- CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Clothes()
+	local Clothes = {}
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Clothes = {}
-		local Consult = vRP.GetSrvData("Wardrobe:"..Passport)
+		local Consult = vRP.GetSrvData("Wardrobe:"..Passport,true)
 
 		for Table,_ in pairs(Consult) do
-			Clothes[#Clothes + 1] = { ["name"] = Table }
+			Clothes[#Clothes + 1] = Table
 		end
-
-		return Clothes
 	end
+
+	return Clothes
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:CLOTHES
@@ -191,21 +191,20 @@ AddEventHandler("propertys:Clothes",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Split = splitString(Mode,"-")
 		local Consult = vRP.GetSrvData("Wardrobe:"..Passport,true)
+		local Split = splitString(Mode)
 		local Name = Split[2]
 
 		if Split[1] == "save" then
 			local Keyboard = vKEYBOARD.keySingle(source,"Nome")
 			if Keyboard then
-				local Name = Keyboard[1]
-				local NameCheck = sanitizeString(Keyboard[1],"abcdefghijklmnopqrstuvwxyz0123456789",true)
+				local Check = sanitizeString(Keyboard[1],"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",true)
 
-				if not Consult[NameCheck] then
-					Consult[NameCheck] = vSKINSHOP.Customization(source)
+				if not Consult[Check] then
+					Consult[Check] = vSKINSHOP.Customization(source)
 					vRP.SetSrvData("Wardrobe:"..Passport,Consult,true)
 					TriggerClientEvent("propertys:ClothesReset",source)
-					TriggerClientEvent("Notify",source,"verde","<b>"..Name.."</b> adicionado.",5000)
+					TriggerClientEvent("Notify",source,"verde","<b>"..Check.."</b> adicionado.",5000)
 				else
 					TriggerClientEvent("Notify",source,"amarelo","Nome escolhido já existe em seu armário.",5000)
 				end

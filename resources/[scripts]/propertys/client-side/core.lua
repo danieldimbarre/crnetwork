@@ -109,9 +109,9 @@ function ClothesMenu()
 
 	local Clothes = vSERVER.Clothes()
 	if parseInt(#Clothes) > 0 then
-		for k,v in pairs(Clothes) do
-			exports["dynamic"]:AddButton(v["name"],"Vestir-se com as vestimentas.","propertys:Clothes","apply-"..v["name"],"apply",true)
-			exports["dynamic"]:AddButton(v["name"],"Remover a vestimenta salva.","propertys:Clothes","delete-"..v["name"],"delete",true)
+		for _,v in pairs(Clothes) do
+			exports["dynamic"]:AddButton(v,"Vestir-se com as vestimentas.","propertys:Clothes","apply-"..v,"apply",true)
+			exports["dynamic"]:AddButton(v,"Remover a vestimenta salva.","propertys:Clothes","delete-"..v,"delete",true)
 		end
 	end
 

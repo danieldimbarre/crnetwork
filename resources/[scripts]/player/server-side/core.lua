@@ -789,7 +789,7 @@ AddEventHandler("player:Outfit",function(Mode)
 				TriggerClientEvent("Notify",source,"amarelo","Roupas não encontradas.",3000)
 			end
 		elseif Mode == "salvar" then
-			local custom = vSKINSHOP.getCustomization(source)
+			local custom = vSKINSHOP.Customization(source)
 			if custom then
 				vRP.SetSrvData("Outfit:"..Passport,custom)
 				TriggerClientEvent("Notify",source,"verde","Roupas salvas.",3000)

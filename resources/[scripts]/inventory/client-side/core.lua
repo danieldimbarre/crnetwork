@@ -27,12 +27,6 @@ local Reloaded = GetGameTimer()
 local UseCooldown = GetGameTimer()
 LocalPlayer["state"]["Buttons"] = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- WEAPONS
------------------------------------------------------------------------------------------------------------------------------------------
-exports("Weapons",function()
-	return Weapon
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:CANCEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Cancel")
@@ -109,6 +103,7 @@ AddEventHandler("inventory:CleanWeapons",function(Create)
 	end
 
 	TriggerEvent("hud:Weapon",false)
+	TriggerEvent("Weapon","")
 	Actived = false
 	Weapon = ""
 	Types = ""
@@ -247,6 +242,7 @@ AddEventHandler("inventory:preventWeapon",function()
 		vSERVER.preventWeapon(Weapon,Ammo)
 		TriggerEvent("hud:Weapon",false)
 		RemoveAllPedWeapons(Ped,true)
+		TriggerEvent("Weapon","")
 
 		Actived = false
 		Weapon = ""
@@ -644,6 +640,7 @@ function Creative.putWeaponHands(Name,Ammo,Components,Type)
 			Wait(200)
 
 			Weapon = Name
+			TriggerEvent("Weapon",Name)
 			TriggerEvent("inventory:RemoveWeapon",Name)
 			GiveWeaponToPed(Ped,Name,Ammo,false,true)
 
@@ -652,6 +649,7 @@ function Creative.putWeaponHands(Name,Ammo,Components,Type)
 			ClearPedTasks(Ped)
 		else
 			Weapon = Name
+			TriggerEvent("Weapon",Name)
 			TriggerEvent("inventory:RemoveWeapon",Name)
 			GiveWeaponToPed(Ped,Name,Ammo,false,true)
 		end

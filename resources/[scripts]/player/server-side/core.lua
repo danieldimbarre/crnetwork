@@ -791,7 +791,7 @@ AddEventHandler("player:Outfit",function(Mode)
 		elseif Mode == "salvar" then
 			local custom = vSKINSHOP.Customization(source)
 			if custom then
-				vRP.SetSrvData("Outfit:"..Passport,custom)
+				vRP.SetSrvData("Outfit:"..Passport,custom,true)
 				TriggerClientEvent("Notify",source,"verde","Roupas salvas.",3000)
 			end
 		elseif Mode == "remover" then

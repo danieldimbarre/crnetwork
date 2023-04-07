@@ -133,8 +133,8 @@ AddEventHandler("propertys:Sell",function(Name)
 						TriggerClientEvent("propertys:Markers",-1,Markers)
 					end
 
-					vRP.RemSrvData("Vault:"..Name)
-					vRP.RemSrvData("Fridge:"..Name)
+					vRP.RemSrvData("Vault:"..Name,true)
+					vRP.RemSrvData("Fridge:"..Name,true)
 
 					vRP.Query("propertys/Sell",{ name = Name })
 					TriggerClientEvent("Notify",source,"amarelo","Venda concluída.",5000)
@@ -337,7 +337,7 @@ function Creative.Store(Item,Slot,Amount,Target,Name,Mode)
 					TriggerClientEvent("propertys:Update",source)
 				end
 			else
-				if vRP.StoreChest(Passport,Mode..":"..Name,Amount,Consult[1][Mode],Slot,Target) then
+				if vRP.StoreChest(Passport,Mode..":"..Name,Amount,Consult[1][Mode],Slot,Target,true) then
 					TriggerClientEvent("propertys:Update",source)
 				else
 					local Result = vRP.GetSrvData(Mode..":"..Name)
@@ -357,7 +357,7 @@ function Creative.Take(Slot,Amount,Target,Name,Mode)
 	if Passport then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.TakeChest(Passport,Mode..":"..Name,Amount,Slot,Target) then
+		if vRP.TakeChest(Passport,Mode..":"..Name,Amount,Slot,Target,true) then
 			TriggerClientEvent("propertys:Update",source)
 		else
 			local Consult = vRP.Query("propertys/Exist",{ name = Name })
@@ -378,7 +378,7 @@ function Creative.Update(Slot,Target,Amount,Name,Mode)
 	if Passport then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.UpdateChest(Passport,Mode..":"..Name,Slot,Target,Amount) then
+		if vRP.UpdateChest(Passport,Mode..":"..Name,Slot,Target,Amount,true) then
 			TriggerClientEvent("propertys:Update",source)
 		end
 	end

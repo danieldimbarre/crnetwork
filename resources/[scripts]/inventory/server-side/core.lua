@@ -884,7 +884,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BurgerShot","100",Valuation * 0.05)
+					vRP.DirectChest("BurgerShot","100",Valuation * 0.05,true)
 					vRP.PutExperience(Passport,"Delivery",1)
 					vDELIVER.Update(source)
 				end
@@ -920,7 +920,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("PizzaThis","100",Valuation * 0.05)
+					vRP.DirectChest("PizzaThis","100",Valuation * 0.05,true)
 					vRP.PutExperience(Passport,"Delivery",1)
 					vDELIVER.Update(source)
 				end
@@ -956,7 +956,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("UwuCoffee","100",Valuation * 0.05)
+					vRP.DirectChest("UwuCoffee","100",Valuation * 0.05,true)
 					vRP.PutExperience(Passport,"Delivery",1)
 					vDELIVER.Update(source)
 				end
@@ -992,7 +992,7 @@ function Creative.Deliver(Slot)
 
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vRP.GenerateItem(Passport,"dollars",Valuation,true)
-					vRP.DirectChest("BeanMachine","100",Valuation * 0.05)
+					vRP.DirectChest("BeanMachine","100",Valuation * 0.05,true)
 					vRP.PutExperience(Passport,"Delivery",1)
 					vDELIVER.Update(source)
 				end

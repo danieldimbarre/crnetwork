@@ -150,13 +150,13 @@ vRP.RemSrvData(Key,Save)
 
 tvRP.invUpdate(Slot,Target,Amount)
 
-vRP.TakeChest(Passport,Data,Amount,Slot,Target)
+vRP.TakeChest(Passport,Data,Amount,Slot,Target,Save)
 
-vRP.StoreChest(Passport,Data,Amount,Weight,Slot,Target)
+vRP.StoreChest(Passport,Data,Amount,Weight,Slot,Target,Save)
 
-vRP.UpdateChest(Passport,Data,Slot,Target,Amount)
+vRP.UpdateChest(Passport,Data,Slot,Target,Amount,Save)
 
-vRP.DirectChest(Chest,Slot,Amount)
+vRP.DirectChest(Chest,Slot,Amount,Save)
 
 vRP.GiveBank(Passport,Amount)
 

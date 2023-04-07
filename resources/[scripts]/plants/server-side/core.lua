@@ -147,7 +147,7 @@ end
 -- SAVESERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("SaveServer",function(Silenced)
-	vRP.SetSrvData("Plants",Plants)
+	vRP.SetSrvData("Plants",Plants,true)
 
 	if not Silenced then
 		print("O resource Plants salvou os dados.")

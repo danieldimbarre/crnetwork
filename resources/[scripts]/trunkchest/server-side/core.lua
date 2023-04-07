@@ -111,7 +111,7 @@ function Creative.updateChest(Slot,Target,Amount)
 	if Passport and Vehicle[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.UpdateChest(Passport,Vehicle[Passport]["Data"],Slot,Target,Amount) then
+		if vRP.UpdateChest(Passport,Vehicle[Passport]["Data"],Slot,Target,Amount,true) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 		end
 	end
@@ -133,7 +133,7 @@ function Creative.storeItem(Item,Slot,Amount,Target)
 			goto scapeInventory
 		end
 
-		if vRP.StoreChest(Passport,Vehicle[Passport]["Data"],Amount,Vehicle[Passport]["Weight"],Slot,Target) then
+		if vRP.StoreChest(Passport,Vehicle[Passport]["Data"],Amount,Vehicle[Passport]["Weight"],Slot,Target,true) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 		else
 			if Vehicle[Passport] then
@@ -155,7 +155,7 @@ function Creative.takeItem(Slot,Amount,Target)
 	if Passport and Vehicle[Passport] then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.TakeChest(Passport,Vehicle[Passport]["Data"],Amount,Slot,Target) then
+		if vRP.TakeChest(Passport,Vehicle[Passport]["Data"],Amount,Slot,Target,true) then
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 		else
 			if Vehicle[Passport] then

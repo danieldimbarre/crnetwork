@@ -199,7 +199,7 @@ function Creative.storeItem(Item,Slot,Amount,Target,Name)
 
 		local Consult = vRP.Query("warehouse/Informations",{ name = Name })
 		if Consult[1] then
-			if vRP.StoreChest(Passport,"Warehouse:"..Name,Amount,Consult[1]["weight"],Slot,Target) then
+			if vRP.StoreChest(Passport,"Warehouse:"..Name,Amount,Consult[1]["weight"],Slot,Target,true) then
 				TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
 			else
 				local result = vRP.GetSrvData("Warehouse:"..Name)
@@ -222,7 +222,7 @@ function Creative.takeItem(Item,Slot,Amount,Target,Name)
 
 		local Consult = vRP.Query("warehouse/Informations",{ name = Name })
 		if Consult[1] then
-			if vRP.TakeChest(Passport,"Warehouse:"..Name,Amount,Slot,Target) then
+			if vRP.TakeChest(Passport,"Warehouse:"..Name,Amount,Slot,Target,true) then
 				TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
 			else
 				local result = vRP.GetSrvData("Warehouse:"..Name)
@@ -241,7 +241,7 @@ function Creative.updateWarehouse(Slot,Target,Amount,Name)
 	if Passport then
 		if Amount <= 0 then Amount = 1 end
 
-		if vRP.UpdateChest(Passport,"Warehouse:"..Name,Slot,Target,Amount) then
+		if vRP.UpdateChest(Passport,"Warehouse:"..Name,Slot,Target,Amount,true) then
 			TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
 		end
 	end

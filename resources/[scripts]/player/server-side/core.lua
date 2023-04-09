@@ -781,7 +781,7 @@ AddEventHandler("player:Outfit",function(Mode)
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["hud"]:Reposed(Passport) and not exports["hud"]:Wanted(Passport) then
 		if Mode == "aplicar" then
-			local result = vRP.GetSrvData("Outfit:"..Passport)
+			local result = vRP.GetSrvData("Outfit:"..Passport,true)
 			if result["pants"] ~= nil then
 				TriggerClientEvent("skinshop:Apply",source,result)
 				TriggerClientEvent("Notify",source,"verde","Roupas aplicadas.",3000)

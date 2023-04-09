@@ -51,7 +51,7 @@ function Creative.openChest()
 		end
 
 		local vehInfos = {}
-		local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
+		local Result = vRP.GetSrvData(Vehicle[Passport]["Data"],true)
 		for k,v in pairs(Result) do
 			v["amount"] = parseInt(v["amount"])
 			v["name"] = itemName(v["item"])
@@ -137,7 +137,7 @@ function Creative.storeItem(Item,Slot,Amount,Target)
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 		else
 			if Vehicle[Passport] then
-				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
+				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"],true)
 				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Vehicle[Passport]["Weight"])
 			end
 		end
@@ -159,7 +159,7 @@ function Creative.takeItem(Slot,Amount,Target)
 			TriggerClientEvent("trunkchest:Update",source,"requestChest")
 		else
 			if Vehicle[Passport] then
-				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"])
+				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"],true)
 				TriggerClientEvent("trunkchest:UpdateWeight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Vehicle[Passport]["Weight"])
 			end
 		end

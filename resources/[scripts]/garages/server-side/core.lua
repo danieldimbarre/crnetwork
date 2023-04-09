@@ -446,7 +446,7 @@ AddEventHandler("garages:Transfer",function(Name)
 								vRP.Query("entitydata/RemoveData",{ dkey = "Mods:"..Passport..":"..Name })
 							end
 
-							local Datatable = vRP.GetSrvData("Chest:"..Passport..":"..Name)
+							local Datatable = vRP.GetSrvData("Chest:"..Passport..":"..Name,true)
 							vRP.SetSrvData("Chest:"..OtherPassport..":"..Name,Datatable,true)
 							vRP.RemSrvData("Chest:"..Passport..":"..Name,true)
 

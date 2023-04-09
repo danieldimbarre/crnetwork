@@ -173,7 +173,7 @@ Use = {
 
 	["backcamping"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Acampamento"
-		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport,true)
 		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -187,7 +187,7 @@ Use = {
 
 	["backschool"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Escolar"
-		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport,true)
 		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -201,7 +201,7 @@ Use = {
 
 	["backcyclist"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Ciclista"
-		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport,true)
 		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -215,7 +215,7 @@ Use = {
 
 	["backalohomorawhite"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Alohomora Branca"
-		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport,true)
 		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -229,7 +229,7 @@ Use = {
 
 	["backalohomorablack"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Alohomora Preta"
-		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport,true)
 		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -243,7 +243,7 @@ Use = {
 
 	["backalohomorared"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Alohomora Vermelha"
-		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport,true)
 		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -257,7 +257,7 @@ Use = {
 
 	["backrudolphpurple"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Rudolph Roxo"
-		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport,true)
 		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")
@@ -271,7 +271,7 @@ Use = {
 
 	["backrudolphred"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Name = "Rudolph Vermelho"
-		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport,true)
 		if not Consult[Name] then
 			if vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Update",source,"Backpack")

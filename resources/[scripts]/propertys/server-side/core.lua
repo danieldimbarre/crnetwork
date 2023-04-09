@@ -250,7 +250,7 @@ function Creative.OpenChest(Name,Mode)
 		local Chest = {}
 		local Inventory = {}
 		local Inv = vRP.Inventory(Passport)
-		local Consult = vRP.GetSrvData(Mode..":"..Name)
+		local Consult = vRP.GetSrvData(Mode..":"..Name,true)
 
 		for k,v in pairs(Inv) do
 			v["amount"] = parseInt(v["amount"])
@@ -340,7 +340,7 @@ function Creative.Store(Item,Slot,Amount,Target,Name,Mode)
 				if vRP.StoreChest(Passport,Mode..":"..Name,Amount,Consult[1][Mode],Slot,Target,true) then
 					TriggerClientEvent("propertys:Update",source)
 				else
-					local Result = vRP.GetSrvData(Mode..":"..Name)
+					local Result = vRP.GetSrvData(Mode..":"..Name,true)
 					TriggerClientEvent("propertys:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Consult[1][Mode])
 				end
 			end
@@ -362,7 +362,7 @@ function Creative.Take(Slot,Amount,Target,Name,Mode)
 		else
 			local Consult = vRP.Query("propertys/Exist",{ name = Name })
 			if Consult[1] then
-				local Result = vRP.GetSrvData(Mode..":"..Name)
+				local Result = vRP.GetSrvData(Mode..":"..Name,true)
 				TriggerClientEvent("propertys:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Consult[1][Mode])
 			end
 		end

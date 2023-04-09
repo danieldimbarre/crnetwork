@@ -48,7 +48,7 @@ function Creative.Exclusivas()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Clothes = {}
-		local Consult = vRP.GetSrvData("Exclusivas:"..Passport)
+		local Consult = vRP.GetSrvData("Exclusivas:"..Passport,true)
 
 		for Index,v in pairs(Consult) do
 			Clothes[#Clothes + 1] = { ["name"] = Index, ["id"] = v["id"], ["texture"] = v["texture"] or 0, ["type"] = v["type"] }

@@ -147,7 +147,7 @@ function Creative.openWarehouse(Name)
 		end
 
 		local myWarehouse = {}
-		local Consult = vRP.GetSrvData("Warehouse:"..Name)
+		local Consult = vRP.GetSrvData("Warehouse:"..Name,true)
 		for Index,v in pairs(Consult) do
 			v["amount"] = parseInt(v["amount"])
 			v["name"] = itemName(v["item"])
@@ -202,7 +202,7 @@ function Creative.storeItem(Item,Slot,Amount,Target,Name)
 			if vRP.StoreChest(Passport,"Warehouse:"..Name,Amount,Consult[1]["weight"],Slot,Target,true) then
 				TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
 			else
-				local result = vRP.GetSrvData("Warehouse:"..Name)
+				local result = vRP.GetSrvData("Warehouse:"..Name,true)
 				TriggerClientEvent("warehouse:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Consult[1]["weight"])
 			end
 		end
@@ -225,7 +225,7 @@ function Creative.takeItem(Item,Slot,Amount,Target,Name)
 			if vRP.TakeChest(Passport,"Warehouse:"..Name,Amount,Slot,Target,true) then
 				TriggerClientEvent("warehouse:Update",source,"requestWarehouse")
 			else
-				local result = vRP.GetSrvData("Warehouse:"..Name)
+				local result = vRP.GetSrvData("Warehouse:"..Name,true)
 				TriggerClientEvent("warehouse:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(result),Consult[1]["weight"])
 			end
 		end

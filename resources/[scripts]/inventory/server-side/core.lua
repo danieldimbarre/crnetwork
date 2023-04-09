@@ -483,7 +483,7 @@ function Creative.requestInventory()
 					end
 
 					if Split[1] == "notepad" and Split[2] then
-						v["desc"] = vRP.GetSrvData(v["item"])
+						v["desc"] = vRP.GetSrvData(v["item"],true)
 					end
 
 					if Split[1] == "suitcase" then

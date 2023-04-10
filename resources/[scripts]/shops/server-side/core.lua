@@ -68,8 +68,9 @@ local shops = {
 		}
 	},
 	["BeanMachine"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
 		["perm"] = "BeanMachine",
-		["Type"] = "Cash",
 		["List"] = {
 			["coffeemilk"] = 70,
 			["sandwich"] = 15,

@@ -44,7 +44,7 @@ function removePlayerFromRadio(plySource)
 		radioData = {}
 		playerTargets(MumbleIsPlayerTalking(PlayerId()) and callData or {})
 	else
-		toggleVoice(plySource,false)
+		toggleVoice(plySource,false ,"radio")
 
 		if radioPressed then
 			playerTargets(radioData,MumbleIsPlayerTalking(PlayerId()) and callData or {})
@@ -61,7 +61,7 @@ function setRadioChannel(channel)
 	radioEnabled = true
 	type_check({ channel,"number" })
 	TriggerServerEvent("pma-voice:setPlayerRadio",channel)
-	radioChannel = channel
+	radioChannel = tonumber(channel)
 
 	sendUIMessage({ radioChannel = channel, radioEnabled = radioEnabled })
 end
@@ -95,7 +95,7 @@ RegisterCommand("+radiotalk",function()
 			playMicClicks(true)
 
 			if LoadAnim("random@arrests") then
-				TaskPlayAnim(Ped,"random@arrests","generic_radio_chatter",8.0,8.0,-1,49,0,0,0,0)
+				TaskPlayAnim(Ped,"random@arrests","generic_radio_chatter",8.0,8.0,-1,49,1,0,0,0)
 			end
 
 			CreateThread(function()
@@ -137,8 +137,8 @@ end,false)
 
 RegisterKeyMapping("+radiotalk","Dialogar no rádio.","keyboard","CAPITAL")
 
-function syncRadio(_radioChannel)
-	radioChannel = _radioChannel
+function syncRadio(Channel)
+	radioChannel = tonumber(Channel)
 end
 
 RegisterNetEvent("pma-voice:clSetPlayerRadio",syncRadio)

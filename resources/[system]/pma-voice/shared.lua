@@ -14,8 +14,8 @@ Cfg.voiceModes = {
 	{ 1.0,"Baixo" },
 	{ 4.0,"Médio" },
 	{ 8.0,"Alto" },
-	{ 16.0,"Muito Alto" },
-	{ 75.0,"Megafone" }
+	{ 12.0,"Muito Alto" },
+	{ 24.0,"Megafone" }
 }
 
 local function types(Message)

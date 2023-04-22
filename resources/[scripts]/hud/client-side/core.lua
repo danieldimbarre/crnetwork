@@ -22,6 +22,7 @@ local Road = ""
 local Hood = false
 local Gemstone = 0
 local Crossing = ""
+local Pause = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRINCIPAL
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -70,39 +71,51 @@ CreateThread(function()
 		if LocalPlayer["state"]["Active"] then
 			local Ped = PlayerPedId()
 
-			if Display then
-				local Coords = GetEntityCoords(Ped)
-				local Armouring = GetPedArmour(Ped)
-				local Healing = GetEntityHealth(Ped) - 100
-				local MinRoad,MinCross = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
-				local FullRoad = GetStreetNameFromHashKey(MinRoad)
-				local FullCross = GetStreetNameFromHashKey(MinCross)
-
-				if Health ~= Healing then
-					if Healing < 0 then
-						Healing = 0
+			if IsPauseMenuActive() then
+				if not Pause and Display then
+					SendNUIMessage({ Action = "Body", Status = false })
+					Pause = true
+				end
+			else
+				if Display then
+					if Pause then
+						SendNUIMessage({ Action = "Body", Status = true })
+						Pause = false
 					end
 
-					SendNUIMessage({ Action = "Health", Number = Healing })
-					Health = Healing
-				end
+					local Coords = GetEntityCoords(Ped)
+					local Armouring = GetPedArmour(Ped)
+					local Healing = GetEntityHealth(Ped) - 100
+					local MinRoad,MinCross = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
+					local FullRoad = GetStreetNameFromHashKey(MinRoad)
+					local FullCross = GetStreetNameFromHashKey(MinCross)
 
-				if Armour ~= Armouring then
-					SendNUIMessage({ Action = "Armour", Number = Armouring })
-					Armour = Armouring
-				end
+					if Health ~= Healing then
+						if Healing < 0 then
+							Healing = 0
+						end
 
-				if FullRoad ~= "" and Road ~= FullRoad then
-					SendNUIMessage({ Action = "Road", Name = FullRoad })
-					Road = FullRoad
-				end
+						SendNUIMessage({ Action = "Health", Number = Healing })
+						Health = Healing
+					end
 
-				if FullCross ~= "" and Crossing ~= FullCross then
-					SendNUIMessage({ Action = "Crossing", Name = FullCross })
-					Crossing = FullCross
-				end
+					if Armour ~= Armouring then
+						SendNUIMessage({ Action = "Armour", Number = Armouring })
+						Armour = Armouring
+					end
 
-				SendNUIMessage({ Action = "Clock", Hours = GlobalState["Hours"], Minutes = GlobalState["Minutes"] })
+					if FullRoad ~= "" and Road ~= FullRoad then
+						SendNUIMessage({ Action = "Road", Name = FullRoad })
+						Road = FullRoad
+					end
+
+					if FullCross ~= "" and Crossing ~= FullCross then
+						SendNUIMessage({ Action = "Crossing", Name = FullCross })
+						Crossing = FullCross
+					end
+
+					SendNUIMessage({ Action = "Clock", Hours = GlobalState["Hours"], Minutes = GlobalState["Minutes"] })
+				end
 			end
 
 			if Luck > 0 and LuckTimer <= GetGameTimer() then

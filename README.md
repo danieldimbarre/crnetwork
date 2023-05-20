@@ -1,1 +1,1 @@
-<b>Legacy:</b> Primeira versão da Creative Network sem reformulação.
+Bem-vindo a <b>Creative Network</b>.

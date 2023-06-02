@@ -118,21 +118,21 @@
 					<AmmoInfo ref="AMMO_BRICK" />
 					<AimingInfo ref="PISTOL_2H_BASE_STRAFE" />
 					<ClipSize value="1" />
-					<AccuracySpread value="1.000000" />
+					<AccuracySpread value="1.500000" />
 					<AccurateModeAccuracyModifier value="0.500000" />
 					<RunAndGunAccuracyModifier value="2.000000" />
-					<RunAndGunAccuracyMaxModifier value="1.000000" />
+					<RunAndGunAccuracyMinOverride value="-1.000000" />
 					<RecoilAccuracyMax value="1.000000" />
-					<RecoilErrorTime value="0.000000" />
+					<RecoilErrorTime value="3.300000" />
 					<RecoilRecoveryRate value="1.000000" />
-					<RecoilAccuracyToAllowHeadShotAI value="0.175000" />
+					<RecoilAccuracyToAllowHeadShotAI value="0.575" />
 					<MinHeadShotDistanceAI value="0.000000" />
-					<MaxHeadShotDistanceAI value="5.000000" />
-					<HeadShotDamageModifierAI value="1.000000" />
-					<RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
+					<MaxHeadShotDistanceAI value="325.000000" />
+					<HeadShotDamageModifierAI value="500.000000" />
+					<RecoilAccuracyToAllowHeadShotPlayer value="0.575" />
 					<MinHeadShotDistancePlayer value="0.000000" />
-					<MaxHeadShotDistancePlayer value="5.000000" />
-					<HeadShotDamageModifierPlayer value="1.000000" />
+					<MaxHeadShotDistancePlayer value="325.000000" />
+					<HeadShotDamageModifierPlayer value="500.000000" />
 					<Damage value="0.000000" />
 					<DamageTime value="0.000000" />
 					<DamageTimeInVehicle value="0.000000" />
@@ -295,7 +295,7 @@
 					<AttachPoints />
 					<GunFeedBone />
 					<TargetSequenceGroup />
-					<WeaponFlags>CarriedInHand Silenced CanLockonOnFoot CanFreeAim AnimReload AnimCrouchFire Thrown UsableOnFoot UsableInCover NonViolent SuppressGunshotEvent ThrowOnly NoWheelStats DisableLeftHandIkWhenOnFoot SwapToUnarmedWhenOutOfThrownAmmo UseFPSAimIK UseFPSSecondaryMotion AttachFPSLeftHandIKToRight DisableFPSScope DamageCausesDisputes</WeaponFlags>
+					<WeaponFlags>IgnoreHelmets CarriedInHand Silenced CanLockonOnFoot CanFreeAim AnimReload AnimCrouchFire Thrown UsableOnFoot UsableInCover NonViolent SuppressGunshotEvent ThrowOnly NoWheelStats DisableLeftHandIkWhenOnFoot SwapToUnarmedWhenOutOfThrownAmmo UseFPSAimIK UseFPSSecondaryMotion AttachFPSLeftHandIKToRight DisableFPSScope DamageCausesDisputes</WeaponFlags>
 					<TintSpecValues ref="TINT_DEFAULT" />
 					<FiringPatternAliases ref="NULL" />
 					<ReloadUpperBodyFixupExpressionData ref="DEFAULT" />

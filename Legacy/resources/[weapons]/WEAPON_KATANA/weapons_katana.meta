@@ -57,31 +57,31 @@
 					<AmmoInfo ref="NULL" />
 					<AimingInfo ref="UNARMED_TARGETING_RESTRAINTS" />
 					<ClipSize value="0" />
-					<AccuracySpread value="0.000000" />
+					<AccuracySpread value="1.500000" />
 					<AccurateModeAccuracyModifier value="0.500000" />
 					<RunAndGunAccuracyModifier value="2.000000" />
 					<RunAndGunAccuracyMinOverride value="-1.000000" />
 					<RecoilAccuracyMax value="1.000000" />
-					<RecoilErrorTime value="0.000000" />
+					<RecoilErrorTime value="3.300000" />
 					<RecoilRecoveryRate value="1.000000" />
-					<RecoilAccuracyToAllowHeadShotAI value="0.175000" />
+					<RecoilAccuracyToAllowHeadShotAI value="0.575" />
 					<MinHeadShotDistanceAI value="0.000000" />
-					<MaxHeadShotDistanceAI value="5.000000" />
-					<HeadShotDamageModifierAI value="1.000000" />
-					<RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
+					<MaxHeadShotDistanceAI value="325.000000" />
+					<HeadShotDamageModifierAI value="500.000000" />
+					<RecoilAccuracyToAllowHeadShotPlayer value="0.575" />
 					<MinHeadShotDistancePlayer value="0.000000" />
-					<MaxHeadShotDistancePlayer value="5.000000" />
-					<HeadShotDamageModifierPlayer value="1.000000" />
+					<MaxHeadShotDistancePlayer value="325.000000" />
+					<HeadShotDamageModifierPlayer value="500.000000" />
 					<Damage value="0.000000" />
 					<DamageTime value="0.000000" />
 					<DamageTimeInVehicle value="0.000000" />
 					<DamageTimeInVehicleHeadShot value="0.000000" />
-					<HitLimbsDamageModifier value="0.500000" />
-					<NetworkHitLimbsDamageModifier value="0.800000" />
-					<LightlyArmouredDamageModifier value="0.750000" />
+					<HitLimbsDamageModifier value="0.250000" />
+					<NetworkHitLimbsDamageModifier value="0.250000" />
+					<LightlyArmouredDamageModifier value="0.250000" />
 					<VehicleDamageModifier value="1.000000" />
 					<Force value="0.000000" />
-					<ForceHitPed value="60.000000" />
+					<ForceHitPed value="100.000000" />
 					<ForceHitVehicle value="0.000000" />
 					<ForceHitFlyingHeli value="0.000000" />
 					<OverrideForces>
@@ -111,7 +111,7 @@
 							<ForceBack value="60.000000" />
 						</Item>
 					</OverrideForces>
-					<ForceMaxStrengthMult value="1.300000" />
+					<ForceMaxStrengthMult value="1.000000" />
 					<ForceFalloffRangeStart value="0.000000" />
 					<ForceFalloffRangeEnd value="50.000000" />
 					<ForceFalloffMin value="1.000000" />
@@ -188,9 +188,9 @@
 					<InitialRumbleIntensityFps value="0.000000" />
 					<RumbleDurationFps value="0" />
 					<RumbleIntensityFps value="0.000000" />
-					<NetworkPlayerDamageModifier value="1.000000" />
-					<NetworkPedDamageModifier value="1.000000" />
-					<NetworkHeadShotPlayerDamageModifier value="1.000000" />
+					<NetworkPlayerDamageModifier value="0.250000" />
+					<NetworkPedDamageModifier value="0.250000" />
+					<NetworkHeadShotPlayerDamageModifier value="0.000000" />
 					<LockOnRange value="10.000000" />
 					<WeaponRange value="1.600000" />
 					<BulletDirectionOffsetInDegrees value="0.000000" />
@@ -286,7 +286,7 @@
 					<AttachPoints />
 					<GunFeedBone />
 					<TargetSequenceGroup />
-					<WeaponFlags>CarriedInHand ArmourPenetrating CanLockonOnFoot CanLockonInVehicle UsableOnFoot UsableClimbing UsableInCover DoesRevivableDamage AllowCloseQuarterKills HasLowCoverSwaps NoWheelStats DangerousLookingMeleeWeapon QuitTransitionToIdleIntroOnWeaponChange DisableLeftHandIkWhenOnFoot UseFPSAimIK UseFPSSecondaryMotion AllowMeleeBlock MeleeMachete CanUseInVehMelee</WeaponFlags>
+					<WeaponFlags>IgnoreHelmets CarriedInHand ArmourPenetrating CanLockonOnFoot CanLockonInVehicle UsableOnFoot UsableClimbing UsableInCover DoesRevivableDamage AllowCloseQuarterKills HasLowCoverSwaps NoWheelStats DangerousLookingMeleeWeapon QuitTransitionToIdleIntroOnWeaponChange DisableLeftHandIkWhenOnFoot UseFPSAimIK UseFPSSecondaryMotion AllowMeleeBlock MeleeMachete</WeaponFlags>
 					<TintSpecValues ref="TINT_DEFAULT" />
 					<FiringPatternAliases ref="NULL" />
 					<ReloadUpperBodyFixupExpressionData ref="default" />
@@ -316,5 +316,5 @@
 		</Item>
 	</Infos>
 	<VehicleWeaponInfos />
-	<Name>Katana</Name>
+	<Name>WEAPON_KATANA</Name>
 </CWeaponInfoBlob>

@@ -51,7 +51,10 @@ CreateThread(function()
 					TriggerEvent("inventory:preventWeapon")
 					TriggerEvent("hud:Active",false)
 					TriggerEvent("inventory:Close")
-					exports["smartphone"]:close()
+
+					if GetResourceState("smartphone") == "started" then
+						exports["smartphone"]:close()
+					end
 				else
 					TimeDistance = 1
 					SetEntityHealth(Ped,100)

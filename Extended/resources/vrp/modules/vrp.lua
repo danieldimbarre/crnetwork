@@ -26,6 +26,22 @@ SAFECRACK = Tunnel.getInterface("safecrack")
 -----------------------------------------------------------------------------------------------------------------------------------------
 GlobalState["Policia"] = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- GG
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("gg",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and not Player(source)["state"]["Carry"] and SURVIVAL.CheckDeath(source) then
+		SURVIVAL.Respawn(source)
+		vRP.ClearInventory(Passport)
+		vRP.SetWeight(Passport,10,"-")
+		vRP.UpgradeThirst(Passport,100)
+		vRP.UpgradeHunger(Passport,100)
+		vRP.DowngradeStress(Passport,100)
+
+		exports["vrp"]:Embed("Airport","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Coords:** "..vRP.GetEntityCoords(source),0xa3c846)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE:SERVICE_REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("smartphone:service_request",function(Data)

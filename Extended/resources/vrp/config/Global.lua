@@ -1,36 +1,296 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-SpawnCoords = vec3(-27.45,-145.84,56.99)
+SalaryPremiumPrice = 1275
+RolepassInitial = 1685960411
+SpawnCoords = vec3(-27.45,-145.84,55.99)
+PrisonCoords = vec3(1896.15,2604.44,45.75)
+DiscordLink = "https://discord.gg/creativerp"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCORD
 -----------------------------------------------------------------------------------------------------------------------------------------
 Discord = {
-	["Connect"] = "https://discord.com/api/webhooks/1113480222260609126/QjVcMnBxQIX7_rSfE2fLCeIAl3FesS4daK8gB__wJCVtivONHIMNqlLUtk-OMJLYKoJ0",
-	["Disconnect"] = "https://discord.com/api/webhooks/1113480296281673790/s-JDA1HBpy94SsoWnoSftrwoTVpfAucxYe-_zWnY6fMu7aIVWm2rg-jcFp8U6XU1Z3Yz",
-	["Airport"] = "https://discord.com/api/webhooks/1113480366129422376/70T3smGKMIHUzDLytynOnaNt3-WHJ2296fZ9n79LN1pzAZUCsNY-WZiC5lEUWcQR1ZCX",
-	["Deaths"] = "https://discord.com/api/webhooks/1113480428536483953/e3DAxb0fY4EE7crVewmpXJMNMAaLhLu1Mf3mdRiRkxfFq_3p-kFOP_INuBMiAEi_BBT0",
-	["Gemstone"] = "https://discord.com/api/webhooks/1113480490406645851/PJmZtmL2sv_NHkFm2HVuTyZr3DB3-tCuRo4Zn9zajJe4V9J6OAfzG9t5eutUaVDXUANc",
-	["Login"] = "https://discord.com/api/webhooks/1113480593779462156/Ci9EAYI0di0C1sanKDDL00mnrb3i_-cwuL8mvEiSODZYqD-d5bQZ40oPTJGsMgrBuZ14",
-	["Payments"] = "https://discord.com/api/webhooks/1113480661219672185/2FPqmWMr1zyOgw6k6AAyTpN5AZbd7-Oy8H_4fR792wU6VLLjhx3AXxzM0Jo8YP-n-Jdy",
-	["Roles"] = "https://discord.com/api/webhooks/1113480727175114752/4UyJ9K9C4DopXeiGr5rEuCswwC6ENHJFyE7sw8XwcVGW0nFLjUR1ZNCtrunvWKrP_Agw",
-	["Admin"] = "https://discord.com/api/webhooks/1113480880657285253/RDmpZmQtyZSF66C8da_jB_eYMFByvA2-xkXCKlYvLrMPR9BLfuyRO38JxClsAx8Ec9NH",
-	["Loja"] = "https://discord.com/api/webhooks/1113480937112608768/iKTBezPanQAGjAeVxTP8pNxM_uVFgIYFjXDkpbOc8ZGnTa62D0Y31-vcBvl3WmPNggyj",
-	["Peak"] = "https://discord.com/api/webhooks/1113481009153966233/QXPvrSlL-wiDlquNQ_mkTFvnzj1x0ZaNuSSySUBrmR0It7nU-oDntdWy_8XAYuHc6nDR",
-	["Policia"] = "https://discord.com/api/webhooks/1113481075491090532/YLaa1-LF9gBMO-jIrPCQ8l-aIakuuKuLn2zpD8yIdYqr3xwUDxX0p2ueC3sXkHWkmUIR",
-	["Paramedico"] = "https://discord.com/api/webhooks/1113481132760113265/t3orZDCs28P740Nj0CBb5JjZAY3UbgFbD83JUkIhUrwPfMxstFK5rpxXlawqbXhE481i",
-	["Burgershot"] = "https://discord.com/api/webhooks/1113481188070400010/sP_ArkaCsny4vN1JkVvJe7ZEdbw8KZ0tQaeARM3KRsbrhA_ERshwmeRyFxfyzM2anLgG",
-	["UwuCoffee"] = "https://discord.com/api/webhooks/1113481239115075584/8a-qmNRjufYowXU39BC6QPO3-5hslWtq4DJL7890iq3g5LTmInQiiYxnB8LczuoMRXxf",
-	["Ballas"] = "https://discord.com/api/webhooks/1113481302398738442/ECuP1-FZxsJPBg4FrJkDtxD3iUTsLZ_rFr8N9foSL_z3v0rgEvkcSpI0EViXKpwgfHGl",
-	["Vagos"] = "https://discord.com/api/webhooks/1113481350075383890/q4yeScFEdHXItPDOxPFKq0-4VQFRgjkzPonuETofPf2IwYaDrscjI8zbHE-7XuSWQKOO",
-	["Families"] = "https://discord.com/api/webhooks/1113481403703767041/1e1NEWfyD-3oF59ILrURnXhuczyijNqgzWM3ZLcoSXMGfU26jzHQ5tNONEk0kD8bN15d",
-	["Aztecas"] = "https://discord.com/api/webhooks/1113481450113740810/86ve2o6ghSYoDmbL-ps8S2zcQ_CxCAOTbrktMcUK-zmefkCsoBVGNx34Id4ebDgw-R4p",
-	["Bloods"] = "https://discord.com/api/webhooks/1113481499220648006/czzjYIIpzDy7ZKMlEcdr1rY9ZeEP_lPDTcArOk8PlZ3nOB-l7Hghk41UFFMLOxsI-X8e",
-	["DaNangBoys"] = "https://discord.com/api/webhooks/1115621966251049030/Itcyh2k2dC52LpIWjTgNLyuOgZm8rtPGlDFODjKulIy-P8nTiMK4ejqsT_oy8s_vmibP",
-	["Leone"] = "https://discord.com/api/webhooks/1115622041844985896/cbeBw614sgts2qhlv5oBKi4qgJg_IUwiulV6grEsARFqSpcHfnkGn8V9ftBNTYCZooKp",
-	["ONeilBrothers"] = "https://discord.com/api/webhooks/1115622123352903801/zWIN-dRTjqlnIROM7oWpHbka-fIy5_LZVKYMrCpbR8gn6LhgAsskJiLsoMYZYgUUjnT4",
-	["Rednecks"] = "https://discord.com/api/webhooks/1115622178432495718/uKBe_IGVq5kFgLLBXlwIVoaipDGJEBuOtnODua0nASca8VdPDvaNlRHA7-YqBzxH0JF1",
-	["Triads"] = "https://discord.com/api/webhooks/1115622245482635306/EXpwPzBNBWC_HzyAeqJ8mV5PJOkyd0ZGYobygcWRrTHKTuxft3f2i7HASnRUaXRDkmnT"
+	["Connect"] = "",
+	["Disconnect"] = "",
+	["Airport"] = "",
+	["Deaths"] = "",
+	["Gemstone"] = "",
+	["Login"] = "",
+	["Payments"] = "",
+	["Roles"] = "",
+	["Admin"] = "",
+	["Loja"] = "",
+	["Peak"] = "",
+	["Policia"] = "",
+	["Paramedico"] = "",
+	["Burgershot"] = "",
+	["UwuCoffee"] = "",
+	["Ballas"] = "",
+	["Vagos"] = "",
+	["Families"] = "",
+	["Aztecas"] = "",
+	["Bloods"] = "",
+	["DaNangBoys"] = "",
+	["Leone"] = "",
+	["ONeilBrothers"] = "",
+	["Rednecks"] = "",
+	["Triads"] = ""
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GROUPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+Groups = {
+	["Admin"] = {
+		["Parent"] = {
+			["Admin"] = true
+		},
+		["Hierarchy"] = { "Administrador","Moderador","Suporte" },
+		["Salary"] = { 0,0,0 },
+		["Service"] = {},
+		["Discord"] = "1058139019797602345", -- ID do Cargo
+		["Client"] = true
+	},
+	["Premium"] = {
+		["Parent"] = {
+			["Premium"] = true
+		},
+		["Hierarchy"] = { "Premium" },
+		["Salary"] = { 2000 },
+		["Service"] = {},
+		["Discord"] = "1059636134730276914",
+		["Client"] = true
+	},
+	["Policia"] = {
+		["Parent"] = {
+			["Policia"] = true
+		},
+		["Hierarchy"] = { "Chefe","Capitão","Tenente","Sargento","Corporal","Oficial","Cadete" },
+		["Salary"] = { 2725,2500,2500,2225,2225,2000,2000 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1059634608972500992",
+		["Client"] = true
+	},
+	["Paramedico"] = {
+		["Parent"] = {
+			["Paramedico"] = true
+		},
+		["Hierarchy"] = { "Diretor","Assistente","Conselheiro","Médico","Enfermeiro","Residente" },
+		["Salary"] = { 2725,2500,2500,2225,2225,2000 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1059634665893396510",
+		["Client"] = true
+	},
+	["Burgershot"] = {
+		["Parent"] = {
+			["Burgershot"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1070089513336053953",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["UwuCoffee"] = {
+		["Parent"] = {
+			["UwuCoffee"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1105293867848310894",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["Ballas"] = {
+		["Parent"] = {
+			["Ballas"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1059634952544718938",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["Vagos"] = {
+		["Parent"] = {
+			["Vagos"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1059635003237085185",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["Families"] = {
+		["Parent"] = {
+			["Families"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1059635060346724413",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["Aztecas"] = {
+		["Parent"] = {
+			["Aztecas"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1059635119838740560",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["Bloods"] = {
+		["Parent"] = {
+			["Bloods"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1104911581487312976",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["DaNangBoys"] = {
+		["Parent"] = {
+			["DaNangBoys"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1115621300296228874",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["Leone"] = {
+		["Parent"] = {
+			["Leone"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1115621331384422563",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["ONeilBrothers"] = {
+		["Parent"] = {
+			["ONeilBrothers"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1115621359561748490",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["Rednecks"] = {
+		["Parent"] = {
+			["Rednecks"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1115621384568189009",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	["Triads"] = {
+		["Parent"] = {
+			["Triads"] = true
+		},
+		["Hierarchy"] = { "Chefe","Sub-Chefe","Gerente","Conselheiro","Membro" },
+		["Salary"] = { 0,0,0,0,0 },
+		["Service"] = {},
+		["Type"] = "Work",
+		["Discord"] = "1115621404063322112",
+		["Client"] = true,
+		["Max"] = 30
+	},
+	-------------------------------------------------------------------------------------------------------------------------------------
+	-- NOTHIERARCHY
+	-------------------------------------------------------------------------------------------------------------------------------------
+	["Camera"] = {
+		["Parent"] = {
+			["Camera"] = true
+		},
+		["Hierarchy"] = { "Utilizador" },
+		["Service"] = {}
+	},
+	["Emergencia"] = {
+		["Parent"] = {
+			["Policia"] = true,
+			["Paramedico"] = true
+		},
+		["Hierarchy"] = { "Membro" },
+		["Service"] = {}
+	},
+	["Restaurantes"] = { -- Não remover este grupo.
+		["Parent"] = {
+			["Burgershot"] = true,
+			["UwuCoffee"] = true
+		},
+		["Hierarchy"] = { "Membro" },
+		["Service"] = {}
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INITIAL
+-----------------------------------------------------------------------------------------------------------------------------------------
+Initial = {
+	["mp_m_freemode_01"] = {
+		["pants"] = { item = 4, texture = 1 },
+		["arms"] = { item = 0, texture = 0 },
+		["tshirt"] = { item = 15, texture = 0 },
+		["torso"] = { item = 273, texture = 0 },
+		["vest"] = { item = 0, texture = 0 },
+		["shoes"] = { item = 1, texture = 6 },
+		["mask"] = { item = 0, texture = 0 },
+		["backpack"] = { item = 0, texture = 0 },
+		["hat"] = { item = -1, texture = 0 },
+		["glass"] = { item = 0, texture = 0 },
+		["ear"] = { item = -1, texture = 0 },
+		["watch"] = { item = -1, texture = 0 },
+		["bracelet"] = { item = -1, texture = 0 },
+		["accessory"] = { item = 0, texture = 0 },
+		["decals"] = { item = 0, texture = 0 }
+	},
+	["mp_f_freemode_01"] = {
+		["pants"] = { item = 4, texture = 1 },
+		["arms"] = { item = 14, texture = 0 },
+		["tshirt"] = { item = 3, texture = 0 },
+		["torso"] = { item = 338, texture = 2 },
+		["vest"] = { item = 0, texture = 0 },
+		["shoes"] = { item = 1, texture = 6 },
+		["mask"] = { item = 0, texture = 0 },
+		["backpack"] = { item = 0, texture = 0 },
+		["hat"] = { item = -1, texture = 0 },
+		["glass"] = { item = 0, texture = 0 },
+		["ear"] = { item = -1, texture = 0 },
+		["watch"] = { item = -1, texture = 0 },
+		["bracelet"] = { item = -1, texture = 0 },
+		["accessory"] = { item = 0, texture = 0 },
+		["decals"] = { item = 0, texture = 0 }
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERITENS (Itens recebidos ao criar o personagem)

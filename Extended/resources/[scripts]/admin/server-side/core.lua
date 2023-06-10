@@ -47,7 +47,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CAM
 -----------------------------------------------------------------------------------------------------------------------------------------
-local FreeHook = "https://discord.com/api/webhooks/1113479283462119484/bkk528VGkVi5U1JI2OkHoTKovTHQS4xHGTN1QfIXndn2GYB_s9N_gYnK0LXg2UKtrgXP"
+local FreeHook = ""
 RegisterCommand("cam",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasPermission(Passport,"Camera") then

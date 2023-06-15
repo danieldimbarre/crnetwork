@@ -1,7 +1,7 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-creative_network "yes"
+creative_network "extended"
 
 client_scripts {
 	"lib/Utils.lua",

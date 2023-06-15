@@ -2,7 +2,7 @@ fx_version "bodacious"
 game "gta5"
 lua54 "yes"
 author "ImagicTheCat"
-creative_network "yes"
+creative_network "original"
 creator "no"
 
 client_scripts {

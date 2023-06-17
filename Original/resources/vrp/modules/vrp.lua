@@ -66,3 +66,11 @@ end
 function vRP.Device(source,Seconds)
     return DEVICE.Device(source,Seconds)
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	SetMapName(ServerName)
+	SetGameType(ServerName)
+	SetRoutingBucketEntityLockdownMode(0,"relaxed")
+end)

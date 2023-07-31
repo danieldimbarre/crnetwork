@@ -1117,3 +1117,31 @@ Locations = {
 	vec3(1864.45,3746.73,33.03),
 	vec3(-294.34,6200.93,31.48)
 }
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLOTHES
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Clothes(Ped,Sex)
+	if Sex == "Feminino" then
+		SetPedComponentVariation(Ped,1,-1,0,GetPedPaletteVariation(Ped,1))
+		SetPedComponentVariation(Ped,3,15,0,GetPedPaletteVariation(Ped,3))
+		SetPedComponentVariation(Ped,4,17,0,GetPedPaletteVariation(Ped,4))
+		SetPedComponentVariation(Ped,5,-1,0,GetPedPaletteVariation(Ped,5))
+		SetPedComponentVariation(Ped,6,35,0,GetPedPaletteVariation(Ped,6))
+		SetPedComponentVariation(Ped,7,-1,0,GetPedPaletteVariation(Ped,7))
+		SetPedComponentVariation(Ped,8,7,0,GetPedPaletteVariation(Ped,8))
+		SetPedComponentVariation(Ped,9,-1,0,GetPedPaletteVariation(Ped,9))
+		SetPedComponentVariation(Ped,10,-1,0,GetPedPaletteVariation(Ped,10))
+		SetPedComponentVariation(Ped,11,18,0,GetPedPaletteVariation(Ped,11))
+	else
+		SetPedComponentVariation(Ped,1,-1,0,GetPedPaletteVariation(Ped,1))
+		SetPedComponentVariation(Ped,3,15,0,GetPedPaletteVariation(Ped,3))
+		SetPedComponentVariation(Ped,4,61,0,GetPedPaletteVariation(Ped,4))
+		SetPedComponentVariation(Ped,5,-1,0,GetPedPaletteVariation(Ped,5))
+		SetPedComponentVariation(Ped,6,34,0,GetPedPaletteVariation(Ped,6))
+		SetPedComponentVariation(Ped,7,-1,0,GetPedPaletteVariation(Ped,7))
+		SetPedComponentVariation(Ped,8,15,0,GetPedPaletteVariation(Ped,8))
+		SetPedComponentVariation(Ped,9,-1,0,GetPedPaletteVariation(Ped,9))
+		SetPedComponentVariation(Ped,10,-1,0,GetPedPaletteVariation(Ped,10))
+		SetPedComponentVariation(Ped,11,15,0,GetPedPaletteVariation(Ped,11))
+	end
+end

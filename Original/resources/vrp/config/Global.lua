@@ -6,15 +6,12 @@ Whitelisted = true
 CombatLogMinutes = 3
 SalarySeconds = 1800
 BannedText = "Banido"
-CleanDeathInventory = true
-ClearInventoryPremium = true
 ServerName = "Creative Network"
 ReleaseText = "Envie na sala liberação"
 SpawnCoords = vec3(-28.08,-145.96,56.99)
 BackArenaPos = vec3(-1046.43,-474.55,36.78)
 BackPrison = vec3(1896.15,2604.44,45.75)
 BackpackWeightDefault = 30
-WipeBackpackDeath = false
 NewItemIdentity = true
 CrouchAiming = false
 -----------------------------------------------------------------------------------------------------------------------------------------

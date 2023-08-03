@@ -18,6 +18,29 @@ DEVICE = Tunnel.getInterface("device")
 REQUEST = Tunnel.getInterface("request")
 SURVIVAL = Tunnel.getInterface("survival")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- GG
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("gg",function(source)
+	if GetPlayerRoutingBucket(source) < 900000 then
+		local Passport = vRP.Passport(source)
+		if Passport and SURVIVAL.CheckDeath(source) then
+			local Datatable = vRP.Datatable(Passport)
+			if Datatable and Datatable["Weight"] then
+				Datatable["Weight"] = BackpackWeightDefault
+			end
+
+			vRP.ClearInventory(Passport)
+			vRP.UpgradeThirst(Passport,100)
+			vRP.UpgradeHunger(Passport,100)
+			vRP.DowngradeStress(Passport,100)
+
+			TriggerEvent("Discord","Airport","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
+
+			SURVIVAL.Respawn(source)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE:SERVICE_REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("smartphone:service_request",function(Data)

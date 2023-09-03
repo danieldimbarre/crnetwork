@@ -4,6 +4,7 @@
 UsableF7 = true
 Whitelisted = true
 CombatLogMinutes = 3
+SalaryNotify = true
 SalarySeconds = 1800
 BannedText = "Banido"
 ServerName = "Creative Network"

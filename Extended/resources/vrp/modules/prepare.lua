@@ -65,6 +65,7 @@ vRP.Prepare("vehicles/updateVehiclesTax","UPDATE vehicles SET Tax = UNIX_TIMESTA
 vRP.Prepare("vehicles/rentalVehiclesUpdate","UPDATE vehicles SET Rental = UNIX_TIMESTAMP() + 2592000 WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/addVehicles","INSERT IGNORE INTO vehicles(Passport,Vehicle,Plate,Work,Tax) VALUES(@Passport,@Vehicle,@Plate,@Work,UNIX_TIMESTAMP() + 604800)")
 vRP.Prepare("vehicles/rentalVehicles","INSERT IGNORE INTO vehicles(Passport,Vehicle,Plate,Work,Rental,Tax) VALUES(@Passport,@Vehicle,@Plate,@Work,UNIX_TIMESTAMP() + 2592000,UNIX_TIMESTAMP() + 604800)")
+vRP.Prepare("vehicles/InitialVehicles","INSERT IGNORE INTO vehicles(Passport,Vehicle,Plate,Work,Rental,Tax) VALUES(@Passport,@Vehicle,@Plate,@Work,UNIX_TIMESTAMP() + (86400 * 7),UNIX_TIMESTAMP() + (86400 * 7))")
 vRP.Prepare("vehicles/updateVehicles","UPDATE vehicles SET Engine = @Engine, Body = @Body, Health = @Health, Fuel = @Fuel, Doors = @Doors, Windows = @Windows, Tyres = @Tyres, Nitro = @Nitro WHERE Passport = @Passport AND Vehicle = @Vehicle")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHESTS
@@ -158,6 +159,13 @@ vRP.Prepare("hwid/Check","SELECT * FROM hwid WHERE Token = @Token")
 vRP.Prepare("hwid/All","UPDATE hwid SET Banned = @Banned WHERE Account = @Account")
 vRP.Prepare("hwid/Insert","INSERT INTO hwid(Token,Account) VALUES(@Token,@Account)")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SMARTPHONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("smartphone/Calls","DELETE FROM smartphone_calls WHERE created_at < (UNIX_TIMESTAMP() - 86400 * 3)")
+vRP.Prepare("smartphone/TorMessages","DELETE FROM smartphone_tor_messages WHERE created_at < (UNIX_TIMESTAMP() - 86400 * 3)")
+vRP.Prepare("smartphone/WhatsappMessages","DELETE FROM smartphone_whatsapp_messages WHERE created_at < (UNIX_TIMESTAMP() - 86400 * 3)")
+vRP.Prepare("smartphone/InstagramNotifications","DELETE FROM smartphone_instagram_notifications WHERE created_at < (UNIX_TIMESTAMP() - 86400 * 3)")
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEARTABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("summerz/Transactions","DELETE FROM transactions WHERE UNIX_TIMESTAMP() >= Timeset")
@@ -179,4 +187,11 @@ CreateThread(function()
 	vRP.Query("summerz/Playerdata")
 	vRP.Query("summerz/Entitydata")
 	vRP.Query("summerz/Transactions")
+
+	if GetResourceState("smartphone") == "started" then
+		vRP.Query("smartphone/Calls")
+		vRP.Query("smartphone/TorMessages")
+		vRP.Query("smartphone/WhatsappMessages")
+		vRP.Query("smartphone/InstagramNotifications")
+	end
 end)

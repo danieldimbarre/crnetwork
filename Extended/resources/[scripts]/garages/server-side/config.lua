@@ -1,5 +1,9 @@
 DvPermission = "Admin-1"
 CarPermission = "Admin-1"
+ArrestValue = 0.1 -- Valor para liberação do veículo apreendido
+TaxValue = 0.15 -- Valor do IPVA do veículo
+SellValue = 0.5 -- Valor de venda do veículo
+OpenVehicles = "Policia" -- Permissão para abrir todos os veículos pela tecla L
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES
 -----------------------------------------------------------------------------------------------------------------------------------------

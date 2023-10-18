@@ -25,8 +25,8 @@ SAFECRACK = Tunnel.getInterface("safecrack")
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	SetMapName("Creative Network")
-	SetGameType("Creative Network")
+	SetMapName(NameServer)
+	SetGameType(NameServers)
 	SetRoutingBucketEntityLockdownMode(0,"relaxed")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

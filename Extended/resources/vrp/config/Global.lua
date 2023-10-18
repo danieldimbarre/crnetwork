@@ -4,6 +4,7 @@
 ModeLicense = "steam"
 SalaryPremiumPrice = 1275
 RolepassInitial = 1685960411
+NameServer = "Creative Network"
 SpawnCoords = vec3(-27.45,-145.84,55.99)
 PrisonCoords = vec3(1896.15,2604.44,45.75)
 DiscordLink = "https://discord.gg/creativerp"

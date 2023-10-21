@@ -52,14 +52,8 @@ RegisterCommand("gem",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 then
-			local Amount = parseInt(Message[2])
-			local OtherPassport = parseInt(Message[1])
-			local Identity = vRP.Identity(OtherPassport)
-			if Identity then
-				TriggerClientEvent("Notify",source,"verde","Gemas entregues.",5000)
-				vRP.Query("accounts/AddGems",{ license = Identity["license"], gems = Amount })
-				TriggerEvent("Discord","Gemstone","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Para:** "..OtherPassport.."\n**Gemas:** "..Amount.."\n**Address:** "..GetPlayerEndpoint(source),3092790)
-			end
+			vRP.UpgradeGemstone(Message[1],Message[2],true)
+			TriggerClientEvent("Notify",source,"verde","Gemas entregues.",5000)
 		end
 	end
 end)

@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 UsableF7 = true
 Whitelisted = true
+InitialActive = true
 CombatLogMinutes = 3
 SalaryNotify = true
 SalarySeconds = 1800

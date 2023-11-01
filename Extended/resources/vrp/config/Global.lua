@@ -4,6 +4,7 @@
 InitialActive = true
 ModeLicense = "steam"
 SalaryPremiumPrice = 1275
+BackpackWeightDefault = 75
 RolepassInitial = 1685960411
 NameServer = "Creative Network"
 SpawnCoords = vec3(-27.45,-145.84,55.99)

@@ -123,8 +123,8 @@ local List = {
 		["Weight"] = 0.10,
 		["Economy"] = 50
 	},
-	["racecoin"] = {
-		["Index"] = "racecoin",
+	["platinum"] = {
+		["Index"] = "platinum",
 		["Name"] = "Platina",
 		["Type"] = "Comum",
 		["Weight"] = 0.001,

@@ -309,7 +309,7 @@ local List = {
 			["tarp"] = 90,
 			["techtrash"] = 225,
 			["explosives"] = 135,
-			["racecoin"] = 30
+			["platinum"] = 30
 		}
 	}
 }

@@ -67,38 +67,38 @@ ContentBoxes = {
 		{
 			["Id"] = 1,
 			["Amount"] = 475,
-			["Image"] = "racecoin",
-			["Item"] = "racecoin",
+			["Image"] = "platinum",
+			["Item"] = "platinum",
 			["Name"] = "Platina"
 		},{
 			["Id"] = 2,
 			["Amount"] = 525,
-			["Image"] = "racecoin",
-			["Item"] = "racecoin",
+			["Image"] = "platinum",
+			["Item"] = "platinum",
 			["Name"] = "Platina"
 		},{
 			["Id"] = 3,
 			["Amount"] = 575,
-			["Image"] = "racecoin",
-			["Item"] = "racecoin",
+			["Image"] = "platinum",
+			["Item"] = "platinum",
 			["Name"] = "Platina"
 		},{
 			["Id"] = 4,
 			["Amount"] = 625,
-			["Image"] = "racecoin",
-			["Item"] = "racecoin",
+			["Image"] = "platinum",
+			["Item"] = "platinum",
 			["Name"] = "Platina"
 		},{
 			["Id"] = 5,
 			["Amount"] = 775,
-			["Image"] = "racecoin",
-			["Item"] = "racecoin",
+			["Image"] = "platinum",
+			["Item"] = "platinum",
 			["Name"] = "Platina"
 		},{
 			["Id"] = 6,
 			["Amount"] = 925,
-			["Image"] = "racecoin",
-			["Item"] = "racecoin",
+			["Image"] = "platinum",
+			["Item"] = "platinum",
 			["Name"] = "Platina"
 		}
 	}
@@ -280,7 +280,7 @@ RoleItens = {
 			["Item"] = "vape"
 		},{
 			["Amount"] = 100,
-			["Item"] = "racecoin"
+			["Item"] = "platinum"
 		}
 	},
 	["Premium"] = {
@@ -298,7 +298,7 @@ RoleItens = {
 			["Item"] = "nitro"
 		},{
 			["Amount"] = 100,
-			["Item"] = "racecoin"
+			["Item"] = "platinum"
 		},{
 			["Amount"] = 1,
 			["Item"] = "repairkit02"
@@ -316,7 +316,7 @@ RoleItens = {
 			["Item"] = "gemstone"
 		},{
 			["Amount"] = 100,
-			["Item"] = "racecoin"
+			["Item"] = "platinum"
 		},{
 			["Amount"] = 1,
 			["Item"] = "advtoolbox"
@@ -346,7 +346,7 @@ RoleItens = {
 			["Item"] = "tyres"
 		},{
 			["Amount"] = 100,
-			["Item"] = "racecoin"
+			["Item"] = "platinum"
 		},{
 			["Amount"] = 150,
 			["Item"] = "gemstone"
@@ -361,7 +361,7 @@ RoleItens = {
 			["Item"] = "advtoolbox"
 		},{
 			["Amount"] = 100,
-			["Item"] = "racecoin"
+			["Item"] = "platinum"
 		},{
 			["Amount"] = 3,
 			["Item"] = "nitro"

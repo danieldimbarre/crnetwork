@@ -29,6 +29,7 @@ server_scripts {
 
 	"modules/vrp.lua",
 	"modules/server.lua",
+	"modules/discord.lua",
 	"modules/prepare.lua"
 }
 

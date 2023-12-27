@@ -1,1 +1,0 @@
-Dispare o evento "initial:Client" para aparecer a tela.

@@ -1,27 +1,45 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+Travel = {}
+Boosting = {}
 Dismantle = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GENERATEPLATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function GeneratePlate()
+exports("GeneratePlate",function()
 	local Plate = ""
 
 	repeat
 		Plate = vRP.GenerateString("DDLLLDDD")
-	until not Dismantle[Plate]
+	until not Dismantle[Plate] and not Boosting[Plate]
 
 	return Plate
-end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:BOOSTING
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("inventory:Boosting",function(Plate,Status)
+	if not Boosting[Plate] then
+		Boosting[Plate] = Status
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:DELETE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("garages:Delete")
 AddEventHandler("garages:Delete",function(Network,Plate)
-	if Plate and Dismantle[Plate] and vRP.Passport(Dismantle[Plate]["Source"]) then
-		TriggerClientEvent("dismantle:Reset",Dismantle[Plate]["Source"])
-		Dismantle[Plate] = nil
+	if Plate then
+		if Dismantle[Plate] and vRP.Passport(Dismantle[Plate]["Source"]) then
+			TriggerClientEvent("dismantle:Reset",Dismantle[Plate]["Source"])
+			Dismantle[Plate] = nil
+		end
+
+		if Boosting[Plate] and vRP.Passport(Boosting[Plate]["Source"]) then
+			TriggerEvent("boosting:Remove",Boosting[Plate]["Passport"],Plate)
+			TriggerClientEvent("boosting:Reset",Boosting[Plate]["Source"])
+			Boosting[Plate] = nil
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -38,7 +56,7 @@ function Creative.CreateVehicle(Model,Coords,Experience)
 		end
 
 		if DoesEntityExist(Vehicle) then
-			local Plate = GeneratePlate()
+			local Plate = exports["inventory"]:GeneratePlate()
 			local Network = NetworkGetNetworkIdFromEntity(Vehicle)
 			local Networked = NetworkGetEntityFromNetworkId(Network)
 

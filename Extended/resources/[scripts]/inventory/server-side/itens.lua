@@ -921,6 +921,39 @@ Use = {
 		end
 	end,
 
+	["circuit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not Player(source)["state"]["Handcuff"] then
+			local Vehicle,Network,Plate = vRPC.VehicleList(source)
+			if Vehicle and Plate and (Boosting[Plate] and vRP.InsideVehicle(source) and Boosting[Plate]["Amount"] < 10) then
+				if (not Travel[Passport] or #(vRP.GetEntityCoords(source) - Travel[Passport]) > 100) then
+
+					if vDEVICE.Device(source,30) then
+						Travel[Passport] = vRP.GetEntityCoords(source)
+						Boosting[Plate]["Amount"] = Boosting[Plate]["Amount"] + 1
+
+						if Boosting[Plate]["Amount"] >= 10 then
+							TriggerEvent("boosting:Payment",source,Boosting[Plate]["Passport"])
+							TriggerEvent("boosting:Remove",Boosting[Plate]["Passport"],Plate)
+						else
+							TriggerClientEvent("Notify",source,"Boosting [ "..Boosting[Plate]["Amount"].." / 10 ]","Progresso atualizado com sucesso.","verde",5000)
+						end
+					else
+						Boosting[Plate]["Amount"] = Boosting[Plate]["Amount"] - 3
+
+						if Boosting[Plate]["Amount"] < 0 then
+							Boosting[Plate]["Amount"] = 0
+						end
+
+						TriggerClientEvent("Notify",source,"Boosting [ "..Boosting[Plate]["Amount"].." / 10 ]","Progresso atualizado com sucesso.","amarelo",5000)
+					end
+				end
+			else
+				TriggerClientEvent("inventory:Close",source)
+				TriggerClientEvent("boosting:Open",source)
+			end
+		end
+	end,
+
 	["lockpick"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if not Player(source)["state"]["Handcuff"] then
 			local Vehicle,Network,Plate,Model,Class = vRPC.VehicleList(source,4)
@@ -969,10 +1002,18 @@ Use = {
 				else
 					vRPC.playAnim(source,false,{"missfbi_s4mop","clean_mop_back_player"},true)
 
-					if Dismantle[Plate] then
+					if Dismantle[Plate] or Boosting[Plate] then
 						if vRP.Task(source,10,10000) then
 							Active[Passport] = os.time() + 15
-							TriggerClientEvent("dismantle:Dispatch",source)
+
+							if Dismantle[Plate] then
+								TriggerClientEvent("dismantle:Dispatch",source)
+							end
+
+							if Boosting[Plate] then
+								TriggerClientEvent("boosting:Dispatch",source)
+							end
+
 							TriggerClientEvent("Progress",source,"Roubando",15000)
 
 							repeat
@@ -980,7 +1021,11 @@ Use = {
 									Active[Passport] = nil
 
 									SetVehicleDoorsLocked(Networked,1)
-									TriggerClientEvent("target:Dismantle",source,Model)
+
+									if Dismantle[Plate] then
+										TriggerClientEvent("target:Dismantle",source,Model)
+									end
+
 									Entity(Networked)["state"]:set("Lockpick",Passport,true)
 								end
 

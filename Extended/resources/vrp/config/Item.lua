@@ -2,6 +2,13 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	["circuit"] = {
+		["Index"] = "circuit",
+		["Name"] = "Circuito Eletrônico",
+		["Type"] = "Usável",
+		["Durability"] = 24,
+		["Weight"] = 0.75
+	},
 	["vehiclevip"] = {
 		["Index"] = "vehiclevip",
 		["Name"] = "Cartão Veicular",

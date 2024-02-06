@@ -1399,19 +1399,22 @@ local List = {
 		["Index"] = "dollars",
 		["Name"] = "Dólares",
 		["Type"] = "Comum",
-		["Weight"] = 0.0
+		["Weight"] = 0.0,
+		["Market"] = true
 	},
 	["dollars2"] = {
 		["Index"] = "dollars2",
 		["Name"] = "Dólares Marcados",
 		["Type"] = "Comum",
-		["Weight"] = 0.0
+		["Weight"] = 0.0,
+		["Market"] = true
 	},
 	["dollars3"] = {
 		["Index"] = "dollars",
 		["Name"] = "Dólares Falsificados",
 		["Type"] = "Comum",
-		["Weight"] = 0.0
+		["Weight"] = 0.0,
+		["Market"] = true
 	},
 	["chocolate"] = {
 		["Index"] = "chocolate",
@@ -3651,6 +3654,17 @@ end
 function BlockDrops(Item)
 	local Item = SplitOne(Item)
 	if List[Item] and List[Item]["Drops"] then
+		return true
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BLOCKMARKET
+-----------------------------------------------------------------------------------------------------------------------------------------
+function BlockMarket(Item)
+	local Item = SplitOne(Item)
+	if List[Item] and List[Item]["Market"] then
 		return true
 	end
 

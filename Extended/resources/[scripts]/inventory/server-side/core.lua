@@ -16,6 +16,7 @@ vCLIENT = Tunnel.getInterface("inventory")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vPARAMEDIC = Tunnel.getInterface("paramedic")
 vSURVIVAL = Tunnel.getInterface("survival")
+vDEVICE = Tunnel.getInterface("device")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------

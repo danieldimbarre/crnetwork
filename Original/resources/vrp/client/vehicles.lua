@@ -24,22 +24,31 @@ end
 -- VEHICLELIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.VehicleList(Radius)
-	local Vehicle = nil
+	local Plate = ""
+	local Model = nil
+	local Class = false
+	local Vehicle = false
+	local Networked = false
 	local Ped = PlayerPedId()
+
 	if IsPedInAnyVehicle(Ped) then
 		Vehicle = GetVehiclePedIsUsing(Ped)
 	else
-		Vehicle = tvRP.ClosestVehicle(Radius)
+		if not Radius then
+			Radius = 0.0
+		end
+
+		Vehicle = tvRP.ClosestVehicle(Radius + 0.0)
 	end
 
-	if IsEntityAVehicle(Vehicle) then
-		local Network = VehToNet(Vehicle)
-		local Class = GetVehicleClass(Vehicle)
-		local Model = GetEntityArchetypeName(Vehicle)
-		local Plate = GetVehicleNumberPlateText(Vehicle)
-
-		return Vehicle,Network,Plate,Model,Class
+	if Vehicle and DoesEntityExist(Vehicle) and IsEntityAVehicle(Vehicle) then
+		Networked = VehToNet(Vehicle)
+		Class = GetVehicleClass(Vehicle)
+		Model = GetEntityArchetypeName(Vehicle)
+		Plate = GetVehicleNumberPlateText(Vehicle)
 	end
+
+	return Vehicle,Networked,Plate,Model,Class
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLENAME

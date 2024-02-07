@@ -923,6 +923,8 @@ Use = {
 
 	["circuit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if not Player(source)["state"]["Handcuff"] then
+			TriggerClientEvent("inventory:Close",source)
+
 			local Vehicle,Network,Plate = vRPC.VehicleList(source)
 			if Vehicle and Plate and (Boosting[Plate] and vRP.InsideVehicle(source) and Boosting[Plate]["Amount"] < 10) then
 				if (not Travel[Passport] or #(vRP.GetEntityCoords(source) - Travel[Passport]) > 100) then
@@ -948,7 +950,6 @@ Use = {
 					end
 				end
 			else
-				TriggerClientEvent("inventory:Close",source)
 				TriggerClientEvent("boosting:Open",source)
 			end
 		end

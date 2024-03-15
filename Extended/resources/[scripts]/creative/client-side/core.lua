@@ -225,9 +225,9 @@ CreateThread(function()
 		SetWeatherTypePersist(GlobalState["Weather"])
 		SetWeatherTypeNowPersist(GlobalState["Weather"])
 
-        if IsPlayerWantedLevelGreater(Pid,0) then
-            ClearPlayerWantedLevel(Pid)
-        end
+		if IsPlayerWantedLevelGreater(Pid,0) then
+			ClearPlayerWantedLevel(Pid)
+		end
 
 		if LocalPlayer["state"]["Active"] then
 			NetworkOverrideClockTime(GlobalState["Hours"],GlobalState["Minutes"],00)

@@ -36,6 +36,7 @@ RegisterNUICallback("Finish",function(Data,Callback)
 		Camera = nil
 	end
 
+	LocalPlayer["state"]:set("Hoverfy",true,false)
 	exports["barbershop"]:Apply(Data)
 	vSERVER.Update(Data,Creation)
 	SetNuiFocus(false,false)
@@ -65,6 +66,7 @@ RegisterNUICallback("Cancel",function(Data,Callback)
 		Camera = nil
 	end
 
+	LocalPlayer["state"]:set("Hoverfy",true,false)
 	exports["barbershop"]:Apply(Lasted)
 	vSERVER.Update(Lasted,Creation)
 	SetNuiFocus(false,false)
@@ -142,7 +144,7 @@ exports("Apply",function(Data,Ped)
 	SetPedHeadOverlayColor(Ped,3,0,0,0)
 
 	SetPedHeadOverlay(Ped,4,Barbershop[13],Barbershop[14])
-	SetPedHeadOverlayColor(Ped,4,2,Barbershop[15],Barbershop[15])
+	SetPedHeadOverlayColor(Ped,4,0,0,0)
 
 	SetPedHeadOverlay(Ped,5,Barbershop[25],Barbershop[26])
 	SetPedHeadOverlayColor(Ped,5,2,Barbershop[27],Barbershop[27])
@@ -167,6 +169,7 @@ exports("Apply",function(Data,Ped)
 	SetPedFaceFeature(Ped,8,Barbershop[36])
 	SetPedFaceFeature(Ped,9,Barbershop[35])
 	SetPedFaceFeature(Ped,10,Barbershop[45])
+	SetPedFaceFeature(Ped,11,Barbershop[15])
 	SetPedFaceFeature(Ped,12,Barbershop[42])
 	SetPedFaceFeature(Ped,13,Barbershop[46])
 	SetPedFaceFeature(Ped,14,Barbershop[37])
@@ -187,6 +190,7 @@ function OpenBarbershop()
 	end
 
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
+	LocalPlayer["state"]:set("Hoverfy",false,false)
 	Lasted = Barbershop
 
 	local Ped = PlayerPedId()

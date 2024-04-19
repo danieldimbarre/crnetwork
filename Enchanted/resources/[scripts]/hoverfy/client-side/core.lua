@@ -1,6 +1,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Payload = {}
 local Displays = {}
 local Active = false
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -15,8 +16,9 @@ CreateThread(function()
 			if (LocalPlayer["state"]["Route"] == 0 or LocalPlayer["state"]["Propertys"]) then
 				for Number,v in pairs(Displays) do
 					if #(Coords - v["Coords"]) <= v["Distance"] then
-						SendNUIMessage({ name = "Show", payload = { v["Key"], v["Title"], v["Legend"] } })
 						Active = Number
+						Payload = { v["Key"], v["Title"], v["Legend"] }
+						SendNUIMessage({ name = "Show", payload = Payload })
 					end
 				end
 			end
@@ -43,5 +45,17 @@ AddEventHandler("hoverfy:Insert",function(Table)
 			["Title"] = Table[Number][4],
 			["Legend"] = Table[Number][5]
 		}
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Hoverfy",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
+	if Displays[Active] then
+		if Value then
+			SendNUIMessage({ name = "Show", payload = Payload })
+		else
+			SendNUIMessage({ name = "Hide" })
+		end
 	end
 end)

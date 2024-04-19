@@ -26,6 +26,7 @@ ThreadTick()
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Drops(Item,Slot,Amount)
 	local source = source
+	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
 	local Route = GetPlayerRoutingBucket(source)
 	if Passport and not Active[Passport] and Amount > 0 and not BlockDelete(Item) and not BlockDrops(Item) and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) then

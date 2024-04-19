@@ -486,6 +486,7 @@ function TargetEnable()
 					if #(Coords - HitCoords) <= 1.0 and Plate ~= "PDMSPORT" then
 						local Menu = {}
 						local Network = nil
+						local Combustivel = false
 						local Vehicle = GetLastDrivenVehicle()
 
 						SetEntityAsMissionEntity(Entitys,true,true)
@@ -497,12 +498,12 @@ function TargetEnable()
 
 						for _,v in pairs(Fuels) do
 							if #(Coords - v) <= 2.5 then
-								Selected[6] = true
+								Combustivel = true
 								break
 							end
 						end
 
-						if not Selected[6] then
+						if not Combustivel then
 							if GetSelectedPedWeapon(Ped) == 883325847 then
 								Selected[6] = true
 								Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }

@@ -172,6 +172,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function OpenSkinshop()
 	Lasted = Skinshop
+	LocalPlayer["state"]:set("Hoverfy",false,false)
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 	SendNUIMessage({ name = "open", payload = { Current = Skinshop, Max = MaxValues() } })
 
@@ -312,6 +313,7 @@ RegisterNUICallback("Save",function(Data,Callback)
 		Camera = nil
 	end
 
+	LocalPlayer["state"]:set("Hoverfy",true,false)
 	SetNuiFocus(false,false)
 	vSERVER.Update(Skinshop)
 	vRP.Destroy()
@@ -329,6 +331,7 @@ RegisterNUICallback("Reset",function(Data,Callback)
 		Camera = nil
 	end
 
+	LocalPlayer["state"]:set("Hoverfy",true,false)
 	exports["skinshop"]:Apply(Lasted)
 	SetNuiFocus(false,false)
 	Skinshop = Lasted

@@ -61,6 +61,7 @@ function OpenTattooshop()
 
 	ClearAllPedProps(Ped)
 
+	LocalPlayer["state"]:set("Hoverfy",false,false)
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 
 	SendNUIMessage({ shop = Active, tattoo = Tattooshop })
@@ -100,6 +101,7 @@ RegisterNUICallback("Close",function(Data,Callback)
 		Camera = nil
 	end
 
+	LocalPlayer["state"]:set("Hoverfy",true,false)
 	exports["skinshop"]:Apply()
 	vSERVER.Update(Tattooshop)
 	SetNuiFocus(false,false)

@@ -1284,7 +1284,7 @@ AddEventHandler("inventory:Products",function(Service)
 
 				local Result = RandPercentage(Products[Service]["Itens"])
 				local Amount = math.random(Result["Min"],Result["Max"])
-				if not vRP.MaxItens(Passport,Result["Item"],Amount) and vRP.CheckWeight(Passport,Result["Item"],Amount) and vRP.TakeItem(Passport,Result["Item"],Amount) then
+				if not vRP.MaxItens(Passport,Result["Item"],Amount) and vRP.CheckWeight(Passport,Result["Item"],Amount) and vRP.TakeItem(Passport,Products[Service]["Necessary"]["Item"],Products[Service]["Necessary"]["Amount"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Amount,true)
 				else
 					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)

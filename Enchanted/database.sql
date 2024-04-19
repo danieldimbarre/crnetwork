@@ -95,6 +95,8 @@ CREATE TABLE IF NOT EXISTS `entitydata` (
   KEY `Information` (`Name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `entitydata` (`Name`, `Information`) VALUES ('Permissions:Admin', '{\"1\":1}');
+
 DROP TABLE IF EXISTS `fines`;
 CREATE TABLE IF NOT EXISTS `fines` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,

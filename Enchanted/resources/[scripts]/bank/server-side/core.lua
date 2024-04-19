@@ -511,7 +511,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDTAXS
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("AddTaxs",function(Passport,Name,Valuation,Message)
+exports("AddTaxs",function(Passport,source,Name,Valuation,Message)
 	if vRP.UserPremium(Passport) then
 		local Hierarchy = vRP.LevelPremium(source)
 		if Hierarchy == 1 then

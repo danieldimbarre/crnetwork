@@ -30,7 +30,6 @@ MaxSlotsInventory = 100
 MinimumWeight = 25
 DefaultWeight = 100
 PremiumWeight = {
-	[0] = 0,
 	[1] = 100,
 	[2] = 50,
 	[3] = 25

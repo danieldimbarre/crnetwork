@@ -6,6 +6,7 @@ AddEventHandler("hud:VehicleEject",function(Velocity)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		local Ped = GetPlayerPed(source)
 		local Coords = vRP.GetEntityCoords(source)
 
 		SetEntityCoords(Ped,Coords["x"],Coords["y"],Coords["z"] - 0.5,true,true,true)

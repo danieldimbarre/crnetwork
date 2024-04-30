@@ -36,7 +36,7 @@ AddEventHandler("moneywash:Swap",function()
 				vRP.GenerateItem(Passport,"dollar",Amount)
 			else
 				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-				exports["inventory"]:Drops(Passport,source,NameItem,Amount)
+				exports["inventory"]:Drops(Passport,source,"dollar",Amount)
 			end
 		else
 			TriggerClientEvent("Notify",source,"Aviso","<b>"..ItemName(NameItem).."</b> não encontrado.","amarelo",5000)

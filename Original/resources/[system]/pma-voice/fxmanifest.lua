@@ -8,6 +8,7 @@ shared_script "shared.lua"
 client_scripts {
 	"@vrp/config/Native.lua",
 	"@vrp/lib/Utils.lua",
+	"client/utils/*",
 	"client/init/proximity.lua",
 	"client/init/init.lua",
 	"client/init/main.lua",

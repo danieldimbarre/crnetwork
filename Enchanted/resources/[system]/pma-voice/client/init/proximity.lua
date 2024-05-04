@@ -11,6 +11,7 @@ function orig_addProximityCheck(ply)
 
 	return distance < voiceRange,distance
 end
+
 local addProximityCheck = orig_addProximityCheck
 
 exports("overrideProximityCheck",function(fn)
@@ -22,14 +23,14 @@ exports("resetProximityCheck",function()
 end)
 
 function addNearbyPlayers()
-	if disableUpdates then
-		return
-	end
+	if disableUpdates then return end
 
 	local Ped = PlayerPedId()
 	plyCoords = GetEntityCoords(Ped)
 	proximity = MumbleGetTalkerProximity()
 	currentTargets = {}
+	MumbleClearVoiceTargetChannels(voiceTarget)
+	if LocalPlayer.state.disableProximity then return end
 	MumbleAddVoiceChannelListen(LocalPlayer.state.assignedChannel)
 	MumbleAddVoiceTargetChannel(voiceTarget,LocalPlayer.state.assignedChannel)
 
@@ -57,10 +58,7 @@ function setSpectatorMode(enabled)
 		for i = 1,#players do
 			local ply = players[i]
 			local serverId = GetPlayerServerId(ply)
-			if serverId == playerServerId then
-				goto skip_loop
-			end
-
+			if serverId == playerServerId then goto skip_loop end
 			MumbleAddVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
 
 			::skip_loop::
@@ -69,11 +67,7 @@ function setSpectatorMode(enabled)
 		for i = 1,#players do
 			local ply = players[i]
 			local serverId = GetPlayerServerId(ply)
-
-			if serverId == playerServerId then
-				goto skip_loop
-			end
-
+			if serverId == playerServerId then goto skip_loop end
 			MumbleRemoveVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
 
 			::skip_loop::
@@ -99,8 +93,8 @@ exports("setListenerOverride",function(enabled)
 	listenerOverride = enabled
 end)
 
-local lastRadioStatus = false
 local lastTalkingStatus = false
+local lastRadioStatus = false
 local voiceState = "proximity"
 
 CreateThread(function()
@@ -148,9 +142,7 @@ exports("setVoiceState",function(_voiceState,channel)
 		handleInitialState()
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTOP
------------------------------------------------------------------------------------------------------------------------------------------
+
 AddEventHandler("onClientResourceStop",function(Resource)
 	if type(addProximityCheck) == "table" then
 		local proximityCheckRef = addProximityCheck.__cfx_functionReference
@@ -163,7 +155,7 @@ AddEventHandler("onClientResourceStop",function(Resource)
 	end
 end)
 
-exports("addVoiceMode", function(distance, name)
+exports("addVoiceMode",function(distance,name)
 	for i = 1,#Cfg.voiceModes do
 		local voiceMode = Cfg.voiceModes[i]
 		if voiceMode[2] == name then
@@ -171,19 +163,18 @@ exports("addVoiceMode", function(distance, name)
 			return
 		end
 	end
-
 	Cfg.voiceModes[#Cfg.voiceModes + 1] = { distance,name }
 end)
 
-exports("removeVoiceMode", function(name)
+exports("removeVoiceMode",function(name)
 	for i = 1,#Cfg.voiceModes do
 		local voiceMode = Cfg.voiceModes[i]
 		if voiceMode[2] == name then
-			table.remove(Cfg.voiceModes, i)
+			table.remove(Cfg.voiceModes,i)
 			if mode == i then
 				local newMode = Cfg.voiceModes[1]
 				mode = 1
-				setProximityState(newMode[i],false)
+				setProximityState(newMode[mode],false)
 			end
 
 			return true

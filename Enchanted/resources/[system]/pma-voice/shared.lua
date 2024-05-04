@@ -17,10 +17,10 @@ Cfg.voiceModes = {
 	{ 12.0,"Muito Alto" }
 }
 
-local function types(Message)
-	local argType = type(Message[1])
-	for i = 2,#Message do
-		local arg = Message[i]
+local function types(args)
+	local argType = type(args[1])
+	for i = 2,#args do
+		local arg = args[i]
 		if argType == arg then
 			return true,argType
 		end

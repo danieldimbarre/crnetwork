@@ -1,6 +1,8 @@
 local volumes = {
 	["radio"] = 60 / 100,
-	["call"] = 60 / 100
+	["call"] = 60 / 100,
+	["click_on"] = 10 / 100,
+	["click_off"] = 10 / 100,
 }
 
 mode = 2
@@ -13,22 +15,22 @@ local mutedPlayers = {}
 
 function setVolume(volume,volumeType)
 	type_check({ volume, "number" })
-	local volume = volume / 100
+	local volumeFraction = volume / 100
 
 	if volumeType then
 		local volumeTbl = volumes[volumeType]
 		if volumeTbl then
 			LocalPlayer.state:set(volumeType,volume,true)
-			volumes[volumeType] = volume
-			resyncVolume(volumeType,volume)
+			volumes[volumeType] = volumeFraction
+			resyncVolume(volumeType,volumeFraction)
 		end
 	else
 		for volumeType,_ in pairs(volumes) do
-			volumes[volumeType] = volume
+			volumes[volumeType] = volumeFraction
 			LocalPlayer.state:set(volumeType,volume,true)
 		end
 
-		resyncVolume("all",volume)
+		resyncVolume("all",volumeFraction)
 	end
 end
 
@@ -55,7 +57,7 @@ SetAudioSubmixOutputVolumes(radioEffectId,0,1.0,0.25,0.0,0.0,1.0,1.0)
 AddAudioSubmixOutput(radioEffectId,0)
 submixIndicies["radio"] = radioEffectId
 
-local callEffectId = CreateAudioSubmix("call")
+local callEffectId = CreateAudioSubmix("Call")
 SetAudioSubmixOutputVolumes(callEffectId,1,0.10,0.50,0.0,0.0,1.0,1.0)
 AddAudioSubmixOutput(callEffectId,1)
 submixIndicies["call"] = callEffectId
@@ -114,6 +116,25 @@ function toggleVoice(plySource,enabled,moduleType)
 	end
 end
 
+local function updateVolumes(voiceTable,override)
+	for serverId,talking in pairs(voiceTable) do
+		if serverId == playerServerId then goto skip_iter end
+		MumbleSetVolumeOverrideByServerId(serverId,talking and override or -1.0)
+		::skip_iter::
+	end
+end
+
+function resyncVolume(volumeType,newVolume)
+	if volumeType == "all" then
+		resyncVolume("radio",newVolume)
+		resyncVolume("call",newVolume)
+	elseif volumeType == "radio" then
+		updateVolumes(radioData,newVolume)
+	elseif volumeType == "call" then
+		updateVolumes(callData,newVolume)
+	end
+end
+
 function addVoiceTargets(...)
 	local targets = {...}
 	local addedPlayers = {
@@ -139,9 +160,29 @@ end
 function playMicClicks(clickType)
 	sendUIMessage({
 		sound = (clickType and "audio_on" or "audio_off"),
-		volume = (clickType and 0.1 or 0.03)
+		volume = (clickType and volumes["click_on"] or volumes["click_off"])
 	})
 end
+
+exports("isPlayerMuted",function(source)
+	return mutedPlayers[source]
+end)
+
+exports("getMutedPlayers",function()
+	return mutedPlayers
+end)
+
+function toggleMutePlayer(source)
+	if mutedPlayers[source] then
+		mutedPlayers[source] = nil
+		MumbleSetVolumeOverrideByServerId(source,-1.0)
+	else
+		mutedPlayers[source] = true
+		MumbleSetVolumeOverrideByServerId(source,0.0)
+	end
+end
+exports("Mute",toggleMutePlayer)
+exports("toggleMutePlayer",toggleMutePlayer)
 
 function setVoiceProperty(type,value)
 	if type == "radioEnabled" then
@@ -154,39 +195,6 @@ function setVoiceProperty(type,value)
 		SetResourceKvp("pma-voice_enableMicClicks",val)
 	end
 end
-
-local function updateVolumes(voiceTable,override)
-	for serverId,talking in pairs(voiceTable) do
-		if serverId == playerServerId then goto skip_iter end
-		MumbleSetVolumeOverrideByServerId(serverId,talking and override or -1.0)
-		::skip_iter::
-	end
-end
-
-function resyncVolume(volumeType,newVolume)
-	if volumeType == "all" then
-		resyncVolume("radio",newVolume)
-		resyncVolume("call",newVolume)
-	elseif volumeType == "radio" then
-		updateVolumes(radioData,newVolume)
-	elseif volumeType == "call" then
-		updateVolumes(callData,newVolume)
-	end
-end
-
-function toggleMutePlayer(Status)
-	local source = LocalPlayer["state"]["Source"]
-	if Status then
-		mutedPlayers[source] = true
-		MumbleSetVolumeOverrideByServerId(source,0.0)
-		TriggerServerEvent("pma-voice:toggleMute",true)
-	else
-		mutedPlayers[source] = nil
-		MumbleSetVolumeOverrideByServerId(source,-1.0)
-		TriggerServerEvent("pma-voice:toggleMute",false)
-	end
-end
-exports("Mute",toggleMutePlayer)
 
 exports("setVoiceProperty",setVoiceProperty)
 exports("SetMumbleProperty",setVoiceProperty)

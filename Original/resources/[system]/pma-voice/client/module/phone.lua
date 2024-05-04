@@ -55,5 +55,4 @@ end)
 
 RegisterNetEvent("pma-voice:clSetPlayerCall",function(_callChannel)
 	callChannel = _callChannel
-	createCallThread()
 end)

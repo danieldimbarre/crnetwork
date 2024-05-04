@@ -81,9 +81,10 @@ AddEventHandler("playerDropped",function()
 	end
 end)
 
-exports("isValidPlayer",function(source)
+function isValidPlayer(source)
 	return voiceData[source]
-end)
+end
+exports("isValidPlayer",isValidPlayer)
 
 function getPlayersInRadioChannel(channel)
 	local returnChannel = radioData[channel]

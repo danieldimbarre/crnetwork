@@ -19,7 +19,6 @@ end
 local radioNameGetter = radioNameGetter_orig
 
 function overrideRadioNameGetter(channel,cb)
-	local cbType = type(cb)
 	radioNameGetter = cb
 end
 exports("overrideRadioNameGetter",overrideRadioNameGetter)
@@ -88,7 +87,7 @@ function setPlayerRadio(source,_radioChannel)
 end
 exports("setPlayerRadio",setPlayerRadio)
 
-RegisterServerEvent("pma-voice:setPlayerRadio",function(radioChannel)
+RegisterNetEvent("pma-voice:setPlayerRadio",function(radioChannel)
 	setPlayerRadio(source,radioChannel)
 end)
 
@@ -105,7 +104,7 @@ function setTalkingOnRadio(talking)
 		end
 	end
 end
-RegisterServerEvent("pma-voice:setTalkingOnRadio",setTalkingOnRadio)
+RegisterNetEvent("pma-voice:setTalkingOnRadio",setTalkingOnRadio)
 
 AddEventHandler("onResourceStop",function(Resource)
 	for channel,cfxFunctionRef in pairs(radioChecks) do
@@ -119,7 +118,7 @@ AddEventHandler("onResourceStop",function(Resource)
 	if type(radioNameGetter) == "table" then
 		local radioRef = radioNameGetter.__cfx_functionReference
 		if radioRef then
-			local isResource = string.match(functionRef,Resource)
+			local isResource = string.match(radioRef,Resource)
 			if isResource then
 				radioNameGetter = radioNameGetter_orig
 			end

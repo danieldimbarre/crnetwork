@@ -1,8 +1,8 @@
 local wasProximityDisabledFromOverride = false
 disableProximityCycle = false
 
-RegisterCommand("setvoiceintent",function(source,Message)
-	local intent = Message[1]
+RegisterCommand("setvoiceintent",function(source,args)
+	local intent = args[1]
 	if intent == "speech" then
 		MumbleSetAudioInputIntent(`speech`)
 	elseif intent == "music" then
@@ -11,13 +11,10 @@ RegisterCommand("setvoiceintent",function(source,Message)
 	LocalPlayer.state:set("voiceIntent",intent,true)
 end)
 
-RegisterCommand("volume",function(source,Message)
-	if not Message[1] then
-		return
-	end
-
-	setVolume(tonumber(Message[1]))
-	TriggerEvent("Notify",false,"<b>Volume:</b> "..Message[1].."%","verde",5000)
+RegisterCommand("volume",function(_,args)
+	if not args[1] then return end
+	setVolume(tonumber(args[1]))
+	TriggerEvent("Notify",false,"<b>Volume:</b> "..args[1].."%","verde",5000)
 end)
 
 exports("setAllowProximityCycleState",function(state)
@@ -55,11 +52,11 @@ exports("clearProximityOverride",function()
 end)
 
 local LastMode = 2
-
 RegisterCommand("cycleproximity",function()
 	if disableProximityCycle then return end
 
 	local newMode = mode + 1
+
 	if newMode <= 4 then
 		mode = newMode
 	else

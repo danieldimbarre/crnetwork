@@ -27,17 +27,16 @@ function setTalkingOnRadio(plySource,enabled)
 	local enabled = enabled or callData[plySource]
 	toggleVoice(plySource,enabled,"radio")
 end
-
 RegisterNetEvent("pma-voice:setTalkingOnRadio",setTalkingOnRadio)
 
 function addPlayerToRadio(plySource,plyRadioName)
 	radioData[plySource] = false
 	radioNames[plySource] = plyRadioName
+
 	if radioPressed then
 		addVoiceTargets(radioData,callData)
 	end
 end
-
 RegisterNetEvent("pma-voice:addPlayerToRadio",addPlayerToRadio)
 
 function removePlayerFromRadio(plySource)
@@ -53,7 +52,7 @@ function removePlayerFromRadio(plySource)
 
 		addVoiceTargets(callData)
 	else
-		toggleVoice(plySource,false ,"radio")
+		toggleVoice(plySource,false,"radio")
 
 		if radioPressed then
 			addVoiceTargets(radioData,callData)
@@ -63,12 +62,11 @@ function removePlayerFromRadio(plySource)
 		radioNames[plySource] = nil
 	end
 end
+RegisterNetEvent("pma-voice:removePlayerFromRadio",removePlayerFromRadio)
 
 RegisterNetEvent("pma-voice:radioChangeRejected",function()
 	radioChannel = 0
 end)
-
-RegisterNetEvent("pma-voice:removePlayerFromRadio",removePlayerFromRadio)
 
 function setRadioChannel(channel)
 	radioEnabled = true
@@ -163,23 +161,10 @@ end,false)
 
 RegisterKeyMapping("+radiotalk","Dialogar no rádio.","keyboard","CAPITAL")
 
-function syncRadio(Channel)
+function syncRadio(_radioChannel)
 	radioChannel = tonumber(Channel)
 end
-
 RegisterNetEvent("pma-voice:clSetPlayerRadio",syncRadio)
-
-local uiReady = promise.new()
-function sendUIMessage(message)
-	Citizen.Await(uiReady)
-	SendNUIMessage(message)
-end
-
-RegisterNUICallback("uiReady",function(Data,Callback)
-	uiReady:resolve(true)
-
-	Callback("Ok")
-end)
 
 function handleRadioEnabledChanged(wasRadioEnabled)
 	if wasRadioEnabled then

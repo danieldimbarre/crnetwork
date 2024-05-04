@@ -1,6 +1,5 @@
 function handleInitialState()
 	local voiceModeData = Cfg.voiceModes[mode]
-
 	MumbleSetTalkerProximity(voiceModeData[1] + 0.0)
 	MumbleClearVoiceTarget(voiceTarget)
 	MumbleSetVoiceTarget(voiceTarget)
@@ -20,7 +19,7 @@ AddEventHandler("mumbleConnected",function()
 	local voiceModeData = Cfg.voiceModes[mode]
 	LocalPlayer.state:set("proximity",{
 		index = mode,
-		distance =  voiceModeData[1],
+		distance = voiceModeData[1],
 		mode = voiceModeData[2]
 	},true)
 

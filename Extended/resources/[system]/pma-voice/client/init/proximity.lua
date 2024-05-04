@@ -30,13 +30,12 @@ function addNearbyPlayers()
 	plyCoords = GetEntityCoords(Ped)
 	proximity = MumbleGetTalkerProximity()
 	currentTargets = {}
-	MumbleClearVoiceTargetChannels(voiceTarget)
-	MumbleAddVoiceChannelListen(playerServerId)
-	MumbleAddVoiceTargetChannel(voiceTarget,playerServerId)
+	MumbleAddVoiceChannelListen(LocalPlayer.state.assignedChannel)
+	MumbleAddVoiceTargetChannel(voiceTarget,LocalPlayer.state.assignedChannel)
 
 	for source, _ in pairs(callData) do
 		if source ~= playerServerId then
-			MumbleAddVoiceTargetChannel(voiceTarget,source)
+			MumbleAddVoiceTargetChannel(voiceTarget,MumbleGetVoiceChannelFromServerId(source))
 		end
 	end
 
@@ -46,7 +45,7 @@ function addNearbyPlayers()
 		local serverId = GetPlayerServerId(ply)
 		local shouldAdd, distance = addProximityCheck(ply)
 		if shouldAdd then
-			MumbleAddVoiceTargetChannel(voiceTarget,serverId)
+			MumbleAddVoiceTargetChannel(voiceTarget,MumbleGetVoiceChannelFromServerId(serverId))
 		end
 	end
 end
@@ -62,7 +61,7 @@ function setSpectatorMode(enabled)
 				goto skip_loop
 			end
 
-			MumbleAddVoiceChannelListen(serverId)
+			MumbleAddVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
 
 			::skip_loop::
 		end
@@ -75,7 +74,7 @@ function setSpectatorMode(enabled)
 				goto skip_loop
 			end
 
-			MumbleRemoveVoiceChannelListen(serverId)
+			MumbleRemoveVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
 
 			::skip_loop::
 		end
@@ -84,13 +83,13 @@ end
 
 RegisterNetEvent("onPlayerJoining",function(serverId)
 	if isListenerEnabled then
-		MumbleAddVoiceChannelListen(serverId)
+		MumbleAddVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
 	end
 end)
 
 RegisterNetEvent("onPlayerDropped",function(serverId)
 	if isListenerEnabled then
-		MumbleRemoveVoiceChannelListen(serverId)
+		MumbleRemoveVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
 	end
 end)
 

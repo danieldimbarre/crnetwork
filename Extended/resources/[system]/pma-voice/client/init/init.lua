@@ -25,4 +25,8 @@ CreateThread(function()
 	if LocalPlayer.state.callChannel ~= 0 then
 		setCallChannel(LocalPlayer.state.callChannel)
 	end
+
+	if not LocalPlayer.state.disableRadio then
+		LocalPlayer.state:set("disableRadio",0,true)
+	end
 end)

@@ -1,11 +1,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	local success = pcall(function()
 		local micClicksKvp = GetResourceKvpString("pma-voice_enableMicClicks")
 		if not micClicksKvp then
@@ -28,5 +24,9 @@ AddEventHandler("onClientResourceStart",function(Resource)
 
 	if LocalPlayer.state.callChannel ~= 0 then
 		setCallChannel(LocalPlayer.state.callChannel)
+	end
+
+	if not LocalPlayer.state.disableRadio then
+		LocalPlayer.state:set("disableRadio",0,true)
 	end
 end)

@@ -37,7 +37,7 @@ exports("setRadioVolume",function(vol)
 end)
 
 exports("getRadioVolume",function()
-	return volumes["radio"]
+	return volumes["radio"] * 100
 end)
 
 exports("setCallVolume",function(vol)
@@ -45,7 +45,7 @@ exports("setCallVolume",function(vol)
 end)
 
 exports("getCallVolume",function()
-	return volumes["call"]
+	return volumes["call"] * 100
 end)
 
 local radioEffectId = CreateAudioSubmix("Radio")
@@ -114,7 +114,7 @@ function toggleVoice(plySource,enabled,moduleType)
 	end
 end
 
-function playerTargets(...)
+function addVoiceTargets(...)
 	local targets = {...}
 	local addedPlayers = {
 		[playerServerId] = true
@@ -143,13 +143,10 @@ function playMicClicks(clickType)
 	})
 end
 
-RegisterNetEvent("pma-voice:syncMegaphone",function(source,Status)
-	toggleVoice(source,Status,"radio")
-end)
-
 function setVoiceProperty(type,value)
 	if type == "radioEnabled" then
 		radioEnabled = value
+		handleRadioEnabledChanged(value)
 		sendUIMessage({ radioEnabled = value })
 	elseif type == "micClicks" then
 		local val = tostring(value)
@@ -178,7 +175,7 @@ function resyncVolume(volumeType,newVolume)
 end
 
 function toggleMutePlayer(Status)
-	local source = LocalPlayer["state"]["Player"]
+	local source = LocalPlayer["state"]["Source"]
 	if Status then
 		mutedPlayers[source] = true
 		MumbleSetVolumeOverrideByServerId(source,0.0)
@@ -194,3 +191,17 @@ exports("Mute",toggleMutePlayer)
 exports("setVoiceProperty",setVoiceProperty)
 exports("SetMumbleProperty",setVoiceProperty)
 exports("SetTokoProperty",setVoiceProperty)
+
+function handleRadioAndCallInit()
+	for tgt, enabled in pairs(radioData) do
+		if tgt ~= playerServerId then
+			toggleVoice(tgt,enabled,"radio")
+		end
+	end
+
+	for tgt, enabled in pairs(callData) do
+		if tgt ~= playerServerId then
+			toggleVoice(tgt,true,"call")
+		end
+	end
+end

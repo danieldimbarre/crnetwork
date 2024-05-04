@@ -17,7 +17,7 @@ RegisterCommand("volume",function(source,Message)
 	end
 
 	setVolume(tonumber(Message[1]))
-	TriggerEvent("Notify","amarelo","<b>Volume:</b> "..Message[1].."%",5000)
+	TriggerEvent("Notify",false,"<b>Volume:</b> "..Message[1].."%","verde",5000)
 end)
 
 exports("setAllowProximityCycleState",function(state)
@@ -71,21 +71,5 @@ RegisterCommand("cycleproximity",function()
 	TriggerEvent("hud:Voip",mode)
 	LastMode = mode
 end,false)
-
-RegisterNetEvent("pma-voice:Megaphone")
-AddEventHandler("pma-voice:Megaphone",function(Status)
-	if Status then
-		mode = 5
-		setProximityState(Cfg.voiceModes[5][1],false)
-		TriggerEvent("pma-voice:setTalkingMode",5)
-		TriggerEvent("hud:Voip",5)
-	else
-		setProximityState(Cfg.voiceModes[LastMode][1],false)
-		TriggerEvent("pma-voice:setTalkingMode",LastMode)
-		MumbleSetSubmixForServerId(plySource,-1)
-		TriggerEvent("hud:Voip",LastMode)
-		mode = LastMode
-	end
-end)
 
 RegisterKeyMapping("cycleproximity","Distância de voz.","keyboard","HOME")

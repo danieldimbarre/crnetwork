@@ -2,6 +2,17 @@ voiceData = {}
 radioData = {}
 callData = {}
 
+local mappedChannels = {}
+function firstFreeChannel()
+	for i = 1,2048 do
+		if not mappedChannels[i] then
+			return i
+		end
+	end
+
+	return 0
+end
+
 function defaultTable(source)
 	handleStateBagInitilization(source)
 
@@ -25,6 +36,12 @@ function handleStateBagInitilization(source)
 		plyState:set("voiceIntent","speech",true)
 		plyState:set("pmaVoiceInit",true,false)
 	end
+
+	local assignedChannel = firstFreeChannel()
+	plyState:set("assignedChannel",assignedChannel,true)
+	if assignedChannel ~= 0 then
+		mappedChannels[assignedChannel] = source
+	end
 end
 
 CreateThread(function()
@@ -43,6 +60,8 @@ end)
 
 AddEventHandler("playerDropped",function()
 	local source = source
+	local mappedChannel = Player(source).state.assignedChannel
+
 	if voiceData[source] then
 		local plyData = voiceData[source]
 
@@ -55,6 +74,10 @@ AddEventHandler("playerDropped",function()
 		end
 
 		voiceData[source] = nil
+	end
+
+	if mappedChannel then
+		mappedChannels[mappedChannel] = nil
 	end
 end)
 

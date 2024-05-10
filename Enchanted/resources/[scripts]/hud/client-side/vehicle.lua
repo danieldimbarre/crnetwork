@@ -64,9 +64,9 @@ CreateThread(function()
 
 				local Vehicle = GetVehiclePedIsUsing(Ped)
 				local VRpm = GetVehicleCurrentRpm(Vehicle)
-				local VFuel = GetVehicleFuelLevel(Vehicle)
 				local VSpeed = GetEntitySpeed(Vehicle) * 2.236936
 				local VLocked = GetVehicleDoorLockStatus(Vehicle)
+				local VFuel = Entity(Vehicle)["state"]["Fuel"] or 0
 				local VEngineHealth = GetVehicleEngineHealth(Vehicle)
 
 				if GetPedInVehicleSeat(Vehicle,-1) == Ped then
@@ -74,12 +74,19 @@ CreateThread(function()
 						SetVehicleDirtLevel(Vehicle,0.0)
 					end
 
-					if not LocalPlayer["state"]["Races"] and VSpeed ~= LastSpeed then
-						if (LastSpeed - VSpeed) >= 60 then
-							VehicleTyreBurst(Vehicle)
+					if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
+						if not LocalPlayer["state"]["Races"] and VSpeed ~= LastSpeed then
+							if (LastSpeed - VSpeed) >= (Entity(Vehicle)["state"]["Seatbelt"] and 125 or 100) then
+								VehicleTyreBurst(Vehicle)
+							end
+
+							LastSpeed = VSpeed
 						end
 
-						LastSpeed = VSpeed
+						local Roll = GetEntityRoll(Vehicle)
+						if (Roll > 75.0 or Roll < -75.0) and math.random(100) <= 50 then
+							VehicleTyreBurst(Vehicle)
+						end
 					end
 				end
 
@@ -276,7 +283,7 @@ CreateThread(function()
 		if LocalPlayer["state"]["Active"] then
 			local Ped = PlayerPedId()
 			if IsPedInAnyVehicle(Ped) then
-				if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyPlane(Ped) then
+				if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
 					TimeDistance = 1
 
 					local Vehicle = GetVehiclePedIsUsing(Ped)
@@ -287,21 +294,24 @@ CreateThread(function()
 					end
 
 					if Speed ~= SeatbeltSpeed then
-						if (SeatbeltSpeed - Speed) >= 60 then
-							if not SeatbeltLock then
-								ApplyDamageToPed(Ped,25,false)
-							end
+						local Calculated = (SeatbeltSpeed - Speed)
+						local BeltRacing = Entity(Vehicle)["state"]["Seatbelt"]
 
-							if not Entity(Vehicle)["state"]["Seatbelt"] then
+						if (BeltRacing and Calculated >= 125) or
+							(not SeatbeltLock and Calculated >= 75) or
+							(not BeltRacing and not SeatbeltLock and Calculated >= 75) or
+							(not SeatbeltLock and BeltRacing and Calculated >= 125) or
+							(SeatbeltLock and BeltRacing and Calculated >= 125) then
+								ApplyDamageToPed(Ped,25,false)
+
 								SetEntityNoCollisionEntity(Ped,Vehicle,false)
 								SetEntityNoCollisionEntity(Vehicle,Ped,false)
 								TriggerServerEvent("hud:VehicleEject",SeatbeltVelocity)
 
-								Wait(500)
-
-								SetEntityNoCollisionEntity(Ped,Vehicle,true)
-								SetEntityNoCollisionEntity(Vehicle,Ped,true)
-							end
+								SetTimeout(500,function()
+									SetEntityNoCollisionEntity(Ped,Vehicle,true)
+									SetEntityNoCollisionEntity(Vehicle,Ped,true)
+								end)
 						end
 
 						SeatbeltVelocity = GetEntityVelocity(Vehicle)
@@ -332,7 +342,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("Seatbeltz",function(source)
 	local Ped = PlayerPedId()
-	if IsPedInAnyVehicle(Ped) and not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyPlane(Ped) then
+	if IsPedInAnyVehicle(Ped) and not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
 		if SeatbeltLock then
 			TriggerEvent("sounds:Private","beltoff",0.5)
 			SendNUIMessage({ name = "Seatbelt", payload = false })
@@ -344,7 +354,7 @@ RegisterCommand("Seatbeltz",function(source)
 
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			if Entity(Vehicle)["state"]["Seatbelt"] then
-				TriggerEvent("Notify","Cinto de Segurança","Ativou o módulo de corrida.","azul",5000)
+				TriggerEvent("Notify","Cinto de Segurança","Cinto de Corrida colocado.","azul",5000)
 			end
 		end
 	end

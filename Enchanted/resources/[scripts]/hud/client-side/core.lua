@@ -15,6 +15,7 @@ Display = false
 local Hood = false
 local Gemstone = 0
 local Pause = false
+local Hurtings = false
 local Road = "Alta Street"
 local Crossing = "Alta Street"
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -111,6 +112,16 @@ CreateThread(function()
 							SendNUIMessage({ name = "Health", payload = Healing })
 							Health = Healing
 						end
+
+						if not IsPedSwimming(Ped) then
+							if Healing <= 30 and not Hurtings then
+								Hurtings = true
+								LocalPlayer["state"]:set("Walk","move_m@injured",false)
+							elseif Hurtings then
+								Hurtings = false
+								LocalPlayer["state"]:set("Walk",false,false)
+							end
+						end
 					end
 
 					if Armour ~= Armouring then
@@ -160,20 +171,20 @@ CreateThread(function()
 				if Hunger < 5 and HungerTimer <= GetGameTimer() then
 					ApplyDamageToPed(Ped,1,false)
 					HungerTimer = GetGameTimer() + 30000
-					TriggerEvent("Notify",false,"Sofrendo com a fome.","fome",2500)
+					TriggerEvent("Notify","Alimentação","Sofrendo com a <b>fome</b>.","fome",2500)
 				end
 
 				if Thirst < 5 and ThirstTimer <= GetGameTimer() then
 					ApplyDamageToPed(Ped,1,false)
 					ThirstTimer = GetGameTimer() + 30000
-					TriggerEvent("Notify",false,"Sofrendo com a sede.","sede",2500)
+					TriggerEvent("Notify","Hidratação","Sofrendo com a <b>sede</b>.","sede",2500)
 				end
 
 				if Stress >= 40 and StressTimer <= GetGameTimer() then
 					StressTimer = GetGameTimer() + 10000
 
 					AnimpostfxPlay("MenuMGIn")
-					SetTimeout(1500,function()
+					SetTimeout(1000,function()
 						AnimpostfxStop("MenuMGIn")
 					end)
 				end

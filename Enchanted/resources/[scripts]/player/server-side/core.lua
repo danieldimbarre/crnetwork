@@ -394,18 +394,15 @@ AddEventHandler("player:Outfit",function(Mode)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DEATH
+-- PLAYER:DEATH
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("player:Death")
 AddEventHandler("player:Death",function(OtherSource)
 	local source = source
 	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.Passport(OtherSource)
-	if Passport and OtherPassport and Passport ~= OtherPassport and vRP.DoesEntityExist(PedSource) and vRP.DoesEntityExist(OtherSource) then
-		local Coords = vRP.GetEntityCoords(PedSource)
-		local OtherCoords = vRP.GetEntityCoords(OtherSource)
-
-		exports["discord"]:Embed("Deaths","**Passaporte do Assassino:** "..OtherPassport.."\n**Localização do Assassino:** "..Optimize(OtherCoords["x"])..","..Optimize(OtherCoords["y"])..","..Optimize(OtherCoords["z"]).."\n\n**Passaporte da Vítima:** "..Passport.."\n**Localização da Vítima:** "..Optimize(Coords["x"])..","..Optimize(Coords["y"])..","..Optimize(Coords["z"]).."\n\n**Data & Hora:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),0xa3c846)
+	if Passport and OtherPassport and Passport ~= OtherPassport and vRP.DoesEntityExist(source) and vRP.DoesEntityExist(OtherSource) then
+		exports["discord"]:Embed("Deaths","**Passaporte do Assassino:** "..OtherPassport.."\n**Localização do Assassino:** "..vRP.GetEntityCoords(OtherSource).."\n\n**Passaporte da Vítima:** "..Passport.."\n**Localização da Vítima:** "..vRP.GetEntityCoords(source).."\n\n**Data & Hora:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),0xa3c846)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

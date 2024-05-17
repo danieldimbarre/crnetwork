@@ -138,7 +138,7 @@ RegisterNUICallback("DeletePicture",function(data)
 end)
 
 RegisterNUICallback("TakeScreenShot",function()
-	local Webhook = "https://discord.com/api/webhooks/1218042514775343154/XGCPG9UA_xtxi2xgi73QmKgxH227-tUyhB-Mpy48UUOHIb-I6FOrR6L3XO-KTCBjDDd0"
+	local Webhook = ""
 	exports["screenshot"]:requestScreenshotUpload(Webhook,"files[]",function(data)
 		local image = json.decode(data)
 
@@ -150,7 +150,7 @@ RegisterNUICallback("TakeScreenShot",function()
 end)
 
 RegisterNetEvent("freecam:Active",function(Message)
-	if Message then
+	if Message[1] then
 		if not Actived then
 			SendNUIMessage({ action = "Close" })
 			Actived = true

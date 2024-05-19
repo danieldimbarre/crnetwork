@@ -50,7 +50,7 @@ local Beds = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Number,v in pairs(Beds) do
-		AddBoxZone("Beds:"..Number,v["Coords"],2.0,1.0,{
+		AddBoxZone("Beds:"..Number,v["Coords"]["xyz"],2.0,1.0,{
 			name = "Beds:"..Number,
 			heading = v["Coords"]["w"],
 			minZ = v["Coords"]["z"] - 0.25,

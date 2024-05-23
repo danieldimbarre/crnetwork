@@ -4,7 +4,7 @@
 function LoadModel(Hash)
 	if IsModelInCdimage(Hash) and IsModelValid(Hash) then
 		local Loops = 0
-		while not HasModelLoaded(Hash) or Loops >= 1000 do
+		while not HasModelLoaded(Hash) and Loops <= 1000 do
 			RequestModel(Hash)
 			Loops = Loops + 1
 			Wait(1)
@@ -20,7 +20,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadAnim(Dict)
 	local Loops = 0
-	while not HasAnimDictLoaded(Dict) or Loops >= 1000 do
+	while not HasAnimDictLoaded(Dict) and Loops <= 1000 do
 		RequestAnimDict(Dict)
 		Loops = Loops + 1
 		Wait(1)
@@ -33,7 +33,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadTexture(Library)
 	local Loops = 0
-	while not HasStreamedTextureDictLoaded(Library) or Loops >= 1000 do
+	while not HasStreamedTextureDictLoaded(Library) and Loops <= 1000 do
 		RequestStreamedTextureDict(Library,false)
 		Loops = Loops + 1
 		Wait(1)
@@ -46,7 +46,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadMovement(Library)
 	local Loops = 0
-	while not HasAnimSetLoaded(Library) or Loops >= 1000 do
+	while not HasAnimSetLoaded(Library) and Loops <= 1000 do
 		RequestAnimSet(Library)
 		Loops = Loops + 1
 		Wait(1)
@@ -59,7 +59,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadPtfxAsset(Library)
 	local Loops = 0
-	while not HasNamedPtfxAssetLoaded(Library) or Loops >= 1000 do
+	while not HasNamedPtfxAssetLoaded(Library) and Loops <= 1000 do
 		RequestNamedPtfxAsset(Library)
 		Loops = Loops + 1
 		Wait(1)
@@ -72,7 +72,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadNetwork(Network)
 	local Loops = 0
-	while not NetworkDoesNetworkIdExist(Network) or Loops >= 1000 do
+	while not NetworkDoesNetworkIdExist(Network) and Loops <= 1000 do
 		Loops = Loops + 1
 		Wait(1)
 	end
@@ -82,14 +82,14 @@ function LoadNetwork(Network)
 
 		if DoesEntityExist(Object) then
 			Loops = 0
-			while not NetworkHasControlOfEntity(Object) or Loops >= 1000 do
+			while not NetworkHasControlOfEntity(Object) and Loops <= 1000 do
 				NetworkRequestControlOfEntity(Object)
 				Loops = Loops + 1
 				Wait(1)
 			end
 
 			Loops = 0
-			while not IsEntityAMissionEntity(Object) or Loops >= 1000 do
+			while not IsEntityAMissionEntity(Object) and Loops <= 1000 do
 				SetEntityAsMissionEntity(Object,true,true)
 				Loops = Loops + 1
 				Wait(1)

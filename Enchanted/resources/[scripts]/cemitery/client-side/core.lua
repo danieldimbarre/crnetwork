@@ -59,13 +59,9 @@ local List = {
 	"s_m_y_garbage","a_m_o_ktown_01","a_f_y_eastsa_03"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	exports["target"]:AddBoxZone("WorkCemitery",Init["xyz"],0.75,0.75,{
 		name = "WorkCemitery",
 		heading = Init["w"],
@@ -85,7 +81,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CEMITERY:INITBODY
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("cemitery:initBody")
 AddEventHandler("cemitery:initBody",function()
 	if Peds then
 		if Selected then

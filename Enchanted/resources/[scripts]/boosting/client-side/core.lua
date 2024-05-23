@@ -157,24 +157,30 @@ CreateThread(function()
 	while true do
 		if not Vehicle and Model ~= "" then
 			local Ped = PlayerPedId()
-			if #(GetEntityCoords(Ped) - Locates[Selected]["xyz"]) <= 75 then
-				Vehicle = vSERVER.CreateVehicle(Model,Locates[Selected])
+			local Coords = GetEntityCoords(Ped)
+			if #(Coords - Locates[Selected]["xyz"]) <= 100 then
+				local Networked = vSERVER.CreateVehicle(Model,Locates[Selected])
 
-				SetTimeout(1000,function()
-					local Network = NetToEnt(Vehicle)
+				if Networked then
+					local Network = LoadNetwork(Networked)
+					if Network then
+						Vehicle = Network
+						SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
+						SetVehicleNeedsToBeHotwired(Vehicle,false)
+						DecorSetInt(Vehicle,"Player_Vehicle",-1)
+						SetVehicleOnGroundProperly(Vehicle)
+						SetVehRadioStation(Vehicle,"OFF")
 
-					SetVehicleHasBeenOwnedByPlayer(Network,true)
-					SetVehicleNeedsToBeHotwired(Network,false)
-					DecorSetInt(Network,"Player_Vehicle",-1)
-					SetVehRadioStation(Network,"OFF")
+						SetVehicleModKit(Vehicle,0)
+						ToggleVehicleMod(Vehicle,18,true)
+						SetVehicleMod(Vehicle,11,GetNumVehicleMods(Vehicle,11) - 1,false)
+						SetVehicleMod(Vehicle,12,GetNumVehicleMods(Vehicle,12) - 1,false)
+						SetVehicleMod(Vehicle,13,GetNumVehicleMods(Vehicle,13) - 1,false)
+						SetVehicleMod(Vehicle,15,GetNumVehicleMods(Vehicle,15) - 1,false)
 
-					SetVehicleModKit(Network,0)
-					ToggleVehicleMod(Network,18,true)
-					SetVehicleMod(Network,11,GetNumVehicleMods(Network,11) - 1,false)
-					SetVehicleMod(Network,12,GetNumVehicleMods(Network,12) - 1,false)
-					SetVehicleMod(Network,13,GetNumVehicleMods(Network,13) - 1,false)
-					SetVehicleMod(Network,15,GetNumVehicleMods(Network,15) - 1,false)
-				end)
+						SetModelAsNoLongerNeeded(Model)
+					end
+				end
 			end
 		end
 
@@ -206,9 +212,9 @@ AddEventHandler("boosting:Dispatch",function()
 		until (HitZ and HitSafe) or Cooldown >= 100
 
 		if HitZ and HitSafe then
-			local Application,Network = vRPS.CreateModels(Peds[OtherPeds],SafeCoords["x"],SafeCoords["y"],SafeCoords["z"])
-			if Application then
-				SetTimeout(1000,function()
+			local Network = vRPS.CreateModels(Peds[OtherPeds],SafeCoords["x"],SafeCoords["y"],SafeCoords["z"])
+			if Network then
+				SetTimeout(2500,function()
 					local Entity = LoadNetwork(Network)
 					if Entity then
 						SetPedArmour(Entity,100)

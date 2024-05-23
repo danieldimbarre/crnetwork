@@ -28,36 +28,36 @@ function Creative.Payment(Selected)
 			exports["megazord"]:Discord("**Passaporte:** "..Passport.."\n**Função:** Payment do Motorista",source)
 		end
 
-		local Experience = vRP.GetExperience(Passport,"Driver")
-		local Level = ClassCategory(Experience)
-		local Valuation = 40 + (Level * 2)
+		local GainExperience = 1
+		local Amount = math.random(35,45)
+		local Experience,Level = vRP.GetExperience(Passport,"Driver")
+		local Valuation = Amount + Amount * (0.05 * Level)
+
+		if exports["party"]:DoesExist(Passport,4) then
+			Valuation = Valuation + (Valuation * 0.1)
+		end
 
 		if exports["inventory"]:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 
-		if exports["party"]:DoesExist(Passport) then
-			local Members = exports["party"]:Room(Passport,source,10)
-			if parseInt(#Members) >= 4 then
-				Valuation = Valuation + (Valuation * 0.1)
-			end
-		end
-
 		if vRP.UserPremium(Passport) then
-			local Bonification = 0.05
+			local Bonification = 0.050
 			local Hierarchy = vRP.LevelPremium(source)
 
 			if Hierarchy == 1 then
-				Bonification = 0.1
+				Bonification = 0.100
 			elseif Hierarchy == 2 then
-				Bonification = 0.2
+				Bonification = 0.075
 			end
 
+			GainExperience = GainExperience + 1
 			Valuation = Valuation + (Valuation * Bonification)
 		end
 
+		vRP.PutExperience(Passport,"Driver",GainExperience)
 		vRP.GenerateItem(Passport,"dollar",Valuation,true)
-		vRP.PutExperience(Passport,"Driver",1)
+		vRP.UpgradeStress(Passport,1)
 
 		Active[Passport] = nil
 	end

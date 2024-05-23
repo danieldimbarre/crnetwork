@@ -13,13 +13,9 @@ local Blip = nil
 local Selected = 1
 local Active = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	exports["target"]:AddBoxZone("WorkBus",Init["xyz"],0.75,0.75,{
 		name = "WorkBus",
 		heading = Init["w"],
@@ -47,11 +43,11 @@ AddEventHandler("bus:Init",function()
 		end
 
 		exports["target"]:LabelText("WorkBus","Trabalhar")
-		TriggerEvent("Notify","Sucesso","Trabalho finalizado.","verde",5000)
+		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","verde",5000)
 		Active = false
 	else
 		exports["target"]:LabelText("WorkBus","Finalizar")
-		TriggerEvent("Notify","Sucesso","Trabalho iniciado.","verde",5000)
+		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","verde",5000)
 		Active = true
 		MakeBlips()
 	end

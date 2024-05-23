@@ -878,7 +878,7 @@ function Creative.Transfer(Table)
 		Pendings[OtherPassport][#Pendings[OtherPassport] + 1] = Pendings[Passport][Selected]
 		Pendings[Passport][Selected] = nil
 
-		TriggerClientEvent("Notify",source,false,"Transferência concluída.","verde",5000)
+		TriggerClientEvent("Notify",source,"Sucesso","Transferência concluída.","verde",5000)
 
 		return true
 	end
@@ -931,8 +931,6 @@ function Creative.CreateVehicle(Model,Coords)
 
 			Active[Passport]["Plate"] = Plate
 			SetVehicleNumberPlateText(Vehicle,Plate)
-			SetVehicleCustomPrimaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
-			SetVehicleCustomSecondaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
 
 			Entity(Vehicle)["state"]:set("Fuel",100,true)
 			Entity(Vehicle)["state"]:set("Tower",true,true)
@@ -959,21 +957,22 @@ exports("Payment",function(source,Passport)
 	if Active[Passport] then
 		if Active[Passport]["Timer"] >= os.time() then
 			local Class = Active[Passport]["Class"]
-			local Experience = Active[Passport]["Exp"]
+			local GainExperience = Active[Passport]["Exp"]
 			local Valuation = Active[Passport]["Value"] * 2
 			local Total = math.random(Minimals[Class]["Min"],Minimals[Class]["Max"])
 
-			if exports["party"]:DoesExist(Passport) then
-				local Consult = exports["party"]:Room(Passport,source,10)
+			if exports["party"]:DoesExist(Passport,2) then
+				local Consult = exports["party"]:Room(Passport,source,25)
 				local AmountMembers = CountTable(Consult)
 
 				for Number = 1,AmountMembers do
 					if vRP.Passport(Consult[Number]["Source"]) then
 						local OtherPassport = Consult[Number]["Passport"]
 
+						vRP.PutExperience(OtherPassport,"Boosting",GainExperience)
 						vRP.GenerateItem(OtherPassport,"platinum",Valuation,true)
-						vRP.PutExperience(OtherPassport,"Boosting",Experience)
 						Cooldowns[OtherPassport][Class] = os.time() + Total
+						vRP.UpgradeStress(OtherPassport,5)
 						Active[OtherPassport] = nil
 					end
 				end
@@ -981,6 +980,7 @@ exports("Payment",function(source,Passport)
 				vRP.GenerateItem(Passport,"platinum",Valuation,true)
 				vRP.PutExperience(Passport,"Boosting",Experience)
 				Cooldowns[Passport][Class] = os.time() + Total
+				vRP.UpgradeStress(Passport,5)
 			end
 		end
 

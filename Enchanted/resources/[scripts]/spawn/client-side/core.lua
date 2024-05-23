@@ -124,7 +124,7 @@ AddEventHandler("spawn:Finish",function(Coords,Creation)
 		SetNuiFocus(false,false)
 
 		SetTimeout(2500,function()
-			TriggerServerEvent("vRP:WaitCharacters")
+			TriggerServerEvent("vRP:WaitCharacters",Creation)
 		end)
 
 		if DoesCamExist(Camera) then

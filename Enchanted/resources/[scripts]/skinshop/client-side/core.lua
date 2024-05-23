@@ -79,13 +79,9 @@ AddEventHandler("skinshop:Apply",function(Table,Save)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	local Tables = {}
 	for Number = 1,#Locations do
 		Tables[#Tables + 1] = { Locations[Number],2.0,"E","Roupas","Pressione para abrir" }

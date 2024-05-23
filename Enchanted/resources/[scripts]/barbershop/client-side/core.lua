@@ -228,13 +228,9 @@ local Locations = {
 	vec3(-276.65,6226.76,31.7)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	local Tables = {}
 	for Number = 1,#Locations do
 		Tables[#Tables + 1] = { Locations[Number],2.5,"E","Barbearia","Pressione para abrir" }

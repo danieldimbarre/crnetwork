@@ -103,30 +103,9 @@ function tvRP.BlipAdmin()
 				local Coords = GetEntityCoords(Entitys)
 				local Healths = GetEntityHealth(Entitys)
 				local Passport = Player(v)["state"]["Passport"]
+				local Name = Player(v)["state"]["Name"] or "Loading"
 
-				local One = GetOffsetFromEntityInWorldCoords(Entitys,0.3,0.3,0.8)
-				local Two = GetOffsetFromEntityInWorldCoords(Entitys,-0.3,0.3,0.8)
-				local Three = GetOffsetFromEntityInWorldCoords(Entitys,0.3,-0.3,0.8)
-				local Four = GetOffsetFromEntityInWorldCoords(Entitys,-0.3,-0.3,0.8)
-				local Five = GetOffsetFromEntityInWorldCoords(Entitys,-0.3,0.3,-0.9)
-				local Six = GetOffsetFromEntityInWorldCoords(Entitys,0.3,0.3,-0.9)
-				local Seven = GetOffsetFromEntityInWorldCoords(Entitys,0.3,-0.3,-0.9)
-				local Eight = GetOffsetFromEntityInWorldCoords(Entitys,-0.3,-0.3,-0.9)
-
-				DrawLine(Two["x"],Two["y"],Two["z"],Five["x"],Five["y"],Five["z"],255,255,255,255)
-				DrawLine(One["x"],One["y"],One["z"],Six["x"],Six["y"],Six["z"],255,255,255,255)
-				DrawLine(Four["x"],Four["y"],Four["z"],Eight["x"],Eight["y"],Eight["z"],255,255,255,255)
-				DrawLine(Three["x"],Three["y"],Three["z"],Seven["x"],Seven["y"],Seven["z"],255,255,255,255)
-				DrawLine(Eight["x"],Eight["y"],Eight["z"],Seven["x"],Seven["y"],Seven["z"],255,255,255,255)
-				DrawLine(Seven["x"],Seven["y"],Seven["z"],Six["x"],Six["y"],Six["z"],255,255,255,255)
-				DrawLine(Six["x"],Six["y"],Six["z"],Five["x"],Five["y"],Five["z"],255,255,255,255)
-				DrawLine(Five["x"],Five["y"],Five["z"],Eight["x"],Eight["y"],Eight["z"],255,255,255,255)
-				DrawLine(Four["x"],Four["y"],Four["z"],Three["x"],Three["y"],Three["z"],255,255,255,255)
-				DrawLine(Three["x"],Three["y"],Three["z"],One["x"],One["y"],One["z"],255,255,255,255)
-				DrawLine(One["x"],One["y"],One["z"],Two["x"],Two["y"],Two["z"],255,255,255,255)
-				DrawLine(Two["x"],Two["y"],Two["z"],Four["x"],Four["y"],Four["z"],255,255,255,255)
-
-				DrawText3D(Coords,"~o~S:~w~ "..v.."     ~o~I:~w~ "..Passport.."     ~g~H:~w~ "..Healths.."     ~y~A:~w~ "..Armour,0.275)
+				DrawText3D(Coords,Name.."~w~  |  ~o~"..Passport.."~w~  |  ~g~"..Healths.."~w~  |  ~y~"..Armour,0.275)
 			end
 		end
 
@@ -152,8 +131,8 @@ function PassportEnable()
 
 			for Entitys,v in pairs(GetPlayers()) do
 				local OtherCoords = GetEntityCoords(Entitys)
-				if Entitys ~= PlayerPedId() and Player(v)["state"]["Passport"] and IsEntityVisible(Entitys) and HasEntityClearLosToEntity(Ped,Entitys,17) and #(Coords - OtherCoords) <= 5 then
-					DrawText3D(OtherCoords,"~w~"..Player(v)["state"]["Passport"],0.45)
+				if Entitys ~= PlayerPedId() and Player(v)["state"]["Passport"] and HasEntityClearLosToEntity(Ped,Entitys,17) and #(Coords - OtherCoords) <= 5 then
+					DrawText3D(OtherCoords,"~w~"..Player(v)["state"]["Passport"],0.45,true)
 				end
 			end
 
@@ -176,21 +155,24 @@ RegisterKeyMapping("+Information","Visualizar passaportes.","keyboard","F7")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT3D
 -----------------------------------------------------------------------------------------------------------------------------------------
-function DrawText3D(Coords,Text,Weight)
+function DrawText3D(Coords,Text,Weight,Background)
 	local onScreen,x,y = World3dToScreen2d(Coords["x"],Coords["y"],Coords["z"] + 1.10)
 
 	if onScreen then
 		SetTextFont(4)
+		SetTextDropShadow()
 		SetTextCentre(true)
 		SetTextProportional(1)
 		SetTextScale(0.35,0.35)
-		SetTextColour(255,255,255,150)
+		SetTextColour(255,255,255,200)
 
 		SetTextEntry("STRING")
 		AddTextComponentString(Text)
 		EndTextCommandDisplayText(x,y)
 
-		local Width = string.len(Text) / 160 * Weight
-		DrawRect(x,y + 0.0125,Width,0.03,15,15,15,175)
+		if Background then
+			local Width = string.len(Text) / 160 * Weight
+			DrawRect(x,y + 0.0125,Width,0.03,15,15,15,175)
+		end
 	end
 end

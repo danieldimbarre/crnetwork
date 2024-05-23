@@ -59,6 +59,18 @@ function tvRP.PlayingAnim(Dict,Name)
 	return IsEntityPlayingAnim(PlayerPedId(),Dict,Name,3)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ISENTITYINWATER
+-----------------------------------------------------------------------------------------------------------------------------------------
+function tvRP.IsEntityInWater()
+	return IsEntityInWater(PlayerPedId())
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ISPEDSWIMMING
+-----------------------------------------------------------------------------------------------------------------------------------------
+function tvRP.IsPedSwimming()
+	return IsPedSwimming(PlayerPedId())
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.Skin(Hash)
@@ -91,7 +103,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("vRP:Active")
 AddEventHandler("vRP:Active",function(Passport,Name)
-	LocalPlayer["state"]:set("Name",Name,false)
+	LocalPlayer["state"]:set("Name",Name,true)
 	LocalPlayer["state"]:set("Active",true,false)
 	LocalPlayer["state"]:set("Cyndaquil",true,false)
 	LocalPlayer["state"]:set("Passport",Passport,true)
@@ -146,7 +158,7 @@ function ReloadCharacter(Pid,Ped)
 	SetPedHelmet(Ped,false)
 	SetDeepOceanScaler(0.0)
 	SetPedMaxHealth(Ped,200)
-	SetPlayerTargetingMode(3)
+	SetPlayerTargetingMode(0)
 	SetRandomEventFlag(false)
 	SetPoliceRadarBlips(false)
 	DistantCopCarSirens(false)
@@ -212,6 +224,35 @@ function ReloadCharacter(Pid,Ped)
 	SetAudioFlag("SuppressPlayerScubaBreathing",true)
 	SetAudioFlag("WantedMusicDisabled",true)
 	SetAudioFlag("WantedMusicOnMission",false)
+
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_BALLAS"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_BALLAS"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_FAMILY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_FAMILY"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_LOST"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_LOST"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_MARABUNTE"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MARABUNTE"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_SALVA"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_SALVA"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_WEICHENG"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_WEICHENG"))
+	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_HILLBILLY"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_HILLBILLY"))
+	SetRelationshipBetweenGroups(1,GetHashKey("HEN"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("DEER"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("WILD_ANIMAL"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("CAT"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("DOMESTIC_ANIMAL"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(1,GetHashKey("GUARD_DOG"),GetHashKey("PLAYER"))
+	SetRelationshipBetweenGroups(4,GetHashKey("WILD_ANIMAL"),GetHashKey("PRIVATE_SECURITY"))
+	SetRelationshipBetweenGroups(4,GetHashKey("WILD_ANIMAL"),GetHashKey("ARMY"))
+	SetRelationshipBetweenGroups(4,GetHashKey("PRIVATE_SECURITY"),GetHashKey("WILD_ANIMAL"))
+	SetRelationshipBetweenGroups(4,GetHashKey("ARMY"),GetHashKey("COUGAR"))
+	SetRelationshipBetweenGroups(4,GetHashKey("PRIVATE_SECURITY"),GetHashKey("WILD_ANIMAL"))
+	SetRelationshipBetweenGroups(4,GetHashKey("WILD_ANIMAL"),GetHashKey("ARMY"))
 
 	StartAudioScene("CHARACTER_CHANGE_IN_SKY_SCENE")
 	SetScenarioGroupEnabled("Heist_Island_Peds",true)

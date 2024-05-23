@@ -279,7 +279,7 @@
 					<MPPickupHash />
 					<HumanNameHash>WT_KATANA</HumanNameHash>
 					<MovementModeConditionalIdle />
-					<StatName>MACHETE</StatName>
+					<StatName>KATANA</StatName>
 					<KnockdownCount value="-1" />
 					<KillshotImpulseScale value="1.000000" />
 					<NmShotTuningSet>normal</NmShotTuningSet>

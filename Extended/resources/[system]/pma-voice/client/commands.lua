@@ -14,7 +14,7 @@ end)
 RegisterCommand("volume",function(_,args)
 	if not args[1] then return end
 	setVolume(tonumber(args[1]))
-	TriggerEvent("Notify",false,"<b>Volume:</b> "..args[1].."%","verde",5000)
+	TriggerEvent("Notify","Configurações","<b>Volume:</b> "..args[1].."%","verde",5000)
 end)
 
 exports("setAllowProximityCycleState",function(state)

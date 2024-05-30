@@ -172,15 +172,23 @@ exports("getMutedPlayers",function()
 	return mutedPlayers
 end)
 
-function toggleMutePlayer(source)
-	if mutedPlayers[source] then
-		mutedPlayers[source] = nil
-		MumbleSetVolumeOverrideByServerId(source,-1.0)
+function toggleMutePlayer(Status)
+	local Source = LocalPlayer["state"]["Source"]
+
+	if Status then
+		mutedPlayers[Source] = true
+		MumbleSetVolumeOverrideByServerId(Source,0.0)
+		TriggerServerEvent("pma-voice:toggleMute",true)
 	else
-		mutedPlayers[source] = true
-		MumbleSetVolumeOverrideByServerId(source,0.0)
+		if mutedPlayers[Source] then
+			mutedPlayers[Source] = nil
+		end
+
+		MumbleSetVolumeOverrideByServerId(Source,-1.0)
+		TriggerServerEvent("pma-voice:toggleMute",false)
 	end
 end
+
 exports("Mute",toggleMutePlayer)
 exports("toggleMutePlayer",toggleMutePlayer)
 

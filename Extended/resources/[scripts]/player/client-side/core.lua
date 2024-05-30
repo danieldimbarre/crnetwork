@@ -331,20 +331,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Cooldeath = GetGameTimer()
-AddEventHandler("gameEventTriggered",function(Name,Message)
-	if Name == "CEventNetworkEntityDamage" then
-		local Ped = PlayerPedId()
-		local OtherPed = Message[2]
-		if Message[1] == Ped and GetEntityHealth(Ped) <= 100 and IsEntityAPed(Ped) and IsPedAPlayer(OtherPed) and GetGameTimer() >= Cooldeath then
-			Cooldeath = GetGameTimer() + 10000
-
-			local Index = NetworkGetPlayerIndexFromPed(OtherPed)
-			local PedIndex = GetPlayerServerId(PlayerId())
-			local OtherIndex = GetPlayerServerId(Index)
-
-			TriggerServerEvent("player:Death",PedIndex,OtherIndex)
-		end
+AddEventHandler("gameEventTriggered",function(Event,Message)
+	local Victim,Attacker,Index = Message[1],Message[2],NetworkGetPlayerIndexFromPed(Message[2])
+	if Event == "CEventNetworkEntityDamage" and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 and NetworkIsPlayerConnected(Index) then
+		TriggerServerEvent("player:Death",Player(GetPlayerServerId(Index))["state"]["Source"])
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

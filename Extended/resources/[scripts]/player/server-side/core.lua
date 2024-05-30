@@ -577,23 +577,16 @@ AddEventHandler("player:Outfit",function(Mode)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DEATH
+-- PLAYER:DEATH
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("player:Death")
-AddEventHandler("player:Death",function(PedSource,OtherSource)
-	local Passport = vRP.Passport(PedSource)
+AddEventHandler("player:Death",function(OtherSource)
+	local source = source
+	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.Passport(OtherSource)
-	if Passport and OtherPassport and Passport ~= OtherPassport then
-		local Identity = vRP.Identity(Passport)
-		local OtherIdentity = vRP.Identity(OtherPassport)
-		if Identity and OtherIdentity then
-			if vRP.DoesEntityExist(PedSource) and vRP.DoesEntityExist(OtherSource) then
-				local Coords = vRP.GetEntityCoords(PedSource)
-				local OtherCoords = vRP.GetEntityCoords(OtherSource)
-
-				exports["vrp"]:Embed("Deaths","**Passaporte do Assassino:** "..OtherPassport.."\n**Localização do Assassino:** "..mathLength(OtherCoords["x"])..","..mathLength(OtherCoords["y"])..","..mathLength(OtherCoords["z"]).."\n\n**Passaporte da Vítima:** "..Passport.."\n**Localização da Vítima:** "..mathLength(Coords["x"])..","..mathLength(Coords["y"])..","..mathLength(Coords["z"]).."\n\n**Data & Hora:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),0xa3c846)
-			end
-		end
+	if Passport and OtherPassport and Passport ~= OtherPassport and vRP.DoesEntityExist(source) and vRP.DoesEntityExist(OtherSource) then
+		vRP.GiveItem(OtherPassport,"dogtag-"..Passport,1,false)
+		exports["discord"]:Embed("Deaths","**Passaporte do Assassino:** "..OtherPassport.."\n**Localização do Assassino:** "..vRP.GetEntityCoords(OtherSource).."\n\n**Passaporte da Vítima:** "..Passport.."\n**Localização da Vítima:** "..vRP.GetEntityCoords(source).."\n\n**Data & Hora:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),0xa3c846)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

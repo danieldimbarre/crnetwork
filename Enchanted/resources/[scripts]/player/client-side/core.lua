@@ -334,9 +334,9 @@ end)
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Event,Message)
-	local Victim,Attacker = Message[1],Message[2]
-	if Event == "CEventNetworkEntityDamage" and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 then
-		TriggerServerEvent("player:Death",Player(Attacker)["state"]["Source"])
+	local Victim,Attacker,Index = Message[1],Message[2],NetworkGetPlayerIndexFromPed(Message[2])
+	if Event == "CEventNetworkEntityDamage" and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 and NetworkIsPlayerConnected(Index) then
+		TriggerServerEvent("player:Death",Player(GetPlayerServerId(Index))["state"]["Source"])
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

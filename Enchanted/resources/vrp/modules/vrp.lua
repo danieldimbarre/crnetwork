@@ -21,67 +21,35 @@ TASKBAR = Tunnel.getInterface("taskbar")
 SURVIVAL = Tunnel.getInterface("survival")
 SAFECRACK = Tunnel.getInterface("safecrack")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	SetMapName(ServerName)
 	SetGameType(ServerName)
 	SetRoutingBucketEntityLockdownMode(0,"relaxed")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- GG
+-- PHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("gg",function(source,Message)
-	local Passport = vRP.Passport(source)
-	if Passport and not Player(source)["state"]["Carry"] and exports["chat"]:Open(source) and SURVIVAL.CheckDeath(source) then
-		SURVIVAL.Respawn(source)
-		vRP.ClearInventory(Passport)
-		vRP.UpgradeThirst(Passport,100)
-		vRP.UpgradeHunger(Passport,100)
-		vRP.DowngradeStress(Passport,100)
+function vRP.Phone(Passport)
+	local PhoneNumber = "Inativo"
+	local source = vRP.Source(Passport)
 
-		exports["discord"]:Embed("Airport","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Coords:** "..vRP.GetEntityCoords(source),0xa3c846)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SMARTPHONE:SERVICE_REQUEST
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("smartphone:service_request",function(Data)
-	local Answered = false
-	local Service = vRP.NumPermission(Data["service"]["permission"])
+	if Characters[source] and Characters[source]["Phone"] then
+		PhoneNumber = exports["lb-phone"]:FormatNumber(Characters[source]["Phone"])
+	else
+		local Consult = vRP.Query("smartphone/Phone",{ Passport = Passport })
+		if Consult[1] and Consult[1]["phone_number"] then
+			PhoneNumber = exports["lb-phone"]:FormatNumber(Consult[1]["phone_number"])
 
-	for Passport,Sources in pairs(Service) do
-		async(function()
-			TriggerClientEvent("NotifyPush",Sources,{ code = 20, title = "Chamado", text = Data["content"], name = Data["name"], phone = Data["phone"], x = Data["location"][1], y = Data["location"][2], z = Data["location"][3], color = 2 })
-
-			if vRP.Request(Sources,"Chamado","Aceitar o chamado de <b>"..Data["name"].."?") then
-				if not Answered then
-					Answered = true
-					TriggerClientEvent("smartphone:pusher",Data["source"],"SERVICE_RESPONSE",{})
-					TriggerClientEvent("smartphone:pusher",Sources,"GPS",{ location = Data["location"] })
-				else
-					TriggerClientEvent("Notify",Sources,"Sucesso","Chamado atendido.","verde",5000)
-				end
+			if Characters[source] then
+				Characters[source]["Phone"] = PhoneNumber
 			end
-		end)
+		end
 	end
 
-	SetTimeout(30000,function()
-		if not Answered then
-			TriggerClientEvent("smartphone:pusher",Data["source"],"SERVICE_REJECT",{})
-		end
-	end)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SMARTPHONE:IS_SERVICE_CUSTOM
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("smartphone:is_service_custom",function(_,Reply)
-	Reply(true)
-end)
+	return PhoneNumber
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP.REQUEST
 -----------------------------------------------------------------------------------------------------------------------------------------

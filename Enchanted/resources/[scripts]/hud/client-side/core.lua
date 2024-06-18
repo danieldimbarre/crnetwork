@@ -15,67 +15,68 @@ Display = false
 local Hood = false
 local Gemstone = 0
 local Pause = false
-local Hurtings = false
-local Road = "Alta Street"
-local Crossing = "Alta Street"
+local Road = "Roads"
+local Crossing = "Crossing"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRINCIPAL
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Health = 999
-local Armour = 999
+local Armour = 0
+local Health = 200
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THIRST
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Thirst = 999
+local Thirst = 100
 local ThirstTimer = 0
-local ThirstAmount = 60000
+local ThirstAmount = 144000
 local ThirstDelay = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUNGER
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Hunger = 999
+local Hunger = 100
 local HungerTimer = 0
-local HungerAmount = 60000
+local HungerAmount = 144000
 local HungerDelay = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STRESS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Stress = 999
-local StressTimer = 0
+local Stress = 0
+local StressTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WANTED
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Wanted = 0
 local WantedMax = 0
-local WantedTimer = 0
+local WantedTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REPOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Repose = 0
 local ReposeMax = 0
-local ReposeTimer = 0
+local ReposeTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LUCK
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Luck = 0
-local LuckTimer = 0
+local LuckTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DEXTERITY
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Dexterity = 0
-local DexterityTimer = 0
+local DexterityTimer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTIMER
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
+	LoadMovement("move_m@injured")
+
 	while true do
 		if LocalPlayer["state"]["Active"] then
 			local Ped = PlayerPedId()
 
 			if IsPauseMenuActive() then
 				if not Pause and Display then
-					SendNUIMessage({ name = "Body", payload = false })
 					Pause = true
+					SendNUIMessage({ name = "Body", payload = false })
 				end
 			else
 				if Display then
@@ -114,11 +115,10 @@ CreateThread(function()
 						end
 
 						if not IsPedSwimming(Ped) then
-							if Healing <= 30 and not Hurtings then
-								Hurtings = true
-								LocalPlayer["state"]:set("Walk","move_m@injured",false)
-							elseif Hurtings then
-								Hurtings = false
+							if Healing <= 30 and GetPedMovementClipset(Ped) ~= -650503762 then
+								LocalPlayer["state"]:set("Walk",false,false)
+								SetPedMovementClipset(Ped,"move_m@injured",0.5)
+							elseif Healing > 30 and GetPedMovementClipset(Ped) == -650503762 then
 								LocalPlayer["state"]:set("Walk",false,false)
 							end
 						end
@@ -146,61 +146,67 @@ CreateThread(function()
 			if Luck > 0 and LuckTimer <= GetGameTimer() then
 				Luck = Luck - 1
 				LuckTimer = GetGameTimer() + 1000
+
 				SendNUIMessage({ name = "Luck", payload = Luck })
 			end
 
 			if Dexterity > 0 and DexterityTimer <= GetGameTimer() then
 				Dexterity = Dexterity - 1
 				DexterityTimer = GetGameTimer() + 1000
+
 				SendNUIMessage({ name = "Dexterity", payload = Dexterity })
 			end
 
 			if Wanted > 0 and WantedTimer <= GetGameTimer() then
 				Wanted = Wanted - 1
 				WantedTimer = GetGameTimer() + 1000
+
 				SendNUIMessage({ name = "Wanted", payload = { Wanted,WantedMax } })
 			end
 
 			if Repose > 0 and ReposeTimer <= GetGameTimer() then
 				Repose = Repose - 1
 				ReposeTimer = GetGameTimer() + 1000
+
 				SendNUIMessage({ name = "Repose", payload = { Repose,ReposeMax } })
 			end
 
 			if GetEntityHealth(Ped) > 100 then
-				if Hunger < 5 and HungerTimer <= GetGameTimer() then
+				if Hunger <= 10 and HungerTimer <= GetGameTimer() then
 					ApplyDamageToPed(Ped,1,false)
-					HungerTimer = GetGameTimer() + 30000
+					HungerTimer = GetGameTimer() + 60000
 					TriggerEvent("Notify","Alimentação","Sofrendo com a <b>fome</b>.","fome",2500)
 				end
 
-				if Thirst < 5 and ThirstTimer <= GetGameTimer() then
+				if Thirst <= 10 and ThirstTimer <= GetGameTimer() then
 					ApplyDamageToPed(Ped,1,false)
-					ThirstTimer = GetGameTimer() + 30000
+					ThirstTimer = GetGameTimer() + 60000
 					TriggerEvent("Notify","Hidratação","Sofrendo com a <b>sede</b>.","sede",2500)
 				end
 
-				if Stress >= 40 and StressTimer <= GetGameTimer() then
-					StressTimer = GetGameTimer() + 10000
-
+				if Stress ~= 999 and Stress >= 50 and StressTimer <= GetGameTimer() then
 					AnimpostfxPlay("MenuMGIn")
 					SetTimeout(1000,function()
 						AnimpostfxStop("MenuMGIn")
 					end)
+
+					StressTimer = GetGameTimer() + 30000
 				end
 
 				if Hunger > 0 and HungerDelay <= GetGameTimer() then
-					SendNUIMessage({ name = "Hunger", payload = Hunger - 1 })
-					HungerDelay = GetGameTimer() + HungerAmount
-					vRPS.DowngradeHunger()
 					Hunger = Hunger - 1
+					vRPS.DowngradeHunger()
+					HungerDelay = GetGameTimer() + HungerAmount
+
+					SendNUIMessage({ name = "Hunger", payload = Hunger })
 				end
 
 				if Thirst > 0 and ThirstDelay <= GetGameTimer() then
-					SendNUIMessage({ name = "Thirst", payload = Thirst - 1 })
-					ThirstDelay = GetGameTimer() + ThirstAmount
-					vRPS.DowngradeThirst()
 					Thirst = Thirst - 1
+					vRPS.DowngradeThirst()
+					ThirstDelay = GetGameTimer() + ThirstAmount
+
+					SendNUIMessage({ name = "Thirst", payload = Thirst })
 				end
 			end
 		end
@@ -220,19 +226,19 @@ end
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddStateBagChangeHandler("Passport",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
-	SendNUIMessage({ name = "Passport", payload = Value })
+	SendNUIMessage({ name = "Passport", payload = Dotted(Value) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Safezone",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
-	SendNUIMessage({ name = "Safezone", payload = Value })
+AddStateBagChangeHandler("Players",nil,function(Name,Key,Value)
+	SendNUIMessage({ name = "Players", payload = Dotted(Value) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:VOIP
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("hud:Voip",function(Number)
-	local Target = { "Baixo","Normal","Médio","Alto" }
+	local Target = { "BAIXO","NORMAL","MÉDIO","ALTO" }
 
 	SendNUIMessage({ name = "Voip", payload = Target[Number] })
 end)
@@ -352,7 +358,7 @@ RegisterNetEvent("hud:AddGemstone")
 AddEventHandler("hud:AddGemstone",function(Number)
 	Gemstone = Gemstone + Number
 
-	SendNUIMessage({ name = "Gemstone", payload = Gemstone })
+	SendNUIMessage({ name = "Gemstone", payload = Dotted(Gemstone) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:REMOVEGEMSTONE
@@ -365,7 +371,7 @@ AddEventHandler("hud:RemoveGemstone",function(Number)
 		Gemstone = 0
 	end
 
-	SendNUIMessage({ name = "Gemstone", payload = Gemstone })
+	SendNUIMessage({ name = "Gemstone", payload = Dotted(Gemstone) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:RADIO

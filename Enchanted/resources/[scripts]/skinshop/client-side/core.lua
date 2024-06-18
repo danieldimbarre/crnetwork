@@ -118,7 +118,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("skinshop:Open")
 AddEventHandler("skinshop:Open",function()
-	TriggerEvent("dynamic:closeSystem")
+	TriggerEvent("dynamic:Close")
 
 	if not exports["hud"]:Wanted() and not exports["hud"]:Repose() then
 		OpenSkinshop()

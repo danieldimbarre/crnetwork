@@ -6,7 +6,7 @@
 			<WeaponSlots>
 				<Item>
 					<OrderNumber value="85" />
-					<Entry>SLOT_KATANA</Entry>
+					<Entry>SLOT_WEAPON_KATANA</Entry>
 				</Item>
 			</WeaponSlots>
 		</Item>
@@ -14,7 +14,7 @@
 			<WeaponSlots>
 				<Item>
 					<OrderNumber value="85" />
-					<Entry>SLOT_KATANA</Entry>
+					<Entry>SLOT_WEAPON_KATANA</Entry>
 				</Item>
 			</WeaponSlots>
 		</Item>
@@ -23,7 +23,7 @@
 		<WeaponSlots>
 			<Item>
 				<OrderNumber value="315" />
-				<Entry>SLOT_KATANA</Entry>
+				<Entry>SLOT_WEAPON_KATANA</Entry>
 			</Item>
 		</WeaponSlots>
 	</SlotBestOrder>
@@ -41,7 +41,7 @@
 					<Name>WEAPON_KATANA</Name>
 					<Model>w_me_katana</Model>
 					<Audio />
-					<Slot>SLOT_KATANA</Slot>
+					<Slot>SLOT_WEAPON_KATANA</Slot>
 					<DamageType>MELEE</DamageType>
 					<Explosion>
 						<Default>DONTCARE</Default>
@@ -192,7 +192,7 @@
 					<NetworkPedDamageModifier value="0.250000" />
 					<NetworkHeadShotPlayerDamageModifier value="0.000000" />
 					<LockOnRange value="10.000000" />
-					<WeaponRange value="1.600000" />
+					<WeaponRange value="1.500000" />
 					<BulletDirectionOffsetInDegrees value="0.000000" />
 					<AiSoundRange value="-1.000000" />
 					<AiPotentialBlastEventRange value="-1.000000" />
@@ -283,7 +283,25 @@
 					<KnockdownCount value="-1" />
 					<KillshotImpulseScale value="1.000000" />
 					<NmShotTuningSet>normal</NmShotTuningSet>
-					<AttachPoints />
+					<AttachPoints>
+						<Item>
+							<AttachBone>gun_root</AttachBone>
+							<Components>
+								<Item>
+									<Name>COMPONENT_KATANA_FROST</Name>
+									<Default value="false" />
+								</Item>
+								<Item>
+									<Name>COMPONENT_KATANA_KITTY</Name>
+									<Default value="false" />
+								</Item>
+								<Item>
+									<Name>COMPONENT_KATANA_THERMAL</Name>
+									<Default value="false" />
+								</Item>
+							</Components>
+						</Item>
+					</AttachPoints>
 					<GunFeedBone />
 					<TargetSequenceGroup />
 					<WeaponFlags>IgnoreHelmets CarriedInHand ArmourPenetrating CanLockonOnFoot CanLockonInVehicle UsableOnFoot UsableClimbing UsableInCover DoesRevivableDamage AllowCloseQuarterKills HasLowCoverSwaps NoWheelStats DangerousLookingMeleeWeapon QuitTransitionToIdleIntroOnWeaponChange DisableLeftHandIkWhenOnFoot UseFPSAimIK UseFPSSecondaryMotion AllowMeleeBlock MeleeMachete</WeaponFlags>

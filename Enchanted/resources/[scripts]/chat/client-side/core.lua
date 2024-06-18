@@ -10,31 +10,29 @@ Tunnel.bindInterface("chat",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Actived = {}
 local Executive = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PERMISSIONS
+-- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Permissions = {
-	["Admin"] = true,
-	["Premium"] = true,
-	["Policia"] = true,
-	["Paramedico"] = true
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- PERMISSIONS
------------------------------------------------------------------------------------------------------------------------------------------
-for Perm,_ in pairs(Permissions) do
-	LocalPlayer["state"]:set(Perm,false,false)
+for Permission,v in pairs(Groups) do
+	if v["Client"] then
+		LocalPlayer["state"]:set(Permission,false,false)
+
+		if Permission ~= "Premium" then
+			Actived[Permission] = true
+		end
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHAT
+-- CHATEVENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("ChatEvent",function()
-	if LocalPlayer["state"]["Active"] and not IsPauseMenuActive() and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Carry"] and not LocalPlayer["state"]["Cellphone"] and not IsPedReloading(Ped) then
+	if LocalPlayer["state"]["Active"] and not IsPauseMenuActive() and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Carry"] and not exports["lb-phone"]:IsOpen() and not IsPedReloading(Ped) then
 		local Tags = {}
-		for Index,_ in pairs(Permissions) do
-			if Index ~= "Premium" and LocalPlayer["state"][Index] then
-				Tags[#Tags + 1] = Index
+		for Permission,_ in pairs(Actived) do
+			if LocalPlayer["state"][Permission] then
+				Tags[#Tags + 1] = Permission
 			end
 		end
 

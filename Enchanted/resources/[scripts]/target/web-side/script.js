@@ -2,24 +2,20 @@ window.addEventListener("message",function(event){
 	switch (event["data"]["Action"]){
 		case "Open":
 			$(".Text").html("");
-			$(".Eye").css("color","#4182e2");
 			$(".Target").css("display","flex");
 		break;
 
 		case "Close":
 			$(".Text").html("");
-			$(".Eye").css("color","#4182e2");
 			$(".Target").css("display","none");
 		break;
 
 		case "Left":
 			$(".Text").html("");
-			$(".Eye").css("color","#4182e2");
 		break;
 
 		case "Valid":
 			$(".Text").html("");
-			$(".Eye").css("color","#5c9af6");
 
 			$.each(event["data"]["data"],function(index,item){
 				$(".Text").append("<div id='Target-" + index + "'<li>" + item["label"] + "</li></div>");

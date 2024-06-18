@@ -59,7 +59,7 @@ end
 function CountTable(Table)
 	local Number = 0
 
-	for _,v in pairs(Table) do
+	for _ in pairs(Table) do
 		Number = Number + 1
 	end
 
@@ -99,10 +99,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 local function wait(self)
 	local rets = Citizen.Await(self.p)
-	if not rets then
-		if self.r then
-			rets = self.r
-		end
+	if not rets and self.r then
+		rets = self.r
 	end
 
 	return table.unpack(rets,1,table.maxn(rets))
@@ -127,46 +125,25 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PARSEINT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function parseInt(Value,Force)
-	local Number = tonumber(Value) or 0
-
+function parseInt(Number,Force)
+	Number = tonumber(Number) or 0
 	if Force and Number <= 0 then
 		Number = 1
 	end
 
-	if Number and Number > 0 then
-		Number = math.floor(Number)
-	end
-
-	return Number
+	return math.floor(Number)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WHOLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Whole(Value,Force)
+	return parseInt(Value,Force)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SANITIZESTRING
 -----------------------------------------------------------------------------------------------------------------------------------------
-local sanitize_tmp = {}
-function sanitizeString(str,strchars,allow_policy)
-	local r = ""
-	local chars = sanitize_tmp[strchars]
-	if not chars then
-		chars = {}
-		local size = string.len(strchars)
-		for i = 1,size do
-			local char = string.sub(strchars,i,i)
-			chars[char] = true
-		end
-
-		sanitize_tmp[strchars] = chars
-	end
-
-	size = string.len(str)
-	for i = 1,size do
-		local char = string.sub(str,i,i)
-		if (allow_policy and chars[char]) or (not allow_policy and not chars[char]) then
-			r = r..char
-		end
-	end
-
-	return r
+function sanitizeString(String,Characteres)
+	return String:gsub("[^"..Characteres.."]","")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPLITSTRING
@@ -195,6 +172,16 @@ function SplitOne(Name,Symbol)
 	return splitString(Name,Symbol)[1]
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SPLITBOOLEAN
+-----------------------------------------------------------------------------------------------------------------------------------------
+function SplitBoolean(Name,String,Symbol)
+	if not Symbol then
+		Symbol = "-"
+	end
+
+	return splitString(Name,Symbol)[1] == String and true or false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SPLITTWO
 -----------------------------------------------------------------------------------------------------------------------------------------
 function SplitTwo(Name,Symbol)
@@ -203,6 +190,14 @@ function SplitTwo(Name,Symbol)
 	end
 
 	return splitString(Name,Symbol)[2]
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SPLITUNIQUE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function SplitUnique(Item)
+	local Name = splitString(Item,"-")
+
+	return Name[1]..":"..Name[3]
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPTIMIZE
@@ -216,7 +211,6 @@ end
 function Dotted(Value)
 	local Value = parseInt(Value)
 	local Left,Number,Right = string.match(Value,"^([^%d]*%d)(%d*)(.-)$")
-
 	return Left..(Number:reverse():gsub("(%d%d%d)","%1."):reverse())..Right
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -237,7 +231,7 @@ function CompleteTimers(Seconds)
 		return string.format("<b>%d Horas</b>, <b>%d Minutos</b> e <b>%d Segundos</b>",Hours,Minutes,Seconds)
 	elseif Minutes > 0 then
 		return string.format("<b>%d Minutos</b> e <b>%d Segundos</b>",Minutes,Seconds)
-	elseif Seconds > 0 then
+	else
 		return string.format("<b>%d Segundos</b>",Seconds)
 	end
 end
@@ -259,7 +253,7 @@ function MinimalTimers(Seconds)
 		return string.format("%d Horas e %d Minutos",Hours,Minutes)
 	elseif Minutes > 0 then
 		return string.format("%d Minutos",Minutes)
-	elseif Seconds > 0 then
+	else
 		return string.format("%d Segundos",Seconds)
 	end
 end
@@ -286,20 +280,6 @@ function NumberTimers(Seconds)
 	Seconds = Seconds - Minutes * 60
 
 	return NumberZero(Days)..":"..NumberZero(Hours)..":"..NumberZero(Minutes)..":"..NumberZero(Seconds)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- NUMBERDAYS
------------------------------------------------------------------------------------------------------------------------------------------
-function NumberDays(Seconds)
-	local Seconds = parseInt(Seconds)
-	local Days = math.floor(Seconds / 86400)
-	Seconds = Seconds - Days * 86400
-	local Hours = math.floor(Seconds / 3600)
-	Seconds = Seconds - Hours * 3600
-	local Minutes = math.floor(Seconds / 60)
-	Seconds = Seconds - Minutes * 60
-
-	return NumberZero(Hours)..":"..NumberZero(Minutes)..":"..NumberZero(Seconds)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NUMBERHOURS
@@ -411,71 +391,6 @@ function Bone(Number)
 	return Bones[Number] or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PERCENTAGE
------------------------------------------------------------------------------------------------------------------------------------------
-function Percentage(Number,Percent)
-	local Number = parseInt(Number)
-	local Percent = parseInt(Percent)
-
-	return parseInt(Number * (Percent / 100))
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- BLOCKITEM
------------------------------------------------------------------------------------------------------------------------------------------
-local BlockItem = {
-	["anchovy"] = true,
-	["catfish"] = true,
-	["herring"] = true,
-	["orangeroughy"] = true,
-	["salmon"] = true,
-	["sardine"] = true,
-	["smallshark"] = true,
-	["smalltrout"] = true,
-	["yellowperch"] = true,
-	["nigirizushi"] = true,
-	["sushi"] = true,
-	["cupcake"] = true,
-	["milkshake"] = true,
-	["milkshakepeanut"] = true,
-	["cappuccino"] = true,
-	["applelove"] = true,
-	["guarananatural"] = true,
-	["coffee"] = true,
-	["coffeemilk"] = true,
-	["cola"] = true,
-	["tacos"] = true,
-	["fries"] = true,
-	["friesbacon"] = true,
-	["soda"] = true,
-	["cookies"] = true,
-	["orangejuice"] = true,
-	["tangejuice"] = true,
-	["grapejuice"] = true,
-	["strawberryjuice"] = true,
-	["bananajuice"] = true,
-	["acerolajuice"] = true,
-	["passionjuice"] = true,
-	["hamburger"] = true,
-	["hamburger2"] = true,
-	["hamburger3"] = true,
-	["onionrings"] = true,
-	["chickenfries"] = true,
-	["pizzamozzarella"] = true,
-	["pizzabanana"] = true,
-	["pizzachocolate"] = true,
-	["calzone"] = true,
-	["hotdog"] = true,
-	["donut"] = true,
-	["chocolate"] = true,
-	["sandwich"] = true
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- BLOCKCHEST
------------------------------------------------------------------------------------------------------------------------------------------
-function BlockChest(Item)
-	return BlockItem[SplitOne(Item)] or false
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- RANDPERCENTAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function RandPercentage(Table)
@@ -487,9 +402,33 @@ function RandPercentage(Table)
 	local Selected = math.random(1,PoolSize)
 	for Index,v in pairs(Table) do
 		Selected = Selected - v["Chance"]
+		if v["Min"] and v["Max"] then
+			Table[Index]["Valuation"] = math.random(v["Min"],v["Max"])
+		end
 
 		if (Selected <= 0) then
 			return Table[Index]
 		end
 	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GENERATESTRING
+-----------------------------------------------------------------------------------------------------------------------------------------
+function GenerateString(Format)
+	local Message = ""
+	local LenByte = string.byte("A")
+	local NumByte = string.byte("0")
+
+	for Number = 1,#Format do
+		local Lenght = string.sub(Format,Number,Number)
+    	if Lenght == "D" then
+    		Message = Message..string.char(NumByte + math.random(0,9))
+		elseif Lenght == "L" then
+			Message = Message..string.char(LenByte + math.random(0,25))
+		else
+			Message = Message..Lenght
+		end
+	end
+
+	return Message
 end

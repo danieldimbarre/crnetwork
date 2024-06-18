@@ -52,8 +52,8 @@ function Creative.Request()
 			Active[Passport] = true
 
 			local Messages = {}
-			local Hierarchy = vRP.Hierarchy("Policia")
-			local Permission = vRP.HasPermission(Passport,"Policia")
+			local Permission = "Policia"
+			local Level = vRP.HasPermission(Passport,Permission)
 			local ConsultMessages = vRP.Query("police/dashboard/All")
 			for _,v in pairs(ConsultMessages) do
 				Messages[#Messages + 1] = {
@@ -101,10 +101,10 @@ function Creative.Request()
 			Active[Passport] = nil
 
 			return {
-				["Level"] = Permission,
+				["Level"] = Level,
 				["Avatar"] = Identity["Avatar"],
 				["Name"] = Identity["Name"].." "..Identity["Lastname"],
-				["Permission"] = Hierarchy[Permission],
+				["Permission"] = vRP.NameHierarchy(Permission,Level),
 				["Badge"] = Identity["Badge"],
 				["Messages"] = Messages,
 				["Wanteds"] = Wanteds,
@@ -163,7 +163,7 @@ function Creative.SearchList()
 				Prisons[#Prisons + 1] = {
 					["Passport"] = OtherPassport,
 					["Name"] = Identity["Name"].." "..Identity["Lastname"],
-					["Phone"] = Identity["Phone"],
+					["Phone"] = vRP.Phone(OtherPassport),
 					["Sex"] = Identity["Sex"],
 					["Blood"] = Sanguine(Identity["Blood"]),
 					["Prison"] = Identity["Prison"]
@@ -220,7 +220,7 @@ function Creative.Personal(Number)
 				["Passport"] = Number,
 				["Avatar"] = Identity["Avatar"],
 				["Name"] = Identity["Name"].." "..Identity["Lastname"],
-				["Phone"] = Identity["Phone"],
+				["Phone"] = vRP.Phone(Number),
 				["Sex"] = Identity["Sex"],
 				["Blood"] = Sanguine(Identity["Blood"]),
 				["Prison"] = Identity["Prison"],
@@ -245,7 +245,7 @@ function Creative.Prison(Table)
 
 		if Daily and Daily >= 1 then
 			vRP.GiveBank(Passport,425 * Daily)
-			TriggerClientEvent("Notify",source,false,"A pessoa já foi presa hoje <b>"..Daily.." vezes</b> e você recebeu <b>$"..(600 * Daily).."</b> como bonificação por efetuar a prisão do mesmo.","verde",10000)
+			TriggerClientEvent("Notify",source,"Aviso","A pessoa já foi presa hoje <b>"..Daily.." vezes</b> e você recebeu <b>$"..(600 * Daily).."</b> como bonificação por efetuar a prisão do mesmo.","amarelo",10000)
 		end
 
 		vRP.Query("police/prisons/Insert",{ Passport = OtherPassport, Police = Passport, Crimes = Table["crimes"], Notes = Table["notes"], Fines = Fines, Services = Services, Date = os.date("%d/%m/%Y").." | "..os.date("%H:%M") })
@@ -269,7 +269,7 @@ function Creative.Prison(Table)
 			if OtherSource then
 				vRP.Teleport(OtherSource,1679.94,2513.07,45.56)
 				TriggerClientEvent("police:Prisioner",OtherSource,true)
-				TriggerClientEvent("Notify",OtherSource,false,"Todas as lixeiras do pátio estão disponíveis para <b>vasculhar</b> em troca de redução penal.","amarelo",30000)
+				TriggerClientEvent("Notify",OtherSource,"Boolingbroke","Todas as lixeiras do pátio estão disponíveis para <b>vasculhar</b> em troca de redução penal.","amarelo",30000)
 			end
 		end
 

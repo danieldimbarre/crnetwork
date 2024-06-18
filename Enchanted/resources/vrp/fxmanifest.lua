@@ -1,10 +1,11 @@
 fx_version "bodacious"
 game "gta5"
 lua54 "yes"
-creative_network "extended"
+creative_network "enchanted"
 
 client_scripts {
 	"lib/Utils.lua",
+	"config/Native.lua",
 
 	"client/base.lua",
 	"client/gui.lua",
@@ -32,7 +33,7 @@ files {
 
 shared_scripts {
 	"config/Item.lua",
-	"config/Native.lua",
 	"config/Vehicle.lua",
-	"config/Global.lua"
+	"config/Global.lua",
+	"config/Drops.lua"
 }

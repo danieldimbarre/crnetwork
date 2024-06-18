@@ -54,14 +54,12 @@ local Preset = {
 -- POLICE:PRESET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("police:Preset")
-AddEventHandler("police:Preset",function(OtherSource)
+AddEventHandler("police:Preset",function()
 	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport and vRP.DoesEntityExist(OtherSource) and vRP.GetHealth(source) > 100 and vRP.HasService(Passport,"Policia") then
-		local Hash = vRP.ModelPlayer(OtherSource)
-		if Hash == "mp_m_freemode_01" or Hash == "mp_f_freemode_01" then
-			TriggerClientEvent("skinshop:Apply",OtherSource,Preset[Hash])
-		end
+	local Hash = vRP.ModelPlayer(source)
+
+	if Hash == "mp_m_freemode_01" or Hash == "mp_f_freemode_01" then
+		TriggerClientEvent("skinshop:Apply",source,Preset[Hash])
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -78,9 +76,9 @@ AddEventHandler("police:ArrestVehicles",function(Entity)
 			if Vehicle[1] then
 				if not Vehicle[1]["Arrest"] then
 					vRP.Query("vehicles/Arrest",{ Passport = OtherPassport["Passport"], Vehicle = Entity[2] })
-					TriggerClientEvent("Notify",source,"Sucesso","Veículo apreendido.","verde",5000)
+					TriggerClientEvent("Notify",source,"Departamento Policial","Veículo apreendido.","policia",5000)
 				else
-					TriggerClientEvent("Notify",source,"Aviso","Veículo já se encontra apreendido.","amarelo",5000)
+					TriggerClientEvent("Notify",source,"Departamento Policial","Veículo já se encontra apreendido.","policia",5000)
 				end
 			end
 		end
@@ -111,7 +109,7 @@ function PlateVehicle(source,Plate)
 	if OtherPassport then
 		local Identity = vRP.Identity(OtherPassport["Passport"])
 		if Identity then
-			TriggerClientEvent("Notify",source,"Emplacamento","<b>Passaporte:</b> "..Identity["id"].."<br><b>Telefone:</b> "..Identity["Phone"].."<br><b>Nome:</b> "..Identity["Name"].." "..Identity["Lastname"],"azul",10000)
+			TriggerClientEvent("Notify",source,"Emplacamento","<b>Passaporte:</b> "..Identity["id"].."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport["Passport"]).."<br><b>Nome:</b> "..Identity["Name"].." "..Identity["Lastname"],"policia",10000)
 		end
 	end
 end

@@ -15,34 +15,20 @@ vSERVER = Tunnel.getInterface("inventory")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Drops = {}
-local Types = ""
-local Weapon = ""
-local Usables = 1
-local Actived = false
-local Inventory = false
-local TakeWeapon = false
-local StoreWeapon = false
-local Reloaded = GetGameTimer()
+Types = ""
+Actived = false
 local ShotDelay = GetGameTimer()
-local UseCooldown = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:CLEANWEAPONS
+-- THEME
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("inventory:CleanWeapons",function(Create)
-	if Weapon ~= "" then
-		if Create and Usables <= 5 then
-			TriggerEvent("inventory:CreateWeapon",Weapon)
-		end
-
-		RemoveAllPedWeapons(PlayerPedId(),true)
-	end
-
-	TriggerEvent("hud:Weapon",false)
-	TriggerEvent("Weapon","")
-	Actived = false
-	Weapon = ""
-	Types = ""
+RegisterNUICallback("Theme",function(Data,Callback)
+	Callback({
+		["main"] = "#1372bf",
+		["common"] = "#8eab38",
+		["rare"] = "#4f75c2",
+		["epic"] = "#b53784",
+		["legendary"] = "#c58e24"
+	})
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADBLOCKBUTTONS
@@ -50,131 +36,30 @@ end)
 CreateThread(function()
 	while true do
 		local TimeDistance = 999
+		local Ped = PlayerPedId()
 		if LocalPlayer["state"]["Buttons"] then
-			TimeDistance = 1
+			DisableControlAction(0,257,true)
 			DisableControlAction(0,75,true)
 			DisableControlAction(0,47,true)
-			DisableControlAction(0,257,true)
-			DisablePlayerFiring(PlayerPedId(),true)
+			DisablePlayerFiring(Ped,true)
+
+			TimeDistance = 1
 		end
 
 		Wait(TimeDistance)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:CLOSE
+-- INVENTORY:CLEARNER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("inventory:Close")
-AddEventHandler("inventory:Close",function()
-	if Inventory then
-		Inventory = false
-		SetNuiFocus(false,false)
-		SetCursorLocation(0.5,0.5)
-		SendNUIMessage({ action = "Close" })
-	end
+AddEventHandler("inventory:Cleaner",function(Ped)
+	TriggerEvent("hud:Weapon",false)
+	RemoveAllPedWeapons(Ped,true)
+	TriggerEvent("Weapon","")
+	Actived = false
+	Weapon = ""
+	Types = ""
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CLOSE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Close",function(Data,Callback)
-	TriggerEvent("inventory:Close")
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:USE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("inventory:Use",function(Slot,Amount)
-	Usables = parseInt(Slot)
-	vSERVER.Use(Slot,Amount)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- USE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Use",function(Data,Callback)
-	if GetGameTimer() >= UseCooldown then
-		TriggerEvent("inventory:Use",Data["slot"],Data["amount"])
-		UseCooldown = GetGameTimer() + 1000
-	end
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SEND
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Send",function(Data,Callback)
-	if MumbleIsConnected() then
-		vSERVER.Send(Data["slot"],Data["amount"])
-	end
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- UPDATE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Update",function(Data,Callback)
-	vRPS.invUpdate(Data["slot"],Data["target"],Data["amount"])
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:UPDATE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("inventory:Update")
-AddEventHandler("inventory:Update",function(Action)
-	SendNUIMessage({ action = Action })
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:VERIFYWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("inventory:verifyWeapon")
-AddEventHandler("inventory:verifyWeapon",function(Item)
-	local Name = SplitOne(Item)
-
-	if Weapon == Name then
-		local Ped = PlayerPedId()
-		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
-		if not vSERVER.VerifyWeapon(Weapon,Ammo) then
-			TriggerEvent("inventory:CleanWeapons",false)
-		end
-	else
-		vSERVER.VerifyWeapon(Name)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:PREVENTWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("inventory:preventWeapon",function()
-	if Weapon ~= "" then
-		local Ped = PlayerPedId()
-		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
-
-		TriggerEvent("inventory:CreateWeapon",Weapon)
-		vSERVER.PreventWeapons(Weapon,Ammo)
-		TriggerEvent("hud:Weapon",false)
-		RemoveAllPedWeapons(Ped,true)
-		TriggerEvent("Weapon","")
-
-		Actived = false
-		Weapon = ""
-		Types = ""
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("Inventory",function()
-	if not IsPauseMenuActive() and GetEntityHealth(PlayerPedId()) > 100 and not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPlayerFreeAiming(PlayerId()) then
-		Inventory = true
-		SetNuiFocus(true,true)
-		SetCursorLocation(0.5,0.5)
-		SendNUIMessage({ action = "Open" })
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- KEYMAPPING
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterKeyMapping("Inventory","Abrir/Fechar a mochila.","keyboard","OEM_3")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:REPAIRBOOSTS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -220,7 +105,9 @@ AddEventHandler("inventory:RepairTyres",function(Vehicle,Tyres,Plate)
 		if DoesEntityExist(Vehicle) and GetVehicleNumberPlateText(Vehicle) == Plate then
 			if Tyres == "All" then
 				for i = 0,10 do
-					SetVehicleTyreFixed(Vehicle,i)
+					if GetTyreHealth(Vehicle,i) ~= 1000.0 then
+						SetVehicleTyreFixed(Vehicle,i)
+					end
 				end
 			else
 				for i = 0,10 do
@@ -266,12 +153,6 @@ AddEventHandler("inventory:RepairAdmin",function(Index,Plate)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PARACHUTE
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Parachute()
-	GiveWeaponToPed(PlayerPedId(),"GADGET_PARACHUTE",1,false,true)
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- FISHING
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Fishing()
@@ -285,283 +166,6 @@ function Creative.Fishing()
 
 	return false
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- RETURNWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.ReturnWeapon()
-	return Weapon ~= "" and Weapon or false
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- CHECKWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.CheckWeapon(Hash)
-	return Weapon == Hash and true or false
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- GIVECOMPONENT
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.GiveComponent(Component)
-	GiveWeaponComponentToPed(PlayerPedId(),Weapon,Component)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- TAKEWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
-	if not TakeWeapon then
-		if not Ammo then
-			Ammo = 0
-		end
-
-		if Ammo > 0 then
-			Actived = true
-		end
-
-		TakeWeapon = true
-		LocalPlayer["state"]:set("Cancel",true,true)
-
-		local Ped = PlayerPedId()
-		if not IsPedInAnyVehicle(Ped) then
-			if LoadAnim("reaction@intimidation@1h") then
-				TaskPlayAnim(Ped,"reaction@intimidation@1h","intro",8.0,8.0,-1,48,1,0,0,0)
-			end
-
-			Wait(1250)
-
-			Weapon = Name
-			TriggerEvent("Weapon",Weapon)
-			TriggerEvent("inventory:RemoveWeapon",Weapon)
-			GiveWeaponToPed(Ped,Weapon,Ammo,false,true)
-
-			Wait(1000)
-
-			ClearPedTasks(Ped)
-		else
-			Weapon = Name
-			TriggerEvent("Weapon",Weapon)
-			TriggerEvent("inventory:RemoveWeapon",Weapon)
-			GiveWeaponToPed(Ped,Weapon,Ammo,false,true)
-		end
-
-		if Components then
-			for Item,_ in pairs(Components) do
-				Creative.GiveComponent(WeaponAttach(Item,Weapon))
-			end
-		end
-
-		if Type then
-			Types = Type
-		end
-
-		if Skin then
-			GiveWeaponComponentToPed(Ped,Weapon,Skin)
-		end
-
-		TakeWeapon = false
-		LocalPlayer["state"]:set("Cancel",false,true)
-
-		if WeaponAmmo(Weapon) then
-			TriggerEvent("hud:Weapon",true,Weapon)
-		end
-
-		if vSERVER.CheckExistWeapons(Weapon) then
-			TriggerEvent("inventory:CleanWeapons",true)
-		end
-
-		return true
-	end
-
-	return false
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- STOREWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.StoreWeapon()
-	if not StoreWeapon and Weapon ~= "" then
-		StoreWeapon = true
-
-		local Lasted = Weapon
-		local Ped = PlayerPedId()
-		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
-		LocalPlayer["state"]:set("Cancel",true,true)
-
-		if not IsPedInAnyVehicle(Ped) then
-			if LoadAnim("reaction@intimidation@1h") then
-				TaskPlayAnim(Ped,"reaction@intimidation@1h","outro",8.0,8.0,-1,48,1,0,0,0)
-			end
-
-			Wait(1600)
-
-			ClearPedTasks(Ped)
-		end
-
-		StoreWeapon = false
-		TriggerEvent("inventory:CleanWeapons",true)
-		LocalPlayer["state"]:set("Cancel",false,true)
-
-		return true,Ammo,Lasted
-	end
-
-	return false
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- INFOWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.InfoWeapon(Type)
-	local Ammo = 0
-
-	if Weapon ~= "" then
-		Ammo = GetAmmoInPedWeapon(PlayerPedId(),Weapon)
-	end
-
-	return Weapon,Ammo
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- RELOADING
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Reloading(Hash,Ammo)
-	AddAmmoToPed(PlayerPedId(),Hash,Ammo)
-	Actived = true
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADSTOREWEAPON
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local TimeDistance = 999
-		if Actived and Weapon ~= "" then
-			TimeDistance = 10
-
-			local Ped = PlayerPedId()
-			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
-
-			if GetGameTimer() >= Reloaded and IsPedReloading(Ped) then
-				vSERVER.PreventWeapons(Weapon,Ammo)
-				Reloaded = GetGameTimer() + 100
-			end
-
-			if Ammo <= 0 or (Weapon == "WEAPON_PETROLCAN" and Ammo <= 135 and IsPedShooting(Ped)) or IsPedSwimming(Ped) then
-				if Types ~= "" then
-					vSERVER.RemoveThrowing(Types)
-				else
-					vSERVER.PreventWeapons(Weapon,Ammo)
-				end
-
-				TriggerEvent("inventory:CleanWeapons",true)
-			end
-		end
-
-		Wait(TimeDistance)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- WATER
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Water()
-	return IsEntityInWater(PlayerPedId())
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- DROPS
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("inventory:Drops")
-AddEventHandler("inventory:Drops",function(Table)
-	Drops = Table
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DROPSREMOVER
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("inventory:DropsRemover")
-AddEventHandler("inventory:DropsRemover",function(Route,Number)
-	if Drops[Route] and Drops[Route][Number] then
-		Drops[Route][Number] = nil
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DROPSATUALIZAR
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("inventory:DropsAtualizar")
-AddEventHandler("inventory:DropsAtualizar",function(Route,Number,Amount)
-	if Drops[Route] and Drops[Route][Number] then
-		Drops[Route][Number]["Amount"] = Amount
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DROPSADICIONAR
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("inventory:DropsAdicionar")
-AddEventHandler("inventory:DropsAdicionar",function(Route,Number,Table)
-	if not Drops[Route] then
-		Drops[Route] = {}
-	end
-
-	Drops[Route][Number] = Table
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DROPS
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Drops",function(Data,Callback)
-	if not TakeWeapon and not StoreWeapon and MumbleIsConnected() then
-		vSERVER.Drops(Data["item"],Data["slot"],Data["amount"])
-	end
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- PICKUP
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Pickup",function(Data,Callback)
-	if MumbleIsConnected() then
-		vSERVER.Pickup(Data["id"],Data["route"],Data["target"],Data["amount"])
-	end
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Inventory",function(Data,Callback)
-	local Inventory,Weight,MaxWeight = vSERVER.Inventory()
-	if Inventory then
-		local DropList = {}
-		local Ped = PlayerPedId()
-		local Route = LocalPlayer["state"]["Route"]
-
-		if not IsPedInAnyVehicle(Ped) and Drops[Route] then
-			local Coords = GetEntityCoords(Ped)
-			local _,GroundZ = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
-
-			for Index,v in pairs(Drops[Route]) do
-				local OtherCoords = vec3(Coords["x"],Coords["y"],GroundZ)
-				if #(OtherCoords - v["Coords"]) <= 1.0 then
-					DropList[#DropList + 1] = v
-				end
-			end
-		end
-
-		Callback({ Inventory = Inventory, Drops = DropList, Weight = Weight, MaxWeight = MaxWeight })
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADDROPS
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local TimeDistance = 999
-		local Ped = PlayerPedId()
-		local Route = LocalPlayer["state"]["Route"]
-		if not IsPedInAnyVehicle(Ped) and Drops[Route] then
-			local Coords = GetEntityCoords(Ped)
-
-			for _,v in pairs(Drops[Route]) do
-				if #(Coords - v["Coords"]) <= 50 then
-					TimeDistance = 1
-					DrawMarker(20,v["Coords"]["x"],v["Coords"]["y"],v["Coords"]["z"] + 0.5,0.0,0.0,0.0,0.0,180.0,0.0,0.35,0.35,0.35,65,130,226,100,0,0,0,1)
-				end
-			end
-		end
-
-		Wait(TimeDistance)
-	end
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:EXPLODETYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -623,8 +227,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OBJECTEXISTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.ObjectExists(Coords,Hash)
-	return DoesObjectOfTypeExistAtCoords(Coords["x"],Coords["y"],Coords["z"],0.35,Hash,true)
+function Creative.ObjectExists(Coords,Hash,Distance)
+	return DoesObjectOfTypeExistAtCoords(Coords[1],Coords[2],Coords[3],Distance or 0.35,Hash,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKINTERIOR
@@ -713,8 +317,6 @@ local Atm = {
 	vec4(-254.39,-692.46,33.6,158.75),
 	vec4(-28.0,-724.53,44.23,343.0),
 	vec4(-30.21,-723.7,44.23,343.0),
-	vec4(-1315.74,-834.71,16.95,311.82),
-	vec4(-1314.79,-835.97,16.95,308.98),
 	vec4(-2956.86,487.63,15.47,175.75),
 	vec4(-2959.0,487.73,15.47,178.59),
 	vec4(-3040.74,593.1,7.9,289.14),
@@ -751,41 +353,11 @@ local Atm = {
 	vec4(129.66,-1291.91,29.27,300.48),
 	vec4(129.24,-1291.16,29.27,303.31),
 	vec4(-248.07,6327.51,32.42,314.65),
-	vec4(-677.39,5834.59,17.32,136.07),
 	vec4(2564.5,2584.78,38.08,110.56),
 	vec4(-609.78,-1091.96,22.33,133.23),
-	vec4(-1206.87,-889.54,13.02,218.27)
+	vec4(-1206.87,-889.54,13.02,218.27),
+	vec4(436.3,-985.63,30.68,181.42) -- "999999"
 }
------------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
-	for Number,v in pairs(Atm) do
-		exports["target"]:AddCircleZone("Atm:"..Number,v["xyz"],0.5,{
-			name = "Atm:"..Number,
-			heading = v["w"],
-			useZ = true
-		},{
-			shop = "eletronics",
-			Distance = 1.0,
-			options = {
-				{
-					event = "Bank",
-					label = "Abrir",
-					tunnel = "client"
-				},{
-					event = "inventory:Robberys",
-					tunnel = "server",
-					label = "Roubar"
-				}
-			}
-		})
-	end
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENTIITYCOORDSZ
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -848,9 +420,9 @@ local PaletoBay = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("CEventGunShot",function(_,OtherPeds)
 	local Ped = PlayerPedId()
-	if Ped == OtherPeds and not LocalPlayer["state"]["Policia"] and GetGameTimer() >= ShotDelay and Weapon ~= "WEAPON_MUSKET" and Weapon ~= "WEAPON_SAUER" then
+	if Ped == OtherPeds and not CheckPolice() and GetGameTimer() >= ShotDelay and Weapon ~= "WEAPON_MUSKET" then
 		ShotDelay = GetGameTimer() + 60000
-		TriggerEvent("player:Residuals","Resíduo de Pólvora.")
+		TriggerEvent("player:Residuals","Resíduo de Pólvora")
 
 		local Coords = GetEntityCoords(Ped)
 		if not IsPedCurrentWeaponSilenced(Ped) then
@@ -862,5 +434,81 @@ AddEventHandler("CEventGunShot",function(_,OtherPeds)
 				vSERVER.ShotsFired(IsPedInAnyVehicle(Ped))
 			end
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RESTAURANTE:POLYZONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Restaurante = PolyZone:Create({
+	vec2(-513.92,-683.55),vec2(-513.65,-683.52),vec2(-513.64,-683.7),vec2(-511.38,-683.7),vec2(-511.39,-683.54),
+	vec2(-511.21,-683.53),vec2(-511.3,-678.85),vec2(-510.49,-678.83),vec2(-510.48,-678.34),vec2(-501.96,-678.35),
+	vec2(-501.94,-678.89),vec2(-500.91,-678.85),vec2(-500.97,-681.31),vec2(-501.25,-681.3),vec2(-501.27,-687.36),
+	vec2(-500.98,-687.39),vec2(-500.98,-689.06),vec2(-501.27,-689.1),vec2(-501.26,-695.81),vec2(-501.01,-695.8),
+	vec2(-500.93,-697.29),vec2(-498.83,-697.41),vec2(-498.91,-704.5),vec2(-500.66,-704.51),vec2(-500.65,-704.86),
+	vec2(-499.66,-704.86),vec2(-499.67,-708.31),vec2(-500.64,-708.33),vec2(-500.64,-708.89),vec2(-500.36,-708.92),
+	vec2(-500.41,-709.73),vec2(-500.66,-709.72),vec2(-500.65,-712.02),vec2(-500.81,-712.07),vec2(-500.81,-713.36),
+	vec2(-500.64,-713.43),vec2(-500.63,-714.17),vec2(-500.42,-714.21),vec2(-500.43,-714.95),vec2(-500.66,-714.99),
+	vec2(-500.63,-717.36),vec2(-500.42,-717.38),vec2(-500.42,-718.15),vec2(-500.1,-718.14),vec2(-500.09,-721.59),
+	vec2(-501.0,-721.59),vec2(-500.99,-721.84),vec2(-500.91,-726.23),vec2(-500.94,-726.45),vec2(-500.67,-726.46),
+	vec2(-500.61,-728.13),vec2(-500.86,-728.15),vec2(-500.81,-733.63),vec2(-500.54,-733.66),vec2(-500.5,-735.32),
+	vec2(-500.79,-735.36),vec2(-502.19,-736.85),vec2(-502.29,-735.99),vec2(-507.68,-736.29),vec2(-507.71,-737.18),
+	vec2(-510.26,-737.27),vec2(-510.92,-736.4),vec2(-510.67,-736.18),vec2(-514.1,-732.04),vec2(-514.44,-732.21),
+	vec2(-523.5,-720.17),vec2(-523.77,-720.31),vec2(-524.08,-719.73),vec2(-523.94,-719.61),vec2(-529.74,-706.13),
+	vec2(-529.99,-706.18),vec2(-530.13,-705.54),vec2(-529.93,-705.45),vec2(-531.62,-692.63),vec2(-531.87,-692.6),
+	vec2(-531.83,-691.97),vec2(-531.59,-691.97),vec2(-531.55,-688.62),vec2(-527.98,-688.53),vec2(-528.04,-688.01),
+	vec2(-527.49,-687.81),vec2(-528.22,-685.06),vec2(-529.03,-685.07),vec2(-529.03,-684.36),vec2(-528.19,-684.32),
+	vec2(-527.54,-681.71),vec2(-528.19,-681.38),vec2(-527.87,-680.76),vec2(-527.22,-681.07),vec2(-525.2,-679.18),
+	vec2(-525.6,-678.46),vec2(-525.02,-678.15),vec2(-524.69,-678.65),vec2(-521.95,-678.15),vec2(-521.94,-677.42),
+	vec2(-521.29,-677.44),vec2(-521.24,-678.23),vec2(-518.57,-678.9),vec2(-518.12,-678.26),vec2(-517.56,-678.63),
+	vec2(-517.93,-679.25),vec2(-515.92,-681.33),vec2(-514.88,-680.81),vec2(-513.91,-681.97)
+},{ name = "Restaurante" })
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RESTAURANT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Restaurant()
+	local Ped = PlayerPedId()
+	local Coords = GetEntityCoords(Ped)
+
+	return Restaurante:isPointInside(Coords)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADLEAVESERVICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	for Number,v in pairs(Atm) do
+		exports["target"]:AddCircleZone("Atm:"..Number,v["xyz"],0.5,{
+			name = "Atm:"..Number,
+			heading = v["w"],
+			useZ = true
+		},{
+			shop = "eletronics",
+			Distance = 1.0,
+			options = {
+				{
+					event = "Bank",
+					label = "Abrir",
+					tunnel = "client"
+				},{
+					event = "inventory:Robberys",
+					tunnel = "server",
+					label = "Roubar"
+				}
+			}
+		})
+	end
+
+	while true do
+		local Ped = PlayerPedId()
+		if not IsPedInAnyVehicle(Ped) then
+			if LocalPlayer["state"]["Restaurante"] then
+				local Coords = GetEntityCoords(Ped)
+
+				if not Restaurante:isPointInside(Coords) then
+					TriggerServerEvent("dynamic:ExitService","Restaurante")
+				end
+			end
+		end
+
+		Wait(10000)
 	end
 end)

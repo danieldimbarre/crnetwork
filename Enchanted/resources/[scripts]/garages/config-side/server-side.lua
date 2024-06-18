@@ -4,40 +4,41 @@
 PercetageSelling = 0.5 -- Porcentagem a receber ao vender o veículo
 PercentageTaxs = 0.15 -- Porcentagem a cobrar pela taxa mensal do veículo
 PercentageArrest = 0.1 -- Porcentagem a cobrar para liberar o veículo apreendido
+PercentageRescue = 0.1 -- Porcentagem a cobrar para resgatar o veículo em qualquer garagem
 PercentageImpost = 0.25 -- Porcentagem de imposto ao comprar um veículo
 CarPermission = "Admin" -- Permissão para utilizar o comando /car
 DvPermission = "Admin" -- Permissão para utilizar o comando /dv
-LockPermission = "Policia" -- Permissão para destrancar qualquer veículo
+LockPermission = "Admin" -- Permissão para destrancar qualquer veículo
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES
 -----------------------------------------------------------------------------------------------------------------------------------------
 Garages = {
-	["1"] = { ["Name"] = "Garage" },
-	["2"] = { ["Name"] = "Garage" },
-	["3"] = { ["Name"] = "Garage" },
-	["4"] = { ["Name"] = "Garage" },
-	["5"] = { ["Name"] = "Garage" },
-	["6"] = { ["Name"] = "Garage" },
-	["7"] = { ["Name"] = "Garage" },
-	["8"] = { ["Name"] = "Garage" },
-	["9"] = { ["Name"] = "Garage" },
-	["10"] = { ["Name"] = "Garage" },
-	["11"] = { ["Name"] = "Garage" },
-	["12"] = { ["Name"] = "Garage" },
-	["13"] = { ["Name"] = "Garage" },
-	["14"] = { ["Name"] = "Garage" },
-	["15"] = { ["Name"] = "Garage" },
-	["16"] = { ["Name"] = "Garage" },
-	["17"] = { ["Name"] = "Garage" },
-	["18"] = { ["Name"] = "Garage" },
-	["19"] = { ["Name"] = "Garage" },
-	["20"] = { ["Name"] = "Garage" },
-	["21"] = { ["Name"] = "Garage" },
-	["22"] = { ["Name"] = "Garage" },
-	["23"] = { ["Name"] = "Garage" },
-	["24"] = { ["Name"] = "Garage" },
-	["25"] = { ["Name"] = "Garage" },
-	["26"] = { ["Name"] = "Garage" },
+	["1"] = { ["Name"] = "Garage", ["Save"] = true },
+	["2"] = { ["Name"] = "Garage", ["Save"] = true },
+	["3"] = { ["Name"] = "Garage", ["Save"] = true },
+	["4"] = { ["Name"] = "Garage", ["Save"] = true },
+	["5"] = { ["Name"] = "Garage", ["Save"] = true },
+	["6"] = { ["Name"] = "Garage", ["Save"] = true },
+	["7"] = { ["Name"] = "Garage", ["Save"] = true },
+	["8"] = { ["Name"] = "Garage", ["Save"] = true },
+	["9"] = { ["Name"] = "Garage", ["Save"] = true },
+	["10"] = { ["Name"] = "Garage", ["Save"] = true },
+	["11"] = { ["Name"] = "Garage", ["Save"] = true },
+	["12"] = { ["Name"] = "Garage", ["Save"] = true },
+	["13"] = { ["Name"] = "Garage", ["Save"] = true },
+	["14"] = { ["Name"] = "Garage", ["Save"] = true },
+	["15"] = { ["Name"] = "Garage", ["Save"] = true },
+	["16"] = { ["Name"] = "Garage", ["Save"] = true },
+	["17"] = { ["Name"] = "Garage", ["Save"] = true },
+	["18"] = { ["Name"] = "Garage", ["Save"] = true },
+	["19"] = { ["Name"] = "Garage", ["Save"] = true },
+	["20"] = { ["Name"] = "Garage", ["Save"] = true },
+	["21"] = { ["Name"] = "Garage", ["Save"] = true },
+	["22"] = { ["Name"] = "Garage", ["Save"] = true },
+	["23"] = { ["Name"] = "Garage", ["Save"] = true },
+	["24"] = { ["Name"] = "Garage", ["Save"] = true },
+	["25"] = { ["Name"] = "Garage", ["Save"] = true },
+	["26"] = { ["Name"] = "Garage", ["Save"] = true },
 
 	-- Paramedic
 	["41"] = { ["Name"] = "Paramedico", ["Permission"] = "Paramedico" },

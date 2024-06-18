@@ -11,70 +11,115 @@ Creative = {}
 Tunnel.bindInterface("target",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHECKIN
+-- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.CheckIn()
-	local Repose = 900
+local Workout = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GLOBALSTATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+for Number,_ in pairs(Academy) do
+	GlobalState["Academy-"..Number] = false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ACADEMY
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Academy(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if vRP.GetHealth(source) <= 100 then
-			local Repose = 900
-			local Valuation = 975
+	if Passport and not GlobalState["Academy-"..Number] and not Workout[Passport] then
+		Player(source)["state"]["Buttons"] = true
+		Player(source)["state"]["Cancel"] = true
+		GlobalState["Academy-"..Number] = true
+		Workout[Passport] = Number
 
-			if vRP.Medicplan(source) then
-				Repose = 450
-				Valuation = 485
-			end
-
-			if vRP.PaymentFull(Passport,Valuation,true) then
-				vRP.UpgradeThirst(Passport,10)
-				vRP.UpgradeHunger(Passport,10)
-				TriggerEvent("Repose",source,Passport,Repose)
-				exports["bank"]:AddTaxs(Passport,source,"Hospital",Valuation,"Tratamento hospitalar.")
-
-				return true
-			else
-				TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
-			end
-		else
-			local Repose = 900
-			local Valuation = 750
-
-			if vRP.Medicplan(source) then
-				Repose = 450
-				Valuation = 375
-			end
-
-			if vRP.Request(source,"Hospital","Prosseguir o tratamento por <b>$"..Valuation.."</b> dólares?") then
-				if vRP.PaymentFull(Passport,Valuation,true) then
-					vRP.UpgradeThirst(Passport,10)
-					vRP.UpgradeHunger(Passport,10)
-					TriggerEvent("Repose",source,Passport,Repose)
-					exports["bank"]:AddTaxs(Passport,source,"Hospital",Valuation,"Tratamento hospitalar.")
-
-					return true
-				else
-					TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
-				end
-			end
-		end
+		return true
 	end
 
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ACADEMYWEIGHT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.AcademyWeight(Number)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and GlobalState["Academy-"..Number] and Workout[Passport] == Number then
+		local Premium = vRP.UserPremium(Passport)
+		local Weight = vRP.GetWeight(Passport,true)
+
+		if (Premium and Weight < 100) or (not Premium and Weight < 75) then
+			vRP.UpgradeWeight(Passport,1,"+")
+			TriggerClientEvent("Notify",source,"Academia","Sua força foi melhorada.","roxo",5000)
+		end
+
+		Player(source)["state"]["Buttons"] = false
+		Player(source)["state"]["Cancel"] = false
+		GlobalState["Academy-"..Number] = false
+		Workout[Passport] = nil
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport)
+	if Workout[Passport] then
+		GlobalState["Academy-"..Workout[Passport]] = false
+		Workout[Passport] = nil
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECKIN
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.CheckIn()
+	local Return = false
+	local source = source
+	local Alimentation = false
+	local Valuation,Repose = 1000,1200
+	local Passport = vRP.Passport(source)
+	if Passport then
+		if vRP.Medicplan(source) then
+			Valuation,Repose = 500,600
+		end
+
+		if vRP.Request(source,"Centro Médico","Deseja adicionar o serviço de alimentação pagando <b>$500</b>?") then
+			Valuation = Valuation + 500
+			Alimentation = true
+		end
+
+		if vRP.GetHealth(source) <= 100 then
+			Valuation = Valuation + 500
+			Repose = Repose + 600
+		end
+
+		if vRP.PaymentFull(Passport,Valuation) then
+			if Alimentation then
+				vRP.UpgradeThirst(Passport,25)
+				vRP.UpgradeHunger(Passport,25)
+			end
+
+			TriggerEvent("Repose",source,Passport,Repose)
+			Return = true
+		else
+			TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
+		end
+	end
+
+	return Return
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- TARGET:MEDICPLAN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("target:Medicplan")
-AddEventHandler("target:Medicplan",function(source)
+AddEventHandler("target:Medicplan",function(OtherSource)
+	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if not vRP.Medicplan(source) then
-			if vRP.Request(source,"Hospital","Assinar o plano de saúde por <b>$10.000</b>? Lembrando que a duração do mesmo é de 7 dias.") then
-				if vRP.PaymentFull(Passport,10000,true) then
-					TriggerClientEvent("Notify",source,false,"Compra efetuada.","verde",5000)
-					vRP.SetMedicplan(source,Passport)
+	local OtherPassport = vRP.Passport(OtherSource)
+	if Passport and OtherPassport then
+		if not vRP.Medicplan(OtherSource) then
+			if vRP.Request(OtherSource,"Centro Médico","Deseja assinar o plano médico por <b>$10.000</b>?") then
+				if vRP.PaymentFull(OtherPassport,10000) then
+					TriggerClientEvent("Notify",source,"Centro Médico","Plano ativado com sucesso.","hospital",5000)
+					vRP.SetMedicplan(OtherSource,OtherPassport)
 				else
 					TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
 				end
@@ -82,5 +127,19 @@ AddEventHandler("target:Medicplan",function(source)
 		else
 			TriggerClientEvent("Notify",source,"Atenção","Já possui um plano ativo.","amarelo",5000)
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:REPOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("target:Repose")
+AddEventHandler("target:Repose",function(OtherSource)
+	local source = source
+	local Passport = vRP.Passport(source)
+	local OtherPassport = vRP.Passport(OtherSource)
+	local Keyboard = vKEYBOARD.Primary(source,"Minutos.")
+	if Passport and OtherPassport and Keyboard and Whole(Keyboard[1]) > 0 then
+		TriggerClientEvent("Notify",source,"Centro Médico","Adicionou "..Keyboard[1].." minutos de repouso.","hospital",5000)
+		TriggerEvent("Repose",OtherSource,OtherPassport,Whole(Keyboard[1]) * 60)
 	end
 end)

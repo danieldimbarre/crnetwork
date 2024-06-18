@@ -217,9 +217,9 @@ AddEventHandler("dismantle:Dispatch",function()
 		until (HitZ and HitSafe) or Cooldown >= 100
 
 		if HitZ and HitSafe then
-			local Application,Network = vRPS.CreateModels(Peds[OtherPeds],SafeCoords["x"],SafeCoords["y"],SafeCoords["z"])
-			if Application then
-				SetTimeout(1000,function()
+			local Network = vRPS.CreateModels(Peds[OtherPeds],SafeCoords["x"],SafeCoords["y"],SafeCoords["z"])
+			if Network then
+				SetTimeout(2500,function()
 					local Entity = LoadNetwork(Network)
 					if Entity then
 						SetPedArmour(Entity,100)

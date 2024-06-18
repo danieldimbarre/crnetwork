@@ -8,6 +8,7 @@ local Attached = false
 RegisterNetEvent("inventory:Tow")
 AddEventHandler("inventory:Tow",function(Selected)
 	local Ped = PlayerPedId()
+	local Selected = Selected[3]
 	local Vehicle = GetLastDrivenVehicle()
 	if DoesEntityExist(Selected) and DoesEntityExist(Vehicle) and not Entity(Selected)["state"]["Tower"] and GetEntityArchetypeName(Vehicle) == "flatbed" and not IsPedInAnyVehicle(Ped) then
 		local Coords = GetEntityCoords(Selected)

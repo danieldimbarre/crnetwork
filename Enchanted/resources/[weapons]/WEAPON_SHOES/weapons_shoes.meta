@@ -226,8 +226,8 @@
 					<NetworkPlayerDamageModifier value="1.000000" />
 					<NetworkPedDamageModifier value="1.000000" />
 					<NetworkHeadShotPlayerDamageModifier value="1.000000" />
-					<LockOnRange value="35.000000" />
-					<WeaponRange value="40.000000" />
+					<LockOnRange value="25.000000" />
+					<WeaponRange value="50.000000" />
 					<BulletDirectionOffsetInDegrees value="0.000000" />
 					<AiSoundRange value="-1.000000" />
 					<AiPotentialBlastEventRange value="-1.000000" />

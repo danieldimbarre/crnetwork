@@ -3,39 +3,39 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
 	["cocaine"] = {
-		["Timer"] = 10,
-		["Percentage"] = 90,
+		["Timer"] = 15,
+		["Percentage"] = 900,
 		["Price"] = { ["Min"] = 75, ["Max"] = 100 },
 		["Amount"] = { ["Min"] = 2, ["Max"] = 4 }
 	},
 	["meth"] = {
-		["Timer"] = 10,
-		["Percentage"] = 90,
+		["Timer"] = 15,
+		["Percentage"] = 900,
 		["Price"] = { ["Min"] = 75, ["Max"] = 100 },
 		["Amount"] = { ["Min"] = 2, ["Max"] = 4 }
 	},
 	["joint"] = {
-		["Timer"] = 10,
-		["Percentage"] = 90,
+		["Timer"] = 15,
+		["Percentage"] = 900,
 		["Price"] = { ["Min"] = 75, ["Max"] = 100 },
 		["Amount"] = { ["Min"] = 2, ["Max"] = 4 }
 	},
 	["cokesack"] = {
 		["Timer"] = 30,
-		["Percentage"] = 75,
+		["Percentage"] = 725,
 		["Price"] = { ["Min"] = 500, ["Max"] = 625 },
 		["Amount"] = { ["Min"] = 1, ["Max"] = 1 }
 	},
 	["methsack"] = {
 		["Timer"] = 30,
-		["Percentage"] = 75,
+		["Percentage"] = 725,
 		["Price"] = { ["Min"] = 500, ["Max"] = 625 },
 		["Amount"] = { ["Min"] = 1, ["Max"] = 1 }
 	},
 	["weedsack"] = {
 		["Timer"] = 30,
-		["Percentage"] = 75,
-		["Price"] = { ["Min"] = 975, ["Max"] = 1225 },
+		["Percentage"] = 725,
+		["Price"] = { ["Min"] = 500, ["Max"] = 625 },
 		["Amount"] = { ["Min"] = 1, ["Max"] = 1 }
 	}
 }
@@ -71,23 +71,51 @@ function Creative.PaymentDrugs()
 	if Passport and not Active[Passport] and Drugs[Passport] and vRP.TakeItem(Passport,Drugs[Passport][1],Drugs[Passport][2]) then
 		Active[Passport] = true
 
-		local Experience = vRP.GetExperience(Passport,"Traffic")
-		local Level = ClassCategory(Experience)
-		local Valuation = Drugs[Passport][3] + (Percentage(Drugs[Passport][3],Level) * 3)
+		local GainExperience = 2
+		local Amount = Drugs[Passport][3]
+		local Experience,Level = vRP.GetExperience(Passport,"Traffic")
+		local Valuation = Amount + Amount * (0.05 * Level)
 
-		if Buffs["Dexterity"][Passport] and Buffs["Dexterity"][Passport] > os.time() then
+		if exports["inventory"]:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 
-		TriggerClientEvent("player:Residuals",source,"Resíduo de Orgânicos.")
-		vRP.GenerateItem(Passport,"dirtydollar",Valuation,true)
-		vRP.PutExperience(Passport,"Traffic",2)
+		if vRP.UserPremium(Passport) then
+			local Bonification = 0.050
+			local Hierarchy = vRP.LevelPremium(source)
 
-		if math.random(100) >= Drugs[Passport][4] then
-			TriggerEvent("Wanted",source,Passport,60)
-			exports["markers"]:Enter(source,"Traficante",Passport,30)
-			vRP.CallPolice(source,Passport,false,"Policia","Venda de Drogas",false,60,20,16)
+			if Hierarchy == 1 then
+				Bonification = 0.100
+			elseif Hierarchy == 2 then
+				Bonification = 0.075
+			end
+
+			GainExperience = GainExperience + 1
+			Valuation = Valuation + (Valuation * Bonification)
 		end
+
+		local SprayPermission = vRPC.SprayExist(source)
+		if SprayPermission and vRP.HasService(Passport,SprayPermission) then
+			Valuation = Valuation + (Valuation * 0.25)
+			GainExperience = GainExperience + 1
+		end
+
+		TriggerClientEvent("player:Residuals",source,"Resíduo de Orgânicos")
+		vRP.GenerateItem(Passport,"dirtydollar",Valuation,true)
+		vRP.PutExperience(Passport,"Traffic",GainExperience)
+		vRP.UpgradeStress(Passport,1)
+
+		exports["vrp"]:CallPolice({
+			["Source"] = source,
+			["Passport"] = Passport,
+			["Permission"] = "Policia",
+			["Name"] = "Venda de Drogas",
+			["Percentage"] = Drugs[Passport][4],
+			["Marker"] = 30,
+			["Wanted"] = 60,
+			["Code"] = 20,
+			["Color"] = 16
+		})
 
 		Active[Passport] = nil
 		Drugs[Passport] = nil

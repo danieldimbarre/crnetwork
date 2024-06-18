@@ -24,13 +24,37 @@ function Creative.Finish(Number,Points)
 	local Passport = vRP.Passport(source)
 	if Passport and Races[Number] then
 		if Active[Passport] then
-			local Experience = vRP.GetExperience(Passport,"Race")
-			local Level = ClassCategory(Experience)
-			local Valuation = Races[Number]["Price"] + (Percentage(Races[Number]["Price"],Level) * 3)
-
 			Active[Passport] = nil
+
+			local GainExperience = 8
+			local Price = Races[Number]["Price"]
+			local MinCalculate = parseInt(Price * 0.75)
+			local MaxCalculate = parseInt(Price * 1.25)
+			local Amount = math.random(MinCalculate,MaxCalculate)
+			local Experience,Level = vRP.GetExperience(Passport,"Race")
+			local Valuation = Amount + Amount * (0.025 * Level)
+
+			if exports["inventory"]:Buffs("Dexterity",Passport) then
+				Valuation = Valuation + (Valuation * 0.1)
+			end
+
+			if vRP.UserPremium(Passport) then
+				local Bonification = 0.05
+				local Hierarchy = vRP.LevelPremium(source)
+
+				if Hierarchy == 1 then
+					Bonification = 0.100
+				elseif Hierarchy == 2 then
+					Bonification = 0.075
+				end
+
+				GainExperience = GainExperience + 4
+				Valuation = Valuation + (Valuation * Bonification)
+			end
+
+			vRP.UpgradeStress(Passport,5)
 			exports["markers"]:Exit(source,Passport)
-			vRP.PutExperience(Passport,"Race",ExperienceRaces)
+			vRP.PutExperience(Passport,"Race",GainExperience)
 			vRP.GenerateItem(Passport,"dirtydollar",Valuation,true)
 
 			if Daily[Passport] and Daily[Passport] > 0 then
@@ -76,7 +100,7 @@ function Creative.Start(Number)
 		for Passports,Sources in pairs(Service) do
 			async(function()
 				vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-				TriggerClientEvent("Notify",Sources,"Circuitos","Encontramos um veículo participando de uma corrida clandestina e todos os policiais foram avisados.","amarelo",10000)
+				TriggerClientEvent("Notify",Sources,"Circuitos","Encontramos um veículo participando de uma corrida clandestina e todos os policiais foram avisados.","policia",10000)
 			end)
 		end
 	end

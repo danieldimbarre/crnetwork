@@ -22,6 +22,15 @@ RegisterCommand("painel",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and not Player(source)["state"]["Buttons"] and exports["chat"]:Open(source) then
 		local Permission = vRP.GetUserType(Passport,"Work")
+
+		if Message[1] then
+			Permission = Message[1]
+
+			if vRP.PainelBlock(Permission) or vRP.GroupType(Permission) == "Work" or not vRP.HasPermission(Passport,Permission) then
+				return false
+			end
+		end
+
 		if Permission then
 			local Members = {}
 			local Entitys = vRP.DataGroups(Permission)
@@ -43,7 +52,7 @@ RegisterCommand("painel",function(source,Message)
 						["id"] = OtherPassport,
 						["online"] = OtherSource,
 						["name"] = Identity["Name"].." "..Identity["Lastname"],
-						["role"] = Hierarchy[Number],
+						["role"] = Hierarchy[Number] or "Membro",
 						["phone"] = Activated,
 						["role_id"] = Number
 					}
@@ -63,8 +72,8 @@ function Creative.Dismiss(OtherPassport)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Information[Passport] and Passport ~= OtherPassport and vRP.HasGroup(Passport,Information[Passport],2) and vRP.HasPermission(OtherPassport,Information[Passport]) >= 2 then
-		vRP.RemovePermission(OtherPassport,Information[Passport])
 		TriggerClientEvent("Notify",source,"Sucesso","Passaporte removido.","verde",5000)
+		vRP.RemovePermission(OtherPassport,Information[Passport])
 
 		return true
 	end
@@ -86,7 +95,8 @@ function Creative.Invite(OtherPassport)
 			return false
 		end
 
-		local GroupType = vRP.GroupType(Information[Passport])
+		local Permission = Information[Passport]
+		local GroupType = vRP.GroupType(Permission)
 
 		if GroupType == "Work" and Identity["Groups"] >= os.time() then
 			TriggerClientEvent("Notify",source,"Atenção","O passaporte escolhido não pode ser convidado para um grupo no momento.","amarelo",5000)
@@ -95,30 +105,24 @@ function Creative.Invite(OtherPassport)
 		end
 
 		if not GroupType or GroupType ~= "Work" or (GroupType == "Work" and not vRP.GetUserType(OtherPassport,"Work")) then
-			if vRP.Request(OtherSource,"Grupos","Você foi convidado(a) para participar do grupo <b>"..Information[Passport].."</b>, gostaria de estar entrando do mesmo?") then
-				if GroupType == "Work" then
-					vRP.SetGroupsTimer(OtherPassport)
-				end
-
-				vRP.SetPermission(OtherPassport,Information[Passport])
+			if vRP.Request(OtherSource,"Grupos","Você foi convidado(a) para participar do grupo <b>"..Permission.."</b>, gostaria de estar entrando do mesmo?") then
+				vRP.SetPermission(OtherPassport,Permission)
 				TriggerClientEvent("Notify",source,"Sucesso","Passaporte adicionado.","verde",5000)
 
-				local Hierarchy = vRP.Hierarchy(Information[Passport])
-				local Number = vRP.HasPermission(OtherPassport,Information[Passport])
+				local Calculated = Dotted(NumberMinutes(os.time() - Identity["Login"]))
+				local Number = vRP.HasPermission(OtherPassport,Permission)
+				local Activated = "Inativo a "..Calculated.." minutos."
 
-				if Information[Passport] == "Policia" then
-					local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport, Vehicle = "polchar" })
-					if not Vehicle[1] then
-						vRP.Query("vehicles/addVehicles",{ Passport = OtherPassport, Vehicle = "polchar", Plate = vRP.GeneratePlate(), Work = 0 })
-					end
+				if OtherSource then
+					Activated = "Ativo a "..Calculated.." minutos."
 				end
 
 				return {
 					["id"] = OtherPassport,
 					["online"] = vRP.Source(OtherPassport),
 					["name"] = Identity["Name"].." "..Identity["Lastname"],
-					["phone"] = Identity["Phone"],
-					["role"] = Hierarchy[Number],
+					["phone"] = Activated,
+					["role"] = vRP.NameHierarchy(Permission,Number),
 					["role_id"] = Number
 				}
 			else
@@ -137,18 +141,14 @@ end
 function Creative.Hierarchy(OtherPassport,Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Information[Passport] and Passport ~= OtherPassport and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,Information[Passport],2) then
-		local Hierarchy = vRP.Hierarchy(Information[Passport])
-		if (Mode == "Promote" and vRP.HasPermission(OtherPassport,Information[Passport]) <= 2) or (Mode == "Demote" and vRP.HasPermission(OtherPassport,Information[Passport]) >= #Hierarchy) then
-			return false
-		end
-
+	if Passport and Information[Passport] and Passport ~= OtherPassport and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,Information[Passport],2) and ((Mode == "Demote" and vRP.HasPermission(OtherPassport,Information[Passport]) >= 2) or (Mode ~= "Demote" and vRP.HasPermission(OtherPassport,Information[Passport]) > 2)) then
 		vRP.SetPermission(OtherPassport,Information[Passport],nil,Mode)
 		TriggerClientEvent("Notify",source,"Sucesso","Hierarquia atualizada.","verde",5000)
 
-		local Number = vRP.HasPermission(OtherPassport,Information[Passport])
+		local Permission = Information[Passport]
+		local Number = vRP.HasPermission(OtherPassport,Permission)
 
-		return { Hierarchy[Number],Number }
+		return { vRP.NameHierarchy(Permission,Number),Number }
 	end
 
 	return false

@@ -6217,7 +6217,7 @@ local List = {
 		["Gemstone"] = 6000,
 		["Class"] = "Importados"
 	},
-	["skyliner342"] = {
+	["skyliner34"] = {
 		["Name"] = "Nissan GTR R34",
 		["Weight"] = 50,
 		["Price"] = 200000,
@@ -6390,7 +6390,7 @@ local List = {
 		["Weight"] = 60,
 		["Price"] = 250000,
 		["Mode"] = "Cars",
-		["Gemstone"] = 45000,
+		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
 		["Stock"] = 3
 	},
@@ -6399,7 +6399,7 @@ local List = {
 		["Weight"] = 60,
 		["Price"] = 250000,
 		["Mode"] = "Cars",
-		["Gemstone"] = 45000,
+		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
 		["Stock"] = 3
 	},
@@ -6408,7 +6408,7 @@ local List = {
 		["Weight"] = 60,
 		["Price"] = 250000,
 		["Mode"] = "Cars",
-		["Gemstone"] = 45000,
+		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
 		["Stock"] = 3
 	},
@@ -6417,7 +6417,7 @@ local List = {
 		["Weight"] = 60,
 		["Price"] = 250000,
 		["Mode"] = "Cars",
-		["Gemstone"] = 45000,
+		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
 		["Stock"] = 3
 	},
@@ -6426,7 +6426,7 @@ local List = {
 		["Weight"] = 60,
 		["Price"] = 250000,
 		["Mode"] = "Cars",
-		["Gemstone"] = 45000,
+		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
 		["Stock"] = 3
 	},
@@ -6633,8 +6633,7 @@ local List = {
 		["Class"] = "Empregos"
 	},
 
-
---sem classe ainda 
+--sem classe ainda
 	["wheelchair"] = {
 		["Name"] = "Cadeira de Rodas",
 		["Weight"] = 0,
@@ -6930,99 +6929,59 @@ local List = {
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
 		["Class"] = "Clássicos"
-	},
-	["corollapol"] = {
-		["Name"] = "Corolla",
-		["Weight"] = 50,
-		["Price"] = 1000,
-		["Mode"] = "Work",
-		["Gemstone"] = 0,
-		["Class"] = "Empregos"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VEHICLEGLOBAL
+-- VEHICLELIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function VehicleGlobal()
+function VehicleList()
 	return List
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEEXIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleExist(Name)
-	if List[Name] then
-		return true
-	end
-
-	return false
+	return List[Name] or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLENAME
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleName(Name)
-	if List[Name] and List[Name]["Name"] then
-		return List[Name]["Name"]
-	end
-
-	return false
+	return List[Name] and List[Name]["Name"] or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VEHICLECHEST
+-- VEHICLEWEIGHT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function VehicleChest(Name)
-	if List[Name] and List[Name]["Weight"] then
-		return List[Name]["Weight"]
-	end
-
-	return 0
+function VehicleWeight(Name)
+	return List[Name] and List[Name]["Weight"] or 0
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEPRICE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehiclePrice(Name)
-	if List[Name] and List[Name]["Price"] then
-		return List[Name]["Price"]
-	end
-
-	return 0
+	return List[Name] and List[Name]["Price"] or 0
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEMODE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleMode(Name)
-	if List[Name] and List[Name]["Mode"] then
-		return List[Name]["Mode"]
-	end
-
-	return false
+	return List[Name] and List[Name]["Mode"] or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEGEMSTONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleGemstone(Name)
-	if List[Name] and List[Name]["Gemstone"] then
-		return List[Name]["Gemstone"]
-	end
-
-	return 0
+	return List[Name] and List[Name]["Gemstone"] or 0
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLECLASS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleClass(Name)
-	if List[Name] and List[Name]["Class"] then
-		return List[Name]["Class"]
-	end
-
-	return "Desconhecido"
+	return List[Name] and List[Name]["Class"] or "Desconhecido"
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLESTOCK
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleStock(Name)
-	if List[Name] and List[Name]["Stock"] then
-		return List[Name]["Stock"]
-	end
-
-	return 999999
+	return List[Name] and List[Name]["Stock"] or 999999
 end

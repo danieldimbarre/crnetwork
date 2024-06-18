@@ -36,9 +36,19 @@ local List = {
 		["Coords"] = vec4(778.49,-395.89,33.43,99.22),
 		["Model"] = "g_m_y_salvagoon_01",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- PawnShop
+		["Distance"] = 50,
+		["Coords"] = vec4(144.11,-1721.57,29.28,136.07),
+		["Model"] = "u_m_o_finguru_01",
+		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- Towed
+		["Distance"] = 50,
+		["Coords"] = vec4(408.91,-1622.75,29.28,232.45),
+		["Model"] = "u_m_o_finguru_01",
+		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Concessionária
 		["Distance"] = 25,
-		["Coords"] = vec4(-34.14,-1667.05,29.49,48.19),
+		["Coords"] = vec4(-56.98,-1098.79,26.42,25.52),
 		["Model"] = "player_zero",
 		["Anim"] = { "amb@prop_human_bum_shopping_cart@male@base","base" }
 	},{ -- Bus
@@ -46,10 +56,35 @@ local List = {
 		["Coords"] = vec4(453.47,-602.34,28.59,266.46),
 		["Model"] = "a_m_y_business_02",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- Hotel
+		["Distance"] = 50,
+		["Coords"] = vec4(-772.76,312.81,85.7,181.42),
+		["Model"] = "s_m_y_doorman_01",
+		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Grime
 		["Distance"] = 50,
 		["Coords"] = vec4(68.99,127.46,79.21,158.75),
 		["Model"] = "s_m_m_postal_01",
+		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- Megamall
+		["Distance"] = 50,
+		["Coords"] = vec4(46.7,-1749.71,29.62,51.03),
+		["Model"] = "ig_dale",
+		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- Clandestine
+		["Distance"] = 50,
+		["Coords"] = vec4(179.9,2779.98,45.7,189.93),
+		["Model"] = "csb_paige",
+		["Anim"] = { "amb@lo_res_idles@","world_human_lean_male_foot_up_lo_res_base" }
+	},{ -- MoneyWash
+		["Distance"] = 50,
+		["Coords"] = vec4(68.93,-1569.81,29.59,48.19),
+		["Model"] = "a_m_m_soucent_03",
+		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- Eletronics
+		["Distance"] = 50,
+		["Coords"] = vec4(224.59,-1511.14,29.28,223.94),
+		["Model"] = "ig_dale",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Taxi
 		["Distance"] = 50,
@@ -241,21 +276,6 @@ local List = {
 		["Coords"] = vec4(114.49,-5.03,67.82,206.93),
 		["Model"] = "u_m_y_baygor",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Recycling Sell
-		["Distance"] = 50,
-		["Coords"] = vec4(-428.54,-1728.29,19.78,70.87),
-		["Model"] = "s_m_y_garbage",
-		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Recycling Sell
-		["Distance"] = 50,
-		["Coords"] = vec4(180.07,2793.29,45.65,283.47),
-		["Model"] = "s_m_y_garbage",
-		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Recycling Sell
-		["Distance"] = 50,
-		["Coords"] = vec4(-195.42,6264.62,31.49,42.52),
-		["Model"] = "s_m_y_garbage",
-		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Jewelry
 		["Distance"] = 15,
 		["Coords"] = vec4(-628.79,-238.7,38.05,311.82),
@@ -276,24 +296,9 @@ local List = {
 		["Coords"] = vec4(1961.61,5179.26,47.94,277.8),
 		["Model"] = "a_m_o_ktown_01",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Lixeiro
-		["Distance"] = 50,
-		["Coords"] = vec4(-351.65,-1566.27,25.22,297.64),
-		["Model"] = "s_m_y_garbage",
-		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Lixeiro
-		["Distance"] = 50,
-		["Coords"] = vec4(287.77,2843.9,44.7,121.89),
-		["Model"] = "s_m_y_garbage",
-		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Lixeiro
-		["Distance"] = 50,
-		["Coords"] = vec4(-413.97,6171.58,31.48,320.32),
-		["Model"] = "s_m_y_garbage",
-		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Caçador
 		["Distance"] = 10,
-		["Coords"] = vec4(-679.13,5839.52,17.32,226.78),
+		["Coords"] = vec4(-679.14,5834.37,17.32,127.56),
 		["Model"] = "ig_hunter",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Caçador

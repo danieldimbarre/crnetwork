@@ -31,31 +31,7 @@ Use = {
 				TriggerClientEvent("Notify",source,"Atenção","Não pode utilizar de vida cheia.","amarelo",5000)
 			end
 		else
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde <b>"..Healths[Passport] - os.time().."</b> segundos.","amarelo",5000)
-		end
-	end,
-
-	["chip"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		TriggerClientEvent("inventory:Close",source)
-
-		local Keyboard = vKEYBOARD.Secondary(source,"Três primeiros digitos","Três ultimos digitos")
-		if Keyboard then
-			local Primary = sanitizeString(Keyboard[1],"0123456789",true)
-			local Secondary = sanitizeString(Keyboard[2],"0123456789",true)
-
-			if string.len(Primary) == 3 and string.len(Secondary) == 3 then
-				if not vRP.UserPhone(Primary.."-"..Secondary) then
-					if vRP.TakeItem(Passport,Full,1,true,Slot) then
-						vRP.Query("characters/UpdatePhone",{ Phone = Primary.."-"..Secondary, Passport = Passport })
-						TriggerEvent("smartphone:updatePhoneNumber",Passport,Primary.."-"..Secondary)
-						TriggerClientEvent("Notify",source,false,"Número atualizado.","verde",5000)
-					end
-				else
-					TriggerClientEvent("Notify",source,false,"Número existente.","amarelo",5000)
-				end
-			else
-				TriggerClientEvent("Notify",source,false,"Necessário possuir 6 números.","amarelo",5000)
-			end
+			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","amarelo",5000)
 		end
 	end,
 
@@ -87,16 +63,21 @@ Use = {
 				TriggerClientEvent("Notify",source,"Aviso","Não pode utilizar de vida cheia.","amarelo",5000)
 			end
 		else
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde <b>"..Healths[Passport] - os.time().."</b> segundos.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","amarelo",5000)
+		end
+	end,
+
+	["odb2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if vRP.InsideVehicle(source) then
+			TriggerClientEvent("notebook:Open",source)
+			TriggerClientEvent("inventory:Close",source)
 		end
 	end,
 
 	["vehkey"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Vehicle,Network,Plate = vRPC.VehicleList(source)
-		if Vehicle then
-			if Plate == Split[2] then
-				TriggerEvent("garages:LockVehicle",source,Network)
-			end
+		if Vehicle and Plate == Split[2] then
+			TriggerEvent("garages:LockVehicle",source,Network)
 		end
 	end,
 
@@ -126,38 +107,31 @@ Use = {
 		end
 	end,
 
+	["notepad"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if Split and Split[3] then
+			local Name = "notepad:"..Split[3]
+			local Message = vRP.GetSrvData(Name,true)
+
+			TriggerClientEvent("notepad:Open",source,Name,Message)
+			TriggerClientEvent("inventory:Close",source)
+		end
+	end,
+
 	["suitcase"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split and Split[3] then
-			TriggerClientEvent("chest:Open",source,"suitcase:"..Split[3],"Item")
-			TriggerClientEvent("inventory:Close",source)
+			TriggerClientEvent("chest:Open",source,"suitcase:"..Split[3],"Item",false,false,true)
 		end
 	end,
 
 	["treasurebox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split and Split[3] then
-			TriggerClientEvent("chest:Open",source,"treasurebox:"..Split[3],"Item",Full,true)
-			TriggerClientEvent("inventory:Close",source)
+			TriggerClientEvent("chest:Open",source,"treasurebox:"..Split[3],"Item",Full,true,true)
 		end
 	end,
 
-	["backpackp"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	["medicbag"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split and Split[3] then
-			TriggerClientEvent("chest:Open",source,"backpackp:"..Split[3],"Item")
-			TriggerClientEvent("inventory:Close",source)
-		end
-	end,
-
-	["backpackm"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if Split and Split[3] then
-			TriggerClientEvent("chest:Open",source,"backpackm:"..Split[3],"Item")
-			TriggerClientEvent("inventory:Close",source)
-		end
-	end,
-
-	["backpackg"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if Split and Split[3] then
-			TriggerClientEvent("chest:Open",source,"backpackg:"..Split[3],"Item")
-			TriggerClientEvent("inventory:Close",source)
+			TriggerClientEvent("chest:Open",source,"medicbag:"..Split[3],"Item",false,false,true)
 		end
 	end,
 
@@ -187,28 +161,6 @@ Use = {
 				vRP.UpgradeNames(Passport,Keyboard[1],Keyboard[2])
 			end
 		end
-	end,
-
-	["dirtydollar"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Active[Passport] = os.time() + 10
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Usando",10000)
-		vRPC.playAnim(source,false,{"amb@world_human_bum_wash@male@high@base","base"},true)
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				vRPC.Destroy(source)
-				Active[Passport] = nil
-				Player(source)["state"]["Buttons"] = false
-
-				if vRP.TakeItem(Passport,Full,1000,true,Slot) then
-					vRP.GenerateItem(Passport,"wetdollar",1000)
-				end
-			end
-
-			Wait(100)
-		until not Active[Passport]
 	end,
 
 	["soap"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -251,8 +203,6 @@ Use = {
 
 					if vRP.TakeItem(Passport,Full,1,true,Slot) then
 						vRP.WeedTimer(Passport,120)
-						vRP.DowngradeThirst(Passport,40)
-						vRP.DowngradeHunger(Passport,40)
 						vRP.DowngradeStress(Passport,20)
 						TriggerClientEvent("Joint",source)
 					end
@@ -313,7 +263,7 @@ Use = {
 		Active[Passport] = os.time() + 15
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Tomando",15000)
+		TriggerClientEvent("Progress",source,"Fumando",15000)
 		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
 
 		repeat
@@ -358,7 +308,7 @@ Use = {
 
 	["meth"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Armors[Passport] and os.time() < Armors[Passport] then
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde <b>"..Armors[Passport] - os.time().."</b> segundos.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Armors[Passport] - os.time())..".","amarelo",5000)
 			return
 		end
 
@@ -456,7 +406,7 @@ Use = {
 				TriggerClientEvent("Notify",source,"Aviso","Não pode utilizar de vida cheia.","amarelo",5000)
 			end
 		else
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde <b>"..Healths[Passport] - os.time().."</b> segundos.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","amarelo",5000)
 		end
 	end,
 
@@ -577,7 +527,7 @@ Use = {
 								weedStr = "Alto"
 							end
 
-							TriggerClientEvent("Notify",source,"Informações","<b>Químicos:</b> "..chemStr.."<br><b>Álcool:</b> "..alcoholStr.."<br><b>Drogas:</b> "..weedStr,"azul",8000)
+							TriggerClientEvent("Notify",source,"Informações","<b>Químicos:</b> "..chemStr.."<br><b>Álcool:</b> "..alcoholStr.."<br><b>Drogas:</b> "..weedStr,"roxo",8000)
 						end
 					end
 
@@ -612,8 +562,10 @@ Use = {
 						Player(source)["state"]["Buttons"] = false
 
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							local Vehicle = NetworkGetEntityFromNetworkId(Network)
-							Entity(Vehicle)["state"]:set("Nitro",2000,true)
+							local Networked = NetworkGetEntityFromNetworkId(Network)
+							if DoesEntityExist(Networked) then
+								Entity(Networked)["state"]:set("Nitro",2000,true)
+							end
 						end
 					end
 
@@ -632,7 +584,7 @@ Use = {
 
 	["vest"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Armors[Passport] and os.time() < Armors[Passport] then
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde <b>"..Armors[Passport] - os.time().."</b> segundos.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Armors[Passport] - os.time())..".","amarelo",5000)
 			return
 		end
 
@@ -711,9 +663,8 @@ Use = {
 								end
 
 								local Number = parseInt(Split[2]) - 1
-
 								if Number >= 1 then
-									vRP.GiveItem(Passport,"advtoolbox-"..Number,1,false)
+									vRP.GiveItem(Passport,"advtoolbox-"..Number,1,false,Slot)
 								end
 							end
 						end
@@ -790,16 +741,18 @@ Use = {
 
 	["circuit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if not Player(source)["state"]["Handcuff"] then
-			TriggerClientEvent("inventory:Close",source)
-
 			local Vehicle,Network,Plate = vRPC.VehicleList(source)
 			if Vehicle and Plate and (Boosting[Plate] and vRP.InsideVehicle(source) and Boosting[Plate]["Amount"] < 10) then
-				if (not Travel[Passport] or #(vRP.GetEntityCoords(source) - Travel[Passport]) > 100) then
-					exports["markers"]:Enter(source,"Boosting",Passport,30)
+				if (not Travel[Passport] or #(vRP.GetEntityCoords(source) - Travel[Passport]) >= 100) then
+					TriggerClientEvent("inventory:Close",source)
 
 					if vDEVICE.Device(source,30) then
+						if Boosting[Plate]["Class"] >= 4 then
+							exports["markers"]:Enter(source,"Boosting",1,Passport,60)
+						end
+
+						vRP.UpgradeStress(Passport,3)
 						Travel[Passport] = vRP.GetEntityCoords(source)
-						exports["markers"]:Enter(source,"Boosting",Passport,60)
 						Boosting[Plate]["Amount"] = Boosting[Plate]["Amount"] + 1
 
 						if Boosting[Plate]["Amount"] >= 10 then
@@ -819,6 +772,7 @@ Use = {
 					end
 				end
 			else
+				TriggerClientEvent("inventory:Close",source)
 				TriggerClientEvent("boosting:Open",source)
 			end
 		end
@@ -834,82 +788,97 @@ Use = {
 
 				vRPC.AnimActive(source)
 				Active[Passport] = os.time() + 100
-				vGARAGE.RegisterDecors(source,Vehicle)
 				Player(source)["state"]["Buttons"] = true
 				TriggerClientEvent("inventory:Close",source)
+
 				local Networked = NetworkGetEntityFromNetworkId(Network)
 
 				if vRP.InsideVehicle(source) then
 					vGARAGE.StartHotwired(source)
 
-					if math.random(100) >= 25 then
-						local Coords = vRP.GetEntityCoords(source)
-						local Service = vRP.NumPermission("Policia")
-						for Passports,Sources in pairs(Service) do
-							async(function()
-								vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-								TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(Model).." - "..Plate, color = 44 })
-							end)
-						end
-					end
-
 					if vRP.Task(source,10,10000) then
-						TriggerEvent("Wanted",source,Passport,300)
-						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio.")
+						vGARAGE.RegisterDecors(source,Vehicle)
+						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio")
 
-						if not vRP.PassportPlate(Plate) then
-							Entity(Networked)["state"]:set("Lockpick",Passport,true)
-							Entity(Networked)["state"]:set("Fuel",100,true)
-							Entity(Networked)["state"]:set("Nitro",0,true)
-							SetVehicleDoorsLocked(Networked,1)
-						else
-							if math.random(100) >= 90 then
+						exports["vrp"]:CallPolice({
+							["Source"] = source,
+							["Passport"] = Passport,
+							["Permission"] = "Policia",
+							["Name"] = "Roubo de Veículo",
+							["Percentage"] = 250,
+							["Wanted"] = 300,
+							["Code"] = 31,
+							["Color"] = 44,
+							["Vehicle"] = VehicleName(Model).." - "..Plate
+						})
+
+						if DoesEntityExist(Networked) then
+							if not vRP.PassportPlate(Plate) then
+								Entity(Networked)["state"]:set("Lockpick",Passport,true)
+								Entity(Networked)["state"]:set("Fuel",100,true)
+								Entity(Networked)["state"]:set("Nitro",0,true)
+								SetVehicleDoorsLocked(Networked,1)
+							elseif math.random(100) >= 75 then
 								SetVehicleDoorsLocked(Networked,1)
 							end
 						end
 					end
 
-					vGARAGE.StopHotwired(source,Vehicle)
+					vGARAGE.StopHotwired(source)
 				else
 					vRPC.playAnim(source,false,{"missfbi_s4mop","clean_mop_back_player"},true)
 
-					if math.random(100) >= 25 then
-						local Coords = vRP.GetEntityCoords(source)
-						local Service = vRP.NumPermission("Policia")
-						for Passports,Sources in pairs(Service) do
-							async(function()
-								vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-								TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(Model).." - "..Plate, color = 44 })
-							end)
-						end
-					end
-
 					if vRP.Task(source,10,10000) then
+						Active[Passport] = os.time() + 15
+						vGARAGE.RegisterDecors(source,Vehicle)
+						TriggerClientEvent("Progress",source,"Destravando",15000)
+						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio")
+
+						exports["vrp"]:CallPolice({
+							["Source"] = source,
+							["Passport"] = Passport,
+							["Permission"] = "Policia",
+							["Name"] = "Roubo de Veículo",
+							["Percentage"] = 250,
+							["Wanted"] = 300,
+							["Code"] = 31,
+							["Color"] = 44,
+							["Vehicle"] = VehicleName(Model).." - "..Plate
+						})
+
 						if Dismantle[Plate] then
 							TriggerClientEvent("dismantle:Dispatch",source)
-							TriggerClientEvent("target:Dismantle",source,Model)
 						end
 
 						if Boosting[Plate] then
 							TriggerClientEvent("boosting:Dispatch",source)
 						end
 
-						TriggerEvent("Wanted",source,Passport,300)
-						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio.")
+						repeat
+							if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+								Active[Passport] = nil
 
-						if not vRP.PassportPlate(Plate) then
-							if not Dismantle[Plate] then
-								Entity(Networked)["state"]:set("Fuel",100,true)
-								Entity(Networked)["state"]:set("Nitro",0,true)
+								if Dismantle[Plate] then
+									TriggerClientEvent("target:Dismantle",source,Model)
+								end
+
+								if DoesEntityExist(Networked) then
+									if not vRP.PassportPlate(Plate) then
+										if not Dismantle[Plate] then
+											Entity(Networked)["state"]:set("Fuel",100,true)
+											Entity(Networked)["state"]:set("Nitro",0,true)
+										end
+
+										Entity(Networked)["state"]:set("Lockpick",Passport,true)
+										SetVehicleDoorsLocked(Networked,1)
+									elseif math.random(100) >= 75 then
+										SetVehicleDoorsLocked(Networked,1)
+									end
+								end
 							end
 
-							Entity(Networked)["state"]:set("Lockpick",Passport,true)
-							SetVehicleDoorsLocked(Networked,1)
-						else
-							if math.random(100) >= 90 then
-								SetVehicleDoorsLocked(Networked,1)
-							end
-						end
+							Wait(100)
+						until not Active[Passport]
 					end
 				end
 
@@ -917,80 +886,15 @@ Use = {
 				Active[Passport] = nil
 				vRPC.Destroy(source)
 
-				local Percentage = 850
-				if vRP.UserPremium(Passport) then
-					local Hierarchy = vRP.LevelPremium(source)
-
-					if Hierarchy == 1 then
-						Percentage = 950
-					elseif Hierarchy == 2 then
-						Percentage = 900
-					end
-				end
-
-				if math.random(1000) >= Percentage then
+				if math.random(1000) >= 875 then
 					vRP.RemoveItem(Passport,Full,1,true)
-				end
-			else
-				local Coords = vRP.GetEntityCoords(source)
-				local Name = exports["propertys"]:Proximity(Coords)
-
-				if Name then
-					TriggerClientEvent("inventory:Close",source)
-					vRPC.playAnim(source,false,{"missheistfbi3b_ig7","lift_fibagent_loop"},false)
-
-					if vRP.HasService(Passport,"Policia") or vRP.Task(source,10,10000) then
-						if not Property[Name] then
-							local Consult = vRP.Query("propertys/Exist",{ Name = Name })
-							if Consult[1] then
-								Property[Name] = Consult[1]["Interior"]
-							else
-								local Informations = exports["propertys"]:Informations()
-								Property[Name] = Informations[math.random(#Informations)]
-							end
-						end
-
-						if exports["party"]:DoesExist(Passport) then
-							local Members = exports["party"]:Room(Passport,source,5)
-							for _,v in pairs(Members) do
-								if vRP.Passport(v["Source"]) then
-									TriggerClientEvent("propertys:Enter",v["Source"],Name,Property[Name])
-								end
-							end
-						else
-							TriggerClientEvent("propertys:Enter",source,Name,Property[Name])
-						end
-					else
-						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio.")
-						vRP.CallPolice(source,Passport,false,"Policia","Roubo a Propriedade",false,300,31,44)
-					end
-
-					local Percentage = 850
-					if vRP.UserPremium(Passport) then
-						local Hierarchy = vRP.LevelPremium(source)
-
-						if Hierarchy == 1 then
-							Percentage = 950
-						elseif Hierarchy == 2 then
-							Percentage = 900
-						end
-					end
-
-					if math.random(1000) >= Percentage then
-						vRP.RemoveItem(Passport,Full,1,true)
-					end
-
-					vRPC.Destroy(source)
 				end
 			end
 		else
-			if vRP.Task(source,5,2500) then
-				Player(source)["state"]["Handcuff"] = false
-				Player(source)["state"]["Commands"] = false
-				TriggerClientEvent("sounds:Private",source,"uncuff",0.5)
-			end
-
 			vRP.RemoveItem(Passport,Full,1,true)
+			Player(source)["state"]["Handcuff"] = false
+			Player(source)["state"]["Commands"] = false
+			TriggerClientEvent("sounds:Private",source,"uncuff",0.5)
 		end
 	end,
 
@@ -1025,6 +929,83 @@ Use = {
 		TriggerClientEvent("postit:initPostit",source)
 	end,
 
+	["coffeemilk"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 10
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",10000)
+		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				Active[Passport] = nil
+				vRPC.Destroy(source,"one")
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
+	["water"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 5
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",5000)
+		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				Active[Passport] = nil
+				vRPC.Destroy(source,"one")
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeThirst(Passport,10)
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
+	["applejuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 10
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",10000)
+		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				Active[Passport] = nil
+				vRPC.Destroy(source,"one")
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
 	["orangejuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
 		Active[Passport] = os.time() + 10
@@ -1040,8 +1021,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
 				end
 			end
 
@@ -1064,9 +1048,12 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,45)
-					vRP.DowngradeStress(Passport,20)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					vRP.UpgradeThirst(Passport,40)
+					vRP.DowngradeStress(Passport,15)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
 				end
 			end
 
@@ -1089,8 +1076,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
 				end
 			end
 
@@ -1113,8 +1103,38 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
+	["lemonjuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 10
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",10000)
+		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				Active[Passport] = nil
+				vRPC.Destroy(source,"one")
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
 				end
 			end
 
@@ -1137,8 +1157,38 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
+	["blueberryjuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 10
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",10000)
+		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				Active[Passport] = nil
+				vRPC.Destroy(source,"one")
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
 				end
 			end
 
@@ -1161,8 +1211,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
 				end
 			end
 
@@ -1185,8 +1238,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
 				end
 			end
 
@@ -1194,7 +1250,34 @@ Use = {
 		until not Active[Passport]
 	end,
 
-	["coffee"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	["guaranajuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		vRPC.AnimActive(source)
+		Active[Passport] = os.time() + 10
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Bebendo",10000)
+		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				Active[Passport] = nil
+				vRPC.Destroy(source,"one")
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeThirst(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
+	["coffeecup"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
 		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
@@ -1209,31 +1292,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeStress(Passport,10)
-				end
-			end
-
-			Wait(100)
-		until not Active[Passport]
-	end,
-
-	["guarananatural"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 10
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Bebendo",10000)
-		vRPC.CreateObjects(source,"amb@world_human_drinking@coffee@male@idle_a","idle_c","prop_food_bs_juice02",49,28422,0.0,-0.01,-0.15,0.0,0.0,0.0)
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				Active[Passport] = nil
-				vRPC.Destroy(source,"one")
-				Player(source)["state"]["Buttons"] = false
-
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					vRP.UpgradeStress(Passport,7)
 				end
 			end
 
@@ -1256,8 +1315,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,3)
-					vRP.DowngradeStress(Passport,25)
+					vRP.DowngradeStress(Passport,20)
 				end
 			end
 
@@ -1280,8 +1338,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,3)
-					vRP.DowngradeStress(Passport,50)
+					vRP.DowngradeStress(Passport,40)
 				end
 			end
 
@@ -1352,20 +1409,20 @@ Use = {
 						{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 						{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
 						{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
-						{ ["Item"] = "anchovy", ["Chance"] = 90, ["Amount"] = 1 },
-						{ ["Item"] = "catfish", ["Chance"] = 90, ["Amount"] = 1 },
-						{ ["Item"] = "herring", ["Chance"] = 60, ["Amount"] = 1 },
-						{ ["Item"] = "yellowperch", ["Chance"] = 60, ["Amount"] = 1 },
-						{ ["Item"] = "salmon", ["Chance"] = 40, ["Amount"] = 1 },
-						{ ["Item"] = "smallshark", ["Chance"] = 15, ["Amount"] = 1 },
-						{ ["Item"] = "treasurebox", ["Chance"] = 3, ["Amount"] = 1 }
+						{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
+						{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 },
+						{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 },
+						{ ["Item"] = "yellowperch", ["Chance"] = 50, ["Amount"] = 1 },
+						{ ["Item"] = "salmon", ["Chance"] = 25, ["Amount"] = 1 }
 					})
+
+					vRP.UpgradeStress(Passport,1)
 
 					if vRP.CheckWeight(Passport,Result["Item"]) then
 						vRP.PutExperience(Passport,"Fisherman",1)
 						vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
 					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
 						exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
 					end
 				end
@@ -1395,12 +1452,12 @@ Use = {
 						{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 						{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
 						{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
-						{ ["Item"] = "anchovy", ["Chance"] = 90, ["Amount"] = 1 },
-						{ ["Item"] = "catfish", ["Chance"] = 90, ["Amount"] = 1 },
-						{ ["Item"] = "herring", ["Chance"] = 60, ["Amount"] = 1 },
-						{ ["Item"] = "yellowperch", ["Chance"] = 60, ["Amount"] = 1 },
-						{ ["Item"] = "salmon", ["Chance"] = 40, ["Amount"] = 1 },
-						{ ["Item"] = "smallshark", ["Chance"] = 15, ["Amount"] = 1 },
+						{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
+						{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 },
+						{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 },
+						{ ["Item"] = "yellowperch", ["Chance"] = 50, ["Amount"] = 1 },
+						{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 },
+						{ ["Item"] = "smallshark", ["Chance"] = 25, ["Amount"] = 1 },
 						{ ["Item"] = "treasurebox", ["Chance"] = 5, ["Amount"] = 1 }
 					})
 
@@ -1408,7 +1465,7 @@ Use = {
 						vRP.PutExperience(Passport,"Fisherman",1)
 						vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
 					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
 						exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
 					end
 				end
@@ -1421,37 +1478,12 @@ Use = {
 		end
 	end,
 
-	["coffeemilk"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Bebendo",5000)
-		vRPC.CreateObjects(source,"amb@world_human_aa_coffee@idle_a", "idle_a","p_amb_coffeecup_01",49,28422)
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				Active[Passport] = nil
-				vRPC.Destroy(source,"one")
-				Player(source)["state"]["Buttons"] = false
-
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,20)
-					vRP.UpgradeHunger(Passport,25)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
-				end
-			end
-
-			Wait(100)
-		until not Active[Passport]
-	end,
-
 	["pizzamozzarella"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","knjgh_pizzaslice1",49,60309)
 
 		repeat
@@ -1461,8 +1493,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -1472,10 +1507,10 @@ Use = {
 
 	["pizzabanana"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","knjgh_pizzaslice2",49,60309)
 
 		repeat
@@ -1485,8 +1520,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -1496,10 +1534,10 @@ Use = {
 
 	["pizzachocolate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","knjgh_pizzaslice3",49,60309)
 
 		repeat
@@ -1509,8 +1547,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -1520,10 +1561,10 @@ Use = {
 
 	["sushi"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
 
 		repeat
@@ -1533,8 +1574,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,35)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,20)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -1544,10 +1588,10 @@ Use = {
 
 	["nigirizushi"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
 
 		repeat
@@ -1557,8 +1601,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,35)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,20)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -1568,10 +1615,10 @@ Use = {
 
 	["calzone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
 
 		repeat
@@ -1581,32 +1628,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,40)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
-				end
-			end
+					vRP.UpgradeHunger(Passport,25)
 
-			Wait(100)
-		until not Active[Passport]
-	end,
-
-	["chickenfries"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
-		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				Active[Passport] = nil
-				vRPC.Destroy(source,"one")
-				Player(source)["state"]["Buttons"] = false
-
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,35)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -1616,10 +1642,10 @@ Use = {
 
 	["cookies"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
 
 		repeat
@@ -1629,32 +1655,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,35)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
-				end
-			end
+					vRP.UpgradeHunger(Passport,15)
 
-			Wait(100)
-		until not Active[Passport]
-	end,
-
-	["onionrings"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
-		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				Active[Passport] = nil
-				vRPC.Destroy(source,"one")
-				Player(source)["state"]["Buttons"] = false
-
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,35)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -1677,7 +1682,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,10)
+					vRP.UpgradeHunger(Passport,7)
 				end
 			end
 
@@ -1687,10 +1692,10 @@ Use = {
 
 	["hamburger2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_cs_burger_01",49,60309)
 
 		repeat
@@ -1700,8 +1705,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -1711,10 +1719,10 @@ Use = {
 
 	["hamburger3"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_cs_burger_01",49,60309)
 
 		repeat
@@ -1724,8 +1732,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,45)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,40)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -1757,72 +1768,476 @@ Use = {
 		end
 	end,
 
-	-- ["barrier"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-	-- 	local Hash = "bkr_prop_coke_table01a"
-	-- 	local Application,Coords,Heading = vRPC.ObjectControlling(source,Hash)
-	-- 	if Application then
-	-- 		local Number = 0
-	-- 		local Selected = "1"
+	["pistol_bench"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
 
-	-- 		repeat
-	-- 			Number = Number + 1
-	-- 			Selected = tostring(Number)
-	-- 		until not Objects[Selected]
+		local Hash = "gr_prop_gr_bench_02a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
 
-	-- 		Objects[Selected] = { Coords = Coords, Heading = Optimize(Heading), Object = Hash, Item = Full, Distance = 50, Mode = "1", Weight = 0.5 }
-
-	-- 		vRP.Archive("coordenadas.txt","Coords = "..Coords..", Heading = "..Optimize(Heading)..", Object = "..Hash..", Distance = 50, Weight = 0.5")
-
-	-- 		TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
-	-- 	end
-	-- end,
-
-	["barrier"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vCLIENT.CheckInterior(source) then
-			Player(source)["state"]["Buttons"] = true
-			TriggerClientEvent("inventory:Close",source)
-
-			local Hash = "prop_mp_barrier_02b"
-			local Application,Coords,Heading = vRPC.ObjectControlling(source,Hash)
-			if Application and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				local Number = 0
-				local Selected = "1"
-
-				repeat
-					Number = Number + 1
-					Selected = tostring(Number)
-				until not Objects[Selected]
-
-				Objects[Selected] = { Coords = Coords, Heading = Optimize(Heading), Object = Hash, Item = Full, Distance = 100, Mode = "1", Weight = 0.75 }
-				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+				return false
 			end
 
-			Player(source)["state"]["Buttons"] = false
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Craftings", Weight = 0.75, Bucket = GetPlayerRoutingBucket(source) }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
 		end
+
+		Player(source)["state"]["Buttons"] = false
 	end,
 
-	["medicbag"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not vCLIENT.CheckInterior(source) then
-			Player(source)["state"]["Buttons"] = true
-			TriggerClientEvent("inventory:Close",source)
+	["smg_bench"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
 
-			local Hash = "xm_prop_x17_bag_med_01a"
-			local Application,Coords,Heading = vRPC.ObjectControlling(source,Hash)
-			if Application and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				local Number = 0
-				local Selected = "1"
+		local Hash = "gr_prop_gr_bench_02b"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
 
-				repeat
-					Number = Number + 1
-					Selected = tostring(Number)
-				until not Objects[Selected]
-
-				Objects[Selected] = { Coords = Coords, Heading = Optimize(Heading), Object = Hash, Item = Full, Distance = 50, Mode = "2", Weight = 0.0 }
-				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+				return false
 			end
 
-			Player(source)["state"]["Buttons"] = false
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Craftings", Weight = 0.75, Bucket = GetPlayerRoutingBucket(source) }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
 		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["rifle_bench"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "xm3_prop_xm3_bench_04b"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Craftings", Weight = 0.75, Bucket = GetPlayerRoutingBucket(source) }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["drugs_bench"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_table_01b"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Craftings", Weight = 0.85, Bucket = GetPlayerRoutingBucket(source) }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["blueprint_bench"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "prop_tool_bench02"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash,90.0)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Craftings", Weight = 0.85, Bucket = GetPlayerRoutingBucket(source) }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["spikestrips"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "p_ld_stinger_s"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash,0.0,2.5)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Active = "Spikes", Bucket = GetPlayerRoutingBucket(source) }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["weedclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"weed",{ ["Min"] = 3, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["cokeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"coke",{ ["Min"] = 3, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["tomatoclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"tomato",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["passionclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"passion",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["tangeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"tange",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["orangeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"orange",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["appleclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"apple",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["grapeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"grape",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["lemonclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"lemon",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["bananaclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"banana",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["acerolaclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"acerola",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["strawberryclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"strawberry",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["blueberryclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"blueberry",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["coffeeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_weed_med_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["plants"]:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"coffee",{ ["Min"] = 4, ["Max"] = 6 })
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["barrier"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "prop_mp_barrier_02b"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Store", Weight = 0.75, Bucket = GetPlayerRoutingBucket(source) }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["storage25"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "prop_mb_cargo_04a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["storage50"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "prop_mb_cargo_04a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["storage75"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "prop_mb_cargo_04a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
 	end,
 
 	["hotdog"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1840,7 +2255,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,10)
+					vRP.UpgradeHunger(Passport,7)
 				end
 			end
 
@@ -1863,7 +2278,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,10)
+					vRP.UpgradeHunger(Passport,7)
 				end
 			end
 
@@ -1886,7 +2301,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,10)
+					vRP.UpgradeHunger(Passport,7)
 				end
 			end
 
@@ -1909,31 +2324,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,5)
-				end
-			end
-
-			Wait(100)
-		until not Active[Passport]
-	end,
-
-	["friesbacon"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
-		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_food_bs_chips",49,18905,0.10,0.0,0.08,150.0,320.0,160.0)
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				Active[Passport] = nil
-				vRPC.Destroy(source,"one")
-				Player(source)["state"]["Buttons"] = false
-
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,30)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,7)
 				end
 			end
 
@@ -1943,10 +2334,10 @@ Use = {
 
 	["milkshake"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Tomando",5000)
+		TriggerClientEvent("Progress",source,"Tomando",10000)
 		vRPC.CreateObjects(source,"amb@world_human_aa_coffee@idle_a", "idle_a","p_amb_coffeecup_01",49,28422)
 
 		repeat
@@ -1956,32 +2347,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,30)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
-				end
-			end
+					vRP.UpgradeThirst(Passport,25)
 
-			Wait(100)
-		until not Active[Passport]
-	end,
-
-	["milkshakepeanut"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Tomando",5000)
-		vRPC.CreateObjects(source,"amb@world_human_aa_coffee@idle_a", "idle_a","p_amb_coffeecup_01",49,28422)
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				Active[Passport] = nil
-				vRPC.Destroy(source,"one")
-				Player(source)["state"]["Buttons"] = false
-
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,30)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
 				end
 			end
 
@@ -1991,10 +2361,10 @@ Use = {
 
 	["cappuccino"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Tomando",5000)
+		TriggerClientEvent("Progress",source,"Tomando",10000)
 		vRPC.CreateObjects(source,"amb@world_human_aa_coffee@idle_a", "idle_a","p_amb_coffeecup_01",49,28422)
 
 		repeat
@@ -2004,8 +2374,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeThirst(Passport,30)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					vRP.UpgradeThirst(Passport,25)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Dexterity",600)
+					end
 				end
 			end
 
@@ -2015,10 +2388,10 @@ Use = {
 
 	["applelove"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_choc_ego",49,60309)
 
 		repeat
@@ -2028,8 +2401,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,30)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,10)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -2039,10 +2415,10 @@ Use = {
 
 	["cupcake"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		vRPC.AnimActive(source)
-		Active[Passport] = os.time() + 5
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Comendo",5000)
+		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_choc_ego",49,60309)
 
 		repeat
@@ -2052,8 +2428,11 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,30)
-					TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					vRP.UpgradeHunger(Passport,15)
+
+					if vCLIENT.Restaurant(source) then
+						TriggerEvent("inventory:BuffServer",source,Passport,"Luck",600)
+					end
 				end
 			end
 
@@ -2076,8 +2455,8 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					vRP.UpgradeHunger(Passport,5)
-					vRP.DowngradeStress(Passport,3)
+					vRP.UpgradeHunger(Passport,4)
+					vRP.DowngradeStress(Passport,4)
 				end
 			end
 
@@ -2138,7 +2517,7 @@ Use = {
 							Player(source)["state"]["Buttons"] = false
 
 							if vRP.TakeItem(Passport,Full,1,true,Slot) then
-								if Model and VehicleServices[Model] then
+								if Model and VehicleMode(Model) == "Work" then
 									Tyre = "All"
 								end
 
@@ -2160,6 +2539,21 @@ Use = {
 		end
 	end,
 
+	["seatbelt"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if vRP.InsideVehicle(source) then
+			TriggerClientEvent("inventory:Close",source)
+
+			local Model,Vehicle = vRPC.VehicleName(source)
+			local Networked = NetworkGetEntityFromNetworkId(Vehicle)
+			local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Model })
+			if DoesEntityExist(Networked) and Consult[1] and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				Entity(Networked)["state"]:set("Seatbelt",true,true)
+				TriggerClientEvent("Notify",source,"Sucesso","Cinto de Corrida ativado.","verde",5000)
+				vRP.Query("vehicles/SeatbeltVehicles",{ Vehicle = Model, Plate = Consult[1]["Plate"] })
+			end
+		end
+	end,
+
 	["premiumplate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.InsideVehicle(source) then
 			TriggerClientEvent("inventory:Close",source)
@@ -2169,7 +2563,7 @@ Use = {
 			if Vehicle[1] then
 				local Keyboard = vKEYBOARD.Primary(source,"Placa")
 				if Keyboard then
-					local Plate = sanitizeString(Keyboard[1],"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",true)
+					local Plate = sanitizeString(Keyboard[1],"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
 
 					if string.len(Plate) ~= 8 then
 						TriggerClientEvent("Notify",source,"Aviso","Nome de definição inválido.","amarelo",5000)
@@ -2199,7 +2593,7 @@ Use = {
 	end,
 
 	["scuba"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		TriggerClientEvent("hud:Scuba",source)
+		TriggerClientEvent("inventory:Scuba",source)
 	end,
 
 	["handcuff"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2287,7 +2681,7 @@ Use = {
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
 		else
-			if vRP.HasGroup(Passport,"Premium",Hierarchy) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.UpgradePremium(source,Passport,Hierarchy)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
@@ -2302,7 +2696,7 @@ Use = {
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
 		else
-			if vRP.HasGroup(Passport,"Premium",Hierarchy) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.UpgradePremium(source,Passport,Hierarchy)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
@@ -2317,7 +2711,7 @@ Use = {
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
 		else
-			if vRP.HasGroup(Passport,"Premium",Hierarchy) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.UpgradePremium(source,Passport,Hierarchy)
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 			end
@@ -2350,3 +2744,155 @@ Use = {
 		end
 	end
 }
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BLUEPRINTSTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+for Name,v in pairs(ItemList()) do
+	if v["Blueprint"] then
+		Use["blueprint_"..Name] = function(source,Passport,Amount,Slot,Full,Item,Split)
+			if not Users["Blueprints"][Passport] then
+				Users["Blueprints"][Passport] = {}
+			end
+
+			if Users["Blueprints"][Passport] and Users["Blueprints"][Passport][Name] then
+				TriggerClientEvent("inventory:Notify",source,"Aviso","Você já possui este aprendizado.","amarelo")
+
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Notify",source,"Sucesso","Aprendizado adicionado.","verde")
+				TriggerClientEvent("inventory:Update",source,"Backpack")
+				Users["Blueprints"][Passport][Name] = true
+			end
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VEHICLESSTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+for Model,v in pairs(VehicleList()) do
+	if v["Item"] then
+		Use["vehicle_"..Model] = function(source,Passport,Amount,Slot,Full,Item,Split)
+			local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Model })
+			if Vehicle[1] then
+				TriggerClientEvent("Notify",source,"Aviso","Já possui um <b>"..VehicleName(Model).."</b>.","amarelo",5000)
+			else
+				if VehicleStock(Model) and vRP.Scalar("vehicles/Count",{ Vehicle = Model }) >= VehicleStock(Model) then
+					TriggerClientEvent("Notify",source,"Aviso","Estoque insuficiente.","amarelo",5000)
+
+					return false
+				end
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					local Plate = vRP.GeneratePlate()
+
+					if v["Item"] == "Monthly" then
+						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Weight = VehicleWeight(Model), Work = 0 })
+					elseif v["Item"] == "Permanent" then
+						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Weight = VehicleWeight(Model), Work = 0 })
+					end
+
+					TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> adicionado.","verde",5000)
+					TriggerClientEvent("inventory:Update",source,"Backpack")
+				end
+			end
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SPRAYCONFIG
+-----------------------------------------------------------------------------------------------------------------------------------------
+local SprayConfig = {
+	["spray_ballas"] = {
+		["Permission"] = "Ballas",
+		["Color"] = 50
+	},
+	["spray_vagos"] = {
+		["Permission"] = "Vagos",
+		["Color"] = 60
+	},
+	["spray_families"] = {
+		["Permission"] = "Families",
+		["Color"] = 69
+	},
+	["spray_marabunta"] = {
+		["Permission"] = "Marabunta",
+		["Color"] = 63
+	},
+	["spray_bennys"] = {
+		["Permission"] = "Bennys",
+		["Color"] = 76
+	},
+	["spray_aztecas"] = {
+		["Permission"] = "Aztecas",
+		["Color"] = 77
+	},
+	["spray_bahamas"] = {
+		["Permission"] = "Bahamas",
+		["Color"] = 82
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SPRAYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+for ItemName,v in pairs(SprayConfig) do
+	Use[ItemName] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = ItemName
+		local Application,Coords = vCLIENT.SprayControlling(source,Hash)
+		if Application and Coords then
+			Player(source)["state"]["Buttons"] = true
+
+			if vCLIENT.CheckInterior(source) then
+				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			if vRPC.SprayExist(source,500) then
+				TriggerClientEvent("Notify",source,"Atenção","No momento você não pode prosseguir porque outro grupo está dominando a localidade.","amarelo",5000)
+				Player(source)["state"]["Buttons"] = false
+
+				return false
+			end
+
+			Active[Passport] = os.time() + 999
+			TriggerClientEvent("Progress",source,"Agitando",5000)
+			vRPC.CreateObjects(source,"switch@franklin@lamar_tagging_wall","lamar_tagging_wall_loop_lamar","prop_cs_spray_can",1,28422)
+
+			SetTimeout(5000,function()
+				if Active[Passport] then
+					Active[Passport] = os.time() + 10
+					TriggerClientEvent("Progress",source,"Colocando",10000)
+					TriggerClientEvent("sounds:Private",source,"sprays",0.5)
+					vRPC.CreateObjects(source,"switch@franklin@lamar_tagging_wall","lamar_tagging_exit_loop_lamar","prop_cs_spray_can",1,28422)
+
+					repeat
+						if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+							vRPC.Destroy(source)
+							Active[Passport] = nil
+
+							if not vRPC.SprayExist(source,500) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+								repeat
+									Selected = GenerateString("DDLLDDLL")
+								until Selected and not Objects[Selected]
+
+								Objects[Selected] = { Coords = Coords, Object = Hash, Mode = "Sprays", ["Timer"] = os.time() + 1800, Ground = true, Color = v["Color"], Permission = v["Permission"], Bucket = GetPlayerRoutingBucket(source) }
+								SaveObjects[Selected] = Objects[Selected]
+
+								TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+							end
+						end
+
+						Wait(100)
+					until not Active[Passport]
+				end
+			end)
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end
+end

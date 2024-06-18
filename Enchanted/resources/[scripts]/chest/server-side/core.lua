@@ -20,25 +20,25 @@ local Cooldown = {}
 -- CHESTITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local ChestItens = {
-	["backpackp"] = {
-		["Slots"] = 20,
+	["storage25"] = {
+		["Slots"] = 25,
+		["Weight"] = 25,
+		["Block"] = true
+	},
+	["storage50"] = {
+		["Slots"] = 25,
 		["Weight"] = 50,
 		["Block"] = true
 	},
-	["backpackm"] = {
+	["storage75"] = {
 		["Slots"] = 25,
 		["Weight"] = 75,
 		["Block"] = true
 	},
-	["backpackg"] = {
-		["Slots"] = 30,
-		["Weight"] = 100,
-		["Block"] = true
-	},
 	["suitcase"] = {
-		["Slots"] = 20,
-		["Weight"] = 0,
-		["Block"] = false,
+		["Slots"] = 25,
+		["Weight"] = 10,
+		["Close"] = true,
 		["Itens"] = {
 			["dollar"] = true,
 			["dirtydollar"] = true,
@@ -46,10 +46,25 @@ local ChestItens = {
 			["promissory"] = true
 		}
 	},
+	["medicbag"] = {
+		["Slots"] = 25,
+		["Weight"] = 10,
+		["Close"] = true,
+		["Itens"] = {
+			["bandage"] = true,
+			["gauze"] = true,
+			["gdtkit"] = true,
+			["medkit"] = true,
+			["sinkalmy"] = true,
+			["analgesic"] = true,
+			["ritmoneury"] = true,
+			["adrenaline"] = true
+		}
+	},
 	["treasurebox"] = {
-		["Slots"] = 20,
+		["Slots"] = 25,
 		["Weight"] = 50,
-		["Block"] = false
+		["Close"] = true
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -60,29 +75,29 @@ function Creative.Permissions(Name,Mode,Item)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if Mode == "Personal" then
-			Open[Passport] = {
-				["Name"] = "Personal:"..Passport,
-				["Weight"] = 50,
-				["Logs"] = false,
-				["Save"] = true,
-				["Slots"] = 50
-			}
+			local Name = SplitOne(Name)
+			if vRP.HasPermission(Passport,Name) then
+				Open[Passport] = {
+					["Name"] = "Personal:"..Passport,
+					["Weight"] = 50,
+					["Save"] = true,
+					["Slots"] = 20
+				}
 
-			return true
+				return true
+			end
 		elseif Mode == "Tray" then
 			Open[Passport] = {
 				["Name"] = Name,
 				["Weight"] = 25,
-				["Logs"] = false,
-				["Save"] = false,
 				["Slots"] = 20
 			}
 
 			return true
 		elseif Mode == "Custom" or Mode == "Trash" then
-			if SplitOne(Name,":") == "Helicrash" and Cooldown[Name] and Cooldown[Name] > os.time() then
-				TriggerClientEvent("Notify",source,"Aviso","Aguarde até que esfrie o compartimento.","amarelo",10000)
-				vRPC.DowngradeHealth(source,50)
+			if SplitBoolean(Name,"Helicrash",":") and Cooldown[Name] and Cooldown[Name] > os.time() then
+				TriggerClientEvent("Notify",source,"Atenção","Aguarde até que esfrie o compartimento.","amarelo",10000)
+				vRPC.DowngradeHealth(source,10)
 
 				return false
 			end
@@ -94,8 +109,6 @@ function Creative.Permissions(Name,Mode,Item)
 			Open[Passport] = {
 				["Name"] = Name,
 				["Weight"] = 50,
-				["Logs"] = false,
-				["Save"] = false,
 				["Slots"] = 20,
 				["Mode"] = "Custom"
 			}
@@ -107,7 +120,6 @@ function Creative.Permissions(Name,Mode,Item)
 				Open[Passport] = {
 					["Name"] = Name,
 					["Save"] = true,
-					["Logs"] = false,
 					["Unique"] = Previous,
 					["Slots"] = ChestItens[Previous]["Slots"],
 					["Weight"] = ChestItens[Previous]["Weight"]
@@ -145,156 +157,136 @@ function Creative.Permissions(Name,Mode,Item)
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHEST
+-- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Chest()
+function Creative.Mount()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Open[Passport] then
-		local Chest = {}
-		local Inventory = {}
+		local Primary = {}
 		local Inv = vRP.Inventory(Passport)
 
 		for Index,v in pairs(Inv) do
-			if (parseInt(v["amount"]) <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveItem(Passport,v["item"],parseInt(v["amount"]),false)
-			else
-				v["amount"] = parseInt(v["amount"])
-				v["peso"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["name"] = ItemName(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+			v["name"] = ItemName(v["item"])
+			v["weight"] = ItemWeight(v["item"])
+			v["index"] = ItemIndex(v["item"])
+			v["amount"] = parseInt(v["amount"])
+			v["rarity"] = ItemRarity(v["item"])
+			v["economy"] = ItemEconomy(v["item"])
+			v["desc"] = ItemDescription(v["item"])
+			v["key"] = v["item"]
+			v["slot"] = Index
 
-				v["desc"] = "<item>"..v["name"].."</item>"
+			local Split = splitString(v["item"])
 
-				local Split = splitString(v["item"])
-				local Description = ItemDescription(v["item"])
-
-				if Description then
-					v["desc"] = v["desc"].."<br><description>"..Description.."</description>"
-				else
-					if Split[1] == "vehkey" then
-						v["desc"] = v["desc"].."<br><description>Placa do Veículo: <green>"..Split[2].."</green></description>"
-					end
-				end
-
-				local Max = ItemMaxAmount(v["item"])
-				if not Max then
-					Max = "Ilimitado"
-				end
-
-				v["desc"] = v["desc"].."<br><legenda>Tipo: <r>"..ItemType(v["item"]).."</r> <s>|</s> Máximo: <r>"..Max.."</r></legenda>"
-
-				if Split[2] then
-					if ItemLoads(v["item"]) then
-						v["charges"] = parseInt(Split[2] * 33)
-					end
-
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
-					end
-				end
-
-				Inventory[Index] = v
+			local Item = Split[1]
+			if ChestItens[Item] and ChestItens[Item]["Close"] then
+				v["block"] = true
 			end
+
+			if not v["desc"] then
+				if Item == "vehkey" and Split[2] then
+					v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+				elseif ItemNamed(Item) and Split[2] then
+					v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+				end
+			end
+
+			if Split[2] then
+				local Loaded = ItemLoads(v["item"])
+				if Loaded then
+					v["charges"] = parseInt(Split[2] * (100 / Loaded))
+				end
+
+				if ItemDurability(v["item"]) then
+					v["durability"] = parseInt(os.time() - Split[2])
+					v["days"] = ItemDurability(v["item"])
+				end
+			end
+
+			Primary[Index] = v
 		end
 
+		local Secondary = {}
 		local Result = vRP.GetSrvData(Open[Passport]["Name"],Open[Passport]["Save"])
 		for Index,v in pairs(Result) do
-			if (parseInt(v["amount"]) <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveChest(Open[Passport]["Name"],Index,Open[Passport]["Save"])
-			else
-				v["amount"] = parseInt(v["amount"])
-				v["peso"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["name"] = ItemName(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+			v["name"] = ItemName(v["item"])
+			v["weight"] = ItemWeight(v["item"])
+			v["index"] = ItemIndex(v["item"])
+			v["amount"] = parseInt(v["amount"])
+			v["rarity"] = ItemRarity(v["item"])
+			v["economy"] = ItemEconomy(v["item"])
+			v["desc"] = ItemDescription(v["item"])
+			v["key"] = v["item"]
+			v["slot"] = Index
 
-				v["desc"] = "<item>"..v["name"].."</item>"
+			local Split = splitString(v["item"])
 
-				local Split = splitString(v["item"])
-				local Description = ItemDescription(v["item"])
-
-				if Description then
-					v["desc"] = v["desc"].."<br><description>"..Description.."</description>"
-				else
-					if Split[1] == "vehkey" then
-						v["desc"] = v["desc"].."<br><description>Placa do Veículo: <green>"..Split[2].."</green></description>"
-					end
+			if not v["desc"] then
+				if Split[1] == "vehkey" and Split[2] then
+					v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+				elseif ItemNamed(Split[1]) and Split[2] then
+					v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 				end
-
-				local Max = ItemMaxAmount(v["item"])
-				if not Max then
-					Max = "Ilimitado"
-				end
-
-				v["desc"] = v["desc"].."<br><legenda>Tipo: <r>"..ItemType(v["item"]).."</r> <s>|</s> Máximo: <r>"..Max.."</r></legenda>"
-
-				if Split[2] then
-					if ItemLoads(v["item"]) then
-						v["charges"] = parseInt(Split[2] * 33)
-					end
-
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
-					end
-				end
-
-				Chest[Index] = v
 			end
+
+			if Split[2] then
+				local Loaded = ItemLoads(v["item"])
+				if Loaded then
+					v["charges"] = parseInt(Split[2] * (100 / Loaded))
+				end
+
+				if ItemDurability(v["item"]) then
+					v["durability"] = parseInt(os.time() - Split[2])
+					v["days"] = ItemDurability(v["item"])
+				end
+			end
+
+			Secondary[Index] = v
 		end
 
-		return Inventory,Chest,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"],Open[Passport]["Slots"]
+		return Primary,Secondary,vRP.GetWeight(Passport),Open[Passport]["Weight"],Open[Passport]["Slots"]
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Store(Item,Slot,Amount,Target,Block)
+function Creative.Store(Item,Slot,Amount,Target,Inactived)
 	local source = source
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and Open[Passport] then
-		if BlockDelete(Item) or Block then
-			TriggerClientEvent("chest:Update",source,"Refresh")
-
-			return false
-		end
-
+	if Passport and Open[Passport] and not Inactived then
 		if Item == "diagram" and Open[Passport]["NameLogs"] then
 			if vRP.TakeItem(Passport,Item,Amount) then
-				Open[Passport]["Weight"] = Open[Passport]["Weight"] + (10 * Amount)
-
-				local Result = vRP.GetSrvData(Open[Passport]["Name"],Open[Passport]["Save"])
 				vRP.Query("chests/UpdateWeight",{ Name = Open[Passport]["NameLogs"], Multiplier = Amount })
-				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
-				TriggerClientEvent("chest:Update",source,"Refresh")
+				Open[Passport]["Weight"] = Open[Passport]["Weight"] + (10 * Amount)
+				TriggerClientEvent("inventory:Update",source)
 			end
 		else
 			local Item = SplitOne(Item)
 			local Unique = Open[Passport]["Unique"]
-
-			if Unique and ChestItens[Unique] and ((ChestItens[Item] and ChestItens[Item]["Block"]) or (ChestItens[Unique]["Itens"] and not ChestItens[Unique]["Itens"][Item])) then
-				TriggerClientEvent("chest:Update",source,"Refresh")
+			if (ChestItens[Item] and ChestItens[Item]["Block"]) or (Unique and ChestItens[Unique] and ChestItens[Unique]["Itens"] and not ChestItens[Unique]["Itens"][Item]) then
+				if Unique and Item == Unique then
+                    TriggerClientEvent("inventory:Open",source,{
+                        Action = "Open",
+                        Type = "Inventory",
+                        Resource = "inventory"
+                    },true)
+                else
+                    TriggerClientEvent("inventory:Update",source)
+                end
 
 				return false
 			end
 
 			if vRP.StoreChest(Passport,Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target,Open[Passport]["Save"],ChestItens[Unique]) then
-				TriggerClientEvent("chest:Update",source,"Refresh")
-			else
-				local Result = vRP.GetSrvData(Open[Passport]["Name"],Open[Passport]["Save"])
-				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
-
-				if Open[Passport]["Logs"] then
-					exports["discord"]:Embed(Open[Passport]["NameLogs"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..ItemName(Item),0xa3c846)
-				end
+				TriggerClientEvent("inventory:Update",source)
+			elseif Open[Passport]["Logs"] then
+				exports["discord"]:Embed(Open[Passport]["NameLogs"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..ItemName(Item),0xa3c846)
 			end
 		end
+	else
+		TriggerClientEvent("inventory:Update",source)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -304,29 +296,25 @@ function Creative.Take(Item,Slot,Amount,Target)
 	local source = source
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and Open[Passport] then
-		if vRP.TakeChest(Passport,Open[Passport]["Name"],Amount,Slot,Target,Open[Passport]["Save"]) then
-			TriggerClientEvent("chest:Update",source,"Refresh")
-		else
-			local Result = vRP.GetSrvData(Open[Passport]["Name"],Open[Passport]["Save"])
-			if (Open[Passport]["Mode"] or Open[Passport]["Item"]) and json.encode(Result) == "[]" then
-				TriggerClientEvent("chest:Close",source)
-
-				if Open[Passport]["Item"] then
-					vRP.RemoveItem(Passport,Open[Passport]["Item"],1,false)
-				end
-
-				if SplitOne(Open[Passport]["Name"],":") == "Helicrash" then
-					exports["helicrash"]:Box()
-				end
-			else
-				TriggerClientEvent("chest:Update",source,"Update",vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Open[Passport]["Weight"])
-
-				if Open[Passport]["Logs"] then
-					exports["discord"]:Embed(Open[Passport]["NameLogs"],"**Passaporte:** "..Passport.."\n**Retirou:** "..Amount.."x "..ItemName(Item),0xe84855)
-				end
+	if Passport and Open[Passport] and not vRP.TakeChest(Passport,Open[Passport]["Name"],Amount,Slot,Target,Open[Passport]["Save"]) then
+		local Result = vRP.GetSrvData(Open[Passport]["Name"],Open[Passport]["Save"])
+		if (Open[Passport]["Mode"] or Open[Passport]["Item"]) and json.encode(Result) == "[]" then
+			if Open[Passport]["Item"] and vRP.TakeItem(Passport,Open[Passport]["Item"]) then
+				TriggerClientEvent("inventory:Open",source,{
+					Action = "Open",
+					Type = "Inventory",
+					Resource = "inventory"
+				},true)
 			end
+
+			if SplitBoolean(Open[Passport]["Name"],"Helicrash",":") then
+				GlobalState["Helibox"] = GlobalState["Helibox"] - 1
+			end
+		elseif Open[Passport]["Logs"] then
+			exports["discord"]:Embed(Open[Passport]["NameLogs"],"**Passaporte:** "..Passport.."\n**Retirou:** "..Amount.."x "..ItemName(Item),0xe84855)
 		end
+	else
+		TriggerClientEvent("inventory:Update",source)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -337,7 +325,7 @@ function Creative.Update(Slot,Target,Amount)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
 	if Passport and Open[Passport] and vRP.UpdateChest(Passport,Open[Passport]["Name"],Slot,Target,Amount,Open[Passport]["Save"]) then
-		TriggerClientEvent("chest:Update",source,"Refresh")
+		TriggerClientEvent("inventory:Update",source)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -345,7 +333,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("chest:Cooldown")
 AddEventHandler("chest:Cooldown",function(Name)
-	Cooldown[Name] = os.time() + math.random(600,900)
+	Cooldown[Name] = os.time() + 600
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

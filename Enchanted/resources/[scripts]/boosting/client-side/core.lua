@@ -10,6 +10,7 @@ vSERVER = Tunnel.getInterface("boosting")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOOSTING
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Class = 1
 local Model = nil
 local Selected = 1
 local Vehicle = false
@@ -134,7 +135,8 @@ end)
 -- BOOSTING:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("boosting:Active")
-AddEventHandler("boosting:Active",function(VehicleModel)
+AddEventHandler("boosting:Active",function(VehicleModel,Class)
+	Class = Class
 	Vehicle = false
 	Model = VehicleModel
 	Selected = math.random(#Locates)
@@ -159,7 +161,7 @@ CreateThread(function()
 			local Ped = PlayerPedId()
 			local Coords = GetEntityCoords(Ped)
 			if #(Coords - Locates[Selected]["xyz"]) <= 100 then
-				local Networked = vSERVER.CreateVehicle(Model,Locates[Selected])
+				local Networked = vSERVER.CreateVehicle(Model,Class,Locates[Selected])
 
 				if Networked then
 					local Network = LoadNetwork(Networked)

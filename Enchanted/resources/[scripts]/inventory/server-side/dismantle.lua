@@ -8,11 +8,9 @@ Dismantle = {}
 -- GENERATEPLATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("GeneratePlate",function()
-	local Plate = ""
-
 	repeat
-		Plate = vRP.GenerateString("DDLLLDDD")
-	until not Dismantle[Plate] and not Boosting[Plate]
+		Plate = GenerateString("DDLLLDDD")
+	until Plate and not Dismantle[Plate] and not Boosting[Plate]
 
 	return Plate
 end)
@@ -94,7 +92,6 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 		vRP.FreezePlayer(source,true)
 		Active[Passport] = os.time() + 60
 		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
 		TriggerClientEvent("Progress",source,"Desmanchando",60000)
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
@@ -106,36 +103,45 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 				Player(source)["state"]["Buttons"] = false
 				TriggerClientEvent("dismantle:Reset",source)
 				TriggerEvent("garages:Delete",Entity[4],Plate)
-				TriggerClientEvent("player:Residuals",source,"Resíduo de Borracha.")
+				TriggerClientEvent("player:Residuals",source,"Resíduo de Borracha")
 
-				local Experience = vRP.GetExperience(Passport,"Dismantle")
-				local Valuation = 1275 + (ClassCategory(Experience) * 25)
+				local GainExperience = 3
+				local Amount = math.random(1125,1375)
+				local Experience,Level = vRP.GetExperience(Passport,"Dismantle")
+				local Valuation = Amount + Amount * (0.05 * Level)
 
-				if Buffs["Dexterity"][Passport] and Buffs["Dexterity"][Passport] > os.time() then
+				if exports["inventory"]:Buffs("Dexterity",Passport) then
 					Valuation = Valuation + (Valuation * 0.1)
 				end
 
-				if exports["party"]:DoesExist(Passport) then
-					local Consult = exports["party"]:Room(Passport,source,25)
-					local AmountMembers = CountTable(Consult)
-
-					if AmountMembers >= 5 then
-						Valuation = Valuation + (Valuation * 0.1)
+				if vRP.UserPremium(Passport) then
+					local Bonification = 0.050
+					local Hierarchy = vRP.LevelPremium(source)
+		
+					if Hierarchy == 1 then
+						Bonification = 0.100
+					elseif Hierarchy == 2 then
+						Bonification = 0.075
 					end
+		
+					GainExperience = GainExperience + 2
+					Valuation = Valuation + (Valuation * Bonification)
+				end
+
+				if exports["party"]:DoesExist(Passport) then
+					local Consult,AmountMembers = exports["party"]:Room(Passport,source,25)
 
 					for Number = 1,AmountMembers do
 						if vRP.Passport(Consult[Number]["Source"]) then
-							vRP.PutExperience(Consult[Number]["Passport"],"Dismantle",3)
+							vRP.UpgradeStress(Consult[Number]["Passport"],5)
+							vRP.PutExperience(Consult[Number]["Passport"],"Dismantle",GainExperience)
 							vRP.GenerateItem(Consult[Number]["Passport"],"dirtydollar",Valuation,true)
 						end
 					end
 				else
-					vRP.PutExperience(Passport,"Dismantle",3)
+					vRP.UpgradeStress(Passport,5)
+					vRP.PutExperience(Passport,"Dismantle",GainExperience)
 					vRP.GenerateItem(Passport,"dirtydollar",Valuation,true)
-				end
-
-				if math.random(100) >= 75 then
-					vRP.GenerateItem(Passport,"plate",1,true)
 				end
 			end
 

@@ -52,14 +52,24 @@ AddEventHandler("dynamic:Tencode",function(Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DYNAMIC:SERVICE
+-- DYNAMIC:ENTERSERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("dynamic:Service")
-AddEventHandler("dynamic:Service",function(Permission)
+RegisterServerEvent("dynamic:EnterService")
+AddEventHandler("dynamic:EnterService",function(Permission)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		vRP.ServiceToggle(source,Passport,Permission,false)
+		if Permission == "Policia" then
+			if vRP.HasPermission(Passport,"LSPD") then
+				vRP.ServiceEnter(source,Passport,"LSPD")
+			elseif vRP.HasPermission(Passport,"BCPR") then
+				vRP.ServiceEnter(source,Passport,"BCPR")
+			elseif vRP.HasPermission(Passport,"BCSO") then
+				vRP.ServiceEnter(source,Passport,"BCSO")
+			end
+		else
+			vRP.ServiceEnter(source,Passport,Permission)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -70,6 +80,16 @@ AddEventHandler("dynamic:ExitService",function(Permission)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		vRP.ServiceLeave(source,Passport,Permission,false)
+		if Permission == "Policia" then
+			if vRP.HasPermission(Passport,"LSPD") then
+				vRP.ServiceLeave(source,Passport,"LSPD")
+			elseif vRP.HasPermission(Passport,"BCPR") then
+				vRP.ServiceLeave(source,Passport,"BCPR")
+			elseif vRP.HasPermission(Passport,"BCSO") then
+				vRP.ServiceLeave(source,Passport,"BCSO")
+			end
+		else
+			vRP.ServiceLeave(source,Passport,Permission)
+		end
 	end
 end)

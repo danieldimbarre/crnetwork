@@ -15,12 +15,15 @@ Tunnel.bindInterface("engine",Creative)
 function Creative.RechargeFuel(Price)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not vRP.PaymentFull(Passport,Price) then
-		TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
-		exports["bank"]:AddTaxs(Passport,source,"Posto de Gasolina",Price,"Gastos com combustível.")
+	if Passport and Price then
+		if vRP.PaymentFull(Passport,Price) then
+			exports["bank"]:AddTaxs(Passport,source,"Posto de Gasolina",Price,"Gastos com combustível.")
 
-		return false
+			return true
+		else
+			TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
+		end
 	end
 
-	return true
+	return false
 end

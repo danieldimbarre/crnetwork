@@ -99,13 +99,9 @@ local Banks = {
 	["2"] = { vec3(-105.89,6472.16,31.87) }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	exports["target"]:AddCircleZone("Robberys:Jewelry",vec3(-631.04,-230.6,38.01),0.25,{
 		name = "Robberys:Jewelry",
 		heading = 0.0,

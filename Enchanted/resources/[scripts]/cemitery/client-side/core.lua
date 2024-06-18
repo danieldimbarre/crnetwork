@@ -128,7 +128,7 @@ AddEventHandler("cemitery:initBody",function()
 				}
 			})
 
-			TriggerEvent("Notify","Observação","Parece que estão efetuando uma limpeza em um dos túmulos, guarde essa informação e veja se você encontra alguns objetos de valor.","amarelo",10000)
+			TriggerEvent("Notify","Observação","Parece que estão efetuando uma limpeza em um dos túmulos, guarde essa informação e veja se você encontra alguns objetos de valor.","default",10000)
 		end
 	end
 end)

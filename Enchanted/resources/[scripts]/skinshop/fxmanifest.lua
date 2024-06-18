@@ -6,13 +6,12 @@ ui_page "web-side/index.html"
 
 client_scripts {
 	"@vrp/config/Native.lua",
+	"@PolyZone/client.lua",
 	"@vrp/lib/Utils.lua",
 	"client-side/*"
 }
 
 server_scripts {
-	"@vrp/config/Vehicle.lua",
-	"@vrp/config/Item.lua",
 	"@vrp/lib/Utils.lua",
 	"server-side/*"
 }
@@ -20,4 +19,11 @@ server_scripts {
 files {
 	"web-side/*",
 	"web-side/**/*"
+}
+
+shared_scripts {
+	"@vrp/config/Item.lua",
+	"@vrp/config/Vehicle.lua",
+	"@vrp/config/Global.lua",
+	"@vrp/config/Drops.lua"
 }

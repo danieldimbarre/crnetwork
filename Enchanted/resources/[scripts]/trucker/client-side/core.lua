@@ -74,7 +74,7 @@ AddEventHandler("trucker:Vehicles",function()
 		Position = 1
 		Package = true
 		Service = "Vehicles"
-		TriggerEvent("Notify","Aviso","Dirija-se ao caminhão e buzine o mesmo<br>para receber a carga responsável pelo transporte.","amarelo",5000)
+		TriggerEvent("Notify","Central de Empregos","Dirija-se ao caminhão e buzine o mesmo<br>para receber a carga responsável pelo transporte.","default",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ AddEventHandler("trucker:Diesel",function()
 		Position = 1
 		Package = true
 		Service = "Diesel"
-		TriggerEvent("Notify","Aviso","Dirija-se ao caminhão e buzine o mesmo<br>para receber a carga responsável pelo transporte.","amarelo",5000)
+		TriggerEvent("Notify","Central de Empregos","Dirija-se ao caminhão e buzine o mesmo<br>para receber a carga responsável pelo transporte.","default",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -96,7 +96,7 @@ AddEventHandler("trucker:Fuel",function()
 		Position = 1
 		Package = true
 		Service = "Fuel"
-		TriggerEvent("Notify","Aviso","Dirija-se ao caminhão e buzine o mesmo<br>para receber a carga responsável pelo transporte.","amarelo",5000)
+		TriggerEvent("Notify","Central de Empregos","Dirija-se ao caminhão e buzine o mesmo<br>para receber a carga responsável pelo transporte.","default",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -107,17 +107,13 @@ AddEventHandler("trucker:Wood",function()
 		Position = 1
 		Package = true
 		Service = "Wood"
-		TriggerEvent("Notify","Aviso","Dirija-se ao caminhão e buzine o mesmo<br>para receber a carga responsável pelo transporte.","amarelo",5000)
+		TriggerEvent("Notify","Central de Empregos","Dirija-se ao caminhão e buzine o mesmo<br>para receber a carga responsável pelo transporte.","default",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	exports["target"]:AddBoxZone("Trucker",Init["xyz"],0.75,0.75,{
 		name = "Trucker",
 		heading = Init["w"],
@@ -162,7 +158,7 @@ CreateThread(function()
 				if Distance <= 200 then
 					TimeDistance = 1
 					DrawMarker(1,Delivery[Service]["Coords"][Position]["x"],Delivery[Service]["Coords"][Position]["y"],Delivery[Service]["Coords"][Position]["z"] - 3,0,0,0,0,0,0,12.0,12.0,8.0,255,255,255,25,0,0,0,0)
-					DrawMarker(21,Delivery[Service]["Coords"][Position]["x"],Delivery[Service]["Coords"][Position]["y"],Delivery[Service]["Coords"][Position]["z"] + 1,0,0,0,0,180.0,130.0,3.0,3.0,2.0,65,130,226,100,0,0,0,1)
+					DrawMarker(21,Delivery[Service]["Coords"][Position]["x"],Delivery[Service]["Coords"][Position]["y"],Delivery[Service]["Coords"][Position]["z"] + 1,0,0,0,0,180.0,130.0,3.0,3.0,2.0,19,114,191,175,0,0,0,1)
 
 					if Distance <= 10 then
 						if Position >= #Delivery[Service]["Coords"] then
@@ -178,11 +174,11 @@ CreateThread(function()
 								if IsControlJustPressed(1,38) then
 									local Heading = GetEntityHeading(Vehicle)
 									local Coords = GetOffsetFromEntityInWorldCoords(Vehicle,0.0,-12.0,0.0)
-									local Exist,Trailer = vGARAGE.ServerVehicle(Delivery[Service]["Trailer"],vec4(Coords["x"],Coords["y"],Coords["z"],Heading),nil,0,nil,1000,0,false)
+									local Exist,Networked = vGARAGE.ServerVehicle(Delivery[Service]["Trailer"],vec4(Coords["x"],Coords["y"],Coords["z"],Heading),nil,0,nil,1000,0,false)
 
-									if NetworkDoesNetworkIdExist(Trailer) then
-										local Network = NetToEnt(Trailer)
-										if NetworkDoesNetworkIdExist(Network) then
+									if Networked then
+										local Network = LoadNetwork(Networked)
+										if Network then
 											SetVehicleOnGroundProperly(Network)
 										end
 									end
@@ -195,7 +191,7 @@ CreateThread(function()
 									if not IsPedInAnyVehicle(Ped) and IsControlJustPressed(1,38) then
 										local Vehicle,Network,Plate,Model = vRP.VehicleList(10)
 										if Vehicle and Model == Delivery[Service]["Trailer"] then
-											TriggerEvent("Notify","Atenção","Volte para receber o pagamento.","amarelo",5000)
+											TriggerEvent("Notify","Aviso","Volte para receber o pagamento.","amarelo",5000)
 											TriggerServerEvent("garages:Delete",Network,Plate)
 											Position = Position + 1
 											BlipMarked()

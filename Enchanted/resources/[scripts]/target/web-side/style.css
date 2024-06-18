@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	color: #cbd7e8;
+	color: #dee1ff;
 }
 
 * {
@@ -25,7 +25,9 @@ body {
 }
 
 .Eye {
-	font-size: 2.75vh;
+	color: #f7f7f7;
+	font-size: 1.25vh;
+	text-shadow: 0 0 rgba(0,0,0,0.5);
 }
 
 .Label {
@@ -45,15 +47,13 @@ body {
 	display: table;
 	margin: 0 0 5px;
 	padding: 5px 10px;
-	border-radius: 4px;
-	background: rgba(51,82,128,0.5);
+	border-radius: 5px;
+	background: rgba(27,50,102,0.50);
 	text-shadow: 1px 1px rgba(0,0,0,0.5);
-	border: 1px solid rgba(65,130,226,0.35);
+	border: 1px solid #1372bf;
 }
 
 .Text div:hover {
-	color: #fff;
-	background: rgba(51,82,128,0.75);
-	text-shadow: 1px 1px rgba(0,0,0,0.75);
-	border: 1px solid rgba(65,130,226,0.70);
+	background: rgba(27,50,102,0.75);
+	border: 1px solid #1372bf;
 }

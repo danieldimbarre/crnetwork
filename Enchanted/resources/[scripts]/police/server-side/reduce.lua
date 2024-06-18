@@ -25,8 +25,17 @@ AddEventHandler("police:Escape",function()
 					Active[Passport] = nil
 				end
 
-				vRP.CallPolice(source,Passport,vec3(1860.4,2594.06,45.66),"Policia","Fuga do Presidio",false,false,34,22)
-				TriggerClientEvent("Notify",source,"Aviso","Você fugiu da prisão e as autoridades foram notificadas, fuja o mais rápido possível daqui.","amarelo",5000)
+				exports["vrp"]:CallPolice({
+					["Source"] = source,
+					["Passport"] = Passport,
+					["Coords"] = vec3(1860.4,2594.06,45.66),
+					["Permission"] = "Policia",
+					["Name"] = "Fuga do Presidio",
+					["Code"] = 34,
+					["Color"] = 22
+				})
+
+				TriggerClientEvent("Notify",source,"Departamento Policial","Você fugiu da prisão e as autoridades foram notificadas, fuja o mais rápido possível daqui.","policia",5000)
 
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
@@ -55,7 +64,7 @@ AddEventHandler("police:Reduce",function(Number)
 			if os.time() >= Locations[Passport][Number] then
 				Reduction(source,Passport,Number)
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Aguarde <b>"..Locations[Passport][Number] - os.time().."</b> segundos.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Locations[Passport][Number] - os.time())..".","amarelo",5000)
 			end
 		else
 			Reduction(source,Passport,Number)

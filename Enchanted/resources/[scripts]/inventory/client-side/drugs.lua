@@ -54,12 +54,18 @@ CreateThread(function()
 				if IsControlJustPressed(1,38) and GetGameTimer() >= Timer and GetVehiclePedIsIn(Entitys,true) == 0 then
 					local TimeDrugs = vSERVER.CheckDrugs()
 					if TimeDrugs then
+						TriggerEvent("Progress","Vendendo",TimeDrugs * 1000)
 						Progress = GetGameTimer() + (TimeDrugs * 1000)
 						Timer = GetGameTimer() + 5000
 
 						ClearPedTasks(Entitys)
 						ClearPedSecondaryTask(Entitys)
 						ClearPedTasksImmediately(Entitys)
+
+						while not NetworkHasControlOfEntity(Entitys) do
+							NetworkRequestControlOfEntity(Entitys)
+							Wait(1)
+						end
 
 						TaskSetBlockingOfNonTemporaryEvents(Entitys,true)
 						SetBlockingOfNonTemporaryEvents(Entitys,true)
@@ -74,7 +80,7 @@ CreateThread(function()
 
 						SetTimeout(1000,function()
 							if LoadAnim("jh_1_ig_3-2") then
-								TaskPlayAnim(Entitys,"jh_1_ig_3-2","cs_jewelass_dual-2",8.0,8.0,-1,16,1,0,0,0)
+								TaskPlayAnim(Entitys,"jh_1_ig_3-2","cs_jewelass_dual-2",8.0,8.0,-1,49,0,0,0,0)
 							end
 						end)
 
@@ -85,13 +91,15 @@ CreateThread(function()
 
 							if #(Coords - EntityCoords) <= 2 then
 								if Progress <= GetGameTimer() and LoadModel("prop_anim_cash_note") then
-									local Object = CreateObject("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
+									local Object = CreateObjectNoOffset("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
 									AttachEntityToEntity(Object,Entitys,GetPedBoneIndex(Entitys,28422),0.0,0.0,0.0,90.0,0.0,0.0,true,true,false,true,2,true)
 									vRP.CreateObjects("mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
 									SetModelAsNoLongerNeeded("prop_anim_cash_note")
+									ClearPedSecondaryTask(Entitys)
+									ClearPedTasks(Entitys)
 
 									if LoadAnim("mp_safehouselost@") then
-										TaskPlayAnim(Entitys,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,1,0,0,0)
+										TaskPlayAnim(Entitys,"mp_safehouselost@","package_dropoff",8.0,8.0,-1,16,0,0,0,0)
 									end
 
 									Wait(3000)
@@ -112,8 +120,11 @@ CreateThread(function()
 							else
 								LocalPlayer["state"]:set("Buttons",false,true)
 								LocalPlayer["state"]:set("Commands",false,true)
+								TriggerEvent("Progress","Cancelando",1000)
 								TaskWanderStandard(Entitys,10.0,10)
 								SetEntityAsNoLongerNeeded(Entitys)
+								ClearPedSecondaryTask(Entitys)
+								ClearPedTasks(Entitys)
 
 								break
 							end
@@ -222,9 +233,9 @@ AddEventHandler("Crack",function()
 		AnimpostfxStop("HeistCelebPassBW")
 	end
 
-	AnimpostfxPlay("HeistCelebPassBW",120000,false)
-	TriggerEvent("Hunger",120000)
-	TriggerEvent("Thirst",120000)
+	AnimpostfxPlay("HeistCelebPassBW",216000,false)
+	TriggerEvent("Hunger",216000)
+	TriggerEvent("Thirst",216000)
 	Crack = 600
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -258,12 +269,13 @@ CreateThread(function()
 	while true do
 		local Pid = PlayerId()
 		local Ped = PlayerPedId()
+		local Health = GetEntityHealth(Ped)
 
 		if Cocaine > 0 and GetGameTimer() >= CocaineTimer then
 			Cocaine = Cocaine - 1
 			CocaineTimer = GetGameTimer() + 1000
 
-			if Cocaine <= 0 or GetEntityHealth(Ped) <= 100 then
+			if Cocaine <= 0 or Health <= 100 then
 				if AnimpostfxIsRunning("MinigameTransitionIn") then
 					AnimpostfxStop("MinigameTransitionIn")
 				end
@@ -276,7 +288,7 @@ CreateThread(function()
 			Methamphetamine = Methamphetamine - 1
 			MethamphetamineTimer = GetGameTimer() + 1000
 
-			if Methamphetamine <= 0 or GetEntityHealth(Ped) <= 100 then
+			if Methamphetamine <= 0 or Health <= 100 then
 				if AnimpostfxIsRunning("Dont_tazeme_bro") then
 					AnimpostfxStop("Dont_tazeme_bro")
 				end
@@ -307,7 +319,7 @@ CreateThread(function()
 			Heroin = Heroin - 1
 			HeroinTimer = GetGameTimer() + 1000
 
-			if Heroin <= 0 or GetEntityHealth(Ped) <= 100 then
+			if Heroin <= 0 or Health <= 100 then
 				if AnimpostfxIsRunning("DrugsMichaelAliensFight") then
 					AnimpostfxStop("DrugsMichaelAliensFight")
 				end
@@ -327,7 +339,7 @@ CreateThread(function()
 			Crack = Crack - 1
 			CrackTimer = GetGameTimer() + 1000
 
-			if Crack <= 0 or GetEntityHealth(Ped) <= 100 then
+			if Crack <= 0 or Health <= 100 then
 				if AnimpostfxIsRunning("HeistCelebPassBW") then
 					AnimpostfxStop("HeistCelebPassBW")
 				end
@@ -355,7 +367,7 @@ CreateThread(function()
 			Oxycontin = Oxycontin - 1
 			OxycontinTimer = GetGameTimer() + 1000
 
-			if Oxycontin <= 0 or GetEntityHealth(Ped) <= 100 then
+			if Oxycontin <= 0 or Health <= 100 then
 				if AnimpostfxIsRunning("DrugsMichaelAliensFight") then
 					AnimpostfxStop("DrugsMichaelAliensFight")
 				end

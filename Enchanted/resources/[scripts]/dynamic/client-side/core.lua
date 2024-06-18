@@ -72,10 +72,10 @@ RegisterNUICallback("close",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DYNAMIC:CLOSESYSTEM
+-- DYNAMIC:CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("dynamic:closeSystem")
-AddEventHandler("dynamic:closeSystem",function()
+RegisterNetEvent("dynamic:Close")
+AddEventHandler("dynamic:Close",function()
 	if Dynamic then
 		SendNUIMessage({ close = true })
 		SetNuiFocus(false,false)
@@ -157,9 +157,9 @@ RegisterCommand("EmergencyFunctions",function()
 		local Ped = PlayerPedId()
 		local Health = GetEntityHealth(Ped)
 
-		if LocalPlayer["state"]["Policia"] then
+		if CheckPolice() then
 			exports["dynamic"]:AddButton("Computador","Abrir o software de bordo.","police:Open","",false,false)
-			exports["dynamic"]:AddButton("Serviço","Finalizar expediente de trabalho.","dynamic:Service","Policia",false,true)
+			exports["dynamic"]:AddButton("Serviço","Finalizar expediente de trabalho.","dynamic:ExitService","Policia",false,true)
 
 			exports["dynamic"]:AddButton("10-13","Oficial desmaiado/ferido.","dynamic:Tencode","13","tencode",true)
 			exports["dynamic"]:AddButton("10-20","Localização.","dynamic:Tencode","20","tencode",true)
@@ -182,7 +182,7 @@ RegisterCommand("EmergencyFunctions",function()
 
 			exports["dynamic"]:openMenu()
 		elseif LocalPlayer["state"]["Paramedico"] then
-			exports["dynamic"]:AddButton("Serviço","Finalizar expediente de trabalho.","dynamic:Service","Paramedico",false,true)
+			exports["dynamic"]:AddButton("Serviço","Finalizar expediente de trabalho.","dynamic:ExitService","Paramedico",false,true)
 
 			if Health > 100 and not IsPedInAnyVehicle(Ped) then
 				exports["dynamic"]:AddButton("Carregar","Carregar a pessoa mais próxima.","inventory:Carry","","player",true)
@@ -195,14 +195,14 @@ RegisterCommand("EmergencyFunctions",function()
 
 				exports["dynamic"]:AddButton("Principal","Fardamento de oficial.","player:Preset","2","preMedic",true)
 				exports["dynamic"]:SubMenu("Fardamentos","Todos os fardamentos médicos.","preMedic")
-
-				exports["dynamic"]:openMenu()
 			end
+
+			exports["dynamic"]:openMenu()
 		else
 			local Coords = GetEntityCoords(Ped)
 			for Permission,v in pairs(Services) do
 				if #(Coords - v["Coords"]) <= v["Distance"] then
-					exports["dynamic"]:AddButton("Serviço","Iniciar expediente de trabalho.","dynamic:Service",v["Permission"],false,true)
+					exports["dynamic"]:AddButton("Serviço","Iniciar expediente de trabalho.","dynamic:EnterService",v["Permission"],false,true)
 					exports["dynamic"]:openMenu()
 
 					break

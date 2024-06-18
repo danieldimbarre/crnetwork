@@ -173,27 +173,31 @@ end)
 -- CUSTOMIZATION
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Customization(Table,Check)
-	if LoadModel(Table["Skin"]) then
-		if Check then
-			if GetEntityModel(PlayerPedId()) ~= GetHashKey(Table["Skin"]) then
-				SetPlayerModel(PlayerId(),Table["Skin"])
-				SetPedComponentVariation(PlayerPedId(),5,0,0,1)
-			end
-		else
-			SetPlayerModel(PlayerId(),Table["Skin"])
-			SetPedComponentVariation(PlayerPedId(),5,0,0,1)
+	local Pid = PlayerId()
+	local Ped = PlayerPedId()
+	local Model = GetHashKey(Table["Skin"])
+	if IsModelInCdimage(Model) and IsModelValid(Model) then
+		RequestModel(Model)
+		while not HasModelLoaded(Model) do
+			RequestModel(Model)
+			Wait(0)
 		end
 
-		local Ped = PlayerPedId()
-		local Random = math.random(#Anims)
-		if LoadAnim(Anims[Random]["Dict"]) then
-			TaskPlayAnim(Ped,Anims[Random]["Dict"],Anims[Random]["Name"],8.0,8.0,-1,1,1,0,0,0)
+		if not Check or (Check and GetEntityModel(Ped) ~= Model) then
+			SetPlayerModel(Pid,Model)
+			SetModelAsNoLongerNeeded(Model)
 		end
-
-		exports["skinshop"]:Apply(Table["Clothes"],Ped)
-		exports["barbershop"]:Apply(Table["Barber"],Ped)
-		exports["tattooshop"]:Apply(Table["Tattoos"],Ped)
 	end
+
+	local Ped = PlayerPedId()
+	local Random = math.random(#Anims)
+	if LoadAnim(Anims[Random]["Dict"]) then
+		TaskPlayAnim(Ped,Anims[Random]["Dict"],Anims[Random]["Name"],8.0,8.0,-1,1,1,0,0,0)
+	end
+
+	exports["skinshop"]:Apply(Table["Clothes"],Ped)
+	exports["barbershop"]:Apply(Table["Barber"],Ped)
+	exports["tattooshop"]:Apply(Table["Tattoos"],Ped)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN:INCREMENT

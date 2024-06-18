@@ -26,7 +26,7 @@ end
 -- POSTIT:INITPOSTIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("postit:initPostit")
-AddEventHandler("postit:initPostit",function()
+AddEventHandler("postit:initPostit",function(Admin)
 	if not Active then
 		Active = true
 
@@ -37,10 +37,12 @@ AddEventHandler("postit:initPostit",function()
 				local Handler = StartExpensiveSynchronousShapeTestLosProbe(Camera,GetCoordsFromCam(25.0,Camera),-1,Ped,4)
 				local _,_,Coords = GetShapeTestResult(Handler)
 
-				DrawMarker(28,Coords["x"],Coords["y"],Coords["z"],0.0,0.0,0.0,0.0,0.0,0.0,0.05,0.05,0.05,65,130,226,100,0,0,0,0)
+				DrawMarker(28,Coords["x"],Coords["y"],Coords["z"],0.0,0.0,0.0,0.0,0.0,0.0,0.05,0.05,0.05,19,114,191,175,0,0,0,0)
 
 				if IsControlJustPressed(1,38) then
-					--TriggerServerEvent("admin:Coords",Coords)
+					if Admin then
+						TriggerServerEvent("admin:Coords",Coords)
+					end
 
 					vSERVER.Add(Coords)
 					Active = false
@@ -88,7 +90,7 @@ CreateThread(function()
 						SendNUIMessage({ Action = "Remove", id = Number })
 						Display[Route][Number] = nil
 
-						if #Display[Route] <= 0 then
+						if CountTable(Display[Route]) <= 0 then
 							Display[Route] = nil
 						end
 					end
@@ -107,7 +109,7 @@ AddEventHandler("postit:Delete",function(Route,Number)
 	if Posts[Route] and Posts[Route][Number] then
 		Posts[Route][Number] = nil
 
-		if #Posts[Route] <= 0 then
+		if CountTable(Posts[Route]) <= 0 then
 			Posts[Route] = nil
 		end
 	end
@@ -116,7 +118,7 @@ AddEventHandler("postit:Delete",function(Route,Number)
 		SendNUIMessage({ Action = "Remove", id = Number })
 		Display[Route][Number] = nil
 
-		if #Display[Route] <= 0 then
+		if CountTable(Display[Route]) <= 0 then
 			Display[Route] = nil
 		end
 	end

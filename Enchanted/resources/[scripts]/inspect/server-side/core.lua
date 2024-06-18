@@ -24,118 +24,100 @@ AddEventHandler("police:Inspect",function(OtherSource)
 	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.Passport(OtherSource)
 	if Passport and vRP.DoesEntityExist(OtherSource) and not Players[OtherPassport] and (vRP.HasService(Passport,"Policia") or vRP.GetHealth(OtherSource) <= 100 or (vRP.GetHealth(OtherSource) > 100 and vRP.Request(OtherSource,"Revistar","Você aceita ser revistado?"))) then
-		Sourcers[Passport] = OtherSource
-		Players[Passport] = OtherPassport
+		if #(vRP.GetEntityCoords(source) - vRP.GetEntityCoords(OtherSource)) <= 2 then
+			Sourcers[Passport] = OtherSource
+			Players[Passport] = OtherPassport
 
-		TriggerEvent("inventory:ServerCarry",source,Passport,OtherSource,true)
-		TriggerClientEvent("inventory:Close",OtherSource)
-		TriggerClientEvent("inspect:Open",source)
+			TriggerEvent("inventory:ServerCarry",source,Passport,OtherSource,true)
+			TriggerClientEvent("inventory:Close",OtherSource)
+			TriggerClientEvent("inspect:Open",source)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUEST
+-- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Request()
+function Creative.Mount()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Inventory = {}
+		local Primary = {}
 		local Inv = vRP.Inventory(Passport)
 		for Index,v in pairs(Inv) do
-			if (parseInt(v["amount"]) <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveItem(Passport,v["item"],parseInt(v["amount"]),false)
-			else
-				v["amount"] = parseInt(v["amount"])
-				v["peso"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["name"] = ItemName(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+			v["name"] = ItemName(v["item"])
+			v["weight"] = ItemWeight(v["item"])
+			v["index"] = ItemIndex(v["item"])
+			v["amount"] = parseInt(v["amount"])
+			v["rarity"] = ItemRarity(v["item"])
+			v["economy"] = ItemEconomy(v["item"])
+			v["desc"] = ItemDescription(v["item"])
+			v["key"] = v["item"]
+			v["slot"] = Index
 
-				v["desc"] = "<item>"..v["name"].."</item>"
+			local Split = splitString(v["item"])
 
-				local Split = splitString(v["item"])
-				local Description = ItemDescription(v["item"])
-
-				if Description then
-					v["desc"] = v["desc"].."<br><description>"..Description.."</description>"
-				else
-					if Split[1] == "vehkey" then
-						v["desc"] = v["desc"].."<br><description>Placa do Veículo: <green>"..Split[2].."</green></description>"
-					end
+			if not v["desc"] then
+				if Split[1] == "vehkey" and Split[2] then
+					v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+				elseif ItemNamed(Split[1]) and Split[2] then
+					v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 				end
-
-				local Max = ItemMaxAmount(v["item"])
-				if not Max then
-					Max = "Ilimitado"
-				end
-
-				v["desc"] = v["desc"].."<br><legenda>Tipo: <r>"..ItemType(v["item"]).."</r> <s>|</s> Máximo: <r>"..Max.."</r></legenda>"
-
-				if Split[2] then
-					if ItemLoads(v["item"]) then
-						v["charges"] = parseInt(Split[2] * 33)
-					end
-
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
-					end
-				end
-
-				Inventory[Index] = v
 			end
+
+			if Split[2] then
+				local Loaded = ItemLoads(v["item"])
+				if Loaded then
+					v["charges"] = parseInt(Split[2] * (100 / Loaded))
+				end
+
+				if ItemDurability(v["item"]) then
+					v["durability"] = parseInt(os.time() - Split[2])
+					v["days"] = ItemDurability(v["item"])
+				end
+			end
+
+			Primary[Index] = v
 		end
 
-		local Chest = {}
+		local Secondary = {}
 		local Inv = vRP.Inventory(Players[Passport])
 		for Index,v in pairs(Inv) do
-			if (parseInt(v["amount"]) <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveItem(Players[Passport],v["item"],parseInt(v["amount"]),false)
-			else
-				v["amount"] = parseInt(v["amount"])
-				v["peso"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["name"] = ItemName(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+			v["name"] = ItemName(v["item"])
+			v["weight"] = ItemWeight(v["item"])
+			v["index"] = ItemIndex(v["item"])
+			v["amount"] = parseInt(v["amount"])
+			v["rarity"] = ItemRarity(v["item"])
+			v["economy"] = ItemEconomy(v["item"])
+			v["desc"] = ItemDescription(v["item"])
+			v["key"] = v["item"]
+			v["slot"] = Index
 
-				v["desc"] = "<item>"..v["name"].."</item>"
+			local Split = splitString(v["item"])
 
-				local Split = splitString(v["item"])
-				local Description = ItemDescription(v["item"])
-
-				if Description then
-					v["desc"] = v["desc"].."<br><description>"..Description.."</description>"
-				else
-					if Split[1] == "vehkey" then
-						v["desc"] = v["desc"].."<br><description>Placa do Veículo: <green>"..Split[2].."</green></description>"
-					end
+			if not v["desc"] then
+				if Split[1] == "vehkey" and Split[2] then
+					v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+				elseif ItemNamed(Split[1]) and Split[2] then
+					v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 				end
-
-				local Max = ItemMaxAmount(v["item"])
-				if not Max then
-					Max = "Ilimitado"
-				end
-
-				v["desc"] = v["desc"].."<br><legenda>Tipo: <r>"..ItemType(v["item"]).."</r> <s>|</s> Máximo: <r>"..Max.."</r></legenda>"
-
-				if Split[2] then
-					if ItemLoads(v["item"]) then
-						v["charges"] = parseInt(Split[2] * 33)
-					end
-
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
-					end
-				end
-
-				Chest[Index] = v
 			end
+
+			if Split[2] then
+				local Loaded = ItemLoads(v["item"])
+				if Loaded then
+					v["charges"] = parseInt(Split[2] * (100 / Loaded))
+				end
+
+				if ItemDurability(v["item"]) then
+					v["durability"] = parseInt(os.time() - Split[2])
+					v["days"] = ItemDurability(v["item"])
+				end
+			end
+
+			Secondary[Index] = v
 		end
 
-		return Inventory,Chest,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.InventoryWeight(Players[Passport]),vRP.GetWeight(Players[Passport])
+		return Primary,Secondary,vRP.GetWeight(Passport),vRP.GetWeight(Players[Passport])
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -165,9 +147,8 @@ function Creative.Store(Item,Slot,Amount,Target)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Sourcers[Passport] and vRP.DoesEntityExist(Sourcers[Passport]) then
-		if vRP.MaxItens(Players[Passport],Item,Amount) then
-			TriggerClientEvent("Notify",source,"Aviso","Limite atingido.","amarelo",5000)
-			TriggerClientEvent("inspect:Update",source,"Request")
+		if BlockDelete(Item) or vRP.MaxItens(Players[Passport],Item,Amount) then
+			TriggerClientEvent("inventory:Update",source)
 
 			return false
 		end
@@ -175,10 +156,11 @@ function Creative.Store(Item,Slot,Amount,Target)
 		if (vRP.InventoryWeight(Players[Passport]) + ItemWeight(Item) * Amount) <= vRP.GetWeight(Players[Passport]) then
 			if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
 				vRP.GiveItem(Players[Passport],Item,Amount,true,Target)
+				TriggerClientEvent("inventory:Update",source)
 			end
 		else
 			TriggerClientEvent("Notify",source,"Aviso","Mochila cheia.","amarelo",5000)
-			TriggerClientEvent("inspect:Update",source,"Request")
+			TriggerClientEvent("inventory:Update",source)
 		end
 	end
 end
@@ -189,9 +171,8 @@ function Creative.Take(Item,Slot,Target,Amount)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Sourcers[Passport] and vRP.DoesEntityExist(Sourcers[Passport]) then
-		if vRP.MaxItens(Passport,Item,Amount) then
-			TriggerClientEvent("Notify",source,"Aviso","Limite atingido.","amarelo",5000)
-			TriggerClientEvent("inspect:Update",source,"Request")
+		if BlockDelete(Item) or vRP.MaxItens(Passport,Item,Amount) then
+			TriggerClientEvent("inventory:Update",source)
 
 			return false
 		end
@@ -199,11 +180,11 @@ function Creative.Take(Item,Slot,Target,Amount)
 		if vRP.CheckWeight(Passport,Item,Amount) then
 			if vRP.TakeItem(Players[Passport],Item,Amount,true,Slot) then
 				vRP.GiveItem(Passport,Item,Amount,true,Target)
-				TriggerClientEvent("inspect:Update",source,"Request")
+				TriggerClientEvent("inventory:Update",source)
 			end
 		else
 			TriggerClientEvent("Notify",source,"Aviso","Mochila cheia.","amarelo",5000)
-			TriggerClientEvent("inspect:Update",source,"Request")
+			TriggerClientEvent("inventory:Update",source)
 		end
 	end
 end

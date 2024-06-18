@@ -12,7 +12,7 @@ local Active = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-for Number,v in pairs(Objects) do
+for Number = 1,#Objects do
 	GlobalState["Farmer:"..Number] = 0
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -20,97 +20,86 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("farmer:Minerman")
 AddEventHandler("farmer:Minerman",function(Number)
-	local Tasks = 8
-	local Valuation = 3
 	local source = source
-	local Detectable = false
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
-		if not Number or type(Number) == "table" then
-			exports["megazord"]:Discord("**Passaporte:** "..Passport.."\n**Função:** Payment do Farmer",source)
-			Active[Passport] = true
+		Active[Passport] = true
 
-			return false
+		if not Number or type(Number) ~= "number" then
+			exports["discord"]:Embed("Hackers","**Passaporte:** "..Passport.."\n**Função:** Payment do Farmer",0xa3c846,source)
 		end
 
 		if GlobalState["Farmer:"..Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
-			Active[Passport] = true
+			local Item = "pickaxe"
+			local Pickaxe = vRP.ConsultItem(Passport,Item)
+			local PickaxePlus = vRP.ConsultItem(Passport,Item.."plus")
 
-			if vRP.ConsultItem(Passport,"pickaxe",1) then
-				Detectable = true
-			end
-
-			if vRP.ConsultItem(Passport,"pickaxeplus",1) then
-				Detectable = true
-				Valuation = 4
-				Tasks = 5
-			end
-
-			if Detectable then
-				vRPC.CreateObjects(source,"melee@large_wpn@streamed_core","ground_attack_on_spot","prop_tool_pickaxe",1,18905,0.10,-0.1,0.0,-92.0,260.0,5.0)
-				Player(source)["state"]["Buttons"] = true
+			if not Pickaxe and not PickaxePlus then
+				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName(Item).."</b>.","amarelo",5000)
+			else
 				Player(source)["state"]["Cancel"] = true
+				Player(source)["state"]["Buttons"] = true
+				vRPC.CreateObjects(source,"melee@large_wpn@streamed_core","ground_attack_on_spot","prop_tool_pickaxe",1,18905,0.10,-0.1,0.0,-92.0,260.0,5.0)
 
-				if vRP.Task(source,Tasks,15000) then
-					if GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
-						GlobalState["Farmer:"..Number] = GlobalState["Work"] + 36
+				if vRP.Task(source,Pickaxe and 10 or 6,20000) and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+					GlobalState["Farmer:"..Number] = GlobalState["Work"] + 60
 
-						local Experience = vRP.GetExperience(Passport,"Minerman")
-						local Level = ClassCategory(Experience)
+					local Result = {
+						{ ["Item"] = "tin_pure", ["Chance"] = 125, ["Min"] = 1, ["Max"] = 1 },
+						{ ["Item"] = "lead_pure", ["Chance"] = 125, ["Min"] = 1, ["Max"] = 1 },
+						{ ["Item"] = "copper_pure", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 1 },
+						{ ["Item"] = "iron_pure", ["Chance"] = 75, ["Min"] = 1, ["Max"] = 1 },
+						{ ["Item"] = "gold_pure", ["Chance"] = 75, ["Min"] = 1, ["Max"] = 1 },
+						{ ["Item"] = "diamond_pure", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 1 },
+						{ ["Item"] = "ruby_pure", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 1 }
+					}
 
-						if Level >= 3 and Level <= 5 then
-							Valuation = Valuation + 1
-						elseif Level >= 6 and Level <= 8 then
-							Valuation = Valuation + 2
-						elseif Level >= 9 then
-							Valuation = Valuation + 3
-						end
-
-						if exports["party"]:DoesExist(Passport) then
-							local Members = exports["party"]:Room(Passport,source,20)
-							if Members and parseInt(#Members) >= 4 then
-								Valuation = Valuation + (Valuation * 0.1)
-							end
-						end
-
-						if exports["inventory"]:Buffs("Luck",Passport) then
-							Valuation = Valuation + (Valuation * 0.5)
-						end
-
-						if vRP.UserPremium(Passport) then
-							local Bonification = 1
-							local Hierarchy = vRP.LevelPremium(source)
-				
-							if Hierarchy == 1 then
-								Bonification = 2
-							elseif Hierarchy == 2 then
-								Bonification = 3
-							end
-				
-							Valuation = Valuation + Bonification
-						end
-
-						if vRP.CheckWeight(Passport,"rock",Valuation) then
-							vRP.GenerateItem(Passport,"rock",Valuation,true)
-						else
-							TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-							exports["inventory"]:Drops(Passport,source,"rock",Valuation)
-						end
-
-						vRP.PutExperience(Passport,"Minerman",1)
-						vRP.UpgradeStress(Passport,1)
+					if PickaxePlus then
+						Result = {
+							{ ["Item"] = "tin_pure", ["Chance"] = 125, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "lead_pure", ["Chance"] = 125, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "copper_pure", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "iron_pure", ["Chance"] = 75, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "gold_pure", ["Chance"] = 75, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "diamond_pure", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "ruby_pure", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "sapphire_pure", ["Chance"] = 15, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "emerald_pure", ["Chance"] = 10, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "chalcopyrite", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
+							{ ["Item"] = "bauxite", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 }
+						}
 					end
+
+					local Consult = RandPercentage(Result)
+					if exports["party"]:DoesExist(Passport,2) then
+						Consult["Valuation"] = Consult["Valuation"] + (Consult["Valuation"] * 0.5)
+					end
+
+					if exports["inventory"]:Buffs("Luck",Passport) then
+						Consult["Valuation"] = Consult["Valuation"] + (Consult["Valuation"] * 0.5)
+					end
+
+					if vRP.UserPremium(Passport) then
+						Consult["Valuation"] = Consult["Valuation"] + (Consult["Valuation"] * 0.5)
+					end
+
+					if vRP.CheckWeight(Passport,Consult["Item"],Consult["Valuation"]) then
+						vRP.GenerateItem(Passport,Consult["Item"],Consult["Valuation"],true)
+					else
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+						exports["inventory"]:Drops(Passport,source,Consult["Item"],Consult["Valuation"])
+					end
+
+					vRP.UpgradeStress(Passport,1)
 				end
 
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
 				vRPC.Destroy(source)
-			else
-				TriggerClientEvent("Notify",source,"Aviso","<b>Picareta</b> não encontrada.","amarelo",5000)
 			end
-
-			Active[Passport] = nil
 		end
+
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -121,70 +110,58 @@ AddEventHandler("farmer:Lumberman",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
-		if not Number or type(Number) == "table" then
-			exports["megazord"]:Discord("**Passaporte:** "..Passport.."\n**Função:** Payment do Farmer",source)
-			Active[Passport] = true
+		Active[Passport] = true
 
-			return false
+		if not Number or type(Number) ~= "number" then
+			exports["discord"]:Embed("Hackers","**Passaporte:** "..Passport.."\n**Função:** Payment do Farmer",0xa3c846,source)
 		end
 
 		if GlobalState["Farmer:"..Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
-			Active[Passport] = true
+			local Item = "axe"
+			local Axe = vRP.ConsultItem(Passport,Item)
+			local AxePlus = vRP.ConsultItem(Passport,Item.."plus")
 
-			local Valuation = 3
-			local Ped = GetPlayerPed(source)
-			if DoesEntityExist(Ped) and GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_HATCHET") then
-				vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
-				TriggerClientEvent("Progress",source,"Cortando",11000)
-				Player(source)["state"]["Buttons"] = true
+			if not Axe and not AxePlus then
+				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName(Item).."</b>.","amarelo",5000)
+			else
 				Player(source)["state"]["Cancel"] = true
-				local timeProgress = 10
+				Player(source)["state"]["Buttons"] = true
+				vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
 
-				repeat
-					if timeProgress ~= 10 then
-						Wait(400)
-					end
-
-					Wait(700)
-					TriggerClientEvent("sounds:Private",source,"lumberman",0.1)
-					timeProgress = timeProgress - 1
-				until timeProgress <= 0
-
-				Wait(400)
-
-				if GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+				if vRP.Task(source,Axe and 10 or 6,20000) and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
 					GlobalState["Farmer:"..Number] = GlobalState["Work"] + 30
 
-					if exports["party"]:DoesExist(Passport) then
-						local Members = exports["party"]:Room(Passport,source,20)
-						if Members and parseInt(#Members) >= 2 then
-							Valuation = Valuation + (Valuation * 0.5)
-						end
+					local Valuation = 3
+					if exports["party"]:DoesExist(Passport,2) then
+						Valuation = Valuation + (Valuation * 0.25)
 					end
 
 					if exports["inventory"]:Buffs("Luck",Passport) then
-						Valuation = Valuation + (Valuation * 0.5)
+						Valuation = Valuation + (Valuation * 0.25)
+					end
+
+					if vRP.UserPremium(Passport) then
+						Valuation = Valuation + (Valuation * 0.25)
 					end
 
 					if vRP.CheckWeight(Passport,"woodlog",Valuation) then
 						vRP.GenerateItem(Passport,"woodlog",Valuation,true)
 					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
 						exports["inventory"]:Drops(Passport,source,"woodlog",Valuation)
 					end
 
 					vRP.UpgradeStress(Passport,1)
 				end
 
+				TriggerClientEvent("inventory:Provisory",source,false)
 				Player(source)["state"]["Buttons"] = false
 				Player(source)["state"]["Cancel"] = false
 				vRPC.Destroy(source)
-			else
-				TriggerClientEvent("Notify",source,"Aviso","<b>Machado</b> não encontrado.","amarelo",5000)
 			end
-
-			Active[Passport] = nil
 		end
+
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -195,47 +172,94 @@ AddEventHandler("farmer:Transporter",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
-		if not Number or type(Number) == "table" then
-			exports["megazord"]:Discord("**Passaporte:** "..Passport.."\n**Função:** Payment do Farmer",source)
-			Active[Passport] = true
+		Active[Passport] = true
 
-			return false
+		if not Number or type(Number) ~= "number" then
+			exports["discord"]:Embed("Hackers","**Passaporte:** "..Passport.."\n**Função:** Payment do Farmer",0xa3c846,source)
 		end
 
 		if GlobalState["Farmer:"..Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
-			Active[Passport] = true
-
-			vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
-			TriggerClientEvent("Progress",source,"Coletando",1000)
-			Player(source)["state"]["Buttons"] = true
 			Player(source)["state"]["Cancel"] = true
+			Player(source)["state"]["Buttons"] = true
+			TriggerClientEvent("Progress",source,"Coletando",1000)
+			vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 
-			Wait(1000)
+			SetTimeout(1000,function()
+				if GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+					GlobalState["Farmer:"..Number] = GlobalState["Work"] + 18
 
-			if GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
-				GlobalState["Farmer:"..Number] = GlobalState["Work"] + 6
+					local Valuation = 1
+					if exports["inventory"]:Buffs("Luck",Passport) then
+						Valuation = Valuation + 1
+					end
 
-				local Valuation = 1
-				if exports["inventory"]:Buffs("Luck",Passport) then
-					Valuation = Valuation + 1
+					if vRP.CheckWeight(Passport,"pouch",Valuation) then
+						vRP.GenerateItem(Passport,"pouch",Valuation,true)
+					else
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+						exports["inventory"]:Drops(Passport,source,"pouch",Valuation)
+					end
+
+					vRP.UpgradeStress(Passport,1)
 				end
 
-				if vRP.CheckWeight(Passport,"pouch",Valuation) then
-					vRP.GenerateItem(Passport,"pouch",Valuation,true)
-				else
-					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-					exports["inventory"]:Drops(Passport,source,"pouch",Valuation)
-				end
-
-				vRP.UpgradeStress(Passport,1)
-			end
+				vRPC.Destroy(source)
+			end)
 
 			Player(source)["state"]["Buttons"] = false
 			Player(source)["state"]["Cancel"] = false
-			vRPC.Destroy(source)
-
-			Active[Passport] = nil
 		end
+
+		Active[Passport] = nil
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SANDMAN
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("farmer:Sandman")
+AddEventHandler("farmer:Sandman",function(Number)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and not Active[Passport] then
+		Active[Passport] = true
+
+		if not Number or type(Number) ~= "number" then
+			exports["discord"]:Embed("Hackers","**Passaporte:** "..Passport.."\n**Função:** Payment do Farmer",0xa3c846,source)
+		end
+
+		if GlobalState["Farmer:"..Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+			Player(source)["state"]["Cancel"] = true
+			Player(source)["state"]["Buttons"] = true
+			TriggerClientEvent("Progress",source,"Coletando",1000)
+			vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+
+			SetTimeout(1000,function()
+				if GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+					GlobalState["Farmer:"..Number] = GlobalState["Work"] + 30
+
+					local Valuation = 1
+					if exports["inventory"]:Buffs("Luck",Passport) then
+						Valuation = Valuation + 1
+					end
+
+					if vRP.CheckWeight(Passport,"sand",Valuation) then
+						vRP.GenerateItem(Passport,"sand",Valuation,true)
+					else
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+						exports["inventory"]:Drops(Passport,source,"sand",Valuation)
+					end
+
+					vRP.UpgradeStress(Passport,1)
+				end
+
+				vRPC.Destroy(source)
+			end)
+
+			Player(source)["state"]["Buttons"] = false
+			Player(source)["state"]["Cancel"] = false
+		end
+
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

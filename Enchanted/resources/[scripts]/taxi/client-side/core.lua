@@ -19,13 +19,9 @@ local PaymentActive = false
 local Lasted = math.random(#Locations)
 local Selected = math.random(#Locations)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	exports["target"]:AddBoxZone("WorkTaxi",Init["xyz"],0.75,0.75,{
 		name = "WorkTaxi",
 		heading = Init["w"],
@@ -69,12 +65,12 @@ AddEventHandler("taxi:Init",function()
 	end
 
 	if Service then
-		TriggerEvent("Notify","Sucesso","Trabalho finalizado.","verde",5000)
+		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
 		exports["target"]:LabelText("WorkTaxi","Trabalhar")
 		SetDriveTaskDrivingStyle(PlayerPedId(),786603)
 		Service = false
 	else
-		TriggerEvent("Notify","Sucesso","Trabalho iniciado.","verde",5000)
+		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
 		exports["target"]:LabelText("WorkTaxi","Finalizar")
 		SetDriveTaskDrivingStyle(PlayerPedId(),1074528293)
 		MarkedPassenger()
@@ -95,7 +91,7 @@ CreateThread(function()
 			if Distance <= 100 and not Walking and GetEntityArchetypeName(Vehicle) == "taxi" then
 				TimeDistance = 1
 
-				DrawMarker(21,Locations[Selected]["Vehicle"]["x"],Locations[Selected]["Vehicle"]["y"],Locations[Selected]["Vehicle"]["z"],0,0,0,0,180.0,130.0,1.5,1.5,1.0,65,130,226,100,0,0,0,1)
+				DrawMarker(21,Locations[Selected]["Vehicle"]["x"],Locations[Selected]["Vehicle"]["y"],Locations[Selected]["Vehicle"]["z"],0,0,0,0,180.0,130.0,1.5,1.5,1.0,19,114,191,175,0,0,0,1)
 
 				if IsControlJustPressed(1,38) and Distance <= 2.5 then
 					if PaymentActive then
@@ -160,11 +156,11 @@ function CreatePassenger(Vehicle)
 	end
 
 	local Rand = math.random(#Models)
-	local Application,Network = vRPS.CreateModels(Models[Rand],Locations[Selected]["Ped"]["x"],Locations[Selected]["Ped"]["y"],Locations[Selected]["Ped"]["z"])
-	if Application then
+	local Network = vRPS.CreateModels(Models[Rand],Locations[Selected]["Ped"]["x"],Locations[Selected]["Ped"]["y"],Locations[Selected]["Ped"]["z"])
+	if Network then
 		Walking = true
 
-		SetTimeout(1000,function()
+		SetTimeout(2500,function()
 			Current = LoadNetwork(Network)
 			if Current then
 				LocalPlayer["state"]:set("BlockLocked",true,false)
@@ -225,23 +221,4 @@ function MarkedPassenger()
 	BeginTextCommandSetBlipName("STRING")
 	AddTextComponentString("Taxista")
 	EndTextCommandSetBlipName(Blip)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- DRAWTEXT3D
------------------------------------------------------------------------------------------------------------------------------------------
-function DrawText3D(x,y,z,Text)
-	local Screen,_x,_y = GetScreenCoordFromWorldCoord(x,y,z)
-
-	if Screen then
-		BeginTextCommandDisplayText("STRING")
-		AddTextComponentSubstringKeyboardDisplay(Text)
-		SetTextColour(255,255,255,150)
-		SetTextScale(0.35,0.35)
-		SetTextFont(4)
-		SetTextCentre(1)
-		EndTextCommandDisplayText(_x,_y)
-
-		local Width = string.len(Text) / 160 * 0.45
-		DrawRect(_x,_y + 0.0125,Width,0.03,15,15,15,175)
-	end
 end

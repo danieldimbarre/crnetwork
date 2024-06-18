@@ -12,6 +12,55 @@ vCLIENT = Tunnel.getInterface("player")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:RECYCLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Recycled = {}
+RegisterServerEvent("player:Recycle")
+AddEventHandler("player:Recycle",function()
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and not Recycled[Passport] and not exports["hud"]:Wanted(Passport) and vRP.Request(source,"Recicladora","Está apenas com itens que deseja reciclar em sua mochila?") then
+		local Notify = false
+		Recycled[Passport] = true
+		local Inv = vRP.Inventory(Passport)
+
+		for Slot = 1,5 do
+			local Slot = tostring(Slot)
+			if Inv[Slot] and Inv[Slot]["item"] and Inv[Slot]["amount"] > 0 then
+				for Item,Amount in pairs(ItemRecycle(Inv[Slot]["item"])) do
+					if vRP.TakeItem(Passport,Inv[Slot]["item"],Inv[Slot]["amount"],false,Slot) then
+						vRP.GenerateItem(Passport,Item,Inv[Slot]["amount"] * Amount,true,Slot)
+						Notify = true
+					end
+				end
+			end
+		end
+
+		if Notify then
+			TriggerClientEvent("Notify",source,"Recicladora","Processo concluído.","ilegal",5000)
+		else
+			TriggerClientEvent("Notify",source,"Recicladora","Nenhum item encontrado.","vermelho",5000)
+		end
+
+		Recycled[Passport] = nil
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:SURVIVAL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("player:Survival")
+AddEventHandler("player:Survival",function()
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		vRP.ClearInventory(Passport)
+		vRP.UpgradeThirst(Passport,100)
+		vRP.UpgradeHunger(Passport,100)
+		vRP.DowngradeStress(Passport,100)
+		exports["discord"]:Embed("Airport","**Source:** "..source.."\n**Passaporte:** "..Passport.."\n**Coords:** "..vRP.GetEntityCoords(source),0xa3c846)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ME
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("me",function(source,Message,History)
@@ -39,7 +88,7 @@ AddEventHandler("player:Demand",function(OtherSource)
 		local Keyboard = vKEYBOARD.Primary(source,"Valor da Cobrança.")
 		if Keyboard and vRP.Passport(OtherSource) then
 			if vRP.Request(OtherSource,"Cobrança","Aceitar a cobrança de <b>$"..Dotted(Keyboard[1]).."</b> feita por <b>"..vRP.FullName(Passport).."</b>.") then
-				if vRP.PaymentFull(OtherPassport,Keyboard[1],true) then
+				if vRP.PaymentBank(OtherPassport,Keyboard[1],true) then
 					vRP.GiveBank(Passport,Keyboard[1],true)
 				end
 			else
@@ -161,8 +210,7 @@ AddEventHandler("player:cvFunctions",function(Mode)
 			local Vehicle,Network = vRPC.VehicleList(source)
 			if Vehicle then
 				local Networked = NetworkGetEntityFromNetworkId(Network)
-
-				if GetVehicleDoorLockStatus(Networked) <= 1 then
+				if DoesEntityExist(Networked) and GetVehicleDoorLockStatus(Networked) <= 1 then
 					if Mode == "rv" then
 						vCLIENT.RemoveVehicle(OtherSource)
 					elseif Mode == "cv" then
@@ -417,5 +465,9 @@ end)
 AddEventHandler("Disconnect",function(Passport)
 	if Debug[Passport] then
 		Debug[Passport] = nil
+	end
+
+	if Recycled[Passport] then
+		Recycled[Passport] = nil
 	end
 end)

@@ -723,49 +723,44 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTICK
 -----------------------------------------------------------------------------------------------------------------------------------------
-local function ThreadTick()
-	for Passport,v in pairs(Pendings) do
-		if vRP.Source(Passport) then
-			local Experience = vRP.GetExperience(Passport,"Boosting")
-			local Level = AboutClasses(Experience)
-			local Randomize = math.random(Level)
+CreateThread(function()
+	while true do
+		Wait(60000)
 
-			if os.time() >= Cooldowns[Passport][Randomize] and CountTable(Pendings[Passport]) < 3 then
-				if (Randomize == 6 and MaxContracts >= 3) or (Randomize == 6 and ActiveMax[Passport]) then
-					goto SkipContracts
+		for Passport,v in pairs(Pendings) do
+			if vRP.Source(Passport) then
+				local Experience = vRP.GetExperience(Passport,"Boosting")
+				local Level = AboutClasses(Experience)
+				local Randomize = math.random(Level)
+
+				if os.time() >= Cooldowns[Passport][Randomize] and CountTable(Pendings[Passport]) < 3 then
+					if (Randomize == 6 and MaxContracts >= 3) or (Randomize == 6 and ActiveMax[Passport]) then
+						goto SkipContracts
+					end
+
+					if Randomize == 6 then
+						MaxContracts = MaxContracts + 1
+						ActiveMax[Passport] = true
+					end
+
+					local Selected = math.random(#Contracts[Randomize])
+					Pendings[Passport][#Pendings[Passport] + 1] = Contracts[Randomize][Selected]
+					Cooldowns[Passport][Randomize] = os.time() + math.random(Minimals[Randomize]["Min"],Minimals[Randomize]["Max"])
 				end
 
-				if Randomize == 6 then
-					MaxContracts = MaxContracts + 1
-					ActiveMax[Passport] = true
-				end
-
-				local Selected = math.random(#Contracts[Randomize])
-				Pendings[Passport][#Pendings[Passport] + 1] = Contracts[Randomize][Selected]
-				Cooldowns[Passport][Randomize] = os.time() + math.random(Minimals[Randomize]["Min"],Minimals[Randomize]["Max"])
+				::SkipContracts::
 			end
-
-			::SkipContracts::
 		end
 	end
-
-	SetTimeout(30000,ThreadTick)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADTICKINIT
------------------------------------------------------------------------------------------------------------------------------------------
-ThreadTick()
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EXPERIENCE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Experience()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		return vRP.GetExperience(Passport,"Boosting")
-	end
 
-	return 0
+	return vRP.GetExperience(Passport,"Boosting") or 0
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACTIVES
@@ -842,7 +837,7 @@ function Creative.Accept(Number)
 		Active[Passport] = Pendings[Passport][Number]
 		Active[Passport]["Timer"] = os.time() + Pendings[Passport][Number]["Timer"]
 
-		TriggerClientEvent("boosting:Active",source,Active[Passport]["Vehicle"])
+		TriggerClientEvent("boosting:Active",source,Active[Passport]["Vehicle"],Active[Passport]["Class"])
 
 		Pendings[Passport][Number] = nil
 
@@ -856,12 +851,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Scratch(Number)
 	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport then
-		return true
-	end
 
-	return false
+	return vRP.Passport(source) and true or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TRANSFER
@@ -878,7 +869,7 @@ function Creative.Transfer(Table)
 		Pendings[OtherPassport][#Pendings[OtherPassport] + 1] = Pendings[Passport][Selected]
 		Pendings[Passport][Selected] = nil
 
-		TriggerClientEvent("Notify",source,"Sucesso","Transferência concluída.","verde",5000)
+		TriggerClientEvent("Notify",source,"Sucessso","Transferência concluída.","verde",5000)
 
 		return true
 	end
@@ -916,7 +907,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.CreateVehicle(Model,Coords)
+function Creative.CreateVehicle(Model,Class,Coords)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
@@ -939,7 +930,8 @@ function Creative.CreateVehicle(Model,Coords)
 			TriggerEvent("inventory:Boosting",Plate,{
 				["Amount"] = 0,
 				["Source"] = source,
-				["Passport"] = Passport
+				["Passport"] = Passport,
+				["Class"] = Class
 			})
 
 			TriggerClientEvent("NotifyPush",source,{ code = 31, title = "Informações do Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(Model).." - "..Plate, color = 44 })
@@ -958,29 +950,26 @@ exports("Payment",function(source,Passport)
 		if Active[Passport]["Timer"] >= os.time() then
 			local Class = Active[Passport]["Class"]
 			local GainExperience = Active[Passport]["Exp"]
-			local Valuation = Active[Passport]["Value"] * 2
+			local Valuation = Active[Passport]["Value"] * 3
 			local Total = math.random(Minimals[Class]["Min"],Minimals[Class]["Max"])
 
 			if exports["party"]:DoesExist(Passport,2) then
 				local Consult = exports["party"]:Room(Passport,source,25)
-				local AmountMembers = CountTable(Consult)
 
-				for Number = 1,AmountMembers do
+				for Number = 1,CountTable(Consult) do
 					if vRP.Passport(Consult[Number]["Source"]) then
 						local OtherPassport = Consult[Number]["Passport"]
 
 						vRP.PutExperience(OtherPassport,"Boosting",GainExperience)
 						vRP.GenerateItem(OtherPassport,"platinum",Valuation,true)
 						Cooldowns[OtherPassport][Class] = os.time() + Total
-						vRP.UpgradeStress(OtherPassport,5)
 						Active[OtherPassport] = nil
 					end
 				end
 			else
+				vRP.PutExperience(Passport,"Boosting",GainExperience)
 				vRP.GenerateItem(Passport,"platinum",Valuation,true)
-				vRP.PutExperience(Passport,"Boosting",Experience)
 				Cooldowns[Passport][Class] = os.time() + Total
-				vRP.UpgradeStress(Passport,5)
 			end
 		end
 

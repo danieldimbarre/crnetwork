@@ -134,7 +134,16 @@ AddEventHandler("inventory:Robberys",function(Crime)
 				Active[Passport] = os.time() + Robberys[Crime]["Duration"]
 				vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
 				TriggerClientEvent("Progress",source,"Roubando",Robberys[Crime]["Duration"] * 1000)
-				vRP.CallPolice(source,Passport,false,"Policia","Roubo a "..Robberys[Crime]["Name"],false,Robberys[Crime]["Duration"] * 3,31,22)
+
+				exports["vrp"]:CallPolice({
+					["Source"] = source,
+					["Passport"] = Passport,
+					["Permission"] = "Policia",
+					["Name"] = "Roubo a "..Robberys[Crime]["Name"],
+					["Wanted"] = Robberys[Crime]["Duration"] * 3,
+					["Code"] = 31,
+					["Color"] = 22
+				})
 
 				repeat
 					if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
@@ -142,7 +151,7 @@ AddEventHandler("inventory:Robberys",function(Crime)
 						Active[Passport] = nil
 						vRP.FreezePlayer(source,false)
 						Player(source)["state"]["Buttons"] = false
-						TriggerClientEvent("player:Residuals",source,"Resquício de Línter.")
+						TriggerClientEvent("player:Residuals",source,"Resquício de Línter")
 
 						vRP.GenerateItem(Passport,Robberys[Crime]["Payment"]["Item"],math.random(Robberys[Crime]["Payment"]["Min"],Robberys[Crime]["Payment"]["Max"]),true)
 					end
@@ -153,7 +162,7 @@ AddEventHandler("inventory:Robberys",function(Crime)
 				TriggerClientEvent("Notify",source,"Atenção","Contingente indisponível.","amarelo",5000)
 			end
 		else
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde <b>"..Cooldown[Mode] - os.time().."</b> segundos.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Cooldown[Mode] - os.time())..".","amarelo",5000)
 		end
 	end
 end)

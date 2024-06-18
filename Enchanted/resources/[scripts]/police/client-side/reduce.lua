@@ -42,13 +42,9 @@ local Locations = {
 	vec4(1650.18,2535.33,44.85,0.35)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	for Number = 1,#Locations do
 		exports["target"]:AddCircleZone("Prison:"..Number,Locations[Number]["xyz"],Locations[Number]["w"],{
 			name = "Prison:"..Number,

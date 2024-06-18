@@ -18,19 +18,16 @@ local ModelSelected = ""
 local TimeDistance = 999
 local VehiclePlate = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
-	exports["target"]:AddCircleZone("WorkTowed",Init,0.15,{
-		name = "WorkTowed",
-		heading = 0.0,
-		useZ = true
+CreateThread(function()
+	exports["target"]:AddBoxZone("Towed",Init["xyz"],0.75,0.75,{
+		name = "Towed",
+		heading = Init["w"],
+		minZ = Init["z"] - 1.0,
+		maxZ = Init["z"] + 1.0
 	},{
-		Distance = 1.0,
+		Distance = 1.75,
 		options = {
 			{
 				event = "towed:Init",
@@ -50,18 +47,20 @@ AddEventHandler("towed:Init",function()
 	end
 
 	if Service then
-		TriggerEvent("Notify","Impound","Trabalho finalizado.","verde",5000)
-		exports["target"]:LabelText("WorkTowed","Trabalhar")
+		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
+		exports["target"]:LabelText("Towed","Trabalhar")
 		Service = false
 	else
-		TriggerEvent("Notify","Impound","Trabalho iniciado.","verde",5000)
-		exports["target"]:LabelText("WorkTowed","Finalizar")
+		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
+		exports["target"]:LabelText("Towed","Finalizar")
 		ModelSelected = Models[math.random(#Models)]
 		Destiny = math.random(#Locations)
 		VehiclePlate = nil
 		MarkedVehicle()
 		Service = true
 	end
+
+	vSERVER.Service()
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOWED:INATIVE
@@ -87,35 +86,38 @@ CreateThread(function()
 			local Coords = GetEntityCoords(Ped)
 
 			if not Vehicle then
+				TimeDistance = 1999
+
 				if #(Coords - Locations[Destiny]["xyz"]) <= 100 then
-					Vehicle,Plate = vSERVER.CreateVehicle(ModelSelected,Destiny)
-					TimeDistance = 1999
+					local Networked,Plate = vSERVER.Vehicle(ModelSelected,Destiny)
+					if Networked then
+						local Network = LoadNetwork(Networked)
+						if Network then
+							if DoesBlipExist(Blip) then
+								RemoveBlip(Blip)
+								Blip = nil
+							end
 
-					SetTimeout(1000,function()
-						if DoesBlipExist(Blip) then
-							RemoveBlip(Blip)
-							Blip = nil
+							Vehicle = Network
+							VehiclePlate = Plate
+
+							SetVehicleEngineHealth(Vehicle,10.0)
+							SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
+							SetVehicleNeedsToBeHotwired(Vehicle,false)
+							DecorSetInt(Vehicle,"Player_Vehicle",-1)
+							SetVehicleOnGroundProperly(Vehicle)
+							SetVehRadioStation(Vehicle,"OFF")
+							SetEntityHealth(Vehicle,10)
+
+							SetModelAsNoLongerNeeded(ModelSelected)
 						end
-
-						VehiclePlate = Plate
-						Vehicle = NetToEnt(Vehicle)
-
-						SetVehicleEngineHealth(Vehicle,10.0)
-						SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
-						SetVehicleNeedsToBeHotwired(Vehicle,false)
-						DecorSetInt(Vehicle,"Player_Vehicle",-1)
-						SetVehicleOnGroundProperly(Vehicle)
-						SetVehRadioStation(Vehicle,"OFF")
-						SetEntityHealth(Vehicle,10)
-
-						SetModelAsNoLongerNeeded(ModelSelected)
-					end)
+					end
 				end
 			elseif DoesEntityExist(Vehicle) and not Entity(Vehicle)["state"]["Tow"] then
 				TimeDistance = 1
 
 				local OtherCoords = GetEntityCoords(Vehicle)
-				DrawMarker(22,OtherCoords["x"],OtherCoords["y"],OtherCoords["z"] + 2.5,0.0,0.0,0.0,0.0,180.0,0.0,2.5,2.5,1.5,65,130,226,100,0,0,0,1)
+				DrawMarker(22,OtherCoords["x"],OtherCoords["y"],OtherCoords["z"] + 2.5,0.0,0.0,0.0,0.0,180.0,0.0,2.5,2.5,1.5,19,114,191,175,0,0,0,1)
 			end
 		end
 

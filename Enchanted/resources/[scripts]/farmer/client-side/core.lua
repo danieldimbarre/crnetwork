@@ -11,54 +11,32 @@ Tunnel.bindInterface("farmer",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Poly = {}
-local Displayed = {}
+local Display = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INPUTTARGETPOSITION
 -----------------------------------------------------------------------------------------------------------------------------------------
 function InputTargetPosition(Number,v)
-	if v["Model"] == "prop_money_bag_01" then
-		exports["target"]:AddBoxZone("Farmer:"..Number,v["Coords"],v["Width"],v["Width"],{
-			name = "Farmer:"..Number,
-			heading = v["Heading"],
-			minZ = v["Coords"]["z"],
-			maxZ = v["Coords"]["z"] + 0.50
-		},{
-			shop = Number,
-			Distance = v["Distance"],
-			options = {
-				{
-					event = v["Event"],
-					label = v["Label"],
-					tunnel = "server"
-				}
+	exports["target"]:AddBoxZone("Farmer:"..Number,v["Coords"]["xyz"],v["Width"],v["Width"],{
+		name = "Farmer:"..Number,
+		heading = v["Coords"]["w"] or 0.0,
+		minZ = v["Coords"]["z"] - (v["Lower"] or 0.0),
+		maxZ = v["Coords"]["z"] + (v["Upper"] or 0.0)
+	},{
+		shop = Number,
+		Distance = v["Distance"] or 1.5,
+		options = {
+			{
+				event = v["Event"],
+				label = v["Label"],
+				tunnel = "server"
 			}
-		})
-	else
-		exports["target"]:AddCircleZone("Farmer:"..Number,v["Coords"],v["Width"],{
-			name = "Farmer:"..Number,
-			heading = v["Heading"],
-			useZ = true
-		},{
-			shop = Number,
-			Distance = v["Distance"],
-			options = {
-				{
-					event = v["Event"],
-					label = v["Label"],
-					tunnel = "server"
-				}
-			}
-		})
-	end
+		}
+	})
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADOBJECTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	for Service,_ in pairs(FastFarmer) do
 		for Number,v in pairs(FastFarmer[Service]["Coords"]) do
 			exports["target"]:AddCircleZone(Service..":"..Number,v,FastFarmer[Service]["Width"],{
@@ -75,37 +53,37 @@ AddEventHandler("onClientResourceStart",function(Resource)
 			Poly[Service] = PolyZone:Create(FastFarmer[Service]["PolyZone"],{ name = Service })
 		end
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADOBJECTS
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+
 	while true do
 		local Ped = PlayerPedId()
-		local Coords = GetEntityCoords(Ped)
+		local TimerDistance = 5000
+		if not IsPedInAnyVehicle(Ped) then
+			local Coords = GetEntityCoords(Ped)
 
-		for Number,v in pairs(Objects) do
-			if #(Coords - v["Coords"]) <= v["Show"] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
-				if not Displayed[Number] and LoadModel(v["Model"]) then
-					Displayed[Number] = CreateObjectNoOffset(v["Model"],v["Coords"]["x"],v["Coords"]["y"],v["Coords"]["z"] - v["Height"],false,false,false)
-					SetEntityHeading(Displayed[Number],v["Heading"])
-					FreezeEntityPosition(Displayed[Number],true)
-					SetModelAsNoLongerNeeded(v["Model"])
-					InputTargetPosition(Number,v)
-				end
-			else
-				if Displayed[Number] then
-					if DoesEntityExist(Displayed[Number]) then
-						DeleteEntity(Displayed[Number])
+			for Number,v in pairs(Objects) do
+				if #(Coords - v["Coords"]["xyz"]) <= (v["Show"] or 100.0) and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+					if not Display[Number] and LoadModel(v["Model"]) then
+						Display[Number] = CreateObjectNoOffset(v["Model"],v["Coords"]["x"],v["Coords"]["y"],v["Coords"]["z"] - (v["Height"] or 0.0),false,false,false)
+						SetEntityHeading(Display[Number],v["Coords"]["w"])
+						FreezeEntityPosition(Display[Number],true)
+						SetModelAsNoLongerNeeded(v["Model"])
+						InputTargetPosition(Number,v)
+						TimerDistance = 1000
 					end
+				else
+					if Display[Number] then
+						if DoesEntityExist(Display[Number]) then
+							DeleteEntity(Display[Number])
+						end
 
-					exports["target"]:RemCircleZone("Farmer:"..Number)
-					Displayed[Number] = nil
+						exports["target"]:RemCircleZone("Farmer:"..Number)
+						Display[Number] = nil
+					end
 				end
 			end
 		end
 
-		Wait(1000)
+		Wait(TimerDistance)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -113,13 +91,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 for Number = 1,#Objects do
 	AddStateBagChangeHandler("Farmer:"..Number,nil,function(Name,Key,Value)
-		if Displayed[Number] then
-			if DoesEntityExist(Displayed[Number]) then
-				DeleteEntity(Displayed[Number])
+		if Display[Number] then
+			if DoesEntityExist(Display[Number]) then
+				DeleteEntity(Display[Number])
 			end
 
 			exports["target"]:RemCircleZone("Farmer:"..Number)
-			Displayed[Number] = nil
+			Display[Number] = nil
 		end
 	end)
 end

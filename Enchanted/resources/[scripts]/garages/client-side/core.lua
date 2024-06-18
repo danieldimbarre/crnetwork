@@ -17,6 +17,7 @@ DecorRegister("Player_Vehicle",3)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIAVEIS
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Opened = "1"
 local Searched = nil
 local Hotwired = false
 local Anim = "machinic_loop_mechandplayer"
@@ -357,7 +358,7 @@ function Creative.SpawnPosition(Select)
 	until not DoesEntityExist(Position) or not Garages[Select][Slot]
 
 	if not Garages[Select][tostring(Checks)] then
-		TriggerEvent("Notify","Atenção","Todas as vagas estão ocupadas.","amarelo",5000)
+		TriggerEvent("Notify","Atenção","Todas as vagas estão ocupadas.","default",5000)
 		return false
 	end
 
@@ -447,7 +448,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 			Tyres[i] = Status
 		end
 
-		vSERVER.Delete(VehToNet(Vehicle),GetEntityHealth(Vehicle),GetVehicleEngineHealth(Vehicle),GetVehicleBodyHealth(Vehicle),Doors,Windows,Tyres,GetVehicleNumberPlateText(Vehicle))
+		vSERVER.Delete(VehToNet(Vehicle),GetEntityHealth(Vehicle),GetVehicleEngineHealth(Vehicle),GetVehicleBodyHealth(Vehicle),Doors,Windows,Tyres,GetVehicleNumberPlateText(Vehicle),Opened)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -457,6 +458,10 @@ function Creative.SearchBlip(Coords)
 	if DoesBlipExist(Searched) then
 		RemoveBlip(Searched)
 		Searched = nil
+	end
+
+	if type(Coords) == "string" then
+		Coords = vec3(Garages[Coords]["x"],Garages[Coords]["y"],Garages[Coords]["z"])
 	end
 
 	Searched = AddBlipForCoord(Coords["x"],Coords["y"],Coords["z"])
@@ -486,18 +491,11 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STOPHOTWIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.StopHotwired(Vehicle)
+function Creative.StopHotwired()
 	Hotwired = false
 
 	if LoadAnim(Dict) then
 		StopAnimTask(PlayerPedId(),Dict,Anim,8.0)
-	end
-
-	if Vehicle then
-		SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
-		SetVehicleNeedsToBeHotwired(Vehicle,false)
-		DecorSetInt(Vehicle,"Player_Vehicle",-1)
-		SetVehRadioStation(Vehicle,"OFF")
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -548,18 +546,19 @@ CreateThread(function()
 	while true do
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
-		if not IsPedInAnyVehicle(Ped) and not LocalPlayer["state"]["Cellphone"] then
+		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
 
 			for Number,v in pairs(Garages) do
 				local Distance = #(Coords - vec3(v["x"],v["y"],v["z"]))
 				if Distance <= 5.0 then
 					TimeDistance = 1
-					DrawMarker(23,v["x"],v["y"],v["z"] - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,65,130,226,100,0,0,0,0)
+					DrawMarker(23,v["x"],v["y"],v["z"] - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,19,114,191,175,0,0,0,0)
 
-					if Distance <= 1.25 and IsControlJustPressed(1,38) and not exports["hud"]:Wanted() and not LocalPlayer["state"]["Cellphone"] and not LocalPlayer["state"]["Target"] then
+					if Distance <= 1.25 and IsControlJustPressed(1,38) and not exports["hud"]:Wanted() and not exports["lb-phone"]:IsOpen() then
 						local Vehicles = vSERVER.Vehicles(Number)
 						if Vehicles then
+							Opened = Number
 							SetNuiFocus(true,true)
 							TriggerEvent("target:Debug")
 							SendNUIMessage({ name = "Open", payload = { Number,Vehicles } })
@@ -577,7 +576,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Spawn",function(Data,Callback)
 	if Data["Name"] then
-		TriggerServerEvent("garages:Spawn",Data["Name"],Data["Number"])
+		TriggerServerEvent("garages:Spawn",Data["Name"],Data["Number"],Opened)
 	end
 
 	Callback("Ok")

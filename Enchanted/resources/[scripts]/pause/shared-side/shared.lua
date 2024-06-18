@@ -1,9 +1,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-RolepassPrice = 10000
 HierarchyPremium = 3
-MarketplacePost = 250
+RolepassPrice = 10000
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOXES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -474,7 +473,6 @@ Works = {
 	["Driver"] = "Motorista",
 	["Traffic"] = "Traficante",
 	["Hunting"] = "Caçador",
-	["Minerman"] = "Minerador",
 	["Garbageman"] = "Lixeiro",
 	["Race"] = "Corredor"
 }
@@ -517,26 +515,22 @@ ShopItens = {
 	},
 	["premiumplate"] = {
 		["Price"] = 5000,
-		["Discount"] = 5
+		["Discount"] = 0
 	},
 	["newchars"] = {
 		["Price"] = 4000,
-		["Discount"] = 5
+		["Discount"] = 0
 	},
 	["namechange"] = {
 		["Price"] = 3000,
 		["Discount"] = 0
 	},
 	["diagram"] = {
-		["Price"] = 275,
+		["Price"] = 500,
 		["Discount"] = 0
 	},
-	["WEAPON_THERMAL"] = {
-		["Price"] = 250,
-		["Discount"] = 0
-	},
-	["WEAPON_FROST"] = {
-		["Price"] = 250,
+	["WEAPON_KATANA"] = {
+		["Price"] = 500,
 		["Discount"] = 0
 	},
 	["pickaxeplus"] = {
@@ -545,11 +539,15 @@ ShopItens = {
 	},
 	["fishingrodplus"] = {
 		["Price"] = 2500,
-		["Discount"] = 5
+		["Discount"] = 0
+	},
+	["axeplus"] = {
+		["Price"] = 2500,
+		["Discount"] = 0
 	},
 	["backpackp"] = {
 		["Price"] = 2000,
-		["Discount"] = 0
+		["Discount"] = 5
 	},
 	["backpackm"] = {
 		["Price"] = 3000,
@@ -563,9 +561,13 @@ ShopItens = {
 		["Price"] = 2500,
 		["Discount"] = 0
 	},
-	["chip"] = {
-		["Price"] = 2500,
-		["Discount"] = 0
+	["seatbelt"] = {
+		["Price"] = 5000,
+		["Discount"] = 5
+	},
+	["adrenalineplus"] = {
+		["Price"] = 500,
+		["Discount"] = 2
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -701,13 +703,10 @@ RoleItens = {
 			["Item"] = "dollar"
 		},{
 			["Amount"] = 1,
-			["Item"] = "WEAPON_THERMAL"
+			["Item"] = "dollar"
 		},{
 			["Amount"] = 1,
-			["Item"] = "WEAPON_FROST"
-		},{
-			["Amount"] = 1,
-			["Item"] = "WEAPON_KARAMBIT"
+			["Item"] = "dollar"
 		},{
 			["Amount"] = 1,
 			["Item"] = "repairkit01"
@@ -739,8 +738,8 @@ RoleItens = {
 			["Amount"] = 250,
 			["Item"] = "gemstone"
 		},{
-			["Amount"] = 1,
-			["Item"] = "namechange"
+			["Amount"] = 275,
+			["Item"] = "gemstone"
 		},{
 			["Amount"] = 1,
 			["Item"] = "newchars"
@@ -752,7 +751,7 @@ RoleItens = {
 			["Item"] = "pickaxeplus"
 		},{
 			["Amount"] = 1,
-			["Item"] = "chip"
+			["Item"] = "namechange"
 		},{
 			["Amount"] = 1,
 			["Item"] = "backpackg"

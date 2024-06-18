@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
+vRPS = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
@@ -12,12 +13,14 @@ vSERVER = Tunnel.getInterface("chest")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Block = false
+local Opened = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHESTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Chests = {
-	{ ["Name"] = "Policia", ["Coords"] = vec3(466.08,-998.86,30.59), ["Mode"] = "1" },
-	{ ["Name"] = "Paramedico", ["Coords"] = vec3(353.0,-1427.67,32.67), ["Mode"] = "2" }
+	{ ["Name"] = "Policia", ["Coords"] = vec3(460.75,-996.82,30.16), ["Mode"] = "1" },
+	{ ["Name"] = "Paramedico", ["Coords"] = vec3(353.0,-1427.67,32.67), ["Mode"] = "2" },
+	{ ["Name"] = "Restaurante", ["Coords"] = vec3(-631.68,228.32,82.17), ["Mode"] = "2" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LABELS
@@ -27,12 +30,12 @@ local Labels = {
 		{
 			event = "chest:Open",
 			label = "Compartimento Geral",
-			tunnel = "shop",
+			tunnel = "client",
 			service = "Normal"
 		},{
 			event = "chest:Open",
 			label = "Compartimento Pessoal",
-			tunnel = "shop",
+			tunnel = "client",
 			service = "Personal"
 		}
 	},
@@ -40,7 +43,7 @@ local Labels = {
 		{
 			event = "chest:Open",
 			label = "Abrir",
-			tunnel = "shop",
+			tunnel = "client",
 			service = "Normal"
 		}
 	},
@@ -48,21 +51,17 @@ local Labels = {
 		{
 			event = "chest:Open",
 			label = "Abrir",
-			tunnel = "shop",
+			tunnel = "client",
 			service = "Tray"
 		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	for Name,v in pairs(Chests) do
-		exports["target"]:AddCircleZone("Chest:"..Name,v["Coords"],0.1,{
+		exports["target"]:AddCircleZone("Chest:"..Name,v["Coords"],0.25,{
 			name = "Chest:"..Name,
 			heading = 0.0,
 			useZ = true
@@ -77,25 +76,43 @@ end)
 -- CHEST:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("chest:Open")
-AddEventHandler("chest:Open",function(Name,Mode,Item,Blocked)
+AddEventHandler("chest:Open",function(Name,Mode,Item,Blocked,Force)
 	if vSERVER.Permissions(Name,Mode,Item) and GetEntityHealth(PlayerPedId()) > 100 then
-		if Blocked then
-			Block = Blocked
+		if Blocked or SplitBoolean(Name,"Helicrash",":") then
+			Block = true
 		end
 
-		SetNuiFocus(true,true)
-		SendNUIMessage({ Action = "Open" })
+		Opened = true
+		TriggerEvent("inventory:Open",{
+			Action = "Open",
+			Type = "Chest",
+			Resource = "chest",
+			Force = Force
+		})
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHESTCLOSE
+-- CHEST:ITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Close",function(Data,Callback)
-	SendNUIMessage({ Action = "Close" })
-	SetNuiFocus(false,false)
-	Block = false
-
-	Callback("Ok")
+AddEventHandler("chest:Item",function(Name)
+	if vSERVER.Permissions(Name,"Item") and GetEntityHealth(PlayerPedId()) > 100 then
+		Opened = true
+		TriggerEvent("inventory:Open",{
+			Action = "Open",
+			Type = "Chest",
+			Resource = "chest"
+		})
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:CLOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:Close")
+AddEventHandler("inventory:Close",function()
+	if Opened then
+		Opened = false
+		Block = false
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKE
@@ -128,27 +145,11 @@ RegisterNUICallback("Update",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHEST
+-- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Chest",function(Data,Callback)
-	local Inventory,Chest,InvPeso,InvMaxPeso,ChestPeso,ChestMaxPeso,Slots = vSERVER.Chest()
-	if Inventory then
-		Callback({ Inventory = Inventory, Chest = Chest, invPeso = InvPeso, invMaxpeso = InvMaxPeso, chestPeso = ChestPeso, chestMaxpeso = ChestMaxPeso, Slots = Slots })
+RegisterNUICallback("Mount",function(Data,Callback)
+	local Primary,Secondary,PrimaryWeight,SecondaryWeight,SecondarySlots = vSERVER.Mount()
+	if Primary then
+		Callback({ Primary = Primary, Secondary = Secondary, PrimaryMaxWeight = PrimaryWeight, SecondaryMaxWeight = SecondaryWeight, SecondarySlots = SecondarySlots })
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CHEST:UPDATE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("chest:Update")
-AddEventHandler("chest:Update",function(Action,invPeso,invMaxpeso,chestPeso,chestMaxpeso)
-	SendNUIMessage({ Action = Action, invPeso = invPeso, invMaxpeso = invMaxpeso, chestPeso = chestPeso, chestMaxpeso = chestMaxpeso })
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CHEST:CLOSE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("chest:Close")
-AddEventHandler("chest:Close",function(Action)
-	SendNUIMessage({ Action = "Close" })
-	SetNuiFocus(false,false)
-	Block = false
 end)

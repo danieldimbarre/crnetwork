@@ -29,8 +29,44 @@ RegisterCommand("ugroups",function(source,Message)
 		end
 
 		if Messages ~= "" then
-			TriggerClientEvent("Notify",source,"Grupos Pertencentes",Messages,"verde",10000)
+			TriggerClientEvent("Notify",source,"Grupos Pertencentes",Messages,"default",10000)
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SKINSHOP
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("skinshop",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		TriggerClientEvent("skinshop:Open",source)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SKINWEAPON
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("skinweapon",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		TriggerClientEvent("skinweapon:Open",source)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- LSCUSTOMS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("lscustoms",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		TriggerClientEvent("lscustoms:Open",source)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- POSTIT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("postit",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		TriggerClientEvent("postit:initPostit",source,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -40,7 +76,7 @@ RegisterCommand("usource",function(source,Message)
 	local Passport = vRP.Passport(source)
 	local OtherSource = parseInt(Message[1])
 	if Passport and OtherSource and OtherSource > 0 and vRP.Passport(OtherSource) and vRP.HasGroup(Passport,"Admin") then
-		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..vRP.Passport(OtherSource),"azul",5000)
+		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..vRP.Passport(OtherSource),"default",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -59,7 +95,7 @@ RegisterCommand("id",function(source,Message)
 	local Passport = vRP.Passport(source)
 	local OtherPassport = parseInt(Message[1])
 	if Passport and OtherPassport and OtherPassport > 0 and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,"Admin") then
-		TriggerClientEvent("Notify",source,false,"<b>Nome:</b> "..vRP.FullName(OtherPassport),"azul",5000)
+		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport),"default",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -190,7 +226,7 @@ end)
 RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and parseInt(Message[2]) > 0 and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
-		vRP.Query("accounts/InsertBanned",{ License = vRP.AccountLicense(Message[1]), Days = Message[2] })
+		vRP.Query("accounts/InsertBanned",{ License = vRP.AccountInformation(Message[1],"License"), Days = Message[2] })
 		TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..Message[1].."</b> banido por <b>"..Message[2].."</b> dias.","verde",5000)
 
 		local OtherSource = vRP.Source(Message[1])
@@ -205,7 +241,7 @@ end)
 RegisterCommand("unban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
-		vRP.Query("accounts/RemoveBanned",{ License = vRP.AccountLicense(Message[1]) })
+		vRP.Query("accounts/RemoveBanned",{ License = vRP.AccountInformation(Message[1],"License") })
 		TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..Message[1].."</b> desbanido.","verde",5000)
 	end
 end)
@@ -243,20 +279,23 @@ end)
 RegisterCommand("group",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and Message[2] and Message[3] and vRP.HasGroup(Passport,"Admin",2) then
-		local Level = Message[3]
 		local Permission = Message[2]
 		local OtherPassport = Message[1]
+
+		if Permission == "Admin" and vRP.HasPermission(Passport,Permission) >= 2 then
+			return false
+		end
 
 		if vRP.GroupType(Permission) then
 			if not vRP.GetUserType(OtherPassport,"Work") then
 				TriggerClientEvent("Notify",source,"Sucesso","Adicionado <b>"..Permission.."</b> ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
-				vRP.SetPermission(OtherPassport,Permission,Level)
+				vRP.SetPermission(OtherPassport,Permission,Message[3])
 			else
 				TriggerClientEvent("Notify",source,"Atenção","O passaporte já pertence a outro grupo.","amarelo",5000)
 			end
 		else
 			TriggerClientEvent("Notify",source,"Sucesso","Adicionado <b>"..Permission.."</b> ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
-			vRP.SetPermission(OtherPassport,Permission,Level)
+			vRP.SetPermission(OtherPassport,Permission,Message[3])
 		end
 	end
 end)
@@ -350,7 +389,7 @@ end)
 RegisterCommand("players",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
-		TriggerClientEvent("Notify",source,"Listagem","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices(),"verde",5000)
+		TriggerClientEvent("Notify",source,"Listagem","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices(),"default",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -387,7 +426,7 @@ end
 RegisterCommand("announce",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin",2) then
-		TriggerClientEvent("Notify",-1,"Governador",History:sub(9),"vermelho",60000)
+		TriggerClientEvent("Notify",-1,"Prefeitura",History:sub(9),"vermelho",60000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -395,13 +434,49 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("console",function(source,Message,History)
 	if source == 0 then
-		TriggerClientEvent("Notify",-1,"Governador",History:sub(8),"vermelho",60000)
+		TriggerClientEvent("Notify",-1,"Prefeitura",History:sub(8),"vermelho",60000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KICKALL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("kickall",function(source)
+	if source ~= 0 then
+		local Passport = vRP.Passport(source)
+		if not vRP.HasGroup(Passport,"Admin",1) then
+			return
+		end
+	end
+
+	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 5 minutos, se abriguem!","vermelho",60000)
+	GlobalState["Weather"] = "RAIN"
+	Wait(60000)
+
+	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 4 minutos, se abriguem!","vermelho",60000)
+	Wait(60000)
+
+	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 3 minutos, se abriguem!","vermelho",60000)
+	Wait(60000)
+
+	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 2 minutos, se abriguem!","vermelho",60000)
+	Wait(60000)
+
+	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 1 minuto, se abriguem!","vermelho",60000)
+	GlobalState["Weather"] = "THUNDER"
+	Wait(60000)
+
+	local List = vRP.Players()
+	for _,Sources in pairs(List) do
+		vRP.Kick(Sources,"Desconectado, a cidade reiniciou.")
+		Wait(100)
+	end
+
+	TriggerEvent("SaveServer",false)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- KICKALL2
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("kickall2",function(source)
 	if source ~= 0 then
 		local Passport = vRP.Passport(source)
 		if not vRP.HasGroup(Passport,"Admin",1) then
@@ -431,17 +506,12 @@ RegisterCommand("save",function(source)
 	TriggerEvent("SaveServer",false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SAVEAUTO
+-- THREADSAVEAUTO
 -----------------------------------------------------------------------------------------------------------------------------------------
-local LastSave = os.time() + 300
 CreateThread(function()
 	while true do
-		Wait(60000)
-
-		if os.time() >= LastSave then
-			TriggerEvent("SaveServer",true)
-			LastSave = os.time() + 300
-		end
+		Wait(5 * 60000)
+		TriggerEvent("SaveServer",true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -517,7 +587,7 @@ GlobalState["Quake"] = false
 RegisterCommand("quake",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",1) then
-		TriggerClientEvent("Notify",-1,"Terromoto","Os geólogos informaram para nossa unidade governamental que foi encontrado um abalo de magnitude <b>60</b> na <b>Escala Richter</b>, encontrem abrigo até que o mesmo passe.","vermelho",60000)
+		TriggerClientEvent("Notify",-1,"Terromoto","Os geólogos informaram para nossa unidade governamental que foi encontrado um abalo de magnitude <b>60</b> na <b>Escala Richter</b>, encontrem abrigo até que o mesmo passe.","roxo",60000)
 		GlobalState["Quake"] = true
 	end
 end)
@@ -551,6 +621,19 @@ RegisterCommand("rename",function(source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDCAR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("addcar",function(source)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin",1) then
+		local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Modelo")
+		if Keyboard and Keyboard[1] and Keyboard[2] and VehicleExist(Keyboard[2]) then
+			vRP.Query("vehicles/rentalVehicles",{ Passport = Keyboard[1], Vehicle = Keyboard[2], Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Keyboard[2]), Work = 0 })
+			TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Keyboard[2]).."</b> entregue.","verde",5000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- NITRO
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("nitro",function(source,Message)
@@ -558,8 +641,10 @@ RegisterCommand("nitro",function(source,Message)
 	if Passport and vRP.HasGroup(Passport,"Admin") and vRP.InsideVehicle(source) then
 		local Vehicle,Network,Plate = vRPC.VehicleList(source)
 		if Vehicle then
-			local Vehicle = NetworkGetEntityFromNetworkId(Network)
-			Entity(Vehicle)["state"]:set("Nitro",2000,true)
+			local Networked = NetworkGetEntityFromNetworkId(Network)
+			if DoesEntityExist(Networked) then
+				Entity(Networked)["state"]:set("Nitro",2000,true)
+			end
 		end
 	end
 end)
@@ -569,7 +654,7 @@ end)
 RegisterCommand("fuel",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") and vRP.InsideVehicle(source) then
-		TriggerClientEvent("engine:FuelAdmin",source,Message[1])
+		TriggerClientEvent("engine:FuelAdmin",source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -621,8 +706,8 @@ end)
 RegisterCommand("removeprop",function(source,Message)
 	if source == 0 then
 		for _,v in pairs(vRP.Query("propertys/Minimals")) do
-			vRP.RemSrvData("Vault:"..v["Name"],true)
-			vRP.RemSrvData("Fridge:"..v["Name"],true)
+			vRP.RemSrvData("Vault:"..v["Name"])
+			vRP.RemSrvData("Fridge:"..v["Name"])
 			vRP.Query("propertys/Sell",{ Name = v["Name"] })
 
 			Wait(1000)
@@ -632,16 +717,17 @@ RegisterCommand("removeprop",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DIRECT
+-- REMOVEWR
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("direct",function(source,Message)
+RegisterCommand("removewr",function(source,Message)
 	if source == 0 then
-		for _,v in pairs(vRP.Query("accounts/Discords")) do
-			exports["discord"]:Content("Gemstone",v["Discord"].." Confira nossa ultima atualização, trouxemos mais de **2.000** novas peças de roupas para todos os sexos e repaginamos todo o visual da cidade com mais de **20** novos interiores.")
+		for _,v in pairs(vRP.Query("warehouse/Minimals")) do
+			vRP.RemSrvData("Warehouse:"..v["Name"])
+			vRP.Query("warehouse/Sell",{ Name = v["Name"] })
 
-			Wait(5000)
+			Wait(1000)
 		end
 
-		print("Processo de mensagem finalizada.")
+		print("Processo de remoção dos warehouse finalizada.")
 	end
 end)

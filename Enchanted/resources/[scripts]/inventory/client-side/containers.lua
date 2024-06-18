@@ -5,15 +5,11 @@ local Containers = {
 	["1"] = vec3(-905.15,-2781.36,14.33)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	for Number,v in pairs(Containers) do
-		exports["target"]:AddCircleZone("Robberys:Containers:"..Number,v,0.25,{
+		exports["target"]:AddCircleZone("Robberys:Containers:"..Number,v,0.15,{
 			name = "Robberys:Containers:"..Number,
 			heading = 0.0,
 			useZ = true

@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
+vRPC = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
@@ -19,57 +20,50 @@ local Vehicles = {}
 -- DROPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Drops = {
-	{ ["Item"] = "plastic", ["Chance"] = 80, ["Amount"] = 40, ["Addition"] = 2 },
-	{ ["Item"] = "glass", ["Chance"] = 80, ["Amount"] = 40, ["Addition"] = 2 },
-	{ ["Item"] = "rubber", ["Chance"] = 80, ["Amount"] = 40, ["Addition"] = 2 },
-	{ ["Item"] = "aluminum", ["Chance"] = 20, ["Amount"] = 25, ["Addition"] = 1 },
-	{ ["Item"] = "copper", ["Chance"] = 20, ["Amount"] = 25, ["Addition"] = 1 }
+	{ ["Item"] = "plastic", ["Chance"] = 75, ["Min"] = 25, ["Max"] = 45, ["Addition"] = 0.050 },
+	{ ["Item"] = "glass", ["Chance"] = 75, ["Min"] = 25, ["Max"] = 45, ["Addition"] = 0.050 },
+	{ ["Item"] = "rubber", ["Chance"] = 75, ["Min"] = 25, ["Max"] = 45, ["Addition"] = 0.050 },
+	{ ["Item"] = "aluminum", ["Chance"] = 25, ["Min"] = 15, ["Max"] = 25, ["Addition"] = 0.025 },
+	{ ["Item"] = "copper", ["Chance"] = 25, ["Min"] = 15, ["Max"] = 25, ["Addition"] = 0.025 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CREATEVEHICLE
+-- SERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Service()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if Service[Passport] then
-			Service[Passport] = nil
-		else
-			Service[Passport] = source
-		end
+		Service[Passport] = (not Service[Passport] and source or nil)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CREATEVEHICLE
+-- VEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.CreateVehicle(Model,Destiny)
+function Creative.Vehicle(Model,Destiny)
 	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport then
-		local Vehicle = CreateVehicle(Model,Locations[Destiny],true,true)
+	local Vehicle = CreateVehicle(Model,Locations[Destiny],true,true)
 
-		while not DoesEntityExist(Vehicle) do
-			Wait(1)
-		end
+	while not DoesEntityExist(Vehicle) do
+		Wait(1)
+	end
 
-		if DoesEntityExist(Vehicle) then
-			local Plate = vRP.GeneratePlate()
-			local Network = NetworkGetNetworkIdFromEntity(Vehicle)
+	if DoesEntityExist(Vehicle) then
+		local Plate = vRP.GeneratePlate()
+		local Network = NetworkGetNetworkIdFromEntity(Vehicle)
 
-			SetVehicleBodyHealth(Vehicle,10.0)
-			SetVehicleNumberPlateText(Vehicle,Plate)
+		SetVehicleBodyHealth(Vehicle,10.0)
+		SetVehicleNumberPlateText(Vehicle,Plate)
 
-			Entity(Vehicle)["state"]:set("Fuel",0,true)
-			Entity(Vehicle)["state"]:set("Nitro",0,true)
+		Entity(Vehicle)["state"]:set("Fuel",0,true)
+		Entity(Vehicle)["state"]:set("Nitro",0,true)
 
-			Vehicles[Plate] = {
-				["Source"] = source,
-				["Network"] = Network,
-				["Impound"] = false
-			}
+		Vehicles[Plate] = {
+			["Source"] = source,
+			["Network"] = Network,
+			["Impound"] = false
+		}
 
-			return Network,Plate
-		end
+		return Network,Plate
 	end
 
 	return false
@@ -97,31 +91,34 @@ AddEventHandler("towed:Payment",function(Plate)
 	if Passport and not Active[Passport] and Vehicles[Plate] then
 		Active[Passport] = true
 
+		local GainExperience = 2
 		local Result = RandPercentage(Drops)
-		local Experience = vRP.GetExperience(Passport,"Towed")
-		local Valuation = Result["Amount"] + (ClassCategory(Experience) / Result["Addition"])
+		local Experience,Level = vRP.GetExperience(Passport,"Towed")
+		local Valuation = Result["Valuation"] + Result["Valuation"] * (Result["Addition"] * Level)
 
 		if exports["inventory"]:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 
 		if vRP.UserPremium(Passport) then
-			local Bonification = 0.05
+			local Bonification = 0.050
 			local Hierarchy = vRP.LevelPremium(source)
 
 			if Hierarchy == 1 then
-				Bonification = 0.1
+				Bonification = 0.100
 			elseif Hierarchy == 2 then
-				Bonification = 0.2
+				Bonification = 0.075
 			end
 
+			GainExperience = GainExperience + 3
 			Valuation = Valuation + (Valuation * Bonification)
 		end
 
 		TriggerEvent("garages:Delete",Vehicles[Plate]["Network"],Plate)
 		vRP.GenerateItem(Passport,Result["Item"],Valuation,true)
-		vRP.GenerateItem(Passport,"dollar",500,true)
-		vRP.PutExperience(Passport,"Towed",5)
+		vRP.PutExperience(Passport,"Towed",GainExperience)
+		vRP.GenerateItem(Passport,"dollar",250,true)
+		vRP.UpgradeStress(Passport,5)
 
 		Active[Passport] = nil
 	end
@@ -143,7 +140,7 @@ AddEventHandler("towed:Impound",function(Table)
 			["Impound"] = true
 		}
 
-		TriggerClientEvent("Notify",source,"Impound","Veículo registrado.","verde",5000)
+		TriggerClientEvent("Notify",source,"Departamento Policial","Veículo registrado.","policia",5000)
 
 		local Coords = vRP.GetEntityCoords(source)
 		for Passports,Sources in pairs(Service) do

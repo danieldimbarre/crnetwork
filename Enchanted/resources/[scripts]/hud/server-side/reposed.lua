@@ -7,6 +7,9 @@ local Repose = {}
 -- REPOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Repose",function(source,Passport,Seconds)
+	local Seconds = Whole(Seconds)
+	local Passport = tostring(Passport)
+
 	if Repose[Passport] then
 		if os.time() > Repose[Passport] then
 			Repose[Passport] = os.time() + Seconds
@@ -23,12 +26,16 @@ end)
 -- REPOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Repose",function(Passport)
+	local Passport = tostring(Passport)
+
 	return Repose[Passport] and Repose[Passport] > os.time() and true or false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
+	local Passport = tostring(Passport)
+
 	if Lock[Passport] then
 		TriggerEvent("Repose",source,Passport,Lock[Passport])
 
@@ -39,6 +46,8 @@ end)
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport)
+	local Passport = tostring(Passport)
+
 	if Repose[Passport] then
 		if Repose[Passport] > os.time() then
 			Lock[Passport] = (Repose[Passport] - os.time())

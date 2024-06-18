@@ -84,9 +84,10 @@ end)
 -- CHECKINPUTROTATION
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CheckInputRotation(Camera,Zoom)
+	local Rotation = GetCamRot(Camera,2)
 	local rightAxisX = GetDisabledControlNormal(0,220)
 	local rightAxisY = GetDisabledControlNormal(0,221)
-	local Rotation = GetCamRot(Camera,2)
+
 	if rightAxisX ~= 0.0 or rightAxisY ~= 0.0 then
 		local ResultZ = Rotation["z"] + rightAxisX * -1.0 * 3.0 * (Zoom + 0.1)
 		local ResultX = math.max(math.min(20.0,Rotation["x"] + rightAxisY * -1.0 * 3.0 * (Zoom + 0.1)),-89.5)

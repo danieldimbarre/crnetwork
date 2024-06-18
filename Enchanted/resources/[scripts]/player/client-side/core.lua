@@ -9,52 +9,28 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 Creative = {}
 Tunnel.bindInterface("player",Creative)
-vSERVER = Tunnel.getInterface("player")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local UseFps = false
 local inTrunk = false
 local inTrash = false
+local BoostFPS = false
 local Residuals = false
+local DeathUpdate = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("fps",function()
+	local Ped = PlayerPedId()
 	if exports["chat"]:Open() then
-		if UseFps then
-			UseFps = false
-			SetTimecycleModifier()
-			ClearTimecycleModifier()
-			ClearExtraTimecycleModifier()
+		BoostFPS = not BoostFPS
 
-			TriggerEvent("Notify","Otimização","Sistema desativado.","amarelo",5000)
-		else
-			UseFps = true
-			local Ped = PlayerPedId()
-
-			ClearBrief()
-			ClearFocus()
-			ClearPrints()
-			ClearHdArea()
-			ClearGpsFlags()
-			SetRainLevel(0.0)
-			SetWindSpeed(0.0)
-			ClearSmallPrints()
-			ClearReplayStats()
-			ClearPedWetness(Ped)
-			ClearPedEnvDirt(Ped)
-			ClearAllBrokenGlass()
-			ClearOverrideWeather()
-			ClearAllHelpMessages()
-			DisableScreenblurFade()
-			ClearPedBloodDamage(Ped)
-			ResetPedVisibleDamage(Ped)
-			LeaderboardsReadClearAll()
-			LeaderboardsClearCacheData()
-			SetTimecycleModifier("yell_tunnel_nodirect")
-
+		if BoostFPS then
+			SetTimecycleModifier("cinema")
 			TriggerEvent("Notify","Otimização","Sistema ativado.","amarelo",5000)
+		else
+			ClearTimecycleModifier()
+			TriggerEvent("Notify","Otimização","Sistema desativado.","amarelo",5000)
 		end
 	end
 end)
@@ -97,6 +73,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
+		local TimeDistance = 999
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
 			TimeDistance = 100
@@ -106,10 +83,8 @@ CreateThread(function()
 			end
 
 			local Vehicle = GetVehiclePedIsIn(Ped)
-			if GetPedInVehicleSeat(Vehicle,0) == Ped then
-				if GetIsTaskActive(Ped,165) then
-					SetPedIntoVehicle(Ped,Vehicle,0)
-				end
+			if GetPedInVehicleSeat(Vehicle,0) == Ped and GetIsTaskActive(Ped,165) then
+				SetPedIntoVehicle(Ped,Vehicle,0)
 			end
 		else
 			if GetPedConfigFlag(Ped,184,true) then
@@ -117,7 +92,7 @@ CreateThread(function()
 			end
 		end
 
-		Wait(100)
+		Wait(TimeDistance)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -245,19 +220,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		local TimeDistance = 999
 		local Ped = PlayerPedId()
-		if LocalPlayer["state"]["Handcuff"] and GetEntityHealth(Ped) > 100 and not LocalPlayer["state"]["Carry"] then
-			if not IsEntityPlayingAnim(Ped,"mp_arresting","idle",3) then
-				if LoadAnim("mp_arresting") then
-					TaskPlayAnim(Ped,"mp_arresting","idle",8.0,8.0,-1,49,1,0,0,0)
-				end
-
-				TimeDistance = 1
+		if LocalPlayer["state"]["Handcuff"] and GetEntityHealth(Ped) > 100 and not LocalPlayer["state"]["Carry"] and not IsEntityPlayingAnim(Ped,"mp_arresting","idle",3) then
+			if LoadAnim("mp_arresting") then
+				TaskPlayAnim(Ped,"mp_arresting","idle",8.0,8.0,-1,49,1,0,0,0)
 			end
 		end
 
-		Wait(TimeDistance)
+		Wait(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -299,14 +269,18 @@ function Creative.PlaceVehicle(Network)
 	if not LocalPlayer["state"]["Bennys"] and NetworkDoesNetworkIdExist(Network) then
 		local Vehicle = NetToEnt(Network)
 		if DoesEntityExist(Vehicle) then
-			for Number = 0,10 do
-				local Ped = PlayerPedId()
-				if IsVehicleSeatFree(Vehicle,Number) then
-					SetPedIntoVehicle(Ped,Vehicle,Number)
+			local Seating = 10
+			local Ped = PlayerPedId()
+
+			repeat
+				Seating = Seating - 1
+
+				if IsVehicleSeatFree(Vehicle,Seating) then
+					SetPedIntoVehicle(Ped,Vehicle,Seating)
+					Seating = true
 					vRP.Destroy()
-					break
 				end
-			end
+			until Seating == true or Seating == 0
 		end
 	end
 end
@@ -331,12 +305,19 @@ RegisterCommand("cr",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYER:DEATHUPDATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("player:DeathUpdate",function(Status)
+	DeathUpdate = Status
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Event,Message)
 	local Victim,Attacker,Index = Message[1],Message[2],NetworkGetPlayerIndexFromPed(Message[2])
-	if Event == "CEventNetworkEntityDamage" and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 and NetworkIsPlayerConnected(Index) then
-		TriggerServerEvent("player:Death",Player(GetPlayerServerId(Index))["state"]["Source"])
+	if Event == "CEventNetworkEntityDamage" and DeathUpdate and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 and NetworkIsPlayerConnected(Index) then
+		TriggerServerEvent("player:Death",GetPlayerServerId(Index))
+		DeathUpdate = false
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -487,34 +468,6 @@ AddEventHandler("player:checkTrash",function()
 
 		inTrash = false
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ADDSTATEBAGCHANGEHANDLER
------------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Ballas",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
-	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_BALLAS"),GetHashKey("PLAYER"))
-	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_BALLAS"))
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ADDSTATEBAGCHANGEHANDLER
------------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Families",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
-	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_FAMILY"),GetHashKey("PLAYER"))
-	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_FAMILY"))
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ADDSTATEBAGCHANGEHANDLER
------------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Vagos",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
-	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
-	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ADDSTATEBAGCHANGEHANDLER
------------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Aztecas",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
-	SetRelationshipBetweenGroups(1,GetHashKey("AMBIENT_GANG_MEXICAN"),GetHashKey("PLAYER"))
-	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("AMBIENT_GANG_MEXICAN"))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER

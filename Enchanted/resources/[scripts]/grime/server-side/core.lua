@@ -25,7 +25,7 @@ AddEventHandler("grime:Package",function()
 		if vRP.CheckWeight(Passport,Item) then
 			vRP.GenerateItem(Passport,Item,1)
 		else
-			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
 			exports["inventory"]:Drops(Passport,source,Item)
 		end
 	end
@@ -41,12 +41,13 @@ function Creative.Payment(Selected)
 
 		local Coords = vRP.GetEntityCoords(source)
 		if not Selected or #(Coords - Locations[Selected]) > 2.5 then
-			exports["megazord"]:Discord("**Passaporte:** "..Passport.."\n**Função:** Payment do Grime",source)
+			exports["discord"]:Embed("Hackers","**Passaporte:** "..Passport.."\n**Função:** Payment do Grime",0xa3c846,source)
 		end
 
-		local Experience = vRP.GetExperience(Passport,"Grime")
-		local Level = ClassCategory(Experience)
-		local Valuation = 250 + (Level * 10)
+		local GainExperience = 3
+		local Amount = math.random(175,275)
+		local Experience,Level = vRP.GetExperience(Passport,"Grime")
+		local Valuation = Amount + Amount * (0.05 * Level)
 
 		if exports["inventory"]:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
@@ -57,16 +58,18 @@ function Creative.Payment(Selected)
 			local Hierarchy = vRP.LevelPremium(source)
 
 			if Hierarchy == 1 then
-				Bonification = 0.1
+				Bonification = 0.100
 			elseif Hierarchy == 2 then
-				Bonification = 0.2
+				Bonification = 0.075
 			end
 
+			GainExperience = GainExperience + 2
 			Valuation = Valuation + (Valuation * Bonification)
 		end
 
 		vRP.GenerateItem(Passport,"dollar",Valuation,true)
-		vRP.PutExperience(Passport,"Grime",3)
+		vRP.PutExperience(Passport,"Grime",GainExperience)
+		vRP.UpgradeStress(Passport,3)
 
 		Active[Passport] = nil
 

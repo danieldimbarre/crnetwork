@@ -110,13 +110,9 @@ RegisterNUICallback("Close",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	local Tables = {}
 	for Number = 1,#Locations do
 		Tables[#Tables + 1] = { Locations[Number],2.0,"E","Tatuagem","Pressione para abrir" }

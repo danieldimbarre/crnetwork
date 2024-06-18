@@ -1,28 +1,15 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+Weapon = ""
 local Objects = {}
+TakeWeapon = false
+StoreWeapon = false
+local Reloaded = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
 local Config = {
-	["WEAPON_THERMAL"] = {
-		["Bone"] = 24818,
-		["x"] = 0.27,
-		["y"] = -0.15,
-		["z"] = 0.22,
-		["RotX"] = 0.0,
-		["RotY"] = 220.0,
-		["RotZ"] = 2.5,
-		["Model"] = "w_me_thermal"
-	},
-	["WEAPON_FROST"] = {
-		["Bone"] = 24818,
-		["x"] = 0.27,
-		["y"] = -0.15,
-		["z"] = 0.22,
-		["RotX"] = 0.0,
-		["RotY"] = 220.0,
-		["RotZ"] = 2.5,
-		["Model"] = "w_me_frost"
-	},
 	["WEAPON_KATANA"] = {
 		["Bone"] = 24818,
 		["x"] = 0.27,
@@ -32,36 +19,6 @@ local Config = {
 		["RotY"] = 220.0,
 		["RotZ"] = 2.5,
 		["Model"] = "w_me_katana"
-	},
-	["WEAPON_COLTXM177"] = {
-		["Bone"] = 24818,
-		["x"] = 0.12,
-		["y"] = -0.14,
-		["z"] = -0.10,
-		["RotX"] = 0.0,
-		["RotY"] = 180.0,
-		["RotZ"] = 2.5,
-		["Model"] = "w_ar_coltxm177"
-	},
-	["WEAPON_FNSCAR"] = {
-		["Bone"] = 24818,
-		["x"] = 0.12,
-		["y"] = -0.14,
-		["z"] = -0.10,
-		["RotX"] = 0.0,
-		["RotY"] = 180.0,
-		["RotZ"] = 2.5,
-		["Model"] = "w_ar_fnscar"
-	},
-	["WEAPON_QBZ83"] = {
-		["Bone"] = 24818,
-		["x"] = 0.02,
-		["y"] = -0.14,
-		["z"] = -0.04,
-		["RotX"] = 0.0,
-		["RotY"] = 135.0,
-		["RotZ"] = 2.5,
-		["Model"] = "w_ar_qbz83"
 	},
 	["WEAPON_CARBINERIFLE"] = {
 		["Bone"] = 24818,
@@ -143,26 +100,6 @@ local Config = {
 		["RotZ"] = 2.5,
 		["Model"] = "w_ar_specialcarbinemk2"
 	},
-	["WEAPON_PARAFAL"] = {
-		["Bone"] = 24818,
-		["x"] = 0.0,
-		["y"] = -0.14,
-		["z"] = -0.12,
-		["RotX"] = 0.0,
-		["RotY"] = 360.0,
-		["RotZ"] = 2.5,
-		["Model"] = "w_ar_parafal"
-	},
-	["WEAPON_FNFAL"] = {
-		["Bone"] = 24818,
-		["x"] = 0.0,
-		["y"] = -0.14,
-		["z"] = 0.12,
-		["RotX"] = 180.0,
-		["RotY"] = 360.0,
-		["RotZ"] = 2.5,
-		["Model"] = "w_ar_fnfal"
-	},
 	["WEAPON_MUSKET"] = {
 		["Bone"] = 24818,
 		["x"] = -0.1,
@@ -182,16 +119,6 @@ local Config = {
 		["RotY"] = 90.0,
 		["RotZ"] = 2.5,
 		["Model"] = "w_me_bat"
-	},
-	["WEAPON_SAUER"] = {
-		["Bone"] = 24818,
-		["x"] = -0.0,
-		["y"] = -0.16,
-		["z"] = -0.1,
-		["RotX"] = 0.0,
-		["RotY"] = 0.8,
-		["RotZ"] = 2.5,
-		["Model"] = "w_sr_sauer"
 	},
 	["WEAPON_PUMPSHOTGUN"] = {
 		["Bone"] = 24818,
@@ -320,6 +247,7 @@ local Config = {
 RegisterNetEvent("inventory:RemoveWeapon")
 AddEventHandler("inventory:RemoveWeapon",function(Name)
 	local Name = SplitOne(Name)
+
 	if Objects[Name] then
 		TriggerServerEvent("DeleteObject",0,Name)
 		Objects[Name] = nil
@@ -331,22 +259,240 @@ end)
 RegisterNetEvent("inventory:CreateWeapon")
 AddEventHandler("inventory:CreateWeapon",function(Name)
 	local Name = SplitOne(Name)
-	if not Objects[Name] and Config[Name] then
+	if Config[Name] and not Objects[Name] then
 		local Ped = PlayerPedId()
 		local Config = Config[Name]
 		local Coords = GetEntityCoords(Ped)
 		local Bone = GetPedBoneIndex(Ped,Config["Bone"])
 
-		local Progression,Network = vRPS.CreateObject(Config["Model"],Coords["x"],Coords["y"],Coords["z"],Name)
-		if Progression then
+		local Network = vRPS.CreateObject(Config["Model"],Coords["x"],Coords["y"],Coords["z"],Name)
+		if Network then
 			Objects[Name] = LoadNetwork(Network)
 			if Objects[Name] then
 				AttachEntityToEntity(Objects[Name],Ped,Bone,Config["x"],Config["y"],Config["z"],Config["RotX"],Config["RotY"],Config["RotZ"],true,true,false,true,2,true)
 				SetEntityCompletelyDisableCollision(Objects[Name],false,true)
 				SetModelAsNoLongerNeeded(Config["Model"])
-			else
-				TriggerServerEvent("DeleteObject",0,Name)
 			end
 		end
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSTOREWEAPON
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	LoadAnim("reaction@intimidation@1h")
+
+	while true do
+		local TimeDistance = 999
+		if Actived and Weapon ~= "" then
+			TimeDistance = 10
+
+			local Ped = PlayerPedId()
+			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+
+			if GetGameTimer() >= Reloaded and IsPedReloading(Ped) then
+				vSERVER.PreventWeapons(Weapon,Ammo)
+				Reloaded = GetGameTimer() + 100
+			end
+
+			if Ammo <= 0 or (Weapon == "WEAPON_PETROLCAN" and Ammo <= 135 and IsPedShooting(Ped)) or IsPedSwimming(Ped) then
+				if Types ~= "" then
+					vSERVER.RemoveThrowing(Types)
+				else
+					vSERVER.PreventWeapons(Weapon,Ammo)
+				end
+
+				TriggerEvent("inventory:CleanWeapons")
+			end
+		end
+
+		Wait(TimeDistance)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:VERIFYWEAPON
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:verifyWeapon")
+AddEventHandler("inventory:verifyWeapon",function(Item)
+	local Name = SplitOne(Item)
+
+	if Weapon == Name then
+		local Ped = PlayerPedId()
+		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+		if not vSERVER.VerifyWeapon(Weapon,Ammo) then
+			TriggerEvent("inventory:CleanWeapons")
+		end
+	else
+		vSERVER.VerifyWeapon(Name)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:CLEANWEAPONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("inventory:CleanWeapons",function()
+	if Weapon ~= "" then
+		local Ped = PlayerPedId()
+		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+
+		TriggerEvent("inventory:CreateWeapon",Weapon)
+		vSERVER.PreventWeapons(Weapon,Ammo)
+		TriggerEvent("hud:Weapon",false)
+		RemoveAllPedWeapons(Ped,true)
+		TriggerEvent("Weapon","")
+
+		Actived = false
+		Weapon = ""
+		Types = ""
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RETURNWEAPON
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.ReturnWeapon()
+	return Weapon ~= "" and Weapon or false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECKWEAPON
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.CheckWeapon(Hash)
+	return Weapon == Hash and true or false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GIVECOMPONENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.GiveComponent(Component)
+	GiveWeaponComponentToPed(PlayerPedId(),Weapon,Component)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TAKEWEAPON
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
+	if not TakeWeapon then
+		if not Ammo then
+			Ammo = 0
+		end
+
+		if Ammo > 0 then
+			Actived = true
+		end
+
+		TakeWeapon = true
+		LocalPlayer["state"]:set("Cancel",true,true)
+
+		local Ped = PlayerPedId()
+		if not IsPedInAnyVehicle(Ped) then
+			TaskPlayAnim(Ped,"reaction@intimidation@1h","intro",8.0,8.0,-1,48,1,0,0,0)
+
+			Wait(1250)
+
+			Weapon = Name
+			TriggerEvent("Weapon",Weapon)
+			TriggerEvent("inventory:RemoveWeapon",Weapon)
+			GiveWeaponToPed(Ped,Weapon,Ammo,false,true)
+
+			if Skin then
+				GiveWeaponComponentToPed(Ped,Weapon,Skin)
+			end
+
+			if Components then
+				for Item,_ in pairs(Components) do
+					local Comp = WeaponAttach(Item,Weapon)
+					GiveWeaponComponentToPed(Ped,Weapon,Comp)
+				end
+			end
+
+			Wait(1000)
+
+			ClearPedTasks(Ped)
+		else
+			Weapon = Name
+			TriggerEvent("Weapon",Weapon)
+			TriggerEvent("inventory:RemoveWeapon",Weapon)
+			GiveWeaponToPed(Ped,Weapon,Ammo,false,true)
+
+			if Skin then
+				GiveWeaponComponentToPed(Ped,Weapon,Skin)
+			end
+
+			if Components then
+				for Item,_ in pairs(Components) do
+					local Comp = WeaponAttach(Item,Weapon)
+					GiveWeaponComponentToPed(Ped,Weapon,Comp)
+				end
+			end
+		end
+
+		if Type then
+			Types = Type
+		end
+
+		TakeWeapon = false
+		LocalPlayer["state"]:set("Cancel",false,true)
+
+		if WeaponAmmo(Weapon) then
+			TriggerEvent("hud:Weapon",true,Weapon)
+		end
+
+		if (IsPedInAnyVehicle(Ped) and not ItemVehicle(Weapon)) or vSERVER.CheckExistWeapons(Weapon) then
+			TriggerEvent("inventory:CleanWeapons")
+		end
+
+		return true
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- STOREWEAPON
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.StoreWeapon()
+	if not StoreWeapon and Weapon ~= "" then
+		StoreWeapon = true
+
+		local Lasted = Weapon
+		local Ped = PlayerPedId()
+		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+		LocalPlayer["state"]:set("Cancel",true,true)
+
+		if not IsPedInAnyVehicle(Ped) then
+			TaskPlayAnim(Ped,"reaction@intimidation@1h","outro",8.0,8.0,-1,48,1,0,0,0)
+
+			Wait(1600)
+
+			ClearPedTasks(Ped)
+		end
+
+		StoreWeapon = false
+		TriggerEvent("inventory:CleanWeapons")
+		LocalPlayer["state"]:set("Cancel",false,true)
+
+		return true,Ammo,Lasted
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INFOWEAPON
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.InfoWeapon(Type)
+	local Ammo = 0
+
+	if Weapon ~= "" then
+		Ammo = GetAmmoInPedWeapon(PlayerPedId(),Weapon)
+	end
+
+	return Weapon,Ammo
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RELOADING
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Reloading(Hash,Ammo)
+	AddAmmoToPed(PlayerPedId(),Hash,Ammo)
+	Actived = true
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PARACHUTE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Parachute()
+	GiveWeaponToPed(PlayerPedId(),"GADGET_PARACHUTE",1,false,true)
+end

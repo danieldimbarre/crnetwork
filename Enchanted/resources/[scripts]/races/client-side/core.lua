@@ -21,7 +21,9 @@ local ExplodeCooldown = GetGameTimer()
 -- THREADRACES
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	Wait(1000)
+	SetGhostedEntityAlpha(254)
+	LoadModel("prop_beachflag_01")
+	LoadModel("prop_offroad_tyres02")
 
 	for _,Info in pairs(Races) do
 		local Blip = AddBlipForCoord(Info["Init"]["x"],Info["Init"]["y"],Info["Init"]["z"])
@@ -54,6 +56,8 @@ CreateThread(function()
 				SendNUIMessage({ name = "Progress", payload = { Points,ExplodeTimers } })
 
 				if not IsPedInAnyVehicle(Ped) or GetPedInVehicleSeat(Vehicle,-1) ~= Ped or (ExplodeTimers and ExplodeTimers <= 0) then
+					SetNetworkVehicleAsGhost(Vehicle,false)
+					SetLocalPlayerAsGhost(false)
 					StopCircuit()
 				end
 
@@ -68,6 +72,8 @@ CreateThread(function()
 						Saved = 0
 						Checkpoint = 1
 						ExplodeTimers = false
+						SetLocalPlayerAsGhost(false)
+						SetNetworkVehicleAsGhost(Vehicle,false)
 						LocalPlayer["state"]:set("Races",false,false)
 						SendNUIMessage({ name = "Ranking", payload = { true,vSERVER.Ranking(Selected) } })
 						Selected = 1
@@ -84,14 +90,15 @@ CreateThread(function()
 						Checkpoint = Checkpoint + 1
 						SetBlipRoute(Markers[Checkpoint],true)
 						SendNUIMessage({ name = "Checkpoint" })
+						CreatedTyres()
 					end
 				end
 			else
-				if IsPedInAnyVehicle(Ped) and not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
+				if IsPedInAnyVehicle(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
 					for Number,v in pairs(Races) do
 						local Distance = #(Coords - v["Init"])
 						if Distance <= 25 and GetPedInVehicleSeat(Vehicle,-1) == Ped then
-							DrawMarker(23,v["Init"]["x"],v["Init"]["y"],v["Init"]["z"] - 0.35,0.0,0.0,0.0,0.0,0.0,0.0,10.0,10.0,10.0,65,130,226,100,0,0,0,0)
+							DrawMarker(23,v["Init"]["x"],v["Init"]["y"],v["Init"]["z"] - 0.35,0.0,0.0,0.0,0.0,0.0,0.0,10.0,10.0,10.0,19,114,191,175,0,0,0,0)
 							TimeDistance = 1
 
 							if Distance <= 5 then
@@ -113,11 +120,15 @@ CreateThread(function()
 										ExplodeCooldown = GetGameTimer() + 1000
 									end
 
+									SetNetworkVehicleAsGhost(Vehicle,true)
+									SetLocalPlayerAsGhost(true)
+
 									Saved = GetGameTimer()
 									Selected = Number
 									Checkpoint = 1
 
 									LocalPlayer["state"]:set("Races",true,false)
+									CreatedTyres()
 									InitCircuit()
 								end
 							else
@@ -144,9 +155,6 @@ end)
 -- INITCIRCUIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function InitCircuit()
-	LoadModel("prop_beachflag_01")
-	LoadModel("prop_offroad_tyres02")
-
 	for Number = 1,#Races[Selected]["Coords"] do
 		Markers[Number] = AddBlipForCoord(Races[Selected]["Coords"][Number]["Center"]["x"],Races[Selected]["Coords"][Number]["Center"]["y"],Races[Selected]["Coords"][Number]["Center"]["z"])
 		SetBlipSprite(Markers[Number],1)
@@ -154,26 +162,29 @@ function InitCircuit()
 		SetBlipScale(Markers[Number],0.85)
 		ShowNumberOnBlip(Markers[Number],Number)
 		SetBlipAsShortRange(Markers[Number],true)
-
-		local Prop = "prop_offroad_tyres02"
-		if Number == #Races[Selected]["Coords"] then
-			Prop = "prop_beachflag_01"
-		end
-
-		local LeftObject = CreateObjectNoOffset(Prop,Races[Selected]["Coords"][Number]["Left"]["x"],Races[Selected]["Coords"][Number]["Left"]["y"],Races[Selected]["Coords"][Number]["Left"]["z"],false,false,false)
-		local RightObject = CreateObjectNoOffset(Prop,Races[Selected]["Coords"][Number]["Right"]["x"],Races[Selected]["Coords"][Number]["Right"]["y"],Races[Selected]["Coords"][Number]["Right"]["z"],false,false,false)
-
-		SetEntityLodDist(LeftObject,0xFFFF)
-		PlaceObjectOnGroundProperly(LeftObject)
-		SetEntityCollision(LeftObject,false,false)
-
-		SetEntityLodDist(RightObject,0xFFFF)
-		PlaceObjectOnGroundProperly(RightObject)
-		SetEntityCollision(RightObject,false,false)
-
-		Objects[#Objects + 1] = LeftObject
-		Objects[#Objects + 1] = RightObject
 	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CREATEDTYRES
+-----------------------------------------------------------------------------------------------------------------------------------------
+function CreatedTyres()
+	local Prop = "prop_offroad_tyres02"
+	if Checkpoint >= #Races[Selected]["Coords"] then
+		Prop = "prop_beachflag_01"
+	end
+
+	local Coords = Races[Selected]["Coords"][Checkpoint]
+	local LeftObject = CreateObjectNoOffset(Prop,Coords["Left"]["x"],Coords["Left"]["y"],Coords["Left"]["z"],false,false,false)
+	local RightObject = CreateObjectNoOffset(Prop,Coords["Right"]["x"],Coords["Right"]["y"],Coords["Right"]["z"],false,false,false)
+
+	PlaceObjectOnGroundProperly(LeftObject)
+	SetEntityCollision(LeftObject,false,false)
+
+	PlaceObjectOnGroundProperly(RightObject)
+	SetEntityCollision(RightObject,false,false)
+
+	Objects[#Objects + 1] = LeftObject
+	Objects[#Objects + 1] = RightObject
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEANCIRCUIT
@@ -206,7 +217,7 @@ function StopCircuit()
 	if ExplodeTimers then
 		ExplodeTimers = false
 
-		SetTimeout(3000,function()
+		SetTimeout(5000,function()
 			local Vehicle = GetPlayersLastVehicle()
 
 			if Vehicle == 0 then

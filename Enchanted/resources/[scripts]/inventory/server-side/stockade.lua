@@ -16,7 +16,15 @@ AddEventHandler("inventory:Stockade",function(Vehicle)
 		if not Stockades[Plate] then
 			Stockades[Plate] = 10
 			Cooldown = os.time() + 3600
-			vRP.CallPolice(source,Passport,false,"Policia","Roubo a Carro Forte",false,false,31,44)
+
+			exports["vrp"]:CallPolice({
+				["Source"] = source,
+				["Passport"] = Passport,
+				["Permission"] = "Policia",
+				["Name"] = "Roubo a Carro Forte",
+				["Code"] = 31,
+				["Color"] = 44
+			})
 		end
 
 		if Stockades[Plate] <= 0 then

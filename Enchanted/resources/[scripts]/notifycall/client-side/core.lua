@@ -64,7 +64,7 @@ end)
 -- PHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Phone",function(Data,Callback)
-	exports["smartphone"]:callPlayer(Data["phone"])
+	exports["lb-phone"]:CreateCall({ number = Data["phone"] })
 
 	Callback("Ok")
 end)

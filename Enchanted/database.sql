@@ -10,11 +10,12 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `License` varchar(50) NOT NULL DEFAULT '0',
   `Discord` varchar(50) NOT NULL DEFAULT '0',
   `Login` int(20) NOT NULL DEFAULT 0,
-  `Token` int(7) NOT NULL DEFAULT 0,
+  `Token` varchar(10) DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `id` (`id`),
   KEY `Discord` (`Discord`),
-  KEY `License` (`License`)
+  KEY `License` (`License`),
+  KEY `Token` (`Token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DROP TABLE IF EXISTS `allowlist`;
@@ -33,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `Name` varchar(50) DEFAULT '''''''Individuo''''''',
   `Lastname` varchar(50) DEFAULT '''''''Indigente''''''',
   `Sex` varchar(1) DEFAULT NULL,
-  `Phone` varchar(10) DEFAULT NULL,
   `Bank` int(20) NOT NULL DEFAULT 5000,
   `Blood` int(1) NOT NULL DEFAULT 1,
   `Prison` int(10) NOT NULL DEFAULT 0,
@@ -46,7 +46,6 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `Created` int(20) NOT NULL DEFAULT 0,
   `Login` int(20) NOT NULL DEFAULT 0,
   `Deleted` int(1) NOT NULL DEFAULT 0,
-  `paypal` int(11) DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `Discord` (`License`),
   KEY `id` (`id`)
@@ -73,18 +72,6 @@ CREATE TABLE IF NOT EXISTS `dependents` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-DROP TABLE IF EXISTS `enterprise`;
-CREATE TABLE IF NOT EXISTS `enterprise` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
-  `Enterprise` varchar(10) NOT NULL,
-  `Passport` int(10) NOT NULL DEFAULT 0,
-  `Tax` int(20) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`),
-  KEY `Passport` (`Passport`),
-  KEY `id` (`id`),
-  KEY `Enterprise` (`Enterprise`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DROP TABLE IF EXISTS `entitydata`;
@@ -276,6 +263,8 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   `Vehicle` varchar(100) DEFAULT NULL,
   `Tax` int(20) NOT NULL DEFAULT 0,
   `Plate` varchar(10) DEFAULT NULL,
+  `Weight` int(9) NOT NULL DEFAULT 0,
+  `Save` varchar(50) NOT NULL DEFAULT '1',
   `Rental` int(20) NOT NULL DEFAULT 0,
   `Arrest` tinyint(1) NOT NULL DEFAULT 0,
   `Block` tinyint(1) NOT NULL DEFAULT 0,

@@ -5,6 +5,7 @@ local Rpm = 0
 local Fuel = 0
 local Speed = 0
 local Nitro = 0
+local Spike = {}
 local LastSpeed = 0
 local Locked = false
 local Loadout = false
@@ -22,6 +23,17 @@ local NitroButton = GetGameTimer()
 local SeatbeltSpeed = 0
 local SeatbeltLock = false
 local SeatbeltVelocity = vec3(0,0,0)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TYRES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Tyres = {
+	{ ["Bone"] = "wheel_lf", ["Index"] = 0 },
+	{ ["Bone"] = "wheel_rf", ["Index"] = 1 },
+	{ ["Bone"] = "wheel_lm", ["Index"] = 2 },
+	{ ["Bone"] = "wheel_rm", ["Index"] = 3 },
+	{ ["Bone"] = "wheel_lr", ["Index"] = 4 },
+	{ ["Bone"] = "wheel_rr", ["Index"] = 5 }
+}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -64,10 +76,10 @@ CreateThread(function()
 
 				local Vehicle = GetVehiclePedIsUsing(Ped)
 				local VRpm = GetVehicleCurrentRpm(Vehicle)
-				local VSpeed = GetEntitySpeed(Vehicle) * 2.236936
 				local VLocked = GetVehicleDoorLockStatus(Vehicle)
 				local VFuel = Entity(Vehicle)["state"]["Fuel"] or 0
 				local VEngineHealth = GetVehicleEngineHealth(Vehicle)
+				local VSpeed = math.ceil(GetEntitySpeed(Vehicle) * 2.236936)
 
 				if GetPedInVehicleSeat(Vehicle,-1) == Ped then
 					if GetVehicleDirtLevel(Vehicle) > 0.0 then
@@ -86,6 +98,20 @@ CreateThread(function()
 						local Roll = GetEntityRoll(Vehicle)
 						if (Roll > 75.0 or Roll < -75.0) and math.random(100) <= 50 then
 							VehicleTyreBurst(Vehicle)
+						end
+					end
+
+					for Number,v in pairs(Spike) do
+						if #(GetEntityCoords(Vehicle) - v["Coords"]) <= 10 then
+							for Index = 1,#Tyres do
+								local BoneIndex = GetEntityBoneIndexByName(Vehicle,Tyres[Index]["Bone"])
+								local TirePosition = GetWorldPositionOfEntityBone(Vehicle,BoneIndex)
+
+								if IsPointInAngledArea(TirePosition,v["Min"],v["Max"],0.45,false,false) then
+									TriggerServerEvent("inventory:StoreObjects",Number)
+									VehicleTyreBurst(Vehicle)
+								end
+							end
 						end
 					end
 				end
@@ -121,7 +147,7 @@ CreateThread(function()
 				end
 
 				if Speed ~= VSpeed then
-					SendNUIMessage({ name = "Speed", payload = parseInt(VSpeed) })
+					SendNUIMessage({ name = "Speed", payload = VSpeed })
 					Speed = VSpeed
 				end
 
@@ -201,7 +227,7 @@ function NitroEnable()
 			if GetPedInVehicleSeat(Vehicle,-1) == Ped and GetVehicleTopSpeedModifier(Vehicle) < 50.0 then
 				NitroFuel = Entity(Vehicle)["state"]["Nitro"] or 0
 
-				if NitroFuel >= 1 and (GetEntitySpeed(Vehicle) * 2.236936) > 10 then
+				if NitroFuel >= 1 and Speed > 10 then
 					NitroActive = true
 
 					while NitroActive do
@@ -287,7 +313,6 @@ CreateThread(function()
 					TimeDistance = 1
 
 					local Vehicle = GetVehiclePedIsUsing(Ped)
-					local Speed = GetEntitySpeed(Vehicle) * 2.236936
 					if GetVehicleDoorLockStatus(Vehicle) >= 2 or SeatbeltLock then
 						DisableControlAction(0,75,true)
 						DisableControlAction(27,75,true)
@@ -363,3 +388,20 @@ end)
 -- KEYMAPPING
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterKeyMapping("Seatbeltz","Colocar/Retirar o cinto.","keyboard","G")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SPIKES:ADICIONAR
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("spikes:Adicionar",function(Number,Coords,Min,Max)
+	Spike[Number] = {
+		["Min"] = Min, ["Max"] = Max,
+		["Coords"] = vec3(Coords[1],Coords[2],Coords[3])
+	}
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SPIKES:REMOVER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("spikes:Remover",function(Number)
+	if Spike[Number] then
+		Spike[Number] = nil
+	end
+end)

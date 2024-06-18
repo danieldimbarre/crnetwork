@@ -2,11 +2,15 @@
 -- LOADMODEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadModel(Hash)
+	if type(Hash) == "string" then
+		Hash = GetHashKey(Hash)
+	end
+
+	RequestModel(Hash)
+	local Looping = GetGameTimer() + 1000
 	if IsModelInCdimage(Hash) and IsModelValid(Hash) then
-		local Loops = 0
-		while not HasModelLoaded(Hash) and Loops <= 1000 do
+		while not HasModelLoaded(Hash) and GetGameTimer() <= Looping do
 			RequestModel(Hash)
-			Loops = Loops + 1
 			Wait(1)
 		end
 
@@ -19,10 +23,10 @@ end
 -- LOADANIM
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadAnim(Dict)
-	local Loops = 0
-	while not HasAnimDictLoaded(Dict) and Loops <= 1000 do
+	RequestAnimDict(Dict)
+	local Looping = GetGameTimer() + 1000
+	while not HasAnimDictLoaded(Dict) and GetGameTimer() <= Looping do
 		RequestAnimDict(Dict)
-		Loops = Loops + 1
 		Wait(1)
 	end
 
@@ -32,10 +36,10 @@ end
 -- LOADTEXTURE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadTexture(Library)
-	local Loops = 0
-	while not HasStreamedTextureDictLoaded(Library) and Loops <= 1000 do
+	local Looping = GetGameTimer() + 1000
+	RequestStreamedTextureDict(Library,false)
+	while not HasStreamedTextureDictLoaded(Library) and GetGameTimer() <= Looping do
 		RequestStreamedTextureDict(Library,false)
-		Loops = Loops + 1
 		Wait(1)
 	end
 
@@ -45,10 +49,10 @@ end
 -- LOADMOVEMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadMovement(Library)
-	local Loops = 0
-	while not HasAnimSetLoaded(Library) and Loops <= 1000 do
+	RequestAnimSet(Library)
+	local Looping = GetGameTimer() + 1000
+	while not HasAnimSetLoaded(Library) and GetGameTimer() <= Looping do
 		RequestAnimSet(Library)
-		Loops = Loops + 1
 		Wait(1)
 	end
 
@@ -58,10 +62,10 @@ end
 -- LOADPTFXASSET
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadPtfxAsset(Library)
-	local Loops = 0
-	while not HasNamedPtfxAssetLoaded(Library) and Loops <= 1000 do
+	RequestNamedPtfxAsset(Library)
+	local Looping = GetGameTimer() + 1000
+	while not HasNamedPtfxAssetLoaded(Library) and GetGameTimer() <= Looping do
 		RequestNamedPtfxAsset(Library)
-		Loops = Loops + 1
 		Wait(1)
 	end
 
@@ -71,9 +75,8 @@ end
 -- LOADNETWORK
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadNetwork(Network)
-	local Loops = 0
-	while not NetworkDoesNetworkIdExist(Network) and Loops <= 1000 do
-		Loops = Loops + 1
+	local Looping = GetGameTimer() + 1000
+	while not NetworkDoesNetworkIdExist(Network) and GetGameTimer() <= Looping do
 		Wait(1)
 	end
 
@@ -81,17 +84,17 @@ function LoadNetwork(Network)
 		local Object = NetToEnt(Network)
 
 		if DoesEntityExist(Object) then
-			Loops = 0
-			while not NetworkHasControlOfEntity(Object) and Loops <= 1000 do
+			Looping = GetGameTimer() + 1000
+			NetworkRequestControlOfEntity(Object)
+			while not NetworkHasControlOfEntity(Object) and GetGameTimer() <= Looping do
 				NetworkRequestControlOfEntity(Object)
-				Loops = Loops + 1
 				Wait(1)
 			end
 
-			Loops = 0
-			while not IsEntityAMissionEntity(Object) and Loops <= 1000 do
+			Looping = GetGameTimer() + 1000
+			SetEntityAsMissionEntity(Object,true,true)
+			while not IsEntityAMissionEntity(Object) and GetGameTimer() <= Looping do
 				SetEntityAsMissionEntity(Object,true,true)
-				Loops = Loops + 1
 				Wait(1)
 			end
 
@@ -100,4 +103,10 @@ function LoadNetwork(Network)
 	end
 
 	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECKPOLICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function CheckPolice()
+	return LocalPlayer["state"]["LSPD"] or LocalPlayer["state"]["BCSO"] or LocalPlayer["state"]["BCPR"]
 end

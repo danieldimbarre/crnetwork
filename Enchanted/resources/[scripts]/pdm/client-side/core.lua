@@ -43,8 +43,8 @@ AddEventHandler("pdm:Open",function()
 		CameraActive()
 		SetNuiFocus(true,true)
 		SetCursorLocation(0.5,0.5)
-		TriggerEvent("dynamic:closeSystem")
-		SendNUIMessage({ name = "Open", payload = VehicleGlobal() })
+		TriggerEvent("dynamic:Close")
+		SendNUIMessage({ name = "Open", payload = VehicleList() })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -62,6 +62,7 @@ RegisterNUICallback("Close",function(Data,Callback)
 		RenderScriptCams(false,false,0,false,false)
 		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
+		LastModel = ""
 		Camera = nil
 	end
 
@@ -77,6 +78,8 @@ RegisterNUICallback("Mount",function(Data,Callback)
 		end
 
 		Mount = CreateVehicle(Data,SpawnCoords,false,false)
+		SetVehicleCustomSecondaryColour(Mount,19,114,191)
+		SetVehicleCustomPrimaryColour(Mount,19,114,191)
 		SetVehicleNumberPlateText(Mount,"PDMSPORT")
 		SetEntityCollision(Mount,false,false)
 		FreezeEntityPosition(Mount,true)
@@ -115,6 +118,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Drive",function(Data,Callback)
 	if vSERVER.Check() then
+		if IsScreenFadedIn() then
+			DoScreenFadeOut(0)
+		end
+
 		SetNuiFocus(false,false)
 		SetCursorLocation(0.5,0.5)
 
@@ -126,23 +133,36 @@ RegisterNUICallback("Drive",function(Data,Callback)
 			Mount = CreateVehicle(Data,TestDriveCoords,false,false)
 
 			SetVehicleModKit(Mount,0)
+			SetVehicleDirtLevel(Mount,0.0)
 			ToggleVehicleMod(Mount,18,true)
+			SetEntityInvincible(Mount,true)
+			SetPedIntoVehicle(PlayerPedId(),Mount,-1)
+			SetVehicleNumberPlateText(Mount,"PDMSPORT")
+			SetVehicleCustomPrimaryColour(Mount,19,114,191)
+			SetVehicleCustomSecondaryColour(Mount,19,114,191)
 			SetVehicleMod(Mount,11,GetNumVehicleMods(Mount,11) - 1,false)
 			SetVehicleMod(Mount,12,GetNumVehicleMods(Mount,12) - 1,false)
 			SetVehicleMod(Mount,13,GetNumVehicleMods(Mount,13) - 1,false)
 			SetVehicleMod(Mount,15,GetNumVehicleMods(Mount,15) - 1,false)
 
-			SetVehicleNumberPlateText(Mount,"PDMSPORT")
-			SetPedIntoVehicle(PlayerPedId(),Mount,-1)
-			SetEntityInvincible(Mount,true)
 			SetModelAsNoLongerNeeded(Data)
 
 			LocalPlayer["state"]:set("Commands",true,true)
 			LocalPlayer["state"]:set("TestDrive",true,false)
 
+			SetTimeout(2500,function()
+				if IsScreenFadedOut() then
+					DoScreenFadeIn(2500)
+				end
+			end)
+
 			while true do
 				local Ped = PlayerPedId()
 				if not IsPedInAnyVehicle(Ped) then
+					if IsScreenFadedIn() then
+						DoScreenFadeOut(0)
+					end
+
 					vSERVER.Remove()
 					SetEntityCoords(Ped,TestDriveReturn["xyz"])
 					LocalPlayer["state"]:set("Commands",false,true)
@@ -150,6 +170,12 @@ RegisterNUICallback("Drive",function(Data,Callback)
 
 					if DoesEntityExist(Mount) then
 						DeleteEntity(Mount)
+
+						SetTimeout(2500,function()
+							if IsScreenFadedOut() then
+								DoScreenFadeIn(2500)
+							end
+						end)
 
 						break
 					end

@@ -3,17 +3,6 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Cooldown = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ITENS
------------------------------------------------------------------------------------------------------------------------------------------
-local Itens = {
-	{
-		{ ["Item"] = "analgesic", ["Min"] = 1, ["Max"] = 3 },
-		{ ["Item"] = "bandage", ["Min"] = 1, ["Max"] = 3 }
-	},{
-		{ ["Item"] = "radio", ["Min"] = 1, ["Max"] = 3 }
-	}
-}
------------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:CONTAINER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("inventory:Container")
@@ -25,10 +14,19 @@ AddEventHandler("inventory:Container",function(Number)
 			if vRP.Task(source,3,10000) then
 				Active[Passport] = os.time() + 10
 				Player(source)["state"]["Buttons"] = true
-				TriggerClientEvent("inventory:Close",source)
 				TriggerClientEvent("Progress",source,"Roubando",10000)
 				vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
-				vRP.CallPolice(source,Passport,false,"Policia","Roubo ao Container",900,120,31,22)
+
+				exports["vrp"]:CallPolice({
+					["Source"] = source,
+					["Passport"] = Passport,
+					["Permission"] = "Policia",
+					["Name"] = "Roubo ao Container",
+					["Percentage"] = 900,
+					["Wanted"] = 120,
+					["Code"] = 31,
+					["Color"] = 22
+				})
 
 				repeat
 					if Active[Passport] and os.time() >= parseInt(Active[Passport]) and Number and (not Cooldown[Number] or os.time() > Cooldown[Number]) then
@@ -37,9 +35,9 @@ AddEventHandler("inventory:Container",function(Number)
 						Cooldown[Number] = os.time() + 3600
 						Player(source)["state"]["Buttons"] = false
 
-						vRP.MountContainer("Containers:"..Number,Itens,false)
-						TriggerClientEvent("player:Residuals",source,"Resquício de Poeira.")
-						TriggerClientEvent("chest:Open",source,"Containers:"..Number,"Custom",false,true)
+						TriggerClientEvent("player:Residuals",source,"Resquício de Poeira")
+						vRP.MountContainer(Passport,"Containers:"..Number,IlegalItens,math.random(3))
+						TriggerClientEvent("chest:Open",source,"Containers:"..Number,"Custom",false,true,true)
 					end
 
 					Wait(100)
@@ -48,9 +46,9 @@ AddEventHandler("inventory:Container",function(Number)
 		else
 			local Consult = vRP.GetSrvData("Containers:"..Number,false)
 			if json.encode(Consult) ~= "[]" and (Cooldown[Number] - 3300) >= os.time() then
-				TriggerClientEvent("chest:Open",source,"Containers:"..Number,"Custom",false,true)
+				TriggerClientEvent("chest:Open",source,"Containers:"..Number,"Custom",false,true,true)
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Aguarde <b>"..Cooldown[Number] - os.time().."</b> segundos.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Cooldown[Number] - os.time())..".","amarelo",5000)
 			end
 		end
 	end

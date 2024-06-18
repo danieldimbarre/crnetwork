@@ -44,7 +44,7 @@ AddEventHandler("warehouse:Password",function(Name)
 		if Warehouse[1] and Warehouse[1]["Passport"] == Passport then
 			local Keyboard = vKEYBOARD.Password(source,"Nova Senha")
 			if Keyboard then
-				local Password = sanitizeString(Keyboard[1],"0123456789",true)
+				local Password = sanitizeString(Keyboard[1],"0123456789")
 				if string.len(Password) >= 4 and string.len(Password) <= 20 then
 					vRP.Query("warehouse/Password",{ Name = Name, Password = Password })
 					TriggerClientEvent("Notify",source,"Sucesso","Senha atualizada.","amarelo",5000)
@@ -61,7 +61,7 @@ end)
 function Creative.Warehouse(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["bank"]:CheckFines(Passport) then
+	if Passport and Name and not exports["bank"]:CheckFines(Passport) then
 		local Consult = vRP.Query("warehouse/Informations",{ Name = Name })
 		if Consult[1] then
 			if Consult[1]["Tax"] < os.time() then
@@ -87,7 +87,7 @@ function Creative.Warehouse(Name)
 					if Warehouse[1] then
 						return true
 					else
-						TriggerClientEvent("Notify",source,"Erro","Senha incorreta.","vermelho",5000)
+						TriggerClientEvent("Notify",source,"Aviso","Senha incorreta.","vermelho",5000)
 					end
 				end
 			end
@@ -95,7 +95,7 @@ function Creative.Warehouse(Name)
 			if vRP.Request(source,"Armazém","Gostaria de comprar o armazém por <b>$100.000</b>?") then
 				local Keyboard = vKEYBOARD.Password(source,"Senha")
 				if Keyboard then
-					local Password = sanitizeString(Keyboard[1],"0123456789",true)
+					local Password = sanitizeString(Keyboard[1],"0123456789")
 					if string.len(Password) >= 4 and string.len(Password) <= 20 then
 						if vRP.Request(source,"Armazém","Finalizar a compra usando a senha <b>"..Password.."</b>?") then
 							if vRP.PaymentFull(Passport,100000) then
@@ -122,111 +122,91 @@ function Creative.Warehouse(Name)
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REQUEST
+-- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Request(Name)
+function Creative.Mount(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		local Inventory = {}
+	if Passport and Name then
+		local Primary = {}
 		local Inv = vRP.Inventory(Passport)
 		for Index,v in pairs(Inv) do
-			if (parseInt(v["amount"]) <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveItem(Passport,v["item"],parseInt(v["amount"]),false)
-			else
-				v["amount"] = parseInt(v["amount"])
-				v["peso"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["name"] = ItemName(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+			v["name"] = ItemName(v["item"])
+			v["weight"] = ItemWeight(v["item"])
+			v["index"] = ItemIndex(v["item"])
+			v["amount"] = parseInt(v["amount"])
+			v["rarity"] = ItemRarity(v["item"])
+			v["economy"] = ItemEconomy(v["item"])
+			v["desc"] = ItemDescription(v["item"])
+			v["key"] = v["item"]
+			v["slot"] = Index
 
-				v["desc"] = "<item>"..v["name"].."</item>"
+			local Split = splitString(v["item"])
 
-				local Split = splitString(v["item"])
-				local Description = ItemDescription(v["item"])
-
-				if Description then
-					v["desc"] = v["desc"].."<br><description>"..Description.."</description>"
-				else
-					if Split[1] == "vehkey" then
-						v["desc"] = v["desc"].."<br><description>Placa do Veículo: <green>"..Split[2].."</green></description>"
-					end
+			if not v["desc"] then
+				if Split[1] == "vehkey" and Split[2] then
+					v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+				elseif ItemNamed(Split[1]) and Split[2] then
+					v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 				end
-
-				local Max = ItemMaxAmount(v["item"])
-				if not Max then
-					Max = "Ilimitado"
-				end
-
-				v["desc"] = v["desc"].."<br><legenda>Tipo: <r>"..ItemType(v["item"]).."</r> <s>|</s> Máximo: <r>"..Max.."</r></legenda>"
-
-				if Split[2] then
-					if ItemLoads(v["item"]) then
-						v["charges"] = parseInt(Split[2] * 33)
-					end
-
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
-					end
-				end
-
-				Inventory[Index] = v
 			end
+
+			if Split[2] then
+				local Loaded = ItemLoads(v["item"])
+				if Loaded then
+					v["charges"] = parseInt(Split[2] * (100 / Loaded))
+				end
+
+				if ItemDurability(v["item"]) then
+					v["durability"] = parseInt(os.time() - Split[2])
+					v["days"] = ItemDurability(v["item"])
+				end
+			end
+
+			Primary[Index] = v
 		end
 
-		local myWarehouse = {}
+		local Secondary = {}
 		local Consult = vRP.GetSrvData("Warehouse:"..Name,true)
 		for Index,v in pairs(Consult) do
-			if (parseInt(v["amount"]) <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveChest("Warehouse:"..Name,Index,true)
-			else
-				v["amount"] = parseInt(v["amount"])
-				v["peso"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["name"] = ItemName(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+			v["name"] = ItemName(v["item"])
+			v["weight"] = ItemWeight(v["item"])
+			v["index"] = ItemIndex(v["item"])
+			v["amount"] = parseInt(v["amount"])
+			v["rarity"] = ItemRarity(v["item"])
+			v["economy"] = ItemEconomy(v["item"])
+			v["desc"] = ItemDescription(v["item"])
+			v["key"] = v["item"]
+			v["slot"] = Index
 
-				v["desc"] = "<item>"..v["name"].."</item>"
+			local Split = splitString(v["item"])
 
-				local Split = splitString(v["item"])
-				local Description = ItemDescription(v["item"])
-
-				if Description then
-					v["desc"] = v["desc"].."<br><description>"..Description.."</description>"
-				else
-					if Split[1] == "vehkey" then
-						v["desc"] = v["desc"].."<br><description>Placa do Veículo: <green>"..Split[2].."</green></description>"
-					end
+			if not v["desc"] then
+				if Split[1] == "vehkey" and Split[2] then
+					v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+				elseif ItemNamed(Split[1]) and Split[2] then
+					v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 				end
-
-				local Max = ItemMaxAmount(v["item"])
-				if not Max then
-					Max = "Ilimitado"
-				end
-
-				v["desc"] = v["desc"].."<br><legenda>Tipo: <r>"..ItemType(v["item"]).."</r> <s>|</s> Máximo: <r>"..Max.."</r></legenda>"
-
-				if Split[2] then
-					if ItemLoads(v["item"]) then
-						v["charges"] = parseInt(Split[2] * 33)
-					end
-
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
-					end
-				end
-
-				myWarehouse[Index] = v
 			end
+
+			if Split[2] then
+				local Loaded = ItemLoads(v["item"])
+				if Loaded then
+					v["charges"] = parseInt(Split[2] * (100 / Loaded))
+				end
+
+				if ItemDurability(v["item"]) then
+					v["durability"] = parseInt(os.time() - Split[2])
+					v["days"] = ItemDurability(v["item"])
+				end
+			end
+
+			Secondary[Index] = v
 		end
 
 		local Warehouse = vRP.Query("warehouse/Informations",{ Name = Name })
 		if Warehouse[1] then
-			return Inventory,myWarehouse,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Consult),Warehouse[1]["Weight"]
+			return Primary,Secondary,vRP.GetWeight(Passport),Warehouse[1]["Weight"]
 		end
 	end
 end
@@ -238,25 +218,16 @@ function Creative.Store(Item,Slot,Amount,Target,Name)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if BlockDelete(Item) then
-			TriggerClientEvent("warehouse:Update",source)
-
-			return false
-		end
-
 		local Consult = vRP.Query("warehouse/Informations",{ Name = Name })
 		if Consult[1] then
 			if Item == "diagram" then
 				if vRP.TakeItem(Passport,Item,Amount) then
 					vRP.Query("warehouse/Upgrade",{ Name = Name, Multiplier = Amount })
-					TriggerClientEvent("warehouse:Update",source)
+					TriggerClientEvent("inventory:Update",source)
 				end
 			else
 				if vRP.StoreChest(Passport,"Warehouse:"..Name,Amount,Consult[1]["Weight"],Slot,Target,true) then
-					TriggerClientEvent("warehouse:Update",source)
-				else
-					local Result = vRP.GetSrvData("Warehouse:"..Name,true)
-					TriggerClientEvent("warehouse:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Consult[1]["Weight"])
+					TriggerClientEvent("inventory:Update",source)
 				end
 			end
 		end
@@ -273,10 +244,7 @@ function Creative.Take(Item,Slot,Amount,Target,Name)
 		local Consult = vRP.Query("warehouse/Informations",{ Name = Name })
 		if Consult[1] then
 			if vRP.TakeChest(Passport,"Warehouse:"..Name,Amount,Slot,Target,true) then
-				TriggerClientEvent("warehouse:Update",source)
-			else
-				local Result = vRP.GetSrvData("Warehouse:"..Name,true)
-				TriggerClientEvent("warehouse:Weight",source,vRP.InventoryWeight(Passport),vRP.GetWeight(Passport),vRP.ChestWeight(Result),Consult[1]["Weight"])
+				TriggerClientEvent("inventory:Update",source)
 			end
 		end
 	end
@@ -290,18 +258,14 @@ function Creative.Update(Slot,Target,Amount,Name)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if vRP.UpdateChest(Passport,"Warehouse:"..Name,Slot,Target,Amount,true) then
-			TriggerClientEvent("warehouse:Update",source)
+			TriggerClientEvent("inventory:Update",source)
 		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	local Warehouses = {}
 	local Consult = vRP.Query("warehouse/All")
 

@@ -1,4 +1,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local BunnyHope = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Blips = {
@@ -26,6 +30,9 @@ local Blips = {
 	{ 1624.05,3566.14,35.15,357,62,"Garagem",0.6 },
 	{ -73.35,-2004.6,18.27,357,62,"Garagem",0.6 },
 	{ 1200.52,-1276.06,35.22,357,62,"Garagem",0.6 },
+	{ 46.7,-1749.71,29.62,78,62,"Mercado Central",0.5 },
+	{ 142.37,-1723.41,29.23,207,62,"Loja de Penhores",0.7 },
+	{ 224.59,-1511.14,29.28,515,62,"Loja de Eletronicos",0.7 },
 	{ 416.02,-982.65,29.44,60,18,"Departamento Policial",0.6 },
 	{ 29.2,-1351.89,29.34,52,36,"Loja de Departamento",0.5 },
 	{ 2561.74,385.22,108.61,52,36,"Loja de Departamento",0.5 },
@@ -98,11 +105,10 @@ local Blips = {
 	{ -351.65,-1566.27,25.22,318,62,"Lixeiro",0.6 },
 	{ 287.36,2843.6,44.7,318,62,"Lixeiro",0.6 },
 	{ -413.97,6171.58,31.48,318,62,"Lixeiro",0.6 },
-	{ 82.34,-1550.57,29.59,445,62,"Lavanderia",0.6 },
-	{ -233.72,-1373.64,31.26,477,62,"Impound",0.6 },
-	{ -428.56,-1728.33,19.79,467,11,"Reciclagem",0.6 },
-	{ 180.07,2793.29,45.65,467,11,"Reciclagem",0.6 },
-	{ -195.42,6264.62,31.49,467,11,"Reciclagem",0.6 },
+	{ 408.91,-1638.21,29.28,477,62,"Reboque",0.6 },
+	{ 966.47,-1914.76,31.14,467,11,"Recicladora",0.7 },
+	{ -178.19,6261.09,31.49,467,11,"Recicladora",0.7 },
+	{ 270.14,2858.27,43.64,467,11,"Recicladora",0.7 },
 	{ 2953.93,2787.49,41.5,617,62,"Minerador",0.6 },
 	{ 1327.98,-1654.78,52.03,75,13,"Loja de Tatuagem",0.5 },
 	{ -1149.04,-1428.64,4.71,75,13,"Loja de Tatuagem",0.5 },
@@ -110,10 +116,10 @@ local Blips = {
 	{ -3175.64,1075.54,20.58,75,13,"Loja de Tatuagem",0.5 },
 	{ 1866.01,3748.07,32.79,75,13,"Loja de Tatuagem",0.5 },
 	{ -295.51,6199.21,31.24,75,13,"Loja de Tatuagem",0.5 },
-	{ -45.9,-1659.54,29.28,225,62,"Concessionária",0.6 },
+	{ -66.26,-1102.02,26.17,225,62,"Concessionária",0.6 },
 	{ -1896.42,-3032.01,13.93,43,62,"Aviação",0.7 },
 	{ -1593.08,5202.9,4.31,141,62,"Caçador",0.7 },
-	{ -679.13,5839.52,17.3,141,62,"Caçador",0.7 },
+	{ -681.42,5832.95,17.32,141,62,"Caçador",0.7 },
 	{ 454.73,-600.83,28.56,513,62,"Motorista",0.5 },
 	{ 919.38,-182.83,74.02,198,62,"Taxista",0.5 },
 	{ 963.75,-2228.24,30.55,77,62,"Leiteiro",0.5 },
@@ -144,6 +150,7 @@ local Blips = {
 	{ -732.64,-939.32,18.22,361,35,"Posto de Gasolina",0.4 },
 	{ -524.92,-1216.15,17.33,361,35,"Posto de Gasolina",0.4 },
 	{ -69.45,-1758.01,28.55,361,35,"Posto de Gasolina",0.4 },
+	{ -629.07,243.24,81.89,408,73,"Restaurante",0.6 },
 	{ -772.73,312.74,85.7,475,26,"Hotel",0.6 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -311,18 +318,30 @@ CreateThread(function()
 		local Pid = PlayerId()
 		local Ped = PlayerPedId()
 
+		if IsPedInAnyVehicle(Ped) then
+			DisableControlAction(0,345,true)
+			DisablePlayerVehicleRewards(Pid)
+
+			if IsPedInAnyHeli(Ped) then
+				local Vehicle = GetVehiclePedIsUsing(Ped)
+				if IsControlJustPressed(1,154) and not IsAnyPedRappellingFromHeli(Vehicle) and (GetPedInVehicleSeat(Vehicle,1) == Ped or GetPedInVehicleSeat(Vehicle,2) == Ped) then
+					TaskRappelFromHeli(Ped,1)
+				end
+			end
+		else
+			if BunnyHope >= GetGameTimer() then
+				DisableControlAction(1,22,true)
+			elseif IsPedJumping(Ped) and BunnyHope <= GetGameTimer() then
+				BunnyHope = GetGameTimer() + 5000
+			end
+		end
+
 		for Number = 1,22 do
 			if Number ~= 14 and Number ~= 16 then
 				HideHudComponentThisFrame(Number)
 			end
 		end
 
-		InvalidateIdleCam()
-		InvalidateVehicleIdleCam()
-
-		SetCreateRandomCops(false)
-		CancelCurrentPoliceReport()
-		BlockWeaponWheelThisFrame()
 		DisableControlAction(0,37,true)
 		DisableControlAction(0,204,true)
 		DisableControlAction(0,211,true)
@@ -338,11 +357,23 @@ CreateThread(function()
 		DisableControlAction(0,164,true)
 		DisableControlAction(0,165,true)
 
-		--SetVehicleDensityMultiplierThisFrame(1.0)
-		--SetRandomVehicleDensityMultiplierThisFrame(1.0)
-		--SetParkedVehicleDensityMultiplierThisFrame(1.0)
-		--SetScenarioPedDensityMultiplierThisFrame(1.0,1.0)
-		--SetPedDensityMultiplierThisFrame(1.0)
+		DisableVehicleDistantlights(true)
+		SetArtificialLightsState(false)
+		SetAllVehicleGeneratorsActive()
+		CancelCurrentPoliceReport()
+		BlockWeaponWheelThisFrame()
+		InvalidateVehicleIdleCam()
+		SetCreateRandomCops(false)
+		SetPoliceRadarBlips(false)
+		DistantCopCarSirens(false)
+		SetPauseMenuActive(false)
+		InvalidateIdleCam()
+
+		SetVehicleDensityMultiplierThisFrame(1.0)
+		SetRandomVehicleDensityMultiplierThisFrame(1.0)
+		SetParkedVehicleDensityMultiplierThisFrame(1.0)
+		SetScenarioPedDensityMultiplierThisFrame(1.0,1.0)
+		SetPedDensityMultiplierThisFrame(1.0)
 
 		if IsPedArmed(Ped,6) then
 			DisableControlAction(1,140,true)
@@ -354,12 +385,6 @@ CreateThread(function()
 			SetPedUsingActionMode(Ped,-1,-1,1)
 		end
 
-		if IsPedInAnyVehicle(Ped) then
-			DisableControlAction(0,345,true)
-		end
-
-		SetPauseMenuActive(false)
-		DisablePlayerVehicleRewards(Pid)
 		SetPedInfiniteAmmoClip(Ped,false)
 		SetPlayerLockonRangeOverride(Pid,0.0)
 		SetCreateRandomCopsOnScenarios(false)
@@ -383,13 +408,9 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	SetMapZoomDataLevel(0,0.96,0.9,0.08,0.0,0.0)
 	SetMapZoomDataLevel(1,1.6,0.9,0.08,0.0,0.0)
 	SetMapZoomDataLevel(2,8.6,0.9,0.08,0.0,0.0)
@@ -517,24 +538,5 @@ CreateThread(function()
 		end
 
 		Wait(10000)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADRAPPEL
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local TimeDistance = 999
-		local Ped = PlayerPedId()
-		if IsPedInAnyHeli(Ped) then
-			TimeDistance = 1
-
-			local Vehicle = GetVehiclePedIsUsing(Ped)
-			if IsControlJustPressed(1,154) and not IsAnyPedRappellingFromHeli(Vehicle) and (GetPedInVehicleSeat(Vehicle,1) == Ped or GetPedInVehicleSeat(Vehicle,2) == Ped) then
-				TaskRappelFromHeli(Ped,1)
-			end
-		end
-
-		Wait(TimeDistance)
 	end
 end)

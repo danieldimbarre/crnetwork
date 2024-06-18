@@ -893,50 +893,7 @@ CreateThread(function()
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) then
-							SetVehicleModKit(Vehicle,0)
-							FreezeEntityPosition(Vehicle,true)
-							SetVehicleOnGroundProperly(Vehicle)
-							SetEntityHeading(Vehicle,v["Position"]["w"])
-							SetEntityCoords(Vehicle,v["Position"]["xyz"])
-
-							originalMod = nil
-							originalWheel = nil
-							originalCategory = nil
-							originalWheelType = nil
-							originalPlateIndex = nil
-							originalWindowTint = nil
-							originalDashColour = nil
-							originalNeonColourR = nil
-							originalNeonColourG = nil
-							originalNeonColourB = nil
-							originalXenonColour = nil
-							originalWheelColour = nil
-							originalInterColour = nil
-							originalCustomWheels = nil
-							originalPoliceLivery = nil
-							originalPrimaryColour = nil
-							originalWheelCategory = nil
-							originalNeonLightSide = nil
-							originalNeonLightState = nil
-							originalSecondaryColour = nil
-							originalPearlescentColour = nil
-
-							local Name = vRP.VehicleModel(Vehicle)
-							local Price = VehiclePrice(Name)
-
-							if Price then
-								Payments["engines"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
-								Payments["brakes"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
-								Payments["transmission"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
-								Payments["suspension"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
-								Payments["shield"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
-							end
-
-							InitiateMenus()
-							DisableControls()
-							DisplayMenuContainer(true)
-							DisplayMenu(true,"mainMenu")
-							TriggerServerEvent("lscustoms:inVehicle",VehToNet(Vehicle),GetVehicleNumberPlateText(Vehicle),Name)
+							TriggerEvent("lscustoms:Open",Vehicle,v["Position"])
 						end
 					end
 				end
@@ -944,5 +901,65 @@ CreateThread(function()
 		end
 
 		Wait(TimeDistance)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- LSCUSTOMS:OPEN
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("lscustoms:Open")
+AddEventHandler("lscustoms:Open",function(Vehicle,Position)
+	local Ped = PlayerPedId()
+	if IsPedInAnyVehicle(Ped) then
+		if not Vehicle then
+			Vehicle = GetVehiclePedIsUsing(Ped)
+		end
+
+		SetVehicleModKit(Vehicle,0)
+		FreezeEntityPosition(Vehicle,true)
+		SetVehicleOnGroundProperly(Vehicle)
+
+		if Position then
+			SetEntityHeading(Vehicle,Position["w"])
+			SetEntityCoords(Vehicle,Position["xyz"])
+		end
+
+		originalMod = nil
+		originalWheel = nil
+		originalCategory = nil
+		originalWheelType = nil
+		originalPlateIndex = nil
+		originalWindowTint = nil
+		originalDashColour = nil
+		originalNeonColourR = nil
+		originalNeonColourG = nil
+		originalNeonColourB = nil
+		originalXenonColour = nil
+		originalWheelColour = nil
+		originalInterColour = nil
+		originalCustomWheels = nil
+		originalPoliceLivery = nil
+		originalPrimaryColour = nil
+		originalWheelCategory = nil
+		originalNeonLightSide = nil
+		originalNeonLightState = nil
+		originalSecondaryColour = nil
+		originalPearlescentColour = nil
+
+		local Name = vRP.VehicleModel(Vehicle)
+		local Price = VehiclePrice(Name)
+
+		if Price then
+			Payments["engines"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
+			Payments["brakes"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
+			Payments["transmission"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
+			Payments["suspension"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
+			Payments["shield"] = { 999999, parseInt(Price * 0.05), parseInt(Price * 0.10), parseInt(Price * 0.20), parseInt(Price * 0.30), parseInt(Price * 0.40), parseInt(Price * 0.50) }
+		end
+
+		InitiateMenus()
+		DisableControls()
+		DisplayMenuContainer(true)
+		DisplayMenu(true,"mainMenu")
+		TriggerServerEvent("lscustoms:inVehicle",VehToNet(Vehicle),GetVehicleNumberPlateText(Vehicle),Name)
 	end
 end)

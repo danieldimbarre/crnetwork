@@ -13,13 +13,9 @@ local Blip = nil
 local Worked = nil
 local Progress = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	for Name,v in pairs(List) do
 		exports["target"]:AddBoxZone("Deliver:"..Name,v["Coords"],0.75,0.75,{
 			name = "Deliver:"..Name,
@@ -32,7 +28,7 @@ AddEventHandler("onClientResourceStart",function(Resource)
 			options = {
 				{
 					event = "deliver:Init",
-					tunnel = "shop",
+					tunnel = "client",
 					label = "Trabalhar"
 				}
 			}
@@ -47,7 +43,7 @@ AddEventHandler("deliver:Init",function(Service)
 		if Progress then
 			Worked = nil
 			Progress = false
-			TriggerEvent("Notify","Sucesso","Trabalho finalizado.","verde",5000)
+			TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
 
 			for Name,_ in pairs(List) do
 				exports["target"]:LabelText("Deliver:"..Name,"Trabalhar")
@@ -61,7 +57,7 @@ AddEventHandler("deliver:Init",function(Service)
 			Progress = true
 			Worked = Service
 			BlipMarkerService()
-			TriggerEvent("Notify","Sucesso","Trabalho iniciado.","verde",5000)
+			TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
 
 			for Name,_ in pairs(List) do
 				exports["target"]:LabelText("Deliver:"..Name,"Finalizar")
@@ -77,7 +73,9 @@ AddEventHandler("deliver:Init",function(Service)
 
 					if Distance <= 10.0 then
 						TimeDistance = 1
-						DrawText3D(Locations[Worked][Selected],"~g~H~w~   "..List[Worked]["Label"])
+						SetDrawOrigin(Locations[Worked][Selected]["x"],Locations[Worked][Selected]["y"],Locations[Worked][Selected]["z"])
+						DrawSprite("Targets","H",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+						ClearDrawOrigin()
 
 						if Distance <= 1.0 and IsControlJustPressed(1,74) and vINVENTORY.Deliver(Worked) then
 							if List[Worked]["Route"] then
@@ -110,27 +108,6 @@ AddEventHandler("deliver:Init",function(Service)
 		end
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DRAWTEXT3D
------------------------------------------------------------------------------------------------------------------------------------------
-function DrawText3D(Coords,Text)
-	local onScreen,x,y = World3dToScreen2d(Coords["x"],Coords["y"],Coords["z"])
-
-	if onScreen then
-		SetTextFont(4)
-		SetTextCentre(true)
-		SetTextProportional(1)
-		SetTextScale(0.35,0.35)
-		SetTextColour(200,200,200,200)
-
-		SetTextEntry("STRING")
-		AddTextComponentString(Text)
-		EndTextCommandDisplayText(x,y)
-
-		local Width = string.len(Text) / 350
-		DrawRect(x,y + 0.0125,Width,0.03,15,15,15,200)
-	end
-end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPMARKERSERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------

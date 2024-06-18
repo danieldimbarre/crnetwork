@@ -18,11 +18,11 @@ local Active = {}
 -- DROPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Drops = {
-	{ ["Item"] = "plastic", ["Chance"] = 80, ["Amount"] = 235, ["Addition"] = 8 },
-	{ ["Item"] = "glass", ["Chance"] = 80, ["Amount"] = 235, ["Addition"] = 8 },
-	{ ["Item"] = "rubber", ["Chance"] = 80, ["Amount"] = 235, ["Addition"] = 8 },
-	{ ["Item"] = "aluminum", ["Chance"] = 20, ["Amount"] = 185, ["Addition"] = 5 },
-	{ ["Item"] = "copper", ["Chance"] = 20, ["Amount"] = 185, ["Addition"] = 5 }
+	{ ["Item"] = "plastic", ["Chance"] = 75, ["Min"] = 225, ["Max"] = 275, ["Addition"] = 0.050 },
+	{ ["Item"] = "glass", ["Chance"] = 75, ["Min"] = 225, ["Max"] = 275, ["Addition"] = 0.050 },
+	{ ["Item"] = "rubber", ["Chance"] = 75, ["Min"] = 225, ["Max"] = 275, ["Addition"] = 0.050 },
+	{ ["Item"] = "aluminum", ["Chance"] = 25, ["Min"] = 175, ["Max"] = 200, ["Addition"] = 0.025 },
+	{ ["Item"] = "copper", ["Chance"] = 25, ["Min"] = 175, ["Max"] = 200, ["Addition"] = 0.025 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENT
@@ -35,12 +35,13 @@ function Creative.Payment()
 
 		local Coords = vRP.GetEntityCoords(source)
 		if not vRPC.LastVehicle(source,"packer") or #(Coords - vec3(1256.59,-3239.63,5.17)) > 25 then
-			exports["megazord"]:Discord("**Passaporte:** "..Passport.."\n**Função:** Payment do Trucker",source)
+			exports["discord"]:Embed("Hackers","**Passaporte:** "..Passport.."\n**Função:** Payment do Trucker",0xa3c846,source)
 		end
 
+		local GainExperience = 15
 		local Result = RandPercentage(Drops)
-		local Experience = vRP.GetExperience(Passport,"Trucker")
-		local Valuation = Result["Amount"] + (ClassCategory(Experience) / Result["Addition"])
+		local Experience,Level = vRP.GetExperience(Passport,"Trucker")
+		local Valuation = Result["Valuation"] + Result["Valuation"] * (Result["Addition"] * Level)
 
 		if exports["inventory"]:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
@@ -51,22 +52,24 @@ function Creative.Payment()
 			local Hierarchy = vRP.LevelPremium(source)
 
 			if Hierarchy == 1 then
-				Bonification = 0.1
+				Bonification = 0.100
 			elseif Hierarchy == 2 then
-				Bonification = 0.2
+				Bonification = 0.075
 			end
 
+			GainExperience = GainExperience + 10
 			Valuation = Valuation + (Valuation * Bonification)
 		end
 
 		if not vRP.MaxItens(Passport,Result["Item"],Valuation) and vRP.CheckWeight(Passport,Result["Item"],Valuation) then
 			vRP.GenerateItem(Passport,Result["Item"],Valuation,true)
 		else
-			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
 			exports["inventory"]:Drops(Passport,source,Result["Item"],Valuation)
 		end
 
-		vRP.PutExperience(Passport,"Trucker",25)
+		vRP.PutExperience(Passport,"Trucker",GainExperience)
+		vRP.UpgradeStress(Passport,10)
 
 		Active[Passport] = nil
 	end

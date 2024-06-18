@@ -13,10 +13,8 @@ vSERVER = Tunnel.getInterface("engine")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Price = 0
 local Lasted = 0
-local ActiveFuel = 0
-local DisplayNui = false
-local FuelRecharger = false
-local DelayEntered = GetGameTimer()
+local Display = false
+local VehicleFuel = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -26,56 +24,34 @@ AddEventHandler("gameEventTriggered",function(Event,Message)
 	end
 
 	local Vehicle = Message[2]
-	if Message[1] == PlayerId() and GetGameTimer() >= DelayEntered then
-		DelayEntered = GetGameTimer() + 1000
+	if Message[1] == PlayerId() then
+		if not Entity(Vehicle)["state"]["Fuel"] then
+			Entity(Vehicle)["state"]:set("Fuel",100,true)
+		end
 
-		ActiveFuel = Entity(Vehicle)["state"]["Fuel"] or 100
 		SetPedConfigFlag(GetPlayerPed(Message[1]),35,false)
-		SetVehicleFuelLevel(Vehicle,ActiveFuel + 0.0)
+		TriggerEvent("inventory:CleanWeapons")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENGINE:FUELADMIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("engine:FuelAdmin")
-AddEventHandler("engine:FuelAdmin",function(Gallons)
+AddEventHandler("engine:FuelAdmin",function()
 	local Ped = PlayerPedId()
 	if IsPedInAnyVehicle(Ped) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
-
-		Entity(Vehicle)["state"]:set("Fuel",parseInt(Gallons),true)
-		ActiveFuel = Entity(Vehicle)["state"]["Fuel"] or 100
-		SetVehicleFuelLevel(Vehicle,ActiveFuel + 0.0)
-		SetPedConfigFlag(Ped,35,false)
+		Entity(Vehicle)["state"]:set("Fuel",100,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLASS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Class = {
-	[0] = 1.0,
-	[1] = 1.0,
-	[2] = 1.0,
-	[3] = 1.0,
-	[4] = 1.0,
-	[5] = 1.0,
-	[6] = 1.0,
-	[7] = 1.0,
-	[8] = 1.0,
-	[9] = 1.0,
-	[10] = 1.0,
-	[11] = 1.0,
-	[12] = 1.0,
 	[13] = 0.0,
 	[14] = 0.0,
 	[15] = 1.5,
-	[16] = 1.0,
-	[17] = 1.0,
-	[18] = 1.0,
-	[19] = 1.0,
-	[20] = 1.0,
-	[21] = 0.0,
-	[22] = 1.0
+	[21] = 0.0
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONSUME
@@ -109,18 +85,23 @@ CreateThread(function()
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
 			local Vehicle = GetVehiclePedIsUsing(Ped)
-			if GetVehicleFuelLevel(Vehicle) >= 1 then
-				if (GetEntitySpeed(Vehicle) * 2.236936) >= 1 then
-					ActiveFuel = (ActiveFuel - (Consume[floor(GetVehicleCurrentRpm(Vehicle))] or 1.0) * (Class[GetVehicleClass(Vehicle)] or 1.0) / 10)
-					SetVehicleFuelLevel(Vehicle,ActiveFuel + 0.0)
+			local ClassVehicle = GetVehicleClass(Vehicle)
+			if not Class[ClassVehicle] or Class[ClassVehicle] ~= 0.0 then
+				if GetVehicleFuelLevel(Vehicle) >= 1 then
+					if (GetEntitySpeed(Vehicle) * 2.236936) >= 1 and GetPedInVehicleSeat(Vehicle,-1) == Ped then
+						if not Entity(Vehicle)["state"]["Fuel"] then
+							Entity(Vehicle)["state"]:set("Fuel",100,true)
+						end
 
-					if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-						Entity(Vehicle)["state"]:set("Fuel",ActiveFuel,true)
+						local Calculate = (Entity(Vehicle)["state"]["Fuel"] - (Consume[floor(GetVehicleCurrentRpm(Vehicle))] or 1.0) * (Class[ClassVehicle] or 1.0) / 10)
+
+						Entity(Vehicle)["state"]:set("Fuel",Calculate + 0.0,true)
+						SetVehicleFuelLevel(Vehicle,Calculate + 0.0)
 					end
+				else
+					SetVehicleEngineOn(Vehicle,false,true,true)
+					TimeDistance = 1
 				end
-			else
-				SetVehicleEngineOn(Vehicle,false,true,true)
-				TimeDistance = 1
 			end
 		end
 
@@ -133,21 +114,24 @@ end)
 RegisterNetEvent("engine:Supply")
 AddEventHandler("engine:Supply",function(Entitys)
 	local Vehicle = Entitys[3]
-	Lasted = GetVehicleFuelLevel(Vehicle)
+	Lasted = Entity(Vehicle)["state"]["Fuel"]
 
-	if Lasted < 99.0 then
-		local Gallon = Entitys[6]
-		if not DisplayNui and not Gallon then
+	if Lasted <= 99.975 then
+		local Ped = PlayerPedId()
+		local Gallons = Entitys[6]
+		local Coords = GetEntityCoords(Vehicle)
+
+		if not Display and not Gallons then
 			SendNUIMessage({ name = "Show", payload = true })
-			DisplayNui = true
+			Display = true
 		end
 
-		FuelRecharger = true
+		if not VehicleFuel then
+			TaskTurnPedToFaceEntity(Ped,Vehicle,5000)
+			VehicleFuel = Entity(Vehicle)["state"]["Fuel"]
+		end
 
-		local Ped = PlayerPedId()
-		TaskTurnPedToFaceEntity(Ped,Vehicle,5000)
-
-		while FuelRecharger do
+		while VehicleFuel do
 			DisableControlAction(0,18,true)
 			DisableControlAction(0,22,true)
 			DisableControlAction(0,23,true)
@@ -156,49 +140,46 @@ AddEventHandler("engine:Supply",function(Entitys)
 			DisableControlAction(0,30,true)
 			DisableControlAction(0,31,true)
 			DisableControlAction(0,140,true)
+			DisableControlAction(0,141,true)
 			DisableControlAction(0,142,true)
 			DisableControlAction(0,143,true)
 			DisableControlAction(0,257,true)
 			DisableControlAction(0,263,true)
 
-			local Coords = GetEntityCoords(Vehicle)
-			local VehicleFuel = GetVehicleFuelLevel(Vehicle)
-
-			if not Gallon then
+			if not Gallons then
 				Price = Price + 0.125
-				SetVehicleFuelLevel(Vehicle,VehicleFuel + 0.025)
+				VehicleFuel = VehicleFuel + 0.025
 				SendNUIMessage({ name = "Tank", payload = { tank = floor(VehicleFuel), price = Price, lts = 0.125 * 4 } })
 			else
-				if GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100 > 1 then
+				if (GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100) > 1 then
 					SetPedAmmo(Ped,883325847,math.floor(GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100))
-					SetVehicleFuelLevel(Vehicle,VehicleFuel + 0.025)
+					VehicleFuel = VehicleFuel + 0.025
 				end
 			end
 
-			DrawText3D(Coords,"~g~E~w~   FINALIZAR")
+			SetDrawOrigin(Coords["x"],Coords["y"],Coords["z"])
+			DrawSprite("Targets","E",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+			ClearDrawOrigin()
 
 			if not IsEntityPlayingAnim(Ped,"timetable@gardener@filling_can","gar_ig_5_filling_can",3) and LoadAnim("timetable@gardener@filling_can") then
 				TaskPlayAnim(Ped,"timetable@gardener@filling_can","gar_ig_5_filling_can",8.0,8.0,-1,50,1,0,0,0)
 			end
 
-			if VehicleFuel >= 100.0 or GetEntityHealth(Ped) <= 100 or (Gallon and GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100 <= 1) or IsControlJustPressed(1,38) then
-				if not Gallon then
-					if vSERVER.RechargeFuel(Price) then
-						Entity(Vehicle)["state"]:set("Fuel",VehicleFuel,true)
-						ActiveFuel = VehicleFuel
-					else
-						Entity(Vehicle)["state"]:set("Fuel",Lasted,true)
-						ActiveFuel = Lasted
-					end
-
-					SendNUIMessage({ name = "Show", payload = false })
+			if VehicleFuel >= 100.0 or GetEntityHealth(Ped) <= 100 or (Gallons and GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100 <= 1) or IsControlJustPressed(1,38) then
+				if not Gallons and not vSERVER.RechargeFuel(Price) then
+					Entity(Vehicle)["state"]:set("Fuel",Lasted + 0.0,true)
 				else
-					Entity(Vehicle)["state"]:set("Fuel",VehicleFuel,true)
+					Entity(Vehicle)["state"]:set("Fuel",VehicleFuel + 0.0,true)
+
+					if Display then
+						SendNUIMessage({ name = "Show", payload = false })
+					end
 				end
 
-				FuelRecharger = false
-				DisplayNui = false
+				VehicleFuel = false
+				Display = false
 				vRP.Destroy()
+				Lasted = 0
 				Price = 0
 			end
 
@@ -207,38 +188,15 @@ AddEventHandler("engine:Supply",function(Entitys)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DRAWTEXT3D
------------------------------------------------------------------------------------------------------------------------------------------
-function DrawText3D(Coords,Text)
-	local onScreen,x,y = World3dToScreen2d(Coords["x"],Coords["y"],Coords["z"] + 1)
-
-	if onScreen then
-		SetTextFont(4)
-		SetTextCentre(true)
-		SetTextProportional(1)
-		SetTextScale(0.35,0.35)
-		SetTextColour(255,255,255,150)
-
-		SetTextEntry("STRING")
-		AddTextComponentString(Text)
-		EndTextCommandDisplayText(x,y)
-
-		local Width = (string.len(Text) + 4) / 170 * 0.45
-		DrawRect(x,y + 0.0125,Width,0.03,15,15,15,175)
-	end
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- ENGINE:VEHRIFY
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("engine:Vehrify")
 AddEventHandler("engine:Vehrify",function(Entitys)
 	local Vehicle = Entitys[3]
-
-	local Engine = GetVehicleMod(Vehicle,11)
 	local Brake = GetVehicleMod(Vehicle,12)
-	local Transmission = GetVehicleMod(Vehicle,13)
-	local Suspension = GetVehicleMod(Vehicle,15)
+	local Engine = GetVehicleMod(Vehicle,11)
 	local Shielding = GetVehicleMod(Vehicle,16)
+	local Suspension = GetVehicleMod(Vehicle,15)
+	local Transmission = GetVehicleMod(Vehicle,13)
 
 	if Engine ~= -1 then
 		exports["dynamic"]:AddButton("Motor","Modificação atual instalada: <yellow>"..(Engine + 1).."</yellow> / "..GetNumVehicleMods(Vehicle,11),"","",false,false)

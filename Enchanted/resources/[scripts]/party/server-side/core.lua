@@ -228,13 +228,27 @@ exports("Room",function(Passport,source,Radius)
 		end
 	end
 
-	return Members
+	return Members,CountTable(Members)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOESEXIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("DoesExist",function(Passport)
-	return Config["Users"][Passport]
+exports("DoesExist",function(Passport,Players)
+	local Return = false
+
+	if Players then
+		if Config["Users"][Passport] then
+			local source = vRP.Source(Passport)
+			local Members = exports["party"]:Room(Passport,source,25)
+			if CountTable(Members) >= Players then
+				Return = Members
+			end
+		end
+	else
+		Return = Config["Users"][Passport]
+	end
+
+	return Return
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

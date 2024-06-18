@@ -106,13 +106,9 @@ local Registers = {
 	["105"] = vec3(239.44,-897.86,29.81)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	for Number,v in pairs(Registers) do
 		exports["target"]:AddCircleZone("Robberys:Registers:"..Number,v,0.25,{
 			name = "Robberys:Registers:"..Number,

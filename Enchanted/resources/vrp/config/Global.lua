@@ -2,12 +2,13 @@
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 DiscordBot = true
-Whitelisted = true
+Whitelisted = false
 BaseMode = "steam"
 SalaryCooldown = 1800
-ServerName = "Creative Network"
+ServerName = "Creative"
+GroupsSetCooldown = 259200
 NameDefault = "Indivíduo Indigente"
-ServerLink = "https://creativenetwork.dev.br/"
+ServerLink = "https://creativenetwork.dev.br"
 SpawnCoords = vec4(895.48,-179.38,73.7,240.95)
 LeavePrisonCoords = vec3(1896.15,2604.44,45.75)
 CreatorCoords = vec4(402.81,-996.55,-100.01,184.26)
@@ -15,25 +16,19 @@ CreatorCoords = vec4(402.81,-996.55,-100.01,184.26)
 -- INDEX
 -----------------------------------------------------------------------------------------------------------------------------------------
 TokenIndex = "DDDDDDD"
-PhoneIndex = "DDD-DDD"
 PlateIndex = "DDLLLDDD"
 HashItemIndex = "DDLLDDLL"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY
 -----------------------------------------------------------------------------------------------------------------------------------------
-ShortcutSlots = 5
 ItemMaxRepairs = 1
 MaxSlotsInventory = 100
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WEIGHT
 -----------------------------------------------------------------------------------------------------------------------------------------
-MinimumWeight = 25
-DefaultWeight = 100
-PremiumWeight = {
-	[1] = 100,
-	[2] = 50,
-	[3] = 25
-}
+MinimumWeight = 15
+DefaultWeight = 25
+PremiumWeight = { 50,25,10 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROLEPASS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -41,23 +36,14 @@ RolepassPoint = 50
 RolepassPointPremium = 100
 RolepassInital = 1712518998
 -----------------------------------------------------------------------------------------------------------------------------------------
--- MODENAME
------------------------------------------------------------------------------------------------------------------------------------------
-ModeName = {
-	["steam"] = "Steam",
-	["license"] = "Rockstar"
-}
------------------------------------------------------------------------------------------------------------------------------------------
 -- GROUPS
 -----------------------------------------------------------------------------------------------------------------------------------------
-GroupsSetCooldown = 864000
 Groups = {
 	["Admin"] = {
 		["Permission"] = {
 			["Admin"] = true
 		},
 		["Hierarchy"] = { "Administrador","Moderador","Suporte" },
-		["Salary"] = { 0,0,0 },
 		["Service"] = {},
 		["Client"] = true
 	},
@@ -66,169 +52,174 @@ Groups = {
 			["Premium"] = true
 		},
 		["Hierarchy"] = { "Ouro","Prata","Bronze" },
-		["Salary"] = { 10000,5000,2500 },
+		["Salary"] = { 7500,5000,2500 },
 		["Service"] = {},
-		["Client"] = true
+		["Client"] = true,
+		["Block"] = true
 	},
-	["Policia"] = {
+	["LSPD"] = {
 		["Permission"] = {
-			["Policia"] = true
+			["LSPD"] = true
 		},
 		["Hierarchy"] = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
-		["Salary"] = { 8250,8000,7750,7500,7250,7000 },
+		["Salary"] = { 7500,7250,7000,6750,6500,6250 },
+		["Discord"] = "1236102727369756774",
 		["Service"] = {},
 		["Type"] = "Work",
-		["Client"] = true
+		["Client"] = true,
+		["Markers"] = true
+	},
+	["BCSO"] = {
+		["Permission"] = {
+			["BCSO"] = true
+		},
+		["Hierarchy"] = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
+		["Salary"] = { 7500,7250,7000,6750,6500,6250 },
+		["Discord"] = "1236102727369756774",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true,
+		["Markers"] = true
+	},
+	["BCPR"] = {
+		["Permission"] = {
+			["BCPR"] = true
+		},
+		["Hierarchy"] = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
+		["Salary"] = { 7500,7250,7000,6750,6500,6250 },
+		["Discord"] = "1236102727369756774",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true,
+		["Markers"] = true
 	},
 	["Paramedico"] = {
 		["Permission"] = {
 			["Paramedico"] = true
 		},
 		["Hierarchy"] = { "Chefe","Médico","Enfermeiro","Residente" },
-		["Salary"] = { 8250,8000,7750,7500 },
+		["Salary"] = { 7500,7250,7000,6750 },
+		["Discord"] = "1236103044811456662",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true
+	},
+	["Ballas"] = {
+		["Permission"] = {
+			["Ballas"] = true
+		},
+		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
+		["Discord"] = "1250080429965316127",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true
+	},
+	["Vagos"] = {
+		["Permission"] = {
+			["Vagos"] = true
+		},
+		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
+		["Discord"] = "1250080465155657860",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true
+	},
+	["Families"] = {
+		["Permission"] = {
+			["Families"] = true
+		},
+		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
+		["Discord"] = "1250080491814523022",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true
+	},
+	["Marabunta"] = {
+		["Permission"] = {
+			["Marabunta"] = true
+		},
+		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
+		["Discord"] = "1250080518507069500",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true
+	},
+	["Bennys"] = {
+		["Permission"] = {
+			["Bennys"] = true
+		},
+		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
+		["Discord"] = "1250080543908036638",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true
+	},
+	["Aztecas"] = {
+		["Permission"] = {
+			["Aztecas"] = true
+		},
+		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
+		["Discord"] = "1250080564049084438",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true
+	},
+	["Bahamas"] = {
+		["Permission"] = {
+			["Bahamas"] = true
+		},
+		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
+		["Discord"] = "1250080611851309107",
+		["Service"] = {},
+		["Type"] = "Work",
+		["Client"] = true
+	},
+	["Restaurante"] = {
+		["Permission"] = {
+			["Restaurante"] = true
+		},
+		["Hierarchy"] = { "Chefe","Supervisor","Funcionário" },
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true,
-		["Max"] = 30
+		["Max"] = 10
 	},
 	["Camera"] = {
 		["Permission"] = {
 			["Camera"] = true
 		},
 		["Hierarchy"] = { "Membro" },
-		["Service"] = {}
+		["Service"] = {},
+		["Block"] = true
+	},
+	["Policia"] = {
+		["Permission"] = {
+			["LSPD"] = true,
+			["BCSO"] = true,
+			["BCPR"] = true
+		},
+		["Hierarchy"] = { "Membro" },
+		["Service"] = {},
+		["Block"] = true
 	},
 	["Emergencia"] = {
 		["Permission"] = {
-			["Policia"] = true,
+			["LSPD"] = true,
+			["BCSO"] = true,
+			["BCPR"] = true,
 			["Paramedico"] = true
 		},
 		["Hierarchy"] = { "Membro" },
-		["Service"] = {}
+		["Service"] = {},
+		["Block"] = true
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHARACTERITENS (Itens recebidos ao criar o personagem)
+-- CHARACTERITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 CharacterItens = {
-	["cellphone"] = 1
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- GROUPBLIPS
------------------------------------------------------------------------------------------------------------------------------------------
-GroupBlips = {
-	["Policia"] = true,
-	["Paramedico"] = true
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- ARRESTITENS
------------------------------------------------------------------------------------------------------------------------------------------
-ArrestItens = {
-	["ATTACH_FLASHLIGHT"] = true,
-	["ATTACH_CROSSHAIR"] = true,
-	["ATTACH_SILENCER"] = true,
-	["ATTACH_MAGAZINE"] = true,
-	["ATTACH_GRIP"] = true,
-	["blocksignal"] = true,
-	["vest"] = true,
-	["joint"] = true,
-	["weedsack"] = true,
-	["cocaine"] = true,
-	["cokesack"] = true,
-	["meth"] = true,
-	["methsack"] = true,
-	["lockpick"] = true,
-	["handcuff"] = true,
-	["rope"] = true,
-	["hood"] = true,
-	["dirtydollar"] = true,
-	["WEAPON_HATCHET"] = true,
-	["WEAPON_BAT"] = true,
-	["WEAPON_FROST"] = true,
-	["WEAPON_KATANA"] = true,
-	["WEAPON_THERMAL"] = true,
-	["WEAPON_KARAMBIT"] = true,
-	["WEAPON_BATTLEAXE"] = true,
-	["WEAPON_CROWBAR"] = true,
-	["WEAPON_SWITCHBLADE"] = true,
-	["WEAPON_GOLFCLUB"] = true,
-	["WEAPON_HAMMER"] = true,
-	["WEAPON_MACHETE"] = true,
-	["WEAPON_POOLCUE"] = true,
-	["WEAPON_STONE_HATCHET"] = true,
-	["WEAPON_WRENCH"] = true,
-	["WEAPON_KNUCKLE"] = true,
-	["WEAPON_FLASHLIGHT"] = true,
-	["WEAPON_NIGHTSTICK"] = true,
-	["WEAPON_PISTOL"] = true,
-	["WEAPON_PISTOL_MK2"] = true,
-	["WEAPON_COMPACTRIFLE"] = true,
-	["WEAPON_APPISTOL"] = true,
-	["WEAPON_HEAVYPISTOL"] = true,
-	["WEAPON_MACHINEPISTOL"] = true,
-	["WEAPON_MICROSMG"] = true,
-	["WEAPON_NAILGUN"] = true,
-	["WEAPON_RPG"] = true,
-	["WEAPON_MINISMG"] = true,
-	["WEAPON_SNSPISTOL"] = true,
-	["WEAPON_SNSPISTOL_MK2"] = true,
-	["WEAPON_VINTAGEPISTOL"] = true,
-	["WEAPON_PISTOL50"] = true,
-	["WEAPON_COMBATPISTOL"] = true,
-	["WEAPON_PARAFAL"] = true,
-	["WEAPON_FNFAL"] = true,
-	["WEAPON_FNSCAR"] = true,
-	["WEAPON_QBZ83"] = true,
-	["WEAPON_COLTXM177"] = true,
-	["WEAPON_CARBINERIFLE"] = true,
-	["WEAPON_CARBINERIFLE_MK2"] = true,
-	["WEAPON_ADVANCEDRIFLE"] = true,
-	["WEAPON_BULLPUPRIFLE"] = true,
-	["WEAPON_BULLPUPRIFLE_MK2"] = true,
-	["WEAPON_SPECIALCARBINE"] = true,
-	["WEAPON_SPECIALCARBINE_MK2"] = true,
-	["WEAPON_PUMPSHOTGUN"] = true,
-	["WEAPON_PUMPSHOTGUN_MK2"] = true,
-	["WEAPON_MUSKET"] = true,
-	["WEAPON_SAUER"] = true,
-	["WEAPON_SAWNOFFSHOTGUN"] = true,
-	["WEAPON_SMG"] = true,
-	["WEAPON_SMG_MK2"] = true,
-	["WEAPON_TACTICALRIFLE"] = true,
-	["WEAPON_HEAVYRIFLE"] = true,
-	["WEAPON_ASSAULTRIFLE"] = true,
-	["WEAPON_ASSAULTRIFLE_MK2"] = true,
-	["WEAPON_ASSAULTSMG"] = true,
-	["WEAPON_GUSENBERG"] = true,
-	["WEAPON_STUNGUN"] = true,
-	["WEAPON_RPG_AMMO"] = true,
-	["WEAPON_NAIL_AMMO"] = true,
-	["WEAPON_PISTOL_AMMO"] = true,
-	["WEAPON_SMG_AMMO"] = true,
-	["WEAPON_RIFLE_AMMO"] = true,
-	["WEAPON_SHOTGUN_AMMO"] = true,
-	["WEAPON_MUSKET_AMMO"] = true,
-	["WEAPON_BRICK"] = true,
-	["WEAPON_SNOWBALL"] = true,
-	["WEAPON_SHOES"] = true,
-	["WEAPON_MOLOTOV"] = true,
-	["WEAPON_SMOKEGRENADE"] = true,
-	["pager"] = true,
-	["crack"] = true,
-	["heroin"] = true,
-	["metadone"] = true,
-	["soap"] = true,
-	["races"] = true
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- REPAIRITENS
------------------------------------------------------------------------------------------------------------------------------------------
-RepairItens = {
-	["repairkit01"] = true,
-	["repairkit02"] = true,
-	["repairkit03"] = true,
-	["repairkit04"] = true,
-	["sewingkit"] = true
+	["soda"] = 2,
+	["sandwich"] = 2
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOXES
@@ -237,28 +228,9 @@ Boxes = {
 	["treasurebox"] = {
 		["Multiplier"] = 1,
 		["List"] = {
-			{ ["Item"] = "dollar", ["Min"] = 4250, ["Max"] = 6250 }
+			{ ["Item"] = "dollar", ["Chance"] = 100, ["Min"] = 4250, ["Max"] = 6250 }
 		}
 	}
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- GSRWEAPONS
------------------------------------------------------------------------------------------------------------------------------------------
-GsrWeapons = {
-	["WEAPON_SMG"] = true,
-	["WEAPON_STUNGUN"] = true,
-	["WEAPON_PUMPSHOTGUN"] = true,
-	["WEAPON_CARBINERIFLE"] = true,
-	["WEAPON_TACTICALRIFLE"] = true,
-	["WEAPON_CARBINERIFLE_MK2"] = true,
-	["WEAPON_FNSCAR"] = true,
-	["WEAPON_PUMPSHOTGUN_MK2"] = true,
-	["WEAPON_SPECIALCARBINE_MK2"] = true,
-	["WEAPON_COMBATPISTOL"] = true,
-	["WEAPON_HEAVYPISTOL"] = true,
-	["WEAPON_NIGHTSTICK"] = true,
-	["WEAPON_MUSKET"] = true,
-	["WEAPON_SAUER"] = true
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOTHESSTART

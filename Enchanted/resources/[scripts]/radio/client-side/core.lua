@@ -46,7 +46,7 @@ RegisterNUICallback("RadioActive",function(Data,Callback)
 			exports["pma-voice"]:removePlayerFromRadio()
 		end
 
-		TriggerEvent("Notify","Frequência","Entrou na frequência <b>"..Data["Frequency"].."</b>.","verde",5000)
+		TriggerEvent("Notify","Radiofrequência","Entrou na frequência <b>"..Data["Frequency"].."</b>.","verde",5000)
 		exports["pma-voice"]:setRadioChannel(Data["Frequency"])
 		TriggerEvent("sounds:Private","radioon",0.5)
 		TriggerEvent("hud:Radio",Data["Frequency"])
@@ -71,7 +71,7 @@ AddEventHandler("radio:RadioClean",function()
 	if Frequency ~= 0 then
 		TriggerEvent("sounds:Private","radiooff",1.0)
 		exports["pma-voice"]:removePlayerFromRadio()
-		TriggerEvent("hud:Radio","Offline")
+		TriggerEvent("hud:Radio","OFFLINE")
 		Frequency = 0
 	end
 end)
@@ -80,8 +80,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("UpFrequency",function()
 	local LastFrequency = Frequency + 1
-	if MumbleIsConnected() and LocalPlayer["state"]["Policia"] and LastFrequency >= 911 and LastFrequency <= 920 and vSERVER.Frequency(LastFrequency) then
-		TriggerEvent("Notify","Frequência","Entrou na frequência <b>"..LastFrequency.."</b>.","verde",5000)
+	if MumbleIsConnected() and LastFrequency >= 911 and LastFrequency <= 920 and CheckPolice() and vSERVER.Frequency(LastFrequency) then
+		TriggerEvent("Notify","Radiofrequência","Entrou na frequência <b>"..LastFrequency.."</b>.","roxo",5000)
 		exports["pma-voice"]:setRadioChannel(LastFrequency)
 		TriggerEvent("hud:Radio",LastFrequency)
 		Frequency = LastFrequency
@@ -92,8 +92,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("DownFrequency",function()
 	local LastFrequency = Frequency - 1
-	if MumbleIsConnected() and LocalPlayer["state"]["Policia"] and LastFrequency >= 911 and LastFrequency <= 920 and vSERVER.Frequency(LastFrequency) then
-		TriggerEvent("Notify","Frequência","Entrou na frequência <b>"..LastFrequency.."</b>.","verde",5000)
+	if MumbleIsConnected() and LastFrequency >= 911 and LastFrequency <= 920 and CheckPolice() and vSERVER.Frequency(LastFrequency) then
+		TriggerEvent("Notify","Radiofrequência","Entrou na frequência <b>"..LastFrequency.."</b>.","roxo",5000)
 		exports["pma-voice"]:setRadioChannel(LastFrequency)
 		TriggerEvent("hud:Radio",LastFrequency)
 		Frequency = LastFrequency

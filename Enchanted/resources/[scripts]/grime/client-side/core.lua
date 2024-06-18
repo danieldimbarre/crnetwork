@@ -14,13 +14,9 @@ local Lasted = 1
 local Selected = 1
 local Active = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ONCLIENTRESOURCESTART
+-- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onClientResourceStart",function(Resource)
-	if (GetCurrentResourceName() ~= Resource) then
-		return
-	end
-
+CreateThread(function()
 	exports["target"]:AddBoxZone("WorkGrime",Init["xyz"],0.75,0.75,{
 		name = "WorkGrime",
 		heading = Init["w"],
@@ -51,11 +47,11 @@ AddEventHandler("grime:Init",function()
 			Blip = nil
 		end
 
-		TriggerEvent("Notify","Sucesso","Trabalho finalizado.","verde",5000)
+		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
 		exports["target"]:LabelText("WorkGrime","Iniciar Entregas")
 		Active = false
 	else
-		TriggerEvent("Notify","Sucesso","Trabalho iniciado.","verde",5000)
+		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
 		exports["target"]:LabelText("WorkGrime","Finalizar Entregas")
 		Active = true
 
@@ -85,7 +81,9 @@ CreateThread(function()
 
 				if Distance <= 10.0 then
 					TimeDistance = 1
-					DrawText3D(Locations[Selected],"~g~H~w~   ENTREGAR")
+					SetDrawOrigin(Locations[Selected]["x"],Locations[Selected]["y"],Locations[Selected]["z"])
+					DrawSprite("Targets","H",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+					ClearDrawOrigin()
 
 					if Distance <= 1.0 and IsControlJustPressed(1,74) and vSERVER.Payment(Selected) then
 						Lasted = Selected
@@ -107,27 +105,6 @@ CreateThread(function()
 		Wait(TimeDistance)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DRAWTEXT3D
------------------------------------------------------------------------------------------------------------------------------------------
-function DrawText3D(Coords,Text)
-	local Screen,x,y = World3dToScreen2d(Coords["x"],Coords["y"],Coords["z"])
-
-	if Screen then
-		SetTextFont(4)
-		SetTextCentre(true)
-		SetTextProportional(1)
-		SetTextScale(0.35,0.35)
-		SetTextColour(200,200,200,200)
-
-		SetTextEntry("STRING")
-		AddTextComponentString(Text)
-		EndTextCommandDisplayText(x,y)
-
-		local Width = string.len(Text) / 350
-		DrawRect(x,y + 0.0125,Width,0.03,15,15,15,200)
-	end
-end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MAKEBLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------

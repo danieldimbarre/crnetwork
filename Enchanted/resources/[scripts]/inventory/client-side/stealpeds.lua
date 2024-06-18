@@ -14,12 +14,17 @@ CreateThread(function()
 			local Progress = 1000
 			local Pid = PlayerId()
 			local Entitys = ClosestPed(2)
-			if Entitys and GetGameTimer() >= Timer and GetVehiclePedIsIn(Entitys,true) == 0 and not Entity(Entitys)["state"]["Steal"] and IsPlayerFreeAiming(Pid) then
+			if Entitys and GetGameTimer() >= Timer and GetVehiclePedIsIn(Entitys,true) == 0 and not Entity(Entitys)["state"]["Steal"] and IsPedArmed(Ped,6) and IsPlayerFreeAiming(Pid) then
 				Timer = GetGameTimer() + 5000
 
 				ClearPedTasks(Entitys)
 				ClearPedSecondaryTask(Entitys)
 				ClearPedTasksImmediately(Entitys)
+
+				while not NetworkHasControlOfEntity(Entitys) do
+					NetworkRequestControlOfEntity(Entitys)
+					Wait(1)
+				end
 
 				TaskSetBlockingOfNonTemporaryEvents(Entitys,true)
 				SetBlockingOfNonTemporaryEvents(Entitys,true)
@@ -52,7 +57,7 @@ CreateThread(function()
 						end
 
 						if Progress <= 0 and LoadModel("prop_paper_bag_small") then
-							local Object = CreateObject("prop_paper_bag_small",Coords["x"],Coords["y"],Coords["z"],false,false,false)
+							local Object = CreateObjectNoOffset("prop_paper_bag_small",Coords["x"],Coords["y"],Coords["z"],false,false,false)
 							AttachEntityToEntity(Object,Entitys,GetPedBoneIndex(Entitys,28422),0.0,-0.05,0.05,180.0,0.0,0.0,true,true,false,true,2,true)
 
 							if LoadAnim("mp_safehouselost@") then
@@ -68,7 +73,7 @@ CreateThread(function()
 							LocalPlayer["state"]:set("Buttons",false,true)
 							LocalPlayer["state"]:set("Commands",false,true)
 							TaskWanderStandard(Entitys,10.0,10)
-							SetEntityAsNoLongerNeeded(Entitys)
+							SetPedAsNoLongerNeeded(Entitys)
 							vSERVER.StealPeds()
 							vRP.Destroy()
 
@@ -78,7 +83,7 @@ CreateThread(function()
 						LocalPlayer["state"]:set("Buttons",false,true)
 						LocalPlayer["state"]:set("Commands",false,true)
 						TaskWanderStandard(Entitys,10.0,10)
-						SetEntityAsNoLongerNeeded(Entitys)
+						SetPedAsNoLongerNeeded(Entitys)
 
 						break
 					end

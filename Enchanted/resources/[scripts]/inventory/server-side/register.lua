@@ -6,9 +6,7 @@ local Cooldown = {}
 -- ITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Itens = {
-	{
-		{ ["Item"] = "dirtydollar", ["Min"] = 325, ["Max"] = 375 }
-	}
+	{ ["Item"] = "dirtydollar", ["Chance"] = 100, ["Min"] = 325, ["Max"] = 375 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:REGISTER
@@ -28,10 +26,19 @@ AddEventHandler("inventory:Register",function(Number)
 			if vRP.Task(source,3,7500) then
 				Active[Passport] = os.time() + 15
 				Player(source)["state"]["Buttons"] = true
-				TriggerClientEvent("inventory:Close",source)
 				TriggerClientEvent("Progress",source,"Roubando",15000)
 				vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
-				vRP.CallPolice(source,Passport,false,"Policia","Roubo a Caixa Registradora",750,60,31,22)
+
+				exports["vrp"]:CallPolice({
+					["Source"] = source,
+					["Passport"] = Passport,
+					["Permission"] = "Policia",
+					["Name"] = "Roubo a Caixa Registradora",
+					["Percentage"] = 750,
+					["Wanted"] = 60,
+					["Code"] = 31,
+					["Color"] = 22
+				})
 
 				repeat
 					if Active[Passport] and os.time() >= parseInt(Active[Passport]) and Number and (not Cooldown[Number] or os.time() > Cooldown[Number]) then
@@ -40,9 +47,9 @@ AddEventHandler("inventory:Register",function(Number)
 						Cooldown[Number] = os.time() + 3600
 						Player(source)["state"]["Buttons"] = false
 
-						vRP.MountContainer("Registers:"..Number,Itens,false)
-						TriggerClientEvent("player:Residuals",source,"Resquício de Línter.")
-						TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true)
+						vRP.MountContainer(Passport,"Registers:"..Number,Itens,1,false)
+						TriggerClientEvent("player:Residuals",source,"Resquício de Línter")
+						TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true,true)
 					end
 
 					Wait(100)
@@ -51,9 +58,9 @@ AddEventHandler("inventory:Register",function(Number)
 		else
 			local Consult = vRP.GetSrvData("Registers:"..Number,false)
 			if json.encode(Consult) ~= "[]" and (Cooldown[Number] - 3300) >= os.time() then
-				TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true)
+				TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true,true)
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Aguarde <b>"..Cooldown[Number] - os.time().."</b> segundos.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Cooldown[Number] - os.time())..".","amarelo",5000)
 			end
 		end
 	end

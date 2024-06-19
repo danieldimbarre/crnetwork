@@ -29,21 +29,52 @@ CreateThread(function()
 	SetRoutingBucketEntityLockdownMode(0,"relaxed")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- USERPHONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function vRP.UserPhone(Phone)
+	local Consult = vRP.Query("characters/Phone",{ Phone = Phone })
+	return Consult[1] or false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GENERATEPHONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function vRP.GeneratePhone()
+	local Phone = ""
+	local Passport = false
+
+	repeat
+		Phone = GenerateString("DDD-DDD")
+		Passport = vRP.UserPhone(Phone)
+	until not Passport
+
+	return Phone
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.Phone(Passport)
-	local PhoneNumber = "Inativo"
-	local source = vRP.Source(Passport)
+	local PhoneNumber = false
 
-	if Characters[source] and Characters[source]["Phone"] then
-		PhoneNumber = exports["lb-phone"]:FormatNumber(Characters[source]["Phone"])
-	else
-		local Consult = vRP.Query("smartphone/Phone",{ Passport = Passport })
-		if Consult[1] and Consult[1]["phone_number"] then
-			PhoneNumber = exports["lb-phone"]:FormatNumber(Consult[1]["phone_number"])
+	if GetResourceState("smartphone") == "started" then
+		local Consult = vRP.Query("characters/Person",{ id = Passport })
+		if Consult[1] and Consult[1]["Phone"] then
+			PhoneNumber = Consult[1]["Phone"]
+		else
+			PhoneNumber = vRP.GeneratePhone()
+			vRP.Query("characters/NewPhone",{ Passport = Passport, Phone = PhoneNumber })
+		end
+	elseif GetResourceState("lb-phone") == "started" then
+		local source = vRP.Source(Passport)
+		if Characters[source] and Characters[source]["Phone"] then
+			PhoneNumber = exports["lb-phone"]:FormatNumber(Characters[source]["Phone"])
+		else
+			local Consult = vRP.Query("smartphone/Phone",{ Passport = Passport })
+			if Consult[1] and Consult[1]["phone_number"] then
+				PhoneNumber = exports["lb-phone"]:FormatNumber(Consult[1]["phone_number"])
 
-			if Characters[source] then
-				Characters[source]["Phone"] = PhoneNumber
+				if Characters[source] then
+					Characters[source]["Phone"] = PhoneNumber
+				end
 			end
 		end
 	end

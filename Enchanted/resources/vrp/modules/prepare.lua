@@ -22,7 +22,9 @@ vRP.Prepare("characters/NewCharacter","INSERT INTO characters(License,Name,Lastn
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("characters/Phone","SELECT id FROM characters WHERE Phone = @Phone")
 vRP.Prepare("smartphone/Phone","SELECT * FROM phone_phones WHERE owner_id = @Passport")
+vRP.Prepare("characters/NewPhone","UPDATE characters SET Phone = @Phone WHERE id = @Passport")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------

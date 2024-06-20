@@ -18,7 +18,7 @@ local Lock = {}
 local Inside = {}
 local Active = {}
 local Robbers = {}
-local Interior = {}
+local SaveInterior = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -39,11 +39,11 @@ AddEventHandler("propertys:Robbery",function(Name)
 		local Consult = vRP.Query("propertys/Exist",{ Name = Name })
 		local LockpickPlus = vRP.ConsultItem(Passport,"lockpickplus")
 		if (not Consult[1] or (Consult[1] and Consult[1]["Interior"] ~= "Galpão")) and (Service or ((Lockpick or LockpickPlus) and vRP.Task(source,10,10000))) then
-			if not Interior[Name] then
+			if not SaveInterior[Name] then
 				if Consult[1] then
-					Interior[Name] = Consult[1]["Interior"]
+					SaveInterior[Name] = Consult[1]["Interior"]
 				else
-					Interior[Name] = exports["propertys"]:Informations()
+					SaveInterior[Name] = exports["propertys"]:Informations()
 				end
 			end
 
@@ -60,7 +60,7 @@ AddEventHandler("propertys:Robbery",function(Name)
 				end
 			end
 
-			TriggerClientEvent("propertys:Enter",source,Name,Interior[Name])
+			TriggerClientEvent("propertys:Enter",source,Name,SaveInterior[Name])
 		end
 
 		Active[Passport] = nil
@@ -144,12 +144,11 @@ function Creative.Propertys(Name)
 			local Consult = vRP.Query("propertys/Exist",{ Name = Name })
 			if Consult[1] then
 				if Consult[1]["Passport"] == Passport or vRP.InventoryFull(Passport,"propertys-"..Consult[1]["Serial"]) or Lock[Name] then
-					if not Interior[Name] then
-						Interior[Name] = Consult[1]["Interior"]
+					if not SaveInterior[Name] then
+						SaveInterior[Name] = Consult[1]["Interior"]
 					end
 
-					local Interior = Interior[Name]
-					local Price = Informations[Interior]["Price"] * 0.15
+					local Price = Informations[SaveInterior[Name]]["Price"] * 0.15
 					local Tax = CompleteTimers(Consult[1]["Tax"] - os.time())
 
 					if os.time() > Consult[1]["Tax"] then
@@ -165,7 +164,7 @@ function Creative.Propertys(Name)
 					end
 
 					return {
-						["Interior"] = Interior,
+						["Interior"] = SaveInterior[Name],
 						["Tax"] = Tax
 					}
 				end
@@ -207,7 +206,7 @@ AddEventHandler("propertys:Buy",function(Name)
 	local Split = splitString(Name)
 	local Passport = vRP.Passport(source)
 	if Passport and not exports["bank"]:CheckFines(Passport) then
-		local Name,Interior,Mode = Split[1],Split[2],Split[3]
+		local Name,Interiores,Mode = Split[1],Split[2],Split[3]
 
 		local Consult = vRP.Query("propertys/Exist",{ Name = Name })
 		if not Consult[1] then
@@ -217,29 +216,29 @@ AddEventHandler("propertys:Buy",function(Name)
 				local Serial = PropertysSerials()
 
 				if Mode == "Dollar" then
-					if vRP.PaymentFull(Passport,Informations[Interior]["Price"]) then
+					if vRP.PaymentFull(Passport,Informations[Interiores]["Price"]) then
 						local Markers = GlobalState["Markers"]
 						Markers[Name] = true
 						GlobalState:set("Markers",Markers,true)
 
 						vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
 						TriggerClientEvent("Notify",source,"Propriedades","Compra concluída.","verde",5000)
-						exports["bank"]:AddTaxs(Passport,source,"Propriedades",Informations[Interior]["Price"],"Compra de propriedade.")
-						vRP.Query("propertys/Buy",{ Name = Name, Interior = Interior, Passport = Passport, Serial = Serial, Vault = Informations[Interior]["Vault"] or 0, Fridge = Informations[Interior]["Fridge"] or 0, Tax = os.time() + 2592000 })
+						exports["bank"]:AddTaxs(Passport,source,"Propriedades",Informations[Interiores]["Price"],"Compra de propriedade.")
+						vRP.Query("propertys/Buy",{ Name = Name, Interior = Interiores, Passport = Passport, Serial = Serial, Vault = Informations[Interiores]["Vault"] or 0, Fridge = Informations[Interiores]["Fridge"] or 0, Tax = os.time() + 2592000 })
 					else
-						TriggerClientEvent("Notify",source,"Propriedades","<b>Dólares</b> insuficientes.","amarelo",5000)
+						TriggerClientEvent("Notify",source,"Propriedades","Dinheiro insuficiente.","amarelo",5000)
 					end
 				elseif Mode == "Gemstone" then
-					if vRP.PaymentGems(Passport,Informations[Interior]["Gemstone"]) then
+					if vRP.PaymentGems(Passport,Informations[Interiores]["Gemstone"]) then
 						local Markers = GlobalState["Markers"]
 						Markers[Name] = true
 						GlobalState:set("Markers",Markers,true)
 
 						vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
 						TriggerClientEvent("Notify",source,"Propriedades","Compra concluída.","verde",5000)
-						vRP.Query("propertys/Buy",{ Name = Name, Interior = Interior, Passport = Passport, Serial = Serial, Vault = Informations[Interior]["Vault"] or 0, Fridge = Informations[Interior]["Fridge"] or 0, Tax = os.time() + 31104000 })
+						vRP.Query("propertys/Buy",{ Name = Name, Interior = Interiores, Passport = Passport, Serial = Serial, Vault = Informations[Interiores]["Vault"] or 0, Fridge = Informations[Interiores]["Fridge"] or 0, Tax = os.time() + 31104000 })
 					else
-						TriggerClientEvent("Notify",source,"Propriedades","<b>Diamantes</b> insuficientes.","amarelo",5000)
+						TriggerClientEvent("Notify",source,"Propriedades","Diamante insuficiente.","amarelo",5000)
 					end
 				end
 			end
@@ -278,8 +277,8 @@ AddEventHandler("propertys:Sell",function(Name)
 		if Consult[1] and Consult[1]["Passport"] == Passport then
 			TriggerClientEvent("dynamic:Close",source)
 
-			local Interior = Consult[1]["Interior"]
-			local Price = Informations[Interior]["Price"] * 0.25
+			local Interiores = Consult[1]["Interior"]
+			local Price = Informations[Interiores]["Price"] * 0.25
 			if vRP.Request(source,"Propriedades","Vender por <b>$"..Dotted(Price).."</b>?") then
 				if GlobalState["Markers"][Name] then
 					local Markers = GlobalState["Markers"]
@@ -352,12 +351,12 @@ AddEventHandler("propertys:Item",function(Name)
 	if Passport and Consult[1] and Consult[1]["Passport"] == Passport and Consult[1]["Item"] < 5 then
 		TriggerClientEvent("dynamic:Close",source)
 
-		if vRP.Request(source,"Propriedades","Comprar uma chave adicional por <b>$150.000</b> dólares?") then
+		if vRP.Request(source,"Propriedades","Comprar uma chave adicional por <b>"..Currency.."150.000</b>?") then
 			if vRP.PaymentFull(Passport,150000) then
 				vRP.Query("propertys/Item",{ Name = Name })
 				vRP.GiveItem(Passport,"propertys-"..Consult[1]["Serial"],1,true)
 			else
-				TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",5000)
 			end
 		end
 	end

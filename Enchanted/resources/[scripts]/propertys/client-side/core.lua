@@ -51,8 +51,8 @@ CreateThread(function()
 											end
 
 											exports["dynamic"]:AddButton("Credenciais","Máximo <yellow>1</yellow> proprietário e <yellow>3</yellow> adicionais.","","",Line,false)
-											exports["dynamic"]:AddButton("Comprar com Dólares","Custo de <yellow>$"..Dotted(v["Price"]).."</yellow> dólares.","propertys:Buy",Name.."-"..Line.."-Dollar",Line,true)
-											exports["dynamic"]:AddButton("Comprar com Diamantes","Custo de <yellow>"..Dotted(v["Gemstone"]).."</yellow> diamantes.","propertys:Buy",Name.."-"..Line.."-Gemstone",Line,true)
+											exports["dynamic"]:AddButton("Comprar com Dinheiro","Custo de <yellow>"..Currency..Dotted(v["Price"]).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Dollar",Line,true)
+											exports["dynamic"]:AddButton("Comprar com Diamantes","Custo de <yellow>"..Dotted(v["Gemstone"]).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Gemstone",Line,true)
 											exports["dynamic"]:SubMenu(Line,"Informações sobre o interior.",Line)
 										end
 									end
@@ -93,7 +93,7 @@ CreateThread(function()
 					SetEntityCoords(Ped,Interiors[Interior]["Exit"],false,false,false,false)
 				end
 
-				if Robbery[Interior]["Furniture"] and Theft and Theft < GetGameTimer() and GetEntitySpeed(Ped) > 2 then
+				if Robbery[Interior] and Robbery[Interior]["Furniture"] and Theft and Theft < GetGameTimer() and GetEntitySpeed(Ped) > 2 then
 					vSERVER.Police(Propertys[Init]["Coords"])
 					Theft = GetGameTimer() + 60000
 				end

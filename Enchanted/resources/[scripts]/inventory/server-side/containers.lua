@@ -37,7 +37,7 @@ AddEventHandler("inventory:Container",function(Number)
 
 						TriggerClientEvent("player:Residuals",source,"Resquício de Poeira")
 						vRP.MountContainer(Passport,"Containers:"..Number,IlegalItens,math.random(3))
-						TriggerClientEvent("chest:Open",source,"Containers:"..Number,"Custom",false,true,true)
+						TriggerClientEvent("chest:Open",source,"Containers:"..Number,"Custom",false,true)
 					end
 
 					Wait(100)
@@ -46,7 +46,7 @@ AddEventHandler("inventory:Container",function(Number)
 		else
 			local Consult = vRP.GetSrvData("Containers:"..Number,false)
 			if json.encode(Consult) ~= "[]" and (Cooldown[Number] - 3300) >= os.time() then
-				TriggerClientEvent("chest:Open",source,"Containers:"..Number,"Custom",false,true,true)
+				TriggerClientEvent("chest:Open",source,"Containers:"..Number,"Custom",false,true)
 			else
 				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Cooldown[Number] - os.time())..".","amarelo",5000)
 			end

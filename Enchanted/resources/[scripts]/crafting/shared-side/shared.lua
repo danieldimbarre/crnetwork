@@ -497,115 +497,115 @@ List = {
 			["scotchtape"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 70
+					["dollar"] = 90
 				}
 			},
 			["insulatingtape"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 85
+					["dollar"] = 110
 				}
 			},
 			["rammemory"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 565
+					["dollar"] = 750
 				}
 			},
 			["powersupply"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 715
+					["dollar"] = 950
 				}
 			},
 			["processorfan"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 485
+					["dollar"] = 650
 				}
 			},
 			["processor"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 1075
+					["dollar"] = 1450
 				}
 			},
 			["screws"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 70
+					["dollar"] = 90
 				}
 			},
 			["screwnuts"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 70
+					["dollar"] = 90
 				}
 			},
 			["videocard"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 6325
+					["dollar"] = 8450
 				}
 			},
 			["ssddrive"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 265
+					["dollar"] = 1050
 				}
 			},
 			["safependrive"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 4975
+					["dollar"] = 6650
 				}
 			},
 			["powercable"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 335
+					["dollar"] = 450
 				}
 			},
 			["electroniccomponents"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 575
+					["dollar"] = 750
 				}
 			},
 			["batteryaa"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 335
+					["dollar"] = 450
 				}
 			},
 			["batteryaaplus"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 415
+					["dollar"] = 550
 				}
 			},
 			["goldnecklace"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 925
+					["dollar"] = 1250
 				}
 			},
 			["silverchain"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 625
+					["dollar"] = 850
 				}
 			},
 			["horsefigurine"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 3625
+					["dollar"] = 4850
 				}
 			},
 			["toothpaste"] = {
 				["Amount"] = 1,
 				["Required"] = {
-					["dollar"] = 265
+					["dollar"] = 350
 				}
 			}
 		}

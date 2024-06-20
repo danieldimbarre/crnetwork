@@ -17,19 +17,8 @@ vSERVER = Tunnel.getInterface("inventory")
 -----------------------------------------------------------------------------------------------------------------------------------------
 Types = ""
 Actived = false
+local Swimming = false
 local ShotDelay = GetGameTimer()
------------------------------------------------------------------------------------------------------------------------------------------
--- THEME
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Theme",function(Data,Callback)
-	Callback({
-		["main"] = "#1372bf",
-		["common"] = "#8eab38",
-		["rare"] = "#4f75c2",
-		["epic"] = "#b53784",
-		["legendary"] = "#c58e24"
-	})
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADBLOCKBUTTONS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -506,6 +495,15 @@ CreateThread(function()
 				if not Restaurante:isPointInside(Coords) then
 					TriggerServerEvent("dynamic:ExitService","Restaurante")
 				end
+			end
+
+			if IsPedSwimming(Ped) then
+				if not Swimming and not ScubaTank and not ScubaMask then
+					Swimming = true
+					vSERVER.Swimming()
+				end
+			elseif Swimming then
+				Swimming = false
 			end
 		end
 

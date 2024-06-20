@@ -16,7 +16,7 @@ window.addEventListener("message",function(event){
 		$(".memory-wrapper").fadeOut(250,() => {
 			$(".help-text").fadeIn(250);
 			setTimeout(() => {
-				$.post("http://memory/Close")
+				$.post("http://memory/failure")
 				$(".memory-container").fadeOut(500);
 			},2000);
 		});
@@ -118,7 +118,7 @@ function ClickSquare(e){
 			$(".memory-wrapper").fadeOut(250,() => {
 				$(".help-text").fadeIn(250);
 				setTimeout(() => {
-					$.post("http://memory/Success")
+					$.post("http://memory/success")
 					$(".memory-container").fadeOut(500);
 				},2000);
 			});
@@ -132,7 +132,7 @@ function ClickSquare(e){
 		$(".memory-wrapper").fadeOut(250,() => {
 			$(".help-text").fadeIn(250);
 			setTimeout(() => {
-				$.post("http://memory/Close")
+				$.post("http://memory/failure")
 				$(".memory-container").fadeOut(500);
 			},2000);
 		});

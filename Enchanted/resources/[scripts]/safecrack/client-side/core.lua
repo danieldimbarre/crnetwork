@@ -54,11 +54,16 @@ function Creative.Safecrack(Number)
 	openString = "lock_open"
 	closedString = "lock_closed"
 
+	TriggerEvent("inventory:Buttons",{
+		{ "←","Girar para Esquerda" },
+		{ "→","Girar para Direita" },
+		{ "↑","Destrancar" }
+	})
+
 	crackingAnim(1)
 
 	while cracking do
 		Wait(1)
-		dwText("~g~F~w~  GIRA PARA ESQUERDA     |     ~g~H~w~  GIRA PARA DIREITA     |     ~y~G~w~  TENTATIVA",4,0.5,0.93,0.38,255,255,255,255)
 
 		DisableControlAction(0,257,true)
 		DisableControlAction(0,140,true)
@@ -66,7 +71,7 @@ function Creative.Safecrack(Number)
 		DisableControlAction(0,38,true)
 		DisablePlayerFiring(Ped,true)
 
-		if IsControlPressed(0,49) then
+		if IsControlPressed(0,175) then
 			if dicks > 1 then
 				i = i + 1.8
 				PlaySoundFrontend(0,"TUMBLER_TURN","SAFE_CRACK_SOUNDSET",true)
@@ -76,7 +81,7 @@ function Creative.Safecrack(Number)
 			end
 		end
 
-		if IsControlPressed(0,304) then
+		if IsControlPressed(0,174) then
 			if dicks > 1 then
 				i = i - 1.8
 				PlaySoundFrontend(0,"TUMBLER_TURN","SAFE_CRACK_SOUNDSET",true)
@@ -108,7 +113,7 @@ function Creative.Safecrack(Number)
 				pinfall = true
 			end
 
-			if IsControlJustPressed(0,47) then
+			if IsControlJustPressed(0,172) then
 				pinfall = false
 				PlaySoundFrontend(0,"TUMBLER_RESET","SAFE_CRACK_SOUNDSET",true)
 				factor = factor / 2
@@ -126,7 +131,7 @@ function Creative.Safecrack(Number)
 		else
 			pinfall = false
 
-			if IsControlJustPressed(0,47) then
+			if IsControlJustPressed(0,172) then
 				break
 			end
 		end
@@ -154,6 +159,7 @@ function Creative.Safecrack(Number)
 	end
 
 	FreezeEntityPosition(PlayerPedId(),false)
+	TriggerEvent("inventory:CloseButtons")
 	vRP.Destroy()
 
 	if currentLock > difficulty then
@@ -180,17 +186,4 @@ function crackingAnim(animType)
 			TaskPlayAnim(Ped,"mini@safe_cracking",animsSucceed[math.floor(math.ceil(4))],8.0,8.0,-1,49,1,0,0,0)
 		end
 	end
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- DWTEXT
------------------------------------------------------------------------------------------------------------------------------------------
-function dwText(text,font,x,y,scale,r,g,b,a)
-	SetTextFont(font)
-	SetTextScale(scale,scale)
-	SetTextColour(r,g,b,a)
-	SetTextOutline()
-	SetTextCentre(1)
-	SetTextEntry("STRING")
-	AddTextComponentString(text)
-	DrawText(x,y)
 end

@@ -3,7 +3,6 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
-vRPS = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
@@ -16,7 +15,6 @@ local Init = ""
 local Blips = {}
 local Chest = ""
 local Theft = nil
-local Active = {}
 local Hoverfy = {}
 local Interior = ""
 local Opened = false
@@ -32,7 +30,7 @@ CreateThread(function()
 
 			if Init == "" then
 				for Name,v in pairs(Propertys) do
-					if #(Coords - v) <= 0.75 then
+					if #(Coords - v["Coords"]) <= 0.75 then
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) then
@@ -40,21 +38,28 @@ CreateThread(function()
 
 							if Consult then
 								if Consult == "Nothing" then
-									exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","inventory:PropertysRobbery",Name,false,true)
+									exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
 
 									for Line,v in pairs(Informations) do
-										exports["dynamic"]:AddButton("Baú","Total de <yellow>"..v["Vault"].."Kg</yellow> no compartimento.","","",Line,false)
-										exports["dynamic"]:AddButton("Geladeira","Total de <yellow>"..v["Fridge"].."Kg</yellow> no compartimento.","","",Line,false)
-										exports["dynamic"]:AddButton("Credenciais","Máximo <yellow>1</yellow> proprietário e <yellow>3</yellow> adicionais.","","",Line,false)
-										exports["dynamic"]:AddButton("Comprar com Dólares","Custo de <yellow>$"..Dotted(v["Price"]).."</yellow> dólares.","propertys:Buy",Name.."-"..Line.."-Dollar",Line,true)
-										exports["dynamic"]:AddButton("Comprar com Diamantes","Custo de <yellow>"..Dotted(v["Gemstone"]).."</yellow> diamantes.","propertys:Buy",Name.."-"..Line.."-Gemstone",Line,true)
-										exports["dynamic"]:SubMenu(Line,"Informações sobre o interior.",Line)
+										if (Propertys[Name]["Galpão"] and Line == "Galpão") or (not Propertys[Name]["Galpão"] and Line ~= "Galpão") then
+											if v["Vault"] then
+												exports["dynamic"]:AddButton("Baú","Total de <yellow>"..v["Vault"].."Kg</yellow> no compartimento.","","",Line,false)
+											end
+
+											if v["Fridge"] then
+												exports["dynamic"]:AddButton("Geladeira","Total de <yellow>"..v["Fridge"].."Kg</yellow> no compartimento.","","",Line,false)
+											end
+
+											exports["dynamic"]:AddButton("Credenciais","Máximo <yellow>1</yellow> proprietário e <yellow>3</yellow> adicionais.","","",Line,false)
+											exports["dynamic"]:AddButton("Comprar com Dólares","Custo de <yellow>$"..Dotted(v["Price"]).."</yellow> dólares.","propertys:Buy",Name.."-"..Line.."-Dollar",Line,true)
+											exports["dynamic"]:AddButton("Comprar com Diamantes","Custo de <yellow>"..Dotted(v["Gemstone"]).."</yellow> diamantes.","propertys:Buy",Name.."-"..Line.."-Gemstone",Line,true)
+											exports["dynamic"]:SubMenu(Line,"Informações sobre o interior.",Line)
+										end
 									end
 
 									exports["dynamic"]:openMenu()
 								else
 									if Consult ~= "Hotel" then
-										exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","inventory:PropertysRobbery",Name,false,true)
 										exports["dynamic"]:AddButton("Entrar","Adentrar a propriedade.","propertys:Enter",Name,false,false)
 										exports["dynamic"]:AddButton("Credenciais","Reconfigurar os cartões de acesso.","propertys:Credentials",Name,false,true)
 										exports["dynamic"]:AddButton("Cartões","Comprar um novo cartão de acesso.","propertys:Item",Name,false,true)
@@ -73,71 +78,55 @@ CreateThread(function()
 										TriggerEvent("propertys:Enter",Name,false)
 									end
 								end
+							else
+								exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
+
+								exports["dynamic"]:openMenu()
 							end
 						end
 					end
 				end
-			else
-				if Interiors[Interior] then
-					SetPlayerBlipPositionThisFrame(Propertys[Init]["x"],Propertys[Init]["y"])
+			elseif Interiors[Interior] then
+				SetPlayerBlipPositionThisFrame(Propertys[Init]["Coords"]["x"],Propertys[Init]["Coords"]["y"])
 
-					if Coords["z"] < (Interiors[Interior]["Exit"]["z"] - 25.0) then
-						SetEntityCoords(Ped,Interiors[Interior]["Exit"],false,false,false,false)
-					end
+				if Coords["z"] < (Interiors[Interior]["Exit"]["z"] - 25.0) then
+					SetEntityCoords(Ped,Interiors[Interior]["Exit"],false,false,false,false)
+				end
 
-					if Theft and Robbery[Interior]["Furniture"] then
-						for Index,v in pairs(Robbery[Interior]["Furniture"]) do
-							if not Active[Index] and #(Coords - v) <= 1.0 then
-								TimeDistance = 1
-								SetDrawOrigin(v["x"],v["y"],v["z"])
-								DrawSprite("Targets","E",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
-								ClearDrawOrigin()
+				if Robbery[Interior]["Furniture"] and Theft and Theft < GetGameTimer() and GetEntitySpeed(Ped) > 2 then
+					vSERVER.Police(Propertys[Init]["Coords"])
+					Theft = GetGameTimer() + 60000
+				end
 
-								if IsControlJustPressed(1,38) and vSERVER.Robbery(Init,Index) then
-									vRP.playAnim(false,{"amb@prop_human_bum_bin@base","base"},true)
+				for Line,v in pairs(Interiors[Interior]) do
+					if #(Coords - v) <= 1.0 then
+						TimeDistance = 1
 
-									if exports["taskbar"]:Task(5,10000) then
-										vSERVER.Paybbery(Init,Index)
-										Active[Index] = true
-									end
-
-									vRP.Destroy()
+						if Line == "Exit" and IsControlJustPressed(1,38) then
+							if Theft and Robbery[Interior] and Robbery[Interior]["Furniture"] then
+								for Index in pairs(Robbery[Interior]["Furniture"]) do
+									exports["target"]:RemCircleZone("Robberys:"..Index)
 								end
 							end
-						end
 
-						if Theft < GetGameTimer() and GetEntitySpeed(Ped) > 2 then
-							Theft = GetGameTimer() + 60000
-							vSERVER.Police(Propertys[Init])
-						end
-					end
+							SetEntityCoords(Ped,Propertys[Init]["Coords"],false,false,false,false)
+							vSERVER.Toggle(Init,"Exit")
+							Interior = ""
+							Theft = nil
+							Chest = ""
+							Init = ""
+						elseif not Theft and (Line == "Vault" or Line == "Fridge") and IsControlJustPressed(1,38) and vSERVER.Permission(Init) then
+							vRP.playAnim(false,{"amb@prop_human_bum_bin@base","base"},true)
+							Opened = true
+							Chest = Line
 
-					for Line,v in pairs(Interiors[Interior]) do
-						if #(Coords - v) <= 0.75 then
-							TimeDistance = 1
-
-							if Line == "Exit" and IsControlJustPressed(1,38) then
-								SetEntityCoords(Ped,Propertys[Init],false,false,false,false)
-								LocalPlayer["state"]:set("Propertys",false,false)
-								vSERVER.Toggle(Init,"Exit")
-								Interior = ""
-								Active = {}
-								Theft = nil
-								Chest = ""
-								Init = ""
-							elseif not Theft and (Line == "Vault" or Line == "Fridge") and IsControlJustPressed(1,38) and vSERVER.Permission(Init) then
-								vRP.playAnim(false,{"amb@prop_human_bum_bin@base","base"},true)
-								Opened = true
-								Chest = Line
-
-								TriggerEvent("inventory:Open",{
-									Action = "Open",
-									Type = "Chest",
-									Resource = "propertys"
-								})
-							elseif not Theft and Line == "Clothes" and IsControlJustPressed(1,38) then
-								ClothesMenu()
-							end
+							TriggerEvent("inventory:Open",{
+								Action = "Open",
+								Type = "Chest",
+								Resource = "propertys"
+							})
+						elseif not Theft and Line == "Clothes" and IsControlJustPressed(1,38) then
+							ClothesMenu()
 						end
 					end
 				end
@@ -151,16 +140,16 @@ end)
 -- CLOTHESMENU
 -----------------------------------------------------------------------------------------------------------------------------------------
 function ClothesMenu()
-	exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","propertys:Clothes","save",false,true)
+	exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","propertys:Clothes","Save",false,true)
 	exports["dynamic"]:AddButton("Shopping","Abrir a loja de vestimentas.","skinshop:Open","",false,false)
-	exports["dynamic"]:SubMenu("Vestir","Abrir lista com todas as vestimentas.","apply")
-	exports["dynamic"]:SubMenu("Remover","Abrir lista com todas as vestimentas.","delete")
+	exports["dynamic"]:SubMenu("Vestir","Abrir lista com todas as vestimentas.","Apply")
+	exports["dynamic"]:SubMenu("Remover","Abrir lista com todas as vestimentas.","Delete")
 
 	local Clothes = vSERVER.Clothes()
 	if parseInt(#Clothes) > 0 then
 		for _,v in pairs(Clothes) do
-			exports["dynamic"]:AddButton(v,"Vestir-se com as vestimentas.","propertys:Clothes","apply-"..v,"apply",true)
-			exports["dynamic"]:AddButton(v,"Remover a vestimenta salva.","propertys:Clothes","delete-"..v,"delete",true)
+			exports["dynamic"]:AddButton(v,"Vestir-se com as vestimentas.","propertys:Clothes","apply-"..v,"Apply",true)
+			exports["dynamic"]:AddButton(v,"Remover a vestimenta salva.","propertys:Clothes","delete-"..v,"Delete",true)
 		end
 	end
 
@@ -180,11 +169,30 @@ end)
 RegisterNetEvent("propertys:Enter")
 AddEventHandler("propertys:Enter",function(Name,Thefting)
 	if Thefting then
-		Theft = GetGameTimer() + 10000
 		Interior = Thefting
+		Theft = GetGameTimer() + 10000
+		TriggerEvent("player:Residuals","Resquício de Línter")
+
+		for Number,v in pairs(Robbery[Interior]["Furniture"]) do
+			exports["target"]:AddCircleZone("Robberys:"..Number,v,0.1,{
+				name = "Robberys:"..Number,
+				heading = 0.0,
+				useZ = true
+			},{
+				shop = Number,
+				Distance = 1.25,
+				options = {
+					{
+						event = "propertys:RobberyItem",
+						label = "Roubar",
+						tunnel = "server",
+						service = Name
+					}
+				}
+			})
+		end
 	else
 		TriggerEvent("dynamic:Close")
-		LocalPlayer["state"]:set("Propertys",true,false)
 
 		if not Hoverfy[Name] and Interiors[Interior] then
 			local Tables = {}
@@ -268,7 +276,7 @@ end)
 CreateThread(function()
 	local Tables = {}
 	for Name,v in pairs(Propertys) do
-		Tables[#Tables + 1] = { v,0.75,"E","Propriedade","Pressione para acessar" }
+		Tables[#Tables + 1] = { v["Coords"],0.75,"E","Propriedade","Pressione para acessar" }
 	end
 
 	TriggerEvent("hoverfy:Insert",Tables)
@@ -291,11 +299,17 @@ AddEventHandler("propertys:Blips",function()
 	else
 		for Name,v in pairs(Propertys) do
 			if Name ~= "Hotel" then
-				Blips[Name] = AddBlipForCoord(v["x"],v["y"],v["z"])
-				SetBlipSprite(Blips[Name],374)
+				Blips[Name] = AddBlipForCoord(v["Coords"]["x"],v["Coords"]["y"],v["Coords"]["z"])
+
+				if v["Galpão"] then
+					SetBlipSprite(Blips[Name],473)
+				else
+					SetBlipSprite(Blips[Name],374)
+				end
+
+				SetBlipScale(Blips[Name],0.5)
 				SetBlipAsShortRange(Blips[Name],true)
 				SetBlipColour(Blips[Name],GlobalState["Markers"][Name] and 35 or 43)
-				SetBlipScale(Blips[Name],0.4)
 			end
 		end
 

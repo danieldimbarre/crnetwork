@@ -10,15 +10,15 @@ Tunnel.bindInterface("taskbar",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Status = ""
+local Results = false
 local Progress = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FAILURE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("failure",function(Data,Callback)
-	SetNuiFocus(false,false)
-	Status = "failure"
+	Results = false
 	Progress = false
+	SetNuiFocus(false,false)
 
 	Callback("Ok")
 end)
@@ -26,9 +26,9 @@ end)
 -- SUCESS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("success",function(Data,Callback)
-	SetNuiFocus(false,false)
-	Status = "success"
+	Results = true
 	Progress = false
+	SetNuiFocus(false,false)
 
 	Callback("Ok")
 end)
@@ -46,11 +46,7 @@ function Minigame(Timer)
 		Wait(0)
 	end
 
-	if Status == "success" then
-		return true
-	end
-
-	return false
+	return Results
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TASK
@@ -61,6 +57,7 @@ exports("Task",function(Amount,Speed)
 	for Number = 1,Amount do
 		if not Minigame(Speed) then
 			Return = false
+
 			break
 		end
 	end
@@ -76,6 +73,7 @@ function Creative.Task(Amount,Speed)
 	for Number = 1,Amount do
 		if not Minigame(Speed) then
 			Return = false
+
 			break
 		end
 	end

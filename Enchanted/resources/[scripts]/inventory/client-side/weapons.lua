@@ -280,7 +280,8 @@ end)
 -- THREADSTOREWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	LoadAnim("reaction@intimidation@1h")
+	LoadAnim("rcmjosh4")
+	LoadAnim("weapons@pistol@")
 
 	while true do
 		local TimeDistance = 999
@@ -381,9 +382,9 @@ function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
 
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
-			TaskPlayAnim(Ped,"reaction@intimidation@1h","intro",8.0,8.0,-1,48,1,0,0,0)
+			TaskPlayAnim(Ped,"rcmjosh4","josh_leadout_cop2",8.0,8.0,-1,48,1,0,0,0)
 
-			Wait(1250)
+			Wait(200)
 
 			Weapon = Name
 			TriggerEvent("Weapon",Weapon)
@@ -401,7 +402,7 @@ function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
 				end
 			end
 
-			Wait(1000)
+			Wait(300)
 
 			ClearPedTasks(Ped)
 		else
@@ -455,9 +456,9 @@ function Creative.StoreWeapon()
 		LocalPlayer["state"]:set("Cancel",true,true)
 
 		if not IsPedInAnyVehicle(Ped) then
-			TaskPlayAnim(Ped,"reaction@intimidation@1h","outro",8.0,8.0,-1,48,1,0,0,0)
+			TaskPlayAnim(Ped,"weapons@pistol@","aim_2_holster",8.0,8.0,-1,48,1,0,0,0)
 
-			Wait(1600)
+			Wait(450)
 
 			ClearPedTasks(Ped)
 		end

@@ -13,7 +13,7 @@ CreateThread(function()
 		local Coords = GetEntityCoords(Ped)
 
 		if not Active then
-			if (LocalPlayer["state"]["Route"] == 0 or LocalPlayer["state"]["Propertys"]) then
+			if LocalPlayer["state"]["Route"] == 0 then
 				for Number,v in pairs(Displays) do
 					if #(Coords - v["Coords"]) <= v["Distance"] then
 						Active = Number

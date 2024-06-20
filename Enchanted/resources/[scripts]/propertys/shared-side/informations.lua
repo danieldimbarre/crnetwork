@@ -31,6 +31,11 @@ Informations = {
 		["Vault"] = 500,
 		["Fridge"] = 100,
 		["Gemstone"] = 80000
+	},
+	["Galpão"] = {
+		["Price"] = 500000,
+		["Vault"] = 125,
+		["Gemstone"] = 20000
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -40,8 +45,10 @@ exports("Informations",function()
 	local Table = {}
 
 	for Name,v in pairs(Informations) do
-		Table[#Table + 1] = Name
+		if Name ~= "Galpão" then
+			Table[#Table + 1] = Name
+		end
 	end
 
-	return Table
+	return Table[math.random(#Table)]
 end)

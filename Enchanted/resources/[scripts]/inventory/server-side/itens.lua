@@ -74,9 +74,9 @@ Use = {
 		end
 	end,
 
-	["vehkey"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	["vehiclekey"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Vehicle,Network,Plate = vRPC.VehicleList(source)
-		if Vehicle and Plate == Split[2] then
+		if Vehicle and Plate == Split[3] then
 			TriggerEvent("garages:LockVehicle",source,Network)
 		end
 	end,
@@ -1937,6 +1937,32 @@ Use = {
 
 				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
 			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["moneywash"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_prtmachine_dryer_spin"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),75,70)
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["moneywashplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_prtmachine_dryer_spin"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),100,95)
 		end
 
 		Player(source)["state"]["Buttons"] = false

@@ -177,6 +177,15 @@ local Default = {
 	{ Coords = { -295.51,6199.21,31.24,133.05 }, Object = "p_v_43_safe_s", Weight = 0.5 },
 	{ Coords = { 1327.98,-1654.78,52.03,218.71 }, Object = "p_v_43_safe_s", Weight = 0.5 },
 
+	-- PROPERTYS
+	{ Coords = { 21.36,-34.46,-24.51,230.49 }, Object = "prop_ld_int_safe_01", Ground = true },
+	{ Coords = { 99.0,-107.41,-24.74,224.66 }, Object = "prop_ld_int_safe_01", Ground = true },
+	{ Coords = { 91.52,75.02,-24.52,270.69 }, Object = "prop_ld_int_safe_01", Ground = true },
+	{ Coords = { 165.8,-151.99,-18.32,215.8 }, Object = "prop_ld_int_safe_01", Ground = true },
+	{ Coords = { 121.28,-116.44,-31.73,187.16 }, Object = "prop_ld_int_safe_01", Ground = true },
+	{ Coords = { 188.04,-202.08,-24.53,90.4 }, Object = "prop_ld_int_safe_01", Ground = true },
+	{ Coords = { 50.66,-42.69,-24.54,230.43 }, Object = "prop_ld_int_safe_01", Ground = true },
+
 	-- ADMIN
 	{ Coords = { 268.53,2861.36,42.65,31.46 }, Object = "prop_byard_machine03", Mode = "Recycle" },
 	{ Coords = { -179.99,6263.39,30.51,41.2 }, Object = "prop_byard_machine03", Mode = "Recycle" },
@@ -222,7 +231,7 @@ RegisterCommand("objects",function(source,Message)
 				Selected = GenerateString("DDLLDDLL")
 			until Selected and not Objects[Selected]
 
-			Objects[Selected] = { Coords = Coords, Object = Hash, Mode = "Store", Bucket = GetPlayerRoutingBucket(source) }
+			Objects[Selected] = { Coords = Coords, Object = Hash, Mode = "Store", Ground = true, Bucket = GetPlayerRoutingBucket(source) }
 			TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
 			vRP.Archive("coordenadas.txt",json.encode(Objects[Selected]))
 		end

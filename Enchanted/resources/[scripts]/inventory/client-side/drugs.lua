@@ -233,9 +233,9 @@ AddEventHandler("Crack",function()
 		AnimpostfxStop("HeistCelebPassBW")
 	end
 
-	AnimpostfxPlay("HeistCelebPassBW",216000,false)
-	TriggerEvent("Hunger",216000)
-	TriggerEvent("Thirst",216000)
+	AnimpostfxPlay("HeistCelebPassBW",300000,false)
+	TriggerEvent("Hunger",90000)
+	TriggerEvent("Thirst",90000)
 	Crack = 600
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -344,8 +344,8 @@ CreateThread(function()
 					AnimpostfxStop("HeistCelebPassBW")
 				end
 
-				TriggerEvent("Hunger",60000)
-				TriggerEvent("Thirst",60000)
+				TriggerEvent("Hunger",180000)
+				TriggerEvent("Thirst",180000)
 				Crack = 0
 			end
 		end

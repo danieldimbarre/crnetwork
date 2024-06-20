@@ -6,6 +6,13 @@ local Proxy = module("vrp","lib/Proxy")
 vRPC = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECTION
+-----------------------------------------------------------------------------------------------------------------------------------------
+Creative = {}
+Tunnel.bindInterface("dynamic",Creative)
+vSKINSHOP = Tunnel.getInterface("skinshop")
+vKEYBOARD = Tunnel.getInterface("keyboard")
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CODES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Codes = {
@@ -90,6 +97,78 @@ AddEventHandler("dynamic:ExitService",function(Permission)
 			end
 		else
 			vRP.ServiceLeave(source,Passport,Permission)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLOTHES
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Clothes()
+	local Clothes = {}
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local Consult = vRP.GetSrvData("Clothes:"..Passport,true)
+		local AmountClothes = (vRP.UserPremium(Passport) and 4 or 2)
+
+		for Table,_ in pairs(Consult) do
+			if AmountClothes > 0 then
+				Clothes[#Clothes + 1] = Table
+				AmountClothes = AmountClothes - 1
+			end
+		end
+	end
+
+	return Clothes
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DYNAMIC:CLOTHES
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("dynamic:Clothes")
+AddEventHandler("dynamic:Clothes",function(Mode)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local Consult = vRP.GetSrvData("Clothes:"..Passport,true)
+		local Split = splitString(Mode)
+		local Name = Split[2]
+
+		if Split[1] == "Save" then
+			if (vRP.UserPremium(Passport) and CountTable(Consult) >= 5) or (not vRP.UserPremium(Passport) and CountTable(Consult) >= 2) then
+				TriggerClientEvent("Notify",source,"Armário","Limite atingide de roupas.","amarelo",5000)
+
+				return false
+			end
+
+			local Keyboard = vKEYBOARD.Primary(source,"Nome")
+			if Keyboard then
+				local Check = sanitizeString(Keyboard[1],"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
+
+				if not Consult[Check] then
+					Consult[Check] = vSKINSHOP.Customization(source)
+					TriggerClientEvent("Notify",source,"Armário","<b>"..Check.."</b> adicionado.","verde",5000)
+					vRP.SetSrvData("Clothes:"..Passport,Consult,true)
+					TriggerClientEvent("dynamic:Clothes",source)
+				else
+					TriggerClientEvent("Notify",source,"Armário","Nome escolhido já existe em seu armário.","amarelo",5000)
+				end
+			end
+		elseif Split[1] == "Delete" then
+			if Consult[Name] then
+				Consult[Name] = nil
+				TriggerClientEvent("Notify",source,"Armário","<b>"..Name.."</b> removido.","verde",5000)
+				vRP.SetSrvData("Clothes:"..Passport,Consult,true)
+				TriggerClientEvent("dynamic:Clothes",source)
+			else
+				TriggerClientEvent("Notify",source,"Armário","A vestimenta salva não se encontra mais em seu armário.","amarelo",5000)
+			end
+		elseif Split[1] == "Apply" then
+			if Consult[Name] then
+				TriggerClientEvent("skinshop:Apply",source,Consult[Name])
+				TriggerClientEvent("Notify",source,"Armário","<b>"..Name.."</b> aplicado.","verde",5000)
+			else
+				TriggerClientEvent("Notify",source,"Armário","A vestimenta salva não se encontra mais em seu armário.","amarelo",5000)
+			end
 		end
 	end
 end)

@@ -24,15 +24,13 @@ end
 function Creative.Mount(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if not Name or not List[Name] or not List[Name]["List"] then
-			exports["discord"]:Embed("Hackers","**Passaporte:** "..Passport.."\n**Função:** Request do crafting",0xa3c846,source)
-		end
-
-		if List[Name] then
-			local Primary = {}
-			local Inv = vRP.Inventory(Passport)
-			for Index,v in pairs(Inv) do
+	if Passport and Name and List[Name] then
+		local Primary = {}
+		local Inv = vRP.Inventory(Passport)
+		for Index,v in pairs(Inv) do
+			if (v["amount"] <= 0 or not ItemExist(v["item"])) then
+				vRP.RemoveItem(Passport,v["item"],v["amount"],false)
+			else
 				v["name"] = ItemName(v["item"])
 				v["weight"] = ItemWeight(v["item"])
 				v["index"] = ItemIndex(v["item"])
@@ -46,7 +44,7 @@ function Creative.Mount(Name)
 				local Split = splitString(v["item"])
 
 				if not v["desc"] then
-					if Split[1] == "vehkey" and Split[2] then
+					if Split[1] == "vehiclekey" and Split[3] then
 						v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
 					elseif ItemNamed(Split[1]) and Split[2] then
 						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
@@ -67,9 +65,9 @@ function Creative.Mount(Name)
 
 				Primary[Index] = v
 			end
-
-			return Primary,vRP.GetWeight(Passport)
 		end
+
+		return Primary,vRP.GetWeight(Passport)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------

@@ -14,6 +14,7 @@ vSERVER = Tunnel.getInterface("chest")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Block = false
 local Opened = false
+local Animation = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHESTS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -83,6 +84,9 @@ AddEventHandler("chest:Open",function(Name,Mode,Item,Blocked,Force)
 		end
 
 		Opened = true
+		Animation = true
+		vRP.playAnim(false,{"amb@prop_human_bum_bin@base","base"},true)
+
 		TriggerEvent("inventory:Open",{
 			Action = "Open",
 			Type = "Chest",
@@ -110,6 +114,11 @@ end)
 RegisterNetEvent("inventory:Close")
 AddEventHandler("inventory:Close",function()
 	if Opened then
+		if Animation then
+			Animation = false
+			vRP.Destroy()
+		end
+
 		Opened = false
 		Block = false
 	end
@@ -128,7 +137,7 @@ end)
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Store",function(Data,Callback)
-	if MumbleIsConnected() and not exports["hud"]:Wanted() then
+	if MumbleIsConnected() then
 		vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"],Block)
 	end
 

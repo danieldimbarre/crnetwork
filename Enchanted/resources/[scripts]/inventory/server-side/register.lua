@@ -49,7 +49,7 @@ AddEventHandler("inventory:Register",function(Number)
 
 						vRP.MountContainer(Passport,"Registers:"..Number,Itens,1,false)
 						TriggerClientEvent("player:Residuals",source,"Resquício de Línter")
-						TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true,true)
+						TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true)
 					end
 
 					Wait(100)
@@ -58,7 +58,7 @@ AddEventHandler("inventory:Register",function(Number)
 		else
 			local Consult = vRP.GetSrvData("Registers:"..Number,false)
 			if json.encode(Consult) ~= "[]" and (Cooldown[Number] - 3300) >= os.time() then
-				TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true,true)
+				TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true)
 			else
 				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Cooldown[Number] - os.time())..".","amarelo",5000)
 			end

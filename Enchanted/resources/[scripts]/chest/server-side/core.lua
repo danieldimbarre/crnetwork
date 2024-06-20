@@ -167,82 +167,90 @@ function Creative.Mount()
 		local Inv = vRP.Inventory(Passport)
 
 		for Index,v in pairs(Inv) do
-			v["name"] = ItemName(v["item"])
-			v["weight"] = ItemWeight(v["item"])
-			v["index"] = ItemIndex(v["item"])
-			v["amount"] = parseInt(v["amount"])
-			v["rarity"] = ItemRarity(v["item"])
-			v["economy"] = ItemEconomy(v["item"])
-			v["desc"] = ItemDescription(v["item"])
-			v["key"] = v["item"]
-			v["slot"] = Index
+			if (v["amount"] <= 0 or not ItemExist(v["item"])) then
+				vRP.RemoveItem(Passport,v["item"],v["amount"],false)
+			else
+				v["name"] = ItemName(v["item"])
+				v["weight"] = ItemWeight(v["item"])
+				v["index"] = ItemIndex(v["item"])
+				v["amount"] = parseInt(v["amount"])
+				v["rarity"] = ItemRarity(v["item"])
+				v["economy"] = ItemEconomy(v["item"])
+				v["desc"] = ItemDescription(v["item"])
+				v["key"] = v["item"]
+				v["slot"] = Index
 
-			local Split = splitString(v["item"])
+				local Split = splitString(v["item"])
 
-			local Item = Split[1]
-			if ChestItens[Item] and ChestItens[Item]["Close"] then
-				v["block"] = true
-			end
-
-			if not v["desc"] then
-				if Item == "vehkey" and Split[2] then
-					v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
-				elseif ItemNamed(Item) and Split[2] then
-					v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
-				end
-			end
-
-			if Split[2] then
-				local Loaded = ItemLoads(v["item"])
-				if Loaded then
-					v["charges"] = parseInt(Split[2] * (100 / Loaded))
+				local Item = Split[1]
+				if ChestItens[Item] and ChestItens[Item]["Close"] then
+					v["block"] = true
 				end
 
-				if ItemDurability(v["item"]) then
-					v["durability"] = parseInt(os.time() - Split[2])
-					v["days"] = ItemDurability(v["item"])
+				if not v["desc"] then
+					if Item == "vehiclekey" and Split[3] then
+						v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+					elseif ItemNamed(Item) and Split[2] then
+						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+					end
 				end
-			end
 
-			Primary[Index] = v
+				if Split[2] then
+					local Loaded = ItemLoads(v["item"])
+					if Loaded then
+						v["charges"] = parseInt(Split[2] * (100 / Loaded))
+					end
+
+					if ItemDurability(v["item"]) then
+						v["durability"] = parseInt(os.time() - Split[2])
+						v["days"] = ItemDurability(v["item"])
+					end
+				end
+
+				Primary[Index] = v
+			end
 		end
 
 		local Secondary = {}
 		local Result = vRP.GetSrvData(Open[Passport]["Name"],Open[Passport]["Save"])
 		for Index,v in pairs(Result) do
-			v["name"] = ItemName(v["item"])
-			v["weight"] = ItemWeight(v["item"])
-			v["index"] = ItemIndex(v["item"])
-			v["amount"] = parseInt(v["amount"])
-			v["rarity"] = ItemRarity(v["item"])
-			v["economy"] = ItemEconomy(v["item"])
-			v["desc"] = ItemDescription(v["item"])
-			v["key"] = v["item"]
-			v["slot"] = Index
+			if (v["amount"] <= 0 or not ItemExist(v["item"])) then
+				vRP.RemoveChest(Open[Passport]["Name"],Index,Open[Passport]["Save"])
+			else
+				v["name"] = ItemName(v["item"])
+				v["weight"] = ItemWeight(v["item"])
+				v["index"] = ItemIndex(v["item"])
+				v["amount"] = parseInt(v["amount"])
+				v["rarity"] = ItemRarity(v["item"])
+				v["economy"] = ItemEconomy(v["item"])
+				v["desc"] = ItemDescription(v["item"])
+				v["key"] = v["item"]
+				v["slot"] = Index
 
-			local Split = splitString(v["item"])
+				local Split = splitString(v["item"])
 
-			if not v["desc"] then
-				if Split[1] == "vehkey" and Split[2] then
-					v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
-				elseif ItemNamed(Split[1]) and Split[2] then
-					v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+				if not v["desc"] then
+					if Split[1] == "vehiclekey" and Split[3] then
+						v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+					elseif ItemNamed(Split[1]) and Split[2] then
+						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+					end
 				end
+
+				if Split[2] then
+					local Loaded = ItemLoads(v["item"])
+					if Loaded then
+						v["charges"] = parseInt(Split[2] * (100 / Loaded))
+					end
+
+					if ItemDurability(v["item"]) then
+						v["durability"] = parseInt(os.time() - Split[2])
+						v["days"] = ItemDurability(v["item"])
+					end
+				end
+
+				Secondary[Index] = v
 			end
-
-			if Split[2] then
-				local Loaded = ItemLoads(v["item"])
-				if Loaded then
-					v["charges"] = parseInt(Split[2] * (100 / Loaded))
-				end
-
-				if ItemDurability(v["item"]) then
-					v["durability"] = parseInt(os.time() - Split[2])
-					v["days"] = ItemDurability(v["item"])
-				end
-			end
-
-			Secondary[Index] = v
 		end
 
 		return Primary,Secondary,vRP.GetWeight(Passport),Open[Passport]["Weight"],Open[Passport]["Slots"]

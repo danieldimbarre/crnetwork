@@ -83,23 +83,35 @@ AddEventHandler("dynamic:Close",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- GLOBALFUNCTIONS
+-- DYNAMIC:CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("GlobalFunctions",function()
+RegisterNetEvent("dynamic:Clothes")
+AddEventHandler("dynamic:Clothes",function()
+	TriggerEvent("dynamic:Close")
+
+	exports["dynamic"]:AddButton("Guardar","Salvar vestimentas do corpo.","dynamic:Clothes","Save",false,true)
+
+	local Clothes = vSERVER.Clothes()
+	if parseInt(#Clothes) > 0 then
+		for Index,v in pairs(Clothes) do
+			exports["dynamic"]:SubMenu(v,"Informações da vestimenta.",Index)
+			exports["dynamic"]:AddButton("Aplicar","Vestir-se com as vestimentas.","dynamic:Clothes","Apply-"..v,Index,true)
+			exports["dynamic"]:AddButton("Remover","Deletar a vestimenta do armário.","dynamic:Clothes","Delete-"..v,Index,true)
+		end
+	end
+
+	exports["dynamic"]:openMenu()
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYERFUNCTIONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("PlayerFunctions",function()
 	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Prison"] and not Dynamic and not IsPauseMenuActive() then
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
 
 		if GetEntityHealth(Ped) > 100 then
-			if LocalPlayer["state"]["Premium"] then
-				exports["dynamic"]:AddButton("Vestir","Vestir-se com as vestimentas guardadas.","player:Outfit","aplicarpre","warpremium",true)
-				exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","player:Outfit","salvarpre","warpremium",true)
-				exports["dynamic"]:SubMenu("Armário Premium","Colocar/Retirar roupas.","warpremium")
-			end
-
-			exports["dynamic"]:AddButton("Vestir","Vestir-se com as vestimentas guardadas.","player:Outfit","aplicar","wardrobe",true)
-			exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","player:Outfit","salvar","wardrobe",true)
-			exports["dynamic"]:SubMenu("Armário","Colocar/Retirar roupas.","wardrobe")
+			exports["dynamic"]:AddButton("Armário","Abrir lista com todas as vestimentas.","dynamic:Clothes","",false,false)
 
 			exports["dynamic"]:AddButton("Chapéu","Colocar/Retirar o chapéu.","player:Outfit","Hat","clothes",true)
 			exports["dynamic"]:AddButton("Máscara","Colocar/Retirar a máscara.","player:Outfit","Mask","clothes",true)
@@ -214,5 +226,5 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYMAPPING
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterKeyMapping("GlobalFunctions","Abrir menu principal.","keyboard","F9")
+RegisterKeyMapping("PlayerFunctions","Abrir menu principal.","keyboard","F9")
 RegisterKeyMapping("EmergencyFunctions","Abrir menu de emergencial.","keyboard","F10")

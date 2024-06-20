@@ -1342,6 +1342,16 @@ local List = {
 		["Blueprint"] = true,
 		["LostWater"] = true
 	},
+	["washbattery"] = {
+		["Index"] = "washbattery",
+		["Name"] = "Bateria 75Ah",
+		["Description"] = "Fonte confiável de energia, garantindo longa duração e eficiência durante os ciclos de lavagem, ideal para manter o funcionamento contínuo sem depender exclusivamente da rede elétrica.",
+		["Type"] = "Comum",
+		["Weight"] = 17.5,
+		["Economy"] = 12750,
+		["Market"] = true,
+		["LostWater"] = true
+	},
 	["batteryaa"] = {
 		["Index"] = "batteryaa",
 		["Name"] = "Bateria AA",
@@ -1815,6 +1825,22 @@ local List = {
 		["Weight"] = 1.25,
 		["Max"] = 1,
 		["Economy"] = 275,
+		["Market"] = true
+	},
+	["moneywash"] = {
+		["Index"] = "moneywash",
+		["Name"] = "Máquina de Lavar",
+		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.",
+		["Type"] = "Consumível",
+		["Weight"] = 50.0,
+		["Market"] = true
+	},
+	["moneywashplus"] = {
+		["Index"] = "moneywash",
+		["Name"] = "Máquina de Lavar ++",
+		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.",
+		["Type"] = "Consumível",
+		["Weight"] = 50.0,
 		["Market"] = true
 	},
 	-- MELEES
@@ -2875,12 +2901,12 @@ local List = {
 	["WEAPON_ASSAULTSMG"] = {
 		["Index"] = "steyraug",
 		["Name"] = "Steyr AUG",
-		["Description"] = "Armamento que utiliza <common>Munição de Rifle</common>.",
+		["Description"] = "Armamento que utiliza <common>Munição de Sub</common>.",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
 		["Arrest"] = true,
 		["Serial"] = true,
-		["Ammo"] = "WEAPON_RIFLE_AMMO",
+		["Ammo"] = "WEAPON_SMG_AMMO",
 		["Blueprint"] = true,
 		["Durability"] = 360,
 		["Market"] = true,
@@ -3569,10 +3595,11 @@ local List = {
 		["Economy"] = 8275,
 		["Market"] = true
 	},
-	["vehkey"] = {
-		["Index"] = "vehkey",
+	["vehiclekey"] = {
+		["Index"] = "vehiclekey",
 		["Name"] = "Chave Veícular",
 		["Type"] = "Consumível",
+		["Durability"] = 72,
 		["Weight"] = 0.25,
 		["LostWater"] = true,
 		["Economy"] = 0,

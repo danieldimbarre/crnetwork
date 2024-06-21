@@ -40,7 +40,6 @@ LocalPlayer["state"]:set("Nitro",false,true)
 LocalPlayer["state"]:set("Races",false,false)
 LocalPlayer["state"]:set("Buttons",false,true)
 LocalPlayer["state"]:set("TestDrive",false,false)
-LocalPlayer["state"]:set("Propertys",false,false)
 LocalPlayer["state"]:set("BlockLocked",false,false)
 LocalPlayer["state"]:set("Source",GetPlayerServerId(PlayerId()),true)
 -----------------------------------------------------------------------------------------------------------------------------------------

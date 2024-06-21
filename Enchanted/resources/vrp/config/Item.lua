@@ -128,7 +128,7 @@ local List = {
 	-- MECANICO
 	["toolbox"] = {
 		["Index"] = "toolbox",
-		["Name"] = "Ferramentas Básicas",
+		["Name"] = "Ferramentas",
 		["Description"] = "Um arsenal versátil de ferramentas essenciais para todas as suas necessidades de reparo, com qualidade premium e variedade abrangente, este kit é seu parceiro e do seu veículos.",
 		["Type"] = "Consumível",
 		["Weight"] = 2.25,
@@ -142,12 +142,13 @@ local List = {
 	},
 	["advtoolbox"] = {
 		["Index"] = "toolbox",
-		["Name"] = "Ferramentas Avançadas",
+		["Name"] = "Ferramentas ++",
 		["Description"] = "Um arsenal versátil de ferramentas essenciais para todas as suas necessidades de reparo, com qualidade premium e variedade abrangente, este kit é seu parceiro e do seu veículos.",
 		["Type"] = "Consumível",
 		["Weight"] = 4.75,
 		["Charges"] = 3,
 		["Max"] = 2,
+		["Rarity"] = "common",
 		["Economy"] = 2775,
 		["Recycle"] = {
 			["rubber"] = 35,
@@ -3556,13 +3557,14 @@ local List = {
 	},
 	["races"] = {
 		["Index"] = "races",
-		["Name"] = "Cartão Magnético",
+		["Name"] = "Cartão de Acesso R",
+		["Description"] = "Explore circuitos exclusivos e de acesso privilegiado, desbloqueie portas para emocionantes experiências em locais de elite ao redor do mundo.",
 		["Type"] = "Comum",
 		["Arrest"] = true,
-		["Weight"] = 0.25,
-		["LostWater"] = true,
-		["Economy"] = 425,
-		["Market"] = true
+		["Weight"] = 0.15,
+		["Economy"] = 2125,
+		["Market"] = true,
+		["Charges"] = 5
 	},
 	["postit"] = {
 		["Index"] = "postit",

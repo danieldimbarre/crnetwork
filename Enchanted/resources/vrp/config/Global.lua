@@ -7,8 +7,8 @@ Whitelisted = false
 BaseMode = "steam"
 Liberation = "Token"
 SalaryCooldown = 1800
-ServerName = "Creative"
 GroupsSetCooldown = 259200
+ServerName = "Creative Network"
 NameDefault = "Indivíduo Indigente"
 ServerLink = "https://creativenetwork.dev.br"
 SpawnCoords = vec4(895.48,-179.38,73.7,240.95)
@@ -30,10 +30,10 @@ MaxSlotsInventory = 100
 -----------------------------------------------------------------------------------------------------------------------------------------
 Theme = {
 	["main"] = "#1372bf",
-	["common"] = "#8eab38",
-	["rare"] = "#4f75c2",
-	["epic"] = "#b53784",
-	["legendary"] = "#c58e24",
+	["common"] = "#88daab",
+	["rare"] = "#a08cff",
+	["epic"] = "#ff8786",
+	["legendary"] = "#ffd086",
 	["skinweapon"] = true
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

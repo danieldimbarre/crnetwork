@@ -13,9 +13,7 @@ Tunnel.bindInterface("races",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Daily = {}
 local Active = {}
-local Cooldown = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FINISH
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -56,14 +54,6 @@ function Creative.Finish(Number,Points)
 			exports["markers"]:Exit(source,Passport)
 			vRP.PutExperience(Passport,"Race",GainExperience)
 			vRP.GenerateItem(Passport,"dirtydollar",Valuation,true)
-
-			if Daily[Passport] and Daily[Passport] > 0 then
-				Daily[Passport] = Daily[Passport] - 1
-
-				if Daily[Passport] <= 0 then
-					Daily[Passport] = 0
-				end
-			end
 		end
 
 		local Vehicle = vRPC.VehicleName(source)
@@ -84,15 +74,8 @@ function Creative.Start(Number)
 	local Return = false
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Races[Number] and vRP.TakeItem(Passport,"races",1,true) then
+	if Passport and Races[Number] and vRP.RemoveCharges(Passport,"races") then
 		Active[Passport] = true
-
-		if Cooldown[Passport] and Cooldown[Passport] >= os.time() then
-			Cooldown[Passport] = Cooldown[Passport] + 1800
-		else
-			Cooldown[Passport] = os.time() + 1800
-		end
-
 		Return = Races[Number]["Explosive"]
 		exports["markers"]:Enter(source,"Corredor")
 
@@ -137,19 +120,3 @@ function Creative.Ranking(Number)
 
 	return Ranking
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- COOLDOWN
------------------------------------------------------------------------------------------------------------------------------------------
-exports("Cooldown",function(Passport)
-	if Cooldown[Passport] and Cooldown[Passport] >= os.time() then
-		if not Daily[Passport] then
-			Daily[Passport] = 0
-		end
-
-		Daily[Passport] = Daily[Passport] + 1
-
-		return Daily[Passport]
-	end
-
-	return false
-end)

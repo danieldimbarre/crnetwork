@@ -654,17 +654,12 @@ Use = {
 						if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
 							Active[Passport] = nil
 
-							if vRP.TakeItem(Passport,Full,1,true,Slot) then
+							if vRP.RemoveCharges(Passport,Full) then
 								local Players = vRPC.Players(source)
 								for _,v in pairs(Players) do
 									async(function()
 										TriggerClientEvent("inventory:RepairBoosts",v,Network,Plate)
 									end)
-								end
-
-								local Number = parseInt(Split[2]) - 1
-								if Number >= 1 then
-									vRP.GiveItem(Passport,"advtoolbox-"..Number,1,false,Slot)
 								end
 							end
 						end

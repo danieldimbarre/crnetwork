@@ -21,7 +21,7 @@ function Creative.RechargeFuel(Price)
 
 			return true
 		else
-			TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",5000)
 		end
 	end
 

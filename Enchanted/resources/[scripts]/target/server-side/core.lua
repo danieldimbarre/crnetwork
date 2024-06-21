@@ -100,7 +100,7 @@ function Creative.CheckIn()
 			TriggerEvent("Repose",source,Passport,Repose)
 			Return = true
 		else
-			TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",5000)
 		end
 	end
 
@@ -121,7 +121,7 @@ AddEventHandler("target:Medicplan",function(OtherSource)
 					TriggerClientEvent("Notify",source,"Centro Médico","Plano ativado com sucesso.","hospital",5000)
 					vRP.SetMedicplan(OtherSource,OtherPassport)
 				else
-					TriggerClientEvent("Notify",source,"Aviso","<b>Dólares</b> insuficientes.","amarelo",5000)
+					TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",5000)
 				end
 			end
 		else

@@ -526,19 +526,24 @@ function Creative.Blueprint()
 
 		local Secondary = {}
 		for Item,v in pairs(Users["Blueprints"][Passport]) do
-			local Number = tostring(CountTable(Secondary) + 1)
+			if not ItemExist(Item) and Users["Blueprints"][Passport][Item] then
+				Users["Blueprints"][Passport][Item] = nil
+			else
+				local Calculated = CountTable(Secondary) + 1
+				local Number = tostring(Calculated)
 
-			Secondary[Number] = {
-				["name"] = ItemName(Item),
-				["weight"] = ItemWeight(Item),
-				["index"] = ItemIndex(Item),
-				["rarity"] = ItemRarity(Item),
-				["economy"] = ItemEconomy(Item),
-				["desc"] = ItemDescription(Item),
-				["slot"] = Number,
-				["key"] = Item,
-				["amount"] = 1
-			}
+				Secondary[Number] = {
+					["name"] = ItemName(Item),
+					["weight"] = ItemWeight(Item),
+					["index"] = ItemIndex(Item),
+					["rarity"] = ItemRarity(Item),
+					["economy"] = ItemEconomy(Item),
+					["desc"] = ItemDescription(Item),
+					["slot"] = Number,
+					["key"] = Item,
+					["amount"] = 1
+				}
+			end
 		end
 
 		return Primary,vRP.GetWeight(Passport),Secondary
@@ -1160,14 +1165,7 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
 
-				if not Loots[Box]["Item"] or (Loots[Box]["Item"] and Consult and vRP.TakeItem(Passport,Consult["Item"],1,false,Consult["Slot"])) then
-					if Loots[Box]["Item"] and ItemLoads(Loots[Box]["Item"]) then
-						local Num = SplitTwo(Consult["Item"]) - 1
-						if Num >= 1 then
-							vRP.GiveItem(Passport,Loots[Box]["Item"].."-"..Num,1,false,Consult["Slot"])
-						end
-					end
-
+				if not Loots[Box]["Item"] or (Loots[Box]["Item"] and Consult and vRP.RemoveCharges(Passport,Loots[Box]["Item"])) then
 					local Result = RandPercentage(Loots[Box]["List"])
 					if not vRP.MaxItens(Passport,Result["Item"],Result["Valuation"]) and vRP.CheckWeight(Passport,Result["Item"],Result["Valuation"]) then
 						vRP.GenerateItem(Passport,Result["Item"],Result["Valuation"],true)

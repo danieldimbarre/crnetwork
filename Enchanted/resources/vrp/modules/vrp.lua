@@ -68,8 +68,6 @@ function vRP.Phone(Passport)
 				end
 			end
 		end
-
-		return PhoneNumber
 	elseif GetResourceState("smartphone") == "started" then
 		local Consult = vRP.Query("characters/Person",{ id = Passport })
 		if Consult[1] and Consult[1]["Phone"] then
@@ -78,9 +76,9 @@ function vRP.Phone(Passport)
 			PhoneNumber = vRP.GeneratePhone()
 			vRP.Query("characters/NewPhone",{ Passport = Passport, Phone = PhoneNumber })
 		end
-
-		return PhoneNumber
 	end
+
+	return PhoneNumber
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP.REQUEST

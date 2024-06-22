@@ -53,17 +53,8 @@ end
 -- PHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.Phone(Passport)
-	local PhoneNumber = false
-
-	if GetResourceState("smartphone") == "started" then
-		local Consult = vRP.Query("characters/Person",{ id = Passport })
-		if Consult[1] and Consult[1]["Phone"] then
-			PhoneNumber = Consult[1]["Phone"]
-		else
-			PhoneNumber = vRP.GeneratePhone()
-			vRP.Query("characters/NewPhone",{ Passport = Passport, Phone = PhoneNumber })
-		end
-	elseif GetResourceState("lb-phone") == "started" then
+	local PhoneNumber = "Inativo"
+	if GetResourceState("lb-phone") == "started" then
 		local source = vRP.Source(Passport)
 		if Characters[source] and Characters[source]["Phone"] then
 			PhoneNumber = exports["lb-phone"]:FormatNumber(Characters[source]["Phone"])
@@ -77,9 +68,19 @@ function vRP.Phone(Passport)
 				end
 			end
 		end
-	end
 
-	return PhoneNumber
+		return PhoneNumber
+	elseif GetResourceState("smartphone") == "started" then
+		local Consult = vRP.Query("characters/Person",{ id = Passport })
+		if Consult[1] and Consult[1]["Phone"] then
+			PhoneNumber = Consult[1]["Phone"]
+		else
+			PhoneNumber = vRP.GeneratePhone()
+			vRP.Query("characters/NewPhone",{ Passport = Passport, Phone = PhoneNumber })
+		end
+
+		return PhoneNumber
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP.REQUEST

@@ -10,33 +10,72 @@ vRP = Proxy.getInterface("vRP")
 Creative = {}
 Tunnel.bindInterface("radio",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- RESERVED
+-- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Reserved = {
-	[911] = "Policia",
-	[912] = "Policia",
-	[913] = "Policia",
-	[914] = "Policia",
-	[915] = "Policia",
-	[916] = "Policia",
-	[917] = "Policia",
-	[918] = "Policia",
-	[919] = "Policia",
-	[920] = "Policia",
-	[112] = "Paramedico",
-	[113] = "Paramedico",
-	[114] = "Paramedico"
+local Radio = {}
+local Actives = {
+	["911"] = "Policia",
+	["912"] = "Policia",
+	["913"] = "Policia",
+	["914"] = "Policia",
+	["915"] = "Policia",
+	["916"] = "Policia",
+	["917"] = "Policia",
+	["918"] = "Policia",
+	["919"] = "Policia",
+	["920"] = "Policia",
+	["112"] = "Paramedico",
+	["113"] = "Paramedico",
+	["114"] = "Paramedico"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FREQUENCY
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Frequency(Number)
 	local source = source
-	local Number = parseInt(Number)
+	local Number = tostring(Number)
 	local Passport = vRP.Passport(source)
-	if Passport and Reserved[Number] and not vRP.HasService(Passport,Reserved[Number]) then
+	if Passport and Actives[Number] and not vRP.HasService(Passport,Actives[Number]) then
+		TriggerClientEvent("Notify",source,"Atenção","Necessário permissão para efetuar conexão.","amarelo",5000)
+
 		return false
 	end
 
 	return true
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADINITSYSTEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	local Consult = vRP.Query("entitydata/GetData",{ Name = "Radio" })
+	if Consult[1] then
+		Radio = json.decode(Consult[1]["Information"])
+
+		for Index,Permission in pairs(Radio) do
+			Actives[Index] = Permission
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SAVESERVER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("SaveServer",function(Silenced)
+	vRP.Query("entitydata/SetData",{ Name = "Radio", Information = json.encode(Radio) })
+
+	if not Silenced then
+		print("O resource ^2Radio^7 salvou os dados.")
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- EXIST
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Exist",function(Number)
+	return Actives[Number]
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADD
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Add",function(Number,Permission)
+	Radio[Number] = Permission
+	Actives[Number] = Permission
+end)

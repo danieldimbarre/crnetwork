@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) DEFAULT '''''''Individuo''''''',
   `Lastname` varchar(50) DEFAULT '''''''Indigente''''''',
+  `Phone` varchar(10) DEFAULT NULL,
   `Sex` varchar(1) DEFAULT NULL,
   `Bank` int(20) NOT NULL DEFAULT 5000,
   `Blood` int(1) NOT NULL DEFAULT 1,

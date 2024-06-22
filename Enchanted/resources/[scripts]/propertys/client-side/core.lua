@@ -137,32 +137,34 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CLOTHESMENU
+-- PROPERTYS:CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ClothesMenu()
-	exports["dynamic"]:AddButton("Guardar","Salvar suas vestimentas do corpo.","propertys:Clothes","Save",false,true)
-	exports["dynamic"]:AddButton("Shopping","Abrir a loja de vestimentas.","skinshop:Open","",false,false)
-	exports["dynamic"]:SubMenu("Vestir","Abrir lista com todas as vestimentas.","Apply")
-	exports["dynamic"]:SubMenu("Remover","Abrir lista com todas as vestimentas.","Delete")
+RegisterNetEvent("propertys:Clothes")
+AddEventHandler("propertys:Clothes",function()
+	TriggerEvent("dynamic:Close")
+
+	exports["dynamic"]:AddButton("Guardar","Salvar vestimentas do corpo.","propertys:Clothes","Save",false,true)
 
 	local Clothes = vSERVER.Clothes()
 	if parseInt(#Clothes) > 0 then
-		for _,v in pairs(Clothes) do
-			exports["dynamic"]:AddButton(v,"Vestir-se com as vestimentas.","propertys:Clothes","apply-"..v,"Apply",true)
-			exports["dynamic"]:AddButton(v,"Remover a vestimenta salva.","propertys:Clothes","delete-"..v,"Delete",true)
+		for Index,v in pairs(Clothes) do
+			exports["dynamic"]:SubMenu(v,"Informações da vestimenta.",Index)
+			exports["dynamic"]:AddButton("Aplicar","Vestir-se com as vestimentas.","propertys:Clothes","Apply-"..v,Index,true)
+			exports["dynamic"]:AddButton("Remover","Deletar a vestimenta do armário.","propertys:Clothes","Delete-"..v,Index,true)
 		end
 	end
 
 	exports["dynamic"]:openMenu()
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- PROPERTYS:CLOTHESRESET
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("propertys:ClothesReset")
-AddEventHandler("propertys:ClothesReset",function()
-	TriggerEvent("dynamic:Close")
-	ClothesMenu()
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLOTHESMENU
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ClothesMenu()
+	exports["dynamic"]:AddButton("Armário","Abrir lista com todas as vestimentas.","propertys:Clothes","",false,false)
+	exports["dynamic"]:AddButton("Shopping","Abrir a loja de vestimentas.","skinshop:Open","",false,false)
+
+	exports["dynamic"]:openMenu()
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:ENTER
 -----------------------------------------------------------------------------------------------------------------------------------------

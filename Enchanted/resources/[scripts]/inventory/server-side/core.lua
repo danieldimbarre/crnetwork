@@ -1649,6 +1649,34 @@ AddEventHandler("inventory:Drink",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:REFILLGALLON
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("inventory:RefillGallon")
+AddEventHandler("inventory:RefillGallon",function()
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and not Active[Passport] and vRP.ConsultItem(Passport,"emptypurifiedwater") then
+		Active[Passport] = os.time() + 30
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("Progress",source,"Enchendo",30000)
+		vRPC.playAnim(source,false,{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"},true)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				vRPC.Destroy(source)
+				Active[Passport] = nil
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,"emptypurifiedwater") then
+					vRP.GenerateItem(Passport,"purifiedwater",1)
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVESERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("SaveServer",function(Silenced)

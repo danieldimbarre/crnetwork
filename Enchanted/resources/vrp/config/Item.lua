@@ -73,7 +73,7 @@ local List = {
 		["Description"] = "Solucione problemas com facilidade, seja em casa, no carro ou em qualquer lugar, indispensável para manter tudo funcionando perfeitamente.",
 		["Rarity"] = "common",
 		["Type"] = "Comum",
-		["Weight"] = 3.75,
+		["Weight"] = 3.25,
 		["Economy"] = 425,
 		["Recycle"] = {
 			["copper"] = 15,
@@ -101,7 +101,7 @@ local List = {
 		["Description"] = "Solucione problemas com facilidade, seja em casa, no carro ou em qualquer lugar, indispensável para manter tudo funcionando perfeitamente.",
 		["Rarity"] = "epic",
 		["Type"] = "Comum",
-		["Weight"] = 3.75,
+		["Weight"] = 4.25,
 		["Economy"] = 2225,
 		["Recycle"] = {
 			["sheetmetal"] = 1,
@@ -116,7 +116,7 @@ local List = {
 		["Description"] = "Solucione problemas com facilidade, seja em casa, no carro ou em qualquer lugar, indispensável para manter tudo funcionando perfeitamente.",
 		["Rarity"] = "legendary",
 		["Type"] = "Comum",
-		["Weight"] = 3.75,
+		["Weight"] = 4.75,
 		["Economy"] = 4275,
 		["Recycle"] = {
 			["sheetmetal"] = 1,
@@ -128,7 +128,7 @@ local List = {
 	-- MECANICO
 	["toolbox"] = {
 		["Index"] = "toolbox",
-		["Name"] = "Ferramentas",
+		["Name"] = "Kit de Ferramentas",
 		["Description"] = "Um arsenal versátil de ferramentas essenciais para todas as suas necessidades de reparo, com qualidade premium e variedade abrangente, este kit é seu parceiro e do seu veículos.",
 		["Type"] = "Consumível",
 		["Weight"] = 2.25,
@@ -141,8 +141,8 @@ local List = {
 		}
 	},
 	["advtoolbox"] = {
-		["Index"] = "toolbox",
-		["Name"] = "Ferramentas ++",
+		["Index"] = "advtoolbox",
+		["Name"] = "Conjunto de Ferramentas Mestre",
 		["Description"] = "Um arsenal versátil de ferramentas essenciais para todas as suas necessidades de reparo, com qualidade premium e variedade abrangente, este kit é seu parceiro e do seu veículos.",
 		["Type"] = "Consumível",
 		["Weight"] = 4.75,
@@ -541,7 +541,7 @@ local List = {
 		["LostWater"] = true
 	},
 	["weed"] = {
-		["Index"] = "leaf",
+		["Index"] = "weed",
 		["Name"] = "Folha de Cannabis",
 		["Type"] = "Consumível",
 		["Arrest"] = true,
@@ -579,7 +579,7 @@ local List = {
 		["LostWater"] = true
 	},
 	["coke"] = {
-		["Index"] = "leaf",
+		["Index"] = "coke",
 		["Name"] = "Folha de Cocaína",
 		["Type"] = "Consumível",
 		["Arrest"] = true,
@@ -957,6 +957,16 @@ local List = {
 		["Weight"] = 0.0,
 		["Delete"] = true,
 		["Economy"] = 60000,
+		["Rarity"] = "legendary"
+	},
+	["radiomhz"] = {
+		["Index"] = "radiomhz",
+		["Name"] = "Frequência Mhz",
+		["Type"] = "Consumível",
+		["Description"] = "Transceptor compacto e poderoso que oferece uma frequência de rádio exclusiva para comunicação segura entre membros do seu grupo, ideal para operações discretas em ambientes onde privacidade é essencial.",
+		["Weight"] = 0.0,
+		["Delete"] = true,
+		["Economy"] = 100000,
 		["Rarity"] = "legendary"
 	},
 	-- ALIANÇAS
@@ -1698,19 +1708,32 @@ local List = {
 		["Market"] = true,
 		["Rarity"] = "common"
 	},
+	["ammobox"] = {
+		["Index"] = "ammobox",
+		["Name"] = "Caixa de Munição",
+		["Description"] = "Robusta e durável, ideal para armazenamento seguro e organizado de cartuchos.",
+		["Type"] = "Consumível",
+		["Weight"] = 1.25,
+		["Unique"] = true,
+		["Market"] = true,
+		["Economy"] = 17250,
+		["Rarity"] = "rare"
+	},
 	["suitcase"] = {
 		["Index"] = "suitcase",
-		["Name"] = "Maleta",
+		["Name"] = "Mala de Dinheiro",
+		["Description"] = "Segura e discreta para guardar dinheiro, ideal para proteger e organizar seus recursos financeiros com tranquilidade.",
 		["Type"] = "Consumível",
 		["Weight"] = 1.0,
 		["Unique"] = true,
 		["Market"] = true,
-		["Economy"] = 275
+		["Economy"] = 275,
+		["Rarity"] = "common"
 	},
 	["medicbag"] = {
 		["Index"] = "medicbag",
-		["Name"] = "Maleta Médica",
-		["Description"] = "Um compartimento para guardar medicamentos.",
+		["Name"] = "Caixa de Medicamentos",
+		["Description"] = "Projetada para armazenamento seguro e organizado de medicamentos, garantindo acessibilidade e segurança no ambiente de saúde.",
 		["Repair"] = "repairkit01",
 		["Type"] = "Consumível",
 		["Durability"] = 168,
@@ -3555,6 +3578,26 @@ local List = {
 		["Market"] = true,
 		["LostWater"] = true
 	},
+	["emptypurifiedwater"] = {
+		["Index"] = "emptypurifiedwater",
+		["Name"] = "Galão de Água Vazio",
+		["Description"] = "Prático para transporte e armazenamento, ideal para reutilização ou descarte responsável.",
+		["Type"] = "Comum",
+		["Weight"] = 0.75,
+		["Economy"] = 1275,
+		["Market"] = true
+	},
+	["purifiedwater"] = {
+		["Index"] = "purifiedwater",
+		["Name"] = "Galão de Água Purificada",
+		["Description"] = "Essencial para hidratação segura e saudável, ideal para uso doméstico ou comercial.",
+		["Type"] = "Comum",
+		["Weight"] = 1.25,
+		["Economy"] = 1275,
+		["Market"] = true,
+		["Charges"] = 10,
+		["Empty"] = "emptypurifiedwater"
+	},
 	["races"] = {
 		["Index"] = "races",
 		["Name"] = "Cartão de Acesso R",
@@ -3564,7 +3607,8 @@ local List = {
 		["Weight"] = 0.15,
 		["Economy"] = 2125,
 		["Market"] = true,
-		["Charges"] = 5
+		["Charges"] = 5,
+		["Rarity"] = "epic"
 	},
 	["postit"] = {
 		["Index"] = "postit",
@@ -3610,6 +3654,7 @@ local List = {
 	["radio"] = {
 		["Index"] = "radio",
 		["Name"] = "Rádio",
+		["Description"] = "Transceptor compacto e confiável que proporciona uma comunicação clara e segura para seu grupo, com uma frequência exclusiva para manter suas conversas privadas e protegidas.",
 		["Type"] = "Consumível",
 		["Repair"] = "repairkit01",
 		["Durability"] = 168,
@@ -5344,6 +5389,13 @@ end
 function ItemNamed(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item]["Named"] or false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEMEMPTY
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ItemEmpty(Item)
+	local Item = SplitOne(Item)
+	return List[Item] and List[Item]["Empty"] or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLOCKDELETE

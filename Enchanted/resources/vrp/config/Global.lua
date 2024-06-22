@@ -34,6 +34,14 @@ Theme = {
 	["rare"] = "#a08cff",
 	["epic"] = "#ff8786",
 	["legendary"] = "#ffd086",
+	["accept"] = {
+		["letter"] = "#dcffe9", -- cor da letra
+		["background"] = "#3fa466", -- cor do fundo
+	},
+	["reject"] = {
+		["letter"] = "#ffe8e8", -- cor da letra
+		["background"] = "#ad4443", -- cor do fundo
+	},
 	["skinweapon"] = true
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

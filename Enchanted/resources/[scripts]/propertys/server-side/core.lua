@@ -370,9 +370,13 @@ function Creative.Clothes()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Consult = vRP.GetSrvData("Wardrobe:"..Passport,true)
+		local AmountClothes = (vRP.UserPremium(Passport) and 5 or 2)
 
 		for Table,_ in pairs(Consult) do
-			Clothes[#Clothes + 1] = Table
+			if AmountClothes > 0 then
+				Clothes[#Clothes + 1] = Table
+				AmountClothes = AmountClothes - 1
+			end
 		end
 	end
 
@@ -391,34 +395,40 @@ AddEventHandler("propertys:Clothes",function(Mode)
 		local Name = Split[2]
 
 		if Split[1] == "Save" then
+			if (vRP.UserPremium(Passport) and CountTable(Consult) >= 5) or (not vRP.UserPremium(Passport) and CountTable(Consult) >= 2) then
+				TriggerClientEvent("Notify",source,"Armário","Limite atingide de roupas.","amarelo",5000)
+
+				return false
+			end
+
 			local Keyboard = vKEYBOARD.Primary(source,"Nome")
 			if Keyboard then
 				local Check = sanitizeString(Keyboard[1],"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
 
 				if not Consult[Check] then
 					Consult[Check] = vSKINSHOP.Customization(source)
+					TriggerClientEvent("Notify",source,"Armário","<b>"..Check.."</b> adicionado.","verde",5000)
 					vRP.SetSrvData("Wardrobe:"..Passport,Consult,true)
-					TriggerClientEvent("propertys:ClothesReset",source)
-					TriggerClientEvent("Notify",source,"Propriedades","<b>"..Check.."</b> adicionado.","verde",5000)
+					TriggerClientEvent("propertys:Clothes",source)
 				else
-					TriggerClientEvent("Notify",source,"Propriedades","Nome escolhido já existe em seu armário.","amarelo",5000)
+					TriggerClientEvent("Notify",source,"Armário","Nome escolhido já existe em seu armário.","amarelo",5000)
 				end
 			end
 		elseif Split[1] == "Delete" then
 			if Consult[Name] then
 				Consult[Name] = nil
+				TriggerClientEvent("Notify",source,"Armário","<b>"..Name.."</b> removido.","verde",5000)
 				vRP.SetSrvData("Wardrobe:"..Passport,Consult,true)
-				TriggerClientEvent("propertys:ClothesReset",source)
-				TriggerClientEvent("Notify",source,"Propriedades","<b>"..Name.."</b> removido.","verde",5000)
+				TriggerClientEvent("propertys:Clothes",source)
 			else
-				TriggerClientEvent("Notify",source,"Propriedades","A vestimenta salva não se encontra mais em seu armário.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Armário","A vestimenta salva não se encontra mais em seu armário.","amarelo",5000)
 			end
 		elseif Split[1] == "Apply" then
 			if Consult[Name] then
 				TriggerClientEvent("skinshop:Apply",source,Consult[Name])
-				TriggerClientEvent("Notify",source,"Propriedades","<b>"..Name.."</b> aplicado.","verde",5000)
+				TriggerClientEvent("Notify",source,"Armário","<b>"..Name.."</b> aplicado.","verde",5000)
 			else
-				TriggerClientEvent("Notify",source,"Propriedades","A vestimenta salva não se encontra mais em seu armário.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Armário","A vestimenta salva não se encontra mais em seu armário.","amarelo",5000)
 			end
 		end
 	end

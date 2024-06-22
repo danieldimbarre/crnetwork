@@ -156,7 +156,8 @@ List = {
 			["GADGET_PARACHUTE"] = 225,
 			["axe"] = 1225,
 			["pickaxe"] = 1225,
-			["fishingrod"] = 1225
+			["fishingrod"] = 1225,
+			["emptypurifiedwater"] = 1275
 		}
 	},
 	["Eletronics"] = {

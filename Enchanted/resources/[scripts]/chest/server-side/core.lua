@@ -46,6 +46,18 @@ local ChestItens = {
 			["promissory"] = true
 		}
 	},
+	["ammobox"] = {
+		["Slots"] = 25,
+		["Weight"] = 12,
+		["Close"] = true,
+		["Itens"] = {
+			["WEAPON_PISTOL_AMMO"] = true,
+			["WEAPON_SMG_AMMO"] = true,
+			["WEAPON_RIFLE_AMMO"] = true,
+			["WEAPON_SHOTGUN_AMMO"] = true,
+			["WEAPON_MUSKET_AMMO"] = true
+		}
+	},
 	["medicbag"] = {
 		["Slots"] = 25,
 		["Weight"] = 10,

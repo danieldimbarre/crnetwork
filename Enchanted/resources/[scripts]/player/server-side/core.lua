@@ -19,7 +19,7 @@ RegisterServerEvent("player:Recycle")
 AddEventHandler("player:Recycle",function()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Recycled[Passport] and not exports["hud"]:Wanted(Passport) and vRP.Request(source,"Recicladora","Está apenas com itens que deseja reciclar em sua mochila?") then
+	if Passport and not Recycled[Passport] and not exports["hud"]:Wanted(Passport) and vRP.Request(source,"Recicladora","Efetuar reciclagem de todos os objetos?") then
 		local Notify = false
 		Recycled[Passport] = true
 		local Inv = vRP.Inventory(Passport)

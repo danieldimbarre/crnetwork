@@ -84,8 +84,11 @@ AddEventHandler("chest:Open",function(Name,Mode,Item,Blocked,Force)
 		end
 
 		Opened = true
-		Animation = true
-		vRP.playAnim(false,{"amb@prop_human_bum_bin@base","base"},true)
+
+		if Mode ~= "Item" then
+			Animation = true
+			vRP.playAnim(false,{"amb@prop_human_bum_bin@base","base"},true)
+		end
 
 		TriggerEvent("inventory:Open",{
 			Action = "Open",

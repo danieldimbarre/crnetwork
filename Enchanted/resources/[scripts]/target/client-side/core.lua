@@ -385,6 +385,10 @@ CreateThread(function()
 				event = "inventory:Drink",
 				label = "Beber",
 				tunnel = "server"
+			},{
+				event = "inventory:RefillGallon",
+				label = "Encher Galão",
+				tunnel = "server"
 			}
 		},
 		Distance = 0.75

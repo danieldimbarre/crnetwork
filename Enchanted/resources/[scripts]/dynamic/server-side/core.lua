@@ -109,7 +109,7 @@ function Creative.Clothes()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local Consult = vRP.GetSrvData("Clothes:"..Passport,true)
-		local AmountClothes = (vRP.UserPremium(Passport) and 4 or 2)
+		local AmountClothes = (vRP.UserPremium(Passport) and 5 or 2)
 
 		for Table,_ in pairs(Consult) do
 			if AmountClothes > 0 then

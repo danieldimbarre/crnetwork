@@ -151,8 +151,7 @@ AddEventHandler("plants:Water",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Plants[Number] and Plants[Number]["Timer"] and not CheckDeath(source,Number) and Plants[Number]["Timer"] >= os.time() then
-		local Consult = vRP.ConsultItem(Passport,"water")
-		if Plants[Number]["Water"] < 1.0 and Consult then
+		if Plants[Number]["Water"] < 1.0 and vRP.ConsultItem(Passport,"purifiedwater") then
 			Active[Passport] = true
 			Player(source)["state"]["Cancel"] = true
 			Player(source)["state"]["Buttons"] = true
@@ -161,7 +160,7 @@ AddEventHandler("plants:Water",function(Number)
 			vRPC.CreateObjects(source,"weapon@w_sp_jerrycan","fire","prop_wateringcan",1,28422,0.4,0.1,0.0,90.0,180.0,0.0)
 
 			SetTimeout(10000,function()
-				if Plants[Number] and Plants[Number]["Water"] < 1.0 and vRP.TakeItem(Passport,Consult["Item"],true) then
+				if Plants[Number] and Plants[Number]["Water"] < 1.0 and vRP.RemoveCharges(Passport,"purifiedwater") then
 					Plants[Number]["Water"] = Plants[Number]["Water"] + 0.20
 				end
 

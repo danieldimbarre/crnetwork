@@ -67,6 +67,16 @@ Use = {
 		end
 	end,
 
+	["radiomhz"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+
+		local Keyboard = vKEYBOARD.Options(source,"Frequência",{ "Ballas","Vagos","Families" })
+		if Keyboard and not exports["radio"]:Exist(Keyboard[1]) and vRP.TakeItem(Passport,Full,1,false,Slot) then
+			TriggerClientEvent("Notify",source,"Sucesso","Frequência adicionada.","verde",5000)
+			exports["radio"]:Add(Keyboard[1],Keyboard[2])
+		end
+	end,
+
 	["odb2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.InsideVehicle(source) then
 			TriggerClientEvent("notebook:Open",source)
@@ -114,6 +124,12 @@ Use = {
 
 			TriggerClientEvent("notepad:Open",source,Name,Message)
 			TriggerClientEvent("inventory:Close",source)
+		end
+	end,
+
+	["ammobox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if Split and Split[3] then
+			TriggerClientEvent("chest:Open",source,"ammobox:"..Split[3],"Item",false,false,true)
 		end
 	end,
 

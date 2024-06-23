@@ -11,13 +11,12 @@ vSERVER = Tunnel.getInterface("propertys")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Init = ""
 local Blips = {}
-local Chest = ""
-local Theft = nil
-local Hoverfy = {}
 local Interior = ""
+local Inside = false
 local Opened = false
+local Policed = false
+local Stealing = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -28,7 +27,7 @@ CreateThread(function()
 		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
 
-			if Init == "" then
+			if not Inside then
 				for Name,v in pairs(Propertys) do
 					if #(Coords - v["Coords"]) <= 0.75 then
 						TimeDistance = 1
@@ -38,7 +37,9 @@ CreateThread(function()
 
 							if Consult then
 								if Consult == "Nothing" then
-									exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
+									if not Propertys[Name]["Galpão"] then
+										exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
+									end
 
 									for Line,v in pairs(Informations) do
 										if (Propertys[Name]["Galpão"] and Line == "Galpão") or (not Propertys[Name]["Galpão"] and Line ~= "Galpão") then
@@ -64,13 +65,16 @@ CreateThread(function()
 										exports["dynamic"]:AddButton("Credenciais","Reconfigurar os cartões de acesso.","propertys:Credentials",Name,false,true)
 										exports["dynamic"]:AddButton("Cartões","Comprar um novo cartão de acesso.","propertys:Item",Name,false,true)
 										exports["dynamic"]:AddButton("Fechadura","Trancar/Destrancar a propriedade.","propertys:Lock",Name,false,true)
-										exports["dynamic"]:AddButton("Garagem","Adicionar/Reajustar a garagem.","garages:Propertys",Name,false,true)
+
+										if not Propertys[Name]["Galpão"] then
+											exports["dynamic"]:AddButton("Garagem","Adicionar/Reajustar a garagem.","garages:Propertys",Name,false,true)
+										end
+
 										exports["dynamic"]:AddButton("Vender","Se desfazer da propriedade.","propertys:Sell",Name,false,true)
 										exports["dynamic"]:AddButton("Transferência","Mudar proprietário.","propertys:Transfer",Name,false,true)
 										exports["dynamic"]:AddButton("Hipoteca",Consult["Tax"],"","",false,false)
 
 										Interior = Consult["Interior"]
-
 										exports["dynamic"]:openMenu()
 									else
 										Interior = "Hotel"
@@ -78,58 +82,55 @@ CreateThread(function()
 										TriggerEvent("propertys:Enter",Name,false)
 									end
 								end
-							else
+							elseif not Propertys[Name]["Galpão"] then
 								exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
-
 								exports["dynamic"]:openMenu()
 							end
 						end
 					end
 				end
-			elseif Interiors[Interior] then
-				SetPlayerBlipPositionThisFrame(Propertys[Init]["Coords"]["x"],Propertys[Init]["Coords"]["y"])
+			elseif Propertys[Inside] and Internal[Interior] then
+				SetPlayerBlipPositionThisFrame(Propertys[Inside]["Coords"]["x"],Propertys[Inside]["Coords"]["y"])
 
-				if Coords["z"] < (Interiors[Interior]["Exit"]["z"] - 25.0) then
-					SetEntityCoords(Ped,Interiors[Interior]["Exit"],false,false,false,false)
+				if Coords["z"] < (Internal[Interior]["Exit"]["z"] - 25.0) then
+					SetEntityCoords(Ped,Internal[Interior]["Exit"],false,false,false,false)
 				end
 
-				if Robbery[Interior] and Robbery[Interior]["Furniture"] and Theft and Theft < GetGameTimer() and GetEntitySpeed(Ped) > 2 then
-					vSERVER.Police(Propertys[Init]["Coords"])
-					Theft = GetGameTimer() + 60000
+				if Internal[Interior]["Furniture"] and Policed and Policed <= GetGameTimer() and GetEntitySpeed(Ped) > 2 then
+					vSERVER.Police(Propertys[Inside]["Coords"])
+					Policed = GetGameTimer() + 60000
 				end
 
-				for Line,v in pairs(Interiors[Interior]) do
-					if #(Coords - v) <= 1.0 then
-						TimeDistance = 1
-
+				for Line,v in pairs(Internal[Interior]) do
+					if Line ~= "Furniture" and #(Coords - v) <= 1.0 then
 						if Line == "Exit" and IsControlJustPressed(1,38) then
-							if Theft and Robbery[Interior] and Robbery[Interior]["Furniture"] then
-								for Index in pairs(Robbery[Interior]["Furniture"]) do
+							if Stealing and Internal[Interior]["Furniture"] then
+								for Index in pairs(Internal[Interior]["Furniture"]) do
 									exports["target"]:RemCircleZone("Robberys:"..Index)
 								end
 							end
 
-							SetEntityCoords(Ped,Propertys[Init]["Coords"],false,false,false,false)
-							vSERVER.Toggle(Init,"Exit")
-							Interior = ""
-							Theft = nil
-							Chest = ""
-							Init = ""
-						elseif not Theft and (Line == "Vault" or Line == "Fridge") and IsControlJustPressed(1,38) and vSERVER.Permission(Init) then
+							SetEntityCoords(Ped,Propertys[Inside]["Coords"],false,false,false,false)
+							vSERVER.Toggle(Inside,"Exit")
+							Stealing = false
+							Policed = false
+							Inside = false
+						elseif not Stealing and (Line == "Vault" or Line == "Fridge") and IsControlJustPressed(1,38) and vSERVER.Permission(Inside) then
 							vRP.playAnim(false,{"amb@prop_human_bum_bin@base","base"},true)
-							Opened = true
-							Chest = Line
+							Opened = Line
 
 							TriggerEvent("inventory:Open",{
 								Action = "Open",
 								Type = "Chest",
 								Resource = "propertys"
 							})
-						elseif not Theft and Line == "Clothes" and IsControlJustPressed(1,38) then
+						elseif not Stealing and Line == "Clothes" and IsControlJustPressed(1,38) then
 							ClothesMenu()
 						end
 					end
 				end
+
+				TimeDistance = 1
 			end
 		end
 
@@ -169,65 +170,46 @@ end
 -- PROPERTYS:ENTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("propertys:Enter")
-AddEventHandler("propertys:Enter",function(Name,Thefting)
-	if Thefting then
-		Interior = Thefting
-		Theft = GetGameTimer() + 10000
+AddEventHandler("propertys:Enter",function(Name,Theft)
+	if Theft then
+		Stealing = true
+		Interior = Theft
+		Policed = GetGameTimer() + 15000
 		TriggerEvent("player:Residuals","Resquício de Línter")
 
-		for Number,v in pairs(Robbery[Interior]["Furniture"]) do
-			exports["target"]:AddCircleZone("Robberys:"..Number,v,0.1,{
-				name = "Robberys:"..Number,
-				heading = 0.0,
-				useZ = true
-			},{
-				shop = Number,
-				Distance = 1.25,
-				options = {
-					{
-						event = "propertys:RobberyItem",
-						label = "Roubar",
-						tunnel = "server",
-						service = Name
+		if Internal[Interior] and Internal[Interior]["Furniture"] then
+			for Number,v in pairs(Internal[Interior]["Furniture"]) do
+				exports["target"]:AddCircleZone("Robberys:"..Number,v,0.1,{
+					name = "Robberys:"..Number,
+					heading = 0.0,
+					useZ = true
+				},{
+					shop = Number,
+					Distance = 1.25,
+					options = {
+						{
+							event = "propertys:RobberyItem",
+							label = "Roubar",
+							tunnel = "server",
+							service = Name
+						}
 					}
-				}
-			})
-		end
-	else
-		TriggerEvent("dynamic:Close")
-
-		if not Hoverfy[Name] and Interiors[Interior] then
-			local Tables = {}
-			Hoverfy[Name] = true
-
-			for Index,v in pairs(Interiors[Interior]) do
-				local Message = "Saída"
-
-				if Index == "Vault" then
-					Message = "Baú"
-				elseif Index == "Fridge" then
-					Message = "Geladeira"
-				elseif Index == "Clothes" then
-					Message = "Armário"
-				end
-
-				Tables[#Tables + 1] = { v,0.75,"E",Message,"Pressione para acessar" }
+				})
 			end
-
-			TriggerEvent("hoverfy:Insert",Tables)
 		end
 	end
 
-	Init = Name
+	Inside = Name
 	local Ped = PlayerPedId()
-	vSERVER.Toggle(Init,"Enter")
-	SetEntityCoords(Ped,Interiors[Interior]["Exit"],false,false,false,false)
+	TriggerEvent("dynamic:Close")
+	vSERVER.Toggle(Inside,"Enter")
+	SetEntityCoords(Ped,Internal[Interior]["Exit"],false,false,false,false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Mount",function(Data,Callback)
-	local Primary,Secondary,PrimaryWeight,SecondaryWeight = vSERVER.Mount(Init,Chest)
+	local Primary,Secondary,PrimaryWeight,SecondaryWeight = vSERVER.Mount(Inside,Opened)
 	if Primary then
 		Callback({ Primary = Primary, Secondary = Secondary, PrimaryMaxWeight = PrimaryWeight, SecondaryMaxWeight = SecondaryWeight })
 	end
@@ -247,7 +229,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
 	if MumbleIsConnected() then
-		vSERVER.Take(Data["slot"],Data["amount"],Data["target"],Init,Chest)
+		vSERVER.Take(Data["slot"],Data["amount"],Data["target"],Inside,Opened)
 	end
 
 	Callback("Ok")
@@ -257,7 +239,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Store",function(Data,Callback)
 	if MumbleIsConnected() then
-		vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"],Init,Chest)
+		vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"],Inside,Opened)
 	end
 
 	Callback("Ok")
@@ -267,7 +249,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Update",function(Data,Callback)
 	if MumbleIsConnected() then
-		vSERVER.Update(Data["slot"],Data["target"],Data["amount"],Init,Chest)
+		vSERVER.Update(Data["slot"],Data["target"],Data["amount"],Inside,Opened)
 	end
 
 	Callback("Ok")

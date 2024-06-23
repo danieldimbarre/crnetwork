@@ -76,8 +76,8 @@ local List = {
 		["Weight"] = 3.25,
 		["Economy"] = 425,
 		["Recycle"] = {
-			["copper"] = 15,
-			["aluminum"] = 15
+			["copper"] = 5,
+			["aluminum"] = 7
 		}
 	},
 	["repairkit02"] = {
@@ -89,10 +89,9 @@ local List = {
 		["Weight"] = 3.75,
 		["Economy"] = 875,
 		["Recycle"] = {
-			["sheetmetal"] = 1,
-			["roadsigns"] = 1,
-			["copper"] = 15,
-			["aluminum"] = 15
+			["scotchtape"] = 1,
+			["copper"] = 10,
+			["aluminum"] = 12
 		}
 	},
 	["repairkit03"] = {
@@ -105,8 +104,9 @@ local List = {
 		["Economy"] = 2225,
 		["Recycle"] = {
 			["sheetmetal"] = 1,
-			["roadsigns"] = 1,
-			["copper"] = 35,
+			["roadsigns"] = 2,
+			["scotchtape"] = 2,
+			["copper"] = 30,
 			["aluminum"] = 35
 		}
 	},
@@ -119,10 +119,11 @@ local List = {
 		["Weight"] = 4.75,
 		["Economy"] = 4275,
 		["Recycle"] = {
-			["sheetmetal"] = 1,
-			["roadsigns"] = 1,
-			["copper"] = 45,
-			["aluminum"] = 45
+			["sheetmetal"] = 3,
+			["roadsigns"] = 3,
+			["scotchtape"] = 3,
+			["copper"] = 50,
+			["aluminum"] = 35
 		}
 	},
 	-- MECANICO
@@ -135,8 +136,8 @@ local List = {
 		["Max"] = 3,
 		["Economy"] = 925,
 		["Recycle"] = {
-			["rubber"] = 15,
-			["copper"] = 5,
+			["rubber"] = 25,
+			["copper"] = 10,
 			["aluminum"] = 5
 		}
 	},
@@ -151,9 +152,10 @@ local List = {
 		["Rarity"] = "common",
 		["Economy"] = 2775,
 		["Recycle"] = {
-			["rubber"] = 35,
-			["copper"] = 25,
-			["aluminum"] = 15
+			["screwnuts"] = 1,
+			["rubber"] = 50,
+			["copper"] = 40,
+			["aluminum"] = 35
 		}
 	},
 	["plate"] = {
@@ -164,8 +166,8 @@ local List = {
 		["Weight"] = 0.75,
 		["Economy"] = 975,
 		["Recycle"] = {
-			["copper"] = 15,
-			["aluminum"] = 15
+			["copper"] = 25,
+			["aluminum"] = 20
 		}
 	},
 	["nitro"] = {
@@ -176,9 +178,11 @@ local List = {
 		["Weight"] = 7.25,
 		["Economy"] = 2775,
 		["Recycle"] = {
-			["glass"] = 50,
-			["copper"] = 15,
-			["aluminum"] = 15
+			["screws"] = 1,
+			["screwnuts"] = 1,
+			["glass"] = 60,
+			["copper"] = 25,
+			["aluminum"] = 20
 		}
 	},
 	["tyres"] = {
@@ -189,7 +193,7 @@ local List = {
 		["Max"] = 4,
 		["Economy"] = 375,
 		["Recycle"] = {
-			["rubber"] = 15
+			["rubber"] = 20
 		}
 	},
 	-- CLONES
@@ -683,8 +687,8 @@ local List = {
 		["Blueprint"] = true,
 		["Recycle"] = {
 			["batteryaa"] = 1,
-			["glass"] = 25,
-			["plastic"] = 15
+			["glass"] = 35,
+			["plastic"] = 30
 		}
 	},
 	["ATTACH_CROSSHAIR"] = {
@@ -697,10 +701,10 @@ local List = {
 		["Economy"] = 2725,
 		["Blueprint"] = true,
 		["Recycle"] = {
-			["batteryaaplus"] = 1,
-			["glass"] = 25,
-			["plastic"] = 25,
-			["copper"] = 5
+			["batteryaa"] = 1,
+			["glass"] = 45,
+			["plastic"] = 45,
+			["copper"] = 10
 		}
 	},
 	["ATTACH_SILENCER"] = {
@@ -715,8 +719,9 @@ local List = {
 		["Recycle"] = {
 			["scotchtape"] = 1,
 			["insulatingtape"] = 1,
-			["plastic"] = 25,
-			["copper"] = 25
+			["emptybottle"] = 1,
+			["plastic"] = 60,
+			["copper"] = 60
 		}
 	},
 	["ATTACH_MAGAZINE"] = {
@@ -729,9 +734,9 @@ local List = {
 		["Economy"] = 2225,
 		["Blueprint"] = true,
 		["Recycle"] = {
-			["rubber"] = 25,
-			["plastic"] = 25,
-			["aluminum"] = 5
+			["rubber"] = 45,
+			["plastic"] = 45,
+			["aluminum"] = 10
 		}
 	},
 	["ATTACH_GRIP"] = {
@@ -744,6 +749,7 @@ local List = {
 		["Economy"] = 1725,
 		["Blueprint"] = true,
 		["Recycle"] = {
+			["scotchtape"] = 1,
 			["rubber"] = 25,
 			["plastic"] = 25
 		}
@@ -976,10 +982,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.15,
 		["Economy"] = 525,
-		["Named"] = true,
-		["Recycle"] = {
-			["dollar"] = 125
-		}
+		["Named"] = true
 	},
 	-- COMPONENTES
 	["circuit"] = {
@@ -1029,10 +1032,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.045,
 		["Economy"] = 8,
-		["Blueprint"] = true,
-		["Recycle"] = {
-			["dollar"] = 8
-		}
+		["Blueprint"] = true
 	},
 	["glass"] = {
 		["Index"] = "glass",
@@ -1040,10 +1040,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.045,
 		["Economy"] = 8,
-		["Blueprint"] = true,
-		["Recycle"] = {
-			["dollar"] = 8
-		}
+		["Blueprint"] = true
 	},
 	["rubber"] = {
 		["Index"] = "rubber",
@@ -1051,10 +1048,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.045,
 		["Economy"] = 8,
-		["Blueprint"] = true,
-		["Recycle"] = {
-			["dollar"] = 8
-		}
+		["Blueprint"] = true
 	},
 	["aluminum"] = {
 		["Index"] = "aluminum",
@@ -1062,10 +1056,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.045,
 		["Economy"] = 10,
-		["Blueprint"] = true,
-		["Recycle"] = {
-			["dollar"] = 10
-		}
+		["Blueprint"] = true
 	},
 	["copper"] = {
 		["Index"] = "copper",
@@ -1073,10 +1064,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.045,
 		["Economy"] = 10,
-		["Blueprint"] = true,
-		["Recycle"] = {
-			["dollar"] = 10
-		}
+		["Blueprint"] = true
 	},
 	["sulfuric"] = {
 		["Index"] = "sulfuric",
@@ -1084,10 +1072,7 @@ local List = {
 		["Type"] = "Consumível",
 		["Weight"] = 0.45,
 		["Economy"] = 75,
-		["Blueprint"] = true,
-		["Recycle"] = {
-			["dollar"] = 25
-		}
+		["Blueprint"] = true
 	},
 	["acetone"] = {
 		["Index"] = "acetone",
@@ -1095,10 +1080,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.25,
 		["Economy"] = 55,
-		["Blueprint"] = true,
-		["Recycle"] = {
-			["dollar"] = 15
-		}
+		["Blueprint"] = true
 	},
 	["saline"] = {
 		["Index"] = "saline",
@@ -1106,10 +1088,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.35,
 		["Economy"] = 35,
-		["Blueprint"] = true,
-		["Recycle"] = {
-			["dollar"] = 10
-		}
+		["Blueprint"] = true
 	},
 	["alcohol"] = {
 		["Index"] = "alcohol",
@@ -1117,10 +1096,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.55,
 		["Economy"] = 45,
-		["Blueprint"] = true,
-		["Recycle"] = {
-			["dollar"] = 15
-		}
+		["Blueprint"] = true
 	},
 	["gunpowder"] = {
 		["Index"] = "gunpowder",
@@ -1139,7 +1115,11 @@ local List = {
 		["Weight"] = 0.75,
 		["Market"] = true,
 		["Economy"] = 275,
-		["Blueprint"] = true
+		["Blueprint"] = true,
+		["Recycle"] = {
+			["copper"] = 6,
+			["aluminum"] = 7
+		}
 	},
 	["smgbody"] = {
 		["Index"] = "smgbody",
@@ -1149,7 +1129,11 @@ local List = {
 		["Weight"] = 0.75,
 		["Market"] = true,
 		["Economy"] = 525,
-		["Blueprint"] = true
+		["Blueprint"] = true,
+		["Recycle"] = {
+			["copper"] = 15,
+			["aluminum"] = 10
+		}
 	},
 	["riflebody"] = {
 		["Index"] = "riflebody",
@@ -1159,7 +1143,11 @@ local List = {
 		["Weight"] = 0.75,
 		["Market"] = true,
 		["Economy"] = 975,
-		["Blueprint"] = true
+		["Blueprint"] = true,
+		["Recycle"] = {
+			["metalspring"] = 1,
+			["aluminum"] = 5
+		}
 	},
 	["scrapmetal"] = {
 		["Index"] = "scrapmetal",
@@ -1175,6 +1163,18 @@ local List = {
 		["Weight"] = 0.0,
 		["Economy"] = 1
 	},
+	["metalspring"] = {
+		["Index"] = "metalspring",
+		["Name"] = "Mola de Metal",
+		["Type"] = "Comum",
+		["Weight"] = 0.35,
+		["Economy"] = 425,
+		["Blueprint"] = true,
+		["Recycle"] = {
+			["copper"] = 8,
+			["aluminum"] = 10
+		}
+	},
 	["techtrash"] = {
 		["Index"] = "techtrash",
 		["Name"] = "Lixo Eletrônico",
@@ -1185,7 +1185,8 @@ local List = {
 		["Blueprint"] = true,
 		["LostWater"] = true,
 		["Recycle"] = {
-			["dollar"] = 30
+			["copper"] = 2,
+			["aluminum"] = 2
 		}
 	},
 	["tarp"] = {
@@ -1196,7 +1197,7 @@ local List = {
 		["Economy"] = 65,
 		["Blueprint"] = true,
 		["Recycle"] = {
-			["dollar"] = 20
+			["plastic"] = 3
 		}
 	},
 	["sheetmetal"] = {
@@ -1207,7 +1208,7 @@ local List = {
 		["Economy"] = 65,
 		["Blueprint"] = true,
 		["Recycle"] = {
-			["dollar"] = 20
+			["aluminum"] = 3
 		}
 	},
 	["roadsigns"] = {
@@ -1218,7 +1219,7 @@ local List = {
 		["Economy"] = 65,
 		["Blueprint"] = true,
 		["Recycle"] = {
-			["dollar"] = 20
+			["copper"] = 3
 		}
 	},
 	["explosives"] = {
@@ -1228,8 +1229,11 @@ local List = {
 		["Arrest"] = true,
 		["Weight"] = 0.45,
 		["LostWater"] = true,
-		["Economy"] = 105,
-		["Blueprint"] = true
+		["Economy"] = 225,
+		["Blueprint"] = true,
+		["Recycle"] = {
+			["gunpowder"] = 1
+		}
 	},
 	["scotchtape"] = {
 		["Index"] = "scotchtape",
@@ -2193,7 +2197,7 @@ local List = {
 		["Weight"] = 0.75,
 		["Economy"] = 725,
 		["Recycle"] = {
-			["scrapmetal"] = 65
+			["scrapmetal"] = 60
 		}
 	},
 	["WEAPON_PISTOL"] = {
@@ -2217,7 +2221,7 @@ local List = {
 		},
 		["Economy"] = 5725,
 		["Recycle"] = {
-			["scrapmetal"] = 525
+			["scrapmetal"] = 475
 		}
 	},
 	["WEAPON_PISTOL_MK2"] = {
@@ -2242,7 +2246,7 @@ local List = {
 		},
 		["Economy"] = 6225,
 		["Recycle"] = {
-			["scrapmetal"] = 575
+			["scrapmetal"] = 500
 		}
 	},
 	["WEAPON_COMPACTRIFLE"] = {
@@ -2263,7 +2267,7 @@ local List = {
 		},
 		["Economy"] = 13225,
 		["Recycle"] = {
-			["scrapmetal"] = 1275
+			["scrapmetal"] = 1075
 		}
 	},
 	["WEAPON_APPISTOL"] = {
@@ -2287,7 +2291,7 @@ local List = {
 		},
 		["Economy"] = 6225,
 		["Recycle"] = {
-			["scrapmetal"] = 575
+			["scrapmetal"] = 500
 		}
 	},
 	["WEAPON_HEAVYPISTOL"] = {
@@ -2311,7 +2315,7 @@ local List = {
 			["ATTACH_SILENCER"] = "COMPONENT_AT_PI_SUPP"
 		},
 		["Recycle"] = {
-			["scrapmetal"] = 675
+			["scrapmetal"] = 575
 		}
 	},
 	["WEAPON_MACHINEPISTOL"] = {
@@ -2334,7 +2338,7 @@ local List = {
 		},
 		["Economy"] = 8225,
 		["Recycle"] = {
-			["scrapmetal"] = 775
+			["scrapmetal"] = 675
 		}
 	},
 	["WEAPON_MICROSMG"] = {
@@ -2359,7 +2363,7 @@ local List = {
 		},
 		["Economy"] = 13225,
 		["Recycle"] = {
-			["scrapmetal"] = 1275
+			["scrapmetal"] = 1075
 		}
 	},
 	["WEAPON_RPG"] = {
@@ -2396,7 +2400,7 @@ local List = {
 		},
 		["Economy"] = 13225,
 		["Recycle"] = {
-			["scrapmetal"] = 1275
+			["scrapmetal"] = 1075
 		}
 	},
 	["WEAPON_SNSPISTOL"] = {
@@ -2443,7 +2447,7 @@ local List = {
 		},
 		["Economy"] = 5225,
 		["Recycle"] = {
-			["scrapmetal"] = 475
+			["scrapmetal"] = 425
 		}
 	},
 	["WEAPON_VINTAGEPISTOL"] = {
@@ -2490,7 +2494,7 @@ local List = {
 		},
 		["Economy"] = 8225,
 		["Recycle"] = {
-			["scrapmetal"] = 725
+			["scrapmetal"] = 675
 		}
 	},
 	["WEAPON_COMBATPISTOL"] = {
@@ -2514,7 +2518,7 @@ local List = {
 			["ATTACH_SILENCER"] = "COMPONENT_AT_PI_SUPP"
 		},
 		["Recycle"] = {
-			["scrapmetal"] = 575
+			["scrapmetal"] = 500
 		}
 	},
 	["WEAPON_CARBINERIFLE"] = {
@@ -2539,7 +2543,7 @@ local List = {
 			["ATTACH_CROSSHAIR"] = "COMPONENT_AT_SCOPE_MEDIUM"
 		},
 		["Recycle"] = {
-			["scrapmetal"] = 2175
+			["scrapmetal"] = 1825
 		}
 	},
 	["WEAPON_CARBINERIFLE_MK2"] = {
@@ -2564,7 +2568,7 @@ local List = {
 		},
 		["Economy"] = 24225,
 		["Recycle"] = {
-			["scrapmetal"] = 2375
+			["scrapmetal"] = 1925
 		}
 	},
 	["WEAPON_ADVANCEDRIFLE"] = {
@@ -2588,7 +2592,7 @@ local List = {
 		},
 		["Economy"] = 22725,
 		["Recycle"] = {
-			["scrapmetal"] = 2175
+			["scrapmetal"] = 1825
 		}
 	},
 	["WEAPON_BULLPUPRIFLE"] = {
@@ -2613,7 +2617,7 @@ local List = {
 		},
 		["Economy"] = 22725,
 		["Recycle"] = {
-			["scrapmetal"] = 2175
+			["scrapmetal"] = 1825
 		}
 	},
 	["WEAPON_BULLPUPRIFLE_MK2"] = {
@@ -2638,7 +2642,7 @@ local List = {
 		},
 		["Economy"] = 24225,
 		["Recycle"] = {
-			["scrapmetal"] = 2375
+			["scrapmetal"] = 1925
 		}
 	},
 	["WEAPON_SPECIALCARBINE"] = {
@@ -2663,7 +2667,7 @@ local List = {
 		},
 		["Economy"] = 22725,
 		["Recycle"] = {
-			["scrapmetal"] = 2175
+			["scrapmetal"] = 1825
 		}
 	},
 	["WEAPON_SPECIALCARBINE_MK2"] = {
@@ -2687,7 +2691,7 @@ local List = {
 		},
 		["Economy"] = 24225,
 		["Recycle"] = {
-			["scrapmetal"] = 2375
+			["scrapmetal"] = 1925
 		}
 	},
 	["WEAPON_PUMPSHOTGUN"] = {
@@ -2709,7 +2713,7 @@ local List = {
 			["ATTACH_SILENCER"] = "COMPONENT_AT_SR_SUPP"
 		},
 		["Recycle"] = {
-			["scrapmetal"] = 1275
+			["scrapmetal"] = 1025
 		}
 	},
 	["WEAPON_PUMPSHOTGUN_MK2"] = {
@@ -2733,7 +2737,7 @@ local List = {
 		},
 		["Economy"] = 15275,
 		["Recycle"] = {
-			["scrapmetal"] = 1475
+			["scrapmetal"] = 1225
 		}
 	},
 	["WEAPON_MUSKET"] = {
@@ -2769,7 +2773,7 @@ local List = {
 		["Weight"] = 5.75,
 		["Economy"] = 13225,
 		["Recycle"] = {
-			["scrapmetal"] = 1275
+			["scrapmetal"] = 1025
 		}
 	},
 	["WEAPON_SMG"] = {
@@ -2793,7 +2797,7 @@ local List = {
 			["ATTACH_CROSSHAIR"] = "COMPONENT_AT_SCOPE_MACRO_02"
 		},
 		["Recycle"] = {
-			["scrapmetal"] = 1125
+			["scrapmetal"] = 1025
 		}
 	},
 	["WEAPON_SMG_MK2"] = {
@@ -2819,7 +2823,7 @@ local List = {
 		},
 		["Economy"] = 15225,
 		["Recycle"] = {
-			["scrapmetal"] = 1375
+			["scrapmetal"] = 1225
 		}
 	},
 	["WEAPON_TACTICALRIFLE"] = {
@@ -2844,7 +2848,7 @@ local List = {
 			["ATTACH_CROSSHAIR"] = "COMPONENT_AT_SCOPE_MACRO_02"
 		},
 		["Recycle"] = {
-			["scrapmetal"] = 2375
+			["scrapmetal"] = 1925
 		}
 	},
 	["WEAPON_HEAVYRIFLE"] = {
@@ -2869,7 +2873,7 @@ local List = {
 		},
 		["Economy"] = 24225,
 		["Recycle"] = {
-			["scrapmetal"] = 2375
+			["scrapmetal"] = 1925
 		}
 	},
 	["WEAPON_ASSAULTRIFLE"] = {
@@ -2894,7 +2898,7 @@ local List = {
 		},
 		["Economy"] = 22725,
 		["Recycle"] = {
-			["scrapmetal"] = 2175
+			["scrapmetal"] = 1825
 		}
 	},
 	["WEAPON_ASSAULTRIFLE_MK2"] = {
@@ -2919,7 +2923,7 @@ local List = {
 		},
 		["Economy"] = 24225,
 		["Recycle"] = {
-			["scrapmetal"] = 2375
+			["scrapmetal"] = 1925
 		}
 	},
 	["WEAPON_ASSAULTSMG"] = {
@@ -2943,7 +2947,7 @@ local List = {
 		},
 		["Economy"] = 15225,
 		["Recycle"] = {
-			["scrapmetal"] = 1475
+			["scrapmetal"] = 1225
 		}
 	},
 	["WEAPON_GUSENBERG"] = {
@@ -2964,7 +2968,7 @@ local List = {
 		},
 		["Economy"] = 15225,
 		["Recycle"] = {
-			["scrapmetal"] = 1475
+			["scrapmetal"] = 1225
 		}
 	},
 	-- MEDICINAL
@@ -2976,7 +2980,7 @@ local List = {
 		["Economy"] = 45,
 		["Market"] = true,
 		["Recycle"] = {
-			["plastic"] = 3
+			["plastic"] = 2
 		}
 	},
 	["syringe02"] = {
@@ -2987,7 +2991,7 @@ local List = {
 		["Economy"] = 45,
 		["Market"] = true,
 		["Recycle"] = {
-			["plastic"] = 3
+			["plastic"] = 2
 		}
 	},
 	["syringe03"] = {
@@ -2998,7 +3002,7 @@ local List = {
 		["Economy"] = 45,
 		["Market"] = true,
 		["Recycle"] = {
-			["plastic"] = 3
+			["plastic"] = 2
 		}
 	},
 	["syringe04"] = {
@@ -3009,7 +3013,7 @@ local List = {
 		["Economy"] = 45,
 		["Market"] = true,
 		["Recycle"] = {
-			["plastic"] = 3
+			["plastic"] = 2
 		}
 	},
 	["bandage"] = {
@@ -3541,8 +3545,8 @@ local List = {
 		["Weight"] = 1.0,
 		["Economy"] = 425,
 		["Recycle"] = {
-			["glass"] = 15,
-			["plastic"] = 15
+			["glass"] = 10,
+			["plastic"] = 12
 		}
 	},
 	["camera"] = {
@@ -3554,8 +3558,8 @@ local List = {
 		["LostWater"] = true,
 		["Economy"] = 425,
 		["Recycle"] = {
-			["glass"] = 15,
-			["plastic"] = 15
+			["glass"] = 10,
+			["plastic"] = 12
 		}
 	},
 	["creditcard"] = {
@@ -3605,7 +3609,7 @@ local List = {
 		["Type"] = "Comum",
 		["Arrest"] = true,
 		["Weight"] = 0.15,
-		["Economy"] = 2125,
+		["Economy"] = 2275,
 		["Market"] = true,
 		["Charges"] = 5,
 		["Rarity"] = "epic"
@@ -3628,7 +3632,7 @@ local List = {
 		["LostWater"] = true,
 		["Economy"] = 825,
 		["Recycle"] = {
-			["plastic"] = 35
+			["plastic"] = 40
 		}
 	},
 	["odb2"] = {
@@ -3765,8 +3769,8 @@ local List = {
 		["Economy"] = 1225,
 		["Market"] = true,
 		["Recycle"] = {
-			["copper"] = 20,
-			["aluminum"] = 15
+			["copper"] = 30,
+			["aluminum"] = 25
 		}
 	},
 	["rope"] = {
@@ -3791,7 +3795,7 @@ local List = {
 		["Market"] = true,
 		["Recycle"] = {
 			["tarp"] = 1,
-			["rubber"] = 15
+			["rubber"] = 35
 		}
 	},
 	["cigarette"] = {
@@ -3905,7 +3909,7 @@ local List = {
 		["LostWater"] = true,
 		["Economy"] = 425,
 		["Recycle"] = {
-			["glass"] = 5,
+			["glass"] = 10,
 			["plastic"] = 10
 		}
 	},
@@ -4655,6 +4659,18 @@ local List = {
 		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>M16</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 12115
+		},
+		["Type"] = "Consumível",
+		["Rarity"] = "epic",
+		["Weight"] = 0.0,
+		["Economy"] = 0
+	},
+	["blueprint_metalspring"] = {
+		["Index"] = "blueprint",
+		["Name"] = "Aprendizado: Mola de Metal",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Mola de Metal</epic>.",
+		["Recycle"] = {
+			["blueprint_fragment"] = 265
 		},
 		["Type"] = "Consumível",
 		["Rarity"] = "epic",

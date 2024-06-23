@@ -201,7 +201,7 @@ function Creative.Mount()
 
 				if not v["desc"] then
 					if Item == "vehiclekey" and Split[3] then
-						v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
 					elseif ItemNamed(Item) and Split[2] then
 						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 					end
@@ -243,7 +243,7 @@ function Creative.Mount()
 
 				if not v["desc"] then
 					if Split[1] == "vehiclekey" and Split[3] then
-						v["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
 					elseif ItemNamed(Split[1]) and Split[2] then
 						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 					end

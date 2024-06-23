@@ -10,24 +10,24 @@ Tunnel.bindInterface("keyboard",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Status = ""
+local Results = false
 local Progress = false
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FAILURE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("failure",function(Data,Callback)
+	Results = false
+	Progress = false
+	SetNuiFocus(false,false)
+
+	Callback("Ok")
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SUCESS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("success",function(Data,Callback)
 	SetNuiFocus(false,false)
-	Status = Data["data"]
-	Progress = false
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- FAILURE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("failure",function(Data,Callback)
-	SetNuiFocus(false,false)
-	Status = "undefined"
+	Results = Data["data"]
 	Progress = false
 
 	Callback("Ok")
@@ -40,17 +40,14 @@ function Keyboard(Data)
 
 	Progress = true
 	SetNuiFocus(true,true)
+	SetCursorLocation(0.5,0.5)
 	SendNUIMessage({ name = "Open", payload = Data })
 
 	while Progress do
 		Wait(0)
 	end
 
-	if Status ~= "undefined" then
-		return Status
-	end
-
-	return false
+	return Results
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PASSWORD
@@ -69,12 +66,37 @@ function Password(First)
 		}
 	})
 
-	if Array then
-		if not Array[1]["input"] then
-			return false
-		end
+	if Array and Array["1"] and Array["1"]["input"] ~= "" then
+		return { Array["1"]["input"] }
+	end
 
-		return { Array[1]["input"] }
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- OPTIONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Options(First,Second)
+	local Array = Keyboard({
+		title = "Formulário",
+		subtitle = "Preencha os campos abaixo",
+		rows = {
+			{
+				id = 1,
+				mode = "text",
+				placeholder = First,
+				value = ""
+			},{
+				id = 2,
+				mode = "options",
+				placeholder = "Selecione uma opção",
+				options = Second,
+				value = ""
+			}
+		}
+	})
+
+	if Array and Array["1"] and Array["1"]["input"] ~= "" and Array["2"] and Array["2"]["input"] ~= "" then
+		return { Array["1"]["input"],Array["2"]["input"] }
 	end
 
 	return false
@@ -96,12 +118,8 @@ function Primary(First)
 		}
 	})
 
-	if Array then
-		if not Array[1]["input"] then
-			return false
-		end
-
-		return { Array[1]["input"] }
+	if Array and Array["1"] and Array["1"]["input"] ~= "" then
+		return { Array["1"]["input"] }
 	end
 
 	return false
@@ -128,12 +146,8 @@ function Secondary(First,Second)
 		}
 	})
 
-	if Array then
-		if not Array[1]["input"] or not Array[2]["input"] then
-			return false
-		end
-
-		return { Array[1]["input"],Array[2]["input"] }
+	if Array and Array["1"] and Array["1"]["input"] ~= "" and Array["2"] and Array["2"]["input"] ~= "" then
+		return { Array["1"]["input"],Array["2"]["input"] }
 	end
 
 	return false
@@ -165,12 +179,8 @@ function Tertiary(First,Second,Third)
 		}
 	})
 
-	if Array then
-		if not Array[1]["input"] or not Array[2]["input"] or not Array[3]["input"] then
-			return false
-		end
-
-		return { Array[1]["input"],Array[2]["input"],Array[3]["input"] }
+	if Array and Array["1"] and Array["1"]["input"] ~= "" and Array["2"] and Array["2"]["input"] ~= "" and Array["3"] and Array["3"]["input"] ~= "" then
+		return { Array["1"]["input"],Array["2"]["input"],Array["3"]["input"] }
 	end
 
 	return false
@@ -180,11 +190,12 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Copy(First,Second)
 	local Array = Keyboard({
+		save = true,
 		title = "Formulário",
 		subtitle = "Preencha os campos abaixo",
 		rows = {
 			{
-				id = 0,
+				id = 1,
 				mode = "area",
 				placeholder = First,
 				value = Second
@@ -211,12 +222,8 @@ function Area(First)
 		}
 	})
 
-	if Array then
-		if not Array[1]["input"] then
-			return false
-		end
-
-		return { Array[1]["input"] }
+	if Array and Array["1"] and Array["1"]["input"] ~= "" then
+		return { Array["1"]["input"] }
 	end
 
 	return false
@@ -256,4 +263,10 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Copy(First,Message)
 	return Copy(First,Message)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- OPTIONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Options(First,Secondary)
+	return Options(First,Secondary)
 end

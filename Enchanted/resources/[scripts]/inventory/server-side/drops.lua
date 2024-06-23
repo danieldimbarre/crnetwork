@@ -69,7 +69,7 @@ exports("Drops",function(Passport,source,Item,Amount,Force)
 
 	if not Provisory["desc"] then
 		if Split[1] == "vehiclekey" and Split[3] then
-			Provisory["desc"] = "Placa do Veículo: <common>"..Split[2].."</common>"
+			Provisory["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
 		elseif ItemNamed(Split[1]) and Split[2] then
 			Provisory["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 		end

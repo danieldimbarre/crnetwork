@@ -505,13 +505,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISABLEACTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function DisableActions(Ped)
-	if Focus then
+function DisableActions()
+	if IsNuiFocused() then
 		DisableControlAction(0,1,true)
 		DisableControlAction(0,2,true)
 	end
 
-	DisablePlayerFiring(Ped,true)
 	DisableControlAction(0,18,true)
 	DisableControlAction(0,55,true)
 	DisableControlAction(0,76,true)
@@ -545,13 +544,13 @@ function TargetEnable()
 	SendNUIMessage({ Action = "Open" })
 
 	while Actived do
-		DisableActions(Ped)
+		DisableActions()
 
 		local Coords = GetEntityCoords(Ped)
-		local HitCoords,Entitys = RayCastGamePlayCamera()
+		local HitCoords,Entitys,EntityHit = RayCastGamePlayCamera()
 
 		for Index,v in pairs(Zones) do
-			if #(Coords - Zones[Index]["center"]) <= 10 then
+			if #(Coords - Zones[Index]["center"]) <= 5 then
 				SetDrawOrigin(Zones[Index]["center"]["x"],Zones[Index]["center"]["y"],Zones[Index]["center"]["z"])
 				DrawSprite("Targets","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 				ClearDrawOrigin()
@@ -566,239 +565,224 @@ function TargetEnable()
 
 				Sucess = true
 				while Sucess do
-					local Ped = PlayerPedId()
-					local Coords = GetEntityCoords(Ped)
-					local OtherCoords = RayCastGamePlayCamera()
-
 					SetDrawOrigin(Zones[Index]["center"]["x"],Zones[Index]["center"]["y"],Zones[Index]["center"]["z"])
 					DrawSprite("Targets","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
-					DisableActions(Ped)
 					ClearDrawOrigin()
+					DisableActions()
 
 					if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
 						SetCursorLocation(0.5,0.5)
 						SetNuiFocus(true,true)
-						Focus = true
 					end
 
-					if not Zones[Index]:isPointInside(OtherCoords) or #(Coords - Zones[Index]["center"]) > v["targetoptions"]["Distance"] then
+					local Ped = PlayerPedId()
+					local OtherCoords = RayCastGamePlayCamera()
+					if not Zones[Index]:isPointInside(OtherCoords) or #(GetEntityCoords(Ped) - Zones[Index]["center"]) > v["targetoptions"]["Distance"] then
+						SendNUIMessage({ Action = "Left" })
 						Sucess = false
 					end
 
 					Wait(1)
 				end
-
-				SendNUIMessage({ Action = "Left" })
 			end
 		end
 
-		if GetEntityType(Entitys) ~= 0 then
+		if EntityHit and GetEntityType(Entitys) ~= 0 then
 			--TriggerServerEvent("admin:Doords",GetEntityCoords(Entitys),GetEntityModel(Entitys),GetEntityHeading(Entitys))
-			if IsEntityAVehicle(Entitys) and GetEntityHealth(Ped) > 100 then
-				local Plate = GetVehicleNumberPlateText(Entitys)
-				if #(Coords - HitCoords) <= 1.0 and Plate ~= "PDMSPORT" then
-					local Menu = {}
-					local Network = nil
-					local Combustivel = false
-					local Vehicle = GetLastDrivenVehicle()
+			if IsEntityAVehicle(Entitys) and GetEntityHealth(Ped) > 100 and #(Coords - HitCoords) <= 1.0 then
+				local Menu = {}
+				local Network = nil
+				local Combustivel = false
+				local Vehicle = GetLastDrivenVehicle()
 
-					SetEntityAsMissionEntity(Entitys,true,true)
-					if NetworkGetEntityIsNetworked(Entitys) then
-						Network = NetworkGetNetworkIdFromEntity(Entitys)
-					end
+				SetEntityAsMissionEntity(Entitys,true,true)
+				if NetworkGetEntityIsNetworked(Entitys) then
+					Network = NetworkGetNetworkIdFromEntity(Entitys)
+				end
 
-					Selected = { Plate,GetEntityArchetypeName(Entitys),Entitys,Network,GetEntityModel(Entitys),false }
+				Selected = { GetVehicleNumberPlateText(Entitys),GetEntityArchetypeName(Entitys),Entitys,Network,GetEntityModel(Entitys),false }
 
-					for _,v in pairs(Fuels) do
-						if #(Coords - v) <= 2.5 then
-							Combustivel = true
-							break
-						end
-					end
-
-					if not Combustivel then
-						if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_PETROLCAN") then
-							Selected[6] = true
-							Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }
-						else
-							if Towed:isPointInside(HitCoords) and not Entity(Entitys)["state"]["Tow"] then
-								Menu[#Menu + 1] = { event = "towed:Payment", label = "Entregar", tunnel = "paramedic" }
-							else
-								if Entity(Entitys)["state"]["Lockpick"] then
-									if GetVehicleDoorLockStatus(Entitys) <= 1 and GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_WRENCH") then
-										for Index = 1,#Tyres do
-											local BoneIndex = GetEntityBoneIndexByName(Entitys,Tyres[Index]["Bone"])
-											local TyreCoords = GetWorldPositionOfEntityBone(Vehicle,BoneIndex)
-											if #(Coords - TyreCoords) <= 1.0 then
-												Selected[6] = Tyres[Index]["Index"]
-												Menu[#Menu + 1] = { event = "inventory:RemoveTyres", label = "Retirar Pneu", tunnel = "server" }
-											end
-										end
-									end
-
-									if not IsPedArmed(Ped,6) and GetVehicleDoorLockStatus(Entitys) <= 1 then
-										if VehicleWeight(Selected[2]) > 0 then
-											Menu[#Menu + 1] = { event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" }
-										end
-
-										Menu[#Menu + 1] = { event = "inventory:ChangePlate", label = "Trocar Placa", tunnel = "server" }
-									end
-
-									Menu[#Menu + 1] = { event = "engine:Vehrify", label = "Verificar", tunnel = "client" }
-									Menu[#Menu + 1] = { event = "garages:Key", label = "Chave Veícular", tunnel = "server" }
-								else
-									if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 then
-										if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_CROWBAR") then
-											Menu[#Menu + 1] = { event = "inventory:StealTrunk", label = "Arrombar Porta-Malas", tunnel = "server" }
-										end
-									end
-
-									if Selected[2] == "stockade" then
-										Menu[#Menu + 1] = { event = "inventory:Stockade", label = "Vasculhar", tunnel = "server" }
-									end
-								end
-
-								if not IsThisModelABike(Selected[5]) then
-									local Rolling = GetEntityRoll(Entitys)
-									if Rolling > 75.0 or Rolling < -75.0 then
-										Menu[#Menu + 1] = { event = "player:RollVehicle", label = "Desvirar", tunnel = "server" }
-									end
-
-									if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 then
-										if not IsPedArmed(Ped,6) and GetVehicleDoorLockStatus(Entitys) <= 1 then
-											Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
-										end
-
-										Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
-									end
-								end
-
-								if GetEntityArchetypeName(Vehicle) == "flatbed" and Selected[2] ~= "flatbed" then
-									Menu[#Menu + 1] = { event = "inventory:Tow", label = "Rebocar", tunnel = "client" }
-								end
-
-								if CheckPolice() then
-									Menu[#Menu + 1] = { event = "towed:Impound", label = "Impound", tunnel = "server" }
-									Menu[#Menu + 1] = { event = "police:Plate", label = "Verificar Placa", tunnel = "server" }
-									Menu[#Menu + 1] = { event = "police:ArrestVehicles", label = "Apreender", tunnel = "server" }
-								elseif #(Coords - Dismantle[Dismantler]) <= 15 then
-									Menu[#Menu + 1] = { event = "inventory:Dismantle", label = "Desmanchar", tunnel = "server" }
-								end
-							end
-						end
-					else
-						Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }
-					end
-
-					if #Menu >= 1 then
-						SendNUIMessage({ Action = "Valid", data = Menu })
-
-						Sucess = true
-						while Sucess do
-							local Ped = PlayerPedId()
-							local Coords = GetEntityCoords(Ped)
-							local OtherCoords,OtherEntity = RayCastGamePlayCamera()
-
-							DisableActions(Ped)
-
-							if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
-								SetCursorLocation(0.5,0.5)
-								SetNuiFocus(true,true)
-								Focus = true
-							end
-
-							if GetEntityType(OtherEntity) == 0 or #(Coords - OtherCoords) > 1.0 then
-								Sucess = false
-							end
-
-							Wait(1)
-						end
-
-						SendNUIMessage({ Action = "Left" })
+				for _,v in pairs(Fuels) do
+					if #(Coords - v) <= 2.5 then
+						Combustivel = true
+						break
 					end
 				end
-			elseif IsPedAPlayer(Entitys) and GetEntityHealth(Ped) > 100 then
-				if #(Coords - HitCoords) <= 2.0 then
-					local Menu = {}
-					local Index = NetworkGetPlayerIndexFromPed(Entitys)
-					local source = GetPlayerServerId(Index)
 
-					Selected = { source }
-
-					Menu[#Menu + 1] = { event = "police:Inspect", label = "Revistar", tunnel = "paramedic" }
-					Menu[#Menu + 1] = { event = "paramedic:Diagnostic", label = "Informações", tunnel = "paramedic" }
-
-					if GetEntityHealth(Entitys) <= 100 then
-						if Player(source)["state"]["Crawl"] then
-							Menu[#Menu + 1] = { event = "paramedic:Adrenaline", label = "Ajudar", tunnel = "paramedic" }
-						end
-
-						if LocalPlayer["state"]["Paramedico"] then
-							Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
-						end
+				if not Combustivel then
+					if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_PETROLCAN") then
+						Selected[6] = true
+						Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }
 					else
-						Menu[#Menu + 1] = { event = "player:Demand", label = "Cobrança", tunnel = "paramedic" }
+						if Towed:isPointInside(HitCoords) and not Entity(Entitys)["state"]["Tow"] then
+							Menu[#Menu + 1] = { event = "towed:Payment", label = "Entregar", tunnel = "paramedic" }
+						else
+							if Entity(Entitys)["state"]["Lockpick"] then
+								if GetVehicleDoorLockStatus(Entitys) <= 1 and GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_WRENCH") then
+									for Index = 1,#Tyres do
+										local BoneIndex = GetEntityBoneIndexByName(Entitys,Tyres[Index]["Bone"])
+										local TyreCoords = GetWorldPositionOfEntityBone(Vehicle,BoneIndex)
+										if #(Coords - TyreCoords) <= 1.0 then
+											Selected[6] = Tyres[Index]["Index"]
+											Menu[#Menu + 1] = { event = "inventory:RemoveTyres", label = "Retirar Pneu", tunnel = "server" }
+										end
+									end
+								end
 
-						if IsEntityPlayingAnim(Entitys,"random@mugging3","handsup_standing_base",3) then
-							Menu[#Menu + 1] = { event = "player:checkShoes", label = "Roubar Sapatos", tunnel = "paramedic" }
-						end
+								if not IsPedArmed(Ped,6) and GetVehicleDoorLockStatus(Entitys) <= 1 then
+									if VehicleWeight(Selected[2]) > 0 then
+										Menu[#Menu + 1] = { event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" }
+									end
 
-						if LocalPlayer["state"]["Paramedico"] then
-							Menu[#Menu + 1] = { event = "paramedic:Treatment", label = "Tratamento", tunnel = "paramedic" }
-							Menu[#Menu + 1] = { event = "paramedic:Bandage", label = "Passar Ataduras", tunnel = "paramedic" }
-							Menu[#Menu + 1] = { event = "paramedic:presetBurn", label = "Roupa de Queimadura", tunnel = "paramedic" }
-							Menu[#Menu + 1] = { event = "paramedic:presetPlaster", label = "Colocar Gesso", tunnel = "paramedic" }
-							Menu[#Menu + 1] = { event = "paramedic:extractBlood", label = "Extrair Sangue", tunnel = "paramedic" }
-							Menu[#Menu + 1] = { event = "target:Medicplan", label = "Plano de Saúde", tunnel = "paramedic" }
-							Menu[#Menu + 1] = { event = "target:Repose", label = "Repouso", tunnel = "paramedic" }
-						end
-					end
+									Menu[#Menu + 1] = { event = "inventory:ChangePlate", label = "Trocar Placa", tunnel = "server" }
+								end
 
-					if CheckPolice() then
-						Menu[#Menu + 1] = { event = "police:ArrestItens", label = "Apreender", tunnel = "paramedic" }
-					end
+								Menu[#Menu + 1] = { event = "engine:Vehrify", label = "Verificar", tunnel = "client" }
+								Menu[#Menu + 1] = { event = "garages:Key", label = "Chave Veícular", tunnel = "server" }
+							else
+								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 then
+									if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_CROWBAR") then
+										Menu[#Menu + 1] = { event = "inventory:StealTrunk", label = "Arrombar Porta-Malas", tunnel = "server" }
+									end
+								end
 
-					if #Menu >= 1 then
-						SendNUIMessage({ Action = "Valid", data = Menu })
-
-						Sucess = true
-						while Sucess do
-							local Ped = PlayerPedId()
-							local Coords = GetEntityCoords(Ped)
-							local OtherCoords,OtherEntity = RayCastGamePlayCamera()
-
-							DisableActions(Ped)
-
-							if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
-								SetCursorLocation(0.5,0.5)
-								SetNuiFocus(true,true)
-								Focus = true
+								if Selected[2] == "stockade" then
+									Menu[#Menu + 1] = { event = "inventory:Stockade", label = "Vasculhar", tunnel = "server" }
+								end
 							end
 
-							if GetEntityType(OtherEntity) == 0 or #(Coords - OtherCoords) > 2.0 then
-								Sucess = false
+							if not IsThisModelABike(Selected[5]) then
+								local Rolling = GetEntityRoll(Entitys)
+								if Rolling > 75.0 or Rolling < -75.0 then
+									Menu[#Menu + 1] = { event = "player:RollVehicle", label = "Desvirar", tunnel = "server" }
+								end
+
+								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 then
+									if not IsPedArmed(Ped,6) and GetVehicleDoorLockStatus(Entitys) <= 1 then
+										Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
+									end
+
+									Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
+								end
 							end
 
-							Wait(1)
+							if GetEntityArchetypeName(Vehicle) == "flatbed" and Selected[2] ~= "flatbed" then
+								Menu[#Menu + 1] = { event = "inventory:Tow", label = "Rebocar", tunnel = "client" }
+							end
+
+							if CheckPolice() then
+								Menu[#Menu + 1] = { event = "towed:Impound", label = "Impound", tunnel = "server" }
+								Menu[#Menu + 1] = { event = "police:Plate", label = "Verificar Placa", tunnel = "server" }
+								Menu[#Menu + 1] = { event = "police:ArrestVehicles", label = "Apreender", tunnel = "server" }
+							elseif #(Coords - Dismantle[Dismantler]) <= 15 then
+								Menu[#Menu + 1] = { event = "inventory:Dismantle", label = "Desmanchar", tunnel = "server" }
+							end
+						end
+					end
+				else
+					Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }
+				end
+
+				if #Menu >= 1 then
+					SendNUIMessage({ Action = "Valid", data = Menu })
+
+					Sucess = true
+					while Sucess do
+						DisableActions()
+
+						if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+							SetCursorLocation(0.5,0.5)
+							SetNuiFocus(true,true)
 						end
 
-						SendNUIMessage({ Action = "Left" })
+						local Ped = PlayerPedId()
+						local OtherCoords,OtherEntity = RayCastGamePlayCamera()
+						if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > 1.0 then
+							SendNUIMessage({ Action = "Left" })
+							Sucess = false
+						end
+
+						Wait(1)
+					end
+				end
+			elseif IsPedAPlayer(Entitys) and GetEntityHealth(Ped) > 100 and #(Coords - HitCoords) <= 2.0 then
+				local Menu = {}
+				local Index = NetworkGetPlayerIndexFromPed(Entitys)
+				local source = GetPlayerServerId(Index)
+
+				Selected = { source }
+
+				Menu[#Menu + 1] = { event = "police:Inspect", label = "Revistar", tunnel = "paramedic" }
+				Menu[#Menu + 1] = { event = "paramedic:Diagnostic", label = "Informações", tunnel = "paramedic" }
+
+				if GetEntityHealth(Entitys) <= 100 then
+					if Player(source)["state"]["Crawl"] then
+						Menu[#Menu + 1] = { event = "paramedic:Adrenaline", label = "Ajudar", tunnel = "paramedic" }
+					end
+
+					if LocalPlayer["state"]["Paramedico"] then
+						Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
+					end
+				else
+					Menu[#Menu + 1] = { event = "player:Demand", label = "Cobrança", tunnel = "paramedic" }
+
+					if IsEntityPlayingAnim(Entitys,"random@mugging3","handsup_standing_base",3) then
+						Menu[#Menu + 1] = { event = "player:checkShoes", label = "Roubar Sapatos", tunnel = "paramedic" }
+					end
+
+					if LocalPlayer["state"]["Paramedico"] then
+						Menu[#Menu + 1] = { event = "paramedic:Treatment", label = "Tratamento", tunnel = "paramedic" }
+						Menu[#Menu + 1] = { event = "paramedic:Bandage", label = "Passar Ataduras", tunnel = "paramedic" }
+						Menu[#Menu + 1] = { event = "paramedic:presetBurn", label = "Roupa de Queimadura", tunnel = "paramedic" }
+						Menu[#Menu + 1] = { event = "paramedic:presetPlaster", label = "Colocar Gesso", tunnel = "paramedic" }
+						Menu[#Menu + 1] = { event = "paramedic:extractBlood", label = "Extrair Sangue", tunnel = "paramedic" }
+						Menu[#Menu + 1] = { event = "target:Medicplan", label = "Plano de Saúde", tunnel = "paramedic" }
+						Menu[#Menu + 1] = { event = "target:Repose", label = "Repouso", tunnel = "paramedic" }
+					end
+				end
+
+				if CheckPolice() then
+					Menu[#Menu + 1] = { event = "police:ArrestItens", label = "Apreender", tunnel = "paramedic" }
+				end
+
+				if #Menu >= 1 then
+					SendNUIMessage({ Action = "Valid", data = Menu })
+
+					Sucess = true
+					while Sucess do
+						DisableActions()
+
+						if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+							SetCursorLocation(0.5,0.5)
+							SetNuiFocus(true,true)
+						end
+
+						local Ped = PlayerPedId()
+						local OtherCoords,OtherEntity = RayCastGamePlayCamera()
+						if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > 2.0 then
+							SendNUIMessage({ Action = "Left" })
+							Sucess = false
+						end
+
+						Wait(1)
 					end
 				end
 			else
 				for Index,_ in pairs(Models) do
 					if DoesEntityExist(Entitys) and Index == GetEntityModel(Entitys) then
 						local OtherCoords = GetEntityCoords(Entitys)
-						if #(Coords - OtherCoords) <= 10 then
+						if #(Coords - OtherCoords) <= 5 then
 							SetDrawOrigin(OtherCoords["x"],OtherCoords["y"],OtherCoords["z"] + 1)
 							DrawSprite("Targets","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 							ClearDrawOrigin()
 						end
 
 						if #(Coords - HitCoords) <= Models[Index]["Distance"] then
-							SetEntityAsMissionEntity(Entitys,true,true)
+							if not IsEntityAMissionEntity(Entitys) then
+								SetEntityAsMissionEntity(Entitys,true,true)
+							end
 
-							if not IsEntityAPed(Entitys) then
+							if not IsEntityAPed(Entitys) and not IsEntityPositionFrozen(Entitys) then
 								FreezeEntityPosition(Entitys,true)
 							end
 
@@ -813,30 +797,27 @@ function TargetEnable()
 
 							Sucess = true
 							while Sucess do
-								local Ped = PlayerPedId()
-								local Coords = GetEntityCoords(Ped)
 								local EntityCoords = GetEntityCoords(Entitys)
-								local OtherCoords,OtherEntity = RayCastGamePlayCamera()
 
 								SetDrawOrigin(EntityCoords["x"],EntityCoords["y"],EntityCoords["z"] + 1)
 								DrawSprite("Targets","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
-								DisableActions(Ped)
 								ClearDrawOrigin()
+								DisableActions()
 
 								if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
 									SetCursorLocation(0.5,0.5)
 									SetNuiFocus(true,true)
-									Focus = true
 								end
 
-								if GetEntityType(OtherEntity) == 0 or #(Coords - OtherCoords) > Models[Index]["Distance"] then
+								local Ped = PlayerPedId()
+								local OtherCoords,OtherEntity = RayCastGamePlayCamera()
+								if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > Models[Index]["Distance"] then
+									SendNUIMessage({ Action = "Left" })
 									Sucess = false
 								end
 
 								Wait(1)
 							end
-
-							SendNUIMessage({ Action = "Left" })
 						end
 					end
 				end
@@ -862,7 +843,7 @@ end)
 -- TARGETDISABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function TargetDisable()
-	if Focus or not Actived then
+	if IsNuiFocused() or not Actived then
 		return
 	end
 
@@ -905,7 +886,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:Debug")
 AddEventHandler("target:Debug",function()
-	Focus = false
 	Sucess = false
 	Actived = false
 	SetNuiFocus(false,false)
@@ -929,9 +909,9 @@ function RayCastGamePlayCamera()
 	local Cam = GetGameplayCamCoord()
 	local Cam2 = GetCoordsFromCam(10.0,Cam)
 	local Handle = StartExpensiveSynchronousShapeTestLosProbe(Cam,Cam2,-1,Ped,4)
-	local _,__,Coords,_,Entitys = GetShapeTestResult(Handle)
+	local Hit,__,Coords,_,Entitys = GetShapeTestResult(Handle)
 
-	return Coords,Entitys
+	return Coords,Entitys,Hit
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDCIRCLEZONE

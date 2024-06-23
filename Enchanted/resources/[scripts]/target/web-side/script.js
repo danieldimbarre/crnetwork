@@ -15,8 +15,6 @@ window.addEventListener("message",function(event){
 		break;
 
 		case "Valid":
-			$(".Text").html("");
-
 			$.each(event["data"]["data"],function(index,item){
 				$(".Text").append("<div id='Target-" + index + "'<li>" + item["label"] + "</li></div>");
 

@@ -13,6 +13,10 @@ Tunnel.bindInterface("dynamic",Creative)
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local CountClothes = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CODES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Codes = {
@@ -108,13 +112,25 @@ function Creative.Clothes()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		CountClothes[Passport] = 2
 		local Consult = vRP.GetSrvData("Clothes:"..Passport,true)
-		local AmountClothes = (vRP.UserPremium(Passport) and 5 or 2)
 
+		if vRP.UserPremium(Passport) then
+			local Hierarchy = vRP.LevelPremium(source)
+			if Hierarchy == 1 then
+				CountClothes[Passport] = 8
+			elseif Hierarchy == 2 then
+				CountClothes[Passport] = 6
+			else
+				CountClothes[Passport] = 4
+			end
+		end
+
+		local Amount = CountClothes[Passport]
 		for Table,_ in pairs(Consult) do
-			if AmountClothes > 0 then
+			if Amount > 0 then
 				Clothes[#Clothes + 1] = Table
-				AmountClothes = AmountClothes - 1
+				Amount = Amount - 1
 			end
 		end
 	end
@@ -134,7 +150,7 @@ AddEventHandler("dynamic:Clothes",function(Mode)
 		local Name = Split[2]
 
 		if Split[1] == "Save" then
-			if (vRP.UserPremium(Passport) and CountTable(Consult) >= 5) or (not vRP.UserPremium(Passport) and CountTable(Consult) >= 2) then
+			if CountTable(Consult) >= CountClothes[Passport] then
 				TriggerClientEvent("Notify",source,"Armário","Limite atingide de roupas.","amarelo",5000)
 
 				return false
@@ -170,5 +186,13 @@ AddEventHandler("dynamic:Clothes",function(Mode)
 				TriggerClientEvent("Notify",source,"Armário","A vestimenta salva não se encontra mais em seu armário.","amarelo",5000)
 			end
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport)
+	if CountClothes[Passport] then
+		CountClothes[Passport] = nil
 	end
 end)

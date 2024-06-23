@@ -802,6 +802,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = true
 				TriggerClientEvent("inventory:Close",source)
 
+				local NotifyTitle = "Roubo de Veículo"
 				local Networked = NetworkGetEntityFromNetworkId(Network)
 
 				if vRP.InsideVehicle(source) then
@@ -815,7 +816,7 @@ Use = {
 							["Source"] = source,
 							["Passport"] = Passport,
 							["Permission"] = "Policia",
-							["Name"] = "Roubo de Veículo",
+							["Name"] = NotifyTitle,
 							["Percentage"] = 250,
 							["Wanted"] = 300,
 							["Code"] = 31,
@@ -845,25 +846,27 @@ Use = {
 						TriggerClientEvent("Progress",source,"Destravando",15000)
 						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio")
 
+						if Dismantle[Plate] then
+							NotifyTitle = "Desmanche"
+							TriggerClientEvent("dismantle:Dispatch",source)
+						end
+
+						if Boosting[Plate] then
+							NotifyTitle = "Boosting"
+							TriggerClientEvent("boosting:Dispatch",source)
+						end
+
 						exports["vrp"]:CallPolice({
 							["Source"] = source,
 							["Passport"] = Passport,
 							["Permission"] = "Policia",
-							["Name"] = "Roubo de Veículo",
+							["Name"] = NotifyTitle,
 							["Percentage"] = 250,
 							["Wanted"] = 300,
 							["Code"] = 31,
 							["Color"] = 44,
 							["Vehicle"] = VehicleName(Model).." - "..Plate
 						})
-
-						if Dismantle[Plate] then
-							TriggerClientEvent("dismantle:Dispatch",source)
-						end
-
-						if Boosting[Plate] then
-							TriggerClientEvent("boosting:Dispatch",source)
-						end
 
 						repeat
 							if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
@@ -906,6 +909,120 @@ Use = {
 			Player(source)["state"]["Handcuff"] = false
 			Player(source)["state"]["Commands"] = false
 			TriggerClientEvent("sounds:Private",source,"uncuff",0.5)
+		end
+	end,
+
+	["lockpickplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if not Player(source)["state"]["Handcuff"] then
+			local Vehicle,Network,Plate,Model,Class = vRPC.VehicleList(source)
+			if Vehicle then
+				if Model == "stockade" or Class == 15 or Class == 16 or Class == 19 then
+					return false
+				end
+
+				vRPC.AnimActive(source)
+				Active[Passport] = os.time() + 100
+				Player(source)["state"]["Buttons"] = true
+				TriggerClientEvent("inventory:Close",source)
+
+				local NotifyTitle = "Roubo de Veículo"
+				local Networked = NetworkGetEntityFromNetworkId(Network)
+
+				if vRP.InsideVehicle(source) then
+					vGARAGE.StartHotwired(source)
+
+					if vRP.Task(source,10,10000) then
+						vGARAGE.RegisterDecors(source,Vehicle)
+						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio")
+
+						exports["vrp"]:CallPolice({
+							["Source"] = source,
+							["Passport"] = Passport,
+							["Permission"] = "Policia",
+							["Name"] = NotifyTitle,
+							["Percentage"] = 250,
+							["Wanted"] = 300,
+							["Code"] = 31,
+							["Color"] = 44,
+							["Vehicle"] = VehicleName(Model).." - "..Plate
+						})
+
+						if DoesEntityExist(Networked) then
+							if not vRP.PassportPlate(Plate) then
+								Entity(Networked)["state"]:set("Lockpick",Passport,true)
+								Entity(Networked)["state"]:set("Fuel",100,true)
+								Entity(Networked)["state"]:set("Nitro",0,true)
+								SetVehicleDoorsLocked(Networked,1)
+							elseif math.random(100) >= 75 then
+								SetVehicleDoorsLocked(Networked,1)
+							end
+						end
+					end
+
+					vGARAGE.StopHotwired(source)
+				else
+					vRPC.playAnim(source,false,{"missfbi_s4mop","clean_mop_back_player"},true)
+
+					if vRP.Task(source,10,10000) then
+						Active[Passport] = os.time() + 15
+						vGARAGE.RegisterDecors(source,Vehicle)
+						TriggerClientEvent("Progress",source,"Destravando",15000)
+						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio")
+
+						if Dismantle[Plate] then
+							NotifyTitle = "Desmanche"
+							TriggerClientEvent("dismantle:Dispatch",source)
+						end
+
+						if Boosting[Plate] then
+							NotifyTitle = "Boosting"
+							TriggerClientEvent("boosting:Dispatch",source)
+						end
+
+						exports["vrp"]:CallPolice({
+							["Source"] = source,
+							["Passport"] = Passport,
+							["Permission"] = "Policia",
+							["Name"] = NotifyTitle,
+							["Percentage"] = 250,
+							["Wanted"] = 300,
+							["Code"] = 31,
+							["Color"] = 44,
+							["Vehicle"] = VehicleName(Model).." - "..Plate
+						})
+
+						repeat
+							if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+								Active[Passport] = nil
+
+								if Dismantle[Plate] then
+									TriggerClientEvent("target:Dismantle",source,Model)
+								end
+
+								if DoesEntityExist(Networked) then
+									if not vRP.PassportPlate(Plate) then
+										if not Dismantle[Plate] then
+											Entity(Networked)["state"]:set("Fuel",100,true)
+											Entity(Networked)["state"]:set("Nitro",0,true)
+										end
+
+										Entity(Networked)["state"]:set("Lockpick",Passport,true)
+										SetVehicleDoorsLocked(Networked,1)
+									elseif math.random(100) >= 50 then
+										SetVehicleDoorsLocked(Networked,1)
+									end
+								end
+							end
+
+							Wait(100)
+						until not Active[Passport]
+					end
+				end
+
+				Player(source)["state"]["Buttons"] = false
+				Active[Passport] = nil
+				vRPC.Destroy(source)
+			end
 		end
 	end,
 

@@ -117,7 +117,7 @@ CreateThread(function()
 				TimeDistance = 1
 
 				local OtherCoords = GetEntityCoords(Vehicle)
-				DrawMarker(22,OtherCoords["x"],OtherCoords["y"],OtherCoords["z"] + 2.5,0.0,0.0,0.0,0.0,180.0,0.0,2.5,2.5,1.5,19,114,191,175,0,0,0,1)
+				DrawMarker(22,OtherCoords["x"],OtherCoords["y"],OtherCoords["z"] + 2.5,0.0,0.0,0.0,0.0,180.0,0.0,2.5,2.5,1.5,88,101,242,175,0,0,0,1)
 			end
 		end
 

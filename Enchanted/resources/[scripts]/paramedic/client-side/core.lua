@@ -47,7 +47,7 @@ end)
 CreateThread(function()
 	while true do
 		local Ped = PlayerPedId()
-		if Bleedings >= 1 and GetGameTimer() >= BloodTimers and GetEntityHealth(Ped) > 100 then
+		if Bleedings >= 2 and GetGameTimer() >= BloodTimers and GetEntityHealth(Ped) > 100 then
 			TriggerEvent("Notify","Sangramento","Ferimentos encontrados.","vermelho",5000)
 			BloodTimers = GetGameTimer() + 30000
 			ApplyDamageToPed(Ped,1,false)

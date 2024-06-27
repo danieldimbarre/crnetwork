@@ -37,7 +37,7 @@ AddEventHandler("postit:initPostit",function(Admin)
 				local Handler = StartExpensiveSynchronousShapeTestLosProbe(Camera,GetCoordsFromCam(25.0,Camera),-1,Ped,4)
 				local _,_,Coords = GetShapeTestResult(Handler)
 
-				DrawMarker(28,Coords["x"],Coords["y"],Coords["z"],0.0,0.0,0.0,0.0,0.0,0.0,0.05,0.05,0.05,19,114,191,175,0,0,0,0)
+				DrawMarker(28,Coords["x"],Coords["y"],Coords["z"],0.0,0.0,0.0,0.0,0.0,0.0,0.05,0.05,0.05,88,101,242,175,0,0,0,0)
 
 				if IsControlJustPressed(1,38) then
 					if Admin then

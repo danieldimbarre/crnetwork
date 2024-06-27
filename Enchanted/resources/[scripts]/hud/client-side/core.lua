@@ -305,7 +305,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("Progress")
 AddEventHandler("Progress",function(Message,Timer)
-	SendNUIMessage({ name = "Progress", payload = Timer - 500 })
+	SendNUIMessage({ name = "Progress", payload = Timer - 300 })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:THIRST

@@ -233,7 +233,7 @@ local Locations = {
 CreateThread(function()
 	local Tables = {}
 	for Number = 1,#Locations do
-		Tables[#Tables + 1] = { Locations[Number],2.5,"E","Barbearia","Pressione para abrir" }
+		Tables[#Tables + 1] = { Locations[Number],2.5,"E","Pressione","para abrir" }
 	end
 
 	TriggerEvent("hoverfy:Insert",Tables)

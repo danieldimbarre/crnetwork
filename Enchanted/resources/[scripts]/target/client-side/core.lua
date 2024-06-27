@@ -13,6 +13,7 @@ vSERVER = Tunnel.getInterface("target")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Zones = {}
 local Models = {}
+local Focus = false
 local Selected = {}
 local Sucess = false
 local Dismantler = 1
@@ -506,7 +507,7 @@ end)
 -- DISABLEACTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function DisableActions()
-	if IsNuiFocused() then
+	if Focus then
 		DisableControlAction(0,1,true)
 		DisableControlAction(0,2,true)
 	end
@@ -573,6 +574,7 @@ function TargetEnable()
 					if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
 						SetCursorLocation(0.5,0.5)
 						SetNuiFocus(true,true)
+						Focus = true
 					end
 
 					local Ped = PlayerPedId()
@@ -693,6 +695,7 @@ function TargetEnable()
 						if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
 							SetCursorLocation(0.5,0.5)
 							SetNuiFocus(true,true)
+							Focus = true
 						end
 
 						local Ped = PlayerPedId()
@@ -755,6 +758,7 @@ function TargetEnable()
 						if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
 							SetCursorLocation(0.5,0.5)
 							SetNuiFocus(true,true)
+							Focus = true
 						end
 
 						local Ped = PlayerPedId()
@@ -807,6 +811,7 @@ function TargetEnable()
 								if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
 									SetCursorLocation(0.5,0.5)
 									SetNuiFocus(true,true)
+									Focus = true
 								end
 
 								local Ped = PlayerPedId()
@@ -843,7 +848,7 @@ end)
 -- TARGETDISABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function TargetDisable()
-	if IsNuiFocused() or not Actived then
+	if Focus or not Actived then
 		return
 	end
 
@@ -886,6 +891,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:Debug")
 AddEventHandler("target:Debug",function()
+	Focus = false
 	Sucess = false
 	Actived = false
 	SetNuiFocus(false,false)

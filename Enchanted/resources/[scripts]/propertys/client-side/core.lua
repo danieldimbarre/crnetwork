@@ -82,7 +82,7 @@ CreateThread(function()
 										TriggerEvent("propertys:Enter",Name,false)
 									end
 								end
-							elseif not Propertys[Name]["Galpão"] then
+							elseif not Propertys[Name]["Galpão"] and Name ~= "Hotel" then
 								exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
 								exports["dynamic"]:openMenu()
 							end
@@ -260,7 +260,7 @@ end)
 CreateThread(function()
 	local Tables = {}
 	for Name,v in pairs(Propertys) do
-		Tables[#Tables + 1] = { v["Coords"],0.75,"E","Propriedade","Pressione para acessar" }
+		Tables[#Tables + 1] = { v["Coords"],0.75,"E","Pressione","para acessar" }
 	end
 
 	TriggerEvent("hoverfy:Insert",Tables)

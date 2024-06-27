@@ -167,7 +167,7 @@ function Creative.Store(Item,Slot,Amount,Target)
 				TriggerClientEvent("inventory:Update",source)
 			end
 		else
-			TriggerClientEvent("Notify",source,"Aviso","Mochila cheia.","amarelo",5000)
+			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 			TriggerClientEvent("inventory:Update",source)
 		end
 	end
@@ -191,7 +191,7 @@ function Creative.Take(Item,Slot,Target,Amount)
 				TriggerClientEvent("inventory:Update",source)
 			end
 		else
-			TriggerClientEvent("Notify",source,"Aviso","Mochila cheia.","amarelo",5000)
+			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 			TriggerClientEvent("inventory:Update",source)
 		end
 	end

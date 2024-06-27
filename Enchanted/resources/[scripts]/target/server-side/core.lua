@@ -49,7 +49,7 @@ function Creative.AcademyWeight(Number)
 
 		if (Premium and Weight < 100) or (not Premium and Weight < 75) then
 			vRP.UpgradeWeight(Passport,1,"+")
-			TriggerClientEvent("Notify",source,"Academia","Sua força foi melhorada.","roxo",5000)
+			TriggerClientEvent("Notify",source,"Academia","Sinto minha força alcançando novos patamares, não há limites quando se trata de determinação e dedicação.","verde",5000)
 		end
 
 		Player(source)["state"]["Buttons"] = false

@@ -557,6 +557,14 @@ ShopItens = {
 		["Price"] = 4000,
 		["Discount"] = 0
 	},
+	["weaponbox"] = {
+		["Price"] = 5000,
+		["Discount"] = 0
+	},
+	["ammobox"] = {
+		["Price"] = 3500,
+		["Discount"] = 0
+	},
 	["sewingkit"] = {
 		["Price"] = 2500,
 		["Discount"] = 0

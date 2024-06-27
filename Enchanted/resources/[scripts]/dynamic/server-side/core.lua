@@ -160,13 +160,17 @@ AddEventHandler("dynamic:Clothes",function(Mode)
 			if Keyboard then
 				local Check = sanitizeString(Keyboard[1],"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
 
-				if not Consult[Check] then
-					Consult[Check] = vSKINSHOP.Customization(source)
-					TriggerClientEvent("Notify",source,"Armário","<b>"..Check.."</b> adicionado.","verde",5000)
-					vRP.SetSrvData("Clothes:"..Passport,Consult,true)
-					TriggerClientEvent("dynamic:Clothes",source)
+				if string.len(Check) >= 4 then
+					if not Consult[Check] then
+						Consult[Check] = vSKINSHOP.Customization(source)
+						TriggerClientEvent("Notify",source,"Armário","<b>"..Check.."</b> adicionado.","verde",5000)
+						vRP.SetSrvData("Clothes:"..Passport,Consult,true)
+						TriggerClientEvent("dynamic:Clothes",source)
+					else
+						TriggerClientEvent("Notify",source,"Armário","Nome escolhido já existe em seu armário.","amarelo",5000)
+					end
 				else
-					TriggerClientEvent("Notify",source,"Armário","Nome escolhido já existe em seu armário.","amarelo",5000)
+					TriggerClientEvent("Notify",source,"Armário","Nome escolhido precisa possuir mínimo de 4 letras.","amarelo",5000)
 				end
 			end
 		elseif Split[1] == "Delete" then

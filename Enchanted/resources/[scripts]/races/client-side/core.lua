@@ -10,32 +10,22 @@ vSERVER = Tunnel.getInterface("races")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Saved = 0
+local Blip = nil
 local Objects = {}
 local Selected = 1
 local Markers = {}
 local Checkpoint = 1
-local Rankings = false
+local Ranking = false
 local ExplodeTimers = false
 local ExplodeCooldown = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADRACES
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
+	UpdateBlipped()
 	SetGhostedEntityAlpha(254)
 	LoadModel("prop_beachflag_01")
 	LoadModel("prop_offroad_tyres02")
-
-	for _,Info in pairs(Races) do
-		local Blip = AddBlipForCoord(Info["Init"]["x"],Info["Init"]["y"],Info["Init"]["z"])
-		SetBlipSprite(Blip,38)
-		SetBlipDisplay(Blip,4)
-		SetBlipAsShortRange(Blip,true)
-		SetBlipColour(Blip,4)
-		SetBlipScale(Blip,0.6)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("Circuito")
-		EndTextCommandSetBlipName(Blip)
-	end
 
 	while true do
 		local TimeDistance = 999
@@ -66,8 +56,8 @@ CreateThread(function()
 					if Checkpoint >= #Races[Selected]["Coords"] then
 						SendNUIMessage({ name = "Display", payload = { false } })
 						vSERVER.Finish(Selected,Points)
-
-						CleanCircuit()
+						CleanObjects()
+						CleanMarker()
 
 						Saved = 0
 						Checkpoint = 1
@@ -98,16 +88,16 @@ CreateThread(function()
 					for Number,v in pairs(Races) do
 						local Distance = #(Coords - v["Init"])
 						if Distance <= 25 and GetPedInVehicleSeat(Vehicle,-1) == Ped then
-							DrawMarker(23,v["Init"]["x"],v["Init"]["y"],v["Init"]["z"] - 0.35,0.0,0.0,0.0,0.0,0.0,0.0,10.0,10.0,10.0,19,114,191,175,0,0,0,0)
+							DrawMarker(23,v["Init"]["x"],v["Init"]["y"],v["Init"]["z"] - 0.35,0.0,0.0,0.0,0.0,0.0,0.0,10.0,10.0,10.0,88,101,242,175,0,0,0,0)
 							TimeDistance = 1
 
 							if Distance <= 5 then
 								if IsControlJustPressed(1,47) then
-									if not Rankings then
-										Rankings = true
+									if not Ranking then
+										Ranking = true
 										SendNUIMessage({ name = "Ranking", payload = { true,vSERVER.Ranking(Number) } })
 									else
-										Rankings = false
+										Ranking = false
 										SendNUIMessage({ name = "Ranking", payload = { false } })
 									end
 								end
@@ -131,19 +121,15 @@ CreateThread(function()
 									CreatedTyres()
 									InitCircuit()
 								end
-							else
-								if Rankings then
-									Rankings = false
-									SendNUIMessage({ name = "Ranking", payload = { false } })
-								end
+							elseif Ranking then
+								Ranking = false
+								SendNUIMessage({ name = "Ranking", payload = { false } })
 							end
 						end
 					end
-				else
-					if Rankings then
-						Rankings = false
-						SendNUIMessage({ name = "Ranking", payload = { false } })
-					end
+				elseif Ranking then
+					Ranking = false
+					SendNUIMessage({ name = "Ranking", payload = { false } })
 				end
 			end
 		end
@@ -168,42 +154,46 @@ end
 -- CREATEDTYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CreatedTyres()
+	CleanObjects()
+
 	local Prop = "prop_offroad_tyres02"
 	if Checkpoint >= #Races[Selected]["Coords"] then
 		Prop = "prop_beachflag_01"
 	end
 
 	local Coords = Races[Selected]["Coords"][Checkpoint]
-	local LeftObject = CreateObjectNoOffset(Prop,Coords["Left"]["x"],Coords["Left"]["y"],Coords["Left"]["z"],false,false,false)
-	local RightObject = CreateObjectNoOffset(Prop,Coords["Right"]["x"],Coords["Right"]["y"],Coords["Right"]["z"],false,false,false)
+	Objects["Left"] = CreateObjectNoOffset(Prop,Coords["Left"]["x"],Coords["Left"]["y"],Coords["Left"]["z"],false,false,false)
+	Objects["Right"] = CreateObjectNoOffset(Prop,Coords["Right"]["x"],Coords["Right"]["y"],Coords["Right"]["z"],false,false,false)
 
-	PlaceObjectOnGroundProperly(LeftObject)
-	SetEntityCollision(LeftObject,false,false)
+	PlaceObjectOnGroundProperly(Objects["Left"])
+	SetEntityCollision(Objects["Left"],false,false)
 
-	PlaceObjectOnGroundProperly(RightObject)
-	SetEntityCollision(RightObject,false,false)
-
-	Objects[#Objects + 1] = LeftObject
-	Objects[#Objects + 1] = RightObject
+	PlaceObjectOnGroundProperly(Objects["Right"])
+	SetEntityCollision(Objects["Right"],false,false)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CLEANCIRCUIT
+-- CLEANMARKER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function CleanCircuit()
-	for _,v in pairs(Markers) do
+function CleanMarker()
+	for Index,v in pairs(Markers) do
 		if DoesBlipExist(v) then
 			RemoveBlip(v)
 		end
-	end
 
-	for _,v in pairs(Objects) do
+		Markers[Index] = nil
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLEANOBJECTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function CleanObjects()
+	for Index,v in pairs(Objects) do
 		if DoesEntityExist(v) then
 			DeleteEntity(v)
 		end
-	end
 
-	Markers = {}
-	Objects = {}
+		Objects[Index] = nil
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STOPCIRCUIT
@@ -212,7 +202,8 @@ function StopCircuit()
 	SendNUIMessage({ name = "Display", payload = { false } })
 	LocalPlayer["state"]:set("Races",false,false)
 	vSERVER.Cancel()
-	CleanCircuit()
+	CleanObjects()
+	CleanMarker()
 
 	if ExplodeTimers then
 		ExplodeTimers = false
@@ -231,3 +222,28 @@ function StopCircuit()
 		end)
 	end
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- UPDATEBLIPPED
+-----------------------------------------------------------------------------------------------------------------------------------------
+function UpdateBlipped()
+	if DoesBlipExist(Blip) then
+		RemoveBlip(Blip)
+	end
+
+	local Number = GlobalState["Races"]
+	Blip = AddBlipForCoord(Races[Number]["Init"]["x"],Races[Number]["Init"]["y"],Races[Number]["Init"]["z"])
+	SetBlipSprite(Blip,38)
+	SetBlipDisplay(Blip,4)
+	SetBlipAsShortRange(Blip,true)
+	SetBlipColour(Blip,4)
+	SetBlipScale(Blip,0.6)
+	BeginTextCommandSetBlipName("STRING")
+	AddTextComponentString("Circuito")
+	EndTextCommandSetBlipName(Blip)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Helicrash",nil,function()
+	UpdateBlipped()
+end)

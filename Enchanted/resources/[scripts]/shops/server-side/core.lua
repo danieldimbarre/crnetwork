@@ -93,13 +93,13 @@ function Creative.Take(Item,Amount,Target,Name)
 						vRP.GenerateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500)
 					end
 				else
-					TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",5000)
+					TriggerClientEvent("inventory:Notify",source,"Aviso","Dinheiro insuficiente.","amarelo")
 				end
 			elseif List[Name]["Type"] == "Consume" and List[Name]["Item"] then
 				if vRP.TakeItem(Passport,List[Name]["Item"],List[Name]["List"][Item] * Amount) then
 					vRP.GenerateItem(Passport,Item,Amount,false,Target)
 				else
-					TriggerClientEvent("Notify",source,"Atenção","<b>"..ItemName(List[Name]["Item"]).."</b> insuficiente.","amarelo",5000)
+					TriggerClientEvent("inventory:Notify",source,"Atenção","<b>"..ItemName(List[Name]["Item"]).."</b> insuficiente.","vermelho")
 				end
 			end
 		end
@@ -112,6 +112,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Store(Item,Amount,Slot,Name)
 	local source = source
+	local Slot = tostring(Slot)
 	local Split = SplitOne(Item)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)

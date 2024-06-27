@@ -29,27 +29,60 @@ MaxSlotsInventory = 100
 -- THEME
 -----------------------------------------------------------------------------------------------------------------------------------------
 Theme = {
-	["main"] = "#1372bf",
-	["common"] = "#88daab",
-	["rare"] = "#a08cff",
-	["epic"] = "#ff8786",
-	["legendary"] = "#ffd086",
+	["main"] = "#5865f2",
+	["common"] = "#6fc66a",
+	["rare"] = "#6ac6c5",
+	["epic"] = "#c66a75",
+	["legendary"] = "#c6986a",
 	["accept"] = {
-		["letter"] = "#dcffe9", -- cor da letra
-		["background"] = "#3fa466", -- cor do fundo
+		["letter"] = "#dcffe9",
+		["background"] = "#3fa466"
 	},
 	["reject"] = {
-		["letter"] = "#ffe8e8", -- cor da letra
-		["background"] = "#ad4443", -- cor do fundo
+		["letter"] = "#ffe8e8",
+		["background"] = "#ad4443"
+	},
+	["chat"] = {
+		["Families"] = "#ff0000",
+		["Ballas"] = "#00ff00",
+		["Vagos"] = "#0000ff"
+	},
+	["hud"] = {
+		["icons"] = "#ffffff",
+		["nitro"] = "#1372bf",
+		["rpm"] = "#1372bf",
+		["fuel"] = "#ff4a56",
+		["health"] = "#c8ffbe",
+		["armor"] = "#e84855",
+		["hunger"] = "#f4b266",
+		["thirst"] = "#7fc8f8",
+		["stress"] = "#d2a0b9",
+		["luck"] = "#5fc88c",
+		["dexterity"] = "#ebf59b",
+		["repose"] = "#64c8c8",
+		["progress"] = {
+			["background"] = "#ffffff",
+			["circle"] = "#5865f2",
+			["letter"] = "#ffffff"
+		}
+	},
+	["notifyitem"] = {
+		["add"] = {
+			["letter"] = "#dcffe9",
+			["background"] = "#3fa466"
+		},
+		["remove"] = {
+			["letter"] = "#ffe8e8",
+			["background"] = "#ad4443"
+		}
 	},
 	["skinweapon"] = true
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WEIGHT
 -----------------------------------------------------------------------------------------------------------------------------------------
-MinimumWeight = 15
-DefaultWeight = 25
-PremiumWeight = { 50,25,10 }
+DefaultWeight = 15
+PremiumWeight = { 25,15,5 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROLEPASS
 -----------------------------------------------------------------------------------------------------------------------------------------

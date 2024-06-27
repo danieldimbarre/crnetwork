@@ -75,6 +75,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Take(Item,Amount,Target,Name)
 	local source = source
+	local Target = tostring(Target)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
 	if Passport and Item and Target and List[Name] and List[Name]["List"] and List[Name]["List"][Item] then

@@ -254,7 +254,7 @@ Loots = {
 			{ ["Item"] = "insulatingtape", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 2 },
 			{ ["Item"] = "screws", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 2 },
 			{ ["Item"] = "screwnuts", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 2 },
-			{ ["Item"] = "worm", ["Chance"] = 75, ["Min"] = 5, ["Max"] = 10 },
+			{ ["Item"] = "boilies", ["Chance"] = 75, ["Min"] = 5, ["Max"] = 10 },
 			{ ["Item"] = "sapphire_pure", ["Chance"] = 50, ["Min"] = 3, ["Max"] = 6 },
 			{ ["Item"] = "emerald_pure", ["Chance"] = 50, ["Min"] = 3, ["Max"] = 6 },
 			{ ["Item"] = "ruby_pure", ["Chance"] = 50, ["Min"] = 3, ["Max"] = 6 },
@@ -596,10 +596,8 @@ function Creative.Send(Slot,Amount)
 					Wait(100)
 				until not Active[Passport]
 			else
-				TriggerClientEvent("Notify",source,"Aviso","Mochila cheia.","amarelo",5000)
+				TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 			end
-		else
-			TriggerClientEvent("Notify",source,"Aviso","Limite atingido.","amarelo",5000)
 		end
 
 		Active[Passport] = nil
@@ -773,7 +771,7 @@ function Creative.Use(Slot,Amount)
 		end
 
 		if ItemDurability(Full) and vRP.CheckDamaged(Full) then
-			TriggerClientEvent("Notify",source,"Aviso","<b>"..ItemName(Item).."</b> danificado.","amarelo",5000)
+			TriggerClientEvent("inventory:Notify",source,"Atenção","<b>"..ItemName(Item).."</b> danificado.","vermelho")
 
 			return
 		end
@@ -802,7 +800,7 @@ function Creative.Use(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("NotifyItens",source,{ "-",ItemIndex(Weapon),1,ItemName(Weapon) })
+					TriggerClientEvent("NotifyItem",source,{ "-",ItemIndex(Weapon),1,ItemName(Weapon),ItemRarity(Weapon) })
 				end
 			else
 				local Skin = nil
@@ -822,7 +820,7 @@ function Creative.Use(Slot,Amount)
 				end
 
 				if vCLIENT.TakeWeapon(source,Item,AmmoClip,Attach,false,Skin) then
-					TriggerClientEvent("NotifyItens",source,{ "+",ItemIndex(Full),1,ItemName(Full) })
+					TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),1,ItemName(Full),ItemRarity(Full) })
 				end
 			end
 		elseif ItemTypeCheck(Full,"Munição") then
@@ -846,7 +844,7 @@ function Creative.Use(Slot,Amount)
 
 					Users["Ammos"][Passport][Item] = AmmoClip + Amount
 
-					TriggerClientEvent("NotifyItens",source,{ "+",ItemIndex(Full),Amount,ItemName(Full) })
+					TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),Amount,ItemName(Full),ItemRarity(Full) })
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 					vCLIENT.Reloading(source,Weapon,Amount)
 				end
@@ -871,11 +869,11 @@ function Creative.Use(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("NotifyItens",source,{ "-",ItemIndex(Weapon),1,ItemName(Weapon) })
+					TriggerClientEvent("NotifyItem",source,{ "-",ItemIndex(Weapon),1,ItemName(Weapon),ItemRarity(Weapon) })
 				end
 			else
 				if vCLIENT.TakeWeapon(source,Item,1,nil,Full) then
-					TriggerClientEvent("NotifyItens",source,{ "+",ItemIndex(Full),1,ItemName(Full) })
+					TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),1,ItemName(Full),ItemRarity(Full) })
 				end
 			end
 		elseif ItemTypeCheck(Full,"Attachs") then
@@ -893,16 +891,16 @@ function Creative.Use(Slot,Amount)
 
 					if not Users["Attachs"][Passport][Weapon][Item] then
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
-							TriggerClientEvent("NotifyItens",source,{ "+",ItemIndex(Full),1,ItemName(Full) })
+							TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),1,ItemName(Full),ItemRarity(Full) })
 							TriggerClientEvent("inventory:Update",source,"Backpack")
 							Users["Attachs"][Passport][Weapon][Item] = true
 							vCLIENT.GiveComponent(source,Component)
 						end
 					else
-						TriggerClientEvent("Notify",source,"Aviso","O armamento já possui um componente equipado.","amarelo",5000)
+						TriggerClientEvent("inventory:Notify",source,"Atenção","O armamento já possui um componente equipado.","vermelho")
 					end
 				else
-					TriggerClientEvent("Notify",source,"Aviso","O armamento não possui suporte ao componente.","amarelo",5000)
+					TriggerClientEvent("inventory:Notify",source,"Atenção","O armamento não possui suporte ao componente.","vermelho")
 				end
 			end
 		elseif Use[Item] and ItemTypeCheck(Full,"Consumível") then
@@ -922,7 +920,7 @@ AddEventHandler("inventory:Cancel",function()
 			Active[Passport] = nil
 			vGARAGE.UpdateHotwired(source,false)
 			Player(source)["state"]["Buttons"] = false
-			TriggerClientEvent("Progress",source,"Cancelando",1000)
+			TriggerClientEvent("Progress",source,"Cancelando",100)
 		end
 
 		if Carry[Passport] then
@@ -1364,13 +1362,13 @@ AddEventHandler("inventory:Animals",function(Entity)
 						Wait(100)
 					until not Active[Passport]
 				else
-					TriggerClientEvent("Notify",source,"Aviso","Mochila cheia.","amarelo",5000)
+					TriggerClientEvent("Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo",5000)
 				end
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Você precisa colocar o <b>Canivete</b> em mãos.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Você precisa do <b>Canivete</b> em mãos.","amarelo",5000)
 			end
 		else
-			TriggerClientEvent("Notify",source,"Atenção","Esta carcaça animal não é sua.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Atenção","Carcaça animal não é sua.","amarelo",5000)
 		end
 	end
 end)
@@ -1455,7 +1453,7 @@ AddEventHandler("inventory:RemoveTyres",function(Entity)
 		if DoesEntityExist(Networked) and not IsPedAPlayer(Networked) and GetEntityType(Networked) == 2 then
 			if vCLIENT.tyreHealth(source,Entity[4],Entity[6]) == 1000.0 then
 				if vRP.MaxItens(Passport,"tyres",1) then
-					TriggerClientEvent("Notify",source,"Aviso","Limite atingido.","amarelo",5000)
+					TriggerClientEvent("Notify",source,"Atenção","Limite atingido.","vermelho",5000)
 
 					return false
 				end

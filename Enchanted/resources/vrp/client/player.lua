@@ -178,7 +178,7 @@ function ReloadCharacter()
 	SetRandomEventFlag(false)
 	SetWeaponsNoAutoswap(true)
 	SetBlipAlpha(GetNorthRadarBlip(),0)
-	ReplaceHudColourWithRgba(116,19,114,191,225)
+	ReplaceHudColourWithRgba(116,88,101,242,225)
 
 	SetAudioFlag("ActivateSwitchWheelAudio",false)
 	SetAudioFlag("AllowAmbientSpeechInSlowMo",false)

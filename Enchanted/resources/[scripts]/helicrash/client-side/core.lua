@@ -42,8 +42,7 @@ CreateThread(function()
 						SetEntityHeading(Objects[Number],Locate["w"])
 
 						if GlobalState["Work"] <= GlobalState["Helifire"] then
-							StartScriptFire(Locate["xyz"],25,0)
-							Fire[Number] = Locate["xyz"]
+							Fire[Number] = StartScriptFire(Locate["xyz"],25,0)
 						end
 
 						exports["target"]:AddBoxZone("Helicrash:"..Number,Locate["xyz"],1.25,2.0,{
@@ -66,12 +65,12 @@ CreateThread(function()
 					else
 						if Fire[Number] then
 							if #(Coords - Locate["xyz"]) <= 2.5 then
-								ApplyDamageToPed(Ped,3,false)
+								ApplyDamageToPed(Ped,5,false)
 								TimeDistance = 2500
 							end
 
 							if GlobalState["Work"] > GlobalState["Helifire"] then
-								StopFireInRange(Locate["xyz"],25,0)
+								RemoveScriptFire(Fire[Number])
 								Fire[Number] = nil
 							end
 						end
@@ -129,7 +128,7 @@ AddStateBagChangeHandler("Helicrash",nil,function(Name,Key,Value)
 			end
 
 			if Fire[Index] then
-				StopFireInRange(Fire[Index],25.0)
+				RemoveScriptFire(Fire[Number])
 				Fire[Index] = nil
 			end
 

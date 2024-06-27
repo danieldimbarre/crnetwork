@@ -451,7 +451,7 @@ CreateThread(function()
 	local Tables = {}
 
 	for Number = 1,#Teleport do
-		Tables[#Tables + 1] = { Teleport[Number][1],2.5,"E","Porta de Acesso","Pressione para acessar" }
+		Tables[#Tables + 1] = { Teleport[Number][1],2.5,"E","Pressione","para acessar" }
 	end
 
 	TriggerEvent("hoverfy:Insert",Tables)

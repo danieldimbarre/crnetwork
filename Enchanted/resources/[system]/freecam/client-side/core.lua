@@ -50,7 +50,7 @@ end)
 RegisterNUICallback("getCamsData",function(_,cb)
 	Wait(1000)
 
-	local Screenshots = GetResourceKvpString("CreativeFreecam")
+	local Screenshots = GetResourceKvpString("CreativeCamera")
 	if Screenshots then
 		SavedPictures = json.decode(Screenshots)
 	end
@@ -128,17 +128,17 @@ RegisterNUICallback("SavePicture",function(data)
 		name = data["Saving"]["name"]
 	}
 
-	SetResourceKvp("CreativeFreecam",json.encode(SavedPictures))
+	SetResourceKvp("CreativeCamera",json.encode(SavedPictures))
 end)
 
 RegisterNUICallback("DeletePicture",function(data)
 	SavedPictures[tostring(data["SelectedId"])] = nil
 
-	SetResourceKvp("CreativeFreecam",json.encode(SavedPictures))
+	SetResourceKvp("CreativeCamera",json.encode(SavedPictures))
 end)
 
 RegisterNUICallback("TakeScreenShot",function()
-	local Webhook = ""
+	local Webhook = "https://discord.com/api/webhooks/1236099633932140564/Q6Ojt1Unopc3h8oLrHx8GZ56NkEmNey3Rh_hFFHSLn28MLlYvuHz3UeXoCDK2uvDoXVy"
 	exports["screenshot-basic"]:requestScreenshotUpload(Webhook,"files[]",function(data)
 		local image = json.decode(data)
 

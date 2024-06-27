@@ -68,7 +68,7 @@ CreateThread(function()
 				if Distance <= 200 then
 					TimeDistance = 1
 
-					DrawMarker(22,Locations[Selected]["x"],Locations[Selected]["y"],Locations[Selected]["z"] + 3.0,0.0,0.0,0.0,0.0,180.0,0.0,7.5,7.5,5.0,19,114,191,175,0,0,0,1)
+					DrawMarker(22,Locations[Selected]["x"],Locations[Selected]["y"],Locations[Selected]["z"] + 3.0,0.0,0.0,0.0,0.0,180.0,0.0,7.5,7.5,5.0,88,101,242,175,0,0,0,1)
 					DrawMarker(1,Locations[Selected]["x"],Locations[Selected]["y"],Locations[Selected]["z"] - 3.0,0.0,0.0,0.0,0.0,0.0,0.0,15.0,15.0,10.0,255,255,255,50,0,0,0,0)
 
 					if Distance <= 10 then

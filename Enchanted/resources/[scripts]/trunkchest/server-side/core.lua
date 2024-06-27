@@ -20,7 +20,7 @@ local Vehicle = {}
 function Creative.Mount()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Vehicle[Passport] then
+	if Passport and Vehicle[Passport] and Vehicle[Passport]["Data"] then
 		local Primary = {}
 		local Inv = vRP.Inventory(Passport)
 		for Index,v in pairs(Inv) do
@@ -172,7 +172,6 @@ function Creative.Store(Item,Slot,Amount,Target)
 		local Name = Vehicle[Passport]["Model"]
 
 		if (Store[Name] and not Store[Name][Item]) or Blocked[Item] then
-			TriggerClientEvent("Notify",source,"Aviso","Armazenamento proibido.","amarelo",5000)
 			TriggerClientEvent("inventory:Update",source)
 
 			return false

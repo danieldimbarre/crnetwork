@@ -28,10 +28,10 @@ Use = {
 					Wait(100)
 				until not Active[Passport]
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Não pode utilizar de vida cheia.","amarelo",5000)
+				TriggerClientEvent("inventory:Notify",source,"Aviso","Não pode utilizar no momento.","amarelo")
 			end
 		else
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","amarelo",5000)
+			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","vermelho")
 		end
 	end,
 
@@ -60,10 +60,10 @@ Use = {
 					Wait(100)
 				until not Active[Passport]
 			else
-				TriggerClientEvent("Notify",source,"Aviso","Não pode utilizar de vida cheia.","amarelo",5000)
+				TriggerClientEvent("inventory:Notify",source,"Aviso","Não pode utilizar no momento.","amarelo")
 			end
 		else
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","amarelo",5000)
+			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","vermelho")
 		end
 	end,
 
@@ -72,7 +72,7 @@ Use = {
 
 		local Keyboard = vKEYBOARD.Options(source,"Frequência",{ "Ballas","Vagos","Families" })
 		if Keyboard and not exports["radio"]:Exist(Keyboard[1]) and vRP.TakeItem(Passport,Full,1,false,Slot) then
-			TriggerClientEvent("Notify",source,"Sucesso","Frequência adicionada.","verde",5000)
+			TriggerClientEvent("inventory:Notify",source,"Sucesso","Frequência adicionada.","verde")
 			exports["radio"]:Add(Keyboard[1],Keyboard[2])
 		end
 	end,
@@ -133,6 +133,12 @@ Use = {
 		end
 	end,
 
+	["weaponbox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if Split and Split[3] then
+			TriggerClientEvent("chest:Open",source,"weaponbox:"..Split[3],"Item",false,false,true)
+		end
+	end,
+
 	["suitcase"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split and Split[3] then
 			TriggerClientEvent("chest:Open",source,"suitcase:"..Split[3],"Item",false,false,true)
@@ -155,14 +161,15 @@ Use = {
 		if vRP.TakeItem(Passport,Full,1,false,Slot) then
 			vRP.UpgradeCharacters(source)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerClientEvent("Notify",source,"Sucesso","Personagem liberado.","verde",5000)
+			TriggerClientEvent("inventory:Notify",source,"Sucesso","Personagem liberado.","verde")
 		end
 	end,
 
 	["gemstone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.TakeItem(Passport,Full,Amount,false,Slot) then
-			TriggerClientEvent("inventory:Update",source,"Backpack")
 			vRP.UpgradeGemstone(Passport,Amount,false)
+			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerClientEvent("inventory:Notify",source,"Sucesso","Diamantes adicionados.","verde")
 		end
 	end,
 
@@ -172,7 +179,7 @@ Use = {
 		local Keyboard = vKEYBOARD.Secondary(source,"Nome","Sobrenome")
 		if Keyboard then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				TriggerClientEvent("Notify",source,"Sucesso","Passaporte atualizado.","verde",5000)
+				TriggerClientEvent("inventory:Notify",source,"Sucesso","Passaporte atualizado.","verde")
 				TriggerClientEvent("inventory:Update",source,"Backpack")
 				vRP.UpgradeNames(Passport,Keyboard[1],Keyboard[2])
 			end
@@ -324,8 +331,9 @@ Use = {
 
 	["meth"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Armors[Passport] and os.time() < Armors[Passport] then
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Armors[Passport] - os.time())..".","amarelo",5000)
-			return
+			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Armors[Passport] - os.time())..".","vermelho")
+
+			return false
 		end
 
 		Active[Passport] = os.time() + 15
@@ -419,10 +427,10 @@ Use = {
 					Wait(100)
 				until not Active[Passport]
 			else
-				TriggerClientEvent("Notify",source,"Aviso","Não pode utilizar de vida cheia.","amarelo",5000)
+				TriggerClientEvent("inventory:Notify",source,"Aviso","Não pode utilizar no momento.","amarelo")
 			end
 		else
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","amarelo",5000)
+			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","vermelho")
 		end
 	end,
 
@@ -448,7 +456,7 @@ Use = {
 				Wait(100)
 			until not Active[Passport]
 		else
-			TriggerClientEvent("Notify",source,"Aviso","Nenhum ferimento encontrado.","amarelo",5000)
+			TriggerClientEvent("inventory:Notify",source,"Aviso","Nenhum ferimento encontrado.","amarelo")
 		end
 	end,
 
@@ -600,8 +608,9 @@ Use = {
 
 	["vest"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Armors[Passport] and os.time() < Armors[Passport] then
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Armors[Passport] - os.time())..".","amarelo",5000)
-			return
+			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Armors[Passport] - os.time())..".","vermelho")
+
+			return false
 		end
 
 		Active[Passport] = os.time() + 10
@@ -1038,7 +1047,7 @@ Use = {
 					TriggerClientEvent("inventory:Close",source)
 
 					if vRP.Task(source,3,10000) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-						TriggerClientEvent("Notify",source,"Sucesso","<b>Bloqueador de Sinal</b> instalado.","verde",5000)
+						TriggerClientEvent("Notify",source,"Sucesso","<b>Bloqueador</b> instalado.","verde",5000)
 						TriggerEvent("SignalRemove",Plate)
 					end
 
@@ -1046,7 +1055,7 @@ Use = {
 					vGARAGE.StopHotwired(source)
 					Active[Passport] = nil
 				else
-					TriggerClientEvent("Notify",source,"Aviso","<b>Bloqueador de Sinal</b> já instalado.","amarelo",5000)
+					TriggerClientEvent("inventory:Notify",source,"Aviso","<b>Bloqueador</b> já instalado.","amarelo")
 				end
 			end
 		end
@@ -1531,7 +1540,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.TakeItem(Passport,"worm") then
+			if vRP.TakeItem(Passport,"boilies") then
 				if vRP.Task(source,6,75000) then
 					local Result = RandPercentage({
 						{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1555,7 +1564,7 @@ Use = {
 					end
 				end
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("worm").."</b>.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("boilies").."</b>.","amarelo",5000)
 			end
 
 			Player(source)["state"]["Buttons"] = false
@@ -1574,7 +1583,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.TakeItem(Passport,"worm") then
+			if vRP.TakeItem(Passport,"boilies") then
 				if vRP.Task(source,3,75000) then
 					local Result = RandPercentage({
 						{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1598,7 +1607,7 @@ Use = {
 					end
 				end
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("worm").."</b>.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("boilies").."</b>.","amarelo",5000)
 			end
 
 			Player(source)["state"]["Buttons"] = false
@@ -2650,8 +2659,9 @@ Use = {
 	["tyres"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if not vRP.InsideVehicle(source) then
 			if not vCLIENT.CheckWeapon(source,"WEAPON_WRENCH") then
-				TriggerClientEvent("Notify",source,"Atenção","<b>Chave Inglesa</b> não encontrada.","amarelo",5000)
-				return
+				TriggerClientEvent("inventory:Notify",source,"Atenção","<b>Chave Inglesa</b> não encontrada.","vermelho")
+	
+				return false
 			end
 
 			local Vehicle,Tyre,Network,Plate,Model = vCLIENT.Tyres(source)
@@ -2882,16 +2892,7 @@ Use = {
 
 					if vRP.TakeItem(Passport,Full,1,true,Slot) then
 						vRP.ServiceLeave(ClosestPed,OtherPassport,"Policia",true)
-						TriggerClientEvent("Notify",source,"Sucesso","Todas as comunicações foram retiradas.","verde",5000)
-					end
-				end
-
-				if vRP.HasService(OtherPassport,"Paramedico") then
-					TriggerEvent("Wanted",source,Passport,600)
-
-					if vRP.TakeItem(Passport,Full,1,true,Slot) then
-						vRP.ServiceLeave(ClosestPed,OtherPassport,"Paramedico",true)
-						TriggerClientEvent("Notify",source,"Sucesso","Todas as comunicações foram retiradas.","verde",5000)
+						TriggerClientEvent("inventory:Notify",source,"Sucesso","Comunicações foram retiradas.","verde")
 					end
 				end
 			end
@@ -2909,7 +2910,7 @@ for Name,v in pairs(ItemList()) do
 			end
 
 			if Users["Blueprints"][Passport] and Users["Blueprints"][Passport][Name] then
-				TriggerClientEvent("inventory:Notify",source,"Aviso","Você já possui este aprendizado.","amarelo")
+				TriggerClientEvent("inventory:Notify",source,"Aviso","Já possui este aprendizado.","amarelo")
 
 				return false
 			end
@@ -2930,10 +2931,10 @@ for Model,v in pairs(VehicleList()) do
 		Use["vehicle_"..Model] = function(source,Passport,Amount,Slot,Full,Item,Split)
 			local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Model })
 			if Vehicle[1] then
-				TriggerClientEvent("Notify",source,"Aviso","Já possui um <b>"..VehicleName(Model).."</b>.","amarelo",5000)
+				TriggerClientEvent("inventory:Notify",source,"Aviso","Já possui um <b>"..VehicleName(Model).."</b>.","amarelo")
 			else
 				if VehicleStock(Model) and vRP.Scalar("vehicles/Count",{ Vehicle = Model }) >= VehicleStock(Model) then
-					TriggerClientEvent("Notify",source,"Aviso","Estoque insuficiente.","amarelo",5000)
+					TriggerClientEvent("inventory:Notify",source,"Aviso","Estoque insuficiente.","amarelo")
 
 					return false
 				end
@@ -2947,7 +2948,7 @@ for Model,v in pairs(VehicleList()) do
 						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Weight = VehicleWeight(Model), Work = 0 })
 					end
 
-					TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> adicionado.","verde",5000)
+					TriggerClientEvent("inventory:Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> adicionado.","verde")
 					TriggerClientEvent("inventory:Update",source,"Backpack")
 				end
 			end

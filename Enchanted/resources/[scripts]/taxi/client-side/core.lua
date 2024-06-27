@@ -91,7 +91,7 @@ CreateThread(function()
 			if Distance <= 100 and not Walking and GetEntityArchetypeName(Vehicle) == "taxi" then
 				TimeDistance = 1
 
-				DrawMarker(21,Locations[Selected]["Vehicle"]["x"],Locations[Selected]["Vehicle"]["y"],Locations[Selected]["Vehicle"]["z"],0,0,0,0,180.0,130.0,1.5,1.5,1.0,19,114,191,175,0,0,0,1)
+				DrawMarker(21,Locations[Selected]["Vehicle"]["x"],Locations[Selected]["Vehicle"]["y"],Locations[Selected]["Vehicle"]["z"],0,0,0,0,180.0,130.0,1.5,1.5,1.0,88,101,242,175,0,0,0,1)
 
 				if IsControlJustPressed(1,38) and Distance <= 2.5 then
 					if PaymentActive then

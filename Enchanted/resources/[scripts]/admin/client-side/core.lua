@@ -140,8 +140,8 @@ RegisterCommand("configrace",function(source,Message)
 				SetBlipAsShortRange(Markers[Number]["Blip"],true)
 			end
 
-			DrawMarker(1,Left["x"],Left["y"],Left["z"] - 100,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,200.0,19,114,191,175,0,0,0,0)
-			DrawMarker(1,Right["x"],Right["y"],Right["z"] - 100,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,200.0,19,114,191,175,0,0,0,0)
+			DrawMarker(1,Left["x"],Left["y"],Left["z"] - 100,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,200.0,88,101,242,175,0,0,0,0)
+			DrawMarker(1,Right["x"],Right["y"],Right["z"] - 100,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,200.0,88,101,242,175,0,0,0,0)
 			DrawMarker(1,Center["x"],Center["y"],Center["z"] -100,0.0,0.0,0.0,0.0,0.0,0.0,0.75,0.75,200.0,255,255,255,25,0,0,0,0)
 
 			for _,v in pairs(Markers) do

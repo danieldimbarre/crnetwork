@@ -22,7 +22,7 @@ AddEventHandler("chat:ServerMessage",function(Mode,Message)
 		local Messages = Message:gsub("[<>]","")
 
 		if not Groups[Mode] then
-			if Mode == "ooc" then
+			if Mode == "OOC" then
 				local Players = vRPC.ClosestPeds(source,10)
 				for _,v in pairs(Players) do
 					async(function()

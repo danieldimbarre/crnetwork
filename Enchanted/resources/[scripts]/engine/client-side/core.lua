@@ -25,12 +25,16 @@ AddEventHandler("gameEventTriggered",function(Event,Message)
 
 	local Vehicle = Message[2]
 	if Message[1] == PlayerId() then
+		local Ped = PlayerPedId()
 		if not Entity(Vehicle)["state"]["Fuel"] then
 			Entity(Vehicle)["state"]:set("Fuel",100,true)
 		end
 
-		SetPedConfigFlag(GetPlayerPed(Message[1]),35,false)
-		TriggerEvent("inventory:CleanWeapons")
+		SetPedConfigFlag(Ped,35,false)
+
+		if not IsPedInAnyHeli(Ped) then
+			TriggerEvent("inventory:CleanWeapons")
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -894,7 +894,7 @@ local List = {
 		["Rarity"] = "legendary"
 	},
 	["lockpickplus"] = {
-		["Index"] = "lockpick",
+		["Index"] = "lockpickplus",
 		["Name"] = "Gazua ++",
 		["Description"] = "Ferramenta fina e flexível, frequentemente feita de metal, usada para abrir fechaduras sem a chave correspondente, é uma ferramenta comum entre profissionais de segurança e em situações de emergência.",
 		["Repair"] = "repairkit04",
@@ -1715,12 +1715,27 @@ local List = {
 	["ammobox"] = {
 		["Index"] = "ammobox",
 		["Name"] = "Caixa de Munição",
-		["Description"] = "Robusta e durável, ideal para armazenamento seguro e organizado de cartuchos.",
+		["Description"] = "Robusta e segura, projetada para armazenamento e transporte confiável de munições.",
+		["Repair"] = "repairkit04",
 		["Type"] = "Consumível",
-		["Weight"] = 1.25,
+		["Durability"] = 720,
+		["Weight"] = 2.75,
 		["Unique"] = true,
 		["Market"] = true,
-		["Economy"] = 17250,
+		["Economy"] = 70000,
+		["Rarity"] = "rare"
+	},
+	["weaponbox"] = {
+		["Index"] = "weaponbox",
+		["Name"] = "Caixa de Armamento",
+		["Description"] = "Resistente e segura, ideal para armazenamento e transporte de armas com praticidade e segurança.",
+		["Repair"] = "repairkit04",
+		["Type"] = "Consumível",
+		["Durability"] = 720,
+		["Weight"] = 3.25,
+		["Unique"] = true,
+		["Market"] = true,
+		["Economy"] = 100000,
 		["Rarity"] = "rare"
 	},
 	["suitcase"] = {
@@ -1740,7 +1755,7 @@ local List = {
 		["Description"] = "Projetada para armazenamento seguro e organizado de medicamentos, garantindo acessibilidade e segurança no ambiente de saúde.",
 		["Repair"] = "repairkit01",
 		["Type"] = "Consumível",
-		["Durability"] = 168,
+		["Durability"] = 720,
 		["Weight"] = 2.5,
 		["Unique"] = true,
 		["Market"] = true,
@@ -2101,7 +2116,7 @@ local List = {
 	},
 	["WEAPON_SHOTGUN_AMMO"] = {
 		["Index"] = "shotgunammo",
-		["Name"] = "Munição de Espingarga",
+		["Name"] = "Munição de Espingarda",
 		["Type"] = "Munição",
 		["Blueprint"] = true,
 		["Arrest"] = true,
@@ -2225,8 +2240,8 @@ local List = {
 		}
 	},
 	["WEAPON_PISTOL_MK2"] = {
-		["Index"] = "fiveseven",
-		["Name"] = "FN Five Seven",
+		["Index"] = "t54",
+		["Name"] = "T54",
 		["Description"] = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		["Repair"] = "repairkit02",
 		["Type"] = "Armamento",
@@ -2250,8 +2265,8 @@ local List = {
 		}
 	},
 	["WEAPON_COMPACTRIFLE"] = {
-		["Index"] = "akcompact",
-		["Name"] = "AK Compact",
+		["Index"] = "aks74u",
+		["Name"] = "AKS74U",
 		["Description"] = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
@@ -2295,8 +2310,8 @@ local List = {
 		}
 	},
 	["WEAPON_HEAVYPISTOL"] = {
-		["Index"] = "atifx45",
-		["Name"] = "Ati FX45",
+		["Index"] = "m45a1",
+		["Name"] = "M45A1",
 		["Description"] = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		["Repair"] = "repairkit02",
 		["Type"] = "Armamento",
@@ -2382,8 +2397,8 @@ local List = {
 		["Weight"] = 12.25
 	},
 	["WEAPON_MINISMG"] = {
-		["Index"] = "skorpionv61",
-		["Name"] = "Skorpion V61",
+		["Index"] = "mac10",
+		["Name"] = "MAC-10",
 		["Description"] = "Armamento que utiliza <common>Munição de Sub</common>.",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
@@ -2404,8 +2419,8 @@ local List = {
 		}
 	},
 	["WEAPON_SNSPISTOL"] = {
-		["Index"] = "amt380",
-		["Name"] = "AMT 380",
+		["Index"] = "f57",
+		["Name"] = "F57",
 		["Description"] = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		["Repair"] = "repairkit02",
 		["Type"] = "Armamento",
@@ -2426,8 +2441,8 @@ local List = {
 		}
 	},
 	["WEAPON_SNSPISTOL_MK2"] = {
-		["Index"] = "hkp7m10",
-		["Name"] = "HK P7M10",
+		["Index"] = "cz52",
+		["Name"] = "CZ52",
 		["Description"] = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		["Repair"] = "repairkit02",
 		["Type"] = "Armamento",
@@ -2474,8 +2489,8 @@ local List = {
 		}
 	},
 	["WEAPON_PISTOL50"] = {
-		["Index"] = "desert",
-		["Name"] = "Desert Eagle",
+		["Index"] = "deagle",
+		["Name"] = "Deagle",
 		["Description"] = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
@@ -2498,8 +2513,8 @@ local List = {
 		}
 	},
 	["WEAPON_COMBATPISTOL"] = {
-		["Index"] = "glock",
-		["Name"] = "Glock",
+		["Index"] = "g18c",
+		["Name"] = "G18C",
 		["Description"] = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		["Repair"] = "repairkit02",
 		["Type"] = "Armamento",
@@ -2547,8 +2562,8 @@ local List = {
 		}
 	},
 	["WEAPON_CARBINERIFLE_MK2"] = {
-		["Index"] = "m4a4",
-		["Name"] = "M4A4",
+		["Index"] = "h416",
+		["Name"] = "H416",
 		["Description"] = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		["Repair"] = "repairkit04",
 		["Type"] = "Armamento",
@@ -2572,8 +2587,8 @@ local List = {
 		}
 	},
 	["WEAPON_ADVANCEDRIFLE"] = {
-		["Index"] = "tar21",
-		["Name"] = "Tar-21",
+		["Index"] = "mdr",
+		["Name"] = "MDR",
 		["Description"] = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		["Repair"] = "repairkit04",
 		["Type"] = "Armamento",
@@ -2695,9 +2710,9 @@ local List = {
 		}
 	},
 	["WEAPON_PUMPSHOTGUN"] = {
-		["Index"] = "mossberg590",
-		["Name"] = "Mossberg 590",
-		["Description"] = "Armamento que utiliza <common>Munição de Espingarga</common>.",
+		["Index"] = "m870",
+		["Name"] = "M870",
+		["Description"] = "Armamento que utiliza <common>Munição de Espingarda</common>.",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
 		["Arrest"] = true,
@@ -2717,9 +2732,9 @@ local List = {
 		}
 	},
 	["WEAPON_PUMPSHOTGUN_MK2"] = {
-		["Index"] = "mossberg590a1",
-		["Name"] = "Mossberg 590A1",
-		["Description"] = "Armamento que utiliza <common>Munição de Espingarga</common>.",
+		["Index"] = "mp133",
+		["Name"] = "MP133",
+		["Description"] = "Armamento que utiliza <common>Munição de Espingarda</common>.",
 		["Repair"] = "repairkit04",
 		["Type"] = "Armamento",
 		["Arrest"] = true,
@@ -2761,7 +2776,7 @@ local List = {
 	["WEAPON_SAWNOFFSHOTGUN"] = {
 		["Index"] = "mossberg500",
 		["Name"] = "Mossberg 500",
-		["Description"] = "Armamento que utiliza <common>Munição de Espingarga</common>.",
+		["Description"] = "Armamento que utiliza <common>Munição de Espingarda</common>.",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
 		["Arrest"] = true,
@@ -2801,8 +2816,8 @@ local List = {
 		}
 	},
 	["WEAPON_SMG_MK2"] = {
-		["Index"] = "evo3",
-		["Name"] = "Evo-3",
+		["Index"] = "mpx",
+		["Name"] = "MPX",
 		["Description"] = "Armamento que utiliza <common>Munição de Sub</common>.",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
@@ -2877,8 +2892,8 @@ local List = {
 		}
 	},
 	["WEAPON_ASSAULTRIFLE"] = {
-		["Index"] = "ak103",
-		["Name"] = "AK-103",
+		["Index"] = "ak74n",
+		["Name"] = "AK-74N",
 		["Description"] = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		["Repair"] = "repairkit04",
 		["Type"] = "Armamento",
@@ -2902,8 +2917,8 @@ local List = {
 		}
 	},
 	["WEAPON_ASSAULTRIFLE_MK2"] = {
-		["Index"] = "ak74",
-		["Name"] = "AK-74",
+		["Index"] = "ak102",
+		["Name"] = "AK-102",
 		["Description"] = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		["Repair"] = "repairkit04",
 		["Type"] = "Armamento",
@@ -2927,8 +2942,8 @@ local List = {
 		}
 	},
 	["WEAPON_ASSAULTSMG"] = {
-		["Index"] = "steyraug",
-		["Name"] = "Steyr AUG",
+		["Index"] = "f2000",
+		["Name"] = "F2000",
 		["Description"] = "Armamento que utiliza <common>Munição de Sub</common>.",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
@@ -2951,8 +2966,8 @@ local List = {
 		}
 	},
 	["WEAPON_GUSENBERG"] = {
-		["Index"] = "thompson",
-		["Name"] = "Thompson",
+		["Index"] = "mpf45",
+		["Name"] = "MPF45",
 		["Description"] = "Armamento que utiliza <common>Munição de Sub</common>.",
 		["Repair"] = "repairkit03",
 		["Type"] = "Armamento",
@@ -3094,9 +3109,9 @@ local List = {
 		["Market"] = true
 	},
 	-- EMPREGOS
-	["worm"] = {
-		["Index"] = "worm",
-		["Name"] = "Minhoca",
+	["boilies"] = {
+		["Index"] = "boilies",
+		["Name"] = "Boilies",
 		["Type"] = "Comum",
 		["Weight"] = 0.25,
 		["Economy"] = 5,
@@ -3935,8 +3950,8 @@ local List = {
 	-- BLUEPRINTS
 	["blueprint_WEAPON_ADVANCEDRIFLE"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Tar-21",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Tar-21</epic>.",
+		["Name"] = "Aprendizado: MDR",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>MDR</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 11325
 		},
@@ -3947,8 +3962,8 @@ local List = {
 	},
 	["blueprint_WEAPON_COMPACTRIFLE"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: AK Compact",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>AK Compact</epic>.",
+		["Name"] = "Aprendizado: AKS74U",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>AKS74U</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 6625
 		},
@@ -4115,8 +4130,8 @@ local List = {
 	},
 	["blueprint_WEAPON_ASSAULTRIFLE"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: AK-103",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>AK-103</epic>.",
+		["Name"] = "Aprendizado: AK74N",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>AK74N</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 11375
 		},
@@ -4283,8 +4298,8 @@ local List = {
 	},
 	["blueprint_WEAPON_ASSAULTRIFLE_MK2"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: AK-74",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>AK-74</epic>.",
+		["Name"] = "Aprendizado: AK102",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>AK102</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 12115
 		},
@@ -4379,8 +4394,8 @@ local List = {
 	},
 	["blueprint_WEAPON_HEAVYPISTOL"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Ati FX45",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Ati FX45</epic>.",
+		["Name"] = "Aprendizado: M45A1",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>M45A1</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 3615
 		},
@@ -4427,8 +4442,8 @@ local List = {
 	},
 	["blueprint_WEAPON_CARBINERIFLE_MK2"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: M4A4",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>M4A4</epic>.",
+		["Name"] = "Aprendizado: H416",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>H416</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 12115
 		},
@@ -4571,8 +4586,8 @@ local List = {
 	},
 	["blueprint_WEAPON_SNSPISTOL_MK2"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: HK P7M10",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>HK P7M10</epic>.",
+		["Name"] = "Aprendizado: CZ52",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>CZ52</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 2625
 		},
@@ -4631,8 +4646,8 @@ local List = {
 	},
 	["blueprint_WEAPON_PISTOL50"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Desert Eagle",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Desert Eagle</epic>.",
+		["Name"] = "Aprendizado: Deagle",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Deagle</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 4115
 		},
@@ -4643,8 +4658,8 @@ local List = {
 	},
 	["blueprint_WEAPON_MINISMG"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Skorpion V61",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Skorpion V61</epic>.",
+		["Name"] = "Aprendizado: MAC-10",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>MAC-10</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 6625
 		},
@@ -4727,8 +4742,8 @@ local List = {
 	},
 	["blueprint_WEAPON_SNSPISTOL"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: AMT 380",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>AMT 380</epic>.",
+		["Name"] = "Aprendizado: F57",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>F57</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 2375
 		},
@@ -4787,8 +4802,8 @@ local List = {
 	},
 	["blueprint_WEAPON_GUSENBERG"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Thompson",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Thompson</epic>.",
+		["Name"] = "Aprendizado: MPF45",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>MPF45</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 7625
 		},
@@ -4799,8 +4814,8 @@ local List = {
 	},
 	["blueprint_WEAPON_ASSAULTSMG"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Steyr AUG",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Steyr AUG</epic>.",
+		["Name"] = "Aprendizado: F2000",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>F2000</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 7625
 		},
@@ -4811,8 +4826,8 @@ local List = {
 	},
 	["blueprint_WEAPON_SMG_MK2"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Evo-3",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Evo-3</epic>.",
+		["Name"] = "Aprendizado: MPX",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>MPX</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 7625
 		},
@@ -4871,8 +4886,8 @@ local List = {
 	},
 	["blueprint_WEAPON_PUMPSHOTGUN_MK2"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Mossberg 590A1",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Mossberg 590A1</epic>.",
+		["Name"] = "Aprendizado: MP133",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>MP133</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 7625
 		},
@@ -4883,8 +4898,8 @@ local List = {
 	},
 	["blueprint_WEAPON_PUMPSHOTGUN"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Mossberg 590",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Mossberg 590</epic>.",
+		["Name"] = "Aprendizado: M870",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>M870</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 6625
 		},
@@ -4967,8 +4982,8 @@ local List = {
 	},
 	["blueprint_WEAPON_PISTOL_MK2"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: FN Five Seven",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>FN Five Seven</epic>.",
+		["Name"] = "Aprendizado: T54",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>T54</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 3125
 		},
@@ -5003,8 +5018,8 @@ local List = {
 	},
 	["blueprint_WEAPON_SHOTGUN_AMMO"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Munição de Espingarga",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Munição de Espingarga</epic>.",
+		["Name"] = "Aprendizado: Munição de Espingarda",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Munição de Espingarda</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 275
 		},
@@ -5051,8 +5066,8 @@ local List = {
 	},
 	["blueprint_WEAPON_COMBATPISTOL"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Glock",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Glock</epic>.",
+		["Name"] = "Aprendizado: G18C",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>G18C</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 3125
 		},

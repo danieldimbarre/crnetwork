@@ -20,6 +20,25 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SAVESERVER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("SaveServer",function(Silenced)
+	if not Silenced then
+		for Route,Table in pairs(Drops) do
+			for Number,v in pairs(Table) do
+				if Drops[Route] and Drops[Route][Number] then
+					if ItemUnique(Drops[Route][Number]["key"]) then
+						vRP.RemSrvData(SplitUnique(Drops[Route][Number]["key"]))
+					end
+
+					TriggerClientEvent("inventory:DropsRemover",-1,Route,Number)
+					Drops[Route][Number] = nil
+				end
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- DROPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Drops(Item,Slot,Amount)
@@ -126,7 +145,7 @@ function Creative.Pickup(Number,Route,Target,Amount)
 			TriggerClientEvent("inventory:Update",source,"Backpack")
 		else
 			TriggerClientEvent("inventory:Update",source,"Backpack")
-			TriggerClientEvent("Notify",source,"Aviso","Mochila cheia.","amarelo",5000)
+			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 		end
 
 		Active[Passport] = nil

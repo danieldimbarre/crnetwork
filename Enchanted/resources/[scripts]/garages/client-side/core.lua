@@ -553,7 +553,7 @@ CreateThread(function()
 				local Distance = #(Coords - vec3(v["x"],v["y"],v["z"]))
 				if Distance <= 5.0 then
 					TimeDistance = 1
-					DrawMarker(23,v["x"],v["y"],v["z"] - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,19,114,191,175,0,0,0,0)
+					DrawMarker(23,v["x"],v["y"],v["z"] - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,88,101,242,175,0,0,0,0)
 
 					if Distance <= 1.25 and IsControlJustPressed(1,38) and not exports["hud"]:Wanted() and not exports["lb-phone"]:IsOpen() then
 						local Vehicles = vSERVER.Vehicles(Number)

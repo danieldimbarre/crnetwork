@@ -52,11 +52,10 @@ end)
 -- CHATSUBMIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("ChatSubmit",function(Data,Callback)
-	SetNuiFocus(false,false)
-
 	if LocalPlayer["state"]["Active"] and Data["message"] ~= "" and Executive then
 		if Data["message"]:sub(1,1) == "/" then
 			ExecuteCommand(Data["message"]:sub(2))
+			SetNuiFocus(false,false)
 		else
 			TriggerServerEvent("chat:ServerMessage",Data["tag"],Data["message"])
 		end
@@ -74,7 +73,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("close",function(Data,Callback)
+RegisterNUICallback("Close",function(Data,Callback)
 	SetNuiFocus(false,false)
 
 	Callback("Ok")

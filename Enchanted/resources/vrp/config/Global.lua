@@ -60,6 +60,7 @@ Theme = {
 		["luck"] = "#F18A7C",
 		["dexterity"] = "#E4E76E",
 		["repose"] = "#7FCCC7",
+		["pointer"] = "#ef4444",
 		["progress"] = {
 			["background"] = "#ffffff",
 			["circle"] = "#5865f2",

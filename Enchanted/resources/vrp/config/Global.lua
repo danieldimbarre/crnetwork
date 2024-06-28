@@ -48,6 +48,7 @@ Theme = {
 		["Vagos"] = "#0000ff"
 	},
 	["hud"] = {
+		["percentage"] = true,
 		["icons"] = "#ffffff",
 		["nitro"] = "#ffffff",
 		["rpm"] = "#ffffff",

@@ -130,8 +130,8 @@ local Store = {
 		["glass"] = true,
 		["rubber"] = true,
 		["aluminum"] = true,
-		["copper"] = true,
 		["tyres"] = true,
+		["copper"] = true,
 		["toolbox"] = true,
 		["advtoolbox"] = true
 	},
@@ -146,7 +146,11 @@ local Blocked = {
 	["dollar"] = true,
 	["dirtydollar"] = true,
 	["wetdollar"] = true,
-	["promissory"] = true
+	["promissory1000"] = true,
+	["promissory2000"] = true,
+	["promissory3000"] = true,
+	["promissory4000"] = true,
+	["promissory5000"] = true
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATE
@@ -155,10 +159,8 @@ function Creative.Update(Slot,Target,Amount)
 	local source = source
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and Vehicle[Passport] then
-		if vRP.UpdateChest(Passport,Vehicle[Passport]["Data"],Slot,Target,Amount,true) then
-			TriggerClientEvent("inventory:Update",source)
-		end
+	if Passport and Vehicle[Passport] and vRP.UpdateChest(Passport,Vehicle[Passport]["Data"],Slot,Target,Amount,true) then
+		TriggerClientEvent("inventory:Update",source)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -172,19 +174,24 @@ function Creative.Store(Item,Slot,Amount,Target)
 		local Name = Vehicle[Passport]["Model"]
 
 		if (Store[Name] and not Store[Name][Item]) or Blocked[Item] then
+			TriggerClientEvent("Notify",source,"Aviso","Armazenamento proibido.","amarelo",5000)
 			TriggerClientEvent("inventory:Update",source)
 
 			return false
 		end
 
 		if Item == "diagram" then
-			if vRP.TakeItem(Passport,Item,Amount) then
+			if (Vehicle[Passport]["Weight"] + (10 * Amount)) <= (VehicleWeight(Name) * 5) and vRP.TakeItem(Passport,Item,Amount) then
 				Vehicle[Passport]["Weight"] = Vehicle[Passport]["Weight"] + (10 * Amount)
 
 				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"],true)
 				vRP.Query("vehicles/UpdateWeight",{ Passport = Vehicle[Passport]["User"], Vehicle = Vehicle[Passport]["Model"], Multiplier = Amount })
-				TriggerClientEvent("inventory:Update",source)
+				TriggerClientEvent("inventory:Notify",source,"Sucesso","Armazenamento melhorado.","verde")
+			else
+				TriggerClientEvent("inventory:Notify",source,"Atenção","Limite atingido.","vermelho")
 			end
+
+			TriggerClientEvent("inventory:Update",source)
 		else
 			if vRP.StoreChest(Passport,Vehicle[Passport]["Data"],Amount,Vehicle[Passport]["Weight"],Slot,Target,true) then
 				TriggerClientEvent("inventory:Update",source)
@@ -199,10 +206,8 @@ function Creative.Take(Slot,Amount,Target)
 	local source = source
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and Vehicle[Passport] then
-		if vRP.TakeChest(Passport,Vehicle[Passport]["Data"],Amount,Slot,Target,true) then
-			TriggerClientEvent("inventory:Update",source)
-		end
+	if Passport and Vehicle[Passport] and vRP.TakeChest(Passport,Vehicle[Passport]["Data"],Amount,Slot,Target,true) then
+		TriggerClientEvent("inventory:Update",source)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

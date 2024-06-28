@@ -36,7 +36,7 @@ local Itens = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WASHERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Washers(Model,Plate,Value)
+function Creative.Washers(Value)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.TakeItem(Passport,"wetdollar",Value) then
@@ -46,7 +46,6 @@ function Creative.Washers(Model,Plate,Value)
 			["Permission"] = "Policia",
 			["Name"] = "Lavagem de Dinheiro",
 			["Percentage"] = Itens["promissory"..Value]["Police"],
-			["Vehicle"] = VehicleName(Model).." - "..Plate,
 			["Wanted"] = 60,
 			["Code"] = 31,
 			["Color"] = 22

@@ -9,7 +9,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["dinghy2"] = {
 		["Name"] = "Dinghy 2",
@@ -17,7 +18,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},	
 	["dinghy3"] = {
 		["Name"] = "Dinghy 3",
@@ -25,7 +27,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["dinghy4"] = {
 		["Name"] = "Dinghy 4",
@@ -33,7 +36,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["jetmax"] = {
 		["Name"] = "Jetmax",
@@ -41,7 +45,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["marquis"] = {
 		["Name"] = "Marquis",
@@ -49,7 +54,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["seashark"] = {
 		["Name"] = "Seashark",
@@ -57,7 +63,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["seashark2"] = {
 		["Name"] = "Seashark 2",
@@ -65,7 +72,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["seashark3"] = {
 		["Name"] = "Seashark 3",
@@ -73,7 +81,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["speeder"] = {
 		["Name"] = "Speeder",
@@ -81,7 +90,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["speeder2"] = {
 		["Name"] = "Speeder 2",
@@ -89,7 +99,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["squalo"] = {
 		["Name"] = "Squalo",
@@ -97,7 +108,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["submersible"] = {
 		["Name"] = "Submersible",
@@ -105,7 +117,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["submersible2"] = {
 		["Name"] = "Submersible 2",
@@ -113,7 +126,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["suntrap"] = {
 		["Name"] = "Suntrap",
@@ -121,7 +135,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["toro"] = {
 		["Name"] = "Toro",
@@ -129,7 +144,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["toro2"] = {
 		["Name"] = "Toro 2",
@@ -137,7 +153,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["tropic"] = {
 		["Name"] = "Tropic",
@@ -145,7 +162,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["tropic2"] = {
 		["Name"] = "Tropic 2",
@@ -153,7 +171,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["tug"] = {
 		["Name"] = "Tug",
@@ -161,7 +180,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["avisa"] = {
 		["Name"] = "Avisa",
@@ -169,7 +189,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["dinghy5"] = {
 		["Name"] = "Dinghy 5",
@@ -177,7 +198,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["kosatka"] = {
 		["Name"] = "Kosatka",
@@ -185,7 +207,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["longfin"] = {
 		["Name"] = "Longfin",
@@ -193,7 +216,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 	["patrolboat"] = {
 		["Name"] = "Patrolboat",
@@ -201,7 +225,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "boat"
 	},
 
 -- Commercials
@@ -211,7 +236,8 @@ local List = {
 		["Price"] = 187500,
 		["Mode"] = "Rental",
 		["Gemstone"] = 7500,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["biff"] = {
 		["Name"] = "Biff",
@@ -219,7 +245,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["cerberus"] = {
 		["Name"] = "Cerberus",
@@ -227,7 +254,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["cerberus2"] = {
 		["Name"] = "Cerberus 2",
@@ -235,7 +263,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["cerberus3"] = {
 		["Name"] = "Cerberus 3",
@@ -243,7 +272,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["hauler"] = {
 		["Name"] = "Hauler",
@@ -251,7 +281,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["hauler2"] = {
 		["Name"] = "Hauler 2",
@@ -259,7 +290,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["mule"] = {
 		["Name"] = "Mule",
@@ -267,7 +299,8 @@ local List = {
 		["Price"] = 125000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 5000,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["mule2"] = {
 		["Name"] = "Mule 2",
@@ -275,7 +308,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["mule3"] = {
 		["Name"] = "Mule 3",
@@ -283,7 +317,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["mule4"] = {
 		["Name"] = "Mule 4",
@@ -291,7 +326,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["packer"] = {
 		["Name"] = "Packer",
@@ -299,7 +335,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["phantom"] = {
 		["Name"] = "Phantom",
@@ -307,7 +344,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["phantom2"] = {
 		["Name"] = "Phantom 2",
@@ -315,7 +353,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["phantom3"] = {
 		["Name"] = "Phantom 3",
@@ -323,7 +362,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["pounder"] = {
 		["Name"] = "Pounder",
@@ -331,7 +371,8 @@ local List = {
 		["Price"] = 250000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 10000,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["pounder2"] = {
 		["Name"] = "Pounder 2",
@@ -339,7 +380,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["stockade"] = {
 		["Name"] = "Stockade",
@@ -347,7 +389,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["stockade3"] = {
 		["Name"] = "Stockade 3",
@@ -355,7 +398,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 	["terbyte"] = {
 		["Name"] = "Terbyte",
@@ -363,7 +407,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Caminhões"
+		["Class"] = "Caminhões",
+		["Type"] = "automobile"
 	},
 
 -- Compacts
@@ -373,7 +418,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["blista"] = {
 		["Name"] = "Blista",
@@ -381,7 +427,8 @@ local List = {
 		["Price"] = 40000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["brioso"] = {
 		["Name"] = "Brioso",
@@ -389,7 +436,8 @@ local List = {
 		["Price"] = 30000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["club"] = {
 		["Name"] = "Club",
@@ -397,7 +445,8 @@ local List = {
 		["Price"] = 65000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["dilettante"] = {
 		["Name"] = "Dilettante",
@@ -405,7 +454,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["dilettante2"] = {
 		["Name"] = "Dilettante 2",
@@ -413,7 +463,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["kanjo"] = {
 		["Name"] = "Kanjo",
@@ -421,7 +472,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["issi2"] = {
 		["Name"] = "Issi 2",
@@ -429,7 +481,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["issi3"] = {
 		["Name"] = "Issi 3",
@@ -437,7 +490,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["issi4"] = {
 		["Name"] = "Issi 4",
@@ -445,7 +499,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["issi5"] = {
 		["Name"] = "Issi 5",
@@ -453,7 +508,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["issi6"] = {
 		["Name"] = "Issi 6",
@@ -461,7 +517,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["panto"] = {
 		["Name"] = "Panto",
@@ -469,7 +526,8 @@ local List = {
 		["Price"] = 15000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["prairie"] = {
 		["Name"] = "Prairie",
@@ -477,7 +535,8 @@ local List = {
 		["Price"] = 15000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["rhapsody"] = {
 		["Name"] = "Rhapsody",
@@ -485,7 +544,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["brioso2"] = {
 		["Name"] = "Brioso 2",
@@ -493,7 +553,8 @@ local List = {
 		["Price"] = 40000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["weevil"] = {
 		["Name"] = "Weevil",
@@ -501,7 +562,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 
 -- Coupes
@@ -511,7 +573,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["exemplar"] = {
 		["Name"] = "Exemplar",
@@ -519,7 +582,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["f620"] = {
 		["Name"] = "F620",
@@ -527,7 +591,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["felon"] = {
 		["Name"] = "Felon",
@@ -535,7 +600,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["felon2"] = {
 		["Name"] = "Felon 2",
@@ -543,7 +609,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["jackal"] = {
 		["Name"] = "Jackal",
@@ -551,7 +618,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["oracle"] = {
 		["Name"] = "Oracle",
@@ -559,7 +627,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["oracle2"] = {
 		["Name"] = "Oracle 2",
@@ -567,7 +636,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["sentinel"] = {
 		["Name"] = "Sentinel",
@@ -575,7 +645,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["sentinel2"] = {
 		["Name"] = "Sentinel 2",
@@ -583,7 +654,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["windsor"] = {
 		["Name"] = "Windsor",
@@ -591,7 +663,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["windsor2"] = {
 		["Name"] = "Windsor 2",
@@ -599,7 +672,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["zion"] = {
 		["Name"] = "Zion",
@@ -607,7 +681,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["zion2"] = {
 		["Name"] = "Zion 2",
@@ -615,7 +690,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 	["previon"] = {
 		["Name"] = "Previon",
@@ -623,7 +699,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Cupês"
+		["Class"] = "Cupês",
+		["Type"] = "automobile"
 	},
 
 -- Cycles
@@ -633,7 +710,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Bicicletas"
+		["Class"] = "Bicicletas",
+		["Type"] = "bike"
 	},	
 	["cruiser"] = {
 		["Name"] = "Cruiser",
@@ -641,7 +719,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Bicicletas"
+		["Class"] = "Bicicletas",
+		["Type"] = "bike"
 	},
 	["fixter"] = {
 		["Name"] = "Fixter",
@@ -649,7 +728,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Bicicletas"
+		["Class"] = "Bicicletas",
+		["Type"] = "bike"
 	},
 	["scorcher"] = {
 		["Name"] = "Scorcher",
@@ -657,7 +737,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Bicicletas"
+		["Class"] = "Bicicletas",
+		["Type"] = "bike"
 	},
 	["tribike"] = {
 		["Name"] = "Tribike",
@@ -665,7 +746,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Bicicletas"
+		["Class"] = "Bicicletas",
+		["Type"] = "bike"
 	},
 	["tribike2"] = {
 		["Name"] = "Tribike 2",
@@ -673,7 +755,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Bicicletas"
+		["Class"] = "Bicicletas",
+		["Type"] = "bike"
 	},
 	["tribike3"] = {
 		["Name"] = "Tribike 3",
@@ -681,7 +764,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Bicicletas"
+		["Class"] = "Bicicletas",
+		["Type"] = "bike"
 	},
 
 -- Emergency
@@ -691,7 +775,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["fbi"] = {
 		["Name"] = "Fbi",
@@ -699,7 +784,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["fbi2"] = {
 		["Name"] = "Fbi 2",
@@ -707,7 +793,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["firetruk"] = {
 		["Name"] = "Firetruk",
@@ -715,7 +802,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},	
 	["lguard"] = {
 		["Name"] = "Lguard",
@@ -723,7 +811,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["pbus"] = {
 		["Name"] = "Pbus",
@@ -731,7 +820,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["police"] = {
 		["Name"] = "Police",
@@ -739,7 +829,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["police2"] = {
 		["Name"] = "Police 2",
@@ -747,7 +838,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["police3"] = {
 		["Name"] = "Police 3",
@@ -755,7 +847,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["police4"] = {
 		["Name"] = "Police 4",
@@ -763,7 +856,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["policeb"] = {
 		["Name"] = "Harley FLH1200",
@@ -771,7 +865,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "bike"
 	},
 	["polmav"] = {
 		["Name"] = "Polmav",
@@ -779,7 +874,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "heli"
 	},
 	["policeold1"] = {
 		["Name"] = "Policeold 1",
@@ -787,7 +883,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["policeold2"] = {
 		["Name"] = "Policeold 2",
@@ -795,7 +892,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["policet"] = {
 		["Name"] = "Police T",
@@ -803,7 +901,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["pranger"] = {
 		["Name"] = "Pranger",
@@ -811,7 +910,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["predator"] = {
 		["Name"] = "Predator",
@@ -819,7 +919,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["riot"] = {
 		["Name"] = "Riot",
@@ -827,7 +928,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["riot2"] = {
 		["Name"] = "Riot 2",
@@ -835,7 +937,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["sheriff"] = {
 		["Name"] = "Sheriff",
@@ -843,7 +946,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 	["sheriff2"] = {
 		["Name"] = "Sheriff 2",
@@ -851,7 +955,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Emergência"
+		["Class"] = "Emergência",
+		["Type"] = "automobile"
 	},
 
 -- Helicopters
@@ -861,7 +966,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["annihilator"] = {
 		["Name"] = "Annihilator",
@@ -869,7 +975,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["buzzard"] = {
 		["Name"] = "Buzzard",
@@ -877,7 +984,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["buzzard2"] = {
 		["Name"] = "Buzzard 2",
@@ -885,7 +993,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["cargobob"] = {
 		["Name"] = "Cargobob",
@@ -893,7 +1002,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["cargobob2"] = {
 		["Name"] = "Cargobob 2",
@@ -901,7 +1011,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["cargobob3"] = {
 		["Name"] = "Cargobob 3",
@@ -909,7 +1020,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["cargobob4"] = {
 		["Name"] = "Cargobob 4",
@@ -917,7 +1029,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["frogger"] = {
 		["Name"] = "Frogger",
@@ -925,7 +1038,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["frogger2"] = {
 		["Name"] = "Frogger 2",
@@ -933,7 +1047,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["havok"] = {
 		["Name"] = "Havok",
@@ -941,7 +1056,8 @@ local List = {
 		["Price"] = 262500,
 		["Mode"] = "Work",
 		["Gemstone"] = 7500,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["hunter"] = {
 		["Name"] = "Hunter",
@@ -949,7 +1065,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["maverick"] = {
 		["Name"] = "Maverick",
@@ -957,7 +1074,8 @@ local List = {
 		["Price"] = 437500,
 		["Mode"] = "Work",
 		["Gemstone"] = 12500,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["savage"] = {
 		["Name"] = "Savage",
@@ -965,7 +1083,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["seasparrow"] = {
 		["Name"] = "Seasparrow",
@@ -973,7 +1092,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["skylift"] = {
 		["Name"] = "Skylift",
@@ -981,7 +1101,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["supervolito"] = {
 		["Name"] = "Supervolito",
@@ -989,7 +1110,8 @@ local List = {
 		["Price"] = 437500,
 		["Mode"] = "Work",
 		["Gemstone"] = 12500,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["supervolito2"] = {
 		["Name"] = "Supervolito 2",
@@ -997,7 +1119,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["swift"] = {
 		["Name"] = "Swift",
@@ -1005,7 +1128,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["swift2"] = {
 		["Name"] = "Swift 2",
@@ -1013,7 +1137,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["valkyrie"] = {
 		["Name"] = "Valkyrie",
@@ -1021,7 +1146,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["valkyrie2"] = {
 		["Name"] = "Valkyrie 2",
@@ -1029,7 +1155,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["volatus"] = {
 		["Name"] = "Volatus",
@@ -1037,7 +1164,8 @@ local List = {
 		["Price"] = 437500,
 		["Mode"] = "Work",
 		["Gemstone"] = 12500,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["annihilator2"] = {
 		["Name"] = "Annihilator 2",
@@ -1045,7 +1173,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["seasparrow2"] = {
 		["Name"] = "Seasparrow 2",
@@ -1053,7 +1182,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 	["seasparrow3"] = {
 		["Name"] = "Seasparrow 3",
@@ -1061,7 +1191,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Helicópteros"
+		["Class"] = "Helicópteros",
+		["Type"] = "heli"
 	},
 
 -- Industrial	
@@ -1071,7 +1202,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["cutter"] = {
 		["Name"] = "Cutter",
@@ -1079,7 +1211,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["dump"] = {
 		["Name"] = "Dump",
@@ -1087,7 +1220,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["flatbed"] = {
 		["Name"] = "Flatbed",
@@ -1095,7 +1229,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["guardian"] = {
 		["Name"] = "Guardian",
@@ -1103,7 +1238,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["handler"] = {
 		["Name"] = "Handler",
@@ -1111,7 +1247,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["mixer"] = {
 		["Name"] = "Mixer",
@@ -1119,7 +1256,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["mixer2"] = {
 		["Name"] = "Mixer 2",
@@ -1127,7 +1265,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["rubble"] = {
 		["Name"] = "Rubble",
@@ -1135,7 +1274,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["tiptruck"] = {
 		["Name"] = "Tiptruck",
@@ -1143,7 +1283,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 	["tiptruck2"] = {
 		["Name"] = "Tiptruck 2",
@@ -1151,7 +1292,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Industriais"
+		["Class"] = "Industriais",
+		["Type"] = "automobile"
 	},
 
 -- Military
@@ -1161,7 +1303,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["barracks"] = {
 		["Name"] = "Barracks",
@@ -1169,7 +1312,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["barracks2"] = {
 		["Name"] = "Barracks 2",
@@ -1177,7 +1321,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["barracks3"] = {
 		["Name"] = "Barracks 3",
@@ -1185,7 +1330,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["barrage"] = {
 		["Name"] = "Barrage",
@@ -1193,7 +1339,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["chernobog"] = {
 		["Name"] = "Chernobog",
@@ -1201,7 +1348,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["crusader"] = {
 		["Name"] = "Crusader",
@@ -1209,7 +1357,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["halftrack"] = {
 		["Name"] = "Halftrack",
@@ -1217,7 +1366,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["khanjali"] = {
 		["Name"] = "Khanjali",
@@ -1225,7 +1375,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["minitank"] = {
 		["Name"] = "Minitank",
@@ -1233,7 +1384,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["rhino"] = {
 		["Name"] = "Rhino",
@@ -1241,7 +1393,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["scarab"] = {
 		["Name"] = "Scarab",
@@ -1249,7 +1402,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["scarab2"] = {
 		["Name"] = "Scarab 2",
@@ -1257,7 +1411,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["scarab3"] = {
 		["Name"] = "Scarab 3",
@@ -1265,7 +1420,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["thruster"] = {
 		["Name"] = "Thruster",
@@ -1273,7 +1429,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["trailersmall2"] = {
 		["Name"] = "Trailersmall 2",
@@ -1281,7 +1438,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 	["vetir"] = {
 		["Name"] = "Vetir",
@@ -1289,7 +1447,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Militares"
+		["Class"] = "Militares",
+		["Type"] = "automobile"
 	},
 
 -- Motorcycles
@@ -1299,7 +1458,8 @@ local List = {
 		["Price"] = 240000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["avarus"] = {
 		["Name"] = "Avarus",
@@ -1307,7 +1467,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["bagger"] = {
 		["Name"] = "Bagger",
@@ -1315,7 +1476,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["bati"] = {
 		["Name"] = "Bati",
@@ -1323,7 +1485,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["bati2"] = {
 		["Name"] = "Bati 2",
@@ -1331,7 +1494,8 @@ local List = {
 		["Price"] = 240000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["bf400"] = {
 		["Name"] = "Bf400",
@@ -1339,7 +1503,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["carbonrs"] = {
 		["Name"] = "Carbon RS",
@@ -1347,7 +1512,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["chimera"] = {
 		["Name"] = "Chimera",
@@ -1355,7 +1521,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["cliffhanger"] = {
 		["Name"] = "Cliffhanger",
@@ -1363,7 +1530,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["daemon"] = {
 		["Name"] = "Daemon",
@@ -1371,7 +1539,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["daemon2"] = {
 		["Name"] = "Daemon 2",
@@ -1379,7 +1548,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["defiler"] = {
 		["Name"] = "Defiler",
@@ -1387,7 +1557,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["deathbike"] = {
 		["Name"] = "Deathbike",
@@ -1395,7 +1566,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["deathbike2"] = {
 		["Name"] = "Deathbike 2",
@@ -1403,7 +1575,8 @@ local List = {
 		["Price"] = 65000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["deathbike3"] = {
 		["Name"] = "Deathbike 3",
@@ -1411,7 +1584,8 @@ local List = {
 		["Price"] = 65000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["diablous"] = {
 		["Name"] = "Diablous",
@@ -1419,7 +1593,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["diablous2"] = {
 		["Name"] = "Diablous 2",
@@ -1427,7 +1602,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["double"] = {
 		["Name"] = "Double",
@@ -1435,7 +1611,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["enduro"] = {
 		["Name"] = "Enduro",
@@ -1443,7 +1620,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["esskey"] = {
 		["Name"] = "Esskey",
@@ -1451,7 +1629,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["faggio"] = {
 		["Name"] = "Faggio",
@@ -1459,7 +1638,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["faggio2"] = {
 		["Name"] = "Faggio 2",
@@ -1467,7 +1647,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["faggio3"] = {
 		["Name"] = "Faggio 3",
@@ -1475,7 +1656,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["fcr"] = {
 		["Name"] = "Fcr",
@@ -1483,7 +1665,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["fcr2"] = {
 		["Name"] = "Fcr 2",
@@ -1491,7 +1674,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["gargoyle"] = {
 		["Name"] = "Gargoyle",
@@ -1499,7 +1683,8 @@ local List = {
 		["Price"] = 230000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["hakuchou"] = {
 		["Name"] = "Hakuchou",
@@ -1507,7 +1692,8 @@ local List = {
 		["Price"] = 240000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["hakuchou2"] = {
 		["Name"] = "Hakuchou 2",
@@ -1515,7 +1701,8 @@ local List = {
 		["Price"] = 270000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["hexer"] = {
 		["Name"] = "Hexer",
@@ -1523,7 +1710,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["innovation"] = {
 		["Name"] = "Innovation",
@@ -1531,7 +1719,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["lectro"] = {
 		["Name"] = "Lectro",
@@ -1539,7 +1728,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["manchez"] = {
 		["Name"] = "Manchez",
@@ -1547,7 +1737,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["manchez3"] = {
 		["Name"] = "manchez3",
@@ -1555,7 +1746,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["nemesis"] = {
 		["Name"] = "Nemesis",
@@ -1563,7 +1755,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["nightblade"] = {
 		["Name"] = "Nightblade",
@@ -1571,7 +1764,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["oppressor"] = {
 		["Name"] = "Oppressor",
@@ -1579,7 +1773,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["oppressor2"] = {
 		["Name"] = "Oppressor 2",
@@ -1587,7 +1782,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["pcj"] = {
 		["Name"] = "Pcj",
@@ -1595,7 +1791,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["powersurge"] = {
 		["Name"] = "powersurge",
@@ -1603,7 +1800,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["ratbike"] = {
 		["Name"] = "Ratbike",
@@ -1611,7 +1809,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["ruffian"] = {
 		["Name"] = "Ruffian",
@@ -1619,7 +1818,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["rrocket"] = {
 		["Name"] = "Rrocket",
@@ -1627,7 +1827,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["sanchez"] = {
 		["Name"] = "Sanchez",
@@ -1635,7 +1836,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["sanchez2"] = {
 		["Name"] = "Sanchez 2",
@@ -1643,7 +1845,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["sanctus"] = {
 		["Name"] = "Sanctus",
@@ -1651,7 +1854,8 @@ local List = {
 		["Price"] = 190000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["shotaro"] = {
 		["Name"] = "Shotaro",
@@ -1659,7 +1863,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["sovereign"] = {
 		["Name"] = "Sovereign",
@@ -1667,7 +1872,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["stryder"] = {
 		["Name"] = "Stryder",
@@ -1675,7 +1881,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["thrust"] = {
 		["Name"] = "Thrust",
@@ -1683,7 +1890,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["vader"] = {
 		["Name"] = "Vader",
@@ -1691,7 +1899,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["vindicator"] = {
 		["Name"] = "Vindicator",
@@ -1699,7 +1908,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["vortex"] = {
 		["Name"] = "Vortex",
@@ -1707,7 +1917,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["wolfsbane"] = {
 		["Name"] = "Wolfsbane",
@@ -1715,7 +1926,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["zombiea"] = {
 		["Name"] = "Zombie A",
@@ -1723,7 +1935,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["zombieb"] = {
 		["Name"] = "Zombie B",
@@ -1731,7 +1944,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Bikes",
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 	["manchez2"] = {
 		["Name"] = "Manchez 2",
@@ -1739,7 +1953,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Motocicletas"
+		["Class"] = "Motocicletas",
+		["Type"] = "bike"
 	},
 
 -- Muscle
@@ -1749,7 +1964,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["broadway"] = {
 		["Name"] = "broadway",
@@ -1757,7 +1973,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["buccaneer"] = {
 		["Name"] = "Buccaneer",
@@ -1765,7 +1982,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["buccaneer2"] = {
 		["Name"] = "Buccaneer 2",
@@ -1773,7 +1991,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["chino"] = {
 		["Name"] = "Chino",
@@ -1781,7 +2000,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["chino2"] = {
 		["Name"] = "Chino 2",
@@ -1789,7 +2009,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["clique"] = {
 		["Name"] = "Clique",
@@ -1797,7 +2018,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["coquette3"] = {
 		["Name"] = "Coquette 3",
@@ -1805,7 +2027,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["deviant"] = {
 		["Name"] = "Deviant",
@@ -1813,7 +2036,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["dominator"] = {
 		["Name"] = "Dominator",
@@ -1821,7 +2045,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["dominator2"] = {
 		["Name"] = "Dominator 2",
@@ -1829,7 +2054,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["dominator3"] = {
 		["Name"] = "Dominator 3",
@@ -1837,7 +2063,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},	
 	["dominator4"] = {
 		["Name"] = "Dominator 4",
@@ -1845,7 +2072,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["dominator5"] = {
 		["Name"] = "Dominator 5",
@@ -1853,7 +2081,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["dominator6"] = {
 		["Name"] = "Dominator 6",
@@ -1861,7 +2090,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["dukes"] = {
 		["Name"] = "Dukes",
@@ -1869,7 +2099,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["dukes2"] = {
 		["Name"] = "Dukes 2",
@@ -1877,7 +2108,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["dukes3"] = {
 		["Name"] = "Dukes 3",
@@ -1885,7 +2117,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["faction"] = {
 		["Name"] = "Faction",
@@ -1893,7 +2126,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["faction2"] = {
 		["Name"] = "Faction 2",
@@ -1901,7 +2135,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["faction3"] = {
 		["Name"] = "Faction 3",
@@ -1909,7 +2144,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["ellie"] = {
 		["Name"] = "Ellie",
@@ -1917,7 +2153,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["eudora"] = {
 		["Name"] = "eudora",
@@ -1925,7 +2162,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["gauntlet"] = {
 		["Name"] = "Gauntlet",
@@ -1933,7 +2171,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["gauntlet2"] = {
 		["Name"] = "Gauntlet 2",
@@ -1941,7 +2180,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["gauntlet3"] = {
 		["Name"] = "Gauntlet 3",
@@ -1949,7 +2189,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["gauntlet4"] = {
 		["Name"] = "Gauntlet 4",
@@ -1957,7 +2198,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["gauntlet5"] = {
 		["Name"] = "Gauntlet 5",
@@ -1965,7 +2207,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["hermes"] = {
 		["Name"] = "Hermes",
@@ -1973,7 +2216,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["hotknife"] = {
 		["Name"] = "Hotknife",
@@ -1981,7 +2225,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["hustler"] = {
 		["Name"] = "Hustler",
@@ -1989,7 +2234,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["impaler"] = {
 		["Name"] = "Impaler",
@@ -1997,7 +2243,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["impaler2"] = {
 		["Name"] = "Impaler 2",
@@ -2005,7 +2252,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["impaler3"] = {
 		["Name"] = "Impaler 3",
@@ -2013,7 +2261,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["impaler4"] = {
 		["Name"] = "Impaler 4",
@@ -2021,7 +2270,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["imperator"] = {
 		["Name"] = "Imperator",
@@ -2029,7 +2279,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["imperator2"] = {
 		["Name"] = "Imperator 2",
@@ -2037,7 +2288,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["imperator3"] = {
 		["Name"] = "Imperator 3",
@@ -2045,7 +2297,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["lurcher"] = {
 		["Name"] = "Lurcher",
@@ -2053,7 +2306,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["moonbeam"] = {
 		["Name"] = "Moonbeam",
@@ -2061,7 +2315,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["moonbeam2"] = {
 		["Name"] = "Moonbeam 2",
@@ -2069,7 +2324,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["nightshade"] = {
 		["Name"] = "Nightshade",
@@ -2077,7 +2333,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["peyote2"] = {
 		["Name"] = "Peyote 2",
@@ -2085,7 +2342,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["phoenix"] = {
 		["Name"] = "Phoenix",
@@ -2093,7 +2351,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["picador"] = {
 		["Name"] = "Picador",
@@ -2101,7 +2360,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["ratloader"] = {
 		["Name"] = "Ratloader",
@@ -2109,7 +2369,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["ratloader2"] = {
 		["Name"] = "Ratloader 2",
@@ -2117,7 +2378,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["ruiner"] = {
 		["Name"] = "Ruiner",
@@ -2125,7 +2387,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["ruiner2"] = {
 		["Name"] = "Ruiner 2",
@@ -2133,7 +2396,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["ruiner3"] = {
 		["Name"] = "Ruiner 3",
@@ -2141,7 +2405,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["sabregt"] = {
 		["Name"] = "Sabre GT",
@@ -2149,7 +2414,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["sabregt2"] = {
 		["Name"] = "Sabregt 2",
@@ -2157,7 +2423,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["slamvan"] = {
 		["Name"] = "Slamvan",
@@ -2165,7 +2432,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["slamvan2"] = {
 		["Name"] = "Slamvan 2",
@@ -2173,7 +2441,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["slamvan3"] = {
 		["Name"] = "Slamvan 3",
@@ -2181,7 +2450,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["slamvan4"] = {
 		["Name"] = "Slamvan 4",
@@ -2189,7 +2459,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["slamvan5"] = {
 		["Name"] = "Slamvan 5",
@@ -2197,7 +2468,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["slamvan6"] = {
 		["Name"] = "Slamvan 6",
@@ -2205,7 +2477,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["stalion"] = {
 		["Name"] = "Stalion",
@@ -2213,7 +2486,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["stalion2"] = {
 		["Name"] = "Stalion 2",
@@ -2221,7 +2495,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["tahoma"] = {
 		["Name"] = "tahoma",
@@ -2229,7 +2504,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["tampa"] = {
 		["Name"] = "Tampa",
@@ -2237,7 +2513,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["tampa3"] = {
 		["Name"] = "Tampa 3",
@@ -2245,7 +2522,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["tulip"] = {
 		["Name"] = "Tulip",
@@ -2253,7 +2531,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["tulip2"] = {
 		["Name"] = "tulip2",
@@ -2261,7 +2540,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["vamos"] = {
 		["Name"] = "Vamos",
@@ -2269,7 +2549,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["vigero"] = {
 		["Name"] = "Vigero",
@@ -2277,7 +2558,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["virgo"] = {
 		["Name"] = "Virgo",
@@ -2285,7 +2567,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["virgo2"] = {
 		["Name"] = "Virgo 2",
@@ -2293,7 +2576,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["virgo3"] = {
 		["Name"] = "Virgo 3",
@@ -2301,7 +2585,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["voodoo"] = {
 		["Name"] = "Voodoo",
@@ -2309,7 +2594,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["voodoo2"] = {
 		["Name"] = "Voodoo 2",
@@ -2317,7 +2603,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["yosemite"] = {
 		["Name"] = "Yosemite",
@@ -2325,7 +2612,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["yosemite2"] = {
 		["Name"] = "Yosemite 2",
@@ -2333,7 +2621,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["yosemite3"] = {
 		["Name"] = "Yosemite 3",
@@ -2341,7 +2630,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["dominator7"] = {
 		["Name"] = "Dominator 7",
@@ -2349,7 +2639,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 
 -- Off-Road
@@ -2359,7 +2650,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["bifta"] = {
 		["Name"] = "Bifta",
@@ -2367,7 +2659,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["blazer"] = {
 		["Name"] = "Blazer",
@@ -2375,7 +2668,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["blazer2"] = {
 		["Name"] = "Blazer 2",
@@ -2383,7 +2677,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["blazer3"] = {
 		["Name"] = "Blazer 3",
@@ -2391,7 +2686,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["blazer4"] = {
 		["Name"] = "Blazer 4",
@@ -2399,7 +2695,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["blazer5"] = {
 		["Name"] = "Blazer 5",
@@ -2407,7 +2704,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["bodhi2"] = {
 		["Name"] = "Bodhi 2",
@@ -2415,7 +2713,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["brawler"] = {
 		["Name"] = "Brawler",
@@ -2423,7 +2722,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["bruiser"] = {
 		["Name"] = "Bruiser",
@@ -2431,7 +2731,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["bruiser2"] = {
 		["Name"] = "Bruiser 2",
@@ -2439,7 +2740,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["bruiser3"] = {
 		["Name"] = "Bruiser 3",
@@ -2447,7 +2749,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["brutus"] = {
 		["Name"] = "Brutus",
@@ -2455,7 +2758,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["brutus2"] = {
 		["Name"] = "Brutus 2",
@@ -2463,7 +2767,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["brutus3"] = {
 		["Name"] = "Brutus 3",
@@ -2471,7 +2776,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["caracara"] = {
 		["Name"] = "Caracara",
@@ -2479,7 +2785,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["caracara2"] = {
 		["Name"] = "Caracara 2",
@@ -2487,7 +2794,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["dloader"] = {
 		["Name"] = "Dloader",
@@ -2495,7 +2803,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["dubsta3"] = {
 		["Name"] = "Dubsta 3",
@@ -2503,7 +2812,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["dune"] = {
 		["Name"] = "Dune",
@@ -2511,7 +2821,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["dune2"] = {
 		["Name"] = "Dune 2",
@@ -2519,7 +2830,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["dune3"] = {
 		["Name"] = "Dune 3",
@@ -2527,7 +2839,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["dune4"] = {
 		["Name"] = "Dune 4",
@@ -2535,7 +2848,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["dune5"] = {
 		["Name"] = "Dune 5",
@@ -2543,7 +2857,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["everon"] = {
 		["Name"] = "Everon",
@@ -2551,7 +2866,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["freecrawler"] = {
 		["Name"] = "Freecrawler",
@@ -2559,7 +2875,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["hellion"] = {
 		["Name"] = "Hellion",
@@ -2567,7 +2884,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["insurgent"] = {
 		["Name"] = "Insurgent",
@@ -2575,7 +2893,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["insurgent2"] = {
 		["Name"] = "Insurgent 2",
@@ -2583,7 +2902,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["insurgent3"] = {
 		["Name"] = "Insurgent 3",
@@ -2591,7 +2911,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["kalahari"] = {
 		["Name"] = "Kalahari",
@@ -2599,7 +2920,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["kamacho"] = {
 		["Name"] = "Kamacho",
@@ -2607,7 +2929,8 @@ local List = {
 		["Price"] = 300000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["marshall"] = {
 		["Name"] = "Marshall",
@@ -2615,7 +2938,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["mesa3"] = {
 		["Name"] = "Mesa 3",
@@ -2623,7 +2947,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["monster"] = {
 		["Name"] = "Monster",
@@ -2631,7 +2956,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["monster3"] = {
 		["Name"] = "Monster 3",
@@ -2639,7 +2965,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["monster4"] = {
 		["Name"] = "Monster 4",
@@ -2647,7 +2974,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["monster5"] = {
 		["Name"] = "Monster 5",
@@ -2655,7 +2983,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["menacer"] = {
 		["Name"] = "Menacer",
@@ -2663,7 +2992,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["outlaw"] = {
 		["Name"] = "Outlaw",
@@ -2671,7 +3001,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["nightshark"] = {
 		["Name"] = "Nightshark",
@@ -2679,7 +3010,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},	
 	["rancherxl"] = {
 		["Name"] = "Rancher XL",
@@ -2687,7 +3019,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["rancherxl2"] = {
 		["Name"] = "Rancher XL2",
@@ -2695,7 +3028,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["rebel"] = {
 		["Name"] = "Rebel",
@@ -2703,7 +3037,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["rebel2"] = {
 		["Name"] = "Rebel 2",
@@ -2711,7 +3046,8 @@ local List = {
 		["Price"] = 85000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["rcbandito"] = {
 		["Name"] = "RC Bandito",
@@ -2719,7 +3055,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["riata"] = {
 		["Name"] = "Riata",
@@ -2727,7 +3064,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["sandking"] = {
 		["Name"] = "Sandking",
@@ -2735,7 +3073,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["sandking2"] = {
 		["Name"] = "Sandking 2",
@@ -2743,7 +3082,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["technical"] = {
 		["Name"] = "Technical",
@@ -2751,7 +3091,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["technical2"] = {
 		["Name"] = "Technical 2",
@@ -2759,7 +3100,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["technical3"] = {
 		["Name"] = "Technical 3",
@@ -2767,7 +3109,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["trophytruck"] = {
 		["Name"] = "Trophytruck",
@@ -2775,7 +3118,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["trophytruck2"] = {
 		["Name"] = "Trophytruck 2",
@@ -2783,7 +3127,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["vagrant"] = {
 		["Name"] = "Vagrant",
@@ -2791,7 +3136,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["zhaba"] = {
 		["Name"] = "Zhaba",
@@ -2799,7 +3145,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["verus"] = {
 		["Name"] = "Verus",
@@ -2807,7 +3154,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["winky"] = {
 		["Name"] = "Winky",
@@ -2815,7 +3163,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 
 -- Open Wheel
@@ -2825,7 +3174,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Formula 1"
+		["Class"] = "Formula 1",
+		["Type"] = "automobile"
 	},
 	["formula2"] = {
 		["Name"] = "Formula 2",
@@ -2833,7 +3183,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Formula 1"
+		["Class"] = "Formula 1",
+		["Type"] = "automobile"
 	},
 	["openwheel1"] = {
 		["Name"] = "Openwheel 1",
@@ -2841,7 +3192,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Formula 1"
+		["Class"] = "Formula 1",
+		["Type"] = "automobile"
 	},
 	["openwheel2"] = {
 		["Name"] = "Openwheel 2",
@@ -2849,7 +3201,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Formula 1"
+		["Class"] = "Formula 1",
+		["Type"] = "automobile"
 	},
 
 -- Planes
@@ -2859,7 +3212,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["avenger"] = {
 		["Name"] = "Avenger",
@@ -2867,7 +3221,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["avenger2"] = {
 		["Name"] = "Avenger 2",
@@ -2875,7 +3230,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["besra"] = {
 		["Name"] = "Besra",
@@ -2883,7 +3239,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["blimp"] = {
 		["Name"] = "Blimp",
@@ -2891,7 +3248,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["blimp2"] = {
 		["Name"] = "Blimp 2",
@@ -2899,7 +3257,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["blimp3"] = {
 		["Name"] = "Blimp 3",
@@ -2907,7 +3266,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["bombushka"] = {
 		["Name"] = "Bombushka",
@@ -2915,7 +3275,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["cargoplane"] = {
 		["Name"] = "Cargoplane",
@@ -2923,7 +3284,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["cargoplane2"] = {
 		["Name"] = "cargoplane2",
@@ -2931,7 +3293,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["cuban800"] = {
 		["Name"] = "Cuban800",
@@ -2939,7 +3302,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["dodo"] = {
 		["Name"] = "Dodo",
@@ -2947,7 +3311,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["duster"] = {
 		["Name"] = "Duster",
@@ -2955,7 +3320,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["howard"] = {
 		["Name"] = "Howard",
@@ -2963,7 +3329,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["hydra"] = {
 		["Name"] = "Hydra",
@@ -2971,7 +3338,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["jet"] = {
 		["Name"] = "Jet",
@@ -2979,7 +3347,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["lazer"] = {
 		["Name"] = "Lazer",
@@ -2987,7 +3356,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["luxor"] = {
 		["Name"] = "Luxor",
@@ -2995,7 +3365,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["luxor2"] = {
 		["Name"] = "Luxor 2",
@@ -3003,7 +3374,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["mammatus"] = {
 		["Name"] = "Mammatus",
@@ -3011,7 +3383,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["microlight"] = {
 		["Name"] = "Microlight",
@@ -3019,7 +3392,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["miljet"] = {
 		["Name"] = "Miljet",
@@ -3027,7 +3401,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["mogul"] = {
 		["Name"] = "Mogul",
@@ -3035,7 +3410,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["molotok"] = {
 		["Name"] = "Molotok",
@@ -3043,7 +3419,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["nimbus"] = {
 		["Name"] = "Nimbus",
@@ -3051,7 +3428,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["nokota"] = {
 		["Name"] = "Nokota",
@@ -3059,7 +3437,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["pyro"] = {
 		["Name"] = "Pyro",
@@ -3067,7 +3446,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["rogue"] = {
 		["Name"] = "Rogue",
@@ -3075,7 +3455,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["seabreeze"] = {
 		["Name"] = "Seabreeze",
@@ -3083,7 +3464,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["shamal"] = {
 		["Name"] = "Shamal",
@@ -3091,7 +3473,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["starling"] = {
 		["Name"] = "Starling",
@@ -3099,7 +3482,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["strikeforce"] = {
 		["Name"] = "Strikeforce",
@@ -3107,7 +3491,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["stunt"] = {
 		["Name"] = "Stunt",
@@ -3115,7 +3500,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["titan"] = {
 		["Name"] = "Titan",
@@ -3123,7 +3509,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["tula"] = {
 		["Name"] = "Tula",
@@ -3131,7 +3518,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["velum"] = {
 		["Name"] = "Velum",
@@ -3139,7 +3527,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["velum2"] = {
 		["Name"] = "Velum 2",
@@ -3147,7 +3536,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["vestra"] = {
 		["Name"] = "Vestra",
@@ -3155,7 +3545,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["volatol"] = {
 		["Name"] = "Volatol",
@@ -3163,7 +3554,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 	["alkonost"] = {
 		["Name"] = "Alkonost",
@@ -3171,7 +3563,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Aviões"
+		["Class"] = "Aviões",
+		["Type"] = "plane"
 	},
 
 -- SUVs
@@ -3181,7 +3574,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["baller2"] = {
 		["Name"] = "Baller 2",
@@ -3189,7 +3583,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["baller3"] = {
 		["Name"] = "Baller 3",
@@ -3197,7 +3592,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["baller4"] = {
 		["Name"] = "Baller 4",
@@ -3205,7 +3601,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["baller5"] = {
 		["Name"] = "Baller 5",
@@ -3213,7 +3610,8 @@ local List = {
 		["Price"] = 400000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["baller6"] = {
 		["Name"] = "Baller 6",
@@ -3221,7 +3619,8 @@ local List = {
 		["Price"] = 410000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["bjxl"] = {
 		["Name"] = "Bjxl",
@@ -3229,7 +3628,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["cavalcade"] = {
 		["Name"] = "Cavalcade",
@@ -3237,7 +3637,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["cavalcade2"] = {
 		["Name"] = "Cavalcade 2",
@@ -3245,7 +3646,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["contender"] = {
 		["Name"] = "Contender",
@@ -3253,7 +3655,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["dubsta"] = {
 		["Name"] = "Dubsta",
@@ -3261,7 +3664,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["dubsta2"] = {
 		["Name"] = "Dubsta 2",
@@ -3269,7 +3673,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["fq2"] = {
 		["Name"] = "Fq2",
@@ -3277,7 +3682,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["granger"] = {
 		["Name"] = "Granger",
@@ -3285,7 +3691,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["gresley"] = {
 		["Name"] = "Gresley",
@@ -3293,7 +3700,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["habanero"] = {
 		["Name"] = "Habanero",
@@ -3301,7 +3709,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["huntley"] = {
 		["Name"] = "Huntley",
@@ -3309,7 +3718,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["issi8"] = {
 		["Name"] = "issi8",
@@ -3317,7 +3727,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["landstalker"] = {
 		["Name"] = "Landstalker",
@@ -3325,7 +3736,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["landstalker2"] = {
 		["Name"] = "Landstalker 2",
@@ -3333,7 +3745,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["mesa"] = {
 		["Name"] = "Mesa",
@@ -3341,7 +3754,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["mesa2"] = {
 		["Name"] = "Mesa 2",
@@ -3349,7 +3763,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["novak"] = {
 		["Name"] = "Novak",
@@ -3357,7 +3772,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["patriot"] = {
 		["Name"] = "Patriot",
@@ -3365,7 +3781,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["patriot2"] = {
 		["Name"] = "Patriot 2",
@@ -3373,7 +3790,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["radi"] = {
 		["Name"] = "Radi",
@@ -3381,7 +3799,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["rebla"] = {
 		["Name"] = "Rebla",
@@ -3389,7 +3808,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["rocoto"] = {
 		["Name"] = "Rocoto",
@@ -3397,7 +3817,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["seminole"] = {
 		["Name"] = "Seminole",
@@ -3405,7 +3826,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["seminole2"] = {
 		["Name"] = "Seminole 2",
@@ -3413,7 +3835,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["serrano"] = {
 		["Name"] = "Serrano",
@@ -3421,7 +3844,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["toros"] = {
 		["Name"] = "Toros",
@@ -3429,7 +3853,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["xls"] = {
 		["Name"] = "Xls",
@@ -3437,7 +3862,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["xls2"] = {
 		["Name"] = "Xls 2",
@@ -3445,7 +3871,8 @@ local List = {
 		["Price"] = 410000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["squaddie"] = {
 		["Name"] = "Squaddie",
@@ -3453,7 +3880,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 
 -- Sedans
@@ -3463,7 +3891,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["asea2"] = {
 		["Name"] = "Asea 2",
@@ -3471,7 +3900,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["asterope"] = {
 		["Name"] = "Asterope",
@@ -3479,7 +3909,8 @@ local List = {
 		["Price"] = 30000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["cog55"] = {
 		["Name"] = "Cog55",
@@ -3487,7 +3918,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["cog552"] = {
 		["Name"] = "Cog55 2",
@@ -3495,7 +3927,8 @@ local List = {
 		["Price"] = 410000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["cognoscenti"] = {
 		["Name"] = "Cognoscenti",
@@ -3503,7 +3936,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["cognoscenti2"] = {
 		["Name"] = "Cognoscenti 2",
@@ -3511,7 +3945,8 @@ local List = {
 		["Price"] = 400000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["emperor"] = {
 		["Name"] = "Emperor",
@@ -3519,7 +3954,8 @@ local List = {
 		["Price"] = 5000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["emperor2"] = {
 		["Name"] = "Emperor 2",
@@ -3527,7 +3963,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["emperor3"] = {
 		["Name"] = "Emperor 3",
@@ -3535,7 +3972,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["fugitive"] = {
 		["Name"] = "Fugitive",
@@ -3543,7 +3981,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["glendale"] = {
 		["Name"] = "Glendale",
@@ -3551,7 +3990,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["glendale2"] = {
 		["Name"] = "Glendale 2",
@@ -3559,7 +3999,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["ingot"] = {
 		["Name"] = "Ingot",
@@ -3567,7 +4008,8 @@ local List = {
 		["Price"] = 15000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["intruder"] = {
 		["Name"] = "Intruder",
@@ -3575,7 +4017,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["limo2"] = {
 		["Name"] = "Limo 2",
@@ -3583,7 +4026,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["premier"] = {
 		["Name"] = "Premier",
@@ -3591,7 +4035,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["primo"] = {
 		["Name"] = "Primo",
@@ -3599,7 +4044,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["primo2"] = {
 		["Name"] = "Primo 2",
@@ -3607,7 +4053,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["regina"] = {
 		["Name"] = "Regina",
@@ -3615,7 +4062,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["romero"] = {
 		["Name"] = "Romero",
@@ -3623,7 +4071,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["stafford"] = {
 		["Name"] = "Stafford",
@@ -3631,7 +4080,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["stanier"] = {
 		["Name"] = "Stanier",
@@ -3639,7 +4089,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["stratum"] = {
 		["Name"] = "Stratum",
@@ -3647,7 +4098,8 @@ local List = {
 		["Price"] = 40000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["stretch"] = {
 		["Name"] = "Stretch",
@@ -3655,7 +4107,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["superd"] = {
 		["Name"] = "Superd",
@@ -3663,7 +4116,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["surge"] = {
 		["Name"] = "Surge",
@@ -3671,7 +4125,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["tailgater"] = {
 		["Name"] = "Tailgater",
@@ -3679,7 +4134,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["warrener"] = {
 		["Name"] = "Warrener",
@@ -3687,7 +4143,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["washington"] = {
 		["Name"] = "Washington",
@@ -3695,7 +4152,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 	["tailgater2"] = {
 		["Name"] = "Tailgater 2",
@@ -3703,7 +4161,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Sedans"
+		["Class"] = "Sedans",
+		["Type"] = "automobile"
 	},
 
 -- Service
@@ -3713,7 +4172,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["brickade"] = {
 		["Name"] = "Brickade",
@@ -3721,7 +4181,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["bus"] = {
 		["Name"] = "Bus",
@@ -3729,7 +4190,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["coach"] = {
 		["Name"] = "Coach",
@@ -3737,7 +4199,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["pbus2"] = {
 		["Name"] = "Pbus 2",
@@ -3745,7 +4208,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["rallytruck"] = {
 		["Name"] = "Rally Truck",
@@ -3753,7 +4217,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["rentalbus"] = {
 		["Name"] = "Rental Bus",
@@ -3761,7 +4226,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["taxi"] = {
 		["Name"] = "Taxi",
@@ -3769,7 +4235,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["tourbus"] = {
 		["Name"] = "Tour Bus",
@@ -3777,7 +4244,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["trash"] = {
 		["Name"] = "Trash",
@@ -3785,7 +4253,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["trash2"] = {
 		["Name"] = "Trash 2",
@@ -3793,7 +4262,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["wastelander"] = {
 		["Name"] = "Wastelander",
@@ -3801,7 +4271,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 
 -- Sports
@@ -3811,7 +4282,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["banshee"] = {
 		["Name"] = "Banshee",
@@ -3819,7 +4291,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["bestiagts"] = {
 		["Name"] = "Bestia GTS",
@@ -3827,7 +4300,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["blista2"] = {
 		["Name"] = "Blista 2",
@@ -3835,7 +4309,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["blista3"] = {
 		["Name"] = "Blista 3",
@@ -3843,7 +4318,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["buffalo"] = {
 		["Name"] = "Buffalo",
@@ -3851,7 +4327,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["buffalo2"] = {
 		["Name"] = "Buffalo 2",
@@ -3859,7 +4336,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["buffalo3"] = {
 		["Name"] = "Buffalo 3",
@@ -3867,7 +4345,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["carbonizzare"] = {
 		["Name"] = "Carbonizzare",
@@ -3875,7 +4354,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["comet2"] = {
 		["Name"] = "Comet 2",
@@ -3883,7 +4363,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["comet3"] = {
 		["Name"] = "Comet 3",
@@ -3891,7 +4372,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["comet4"] = {
 		["Name"] = "Comet 4",
@@ -3899,7 +4381,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["comet5"] = {
 		["Name"] = "Comet 5",
@@ -3907,7 +4390,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["coquette"] = {
 		["Name"] = "Coquette",
@@ -3915,7 +4399,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["coquette4"] = {
 		["Name"] = "Coquette 4",
@@ -3923,7 +4408,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["drafter"] = {
 		["Name"] = "Drafter",
@@ -3931,7 +4417,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["deveste"] = {
 		["Name"] = "Deveste",
@@ -3939,7 +4426,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["elegy"] = {
 		["Name"] = "Elegy",
@@ -3947,7 +4435,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["elegy2"] = {
 		["Name"] = "Elegy 2",
@@ -3955,7 +4444,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["everon2"] = {
 		["Name"] = "Everon2",
@@ -3963,7 +4453,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["feltzer2"] = {
 		["Name"] = "Feltzer 2",
@@ -3971,7 +4462,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["flashgt"] = {
 		["Name"] = "Flash GT",
@@ -3979,7 +4471,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["furoregt"] = {
 		["Name"] = "Furore GT",
@@ -3987,7 +4480,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["fusilade"] = {
 		["Name"] = "Fusilade",
@@ -3995,7 +4489,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["futo"] = {
 		["Name"] = "Futo",
@@ -4003,7 +4498,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["gb200"] = {
 		["Name"] = "Gb200",
@@ -4011,7 +4507,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["hotring"] = {
 		["Name"] = "Hotring",
@@ -4019,7 +4516,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["komoda"] = {
 		["Name"] = "Komoda",
@@ -4027,7 +4525,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["imorgon"] = {
 		["Name"] = "Imorgon",
@@ -4035,7 +4534,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["issi7"] = {
 		["Name"] = "Issi 7",
@@ -4043,7 +4543,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["italigto"] = {
 		["Name"] = "Itali GTO",
@@ -4051,7 +4552,8 @@ local List = {
 		["Price"] = 220000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["jugular"] = {
 		["Name"] = "Jugular",
@@ -4059,7 +4561,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["jester"] = {
 		["Name"] = "Jester",
@@ -4067,7 +4570,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["jester2"] = {
 		["Name"] = "Jester 2",
@@ -4075,7 +4579,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["jester3"] = {
 		["Name"] = "Jester 3",
@@ -4083,7 +4588,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["khamelion"] = {
 		["Name"] = "Khamelion",
@@ -4091,7 +4597,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["kuruma"] = {
 		["Name"] = "Kuruma",
@@ -4099,7 +4606,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["kuruma2"] = {
 		["Name"] = "Kuruma 2",
@@ -4107,7 +4615,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["locust"] = {
 		["Name"] = "Locust",
@@ -4115,7 +4624,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["lynx"] = {
 		["Name"] = "Lynx",
@@ -4123,7 +4633,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["massacro"] = {
 		["Name"] = "Massacro",
@@ -4131,7 +4642,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["massacro2"] = {
 		["Name"] = "Massacro 2",
@@ -4139,7 +4651,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["neo"] = {
 		["Name"] = "Neo",
@@ -4147,7 +4660,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["neon"] = {
 		["Name"] = "Neon",
@@ -4155,7 +4669,8 @@ local List = {
 		["Price"] = 230000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["ninef"] = {
 		["Name"] = "Ninef",
@@ -4163,7 +4678,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["ninef2"] = {
 		["Name"] = "Ninef 2",
@@ -4171,7 +4687,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["omnis"] = {
 		["Name"] = "Omnis",
@@ -4179,7 +4696,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["paragon"] = {
 		["Name"] = "Paragon",
@@ -4187,7 +4705,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["paragon2"] = {
 		["Name"] = "Paragon 2",
@@ -4195,7 +4714,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["pariah"] = {
 		["Name"] = "Pariah",
@@ -4203,7 +4723,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["panthere"] = {
 		["Name"] = "panthere",
@@ -4211,7 +4732,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["penumbra"] = {
 		["Name"] = "Penumbra",
@@ -4219,7 +4741,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["penumbra2"] = {
 		["Name"] = "Penumbra 2",
@@ -4227,7 +4750,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["r300"] = {
 		["Name"] = "r300",
@@ -4235,7 +4759,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["raiden"] = {
 		["Name"] = "Raiden",
@@ -4243,7 +4768,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["rapidgt"] = {
 		["Name"] = "Rapid GT",
@@ -4251,7 +4777,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["rapidgt2"] = {
 		["Name"] = "Rapidgt GT2",
@@ -4259,7 +4786,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["raptor"] = {
 		["Name"] = "Raptor",
@@ -4267,7 +4795,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["revolter"] = {
 		["Name"] = "Revolter",
@@ -4275,7 +4804,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["ruston"] = {
 		["Name"] = "Ruston",
@@ -4283,7 +4813,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["schafter2"] = {
 		["Name"] = "Schafter 2",
@@ -4291,7 +4822,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["schafter3"] = {
 		["Name"] = "Schafter 3",
@@ -4299,7 +4831,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["schafter4"] = {
 		["Name"] = "Schafter 4",
@@ -4307,7 +4840,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["schafter5"] = {
 		["Name"] = "Schafter 5",
@@ -4315,7 +4849,8 @@ local List = {
 		["Price"] = 400000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["schafter6"] = {
 		["Name"] = "Schafter 6",
@@ -4323,7 +4858,8 @@ local List = {
 		["Price"] = 320000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["schlagen"] = {
 		["Name"] = "Schlagen",
@@ -4331,7 +4867,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["schwarzer"] = {
 		["Name"] = "Schwarzer",
@@ -4339,7 +4876,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["sentinel3"] = {
 		["Name"] = "Sentinel 3",
@@ -4347,7 +4885,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["seven70"] = {
 		["Name"] = "Seven 70",
@@ -4355,7 +4894,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["specter"] = {
 		["Name"] = "Specter",
@@ -4363,7 +4903,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["specter2"] = {
 		["Name"] = "Specter 2",
@@ -4371,7 +4912,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["streiter"] = {
 		["Name"] = "Streiter",
@@ -4379,7 +4921,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["sugoi"] = {
 		["Name"] = "Sugoi",
@@ -4387,7 +4930,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["sultan"] = {
 		["Name"] = "Sultan",
@@ -4395,7 +4939,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["sultan2"] = {
 		["Name"] = "Sultan 2",
@@ -4403,7 +4948,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["surano"] = {
 		["Name"] = "Surano",
@@ -4411,7 +4957,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["tampa2"] = {
 		["Name"] = "Tampa 2",
@@ -4419,7 +4966,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["tropos"] = {
 		["Name"] = "Tropos",
@@ -4427,7 +4975,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["verlierer2"] = {
 		["Name"] = "Verlierer 2",
@@ -4435,7 +4984,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["vstr"] = {
 		["Name"] = "Vstr",
@@ -4443,7 +4993,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["zr380"] = {
 		["Name"] = "Zr380",
@@ -4451,7 +5002,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["zr3802"] = {
 		["Name"] = "Zr380 2",
@@ -4459,7 +5011,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["zr3803"] = {
 		["Name"] = "Zr380 3",
@@ -4467,7 +5020,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["italirsx"] = {
 		["Name"] = "Itali RSX",
@@ -4475,7 +5029,8 @@ local List = {
 		["Price"] = 280000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["veto"] = {
 		["Name"] = "Veto",
@@ -4483,7 +5038,8 @@ local List = {
 		["Price"] = 20000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["veto2"] = {
 		["Name"] = "Veto 2",
@@ -4491,7 +5047,8 @@ local List = {
 		["Price"] = 20000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["zr350"] = {
 		["Name"] = "ZR 350",
@@ -4499,7 +5056,8 @@ local List = {
 		["Price"] = 160000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["calico"] = {
 		["Name"] = "Calico",
@@ -4507,7 +5065,8 @@ local List = {
 		["Price"] = 240000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["futo2"] = {
 		["Name"] = "Futo 2",
@@ -4515,7 +5074,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["euros"] = {
 		["Name"] = "Euros",
@@ -4523,7 +5083,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["jester4"] = {
 		["Name"] = "Jester 4",
@@ -4531,7 +5092,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["remus"] = {
 		["Name"] = "Remus",
@@ -4539,7 +5101,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["comet6"] = {
 		["Name"] = "Comet 6",
@@ -4547,7 +5110,8 @@ local List = {
 		["Price"] = 190000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["comet7"] = {
 		["Name"] = "Comet 7",
@@ -4555,7 +5119,8 @@ local List = {
 		["Price"] = 320000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["growler"] = {
 		["Name"] = "Growler",
@@ -4563,7 +5128,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["vectre"] = {
 		["Name"] = "Vectre",
@@ -4571,7 +5137,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["cypher"] = {
 		["Name"] = "Cypher",
@@ -4579,7 +5146,8 @@ local List = {
 		["Price"] = 260000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["sultan3"] = {
 		["Name"] = "Sultan 3",
@@ -4587,7 +5155,8 @@ local List = {
 		["Price"] = 250000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["rt3000"] = {
 		["Name"] = "RT 3000",
@@ -4595,7 +5164,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["ardent"] = {
 		["Name"] = "Ardent",
@@ -4603,7 +5173,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["btype"] = {
 		["Name"] = "Btype",
@@ -4611,7 +5182,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["btype2"] = {
 		["Name"] = "Btype 2",
@@ -4619,7 +5191,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["btype3"] = {
 		["Name"] = "Btype 3",
@@ -4627,7 +5200,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["casco"] = {
 		["Name"] = "Casco",
@@ -4635,7 +5209,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["cheetah2"] = {
 		["Name"] = "Cheetah 2",
@@ -4643,7 +5218,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["coquette2"] = {
 		["Name"] = "Coquette 2",
@@ -4651,7 +5227,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["deluxo"] = {
 		["Name"] = "Deluxo",
@@ -4659,7 +5236,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["dynasty"] = {
 		["Name"] = "Dynasty",
@@ -4667,7 +5245,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["fagaloa"] = {
 		["Name"] = "Fagaloa",
@@ -4675,7 +5254,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["feltzer3"] = {
 		["Name"] = "Feltzer 3",
@@ -4683,7 +5263,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["gt500"] = {
 		["Name"] = "GT 500",
@@ -4691,7 +5272,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["infernus2"] = {
 		["Name"] = "Infernus 2",
@@ -4699,7 +5281,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["jb700"] = {
 		["Name"] = "JB 700",
@@ -4707,7 +5290,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["jb7002"] = {
 		["Name"] = "JB 7002",
@@ -4715,7 +5299,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["mamba"] = {
 		["Name"] = "Mamba",
@@ -4723,7 +5308,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["manana"] = {
 		["Name"] = "Manana",
@@ -4731,7 +5317,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["manana2"] = {
 		["Name"] = "Manana 2",
@@ -4739,7 +5326,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["michelli"] = {
 		["Name"] = "Michelli",
@@ -4747,7 +5335,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["monroe"] = {
 		["Name"] = "Monroe",
@@ -4755,7 +5344,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["nebula"] = {
 		["Name"] = "Nebula",
@@ -4763,7 +5353,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["peyote"] = {
 		["Name"] = "Peyote",
@@ -4771,7 +5362,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["peyote3"] = {
 		["Name"] = "Peyote 3",
@@ -4779,7 +5371,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["pigalle"] = {
 		["Name"] = "Pigalle",
@@ -4787,7 +5380,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["rapidgt3"] = {
 		["Name"] = "Rapid GT3",
@@ -4795,7 +5389,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["retinue"] = {
 		["Name"] = "Retinue",
@@ -4803,7 +5398,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["retinue2"] = {
 		["Name"] = "Retinue 2",
@@ -4811,7 +5407,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["savestra"] = {
 		["Name"] = "Savestra",
@@ -4819,7 +5416,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["stinger"] = {
 		["Name"] = "Stinger",
@@ -4827,7 +5425,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["stingergt"] = {
 		["Name"] = "Stinger GT",
@@ -4835,7 +5434,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["stromberg"] = {
 		["Name"] = "Stromberg",
@@ -4843,7 +5443,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["swinger"] = {
 		["Name"] = "Swinger",
@@ -4851,7 +5452,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["torero"] = {
 		["Name"] = "Torero",
@@ -4859,7 +5461,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["tornado"] = {
 		["Name"] = "Tornado",
@@ -4867,7 +5470,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["tornado2"] = {
 		["Name"] = "Tornado 2",
@@ -4875,7 +5479,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["tornado3"] = {
 		["Name"] = "Tornado 3",
@@ -4883,7 +5488,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["tornado4"] = {
 		["Name"] = "Tornado 4",
@@ -4891,7 +5497,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["tornado5"] = {
 		["Name"] = "Tornado 5",
@@ -4899,7 +5506,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["tornado6"] = {
 		["Name"] = "Tornado 6",
@@ -4907,7 +5515,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["turismo2"] = {
 		["Name"] = "Turismo 2",
@@ -4915,7 +5524,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["viseris"] = {
 		["Name"] = "Viseris",
@@ -4923,7 +5533,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["z190"] = {
 		["Name"] = "Z190",
@@ -4931,7 +5542,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["ztype"] = {
 		["Name"] = "Ztype",
@@ -4939,7 +5551,8 @@ local List = {
 		["Price"] = 250000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["zion3"] = {
 		["Name"] = "Zion 3",
@@ -4947,7 +5560,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["cheburek"] = {
 		["Name"] = "Cheburek",
@@ -4955,7 +5569,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["toreador"] = {
 		["Name"] = "Toreador",
@@ -4963,7 +5578,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 
 -- Super
@@ -4973,7 +5589,8 @@ local List = {
 		["Price"] = 190000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["autarch"] = {
 		["Name"] = "Autarch",
@@ -4981,7 +5598,8 @@ local List = {
 		["Price"] = 240000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["banshee2"] = {
 		["Name"] = "Banshee 2",
@@ -4989,7 +5607,8 @@ local List = {
 		["Price"] = 190000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["bullet"] = {
 		["Name"] = "Bullet",
@@ -4997,7 +5616,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["cheetah"] = {
 		["Name"] = "Cheetah",
@@ -5005,7 +5625,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["cyclone"] = {
 		["Name"] = "Cyclone",
@@ -5013,7 +5634,8 @@ local List = {
 		["Price"] = 300000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["entity2"] = {
 		["Name"] = "Entity 2",
@@ -5021,7 +5643,8 @@ local List = {
 		["Price"] = 220000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["entity3"] = {
 		["Name"] = "entity3",
@@ -5029,7 +5652,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["entityxf"] = {
 		["Name"] = "Entity XF",
@@ -5037,7 +5661,8 @@ local List = {
 		["Price"] = 250000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["emerus"] = {
 		["Name"] = "Emerus",
@@ -5045,7 +5670,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["fmj"] = {
 		["Name"] = "Fmj",
@@ -5053,7 +5679,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["furia"] = {
 		["Name"] = "Furia",
@@ -5061,7 +5688,8 @@ local List = {
 		["Price"] = 300000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["gp1"] = {
 		["Name"] = "Gp1",
@@ -5069,7 +5697,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["infernus"] = {
 		["Name"] = "Infernus",
@@ -5077,7 +5706,8 @@ local List = {
 		["Price"] = 130000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["italigtb"] = {
 		["Name"] = "Italigtb",
@@ -5085,7 +5715,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["italigtb2"] = {
 		["Name"] = "Italigtb 2",
@@ -5093,7 +5724,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["krieger"] = {
 		["Name"] = "Krieger",
@@ -5101,7 +5733,8 @@ local List = {
 		["Price"] = 250000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["le7b"] = {
 		["Name"] = "Le7b",
@@ -5109,7 +5742,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["nero"] = {
 		["Name"] = "Nero",
@@ -5117,7 +5751,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["nero2"] = {
 		["Name"] = "Nero 2",
@@ -5125,7 +5760,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["osiris"] = {
 		["Name"] = "Osiris",
@@ -5133,7 +5769,8 @@ local List = {
 		["Price"] = 230000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["penetrator"] = {
 		["Name"] = "Penetrator",
@@ -5141,7 +5778,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["pfister811"] = {
 		["Name"] = "Pfister 811",
@@ -5149,7 +5787,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["prototipo"] = {
 		["Name"] = "Prototipo",
@@ -5157,7 +5796,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["reaper"] = {
 		["Name"] = "Reaper",
@@ -5165,7 +5805,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["s80"] = {
 		["Name"] = "S80",
@@ -5173,7 +5814,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["sc1"] = {
 		["Name"] = "Sc1",
@@ -5181,7 +5823,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["scramjet"] = {
 		["Name"] = "Scramjet",
@@ -5189,7 +5832,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["sheava"] = {
 		["Name"] = "Sheava",
@@ -5197,7 +5841,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["sultanrs"] = {
 		["Name"] = "Sultan RS",
@@ -5205,7 +5850,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["t20"] = {
 		["Name"] = "T20",
@@ -5213,7 +5859,8 @@ local List = {
 		["Price"] = 300000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["taipan"] = {
 		["Name"] = "Taipan",
@@ -5221,7 +5868,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["tempesta"] = {
 		["Name"] = "Tempesta",
@@ -5229,7 +5877,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["tezeract"] = {
 		["Name"] = "Tezeract",
@@ -5237,7 +5886,8 @@ local List = {
 		["Price"] = 300000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["thrax"] = {
 		["Name"] = "Thrax",
@@ -5245,7 +5895,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["tigon"] = {
 		["Name"] = "Tigon",
@@ -5253,7 +5904,8 @@ local List = {
 		["Price"] = 220000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["turismor"] = {
 		["Name"] = "Turismo R",
@@ -5261,7 +5913,8 @@ local List = {
 		["Price"] = 190000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["tyrant"] = {
 		["Name"] = "Tyrant",
@@ -5269,7 +5922,8 @@ local List = {
 		["Price"] = 210000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["tyrus"] = {
 		["Name"] = "Tyrus",
@@ -5277,7 +5931,8 @@ local List = {
 		["Price"] = 220000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["vacca"] = {
 		["Name"] = "Vacca",
@@ -5285,7 +5940,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["vagner"] = {
 		["Name"] = "Vagner",
@@ -5293,7 +5949,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["vigilante"] = {
 		["Name"] = "Vigilante",
@@ -5301,7 +5958,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["virtue"] = {
 		["Name"] = "virtue",
@@ -5309,7 +5967,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["visione"] = {
 		["Name"] = "Visione",
@@ -5317,7 +5976,8 @@ local List = {
 		["Price"] = 230000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["voltic"] = {
 		["Name"] = "Voltic",
@@ -5325,7 +5985,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["voltic2"] = {
 		["Name"] = "Voltic 2",
@@ -5333,7 +5994,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["xa21"] = {
 		["Name"] = "Xa21",
@@ -5341,7 +6003,8 @@ local List = {
 		["Price"] = 260000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["zentorno"] = {
 		["Name"] = "Zentorno",
@@ -5349,7 +6012,8 @@ local List = {
 		["Price"] = 230000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["zorrusso"] = {
 		["Name"] = "Zorrusso",
@@ -5357,7 +6021,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 
 -- Trailer
@@ -5367,7 +6032,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["armytrailer"] = {
 		["Name"] = "Armytrailer",
@@ -5375,7 +6041,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["armytrailer2"] = {
 		["Name"] = "Armytrailer 2",
@@ -5383,7 +6050,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["baletrailer"] = {
 		["Name"] = "Baletrailer",
@@ -5391,7 +6059,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["boattrailer"] = {
 		["Name"] = "Boattrailer",
@@ -5399,7 +6068,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["cablecar"] = {
 		["Name"] = "Cablecar",
@@ -5407,7 +6077,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["docktrailer"] = {
 		["Name"] = "Docktrailer",
@@ -5415,7 +6086,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["freighttrailer"] = {
 		["Name"] = "Freighttrailer",
@@ -5423,7 +6095,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["graintrailer"] = {
 		["Name"] = "Graintrailer",
@@ -5431,7 +6104,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["proptrailer"] = {
 		["Name"] = "Proptrailer",
@@ -5439,7 +6113,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["raketrailer"] = {
 		["Name"] = "Raketrailer",
@@ -5447,7 +6122,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["tr2"] = {
 		["Name"] = "Tr2",
@@ -5455,7 +6131,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["tr3"] = {
 		["Name"] = "Tr3",
@@ -5463,7 +6140,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["tr4"] = {
 		["Name"] = "Tr4",
@@ -5471,7 +6149,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["trflat"] = {
 		["Name"] = "Trflat",
@@ -5479,7 +6158,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["tvtrailer"] = {
 		["Name"] = "Tvtrailer",
@@ -5487,7 +6167,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["tanker"] = {
 		["Name"] = "Tanker",
@@ -5495,7 +6176,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["tanker2"] = {
 		["Name"] = "Tanker 2",
@@ -5503,7 +6185,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["trailerlarge"] = {
 		["Name"] = "Trailerlarge",
@@ -5511,7 +6194,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["trailerlogs"] = {
 		["Name"] = "Trailerlogs",
@@ -5519,7 +6203,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["trailers"] = {
 		["Name"] = "Trailers",
@@ -5527,7 +6212,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["trailers2"] = {
 		["Name"] = "Trailers 2",
@@ -5535,7 +6221,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["trailers3"] = {
 		["Name"] = "Trailers 3",
@@ -5543,7 +6230,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 	["trailers4"] = {
 		["Name"] = "Trailers 4",
@@ -5551,7 +6239,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trailers"
+		["Class"] = "Trailers",
+		["Type"] = "trailer"
 	},
 
 -- Trains
@@ -5561,7 +6250,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trens"
+		["Class"] = "Trens",
+		["Type"] = "train"
 	},
 	["freightcar"] = {
 		["Name"] = "Freightcar",
@@ -5569,7 +6259,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trens"
+		["Class"] = "Trens",
+		["Type"] = "train"
 	},
 	["freightcont1"] = {
 		["Name"] = "Freightcont 1",
@@ -5577,7 +6268,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trens"
+		["Class"] = "Trens",
+		["Type"] = "train"
 	},
 	["freightcont2"] = {
 		["Name"] = "Freightcont 2",
@@ -5585,7 +6277,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trens"
+		["Class"] = "Trens",
+		["Type"] = "train"
 	},
 	["freightgrain"] = {
 		["Name"] = "Freightgrain",
@@ -5593,7 +6286,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trens"
+		["Class"] = "Trens",
+		["Type"] = "train"
 	},
 	["metrotrain"] = {
 		["Name"] = "Metrotrain",
@@ -5601,7 +6295,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trens"
+		["Class"] = "Trens",
+		["Type"] = "train"
 	},
 	["tankercar"] = {
 		["Name"] = "Rankercar",
@@ -5609,7 +6304,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Trens"
+		["Class"] = "Trens",
+		["Type"] = "train"
 	},
 
 -- Utility
@@ -5619,7 +6315,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["caddy"] = {
 		["Name"] = "Caddy",
@@ -5627,7 +6324,8 @@ local List = {
 		["Price"] = 30000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["caddy2"] = {
 		["Name"] = "Caddy 2",
@@ -5635,7 +6333,8 @@ local List = {
 		["Price"] = 25000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["caddy3"] = {
 		["Name"] = "Caddy 3",
@@ -5643,7 +6342,8 @@ local List = {
 		["Price"] = 20000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["docktug"] = {
 		["Name"] = "Docktug",
@@ -5651,7 +6351,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["forklift"] = {
 		["Name"] = "Forklift",
@@ -5659,7 +6360,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["mower"] = {
 		["Name"] = "Mower",
@@ -5667,7 +6369,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["ripley"] = {
 		["Name"] = "Ripley",
@@ -5675,7 +6378,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["sadler"] = {
 		["Name"] = "Sadler",
@@ -5683,7 +6387,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["sadler2"] = {
 		["Name"] = "Sadler 2",
@@ -5691,7 +6396,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["scrap"] = {
 		["Name"] = "Scrap",
@@ -5699,7 +6405,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["towtruck"] = {
 		["Name"] = "Towtruck",
@@ -5707,7 +6414,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["towtruck2"] = {
 		["Name"] = "Towtruck 2",
@@ -5715,7 +6423,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["tractor"] = {
 		["Name"] = "Tractor",
@@ -5723,7 +6432,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["tractor2"] = {
 		["Name"] = "Tractor 2",
@@ -5731,7 +6441,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["tractor3"] = {
 		["Name"] = "Tractor 3",
@@ -5739,7 +6450,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["utillitruck"] = {
 		["Name"] = "Utillitruck",
@@ -5747,7 +6459,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["utillitruck2"] = {
 		["Name"] = "Utillitruck 2",
@@ -5755,7 +6468,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["utillitruck3"] = {
 		["Name"] = "Utillitruck 3",
@@ -5763,7 +6477,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 	["slamtruck"] = {
 		["Name"] = "Slamtruck",
@@ -5771,7 +6486,8 @@ local List = {
 		["Price"] = 10000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Utilitários"
+		["Class"] = "Utilitários",
+		["Type"] = "automobile"
 	},
 
 -- Vans
@@ -5781,7 +6497,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["bison2"] = {
 		["Name"] = "Bison 2",
@@ -5789,7 +6506,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["bison3"] = {
 		["Name"] = "Bison 3",
@@ -5797,7 +6515,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["bobcatxl"] = {
 		["Name"] = "Bobcat XL",
@@ -5805,7 +6524,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["boxville"] = {
 		["Name"] = "Boxville",
@@ -5813,7 +6533,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["boxville2"] = {
 		["Name"] = "Boxville",
@@ -5821,7 +6542,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Serviços"
+		["Class"] = "Serviços",
+		["Type"] = "automobile"
 	},
 	["boxville3"] = {
 		["Name"] = "Boxville 3",
@@ -5829,7 +6551,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["boxville4"] = {
 		["Name"] = "Boxville",
@@ -5837,7 +6560,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["boxville5"] = {
 		["Name"] = "Boxville 5",
@@ -5845,7 +6569,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["burrito"] = {
 		["Name"] = "Burrito",
@@ -5853,7 +6578,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["burrito2"] = {
 		["Name"] = "Burrito 2",
@@ -5861,7 +6587,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["burrito3"] = {
 		["Name"] = "Burrito 3",
@@ -5869,7 +6596,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["burrito4"] = {
 		["Name"] = "Burrito 4",
@@ -5877,7 +6605,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["burrito5"] = {
 		["Name"] = "Burrito 5",
@@ -5885,7 +6614,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["camper"] = {
 		["Name"] = "Camper",
@@ -5893,7 +6623,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["gburrito"] = {
 		["Name"] = "Gburrito",
@@ -5901,7 +6632,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["gburrito2"] = {
 		["Name"] = "Gburrito 2",
@@ -5909,7 +6641,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["journey"] = {
 		["Name"] = "Journey",
@@ -5917,7 +6650,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["journey2"] = {
 		["Name"] = "journey2",
@@ -5925,7 +6659,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["minivan"] = {
 		["Name"] = "Minivan",
@@ -5933,7 +6668,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["minivan2"] = {
 		["Name"] = "Minivan 2",
@@ -5941,7 +6677,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["paradise"] = {
 		["Name"] = "Paradise",
@@ -5949,7 +6686,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["pony"] = {
 		["Name"] = "Pony",
@@ -5957,7 +6695,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["pony2"] = {
 		["Name"] = "Pony 2",
@@ -5965,7 +6704,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["rumpo"] = {
 		["Name"] = "Rumpo",
@@ -5973,7 +6713,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["rumpo2"] = {
 		["Name"] = "Rumpo 2",
@@ -5981,7 +6722,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["rumpo3"] = {
 		["Name"] = "Rumpo 3",
@@ -5989,7 +6731,8 @@ local List = {
 		["Price"] = 300000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["speedo"] = {
 		["Name"] = "Speedo",
@@ -5997,7 +6740,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["speedo2"] = {
 		["Name"] = "Speedo 2",
@@ -6005,7 +6749,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["speedo4"] = {
 		["Name"] = "Speedo 4",
@@ -6013,7 +6758,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["surfer"] = {
 		["Name"] = "Surfer",
@@ -6021,7 +6767,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["surfer2"] = {
 		["Name"] = "Surfer 2",
@@ -6029,7 +6776,8 @@ local List = {
 		["Price"] = 40000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["surfer3"] = {
 		["Name"] = "surfer3",
@@ -6037,7 +6785,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["taco"] = {
 		["Name"] = "Taco",
@@ -6045,7 +6794,8 @@ local List = {
 		["Price"] = 2000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["youga"] = {
 		["Name"] = "Youga",
@@ -6053,7 +6803,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["youga2"] = {
 		["Name"] = "Youga 2",
@@ -6061,7 +6812,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 	["youga3"] = {
 		["Name"] = "Youga 3",
@@ -6069,7 +6821,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Vans"
+		["Class"] = "Vans",
+		["Type"] = "automobile"
 	},
 
 -- Imported
@@ -6079,7 +6832,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["69charger"] = {
 		["Name"] = "Dodge Charger 1969",
@@ -6087,7 +6841,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["488misha"] = {
 		["Name"] = "Ferrari 488",
@@ -6095,7 +6850,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["675ltsp"] = {
 		["Name"] = "McLaren 675",
@@ -6103,7 +6859,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["a45amg"] = {
 		["Name"] = "Mercedes A45",
@@ -6111,7 +6868,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["a80"] = {
 		["Name"] = "Toyota Supra A80",
@@ -6119,7 +6877,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["acs8"] = {
 		["Name"] = "BMW i8",
@@ -6127,7 +6886,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["bdragon"] = {
 		["Name"] = "Bentley Dragon",
@@ -6135,7 +6895,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["bmwr"] = {
 		["Name"] = "BMW R1100",
@@ -6143,7 +6904,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["bt62r"] = {
 		["Name"] = "Brabham BT62",
@@ -6151,7 +6913,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["chiron17"] = {
 		["Name"] = "Bugatti Chiron",
@@ -6159,7 +6922,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["cp9a"] = {
 		["Name"] = "Mitsubishi Lancer Evo 7",
@@ -6167,7 +6931,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["dc5"] = {
 		["Name"] = "Honda Integra",
@@ -6175,7 +6940,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["demon"] = {
 		["Name"] = "Dodge Challenger STR",
@@ -6183,7 +6949,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["e36prb"] = {
 		["Name"] = "BMW M3 E36",
@@ -6191,7 +6958,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["evo9"] = {
 		["Name"] = "Mitsubishi Lancer Evo 9",
@@ -6199,7 +6967,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["filthynsx"] = {
 		["Name"] = "Honda Acura",
@@ -6207,7 +6976,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["fk8"] = {
 		["Name"] = "Honda Civic Type-R",
@@ -6215,7 +6985,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["skyliner34"] = {
 		["Name"] = "Nissan GTR R34",
@@ -6223,7 +6994,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["fnfrx7"] = {
 		["Name"] = "Mazda RX7",
@@ -6231,7 +7003,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["gt63"] = {
 		["Name"] = "Mercedes GT63",
@@ -6239,7 +7012,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["gt86"] = {
 		["Name"] = "Toyota GT86",
@@ -6247,7 +7021,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["lc500"] = {
 		["Name"] = "Lexus LC 500",
@@ -6255,7 +7030,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["lp700"] = {
 		["Name"] = "Lamborghini LP 700",
@@ -6263,7 +7039,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["maj350z"] = {
 		["Name"] = "Nissan 350z",
@@ -6271,7 +7048,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["r1"] = {
 		["Name"] = "Yamaha R1",
@@ -6279,7 +7057,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["s1000rr"] = {
 		["Name"] = "BMW S 1000 RR",
@@ -6287,7 +7066,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["m1000rr"] = {
 		["Name"] = "BMW M 1000 RR",
@@ -6295,7 +7075,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["cb500x"] = {
 		["Name"] = "CB 500X",
@@ -6303,7 +7084,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["audirs6"] = {
 		["Name"] = "Audi RS6",
@@ -6311,7 +7093,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["r32"] = {
 		["Name"] = "Nissan GTR R32",
@@ -6319,7 +7102,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["r35"] = {
 		["Name"] = "Nissan GTR R35",
@@ -6327,7 +7111,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["rr14"] = {
 		["Name"] = "Range Rover Vogue",
@@ -6335,7 +7120,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["senna"] = {
 		["Name"] = "McLaren Senna",
@@ -6343,7 +7129,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["tsgr20"] = {
 		["Name"] = "Toyota Supra GR",
@@ -6351,7 +7138,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["zx10"] = {
 		["Name"] = "Kawasaki Ninja Zx-10r",
@@ -6359,7 +7147,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["lancerevolutionx"] = {
 		["Name"] = "Lancer Evolution X",
@@ -6367,7 +7156,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["subaruimpreza"] = {
 		["Name"] = "Subaru Impreza",
@@ -6375,7 +7165,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["silvias15"] = {
 		["Name"] = "Silvia S15",
@@ -6383,7 +7174,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Rental",
 		["Gemstone"] = 6000,
-		["Class"] = "Importados"
+		["Class"] = "Importados",
+		["Type"] = "automobile"
 	},
 	["jester5"] = {
 		["Name"] = "Magnus",
@@ -6392,7 +7184,8 @@ local List = {
 		["Mode"] = "Cars",
 		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
-		["Stock"] = 3
+		["Stock"] = 3,
+		["Type"] = "automobile"
 	},
 	["roxanne"] = {
 		["Name"] = "Roxanne",
@@ -6401,7 +7194,8 @@ local List = {
 		["Mode"] = "Cars",
 		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
-		["Stock"] = 3
+		["Stock"] = 3,
+		["Type"] = "automobile"
 	},
 	["sunrise"] = {
 		["Name"] = "Sunrise",
@@ -6410,7 +7204,8 @@ local List = {
 		["Mode"] = "Cars",
 		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
-		["Stock"] = 3
+		["Stock"] = 3,
+		["Type"] = "automobile"
 	},
 	["teslamodels"] = {
 		["Name"] = "Tesla Model S",
@@ -6419,7 +7214,8 @@ local List = {
 		["Mode"] = "Cars",
 		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
-		["Stock"] = 3
+		["Stock"] = 3,
+		["Type"] = "automobile"
 	},
 	["pgt322"] = {
 		["Name"] = "Porsche 911 GT3",
@@ -6428,7 +7224,8 @@ local List = {
 		["Mode"] = "Cars",
 		["Gemstone"] = 50000,
 		["Class"] = "Exclusivos",
-		["Stock"] = 3
+		["Stock"] = 3,
+		["Type"] = "automobile"
 	},
 
 -- Public Service
@@ -6438,7 +7235,8 @@ local List = {
 		["Price"] = 30000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "heli"
 	},
 	["ambulance2"] = {
 		["Name"] = "Ambulância",
@@ -6446,7 +7244,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["ballerpol"] = {
 		["Name"] = "Baller",
@@ -6454,7 +7253,8 @@ local List = {
 		["Price"] = 40000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["elegy2pol"] = {
 		["Name"] = "Elegy 2",
@@ -6462,7 +7262,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["fugitivepol"] = {
 		["Name"] = "Fugitive",
@@ -6470,7 +7271,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["komodapol"] = {
 		["Name"] = "Komoda",
@@ -6478,7 +7280,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["kurumapol"] = {
 		["Name"] = "Kuruma",
@@ -6486,7 +7289,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["maverick2"] = {
 		["Name"] = "Maverick 2",
@@ -6494,7 +7298,8 @@ local List = {
 		["Price"] = 2500,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "heli"
 	},
 	["nc700pol"] = {
 		["Name"] = "Honda NC700",
@@ -6502,7 +7307,8 @@ local List = {
 		["Price"] = 30000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "bike"
 	},
 	["oracle2pol"] = {
 		["Name"] = "Oracle 2",
@@ -6510,7 +7316,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["polchall"] = {
 		["Name"] = "Dodge Challenger",
@@ -6518,7 +7325,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["polchar"] = {
 		["Name"] = "Dodge Charger",
@@ -6526,7 +7334,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["tauruspol"] = {
 		["Name"] = "Ford Taurus",
@@ -6534,7 +7343,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["tahoepol"] = {
 		["Name"] = "Chevrolet Tahoe",
@@ -6542,7 +7352,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["silveradopol"] = {
 		["Name"] = "Chevrolet Silverado",
@@ -6550,7 +7361,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["police3pol"] = {
 		["Name"] = "Police 3",
@@ -6558,7 +7370,8 @@ local List = {
 		["Price"] = 20000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["policepol"] = {
 		["Name"] = "Police",
@@ -6566,7 +7379,8 @@ local List = {
 		["Price"] = 30000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["policetpol"] = {
 		["Name"] = "Police T",
@@ -6574,7 +7388,8 @@ local List = {
 		["Price"] = 20000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["poltang"] = {
 		["Name"] = "Ford Mustang",
@@ -6582,7 +7397,8 @@ local List = {
 		["Price"] = 80000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["polvic"] = {
 		["Name"] = "Crown Victoria",
@@ -6590,7 +7406,8 @@ local List = {
 		["Price"] = 70000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["r1250pol"] = {
 		["Name"] = "BMW R1250",
@@ -6598,7 +7415,8 @@ local List = {
 		["Price"] = 20000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["schafter2pol"] = {
 		["Name"] = "Schafter 2",
@@ -6606,7 +7424,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["sheriff2pol"] = {
 		["Name"] = "Sheriff 2",
@@ -6614,7 +7433,8 @@ local List = {
 		["Price"] = 30000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["sultanrspol"] = {
 		["Name"] = "Sultan RS",
@@ -6622,7 +7442,8 @@ local List = {
 		["Price"] = 100000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 	["tailgater2pol"] = {
 		["Name"] = "Tailgater 2",
@@ -6630,7 +7451,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,
-		["Class"] = "Empregos"
+		["Class"] = "Empregos",
+		["Type"] = "automobile"
 	},
 
 --sem classe ainda
@@ -6640,7 +7462,8 @@ local List = {
 		["Price"] = 500,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["brickade2"] = {
 		["Name"] = "brickade2",
@@ -6648,7 +7471,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["boor"] = {
 		["Name"] = "boor",
@@ -6656,7 +7480,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["patriot3"] = {
 		["Name"] = "Patriot 3",
@@ -6664,7 +7489,8 @@ local List = {
 		["Price"] = 320000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["omnisegt"] = {
 		["Name"] = "Omni SE GT",
@@ -6672,7 +7498,8 @@ local List = {
 		["Price"] = 250000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["tenf2"] = {
 		["Name"] = "Tenf 2",
@@ -6680,7 +7507,8 @@ local List = {
 		["Price"] = 190000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["sm722"] = {
 		["Name"] = "Mm722",
@@ -6688,7 +7516,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["brioso3"] = {
 		["Name"] = "Brioso 3",
@@ -6696,7 +7525,8 @@ local List = {
 		["Price"] = 50000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["lm87"] = {
 		["Name"] = "Lm87",
@@ -6704,7 +7534,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["iwagen"] = {
 		["Name"] = "Iwagen",
@@ -6712,7 +7543,8 @@ local List = {
 		["Price"] = 260000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["jubilee"] = {
 		["Name"] = "Jubilee",
@@ -6720,7 +7552,8 @@ local List = {
 		["Price"] = 150000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["reever"] = {
 		["Name"] = "Reever",
@@ -6728,7 +7561,8 @@ local List = {
 		["Price"] = 170000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["shinobi"] = {
 		["Name"] = "Shinobi",
@@ -6736,7 +7570,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["granger2"] = {
 		["Name"] = "Granger 2",
@@ -6744,7 +7579,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["buffalo4"] = {
 		["Name"] = "Buffalo 4",
@@ -6752,7 +7588,8 @@ local List = {
 		["Price"] = 250000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["vigero2"] = {
 		["Name"] = "Vigero 2",
@@ -6760,7 +7597,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["sentinel4"] = {
 		["Name"] = "Sentinel 4",
@@ -6768,7 +7606,8 @@ local List = {
 		["Price"] = 140000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["ignus"] = {
 		["Name"] = "Ignus",
@@ -6776,7 +7615,8 @@ local List = {
 		["Price"] = 250000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["youga4"] = {
 		["Name"] = "Youga 4",
@@ -6784,7 +7624,8 @@ local List = {
 		["Price"] = 90000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["zeno"] = {
 		["Name"] = "Zeno",
@@ -6792,7 +7633,8 @@ local List = {
 		["Price"] = 250000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["deity"] = {
 		["Name"] = "Deity",
@@ -6800,7 +7642,8 @@ local List = {
 		["Price"] = 300000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["kanjosj"] = {
 		["Name"] = "Kanjo SJ",
@@ -6808,7 +7651,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["greenwood"] = {
 		["Name"] = "Greenwood",
@@ -6816,7 +7660,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["corsita"] = {
 		["Name"] = "Corsita",
@@ -6824,7 +7669,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	},
 	["cinquemila"] = {
 		["Name"] = "Cinquemila",
@@ -6832,7 +7678,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["rhinehart"] = {
 		["Name"] = "Rhinehart",
@@ -6840,7 +7687,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "SUVs"
+		["Class"] = "SUVs",
+		["Type"] = "automobile"
 	},
 	["tenf"] = {
 		["Name"] = "Tenf",
@@ -6848,7 +7696,8 @@ local List = {
 		["Price"] = 180000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["postlude"] = {
 		["Name"] = "Postlude",
@@ -6856,7 +7705,8 @@ local List = {
 		["Price"] = 60000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Esportivos"
+		["Class"] = "Esportivos",
+		["Type"] = "automobile"
 	},
 	["mule5"] = {
 		["Name"] = "Mule 5",
@@ -6864,7 +7714,8 @@ local List = {
 		["Price"] = 1000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["baller7"] = {
 		["Name"] = "Baller 7",
@@ -6872,7 +7723,8 @@ local List = {
 		["Price"] = 480000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["conada"] = {
 		["Name"] = "Conada",
@@ -6880,7 +7732,8 @@ local List = {
 		["Price"] = 100,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["champion"] = {
 		["Name"] = "Champion",
@@ -6888,7 +7741,8 @@ local List = {
 		["Price"] = 220000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["draugur"] = {
 		["Name"] = "Draugur",
@@ -6896,7 +7750,8 @@ local List = {
 		["Price"] = 320000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Off-Roads"
+		["Class"] = "Off-Roads",
+		["Type"] = "automobile"
 	},
 	["astron"] = {
 		["Name"] = "Astron",
@@ -6904,7 +7759,8 @@ local List = {
 		["Price"] = 220000,
 		["Mode"] = nil,
 		["Gemstone"] = 0,
-		["Class"] = "Embarcações"
+		["Class"] = "Embarcações",
+		["Type"] = "automobile"
 	},
 	["ruiner4"] = {
 		["Name"] = "Ruiner4",
@@ -6912,7 +7768,8 @@ local List = {
 		["Price"] = 110000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Muscles"
+		["Class"] = "Muscles",
+		["Type"] = "automobile"
 	},
 	["weevil2"] = {
 		["Name"] = "Weevil 2",
@@ -6920,7 +7777,8 @@ local List = {
 		["Price"] = 120000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Compactos"
+		["Class"] = "Compactos",
+		["Type"] = "automobile"
 	},
 	["torero2"] = {
 		["Name"] = "Torero 2",
@@ -6928,7 +7786,8 @@ local List = {
 		["Price"] = 200000,
 		["Mode"] = "Cars",
 		["Gemstone"] = 0,
-		["Class"] = "Clássicos"
+		["Class"] = "Clássicos",
+		["Type"] = "automobile"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -6984,4 +7843,10 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleStock(Name)
 	return List[Name] and List[Name]["Stock"] or 999999
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VEHICLETYPE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function VehicleType(Name)
+	return List[Name] and List[Name]["Type"] or "automobile"
 end

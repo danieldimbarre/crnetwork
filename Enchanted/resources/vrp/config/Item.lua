@@ -1417,6 +1417,27 @@ local List = {
 		["Economy"] = 175,
 		["Blueprint"] = true
 	},
+	["goldenjug"] = {
+		["Index"] = "goldenjug",
+		["Name"] = "Jarro de Ouro",
+		["Type"] = "Comum",
+		["Weight"] = 7.25,
+		["Economy"] = 6775
+	},
+	["goldenleopard"] = {
+		["Index"] = "goldenleopard",
+		["Name"] = "Leopardo de Ouro",
+		["Type"] = "Comum",
+		["Weight"] = 8.75,
+		["Economy"] = 8225
+	},
+	["goldenlion"] = {
+		["Index"] = "goldenlion",
+		["Name"] = "Leão de Ouro",
+		["Type"] = "Comum",
+		["Weight"] = 10.25,
+		["Economy"] = 12225
+	},
 	-- COMIDAS
 	["cola"] = {
 		["Index"] = "cola",
@@ -3470,13 +3491,47 @@ local List = {
 	-- OUTROS
 	["legendarykey"] = {
 		["Index"] = "legendarykey",
-		["Name"] = "Chave do Depósito",
+		["Name"] = "Chave da Fortuna",
+		["Description"] = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
 		["Type"] = "Comum",
 		["Charges"] = 3,
 		["Weight"] = 0.25,
 		["Economy"] = 4225,
 		["Market"] = true,
 		["Rarity"] = "legendary"
+	},
+	["weaponkey"] = {
+		["Index"] = "weaponkey",
+		["Name"] = "Chave da Harmonia",
+		["Description"] = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
+		["Type"] = "Comum",
+		["Charges"] = 10,
+		["Weight"] = 0.25,
+		["Economy"] = 725,
+		["Market"] = true,
+		["Rarity"] = "epic"
+	},
+	["medicalkey"] = {
+		["Index"] = "medicalkey",
+		["Name"] = "Chave da Aurora",
+		["Description"] = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
+		["Type"] = "Comum",
+		["Charges"] = 10,
+		["Weight"] = 0.25,
+		["Economy"] = 675,
+		["Market"] = true,
+		["Rarity"] = "rare"
+	},
+	["utilkey"] = {
+		["Index"] = "utilkey",
+		["Name"] = "Chave do Crepúsculo",
+		["Description"] = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
+		["Type"] = "Comum",
+		["Charges"] = 10,
+		["Weight"] = 0.25,
+		["Economy"] = 625,
+		["Market"] = true,
+		["Rarity"] = "common"
 	},
 	["sugarbox"] = {
 		["Index"] = "sugarbox",

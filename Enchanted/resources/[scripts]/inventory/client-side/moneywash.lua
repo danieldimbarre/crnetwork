@@ -60,7 +60,7 @@ AddEventHandler("moneywash:Init",function()
 		CleanBlips()
 	else
 		if Config["Cooldown"] <= GetGameTimer() then
-			Config["Cooldown"] = GetGameTimer() + (10 * 60000)
+			Config["Cooldown"] = GetGameTimer() + (30 * 60000)
 			exports["target"]:LabelText("MoneyWash","Finalizar")
 			TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
 			Config["Active"] = true

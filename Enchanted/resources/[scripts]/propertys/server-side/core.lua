@@ -91,16 +91,14 @@ AddEventHandler("propertys:RobberyItem",function(Number,Name)
 				return false
 			end
 
-			Robbery[Name][Number] = os.time() + 3600
-
 			if Number == "Locker" then
-				if math.random(1000) <= 900 then
-					vRP.MountContainer(Passport,"Propertys:"..Name..":"..Number,LockerItens,1,false)
-				end
+				vRP.MountContainer(Passport,"Propertys:"..Name..":"..Number,LockerItens,1,false,875)
 			else
-				vRP.MountContainer(Passport,"Propertys:"..Name..":"..Number,OtherItens,math.random(3),false)
+				vRP.MountContainer(Passport,"Propertys:"..Name..":"..Number,OtherItens,math.random(3),false,875)
 			end
 
+			Robbery[Name][Number] = os.time() + 3600
+			TriggerClientEvent("propertys:RemCircleZone",source,Number)
 			TriggerClientEvent("chest:Open",source,"Propertys:"..Name..":"..Number,"Custom",false,true)
 		elseif (Robbery[Name][Number] - 3300) >= os.time() then
 			TriggerClientEvent("chest:Open",source,"Propertys:"..Name..":"..Number,"Custom",false,true)
@@ -110,14 +108,17 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLICE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Police(Coords)
+function Creative.Police(Outside,Inside)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
+		TriggerClientEvent("sounds:Area",-1,"alarm",1.0,Outside,75,GetPlayerRoutingBucket(source))
+		TriggerClientEvent("sounds:Area",-1,"alarm",1.0,Inside,125,GetPlayerRoutingBucket(source))
+
 		exports["vrp"]:CallPolice({
 			["Source"] = source,
 			["Passport"] = Passport,
-			["Coords"] = Coords,
+			["Coords"] = Outside,
 			["Permission"] = "Policia",
 			["Name"] = "Roubo a Propriedade",
 			["Wanted"] = 300,

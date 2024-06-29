@@ -129,6 +129,7 @@ Loots = {
 	["LootMedics"] = {
 		["Players"] = {},
 		["Cooldown"] = 3600,
+		["Item"] = "medicalkey",
 		["List"] = {
 			{ ["Item"] = "joint", ["Chance"] = 65, ["Min"] = 2, ["Max"] = 3 },
 			{ ["Item"] = "cocaine", ["Chance"] = 65, ["Min"] = 2, ["Max"] = 3 },
@@ -169,6 +170,7 @@ Loots = {
 	["LootWeapons"] = {
 		["Players"] = {},
 		["Cooldown"] = 7200,
+		["Item"] = "weaponkey",
 		["List"] = {
 			{ ["Item"] = "repairkit01", ["Chance"] = 15, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "repairkit02", ["Chance"] = 10, ["Min"] = 1, ["Max"] = 1 },
@@ -236,6 +238,7 @@ Loots = {
 	["LootSupplies"] = {
 		["Players"] = {},
 		["Cooldown"] = 3600,
+		["Item"] = "utilkey",
 		["List"] = {
 			{ ["Item"] = "weedclone", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "cokeclone", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },

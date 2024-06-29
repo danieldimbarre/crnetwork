@@ -112,7 +112,6 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Store(Item,Amount,Slot,Name)
 	local source = source
-	local Slot = tostring(Slot)
 	local Split = SplitOne(Item)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)

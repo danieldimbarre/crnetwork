@@ -70,6 +70,7 @@ exports("Drops",function(Passport,source,Item,Amount,Force)
 	repeat
 		Selected = GenerateString("DDLLDDLL")
 	until Selected and not Drops[Route][Selected]
+	Drops[Route][Selected] = {}
 
 	local Provisory = {
 		["key"] = Force,

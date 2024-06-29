@@ -2,16 +2,19 @@
 -- LOCKERITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 LockerItens = {
-	{ ["Item"] = "dollar", ["Chance"] = 200, ["Min"] = 4225, ["Max"] = 5775 },
-	{ ["Item"] = "dirtydollar", ["Chance"] = 200, ["Min"] = 4225, ["Max"] = 5775 },
-	{ ["Item"] = "promissory1000", ["Chance"] = 50, ["Min"] = 4, ["Max"] = 6 },
-	{ ["Item"] = "promissory2000", ["Chance"] = 40, ["Min"] = 2, ["Max"] = 3 },
-	{ ["Item"] = "promissory3000", ["Chance"] = 30, ["Min"] = 2, ["Max"] = 2 },
-	{ ["Item"] = "promissory4000", ["Chance"] = 20, ["Min"] = 1, ["Max"] = 2 },
-	{ ["Item"] = "promissory5000", ["Chance"] = 10, ["Min"] = 1, ["Max"] = 1 },
-	{ ["Item"] = "goldnecklace", ["Chance"] = 40, ["Min"] = 8, ["Max"] = 10 },
-	{ ["Item"] = "silverchain", ["Chance"] = 60, ["Min"] = 10, ["Max"] = 14 },
-	{ ["Item"] = "safependrive", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 }
+	{ ["Item"] = "dollar", ["Chance"] = 225, ["Min"] = 4225, ["Max"] = 5775 },
+	{ ["Item"] = "dirtydollar", ["Chance"] = 225, ["Min"] = 4225, ["Max"] = 5775 },
+	{ ["Item"] = "promissory1000", ["Chance"] = 100, ["Min"] = 4, ["Max"] = 6 },
+	{ ["Item"] = "promissory2000", ["Chance"] = 100, ["Min"] = 2, ["Max"] = 3 },
+	{ ["Item"] = "promissory3000", ["Chance"] = 100, ["Min"] = 2, ["Max"] = 2 },
+	{ ["Item"] = "promissory4000", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 2 },
+	{ ["Item"] = "promissory5000", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 1 },
+	{ ["Item"] = "goldnecklace", ["Chance"] = 50, ["Min"] = 8, ["Max"] = 10 },
+	{ ["Item"] = "silverchain", ["Chance"] = 75, ["Min"] = 10, ["Max"] = 14 },
+	{ ["Item"] = "safependrive", ["Chance"] = 10, ["Min"] = 1, ["Max"] = 1 },
+	{ ["Item"] = "goldenjug", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 1 },
+	{ ["Item"] = "goldenleopard", ["Chance"] = 2, ["Min"] = 1, ["Max"] = 1 },
+	{ ["Item"] = "goldenlion", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OTHERITENS

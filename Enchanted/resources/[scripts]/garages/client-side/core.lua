@@ -18,8 +18,10 @@ DecorRegister("Player_Vehicle",3)
 -- VARIAVEIS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Opened = "1"
+local Respawns = {}
 local Searched = nil
 local Hotwired = false
+local Spam = GetGameTimer()
 local Anim = "machinic_loop_mechandplayer"
 local Dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@"
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -351,14 +353,14 @@ function Creative.SpawnPosition(Select)
 
 		Slot = tostring(Checks)
 		if Garages[Select] and Garages[Select][Slot] then
-			local _,CoordsZ = GetGroundZFor_3dCoord(Garages[Select][Slot][1],Garages[Select][Slot][2],Garages[Select][Slot][3])
-			Selected = vec4(Garages[Select][Slot][1],Garages[Select][Slot][2],CoordsZ,Garages[Select][Slot][4])
-			Position = GetClosestVehicle(Selected[1],Selected[2],Selected[3],2.5,0,71)
+			Selected = vec4(Garages[Select][Slot][1],Garages[Select][Slot][2],Garages[Select][Slot][3],Garages[Select][Slot][4])
+			Position = GetClosestVehicle(Garages[Select][Slot][1],Garages[Select][Slot][2],Garages[Select][Slot][3],2.75,0,127)
 		end
 	until not DoesEntityExist(Position) or not Garages[Select][Slot]
 
 	if not Garages[Select][tostring(Checks)] then
 		TriggerEvent("Notify","Atenção","Todas as vagas estão ocupadas.","default",5000)
+
 		return false
 	end
 
@@ -566,6 +568,19 @@ CreateThread(function()
 					end
 				end
 			end
+
+			for Plate,v in pairs(Respawns) do
+				local Distance = #(Coords - v["xyz"])
+				if Distance <= 25.0 then
+					TimeDistance = 1
+					DrawMarker(36,v["x"],v["y"],v["z"],0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,1.75,88,101,242,175,0,0,0,1)
+
+					if Distance <= 1.25 and IsControlJustPressed(1,38) and Spam <= GetGameTimer() then
+						Spam = GetGameTimer() + 5000
+						TriggerServerEvent("garages:Respawns",Plate)
+					end
+				end
+			end
 		end
 
 		Wait(TimeDistance)
@@ -649,5 +664,16 @@ RegisterNetEvent("garages:Clean")
 AddEventHandler("garages:Clean",function(Name)
 	if Garages[Name] then
 		Garages[Name] = nil
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GARAGES:CLOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("garages:Respawn")
+AddEventHandler("garages:Respawn",function(Mode,Plate,Coords)
+	if Mode == "Add" then
+		Respawns[Plate] = Coords
+	elseif Mode == "Remove" then
+		Respawns[Plate] = nil
 	end
 end)

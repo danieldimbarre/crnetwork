@@ -22,6 +22,7 @@ local Stealing = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
+		local Pid = PlayerId()
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
@@ -96,8 +97,8 @@ CreateThread(function()
 					SetEntityCoords(Ped,Internal[Interior]["Exit"],false,false,false,false)
 				end
 
-				if Internal[Interior]["Furniture"] and Policed and Policed <= GetGameTimer() and GetEntitySpeed(Ped) > 2 then
-					vSERVER.Police(Propertys[Inside]["Coords"])
+				if Internal[Interior]["Furniture"] and Policed and Policed <= GetGameTimer() and (GetEntitySpeed(Ped) > 2.1 or MumbleIsPlayerTalking(Pid)) then
+					vSERVER.Police(Propertys[Inside]["Coords"],Coords)
 					Policed = GetGameTimer() + 60000
 				end
 
@@ -223,6 +224,13 @@ AddEventHandler("inventory:Close",function()
 		Opened = false
 		vRP.Destroy()
 	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:REMCIRCLEZONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("propertys:RemCircleZone")
+AddEventHandler("propertys:RemCircleZone",function(Index)
+	exports["target"]:RemCircleZone("Robberys:"..Index)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKE

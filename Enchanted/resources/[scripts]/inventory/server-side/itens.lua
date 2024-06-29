@@ -19,7 +19,7 @@ Use = {
 
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
 							TriggerClientEvent("sounds:Private",source,"bandage",0.5)
-							Healths[Passport] = os.time() + 30
+							Healths[Passport] = os.time() + 10
 							vRP.UpgradeStress(Passport,10)
 							vRPC.UpgradeHealth(source,15)
 						end
@@ -51,7 +51,7 @@ Use = {
 						Player(source)["state"]["Buttons"] = false
 
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							Healths[Passport] = os.time() + 15
+							Healths[Passport] = os.time() + 5
 							vRP.UpgradeStress(Passport,5)
 							vRPC.UpgradeHealth(source,8)
 						end
@@ -350,7 +350,7 @@ Use = {
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					TriggerClientEvent("Methamphetamine",source)
-					Armors[Passport] = os.time() + 90
+					Armors[Passport] = os.time() + 30
 					vRP.ChemicalTimer(Passport,120)
 					vRP.SetArmour(source,10)
 				end
@@ -419,7 +419,7 @@ Use = {
 						Player(source)["state"]["Buttons"] = false
 
 						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							Healths[Passport] = os.time() + 60
+							Healths[Passport] = os.time() + 15
 							vRPC.UpgradeHealth(source,40)
 						end
 					end
@@ -626,7 +626,7 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					Armors[Passport] = os.time() + 1800
+					Armors[Passport] = os.time() + 300
 					vRP.SetArmour(source,100)
 				end
 			end

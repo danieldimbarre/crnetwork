@@ -140,7 +140,7 @@ AddEventHandler("towed:Impound",function(Table)
 			["Impound"] = true
 		}
 
-		TriggerClientEvent("Notify",source,"Departamento Policial","Veículo registrado.","policia",5000)
+		TriggerClientEvent("Notify",source,"Departamento Policial","Registro encaminhado aos trabalhadores.","policia",5000)
 
 		local Coords = vRP.GetEntityCoords(source)
 		for Passports,Sources in pairs(Service) do

@@ -376,6 +376,7 @@ AddEventHandler("player:Death",function(OtherSource)
 	local OtherPassport = vRP.Passport(OtherSource)
 	if Passport and OtherPassport and Passport ~= OtherPassport and vRP.DoesEntityExist(source) and vRP.DoesEntityExist(OtherSource) then
 		exports["discord"]:Embed("Deaths","**Passaporte do Assassino:** "..OtherPassport.."\n**Localização do Assassino:** "..vRP.GetEntityCoords(OtherSource).."\n\n**Passaporte da Vítima:** "..Passport.."\n**Localização da Vítima:** "..vRP.GetEntityCoords(source).."\n\n**Data & Hora:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),0xa3c846)
+		exports["inventory"]:Drops(Passport,source,"dogtag-"..Passport,1)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

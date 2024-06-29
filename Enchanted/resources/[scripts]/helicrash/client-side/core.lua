@@ -88,7 +88,7 @@ CreateThread(function()
 						end
 
 						if Fire[Index] then
-							StopFireInRange(Fire[Index],25.0)
+							RemoveScriptFire(Fire[Index])
 							Fire[Index] = nil
 						end
 
@@ -111,9 +111,7 @@ AddStateBagChangeHandler("Helicrash",nil,function(Name,Key,Value)
 
 	Active = Value
 
-	if not Value then
-		TriggerEvent("Notify","Queda da Aeronave","Todos os suprimentos foram saqueados.","azul",30000)
-	else
+	if Value then
 		HelicrashMarkerMap()
 	end
 

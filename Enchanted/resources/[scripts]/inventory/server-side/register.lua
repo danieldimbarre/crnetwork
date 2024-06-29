@@ -45,15 +45,16 @@ AddEventHandler("inventory:Register",function(Number)
 						vRPC.Destroy(source)
 						Active[Passport] = nil
 						Cooldown[Number] = os.time() + 3600
-						Player(source)["state"]["Buttons"] = false
 
-						vRP.MountContainer(Passport,"Registers:"..Number,Itens,1,false)
+						vRP.MountContainer(Passport,"Registers:"..Number,Itens,1)
 						TriggerClientEvent("player:Residuals",source,"Resquício de Línter")
 						TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true)
 					end
 
 					Wait(100)
 				until not Active[Passport]
+
+				Player(source)["state"]["Buttons"] = false
 			end
 		else
 			local Consult = vRP.GetSrvData("Registers:"..Number,false)

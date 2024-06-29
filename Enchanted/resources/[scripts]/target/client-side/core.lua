@@ -16,9 +16,8 @@ local Models = {}
 local Focus = false
 local Selected = {}
 local Sucess = false
-local Dismantler = 1
 local Actived = false
-local FreezeDismantle = false
+local Dismantlee = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISMANTLE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -51,10 +50,9 @@ local Towed = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:Dismantle")
 AddEventHandler("target:Dismantle",function(Model)
-	if not FreezeDismantle then
-		FreezeDismantle = true
-		Dismantler = math.random(#Dismantle)
-		TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Desmanche", x = Dismantle[Dismantler]["x"], y = Dismantle[Dismantler]["y"], z = Dismantle[Dismantler]["z"], vehicle = VehicleName(Model), color = 60 })
+	if not Dismantlee then
+		Dismantlee = math.random(#Dismantle)
+		TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Desmanche", x = Dismantle[Dismantlee]["x"], y = Dismantle[Dismantlee]["y"], z = Dismantle[Dismantlee]["z"], vehicle = VehicleName(Model), color = 60 })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -62,12 +60,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("dismantle:Reset")
 AddEventHandler("dismantle:Reset",function()
-	FreezeDismantle = false
-
-	local Backup = Dismantler
-	repeat
-		Dismantler = math.random(#Dismantle)
-	until Backup ~= Dismantler
+	Dismantlee = false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRES
@@ -209,24 +202,6 @@ local Fuels = {
 	vec3(-61.03,-1760.85,28.31)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TELEPORTS
------------------------------------------------------------------------------------------------------------------------------------------
-local Teleports = {
-	["1"] = vec3(618.31,-1.71,70.62),
-	["2"] = vec3(618.26,-1.56,77.49),
-	["3"] = vec3(618.26,-1.56,84.38),
-	["4"] = vec3(618.26,-1.66,90.47),
-	["5"] = vec3(617.58,-5.18,99.41)
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- ELEVATOR:TELEPORT
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("elevator:Teleport",function(Number)
-	if Teleports[Number] then
-		SetEntityCoords(PlayerPedId(),Teleports[Number]["x"],Teleports[Number]["y"],Teleports[Number]["z"] - 1)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -239,42 +214,6 @@ CreateThread(function()
 	RegisterCommand("+entityTarget",TargetEnable)
 	RegisterCommand("-entityTarget",TargetDisable)
 	RegisterKeyMapping("+entityTarget","Interação auricular.","keyboard","LMENU")
-
-	-- AddCircleZone("Elevator01",vec3(618.84,-3.23,90.68),0.15,{ -- 2º Andar
-	-- 	name = "Elevator01",
-	-- 	heading = 0.0,
-	-- 	useZ = true
-	-- },{
-	-- 	Distance = 1.25,
-	-- 	options = {
-	-- 		{
-	-- 			event = "elevator:Teleport",
-	-- 			label = "Garagem",
-	-- 			tunnel = "products",
-	-- 			service = "1"
-	-- 		},{
-	-- 			event = "elevator:Teleport",
-	-- 			label = "Sub-Solo",
-	-- 			tunnel = "products",
-	-- 			service = "2"
-	-- 		},{
-	-- 			event = "elevator:Teleport",
-	-- 			label = "1º Andar",
-	-- 			tunnel = "products",
-	-- 			service = "3"
-	-- 		},{
-	-- 			event = "elevator:Teleport",
-	-- 			label = "2º Andar",
-	-- 			tunnel = "products",
-	-- 			service = "4"
-	-- 		},{
-	-- 			event = "elevator:Teleport",
-	-- 			label = "Heliponto",
-	-- 			tunnel = "products",
-	-- 			service = "5"
-	-- 		}
-	-- 	}
-	-- })
 
 	AddCircleZone("Presidiary",vec3(1833.27,2576.01,46.42),0.1,{
 		name = "Presidiary",
@@ -305,17 +244,6 @@ CreateThread(function()
 				tunnel = "server"
 			}
 		}
-	})
-
-	AddTargetModel({ 654385216,161343630,-430989390,1096374064,-1519644200,-1932041857,207578973,-487222358 },{
-		options = {
-			{
-				event = "slotmachine:Init",
-				label = "Sentar",
-				tunnel = "client"
-			}
-		},
-		Distance = 1.0
 	})
 
 	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688 },{
@@ -676,7 +604,7 @@ function TargetEnable()
 								Menu[#Menu + 1] = { event = "towed:Impound", label = "Impound", tunnel = "server" }
 								Menu[#Menu + 1] = { event = "police:Plate", label = "Verificar Placa", tunnel = "server" }
 								Menu[#Menu + 1] = { event = "police:ArrestVehicles", label = "Apreender", tunnel = "server" }
-							elseif #(Coords - Dismantle[Dismantler]) <= 15 then
+							elseif Dismantlee and #(Coords - Dismantle[Dismantlee]) <= 15 then
 								Menu[#Menu + 1] = { event = "inventory:Dismantle", label = "Desmanchar", tunnel = "server" }
 							end
 						end
@@ -849,7 +777,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function TargetDisable()
 	if Focus or not Actived then
-		return
+		return false
 	end
 
 	TriggerEvent("target:Debug")

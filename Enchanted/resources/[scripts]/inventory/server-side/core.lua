@@ -591,8 +591,8 @@ function Creative.Send(Slot,Amount)
 
 						if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
 							vRP.GiveItem(OtherPassport,Item,Amount,true)
-							TriggerClientEvent("inventory:Update",source,"Backpack")
-							TriggerClientEvent("inventory:Update",ClosestPed,"Backpack")
+							TriggerClientEvent("inventory:Update",source)
+							TriggerClientEvent("inventory:Update",ClosestPed)
 						end
 					end
 
@@ -848,7 +848,7 @@ function Creative.Use(Slot,Amount)
 					Users["Ammos"][Passport][Item] = AmmoClip + Amount
 
 					TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),Amount,ItemName(Full),ItemRarity(Full) })
-					TriggerClientEvent("inventory:Update",source,"Backpack")
+					TriggerClientEvent("inventory:Update",source)
 					vCLIENT.Reloading(source,Weapon,Amount)
 				end
 			end
@@ -895,7 +895,7 @@ function Creative.Use(Slot,Amount)
 					if not Users["Attachs"][Passport][Weapon][Item] then
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
 							TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),1,ItemName(Full),ItemRarity(Full) })
-							TriggerClientEvent("inventory:Update",source,"Backpack")
+							TriggerClientEvent("inventory:Update",source)
 							Users["Attachs"][Passport][Weapon][Item] = true
 							vCLIENT.GiveComponent(source,Component)
 						end
@@ -973,7 +973,7 @@ function Creative.VerifyWeapon(Item,Ammo)
 		end
 
 		TriggerClientEvent("inventory:RemoveWeapon",source,Item)
-		TriggerClientEvent("inventory:Update",source,"Backpack")
+		TriggerClientEvent("inventory:Update",source)
 
 		return false
 	end

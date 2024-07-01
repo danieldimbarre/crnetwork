@@ -160,7 +160,7 @@ Use = {
 	["newchars"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.TakeItem(Passport,Full,1,false,Slot) then
 			vRP.UpgradeCharacters(source)
-			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerClientEvent("inventory:Update",source)
 			TriggerClientEvent("inventory:Notify",source,"Sucesso","Personagem liberado.","verde")
 		end
 	end,
@@ -168,7 +168,7 @@ Use = {
 	["gemstone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.TakeItem(Passport,Full,Amount,false,Slot) then
 			vRP.UpgradeGemstone(Passport,Amount,false)
-			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerClientEvent("inventory:Update",source)
 			TriggerClientEvent("inventory:Notify",source,"Sucesso","Diamantes adicionados.","verde")
 		end
 	end,
@@ -180,7 +180,7 @@ Use = {
 		if Keyboard then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Notify",source,"Sucesso","Passaporte atualizado.","verde")
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("inventory:Update",source)
 				vRP.UpgradeNames(Passport,Keyboard[1],Keyboard[2])
 			end
 		end
@@ -2652,7 +2652,7 @@ Use = {
 
 	["dismantle"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vCLIENT.Dismantle(source) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerClientEvent("inventory:Update",source)
 		end
 	end,
 
@@ -2842,12 +2842,12 @@ Use = {
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.SetPremium(source,Passport,Hierarchy)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("inventory:Update",source)
 			end
 		else
 			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.UpgradePremium(source,Passport,Hierarchy)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("inventory:Update",source)
 			end
 		end
 	end,
@@ -2857,12 +2857,12 @@ Use = {
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.SetPremium(source,Passport,Hierarchy)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("inventory:Update",source)
 			end
 		else
 			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.UpgradePremium(source,Passport,Hierarchy)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("inventory:Update",source)
 			end
 		end
 	end,
@@ -2872,12 +2872,12 @@ Use = {
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.SetPremium(source,Passport,Hierarchy)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("inventory:Update",source)
 			end
 		else
 			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.UpgradePremium(source,Passport,Hierarchy)
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("inventory:Update",source)
 			end
 		end
 	end,
@@ -2917,7 +2917,7 @@ for Name,v in pairs(ItemList()) do
 
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Notify",source,"Sucesso","Aprendizado adicionado.","verde")
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("inventory:Update",source)
 				Users["Blueprints"][Passport][Name] = true
 			end
 		end
@@ -2949,7 +2949,7 @@ for Model,v in pairs(VehicleList()) do
 					end
 
 					TriggerClientEvent("inventory:Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> adicionado.","verde")
-					TriggerClientEvent("inventory:Update",source,"Backpack")
+					TriggerClientEvent("inventory:Update",source)
 				end
 			end
 		end

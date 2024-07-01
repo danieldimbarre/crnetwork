@@ -1,4 +1,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Reserved = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTICK
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -7,7 +11,7 @@ CreateThread(function()
 
 		for Route,Table in pairs(Drops) do
 			for Number,v in pairs(Table) do
-				if Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["timer"] <= os.time() then
+				if Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["timer"] and Drops[Route][Number]["timer"] <= os.time() then
 					if ItemUnique(Drops[Route][Number]["key"]) then
 						vRP.RemSrvData(SplitUnique(Drops[Route][Number]["key"]))
 					end
@@ -47,9 +51,8 @@ function Creative.Drops(Item,Slot,Amount)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Amount >= 1 and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and vRP.TakeItem(Passport,Item,Amount,false,Slot) then
 		exports["inventory"]:Drops(Passport,source,Item,Amount,true)
-		TriggerClientEvent("inventory:Update",source,"Backpack")
 	else
-		TriggerClientEvent("inventory:Update",source,"Backpack")
+		TriggerClientEvent("inventory:Update",source)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -68,9 +71,9 @@ exports("Drops",function(Passport,source,Item,Amount,Force)
 	end
 
 	repeat
-		Selected = GenerateString("DDLLDDLL")
-	until Selected and not Drops[Route][Selected]
-	Drops[Route][Selected] = {}
+		Selected = GenerateString("DDDDDDDDD")
+	until Selected and not Reserved[Selected] and not Drops[Route][Selected]
+	Reserved[Selected] = true
 
 	local Provisory = {
 		["key"] = Force,
@@ -125,7 +128,7 @@ function Creative.Pickup(Number,Route,Target,Amount)
 		if vRP.CheckWeight(Passport,Drops[Route][Number]["key"],Amount) then
 			local Inv = vRP.Inventory(Passport)
 			if not Drops[Route] or not Drops[Route][Number] or not Drops[Route][Number]["key"] or not Drops[Route][Number]["amount"] or Drops[Route][Number]["amount"] < Amount or (Inv[Target] and Inv[Target]["item"] ~= Drops[Route][Number]["key"]) or vRP.MaxItens(Passport,Drops[Route][Number]["key"],Amount) then
-				TriggerClientEvent("inventory:Update",source,"Backpack")
+				TriggerClientEvent("inventory:Update",source)
 				Active[Passport] = nil
 
 				return false
@@ -143,14 +146,14 @@ function Creative.Pickup(Number,Route,Target,Amount)
 				end
 			end
 
-			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerClientEvent("inventory:Update",source)
 		else
-			TriggerClientEvent("inventory:Update",source,"Backpack")
+			TriggerClientEvent("inventory:Update",source)
 			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 		end
 
 		Active[Passport] = nil
 	else
-		TriggerClientEvent("inventory:Update",source,"Backpack")
+		TriggerClientEvent("inventory:Update",source)
 	end
 end

@@ -22,10 +22,21 @@ local ExplodeCooldown = GetGameTimer()
 -- THREADRACES
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	UpdateBlipped()
 	SetGhostedEntityAlpha(254)
 	LoadModel("prop_beachflag_01")
 	LoadModel("prop_offroad_tyres02")
+
+	for _,v in pairs(Races) do
+		local Blip = AddBlipForCoord(v["Init"])
+		SetBlipSprite(Blip,38)
+		SetBlipDisplay(Blip,4)
+		SetBlipAsShortRange(Blip,true)
+		SetBlipColour(Blip,4)
+		SetBlipScale(Blip,0.6)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString("Circuito")
+		EndTextCommandSetBlipName(Blip)
+	end
 
 	while true do
 		local TimeDistance = 999
@@ -88,7 +99,7 @@ CreateThread(function()
 					for Number,v in pairs(Races) do
 						local Distance = #(Coords - v["Init"])
 						if Distance <= 25 and GetPedInVehicleSeat(Vehicle,-1) == Ped then
-							DrawMarker(23,v["Init"]["x"],v["Init"]["y"],v["Init"]["z"] - 0.35,0.0,0.0,0.0,0.0,0.0,0.0,10.0,10.0,10.0,88,101,242,175,0,0,0,0)
+							DrawMarker(23,v["Init"]["x"],v["Init"]["y"],v["Init"]["z"] - 0.35,0.0,0.0,0.0,0.0,0.0,0.0,10.0,10.0,10.0,93,161,248,175,0,0,0,0)
 							TimeDistance = 1
 
 							if Distance <= 5 then
@@ -222,28 +233,3 @@ function StopCircuit()
 		end)
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- UPDATEBLIPPED
------------------------------------------------------------------------------------------------------------------------------------------
-function UpdateBlipped()
-	if DoesBlipExist(Blip) then
-		RemoveBlip(Blip)
-	end
-
-	local Number = GlobalState["Races"]
-	Blip = AddBlipForCoord(Races[Number]["Init"]["x"],Races[Number]["Init"]["y"],Races[Number]["Init"]["z"])
-	SetBlipSprite(Blip,38)
-	SetBlipDisplay(Blip,4)
-	SetBlipAsShortRange(Blip,true)
-	SetBlipColour(Blip,4)
-	SetBlipScale(Blip,0.6)
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString("Circuito")
-	EndTextCommandSetBlipName(Blip)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- ADDSTATEBAGCHANGEHANDLER
------------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Helicrash",nil,function()
-	UpdateBlipped()
-end)

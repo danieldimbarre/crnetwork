@@ -134,7 +134,7 @@ function Creative.Permissions(Name,Mode,Item)
 					["Name"] = "Personal:"..Passport,
 					["Weight"] = 50,
 					["Save"] = true,
-					["Slots"] = 20
+					["Slots"] = 25
 				}
 
 				return true
@@ -143,8 +143,13 @@ function Creative.Permissions(Name,Mode,Item)
 			Open[Passport] = {
 				["Name"] = Name,
 				["Weight"] = 25,
-				["Slots"] = 20
+				["Slots"] = 25
 			}
+
+			if Name == "Recycle" then
+				Open[Passport]["Weight"] = 100
+				Open[Passport]["Recycle"] = true
+			end
 
 			return true
 		elseif Mode == "Custom" or Mode == "Trash" then
@@ -162,7 +167,7 @@ function Creative.Permissions(Name,Mode,Item)
 			Open[Passport] = {
 				["Name"] = Name,
 				["Weight"] = 50,
-				["Slots"] = 20,
+				["Slots"] = 25,
 				["Mode"] = "Custom"
 			}
 
@@ -317,7 +322,21 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
 	if Passport and Open[Passport] and not Inactived then
-		if Item == "diagram" and Open[Passport]["NameLogs"] then
+		if Open[Passport]["Recycle"] then
+			local Recycled = ItemRecycle(Item)
+			if Recycled then
+				if vRP.TakeItem(Passport,Item,Amount) then
+					for Index,Number in pairs(Recycled) do
+						vRP.GenerateItem(Passport,Index,Number * Amount)
+					end
+
+					TriggerClientEvent("inventory:Update",source)
+				end
+			else
+				TriggerClientEvent("inventory:Notify",source,"Atenção",ItemName(Item).." não pode ser reciclado.","amarelo")
+				TriggerClientEvent("inventory:Update",source)
+			end
+		elseif Item == "diagram" and Open[Passport]["NameLogs"] then
 			if vRP.TakeItem(Passport,Item,Amount) then
 				vRP.Query("chests/UpdateWeight",{ Name = Open[Passport]["NameLogs"], Multiplier = Amount })
 				TriggerClientEvent("inventory:Notify",source,"Sucesso","Armazenamento melhorado.","verde")
@@ -329,22 +348,20 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 			local Unique = Open[Passport]["Unique"]
 			if (ChestItens[Item] and ChestItens[Item]["Block"]) or (Unique and ChestItens[Unique] and ChestItens[Unique]["Itens"] and not ChestItens[Unique]["Itens"][Item]) then
 				if Unique and Item == Unique then
-                    TriggerClientEvent("inventory:Open",source,{
-                        Action = "Open",
-                        Type = "Inventory",
-                        Resource = "inventory"
-                    },true)
-                else
-                    TriggerClientEvent("inventory:Update",source)
-                end
-
-				return false
-			end
-
-			if vRP.StoreChest(Passport,Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target,Open[Passport]["Save"],ChestItens[Unique]) then
-				TriggerClientEvent("inventory:Update",source)
-			elseif Open[Passport]["Logs"] then
-				exports["discord"]:Embed(Open[Passport]["NameLogs"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..ItemName(Item),0xa3c846)
+					TriggerClientEvent("inventory:Open",source,{
+						Action = "Open",
+						Type = "Inventory",
+						Resource = "inventory"
+					},true)
+				else
+					TriggerClientEvent("inventory:Update",source)
+				end
+			else
+				if vRP.StoreChest(Passport,Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target,Open[Passport]["Save"],ChestItens[Unique]) then
+					TriggerClientEvent("inventory:Update",source)
+				elseif Open[Passport]["Logs"] then
+					exports["discord"]:Embed(Open[Passport]["NameLogs"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..ItemName(Item),0xa3c846)
+				end
 			end
 		end
 	else

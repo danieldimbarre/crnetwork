@@ -1,67 +1,84 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
+-- CONFIG
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Cooldown = {}
------------------------------------------------------------------------------------------------------------------------------------------
--- ITENS
------------------------------------------------------------------------------------------------------------------------------------------
-local Itens = {
-	{ ["Item"] = "dirtydollar", ["Chance"] = 100, ["Min"] = 325, ["Max"] = 375 }
+local Config = {
+	["Register"] = {
+		["Timer"] = 15,
+		["Wanted"] = 60,
+		["Delay"] = 3600,
+		["Cooldown"] = {},
+		["Percentage"] = 750,
+		["Name"] = "Roubo a Registradora",
+		["Residual"] = "Resquício de Línter",
+		["Payment"] = {
+			{ ["Item"] = "dirtydollar", ["Chance"] = 100, ["Min"] = 325, ["Max"] = 375 }
+		}
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:REGISTER
+-- INVENTORY:ROBBERYMULTIPLIER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:Register")
-AddEventHandler("inventory:Register",function(Number)
+RegisterServerEvent("inventory:RobberyMultiplier")
+AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] then
-		if not vCLIENT.CheckWeapon(source,"WEAPON_CROWBAR") then
-			TriggerClientEvent("Notify",source,"Aviso","<b>Pé de Cabra</b> não encontrado.","amarelo",5000)
+	if Passport and not Active[Passport] and Config[Mode] then
+		if Config[Mode]["Cops"] and vRP.AmountService("Policia") < Config[Mode]["Cops"] then
+			TriggerClientEvent("Notify",source,"Atenção","Contingente indisponível.","amarelo",5000)
 
 			return false
 		end
 
-		if not Cooldown[Number] or os.time() > Cooldown[Number] then
-			if vRP.Task(source,3,7500) then
-				Active[Passport] = os.time() + 15
+		if Config[Mode]["Need"] then
+			Consult = vRP.ConsultItem(Passport,Config[Mode]["Need"]["Item"],Config[Mode]["Need"]["Amount"])
+
+			if not Consult then
+				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>"..Config[Mode]["Need"]["Amount"].."x "..ItemName(Config[Mode]["Need"]["Item"]).."</b>.","amarelo",5000)
+
+				return false
+			end
+		end
+
+		if not Config[Mode]["Cooldown"][Number] or os.time() > Config[Mode]["Cooldown"][Number] then
+			if vRP.Memory(source) then
 				Player(source)["state"]["Buttons"] = true
-				TriggerClientEvent("Progress",source,"Roubando",15000)
+				Active[Passport] = os.time() + Config[Mode]["Timer"]
+				TriggerClientEvent("player:Residuals",source,Config[Mode]["Residual"])
 				vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
+				TriggerClientEvent("Progress",source,"Roubando",Config[Mode]["Timer"] * 1000)
 
 				exports["vrp"]:CallPolice({
 					["Source"] = source,
 					["Passport"] = Passport,
 					["Permission"] = "Policia",
-					["Name"] = "Roubo a Caixa Registradora",
-					["Percentage"] = 750,
-					["Wanted"] = 60,
+					["Name"] = Config[Mode]["Name"],
+					["Percentage"] = Config[Mode]["Percentage"],
+					["Wanted"] = Config[Mode]["Wanted"],
 					["Code"] = 31,
 					["Color"] = 22
 				})
 
 				repeat
-					if Active[Passport] and os.time() >= parseInt(Active[Passport]) and Number and (not Cooldown[Number] or os.time() > Cooldown[Number]) then
+					if Active[Passport] and os.time() >= Active[Passport] then
 						vRPC.Destroy(source)
 						Active[Passport] = nil
-						Cooldown[Number] = os.time() + 3600
+						Player(source)["state"]["Buttons"] = false
 
-						vRP.MountContainer(Passport,"Registers:"..Number,Itens,1)
-						TriggerClientEvent("player:Residuals",source,"Resquício de Línter")
-						TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true)
+						if (not Config[Mode]["Cooldown"][Number] or os.time() > Config[Mode]["Cooldown"][Number]) and not Config[Mode]["Need"] or (Config[Mode]["Need"] and Consult and vRP.ConsultItem(Passport,Consult["Item"],Config[Mode]["Need"]["Amount"]) and (not Config[Mode]["Need"]["Consume"] or (Config[Mode]["Need"]["Consume"] and vRP.TakeItem(Passport,Consult["Item"],Config[Mode]["Need"]["Amount"])))) then
+							Config[Mode]["Cooldown"][Number] = os.time() + Config[Mode]["Delay"]
+							vRP.MountContainer(Passport,Mode..":"..Number,Config[Mode]["Payment"])
+							TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
+						end
 					end
 
 					Wait(100)
 				until not Active[Passport]
-
-				Player(source)["state"]["Buttons"] = false
 			end
 		else
-			local Consult = vRP.GetSrvData("Registers:"..Number,false)
-			if json.encode(Consult) ~= "[]" and (Cooldown[Number] - 3300) >= os.time() then
-				TriggerClientEvent("chest:Open",source,"Registers:"..Number,"Custom",false,true)
+			if (Config[Mode]["Cooldown"][Number] - (Config[Mode]["Delay"] - 300)) >= os.time() then
+				TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Cooldown[Number] - os.time())..".","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Config[Mode]["Cooldown"][Number] - os.time())..".","amarelo",5000)
 			end
 		end
 	end

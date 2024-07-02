@@ -241,13 +241,19 @@ vehicleWindowTintOptions = {
 		id = 0
 	},{
 		name = "Pure Black",
-		id = 1    
+		id = 1
 	},{
 		name = "Darksmoke",
 		id = 2
 	},{
 		name = "Lightsmoke",
 		id = 3
+	},{
+		name = "Stock",
+		id = 4
+	},{
+		name = "Limo",
+		id = 5
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

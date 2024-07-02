@@ -2,18 +2,19 @@
 -- LOCKERITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 LockerItens = {
-	{ ["Item"] = "dollar", ["Chance"] = 225, ["Min"] = 4225, ["Max"] = 5775 },
-	{ ["Item"] = "dirtydollar", ["Chance"] = 225, ["Min"] = 4225, ["Max"] = 5775 },
-	{ ["Item"] = "promissory1000", ["Chance"] = 100, ["Min"] = 4, ["Max"] = 6 },
-	{ ["Item"] = "promissory2000", ["Chance"] = 100, ["Min"] = 2, ["Max"] = 3 },
-	{ ["Item"] = "promissory3000", ["Chance"] = 100, ["Min"] = 2, ["Max"] = 2 },
+	{ ["Item"] = "dollar", ["Chance"] = 225, ["Min"] = 3225, ["Max"] = 3775 },
+	{ ["Item"] = "dirtydollar", ["Chance"] = 225, ["Min"] = 3225, ["Max"] = 3775 },
+	{ ["Item"] = "promissory1000", ["Chance"] = 100, ["Min"] = 2, ["Max"] = 4 },
+	{ ["Item"] = "promissory2000", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 3 },
+	{ ["Item"] = "promissory3000", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 2 },
 	{ ["Item"] = "promissory4000", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 2 },
 	{ ["Item"] = "promissory5000", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 1 },
-	{ ["Item"] = "goldnecklace", ["Chance"] = 50, ["Min"] = 8, ["Max"] = 10 },
-	{ ["Item"] = "silverchain", ["Chance"] = 75, ["Min"] = 10, ["Max"] = 14 },
+	{ ["Item"] = "goldnecklace", ["Chance"] = 50, ["Min"] = 4, ["Max"] = 6 },
+	{ ["Item"] = "silverchain", ["Chance"] = 75, ["Min"] = 6, ["Max"] = 8 },
 	{ ["Item"] = "safependrive", ["Chance"] = 10, ["Min"] = 1, ["Max"] = 1 },
 	{ ["Item"] = "goldenjug", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 1 },
 	{ ["Item"] = "goldenleopard", ["Chance"] = 2, ["Min"] = 1, ["Max"] = 1 },
+	{ ["Item"] = "platinum", ["Chance"] = 1, ["Min"] = 225, ["Max"] = 375 },
 	{ ["Item"] = "goldenlion", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -107,5 +108,6 @@ OtherItens = {
 	{ ["Item"] = "goldnecklace", ["Chance"] = 15, ["Min"] = 1, ["Max"] = 1 },
 	{ ["Item"] = "silverchain", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 1 },
 	{ ["Item"] = "horsefigurine", ["Chance"] = 2, ["Min"] = 1, ["Max"] = 1 },
-	{ ["Item"] = "toothpaste", ["Chance"] = 35, ["Min"] = 1, ["Max"] = 1 }
+	{ ["Item"] = "toothpaste", ["Chance"] = 35, ["Min"] = 1, ["Max"] = 1 },
+	{ ["Item"] = "television", ["Chance"] = 2, ["Min"] = 1, ["Max"] = 1 }
 }

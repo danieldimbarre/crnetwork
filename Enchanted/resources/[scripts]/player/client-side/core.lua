@@ -78,17 +78,10 @@ CreateThread(function()
 		if IsPedInAnyVehicle(Ped) then
 			TimeDistance = 100
 
-			if not GetPedConfigFlag(Ped,184,true) then
-				SetPedConfigFlag(Ped,184,true)
-			end
-
 			local Vehicle = GetVehiclePedIsIn(Ped)
-			if GetPedInVehicleSeat(Vehicle,0) == Ped and GetIsTaskActive(Ped,165) then
+			if GetPedInVehicleSeat(Vehicle,0) == Ped and not GetIsTaskActive(Ped,164) and GetIsTaskActive(Ped,165) then
 				SetPedIntoVehicle(Ped,Vehicle,0)
-			end
-		else
-			if GetPedConfigFlag(Ped,184,true) then
-				SetPedConfigFlag(Ped,184,false)
+				SetPedConfigFlag(Ped,184,true)
 			end
 		end
 

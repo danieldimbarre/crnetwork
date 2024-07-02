@@ -97,9 +97,9 @@ CreateThread(function()
 					SetEntityCoords(Ped,Internal[Interior]["Exit"],false,false,false,false)
 				end
 
-				if Internal[Interior]["Furniture"] and Policed and Policed <= GetGameTimer() and (GetEntitySpeed(Ped) > 2.1 or MumbleIsPlayerTalking(Pid)) then
+				if Internal[Interior]["Furniture"] and Policed and Policed <= GetGameTimer() and (GetPedMovementClipset(Ped) ~= -1155413492 or IsPedSprinting(Ped) or MumbleIsPlayerTalking(Pid)) then
 					vSERVER.Police(Propertys[Inside]["Coords"],Coords)
-					Policed = GetGameTimer() + 60000
+					Policed = GetGameTimer() + 15000
 				end
 
 				for Line,v in pairs(Internal[Interior]) do

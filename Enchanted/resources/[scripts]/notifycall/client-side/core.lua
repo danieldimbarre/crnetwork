@@ -3,7 +3,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("NotifyCall",function()
 	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPauseMenuActive() then
-		SendNUIMessage({ name = "Open" })
+		SendNUIMessage({ Action = "Open" })
+		SetNuiFocus(true,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -11,43 +12,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterKeyMapping("NotifyCall","Consultar as notificações.","keyboard","F2")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- NOTIFYPUSH
+-- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("NotifyPush")
-AddEventHandler("NotifyPush",function(Data)
-	local Blip = AddBlipForCoord(Data["x"],Data["y"],Data["z"])
-	local Road = GetStreetNameAtCoord(Data["x"],Data["y"],Data["z"])
-	Data["street"] = GetStreetNameFromHashKey(Road)
-
-	SendNUIMessage({ name = "New", payload = Data })
-
-	SetBlipSprite(Blip,270)
-	SetBlipDisplay(Blip,4)
-	SetBlipAsShortRange(Blip,true)
-	SetBlipColour(Blip,Data["color"])
-	SetBlipScale(Blip,0.9)
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString(Data["title"])
-	EndTextCommandSetBlipName(Blip)
-
-	SetTimeout(60000,function()
-		if DoesBlipExist(Blip) then
-			RemoveBlip(Blip)
-		end
-	end)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- FOCUSON
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("focusOn",function(Data,Callback)
-	SetNuiFocus(true,true)
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- FOCUSOFF
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("focusOff",function(Data,Callback)
+RegisterNUICallback("Close",function(Data,Callback)
 	SetNuiFocus(false,false)
 
 	Callback("Ok")
@@ -57,6 +24,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Waypoint",function(Data,Callback)
 	SetNewWaypoint(Data["x"] + 0.0001,Data["y"] + 0.0001)
+	SetNuiFocus(false,false)
 
 	Callback("Ok")
 end)
@@ -65,6 +33,34 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Phone",function(Data,Callback)
 	exports["lb-phone"]:CreateCall({ number = Data["phone"] })
+	SetNuiFocus(false,false)
 
 	Callback("Ok")
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- NOTIFYPUSH
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("NotifyPush")
+AddEventHandler("NotifyPush",function(Data)
+	local Blip = AddBlipForCoord(Data["x"],Data["y"],Data["z"])
+	local Road = GetStreetNameAtCoord(Data["x"],Data["y"],Data["z"])
+	Data["street"] = GetStreetNameFromHashKey(Road)
+
+	SendNUIMessage({ Action = "New", Payload = Data })
+
+	SetBlipSprite(Blip,161)
+	SetBlipDisplay(Blip,4)
+	SetBlipAsShortRange(Blip,true)
+	SetBlipColour(Blip,Data["color"])
+	SetBlipScale(Blip,0.5)
+	PulseBlip(Blip)
+	BeginTextCommandSetBlipName("STRING")
+	AddTextComponentString(Data["title"])
+	EndTextCommandSetBlipName(Blip)
+
+	SetTimeout(60000,function()
+		if DoesBlipExist(Blip) then
+			RemoveBlip(Blip)
+		end
+	end)
 end)

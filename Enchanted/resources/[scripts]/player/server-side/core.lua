@@ -12,40 +12,6 @@ vCLIENT = Tunnel.getInterface("player")
 vSKINSHOP = Tunnel.getInterface("skinshop")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PLAYER:RECYCLE
------------------------------------------------------------------------------------------------------------------------------------------
-local Recycled = {}
-RegisterServerEvent("player:Recycle")
-AddEventHandler("player:Recycle",function()
-	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport and not Recycled[Passport] and not exports["hud"]:Wanted(Passport) and vRP.Request(source,"Recicladora","Efetuar reciclagem de todos os objetos?") then
-		local Notify = false
-		Recycled[Passport] = true
-		local Inv = vRP.Inventory(Passport)
-
-		for Slot = 1,5 do
-			local Slot = tostring(Slot)
-			if Inv[Slot] and Inv[Slot]["item"] and Inv[Slot]["amount"] > 0 then
-				for Item,Amount in pairs(ItemRecycle(Inv[Slot]["item"])) do
-					if vRP.TakeItem(Passport,Inv[Slot]["item"],Inv[Slot]["amount"],false,Slot) then
-						vRP.GenerateItem(Passport,Item,Inv[Slot]["amount"] * Amount,true,Slot)
-						Notify = true
-					end
-				end
-			end
-		end
-
-		if Notify then
-			TriggerClientEvent("Notify",source,"Recicladora","Processo concluído.","ilegal",5000)
-		else
-			TriggerClientEvent("Notify",source,"Recicladora","Nenhum item encontrado.","vermelho",5000)
-		end
-
-		Recycled[Passport] = nil
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:SURVIVAL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("player:Survival")
@@ -391,9 +357,5 @@ end)
 AddEventHandler("Disconnect",function(Passport)
 	if Debug[Passport] then
 		Debug[Passport] = nil
-	end
-
-	if Recycled[Passport] then
-		Recycled[Passport] = nil
 	end
 end)

@@ -119,9 +119,10 @@ CreateThread(function()
 			Distance = 1.25,
 			options = {
 				{
-					event = "inventory:Register",
+					event = "inventory:RobberyMultiplier",
 					tunnel = "server",
-					label = "Roubar"
+					label = "Roubar",
+					service = "Register"
 				}
 			}
 		})

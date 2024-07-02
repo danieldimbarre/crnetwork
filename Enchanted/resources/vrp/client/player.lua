@@ -48,9 +48,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.DowngradeHealth(Number)
 	local Ped = PlayerPedId()
-	local Health = GetEntityHealth(Ped)
 
-	SetEntityHealth(Ped,Health - Number)
+	ApplyDamageToPed(Ped,Number,false)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYINGANIM
@@ -101,7 +100,7 @@ end
 -- VRP:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("vRP:Active")
-AddEventHandler("vRP:Active",function(Passport,Name)
+AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
 	LocalPlayer["state"]:set("Name",Name,true)
 	LocalPlayer["state"]:set("Active",true,false)
 	LocalPlayer["state"]:set("Cyndaquil",true,false)
@@ -117,6 +116,16 @@ AddEventHandler("vRP:Active",function(Passport,Name)
 	SetTimeout(10000,function()
 		SetEntityInvincible(Ped,false)
 		LocalPlayer["state"]:set("Cyndaquil",false,false)
+
+		if Inventory then
+			for _,v in pairs(Inventory) do
+				local Animation = ItemAnim(v["item"])
+
+				if Animation then
+					tvRP.PersistentBlock(v["item"],Animation)
+				end
+			end
+		end
 	end)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

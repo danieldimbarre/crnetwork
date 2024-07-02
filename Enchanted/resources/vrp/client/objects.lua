@@ -219,13 +219,12 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 			minZ = Coords[3],
 			maxZ = Coords[3] + 2.0
 		},{
-			shop = Number,
 			Distance = 2.25,
 			options = {
 				{
-					event = "player:Recycle",
-					label = "Reciclar",
-					tunnel = "server"
+					event = "chest:Recycle",
+					label = "Abrir",
+					tunnel = "client"
 				}
 			}
 		})

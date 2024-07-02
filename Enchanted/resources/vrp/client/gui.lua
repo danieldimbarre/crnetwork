@@ -5,6 +5,8 @@ local Binded = {}
 local Object = nil
 local Point = false
 local Crouch = false
+local Persistent = false
+local PersistentList = {}
 local Button = GetGameTimer()
 local AnimVars = { nil,nil,false,49 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -183,28 +185,30 @@ end
 -- DESTROY
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.Destroy(Mode)
-	local Ped = PlayerPedId()
+	if not Persistent then
+		local Ped = PlayerPedId()
 
-	if IsPedUsingScenario(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT") then
-		TriggerEvent("target:UpChair")
-	elseif IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@female@back@idle_a","idle_a",3) or LocalPlayer["state"]["Bed"] then
-		TriggerEvent("target:UpBed")
-	end
+		if IsPedUsingScenario(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT") then
+			TriggerEvent("target:UpChair")
+		elseif IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@female@back@idle_a","idle_a",3) or LocalPlayer["state"]["Bed"] then
+			TriggerEvent("target:UpBed")
+		end
 
-	if Mode == "one" then
-		tvRP.stopAnim(true)
-	elseif Mode == "two" then
-		tvRP.stopAnim(false)
-	else
-		tvRP.stopAnim(true)
-		tvRP.stopAnim(false)
-	end
+		if Mode == "one" then
+			tvRP.stopAnim(true)
+		elseif Mode == "two" then
+			tvRP.stopAnim(false)
+		else
+			tvRP.stopAnim(true)
+			tvRP.stopAnim(false)
+		end
 
-	AnimVars[3] = false
+		AnimVars[3] = false
 
-	if DoesEntityExist(Object) then
-		TriggerServerEvent("DeleteObject",ObjToNet(Object))
-		Object = nil
+		if DoesEntityExist(Object) then
+			TriggerServerEvent("DeleteObject",ObjToNet(Object))
+			Object = nil
+		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -407,6 +411,48 @@ RegisterCommand("Lock",function()
 		end
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PERSISTENTBLOCK
+-----------------------------------------------------------------------------------------------------------------------------------------
+function tvRP.PersistentBlock(Item,Animation)
+	local Item = SplitOne(Item)
+
+	if not Persistent then
+		Persistent = Item
+		TriggerEvent("emotes",Animation)
+	else
+		PersistentList[#PersistentList + 1] = {
+			["Item"] = Item,
+			["Anim"] = Animation
+		}
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PERSISTENTNONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function tvRP.PersistentNone(Item)
+	local Item = SplitOne(Item)
+
+	if Item == Persistent then
+		Persistent = false
+		tvRP.Destroy()
+	else
+		for Index,v in pairs(PersistentList) do
+			if Item == v["Item"] then
+				PersistentList[Index] = nil
+
+				break
+			end
+		end
+	end
+
+	for Index,v in pairs(PersistentList) do
+		tvRP.PersistentBlock(v["Item"],v["Anim"])
+		PersistentList[Index] = nil
+
+		break
+	end
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYMAPPING
 -----------------------------------------------------------------------------------------------------------------------------------------

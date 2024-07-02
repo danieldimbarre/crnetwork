@@ -1312,6 +1312,17 @@ local List = {
 		["Blueprint"] = true,
 		["LostWater"] = true
 	},
+	["television"] = {
+		["Index"] = "television",
+		["Name"] = "Televisão",
+		["Description"] = "Uma experiência visual imersiva equipada com tecnologia LED para cores vibrantes e detalhes nítidos oferecendo entretenimento de alta qualidade.",
+		["Type"] = "Comum",
+		["Weight"] = 12.5,
+		["Anim"] = "tv",
+		["LostWater"] = true,
+		["Economy"] = 5425,
+		["Market"] = true
+	},
 	["ssddrive"] = {
 		["Index"] = "ssddrive",
 		["Name"] = "Unidade SSD",
@@ -3639,8 +3650,7 @@ local List = {
 		["Weight"] = 0.25,
 		["Delete"] = true,
 		["Economy"] = 0,
-		["Market"] = true,
-		["LostWater"] = true
+		["Market"] = true
 	},
 	["propertys"] = {
 		["Index"] = "propertys",
@@ -3649,8 +3659,7 @@ local List = {
 		["Weight"] = 0.35,
 		["Delete"] = true,
 		["Economy"] = 0,
-		["Market"] = true,
-		["LostWater"] = true
+		["Market"] = true
 	},
 	["emptypurifiedwater"] = {
 		["Index"] = "emptypurifiedwater",
@@ -5453,7 +5462,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function ItemRecycle(Item)
 	local Item = SplitOne(Item)
-	return List[Item] and List[Item]["Recycle"] or {}
+	return List[Item] and List[Item]["Recycle"] or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMFRIDGE

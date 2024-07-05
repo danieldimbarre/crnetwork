@@ -550,11 +550,11 @@ ShopItens = {
 		["Discount"] = 5
 	},
 	["backpackm"] = {
-		["Price"] = 3000,
+		["Price"] = 3500,
 		["Discount"] = 0
 	},
 	["backpackg"] = {
-		["Price"] = 4000,
+		["Price"] = 5000,
 		["Discount"] = 0
 	},
 	["weaponbox"] = {
@@ -576,6 +576,10 @@ ShopItens = {
 	["adrenalineplus"] = {
 		["Price"] = 500,
 		["Discount"] = 2
+	},
+	["washbattery"] = {
+		["Price"] = 750,
+		["Discount"] = 0
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -584,136 +588,106 @@ ShopItens = {
 RoleItens = {
 	["Free"] = {
 		{
-			["Amount"] = 1,
-			["Item"] = "toolbox"
+			["Amount"] = 1000,
+			["Item"] = "dollar"
 		},{
-			["Amount"] = 2,
-			["Item"] = "tyres"
+			["Amount"] = 1000,
+			["Item"] = "dollar"
+		},{
+			["Amount"] = 1000,
+			["Item"] = "dollar"
+		},{
+			["Amount"] = 1,
+			["Item"] = "repairkit01"
+		},{
+			["Amount"] = 1,
+			["Item"] = "repairkit02"
+		},{
+			["Amount"] = 1,
+			["Item"] = "repairkit03"
+		},{
+			["Amount"] = 1000,
+			["Item"] = "dollar"
+		},{
+			["Amount"] = 1250,
+			["Item"] = "dollar"
+		},{
+			["Amount"] = 1500,
+			["Item"] = "dollar"
+		},{
+			["Amount"] = 1750,
+			["Item"] = "dollar"
+		},{
+			["Amount"] = 1,
+			["Item"] = "medkit"
+		},{
+			["Amount"] = 3,
+			["Item"] = "bandage"
+		},{
+			["Amount"] = 3,
+			["Item"] = "analgesic"
+		},{
+			["Amount"] = 5,
+			["Item"] = "gauze"
+		},{
+			["Amount"] = 1,
+			["Item"] = "medicalkey"
+		},{
+			["Amount"] = 1,
+			["Item"] = "utilkey"
+		},{
+			["Amount"] = 3,
+			["Item"] = "toolbox"
 		},{
 			["Amount"] = 1,
 			["Item"] = "advtoolbox"
 		},{
-			["Amount"] = 2000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 3000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 4000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 5000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 6000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 7000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 8000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 9000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 10000,
-			["Item"] = "dollar"
-		},{
 			["Amount"] = 1,
-			["Item"] = "circuit"
-		},{
-			["Amount"] = 1,
-			["Item"] = "WEAPON_KATANA"
+			["Item"] = "adrenalineplus"
 		},{
 			["Amount"] = 100,
-			["Item"] = "platinum"
-		},{
-			["Amount"] = 125,
-			["Item"] = "platinum"
-		},{
-			["Amount"] = 150,
-			["Item"] = "platinum"
-		},{
-			["Amount"] = 175,
-			["Item"] = "platinum"
-		},{
-			["Amount"] = 200,
-			["Item"] = "platinum"
-		},{
-			["Amount"] = 25,
-			["Item"] = "gemstone"
-		},{
-			["Amount"] = 50,
-			["Item"] = "gemstone"
-		},{
-			["Amount"] = 75,
-			["Item"] = "gemstone"
+			["Item"] = "plastic"
 		},{
 			["Amount"] = 100,
-			["Item"] = "gemstone"
+			["Item"] = "glass"
 		},{
-			["Amount"] = 125,
-			["Item"] = "gemstone"
+			["Amount"] = 100,
+			["Item"] = "rubber"
 		},{
-			["Amount"] = 150,
-			["Item"] = "gemstone"
+			["Amount"] = 100,
+			["Item"] = "aluminum"
 		},{
-			["Amount"] = 175,
-			["Item"] = "gemstone"
+			["Amount"] = 100,
+			["Item"] = "copper"
+		},{
+			["Amount"] = 275,
+			["Item"] = "blueprint_fragment"
+		},{
+			["Amount"] = 325,
+			["Item"] = "blueprint_fragment"
+		},{
+			["Amount"] = 375,
+			["Item"] = "blueprint_fragment"
 		},{
 			["Amount"] = 1,
-			["Item"] = "sewingkit"
+			["Item"] = "television"
 		},{
 			["Amount"] = 1,
-			["Item"] = "newchars"
+			["Item"] = "safependrive"
 		},{
 			["Amount"] = 1,
-			["Item"] = "namechange"
-		},{
-			["Amount"] = 1,
-			["Item"] = "backpackp"
+			["Item"] = "goldenjug"
 		}
 	},
 	["Premium"] = {
 		{
-			["Amount"] = 1,
-			["Item"] = "circuit"
-		},{
-			["Amount"] = 2,
-			["Item"] = "toolbox"
-		},{
-			["Amount"] = 4,
-			["Item"] = "tyres"
-		},{
-			["Amount"] = 2,
-			["Item"] = "advtoolbox"
-		},{
-			["Amount"] = 1,
-			["Item"] = "treasurebox"
-		},{
-			["Amount"] = 1,
-			["Item"] = "treasurebox"
-		},{
-			["Amount"] = 1,
-			["Item"] = "treasurebox"
-		},{
-			["Amount"] = 10000,
+			["Amount"] = 2500,
 			["Item"] = "dollar"
 		},{
-			["Amount"] = 15000,
+			["Amount"] = 2750,
 			["Item"] = "dollar"
 		},{
-			["Amount"] = 20000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 25000,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 1,
-			["Item"] = "dollar"
-		},{
-			["Amount"] = 1,
+			["Amount"] = 3000,
 			["Item"] = "dollar"
 		},{
 			["Amount"] = 1,
@@ -728,41 +702,74 @@ RoleItens = {
 			["Amount"] = 1,
 			["Item"] = "repairkit04"
 		},{
-			["Amount"] = 275,
-			["Item"] = "platinum"
+			["Amount"] = 3,
+			["Item"] = "toolbox"
 		},{
-			["Amount"] = 300,
-			["Item"] = "platinum"
+			["Amount"] = 3,
+			["Item"] = "advtoolbox"
 		},{
-			["Amount"] = 325,
-			["Item"] = "platinum"
+			["Amount"] = 2500,
+			["Item"] = "dollar"
 		},{
-			["Amount"] = 200,
-			["Item"] = "gemstone"
+			["Amount"] = 2750,
+			["Item"] = "dollar"
+		},{
+			["Amount"] = 3000,
+			["Item"] = "dollar"
+		},{
+			["Amount"] = 1,
+			["Item"] = "backpackp"
+		},{
+			["Amount"] = 3,
+			["Item"] = "adrenalineplus"
+		},{
+			["Amount"] = 3,
+			["Item"] = "diagram"
+		},{
+			["Amount"] = 3,
+			["Item"] = "diagram"
 		},{
 			["Amount"] = 225,
-			["Item"] = "gemstone"
+			["Item"] = "plastic"
 		},{
-			["Amount"] = 250,
-			["Item"] = "gemstone"
+			["Amount"] = 225,
+			["Item"] = "glass"
 		},{
-			["Amount"] = 275,
-			["Item"] = "gemstone"
+			["Amount"] = 225,
+			["Item"] = "rubber"
+		},{
+			["Amount"] = 225,
+			["Item"] = "aluminum"
+		},{
+			["Amount"] = 225,
+			["Item"] = "copper"
+		},{
+			["Amount"] = 625,
+			["Item"] = "blueprint_fragment"
+		},{
+			["Amount"] = 725,
+			["Item"] = "blueprint_fragment"
+		},{
+			["Amount"] = 825,
+			["Item"] = "blueprint_fragment"
+		},{
+			["Amount"] = 928,
+			["Item"] = "blueprint_fragment"
 		},{
 			["Amount"] = 1,
-			["Item"] = "newchars"
+			["Item"] = "goldenleopard"
 		},{
 			["Amount"] = 1,
-			["Item"] = "sewingkit"
+			["Item"] = "goldenlion"
 		},{
 			["Amount"] = 1,
-			["Item"] = "pickaxeplus"
+			["Item"] = "blueprint_bench"
 		},{
 			["Amount"] = 1,
-			["Item"] = "namechange"
+			["Item"] = "goldenjug"
 		},{
 			["Amount"] = 1,
-			["Item"] = "backpackg"
+			["Item"] = "moneywash"
 		}
 	}
 }

@@ -29,14 +29,14 @@ AddEventHandler("paramedic:Adrenaline",function(Entitys)
 		if not Adrenaline and not AdrenalinePlus then
 			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("adrenaline").."</b>.","amarelo",5000)
 		else
-			if Adrenaline and vRP.TakeItem(Passport,"adrenaline") then
+			if AdrenalinePlus and vRP.TakeItem(Passport,"adrenalineplus") then
+				vSURVIVAL.UpdateCrawl(Entitys,115)
+			elseif Adrenaline and vRP.TakeItem(Passport,"adrenaline") then
 				if vSURVIVAL.CheckCrawl(Entitys) then
 					vSURVIVAL.UpdateCrawl(Entitys,115)
 				else
 					TriggerClientEvent("Notify",source,"Adrenalina","Os batimentos cardiados não podem ser acelerados no momento.","amarelo",5000)
 				end
-			elseif AdrenalinePlus and vRP.TakeItem(Passport,"adrenalineplus") then
-				vSURVIVAL.UpdateCrawlPlus(Entitys,115)
 			end
 		end
 	end

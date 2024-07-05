@@ -39,13 +39,13 @@ function Creative.Function(Title,Message)
 		return false
 	end
 
-	SendNUIMessage({ name = "Open", payload = { Title, Message } })
+	SendNUIMessage({ Action = "Open", Payload = { Title, Message } })
 	Seconds = GetGameTimer() + 15000
 	Active = true
 
 	while Active do
 		if GetGameTimer() >= Seconds then
-			SendNUIMessage({ name = "Close" })
+			SendNUIMessage({ Action = "Close" })
 			Results = false
 			Active = false
 		end
@@ -60,7 +60,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("Y",function()
 	if Active then
-		SendNUIMessage({ name = "Y" })
+		SendNUIMessage({ Action = "Y" })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("U",function()
 	if Active then
-		SendNUIMessage({ name = "U" })
+		SendNUIMessage({ Action = "U" })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

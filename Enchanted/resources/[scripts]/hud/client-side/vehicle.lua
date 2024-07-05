@@ -117,37 +117,37 @@ CreateThread(function()
 				end
 
 				if ActualVehicle ~= Vehicle then
-					SendNUIMessage({ name = "Vehicle", payload = true })
+					SendNUIMessage({ Action = "Vehicle", Payload = true })
 					ActualVehicle = Vehicle
 				end
 
 				if VEngineHealth ~= EngineHealth then
-					SendNUIMessage({ name = "EngineHealth", payload = VEngineHealth })
+					SendNUIMessage({ Action = "EngineHealth", Payload = VEngineHealth })
 					VEngineHealth = EngineHealth
 				end
 
 				if Locked ~= VLocked then
-					SendNUIMessage({ name = "Locked", payload = VLocked })
+					SendNUIMessage({ Action = "Locked", Payload = VLocked })
 					Locked = VLocked
 				end
 
 				if LocalPlayer["state"]["Nitro"] then
-					SendNUIMessage({ name = "Nitro", payload = NitroFuel })
+					SendNUIMessage({ Action = "Nitro", Payload = NitroFuel })
 					Nitro = NitroFuel
 				else
 					if (Entity(Vehicle)["state"]["Nitro"] or 0) ~= Nitro then
-						SendNUIMessage({ name = "Nitro", payload = Entity(Vehicle)["state"]["Nitro"] or 0 })
+						SendNUIMessage({ Action = "Nitro", Payload = Entity(Vehicle)["state"]["Nitro"] or 0 })
 						Nitro = Entity(Vehicle)["state"]["Nitro"] or 0
 					end
 				end
 
 				if Fuel ~= VFuel then
-					SendNUIMessage({ name = "Fuel", payload = VFuel })
+					SendNUIMessage({ Action = "Fuel", Payload = VFuel })
 					Fuel = VFuel
 				end
 
 				if Speed ~= VSpeed then
-					SendNUIMessage({ name = "Speed", payload = VSpeed })
+					SendNUIMessage({ Action = "Speed", Payload = VSpeed })
 					Speed = VSpeed
 				end
 
@@ -156,7 +156,7 @@ CreateThread(function()
 				end
 
 				if Rpm ~= VRpm then
-					SendNUIMessage({ name = "Rpm", payload = VRpm })
+					SendNUIMessage({ Action = "Rpm", Payload = VRpm })
 					Rpm = VRpm
 				end
 			else
@@ -166,16 +166,16 @@ CreateThread(function()
 
 				if ActualVehicle then
 					ActualVehicle = nil
-					SendNUIMessage({ name = "Vehicle", payload = false })
+					SendNUIMessage({ Action = "Vehicle", Payload = false })
 
 					Locked = false
-					SendNUIMessage({ name = "Locked", payload = false })
+					SendNUIMessage({ Action = "Locked", Payload = false })
 
 					Nitro = 0
-					SendNUIMessage({ name = "Nitro", payload = 0 })
+					SendNUIMessage({ Action = "Nitro", Payload = 0 })
 
 					Speed = 0
-					SendNUIMessage({ name = "Speed", payload = 0 })
+					SendNUIMessage({ Action = "Speed", Payload = 0 })
 				end
 
 				if LastSpeed ~= 0 then
@@ -349,7 +349,7 @@ CreateThread(function()
 				end
 
 				if SeatbeltLock then
-					SendNUIMessage({ name = "Seatbelt", payload = false })
+					SendNUIMessage({ Action = "Seatbelt", Payload = false })
 					SeatbeltLock = false
 				end
 
@@ -370,11 +370,11 @@ RegisterCommand("Seatbeltz",function(source)
 	if IsPedInAnyVehicle(Ped) and not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
 		if SeatbeltLock then
 			TriggerEvent("sounds:Private","beltoff",0.5)
-			SendNUIMessage({ name = "Seatbelt", payload = false })
+			SendNUIMessage({ Action = "Seatbelt", Payload = false })
 			SeatbeltLock = false
 		else
 			TriggerEvent("sounds:Private","belton",0.5)
-			SendNUIMessage({ name = "Seatbelt", payload = true })
+			SendNUIMessage({ Action = "Seatbelt", Payload = true })
 			SeatbeltLock = true
 
 			local Vehicle = GetVehiclePedIsUsing(Ped)

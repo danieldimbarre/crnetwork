@@ -17,12 +17,7 @@ server_scripts {
 }
 
 files {
-	"web-side/*",
-	"web-side/**/*"
-}
-
-exports {
-	"AddButton","SetTitle"
+	"web-side/*"
 }
 
 shared_scripts {

@@ -232,8 +232,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:RESIDUALS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:Residuals")
-AddEventHandler("player:Residuals",function(Informations)
+RegisterNetEvent("player:Residual")
+AddEventHandler("player:Residual",function(Informations)
 	if Informations then
 		if not Residuals then
 			Residuals = {}

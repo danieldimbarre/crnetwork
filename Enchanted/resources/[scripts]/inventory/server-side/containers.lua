@@ -35,7 +35,7 @@ AddEventHandler("inventory:Container",function(Number)
 						Cooldown[Number] = os.time() + 3600
 						Player(source)["state"]["Buttons"] = false
 
-						TriggerClientEvent("player:Residuals",source,"Resquício de Poeira")
+						TriggerClientEvent("player:Residual",source,"Resquício de Poeira")
 						vRP.MountContainer(Passport,"Containers:"..Number,IlegalItens,math.random(3))
 						TriggerClientEvent("chest:Open",source,"Containers:"..Number,"Custom",false,true)
 					end

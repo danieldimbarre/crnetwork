@@ -20,6 +20,30 @@ local Default = nil
 local Skinshop = {}
 local Animation = false
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- EXCLUDE
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Exclude = { "backpack" }
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- MAXVALUER
+-----------------------------------------------------------------------------------------------------------------------------------------
+local MaxValuer = {
+	["pants"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 4 },
+	["arms"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 3 },
+	["tshirt"] = { min = 1, item = 0, texture = 0, mode = "variation", id = 8 },
+	["torso"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 11 },
+	["vest"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 9 },
+	["shoes"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 6 },
+	["mask"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 1 },
+	["backpack"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 5 },
+	["hat"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 0 },
+	["glass"] = { min = 0, item = 0, texture = 0, mode = "prop", id = 1 },
+	["ear"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 2 },
+	["watch"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 6 },
+	["bracelet"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 7 },
+	["accessory"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 7 },
+	["decals"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 10 }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Locations = {
@@ -128,26 +152,9 @@ end)
 -- MAXVALUES
 -----------------------------------------------------------------------------------------------------------------------------------------
 function MaxValues()
-	local MaxValues = {
-		["pants"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 4 },
-		["arms"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 3 },
-		["tshirt"] = { min = 1, item = 0, texture = 0, mode = "variation", id = 8 },
-		["torso"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 11 },
-		["vest"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 9 },
-		["shoes"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 6 },
-		["mask"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 1 },
-		["backpack"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 5 },
-		["hat"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 0 },
-		["glass"] = { min = 0, item = 0, texture = 0, mode = "prop", id = 1 },
-		["ear"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 2 },
-		["watch"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 6 },
-		["bracelet"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 7 },
-		["accessory"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 7 },
-		["decals"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 10 }
-	}
-
 	local Ped = PlayerPedId()
-	for Index,v in pairs(MaxValues) do
+	local NewValues = MaxValuer
+	for Index,v in pairs(NewValues) do
 		if v["mode"] == "variation" then
 			v["item"] = GetNumberOfPedDrawableVariations(Ped,v["id"]) - 1
 			v["texture"] = GetNumberOfPedTextureVariations(Ped,v["id"],GetPedDrawableVariation(Ped,v["id"])) - 1
@@ -161,18 +168,19 @@ function MaxValues()
 		end
 	end
 
-	return MaxValues
+	return NewValues
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENSKINSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 function OpenSkinshop()
 	Lasted = Skinshop
+	SetNuiFocus(true,true)
+	TriggerEvent("hud:Active",false)
 	LocalPlayer["state"]:set("Hoverfy",false,false)
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
-	SendNUIMessage({ name = "open", payload = { Current = Skinshop, Max = MaxValues() } })
+	SendNUIMessage({ Action = "Open", Payload = { Skinshop,MaxValues(),Exclude } })
 
-	SetNuiFocus(true,true)
 	CameraActive()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -272,11 +280,26 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("update",function(Data,Callback)
-	Skinshop = Data
+RegisterNUICallback("Update",function(Data,Callback)
+	Skinshop = Data["clothes"]
 	exports["skinshop"]:Apply()
 
-	Callback(MaxValues())
+	local Texture = 0
+	local Ped = PlayerPedId()
+	local Index = Data["index"]
+	local MaxValue = MaxValuer[Index]
+
+	if MaxValue["mode"] == "variation" then
+		Texture = GetNumberOfPedTextureVariations(Ped,MaxValue["id"],GetPedDrawableVariation(Ped,MaxValue["id"])) - 1
+	elseif MaxValue["mode"] == "prop" then
+		Texture = GetNumberOfPedPropTextureVariations(Ped,MaxValue["id"],GetPedPropIndex(Ped,MaxValue["id"])) - 1
+	end
+
+	if Texture < 0 then
+		Texture = 0
+	end
+
+	Callback(Texture)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETUP
@@ -310,6 +333,7 @@ RegisterNUICallback("Save",function(Data,Callback)
 	end
 
 	LocalPlayer["state"]:set("Hoverfy",true,false)
+	TriggerEvent("hud:Active",true)
 	SetNuiFocus(false,false)
 	vSERVER.Update(Skinshop)
 	vRP.Destroy()
@@ -329,6 +353,7 @@ RegisterNUICallback("Reset",function(Data,Callback)
 
 	LocalPlayer["state"]:set("Hoverfy",true,false)
 	exports["skinshop"]:Apply(Lasted)
+	TriggerEvent("hud:Active",true)
 	SetNuiFocus(false,false)
 	Skinshop = Lasted
 	vRP.Destroy()
@@ -342,16 +367,16 @@ end)
 RegisterNUICallback("Rotate",function(Data,Callback)
 	local Ped = PlayerPedId()
 
-	if Data == "Left" then
+	if Data["direction"] == "Left" then
 		SetEntityHeading(Ped,GetEntityHeading(Ped) - 5)
-	elseif Data == "Right" then
+	elseif Data["direction"] == "Right" then
 		SetEntityHeading(Ped,GetEntityHeading(Ped) + 5)
-	elseif Data == "Top" then
+	elseif Data["direction"] == "Top" then
 		local Coords = GetCamCoord(Camera)
 		if Coords["z"] + 0.05 <= Default + 0.50 then
 			SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] + 0.05)
 		end
-	elseif Data == "Bottom" then
+	elseif Data["direction"] == "Bottom" then
 		local Coords = GetCamCoord(Camera)
 		if Coords["z"] - 0.05 >= Default - 0.50 then
 			SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] - 0.05)
@@ -535,4 +560,30 @@ AddEventHandler("skinshop:setAccessory",function()
 	else
 		SetPedComponentVariation(Ped,7,Skinshop["accessory"]["item"],Skinshop["accessory"]["texture"],GetPedPaletteVariation(Ped,7))
 	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SKINSHOP:BACKPACK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("skinshop:Backpack")
+AddEventHandler("skinshop:Backpack",function(Table)
+	local Ped = PlayerPedId()
+	if Table["mp_f_freemode_01"] and GetEntityModel(Ped) == GetHashKey("mp_f_freemode_01") then
+		Skinshop["backpack"]["item"] = Table["mp_f_freemode_01"]["Model"]
+		Skinshop["backpack"]["texture"] = Table["mp_f_freemode_01"]["Texture"]
+	elseif Table["mp_m_freemode_01"] and GetEntityModel(Ped) == GetHashKey("mp_m_freemode_01") then
+		Skinshop["backpack"]["item"] = Table["mp_m_freemode_01"]["Model"]
+		Skinshop["backpack"]["texture"] = Table["mp_m_freemode_01"]["Texture"]
+	end
+
+	SetPedComponentVariation(Ped,5,Skinshop["backpack"]["item"],Skinshop["backpack"]["texture"],GetPedPaletteVariation(Ped,5))
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SKINSHOP:BACKPACKREMOVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("skinshop:BackpackRemove")
+AddEventHandler("skinshop:BackpackRemove",function()
+	local Ped = PlayerPedId()
+	Skinshop["backpack"]["item"] = -1
+	Skinshop["backpack"]["texture"] = 0
+	SetPedComponentVariation(Ped,5,Skinshop["backpack"]["item"],Skinshop["backpack"]["texture"],GetPedPaletteVariation(Ped,5))
 end)

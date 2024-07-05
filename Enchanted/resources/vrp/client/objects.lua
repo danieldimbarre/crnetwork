@@ -300,19 +300,19 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 				}
 			}
 		})
-	elseif Mode == "LootSands" then
-		exports["target"]:AddBoxZone("Objects:"..Number,vec3(Coords[1],Coords[2],Coords[3] + Weight),0.75,0.75,{
+	elseif Mode == "LootCode" then
+		exports["target"]:AddBoxZone("Objects:"..Number,vec3(Coords[1],Coords[2],Coords[3] + 1.0),1.0,1.0,{
 			name = "Objects:"..Number,
 			heading = Coords[4] or 0.0,
-			minZ = Coords[3] - 0.05,
-			maxZ = Coords[3] + 1.0
+			minZ = Coords[3] - 0.0,
+			maxZ = Coords[3] + 1.75
 		},{
 			shop = Number,
 			Distance = 1.5,
 			options = {
 				{
 					event = "inventory:Loot",
-					label = "Pegar",
+					label = "Abrir",
 					tunnel = "server",
 					service = Mode
 				}

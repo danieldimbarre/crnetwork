@@ -64,12 +64,12 @@ end)
 AddEventHandler("plants:Informations",function(Number)
 	local Informations = vSERVER.Informations(Number)
 	if Informations then
-		exports["dynamic"]:AddButton("Germinação","Tipo de Frutos: <b>"..ItemName(Informations[3]).."</b>","","",false,false)
+		exports["dynamic"]:AddButton("Germinação","Tipo de Frutos: <rare>"..ItemName(Informations[3]).."</rare>","","",false,false)
 		exports["dynamic"]:AddButton("Fototropismo",Informations[1],"plants:Collect",Number,false,true)
 		exports["dynamic"]:AddButton("Fertilização",Informations[2],"plants:Cloning",Number,false,true)
-		exports["dynamic"]:AddButton("Hidratação","Fortificação do Adubo: <b>"..math.floor(Informations[4] * 100).."%</b>","plants:Water",Number,false,true)
+		exports["dynamic"]:AddButton("Hidratação","Fortificação do Adubo: <epic>"..math.floor(Informations[4] * 100).."%</epic>","plants:Water",Number,false,true)
 
-		exports["dynamic"]:openMenu()
+		exports["dynamic"]:Open()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

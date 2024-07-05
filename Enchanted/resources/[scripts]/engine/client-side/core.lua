@@ -203,33 +203,33 @@ AddEventHandler("engine:Vehrify",function(Entitys)
 	local Transmission = GetVehicleMod(Vehicle,13)
 
 	if Engine ~= -1 then
-		exports["dynamic"]:AddButton("Motor","Modificação atual instalada: <yellow>"..(Engine + 1).."</yellow> / "..GetNumVehicleMods(Vehicle,11),"","",false,false)
+		exports["dynamic"]:AddButton("Motor","Modificação atual instalada: <rare>"..(Engine + 1).."</rare> / "..GetNumVehicleMods(Vehicle,11),"","",false,false)
 	end
 
 	if Brake ~= -1 then
-		exports["dynamic"]:AddButton("Freios","Modificação atual instalada: <yellow>"..(Brake + 1).."</yellow> / "..GetNumVehicleMods(Vehicle,12),"","",false,false)
+		exports["dynamic"]:AddButton("Freios","Modificação atual instalada: <rare>"..(Brake + 1).."</rare> / "..GetNumVehicleMods(Vehicle,12),"","",false,false)
 	end
 
 	if Transmission ~= -1 then
-		exports["dynamic"]:AddButton("Transmissão","Modificação atual instalada: <yellow>"..(Transmission + 1).."</yellow> / "..GetNumVehicleMods(Vehicle,13),"","",false,false)
+		exports["dynamic"]:AddButton("Transmissão","Modificação atual instalada: <rare>"..(Transmission + 1).."</rare> / "..GetNumVehicleMods(Vehicle,13),"","",false,false)
 	end
 
 	if Suspension ~= -1 then
-		exports["dynamic"]:AddButton("Suspensão","Modificação atual instalada: <yellow>"..(Suspension + 1).."</yellow> / "..GetNumVehicleMods(Vehicle,15),"","",false,false)
+		exports["dynamic"]:AddButton("Suspensão","Modificação atual instalada: <rare>"..(Suspension + 1).."</rare> / "..GetNumVehicleMods(Vehicle,15),"","",false,false)
 	end
 
 	if Shielding ~= -1 then
-		exports["dynamic"]:AddButton("Blindagem","Modificação atual instalada: <yellow>"..(Shielding + 1).."</yellow> / "..GetNumVehicleMods(Vehicle,16),"","",false,false)
+		exports["dynamic"]:AddButton("Blindagem","Modificação atual instalada: <rare>"..(Shielding + 1).."</rare> / "..GetNumVehicleMods(Vehicle,16),"","",false,false)
 	end
 
 	local Force = GetVehicleEngineHealth(Vehicle) / 10
-	exports["dynamic"]:AddButton("Potência","Potência do motor se encontra em <yellow>"..parseInt(Force).."%</yellow>.","","",false,false)
+	exports["dynamic"]:AddButton("Potência","Potência do motor se encontra em <rare>"..parseInt(Force).."%</rare>.","","",false,false)
 
 	local Body = GetVehicleBodyHealth(Vehicle) / 10
-	exports["dynamic"]:AddButton("Lataria","Qualidade da lataria se encontra em <yellow>"..parseInt(Body).."%</yellow>.","","",false,false)
+	exports["dynamic"]:AddButton("Lataria","Qualidade da lataria se encontra em <rare>"..parseInt(Body).."%</rare>.","","",false,false)
 
 	local Health = GetEntityHealth(Vehicle) / 10
-	exports["dynamic"]:AddButton("Chassi","Rigidez do chassi se encontra em <yellow>"..parseInt(Health).."%</yellow>.","","",false,false)
+	exports["dynamic"]:AddButton("Chassi","Rigidez do chassi se encontra em <rare>"..parseInt(Health).."%</rare>.","","",false,false)
 
-	exports["dynamic"]:openMenu()
+	exports["dynamic"]:Open()
 end)

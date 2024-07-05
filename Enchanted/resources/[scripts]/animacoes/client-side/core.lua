@@ -1619,8 +1619,6 @@ RegisterNetEvent("emotes")
 AddEventHandler("emotes",function(Name)
 	local Ped = PlayerPedId()
 	if animacoes[Name] and not IsPedArmed(Ped,7) and not IsPedSwimming(Ped) and GetEntityHealth(Ped) > 100 and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Cancel"] and not LocalPlayer["state"]["Handcuff"] then
-		vRP.Destroy("one")
-
 		if not IsPedInAnyVehicle(Ped) and not animacoes[Name]["cars"] then
 			if animacoes[Name]["altura"] and not animacoes[Name]["anim"] then
 				vRP.CreateObjects("","",animacoes[Name]["prop"],animacoes[Name]["flag"],animacoes[Name]["mao"],animacoes[Name]["altura"],animacoes[Name]["pos1"],animacoes[Name]["pos2"],animacoes[Name]["pos3"],animacoes[Name]["pos4"],animacoes[Name]["pos5"])

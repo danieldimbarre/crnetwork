@@ -51,7 +51,7 @@ function Keyboard(Data)
 	Progress = true
 	SetNuiFocus(true,true)
 	SetCursorLocation(0.5,0.5)
-	SendNUIMessage({ name = "Open", payload = Data })
+	SendNUIMessage({ Action = "Open", Payload = Data })
 
 	while Progress do
 		Wait(0)

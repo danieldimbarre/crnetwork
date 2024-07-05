@@ -112,17 +112,24 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
 	NetworkSetFriendlyFireOption(true)
 	SetCanAttackFriendly(Ped,true,false)
 
-	ReloadCharacter()
 	SetTimeout(10000,function()
+		ReloadCharacter()
 		SetEntityInvincible(Ped,false)
 		LocalPlayer["state"]:set("Cyndaquil",false,false)
 
 		if Inventory then
-			for _,v in pairs(Inventory) do
+			for Slot,v in pairs(Inventory) do
 				local Animation = ItemAnim(v["item"])
 
 				if Animation then
 					tvRP.PersistentBlock(v["item"],Animation)
+				end
+
+				if Slot == "104" then
+					local Skinshop = ItemSkinshop(v["item"])
+					if Skinshop then
+						TriggerEvent("skinshop:Backpack",Skinshop)
+					end
 				end
 			end
 		end

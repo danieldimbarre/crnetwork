@@ -32,6 +32,7 @@ Trunks = {}
 Objects = {}
 Healths = {}
 SaveObjects = {}
+RobberyActive = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- USERS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -192,26 +193,16 @@ Loots = {
 			{ ["Item"] = "lockpick", ["Chance"] = 50, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "handcuff", ["Chance"] = 15, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "hood", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_CROWBAR", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_ATTACH_GRIP", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_FLASHLIGHT", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_PISTOL_AMMO", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_MUSKET", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_WRENCH", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_GOLFCLUB", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_BAT", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_ATTACH_MAGAZINE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_MACHETE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_weaponparts", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_MUSKET_AMMO", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_smgbody", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_HEAVYPISTOL", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_KNUCKLE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_ATTACH_FLASHLIGHT", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_STONE_HATCHET", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_SWITCHBLADE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_riflebody", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_HATCHET", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_PISTOL", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_SNSPISTOL_MK2", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_ATTACH_SILENCER", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
@@ -227,11 +218,7 @@ Loots = {
 			{ ["Item"] = "blueprint_WEAPON_SHOTGUN_AMMO", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_RIFLE_AMMO", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_SMG_AMMO", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_HAMMER", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_COMBATPISTOL", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_NIGHTSTICK", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_BATTLEAXE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_POOLCUE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_VINTAGEPISTOL", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 }
 		}
 	},
@@ -317,13 +304,11 @@ Loots = {
 			{ ["Item"] = "blueprint_batteryaaplus", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_rubber", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_silverchain", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_CROWBAR", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_ATTACH_GRIP", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_SAWNOFFSHOTGUN", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_saline", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_glass", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_MICROSMG", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_FLASHLIGHT", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_HEAVYRIFLE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_PISTOL_AMMO", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_acetone", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
@@ -332,15 +317,11 @@ Loots = {
 			{ ["Item"] = "blueprint_electroniccomponents", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_gauze", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_MUSKET", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_WRENCH", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_BULLPUPRIFLE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_GOLFCLUB", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_toothpaste", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_BAT", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_ATTACH_MAGAZINE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_videocard", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_screws", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_MACHETE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_ASSAULTRIFLE_MK2", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_roadsigns", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_processorfan", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
@@ -354,15 +335,11 @@ Loots = {
 			{ ["Item"] = "blueprint_powercable", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_batteryaa", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_CARBINERIFLE_MK2", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_KNUCKLE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_ATTACH_FLASHLIGHT", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_processor", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_STONE_HATCHET", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_insulatingtape", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_SWITCHBLADE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_safependrive", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_riflebody", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_HATCHET", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_PISTOL", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_aluminum", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_SNSPISTOL_MK2", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
@@ -402,11 +379,7 @@ Loots = {
 			{ ["Item"] = "blueprint_WEAPON_SHOTGUN_AMMO", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_RIFLE_AMMO", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_SMG_AMMO", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_HAMMER", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_COMBATPISTOL", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_NIGHTSTICK", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_BATTLEAXE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "blueprint_WEAPON_POOLCUE", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_ssddrive", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_goldnecklace", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blueprint_WEAPON_VINTAGEPISTOL", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
@@ -418,11 +391,12 @@ Loots = {
 			{ ["Item"] = "blueprint_horsefigurine", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 }
 		}
 	},
-	["LootSands"] = {
+	["LootCode"] = {
 		["Players"] = {},
+		["Code"] = "5221",
 		["Cooldown"] = 3600,
 		["List"] = {
-			{ ["Item"] = "sand", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 1 }
+			{ ["Item"] = "bandage", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 1 }
 		}
 	}
 }
@@ -529,7 +503,7 @@ function Creative.Blueprint()
 
 		local Secondary = {}
 		for Item,v in pairs(Users["Blueprints"][Passport]) do
-			if not ItemExist(Item) and Users["Blueprints"][Passport][Item] then
+			if (not ItemExist(Item) or not ItemExist("blueprint_"..Item)) and Users["Blueprints"][Passport][Item] then
 				Users["Blueprints"][Passport][Item] = nil
 			else
 				local Calculated = CountTable(Secondary) + 1
@@ -921,19 +895,28 @@ AddEventHandler("inventory:Cancel",function()
 	if Passport then
 		if Active[Passport] then
 			Active[Passport] = nil
-			vGARAGE.UpdateHotwired(source,false)
+			vGARAGE.StopHotwired(source)
+			TriggerClientEvent("Progress",source,"Cancelando",1000)
+		end
+
+		if Player(source)["state"]["Buttons"] then
 			Player(source)["state"]["Buttons"] = false
-			TriggerClientEvent("Progress",source,"Cancelando",100)
 		end
 
 		if Carry[Passport] then
 			if vRP.Passport(Carry[Passport]) then
 				TriggerClientEvent("inventory:Carry",Carry[Passport],nil,"Detach")
-				Player(Carry[Passport])["state"]["Carry"] = false
 				vRPC.Destroy(Carry[Passport])
+
+				if Player(Carry[Passport])["state"]["Carry"] then
+					Player(Carry[Passport])["state"]["Carry"] = false
+				end
 			end
 
-			Player(source)["state"]["Carry"] = false
+			if Player(source)["state"]["Carry"] then
+				Player(source)["state"]["Carry"] = false
+			end
+
 			Carry[Passport] = nil
 		end
 
@@ -941,7 +924,16 @@ AddEventHandler("inventory:Cancel",function()
 			TriggerClientEvent("inventory:Camera",source)
 		end
 
-		vRP.FreezePlayer(source,false)
+		if RobberyActive[Passport] then
+			TriggerEvent("inventory:RobberySingleActive",RobberyActive[Passport])
+			RobberyActive[Passport] = nil
+		end
+
+		local Ped = GetPlayerPed(source)
+		if DoesEntityExist(Ped) and IsEntityPositionFrozen(Ped) then
+			FreezeEntityPosition(Ped,false)
+		end
+
 		vRPC.Destroy(source)
 	end
 end)
@@ -1018,7 +1010,13 @@ function Creative.PreventWeapons(Item,Ammo)
 				Users["Ammos"][Passport][Ammunation] = nil
 			end
 		end
+
+		if ItemTypeCheck(Item,"Armamento") and vRP.ConsultItem(Passport,Item) then
+			return true
+		end
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:TRASHER
@@ -1141,7 +1139,6 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 			Consult = vRP.ConsultItem(Passport,Loots[Box]["Item"])
 			if not Consult then
 				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName(Loots[Box]["Item"]).."</b>.","amarelo",5000)
-
 				return false
 			end
 		end
@@ -1149,7 +1146,14 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 		if Loots[Box]["Players"][Number][Passport] then
 			if os.time() <= Loots[Box]["Players"][Number][Passport] then
 				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Loots[Box]["Players"][Number][Passport] - os.time())..".","amarelo",5000)
+				return false
+			end
+		end
 
+		if Loots[Box]["Code"] then
+			local Keyboard = vKEYBOARD.Password(source,"Senha")
+			if Keyboard and Keyboard[1] ~= Loots[Box]["Code"] then
+				TriggerClientEvent("Notify",source,"Acesso Restrito","Senha incorreta.","vermelho",5000)
 				return false
 			end
 		end
@@ -1272,7 +1276,7 @@ AddEventHandler("inventory:StealTrunk",function(Entity)
 					Active[Passport] = os.time() + 20
 					Player(source)["state"]["Buttons"] = true
 					TriggerClientEvent("Progress",source,"Vasculhando",20000)
-					TriggerClientEvent("player:Residuals",source,"Resíduo de Ferro")
+					TriggerClientEvent("player:Residual",source,"Resíduo de Ferro")
 
 					local Players = vRPC.Players(source)
 					for _,v in pairs(Players) do
@@ -1429,7 +1433,7 @@ AddEventHandler("inventory:Products",function(Service)
 					end
 
 					if Products[Service]["Residual"] then
-						TriggerClientEvent("player:Residuals",source,Products[Service]["Residual"])
+						TriggerClientEvent("player:Residual",source,Products[Service]["Residual"])
 					end
 				end
 			end
@@ -1749,11 +1753,19 @@ AddEventHandler("Disconnect",function(Passport)
 	if Carry[Passport] then
 		if vRP.Passport(Carry[Passport]) then
 			TriggerClientEvent("inventory:Carry",Carry[Passport],nil,"Detach")
-			Player(Carry[Passport])["state"]["Carry"] = false
 			vRPC.Destroy(Carry[Passport])
+
+			if Player(Carry[Passport])["state"]["Carry"] then
+				Player(Carry[Passport])["state"]["Carry"] = false
+			end
 		end
 
 		Carry[Passport] = nil
+	end
+
+	if RobberyActive[Passport] then
+		TriggerEvent("inventory:RobberySingleActive",RobberyActive[Passport])
+		RobberyActive[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

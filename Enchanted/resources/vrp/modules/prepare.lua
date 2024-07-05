@@ -22,9 +22,7 @@ vRP.Prepare("characters/NewCharacter","INSERT INTO characters(License,Name,Lastn
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("characters/Phone","SELECT id FROM characters WHERE Phone = @Phone")
 vRP.Prepare("smartphone/Phone","SELECT * FROM phone_phones WHERE owner_id = @Passport")
-vRP.Prepare("characters/NewPhone","UPDATE characters SET Phone = @Phone WHERE id = @Passport")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -171,6 +169,7 @@ vRP.Prepare("summerz/Transactions","DELETE FROM transactions WHERE UNIX_TIMESTAM
 vRP.Prepare("summerz/Premium","UPDATE accounts SET Premium = '0', Level = '0' WHERE UNIX_TIMESTAMP() >= Premium")
 vRP.Prepare("summerz/Playerdata","DELETE FROM playerdata WHERE Information = '[]' OR Information = '{}' OR Information = 'null'")
 vRP.Prepare("summerz/Entitydata","DELETE FROM entitydata WHERE Information = '[]' OR Information = '{}' OR Information = 'null'")
+vRP.Prepare("summerz/Phone","DELETE FROM phone_message_messages WHERE timestamp < DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 7 DAY)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RACES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -182,6 +181,7 @@ vRP.Prepare("Races/Update","UPDATE races SET Points = @Points, Vehicle = @Vehicl
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
+	vRP.Query("summerz/Phone")
 	vRP.Query("summerz/Premium")
 	vRP.Query("summerz/Playerdata")
 	vRP.Query("summerz/Entitydata")

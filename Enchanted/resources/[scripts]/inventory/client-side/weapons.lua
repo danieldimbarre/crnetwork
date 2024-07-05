@@ -335,8 +335,10 @@ AddEventHandler("inventory:CleanWeapons",function()
 		local Ped = PlayerPedId()
 		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
 
-		TriggerEvent("inventory:CreateWeapon",Weapon)
-		vSERVER.PreventWeapons(Weapon,Ammo)
+		if vSERVER.PreventWeapons(Weapon,Ammo) then
+			TriggerEvent("inventory:CreateWeapon",Weapon)
+		end
+
 		TriggerEvent("hud:Weapon",false)
 		RemoveAllPedWeapons(Ped,true)
 		TriggerEvent("Weapon","")

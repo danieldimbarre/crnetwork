@@ -71,9 +71,12 @@ Use = {
 		TriggerClientEvent("inventory:Close",source)
 
 		local Keyboard = vKEYBOARD.Options(source,"Frequência",{ "Ballas","Vagos","Families" })
-		if Keyboard and not exports["radio"]:Exist(Keyboard[1]) and vRP.TakeItem(Passport,Full,1,false,Slot) then
-			TriggerClientEvent("inventory:Notify",source,"Sucesso","Frequência adicionada.","verde")
-			exports["radio"]:Add(Keyboard[1],Keyboard[2])
+		if Keyboard then
+			local Frequency = sanitizeString(Keyboard[1],"0123456789")
+			if not exports["radio"]:Exist(Frequency) and string.len(Frequency) == 3 then
+				TriggerClientEvent("inventory:Notify",source,"Sucesso","Frequência adicionada.","verde")
+				exports["radio"]:Add(Frequency,Keyboard[2])
+			end
 		end
 	end,
 
@@ -201,7 +204,7 @@ Use = {
 					Player(source)["state"]["Buttons"] = false
 
 					if vRP.TakeItem(Passport,Full,1,true,Slot) then
-						TriggerClientEvent("player:Residuals",source)
+						TriggerClientEvent("player:Residual",source)
 					end
 				end
 
@@ -819,7 +822,7 @@ Use = {
 
 					if vRP.Task(source,10,10000) then
 						vGARAGE.RegisterDecors(source,Vehicle)
-						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio")
+						TriggerClientEvent("player:Residual",source,"Resíduo de Alumínio")
 
 						exports["vrp"]:CallPolice({
 							["Source"] = source,
@@ -853,7 +856,7 @@ Use = {
 						Active[Passport] = os.time() + 15
 						vGARAGE.RegisterDecors(source,Vehicle)
 						TriggerClientEvent("Progress",source,"Destravando",15000)
-						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio")
+						TriggerClientEvent("player:Residual",source,"Resíduo de Alumínio")
 
 						if Dismantle[Plate] then
 							NotifyTitle = "Desmanche"
@@ -942,7 +945,7 @@ Use = {
 
 					if vRP.Task(source,10,10000) then
 						vGARAGE.RegisterDecors(source,Vehicle)
-						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio")
+						TriggerClientEvent("player:Residual",source,"Resíduo de Alumínio")
 
 						exports["vrp"]:CallPolice({
 							["Source"] = source,
@@ -976,7 +979,7 @@ Use = {
 						Active[Passport] = os.time() + 15
 						vGARAGE.RegisterDecors(source,Vehicle)
 						TriggerClientEvent("Progress",source,"Destravando",15000)
-						TriggerClientEvent("player:Residuals",source,"Resíduo de Alumínio")
+						TriggerClientEvent("player:Residual",source,"Resíduo de Alumínio")
 
 						if Dismantle[Plate] then
 							NotifyTitle = "Desmanche"

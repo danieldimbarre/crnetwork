@@ -70,50 +70,6 @@ Location = {
 		["Mode"] = "PawnShop",
 		["Circle"] = 0.5
 	},{
-		["Coords"] = vec3(1692.27,3760.91,34.69),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(253.80,-50.47,69.94),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(842.54,-1035.25,28.19),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(-331.67,6084.86,31.46),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(-662.37,-933.58,21.82),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(-1304.12,-394.56,36.7),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(-1118.98,2699.73,18.55),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(2567.98,292.62,108.73),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(-3173.51,1088.35,20.84),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(22.53,-1105.52,29.79),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
-		["Coords"] = vec3(810.22,-2158.99,29.62),
-		["Mode"] = "Ammunation",
-		["Circle"] = 0.5
-	},{
 		["Coords"] = vec3(-172.89,6381.32,31.48),
 		["Mode"] = "Pharmacy",
 		["Circle"] = 0.5
@@ -398,96 +354,6 @@ List = {
 				["Required"] = {
 					["saline"] = 1,
 					["dollar"] = 65
-				}
-			}
-		}
-	},
-	["Ammunation"] = {
-		["List"] = {
-			["WEAPON_HATCHET"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["woodlog"] = 1,
-					["aluminum"] = 75
-				}
-			},
-			["WEAPON_BAT"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["woodlog"] = 1,
-					["aluminum"] = 75
-				}
-			},
-			["WEAPON_BATTLEAXE"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["woodlog"] = 1,
-					["aluminum"] = 75
-				}
-			},
-			["WEAPON_CROWBAR"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["aluminum"] = 75
-				}
-			},
-			["WEAPON_SWITCHBLADE"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["aluminum"] = 75
-				}
-			},
-			["WEAPON_GOLFCLUB"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["woodlog"] = 10,
-					["aluminum"] = 65
-				}
-			},
-			["WEAPON_HAMMER"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["woodlog"] = 1,
-					["aluminum"] = 75
-				}
-			},
-			["WEAPON_MACHETE"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["aluminum"] = 75
-				}
-			},
-			["WEAPON_POOLCUE"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["plastic"] = 10,
-					["aluminum"] = 70
-				}
-			},
-			["WEAPON_STONE_HATCHET"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["woodlog"] = 5,
-					["aluminum"] = 70
-				}
-			},
-			["WEAPON_WRENCH"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["aluminum"] = 75
-				}
-			},
-			["WEAPON_KNUCKLE"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["aluminum"] = 75
-				}
-			},
-			["WEAPON_FLASHLIGHT"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["plastic"] = 10,
-					["aluminum"] = 70
 				}
 			}
 		}
@@ -1089,12 +955,6 @@ List = {
 					["blueprint_fragment"] = 66125
 				}
 			},
-			["blueprint_WEAPON_CROWBAR"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
 			["blueprint_ATTACH_GRIP"] = {
 				["Amount"] = 1,
 				["Required"] = {
@@ -1111,12 +971,6 @@ List = {
 				["Amount"] = 1,
 				["Required"] = {
 					["blueprint_fragment"] = 66125
-				}
-			},
-			["blueprint_WEAPON_FLASHLIGHT"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 2625
 				}
 			},
 			["blueprint_WEAPON_HEAVYRIFLE"] = {
@@ -1137,40 +991,16 @@ List = {
 					["blueprint_fragment"] = 16125
 				}
 			},
-			["blueprint_WEAPON_WRENCH"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
 			["blueprint_WEAPON_BULLPUPRIFLE"] = {
 				["Amount"] = 1,
 				["Required"] = {
 					["blueprint_fragment"] = 113625
 				}
 			},
-			["blueprint_WEAPON_GOLFCLUB"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
-			["blueprint_WEAPON_BAT"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
 			["blueprint_ATTACH_MAGAZINE"] = {
 				["Amount"] = 1,
 				["Required"] = {
 					["blueprint_fragment"] = 11125
-				}
-			},
-			["blueprint_WEAPON_MACHETE"] ={
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
 				}
 			},
 			["blueprint_WEAPON_ASSAULTRIFLE_MK2"] = {
@@ -1191,34 +1021,10 @@ List = {
 					["blueprint_fragment"] = 121125
 				}
 			},
-			["blueprint_WEAPON_KNUCKLE"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
 			["blueprint_ATTACH_FLASHLIGHT"] = {
 				["Amount"] = 1,
 				["Required"] = {
 					["blueprint_fragment"] = 10625
-				}
-			},
-			["blueprint_WEAPON_STONE_HATCHET"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
-			["blueprint_WEAPON_SWITCHBLADE"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
-			["blueprint_WEAPON_HATCHET"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
 				}
 			},
 			["blueprint_WEAPON_PISTOL"] = {
@@ -1359,34 +1165,10 @@ List = {
 					["blueprint_fragment"] = 6125
 				}
 			},
-			["blueprint_WEAPON_HAMMER"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
 			["blueprint_WEAPON_COMBATPISTOL"] = {
 				["Amount"] = 1,
 				["Required"] = {
 					["blueprint_fragment"] = 31125
-				}
-			},
-			["blueprint_WEAPON_NIGHTSTICK"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
-			["blueprint_WEAPON_BATTLEAXE"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
-				}
-			},
-			["blueprint_WEAPON_POOLCUE"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["blueprint_fragment"] = 4875
 				}
 			},
 			["blueprint_WEAPON_VINTAGEPISTOL"] = {

@@ -3,27 +3,6 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Reserved = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADTICK
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		Wait(60000)
-
-		for Route,Table in pairs(Drops) do
-			for Number,v in pairs(Table) do
-				if Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["timer"] and Drops[Route][Number]["timer"] <= os.time() then
-					if ItemUnique(Drops[Route][Number]["key"]) then
-						vRP.RemSrvData(SplitUnique(Drops[Route][Number]["key"]))
-					end
-
-					TriggerClientEvent("inventory:DropsRemover",-1,Route,Number)
-					Drops[Route][Number] = nil
-				end
-			end
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- SAVESERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("SaveServer",function(Silenced)
@@ -31,7 +10,7 @@ AddEventHandler("SaveServer",function(Silenced)
 		for Route,Table in pairs(Drops) do
 			for Number,v in pairs(Table) do
 				if Drops[Route] and Drops[Route][Number] then
-					if ItemUnique(Drops[Route][Number]["key"]) then
+					if Drops[Route][Number]["key"] and ItemUnique(Drops[Route][Number]["key"]) then
 						vRP.RemSrvData(SplitUnique(Drops[Route][Number]["key"]))
 					end
 
@@ -64,7 +43,11 @@ exports("Drops",function(Passport,source,Item,Amount,Force)
 	local Split = splitString(Item)
 	local Route = GetPlayerRoutingBucket(source)
 
-	Force = (Force and Item or vRP.SortNameItem(Passport,Item))
+	if Force then
+		Force = Item
+	else
+		Force = vRP.SortNameItem(Passport,Item)
+	end
 
 	if not Drops[Route] then
 		Drops[Route] = {}
@@ -86,8 +69,7 @@ exports("Drops",function(Passport,source,Item,Amount,Force)
 		["rarity"] = ItemRarity(Item),
 		["economy"] = ItemEconomy(Item),
 		["desc"] = ItemDescription(Item),
-		["coords"] = vCLIENT.EntityCoordsZ(source),
-		["timer"] = os.time() + 1800
+		["coords"] = vCLIENT.EntityCoordsZ(source)
 	}
 
 	if not Provisory["desc"] then
@@ -122,7 +104,7 @@ function Creative.Pickup(Number,Route,Target,Amount)
 	local source = source
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["key"] and Drops[Route][Number]["timer"] > os.time() then
+	if Passport and not Active[Passport] and Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["key"] then
 		Active[Passport] = true
 
 		if vRP.CheckWeight(Passport,Drops[Route][Number]["key"],Amount) then

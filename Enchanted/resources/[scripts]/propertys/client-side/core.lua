@@ -44,6 +44,8 @@ CreateThread(function()
 
 									for Line,v in pairs(Informations) do
 										if (Propertys[Name]["Galpão"] and Line == "Galpão") or (not Propertys[Name]["Galpão"] and Line ~= "Galpão") then
+											exports["dynamic"]:AddMenu(Line,"Informações sobre o interior.",Line)
+
 											if v["Vault"] then
 												exports["dynamic"]:AddButton("Baú","Total de <yellow>"..v["Vault"].."Kg</yellow> no compartimento.","","",Line,false)
 											end
@@ -55,11 +57,10 @@ CreateThread(function()
 											exports["dynamic"]:AddButton("Credenciais","Máximo <yellow>1</yellow> proprietário e <yellow>3</yellow> adicionais.","","",Line,false)
 											exports["dynamic"]:AddButton("Comprar com Dinheiro","Custo de <yellow>"..Currency..Dotted(v["Price"]).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Dollar",Line,true)
 											exports["dynamic"]:AddButton("Comprar com Diamantes","Custo de <yellow>"..Dotted(v["Gemstone"]).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Gemstone",Line,true)
-											exports["dynamic"]:SubMenu(Line,"Informações sobre o interior.",Line)
 										end
 									end
 
-									exports["dynamic"]:openMenu()
+									exports["dynamic"]:Open()
 								else
 									if Consult ~= "Hotel" then
 										exports["dynamic"]:AddButton("Entrar","Adentrar a propriedade.","propertys:Enter",Name,false,false)
@@ -76,7 +77,7 @@ CreateThread(function()
 										exports["dynamic"]:AddButton("Hipoteca",Consult["Tax"],"","",false,false)
 
 										Interior = Consult["Interior"]
-										exports["dynamic"]:openMenu()
+										exports["dynamic"]:Open()
 									else
 										Interior = "Hotel"
 
@@ -85,7 +86,7 @@ CreateThread(function()
 								end
 							elseif not Propertys[Name]["Galpão"] and Name ~= "Hotel" then
 								exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
-								exports["dynamic"]:openMenu()
+								exports["dynamic"]:Open()
 							end
 						end
 					end
@@ -139,33 +140,23 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PROPERTYS:CLOTHES
+-- CLOTHESMENU
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("propertys:Clothes")
-AddEventHandler("propertys:Clothes",function()
-	TriggerEvent("dynamic:Close")
-
-	exports["dynamic"]:AddButton("Guardar","Salvar vestimentas do corpo.","propertys:Clothes","Save",false,true)
+function ClothesMenu()
+	exports["dynamic"]:AddButton("Shopping","Abrir a loja de vestimentas.","skinshop:Open","",false,false)
+	exports["dynamic"]:AddMenu("Armário","Abrir lista com todas as vestimentas.","wardrobe")
+	exports["dynamic"]:AddButton("Guardar","Salvar vestimentas do corpo.","propertys:Clothes","Save","wardrobe",true)
 
 	local Clothes = vSERVER.Clothes()
 	if parseInt(#Clothes) > 0 then
 		for Index,v in pairs(Clothes) do
-			exports["dynamic"]:SubMenu(v,"Informações da vestimenta.",Index)
+			exports["dynamic"]:AddMenu(v,"Informações da vestimenta.",Index,"wardrobe")
 			exports["dynamic"]:AddButton("Aplicar","Vestir-se com as vestimentas.","propertys:Clothes","Apply-"..v,Index,true)
-			exports["dynamic"]:AddButton("Remover","Deletar a vestimenta do armário.","propertys:Clothes","Delete-"..v,Index,true)
+			exports["dynamic"]:AddButton("Remover","Deletar a vestimenta do armário.","propertys:Clothes","Delete-"..v,Index,true,true)
 		end
 	end
 
-	exports["dynamic"]:openMenu()
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CLOTHESMENU
------------------------------------------------------------------------------------------------------------------------------------------
-function ClothesMenu()
-	exports["dynamic"]:AddButton("Armário","Abrir lista com todas as vestimentas.","propertys:Clothes","",false,false)
-	exports["dynamic"]:AddButton("Shopping","Abrir a loja de vestimentas.","skinshop:Open","",false,false)
-
-	exports["dynamic"]:openMenu()
+	exports["dynamic"]:Open()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:ENTER
@@ -176,7 +167,7 @@ AddEventHandler("propertys:Enter",function(Name,Theft)
 		Stealing = true
 		Interior = Theft
 		Policed = GetGameTimer() + 15000
-		TriggerEvent("player:Residuals","Resquício de Línter")
+		TriggerEvent("player:Residual","Resquício de Línter")
 
 		if Internal[Interior] and Internal[Interior]["Furniture"] then
 			for Number,v in pairs(Internal[Interior]["Furniture"]) do

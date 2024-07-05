@@ -9,22 +9,46 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 vSERVER = Tunnel.getInterface("bank")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- LOCATION
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Location = {
+	vec3(149.64,-1041.36,29.59),
+	vec3(313.95,-279.74,54.39),
+	vec3(-351.2,-50.57,49.26),
+	vec3(-2961.85,482.87,15.92),
+	vec3(1175.09,2707.53,38.31),
+	vec3(-1212.37,-331.37,38.0),
+	vec3(-112.86,6470.46,31.85)
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADLOCATION
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	for Number,v in pairs(Location) do
+		exports["target"]:AddCircleZone("Bank:"..Number,v,0.1,{
+			name = "Bank:"..Number,
+			heading = 0.0,
+			useZ = true
+		},{
+			Distance = 1.75,
+			options = {
+				{
+					event = "Bank",
+					label = "Abrir",
+					tunnel = "client"
+				}
+			}
+		})
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- BANK
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Bank",function()
 	if not exports["hud"]:Wanted() then
-		TriggerEvent("Progress","Abrindo",3500)
-		LocalPlayer["state"]:set("Cancel",true,true)
-		LocalPlayer["state"]:set("Buttons",true,true)
-		vRP.playAnim(false,{"amb@prop_human_atm@male@enter","enter"},false)
-
-		SetTimeout(3500,function()
-			SetNuiFocus(true,true)
-			TransitionToBlurred(1000)
-			LocalPlayer["state"]:set("Cancel",false,true)
-			LocalPlayer["state"]:set("Buttons",false,true)
-			SendNUIMessage({ Action = "Open", name = LocalPlayer["state"]["Name"] })
-		end)
+		SetNuiFocus(true,true)
+		TransitionToBlurred(1000)
+		SendNUIMessage({ Action = "Open", name = LocalPlayer["state"]["Name"] })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -34,16 +58,6 @@ RegisterNUICallback("Close",function(Data,Callback)
 	SetNuiFocus(false,false)
 	TransitionFromBlurred(1000)
 	SendNUIMessage({ Action = "Hide" })
-	TriggerEvent("Progress","Abrindo",3500)
-	LocalPlayer["state"]:set("Cancel",true,true)
-	LocalPlayer["state"]:set("Buttons",true,true)
-	vRP.playAnim(false,{"amb@prop_human_atm@male@exit","exit"},false)
-
-	SetTimeout(3500,function()
-		LocalPlayer["state"]:set("Buttons",false,true)
-		LocalPlayer["state"]:set("Cancel",false,true)
-		vRP.Destroy()
-	end)
 
 	Callback(true)
 end)

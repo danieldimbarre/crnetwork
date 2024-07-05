@@ -76,12 +76,12 @@ CreateThread(function()
 			if IsPauseMenuActive() then
 				if not Pause and Display then
 					Pause = true
-					SendNUIMessage({ name = "Body", payload = false })
+					SendNUIMessage({ Action = "Body", Payload = false })
 				end
 			else
 				if Display then
 					if Pause then
-						SendNUIMessage({ name = "Body", payload = true })
+						SendNUIMessage({ Action = "Body", Payload = true })
 						Pause = false
 					end
 
@@ -100,7 +100,7 @@ CreateThread(function()
 								Healing = 100
 							end
 
-							SendNUIMessage({ name = "Health", payload = Healing })
+							SendNUIMessage({ Action = "Health", Payload = Healing })
 							Health = Healing
 						end
 					else
@@ -110,7 +110,7 @@ CreateThread(function()
 						end
 
 						if Health ~= Healing then
-							SendNUIMessage({ name = "Health", payload = Healing })
+							SendNUIMessage({ Action = "Health", Payload = Healing })
 							Health = Healing
 						end
 
@@ -125,21 +125,21 @@ CreateThread(function()
 					end
 
 					if Armour ~= Armouring then
-						SendNUIMessage({ name = "Armour", payload = Armouring })
+						SendNUIMessage({ Action = "Armour", Payload = Armouring })
 						Armour = Armouring
 					end
 
 					if FullRoad ~= "" and Road ~= FullRoad then
-						SendNUIMessage({ name = "Road", payload = FullRoad })
+						SendNUIMessage({ Action = "Road", Payload = FullRoad })
 						Road = FullRoad
 					end
 
 					if FullCross ~= "" and Crossing ~= FullCross then
-						SendNUIMessage({ name = "Crossing", payload = FullCross })
+						SendNUIMessage({ Action = "Crossing", Payload = FullCross })
 						Crossing = FullCross
 					end
 
-					SendNUIMessage({ name = "Clock", payload = { GlobalState["Hours"],GlobalState["Minutes"] } })
+					SendNUIMessage({ Action = "Clock", Payload = { GlobalState["Hours"],GlobalState["Minutes"] } })
 				end
 			end
 
@@ -147,28 +147,28 @@ CreateThread(function()
 				Luck = Luck - 1
 				LuckTimer = GetGameTimer() + 1000
 
-				SendNUIMessage({ name = "Luck", payload = Luck })
+				SendNUIMessage({ Action = "Luck", Payload = Luck })
 			end
 
 			if Dexterity > 0 and DexterityTimer <= GetGameTimer() then
 				Dexterity = Dexterity - 1
 				DexterityTimer = GetGameTimer() + 1000
 
-				SendNUIMessage({ name = "Dexterity", payload = Dexterity })
+				SendNUIMessage({ Action = "Dexterity", Payload = Dexterity })
 			end
 
 			if Wanted > 0 and WantedTimer <= GetGameTimer() then
 				Wanted = Wanted - 1
 				WantedTimer = GetGameTimer() + 1000
 
-				SendNUIMessage({ name = "Wanted", payload = { Wanted,WantedMax } })
+				SendNUIMessage({ Action = "Wanted", Payload = { Wanted,WantedMax } })
 			end
 
 			if Repose > 0 and ReposeTimer <= GetGameTimer() then
 				Repose = Repose - 1
 				ReposeTimer = GetGameTimer() + 1000
 
-				SendNUIMessage({ name = "Repose", payload = { Repose,ReposeMax } })
+				SendNUIMessage({ Action = "Repose", Payload = { Repose,ReposeMax } })
 			end
 
 			if GetEntityHealth(Ped) > 100 then
@@ -198,7 +198,7 @@ CreateThread(function()
 					vRPS.DowngradeHunger()
 					HungerDelay = GetGameTimer() + HungerAmount
 
-					SendNUIMessage({ name = "Hunger", payload = Hunger })
+					SendNUIMessage({ Action = "Hunger", Payload = Hunger })
 				end
 
 				if Thirst > 0 and ThirstDelay <= GetGameTimer() then
@@ -206,7 +206,7 @@ CreateThread(function()
 					vRPS.DowngradeThirst()
 					ThirstDelay = GetGameTimer() + ThirstAmount
 
-					SendNUIMessage({ name = "Thirst", payload = Thirst })
+					SendNUIMessage({ Action = "Thirst", Payload = Thirst })
 				end
 			end
 		end
@@ -226,13 +226,13 @@ end
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddStateBagChangeHandler("Passport",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
-	SendNUIMessage({ name = "Passport", payload = Dotted(Value) })
+	SendNUIMessage({ Action = "Passport", Payload = Dotted(Value) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddStateBagChangeHandler("Players",nil,function(Name,Key,Value)
-	SendNUIMessage({ name = "Players", payload = Dotted(Value) })
+	SendNUIMessage({ Action = "Players", Payload = Dotted(Value) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:VOIP
@@ -240,13 +240,13 @@ end)
 AddEventHandler("hud:Voip",function(Number)
 	local Target = { "BAIXO","NORMAL","MÉDIO","ALTO" }
 
-	SendNUIMessage({ name = "Voip", payload = Target[Number] })
+	SendNUIMessage({ Action = "Voip", Payload = Target[Number] })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:VOICE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("hud:Voice",function(Status)
-	SendNUIMessage({ name = "Voice", payload = Status })
+	SendNUIMessage({ Action = "Voice", Payload = Status })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:WANTED
@@ -280,7 +280,7 @@ end)
 -- HUD:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("hud:Active",function(Status)
-	SendNUIMessage({ name = "Body", payload = Status })
+	SendNUIMessage({ Action = "Body", Payload = Status })
 	Display = Status
 
 	if not Display and IsMinimapRendering() then
@@ -293,7 +293,7 @@ end)
 RegisterCommand("hud",function()
 	if exports["chat"]:Open() then
 		Display = not Display
-		SendNUIMessage({ name = "Body", payload = Display })
+		SendNUIMessage({ Action = "Body", Payload = Display })
 
 		if not Display and IsMinimapRendering() then
 			DisplayRadar(false)
@@ -305,7 +305,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("Progress")
 AddEventHandler("Progress",function(Message,Timer)
-	SendNUIMessage({ name = "Progress", payload = Timer - 300 })
+	SendNUIMessage({ Action = "Progress", Payload = Timer - 300 })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:THIRST
@@ -313,7 +313,7 @@ end)
 RegisterNetEvent("hud:Thirst")
 AddEventHandler("hud:Thirst",function(Number)
 	if Thirst ~= Number then
-		SendNUIMessage({ name = "Thirst", payload = Number })
+		SendNUIMessage({ Action = "Thirst", Payload = Number })
 		Thirst = Number
 	end
 end)
@@ -323,7 +323,7 @@ end)
 RegisterNetEvent("hud:Hunger")
 AddEventHandler("hud:Hunger",function(Number)
 	if Hunger ~= Number then
-		SendNUIMessage({ name = "Hunger", payload = Number })
+		SendNUIMessage({ Action = "Hunger", Payload = Number })
 		Hunger = Number
 	end
 end)
@@ -333,7 +333,7 @@ end)
 RegisterNetEvent("hud:Stress")
 AddEventHandler("hud:Stress",function(Number)
 	if Stress ~= Number then
-		SendNUIMessage({ name = "Stress", payload = Number })
+		SendNUIMessage({ Action = "Stress", Payload = Number })
 		Stress = Number
 	end
 end)
@@ -358,7 +358,7 @@ RegisterNetEvent("hud:AddGemstone")
 AddEventHandler("hud:AddGemstone",function(Number)
 	Gemstone = Gemstone + Number
 
-	SendNUIMessage({ name = "Gemstone", payload = Dotted(Gemstone) })
+	SendNUIMessage({ Action = "Gemstone", Payload = Dotted(Gemstone) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:REMOVEGEMSTONE
@@ -371,13 +371,13 @@ AddEventHandler("hud:RemoveGemstone",function(Number)
 		Gemstone = 0
 	end
 
-	SendNUIMessage({ name = "Gemstone", payload = Dotted(Gemstone) })
+	SendNUIMessage({ Action = "Gemstone", Payload = Dotted(Gemstone) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:RADIO
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("hud:Radio",function(Frequency)
-	SendNUIMessage({ name = "Frequency", payload = Frequency })
+	SendNUIMessage({ Action = "Frequency", Payload = Frequency })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HEALTH

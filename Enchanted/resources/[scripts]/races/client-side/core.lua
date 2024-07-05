@@ -99,7 +99,7 @@ CreateThread(function()
 					for Number,v in pairs(Races) do
 						local Distance = #(Coords - v["Init"])
 						if Distance <= 25 and GetPedInVehicleSeat(Vehicle,-1) == Ped then
-							DrawMarker(23,v["Init"]["x"],v["Init"]["y"],v["Init"]["z"] - 0.35,0.0,0.0,0.0,0.0,0.0,0.0,10.0,10.0,10.0,93,161,248,175,0,0,0,0)
+							DrawMarker(23,v["Init"]["x"],v["Init"]["y"],v["Init"]["z"] - 0.35,0.0,0.0,0.0,0.0,0.0,0.0,10.0,10.0,10.0,88,101,242,175,0,0,0,0)
 							TimeDistance = 1
 
 							if Distance <= 5 then

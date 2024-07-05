@@ -119,12 +119,64 @@ Location = {
 	},{
 		["Coords"] = vec3(46.7,-1749.71,29.62),
 		["Mode"] = "Megamall"
+	},{
+		["Coords"] = vec3(1692.27,3760.91,34.69),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(253.80,-50.47,69.94),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(842.54,-1035.25,28.19),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(-331.67,6084.86,31.46),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(-662.37,-933.58,21.82),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(-1304.12,-394.56,36.7),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(-1118.98,2699.73,18.55),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(2567.98,292.62,108.73),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(-3173.51,1088.35,20.84),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(22.53,-1105.52,29.79),
+		["Mode"] = "Ammunation"
+	},{
+		["Coords"] = vec3(810.22,-2158.99,29.62),
+		["Mode"] = "Ammunation"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 List = {
+	["Ammunation"] = {
+		["Mode"] = "Buy",
+		["Type"] = "Cash",
+		["List"] = {
+			["WEAPON_HATCHET"] = 975,
+			["WEAPON_BAT"] = 975,
+			["WEAPON_BATTLEAXE"] = 975,
+			["WEAPON_CROWBAR"] = 975,
+			["WEAPON_SWITCHBLADE"] = 975,
+			["WEAPON_GOLFCLUB"] = 975,
+			["WEAPON_HAMMER"] = 975,
+			["WEAPON_MACHETE"] = 975,
+			["WEAPON_POOLCUE"] = 975,
+			["WEAPON_STONE_HATCHET"] = 975,
+			["WEAPON_WRENCH"] = 975,
+			["WEAPON_KNUCKLE"] = 975,
+			["WEAPON_FLASHLIGHT"] = 975
+		}
+	},
 	["Departament"] = {
 		["Mode"] = "Buy",
 		["Type"] = "Cash",
@@ -186,7 +238,7 @@ List = {
 			["screwnuts"] = 45,
 			["videocard"] = 4225,
 			["ssddrive"] = 525,
-			["safependrive"] = 3325,
+			["safependrive"] = 3225,
 			["powercable"] = 225,
 			["weaponparts"] = 125,
 			["electroniccomponents"] = 375,

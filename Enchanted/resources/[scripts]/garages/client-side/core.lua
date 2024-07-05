@@ -484,20 +484,20 @@ end
 -- STARTHOTWIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.StartHotwired()
-	Hotwired = true
-
-	if LoadAnim(Dict) then
-		TaskPlayAnim(PlayerPedId(),Dict,Anim,8.0,8.0,-1,49,1,0,0,0)
+	local Ped = PlayerPedId()
+	if not Hotwired and LoadAnim(Dict) then
+		TaskPlayAnim(Ped,Dict,Anim,8.0,8.0,-1,49,1,0,0,0)
+		Hotwired = true
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STOPHOTWIRED
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.StopHotwired()
-	Hotwired = false
-
-	if LoadAnim(Dict) then
-		StopAnimTask(PlayerPedId(),Dict,Anim,8.0)
+	local Ped = PlayerPedId()
+	if Hotwired and LoadAnim(Dict) then
+		StopAnimTask(Ped,Dict,Anim,8.0)
+		Hotwired = false
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -113,7 +113,6 @@ function Creative.Clothes()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		CountClothes[Passport] = 2
-		local Consult = vRP.GetSrvData("Clothes:"..Passport,true)
 
 		if vRP.UserPremium(Passport) then
 			local Hierarchy = vRP.LevelPremium(source)
@@ -126,12 +125,9 @@ function Creative.Clothes()
 			end
 		end
 
-		local Amount = CountClothes[Passport]
+		local Consult = vRP.GetSrvData("Clothes:"..Passport,true)
 		for Table,_ in pairs(Consult) do
-			if Amount > 0 then
-				Clothes[#Clothes + 1] = Table
-				Amount = Amount - 1
-			end
+			Clothes[#Clothes + 1] = Table
 		end
 	end
 
@@ -163,11 +159,10 @@ AddEventHandler("dynamic:Clothes",function(Mode)
 				if string.len(Check) >= 4 then
 					if not Consult[Check] then
 						Consult[Check] = vSKINSHOP.Customization(source)
-						TriggerClientEvent("Notify",source,"Armário","<b>"..Check.."</b> adicionado.","verde",5000)
 						vRP.SetSrvData("Clothes:"..Passport,Consult,true)
-						TriggerClientEvent("dynamic:Clothes",source)
-					else
-						TriggerClientEvent("Notify",source,"Armário","Nome escolhido já existe em seu armário.","amarelo",5000)
+						TriggerClientEvent("dynamic:AddMenu",source,Check,"Informações da vestimenta.",Check,"wardrobe")
+						TriggerClientEvent("dynamic:AddButton",source,"Aplicar","Vestir-se com as vestimentas.","dynamic:Clothes","Apply-"..Check,Check,true)
+						TriggerClientEvent("dynamic:AddButton",source,"Remover","Deletar a vestimenta do armário.","dynamic:Clothes","Delete-"..Check,Check,true,true)
 					end
 				else
 					TriggerClientEvent("Notify",source,"Armário","Nome escolhido precisa possuir mínimo de 4 letras.","amarelo",5000)
@@ -176,18 +171,11 @@ AddEventHandler("dynamic:Clothes",function(Mode)
 		elseif Split[1] == "Delete" then
 			if Consult[Name] then
 				Consult[Name] = nil
-				TriggerClientEvent("Notify",source,"Armário","<b>"..Name.."</b> removido.","verde",5000)
 				vRP.SetSrvData("Clothes:"..Passport,Consult,true)
-				TriggerClientEvent("dynamic:Clothes",source)
-			else
-				TriggerClientEvent("Notify",source,"Armário","A vestimenta salva não se encontra mais em seu armário.","amarelo",5000)
 			end
 		elseif Split[1] == "Apply" then
 			if Consult[Name] then
 				TriggerClientEvent("skinshop:Apply",source,Consult[Name])
-				TriggerClientEvent("Notify",source,"Armário","<b>"..Name.."</b> aplicado.","verde",5000)
-			else
-				TriggerClientEvent("Notify",source,"Armário","A vestimenta salva não se encontra mais em seu armário.","amarelo",5000)
 			end
 		end
 	end

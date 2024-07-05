@@ -758,41 +758,74 @@ local List = {
 	["backpackp"] = {
 		["Index"] = "backpackp",
 		["Name"] = "Mochila Pequena",
-		["Description"] = "Aumenta sua mochila em <common>50Kg</common>.",
+		["Description"] = "Compacta e leve, perfeita para carregar o essencial de forma prática, com alças ajustáveis para conforto ao transportar.<br>Aumenta o peso de sua mochila em <epic>50Kg</epic>.",
 		["Repair"] = "sewingkit",
 		["Type"] = "Comum",
+        ["Market"] = true,
 		["Durability"] = 720,
 		["Weight"] = 2.5,
 		["Delete"] = true,
-		["Economy"] = 40000,
+		["Economy"] = 100000,
 		["Rarity"] = "rare",
-		["Backpack"] = 50
+		["Backpack"] = 50,
+		["Skinshop"] = {
+			["mp_m_freemode_01"] = {
+				["Model"] = 123,
+				["Texture"] = 0
+			},
+			["mp_f_freemode_01"] = {
+				["Model"] = 123,
+				["Texture"] = 0
+			}
+		}
 	},
 	["backpackm"] = {
 		["Index"] = "backpackm",
 		["Name"] = "Mochila Média",
-		["Description"] = "Aumenta sua mochila em <common>75Kg</common>.",
+		["Description"] = "Versátil e compacta, ideal para o dia a dia, oferecendo espaço suficiente para itens essenciais sem ser volumosa, com alças confortáveis para fácil transporte.<br>Aumenta o peso de sua mochila em <epic>75Kg</epic>.",
 		["Repair"] = "sewingkit",
 		["Type"] = "Comum",
+        ["Market"] = true,
 		["Durability"] = 720,
 		["Weight"] = 2.5,
 		["Delete"] = true,
-		["Economy"] = 60000,
+		["Economy"] = 150000,
 		["Rarity"] = "epic",
-		["Backpack"] = 75
+		["Backpack"] = 75,
+		["Skinshop"] = {
+			["mp_m_freemode_01"] = {
+				["Model"] = 130,
+				["Texture"] = 0
+			},
+			["mp_f_freemode_01"] = {
+				["Model"] = 128,
+				["Texture"] = 0
+			}
+		}
 	},
 	["backpackg"] = {
 		["Index"] = "backpackg",
 		["Name"] = "Mochila Grande",
-		["Description"] = "Aumenta sua mochila em <common>100Kg</common>.",
+		["Description"] = "Espaçosa e funcional, projetada para transportar muitos itens de forma confortável, com alças ajustáveis e compartimentos organizados para facilitar o armazenamento.<br>Aumenta o peso de sua mochila em <epic>100Kg</epic>.",
 		["Repair"] = "sewingkit",
 		["Type"] = "Comum",
+        ["Market"] = true,
 		["Durability"] = 720,
 		["Weight"] = 2.5,
 		["Delete"] = true,
-		["Economy"] = 80000,
+		["Economy"] = 200000,
 		["Rarity"] = "legendary",
-		["Backpack"] = 100
+		["Backpack"] = 100,
+		["Skinshop"] = {
+			["mp_m_freemode_01"] = {
+				["Model"] = 129,
+				["Texture"] = 0
+			},
+			["mp_f_freemode_01"] = {
+				["Model"] = 129,
+				["Texture"] = 0
+			}
+		}
 	},
 	["WEAPON_KATANA"] = {
 		["Index"] = "katana",
@@ -1336,8 +1369,10 @@ local List = {
 		["Index"] = "safependrive",
 		["Name"] = "Pendrive Seguro",
 		["Type"] = "Comum",
+        ["Market"] = true,
 		["Weight"] = 0.15,
-		["Economy"] = 3325,
+		["Economy"] = 3225,
+		["Durability"] = 72,
 		["Blueprint"] = true,
 		["LostWater"] = true
 	},
@@ -1925,7 +1960,6 @@ local List = {
 		["Type"] = "Armamento",
 		["Arrest"] = true,
 		["Repair"] = "repairkit01",
-		["Blueprint"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.75,
 		["Economy"] = 975,
@@ -1935,7 +1969,6 @@ local List = {
 		["Index"] = "bat",
 		["Name"] = "Bastão de Beisebol",
 		["Repair"] = "repairkit01",
-		["Blueprint"] = true,
 		["Type"] = "Armamento",
 		["Arrest"] = true,
 		["Durability"] = 240,
@@ -1948,7 +1981,6 @@ local List = {
 		["Name"] = "Machado de Batalha",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.75,
@@ -1960,7 +1992,6 @@ local List = {
 		["Name"] = "Pé de Cabra",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.35,
@@ -1972,7 +2003,6 @@ local List = {
 		["Name"] = "Canivete",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 0.75,
@@ -1984,7 +2014,6 @@ local List = {
 		["Name"] = "Taco de Golf",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.65,
@@ -1996,7 +2025,6 @@ local List = {
 		["Name"] = "Martelo",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.45,
@@ -2008,7 +2036,6 @@ local List = {
 		["Name"] = "Facão",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.35,
@@ -2020,7 +2047,6 @@ local List = {
 		["Name"] = "Taco de Sinuca",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.25,
@@ -2032,7 +2058,6 @@ local List = {
 		["Name"] = "Machado de Pedra",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.55,
@@ -2044,7 +2069,6 @@ local List = {
 		["Name"] = "Chave Inglesa",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.45,
@@ -2056,7 +2080,6 @@ local List = {
 		["Name"] = "Soco Inglês",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.25,
@@ -2068,11 +2091,10 @@ local List = {
 		["Name"] = "Lanterna",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 0.75,
-		["Economy"] = 525,
+		["Economy"] = 975,
 		["Market"] = true
 	},
 	["WEAPON_NIGHTSTICK"] = {
@@ -2080,7 +2102,6 @@ local List = {
 		["Name"] = "Cassetete",
 		["Repair"] = "repairkit01",
 		["Type"] = "Armamento",
-		["Blueprint"] = true,
 		["Arrest"] = true,
 		["Durability"] = 240,
 		["Weight"] = 1.15,
@@ -4072,18 +4093,6 @@ local List = {
 		["Weight"] = 0.0,
 		["Economy"] = 0
 	},
-	["blueprint_WEAPON_CROWBAR"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Pé de Cabra",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Pé de Cabra</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
 	["blueprint_ATTACH_GRIP"] = {
 		["Index"] = "blueprint",
 		["Name"] = "Aprendizado: Empunhadura",
@@ -4138,18 +4147,6 @@ local List = {
 		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Uzi</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 6625
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
-	["blueprint_WEAPON_FLASHLIGHT"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Lanterna",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Lanterna</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 275
 		},
 		["Type"] = "Consumível",
 		["Rarity"] = "epic",
@@ -4252,18 +4249,6 @@ local List = {
 		["Weight"] = 0.0,
 		["Economy"] = 0
 	},
-	["blueprint_WEAPON_WRENCH"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Chave Inglesa",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Chave Inglesa</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
 	["blueprint_WEAPON_BULLPUPRIFLE"] = {
 		["Index"] = "blueprint",
 		["Name"] = "Aprendizado: QBZ-95",
@@ -4276,36 +4261,12 @@ local List = {
 		["Weight"] = 0.0,
 		["Economy"] = 0
 	},
-	["blueprint_WEAPON_GOLFCLUB"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Taco de Golf",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Taco de Golf</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
 	["blueprint_toothpaste"] = {
 		["Index"] = "blueprint",
 		["Name"] = "Aprendizado: Pasta de Dente",
 		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Pasta de Dente</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 275
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
-	["blueprint_WEAPON_BAT"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Bastão de Beisebol",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Bastão de Beisebol</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
 		},
 		["Type"] = "Consumível",
 		["Rarity"] = "epic",
@@ -4342,18 +4303,6 @@ local List = {
 		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Parafusos</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 275
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
-	["blueprint_WEAPON_MACHETE"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Facão",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Facão</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
 		},
 		["Type"] = "Consumível",
 		["Rarity"] = "epic",
@@ -4516,18 +4465,6 @@ local List = {
 		["Weight"] = 0.0,
 		["Economy"] = 0
 	},
-	["blueprint_WEAPON_KNUCKLE"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Soco Inglês",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Soco Inglês</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
 	["blueprint_ATTACH_FLASHLIGHT"] = {
 		["Index"] = "blueprint",
 		["Name"] = "Aprendizado: Lanterna Tatica",
@@ -4552,36 +4489,12 @@ local List = {
 		["Weight"] = 0.0,
 		["Economy"] = 0
 	},
-	["blueprint_WEAPON_STONE_HATCHET"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Machado de Pedra",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Machado de Pedra</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
 	["blueprint_insulatingtape"] = {
 		["Index"] = "blueprint",
 		["Name"] = "Aprendizado: Fita Isolante",
 		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Fita Isolante</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 275
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
-	["blueprint_WEAPON_SWITCHBLADE"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Canivete",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Canivete</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
 		},
 		["Type"] = "Consumível",
 		["Rarity"] = "epic",
@@ -4604,18 +4517,6 @@ local List = {
 		["Index"] = "blueprint",
 		["Name"] = "Aprendizado: Corpo de Rifle",
 		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Corpo de Rifle</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
-	["blueprint_WEAPON_HATCHET"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Machado",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Machado</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 525
 		},
@@ -5116,60 +5017,12 @@ local List = {
 		["Weight"] = 0.0,
 		["Economy"] = 0
 	},
-	["blueprint_WEAPON_HAMMER"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Martelo",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Martelo</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
 	["blueprint_WEAPON_COMBATPISTOL"] = {
 		["Index"] = "blueprint",
 		["Name"] = "Aprendizado: G18C",
 		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>G18C</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 3125
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
-	["blueprint_WEAPON_NIGHTSTICK"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Cassetete",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Cassetete</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
-	["blueprint_WEAPON_BATTLEAXE"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Machado de Batalha",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Machado de Batalha</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
-		},
-		["Type"] = "Consumível",
-		["Rarity"] = "epic",
-		["Weight"] = 0.0,
-		["Economy"] = 0
-	},
-	["blueprint_WEAPON_POOLCUE"] = {
-		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Taco de Sinuca",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Taco de Sinuca</epic>.",
-		["Recycle"] = {
-			["blueprint_fragment"] = 525
 		},
 		["Type"] = "Consumível",
 		["Rarity"] = "epic",
@@ -5491,6 +5344,13 @@ end
 function ItemEmpty(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item]["Empty"] or false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEMSKINSHOP
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ItemSkinshop(Item)
+	local Item = SplitOne(Item)
+	return List[Item] and List[Item]["Skinshop"] or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLOCKDELETE

@@ -647,8 +647,8 @@ end)
 -- GARAGES:PROPERTYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("garages:Propertys")
-AddEventHandler("garages:Propertys",function(Table)
-	for Name,v in pairs(Table) do
+AddEventHandler("garages:Propertys",function(GaragesTable,RespawnsTable)
+	for Name,v in pairs(GaragesTable) do
 		Garages[Name] = {
 			["x"] = v["x"],
 			["y"] = v["y"],
@@ -656,6 +656,8 @@ AddEventHandler("garages:Propertys",function(Table)
 			["1"] = v["1"]
 		}
 	end
+
+	Respawns = RespawnsTable
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:CLEAN

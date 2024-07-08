@@ -1152,7 +1152,7 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 
 		if Loots[Box]["Code"] then
 			local Keyboard = vKEYBOARD.Password(source,"Senha")
-			if Keyboard and Keyboard[1] ~= Loots[Box]["Code"] then
+			if not Keyboard or (Keyboard[1] and Keyboard[1] ~= Loots[Box]["Code"]) then
 				TriggerClientEvent("Notify",source,"Acesso Restrito","Senha incorreta.","vermelho",5000)
 				return false
 			end

@@ -13,12 +13,13 @@ vSERVER = Tunnel.getInterface("barbershop")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Lasted = {}
 local Camera = nil
+local Default = nil
 local Barbershop = {}
 local Creation = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- FINISH
+-- SAVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Finish",function(Data,Callback)
+RegisterNUICallback("Save",function(Data,Callback)
 	if Creation then
 		DoScreenFadeOut(0)
 		FreezeEntityPosition(PlayerPedId(),false)
@@ -27,6 +28,8 @@ RegisterNUICallback("Finish",function(Data,Callback)
 			TriggerEvent("hud:Active",true)
 			DoScreenFadeIn(2500)
 		end)
+	else
+		TriggerEvent("hud:Active",true)
 	end
 
 	if DoesCamExist(Camera) then
@@ -46,9 +49,9 @@ RegisterNUICallback("Finish",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CANCEL
+-- RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Cancel",function(Data,Callback)
+RegisterNUICallback("Reset",function(Data,Callback)
 	if Creation then
 		DoScreenFadeOut(0)
 		FreezeEntityPosition(PlayerPedId(),false)
@@ -57,6 +60,8 @@ RegisterNUICallback("Cancel",function(Data,Callback)
 			TriggerEvent("hud:Active",true)
 			DoScreenFadeIn(2500)
 		end)
+	else
+		TriggerEvent("hud:Active",true)
 	end
 
 	if DoesCamExist(Camera) then
@@ -85,21 +90,6 @@ RegisterNUICallback("Update",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ROTATE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Rotate",function(Data,Callback)
-	local Ped = PlayerPedId()
-	local Heading = GetEntityHeading(Ped)
-
-	if Data == "Left" then
-		SetEntityHeading(Ped,Heading - 10)
-	else
-		SetEntityHeading(Ped,Heading + 10)
-	end
-
-	Callback("Ok")
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- BARBERSHOP:APPLY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Apply")
@@ -124,7 +114,7 @@ exports("Apply",function(Data,Ped)
 		end
 	end
 
-	SetPedHeadBlendData(Ped,Fathers[Barbershop[1] + 1],Mothers[Barbershop[2] + 1],0,Barbershop[5],0,0,Barbershop[3] + 0.0,0,0,false)
+	SetPedHeadBlendData(Ped,Fathers[Barbershop[1] + 1],Mothers[Barbershop[2] + 1],0,Barbershop[5],Barbershop[5],0,Barbershop[3] + 0.0,0,0,false)
 
 	SetPedEyeColor(Ped,Barbershop[4])
 
@@ -134,50 +124,50 @@ exports("Apply",function(Data,Ped)
 	SetPedHeadOverlay(Ped,0,Barbershop[7],1.0)
 	SetPedHeadOverlayColor(Ped,0,0,0,0)
 
-	SetPedHeadOverlay(Ped,1,Barbershop[22],Barbershop[23])
+	SetPedHeadOverlay(Ped,1,Barbershop[22],Barbershop[23] + 0.0)
 	SetPedHeadOverlayColor(Ped,1,1,Barbershop[24],Barbershop[24])
 
-	SetPedHeadOverlay(Ped,2,Barbershop[19],Barbershop[20])
+	SetPedHeadOverlay(Ped,2,Barbershop[19],Barbershop[20] + 0.0)
 	SetPedHeadOverlayColor(Ped,2,1,Barbershop[21],Barbershop[21])
 
 	SetPedHeadOverlay(Ped,3,Barbershop[9],1.0)
 	SetPedHeadOverlayColor(Ped,3,0,0,0)
 
-	SetPedHeadOverlay(Ped,4,Barbershop[13],Barbershop[14])
+	SetPedHeadOverlay(Ped,4,Barbershop[13],Barbershop[14] + 0.0)
 	SetPedHeadOverlayColor(Ped,4,0,0,0)
 
-	SetPedHeadOverlay(Ped,5,Barbershop[25],Barbershop[26])
+	SetPedHeadOverlay(Ped,5,Barbershop[25],Barbershop[26] + 0.0)
 	SetPedHeadOverlayColor(Ped,5,2,Barbershop[27],Barbershop[27])
 
 	SetPedHeadOverlay(Ped,6,Barbershop[6],1.0)
 	SetPedHeadOverlayColor(Ped,6,0,0,0)
 
-	SetPedHeadOverlay(Ped,8,Barbershop[16],Barbershop[17])
+	SetPedHeadOverlay(Ped,8,Barbershop[16],Barbershop[17] + 0.0)
 	SetPedHeadOverlayColor(Ped,8,2,Barbershop[18],Barbershop[18])
 
 	SetPedHeadOverlay(Ped,9,Barbershop[8],1.0)
 	SetPedHeadOverlayColor(Ped,9,0,0,0)
 
-	SetPedFaceFeature(Ped,0,Barbershop[28])
-	SetPedFaceFeature(Ped,1,Barbershop[29])
-	SetPedFaceFeature(Ped,2,Barbershop[30])
-	SetPedFaceFeature(Ped,3,Barbershop[31])
-	SetPedFaceFeature(Ped,4,Barbershop[32])
-	SetPedFaceFeature(Ped,5,Barbershop[33])
-	SetPedFaceFeature(Ped,6,Barbershop[44])
-	SetPedFaceFeature(Ped,7,Barbershop[34])
-	SetPedFaceFeature(Ped,8,Barbershop[36])
-	SetPedFaceFeature(Ped,9,Barbershop[35])
-	SetPedFaceFeature(Ped,10,Barbershop[45])
-	SetPedFaceFeature(Ped,11,Barbershop[15])
-	SetPedFaceFeature(Ped,12,Barbershop[42])
-	SetPedFaceFeature(Ped,13,Barbershop[46])
-	SetPedFaceFeature(Ped,14,Barbershop[37])
-	SetPedFaceFeature(Ped,15,Barbershop[38])
-	SetPedFaceFeature(Ped,16,Barbershop[40])
-	SetPedFaceFeature(Ped,17,Barbershop[39])
-	SetPedFaceFeature(Ped,18,Barbershop[41])
-	SetPedFaceFeature(Ped,19,Barbershop[43])
+	SetPedFaceFeature(Ped,0,Barbershop[28] + 0.0)
+	SetPedFaceFeature(Ped,1,Barbershop[29] + 0.0)
+	SetPedFaceFeature(Ped,2,Barbershop[30] + 0.0)
+	SetPedFaceFeature(Ped,3,Barbershop[31] + 0.0)
+	SetPedFaceFeature(Ped,4,Barbershop[32] + 0.0)
+	SetPedFaceFeature(Ped,5,Barbershop[33] + 0.0)
+	SetPedFaceFeature(Ped,6,Barbershop[44] + 0.0)
+	SetPedFaceFeature(Ped,7,Barbershop[34] + 0.0)
+	SetPedFaceFeature(Ped,8,Barbershop[36] + 0.0)
+	SetPedFaceFeature(Ped,9,Barbershop[35] + 0.0)
+	SetPedFaceFeature(Ped,10,Barbershop[45] + 0.0)
+	SetPedFaceFeature(Ped,11,Barbershop[15] + 0.0)
+	SetPedFaceFeature(Ped,12,Barbershop[42] + 0.0)
+	SetPedFaceFeature(Ped,13,Barbershop[46] + 0.0)
+	SetPedFaceFeature(Ped,14,Barbershop[37] + 0.0)
+	SetPedFaceFeature(Ped,15,Barbershop[38] + 0.0)
+	SetPedFaceFeature(Ped,16,Barbershop[40] + 0.0)
+	SetPedFaceFeature(Ped,17,Barbershop[39] + 0.0)
+	SetPedFaceFeature(Ped,18,Barbershop[41] + 0.0)
+	SetPedFaceFeature(Ped,19,Barbershop[43] + 0.0)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENBARBERSHOP
@@ -191,6 +181,7 @@ function OpenBarbershop()
 
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
 	LocalPlayer["state"]:set("Hoverfy",false,false)
+	TriggerEvent("hud:Active",false)
 	Lasted = Barbershop
 
 	local Ped = PlayerPedId()
@@ -203,6 +194,7 @@ function OpenBarbershop()
 	SetCamRot(Camera,0.0,0.0,Heading + 200)
 	SetEntityHeading(Ped,Heading)
 	SetCamActive(Camera,true)
+	Default = Coords["z"]
 
 	if Creation then
 		Wait(2500)
@@ -212,7 +204,7 @@ function OpenBarbershop()
 		end
 	end
 
-	SendNUIMessage({ name = "Open", payload = { Barbershop, GetNumberOfPedDrawableVariations(Ped,2) - 1 } })
+	SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,true } })
 	SetNuiFocus(true,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -271,4 +263,28 @@ exports("Creation",function(Heading)
 	Creation = true
 
 	OpenBarbershop()
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ROTATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("Rotate",function(Data,Callback)
+	local Ped = PlayerPedId()
+
+	if Data["direction"] == "Left" then
+		SetEntityHeading(Ped,GetEntityHeading(Ped) - 5)
+	elseif Data["direction"] == "Right" then
+		SetEntityHeading(Ped,GetEntityHeading(Ped) + 5)
+	elseif Data["direction"] == "Top" then
+		local Coords = GetCamCoord(Camera)
+		if Coords["z"] + 0.05 <= Default + 0.50 then
+			SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] + 0.05)
+		end
+	elseif Data["direction"] == "Bottom" then
+		local Coords = GetCamCoord(Camera)
+		if Coords["z"] - 0.05 >= Default - 0.50 then
+			SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] - 0.05)
+		end
+	end
+
+	Callback("Ok")
 end)

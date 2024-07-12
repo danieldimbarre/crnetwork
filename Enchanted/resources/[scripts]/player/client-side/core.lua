@@ -308,7 +308,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Event,Message)
 	local Victim,Attacker,Index = Message[1],Message[2],NetworkGetPlayerIndexFromPed(Message[2])
-	if Event == "CEventNetworkEntityDamage" and DeathUpdate and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 and NetworkIsPlayerConnected(Index) then
+	if Event == "CEventNetworkEntityDamage" and not DeathUpdate and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 and NetworkIsPlayerConnected(Index) then
 		TriggerServerEvent("player:Death",GetPlayerServerId(Index))
 		DeathUpdate = false
 	end
@@ -400,11 +400,15 @@ RegisterCommand("ancorar",function()
 	if IsPedInAnyBoat(Ped) and exports["chat"]:Open() then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
 		if CanAnchorBoatHere(Vehicle) then
-			TriggerEvent("Notify","Sucesso","Embarcação desancorada.","verde",5000)
 			SetBoatAnchor(Vehicle,false)
+			SetBoatFrozenWhenAnchored(Vehicle,false)
+			SetForcedBoatLocationWhenAnchored(Vehicle,false)
+			TriggerEvent("Notify","Sucesso","Embarcação desancorada.","verde",5000)
 		else
-			TriggerEvent("Notify","Sucesso","Embarcação ancorada.","verde",5000)
 			SetBoatAnchor(Vehicle,true)
+			SetBoatFrozenWhenAnchored(Vehicle,true)
+			SetForcedBoatLocationWhenAnchored(Vehicle,true)
+			TriggerEvent("Notify","Sucesso","Embarcação ancorada.","verde",5000)
 		end
 	end
 end)

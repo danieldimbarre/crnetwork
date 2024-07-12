@@ -66,10 +66,6 @@ Location = {
 		["Mode"] = "Mecanico",
 		["Circle"] = 0.1
 	},{
-		["Coords"] = vec3(144.11,-1721.57,29.28),
-		["Mode"] = "PawnShop",
-		["Circle"] = 0.5
-	},{
 		["Coords"] = vec3(-172.89,6381.32,31.48),
 		["Mode"] = "Pharmacy",
 		["Circle"] = 0.5
@@ -358,126 +354,23 @@ List = {
 			}
 		}
 	},
-	["PawnShop"] = {
-		["List"] = {
-			["scotchtape"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 90
-				}
-			},
-			["insulatingtape"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 110
-				}
-			},
-			["rammemory"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 750
-				}
-			},
-			["powersupply"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 950
-				}
-			},
-			["processorfan"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 650
-				}
-			},
-			["processor"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 1450
-				}
-			},
-			["screws"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 90
-				}
-			},
-			["screwnuts"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 90
-				}
-			},
-			["videocard"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 8450
-				}
-			},
-			["ssddrive"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 1050
-				}
-			},
-			["safependrive"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 6650
-				}
-			},
-			["powercable"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 450
-				}
-			},
-			["electroniccomponents"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 750
-				}
-			},
-			["batteryaa"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 450
-				}
-			},
-			["batteryaaplus"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 550
-				}
-			},
-			["goldnecklace"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 1250
-				}
-			},
-			["silverchain"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 850
-				}
-			},
-			["horsefigurine"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 4850
-				}
-			},
-			["toothpaste"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["dollar"] = 350
-				}
-			}
-		}
-	},
 	["Mecanico"] = {
 		["List"] = {
+			["coilover"] = {
+				["Amount"] = 1,
+				["Required"] = {
+					["screws"] = 24,
+					["screwnuts"] = 24,
+					["copper"] = 725,
+					["aluminum"] = 725,
+					["metalspring"] = 4,
+					["sheetmetal"] = 10,
+					["roadsigns"] = 4,
+					["scotchtape"] = 2,
+					["insulatingtape"] = 2,
+					["scrapmetal"] = 425
+				}
+			},
 			["odb2"] = {
 				["Amount"] = 1,
 				["Required"] = {
@@ -1267,7 +1160,7 @@ List = {
 	},
 	["Lester"] = {
 		["List"] = {
-			["vest"] = {
+			["ballisticplate"] = {
 				["Amount"] = 1,
 				["Required"] = {
 					["tarp"] = 3,

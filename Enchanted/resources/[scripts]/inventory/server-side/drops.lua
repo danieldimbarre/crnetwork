@@ -43,11 +43,7 @@ exports("Drops",function(Passport,source,Item,Amount,Force)
 	local Split = splitString(Item)
 	local Route = GetPlayerRoutingBucket(source)
 
-	if Force then
-		Force = Item
-	else
-		Force = vRP.SortNameItem(Passport,Item)
-	end
+	Force = (Force and Item or vRP.SortNameItem(Passport,Item))
 
 	if not Drops[Route] then
 		Drops[Route] = {}

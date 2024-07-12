@@ -414,7 +414,6 @@ List = {
 		["Type"] = "Cash",
 		["Permission"] = "Policia",
 		["List"] = {
-			["vest"] = 125,
 			["gsrkit"] = 25,
 			["gdtkit"] = 25,
 			["barrier"] = 25,

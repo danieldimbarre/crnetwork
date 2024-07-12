@@ -180,9 +180,6 @@ local Garages = {
 	["42"] = { x = 318.85, y = -1457.86, z = 46.51,
 		["1"] = { 313.3,-1465.02,46.89,138.9 }
 	},
-	["43"] = { x = 317.69, y = -1396.5, z = 32.42,
-		["1"] = { 317.58,-1397.06,31.95,170.08 }
-	},
 	["51"] = { x = 442.05, y = -984.13, z = 25.7,
 		["1"] = { 438.57,-991.75,25.51,87.88 },
 		["2"] = { 438.52,-995.3,25.51,87.88 },
@@ -408,10 +405,6 @@ function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Ty
 						end
 					end
 				end
-			end
-
-			if GetVehicleClass(Vehicle) == 14 then
-				SetBoatAnchor(Vehicle,true)
 			end
 
 			SetModelAsNoLongerNeeded(Model)
@@ -657,7 +650,9 @@ AddEventHandler("garages:Propertys",function(GaragesTable,RespawnsTable)
 		}
 	end
 
-	Respawns = RespawnsTable
+	if RespawnsTable then
+		Respawns = RespawnsTable
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:CLEAN

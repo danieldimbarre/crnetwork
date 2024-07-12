@@ -103,66 +103,62 @@ end)
 -- PLAYERFUNCTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("PlayerFunctions",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Prison"] and not Dynamic and not IsPauseMenuActive() then
-		local Ped = PlayerPedId()
-		local Coords = GetEntityCoords(Ped)
+	local Ped = PlayerPedId()
+	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not LocalPlayer["state"]["Prison"] and not Dynamic and not IsPauseMenuActive() and GetEntityHealth(Ped) > 100 then
+		exports["dynamic"]:AddMenu("Armário","Abrir lista com todas as vestimentas.","wardrobe")
+		exports["dynamic"]:AddButton("Guardar","Salvar vestimentas do corpo.","dynamic:Clothes","Save","wardrobe",true)
 
-		if GetEntityHealth(Ped) > 100 then
-			exports["dynamic"]:AddMenu("Armário","Abrir lista com todas as vestimentas.","wardrobe")
-			exports["dynamic"]:AddButton("Guardar","Salvar vestimentas do corpo.","dynamic:Clothes","Save","wardrobe",true)
-
-			local Clothes = vSERVER.Clothes()
-			if parseInt(#Clothes) > 0 then
-				for Index,v in pairs(Clothes) do
-					exports["dynamic"]:AddMenu(v,"Informações da vestimenta.",Index,"wardrobe")
-					exports["dynamic"]:AddButton("Aplicar","Vestir-se com as vestimentas.","dynamic:Clothes","Apply-"..v,Index,true)
-					exports["dynamic"]:AddButton("Remover","Deletar a vestimenta do armário.","dynamic:Clothes","Delete-"..v,Index,true,true)
-				end
+		local Clothes = vSERVER.Clothes()
+		if parseInt(#Clothes) > 0 then
+			for Index,v in pairs(Clothes) do
+				exports["dynamic"]:AddMenu(v,"Informações da vestimenta.",Index,"wardrobe")
+				exports["dynamic"]:AddButton("Aplicar","Vestir-se com as vestimentas.","dynamic:Clothes","Apply-"..v,Index,true)
+				exports["dynamic"]:AddButton("Remover","Deletar a vestimenta do armário.","dynamic:Clothes","Delete-"..v,Index,true,true)
 			end
-
-			exports["dynamic"]:AddMenu("Roupas","Colocar/Retirar roupas.","clothes")
-			exports["dynamic"]:AddButton("Chapéu","Colocar/Retirar o chapéu.","player:Outfit","Hat","clothes",true)
-			exports["dynamic"]:AddButton("Máscara","Colocar/Retirar a máscara.","player:Outfit","Mask","clothes",true)
-			exports["dynamic"]:AddButton("Óculos","Colocar/Retirar o óculos.","player:Outfit","Glasses","clothes",true)
-			exports["dynamic"]:AddButton("Camisa","Colocar/Retirar a camisa.","player:Outfit","Shirt","clothes",true)
-			exports["dynamic"]:AddButton("Jaqueta","Colocar/Retirar a jaqueta.","player:Outfit","Torso","clothes",true)
-			exports["dynamic"]:AddButton("Luvas","Colocar/Retirar as luvas.","player:Outfit","Arms","clothes",true)
-			exports["dynamic"]:AddButton("Colete","Colocar/Retirar o colete.","player:Outfit","Vest","clothes",true)
-			exports["dynamic"]:AddButton("Calça","Colocar/Retirar a calça.","player:Outfit","Pants","clothes",true)
-			exports["dynamic"]:AddButton("Sapatos","Colocar/Retirar o sapato.","player:Outfit","Shoes","clothes",true)
-			exports["dynamic"]:AddButton("Acessórios","Colocar/Retirar os acessórios.","player:Outfit","Accessory","clothes",true)
-
-			if vRP.ClosestVehicle(7) then
-				if not IsPedInAnyVehicle(Ped) then
-					if vRP.ClosestPed(3) then
-						exports["dynamic"]:AddMenu("Jogador","Pessoa mais próxima de você.","closestpeds")
-						exports["dynamic"]:AddButton("Colocar no Veículo","Colocar no veículo mais próximo.","player:cvFunctions","cv","closestpeds",true)
-						exports["dynamic"]:AddButton("Remover do Veículo","Remover do veículo mais próximo.","player:cvFunctions","rv","closestpeds",true)
-					end
-				else
-					exports["dynamic"]:AddMenu("Veículo","Funções do veículo.","vehicle")
-					exports["dynamic"]:AddButton("Sentar no Motorista","Sentar no banco do motorista.","player:seatPlayer","0","vehicle",false)
-					exports["dynamic"]:AddButton("Sentar no Passageiro","Sentar no banco do passageiro.","player:seatPlayer","1","vehicle",false)
-					exports["dynamic"]:AddButton("Sentar em Outros","Sentar no banco do passageiro.","player:seatPlayer","2","vehicle",false)
-					exports["dynamic"]:AddButton("Mexer nos Vidros","Levantar/Abaixar os vidros.","player:Windows","","vehicle",false)
-				end
-
-				exports["dynamic"]:AddMenu("Portas","Portas do veículo.","doors")
-				exports["dynamic"]:AddButton("Porta do Motorista","Abrir porta do motorista.","player:Doors","1","doors",true)
-				exports["dynamic"]:AddButton("Porta do Passageiro","Abrir porta do passageiro.","player:Doors","2","doors",true)
-				exports["dynamic"]:AddButton("Porta Traseira Esquerda","Abrir porta traseira esquerda.","player:Doors","3","doors",true)
-				exports["dynamic"]:AddButton("Porta Traseira Direita","Abrir porta traseira direita.","player:Doors","4","doors",true)
-				exports["dynamic"]:AddButton("Porta-Malas","Abrir porta-malas.","player:Doors","5","doors",true)
-				exports["dynamic"]:AddButton("Capô","Abrir capô.","player:Doors","6","doors",true)
-			end
-
-			exports["dynamic"]:AddMenu("Outros","Todas as funções do personagem.","others")
-			exports["dynamic"]:AddButton("Propriedades","Marcar/Desmarcar propriedades no mapa.","propertys:Blips","","others",false)
-			exports["dynamic"]:AddButton("Ferimentos","Verificar ferimentos no corpo.","paramedic:Injuries","","others",false)
-			exports["dynamic"]:AddButton("Desbugar","Recarregar o personagem.","player:Debug","","others",true)
-
-			exports["dynamic"]:Open()
 		end
+
+		exports["dynamic"]:AddMenu("Roupas","Colocar/Retirar roupas.","clothes")
+		exports["dynamic"]:AddButton("Chapéu","Colocar/Retirar o chapéu.","player:Outfit","Hat","clothes",true)
+		exports["dynamic"]:AddButton("Máscara","Colocar/Retirar a máscara.","player:Outfit","Mask","clothes",true)
+		exports["dynamic"]:AddButton("Óculos","Colocar/Retirar o óculos.","player:Outfit","Glasses","clothes",true)
+		exports["dynamic"]:AddButton("Camisa","Colocar/Retirar a camisa.","player:Outfit","Shirt","clothes",true)
+		exports["dynamic"]:AddButton("Jaqueta","Colocar/Retirar a jaqueta.","player:Outfit","Torso","clothes",true)
+		exports["dynamic"]:AddButton("Luvas","Colocar/Retirar as luvas.","player:Outfit","Arms","clothes",true)
+		exports["dynamic"]:AddButton("Colete","Colocar/Retirar o colete.","player:Outfit","Vest","clothes",true)
+		exports["dynamic"]:AddButton("Calça","Colocar/Retirar a calça.","player:Outfit","Pants","clothes",true)
+		exports["dynamic"]:AddButton("Sapatos","Colocar/Retirar o sapato.","player:Outfit","Shoes","clothes",true)
+		exports["dynamic"]:AddButton("Acessórios","Colocar/Retirar os acessórios.","player:Outfit","Accessory","clothes",true)
+
+		if vRP.ClosestVehicle(7) then
+			if not IsPedInAnyVehicle(Ped) then
+				if vRP.ClosestPed(3) then
+					exports["dynamic"]:AddMenu("Jogador","Pessoa mais próxima de você.","closestpeds")
+					exports["dynamic"]:AddButton("Colocar no Veículo","Colocar no veículo mais próximo.","player:cvFunctions","cv","closestpeds",true)
+					exports["dynamic"]:AddButton("Remover do Veículo","Remover do veículo mais próximo.","player:cvFunctions","rv","closestpeds",true)
+				end
+			else
+				exports["dynamic"]:AddMenu("Veículo","Funções do veículo.","vehicle")
+				exports["dynamic"]:AddButton("Sentar no Motorista","Sentar no banco do motorista.","player:seatPlayer","0","vehicle",false)
+				exports["dynamic"]:AddButton("Sentar no Passageiro","Sentar no banco do passageiro.","player:seatPlayer","1","vehicle",false)
+				exports["dynamic"]:AddButton("Sentar em Outros","Sentar no banco do passageiro.","player:seatPlayer","2","vehicle",false)
+				exports["dynamic"]:AddButton("Mexer nos Vidros","Levantar/Abaixar os vidros.","player:Windows","","vehicle",false)
+			end
+
+			exports["dynamic"]:AddMenu("Portas","Portas do veículo.","doors")
+			exports["dynamic"]:AddButton("Porta do Motorista","Abrir porta do motorista.","player:Doors","1","doors",true)
+			exports["dynamic"]:AddButton("Porta do Passageiro","Abrir porta do passageiro.","player:Doors","2","doors",true)
+			exports["dynamic"]:AddButton("Porta Traseira Esquerda","Abrir porta traseira esquerda.","player:Doors","3","doors",true)
+			exports["dynamic"]:AddButton("Porta Traseira Direita","Abrir porta traseira direita.","player:Doors","4","doors",true)
+			exports["dynamic"]:AddButton("Porta-Malas","Abrir porta-malas.","player:Doors","5","doors",true)
+			exports["dynamic"]:AddButton("Capô","Abrir capô.","player:Doors","6","doors",true)
+		end
+
+		exports["dynamic"]:AddMenu("Outros","Todas as funções do personagem.","others")
+		exports["dynamic"]:AddButton("Propriedades","Marcar/Desmarcar propriedades no mapa.","propertys:Blips","","others",false)
+		exports["dynamic"]:AddButton("Ferimentos","Verificar ferimentos no corpo.","paramedic:Injuries","","others",false)
+		exports["dynamic"]:AddButton("Desbugar","Recarregar o personagem.","player:Debug","","others",true)
+
+		exports["dynamic"]:Open()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

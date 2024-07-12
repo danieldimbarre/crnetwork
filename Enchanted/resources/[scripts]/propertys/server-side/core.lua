@@ -511,7 +511,11 @@ function Creative.Mount(Name,Mode)
 					if Split[1] == "vehiclekey" and Split[3] then
 						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
 					elseif ItemNamed(Split[1]) and Split[2] then
-						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						if Split[1] == "identity" then
+							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+						else
+							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						end
 					end
 				end
 
@@ -553,7 +557,11 @@ function Creative.Mount(Name,Mode)
 					if Split[1] == "vehiclekey" and Split[3] then
 						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
 					elseif ItemNamed(Split[1]) and Split[2] then
-						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						if Split[1] == "identity" then
+							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+						else
+							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						end
 					end
 				end
 
@@ -679,7 +687,7 @@ AddEventHandler("CharacterChosen",function(Passport,source)
 	local Increments = {}
 
 	if vRP.Scalar("propertys/Count",{ Passport = Passport }) <= 0 then
-		Increments[#Increments + 1] = "Hotel"
+		Increments[#Increments + 1] = Propertys["Hotel"]["Coords"]
 	else
 		local Consult = vRP.Query("propertys/AllUser",{ Passport = Passport })
 		if Consult[1] then

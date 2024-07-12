@@ -43,7 +43,6 @@ Garages = {
 	-- Paramedic
 	["41"] = { ["Name"] = "Paramedico", ["Permission"] = "Paramedico" },
 	["42"] = { ["Name"] = "Paramedico2", ["Permission"] = "Paramedico" },
-	["43"] = { ["Name"] = "Cadeira", ["Permission"] = "Paramedico" },
 
 	-- Police
 	["51"] = { ["Name"] = "Policia", ["Permission"] = "Policia" },
@@ -155,9 +154,6 @@ Works = {
 	},
 	["Towed"] = {
 		"flatbed"
-	},
-	["Cadeira"] = {
-		"wheelchair"
 	},
 	["Milkman"] = {
 		"youga2"

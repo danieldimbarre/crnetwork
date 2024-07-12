@@ -20,6 +20,7 @@ local Death = {
 	["Default"] = 300,
 	["Status"] = false,
 	["Cooldown"] = GetGameTimer(),
+	["Title"] = "Nocauteado",
 	["Text"] = "Aguarde os primeiros socorros"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -33,7 +34,8 @@ local Crawl = {
 	["Mode"] = "onfront",
 	["Stand"] = GetGameTimer(),
 	["Cooldown"] = GetGameTimer(),
-	["Text"] = "Você está ferido, procure ajuda"
+	["Title"] = "Ferido",
+	["Text"] = "Aguarde os primeiros socorros"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TIMECRAWLING
@@ -100,7 +102,7 @@ CreateThread(function()
 					Death["Status"] = true
 					Death["Pressed"] = 0
 
-					SendNUIMessage({ name = "Open", payload = true })
+					SendNUIMessage({ Action = "Open" })
 					TriggerServerEvent("paramedic:bloodDeath")
 					exports["lb-phone"]:ToggleDisabled(true)
 					TriggerEvent("player:DeathUpdate",true)
@@ -134,24 +136,24 @@ CreateThread(function()
 
 						if Crawl["Timer"] > 0 then
 							Crawl["Timer"] = Crawl["Timer"] - 1
-							SendNUIMessage({ name = "Update", payload = { "Arrastando-se","Restam "..Crawl["Timer"].." segundos",Crawl["Text"] } })
+							SendNUIMessage({ Action = "Update", Payload = { Crawl["Title"],Crawl["Text"],Crawl["Timer"] } })
 
 							if Crawl["Timer"] <= 0 then
 								exports["pma-voice"]:Mute(true)
 								Death["Timer"] = Death["Default"]
 								LocalPlayer["state"]:set("Crawl",false,true)
-								SendNUIMessage({ name = "Update", payload = { "Nocauteado","Restam "..Death["Timer"].." segundos",Death["Text"] } })
-							end
-						elseif Death["Timer"] > 0 then
-							Death["Timer"] = Death["Timer"] - 1
-							SendNUIMessage({ name = "Update", payload = { "Nocauteado","Restam "..Death["Timer"].." segundos",Death["Text"] } })
-
-							if Death["Timer"] <= 0 then
-								SendNUIMessage({ name = "Update", payload = { "Nocauteado","Segure a tecla E para ser encaminhado ao hospital",Death["Text"] } })
-								SetFacialIdleAnimOverride(Ped,"mood_sleeping_1",0)
+								SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"] } })
 								LocalPlayer["state"]:set("Cyndaquil",true,false)
 								NetworkSetFriendlyFireOption(false)
 								SetEntityInvincible(Ped,true)
+							end
+						elseif Death["Timer"] > 0 then
+							Death["Timer"] = Death["Timer"] - 1
+							SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"] } })
+
+							if Death["Timer"] <= 0 then
+								SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"],"Segure [E] por 10 segundos" } })
+								SetFacialIdleAnimOverride(Ped,"mood_sleeping_1",0)
 							end
 						end
 					end
@@ -246,9 +248,9 @@ function FinishSurvival()
 
 	TriggerEvent("paramedic:Reset")
 	exports["pma-voice"]:Mute(false)
+	SendNUIMessage({ Action = "Close" })
 	TriggerEvent("inventory:CleanWeapons")
 	exports["lb-phone"]:ToggleDisabled(false)
-	SendNUIMessage({ name = "Open", payload = false })
 
 	if LocalPlayer["state"]["Handcuff"] then
 		LocalPlayer["state"]:set("Handcuff",false,true)
@@ -257,7 +259,6 @@ function FinishSurvival()
 	DoScreenFadeOut(0)
 	SetEntityHeading(Ped,136.07)
 	SetEntityCoords(Ped,315.26,-1412.37,31.62)
-	TriggerEvent("target:Treatment",math.random(4),true)
 
 	SetTimeout(5000,function()
 		TriggerEvent("player:DeathUpdate",false)
@@ -293,9 +294,9 @@ exports("Revive",function(Health)
 		TriggerEvent("paramedic:Reset")
 		TriggerEvent("hud:Active",true)
 		exports["pma-voice"]:Mute(false)
+		SendNUIMessage({ Action = "Close" })
 		TriggerEvent("player:DeathUpdate",false)
 		exports["lb-phone"]:ToggleDisabled(false)
-		SendNUIMessage({ name = "Open", payload = false })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

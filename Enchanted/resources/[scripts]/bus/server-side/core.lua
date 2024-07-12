@@ -25,7 +25,7 @@ function Creative.Payment(Selected)
 
 		local Coords = vRP.GetEntityCoords(source)
 		if not Selected or not vRPC.LastVehicle(source,"bus") or #(Coords - Locations[Selected]) > 25 then
-			exports["discord"]:Embed("Hackers","**Passaporte:** "..Passport.."\n**Função:** Payment do Motorista",0xa3c846,source)
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Motorista\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
 		end
 
 		local GainExperience = 1

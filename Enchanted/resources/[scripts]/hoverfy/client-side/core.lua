@@ -18,13 +18,13 @@ CreateThread(function()
 					if #(Coords - v["Coords"]) <= v["Distance"] then
 						Active = Number
 						Payload = { v["Key"], v["Title"], v["Legend"] }
-						SendNUIMessage({ name = "Show", payload = Payload })
+						SendNUIMessage({ Action = "Show", Payload = Payload })
 					end
 				end
 			end
 		else
 			if Displays[Active] and #(Coords - Displays[Active]["Coords"]) > Displays[Active]["Distance"] then
-				SendNUIMessage({ name = "Hide" })
+				SendNUIMessage({ Action = "Hide" })
 				Active = false
 			end
 		end
@@ -53,9 +53,9 @@ end)
 AddStateBagChangeHandler("Hoverfy",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
 	if Displays[Active] then
 		if Value then
-			SendNUIMessage({ name = "Show", payload = Payload })
+			SendNUIMessage({ Action = "Show", Payload = Payload })
 		else
-			SendNUIMessage({ name = "Hide" })
+			SendNUIMessage({ Action = "Hide" })
 		end
 	end
 end)

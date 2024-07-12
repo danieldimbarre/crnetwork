@@ -2,10 +2,18 @@
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 Weapon = ""
+local Skins = {}
 local Objects = {}
 TakeWeapon = false
 StoreWeapon = false
 local Reloaded = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:SKINS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("inventory:Skins")
+AddEventHandler("inventory:Skins",function(Table)
+	Skins = Table
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -260,12 +268,18 @@ RegisterNetEvent("inventory:CreateWeapon")
 AddEventHandler("inventory:CreateWeapon",function(Name)
 	local Name = SplitOne(Name)
 	if Config[Name] and not Objects[Name] then
+		local Weapon = false
 		local Ped = PlayerPedId()
 		local Config = Config[Name]
 		local Coords = GetEntityCoords(Ped)
 		local Bone = GetPedBoneIndex(Ped,Config["Bone"])
 
-		local Network = vRPS.CreateObject(Config["Model"],Coords["x"],Coords["y"],Coords["z"],Name)
+		if Skins[Name] then
+			local Hash = GetHashKey(Skins[Name])
+			Weapon = GetWeaponComponentTypeModel(Hash)
+		end
+
+		local Network = vRPS.CreateObject(Config["Model"],Coords["x"],Coords["y"],Coords["z"],Name,Weapon)
 		if Network then
 			Objects[Name] = LoadNetwork(Network)
 			if Objects[Name] then

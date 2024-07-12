@@ -115,9 +115,16 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENGINE:SUPPLY
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("engine:Supply")
 AddEventHandler("engine:Supply",function(Entitys)
+	if VehicleFuel then
+		return false
+	end
+
 	local Vehicle = Entitys[3]
+	if not Entity(Vehicle)["state"]["Fuel"] then
+		Entity(Vehicle)["state"]:set("Fuel",100,true)
+	end
+
 	Lasted = Entity(Vehicle)["state"]["Fuel"]
 
 	if Lasted <= 99.975 then
@@ -126,7 +133,8 @@ AddEventHandler("engine:Supply",function(Entitys)
 		local Coords = GetEntityCoords(Vehicle)
 
 		if not Display and not Gallons then
-			SendNUIMessage({ name = "Show", payload = true })
+			SendNUIMessage({ Action = "Open" })
+			TriggerEvent("hud:Active",false)
 			Display = true
 		end
 
@@ -151,12 +159,12 @@ AddEventHandler("engine:Supply",function(Entitys)
 			DisableControlAction(0,263,true)
 
 			if not Gallons then
-				Price = Price + 0.125
+				Price = Price + 0.150
 				VehicleFuel = VehicleFuel + 0.025
-				SendNUIMessage({ name = "Tank", payload = { tank = floor(VehicleFuel), price = Price, lts = 0.125 * 4 } })
+				SendNUIMessage({ Action = "Tank", Payload = { floor(VehicleFuel),Price,0.150 * 4 } })
 			else
-				if (GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100) > 1 then
-					SetPedAmmo(Ped,883325847,math.floor(GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100))
+				if (GetAmmoInPedWeapon(Ped,883325847) - 0.025 * 100) > 1 then
+					SetPedAmmo(Ped,883325847,math.floor(GetAmmoInPedWeapon(Ped,883325847) - 0.025 * 100))
 					VehicleFuel = VehicleFuel + 0.025
 				end
 			end
@@ -169,14 +177,15 @@ AddEventHandler("engine:Supply",function(Entitys)
 				TaskPlayAnim(Ped,"timetable@gardener@filling_can","gar_ig_5_filling_can",8.0,8.0,-1,50,1,0,0,0)
 			end
 
-			if VehicleFuel >= 100.0 or GetEntityHealth(Ped) <= 100 or (Gallons and GetAmmoInPedWeapon(Ped,883325847) - 0.02 * 100 <= 1) or IsControlJustPressed(1,38) then
+			if VehicleFuel >= 100.0 or GetEntityHealth(Ped) <= 100 or (Gallons and GetAmmoInPedWeapon(Ped,883325847) - 0.025 * 100 <= 1) or IsControlJustPressed(1,38) then
 				if not Gallons and not vSERVER.RechargeFuel(Price) then
 					Entity(Vehicle)["state"]:set("Fuel",Lasted + 0.0,true)
 				else
 					Entity(Vehicle)["state"]:set("Fuel",VehicleFuel + 0.0,true)
 
 					if Display then
-						SendNUIMessage({ name = "Show", payload = false })
+						SendNUIMessage({ Action = "Close" })
+						TriggerEvent("hud:Active",true)
 					end
 				end
 

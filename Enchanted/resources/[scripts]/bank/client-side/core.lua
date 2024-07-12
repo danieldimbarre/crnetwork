@@ -48,6 +48,7 @@ AddEventHandler("Bank",function()
 	if not exports["hud"]:Wanted() then
 		SetNuiFocus(true,true)
 		TransitionToBlurred(1000)
+		TriggerEvent("hud:Active",false)
 		SendNUIMessage({ Action = "Open", name = LocalPlayer["state"]["Name"] })
 	end
 end)
@@ -57,6 +58,7 @@ end)
 RegisterNUICallback("Close",function(Data,Callback)
 	SetNuiFocus(false,false)
 	TransitionFromBlurred(1000)
+	TriggerEvent("hud:Active",true)
 	SendNUIMessage({ Action = "Hide" })
 
 	Callback(true)

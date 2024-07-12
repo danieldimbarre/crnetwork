@@ -38,6 +38,10 @@ local Labels = {
 			label = "Compartimento Pessoal",
 			tunnel = "client",
 			service = "Personal"
+		},{
+			event = "chest:Armour",
+			label = "Colete Balístico",
+			tunnel = "server"
 		}
 	},
 	["2"] = {

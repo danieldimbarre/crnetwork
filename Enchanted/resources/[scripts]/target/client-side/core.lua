@@ -17,7 +17,6 @@ local Focus = false
 local Selected = {}
 local Sucess = false
 local Actived = false
-local Dismantlee = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISMANTLE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -45,23 +44,6 @@ local Towed = PolyZone:Create({
 	vec2(393.87,-1634.91),
 	vec2(400.25,-1640.29)
 },{ name = "Towed" })
------------------------------------------------------------------------------------------------------------------------------------------
--- TARGET:DISMANTLE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("target:Dismantle")
-AddEventHandler("target:Dismantle",function(Model)
-	if not Dismantlee then
-		Dismantlee = math.random(#Dismantle)
-		TriggerEvent("NotifyPush",{ code = 20, title = "Localização do Desmanche", x = Dismantle[Dismantlee]["x"], y = Dismantle[Dismantlee]["y"], z = Dismantle[Dismantlee]["z"], vehicle = VehicleName(Model), color = 60 })
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DISMANTLE:RESET
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("dismantle:Reset")
-AddEventHandler("dismantle:Reset",function()
-	Dismantlee = false
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -604,8 +586,13 @@ function TargetEnable()
 								Menu[#Menu + 1] = { event = "towed:Impound", label = "Impound", tunnel = "server" }
 								Menu[#Menu + 1] = { event = "police:Plate", label = "Verificar Placa", tunnel = "server" }
 								Menu[#Menu + 1] = { event = "police:ArrestVehicles", label = "Apreender", tunnel = "server" }
-							elseif Dismantlee and #(Coords - Dismantle[Dismantlee]) <= 15 then
-								Menu[#Menu + 1] = { event = "inventory:Dismantle", label = "Desmanchar", tunnel = "server" }
+							else
+								for _,v in pairs(Dismantle) do
+									if #(Coords - v) <= 15 then
+										Menu[#Menu + 1] = { event = "inventory:Dismantle", label = "Desmanchar", tunnel = "server" }
+										break
+									end
+								end
 							end
 						end
 					end

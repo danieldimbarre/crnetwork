@@ -827,6 +827,30 @@ local List = {
 			}
 		}
 	},
+	["teddypack"] = {
+		["Index"] = "teddypack",
+		["Name"] = "Mochila de Ursinho",
+		["Description"] = "Adorável bolsa infantil, feita de material macio e peludo, com uma carinha sorridente bordada na frente e orelhas tridimensionais, é prática e encantadora ao mesmo tempo.<br>Aumenta o peso de sua mochila em <epic>100Kg</epic>.",
+		["Repair"] = "sewingkit",
+		["Type"] = "Comum",
+        ["Market"] = true,
+		["Durability"] = 720,
+		["Weight"] = 2.5,
+		["Delete"] = true,
+		["Economy"] = 200000,
+		["Rarity"] = "legendary",
+		["Backpack"] = 100,
+		["Skinshop"] = {
+			["mp_m_freemode_01"] = {
+				["Model"] = 131,
+				["Texture"] = 0
+			},
+			["mp_f_freemode_01"] = {
+				["Model"] = 131,
+				["Texture"] = 0
+			}
+		}
+	},
 	["WEAPON_KATANA"] = {
 		["Index"] = "katana",
 		["Name"] = "Katana",
@@ -898,7 +922,6 @@ local List = {
 		["Durability"] = 720,
 		["Weight"] = 2.75,
 		["Delete"] = true,
-		["Water"] = "In",
 		["Economy"] = 50000,
 		["Rarity"] = "legendary"
 	},
@@ -1008,7 +1031,7 @@ local List = {
 		["Economy"] = 100000,
 		["Rarity"] = "legendary"
 	},
-	-- ALIANÇAS
+	-- NAMEDS
 	["alliance"] = {
 		["Index"] = "alliance",
 		["Name"] = "Aliança",
@@ -1016,6 +1039,14 @@ local List = {
 		["Weight"] = 0.15,
 		["Economy"] = 525,
 		["Named"] = true
+	},
+	["identity"] = {
+		["Index"] = "identity",
+		["Name"] = "Passaporte",
+		["Type"] = "Comum",
+		["Weight"] = 0.0,
+		["Named"] = true,
+        ["Market"] = true
 	},
 	-- COMPONENTES
 	["circuit"] = {
@@ -3735,6 +3766,15 @@ local List = {
 			["plastic"] = 40
 		}
 	},
+	["coilover"] = {
+		["Index"] = "coilover",
+		["Name"] = "Suspensão Coilover",
+		["Description"] = "Projetada para oferecer ajustabilidade extrema e resposta rápida em curvas fechadas e mudanças de direção rápidas, ajuda a maximizar a aderência nas curvas e proporcionar uma sensação precisa e controlada ao volante, fundamental para executar manobras precisas e controladas durante as competições de drift.",
+		["Type"] = "Consumível",
+		["Weight"] = 15.25,
+		["Economy"] = 24725,
+		["Market"] = true
+	},
 	["odb2"] = {
 		["Index"] = "odb2",
 		["Name"] = "Scanner Automotivo",
@@ -3774,9 +3814,9 @@ local List = {
 			["plastic"] = 25
 		}
 	},
-	["vest"] = {
-		["Index"] = "vest",
-		["Name"] = "Colete Balístico",
+	["ballisticplate"] = {
+		["Index"] = "ballisticplate",
+		["Name"] = "Placa Balística",
 		["Repair"] = "repairkit01",
 		["Type"] = "Consumível",
 		["Arrest"] = true,
@@ -3787,14 +3827,46 @@ local List = {
 	},
 	["fishingrod"] = {
 		["Index"] = "fishingrod",
-		["Name"] = "Vara de Pescar",
+		["Name"] = "Vara de Madeira",
 		["Description"] = "Companheira ideal para os amantes da pesca, seja em água doce ou salgada, com sua construção leve e resistente, proporciona equilíbrio perfeito e sensibilidade para detectar até os mais sutis movimentos dos peixes, seja para pescadores iniciantes ou experientes, esta vara é a escolha confiável para horas de diversão e sucesso nas pescarias.",
 		["Repair"] = "repairkit01",
 		["Type"] = "Consumível",
-		["Durability"] = 240,
+		["Durability"] = 72,
 		["Weight"] = 2.75,
-		["Water"] = "In",
-		["Economy"] = 1225,
+		["Economy"] = 575,
+		["Market"] = true
+	},
+	["fishingrod2"] = {
+		["Index"] = "fishingrod2",
+		["Name"] = "Vara de Grafite",
+		["Description"] = "Companheira ideal para os amantes da pesca, seja em água doce ou salgada, com sua construção leve e resistente, proporciona equilíbrio perfeito e sensibilidade para detectar até os mais sutis movimentos dos peixes, seja para pescadores iniciantes ou experientes, esta vara é a escolha confiável para horas de diversão e sucesso nas pescarias.",
+		["Repair"] = "repairkit01",
+		["Type"] = "Consumível",
+		["Durability"] = 72,
+		["Weight"] = 2.75,
+		["Economy"] = 875,
+		["Market"] = true
+	},
+	["fishingrod3"] = {
+		["Index"] = "fishingrod3",
+		["Name"] = "Vara de Fibra",
+		["Description"] = "Companheira ideal para os amantes da pesca, seja em água doce ou salgada, com sua construção leve e resistente, proporciona equilíbrio perfeito e sensibilidade para detectar até os mais sutis movimentos dos peixes, seja para pescadores iniciantes ou experientes, esta vara é a escolha confiável para horas de diversão e sucesso nas pescarias.",
+		["Repair"] = "repairkit01",
+		["Type"] = "Consumível",
+		["Durability"] = 72,
+		["Weight"] = 2.75,
+		["Economy"] = 1275,
+		["Market"] = true
+	},
+	["fishingrod4"] = {
+		["Index"] = "fishingrod4",
+		["Name"] = "Vara de Carbono",
+		["Description"] = "Companheira ideal para os amantes da pesca, seja em água doce ou salgada, com sua construção leve e resistente, proporciona equilíbrio perfeito e sensibilidade para detectar até os mais sutis movimentos dos peixes, seja para pescadores iniciantes ou experientes, esta vara é a escolha confiável para horas de diversão e sucesso nas pescarias.",
+		["Repair"] = "repairkit01",
+		["Type"] = "Consumível",
+		["Durability"] = 72,
+		["Weight"] = 2.75,
+		["Economy"] = 1925,
 		["Market"] = true
 	},
 	["pickaxe"] = {

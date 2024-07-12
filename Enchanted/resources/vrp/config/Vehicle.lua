@@ -2,7 +2,7 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
--- Boats
+	-- BOATS
 	["dinghy"] = {
 		["Name"] = "Dinghy",
 		["Weight"] = 0,
@@ -229,7 +229,7 @@ local List = {
 		["Type"] = "boat"
 	},
 
--- Commercials
+	-- COMMERCIALS
 	["benson"] = {
 		["Name"] = "Benson",
 		["Weight"] = 225,
@@ -411,7 +411,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Compacts
+	-- COMPACTS
 	["asbo"] = {
 		["Name"] = "Asbo",
 		["Weight"] = 20,
@@ -566,7 +566,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Coupes
+	-- COUPES
 	["cogcabrio"] = {
 		["Name"] = "Cogcabrio",
 		["Weight"] = 30,
@@ -703,7 +703,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Cycles
+	-- CYCLES
 	["bmx"] = {
 		["Name"] = "Bmx",
 		["Weight"] = 0,
@@ -768,7 +768,7 @@ local List = {
 		["Type"] = "bike"
 	},
 
--- Emergency
+	-- EMERGENCY
 	["ambulance"] = {
 		["Name"] = "Ambulance",
 		["Weight"] = 0,
@@ -959,7 +959,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Helicopters
+	-- HELICOPTERS
 	["akula"] = {
 		["Name"] = "Akula",
 		["Weight"] = 40,
@@ -1195,7 +1195,7 @@ local List = {
 		["Type"] = "heli"
 	},
 
--- Industrial	
+	-- INDUSTRIAL
 	["bulldozer"] = {
 		["Name"] = "Bulldozer",
 		["Weight"] = 40,
@@ -1296,7 +1296,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Military
+	-- MILITARY
 	["apc"] = {
 		["Name"] = "Apc",
 		["Weight"] = 40,
@@ -1451,7 +1451,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Motorcycles
+	-- BIKES
 	["akuma"] = {
 		["Name"] = "Akuma",
 		["Weight"] = 20,
@@ -1957,7 +1957,7 @@ local List = {
 		["Type"] = "bike"
 	},
 
--- Muscle
+	-- MUSCLES
 	["blade"] = {
 		["Name"] = "Blade",
 		["Weight"] = 40,
@@ -2643,7 +2643,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Off-Road
+	-- OFF-ROADS
 	["bfinjection"] = {
 		["Name"] = "Bfinjection",
 		["Weight"] = 20,
@@ -3167,7 +3167,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Open Wheel
+	-- OPEN WHEELS
 	["formula"] = {
 		["Name"] = "Formula",
 		["Weight"] = 40,
@@ -3205,7 +3205,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Planes
+	-- PLANES
 	["alphaz1"] = {
 		["Name"] = "Alphaz 1",
 		["Weight"] = 40,
@@ -3567,7 +3567,7 @@ local List = {
 		["Type"] = "plane"
 	},
 
--- SUVs
+	-- SUVS
 	["baller"] = {
 		["Name"] = "Baller",
 		["Weight"] = 50,
@@ -3884,7 +3884,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Sedans
+	-- SEDANS
 	["asea"] = {
 		["Name"] = "Asea",
 		["Weight"] = 30,
@@ -4165,7 +4165,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Service
+	-- SERVICES
 	["airbus"] = {
 		["Name"] = "Airbus",
 		["Weight"] = 40,
@@ -4275,7 +4275,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Sports
+	-- SPORTS
 	["alpha"] = {
 		["Name"] = "Alpha",
 		["Weight"] = 40,
@@ -5582,7 +5582,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Super
+	-- SUPER
 	["adder"] = {
 		["Name"] = "Adder",
 		["Weight"] = 20,
@@ -6025,7 +6025,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Trailer
+	-- TRAILER
 	["armytanker"] = {
 		["Name"] = "Armytanker",
 		["Weight"] = 40,
@@ -6243,7 +6243,7 @@ local List = {
 		["Type"] = "trailer"
 	},
 
--- Trains
+	-- TRAINS
 	["freight"] = {
 		["Name"] = "Freight",
 		["Weight"] = 40,
@@ -6308,7 +6308,7 @@ local List = {
 		["Type"] = "train"
 	},
 
--- Utility
+	-- UTILITY
 	["airtug"] = {
 		["Name"] = "Airtug",
 		["Weight"] = 40,
@@ -6490,7 +6490,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Vans
+	-- VANS
 	["bison"] = {
 		["Name"] = "Bison",
 		["Weight"] = 30,
@@ -6825,7 +6825,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Imported
+	-- IMPORTS
 	["22m5"] = {
 		["Name"] = "BMW M5",
 		["Weight"] = 60,
@@ -7228,7 +7228,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
--- Public Service
+	-- SERVICES
 	["polas350"] = {
 		["Name"] = "Polaris 350",
 		["Weight"] = 0,
@@ -7455,16 +7455,7 @@ local List = {
 		["Type"] = "automobile"
 	},
 
---sem classe ainda
-	["wheelchair"] = {
-		["Name"] = "Cadeira de Rodas",
-		["Weight"] = 0,
-		["Price"] = 500,
-		["Mode"] = nil,
-		["Gemstone"] = 0,
-		["Class"] = "Embarcações",
-		["Type"] = "automobile"
-	},
+	-- SEM CLASSES
 	["brickade2"] = {
 		["Name"] = "brickade2",
 		["Weight"] = 40,

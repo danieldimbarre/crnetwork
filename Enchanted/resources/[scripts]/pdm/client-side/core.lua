@@ -12,6 +12,11 @@ vSERVER = Tunnel.getInterface("pdm")
 local Mount = nil
 local Camera = nil
 local LastModel = ""
+local CamRoration = 294.81
+local CamCoords = vec3(-49.14,-1099.56,26.92)
+local TestDriveReturn = vec3(-58.03,-1096.94,26.42)
+local SpawnCoords = vec4(-44.42,-1097.44,26.23,28.35)
+local TestDriveCoords = vec4(-53.28,-1110.93,26.47,68.04)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CAMERAACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -44,27 +49,16 @@ AddEventHandler("pdm:Open",function()
 		SetNuiFocus(true,true)
 		SetCursorLocation(0.5,0.5)
 		TriggerEvent("dynamic:Close")
-		SendNUIMessage({ name = "Open", payload = VehicleList() })
+		TriggerEvent("hud:Active",false)
+		SendNUIMessage({ Action = "Open", Payload = VehicleList() })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Close",function(Data,Callback)
-	SetNuiFocus(false,false)
-	SetCursorLocation(0.5,0.5)
-
-	if DoesEntityExist(Mount) then
-		DeleteEntity(Mount)
-	end
-
-	if DoesCamExist(Camera) then
-		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
-		DestroyCam(Camera,false)
-		LastModel = ""
-		Camera = nil
-	end
+	TriggerEvent("hud:Active",true)
+	TriggerEvent("pdm:Close")
 
 	Callback("Ok")
 end)
@@ -72,12 +66,13 @@ end)
 -- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Mount",function(Data,Callback)
-	if LoadModel(Data) and LastModel ~= Data then
+	local Vehicle = Data["vehicle"]
+	if LoadModel(Vehicle) and LastModel ~= Vehicle then
 		if DoesEntityExist(Mount) then
 			DeleteEntity(Mount)
 		end
 
-		Mount = CreateVehicle(Data,SpawnCoords,false,false)
+		Mount = CreateVehicle(Vehicle,SpawnCoords,false,false)
 		SetVehicleCustomSecondaryColour(Mount,88,101,242)
 		SetVehicleCustomPrimaryColour(Mount,88,101,242)
 		SetVehicleNumberPlateText(Mount,"PDMSPORT")
@@ -85,8 +80,8 @@ RegisterNUICallback("Mount",function(Data,Callback)
 		FreezeEntityPosition(Mount,true)
 		SetEntityInvincible(Mount,true)
 		SetVehicleDirtLevel(Mount,0.0)
-		SetModelAsNoLongerNeeded(Data)
-		LastModel = Data
+		SetModelAsNoLongerNeeded(Vehicle)
+		LastModel = Vehicle
 	end
 
 	Callback("Ok")
@@ -95,16 +90,22 @@ end)
 -- BUY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Buy",function(Data,Callback)
-	vSERVER.Buy(Data)
+	local Return = false
+	if vSERVER.Buy(Data["vehicle"]) then
+		SendNUIMessage({ Action = "Close" })
+		TriggerEvent("hud:Active",true)
+		TriggerEvent("pdm:Close")
+		Return = true
+	end
 
-	Callback("Ok")
+	Callback(Return)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Rotate",function(Data,Callback)
 	if DoesEntityExist(Mount) then
-		if Data == "Left" then
+		if Data["direction"] == "Left" then
 			SetEntityHeading(Mount,GetEntityHeading(Mount) - 5)
 		else
 			SetEntityHeading(Mount,GetEntityHeading(Mount) + 5)
@@ -122,15 +123,15 @@ RegisterNUICallback("Drive",function(Data,Callback)
 			DoScreenFadeOut(0)
 		end
 
-		SetNuiFocus(false,false)
-		SetCursorLocation(0.5,0.5)
+		TriggerEvent("pdm:Close")
+		SendNUIMessage({ Action = "Close" })
 
-		if LoadModel(Data) then
+		if LoadModel(Data["vehicle"]) then
 			if DoesEntityExist(Mount) then
 				DeleteEntity(Mount)
 			end
 
-			Mount = CreateVehicle(Data,TestDriveCoords,false,false)
+			Mount = CreateVehicle(Data["vehicle"],TestDriveCoords,false,false)
 
 			SetVehicleModKit(Mount,0)
 			SetVehicleDirtLevel(Mount,0.0)
@@ -145,13 +146,14 @@ RegisterNUICallback("Drive",function(Data,Callback)
 			SetVehicleMod(Mount,13,GetNumVehicleMods(Mount,13) - 1,false)
 			SetVehicleMod(Mount,15,GetNumVehicleMods(Mount,15) - 1,false)
 
-			SetModelAsNoLongerNeeded(Data)
+			SetModelAsNoLongerNeeded(Data["vehicle"])
 
 			LocalPlayer["state"]:set("Commands",true,true)
 			LocalPlayer["state"]:set("TestDrive",true,false)
 
 			SetTimeout(2500,function()
 				if IsScreenFadedOut() then
+					TriggerEvent("hud:Active",true)
 					DoScreenFadeIn(2500)
 				end
 			end)
@@ -187,4 +189,23 @@ RegisterNUICallback("Drive",function(Data,Callback)
 	end
 
 	Callback("Ok")
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PDM:CLOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("pdm:Close",function()
+	SetNuiFocus(false,false)
+	SetCursorLocation(0.5,0.5)
+
+	if DoesEntityExist(Mount) then
+		DeleteEntity(Mount)
+	end
+
+	if DoesCamExist(Camera) then
+		RenderScriptCams(false,false,0,false,false)
+		SetCamActive(Camera,false)
+		DestroyCam(Camera,false)
+		LastModel = ""
+		Camera = nil
+	end
 end)

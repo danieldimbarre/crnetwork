@@ -189,7 +189,7 @@ Loots = {
 			{ ["Item"] = "weaponparts", ["Chance"] = 15, ["Min"] = 2, ["Max"] = 3 },
 			{ ["Item"] = "dismantle", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "blocksignal", ["Chance"] = 15, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "vest", ["Chance"] = 10, ["Min"] = 1, ["Max"] = 1 },
+			{ ["Item"] = "ballisticplate", ["Chance"] = 10, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "lockpick", ["Chance"] = 50, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "handcuff", ["Chance"] = 15, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "hood", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 1 },
@@ -429,7 +429,11 @@ function Creative.Mount()
 					if Split[1] == "vehiclekey" and Split[3] then
 						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
 					elseif ItemNamed(Split[1]) and Split[2] then
-						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						if Split[1] == "identity" then
+							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+						else
+							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						end
 					end
 				end
 
@@ -481,7 +485,11 @@ function Creative.Blueprint()
 					if Split[1] == "vehiclekey" and Split[3] then
 						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
 					elseif ItemNamed(Split[1]) and Split[2] then
-						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						if Split[1] == "identity" then
+							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+						else
+							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						end
 					end
 				end
 
@@ -1388,7 +1396,7 @@ AddEventHandler("inventory:Products",function(Service)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Products[Service] then
 		if Products[Service]["PolyZone"] and not vFARMER.PolyZone(source,Service) then
-			exports["discord"]:Embed("Hackers","**Passaporte:** "..Passport.."\n**Função:** Farmer do "..Service,0xa3c846,source)
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Farmer do "..Service.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
 		end
 
 		if Products[Service]["Item"] and not vRP.ConsultItem(Passport,Products[Service]["Item"]) then
@@ -1779,6 +1787,7 @@ AddEventHandler("Connect",function(Passport,source)
 
 	TriggerClientEvent("objects:Table",source,Objects)
 	TriggerClientEvent("inventory:Drops",source,Drops)
+	TriggerClientEvent("inventory:Skins",source,Users["Skins"][Passport])
 
 	for Name,_ in pairs(Buffs) do
 		if Buffs[Name] and Buffs[Name][Passport] and os.time() < Buffs[Name][Passport] then

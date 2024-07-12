@@ -14,14 +14,14 @@ local Camera = nil
 -- LOCATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Locate = {
-	{ ["Coords"] = vec3(-2205.92,-370.48,13.29), ["name"] = "" },
-	{ ["Coords"] = vec3(-2205.92,-370.48,13.29), ["name"] = "" },
-	{ ["Coords"] = vec3(-250.35,6209.71,31.49), ["name"] = "" },
-	{ ["Coords"] = vec3(1694.37,4794.66,41.92), ["name"] = "" },
-	{ ["Coords"] = vec3(1858.94,3741.78,33.09), ["name"] = "" },
-	{ ["Coords"] = vec3(328.0,2617.89,44.48), ["name"] = "" },
-	{ ["Coords"] = vec3(308.33,-232.25,54.07), ["name"] = "" },
-	{ ["Coords"] = vec3(449.71,-659.27,28.48), ["name"] = "" }
+	{ ["Coords"] = vec3(-2205.92,-370.48,13.29), ["Name"] = "" },
+	{ ["Coords"] = vec3(-2205.92,-370.48,13.29), ["Name"] = "" },
+	{ ["Coords"] = vec3(-250.35,6209.71,31.49), ["Name"] = "" },
+	{ ["Coords"] = vec3(1694.37,4794.66,41.92), ["Name"] = "" },
+	{ ["Coords"] = vec3(1858.94,3741.78,33.09), ["Name"] = "" },
+	{ ["Coords"] = vec3(328.0,2617.89,44.48), ["Name"] = "" },
+	{ ["Coords"] = vec3(308.33,-232.25,54.07), ["Name"] = "" },
+	{ ["Coords"] = vec3(449.71,-659.27,28.48), ["Name"] = "" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ANIMS
@@ -58,7 +58,7 @@ AddEventHandler("spawn:Opened",function()
 
 	Wait(5000)
 
-	SendNUIMessage({ name = "Spawn", payload = Characters })
+	SendNUIMessage({ Action = "Spawn", Payload = Characters })
 	SetNuiFocus(true,true)
 
 	if IsScreenFadedOut() then
@@ -70,7 +70,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("CharacterChosen",function(Data,Callback)
 	if vSERVER.CharacterChosen(Data["Passport"]) then
-		SendNUIMessage({ name = "Close" })
+		SendNUIMessage({ Action = "Close" })
 	end
 
 	Callback("Ok")
@@ -79,7 +79,7 @@ end)
 -- NEWCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("NewCharacter",function(Data,Callback)
-	Callback(vSERVER.NewCharacter(Data["name"],Data["lastname"],Data["sex"]))
+	Callback(vSERVER.NewCharacter(Data["name"],Data["lastname"],Data["gender"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SWITCHCHARACTER
@@ -101,15 +101,15 @@ end)
 RegisterNetEvent("spawn:Finish")
 AddEventHandler("spawn:Finish",function(Coords,Creation)
 	if Coords then
-		Locate[1] = { ["Coords"] = Coords, ["name"] = "" }
+		Locate[1] = { ["Coords"] = Coords, ["Name"] = "" }
 
 		for Number,v in pairs(Locate) do
 			local Road = GetStreetNameAtCoord(v["Coords"]["x"],v["Coords"]["y"],v["Coords"]["z"])
-			Locate[Number]["name"] = GetStreetNameFromHashKey(Road)
+			Locate[Number]["Name"] = GetStreetNameFromHashKey(Road)
 		end
 
 		SetCamCoord(Camera,Locate[1]["Coords"]["x"],Locate[1]["Coords"]["y"],Locate[1]["Coords"]["z"] + 1)
-		SendNUIMessage({ name = "Location", payload = Locate })
+		SendNUIMessage({ Action = "Location", Payload = Locate })
 		SetCamRot(Camera,0.0,0.0,0.0,2)
 	else
 		if Creation then
@@ -120,7 +120,7 @@ AddEventHandler("spawn:Finish",function(Coords,Creation)
 			TriggerEvent("hud:Active",true)
 		end
 
-		SendNUIMessage({ name = "Close" })
+		SendNUIMessage({ Action = "Close" })
 		SetNuiFocus(false,false)
 
 		SetTimeout(2500,function()
@@ -146,7 +146,7 @@ RegisterNUICallback("Spawn",function(Data,Callback)
 		Camera = nil
 	end
 
-	SendNUIMessage({ name = "Close" })
+	SendNUIMessage({ Action = "Close" })
 	TriggerEvent("hud:Active",true)
 	SetNuiFocus(false,false)
 
@@ -205,6 +205,6 @@ end
 RegisterNetEvent("spawn:Increment")
 AddEventHandler("spawn:Increment",function(Tables)
 	for _,v in pairs(Tables) do
-		Locate[#Locate + 1] = { ["Coords"] = v, ["name"] = "" }
+		Locate[#Locate + 1] = { ["Coords"] = v, ["Name"] = "" }
 	end
 end)

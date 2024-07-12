@@ -291,7 +291,11 @@ function Creative.Mount()
 					if Split[1] == "vehiclekey" and Split[3] then
 						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
 					elseif ItemNamed(Split[1]) and Split[2] then
-						v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						if Split[1] == "identity" then
+							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+						else
+							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+						end
 					end
 				end
 
@@ -360,7 +364,7 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 				if vRP.StoreChest(Passport,Open[Passport]["Name"],Amount,Open[Passport]["Weight"],Slot,Target,Open[Passport]["Save"],ChestItens[Unique]) then
 					TriggerClientEvent("inventory:Update",source)
 				elseif Open[Passport]["Logs"] then
-					exports["discord"]:Embed(Open[Passport]["NameLogs"],"**Passaporte:** "..Passport.."\n**Guardou:** "..Amount.."x "..ItemName(Item),0xa3c846)
+					exports["discord"]:Embed(Open[Passport]["NameLogs"],"**[PASSAPORTE]:** "..Passport.."\n**[GUARDOU]:** "..Amount.."x "..ItemName(Item).."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 				end
 			end
 		end
@@ -390,7 +394,7 @@ function Creative.Take(Item,Slot,Amount,Target)
 				GlobalState["Helibox"] = GlobalState["Helibox"] - 1
 			end
 		elseif Open[Passport]["Logs"] then
-			exports["discord"]:Embed(Open[Passport]["NameLogs"],"**Passaporte:** "..Passport.."\n**Retirou:** "..Amount.."x "..ItemName(Item),0xe84855)
+			exports["discord"]:Embed(Open[Passport]["NameLogs"],"**[PASSAPORTE]:** "..Passport.."\n**[RETIROU]:** "..Amount.."x "..ItemName(Item).."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 		end
 	else
 		TriggerClientEvent("inventory:Update",source)
@@ -412,6 +416,17 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("chest:Cooldown",function(Name)
 	Cooldown[Name] = os.time() + 600
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHEST:ARMOUR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("chest:Armour")
+AddEventHandler("chest:Armour",function()
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasService(Passport,"Policia") then
+		vRP.SetArmour(source,100)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

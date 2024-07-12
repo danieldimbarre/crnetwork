@@ -557,6 +557,10 @@ ShopItens = {
 		["Price"] = 5000,
 		["Discount"] = 0
 	},
+	["teddypack"] = {
+		["Price"] = 5000,
+		["Discount"] = 0
+	},
 	["weaponbox"] = {
 		["Price"] = 5000,
 		["Discount"] = 0
@@ -579,6 +583,10 @@ ShopItens = {
 	},
 	["washbattery"] = {
 		["Price"] = 750,
+		["Discount"] = 0
+	},
+	["radiomhz"] = {
+		["Price"] = 7500,
 		["Discount"] = 0
 	}
 }

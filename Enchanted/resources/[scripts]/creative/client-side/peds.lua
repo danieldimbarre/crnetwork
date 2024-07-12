@@ -36,11 +36,6 @@ local List = {
 		["Coords"] = vec4(778.49,-395.89,33.43,99.22),
 		["Model"] = "g_m_y_salvagoon_01",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- PawnShop
-		["Distance"] = 50,
-		["Coords"] = vec4(144.11,-1721.57,29.28,136.07),
-		["Model"] = "u_m_o_finguru_01",
-		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Towed
 		["Distance"] = 50,
 		["Coords"] = vec4(408.91,-1622.75,29.28,232.45),
@@ -50,7 +45,7 @@ local List = {
 		["Distance"] = 25,
 		["Coords"] = vec4(-56.98,-1098.79,26.42,25.52),
 		["Model"] = "player_zero",
-		["Anim"] = { "amb@prop_human_bum_shopping_cart@male@base","base" }
+		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Bus
 		["Distance"] = 50,
 		["Coords"] = vec4(453.47,-602.34,28.59,266.46),

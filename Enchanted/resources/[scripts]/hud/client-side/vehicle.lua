@@ -86,6 +86,25 @@ CreateThread(function()
 						SetVehicleDirtLevel(Vehicle,0.0)
 					end
 
+					if Entity(Vehicle)["state"]["Drift"] then
+						local Class = GetVehicleClass(Vehicle)
+						if (Class >= 0 and Class <= 7) or Class == 9 then
+							if IsControlPressed(1,21) then
+								if VSpeed <= 75.0 and not GetDriftTyresEnabled(Vehicle) then
+									SetDriftTyresEnabled(Vehicle,true)
+									SetVehicleReduceGrip(Vehicle,true)
+									SetReduceDriftVehicleSuspension(Vehicle,true)
+								end
+							else
+								if GetDriftTyresEnabled(Vehicle) then
+									SetDriftTyresEnabled(Vehicle,false)
+									SetVehicleReduceGrip(Vehicle,false)
+									SetReduceDriftVehicleSuspension(Vehicle,false)
+								end
+							end
+						end
+					end
+
 					if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
 						if not LocalPlayer["state"]["Races"] and VSpeed ~= LastSpeed then
 							if (LastSpeed - VSpeed) >= (Entity(Vehicle)["state"]["Seatbelt"] and 125 or 100) then

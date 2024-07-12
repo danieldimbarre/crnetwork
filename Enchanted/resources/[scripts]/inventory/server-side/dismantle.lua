@@ -104,8 +104,8 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 				Player(source)["state"]["Buttons"] = false
 				TriggerClientEvent("dismantle:Reset",source)
 				TriggerEvent("garages:Delete",Entity[4],Plate)
-				TriggerClientEvent("player:Residual",source,"Resíduo de Borracha")
 
+				local Stress = 5
 				local GainExperience = 3
 				local Amount = math.random(1125,1375)
 				local Experience,Level = vRP.GetExperience(Passport,"Dismantle")
@@ -134,13 +134,13 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 
 					for Number = 1,AmountMembers do
 						if vRP.Passport(Consult[Number]["Source"]) then
-							vRP.UpgradeStress(Consult[Number]["Passport"],5)
+							vRP.UpgradeStress(Consult[Number]["Passport"],Stress)
 							vRP.PutExperience(Consult[Number]["Passport"],"Dismantle",GainExperience)
 							vRP.GenerateItem(Consult[Number]["Passport"],"dirtydollar",Valuation,true)
 						end
 					end
 				else
-					vRP.UpgradeStress(Passport,5)
+					vRP.UpgradeStress(Passport,Stress)
 					vRP.PutExperience(Passport,"Dismantle",GainExperience)
 					vRP.GenerateItem(Passport,"dirtydollar",Valuation,true)
 				end

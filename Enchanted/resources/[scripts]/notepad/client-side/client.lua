@@ -9,6 +9,7 @@ RegisterNetEvent("notepad:Open")
 AddEventHandler("notepad:Open",function(Item,Text)
 	Open = Item
 	SetNuiFocus(true,true)
+	TriggerEvent("hud:Active",false)
 	SendNUIMessage({ Action = "Open", Text = Text })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -16,5 +17,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Save",function(Data)
 	SetNuiFocus(false,false)
+	TriggerEvent("hud:Active",true)
 	TriggerServerEvent("itemdata:Save",Open,Data["text"])
 end)

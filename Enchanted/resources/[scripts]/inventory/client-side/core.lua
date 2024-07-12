@@ -144,12 +144,28 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FISHING
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Fishing()
+function Creative.Fishing(Item)
+	local Fishings = false
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
-	local Fishings = vec3(-1227.49,4389.84,5.12)
 
-	if #(Coords - Fishings) <= 150 and IsEntityInWater(Ped) then
+	if Item == "fishingrod" or Item == "plus" then
+		Fishings = vec3(1183.88,4002.14,30.23)
+	end
+
+	if Item == "fishingrod2" or Item == "plus" then
+		Fishings = vec3(-230.83,-3332.51,0.59)
+	end
+
+	if Item == "fishingrod3" or Item == "plus" then
+		Fishings = vec3(-1314.5,6207.45,-0.56)
+	end
+
+	if Item == "fishingrod4" or Item == "plus" then
+		Fishings = vec3(-627.61,7597.86,-0.42)
+	end
+
+	if Fishings and (Item == "plus" or #(Coords - Fishings) <= 150) then
 		return true
 	end
 

@@ -42,7 +42,7 @@ AddStateBagChangeHandler("Doors",nil,function(Name,Key,Value)
 		end
 
 		if Display[Number] then
-			SendNUIMessage({ name = "Show", payload = { "E","Pressione",v["Lock"] and "para destrancar" or "para trancar" } })
+			SendNUIMessage({ Action = "Show", Payload = { "E","Pressione",v["Lock"] and "para destrancar" or "para trancar" } })
 		end
 	end
 end)
@@ -61,7 +61,7 @@ CreateThread(function()
 					TimeDistance = 1
 
 					if not Display[Number] then
-						SendNUIMessage({ name = "Show", payload = { "E","Pressione",v["Lock"] and "para destrancar" or "para trancar" } })
+						SendNUIMessage({ Action = "Show", Payload = { "E","Pressione",v["Lock"] and "para destrancar" or "para trancar" } })
 						Display[Number] = true
 					end
 
@@ -70,7 +70,7 @@ CreateThread(function()
 					end
 				else
 					if Display[Number] then
-						SendNUIMessage({ name = "Hide" })
+						SendNUIMessage({ Action = "Hide" })
 						Display[Number] = nil
 					end
 				end

@@ -73,7 +73,7 @@ Use = {
 		local Keyboard = vKEYBOARD.Options(source,"Frequência",{ "Ballas","Vagos","Families" })
 		if Keyboard then
 			local Frequency = sanitizeString(Keyboard[1],"0123456789")
-			if not exports["radio"]:Exist(Frequency) and string.len(Frequency) == 3 then
+			if not exports["radio"]:Exist(Frequency) and string.len(Frequency) == 3 and vRP.TakeItem(Passport,Full,1,false,Slot) then
 				TriggerClientEvent("inventory:Notify",source,"Sucesso","Frequência adicionada.","verde")
 				exports["radio"]:Add(Frequency,Keyboard[2])
 			end
@@ -609,7 +609,7 @@ Use = {
 		end
 	end,
 
-	["vest"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	["ballisticplate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Armors[Passport] and os.time() < Armors[Passport] then
 			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Armors[Passport] - os.time())..".","vermelho")
 
@@ -629,8 +629,8 @@ Use = {
 				Player(source)["state"]["Buttons"] = false
 
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					Armors[Passport] = os.time() + 300
-					vRP.SetArmour(source,100)
+					Armors[Passport] = os.time() + 60
+					vRP.SetArmour(source,20)
 				end
 			end
 
@@ -884,10 +884,6 @@ Use = {
 							if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
 								Active[Passport] = nil
 
-								if Dismantle[Plate] then
-									TriggerClientEvent("target:Dismantle",source,Model)
-								end
-
 								if DoesEntityExist(Networked) then
 									if not vRP.PassportPlate(Plate) then
 										if not Dismantle[Plate] then
@@ -1006,10 +1002,6 @@ Use = {
 						repeat
 							if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
 								Active[Passport] = nil
-
-								if Dismantle[Plate] then
-									TriggerClientEvent("target:Dismantle",source,Model)
-								end
 
 								if DoesEntityExist(Networked) then
 									if not vRP.PassportPlate(Plate) then
@@ -1533,41 +1525,136 @@ Use = {
 	end,
 
 	["fishingrod"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vCLIENT.Fishing(source) then
+		if vCLIENT.Fishing(source,"fishingrod") then
 			Active[Passport] = os.time() + 100
 			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("inventory:Close",source)
 
 			if not vRPC.PlayingAnim(source,"amb@world_human_stand_fishing@idle_a","idle_c") then
-				vRPC.AnimActive(source)
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.TakeItem(Passport,"boilies") then
-				if vRP.Task(source,6,75000) then
-					local Result = RandPercentage({
-						{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
-						{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
-						{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
-						{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
-						{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 },
-						{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 },
-						{ ["Item"] = "yellowperch", ["Chance"] = 50, ["Amount"] = 1 },
-						{ ["Item"] = "salmon", ["Chance"] = 25, ["Amount"] = 1 }
-					})
+			if vRP.Task(source,10,100000) and vRP.TakeItem(Passport,"boilies") then
+				local Result = RandPercentage({
+					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 }
+				})
 
-					vRP.UpgradeStress(Passport,1)
-
-					if vRP.CheckWeight(Passport,Result["Item"]) then
-						vRP.PutExperience(Passport,"Fisherman",1)
-						vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
-					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
-						exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
-					end
+				vRP.PutExperience(Passport,"Fisherman",1)
+				if vRP.CheckWeight(Passport,Result["Item"]) then
+					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
+				else
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
 				end
-			else
-				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("boilies").."</b>.","amarelo",5000)
+			end
+
+			Player(source)["state"]["Buttons"] = false
+			Active[Passport] = nil
+		end
+	end,
+
+	["fishingrod2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if vCLIENT.Fishing(source,"fishingrod2") then
+			Active[Passport] = os.time() + 100
+			Player(source)["state"]["Buttons"] = true
+			TriggerClientEvent("inventory:Close",source)
+
+			if not vRPC.PlayingAnim(source,"amb@world_human_stand_fishing@idle_a","idle_c") then
+				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
+			end
+
+			if vRP.Task(source,10,100000) and vRP.TakeItem(Passport,"boilies") then
+				local Result = RandPercentage({
+					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
+					{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 }
+				})
+
+				vRP.PutExperience(Passport,"Fisherman",1)
+				if vRP.CheckWeight(Passport,Result["Item"]) then
+					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
+				else
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
+				end
+			end
+
+			Player(source)["state"]["Buttons"] = false
+			Active[Passport] = nil
+		end
+	end,
+
+	["fishingrod3"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if vCLIENT.Fishing(source,"fishingrod3") then
+			Active[Passport] = os.time() + 100
+			Player(source)["state"]["Buttons"] = true
+			TriggerClientEvent("inventory:Close",source)
+
+			if not vRPC.PlayingAnim(source,"amb@world_human_stand_fishing@idle_a","idle_c") then
+				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
+			end
+
+			if vRP.Task(source,10,100000) and vRP.TakeItem(Passport,"boilies") then
+				local Result = RandPercentage({
+					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
+					{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 },
+					{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 },
+					{ ["Item"] = "yellowperch", ["Chance"] = 50, ["Amount"] = 1 },
+					{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 }
+				})
+
+				vRP.PutExperience(Passport,"Fisherman",1)
+				if vRP.CheckWeight(Passport,Result["Item"]) then
+					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
+				else
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
+				end
+			end
+
+			Player(source)["state"]["Buttons"] = false
+			Active[Passport] = nil
+		end
+	end,
+
+	["fishingrod4"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if vCLIENT.Fishing(source,"fishingrod4") then
+			Active[Passport] = os.time() + 100
+			Player(source)["state"]["Buttons"] = true
+			TriggerClientEvent("inventory:Close",source)
+
+			if not vRPC.PlayingAnim(source,"amb@world_human_stand_fishing@idle_a","idle_c") then
+				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
+			end
+
+			if vRP.Task(source,10,100000) and vRP.TakeItem(Passport,"boilies") then
+				local Result = RandPercentage({
+					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
+					{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 },
+					{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 },
+					{ ["Item"] = "yellowperch", ["Chance"] = 50, ["Amount"] = 1 },
+					{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 },
+					{ ["Item"] = "smallshark", ["Chance"] = 25, ["Amount"] = 1 },
+					{ ["Item"] = "treasurebox", ["Chance"] = 1, ["Amount"] = 1 }
+				})
+
+				vRP.PutExperience(Passport,"Fisherman",1)
+				if vRP.CheckWeight(Passport,Result["Item"]) then
+					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
+				else
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
+				end
 			end
 
 			Player(source)["state"]["Buttons"] = false
@@ -1576,41 +1663,36 @@ Use = {
 	end,
 
 	["fishingrodplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vCLIENT.Fishing(source) then
+		if vCLIENT.Fishing(source,"plus") then
 			Active[Passport] = os.time() + 100
 			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("inventory:Close",source)
 
 			if not vRPC.PlayingAnim(source,"amb@world_human_stand_fishing@idle_a","idle_c") then
-				vRPC.AnimActive(source)
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.TakeItem(Passport,"boilies") then
-				if vRP.Task(source,3,75000) then
-					local Result = RandPercentage({
-						{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
-						{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
-						{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
-						{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
-						{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 },
-						{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 },
-						{ ["Item"] = "yellowperch", ["Chance"] = 50, ["Amount"] = 1 },
-						{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 },
-						{ ["Item"] = "smallshark", ["Chance"] = 25, ["Amount"] = 1 },
-						{ ["Item"] = "treasurebox", ["Chance"] = 5, ["Amount"] = 1 }
-					})
+			if vRP.Task(source,8,75000) and vRP.TakeItem(Passport,"boilies") then
+				local Result = RandPercentage({
+					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
+					{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
+					{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 },
+					{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 },
+					{ ["Item"] = "yellowperch", ["Chance"] = 50, ["Amount"] = 1 },
+					{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 },
+					{ ["Item"] = "smallshark", ["Chance"] = 25, ["Amount"] = 1 },
+					{ ["Item"] = "treasurebox", ["Chance"] = 1, ["Amount"] = 1 }
+				})
 
-					if vRP.CheckWeight(Passport,Result["Item"]) then
-						vRP.PutExperience(Passport,"Fisherman",1)
-						vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
-					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
-						exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
-					end
+				vRP.PutExperience(Passport,"Fisherman",2)
+				if vRP.CheckWeight(Passport,Result["Item"]) then
+					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
+				else
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
 				end
-			else
-				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("boilies").."</b>.","amarelo",5000)
 			end
 
 			Player(source)["state"]["Buttons"] = false
@@ -2702,6 +2784,21 @@ Use = {
 				end
 
 				vRPC.Destroy(source)
+			end
+		end
+	end,
+
+	["coilover"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if vRP.InsideVehicle(source) then
+			TriggerClientEvent("inventory:Close",source)
+
+			local Model,Vehicle = vRPC.VehicleName(source)
+			local Networked = NetworkGetEntityFromNetworkId(Vehicle)
+			local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Model })
+			if DoesEntityExist(Networked) and Consult[1] and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				Entity(Networked)["state"]:set("Drift",true,true)
+				vRP.Query("vehicles/CoiloverVehicles",{ Vehicle = Model, Plate = Consult[1]["Plate"] })
+				TriggerClientEvent("Notify",source,"Sucesso","Suspensão Coilover instalada.","verde",5000)
 			end
 		end
 	end,

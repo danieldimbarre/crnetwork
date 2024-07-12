@@ -68,18 +68,16 @@ end)
 RegisterServerEvent("police:ArrestVehicles")
 AddEventHandler("police:ArrestVehicles",function(Entity)
 	local source = source
+	local Plate = Entity[1]
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.Request(source,"Garagem","Apreender o veículo?") then
-		local OtherPassport = vRP.PassportPlate(Entity[1])
-		if OtherPassport then
-			local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport["Passport"], Vehicle = Entity[2] })
-			if Vehicle[1] then
-				if not Vehicle[1]["Arrest"] then
-					vRP.Query("vehicles/Arrest",{ Passport = OtherPassport["Passport"], Vehicle = Entity[2] })
-					TriggerClientEvent("Notify",source,"Departamento Policial","Veículo apreendido.","policia",5000)
-				else
-					TriggerClientEvent("Notify",source,"Departamento Policial","Veículo já se encontra apreendido.","policia",5000)
-				end
+	if Passport and vRP.Request(source,"Garagem","Apreender o veículo?") and vRP.PassportPlate(Plate) then
+		local Vehicle = vRP.Query("vehicles/plateVehicles",{ Plate = Plate })
+		if Vehicle[1] then
+			if not Vehicle[1]["Arrest"] then
+				vRP.Query("vehicles/Arrest",{ Plate = Plate })
+				TriggerClientEvent("Notify",source,"Departamento Policial","Veículo apreendido.","policia",5000)
+			else
+				TriggerClientEvent("Notify",source,"Departamento Policial","Veículo já se encontra apreendido.","policia",5000)
 			end
 		end
 	end

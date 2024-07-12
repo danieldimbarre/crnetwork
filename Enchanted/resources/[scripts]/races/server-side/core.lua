@@ -14,6 +14,7 @@ Tunnel.bindInterface("races",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
+local Cooldown = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FINISH
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -74,17 +75,29 @@ function Creative.Start(Number)
 	local Return = false
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Races[Number] and vRP.RemoveCharges(Passport,"races") then
-		Active[Passport] = true
-		Return = Races[Number]["Explosive"]
-		exports["markers"]:Enter(source,"Corredor")
+	if Passport and Races[Number] then
+		if Cooldown[Passport] and Cooldown[Passport][Number] and Cooldown[Passport][Number] >= os.time() then
+			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Cooldown[Passport][Number] - os.time())..".","amarelo",5000)
+			return false
+		end
 
-		local Service = vRP.NumPermission("Policia")
-		for Passports,Sources in pairs(Service) do
-			async(function()
-				vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-				TriggerClientEvent("Notify",Sources,"Circuitos","Encontramos um veículo participando de uma corrida clandestina e todos os policiais foram avisados.","policia",10000)
-			end)
+		if vRP.RemoveCharges(Passport,"races") then
+			if not Cooldown[Passport] then
+				Cooldown[Passport] = {}
+			end
+
+			Active[Passport] = true
+			Return = Races[Number]["Explosive"]
+			exports["markers"]:Enter(source,"Corredor")
+			Cooldown[Passport][Number] = os.time() + 7200
+
+			local Service = vRP.NumPermission("Policia")
+			for Passports,Sources in pairs(Service) do
+				async(function()
+					vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+					TriggerClientEvent("Notify",Sources,"Circuitos","Encontramos um veículo participando de uma corrida clandestina e todos os policiais foram avisados.","policia",10000)
+				end)
+			end
 		end
 	end
 

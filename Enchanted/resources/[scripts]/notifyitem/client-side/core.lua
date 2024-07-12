@@ -3,5 +3,5 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("NotifyItem")
 AddEventHandler("NotifyItem",function(Info)
-	SendNUIMessage({ name = "NotifyItem", payload = Info })
+	SendNUIMessage({ Action = "NotifyItem", Payload = Info })
 end)

@@ -36,7 +36,7 @@ RegisterCommand("ChatEvent",function()
 			end
 		end
 
-		SendNUIMessage({ name = "Chat", payload = { Tags,Block } })
+		SendNUIMessage({ Action = "Chat", Payload = { Tags,Block } })
 		SetNuiFocus(true,true)
 		Executive = true
 	end
@@ -46,7 +46,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("chat:ClientMessage")
 AddEventHandler("chat:ClientMessage",function(Author,Message,Mode)
-	SendNUIMessage({ name = "Message", payload = { Author,Message,Mode } })
+	SendNUIMessage({ Action = "Message", Payload = { Author,Message,Mode } })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHATSUBMIT

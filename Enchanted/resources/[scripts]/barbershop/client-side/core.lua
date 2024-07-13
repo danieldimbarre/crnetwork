@@ -40,8 +40,7 @@ RegisterNUICallback("Save",function(Data,Callback)
 	end
 
 	LocalPlayer["state"]:set("Hoverfy",true,false)
-	exports["barbershop"]:Apply(Data)
-	vSERVER.Update(Data,Creation)
+	vSERVER.Update(Barbershop,Creation)
 	SetNuiFocus(false,false)
 	Creation = false
 	vRP.Destroy()
@@ -172,7 +171,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENBARBERSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function OpenBarbershop()
+function OpenBarbershop(Mode)
 	for Number = 1,46 do
 		if not Barbershop[Number] then
 			Barbershop[Number] = 0
@@ -204,7 +203,7 @@ function OpenBarbershop()
 		end
 	end
 
-	SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,true } })
+	SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode } })
 	SetNuiFocus(true,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -245,7 +244,7 @@ CreateThread(function()
 					TimeDistance = 1
 
 					if IsControlJustPressed(1,38) and not exports["hud"]:Wanted() then
-						OpenBarbershop()
+						OpenBarbershop(false)
 					end
 				end
 			end
@@ -262,7 +261,7 @@ exports("Creation",function(Heading)
 	SetEntityHeading(PlayerPedId(),Heading)
 	Creation = true
 
-	OpenBarbershop()
+	OpenBarbershop(true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROTATE

@@ -1001,6 +1001,16 @@ local List = {
 		["Economy"] = 100000,
 		["Rarity"] = "legendary"
 	},
+	["instagram"] = {
+		["Index"] = "instagram",
+		["Name"] = "Seguidores InstaPic",
+		["Type"] = "Consumível",
+		["Description"] = "Adiciona 100 seguidores no instapic.",
+		["Weight"] = 0.0,
+		["Delete"] = true,
+		["Economy"] = 80000,
+		["Rarity"] = "legendary"
+	},
 	["newchars"] = {
 		["Index"] = "newchars",
 		["Name"] = "Cartão de Personagem",
@@ -3773,16 +3783,6 @@ local List = {
 		["Type"] = "Consumível",
 		["Weight"] = 15.25,
 		["Economy"] = 24725,
-		["Market"] = true
-	},
-	["odb2"] = {
-		["Index"] = "odb2",
-		["Name"] = "Scanner Automotivo",
-		["Type"] = "Consumível",
-		["Weight"] = 0.75,
-		["Durability"] = 72,
-		["LostWater"] = true,
-		["Economy"] = 8275,
 		["Market"] = true
 	},
 	["vehiclekey"] = {

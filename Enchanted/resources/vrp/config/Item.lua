@@ -3745,7 +3745,7 @@ local List = {
 	},
 	["races"] = {
 		["Index"] = "races",
-		["Name"] = "Cartão de Acesso R",
+		["Name"] = "Cartão Descartável",
 		["Description"] = "Explore circuitos exclusivos e de acesso privilegiado, desbloqueie portas para emocionantes experiências em locais de elite ao redor do mundo.",
 		["Type"] = "Comum",
 		["Arrest"] = true,

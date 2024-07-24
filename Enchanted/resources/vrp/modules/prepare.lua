@@ -4,11 +4,9 @@
 vRP.Prepare("characters/Person","SELECT * FROM characters WHERE id = @id")
 vRP.Prepare("characters/Delete","UPDATE characters SET Deleted = 1 WHERE id = @id")
 vRP.Prepare("characters/SetSkin","UPDATE characters SET Skin = @Skin WHERE id = @Passport")
-vRP.Prepare("characters/SetBadge","UPDATE characters SET Badge = @Badge WHERE id = @Passport")
 vRP.Prepare("characters/SetMedicplan","UPDATE characters SET Medic = @Medic WHERE id = @Passport")
 vRP.Prepare("characters/AddBank","UPDATE characters SET Bank = Bank + @Bank WHERE id = @Passport")
 vRP.Prepare("characters/RemBank","UPDATE characters SET Bank = Bank - @Bank WHERE id = @Passport")
-vRP.Prepare("characters/UpdateAvatar","UPDATE characters SET Avatar = @Avatar WHERE id = @Passport")
 vRP.Prepare("characters/SetGroupsTimer","UPDATE characters SET Groups = @Groups WHERE id = @Passport")
 vRP.Prepare("characters/UserLicense","SELECT * FROM characters WHERE id = @id and License = @License")
 vRP.Prepare("characters/Characters","SELECT * FROM characters WHERE License = @License and Deleted = 0")
@@ -23,6 +21,8 @@ vRP.Prepare("characters/NewCharacter","INSERT INTO characters(License,Name,Lastn
 -- SMARTPHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("smartphone/Phone","SELECT * FROM phone_phones WHERE owner_id = @Passport")
+vRP.Prepare("smartphone/CheckInstagram","SELECT * FROM phone_instagram_accounts WHERE phone_number = @Phone")
+vRP.Prepare("smartphone/Instagram","UPDATE phone_instagram_accounts SET follower_count = (follower_count + @Amount) WHERE phone_number = @Phone")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -56,12 +56,13 @@ vRP.Prepare("entitydata/SetData","REPLACE INTO entitydata(Name,Information) VALU
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("vehicles/All","SELECT * FROM vehicles")
 vRP.Prepare("vehicles/plateVehicles","SELECT * FROM vehicles WHERE Plate = @Plate")
+vRP.Prepare("vehicles/Arrest","UPDATE vehicles SET Arrest = 1 WHERE Plate = @Plate")
 vRP.Prepare("vehicles/UserVehicles","SELECT * FROM vehicles WHERE Passport = @Passport")
 vRP.Prepare("vehicles/Count","SELECT COUNT(Vehicle) FROM vehicles WHERE Vehicle = @Vehicle")
 vRP.Prepare("vehicles/Minimals","SELECT * FROM vehicles WHERE (Tax + 1296000) <= UNIX_TIMESTAMP()")
 vRP.Prepare("vehicles/removeVehicles","DELETE FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/selectVehicles","SELECT * FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
-vRP.Prepare("vehicles/Arrest","UPDATE vehicles SET Arrest = 1 WHERE Passport = @Passport AND Vehicle = @Vehicle")
+vRP.Prepare("vehicles/CoiloverVehicles","UPDATE vehicles SET Drift = 1 WHERE Plate = @Plate AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/UpdateSave","UPDATE vehicles SET Save = @Save WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/SeatbeltVehicles","UPDATE vehicles SET Seatbelt = 1 WHERE Plate = @Plate AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/PaymentArrest","UPDATE vehicles SET Arrest = 0 WHERE Passport = @Passport AND Vehicle = @Vehicle")

@@ -15,7 +15,7 @@ local LastModel = ""
 local CamRoration = 294.81
 local CamCoords = vec3(-49.14,-1099.56,26.92)
 local TestDriveReturn = vec3(-58.03,-1096.94,26.42)
-local SpawnCoords = vec4(-44.42,-1097.44,26.23,28.35)
+local VehicleCoords = vec4(-44.42,-1097.44,26.23,28.35)
 local TestDriveCoords = vec4(-53.28,-1110.93,26.47,68.04)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CAMERAACTIVE
@@ -50,7 +50,7 @@ AddEventHandler("pdm:Open",function()
 		SetCursorLocation(0.5,0.5)
 		TriggerEvent("dynamic:Close")
 		TriggerEvent("hud:Active",false)
-		SendNUIMessage({ Action = "Open", Payload = VehicleList() })
+		SendNUIMessage({ Action = "Open", Payload = { VehicleList(),vSERVER.Discount() } })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ RegisterNUICallback("Mount",function(Data,Callback)
 			DeleteEntity(Mount)
 		end
 
-		Mount = CreateVehicle(Vehicle,SpawnCoords,false,false)
+		Mount = CreateVehicle(Vehicle,VehicleCoords,false,false)
 		SetVehicleCustomSecondaryColour(Mount,88,101,242)
 		SetVehicleCustomPrimaryColour(Mount,88,101,242)
 		SetVehicleNumberPlateText(Mount,"PDMSPORT")

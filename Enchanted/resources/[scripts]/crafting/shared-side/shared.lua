@@ -371,20 +371,6 @@ List = {
 					["scrapmetal"] = 425
 				}
 			},
-			["odb2"] = {
-				["Amount"] = 1,
-				["Required"] = {
-					["rammemory"] = 1,
-					["insulatingtape"] = 1,
-					["scotchtape"] = 1,
-					["processor"] = 1,
-					["screws"] = 1,
-					["screwnuts"] = 1,
-					["electroniccomponents"] = 2,
-					["rubber"] = 325,
-					["copper"] = 275
-				}
-			},
 			["advtoolbox"] = {
 				["Amount"] = 1,
 				["Required"] = {

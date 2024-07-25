@@ -187,46 +187,9 @@ local Fuels = {
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	RequestStreamedTextureDict("Targets",true)
-	while not HasStreamedTextureDictLoaded("Targets") do
-		RequestStreamedTextureDict("Targets",true)
-		Wait(1)
-	end
-
 	RegisterCommand("+entityTarget",TargetEnable)
 	RegisterCommand("-entityTarget",TargetDisable)
 	RegisterKeyMapping("+entityTarget","Interação auricular.","keyboard","LMENU")
-
-	AddCircleZone("Presidiary",vec3(1833.27,2576.01,46.42),0.1,{
-		name = "Presidiary",
-		heading = 0.0,
-		useZ = true
-	},{
-		Distance = 1.25,
-		options = {
-			{
-				event = "police:Preset",
-				label = "Vestir Uniforme",
-				tunnel = "server"
-			}
-		}
-	})
-
-	AddBoxZone("Prisoner",vec3(1590.15,2564.84,55.18),0.75,0.75,{
-		name = "Prisoner",
-		heading = 269.30,
-		minZ = 55.18 - 1.0,
-		maxZ = 55.18 + 1.0
-	},{
-		Distance = 1.75,
-		options = {
-			{
-				event = "police:Escape",
-				label = "Fugir",
-				tunnel = "server"
-			}
-		}
-	})
 
 	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688 },{
 		options = {
@@ -463,7 +426,7 @@ function TargetEnable()
 		for Index,v in pairs(Zones) do
 			if #(Coords - Zones[Index]["center"]) <= 5 then
 				SetDrawOrigin(Zones[Index]["center"]["x"],Zones[Index]["center"]["y"],Zones[Index]["center"]["z"])
-				DrawSprite("Targets","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+				DrawSprite("Textures","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 				ClearDrawOrigin()
 			end
 
@@ -477,7 +440,7 @@ function TargetEnable()
 				Sucess = true
 				while Sucess do
 					SetDrawOrigin(Zones[Index]["center"]["x"],Zones[Index]["center"]["y"],Zones[Index]["center"]["z"])
-					DrawSprite("Targets","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+					DrawSprite("Textures","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 					ClearDrawOrigin()
 					DisableActions()
 
@@ -584,8 +547,7 @@ function TargetEnable()
 
 							if CheckPolice() then
 								Menu[#Menu + 1] = { event = "towed:Impound", label = "Impound", tunnel = "server" }
-								Menu[#Menu + 1] = { event = "police:Plate", label = "Verificar Placa", tunnel = "server" }
-								Menu[#Menu + 1] = { event = "police:ArrestVehicles", label = "Apreender", tunnel = "server" }
+								Menu[#Menu + 1] = { event = "prison:Vehicle", label = "Apreender", tunnel = "server" }
 							else
 								for _,v in pairs(Dismantle) do
 									if #(Coords - v) <= 15 then
@@ -630,7 +592,7 @@ function TargetEnable()
 
 				Selected = { source }
 
-				Menu[#Menu + 1] = { event = "police:Inspect", label = "Revistar", tunnel = "paramedic" }
+				Menu[#Menu + 1] = { event = "inspect:Player", label = "Revistar", tunnel = "paramedic" }
 				Menu[#Menu + 1] = { event = "paramedic:Diagnostic", label = "Informações", tunnel = "paramedic" }
 
 				if GetEntityHealth(Entitys) <= 100 then
@@ -660,7 +622,7 @@ function TargetEnable()
 				end
 
 				if CheckPolice() then
-					Menu[#Menu + 1] = { event = "police:ArrestItens", label = "Apreender", tunnel = "paramedic" }
+					Menu[#Menu + 1] = { event = "prison:Itens", label = "Apreender", tunnel = "paramedic" }
 				end
 
 				if #Menu >= 1 then
@@ -692,7 +654,7 @@ function TargetEnable()
 						local OtherCoords = GetEntityCoords(Entitys)
 						if #(Coords - OtherCoords) <= 5 then
 							SetDrawOrigin(OtherCoords["x"],OtherCoords["y"],OtherCoords["z"] + 1)
-							DrawSprite("Targets","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+							DrawSprite("Textures","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 							ClearDrawOrigin()
 						end
 
@@ -719,7 +681,7 @@ function TargetEnable()
 								local EntityCoords = GetEntityCoords(Entitys)
 
 								SetDrawOrigin(EntityCoords["x"],EntityCoords["y"],EntityCoords["z"] + 1)
-								DrawSprite("Targets","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+								DrawSprite("Textures","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 								ClearDrawOrigin()
 								DisableActions()
 

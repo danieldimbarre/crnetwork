@@ -101,22 +101,17 @@ AddEventHandler("towed:Payment",function(Plate)
 		end
 
 		if vRP.UserPremium(Passport) then
-			local Bonification = 0.050
 			local Hierarchy = vRP.LevelPremium(source)
+			local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
 
-			if Hierarchy == 1 then
-				Bonification = 0.100
-			elseif Hierarchy == 2 then
-				Bonification = 0.075
-			end
-
-			GainExperience = GainExperience + 3
 			Valuation = Valuation + (Valuation * Bonification)
+			GainExperience = GainExperience + 3
 		end
 
 		TriggerEvent("garages:Delete",Vehicles[Plate]["Network"],Plate)
 		vRP.GenerateItem(Passport,Result["Item"],Valuation,true)
 		vRP.PutExperience(Passport,"Towed",GainExperience)
+		vRP.RolepassPoints(Passport,GainExperience,true)
 		vRP.GenerateItem(Passport,"dollar",250,true)
 		vRP.UpgradeStress(Passport,5)
 

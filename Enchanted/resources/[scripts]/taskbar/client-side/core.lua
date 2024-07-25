@@ -15,7 +15,7 @@ local Progress = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FAILURE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("failure",function(Data,Callback)
+RegisterNUICallback("Failure",function(Data,Callback)
 	Results = false
 	Progress = false
 	SetNuiFocus(false,false)
@@ -25,7 +25,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SUCESS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("success",function(Data,Callback)
+RegisterNUICallback("Success",function(Data,Callback)
 	Results = true
 	Progress = false
 	SetNuiFocus(false,false)
@@ -40,7 +40,7 @@ function Minigame(Timer)
 
 	Progress = true
 	SetNuiFocus(true,false)
-	SendNUIMessage({ name = "Open", payload = Timer })
+	SendNUIMessage({ Action = "Open", Payload = Timer })
 
 	while Progress do
 		Wait(0)

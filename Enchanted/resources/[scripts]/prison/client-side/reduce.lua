@@ -55,7 +55,7 @@ CreateThread(function()
 			Distance = 2.0,
 			options = {
 				{
-					event = "police:Reduce",
+					event = "prison:Service",
 					tunnel = "server",
 					label = "Vasculhar"
 				}

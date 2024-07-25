@@ -620,21 +620,16 @@ function Creative.Deliver(Work)
 				end
 
 				if vRP.UserPremium(Passport) then
-					local Bonification = 0.050
 					local Hierarchy = vRP.LevelPremium(source)
+					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
 
-					if Hierarchy == 1 then
-						Bonification = 0.100
-					elseif Hierarchy == 2 then
-						Bonification = 0.075
-					end
-
-					GainExperience = GainExperience + 2
 					Valuation = Valuation + (Valuation * Bonification)
+					GainExperience = GainExperience + 2
 				end
 
 				vRP.PutExperience(Passport,"Lumberman",GainExperience)
 				vRP.GenerateItem(Passport,"dollar",Valuation,true)
+				vRP.RolepassPoints(Passport,GainExperience,true)
 				vRP.UpgradeStress(Passport,1)
 				Active[Passport] = nil
 
@@ -663,21 +658,16 @@ function Creative.Deliver(Work)
 				end
 
 				if vRP.UserPremium(Passport) then
-					local Bonification = 0.050
 					local Hierarchy = vRP.LevelPremium(source)
-		
-					if Hierarchy == 1 then
-						Bonification = 0.100
-					elseif Hierarchy == 2 then
-						Bonification = 0.075
-					end
+					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
 
-					GainExperience = GainExperience + 2
 					Valuation = Valuation + (Valuation * Bonification)
+					GainExperience = GainExperience + 2
 				end
 
 				vRP.PutExperience(Passport,"Milkman",GainExperience)
 				vRP.GenerateItem(Passport,"dollar",Valuation,true)
+				vRP.RolepassPoints(Passport,GainExperience,true)
 				vRP.UpgradeStress(Passport,1)
 				Active[Passport] = nil
 
@@ -706,21 +696,16 @@ function Creative.Deliver(Work)
 				end
 
 				if vRP.UserPremium(Passport) then
-					local Bonification = 0.050
 					local Hierarchy = vRP.LevelPremium(source)
-		
-					if Hierarchy == 1 then
-						Bonification = 0.100
-					elseif Hierarchy == 2 then
-						Bonification = 0.075
-					end
+					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
 
-					GainExperience = GainExperience + 1
 					Valuation = Valuation + (Valuation * Bonification)
+					GainExperience = GainExperience + 1
 				end
 
 				vRP.PutExperience(Passport,"Transporter",GainExperience)
 				vRP.GenerateItem(Passport,"dollar",Valuation,true)
+				vRP.RolepassPoints(Passport,GainExperience,true)
 				vRP.UpgradeStress(Passport,1)
 				Active[Passport] = nil
 
@@ -1082,17 +1067,11 @@ AddEventHandler("inventory:Trasher",function(Entity)
 					end
 
 					if vRP.UserPremium(Passport) then
-						local Bonification = 0.050
 						local Hierarchy = vRP.LevelPremium(source)
+						local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
 
-						if Hierarchy == 1 then
-							Bonification = 0.100
-						elseif Hierarchy == 2 then
-							Bonification = 0.075
-						end
-
-						GainExperience = GainExperience + 1
 						Valuation = Valuation + (Valuation * Bonification)
+						GainExperience = GainExperience + 1
 					end
 
 					if exports["party"]:DoesExist(Passport,2) then
@@ -1109,6 +1088,7 @@ AddEventHandler("inventory:Trasher",function(Entity)
 								end
 
 								vRP.PutExperience(Consult[Number]["Passport"],"Garbageman",GainExperience)
+								vRP.RolepassPoints(Consult[Number]["Passport"],GainExperience,true)
 								vRP.UpgradeStress(Consult[Number]["Passport"],1)
 							end
 						end
@@ -1121,6 +1101,7 @@ AddEventHandler("inventory:Trasher",function(Entity)
 						end
 
 						vRP.PutExperience(Passport,"Garbageman",GainExperience)
+						vRP.RolepassPoints(Passport,GainExperience,true)
 						vRP.UpgradeStress(Passport,1)
 					end
 				end
@@ -1280,7 +1261,7 @@ AddEventHandler("inventory:StealTrunk",function(Entity)
 				vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 				Active[Passport] = os.time() + 100
 
-				if vRP.Task(source,5,7500) then
+				if vRP.Task(source,5,5000) then
 					Active[Passport] = os.time() + 20
 					Player(source)["state"]["Buttons"] = true
 					TriggerClientEvent("Progress",source,"Vasculhando",20000)
@@ -1369,6 +1350,7 @@ AddEventHandler("inventory:Animals",function(Entity)
 
 							vRP.UpgradeStress(Passport,Star)
 							TriggerEvent("DeletePed",Entity[3])
+							vRP.RolepassPoints(Passport,1,true)
 							vRP.PutExperience(Passport,"Hunting",1)
 							vRP.GenerateItem(Passport,"meatfillet",Star,true)
 							vRP.GenerateItem(Passport,Mode..Star.."star",1,true)
@@ -1405,7 +1387,7 @@ AddEventHandler("inventory:Products",function(Service)
 			return false
 		end
 
-		if Products[Service]["Police"] and not vRP.Task(source,3,7500) then
+		if Products[Service]["Police"] and not vRP.Task(source,5,5000) then
 			exports["vrp"]:CallPolice({
 				["Source"] = source,
 				["Passport"] = Passport,
@@ -1477,7 +1459,7 @@ AddEventHandler("inventory:RemoveTyres",function(Entity)
 					Player(source)["state"]["Buttons"] = true
 					vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
-					if vRP.Task(source,3,5000) then
+					if vRP.Task(source,5,5000) then
 						Active[Passport] = os.time() + 10
 						TriggerClientEvent("Progress",source,"Removendo",10000)
 

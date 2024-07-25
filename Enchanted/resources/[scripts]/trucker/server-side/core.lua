@@ -48,17 +48,11 @@ function Creative.Payment()
 		end
 
 		if vRP.UserPremium(Passport) then
-			local Bonification = 0.05
 			local Hierarchy = vRP.LevelPremium(source)
+			local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
 
-			if Hierarchy == 1 then
-				Bonification = 0.100
-			elseif Hierarchy == 2 then
-				Bonification = 0.075
-			end
-
-			GainExperience = GainExperience + 10
 			Valuation = Valuation + (Valuation * Bonification)
+			GainExperience = GainExperience + 10
 		end
 
 		if not vRP.MaxItens(Passport,Result["Item"],Valuation) and vRP.CheckWeight(Passport,Result["Item"],Valuation) then
@@ -69,6 +63,7 @@ function Creative.Payment()
 		end
 
 		vRP.PutExperience(Passport,"Trucker",GainExperience)
+		vRP.RolepassPoints(Passport,GainExperience,true)
 		vRP.UpgradeStress(Passport,10)
 
 		Active[Passport] = nil

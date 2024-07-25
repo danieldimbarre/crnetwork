@@ -16,10 +16,10 @@ vCLIENT = Tunnel.getInterface("inspect")
 local Players = {}
 local Sourcers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
--- POLICE:INSPECT
+-- INSPECT:PLAYER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("police:Inspect")
-AddEventHandler("police:Inspect",function(OtherSource)
+RegisterServerEvent("inspect:Player")
+AddEventHandler("inspect:Player",function(OtherSource)
 	local source = source
 	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.Passport(OtherSource)

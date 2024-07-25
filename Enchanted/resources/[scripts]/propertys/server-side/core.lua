@@ -39,7 +39,7 @@ AddEventHandler("propertys:Robbery",function(Name)
 		local Lockpick = vRP.ConsultItem(Passport,"lockpick")
 		local Consult = vRP.Query("propertys/Exist",{ Name = Name })
 		local LockpickPlus = vRP.ConsultItem(Passport,"lockpickplus")
-		if (not Consult[1] or (Consult[1] and Consult[1]["Interior"] ~= "Galpão")) and (Service or ((Lockpick or LockpickPlus) and vRP.Task(source,6,7500))) then
+		if (not Consult[1] or (Consult[1] and Consult[1]["Interior"] ~= "Galpão")) and (Service or ((Lockpick or LockpickPlus) and vRP.Task(source,5,5000))) then
 			if not Saved[Name] then
 				Saved[Name] = (Consult[1] and Consult[1]["Interior"] or exports["propertys"]:Informations())
 			end
@@ -78,7 +78,7 @@ AddEventHandler("propertys:RobberyItem",function(Number,Name)
 		local Lockpick = vRP.ConsultItem(Passport,"lockpick")
 		if Lockpick or vRP.ConsultItem(Passport,"lockpickplus") then
 			if not Robbery[Name][Number] then
-				if (Number == "Locker" and not vRP.Safecrack(source,6)) or (Number ~= "Locker" and not vRP.Task(source,5,7500)) then
+				if (Number == "Locker" and not vRP.Safecrack(source,6)) or (Number ~= "Locker" and not vRP.Task(source,5,5000)) then
 					if Lockpick then
 						vRP.RemoveItem(Passport,Lockpick["Item"],1,true)
 					end
@@ -384,13 +384,7 @@ function Creative.Clothes()
 
 		if vRP.UserPremium(Passport) then
 			local Hierarchy = vRP.LevelPremium(source)
-			if Hierarchy == 1 then
-				CountClothes[Passport] = 8
-			elseif Hierarchy == 2 then
-				CountClothes[Passport] = 6
-			else
-				CountClothes[Passport] = 4
-			end
+			CountClothes[Passport] = (Hierarchy == 1 and 8) or (Hierarchy == 2 and 6) or (Hierarchy == 3 and 4)
 		end
 
 		local Consult = vRP.GetSrvData("Wardrobe:"..Passport,true)

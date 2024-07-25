@@ -1,8 +1,12 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Display = false
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- NOTIFYCALL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("NotifyCall",function()
-	if not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPauseMenuActive() then
+	if Display and not LocalPlayer["state"]["Commands"] and not LocalPlayer["state"]["Handcuff"] and not IsPauseMenuActive() then
 		SendNUIMessage({ Action = "Open" })
 		SetNuiFocus(true,true)
 	end
@@ -45,6 +49,7 @@ AddEventHandler("NotifyPush",function(Data)
 	local Blip = AddBlipForCoord(Data["x"],Data["y"],Data["z"])
 	local Road = GetStreetNameAtCoord(Data["x"],Data["y"],Data["z"])
 	Data["street"] = GetStreetNameFromHashKey(Road)
+	Display = true
 
 	SendNUIMessage({ Action = "New", Payload = Data })
 

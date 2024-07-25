@@ -42,21 +42,16 @@ function Creative.Payment(Selected)
 		end
 
 		if vRP.UserPremium(Passport) then
-			local Bonification = 0.050
 			local Hierarchy = vRP.LevelPremium(source)
+			local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
 
-			if Hierarchy == 1 then
-				Bonification = 0.100
-			elseif Hierarchy == 2 then
-				Bonification = 0.075
-			end
-
-			GainExperience = GainExperience + 1
 			Valuation = Valuation + (Valuation * Bonification)
+			GainExperience = GainExperience + 1
 		end
 
 		vRP.PutExperience(Passport,"Driver",GainExperience)
 		vRP.GenerateItem(Passport,"dollar",Valuation,true)
+		vRP.RolepassPoints(Passport,GainExperience,true)
 		vRP.UpgradeStress(Passport,1)
 
 		Active[Passport] = nil

@@ -26,11 +26,6 @@ local List = {
 		["Coords"] = vec4(954.49,-2247.07,30.58,266.46),
 		["Model"] = "a_c_cow",
 		["Collision"] = true
-	},{ -- Prisoner
-		["Distance"] = 50,
-		["Coords"] = vec4(1590.15,2564.84,55.18,269.3),
-		["Model"] = "u_m_y_prisoner_01",
-		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Desmanche
 		["Distance"] = 100,
 		["Coords"] = vec4(778.49,-395.89,33.43,99.22),

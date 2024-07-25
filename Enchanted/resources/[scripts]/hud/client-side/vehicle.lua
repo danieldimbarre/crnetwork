@@ -76,10 +76,11 @@ CreateThread(function()
 
 				local Vehicle = GetVehiclePedIsUsing(Ped)
 				local VRpm = GetVehicleCurrentRpm(Vehicle)
+				local EntitySpeed = GetEntitySpeed(Vehicle)
 				local VLocked = GetVehicleDoorLockStatus(Vehicle)
 				local VFuel = Entity(Vehicle)["state"]["Fuel"] or 0
 				local VEngineHealth = GetVehicleEngineHealth(Vehicle)
-				local VSpeed = math.ceil(GetEntitySpeed(Vehicle) * 2.236936)
+				local VSpeed = math.ceil(EntitySpeed * 2.236936)
 
 				if GetPedInVehicleSeat(Vehicle,-1) == Ped then
 					if GetVehicleDirtLevel(Vehicle) > 0.0 then

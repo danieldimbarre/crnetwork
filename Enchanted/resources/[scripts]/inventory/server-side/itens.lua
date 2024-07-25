@@ -35,6 +35,19 @@ Use = {
 		end
 	end,
 
+	["instagram"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local PhoneNumber = vRP.CleanPhone(Passport)
+		local CheckInstagram = vRP.Query("smartphone/CheckInstagram",{ Phone = PhoneNumber })
+		if PhoneNumber then
+			local CheckInstagram = vRP.Query("smartphone/CheckInstagram",{ Phone = PhoneNumber })
+			if CheckInstagram and CheckInstagram[1] and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				TriggerClientEvent("inventory:Update",source)
+				vRP.Query("smartphone/Instagram",{ Phone = PhoneNumber, Amount = 100 })
+				TriggerClientEvent("Notify",source,"Sucesso","Seguidores adicionados.","verde",5000)
+			end
+		end
+	end,
+
 	["analgesic"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if (not Healths[Passport] or os.time() > Healths[Passport]) then
 			if vRP.GetHealth(source) > 100 then
@@ -77,13 +90,6 @@ Use = {
 				TriggerClientEvent("inventory:Notify",source,"Sucesso","Frequência adicionada.","verde")
 				exports["radio"]:Add(Frequency,Keyboard[2])
 			end
-		end
-	end,
-
-	["odb2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.InsideVehicle(source) then
-			TriggerClientEvent("notebook:Open",source)
-			TriggerClientEvent("inventory:Close",source)
 		end
 	end,
 
@@ -674,7 +680,7 @@ Use = {
 					end)
 				end
 
-				if vRP.Task(source,5,10000) then
+				if vRP.Task(source,5,5000) then
 					Active[Passport] = os.time() + 15
 					TriggerClientEvent("Progress",source,"Reparando",15000)
 
@@ -726,7 +732,7 @@ Use = {
 					end)
 				end
 
-				if vRP.Task(source,5,10000) then
+				if vRP.Task(source,5,5000) then
 					Active[Passport] = os.time() + 15
 					TriggerClientEvent("Progress",source,"Reparando",15000)
 
@@ -820,7 +826,7 @@ Use = {
 				if vRP.InsideVehicle(source) then
 					vGARAGE.StartHotwired(source)
 
-					if vRP.Task(source,10,10000) then
+					if vRP.Task(source,10,5000) then
 						vGARAGE.RegisterDecors(source,Vehicle)
 						TriggerClientEvent("player:Residual",source,"Resíduo de Alumínio")
 
@@ -852,7 +858,7 @@ Use = {
 				else
 					vRPC.playAnim(source,false,{"missfbi_s4mop","clean_mop_back_player"},true)
 
-					if vRP.Task(source,10,10000) then
+					if vRP.Task(source,10,5000) then
 						Active[Passport] = os.time() + 15
 						vGARAGE.RegisterDecors(source,Vehicle)
 						TriggerClientEvent("Progress",source,"Destravando",15000)
@@ -939,7 +945,7 @@ Use = {
 				if vRP.InsideVehicle(source) then
 					vGARAGE.StartHotwired(source)
 
-					if vRP.Task(source,10,10000) then
+					if vRP.Task(source,10,5000) then
 						vGARAGE.RegisterDecors(source,Vehicle)
 						TriggerClientEvent("player:Residual",source,"Resíduo de Alumínio")
 
@@ -971,7 +977,7 @@ Use = {
 				else
 					vRPC.playAnim(source,false,{"missfbi_s4mop","clean_mop_back_player"},true)
 
-					if vRP.Task(source,10,10000) then
+					if vRP.Task(source,10,5000) then
 						Active[Passport] = os.time() + 15
 						vGARAGE.RegisterDecors(source,Vehicle)
 						TriggerClientEvent("Progress",source,"Destravando",15000)
@@ -1041,7 +1047,7 @@ Use = {
 					Player(source)["state"]["Buttons"] = true
 					TriggerClientEvent("inventory:Close",source)
 
-					if vRP.Task(source,3,10000) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+					if vRP.Task(source,10,5000) and vRP.TakeItem(Passport,Full,1,true,Slot) then
 						TriggerClientEvent("Notify",source,"Sucesso","<b>Bloqueador</b> instalado.","verde",5000)
 						TriggerEvent("SignalRemove",Plate)
 					end
@@ -1534,13 +1540,14 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,10,100000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"boilies") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 }
 				})
 
+				vRP.RolepassPoints(Passport,1,true)
 				vRP.PutExperience(Passport,"Fisherman",1)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
@@ -1565,7 +1572,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,10,100000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"boilies") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1574,6 +1581,7 @@ Use = {
 					{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 }
 				})
 
+				vRP.RolepassPoints(Passport,1,true)
 				vRP.PutExperience(Passport,"Fisherman",1)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
@@ -1598,7 +1606,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,10,100000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"boilies") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1610,6 +1618,7 @@ Use = {
 					{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 }
 				})
 
+				vRP.RolepassPoints(Passport,1,true)
 				vRP.PutExperience(Passport,"Fisherman",1)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
@@ -1634,7 +1643,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,10,100000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"boilies") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1648,6 +1657,7 @@ Use = {
 					{ ["Item"] = "treasurebox", ["Chance"] = 1, ["Amount"] = 1 }
 				})
 
+				vRP.RolepassPoints(Passport,1,true)
 				vRP.PutExperience(Passport,"Fisherman",1)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
@@ -1672,7 +1682,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,8,75000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,15000) and vRP.TakeItem(Passport,"boilies") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1686,6 +1696,7 @@ Use = {
 					{ ["Item"] = "treasurebox", ["Chance"] = 1, ["Amount"] = 1 }
 				})
 
+				vRP.RolepassPoints(Passport,2,true)
 				vRP.PutExperience(Passport,"Fisherman",2)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
@@ -2755,7 +2766,7 @@ Use = {
 				vRPC.playAnim(source,false,{"amb@medic@standing@kneel@idle_a","idle_a"},true)
 				vRPC.CreateObjects(source,"anim@heists@box_carry@","idle","imp_prop_impexp_tyre_01a",49,28422,-0.02,-0.1,0.2,10.0,0.0,0.0)
 
-				if vRP.Task(source,3,7500) then
+				if vRP.Task(source,5,5000) then
 					Active[Passport] = os.time() + 10
 					Player(source)["state"]["Buttons"] = true
 					TriggerClientEvent("Progress",source,"Colocando",10000)

@@ -116,17 +116,11 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 				end
 
 				if vRP.UserPremium(Passport) then
-					local Bonification = 0.050
 					local Hierarchy = vRP.LevelPremium(source)
+					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
 		
-					if Hierarchy == 1 then
-						Bonification = 0.100
-					elseif Hierarchy == 2 then
-						Bonification = 0.075
-					end
-		
-					GainExperience = GainExperience + 2
 					Valuation = Valuation + (Valuation * Bonification)
+					GainExperience = GainExperience + 2
 				end
 
 				if exports["party"]:DoesExist(Passport) then
@@ -135,12 +129,14 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 					for Number = 1,AmountMembers do
 						if vRP.Passport(Consult[Number]["Source"]) then
 							vRP.UpgradeStress(Consult[Number]["Passport"],Stress)
+							vRP.RolepassPoints(Consult[Number]["Passport"],GainExperience,true)
 							vRP.PutExperience(Consult[Number]["Passport"],"Dismantle",GainExperience)
 							vRP.GenerateItem(Consult[Number]["Passport"],"dirtydollar",Valuation,true)
 						end
 					end
 				else
 					vRP.UpgradeStress(Passport,Stress)
+					vRP.RolepassPoints(Passport,GainExperience,true)
 					vRP.PutExperience(Passport,"Dismantle",GainExperience)
 					vRP.GenerateItem(Passport,"dirtydollar",Valuation,true)
 				end

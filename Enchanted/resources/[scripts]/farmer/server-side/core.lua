@@ -41,7 +41,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 				Player(source)["state"]["Buttons"] = true
 				vRPC.CreateObjects(source,"melee@large_wpn@streamed_core","ground_attack_on_spot","prop_tool_pickaxe",1,18905,0.10,-0.1,0.0,-92.0,260.0,5.0)
 
-				if vRP.Task(source,Pickaxe and 10 or 6,20000) and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+				if vRP.Task(source,Pickaxe and 10 or 5,10000) and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
 					GlobalState["Farmer:"..Number] = GlobalState["Work"] + 60
 
 					local Result = {
@@ -128,7 +128,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 				Player(source)["state"]["Buttons"] = true
 				vRPC.playAnim(source,false,{"lumberjackaxe@idle","idle"},true)
 
-				if vRP.Task(source,Axe and 10 or 6,20000) and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+				if vRP.Task(source,Axe and 10 or 5,10000) and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
 					GlobalState["Farmer:"..Number] = GlobalState["Work"] + 30
 
 					local Valuation = 3

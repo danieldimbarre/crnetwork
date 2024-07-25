@@ -116,13 +116,7 @@ function Creative.Clothes()
 
 		if vRP.UserPremium(Passport) then
 			local Hierarchy = vRP.LevelPremium(source)
-			if Hierarchy == 1 then
-				CountClothes[Passport] = 8
-			elseif Hierarchy == 2 then
-				CountClothes[Passport] = 6
-			else
-				CountClothes[Passport] = 4
-			end
+			CountClothes[Passport] = (Hierarchy == 1 and 8) or (Hierarchy == 2 and 6) or (Hierarchy == 3 and 4)
 		end
 
 		local Consult = vRP.GetSrvData("Clothes:"..Passport,true)

@@ -15,6 +15,7 @@ vCLIENT = Tunnel.getInterface("painel")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
 local Information = {}
+local HierarchyButtons = 2
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAINEL
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -61,7 +62,7 @@ RegisterCommand("painel",function(source,Message)
 
 			Information[Passport] = Permission
 
-			vCLIENT.Open(source,{ ["groupName"] = Permission, ["members"] = Members, ["client_role"] = vRP.HasPermission(Passport,Permission) })
+			vCLIENT.Open(source,{ Permission,Members,Passport,vRP.HasPermission(Passport,Permission),HierarchyButtons,#Hierarchy })
 		end
 	end
 end)
@@ -71,7 +72,7 @@ end)
 function Creative.Dismiss(OtherPassport)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Information[Passport] and Passport ~= OtherPassport and vRP.HasGroup(Passport,Information[Passport],2) and vRP.HasPermission(OtherPassport,Information[Passport]) >= 2 then
+	if Passport and Information[Passport] and Passport ~= OtherPassport and vRP.HasGroup(Passport,Information[Passport],HierarchyButtons) and vRP.HasPermission(OtherPassport,Information[Passport]) >= HierarchyButtons then
 		TriggerClientEvent("Notify",source,"Sucesso","Passaporte removido.","verde",5000)
 		vRP.RemovePermission(OtherPassport,Information[Passport])
 
@@ -88,7 +89,7 @@ function Creative.Invite(OtherPassport)
 	local Passport = vRP.Passport(source)
 	local Identity = vRP.Identity(OtherPassport)
 	local OtherSource = vRP.Source(OtherPassport)
-	if Passport and Identity and OtherSource and Information[Passport] and Passport ~= OtherPassport and vRP.HasGroup(Passport,Information[Passport],2) then
+	if Passport and Identity and OtherSource and Information[Passport] and Passport ~= OtherPassport and vRP.HasGroup(Passport,Information[Passport],HierarchyButtons) then
 		if vRP.AmountGroups(Information[Passport]) >= vRP.GroupLimit(Information[Passport]) then
 			TriggerClientEvent("Notify",source,"Atenção","Limite de membros atingido.","amarelo",5000)
 
@@ -141,7 +142,7 @@ end
 function Creative.Hierarchy(OtherPassport,Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Information[Passport] and Passport ~= OtherPassport and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,Information[Passport],2) and ((Mode == "Demote" and vRP.HasPermission(OtherPassport,Information[Passport]) >= 2) or (Mode ~= "Demote" and vRP.HasPermission(OtherPassport,Information[Passport]) > 2)) then
+	if Passport and Information[Passport] and Passport ~= OtherPassport and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,Information[Passport],HierarchyButtons) and ((Mode == "Demote" and vRP.HasPermission(OtherPassport,Information[Passport]) >= HierarchyButtons) or (Mode ~= "Demote" and vRP.HasPermission(OtherPassport,Information[Passport]) > HierarchyButtons)) then
 		vRP.SetPermission(OtherPassport,Information[Passport],nil,Mode)
 		TriggerClientEvent("Notify",source,"Sucesso","Hierarquia atualizada.","verde",5000)
 

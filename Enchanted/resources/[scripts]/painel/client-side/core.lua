@@ -16,14 +16,14 @@ vSERVER = Tunnel.getInterface("painel")
 function Creative.Open(Data)
 	SetNuiFocus(true,true)
 	SetCursorLocation(0.5,0.5)
-	SendNUIMessage({ name = "open", payload = { Data } })
+	SendNUIMessage({ Action = "Open", Payload = Data })
 
 	vRP.CreateObjects("amb@code_human_in_bus_passenger_idles@female@tablet@idle_a","idle_a","prop_cs_tablet",49,28422,-0.05,0.0,0.0,0.0,0.0, 0.0)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("close",function(Data,Callback)
+RegisterNUICallback("Close",function(Data,Callback)
 	SetNuiFocus(false,false)
 	vRP.Destroy()
 
@@ -32,32 +32,24 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVITE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("invite",function(Data,Callback)
-	if MumbleIsConnected() then
-		Callback(vSERVER.Invite(Data["user_id"]))
-	end
+RegisterNUICallback("Invite",function(Data,Callback)
+	Callback(vSERVER.Invite(Data["Passport"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROMOTE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("promote",function(Data,Callback)
-	if MumbleIsConnected() then
-		Callback(vSERVER.Hierarchy(Data["user_id"],"Promote"))
-	end
+RegisterNUICallback("Promote",function(Data,Callback)
+	Callback(vSERVER.Hierarchy(Data["Passport"],"Promote"))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DEMOTE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("demote",function(Data,Callback)
-	if MumbleIsConnected() then
-		Callback(vSERVER.Hierarchy(Data["user_id"],"Demote"))
-	end
+RegisterNUICallback("Demote",function(Data,Callback)
+	Callback(vSERVER.Hierarchy(Data["Passport"],"Demote"))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DEMOTE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("dismiss",function(Data,Callback)
-	if MumbleIsConnected() then
-		Callback(vSERVER.Dismiss(Data["user_id"]))
-	end
+RegisterNUICallback("Dismiss",function(Data,Callback)
+	Callback(vSERVER.Dismiss(Data["Passport"]))
 end)

@@ -103,10 +103,3 @@ CreateThread(function()
 		Wait(1000)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- POLICE:PRISIONER
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("police:Prisioner")
-AddEventHandler("police:Prisioner",function(Status)
-	LocalPlayer["state"]["Prison"] = Status
-end)

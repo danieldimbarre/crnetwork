@@ -33,16 +33,13 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) DEFAULT '''''''Individuo''''''',
   `Lastname` varchar(50) DEFAULT '''''''Indigente''''''',
-  `Phone` varchar(10) DEFAULT NULL,
   `Sex` varchar(1) DEFAULT NULL,
   `Bank` int(20) NOT NULL DEFAULT 5000,
   `Blood` int(1) NOT NULL DEFAULT 1,
   `Prison` int(10) NOT NULL DEFAULT 0,
-  `Badge` int(3) NOT NULL DEFAULT 0,
   `Medic` int(20) NOT NULL DEFAULT 0,
   `Groups` int(20) NOT NULL DEFAULT 0,
   `Skin` varchar(50) NOT NULL DEFAULT '''mp_m_freemode_01''',
-  `Avatar` varchar(254) NOT NULL DEFAULT '''''''https://source.unsplash.com/random/''''''',
   `License` varchar(50) DEFAULT NULL,
   `Created` int(20) NOT NULL DEFAULT 0,
   `Login` int(20) NOT NULL DEFAULT 0,
@@ -146,50 +143,6 @@ CREATE TABLE IF NOT EXISTS `playerdata` (
   KEY `Information` (`Name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-DROP TABLE IF EXISTS `police_courses`;
-CREATE TABLE IF NOT EXISTS `police_courses` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Passport` int(20) DEFAULT 0,
-  `Police` int(20) DEFAULT 0,
-  `Type` varchar(255) DEFAULT 'Segurança',
-  `Date` varchar(255) DEFAULT '00/00/0000',
-  PRIMARY KEY (`id`),
-  KEY `Passport` (`Passport`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-DROP TABLE IF EXISTS `police_messages`;
-CREATE TABLE IF NOT EXISTS `police_messages` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(100) DEFAULT 'Individuo Indigente',
-  `Message` longtext DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-DROP TABLE IF EXISTS `police_prisons`;
-CREATE TABLE IF NOT EXISTS `police_prisons` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Passport` int(20) DEFAULT 1,
-  `Police` int(20) NOT NULL DEFAULT 0,
-  `Crimes` longtext DEFAULT NULL,
-  `Notes` longtext DEFAULT NULL,
-  `Fines` int(20) DEFAULT 0,
-  `Services` int(20) DEFAULT 0,
-  `Date` varchar(255) NOT NULL DEFAULT '00/00/0000 ás 00:00',
-  PRIMARY KEY (`id`),
-  KEY `Passport` (`Passport`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-DROP TABLE IF EXISTS `police_wanted`;
-CREATE TABLE IF NOT EXISTS `police_wanted` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Passport` int(20) DEFAULT 1,
-  `Police` int(20) NOT NULL DEFAULT 0,
-  `Crime` longtext DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `Passport` (`Passport`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 DROP TABLE IF EXISTS `propertys`;
 CREATE TABLE IF NOT EXISTS `propertys` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
@@ -211,6 +164,7 @@ CREATE TABLE IF NOT EXISTS `propertys` (
 DROP TABLE IF EXISTS `races`;
 CREATE TABLE IF NOT EXISTS `races` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
+  `Mode` int(5) NOT NULL DEFAULT 0,
   `Race` int(5) NOT NULL DEFAULT 0,
   `Passport` int(10) NOT NULL DEFAULT 0,
   `Vehicle` varchar(50) NOT NULL DEFAULT 'Sultan RS',
@@ -279,20 +233,8 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   `Windows` longtext DEFAULT NULL,
   `Tyres` longtext DEFAULT NULL,
   `Seatbelt` tinyint(1) NOT NULL DEFAULT 0,
+  `Drift` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `Vehicle` (`Vehicle`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-DROP TABLE IF EXISTS `warehouse`;
-CREATE TABLE IF NOT EXISTS `warehouse` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL,
-  `Weight` int(20) NOT NULL DEFAULT 50,
-  `Password` varchar(50) NOT NULL,
-  `Passport` int(10) NOT NULL DEFAULT 0,
-  `Tax` int(20) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`),
-  KEY `Passport` (`Passport`),
-  KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

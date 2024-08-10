@@ -22,7 +22,7 @@ RegisterCommand("Partys",function()
 	if not Open and not IsPedInAnyVehicle(Ped) then
 		Open = true
 		SetNuiFocus(true,true)
-		SendNUIMessage({ name = "Open", payload = vSERVER.GetRooms() })
+		SendNUIMessage({ Action = "Open", Payload = { LocalPlayer["state"]["Passport"],vSERVER.GetRooms() } })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ end)
 -- GETMEMBERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("GetMembers",function(Data,Callback)
-	Callback(vSERVER.GetMembers(Data["id"]))
+	Callback(vSERVER.GetMembers(Data["Id"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LEAVEROOM
@@ -64,19 +64,19 @@ end)
 -- CREATEROOM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("CreateRoom",function(Data,Callback)
-	Callback(vSERVER.CreateRoom(Data["name"],Data["password"]))
+	Callback(vSERVER.CreateRoom(Data["Name"],Data["Password"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KICKROOM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("KickRoom",function(Data,Callback)
-	Callback(vSERVER.KickRoom(Data["room"],Data["id"]))
+	Callback(vSERVER.KickRoom(Data["Room"],Data["Passport"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENTERROOM
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("EnterRoom",function(Data,Callback)
-	Callback(vSERVER.EnterRoom(Data["room"],Data["password"]))
+	Callback(vSERVER.EnterRoom(Data["Room"],Data["Password"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
@@ -93,7 +93,7 @@ end)
 RegisterNetEvent("party:ResetNui")
 AddEventHandler("party:ResetNui",function()
 	if Open then
-		SendNUIMessage({ name = "Reset" })
+		SendNUIMessage({ Action = "Close" })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

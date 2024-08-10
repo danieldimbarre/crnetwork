@@ -361,7 +361,8 @@ function Creative.SpawnPosition(Select)
 		return false
 	end
 
-	SendNUIMessage({ name = "Close" })
+	SendNUIMessage({ Action = "Close" })
+	SetNuiFocus(false,false)
 
 	return Selected
 end
@@ -556,7 +557,7 @@ CreateThread(function()
 							Opened = Number
 							SetNuiFocus(true,true)
 							TriggerEvent("target:Debug")
-							SendNUIMessage({ name = "Open", payload = { Number,Vehicles } })
+							SendNUIMessage({ Action = "Open", Payload = Vehicles })
 						end
 					end
 				end
@@ -583,9 +584,7 @@ end)
 -- SPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Spawn",function(Data,Callback)
-	if Data["Name"] then
-		TriggerServerEvent("garages:Spawn",Data["Name"],Data["Number"],Opened)
-	end
+	TriggerServerEvent("garages:Spawn",Data["Model"],Opened)
 
 	Callback("Ok")
 end)
@@ -601,7 +600,7 @@ end)
 -- TAX
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Tax",function(Data,Callback)
-	TriggerServerEvent("garages:Tax",Data)
+	TriggerServerEvent("garages:Tax",Data["Model"])
 
 	Callback("Ok")
 end)
@@ -609,7 +608,7 @@ end)
 -- SELL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Sell",function(Data,Callback)
-	TriggerServerEvent("garages:Sell",Data)
+	TriggerServerEvent("garages:Sell",Data["Model"])
 
 	Callback("Ok")
 end)
@@ -617,7 +616,7 @@ end)
 -- TRANSFER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Transfer",function(Data,Callback)
-	TriggerServerEvent("garages:Transfer",Data)
+	TriggerServerEvent("garages:Transfer",Data["Model"])
 
 	Callback("Ok")
 end)
@@ -634,7 +633,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("garages:Close")
 AddEventHandler("garages:Close",function()
-	SendNUIMessage({ name = "Close" })
+	SendNUIMessage({ Action = "Close" })
+	SetNuiFocus(false,false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:PROPERTYS

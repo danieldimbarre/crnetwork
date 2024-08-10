@@ -50,7 +50,6 @@ AddEventHandler("crafting:Open",function(Number)
 				Opened = Location[Number]["Mode"]
 
 				TriggerEvent("inventory:Open",{
-					Action = "Open",
 					Type = "Shops",
 					Mode = "Buy",
 					Resource = "crafting"
@@ -61,7 +60,6 @@ AddEventHandler("crafting:Open",function(Number)
 				Opened = Number
 
 				TriggerEvent("inventory:Open",{
-					Action = "Open",
 					Type = "Shops",
 					Mode = "Buy",
 					Resource = "crafting"

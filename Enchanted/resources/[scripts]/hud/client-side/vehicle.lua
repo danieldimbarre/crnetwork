@@ -256,7 +256,7 @@ function NitroEnable()
 
 							if not LocalPlayer["state"]["Nitro"] then
 								LocalPlayer["state"]:set("Nitro",true,false)
-								Entity(Vehicle)["state"]:set("NitroFlame",true,false)
+								Entity(Vehicle)["state"]:set("NitroFlame",true,true)
 
 								SetVehicleRocketBoostActive(Vehicle,true)
 								SetVehicleBoostActive(Vehicle,true)
@@ -265,7 +265,7 @@ function NitroEnable()
 						else
 							if LocalPlayer["state"]["Nitro"] then
 								LocalPlayer["state"]:set("Nitro",false,false)
-								Entity(Vehicle)["state"]:set("NitroFlame",false,false)
+								Entity(Vehicle)["state"]:set("NitroFlame",false,true)
 								Entity(Vehicle)["state"]:set("Nitro",NitroFuel,true)
 							end
 
@@ -292,7 +292,7 @@ function NitroDisable()
 		local Vehicle = GetLastDrivenVehicle()
 		if DoesEntityExist(Vehicle) then
 			Entity(Vehicle)["state"]:set("Nitro",NitroFuel,true)
-			Entity(Vehicle)["state"]:set("NitroFlame",false,false)
+			Entity(Vehicle)["state"]:set("NitroFlame",false,true)
 
 			SetVehicleRocketBoostActive(Vehicle,false)
 			SetVehicleBoostActive(Vehicle,false)
@@ -332,31 +332,24 @@ CreateThread(function()
 				if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
 					TimeDistance = 1
 
-					local Vehicle = GetVehiclePedIsUsing(Ped)
-					if GetVehicleDoorLockStatus(Vehicle) >= 2 or SeatbeltLock then
+					if SeatbeltLock then
 						DisableControlAction(0,75,true)
 						DisableControlAction(27,75,true)
 					end
 
 					if Speed ~= SeatbeltSpeed then
-						local Calculated = (SeatbeltSpeed - Speed)
-						local BeltRacing = Entity(Vehicle)["state"]["Seatbelt"]
+						local Vehicle = GetVehiclePedIsUsing(Ped)
+						if not Entity(Vehicle)["state"]["Seatbelt"] and not SeatbeltLock and (SeatbeltSpeed - Speed) >= 100 then
+							ApplyDamageToPed(Ped,25,false)
 
-						if (BeltRacing and Calculated >= 125) or
-							(not SeatbeltLock and Calculated >= 75) or
-							(not BeltRacing and not SeatbeltLock and Calculated >= 75) or
-							(not SeatbeltLock and BeltRacing and Calculated >= 125) or
-							(SeatbeltLock and BeltRacing and Calculated >= 125) then
-								ApplyDamageToPed(Ped,25,false)
+							SetEntityNoCollisionEntity(Ped,Vehicle,false)
+							SetEntityNoCollisionEntity(Vehicle,Ped,false)
+							TriggerServerEvent("hud:VehicleEject",SeatbeltVelocity)
 
-								SetEntityNoCollisionEntity(Ped,Vehicle,false)
-								SetEntityNoCollisionEntity(Vehicle,Ped,false)
-								TriggerServerEvent("hud:VehicleEject",SeatbeltVelocity)
-
-								SetTimeout(500,function()
-									SetEntityNoCollisionEntity(Ped,Vehicle,true)
-									SetEntityNoCollisionEntity(Vehicle,Ped,true)
-								end)
+							SetTimeout(500,function()
+								SetEntityNoCollisionEntity(Ped,Vehicle,true)
+								SetEntityNoCollisionEntity(Vehicle,Ped,true)
+							end)
 						end
 
 						SeatbeltVelocity = GetEntityVelocity(Vehicle)

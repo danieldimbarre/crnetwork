@@ -53,6 +53,7 @@ function Creative.Vehicle(Model,Destiny)
 
 		SetVehicleBodyHealth(Vehicle,10.0)
 		SetVehicleNumberPlateText(Vehicle,Plate)
+		SetEntityIgnoreRequestControlFilter(Vehicle,true)
 
 		Entity(Vehicle)["state"]:set("Fuel",0,true)
 		Entity(Vehicle)["state"]:set("Nitro",0,true)
@@ -102,7 +103,7 @@ AddEventHandler("towed:Payment",function(Plate)
 
 		if vRP.UserPremium(Passport) then
 			local Hierarchy = vRP.LevelPremium(source)
-			local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
+			local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
 
 			Valuation = Valuation + (Valuation * Bonification)
 			GainExperience = GainExperience + 3

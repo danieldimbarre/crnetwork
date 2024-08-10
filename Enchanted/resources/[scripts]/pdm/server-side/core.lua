@@ -97,7 +97,8 @@ function Creative.Check()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		exports["vrp"]:Bucket(source,"Enter",Passport)
+		TriggerEvent("DebugWeapons",Passport,source)
+		exports["vrp"]:Bucket(source,"Enter",100000 + Passport)
 	end
 
 	return true
@@ -115,6 +116,7 @@ function Creative.Remove()
 	local source = source
 
 	exports["vrp"]:Bucket(source,"Exit")
+	TriggerEvent("vRP:ReloadWeapons",source)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

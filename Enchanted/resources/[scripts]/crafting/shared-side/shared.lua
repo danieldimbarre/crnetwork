@@ -1203,6 +1203,16 @@ List = {
 					["dirtydollar"] = 2025
 				}
 			},
+			["racestablet"] = {
+				["Amount"] = 1,
+				["Required"] = {
+					["screws"] = 4,
+					["copper"] = 100,
+					["aluminum"] = 100,
+					["metalspring"] = 1,
+					["sheetmetal"] = 2
+				}
+			},
 			["lockpick"] = {
 				["Amount"] = 1,
 				["Required"] = {

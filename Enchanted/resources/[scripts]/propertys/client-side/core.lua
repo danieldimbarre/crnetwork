@@ -122,7 +122,6 @@ CreateThread(function()
 							Opened = Line
 
 							TriggerEvent("inventory:Open",{
-								Action = "Open",
 								Type = "Chest",
 								Resource = "propertys"
 							})

@@ -27,10 +27,8 @@ Carry = {}
 Active = {}
 Trashs = {}
 Plates = {}
-Armors = {}
 Trunks = {}
 Objects = {}
-Healths = {}
 SaveObjects = {}
 RobberyActive = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -571,8 +569,7 @@ function Creative.Send(Slot,Amount)
 						Player(ClosestPed)["state"]["Cancel"] = false
 						Player(ClosestPed)["state"]["Buttons"] = false
 
-						if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
-							vRP.GiveItem(OtherPassport,Item,Amount,true)
+						if vRP.TakeItem(Passport,Item,Amount,true,Slot) and vRP.GiveItem(OtherPassport,Item,Amount,true) then
 							TriggerClientEvent("inventory:Update",source)
 							TriggerClientEvent("inventory:Update",ClosestPed)
 						end
@@ -621,7 +618,7 @@ function Creative.Deliver(Work)
 
 				if vRP.UserPremium(Passport) then
 					local Hierarchy = vRP.LevelPremium(source)
-					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
+					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
 
 					Valuation = Valuation + (Valuation * Bonification)
 					GainExperience = GainExperience + 2
@@ -659,7 +656,7 @@ function Creative.Deliver(Work)
 
 				if vRP.UserPremium(Passport) then
 					local Hierarchy = vRP.LevelPremium(source)
-					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
+					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
 
 					Valuation = Valuation + (Valuation * Bonification)
 					GainExperience = GainExperience + 2
@@ -697,7 +694,7 @@ function Creative.Deliver(Work)
 
 				if vRP.UserPremium(Passport) then
 					local Hierarchy = vRP.LevelPremium(source)
-					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
+					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
 
 					Valuation = Valuation + (Valuation * Bonification)
 					GainExperience = GainExperience + 1
@@ -1068,7 +1065,7 @@ AddEventHandler("inventory:Trasher",function(Entity)
 
 					if vRP.UserPremium(Passport) then
 						local Hierarchy = vRP.LevelPremium(source)
-						local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
+						local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
 
 						Valuation = Valuation + (Valuation * Bonification)
 						GainExperience = GainExperience + 1
@@ -1726,14 +1723,6 @@ AddEventHandler("Disconnect",function(Passport)
 
 	if Active[Passport] then
 		Active[Passport] = nil
-	end
-
-	if Healths[Passport] then
-		Healths[Passport] = nil
-	end
-
-	if Armors[Passport] then
-		Armors[Passport] = nil
 	end
 
 	if Drugs[Passport] then

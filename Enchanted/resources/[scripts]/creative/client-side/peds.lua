@@ -327,21 +327,6 @@ CreateThread(function()
 					SetBlockingOfNonTemporaryEvents(Spawned[Number],true)
 					SetModelAsNoLongerNeeded(List[Number]["Model"])
 
-					if List[Number]["Model"] == "s_f_y_casino_01" then
-						SetPedDefaultComponentVariation(Spawned[Number])
-						SetPedComponentVariation(Spawned[Number],0,3,0,0)
-						SetPedComponentVariation(Spawned[Number],1,0,0,0)
-						SetPedComponentVariation(Spawned[Number],2,3,0,0)
-						SetPedComponentVariation(Spawned[Number],3,0,1,0)
-						SetPedComponentVariation(Spawned[Number],4,1,0,0)
-						SetPedComponentVariation(Spawned[Number],6,1,0,0)
-						SetPedComponentVariation(Spawned[Number],7,1,0,0)
-						SetPedComponentVariation(Spawned[Number],8,0,0,0)
-						SetPedComponentVariation(Spawned[Number],10,0,0,0)
-						SetPedComponentVariation(Spawned[Number],11,0,0,0)
-						SetPedPropIndex(Spawned[Number],1,0,0,false)
-					end
-
 					if List[Number]["Anim"] and LoadAnim(List[Number]["Anim"][1]) then
 						TaskPlayAnim(Spawned[Number],List[Number]["Anim"][1],List[Number]["Anim"][2],8.0,8.0,-1,1,1,0,0,0)
 					end

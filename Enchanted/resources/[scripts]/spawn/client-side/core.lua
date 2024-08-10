@@ -120,12 +120,9 @@ AddEventHandler("spawn:Finish",function(Coords,Creation)
 			TriggerEvent("hud:Active",true)
 		end
 
+		TriggerServerEvent("vRP:WaitCharacters",Creation)
 		SendNUIMessage({ Action = "Close" })
 		SetNuiFocus(false,false)
-
-		SetTimeout(2500,function()
-			TriggerServerEvent("vRP:WaitCharacters",Creation)
-		end)
 
 		if DoesCamExist(Camera) then
 			RenderScriptCams(false,false,0,false,false)
@@ -146,13 +143,10 @@ RegisterNUICallback("Spawn",function(Data,Callback)
 		Camera = nil
 	end
 
+	TriggerServerEvent("vRP:WaitCharacters")
 	SendNUIMessage({ Action = "Close" })
 	TriggerEvent("hud:Active",true)
 	SetNuiFocus(false,false)
-
-	SetTimeout(2500,function()
-		TriggerServerEvent("vRP:WaitCharacters")
-	end)
 
 	Callback("Ok")
 end)

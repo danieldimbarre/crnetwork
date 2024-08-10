@@ -286,6 +286,7 @@ AddEventHandler("inventory:CreateWeapon",function(Name)
 				AttachEntityToEntity(Objects[Name],Ped,Bone,Config["x"],Config["y"],Config["z"],Config["RotX"],Config["RotY"],Config["RotZ"],true,true,false,true,2,true)
 				SetEntityCompletelyDisableCollision(Objects[Name],false,true)
 				SetModelAsNoLongerNeeded(Config["Model"])
+				SetEntityLodDist(Objects[Name],0xFFFF)
 			end
 		end
 	end

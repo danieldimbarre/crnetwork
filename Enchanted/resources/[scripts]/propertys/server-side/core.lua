@@ -195,7 +195,9 @@ function Creative.Toggle(Name,Mode)
 		if Mode == "Exit" then
 			Inside[Passport] = nil
 			exports["vrp"]:Bucket(source,"Exit")
+			TriggerEvent("vRP:ReloadWeapons",source)
 		else
+			TriggerEvent("DebugWeapons",Passport,source)
 			Inside[Passport] = Propertys[Name]["Coords"]
 
 			if Name == "Hotel" then
@@ -384,7 +386,7 @@ function Creative.Clothes()
 
 		if vRP.UserPremium(Passport) then
 			local Hierarchy = vRP.LevelPremium(source)
-			CountClothes[Passport] = (Hierarchy == 1 and 8) or (Hierarchy == 2 and 6) or (Hierarchy == 3 and 4)
+			CountClothes[Passport] = (Hierarchy == 1 and 8) or (Hierarchy == 2 and 6) or (Hierarchy >= 3 and 4)
 		end
 
 		local Consult = vRP.GetSrvData("Wardrobe:"..Passport,true)

@@ -59,7 +59,6 @@ RegisterNetEvent("inspect:Open")
 AddEventHandler("inspect:Open",function()
 	Opened = true
 	TriggerEvent("inventory:Open",{
-		Action = "Open",
 		Type = "Inspect",
 		Resource = "inspect"
 	})

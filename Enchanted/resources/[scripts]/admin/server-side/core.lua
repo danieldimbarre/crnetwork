@@ -718,18 +718,3 @@ RegisterCommand("removeprop",function(source,Message)
 		print("Processo de remoção das propriedades finalizada.")
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- REMOVEWR
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("removewr",function(source,Message)
-	if source == 0 then
-		for _,v in pairs(vRP.Query("warehouse/Minimals")) do
-			vRP.RemSrvData("Warehouse:"..v["Name"])
-			vRP.Query("warehouse/Sell",{ Name = v["Name"] })
-
-			Wait(1000)
-		end
-
-		print("Processo de remoção dos warehouse finalizada.")
-	end
-end)

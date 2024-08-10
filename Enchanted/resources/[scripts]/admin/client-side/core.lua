@@ -188,6 +188,7 @@ function Creative.Limparea(Coords)
 	ClearAreaOfCops(Coords["x"],Coords["y"],Coords["z"],100.0,0)
 	ClearAreaOfObjects(Coords["x"],Coords["y"],Coords["z"],100.0,0)
 	ClearAreaOfProjectiles(Coords["x"],Coords["y"],Coords["z"],100.0,0)
+	ClearArea(Coords["x"],Coords["y"],Coords["z"],100.0,true,false,false,false)
 	ClearAreaOfVehicles(Coords["x"],Coords["y"],Coords["z"],100.0,false,false,false,false,false)
 	ClearAreaLeaveVehicleHealth(Coords["x"],Coords["y"],Coords["z"],100.0,false,false,false,false)
 end

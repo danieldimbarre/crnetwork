@@ -170,8 +170,7 @@ function Creative.Store(Item,Slot,Amount,Target)
 		end
 
 		if (vRP.InventoryWeight(Players[Passport]) + ItemWeight(Item) * Amount) <= vRP.GetWeight(Players[Passport]) then
-			if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
-				vRP.GiveItem(Players[Passport],Item,Amount,true,Target)
+			if vRP.TakeItem(Passport,Item,Amount,true,Slot) and vRP.GiveItem(Players[Passport],Item,Amount,true,Target) then
 				TriggerClientEvent("inventory:Update",source)
 			end
 		else
@@ -194,8 +193,7 @@ function Creative.Take(Item,Slot,Target,Amount)
 		end
 
 		if vRP.CheckWeight(Passport,Item,Amount) then
-			if vRP.TakeItem(Players[Passport],Item,Amount,true,Slot) then
-				vRP.GiveItem(Passport,Item,Amount,true,Target)
+			if vRP.TakeItem(Players[Passport],Item,Amount,true,Slot) and vRP.GiveItem(Passport,Item,Amount,true,Target) then
 				TriggerClientEvent("inventory:Update",source)
 			end
 		else

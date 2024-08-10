@@ -3,36 +3,118 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 Use = {
 	["bandage"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if (not Healths[Passport] or os.time() > Healths[Passport]) then
-			if vRP.GetHealth(source) > 100 then
-				Active[Passport] = os.time() + 5
-				Player(source)["state"]["Buttons"] = true
-				TriggerClientEvent("inventory:Close",source)
-				TriggerClientEvent("Progress",source,"Passando",5000)
-				vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
+		Active[Passport] = os.time() + 10
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Passando",10000)
+		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
 
-				repeat
-					if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-						vRPC.Destroy(source)
-						Active[Passport] = nil
-						Player(source)["state"]["Buttons"] = false
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				vRPC.Destroy(source)
+				Active[Passport] = nil
+				Player(source)["state"]["Buttons"] = false
 
-						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							TriggerClientEvent("sounds:Private",source,"bandage",0.5)
-							Healths[Passport] = os.time() + 10
-							vRP.UpgradeStress(Passport,10)
-							vRPC.UpgradeHealth(source,15)
-						end
-					end
-
-					Wait(100)
-				until not Active[Passport]
-			else
-				TriggerClientEvent("inventory:Notify",source,"Aviso","Não pode utilizar no momento.","amarelo")
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeStress(Passport,10)
+					vRPC.UpgradeHealth(source,10)
+				end
 			end
-		else
-			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","vermelho")
-		end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
+	["analgesic"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Active[Passport] = os.time() + 5
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Passando",5000)
+		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				vRPC.Destroy(source)
+				Active[Passport] = nil
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeStress(Passport,5)
+					vRPC.UpgradeHealth(source,5)
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
+	["medkit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Active[Passport] = os.time() + 25
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Passando",25000)
+		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				vRPC.Destroy(source)
+				Active[Passport] = nil
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.UpgradeStress(Passport,20)
+					vRPC.UpgradeHealth(source,20)
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
+	["meth"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Active[Passport] = os.time() + 15
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Inalando",15000)
+		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				vRPC.Destroy(source)
+				Active[Passport] = nil
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					TriggerClientEvent("Methamphetamine",source)
+					vRP.ChemicalTimer(Passport,120)
+					vRP.SetArmour(source,10)
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
+	end,
+
+	["ballisticplate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Active[Passport] = os.time() + 25
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+		TriggerClientEvent("Progress",source,"Vestindo",25000)
+		vRPC.playAnim(source,true,{"clothingtie","try_tie_negative_a"},true)
+
+		repeat
+			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				vRPC.Destroy(source)
+				Active[Passport] = nil
+				Player(source)["state"]["Buttons"] = false
+
+				if vRP.TakeItem(Passport,Full,1,true,Slot) then
+					vRP.SetArmour(source,20)
+				end
+			end
+
+			Wait(100)
+		until not Active[Passport]
 	end,
 
 	["instagram"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -48,36 +130,9 @@ Use = {
 		end
 	end,
 
-	["analgesic"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if (not Healths[Passport] or os.time() > Healths[Passport]) then
-			if vRP.GetHealth(source) > 100 then
-				Active[Passport] = os.time() + 3
-				Player(source)["state"]["Buttons"] = true
-				TriggerClientEvent("inventory:Close",source)
-				TriggerClientEvent("Progress",source,"Tomando",3000)
-				vRPC.playAnim(source,true,{"mp_suicide","pill"},true)
-
-				repeat
-					if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-						vRPC.Destroy(source)
-						Active[Passport] = nil
-						Player(source)["state"]["Buttons"] = false
-
-						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							Healths[Passport] = os.time() + 5
-							vRP.UpgradeStress(Passport,5)
-							vRPC.UpgradeHealth(source,8)
-						end
-					end
-
-					Wait(100)
-				until not Active[Passport]
-			else
-				TriggerClientEvent("inventory:Notify",source,"Aviso","Não pode utilizar no momento.","amarelo")
-			end
-		else
-			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","vermelho")
-		end
+	["racestablet"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("races:Open",source)
+		TriggerClientEvent("inventory:Close",source)
 	end,
 
 	["radiomhz"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -338,37 +393,6 @@ Use = {
 		until not Active[Passport]
 	end,
 
-	["meth"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if Armors[Passport] and os.time() < Armors[Passport] then
-			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Armors[Passport] - os.time())..".","vermelho")
-
-			return false
-		end
-
-		Active[Passport] = os.time() + 15
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Inalando",15000)
-		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				vRPC.Destroy(source)
-				Active[Passport] = nil
-				Player(source)["state"]["Buttons"] = false
-
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					TriggerClientEvent("Methamphetamine",source)
-					Armors[Passport] = os.time() + 30
-					vRP.ChemicalTimer(Passport,120)
-					vRP.SetArmour(source,10)
-				end
-			end
-
-			Wait(100)
-		until not Active[Passport]
-	end,
-
 	["cigarette"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vRP.ConsultItem(Passport,"lighter",1) then
 			Active[Passport] = os.time() + 10
@@ -410,37 +434,6 @@ Use = {
 
 			Wait(100)
 		until not Active[Passport]
-	end,
-
-	["medkit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if (not Healths[Passport] or os.time() > Healths[Passport]) then
-			if vRP.GetHealth(source) > 100 then
-				Active[Passport] = os.time() + 10
-				Player(source)["state"]["Buttons"] = true
-				TriggerClientEvent("inventory:Close",source)
-				TriggerClientEvent("Progress",source,"Passando",10000)
-				vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
-
-				repeat
-					if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-						vRPC.Destroy(source)
-						Active[Passport] = nil
-						Player(source)["state"]["Buttons"] = false
-
-						if vRP.TakeItem(Passport,Full,1,true,Slot) then
-							Healths[Passport] = os.time() + 15
-							vRPC.UpgradeHealth(source,40)
-						end
-					end
-
-					Wait(100)
-				until not Active[Passport]
-			else
-				TriggerClientEvent("inventory:Notify",source,"Aviso","Não pode utilizar no momento.","amarelo")
-			end
-		else
-			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Healths[Passport] - os.time())..".","vermelho")
-		end
 	end,
 
 	["gauze"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -613,35 +606,6 @@ Use = {
 				end
 			end
 		end
-	end,
-
-	["ballisticplate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if Armors[Passport] and os.time() < Armors[Passport] then
-			TriggerClientEvent("inventory:Notify",source,"Atenção","Aguarde "..CompleteTimers(Armors[Passport] - os.time())..".","vermelho")
-
-			return false
-		end
-
-		Active[Passport] = os.time() + 10
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("Progress",source,"Vestindo",10000)
-		vRPC.playAnim(source,true,{"clothingtie","try_tie_negative_a"},true)
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				vRPC.Destroy(source)
-				Active[Passport] = nil
-				Player(source)["state"]["Buttons"] = false
-
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					Armors[Passport] = os.time() + 60
-					vRP.SetArmour(source,20)
-				end
-			end
-
-			Wait(100)
-		until not Active[Passport]
 	end,
 
 	["GADGET_PARACHUTE"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2803,12 +2767,12 @@ Use = {
 		if vRP.InsideVehicle(source) then
 			TriggerClientEvent("inventory:Close",source)
 
-			local Model,Vehicle = vRPC.VehicleName(source)
+			local Model,Vehicle,Plate = vRPC.VehicleName(source)
 			local Networked = NetworkGetEntityFromNetworkId(Vehicle)
-			local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Model })
+			local Consult = vRP.Query("vehicles/PlateUsers",{ Plate = Plate, Vehicle = Model })
 			if DoesEntityExist(Networked) and Consult[1] and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				Entity(Networked)["state"]:set("Drift",true,true)
-				vRP.Query("vehicles/CoiloverVehicles",{ Vehicle = Model, Plate = Consult[1]["Plate"] })
+				vRP.Query("vehicles/CoiloverVehicles",{ Vehicle = Model, Plate = Plate })
 				TriggerClientEvent("Notify",source,"Sucesso","Suspensão Coilover instalada.","verde",5000)
 			end
 		end
@@ -2818,13 +2782,13 @@ Use = {
 		if vRP.InsideVehicle(source) then
 			TriggerClientEvent("inventory:Close",source)
 
-			local Model,Vehicle = vRPC.VehicleName(source)
+			local Model,Vehicle,Plate = vRPC.VehicleName(source)
 			local Networked = NetworkGetEntityFromNetworkId(Vehicle)
-			local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Model })
+			local Consult = vRP.Query("vehicles/PlateUsers",{ Plate = Plate, Vehicle = Model })
 			if DoesEntityExist(Networked) and Consult[1] and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				Entity(Networked)["state"]:set("Seatbelt",true,true)
+				vRP.Query("vehicles/SeatbeltVehicles",{ Vehicle = Model, Plate = Plate })
 				TriggerClientEvent("Notify",source,"Sucesso","Cinto de Corrida ativado.","verde",5000)
-				vRP.Query("vehicles/SeatbeltVehicles",{ Vehicle = Model, Plate = Consult[1]["Plate"] })
 			end
 		end
 	end,
@@ -2833,24 +2797,29 @@ Use = {
 		if vRP.InsideVehicle(source) then
 			TriggerClientEvent("inventory:Close",source)
 
-			local Model = vRPC.VehicleName(source)
-			local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Model })
-			if Vehicle[1] then
+			local Model,Vehicle,Plate = vRPC.VehicleName(source)
+			local Networked = NetworkGetEntityFromNetworkId(Vehicle)
+			local Consult = vRP.Query("vehicles/PlateUsers",{ Plate = Plate, Vehicle = Model })
+			if DoesEntityExist(Networked) and Consult[1] then
 				local Keyboard = vKEYBOARD.Primary(source,"Placa")
 				if Keyboard then
-					local Plate = sanitizeString(Keyboard[1],"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
+					local NewPlate = sanitizeString(Keyboard[1],"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
 
-					if string.len(Plate) ~= 8 then
+					if string.len(NewPlate) ~= 8 then
 						TriggerClientEvent("Notify",source,"Aviso","Nome de definição inválido.","amarelo",5000)
 						return
 					else
-						if vRP.PassportPlate(Plate) then
+						if vRP.PassportPlate(NewPlate) then
 							TriggerClientEvent("Notify",source,"Aviso","Placa escolhida já existe no sistema.","amarelo",5000)
 							return
 						else
 							if vRP.TakeItem(Passport,Full,1,true,Slot) then
-								vRP.Query("vehicles/plateVehiclesUpdate",{ Passport = Passport, Vehicle = Model, Plate = string.upper(Plate) })
+								local NewPlate = string.upper(NewPlate)
+
+								vRP.Query("vehicles/plateVehiclesUpdate",{ Vehicle = Model, NewPlate = NewPlate, Plate = Plate })
 								TriggerClientEvent("Notify",source,"Sucesso","Placa atualizada.","verde",5000)
+								TriggerEvent("garages:ChangePlate",Plate,NewPlate)
+								SetVehicleNumberPlateText(Networked,NewPlate)
 							end
 						end
 					end

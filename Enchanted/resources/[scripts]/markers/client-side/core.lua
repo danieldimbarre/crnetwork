@@ -41,6 +41,12 @@ local Information = {
 		["Oficial"] = 42,
 		["Cadete"] = 53
 	},
+	["Paramedico"] = {
+		["Chefe"] = 1,
+		["Médico"] = 6,
+		["Enfermeiro"] = 59,
+		["Residente"] = 76
+	},
 	["Corredor"] = {
 		["Corredor"] = 8
 	},
@@ -86,7 +92,7 @@ CreateThread(function()
 					else
 						local Level = v["Level"]
 						local Permission = v["Permission"]
-						if Information[Permission] and Information[Permission][Level] and not Markers[Index] then
+						if Information[Permission] and Information[Permission][Level] and not Markers[Index] and ((not LocalPlayer["state"]["Paramedico"] and Permission ~= "Paramedico") or (LocalPlayer["state"]["Paramedico"] and Permission == "Paramedico")) then
 							Markers[Index] = AddBlipForCoord(v["Coords"])
 							SetBlipSprite(Markers[Index],1)
 							SetBlipDisplay(Markers[Index],4)
@@ -112,7 +118,7 @@ CreateThread(function()
 						if List[Index] then
 							local Level = v["Level"]
 							local Permission = v["Permission"]
-							if Information[Permission] and Information[Permission][Level] and not Markers[Index] then
+							if Information[Permission] and Information[Permission][Level] and not Markers[Index] and ((not LocalPlayer["state"]["Paramedico"] and Permission ~= "Paramedico") or (LocalPlayer["state"]["Paramedico"] and Permission == "Paramedico")) then
 								Markers[Index] = AddBlipForEntity(List[Index])
 								SetBlipSprite(Markers[Index],1)
 								SetBlipDisplay(Markers[Index],4)

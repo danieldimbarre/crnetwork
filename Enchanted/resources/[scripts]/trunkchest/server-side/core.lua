@@ -113,7 +113,7 @@ function Creative.Mount()
 			end
 		end
 
-		return Primary,Secondary,vRP.GetWeight(Passport),Vehicle[Passport]["Weight"]
+		return Primary,Secondary,vRP.GetWeight(Passport),Vehicle[Passport]["Weight"] or 0
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -180,30 +180,21 @@ function Creative.Store(Item,Slot,Amount,Target)
 	local Passport = vRP.Passport(source)
 	if Passport and Vehicle[Passport] then
 		local Name = Vehicle[Passport]["Model"]
-
 		if (Store[Name] and not Store[Name][Item]) or Blocked[Item] then
 			TriggerClientEvent("Notify",source,"Aviso","Armazenamento proibido.","amarelo",5000)
 			TriggerClientEvent("inventory:Update",source)
-
-			return false
-		end
-
-		if Item == "diagram" then
+		elseif Item == "diagram" then
 			if (Vehicle[Passport]["Weight"] + (10 * Amount)) <= (VehicleWeight(Name) * 5) and vRP.TakeItem(Passport,Item,Amount) then
 				Vehicle[Passport]["Weight"] = Vehicle[Passport]["Weight"] + (10 * Amount)
-
-				local Result = vRP.GetSrvData(Vehicle[Passport]["Data"],true)
-				vRP.Query("vehicles/UpdateWeight",{ Passport = Vehicle[Passport]["User"], Vehicle = Vehicle[Passport]["Model"], Multiplier = Amount })
+				vRP.Query("vehicles/UpdateWeight",{ Passport = Vehicle[Passport]["Passport"], Vehicle = Vehicle[Passport]["Model"], Multiplier = Amount })
 				TriggerClientEvent("inventory:Notify",source,"Sucesso","Armazenamento melhorado.","verde")
 			else
 				TriggerClientEvent("inventory:Notify",source,"Atenção","Limite atingido.","vermelho")
 			end
 
 			TriggerClientEvent("inventory:Update",source)
-		else
-			if vRP.StoreChest(Passport,Vehicle[Passport]["Data"],Amount,Vehicle[Passport]["Weight"],Slot,Target,true) then
-				TriggerClientEvent("inventory:Update",source)
-			end
+		elseif Vehicle[Passport]["Data"] and Vehicle[Passport]["Weight"] and vRP.StoreChest(Passport,Vehicle[Passport]["Data"],Amount,Vehicle[Passport]["Weight"],Slot,Target,true) then
+			TriggerClientEvent("inventory:Update",source)
 		end
 	end
 end
@@ -224,16 +215,7 @@ end
 function Creative.Close()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Vehicle[Passport] and Vehicle[Passport]["Net"] then
-		local Players = vRPC.Players(source)
-		for _,v in pairs(Players) do
-			async(function()
-				if Vehicle[Passport] and Vehicle[Passport]["Net"] then
-					TriggerClientEvent("player:VehicleDoors",v,Vehicle[Passport]["Net"],"close")
-				end
-			end)
-		end
-
+	if Passport and Vehicle[Passport] then
 		Vehicle[Passport] = nil
 	end
 end
@@ -244,32 +226,18 @@ RegisterServerEvent("trunkchest:openTrunk")
 AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		local PassportPlate = vRP.PassportPlate(Entity[1])
+	local OtherPassport = vRP.PassportPlate(Entity[1])
+	if Passport and OtherPassport then
+		local Weight = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport, Vehicle = Entity[2] })
 
-		if PassportPlate then
-			local Consult = vRP.Query("vehicles/selectVehicles",{ Passport = PassportPlate["Passport"], Vehicle = Entity[2] })
+		Vehicle[Passport] = {
+			["Model"] = Entity[2],
+			["Passport"] = OtherPassport,
+			["Weight"] = Weight[1]["Weight"] or 0,
+			["Data"] = "Trunkchest:"..OtherPassport..":"..Entity[2]
+		}
 
-			Vehicle[Passport] = {
-				["Net"] = Entity[4],
-				["Plate"] = Entity[1],
-				["Model"] = Entity[2],
-				["Weight"] = Consult[1]["Weight"],
-				["User"] = PassportPlate["Passport"],
-				["Data"] = "Trunkchest:"..PassportPlate["Passport"]..":"..Entity[2]
-			}
-
-			TriggerClientEvent("trunkchest:Open",source)
-
-			local Players = vRPC.Players(source)
-			for _,v in pairs(Players) do
-				async(function()
-					if Vehicle[Passport] and Vehicle[Passport]["Net"] then
-						TriggerClientEvent("player:VehicleDoors",v,Vehicle[Passport]["Net"],"open")
-					end
-				end)
-			end
-		end
+		TriggerClientEvent("trunkchest:Open",source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

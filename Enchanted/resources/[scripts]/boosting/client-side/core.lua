@@ -84,7 +84,7 @@ RegisterNetEvent("boosting:Open")
 AddEventHandler("boosting:Open",function()
 	SetNuiFocus(true,true)
 	SetCursorLocation(0.5,0.5)
-	SendNUIMessage({ name = "Open", payload = vSERVER.Experience() })
+	SendNUIMessage({ Action = "Open", Payload = vSERVER.Experience() })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
@@ -111,25 +111,25 @@ end)
 -- ACCEPT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Accept",function(Data,Callback)
-	Callback(vSERVER.Accept(Data))
+	Callback(vSERVER.Accept(Data["Number"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SCRATCH
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Scratch",function(Data,Callback)
-	Callback(vSERVER.Scratch(Data))
+	Callback(vSERVER.Scratch(Data["Number"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DECLINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Decline",function(Data,Callback)
-	Callback(vSERVER.Decline(Data))
+	Callback(vSERVER.Decline(Data["Number"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TRANSFER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Transfer",function(Data,Callback)
-	Callback(vSERVER.Transfer(Data))
+	Callback(vSERVER.Transfer(Data["Number"],Data["Passport"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOOSTING:ACTIVE
@@ -150,7 +150,7 @@ RegisterNetEvent("boosting:Reset")
 AddEventHandler("boosting:Reset",function()
 	Model = ""
 	Vehicle = false
-	SendNUIMessage({ name = "Reset" })
+	SendNUIMessage({ Action = "Close" })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSPAWNVEHICLE

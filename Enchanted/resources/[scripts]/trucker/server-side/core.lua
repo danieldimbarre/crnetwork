@@ -49,7 +49,7 @@ function Creative.Payment()
 
 		if vRP.UserPremium(Passport) then
 			local Hierarchy = vRP.LevelPremium(source)
-			local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
+			local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
 
 			Valuation = Valuation + (Valuation * Bonification)
 			GainExperience = GainExperience + 10

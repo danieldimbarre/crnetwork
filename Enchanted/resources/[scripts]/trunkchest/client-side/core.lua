@@ -30,7 +30,6 @@ RegisterNetEvent("trunkchest:Open")
 AddEventHandler("trunkchest:Open",function()
 	Opened = true
 	TriggerEvent("inventory:Open",{
-		Action = "Open",
 		Type = "Chest",
 		Resource = "trunkchest"
 	})

@@ -57,6 +57,7 @@ function Creative.CreateVehicle(Model,Coords)
 			local Plate = exports["inventory"]:GeneratePlate()
 
 			SetVehicleNumberPlateText(Vehicle,Plate)
+			SetEntityIgnoreRequestControlFilter(Vehicle,true)
 			SetVehicleCustomPrimaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
 			SetVehicleCustomSecondaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
 
@@ -117,7 +118,7 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 
 				if vRP.UserPremium(Passport) then
 					local Hierarchy = vRP.LevelPremium(source)
-					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy == 3 and 0.050)
+					local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
 		
 					Valuation = Valuation + (Valuation * Bonification)
 					GainExperience = GainExperience + 2

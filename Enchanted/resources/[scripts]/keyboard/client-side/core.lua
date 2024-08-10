@@ -112,6 +112,40 @@ function Options(First,Second)
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- TIMESET
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Timeset(First,Second,Third)
+	local Array = Keyboard({
+		title = "Formulário",
+		subtitle = "Preencha os campos abaixo",
+		rows = {
+			{
+				id = 1,
+				mode = "text",
+				placeholder = First,
+				value = ""
+			},{
+				id = 2,
+				mode = "text",
+				placeholder = Second,
+				value = ""
+			},{
+				id = 3,
+				mode = "options",
+				placeholder = "Selecione um clima",
+				options = Third,
+				value = ""
+			}
+		}
+	})
+
+	if Array and Array["1"] and Array["1"]["input"] ~= "" and Array["2"] and Array["2"]["input"] ~= "" and Array["3"] and Array["3"]["input"] ~= "" then
+		return { Array["1"]["input"],Array["2"]["input"],Array["3"]["input"] }
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PRIMARY
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Primary(First)
@@ -321,6 +355,12 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Options(First,Secondary)
+function Creative.Options(First,Secondary,Third)
 	return Options(First,Secondary)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TIMESET
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Timeset(First,Secondary,Third)
+	return Timeset(First,Secondary,Third)
 end

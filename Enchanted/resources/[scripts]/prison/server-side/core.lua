@@ -95,11 +95,11 @@ AddEventHandler("prison:Plate",function()
 	if Passport and vRP.HasService(Passport,"Policia") then
 		local Keyboard = vKEYBOARD.Primary(source,"Placa")
 		if Keyboard and Keyboard[1] then
-			local Consult = vRP.PassportPlate(Keyboard[1])
-			if Consult then
-				local Identity = vRP.Identity(Consult["Passport"])
+			local OtherPassport = vRP.PassportPlate(Keyboard[1])
+			if OtherPassport then
+				local Identity = vRP.Identity(OtherPassport)
 				if Identity then
-					TriggerClientEvent("Notify",source,"Emplacamento","<b>Passaporte:</b> "..Identity["id"].."<br><b>Telefone:</b> "..vRP.Phone(Consult["Passport"]).."<br><b>Nome:</b> "..Identity["Name"].." "..Identity["Lastname"],"policia",10000)
+					TriggerClientEvent("Notify",source,"Emplacamento","<b>Passaporte:</b> "..Identity["id"].."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport).."<br><b>Nome:</b> "..Identity["Name"].." "..Identity["Lastname"],"policia",10000)
 				end
 			end
 		end

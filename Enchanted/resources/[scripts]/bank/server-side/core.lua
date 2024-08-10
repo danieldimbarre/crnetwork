@@ -514,7 +514,7 @@ end
 exports("AddTaxs",function(Passport,source,Name,Valuation,Message)
 	if vRP.UserPremium(Passport) then
 		local Hierarchy = vRP.LevelPremium(source)
-		Valuation = (Hierarchy == 1 and Valuation * 0.0125) or (Hierarchy == 2 and Valuation * 0.0250) or (Hierarchy == 3 and Valuation * 0.0375)
+		Valuation = (Hierarchy == 1 and (Valuation * 0.0125)) or (Hierarchy == 2 and (Valuation * 0.0250)) or (Hierarchy >= 3 and (Valuation * 0.0375))
 	else
 		Valuation = Valuation * 0.05
 	end

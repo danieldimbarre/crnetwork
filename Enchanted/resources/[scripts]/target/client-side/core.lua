@@ -510,10 +510,10 @@ function TargetEnable()
 									end
 
 									Menu[#Menu + 1] = { event = "inventory:ChangePlate", label = "Trocar Placa", tunnel = "server" }
+									Menu[#Menu + 1] = { event = "garages:Key", label = "Chave Veícular", tunnel = "server" }
 								end
 
 								Menu[#Menu + 1] = { event = "engine:Vehrify", label = "Verificar", tunnel = "client" }
-								Menu[#Menu + 1] = { event = "garages:Key", label = "Chave Veícular", tunnel = "server" }
 							else
 								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 then
 									if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_CROWBAR") then
@@ -532,12 +532,9 @@ function TargetEnable()
 									Menu[#Menu + 1] = { event = "player:RollVehicle", label = "Desvirar", tunnel = "server" }
 								end
 
-								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 then
-									if not IsPedArmed(Ped,6) and GetVehicleDoorLockStatus(Entitys) <= 1 then
-										Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
-									end
-
+								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 and not IsPedArmed(Ped,6) and GetVehicleDoorLockStatus(Entitys) <= 1 then
 									Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
+									Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
 								end
 							end
 

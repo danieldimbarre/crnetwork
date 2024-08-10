@@ -235,16 +235,6 @@ function Creative.CheckInterior()
 	return GetInteriorFromEntity(PlayerPedId()) ~= 0
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ENTIITYCOORDSZ
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.EntityCoordsZ()
-	local Ped = PlayerPedId()
-	local Coords = GetEntityCoords(Ped)
-	local _,GroundZ = GetGroundZFor_3dCoord(Coords["x"],Coords["y"],Coords["z"])
-
-	return vec3(Coords["x"],Coords["y"],GroundZ)
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- LOSSANTOS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local LosSantos = PolyZone:Create({

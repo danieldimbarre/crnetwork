@@ -28,8 +28,12 @@ function Creative.Drops(Item,Slot,Amount)
 	local source = source
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Amount >= 1 and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) and vRP.TakeItem(Passport,Item,Amount,false,Slot) then
-		exports["inventory"]:Drops(Passport,source,Item,Amount,true)
+	if Passport and not Active[Passport] and Amount >= 1 and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) then
+		if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
+			exports["inventory"]:Drops(Passport,source,Item,Amount,true)
+		else
+			TriggerClientEvent("inventory:Update",source)
+		end
 	else
 		TriggerClientEvent("inventory:Update",source)
 	end
@@ -38,12 +42,20 @@ end
 -- DROPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Drops",function(Passport,source,Item,Amount,Force)
-	Active[Passport] = true
-
-	local Split = splitString(Item)
+	local Item = Item
+	local Force = Force
+	local Amount = Amount
+	local source = source
+	local Passport = Passport
 	local Route = GetPlayerRoutingBucket(source)
 
-	Force = (Force and Item or vRP.SortNameItem(Passport,Item))
+	Active[Passport] = true
+
+	if Force then
+		Force = Item
+	else
+		Force = vRP.SortNameItem(Passport,Item)
+	end
 
 	if not Drops[Route] then
 		Drops[Route] = {}
@@ -59,14 +71,16 @@ exports("Drops",function(Passport,source,Item,Amount,Force)
 		["route"] = Route,
 		["id"] = Selected,
 		["amount"] = Amount,
-		["name"] = ItemName(Item),
-		["weight"] = ItemWeight(Item),
-		["index"] = ItemIndex(Item),
-		["rarity"] = ItemRarity(Item),
-		["economy"] = ItemEconomy(Item),
-		["desc"] = ItemDescription(Item),
-		["coords"] = vCLIENT.EntityCoordsZ(source)
+		["name"] = ItemName(Force),
+		["weight"] = ItemWeight(Force),
+		["index"] = ItemIndex(Force),
+		["rarity"] = ItemRarity(Force),
+		["economy"] = ItemEconomy(Force),
+		["desc"] = ItemDescription(Force),
+		["coords"] = vRP.GetEntityCoords(source)
 	}
+
+	local Split = splitString(Force)
 
 	if not Provisory["desc"] then
 		if Split[1] == "vehiclekey" and Split[3] then
@@ -77,12 +91,12 @@ exports("Drops",function(Passport,source,Item,Amount,Force)
 	end
 
 	if Split[2] then
-		local Loaded = ItemLoads(Item)
+		local Loaded = ItemLoads(Force)
 		if Loaded then
 			Provisory["charges"] = parseInt(Split[2] * (100 / Loaded))
 		end
 
-		local Durability = ItemDurability(Item)
+		local Durability = ItemDurability(Force)
 		if Durability then
 			Provisory["durability"] = parseInt(os.time() - Split[2])
 			Provisory["days"] = Durability
@@ -112,26 +126,24 @@ function Creative.Pickup(Number,Route,Target,Amount)
 				return false
 			end
 
-			vRP.GiveItem(Passport,Drops[Route][Number]["key"],Amount,false,Target)
-			Drops[Route][Number]["amount"] = Drops[Route][Number]["amount"] - Amount
+			if vRP.GiveItem(Passport,Drops[Route][Number]["key"],Amount,false,Target) then
+				Drops[Route][Number]["amount"] = Drops[Route][Number]["amount"] - Amount
 
-			if Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["amount"] then
-				if parseInt(Drops[Route][Number]["amount"]) <= 0 then
-					TriggerClientEvent("inventory:DropsRemover",-1,Route,Number)
-					Drops[Route][Number] = nil
-				else
-					TriggerClientEvent("inventory:DropsAtualizar",-1,Route,Number,Drops[Route][Number]["amount"])
+				if Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["amount"] then
+					if parseInt(Drops[Route][Number]["amount"]) <= 0 then
+						TriggerClientEvent("inventory:DropsRemover",-1,Route,Number)
+						Drops[Route][Number] = nil
+					else
+						TriggerClientEvent("inventory:DropsAtualizar",-1,Route,Number,Drops[Route][Number]["amount"])
+					end
 				end
 			end
-
-			TriggerClientEvent("inventory:Update",source)
 		else
-			TriggerClientEvent("inventory:Update",source)
 			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 		end
 
 		Active[Passport] = nil
-	else
-		TriggerClientEvent("inventory:Update",source)
 	end
+
+	TriggerClientEvent("inventory:Update",source)
 end

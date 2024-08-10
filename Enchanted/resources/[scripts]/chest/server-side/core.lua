@@ -353,7 +353,6 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 			if (ChestItens[Item] and ChestItens[Item]["Block"]) or (Unique and ChestItens[Unique] and ChestItens[Unique]["Itens"] and not ChestItens[Unique]["Itens"][Item]) then
 				if Unique and Item == Unique then
 					TriggerClientEvent("inventory:Open",source,{
-						Action = "Open",
 						Type = "Inventory",
 						Resource = "inventory"
 					},true)
@@ -384,7 +383,6 @@ function Creative.Take(Item,Slot,Amount,Target)
 		if (Open[Passport]["Mode"] or Open[Passport]["Item"]) and json.encode(Result) == "[]" then
 			if Open[Passport]["Item"] and vRP.TakeItem(Passport,Open[Passport]["Item"]) then
 				TriggerClientEvent("inventory:Open",source,{
-					Action = "Open",
 					Type = "Inventory",
 					Resource = "inventory"
 				},true)

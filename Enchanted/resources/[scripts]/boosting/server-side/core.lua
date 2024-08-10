@@ -701,24 +701,22 @@ local Minimals = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- LEVELS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Levels = { 0,1000,2000,3500,5000,7500 }
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ABOUTCLASSES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function AboutClasses(Number)
-	local Result = 1
+function AboutClasses(Experience)
+	local Return = 1
 
-	if Number >= 1000 and Number <= 1999 then
-		Result = 2
-	elseif Number >= 2000 and Number <= 3499 then
-		Result = 3
-	elseif Number >= 3500 and Number <= 4999 then
-		Result = 4
-	elseif Number >= 5000 and Number <= 7499 then
-		Result = 5
-	elseif Number >= 7500 then
-		Result = 6
+	for Table = 1,#Levels do
+		if Experience >= Levels[Table] then
+			Return = Table
+		end
 	end
 
-	return Result
+	return Return
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTICK
@@ -759,8 +757,9 @@ end)
 function Creative.Experience()
 	local source = source
 	local Passport = vRP.Passport(source)
+	local Experience = vRP.GetExperience(Passport,"Boosting") or 0
 
-	return vRP.GetExperience(Passport,"Boosting") or 0
+	return { Experience,Levels }
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACTIVES
@@ -830,16 +829,16 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCEPT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Accept(Number)
+function Creative.Accept(Selected)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and vRP.TakeItem(Passport,"platinum",Pendings[Passport][Number]["Value"]) then
-		Active[Passport] = Pendings[Passport][Number]
-		Active[Passport]["Timer"] = os.time() + Pendings[Passport][Number]["Timer"]
+	if Passport and not Active[Passport] and vRP.TakeItem(Passport,"platinum",Pendings[Passport][Selected]["Value"]) then
+		Active[Passport] = Pendings[Passport][Selected]
+		Active[Passport]["Timer"] = os.time() + Pendings[Passport][Selected]["Timer"]
 
 		TriggerClientEvent("boosting:Active",source,Active[Passport]["Vehicle"],Active[Passport]["Class"])
 
-		Pendings[Passport][Number] = nil
+		Pendings[Passport][Selected] = nil
 
 		return true
 	end
@@ -849,7 +848,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SCRATCH
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Scratch(Number)
+function Creative.Scratch(Selected)
 	local source = source
 
 	return vRP.Passport(source) and true or false
@@ -857,11 +856,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TRANSFER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Transfer(Table)
+function Creative.Transfer(Selected,OtherPassport)
 	local source = source
 	local Passport = vRP.Passport(source)
-	local Selected = parseInt(Table["number"])
-	local OtherPassport = parseInt(Table["passport"])
 	if Passport and Selected and OtherPassport and Pendings[Passport] and Pendings[OtherPassport] and Pendings[Passport][Selected] and CountTable(Pendings[OtherPassport]) < 3 then
 		local Class = Pendings[Passport][Selected]["Class"]
 
@@ -922,6 +919,7 @@ function Creative.CreateVehicle(Model,Class,Coords)
 
 			Active[Passport]["Plate"] = Plate
 			SetVehicleNumberPlateText(Vehicle,Plate)
+			SetEntityIgnoreRequestControlFilter(Vehicle,true)
 
 			Entity(Vehicle)["state"]:set("Fuel",100,true)
 			Entity(Vehicle)["state"]:set("Tower",true,true)

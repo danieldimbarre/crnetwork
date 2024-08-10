@@ -60,7 +60,7 @@ function tvRP.VehicleName()
 	if IsPedInAnyVehicle(Ped) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
 
-		return GetEntityArchetypeName(Vehicle),VehToNet(Vehicle)
+		return GetEntityArchetypeName(Vehicle),VehToNet(Vehicle),GetVehicleNumberPlateText(Vehicle)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

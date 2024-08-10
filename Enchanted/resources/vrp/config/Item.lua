@@ -3743,6 +3743,16 @@ local List = {
 		["Charges"] = 10,
 		["Empty"] = "emptypurifiedwater"
 	},
+	["racestablet"] = {
+		["Index"] = "racestablet",
+		["Name"] = "Tablet Descartável",
+		["Description"] = "Dispositivo eletrônico compacto e temporário projetado para uso prático e conveniente em situações específicas, oferecendo funcionalidades básicas de navegação na internet, leitura e comunicação, com a vantagem de ser facilmente descartável após o uso.",
+		["Type"] = "Consumível",
+		["Durability"] = 48,
+		["Weight"] = 0.475,
+		["Economy"] = 2725,
+		["Market"] = true
+	},
 	["races"] = {
 		["Index"] = "races",
 		["Name"] = "Cartão Descartável",

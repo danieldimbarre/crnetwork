@@ -153,7 +153,8 @@ Groups = {
 		["Discord"] = "1236103044811456662",
 		["Service"] = {},
 		["Type"] = "Work",
-		["Client"] = true
+		["Client"] = true,
+		["Markers"] = true
 	},
 	["Ballas"] = {
 		["Permission"] = {

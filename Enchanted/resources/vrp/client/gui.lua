@@ -39,7 +39,6 @@ LocalPlayer["state"]:set("Cyndaquil",false,false)
 LocalPlayer["state"]:set("DamageModify",false,false)
 
 LocalPlayer["state"]:set("Nitro",false,true)
-LocalPlayer["state"]:set("Races",false,false)
 LocalPlayer["state"]:set("Buttons",false,true)
 LocalPlayer["state"]:set("TestDrive",false,false)
 LocalPlayer["state"]:set("BlockLocked",false,false)
@@ -168,6 +167,9 @@ function tvRP.CreateObjects(Dict,Anim,Prop,Flag,Hands,Height,Pos1,Pos2,Pos3,Pos4
 		if Network then
 			Object = LoadNetwork(Network)
 			if Object then
+				SetEntityLodDist(Object,0xFFFF)
+				SetModelAsNoLongerNeeded(Prop)
+
 				if Height then
 					AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),Height,Pos1,Pos2,Pos3,Pos4,Pos5,true,true,false,true,1,true)
 				else
@@ -176,8 +178,6 @@ function tvRP.CreateObjects(Dict,Anim,Prop,Flag,Hands,Height,Pos1,Pos2,Pos3,Pos4
 			else
 				Object = nil
 			end
-
-			SetModelAsNoLongerNeeded(Prop)
 		end
 	end
 end

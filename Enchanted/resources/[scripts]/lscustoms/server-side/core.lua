@@ -54,7 +54,7 @@ RegisterServerEvent("lscustoms:Vehicle")
 AddEventHandler("lscustoms:Vehicle",function(Mods,Plate,Name)
 	local Passport = vRP.PassportPlate(Plate)
 	if Passport then
-		vRP.Query("entitydata/SetData",{ Name = "Mods:"..Passport["Passport"]..":"..Name, Information = json.encode(Mods) })
+		vRP.Query("entitydata/SetData",{ Name = "Mods:"..Passport..":"..Name, Information = json.encode(Mods) })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

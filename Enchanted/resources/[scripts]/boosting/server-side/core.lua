@@ -18,6 +18,7 @@ local Pendings = {}
 local Cooldowns = {}
 local ActiveMax = {}
 local MaxContracts = 0
+local TotalContracts = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONTRACTS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -741,8 +742,9 @@ CreateThread(function()
 						ActiveMax[Passport] = true
 					end
 
+					TotalContracts = TotalContracts + 1
 					local Selected = math.random(#Contracts[Randomize])
-					Pendings[Passport][#Pendings[Passport] + 1] = Contracts[Randomize][Selected]
+					Pendings[Passport][TotalContracts] = Contracts[Randomize][Selected]
 					Cooldowns[Passport][Randomize] = os.time() + math.random(Minimals[Randomize]["Min"],Minimals[Randomize]["Max"])
 				end
 
@@ -765,7 +767,7 @@ end
 -- ACTIVES
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Actives()
-	local Result = {}
+	local Result = false
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Active[Passport] then
@@ -775,7 +777,7 @@ function Creative.Actives()
 			Cooldowns[Passport][Class] = os.time() + math.random(Minimals[Class]["Min"],Minimals[Class]["Max"])
 			Active[Passport] = nil
 		else
-			Result[#Result + 1] = {
+			Result = {
 				["Number"] = Active[Passport]["Number"],
 				["Vehicle"] = VehicleName(Active[Passport]["Vehicle"]),
 				["Timer"] = Active[Passport]["Timer"] - os.time(),
@@ -835,6 +837,7 @@ function Creative.Accept(Selected)
 	if Passport and not Active[Passport] and vRP.TakeItem(Passport,"platinum",Pendings[Passport][Selected]["Value"]) then
 		Active[Passport] = Pendings[Passport][Selected]
 		Active[Passport]["Timer"] = os.time() + Pendings[Passport][Selected]["Timer"]
+		Active[Passport]["Number"] = Selected
 
 		TriggerClientEvent("boosting:Active",source,Active[Passport]["Vehicle"],Active[Passport]["Class"])
 

@@ -236,7 +236,7 @@ AddEventHandler("propertys:Buy",function(Name)
 						vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
 						TriggerClientEvent("Notify",source,"Propriedades","Compra concluída.","verde",5000)
 						exports["bank"]:AddTaxs(Passport,source,"Propriedades",Informations[Interior]["Price"],"Compra de propriedade.")
-						vRP.Query("propertys/Buy",{ Name = Name, Interior = Interior, Passport = Passport, Serial = Serial, Vault = Informations[Interior]["Vault"] or 0, Fridge = Informations[Interior]["Fridge"] or 0, Tax = os.time() + 2592000 })
+						vRP.Query("propertys/Buy",{ Name = Name, Interior = Interior, Passport = Passport, Serial = Serial, Vault = Informations[Interior]["Vault"] or 0, Fridge = Informations[Interior]["Fridge"] or 0 })
 					else
 						TriggerClientEvent("Notify",source,"Propriedades","Dinheiro insuficiente.","amarelo",5000)
 					end
@@ -249,7 +249,7 @@ AddEventHandler("propertys:Buy",function(Name)
 						Saved[Name] = Interior
 						vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
 						TriggerClientEvent("Notify",source,"Propriedades","Compra concluída.","verde",5000)
-						vRP.Query("propertys/Buy",{ Name = Name, Interior = Interior, Passport = Passport, Serial = Serial, Vault = Informations[Interior]["Vault"] or 0, Fridge = Informations[Interior]["Fridge"] or 0, Tax = os.time() + 2592000 })
+						vRP.Query("propertys/Buy",{ Name = Name, Interior = Interior, Passport = Passport, Serial = Serial, Vault = Informations[Interior]["Vault"] or 0, Fridge = Informations[Interior]["Fridge"] or 0 })
 					else
 						TriggerClientEvent("Notify",source,"Propriedades","Diamante insuficiente.","amarelo",5000)
 					end

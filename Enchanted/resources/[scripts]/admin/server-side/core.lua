@@ -178,19 +178,21 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("item",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and Message[1] and Message[2] and ItemExist(Message[1]) and vRP.HasGroup(Passport,"Admin",2) then
-		vRP.GenerateItem(Passport,Message[1],Message[2],true)
-		exports["discord"]:Embed("Item","**[ADMIN]:** "..Passport.."\n**[ITEM]:** "..Message[1].."\n**[QUANTIDADE]:** "..Message[2].."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ITEM2
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("item2",function(source,Message)
-	local Passport = vRP.Passport(source)
-	if Passport and Message[1] and Message[2] and Message[3] and ItemExist(Message[1]) and vRP.HasGroup(Passport,"Admin",1) then
-		vRP.GenerateItem(Message[3],Message[1],Message[2],true)
-		exports["discord"]:Embed("Item2","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[3].."\n**[ITEM]:** "..Message[1].."\n**[QUANTIDADE]:** "..Message[2].."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+	if Passport and vRP.HasGroup(Passport,"Admin",2) then
+		if not Message[1] then
+			local Keyboard = vKEYBOARD.Tertiary(source,"Passaporte","Item","Quantidade")
+			if Keyboard and ItemExist(Keyboard[2]) then
+				local Item = Keyboard[2]
+				local OtherPassport = Keyboard[1]
+				local Amount = parseInt(Keyboard[3],true)
+
+				vRP.GenerateItem(OtherPassport,Item,Amount,true)
+				exports["discord"]:Embed("Item","**[ADMIN]:** "..OtherPassport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+			end
+		else
+			vRP.GenerateItem(Passport,Message[1],Message[2],true)
+			exports["discord"]:Embed("Item","**[ADMIN]:** "..Passport.."\n**[ITEM]:** "..Message[1].."\n**[QUANTIDADE]:** "..Message[2].."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -199,7 +201,7 @@ end)
 RegisterCommand("delete",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin",2) then
-		vRP.Query("characters/Delete",{ id = Message[1] })
+		vRP.Query("characters/Delete",{ Passport = Message[1] })
 		TriggerClientEvent("Notify",source,"Sucesso","Personagem <b>"..Message[1].."</b> deletado.","verde",5000)
 		exports["discord"]:Embed("Delete","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end

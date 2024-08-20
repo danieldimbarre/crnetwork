@@ -21,7 +21,6 @@ local DeathUpdate = false
 -- FPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("fps",function()
-	local Ped = PlayerPedId()
 	if exports["chat"]:Open() then
 		BoostFPS = not BoostFPS
 

@@ -51,9 +51,9 @@ AddEventHandler("player:Demand",function(OtherSource)
 	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.Passport(OtherSource)
 	if Passport and OtherPassport and not exports["bank"]:CheckFines(OtherPassport) then
-		local Keyboard = vKEYBOARD.Primary(source,"Valor da Cobrança.")
+		local Keyboard = vKEYBOARD.Primary(source,"Valor")
 		if Keyboard and vRP.Passport(OtherSource) then
-			if vRP.Request(OtherSource,"Cobrança","Aceitar a cobrança de <b>$"..Dotted(Keyboard[1]).."</b> feita por <b>"..vRP.FullName(Passport).."</b>.") then
+			if vRP.Request(OtherSource,"Cobrança","Aceitar a cobrança de <b>$"..Dotted(Keyboard[1]).."</b> feita por <b>"..Passport.."</b>.") then
 				if vRP.PaymentBank(OtherPassport,Keyboard[1],true) then
 					vRP.GiveBank(Passport,Keyboard[1],true)
 				end

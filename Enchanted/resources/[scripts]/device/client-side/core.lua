@@ -26,7 +26,7 @@ function Device(Seconds)
 
 	Progress = true
 	SetNuiFocus(true,true)
-	SendNUIMessage({ name = "Open", payload = Seconds })
+	SendNUIMessage({ Action = "Open", Payload = Seconds })
 
 	while Progress do
 		Wait(0)

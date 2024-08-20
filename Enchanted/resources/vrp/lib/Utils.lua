@@ -130,12 +130,6 @@ function parseInt(Number,Force)
 	return math.floor(Number)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- WHOLE
------------------------------------------------------------------------------------------------------------------------------------------
-function Whole(Value,Force)
-	return parseInt(Value,Force)
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- SANITIZESTRING
 -----------------------------------------------------------------------------------------------------------------------------------------
 function sanitizeString(String,Characteres)
@@ -215,90 +209,33 @@ end
 function CompleteTimers(Seconds)
 	local Seconds = parseInt(Seconds)
 	local Days = math.floor(Seconds / 86400)
-	Seconds = Seconds - Days * 86400
+	Seconds = Seconds % 86400
 	local Hours = math.floor(Seconds / 3600)
-	Seconds = Seconds - Hours * 3600
+	Seconds = Seconds % 3600
 	local Minutes = math.floor(Seconds / 60)
-	Seconds = Seconds - Minutes * 60
+	Seconds = Seconds % 60
 
 	if Days > 0 then
-		return string.format("<b>%d Dias</b>, <b>%d Horas</b>, <b>%d Minutos</b>",Days,Hours,Minutes)
+		if Hours > 0 then
+			return string.format("%d Dias e %d Horas",Days,Hours)
+		else
+			return string.format("%d Dias",Days)
+		end
 	elseif Hours > 0 then
-		return string.format("<b>%d Horas</b>, <b>%d Minutos</b> e <b>%d Segundos</b>",Hours,Minutes,Seconds)
+		if Minutes > 0 then
+			return string.format("%d Horas e %d Minutos",Hours,Minutes)
+		else
+			return string.format("%d Horas",Hours)
+		end
 	elseif Minutes > 0 then
-		return string.format("<b>%d Minutos</b> e <b>%d Segundos</b>",Minutes,Seconds)
-	else
-		return string.format("<b>%d Segundos</b>",Seconds)
-	end
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- MINIMALTIMERS
------------------------------------------------------------------------------------------------------------------------------------------
-function MinimalTimers(Seconds)
-	local Seconds = parseInt(Seconds)
-	local Days = math.floor(Seconds / 86400)
-	Seconds = Seconds - Days * 86400
-	local Hours = math.floor(Seconds / 3600)
-	Seconds = Seconds - Hours * 3600
-	local Minutes = math.floor(Seconds / 60)
-	Seconds = Seconds - Minutes * 60
-
-	if Days > 0 then
-		return string.format("%d Dias e %d Horas",Days,Hours)
-	elseif Hours > 0 then
-		return string.format("%d Horas e %d Minutos",Hours,Minutes)
-	elseif Minutes > 0 then
-		return string.format("%d Minutos",Minutes)
+		if Seconds > 0 then
+			return string.format("%d Minutos e %d Segundos",Minutes,Seconds)
+		else
+			return string.format("%d Minutos",Minutes)
+		end
 	else
 		return string.format("%d Segundos",Seconds)
 	end
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- NUMBERZERO
------------------------------------------------------------------------------------------------------------------------------------------
-function NumberZero(Number)
-	if Number <= 9 then
-		Number = "0"..Number
-	end
-
-	return Number
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- NUMBERTIMERS
------------------------------------------------------------------------------------------------------------------------------------------
-function NumberTimers(Seconds)
-	local Seconds = parseInt(Seconds)
-	local Days = math.floor(Seconds / 86400)
-	Seconds = Seconds - Days * 86400
-	local Hours = math.floor(Seconds / 3600)
-	Seconds = Seconds - Hours * 3600
-	local Minutes = math.floor(Seconds / 60)
-	Seconds = Seconds - Minutes * 60
-
-	return NumberZero(Days)..":"..NumberZero(Hours)..":"..NumberZero(Minutes)..":"..NumberZero(Seconds)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- NUMBERHOURS
------------------------------------------------------------------------------------------------------------------------------------------
-function NumberHours(Seconds)
-	local Seconds = parseInt(Seconds)
-	local Days = math.floor(Seconds / 86400)
-	Seconds = Seconds - Days * 86400
-	local Hours = math.floor(Seconds / 3600)
-	Seconds = Seconds - Hours * 3600
-	local Minutes = math.floor(Seconds / 60)
-	Seconds = Seconds - Minutes * 60
-
-	return NumberZero(Minutes)..":"..NumberZero(Seconds)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- NUMBERMINUTES
------------------------------------------------------------------------------------------------------------------------------------------
-function NumberMinutes(Seconds)
-	local Seconds = parseInt(Seconds)
-	local Minutes = math.floor(Seconds / 60)
-
-	return NumberZero(Minutes)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BONES

@@ -54,11 +54,17 @@ Theme = {
 		["Vagos"] = "#0000ff"
 	},
 	["hud"] = {
+		["modes"] = {
+			["info"] = 1, -- [ Opções disponíveis: 1,2 ],
+			["status"] = 4, -- [ Opções disponíveis: 1,2,3,4,5,6 ],
+			["vehicle"] = 3 -- [ Opções disponíveis: 1,2,3 ]
+		},
 		["percentage"] = true,
-		["icons"] = "#ffffff",
-		["nitro"] = "#ffffff",
-		["rpm"] = "#ffffff",
-		["fuel"] = "#ff4a56",
+		["icons"] = "#FFFFFF",
+		["nitro"] = "#f69d2a",
+		["rpm"] = "#FFFFFF",
+		["fuel"] = "#f94c54",
+		["engine"] = "#ff4c55",
 		["health"] = "#76B984",
 		["armor"] = "#A66FED",
 		["hunger"] = "#F4B266",
@@ -69,9 +75,9 @@ Theme = {
 		["repose"] = "#7FCCC7",
 		["pointer"] = "#ef4444",
 		["progress"] = {
-			["background"] = "#ffffff",
+			["background"] = "#FFFFFF",
 			["circle"] = "#5865f2",
-			["letter"] = "#ffffff"
+			["letter"] = "#FFFFFF"
 		}
 	},
 	["notifyitem"] = {

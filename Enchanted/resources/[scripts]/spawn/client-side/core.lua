@@ -59,6 +59,7 @@ AddEventHandler("spawn:Opened",function()
 	Wait(5000)
 
 	SendNUIMessage({ Action = "Spawn", Payload = Characters })
+	ShutdownLoadingScreenNui()
 	SetNuiFocus(true,true)
 
 	if IsScreenFadedOut() then

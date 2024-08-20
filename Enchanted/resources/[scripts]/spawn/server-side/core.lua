@@ -51,7 +51,7 @@ end
 function Creative.CharacterChosen(Passport)
 	local source = source
 	local License = vRP.Identities(source)
-	local Consult = vRP.Query("characters/UserLicense",{ id = Passport, License = License })
+	local Consult = vRP.Query("characters/UserLicense",{ Passport = Passport, License = License })
 
 	if Consult[1] then
 		vRP.CharacterChosen(source,Passport)

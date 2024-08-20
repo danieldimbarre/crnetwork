@@ -7,7 +7,7 @@ local Repose = {}
 -- REPOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Repose",function(source,Passport,Seconds)
-	local Seconds = Whole(Seconds)
+	local Seconds = parseInt(Seconds)
 	local Passport = tostring(Passport)
 
 	if Repose[Passport] then

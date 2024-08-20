@@ -20,9 +20,9 @@ vRP.Prepare("characters/NewCharacter","INSERT INTO characters (License,Name,Last
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("smartphone/Phone","SELECT * FROM phone_phones WHERE owner_id = @owner_id")
-vRP.Prepare("smartphone/CheckInstagram","SELECT * FROM phone_instagram_accounts WHERE phone_number = @phone_number")
-vRP.Prepare("smartphone/Instagram","UPDATE phone_instagram_accounts SET follower_count = follower_count + @Amount WHERE phone_number = @phone_number")
+vRP.Prepare("characters/Phone","SELECT id FROM characters WHERE Phone = @Phone")
+vRP.Prepare("smartphone/Phone","SELECT * FROM phone_phones WHERE owner_id = @Passport")
+vRP.Prepare("characters/NewPhone","UPDATE characters SET Phone = @Phone WHERE id = @Passport")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------

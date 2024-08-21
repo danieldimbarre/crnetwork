@@ -56,6 +56,7 @@ Theme = {
 	["hud"] = {
 		["modes"] = {
 			["info"] = 1, -- [ Opções disponíveis: 1,2 ],
+			["icon"] = "fill", -- [ Opções disponíveis: fill,line ],
 			["status"] = 4, -- [ Opções disponíveis: 1,2,3,4,5,6 ],
 			["vehicle"] = 3 -- [ Opções disponíveis: 1,2,3 ]
 		},

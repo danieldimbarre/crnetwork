@@ -43,7 +43,7 @@ AddEventHandler("prison:Create",function()
 
 				local OtherSource = vRP.Source(OtherPassport)
 				if OtherSource then
-					Player(source)["state"]["Prison"] = true
+					Player(OtherSource)["state"]["Prison"] = true
 					TriggerClientEvent("Notify",OtherSource,"Boolingbroke","Todas as lixeiras do pátio estão disponíveis para <b>vasculhar</b> em troca de redução penal.","amarelo",30000)
 				end
 			end

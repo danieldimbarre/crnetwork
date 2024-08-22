@@ -7,14 +7,14 @@ local Timer = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
+		local Pid = PlayerId()
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
 
-		if not IsPedInAnyVehicle(Ped) and IsPedArmed(Ped,7) then
+		if not IsPedInAnyVehicle(Ped) and IsPedArmed(Ped,6) and IsPlayerFreeAiming(Pid) then
 			local Progress = 1000
-			local Pid = PlayerId()
 			local Entitys = ClosestPed(2)
-			if Entitys and GetGameTimer() >= Timer and GetVehiclePedIsIn(Entitys,true) == 0 and not Entity(Entitys)["state"]["Steal"] and IsPedArmed(Ped,6) and IsPlayerFreeAiming(Pid) then
+			if Entitys and GetGameTimer() >= Timer and GetVehiclePedIsIn(Entitys,true) == 0 and not Entity(Entitys)["state"]["Steal"] then
 				Timer = GetGameTimer() + 5000
 
 				ClearPedTasks(Entitys)

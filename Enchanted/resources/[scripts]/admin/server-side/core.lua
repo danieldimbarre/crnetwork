@@ -223,7 +223,7 @@ RegisterCommand("kick",function(source,Message)
 	if Passport and vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
 		local OtherSource = vRP.Source(Message[1])
 		if OtherSource then
-			vRP.Kick(OtherSource,"Expulso da cidade.")
+			vRP.Kick(OtherSource,"Expulso da cidade")
 			TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..Message[1].."</b> expulso.","verde",5000)
 			exports["discord"]:Embed("Kick","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 		end
@@ -241,7 +241,7 @@ RegisterCommand("ban",function(source,Message)
 
 		local OtherSource = vRP.Source(Message[1])
 		if OtherSource then
-			vRP.Kick(OtherSource,"Banido.")
+			vRP.Kick(OtherSource,"Banido")
 		end
 	end
 end)
@@ -468,7 +468,7 @@ RegisterCommand("kickall",function(source)
 
 	local List = vRP.Players()
 	for _,Sources in pairs(List) do
-		vRP.Kick(Sources,"Desconectado, a cidade reiniciou.")
+		vRP.Kick(Sources,"Desconectado, a cidade reiniciou")
 		Wait(100)
 	end
 
@@ -487,7 +487,7 @@ RegisterCommand("kickall2",function(source)
 
 	local List = vRP.Players()
 	for _,Sources in pairs(List) do
-		vRP.Kick(Sources,"Desconectado, a cidade reiniciou.")
+		vRP.Kick(Sources,"Desconectado, a cidade reiniciou")
 		Wait(100)
 	end
 

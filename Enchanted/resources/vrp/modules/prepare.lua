@@ -1,14 +1,14 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("characters/Person","SELECT * FROM characters WHERE id = @id")
-vRP.Prepare("characters/Delete","UPDATE characters SET Deleted = 1 WHERE id = @id")
+vRP.Prepare("characters/Person","SELECT * FROM characters WHERE id = @Passport")
+vRP.Prepare("characters/Delete","UPDATE characters SET Deleted = 1 WHERE id = @Passport")
 vRP.Prepare("characters/SetSkin","UPDATE characters SET Skin = @Skin WHERE id = @Passport")
 vRP.Prepare("characters/SetMedicplan","UPDATE characters SET Medic = @Medic WHERE id = @Passport")
 vRP.Prepare("characters/AddBank","UPDATE characters SET Bank = Bank + @Bank WHERE id = @Passport")
 vRP.Prepare("characters/RemBank","UPDATE characters SET Bank = Bank - @Bank WHERE id = @Passport")
 vRP.Prepare("characters/SetGroupsTimer","UPDATE characters SET Groups = @Groups WHERE id = @Passport")
-vRP.Prepare("characters/UserLicense","SELECT * FROM characters WHERE id = @id and License = @License")
+vRP.Prepare("characters/UserLicense","SELECT * FROM characters WHERE id = @Passport and License = @License")
 vRP.Prepare("characters/Characters","SELECT * FROM characters WHERE License = @License and Deleted = 0")
 vRP.Prepare("characters/LastLogin","UPDATE characters SET Login = UNIX_TIMESTAMP() WHERE id = @Passport")
 vRP.Prepare("characters/InsertPrison","UPDATE characters SET Prison = Prison + @Prison WHERE id = @Passport")
@@ -20,9 +20,9 @@ vRP.Prepare("characters/NewCharacter","INSERT INTO characters (License,Name,Last
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("characters/Phone","SELECT id FROM characters WHERE Phone = @Phone")
 vRP.Prepare("smartphone/Phone","SELECT * FROM phone_phones WHERE owner_id = @Passport")
-vRP.Prepare("characters/NewPhone","UPDATE characters SET Phone = @Phone WHERE id = @Passport")
+vRP.Prepare("smartphone/CheckInstagram","SELECT * FROM phone_instagram_accounts WHERE phone_number = @Phone")
+vRP.Prepare("smartphone/Instagram","UPDATE phone_instagram_accounts SET follower_count = follower_count + @Amount WHERE phone_number = @Phone")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------

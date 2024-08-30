@@ -13,8 +13,26 @@ vCLIENT = Tunnel.getInterface("inspect")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Admin = {}
 local Players = {}
 local Sourcers = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INV
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("inv",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and not Admin[Passport] and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") then
+		local OtherPassport = Message[1]
+		local OtherSource = vRP.Source(OtherPassport)
+		if OtherSource and OtherPassport and OtherPassport ~= Passport and vRP.DoesEntityExist(OtherSource) and not Players[OtherPassport] then
+			Admin[Passport] = true
+			Sourcers[Passport] = OtherSource
+			Players[Passport] = OtherPassport
+
+			TriggerClientEvent("inspect:Open",source)
+		end
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INSPECT:PLAYER
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -144,7 +162,7 @@ function Creative.Reset()
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if Sourcers[Passport] then
-			if vRP.DoesEntityExist(Sourcers[Passport]) then
+			if vRP.DoesEntityExist(Sourcers[Passport]) and not Admin[Passport] then
 				TriggerEvent("inventory:ServerCarry",source,Passport,Sourcers[Passport])
 			end
 
@@ -153,6 +171,10 @@ function Creative.Reset()
 
 		if Players[Passport] then
 			Players[Passport] = nil
+		end
+
+		if Admin[Passport] then
+			Admin[Passport] = nil
 		end
 	end
 end

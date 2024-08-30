@@ -95,7 +95,7 @@ RegisterCommand("id",function(source,Message)
 	local Passport = vRP.Passport(source)
 	local OtherPassport = parseInt(Message[1])
 	if Passport and OtherPassport and OtherPassport > 0 and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,"Admin") then
-		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport),"default",5000)
+		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport).."<br><b>Banco:</b> "..vRP.GetBank(OtherPassport).."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport),(vRP.Source(OtherPassport) and "verde" or "vermelho"),10000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -189,7 +189,7 @@ RegisterCommand("item",function(source,Message)
 				vRP.GenerateItem(OtherPassport,Item,Amount,true)
 				exports["discord"]:Embed("Item","**[ADMIN]:** "..OtherPassport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 			end
-		else
+		elseif Message[1] and Message[2] then
 			vRP.GenerateItem(Passport,Message[1],Message[2],true)
 			exports["discord"]:Embed("Item","**[ADMIN]:** "..Passport.."\n**[ITEM]:** "..Message[1].."\n**[QUANTIDADE]:** "..Message[2].."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 		end

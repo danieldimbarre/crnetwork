@@ -91,7 +91,16 @@ Theme = {
 			["background"] = "#ad4443"
 		}
 	},
-	["skinweapon"] = true
+	["pause"] = {
+		["premium"] = true,
+		["store"] = true,
+		["battlepass"] = true,
+		["boxes"] = true,
+		["marketplace"] = true,
+		["skinweapon"] = true,
+		["map"] = true,
+		["disconnect"] = true
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GROUPS

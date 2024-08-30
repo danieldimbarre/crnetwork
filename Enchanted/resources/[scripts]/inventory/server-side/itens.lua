@@ -118,13 +118,19 @@ Use = {
 	end,
 
 	["instagram"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Instagram = {}
 		local PhoneNumber = vRP.CleanPhone(Passport)
 		local CheckInstagram = vRP.Query("smartphone/CheckInstagram",{ Phone = PhoneNumber })
-		if PhoneNumber then
-			local CheckInstagram = vRP.Query("smartphone/CheckInstagram",{ Phone = PhoneNumber })
-			if CheckInstagram and CheckInstagram[1] and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				TriggerClientEvent("inventory:Update",source)
-				vRP.Query("smartphone/Instagram",{ Phone = PhoneNumber, Amount = 100 })
+		if PhoneNumber and CheckInstagram and CheckInstagram[1] then
+			TriggerClientEvent("inventory:Close",source)
+
+			for _,v in pairs(CheckInstagram) do
+				Instagram[#Instagram + 1] = v["username"]
+			end
+
+			local Keyboard = vKEYBOARD.Instagram(source,Instagram)
+			if Keyboard then
+				vRP.Query("smartphone/Instagram",{ Username = Keyboard[1], Amount = 1000 })
 				TriggerClientEvent("Notify",source,"Sucesso","Seguidores adicionados.","verde",5000)
 			end
 		end

@@ -460,7 +460,6 @@ Works = {
 	["Dismantle"] = "Desmanche",
 	["Delivery"] = "Entregador",
 	["Transporter"] = "Transportador",
-	["Smuggler"] = "Contrabandista",
 	["Lumberman"] = "Lenhador",
 	["Milkman"] = "Leiteiro",
 	["Trucker"] = "Caminhoneiro",

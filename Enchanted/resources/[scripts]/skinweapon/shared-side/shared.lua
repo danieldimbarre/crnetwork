@@ -4,7 +4,6 @@
 Weapons = {
 	{
 		["id"] = 1,
-		["rarity"] = 5,
 		["price"] = 4725,
 		["name"] = "Sol Nascente",
 		["damage"] = 20,
@@ -20,7 +19,6 @@ Weapons = {
 		["component"] = "COMPONENT_SNSPISTOL_VARMOD_LOWRIDER"
 	},{
 		["id"] = 2,
-		["rarity"] = 5,
 		["price"] = 4725,
 		["name"] = "Lâmina Fantasma",
 		["damage"] = 35,
@@ -36,7 +34,6 @@ Weapons = {
 		["component"] = "COMPONENT_HEAVYPISTOL_VARMOD_LUXE"
 	},{
 		["id"] = 3,
-		["rarity"] = 5,
 		["price"] = 4725,
 		["name"] = "Maré Carmesim",
 		["damage"] = 20,
@@ -52,7 +49,6 @@ Weapons = {
 		["component"] = "COMPONENT_PISTOL_VARMOD_LUXE"
 	},{
 		["id"] = 4,
-		["rarity"] = 5,
 		["price"] = 4725,
 		["name"] = "Sussurro Sombrio",
 		["damage"] = 20,
@@ -68,7 +64,6 @@ Weapons = {
 		["component"] = "COMPONENT_COMBATPISTOL_VARMOD_LOWRIDER"
 	},{
 		["id"] = 5,
-		["rarity"] = 5,
 		["price"] = 4725,
 		["name"] = "Estrela Cadente",
 		["damage"] = 25,
@@ -84,7 +79,6 @@ Weapons = {
 		["component"] = "COMPONENT_APPISTOL_VARMOD_LUXE"
 	},{
 		["id"] = 6,
-		["rarity"] = 5,
 		["price"] = 4725,
 		["name"] = "Aurora Cintilante",
 		["damage"] = 45,
@@ -100,7 +94,6 @@ Weapons = {
 		["component"] = "COMPONENT_PISTOL50_VARMOD_LUXE"
 	},{
 		["id"] = 7,
-		["rarity"] = 5,
 		["price"] = 5725,
 		["name"] = "Respeito da Luxúria",
 		["damage"] = 25,
@@ -116,7 +109,6 @@ Weapons = {
 		["component"] = "COMPONENT_MICROSMG_VARMOD_LUXE"
 	},{
 		["id"] = 8,
-		["rarity"] = 5,
 		["price"] = 5725,
 		["name"] = "Respeito da Guerra",
 		["damage"] = 25,
@@ -132,7 +124,6 @@ Weapons = {
 		["component"] = "COMPONENT_MICROSMG_VARMOD_XM3"
 	},{
 		["id"] = 9,
-		["rarity"] = 5,
 		["price"] = 5725,
 		["name"] = "Respeito da Selva",
 		["damage"] = 25,
@@ -148,7 +139,6 @@ Weapons = {
 		["component"] = "COMPONENT_MICROSMG_VARMOD_FRN"
 	},{
 		["id"] = 10,
-		["rarity"] = 5,
 		["price"] = 5725,
 		["name"] = "Estrela da Sorte",
 		["damage"] = 25,
@@ -164,7 +154,6 @@ Weapons = {
 		["component"] = "COMPONENT_SMG_VARMOD_LUXE"
 	},{
 		["id"] = 11,
-		["rarity"] = 5,
 		["price"] = 5725,
 		["name"] = "Estrela da Aurora",
 		["damage"] = 25,
@@ -180,7 +169,6 @@ Weapons = {
 		["component"] = "COMPONENT_ASSAULTSMG_VARMOD_LOWRIDER"
 	},{
 		["id"] = 12,
-		["rarity"] = 5,
 		["price"] = 6275,
 		["name"] = "Tempestade Ardente",
 		["damage"] = 30,
@@ -196,7 +184,6 @@ Weapons = {
 		["component"] = "COMPONENT_ASSAULTRIFLE_VARMOD_LUXE"
 	},{
 		["id"] = 13,
-		["rarity"] = 5,
 		["price"] = 6275,
 		["name"] = "Manto da Escuridão",
 		["damage"] = 30,
@@ -212,7 +199,6 @@ Weapons = {
 		["component"] = "COMPONENT_BULLPUPRIFLE_VARMOD_LOW"
 	},{
 		["id"] = 14,
-		["rarity"] = 5,
 		["price"] = 6275,
 		["name"] = "Sussurro do Vento",
 		["damage"] = 30,
@@ -228,7 +214,6 @@ Weapons = {
 		["component"] = "COMPONENT_CARBINERIFLE_VARMOD_LUXE"
 	},{
 		["id"] = 15,
-		["rarity"] = 5,
 		["price"] = 6275,
 		["name"] = "Aurora da Prosperidade",
 		["damage"] = 30,
@@ -244,7 +229,6 @@ Weapons = {
 		["component"] = "COMPONENT_CARBINERIFLE_VARMOD_MICH"
 	},{
 		["id"] = 16,
-		["rarity"] = 5,
 		["price"] = 6275,
 		["name"] = "Névoa da Noite",
 		["damage"] = 30,
@@ -260,7 +244,6 @@ Weapons = {
 		["component"] = "COMPONENT_ADVANCEDRIFLE_VARMOD_LUXE"
 	},{
 		["id"] = 17,
-		["rarity"] = 5,
 		["price"] = 4275,
 		["name"] = "Labareda Lunar",
 		["damage"] = 35,
@@ -276,7 +259,6 @@ Weapons = {
 		["component"] = "COMPONENT_PUMPSHOTGUN_VARMOD_LOWRIDER"
 	},{
 		["id"] = 18,
-		["rarity"] = 5,
 		["price"] = 4275,
 		["name"] = "Raio Rubro",
 		["damage"] = 35,
@@ -292,7 +274,6 @@ Weapons = {
 		["component"] = "COMPONENT_PUMPSHOTGUN_VARMOD_SECURITY"
 	},{
 		["id"] = 19,
-		["rarity"] = 5,
 		["price"] = 4275,
 		["name"] = "Lótus da Morte",
 		["damage"] = 35,
@@ -308,7 +289,6 @@ Weapons = {
 		["component"] = "COMPONENT_PUMPSHOTGUN_VARMOD_XM3"
 	},{
 		["id"] = 20,
-		["rarity"] = 5,
 		["price"] = 4275,
 		["name"] = "Vingança Estelar",
 		["damage"] = 35,
@@ -324,7 +304,6 @@ Weapons = {
 		["component"] = "COMPONENT_SAWNOFFSHOTGUN_VARMOD_LUXE"
 	},{
 		["id"] = 21,
-		["rarity"] = 5,
 		["price"] = 6275,
 		["name"] = "Aurora Rubra",
 		["damage"] = 30,
@@ -340,7 +319,6 @@ Weapons = {
 		["component"] = "COMPONENT_SPECIALCARBINE_VARMOD_LOWRIDER"
 	},{
 		["id"] = 22,
-		["rarity"] = 5,
 		["price"] = 6275,
 		["name"] = "Vingança Congelada",
 		["damage"] = 30,
@@ -356,7 +334,6 @@ Weapons = {
 		["component"] = "COMPONENT_SPECIALCARBINE_VARMOD_XMAS23"
 	},{
 		["id"] = 23,
-		["rarity"] = 5,
 		["price"] = 1725,
 		["name"] = "Katana Gélida",
 		["damage"] = 20,
@@ -372,7 +349,6 @@ Weapons = {
 		["component"] = "COMPONENT_KATANA_FROST"
 	},{
 		["id"] = 24,
-		["rarity"] = 5,
 		["price"] = 1725,
 		["name"] = "Katana Kitty",
 		["damage"] = 20,
@@ -388,7 +364,6 @@ Weapons = {
 		["component"] = "COMPONENT_KATANA_KITTY"
 	},{
 		["id"] = 25,
-		["rarity"] = 5,
 		["price"] = 1725,
 		["name"] = "Katana Thermal",
 		["damage"] = 20,
@@ -404,7 +379,6 @@ Weapons = {
 		["component"] = "COMPONENT_KATANA_THERMAL"
 	},{
 		["id"] = 26,
-		["rarity"] = 5,
 		["price"] = 1725,
 		["name"] = "Karambit",
 		["damage"] = 20,
@@ -420,7 +394,6 @@ Weapons = {
 		["component"] = "COMPONENT_SWITCHBLADE_KARAMBIT"
 	},{
 		["id"] = 27,
-		["rarity"] = 5,
 		["price"] = 4725,
 		["name"] = "Furia Noturna",
 		["damage"] = 35,
@@ -436,7 +409,6 @@ Weapons = {
 		["component"] = "COMPONENT_HEAVYPISTOL_KIMBER"
 	},{
 		["id"] = 28,
-		["rarity"] = 5,
 		["price"] = 1725,
 		["name"] = "Lamina da Vingança",
 		["damage"] = 20,

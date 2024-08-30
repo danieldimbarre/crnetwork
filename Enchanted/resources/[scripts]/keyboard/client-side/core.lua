@@ -156,7 +156,7 @@ function Timeset(First,Second,Third)
 			},{
 				id = 3,
 				mode = "options",
-				placeholder = "Selecione um clima",
+				placeholder = "Selecione uma opção",
 				options = Third,
 				value = ""
 			}
@@ -165,6 +165,50 @@ function Timeset(First,Second,Third)
 
 	if Array and Array["1"] and Array["1"]["input"] ~= "" and Array["2"] and Array["2"]["input"] ~= "" and Array["3"] and Array["3"]["input"] ~= "" then
 		return { Array["1"]["input"],Array["2"]["input"],Array["3"]["input"] }
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Item(First,Second,Third,Fourth,Fifty)
+	local Array = Keyboard({
+		title = "Formulário",
+		subtitle = "Preencha os campos abaixo",
+		rows = {
+			{
+				id = 1,
+				mode = "text",
+				placeholder = First,
+				value = ""
+			},{
+				id = 2,
+				mode = "text",
+				placeholder = Second,
+				value = ""
+			},{
+				id = 3,
+				mode = "text",
+				placeholder = Third,
+				value = ""
+			},{
+				id = 4,
+				mode = "options",
+				placeholder = "Selecione uma opção",
+				options = Fourth,
+				value = ""
+			},{
+				id = 5,
+				mode = "text",
+				placeholder = Fifty,
+				value = ""
+			}
+		}
+	})
+
+	if Array and Array["1"] and Array["1"]["input"] ~= "" and Array["2"] and Array["2"]["input"] ~= "" and Array["3"] and Array["3"]["input"] ~= "" and Array["4"] and Array["4"]["input"] ~= "" and Array["5"] and Array["5"]["input"] ~= "" then
+		return { Array["1"]["input"],Array["2"]["input"],Array["3"]["input"],Array["4"]["input"],Array["5"]["input"] }
 	end
 
 	return false
@@ -393,4 +437,10 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Timeset(First,Secondary,Third)
 	return Timeset(First,Secondary,Third)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Item(First,Secondary,Third,Fourth,Fifty)
+	return Item(First,Secondary,Third,Fourth,Fifty)
 end

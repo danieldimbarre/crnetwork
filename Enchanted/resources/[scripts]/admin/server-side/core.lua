@@ -13,27 +13,6 @@ Tunnel.bindInterface("admin",Creative)
 vCLIENT = Tunnel.getInterface("admin")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- UGROUPS
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("ugroups",function(source,Message)
-	local Passport = vRP.Passport(source)
-	if Passport and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") then
-		local Messages = ""
-		local Groups = vRP.Groups()
-		local OtherPassport = Message[1]
-		for Permission,_ in pairs(Groups) do
-			local Data = vRP.DataGroups(Permission)
-			if Data[OtherPassport] then
-				Messages = Messages.."<b>Permissão:</b> "..Permission.."<br><b>Nível:</b> "..Data[OtherPassport].."<br>"
-			end
-		end
-
-		if Messages ~= "" then
-			TriggerClientEvent("Notify",source,"Grupos Pertencentes",Messages,"default",10000)
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skinshop",function(source,Message)
@@ -92,10 +71,58 @@ end)
 -- ID
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("id",function(source,Message)
+	local OtherPassport = Message[1]
 	local Passport = vRP.Passport(source)
-	local OtherPassport = parseInt(Message[1])
-	if Passport and OtherPassport and OtherPassport > 0 and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,"Admin") then
-		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport).."<br><b>Banco:</b> "..vRP.GetBank(OtherPassport).."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport),(vRP.Source(OtherPassport) and "verde" or "vermelho"),10000)
+	if Passport and OtherPassport and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,"Admin") then
+		local AmountGroups = 0
+		local Message = "<br><br>"
+		local Groups = vRP.Groups()
+		for Permission in pairs(Groups) do
+			local Data = vRP.DataGroups(Permission)
+			if Data[OtherPassport] then
+				AmountGroups = AmountGroups + 1
+				Message = Message.."[ <warning>"..Permission.."</warning> ] "..vRP.NameHierarchy(Permission,Data[OtherPassport]).." ( "..Data[OtherPassport].." )<br>"
+			end
+		end
+
+		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport).."<br><b>Banco:</b> "..Currency..Dotted(vRP.GetBank(OtherPassport)).."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport).."<br><b>Grupos Participantes:</b> "..AmountGroups..(AmountGroups >= 1 and Message or ""),(vRP.Source(OtherPassport) and "verde" or "vermelho"),10000)
+	end
+end)
+------------------------------------------------------------------------------------------------------------------------------------------
+-- STATUS
+------------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("status",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasPermission(Passport,"Admin") then
+		local Permissions = {}
+		local Groups = vRP.Groups()
+		for Permission in pairs(Groups) do
+			Permissions[#Permissions + 1] = Permission
+		end
+
+		table.sort(Permissions,function(a,b) return a < b end)
+
+		local Keyboard = vKEYBOARD.Instagram(source,Permissions)
+		if Keyboard then
+			local Online = ""
+			local Offline = ""
+			local Permission = Keyboard[1]
+			local Consult = vRP.DataGroups(Permission)
+			local Table,Onlines = vRP.NumPermission(Permission)
+			local AmountPlayers = CountTable(Consult)
+
+			local Message = "<warning>Jogadores Conectados:</warning> "..Onlines.."<br><warning>Jogadores Participantes:</warning> "..AmountPlayers..(AmountPlayers >= 1 and "<br><br>" or "")
+
+			for OtherPassport in pairs(Consult) do
+				if Table[OtherPassport] then
+					Online = Online.."<online>◘</online> "..vRP.FullName(OtherPassport).." ( "..OtherPassport.." )<br>"
+				else
+					Offline = Offline.."<offline>◘</offline> "..vRP.FullName(OtherPassport).." ( "..OtherPassport.." )<br>"
+				end
+			end
+
+			TriggerClientEvent("Notify",source,Permission,Message..Online..Offline,"default",15000)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -180,13 +207,54 @@ RegisterCommand("item",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",2) then
 		if not Message[1] then
-			local Keyboard = vKEYBOARD.Tertiary(source,"Passaporte","Item","Quantidade")
+			local Keyboard = vKEYBOARD.Item(source,"Passaporte","Item","Quantidade",{ "Jogador","Todos","Area" },"Distância")
 			if Keyboard and ItemExist(Keyboard[2]) then
 				local Item = Keyboard[2]
+				local Action = Keyboard[4]
 				local OtherPassport = Keyboard[1]
 				local Amount = parseInt(Keyboard[3],true)
+				local Distance = parseInt(Keyboard[5],true)
 
-				vRP.GenerateItem(OtherPassport,Item,Amount,true)
+				if Action == "Jogador" then
+					if vRP.Source(OtherPassport) then
+						vRP.GenerateItem(OtherPassport,Item,Amount,true)
+						TriggerClientEvent("Notify",source,"Sucesso","Entregue ao destinatário.","verde",5000)
+					else
+						local Selected = GenerateString("DDLLDDLL")
+						local Consult = vRP.GetSrvData("Offline:"..OtherPassport,true)
+
+						repeat
+							Selected = GenerateString("DDLLDDLL")
+						until Selected and not Consult[Selected]
+
+						TriggerClientEvent("Notify",source,"Sucesso","Adicionado a lista de entregas.","verde",5000)
+						Consult[Selected] = { ["Item"] = Item, ["Amount"] = Amount }
+						vRP.SetSrvData("Offline:"..OtherPassport,Consult,true)
+					end
+				elseif Action == "Todos" then
+					local List = vRP.Players()
+					for OtherPlayer,_ in pairs(List) do
+						async(function()
+							vRP.GenerateItem(OtherPlayer,Item,Amount,true)
+						end)
+					end
+				elseif Action == "Area" then
+					local PlayerList = GetPlayers()
+					local Coords = vRP.GetEntityCoords(source)
+
+					for _,OtherSource in ipairs(PlayerList) do
+						async(function()
+							local OtherSource = parseInt(OtherSource)
+							local OtherPassport = vRP.Passport(OtherSource)
+							local OtherCoords = vRP.GetEntityCoords(OtherSource)
+
+							if OtherCoords and OtherPassport and #(Coords - OtherCoords) <= Distance then
+								vRP.GenerateItem(OtherPassport,Item,Amount,true)
+							end
+						end)
+					end
+				end
+
 				exports["discord"]:Embed("Item","**[ADMIN]:** "..OtherPassport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 			end
 		elseif Message[1] and Message[2] then
@@ -385,15 +453,6 @@ RegisterCommand("fix",function(source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PLAYERS
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("players",function(source)
-	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin") then
-		TriggerClientEvent("Notify",source,"Listagem","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices(),"default",5000)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- ADMIN:COORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("admin:Coords")
@@ -449,14 +508,8 @@ RegisterCommand("kickall",function(source)
 		end
 	end
 
-	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 5 minutos, se abriguem!","vermelho",60000)
-	GlobalState["Weather"] = "RAIN"
-	Wait(60000)
-
-	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 4 minutos, se abriguem!","vermelho",60000)
-	Wait(60000)
-
 	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 3 minutos, se abriguem!","vermelho",60000)
+	GlobalState["Weather"] = "RAIN"
 	Wait(60000)
 
 	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 2 minutos, se abriguem!","vermelho",60000)
@@ -513,23 +566,6 @@ CreateThread(function()
 	while true do
 		Wait(5 * 60000)
 		TriggerEvent("SaveServer",true)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ITEMALL
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("itemall",function(source,Message)
-	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin",1) then
-		local List = vRP.Players()
-		for OtherPlayer,_ in pairs(List) do
-			async(function()
-				vRP.GenerateItem(OtherPlayer,Message[1],Message[2],true)
-			end)
-		end
-
-		TriggerClientEvent("Notify",source,"Aviso","Envio concluído.","amarelo",10000)
-		exports["discord"]:Embed("ItemAll","**[ADMIN]:** "..Passport.."\n**[ITEM]:** "..Message[1].."\n**[QUANTIDADE]:** "..Message[2].."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),0xe84855)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -718,5 +754,20 @@ RegisterCommand("removeprop",function(source,Message)
 		end
 
 		print("Processo de remoção das propriedades finalizada.")
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Connect",function(Passport)
+	local Passport = Passport
+	local Consult = vRP.GetSrvData("Offline:"..Passport,true)
+	if CountTable(Consult) >= 1 then
+		for Index,v in pairs(Consult) do
+			vRP.GenerateItem(Passport,v["Item"],v["Amount"],true)
+			Consult[Index] = nil
+		end
+
+		vRP.SetSrvData("Offline:"..Passport,Consult,true)
 	end
 end)

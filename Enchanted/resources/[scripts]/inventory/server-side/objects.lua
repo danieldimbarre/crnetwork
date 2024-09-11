@@ -243,7 +243,7 @@ AddEventHandler("inventory:StoreObjects",function(Number)
 				vRP.GiveItem(Passport,Objects[Number]["Item"],1,true)
 			else
 				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
-				exports["inventory"]:Drops(Passport,source,Objects[Number]["Item"])
+				exports["inventory"]:Drops(Passport,source,Objects[Number]["Item"],1,true)
 			end
 		end
 

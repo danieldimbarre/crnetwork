@@ -28,7 +28,8 @@ server_scripts {
 files {
 	"lib/*",
 	"config/*",
-	"config/**/*"
+	"config/**/*",
+	"config/**/**/*"
 }
 
 shared_scripts {

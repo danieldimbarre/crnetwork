@@ -202,7 +202,9 @@ function Calculate(Table,Vehicle)
 				Price = Price + (Values[Index] or 100)
 			end
 
-			if Installed["Color"] ~= Selected["Color"] then
+			if Index == "Neons" and Installed["Color"][1] ~= Selected["Color"][1] and Installed["Color"][2] ~= Selected["Color"][2] and Installed["Color"][3] ~= Selected["Color"][3] then
+				Price = Price + (Values[Index] or 100)
+			elseif Index == "Xenons" and Installed["Color"] ~= Selected["Color"] then
 				Price = Price + (Values[Index] or 100)
 			end
 		else

@@ -335,6 +335,7 @@ function RandPercentage(Table)
 	local Selected = math.random(1,PoolSize)
 	for Index,v in pairs(Table) do
 		Selected = Selected - v["Chance"]
+
 		if v["Min"] and v["Max"] then
 			Table[Index]["Valuation"] = math.random(v["Min"],v["Max"])
 		end

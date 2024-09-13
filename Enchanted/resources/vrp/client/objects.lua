@@ -340,6 +340,10 @@ CreateThread(function()
 
 						if v["Mode"] then
 							TargetLabel(Number,v["Coords"],v["Mode"],v["Weight"] or 0.0,v["Item"])
+
+							if v["Mode"] == "Sprays" then
+								AddReplaceTexture("sprays","np_sprays_st_dif","sprayDict_"..v["Permission"],"sprayName_"..v["Permission"])
+							end
 						end
 
 						if not v["Ground"] then

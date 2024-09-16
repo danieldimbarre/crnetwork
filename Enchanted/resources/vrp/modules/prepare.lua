@@ -22,7 +22,7 @@ vRP.Prepare("characters/NewCharacter","INSERT INTO characters (License,Name,Last
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("smartphone/Phone","SELECT * FROM phone_phones WHERE owner_id = @Passport")
 vRP.Prepare("smartphone/CheckInstagram","SELECT * FROM phone_instagram_accounts WHERE phone_number = @Phone")
-vRP.Prepare("smartphone/Instagram","UPDATE phone_instagram_accounts SET follower_count = follower_count + @Amount WHERE phone_number = @Phone")
+vRP.Prepare("smartphone/Instagram","UPDATE phone_instagram_accounts SET follower_count = follower_count + @Amount WHERE username = @Username")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACCOUNTS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -34,11 +34,11 @@ vRP.Prepare("accounts/RemoveBanned","UPDATE accounts SET Banned = 0 WHERE Licens
 vRP.Prepare("accounts/NewAccount","INSERT INTO accounts (License,Token) VALUES (@License,@Token)")
 vRP.Prepare("accounts/LastLogin","UPDATE accounts SET Login = UNIX_TIMESTAMP() WHERE License = @License")
 vRP.Prepare("accounts/AddGemstone","UPDATE accounts SET Gemstone = Gemstone + @Gemstone WHERE License = @License")
-vRP.Prepare("accounts/SetPremium","UPDATE accounts SET Premium = @Premium, Level = @Level WHERE License = @License")
 vRP.Prepare("accounts/UpdateCharacters","UPDATE accounts SET Characters = Characters + 1 WHERE License = @License")
 vRP.Prepare("accounts/RemoveGemstone","UPDATE accounts SET Gemstone = Gemstone - @Gemstone WHERE License = @License")
+vRP.Prepare("accounts/SetPremium","UPDATE accounts SET Premium = (86400 * @Days), Level = @Level WHERE License = @License")
 vRP.Prepare("accounts/InsertBanned","UPDATE accounts SET Banned = UNIX_TIMESTAMP() + (86400 * @Days) WHERE License = @License")
-vRP.Prepare("accounts/UpgradePremium","UPDATE accounts SET Premium = Premium + (86400 * 30), Level = @Level WHERE License = @License")
+vRP.Prepare("accounts/UpgradePremium","UPDATE accounts SET Premium = Premium + (86400 * @Days), Level = @Level WHERE License = @License")
 vRP.Prepare("accounts/Minimals","SELECT * FROM accounts WHERE Login <= UNIX_TIMESTAMP() - (86400 * 15) AND License <> 0 AND Whitelist = 1")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERDATA
@@ -59,6 +59,7 @@ vRP.Prepare("vehicles/plateVehicles","SELECT * FROM vehicles WHERE Plate = @Plat
 vRP.Prepare("vehicles/Arrest","UPDATE vehicles SET Arrest = 1 WHERE Plate = @Plate")
 vRP.Prepare("vehicles/UserVehicles","SELECT * FROM vehicles WHERE Passport = @Passport")
 vRP.Prepare("vehicles/Count","SELECT COUNT(Vehicle) FROM vehicles WHERE Vehicle = @Vehicle")
+vRP.Prepare("vehicles/PlateUsers","SELECT * FROM vehicles WHERE Plate = @Plate AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/Minimals","SELECT * FROM vehicles WHERE Tax + (86400 * 15) <= UNIX_TIMESTAMP()")
 vRP.Prepare("vehicles/removeVehicles","DELETE FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/selectVehicles","SELECT * FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
@@ -66,15 +67,15 @@ vRP.Prepare("vehicles/CoiloverVehicles","UPDATE vehicles SET Drift = 1 WHERE Veh
 vRP.Prepare("vehicles/UpdateSave","UPDATE vehicles SET Save = @Save WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/SeatbeltVehicles","UPDATE vehicles SET Seatbelt = 1 WHERE Plate = @Plate AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/PaymentArrest","UPDATE vehicles SET Arrest = 0 WHERE Passport = @Passport AND Vehicle = @Vehicle")
-vRP.Prepare("vehicles/PlateUsers","SELECT * FROM vehicles WHERE Plate = @Plate AND Vehicle = @Vehicle")
-vRP.Prepare("vehicles/PlateOwner","SELECT * FROM vehicles WHERE Plate = @Plate AND Vehicle = @Vehicle AND Passport = @Passport")
 vRP.Prepare("vehicles/plateVehiclesUpdate","UPDATE vehicles SET Plate = @NewPlate WHERE Plate = @Plate AND Vehicle = @Vehicle")
+vRP.Prepare("vehicles/PlateOwner","SELECT * FROM vehicles WHERE Plate = @Plate AND Vehicle = @Vehicle AND Passport = @Passport")
 vRP.Prepare("vehicles/moveVehicles","UPDATE vehicles SET Passport = @OtherPassport WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/rentalVehiclesDays","UPDATE vehicles SET Rental = Rental + (86400 * 30) WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/UpdateWeight","UPDATE vehicles SET Weight = Weight + (10 * @Multiplier) WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/updateVehiclesTax","UPDATE vehicles SET Tax = UNIX_TIMESTAMP() + (86400 * 30) WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/rentalVehiclesUpdate","UPDATE vehicles SET Rental = UNIX_TIMESTAMP() + (86400 * 30) WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/addVehicles","INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Tax) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,UNIX_TIMESTAMP() + (86400 * 7))")
+vRP.Prepare("vehicles/updateVehiclesRespawns","UPDATE vehicles SET Engine = @Engine, Body = @Body, Health = @Health, Fuel = @Fuel, Windows = @Windows, Nitro = @Nitro WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/rentalVehicles","INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,UNIX_TIMESTAMP() + (86400 * 30),UNIX_TIMESTAMP() + (86400 * 7))")
 vRP.Prepare("vehicles/updateVehicles","UPDATE vehicles SET Engine = @Engine, Body = @Body, Health = @Health, Fuel = @Fuel, Doors = @Doors, Windows = @Windows, Tyres = @Tyres, Nitro = @Nitro WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/updateVehiclesSave","UPDATE vehicles SET Engine = @Engine, Body = @Body, Health = @Health, Fuel = @Fuel, Doors = @Doors, Windows = @Windows, Tyres = @Tyres, Nitro = @Nitro, Save = @Save WHERE Passport = @Passport AND Vehicle = @Vehicle")

@@ -113,7 +113,7 @@ exports("Apply",function(Data,Ped)
 		end
 	end
 
-	SetPedHeadBlendData(Ped,Fathers[Barbershop[1] + 1],Mothers[Barbershop[2] + 1],0,Barbershop[5],Barbershop[5],0,Barbershop[3] + 0.0,0,0,false)
+	SetPedHeadBlendData(Ped,Barbershop[1],Barbershop[2],0,Barbershop[5],Barbershop[5],0,Barbershop[3] + 0.0,0,0,false)
 
 	SetPedEyeColor(Ped,Barbershop[4])
 

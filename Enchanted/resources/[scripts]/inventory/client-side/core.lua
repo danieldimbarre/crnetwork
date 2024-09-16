@@ -157,7 +157,7 @@ function Creative.Fishing(Item)
 	}
 
 	for _,v in pairs(Locates) do
-		if #(Coords - v["Coords"]) <= 200 and (Item == v["Item"] or Item == "plus") then
+		if #(Coords - v["Coords"]) <= 200 and (Item == v["Item"] or Item == "fishingrodplus") then
 			Fishings = true
 		end
 	end

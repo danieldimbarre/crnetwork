@@ -135,7 +135,8 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true,
-		["Markers"] = true
+		["Markers"] = true,
+		["Chat"] = true
 	},
 	["BCSO"] = {
 		["Permission"] = {
@@ -147,7 +148,8 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true,
-		["Markers"] = true
+		["Markers"] = true,
+		["Chat"] = true
 	},
 	["BCPR"] = {
 		["Permission"] = {
@@ -159,7 +161,8 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true,
-		["Markers"] = true
+		["Markers"] = true,
+		["Chat"] = true
 	},
 	["Paramedico"] = {
 		["Permission"] = {
@@ -171,7 +174,8 @@ Groups = {
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true,
-		["Markers"] = true
+		["Markers"] = true,
+		["Chat"] = true
 	},
 	["Ballas"] = {
 		["Permission"] = {
@@ -250,8 +254,7 @@ Groups = {
 		["Hierarchy"] = { "Chefe","Supervisor","Funcionário" },
 		["Service"] = {},
 		["Type"] = "Work",
-		["Client"] = true,
-		["Max"] = 10
+		["Client"] = true
 	},
 	["Camera"] = {
 		["Permission"] = {

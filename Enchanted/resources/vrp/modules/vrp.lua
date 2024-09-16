@@ -54,19 +54,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.CleanPhone(Passport)
 	local PhoneNumber = false
-	local source = vRP.Source(Passport)
-
-	if Characters[source] and Characters[source]["Phone"] then
-		PhoneNumber = Characters[source]["Phone"]
-	else
-		local Consult = vRP.Query("smartphone/Phone",{ Passport = Passport })
-		if Consult[1] and Consult[1]["phone_number"] then
-			PhoneNumber = Consult[1]["phone_number"]
-
-			if Characters[source] then
-				Characters[source]["Phone"] = PhoneNumber
-			end
-		end
+	local Consult = vRP.Query("smartphone/Phone",{ Passport = Passport })
+	if Consult[1] and Consult[1]["phone_number"] then
+		PhoneNumber = Consult[1]["phone_number"]
 	end
 
 	return PhoneNumber

@@ -319,49 +319,16 @@ RegisterNetEvent("player:enterTrunk")
 AddEventHandler("player:enterTrunk",function(Entity)
 	local Ped = PlayerPedId()
 	if not inTrunk and GetEntityHealth(Ped) > 100 then
-		LocalPlayer["state"]:set("Commands",true,true)
-		LocalPlayer["state"]:set("Chikorita",true,false)
-
 		AttachEntityToEntity(Ped,Entity[3],-1,0.0,-2.2,0.5,0.0,0.0,0.0,true,true,false,true,2,true)
+		LocalPlayer["state"]:set("Chikorita",true,false)
+		LocalPlayer["state"]:set("Commands",true,true)
 		SetEntityVisible(Ped,false,0)
 		inTrunk = true
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- PLAYER:CHECKTRUNK
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("player:checkTrunk")
-AddEventHandler("player:checkTrunk",function()
-	if inTrunk then
-		local Ped = PlayerPedId()
-		local Vehicle = GetEntityAttachedTo(Ped)
-		if DoesEntityExist(Vehicle) then
-			inTrunk = false
-			SetEntityVisible(Ped,true,0)
-			DetachEntity(Ped,false,false)
-			LocalPlayer["state"]:set("Commands",false,true)
-			LocalPlayer["state"]:set("Chikorita",false,false)
-			SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADINTRUNK
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		local TimeDistance = 999
 
-		if inTrunk then
+		while inTrunk do
 			local Ped = PlayerPedId()
 			local Vehicle = GetEntityAttachedTo(Ped)
 			if DoesEntityExist(Vehicle) then
-				TimeDistance = 1
-
-				if GetFollowPedCamViewMode() ~= 4 then
-					SetFollowPedCamViewMode(4)
-				end
-
 				DisablePlayerFiring(Ped,true)
 				DisableControlAction(0,23,true)
 
@@ -371,44 +338,32 @@ CreateThread(function()
 				end
 
 				if IsControlJustPressed(1,38) then
-					inTrunk = false
-					SetEntityVisible(Ped,true,0)
-					DetachEntity(Ped,false,false)
-					LocalPlayer["state"]:set("Commands",false,true)
-					LocalPlayer["state"]:set("Chikorita",false,false)
-					SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
+					TriggerEvent("player:checkTrunk")
 				end
 			else
-				inTrunk = false
-				SetEntityVisible(Ped,true,0)
-				DetachEntity(Ped,false,false)
-				LocalPlayer["state"]:set("Chikorita",false,false)
-				LocalPlayer["state"]:set("Commands",false,true)
-				SetEntityCoords(Ped,GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25),false,false,false,false)
+				TriggerEvent("player:checkTrunk")
 			end
-		end
 
-		Wait(TimeDistance)
+			Wait(1)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ANCORAR
+-- PLAYER:CHECKTRUNK
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("ancorar",function()
-	local Ped = PlayerPedId()
-	if IsPedInAnyBoat(Ped) and exports["chat"]:Open() then
-		local Vehicle = GetVehiclePedIsUsing(Ped)
-		if CanAnchorBoatHere(Vehicle) then
-			SetBoatAnchor(Vehicle,false)
-			SetBoatFrozenWhenAnchored(Vehicle,false)
-			SetForcedBoatLocationWhenAnchored(Vehicle,false)
-			TriggerEvent("Notify","Sucesso","Embarcação desancorada.","verde",5000)
-		else
-			SetBoatAnchor(Vehicle,true)
-			SetBoatFrozenWhenAnchored(Vehicle,true)
-			SetForcedBoatLocationWhenAnchored(Vehicle,true)
-			TriggerEvent("Notify","Sucesso","Embarcação ancorada.","verde",5000)
-		end
+RegisterNetEvent("player:checkTrunk")
+AddEventHandler("player:checkTrunk",function()
+	if inTrunk then
+		local Ped = PlayerPedId()
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,-1.25,-0.25)
+
+		SetEntityVisible(Ped,true,0)
+		DetachEntity(Ped,false,false)
+		LocalPlayer["state"]:set("Commands",false,true)
+		LocalPlayer["state"]:set("Chikorita",false,false)
+		SetEntityCoords(Ped,Coords,false,false,false,false)
+
+		inTrunk = false
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -418,34 +373,30 @@ RegisterNetEvent("player:enterTrash")
 AddEventHandler("player:enterTrash",function(Entity)
 	if not inTrash then
 		local Ped = PlayerPedId()
-		FreezeEntityPosition(Ped,true)
 
 		LocalPlayer["state"]:set("Commands",true,true)
 		LocalPlayer["state"]:set("Chikorita",true,false)
 		SetEntityCoords(Ped,Entity[4],false,false,false,false)
+		FreezeEntityPosition(Ped,true)
 		SetEntityVisible(Ped,false,0)
 
 		inTrash = GetOffsetFromEntityInWorldCoords(Entity[1],0.0,-1.5,0.0)
 
 		while inTrash do
-			Wait(1)
+			local Ped = PlayerPedId()
 
-			if GetFollowPedCamViewMode() ~= 4 then
-				SetFollowPedCamViewMode(4)
+			if GetFollowPedCamViewMode() ~= 2 then
+				SetFollowPedCamViewMode(2)
 			end
 
 			DisablePlayerFiring(Ped,true)
 			DisableControlAction(0,23,true)
 
 			if IsControlJustPressed(1,38) then
-				SetEntityVisible(Ped,true,0)
-				FreezeEntityPosition(Ped,false)
-				LocalPlayer["state"]:set("Commands",false,true)
-				LocalPlayer["state"]:set("Chikorita",false,false)
-				SetEntityCoords(Ped,inTrash,false,false,false,false)
-
-				inTrash = false
+				TriggerEvent("player:checkTrash")
 			end
+
+			Wait(1)
 		end
 	end
 end)
@@ -456,6 +407,7 @@ RegisterNetEvent("player:checkTrash")
 AddEventHandler("player:checkTrash",function()
 	if inTrash then
 		local Ped = PlayerPedId()
+
 		SetEntityVisible(Ped,true,0)
 		FreezeEntityPosition(Ped,false)
 		LocalPlayer["state"]:set("Chikorita",false,false)
@@ -477,4 +429,24 @@ AddStateBagChangeHandler("Policia",("player:%s"):format(LocalPlayer["state"]["So
 
 	SetRelationshipBetweenGroups(1,GetHashKey("PRISONER"),GetHashKey("PLAYER"))
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("PRISONER"))
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ANCORAR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("ancorar",function()
+	local Ped = PlayerPedId()
+	if IsPedInAnyBoat(Ped) and exports["chat"]:Open() then
+		local Vehicle = GetVehiclePedIsUsing(Ped)
+		if CanAnchorBoatHere(Vehicle) then
+			SetBoatAnchor(Vehicle,false)
+			SetBoatFrozenWhenAnchored(Vehicle,false)
+			SetForcedBoatLocationWhenAnchored(Vehicle,false)
+			TriggerEvent("Notify","Sucesso","Embarcação desancorada.","verde",5000)
+		else
+			SetBoatAnchor(Vehicle,true)
+			SetBoatFrozenWhenAnchored(Vehicle,true)
+			SetForcedBoatLocationWhenAnchored(Vehicle,true)
+			TriggerEvent("Notify","Sucesso","Embarcação ancorada.","verde",5000)
+		end
+	end
 end)

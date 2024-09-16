@@ -189,8 +189,7 @@ List = {
 			["condensedmilk"] = 25,
 			["mayonnaise"] = 20,
 			["ryebread"] = 20,
-			["ricebag"] = 105,
-			["advtoolbox"] = 105
+			["ricebag"] = 105
 		}
 	},
 	["Megamall"] = {

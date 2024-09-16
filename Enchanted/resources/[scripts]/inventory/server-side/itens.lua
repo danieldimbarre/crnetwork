@@ -129,7 +129,7 @@ Use = {
 			end
 
 			local Keyboard = vKEYBOARD.Instagram(source,Instagram)
-			if Keyboard then
+			if Keyboard and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.Query("smartphone/Instagram",{ Username = Keyboard[1], Amount = 1000 })
 				TriggerClientEvent("Notify",source,"Sucesso","Seguidores adicionados.","verde",5000)
 			end
@@ -1643,7 +1643,7 @@ Use = {
 	end,
 
 	["fishingrodplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vCLIENT.Fishing(source,"plus") then
+		if vCLIENT.Fishing(source,"fishingrodplus") then
 			Active[Passport] = os.time() + 100
 			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("inventory:Close",source)
@@ -2927,12 +2927,12 @@ Use = {
 		local Hierarchy = 1
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.SetPremium(source,Passport,Hierarchy)
+				vRP.SetPremium(source,Passport,Hierarchy,30)
 				TriggerClientEvent("inventory:Update",source)
 			end
 		else
 			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.UpgradePremium(source,Passport,Hierarchy)
+				vRP.UpgradePremium(source,Passport,Hierarchy,30)
 				TriggerClientEvent("inventory:Update",source)
 			end
 		end
@@ -2942,12 +2942,12 @@ Use = {
 		local Hierarchy = 2
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.SetPremium(source,Passport,Hierarchy)
+				vRP.SetPremium(source,Passport,Hierarchy,30)
 				TriggerClientEvent("inventory:Update",source)
 			end
 		else
 			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.UpgradePremium(source,Passport,Hierarchy)
+				vRP.UpgradePremium(source,Passport,Hierarchy,30)
 				TriggerClientEvent("inventory:Update",source)
 			end
 		end
@@ -2957,12 +2957,12 @@ Use = {
 		local Hierarchy = 3
 		if not vRP.UserPremium(Passport) then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.SetPremium(source,Passport,Hierarchy)
+				vRP.SetPremium(source,Passport,Hierarchy,30)
 				TriggerClientEvent("inventory:Update",source)
 			end
 		else
 			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.UpgradePremium(source,Passport,Hierarchy)
+				vRP.UpgradePremium(source,Passport,Hierarchy,30)
 				TriggerClientEvent("inventory:Update",source)
 			end
 		end
@@ -3042,65 +3042,28 @@ for Model,v in pairs(VehicleList()) do
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SPRAYCONFIG
------------------------------------------------------------------------------------------------------------------------------------------
-local SprayConfig = {
-	["spray_ballas"] = {
-		["Permission"] = "Ballas",
-		["Color"] = 50
-	},
-	["spray_vagos"] = {
-		["Permission"] = "Vagos",
-		["Color"] = 60
-	},
-	["spray_families"] = {
-		["Permission"] = "Families",
-		["Color"] = 69
-	},
-	["spray_marabunta"] = {
-		["Permission"] = "Marabunta",
-		["Color"] = 63
-	},
-	["spray_bennys"] = {
-		["Permission"] = "Bennys",
-		["Color"] = 76
-	},
-	["spray_aztecas"] = {
-		["Permission"] = "Aztecas",
-		["Color"] = 77
-	},
-	["spray_bahamas"] = {
-		["Permission"] = "Bahamas",
-		["Color"] = 82
-	}
-}
------------------------------------------------------------------------------------------------------------------------------------------
 -- SPRAYS
 -----------------------------------------------------------------------------------------------------------------------------------------
-for ItemName,v in pairs(SprayConfig) do
-	Use[ItemName] = function(source,Passport,Amount,Slot,Full,Item,Split)
+for _,v in pairs(Sprays) do
+	Use[v["Item"]] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if vCLIENT.CheckInterior(source) then
+			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+
+			return false
+		end
+
+		if vRPC.SprayExist(source,500) then
+			TriggerClientEvent("Notify",source,"Atenção","No momento você não pode prosseguir porque outro grupo está dominando a localidade.","amarelo",5000)
+
+			return false
+		end
+
 		TriggerClientEvent("inventory:Close",source)
 
-		local Hash = ItemName
-		local Application,Coords = vCLIENT.SprayControlling(source,Hash)
+		local Application,Coords = vCLIENT.SprayControlling(source,v["Permission"])
 		if Application and Coords then
-			Player(source)["state"]["Buttons"] = true
-
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source)["state"]["Buttons"] = false
-
-				return false
-			end
-
-			if vRPC.SprayExist(source,500) then
-				TriggerClientEvent("Notify",source,"Atenção","No momento você não pode prosseguir porque outro grupo está dominando a localidade.","amarelo",5000)
-				Player(source)["state"]["Buttons"] = false
-
-				return false
-			end
-
 			Active[Passport] = os.time() + 999
+			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("Progress",source,"Agitando",5000)
 			vRPC.CreateObjects(source,"switch@franklin@lamar_tagging_wall","lamar_tagging_wall_loop_lamar","prop_cs_spray_can",1,28422)
 
@@ -3121,7 +3084,7 @@ for ItemName,v in pairs(SprayConfig) do
 									Selected = GenerateString("DDLLDDLL")
 								until Selected and not Objects[Selected]
 
-								Objects[Selected] = { Coords = Coords, Object = Hash, Mode = "Sprays", ["Timer"] = os.time() + 1800, Ground = true, Color = v["Color"], Permission = v["Permission"], Bucket = GetPlayerRoutingBucket(source) }
+								Objects[Selected] = { Coords = Coords, Object = "sprays", Mode = "Sprays", ["Timer"] = os.time() + 1800, Ground = true, Color = v["Color"], Permission = v["Permission"], Bucket = GetPlayerRoutingBucket(source) }
 								SaveObjects[Selected] = Objects[Selected]
 
 								TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])

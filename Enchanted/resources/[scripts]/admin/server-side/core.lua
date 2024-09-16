@@ -13,6 +13,25 @@ Tunnel.bindInterface("admin",Creative)
 vCLIENT = Tunnel.getInterface("admin")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYERS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("players",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		local Number = 0
+		local Message = ""
+		local Players = vRP.Players()
+		local Amounts = CountTable(Players)
+		for OtherPassport in pairs(Players) do
+			Number = Number + 1
+			Message = Message..OtherPassport..(Number < Amounts and ", " or "")
+		end
+
+		TriggerClientEvent("chat:ClientMessage",source,"JOGADORES CONECTADOS",Message,"OOC")
+		TriggerClientEvent("Notify",source,"Listagem","<b>Jogadores Conectados:</b> "..GetNumPlayerIndices(),"verde",5000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skinshop",function(source,Message)
@@ -74,18 +93,15 @@ RegisterCommand("id",function(source,Message)
 	local OtherPassport = Message[1]
 	local Passport = vRP.Passport(source)
 	if Passport and OtherPassport and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,"Admin") then
-		local AmountGroups = 0
+		local CountGroups = 0
 		local Message = "<br><br>"
-		local Groups = vRP.Groups()
-		for Permission in pairs(Groups) do
-			local Data = vRP.DataGroups(Permission)
-			if Data[OtherPassport] then
-				AmountGroups = AmountGroups + 1
-				Message = Message.."[ <warning>"..Permission.."</warning> ] "..vRP.NameHierarchy(Permission,Data[OtherPassport]).." ( "..Data[OtherPassport].." )<br>"
-			end
+		local Groups = vRP.UserGroups(Passport)
+		for Permission,Level in pairs(Groups) do
+			CountGroups = CountGroups + 1
+			Message = Message.."[ <warning>"..Permission.."</warning> ] "..vRP.NameHierarchy(Permission,Level).." ( "..Level.." )<br>"
 		end
 
-		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport).."<br><b>Banco:</b> "..Currency..Dotted(vRP.GetBank(OtherPassport)).."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport).."<br><b>Grupos Participantes:</b> "..AmountGroups..(AmountGroups >= 1 and Message or ""),(vRP.Source(OtherPassport) and "verde" or "vermelho"),10000)
+		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport).."<br><b>Banco:</b> "..Currency..Dotted(vRP.GetBank(OtherPassport)).."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport).."<br><b>Grupos Participantes:</b> "..CountGroups..(CountGroups >= 1 and Message or ""),(vRP.Source(OtherPassport) and "verde" or "vermelho"),10000)
 	end
 end)
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -107,11 +123,10 @@ RegisterCommand("status",function(source,Message)
 			local Online = ""
 			local Offline = ""
 			local Permission = Keyboard[1]
-			local Consult = vRP.DataGroups(Permission)
-			local Table,Onlines = vRP.NumPermission(Permission)
-			local AmountPlayers = CountTable(Consult)
+			local Consult,Amount = vRP.DataGroups(Permission)
+			local Table,Connects = vRP.NumPermission(Permission)
 
-			local Message = "<warning>Jogadores Conectados:</warning> "..Onlines.."<br><warning>Jogadores Participantes:</warning> "..AmountPlayers..(AmountPlayers >= 1 and "<br><br>" or "")
+			local Message = "<warning>Jogadores Conectados:</warning> "..Connects.."<br><warning>Jogadores Participantes:</warning> "..Amount..(Amount >= 1 and "<br><br>" or "")
 
 			for OtherPassport in pairs(Consult) do
 				if Table[OtherPassport] then
@@ -131,11 +146,13 @@ end)
 RegisterCommand("skin",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and Message[2] and vRPC.ModelExist(source,Message[2]) and vRP.HasGroup(Passport,"Admin") then
-		local ClosestPed = vRP.Source(Message[1])
-		if ClosestPed then
-			vRPC.Skin(ClosestPed,Message[2])
-			vRP.SkinCharacter(Message[1],Message[2])
-			exports["discord"]:Embed("Skin","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[MODEL]:** "..Message[2].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		local Skin = Message[2]
+		local OtherPassport = Message[1]
+		local OtherSource = vRP.Source(OtherPassport)
+		if OtherSource then
+			vRPC.Skin(OtherSource,Skin)
+			vRP.SkinCharacter(OtherPassport,Skin)
+			exports["discord"]:Embed("Skin","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[MODEL]:** "..Skin.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 		end
 	end
 end)
@@ -178,13 +195,13 @@ RegisterCommand("god",function(source,Message)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
 		if Message[1] then
 			local OtherPassport = parseInt(Message[1])
-			local ClosestPed = vRP.Source(OtherPassport)
-			if ClosestPed then
-				vRP.Revive(ClosestPed,300)
+			local OtherSource = vRP.Source(OtherPassport)
+			if OtherSource then
+				vRP.Revive(OtherSource,300)
 				vRP.UpgradeThirst(OtherPassport,10)
 				vRP.UpgradeHunger(OtherPassport,10)
 				vRP.DowngradeStress(OtherPassport,100)
-				TriggerClientEvent("paramedic:Reset",ClosestPed)
+				TriggerClientEvent("paramedic:Reset",OtherSource)
 
 				exports["discord"]:Embed("God","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 			end
@@ -289,11 +306,12 @@ end)
 RegisterCommand("kick",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
-		local OtherSource = vRP.Source(Message[1])
+		local OtherPassport = Message[1]
+		local OtherSource = vRP.Source(OtherPassport)
 		if OtherSource then
 			vRP.Kick(OtherSource,"Expulso da cidade")
-			TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..Message[1].."</b> expulso.","verde",5000)
-			exports["discord"]:Embed("Kick","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+			TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..OtherPassport.."</b> expulso.","verde",5000)
+			exports["discord"]:Embed("Kick","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 		end
 	end
 end)
@@ -303,11 +321,14 @@ end)
 RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and parseInt(Message[2]) > 0 and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
-		vRP.Query("accounts/InsertBanned",{ License = vRP.AccountInformation(Message[1],"License"), Days = Message[2] })
-		TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..Message[1].."</b> banido por <b>"..Message[2].."</b> dias.","verde",5000)
-		exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[DIAS]:** "..Message[2].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		local Days = Message[2]
+		local OtherPassport = Message[1]
+		local OtherSource = vRP.Source(OtherPassport)
 
-		local OtherSource = vRP.Source(Message[1])
+		vRP.Query("accounts/InsertBanned",{ License = vRP.AccountInformation(OtherPassport,"License"), Days = Days })
+		TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.","verde",5000)
+		exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[DIAS]:** "..Days.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+
 		if OtherSource then
 			vRP.Kick(OtherSource,"Banido")
 		end
@@ -358,13 +379,15 @@ end)
 RegisterCommand("group",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and Message[2] and vRP.HasGroup(Passport,"Admin",2) then
-		if Message[2] == "Admin" and vRP.HasPermission(Passport,Message[2]) >= 2 then
+		local Permission = Message[2]
+		local OtherPassport = Message[1]
+		if (Permission == "Admin" or Permission == "Premium") and vRP.HasPermission(Passport,Permission) >= 2 then
 			return false
 		end
 
-		vRP.SetPermission(Message[1],Message[2],Message[3])
-		TriggerClientEvent("Notify",source,"Sucesso","Adicionado <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.","verde",5000)
-		exports["discord"]:Embed("Group","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[GRUPO]:** "..Message[2].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		vRP.SetPermission(OtherPassport,Permission,Message[3])
+		TriggerClientEvent("Notify",source,"Sucesso","Adicionado <b>"..Permission.."</b> ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
+		exports["discord"]:Embed("Group","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -384,11 +407,13 @@ end)
 RegisterCommand("tptome",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") then
-		local ClosestPed = vRP.Source(Message[1])
-		if ClosestPed and vRP.DoesEntityExist(source) then
+		local OtherPassport = Message[1]
+		local OtherSource = vRP.Source(OtherPassport)
+		if OtherSource and vRP.DoesEntityExist(source) then
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
-			vRP.Teleport(ClosestPed,Coords["x"],Coords["y"],Coords["z"])
+
+			vRP.Teleport(OtherSource,Coords["x"],Coords["y"],Coords["z"])
 		end
 	end
 end)
@@ -397,10 +422,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("tpto",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") then
-		local ClosestPed = vRP.Source(Message[1])
-		if ClosestPed then
-			local Ped = GetPlayerPed(ClosestPed)
+	if Passport and Message[1] and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") then
+		local OtherPassport = Message[1]
+		local OtherSource = vRP.Source(OtherPassport)
+		if OtherSource then
+			local Ped = GetPlayerPed(OtherSource)
 			local Coords = GetEntityCoords(Ped)
 
 			vRP.Teleport(source,Coords["x"],Coords["y"],Coords["z"])
@@ -443,10 +469,10 @@ RegisterCommand("fix",function(source)
 		local Vehicle,Network,Plate = vRPC.VehicleList(source)
 		if Vehicle then
 			local Players = vRPC.Players(source)
-			for _,v in pairs(Players) do
+			for _,OtherSource in pairs(Players) do
 				async(function()
-					TriggerClientEvent("target:RollVehicle",v,Network)
-					TriggerClientEvent("inventory:RepairAdmin",v,Network,Plate)
+					TriggerClientEvent("target:RollVehicle",OtherSource,Network)
+					TriggerClientEvent("inventory:RepairAdmin",OtherSource,Network,Plate)
 				end)
 			end
 		end
@@ -520,8 +546,8 @@ RegisterCommand("kickall",function(source)
 	Wait(60000)
 
 	local List = vRP.Players()
-	for _,Sources in pairs(List) do
-		vRP.Kick(Sources,"Desconectado, a cidade reiniciou")
+	for _,OtherSource in pairs(List) do
+		vRP.Kick(OtherSource,"Desconectado, a cidade reiniciou")
 		Wait(100)
 	end
 
@@ -539,8 +565,8 @@ RegisterCommand("kickall2",function(source)
 	end
 
 	local List = vRP.Players()
-	for _,Sources in pairs(List) do
-		vRP.Kick(Sources,"Desconectado, a cidade reiniciou")
+	for _,OtherSource in pairs(List) do
+		vRP.Kick(OtherSource,"Desconectado, a cidade reiniciou")
 		Wait(100)
 	end
 
@@ -597,14 +623,15 @@ RegisterCommand("spectate",function(source,Message)
 			TriggerClientEvent("admin:resetSpectate",source)
 			Spectate[Passport] = nil
 		else
-			local nsource = vRP.Source(Message[1])
-			if nsource then
-				local Ped = GetPlayerPed(nsource)
+			local OtherPassport = Message[1]
+			local OtherSource = vRP.Source(OtherPassport)
+			if OtherSource then
+				local Ped = GetPlayerPed(OtherSource)
 				if DoesEntityExist(Ped) then
 					SetEntityDistanceCullingRadius(Ped,999999999.0)
 					Wait(1000)
-					TriggerClientEvent("admin:initSpectate",source,nsource)
-					Spectate[Passport] = nsource
+					TriggerClientEvent("admin:initSpectate",source,OtherSource)
+					Spectate[Passport] = OtherSource
 				end
 			end
 		end

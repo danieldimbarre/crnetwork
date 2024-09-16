@@ -919,11 +919,6 @@ AddEventHandler("inventory:Cancel",function()
 			RobberyActive[Passport] = nil
 		end
 
-		local Ped = GetPlayerPed(source)
-		if DoesEntityExist(Ped) and IsEntityPositionFrozen(Ped) then
-			FreezeEntityPosition(Ped,false)
-		end
-
 		vRPC.Destroy(source)
 	end
 end)

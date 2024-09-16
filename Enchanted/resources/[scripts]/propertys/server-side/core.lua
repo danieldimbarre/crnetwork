@@ -79,7 +79,7 @@ AddEventHandler("propertys:RobberyItem",function(Number,Name)
 		if Lockpick or vRP.ConsultItem(Passport,"lockpickplus") then
 			if not Robbery[Name][Number] then
 				if (Number == "Locker" and not vRP.Safecrack(source,6)) or (Number ~= "Locker" and not vRP.Task(source,5,5000)) then
-					if Lockpick then
+					if Lockpick and math.random(100) >= 95 then
 						vRP.RemoveItem(Passport,Lockpick["Item"],1,true)
 					end
 
@@ -203,10 +203,19 @@ function Creative.Toggle(Name,Mode)
 			if Name == "Hotel" then
 				exports["vrp"]:Bucket(source,"Enter",200000 + Passport)
 			else
-				exports["vrp"]:Bucket(source,"Enter",100000 + Propertys[Name]["Route"])
+				exports["vrp"]:Bucket(source,"Enter",100000 + RouteNumber(Name))
 			end
 		end
 	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ROUTENUMBER
+-----------------------------------------------------------------------------------------------------------------------------------------
+function RouteNumber(Name)
+	local Name = Name
+	local Route = string.sub(Name,-4)
+
+	return parseInt(Route)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:BUY

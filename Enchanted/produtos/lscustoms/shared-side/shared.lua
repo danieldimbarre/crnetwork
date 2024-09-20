@@ -229,5 +229,5 @@ function Calculate(Table,Vehicle)
 		Payment = Payment + Price
 	end
 
-	return Payment
+	return parseInt(Payment)
 end

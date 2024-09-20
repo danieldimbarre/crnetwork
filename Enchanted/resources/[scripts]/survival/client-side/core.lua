@@ -143,7 +143,6 @@ CreateThread(function()
 								Death["Timer"] = Death["Default"]
 								LocalPlayer["state"]:set("Crawl",false,true)
 								SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"] } })
-								LocalPlayer["state"]:set("Cyndaquil",true,false)
 								NetworkSetFriendlyFireOption(false)
 								SetEntityInvincible(Ped,true)
 							end
@@ -244,7 +243,6 @@ function FinishSurvival()
 	SetEntityInvincible(Ped,false)
 	ClearFacialIdleAnimOverride(Ped)
 	NetworkSetFriendlyFireOption(true)
-	LocalPlayer["state"]:set("Cyndaquil",false,false)
 
 	TriggerEvent("paramedic:Reset")
 	exports["pma-voice"]:Mute(false)
@@ -274,7 +272,6 @@ exports("Revive",function(Health)
 
 	SetEntityInvincible(Ped,false)
 	SetEntityHealth(Ped,Health or 101)
-	LocalPlayer["state"]:set("Cyndaquil",false,false)
 
 	if Death["Status"] then
 		if Crawl["Timer"] > 0 then

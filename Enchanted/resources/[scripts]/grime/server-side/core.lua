@@ -26,7 +26,7 @@ AddEventHandler("grime:Package",function()
 			vRP.GenerateItem(Passport,Item,1)
 		else
 			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
-			exports["inventory"]:Drops(Passport,source,Item)
+			exports["inventory"]:Drops(Passport,source,Item,1)
 		end
 	end
 end)

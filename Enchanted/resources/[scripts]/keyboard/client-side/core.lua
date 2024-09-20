@@ -444,3 +444,17 @@ end
 function Creative.Item(First,Secondary,Third,Fourth,Fifty)
 	return Item(First,Secondary,Third,Fourth,Fifty)
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- EXPORTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Item",Item)
+exports("Area",Area)
+exports("Copy",Copy)
+exports("Options",Options)
+exports("Timeset",Timeset)
+exports("Primary",Primary)
+exports("Password",Password)
+exports("Tertiary",Tertiary)
+exports("Secondary",Secondary)
+exports("Instagram",Instagram)
+exports("Quaternary",Quaternary)

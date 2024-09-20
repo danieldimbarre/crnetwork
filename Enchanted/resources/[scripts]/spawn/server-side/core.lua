@@ -89,7 +89,7 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 
 			Return = true
 			vRPC.DoScreenFadeOut(source)
-			vRP.Query("characters/NewCharacter",{ License = License, Name = Name, Lastname = Lastname, Sex = Sexo, Skin = Sex, Blood = math.random(4) })
+			vRP.Query("characters/NewCharacter",{ License = License, Name = EmptySpace(Name), Lastname = EmptySpace(Lastname), Sex = Sexo, Skin = Sex, Blood = math.random(4) })
 
 			local Consult = vRP.Query("characters/LastCharacter",{ License = License })
 			if Consult[1] then

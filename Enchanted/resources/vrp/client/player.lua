@@ -74,18 +74,14 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.Skin(Hash)
 	if LoadModel(Hash) then
-		LocalPlayer["state"]:set("Chikorita",true,false)
-
 		local Pid = PlayerId()
-		local Ped = PlayerPedId()
+		local Hash = GetHashKey(Hash)
 
 		SetPlayerModel(Pid,Hash)
 		SetModelAsNoLongerNeeded(Hash)
 
 		ReloadCharacter()
 		tvRP.ReloadCharacter()
-
-		LocalPlayer["state"]:set("Chikorita",false,false)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -103,7 +99,6 @@ RegisterNetEvent("vRP:Active")
 AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
 	LocalPlayer["state"]:set("Name",Name,true)
 	LocalPlayer["state"]:set("Active",true,false)
-	LocalPlayer["state"]:set("Cyndaquil",true,false)
 	LocalPlayer["state"]:set("Passport",Passport,true)
 
 	local Ped = PlayerPedId()
@@ -115,7 +110,6 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
 	SetTimeout(10000,function()
 		ReloadCharacter()
 		SetEntityInvincible(Ped,false)
-		LocalPlayer["state"]:set("Cyndaquil",false,false)
 
 		if Inventory then
 			for Slot,v in pairs(Inventory) do
@@ -190,7 +184,6 @@ function ReloadCharacter()
 	SetPedAudioFootstepQuiet(Ped,true)
 
 	DisableIdleCamera(true)
-	SetPlayerTargetingMode(0)
 	SetRandomEventFlag(false)
 	SetWeaponsNoAutoswap(true)
 	SetBlipAlpha(GetNorthRadarBlip(),0)

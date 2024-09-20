@@ -93,6 +93,8 @@ end)
 RegisterNetEvent("party:ResetNui")
 AddEventHandler("party:ResetNui",function()
 	if Open then
+		Open = false
+		SetNuiFocus(false,false)
 		SendNUIMessage({ Action = "Close" })
 	end
 end)
@@ -124,9 +126,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function GetPlayers()
 	local Selected = {}
-	local GamePool = GetGamePool("CPed")
-
-	for _,Entity in pairs(GamePool) do
+	for _,Entity in pairs(GetGamePool("CPed")) do
 		local Index = NetworkGetPlayerIndexFromPed(Entity)
 
 		if Entity ~= PlayerPedId() and Index and IsPedAPlayer(Entity) and NetworkIsPlayerConnected(Index) then

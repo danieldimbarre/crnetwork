@@ -11,6 +11,11 @@ Proxy.addInterface("vRP",tvRP)
 Tunnel.bindInterface("vRP",tvRP)
 vRPS = Tunnel.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Blipmin = false
+local Information = false
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THEME
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Theme",function(Data,Callback)
@@ -31,11 +36,6 @@ CreateThread(function()
 		SetRuntimeTextureImage(TEXTURE,DICT)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
------------------------------------------------------------------------------------------------------------------------------------------
-local Blipmin = false
-local Information = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSESTPEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ end
 -- GETPLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function GetPlayers()
-	local Selected = {}
+	local Selected,Voip = {},{}
 	local GamePool = GetGamePool("CPed")
 
 	for _,Entity in pairs(GamePool) do
@@ -100,10 +100,11 @@ function GetPlayers()
 
 		if Index and IsPedAPlayer(Entity) and NetworkIsPlayerConnected(Index) then
 			Selected[Entity] = GetPlayerServerId(Index)
+			Voip[Entity] = Index
 		end
 	end
 
-	return Selected
+	return Selected,Voip
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERS
@@ -118,15 +119,17 @@ function tvRP.BlipAdmin()
 	Blipmin = not Blipmin
 
 	while Blipmin do
-		for Entitys,v in pairs(GetPlayers()) do
+		local Players,Voip = GetPlayers()
+		for Entitys,v in pairs(Players) do
 			if Entitys ~= PlayerPedId() and Player(v)["state"]["Passport"] then
 				local Armour = GetPedArmour(Entitys)
 				local Coords = GetEntityCoords(Entitys)
-				local Healths = GetEntityHealth(Entitys)
+				local Healths = GetEntityHealth(Entitys) - 100
 				local Passport = Player(v)["state"]["Passport"]
-				local Name = Player(v)["state"]["Name"] or "Loading"
+				local Talking = MumbleIsPlayerTalking(Voip[Entitys])
+				local Name = Player(v)["state"]["Name"] or "Carregando"
 
-				DrawText3D(Coords,Name.."~w~  |  ~o~"..Passport.."~w~  |  ~g~"..Healths.."~w~  |  ~y~"..Armour,0.275)
+				DrawText3D(Coords,"~w~[ "..(Talking and "~q~" or "")..Name.."~w~ ] [ ~y~"..Passport.."~w~ ] [ ~g~"..(Healths <= 0 and "Morto" or Healths).."~w~ ] [ ~b~"..Armour.."~w~ ]",0.275)
 			end
 		end
 

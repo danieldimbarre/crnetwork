@@ -34,8 +34,6 @@ LocalPlayer["state"]:set("Freecam",false,false)
 LocalPlayer["state"]:set("Handcuff",false,true)
 LocalPlayer["state"]:set("Commands",false,true)
 LocalPlayer["state"]:set("Spectate",false,false)
-LocalPlayer["state"]:set("Chikorita",false,false)
-LocalPlayer["state"]:set("Cyndaquil",false,false)
 LocalPlayer["state"]:set("DamageModify",false,false)
 
 LocalPlayer["state"]:set("Nitro",false,true)

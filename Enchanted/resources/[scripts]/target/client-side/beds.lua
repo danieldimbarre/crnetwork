@@ -105,7 +105,6 @@ AddEventHandler("target:Treatment",function(Number,Ignore)
 		vRP.playAnim(false,{"amb@world_human_sunbathe@female@back@idle_a","idle_a"},true)
 		SetEntityHeading(Ped,Beds[Number]["Coords"]["w"] - Beds[Number]["Invert"])
 
-		LocalPlayer["state"]:set("Cyndaquil",true,false)
 		LocalPlayer["state"]:set("Commands",true,true)
 		LocalPlayer["state"]:set("Buttons",true,true)
 		LocalPlayer["state"]:set("Cancel",true,true)
@@ -126,7 +125,6 @@ end)
 RegisterNetEvent("target:StartTreatment")
 AddEventHandler("target:StartTreatment",function()
 	if not Treatment then
-		LocalPlayer["state"]:set("Cyndaquil",true,false)
 		LocalPlayer["state"]:set("Commands",true,true)
 		LocalPlayer["state"]:set("Buttons",true,true)
 		LocalPlayer["state"]:set("Cancel",true,true)
@@ -157,7 +155,6 @@ CreateThread(function()
 				LocalPlayer["state"]:set("Cancel",false,true)
 				LocalPlayer["state"]:set("Buttons",false,true)
 				LocalPlayer["state"]:set("Commands",false,true)
-				LocalPlayer["state"]:set("Cyndaquil",false,false)
 				TriggerEvent("Notify","Centro Médico","Tratamento concluido.","hospital",5000)
 			end
 		end

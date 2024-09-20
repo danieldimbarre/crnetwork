@@ -152,6 +152,7 @@ end)
 RegisterNetEvent("freecam:Active",function(Message)
 	if Message[1] then
 		if not Actived then
+			LocalPlayer["state"]:set("Freecam",false,false)
 			SendNUIMessage({ action = "Close" })
 			Actived = true
 		else
@@ -159,6 +160,7 @@ RegisterNetEvent("freecam:Active",function(Message)
 			Actived = false
 		end
 	else
+		LocalPlayer["state"]:set("Freecam",true,false)
 		SendNUIMessage({ action = "Open" })
 		SetNuiFocus(true,true)
 		RenderCamMode(true)

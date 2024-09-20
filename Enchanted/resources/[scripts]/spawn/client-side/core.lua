@@ -10,6 +10,7 @@ vSERVER = Tunnel.getInterface("spawn")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Camera = nil
+local Opened = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -32,38 +33,48 @@ local Anims = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN:OPENED
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("spawn:Opened",function()
-	local Ped = PlayerPedId()
-	SetEntityCoords(Ped,233.85,-1387.59,29.55,false,false,false,false)
-	LocalPlayer["state"]:set("Cyndaquil",true,false)
-	FreezeEntityPosition(Ped,true)
-	SetEntityInvincible(Ped,true)
-	SetEntityHeading(Ped,136.07)
-	SetEntityHealth(Ped,100)
-	SetPedArmour(Ped,0)
+Citizen.CreateThread(function()
+	while true do
+		local Pid = PlayerId()
+		local Ped = PlayerPedId()
+		if Ped and Ped ~= -1 and Pid and NetworkIsPlayerActive(Pid) and not Opened then
+			Opened = true
+			DoScreenFadeOut(0)
+			DisplayRadar(false)
 
-	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-	RenderScriptCams(true,false,0,false,false)
-	SetCamCoord(Camera,232.0,-1388.64,30.45)
-	SetCamRot(Camera,0.0,0.0,320.0,2)
-	SetCamActive(Camera,true)
+			SetEntityCoords(Ped,233.85,-1387.59,29.55,false,false,false,false)
+			FreezeEntityPosition(Ped,true)
+			SetEntityInvincible(Ped,true)
+			SetEntityHeading(Ped,136.07)
+			SetEntityHealth(Ped,100)
+			SetPedArmour(Ped,0)
 
-	Characters = vSERVER.Characters()
-	if parseInt(#Characters) > 0 then
-		Customization(Characters[1])
-	else
-		LocalPlayer["state"]:set("Chikorita",true,false)
-		SetEntityVisible(Ped,false,0)
-	end
+			Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
+			RenderScriptCams(true,false,0,false,false)
+			SetCamCoord(Camera,232.0,-1388.64,30.45)
+			SetCamRot(Camera,0.0,0.0,320.0,2)
+			SetCamActive(Camera,true)
 
-	Wait(5000)
+			Characters = vSERVER.Characters()
+			if CountTable(Characters) > 0 then
+				Customization(Characters[1])
+			else
+				SetEntityVisible(Ped,false,0)
+			end
 
-	SendNUIMessage({ Action = "Spawn", Payload = Characters })
-	ShutdownLoadingScreenNui()
-	SetNuiFocus(true,true)
+			Wait(5000)
 
-	if IsScreenFadedOut() then
-		DoScreenFadeIn(2500)
+			SendNUIMessage({ Action = "Spawn", Payload = Characters })
+			ShutdownLoadingScreenNui()
+			ShutdownLoadingScreen()
+			SetNuiFocus(true,true)
+
+			if IsScreenFadedOut() then
+				DoScreenFadeIn(2500)
+			end
+		end
+
+		Wait(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -116,7 +127,6 @@ AddEventHandler("spawn:Finish",function(Coords,Creation)
 		if Creation then
 			SetEntityVisible(PlayerPedId(),true,0)
 			exports["barbershop"]:Creation(Creation)
-			LocalPlayer["state"]:set("Chikorita",false,false)
 		else
 			TriggerEvent("hud:Active",true)
 		end

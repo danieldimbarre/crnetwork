@@ -1013,11 +1013,8 @@ AddEventHandler("inventory:Trasher",function(Entity)
 	local Number = parseInt(#Trashs + 1)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Coords then
-		Active[Passport] = os.time() + 10
-
 		if not vRPC.LastVehicle(source,"trash") then
 			TriggerClientEvent("Notify",source,"Atenção","Necessário a utilização do veículo <b>Trash</b>.","amarelo",5000)
-			Active[Passport] = nil
 
 			return false
 		end
@@ -1026,7 +1023,6 @@ AddEventHandler("inventory:Trasher",function(Entity)
 			if #(Trashs[Index]["Coords"] - Coords) <= 0.5 then
 				if Trashs[Index]["Timer"] and os.time() <= Trashs[Index]["Timer"] then
 					TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Trashs[Index]["Timer"] - os.time())..".","amarelo",5000)
-					Active[Passport] = nil
 
 					return false
 				else
@@ -1037,6 +1033,7 @@ AddEventHandler("inventory:Trasher",function(Entity)
 			end
 		end
 
+		Active[Passport] = os.time() + 10
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("Progress",source,"Vasculhando",10000)
 		vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)

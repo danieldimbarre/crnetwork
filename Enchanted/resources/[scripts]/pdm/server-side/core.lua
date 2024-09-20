@@ -39,7 +39,6 @@ function Creative.Buy(Name)
 					local Plate = vRP.GeneratePlate()
 
 					Active[Passport] = nil
-					TriggerEvent("garages:Pdm",Passport,source,Name,Plate)
 					TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
 					vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = Plate, Weight = VehicleWeight(Name), Work = 0 })
 
@@ -54,7 +53,6 @@ function Creative.Buy(Name)
 						local Plate = vRP.GeneratePlate()
 
 						Active[Passport] = nil
-						TriggerEvent("garages:Pdm",Passport,source,Name,Plate)
 						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = Plate, Weight = VehicleWeight(Name), Work = 0 })
 
@@ -69,7 +67,6 @@ function Creative.Buy(Name)
 							local Plate = vRP.GeneratePlate()
 
 							Active[Passport] = nil
-							TriggerEvent("garages:Pdm",Passport,source,Name,Plate)
 							TriggerClientEvent("Notify",source,"Sucesso","Compra concluída.","verde",5000)
 							exports["bank"]:AddTaxs(Passport,source,"Concessionária",VehiclePrice,"Compra do veículo "..VehicleName(Name)..".")
 							vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Name, Plate = Plate, Weight = VehicleWeight(Name), Work = 0 })

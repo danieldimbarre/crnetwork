@@ -6,10 +6,6 @@ loadscreen_cursor "yes"
 loadscreen_manual_shutdown "yes"
 loadscreen "web-side/index.html"
 
-client_scripts {
-	"client-side/*"
-}
-
 server_script {
 	"server-side/*"
 }

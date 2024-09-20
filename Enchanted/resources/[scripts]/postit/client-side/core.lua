@@ -41,11 +41,13 @@ AddEventHandler("postit:initPostit",function(Admin)
 
 				if IsControlJustPressed(1,38) then
 					if Admin then
-						TriggerServerEvent("admin:Coords",Coords)
+						exports["keyboard"]:Copy("Cordenadas",Optimize(Coords["x"])..","..Optimize(Coords["y"])..","..Optimize(Coords["z"]))
+					else
+						vSERVER.Add(Coords)
 					end
 
-					vSERVER.Add(Coords)
 					Active = false
+
 					break
 				end
 

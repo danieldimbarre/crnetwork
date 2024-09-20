@@ -10,9 +10,6 @@ function tvRP.noClip()
 	local Ped = PlayerPedId()
 
 	if NoClip then
-		LocalPlayer["state"]:set("Chikorita",true,false)
-		LocalPlayer["state"]:set("Cyndaquil",true,false)
-
 		SetEntityCollision(Ped,false,false)
 		SetEntityVisible(Ped,false,0)
 		SetEntityInvincible(Ped,true)
@@ -20,9 +17,6 @@ function tvRP.noClip()
 		SetEntityCollision(Ped,true,true)
 		SetEntityInvincible(Ped,false)
 		SetEntityVisible(Ped,true,0)
-
-		LocalPlayer["state"]:set("Cyndaquil",false,false)
-		LocalPlayer["state"]:set("Chikorita",false,false)
 	end
 
 	while NoClip do

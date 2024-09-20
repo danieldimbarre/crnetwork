@@ -368,10 +368,14 @@ CreateThread(function()
 			SetPedUsingActionMode(Ped,-1,-1,1)
 		end
 
+		SetPlayerTargetingMode(3)
 		SetPedInfiniteAmmoClip(Ped,false)
 		SetPlayerLockonRangeOverride(Pid,0.0)
 		SetCreateRandomCopsOnScenarios(false)
 		SetCreateRandomCopsNotOnScenarios(false)
+		SetEntityProofs(Ped,false,true,true,false,false,false,false,false)
+		N_0x4757f00bc6323cfe(-1553120962,0.0)
+		N_0x4757f00bc6323cfe(539292904,0.0)
 
 		if IsPlayerWantedLevelGreater(Pid,0) then
 			ClearPlayerWantedLevel(Pid)

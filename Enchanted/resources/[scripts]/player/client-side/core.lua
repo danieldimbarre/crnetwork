@@ -320,7 +320,6 @@ AddEventHandler("player:enterTrunk",function(Entity)
 	local Ped = PlayerPedId()
 	if not inTrunk and GetEntityHealth(Ped) > 100 then
 		AttachEntityToEntity(Ped,Entity[3],-1,0.0,-2.2,0.5,0.0,0.0,0.0,true,true,false,true,2,true)
-		LocalPlayer["state"]:set("Chikorita",true,false)
 		LocalPlayer["state"]:set("Commands",true,true)
 		SetEntityVisible(Ped,false,0)
 		inTrunk = true
@@ -333,7 +332,6 @@ AddEventHandler("player:enterTrunk",function(Entity)
 				DisableControlAction(0,23,true)
 
 				if IsEntityVisible(Ped) then
-					LocalPlayer["state"]:set("Chikorita",true,false)
 					SetEntityVisible(Ped,false,0)
 				end
 
@@ -341,6 +339,10 @@ AddEventHandler("player:enterTrunk",function(Entity)
 					TriggerEvent("player:checkTrunk")
 				end
 			else
+				TriggerEvent("player:checkTrunk")
+			end
+
+			if GetEntityHealth(Ped) <= 100 then
 				TriggerEvent("player:checkTrunk")
 			end
 
@@ -360,7 +362,6 @@ AddEventHandler("player:checkTrunk",function()
 		SetEntityVisible(Ped,true,0)
 		DetachEntity(Ped,false,false)
 		LocalPlayer["state"]:set("Commands",false,true)
-		LocalPlayer["state"]:set("Chikorita",false,false)
 		SetEntityCoords(Ped,Coords,false,false,false,false)
 
 		inTrunk = false
@@ -375,7 +376,6 @@ AddEventHandler("player:enterTrash",function(Entity)
 		local Ped = PlayerPedId()
 
 		LocalPlayer["state"]:set("Commands",true,true)
-		LocalPlayer["state"]:set("Chikorita",true,false)
 		SetEntityCoords(Ped,Entity[4],false,false,false,false)
 		FreezeEntityPosition(Ped,true)
 		SetEntityVisible(Ped,false,0)
@@ -392,7 +392,7 @@ AddEventHandler("player:enterTrash",function(Entity)
 			DisablePlayerFiring(Ped,true)
 			DisableControlAction(0,23,true)
 
-			if IsControlJustPressed(1,38) then
+			if IsControlJustPressed(1,38) or GetEntityHealth(Ped) <= 100 then
 				TriggerEvent("player:checkTrash")
 			end
 
@@ -410,7 +410,6 @@ AddEventHandler("player:checkTrash",function()
 
 		SetEntityVisible(Ped,true,0)
 		FreezeEntityPosition(Ped,false)
-		LocalPlayer["state"]:set("Chikorita",false,false)
 		LocalPlayer["state"]:set("Commands",false,true)
 		SetEntityCoords(Ped,inTrash,false,false,false,false)
 

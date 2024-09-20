@@ -95,7 +95,7 @@ RegisterCommand("id",function(source,Message)
 	if Passport and OtherPassport and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,"Admin") then
 		local CountGroups = 0
 		local Message = "<br><br>"
-		local Groups = vRP.UserGroups(Passport)
+		local Groups = vRP.UserGroups(OtherPassport)
 		for Permission,Level in pairs(Groups) do
 			CountGroups = CountGroups + 1
 			Message = Message.."[ <warning>"..Permission.."</warning> ] "..vRP.NameHierarchy(Permission,Level).." ( "..Level.." )<br>"
@@ -162,7 +162,7 @@ end)
 RegisterCommand("clearinv",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin",2) then
-		vRP.ClearInventory(Message[1])
+		vRP.ClearInventory(Message[1],true)
 		TriggerClientEvent("Notify",source,"Sucesso","Limpeza concluída.","verde",5000)
 		exports["discord"]:Embed("ClearInv","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
@@ -320,10 +320,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and parseInt(Message[2]) > 0 and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
-		local Days = Message[2]
-		local OtherPassport = Message[1]
+	if Passport and Message[1] and Message[2] and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
+		local Days = parseInt(Message[2],true)
+		local OtherPassport = parseInt(Message[1])
 		local OtherSource = vRP.Source(OtherPassport)
+
+		if Days > 999 then
+			Days = 999
+		end
 
 		vRP.Query("accounts/InsertBanned",{ License = vRP.AccountInformation(OtherPassport,"License"), Days = Days })
 		TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.","verde",5000)
@@ -479,13 +483,6 @@ RegisterCommand("fix",function(source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ADMIN:COORDS
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("admin:Coords")
-AddEventHandler("admin:Coords",function(Coords)
-	vRP.Archive("coordenadas.txt",Optimize(Coords["x"])..","..Optimize(Coords["y"])..","..Optimize(Coords["z"]))
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- ADMIN:DOORS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("admin:Doords")
@@ -511,8 +508,11 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("announce",function(source,Message,History)
 	local Passport = vRP.Passport(source)
-	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin",2) then
-		TriggerClientEvent("Notify",-1,"Prefeitura",History:sub(9),"vermelho",60000)
+	if Passport and vRP.HasGroup(Passport,"Admin",2) then
+		local Keyboard = vKEYBOARD.Area(source,"Mensagem")
+		if Keyboard then
+			TriggerClientEvent("Notify",-1,"Prefeitura",Keyboard[1],"vermelho",60000)
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -697,6 +697,31 @@ RegisterCommand("addcar",function(source)
 			TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Keyboard[2]).."</b> entregue.","verde",5000)
 			vRP.Query("vehicles/rentalVehicles",{ Passport = Keyboard[1], Vehicle = Keyboard[2], Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Keyboard[2]), Work = 0 })
 			exports["discord"]:Embed("AddCar","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Keyboard[1].."\n**[MODEL]:** "..Keyboard[2].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REMCAR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("remcar",function(source)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin",1) then
+		local Keyboard = vKEYBOARD.Primary(source,"Passaporte")
+		if Keyboard then
+			local Vehicles = {}
+			local OtherPassport = parseInt(Keyboard[1])
+			local Consult = vRP.Query("vehicles/UserVehicles",{ Passport = OtherPassport })
+			for _,v in pairs(Consult) do
+				Vehicles[#Vehicles + 1] = v["Vehicle"]
+			end
+
+			local Keyboard = vKEYBOARD.Instagram(source,Vehicles)
+			if Keyboard then
+				vRP.RemSrvData("LsCustoms:"..OtherPassport..":"..Keyboard[1])
+				vRP.RemSrvData("Trunkchest:"..OtherPassport..":"..Keyboard[1])
+				vRP.Query("vehicles/removeVehicles",{ Passport = OtherPassport, Vehicle = Keyboard[1] })
+				TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Keyboard[1]).."</b> removido.","verde",5000)
+			end
 		end
 	end
 end)

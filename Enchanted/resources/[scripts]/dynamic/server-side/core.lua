@@ -69,7 +69,7 @@ RegisterServerEvent("dynamic:EnterService")
 AddEventHandler("dynamic:EnterService",function(Permission)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and vRP.HasGroup(Passport,Permission) then
 		if Permission == "Policia" then
 			if vRP.HasPermission(Passport,"LSPD") then
 				vRP.ServiceEnter(source,Passport,"LSPD")

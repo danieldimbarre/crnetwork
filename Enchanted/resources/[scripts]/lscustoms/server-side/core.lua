@@ -8,7 +8,7 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local inVehicle = {}
+local Networked = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LSCUSTOMS:PURCHASE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ RegisterServerEvent("lscustoms:Vehicle")
 AddEventHandler("lscustoms:Vehicle",function(Mods,Plate,Name)
 	local Passport = vRP.PassportPlate(Plate)
 	if Passport then
-		vRP.Query("entitydata/SetData",{ Name = "Mods:"..Passport..":"..Name, Information = json.encode(Mods) })
+		vRP.SetSrvData("LsCustoms:"..Passport..":"..Name,Mods,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -66,11 +66,11 @@ AddEventHandler("lscustoms:inVehicle",function(Network,Plate,Model)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		if not Network then
-			if inVehicle[Passport] then
-				inVehicle[Passport] = nil
+			if Networked[Passport] then
+				Networked[Passport] = nil
 			end
 		else
-			inVehicle[Passport] = { Network,Plate,Model }
+			Networked[Passport] = { Network,Plate }
 		end
 	end
 end)
@@ -78,10 +78,10 @@ end)
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport)
-	if inVehicle[Passport] then
+	if Networked[Passport] then
 		SetTimeout(2500,function()
-			TriggerEvent("garages:Delete",inVehicle[Passport][1],inVehicle[Passport][2])
-			inVehicle[Passport] = nil
+			TriggerEvent("garages:Deleted",Networked[Passport][1],Networked[Passport][2])
+			Networked[Passport] = nil
 		end)
 	end
 end)

@@ -272,7 +272,7 @@ RegisterCommand("item",function(source,Message)
 					end
 				end
 
-				exports["discord"]:Embed("Item","**[ADMIN]:** "..OtherPassport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+				exports["discord"]:Embed("Item","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 			end
 		elseif Message[1] and Message[2] then
 			vRP.GenerateItem(Passport,Message[1],Message[2],true)

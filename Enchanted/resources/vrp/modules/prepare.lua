@@ -36,10 +36,10 @@ vRP.Prepare("accounts/LastLogin","UPDATE accounts SET Login = UNIX_TIMESTAMP() W
 vRP.Prepare("accounts/AddGemstone","UPDATE accounts SET Gemstone = Gemstone + @Gemstone WHERE License = @License")
 vRP.Prepare("accounts/UpdateCharacters","UPDATE accounts SET Characters = Characters + 1 WHERE License = @License")
 vRP.Prepare("accounts/RemoveGemstone","UPDATE accounts SET Gemstone = Gemstone - @Gemstone WHERE License = @License")
-vRP.Prepare("accounts/SetPremium","UPDATE accounts SET Premium = (86400 * @Days), Level = @Level WHERE License = @License")
 vRP.Prepare("accounts/InsertBanned","UPDATE accounts SET Banned = UNIX_TIMESTAMP() + (86400 * @Days) WHERE License = @License")
 vRP.Prepare("accounts/UpgradePremium","UPDATE accounts SET Premium = Premium + (86400 * @Days), Level = @Level WHERE License = @License")
 vRP.Prepare("accounts/Minimals","SELECT * FROM accounts WHERE Login <= UNIX_TIMESTAMP() - (86400 * 15) AND License <> 0 AND Whitelist = 1")
+vRP.Prepare("accounts/SetPremium","UPDATE accounts SET Premium = UNIX_TIMESTAMP() + (86400 * @Days), Level = @Level WHERE License = @License")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERDATA
 -----------------------------------------------------------------------------------------------------------------------------------------

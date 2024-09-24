@@ -354,9 +354,9 @@ AddEventHandler("inventory:CleanWeapons",function()
 			TriggerEvent("inventory:CreateWeapon",Weapon)
 		end
 
+		TriggerEvent("megazord:Weapon","")
 		TriggerEvent("hud:Weapon",false)
 		RemoveAllPedWeapons(Ped,true)
-		TriggerEvent("Weapon","")
 
 		Actived = false
 		Weapon = ""
@@ -404,7 +404,7 @@ function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
 			Wait(200)
 
 			Weapon = Name
-			TriggerEvent("Weapon",Weapon)
+			TriggerEvent("megazord:Weapon",Weapon)
 			TriggerEvent("inventory:RemoveWeapon",Weapon)
 			GiveWeaponToPed(Ped,Weapon,Ammo,false,true)
 
@@ -424,7 +424,7 @@ function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
 			ClearPedTasks(Ped)
 		else
 			Weapon = Name
-			TriggerEvent("Weapon",Weapon)
+			TriggerEvent("megazord:Weapon",Weapon)
 			TriggerEvent("inventory:RemoveWeapon",Weapon)
 			GiveWeaponToPed(Ped,Weapon,Ammo,false,true)
 

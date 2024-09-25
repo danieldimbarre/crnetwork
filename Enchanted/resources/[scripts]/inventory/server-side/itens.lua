@@ -3044,8 +3044,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPRAYS
 -----------------------------------------------------------------------------------------------------------------------------------------
-for _,v in pairs(Sprays) do
-	Use[v["Item"]] = function(source,Passport,Amount,Slot,Full,Item,Split)
+for NameItem,v in pairs(Sprays) do
+	Use[NameItem] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vCLIENT.CheckInterior(source) then
 			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
 
@@ -3060,7 +3060,7 @@ for _,v in pairs(Sprays) do
 
 		TriggerClientEvent("inventory:Close",source)
 
-		local Application,Coords = vCLIENT.SprayControlling(source,v["Permission"])
+		local Application,Coords = vCLIENT.SprayControlling(source,NameItem)
 		if Application and Coords then
 			Active[Passport] = os.time() + 999
 			Player(source)["state"]["Buttons"] = true
@@ -3084,7 +3084,7 @@ for _,v in pairs(Sprays) do
 									Selected = GenerateString("DDLLDDLL")
 								until Selected and not Objects[Selected]
 
-								Objects[Selected] = { Coords = Coords, Object = "sprays", Mode = "Sprays", ["Timer"] = os.time() + 1800, Ground = true, Color = v["Color"], Permission = v["Permission"], Bucket = GetPlayerRoutingBucket(source) }
+								Objects[Selected] = { Coords = Coords, Object = NameItem, Mode = "Sprays", ["Timer"] = os.time() + 1800, Ground = true, Color = v[2], Permission = v[1], Bucket = GetPlayerRoutingBucket(source) }
 								SaveObjects[Selected] = Objects[Selected]
 
 								TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])

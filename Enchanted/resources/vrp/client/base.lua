@@ -26,11 +26,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	local YTD = CreateRuntimeTxd("Textures")
-	local Textures = vRPS.FilesDirectory("resources/vrp/config/textures/target")
+	local Textures = vRPS.FilesDirectory("resources/vrp/config/textures")
 
 	for _,Name in pairs(Textures) do
 		local TEXTURE = CreateRuntimeTexture(YTD,Name,512,512)
-		local PNG = LoadResourceFile("vrp","config/textures/target/"..Name..".png")
+		local PNG = LoadResourceFile("vrp","config/textures/"..Name..".png")
 		local DICT = "data:image/png;base64,"..Base64(PNG)
 
 		SetRuntimeTextureImage(TEXTURE,DICT)

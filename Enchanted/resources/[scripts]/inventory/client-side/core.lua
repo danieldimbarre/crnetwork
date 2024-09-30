@@ -344,14 +344,6 @@ CreateThread(function()
 	while true do
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
-			if LocalPlayer["state"]["Restaurante"] then
-				local Coords = GetEntityCoords(Ped)
-
-				if not Restaurante:isPointInside(Coords) then
-					TriggerServerEvent("dynamic:ExitService","Restaurante")
-				end
-			end
-
 			if IsPedSwimming(Ped) then
 				if not Swimming and not ScubaTank and not ScubaMask then
 					Swimming = true

@@ -32,6 +32,24 @@ RegisterCommand("players",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CLONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("clone",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") and Message[1] and parseInt(Message[1]) > 0 then
+		local OtherPassport = parseInt(Message[1])
+		local Identity = vRP.Identity(OtherPassport)
+		if Identity then
+			vRPC.Skin(source,Identity["Skin"])
+			TriggerClientEvent("skinshop:Apply",source,vRP.UserData(OtherPassport,"Clothings"))
+			TriggerClientEvent("barbershop:Apply",source,vRP.UserData(OtherPassport,"Barbershop"))
+			TriggerClientEvent("tattooshop:Apply",source,vRP.UserData(OtherPassport,"Tattooshop"))
+
+			TriggerClientEvent("Notify",source,"Clonagem","Alterações conclúidas.","verde",5000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skinshop",function(source,Message)

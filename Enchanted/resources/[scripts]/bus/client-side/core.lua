@@ -26,7 +26,7 @@ CreateThread(function()
 		options = {
 			{
 				event = "bus:Init",
-				label = "Trabalhar",
+				label = "Iniciar Expediente",
 				tunnel = "client"
 			}
 		}
@@ -42,11 +42,11 @@ AddEventHandler("bus:Init",function()
 			Blip = nil
 		end
 
-		exports["target"]:LabelText("WorkBus","Trabalhar")
+		exports["target"]:LabelText("WorkBus","Iniciar Expediente")
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
 		Active = false
 	else
-		exports["target"]:LabelText("WorkBus","Finalizar")
+		exports["target"]:LabelText("WorkBus","Finalizar Expediente")
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
 		Active = true
 		MakeBlips()

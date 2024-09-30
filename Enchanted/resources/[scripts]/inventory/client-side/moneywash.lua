@@ -54,14 +54,14 @@ end)
 AddEventHandler("moneywash:Init",function()
 	if Config["Active"] then
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		exports["target"]:LabelText("MoneyWash","Iniciar")
+		exports["target"]:LabelText("MoneyWash","Iniciar Expediente")
 		Config["Active"] = false
 		Config["Sends"] = {}
 		CleanBlips()
 	else
 		if Config["Cooldown"] <= GetGameTimer() then
 			Config["Cooldown"] = GetGameTimer() + (30 * 60000)
-			exports["target"]:LabelText("MoneyWash","Finalizar")
+			exports["target"]:LabelText("MoneyWash","Finalizar Expediente")
 			TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
 			Config["Active"] = true
 			MakeBlips()
@@ -83,7 +83,7 @@ AddEventHandler("moneywash:Send",function(Number,Value)
 		Config["Sends"][Number] = nil
 
 		if CountTable(Config["Sends"]) <= 0 then
-			exports["target"]:LabelText("MoneyWash","Iniciar")
+			exports["target"]:LabelText("MoneyWash","Iniciar Expediente")
 			Config["Active"] = false
 			Config["Sends"] = {}
 			CleanBlips()

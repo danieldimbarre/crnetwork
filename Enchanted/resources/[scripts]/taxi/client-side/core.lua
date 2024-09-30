@@ -32,7 +32,7 @@ CreateThread(function()
 		options = {
 			{
 				event = "taxi:Init",
-				label = "Trabalhar",
+				label = "Iniciar Expediente",
 				tunnel = "client"
 			}
 		}
@@ -66,12 +66,12 @@ AddEventHandler("taxi:Init",function()
 
 	if Service then
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		exports["target"]:LabelText("WorkTaxi","Trabalhar")
+		exports["target"]:LabelText("WorkTaxi","Iniciar Expediente")
 		SetDriveTaskDrivingStyle(PlayerPedId(),786603)
 		Service = false
 	else
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
-		exports["target"]:LabelText("WorkTaxi","Finalizar")
+		exports["target"]:LabelText("WorkTaxi","Finalizar Expediente")
 		SetDriveTaskDrivingStyle(PlayerPedId(),1074528293)
 		MarkedPassenger()
 		Service = true

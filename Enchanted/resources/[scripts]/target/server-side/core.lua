@@ -143,3 +143,24 @@ AddEventHandler("target:Repose",function(OtherSource)
 		TriggerEvent("Repose",OtherSource,OtherPassport,parseInt(Keyboard[1]) * 60)
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:SERVICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("target:Service")
+AddEventHandler("target:Service",function(Permission)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,Permission) then
+		if Permission == "Policia" then
+			if vRP.HasPermission(Passport,"LSPD") then
+				Permission = "LSPD"
+			elseif vRP.HasPermission(Passport,"BCPR") then
+				Permission = "BCPR"
+			elseif vRP.HasPermission(Passport,"BCSO") then
+				Permission = "BCSO"
+			end
+		end
+
+		vRP.ServiceToggle(source,Passport,Permission,false)
+	end
+end)

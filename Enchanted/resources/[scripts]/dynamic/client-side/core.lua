@@ -3,31 +3,15 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
-vRPS = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
 vSERVER = Tunnel.getInterface("dynamic")
-vINVENTORY = Tunnel.getInterface("inventory")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Dynamic = false
------------------------------------------------------------------------------------------------------------------------------------------
--- SERVICES
------------------------------------------------------------------------------------------------------------------------------------------
-local Services = {
-	{
-		["Permission"] = "Policia",
-		["Coords"] = vec3(449.98,-982.5,30.68),
-		["Distance"] = 2.5
-	},{
-		["Permission"] = "Paramedico",
-		["Coords"] = vec3(350.97,-1429.29,32.42),
-		["Distance"] = 2.0
-	}
-}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDBUTTON
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -172,7 +156,6 @@ RegisterCommand("EmergencyFunctions",function()
 		if CheckPolice() then
 			exports["dynamic"]:AddButton("Placa","Verificar emplacamento.","prison:Plate","",false,true)
 			exports["dynamic"]:AddButton("Prender","Adicionar ficha criminal.","prison:Create","",false,true)
-			exports["dynamic"]:AddButton("Serviço","Finalizar expediente de trabalho.","dynamic:ExitService","Policia",false,true)
 
 			exports["dynamic"]:AddMenu("Emergência","Avisos emergenciais.","tencode")
 			exports["dynamic"]:AddButton("10-13","Oficial desmaiado/ferido.","dynamic:Tencode","13","tencode",true)
@@ -194,33 +177,19 @@ RegisterCommand("EmergencyFunctions",function()
 			end
 
 			exports["dynamic"]:Open()
-		elseif LocalPlayer["state"]["Paramedico"] then
-			exports["dynamic"]:AddButton("Serviço","Finalizar expediente de trabalho.","dynamic:ExitService","Paramedico",false,true)
+		elseif LocalPlayer["state"]["Paramedico"] and Health > 100 and not IsPedInAnyVehicle(Ped) then
+			exports["dynamic"]:AddMenu("Jogador","Pessoa mais próxima de você.","player")
+			exports["dynamic"]:AddButton("Carregar","Carregar a pessoa mais próxima.","inventory:Carry","","player",true)
+			exports["dynamic"]:AddButton("Colocar no Veículo","Colocar no veículo mais próximo.","player:cvFunctions","cv","player",true)
+			exports["dynamic"]:AddButton("Remover do Veículo","Remover do veículo mais próximo.","player:cvFunctions","rv","player",true)
+			exports["dynamic"]:AddButton("Remover Chapéu","Remover da pessoa mais próxima.","skinshop:Remove","Hat","player",true)
+			exports["dynamic"]:AddButton("Remover Máscara","Remover da pessoa mais próxima.","skinshop:Remove","Mask","player",true)
+			exports["dynamic"]:AddButton("Remover Óculos","Remover da pessoa mais próxima.","skinshop:Remove","Glasses","player",true)
 
-			if Health > 100 and not IsPedInAnyVehicle(Ped) then
-				exports["dynamic"]:AddMenu("Jogador","Pessoa mais próxima de você.","player")
-				exports["dynamic"]:AddButton("Carregar","Carregar a pessoa mais próxima.","inventory:Carry","","player",true)
-				exports["dynamic"]:AddButton("Colocar no Veículo","Colocar no veículo mais próximo.","player:cvFunctions","cv","player",true)
-				exports["dynamic"]:AddButton("Remover do Veículo","Remover do veículo mais próximo.","player:cvFunctions","rv","player",true)
-				exports["dynamic"]:AddButton("Remover Chapéu","Remover da pessoa mais próxima.","skinshop:Remove","Hat","player",true)
-				exports["dynamic"]:AddButton("Remover Máscara","Remover da pessoa mais próxima.","skinshop:Remove","Mask","player",true)
-				exports["dynamic"]:AddButton("Remover Óculos","Remover da pessoa mais próxima.","skinshop:Remove","Glasses","player",true)
-
-				exports["dynamic"]:AddMenu("Fardamentos","Todos os fardamentos médicos.","preMedic")
-				exports["dynamic"]:AddButton("Principal","Fardamento de oficial.","player:Preset","2","preMedic",true)
-			end
+			exports["dynamic"]:AddMenu("Fardamentos","Todos os fardamentos médicos.","preMedic")
+			exports["dynamic"]:AddButton("Principal","Fardamento de oficial.","player:Preset","2","preMedic",true)
 
 			exports["dynamic"]:Open()
-		else
-			local Coords = GetEntityCoords(Ped)
-			for Permission,v in pairs(Services) do
-				if #(Coords - v["Coords"]) <= v["Distance"] then
-					exports["dynamic"]:AddButton("Serviço","Iniciar expediente de trabalho.","dynamic:EnterService",v["Permission"],false,true)
-					exports["dynamic"]:Open()
-
-					break
-				end
-			end
 		end
 	end
 end)

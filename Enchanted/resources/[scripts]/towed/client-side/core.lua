@@ -31,7 +31,7 @@ CreateThread(function()
 		options = {
 			{
 				event = "towed:Init",
-				label = "Trabalhar",
+				label = "Iniciar Expediente",
 				tunnel = "client"
 			}
 		}
@@ -48,11 +48,11 @@ AddEventHandler("towed:Init",function()
 
 	if Service then
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		exports["target"]:LabelText("Towed","Trabalhar")
+		exports["target"]:LabelText("Towed","Iniciar Expediente")
 		Service = false
 	else
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
-		exports["target"]:LabelText("Towed","Finalizar")
+		exports["target"]:LabelText("Towed","Finalizar Expediente")
 		ModelSelected = Models[math.random(#Models)]
 		Destiny = math.random(#Locations)
 		VehiclePlate = nil

@@ -332,11 +332,25 @@ RegisterNetEvent("inventory:verifyWeapon")
 AddEventHandler("inventory:verifyWeapon",function(Item)
 	local Name = SplitOne(Item)
 
-	if Weapon == Name then
+	if Weapon ~= "" then
 		local Ped = PlayerPedId()
-		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
-		if not vSERVER.VerifyWeapon(Weapon,Ammo) then
-			TriggerEvent("inventory:CleanWeapons")
+		local TypeAmmo01 = WeaponAmmo(Item)
+		local TypeAmmo02 = WeaponAmmo(Weapon)
+
+		if TypeAmmo01 and TypeAmmo02 then
+			if TypeAmmo01 ~= TypeAmmo02 then
+				local Ammo = GetAmmoInPedWeapon(Ped,Name)
+				if not vSERVER.VerifyWeapon(Name,Ammo) then
+					TriggerEvent("inventory:CleanWeapons")
+				end
+			elseif Weapon == Name then
+				local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+				if not vSERVER.VerifyWeapon(Weapon,Ammo) then
+					TriggerEvent("inventory:CleanWeapons")
+				end
+			else
+				TriggerEvent("inventory:RemoveWeapon",Item)
+			end
 		end
 	else
 		vSERVER.VerifyWeapon(Name)

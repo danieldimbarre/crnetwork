@@ -27,15 +27,9 @@ end
 -- MODE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Mode()
-	local Return = false
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		local Identity = vRP.Identity(Passport)
-		if Identity and Identity["Created"] >= os.time() then
-			Return = true
-		end
-	end
+	local Identity = vRP.Identity(Passport)
 
-	return Return
+	return Passport and Identity and Identity["Created"] >= os.time() and true or false
 end

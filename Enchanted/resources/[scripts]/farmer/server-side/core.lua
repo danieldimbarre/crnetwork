@@ -90,6 +90,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 						exports["inventory"]:Drops(Passport,source,Consult["Item"],Consult["Valuation"])
 					end
 
+					vRP.RolepassPoints(Passport,2,true)
 					vRP.UpgradeStress(Passport,1)
 				end
 
@@ -151,6 +152,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 						exports["inventory"]:Drops(Passport,source,"woodlog",Valuation)
 					end
 
+					vRP.RolepassPoints(Passport,2,true)
 					vRP.UpgradeStress(Passport,1)
 				end
 
@@ -200,6 +202,7 @@ AddEventHandler("farmer:Transporter",function(Number)
 						exports["inventory"]:Drops(Passport,source,"pouch",Valuation)
 					end
 
+					vRP.RolepassPoints(Passport,3,true)
 					vRP.UpgradeStress(Passport,1)
 				end
 
@@ -249,7 +252,125 @@ AddEventHandler("farmer:Sandman",function(Number)
 						exports["inventory"]:Drops(Passport,source,"sand",Valuation)
 					end
 
+					vRP.RolepassPoints(Passport,5,true)
 					vRP.UpgradeStress(Passport,1)
+				end
+
+				vRPC.Destroy(source)
+			end)
+
+			Player(source)["state"]["Buttons"] = false
+			Player(source)["state"]["Cancel"] = false
+		end
+
+		Active[Passport] = nil
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TRASHER
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Trasher = {
+	{ ["Item"] = "plastic", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10, ["Addition"] = 0.075 },
+	{ ["Item"] = "glass", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10, ["Addition"] = 0.075 },
+	{ ["Item"] = "rubber", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10, ["Addition"] = 0.075 },
+	{ ["Item"] = "aluminum", ["Chance"] = 50, ["Min"] = 4, ["Max"] = 8, ["Addition"] = 0.025 },
+	{ ["Item"] = "copper", ["Chance"] = 50, ["Min"] = 4, ["Max"] = 8, ["Addition"] = 0.025 },
+	{ ["Item"] = "techtrash", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
+	{ ["Item"] = "tarp", ["Chance"] = 7, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
+	{ ["Item"] = "sheetmetal", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
+	{ ["Item"] = "roadsigns", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
+	{ ["Item"] = "scotchtape", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
+	{ ["Item"] = "insulatingtape", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
+	{ ["Item"] = "electroniccomponents", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
+	{ ["Item"] = "batteryaa", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
+	{ ["Item"] = "batteryaaplus", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
+	{ ["Item"] = "emptybottle", ["Chance"] = 25, ["Min"] = 3, ["Max"] = 4, ["Addition"] = 0.0 }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TRASHER
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("farmer:Trasher")
+AddEventHandler("farmer:Trasher",function(Number)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and not Active[Passport] then
+		Active[Passport] = true
+
+		if not Number or type(Number) ~= "number" then
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+		end
+
+		if not vRPC.LastVehicle(source,"trash") then
+			TriggerClientEvent("Notify",source,"Atenção","Necessário a utilização do veículo <b>Trash</b>.","amarelo",5000)
+			Active[Passport] = nil
+
+			return false
+		end
+
+		if GlobalState["Farmer:"..Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+			Player(source)["state"]["Cancel"] = true
+			Player(source)["state"]["Buttons"] = true
+			TriggerClientEvent("Progress",source,"Coletando",1000)
+			vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
+
+			SetTimeout(1000,function()
+				if GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+					GlobalState["Farmer:"..Number] = GlobalState["Work"] + 180
+
+					local GainExperience = 1
+					local Result = RandPercentage(Trasher)
+					local Experience,Level = vRP.GetExperience(Passport,"Garbageman")
+					local Valuation = Result["Valuation"] + Result["Valuation"] * (Result["Addition"] * Level)
+
+					if exports["inventory"]:Buffs("Luck",Passport) then
+						Valuation = Valuation + (Valuation * 0.1)
+					end
+
+					if vRP.UserPremium(Passport) then
+						local Hierarchy = vRP.LevelPremium(source)
+						local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
+
+						Valuation = Valuation + (Valuation * Bonification)
+						GainExperience = GainExperience + 1
+					end
+
+					if vRPC.PolyNorth(source) then
+						Valuation = Valuation + (Valuation * 0.5)
+						TriggerClientEvent("Notify",source,"Atenção","Você ganhou um <b>bônus</b> por trabalhar no norte.","amarelo",5000)
+					end
+
+					if exports["party"]:DoesExist(Passport,2) then
+						local Consult = exports["party"]:Room(Passport,source,10)
+						local AmountMembers = (CountTable(Consult) > 2 and 2 or CountTable(Consult))
+
+						for Number = 1,AmountMembers do
+							if vRP.Passport(Consult[Number]["Source"]) and vRPC.LastVehicle(Consult[Number]["Source"],"trash") then
+								Valuation = (Consult[Number]["Passport"] == Passport and Valuation or (Valuation / 2))
+
+								if not vRP.MaxItens(Consult[Number]["Passport"],Result["Item"],Valuation) and vRP.CheckWeight(Consult[Number]["Passport"],Result["Item"],Valuation) then
+									vRP.GenerateItem(Consult[Number]["Passport"],Result["Item"],Valuation,true)
+								else
+									TriggerClientEvent("Notify",Consult[Number]["Source"],"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+									exports["inventory"]:Drops(Consult[Number]["Passport"],Consult[Number]["Source"],Result["Item"],Valuation)
+								end
+
+								vRP.PutExperience(Consult[Number]["Passport"],"Garbageman",GainExperience)
+								vRP.RolepassPoints(Consult[Number]["Passport"],GainExperience,true)
+								vRP.UpgradeStress(Consult[Number]["Passport"],1)
+							end
+						end
+					else
+						if not vRP.MaxItens(Passport,Result["Item"],Result["Valuation"]) and vRP.CheckWeight(Passport,Result["Item"],Result["Valuation"]) then
+							vRP.GenerateItem(Passport,Result["Item"],Valuation,true)
+						else
+							TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+							exports["inventory"]:Drops(Passport,source,Result["Item"],Valuation)
+						end
+
+						vRP.PutExperience(Passport,"Garbageman",GainExperience)
+						vRP.RolepassPoints(Passport,GainExperience,true)
+						vRP.UpgradeStress(Passport,1)
+					end
 				end
 
 				vRPC.Destroy(source)

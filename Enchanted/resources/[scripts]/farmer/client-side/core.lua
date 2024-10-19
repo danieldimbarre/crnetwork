@@ -11,6 +11,7 @@ Tunnel.bindInterface("farmer",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Poly = {}
+local Blips = {}
 local Display = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INPUTTARGETPOSITION
@@ -54,6 +55,14 @@ CreateThread(function()
 		end
 	end
 
+	for Number,v in pairs(Objects) do
+		if not Blips[Number] and v["Model"] == "prop_rub_binbag_06" and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+			Blips[Number] = AddBlipForRadius(v["Coords"]["xyz"],5.0)
+			SetBlipAlpha(Blips[Number],150)
+			SetBlipColour(Blips[Number],4)
+		end
+	end
+
 	while true do
 		local Ped = PlayerPedId()
 		local TimerDistance = 5000
@@ -80,6 +89,12 @@ CreateThread(function()
 						Display[Number] = nil
 					end
 				end
+
+				if v["Model"] == "prop_rub_binbag_06" and not Blips[Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+					Blips[Number] = AddBlipForRadius(v["Coords"]["xyz"],5.0)
+					SetBlipAlpha(Blips[Number],150)
+					SetBlipColour(Blips[Number],4)
+				end
 			end
 		end
 
@@ -98,6 +113,14 @@ for Number = 1,#Objects do
 
 			exports["target"]:RemCircleZone("Farmer:"..Number)
 			Display[Number] = nil
+		end
+
+		if Blips[Number] then
+			if DoesBlipExist(Blips[Number]) then
+				RemoveBlip(Blips[Number])
+			end
+
+			Blips[Number] = nil
 		end
 	end)
 end

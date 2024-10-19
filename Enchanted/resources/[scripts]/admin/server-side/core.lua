@@ -50,6 +50,20 @@ RegisterCommand("clone",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PRINT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("print",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
+		local OtherPassport = parseInt(Message[1])
+		local OtherSource = vRP.Source(OtherPassport)
+		local Webhook = exports["discord"]:Webhook("Print")
+		if OtherPassport and OtherSource and Webhook ~= "" then
+			TriggerClientEvent("megazord:Screenshot",OtherSource,Webhook)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skinshop",function(source,Message)
@@ -338,21 +352,26 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and Message[1] and Message[2] and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
-		local Days = parseInt(Message[2],true)
-		local OtherPassport = parseInt(Message[1])
-		local OtherSource = vRP.Source(OtherPassport)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		local Keyboard = vKEYBOARD.Banned(source,"Passaporte","Dias","Motivo")
+		if Keyboard and vRP.Identity(Keyboard[1]) then
+			local Reason = Keyboard[3]
+			local Days = parseInt(Keyboard[2],true)
+			local OtherPassport = parseInt(Keyboard[1])
+			local OtherSource = vRP.Source(OtherPassport)
 
-		if Days > 999 then
-			Days = 999
-		end
+			if Days > 999 then
+				Days = 999
+			end
 
-		vRP.Query("accounts/InsertBanned",{ License = vRP.AccountInformation(OtherPassport,"License"), Days = Days })
-		TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.","verde",5000)
-		exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[DIAS]:** "..Days.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+			vRP.Query("hwid/All",{ Account = vRP.AccountInformation(OtherPassport,"id"), Banned = 1 })
+			vRP.Query("accounts/InsertBanned",{ License = vRP.AccountInformation(OtherPassport,"License"), Days = Days })
+			TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.","verde",5000)
+			exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[DIAS]:** "..Days.."\n**[MOTIVO]:** "..Reason.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 
-		if OtherSource then
-			vRP.Kick(OtherSource,"Banido")
+			if OtherSource then
+				vRP.Kick(OtherSource,"Banido")
+			end
 		end
 	end
 end)
@@ -656,14 +675,6 @@ RegisterCommand("spectate",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DISCONNECT
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Disconnect",function(Passport)
-	if Spectate[Passport] then
-		Spectate[Passport] = nil
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- QUAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
 GlobalState["Quake"] = false
@@ -829,7 +840,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Connect",function(Passport)
+AddEventHandler("Connect",function(Passport,source)
 	local Passport = Passport
 	local Consult = vRP.GetSrvData("Offline:"..Passport,true)
 	if CountTable(Consult) >= 1 then
@@ -839,5 +850,18 @@ AddEventHandler("Connect",function(Passport)
 		end
 
 		vRP.SetSrvData("Offline:"..Passport,Consult,true)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport,source)
+	if Spectate[Passport] then
+		local Ped = GetPlayerPed(Spectate[Passport])
+		if DoesEntityExist(Ped) then
+			SetEntityDistanceCullingRadius(Ped,0.0)
+		end
+
+		Spectate[Passport] = nil
 	end
 end)

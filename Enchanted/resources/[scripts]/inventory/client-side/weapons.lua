@@ -334,11 +334,11 @@ AddEventHandler("inventory:verifyWeapon",function(Item)
 
 	if Weapon ~= "" then
 		local Ped = PlayerPedId()
-		local TypeAmmo01 = WeaponAmmo(Item)
-		local TypeAmmo02 = WeaponAmmo(Weapon)
+		local AmmoItem = WeaponAmmo(Item)
+		local AmmoHand = WeaponAmmo(Weapon)
 
-		if TypeAmmo01 and TypeAmmo02 then
-			if TypeAmmo01 ~= TypeAmmo02 then
+		if AmmoItem and AmmoHand then
+			if AmmoItem ~= AmmoHand then
 				local Ammo = GetAmmoInPedWeapon(Ped,Name)
 				if not vSERVER.VerifyWeapon(Name,Ammo) then
 					TriggerEvent("inventory:CleanWeapons")

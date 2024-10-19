@@ -62,6 +62,7 @@ AddEventHandler("prison:Itens",function(OtherSource)
 	local OtherPassport = vRP.Passport(OtherSource)
 	if Passport and OtherPassport and vRP.GetHealth(source) > 100 and vRP.HasService(Passport,"Policia") then
 		TriggerClientEvent("Notify",source,"Sucesso","Objetos apreendidos.","verde",5000)
+		exports["inventory"]:CleanWeapons(OtherPassport)
 		vRP.ArrestItens(OtherPassport)
 	end
 end)

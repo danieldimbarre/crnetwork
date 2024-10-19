@@ -25,7 +25,6 @@ Drugs = {}
 Drops = {}
 Carry = {}
 Active = {}
-Trashs = {}
 Plates = {}
 Trunks = {}
 Objects = {}
@@ -100,26 +99,6 @@ Products = {
 			{ ["Item"] = "milkbottle", ["Chance"] = 100, ["Min"] = 1, ["Max"] = 1 }
 		}
 	}
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- TRASHITENS
------------------------------------------------------------------------------------------------------------------------------------------
-TrashItens = {
-	{ ["Item"] = "plastic", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10, ["Addition"] = 0.075 },
-	{ ["Item"] = "glass", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10, ["Addition"] = 0.075 },
-	{ ["Item"] = "rubber", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10, ["Addition"] = 0.075 },
-	{ ["Item"] = "aluminum", ["Chance"] = 50, ["Min"] = 4, ["Max"] = 8, ["Addition"] = 0.025 },
-	{ ["Item"] = "copper", ["Chance"] = 50, ["Min"] = 4, ["Max"] = 8, ["Addition"] = 0.025 },
-	{ ["Item"] = "techtrash", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
-	{ ["Item"] = "tarp", ["Chance"] = 7, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
-	{ ["Item"] = "sheetmetal", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
-	{ ["Item"] = "roadsigns", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
-	{ ["Item"] = "scotchtape", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
-	{ ["Item"] = "insulatingtape", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
-	{ ["Item"] = "electroniccomponents", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
-	{ ["Item"] = "batteryaa", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
-	{ ["Item"] = "batteryaaplus", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2, ["Addition"] = 0.0 },
-	{ ["Item"] = "emptybottle", ["Chance"] = 25, ["Min"] = 3, ["Max"] = 4, ["Addition"] = 0.0 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOOTS
@@ -1003,103 +982,6 @@ function Creative.PreventWeapons(Item,Ammo)
 
 	return false
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- INVENTORY:TRASHER
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("inventory:Trasher")
-AddEventHandler("inventory:Trasher",function(Entity)
-	local source = source
-	local Coords = Entity[4]
-	local Number = parseInt(#Trashs + 1)
-	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Coords then
-		if not vRPC.LastVehicle(source,"trash") then
-			TriggerClientEvent("Notify",source,"Atenção","Necessário a utilização do veículo <b>Trash</b>.","amarelo",5000)
-
-			return false
-		end
-
-		for Index = 1,#Trashs do
-			if #(Trashs[Index]["Coords"] - Coords) <= 0.5 then
-				if Trashs[Index]["Timer"] and os.time() <= Trashs[Index]["Timer"] then
-					TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Trashs[Index]["Timer"] - os.time())..".","amarelo",5000)
-
-					return false
-				else
-					Number = Index
-
-					break
-				end
-			end
-		end
-
-		Active[Passport] = os.time() + 10
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("Progress",source,"Vasculhando",10000)
-		vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
-		Trashs[Number] = { ["Coords"] = Coords, ["Timer"] = os.time() + 1800, ["Passport"] = Passport }
-
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				vRPC.Destroy(source)
-				Active[Passport] = nil
-				Player(source)["state"]["Buttons"] = false
-
-				if Trashs[Number]["Passport"] == Passport then
-					local GainExperience = 1
-					local Result = RandPercentage(TrashItens)
-					local Experience,Level = vRP.GetExperience(Passport,"Driver")
-					local Valuation = Result["Valuation"] + Result["Valuation"] * (Result["Addition"] * Level)
-
-					if exports["inventory"]:Buffs("Luck",Passport) then
-						Valuation = Valuation + (Valuation * 0.1)
-					end
-
-					if vRP.UserPremium(Passport) then
-						local Hierarchy = vRP.LevelPremium(source)
-						local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
-
-						Valuation = Valuation + (Valuation * Bonification)
-						GainExperience = GainExperience + 1
-					end
-
-					if exports["party"]:DoesExist(Passport,2) then
-						local Consult = exports["party"]:Room(Passport,source,10)
-						local AmountMembers = (CountTable(Consult) > 2 and 2 or CountTable(Consult))
-
-						for Number = 1,AmountMembers do
-							if vRP.Passport(Consult[Number]["Source"]) and vRPC.LastVehicle(Consult[Number]["Source"],"trash") then
-								if not vRP.MaxItens(Consult[Number]["Passport"],Result["Item"],Valuation) and vRP.CheckWeight(Consult[Number]["Passport"],Result["Item"],Valuation) then
-									vRP.GenerateItem(Consult[Number]["Passport"],Result["Item"],Valuation,true)
-								else
-									TriggerClientEvent("Notify",Consult[Number]["Source"],"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
-									exports["inventory"]:Drops(Consult[Number]["Passport"],Consult[Number]["Source"],Result["Item"],Valuation)
-								end
-
-								vRP.PutExperience(Consult[Number]["Passport"],"Garbageman",GainExperience)
-								vRP.RolepassPoints(Consult[Number]["Passport"],GainExperience,true)
-								vRP.UpgradeStress(Consult[Number]["Passport"],1)
-							end
-						end
-					else
-						if not vRP.MaxItens(Passport,Result["Item"],Result["Valuation"]) and vRP.CheckWeight(Passport,Result["Item"],Result["Valuation"]) then
-							vRP.GenerateItem(Passport,Result["Item"],Valuation,true)
-						else
-							TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
-							exports["inventory"]:Drops(Passport,source,Result["Item"],Valuation)
-						end
-
-						vRP.PutExperience(Passport,"Garbageman",GainExperience)
-						vRP.RolepassPoints(Passport,GainExperience,true)
-						vRP.UpgradeStress(Passport,1)
-					end
-				end
-			end
-
-			Wait(100)
-		until not Active[Passport]
-	end
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOOT
 -----------------------------------------------------------------------------------------------------------------------------------------

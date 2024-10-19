@@ -145,6 +145,7 @@ CreateThread(function()
 								SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"] } })
 								NetworkSetFriendlyFireOption(false)
 								SetEntityInvincible(Ped,true)
+								SetLocalPlayerAsGhost(true)
 							end
 						elseif Death["Timer"] > 0 then
 							Death["Timer"] = Death["Timer"] - 1
@@ -240,6 +241,7 @@ function FinishSurvival()
 
 	ClearPedTasks(Ped)
 	SetEntityHealth(Ped,101)
+	SetLocalPlayerAsGhost(false)
 	SetEntityInvincible(Ped,false)
 	ClearFacialIdleAnimOverride(Ped)
 	NetworkSetFriendlyFireOption(true)
@@ -285,6 +287,7 @@ exports("Revive",function(Health)
 		Crawl["Timer"] = 0
 
 		ClearPedTasks(Ped)
+		SetLocalPlayerAsGhost(false)
 		ClearFacialIdleAnimOverride(Ped)
 		NetworkSetFriendlyFireOption(true)
 

@@ -202,24 +202,9 @@ CreateThread(function()
 		Distance = 1.25
 	})
 
-	AddTargetModel({ 684586828,577432224,-1587184881,-1426008804,-228596739,1437508529,-1096777189,-468629664,1143474856,-2096124444,-115771139,1329570871,-130812911 },{
-		options = {
-			{
-				event = "inventory:Trasher",
-				label = "Vasculhar",
-				tunnel = "server"
-			}
-		},
-		Distance = 1.0
-	})
-
 	AddTargetModel({ -206690185,666561306,218085040,-58485588,1511880420,682791951 },{
 		options = {
 			{
-				event = "inventory:Trasher",
-				label = "Vasculhar",
-				tunnel = "server"
-			},{
 				event = "player:enterTrash",
 				label = "Esconder",
 				tunnel = "client"
@@ -463,7 +448,10 @@ function TargetEnable()
 		end
 
 		if EntityHit and GetEntityType(Entitys) ~= 0 then
-			--TriggerServerEvent("admin:Doords",GetEntityCoords(Entitys),GetEntityModel(Entitys),GetEntityHeading(Entitys))
+			if LocalPlayer["state"]["Admin"] and IsControlJustPressed(1,38) then
+				TriggerServerEvent("admin:Doords",GetEntityCoords(Entitys),GetEntityModel(Entitys),GetEntityHeading(Entitys))
+			end
+
 			if IsEntityAVehicle(Entitys) and GetEntityHealth(Ped) > 100 and #(Coords - HitCoords) <= 1.0 then
 				local Menu = {}
 				local Network = nil
@@ -658,10 +646,6 @@ function TargetEnable()
 						if #(Coords - HitCoords) <= Models[Index]["Distance"] then
 							if not IsEntityAMissionEntity(Entitys) then
 								SetEntityAsMissionEntity(Entitys,true,true)
-							end
-
-							if not IsEntityAPed(Entitys) and not IsEntityPositionFrozen(Entitys) then
-								FreezeEntityPosition(Entitys,true)
 							end
 
 							local Network = nil

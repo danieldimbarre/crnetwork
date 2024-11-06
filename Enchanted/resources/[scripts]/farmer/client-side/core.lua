@@ -66,15 +66,14 @@ CreateThread(function()
 					if not Display[Number] and LoadModel(v["Model"]) then
 						Display[Number] = CreateObjectNoOffset(v["Model"],v["Coords"]["x"],v["Coords"]["y"],v["Coords"]["z"] - (v["Height"] or 0.0),false,false,false)
 
-						if v["Model"] == "prop_rub_binbag_06" then
-							PlaceObjectOnGroundProperly(Display[Number])
-						end
-
 						SetEntityHeading(Display[Number],v["Coords"]["w"])
 						FreezeEntityPosition(Display[Number],true)
 						SetModelAsNoLongerNeeded(v["Model"])
 
-						v["Coords"] = GetEntityCoords(Display[Number])
+						if v["Model"] == "prop_rub_binbag_06" then
+							PlaceObjectOnGroundProperly(Display[Number])
+							v["Coords"] = GetEntityCoords(Display[Number])
+						end
 
 						InputTargetPosition(Number,v)
 						TimerDistance = 1000

@@ -517,6 +517,10 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 		end
 	end
 
+	if OtherCoords[1] == 0.0 and OtherCoords[2] == 0.0 then
+		Aplication = false
+	end
+
 	return Aplication,OtherCoords
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

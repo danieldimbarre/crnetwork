@@ -34,19 +34,19 @@ local Anims = {
 -- CHARACTERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Characters",function(Data,Callback)
+	local Ped = PlayerPedId()
+	SetEntityCoords(Ped,233.85,-1387.59,29.55,false,false,false,false)
+	FreezeEntityPosition(Ped,true)
+	SetEntityInvincible(Ped,true)
+	SetEntityVisible(Ped,false,0)
+	SetEntityHeading(Ped,136.07)
+	SetEntityHealth(Ped,100)
+	SetPedArmour(Ped,0)
+
 	DoScreenFadeIn(0)
 	DisplayRadar(false)
 	ShutdownLoadingScreen()
 	ShutdownLoadingScreenNui()
-
-	local Ped = PlayerPedId()
-
-	SetEntityCoords(Ped,233.85,-1387.59,29.55,false,false,false,false)
-	FreezeEntityPosition(Ped,true)
-	SetEntityInvincible(Ped,true)
-	SetEntityHeading(Ped,136.07)
-	SetEntityHealth(Ped,100)
-	SetPedArmour(Ped,0)
 
 	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
 	RenderScriptCams(true,false,0,false,false)
@@ -58,8 +58,6 @@ RegisterNUICallback("Characters",function(Data,Callback)
 	Characters = vSERVER.Characters()
 	if CountTable(Characters) > 0 then
 		Customization(Characters[1])
-	else
-		SetEntityVisible(Ped,false,0)
 	end
 
 	Callback(Characters)
@@ -69,7 +67,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("CharacterChosen",function(Data,Callback)
 	if vSERVER.CharacterChosen(Data["Passport"]) then
-		SetEntityVisible(PlayerPedId(),false,0)
 		SendNUIMessage({ Action = "Close" })
 	end
 
@@ -191,6 +188,7 @@ function Customization(Table,Check)
 	exports["skinshop"]:Apply(Table["Clothes"],Ped)
 	exports["barbershop"]:Apply(Table["Barber"],Ped)
 	exports["tattooshop"]:Apply(Table["Tattoos"],Ped)
+	SetEntityVisible(Ped,true,0)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN:INCREMENT

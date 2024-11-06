@@ -106,14 +106,20 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
 	LocalPlayer["state"]:set("Passport",Passport,true)
 
 	local Ped = PlayerPedId()
+	SetLocalPlayerAsGhost(true)
+	SetEntityVisible(Ped,false,0)
 	SetEntityInvincible(Ped,true)
-	FreezeEntityPosition(Ped,false)
-	NetworkSetFriendlyFireOption(true)
-	SetCanAttackFriendly(Ped,true,false)
+	FreezeEntityPosition(Ped,true)
+	NetworkSetFriendlyFireOption(false)
 
 	SetTimeout(10000,function()
 		ReloadCharacter()
+		SetLocalPlayerAsGhost(false)
+		SetEntityVisible(Ped,true,0)
 		SetEntityInvincible(Ped,false)
+		FreezeEntityPosition(Ped,false)
+		NetworkSetFriendlyFireOption(true)
+		SetCanAttackFriendly(Ped,true,false)
 
 		if Inventory then
 			for Slot,v in pairs(Inventory) do

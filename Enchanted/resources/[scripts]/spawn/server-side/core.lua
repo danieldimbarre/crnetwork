@@ -44,7 +44,7 @@ function Creative.Characters()
 			}
 		end
 	else
-		DropPlayer(source,"Não foi possível efetuar conexão.")
+		DropPlayer(source,"Não foi possível efetuar conexão com a "..(BaseMode == "steam" and "Steam" or "Rockstar")..".")
 	end
 
 	return Characters
@@ -64,10 +64,10 @@ function Creative.CharacterChosen(Passport)
 			Licensed[License] = true
 			Return = true
 		else
-			DropPlayer(source,"Não foi possível efetuar conexão.")
+			DropPlayer(source,"Não foi possível efetuar conexão com a "..(BaseMode == "steam" and "Steam" or "Rockstar")..".")
 		end
 	else
-		DropPlayer(source,"Não foi possível efetuar conexão.")
+		DropPlayer(source,"Não foi possível efetuar conexão com a "..(BaseMode == "steam" and "Steam" or "Rockstar")..".")
 	end
 
 	return Return
@@ -102,7 +102,7 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 				end
 			end
 		else
-			DropPlayer(source,"Não foi possível efetuar conexão.")
+			DropPlayer(source,"Não foi possível efetuar conexão com a "..(BaseMode == "steam" and "Steam" or "Rockstar")..".")
 		end
 
 		Active[source] = nil

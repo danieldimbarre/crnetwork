@@ -12,6 +12,10 @@ Tunnel.bindInterface("survival",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 LocalPlayer["state"]:set("Crawl",false,true)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Login = false
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- DEATH
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Death = {
@@ -96,11 +100,18 @@ CreateThread(function()
 					local Coords = GetEntityCoords(Ped)
 					NetworkResurrectLocalPlayer(Coords,0.0)
 
-					LocalPlayer["state"]:set("Crawl",true,true)
-					Crawl["Timer"] = Crawl["Default"]
 					SetEntityHealth(Ped,100)
 					Death["Status"] = true
 					Death["Pressed"] = 0
+
+					if not Login then
+						LocalPlayer["state"]:set("Crawl",true,true)
+						Crawl["Timer"] = Crawl["Default"]
+					else
+						Login = false
+						Crawl["Timer"] = 1
+						Death["Cooldown"] = GetGameTimer()
+					end
 
 					SendNUIMessage({ Action = "Open" })
 					TriggerServerEvent("paramedic:bloodDeath")
@@ -305,3 +316,9 @@ end)
 function Creative.Revive(Health)
 	exports["survival"]:Revive(Health)
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- LOGIN
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Login",function()
+	Login = true
+end)

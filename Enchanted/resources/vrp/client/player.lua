@@ -29,9 +29,13 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETHEALTH
 -----------------------------------------------------------------------------------------------------------------------------------------
-function tvRP.SetHealth(Health)
+function tvRP.SetHealth(Health,Death)
 	local Ped = PlayerPedId()
 	SetEntityHealth(Ped,Health)
+
+	if Death then
+		exports["survival"]:Login()
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPGRADEHEALTH
@@ -162,7 +166,6 @@ function ReloadCharacter()
 	RemovePickups(Pid)
 	SetMaxWantedLevel(0)
 	SetPedHelmet(Ped,false)
-	SetDeepOceanScaler(0.0)
 	SetPedMaxHealth(Ped,200)
 	SetEntityMaxHealth(Ped,200)
 	SetAiWeaponDamageModifier(0.5)

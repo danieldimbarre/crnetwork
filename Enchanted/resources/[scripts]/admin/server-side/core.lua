@@ -380,7 +380,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("unban",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
+	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
 		vRP.Query("accounts/RemoveBanned",{ License = vRP.AccountInformation(Message[1],"License") })
 		TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..Message[1].."</b> desbanido.","verde",5000)
 		exports["discord"]:Embed("Unban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
@@ -422,7 +422,7 @@ RegisterCommand("group",function(source,Message)
 	if Passport and Message[1] and Message[2] and vRP.HasGroup(Passport,"Admin",2) then
 		local Permission = Message[2]
 		local OtherPassport = Message[1]
-		if (Permission == "Admin" or Permission == "Premium") and vRP.HasPermission(Passport,Permission) >= 2 then
+		if Permission == "Admin" and vRP.HasPermission(Passport,Permission) >= 2 then
 			return false
 		end
 
@@ -436,10 +436,16 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("ungroup",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and parseInt(Message[1]) > 0 and Message[2] and vRP.HasGroup(Passport,"Admin",2) then
-		vRP.RemovePermission(Message[1],Message[2])
-		TriggerClientEvent("Notify",source,"Sucesso","Removido <b>"..Message[2].."</b> ao passaporte <b>"..Message[1].."</b>.","verde",5000)
-		exports["discord"]:Embed("Ungroup","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[GRUPO]:** "..Message[2].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+	if Passport and Message[1] and Message[2] and vRP.HasGroup(Passport,"Admin",2) then
+		local Permission = Message[2]
+		local OtherPassport = Message[1]
+		if Permission == "Admin" and vRP.HasPermission(Passport,Permission) >= 2 then
+			return false
+		end
+
+		vRP.RemovePermission(OtherPassport,Permission)
+		TriggerClientEvent("Notify",source,"Sucesso","Removido <b>"..Permission.."</b> ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
+		exports["discord"]:Embed("Ungroup","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -447,10 +453,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("tptome",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") then
-		local OtherPassport = Message[1]
+	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin") then
+		local OtherPassport = parseInt(Message[1])
 		local OtherSource = vRP.Source(OtherPassport)
-		if OtherSource and vRP.DoesEntityExist(source) then
+		if OtherSource and vRP.DoesEntityExist(OtherSource) then
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
 
@@ -463,10 +469,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("tpto",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and Message[1] and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") then
-		local OtherPassport = Message[1]
+	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin") then
+		local OtherPassport = parseInt(Message[1])
 		local OtherSource = vRP.Source(OtherPassport)
-		if OtherSource then
+		if OtherSource and vRP.DoesEntityExist(OtherSource) then
 			local Ped = GetPlayerPed(OtherSource)
 			local Coords = GetEntityCoords(Ped)
 
@@ -525,6 +531,13 @@ end)
 RegisterServerEvent("admin:Doords")
 AddEventHandler("admin:Doords",function(Coords,Model,Heading)
 	vRP.Archive("coordenadas.txt","Coords = "..Coords..", Hash = "..Model..", Heading = "..Heading)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADMIN:DOORS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("admin:Trash")
+AddEventHandler("admin:Trash",function(Coords)
+	vRP.Archive("coordenadas.txt",Optimize(Coords["x"])..","..Optimize(Coords["y"])..","..Optimize(Coords["z"]))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CDS

@@ -30,6 +30,7 @@ Trunks = {}
 Objects = {}
 SaveObjects = {}
 RobberyActive = {}
+local Payments = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- USERS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1250,6 +1251,11 @@ AddEventHandler("inventory:Products",function(Service)
 	if Passport and not Active[Passport] and Products[Service] then
 		if Products[Service]["PolyZone"] and not vFARMER.PolyZone(source,Service) then
 			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Farmer do "..Service.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+
+			Payments[Passport] = (Payments[Passport] or 0) + 1
+			if Payments[Passport] >= 3 then
+				vRP.SetBanned(Passport,999,"Payment do Farmer")
+			end
 		end
 
 		if Products[Service]["Item"] and not vRP.ConsultItem(Passport,Products[Service]["Item"]) then
@@ -1310,7 +1316,7 @@ RegisterServerEvent("inventory:RemoveTyres")
 AddEventHandler("inventory:RemoveTyres",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Entity[2] ~= "veto" and Entity[2] ~= "veto2" then
+	if Passport and not Active[Passport] and Entity[2] ~= "veto" and Entity[2] ~= "veto2" and VehicleMode(Entity[2]) ~= "Work" then
 		if not vCLIENT.CheckWeapon(source,"WEAPON_WRENCH") then
 			TriggerClientEvent("Notify",source,"Aviso","<b>Chave Inglesa</b> não encontrada.","amarelo",5000)
 
@@ -1597,6 +1603,10 @@ AddEventHandler("Disconnect",function(Passport)
 
 	if Active[Passport] then
 		Active[Passport] = nil
+	end
+
+	if Payments[Passport] then
+		Payments[Passport] = nil
 	end
 
 	if Drugs[Passport] then

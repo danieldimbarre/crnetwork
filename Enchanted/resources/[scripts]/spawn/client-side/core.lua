@@ -69,6 +69,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("CharacterChosen",function(Data,Callback)
 	if vSERVER.CharacterChosen(Data["Passport"]) then
+		SetEntityVisible(PlayerPedId(),false,0)
 		SendNUIMessage({ Action = "Close" })
 	end
 

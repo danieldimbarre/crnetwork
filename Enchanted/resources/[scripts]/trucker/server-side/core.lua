@@ -14,6 +14,7 @@ Tunnel.bindInterface("trucker",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
+local Payments = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DROPS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -36,6 +37,11 @@ function Creative.Payment()
 		local Coords = vRP.GetEntityCoords(source)
 		if not vRPC.LastVehicle(source,"packer") or #(Coords - vec3(1256.59,-3239.63,5.17)) > 25 then
 			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Trucker\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+
+			Payments[Passport] = (Payments[Passport] or 0) + 1
+			if Payments[Passport] >= 3 then
+				vRP.SetBanned(Passport,999,"Payment do Farmer")
+			end
 		end
 
 		local GainExperience = 15
@@ -69,3 +75,15 @@ function Creative.Payment()
 		Active[Passport] = nil
 	end
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport,source)
+	if Active[Passport] then
+		Active[Passport] = nil
+	end
+
+	if Payments[Passport] then
+		Payments[Passport] = nil
+	end
+end)

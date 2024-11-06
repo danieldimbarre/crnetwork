@@ -19,3 +19,7 @@ files {
 	"web-side/*",
 	"web-side/**/*"
 }
+
+shared_scripts {
+	"@vrp/config/Global.lua"
+}

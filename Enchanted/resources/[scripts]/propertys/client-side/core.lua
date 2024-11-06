@@ -268,7 +268,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("propertys:Blips")
 AddEventHandler("propertys:Blips",function()
-	if json.encode(Blips) ~= "[]" then
+	if #Blips > 0 then
 		for _,v in pairs(Blips) do
 			if DoesBlipExist(v) then
 				RemoveBlip(v)

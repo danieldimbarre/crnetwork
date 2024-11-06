@@ -9,6 +9,7 @@ vRP = Proxy.getInterface("vRP")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
+local Payments = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -27,6 +28,11 @@ AddEventHandler("farmer:Minerman",function(Number)
 
 		if not Number or type(Number) ~= "number" then
 			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+
+			Payments[Passport] = (Payments[Passport] or 0) + 1
+			if Payments[Passport] >= 3 then
+				vRP.SetBanned(Passport,999,"Payment do Farmer")
+			end
 		end
 
 		if GlobalState["Farmer:"..Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
@@ -115,6 +121,11 @@ AddEventHandler("farmer:Lumberman",function(Number)
 
 		if not Number or type(Number) ~= "number" then
 			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+
+			Payments[Passport] = (Payments[Passport] or 0) + 1
+			if Payments[Passport] >= 3 then
+				vRP.SetBanned(Passport,999,"Payment do Farmer")
+			end
 		end
 
 		if GlobalState["Farmer:"..Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
@@ -178,6 +189,11 @@ AddEventHandler("farmer:Transporter",function(Number)
 
 		if not Number or type(Number) ~= "number" then
 			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+
+			Payments[Passport] = (Payments[Passport] or 0) + 1
+			if Payments[Passport] >= 3 then
+				vRP.SetBanned(Passport,999,"Payment do Farmer")
+			end
 		end
 
 		if GlobalState["Farmer:"..Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
@@ -228,6 +244,11 @@ AddEventHandler("farmer:Sandman",function(Number)
 
 		if not Number or type(Number) ~= "number" then
 			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+
+			Payments[Passport] = (Payments[Passport] or 0) + 1
+			if Payments[Passport] >= 3 then
+				vRP.SetBanned(Passport,999,"Payment do Farmer")
+			end
 		end
 
 		if GlobalState["Farmer:"..Number] and GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
@@ -298,6 +319,11 @@ AddEventHandler("farmer:Trasher",function(Number)
 
 		if not Number or type(Number) ~= "number" then
 			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+
+			Payments[Passport] = (Payments[Passport] or 0) + 1
+			if Payments[Passport] >= 3 then
+				vRP.SetBanned(Passport,999,"Payment do Farmer")
+			end
 		end
 
 		if not vRPC.LastVehicle(source,"trash") then
@@ -389,5 +415,9 @@ end)
 AddEventHandler("Disconnect",function(Passport,source)
 	if Active[Passport] then
 		Active[Passport] = nil
+	end
+
+	if Payments[Passport] then
+		Payments[Passport] = nil
 	end
 end)

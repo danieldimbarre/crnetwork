@@ -84,7 +84,7 @@ function tvRP.Skin(Hash)
 		SetPlayerModel(Pid,Hash)
 		SetModelAsNoLongerNeeded(Hash)
 
-		ReloadCharacter()
+		exports["vrp"]:ReloadCharacter()
 		tvRP.ReloadCharacter()
 	end
 end
@@ -95,6 +95,7 @@ function tvRP.ReloadCharacter()
 	exports["skinshop"]:Apply()
 	exports["barbershop"]:Apply()
 	exports["tattooshop"]:Apply()
+	exports["vrp"]:ReloadCharacter()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP:ACTIVE
@@ -113,11 +114,11 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
 	NetworkSetFriendlyFireOption(false)
 
 	SetTimeout(10000,function()
-		ReloadCharacter()
 		SetLocalPlayerAsGhost(false)
 		SetEntityVisible(Ped,true,0)
 		SetEntityInvincible(Ped,false)
 		FreezeEntityPosition(Ped,false)
+		exports["vrp"]:ReloadCharacter()
 		NetworkSetFriendlyFireOption(true)
 		SetCanAttackFriendly(Ped,true,false)
 
@@ -164,7 +165,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RELOADCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ReloadCharacter()
+exports("ReloadCharacter",function()
 	local Pid = PlayerId()
 	local Ped = PlayerPedId()
 
@@ -185,7 +186,6 @@ function ReloadCharacter()
 	SetPedDropsWeaponsWhenDead(Ped,false)
 	SetPedCanLosePropsOnDamage(Ped,false,0)
 
-	SetPedConfigFlag(Ped,48,true)
 	SetPedConfigFlag(Ped,35,false)
 	SetPedConfigFlag(Ped,438,true)
 	SetForceFootstepUpdate(Ped,true)
@@ -278,7 +278,7 @@ function ReloadCharacter()
 	SetWeaponDamageModifier("WEAPON_NIGHTSTICK",0.35)
 	SetWeaponDamageModifier("WEAPON_SMOKEGRENADE",0.0)
 	SetWeaponDamageModifier("WEAPON_STONE_HATCHET",0.25)
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMOVEPICKUPS
 -----------------------------------------------------------------------------------------------------------------------------------------

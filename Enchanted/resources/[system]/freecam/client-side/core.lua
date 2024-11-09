@@ -138,7 +138,7 @@ RegisterNUICallback("DeletePicture",function(data)
 end)
 
 RegisterNUICallback("TakeScreenShot",function()
-	local Webhook = "https://discord.com/api/webhooks/1236099633932140564/Q6Ojt1Unopc3h8oLrHx8GZ56NkEmNey3Rh_hFFHSLn28MLlYvuHz3UeXoCDK2uvDoXVy"
+	local Webhook = ""
 	exports["screenshot-basic"]:requestScreenshotUpload(Webhook,"files[]",function(data)
 		local image = json.decode(data)
 

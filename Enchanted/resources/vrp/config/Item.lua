@@ -887,7 +887,8 @@ local List = {
 		["Weight"] = 2.75,
 		["Delete"] = true,
 		["Economy"] = 50000,
-		["Rarity"] = "legendary"
+		["Rarity"] = "legendary",
+		["Water"] = "In"
 	},
 	["pickaxeplus"] = {
 		["Index"] = "pickaxe",
@@ -3808,7 +3809,8 @@ local List = {
 		["Durability"] = 72,
 		["Weight"] = 2.75,
 		["Economy"] = 575,
-		["Market"] = true
+		["Market"] = true,
+		["Water"] = "In"
 	},
 	["fishingrod2"] = {
 		["Index"] = "fishingrod2",
@@ -3819,7 +3821,8 @@ local List = {
 		["Durability"] = 72,
 		["Weight"] = 2.75,
 		["Economy"] = 875,
-		["Market"] = true
+		["Market"] = true,
+		["Water"] = "In"
 	},
 	["fishingrod3"] = {
 		["Index"] = "fishingrod3",
@@ -3830,7 +3833,8 @@ local List = {
 		["Durability"] = 72,
 		["Weight"] = 2.75,
 		["Economy"] = 1275,
-		["Market"] = true
+		["Market"] = true,
+		["Water"] = "In"
 	},
 	["fishingrod4"] = {
 		["Index"] = "fishingrod4",
@@ -3841,7 +3845,8 @@ local List = {
 		["Durability"] = 72,
 		["Weight"] = 2.75,
 		["Economy"] = 1925,
-		["Market"] = true
+		["Market"] = true,
+		["Water"] = "In"
 	},
 	["pickaxe"] = {
 		["Index"] = "pickaxe",

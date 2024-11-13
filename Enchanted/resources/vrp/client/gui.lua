@@ -24,6 +24,7 @@ LocalPlayer["state"]:set("Name","",false)
 LocalPlayer["state"]:set("Passport",0,true)
 LocalPlayer["state"]:set("Carry",false,true)
 LocalPlayer["state"]:set("Walk",false,false)
+LocalPlayer["state"]:set("Arena",false,false)
 LocalPlayer["state"]:set("Cancel",false,true)
 LocalPlayer["state"]:set("Camera",false,true)
 LocalPlayer["state"]:set("Hoverfy",true,false)
@@ -263,6 +264,10 @@ RegisterCommand("Cancel",function()
 	if LocalPlayer["state"]["Active"] and GetGameTimer() >= Button and not IsPauseMenuActive() and not LocalPlayer["state"]["Handcuff"] and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
 		Button = GetGameTimer() + 500
 		TriggerServerEvent("inventory:Cancel")
+
+		if LocalPlayer["state"]["Arena"] then
+			TriggerServerEvent("arena:Exiting")
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

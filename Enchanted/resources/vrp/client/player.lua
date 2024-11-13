@@ -95,7 +95,6 @@ function tvRP.ReloadCharacter()
 	exports["skinshop"]:Apply()
 	exports["barbershop"]:Apply()
 	exports["tattooshop"]:Apply()
-	exports["vrp"]:ReloadCharacter()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP:ACTIVE

@@ -591,83 +591,103 @@ Premium = {
 ShopItens = {
 	["gemstone"] = {
 		["Price"] = 1,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["premiumplate"] = {
 		["Price"] = 5000,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["newchars"] = {
 		["Price"] = 4000,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["namechange"] = {
 		["Price"] = 3000,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["diagram"] = {
 		["Price"] = 500,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["WEAPON_KATANA"] = {
 		["Price"] = 500,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["pickaxeplus"] = {
 		["Price"] = 2500,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["fishingrodplus"] = {
 		["Price"] = 2500,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["axeplus"] = {
 		["Price"] = 2500,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["backpackp"] = {
 		["Price"] = 2000,
-		["Discount"] = 0.95
+		["Discount"] = 0.95,
+		["Category"] = "Diamantes"
 	},
 	["backpackm"] = {
 		["Price"] = 3500,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["backpackg"] = {
 		["Price"] = 5000,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["teddypack"] = {
 		["Price"] = 5000,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["weaponbox"] = {
 		["Price"] = 5000,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["ammobox"] = {
 		["Price"] = 3500,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["sewingkit"] = {
 		["Price"] = 2500,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["seatbelt"] = {
 		["Price"] = 5000,
-		["Discount"] = 0.95
+		["Discount"] = 0.95,
+		["Category"] = "Diamantes"
 	},
 	["adrenalineplus"] = {
 		["Price"] = 500,
-		["Discount"] = 0.98
+		["Discount"] = 0.98,
+		["Category"] = "Diamantes"
 	},
 	["washbattery"] = {
 		["Price"] = 750,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	},
 	["radiomhz"] = {
 		["Price"] = 7500,
-		["Discount"] = 1.0
+		["Discount"] = 1.0,
+		["Category"] = "Diamantes"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

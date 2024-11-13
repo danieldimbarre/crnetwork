@@ -355,7 +355,7 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 
 				if vRP.Request(source,"Garagem","Pagar o aluguel do veículo <b>"..VehicleName(Name).."</b> por <b>"..Gemstone.."</b> "..Coin.."?") then
 					if vRP.PaymentGems(Passport,Gemstone) then
-						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Name), Work = 1 })
+						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Name), Work = 1 })
 						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
 						Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Name })
 					else
@@ -483,7 +483,7 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 
 					if vRP.Request(source,"Garagem","Pagar o aluguel do veículo <b>"..VehicleName(Name).."</b> por <b>"..Dotted(Gemstone).." "..Coin.."</b>?") then
 						if (Coin == "Diamantes" and vRP.PaymentGems(Passport,Gemstone)) or (Coin == "Platina" and vRP.TakeItem(Passport,"platinum",Gemstone)) then
-							vRP.Query("vehicles/rentalVehiclesUpdate",{ Passport = Passport, Vehicle = Name })
+							vRP.Query("vehicles/rentalVehiclesUpdate",{ Passport = Passport, Vehicle = Name, Days = 30 })
 							TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> atualizado.","verde",5000)
 						else
 							TriggerClientEvent("Notify",source,"Aviso",Coin.." insuficiente.","amarelo",5000)

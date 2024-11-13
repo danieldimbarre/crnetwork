@@ -13,6 +13,7 @@ vSERVER = Tunnel.getInterface("towed")
 local Blip = nil
 local Destiny = 1
 local Vehicle = nil
+local Locale = false
 local Service = false
 local ModelSelected = ""
 local TimeDistance = 999
@@ -21,26 +22,29 @@ local VehiclePlate = false
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	exports["target"]:AddBoxZone("Towed",Init["xyz"],0.75,0.75,{
-		name = "Towed",
-		heading = Init["w"],
-		minZ = Init["z"] - 1.0,
-		maxZ = Init["z"] + 1.0
-	},{
-		Distance = 1.75,
-		options = {
-			{
-				event = "towed:Init",
-				label = "Iniciar Expediente",
-				tunnel = "client"
+	for Name,v in pairs(Init) do
+		exports["target"]:AddBoxZone("Towed:"..Name,v["xyz"],0.75,0.75,{
+			name = "Towed:"..Name,
+			heading = v["w"],
+			minZ = v["z"] - 1.0,
+			maxZ = v["z"] + 1.0
+		},{
+			shop = Name,
+			Distance = 1.75,
+			options = {
+				{
+					event = "towed:Init",
+					label = "Iniciar Expediente",
+					tunnel = "client"
+				}
 			}
-		}
-	})
+		})
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOWED:INIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("towed:Init",function()
+AddEventHandler("towed:Init",function(Data)
 	if DoesBlipExist(Blip) then
 		RemoveBlip(Blip)
 		Blip = nil
@@ -50,11 +54,13 @@ AddEventHandler("towed:Init",function()
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
 		exports["target"]:LabelText("Towed","Iniciar Expediente")
 		Service = false
+		Locale = false
 	else
+		Locale = Data
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
 		exports["target"]:LabelText("Towed","Finalizar Expediente")
 		ModelSelected = Models[math.random(#Models)]
-		Destiny = math.random(#Locations)
+		Destiny = math.random(#Locations[Locale])
 		VehiclePlate = nil
 		MarkedVehicle()
 		Service = true
@@ -69,7 +75,7 @@ RegisterNetEvent("towed:Inative")
 AddEventHandler("towed:Inative",function(Plate)
 	if VehiclePlate == Plate then
 		ModelSelected = Models[math.random(#Models)]
-		Destiny = math.random(#Locations)
+		Destiny = math.random(#Locations[Locale])
 		VehiclePlate = false
 		TimeDistance = 999
 		MarkedVehicle()
@@ -85,11 +91,11 @@ CreateThread(function()
 			local Ped = PlayerPedId()
 			local Coords = GetEntityCoords(Ped)
 
-			if not Vehicle then
+			if not Vehicle and Locale then
 				TimeDistance = 1999
 
-				if #(Coords - Locations[Destiny]["xyz"]) <= 100 then
-					local Networked,Plate = vSERVER.Vehicle(ModelSelected,Destiny)
+				if #(Coords - Locations[Locale][Destiny]["xyz"]) <= 100 then
+					local Networked,Plate = vSERVER.Vehicle(ModelSelected,Locale,Destiny)
 					if Networked then
 						local Network = LoadNetwork(Networked)
 						if Network then
@@ -133,7 +139,7 @@ function MarkedVehicle()
 		Blip = nil
 	end
 
-	Blip = AddBlipForCoord(Locations[Destiny]["x"],Locations[Destiny]["y"],Locations[Destiny]["z"])
+	Blip = AddBlipForCoord(Locations[Locale][Destiny]["x"],Locations[Locale][Destiny]["y"],Locations[Locale][Destiny]["z"])
 	SetBlipSprite(Blip,1)
 	SetBlipDisplay(Blip,4)
 	SetBlipAsShortRange(Blip,true)

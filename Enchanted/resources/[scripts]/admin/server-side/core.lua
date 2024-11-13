@@ -533,13 +533,6 @@ AddEventHandler("admin:Doords",function(Coords,Model,Heading)
 	vRP.Archive("coordenadas.txt","Coords = "..Coords..", Hash = "..Model..", Heading = "..Heading)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ADMIN:DOORS
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("admin:Trash")
-AddEventHandler("admin:Trash",function(Coords)
-	vRP.Archive("coordenadas.txt",Optimize(Coords["x"])..","..Optimize(Coords["y"])..","..Optimize(Coords["z"]))
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- CDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.buttonTxt()
@@ -734,11 +727,18 @@ end)
 RegisterCommand("addcar",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",1) then
-		local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Modelo")
-		if Keyboard and Keyboard[1] and Keyboard[2] and VehicleExist(Keyboard[2]) then
+		local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Modelo",{ "Mensal","Permanente","Dias" },"Dias")
+		if Keyboard and Keyboard[1] and Keyboard[2] and Keyboard[3] and VehicleExist(Keyboard[2]) then
 			TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Keyboard[2]).."</b> entregue.","verde",5000)
-			vRP.Query("vehicles/rentalVehicles",{ Passport = Keyboard[1], Vehicle = Keyboard[2], Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Keyboard[2]), Work = 0 })
-			exports["discord"]:Embed("AddCar","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Keyboard[1].."\n**[MODEL]:** "..Keyboard[2].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+			exports["discord"]:Embed("AddCar","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Keyboard[1].."\n**[MODEL]:** "..Keyboard[2].."\n**[TIPO]:** "..Keyboard[3].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+
+			if Keyboard[3] == "Mensal" then
+				vRP.Query("vehicles/rentalVehicles",{ Passport = Keyboard[1], Vehicle = Keyboard[2], Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Keyboard[2]), Work = 0 })
+			elseif Keyboard[3] == "Dias" and Keyboard[4] and parseInt(Keyboard[4]) >= 1 then
+				vRP.Query("vehicles/rentalVehicles",{ Passport = Keyboard[1], Vehicle = Keyboard[2], Plate = vRP.GeneratePlate(), Days = Keyboard[4], Weight = VehicleWeight(Keyboard[2]), Work = 0 })
+			elseif Keyboard[3] == "Permanente" then
+				vRP.Query("vehicles/addVehicles",{ Passport = Keyboard[1], Vehicle = Keyboard[2], Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Keyboard[2]), Work = 0 })
+			end
 		end
 	end
 end)

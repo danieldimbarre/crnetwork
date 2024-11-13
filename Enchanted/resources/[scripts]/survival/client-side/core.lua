@@ -10,11 +10,8 @@ Tunnel.bindInterface("survival",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-LocalPlayer["state"]:set("Crawl",false,true)
------------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
------------------------------------------------------------------------------------------------------------------------------------------
 local Login = false
+LocalPlayer["state"]:set("Crawl",false,true)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DEATH
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -124,6 +121,10 @@ CreateThread(function()
 					TriggerEvent("hud:Active",false)
 					TriggerEvent("inventory:Close")
 					TriggerEvent("hud:RemoveHood")
+
+					if LocalPlayer["state"]["Arena"] then
+						SendNUIMessage({ Action = "Update", Payload = { "Ferido","Aguarde os primeiros socorros",0,"Pressione [E] para levantar" } })
+					end
 				else
 					TimeDistance = 1
 
@@ -142,72 +143,83 @@ CreateThread(function()
 					DisablePlayerFiring(Ped,true)
 					SetEntityHealth(Ped,100)
 
-					if GetGameTimer() >= Death["Cooldown"] then
-						Death["Cooldown"] = GetGameTimer() + 1000
-
-						if Crawl["Timer"] > 0 then
-							Crawl["Timer"] = Crawl["Timer"] - 1
-							SendNUIMessage({ Action = "Update", Payload = { Crawl["Title"],Crawl["Text"],Crawl["Timer"] } })
-
-							if Crawl["Timer"] <= 0 then
-								exports["pma-voice"]:Mute(true)
-								Death["Timer"] = Death["Default"]
-								LocalPlayer["state"]:set("Crawl",false,true)
-								SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"] } })
-								NetworkSetFriendlyFireOption(false)
-								SetEntityInvincible(Ped,true)
-								SetLocalPlayerAsGhost(true)
-							end
-						elseif Death["Timer"] > 0 then
-							Death["Timer"] = Death["Timer"] - 1
-							SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"] } })
-
-							if Death["Timer"] <= 0 then
-								SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"],"Segure [E] por 10 segundos" } })
-								SetFacialIdleAnimOverride(Ped,"mood_sleeping_1",0)
-							end
+					if LocalPlayer["state"]["Arena"] then
+						if not IsEntityPlayingAnim(Ped,"dead","dead_a",3) then
+							TaskPlayAnim(Ped,"dead","dead_a",8.0,8.0,-1,1,1,0,0,0)
 						end
-					end
 
-					if IsPedInAnyVehicle(Ped) then
-						local Vehicle = GetVehiclePedIsUsing(Ped)
-						if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-							SetVehicleEngineOn(Vehicle,false,true,true)
+						if IsControlJustPressed(1,38) then
+							TriggerEvent("arena:ResetStreek")
+							TriggerEvent("arena:Respawn")
 						end
 					else
-						if Crawl["Timer"] > 0 then
-							local Forward,Backward = IsControlPressed(0,32),IsControlPressed(0,33)
+						if GetGameTimer() >= Death["Cooldown"] then
+							Death["Cooldown"] = GetGameTimer() + 1000
 
-							if not Crawl["Status"] then
-								if Forward then
-									StandCrawling(Ped,Crawl["Mode"],"fwd")
-								elseif Backward then
-									StandCrawling(Ped,Crawl["Mode"],"bwd")
-								elseif GetGameTimer() >= Crawl["Stand"] and not IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@male@front@idle_a","idle_a",3) then
-									TaskPlayAnim(Ped,"amb@world_human_sunbathe@male@front@idle_a","idle_a",8.0,8.0,-1,1,1,0,0,0)
+							if Crawl["Timer"] > 0 then
+								Crawl["Timer"] = Crawl["Timer"] - 1
+								SendNUIMessage({ Action = "Update", Payload = { Crawl["Title"],Crawl["Text"],Crawl["Timer"] } })
+
+								if Crawl["Timer"] <= 0 then
+									exports["pma-voice"]:Mute(true)
+									Death["Timer"] = Death["Default"]
+									LocalPlayer["state"]:set("Crawl",false,true)
+									SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"] } })
+									NetworkSetFriendlyFireOption(false)
+									SetEntityInvincible(Ped,true)
+									SetLocalPlayerAsGhost(true)
 								end
-							else
-								if IsControlPressed(0,34) then
-									local Heading = Forward and 1.0 or -1.0
-									SetEntityHeading(Ped,GetEntityHeading(Ped) + Heading)
-								elseif IsControlPressed(0,35) then
-									local Heading = Backward and 1.0 or -1.0
-									SetEntityHeading(Ped,GetEntityHeading(Ped) + Heading)
+							elseif Death["Timer"] > 0 then
+								Death["Timer"] = Death["Timer"] - 1
+								SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"] } })
+
+								if Death["Timer"] <= 0 then
+									SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"],"Segure [E] por 10 segundos" } })
+									SetFacialIdleAnimOverride(Ped,"mood_sleeping_1",0)
 								end
-							end
-						else
-							if not IsEntityPlayingAnim(Ped,"dead","dead_a",3) then
-								TaskPlayAnim(Ped,"dead","dead_a",8.0,8.0,-1,1,1,0,0,0)
 							end
 						end
-					end
 
-					if Death["Status"] and Death["Timer"] <= 0 and Crawl["Timer"] <= 0 and not LocalPlayer["state"]["Carry"] and IsControlPressed(0,38) then
-						Death["Pressed"] = Death["Pressed"] + 1
+						if IsPedInAnyVehicle(Ped) then
+							local Vehicle = GetVehiclePedIsUsing(Ped)
+							if GetPedInVehicleSeat(Vehicle,-1) == Ped then
+								SetVehicleEngineOn(Vehicle,false,true,true)
+							end
+						else
+							if Crawl["Timer"] > 0 then
+								local Forward,Backward = IsControlPressed(0,32),IsControlPressed(0,33)
 
-						if Death["Pressed"] >= 1000 then
-							TriggerServerEvent("player:Survival")
-							FinishSurvival()
+								if not Crawl["Status"] then
+									if Forward then
+										StandCrawling(Ped,Crawl["Mode"],"fwd")
+									elseif Backward then
+										StandCrawling(Ped,Crawl["Mode"],"bwd")
+									elseif GetGameTimer() >= Crawl["Stand"] and not IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@male@front@idle_a","idle_a",3) then
+										TaskPlayAnim(Ped,"amb@world_human_sunbathe@male@front@idle_a","idle_a",8.0,8.0,-1,1,1,0,0,0)
+									end
+								else
+									if IsControlPressed(0,34) then
+										local Heading = Forward and 1.0 or -1.0
+										SetEntityHeading(Ped,GetEntityHeading(Ped) + Heading)
+									elseif IsControlPressed(0,35) then
+										local Heading = Backward and 1.0 or -1.0
+										SetEntityHeading(Ped,GetEntityHeading(Ped) + Heading)
+									end
+								end
+							else
+								if not IsEntityPlayingAnim(Ped,"dead","dead_a",3) then
+									TaskPlayAnim(Ped,"dead","dead_a",8.0,8.0,-1,1,1,0,0,0)
+								end
+							end
+						end
+
+						if Death["Status"] and Death["Timer"] <= 0 and Crawl["Timer"] <= 0 and not LocalPlayer["state"]["Carry"] and IsControlPressed(0,38) then
+							Death["Pressed"] = Death["Pressed"] + 1
+
+							if Death["Pressed"] >= 1000 then
+								TriggerServerEvent("player:Survival")
+								FinishSurvival()
+							end
 						end
 					end
 				end
@@ -281,11 +293,15 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REVIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Revive",function(Health)
+exports("Revive",function(Health,Arena)
 	local Ped = PlayerPedId()
 
 	SetEntityInvincible(Ped,false)
 	SetEntityHealth(Ped,Health or 101)
+
+	if Arena then
+		SetPedArmour(Ped,99)
+	end
 
 	if Death["Status"] then
 		if Crawl["Timer"] > 0 then
@@ -315,8 +331,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REVIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Revive(Health)
-	exports["survival"]:Revive(Health)
+function Creative.Revive(Health,Arena)
+	exports["survival"]:Revive(Health,Arena)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOGIN

@@ -307,7 +307,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Event,Message)
 	local Victim,Attacker,Index = Message[1],Message[2],NetworkGetPlayerIndexFromPed(Message[2])
-	if Event == "CEventNetworkEntityDamage" and not DeathUpdate and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 and NetworkIsPlayerConnected(Index) then
+	if Event == "CEventNetworkEntityDamage" and not LocalPlayer["state"]["Arena"] and not DeathUpdate and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 and NetworkIsPlayerConnected(Index) then
 		TriggerServerEvent("player:Death",GetPlayerServerId(Index))
 		DeathUpdate = false
 	end

@@ -1501,7 +1501,7 @@ Use = {
 	end,
 
 	["fishingrod"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vCLIENT.Fishing(source,"fishingrod") then
+		if vCLIENT.Fishing(source) then
 			Active[Passport] = os.time() + 100
 			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("inventory:Close",source)
@@ -1533,7 +1533,7 @@ Use = {
 	end,
 
 	["fishingrod2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vCLIENT.Fishing(source,"fishingrod2") then
+		if vCLIENT.Fishing(source) then
 			Active[Passport] = os.time() + 100
 			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("inventory:Close",source)
@@ -1567,7 +1567,7 @@ Use = {
 	end,
 
 	["fishingrod3"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vCLIENT.Fishing(source,"fishingrod3") then
+		if vCLIENT.Fishing(source) then
 			Active[Passport] = os.time() + 100
 			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("inventory:Close",source)
@@ -1604,7 +1604,7 @@ Use = {
 	end,
 
 	["fishingrod4"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vCLIENT.Fishing(source,"fishingrod4") then
+		if vCLIENT.Fishing(source) then
 			Active[Passport] = os.time() + 100
 			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("inventory:Close",source)
@@ -3028,8 +3028,8 @@ for Model,v in pairs(VehicleList()) do
 				if vRP.TakeItem(Passport,Full,1,true,Slot) then
 					local Plate = vRP.GeneratePlate()
 
-					if v["Item"] == "Monthly" then
-						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Weight = VehicleWeight(Model), Work = 0 })
+					if type(v["Item"]) == "number" then
+						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Days = v["Item"], Weight = VehicleWeight(Model), Work = 0 })
 					elseif v["Item"] == "Permanent" then
 						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Weight = VehicleWeight(Model), Work = 0 })
 					end

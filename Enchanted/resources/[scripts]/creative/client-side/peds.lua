@@ -31,9 +31,14 @@ local List = {
 		["Coords"] = vec4(778.49,-395.89,33.43,99.22),
 		["Model"] = "g_m_y_salvagoon_01",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Towed
+	},{ -- Towed South
 		["Distance"] = 50,
 		["Coords"] = vec4(408.91,-1622.75,29.28,232.45),
+		["Model"] = "u_m_o_finguru_01",
+		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- Towed North
+		["Distance"] = 50,
+		["Coords"] = vec4(1989.99,3781.38,32.18,119.06),
 		["Model"] = "u_m_o_finguru_01",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Concessionária

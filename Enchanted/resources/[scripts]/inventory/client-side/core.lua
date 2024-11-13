@@ -146,25 +146,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FISHING
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Fishing(Item)
-	local Fishings = false
+function Creative.Fishing()
+	local Fishing = false
 	local Ped = PlayerPedId()
-	local Coords = GetEntityCoords(Ped)
-
-	local Locates = {
-		{ ["Coords"] = vec3(1183.88,4002.14,30.23), ["Item"] = "fishingrod" },
-		{ ["Coords"] = vec3(-230.83,-3332.51,0.59), ["Item"] = "fishingrod2" },
-		{ ["Coords"] = vec3(-1314.5,6207.45,-0.56), ["Item"] = "fishingrod3" },
-		{ ["Coords"] = vec3(-627.61,7597.86,-0.42), ["Item"] = "fishingrod4" }
-	}
-
-	for _,v in pairs(Locates) do
-		if #(Coords - v["Coords"]) <= 200 and (Item == v["Item"] or Item == "fishingrodplus") then
-			Fishings = true
-		end
+	if #(GetEntityCoords(Ped) - vec3(1183.88,4002.14,30.23)) <= 400 then
+		Fishing = true
 	end
 
-	return Fishings
+	return Fishing
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:EXPLODETYRES

@@ -39,9 +39,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Vehicle(Model,Destiny)
+function Creative.Vehicle(Model,Locale,Destiny)
 	local source = source
-	local Vehicle = CreateVehicle(Model,Locations[Destiny],true,true)
+	local Vehicle = CreateVehicle(Model,Locations[Locale][Destiny],true,true)
 
 	while not DoesEntityExist(Vehicle) do
 		Wait(1)

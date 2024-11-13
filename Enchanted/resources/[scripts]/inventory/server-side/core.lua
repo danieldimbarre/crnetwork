@@ -21,6 +21,7 @@ vFARMER = Tunnel.getInterface("farmer")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+Arena = {}
 Drugs = {}
 Drops = {}
 Carry = {}
@@ -1052,6 +1053,40 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 
 			Wait(100)
 		until not Active[Passport]
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:SAVEARENA
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("inventory:SaveArena",function(Passport)
+	if not Arena[Passport] then
+		exports["inventory"]:CleanWeapons(Passport)
+
+		Arena[Passport] = {
+			["Ammos"] = Users["Ammos"][Passport],
+			["Attachs"] = Users["Attachs"][Passport]
+		}
+
+		Users["Attachs"][Passport] = {
+			["WEAPON_PISTOL_MK2"] = {
+				["ATTACH_FLASHLIGHT"] = true,
+				["ATTACH_CROSSHAIR"] = true
+			}
+		}
+
+		Users["Ammos"][Passport] = {
+			["WEAPON_PISTOL_AMMO"] = 250
+		}
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:APPLYARENA
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("inventory:ApplyArena",function(Passport)
+	if Arena[Passport] and Users["Ammos"][Passport] and Users["Attachs"][Passport] then
+		Users["Attachs"][Passport] = Arena[Passport]["Attachs"]
+		Users["Ammos"][Passport] = Arena[Passport]["Ammos"]
+		Arena[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

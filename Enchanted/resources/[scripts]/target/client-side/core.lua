@@ -36,14 +36,23 @@ local Dismantle = {
 	vec3(1204.69,-3116.71,5.50)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TOWED
+-- TOWEDSOUTH
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Towed = PolyZone:Create({
+local TowedSouth = PolyZone:Create({
 	vec2(409.48,-1629.45),
 	vec2(402.95,-1624.08),
 	vec2(393.87,-1634.91),
 	vec2(400.25,-1640.29)
-},{ name = "Towed" })
+},{ name = "TowedSouth" })
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TOWEDNORTH
+-----------------------------------------------------------------------------------------------------------------------------------------
+local TowedNorth = PolyZone:Create({
+	vec2(1992.2,3777.87),
+	vec2(1974.84,3769.01),
+	vec2(1966.07,3784.13),
+	vec2(1983.1,3793.9)
+},{ name = "TowedNorth" })
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -395,7 +404,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function TargetEnable()
 	local Ped = PlayerPedId()
-	if LocalPlayer["state"]["Cancel"] or LocalPlayer["state"]["Camera"] or LocalPlayer["state"]["Freecam"] or LocalPlayer["state"]["Carry"] or not LocalPlayer["state"]["Active"] or IsPauseMenuActive() or exports["lb-phone"]:IsOpen() or not MumbleIsConnected() or LocalPlayer["state"]["Buttons"] or LocalPlayer["state"]["Commands"] or LocalPlayer["state"]["Handcuff"] or Sucess or IsPedInAnyVehicle(Ped) then
+	if LocalPlayer["state"]["Arena"] or LocalPlayer["state"]["Cancel"] or LocalPlayer["state"]["Camera"] or LocalPlayer["state"]["Freecam"] or LocalPlayer["state"]["Carry"] or not LocalPlayer["state"]["Active"] or IsPauseMenuActive() or exports["lb-phone"]:IsOpen() or not MumbleIsConnected() or LocalPlayer["state"]["Buttons"] or LocalPlayer["state"]["Commands"] or LocalPlayer["state"]["Handcuff"] or Sucess or IsPedInAnyVehicle(Ped) then
 		return
 	end
 
@@ -477,7 +486,7 @@ function TargetEnable()
 						Selected[6] = true
 						Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }
 					else
-						if Towed:isPointInside(HitCoords) and not Entity(Entitys)["state"]["Tow"] then
+						if (TowedSouth:isPointInside(HitCoords) or TowedNorth:isPointInside(HitCoords)) and not Entity(Entitys)["state"]["Tow"] then
 							Menu[#Menu + 1] = { event = "towed:Payment", label = "Entregar", tunnel = "paramedic" }
 						else
 							if Entity(Entitys)["state"]["Lockpick"] then

@@ -40,7 +40,7 @@ function Creative.Buy(Name)
 
 					Active[Passport] = nil
 					TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
-					vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = Plate, Weight = VehicleWeight(Name), Work = 0 })
+					vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = Plate, Days = 30, Weight = VehicleWeight(Name), Work = 0 })
 
 					return true
 				else
@@ -54,7 +54,7 @@ function Creative.Buy(Name)
 
 						Active[Passport] = nil
 						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
-						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = Plate, Weight = VehicleWeight(Name), Work = 0 })
+						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = Plate, Days = 30, Weight = VehicleWeight(Name), Work = 0 })
 
 						return true
 					else

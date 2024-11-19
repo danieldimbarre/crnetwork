@@ -40,9 +40,9 @@ RegisterNUICallback("Click",function(Data,Callback)
 		TriggerEvent("hud:Active",false)
 		SetEntityCoords(Ped,Config[Selected][Floor]["Coords"])
 
-		SetTimeout(1000,function()
+		SetTimeout(2500,function()
 			TriggerEvent("hud:Active",true)
-			DoScreenFadeIn(250)
+			DoScreenFadeIn(2500)
 		end)
 	end
 

@@ -152,8 +152,9 @@ RegisterNUICallback("Drive",function(Data,Callback)
 			LocalPlayer["state"]:set("TestDrive",true,false)
 
 			SetTimeout(2500,function()
+				TriggerEvent("hud:Active",true)
+
 				if IsScreenFadedOut() then
-					TriggerEvent("hud:Active",true)
 					DoScreenFadeIn(2500)
 				end
 			end)

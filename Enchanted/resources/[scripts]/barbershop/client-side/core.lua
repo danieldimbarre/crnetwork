@@ -203,12 +203,8 @@ function OpenBarbershop(Mode)
 	SetCamActive(Camera,true)
 	Default = Coords["z"]
 
-	if Creation then
-		Wait(2500)
-
-		if IsScreenFadedOut() then
-			DoScreenFadeIn(2500)
-		end
+	if Creation and IsScreenFadedOut() then
+		DoScreenFadeIn(2500)
 	end
 
 	SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode } })

@@ -148,7 +148,7 @@ Use = {
 		if Keyboard then
 			local Frequency = sanitizeString(Keyboard[1],"0123456789")
 			if not exports["radio"]:Exist(Frequency) and string.len(Frequency) == 3 and vRP.TakeItem(Passport,Full,1,false,Slot) then
-				TriggerClientEvent("inventory:Notify",source,"Sucesso","Frequência adicionada.","verde")
+				TriggerClientEvent("Notify",source,"Sucesso","Frequência adicionada.","verde",5000)
 				exports["radio"]:Add(Frequency,Keyboard[2])
 			end
 		end

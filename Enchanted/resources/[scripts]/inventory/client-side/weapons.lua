@@ -300,9 +300,8 @@ CreateThread(function()
 
 	while true do
 		local TimeDistance = 999
-		if Actived and Weapon ~= "" then
+		if Weapon ~= "" amd Actived then
 			TimeDistance = 100
-
 			local Ped = PlayerPedId()
 			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
 

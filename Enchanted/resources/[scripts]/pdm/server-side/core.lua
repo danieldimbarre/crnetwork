@@ -19,7 +19,7 @@ local Active = {}
 function Creative.Buy(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Name then
+	if Passport and not Active[Passport] and Name and VehicleExist(Name) then
 		Active[Passport] = true
 
 		local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Name })

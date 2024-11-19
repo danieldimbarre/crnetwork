@@ -266,7 +266,7 @@ RegisterCommand("Cancel",function()
 		TriggerServerEvent("inventory:Cancel")
 
 		if LocalPlayer["state"]["Arena"] then
-			TriggerServerEvent("arena:Exiting")
+			TriggerEvent("arena:Exit")
 		end
 	end
 end)

@@ -94,8 +94,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("inventory:RobberySingle")
 AddEventHandler("inventory:RobberySingle",function(Number,Mode)
-	local Consult = nil
-	local source = source
+	local Consult,Mode = nil,Mode
+	local source,Number = source,Number
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Config[Mode] and not Config[Mode]["Active"] then
 		if Config[Mode]["Police"] and vRP.AmountService("Policia") < Config[Mode]["Police"] then
@@ -121,7 +121,10 @@ AddEventHandler("inventory:RobberySingle",function(Number,Mode)
 			Active[Passport] = os.time() + Config[Mode]["Timer"]
 			TriggerClientEvent("player:Residual",source,Config[Mode]["Residual"])
 			TriggerClientEvent("Progress",source,"Roubando",Config[Mode]["Timer"] * 1000)
-			vRPC.playAnim(source,false,{Config[Mode]["Animation"]["Dict"],Config[Mode]["Animation"]["Name"]},true)
+
+			if Config[Mode]["Animation"] then
+				vRPC.playAnim(source,false,{Config[Mode]["Animation"]["Dict"],Config[Mode]["Animation"]["Name"]},true)
+			end
 
 			exports["vrp"]:CallPolice({
 				["Source"] = source,

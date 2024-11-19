@@ -15,6 +15,10 @@ local Config = {
 			["List"] = {
 				{ ["Item"] = "dirtydollar", ["Chance"] = 100, ["Min"] = 325, ["Max"] = 375 }
 			}
+		},
+		["Animation"] = {
+			["Dict"] = "oddjobs@shop_robbery@rob_till",
+			["Name"] = "loop"
 		}
 	},
 	["Container"] = {
@@ -117,6 +121,10 @@ local Config = {
 				{ ["Item"] = "horsefigurine", ["Chance"] = 2, ["Min"] = 1, ["Max"] = 1 },
 				{ ["Item"] = "toothpaste", ["Chance"] = 35, ["Min"] = 1, ["Max"] = 1 }
 			}
+		},
+		["Animation"] = {
+			["Dict"] = "oddjobs@shop_robbery@rob_till",
+			["Name"] = "loop"
 		}
 	}
 }
@@ -125,8 +133,8 @@ local Config = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("inventory:RobberyMultiplier")
 AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
-	local Consult = nil
-	local source = source
+	local Consult,Mode = nil,Mode
+	local source,Number = source,Number
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Config[Mode] then
 		if Config[Mode]["Police"] and vRP.AmountService("Policia") < Config[Mode]["Police"] then
@@ -149,8 +157,11 @@ AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 			Player(source)["state"]["Buttons"] = true
 			Active[Passport] = os.time() + Config[Mode]["Timer"]
 			TriggerClientEvent("player:Residual",source,Config[Mode]["Residual"])
-			vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
 			TriggerClientEvent("Progress",source,"Roubando",Config[Mode]["Timer"] * 1000)
+
+			if Config[Mode]["Animation"] then
+				vRPC.playAnim(source,false,{Config[Mode]["Animation"]["Dict"],Config[Mode]["Animation"]["Name"]},true)
+			end
 
 			exports["vrp"]:CallPolice({
 				["Source"] = source,

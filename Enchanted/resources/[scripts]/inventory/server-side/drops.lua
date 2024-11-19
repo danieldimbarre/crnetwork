@@ -41,7 +41,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DROPS
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Drops",function(Passport,source,Item,Amount,Force)
+exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 	local Item = Item
 	local Force = Force
 	local Amount = Amount
@@ -73,7 +73,7 @@ exports("Drops",function(Passport,source,Item,Amount,Force)
 		["rarity"] = ItemRarity(Force),
 		["economy"] = ItemEconomy(Force),
 		["desc"] = ItemDescription(Force),
-		["coords"] = vRP.GetEntityCoords(source)
+		["coords"] = Coords or vRP.GetEntityCoords(source)
 	}
 
 	local Split = splitString(Force)

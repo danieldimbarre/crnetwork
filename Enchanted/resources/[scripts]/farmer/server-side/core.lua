@@ -399,11 +399,10 @@ AddEventHandler("farmer:Trasher",function(Number)
 					end
 				end
 
+				Player(source)["state"]["Buttons"] = false
+				Player(source)["state"]["Cancel"] = false
 				vRPC.Destroy(source)
 			end)
-
-			Player(source)["state"]["Buttons"] = false
-			Player(source)["state"]["Cancel"] = false
 		end
 
 		Active[Passport] = nil

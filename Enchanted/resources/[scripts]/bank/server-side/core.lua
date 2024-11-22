@@ -138,13 +138,12 @@ end
 function Creative.Withdraw(Valuation)
 	local source = source
 	local Passport = vRP.Passport(source)
-	local Valuation = parseInt(Valuation,true)
-	if Passport and not Active[Passport] and vRP.GetBank(Passport) >= Valuation and not exports["bank"]:CheckFines(Passport) then
+	if Passport and not Active[Passport] and vRP.GetBank(Passport) >= Valuation then
 		Active[Passport] = true
 
-		vRP.WithdrawCash(Passport,Valuation)
-
-		Active[Passport] = nil
+		if not exports["bank"]:CheckFines(Passport) and vRP.WithdrawCash(Passport,Valuation) then
+			Active[Passport] = nil
+		end
 
 		return {
 			["balance"] = vRP.Identity(Passport)["Bank"],

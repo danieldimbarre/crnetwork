@@ -252,12 +252,13 @@ RegisterServerEvent("garages:Sell")
 AddEventHandler("garages:Sell",function(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
+	if Passport and not Active[Passport] then
 		local Mode = VehicleMode(Name)
 		if Mode == "Rental" or Mode == "Work" or VehicleClass(Name) == "Exclusivos" then
 			return
 		end
 
+		Active[Passport] = true
 		TriggerClientEvent("garages:Close",source)
 
 		local Price = VehiclePrice(Name) * PercetageSelling
@@ -270,6 +271,8 @@ AddEventHandler("garages:Sell",function(Name)
 				vRP.Query("vehicles/removeVehicles",{ Passport = Passport, Vehicle = Name })
 			end
 		end
+
+		Active[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

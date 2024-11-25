@@ -12,6 +12,7 @@ function RenderCamMode(Status)
 		FreezeEntityPosition(TrackedEntity,true)
 		cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",offsetStart,0.0,0.0,0,60.00,true,0)
 		cam2 = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",offsetEnd,0.0,0.0,0,60.00,false,0)
+
 		PointCamAtEntity(cam2,TrackedEntity,0,0,0,true)
 		SetCamFov(cam2,20.0)
 		SetCamActiveWithInterp(cam2,cam,0,true,true)
@@ -42,9 +43,11 @@ function RenderCamMode(Status)
 	end
 end
 
-RegisterNUICallback("close",function(data)
+RegisterNUICallback("close",function()
+	LocalPlayer["state"]:set("Freecam",false,false)
 	SetNuiFocus(false,false)
 	RenderCamMode(false)
+	Actived = false
 end)
 
 RegisterNUICallback("getCamsData",function(_,cb)
@@ -68,6 +71,7 @@ RegisterNUICallback("SetUpCameraMovement",function(data)
 	CameraMoviments = { x = 0, y = 0, z = 0, fov = 0 }
 	camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA",offsetEnd,0.0,40.0,0,20.00 + CameraMoviments["fov"],false,0)
 	SetCamActiveWithInterp(camera)
+
 	PointCamAtEntity(camera,TrackedEntity,0,0,0,true)
 	RenderScriptCams(true,false,0,false,false)
 	ClearTimecycleModifier("helicamfirst",4.2)

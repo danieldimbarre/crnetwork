@@ -427,7 +427,7 @@ function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
 
 			if Components then
 				for Item,_ in pairs(Components) do
-					local Comp = WeaponAttach(Item,Weapon)
+					local Comp = WeaponAttach(SplitOne(Item),Weapon)
 					GiveWeaponComponentToPed(Ped,Weapon,Comp)
 				end
 			end
@@ -447,7 +447,7 @@ function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
 
 			if Components then
 				for Item,_ in pairs(Components) do
-					local Comp = WeaponAttach(Item,Weapon)
+					local Comp = WeaponAttach(SplitOne(Item),Weapon)
 					GiveWeaponComponentToPed(Ped,Weapon,Comp)
 				end
 			end

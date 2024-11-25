@@ -292,6 +292,8 @@ AddEventHandler("propertys:Blips",function()
 				SetBlipScale(Blips[Name],0.5)
 				SetBlipAsShortRange(Blips[Name],true)
 				SetBlipColour(Blips[Name],GlobalState["Markers"][Name] and 35 or 43)
+
+				Wait(10)
 			end
 		end
 

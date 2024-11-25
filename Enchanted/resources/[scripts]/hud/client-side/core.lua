@@ -235,6 +235,12 @@ AddStateBagChangeHandler("Players",nil,function(Name,Key,Value)
 	SendNUIMessage({ Action = "Players", Payload = Dotted(Value) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Safezone",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
+	SendNUIMessage({ Action = "Safezone", Payload = Value })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:VOIP
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("hud:Voip",function(Number)

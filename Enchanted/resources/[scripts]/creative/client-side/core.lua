@@ -431,6 +431,8 @@ CreateThread(function()
 		BeginTextCommandSetBlipName("STRING")
 		AddTextComponentString(Blips[Number][6])
 		EndTextCommandSetBlipName(Blip)
+
+		Wait(10)
 	end
 
 	local Tables = {}

@@ -167,6 +167,11 @@ vRP.Prepare("Races/User","SELECT * FROM races WHERE Race = @Race AND Mode = @Mod
 vRP.Prepare("Races/Update","UPDATE races SET Points = @Points, Vehicle = @Vehicle WHERE Race = @Race AND Mode = @Mode AND Passport = @Passport")
 vRP.Prepare("Races/Consult","SELECT * FROM races WHERE Race = @Race AND Mode = @Mode ORDER BY Points ASC LIMIT @Count")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ARENA
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("arena/Killed","UPDATE characters SET Killed = Killed + 1 WHERE id = @Passport")
+vRP.Prepare("arena/Death","UPDATE characters SET Death = Death + 1 WHERE id = @Passport")
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()

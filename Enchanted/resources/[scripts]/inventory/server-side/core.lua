@@ -837,11 +837,18 @@ function Creative.Use(Slot,Amount)
 						Users["Attachs"][Passport][Weapon] = {}
 					end
 
-					if not Users["Attachs"][Passport][Weapon][Item] then
+					local Check = false
+					for Name,v in pairs(Users["Attachs"][Passport][Weapon]) do
+						if SplitOne(Name) == Item then
+							Check = true
+						end
+					end
+
+					if not Check then
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
 							TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),1,ItemName(Full),ItemRarity(Full) })
+							Users["Attachs"][Passport][Weapon][Full] = true
 							TriggerClientEvent("inventory:Update",source)
-							Users["Attachs"][Passport][Weapon][Item] = true
 							vCLIENT.GiveComponent(source,Component)
 						end
 					else
@@ -1058,7 +1065,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:SAVEARENA
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("inventory:SaveArena",function(Passport)
+AddEventHandler("inventory:SaveArena",function(Passport,Att,Amm)
 	if not Arena[Passport] then
 		exports["inventory"]:CleanWeapons(Passport)
 
@@ -1067,16 +1074,8 @@ AddEventHandler("inventory:SaveArena",function(Passport)
 			["Attachs"] = Users["Attachs"][Passport]
 		}
 
-		Users["Attachs"][Passport] = {
-			["WEAPON_PISTOL_MK2"] = {
-				["ATTACH_FLASHLIGHT"] = true,
-				["ATTACH_CROSSHAIR"] = true
-			}
-		}
-
-		Users["Ammos"][Passport] = {
-			["WEAPON_PISTOL_AMMO"] = 250
-		}
+		Users["Attachs"][Passport] = Att
+		Users["Ammos"][Passport] = Amm
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

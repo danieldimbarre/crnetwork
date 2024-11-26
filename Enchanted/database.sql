@@ -240,3 +240,4 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 ALTER TABLE `characters` ADD `Killed` INT(9) NOT NULL DEFAULT '0' AFTER `Skin`, ADD `Death` INT(9) NOT NULL DEFAULT '0' AFTER `Killed`;
+ALTER TABLE `characters` ADD `Playing` INT(9) NOT NULL DEFAULT '0' AFTER `Death`;

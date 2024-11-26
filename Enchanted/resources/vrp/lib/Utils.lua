@@ -223,13 +223,21 @@ function CompleteTimers(Seconds)
 
 	if Days > 0 then
 		if Hours > 0 then
-			return string.format("%d Dias e %d Horas",Days,Hours)
+			if Minutes > 0 then
+				return string.format("%d Dias, %d Horas e %d Minutos",Days,Hours,Minutes)
+			else
+				return string.format("%d Dias e %d Horas",Days,Hours)
+			end
 		else
 			return string.format("%d Dias",Days)
 		end
 	elseif Hours > 0 then
 		if Minutes > 0 then
-			return string.format("%d Horas e %d Minutos",Hours,Minutes)
+			if Seconds > 0 then
+				return string.format("%d Horas, %d Minutos e %d Segundos",Hours,Minutes,Seconds)
+			else
+				return string.format("%d Horas e %d Minutos",Hours,Minutes)
+			end
 		else
 			return string.format("%d Horas",Hours)
 		end

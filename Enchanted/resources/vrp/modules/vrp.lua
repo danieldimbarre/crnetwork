@@ -14,7 +14,6 @@ tvRP = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 Proxy.addInterface("vRP",vRP)
 Tunnel.bindInterface("vRP",tvRP)
-ARENA = Tunnel.getInterface("arena")
 DEVICE = Tunnel.getInterface("device")
 MEMORY = Tunnel.getInterface("memory")
 REQUEST = Tunnel.getInterface("request")
@@ -97,10 +96,4 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.Device(source,Seconds)
     return DEVICE.Device(source,Seconds)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- VRP.ARENA
------------------------------------------------------------------------------------------------------------------------------------------
-function vRP.Arena(source,Arena)
-    return ARENA.Config(source,Arena)
 end

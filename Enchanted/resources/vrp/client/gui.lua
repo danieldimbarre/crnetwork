@@ -34,6 +34,7 @@ LocalPlayer["state"]:set("Active",false,false)
 LocalPlayer["state"]:set("Freecam",false,false)
 LocalPlayer["state"]:set("Handcuff",false,true)
 LocalPlayer["state"]:set("Commands",false,true)
+LocalPlayer["state"]:set("Safezone",false,true)
 LocalPlayer["state"]:set("Spectate",false,false)
 LocalPlayer["state"]:set("DamageModify",false,false)
 

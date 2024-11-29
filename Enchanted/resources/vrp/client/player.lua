@@ -100,7 +100,7 @@ end
 -- VRP:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("vRP:Active")
-AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
+AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 	LocalPlayer["state"]:set("Name",Name,true)
 	LocalPlayer["state"]:set("Active",true,false)
 	LocalPlayer["state"]:set("Passport",Passport,true)
@@ -120,6 +120,7 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
 		exports["vrp"]:ReloadCharacter()
 		NetworkSetFriendlyFireOption(true)
 		SetCanAttackFriendly(Ped,true,false)
+		TriggerServerEvent("vRP:WaitCharacters",Creation)
 
 		if Inventory then
 			for Slot,v in pairs(Inventory) do

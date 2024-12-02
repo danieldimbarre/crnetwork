@@ -60,8 +60,8 @@ vRP.Prepare("vehicles/plateVehicles","SELECT * FROM vehicles WHERE Plate = @Plat
 vRP.Prepare("vehicles/Arrest","UPDATE vehicles SET Arrest = 1 WHERE Plate = @Plate")
 vRP.Prepare("vehicles/UserVehicles","SELECT * FROM vehicles WHERE Passport = @Passport")
 vRP.Prepare("vehicles/Count","SELECT COUNT(Vehicle) FROM vehicles WHERE Vehicle = @Vehicle")
-vRP.Prepare("vehicles/PlateUsers","SELECT * FROM vehicles WHERE Plate = @Plate AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/Minimals","SELECT * FROM vehicles WHERE Tax + (86400 * 15) <= UNIX_TIMESTAMP()")
+vRP.Prepare("vehicles/PlateUsers","SELECT * FROM vehicles WHERE Plate = @Plate AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/removeVehicles","DELETE FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/selectVehicles","SELECT * FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/CoiloverVehicles","UPDATE vehicles SET Drift = 1 WHERE Vehicle = @Vehicle AND Plate = @Plate")
@@ -102,7 +102,7 @@ vRP.Prepare("propertys/Vault","UPDATE propertys SET Vault = Vault + @Weight WHER
 vRP.Prepare("propertys/Transfer","UPDATE propertys SET Passport = @Passport WHERE Name = @Name")
 vRP.Prepare("propertys/Fridge","UPDATE propertys SET Fridge = Fridge + @Weight WHERE Name = @Name")
 vRP.Prepare("propertys/Check","SELECT * FROM propertys WHERE Name = @Name AND Passport = @Passport")
-vRP.Prepare("propertys/Minimals","SELECT * FROM propertys WHERE Tax <= UNIX_TIMESTAMP() - (86400 * 15)")
+vRP.Prepare("propertys/Minimals","SELECT * FROM propertys WHERE Tax + (86400 * 15) <= UNIX_TIMESTAMP()")
 vRP.Prepare("propertys/Tax","UPDATE propertys SET Tax = UNIX_TIMESTAMP() + (86400 * 30) WHERE Name = @Name")
 vRP.Prepare("propertys/Buy","INSERT INTO propertys (Name,Interior,Passport,Serial,Vault,Fridge,Tax) VALUES (@Name,@Interior,@Passport,@Serial,@Vault,@Fridge,UNIX_TIMESTAMP() + (86400 * 30))")
 -----------------------------------------------------------------------------------------------------------------------------------------

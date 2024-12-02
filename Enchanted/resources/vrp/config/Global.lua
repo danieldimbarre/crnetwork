@@ -58,7 +58,7 @@ Theme = {
 		["modes"] = {
 			["info"] = 3, -- [ Opções disponíveis: 1,2,3 ],
 			["icon"] = "fill", -- [ Opções disponíveis: fill,line ],
-			["status"] = 4, -- [ Opções disponíveis: 1 a 12 ],
+			["status"] = 10, -- [ Opções disponíveis: 1 a 12 ],
 			["vehicle"] = 3 -- [ Opções disponíveis: 1,2,3 ]
 		},
 		["percentage"] = true,

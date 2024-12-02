@@ -268,7 +268,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("propertys:Blips")
 AddEventHandler("propertys:Blips",function()
-	if #Blips > 0 then
+	if CountTable(Blips) > 0 then
 		for _,v in pairs(Blips) do
 			if DoesBlipExist(v) then
 				RemoveBlip(v)

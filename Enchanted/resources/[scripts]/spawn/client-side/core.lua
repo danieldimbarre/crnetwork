@@ -116,7 +116,6 @@ AddEventHandler("spawn:Finish",function(Coords,Creation)
 			TriggerEvent("hud:Active",true)
 		end
 
-		TriggerServerEvent("vRP:WaitCharacters",Creation)
 		SendNUIMessage({ Action = "Close" })
 		SetNuiFocus(false,false)
 
@@ -138,8 +137,6 @@ RegisterNUICallback("Spawn",function(Data,Callback)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end
-
-	TriggerServerEvent("vRP:WaitCharacters")
 	SendNUIMessage({ Action = "Close" })
 	TriggerEvent("hud:Active",true)
 	SetNuiFocus(false,false)

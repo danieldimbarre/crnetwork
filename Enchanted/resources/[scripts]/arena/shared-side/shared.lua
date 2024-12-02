@@ -67,7 +67,7 @@ Zones = {
 		},
 		["Route"] = 900002,
 		["Attachs"] = {
-			["WEAPON_PISTOL_MK2"] = {
+			["WEAPON_SMG"] = {
 				["ATTACH_FLASHLIGHT"] = true,
 				["ATTACH_MAGAZINE"] = true,
 				["ATTACH_CROSSHAIR"] = true
@@ -104,7 +104,7 @@ Zones = {
 		},
 		["Route"] = 900003,
 		["Attachs"] = {
-			["WEAPON_PISTOL_MK2"] = {
+			["WEAPON_CARBINERIFLE"] = {
 				["ATTACH_FLASHLIGHT"] = true,
 				["ATTACH_MAGAZINE"] = true,
 				["ATTACH_GRIP"] = true,

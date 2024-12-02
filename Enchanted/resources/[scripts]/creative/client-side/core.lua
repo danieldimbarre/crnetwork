@@ -1,8 +1,4 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
------------------------------------------------------------------------------------------------------------------------------------------
-local BunnyHope = GetGameTimer()
------------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Blips = {
@@ -295,25 +291,19 @@ local InfoList = {
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
+	local controlsToDisable = { 37,204,211,349,192,157,158,159,160,161,162,163,164,165 }
+
 	while true do
 		local Pid = PlayerId()
 		local Ped = PlayerPedId()
-
 		if IsPedInAnyVehicle(Ped) then
 			DisableControlAction(0,345,true)
-			DisablePlayerVehicleRewards(Pid)
 
 			if IsPedInAnyHeli(Ped) then
 				local Vehicle = GetVehiclePedIsUsing(Ped)
 				if IsControlJustPressed(1,154) and not IsAnyPedRappellingFromHeli(Vehicle) and (GetPedInVehicleSeat(Vehicle,1) == Ped or GetPedInVehicleSeat(Vehicle,2) == Ped) then
 					TaskRappelFromHeli(Ped,1)
 				end
-			end
-		else
-			if BunnyHope >= GetGameTimer() then
-				DisableControlAction(1,22,true)
-			elseif IsPedJumping(Ped) and BunnyHope <= GetGameTimer() then
-				BunnyHope = GetGameTimer() + 5000
 			end
 		end
 
@@ -323,20 +313,9 @@ CreateThread(function()
 			end
 		end
 
-		DisableControlAction(0,37,true)
-		DisableControlAction(0,204,true)
-		DisableControlAction(0,211,true)
-		DisableControlAction(0,349,true)
-		DisableControlAction(0,192,true)
-		DisableControlAction(0,157,true)
-		DisableControlAction(0,158,true)
-		DisableControlAction(0,159,true)
-		DisableControlAction(0,160,true)
-		DisableControlAction(0,161,true)
-		DisableControlAction(0,162,true)
-		DisableControlAction(0,163,true)
-		DisableControlAction(0,164,true)
-		DisableControlAction(0,165,true)
+		for _,control in ipairs(controlsToDisable) do
+			DisableControlAction(0,control,true)
+		end
 
 		DisableVehicleDistantlights(true)
 		SetArtificialLightsState(false)
@@ -367,11 +346,12 @@ CreateThread(function()
 		end
 
 		SetPlayerTargetingMode(3)
-		SetPedInfiniteAmmoClip(Ped,false)
+		DisablePlayerVehicleRewards(Pid)
 		SetPlayerLockonRangeOverride(Pid,0.0)
 		SetCreateRandomCopsOnScenarios(false)
 		SetCreateRandomCopsNotOnScenarios(false)
 		SetEntityProofs(Ped,false,true,true,false,false,false,false,false)
+		SetPedInfiniteAmmoClip(Ped,LocalPlayer["state"]["Arena"] and true or false)
 		N_0x4757f00bc6323cfe(-1553120962,0.0)
 		N_0x4757f00bc6323cfe(539292904,0.0)
 
@@ -384,9 +364,9 @@ CreateThread(function()
 		SetWeatherTypeNowPersist(GlobalState["Weather"])
 
 		if LocalPlayer["state"]["Active"] then
-			NetworkOverrideClockTime(GlobalState["Hours"],GlobalState["Minutes"],00)
+			NetworkOverrideClockTime(GlobalState["Hours"],GlobalState["Minutes"],0)
 		else
-			NetworkOverrideClockTime(12,00,00)
+			NetworkOverrideClockTime(12,0,0)
 		end
 
 		Wait(0)
@@ -396,11 +376,17 @@ end)
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	SetMapZoomDataLevel(0,0.96,0.9,0.08,0.0,0.0)
-	SetMapZoomDataLevel(1,1.6,0.9,0.08,0.0,0.0)
-	SetMapZoomDataLevel(2,8.6,0.9,0.08,0.0,0.0)
-	SetMapZoomDataLevel(3,12.3,0.9,0.08,0.0,0.0)
-	SetMapZoomDataLevel(4,22.3,0.9,0.08,0.0,0.0)
+	local mapZoomData = {
+		{ 0,0.96,0.9,0.08,0.0,0.0 },
+		{ 1,1.6,0.9,0.08,0.0,0.0 },
+		{ 2,8.6,0.9,0.08,0.0,0.0 },
+		{ 3,12.3,0.9,0.08,0.0,0.0 },
+		{ 4,22.3,0.9,0.08,0.0,0.0 }
+	}
+
+	for _,zoomData in ipairs(mapZoomData) do
+		SetMapZoomDataLevel(zoomData[1],zoomData[2],zoomData[3],zoomData[4],zoomData[5],zoomData[6])
+	end
 
 	for _,v in pairs(InfoList) do
 		local Interior = GetInteriorAtCoords(v["Coords"])
@@ -415,33 +401,34 @@ CreateThread(function()
 		RefreshInterior(Interior)
 	end
 
-	for Number = 1,#Alphas do
-		local Blip = AddBlipForRadius(Alphas[Number][1]["x"],Alphas[Number][1]["y"],Alphas[Number][1]["z"],Alphas[Number][4])
-		SetBlipAlpha(Blip,Alphas[Number][2])
-		SetBlipColour(Blip,Alphas[Number][3])
+	for _,alphaData in ipairs(Alphas) do
+		local radius = alphaData[1]
+		local Blip = AddBlipForRadius(radius["x"],radius["y"],radius["z"],alphaData[4])
+		SetBlipAlpha(Blip,alphaData[2])
+		SetBlipColour(Blip,alphaData[3])
 	end
 
-	for Number = 1,#Blips do
-		local Blip = AddBlipForCoord(Blips[Number][1],Blips[Number][2],Blips[Number][3])
-		SetBlipSprite(Blip,Blips[Number][4])
+	for _,blipData in ipairs(Blips) do
+		local Blip = AddBlipForCoord(blipData[1],blipData[2],blipData[3])
+		SetBlipSprite(Blip,blipData[4])
 		SetBlipDisplay(Blip,4)
 		SetBlipAsShortRange(Blip,true)
-		SetBlipColour(Blip,Blips[Number][5])
-		SetBlipScale(Blip,Blips[Number][7])
+		SetBlipColour(Blip,blipData[5])
+		SetBlipScale(Blip,blipData[7])
+
 		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(Blips[Number][6])
+		AddTextComponentString(blipData[6])
 		EndTextCommandSetBlipName(Blip)
 
 		Wait(10)
 	end
 
-	local Tables = {}
-
-	for Number = 1,#Teleport do
-		Tables[#Tables + 1] = { Teleport[Number][1],2.5,"E","Pressione","para acessar" }
+	local teleportData = {}
+	for _,teleport in ipairs(Teleport) do
+		table.insert(teleportData,{ teleport[1],2.5,"E","Pressione","para acessar" })
 	end
 
-	TriggerEvent("hoverfy:Insert",Tables)
+	TriggerEvent("hoverfy:Insert",teleportData)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTELEPORT
@@ -454,7 +441,7 @@ CreateThread(function()
 			local Coords = GetEntityCoords(Ped)
 
 			for Number = 1,#Teleport do
-				if #(Coords - Teleport[Number][1]) <= 1 then
+				if #(Coords - Teleport[Number][1]) <= 1.0 then
 					TimeDistance = 1
 
 					if IsControlJustPressed(1,38) then
@@ -471,11 +458,8 @@ end)
 -- THREADACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	while true do
-		local Ped = PlayerPedId()
-		local Coords = GetEntityCoords(Ped)
-
-		if #(Coords - vec3(4840.57,-5174.42,2.0)) <= 2000 then
+	local function manageIsland(iplsActive)
+		if iplsActive then
 			if not IsIplActive("h4_islandairstrip") then
 				for _,v in pairs(Island) do
 					RequestIpl(v)
@@ -498,7 +482,9 @@ CreateThread(function()
 				LoadGlobalWaterType(0)
 			end
 		end
+	end
 
+	local function deleteNonNetworkedEntities()
 		for _,Entity in pairs(GetGamePool("CPed")) do
 			if (NetworkGetEntityOwner(Entity) == -1 or NetworkGetEntityOwner(Entity) == PlayerId()) and GetPedArmour(Entity) <= 0 and not NetworkGetEntityIsNetworked(Entity) then
 				if IsPedInAnyVehicle(Entity) then
@@ -519,10 +505,25 @@ CreateThread(function()
 				DeleteEntity(Vehicle)
 			end
 		end
+	end
 
+	local function disableDispatchServices()
 		for Number = 1,121 do
 			EnableDispatchService(Number,false)
 		end
+	end
+
+	while true do
+		local Ped = PlayerPedId()
+		local Coords = GetEntityCoords(Ped)
+		if #(Coords - vec3(4840.57,-5174.42,2.0)) <= 2000 then
+			manageIsland(true)
+		else
+			manageIsland(false)
+		end
+
+		deleteNonNetworkedEntities()
+		disableDispatchServices()
 
 		Wait(10000)
 	end

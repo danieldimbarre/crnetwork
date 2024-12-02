@@ -218,7 +218,6 @@ AddEventHandler("farmer:Transporter",function(Number)
 						exports["inventory"]:Drops(Passport,source,"pouch",Valuation)
 					end
 
-					vRP.RolepassPoints(Passport,3,true)
 					vRP.UpgradeStress(Passport,1)
 				end
 

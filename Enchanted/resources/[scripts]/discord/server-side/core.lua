@@ -29,7 +29,8 @@ local Discord = {
 	["ItemAll"] = "https://discord.com/api/webhooks/1260041657567412294/_3RHFcD5OqiJzjCPi0YYkhWpt2jUFtxcLbpbGTojqJDeLl-eHb5HSl-WTMkkyvRLKun-",
 	["Renamed"] = "https://discord.com/api/webhooks/1260041719945232525/rrnJBAValz93qmBBqM6VIIP6hFyZL0fePCCi2Ni4TS8SXYmbkFrnzt3F-t0qNb-A0yL5",
 	["AddCar"] = "https://discord.com/api/webhooks/1260041766598344764/AV1OKtvg55CijLF2zvr7y15uHmH7GPhJdYhA02uOW6hK778VZPoK6yBsmlDFfW4elBgn",
-	["Print"] = "https://discord.com/api/webhooks/1291608958028611625/rq9VYxqNBzReIoCwRYdoXMw02zwsZey3EoIgeFKewwEITWXxB4Lc7DWD7flJzY1ur62c"
+	["Print"] = "https://discord.com/api/webhooks/1291608958028611625/rq9VYxqNBzReIoCwRYdoXMw02zwsZey3EoIgeFKewwEITWXxB4Lc7DWD7flJzY1ur62c",
+	["Permissions"] = "https://discord.com/api/webhooks/1311850473254289480/_-jKD5e3edjv3qMzgDotxtaA49AIttQb-mwBS6aHhUz0XcCVdSydYfK9nPeFowuv349P"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EMBED

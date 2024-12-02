@@ -116,21 +116,18 @@ function Creative.Pickup(Number,Route,Target,Amount)
 		if vRP.CheckWeight(Passport,Drops[Route][Number]["key"],Amount) then
 			local Inv = vRP.Inventory(Passport)
 			if not Drops[Route] or not Drops[Route][Number] or not Drops[Route][Number]["key"] or not Drops[Route][Number]["amount"] or Drops[Route][Number]["amount"] < Amount or (Inv[Target] and Inv[Target]["item"] ~= Drops[Route][Number]["key"]) or vRP.MaxItens(Passport,Drops[Route][Number]["key"],Amount) then
-				TriggerClientEvent("inventory:Update",source)
-				Active[Passport] = nil
+				TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
+			else
+				if vRP.GiveItem(Passport,Drops[Route][Number]["key"],Amount,false,Target) then
+					Drops[Route][Number]["amount"] = Drops[Route][Number]["amount"] - Amount
 
-				return false
-			end
-
-			if vRP.GiveItem(Passport,Drops[Route][Number]["key"],Amount,false,Target) then
-				Drops[Route][Number]["amount"] = Drops[Route][Number]["amount"] - Amount
-
-				if Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["amount"] then
-					if parseInt(Drops[Route][Number]["amount"]) <= 0 then
-						TriggerClientEvent("inventory:DropsRemover",-1,Route,Number)
-						Drops[Route][Number] = nil
-					else
-						TriggerClientEvent("inventory:DropsAtualizar",-1,Route,Number,Drops[Route][Number]["amount"])
+					if Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["amount"] then
+						if parseInt(Drops[Route][Number]["amount"]) <= 0 then
+							TriggerClientEvent("inventory:DropsRemover",-1,Route,Number)
+							Drops[Route][Number] = nil
+						else
+							TriggerClientEvent("inventory:DropsAtualizar",-1,Route,Number,Drops[Route][Number]["amount"])
+						end
 					end
 				end
 			end
@@ -138,8 +135,7 @@ function Creative.Pickup(Number,Route,Target,Amount)
 			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 		end
 
+		TriggerClientEvent("inventory:Update",source)
 		Active[Passport] = nil
 	end
-
-	TriggerClientEvent("inventory:Update",source)
 end

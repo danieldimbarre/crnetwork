@@ -423,7 +423,7 @@ AddEventHandler("chest:Armour",function()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasService(Passport,"Policia") then
-		vRP.SetArmour(source,100)
+		vRP.Armour(source,100)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

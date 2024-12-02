@@ -1669,10 +1669,21 @@ end)
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
-	Users["Ammos"][Passport] = vRP.UserData(Passport,"Ammos")
-	Users["Skins"][Passport] = vRP.UserData(Passport,"Skins")
-	Users["Attachs"][Passport] = vRP.UserData(Passport,"Attachs")
-	Users["Blueprints"][Passport] = vRP.UserData(Passport,"Blueprints")
+	if not Users["Ammos"][Passport] then
+		Users["Ammos"][Passport] = vRP.UserData(Passport,"Ammos")
+	end
+
+	if not Users["Skins"][Passport] then
+		Users["Skins"][Passport] = vRP.UserData(Passport,"Skins")
+	end
+
+	if not Users["Attachs"][Passport] then
+		Users["Attachs"][Passport] = vRP.UserData(Passport,"Attachs")
+	end
+
+	if not Users["Blueprints"][Passport] then
+		Users["Blueprints"][Passport] = vRP.UserData(Passport,"Blueprints")
+	end
 
 	TriggerClientEvent("objects:Table",source,Objects)
 	TriggerClientEvent("inventory:Drops",source,Drops)

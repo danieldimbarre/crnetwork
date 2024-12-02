@@ -3094,9 +3094,9 @@ for NameItem,v in pairs(Sprays) do
 						Wait(100)
 					until not Active[Passport]
 				end
+
+				Player(source)["state"]["Buttons"] = false
 			end)
 		end
-
-		Player(source)["state"]["Buttons"] = false
 	end
 end

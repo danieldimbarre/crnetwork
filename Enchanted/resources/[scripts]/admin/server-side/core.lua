@@ -239,7 +239,7 @@ RegisterCommand("god",function(source,Message)
 			end
 		else
 			vRP.Revive(source,300)
-			vRP.SetArmour(source,100)
+			vRP.Armour(source,100)
 			vRP.UpgradeThirst(Passport,100)
 			vRP.UpgradeHunger(Passport,100)
 			vRP.DowngradeStress(Passport,100)
@@ -634,7 +634,23 @@ end)
 CreateThread(function()
 	while true do
 		Wait(5 * 60000)
+
 		TriggerEvent("SaveServer",true)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- LOGSERVICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		Wait(10 * 60000)
+
+		local Message = "**LISTAGEM DE JOGADORES**\n\n**[ PLAYERS ]:** "..GetNumPlayerIndices().."\n"
+		for Permission in pairs(Groups) do
+			Message = Message.."**[ "..string.upper(Permission).." ]:** "..vRP.AmountService(Permission).."\n"
+		end
+
+		exports["discord"]:Embed("Permissions",Message.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

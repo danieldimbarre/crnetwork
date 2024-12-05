@@ -17,7 +17,7 @@ local Active = false
 -- INFORMATION
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Information = {
-	["LSPD"] = {
+	LSPD = {
 		["Chefe"] = 3,
 		["Capitão"] = 18,
 		["Tenente"] = 6,
@@ -25,7 +25,7 @@ local Information = {
 		["Oficial"] = 42,
 		["Cadete"] = 53
 	},
-	["BCSO"] = {
+	BCSO = {
 		["Chefe"] = 3,
 		["Capitão"] = 18,
 		["Tenente"] = 6,
@@ -33,7 +33,7 @@ local Information = {
 		["Oficial"] = 42,
 		["Cadete"] = 53
 	},
-	["BCPR"] = {
+	BCPR = {
 		["Chefe"] = 3,
 		["Capitão"] = 18,
 		["Tenente"] = 6,
@@ -41,19 +41,19 @@ local Information = {
 		["Oficial"] = 42,
 		["Cadete"] = 53
 	},
-	["Paramedico"] = {
+	Paramedico = {
 		["Chefe"] = 1,
 		["Médico"] = 6,
 		["Enfermeiro"] = 59,
 		["Residente"] = 76
 	},
-	["Corredor"] = {
+	Corredor = {
 		["Corredor"] = 8
 	},
-	["Traficante"] = {
+	Traficante = {
 		["Traficante"] = 5
 	},
-	["Boosting"] = {
+	Boosting = {
 		["Boosting"] = 47
 	}
 }
@@ -85,24 +85,8 @@ CreateThread(function()
 
 				local Users = vSERVER.Users()
 				for Index,v in pairs(Users) do
-					if Markers[Index] then
-						async(function()
-							MoveBlipSmooth(Markers[Index],v["Coords"])
-						end)
-					else
-						local Level = v["Level"]
-						local Permission = v["Permission"]
-						if Information[Permission] and Information[Permission][Level] and not Markers[Index] and ((not LocalPlayer["state"]["Paramedico"] and Permission ~= "Paramedico") or (LocalPlayer["state"]["Paramedico"] and Permission == "Paramedico")) then
-							Markers[Index] = AddBlipForCoord(v["Coords"])
-							SetBlipSprite(Markers[Index],1)
-							SetBlipDisplay(Markers[Index],4)
-							SetBlipAsShortRange(Markers[Index],false)
-							SetBlipColour(Markers[Index],Information[Permission][Level])
-							SetBlipScale(Markers[Index],0.7)
-							BeginTextCommandSetBlipName("STRING")
-							AddTextComponentString("! "..Permission.." : "..Level)
-							EndTextCommandSetBlipName(Markers[Index])
-						end
+					if Information[v.Permission] and Information[v.Permission][v.Level] and not Markers[Index] and ((LocalPlayer["state"]["Paramedico"] and v.Permission == "Paramedico") or (CheckPolice() and v.Permission ~= "Paramedico")) then
+						CreateOrUpdateMarker(Index,v.Coords,v.Permission,v.Level)
 					end
 				end
 			else
@@ -116,18 +100,8 @@ CreateThread(function()
 					local List = GetPlayers()
 					for Index,v in pairs(Players) do
 						if List[Index] then
-							local Level = v["Level"]
-							local Permission = v["Permission"]
-							if Information[Permission] and Information[Permission][Level] and not Markers[Index] and ((not LocalPlayer["state"]["Paramedico"] and Permission ~= "Paramedico") or (LocalPlayer["state"]["Paramedico"] and Permission == "Paramedico")) then
-								Markers[Index] = AddBlipForEntity(List[Index])
-								SetBlipSprite(Markers[Index],1)
-								SetBlipDisplay(Markers[Index],4)
-								SetBlipAsShortRange(Markers[Index],false)
-								SetBlipColour(Markers[Index],Information[Permission][Level])
-								SetBlipScale(Markers[Index],0.7)
-								BeginTextCommandSetBlipName("STRING")
-								AddTextComponentString("! "..Permission.." : "..Level)
-								EndTextCommandSetBlipName(Markers[Index])
+							if Information[v.Permission] and Information[v.Permission][v.Level] and not Markers[Index] and ((LocalPlayer["state"]["Paramedico"] and v.Permission == "Paramedico") or (CheckPolice() and v.Permission ~= "Paramedico")) then
+								CreateOrUpdateMarker(Index,v.Coords,v.Permission,v.Level)
 							end
 						else
 							if Markers[Index] then
@@ -151,12 +125,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function GetPlayers()
 	local Selected = {}
+	local GamePool = GetGamePool("CPed")
 
-	for _,Entity in pairs(GetGamePool("CPed")) do
-		local Index = NetworkGetPlayerIndexFromPed(Entity)
-
-		if Index and IsPedAPlayer(Entity) and NetworkIsPlayerConnected(Index) then
-			Selected[GetPlayerServerId(Index)] = Entity
+	for _,Entity in ipairs(GamePool) do
+		if IsPedAPlayer(Entity) then
+			local Index = NetworkGetPlayerIndexFromPed(Entity)
+			if Index and NetworkIsPlayerConnected(Index) then
+				Selected[GetPlayerServerId(Index)] = Entity
+			end
 		end
 	end
 
@@ -166,36 +142,57 @@ end
 -- CLEANMARKERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CleanMarkers()
-	for _,v in pairs(Markers) do
-		if DoesBlipExist(v) then
-			RemoveBlip(v)
+	for _,Blip in pairs(Markers) do
+		if DoesBlipExist(Blip) then
+			RemoveBlip(Blip)
 		end
 	end
 
 	Markers = {}
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CREATEORUPDATEMARKER
+-----------------------------------------------------------------------------------------------------------------------------------------
+function CreateOrUpdateMarker(Index,Coords,Permission,Level)
+	if Markers[Index] then
+		MoveBlipSmooth(Markers[Index],Coords)
+	else
+		Markers[Index] = AddBlipForCoord(Coords)
+		SetBlipSprite(Markers[Index],1)
+		SetBlipDisplay(Markers[Index],4)
+		SetBlipAsShortRange(Markers[Index],false)
+		SetBlipColour(Markers[Index],Information[Permission][Level])
+		SetBlipScale(Markers[Index],0.7)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString("! "..Permission..":"..Level)
+		EndTextCommandSetBlipName(Markers[Index])
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- MOVEBLIPSMOOTH
 -----------------------------------------------------------------------------------------------------------------------------------------
 function MoveBlipSmooth(Blip,Coords)
+	if not DoesBlipExist(Blip) then
+		return false
+	end
+
 	local Timer = 0.0
-	local Delay = GetGameTimer()
-	local Start = GetBlipCoords(Blip)
+	local Init = GetBlipCoords(Blip)
+	local LastUpdate = GetGameTimer()
 
 	while Timer < 1.0 do
-		if GetTimeDifference(GetGameTimer(),Delay) > 10 then
-			Delay = GetGameTimer()
+		local CurrentTime = GetGameTimer()
+		if CurrentTime - LastUpdate > 10 then
+			LastUpdate = CurrentTime
 			Timer = Timer + 0.01
 
-			if DoesBlipExist(Blip) then
-				SetBlipCoords(Blip,Start - (Timer * (Start - Coords)))
-			else
-				Timer = 1.0
-			end
+			SetBlipCoords(Blip,Init + (Coords - Init) * Timer)
 		end
 
 		Wait(1)
 	end
+
+	SetBlipCoords(Blip,Coords)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MARKERS:ADD

@@ -30,6 +30,7 @@ vRP.Prepare("smartphone/Instagram","UPDATE phone_instagram_accounts SET follower
 vRP.Prepare("accounts/All","SELECT * FROM accounts")
 vRP.Prepare("accounts/Token","SELECT * FROM accounts WHERE Token = @Token")
 vRP.Prepare("accounts/Account","SELECT * FROM accounts WHERE License = @License")
+vRP.Prepare("accounts/Discord","SELECT * FROM accounts WHERE Discord = @Discord")
 vRP.Prepare("accounts/Clean","UPDATE accounts SET Whitelist = 0 WHERE License = @License")
 vRP.Prepare("accounts/RemoveBanned","UPDATE accounts SET Banned = 0 WHERE License = @License")
 vRP.Prepare("accounts/NewAccount","INSERT INTO accounts (License,Token) VALUES (@License,@Token)")

@@ -898,22 +898,20 @@ end)
 -- SETHTTPHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
 SetHttpHandler(function(Request,Result)
-	local Code,Message = 400,"Falha na autenticação."
-
-	if Request.headers.auth == "SEUTOKENAUTH" then
+	if Request.headers.Auth == "SEUTOKENAUTH" then
 		if Request.path == "/boosteron" then
 			Request.setDataHandler(function(Body)
 				local Discord = Body.Discord
 				local Account = vRP.Discord(Discord)
 				if Account then
-					Code,Message = 200,"Benefícios entregues: <@"..Discord..">"
-
 					local Consult = vRP.Query("characters/Characters",{ License = Account.License })
 					for _,v in pairs(Consult) do
 						vRP.SetPermission(v.id,"Booster")
 					end
+
+					SendMessageDiscord(200,"Benefícios entregues: <@"..Discord..">")
 				else
-					Code,Message = 404,"Usuário não encontrado."
+					SendMessageDiscord(404,"Usuário não encontrado.")
 				end
 			end)
 		elseif Request.path == "/boosteroff" then
@@ -921,21 +919,25 @@ SetHttpHandler(function(Request,Result)
 				local Discord = Body.Discord
 				local Account = vRP.Discord(Discord)
 				if Account then
-					Code,Message = 200,"Benefícios removidos: <@"..Discord..">"
-
 					local Consult = vRP.Query("characters/Characters",{ License = Account.License })
 					for _,v in pairs(Consult) do
 						vRP.RemovePermission(v.id,"Booster")
 					end
+
+					SendMessageDiscord(200,"Benefícios removidos: <@"..Discord..">")
 				else
-					Code,Message = 404,"Usuário não encontrado."
+					SendMessageDiscord(404,"Usuário não encontrado.")
 				end
 			end)
 		else
-			Code,Message = 404,"Comando indisponível no momento."
+			SendMessageDiscord(404,"Comando indisponível no momento.")
 		end
 	end
-
-	Result.writeHead(Code,{ ["Content-Type"] = "application/json" })
-	Result.send({ message = Message })
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SENDMESSAGEDISCORD
+-----------------------------------------------------------------------------------------------------------------------------------------
+function SendMessageDiscord(Code,Message)
+	Result.writeHead(Code,{ ["Content-Type"] = "application/json" })
+	Result.send(json.encode({ ["message"] = Message }))
+end

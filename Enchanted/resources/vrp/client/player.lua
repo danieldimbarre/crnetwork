@@ -112,7 +112,7 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 	FreezeEntityPosition(Ped,true)
 	NetworkSetFriendlyFireOption(false)
 
-	SetTimeout(10000,function()
+	SetTimeout(5000,function()
 		SetLocalPlayerAsGhost(false)
 		SetEntityVisible(Ped,true,0)
 		SetEntityInvincible(Ped,false)

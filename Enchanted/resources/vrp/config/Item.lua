@@ -1026,7 +1026,8 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.0,
 		["Named"] = true,
-        ["Market"] = true
+        ["Market"] = true,
+		["Delete"] = true
 	},
 	-- COMPONENTES
 	["circuit"] = {

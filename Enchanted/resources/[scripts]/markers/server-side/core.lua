@@ -18,25 +18,25 @@ local Players = {}
 -- USERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Users()
-	local Markers = {}
+    local Markers = {}
 
-	for Source,v in pairs(Players) do
-		local Passport = v["Passport"]
-		if Timers[Passport] and not Timers[Passport]["Stop"] and os.time() >= Timers[Passport]["Timer"] then
-			exports["markers"]:Exit(Source,Passport)
-		else
-			local Ped = GetPlayerPed(Source)
-			if DoesEntityExist(Ped) then
-				Markers[Source] = {
-					["Coords"] = GetEntityCoords(Ped),
-					["Permission"] = v["Permission"],
-					["Level"] = v["Level"]
-				}
-			end
-		end
-	end
+    for Source,v in pairs(Players) do
+        local playerTimer = Timers[v.Passport]
+        if playerTimer and not playerTimer.Stop and os.time() >= playerTimer.Timer then
+            exports["markers"]:Exit(Source,v.Passport)
+        else
+            local Ped = GetPlayerPed(Source)
+            if DoesEntityExist(Ped) then
+                Markers[Source] = {
+                    Coords = GetEntityCoords(Ped),
+                    Permission = v.Permission,
+                    Level = v.Level
+                }
+            end
+        end
+    end
 
-	return Markers
+    return Markers
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENTER
@@ -44,34 +44,34 @@ end
 exports("Enter",function(source,Permission,Level,Passport,Timed)
 	if not Players[source] then
 		Players[source] = {
-			["Passport"] = Passport,
-			["Permission"] = Permission,
-			["Level"] = vRP.NameHierarchy(Permission,Level)
+			Passport = Passport,
+			Permission = Permission,
+			Level = vRP.NameHierarchy(Permission,Level)
 		}
 
 		if Timed then
 			Timers[Passport] = {
-				["Permission"] = Permission,
-				["Timer"] = os.time() + Timed,
-				["Level"] = Level or 1,
-				["Stop"] = false
+				Permission = Permission,
+				Timer = os.time() + Timed,
+				Level = Level or 1,
+				Stop = false
 			}
 		end
 
 		local Service = vRP.NumPermission("Policia")
 		for _,Sources in pairs(Service) do
-			async(function()
-				TriggerClientEvent("markers:Add",Sources,source,Players[source])
-			end)
+			TriggerClientEvent("markers:Add",Sources,source,Players[source])
 		end
 
 		TriggerClientEvent("markers:Full",source,Players)
 	else
-		if Timed and Timers[Passport] then
-			if os.time() > Timers[Passport]["Timer"] then
-				Timers[Passport]["Timer"] = os.time() + Timed
+		local timerData = Timers[Passport]
+		if Timed and timerData then
+			local currentTime = os.time()
+			if currentTime > timerData.Timer then
+				timerData.Timer = currentTime + Timed
 			else
-				Timers[Passport]["Timer"] = Timers[Passport]["Timer"] + Timed
+				timerData.Timer = timerData.Timer + Timed
 			end
 		end
 	end
@@ -85,16 +85,16 @@ exports("Exit",function(source,Passport)
 
 		local Service = vRP.NumPermission("Policia")
 		for _,Sources in pairs(Service) do
-			async(function()
-				TriggerClientEvent("markers:Remove",Sources,source)
-			end)
+			TriggerClientEvent("markers:Remove",Sources,source)
 		end
 	end
 
-	if Timers[Passport] then
-		if Timers[Passport]["Timer"] > os.time() then
-			Timers[Passport]["Stop"] = true
-			Timers[Passport]["Timer"] = Timers[Passport]["Timer"] - os.time()
+	local timerData = Timers[Passport]
+	if timerData then
+		local currentTime = os.time()
+		if timerData.Timer > currentTime then
+			timerData.Stop = true
+			timerData.Timer = timerData.Timer - currentTime
 		else
 			Timers[Passport] = nil
 		end
@@ -110,7 +110,8 @@ end)
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
-	if Timers[Passport] then
-		exports["markers"]:Enter(source,Timers[Passport]["Permission"],Timers[Passport]["Level"],Passport,Timers[Passport]["Timer"])
+	local timerData = Timers[Passport]
+	if timerData then
+		exports["markers"]:Enter(source,timerData["Permission"],timerData["Level"],Passport,timerData["Timer"])
 	end
 end)

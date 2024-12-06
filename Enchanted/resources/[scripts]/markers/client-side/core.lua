@@ -73,35 +73,60 @@ CreateThread(function()
 	end
 
 	while true do
-		local TimeDistance = 10000
+		local TimeDistance = 999
 		if LocalPlayer["state"]["Active"] and Active and Information[Active] then
-			TimeDistance = 2500
-
 			if IsPauseMenuActive() then
 				if not Pause then
-					Pause = true
 					CleanMarkers()
+					Pause = true
 				end
 
 				local Users = vSERVER.Users()
 				for Index,v in pairs(Users) do
-					if Information[v.Permission] and Information[v.Permission][v.Level] and not Markers[Index] and ((LocalPlayer["state"]["Paramedico"] and v.Permission == "Paramedico") or (CheckPolice() and v.Permission ~= "Paramedico")) then
-						CreateOrUpdateMarker(Index,v.Coords,v.Permission,v.Level)
+					if Information[v.Permission] and Information[v.Permission][v.Level] and ((LocalPlayer["state"]["Paramedico"] and v.Permission == "Paramedico") or (CheckPolice() and v.Permission ~= "Paramedico")) then
+						if Markers[Index] then
+							async(function()
+								MoveBlipSmooth(Markers[Index],v.Coords)
+							end)
+						else
+							Markers[Index] = AddBlipForCoord(v.Coords)
+							SetBlipSprite(Markers[Index],1)
+							SetBlipDisplay(Markers[Index],4)
+							SetBlipAsShortRange(Markers[Index],false)
+							SetBlipColour(Markers[Index],Information[v.Permission][v.Level])
+							SetBlipScale(Markers[Index],0.7)
+							BeginTextCommandSetBlipName("STRING")
+							AddTextComponentString("! "..v.Permission..":"..v.Level)
+							EndTextCommandSetBlipName(Markers[Index])
+						end
 					end
 				end
 			else
 				if Pause then
-					Pause = false
 					CleanMarkers()
+					Pause = false
 				end
 
 				local Ped = PlayerPedId()
 				if IsPedInAnyVehicle(Ped) then
+					TimeDistance = 100
+
 					local List = GetPlayers()
 					for Index,v in pairs(Players) do
 						if List[Index] then
-							if Information[v.Permission] and Information[v.Permission][v.Level] and not Markers[Index] and ((LocalPlayer["state"]["Paramedico"] and v.Permission == "Paramedico") or (CheckPolice() and v.Permission ~= "Paramedico")) then
-								CreateOrUpdateMarker(Index,v.Coords,v.Permission,v.Level)
+							if not Markers[Index] and Information[v.Permission] and Information[v.Permission][v.Level] and ((LocalPlayer["state"]["Paramedico"] and v.Permission == "Paramedico") or (CheckPolice() and v.Permission ~= "Paramedico")) then
+								local Source = GetPlayerFromServerId(Index)
+								local Ped = GetPlayerPed(Source)
+
+								Markers[Index] = AddBlipForEntity(Ped)
+								SetBlipSprite(Markers[Index],1)
+								SetBlipDisplay(Markers[Index],4)
+								SetBlipAsShortRange(Markers[Index],false)
+								SetBlipColour(Markers[Index],Information[v.Permission][v.Level])
+								SetBlipScale(Markers[Index],0.7)
+								BeginTextCommandSetBlipName("STRING")
+								AddTextComponentString("! "..v.Permission..":"..v.Level)
+								EndTextCommandSetBlipName(Markers[Index])
 							end
 						else
 							if Markers[Index] then
@@ -117,7 +142,7 @@ CreateThread(function()
 			end
 		end
 
-		Wait(TimeDistance)
+		Wait(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -142,31 +167,13 @@ end
 -- CLEANMARKERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CleanMarkers()
-	for _,Blip in pairs(Markers) do
-		if DoesBlipExist(Blip) then
-			RemoveBlip(Blip)
+	for _,v in pairs(Markers) do
+		if DoesBlipExist(v) then
+			RemoveBlip(v)
 		end
 	end
 
 	Markers = {}
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- CREATEORUPDATEMARKER
------------------------------------------------------------------------------------------------------------------------------------------
-function CreateOrUpdateMarker(Index,Coords,Permission,Level)
-	if Markers[Index] then
-		MoveBlipSmooth(Markers[Index],Coords)
-	else
-		Markers[Index] = AddBlipForCoord(Coords)
-		SetBlipSprite(Markers[Index],1)
-		SetBlipDisplay(Markers[Index],4)
-		SetBlipAsShortRange(Markers[Index],false)
-		SetBlipColour(Markers[Index],Information[Permission][Level])
-		SetBlipScale(Markers[Index],0.7)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("! "..Permission..":"..Level)
-		EndTextCommandSetBlipName(Markers[Index])
-	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOVEBLIPSMOOTH
@@ -191,8 +198,6 @@ function MoveBlipSmooth(Blip,Coords)
 
 		Wait(1)
 	end
-
-	SetBlipCoords(Blip,Coords)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MARKERS:ADD

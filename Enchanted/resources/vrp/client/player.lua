@@ -120,7 +120,10 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 		exports["vrp"]:ReloadCharacter()
 		NetworkSetFriendlyFireOption(true)
 		SetCanAttackFriendly(Ped,true,false)
-		TriggerServerEvent("vRP:WaitCharacters",Creation)
+
+		if not Creation then
+			TriggerServerEvent("vRP:WaitCharacters")
+		end
 
 		if Inventory then
 			for Slot,v in pairs(Inventory) do

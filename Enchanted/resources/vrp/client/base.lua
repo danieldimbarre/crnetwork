@@ -13,7 +13,7 @@ vRPS = Tunnel.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Blipmin = false
+local BlipAdmin = false
 local Information = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THEME
@@ -22,37 +22,19 @@ RegisterNUICallback("Theme",function(Data,Callback)
 	Callback(Theme)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LOADTEXTURES
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	local YTD = CreateRuntimeTxd("Textures")
-	local Textures = vRPS.FilesDirectory("resources/vrp/config/textures")
-
-	for _,Name in pairs(Textures) do
-		local TEXTURE = CreateRuntimeTexture(YTD,Name,512,512)
-		local PNG = LoadResourceFile("vrp","config/textures/"..Name..".png")
-		local DICT = "data:image/png;base64,"..Base64(PNG)
-
-		SetRuntimeTextureImage(TEXTURE,DICT)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSESTPEDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.ClosestPeds(Radius)
 	local Selected = {}
 	local Ped = PlayerPedId()
-	local Radius = Radius + 0.0001
 	local Coords = GetEntityCoords(Ped)
 	local GamePool = GetGamePool("CPed")
+	local Radius = (Radius or 2.0) + 0.0001
 
-	for _,Entity in pairs(GamePool) do
-		local Index = NetworkGetPlayerIndexFromPed(Entity)
-
-		if Index and IsPedAPlayer(Entity) and NetworkIsPlayerConnected(Index) then
-			if #(Coords - GetEntityCoords(Entity)) <= Radius then
-				Selected[#Selected + 1] = GetPlayerServerId(Index)
-			end
+	for _,Entitys in pairs(GamePool) do
+		local Index = NetworkGetPlayerIndexFromPed(Entitys)
+		if IsPedAPlayer(Entitys) and Index and Ped ~= Entitys and NetworkIsPlayerConnected(Index) and #(Coords - GetEntityCoords(Entitys)) <= Radius then
+			table.insert(Selected,GetPlayerServerId(Index))
 		end
 	end
 
@@ -62,26 +44,20 @@ end
 -- CLOSESTPED
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.ClosestPed(Radius)
-	if not Radius then
-		Radius = 2.0
-	end
-
 	local Selected = false
 	local Ped = PlayerPedId()
-	local Radius = Radius + 0.0001
 	local Coords = GetEntityCoords(Ped)
 	local GamePool = GetGamePool("CPed")
+	local Radius = (Radius or 2.0) + 0.0001
 
-	for _,Entity in pairs(GamePool) do
-		local Index = NetworkGetPlayerIndexFromPed(Entity)
-
-		if Index and Entity ~= PlayerPedId() and IsPedAPlayer(Entity) and NetworkIsPlayerConnected(Index) then
-			local EntityCoords = GetEntityCoords(Entity)
-			local EntityDistance = #(Coords - EntityCoords)
-
-			if EntityDistance < Radius then
+	for _,Entitys in pairs(GamePool) do
+		local Index = NetworkGetPlayerIndexFromPed(Entitys)
+		if IsPedAPlayer(Entitys) and Index and Ped ~= Entitys and NetworkIsPlayerConnected(Index) then
+			local OtherCoords = GetEntityCoords(Entity)
+			local OtherDistance = #(Coords - OtherCoords)
+			if OtherDistance <= Radius then
 				Selected = GetPlayerServerId(Index)
-				Radius = EntityDistance
+				Radius = OtherDistance
 			end
 		end
 	end
@@ -92,15 +68,16 @@ end
 -- GETPLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function GetPlayers()
-	local Selected,Voip = {},{}
+	local Voip = {}
+	local Selected = {}
 	local GamePool = GetGamePool("CPed")
 
-	for _,Entity in pairs(GamePool) do
-		local Index = NetworkGetPlayerIndexFromPed(Entity)
+	for _,Entitys in pairs(GamePool) do
+		local Index = NetworkGetPlayerIndexFromPed(Entitys)
 
-		if Index and IsPedAPlayer(Entity) and NetworkIsPlayerConnected(Index) then
-			Selected[Entity] = GetPlayerServerId(Index)
-			Voip[Entity] = Index
+		if Index and IsPedAPlayer(Entitys) and NetworkIsPlayerConnected(Index) then
+			Selected[Entitys] = GetPlayerServerId(Index)
+			Voip[Entitys] = Index
 		end
 	end
 
@@ -116,25 +93,7 @@ end
 -- BLIPADMIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.BlipAdmin()
-	Blipmin = not Blipmin
-
-	while Blipmin do
-		local Players,Voip = GetPlayers()
-		for Entitys,v in pairs(Players) do
-			if Entitys ~= PlayerPedId() and Player(v)["state"]["Passport"] then
-				local Armour = GetPedArmour(Entitys)
-				local Coords = GetEntityCoords(Entitys)
-				local Healths = GetEntityHealth(Entitys) - 100
-				local Passport = Player(v)["state"]["Passport"]
-				local Talking = MumbleIsPlayerTalking(Voip[Entitys])
-				local Name = Player(v)["state"]["Name"] or "Carregando"
-
-				DrawText3D(Coords,"~w~[ "..(Talking and "~q~" or "")..Name.."~w~ ] [ ~y~"..Passport.."~w~ ] [ ~g~"..(Healths <= 0 and "Morto" or Healths).."~w~ ] [ ~b~"..Armour.."~w~ ]",0.275)
-			end
-		end
-
-		Wait(0)
-	end
+	BlipAdmin = not BlipAdmin
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYSOUND
@@ -151,12 +110,15 @@ function PassportEnable()
 
 		while Information do
 			local Ped = PlayerPedId()
+			local Players = GetPlayers()
 			local Coords = GetEntityCoords(Ped)
 
-			for Entitys,v in pairs(GetPlayers()) do
+			for Entitys,v in pairs(Players) do
 				local OtherCoords = GetEntityCoords(Entitys)
-				if Entitys ~= PlayerPedId() and Player(v)["state"]["Passport"] and HasEntityClearLosToEntity(Ped,Entitys,17) and #(Coords - OtherCoords) <= 5 then
-					DrawText3D(OtherCoords,"~w~"..Player(v)["state"]["Passport"],0.45,true)
+				local Passport = Player(v)["state"]["Passport"]
+
+				if Ped ~= Entitys and Passport and HasEntityClearLosToEntity(Ped,Entitys,17) and #(Coords - OtherCoords) <= 10.0 then
+					DrawText3D(OtherCoords,"~w~[ "..Passport.." ]",1.375)
 				end
 			end
 
@@ -175,12 +137,61 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("+Information",PassportEnable)
 RegisterCommand("-Information",PassportDisable)
-RegisterKeyMapping("+Information","Visualizar passaportes.","keyboard","F7")
+RegisterKeyMapping("+Information","Visualizar passaporte.","keyboard","F7")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSYSTEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	local YTD = CreateRuntimeTxd("Textures")
+	local Textures = vRPS.FilesDirectory("resources/vrp/config/textures")
+
+	for _,Name in pairs(Textures) do
+		local PNG = LoadResourceFile("vrp","config/textures/"..Name..".png")
+		local DICT = "data:image/png;base64,"..Base64(PNG)
+		local TEXTURE = CreateRuntimeTexture(YTD,Name,512,512)
+
+		SetRuntimeTextureImage(TEXTURE,DICT)
+	end
+
+	while true do
+		local TimeDistance = 999
+		if LocalPlayer["state"]["Active"] then
+			local Ped = PlayerPedId()
+			local Players,Voip = GetPlayers()
+			local Coords = GetEntityCoords(Ped)
+
+			for Entitys,v in pairs(Players) do
+				local PlayerState = Player(v)["state"]
+				local Passport = PlayerState["Passport"]
+				local OtherCoords = GetEntityCoords(Entitys)
+				local Title = PlayerState["Title"]
+
+				if Ped ~= Entitys and Title and HasEntityClearLosToEntity(Ped,Entitys,17) and #(Coords - OtherCoords) <= 10.0 then
+					TimeDistance = 0
+
+					DrawText3D(OtherCoords,"~w~[ "..Title.." ]",1.250)
+				end
+
+				if BlipAdmin and Passport then
+					TimeDistance = 0
+
+					local Armour = GetPedArmour(Entitys)
+					local Health = GetEntityHealth(Entitys) - 100
+					local Talking = MumbleIsPlayerTalking(Voip[Entitys])
+
+					DrawText3D(OtherCoords,"~w~[ "..(Talking and "~q~" or "")..(PlayerState["Name"] or "Carregando").."~w~ ] [ ~y~"..Passport.."~w~ ] [ ~g~"..(Health <= 0 and "Morto" or Health).."~w~ ] [ ~b~"..Armour.."~w~ ]",1.125)
+				end
+			end
+		end
+
+		Wait(TimeDistance)
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT3D
 -----------------------------------------------------------------------------------------------------------------------------------------
-function DrawText3D(Coords,Text,Weight,Background)
-	local onScreen,x,y = World3dToScreen2d(Coords["x"],Coords["y"],Coords["z"] + 1.10)
+function DrawText3D(Coords,Text,Height,Background)
+	local onScreen,x,y = World3dToScreen2d(Coords["x"],Coords["y"],Coords["z"] + Height)
 
 	if onScreen then
 		SetTextFont(4)
@@ -195,7 +206,8 @@ function DrawText3D(Coords,Text,Weight,Background)
 		EndTextCommandDisplayText(x,y)
 
 		if Background then
-			local Width = string.len(Text) / 160 * Weight
+			local Length = string.len(Text)
+			local Width = (Length / 160) * 0.0
 			DrawRect(x,y + 0.0125,Width,0.03,15,15,15,175)
 		end
 	end

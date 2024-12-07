@@ -901,43 +901,45 @@ SetHttpHandler(function(Request,Result)
 	if Request.headers.Auth == "SEUTOKENAUTH" then
 		if Request.path == "/boosteron" then
 			Request.setDataHandler(function(Body)
-				local Discord = Body.Discord
-				local Account = vRP.Discord(Discord)
+				local Table = json.decode(Body)
+				local Account = vRP.Discord(Table.Discord)
 				if Account then
 					local Consult = vRP.Query("characters/Characters",{ License = Account.License })
 					for _,v in pairs(Consult) do
 						vRP.SetPermission(v.id,"Booster")
 					end
 
-					SendMessageDiscord(200,"Benefícios entregues: <@"..Discord..">")
+					SendMessageDiscord(Result,200,"Benefícios entregues: <@"..Table.Discord..">")
 				else
-					SendMessageDiscord(404,"Usuário não encontrado.")
+					SendMessageDiscord(Result,404,"Usuário não encontrado.")
 				end
 			end)
 		elseif Request.path == "/boosteroff" then
 			Request.setDataHandler(function(Body)
-				local Discord = Body.Discord
-				local Account = vRP.Discord(Discord)
+				local Table = json.decode(Body)
+				local Account = vRP.Discord(Table.Discord)
 				if Account then
 					local Consult = vRP.Query("characters/Characters",{ License = Account.License })
 					for _,v in pairs(Consult) do
 						vRP.RemovePermission(v.id,"Booster")
 					end
 
-					SendMessageDiscord(200,"Benefícios removidos: <@"..Discord..">")
+					SendMessageDiscord(Result,200,"Benefícios removidos: <@"..Table.Discord..">")
 				else
-					SendMessageDiscord(404,"Usuário não encontrado.")
+					SendMessageDiscord(Result,404,"Usuário não encontrado.")
 				end
 			end)
 		else
-			SendMessageDiscord(404,"Comando indisponível no momento.")
+			SendMessageDiscord(Result,404,"Comando indisponível no momento.")
 		end
+	else
+		SendMessageDiscord(Result,400,"Falha na autenticação.")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SENDMESSAGEDISCORD
 -----------------------------------------------------------------------------------------------------------------------------------------
-function SendMessageDiscord(Code,Message)
+function SendMessageDiscord(Result,Code,Message)
 	Result.writeHead(Code,{ ["Content-Type"] = "application/json" })
-	Result.send(json.encode({ ["message"] = Message }))
+	Result.send(json.encode({ message = Message }))
 end

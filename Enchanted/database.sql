@@ -18,28 +18,22 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   KEY `Token` (`Token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-DROP TABLE IF EXISTS `allowlist`;
-CREATE TABLE IF NOT EXISTS `allowlist` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `discord_id` varchar(50) NOT NULL DEFAULT '0',
-  `status` int(11) DEFAULT 0,
-  `form` longtext NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `discord_id` (`discord_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 DROP TABLE IF EXISTS `characters`;
 CREATE TABLE IF NOT EXISTS `characters` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) DEFAULT '''''''Individuo''''''',
-  `Lastname` varchar(50) DEFAULT '''''''Indigente''''''',
+  `Name` varchar(50) DEFAULT 'Individuo',
+  `Lastname` varchar(50) DEFAULT 'Indigente',
   `Sex` varchar(1) DEFAULT NULL,
+  `Phone` varchar(10) DEFAULT NULL,
   `Bank` int(20) NOT NULL DEFAULT 5000,
   `Blood` int(1) NOT NULL DEFAULT 1,
   `Prison` int(10) NOT NULL DEFAULT 0,
   `Medic` int(20) NOT NULL DEFAULT 0,
   `Groups` int(20) NOT NULL DEFAULT 0,
-  `Skin` varchar(50) NOT NULL DEFAULT '''mp_m_freemode_01''',
+  `Skin` varchar(50) NOT NULL DEFAULT 'mp_m_freemode_01',
+  `Killed` int(9) NOT NULL DEFAULT 0,
+  `Death` int(9) NOT NULL DEFAULT 0,
+  `Playing` int(9) NOT NULL DEFAULT 0,
   `License` varchar(50) DEFAULT NULL,
   `Created` int(20) NOT NULL DEFAULT 0,
   `Login` int(20) NOT NULL DEFAULT 0,
@@ -188,15 +182,6 @@ CREATE TABLE IF NOT EXISTS `taxs` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-DROP TABLE IF EXISTS `ticket`;
-CREATE TABLE IF NOT EXISTS `ticket` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `discord_id` varchar(50) DEFAULT NULL,
-  `channel_id` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `discord_id` (`discord_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 DROP TABLE IF EXISTS `transactions`;
 CREATE TABLE IF NOT EXISTS `transactions` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
@@ -238,6 +223,3 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   KEY `Passport` (`Passport`),
   KEY `Vehicle` (`Vehicle`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-ALTER TABLE `characters` ADD `Killed` INT(9) NOT NULL DEFAULT '0' AFTER `Skin`, ADD `Death` INT(9) NOT NULL DEFAULT '0' AFTER `Killed`;
-ALTER TABLE `characters` ADD `Playing` INT(9) NOT NULL DEFAULT '0' AFTER `Death`;

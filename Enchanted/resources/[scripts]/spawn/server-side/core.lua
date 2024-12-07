@@ -117,7 +117,7 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 	local Consult = vRP.Query("characters/LastCharacter",{ License = License })
 	if Consult[1] then
 		vRPC.DoScreenFadeOut(source)
-		vRP.CharacterChosen(source,Consult[1].id,Sexo)
+		vRP.CharacterChosen(source,Consult[1].id,Sex)
 	end
 
 	Active[source] = nil

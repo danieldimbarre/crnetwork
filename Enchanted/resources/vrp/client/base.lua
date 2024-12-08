@@ -53,7 +53,7 @@ function tvRP.ClosestPed(Radius)
 	for _,Entitys in pairs(GamePool) do
 		local Index = NetworkGetPlayerIndexFromPed(Entitys)
 		if IsPedAPlayer(Entitys) and Index and Ped ~= Entitys and NetworkIsPlayerConnected(Index) then
-			local OtherCoords = GetEntityCoords(Entity)
+			local OtherCoords = GetEntityCoords(Entitys)
 			local OtherDistance = #(Coords - OtherCoords)
 			if OtherDistance <= Radius then
 				Selected = GetPlayerServerId(Index)

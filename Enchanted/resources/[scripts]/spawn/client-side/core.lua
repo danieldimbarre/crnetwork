@@ -35,11 +35,11 @@ local Anims = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Characters",function(Data,Callback)
 	local Ped = PlayerPedId()
-	SetEntityCoords(Ped,233.85,-1387.59,29.55,false,false,false,false)
+	SetEntityCoords(Ped,-2006.95,2960.77,31.81,false,false,false,false)
 	FreezeEntityPosition(Ped,true)
 	SetEntityInvincible(Ped,true)
 	SetEntityVisible(Ped,false,0)
-	SetEntityHeading(Ped,136.07)
+	SetEntityHeading(Ped,305.82)
 	SetEntityHealth(Ped,100)
 	SetPedArmour(Ped,0)
 
@@ -50,8 +50,8 @@ RegisterNUICallback("Characters",function(Data,Callback)
 
 	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
 	RenderScriptCams(true,false,0,false,false)
-	SetCamCoord(Camera,232.0,-1388.64,30.45)
-	SetCamRot(Camera,0.0,0.0,320.0,2)
+	SetCamCoord(Camera,-2005.5,2962.11,32.7)
+	SetCamRot(Camera,0.0,0.0,150.0,2)
 	SetCamActive(Camera,true)
 	SetNuiFocus(true,true)
 

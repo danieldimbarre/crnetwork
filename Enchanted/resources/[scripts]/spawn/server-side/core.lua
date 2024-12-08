@@ -110,7 +110,7 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 		Name = FirstText(Name),
 		Lastname = FirstText(Lastname),
 		Sex = Sexo,
-		Skin = Sexo,
+		Skin = Sex,
 		Blood = math.random(4)
 	})
 

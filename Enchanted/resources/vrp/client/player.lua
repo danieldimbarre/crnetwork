@@ -106,15 +106,22 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 	LocalPlayer["state"]:set("Passport",Passport,true)
 
 	local Ped = PlayerPedId()
+
+	if not Creation then
+		SetEntityVisible(Ped,false,0)
+	end
+
 	SetLocalPlayerAsGhost(true)
-	SetEntityVisible(Ped,false,0)
 	SetEntityInvincible(Ped,true)
 	FreezeEntityPosition(Ped,true)
 	NetworkSetFriendlyFireOption(false)
 
 	SetTimeout(5000,function()
+		if not Creation then
+			SetEntityVisible(Ped,true,0)
+		end
+
 		SetLocalPlayerAsGhost(false)
-		SetEntityVisible(Ped,true,0)
 		SetEntityInvincible(Ped,false)
 		FreezeEntityPosition(Ped,false)
 		exports["vrp"]:ReloadCharacter()

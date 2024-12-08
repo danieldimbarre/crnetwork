@@ -203,12 +203,16 @@ function OpenBarbershop(Mode)
 	SetCamActive(Camera,true)
 	Default = Coords["z"]
 
-	if Creation and IsScreenFadedOut() then
-		DoScreenFadeIn(2500)
+	if Creation then
+		SetTimeout(2500,function()
+			SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode } })
+			SetNuiFocus(true,true)
+			DoScreenFadeIn(2500)
+		end)
+	else
+		SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode } })
+		SetNuiFocus(true,true)
 	end
-
-	SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode } })
-	SetNuiFocus(true,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCATIONS

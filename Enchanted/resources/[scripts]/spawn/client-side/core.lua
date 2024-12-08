@@ -110,7 +110,6 @@ AddEventHandler("spawn:Finish",function(Coords,Creation)
 		SetCamRot(Camera,0.0,0.0,0.0,2)
 	else
 		if Creation then
-			SetEntityVisible(PlayerPedId(),true,0)
 			exports["barbershop"]:Creation(Creation)
 		else
 			TriggerEvent("hud:Active",true)

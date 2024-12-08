@@ -22,7 +22,6 @@ local Creation = false
 RegisterNUICallback("Save",function(Data,Callback)
 	if Creation then
 		DoScreenFadeOut(0)
-		FreezeEntityPosition(PlayerPedId(),false)
 
 		SetTimeout(2500,function()
 			TriggerEvent("hud:Active",true)
@@ -53,7 +52,6 @@ end)
 RegisterNUICallback("Reset",function(Data,Callback)
 	if Creation then
 		DoScreenFadeOut(0)
-		FreezeEntityPosition(PlayerPedId(),false)
 
 		SetTimeout(2500,function()
 			TriggerEvent("hud:Active",true)
@@ -265,10 +263,12 @@ end)
 -- CREATION
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Creation",function(Heading)
-	FreezeEntityPosition(PlayerPedId(),true)
-	SetEntityHeading(PlayerPedId(),Heading)
-	Creation = true
+	local Ped = PlayerPedId()
+	if not IsEntityVisible(Ped) then
+		SetEntityVisible(Ped,true,0)
+	end
 
+	Creation = true
 	OpenBarbershop(true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

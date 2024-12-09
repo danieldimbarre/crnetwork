@@ -355,23 +355,11 @@ RegisterCommand("ban",function(source,Message)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
 		local Keyboard = vKEYBOARD.Banned(source,"Passaporte","Dias","Motivo")
 		if Keyboard and vRP.Identity(Keyboard[1]) then
-			local Reason = Keyboard[3]
 			local Days = parseInt(Keyboard[2],true)
 			local OtherPassport = parseInt(Keyboard[1])
-			local OtherSource = vRP.Source(OtherPassport)
 
-			if Days > 999 then
-				Days = 999
-			end
-
-			vRP.Query("hwid/All",{ Account = vRP.AccountInformation(OtherPassport,"id"), Banned = 1 })
-			vRP.Query("accounts/InsertBanned",{ License = vRP.AccountInformation(OtherPassport,"License"), Days = Days })
+			vRP.SetBanned(OtherPassport,Days > 999 and 999 or Days,Keyboard[3])
 			TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.","verde",5000)
-			exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[DIAS]:** "..Days.."\n**[MOTIVO]:** "..Reason.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
-
-			if OtherSource then
-				vRP.Kick(OtherSource,"Banido")
-			end
 		end
 	end
 end)

@@ -2,10 +2,8 @@
 -- CHARACTERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("characters/Person","SELECT * FROM characters WHERE id = @Passport")
-vRP.Prepare("characters/Phone","SELECT id FROM characters WHERE Phone = @Phone")
 vRP.Prepare("characters/Delete","UPDATE characters SET Deleted = 1 WHERE id = @Passport")
 vRP.Prepare("characters/SetSkin","UPDATE characters SET Skin = @Skin WHERE id = @Passport")
-vRP.Prepare("characters/UpdatePhone","UPDATE characters SET Phone = @Phone WHERE id = @Passport")
 vRP.Prepare("characters/SetMedicplan","UPDATE characters SET Medic = @Medic WHERE id = @Passport")
 vRP.Prepare("characters/AddBank","UPDATE characters SET Bank = Bank + @Bank WHERE id = @Passport")
 vRP.Prepare("characters/RemBank","UPDATE characters SET Bank = Bank - @Bank WHERE id = @Passport")
@@ -40,10 +38,10 @@ vRP.Prepare("accounts/LastLogin","UPDATE accounts SET Login = UNIX_TIMESTAMP() W
 vRP.Prepare("accounts/AddGemstone","UPDATE accounts SET Gemstone = Gemstone + @Gemstone WHERE License = @License")
 vRP.Prepare("accounts/UpdateCharacters","UPDATE accounts SET Characters = Characters + 1 WHERE License = @License")
 vRP.Prepare("accounts/RemoveGemstone","UPDATE accounts SET Gemstone = Gemstone - @Gemstone WHERE License = @License")
-vRP.Prepare("accounts/InsertBanned","UPDATE accounts SET Banned = UNIX_TIMESTAMP() + (86400 * @Days) WHERE License = @License")
 vRP.Prepare("accounts/UpgradePremium","UPDATE accounts SET Premium = Premium + (86400 * @Days), Level = @Level WHERE License = @License")
 vRP.Prepare("accounts/Minimals","SELECT * FROM accounts WHERE Login <= UNIX_TIMESTAMP() - (86400 * 15) AND License <> 0 AND Whitelist = 1")
 vRP.Prepare("accounts/SetPremium","UPDATE accounts SET Premium = UNIX_TIMESTAMP() + (86400 * @Days), Level = @Level WHERE License = @License")
+vRP.Prepare("accounts/InsertBanned","UPDATE accounts SET Banned = UNIX_TIMESTAMP() + (86400 * @Days), Reason = @Reason WHERE License = @License")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERDATA
 -----------------------------------------------------------------------------------------------------------------------------------------

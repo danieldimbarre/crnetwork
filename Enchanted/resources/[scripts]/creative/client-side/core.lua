@@ -1,7 +1,11 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local CONTROLS = { 37,204,211,349,192,157,158,159,160,161,162,163,164,165 }
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Blips = {
+local BLIPS = {
 	{ 149.64,-1041.36,29.59,108,25,"Banco",0.7 },
 	{ 313.95,-279.74,54.39,108,25,"Banco",0.7 },
 	{ -351.2,-50.57,49.26,108,25,"Banco",0.7 },
@@ -133,7 +137,7 @@ local Blips = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TELEPORT
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Teleport = {
+local TELEPORT = {
 	{ vec3(357.96,-1408.7,32.42),vec3(335.11,-1432.36,46.51) },
 	{ vec3(335.11,-1432.36,46.51),vec3(357.96,-1408.7,32.42) },
 
@@ -152,13 +156,13 @@ local Teleport = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ALPHAS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Alphas = {
+local ALPHAS = {
 	{ vec3(1183.88,4002.14,30.23),100,53,400.0 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ISLAND
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Island = {
+local ISLAND = {
 	"h4_islandairstrip",
 	"h4_islandairstrip_props",
 	"h4_islandx_mansion",
@@ -259,9 +263,9 @@ local Island = {
 	"h4_beach_party"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- IPLOADER
+-- IPL_LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-local InfoList = {
+local IPL_LIST = {
 	{
 		["Props"] = {
 			"swap_clean_apt",
@@ -291,8 +295,6 @@ local InfoList = {
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local controlsToDisable = { 37,204,211,349,192,157,158,159,160,161,162,163,164,165 }
-
 	while true do
 		local Pid = PlayerId()
 		local Ped = PlayerPedId()
@@ -313,7 +315,7 @@ CreateThread(function()
 			end
 		end
 
-		for _,control in ipairs(controlsToDisable) do
+		for _,control in ipairs(CONTROLS) do
 			DisableControlAction(0,control,true)
 		end
 
@@ -336,9 +338,9 @@ CreateThread(function()
 		SetPedDensityMultiplierThisFrame(1.0)
 
 		if IsPedArmed(Ped,6) then
-			DisableControlAction(1,140,true)
-			DisableControlAction(1,141,true)
-			DisableControlAction(1,142,true)
+			DisableControlAction(0,140,true)
+			DisableControlAction(0,141,true)
+			DisableControlAction(0,142,true)
 		end
 
 		if IsPedUsingActionMode(Ped) then
@@ -388,7 +390,7 @@ CreateThread(function()
 		SetMapZoomDataLevel(zoomData[1],zoomData[2],zoomData[3],zoomData[4],zoomData[5],zoomData[6])
 	end
 
-	for _,v in pairs(InfoList) do
+	for _,v in pairs(IPL_LIST) do
 		local Interior = GetInteriorAtCoords(v["Coords"])
 		LoadInterior(Interior)
 
@@ -401,14 +403,14 @@ CreateThread(function()
 		RefreshInterior(Interior)
 	end
 
-	for _,alphaData in ipairs(Alphas) do
+	for _,alphaData in ipairs(ALPHAS) do
 		local radius = alphaData[1]
 		local Blip = AddBlipForRadius(radius["x"],radius["y"],radius["z"],alphaData[4])
 		SetBlipAlpha(Blip,alphaData[2])
 		SetBlipColour(Blip,alphaData[3])
 	end
 
-	for _,blipData in ipairs(Blips) do
+	for _,blipData in ipairs(BLIPS) do
 		local Blip = AddBlipForCoord(blipData[1],blipData[2],blipData[3])
 		SetBlipSprite(Blip,blipData[4])
 		SetBlipDisplay(Blip,4)
@@ -424,28 +426,24 @@ CreateThread(function()
 	end
 
 	local teleportData = {}
-	for _,teleport in ipairs(Teleport) do
-		table.insert(teleportData,{ teleport[1],2.5,"E","Pressione","para acessar" })
+	for _,v in ipairs(TELEPORT) do
+		table.insert(teleportData,{ v[1],2.5,"E","Pressione","para acessar" })
 	end
 
 	TriggerEvent("hoverfy:Insert",teleportData)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADTELEPORT
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+
 	while true do
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
 		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
 
-			for Number = 1,#Teleport do
-				if #(Coords - Teleport[Number][1]) <= 1.0 then
+			for Number = 1,#TELEPORT do
+				if #(Coords - TELEPORT[Number][1]) <= 1.0 then
 					TimeDistance = 1
 
 					if IsControlJustPressed(1,38) then
-						SetEntityCoords(Ped,Teleport[Number][2])
+						SetEntityCoords(Ped,TELEPORT[Number][2])
 					end
 				end
 			end
@@ -461,7 +459,7 @@ CreateThread(function()
 	local function manageIsland(iplsActive)
 		if iplsActive then
 			if not IsIplActive("h4_islandairstrip") then
-				for _,v in pairs(Island) do
+				for _,v in pairs(ISLAND) do
 					RequestIpl(v)
 				end
 
@@ -472,7 +470,7 @@ CreateThread(function()
 			end
 		else
 			if IsIplActive("h4_islandairstrip") then
-				for _,v in pairs(Island) do
+				for _,v in pairs(ISLAND) do
 					RemoveIpl(v)
 				end
 

@@ -161,6 +161,38 @@ Use = {
 		end
 	end,
 
+	["a_c_cat_01"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("animals:Spawn",source,"a_c_cat_01")
+	end,
+
+	["a_c_husky"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("animals:Spawn",source,"a_c_husky")
+	end,
+
+	["a_c_poodle"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("animals:Spawn",source,"a_c_poodle")
+	end,
+
+	["a_c_pug"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("animals:Spawn",source,"a_c_pug")
+	end,
+
+	["a_c_retriever"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("animals:Spawn",source,"a_c_retriever")
+	end,
+
+	["a_c_rottweiler"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("animals:Spawn",source,"a_c_rottweiler")
+	end,
+
+	["a_c_shepherd"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("animals:Spawn",source,"a_c_shepherd")
+	end,
+
+	["a_c_westy"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("animals:Spawn",source,"a_c_westy")
+	end,
+
 	["camera"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if not Player(source)["state"]["Camera"] then
 			local Ped = GetPlayerPed(source)

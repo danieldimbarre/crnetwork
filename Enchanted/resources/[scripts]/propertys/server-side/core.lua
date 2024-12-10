@@ -206,6 +206,8 @@ function Creative.Toggle(Name,Mode)
 				exports["vrp"]:Bucket(source,"Enter",100000 + RouteNumber(Name))
 			end
 		end
+
+		TriggerEvent("animals:Delete",Passport,source)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

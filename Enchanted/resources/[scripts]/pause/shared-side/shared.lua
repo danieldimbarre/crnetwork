@@ -688,6 +688,46 @@ ShopItens = {
 		["Price"] = 7500,
 		["Discount"] = 1.0,
 		["Category"] = "Diamantes"
+	},
+	["a_c_cat_01"] = {
+		["Price"] = 5000,
+		["Discount"] = 1.0,
+		["Category"] = "Domésticos"
+	},
+	["a_c_husky"] = {
+		["Price"] = 5000,
+		["Discount"] = 1.0,
+		["Category"] = "Domésticos"
+	},
+	["a_c_poodle"] = {
+		["Price"] = 5000,
+		["Discount"] = 1.0,
+		["Category"] = "Domésticos"
+	},
+	["a_c_pug"] = {
+		["Price"] = 5000,
+		["Discount"] = 1.0,
+		["Category"] = "Domésticos"
+	},
+	["a_c_retriever"] = {
+		["Price"] = 5000,
+		["Discount"] = 1.0,
+		["Category"] = "Domésticos"
+	},
+	["a_c_rottweiler"] = {
+		["Price"] = 5000,
+		["Discount"] = 1.0,
+		["Category"] = "Domésticos"
+	},
+	["a_c_shepherd"] = {
+		["Price"] = 5000,
+		["Discount"] = 1.0,
+		["Category"] = "Domésticos"
+	},
+	["a_c_westy"] = {
+		["Price"] = 5000,
+		["Discount"] = 1.0,
+		["Category"] = "Domésticos"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

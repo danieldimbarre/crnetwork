@@ -371,7 +371,7 @@ RegisterCommand("unban",function(source,Message)
 	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
 		vRP.Query("accounts/RemoveBanned",{ License = vRP.AccountInformation(Message[1],"License") })
 		TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..Message[1].."</b> desbanido.","verde",5000)
-		exports["discord"]:Embed("Unban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[Modo]:** Unban\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -416,7 +416,7 @@ RegisterCommand("group",function(source,Message)
 
 		vRP.SetPermission(OtherPassport,Permission,Message[3])
 		TriggerClientEvent("Notify",source,"Sucesso","Adicionado <b>"..Permission.."</b> ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
-		exports["discord"]:Embed("Group","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		exports["discord"]:Embed("Group","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[Modo]:** Adicionou\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -433,7 +433,7 @@ RegisterCommand("ungroup",function(source,Message)
 
 		vRP.RemovePermission(OtherPassport,Permission)
 		TriggerClientEvent("Notify",source,"Sucesso","Removido <b>"..Permission.."</b> ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
-		exports["discord"]:Embed("Ungroup","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		exports["discord"]:Embed("Group","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[Modo]:** Removeu\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -712,6 +712,20 @@ RegisterCommand("limparea",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VIDEO
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("video",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		local Players = vRPC.Players(source)
+		for _,Sources in pairs(Players) do
+			async(function()
+				TriggerClientEvent("hud:Video",Sources,Message[1])
+			end)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- RENAME
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("rename",function(source)
@@ -719,9 +733,14 @@ RegisterCommand("rename",function(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
 		local Keyboard = vKEYBOARD.Tertiary(source,"Passaporte","Nome","Sobrenome")
 		if Keyboard then
-			vRP.UpgradeNames(Keyboard[1],Keyboard[2],Keyboard[3])
-			TriggerClientEvent("Notify",source,"Sucesso","Nome atualizado.","verde",5000)
-			exports["discord"]:Embed("Renamed","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Keyboard[1].."\n**[NOME]:** "..Keyboard[2].." "..Keyboard[3].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+			local OtherPassport = parseInt(Keyboard[1])
+			local Identity = vRP.Identity(OtherPassport)
+			local Account = vRP.Account(Identity["License"])
+			if Identity and Account then
+				vRP.UpgradeNames(OtherPassport,Keyboard[2],Keyboard[3])
+				TriggerClientEvent("Notify",source,"Sucesso","Nome atualizado.","verde",5000)
+				exports["discord"]:Content("Rename",Account["Discord"].." #"..OtherPassport.." "..Keyboard[2].." "..Keyboard[3])
+			end
 		end
 	end
 end)

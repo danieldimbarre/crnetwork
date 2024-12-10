@@ -379,7 +379,8 @@ function Creative.Take(Item,Slot,Amount,Target)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
 	if Passport and Open[Passport] and not vRP.TakeChest(Passport,Open[Passport]["Name"],Amount,Slot,Target,Open[Passport]["Save"]) then
-		local Result = vRP.GetSrvData(Open[Passport]["Name"],Open[Passport]["Save"])
+		local Name = Open[Passport]["Name"]
+		local Result = vRP.GetSrvData(Name,Open[Passport]["Save"])
 		if (Open[Passport]["Mode"] or Open[Passport]["Item"]) and json.encode(Result) == "[]" then
 			if Open[Passport]["Item"] and vRP.TakeItem(Passport,Open[Passport]["Item"]) then
 				TriggerClientEvent("inventory:Open",source,{
@@ -388,8 +389,11 @@ function Creative.Take(Item,Slot,Amount,Target)
 				},true)
 			end
 
-			if SplitBoolean(Open[Passport]["Name"],"Helicrash",":") then
+			if SplitBoolean(Name,"Helicrash",":") then
 				GlobalState["Helibox"] = GlobalState["Helibox"] - 1
+			elseif SplitBoolean(Name,"Christmas",":") then
+				GlobalState["ChristmasBox"] = GlobalState["ChristmasBox"] - 1
+				GlobalState["ChristmasBlock:"..SplitTwo(Name,":")] = true
 			end
 		elseif Open[Passport]["Logs"] then
 			exports["discord"]:Embed(Open[Passport]["NameLogs"],"**[PASSAPORTE]:** "..Passport.."\n**[RETIROU]:** "..Amount.."x "..ItemName(Item).."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))

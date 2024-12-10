@@ -172,7 +172,7 @@ CreateThread(function()
 					DrawText3D(OtherCoords,"~w~[ "..Title.." ]",1.250)
 				end
 
-				if BlipAdmin and Passport then
+				if BlipAdmin and Ped ~= Entitys and Passport then
 					TimeDistance = 0
 
 					local Armour = GetPedArmour(Entitys)

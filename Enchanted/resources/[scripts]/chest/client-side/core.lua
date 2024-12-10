@@ -83,11 +83,11 @@ end)
 RegisterNetEvent("chest:Open")
 AddEventHandler("chest:Open",function(Name,Mode,Item,Blocked,Force)
 	if vSERVER.Permissions(Name,Mode,Item) and GetEntityHealth(PlayerPedId()) > 100 then
-		if Blocked or SplitBoolean(Name,"Helicrash",":") then
+		if Blocked or SplitBoolean(Name,"Helicrash",":") or SplitBoolean(Name,"Christmas",":") then
 			Block = true
 		end
 
-		Opened = true
+		Opened = Name
 
 		if Mode ~= "Item" then
 			Animation = true
@@ -107,6 +107,7 @@ end)
 AddEventHandler("chest:Item",function(Name)
 	if vSERVER.Permissions(Name,"Item") and GetEntityHealth(PlayerPedId()) > 100 then
 		Opened = true
+
 		TriggerEvent("inventory:Open",{
 			Type = "Chest",
 			Resource = "chest"
@@ -119,6 +120,7 @@ end)
 AddEventHandler("chest:Recycle",function()
 	if vSERVER.Permissions("Recycle","Tray") and GetEntityHealth(PlayerPedId()) > 100 then
 		Opened = true
+
 		TriggerEvent("inventory:Open",{
 			Type = "Chest",
 			Resource = "chest"
@@ -129,8 +131,8 @@ end)
 -- INVENTORY:CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Close")
-AddEventHandler("inventory:Close",function()
-	if Opened then
+AddEventHandler("inventory:Close",function(Force)
+	if (not Force and Opened) or (Force and Opened and Opened == Force) then
 		if Animation then
 			Animation = false
 			vRP.Destroy()

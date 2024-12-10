@@ -2,6 +2,119 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	-- ANIMAL
+	["a_c_cat_01"] = {
+		["Index"] = "a_c_cat_01",
+		["Name"] = "Gato",
+		["Type"] = "Consumível",
+		["Durability"] = 720,
+		["Weight"] = 2.5,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare",
+		["Execute"] = {
+			["Type"] = "Server",
+			["Event"] = "animals:Delete"
+		}
+	},
+	["a_c_husky"] = {
+		["Index"] = "a_c_husky",
+		["Name"] = "Husky",
+		["Type"] = "Consumível",
+		["Durability"] = 720,
+		["Weight"] = 2.5,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare",
+		["Execute"] = {
+			["Type"] = "Server",
+			["Event"] = "animals:Delete"
+		}
+	},
+	["a_c_poodle"] = {
+		["Index"] = "a_c_poodle",
+		["Name"] = "Poodle",
+		["Type"] = "Consumível",
+		["Durability"] = 720,
+		["Weight"] = 2.5,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare",
+		["Execute"] = {
+			["Type"] = "Server",
+			["Event"] = "animals:Delete"
+		}
+	},
+	["a_c_pug"] = {
+		["Index"] = "a_c_pug",
+		["Name"] = "Pug",
+		["Type"] = "Consumível",
+		["Durability"] = 720,
+		["Weight"] = 2.5,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare",
+		["Execute"] = {
+			["Type"] = "Server",
+			["Event"] = "animals:Delete"
+		}
+	},
+	["a_c_retriever"] = {
+		["Index"] = "a_c_retriever",
+		["Name"] = "Retriever",
+		["Type"] = "Consumível",
+		["Durability"] = 720,
+		["Weight"] = 2.5,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare",
+		["Execute"] = {
+			["Type"] = "Server",
+			["Event"] = "animals:Delete"
+		}
+	},
+	["a_c_rottweiler"] = {
+		["Index"] = "a_c_rottweiler",
+		["Name"] = "Rottweiler",
+		["Type"] = "Consumível",
+		["Durability"] = 720,
+		["Weight"] = 2.5,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare",
+		["Execute"] = {
+			["Type"] = "Server",
+			["Event"] = "animals:Delete"
+		}
+	},
+	["a_c_shepherd"] = {
+		["Index"] = "a_c_shepherd",
+		["Name"] = "Shepherd",
+		["Type"] = "Consumível",
+		["Durability"] = 720,
+		["Weight"] = 2.5,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare",
+		["Execute"] = {
+			["Type"] = "Server",
+			["Event"] = "animals:Delete"
+		}
+	},
+	["a_c_westy"] = {
+		["Index"] = "a_c_westy",
+		["Name"] = "Westy",
+		["Type"] = "Consumível",
+		["Durability"] = 720,
+		["Weight"] = 2.5,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare",
+		["Execute"] = {
+			["Type"] = "Server",
+			["Event"] = "animals:Delete"
+		}
+	},
 	-- SPRAYS
 	["spray_ballas"] = {
 		["Index"] = "sprays",
@@ -585,7 +698,7 @@ local List = {
 		["Economy"] = 25,
 		["LostWater"] = true
 	},
-    ["methsack"] = {
+	["methsack"] = {
 		["Index"] = "methsack",
 		["Name"] = "Pacote de Metanfetamina",
 		["Type"] = "Consumível",
@@ -730,7 +843,7 @@ local List = {
 		["Description"] = "Compacta e leve, perfeita para carregar o essencial de forma prática, com alças ajustáveis para conforto ao transportar.<br>Aumenta o peso de sua mochila em <epic>50Kg</epic>.",
 		["Repair"] = "sewingkit",
 		["Type"] = "Comum",
-        ["Market"] = true,
+		["Market"] = true,
 		["Durability"] = 720,
 		["Weight"] = 2.5,
 		["Delete"] = true,
@@ -754,7 +867,7 @@ local List = {
 		["Description"] = "Versátil e compacta, ideal para o dia a dia, oferecendo espaço suficiente para itens essenciais sem ser volumosa, com alças confortáveis para fácil transporte.<br>Aumenta o peso de sua mochila em <epic>75Kg</epic>.",
 		["Repair"] = "sewingkit",
 		["Type"] = "Comum",
-        ["Market"] = true,
+		["Market"] = true,
 		["Durability"] = 720,
 		["Weight"] = 2.5,
 		["Delete"] = true,
@@ -778,7 +891,7 @@ local List = {
 		["Description"] = "Espaçosa e funcional, projetada para transportar muitos itens de forma confortável, com alças ajustáveis e compartimentos organizados para facilitar o armazenamento.<br>Aumenta o peso de sua mochila em <epic>100Kg</epic>.",
 		["Repair"] = "sewingkit",
 		["Type"] = "Comum",
-        ["Market"] = true,
+		["Market"] = true,
 		["Durability"] = 720,
 		["Weight"] = 2.5,
 		["Delete"] = true,
@@ -802,7 +915,7 @@ local List = {
 		["Description"] = "Adorável bolsa infantil, feita de material macio e peludo, com uma carinha sorridente bordada na frente e orelhas tridimensionais, é prática e encantadora ao mesmo tempo.<br>Aumenta o peso de sua mochila em <epic>100Kg</epic>.",
 		["Repair"] = "sewingkit",
 		["Type"] = "Comum",
-        ["Market"] = true,
+		["Market"] = true,
 		["Durability"] = 720,
 		["Weight"] = 2.5,
 		["Delete"] = true,
@@ -1026,7 +1139,7 @@ local List = {
 		["Type"] = "Comum",
 		["Weight"] = 0.0,
 		["Named"] = true,
-        ["Market"] = true,
+		["Market"] = true,
 		["Delete"] = true
 	},
 	-- COMPONENTES
@@ -1381,7 +1494,7 @@ local List = {
 		["Index"] = "safependrive",
 		["Name"] = "Pendrive Seguro",
 		["Type"] = "Comum",
-        ["Market"] = true,
+		["Market"] = true,
 		["Weight"] = 0.15,
 		["Economy"] = 3225,
 		["Durability"] = 72,

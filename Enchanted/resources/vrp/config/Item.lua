@@ -2,6 +2,44 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	-- NATAL
+	["christmas_01"] = {
+		["Index"] = "christmas_01",
+		["Name"] = "Bola",
+		["Type"] = "Comum",
+		["Weight"] = 0.025,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare"
+	},
+	["christmas_02"] = {
+		["Index"] = "christmas_02",
+		["Name"] = "Bengala",
+		["Type"] = "Comum",
+		["Weight"] = 0.025,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare"
+	},
+	["christmas_03"] = {
+		["Index"] = "christmas_03",
+		["Name"] = "Meia",
+		["Type"] = "Comum",
+		["Weight"] = 0.025,
+		["Market"] = true,
+		["Delete"] = true,
+		["Rarity"] = "rare"
+	},
+	["christmas_04"] = {
+		["Index"] = "christmas_04",
+		["Name"] = "Presente",
+		["Type"] = "Comum",
+		["Weight"] = 0.025,
+		["Market"] = true,
+		["Delete"] = true,
+		["Unique"] = true,
+		["Rarity"] = "legendary"
+	},
 	-- ANIMAL
 	["a_c_cat_01"] = {
 		["Index"] = "a_c_cat_01",

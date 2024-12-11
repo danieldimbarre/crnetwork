@@ -253,6 +253,12 @@ Use = {
 		end
 	end,
 
+	["christmas_04"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if Split and Split[3] then
+			TriggerClientEvent("chest:Open",source,"christmas_04:"..Split[3],"Item",Full,true,true)
+		end
+	end,
+
 	["medicbag"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split and Split[3] then
 			TriggerClientEvent("chest:Open",source,"medicbag:"..Split[3],"Item",false,false,true)

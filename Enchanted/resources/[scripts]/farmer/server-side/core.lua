@@ -89,7 +89,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 						Consult["Valuation"] = Consult["Valuation"] + (Consult["Valuation"] * 0.5)
 					end
 
-					if vRP.CheckWeight(Passport,Consult["Item"],Consult["Valuation"]) then
+					if vRP.CheckWeight(Passport,Consult["Item"],Consult["Valuation"]) and not vRP.MaxItens(Passport,Consult["Item"],Consult["Valuation"]) then
 						vRP.GenerateItem(Passport,Consult["Item"],Consult["Valuation"],true)
 					else
 						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
@@ -156,7 +156,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 						Valuation = Valuation + (Valuation * 0.25)
 					end
 
-					if vRP.CheckWeight(Passport,"woodlog",Valuation) then
+					if vRP.CheckWeight(Passport,"woodlog",Valuation) and not vRP.MaxItens(Passport,"woodlog",Valuation) then
 						vRP.GenerateItem(Passport,"woodlog",Valuation,true)
 					else
 						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
@@ -211,7 +211,7 @@ AddEventHandler("farmer:Transporter",function(Number)
 						Valuation = Valuation + 1
 					end
 
-					if vRP.CheckWeight(Passport,"pouch",Valuation) then
+					if vRP.CheckWeight(Passport,"pouch",Valuation) and not vRP.MaxItens(Passport,"pouch",Valuation) then
 						vRP.GenerateItem(Passport,"pouch",Valuation,true)
 					else
 						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
@@ -265,7 +265,7 @@ AddEventHandler("farmer:Sandman",function(Number)
 						Valuation = Valuation + 1
 					end
 
-					if vRP.CheckWeight(Passport,"sand",Valuation) then
+					if vRP.CheckWeight(Passport,"sand",Valuation) and not vRP.MaxItens(Passport,"sand",Valuation) then
 						vRP.GenerateItem(Passport,"sand",Valuation,true)
 					else
 						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
@@ -357,11 +357,6 @@ AddEventHandler("farmer:Trasher",function(Number)
 
 						Valuation = Valuation + (Valuation * Bonification)
 						GainExperience = GainExperience + 1
-					end
-
-					if vRPC.PolyNorth(source) then
-						Valuation = Valuation + (Valuation * 0.5)
-						TriggerClientEvent("Notify",source,"Atenção","Você ganhou um <b>bônus</b> por trabalhar no norte.","amarelo",5000)
 					end
 
 					if exports["party"]:DoesExist(Passport,2) then

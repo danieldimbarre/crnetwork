@@ -1,6 +1,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERS
 -----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("characters/Phone","SELECT * FROM characters WHERE Phone = @Phone")
 vRP.Prepare("characters/Person","SELECT * FROM characters WHERE id = @Passport")
 vRP.Prepare("characters/Delete","UPDATE characters SET Deleted = 1 WHERE id = @Passport")
 vRP.Prepare("characters/SetSkin","UPDATE characters SET Skin = @Skin WHERE id = @Passport")

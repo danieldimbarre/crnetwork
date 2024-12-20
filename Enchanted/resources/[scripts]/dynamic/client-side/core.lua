@@ -157,6 +157,8 @@ RegisterCommand("EmergencyFunctions",function()
 		local Health = GetEntityHealth(Ped)
 
 		if CheckPolice() then
+			TriggerEvent("perimeter:Dynamic")
+
 			exports["dynamic"]:AddButton("Placa","Verificar emplacamento.","prison:Plate","",false,true)
 			exports["dynamic"]:AddButton("Prender","Adicionar ficha criminal.","prison:Create","",false,true)
 

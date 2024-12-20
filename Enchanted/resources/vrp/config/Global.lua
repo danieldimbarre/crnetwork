@@ -42,24 +42,36 @@ Theme = {
 	["epic"] = "#c66a75",
 	["legendary"] = "#c6986a",
 	["accept"] = {
-		["letter"] = "#dcffe9",
-		["background"] = "#3fa466"
+		letter = "#dcffe9",
+		background = "#3fa466"
 	},
 	["reject"] = {
-		["letter"] = "#ffe8e8",
-		["background"] = "#ad4443"
+		letter = "#ffe8e8",
+		background = "#ad4443"
 	},
+	["shadow"] = true,
+	["main-text"] = "#ffffff",
+	["loading-progress"] = true,
 	["chat"] = {
-		["Families"] = "#ff0000",
-		["Ballas"] = "#00ff00",
-		["Vagos"] = "#0000ff"
+		["Families"] = {
+			background = "#ff0000",
+			letter = "#ffffff"
+		},
+		["Ballas"] = {
+			background = "#00ff00",
+			letter = "#ffffff"
+		},
+		["Vagos"] = {
+			background = "#0000ff",
+			letter = "#ffffff"
+		}
 	},
 	["hud"] = {
 		["modes"] = {
-			["info"] = 3, -- [ Opções disponíveis: 1,2,3 ],
-			["icon"] = "fill", -- [ Opções disponíveis: fill,line ],
-			["status"] = 10, -- [ Opções disponíveis: 1 a 12 ],
-			["vehicle"] = 3 -- [ Opções disponíveis: 1,2,3 ]
+			info = 3, -- [ Opções disponíveis: 1,2,3 ],
+			icon = "fill", -- [ Opções disponíveis: fill,line ],
+			status = 10, -- [ Opções disponíveis: 1 a 12 ],
+			vehicle = 3 -- [ Opções disponíveis: 1,2,3 ]
 		},
 		["percentage"] = true,
 		["icons"] = "#FFFFFF",
@@ -77,31 +89,31 @@ Theme = {
 		["repose"] = "#7FCCC7",
 		["pointer"] = "#ef4444",
 		["progress"] = {
-			["background"] = "#FFFFFF",
-			["circle"] = "#5865f2",
-			["letter"] = "#FFFFFF"
+			background = "#FFFFFF",
+			circle = "#5865f2",
+			letter = "#FFFFFF"
 		}
 	},
 	["notifyitem"] = {
-		["add"] = {
-			["letter"] = "#dcffe9",
-			["background"] = "#3fa466"
+		add = {
+			letter = "#dcffe9",
+			background = "#3fa466"
 		},
-		["remove"] = {
-			["letter"] = "#ffe8e8",
-			["background"] = "#ad4443"
+		remove = {
+			letter = "#ffe8e8",
+			background = "#ad4443"
 		}
 	},
 	["pause"] = {
-		["premium"] = true,
-		["store"] = true,
-		["battlepass"] = true,
-		["boxes"] = true,
-		["marketplace"] = true,
-		["skinweapon"] = true,
-		["map"] = true,
-		["settings"] = true,
-		["disconnect"] = true
+		premium = true,
+		store = true,
+		battlepass = true,
+		boxes = true,
+		marketplace = true,
+		skinweapon = true,
+		map = true,
+		settings = true,
+		disconnect = true
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -98,7 +98,7 @@ function LoadNetwork(Network)
 				Wait(1)
 			end
 
-			return Object
+			return Object,ObjToNet(Object)
 		end
 	end
 

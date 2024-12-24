@@ -16,16 +16,11 @@ server_scripts {
 	"server-side/*"
 }
 
-files {
-	"web-side/*",
-	"web-side/**/*",
-	"web-side/**/**/*"
+shared_scripts {
+    "shared-side/*"
 }
 
-shared_scripts {
-	"@vrp/config/Item.lua",
-	"@vrp/config/Vehicle.lua",
-	"@vrp/config/Global.lua",
-	"@vrp/config/Drops.lua",
-	"shared-side/*"
+files {
+	"web-side/*",
+	"web-side/**/*"
 }

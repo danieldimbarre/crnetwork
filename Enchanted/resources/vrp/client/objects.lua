@@ -186,7 +186,7 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 				shop = Number,
 				Distance = 2.5,
 				options = {
-					{ event = "inventory:StoreObjects", label = "Limpar", tunnel = "server" }
+					{ event = "inventory:StoreObjects", label = "Violar", tunnel = "server" }
 				}
 			}
 		},
@@ -302,7 +302,7 @@ CreateThread(function()
 		local Coords = GetEntityCoords(Ped)
 
 		for Number,v in pairs(Objects) do
-			if not v["Route"] or v["Route"] == LocalPlayer["state"]["Route"] then
+			if not v["Bucket"] or v["Bucket"] == LocalPlayer["state"]["Route"] then
 				CreateAndManageObject(Number,v,Coords)
 			elseif Init[Number] then
 				DestroyObject(Number,v)
@@ -383,13 +383,19 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 			end
 
 			RotateObject(NextObject)
+			DrawGraphOutline(NextObject)
+
+			if not Switch then
+				local Cam = GetGameplayCamCoord()
+				local Handle = StartExpensiveSynchronousShapeTestLosProbe(Cam,GetCoordsFromCam(10.0,Cam),-1,Ped,4)
+				local _,_,Coords = GetShapeTestResult(Handle)
+				SetEntityCoords(NextObject,Coords.x,Coords.y,Coords.z,false,false,false,false)
+			end
 
 			if IsControlJustPressed(0,48) then
 				Switch = not Switch
 				TriggerEvent("inventory:Buttons",Switch and extendedButtons or defaultButtons)
-			end
-
-			if IsControlJustPressed(1,74) then
+			elseif IsControlJustPressed(1,74) then
 				TriggerEvent("inventory:CloseButtons")
 				Aplication = true
 				Progress = false
@@ -400,15 +406,6 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 				Progress = false
 				Switch = false
 			end
-
-			if not Switch then
-				local Cam = GetGameplayCamCoord()
-				local Handle = StartExpensiveSynchronousShapeTestLosProbe(Cam,GetCoordsFromCam(10.0,Cam),-1,Ped,4)
-				local _,_,Coords = GetShapeTestResult(Handle)
-				SetEntityCoords(NextObject,Coords.x,Coords.y,Coords.z,false,false,false,false)
-			end
-
-			DrawGraphOutline(NextObject)
 
 			Wait(1)
 		end

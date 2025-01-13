@@ -143,9 +143,8 @@ RegisterKeyMapping("+Information","Visualizar passaporte.","keyboard","F7")
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	local YTD = CreateRuntimeTxd("Textures")
-	local Textures = vRPS.FilesDirectory("resources/vrp/config/textures")
 
-	for _,Name in pairs(Textures) do
+	for _,Name in pairs(TexturePack) do
 		local PNG = LoadResourceFile("vrp","config/textures/"..Name..".png")
 		local DICT = "data:image/png;base64,"..Base64(PNG)
 		local TEXTURE = CreateRuntimeTexture(YTD,Name,512,512)

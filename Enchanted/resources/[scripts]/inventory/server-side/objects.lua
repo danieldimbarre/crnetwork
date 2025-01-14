@@ -172,6 +172,9 @@ local Default = {
 	{ ["Coords"] = { 188.09,-202.5,-24.25,89.74 }, ["Object"] = "p_v_43_safe_s", ["Ground"] = true },
 	{ ["Coords"] = { 51.0,-43.67,-24.28,52.65 }, ["Object"] = "p_v_43_safe_s", ["Ground"] = true },
 
+	-- SLOTMACHINE ( Só ative se possuir o script slotmachine )
+	--{ ["Coords"] = { 984.25,64.95,122.12,149.36 }, ["Object"] = "vw_prop_casino_slot_04a", ["Ground"] = true },
+
 	-- ADMIN
 	{ ["Coords"] = { 268.53,2861.36,42.65,31.46 }, ["Object"] = "prop_byard_machine03", ["Mode"] = "Recycle", Weight = 1.0 },
 	{ ["Coords"] = { -179.99,6263.39,30.51,41.2 }, ["Object"] = "prop_byard_machine03", ["Mode"] = "Recycle", Weight = 1.0 },

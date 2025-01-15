@@ -8,7 +8,8 @@ AddEventHandler("playerConnecting",function(_,_,deferrals)
 		["socials"] = Socials,
 		["playlist"] = Playlist,
 		["theme"] = Theme,
-		["autoplay"] = Autoplay
+		["autoplay"] = Autoplay,
+		["shortcuts"] = Shortcuts
 	})
 
 	deferrals.done()

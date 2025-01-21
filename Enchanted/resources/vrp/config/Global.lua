@@ -29,7 +29,6 @@ SpawnCoords = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 MaxRepair = 1
 MinimumWeight = 15
-SlotInventory = 100
 PremiumWeight = { 25,15,5 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TEXTUREPACK
@@ -131,6 +130,7 @@ Groups = {
 			["Admin"] = true
 		},
 		["Hierarchy"] = { "Administrador","Moderador","Suporte" },
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Client"] = true
 	},
@@ -140,6 +140,7 @@ Groups = {
 		},
 		["Hierarchy"] = { "Ouro","Prata","Bronze" },
 		["Salary"] = { 3750,2500,1250 },
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Client"] = true,
 		["Block"] = true
@@ -151,6 +152,7 @@ Groups = {
 		["Hierarchy"] = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
 		["Salary"] = { 3750,3625,3500,3375,3250,3125 },
 		["Discord"] = "1236102727369756774",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true,
@@ -164,6 +166,7 @@ Groups = {
 		["Hierarchy"] = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
 		["Salary"] = { 3750,3625,3500,3375,3250,3125 },
 		["Discord"] = "1236102727369756774",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true,
@@ -177,6 +180,7 @@ Groups = {
 		["Hierarchy"] = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
 		["Salary"] = { 3750,3625,3500,3375,3250,3125 },
 		["Discord"] = "1236102727369756774",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true,
@@ -190,6 +194,7 @@ Groups = {
 		["Hierarchy"] = { "Chefe","Médico","Enfermeiro","Residente" },
 		["Salary"] = { 3750,3625,3500,3375 },
 		["Discord"] = "1236103044811456662",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true,
@@ -202,6 +207,7 @@ Groups = {
 		},
 		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
 		["Discord"] = "1250080429965316127",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true
@@ -212,6 +218,7 @@ Groups = {
 		},
 		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
 		["Discord"] = "1250080465155657860",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true
@@ -222,6 +229,7 @@ Groups = {
 		},
 		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
 		["Discord"] = "1250080491814523022",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true
@@ -232,6 +240,7 @@ Groups = {
 		},
 		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
 		["Discord"] = "1250080518507069500",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true
@@ -242,6 +251,7 @@ Groups = {
 		},
 		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
 		["Discord"] = "1250080543908036638",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true
@@ -252,6 +262,7 @@ Groups = {
 		},
 		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
 		["Discord"] = "1250080564049084438",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true
@@ -262,6 +273,7 @@ Groups = {
 		},
 		["Hierarchy"] = { "Líder","Sub-Líder","Membro","Recruta" },
 		["Discord"] = "1250080611851309107",
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true
@@ -271,15 +283,26 @@ Groups = {
 			["Restaurante"] = true
 		},
 		["Hierarchy"] = { "Chefe","Supervisor","Funcionário" },
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Type"] = "Work",
 		["Client"] = true
+	},
+	["Booster"] = {
+		["Permission"] = {
+			["Booster"] = true
+		},
+		["Hierarchy"] = { "Membro" },
+		["RejoinService"] = true,
+		["Salary"] = { 2500 },
+		["Service"] = {}
 	},
 	["Camera"] = {
 		["Permission"] = {
 			["Camera"] = true
 		},
 		["Hierarchy"] = { "Membro" },
+		["RejoinService"] = true,
 		["Service"] = {},
 		["Block"] = true
 	},
@@ -303,14 +326,6 @@ Groups = {
 		["Hierarchy"] = { "Membro" },
 		["Service"] = {},
 		["Block"] = true
-	},
-	["Booster"] = {
-		["Permission"] = {
-			["Booster"] = true
-		},
-		["Hierarchy"] = { "Membro" },
-		["Salary"] = { 2500 },
-		["Service"] = {}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

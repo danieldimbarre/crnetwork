@@ -22,7 +22,7 @@ RegisterCommand("helicrash",function(source,Message)
 				vRP.MountContainer(Passport,"Helicrash:"..Number,Loots,math.random(3,5))
 			end
 
-			TriggerClientEvent("Notify",-1,"Queda da Aeronave","Mayday! Mayday! Tivemos problemas técnicos em nossos motores e estamos em queda livre.","ilegal",30000)
+			TriggerClientEvent("Notify",-1,"Queda da Aeronave","Mayday! Mayday! Tivemos problemas técnicos em nossos motores e estamos em queda livre.","verde",30000)
 			GlobalState["Helibox"] = CountTable(Components[Selected]["Coords"])
 			GlobalState["Helifire"] = GlobalState["Work"] + 60
 			GlobalState["Helicrash"] = Selected

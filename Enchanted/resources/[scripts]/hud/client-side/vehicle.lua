@@ -392,7 +392,7 @@ RegisterCommand("Seatbeltz",function(source)
 
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			if Entity(Vehicle)["state"]["Seatbelt"] then
-				TriggerEvent("Notify","Cinto de Segurança","Cinto de Corrida colocado.","azul",5000)
+				TriggerEvent("Notify","Cinto de Segurança","Cinto de Corrida colocado.","verde",5000)
 			end
 		end
 	end

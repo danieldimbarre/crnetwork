@@ -292,9 +292,21 @@ local IPL_LIST = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Blackout",nil,function(Name,Key,Value)
+	SetArtificialLightsState(Value)
+	SetArtificialLightsStateAffectsVehicles(false)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
+	if GlobalState["Blackout"] then
+		SetArtificialLightsState(true)
+		SetArtificialLightsStateAffectsVehicles(false)
+	end
+
 	while true do
 		local Pid = PlayerId()
 		local Ped = PlayerPedId()
@@ -320,16 +332,13 @@ CreateThread(function()
 		end
 
 		DisableVehicleDistantlights(true)
-		SetArtificialLightsState(false)
 		SetAllVehicleGeneratorsActive()
 		CancelCurrentPoliceReport()
 		BlockWeaponWheelThisFrame()
-		InvalidateVehicleIdleCam()
 		SetCreateRandomCops(false)
 		SetPoliceRadarBlips(false)
 		DistantCopCarSirens(false)
 		SetPauseMenuActive(false)
-		InvalidateIdleCam()
 
 		SetVehicleDensityMultiplierThisFrame(1.0)
 		SetRandomVehicleDensityMultiplierThisFrame(1.0)
@@ -448,6 +457,9 @@ CreateThread(function()
 				end
 			end
 		end
+
+		InvalidateVehicleIdleCam()
+		InvalidateIdleCam()
 
 		Wait(TimeDistance)
 	end

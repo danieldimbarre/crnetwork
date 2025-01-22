@@ -20,7 +20,7 @@ local Vehicle = {}
 function Creative.Mount()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Vehicle[Passport] and Vehicle[Passport]["Data"] then
+	if Passport then
 		local Primary = {}
 		local Inv = vRP.Inventory(Passport)
 		for Index,v in pairs(Inv) do
@@ -68,52 +68,54 @@ function Creative.Mount()
 		end
 
 		local Secondary = {}
-		local Result = vRP.GetSrvData(Vehicle[Passport]["Data"],true)
-		for Index,v in pairs(Result) do
-			if (v["amount"] <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveChest(Vehicle[Passport]["Data"],Index,true)
-			else
-				v["name"] = ItemName(v["item"])
-				v["weight"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["amount"] = parseInt(v["amount"])
-				v["rarity"] = ItemRarity(v["item"])
-				v["economy"] = ItemEconomy(v["item"])
-				v["desc"] = ItemDescription(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+		if Vehicle[Passport] and Vehicle[Passport]["Data"] then
+			local Result = vRP.GetSrvData(Vehicle[Passport]["Data"],true)
+			for Index,v in pairs(Result) do
+				if (v["amount"] <= 0 or not ItemExist(v["item"])) then
+					vRP.RemoveChest(Vehicle[Passport]["Data"],Index,true)
+				else
+					v["name"] = ItemName(v["item"])
+					v["weight"] = ItemWeight(v["item"])
+					v["index"] = ItemIndex(v["item"])
+					v["amount"] = parseInt(v["amount"])
+					v["rarity"] = ItemRarity(v["item"])
+					v["economy"] = ItemEconomy(v["item"])
+					v["desc"] = ItemDescription(v["item"])
+					v["key"] = v["item"]
+					v["slot"] = Index
 
-				local Split = splitString(v["item"])
+					local Split = splitString(v["item"])
 
-				if not v["desc"] then
-					if Split[1] == "vehiclekey" and Split[3] then
-						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
-					elseif ItemNamed(Split[1]) and Split[2] then
-						if Split[1] == "identity" then
-							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
-						else
-							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+					if not v["desc"] then
+						if Split[1] == "vehiclekey" and Split[3] then
+							v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
+						elseif ItemNamed(Split[1]) and Split[2] then
+							if Split[1] == "identity" then
+								v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+							else
+								v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+							end
 						end
 					end
-				end
 
-				if Split[2] then
-					local Loaded = ItemLoads(v["item"])
-					if Loaded then
-						v["charges"] = parseInt(Split[2] * (100 / Loaded))
+					if Split[2] then
+						local Loaded = ItemLoads(v["item"])
+						if Loaded then
+							v["charges"] = parseInt(Split[2] * (100 / Loaded))
+						end
+
+						if ItemDurability(v["item"]) then
+							v["durability"] = parseInt(os.time() - Split[2])
+							v["days"] = ItemDurability(v["item"])
+						end
 					end
 
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
-					end
+					Secondary[Index] = v
 				end
-
-				Secondary[Index] = v
 			end
 		end
 
-		return Primary,Secondary,vRP.GetWeight(Passport),Vehicle[Passport]["Weight"] or 0
+		return Primary,Secondary,vRP.GetWeight(Passport),Vehicle[Passport] and Vehicle[Passport]["Weight"] or 0
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -225,16 +227,15 @@ end
 RegisterServerEvent("trunkchest:openTrunk")
 AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
+	local Name = Entity[2]
 	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.PassportPlate(Entity[1])
 	if Passport and OtherPassport then
-		local Weight = vRP.Query("vehicles/selectVehicles",{ Passport = OtherPassport, Vehicle = Entity[2] })
-
 		Vehicle[Passport] = {
-			["Model"] = Entity[2],
+			["Model"] = Name,
 			["Passport"] = OtherPassport,
-			["Weight"] = Weight[1]["Weight"] or 0,
-			["Data"] = "Trunkchest:"..OtherPassport..":"..Entity[2]
+			["Weight"] = vRP.SelectVehicle(OtherPassport,Name)["Weight"] or VehicleWeight(Name),
+			["Data"] = "Trunkchest:"..OtherPassport..":"..Name
 		}
 
 		TriggerClientEvent("trunkchest:Open",source)

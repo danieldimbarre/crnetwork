@@ -64,7 +64,7 @@ function Creative.Payment()
 		if not vRP.MaxItens(Passport,Result["Item"],Valuation) and vRP.CheckWeight(Passport,Result["Item"],Valuation) then
 			vRP.GenerateItem(Passport,Result["Item"],Valuation,true)
 		else
-			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 			exports["inventory"]:Drops(Passport,source,Result["Item"],Valuation)
 		end
 

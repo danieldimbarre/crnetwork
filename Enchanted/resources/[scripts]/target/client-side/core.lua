@@ -200,17 +200,16 @@ CreateThread(function()
 	RegisterCommand("-entityTarget",TargetDisable)
 	RegisterKeyMapping("+entityTarget","Interação auricular.","keyboard","LMENU")
 
-	-- SLOTMACHINE ( Só ative se possuir o script slotmachine )
-	-- AddTargetModel({ 654385216,161343630,-430989390,1096374064,-1519644200,-1932041857,207578973,-487222358 },{
-	-- 	options = {
-	-- 		{
-	-- 			event = "slotmachine:Init",
-	-- 			label = "Sentar",
-	-- 			tunnel = "client"
-	-- 		}
-	-- 	},
-	-- 	Distance = 0.75
-	-- })
+	AddTargetModel({ 654385216,161343630,-430989390,1096374064,-1519644200,-1932041857,207578973,-487222358 },{
+		options = {
+			{
+				event = "slotmachine:Init",
+				label = "Sentar",
+				tunnel = "client"
+			}
+		},
+		Distance = 0.75
+	})
 
 	AddTargetModel({ -832573324,-1430839454,1457690978,1682622302,402729631,-664053099,1794449327,307287994,-1323586730,111281960,-541762431,-745300483,-417505688 },{
 		options = {

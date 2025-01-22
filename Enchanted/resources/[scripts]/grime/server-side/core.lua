@@ -26,7 +26,7 @@ AddEventHandler("grime:Package",function()
 		if vRP.CheckWeight(Passport,Item) then
 			vRP.GenerateItem(Passport,Item,1)
 		else
-			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 			exports["inventory"]:Drops(Passport,source,Item,1)
 		end
 	end

@@ -69,6 +69,10 @@ AddEventHandler("plants:Informations",function(Number)
 		exports["dynamic"]:AddButton("Fertilização",Informations[2],"plants:Cloning",Number,false,true)
 		exports["dynamic"]:AddButton("Hidratação","Fortificação do Adubo: <epic>"..math.floor(Informations[4] * 100).."%</epic>","plants:Water",Number,false,true)
 
+		if CheckPolice() then
+			exports["dynamic"]:AddButton("Destruir",Informations[1],"plants:Destroy",Number,false,true)
+		end
+
 		exports["dynamic"]:Open()
 	end
 end)

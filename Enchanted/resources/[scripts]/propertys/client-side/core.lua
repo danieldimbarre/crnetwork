@@ -268,7 +268,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("propertys:Blips")
 AddEventHandler("propertys:Blips",function()
-	if CountTable(Blips) > 0 then
+	if json.encode(Blips) ~= "[]" then
 		for _,v in pairs(Blips) do
 			if DoesBlipExist(v) then
 				RemoveBlip(v)
@@ -281,7 +281,7 @@ AddEventHandler("propertys:Blips",function()
 	else
 		for Name,v in pairs(Propertys) do
 			if Name ~= "Hotel" then
-				Blips[Name] = AddBlipForCoord(v["Coords"]["x"],v["Coords"]["y"],v["Coords"]["z"])
+				Blips[Name] = AddBlipForCoord(v["Coords"])
 
 				if v["Galpão"] then
 					SetBlipSprite(Blips[Name],473)
@@ -292,8 +292,6 @@ AddEventHandler("propertys:Blips",function()
 				SetBlipScale(Blips[Name],0.5)
 				SetBlipAsShortRange(Blips[Name],true)
 				SetBlipColour(Blips[Name],GlobalState["Markers"][Name] and 35 or 43)
-
-				Wait(10)
 			end
 		end
 

@@ -92,7 +92,7 @@ AddEventHandler("plants:Collect",function(Number)
 			if vRP.CheckWeight(Passport,Temporary["Item"],Valuation) then
 				vRP.GenerateItem(Passport,Temporary["Item"],Valuation,true)
 			else
-				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 				exports["inventory"]:Drops(Passport,source,Temporary["Item"],Valuation)
 			end
 
@@ -131,7 +131,7 @@ AddEventHandler("plants:Cloning",function(Number)
 			if vRP.CheckWeight(Passport,Temporary["Item"].."clone",Valuation) then
 				vRP.GenerateItem(Passport,Temporary["Item"].."clone",Valuation,true)
 			else
-				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 				exports["inventory"]:Drops(Passport,source,Temporary["Item"].."clone",Valuation)
 			end
 
@@ -170,6 +170,18 @@ AddEventHandler("plants:Water",function(Number)
 				vRPC.Destroy(source)
 			end)
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLANTS:DESTROY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("plants:Destroy")
+AddEventHandler("plants:Destroy",function(Number)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport and not Active[Passport] and Plants[Number] then
+		TriggerClientEvent("plants:Remove",-1,Number)
+		Plants[Number] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

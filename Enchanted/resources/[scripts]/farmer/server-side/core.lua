@@ -92,7 +92,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 					if vRP.CheckWeight(Passport,Consult["Item"],Consult["Valuation"]) and not vRP.MaxItens(Passport,Consult["Item"],Consult["Valuation"]) then
 						vRP.GenerateItem(Passport,Consult["Item"],Consult["Valuation"],true)
 					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 						exports["inventory"]:Drops(Passport,source,Consult["Item"],Consult["Valuation"])
 					end
 
@@ -159,7 +159,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 					if vRP.CheckWeight(Passport,"woodlog",Valuation) and not vRP.MaxItens(Passport,"woodlog",Valuation) then
 						vRP.GenerateItem(Passport,"woodlog",Valuation,true)
 					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 						exports["inventory"]:Drops(Passport,source,"woodlog",Valuation)
 					end
 
@@ -214,7 +214,7 @@ AddEventHandler("farmer:Transporter",function(Number)
 					if vRP.CheckWeight(Passport,"pouch",Valuation) and not vRP.MaxItens(Passport,"pouch",Valuation) then
 						vRP.GenerateItem(Passport,"pouch",Valuation,true)
 					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 						exports["inventory"]:Drops(Passport,source,"pouch",Valuation)
 					end
 
@@ -268,7 +268,7 @@ AddEventHandler("farmer:Sandman",function(Number)
 					if vRP.CheckWeight(Passport,"sand",Valuation) and not vRP.MaxItens(Passport,"sand",Valuation) then
 						vRP.GenerateItem(Passport,"sand",Valuation,true)
 					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 						exports["inventory"]:Drops(Passport,source,"sand",Valuation)
 					end
 
@@ -370,7 +370,7 @@ AddEventHandler("farmer:Trasher",function(Number)
 								if not vRP.MaxItens(Consult[Number]["Passport"],Result["Item"],Valuation) and vRP.CheckWeight(Consult[Number]["Passport"],Result["Item"],Valuation) then
 									vRP.GenerateItem(Consult[Number]["Passport"],Result["Item"],Valuation,true)
 								else
-									TriggerClientEvent("Notify",Consult[Number]["Source"],"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+									TriggerClientEvent("Notify",Consult[Number]["Source"],"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 									exports["inventory"]:Drops(Consult[Number]["Passport"],Consult[Number]["Source"],Result["Item"],Valuation)
 								end
 
@@ -383,7 +383,7 @@ AddEventHandler("farmer:Trasher",function(Number)
 						if not vRP.MaxItens(Passport,Result["Item"],Result["Valuation"]) and vRP.CheckWeight(Passport,Result["Item"],Result["Valuation"]) then
 							vRP.GenerateItem(Passport,Result["Item"],Valuation,true)
 						else
-							TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+							TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 							exports["inventory"]:Drops(Passport,source,Result["Item"],Valuation)
 						end
 

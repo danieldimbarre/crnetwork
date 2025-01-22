@@ -96,7 +96,7 @@ CreateThread(function()
 							SetBlipColour(Markers[Index],Information[v.Permission][v.Level])
 							SetBlipScale(Markers[Index],0.7)
 							BeginTextCommandSetBlipName("STRING")
-							AddTextComponentString("! "..v.Permission..":"..v.Level)
+							AddTextComponentString("! "..v.Permission.." : "..v.Level)
 							EndTextCommandSetBlipName(Markers[Index])
 						end
 					end
@@ -125,7 +125,7 @@ CreateThread(function()
 								SetBlipColour(Markers[Index],Information[v.Permission][v.Level])
 								SetBlipScale(Markers[Index],0.7)
 								BeginTextCommandSetBlipName("STRING")
-								AddTextComponentString("! "..v.Permission..":"..v.Level)
+								AddTextComponentString("! "..v.Permission.." : "..v.Level)
 								EndTextCommandSetBlipName(Markers[Index])
 							end
 						else

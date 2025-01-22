@@ -81,7 +81,7 @@ end)
 RegisterCommand("UpFrequency",function()
 	local LastFrequency = Frequency + 1
 	if MumbleIsConnected() and LastFrequency >= 911 and LastFrequency <= 920 and CheckPolice() and vSERVER.Frequency(LastFrequency) then
-		TriggerEvent("Notify","Radiofrequência","Entrou na frequência <b>"..LastFrequency.."</b>.","roxo",5000)
+		TriggerEvent("Notify","Radiofrequência","Entrou na frequência <b>"..LastFrequency.."</b>.","amarelo",5000)
 		exports["pma-voice"]:setRadioChannel(LastFrequency)
 		TriggerEvent("hud:Radio",LastFrequency)
 		Frequency = LastFrequency
@@ -93,7 +93,7 @@ end)
 RegisterCommand("DownFrequency",function()
 	local LastFrequency = Frequency - 1
 	if MumbleIsConnected() and LastFrequency >= 911 and LastFrequency <= 920 and CheckPolice() and vSERVER.Frequency(LastFrequency) then
-		TriggerEvent("Notify","Radiofrequência","Entrou na frequência <b>"..LastFrequency.."</b>.","roxo",5000)
+		TriggerEvent("Notify","Radiofrequência","Entrou na frequência <b>"..LastFrequency.."</b>.","amarelo",5000)
 		exports["pma-voice"]:setRadioChannel(LastFrequency)
 		TriggerEvent("hud:Radio",LastFrequency)
 		Frequency = LastFrequency

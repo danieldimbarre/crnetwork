@@ -29,19 +29,39 @@ local Exclude = {}
 local MaxValuer = {
 	["pants"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 4 },
 	["arms"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 3 },
-	["tshirt"] = { min = 1, item = 0, texture = 0, mode = "variation", id = 8 },
+	["tshirt"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 8 },
 	["torso"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 11 },
 	["vest"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 9 },
 	["shoes"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 6 },
 	["mask"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 1 },
 	["backpack"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 5 },
-	["hat"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 0 },
+	["hat"] = { min = 0, item = 0, texture = 0, mode = "prop", id = 0 },
 	["glass"] = { min = 0, item = 0, texture = 0, mode = "prop", id = 1 },
-	["ear"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 2 },
-	["watch"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 6 },
-	["bracelet"] = { min = -1, item = 0, texture = 0, mode = "prop", id = 7 },
+	["ear"] = { min = 0, item = 0, texture = 0, mode = "prop", id = 2 },
+	["watch"] = { min = 0, item = 0, texture = 0, mode = "prop", id = 6 },
+	["bracelet"] = { min = 0, item = 0, texture = 0, mode = "prop", id = 7 },
 	["accessory"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 7 },
 	["decals"] = { min = 0, item = 0, texture = 0, mode = "variation", id = 10 }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DATASET
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Dataset = {
+	["pants"] = { item = 0, texture = 0 },
+	["arms"] = { item = 0, texture = 0 },
+	["tshirt"] = { item = 0, texture = 0 },
+	["torso"] = { item = 0, texture = 0 },
+	["vest"] = { item = 0, texture = 0 },
+	["shoes"] = { item = 0, texture = 0 },
+	["mask"] = { item = 0, texture = 0 },
+	["backpack"] = { item = 0, texture = 0 },
+	["hat"] = { item = 0, texture = 0 },
+	["glass"] = { item = 0, texture = 0 },
+	["ear"] = { item = 0, texture = 0 },
+	["watch"] = { item = 0, texture = 0 },
+	["bracelet"] = { item = 0, texture = 0 },
+	["accessory"] = { item = 0, texture = 0 },
+	["decals"] = { item = 0, texture = 0 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCATIONS
@@ -65,24 +85,43 @@ local Locations = {
 	vec3(474.41,-992.92,30.68)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DATASET
+-- BLOCK
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Dataset = {
-	["pants"] = { item = 0, texture = 0 },
-	["arms"] = { item = 0, texture = 0 },
-	["tshirt"] = { item = 1, texture = 0 },
-	["torso"] = { item = 0, texture = 0 },
-	["vest"] = { item = 0, texture = 0 },
-	["shoes"] = { item = 0, texture = 0 },
-	["mask"] = { item = 0, texture = 0 },
-	["backpack"] = { item = 0, texture = 0 },
-	["hat"] = { item = -1, texture = 0 },
-	["glass"] = { item = 0, texture = 0 },
-	["ear"] = { item = -1, texture = 0 },
-	["watch"] = { item = -1, texture = 0 },
-	["bracelet"] = { item = -1, texture = 0 },
-	["accessory"] = { item = 0, texture = 0 },
-	["decals"] = { item = 0, texture = 0 }
+local Block = {
+	["mp_m_freemode_01"] = {
+		["pants"] = {},
+		["arms"] = {},
+		["tshirt"] = {},
+		["torso"] = {},
+		["vest"] = {},
+		["shoes"] = {},
+		["mask"] = {},
+		["backpack"] = {},
+		["hat"] = {},
+		["glass"] = {},
+		["ear"] = {},
+		["watch"] = {},
+		["bracelet"] = {},
+		["accessory"] = {},
+		["decals"] = {}
+	},
+	["mp_f_freemode_01"] = {
+		["pants"] = {},
+		["arms"] = {},
+		["tshirt"] = {},
+		["torso"] = {},
+		["vest"] = {},
+		["shoes"] = {},
+		["mask"] = {},
+		["backpack"] = {},
+		["hat"] = {},
+		["glass"] = {},
+		["ear"] = {},
+		["watch"] = {},
+		["bracelet"] = {},
+		["accessory"] = {},
+		["decals"] = {}
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP:APPLY
@@ -278,15 +317,40 @@ exports("Apply",function(Data,Ped)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- UPDATE
+-- CHECKCLOTHINGPERMISSION
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Update",function(Data,Callback)
-	Skinshop = Data["clothes"]
-	exports["skinshop"]:Apply()
+function CheckClothingPermission(Model,Index,Change)
+	return not (Model and Block[Model] and Block[Model][Index] and Block[Model][Index][Change] and not vSERVER.CheckPermission(Block[Model][Index][Change]))
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADJUSTCLOTHINGITEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function AdjustClothingItem(Data,Index)
+	local Item = false
+	local Max = MaxValuer[Index]
+	local Clothes = Data["clothes"]
+	local CurrentItem = Clothes[Index]["item"]
 
+	if Skinshop[Index]["item"] > CurrentItem then
+		Item = CurrentItem - 1
+	else
+		Item = CurrentItem + 1
+	end
+
+	if Item >= Max["item"] then
+		Item = Max["min"]
+	end
+
+	Clothes[Index]["item"] = Item
+
+	return Item
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GETTEXTURECOUNT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function GetTextureCount(Index)
 	local Texture = 0
 	local Ped = PlayerPedId()
-	local Index = Data["index"]
 	local MaxValue = MaxValuer[Index]
 
 	if MaxValue["mode"] == "variation" then
@@ -295,11 +359,25 @@ RegisterNUICallback("Update",function(Data,Callback)
 		Texture = GetNumberOfPedPropTextureVariations(Ped,MaxValue["id"],GetPedPropIndex(Ped,MaxValue["id"])) - 1
 	end
 
-	if Texture < 0 then
-		Texture = 0
+	return math.max(Texture,0)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- UPDATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("Update",function(Data,Callback)
+	local NuiChange = false
+	local Index = Data["index"]
+	local Model = GetPlayerModel()
+	local Change = Data["clothes"][Index]["item"]
+
+	if not CheckClothingPermission(Model,Index,Change) then
+		NuiChange = AdjustClothingItem(Data,Index)
 	end
 
-	Callback(Texture)
+	Skinshop = Data["clothes"]
+	exports["skinshop"]:Apply()
+
+	Callback({ GetTextureCount(Index),NuiChange })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETUP
@@ -585,5 +663,20 @@ AddEventHandler("skinshop:BackpackRemove",function()
 	local Ped = PlayerPedId()
 	Skinshop["backpack"]["item"] = -1
 	Skinshop["backpack"]["texture"] = 0
+
 	SetPedComponentVariation(Ped,5,Skinshop["backpack"]["item"],Skinshop["backpack"]["texture"],GetPedPaletteVariation(Ped,5))
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GETPLAYERMODEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+function GetPlayerModel()
+	local Ped = PlayerPedId()
+	local Model = GetEntityModel(Ped)
+
+	local Mappings = {
+		[GetHashKey("mp_m_freemode_01")] = "mp_m_freemode_01",
+		[GetHashKey("mp_f_freemode_01")] = "mp_f_freemode_01"
+	}
+
+	return Mappings[Model] or nil
+end

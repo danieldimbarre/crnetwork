@@ -57,6 +57,8 @@ RegisterCommand("painel",function(source,Message)
 						["phone"] = Activated,
 						["role_id"] = Number
 					}
+				else
+					vRP.RemovePermission(OtherPassport,Permission)
 				end
 			end
 

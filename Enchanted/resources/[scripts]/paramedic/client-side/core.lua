@@ -48,7 +48,7 @@ CreateThread(function()
 	while true do
 		local Ped = PlayerPedId()
 		if Bleedings >= 2 and GetGameTimer() >= BloodTimers and GetEntityHealth(Ped) > 100 then
-			TriggerEvent("Notify","Sangramento","Ferimentos encontrados.","vermelho",5000)
+			TriggerEvent("Notify","Sangramento","Ferimentos encontrados.","sangue",5000)
 			BloodTimers = GetGameTimer() + 30000
 			ApplyDamageToPed(Ped,1,false)
 			ClearPedBloodDamage(Ped)
@@ -114,7 +114,7 @@ AddEventHandler("paramedic:Injuries",function()
 	if Injuries == "" then
 		TriggerEvent("Notify","Aviso","Nenhum ferimento encontrado.","amarelo",5000)
 	else
-		TriggerEvent("Notify","Ferimentos",Injuries,"roxo",10000)
+		TriggerEvent("Notify","Ferimentos",Injuries,"amarelo",10000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

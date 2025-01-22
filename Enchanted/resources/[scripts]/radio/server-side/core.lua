@@ -70,12 +70,12 @@ end)
 -- EXIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Exist",function(Number)
-	return Actives[Number]
+	return Actives[tostring(Number)]
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Add",function(Number,Permission)
-	Radio[Number] = Permission
-	Actives[Number] = Permission
+	Radio[tostring(Number)] = Permission
+	Actives[tostring(Number)] = Permission
 end)

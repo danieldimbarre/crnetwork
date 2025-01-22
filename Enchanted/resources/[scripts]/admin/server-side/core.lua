@@ -73,6 +73,15 @@ RegisterCommand("skinshop",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- BARBERSHOP
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("barbershop",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		TriggerClientEvent("barbershop:Open",source)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINWEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skinweapon",function(source,Message)
@@ -551,7 +560,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("console",function(source,Message,History)
 	if source == 0 then
-		TriggerClientEvent("Notify",-1,"Prefeitura",History:sub(8),"vermelho",60000)
+		TriggerClientEvent("Notify",-1,"Prefeitura",History:sub(8),"default",60000,"bottom-center")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -565,14 +574,14 @@ RegisterCommand("kickall",function(source)
 		end
 	end
 
-	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 3 minutos, se abriguem!","vermelho",60000)
+	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 3 minutos.","default",60000,"bottom-center")
 	GlobalState["Weather"] = "RAIN"
 	Wait(60000)
 
-	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 2 minutos, se abriguem!","vermelho",60000)
+	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 2 minutos.","default",60000,"bottom-center")
 	Wait(60000)
 
-	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 1 minuto, se abriguem!","vermelho",60000)
+	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 1 minuto.","default",60000,"bottom-center")
 	GlobalState["Weather"] = "THUNDER"
 	Wait(60000)
 
@@ -617,16 +626,6 @@ RegisterCommand("save",function(source)
 	TriggerEvent("SaveServer",false)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSAVEAUTO
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	while true do
-		Wait(5 * 60000)
-
-		TriggerEvent("SaveServer",true)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- LOGSERVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -636,9 +635,13 @@ CreateThread(function()
 		local Message = "**LISTAGEM DE JOGADORES**\n\n**[ PLAYERS ]:** "..GetNumPlayerIndices().."\n"
 		for Permission in pairs(Groups) do
 			Message = Message.."**[ "..string.upper(Permission).." ]:** "..vRP.AmountService(Permission).."\n"
+
+			Wait(1000)
 		end
 
 		exports["discord"]:Embed("Permissions",Message.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+
+		--TriggerEvent("SaveServer",true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -691,7 +694,7 @@ GlobalState["Quake"] = false
 RegisterCommand("quake",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",1) then
-		TriggerClientEvent("Notify",-1,"Terromoto","Os geólogos informaram para nossa unidade governamental que foi encontrado um abalo de magnitude <b>60</b> na <b>Escala Richter</b>, encontrem abrigo até que o mesmo passe.","roxo",60000)
+		TriggerClientEvent("Notify",-1,"Terromoto","Os geólogos informaram para nossa unidade governamental que foi encontrado um abalo de magnitude <b>60</b> na <b>Escala Richter</b>, encontrem abrigo até que o mesmo passe.","server",60000)
 		GlobalState["Quake"] = true
 	end
 end)
@@ -950,3 +953,13 @@ function SendMessageDiscord(Result,Code,Message)
 	Result.writeHead(Code,{ ["Content-Type"] = "application/json" })
 	Result.send(json.encode({ message = Message }))
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BLACKOUT
+-----------------------------------------------------------------------------------------------------------------------------------------
+GlobalState["Blackout"] = false
+RegisterCommand("blackout",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		GlobalState["Blackout"] = not GlobalState["Blackout"]
+	end
+end)

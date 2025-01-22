@@ -13,6 +13,7 @@ vGARAGE = Tunnel.getInterface("garages")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Blip = nil
+local Plate = nil
 local Position = 1
 local Package = false
 local Service = "Vehicles"
@@ -162,17 +163,20 @@ CreateThread(function()
 
 					if Distance <= 10 then
 						if Position >= #Delivery[Service]["Coords"] then
-							Package = false
-							vSERVER.Payment()
+							if Plate == GetVehicleNumberPlateText(Vehicle) then
+								Package = false
+								vSERVER.Payment()
 
-							if DoesBlipExist(Blip) then
-								RemoveBlip(Blip)
-								Blip = nil
+								if DoesBlipExist(Blip) then
+									RemoveBlip(Blip)
+									Blip = nil
+								end
 							end
 						else
 							if Position == 1 then
 								if IsControlJustPressed(1,38) then
 									local Heading = GetEntityHeading(Vehicle)
+									Plate = GetVehicleNumberPlateText(Vehicle)
 									local Coords = GetOffsetFromEntityInWorldCoords(Vehicle,0.0,-12.0,0.0)
 									local Exist,Networked = vGARAGE.ServerVehicle(Delivery[Service]["Trailer"],vec4(Coords["x"],Coords["y"],Coords["z"],Heading),nil,0,nil,1000,0,false)
 
@@ -189,10 +193,10 @@ CreateThread(function()
 							else
 								if Position == 2 then
 									if not IsPedInAnyVehicle(Ped) and IsControlJustPressed(1,38) then
-										local Vehicle,Network,Plate,Model = vRP.VehicleList(10)
+										local Vehicle,Network,Platex,Model = vRP.VehicleList(10)
 										if Vehicle and Model == Delivery[Service]["Trailer"] then
 											TriggerEvent("Notify","Aviso","Volte para receber o pagamento.","amarelo",5000)
-											TriggerServerEvent("garages:Delete",Network,Plate)
+											TriggerServerEvent("garages:Delete",Network,Platex)
 											Position = Position + 1
 											BlipMarked()
 										end

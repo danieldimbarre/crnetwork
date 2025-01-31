@@ -10,6 +10,7 @@ vSERVER = Tunnel.getInterface("doors")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Display = {}
+local Cooldown = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -65,7 +66,8 @@ CreateThread(function()
 						Display[Number] = true
 					end
 
-					if IsControlJustPressed(1,38) then
+					if IsControlJustPressed(1,38) and Cooldown <= GetGameTimer() then
+						Cooldown = GetGameTimer() + (10 * 60000)
 						vSERVER.Permission(Number)
 					end
 				else

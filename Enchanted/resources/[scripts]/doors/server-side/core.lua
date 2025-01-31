@@ -88,10 +88,9 @@ GlobalState["Doors"] = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Permission(Number)
 	local source = source
+	local Doors = GlobalState["Doors"]
 	local Passport = vRP.Passport(source)
-	if Passport and GlobalState["Doors"][Number] and GlobalState["Doors"][Number]["Perm"] and vRP.HasGroup(Passport,GlobalState["Doors"][Number]["Perm"]) then
-		local Doors = GlobalState["Doors"]
-
+	if Passport and Doors[Number] and Doors[Number]["Perm"] and vRP.HasGroup(Passport,Doors[Number]["Perm"]) then
 		Doors[Number]["Lock"] = not Doors[Number]["Lock"]
 
 		if Doors[Number]["Other"] then
@@ -99,6 +98,6 @@ function Creative.Permission(Number)
 			Doors[Second]["Lock"] = not Doors[Second]["Lock"]
 		end
 
-		GlobalState:set("Doors",Doors,true)
+		GlobalState["Doors"] = Doors
 	end
 end

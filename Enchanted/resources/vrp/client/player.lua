@@ -79,10 +79,20 @@ end
 function tvRP.Skin(Hash)
 	if LoadModel(Hash) then
 		local Pid = PlayerId()
-		local Hash = GetHashKey(Hash)
+		local Ped = PlayerPedId()
+		local Model = GetHashKey(Hash)
 
-		SetPlayerModel(Pid,Hash)
-		SetModelAsNoLongerNeeded(Hash)
+		RequestModel(Model)
+		while not HasModelLoaded(Model) do
+			Wait(100)
+		end
+
+		if not (GetEntityModel(Ped) == 225514697) then
+			SetPlayerModel(Pid,Model)
+		end
+
+		SetModelAsNoLongerNeeded(Model)
+		ClearPedTasksImmediately(Ped)
 
 		exports["vrp"]:ReloadCharacter()
 		tvRP.ReloadCharacter()
@@ -108,21 +118,27 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 	local Ped = PlayerPedId()
 
 	if not Creation then
-		SetEntityVisible(Ped,false,0)
+		TriggerEvent("EntityVisible",false)
+		SetEntityVisible(Ped,false)
 	end
 
-	SetLocalPlayerAsGhost(true)
+	TriggerEvent("EntityInvincible",true)
 	SetEntityInvincible(Ped,true)
+
+	SetLocalPlayerAsGhost(true)
 	FreezeEntityPosition(Ped,true)
 	NetworkSetFriendlyFireOption(false)
 
 	SetTimeout(5000,function()
 		if not Creation then
-			SetEntityVisible(Ped,true,0)
+			SetEntityVisible(Ped,true)
+			TriggerEvent("EntityVisible",true)
 		end
 
-		SetLocalPlayerAsGhost(false)
 		SetEntityInvincible(Ped,false)
+		TriggerEvent("EntityInvincible",false)
+
+		SetLocalPlayerAsGhost(false)
 		FreezeEntityPosition(Ped,false)
 		exports["vrp"]:ReloadCharacter()
 		NetworkSetFriendlyFireOption(true)

@@ -36,10 +36,12 @@ local Anims = {
 RegisterNUICallback("Characters",function(Data,Callback)
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,-2006.95,2960.77,31.81,false,false,false,false)
+	TriggerEvent("EntityInvincible",true)
+	TriggerEvent("EntityVisible",false)
 	FreezeEntityPosition(Ped,true)
 	SetEntityInvincible(Ped,true)
-	SetEntityVisible(Ped,false,0)
 	SetEntityHeading(Ped,305.82)
+	SetEntityVisible(Ped,false)
 	SetEntityHealth(Ped,100)
 	SetPedArmour(Ped,0)
 
@@ -165,13 +167,13 @@ function Customization(Table,Check)
 	if IsModelInCdimage(Model) and IsModelValid(Model) then
 		RequestModel(Model)
 		while not HasModelLoaded(Model) do
-			RequestModel(Model)
-			Wait(0)
+			Wait(100)
 		end
 
 		if not Check or (Check and GetEntityModel(Ped) ~= Model) then
 			SetPlayerModel(Pid,Model)
 			SetModelAsNoLongerNeeded(Model)
+			ClearPedTasksImmediately(Ped)
 		end
 	end
 
@@ -184,7 +186,9 @@ function Customization(Table,Check)
 	exports["skinshop"]:Apply(Table["Clothes"],Ped)
 	exports["barbershop"]:Apply(Table["Barber"],Ped)
 	exports["tattooshop"]:Apply(Table["Tattoos"],Ped)
-	SetEntityVisible(Ped,true,0)
+
+	SetEntityVisible(Ped,true)
+	TriggerEvent("EntityVisible",true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN:INCREMENT

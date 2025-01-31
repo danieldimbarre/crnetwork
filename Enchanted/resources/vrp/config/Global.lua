@@ -40,66 +40,70 @@ TexturePack = {
 -- THEME
 -----------------------------------------------------------------------------------------------------------------------------------------
 Theme = {
-	["currency"] = Currency,
-	["main"] = "#5865f2",
-	["common"] = "#6fc66a",
-	["rare"] = "#6ac6c5",
-	["epic"] = "#c66a75",
-	["legendary"] = "#c6986a",
-	["accept"] = {
+	currency = Currency,
+	main = "#5865f2",
+	common = "#6fc66a",
+	rare = "#6ac6c5",
+	epic = "#c66a75",
+	legendary = "#c6986a",
+	accept = {
 		letter = "#dcffe9",
 		background = "#3fa466"
 	},
-	["reject"] = {
+	reject = {
 		letter = "#ffe8e8",
 		background = "#ad4443"
 	},
-	["shadow"] = true,
+	shadow = true,
 	["main-text"] = "#ffffff",
-	["loading-progress"] = true,
-	["chat"] = {
-		["Families"] = {
+	loading = {
+		mode = "dark", -- [ Opções disponíveis: dark,light ],
+		model = 2, -- [ Opções disponíveis: 1,2 ],
+		progress = true -- [ Opções disponíveis: true, false ],
+	},
+	chat = {
+		Families = {
 			background = "#ff0000",
 			letter = "#ffffff"
 		},
-		["Ballas"] = {
+		Ballas = {
 			background = "#00ff00",
 			letter = "#ffffff"
 		},
-		["Vagos"] = {
+		Vagos = {
 			background = "#0000ff",
 			letter = "#ffffff"
 		}
 	},
-	["hud"] = {
-		["modes"] = {
+	hud = {
+		modes = {
 			info = 3, -- [ Opções disponíveis: 1,2,3 ],
 			icon = "fill", -- [ Opções disponíveis: fill,line ],
 			status = 10, -- [ Opções disponíveis: 1 a 12 ],
 			vehicle = 3 -- [ Opções disponíveis: 1,2,3 ]
 		},
-		["percentage"] = true,
-		["icons"] = "#FFFFFF",
-		["nitro"] = "#f69d2a",
-		["rpm"] = "#FFFFFF",
-		["fuel"] = "#f94c54",
-		["engine"] = "#ff4c55",
-		["health"] = "#76B984",
-		["armor"] = "#A66FED",
-		["hunger"] = "#F4B266",
-		["thirst"] = "#7FC8F8",
-		["stress"] = "#E287C9",
-		["luck"] = "#F18A7C",
-		["dexterity"] = "#E4E76E",
-		["repose"] = "#7FCCC7",
-		["pointer"] = "#ef4444",
-		["progress"] = {
+		percentage = true,
+		icons = "#FFFFFF",
+		nitro = "#f69d2a",
+		rpm = "#FFFFFF",
+		fuel = "#f94c54",
+		engine = "#ff4c55",
+		health = "#76B984",
+		armor = "#A66FED",
+		hunger = "#F4B266",
+		thirst = "#7FC8F8",
+		stress = "#E287C9",
+		luck = "#F18A7C",
+		dexterity = "#E4E76E",
+		repose = "#7FCCC7",
+		pointer = "#ef4444",
+		progress = {
 			background = "#FFFFFF",
 			circle = "#5865f2",
 			letter = "#FFFFFF"
 		}
 	},
-	["notifyitem"] = {
+	notifyitem = {
 		add = {
 			letter = "#dcffe9",
 			background = "#3fa466"
@@ -109,7 +113,7 @@ Theme = {
 			background = "#ad4443"
 		}
 	},
-	["pause"] = {
+	pause = {
 		premium = true,
 		store = true,
 		battlepass = true,

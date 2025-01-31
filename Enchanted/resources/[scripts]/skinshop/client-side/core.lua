@@ -317,12 +317,6 @@ exports("Apply",function(Data,Ped)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHECKCLOTHINGPERMISSION
------------------------------------------------------------------------------------------------------------------------------------------
-function CheckClothingPermission(Model,Index,Change)
-	return not (Model and Block[Model] and Block[Model][Index] and Block[Model][Index][Change] and not vSERVER.CheckPermission(Block[Model][Index][Change]))
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- ADJUSTCLOTHINGITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 function AdjustClothingItem(Data,Index)
@@ -370,7 +364,7 @@ RegisterNUICallback("Update",function(Data,Callback)
 	local Model = GetPlayerModel()
 	local Change = Data["clothes"][Index]["item"]
 
-	if not CheckClothingPermission(Model,Index,Change) then
+	if Block[Model] and Block[Model][Index] and Block[Model][Index][Change] and not vSERVER.CheckPermission(Block[Model][Index][Change]) then
 		NuiChange = AdjustClothingItem(Data,Index)
 	end
 

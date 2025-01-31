@@ -241,7 +241,7 @@ AddEventHandler("propertys:Buy",function(Name)
 					if vRP.PaymentFull(Passport,Informations[Interior]["Price"]) then
 						local Markers = GlobalState["Markers"]
 						Markers[Name] = true
-						GlobalState:set("Markers",Markers,true)
+						GlobalState["Markers"] = Markers
 
 						Saved[Name] = Interior
 						vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
@@ -255,7 +255,7 @@ AddEventHandler("propertys:Buy",function(Name)
 					if vRP.PaymentGems(Passport,Informations[Interior]["Gemstone"]) then
 						local Markers = GlobalState["Markers"]
 						Markers[Name] = true
-						GlobalState:set("Markers",Markers,true)
+						GlobalState["Markers"] = Markers
 
 						Saved[Name] = Interior
 						vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
@@ -307,7 +307,7 @@ AddEventHandler("propertys:Sell",function(Name)
 				if GlobalState["Markers"][Name] then
 					local Markers = GlobalState["Markers"]
 					Markers[Name] = nil
-					GlobalState:set("Markers",Markers,true)
+					GlobalState["Markers"] = Markers
 				end
 
 				vRP.GiveBank(Passport,Price)
@@ -685,7 +685,7 @@ CreateThread(function()
 		end
 	end
 
-	GlobalState:set("Markers",Markers,true)
+	GlobalState["Markers"] = Markers
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERCHOSEN

@@ -52,7 +52,8 @@ CreateThread(function()
 				if not LocalPlayer["state"]["Safezone"] then
 					NetworkSetFriendlyFireOption(false)
 					LocalPlayer["state"]:set("Safezone",Index,true)
-					SetEntityInvincible(Ped,false)
+					TriggerEvent("EntityInvincible",true)
+					SetEntityInvincible(Ped,true)
 					SetLocalPlayerAsGhost(true)
 
 					if IsPedArmed(Ped,7) then
@@ -64,6 +65,7 @@ CreateThread(function()
 					SetLocalPlayerAsGhost(false)
 					SetEntityInvincible(Ped,false)
 					NetworkSetFriendlyFireOption(true)
+					TriggerEvent("EntityInvincible",false)
 					LocalPlayer["state"]:set("Safezone",false,true)
 				end
 			end

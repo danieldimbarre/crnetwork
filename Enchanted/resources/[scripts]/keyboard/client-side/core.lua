@@ -209,6 +209,50 @@ function Vehicle(First,Second,Third,Fourth)
 	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SKINS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Skins(First,Second,Third,Fourth,Fifty)
+	local Array = Keyboard({
+		title = "Formulário",
+		subtitle = "Preencha os campos abaixo",
+		rows = {
+			{
+				id = 1,
+				mode = "text",
+				placeholder = First,
+				value = ""
+			},{
+				id = 2,
+				mode = "text",
+				placeholder = Second,
+				value = ""
+			},{
+				id = 3,
+				mode = "text",
+				placeholder = Third,
+				value = ""
+			},{
+				id = 4,
+				mode = "text",
+				placeholder = Fourth,
+				value = ""
+			},{
+				id = 5,
+				mode = "options",
+				placeholder = "Selecione uma opção",
+				options = Fifty,
+				value = ""
+			}
+		}
+	})
+
+	if Array and Array["2"] and Array["2"]["input"] ~= "" and Array["3"] and Array["3"]["input"] ~= "" and Array["4"] and Array["4"]["input"] ~= "" and Array["5"] and Array["5"]["input"] ~= "" then
+		return { Array["1"]["input"],Array["2"]["input"],Array["3"]["input"],Array["4"]["input"],Array["5"]["input"] }
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Item(First,Second,Third,Fourth,Fifty)
@@ -523,6 +567,12 @@ function Creative.Vehicle(First,Secondary,Third,Fourth)
 	return Vehicle(First,Secondary,Third,Fourth)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SKINS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Skins(First,Secondary,Third,Fourth,Fifty)
+	return Skins(First,Secondary,Third,Fourth,Fifty)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Item(First,Secondary,Third,Fourth,Fifty)
@@ -534,6 +584,7 @@ end
 exports("Item",Item)
 exports("Area",Area)
 exports("Copy",Copy)
+exports("Skins",Skins)
 exports("Banned",Banned)
 exports("Vehicle",Vehicle)
 exports("Options",Options)

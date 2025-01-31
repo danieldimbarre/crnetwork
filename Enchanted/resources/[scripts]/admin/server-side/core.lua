@@ -12,6 +12,7 @@ Creative = {}
 Tunnel.bindInterface("admin",Creative)
 vCLIENT = Tunnel.getInterface("admin")
 vKEYBOARD = Tunnel.getInterface("keyboard")
+vSKINWEAPON = Tunnel.getInterface("skinweapon")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -291,7 +292,7 @@ RegisterCommand("item",function(source,Message)
 					end
 				elseif Action == "Todos" then
 					local List = vRP.Players()
-					for OtherPlayer,_ in pairs(List) do
+					for OtherPlayer in pairs(List) do
 						async(function()
 							vRP.GenerateItem(OtherPlayer,Item,Amount,true)
 						end)
@@ -318,6 +319,30 @@ RegisterCommand("item",function(source,Message)
 		elseif Message[1] and Message[2] then
 			vRP.GenerateItem(Passport,Message[1],Message[2],true)
 			exports["discord"]:Embed("Item","**[ADMIN]:** "..Passport.."\n**[ITEM]:** "..Message[1].."\n**[QUANTIDADE]:** "..Message[2].."x\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SKINS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("skins",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin",2) then
+		local Keyboard = vKEYBOARD.Skins(source,"Passaporte","Número","Weapon","Component",{ "Jogador","Todos" })
+		if Keyboard then
+			if Keyboard[5] == "Jogador" then
+				local OtherPassport = parseInt(Keyboard[1])
+				if vRP.Identity(OtherPassport) then
+					TriggerEvent("inventory:SkinPlayer",OtherPassport,Keyboard[2],Keyboard[3],Keyboard[4])
+				end
+			elseif Keyboard[5] == "Todos" then
+				local List = vRP.Players()
+				for OtherPassport in pairs(List) do
+					async(function()
+						TriggerEvent("inventory:SkinPlayer",OtherPassport,Keyboard[2],Keyboard[3],Keyboard[4])
+					end)
+				end
+			end
 		end
 	end
 end)

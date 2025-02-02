@@ -79,7 +79,6 @@ end
 function tvRP.Skin(Hash)
 	if LoadModel(Hash) then
 		local Pid = PlayerId()
-		local Ped = PlayerPedId()
 		local Model = GetHashKey(Hash)
 
 		RequestModel(Model)
@@ -87,12 +86,8 @@ function tvRP.Skin(Hash)
 			Wait(100)
 		end
 
-		if GetEntityModel(Ped) ~= 225514697 then
-			SetPlayerModel(Pid,Model)
-		end
-
+		SetPlayerModel(Pid,Model)
 		SetModelAsNoLongerNeeded(Model)
-		ClearPedTasksImmediately(Ped)
 
 		exports["vrp"]:ReloadCharacter()
 		tvRP.ReloadCharacter()
@@ -126,6 +121,7 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 	SetEntityInvincible(Ped,true)
 
 	SetLocalPlayerAsGhost(true)
+	ClearPedTasksImmediately(Ped)
 	FreezeEntityPosition(Ped,true)
 	NetworkSetFriendlyFireOption(false)
 

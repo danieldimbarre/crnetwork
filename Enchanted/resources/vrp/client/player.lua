@@ -87,7 +87,7 @@ function tvRP.Skin(Hash)
 			Wait(100)
 		end
 
-		if not (GetEntityModel(Ped) == 225514697) then
+		if GetEntityModel(Ped) ~= 225514697 then
 			SetPlayerModel(Pid,Model)
 		end
 

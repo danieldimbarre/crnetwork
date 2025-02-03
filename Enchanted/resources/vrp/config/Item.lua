@@ -1517,7 +1517,8 @@ local List = {
 		["Anim"] = "tv",
 		["LostWater"] = true,
 		["Economy"] = 5425,
-		["Market"] = true
+		["Market"] = true,
+		["Max"] = 1
 	},
 	["ssddrive"] = {
 		["Index"] = "ssddrive",
@@ -3452,11 +3453,23 @@ local List = {
 		["Index"] = "package",
 		["Name"] = "Encomenda",
 		["Type"] = "Comum",
-		["Weight"] = 20.0,
+		["Weight"] = 10.0,
 		["Anim"] = "caixa",
 		["LostWater"] = true,
 		["Economy"] = 0,
-		["Market"] = true
+		["Market"] = true,
+		["Max"] = 1
+	},
+	["binbag"] = {
+		["Index"] = "binbag",
+		["Name"] = "Saco de Lixo",
+		["Type"] = "Comum",
+		["Weight"] = 10.0,
+		["Anim"] = "lixo",
+		["LostWater"] = true,
+		["Economy"] = 0,
+		["Market"] = true,
+		["Max"] = 1
 	},
 	["milkbottle"] = {
 		["Index"] = "milkbottle",

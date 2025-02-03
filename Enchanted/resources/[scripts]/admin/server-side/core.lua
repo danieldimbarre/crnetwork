@@ -387,13 +387,17 @@ end)
 RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Keyboard = vKEYBOARD.Banned(source,"Passaporte","Dias","Motivo")
-		if Keyboard and vRP.Identity(Keyboard[1]) then
-			local Days = parseInt(Keyboard[2],true)
+		local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Motivo",{ "Horas","Dias","Permanente" },"Quantidade")
+		if Keyboard then
+			local Mode = Keyboard[3]
+			local Reason = Keyboard[2]
+			local Amount = parseInt(Keyboard[4],true)
 			local OtherPassport = parseInt(Keyboard[1])
 
-			vRP.SetBanned(OtherPassport,Days > 999 and 999 or Days,Keyboard[3])
-			TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..OtherPassport.."</b> banido por <b>"..Days.."</b> dias.","verde",5000)
+			if vRP.Identity(OtherPassport) then
+				vRP.SetBanned(OtherPassport,(Mode == "Permanente" and -1 or Amount),Mode,Reason)
+				TriggerClientEvent("Notify",source,"Sucesso","Banimento aplicado ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
+			end
 		end
 	end
 end)
@@ -404,8 +408,8 @@ RegisterCommand("unban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
 		vRP.Query("accounts/RemoveBanned",{ License = vRP.AccountInformation(Message[1],"License") })
-		TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..Message[1].."</b> desbanido.","verde",5000)
-		exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[Modo]:** Unban\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		TriggerClientEvent("Notify",source,"Sucesso","Revogado o banimento do passaporte <b>"..Message[1].."</b>.","verde",5000)
+		exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[MODO]:** Unban\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

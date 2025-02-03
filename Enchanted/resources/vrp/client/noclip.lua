@@ -10,21 +10,17 @@ function tvRP.noClip()
 	local Ped = PlayerPedId()
 
 	if NoClip then
-		TriggerEvent("EntityVisible",false)
 		SetEntityVisible(Ped,false)
-
 		SetEntityCollision(Ped,false,false)
 
 		TriggerEvent("EntityInvincible",true)
 		SetEntityInvincible(Ped,true)
 	else
+		SetEntityVisible(Ped,true)
 		SetEntityCollision(Ped,true,true)
 
 		SetEntityInvincible(Ped,false)
 		TriggerEvent("EntityInvincible",false)
-
-		SetEntityVisible(Ped,true)
-		TriggerEvent("EntityVisible",true)
 	end
 
 	while NoClip do

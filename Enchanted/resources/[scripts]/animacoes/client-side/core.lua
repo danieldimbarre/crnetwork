@@ -78,6 +78,7 @@ local animacoes = {
 	["bolsa5"] = { prop = "xm_prop_x17_bag_med_01a", flag = 50, mao = 57005, altura = 0.425, pos1 = 0, pos2 = 0.025, pos3 = 0, pos4 = 260.0, pos5 = 60.0 },
 	["caixa2"] = { prop = "prop_tool_box_04", flag = 50, mao = 57005, altura = 0.45, pos1 = 0, pos2 = 0.05, pos3 = 0, pos4 = 260.0, pos5 = 60.0 },
 	["lixo"] = { prop = "prop_cs_rub_binbag_01", flag = 50, mao = 57005, altura = 0.11, pos1 = 0, pos2 = 0.0, pos3 = 0, pos4 = 260.0, pos5 = 60.0 },
+	["lixo2"] = { dict = "anim@heists@narcotics@trash", anim = "idle", prop = "prop_cs_rub_binbag_01", flag = 50, mao = 57005, altura = 0.1, pos1 = 0.0, pos2 = 0.0, pos3 = -90.0, pos4 = 180.0, pos5 = -40.0 },
 	["prebeber"] = { dict = "amb@code_human_wander_drinking@beer@male@base", anim = "static", prop = "p_amb_coffeecup_01", flag = 49, mao = 28422, altura = 0.0, pos1 = 0.0, pos2 = -0.05, pos3 = 0.0, pos4 = 0.0, pos5 = 0.0 },
 	["prebeber2"] = { dict = "amb@code_human_wander_drinking@beer@male@base", anim = "static", prop = "prop_ld_flow_bottle", flag = 49, mao = 28422, altura = 0.0, pos1 = 0.0, pos2 = -0.05, pos3 = 0.0, pos4 = 0.0, pos5 = 0.0 },
 	["prebeber3"] = { dict = "amb@code_human_wander_drinking@beer@male@base", anim = "static", prop = "prop_cs_bs_cup", flag = 49, mao = 28422, altura = 0.0, pos1 = 0.0, pos2 = -0.10, pos3 = 0.0, pos4 = 0.0, pos5 = 0.0 },

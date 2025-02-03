@@ -321,7 +321,6 @@ AddEventHandler("player:enterTrunk",function(Entity)
 	if not inTrunk and GetEntityHealth(Ped) > 100 then
 		AttachEntityToEntity(Ped,Entity[3],-1,0.0,-2.2,0.5,0.0,0.0,0.0,true,true,false,true,2,true)
 		LocalPlayer["state"]:set("Commands",true,true)
-		TriggerEvent("EntityVisible",false)
 		SetEntityVisible(Ped,false)
 		inTrunk = true
 
@@ -333,7 +332,6 @@ AddEventHandler("player:enterTrunk",function(Entity)
 				DisableControlAction(0,23,true)
 
 				if IsEntityVisible(Ped) then
-					TriggerEvent("EntityVisible",false)
 					SetEntityVisible(Ped,false)
 				end
 
@@ -363,7 +361,6 @@ AddEventHandler("player:checkTrunk",function()
 
 		SetEntityVisible(Ped,true)
 		DetachEntity(Ped,false,false)
-		TriggerEvent("EntityVisible",true)
 		LocalPlayer["state"]:set("Commands",false,true)
 		SetEntityCoords(Ped,Coords,false,false,false,false)
 
@@ -380,7 +377,6 @@ AddEventHandler("player:enterTrash",function(Entity)
 
 		LocalPlayer["state"]:set("Commands",true,true)
 		SetEntityCoords(Ped,Entity[4],false,false,false,false)
-		TriggerEvent("EntityVisible",false)
 		FreezeEntityPosition(Ped,true)
 		SetEntityVisible(Ped,false)
 
@@ -414,7 +410,6 @@ AddEventHandler("player:checkTrash",function()
 
 		SetEntityVisible(Ped,true)
 		FreezeEntityPosition(Ped,false)
-		TriggerEvent("EntityVisible",true)
 		LocalPlayer["state"]:set("Commands",false,true)
 		SetEntityCoords(Ped,inTrash,false,false,false,false)
 

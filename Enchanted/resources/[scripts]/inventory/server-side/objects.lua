@@ -1,7 +1,14 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Delay = {}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- DEFAULT
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Default = {
+	-- DIVER
+	{ ["Coords"] = { 3308.82,-412.11,-126.15,343.28 }, ["Object"] = "ba_prop_battle_chest_closed", ["Mode"] = "Diver" },
+
 	-- LOOT MEDICS
 	{ ["Coords"] = { 594.59,146.52,97.30,70.04 }, ["Object"] = "sm_prop_smug_crate_s_medical", ["Mode"] = "LootMedics", Weight = 0.15 },
 	{ ["Coords"] = { 660.44,268.29,102.04,152.09 }, ["Object"] = "sm_prop_smug_crate_s_medical", ["Mode"] = "LootMedics", Weight = 0.15 },
@@ -172,8 +179,8 @@ local Default = {
 	{ ["Coords"] = { 188.09,-202.5,-24.25,89.74 }, ["Object"] = "p_v_43_safe_s", ["Ground"] = true },
 	{ ["Coords"] = { 51.0,-43.67,-24.28,52.65 }, ["Object"] = "p_v_43_safe_s", ["Ground"] = true },
 
-	-- SLOTMACHINE ( Só ative se possuir o script slotmachine )
-	--{ ["Coords"] = { 984.25,64.95,122.12,149.36 }, ["Object"] = "vw_prop_casino_slot_04a", ["Ground"] = true },
+	-- SLOTMACHINE
+	{ ["Coords"] = { 984.25,64.95,122.12,149.36 }, ["Object"] = "vw_prop_casino_slot_04a", ["Ground"] = true },
 
 	-- ADMIN
 	{ ["Coords"] = { 268.53,2861.36,42.65,31.46 }, ["Object"] = "prop_byard_machine03", ["Mode"] = "Recycle", Weight = 1.0 },
@@ -203,6 +210,29 @@ CreateThread(function()
 				Objects[Index] = v
 			end
 		end
+	end
+
+	while true do
+		for Permission,v in pairs(Delay) do
+			local Number = v.Number
+			if Objects[Number] and v.Timer <= os.time() then
+				TriggerClientEvent("objects:Remover",-1,Number)
+
+				if SaveObjects[Number] then
+					SaveObjects[Number] = nil
+				end
+
+				if Objects[Number] then
+					Objects[Number] = nil
+				end
+
+				if Delay[Permission] then
+					Delay[Permission] = nil
+				end
+			end
+		end
+
+		Wait(10000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -238,35 +268,60 @@ end)
 RegisterServerEvent("inventory:StoreObjects")
 AddEventHandler("inventory:StoreObjects",function(Number)
 	local source = source
-	local object = Objects[Number]
+	local Object = Objects[Number]
 	local Passport = vRP.Passport(source)
 
-	if Passport and object and not Active[Passport] then
+	if Passport and Object and not Active[Passport] then
 		Active[Passport] = true
-		local currentTime = os.time()
 
-		if object.Timer and object.Timer >= currentTime then
-			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(object.Timer - currentTime)..".","amarelo",5000)
+		local Coords = Object.Coords
+		local CurrentTime = os.time()
+		local Permission = Object.Permission or false
+
+		if Object.Timer and Object.Timer >= CurrentTime then
+			TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Object.Timer - CurrentTime)..".","amarelo",5000)
 			Active[Passport] = nil
 			return false
 		end
 
-		if object.Item and object.Item ~= "spikestrips" then
-			if not vRP.MaxItens(Passport,object.Item) and vRP.CheckWeight(Passport,object.Item) then
-				vRP.GiveItem(Passport,object.Item,1,true)
-			else
-				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
-				exports["inventory"]:Drops(Passport,source,object.Item,1,true)
+		if Object.Mode ~= "Sprays" then
+			if Object.Item and Object.Item ~= "spikestrips" then
+				if not vRP.MaxItens(Passport,Object.Item) and vRP.CheckWeight(Passport,Object.Item) then
+					vRP.GiveItem(Passport,Object.Item,1,true)
+				else
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
+					exports["inventory"]:Drops(Passport,source,Object.Item,1,true)
+				end
+			end
+
+			TriggerClientEvent("objects:Remover",-1,Number)
+
+			if SaveObjects[Number] then
+				SaveObjects[Number] = nil
+			end
+
+			if Objects[Number] then
+				Objects[Number] = nil
+			end
+		else
+			if not Delay[Permission] then
+				Delay[Permission] = { Timer = os.time() + 600, Number = Number }
+
+				local Service = vRP.NumPermission(Permission)
+				for Passports,Sources in pairs(Service) do
+					async(function()
+						vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
+						TriggerClientEvent("NotifyPush",Sources,{ code = "Aviso", title = "Violação de Spray", x = Coords[1], y = Coords[2], z = Coords[3], color = 44 })
+					end)
+				end
+
+				TriggerClientEvent("Notify",source,"Atenção","O grupo responsável foi avisado que o spray foi violado, nos próximos <b>10 minutos</b> se ninguém vir proteger o mesmo será removido.","amarelo",10000)
+			elseif vRP.HasService(Passport,Permission) then
+				Delay[Permission] = nil
+				TriggerClientEvent("Notify",source,"Atenção","Remoçao cancelada.","amarelo",5000)
 			end
 		end
 
-		if SaveObjects[Number] then
-			SaveObjects[Number] = nil
-		end
-
-		TriggerClientEvent("objects:Remover",-1,Number)
-
 		Active[Passport] = nil
-		Objects[Number] = nil
 	end
 end)

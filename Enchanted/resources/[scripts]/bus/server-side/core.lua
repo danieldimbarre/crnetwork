@@ -30,7 +30,7 @@ function Creative.Payment(Selected)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
 			if Payments[Passport] >= 3 then
-				vRP.SetBanned(Passport,999,"Payment do Farmer")
+				vRP.SetBanned(Passport,-1,"Permanente","Hacker")
 			end
 		end
 

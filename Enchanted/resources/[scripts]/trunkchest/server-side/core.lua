@@ -129,11 +129,7 @@ local Store = {
 		["pouch"] = true
 	},
 	["trash"] = {
-		["plastic"] = true,
-		["glass"] = true,
-		["rubber"] = true,
-		["aluminum"] = true,
-		["copper"] = true
+		["binbag"] = true
 	},
 	["flatbed"] = {
 		["plastic"] = true,

@@ -10,14 +10,14 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 Creative = {}
 Tunnel.bindInterface("inventory",Creative)
+vDEVICE = Tunnel.getInterface("device")
+vFARMER = Tunnel.getInterface("farmer")
 vPLAYER = Tunnel.getInterface("player")
 vGARAGE = Tunnel.getInterface("garages")
 vCLIENT = Tunnel.getInterface("inventory")
+vSURVIVAL = Tunnel.getInterface("survival")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vPARAMEDIC = Tunnel.getInterface("paramedic")
-vSURVIVAL = Tunnel.getInterface("survival")
-vDEVICE = Tunnel.getInterface("device")
-vFARMER = Tunnel.getInterface("farmer")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -52,6 +52,27 @@ Buffs = {
 -- PRODUCTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Products = {
+	["Trasher"] = {
+		["Timer"] = 5,
+		["Item"] = "binbag",
+		["Itens"] = {
+			{ ["Item"] = "plastic", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10 },
+			{ ["Item"] = "glass", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10 },
+			{ ["Item"] = "rubber", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10 },
+			{ ["Item"] = "aluminum", ["Chance"] = 50, ["Min"] = 4, ["Max"] = 8 },
+			{ ["Item"] = "copper", ["Chance"] = 50, ["Min"] = 4, ["Max"] = 8 },
+			{ ["Item"] = "techtrash", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2 },
+			{ ["Item"] = "tarp", ["Chance"] = 7, ["Min"] = 1, ["Max"] = 2 },
+			{ ["Item"] = "sheetmetal", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2 },
+			{ ["Item"] = "roadsigns", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2 },
+			{ ["Item"] = "scotchtape", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 2 },
+			{ ["Item"] = "insulatingtape", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 2 },
+			{ ["Item"] = "electroniccomponents", ["Chance"] = 3, ["Min"] = 1, ["Max"] = 2 },
+			{ ["Item"] = "batteryaa", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2 },
+			{ ["Item"] = "batteryaaplus", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 2 },
+			{ ["Item"] = "emptybottle", ["Chance"] = 25, ["Min"] = 3, ["Max"] = 4 }
+		}
+	},
 	["Cemitery"] = {
 		["Timer"] = 10,
 		["Police"] = true,
@@ -90,7 +111,6 @@ Products = {
 	},
 	["Milkman"] = {
 		["Timer"] = 5,
-		["Police"] = false,
 		["PolyZone"] = true,
 		["Item"] = "emptybottle",
 		["Animation"] = {
@@ -106,6 +126,13 @@ Products = {
 -- LOOTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Loots = {
+	["Diver"] = {
+		["Players"] = {},
+		["Cooldown"] = 600,
+		["List"] = {
+			{ ["Item"] = "dollar", ["Chance"] = 100, ["Min"] = 100, ["Max"] = 250 }
+		}
+	},
 	["LootMedics"] = {
 		["Players"] = {},
 		["Cooldown"] = 3600,
@@ -1048,7 +1075,7 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 							vRP.GenerateItem(Passport,"dollar",275,true)
 						end
 					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 						exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Valuation"])
 
 						if Loots[Box]["Permission"] and vRP.HasService(Passport,Loots[Box]["Permission"]) then
@@ -1199,7 +1226,7 @@ AddEventHandler("inventory:StealTrunk",function(Entity)
 								if not vRP.MaxItens(Passport,Result["Item"],Result["Valuation"]) and vRP.CheckWeight(Passport,Result["Item"],Result["Valuation"]) then
 									vRP.GenerateItem(Passport,Result["Item"],Result["Valuation"],true)
 								else
-									TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+									TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 									exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Valuation"])
 								end
 							end
@@ -1288,7 +1315,7 @@ AddEventHandler("inventory:Products",function(Service)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
 			if Payments[Passport] >= 3 then
-				vRP.SetBanned(Passport,999,"Payment do Farmer")
+				vRP.SetBanned(Passport,-1,"Permanente","Hacker")
 			end
 		end
 
@@ -1310,9 +1337,9 @@ AddEventHandler("inventory:Products",function(Service)
 			})
 		end
 
-		Player(source)["state"]["Buttons"] = true
-		Active[Passport] = os.time() + Products[Service]["Timer"]
 		TriggerClientEvent("Progress",source,"Produzindo",Products[Service]["Timer"] * 1000)
+		Active[Passport] = os.time() + Products[Service]["Timer"]
+		Player(source)["state"]["Buttons"] = true
 
 		if Products[Service]["Animation"] then
 			vRPC.playAnim(source,false,{Products[Service]["Animation"]["Dict"],Products[Service]["Animation"]["Anim"]},true)
@@ -1322,14 +1349,17 @@ AddEventHandler("inventory:Products",function(Service)
 			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
 				Player(source)["state"]["Buttons"] = false
 				Active[Passport] = nil
-				vRPC.Destroy(source)
+
+				if Products[Service]["Animation"] then
+					vRPC.Destroy(source)
+				end
 
 				if not Products[Service]["Item"] or (Products[Service]["Item"] and vRP.TakeItem(Passport,Products[Service]["Item"])) then
 					local Result = RandPercentage(Products[Service]["Itens"])
 					if not vRP.MaxItens(Passport,Result["Item"],Result["Valuation"]) and vRP.CheckWeight(Passport,Result["Item"],Result["Valuation"]) then
 						vRP.GenerateItem(Passport,Result["Item"],Result["Valuation"],true)
 					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 						exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Valuation"])
 					end
 
@@ -1487,7 +1517,7 @@ function Creative.StealPeds()
 		if not vRP.MaxItens(Passport,Result["Item"],Result["Valuation"]) and vRP.CheckWeight(Passport,Result["Item"],Result["Valuation"]) then
 			vRP.GenerateItem(Passport,Result["Item"],Result["Valuation"],true)
 		else
-			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 			exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Valuation"])
 		end
 

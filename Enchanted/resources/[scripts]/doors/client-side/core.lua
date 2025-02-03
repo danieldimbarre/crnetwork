@@ -67,7 +67,7 @@ CreateThread(function()
 					end
 
 					if IsControlJustPressed(1,38) and Cooldown <= GetGameTimer() then
-						Cooldown = GetGameTimer() + 10000
+						Cooldown = GetGameTimer() + 5000
 						vSERVER.Permission(Number)
 					end
 				else

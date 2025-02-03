@@ -211,7 +211,6 @@ exports("Creation",function(Heading)
 	local Ped = PlayerPedId()
 	if not IsEntityVisible(Ped) then
 		SetEntityVisible(Ped,true)
-		TriggerEvent("EntityVisible",true)
 	end
 
 	Creation = true

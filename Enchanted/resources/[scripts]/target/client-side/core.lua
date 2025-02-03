@@ -200,6 +200,38 @@ CreateThread(function()
 	RegisterCommand("-entityTarget",TargetDisable)
 	RegisterKeyMapping("+entityTarget","Interação auricular.","keyboard","LMENU")
 
+	AddCircleZone("Trash:01",vec3(-330.36,-1564.11,25.47),0.25,{
+		name = "Trash:01",
+		heading = 0.0,
+		useZ = true
+	},{
+		Distance = 1.25,
+		shop = "Trasher",
+		options = {
+			{
+				event = "inventory:Products",
+				label = "Despejar Lixo",
+				tunnel = "server"
+			}
+		}
+	})
+
+	AddCircleZone("Trash:02",vec3(12.99,6501.61,31.84),0.25,{
+		name = "Trash:02",
+		heading = 0.0,
+		useZ = true
+	},{
+		Distance = 1.25,
+		shop = "Trasher",
+		options = {
+			{
+				event = "inventory:Products",
+				label = "Despejar Lixo",
+				tunnel = "server"
+			}
+		}
+	})
+
 	AddTargetModel({ 654385216,161343630,-430989390,1096374064,-1519644200,-1932041857,207578973,-487222358 },{
 		options = {
 			{
@@ -512,7 +544,7 @@ function TargetEnable()
 									end
 								end
 
-								if not IsPedArmed(Ped,6) and GetVehicleDoorLockStatus(Entitys) <= 1 then
+								if not IsPedArmed(Ped,7) and GetVehicleDoorLockStatus(Entitys) <= 1 then
 									if VehicleWeight(Selected[2]) > 0 then
 										Menu[#Menu + 1] = { event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" }
 									end
@@ -540,7 +572,7 @@ function TargetEnable()
 									Menu[#Menu + 1] = { event = "player:RollVehicle", label = "Desvirar", tunnel = "server" }
 								end
 
-								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 and not IsPedArmed(Ped,6) and GetVehicleDoorLockStatus(Entitys) <= 1 then
+								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 and not IsPedArmed(Ped,7) and GetVehicleDoorLockStatus(Entitys) <= 1 then
 									Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
 									Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
 								end

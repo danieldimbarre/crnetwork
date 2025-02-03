@@ -23,7 +23,7 @@ AddEventHandler("grime:Package",function()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
-		if vRP.CheckWeight(Passport,Item) then
+		if vRP.CheckWeight(Passport,Item) and not vRP.MaxItens(Passport,Item) then
 			vRP.GenerateItem(Passport,Item,1)
 		else
 			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
@@ -46,7 +46,7 @@ function Creative.Payment(Selected)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
 			if Payments[Passport] >= 3 then
-				vRP.SetBanned(Passport,999,"Payment do Farmer")
+				vRP.SetBanned(Passport,-1,"Permanente","Hacker")
 			end
 		end
 

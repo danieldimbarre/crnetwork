@@ -4249,7 +4249,7 @@ local List = {
 	},
 	["trash"] = {
 		["Name"] = "Trash",
-		["Weight"] = 40,
+		["Weight"] = 1000,
 		["Price"] = 1000,
 		["Mode"] = "Work",
 		["Gemstone"] = 0,

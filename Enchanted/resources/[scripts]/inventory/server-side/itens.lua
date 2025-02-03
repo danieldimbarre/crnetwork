@@ -597,7 +597,7 @@ Use = {
 								weedStr = "Alto"
 							end
 
-							TriggerClientEvent("Notify",source,"Informações","<b>Químicos:</b> "..chemStr.."<br><b>Álcool:</b> "..alcoholStr.."<br><b>Drogas:</b> "..weedStr,"roxo",8000)
+							TriggerClientEvent("Notify",source,"Informações","<b>Químicos:</b> "..chemStr.."<br><b>Álcool:</b> "..alcoholStr.."<br><b>Drogas:</b> "..weedStr,"amarelo",8000)
 						end
 					end
 
@@ -1560,7 +1560,7 @@ Use = {
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
 				else
-					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
 				end
 			end
@@ -1585,8 +1585,7 @@ Use = {
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
-					{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
-					{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 }
+					{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 }
 				})
 
 				vRP.RolepassPoints(Passport,1,true)
@@ -1594,7 +1593,7 @@ Use = {
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
 				else
-					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
 				end
 			end
@@ -1621,9 +1620,7 @@ Use = {
 					{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 },
 					{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 },
-					{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 },
-					{ ["Item"] = "yellowperch", ["Chance"] = 50, ["Amount"] = 1 },
-					{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 }
+					{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 }
 				})
 
 				vRP.RolepassPoints(Passport,1,true)
@@ -1631,7 +1628,7 @@ Use = {
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
 				else
-					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
 				end
 			end
@@ -1660,9 +1657,7 @@ Use = {
 					{ ["Item"] = "catfish", ["Chance"] = 75, ["Amount"] = 1 },
 					{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 },
 					{ ["Item"] = "yellowperch", ["Chance"] = 50, ["Amount"] = 1 },
-					{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 },
-					{ ["Item"] = "smallshark", ["Chance"] = 25, ["Amount"] = 1 },
-					{ ["Item"] = "treasurebox", ["Chance"] = 1, ["Amount"] = 1 }
+					{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 }
 				})
 
 				vRP.RolepassPoints(Passport,1,true)
@@ -1670,7 +1665,7 @@ Use = {
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
 				else
-					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
 				end
 			end
@@ -1681,7 +1676,7 @@ Use = {
 	end,
 
 	["fishingrodplus"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vCLIENT.Fishing(source,"fishingrodplus") then
+		if vCLIENT.Fishing(source) then
 			Active[Passport] = os.time() + 100
 			Player(source)["state"]["Buttons"] = true
 			TriggerClientEvent("inventory:Close",source)
@@ -1709,7 +1704,7 @@ Use = {
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
 				else
-					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","roxo",5000)
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
 					exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Amount"])
 				end
 			end
@@ -3053,8 +3048,7 @@ end
 for Model,v in pairs(VehicleList()) do
 	if v["Item"] then
 		Use["vehicle_"..Model] = function(source,Passport,Amount,Slot,Full,Item,Split)
-			local Vehicle = vRP.Query("vehicles/selectVehicles",{ Passport = Passport, Vehicle = Model })
-			if Vehicle[1] then
+			if vRP.SelectVehicle(Passport,Model) then
 				TriggerClientEvent("inventory:Notify",source,"Aviso","Já possui um <b>"..VehicleName(Model).."</b>.","amarelo")
 			else
 				if VehicleStock(Model) and vRP.Scalar("vehicles/Count",{ Vehicle = Model }) >= VehicleStock(Model) then
@@ -3086,13 +3080,18 @@ for NameItem,v in pairs(Sprays) do
 	Use[NameItem] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if vCLIENT.CheckInterior(source) then
 			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-
 			return false
+		end
+
+		for Index,Info in pairs(SaveObjects) do
+			if Info.Permission and Info.Permission == v[1] and Info.Mode == "Sprays" then
+				TriggerClientEvent("Notify",source,"Atenção","O grupo já possui um spray aplicado.","amarelo",5000)
+				return false
+			end
 		end
 
 		if vRPC.SprayExist(source,500) then
 			TriggerClientEvent("Notify",source,"Atenção","No momento você não pode prosseguir porque outro grupo está dominando a localidade.","amarelo",5000)
-
 			return false
 		end
 
@@ -3122,7 +3121,8 @@ for NameItem,v in pairs(Sprays) do
 									Selected = GenerateString("DDLLDDLL")
 								until Selected and not Objects[Selected]
 
-								Objects[Selected] = { Coords = Coords, Object = NameItem, Mode = "Sprays", ["Timer"] = os.time() + 1800, Ground = true, Color = v[2], Permission = v[1], Bucket = GetPlayerRoutingBucket(source) }
+								Objects[Selected] = { Coords = Coords, Object = NameItem, Mode = "Sprays", Timer = os.time() + 1800, Ground = true, Color = v[2], Permission = v[1], Bucket = GetPlayerRoutingBucket(source) }
+								exports["discord"]:Embed("Sprays","**[PASSAPORTE]:** "..Passport.."\n**[Item]:** "..NameItem.."\n**[Coords]:** "..Coords[1]..","..Coords[2]..","..Coords[3].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 								SaveObjects[Selected] = Objects[Selected]
 
 								TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])

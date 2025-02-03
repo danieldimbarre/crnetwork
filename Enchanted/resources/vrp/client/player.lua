@@ -107,13 +107,12 @@ end
 RegisterNetEvent("vRP:Active")
 AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 	LocalPlayer["state"]:set("Name",Name,true)
-	LocalPlayer["state"]:set("Active",true,false)
+	LocalPlayer["state"]:set("Active",true,true)
 	LocalPlayer["state"]:set("Passport",Passport,true)
 
 	local Ped = PlayerPedId()
 
 	if not Creation then
-		TriggerEvent("EntityVisible",false)
 		SetEntityVisible(Ped,false)
 	end
 
@@ -128,7 +127,6 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 	SetTimeout(5000,function()
 		if not Creation then
 			SetEntityVisible(Ped,true)
-			TriggerEvent("EntityVisible",true)
 		end
 
 		SetEntityInvincible(Ped,false)

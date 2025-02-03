@@ -37,7 +37,6 @@ RegisterNUICallback("Characters",function(Data,Callback)
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,-2006.95,2960.77,31.81,false,false,false,false)
 	TriggerEvent("EntityInvincible",true)
-	TriggerEvent("EntityVisible",false)
 	FreezeEntityPosition(Ped,true)
 	SetEntityInvincible(Ped,true)
 	SetEntityHeading(Ped,305.82)
@@ -188,7 +187,6 @@ function Customization(Table,Check)
 	exports["tattooshop"]:Apply(Table["Tattoos"],Ped)
 
 	SetEntityVisible(Ped,true)
-	TriggerEvent("EntityVisible",true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWN:INCREMENT

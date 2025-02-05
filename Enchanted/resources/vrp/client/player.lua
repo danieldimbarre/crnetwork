@@ -80,14 +80,13 @@ function tvRP.Skin(Hash)
 	local Pid = PlayerId()
 	local Ped = PlayerPedId()
 	local Model = GetHashKey(Hash)
-	if IsModelInCdimage(Model) and IsModelValid(Model) and LoadModel(Model) then
+	if IsModelInCdimage(Model) and IsModelValid(Model) and LoadModel(Model) and GetEntityModel(Ped) ~= Model then
 		SetPlayerModel(Pid,Model)
-		ClearPedTasksImmediately(Ped)
 		SetModelAsNoLongerNeeded(Model)
-
-		exports["vrp"]:ReloadCharacter()
-		tvRP.ReloadCharacter()
 	end
+
+	exports["vrp"]:ReloadCharacter()
+	tvRP.ReloadCharacter()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RELOADCHARACTER
@@ -190,6 +189,7 @@ exports("ReloadCharacter",function()
 	SetPedHelmet(Ped,false)
 	SetPedMaxHealth(Ped,200)
 	SetEntityMaxHealth(Ped,200)
+	ClearPedTasksImmediately(Ped)
 	SetAiWeaponDamageModifier(0.5)
 	SetPoliceIgnorePlayer(Ped,true)
 	SetPlayerCanUseCover(Pid,false)

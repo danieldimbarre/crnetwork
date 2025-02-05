@@ -34,6 +34,19 @@ local Anims = {
 -- CHARACTERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Characters",function(Data,Callback)
+	local Pid = PlayerId()
+	local Model = 1885233650
+	local Ped = PlayerPedId()
+
+	RequestModel(Model)
+	while not HasModelLoaded(Model) do
+		Wait(100)
+	end
+
+	SetPlayerModel(Pid,Model)
+	ClearPedTasksImmediately(Ped)
+	SetModelAsNoLongerNeeded(Model)
+
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,-2006.95,2960.77,31.81,false,false,false,false)
 	TriggerEvent("EntityInvincible",true)
@@ -43,23 +56,23 @@ RegisterNUICallback("Characters",function(Data,Callback)
 	SetEntityVisible(Ped,false)
 	SetEntityHealth(Ped,100)
 	SetPedArmour(Ped,0)
-
-	DoScreenFadeIn(0)
 	DisplayRadar(false)
-	ShutdownLoadingScreen()
-	ShutdownLoadingScreenNui()
+	DoScreenFadeIn(0)
 
 	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
 	RenderScriptCams(true,false,0,false,false)
 	SetCamCoord(Camera,-2005.5,2962.11,32.7)
 	SetCamRot(Camera,0.0,0.0,150.0,2)
 	SetCamActive(Camera,true)
-	SetNuiFocus(true,true)
 
 	Characters = vSERVER.Characters()
 	if CountTable(Characters) > 0 then
 		Customization(Characters[1])
 	end
+
+	ShutdownLoadingScreen()
+	ShutdownLoadingScreenNui()
+	SetNuiFocus(true,true)
 
 	Callback(Characters)
 end)
@@ -137,6 +150,7 @@ RegisterNUICallback("Spawn",function(Data,Callback)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end
+
 	SendNUIMessage({ Action = "Close" })
 	TriggerEvent("hud:Active",true)
 	SetNuiFocus(false,false)
@@ -163,9 +177,14 @@ function Customization(Table,Check)
 	local Pid = PlayerId()
 	local Ped = PlayerPedId()
 	local Model = GetHashKey(Table["Skin"])
-	if IsModelInCdimage(Model) and IsModelValid(Model) and LoadModel(Model) and (not Check or (Check and GetEntityModel(Ped) ~= Model)) then
+
+	RequestModel(Model)
+	while not HasModelLoaded(Model) do
+		Wait(100)
+	end
+
+	if not Check or (Check and GetEntityModel(Ped) ~= Model) then
 		SetPlayerModel(Pid,Model)
-		ClearPedTasksImmediately(Ped)
 		SetModelAsNoLongerNeeded(Model)
 	end
 
@@ -179,6 +198,7 @@ function Customization(Table,Check)
 	exports["barbershop"]:Apply(Table["Barber"],Ped)
 	exports["tattooshop"]:Apply(Table["Tattoos"],Ped)
 
+	ClearPedTasksImmediately(Ped)
 	SetEntityVisible(Ped,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

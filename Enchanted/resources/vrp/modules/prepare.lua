@@ -158,7 +158,6 @@ vRP.Prepare("hwid/Insert","INSERT INTO hwid (Token,Account) VALUES (@Token,@Acco
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEARTABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("summerz/Hwid","DELETE FROM hwid WHERE Banned = 0")
 vRP.Prepare("summerz/Transactions","DELETE FROM transactions WHERE Timeset <= UNIX_TIMESTAMP()")
 vRP.Prepare("summerz/Playerdata","DELETE FROM playerdata WHERE Information IN ('[]','{}','null')")
 vRP.Prepare("summerz/Entitydata","DELETE FROM entitydata WHERE Information IN ('[]','{}','null')")
@@ -180,7 +179,6 @@ vRP.Prepare("arena/Death","UPDATE characters SET Death = Death + 1 WHERE id = @P
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	vRP.Query("summerz/Hwid")
 	vRP.Query("summerz/Phone")
 	vRP.Query("summerz/Premium")
 	vRP.Query("summerz/Playerdata")

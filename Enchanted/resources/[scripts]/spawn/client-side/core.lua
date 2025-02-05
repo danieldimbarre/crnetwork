@@ -163,17 +163,10 @@ function Customization(Table,Check)
 	local Pid = PlayerId()
 	local Ped = PlayerPedId()
 	local Model = GetHashKey(Table["Skin"])
-	if IsModelInCdimage(Model) and IsModelValid(Model) then
-		RequestModel(Model)
-		while not HasModelLoaded(Model) do
-			Wait(100)
-		end
-
-		if not Check or (Check and GetEntityModel(Ped) ~= Model) then
-			SetPlayerModel(Pid,Model)
-			SetModelAsNoLongerNeeded(Model)
-			ClearPedTasksImmediately(Ped)
-		end
+	if IsModelInCdimage(Model) and IsModelValid(Model) and LoadModel(Model) and (not Check or (Check and GetEntityModel(Ped) ~= Model)) then
+		SetPlayerModel(Pid,Model)
+		ClearPedTasksImmediately(Ped)
+		SetModelAsNoLongerNeeded(Model)
 	end
 
 	local Ped = PlayerPedId()

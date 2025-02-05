@@ -77,16 +77,12 @@ end
 -- SKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.Skin(Hash)
-	if LoadModel(Hash) then
-		local Pid = PlayerId()
-		local Model = GetHashKey(Hash)
-
-		RequestModel(Model)
-		while not HasModelLoaded(Model) do
-			Wait(100)
-		end
-
+	local Pid = PlayerId()
+	local Ped = PlayerPedId()
+	local Model = GetHashKey(Hash)
+	if IsModelInCdimage(Model) and IsModelValid(Model) and LoadModel(Model) then
 		SetPlayerModel(Pid,Model)
+		ClearPedTasksImmediately(Ped)
 		SetModelAsNoLongerNeeded(Model)
 
 		exports["vrp"]:ReloadCharacter()
@@ -120,7 +116,6 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 	SetEntityInvincible(Ped,true)
 
 	SetLocalPlayerAsGhost(true)
-	ClearPedTasksImmediately(Ped)
 	FreezeEntityPosition(Ped,true)
 	NetworkSetFriendlyFireOption(false)
 

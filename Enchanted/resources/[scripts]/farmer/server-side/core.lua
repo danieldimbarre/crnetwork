@@ -326,7 +326,7 @@ AddEventHandler("farmer:Trasher",function(Number)
 						vRP.GenerateItem(Passport,"binbag",1,true)
 					else
 						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-						exports["inventory"]:Drops(Passport,source,CheckWeight,1)
+						exports["inventory"]:Drops(Passport,source,"binbag",1)
 					end
 
 					vRP.PutExperience(Passport,"Garbageman",1)

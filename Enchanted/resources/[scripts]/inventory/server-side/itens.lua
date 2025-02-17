@@ -2168,7 +2168,7 @@ Use = {
 					Selected = GenerateString("DDLLDDLL")
 				until Selected and not Objects[Selected]
 
-				Objects[Selected] = { Coords = Coords, Object = Hash, Active = "Spikes", Bucket = GetPlayerRoutingBucket(source) }
+				Objects[Selected] = { Coords = Coords, Object = Hash, Active = "Spikes", Mode = "Destroy", Bucket = GetPlayerRoutingBucket(source) }
 				SaveObjects[Selected] = Objects[Selected]
 
 				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])

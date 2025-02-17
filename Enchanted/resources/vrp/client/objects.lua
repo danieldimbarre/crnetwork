@@ -143,6 +143,17 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 				}
 			}
 		},
+		Destroy = {
+			isBox = false,
+			size = { radius = 0.75 },
+			options = {
+				shop = Number,
+				Distance = 1.5,
+				options = {
+					{ event = "inventory:StoreObjects", label = "Destruir", tunnel = "server" }
+				}
+			}
+		},
 		Craftings = {
 			isBox = false,
 			size = { radius = 0.25 },

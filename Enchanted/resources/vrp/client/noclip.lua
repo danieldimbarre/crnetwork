@@ -11,12 +11,14 @@ function tvRP.noClip()
 
 	if NoClip then
 		SetEntityVisible(Ped,false)
+		FreezeEntityPosition(Ped,true)
 		SetEntityCollision(Ped,false,false)
 
 		TriggerEvent("EntityInvincible",true)
 		SetEntityInvincible(Ped,true)
 	else
 		SetEntityVisible(Ped,true)
+		FreezeEntityPosition(Ped,false)
 		SetEntityCollision(Ped,true,true)
 
 		SetEntityInvincible(Ped,false)

@@ -259,7 +259,20 @@ local ISLAND = {
 	"h4_islandx",
 	"h4_islandx_barrack_hatch",
 	"h4_islandxdock_water_hatch",
-	"h4_beach_party"
+	"h4_beach_party",
+	"h4_mph4_terrain_01_grass_0",
+	"h4_mph4_terrain_01_grass_1",
+	"h4_mph4_terrain_02_grass_0",
+	"h4_mph4_terrain_02_grass_1",
+	"h4_mph4_terrain_02_grass_2",
+	"h4_mph4_terrain_02_grass_3",
+	"h4_mph4_terrain_04_grass_0",
+	"h4_mph4_terrain_04_grass_1",
+	"h4_mph4_terrain_04_grass_2",
+	"h4_mph4_terrain_04_grass_3",
+	"h4_mph4_terrain_05_grass_0",
+	"h4_mph4_terrain_06_grass_0",
+	"h4_mph4_airstrip_interior_0_airstrip_hanger"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- IPL_LIST
@@ -373,7 +386,7 @@ CreateThread(function()
 		SetWeatherTypePersist(GlobalState["Weather"])
 		SetWeatherTypeNowPersist(GlobalState["Weather"])
 
-		if LocalPlayer["state"]["Active"] then
+		if not LocalPlayer["state"]["Creation"] and LocalPlayer["state"]["Active"] then
 			NetworkOverrideClockTime(GlobalState["Hours"],GlobalState["Minutes"],0)
 		else
 			NetworkOverrideClockTime(12,0,0)
@@ -467,33 +480,28 @@ end)
 -- THREADACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local function manageIsland(iplsActive)
-		if iplsActive then
-			if not IsIplActive("h4_islandairstrip") then
-				for _,v in pairs(ISLAND) do
-					RequestIpl(v)
-				end
-
-				SetIslandHopperEnabled("HeistIsland",true)
-				SetAiGlobalPathNodesType(1)
-				SetDeepOceanScaler(0.0)
-				LoadGlobalWaterType(1)
-			end
-		else
-			if IsIplActive("h4_islandairstrip") then
-				for _,v in pairs(ISLAND) do
-					RemoveIpl(v)
-				end
-
-				SetIslandHopperEnabled("HeistIsland",false)
-				SetAiGlobalPathNodesType(0)
-				SetDeepOceanScaler(1.0)
-				LoadGlobalWaterType(0)
-			end
-		end
+	local IslandLoaded = false
+	for _,v in pairs(ISLAND) do
+		RequestIpl(v)
 	end
 
-	local function deleteNonNetworkedEntities()
+	while true do
+		local Ped = PlayerPedId()
+		local Coords = GetEntityCoords(Ped)
+		if #(Coords - vec3(4840.57,-5174.42,2.0)) <= 2000 then
+			if not IslandLoaded then
+				IslandLoaded = true
+				SetIslandHopperEnabled("HeistIsland",true)
+				SetAiGlobalPathNodesType(1)
+			end
+		else
+			if IslandLoaded then
+				IslandLoaded = false
+				SetIslandHopperEnabled("HeistIsland",false)
+				SetAiGlobalPathNodesType(0)
+			end
+		end
+
 		for _,Entity in pairs(GetGamePool("CPed")) do
 			if (NetworkGetEntityOwner(Entity) == -1 or NetworkGetEntityOwner(Entity) == PlayerId()) and GetPedArmour(Entity) <= 0 and not NetworkGetEntityIsNetworked(Entity) then
 				if IsPedInAnyVehicle(Entity) then
@@ -514,25 +522,10 @@ CreateThread(function()
 				DeleteEntity(Vehicle)
 			end
 		end
-	end
 
-	local function disableDispatchServices()
 		for Number = 1,121 do
 			EnableDispatchService(Number,false)
 		end
-	end
-
-	while true do
-		local Ped = PlayerPedId()
-		local Coords = GetEntityCoords(Ped)
-		if #(Coords - vec3(4840.57,-5174.42,2.0)) <= 2000 then
-			manageIsland(true)
-		else
-			manageIsland(false)
-		end
-
-		deleteNonNetworkedEntities()
-		disableDispatchServices()
 
 		Wait(10000)
 	end

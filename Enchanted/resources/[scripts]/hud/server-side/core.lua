@@ -12,9 +12,9 @@ vKEYBOARD = Tunnel.getInterface("keyboard")
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 GlobalState["Work"] = 0
-GlobalState["Hours"] = 10
+GlobalState["Hours"] = 0
 GlobalState["Players"] = 0
-GlobalState["Minutes"] = 00
+GlobalState["Minutes"] = 0
 GlobalState["Weather"] = "EXTRASUNNY"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYNC

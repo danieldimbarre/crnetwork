@@ -16,12 +16,11 @@ local Lasted = {}
 local Camera = nil
 local Default = nil
 local Barbershop = {}
-local Creation = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Save",function(Data,Callback)
-	if Creation then
+	if LocalPlayer["state"]["Creation"] then
 		DoScreenFadeOut(0)
 
 		SetTimeout(2500,function()
@@ -39,10 +38,10 @@ RegisterNUICallback("Save",function(Data,Callback)
 		Camera = nil
 	end
 
+	vSERVER.Update(Barbershop,LocalPlayer["state"]["Creation"])
+	LocalPlayer["state"]:set("Creation",false,false)
 	LocalPlayer["state"]:set("Hoverfy",true,false)
-	vSERVER.Update(Barbershop,Creation)
 	SetNuiFocus(false,false)
-	Creation = false
 	vRP.Destroy()
 
 	Callback("Ok")
@@ -51,7 +50,7 @@ end)
 -- RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Reset",function(Data,Callback)
-	if Creation then
+	if LocalPlayer["state"]["Creation"] then
 		DoScreenFadeOut(0)
 
 		SetTimeout(2500,function()
@@ -69,11 +68,11 @@ RegisterNUICallback("Reset",function(Data,Callback)
 		Camera = nil
 	end
 
+	vSERVER.Update(Lasted,LocalPlayer["state"]["Creation"])
+	LocalPlayer["state"]:set("Creation",false,false)
 	LocalPlayer["state"]:set("Hoverfy",true,false)
 	exports["barbershop"]:Apply(Lasted)
-	vSERVER.Update(Lasted,Creation)
 	SetNuiFocus(false,false)
-	Creation = false
 	vRP.Destroy()
 	Lasted = {}
 
@@ -146,7 +145,7 @@ function OpenBarbershop(Mode)
 	SetCamActive(Camera,true)
 	Default = Coords["z"]
 
-	if Creation then
+	if LocalPlayer["state"]["Creation"] then
 		SetTimeout(2500,function()
 			SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode } })
 			SetNuiFocus(true,true)
@@ -213,7 +212,7 @@ exports("Creation",function(Heading)
 		SetEntityVisible(Ped,true)
 	end
 
-	Creation = true
+	LocalPlayer["state"]:set("Creation",true,false)
 	OpenBarbershop(true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

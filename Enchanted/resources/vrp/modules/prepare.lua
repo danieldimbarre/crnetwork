@@ -19,6 +19,7 @@ vRP.Prepare("characters/TimePlaying","UPDATE characters SET Playing = Playing + 
 vRP.Prepare("characters/Count","SELECT COUNT(License) FROM characters WHERE License = @License and Deleted = 0")
 vRP.Prepare("characters/UpdateName","UPDATE characters SET Name = @Name, Lastname = @Lastname WHERE id = @Passport")
 vRP.Prepare("characters/LastCharacter","SELECT id FROM characters WHERE License = @License ORDER BY id DESC LIMIT 1")
+vRP.Prepare("characters/UpdateDaily","UPDATE characters SET Daily = @Daily, DailyReward = DailyReward + 1 WHERE id = @Passport")
 vRP.Prepare("characters/NewCharacter","INSERT INTO characters (License,Name,Lastname,Sex,Skin,Blood,Created) VALUES (@License,@Name,@Lastname,@Sex,@Skin,@Blood,UNIX_TIMESTAMP() + (86400 * 3))")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE

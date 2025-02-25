@@ -13,7 +13,26 @@ local Blip = nil
 local Selected = 1
 local Active = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSERVERSTART
+-- BUS:INIT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("bus:Init",function()
+	Active = not Active
+
+	if not Active then
+		RemoveBlip(Blip)
+		Blip = nil
+	end
+
+	exports["target"]:LabelText("WorkBus",Active and "Finalizar Expediente" or "Iniciar Expediente")
+
+	TriggerEvent("Notify","Central de Empregos",Active and "Você acaba de dar início à sua jornada de trabalho, lembrando que a sua vida não se resume só a isso." or "Você acaba de finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
+
+	if Active then
+		MakeBlips()
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	exports["target"]:AddBoxZone("WorkBus",Init["xyz"],0.75,0.75,{
@@ -31,55 +50,26 @@ CreateThread(function()
 			}
 		}
 	})
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- BUS:INIT
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("bus:Init",function()
-	if Active then
-		if DoesBlipExist(Blip) then
-			RemoveBlip(Blip)
-			Blip = nil
-		end
 
-		exports["target"]:LabelText("WorkBus","Iniciar Expediente")
-		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		Active = false
-	else
-		exports["target"]:LabelText("WorkBus","Finalizar Expediente")
-		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
-		Active = true
-		MakeBlips()
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADACTIVE
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
 	while true do
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
-		if Active and IsPedInAnyVehicle(Ped) then
+		if Active then
 			local Vehicle = GetVehiclePedIsUsing(Ped)
-			if GetEntityArchetypeName(Vehicle) == "bus" then
+			if Vehicle ~= 0 and GetEntityArchetypeName(Vehicle) == "bus" then
 				local Coords = GetEntityCoords(Ped)
-				local Distance = #(Coords - Locations[Selected])
+				local Destination = Locations[Selected]
+				local Distance = #(Coords - Destination)
 
 				if Distance <= 200 then
 					TimeDistance = 1
 
-					DrawMarker(22,Locations[Selected]["x"],Locations[Selected]["y"],Locations[Selected]["z"] + 3.0,0.0,0.0,0.0,0.0,180.0,0.0,7.5,7.5,5.0,88,101,242,175,0,0,0,1)
-					DrawMarker(1,Locations[Selected]["x"],Locations[Selected]["y"],Locations[Selected]["z"] - 3.0,0.0,0.0,0.0,0.0,0.0,0.0,15.0,15.0,10.0,255,255,255,50,0,0,0,0)
+					DrawMarker(22,Destination.x,Destination.y,Destination.z + 3.0,0.0,0.0,0.0,0.0,180.0,0.0,7.5,7.5,5.0,88,101,242,175,0,0,0,1)
+					DrawMarker(1,Destination.x,Destination.y,Destination.z - 3.0,0.0,0.0,0.0,0.0,0.0,0.0,15.0,15.0,10.0,255,255,255,50,0,0,0,0)
 
 					if Distance <= 10 then
 						vSERVER.Payment(Selected)
-
-						if Selected >= #Locations then
-							Selected = 1
-						else
-							Selected = Selected + 1
-						end
-
+						Selected = (Selected % #Locations) + 1
 						MakeBlips()
 					end
 				end

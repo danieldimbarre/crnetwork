@@ -2,82 +2,82 @@
 -- CONFIG
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Config = {
-	["Ammunation"] = {
-		["Last"] = 1,
-		["Police"] = 6,
-		["Timer"] = 300,
-		["Wanted"] = 1800,
-		["Delay"] = 3600,
-		["Active"] = false,
-		["Cooldown"] = os.time(),
-		["Name"] = "Loja de Armamentos",
-		["Residual"] = "Resquício de Línter",
-		["Payment"] = {
-			["Multiplier"] = { ["Min"] = 1, ["Max"] = 1 },
-			["List"] = {
-				{ ["Item"] = "dirtydollar", ["Chance"] = 100, ["Min"] = 50000, ["Max"] = 75000 }
+	Ammunation = {
+		Last = 1,
+		Police = 6,
+		Timer = 300,
+		Wanted = 1800,
+		Delay = 3600,
+		Active = false,
+		Cooldown = os.time(),
+		Name = "Loja de Armamentos",
+		Residual = "Resquício de Línter",
+		Payment = {
+			Multiplier = { Min = 1, Max = 1 },
+			List = {
+				{ Item = "dirtydollar", Chance = 100, Min = 50000, Max = 75000 }
 			}
 		},
-		["Need"] = {
-			["Amount"] = 1,
-			["Consume"] = true,
-			["Item"] = "lockpick"
+		Need = {
+			Amount = 1,
+			Consume = true,
+			Item = "lockpick"
 		},
-		["Animation"] = {
-			["Dict"] = "mini@safe_cracking",
-			["Name"] = "dial_turn_anti_fast_1"
+		Animation = {
+			Dict = "mini@safe_cracking",
+			Name = "dial_turn_anti_fast_1"
 		}
 	},
-	["Department"] = {
-		["Last"] = 1,
-		["Police"] = 8,
-		["Timer"] = 300,
-		["Wanted"] = 1800,
-		["Delay"] = 3600,
-		["Active"] = false,
-		["Cooldown"] = os.time(),
-		["Name"] = "Loja de Departamento",
-		["Residual"] = "Resquício de Línter",
-		["Payment"] = {
-			["Multiplier"] = { ["Min"] = 1, ["Max"] = 1 },
-			["List"] = {
-				{ ["Item"] = "dirtydollar", ["Chance"] = 100, ["Min"] = 75000, ["Max"] = 100000 }
+	Department = {
+		Last = 1,
+		Police = 8,
+		Timer = 300,
+		Wanted = 1800,
+		Delay = 3600,
+		Active = false,
+		Cooldown = os.time(),
+		Name = "Loja de Departamento",
+		Residual = "Resquício de Línter",
+		Payment = {
+			Multiplier = { Min = 1, Max = 1 },
+			List = {
+				{ Item = "dirtydollar", Chance = 100, Min = 75000, Max = 100000 }
 			}
 		},
-		["Need"] = {
-			["Amount"] = 1,
-			["Consume"] = true,
-			["Item"] = "lockpick"
+		Need = {
+			Amount = 1,
+			Consume = true,
+			Item = "lockpick"
 		},
-		["Animation"] = {
-			["Dict"] = "mini@safe_cracking",
-			["Name"] = "dial_turn_anti_fast_1"
+		Animation = {
+			Dict = "mini@safe_cracking",
+			Name = "dial_turn_anti_fast_1"
 		}
 	},
-	["Eletronic"] = {
-		["Last"] = 1,
-		["Police"] = 5,
-		["Timer"] = 30,
-		["Wanted"] = 600,
-		["Delay"] = 900,
-		["Active"] = false,
-		["Cooldown"] = os.time(),
-		["Name"] = "Caixa Eletrônico",
-		["Residual"] = "Resquício de Línter",
-		["Payment"] = {
-			["Multiplier"] = { ["Min"] = 1, ["Max"] = 1 },
-			["List"] = {
-				{ ["Item"] = "dirtydollar", ["Chance"] = 100, ["Min"] = 5225, ["Max"] = 6725 }
+	Eletronic = {
+		Last = 1,
+		Police = 5,
+		Timer = 30,
+		Wanted = 600,
+		Delay = 900,
+		Active = false,
+		Cooldown = os.time(),
+		Name = "Caixa Eletrônico",
+		Residual = "Resquício de Línter",
+		Payment = {
+			Multiplier = { Min = 1, Max = 1 },
+			List = {
+				{ Item = "dirtydollar", Chance = 100, Min = 5225, Max = 6725 }
 			}
 		},
-		["Need"] = {
-			["Amount"] = 1,
-			["Consume"] = false,
-			["Item"] = "safependrive"
+		Need = {
+			Amount = 1,
+			Consume = false,
+			Item = "safependrive"
 		},
-		["Animation"] = {
-			["Dict"] = "oddjobs@shop_robbery@rob_till",
-			["Name"] = "loop"
+		Animation = {
+			Dict = "oddjobs@shop_robbery@rob_till",
+			Name = "loop"
 		}
 	}
 }
@@ -94,36 +94,35 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("inventory:RobberySingle")
 AddEventHandler("inventory:RobberySingle",function(Number,Mode)
-	local Consult,Mode = nil,Mode
-	local source,Number = source,Number
+	local source = source
+	local Required = false
+	local CurrentTime = os.time()
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Config[Mode] and not Config[Mode]["Active"] then
 		if Config[Mode]["Police"] and vRP.AmountService("Policia") < Config[Mode]["Police"] then
 			TriggerClientEvent("Notify",source,"Atenção","Contingente indisponível.","amarelo",5000)
-
 			return false
 		end
 
 		if Config[Mode]["Need"] then
-			Consult = vRP.ConsultItem(Passport,Config[Mode]["Need"]["Item"],Config[Mode]["Need"]["Amount"])
+			Required = vRP.ConsultItem(Passport,Config[Mode]["Need"]["Item"],Config[Mode]["Need"]["Amount"])
 
-			if not Consult then
+			if not Required then
 				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>"..Config[Mode]["Need"]["Amount"].."x "..ItemName(Config[Mode]["Need"]["Item"]).."</b>.","amarelo",5000)
-
 				return false
 			end
 		end
 
-		if Config[Mode]["Cooldown"] <= os.time() then
+		if Config[Mode]["Cooldown"] <= CurrentTime then
 			RobberyActive[Passport] = Mode
 			Config[Mode]["Active"] = Passport
 			Player(source)["state"]["Buttons"] = true
-			Active[Passport] = os.time() + Config[Mode]["Timer"]
+			Active[Passport] = CurrentTime + Config[Mode]["Timer"]
 			TriggerClientEvent("player:Residual",source,Config[Mode]["Residual"])
 			TriggerClientEvent("Progress",source,"Roubando",Config[Mode]["Timer"] * 1000)
 
 			if Config[Mode]["Animation"] then
-				vRPC.playAnim(source,false,{Config[Mode]["Animation"]["Dict"],Config[Mode]["Animation"]["Name"]},true)
+				vRPC.playAnim(source,false,{ Config[Mode]["Animation"]["Dict"],Config[Mode]["Animation"]["Name"] },true)
 			end
 
 			exports["vrp"]:CallPolice({
@@ -138,15 +137,15 @@ AddEventHandler("inventory:RobberySingle",function(Number,Mode)
 			})
 
 			repeat
-				if Active[Passport] and os.time() >= Active[Passport] then
+				if Active[Passport] and CurrentTime >= Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
 					Player(source)["state"]["Buttons"] = false
 
-					if Config[Mode]["Active"] == Passport and Config[Mode]["Cooldown"] <= os.time() and not Config[Mode]["Need"] or (Config[Mode]["Need"] and Consult and vRP.ConsultItem(Passport,Consult["Item"],Config[Mode]["Need"]["Amount"]) and (not Config[Mode]["Need"]["Consume"] or (Config[Mode]["Need"]["Consume"] and vRP.TakeItem(Passport,Consult["Item"],Config[Mode]["Need"]["Amount"])))) then
+					if Config[Mode]["Active"] == Passport and Config[Mode]["Cooldown"] <= CurrentTime and (not Config[Mode]["Need"] or Required and vRP.ConsultItem(Passport,Required["Item"],Config[Mode]["Need"]["Amount"]) and (not Config[Mode]["Need"]["Consume"] or (Config[Mode]["Need"]["Consume"] and vRP.TakeItem(Passport,Required["Item"],Config[Mode]["Need"]["Amount"])))) then
 						Config[Mode]["Last"] = Number
 						Config[Mode]["Active"] = false
-						Config[Mode]["Cooldown"] = os.time() + Config[Mode]["Delay"]
+						Config[Mode]["Cooldown"] = CurrentTime + Config[Mode]["Delay"]
 						vRP.MountContainer(Passport,Mode..":"..Number,Config[Mode]["Payment"]["List"],math.random(Config[Mode]["Payment"]["Multiplier"]["Min"],Config[Mode]["Payment"]["Multiplier"]["Max"]))
 						TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
 					end
@@ -158,7 +157,7 @@ AddEventHandler("inventory:RobberySingle",function(Number,Mode)
 			if Config[Mode]["Last"] == Number then
 				TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Config[Mode]["Cooldown"] - os.time())..".","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Config[Mode]["Cooldown"] - CurrentTime)..".","amarelo",5000)
 			end
 		end
 	end

@@ -22,7 +22,6 @@ local Barbershop = {}
 RegisterNUICallback("Save",function(Data,Callback)
 	if LocalPlayer["state"]["Creation"] then
 		DoScreenFadeOut(0)
-
 		SetTimeout(2500,function()
 			TriggerEvent("hud:Active",true)
 			DoScreenFadeIn(2500)
@@ -52,7 +51,6 @@ end)
 RegisterNUICallback("Reset",function(Data,Callback)
 	if LocalPlayer["state"]["Creation"] then
 		DoScreenFadeOut(0)
-
 		SetTimeout(2500,function()
 			TriggerEvent("hud:Active",true)
 			DoScreenFadeIn(2500)

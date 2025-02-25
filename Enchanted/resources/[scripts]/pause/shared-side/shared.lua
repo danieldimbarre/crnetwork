@@ -402,7 +402,7 @@ Boxes = {
 		["Name"] = "Caixa de Plástico",
 		["Image"] = "plastic",
 		["Price"] = 500,
-		["Discount"] = 0.75,
+		["Discount"] = 1.0,
 		["Rewards"] = {
 			{
 				["Id"] = 1,
@@ -597,97 +597,117 @@ ShopItens = {
 	["premiumplate"] = {
 		["Price"] = 5000,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Veículos"
 	},
 	["newchars"] = {
 		["Price"] = 4000,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Utilidades"
 	},
 	["namechange"] = {
 		["Price"] = 3000,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Utilidades"
 	},
 	["diagram"] = {
 		["Price"] = 500,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Utilidades"
 	},
 	["WEAPON_KATANA"] = {
 		["Price"] = 500,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Armamentos"
 	},
 	["pickaxeplus"] = {
 		["Price"] = 2500,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Empregos"
 	},
 	["fishingrodplus"] = {
 		["Price"] = 2500,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Empregos"
 	},
 	["axeplus"] = {
 		["Price"] = 2500,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Empregos"
 	},
 	["backpackp"] = {
 		["Price"] = 2000,
-		["Discount"] = 0.95,
-		["Category"] = "Diamantes"
+		["Discount"] = 1.0,
+		["Category"] = "Vestimentas"
 	},
 	["backpackm"] = {
 		["Price"] = 3500,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Vestimentas"
 	},
 	["backpackg"] = {
 		["Price"] = 5000,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Vestimentas"
 	},
 	["teddypack"] = {
 		["Price"] = 5000,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Vestimentas"
 	},
 	["weaponbox"] = {
 		["Price"] = 5000,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Armamentos"
 	},
 	["ammobox"] = {
 		["Price"] = 3500,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Armamentos"
 	},
 	["sewingkit"] = {
 		["Price"] = 2500,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Utilidades"
 	},
 	["seatbelt"] = {
 		["Price"] = 5000,
-		["Discount"] = 0.95,
-		["Category"] = "Diamantes"
+		["Discount"] = 1.0,
+		["Category"] = "Veículos"
 	},
 	["adrenalineplus"] = {
 		["Price"] = 500,
-		["Discount"] = 0.98,
-		["Category"] = "Diamantes"
+		["Discount"] = 1.0,
+		["Category"] = "Medicamentos"
+	},
+	["moneywash"] = {
+		["Price"] = 5000,
+		["Discount"] = 1.0,
+		["Category"] = "Utilidades"
+	},
+	["moneywashplus"] = {
+		["Price"] = 10000,
+		["Discount"] = 0.95,
+		["Category"] = "Utilidades"
+	},
+	["moneywashalpha"] = {
+		["Price"] = 20000,
+		["Discount"] = 0.90,
+		["Category"] = "Utilidades"
+	},
+	["moneywashomega"] = {
+		["Price"] = 100000,
+		["Discount"] = 0.85,
+		["Category"] = "Utilidades"
 	},
 	["washbattery"] = {
 		["Price"] = 750,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Utilidades"
 	},
 	["radiomhz"] = {
 		["Price"] = 7500,
 		["Discount"] = 1.0,
-		["Category"] = "Diamantes"
+		["Category"] = "Utilidades"
 	},
 	["a_c_cat_01"] = {
 		["Price"] = 5000,

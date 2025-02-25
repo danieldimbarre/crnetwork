@@ -42,7 +42,7 @@ RegisterCommand("painel",function(source,Message)
 				local Identity = vRP.Identity(OtherPassport)
 				local OtherSource = vRP.Source(OtherPassport)
 				if Identity then
-					local Calculated = CompleteTimers(os.time() - Identity["Login"])
+					local Calculated = CompleteTimers(os.time() - (Identity["Login"] or 0))
 					local Activated = "Inativo a "..Calculated
 
 					if OtherSource then
@@ -52,7 +52,7 @@ RegisterCommand("painel",function(source,Message)
 					Members[#Members + 1] = {
 						["id"] = OtherPassport,
 						["online"] = OtherSource,
-						["name"] = Identity["Name"].." "..Identity["Lastname"],
+						["name"] = (Identity["Name"] or "Individuo").." "..(Identity["Lastname"] or "Indigente"),
 						["role"] = Hierarchy[Number] or "Membro",
 						["phone"] = Activated,
 						["role_id"] = Number
@@ -112,7 +112,7 @@ function Creative.Invite(OtherPassport)
 				vRP.SetPermission(OtherPassport,Permission)
 				TriggerClientEvent("Notify",source,"Sucesso","Passaporte adicionado.","verde",5000)
 
-				local Calculated = CompleteTimers(os.time() - Identity["Login"])
+				local Calculated = CompleteTimers(os.time() - (Identity["Login"] or 0))
 				local Number = vRP.HasPermission(OtherPassport,Permission)
 				local Activated = "Inativo a "..Calculated
 

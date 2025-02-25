@@ -25,7 +25,9 @@ function Creative.Payment(Selected)
 		Active[Passport] = true
 
 		local Coords = vRP.GetEntityCoords(source)
-		if not Selected or not vRPC.LastVehicle(source,"bus") or #(Coords - Locations[Selected]) > 25 then
+		local Inside = vRPC.LastVehicle(source,"bus")
+		local Distance = #(Coords - Locations[Selected])
+		if not Selected or not Inside or Distance > 25 then
 			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Motorista\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
@@ -36,7 +38,7 @@ function Creative.Payment(Selected)
 
 		local GainExperience = 1
 		local Amount = math.random(35,45)
-		local Experience,Level = vRP.GetExperience(Passport,"Driver")
+		local _,Level = vRP.GetExperience(Passport,"Driver")
 		local Valuation = Amount + Amount * (0.05 * Level)
 
 		if exports["party"]:DoesExist(Passport,4) then
@@ -48,8 +50,10 @@ function Creative.Payment(Selected)
 		end
 
 		if vRP.UserPremium(Passport) then
-			local Hierarchy = vRP.LevelPremium(source)
-			local Bonification = (Hierarchy == 1 and 0.100) or (Hierarchy == 2 and 0.075) or (Hierarchy >= 3 and 0.050)
+			local Premium = vRP.LevelPremium(source)
+			local BonusLevels = { 0.100,0.075,0.050 }
+			local Hierarchy = math.min(Premium,#BonusLevels)
+			local Bonification = BonusLevels[Hierarchy] or 0
 
 			Valuation = Valuation + (Valuation * Bonification)
 			GainExperience = GainExperience + 1

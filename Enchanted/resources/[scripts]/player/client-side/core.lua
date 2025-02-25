@@ -368,7 +368,7 @@ AddEventHandler("player:checkTrunk",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PLAYER:ENTERTRUNK
+-- PLAYER:ENTERTRASH
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("player:enterTrash")
 AddEventHandler("player:enterTrash",function(Entity)
@@ -385,8 +385,8 @@ AddEventHandler("player:enterTrash",function(Entity)
 		while inTrash do
 			local Ped = PlayerPedId()
 
-			if GetFollowPedCamViewMode() ~= 2 then
-				SetFollowPedCamViewMode(2)
+			if GetFollowPedCamViewMode() ~= 4 then
+				SetFollowPedCamViewMode(4)
 			end
 
 			DisablePlayerFiring(Ped,true)
@@ -430,22 +430,14 @@ AddStateBagChangeHandler("Policia",("player:%s"):format(LocalPlayer["state"]["So
 	SetRelationshipBetweenGroups(1,GetHashKey("PLAYER"),GetHashKey("PRISONER"))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ANCORAR
+-- ANCHOR
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("ancorar",function()
-	local Ped = PlayerPedId()
-	if IsPedInAnyBoat(Ped) and exports["chat"]:Open() then
-		local Vehicle = GetVehiclePedIsUsing(Ped)
-		if CanAnchorBoatHere(Vehicle) then
-			SetBoatAnchor(Vehicle,false)
-			SetBoatFrozenWhenAnchored(Vehicle,false)
-			SetForcedBoatLocationWhenAnchored(Vehicle,false)
-			TriggerEvent("Notify","Sucesso","Embarcação desancorada.","verde",5000)
-		else
-			SetBoatAnchor(Vehicle,true)
-			SetBoatFrozenWhenAnchored(Vehicle,true)
-			SetForcedBoatLocationWhenAnchored(Vehicle,true)
-			TriggerEvent("Notify","Sucesso","Embarcação ancorada.","verde",5000)
-		end
+AddEventHandler("player:Anchor",function(Vehicle)
+	if CanAnchorBoatHere(Vehicle) then
+		SetBoatAnchor(Vehicle,false)
+		TriggerEvent("Notify","Sucesso","Embarcação desancorada.","verde",5000)
+	else
+		SetBoatAnchor(Vehicle,true)
+		TriggerEvent("Notify","Sucesso","Embarcação ancorada.","verde",5000)
 	end
 end)

@@ -126,13 +126,6 @@ Products = {
 -- LOOTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Loots = {
-	["Diver"] = {
-		["Players"] = {},
-		["Cooldown"] = 600,
-		["List"] = {
-			{ ["Item"] = "dollar", ["Chance"] = 100, ["Min"] = 100, ["Max"] = 250 }
-		}
-	},
 	["LootMedics"] = {
 		["Players"] = {},
 		["Cooldown"] = 3600,
@@ -1094,15 +1087,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("inventory:SaveArena",function(Passport,Att,Amm)
 	if not Arena[Passport] then
-		exports["inventory"]:CleanWeapons(Passport)
-
 		Arena[Passport] = {
-			["Ammos"] = Users["Ammos"][Passport],
-			["Attachs"] = Users["Attachs"][Passport]
+			["Ammos"] = Users["Ammos"][Passport] or {},
+			["Attachs"] = Users["Attachs"][Passport] or {}
 		}
 
-		Users["Attachs"][Passport] = Att
-		Users["Ammos"][Passport] = Amm
+		Users["Attachs"][Passport] = Att or {}
+		Users["Ammos"][Passport] = Amm or {}
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

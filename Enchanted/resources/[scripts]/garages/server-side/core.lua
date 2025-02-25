@@ -254,25 +254,23 @@ AddEventHandler("garages:Sell",function(Name)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
 		local Mode = VehicleMode(Name)
-		if Mode == "Rental" or Mode == "Work" or VehicleClass(Name) == "Exclusivos" then
-			return
-		end
+		if Mode ~= "Work" and Mode ~= "Rental" and VehicleClass(Name) ~= "Exclusivos" then
+			Active[Passport] = true
+			TriggerClientEvent("garages:Close",source)
 
-		Active[Passport] = true
-		TriggerClientEvent("garages:Close",source)
-
-		local Price = VehiclePrice(Name) * PercetageSelling
-		if vRP.Request(source,"Garagem","Vender o veículo <b>"..VehicleName(Name).."</b> por <b>$"..Dotted(Price).."</b>?") then
-			local Consult = vRP.SelectVehicle(Passport,Name)
-			if Consult and not Consult["Block"] then
-				vRP.GiveBank(Passport,Price)
-				vRP.RemSrvData("LsCustoms:"..Passport..":"..Name)
-				vRP.RemSrvData("Trunkchest:"..Passport..":"..Name)
-				vRP.Query("vehicles/removeVehicles",{ Passport = Passport, Vehicle = Name })
+			local Price = VehiclePrice(Name) * PercetageSelling
+			if vRP.Request(source,"Garagem","Vender o veículo <b>"..VehicleName(Name).."</b> por <b>$"..Dotted(Price).."</b>?") then
+				local Consult = vRP.SelectVehicle(Passport,Name)
+				if Consult and not Consult["Block"] then
+					vRP.GiveBank(Passport,Price)
+					vRP.RemSrvData("LsCustoms:"..Passport..":"..Name)
+					vRP.RemSrvData("Trunkchest:"..Passport..":"..Name)
+					vRP.Query("vehicles/removeVehicles",{ Passport = Passport, Vehicle = Name })
+				end
 			end
-		end
 
-		Active[Passport] = nil
+			Active[Passport] = nil
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -177,11 +177,12 @@ function Creative.Store(Item,Slot,Amount,Target)
 	local Amount = parseInt(Amount)
 	local Passport = vRP.Passport(source)
 	if Passport and Vehicle[Passport] then
+		local Split = SplitOne(Item)
 		local Name = Vehicle[Passport]["Model"]
-		if (Store[Name] and not Store[Name][Item]) or Blocked[Item] then
+		if (Store[Name] and not Store[Name][Split]) or Blocked[Split] then
 			TriggerClientEvent("Notify",source,"Aviso","Armazenamento proibido.","amarelo",5000)
 			TriggerClientEvent("inventory:Update",source)
-		elseif Item == "diagram" then
+		elseif Split == "diagram" then
 			if (Vehicle[Passport]["Weight"] + (10 * Amount)) <= (VehicleWeight(Name) * 5) and vRP.TakeItem(Passport,Item,Amount) then
 				Vehicle[Passport]["Weight"] = Vehicle[Passport]["Weight"] + (10 * Amount)
 				vRP.Query("vehicles/UpdateWeight",{ Passport = Vehicle[Passport]["Passport"], Vehicle = Vehicle[Passport]["Model"], Multiplier = Amount })
@@ -226,7 +227,7 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local Name = Entity[2]
 	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.PassportPlate(Entity[1])
-	if Passport and OtherPassport then
+	if Passport and OtherPassport and VehicleExist(Name) then
 		Vehicle[Passport] = {
 			["Model"] = Name,
 			["Passport"] = OtherPassport,

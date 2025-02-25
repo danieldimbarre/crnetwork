@@ -2185,7 +2185,7 @@ Use = {
 		local Hash = "bkr_prop_prtmachine_dryer_spin"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),75,70)
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),173,156)
 		end
 
 		Player(source)["state"]["Buttons"] = false
@@ -2198,7 +2198,33 @@ Use = {
 		local Hash = "bkr_prop_prtmachine_dryer_spin"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),100,95)
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),347,312)
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["moneywashalpha"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_prtmachine_dryer_spin"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),694,624)
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
+	["moneywashomega"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "bkr_prop_prtmachine_dryer_spin"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),3472,3124)
 		end
 
 		Player(source)["state"]["Buttons"] = false

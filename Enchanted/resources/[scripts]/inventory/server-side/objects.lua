@@ -6,9 +6,6 @@ local Delay = {}
 -- DEFAULT
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Default = {
-	-- DIVER
-	{ ["Coords"] = { 3308.82,-412.11,-126.15,343.28 }, ["Object"] = "ba_prop_battle_chest_closed", ["Mode"] = "Diver" },
-
 	-- LOOT MEDICS
 	{ ["Coords"] = { 594.59,146.52,97.30,70.04 }, ["Object"] = "sm_prop_smug_crate_s_medical", ["Mode"] = "LootMedics", Weight = 0.15 },
 	{ ["Coords"] = { 660.44,268.29,102.04,152.09 }, ["Object"] = "sm_prop_smug_crate_s_medical", ["Mode"] = "LootMedics", Weight = 0.15 },

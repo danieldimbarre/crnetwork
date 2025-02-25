@@ -749,11 +749,53 @@ end)
 RegisterCommand("video",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Players = vRPC.Players(source)
-		for _,Sources in pairs(Players) do
-			async(function()
-				TriggerClientEvent("hud:Video",Sources,Message[1])
-			end)
+		local Keyboard = vKEYBOARD.Instagram(source,{ "Passporte","Permissão","Area","Fechar" })
+		if Keyboard then
+			if Keyboard[1] == "Passporte" then
+				local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Código Youtube")
+				if Keyboard then
+					local OtherPassport = parseInt(Keyboard[1])
+					local OtherSource = vRP.Source(OtherPassport)
+					if OtherSource then
+						TriggerClientEvent("hud:Video",OtherSource,Keyboard[2])
+						TriggerClientEvent("Notify",source,"Sucesso","Vídeo executado com sucesso.","verde",5000)
+					end
+				end
+			elseif Keyboard[1] == "Permissão" then
+				local Groups = vRP.Groups()
+				local Keyboard = vKEYBOARD.Options(source,"Código Youtube",Groups)
+				if Keyboard then
+					local Service = vRP.NumPermission(Keyboard[1])
+					for Passports,Sources in pairs(Service) do
+						async(function()
+							TriggerClientEvent("hud:Video",Sources,Keyboard[2])
+						end)
+					end
+
+					TriggerClientEvent("Notify",source,"Sucesso","Vídeo executado com sucesso.","verde",5000)
+				end
+			elseif Keyboard[1] == "Area" then
+				local Keyboard = vKEYBOARD.Secondary(source,"Distância","Código Youtube")
+				if Keyboard then
+					local PlayerList = GetPlayers()
+					local Coords = vRP.GetEntityCoords(source)
+
+					for _,OtherSource in ipairs(PlayerList) do
+						async(function()
+							local OtherSource = parseInt(OtherSource)
+							local OtherCoords = vRP.GetEntityCoords(OtherSource)
+
+							if OtherCoords and #(Coords - OtherCoords) <= parseInt(Keyboard[1]) then
+								TriggerClientEvent("hud:Video",OtherSource,Keyboard[2])
+							end
+						end)
+					end
+
+					TriggerClientEvent("Notify",source,"Sucesso","Vídeo executado com sucesso.","verde",5000)
+				end
+			elseif Keyboard[1] == "Fechar" then
+				TriggerClientEvent("hud:Video",-1)
+			end
 		end
 	end
 end)

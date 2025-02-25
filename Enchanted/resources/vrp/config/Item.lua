@@ -2104,18 +2104,38 @@ local List = {
 	["moneywash"] = {
 		["Index"] = "moneywash",
 		["Name"] = "Máquina de Lavar",
-		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.",
+		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><commom>Lavagem diária: $250.000</commom>",
 		["Type"] = "Consumível",
 		["Weight"] = 50.0,
-		["Market"] = true
+		["Market"] = true,
+		["Rarity"] = "common"
 	},
 	["moneywashplus"] = {
 		["Index"] = "moneywash",
-		["Name"] = "Máquina de Lavar ++",
-		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.",
+		["Name"] = "Máquina de Lavar",
+		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><rare>Lavagem diária: $500.000</rare>",
 		["Type"] = "Consumível",
 		["Weight"] = 50.0,
-		["Market"] = true
+		["Market"] = true,
+		["Rarity"] = "rare"
+	},
+	["moneywashalpha"] = {
+		["Index"] = "moneywash",
+		["Name"] = "Máquina de Lavar",
+		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><epic>Lavagem diária: $1.000.000</epic>",
+		["Type"] = "Consumível",
+		["Weight"] = 50.0,
+		["Market"] = true,
+		["Rarity"] = "epic"
+	},
+	["moneywashomega"] = {
+		["Index"] = "moneywash",
+		["Name"] = "Máquina de Lavar",
+		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><legendary>Lavagem diária: $5.000.000</legendary>",
+		["Type"] = "Consumível",
+		["Weight"] = 50.0,
+		["Market"] = true,
+		["Rarity"] = "legendary"
 	},
 	-- MELEES
 	["WEAPON_HATCHET"] = {

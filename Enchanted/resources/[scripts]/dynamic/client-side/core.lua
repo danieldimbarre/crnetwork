@@ -115,6 +115,11 @@ RegisterCommand("PlayerFunctions",function()
 
 		if vRP.ClosestVehicle(7) then
 			if not IsPedInAnyVehicle(Ped) then
+				local Vehicle = GetPlayersLastVehicle()
+				if Vehicle and IsThisModelABoat(GetEntityModel(Vehicle)) then
+					exports["dynamic"]:AddButton("Ancorar","Prender/Desprender a embarcação.","player:Anchor",Vehicle,false,false)
+				end
+
 				if vRP.ClosestPed(3) then
 					exports["dynamic"]:AddMenu("Jogador","Pessoa mais próxima de você.","closestpeds")
 					exports["dynamic"]:AddButton("Colocar no Veículo","Colocar no veículo mais próximo.","player:cvFunctions","cv","closestpeds",true)

@@ -194,6 +194,10 @@ function Creative.Store(Item,Slot,Amount,Target)
 		if (vRP.InventoryWeight(Players[Passport]) + ItemWeight(Item) * Amount) <= vRP.GetWeight(Players[Passport]) then
 			if vRP.TakeItem(Passport,Item,Amount,true,Slot) and vRP.GiveItem(Players[Passport],Item,Amount,true,Target) then
 				TriggerClientEvent("inventory:Update",source)
+			else
+				if ItemType(Item) == "Armamento" then
+					TriggerClientEvent("inventory:Update",source)
+				end
 			end
 		else
 			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
@@ -217,6 +221,10 @@ function Creative.Take(Item,Slot,Target,Amount)
 		if vRP.CheckWeight(Passport,Item,Amount) then
 			if vRP.TakeItem(Players[Passport],Item,Amount,true,Slot) and vRP.GiveItem(Passport,Item,Amount,true,Target) then
 				TriggerClientEvent("inventory:Update",source)
+			else
+				if ItemType(Item) == "Armamento" then
+					TriggerClientEvent("inventory:Update",source)
+				end
 			end
 		else
 			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")

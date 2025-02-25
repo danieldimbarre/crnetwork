@@ -25,7 +25,8 @@ function Creative.Buy(Name)
 		if vRP.SelectVehicle(Passport,Name) then
 			TriggerClientEvent("Notify",source,"Aviso","Já possui um <b>"..VehicleName(Name).."</b>.","amarelo",5000)
 		else
-			if VehicleStock(Name) and vRP.Scalar("vehicles/Count",{ Vehicle = Name }) >= VehicleStock(Name) then
+			local StockVehicle = VehicleStock(Name)
+			if StockVehicle and vRP.Scalar("vehicles/Count",{ Vehicle = Name }) >= StockVehicle then
 				TriggerClientEvent("Notify",source,"Aviso","Estoque insuficiente.","amarelo",5000)
 				Active[Passport] = nil
 

@@ -96,7 +96,6 @@ RegisterServerEvent("inventory:RobberySingle")
 AddEventHandler("inventory:RobberySingle",function(Number,Mode)
 	local source = source
 	local Required = false
-	local CurrentTime = os.time()
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Config[Mode] and not Config[Mode]["Active"] then
 		if Config[Mode]["Police"] and vRP.AmountService("Policia") < Config[Mode]["Police"] then
@@ -113,11 +112,11 @@ AddEventHandler("inventory:RobberySingle",function(Number,Mode)
 			end
 		end
 
-		if Config[Mode]["Cooldown"] <= CurrentTime then
+		if Config[Mode]["Cooldown"] <= os.time() then
 			RobberyActive[Passport] = Mode
 			Config[Mode]["Active"] = Passport
 			Player(source)["state"]["Buttons"] = true
-			Active[Passport] = CurrentTime + Config[Mode]["Timer"]
+			Active[Passport] = os.time() + Config[Mode]["Timer"]
 			TriggerClientEvent("player:Residual",source,Config[Mode]["Residual"])
 			TriggerClientEvent("Progress",source,"Roubando",Config[Mode]["Timer"] * 1000)
 
@@ -137,15 +136,15 @@ AddEventHandler("inventory:RobberySingle",function(Number,Mode)
 			})
 
 			repeat
-				if Active[Passport] and CurrentTime >= Active[Passport] then
+				if Active[Passport] and os.time() >= Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
 					Player(source)["state"]["Buttons"] = false
 
-					if Config[Mode]["Active"] == Passport and Config[Mode]["Cooldown"] <= CurrentTime and (not Config[Mode]["Need"] or Required and vRP.ConsultItem(Passport,Required["Item"],Config[Mode]["Need"]["Amount"]) and (not Config[Mode]["Need"]["Consume"] or (Config[Mode]["Need"]["Consume"] and vRP.TakeItem(Passport,Required["Item"],Config[Mode]["Need"]["Amount"])))) then
+					if Config[Mode]["Active"] == Passport and Config[Mode]["Cooldown"] <= os.time() and (not Config[Mode]["Need"] or Required and vRP.ConsultItem(Passport,Required["Item"],Config[Mode]["Need"]["Amount"]) and (not Config[Mode]["Need"]["Consume"] or (Config[Mode]["Need"]["Consume"] and vRP.TakeItem(Passport,Required["Item"],Config[Mode]["Need"]["Amount"])))) then
 						Config[Mode]["Last"] = Number
 						Config[Mode]["Active"] = false
-						Config[Mode]["Cooldown"] = CurrentTime + Config[Mode]["Delay"]
+						Config[Mode]["Cooldown"] = os.time() + Config[Mode]["Delay"]
 						vRP.MountContainer(Passport,Mode..":"..Number,Config[Mode]["Payment"]["List"],math.random(Config[Mode]["Payment"]["Multiplier"]["Min"],Config[Mode]["Payment"]["Multiplier"]["Max"]))
 						TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
 					end
@@ -157,7 +156,7 @@ AddEventHandler("inventory:RobberySingle",function(Number,Mode)
 			if Config[Mode]["Last"] == Number then
 				TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
 			else
-				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Config[Mode]["Cooldown"] - CurrentTime)..".","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Config[Mode]["Cooldown"] - os.time())..".","amarelo",5000)
 			end
 		end
 	end

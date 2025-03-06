@@ -212,7 +212,9 @@ function tvRP.Destroy(Mode)
 	end
 
 	if Persistent then
-		TriggerEvent("emotes",Persistent["Anim"])
+		SetTimeout(250,function()
+			TriggerEvent("emotes",Persistent["Anim"])
+		end)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

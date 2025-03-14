@@ -17,20 +17,21 @@ local Objects = {}
 CreateThread(function()
 	while true do
 		local TimeDistance = 999
-		if LocalPlayer["state"]["Active"] then
+		if LocalPlayer.state.Active then
 			local Ped = PlayerPedId()
 			local Coords = GetEntityCoords(Ped)
+			local Route = LocalPlayer.state.Route
 
 			for Index,v in pairs(Plants) do
-				if v["Route"] == LocalPlayer["state"]["Route"] then
-					local OtherCoords = vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3])
+				if v.Route == Route then
+					local OtherCoords = vec3(v.Coords[1],v.Coords[2],v.Coords[3])
 					if #(Coords - OtherCoords) <= 50 then
 						if not Objects[Index] then
-							exports["target"]:AddBoxZone("Plants:"..Index,vec3(OtherCoords["x"],OtherCoords["y"],OtherCoords["z"] + 0.25),0.4,0.4,{
+							exports["target"]:AddBoxZone("Plants:"..Index,vec3(OtherCoords.x,OtherCoords.y,OtherCoords.z + 0.25),0.4,0.4,{
 								name = "Plants:"..Index,
-								heading = v["Coords"][4],
-								minZ = OtherCoords["z"] + 0.50,
-								maxZ = OtherCoords["z"] + 1.50
+								heading = v.Coords[4],
+								minZ = OtherCoords.z + 0.50,
+								maxZ = OtherCoords.z + 1.50
 							},{
 								shop = Index,
 								Distance = 1.5,
@@ -43,8 +44,13 @@ CreateThread(function()
 								}
 							})
 
-							CreateModels(Index,v["Hash"],v["Coords"])
+							CreateModels(Index,v.Hash,v.Coords)
 							TimeDistance = 100
+						else
+							local Vehicle = GetVehiclePedIsUsing(Ped)
+							if Vehicle ~= 0 then
+								SetEntityNoCollisionEntity(Objects[Index],Vehicle,false)
+							end
 						end
 					elseif Objects[Index] then
 						ClearObjects(Index)
@@ -69,7 +75,7 @@ AddEventHandler("plants:Informations",function(Number)
 		exports["dynamic"]:AddButton("Fertilização",Informations[2],"plants:Cloning",Number,false,true)
 		exports["dynamic"]:AddButton("Hidratação","Fortificação do Adubo: <epic>"..math.floor(Informations[4] * 100).."%</epic>","plants:Water",Number,false,true)
 
-		if CheckPolice() then
+		if CheckPolice() or LocalPlayer.state.Admin then
 			exports["dynamic"]:AddButton("Destruir",Informations[1],"plants:Destroy",Number,false,true)
 		end
 
@@ -84,8 +90,9 @@ function CreateModels(Number,Hash,Coords)
 		Objects[Number] = CreateObjectNoOffset(Hash,Coords[1],Coords[2],Coords[3],false,false,false)
 
 		local Ped = PlayerPedId()
-		if IsPedInAnyVehicle(Ped) then
-			SetEntityNoCollisionEntity(Objects[Number],GetVehiclePedIsUsing(Ped),false)
+		local Vehicle = GetVehiclePedIsUsing(Ped)
+		if Vehicle ~= 0 then
+			SetEntityNoCollisionEntity(Objects[Number],Vehicle,false)
 		end
 
 		SetEntityHeading(Objects[Number],Coords[4])

@@ -46,7 +46,12 @@ RegisterNUICallback("RadioActive",function(Data,Callback)
 			exports["pma-voice"]:removePlayerFromRadio()
 		end
 
-		TriggerEvent("Notify","Radiofrequência","Entrou na frequência <b>"..Data["Frequency"].."</b>.","verde",5000)
+		if Data["Radio"] then
+			TriggerEvent("mdt:Notify","Radiofrequência","Entrou na frequência <b>"..Data["Frequency"].."</b>.","verde")
+		else
+			TriggerEvent("Notify","Radiofrequência","Entrou na frequência <b>"..Data["Frequency"].."</b>.","verde",5000)
+		end
+
 		exports["pma-voice"]:setRadioChannel(Data["Frequency"])
 		TriggerEvent("sounds:Private","radioon",0.5)
 		TriggerEvent("hud:Radio",Data["Frequency"])

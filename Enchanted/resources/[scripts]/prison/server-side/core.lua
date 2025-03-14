@@ -8,50 +8,12 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-Creative = {}
-Tunnel.bindInterface("police",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
 local Locations = {}
------------------------------------------------------------------------------------------------------------------------------------------
--- PRISON:CREATE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("prison:Create")
-AddEventHandler("prison:Create",function()
-	local source = source
-	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and vRP.HasService(Passport,"Policia") then
-		Active[Passport] = os.time() + 1000
-
-		local Keyboard = vKEYBOARD.Quaternary(source,"Passaporte","Serviços","Multas","Crimes")
-		if Keyboard and Keyboard[1] and Keyboard[2] and Keyboard[3] and Keyboard[4] then
-			TriggerClientEvent("Notify",source,"Boolingbroke","Prisão concluída, tenha um otimo dia e bom trabalho.","verde",5000)
-
-			local Fines = parseInt(Keyboard[3])
-			local Services = parseInt(Keyboard[2])
-			local OtherPassport = parseInt(Keyboard[1])
-
-			if Fines > 0 then
-				exports["bank"]:AddFines(OtherPassport,Passport,Fines,Keyboard[4])
-			end
-
-			if Services > 0 then
-				vRP.InsertPrison(OtherPassport,Services)
-
-				local OtherSource = vRP.Source(OtherPassport)
-				if OtherSource then
-					Player(OtherSource)["state"]["Prison"] = true
-					TriggerClientEvent("Notify",OtherSource,"Boolingbroke","Todas as lixeiras do pátio estão disponíveis para <b>vasculhar</b> em troca de redução penal.","amarelo",30000)
-				end
-			end
-		end
-
-		Active[Passport] = nil
-	end
-end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRISON:ITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -114,45 +76,60 @@ AddEventHandler("prison:Service",function(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	local Identity = vRP.Identity(Passport)
-	if Passport and Identity and Identity["Prison"] > 0 then
-		if not Locations[Passport] then
-			Locations[Passport] = {}
+	if Passport and Identity and Identity.Prison > 0 then
+		Locations[Passport] = Locations[Passport] or {}
+
+		local CurrentTimer = os.time()
+		local LastTimer = Locations[Passport][Number]
+
+		if LastTimer then
+			local RemainingTime = LastTimer - CurrentTimer
+			if RemainingTime > 0 then
+				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(RemainingTime)..".","amarelo",5000)
+
+				return false
+			end
 		end
 
-		if Locations[Passport][Number] then
-			if os.time() >= Locations[Passport][Number] then
-				Reduction(source,Passport,Number)
-			else
-				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Locations[Passport][Number] - os.time())..".","amarelo",5000)
-			end
-		else
-			Reduction(source,Passport,Number)
-		end
+		Reduction(source,Passport,Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REDUCTION
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Reduction(source,Passport,Number)
-	if not Active[Passport] then
-		Active[Passport] = os.time() + 10
-		Player(source)["state"]["Cancel"] = true
-		Player(source)["state"]["Buttons"] = true
-		Locations[Passport][Number] = os.time() + 300
-		TriggerClientEvent("Progress",source,"Vasculhando",10000)
-		vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+	if Active[Passport] then
+		return false
+	end
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-				vRPC.Destroy(source)
-				Active[Passport] = nil
-				vRP.UpdatePrison(Passport,2)
-				Player(source)["state"]["Cancel"] = false
-				Player(source)["state"]["Buttons"] = false
+	local CurrentTimer = os.time()
+	Player(source).state.Cancel = true
+	Player(source).state.Buttons = true
+	Active[Passport] = CurrentTimer + 10
+	Locations[Passport][Number] = CurrentTimer + 300
+	TriggerClientEvent("Progress",source,"Vasculhando",10000)
+	vRPC.playAnim(source,false,{"amb@prop_human_bum_bin@base","base"},true)
+
+	while Active[Passport] do
+		if os.time() >= Active[Passport] then
+			vRPC.Destroy(source)
+			Active[Passport] = nil
+			vRP.UpdatePrison(Passport,2)
+			Player(source).state.Cancel = false
+			Player(source).state.Buttons = false
+
+			local Identity = vRP.Identity(Passport)
+			if Identity and Identity.Prison <= 0 then
+				vRP.Teleport(source,1896.15,2604.44,45.75)
+				TriggerClientEvent("Notify",source,"Boolingbroke","Serviços finalizados.","policia",5000)
+			else
+				TriggerClientEvent("Notify",source,"Boolingbroke","Reduzimos 2 serviços, restando um total de "..Identity.Prison..".","policia",5000)
 			end
 
-			Wait(100)
-		until not Active[Passport]
+			break
+		end
+
+		Wait(100)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -86,7 +86,7 @@ function Creative.Check()
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		TriggerEvent("DebugWeapons",Passport,source)
+		TriggerEvent("DebugWeapons",Passport)
 		TriggerEvent("animals:Delete",Passport,source)
 		exports["vrp"]:Bucket(source,"Enter",100000 + Passport)
 	end

@@ -38,7 +38,7 @@ AddEventHandler("skinshop:Remove",function(Mode)
 	local Passport = vRP.Passport(source)
 	if Passport then
 		local ClosestPed = vRPC.ClosestPed(source)
-		if ClosestPed and vRP.HasService(Passport,"Policia") then
+		if ClosestPed and vRP.HasService(Passport,"Emergencia") then
 			TriggerClientEvent("skinshop:set"..Mode,ClosestPed)
 		end
 	end

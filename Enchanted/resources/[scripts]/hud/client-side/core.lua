@@ -288,9 +288,13 @@ end)
 RegisterNetEvent("hud:Video")
 AddEventHandler("hud:Video",function(Code)
 	if Code then
+		SetNuiFocus(true,false)
+		SendNUIMessage({ Action = "Body", Payload = true })
 		SendNUIMessage({ Action = "Video", Payload = { true,Code } })
 	else
+		SendNUIMessage({ Action = "Body", Payload = Display })
 		SendNUIMessage({ Action = "Video", Payload = false })
+		SetNuiFocus(false,false)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

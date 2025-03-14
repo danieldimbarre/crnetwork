@@ -154,7 +154,6 @@ CreateThread(function()
 								LocalPlayer["state"]:set("Crawl",false,true)
 								Death["Timer"] = not LocalPlayer["state"]["Arena"] and Death["Default"] or 5
 								SendNUIMessage({ Action = "Update", Payload = { Death["Title"],Death["Text"],Death["Timer"] } })
-								TriggerEvent("EntityInvincible",true)
 								NetworkSetFriendlyFireOption(false)
 								SetEntityInvincible(Ped,true)
 								SetLocalPlayerAsGhost(true)
@@ -267,7 +266,6 @@ function FinishSurvival()
 	SetEntityInvincible(Ped,false)
 	ClearFacialIdleAnimOverride(Ped)
 	NetworkSetFriendlyFireOption(true)
-	TriggerEvent("EntityInvincible",false)
 
 	TriggerEvent("paramedic:Reset")
 
@@ -302,7 +300,6 @@ exports("Revive",function(Health,Arena)
 
 	SetEntityInvincible(Ped,false)
 	SetEntityHealth(Ped,Health or 101)
-	TriggerEvent("EntityInvincible",false)
 
 	if Arena then
 		SetPedArmour(Ped,99)

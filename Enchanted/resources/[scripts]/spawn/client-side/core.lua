@@ -44,14 +44,14 @@ RegisterNUICallback("Characters",function(Data,Callback)
 	end
 
 	SetPlayerModel(Pid,Model)
-	ClearPedTasksImmediately(Ped)
 	SetModelAsNoLongerNeeded(Model)
 
 	local Ped = PlayerPedId()
 	SetEntityCoords(Ped,-2006.95,2960.77,31.81,false,false,false,false)
-	TriggerEvent("EntityInvincible",true)
+	NetworkSetFriendlyFireOption(false)
 	FreezeEntityPosition(Ped,true)
 	SetEntityInvincible(Ped,true)
+	ClearPedTasksImmediately(Ped)
 	SetEntityHeading(Ped,305.82)
 	SetEntityVisible(Ped,false)
 	SetEntityHealth(Ped,100)
@@ -199,6 +199,7 @@ function Customization(Table,Check)
 	exports["tattooshop"]:Apply(Table["Tattoos"],Ped)
 
 	ClearPedTasksImmediately(Ped)
+	SetEntityInvincible(Ped,true)
 	SetEntityVisible(Ped,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -104,20 +104,10 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 	end
 
 	local Sexo = (Sex == "mp_f_freemode_01") and "F" or "M"
-
-	vRP.Query("characters/NewCharacter",{
-		License = License,
-		Name = FirstText(Name),
-		Lastname = FirstText(Lastname),
-		Sex = Sexo,
-		Skin = Sex,
-		Blood = math.random(4)
-	})
-
-	local Consult = vRP.Query("characters/LastCharacter",{ License = License })
-	if Consult[1] then
+	local Consult = exports["oxmysql"]:insert_async("INSERT INTO characters (License,Name,Lastname,Sex,Skin,Blood,Created) VALUES (@License,@Name,@Lastname,@Sex,@Skin,@Blood,UNIX_TIMESTAMP() + (86400 * 3))",{ License = License, Name = FirstText(Name), Lastname = FirstText(Lastname), Sex = Sexo, Skin = Sex, Blood = math.random(4) })
+	if Consult then
 		vRPC.DoScreenFadeOut(source)
-		vRP.CharacterChosen(source,Consult[1].id,Sex)
+		vRP.CharacterChosen(source,Consult,Sex)
 	end
 
 	Active[source] = nil
@@ -127,14 +117,11 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Disconnect",function(Passport,source)
-	local License = Connected[Passport]
-	if License then
+AddEventHandler("Disconnect", function(Passport, source)
+	if Connected[Passport] then
+		Licensed[Connected[Passport]] = nil
 		Connected[Passport] = nil
-		Licensed[License] = nil
 	end
-
-	if Active[source] then
-		Active[source] = nil
-	end
+	
+	Active[source] = nil
 end)

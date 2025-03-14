@@ -44,10 +44,14 @@ function Creative.AcademyWeight(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and GlobalState["Academy-"..Number] and Workout[Passport] == Number then
-		local Premium = vRP.UserPremium(Passport)
-		local Weight = vRP.GetWeight(Passport,true)
+		local MaxWeight = 75
+		for Permission,Multiplier in pairs({ Ouro = 60, Prata = 40, Bronze = 20 }) do
+			if vRP.HasService(Passport,Permission) then
+				MaxWeight = MaxWeight + Multiplier
+			end
+		end
 
-		if (Premium and Weight < 100) or (not Premium and Weight < 75) then
+		if vRP.GetWeight(Passport,true) < MaxWeight then
 			vRP.UpgradeWeight(Passport,1,"+")
 			TriggerClientEvent("Notify",source,"Academia","Sinto minha força alcançando novos patamares, não há limites quando se trata de determinação e dedicação.","verde",5000)
 		end
@@ -154,8 +158,8 @@ AddEventHandler("target:Service",function(Permission)
 		if Permission == "Policia" then
 			if vRP.HasPermission(Passport,"LSPD") then
 				Permission = "LSPD"
-			elseif vRP.HasPermission(Passport,"BCPR") then
-				Permission = "BCPR"
+			elseif vRP.HasPermission(Passport,"SAPR") then
+				Permission = "SAPR"
 			elseif vRP.HasPermission(Passport,"BCSO") then
 				Permission = "BCSO"
 			end

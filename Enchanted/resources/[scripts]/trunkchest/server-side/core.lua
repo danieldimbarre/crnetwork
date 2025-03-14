@@ -228,10 +228,12 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.PassportPlate(Entity[1])
 	if Passport and OtherPassport and VehicleExist(Name) then
+		local Consult = vRP.SelectVehicle(OtherPassport,Name)
+
 		Vehicle[Passport] = {
 			["Model"] = Name,
 			["Passport"] = OtherPassport,
-			["Weight"] = vRP.SelectVehicle(OtherPassport,Name)["Weight"] or VehicleWeight(Name),
+			["Weight"] = Consult and Consult.Weight or VehicleWeight(Name),
 			["Data"] = "Trunkchest:"..OtherPassport..":"..Name
 		}
 

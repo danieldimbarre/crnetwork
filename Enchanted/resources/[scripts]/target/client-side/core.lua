@@ -584,7 +584,12 @@ function TargetEnable()
 
 							if CheckPolice() then
 								Menu[#Menu + 1] = { event = "towed:Impound", label = "Impound", tunnel = "server" }
-								Menu[#Menu + 1] = { event = "prison:Vehicle", label = "Apreender", tunnel = "server" }
+
+								if GetResourceState("mdt") == "started" then
+									Menu[#Menu + 1] = { event = "mdt:Vehicle", label = "Apreender", tunnel = "server" }
+								else
+									Menu[#Menu + 1] = { event = "prison:Vehicle", label = "Apreender", tunnel = "server" }
+								end
 							else
 								for _,v in pairs(Dismantle) do
 									if #(Coords - v) <= 15 then

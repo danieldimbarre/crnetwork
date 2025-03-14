@@ -251,20 +251,18 @@ local Garages = {
 -- SPAWNPOSITION
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.SpawnPosition(Select)
-	local Slot = "0"
 	local Checks = 0
-	local Selected = {}
-	local Position = nil
+	local Selected,Position
 
 	repeat
 		Checks = Checks + 1
+		local Slot = tostring(Checks)
 
-		Slot = tostring(Checks)
 		if Garages[Select] and Garages[Select][Slot] then
 			Selected = vec4(Garages[Select][Slot][1],Garages[Select][Slot][2],Garages[Select][Slot][3],Garages[Select][Slot][4])
 			Position = GetClosestVehicle(Garages[Select][Slot][1],Garages[Select][Slot][2],Garages[Select][Slot][3],2.75,0,127)
 		end
-	until not DoesEntityExist(Position) or not Garages[Select][Slot]
+	until not DoesEntityExist(Position) or not Garages[Select][tostring(Checks)]
 
 	if not Garages[Select][tostring(Checks)] then
 		TriggerEvent("Notify","Atenção","Todas as vagas estão ocupadas.","default",5000)
@@ -281,46 +279,47 @@ end
 -- CREATEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Tyres)
-	if NetworkDoesNetworkIdExist(Network) then
-		local Vehicle = NetToEnt(Network)
-		if DoesEntityExist(Vehicle) then
-			TriggerEvent("lscustoms:Apply",Vehicle,Customize)
-			SetVehicleEngineHealth(Vehicle,Engine + 0.0)
-			SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
-			SetVehicleNeedsToBeHotwired(Vehicle,false)
-			DecorSetInt(Vehicle,"Player_Vehicle",-1)
-			EnableVehicleExhaustPops(Vehicle,true)
-			SetVehicleWheelsCanBreak(Vehicle,true)
-			SetVehicleOnGroundProperly(Vehicle)
-			SetVehRadioStation(Vehicle,"OFF")
-			SetVehicleCanBreak(Vehicle,true)
-			SetEntityHealth(Vehicle,Health)
+	if not NetworkDoesNetworkIdExist(Network) then
+		return false
+	end
 
-			if Windows then
-				local Windows = json.decode(Windows)
-				if Windows ~= nil then
-					for Index,v in pairs(Windows) do
-						if not v then
-							RemoveVehicleWindow(Vehicle,parseInt(Index))
-						end
-					end
+	local Vehicle = NetToEnt(Network)
+	if not DoesEntityExist(Vehicle) then
+		return false
+	end
+
+	TriggerEvent("lscustoms:Apply",Vehicle,Customize)
+	SetVehicleEngineHealth(Vehicle,Engine + 0.0)
+	SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
+	SetVehicleNeedsToBeHotwired(Vehicle,false)
+	DecorSetInt(Vehicle,"Player_Vehicle",-1)
+	SetVehicleOnGroundProperly(Vehicle)
+	SetVehRadioStation(Vehicle,"OFF")
+	SetEntityHealth(Vehicle,Health)
+
+	if Windows then
+		local DecodedWindows = json.decode(Windows)
+		if DecodedWindows then
+			for Index,v in pairs(DecodedWindows) do
+				if not v then
+					RemoveVehicleWindow(Vehicle,tonumber(Index))
 				end
 			end
-
-			if Tyres then
-				local Tyres = json.decode(Tyres)
-				if Tyres ~= nil then
-					for Index,Burst in pairs(Tyres) do
-						if Burst then
-							SetVehicleTyreBurst(Vehicle,parseInt(Index),true,1000.0)
-						end
-					end
-				end
-			end
-
-			SetModelAsNoLongerNeeded(Model)
 		end
 	end
+
+	if Tyres then
+		local DecodedTyres = json.decode(Tyres)
+		if DecodedTyres then
+			for Index,Burst in pairs(DecodedTyres) do
+				if Burst then
+					SetVehicleTyreBurst(Vehicle,tonumber(Index),true,1000.0)
+				end
+			end
+		end
+	end
+
+	SetModelAsNoLongerNeeded(Model)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:DELETE
@@ -339,7 +338,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 
 		local Tyres = {}
 		for Number = 0,7 do
-			Tyres[Number] = (GetTyreHealth(Vehicle,i) ~= 1000.0 and true or false)
+			Tyres[Number] = (GetTyreHealth(Vehicle,Number) ~= 1000.0 and true or false)
 		end
 
 		vSERVER.Delete(VehToNet(Vehicle),Doors,Tyres,GetVehicleNumberPlateText(Vehicle),Opened)
@@ -358,7 +357,11 @@ function Creative.SearchBlip(Coords)
 		Coords = vec3(Garages[Coords]["x"],Garages[Coords]["y"],Garages[Coords]["z"])
 	end
 
-	Searched = AddBlipForCoord(Coords["x"],Coords["y"],Coords["z"])
+	if not Coords then
+		return false
+	end
+
+	Searched = AddBlipForCoord(Coords.x,Coords.y,Coords.z)
 	SetBlipSprite(Searched,225)
 	SetBlipColour(Searched,77)
 	SetBlipScale(Searched,0.6)
@@ -368,7 +371,10 @@ function Creative.SearchBlip(Coords)
 	EndTextCommandSetBlipName(Searched)
 
 	SetTimeout(30000,function()
-		RemoveBlip(Searched)
+		if DoesBlipExist(Searched) then
+			RemoveBlip(Searched)
+		end
+
 		Searched = nil
 	end)
 end
@@ -416,17 +422,19 @@ CreateThread(function()
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
 			local Vehicle = GetVehiclePedIsUsing(Ped)
-			local Plate = GetVehicleNumberPlateText(Vehicle)
-			if GetPedInVehicleSeat(Vehicle,-1) == Ped and Plate ~= "PDMSPORT" and not Entity(Vehicle)["state"]["Lockpick"] then
-				SetVehicleEngineOn(Vehicle,false,true,true)
-				DisablePlayerFiring(Ped,true)
-				TimeDistance = 1
-			end
+			if Vehicle then
+				local Plate = GetVehicleNumberPlateText(Vehicle)
+				if GetPedInVehicleSeat(Vehicle,-1) == Ped and Plate ~= "PDMSPORT" and not Entity(Vehicle).state.Lockpick then
+					SetVehicleEngineOn(Vehicle,false,true,true)
+					DisablePlayerFiring(Ped,true)
+					TimeDistance = 1
+				end
 
-			if Hotwired and Vehicle then
-				DisableControlAction(0,75,true)
-				DisableControlAction(0,20,true)
-				TimeDistance = 1
+				if Hotwired and Vehicle then
+					DisableControlAction(0,75,true)
+					DisableControlAction(0,20,true)
+					TimeDistance = 1
+				end
 			end
 		end
 
@@ -444,10 +452,10 @@ CreateThread(function()
 			local Coords = GetEntityCoords(Ped)
 
 			for Number,v in pairs(Garages) do
-				local Distance = #(Coords - vec3(v["x"],v["y"],v["z"]))
+				local Distance = #(Coords - vec3(v.x,v.y,v.z))
 				if Distance <= 5.0 then
 					TimeDistance = 1
-					DrawMarker(23,v["x"],v["y"],v["z"] - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,88,101,242,175,0,0,0,0)
+					DrawMarker(23,v.x,v.y,v.z - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,88,101,242,175,0,0,0,0)
 
 					if Distance <= 1.25 and IsControlJustPressed(1,38) and not exports["hud"]:Wanted() and not exports["lb-phone"]:IsOpen() then
 						local Vehicles = vSERVER.Vehicles(Number)
@@ -462,10 +470,10 @@ CreateThread(function()
 			end
 
 			for Plate,v in pairs(Respawns) do
-				local Distance = #(Coords - v["xyz"])
+				local Distance = #(Coords - v.xyz)
 				if Distance <= 25.0 then
 					TimeDistance = 1
-					DrawMarker(36,v["x"],v["y"],v["z"],0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,1.75,88,101,242,175,0,0,0,1)
+					DrawMarker(36,v.x,v.y,v.z,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,1.75,88,101,242,175,0,0,0,1)
 
 					if Distance <= 1.25 and IsControlJustPressed(1,38) and Spam <= GetGameTimer() then
 						Spam = GetGameTimer() + 5000

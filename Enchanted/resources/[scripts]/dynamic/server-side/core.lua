@@ -72,9 +72,10 @@ function Creative.Clothes()
 	if Passport then
 		CountClothes[Passport] = 2
 
-		if vRP.UserPremium(Passport) then
-			local Hierarchy = vRP.LevelPremium(source)
-			CountClothes[Passport] = (Hierarchy == 1 and 8) or (Hierarchy == 2 and 6) or (Hierarchy >= 3 and 4)
+		for Permission,Multiplier in pairs({ Ouro = 8, Prata = 6, Bronze = 4 }) do
+			if vRP.HasService(Passport,Permission) then
+				CountClothes[Passport] = CountClothes[Passport] + Multiplier
+			end
 		end
 
 		local Consult = vRP.GetSrvData("Clothes:"..Passport,true)

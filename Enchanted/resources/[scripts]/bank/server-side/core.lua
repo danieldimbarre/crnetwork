@@ -212,22 +212,22 @@ end
 -- FINES
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Fines(Passport)
-	local Fines = {}
-	local FineList = vRP.Query("fines/List",{ Passport = Passport })
-	if FineList[1] then
-		for _,v in pairs(FineList) do
-			Fines[#Fines + 1] = {
-				["id"] = v["id"],
-				["name"] = v["Name"],
-				["value"] = v["Price"],
-				["date"] = v["Date"],
-				["hour"] = v["Hour"],
-				["message"] = v["Message"]
-			}
+	local Table = {}
+	local Consult = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0",{ Passport = Passport })
+	if Consult[1] then
+		for _,v in pairs(Consult) do
+			table.insert(Table,{
+				id = v.id,
+				name = "Multa recebida por "..vRP.FullName(v.Officer),
+				value = v.Fine,
+				date = v.Date,
+				hour = v.Hour,
+				message = v.Description
+			})
 		end
 	end
 
-	return Fines
+	return Table
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FINELIST
@@ -243,11 +243,7 @@ end
 -- CHECKFINES
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("CheckFines",function(Passport)
-	if Passport and vRP.Query("fines/List",{ Passport = Passport })[1] then
-		return true
-	end
-
-	return false
+	return exports["oxmysql"]:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 1 LIMIT 1",{ Passport = Passport }) and true or false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FINEPAYMENT
@@ -258,14 +254,12 @@ function Creative.FinePayment(Number)
 	if Passport and not Active[Passport] then
 		Active[Passport] = true
 
-		local Fine = vRP.Query("fines/Check",{ Passport = Passport, id = Number })
-		if Fine[1] then
-			if vRP.PaymentBank(Passport,Fine[1]["Price"]) then
-				vRP.Query("fines/Remove",{ Passport = Passport, id = Number })
-				Active[Passport] = nil
+		local Consult = exports["oxmysql"]:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = @Paid AND id = @Number LIMIT 1",{ Passport = Passport, Paid = 0, Number = Number })
+		if Consult and vRP.PaymentBank(Passport,Consult.Fine) then
+			exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Paid = @Paid WHERE Passport = @Passport AND id = @Number",{ Passport = Passport, Paid = 1, Number = Number })
+			Active[Passport] = nil
 
-				return true
-			end
+			return true
 		end
 
 		Active[Passport] = nil
@@ -282,11 +276,11 @@ function Creative.FinePaymentAll()
 	if Passport and not Active[Passport] then
 		Active[Passport] = true
 
-		local FineList = vRP.Query("fines/List",{ Passport = Passport })
-		if FineList[1] then
-			for _,v in pairs(FineList) do
-				if vRP.PaymentBank(Passport,v["Price"]) then
-					vRP.Query("fines/Remove",{ Passport = Passport, id = v["id"] })
+		local Consult = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0",{ Passport = Passport })
+		if Consult[1] then
+			for _,v in pairs(Consult) do
+				if vRP.PaymentBank(Passport,v.Fine) then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Paid = @Paid WHERE Passport = @Passport AND id = @Number",{ Passport = Passport, Paid = 1, Number = v.id })
 				end
 			end
 		end
@@ -512,11 +506,11 @@ end
 -- ADDTAXS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("AddTaxs",function(Passport,source,Name,Valuation,Message)
-	if vRP.UserPremium(Passport) then
-		local Hierarchy = vRP.LevelPremium(source)
-		Valuation = (Hierarchy == 1 and (Valuation * 0.0125)) or (Hierarchy == 2 and (Valuation * 0.0250)) or (Hierarchy >= 3 and (Valuation * 0.0375))
-	else
-		Valuation = Valuation * 0.05
+	local Valuation = Valuation * 0.05
+	for Permission,Multiplier in pairs({ Ouro = 0.0125, Prata = 0.0250, Bronze = 0.0375 }) do
+		if vRP.HasService(Passport,Permission) then
+			Valuation = Valuation + (Valuation * Valuation * Multiplier)
+		end
 	end
 
 	vRP.Query("taxs/Add",{ Passport = Passport, Name = Name, Date = os.date("%d/%m/%Y"), Hour = os.date("%H:%M"), Price = parseInt(Valuation), Message = Message })
@@ -526,12 +520,6 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("AddTransactions",function(Passport,Type,Valuation)
 	vRP.Query("transactions/Add",{ Passport = Passport, Type = Type, Date = os.date("%d/%m/%Y"), Price = Valuation, Balance = vRP.GetBank(Passport) })
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ADDFINES
------------------------------------------------------------------------------------------------------------------------------------------
-exports("AddFines",function(Passport,OtherPassport,Valuation,Message)
-	vRP.Query("fines/Add",{ Passport = Passport, Name = vRP.FullName(OtherPassport), Date = os.date("%d/%m/%Y"), Hour = os.date("%H:%M"), Price = Valuation, Message = Message })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

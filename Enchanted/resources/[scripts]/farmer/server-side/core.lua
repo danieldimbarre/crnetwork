@@ -85,8 +85,10 @@ AddEventHandler("farmer:Minerman",function(Number)
 						Consult["Valuation"] = Consult["Valuation"] + (Consult["Valuation"] * 0.5)
 					end
 
-					if vRP.UserPremium(Passport) then
-						Consult["Valuation"] = Consult["Valuation"] + (Consult["Valuation"] * 0.5)
+					for Permission,Multiplier in pairs({ Ouro = 0.5, Prata = 0.35, Bronze = 0.2 }) do
+						if vRP.HasService(Passport,Permission) then
+							Consult["Valuation"] = Consult["Valuation"] + (Consult["Valuation"] * Consult["Valuation"] * Multiplier)
+						end
 					end
 
 					if vRP.CheckWeight(Passport,Consult["Item"],Consult["Valuation"]) and not vRP.MaxItens(Passport,Consult["Item"],Consult["Valuation"]) then
@@ -152,8 +154,10 @@ AddEventHandler("farmer:Lumberman",function(Number)
 						Valuation = Valuation + (Valuation * 0.25)
 					end
 
-					if vRP.UserPremium(Passport) then
-						Valuation = Valuation + (Valuation * 0.25)
+					for Permission,Multiplier in pairs({ Ouro = 0.25, Prata = 0.2, Bronze = 0.15 }) do
+						if vRP.HasService(Passport,Permission) then
+							Valuation = Valuation + (Valuation * Valuation * Multiplier)
+						end
 					end
 
 					if vRP.CheckWeight(Passport,"woodlog",Valuation) and not vRP.MaxItens(Passport,"woodlog",Valuation) then

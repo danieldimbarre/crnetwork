@@ -195,21 +195,21 @@ function Creative.Permissions(Name,Mode,Item)
 				return true
 			end
 		else
-			local Consult = vRP.Query("chests/GetChests",{ Name = Name })
-			if not Consult[1] then
+			local Consult = vRP.SingleQuery("chests/GetChests",{ Name = Name })
+			if not Consult then
 				vRP.Query("chests/AddChests",{ Name = Name })
-				Consult = vRP.Query("chests/GetChests",{ Name = Name })
+				Consult = vRP.SingleQuery("chests/GetChests",{ Name = Name })
 			end
 
-			if Consult[1] and vRP.HasService(Passport,Consult[1]["Permission"]) then
+			if Consult and vRP.HasService(Passport,Consult.Permission) then
 				Open[Passport] = {
-					["Slots"] = Consult[1]["Slots"],
-					["Weight"] = Consult[1]["Weight"],
-					["NameLogs"] = Name,
-					["Name"] = "Chest:"..Name,
-					["Logs"] = Consult[1]["Logs"],
-					["Permission"] = Consult[1]["Permission"],
-					["Save"] = true
+					NameLogs = Name,
+					Logs = Consult.Logs,
+					Slots = Consult.Slots,
+					Name = "Chest:"..Name,
+					Weight = Consult.Weight,
+					Permission = Consult.Permission,
+					Save = true
 				}
 
 				return true

@@ -16,10 +16,6 @@ local Executive = false
 -- THREADSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 for Permission,v in pairs(Groups) do
-	if v["Client"] then
-		LocalPlayer["state"]:set(Permission,false,false)
-	end
-
 	if v["Chat"] then
 		Actived[Permission] = true
 	end

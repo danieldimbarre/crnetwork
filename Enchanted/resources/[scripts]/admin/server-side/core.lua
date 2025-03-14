@@ -14,6 +14,234 @@ vCLIENT = Tunnel.getInterface("admin")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vSKINWEAPON = Tunnel.getInterface("skinweapon")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- PASSPORT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("passport",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		local Keyboard = vKEYBOARD.Secondary(source,"Atual","Novo")
+		if Keyboard then
+			local NewPassport = parseInt(Keyboard[2])
+			local OtherPassport = parseInt(Keyboard[1])
+
+			if vRP.Source(OtherPassport) then
+				return TriggerClientEvent("Notify",source,"Atenção","O passaporte "..OtherPassport.." precisa estar desconectado.","amarelo",5000)
+			end
+
+			if not vRP.Identity(OtherPassport) then
+				return TriggerClientEvent("Notify",source,"Atenção","O passaporte "..OtherPassport.." não existe.","amarelo",5000)
+			end
+
+			if vRP.Identity(NewPassport) then
+				return TriggerClientEvent("Notify",source,"Atenção","O passaporte "..NewPassport.." já existe.","amarelo",5000)
+			end
+
+			local Vehicles = exports["oxmysql"]:query_async("SELECT * FROM vehicles WHERE Passport = ?",{ OtherPassport })
+			if Vehicles and #Vehicles > 0 then
+				for _,v in pairs(Vehicles) do
+					local LsCustoms = vRP.GetSrvData("LsCustoms:"..OtherPassport..":"..v.Vehicle)
+					local Trunkchest = vRP.GetSrvData("Trunkchest:"..OtherPassport..":"..v.Vehicle)
+
+					vRP.SetSrvData("Trunkchest:"..NewPassport..":"..v.Vehicle,Trunkchest,true)
+					vRP.SetSrvData("LsCustoms:"..NewPassport..":"..v.Vehicle,LsCustoms,true)
+					vRP.RemSrvData("Trunkchest:"..OtherPassport..":"..v.Vehicle)
+					vRP.RemSrvData("LsCustoms:"..OtherPassport..":"..v.Vehicle)
+				end
+
+				exports["oxmysql"]:query_async("UPDATE vehicles SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Character = exports["oxmysql"]:query_async("SELECT * FROM characters WHERE id = ?",{ OtherPassport })
+			if Character and #Character > 0 then
+				exports["oxmysql"]:query_async("UPDATE characters SET id = ? WHERE id = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Transactions = exports["oxmysql"]:query_async("SELECT * FROM transactions WHERE Passport = ?",{ OtherPassport })
+			if Transactions and #Transactions > 0 then
+				exports["oxmysql"]:query_async("UPDATE transactions SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Taxs = exports["oxmysql"]:query_async("SELECT * FROM taxs WHERE Passport = ?",{ OtherPassport })
+			if Taxs and #Taxs > 0 then
+				exports["oxmysql"]:query_async("UPDATE taxs SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Races = exports["oxmysql"]:query_async("SELECT * FROM races WHERE Passport = ?",{ OtherPassport })
+			if Races and #Races > 0 then
+				exports["oxmysql"]:query_async("UPDATE races SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Propertys = exports["oxmysql"]:query_async("SELECT * FROM propertys WHERE Passport = ?",{ OtherPassport })
+			if Propertys and #Propertys > 0 then
+				exports["oxmysql"]:query_async("UPDATE propertys SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Playerdata = exports["oxmysql"]:query_async("SELECT * FROM playerdata WHERE Passport = ?",{ OtherPassport })
+			if Playerdata and #Playerdata > 0 then
+				exports["oxmysql"]:query_async("UPDATE playerdata SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Painel_Transactions = exports["oxmysql"]:query_async("SELECT * FROM painel_creative_transactions WHERE Passport = ?",{ OtherPassport })
+			if Painel_Transactions and #Painel_Transactions > 0 then
+				exports["oxmysql"]:query_async("UPDATE painel_creative_transactions SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Painel_Transactions_Transfer = exports["oxmysql"]:query_async("SELECT * FROM painel_creative_transactions WHERE Transfer = ?",{ OtherPassport })
+			if Painel_Transactions_Transfer and #Painel_Transactions_Transfer > 0 then
+				exports["oxmysql"]:query_async("UPDATE painel_creative_transactions SET Transfer = ? WHERE Transfer = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Arrest = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_arrest WHERE Passport = ?",{ OtherPassport })
+			if MDT_Arrest and #MDT_Arrest > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_arrest SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Arrest_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_arrest WHERE Officer = ?",{ OtherPassport })
+			if MDT_Arrest_Officer and #MDT_Arrest_Officer > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_arrest SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Arrest_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_arrest")
+			if MDT_Arrest_Officers and #MDT_Arrest_Officers > 0 then
+				for _,v in ipairs(MDT_Arrest_Officers) do
+					local Updated = false
+					local Officers = json.decode(v.Officers)
+					for Index,Number in ipairs(Officers) do
+						if OtherPassport == Number then
+							Officers[Index] = NewPassport
+							Updated = true
+
+							break
+						end
+					end
+
+					if Updated then
+						exports["oxmysql"]:query_async("UPDATE mdt_creative_arrest SET Officers = ? WHERE id = ?",{ json.encode(Officers),v.id })
+					end
+				end
+			end
+
+			local MDT_Fines = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Passport = ?",{ OtherPassport })
+			if MDT_Fines and #MDT_Fines > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Fines_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Officer = ?",{ OtherPassport })
+			if MDT_Fines_Officer and #MDT_Fines_Officer > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Medals_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_medals")
+			if MDT_Medals_Officers and #MDT_Medals_Officers > 0 then
+				for _,v in ipairs(MDT_Medals_Officers) do
+					local Updated = false
+					local Officers = json.decode(v.Officers)
+					for Index,Number in ipairs(Officers) do
+						if OtherPassport == Number then
+							Officers[Index] = NewPassport
+							Updated = true
+
+							break
+						end
+					end
+
+					if Updated then
+						exports["oxmysql"]:query_async("UPDATE mdt_creative_medals SET Officers = ? WHERE id = ?",{ json.encode(Officers),v.id })
+					end
+				end
+			end
+
+			local MDT_Reports = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_reports WHERE Passport = ?",{ OtherPassport })
+			if MDT_Reports and #MDT_Reports > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_reports SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Reports_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_reports WHERE Officer = ?",{ OtherPassport })
+			if MDT_Reports_Officer and #MDT_Reports_Officer > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_reports SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Units_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_units")
+			if MDT_Units_Officers and #MDT_Units_Officers > 0 then
+				for _,v in ipairs(MDT_Units_Officers) do
+					local Updated = false
+					local Officers = json.decode(v.Officers)
+					for Index,Number in ipairs(Officers) do
+						if OtherPassport == Number then
+							Officers[Index] = NewPassport
+							Updated = true
+
+							break
+						end
+					end
+
+					if Updated then
+						exports["oxmysql"]:query_async("UPDATE mdt_creative_units SET Officers = ? WHERE id = ?",{ json.encode(Officers),v.id })
+					end
+				end
+			end
+
+			local MDT_Vehicles = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_vehicles WHERE Passport = ?",{ OtherPassport })
+			if MDT_Vehicles and #MDT_Vehicles > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_vehicles SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Vehicles_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_vehicles WHERE Officer = ?",{ OtherPassport })
+			if MDT_Vehicles_Officer and #MDT_Vehicles_Officer > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_vehicles SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Wanted = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_wanted WHERE Passport = ?",{ OtherPassport })
+			if MDT_Wanted and #MDT_Wanted > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_wanted SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Wanted_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_wanted WHERE Officer = ?",{ OtherPassport })
+			if MDT_Wanted_Officer and #MDT_Wanted_Officer > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_wanted SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Warning = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_warning WHERE Passport = ?",{ OtherPassport })
+			if MDT_Warning and #MDT_Warning > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_warning SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local MDT_Warning_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_warning WHERE Officer = ?",{ OtherPassport })
+			if MDT_Warning_Officer and #MDT_Warning_Officer > 0 then
+				exports["oxmysql"]:query_async("UPDATE mdt_creative_warning SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Invoices = exports["oxmysql"]:query_async("SELECT * FROM invoices WHERE Passport = ?",{ OtherPassport })
+			if Invoices and #Invoices > 0 then
+				exports["oxmysql"]:query_async("UPDATE invoices SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Invoices_Received = exports["oxmysql"]:query_async("SELECT * FROM invoices WHERE Received = ?",{ OtherPassport })
+			if Invoices_Received and #Invoices_Received > 0 then
+				exports["oxmysql"]:query_async("UPDATE invoices SET Received = ? WHERE Received = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Investments = exports["oxmysql"]:query_async("SELECT * FROM investments WHERE Passport = ?",{ OtherPassport })
+			if Investments and #Investments > 0 then
+				exports["oxmysql"]:query_async("UPDATE investments SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+			end
+
+			local Phone = exports["oxmysql"]:query_async("SELECT * FROM phone_phones WHERE owner_id = ?",{ OtherPassport })
+			if Phone and #Phone > 0 then
+				exports["oxmysql"]:query_async("UPDATE phone_phones SET owner_id = ?, id = ? WHERE owner_id = ?",{ NewPassport,NewPassport,OtherPassport })
+			end
+
+			local Permissions = vRP.UserGroups(OtherPassport)
+			for Permission,Level in pairs(Permissions) do
+				vRP.RemovePermission(OtherPassport,Permission)
+				vRP.SetPermission(NewPassport,Permission,Level)
+			end
+
+			TriggerClientEvent("Notify",source,"Sucesso","Atualização de passaporte concluída.","verde",5000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("players",function(source,Message)
@@ -144,6 +372,26 @@ RegisterCommand("id",function(source,Message)
 		end
 
 		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport).."<br><b>Banco:</b> "..Currency..Dotted(vRP.GetBank(OtherPassport)).."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport).."<br><b>Grupos Participantes:</b> "..CountGroups..(CountGroups >= 1 and Message or ""),(vRP.Source(OtherPassport) and "verde" or "vermelho"),10000)
+	end
+end)
+------------------------------------------------------------------------------------------------------------------------------------------
+-- WIPEPERMISSIONS
+------------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("wipepermissions",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasPermission(Passport,"Admin") then
+		local Permissions = {}
+		local Groups = vRP.Groups()
+		for Permission in pairs(Groups) do
+			Permissions[#Permissions + 1] = Permission
+		end
+
+		table.sort(Permissions,function(a,b) return a < b end)
+
+		local Keyboard = vKEYBOARD.Instagram(source,Permissions)
+		if Keyboard then
+			vRP.RemSrvData("Permissions:"..Keyboard[1])
+		end
 	end
 end)
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -413,6 +661,48 @@ RegisterCommand("unban",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- INSERTCRON
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("insertcron",function(source)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Permissão",{ "Horas","Dias" },"Quantidade")
+		if Keyboard then
+			local Timer = 0
+			local Mode = Keyboard[3]
+			local Permission = Keyboard[2]
+			local OtherPassport = Keyboard[1]
+			local Amount = parseInt(Keyboard[4])
+
+			if not vRP.HasPermission(OtherPassport,Permission) then
+				vRP.SetPermission(OtherPassport,Permission)
+
+				if Mode == "Horas" then
+					Timer = Amount * 60
+				elseif Mode == "Dias" then
+					Timer = Amount * 1440
+				end
+
+				exports["crons"]:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission })
+				TriggerClientEvent("Notify",source,"Sucesso","Adição efetuada.","verde",5000)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REMOVECRON
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("removecron",function(source)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Permissão")
+		if Keyboard then
+			exports["crons"]:Remove(Keyboard[1],"RemovePermission",Keyboard[2])
+			TriggerClientEvent("Notify",source,"Sucesso","Remoção efetuada.","verde",5000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- TPCDS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("tpcds",function(source)
@@ -556,7 +846,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("admin:Doords")
 AddEventHandler("admin:Doords",function(Coords,Model,Heading)
-	vRP.Archive("coordenadas.txt","Coords = "..Coords..", Hash = "..Model..", Heading = "..Heading)
+	vRP.Archive("coordenadas.txt","Coords = "..Coords..", Hash = "..Model..", Disabled = false, Lock = true, Distance = 1.75")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CDS
@@ -749,10 +1039,10 @@ end)
 RegisterCommand("video",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Keyboard = vKEYBOARD.Instagram(source,{ "Passporte","Permissão","Area","Fechar" })
+		local Keyboard = vKEYBOARD.Instagram(source,{ "Passporte","Permissão","Area","Global","Fechar" })
 		if Keyboard then
 			if Keyboard[1] == "Passporte" then
-				local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Código Youtube")
+				local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Código Vimeo")
 				if Keyboard then
 					local OtherPassport = parseInt(Keyboard[1])
 					local OtherSource = vRP.Source(OtherPassport)
@@ -761,9 +1051,14 @@ RegisterCommand("video",function(source,Message)
 						TriggerClientEvent("Notify",source,"Sucesso","Vídeo executado com sucesso.","verde",5000)
 					end
 				end
+			elseif Keyboard[1] == "Global" then
+				local Keyboard = vKEYBOARD.Primary(source,"Código Vimeo")
+				if Keyboard then
+					TriggerClientEvent("hud:Video",-1,Keyboard[1])
+				end
 			elseif Keyboard[1] == "Permissão" then
 				local Groups = vRP.Groups()
-				local Keyboard = vKEYBOARD.Options(source,"Código Youtube",Groups)
+				local Keyboard = vKEYBOARD.Options(source,"Código Vimeo",Groups)
 				if Keyboard then
 					local Service = vRP.NumPermission(Keyboard[1])
 					for Passports,Sources in pairs(Service) do
@@ -775,7 +1070,7 @@ RegisterCommand("video",function(source,Message)
 					TriggerClientEvent("Notify",source,"Sucesso","Vídeo executado com sucesso.","verde",5000)
 				end
 			elseif Keyboard[1] == "Area" then
-				local Keyboard = vKEYBOARD.Secondary(source,"Distância","Código Youtube")
+				local Keyboard = vKEYBOARD.Secondary(source,"Distância","Código Vimeo")
 				if Keyboard then
 					local PlayerList = GetPlayers()
 					local Coords = vRP.GetEntityCoords(source)
@@ -809,11 +1104,14 @@ RegisterCommand("rename",function(source)
 		if Keyboard then
 			local OtherPassport = parseInt(Keyboard[1])
 			local Identity = vRP.Identity(OtherPassport)
-			local Account = vRP.Account(Identity["License"])
-			if Identity and Account then
+			if Identity then
 				vRP.UpgradeNames(OtherPassport,Keyboard[2],Keyboard[3])
 				TriggerClientEvent("Notify",source,"Sucesso","Nome atualizado.","verde",5000)
-				exports["discord"]:Content("Rename",Account["Discord"].." #"..OtherPassport.." "..Keyboard[2].." "..Keyboard[3])
+
+				local Account = vRP.Account(Identity.License)
+				if Account then
+					exports["discord"]:Content("Rename",Account.Discord.." #"..OtherPassport.." "..Keyboard[2].." "..Keyboard[3])
+				end
 			end
 		end
 	end

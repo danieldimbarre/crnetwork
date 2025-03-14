@@ -145,12 +145,12 @@ function OpenBarbershop(Mode)
 
 	if LocalPlayer["state"]["Creation"] then
 		SetTimeout(2500,function()
-			SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode } })
+			SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,LocalPlayer["state"]["Creation"] } })
 			SetNuiFocus(true,true)
 			DoScreenFadeIn(2500)
 		end)
 	else
-		SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode } })
+		SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,LocalPlayer["state"]["Creation"] } })
 		SetNuiFocus(true,true)
 	end
 end

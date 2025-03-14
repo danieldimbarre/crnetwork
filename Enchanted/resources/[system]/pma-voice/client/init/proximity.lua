@@ -2,6 +2,7 @@ local disableUpdates = false
 local isListenerEnabled = false
 local plyCoords = GetEntityCoords(PlayerPedId())
 proximity = MumbleGetTalkerProximity()
+local listeners = {}
 currentTargets = {}
 
 function orig_addProximityCheck(ply)
@@ -36,7 +37,10 @@ function addNearbyPlayers()
 
 	for source, _ in pairs(callData) do
 		if source ~= playerServerId then
-			MumbleAddVoiceTargetChannel(voiceTarget,MumbleGetVoiceChannelFromServerId(source))
+			local channel = MumbleGetVoiceChannelFromServerId(source)
+			if channel ~= -1 then
+				MumbleAddVoiceTargetChannel(voiceTarget, channel)
+			end
 		end
 	end
 
@@ -46,9 +50,32 @@ function addNearbyPlayers()
 		local serverId = GetPlayerServerId(ply)
 		local shouldAdd, distance = addProximityCheck(ply)
 		if shouldAdd then
-			MumbleAddVoiceTargetChannel(voiceTarget,MumbleGetVoiceChannelFromServerId(serverId))
+			local channel = MumbleGetVoiceChannelFromServerId(serverId)
+			if channel ~= -1 then
+				MumbleAddVoiceTargetChannel(voiceTarget, channel)
+			end
 		end
 	end
+end
+
+function addChannelListener(serverId)
+	local channel = MumbleGetVoiceChannelFromServerId(serverId)
+	if channel ~= -1 then
+		MumbleAddVoiceChannelListen(channel)
+	end
+
+	listeners[serverId] = channel ~= -1
+end
+
+function removeChannelListener(serverId)
+	if listeners[serverId] then
+		local channel = MumbleGetVoiceChannelFromServerId(serverId)
+		if channel ~= -1 then
+			MumbleRemoveVoiceChannelListen(channel)
+		end
+	end
+
+	listeners[serverId] = nil
 end
 
 function setSpectatorMode(enabled)
@@ -59,8 +86,7 @@ function setSpectatorMode(enabled)
 			local ply = players[i]
 			local serverId = GetPlayerServerId(ply)
 			if serverId == playerServerId then goto skip_loop end
-			MumbleAddVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
-
+			addChannelListener(serverId)
 			::skip_loop::
 		end
 	else
@@ -68,22 +94,32 @@ function setSpectatorMode(enabled)
 			local ply = players[i]
 			local serverId = GetPlayerServerId(ply)
 			if serverId == playerServerId then goto skip_loop end
-			MumbleRemoveVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
+			removeChannelListener(serverId)
 
 			::skip_loop::
+		end
+
+		listeners = {}
+	end
+end
+
+function tryListeningToFailedListeners()
+	for src, isListening in pairs(listeners) do
+		if not isListening then
+			addChannelListener(src)
 		end
 	end
 end
 
 RegisterNetEvent("onPlayerJoining",function(serverId)
 	if isListenerEnabled then
-		MumbleAddVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
+		addChannelListener(serverId)
 	end
 end)
 
 RegisterNetEvent("onPlayerDropped",function(serverId)
 	if isListenerEnabled then
-		MumbleRemoveVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
+		removeChannelListener(serverId)
 	end
 end)
 
@@ -99,12 +135,11 @@ local voiceState = "proximity"
 
 CreateThread(function()
 	while true do
-		while not MumbleIsConnected() do
+		while not MumbleIsConnected() or not isInitialized do
 			Wait(100)
 		end
 
 		local curTalkingStatus = MumbleIsPlayerTalking(PlayerId()) == 1
-
 		if lastRadioStatus ~= radioPressed or lastTalkingStatus ~= curTalkingStatus then
 			lastRadioStatus = radioPressed
 			lastTalkingStatus = curTalkingStatus
@@ -120,6 +155,8 @@ CreateThread(function()
 			elseif isListenerEnabled and not isSpectating and not listenerOverride then
 				setSpectatorMode(false)
 			end
+
+			tryListeningToFailedListeners()
 		end
 
 		Wait(200)

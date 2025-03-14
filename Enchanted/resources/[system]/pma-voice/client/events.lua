@@ -1,3 +1,5 @@
+isInitialized = false
+
 function handleInitialState()
 	local voiceModeData = Cfg.voiceModes[mode]
 	MumbleSetTalkerProximity(voiceModeData[1] + 0.0)
@@ -6,9 +8,11 @@ function handleInitialState()
 	MumbleSetVoiceChannel(LocalPlayer.state.assignedChannel)
 
 	while MumbleGetVoiceChannelFromServerId(playerServerId) ~= LocalPlayer.state.assignedChannel do
-		Wait(250)
+		Wait(100)
 		MumbleSetVoiceChannel(LocalPlayer.state.assignedChannel)
 	end
+
+	isInitialized = true
 
 	MumbleAddVoiceTargetChannel(voiceTarget,LocalPlayer.state.assignedChannel)
 
@@ -16,6 +20,8 @@ function handleInitialState()
 end
 
 AddEventHandler("mumbleConnected",function()
+	isInitialized = false
+
 	local voiceModeData = Cfg.voiceModes[mode]
 	LocalPlayer.state:set("proximity",{
 		index = mode,

@@ -12,3 +12,9 @@ AddStateBagChangeHandler("submix","",function(bagName,_,value)
 
 	MumbleSetSubmixForServerId(tgtId,submixIndicies[value])
 end)
+
+RegisterNetEvent("onPlayerDropped", function(tgtId)
+	if not radioData[tgtId] and not callData[tgtId] then
+		MumbleSetSubmixForServerId(tgtId, -1)
+	end
+end)

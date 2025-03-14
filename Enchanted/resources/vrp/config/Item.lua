@@ -1082,36 +1082,6 @@ local List = {
 		["Economy"] = 50000,
 		["Rarity"] = "legendary"
 	},
-	["premium"] = {
-		["Index"] = "premium",
-		["Name"] = "Premium Ouro",
-		["Description"] = "Uma escolha para quem busca qualidade superioridade, com materiais de primeira linha e design meticuloso, eleva a experiência do usuário a um novo patamar de excelência, uma verdadeira indulgência para os exigentes que valorizam o melhor.",
-		["Type"] = "Consumível",
-		["Weight"] = 0.0,
-		["Delete"] = true,
-		["Economy"] = 400000,
-		["Rarity"] = "legendary"
-	},
-	["premium2"] = {
-		["Index"] = "premium2",
-		["Name"] = "Premium Prata",
-		["Description"] = "Uma escolha para quem busca qualidade superioridade, com materiais de primeira linha e design meticuloso, eleva a experiência do usuário a um novo patamar de excelência, uma verdadeira indulgência para os exigentes que valorizam o melhor.",
-		["Type"] = "Consumível",
-		["Weight"] = 0.0,
-		["Delete"] = true,
-		["Economy"] = 240000,
-		["Rarity"] = "legendary"
-	},
-	["premium3"] = {
-		["Index"] = "premium3",
-		["Name"] = "Premium Bronze",
-		["Description"] = "Uma escolha para quem busca qualidade superioridade, com materiais de primeira linha e design meticuloso, eleva a experiência do usuário a um novo patamar de excelência, uma verdadeira indulgência para os exigentes que valorizam o melhor.",
-		["Type"] = "Consumível",
-		["Weight"] = 0.0,
-		["Delete"] = true,
-		["Economy"] = 120000,
-		["Rarity"] = "legendary"
-	},
 	["premiumplate"] = {
 		["Index"] = "platepremium",
 		["Name"] = "Placa Customizada",

@@ -111,10 +111,8 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 		SetEntityVisible(Ped,false)
 	end
 
-	TriggerEvent("EntityInvincible",true)
-	SetEntityInvincible(Ped,true)
-
 	SetLocalPlayerAsGhost(true)
+	SetEntityInvincible(Ped,true)
 	FreezeEntityPosition(Ped,true)
 	NetworkSetFriendlyFireOption(false)
 
@@ -123,10 +121,8 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 			SetEntityVisible(Ped,true)
 		end
 
-		SetEntityInvincible(Ped,false)
-		TriggerEvent("EntityInvincible",false)
-
 		SetLocalPlayerAsGhost(false)
+		SetEntityInvincible(Ped,false)
 		FreezeEntityPosition(Ped,false)
 		exports["vrp"]:ReloadCharacter()
 		NetworkSetFriendlyFireOption(true)
@@ -173,6 +169,14 @@ CreateThread(function()
 			SetPlayerMaxStamina(Pid,100.0)
 		end
 
+		if GetEntityMaxHealth(Ped) ~= 200 then
+			SetEntityMaxHealth(Ped,200)
+		end
+
+		if GetPedMaxHealth(Ped) ~= 200 then
+			SetPedMaxHealth(Ped,200)
+		end
+
 		Wait(100)
 	end
 end)
@@ -187,8 +191,6 @@ exports("ReloadCharacter",function()
 	RemovePickups(Pid)
 	SetMaxWantedLevel(0)
 	SetPedHelmet(Ped,false)
-	SetPedMaxHealth(Ped,200)
-	SetEntityMaxHealth(Ped,200)
 	ClearPedTasksImmediately(Ped)
 	SetAiWeaponDamageModifier(0.5)
 	SetPoliceIgnorePlayer(Ped,true)

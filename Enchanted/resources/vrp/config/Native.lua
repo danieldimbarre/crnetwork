@@ -146,5 +146,5 @@ end
 -- CHECKPOLICE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CheckPolice()
-	return LocalPlayer["state"]["LSPD"] or LocalPlayer["state"]["BCSO"] or LocalPlayer["state"]["BCPR"]
+	return LocalPlayer["state"]["LSPD"] or LocalPlayer["state"]["BCSO"] or LocalPlayer["state"]["SAPR"]
 end

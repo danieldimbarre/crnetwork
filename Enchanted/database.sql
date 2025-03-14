@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `Prison` int(10) NOT NULL DEFAULT 0,
   `Killed` int(10) NOT NULL DEFAULT 0,
   `Death` int(10) NOT NULL DEFAULT 0,
-  `Daily` varchar(20) NOT NULL DEFAULT '00-00-00-1',
+  `Daily` varchar(20) NOT NULL DEFAULT '09-01-1990-0',
   `Medic` bigint(19) NOT NULL DEFAULT 0,
   `Groups` bigint(19) NOT NULL DEFAULT 0,
   `Created` bigint(19) NOT NULL DEFAULT 0,

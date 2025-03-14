@@ -28,21 +28,51 @@ CreateThread(function()
 	SetGameType(ServerName)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CLEARINVENTORY
+-----------------------------------------------------------------------------------------------------------------------------------------
+function vRP.ClearInventory(Passport,Ignore)
+	local Passport = parseInt(Passport)
+	local Inventory = vRP.Inventory(Passport)
+
+	exports["inventory"]:CleanWeapons(Passport)
+	TriggerEvent("DebugWeapons",Passport)
+	TriggerEvent("DebugObjects",Passport)
+
+	for _,v in pairs(Inventory) do
+		if not BlockDelete(v.item) then
+			vRP.RemoveItem(Passport,v.item,v.amount)
+		end
+	end
+
+	if not Ignore then
+		local Weight = 50
+		for Permission,Multiplier in pairs({ Ouro = 25, Prata = 15, Bronze = 5 }) do
+			if vRP.HasService(Passport,Permission) then
+				Weight = Weight - Multiplier
+			end
+		end
+
+		if Weight > 0 then
+			vRP.UpgradeWeight(Passport,Weight,"-")
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.Phone(Passport)
 	local PhoneNumber = "Inativo"
 	local source = vRP.Source(Passport)
 
-	if Characters[source] and Characters[source]["Phone"] then
-		PhoneNumber = exports["lb-phone"]:FormatNumber(Characters[source]["Phone"])
+	if Characters[source] and Characters[source].Phone then
+		PhoneNumber = exports["lb-phone"]:FormatNumber(Characters[source].Phone)
 	else
-		local Consult = vRP.Query("smartphone/Phone",{ Passport = Passport })
-		if Consult[1] and Consult[1]["phone_number"] then
-			PhoneNumber = exports["lb-phone"]:FormatNumber(Consult[1]["phone_number"])
+		local Consult = vRP.SingleQuery("smartphone/Phone",{ Passport = Passport })
+		if Consult and Consult.phone_number then
+			PhoneNumber = exports["lb-phone"]:FormatNumber(Consult.phone_number)
 
 			if Characters[source] then
-				Characters[source]["Phone"] = PhoneNumber
+				Characters[source].Phone = PhoneNumber
 			end
 		end
 	end
@@ -53,13 +83,9 @@ end
 -- CLEANPHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.CleanPhone(Passport)
-	local PhoneNumber = false
-	local Consult = vRP.Query("smartphone/Phone",{ Passport = Passport })
-	if Consult[1] and Consult[1]["phone_number"] then
-		PhoneNumber = Consult[1]["phone_number"]
-	end
+	local Consult = vRP.SingleQuery("smartphone/Phone",{ Passport = Passport })
 
-	return PhoneNumber
+	return Consult and Consult.phone_number or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP.REQUEST

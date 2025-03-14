@@ -1,11 +1,10 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("characters/Phone","SELECT * FROM characters WHERE Phone = @Phone")
 vRP.Prepare("characters/Person","SELECT * FROM characters WHERE id = @Passport")
 vRP.Prepare("characters/Delete","UPDATE characters SET Deleted = 1 WHERE id = @Passport")
 vRP.Prepare("characters/SetSkin","UPDATE characters SET Skin = @Skin WHERE id = @Passport")
-vRP.Prepare("characters/UpdatePhone","UPDATE characters SET Phone = @Phone WHERE id = @Passport")
+vRP.Prepare("characters/UpdateDaily","UPDATE characters SET Daily = @Daily WHERE id = @Passport")
 vRP.Prepare("characters/SetMedicplan","UPDATE characters SET Medic = @Medic WHERE id = @Passport")
 vRP.Prepare("characters/AddBank","UPDATE characters SET Bank = Bank + @Bank WHERE id = @Passport")
 vRP.Prepare("characters/RemBank","UPDATE characters SET Bank = Bank - @Bank WHERE id = @Passport")
@@ -15,12 +14,8 @@ vRP.Prepare("characters/LastLogin","UPDATE characters SET Login = UNIX_TIMESTAMP
 vRP.Prepare("characters/UserLicense","SELECT * FROM characters WHERE id = @Passport and License = @License")
 vRP.Prepare("characters/InsertPrison","UPDATE characters SET Prison = Prison + @Prison WHERE id = @Passport")
 vRP.Prepare("characters/ReducePrison","UPDATE characters SET Prison = Prison - @Prison WHERE id = @Passport")
-vRP.Prepare("characters/TimePlaying","UPDATE characters SET Playing = Playing +  @Timer WHERE id = @Passport")
 vRP.Prepare("characters/Count","SELECT COUNT(License) FROM characters WHERE License = @License and Deleted = 0")
 vRP.Prepare("characters/UpdateName","UPDATE characters SET Name = @Name, Lastname = @Lastname WHERE id = @Passport")
-vRP.Prepare("characters/LastCharacter","SELECT id FROM characters WHERE License = @License ORDER BY id DESC LIMIT 1")
-vRP.Prepare("characters/UpdateDaily","UPDATE characters SET Daily = @Daily, DailyReward = DailyReward + 1 WHERE id = @Passport")
-vRP.Prepare("characters/NewCharacter","INSERT INTO characters (License,Name,Lastname,Sex,Skin,Blood,Created) VALUES (@License,@Name,@Lastname,@Sex,@Skin,@Blood,UNIX_TIMESTAMP() + (86400 * 3))")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -42,9 +37,7 @@ vRP.Prepare("accounts/AddGemstone","UPDATE accounts SET Gemstone = Gemstone + @G
 vRP.Prepare("accounts/UpdateCharacters","UPDATE accounts SET Characters = Characters + 1 WHERE License = @License")
 vRP.Prepare("accounts/RemoveGemstone","UPDATE accounts SET Gemstone = Gemstone - @Gemstone WHERE License = @License")
 vRP.Prepare("accounts/InsertBanned","UPDATE accounts SET Banned = @Timer, Reason = @Reason WHERE License = @License")
-vRP.Prepare("accounts/UpgradePremium","UPDATE accounts SET Premium = Premium + (86400 * @Days), Level = @Level WHERE License = @License")
 vRP.Prepare("accounts/Minimals","SELECT * FROM accounts WHERE Login <= UNIX_TIMESTAMP() - (86400 * 15) AND License <> 0 AND Whitelist = 1")
-vRP.Prepare("accounts/SetPremium","UPDATE accounts SET Premium = UNIX_TIMESTAMP() + (86400 * @Days), Level = @Level WHERE License = @License")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -110,13 +103,6 @@ vRP.Prepare("propertys/Minimals","SELECT * FROM propertys WHERE Tax + (86400 * 1
 vRP.Prepare("propertys/Tax","UPDATE propertys SET Tax = UNIX_TIMESTAMP() + (86400 * 30) WHERE Name = @Name")
 vRP.Prepare("propertys/Buy","INSERT INTO propertys (Name,Interior,Passport,Serial,Vault,Fridge,Tax) VALUES (@Name,@Interior,@Passport,@Serial,@Vault,@Fridge,UNIX_TIMESTAMP() + (86400 * 30))")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- FINES
------------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("fines/List","SELECT * FROM fines WHERE Passport = @Passport")
-vRP.Prepare("fines/Remove","DELETE FROM fines WHERE Passport = @Passport AND id = @id")
-vRP.Prepare("fines/Check","SELECT * FROM fines WHERE Passport = @Passport AND id = @id")
-vRP.Prepare("fines/Add","INSERT INTO fines (Passport,Name,Date,Hour,Price,Message) VALUES (@Passport,@Name,@Date,@Hour,@Price,@Message)")
------------------------------------------------------------------------------------------------------------------------------------------
 -- TAXS
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("taxs/Remove","DELETE FROM taxs WHERE Passport = @Passport AND id = @id")
@@ -162,7 +148,6 @@ vRP.Prepare("hwid/Insert","INSERT INTO hwid (Token,Account) VALUES (@Token,@Acco
 vRP.Prepare("summerz/Transactions","DELETE FROM transactions WHERE Timeset <= UNIX_TIMESTAMP()")
 vRP.Prepare("summerz/Playerdata","DELETE FROM playerdata WHERE Information IN ('[]','{}','null')")
 vRP.Prepare("summerz/Entitydata","DELETE FROM entitydata WHERE Information IN ('[]','{}','null')")
-vRP.Prepare("summerz/Premium","UPDATE accounts SET Premium = '0', Level = '0' WHERE UNIX_TIMESTAMP() >= Premium")
 vRP.Prepare("summerz/Phone","DELETE FROM phone_message_messages WHERE timestamp < UNIX_TIMESTAMP() - (86400 * 7)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RACES
@@ -181,7 +166,6 @@ vRP.Prepare("arena/Death","UPDATE characters SET Death = Death + 1 WHERE id = @P
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	vRP.Query("summerz/Phone")
-	vRP.Query("summerz/Premium")
 	vRP.Query("summerz/Playerdata")
 	vRP.Query("summerz/Entitydata")
 	vRP.Query("summerz/Transactions")

@@ -2982,51 +2982,6 @@ Use = {
 		end
 	end,
 
-	["premium"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		local Hierarchy = 1
-		if not vRP.UserPremium(Passport) then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.SetPremium(source,Passport,Hierarchy,30)
-				TriggerClientEvent("inventory:Update",source)
-			end
-		else
-			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.UpgradePremium(source,Passport,Hierarchy,30)
-				TriggerClientEvent("inventory:Update",source)
-			end
-		end
-	end,
-
-	["premium2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		local Hierarchy = 2
-		if not vRP.UserPremium(Passport) then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.SetPremium(source,Passport,Hierarchy,30)
-				TriggerClientEvent("inventory:Update",source)
-			end
-		else
-			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.UpgradePremium(source,Passport,Hierarchy,30)
-				TriggerClientEvent("inventory:Update",source)
-			end
-		end
-	end,
-
-	["premium3"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		local Hierarchy = 3
-		if not vRP.UserPremium(Passport) then
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.SetPremium(source,Passport,Hierarchy,30)
-				TriggerClientEvent("inventory:Update",source)
-			end
-		else
-			if vRP.LevelPremium(source) == Hierarchy and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.UpgradePremium(source,Passport,Hierarchy,30)
-				TriggerClientEvent("inventory:Update",source)
-			end
-		end
-	end,
-
 	["pager"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local ClosestPed = vRPC.ClosestPed(source)
 		if ClosestPed and Player(ClosestPed)["state"]["Handcuff"] then

@@ -76,78 +76,91 @@ end)
 -- TARGET:PUTBED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("target:PutBed",function(Number)
-	if not Previous then
-		local Ped = PlayerPedId()
-		Previous = GetEntityCoords(Ped)
-		SetEntityCoords(Ped,Beds[Number]["Coords"]["x"],Beds[Number]["Coords"]["y"],Beds[Number]["Coords"]["z"] - 0.5)
-		vRP.playAnim(false,{"amb@world_human_sunbathe@female@back@idle_a","idle_a"},true)
-		SetEntityHeading(Ped,Beds[Number]["Coords"]["w"] - Beds[Number]["Invert"])
+	if Previous then
+		return false
 	end
+
+	local Ped = PlayerPedId()
+	Previous = GetEntityCoords(Ped)
+	local Config = Beds[Number].Coords
+
+	SetEntityHeading(Ped,Config.w - Beds[Number].Invert)
+	SetEntityCoords(Ped,Config.x,Config.y,Config.z - 0.5)
+	vRP.playAnim(false,{"amb@world_human_sunbathe@female@back@idle_a","idle_a"},true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TARGET:UPBED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("target:UpBed",function()
-	if Previous then
-		local Ped = PlayerPedId()
-		SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 0.5)
-		Previous = nil
+	if not Previous then
+		return false
 	end
+
+	SetEntityCoords(PlayerPedId(),Previous.x,Previous.y,Previous.z - 0.5)
+	Previous = nil
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TARGET:TREATMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("target:Treatment",function(Number,Ignore)
-	if not Previous and Beds[Number] and (Ignore or vSERVER.CheckIn()) then
-		local Ped = PlayerPedId()
-		Previous = GetEntityCoords(Ped)
-		SetEntityCoords(Ped,Beds[Number]["Coords"]["x"],Beds[Number]["Coords"]["y"],Beds[Number]["Coords"]["z"] - 0.5)
-		vRP.playAnim(false,{"amb@world_human_sunbathe@female@back@idle_a","idle_a"},true)
-		SetEntityHeading(Ped,Beds[Number]["Coords"]["w"] - Beds[Number]["Invert"])
-
-		LocalPlayer["state"]:set("Commands",true,true)
-		LocalPlayer["state"]:set("Buttons",true,true)
-		LocalPlayer["state"]:set("Cancel",true,true)
-		NetworkSetFriendlyFireOption(false)
-		TriggerEvent("paramedic:Reset")
-		SetEntityInvincible(Ped,true)
-
-		if GetEntityHealth(Ped) <= 100 then
-			exports["survival"]:Revive(101)
-		end
-
-		Treatment = GetGameTimer() + 1000
+	if Previous or not Beds[Number] or (not Ignore and not vSERVER.CheckIn()) then
+		return false
 	end
+
+	local Ped = PlayerPedId()
+	if GetEntityHealth(Ped) <= 100 then
+		exports["survival"]:Revive(101)
+	end
+
+	Previous = GetEntityCoords(Ped)
+	local Config = Beds[Number].Coords
+
+	SetEntityHeading(Ped,Config.w - Beds[Number].Invert)
+	SetEntityCoords(Ped,Config.x,Config.y,Config.z - 0.5)
+	vRP.playAnim(false,{"amb@world_human_sunbathe@female@back@idle_a","idle_a"},true)
+
+	LocalPlayer["state"]:set("Commands",true,true)
+	LocalPlayer["state"]:set("Buttons",true,true)
+	LocalPlayer["state"]:set("Cancel",true,true)
+	NetworkSetFriendlyFireOption(false)
+	Treatment = GetGameTimer() + 1000
+	TriggerEvent("paramedic:Reset")
+	SetEntityInvincible(Ped,true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STARTTREATMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:StartTreatment")
 AddEventHandler("target:StartTreatment",function()
-	if not Treatment then
-		LocalPlayer["state"]:set("Commands",true,true)
-		LocalPlayer["state"]:set("Buttons",true,true)
-		LocalPlayer["state"]:set("Cancel",true,true)
-		SetEntityInvincible(PlayerPedId(),true)
-		NetworkSetFriendlyFireOption(false)
-		Treatment = GetGameTimer() + 1000
-		TriggerEvent("paramedic:Reset")
+	if Treatment then
+		return false
 	end
+
+	LocalPlayer["state"]:set("Commands",true,true)
+	LocalPlayer["state"]:set("Buttons",true,true)
+	LocalPlayer["state"]:set("Cancel",true,true)
+	SetEntityInvincible(PlayerPedId(),true)
+	NetworkSetFriendlyFireOption(false)
+	Treatment = GetGameTimer() + 1000
+	TriggerEvent("paramedic:Reset")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADTREATMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		local TimeDistance = 999
-		local Ped = PlayerPedId()
 		if Treatment and GetGameTimer() >= Treatment then
-			TimeDistance = 100
+			local Ped = PlayerPedId()
 			Treatment = GetGameTimer() + 1000
 			local Health = GetEntityHealth(Ped)
 
 			if Health < 200 then
 				SetEntityHealth(Ped,Health + 1)
+
+				if Previous and not IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@female@back@idle_a","idle_a",3) then
+					vRP.playAnim(false,{"amb@world_human_sunbathe@female@back@idle_a","idle_a"},true)
+					SetEntityCoords(Ped,Previous.x,Previous.y,Previous.z - 0.5)
+				end
 			else
 				Treatment = false
 				SetEntityInvincible(Ped,false)
@@ -159,12 +172,6 @@ CreateThread(function()
 			end
 		end
 
-		if Previous and not IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@female@back@idle_a","idle_a",3) then
-			SetEntityCoords(Ped,Previous["x"],Previous["y"],Previous["z"] - 0.5)
-			TimeDistance = 100
-			Previous = nil
-		end
-
-		Wait(TimeDistance)
+		Wait(1000)
 	end
 end)

@@ -532,7 +532,8 @@ function TargetEnable()
 						if (TowedSouth:isPointInside(HitCoords) or TowedNorth:isPointInside(HitCoords)) and not Entity(Entitys)["state"]["Tow"] then
 							Menu[#Menu + 1] = { event = "towed:Payment", label = "Entregar", tunnel = "paramedic" }
 						else
-							if Entity(Entitys)["state"]["Lockpick"] then
+							local Lockpick = Entity(Entitys)["state"]["Lockpick"]
+							if Lockpick then
 								if GetVehicleDoorLockStatus(Entitys) <= 1 and GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_WRENCH") then
 									for Index = 1,#Tyres do
 										local BoneIndex = GetEntityBoneIndexByName(Entitys,Tyres[Index]["Bone"])
@@ -550,7 +551,10 @@ function TargetEnable()
 									end
 
 									Menu[#Menu + 1] = { event = "inventory:ChangePlate", label = "Trocar Placa", tunnel = "server" }
-									Menu[#Menu + 1] = { event = "garages:Key", label = "Chave Veícular", tunnel = "server" }
+
+									if Lockpick and Lockpick == LocalPlayer["state"]["Passport"] then
+										Menu[#Menu + 1] = { event = "garages:Key", label = "Chave Veícular", tunnel = "server" }
+									end
 								end
 
 								Menu[#Menu + 1] = { event = "engine:Vehrify", label = "Verificar", tunnel = "client" }

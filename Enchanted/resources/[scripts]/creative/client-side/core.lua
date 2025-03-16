@@ -493,12 +493,16 @@ CreateThread(function()
 				IslandLoaded = true
 				SetIslandHopperEnabled("HeistIsland",true)
 				SetAiGlobalPathNodesType(1)
+				SetDeepOceanScaler(0.0)
+				LoadGlobalWaterType(1)
 			end
 		else
 			if IslandLoaded then
 				IslandLoaded = false
 				SetIslandHopperEnabled("HeistIsland",false)
 				SetAiGlobalPathNodesType(0)
+				SetDeepOceanScaler(1.0)
+				LoadGlobalWaterType(0)
 			end
 		end
 

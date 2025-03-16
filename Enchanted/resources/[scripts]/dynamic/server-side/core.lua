@@ -72,7 +72,7 @@ function Creative.Clothes()
 	if Passport then
 		CountClothes[Passport] = 2
 
-		for Permission,Multiplier in pairs({ Ouro = 8, Prata = 6, Bronze = 4 }) do
+		for Permission,Multiplier in pairs({ Ouro = 6, Prata = 4, Bronze = 2 }) do
 			if vRP.HasService(Passport,Permission) then
 				CountClothes[Passport] = CountClothes[Passport] + Multiplier
 			end

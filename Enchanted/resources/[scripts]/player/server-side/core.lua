@@ -96,7 +96,7 @@ end)
 RegisterCommand("e",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and exports["chat"]:Open(source) and vRP.GetHealth(source) > 100 then
-		if Message[2] == "friend" then
+		if Message[2] and Message[2] == "friend" then
 			local ClosestPed = vRPC.ClosestPed(source)
 			if ClosestPed and vRP.GetHealth(ClosestPed) > 100 and not Player(ClosestPed)["state"]["Handcuff"] then
 				if vRP.Request(ClosestPed,"Animação","Pedido de <b>"..vRP.FullName(Passport).."</b> da animação <b>"..Message[1].."</b>?") then
@@ -114,12 +114,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("e2",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and exports["chat"]:Open(source) and vRP.GetHealth(source) > 100 then
+	if Passport and exports["chat"]:Open(source) and (vRP.HasService(Passport,"Admin") or vRP.HasService(Passport,"Paramedico")) then
 		local ClosestPed = vRPC.ClosestPed(source)
 		if ClosestPed then
-			if vRP.HasService(Passport,"Paramedico") then
-				TriggerClientEvent("emotes",ClosestPed,Message[1])
-			end
+			TriggerClientEvent("emotes",ClosestPed,Message[1])
 		end
 	end
 end)
@@ -128,14 +126,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("e3",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and exports["chat"]:Open(source) and vRP.GetHealth(source) > 100 then
-		if vRP.HasGroup(Passport,"Admin",2) then
-			local Players = vRPC.ClosestPeds(source,50)
-			for _,v in pairs(Players) do
-				async(function()
-					TriggerClientEvent("emotes",v,Message[1])
-				end)
-			end
+	if Passport and exports["chat"]:Open(source) and vRP.HasGroup(Passport,"Admin",2) then
+		local Players = vRPC.ClosestPeds(source,50)
+		for _,v in pairs(Players) do
+			async(function()
+				TriggerClientEvent("emotes",v,Message[1])
+			end)
 		end
 	end
 end)

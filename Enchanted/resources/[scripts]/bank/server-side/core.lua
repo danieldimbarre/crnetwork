@@ -243,7 +243,7 @@ end
 -- CHECKFINES
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("CheckFines",function(Passport)
-	return exports["oxmysql"]:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 1 LIMIT 1",{ Passport = Passport }) and true or false
+	return exports["oxmysql"]:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0 LIMIT 1",{ Passport = Passport })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FINEPAYMENT
@@ -506,10 +506,9 @@ end
 -- ADDTAXS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("AddTaxs",function(Passport,source,Name,Valuation,Message)
-	local Valuation = Valuation * 0.05
-	for Permission,Multiplier in pairs({ Ouro = 0.0125, Prata = 0.0250, Bronze = 0.0375 }) do
+	for Permission,Multiplier in pairs({ Ouro = 0.0375, Prata = 0.0250, Bronze = 0.0125 }) do
 		if vRP.HasService(Passport,Permission) then
-			Valuation = Valuation + (Valuation * Valuation * Multiplier)
+			Valuation = Valuation - (Valuation * Multiplier)
 		end
 	end
 

@@ -143,7 +143,7 @@ end)
 
 RegisterNUICallback("TakeScreenShot",function()
 	local Webhook = ""
-	exports["screenshot-basic"]:requestScreenshotUpload(Webhook,"Screenshot",{ quality = 1.0 },function(Data)
+	exports["screenshot-basic"]:requestScreenshotUpload(Webhook,"files[]",{ quality = 1.0 },function(Data)
 		SendNUIMessage({
 			action = "CopyScreenshotUrl",
 			url = json.decode(Data).attachments[1].url

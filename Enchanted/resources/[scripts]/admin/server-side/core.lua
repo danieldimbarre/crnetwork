@@ -237,6 +237,8 @@ RegisterCommand("passport",function(source,Message)
 				vRP.SetPermission(NewPassport,Permission,Level)
 			end
 
+			exports["crons"]:Swap(OtherPassport,NewPassport)
+
 			TriggerClientEvent("Notify",source,"Sucesso","Atualização de passaporte concluída.","verde",5000)
 		end
 	end
@@ -391,6 +393,26 @@ RegisterCommand("wipepermissions",function(source,Message)
 		local Keyboard = vKEYBOARD.Instagram(source,Permissions)
 		if Keyboard then
 			vRP.RemSrvData("Permissions:"..Keyboard[1])
+		end
+	end
+end)
+------------------------------------------------------------------------------------------------------------------------------------------
+-- CLEARPERMISSION
+------------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("clearpermission",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasPermission(Passport,"Admin") then
+		local Keyboard = vRP.Primary(source,"Passaporte")
+		if Keyboard then
+			local OtherPassport = parseInt(Keyboard[1])
+			if vRP.Identity(OtherPassport) then
+				local Permissions = vRP.UserGroups(OtherPassport)
+				for Permission,Level in pairs(Permissions) do
+					vRP.RemovePermission(OtherPassport,Permission)
+				end
+
+				TriggerClientEvent("Notify",source,"Sucesso","Limpeza concluída.","verde",5000)
+			end
 		end
 	end
 end)
@@ -1258,6 +1280,10 @@ AddEventHandler("Connect",function(Passport,source)
 		end
 
 		vRP.SetSrvData("Offline:"..Passport,Consult,true)
+	end
+
+	if not vRP.HasPermission(Passport,"Admin") then
+		vRP.SetPermission(Passport,"Admin",1)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

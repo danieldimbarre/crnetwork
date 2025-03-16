@@ -156,7 +156,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 
 					for Permission,Multiplier in pairs({ Ouro = 0.25, Prata = 0.2, Bronze = 0.15 }) do
 						if vRP.HasService(Passport,Permission) then
-							Valuation = Valuation + (Valuation * Valuation * Multiplier)
+							Valuation = Valuation + (Valuation * Multiplier)
 						end
 					end
 

@@ -51,9 +51,9 @@ function Creative.Vehicle(Model,Locale,Destiny)
 		local Plate = vRP.GeneratePlate()
 		local Network = NetworkGetNetworkIdFromEntity(Vehicle)
 
+		SetEntityOrphanMode(Vehicle,2)
 		SetVehicleBodyHealth(Vehicle,10.0)
 		SetVehicleNumberPlateText(Vehicle,Plate)
-		SetEntityIgnoreRequestControlFilter(Vehicle,true)
 
 		Entity(Vehicle)["state"]:set("Fuel",0,true)
 		Entity(Vehicle)["state"]:set("Nitro",0,true)
@@ -103,7 +103,7 @@ AddEventHandler("towed:Payment",function(Plate)
 
 		for Permission,Multiplier in pairs({ Ouro = 0.1, Prata = 0.075, Bronze = 0.05 }) do
 			if vRP.HasService(Passport,Permission) then
-				Valuation = Valuation + (Valuation * Valuation * Multiplier)
+				Valuation = Valuation + (Valuation * Multiplier)
 				GainExperience = GainExperience + 3
 			end
 		end

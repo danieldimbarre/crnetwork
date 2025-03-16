@@ -511,10 +511,12 @@ Premium = {
 				Options = {
 					{
 						Name = "Panto",
-						Index = "panto"
+						Index = "panto",
+						Duration = 43200
 					},{
 						Name = "Brioso",
-						Index = "brioso"
+						Index = "brioso",
+						Duration = 43200
 					}
 				}
 			},{
@@ -522,10 +524,12 @@ Premium = {
 				Options = {
 					{
 						Name = "Sultan",
-						Index = "sultan"
+						Index = "sultan",
+						Duration = 43200
 					},{
 						Name = "Sultan RS",
-						Index = "sultanrs"
+						Index = "sultanrs",
+						Duration = 43200
 					}
 				}
 			}

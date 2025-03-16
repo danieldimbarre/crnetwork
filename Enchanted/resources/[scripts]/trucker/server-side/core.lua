@@ -53,9 +53,9 @@ function Creative.Payment()
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 
-		for Permission,Multiplier in pairs({ Ouro = 0.1, Prata = 0.075, Bronze = 0.05}) do
+		for Permission,Multiplier in pairs({ Ouro = 0.1, Prata = 0.075, Bronze = 0.05 }) do
 			if vRP.HasService(Passport,Permission) then
-				Valuation = Valuation + (Valuation * Valuation * Multiplier)
+				Valuation = Valuation + (Valuation * Multiplier)
 				GainExperience = GainExperience + 5
 			end
 		end

@@ -402,3 +402,5 @@ INSERT INTO `mdt_creative_units` (`id`, `Image`, `Name`, `Permission`, `Officers
 (10, 'nui://mdt/web-side/images/Units.png', 'GAR', 'BCSO', '[]'),
 (11, 'nui://mdt/web-side/images/Units.png', 'GTM', 'BCSO', '[]'),
 (12, 'nui://mdt/web-side/images/Units.png', 'GRI', 'BCSO', '[]');
+
+ALTER TABLE `permissions` ADD `Premium` BIGINT(19) NOT NULL DEFAULT '0' AFTER `Bank`;

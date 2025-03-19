@@ -1281,10 +1281,6 @@ AddEventHandler("Connect",function(Passport,source)
 
 		vRP.SetSrvData("Offline:"..Passport,Consult,true)
 	end
-
-	if not vRP.HasPermission(Passport,"Admin") then
-		vRP.SetPermission(Passport,"Admin",1)
-	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

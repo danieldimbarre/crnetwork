@@ -92,7 +92,7 @@ function Creative.Invite(OtherPassport)
 	local Identity = vRP.Identity(OtherPassport)
 	local OtherSource = vRP.Source(OtherPassport)
 	if Passport and Identity and OtherSource and Information[Passport] and Passport ~= OtherPassport and vRP.HasGroup(Passport,Information[Passport],HierarchyButtons) then
-		if vRP.AmountGroups(Information[Passport]) >= vRP.GroupLimit(Information[Passport]) then
+		if Groups[Information[Passport]].Max and vRP.AmountGroups(Information[Passport]) >= Groups[Information[Passport]].Max then
 			TriggerClientEvent("Notify",source,"Atenção","Limite de membros atingido.","amarelo",5000)
 
 			return false

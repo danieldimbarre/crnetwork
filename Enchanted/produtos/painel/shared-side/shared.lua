@@ -33,7 +33,8 @@ Config = {
 			Deposit = 0,
 			Withdraw = 2,
 			Transfer = 2
-		}
+		},
+		Perks = 1
 	},
 
 	OtherPermissions = {
@@ -63,6 +64,28 @@ Config = {
 				Withdraw = 2,
 				Transfer = 2
 			}
+		}
+	},
+
+	Perks = {
+		{
+			Increase = 1,
+			Price = 150000,
+			Active = false,
+
+			Type = "Members",
+			Title = "Aumento de Limite",
+			Description = "Adicionar um novo slot no limite máximo de membros do grupos.",
+			Image = "nui://painel/web-side/images/user.svg"
+		},{
+			Increase = 2592000,
+			Price = 30000000,
+			Active = false,
+
+			Type = "Premium",
+			Title = "Benefícios de Grupo",
+			Description = "Adquirir por <b>30 dias</b> as bonificações abaixo.<br>• Dobro de peso no compartimento dos membros",
+			Image = "nui://painel/web-side/images/user.svg"
 		}
 	}
 }

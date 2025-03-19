@@ -19,9 +19,9 @@ local Animation = false
 -- CHESTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Chests = {
-	{ ["Name"] = "Policia", ["Coords"] = vec3(460.75,-996.82,30.16), ["Mode"] = "1" },
-	{ ["Name"] = "Paramedico", ["Coords"] = vec3(353.0,-1427.67,32.67), ["Mode"] = "2" },
-	{ ["Name"] = "Restaurante", ["Coords"] = vec3(-631.68,228.32,82.17), ["Mode"] = "2" }
+	{ Name = "Policia", Coords = vec3(460.75,-996.82,30.16), Mode = "1" },
+	{ Name = "Paramedico", Coords = vec3(353.0,-1427.67,32.67), Mode = "2" },
+	{ Name = "Restaurante", Coords = vec3(-631.68,228.32,82.17), Mode = "2" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LABELS
@@ -66,14 +66,14 @@ local Labels = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Name,v in pairs(Chests) do
-		exports["target"]:AddCircleZone("Chest:"..Name,v["Coords"],0.25,{
+		exports["target"]:AddCircleZone("Chest:"..Name,v.Coords,0.25,{
 			name = "Chest:"..Name,
 			heading = 0.0,
 			useZ = true
 		},{
 			Distance = 1.25,
-			shop = v["Name"],
-			options = Labels[v["Mode"]]
+			shop = v.Name,
+			options = Labels[v.Mode]
 		})
 	end
 end)
@@ -107,11 +107,7 @@ end)
 AddEventHandler("chest:Item",function(Name)
 	if vSERVER.Permissions(Name,"Item") and GetEntityHealth(PlayerPedId()) > 100 then
 		Opened = true
-
-		TriggerEvent("inventory:Open",{
-			Type = "Chest",
-			Resource = "chest"
-		})
+		TriggerEvent("inventory:Open",{ Type = "Chest", Resource = "chest" })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -120,11 +116,7 @@ end)
 AddEventHandler("chest:Recycle",function()
 	if vSERVER.Permissions("Recycle","Tray") and GetEntityHealth(PlayerPedId()) > 100 then
 		Opened = true
-
-		TriggerEvent("inventory:Open",{
-			Type = "Chest",
-			Resource = "chest"
-		})
+		TriggerEvent("inventory:Open",{ Type = "Chest", Resource = "chest" })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -147,7 +139,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
 	if MumbleIsConnected() then
-		vSERVER.Take(Data["item"],Data["slot"],Data["amount"],Data["target"])
+		vSERVER.Take(Data.item,Data.slot,Data.amount,Data.target)
 	end
 
 	Callback("Ok")
@@ -157,7 +149,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Store",function(Data,Callback)
 	if MumbleIsConnected() then
-		vSERVER.Store(Data["item"],Data["slot"],Data["amount"],Data["target"],Block)
+		vSERVER.Store(Data.item,Data.slot,Data.amount,Data.target,Block)
 	end
 
 	Callback("Ok")
@@ -167,7 +159,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Update",function(Data,Callback)
 	if MumbleIsConnected() then
-		vSERVER.Update(Data["slot"],Data["target"],Data["amount"])
+		vSERVER.Update(Data.slot,Data.target,Data.amount)
 	end
 
 	Callback("Ok")
@@ -176,8 +168,8 @@ end)
 -- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Mount",function(Data,Callback)
-	local Primary,Secondary,PrimaryWeight,SecondaryWeight,SecondarySlots = vSERVER.Mount()
+	local Primary,Secondary,PrimaryWeight,SecondaryWeight,Slots = vSERVER.Mount()
 	if Primary then
-		Callback({ Primary = Primary, Secondary = Secondary, PrimaryMaxWeight = PrimaryWeight, SecondaryMaxWeight = SecondaryWeight, SecondarySlots = SecondarySlots })
+		Callback({ Primary = Primary, Secondary = Secondary, PrimaryMaxWeight = PrimaryWeight, SecondaryMaxWeight = SecondaryWeight, SecondarySlots = Slots })
 	end
 end)

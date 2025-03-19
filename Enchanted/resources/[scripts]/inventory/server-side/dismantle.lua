@@ -56,7 +56,6 @@ function Creative.CreateVehicle(Model,Coords)
 		if DoesEntityExist(Vehicle) then
 			local Plate = exports["inventory"]:GeneratePlate()
 
-			SetEntityOrphanMode(Vehicle,2)
 			SetVehicleNumberPlateText(Vehicle,Plate)
 			SetVehicleCustomPrimaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
 			SetVehicleCustomSecondaryColour(Vehicle,math.random(255),math.random(255),math.random(255))

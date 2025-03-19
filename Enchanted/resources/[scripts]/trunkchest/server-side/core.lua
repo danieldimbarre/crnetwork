@@ -214,7 +214,8 @@ end
 function Creative.Close()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Vehicle[Passport] then
+	if Passport and Vehicle[Passport] and Vehicle[Passport].Network then
+		TriggerClientEvent("player:VehicleDoors",source,Vehicle[Passport].Network,"close")
 		Vehicle[Passport] = nil
 	end
 end
@@ -224,20 +225,22 @@ end
 RegisterServerEvent("trunkchest:openTrunk")
 AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
-	local Name = Entity[2]
 	local Passport = vRP.Passport(source)
+	local Name,Network = Entity[2],Entity[4]
 	local OtherPassport = vRP.PassportPlate(Entity[1])
 	if Passport and OtherPassport and VehicleExist(Name) then
 		local Consult = vRP.SelectVehicle(OtherPassport,Name)
 
 		Vehicle[Passport] = {
-			["Model"] = Name,
-			["Passport"] = OtherPassport,
-			["Weight"] = Consult and Consult.Weight or VehicleWeight(Name),
-			["Data"] = "Trunkchest:"..OtherPassport..":"..Name
+			Model = Name,
+			Network = Network,
+			Passport = OtherPassport,
+			Weight = Consult and Consult.Weight or VehicleWeight(Name),
+			Data = "Trunkchest:"..OtherPassport..":"..Name
 		}
 
 		TriggerClientEvent("trunkchest:Open",source)
+		TriggerClientEvent("player:VehicleDoors",source,Network,"open")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

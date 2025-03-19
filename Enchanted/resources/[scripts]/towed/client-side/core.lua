@@ -65,8 +65,6 @@ AddEventHandler("towed:Init",function(Data)
 		MarkedVehicle()
 		Service = true
 	end
-
-	vSERVER.Service()
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TOWED:INATIVE

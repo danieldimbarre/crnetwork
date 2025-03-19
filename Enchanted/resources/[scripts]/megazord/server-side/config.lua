@@ -141,6 +141,7 @@ Assets = {
 -- HACKEREVENTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 HackerEvents = {
+	"yourweapons",
 	"rpv_uber:success",
 	"xex_streetfight:pay",
 	"lester:vendita",
@@ -206,6 +207,8 @@ HackerEvents = {
 	"esx_society:putVehicleDFWMInGarage",
 	"esx:clientLog",
 	"esx:triggerServerCallback",
+	"esx:setJob",
+	"checkpolice:antiplayerLoaded",
 	"esx:playerLoaded",
 	"esx:createMissingPickups",
 	"esx:updateLoadout",
@@ -504,5 +507,23 @@ HackerEvents = {
 	"esx_mafiajob:confiscatePlayerItem",
 	"InteractSound_SV:PlayOnAll",
 	"SEM_InteractionMenu:Jail",
-	"SEM_InteractionMenu:DragNear"
+	"SEM_InteractionMenu:DragNear",
+	"KorioZ-PersonalMenu:Weapon_addAmmoToPedS",
+	"KorioZ-PersonalMenu:Admin_BringS",
+	"KorioZ-PersonalMenu:Admin_giveCash",
+	"KorioZ-PersonalMenu:Admin_giveBank",
+	"KorioZ-PersonalMenu:Admin_giveDirtyMoney",
+	"KorioZ-PersonalMenu:Boss_promouvoirplayer",
+	"KorioZ-PersonalMenu:Boss_destituerplayer",
+	"KorioZ-PersonalMenu:Boss_recruterplayer",
+	"KorioZ-PersonalMenu:Boss_virerplayer",
+	"Admin2Menu:giveCash",
+	"Admin2Menu:giveBank",
+	"Admin2Menu:giveDirtyMoney",
+	"SEM_InteractionMenu:CuffNear",
+	"SEM_InteractionMenu:SeatNear",
+	"SEM_InteractionMenu:UnseatNear",
+	"SEM_InteractionMenu:Unjail",
+	"SEM_InteractionMenu:Hospitalize",
+	"SEM_InteractionMenu:Unhospitalize"
 }

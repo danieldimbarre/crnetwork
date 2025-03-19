@@ -17,7 +17,6 @@ AddEventHandler("chat:ServerMessage",function(Mode,Message)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Groups = vRP.Groups()
 		local FullName = vRP.FullName(Passport)
 		local Messages = Message:gsub("[<>]","")
 

@@ -11,7 +11,6 @@ CreatorCoords = vec4(-2006.95,2960.77,31.81,305.82)
 -- SERVERINFO
 -----------------------------------------------------------------------------------------------------------------------------------------
 Currency = "$"
-DiscordBot = true
 BaseMode = "steam"
 Whitelisted = false
 Liberation = "Token"
@@ -142,6 +141,12 @@ Theme = {
 		map = true,
 		settings = true,
 		disconnect = true
+	},
+	scripts = {
+		taximeter = {
+			main = "#efcf2f",
+			mainText = "#120b02"
+		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -154,9 +159,9 @@ Groups = {
 		},
 		Hierarchy = { "Administrador","Moderador","Suporte" },
 		Name = "Adminstradores",
-		RejoinService = true,
-		Service = {},
-		Client = true
+		Service = true,
+		Client = true,
+		Max = 30
 	},
 	Ouro = {
 		Permission = {
@@ -165,8 +170,7 @@ Groups = {
 		Hierarchy = { "Membro" },
 		Salary = { 3750 },
 		Backpack = { 25 },
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Block = true
 	},
 	Prata = {
@@ -176,8 +180,7 @@ Groups = {
 		Hierarchy = { "Membro" },
 		Salary = { 2500 },
 		Backpack = { 15 },
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Block = true
 	},
 	Bronze = {
@@ -187,8 +190,7 @@ Groups = {
 		Hierarchy = { "Membro" },
 		Salary = { 1250 },
 		Backpack = { 5 },
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Block = true
 	},
 	LSPD = {
@@ -197,10 +199,8 @@ Groups = {
 		},
 		Hierarchy = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
 		Salary = { 3750,3625,3500,3375,3250,3125 },
-		Discord = "1236102727369756774",
-		RejoinService = true,
 		Name = "Los Santos Police Department",
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true,
 		Markers = true,
@@ -212,10 +212,8 @@ Groups = {
 		},
 		Hierarchy = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
 		Salary = { 3750,3625,3500,3375,3250,3125 },
-		Discord = "1236102727369756774",
-		RejoinService = true,
 		Name = "Blaine County Sheriff Officer",
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true,
 		Markers = true,
@@ -227,10 +225,8 @@ Groups = {
 		},
 		Hierarchy = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
 		Salary = { 3750,3625,3500,3375,3250,3125 },
-		Discord = "1236102727369756774",
-		RejoinService = true,
+		Service = true,
 		Name = "San Andreas Park Ranger",
-		Service = {},
 		Type = "Work",
 		Client = true,
 		Markers = true,
@@ -242,9 +238,7 @@ Groups = {
 		},
 		Hierarchy = { "Chefe","Médico","Enfermeiro","Residente" },
 		Salary = { 3750,3625,3500,3375 },
-		Discord = "1236103044811456662",
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true,
 		Markers = true,
@@ -255,9 +249,7 @@ Groups = {
 			Ballas = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
-		Discord = "1250080429965316127",
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true
 	},
@@ -266,9 +258,7 @@ Groups = {
 			Vagos = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
-		Discord = "1250080465155657860",
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true
 	},
@@ -277,9 +267,7 @@ Groups = {
 			Families = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
-		Discord = "1250080491814523022",
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true
 	},
@@ -288,9 +276,7 @@ Groups = {
 			Marabunta = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
-		Discord = "1250080518507069500",
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true
 	},
@@ -299,9 +285,7 @@ Groups = {
 			Bennys = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
-		Discord = "1250080543908036638",
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true
 	},
@@ -310,9 +294,7 @@ Groups = {
 			Aztecas = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
-		Discord = "1250080564049084438",
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true
 	},
@@ -321,9 +303,7 @@ Groups = {
 			Bahamas = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
-		Discord = "1250080611851309107",
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true
 	},
@@ -332,8 +312,7 @@ Groups = {
 			Restaurante = true
 		},
 		Hierarchy = { "Chefe","Supervisor","Funcionário" },
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Type = "Work",
 		Client = true
 	},
@@ -342,9 +321,8 @@ Groups = {
 			Booster = true
 		},
 		Hierarchy = { "Membro" },
-		RejoinService = true,
+		Service = true,
 		Salary = { 2500 },
-		Service = {},
 		Block = true
 	},
 	Camera = {
@@ -352,8 +330,7 @@ Groups = {
 			Camera = true
 		},
 		Hierarchy = { "Membro" },
-		RejoinService = true,
-		Service = {},
+		Service = true,
 		Block = true
 	},
 	Policia = {
@@ -363,7 +340,6 @@ Groups = {
 			SAPR = true
 		},
 		Hierarchy = { "Membro" },
-		Service = {},
 		Block = true
 	},
 	Emergencia = {
@@ -374,7 +350,6 @@ Groups = {
 			Paramedico = true
 		},
 		Hierarchy = { "Membro" },
-		Service = {},
 		Block = true
 	}
 }
@@ -382,21 +357,21 @@ Groups = {
 -- CHARACTERITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 CharacterItens = {
-	soda = 2,
-	identity = 1,
-	hamburger = 2
+	["soda"] = 2,
+	["identity"] = 1,
+	["hamburger"] = 2
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOXES
 -----------------------------------------------------------------------------------------------------------------------------------------
 Boxes = {
-	treasurebox = {
+	["treasurebox"] = {
 		Multiplier = { Min = 1, Max = 1 },
 		List = {
 			{ Item = "dollar", Chance = 100, Min = 4250, Max = 6250 }
 		}
 	},
-	christmas_04 = {
+	["christmas_04"] = {
 		Multiplier = { Min = 1, Max = 1 },
 		List = {
 			{ Item = "christmas_01", Chance = 100, Min = 1, Max = 1 },
@@ -409,7 +384,7 @@ Boxes = {
 -- UPPERLEVEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 UpperLevel = {
-	Trucker = { -- Experiência do emprego
+	["Trucker"] = { -- Experiência do emprego
 		["2"] = { -- Nível que vai receber a recompensa
 			{ Item = "bandage", Min = 1, Max = 2 },
 			{ Item = "advtoolbox", Min = 1, Max = 1 }
@@ -420,7 +395,7 @@ UpperLevel = {
 -- SKINSHOPINIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 SkinshopInit = {
-	mp_m_freemode_01 = {
+	["mp_m_freemode_01"] = {
 		pants = { item = 4, texture = 1 },
 		arms = { item = 0, texture = 0 },
 		tshirt = { item = 15, texture = 0 },
@@ -437,7 +412,7 @@ SkinshopInit = {
 		accessory = { item = 0, texture = 0 },
 		decals = { item = 0, texture = 0 }
 	},
-	mp_f_freemode_01 = {
+	["mp_f_freemode_01"] = {
 		pants = { item = 4, texture = 1 },
 		arms = { item = 14, texture = 0 },
 		tshirt = { item = 3, texture = 0 },
@@ -459,6 +434,6 @@ SkinshopInit = {
 -- BARBERSHOPINIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 BarbershopInit = {
-	mp_m_freemode_01 = { 13,25,0,3,0,-1,-1,-1,-1,13,38,38,0,0,0,0,0.5,0,0,1,0,10,1,0,1,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-	mp_f_freemode_01 = { 13,25,1,3,0,-1,-1,-1,-1,1,38,38,0,0,0,0,1,0,0,1,0,0,0,0,1,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+	["mp_m_freemode_01"] = { 13,25,0,3,0,-1,-1,-1,-1,13,38,38,0,0,0,0,0.5,0,0,1,0,10,1,0,1,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	["mp_f_freemode_01"] = { 13,25,1,3,0,-1,-1,-1,-1,1,38,38,0,0,0,0,1,0,0,1,0,0,0,0,1,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
 }

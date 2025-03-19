@@ -18,7 +18,7 @@ vSKINWEAPON = Tunnel.getInterface("skinweapon")
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("passport",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin") then
+	if Passport and vRP.HasGroup(Passport,"Admin",1) then
 		local Keyboard = vKEYBOARD.Secondary(source,"Atual","Novo")
 		if Keyboard then
 			local NewPassport = parseInt(Keyboard[2])
@@ -99,26 +99,6 @@ RegisterCommand("passport",function(source,Message)
 			local MDT_Arrest_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_arrest WHERE Officer = ?",{ OtherPassport })
 			if MDT_Arrest_Officer and #MDT_Arrest_Officer > 0 then
 				exports["oxmysql"]:query_async("UPDATE mdt_creative_arrest SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
-			end
-
-			local MDT_Arrest_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_arrest")
-			if MDT_Arrest_Officers and #MDT_Arrest_Officers > 0 then
-				for _,v in ipairs(MDT_Arrest_Officers) do
-					local Updated = false
-					local Officers = json.decode(v.Officers)
-					for Index,Number in ipairs(Officers) do
-						if OtherPassport == Number then
-							Officers[Index] = NewPassport
-							Updated = true
-
-							break
-						end
-					end
-
-					if Updated then
-						exports["oxmysql"]:query_async("UPDATE mdt_creative_arrest SET Officers = ? WHERE id = ?",{ json.encode(Officers),v.id })
-					end
-				end
 			end
 
 			local MDT_Fines = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Passport = ?",{ OtherPassport })
@@ -383,7 +363,6 @@ RegisterCommand("wipepermissions",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasPermission(Passport,"Admin") then
 		local Permissions = {}
-		local Groups = vRP.Groups()
 		for Permission in pairs(Groups) do
 			Permissions[#Permissions + 1] = Permission
 		end
@@ -423,7 +402,6 @@ RegisterCommand("status",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasPermission(Passport,"Admin") then
 		local Permissions = {}
-		local Groups = vRP.Groups()
 		for Permission in pairs(Groups) do
 			Permissions[#Permissions + 1] = Permission
 		end
@@ -1079,7 +1057,6 @@ RegisterCommand("video",function(source,Message)
 					TriggerClientEvent("hud:Video",-1,Keyboard[1])
 				end
 			elseif Keyboard[1] == "Permissão" then
-				local Groups = vRP.Groups()
 				local Keyboard = vKEYBOARD.Options(source,"Código Vimeo",Groups)
 				if Keyboard then
 					local Service = vRP.NumPermission(Keyboard[1])

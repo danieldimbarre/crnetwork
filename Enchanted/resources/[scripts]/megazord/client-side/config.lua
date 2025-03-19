@@ -529,5 +529,11 @@ HackerEvents = {
 	"KorioZ-PersonalMenu:Boss_virerplayer",
 	"Admin2Menu:giveCash",
 	"Admin2Menu:giveBank",
-	"Admin2Menu:giveDirtyMoney"
+	"Admin2Menu:giveDirtyMoney",
+	"SEM_InteractionMenu:CuffNear",
+	"SEM_InteractionMenu:SeatNear",
+	"SEM_InteractionMenu:UnseatNear",
+	"SEM_InteractionMenu:Unjail",
+	"SEM_InteractionMenu:Hospitalize",
+	"SEM_InteractionMenu:Unhospitalize"
 }

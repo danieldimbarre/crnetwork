@@ -168,7 +168,7 @@ function Creative.Propertys(Name)
 		return "Nothing"
 	end
 
-	if (Consult.Passport ~= Passport and not vRP.InventoryFull(Passport,"propertys-"..Consult.Serial)) or Lock[Name] then
+	if Consult.Passport ~= Passport and Lock[Name] and not vRP.InventoryFull(Passport,"propertys-"..Consult.Serial) then
 		return false
 	end
 
@@ -297,7 +297,7 @@ AddEventHandler("propertys:Lock",function(Name)
 		return false
 	end
 
-	if Consult.Passport ~= Passport or not vRP.InventoryFull(Passport,"propertys-"..Consult.Serial) then
+	if Consult.Passport ~= Passport and not vRP.InventoryFull(Passport,"propertys-"..Consult.Serial) then
 		return false
 	end
 
@@ -705,6 +705,7 @@ CreateThread(function()
 	for _,v in pairs(vRP.Query("propertys/All")) do
 		if Propertys[v.Name] then
 			Markers[v.Name] = true
+			Lock[v.Name] = true
 		end
 	end
 
@@ -716,7 +717,7 @@ end)
 AddEventHandler("CharacterChosen",function(Passport,source)
 	local Increments = {}
 	if vRP.Scalar("propertys/Count",{ Passport = Passport }) <= 0 then
-		table.insert(Increments,Propertys.Hotel.Coords)
+		table.insert(Increments,Propertys["Hotel"].Coords)
 	else
 		local Consult = vRP.Query("propertys/AllUser",{ Passport = Passport })
 		if Consult and #Consult > 0 then

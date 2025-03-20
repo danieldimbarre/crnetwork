@@ -5,7 +5,6 @@ PercetageSelling = 0.5 -- Porcentagem a receber ao vender o veículo
 PercentageTaxs = 0.15 -- Porcentagem a cobrar pela taxa mensal do veículo
 PercentageArrest = 0.1 -- Porcentagem a cobrar para liberar o veículo apreendido
 PercentageRescue = 0.1 -- Porcentagem a cobrar para resgatar o veículo em qualquer garagem
-PercentageImpost = 0.25 -- Porcentagem de imposto ao comprar um veículo
 CarPermission = "Admin" -- Permissão para utilizar o comando /car
 DvPermission = "Admin" -- Permissão para utilizar o comando /dv
 LockPermission = "Admin" -- Permissão para destrancar qualquer veículo

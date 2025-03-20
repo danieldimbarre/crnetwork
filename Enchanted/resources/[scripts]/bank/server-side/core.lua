@@ -506,9 +506,10 @@ end
 -- ADDTAXS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("AddTaxs",function(Passport,source,Name,Valuation,Message)
-	for Permission,Multiplier in pairs({ Ouro = 0.0375, Prata = 0.0250, Bronze = 0.0125 }) do
+	local Valuation = Valuation * 0.1
+	for Permission,Multiplier in pairs({ Ouro = 0.075, Prata = 0.050, Bronze = 0.025 }) do
 		if vRP.HasService(Passport,Permission) then
-			Valuation = Valuation - (Valuation * Multiplier)
+			Valuation = Valuation * (1 - Multiplier)
 		end
 	end
 

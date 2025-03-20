@@ -424,8 +424,8 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 				if vRP.Request(source,"Garagem","Liberar o veículo tem o custo de <b>"..Currency..Dotted(Price * PercentageArrest).."</b>, deseja prosseguir com a liberação do mesmo?") then
 					if vRP.PaymentFull(Passport,Price * PercentageArrest) then
 						vRP.Query("vehicles/PaymentArrest",{ Passport = Passport, Vehicle = Name })
-						TriggerClientEvent("Notify",source,"Sucesso","Veículo liberado.","policia",5000)
-						exports["bank"]:AddTaxs(Passport,source,"Garagem",Price * PercentageImpost,"Liberação do veículo.")
+						exports["bank"]:AddTaxs(Passport,source,"Garagem",Price,"Liberação do veículo.")
+						TriggerClientEvent("Notify",source,"Sucesso","Veículo liberado.","policia",10000)
 					else
 						TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",5000)
 						Active[Passport] = nil

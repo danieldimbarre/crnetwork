@@ -18,26 +18,29 @@ local BloodTimers = GetGameTimer()
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Event,Message)
-	if Event ~= "CEventNetworkEntityDamage" or PlayerPedId() ~= Message[1] then
-		return
+	if Event ~= "CEventNetworkEntityDamage" or PlayerPedId() ~= Message[1] or LocalPlayer.state.Arena then
+		return false
 	end
 
-	if (Message[7] == 126349499 or Message[7] == 1064738331 or Message[7] == 85055149) and GetEntityHealth(Message[1]) > 100 then
-		SetPedToRagdoll(Message[1],2500,2500,0,0,0,0)
-	else
-		if GetGameTimer() >= Injuried and not IsPedInAnyVehicle(Message[1]) and GetEntityHealth(Message[1]) > 100 then
-			Injuried = GetGameTimer() + 1000
+	local Ped = Message[1]
+	local Damage = Message[7]
+	local Health = GetEntityHealth(Ped) > 100
+	local Explosive = (Damage == 126349499 or Damage == 1064738331 or Damage == 85055149)
 
-			local Hit,Mark = GetPedLastDamageBone(Message[1])
-			if Hit and not Damaged[Mark] and Mark ~= 0 then
-				ClearPedBloodDamage(Message[1])
-				Bleedings = Bleedings + 1
-				Damaged[Mark] = true
+	if Explosive and Health then
+		SetPedToRagdoll(Ped,2500,2500,0,0,0,0)
 
-				if Bleedings >= 5 then
-					Bleedings = 5
-				end
-			end
+		return false
+	end
+
+	if GetGameTimer() >= Injuried and not IsPedInAnyVehicle(Ped) and Health then
+		Injuried = GetGameTimer() + 1000
+
+		local Hit,Mark = GetPedLastDamageBone(Ped)
+		if Hit and not Damaged[Mark] and Mark ~= 0 then
+			Bleedings = math.min(Bleedings + 1,5)
+			ClearPedBloodDamage(Ped)
+			Damaged[Mark] = true
 		end
 	end
 end)
@@ -46,15 +49,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
+		Wait(1000)
+
 		local Ped = PlayerPedId()
-		if Bleedings >= 2 and GetGameTimer() >= BloodTimers and GetEntityHealth(Ped) > 100 then
+		if not LocalPlayer.state.Arena and Bleedings >= 2 and GetGameTimer() >= BloodTimers and GetEntityHealth(Ped) > 100 then
 			TriggerEvent("Notify","Sangramento","Ferimentos encontrados.","sangue",5000)
 			BloodTimers = GetGameTimer() + 30000
 			ApplyDamageToPed(Ped,1,false)
 			ClearPedBloodDamage(Ped)
 		end
-
-		Wait(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -78,20 +81,21 @@ end
 -- BANDAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Bandage()
-	local Humanes = ""
-	for Number,_ in pairs(Damaged) do
-		TriggerEvent("Notify","Atenção","Passou ataduras no(a) <b>"..Bone(Number).."</b>.","amarelo",5000)
+	for Number in pairs(Damaged) do
+		local Humane = Bone(Number)
+
 		TriggerEvent("sounds:Private","bandage",0.5)
+		TriggerEvent("Notify","Atenção","Passou ataduras no(a) <b>"..Humane.."</b>.","amarelo",10000)
+
 		Bleedings = Bleedings - 1
-		Humanes = Bone(Number)
 		Damaged[Number] = nil
 
-		break
+		ClearPedBloodDamage(PlayerPedId())
+
+		return Humane
 	end
 
-	ClearPedBloodDamage(PlayerPedId())
-
-	return Humanes
+	return ""
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OXYCONTIN
@@ -103,19 +107,20 @@ end
 -- PARAMEDIC:INJURIES
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("paramedic:Injuries",function()
-	local Ticks = 0
-	local Injuries = ""
-
-	for Number,_ in pairs(Damaged) do
-		Ticks = Ticks + 1
-		Injuries = Injuries.."<b>"..Ticks.."</b>: "..Bone(Number).."<br>"
-	end
-
-	if Injuries == "" then
+	if next(Damaged) == nil then
 		TriggerEvent("Notify","Aviso","Nenhum ferimento encontrado.","amarelo",5000)
-	else
-		TriggerEvent("Notify","Ferimentos",Injuries,"amarelo",10000)
+
+		return false
 	end
+
+	local Index = 1
+	local Injuries = {}
+	for Number in pairs(Damaged) do
+		table.insert(Injuries,string.format("<b>%d</b>: %s<br>",Index,Bone(Number)))
+		Index = Index + 1
+	end
+
+	TriggerEvent("Notify","Ferimentos",table.concat(Injuries),"amarelo",10000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DIAGNOSTIC

@@ -29,31 +29,33 @@ local Drops = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Vehicle(Model,Locale,Destiny)
 	local source = source
-	local Vehicle = CreateVehicle(Model,Locations[Locale][Destiny],true,true)
+	local CurrentTimer = os.time() + 10
+	local Vehicle = CreateVehicle(Model,Locations[Locale][Destiny],true,false)
 
-	while not DoesEntityExist(Vehicle) do
-		Wait(1)
+	while not DoesEntityExist(Vehicle) or NetworkGetNetworkIdFromEntity(Vehicle) == 0 do
+		if os.time() >= CurrentTimer then
+			return false
+		end
+
+		Wait(100)
 	end
 
-	if DoesEntityExist(Vehicle) then
-		local Plate = vRP.GeneratePlate()
-		local Network = NetworkGetNetworkIdFromEntity(Vehicle)
+	local Plate = vRP.GeneratePlate()
+	local Network = NetworkGetNetworkIdFromEntity(Vehicle)
 
-		SetVehicleBodyHealth(Vehicle,10.0)
-		SetVehicleNumberPlateText(Vehicle,Plate)
+	SetVehicleBodyHealth(Vehicle,10.0)
+	SetVehicleNumberPlateText(Vehicle,Plate)
+	SetEntityIgnoreRequestControlFilter(Vehicle,true)
 
-		Entity(Vehicle).state:set("Fuel",0,true)
-		Entity(Vehicle).state:set("Nitro",0,true)
+	Entity(Vehicle).state:set("Fuel",0,true)
+	Entity(Vehicle).state:set("Nitro",0,true)
 
-		Impound[Plate] = {
-			Source = source,
-			Network = Network
-		}
+	Impound[Plate] = {
+		Source = source,
+		Network = Network
+	}
 
-		return Network,Plate
-	end
-
-	return false
+	return Network,Plate
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:DELETE

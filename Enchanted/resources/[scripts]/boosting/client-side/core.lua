@@ -162,27 +162,28 @@ CreateThread(function()
 			local Coords = GetEntityCoords(Ped)
 			if #(Coords - Locates[Selected]["xyz"]) <= 100 then
 				local Networked = vSERVER.CreateVehicle(Model,Class,Locates[Selected])
+				if not Networked then return end
 
-				if Networked then
-					local Network = LoadNetwork(Networked)
-					if Network then
-						Vehicle = Network
-						SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
-						SetVehicleNeedsToBeHotwired(Vehicle,false)
-						DecorSetInt(Vehicle,"Player_Vehicle",-1)
-						SetVehicleOnGroundProperly(Vehicle)
-						SetVehRadioStation(Vehicle,"OFF")
-
-						SetVehicleModKit(Vehicle,0)
-						ToggleVehicleMod(Vehicle,18,true)
-						SetVehicleMod(Vehicle,11,GetNumVehicleMods(Vehicle,11) - 1,false)
-						SetVehicleMod(Vehicle,12,GetNumVehicleMods(Vehicle,12) - 1,false)
-						SetVehicleMod(Vehicle,13,GetNumVehicleMods(Vehicle,13) - 1,false)
-						SetVehicleMod(Vehicle,15,GetNumVehicleMods(Vehicle,15) - 1,false)
-
-						SetModelAsNoLongerNeeded(Model)
-					end
+				local Entity = LoadNetwork(Networked)
+				while not DoesEntityExist(Entity) do
+					Wait(100)
 				end
+
+				Vehicle = Entity
+				SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
+				SetVehicleNeedsToBeHotwired(Vehicle,false)
+				DecorSetInt(Vehicle,"Player_Vehicle",-1)
+				SetVehicleOnGroundProperly(Vehicle)
+				SetVehRadioStation(Vehicle,"OFF")
+
+				SetVehicleModKit(Vehicle,0)
+				ToggleVehicleMod(Vehicle,18,true)
+				SetVehicleMod(Vehicle,11,GetNumVehicleMods(Vehicle,11) - 1,false)
+				SetVehicleMod(Vehicle,12,GetNumVehicleMods(Vehicle,12) - 1,false)
+				SetVehicleMod(Vehicle,13,GetNumVehicleMods(Vehicle,13) - 1,false)
+				SetVehicleMod(Vehicle,15,GetNumVehicleMods(Vehicle,15) - 1,false)
+
+				SetModelAsNoLongerNeeded(Model)
 			end
 		end
 
@@ -214,55 +215,55 @@ AddEventHandler("boosting:Dispatch",function()
 		until (HitZ and HitSafe) or Cooldown >= 100
 
 		if HitZ and HitSafe then
-			local Network = vRPS.CreateModels(Peds[OtherPeds],SafeCoords["x"],SafeCoords["y"],SafeCoords["z"])
-			if Network then
-				SetTimeout(2500,function()
-					local Entity = LoadNetwork(Network)
-					if Entity then
-						SetPedArmour(Entity,100)
-						SetPedAccuracy(Entity,75)
-						SetPedAlertness(Entity,3)
-						SetPedAsEnemy(Entity,true)
-						SetPedMaxHealth(Entity,500)
-						SetEntityHealth(Entity,500)
-						SetPedKeepTask(Entity,true)
-						SetPedCombatRange(Entity,2)
-						StopPedSpeaking(Entity,true)
-						SetPedCombatMovement(Entity,2)
-						DisablePedPainAudio(Entity,true)
-						SetPedPathAvoidFire(Entity,true)
-						SetPedConfigFlag(Entity,208,true)
-						SetPedSeeingRange(Entity,10000.0)
-						SetPedCanEvasiveDive(Entity,false)
-						SetPedHearingRange(Entity,10000.0)
-						SetPedDiesWhenInjured(Entity,false)
-						SetPedPathCanUseLadders(Entity,true)
-						SetPedFleeAttributes(Entity,0,false)
-						SetPedCombatAttributes(Entity,46,true)
-						SetPedFiringPattern(Entity,0xC6EE6B4C)
-						SetCanAttackFriendly(Entity,true,false)
-						SetPedSuffersCriticalHits(Entity,false)
-						SetPedPathCanUseClimbovers(Entity,true)
-						SetPedDropsWeaponsWhenDead(Entity,false)
-						SetPedEnableWeaponBlocking(Entity,false)
-						SetPedPathCanDropFromHeight(Entity,false)
-						RegisterHatedTargetsAroundPed(Entity,100.0)
-						GiveWeaponToPed(Entity,"WEAPON_PISTOL_MK2",-1,false,true)
-						SetCurrentPedWeapon(Entity,"WEAPON_PISTOL_MK2",true)
-						SetPedInfiniteAmmo(Entity,true,"WEAPON_PISTOL_MK2")
-						SetPedRelationshipGroupHash(Entity,GetHashKey("HATES_PLAYER"))
-						SetEntityCanBeDamagedByRelationshipGroup(Entity,false,"HATES_PLAYER")
-						SetRelationshipBetweenGroups(5,GetHashKey("HATES_PLAYER"),GetHashKey("PLAYER"))
-						SetRelationshipBetweenGroups(5,GetHashKey("PLAYER"),GetHashKey("HATES_PLAYER"))
-						TaskCombatPed(Entity,Ped,0,16)
+			local Networked = vRPS.CreateModels(Peds[OtherPeds],SafeCoords["x"],SafeCoords["y"],SafeCoords["z"])
+			if not Networked then return end
 
-						SetTimeout(1000,function()
-							TaskWanderInArea(Entity,SafeCoords["x"],SafeCoords["y"],SafeCoords["z"],25.0,0.0,0.0)
-							SetModelAsNoLongerNeeded(Peds[OtherPeds])
-						end)
-					end
-				end)
+			local Entity = LoadNetwork(Networked)
+			while not DoesEntityExist(Entity) do
+				Wait(100)
 			end
+
+			SetPedArmour(Entity,100)
+			SetPedAccuracy(Entity,75)
+			SetPedAlertness(Entity,3)
+			SetPedAsEnemy(Entity,true)
+			SetPedMaxHealth(Entity,500)
+			SetEntityHealth(Entity,500)
+			SetPedKeepTask(Entity,true)
+			SetPedCombatRange(Entity,2)
+			StopPedSpeaking(Entity,true)
+			SetPedCombatMovement(Entity,2)
+			DisablePedPainAudio(Entity,true)
+			SetPedPathAvoidFire(Entity,true)
+			SetPedConfigFlag(Entity,208,true)
+			SetPedSeeingRange(Entity,10000.0)
+			SetPedCanEvasiveDive(Entity,false)
+			SetPedHearingRange(Entity,10000.0)
+			SetPedDiesWhenInjured(Entity,false)
+			SetPedPathCanUseLadders(Entity,true)
+			SetPedFleeAttributes(Entity,0,false)
+			SetPedCombatAttributes(Entity,46,true)
+			SetPedFiringPattern(Entity,0xC6EE6B4C)
+			SetCanAttackFriendly(Entity,true,false)
+			SetPedSuffersCriticalHits(Entity,false)
+			SetPedPathCanUseClimbovers(Entity,true)
+			SetPedDropsWeaponsWhenDead(Entity,false)
+			SetPedEnableWeaponBlocking(Entity,false)
+			SetPedPathCanDropFromHeight(Entity,false)
+			RegisterHatedTargetsAroundPed(Entity,100.0)
+			GiveWeaponToPed(Entity,"WEAPON_PISTOL_MK2",-1,false,true)
+			SetCurrentPedWeapon(Entity,"WEAPON_PISTOL_MK2",true)
+			SetPedInfiniteAmmo(Entity,true,"WEAPON_PISTOL_MK2")
+			SetPedRelationshipGroupHash(Entity,GetHashKey("HATES_PLAYER"))
+			SetEntityCanBeDamagedByRelationshipGroup(Entity,false,"HATES_PLAYER")
+			SetRelationshipBetweenGroups(5,GetHashKey("HATES_PLAYER"),GetHashKey("PLAYER"))
+			SetRelationshipBetweenGroups(5,GetHashKey("PLAYER"),GetHashKey("HATES_PLAYER"))
+			TaskCombatPed(Entity,Ped,0,16)
+
+			SetTimeout(1000,function()
+				TaskWanderInArea(Entity,SafeCoords["x"],SafeCoords["y"],SafeCoords["z"],25.0,0.0,0.0)
+				SetModelAsNoLongerNeeded(Peds[OtherPeds])
+			end)
 		end
 	end
 end)

@@ -94,28 +94,28 @@ CreateThread(function()
 
 				if #(Coords - Locations[Locale][Destiny]["xyz"]) <= 100 then
 					local Networked,Plate = vSERVER.Vehicle(ModelSelected,Locale,Destiny)
-					if Networked then
-						local Network = LoadNetwork(Networked)
-						if Network then
-							if DoesBlipExist(Blip) then
-								RemoveBlip(Blip)
-								Blip = nil
-							end
-
-							Vehicle = Network
-							VehiclePlate = Plate
-
-							SetVehicleEngineHealth(Vehicle,10.0)
-							SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
-							SetVehicleNeedsToBeHotwired(Vehicle,false)
-							DecorSetInt(Vehicle,"Player_Vehicle",-1)
-							SetVehicleOnGroundProperly(Vehicle)
-							SetVehRadioStation(Vehicle,"OFF")
-							SetEntityHealth(Vehicle,10)
-
-							SetModelAsNoLongerNeeded(ModelSelected)
-						end
+					if not Networked then return end
+		
+					local Entity = LoadNetwork(Networked)
+					while not DoesEntityExist(Entity) do
+						Wait(100)
 					end
+
+					if DoesBlipExist(Blip) then
+						RemoveBlip(Blip)
+						Blip = nil
+					end
+
+					Vehicle = Entity
+					VehiclePlate = Plate
+
+					SetVehicleEngineHealth(Vehicle,10.0)
+					SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
+					SetVehicleNeedsToBeHotwired(Vehicle,false)
+					DecorSetInt(Vehicle,"Player_Vehicle",-1)
+					SetVehicleOnGroundProperly(Vehicle)
+					SetVehRadioStation(Vehicle,"OFF")
+					SetEntityHealth(Vehicle,10)
 				end
 			elseif DoesEntityExist(Vehicle) and not Entity(Vehicle)["state"]["Tow"] then
 				TimeDistance = 1

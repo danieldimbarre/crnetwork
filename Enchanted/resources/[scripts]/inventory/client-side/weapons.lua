@@ -279,16 +279,18 @@ AddEventHandler("inventory:CreateWeapon",function(Name)
 			Weapon = GetWeaponComponentTypeModel(Hash)
 		end
 
-		local Network = vRPS.CreateObject(Config["Model"],Coords["x"],Coords["y"],Coords["z"],Name,Weapon)
-		if Network then
-			Objects[Name] = LoadNetwork(Network)
-			if Objects[Name] then
-				AttachEntityToEntity(Objects[Name],Ped,Bone,Config["x"],Config["y"],Config["z"],Config["RotX"],Config["RotY"],Config["RotZ"],true,true,false,true,2,true)
-				SetEntityCompletelyDisableCollision(Objects[Name],false,true)
-				SetModelAsNoLongerNeeded(Config["Model"])
-				SetEntityLodDist(Objects[Name],0xFFFF)
-			end
+		local Networked = vRPS.CreateObject(Config["Model"],Coords["x"],Coords["y"],Coords["z"],Name,Weapon)
+		if not Networked then return end
+
+		Objects[Name] = LoadNetwork(Networked)
+		while not DoesEntityExist(Objects[Name]) do
+			Wait(100)
 		end
+
+		AttachEntityToEntity(Objects[Name],Ped,Bone,Config["x"],Config["y"],Config["z"],Config["RotX"],Config["RotY"],Config["RotZ"],true,true,false,true,2,true)
+		SetEntityCompletelyDisableCollision(Objects[Name],false,true)
+		SetModelAsNoLongerNeeded(Config["Model"])
+		SetEntityLodDist(Objects[Name],0xFFFF)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

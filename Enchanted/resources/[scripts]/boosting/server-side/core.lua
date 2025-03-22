@@ -911,33 +911,37 @@ function Creative.CreateVehicle(Model,Class,Coords)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Vehicle = CreateVehicle(Model,Coords,true,true)
+		local CurrentTimer = os.time() + 10
+		local Vehicle = CreateVehicle(Model,Coords,true,false)
 
-		while not DoesEntityExist(Vehicle) do
-			Wait(1)
+		while not DoesEntityExist(Vehicle) or NetworkGetNetworkIdFromEntity(Vehicle) == 0 do
+			if os.time() >= CurrentTimer then
+				return false
+			end
+	
+			Wait(100)
 		end
 
-		if DoesEntityExist(Vehicle) then
-			local Plate = exports["inventory"]:GeneratePlate()
+		local Plate = exports["inventory"]:GeneratePlate()
 
-			Active[Passport]["Plate"] = Plate
-			SetVehicleNumberPlateText(Vehicle,Plate)
+		Active[Passport]["Plate"] = Plate
+		SetVehicleNumberPlateText(Vehicle,Plate)
+		SetEntityIgnoreRequestControlFilter(Vehicle,true)
 
-			Entity(Vehicle)["state"]:set("Fuel",100,true)
-			Entity(Vehicle)["state"]:set("Tower",true,true)
-			Entity(Vehicle)["state"]:set("Nitro",2000,true)
+		Entity(Vehicle)["state"]:set("Fuel",100,true)
+		Entity(Vehicle)["state"]:set("Tower",true,true)
+		Entity(Vehicle)["state"]:set("Nitro",2000,true)
 
-			TriggerEvent("inventory:Boosting",Plate,{
-				["Amount"] = 0,
-				["Source"] = source,
-				["Passport"] = Passport,
-				["Class"] = Class
-			})
+		TriggerEvent("inventory:Boosting",Plate,{
+			["Amount"] = 0,
+			["Source"] = source,
+			["Passport"] = Passport,
+			["Class"] = Class
+		})
 
-			TriggerClientEvent("NotifyPush",source,{ code = 31, title = "Informações do Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(Model).." - "..Plate, color = 44 })
+		TriggerClientEvent("NotifyPush",source,{ code = 31, title = "Informações do Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(Model).." - "..Plate, color = 44 })
 
-			return NetworkGetNetworkIdFromEntity(Vehicle)
-		end
+		return NetworkGetNetworkIdFromEntity(Vehicle)
 	end
 
 	return false

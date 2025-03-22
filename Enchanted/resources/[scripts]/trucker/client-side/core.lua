@@ -178,15 +178,15 @@ CreateThread(function()
 									local Heading = GetEntityHeading(Vehicle)
 									Plate = GetVehicleNumberPlateText(Vehicle)
 									local Coords = GetOffsetFromEntityInWorldCoords(Vehicle,0.0,-12.0,0.0)
-									local Exist,Networked = vGARAGE.ServerVehicle(Delivery[Service]["Trailer"],vec4(Coords["x"],Coords["y"],Coords["z"],Heading),nil,0,nil,1000,0,false)
+									local _,Networked = vGARAGE.ServerVehicle(Delivery[Service]["Trailer"],vec4(Coords["x"],Coords["y"],Coords["z"],Heading),nil,0,nil,1000,0,false)
+									if not Networked then return end
 
-									if Networked then
-										local Network = LoadNetwork(Networked)
-										if Network then
-											SetVehicleOnGroundProperly(Network)
-										end
+									local Entity = LoadNetwork(Networked)
+									while not DoesEntityExist(Entity) do
+										Wait(100)
 									end
 
+									SetVehicleOnGroundProperly(Entity)
 									Position = Position + 1
 									BlipMarked()
 								end

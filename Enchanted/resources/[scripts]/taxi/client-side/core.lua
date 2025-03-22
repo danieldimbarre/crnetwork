@@ -156,51 +156,46 @@ function CreatePassenger(Vehicle)
 	end
 
 	local Rand = math.random(#Models)
-	local Network = vRPS.CreateModels(Models[Rand],Locations[Selected]["Ped"]["x"],Locations[Selected]["Ped"]["y"],Locations[Selected]["Ped"]["z"])
-	if Network then
-		Walking = true
+	local Networked = vRPS.CreateModels(Models[Rand],Locations[Selected]["Ped"]["x"],Locations[Selected]["Ped"]["y"],Locations[Selected]["Ped"]["z"])
+	if not Networked then return end
 
-		SetTimeout(2500,function()
-			Current = LoadNetwork(Network)
-			if Current then
-				LocalPlayer["state"]:set("BlockLocked",true,false)
-				FreezeEntityPosition(Vehicle,true)
-				SetVehicleDoorsLocked(Vehicle,1)
-
-				SetTimeout(1000,function()
-					SetBlockingOfNonTemporaryEvents(Current,true)
-					SetEntityAsMissionEntity(Current,true,true)
-					SetModelAsNoLongerNeeded(Models[Rand])
-					SetEntityInvincible(Current,true)
-					SetPedKeepTask(Current,true)
-
-					while not IsPedSittingInVehicle(Current,Vehicle) do
-						if not IsPedWalking(Current) then
-							TaskEnterVehicle(Current,Vehicle,-1,2,1.0,8,0)
-						end
-
-						Wait(2500)
-					end
-
-					LocalPlayer["state"]:set("BlockLocked",false,false)
-					FreezeEntityPosition(Vehicle,false)
-					Lasted = Selected
-
-					repeat
-						if Lasted == Selected then
-							Selected = math.random(#Locations)
-						end
-
-						Wait(1)
-					until Lasted ~= Selected
-
-					Walking = false
-					MarkedPassenger()
-					PaymentActive = true
-				end)
-			end
-		end)
+	Current = LoadNetwork(Networked)
+	while not DoesEntityExist(Current) do
+		Wait(100)
 	end
+
+	LocalPlayer["state"]:set("BlockLocked",true,false)
+	SetBlockingOfNonTemporaryEvents(Current,true)
+	SetEntityAsMissionEntity(Current,true,true)
+	FreezeEntityPosition(Vehicle,true)
+	SetEntityInvincible(Current,true)
+	SetVehicleDoorsLocked(Vehicle,1)
+	SetPedKeepTask(Current,true)
+	Walking = true
+
+	while not IsPedSittingInVehicle(Current,Vehicle) do
+		if not IsPedWalking(Current) then
+			TaskEnterVehicle(Current,Vehicle,-1,2,1.0,8,0)
+		end
+
+		Wait(1000)
+	end
+
+	LocalPlayer["state"]:set("BlockLocked",false,false)
+	FreezeEntityPosition(Vehicle,false)
+	Lasted = Selected
+
+	repeat
+		if Lasted == Selected then
+			Selected = math.random(#Locations)
+		end
+
+		Wait(1)
+	until Lasted ~= Selected
+
+	Walking = false
+	MarkedPassenger()
+	PaymentActive = true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MARKEDPASSENGER

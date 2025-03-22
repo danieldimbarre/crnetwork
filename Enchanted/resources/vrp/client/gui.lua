@@ -77,7 +77,7 @@ end)
 -- ANDAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("andar",function(source,Message)
-	if not LocalPlayer["state"]["Walk"] and exports["chat"]:Open() then
+	if not LocalPlayer["state"]["Walk"] then
 		local Ped = PlayerPedId()
 
 		if Message[1] then
@@ -165,21 +165,23 @@ function tvRP.CreateObjects(Dict,Anim,Prop,Flag,Hands,Height,Pos1,Pos2,Pos3,Pos4
 
 	if not IsPedInAnyVehicle(Ped) then
 		local Coords = GetEntityCoords(Ped)
-		local Network = vRPS.CreateObject(Prop,Coords["x"],Coords["y"],Coords["z"])
-		if Network then
-			Object = LoadNetwork(Network)
-			if Object then
-				SetEntityLodDist(Object,0xFFFF)
-				SetModelAsNoLongerNeeded(Prop)
+		local Networked = vRPS.CreateObject(Prop,Coords["x"],Coords["y"],Coords["z"])
+		if not Networked then return end
 
-				if Height then
-					AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),Height,Pos1,Pos2,Pos3,Pos4,Pos5,true,true,false,true,1,true)
-				else
-					AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),0.0,0.0,0.0,0.0,0.0,0.0,true,true,false,true,2,true)
-				end
-			else
-				Object = nil
-			end
+		local Entity = LoadNetwork(Networked)
+		while not DoesEntityExist(Entity) do
+			Wait(100)
+		end
+
+		Object = Entity
+
+		SetEntityLodDist(Object,0xFFFF)
+		SetModelAsNoLongerNeeded(Prop)
+
+		if Height then
+			AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),Height,Pos1,Pos2,Pos3,Pos4,Pos5,true,true,false,true,1,true)
+		else
+			AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),0.0,0.0,0.0,0.0,0.0,0.0,true,true,false,true,2,true)
 		end
 	end
 end

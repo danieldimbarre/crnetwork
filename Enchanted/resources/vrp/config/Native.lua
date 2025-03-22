@@ -13,7 +13,7 @@ function LoadModel(Hash)
 	RequestModel(Hash)
 	local Looping = GetGameTimer()
 	while not HasModelLoaded(Hash) do
-		Wait(100)
+		Wait(10)
 
 		if GetGameTimer() - Looping > 1000 then
 			return false
@@ -33,7 +33,7 @@ function LoadAnim(Dict)
 	RequestAnimDict(Dict)
 	local Looping = GetGameTimer()
 	while not HasAnimDictLoaded(Dict) do
-		Wait(100)
+		Wait(10)
 
 		if GetGameTimer() - Looping > 1000 then
 			return false
@@ -53,7 +53,7 @@ function LoadTexture(Library)
 	local Looping = GetGameTimer()
 	RequestStreamedTextureDict(Library,false)
 	while not HasStreamedTextureDictLoaded(Library) do
-		Wait(100)
+		Wait(10)
 
 		if GetGameTimer() - Looping > 1000 then
 			return false
@@ -73,7 +73,7 @@ function LoadMovement(Library)
 	RequestAnimSet(Library)
 	local Looping = GetGameTimer()
 	while not HasAnimSetLoaded(Library) do
-		Wait(100)
+		Wait(10)
 
 		if GetGameTimer() - Looping > 1000 then
 			return false
@@ -93,7 +93,7 @@ function LoadPtfxAsset(Library)
 	RequestNamedPtfxAsset(Library)
 	local Looping = GetGameTimer()
 	while not HasNamedPtfxAssetLoaded(Library) do
-		Wait(100)
+		Wait(10)
 
 		if GetGameTimer() - Looping > 1000 then
 			return false
@@ -108,7 +108,7 @@ end
 function LoadNetwork(Network)
 	local Primary = GetGameTimer()
 	while not NetworkDoesNetworkIdExist(Network) do
-		Wait(100)
+		Wait(10)
 
 		if GetGameTimer() - Primary > 1000 then
 			return false
@@ -123,7 +123,7 @@ function LoadNetwork(Network)
 	local Secondary = GetGameTimer()
 	NetworkRequestControlOfEntity(Object)
 	while not NetworkHasControlOfEntity(Object) do
-		Wait(100)
+		Wait(10)
 
 		if GetGameTimer() - Secondary > 1000 then
 			return false
@@ -133,7 +133,7 @@ function LoadNetwork(Network)
 	local Tertiary = GetGameTimer()
 	SetEntityAsMissionEntity(Object,true,true)
 	while not IsEntityAMissionEntity(Object) do
-		Wait(100)
+		Wait(10)
 
 		if GetGameTimer() - Tertiary > 1000 then
 			return false

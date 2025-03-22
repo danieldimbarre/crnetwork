@@ -8,13 +8,12 @@ vRP.Prepare("characters/UpdateDaily","UPDATE characters SET Daily = @Daily WHERE
 vRP.Prepare("characters/SetMedicplan","UPDATE characters SET Medic = @Medic WHERE id = @Passport")
 vRP.Prepare("characters/AddBank","UPDATE characters SET Bank = Bank + @Bank WHERE id = @Passport")
 vRP.Prepare("characters/RemBank","UPDATE characters SET Bank = Bank - @Bank WHERE id = @Passport")
-vRP.Prepare("characters/SetGroupsTimer","UPDATE characters SET Groups = @Groups WHERE id = @Passport")
-vRP.Prepare("characters/Characters","SELECT * FROM characters WHERE License = @License and Deleted = 0")
+vRP.Prepare("characters/Characters","SELECT * FROM characters WHERE License = @License AND Deleted = 0")
 vRP.Prepare("characters/LastLogin","UPDATE characters SET Login = UNIX_TIMESTAMP() WHERE id = @Passport")
-vRP.Prepare("characters/UserLicense","SELECT * FROM characters WHERE id = @Passport and License = @License")
+vRP.Prepare("characters/UserLicense","SELECT * FROM characters WHERE id = @Passport AND License = @License")
 vRP.Prepare("characters/InsertPrison","UPDATE characters SET Prison = Prison + @Prison WHERE id = @Passport")
 vRP.Prepare("characters/ReducePrison","UPDATE characters SET Prison = Prison - @Prison WHERE id = @Passport")
-vRP.Prepare("characters/Count","SELECT COUNT(License) FROM characters WHERE License = @License and Deleted = 0")
+vRP.Prepare("characters/Count","SELECT COUNT(License) FROM characters WHERE License = @License AND Deleted = 0")
 vRP.Prepare("characters/UpdateName","UPDATE characters SET Name = @Name, Lastname = @Lastname WHERE id = @Passport")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE

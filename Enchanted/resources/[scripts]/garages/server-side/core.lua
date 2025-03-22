@@ -50,40 +50,42 @@ end)
 -- SERVERVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.ServerVehicle(Model,Coords,Plate,Nitrox,Doors,Body,Fuel,Seatbelt,Drift)
-	local Vehicle = CreateVehicle(Model,Coords,true,true)
+	local CurrentTimer = os.time() + 10
+	local Vehicle = CreateVehicle(Model,Coords,true,false)
 
-	while not DoesEntityExist(Vehicle) do
-		Wait(1)
-	end
-
-	if DoesEntityExist(Vehicle) then
-		if not Plate then
-			Plate = vRP.GeneratePlate()
+	while not DoesEntityExist(Vehicle) or NetworkGetNetworkIdFromEntity(Vehicle) == 0 do
+		if os.time() >= CurrentTimer then
+			return false
 		end
 
-		SetVehicleBodyHealth(Vehicle,Body + 0.0)
-		SetVehicleNumberPlateText(Vehicle,Plate)
+		Wait(100)
+	end
 
-		if Doors then
-			local Doors = json.decode(Doors)
-			if Doors ~= nil then
-				for Number,Status in pairs(Doors) do
-					if Status then
-						SetVehicleDoorBroken(Vehicle,parseInt(Number),true)
-					end
+	if not Plate then
+		Plate = vRP.GeneratePlate()
+	end
+
+	SetVehicleBodyHealth(Vehicle,Body + 0.0)
+	SetVehicleNumberPlateText(Vehicle,Plate)
+	SetEntityIgnoreRequestControlFilter(Vehicle,true)
+
+	if Doors then
+		local Doors = json.decode(Doors)
+		if Doors ~= nil then
+			for Number,Status in pairs(Doors) do
+				if Status then
+					SetVehicleDoorBroken(Vehicle,parseInt(Number),true)
 				end
 			end
 		end
-
-		Entity(Vehicle)["state"]:set("Fuel",Fuel or 100,true)
-		Entity(Vehicle)["state"]:set("Nitro",Nitrox or 0,true)
-		Entity(Vehicle)["state"]:set("Drift",Drift or false,true)
-		Entity(Vehicle)["state"]:set("Seatbelt",Seatbelt or false,true)
-
-		return true,NetworkGetNetworkIdFromEntity(Vehicle),Vehicle,Plate
 	end
 
-	return false
+	Entity(Vehicle)["state"]:set("Fuel",Fuel or 100,true)
+	Entity(Vehicle)["state"]:set("Nitro",Nitrox or 0,true)
+	Entity(Vehicle)["state"]:set("Drift",Drift or false,true)
+	Entity(Vehicle)["state"]:set("Seatbelt",Seatbelt or false,true)
+
+	return true,NetworkGetNetworkIdFromEntity(Vehicle),Vehicle,Plate
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:RESPAWNS

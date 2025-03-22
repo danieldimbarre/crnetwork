@@ -47,38 +47,42 @@ function Creative.CreateVehicle(Model,Coords)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Vehicle = CreateVehicle(Model,Coords,true,true)
+		local CurrentTimer = os.time() + 10
+		local Vehicle = CreateVehicle(Model,Coords,true,false)
 
-		while not DoesEntityExist(Vehicle) do
-			Wait(1)
+		while not DoesEntityExist(Vehicle) or NetworkGetNetworkIdFromEntity(Vehicle) == 0 do
+			if os.time() >= CurrentTimer then
+				return false
+			end
+	
+			Wait(100)
 		end
 
-		if DoesEntityExist(Vehicle) then
-			local Plate = exports["inventory"]:GeneratePlate()
+		local Plate = exports["inventory"]:GeneratePlate()
 
-			SetVehicleNumberPlateText(Vehicle,Plate)
-			SetVehicleCustomPrimaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
-			SetVehicleCustomSecondaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
+		SetVehicleNumberPlateText(Vehicle,Plate)
+		SetEntityIgnoreRequestControlFilter(Vehicle,true)
+		SetVehicleCustomPrimaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
+		SetVehicleCustomSecondaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
 
-			Entity(Vehicle)["state"]:set("Nitro",0,true)
-			Entity(Vehicle)["state"]:set("Fuel",100,true)
-			Entity(Vehicle)["state"]:set("Tower",true,true)
+		Entity(Vehicle)["state"]:set("Nitro",0,true)
+		Entity(Vehicle)["state"]:set("Fuel",100,true)
+		Entity(Vehicle)["state"]:set("Tower",true,true)
 
-			Dismantle[Plate] = source
+		Dismantle[Plate] = source
 
-			exports["vrp"]:CallPolice({
-				["Source"] = source,
-				["Passport"] = Passport,
-				["Permission"] = "Policia",
-				["Name"] = "Desmanche de Veículo",
-				["Vehicle"] = VehicleName(Model).." - "..Plate,
-				["Coords"] = Coords,
-				["Code"] = 31,
-				["Color"] = 44
-			})
+		exports["vrp"]:CallPolice({
+			["Source"] = source,
+			["Passport"] = Passport,
+			["Permission"] = "Policia",
+			["Name"] = "Desmanche de Veículo",
+			["Vehicle"] = VehicleName(Model).." - "..Plate,
+			["Coords"] = Coords,
+			["Code"] = 31,
+			["Color"] = 44
+		})
 
-			return NetworkGetNetworkIdFromEntity(Vehicle)
-		end
+		return NetworkGetNetworkIdFromEntity(Vehicle)
 	end
 
 	return false

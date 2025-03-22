@@ -89,9 +89,7 @@ AddEventHandler("propertys:RobberyItem",function(Number,Name)
 	end
 
 	local Locker = (Number == "Locker")
-	local Success = Locker and vRP.Safecrack(source,6) or vRP.Task(source,5,5000)
-
-	if not Success then
+	if (Locker and not vRP.Safecrack(source,6)) or vRP.Task(source,5,5000) then
 		if Lockpick and math.random(100) >= 95 then
 			vRP.RemoveItem(Passport,Lockpick.Item,1,true)
 		end
@@ -262,10 +260,7 @@ AddEventHandler("propertys:Buy",function(Name)
 		return false
 	end
 
-	local Markers = GlobalState.Markers
-	Markers[Name] = true
-	GlobalState.Markers = Markers
-
+	Lock[Name] = true
 	Saved[Name] = Interior
 	local Serial = PropertysSerials()
 	vRP.GiveItem(Passport,"propertys-"..Serial,3,true)
@@ -283,6 +278,10 @@ AddEventHandler("propertys:Buy",function(Name)
 		Vault = Informations[Interior].Vault or 0,
 		Fridge = Informations[Interior].Fridge or 0
 	})
+
+	local Markers = GlobalState.Markers
+	Markers[Name] = true
+	GlobalState.Markers = Markers
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:LOCK

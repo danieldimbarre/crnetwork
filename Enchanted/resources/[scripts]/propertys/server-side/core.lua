@@ -89,7 +89,7 @@ AddEventHandler("propertys:RobberyItem",function(Number,Name)
 	end
 
 	local Locker = (Number == "Locker")
-	if (Locker and not vRP.Safecrack(source,6)) or vRP.Task(source,5,5000) then
+	if (Locker and not vRP.Safecrack(source,6)) or not vRP.Task(source,5,5000) then
 		if Lockpick and math.random(100) >= 95 then
 			vRP.RemoveItem(Passport,Lockpick.Item,1,true)
 		end

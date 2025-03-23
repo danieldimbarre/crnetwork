@@ -51,7 +51,7 @@ AddEventHandler("inventory:Ration",function(Coords)
 		local Networked = vRPS.CreateModels("a_c_"..Model,SafeCoords["x"],SafeCoords["y"],SafeCoords["z"])
 		if not Networked then return end
 
-		local Entity = LoadNetwork(Networked)
+		Entity = LoadNetwork(Networked)
 		while not DoesEntityExist(Entity) do
 			Wait(100)
 		end

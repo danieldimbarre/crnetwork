@@ -28,10 +28,34 @@ CreateThread(function()
 	SetGameType(ServerName)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- USERPHONE
+-- CLEARINVENTORY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function vRP.UserPhone(Phone)
-	return vRP.Query("characters/Phone",{ Phone = Phone })[1] or false
+function vRP.ClearInventory(Passport,Ignore)
+	local Passport = parseInt(Passport)
+	local Inventory = vRP.Inventory(Passport)
+
+	exports["inventory"]:CleanWeapons(Passport)
+	TriggerEvent("DebugWeapons",Passport)
+	TriggerEvent("DebugObjects",Passport)
+
+	for _,v in pairs(Inventory) do
+		if not BlockDelete(v.item) then
+			vRP.RemoveItem(Passport,v.item,v.amount)
+		end
+	end
+
+	if not Ignore then
+		local Weight = 50
+		for Permission,Multiplier in pairs({ Ouro = 25, Prata = 15, Bronze = 5 }) do
+			if vRP.HasService(Passport,Permission) then
+				Weight = Weight - Multiplier
+			end
+		end
+
+		if Weight > 0 then
+			vRP.UpgradeWeight(Passport,Weight,"-")
+		end
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GENERATEPHONE
@@ -42,7 +66,7 @@ function GeneratePhone()
 
 	repeat
 		Phone = GenerateString("DDD-DDD")
-		Passport = vRP.UserPhone(Phone)
+		Passport = vRP.SingleQuery("characters/Phone",{ Phone = Phone })
 	until not Passport
 
 	return Phone
@@ -51,24 +75,23 @@ end
 -- PHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.Phone(Passport)
-	local PhoneNumber = "Inativo"
 	local source = vRP.Source(Passport)
-
 	if Characters[source] and Characters[source]["Phone"] then
-		PhoneNumber = Characters[source]["Phone"]
-	else
-		local Query = vRP.Query("characters/Person", { Passport = Passport })
-		if Query[1] and Query[1]["Phone"] then
-			PhoneNumber = Query[1]["Phone"]
-
-			if Characters[source] then
-				Characters[source]["Phone"] = PhoneNumber
-			end
-		else
-			PhoneNumber = GeneratePhone()
-			vRP.Query("characters/UpdatePhone",{ Passport = Passport, Phone = PhoneNumber })
-		end
+		return Characters[source]["Phone"]
 	end
+
+	local Consult = vRP.SingleQuery("characters/Person", { Passport = Passport })
+
+	if Consult and Consult.Phone then
+		if Characters[source] then
+			Characters[source]["Phone"] = Consult.Phone
+		end
+
+		return Consult.Phone
+	end
+
+	local PhoneNumber = GeneratePhone()
+	vRP.Query("characters/UpdatePhone",{ Passport = Passport, Phone = PhoneNumber })
 
 	return PhoneNumber
 end

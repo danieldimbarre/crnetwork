@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `Login` bigint(19) NOT NULL DEFAULT 0,
   `Sex` varchar(1) DEFAULT NULL,
   `Skin` varchar(50) NOT NULL DEFAULT 'mp_m_freemode_01',
-  `Avatar` text DEFAULT NULL,
   `Deleted` int(1) NOT NULL DEFAULT 0,
   `Phone` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -113,6 +112,15 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   `Price` bigint(19) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DROP TABLE IF EXISTS `avatars`;
+CREATE TABLE IF NOT EXISTS `avatars` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Passport` bigint(19) NOT NULL DEFAULT 0,
+  `Image` text DEFAULT NULL,
+  `Permission` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DROP TABLE IF EXISTS `mdt_creative_arrest`;
@@ -245,6 +253,17 @@ CREATE TABLE IF NOT EXISTS `mdt_creative_warning` (
   `Officer` bigint(19) NOT NULL DEFAULT 0,
   `Timestamp` bigint(19) NOT NULL DEFAULT 0,
   `Description` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DROP TABLE IF EXISTS `painel_creative_paramedic`;
+CREATE TABLE IF NOT EXISTS `painel_creative_paramedic` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Passport` bigint(19) NOT NULL DEFAULT 0,
+  `Doctor` bigint(19) NOT NULL DEFAULT 0,
+  `Timestamp` bigint(19) NOT NULL DEFAULT 0,
+  `Description` longtext DEFAULT NULL,
+  `Permission` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

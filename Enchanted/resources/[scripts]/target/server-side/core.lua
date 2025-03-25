@@ -81,7 +81,8 @@ function Creative.CheckIn()
 	local Valuation,Repose = 1000,1200
 	local Passport = vRP.Passport(source)
 	if Passport then
-		if vRP.Medicplan(source) then
+		local MedicPlan = vRP.DatatableInformation(Passport,"MedicPlan")
+		if MedicPlan and MedicPlan > os.time() then
 			Valuation,Repose = 500,600
 		end
 

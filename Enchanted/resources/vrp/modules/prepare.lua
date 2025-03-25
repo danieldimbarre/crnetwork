@@ -4,6 +4,7 @@
 vRP.Prepare("characters/Person","SELECT * FROM characters WHERE id = @Passport")
 vRP.Prepare("characters/Delete","UPDATE characters SET Deleted = 1 WHERE id = @Passport")
 vRP.Prepare("characters/SetSkin","UPDATE characters SET Skin = @Skin WHERE id = @Passport")
+vRP.Prepare("characters/UpdatePhone","UPDATE characters SET Phone = @Phone WHERE id = @Passport")
 vRP.Prepare("characters/UpdateDaily","UPDATE characters SET Daily = @Daily WHERE id = @Passport")
 vRP.Prepare("characters/SetMedicplan","UPDATE characters SET Medic = @Medic WHERE id = @Passport")
 vRP.Prepare("characters/AddBank","UPDATE characters SET Bank = Bank + @Bank WHERE id = @Passport")

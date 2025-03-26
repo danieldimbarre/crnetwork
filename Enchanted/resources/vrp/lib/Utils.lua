@@ -218,7 +218,7 @@ end
 function SplitUnique(Item)
 	local Name = splitString(Item,"-")
 
-	return Name[1]..":"..Name[3]
+	return Name[1] and Name[3] and Name[1]..":"..Name[3] or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPTIMIZE

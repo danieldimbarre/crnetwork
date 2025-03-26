@@ -9,7 +9,7 @@ function tvRP.ClosestVehicle(Radius)
 	local Coords = GetEntityCoords(Ped)
 	local GamePool = GetGamePool("CVehicle")
 
-	for _,Entity in pairs(GamePool) do
+	for _,Entity in ipairs(GamePool) do
 		local EntityCoords = GetEntityCoords(Entity)
 		local EntityDistance = #(Coords - EntityCoords)
 
@@ -26,31 +26,14 @@ end
 -- VEHICLELIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.VehicleList(Radius)
-	local Plate = ""
-	local Model = nil
-	local Class = false
-	local Vehicle = false
-	local Networked = false
 	local Ped = PlayerPedId()
-
-	if IsPedInAnyVehicle(Ped) then
-		Vehicle = GetVehiclePedIsUsing(Ped)
-	else
-		if not Radius then
-			Radius = 5.0
-		end
-
-		Vehicle = tvRP.ClosestVehicle(Radius + 0.0)
-	end
+	local Vehicle = IsPedInAnyVehicle(Ped) and GetVehiclePedIsUsing(Ped) or tvRP.ClosestVehicle(Radius or 5.0)
 
 	if Vehicle and DoesEntityExist(Vehicle) and IsEntityAVehicle(Vehicle) then
-		Networked = VehToNet(Vehicle)
-		Class = GetVehicleClass(Vehicle)
-		Model = GetEntityArchetypeName(Vehicle)
-		Plate = GetVehicleNumberPlateText(Vehicle)
+		return Vehicle,NetworkGetNetworkIdFromEntity(Vehicle),GetVehicleNumberPlateText(Vehicle),GetEntityArchetypeName(Vehicle),GetVehicleClass(Vehicle)
 	end
 
-	return Vehicle,Networked,Plate,Model,Class
+	return nil,nil,"",nil,false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLENAME
@@ -60,7 +43,7 @@ function tvRP.VehicleName()
 	if IsPedInAnyVehicle(Ped) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
 
-		return GetEntityArchetypeName(Vehicle),VehToNet(Vehicle),GetVehicleNumberPlateText(Vehicle)
+		return GetEntityArchetypeName(Vehicle),NetworkGetNetworkIdFromEntity(Vehicle),GetVehicleNumberPlateText(Vehicle)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

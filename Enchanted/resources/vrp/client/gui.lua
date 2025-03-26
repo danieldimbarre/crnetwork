@@ -151,7 +151,7 @@ end)
 function tvRP.CreateObjects(Dict,Anim,Prop,Flag,Hands,Height,Pos1,Pos2,Pos3,Pos4,Pos5)
 	local Ped = PlayerPedId()
 	if DoesEntityExist(Object) then
-		TriggerServerEvent("DeleteObject",ObjToNet(Object))
+		TriggerServerEvent("DeleteObject",NetworkGetNetworkIdFromEntity(Object))
 		Object = nil
 	end
 
@@ -209,7 +209,7 @@ function tvRP.Destroy(Mode)
 	AnimVars[3] = false
 
 	if DoesEntityExist(Object) then
-		TriggerServerEvent("DeleteObject",ObjToNet(Object))
+		TriggerServerEvent("DeleteObject",NetworkGetNetworkIdFromEntity(Object))
 		Object = nil
 	end
 

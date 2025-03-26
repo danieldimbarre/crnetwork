@@ -11,13 +11,14 @@ function LoadModel(Hash)
 	end
 
 	RequestModel(Hash)
-	local Looping = GetGameTimer()
+	local CurrentTimer = GetGameTimer()
 	while not HasModelLoaded(Hash) do
-		Wait(10)
-
-		if GetGameTimer() - Looping > 1000 then
+		RequestModel(Hash)
+		if (GetGameTimer() - CurrentTimer) > 1000 then
 			return false
 		end
+
+		Wait(100)
 	end
 
 	return true
@@ -31,13 +32,14 @@ function LoadAnim(Dict)
 	end
 
 	RequestAnimDict(Dict)
-	local Looping = GetGameTimer()
+	local CurrentTimer = GetGameTimer()
 	while not HasAnimDictLoaded(Dict) do
-		Wait(10)
-
-		if GetGameTimer() - Looping > 1000 then
+		RequestAnimDict(Dict)
+		if (GetGameTimer() - CurrentTimer) > 1000 then
 			return false
 		end
+
+		Wait(100)
 	end
 
 	return true
@@ -50,14 +52,15 @@ function LoadTexture(Library)
 		return true
 	end
 
-	local Looping = GetGameTimer()
+	local CurrentTimer = GetGameTimer()
 	RequestStreamedTextureDict(Library,false)
 	while not HasStreamedTextureDictLoaded(Library) do
-		Wait(10)
-
-		if GetGameTimer() - Looping > 1000 then
+		RequestStreamedTextureDict(Library,false)
+		if (GetGameTimer() - CurrentTimer) > 1000 then
 			return false
 		end
+
+		Wait(100)
 	end
 
 	return true
@@ -71,13 +74,14 @@ function LoadMovement(Library)
 	end
 
 	RequestAnimSet(Library)
-	local Looping = GetGameTimer()
+	local CurrentTimer = GetGameTimer()
 	while not HasAnimSetLoaded(Library) do
-		Wait(10)
-
-		if GetGameTimer() - Looping > 1000 then
+		RequestAnimSet(Library)
+		if (GetGameTimer() - CurrentTimer) > 1000 then
 			return false
 		end
+
+		Wait(100)
 	end
 
 	return true
@@ -91,13 +95,14 @@ function LoadPtfxAsset(Library)
 	end
 
 	RequestNamedPtfxAsset(Library)
-	local Looping = GetGameTimer()
+	local CurrentTimer = GetGameTimer()
 	while not HasNamedPtfxAssetLoaded(Library) do
-		Wait(10)
-
-		if GetGameTimer() - Looping > 1000 then
+		RequestNamedPtfxAsset(Library)
+		if (GetGameTimer() - CurrentTimer) > 1000 then
 			return false
 		end
+
+		Wait(100)
 	end
 
 	return true
@@ -106,41 +111,43 @@ end
 -- LOADNETWORK
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LoadNetwork(Network)
-	local Primary = GetGameTimer()
+	local CurrentTimer = GetGameTimer()
 	while not NetworkDoesNetworkIdExist(Network) do
-		Wait(10)
-
-		if GetGameTimer() - Primary > 1000 then
+		if (GetGameTimer() - CurrentTimer) > 1000 then
 			return false
 		end
+
+		Wait(100)
 	end
 
-	local Object = NetToEnt(Network)
-	if not DoesEntityExist(Object) then
+	local Entity = NetToEnt(Network)
+	if not DoesEntityExist(Entity) then
 		return false
 	end
 
-	local Secondary = GetGameTimer()
-	NetworkRequestControlOfEntity(Object)
-	while not NetworkHasControlOfEntity(Object) do
-		Wait(10)
-
-		if GetGameTimer() - Secondary > 1000 then
+	local CurrentTimer = GetGameTimer()
+	NetworkRequestControlOfEntity(Entity)
+	while not NetworkHasControlOfEntity(Entity) do
+		NetworkRequestControlOfEntity(Entity)
+		if (GetGameTimer() - CurrentTimer) > 1000 then
 			return false
 		end
+
+		Wait(100)
 	end
 
-	local Tertiary = GetGameTimer()
-	SetEntityAsMissionEntity(Object,true,true)
-	while not IsEntityAMissionEntity(Object) do
-		Wait(10)
-
-		if GetGameTimer() - Tertiary > 1000 then
+	local CurrentTimer = GetGameTimer()
+	SetEntityAsMissionEntity(Entity,true,true)
+	while not IsEntityAMissionEntity(Entity) do
+		SetEntityAsMissionEntity(Entity,true,true)
+		if (GetGameTimer() - CurrentTimer) > 1000 then
 			return false
 		end
+
+		Wait(100)
 	end
 
-	return Object,ObjToNet(Object)
+	return Entity,NetworkGetNetworkIdFromEntity(Entity)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKPOLICE

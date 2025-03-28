@@ -6908,6 +6908,11 @@
             This native gets an entity's population type.
             </summary>
         </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_ENTITY_REMOTE_SYNCED_SCENES_ALLOWED">
+            <summary>
+            GET_ENTITY_REMOTE_SYNCED_SCENES_ALLOWED
+            </summary>
+        </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_ENTITY_ROTATION">
             <summary>
             GET_ENTITY_ROTATION
@@ -8166,6 +8171,13 @@
             Sets what happens when the entity is orphaned and no longer has its original owner.
             
             **NOTE**: This native doesn't guarantee the persistence of the entity.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.SET_ENTITY_REMOTE_SYNCED_SCENES_ALLOWED">
+            <summary>
+            Enables or disables the owner check for the specified entity in network-synchronized scenes. When set to `false`, the entity cannot participate in synced scenes initiated by clients that do not own the entity.
+            
+            By default, this is `false` for all entities, meaning only the entity's owner can include it in networked synchronized scenes.
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_ENTITY_ROTATION">
@@ -10374,6 +10386,17 @@
             ```
             </returns>
         </member>
+        <member name="M:CitizenFX.Core.Native.API.GetEntityRemoteSyncedScenesAllowed(System.Int32)">
+            <summary>
+            GET_ENTITY_REMOTE_SYNCED_SCENES_ALLOWED
+            </summary>
+            <param name="entity">
+            The entity to get the flag for.
+            </param>
+            <returns>
+            Returns if the entity is allowed to participate in network-synchronized scenes initiated by clients that do not own the entity.
+            </returns>
+        </member>
         <member name="M:CitizenFX.Core.Native.API.GetEntityRotation(System.Int32)">
             <summary>
             GET_ENTITY_ROTATION
@@ -12401,6 +12424,18 @@
             </param>
             <param name="orphanMode">
             The mode that the server should use for determining if an entity should be removed.
+            </param>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.SetEntityRemoteSyncedScenesAllowed(System.Int32,System.Boolean)">
+            <summary>
+            Enables or disables the owner check for the specified entity in network-synchronized scenes. When set to `false`, the entity cannot participate in synced scenes initiated by clients that do not own the entity.
+            By default, this is `false` for all entities, meaning only the entity's owner can include it in networked synchronized scenes.
+            </summary>
+            <param name="entity">
+            The entity to set the flag for.
+            </param>
+            <param name="allow">
+            Whether to allow remote synced scenes for the entity.
             </param>
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetEntityRotation(System.Int32,System.Single,System.Single,System.Single,System.Int32,System.Boolean)">

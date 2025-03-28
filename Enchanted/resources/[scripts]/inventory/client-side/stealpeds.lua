@@ -17,14 +17,14 @@ CreateThread(function()
 			if Entitys and GetGameTimer() >= Timer and GetVehiclePedIsIn(Entitys,true) == 0 and not Entity(Entitys)["state"]["Steal"] then
 				Timer = GetGameTimer() + 5000
 
+				NetworkRequestControlOfEntity(Entitys)
+				while not NetworkHasControlOfEntity(Entitys) do
+					Wait(0)
+				end
+
 				ClearPedTasks(Entitys)
 				ClearPedSecondaryTask(Entitys)
 				ClearPedTasksImmediately(Entitys)
-
-				while not NetworkHasControlOfEntity(Entitys) do
-					NetworkRequestControlOfEntity(Entitys)
-					Wait(1)
-				end
 
 				TaskSetBlockingOfNonTemporaryEvents(Entitys,true)
 				SetBlockingOfNonTemporaryEvents(Entitys,true)

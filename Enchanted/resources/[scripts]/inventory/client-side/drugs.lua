@@ -58,14 +58,14 @@ CreateThread(function()
 						Progress = GetGameTimer() + (TimeDrugs * 1000)
 						Timer = GetGameTimer() + 5000
 
+						NetworkRequestControlOfEntity(Entitys)
+						while not NetworkHasControlOfEntity(Entitys) do
+							Wait(0)
+						end
+
 						ClearPedTasks(Entitys)
 						ClearPedSecondaryTask(Entitys)
 						ClearPedTasksImmediately(Entitys)
-
-						while not NetworkHasControlOfEntity(Entitys) do
-							NetworkRequestControlOfEntity(Entitys)
-							Wait(1)
-						end
 
 						TaskSetBlockingOfNonTemporaryEvents(Entitys,true)
 						SetBlockingOfNonTemporaryEvents(Entitys,true)
@@ -134,6 +134,8 @@ CreateThread(function()
 					end
 				end
 			end
+
+			::Scaped::
 		end
 
 		Wait(TimeDistance)

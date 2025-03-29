@@ -1377,6 +1377,17 @@ local List = {
 			["aluminum"] = 3
 		}
 	},
+	["gear"] = {
+		["Index"] = "gear",
+		["Name"] = "Engrenagem",
+		["Type"] = "Comum",
+		["Weight"] = 0.75,
+		["Economy"] = 125,
+		["Blueprint"] = true,
+		["Recycle"] = {
+			["aluminum"] = 5
+		}
+	},
 	["roadsigns"] = {
 		["Index"] = "roadsigns",
 		["Name"] = "Placas de Trânsito",
@@ -1400,6 +1411,13 @@ local List = {
 		["Recycle"] = {
 			["gunpowder"] = 1
 		}
+	},
+	["wheat"] = {
+		["Index"] = "wheat",
+		["Name"] = "Trigo",
+		["Type"] = "Comum",
+		["Weight"] = 0.05,
+		["Economy"] = 5
 	},
 	["scotchtape"] = {
 		["Index"] = "scotchtape",
@@ -3240,7 +3258,7 @@ local List = {
 	},
 	["bandage"] = {
 		["Index"] = "bandage",
-		["Name"] = "Bandagem Asséptica",
+		["Name"] = "Bandagem",
 		["Type"] = "Consumível",
 		["Weight"] = 0.25,
 		["Max"] = 3,
@@ -3841,7 +3859,7 @@ local List = {
 	},
 	["propertys"] = {
 		["Index"] = "propertys",
-		["Name"] = "Cartão de Propriedade",
+		["Name"] = "Chave de Ferro",
 		["Type"] = "Comum",
 		["Weight"] = 0.35,
 		["Delete"] = true,
@@ -4966,8 +4984,8 @@ local List = {
 	},
 	["blueprint_bandage"] = {
 		["Index"] = "blueprint",
-		["Name"] = "Aprendizado: Bandagem Asséptica",
-		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Bandagem Asséptica</epic>.",
+		["Name"] = "Aprendizado: Bandagem",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Bandagem</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 525
 		},
@@ -5018,6 +5036,18 @@ local List = {
 		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Corpo de Pistola</epic>.",
 		["Recycle"] = {
 			["blueprint_fragment"] = 525
+		},
+		["Type"] = "Consumível",
+		["Rarity"] = "epic",
+		["Weight"] = 0.0,
+		["Economy"] = 0
+	},
+	["blueprint_gear"] = {
+		["Index"] = "blueprint",
+		["Name"] = "Aprendizado: Engrenagem",
+		["Description"] = "Após a utilização deste fragmento você se especializa na produção de <epic>Engrenagem</epic>.",
+		["Recycle"] = {
+			["blueprint_fragment"] = 275
 		},
 		["Type"] = "Consumível",
 		["Rarity"] = "epic",

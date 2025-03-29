@@ -51,6 +51,13 @@ RegisterCommand("passport",function(source,Message)
 				exports["oxmysql"]:query_async("UPDATE vehicles SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
 			end
 
+			local NewEntitydata = "Personal:"..NewPassport
+			local ActualEntitydata = "Personal:"..OtherPassport
+			local Entitydata = exports["oxmysql"]:query_async("SELECT * FROM entitydata WHERE Name = ?",{ ActualEntitydata })
+			if Entitydata and #Entitydata > 0 then
+				exports["oxmysql"]:query_async("UPDATE entitydata SET Name = ? WHERE Name = ?",{ NewEntitydata,ActualEntitydata })
+			end
+
 			local Character = exports["oxmysql"]:query_async("SELECT * FROM characters WHERE id = ?",{ OtherPassport })
 			if Character and #Character > 0 then
 				exports["oxmysql"]:query_async("UPDATE characters SET id = ? WHERE id = ?",{ NewPassport,OtherPassport })
@@ -381,7 +388,7 @@ end)
 RegisterCommand("clearpermission",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasPermission(Passport,"Admin") then
-		local Keyboard = vRP.Primary(source,"Passaporte")
+		local Keyboard = vKEYBOARD.Primary(source,"Passaporte")
 		if Keyboard then
 			local OtherPassport = parseInt(Keyboard[1])
 			if vRP.Identity(OtherPassport) then
@@ -676,16 +683,16 @@ RegisterCommand("insertcron",function(source)
 
 			if not vRP.HasPermission(OtherPassport,Permission) then
 				vRP.SetPermission(OtherPassport,Permission)
-
-				if Mode == "Horas" then
-					Timer = Amount * 60
-				elseif Mode == "Dias" then
-					Timer = Amount * 1440
-				end
-
-				exports["crons"]:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission })
-				TriggerClientEvent("Notify",source,"Sucesso","Adição efetuada.","verde",5000)
 			end
+
+			if Mode == "Horas" then
+				Timer = Amount * 60
+			elseif Mode == "Dias" then
+				Timer = Amount * 1440
+			end
+
+			exports["crons"]:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission })
+			TriggerClientEvent("Notify",source,"Sucesso","Adição efetuada.","verde",5000)
 		end
 	end
 end)

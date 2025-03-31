@@ -269,63 +269,57 @@
         </member>
         <member name="M:CitizenFX.Server.Native.Natives.ApplyForceToEntity(System.Int32,System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
-            Applies a force to the specified entity.
-            
-            ```cpp
-            enum eForceType
-            {
-                MinForce = 0,
-                MaxForceRot = 1,
-                MinForce2 = 2,
-                MaxForceRot2 = 3,
-                ForceNoRot = 4,
-                ForceRotPlusForce = 5
+            cpp
+            enum eApplyForceTypes {
+                APPLY_TYPE_FORCE = 0,
+                APPLY_TYPE_IMPULSE = 1,
+                APPLY_TYPE_EXTERNAL_FORCE = 2,
+                APPLY_TYPE_EXTERNAL_IMPULSE = 3,
+                APPLY_TYPE_TORQUE = 4,
+                APPLY_TYPE_ANGULAR_IMPULSE = 5
             }
-            ```
-            
-            Research/documentation on the gtaforums can be found [here](https://gtaforums.com/topic/885669-precisely-define-object-physics/) and [here](https://gtaforums.com/topic/887362-apply-forces-and-momentums-to-entityobject/).
             </summary>
             <param name="entity">
-            The entity you want to apply a force on
+            The entity handle
             </param>
             <param name="forceType">
-            Refer to `eForceType`
+            The force type
             </param>
             <param name="x">
-            Force amount (X)
+            The x component of the force to apply
             </param>
             <param name="y">
-            Force amount (Y)
+            The y component of the force to apply
             </param>
             <param name="z">
-            Force amount (Z)
+            The z component of the force to apply
             </param>
             <param name="offX">
-            Rotation/offset force (X)
+            Offset from center of entity (X)
             </param>
             <param name="offY">
-            Rotation/offset force (Y)
+            Offset from center of entity (Y)
             </param>
             <param name="offZ">
-            Rotation/offset force (Z)
+            Offset from center of entity (Z)
             </param>
-            <param name="boneIndex">
-            (Often 0) Entity bone index
+            <param name="nComponent">
+            Component of the entity to apply the force too. Only matters for breakable or articulated (ragdoll) physics. 0 means the root or parent component
             </param>
-            <param name="isDirectionRel">
-            (Usually false) Vector defined in local (body-fixed) coordinate frame
+            <param name="bLocalForce">
+            Specifies whether the force vector passed in is in local or world coordinates. `true` means the force will get automatically transformed into world space before being applied
             </param>
-            <param name="ignoreUpVec">
-            (Usually true)
+            <param name="bLocalOffset">
+            Specifies whether the offset passed in is in local or world coordinates
             </param>
-            <param name="isForceRel">
-            (Usually true) When true, force gets multiplied with the objects mass and different objects will have the same acceleration
+            <param name="bScaleByMass">
+            Specifies whether to scale the force by mass
             </param>
-            <param name="p12">
-            (Usually false)
+            <param name="bPlayAudio">
+            Specifies whether to play audio events related to the force being applied. The audio will depend on the entity type. Currently vehicles are the only entity types supported, and will play a suspension squeal depending on the magnitude of the force
             </param>
-            <param name="p13">
-            (Usually true)
+            <param name="bScaleByTimeWarp">
+            Specifies whether to scale the force by time warp. Default is `true`
             </param>
         </member>
         <member name="M:CitizenFX.Server.Native.Natives.CanPlayerStartCommerceSession(CitizenFX.Core.CString)">
@@ -1373,7 +1367,7 @@
         <member name="M:CitizenFX.Server.Native.Natives.GetNumResourceMetadata(CitizenFX.Core.CString,CitizenFX.Core.CString)">
             <summary>
             Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
-            See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
+            See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
             </summary>
             <param name="resourceName">
             The resource name.
@@ -1658,10 +1652,55 @@
             Returns a valid Ped Entity ID if the passed `playerSrc` is valid, `0` if not.
             </returns>
         </member>
+        <member name="M:CitizenFX.Server.Native.Natives.GetPlayerPeerStatistics(CitizenFX.Core.CString,System.Int32)">
+            <summary>
+            ```cpp
+            const int ENET_PACKET_LOSS_SCALE = 65536;
+            
+            enum PeerStatistics
+            {
+            	// PacketLoss will only update once every 10 seconds, use PacketLossEpoch if you want the time
+            	// since the last time the packet loss was updated.
+            
+            	// the amount of packet loss the player has, needs to be scaled with PACKET_LOSS_SCALE
+            	PacketLoss = 0,
+            	// The variance in the packet loss
+            	PacketLossVariance = 1,
+            	// The time since the last packet update in ms, relative to the peers connection time
+            	PacketLossEpoch = 2,
+            	// The mean amount of time it takes for a packet to get to the client (ping)
+            	RoundTripTime = 3,
+            	// The variance in the round trip time
+            	RoundTripTimeVariance = 4,
+            	// Despite their name, these are only updated once every 5 seconds, you can get the last time this was updated with PacketThrottleEpoch
+            	// The last recorded round trip time of a packet
+            	LastRoundTripTime = 5,
+            	// The last round trip time variance
+            	LastRoundTripTimeVariance = 6,
+            	// The time since the last packet throttle update, relative to the peers connection time
+            	PacketThrottleEpoch = 7,
+            };
+            ```
+            
+            These statistics only update once every 10 seconds.
+            </summary>
+            <param name="playerSrc">
+            The player to get the stats of
+            </param>
+            <param name="peerStatistic">
+            The statistic to get, this will error if its out of range
+            </param>
+            <returns>
+            See `ENetStatisticType` for what this will return.
+            </returns>
+        </member>
         <member name="M:CitizenFX.Server.Native.Natives.GetPlayerPing(CitizenFX.Core.CString)">
             <summary>
-            GET_PLAYER_PING
+            See [GET_PLAYER_PEER_STATISTICS](#\_0x9A928294) if you want more detailed information, like packet loss, and packet/rtt variance
             </summary>
+            <returns>
+            Returns the mean amount of time a packet takes to get to the client
+            </returns>
         </member>
         <member name="M:CitizenFX.Server.Native.Natives.GetPlayerRoutingBucket(CitizenFX.Core.CString)">
             <summary>
@@ -1877,7 +1916,7 @@
         <member name="M:CitizenFX.Server.Native.Natives.GetResourceMetadata(CitizenFX.Core.CString,CitizenFX.Core.CString,System.Int32)">
             <summary>
             Gets the metadata value at a specified key/index from a resource's manifest.
-            See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
+            See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
             </summary>
             <param name="resourceName">
             The resource name.
@@ -4000,12 +4039,34 @@
             **1**: CTaskNMScriptControl: Hardcoded not to work in networked environments.
             **Else**: CTaskNMBalance
             </summary>
-            <param name="time1">
+            <param name="ped">
+            The ped to ragdoll.
+            </param>
+            <param name="minTime">
             Time(ms) Ped is in ragdoll mode; only applies to ragdoll types 0 and not 1.
+            </param>
+            <param name="bAbortIfInjured">
+            unused
+            </param>
+            <param name="bAbortIfDead">
+            unused
             </param>
         </member>
         <member name="M:CitizenFX.Server.Native.Natives.SetPedToRagdollWithFall(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
+            cpp
+            enum eNMFallType {
+                TYPE_FROM_HIGH = 0,
+                TYPE_OVER_WALL = 1,
+                TYPE_DOWN_STAIRS = 2,
+                TYPE_DIE_TYPES = 3,
+                TYPE_DIE_FROM_HIGH = 4,
+                TYPE_DIE_OVER_WALL = 5,
+                TYPE_DIE_DOWN_STAIRS = 6
+            }
+            ```
+            
+            ```
             Return variable is never used in R*'s scripts.  
             Not sure what p2 does. It seems like it would be a time judging by it's usage in R*'s scripts, but didn't seem to affect anything in my testings.  
             x, y, and z are coordinates, most likely to where the ped will fall.  
@@ -4014,6 +4075,42 @@
             (Simplified) Example of the usage of the function from R*'s scripts:  
             ped::set_ped_to_ragdoll_with_fall(ped, 1500, 2000, 1, -entity::get_entity_forward_vector(ped), 1f, 0f, 0f, 0f, 0f, 0f, 0f);
             </summary>
+            <param name="ped">
+            The ped to ragdoll.
+            </param>
+            <param name="nFallType">
+            The type of fall.
+            </param>
+            <param name="dirX">
+            The x direction of the fall.
+            </param>
+            <param name="dirY">
+            The y direction of the fall.
+            </param>
+            <param name="dirZ">
+            The z direction of the fall.
+            </param>
+            <param name="fGroundHeight">
+            The ground height (z).
+            </param>
+            <param name="grab1X">
+            unused
+            </param>
+            <param name="grab1Y">
+            unused
+            </param>
+            <param name="grab1Z">
+            unused
+            </param>
+            <param name="grab2X">
+            unused
+            </param>
+            <param name="grab2Y">
+            unused
+            </param>
+            <param name="grab2Z">
+            unused
+            </param>
         </member>
         <member name="M:CitizenFX.Server.Native.Natives.SetPlayerControl(CitizenFX.Core.CString,System.Boolean,System.Int32)">
             <summary>
@@ -4826,21 +4923,15 @@
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.APPLY_FORCE_TO_ENTITY">
             <summary>
-            Applies a force to the specified entity.
-            
-            ```cpp
-            enum eForceType
-            {
-                MinForce = 0,
-                MaxForceRot = 1,
-                MinForce2 = 2,
-                MaxForceRot2 = 3,
-                ForceNoRot = 4,
-                ForceRotPlusForce = 5
+            cpp
+            enum eApplyForceTypes {
+                APPLY_TYPE_FORCE = 0,
+                APPLY_TYPE_IMPULSE = 1,
+                APPLY_TYPE_EXTERNAL_FORCE = 2,
+                APPLY_TYPE_EXTERNAL_IMPULSE = 3,
+                APPLY_TYPE_TORQUE = 4,
+                APPLY_TYPE_ANGULAR_IMPULSE = 5
             }
-            ```
-            
-            Research/documentation on the gtaforums can be found [here](https://gtaforums.com/topic/885669-precisely-define-object-physics/) and [here](https://gtaforums.com/topic/887362-apply-forces-and-momentums-to-entityobject/).
             </summary>
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.CAN_PLAYER_START_COMMERCE_SESSION">
@@ -5427,7 +5518,7 @@
         <member name="F:CitizenFX.Server.Native.Hash.GET_NUM_RESOURCE_METADATA">
             <summary>
             Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
-            See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
+            See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
             </summary>
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.GET_NUM_RESOURCES">
@@ -5584,9 +5675,42 @@
             Used to get the player's Ped Entity ID when a valid `playerSrc` is passed.
             </summary>
         </member>
+        <member name="F:CitizenFX.Server.Native.Hash.GET_PLAYER_PEER_STATISTICS">
+            <summary>
+            ```cpp
+            const int ENET_PACKET_LOSS_SCALE = 65536;
+            
+            enum PeerStatistics
+            {
+            	// PacketLoss will only update once every 10 seconds, use PacketLossEpoch if you want the time
+            	// since the last time the packet loss was updated.
+            
+            	// the amount of packet loss the player has, needs to be scaled with PACKET_LOSS_SCALE
+            	PacketLoss = 0,
+            	// The variance in the packet loss
+            	PacketLossVariance = 1,
+            	// The time since the last packet update in ms, relative to the peers connection time
+            	PacketLossEpoch = 2,
+            	// The mean amount of time it takes for a packet to get to the client (ping)
+            	RoundTripTime = 3,
+            	// The variance in the round trip time
+            	RoundTripTimeVariance = 4,
+            	// Despite their name, these are only updated once every 5 seconds, you can get the last time this was updated with PacketThrottleEpoch
+            	// The last recorded round trip time of a packet
+            	LastRoundTripTime = 5,
+            	// The last round trip time variance
+            	LastRoundTripTimeVariance = 6,
+            	// The time since the last packet throttle update, relative to the peers connection time
+            	PacketThrottleEpoch = 7,
+            };
+            ```
+            
+            These statistics only update once every 10 seconds.
+            </summary>
+        </member>
         <member name="F:CitizenFX.Server.Native.Hash.GET_PLAYER_PING">
             <summary>
-            GET_PLAYER_PING
+            See [GET_PLAYER_PEER_STATISTICS](#\_0x9A928294) if you want more detailed information, like packet loss, and packet/rtt variance
             </summary>
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.GET_PLAYER_ROUTING_BUCKET">
@@ -5708,7 +5832,7 @@
         <member name="F:CitizenFX.Server.Native.Hash.GET_RESOURCE_METADATA">
             <summary>
             Gets the metadata value at a specified key/index from a resource's manifest.
-            See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
+            See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
             </summary>
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.GET_RESOURCE_PATH">
@@ -7230,6 +7354,19 @@
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.SET_PED_TO_RAGDOLL_WITH_FALL">
             <summary>
+            cpp
+            enum eNMFallType {
+                TYPE_FROM_HIGH = 0,
+                TYPE_OVER_WALL = 1,
+                TYPE_DOWN_STAIRS = 2,
+                TYPE_DIE_TYPES = 3,
+                TYPE_DIE_FROM_HIGH = 4,
+                TYPE_DIE_OVER_WALL = 5,
+                TYPE_DIE_DOWN_STAIRS = 6
+            }
+            ```
+            
+            ```
             Return variable is never used in R*'s scripts.  
             Not sure what p2 does. It seems like it would be a time judging by it's usage in R*'s scripts, but didn't seem to affect anything in my testings.  
             x, y, and z are coordinates, most likely to where the ped will fall.  

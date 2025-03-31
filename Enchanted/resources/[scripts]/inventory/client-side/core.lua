@@ -193,7 +193,7 @@ function Creative.Tyres()
 				if Selected ~= -1 then
 					local CoordsWheel = GetWorldPositionOfEntityBone(Vehicle,Selected)
 					if #(Coords - CoordsWheel) <= 1.0 and GetTyreHealth(Vehicle,Tyre) ~= 1000.0 then
-						return Vehicle,Tyre,VehToNet(Vehicle),GetVehicleNumberPlateText(Vehicle),Model
+						return Vehicle,Tyre,NetworkGetNetworkIdFromEntity(Vehicle),GetVehicleNumberPlateText(Vehicle),Model
 					end
 				end
 			end

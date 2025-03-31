@@ -266,32 +266,36 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:CreateWeapon")
 AddEventHandler("inventory:CreateWeapon",function(Name)
-	local Name = SplitOne(Name)
-	if Config[Name] and not Objects[Name] then
-		local Weapon = false
-		local Ped = PlayerPedId()
-		local Config = Config[Name]
-		local Coords = GetEntityCoords(Ped)
-		local Bone = GetPedBoneIndex(Ped,Config["Bone"])
-
-		if Skins[Name] then
-			local Hash = GetHashKey(Skins[Name])
-			Weapon = GetWeaponComponentTypeModel(Hash)
-		end
-
-		local Networked = vRPS.CreateObject(Config["Model"],Coords["x"],Coords["y"],Coords["z"],Name,Weapon)
-		if not Networked then return end
-
-		Objects[Name] = LoadNetwork(Networked)
-		while not DoesEntityExist(Objects[Name]) do
-			Wait(100)
-		end
-
-		AttachEntityToEntity(Objects[Name],Ped,Bone,Config["x"],Config["y"],Config["z"],Config["RotX"],Config["RotY"],Config["RotZ"],true,true,false,true,2,true)
-		SetEntityCompletelyDisableCollision(Objects[Name],false,true)
-		SetModelAsNoLongerNeeded(Config["Model"])
-		SetEntityLodDist(Objects[Name],0xFFFF)
+	local WeaponName = SplitOne(Name)
+	if not Config[WeaponName] or Objects[WeaponName] then
+		return false
 	end
+
+	local WeaponModel = nil
+	local Ped = PlayerPedId()
+	local Data = Config[WeaponName]
+	local Coords = GetEntityCoords(Ped)
+	local Bone = GetPedBoneIndex(Ped,Data.Bone)
+
+	if Skins[WeaponName] then
+		local Hash = GetHashKey(Skins[WeaponName])
+		WeaponModel = GetWeaponComponentTypeModel(Hash)
+	end
+
+	local Networked = vRPS.CreateObject(Data.Model,Coords.x,Coords.y,Coords.z,WeaponName,WeaponModel)
+	if not Networked then
+		return false
+	end
+
+	Objects[WeaponName] = LoadNetwork(Networked)
+	while not DoesEntityExist(Objects[WeaponName]) do
+		Wait(100)
+	end
+
+	SetEntityCollision(Objects[WeaponName],false,false)
+	SetEntityCompletelyDisableCollision(Objects[WeaponName],false,true)
+	AttachEntityToEntity(Objects[WeaponName],Ped,Bone,Data.x,Data.y,Data.z,Data.RotX,Data.RotY,Data.RotZ,true,true,false,false,2,true)
+	SetModelAsNoLongerNeeded(Data.Model)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTOREWEAPON
@@ -360,13 +364,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:CLEANWEAPONS
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("inventory:CleanWeapons",function()
+AddEventHandler("inventory:CleanWeapons",function(Ignore)
 	if Weapon ~= "" then
 		local Ped = PlayerPedId()
-		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
 
-		if vSERVER.PreventWeapons(Weapon,Ammo) then
-			TriggerEvent("inventory:CreateWeapon",Weapon)
+		if not Ignore then
+			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+			if vSERVER.PreventWeapons(Weapon,Ammo) then
+				TriggerEvent("inventory:CreateWeapon",Weapon)
+			end
 		end
 
 		TriggerEvent("Weapon","")

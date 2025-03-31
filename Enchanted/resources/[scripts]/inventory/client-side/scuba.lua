@@ -9,12 +9,12 @@ ScubaTank = nil
 RegisterNetEvent("inventory:ScubaRemove")
 AddEventHandler("inventory:ScubaRemove",function()
 	if ScubaMask and DoesEntityExist(ScubaMask) then
-		TriggerServerEvent("DeleteObject",ObjToNet(ScubaMask))
+		TriggerServerEvent("DeleteObject",NetworkGetNetworkIdFromEntity(ScubaMask))
 		ScubaMask = nil
 	end
 
 	if ScubaTank and DoesEntityExist(ScubaTank) then
-		TriggerServerEvent("DeleteObject",ObjToNet(ScubaTank))
+		TriggerServerEvent("DeleteObject",NetworkGetNetworkIdFromEntity(ScubaTank))
 		ScubaTank = nil
 	end
 

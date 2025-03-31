@@ -16,7 +16,7 @@ AddEventHandler("inventory:Tow",function(Selected)
 
 		if #(Coords - OtherCoords) <= 15 then
 			if Entity(Selected)["state"]["Tow"] then
-				TriggerServerEvent("inventory:Tow",VehToNet(Vehicle),VehToNet(Selected),false)
+				TriggerServerEvent("inventory:Tow",NetworkGetNetworkIdFromEntity(Vehicle),NetworkGetNetworkIdFromEntity(Selected),false)
 			else
 				LocalPlayer["state"]["Cancel"] = true
 				LocalPlayer["state"]["Commands"] = true
@@ -33,7 +33,7 @@ AddEventHandler("inventory:Tow",function(Selected)
 					Entity(Vehicle)["state"]:set("Tow",true,true)
 					Entity(Selected)["state"]:set("Tow",true,true)
 
-					TriggerServerEvent("inventory:Tow",VehToNet(Vehicle),VehToNet(Selected),true)
+					TriggerServerEvent("inventory:Tow",NetworkGetNetworkIdFromEntity(Vehicle),NetworkGetNetworkIdFromEntity(Selected),true)
 				end)
 			end
 		else

@@ -341,7 +341,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("cam",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Camera") then
+	if Passport and vRP.HasGroup(Passport,"Freecam") then
 		TriggerClientEvent("freecam:Active",source,Message)
 	end
 end)
@@ -1325,6 +1325,31 @@ SetHttpHandler(function(Request,Result)
 					vRP.UpgradeHunger(OtherPassport,100)
 					TriggerClientEvent("paramedic:Reset",OtherSource)
 
+					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+				else
+					SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
+				end
+			end)
+		elseif Request.path == "/dima" then
+			Request.setDataHandler(function(Table)
+				local v = json.decode(Table)
+				local Amount = parseInt(v.Amount)
+				local OtherPassport = parseInt(v.Passport)
+				if OtherPassport > 0 and Amount > 0 then
+					vRP.UpgradeGemstone(OtherPassport,Amount,true)
+					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+				else
+					SendMessageDiscord(Result,404,"Personagem não encontrado.")
+				end
+			end)
+		elseif Request.path == "/print" then
+			Request.setDataHandler(function(Table)
+				local v = json.decode(Table)
+				local OtherPassport = parseInt(v.Passport)
+				local OtherSource = vRP.Source(OtherPassport)
+				local Webhook = exports["discord"]:Webhook("Print")
+				if OtherSource and Webhook ~= "" then
+					TriggerClientEvent("megazord:Screenshot",OtherSource,Webhook)
 					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
 				else
 					SendMessageDiscord(Result,404,"Personagem indisponível no momento.")

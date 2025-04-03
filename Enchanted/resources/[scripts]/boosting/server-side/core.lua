@@ -926,7 +926,6 @@ function Creative.CreateVehicle(Model,Class,Coords)
 
 		Active[Passport]["Plate"] = Plate
 		SetVehicleNumberPlateText(Vehicle,Plate)
-		SetEntityIgnoreRequestControlFilter(Vehicle,true)
 
 		Entity(Vehicle)["state"]:set("Fuel",100,true)
 		Entity(Vehicle)["state"]:set("Tower",true,true)

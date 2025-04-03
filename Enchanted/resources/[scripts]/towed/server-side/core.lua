@@ -45,7 +45,6 @@ function Creative.Vehicle(Model,Locale,Destiny)
 
 	SetVehicleBodyHealth(Vehicle,10.0)
 	SetVehicleNumberPlateText(Vehicle,Plate)
-	SetEntityIgnoreRequestControlFilter(Vehicle,true)
 
 	Entity(Vehicle).state:set("Fuel",0,true)
 	Entity(Vehicle).state:set("Nitro",0,true)

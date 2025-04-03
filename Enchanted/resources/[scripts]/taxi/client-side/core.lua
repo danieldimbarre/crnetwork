@@ -53,7 +53,7 @@ AddEventHandler("taxi:Init",function()
 	if Current and DoesEntityExist(Current) then
 		SetPedKeepTask(Current,false)
 		SetEntityAsMissionEntity(Current,false,false)
-		TriggerServerEvent("DeletePed",PedToNet(Current))
+		TriggerServerEvent("DeletePed",NetworkGetNetworkIdFromEntity(Current))
 		Current = nil
 	end
 
@@ -99,9 +99,9 @@ CreateThread(function()
 
 						if DoesEntityExist(Current) then
 							vSERVER.Payment(Selected)
-							Passenger = PedToNet(Current)
 							TaskLeaveVehicle(Current,Vehicle,1)
 							TaskWanderStandard(Current,10.0,10)
+							Passenger = NetworkGetNetworkIdFromEntity(Current)
 						end
 
 						FreezeEntityPosition(Vehicle,false)
@@ -144,7 +144,7 @@ function CreatePassenger(Vehicle)
 	if Current and DoesEntityExist(Current) then
 		SetPedKeepTask(Current,false)
 		SetEntityAsMissionEntity(Current,false,false)
-		TriggerServerEvent("DeletePed",PedToNet(Current))
+		TriggerServerEvent("DeletePed",NetworkGetNetworkIdFromEntity(Current))
 		Current = nil
 	end
 

@@ -95,6 +95,8 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 		return false
 	end
 
+	local Name = FirstName(Name)
+	local Lastname = FirstName(Lastname)
 	local Account = vRP.Account(License)
 	if Account and Account.Characters <= vRP.Scalar("characters/Count",{ License = License }) then
 		TriggerClientEvent("Notify",source,"Atenção","Limite de personagem atingido.","amarelo",5000)

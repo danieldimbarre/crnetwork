@@ -67,7 +67,6 @@ function Creative.ServerVehicle(Model,Coords,Plate,Nitrox,Doors,Body,Fuel,Seatbe
 
 	SetVehicleBodyHealth(Vehicle,Body + 0.0)
 	SetVehicleNumberPlateText(Vehicle,Plate)
-	SetEntityIgnoreRequestControlFilter(Vehicle,true)
 
 	if Doors then
 		local Doors = json.decode(Doors)

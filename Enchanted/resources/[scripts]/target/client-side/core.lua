@@ -559,10 +559,8 @@ function TargetEnable()
 
 								Menu[#Menu + 1] = { event = "engine:Vehrify", label = "Verificar", tunnel = "client" }
 							else
-								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 then
-									if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_CROWBAR") then
-										Menu[#Menu + 1] = { event = "inventory:StealTrunk", label = "Arrombar Porta-Malas", tunnel = "server" }
-									end
+								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 and IsVehicleSeatFree(Entitys,-1) and GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_CROWBAR") then
+									Menu[#Menu + 1] = { event = "inventory:StealTrunk", label = "Arrombar Porta-Malas", tunnel = "server" }
 								end
 
 								if Selected[2] == "stockade" then

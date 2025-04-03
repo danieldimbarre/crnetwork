@@ -1285,33 +1285,49 @@ end)
 SetHttpHandler(function(Request,Result)
 	if Request.headers.Auth == "SEUTOKENAUTH" then
 		if Request.path == "/boosteron" then
-			Request.setDataHandler(function(Body)
-				local Table = json.decode(Body)
-				local Account = vRP.Discord(Table.Discord)
+			Request.setDataHandler(function(Table)
+				local v = json.decode(Table)
+				local Account = vRP.Discord(v.Discord)
 				if Account then
-					local Consult = vRP.Query("characters/Characters",{ License = Account.License })
-					for _,v in pairs(Consult) do
-						vRP.SetPermission(v.id,"Booster")
+					local Consult = vRP.SingleQuery("characters/Characters",{ License = Account.License })
+					if Consult and Consult.id then
+						vRP.SetPermission(Consult.id,"Booster")
 					end
 
-					SendMessageDiscord(Result,200,"Benefícios entregues: <@"..Table.Discord..">")
+					SendMessageDiscord(Result,200,"Benefícios entregues: <@"..v.Discord..">")
 				else
 					SendMessageDiscord(Result,404,"Usuário não encontrado.")
 				end
 			end)
 		elseif Request.path == "/boosteroff" then
-			Request.setDataHandler(function(Body)
-				local Table = json.decode(Body)
-				local Account = vRP.Discord(Table.Discord)
+			Request.setDataHandler(function(Table)
+				local v = json.decode(Table)
+				local Account = vRP.Discord(v.Discord)
 				if Account then
-					local Consult = vRP.Query("characters/Characters",{ License = Account.License })
-					for _,v in pairs(Consult) do
-						vRP.RemovePermission(v.id,"Booster")
+					local Consult = vRP.SingleQuery("characters/Characters",{ License = Account.License })
+					if Consult and Consult.id then
+						vRP.RemovePermission(Consult.id,"Booster")
 					end
 
-					SendMessageDiscord(Result,200,"Benefícios removidos: <@"..Table.Discord..">")
+					SendMessageDiscord(Result,200,"Benefícios removidos: <@"..v.Discord..">")
 				else
 					SendMessageDiscord(Result,404,"Usuário não encontrado.")
+				end
+			end)
+		elseif Request.path == "/god" then
+			Request.setDataHandler(function(Table)
+				local v = json.decode(Table)
+				local OtherPassport = parseInt(v.Passport)
+				local OtherSource = vRP.Source(OtherPassport)
+				if OtherSource then
+					vRP.Revive(OtherSource,300)
+					vRP.UpgradeThirst(OtherPassport,100)
+					vRP.UpgradeHunger(OtherPassport,100)
+					TriggerClientEvent("paramedic:Reset",OtherSource)
+
+					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+				else
+					SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
 				end
 			end)
 		else

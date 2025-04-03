@@ -150,7 +150,7 @@ CreateThread(function()
 	while true do
 		local TimeDistance = 999
 		if Package then
-			local Vehicle = GetPlayersLastVehicle()
+			local Vehicle = GetLastDrivenVehicle()
 			if IsEntityAVehicle(Vehicle) and GetEntityArchetypeName(Vehicle) == "packer" then
 				local Ped = PlayerPedId()
 				local Coords = GetEntityCoords(Ped)
@@ -192,7 +192,7 @@ CreateThread(function()
 								end
 							else
 								if Position == 2 then
-									if not IsPedInAnyVehicle(Ped) and IsControlJustPressed(1,38) then
+									if not IsPedInAnyVehicle(Ped) and IsControlJustPressed(1,38) and GetVehicleNumberPlateText(Vehicle) == Plate then
 										local Vehicle,Network,Platex,Model = vRP.VehicleList(10)
 										if Vehicle and Model == Delivery[Service]["Trailer"] then
 											TriggerEvent("Notify","Aviso","Volte para receber o pagamento.","amarelo",5000)

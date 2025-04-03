@@ -31,7 +31,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("me",function(source,Message,History)
 	local Passport = vRP.Passport(source)
-	if Passport and Message[1] and exports["chat"]:Open(source) then
+	if Passport and Message[1] then
 		local Message = string.sub(History:sub(4),1,100)
 
 		local Players = vRPC.Players(source)
@@ -95,7 +95,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("e",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and exports["chat"]:Open(source) and vRP.GetHealth(source) > 100 then
+	if Passport and vRP.GetHealth(source) > 100 then
 		if Message[2] and Message[2] == "friend" then
 			local ClosestPed = vRPC.ClosestPed(source)
 			if ClosestPed and vRP.GetHealth(ClosestPed) > 100 and not Player(ClosestPed)["state"]["Handcuff"] then
@@ -114,7 +114,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("e2",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and exports["chat"]:Open(source) and (vRP.HasService(Passport,"Admin") or vRP.HasService(Passport,"Paramedico")) then
+	if Passport and (vRP.HasService(Passport,"Admin") or vRP.HasService(Passport,"Paramedico")) then
 		local ClosestPed = vRPC.ClosestPed(source)
 		if ClosestPed then
 			TriggerClientEvent("emotes",ClosestPed,Message[1])
@@ -126,7 +126,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("e3",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and exports["chat"]:Open(source) and vRP.HasGroup(Passport,"Admin",2) then
+	if Passport and vRP.HasGroup(Passport,"Admin",2) then
 		local Players = vRPC.ClosestPeds(source,50)
 		for _,v in pairs(Players) do
 			async(function()

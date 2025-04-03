@@ -112,29 +112,6 @@ function Creative.CheckIn()
 	return Return
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- TARGET:MEDICPLAN
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("target:Medicplan")
-AddEventHandler("target:Medicplan",function(OtherSource)
-	local source = source
-	local Passport = vRP.Passport(source)
-	local OtherPassport = vRP.Passport(OtherSource)
-	if Passport and OtherPassport then
-		if not vRP.Medicplan(OtherSource) then
-			if vRP.Request(OtherSource,"Centro Médico","Deseja assinar o plano médico por <b>$10.000</b>?") then
-				if vRP.PaymentFull(OtherPassport,10000) then
-					TriggerClientEvent("Notify",source,"Centro Médico","Plano ativado com sucesso.","hospital",5000)
-					vRP.SetMedicplan(OtherSource,OtherPassport)
-				else
-					TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",5000)
-				end
-			end
-		else
-			TriggerClientEvent("Notify",source,"Atenção","Já possui um plano ativo.","amarelo",5000)
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- TARGET:REPOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("target:Repose")

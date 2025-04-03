@@ -341,7 +341,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 			Tyres[Number] = (GetTyreHealth(Vehicle,Number) ~= 1000.0 and true or false)
 		end
 
-		vSERVER.Delete(VehToNet(Vehicle),Doors,Tyres,GetVehicleNumberPlateText(Vehicle),Opened)
+		vSERVER.Delete(NetworkGetNetworkIdFromEntity(Vehicle),Doors,Tyres,GetVehicleNumberPlateText(Vehicle),Opened)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

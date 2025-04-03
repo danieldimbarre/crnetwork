@@ -507,13 +507,15 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("AddTaxs",function(Passport,source,Name,Valuation,Message)
 	local Valuation = Valuation * 0.1
-	for Permission,Multiplier in pairs({ Ouro = 0.075, Prata = 0.050, Bronze = 0.025 }) do
+	for Permission,Multiplier in pairs({ Ouro = 0.65, Prata = 0.75, Bronze = 0.85 }) do
 		if vRP.HasService(Passport,Permission) then
-			Valuation = Valuation * (1 - Multiplier)
+			Valuation = Valuation * Multiplier
 		end
 	end
 
-	vRP.Query("taxs/Add",{ Passport = Passport, Name = Name, Date = os.date("%d/%m/%Y"), Hour = os.date("%H:%M"), Price = parseInt(Valuation), Message = Message })
+	if Valuation > 0 then
+		vRP.Query("taxs/Add",{ Passport = Passport, Name = Name, Date = os.date("%d/%m/%Y"), Hour = os.date("%H:%M"), Price = parseInt(Valuation), Message = Message })
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDTAXS

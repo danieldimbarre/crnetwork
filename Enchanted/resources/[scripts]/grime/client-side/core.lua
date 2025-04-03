@@ -74,7 +74,7 @@ CreateThread(function()
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
 		if Active and not IsPedInAnyVehicle(Ped) then
-			local Vehicle = GetPlayersLastVehicle()
+			local Vehicle = GetLastDrivenVehicle()
 			if GetEntityArchetypeName(Vehicle) == Model then
 				local Coords = GetEntityCoords(Ped)
 				local Distance = #(Coords - Locations[Selected])

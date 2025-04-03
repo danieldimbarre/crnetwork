@@ -95,7 +95,7 @@ CreateThread(function()
 				if #(Coords - Locations[Locale][Destiny]["xyz"]) <= 100 then
 					local Networked,Plate = vSERVER.Vehicle(ModelSelected,Locale,Destiny)
 					if not Networked then return end
-		
+
 					local Entity = LoadNetwork(Networked)
 					while not DoesEntityExist(Entity) do
 						Wait(100)

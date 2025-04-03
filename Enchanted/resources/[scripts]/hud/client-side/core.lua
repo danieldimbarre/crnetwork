@@ -312,13 +312,11 @@ end)
 -- HUD
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("hud",function()
-	if exports["chat"]:Open() then
-		Display = not Display
-		SendNUIMessage({ Action = "Body", Payload = Display })
+	Display = not Display
+	SendNUIMessage({ Action = "Body", Payload = Display })
 
-		if not Display and IsMinimapRendering() then
-			DisplayRadar(false)
-		end
+	if not Display and IsMinimapRendering() then
+		DisplayRadar(false)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

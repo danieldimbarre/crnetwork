@@ -156,7 +156,7 @@ Groups = {
 		Hierarchy = { "Administrador","Moderador","Suporte" },
 		Name = "Adminstradores",
 		Service = true,
-		Client = true,
+		Chat = true,
 		Max = 30
 	},
 	Ouro = {
@@ -198,7 +198,6 @@ Groups = {
 		Name = "Los Santos Police Department",
 		Service = true,
 		Type = "Work",
-		Client = true,
 		Markers = true,
 		Chat = true
 	},
@@ -211,7 +210,6 @@ Groups = {
 		Name = "Blaine County Sheriff Officer",
 		Service = true,
 		Type = "Work",
-		Client = true,
 		Markers = true,
 		Chat = true
 	},
@@ -221,10 +219,9 @@ Groups = {
 		},
 		Hierarchy = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
 		Salary = { 3750,3625,3500,3375,3250,3125 },
-		Service = true,
 		Name = "San Andreas Park Ranger",
+		Service = true,
 		Type = "Work",
-		Client = true,
 		Markers = true,
 		Chat = true
 	},
@@ -236,7 +233,6 @@ Groups = {
 		Salary = { 3750,3625,3500,3375 },
 		Service = true,
 		Type = "Work",
-		Client = true,
 		Markers = true,
 		Chat = true
 	},
@@ -246,8 +242,7 @@ Groups = {
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
 		Service = true,
-		Type = "Work",
-		Client = true
+		Type = "Work"
 	},
 	Vagos = {
 		Permission = {
@@ -255,8 +250,7 @@ Groups = {
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
 		Service = true,
-		Type = "Work",
-		Client = true
+		Type = "Work"
 	},
 	Families = {
 		Permission = {
@@ -264,8 +258,7 @@ Groups = {
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
 		Service = true,
-		Type = "Work",
-		Client = true
+		Type = "Work"
 	},
 	Marabunta = {
 		Permission = {
@@ -273,8 +266,7 @@ Groups = {
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
 		Service = true,
-		Type = "Work",
-		Client = true
+		Type = "Work"
 	},
 	Bennys = {
 		Permission = {
@@ -282,8 +274,7 @@ Groups = {
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
 		Service = true,
-		Type = "Work",
-		Client = true
+		Type = "Work"
 	},
 	Aztecas = {
 		Permission = {
@@ -291,8 +282,7 @@ Groups = {
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
 		Service = true,
-		Type = "Work",
-		Client = true
+		Type = "Work"
 	},
 	Bahamas = {
 		Permission = {
@@ -300,8 +290,7 @@ Groups = {
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
 		Service = true,
-		Type = "Work",
-		Client = true
+		Type = "Work"
 	},
 	Restaurante = {
 		Permission = {
@@ -309,8 +298,7 @@ Groups = {
 		},
 		Hierarchy = { "Chefe","Supervisor","Funcionário" },
 		Service = true,
-		Type = "Work",
-		Client = true
+		Type = "Work"
 	},
 	Booster = {
 		Permission = {

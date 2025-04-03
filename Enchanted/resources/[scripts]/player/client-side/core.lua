@@ -21,16 +21,29 @@ local DeathUpdate = false
 -- FPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("fps",function()
-	if exports["chat"]:Open() then
-		BoostFPS = not BoostFPS
+	if not BoostFPS then
+		BoostFPS = true
 
-		if BoostFPS then
-			SetTimecycleModifier("cinema")
-			TriggerEvent("Notify","Otimização","Sistema ativado.","amarelo",5000)
-		else
-			ClearTimecycleModifier()
-			TriggerEvent("Notify","Otimização","Sistema desativado.","amarelo",5000)
-		end
+		SetTimecycleModifier("cinema")
+		SetTimecycleModifierStrength(0.5)
+
+		SetReducePedModelBudget(true)
+		SetFlashLightFadeDistance(0.2)
+		SetReduceVehicleModelBudget(true)
+		SetLightsCutoffDistanceTweak(0.2)
+
+		TriggerEvent("Notify","Otimização","Sistema ativado.","amarelo",5000)
+	else
+		BoostFPS = false
+
+		ClearTimecycleModifier()
+
+		SetReducePedModelBudget(false)
+		SetFlashLightFadeDistance(1.0)
+		SetLightsCutoffDistanceTweak(1.0)
+		SetReduceVehicleModelBudget(false)
+
+		TriggerEvent("Notify","Otimização","Sistema desativado.","amarelo",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -281,7 +294,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("cr",function(source,Message)
 	local Ped = PlayerPedId()
-	if IsPedInAnyVehicle(Ped) and exports["chat"]:Open() then
+	if IsPedInAnyVehicle(Ped) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
 		if GetPedInVehicleSeat(Vehicle,-1) == Ped and not IsEntityInAir(Vehicle) and (GetEntitySpeed(Vehicle) * 2.236936) >= 10 then
 			if not Message[1] then

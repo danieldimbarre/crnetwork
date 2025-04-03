@@ -115,7 +115,7 @@ RegisterCommand("PlayerFunctions",function()
 
 		if vRP.ClosestVehicle(7) then
 			if not IsPedInAnyVehicle(Ped) then
-				local Vehicle = GetPlayersLastVehicle()
+				local Vehicle = GetLastDrivenVehicle()
 				if Vehicle and IsThisModelABoat(GetEntityModel(Vehicle)) then
 					exports["dynamic"]:AddButton("Ancorar","Prender/Desprender a embarcação.","player:Anchor",Vehicle,false,false)
 				end

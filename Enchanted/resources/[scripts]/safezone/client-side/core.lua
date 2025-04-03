@@ -97,7 +97,7 @@ CreateThread(function()
 
 			if IsPedInAnyVehicle(Ped) then
 				if not LastVehicle then
-					LastVehicle = GetPlayersLastVehicle()
+					LastVehicle = GetLastDrivenVehicle()
 					SetNetworkVehicleAsGhost(LastVehicle,true)
 				end
 			else

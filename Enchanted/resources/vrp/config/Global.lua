@@ -309,9 +309,9 @@ Groups = {
 		Salary = { 2500 },
 		Block = true
 	},
-	Camera = {
+	Freecam = {
 		Permission = {
-			Camera = true
+			Freecam = true
 		},
 		Hierarchy = { "Membro" },
 		Service = true,

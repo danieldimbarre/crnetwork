@@ -17,58 +17,58 @@ local AmountRooms = 0
 -- CONFIG
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Config = {
-	["Room"] = {},
-	["Users"] = {}
+	Room = {},
+	Users = {}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GETROOMS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.GetRooms()
+	local Rooms = {}
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
-		local Room = {}
-		for Index,v in pairs(Config["Room"]) do
-			Room[#Room + 1] = {
-				["Value"] = "",
-				["Id"] = v["Id"],
-				["Created"] = Index,
-				["Name"] = v["Name"],
-				["Identity"] = v["Identity"],
-				["Password"] = v["Password"] or false,
-				["Users"] = CountTable(v["Users"])
-			}
+		for Index,v in pairs(Config.Room) do
+			table.insert(Rooms,{
+				Value = "",
+				Id = v.Id,
+				Created = Index,
+				Name = v.Name,
+				Identity = v.Identity,
+				Password = v.Password or false,
+				Users = CountTable(v.Users)
+			})
 		end
-
-		return {
-			["group"] = Config["Users"][Passport] or false,
-			["room"] = Room
-		}
 	end
+
+	return {
+		group = Config.Users[Passport] or false,
+		room = Rooms
+	}
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GETMEMBERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.GetMembers(Room)
+function Creative.GetMembers(Number)
 	local source = source
-	local Room = parseInt(Room)
+	local Number = parseInt(Number)
 	local Passport = vRP.Passport(source)
-	if Passport and Config["Room"][Room] and Config["Room"][Room]["Users"] then
+	if Passport and Config.Room[Number] and Config.Room[Number].Users then
 		local Table = {}
-		for OtherPassport,v in pairs(Config["Room"][Room]["Users"]) do
-			Table[#Table + 1] = {
-				["Passport"] = OtherPassport,
-				["Name"] = vRP.FullName(OtherPassport)
-			}
+		for OtherPassport in pairs(Config.Room[Number].Users) do
+			table.insert(Table,{
+				Passport = OtherPassport,
+				Name = vRP.FullName(OtherPassport)
+			})
 		end
 
 		return {
-			["Id"] = Room,
-			["Members"] = Table,
-			["Created"] = Config["Room"][Room]["Created"],
-			["Identity"] = Config["Room"][Room]["Identity"],
-			["Name"] = Config["Room"][Room]["Name"],
-			["Users"] = CountTable(Config["Room"][Room]["Users"])
+			Id = Number,
+			Members = Table,
+			Name = Config.Room[Number].Name,
+			Created = Config.Room[Number].Created,
+			Identity = Config.Room[Number].Identity,
+			Users = CountTable(Config.Room[Number].Users)
 		}
 	end
 end
@@ -78,31 +78,31 @@ end
 function Creative.CreateRoom(Name,Password)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Config["Users"][Passport] then
+	if Passport and not Config.Users[Passport] then
 		AmountRooms = AmountRooms + 1
 
-		Config["Room"][AmountRooms] = {
-			["Id"] = AmountRooms,
-			["Created"] = Passport,
-			["Identity"] = vRP.FullName(Passport),
-			["Name"] = Name,
-			["Password"] = Password,
-			["Users"] = {
+		Config.Room[AmountRooms] = {
+			Id = AmountRooms,
+			Created = Passport,
+			Identity = vRP.FullName(Passport),
+			Name = Name,
+			Password = Password,
+			Users = {
 				[Passport] = source
 			}
 		}
 
-		Config["Users"][Passport] = AmountRooms
+		Config.Users[Passport] = AmountRooms
 
 		return {
-			["group"] = AmountRooms,
-			["room"] = {
-				["Id"] = AmountRooms,
-				["Created"] = Passport,
-				["Identity"] = Config["Room"][AmountRooms]["Identity"],
-				["Name"] = Name,
-				["Password"] = Password,
-				["Users"] = CountTable(Config["Room"][AmountRooms]["Users"])
+			group = AmountRooms,
+			room = {
+				Name = Name,
+				Id = AmountRooms,
+				Created = Passport,
+				Password = Password,
+				Identity = Config.Room[AmountRooms].Identity,
+				Users = CountTable(Config.Room[AmountRooms].Users)
 			}
 		}
 	end
@@ -115,29 +115,28 @@ end
 function Creative.LeaveRoom()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Config["Users"][Passport] then
-		local Room = Config["Users"][Passport]
-		if Config["Room"][Room] and Config["Room"][Room]["Users"] and Config["Room"][Room]["Users"][Passport] then
-			for _,Sources in pairs(Config["Room"][Room]["Users"]) do
+	if Passport and Config.Users[Passport] then
+		local Number = Config.Users[Passport]
+		if Config.Room[Number] and Config.Room[Number].Users and Config.Room[Number].Users[Passport] then
+			for _,Sources in pairs(Config.Room[Number].Users) do
 				async(function()
 					TriggerClientEvent("party:Dismiss",Sources,source)
 				end)
 			end
 
-			Config["Users"][Passport] = nil
-			Config["Room"][Room]["Users"][Passport] = nil
-
+			Config.Users[Passport] = nil
+			Config.Room[Number].Users[Passport] = nil
 			TriggerClientEvent("party:Clear",source)
 
-			if Config["Room"][Room]["Created"] == Passport then
-				for OtherPassport,v in pairs(Config["Room"][Room]["Users"]) do
+			if Config.Room[Number].Created == Passport then
+				for OtherPassport,v in pairs(Config.Room[Number].Users) do
 					TriggerClientEvent("party:ResetNui",v)
-					Config["Users"][OtherPassport] = nil
+					Config.Users[OtherPassport] = nil
 				end
 
-				Config["Room"][Room] = nil
-			elseif CountTable(Config["Room"][Room]["Users"]) <= 0 then
-				Config["Room"][Room] = nil
+				Config.Room[Number] = nil
+			elseif CountTable(Config.Room[Number].Users) <= 0 then
+				Config.Room[Number] = nil
 			end
 
 			return true
@@ -149,25 +148,25 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KICKROOM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.KickRoom(Room,OtherPassport)
+function Creative.KickRoom(Number,OtherPassport)
 	local source = source
-	local Room = parseInt(Room)
+	local Number = parseInt(Number)
 	local Passport = vRP.Passport(source)
 	local OtherSource = vRP.Source(OtherPassport)
-	if Passport and Config["Users"][OtherPassport] and Config["Room"][Room] and Config["Room"][Room]["Created"] == Passport and Config["Room"][Room]["Created"] ~= OtherPassport and Config["Room"][Room]["Users"] and Config["Room"][Room]["Users"][OtherPassport] then
+	if Passport and Config.Users[OtherPassport] and Config.Room[Number] and Config.Room[Number].Created == Passport and Config.Room[Number].Created ~= OtherPassport and Config.Room[Number].Users and Config.Room[Number].Users[OtherPassport] then
 		if OtherSource then
 			TriggerClientEvent("party:Clear",OtherSource)
 			TriggerClientEvent("party:ResetNui",OtherSource)
 
-			for _,Sources in pairs(Config["Room"][Room]["Users"]) do
+			for _,Sources in pairs(Config.Room[Number].Users) do
 				async(function()
 					TriggerClientEvent("party:Dismiss",Sources,OtherSource)
 				end)
 			end
 		end
 
-		Config["Users"][OtherPassport] = nil
-		Config["Room"][Room]["Users"][OtherPassport] = nil
+		Config.Users[OtherPassport] = nil
+		Config.Room[Number].Users[OtherPassport] = nil
 
 		return true
 	end
@@ -177,19 +176,19 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENTERROOM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.EnterRoom(Room,Password)
+function Creative.EnterRoom(Number,Password)
 	local source = source
-	local Room = parseInt(Room)
+	local Number = parseInt(Number)
 	local Passport = vRP.Passport(source)
-	if Passport and not Config["Users"][Passport] and Config["Room"][Room] and Config["Room"][Room]["Users"] and CountTable(Config["Room"][Room]["Users"]) <= 9 and not Config["Room"][Room]["Users"][Passport] then
-		if Config["Room"][Room]["Password"] and Config["Room"][Room]["Password"] ~= Password then
+	if Passport and not Config.Users[Passport] and Config.Room[Number] and Config.Room[Number].Users and CountTable(Config.Room[Number].Users) <= 9 and not Config.Room[Number].Users[Passport] then
+		if Config.Room[Number].Password and Config.Room[Number].Password ~= Password then
 			return false
 		end
 
-		Config["Users"][Passport] = Room
-		Config["Room"][Room]["Users"][Passport] = source
+		Config.Users[Passport] = Number
+		Config.Room[Number].Users[Passport] = source
 
-		for Passports,Sources in pairs(Config["Room"][Room]["Users"]) do
+		for Passports,Sources in pairs(Config.Room[Number].Users) do
 			TriggerClientEvent("party:Invite",source,Sources,vRP.LowerName(Passports))
 
 			async(function()
@@ -205,69 +204,67 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROOM
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Room",function(Passport,source,Radius)
+exports("Room",function(Passport,source,Radius,Max)
 	local Members = {}
-	local Room = Config["Users"][Passport]
+	local Number = Config.Users[Passport]
 
-	if Room and Config["Room"][Room] then
-		if vRP.DoesEntityExist(source) then
-			local Coords = vRP.GetEntityCoords(source)
+	if not (Number and Config.Room[Number]) then
+		return Members,0
+	end
 
-			for OtherPassport,Sources in pairs(Config["Room"][Room]["Users"]) do
-				if vRP.DoesEntityExist(Sources) then
-					local OtherCoords = vRP.GetEntityCoords(Sources)
+	if not vRP.DoesEntityExist(source) then
+		return Members,0
+	end
 
-					if #(Coords - OtherCoords) <= Radius then
-						Members[#Members + 1] = {
-							["Passport"] = OtherPassport,
-							["Source"] = Sources
-						}
-					end
-				end
+	local Coords = vRP.GetEntityCoords(source)
+	for OtherPassport,OtherSource in pairs(Config.Room[Number].Users) do
+		if vRP.DoesEntityExist(OtherSource) and #(Coords - vRP.GetEntityCoords(OtherSource)) <= Radius then
+			table.insert(Members, { Passport = OtherPassport, Source = OtherSource })
+
+			if Max and #Members >= Max then
+				break
 			end
 		end
 	end
 
-	return Members,CountTable(Members)
+	return Members,#Members
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOESEXIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("DoesExist",function(Passport,Players)
-	local Return = false
-
-	if Players then
-		if Config["Users"][Passport] then
-			local source = vRP.Source(Passport)
-			local Members = exports["party"]:Room(Passport,source,25)
-			if CountTable(Members) >= Players then
-				Return = Members
-			end
-		end
-	else
-		Return = Config["Users"][Passport]
+	if not Config.Users[Passport] then
+		return false
 	end
 
-	return Return
+	if Players then
+		local source = vRP.Source(Passport)
+		local Members = exports["party"]:Room(Passport,source,25)
+
+		return #Members >= Players and Members or false
+	end
+
+	return Config.Users[Passport]
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport,source)
-	if Config["Users"][Passport] then
-		local Room = Config["Users"][Passport]
+	local Number = Config.Users[Passport]
+	if not Number then
+		return false
+	end
 
-		for _,Sources in pairs(Config["Room"][Room]["Users"]) do
-			async(function()
-				TriggerClientEvent("party:Dismiss",Sources,source)
-			end)
-		end
+	for _,OtherSource in pairs(Config.Room[Number].Users or {}) do
+		async(function()
+			TriggerClientEvent("party:Dismiss",OtherSource,source)
+		end)
+	end
 
-		Config["Users"][Passport] = nil
-		Config["Room"][Room]["Users"][Passport] = nil
+	Config.Users[Passport] = nil
+	Config.Room[Number].Users[Passport] = nil
 
-		if CountTable(Config["Room"][Room]["Users"]) <= 0 then
-			Config["Room"][Room] = nil
-		end
+	if CountTable(Config.Room[Number].Users) == 0 then
+		Config.Room[Number] = nil
 	end
 end)

@@ -1377,6 +1377,13 @@ local List = {
 			["aluminum"] = 3
 		}
 	},
+	["ironfilings"] = {
+		["Index"] = "ironfilings",
+		["Name"] = "Limalha de Ferro",
+		["Type"] = "Comum",
+		["Market"] = true,
+		["Weight"] = 0.001
+	},
 	["gear"] = {
 		["Index"] = "gear",
 		["Name"] = "Engrenagem",

@@ -306,6 +306,11 @@ local List = {
 		["Coords"] = vec4(-1816.64,-1193.73,14.31,334.49),
 		["Model"] = "a_f_y_eastsa_03",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- Dismantle
+		["Distance"] = 25,
+		["Coords"] = vec4(2340.7,3126.49,48.21,351.5),
+		["Model"] = "a_m_m_soucent_03",
+		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -8,10 +8,7 @@ Config = {
 	BankTaxWithdraw = 1.0,
 	BankTaxTransfer = 1.0,
 
-	Upload = {
-		Mode = "Discord", -- Fivemanage | Discord
-		Key = "" -- API-Key | Webhook
-	},
+	Webhook = "https://discord.com/api/webhooks/1349160239207022622/AzWyTtb7QJ-WaBZuCNSvii8hCtGc20XVyIC5GL2IA2w_Elsve9IrcHYO9QD2ApnecKPm",
 
 	Permissions = { -- ( -1 = Ninguém tem permissão | 0 = Todos tem permissão | 2 = 2 e 1 tem permissão )
 		Management = {

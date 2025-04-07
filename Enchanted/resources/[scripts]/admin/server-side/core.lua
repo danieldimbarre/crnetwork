@@ -661,10 +661,18 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("unban",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin") and vRP.Identity(Message[1]) then
-		vRP.Query("accounts/RemoveBanned",{ License = vRP.AccountInformation(Message[1],"License") })
-		TriggerClientEvent("Notify",source,"Sucesso","Revogado o banimento do passaporte <b>"..Message[1].."</b>.","verde",5000)
-		exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[MODO]:** Unban\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		local Keyboard = vKEYBOARD.Primary(source,"Passaporte")
+		if Keyboard then
+			local OtherPassport = parseInt(Keyboard[1])
+			local Account = vRP.AccountOptimize(OtherPassport)
+			if OtherPassport and Account then
+				vRP.Query("hwid/All",{ Account = Account.id, Banned = 0 })
+				vRP.Query("accounts/RemoveBanned",{ License = Account.License })
+				TriggerClientEvent("Notify",source,"Sucesso","Revogado o banimento do passaporte <b>"..Keyboard[1].."</b>.","verde",5000)
+				exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Keyboard[1].."\n**[MODO]:** Unban\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+			end
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -679,16 +687,16 @@ RegisterCommand("insertcron",function(source)
 			local Mode = Keyboard[3]
 			local Permission = Keyboard[2]
 			local OtherPassport = Keyboard[1]
-			local Amount = parseInt(Keyboard[4])
+			local Amount = parseInt(Keyboard[4],true)
 
 			if not vRP.HasPermission(OtherPassport,Permission) then
 				vRP.SetPermission(OtherPassport,Permission)
 			end
 
 			if Mode == "Horas" then
-				Timer = Amount * 60
+				Timer = Amount * 3600
 			elseif Mode == "Dias" then
-				Timer = Amount * 1440
+				Timer = Amount * 86400
 			end
 
 			exports["crons"]:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission })

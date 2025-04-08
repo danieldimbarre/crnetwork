@@ -132,17 +132,20 @@ RegisterServerEvent("target:Service")
 AddEventHandler("target:Service",function(Permission)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,Permission) then
-		if Permission == "Policia" then
-			if vRP.HasPermission(Passport,"LSPD") then
-				Permission = "LSPD"
-			elseif vRP.HasPermission(Passport,"SAPR") then
-				Permission = "SAPR"
-			elseif vRP.HasPermission(Passport,"BCSO") then
-				Permission = "BCSO"
-			end
-		end
 
-		vRP.ServiceToggle(source,Passport,Permission,false)
+	if not Passport or not vRP.HasGroup(Passport,Permission) then
+		return false
 	end
+
+	if Permission == "Policia" then
+		if vRP.HasPermission(Passport,"LSPD") then
+			Permission = "LSPD"
+		elseif vRP.HasPermission(Passport,"SAPR") then
+			Permission = "SAPR"
+		elseif vRP.HasPermission(Passport,"BCSO") then
+			Permission = "BCSO"
+		end
+	end
+
+	vRP.ServiceToggle(source,Passport,Permission)
 end)

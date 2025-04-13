@@ -665,7 +665,7 @@
         </member>
         <member name="M:CitizenFX.Server.Native.Natives.ExecuteCommand(CitizenFX.Core.CString)">
             <summary>
-            EXECUTE_COMMAND
+            Depending on your use case you may need to use `add_acl resource.&lt;your_resource_name&gt; command.&lt;command_name&gt; allow` to use this native in your resource.
             </summary>
         </member>
         <member name="M:CitizenFX.Server.Native.Natives.FindKvp(System.Int32)">
@@ -689,6 +689,11 @@
             Nonsynchronous operations will not wait for a disk/filesystem flush before returning from a write or delete call. They will be much faster than their synchronous counterparts (e.g., bulk operations), however, a system crash may lose the data to some recent operations.
             
             This native ensures all `_NO_SYNC` operations are synchronized with the disk/filesystem.
+            </summary>
+        </member>
+        <member name="M:CitizenFX.Server.Native.Natives.FormatStackTrace(System.Object)">
+            <summary>
+            An internal function for converting a stack trace object to a string.
             </summary>
         </member>
         <member name="M:CitizenFX.Server.Native.Natives.FreezeEntityPosition(System.Int32,System.Boolean)">
@@ -830,6 +835,62 @@
             </summary>
             <returns>
             The name of the resource.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Server.Native.Natives.GetEntitiesInRadius(System.Single,System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Object)">
+            <summary>
+            ### Supported types
+            
+            *   \[1] : Peds (including animals) and players.
+            *   \[2] : Vehicles.
+            *   \[3] : Objects (props), doors, and projectiles.
+            
+            ### Coordinates need to be send unpacked (x,y,z)
+            
+            ```lua
+            
+            -- Define the allowed model hashes
+            local allowedModelHashes = { GetHashKey("p_crate03x"), GetHashKey("p_crate22x") }
+            
+            -- Get the player's current coordinates
+            local playerCoords = GetEntityCoords(PlayerPedId())
+            
+            -- Retrieve all entities of type Object (type 3) within a radius of 10.0 units
+            -- that match the allowed model hashes
+            -- and sort output entities by distance
+            local entities = GetEntitiesInRadius(playerCoords.x, playerCoords.y, playerCoords.z, 10.0, 3, true, allowedModelHashes)
+            
+            -- Iterate through the list of entities and print their ids
+            for i = 1, #entities do
+                local entity = entities[i]
+                print(entity)
+            end
+            
+            ```
+            </summary>
+            <param name="x">
+            The X coordinate.
+            </param>
+            <param name="y">
+            The Y coordinate.
+            </param>
+            <param name="z">
+            The Z coordinate.
+            </param>
+            <param name="radius">
+            Max distance from coordinate to entity
+            </param>
+            <param name="entityType">
+            Entity types see list below
+            </param>
+            <param name="sortByDistance">
+            Sort output entites by distance from nearest to farthest
+            </param>
+            <param name="models">
+            List of allowed models its also optional
+            </param>
+            <returns>
+            An array containing entity handles for each entity.
             </returns>
         </member>
         <member name="M:CitizenFX.Server.Native.Natives.GetEntityAttachedTo(System.Int32)">
@@ -5091,7 +5152,7 @@
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.EXECUTE_COMMAND">
             <summary>
-            EXECUTE_COMMAND
+            Depending on your use case you may need to use `add_acl resource.&lt;your_resource_name&gt; command.&lt;command_name&gt; allow` to use this native in your resource.
             </summary>
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.FIND_KVP">
@@ -5109,6 +5170,11 @@
             Nonsynchronous operations will not wait for a disk/filesystem flush before returning from a write or delete call. They will be much faster than their synchronous counterparts (e.g., bulk operations), however, a system crash may lose the data to some recent operations.
             
             This native ensures all `_NO_SYNC` operations are synchronized with the disk/filesystem.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Server.Native.Hash.FORMAT_STACK_TRACE">
+            <summary>
+            An internal function for converting a stack trace object to a string.
             </summary>
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.FREEZE_ENTITY_POSITION">
@@ -5184,6 +5250,38 @@
         <member name="F:CitizenFX.Server.Native.Hash.GET_CURRENT_RESOURCE_NAME">
             <summary>
             Returns the name of the currently executing resource.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Server.Native.Hash.GET_ENTITIES_IN_RADIUS">
+            <summary>
+            ### Supported types
+            
+            *   \[1] : Peds (including animals) and players.
+            *   \[2] : Vehicles.
+            *   \[3] : Objects (props), doors, and projectiles.
+            
+            ### Coordinates need to be send unpacked (x,y,z)
+            
+            ```lua
+            
+            -- Define the allowed model hashes
+            local allowedModelHashes = { GetHashKey("p_crate03x"), GetHashKey("p_crate22x") }
+            
+            -- Get the player's current coordinates
+            local playerCoords = GetEntityCoords(PlayerPedId())
+            
+            -- Retrieve all entities of type Object (type 3) within a radius of 10.0 units
+            -- that match the allowed model hashes
+            -- and sort output entities by distance
+            local entities = GetEntitiesInRadius(playerCoords.x, playerCoords.y, playerCoords.z, 10.0, 3, true, allowedModelHashes)
+            
+            -- Iterate through the list of entities and print their ids
+            for i = 1, #entities do
+                local entity = entities[i]
+                print(entity)
+            end
+            
+            ```
             </summary>
         </member>
         <member name="F:CitizenFX.Server.Native.Hash.GET_ENTITY_ATTACHED_TO">

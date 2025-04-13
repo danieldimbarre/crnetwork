@@ -94,7 +94,7 @@ function Creative.PaymentDrugs()
 		TriggerClientEvent("player:Residual",source,"Resíduo de Orgânicos")
 		vRP.GenerateItem(Passport,"dirtydollar",Valuation,true)
 		vRP.PutExperience(Passport,"Traffic",GainExperience)
-		vRP.RolepassPoints(Passport,GainExperience,true)
+		vRP.BattlepassPoints(Passport,GainExperience)
 		vRP.UpgradeStress(Passport,1)
 
 		exports["vrp"]:CallPolice({

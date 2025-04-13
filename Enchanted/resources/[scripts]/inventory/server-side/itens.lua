@@ -194,7 +194,7 @@ Use = {
 	end,
 
 	["camera"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not Player(source)["state"]["Camera"] then
+		if not Player(source)["state"]["ItemCamera"] then
 			local Ped = GetPlayerPed(source)
 			if GetSelectedPedWeapon(Ped) ~= GetHashKey("WEAPON_UNARMED") then
 				return
@@ -207,7 +207,7 @@ Use = {
 	end,
 
 	["binoculars"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not Player(source)["state"]["Camera"] then
+		if not Player(source)["state"]["ItemCamera"] then
 			local Ped = GetPlayerPed(source)
 			if GetSelectedPedWeapon(Ped) ~= GetHashKey("WEAPON_UNARMED") then
 				return
@@ -1555,7 +1555,7 @@ Use = {
 					{ ["Item"] = "orangeroughy", ["Chance"] = 100, ["Amount"] = 1 }
 				})
 
-				vRP.RolepassPoints(Passport,1,true)
+				vRP.BattlepassPoints(Passport,1)
 				vRP.PutExperience(Passport,"Fisherman",1)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
@@ -1588,7 +1588,7 @@ Use = {
 					{ ["Item"] = "anchovy", ["Chance"] = 75, ["Amount"] = 1 }
 				})
 
-				vRP.RolepassPoints(Passport,1,true)
+				vRP.BattlepassPoints(Passport,1)
 				vRP.PutExperience(Passport,"Fisherman",1)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
@@ -1623,7 +1623,7 @@ Use = {
 					{ ["Item"] = "herring", ["Chance"] = 50, ["Amount"] = 1 }
 				})
 
-				vRP.RolepassPoints(Passport,1,true)
+				vRP.BattlepassPoints(Passport,1)
 				vRP.PutExperience(Passport,"Fisherman",1)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
@@ -1660,7 +1660,7 @@ Use = {
 					{ ["Item"] = "salmon", ["Chance"] = 50, ["Amount"] = 1 }
 				})
 
-				vRP.RolepassPoints(Passport,1,true)
+				vRP.BattlepassPoints(Passport,1)
 				vRP.PutExperience(Passport,"Fisherman",1)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)
@@ -1699,7 +1699,7 @@ Use = {
 					{ ["Item"] = "treasurebox", ["Chance"] = 1, ["Amount"] = 1 }
 				})
 
-				vRP.RolepassPoints(Passport,2,true)
+				vRP.BattlepassPoints(Passport,2)
 				vRP.PutExperience(Passport,"Fisherman",2)
 				if vRP.CheckWeight(Passport,Result["Item"]) then
 					vRP.GenerateItem(Passport,Result["Item"],Result["Amount"],true)

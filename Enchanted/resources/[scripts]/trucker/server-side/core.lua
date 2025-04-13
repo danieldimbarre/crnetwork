@@ -68,7 +68,7 @@ function Creative.Payment()
 		end
 
 		vRP.PutExperience(Passport,"Trucker",GainExperience)
-		vRP.RolepassPoints(Passport,GainExperience,true)
+		vRP.BattlepassPoints(Passport,GainExperience)
 		vRP.UpgradeStress(Passport,10)
 
 		Active[Passport] = nil

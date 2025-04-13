@@ -9,7 +9,7 @@ vRP = Proxy.getInterface("vRP")
 -- CHAT:SERVERMESSAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("chat:ServerMessage")
-AddEventHandler("chat:ServerMessage",function(Mode,Message)
+AddEventHandler("chat:ServerMessage", function(Mode,Message)
 	local source = source
 	local Passport = vRP.Passport(source)
 

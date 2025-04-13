@@ -68,7 +68,7 @@ function Creative.Payment(Selected)
 
 		vRP.GenerateItem(Passport,"dollar",Valuation,true)
 		vRP.PutExperience(Passport,"Grime",GainExperience)
-		vRP.RolepassPoints(Passport,GainExperience,true)
+		vRP.BattlepassPoints(Passport,GainExperience)
 		vRP.UpgradeStress(Passport,3)
 
 		Active[Passport] = nil

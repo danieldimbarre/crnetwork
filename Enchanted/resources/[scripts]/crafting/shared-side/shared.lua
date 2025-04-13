@@ -89,12 +89,44 @@ Location = {
 		["Coords"] = vec3(-627.69,222.96,82.1),
 		["Mode"] = "DrinkRestaurante",
 		["Circle"] = 0.1
+	},{
+		["Coords"] = vec3(87.62,-1670.45,29.18),
+		["Mode"] = "Essence",
+		["Circle"] = 0.5
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 List = {
+	["Essence"] = {
+		["List"] = {
+			["purple_essence"] = {
+				["Amount"] = 1,
+				["Required"] = {
+					["blue_essence"] = 10
+				}
+			},
+			["green_essence"] = {
+				["Amount"] = 1,
+				["Required"] = {
+					["purple_essence"] = 10
+				}
+			},
+			["red_essence"] = {
+				["Amount"] = 1,
+				["Required"] = {
+					["green_essence"] = 10
+				}
+			},
+			["pink_essence"] = {
+				["Amount"] = 1,
+				["Required"] = {
+					["red_essence"] = 10
+				}
+			}
+		}
+	},
 	["FoodRestaurante"] = {
 		["Permission"] = "Restaurante",
 		["List"] = {

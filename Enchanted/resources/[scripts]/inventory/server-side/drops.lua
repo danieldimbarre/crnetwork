@@ -6,17 +6,23 @@ local Reserved = {}
 -- SAVESERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("SaveServer",function(Silenced)
-	if not Silenced then
-		for Route,Table in pairs(Drops) do
-			for Number,v in pairs(Table) do
-				if Drops[Route] and Drops[Route][Number] then
-					if Drops[Route][Number]["key"] and ItemUnique(Drops[Route][Number]["key"]) then
-						vRP.RemSrvData(SplitUnique(Drops[Route][Number]["key"]))
-					end
+	if Silenced then
+		return false
+	end
 
-					TriggerClientEvent("inventory:DropsRemover",-1,Route,Number)
-					Drops[Route][Number] = nil
+	for Route,Table in pairs(Drops) do
+		for Number,v in pairs(Table) do
+			local Exist = Drops[Route] and Drops[Route][Number]
+			if Exist then
+				if Exist.key and ItemUnique(Exist.key) then
+					local Unique = SplitUnique(Exist.key)
+					if Unique then
+						vRP.RemSrvData(Unique)
+					end
 				end
+
+				TriggerClientEvent("inventory:DropsRemover",-1,Route,Number)
+				Drops[Route][Number] = nil
 			end
 		end
 	end

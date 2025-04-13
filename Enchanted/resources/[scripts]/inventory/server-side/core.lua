@@ -626,7 +626,7 @@ function Creative.Deliver(Work)
 
 				vRP.PutExperience(Passport,"Lumberman",GainExperience)
 				vRP.GenerateItem(Passport,"dollar",Valuation,true)
-				vRP.RolepassPoints(Passport,GainExperience,true)
+				vRP.BattlepassPoints(Passport,GainExperience)
 				vRP.UpgradeStress(Passport,1)
 				Active[Passport] = nil
 
@@ -663,7 +663,7 @@ function Creative.Deliver(Work)
 
 				vRP.PutExperience(Passport,"Milkman",GainExperience)
 				vRP.GenerateItem(Passport,"dollar",Valuation,true)
-				vRP.RolepassPoints(Passport,GainExperience,true)
+				vRP.BattlepassPoints(Passport,GainExperience)
 				vRP.UpgradeStress(Passport,1)
 				Active[Passport] = nil
 
@@ -700,7 +700,7 @@ function Creative.Deliver(Work)
 
 				vRP.PutExperience(Passport,"Transporter",GainExperience)
 				vRP.GenerateItem(Passport,"dollar",Valuation,true)
-				vRP.RolepassPoints(Passport,GainExperience,true)
+				vRP.BattlepassPoints(Passport,GainExperience)
 				vRP.UpgradeStress(Passport,1)
 				Active[Passport] = nil
 
@@ -915,7 +915,7 @@ AddEventHandler("inventory:Cancel",function()
 			Carry[Passport] = nil
 		end
 
-		if Player(source)["state"]["Camera"] then
+		if Player(source)["state"]["ItemCamera"] then
 			TriggerClientEvent("inventory:Camera",source)
 		end
 
@@ -1270,8 +1270,8 @@ AddEventHandler("inventory:Animals",function(Entity)
 							local Star = math.random(3)
 
 							vRP.UpgradeStress(Passport,Star)
+							vRP.BattlepassPoints(Passport,1)
 							TriggerEvent("DeletePed",Entity[3])
-							vRP.RolepassPoints(Passport,1,true)
 							vRP.PutExperience(Passport,"Hunting",1)
 							vRP.GenerateItem(Passport,"meatfillet",Star,true)
 							vRP.GenerateItem(Passport,Mode..Star.."star",1,true)

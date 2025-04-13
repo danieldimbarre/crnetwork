@@ -965,16 +965,16 @@ exports("Payment",function(source,Passport)
 
 						vRP.PutExperience(OtherPassport,"Boosting",GainExperience)
 						vRP.GenerateItem(OtherPassport,"platinum",Valuation,true)
-						vRP.RolepassPoints(OtherPassport,GainExperience,true)
 						Cooldowns[OtherPassport][Class] = os.time() + Total
+						vRP.BattlepassPoints(OtherPassport,GainExperience)
 						Active[OtherPassport] = nil
 					end
 				end
 			else
 				vRP.PutExperience(Passport,"Boosting",GainExperience)
 				vRP.GenerateItem(Passport,"platinum",Valuation,true)
-				vRP.RolepassPoints(Passport,GainExperience,true)
 				Cooldowns[Passport][Class] = os.time() + Total
+				vRP.BattlepassPoints(Passport,GainExperience)
 			end
 		end
 

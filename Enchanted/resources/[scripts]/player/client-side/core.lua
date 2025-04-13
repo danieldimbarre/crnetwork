@@ -23,26 +23,11 @@ local DeathUpdate = false
 RegisterCommand("fps",function()
 	if not BoostFPS then
 		BoostFPS = true
-
 		SetTimecycleModifier("cinema")
-		SetTimecycleModifierStrength(0.5)
-
-		SetReducePedModelBudget(true)
-		SetFlashLightFadeDistance(0.2)
-		SetReduceVehicleModelBudget(true)
-		SetLightsCutoffDistanceTweak(0.2)
-
 		TriggerEvent("Notify","Otimização","Sistema ativado.","amarelo",5000)
 	else
 		BoostFPS = false
-
 		ClearTimecycleModifier()
-
-		SetReducePedModelBudget(false)
-		SetFlashLightFadeDistance(1.0)
-		SetLightsCutoffDistanceTweak(1.0)
-		SetReduceVehicleModelBudget(false)
-
 		TriggerEvent("Notify","Otimização","Sistema desativado.","amarelo",5000)
 	end
 end)

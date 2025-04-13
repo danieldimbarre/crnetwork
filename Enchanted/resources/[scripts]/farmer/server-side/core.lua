@@ -98,7 +98,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 						exports["inventory"]:Drops(Passport,source,Consult["Item"],Consult["Valuation"])
 					end
 
-					vRP.RolepassPoints(Passport,2,true)
+					vRP.BattlepassPoints(Passport,2)
 					vRP.UpgradeStress(Passport,1)
 				end
 
@@ -167,7 +167,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 						exports["inventory"]:Drops(Passport,source,"woodlog",Valuation)
 					end
 
-					vRP.RolepassPoints(Passport,2,true)
+					vRP.BattlepassPoints(Passport,2)
 					vRP.UpgradeStress(Passport,1)
 				end
 
@@ -276,7 +276,7 @@ AddEventHandler("farmer:Sandman",function(Number)
 						exports["inventory"]:Drops(Passport,source,"sand",Valuation)
 					end
 
-					vRP.RolepassPoints(Passport,5,true)
+					vRP.BattlepassPoints(Passport,5)
 					vRP.UpgradeStress(Passport,1)
 				end
 
@@ -334,7 +334,7 @@ AddEventHandler("farmer:Trasher",function(Number)
 					end
 
 					vRP.PutExperience(Passport,"Garbageman",1)
-					vRP.RolepassPoints(Passport,1,true)
+					vRP.BattlepassPoints(Passport,1)
 					vRP.UpgradeStress(Passport,1)
 				end
 

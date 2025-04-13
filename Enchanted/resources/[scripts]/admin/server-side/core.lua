@@ -282,6 +282,16 @@ RegisterCommand("print",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- WIPEBATTLEPASS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("wipebattlepass",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin",1) then
+		exports["oxmysql"]:query_async("DELETE FROM playerdata WHERE Name = ?",{ "Battlepass" })
+		TriggerClientEvent("Notify",source,"Sucesso","Passe de batalha resetado.","verde",5000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skinshop",function(source,Message)
@@ -371,7 +381,7 @@ RegisterCommand("wipepermissions",function(source,Message)
 	if Passport and vRP.HasPermission(Passport,"Admin") then
 		local Permissions = {}
 		for Permission in pairs(Groups) do
-			Permissions[#Permissions + 1] = Permission
+			table.insert(Permissions,Permission)
 		end
 
 		table.sort(Permissions,function(a,b) return a < b end)
@@ -410,7 +420,7 @@ RegisterCommand("status",function(source,Message)
 	if Passport and vRP.HasPermission(Passport,"Admin") then
 		local Permissions = {}
 		for Permission in pairs(Groups) do
-			Permissions[#Permissions + 1] = Permission
+			table.insert(Permissions,Permission)
 		end
 
 		table.sort(Permissions,function(a,b) return a < b end)
@@ -667,7 +677,7 @@ RegisterCommand("unban",function(source,Message)
 			local OtherPassport = parseInt(Keyboard[1])
 			local Account = vRP.AccountOptimize(OtherPassport)
 			if OtherPassport and Account then
-				vRP.Query("hwid/All",{ Account = Account.id, Banned = 0 })
+				vRP.Query("hwid/All",{ Account = Account.id, Banned = 1 })
 				vRP.Query("accounts/RemoveBanned",{ License = Account.License })
 				TriggerClientEvent("Notify",source,"Sucesso","Revogado o banimento do passaporte <b>"..Keyboard[1].."</b>.","verde",5000)
 				exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Keyboard[1].."\n**[MODO]:** Unban\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
@@ -1072,7 +1082,13 @@ RegisterCommand("video",function(source,Message)
 					TriggerClientEvent("hud:Video",-1,Keyboard[1])
 				end
 			elseif Keyboard[1] == "Permissão" then
-				local Keyboard = vKEYBOARD.Options(source,"Código Vimeo",Groups)
+				local Permissions = {}
+				for Permission in pairs(Groups) do
+					table.insert(Permissions,Permission)
+				end
+
+				table.sort(Permissions,function(a,b) return a < b end)
+				local Keyboard = vKEYBOARD.Options(source,"Código Vimeo",Permissions)
 				if Keyboard then
 					local Service = vRP.NumPermission(Keyboard[1])
 					for Passports,Sources in pairs(Service) do

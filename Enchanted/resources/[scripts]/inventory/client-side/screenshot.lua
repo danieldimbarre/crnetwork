@@ -24,8 +24,8 @@ AddEventHandler("inventory:Camera",function(Action)
 		end
 
 		Camera = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA",true)
+		LocalPlayer["state"]:set("ItemCamera",true,true)
 		AttachCamToEntity(Camera,Ped,0.0,0.0,1.0,true)
-		LocalPlayer["state"]:set("Camera",true,true)
 		RenderScriptCams(true,false,0,false,false)
 		SetCamRot(Camera,0.0,0.0,Heading)
 		TriggerEvent("hud:Active",false)
@@ -58,7 +58,7 @@ end)
 function RemoveCamera()
 	Total = (FovMax + FovMin) * 0.5
 
-	LocalPlayer["state"]:set("Camera",false,true)
+	LocalPlayer["state"]:set("ItemCamera",false,true)
 
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)

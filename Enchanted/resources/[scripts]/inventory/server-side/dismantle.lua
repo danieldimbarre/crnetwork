@@ -33,9 +33,9 @@ AddEventHandler("garages:Delete",function(Network,Plate)
 			Dismantle[Plate] = nil
 		end
 
-		if Boosting[Plate] and vRP.Passport(Boosting[Plate]["Source"]) then
-			TriggerClientEvent("boosting:Reset",Boosting[Plate]["Source"])
-			exports["boosting"]:Remove(Boosting[Plate]["Passport"],Plate)
+		if Boosting[Plate] and vRP.Passport(Boosting[Plate].Source) then
+			TriggerClientEvent("boosting:Reset",Boosting[Plate].Source)
+			exports["boosting"]:Remove(Boosting[Plate].Passport,Plate)
 			Boosting[Plate] = nil
 		end
 	end
@@ -61,25 +61,24 @@ function Creative.CreateVehicle(Model,Coords)
 		local Plate = exports["inventory"]:GeneratePlate()
 
 		SetVehicleNumberPlateText(Vehicle,Plate)
-		SetEntityIgnoreRequestControlFilter(Vehicle,true)
 		SetVehicleCustomPrimaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
 		SetVehicleCustomSecondaryColour(Vehicle,math.random(255),math.random(255),math.random(255))
 
-		Entity(Vehicle)["state"]:set("Nitro",0,true)
-		Entity(Vehicle)["state"]:set("Fuel",100,true)
-		Entity(Vehicle)["state"]:set("Tower",true,true)
+		Entity(Vehicle).state:set("Nitro",0,true)
+		Entity(Vehicle).state:set("Fuel",100,true)
+		Entity(Vehicle).state:set("Tower",true,true)
 
 		Dismantle[Plate] = source
 
 		exports["vrp"]:CallPolice({
-			["Source"] = source,
-			["Passport"] = Passport,
-			["Permission"] = "Policia",
-			["Name"] = "Desmanche de Veículo",
-			["Vehicle"] = VehicleName(Model).." - "..Plate,
-			["Coords"] = Coords,
-			["Code"] = 31,
-			["Color"] = 44
+			Source = source,
+			Passport = Passport,
+			Permission = "Policia",
+			Name = "Desmanche de Veículo",
+			Vehicle = VehicleName(Model).." - "..Plate,
+			Coords = Coords,
+			Code = 31,
+			Color = 44
 		})
 
 		return NetworkGetNetworkIdFromEntity(Vehicle)
@@ -93,60 +92,60 @@ end
 RegisterServerEvent("inventory:Dismantle")
 AddEventHandler("inventory:Dismantle",function(Entity)
 	local source = source
-	local Plate = Entity[1]
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Dismantle[Plate] then
+	local UserVehicle = vRP.PassportPlate(Entity[1])
+	local Plate,Name,Network = Entity[1],Entity[2],Entity[4]
+	if Passport and not Active[Passport] and VehicleExist(Name) and (UserVehicle or Dismantle[Plate]) then
 		Active[Passport] = os.time() + 30
-		Player(source)["state"]["Buttons"] = true
+		Player(source).state.Buttons = true
 		TriggerClientEvent("Progress",source,"Desmanchando",30000)
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
 		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) and Dismantle[Plate] then
+			if Active[Passport] and os.time() >= Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
-				Player(source)["state"]["Buttons"] = false
-				TriggerClientEvent("dismantle:Reset",source)
-				TriggerEvent("garages:Deleted",Entity[4],Plate)
+				Player(source).state.Buttons = false
 
-				local Stress = 5
-				local GainExperience = 3
-				local Amount = math.random(1125,1375)
-				local Experience,Level = vRP.GetExperience(Passport,"Dismantle")
-				local Valuation = Amount + Amount * (0.05 * Level)
+				if not UserVehicle and not Dismantle[Plate] then
+					return false
+				end
+
+				TriggerClientEvent("dismantle:Reset",source)
+				TriggerEvent("garages:Deleted",Network,Plate)
+
+				local Experience = 3
+				local _,Level = vRP.GetExperience(Passport,"Dismantle")
+				local Amount = VehiclePrice(Name) * (UserVehicle and 0.050 or 0.025)
+				local Valuation = Amount + (Amount * (0.025 * Level))
 
 				if exports["inventory"]:Buffs("Dexterity",Passport) then
 					Valuation = Valuation + (Valuation * 0.1)
 				end
 
-				for Permission,Multiplier in pairs({ Ouro = 0.1, Prata = 0.075, Bronze = 0.05 }) do
+				for Permission,Multiplier in pairs({ Ouro = 0.100, Prata = 0.075, Bronze = 0.050 }) do
 					if vRP.HasService(Passport,Permission) then
+						Experience = Experience + 1
 						Valuation = Valuation + (Valuation * Multiplier)
-						GainExperience = GainExperience + 1
 					end
 				end
 
-				if exports["party"]:DoesExist(Passport) then
-					local Consult,AmountMembers = exports["party"]:Room(Passport,source,25)
-
-					for Number = 1,AmountMembers do
-						if vRP.Passport(Consult[Number]["Source"]) then
-							vRP.UpgradeStress(Consult[Number]["Passport"],Stress)
-							vRP.RolepassPoints(Consult[Number]["Passport"],GainExperience,true)
-							vRP.PutExperience(Consult[Number]["Passport"],"Dismantle",GainExperience)
-							vRP.GenerateItem(Consult[Number]["Passport"],"dirtydollar",Valuation,true)
-						end
-					end
-				else
-					vRP.UpgradeStress(Passport,Stress)
-					vRP.RolepassPoints(Passport,GainExperience,true)
-					vRP.PutExperience(Passport,"Dismantle",GainExperience)
-					vRP.GenerateItem(Passport,"dirtydollar",Valuation,true)
+				local Members = 1
+				if exports["party"]:DoesExist(Passport,2) then
+					Members = #exports["party"]:Room(Passport,source,25)
 				end
+
+				if UserVehicle and vRP.SingleQuery("vehicles/plateVehicles",{ Plate = Plate }) then
+					vRP.Query("vehicles/Arrest",{ Plate = Plate })
+				end
+
+				vRP.BattlepassPoints(Passport,Experience)
+				vRP.PutExperience(Passport,"Dismantle",Experience)
+				vRP.GenerateItem(Passport,"ironfilings",Valuation * Members,true)
 			end
 
 			Wait(100)
-		until not Active[Passport] or not Dismantle[Plate]
+		until not Active[Passport]
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

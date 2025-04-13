@@ -98,7 +98,7 @@ AddEventHandler("towed:Payment",function(Plate)
 		TriggerEvent("garages:Deleted",Impound[Plate].Network,Plate)
 		vRP.GenerateItem(Passport,Result.Item,Valuation,true)
 		vRP.PutExperience(Passport,"Towed",GainExperience)
-		vRP.RolepassPoints(Passport,GainExperience,true)
+		vRP.BattlepassPoints(Passport,GainExperience)
 		vRP.GenerateItem(Passport,"dollar",250,true)
 		vRP.UpgradeStress(Passport,5)
 

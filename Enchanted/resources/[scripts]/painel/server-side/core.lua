@@ -21,7 +21,7 @@ local HierarchyButtons = 2
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("painel",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and not Player(source)["state"]["Buttons"] and exports["chat"]:Open(source) then
+	if Passport and not Player(source)["state"]["Buttons"] then
 		local Permission = vRP.GetUserType(Passport,"Work")
 
 		if Message[1] then

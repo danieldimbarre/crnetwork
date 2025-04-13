@@ -2,6 +2,47 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	-- ESSÊNCIAS
+	["blue_essence"] = {
+		["Index"] = "blue_essence",
+		["Name"] = "Essência Azul",
+		["Description"] = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
+		["Type"] = "Comum",
+		["Weight"] = 0.0,
+		["Delete"] = true
+	},
+	["purple_essence"] = {
+		["Index"] = "purple_essence",
+		["Name"] = "Essência Roxa",
+		["Description"] = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
+		["Type"] = "Comum",
+		["Weight"] = 0.0,
+		["Delete"] = true
+	},
+	["green_essence"] = {
+		["Index"] = "green_essence",
+		["Name"] = "Essência Verde",
+		["Description"] = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
+		["Type"] = "Comum",
+		["Weight"] = 0.0,
+		["Delete"] = true
+	},
+	["red_essence"] = {
+		["Index"] = "red_essence",
+		["Name"] = "Essência Vermelha",
+		["Description"] = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
+		["Type"] = "Comum",
+		["Weight"] = 0.0,
+		["Delete"] = true
+	},
+	["pink_essence"] = {
+		["Index"] = "pink_essence",
+		["Name"] = "Essência Rosa",
+		["Description"] = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
+		["Type"] = "Comum",
+		["Weight"] = 0.0,
+		["Delete"] = true
+	},
 	-- NATAL
 	["christmas_01"] = {
 		["Index"] = "christmas_01",

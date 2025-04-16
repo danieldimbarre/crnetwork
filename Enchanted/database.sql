@@ -209,6 +209,19 @@ CREATE TABLE IF NOT EXISTS `mdt_creative_reports` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+DROP TABLE IF EXISTS `mdt_creative_internalaffairs`;
+CREATE TABLE IF NOT EXISTS `mdt_creative_internalaffairs` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Passport` bigint(19) NOT NULL DEFAULT 0,
+  `Title` text DEFAULT NULL,
+  `Suspect` bigint(19) NOT NULL DEFAULT 0,
+  `Officer` bigint(19) NOT NULL DEFAULT 0,
+  `Timestamp` bigint(19) NOT NULL DEFAULT 0,
+  `Description` longtext DEFAULT NULL,
+  `Archive` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 DROP TABLE IF EXISTS `mdt_creative_units`;
 CREATE TABLE IF NOT EXISTS `mdt_creative_units` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,

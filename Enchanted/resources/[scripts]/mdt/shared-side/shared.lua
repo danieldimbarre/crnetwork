@@ -41,6 +41,12 @@ Config = {
 			Edit = 1,
 			Archive = 1
 		},
+		InternalAffairs = {
+			View = 1,
+			Create = 1,
+			Edit = 1,
+			Archive = 1
+		},
 		Wanted = {
 			View = 1,
 			Create = 1,
@@ -99,6 +105,12 @@ Config = {
 			Fine = 1,
 			Warning = 1,
 			PoliceReports = {
+				View = 1,
+				Create = 1,
+				Edit = 1,
+				Archive = 1
+			},
+			InternalAffairs = {
 				View = 1,
 				Create = 1,
 				Edit = 1,

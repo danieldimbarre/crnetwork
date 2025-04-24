@@ -47,7 +47,6 @@ CREATE TABLE IF NOT EXISTS `chests` (
   `Weight` bigint(19) NOT NULL DEFAULT 500,
   `Slots` int(10) NOT NULL DEFAULT 50,
   `Permission` varchar(100) NOT NULL DEFAULT '',
-  `Logs` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

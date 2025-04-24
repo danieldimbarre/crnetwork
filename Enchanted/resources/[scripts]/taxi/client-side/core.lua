@@ -22,11 +22,11 @@ local Selected = math.random(#Locations)
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	exports["target"]:AddBoxZone("WorkTaxi",Init["xyz"],0.75,0.75,{
+	exports["target"]:AddBoxZone("WorkTaxi",Init.xyz,0.75,0.75,{
 		name = "WorkTaxi",
-		heading = Init["w"],
-		minZ = Init["z"] - 1.0,
-		maxZ = Init["z"] + 1.0
+		heading = Init.w,
+		minZ = Init.z - 1.0,
+		maxZ = Init.z + 1.0
 	},{
 		Distance = 1.75,
 		options = {
@@ -54,25 +54,24 @@ AddEventHandler("taxi:Init",function()
 		SetPedKeepTask(Current,false)
 		SetEntityAsMissionEntity(Current,false,false)
 		TriggerServerEvent("DeletePed",NetworkGetNetworkIdFromEntity(Current))
-		Current = nil
 	end
 
 	if Passenger and DoesEntityExist(Passenger) then
 		SetPedKeepTask(Passenger,false)
 		SetEntityAsMissionEntity(Passenger,false,false)
 		TriggerServerEvent("DeletePed",Passenger)
-		Passenger = nil
 	end
+
+	Current = nil
+	Passenger = nil
 
 	if Service then
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
 		exports["target"]:LabelText("WorkTaxi","Iniciar Expediente")
-		SetDriveTaskDrivingStyle(PlayerPedId(),786603)
 		Service = false
 	else
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
 		exports["target"]:LabelText("WorkTaxi","Finalizar Expediente")
-		SetDriveTaskDrivingStyle(PlayerPedId(),1074528293)
 		MarkedPassenger()
 		Service = true
 	end
@@ -85,50 +84,48 @@ CreateThread(function()
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
 		if Service and IsPedInAnyVehicle(Ped) then
-			local Coords = GetEntityCoords(Ped)
 			local Vehicle = GetVehiclePedIsUsing(Ped)
-			local Distance = #(Coords - Locations[Selected]["Vehicle"])
-			if Distance <= 100 and not Walking and GetEntityArchetypeName(Vehicle) == "taxi" then
-				TimeDistance = 1
+			if GetEntityArchetypeName(Vehicle) == "taxi" then
+				local Coords = GetEntityCoords(Ped)
+				local OtherCoords = Locations[Selected].Vehicle
+				local Distance = #(Coords - OtherCoords)
+				if Distance <= 100.0 and not Walking then
+					TimeDistance = 1
+					DrawMarker(21,OtherCoords.x,OtherCoords.y,OtherCoords.z,0.0,0.0,0.0,0.0,180.0,130.0,1.5,1.5,1.0,88,101,242,175,false,true,0,true)
 
-				DrawMarker(21,Locations[Selected]["Vehicle"]["x"],Locations[Selected]["Vehicle"]["y"],Locations[Selected]["Vehicle"]["z"],0,0,0,0,180.0,130.0,1.5,1.5,1.0,88,101,242,175,0,0,0,1)
+					if Distance <= 2.5 and IsControlJustPressed(1,38) then
+						if PaymentActive then
+							FreezeEntityPosition(Vehicle,true)
 
-				if IsControlJustPressed(1,38) and Distance <= 2.5 then
-					if PaymentActive then
-						FreezeEntityPosition(Vehicle,true)
+							if Current and DoesEntityExist(Current) then
+								Passenger = NetworkGetNetworkIdFromEntity(Current)
 
-						if DoesEntityExist(Current) then
-							vSERVER.Payment(Selected)
-							TaskLeaveVehicle(Current,Vehicle,1)
-							TaskWanderStandard(Current,10.0,10)
-							Passenger = NetworkGetNetworkIdFromEntity(Current)
-						end
+								TaskLeaveVehicle(Current,Vehicle,64)
+								TaskWanderStandard(Current,10.0,10)
+								vSERVER.Payment(Selected)
+							end
 
-						FreezeEntityPosition(Vehicle,false)
+							FreezeEntityPosition(Vehicle,false)
+							PaymentActive = false
+							Lasted = Selected
 
-						PaymentActive = false
-						Lasted = Selected
-
-						repeat
-							if Lasted == Selected then
+							repeat
 								Selected = math.random(#Locations)
-							end
+							until Selected ~= Lasted
 
-							Wait(1)
-						until Lasted ~= Selected
+							MarkedPassenger()
 
-						MarkedPassenger()
-
-						SetTimeout(10000,function()
-							if Passenger then
-								SetPedKeepTask(Passenger,false)
-								SetEntityAsMissionEntity(Passenger,false,false)
-								TriggerServerEvent("DeletePed",Passenger)
-								Passenger = nil
-							end
-						end)
-					else
-						CreatePassenger(Vehicle)
+							SetTimeout(10000,function()
+								if Passenger then
+									SetPedKeepTask(Passenger,false)
+									SetEntityAsMissionEntity(Passenger,false,false)
+									TriggerServerEvent("DeletePed",Passenger)
+									Passenger = nil
+								end
+							end)
+						else
+							CreatePassenger(Vehicle)
+						end
 					end
 				end
 			end
@@ -141,22 +138,23 @@ end)
 -- CREATEPASSENGER
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CreatePassenger(Vehicle)
+	if Passenger and DoesEntityExist(Passenger) then
+		SetPedKeepTask(Passenger,false)
+		SetEntityAsMissionEntity(Passenger,false,false)
+		TriggerServerEvent("DeletePed",NetworkGetNetworkIdFromEntity(Passenger))
+	end
+
 	if Current and DoesEntityExist(Current) then
 		SetPedKeepTask(Current,false)
 		SetEntityAsMissionEntity(Current,false,false)
 		TriggerServerEvent("DeletePed",NetworkGetNetworkIdFromEntity(Current))
-		Current = nil
 	end
 
-	if Passenger and DoesEntityExist(Passenger) then
-		SetPedKeepTask(Passenger,false)
-		SetEntityAsMissionEntity(Passenger,false,false)
-		TriggerServerEvent("DeletePed",Passenger)
-		Passenger = nil
-	end
+	Passenger = nil
+	Current = nil
 
 	local Rand = math.random(#Models)
-	local Networked = vRPS.CreateModels(Models[Rand],Locations[Selected]["Ped"]["x"],Locations[Selected]["Ped"]["y"],Locations[Selected]["Ped"]["z"])
+	local Networked = vRPS.CreateModels(Models[Rand],Locations[Selected].Ped.x,Locations[Selected].Ped.y,Locations[Selected].Ped.z)
 	if not Networked then return end
 
 	Current = LoadNetwork(Networked)
@@ -186,12 +184,8 @@ function CreatePassenger(Vehicle)
 	Lasted = Selected
 
 	repeat
-		if Lasted == Selected then
-			Selected = math.random(#Locations)
-		end
-
-		Wait(1)
-	until Lasted ~= Selected
+		Selected = math.random(#Locations)
+	until Selected ~= Lasted
 
 	Walking = false
 	MarkedPassenger()
@@ -206,7 +200,7 @@ function MarkedPassenger()
 		Blip = nil
 	end
 
-	Blip = AddBlipForCoord(Locations[Selected]["Vehicle"]["x"],Locations[Selected]["Vehicle"]["y"],Locations[Selected]["Vehicle"]["z"])
+	Blip = AddBlipForCoord(Locations[Selected].Vehicle.x,Locations[Selected].Vehicle.y,Locations[Selected].Vehicle.z)
 	SetBlipSprite(Blip,1)
 	SetBlipDisplay(Blip,4)
 	SetBlipAsShortRange(Blip,true)

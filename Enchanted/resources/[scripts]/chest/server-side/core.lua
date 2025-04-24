@@ -197,8 +197,7 @@ function Creative.Permissions(Name,Mode,Item)
 		if Consult and vRP.HasService(Passport,Consult.Permission) then
 			Open[Passport] = {
 				Weight = (vRP.Permissions(Consult.Permission,"Premium") > os.time() and Consult.Weight * 2 or Consult.Weight),
-				NameLogs = Name,
-				Logs = Consult.Logs,
+				Chest = Name,
 				Slots = Consult.Slots,
 				Name = "Chest:"..Name,
 				Permission = Consult.Permission,
@@ -328,13 +327,11 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 		return false
 	end
 
-	if Item == "diagram" and Open[Passport].NameLogs then
-		if vRP.TakeItem(Passport,Item,Amount) then
-			vRP.Query("chests/UpdateWeight",{ Name = Open[Passport].NameLogs, Multiplier = Amount })
-			TriggerClientEvent("inventory:Notify",source,"Sucesso","Armazenamento melhorado.","verde")
-			Open[Passport].Weight = Open[Passport].Weight + (10 * Amount)
-			TriggerClientEvent("inventory:Update",source)
-		end
+	if Item == "diagram" and Open[Passport].Chest and vRP.TakeItem(Passport,Item,Amount) then
+		vRP.Query("chests/UpdateWeight",{ Name = Open[Passport].Chest, Multiplier = Amount })
+		TriggerClientEvent("inventory:Notify",source,"Sucesso","Armazenamento melhorado.","verde")
+		Open[Passport].Weight = Open[Passport].Weight + (10 * Amount)
+		TriggerClientEvent("inventory:Update",source)
 
 		return false
 	end
@@ -355,10 +352,6 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 		TriggerClientEvent("inventory:Update",source)
 
 		return false
-	end
-
-	if Open[Passport].Logs then
-		exports["discord"]:Embed(Open[Passport].NameLogs,"**[PASSAPORTE]:** "..Passport.."\n**[GUARDOU]:** "..Amount.."x "..ItemName(CleanedItem).."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -395,8 +388,6 @@ function Creative.Take(Item,Slot,Amount,Target)
 			GlobalState.ChristmasBox = GlobalState.ChristmasBox - 1
 			GlobalState["ChristmasBlock:"..SplitTwo(Name,":")] = true
 		end
-	elseif Open[Passport].Logs then
-		exports["discord"]:Embed(Open[Passport].NameLogs,"**[PASSAPORTE]:** "..Passport.."\n**[RETIROU]:** "..Amount.."x "..ItemName(Item).."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

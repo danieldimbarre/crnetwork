@@ -94,9 +94,9 @@ vRP.Prepare("propertys/AllUser","SELECT * FROM propertys WHERE Passport = @Passp
 vRP.Prepare("propertys/Item","UPDATE propertys SET Item = Item + 1 WHERE Name = @Name")
 vRP.Prepare("propertys/Garage","UPDATE propertys SET Garage = @Garage WHERE Name = @Name")
 vRP.Prepare("propertys/Credentials","UPDATE propertys SET Serial = @Serial WHERE Name = @Name")
-vRP.Prepare("propertys/Count","SELECT COUNT(Passport) FROM propertys WHERE Passport = @Passport")
 vRP.Prepare("propertys/Vault","UPDATE propertys SET Vault = Vault + @Weight WHERE Name = @Name")
 vRP.Prepare("propertys/Transfer","UPDATE propertys SET Passport = @Passport WHERE Name = @Name")
+vRP.Prepare("propertys/Count","SELECT COUNT(Passport) FROM propertys WHERE Passport = @Passport")
 vRP.Prepare("propertys/Fridge","UPDATE propertys SET Fridge = Fridge + @Weight WHERE Name = @Name")
 vRP.Prepare("propertys/Check","SELECT * FROM propertys WHERE Name = @Name AND Passport = @Passport")
 vRP.Prepare("propertys/Minimals","SELECT * FROM propertys WHERE Tax + (86400 * 15) <= UNIX_TIMESTAMP()")
@@ -105,8 +105,8 @@ vRP.Prepare("propertys/Buy","INSERT INTO propertys (Name,Interior,Passport,Seria
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAXS
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("taxs/Remove","DELETE FROM taxs WHERE Passport = @Passport AND id = @id")
 vRP.Prepare("taxs/List","SELECT * FROM taxs WHERE Passport = @Passport")
+vRP.Prepare("taxs/Remove","DELETE FROM taxs WHERE Passport = @Passport AND id = @id")
 vRP.Prepare("taxs/Check","SELECT * FROM taxs WHERE Passport = @Passport AND id = @id")
 vRP.Prepare("taxs/Add","INSERT INTO taxs (Passport,Name,Date,Hour,Price,Message) VALUES (@Passport,@Name,@Date,@Hour,@Price,@Message)")
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -139,34 +139,51 @@ vRP.Prepare("investments/Actives","UPDATE investments SET Monthly = Monthly + FL
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HWID
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("hwid/All","UPDATE hwid SET Banned = @Banned WHERE Account = @Account")
 vRP.Prepare("hwid/Check","SELECT * FROM hwid WHERE Token = @Token")
+vRP.Prepare("hwid/All","UPDATE hwid SET Banned = @Banned WHERE Account = @Account")
 vRP.Prepare("hwid/Insert","INSERT INTO hwid (Token,Account) VALUES (@Token,@Account)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEARTABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("summerz/Prison","UPDATE characters SET Prison = 0 WHERE Prison < 0")
 vRP.Prepare("summerz/Transactions","DELETE FROM transactions WHERE Timeset <= UNIX_TIMESTAMP()")
-vRP.Prepare("summerz/Playerdata","DELETE FROM playerdata WHERE Information IN ('[]','{}','null')")
-vRP.Prepare("summerz/Entitydata","DELETE FROM entitydata WHERE Information IN ('[]','{}','null')")
-vRP.Prepare("summerz/Phone","DELETE FROM phone_message_messages WHERE timestamp < UNIX_TIMESTAMP() - (86400 * 7)")
+vRP.Prepare("summerz/Playerdata","DELETE FROM playerdata WHERE Information IN ('[]','{}','null') OR Information IS NULL")
+vRP.Prepare("summerz/Entitydata","DELETE FROM entitydata WHERE Information IN ('[]','{}','null') OR Information IS NULL")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- LB-PHONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("summerz/PhoneCalls","DELETE FROM phone_phone_calls WHERE timestamp < NOW() - INTERVAL 3 DAY")
+vRP.Prepare("summerz/PhoneMessages","DELETE FROM phone_message_messages WHERE timestamp < NOW() - INTERVAL 3 DAY")
+vRP.Prepare("summerz/PhoneServices","DELETE FROM phone_services_messages WHERE timestamp < NOW() - INTERVAL 1 DAY")
+vRP.Prepare("summerz/PhoneNotifications","DELETE FROM phone_notifications WHERE timestamp < NOW() - INTERVAL 3 DAY")
+vRP.Prepare("summerz/PhoneStorys","DELETE FROM phone_instagram_stories_views WHERE timestamp < NOW() - INTERVAL 3 DAY")
+vRP.Prepare("summerz/PhoneInstagram","DELETE FROM phone_instagram_notifications WHERE timestamp < NOW() - INTERVAL 3 DAY")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RACES
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("Races/Insert","INSERT INTO races (Mode,Race,Passport,Vehicle,Points) VALUES (@Mode,@Race,@Passport,@Vehicle,@Points)")
 vRP.Prepare("Races/User","SELECT * FROM races WHERE Race = @Race AND Mode = @Mode AND Passport = @Passport")
-vRP.Prepare("Races/Update","UPDATE races SET Points = @Points, Vehicle = @Vehicle WHERE Race = @Race AND Mode = @Mode AND Passport = @Passport")
 vRP.Prepare("Races/Consult","SELECT * FROM races WHERE Race = @Race AND Mode = @Mode ORDER BY Points ASC LIMIT @Count")
+vRP.Prepare("Races/Insert","INSERT INTO races (Mode,Race,Passport,Vehicle,Points) VALUES (@Mode,@Race,@Passport,@Vehicle,@Points)")
+vRP.Prepare("Races/Update","UPDATE races SET Points = @Points, Vehicle = @Vehicle WHERE Race = @Race AND Mode = @Mode AND Passport = @Passport")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ARENA
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("arena/Killed","UPDATE characters SET Killed = Killed + 1 WHERE id = @Passport")
 vRP.Prepare("arena/Death","UPDATE characters SET Death = Death + 1 WHERE id = @Passport")
+vRP.Prepare("arena/Killed","UPDATE characters SET Killed = Killed + 1 WHERE id = @Passport")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	vRP.Query("summerz/Phone")
+	vRP.Query("summerz/Prison")
 	vRP.Query("summerz/Playerdata")
 	vRP.Query("summerz/Entitydata")
 	vRP.Query("summerz/Transactions")
+
+	-- LB-PHONE
+	vRP.Query("summerz/PhoneCalls")
+	vRP.Query("summerz/PhoneStorys")
+	vRP.Query("summerz/PhoneMessages")
+	vRP.Query("summerz/PhoneServices")
+	vRP.Query("summerz/PhoneInstagram")
+	vRP.Query("summerz/PhoneNotifications")
 end)

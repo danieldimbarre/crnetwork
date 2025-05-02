@@ -147,8 +147,6 @@ vRP.Prepare("hwid/Insert","INSERT INTO hwid (Token,Account) VALUES (@Token,@Acco
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("summerz/Prison","UPDATE characters SET Prison = 0 WHERE Prison < 0")
 vRP.Prepare("summerz/Transactions","DELETE FROM transactions WHERE Timeset <= UNIX_TIMESTAMP()")
-vRP.Prepare("summerz/Playerdata","DELETE FROM playerdata WHERE Information IN ('[]','{}','null') OR Information IS NULL")
-vRP.Prepare("summerz/Entitydata","DELETE FROM entitydata WHERE Information IN ('[]','{}','null') OR Information IS NULL")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LB-PHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -175,8 +173,6 @@ vRP.Prepare("arena/Killed","UPDATE characters SET Killed = Killed + 1 WHERE id =
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	vRP.Query("summerz/Prison")
-	vRP.Query("summerz/Playerdata")
-	vRP.Query("summerz/Entitydata")
 	vRP.Query("summerz/Transactions")
 
 	-- LB-PHONE

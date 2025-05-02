@@ -71,47 +71,43 @@ function Creative.Mount()
 		if Vehicle[Passport] and Vehicle[Passport]["Data"] then
 			local Result = vRP.GetSrvData(Vehicle[Passport]["Data"],true)
 			for Index,v in pairs(Result) do
-				if (v["amount"] <= 0 or not ItemExist(v["item"])) then
-					vRP.RemoveChest(Vehicle[Passport]["Data"],Index,true)
-				else
-					v["name"] = ItemName(v["item"])
-					v["weight"] = ItemWeight(v["item"])
-					v["index"] = ItemIndex(v["item"])
-					v["amount"] = parseInt(v["amount"])
-					v["rarity"] = ItemRarity(v["item"])
-					v["economy"] = ItemEconomy(v["item"])
-					v["desc"] = ItemDescription(v["item"])
-					v["key"] = v["item"]
-					v["slot"] = Index
+				v["name"] = ItemName(v["item"])
+				v["weight"] = ItemWeight(v["item"])
+				v["index"] = ItemIndex(v["item"])
+				v["amount"] = parseInt(v["amount"])
+				v["rarity"] = ItemRarity(v["item"])
+				v["economy"] = ItemEconomy(v["item"])
+				v["desc"] = ItemDescription(v["item"])
+				v["key"] = v["item"]
+				v["slot"] = Index
 
-					local Split = splitString(v["item"])
+				local Split = splitString(v["item"])
 
-					if not v["desc"] then
-						if Split[1] == "vehiclekey" and Split[3] then
-							v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
-						elseif ItemNamed(Split[1]) and Split[2] then
-							if Split[1] == "identity" then
-								v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
-							else
-								v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
-							end
+				if not v["desc"] then
+					if Split[1] == "vehiclekey" and Split[3] then
+						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
+					elseif ItemNamed(Split[1]) and Split[2] then
+						if Split[1] == "identity" then
+							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+						else
+							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 						end
 					end
-
-					if Split[2] then
-						local Loaded = ItemLoads(v["item"])
-						if Loaded then
-							v["charges"] = parseInt(Split[2] * (100 / Loaded))
-						end
-
-						if ItemDurability(v["item"]) then
-							v["durability"] = parseInt(os.time() - Split[2])
-							v["days"] = ItemDurability(v["item"])
-						end
-					end
-
-					Secondary[Index] = v
 				end
+
+				if Split[2] then
+					local Loaded = ItemLoads(v["item"])
+					if Loaded then
+						v["charges"] = parseInt(Split[2] * (100 / Loaded))
+					end
+
+					if ItemDurability(v["item"]) then
+						v["durability"] = parseInt(os.time() - Split[2])
+						v["days"] = ItemDurability(v["item"])
+					end
+				end
+
+				Secondary[Index] = v
 			end
 		end
 
@@ -214,8 +210,7 @@ end
 function Creative.Close()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Vehicle[Passport] and Vehicle[Passport].Network then
-		TriggerClientEvent("player:VehicleDoors",source,Vehicle[Passport].Network,"close")
+	if Passport and Vehicle[Passport] then
 		Vehicle[Passport] = nil
 	end
 end
@@ -225,22 +220,23 @@ end
 RegisterServerEvent("trunkchest:openTrunk")
 AddEventHandler("trunkchest:openTrunk",function(Entity)
 	local source = source
+	local Name = Entity[2]
+	local Plate = Entity[1]
+	local Network = Entity[4]
 	local Passport = vRP.Passport(source)
-	local Name,Network = Entity[2],Entity[4]
-	local OtherPassport = vRP.PassportPlate(Entity[1])
-	if Passport and OtherPassport and VehicleExist(Name) then
+	local Spawn = exports["garages"]:Spawn(Plate)
+	local OtherPassport = vRP.PassportPlate(Plate)
+	if Passport and OtherPassport and VehicleExist(Name) and Spawn and Spawn[1] == OtherPassport and Spawn and Spawn[2] == Name then
 		local Consult = vRP.SelectVehicle(OtherPassport,Name)
 
 		Vehicle[Passport] = {
 			Model = Name,
-			Network = Network,
 			Passport = OtherPassport,
 			Weight = Consult and Consult.Weight or VehicleWeight(Name),
 			Data = "Trunkchest:"..OtherPassport..":"..Name
 		}
 
 		TriggerClientEvent("trunkchest:Open",source)
-		TriggerClientEvent("player:VehicleDoors",source,Network,"open")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

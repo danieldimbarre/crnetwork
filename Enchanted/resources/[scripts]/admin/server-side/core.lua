@@ -120,10 +120,10 @@ RegisterCommand("passport",function(source,Message)
 
 			local MDT_Medals_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_medals")
 			if MDT_Medals_Officers and #MDT_Medals_Officers > 0 then
-				for _,v in ipairs(MDT_Medals_Officers) do
+				for _,v in pairs(MDT_Medals_Officers) do
 					local Updated = false
 					local Officers = json.decode(v.Officers)
-					for Index,Number in ipairs(Officers) do
+					for Index,Number in pairs(Officers) do
 						if OtherPassport == Number then
 							Officers[Index] = NewPassport
 							Updated = true
@@ -150,10 +150,10 @@ RegisterCommand("passport",function(source,Message)
 
 			local MDT_Units_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_units")
 			if MDT_Units_Officers and #MDT_Units_Officers > 0 then
-				for _,v in ipairs(MDT_Units_Officers) do
+				for _,v in pairs(MDT_Units_Officers) do
 					local Updated = false
 					local Officers = json.decode(v.Officers)
-					for Index,Number in ipairs(Officers) do
+					for Index,Number in pairs(Officers) do
 						if OtherPassport == Number then
 							Officers[Index] = NewPassport
 							Updated = true
@@ -381,14 +381,30 @@ RegisterCommand("wipepermissions",function(source,Message)
 	if Passport and vRP.HasPermission(Passport,"Admin") then
 		local Permissions = {}
 		for Permission in pairs(Groups) do
-			table.insert(Permissions,Permission)
+			Permissions[#Permissions + 1] = Permission
 		end
 
 		table.sort(Permissions,function(a,b) return a < b end)
 
 		local Keyboard = vKEYBOARD.Instagram(source,Permissions)
 		if Keyboard then
-			vRP.RemSrvData("Permissions:"..Keyboard[1])
+			local Permission = Keyboard[1]
+			local Consult = exports["oxmysql"]:query_async("SELECT * FROM chests WHERE Permission LIKE ?",{ Permission.."%" })
+			for _,v in pairs(Consult) do
+				if SplitOne(v.Permission) == Permission then
+					if vRP.GetSrvData("Chest:"..v.Name) then
+						vRP.RemSrvData("Chest:"..v.Name)
+					end
+
+					exports["oxmysql"]:query_async("DELETE FROM chests WHERE id = ?",{ v.id })
+				end
+			end
+
+			if vRP.GetSrvData("Permissions:"..Permission) then
+				vRP.RemSrvData("Permissions:"..Permission)
+			end
+
+			exports["oxmysql"]:query_async("DELETE FROM permissions WHERE Permission = ?",{ Permission })
 		end
 	end
 end)
@@ -691,13 +707,14 @@ end)
 RegisterCommand("insertcron",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Permissão",{ "Horas","Dias" },"Quantidade")
+		local Keyboard = vKEYBOARD.Skins(source,"Passaporte","Permissão","Hierarquia","Quantidade",{ "Horas","Dias" })
 		if Keyboard then
 			local Timer = 0
-			local Mode = Keyboard[3]
+			local Mode = Keyboard[5]
 			local Permission = Keyboard[2]
 			local OtherPassport = Keyboard[1]
 			local Amount = parseInt(Keyboard[4],true)
+			local Hierarchy = parseInt(Keyboard[3],true)
 
 			if not vRP.HasPermission(OtherPassport,Permission) then
 				vRP.SetPermission(OtherPassport,Permission)
@@ -709,7 +726,7 @@ RegisterCommand("insertcron",function(source)
 				Timer = Amount * 86400
 			end
 
-			exports["crons"]:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission })
+			exports["crons"]:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission, Level = Hierarchy })
 			TriggerClientEvent("Notify",source,"Sucesso","Adição efetuada.","verde",5000)
 		end
 	end
@@ -1307,83 +1324,59 @@ end)
 -- SETHTTPHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
 SetHttpHandler(function(Request,Result)
-	if Request.headers.Auth == "SEUTOKENAUTH" then
-		if Request.path == "/boosteron" then
-			Request.setDataHandler(function(Table)
-				local v = json.decode(Table)
-				local Account = vRP.Discord(v.Discord)
-				if Account then
-					local Consult = vRP.SingleQuery("characters/Characters",{ License = Account.License })
-					if Consult and Consult.id then
-						vRP.SetPermission(Consult.id,"Booster")
-					end
+	if Request.headers.Auth ~= "AuthELDORADOneW" then
+		return SendMessageDiscord(Result,400,"Falha na autenticação.")
+	end
 
-					SendMessageDiscord(Result,200,"Benefícios entregues: <@"..v.Discord..">")
-				else
-					SendMessageDiscord(Result,404,"Usuário não encontrado.")
-				end
-			end)
-		elseif Request.path == "/boosteroff" then
-			Request.setDataHandler(function(Table)
-				local v = json.decode(Table)
-				local Account = vRP.Discord(v.Discord)
-				if Account then
-					local Consult = vRP.SingleQuery("characters/Characters",{ License = Account.License })
-					if Consult and Consult.id then
-						vRP.RemovePermission(Consult.id,"Booster")
-					end
+	local Commands = {
+		["/god"] = function(Data)
+			local v = json.decode(Data)
+			local OtherPassport = parseInt(v.Passport)
+			local OtherSource = vRP.Source(OtherPassport)
+			if OtherSource then
+				vRP.Revive(OtherSource,300)
+				vRP.UpgradeThirst(OtherPassport,100)
+				vRP.UpgradeHunger(OtherPassport,100)
+				TriggerClientEvent("paramedic:Reset",OtherSource)
 
-					SendMessageDiscord(Result,200,"Benefícios removidos: <@"..v.Discord..">")
-				else
-					SendMessageDiscord(Result,404,"Usuário não encontrado.")
-				end
-			end)
-		elseif Request.path == "/god" then
-			Request.setDataHandler(function(Table)
-				local v = json.decode(Table)
-				local OtherPassport = parseInt(v.Passport)
-				local OtherSource = vRP.Source(OtherPassport)
-				if OtherSource then
-					vRP.Revive(OtherSource,300)
-					vRP.UpgradeThirst(OtherPassport,100)
-					vRP.UpgradeHunger(OtherPassport,100)
-					TriggerClientEvent("paramedic:Reset",OtherSource)
+				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+			else
+				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
+			end
+		end,
 
-					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
-				else
-					SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
-				end
-			end)
-		elseif Request.path == "/dima" then
-			Request.setDataHandler(function(Table)
-				local v = json.decode(Table)
-				local Amount = parseInt(v.Amount)
-				local OtherPassport = parseInt(v.Passport)
-				if OtherPassport > 0 and Amount > 0 then
-					vRP.UpgradeGemstone(OtherPassport,Amount,true)
-					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
-				else
-					SendMessageDiscord(Result,404,"Personagem não encontrado.")
-				end
-			end)
-		elseif Request.path == "/print" then
-			Request.setDataHandler(function(Table)
-				local v = json.decode(Table)
-				local OtherPassport = parseInt(v.Passport)
-				local OtherSource = vRP.Source(OtherPassport)
-				local Webhook = exports["discord"]:Webhook("Print")
-				if OtherSource and Webhook ~= "" then
-					TriggerClientEvent("megazord:Screenshot",OtherSource,Webhook)
-					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
-				else
-					SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
-				end
-			end)
-		else
-			SendMessageDiscord(Result,404,"Comando indisponível no momento.")
+		["/dima"] = function(Data)
+			local v = json.decode(Data)
+			local Amount = parseInt(v.Amount)
+			local OtherPassport = parseInt(v.Passport)
+			if OtherPassport > 0 and Amount > 0 then
+				vRP.UpgradeGemstone(OtherPassport,Amount,true)
+				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+			else
+				SendMessageDiscord(Result,404,"Personagem não encontrado.")
+			end
+		end,
+
+		["/print"] = function(Data)
+			local v = json.decode(Data)
+			local OtherPassport = parseInt(v.Passport)
+			local OtherSource = vRP.Source(OtherPassport)
+			local Webhook = exports["discord"]:Webhook("Print")
+			if OtherSource and Webhook ~= "" then
+				TriggerClientEvent("megazord:Screenshot",OtherSource,Webhook)
+				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+			else
+				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
+			end
 		end
+	}
+
+	if Commands[Request.path] then
+		Request.setDataHandler(function(Table)
+			Commands[Request.path](Table)
+		end)
 	else
-		SendMessageDiscord(Result,400,"Falha na autenticação.")
+		SendMessageDiscord(Result,404,"Comando indisponível no momento.")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -131,6 +131,7 @@ Theme = {
 	},
 	pause = {
 		premium = true,
+		propertys = true,
 		store = true,
 		battlepass = true,
 		boxes = true,

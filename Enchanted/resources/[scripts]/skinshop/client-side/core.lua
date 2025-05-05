@@ -18,6 +18,7 @@ local Init = "hat"
 local Camera = nil
 local Default = nil
 local Skinshop = {}
+local Locations = {}
 local Animation = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EXCLUDE
@@ -62,27 +63,6 @@ local Dataset = {
 	["bracelet"] = { item = 0, texture = 0 },
 	["accessory"] = { item = 0, texture = 0 },
 	["decals"] = { item = 0, texture = 0 }
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- LOCATIONS
------------------------------------------------------------------------------------------------------------------------------------------
-local Locations = {
-	vec3(71.29,-1398.68,29.37),
-	vec3(-708.56,-160.5,37.41),
-	vec3(-158.76,-296.94,39.73),
-	vec3(-829.08,-1073.27,11.32),
-	vec3(-1192.23,-771.74,17.32),
-	vec3(-1456.98,-241.17,49.81),
-	vec3(11.87,6513.59,31.88),
-	vec3(1696.92,4829.24,42.06),
-	vec3(122.93,-221.48,54.56),
-	vec3(617.77,2761.81,42.09),
-	vec3(1190.79,2714.29,38.22),
-	vec3(-3173.28,1046.04,20.86),
-	vec3(-1108.61,2709.59,19.11),
-	vec3(429.67,-800.14,29.49),
-	vec3(480.78,-1009.08,30.68),
-	vec3(474.41,-992.92,30.68)
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLOCK
@@ -142,15 +122,29 @@ AddEventHandler("skinshop:Apply",function(Table,Save)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSERVERSTART
+-- SKINSHOP:INIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	local Tables = {}
-	for Number = 1,#Locations do
-		Tables[#Tables + 1] = { Locations[Number],2.0,"E","Pressione","para abrir" }
+RegisterNetEvent("skinshop:Init")
+AddEventHandler("skinshop:Init",function(Data)
+	Locations = Data
+
+	local Table = {}
+	for _,v in pairs(Locations) do
+		table.insert(Table,{ vec3(v.Coords.x,v.Coords.y,v.Coords.z),2.5,"E","Pressione","para abrir" })
 	end
 
-	TriggerEvent("hoverfy:Insert",Tables)
+	TriggerEvent("hoverfy:Insert",Table)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SKINSHOP:INSERT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("skinshop:Insert")
+AddEventHandler("skinshop:Insert",function(Data)
+	table.insert(Locations,Data)
+
+	TriggerEvent("hoverfy:Insert",{
+		{ vec3(Data.Coords.x,Data.Coords.y,Data.Coords.z),2.5,"E","Pressione","para abrir" }
+	})
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
@@ -162,11 +156,11 @@ CreateThread(function()
 		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
 
-			for Number = 1,#Locations do
-				if #(Coords - Locations[Number]) <= 2.0 then
+			for _,v in pairs(Locations) do
+				if #(Coords - vec3(v.Coords.x,v.Coords.y,v.Coords.z)) <= 2.5 then
 					TimeDistance = 1
 
-					if IsControlJustPressed(0,38) and not exports["hud"]:Wanted() and not exports["hud"]:Repose() then
+					if IsControlJustPressed(0,38) and not exports["hud"]:Wanted() and not exports["hud"]:Repose() and (not v.Permission or LocalPlayer["state"][v.Permission]) then
 						OpenSkinshop()
 					end
 				end

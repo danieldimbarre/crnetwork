@@ -144,13 +144,58 @@ Use = {
 	["radiomhz"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		TriggerClientEvent("inventory:Close",source)
 
-		local Keyboard = vKEYBOARD.Options(source,"Frequência",{ "Ballas","Vagos","Families" })
+		local Permissions = {}
+		for Permission in pairs(Groups) do
+			Permissions[#Permissions + 1] = Permission
+		end
+
+		table.sort(Permissions,function(a,b) return a < b end)
+
+		local Keyboard = vKEYBOARD.Options(source,"Frequência",Permissions)
 		if Keyboard then
 			local Frequency = sanitizeString(Keyboard[1],"0123456789")
-			if not exports["radio"]:Exist(Frequency) and string.len(Frequency) == 3 and vRP.TakeItem(Passport,Full,1,false,Slot) then
-				TriggerClientEvent("Notify",source,"Sucesso","Frequência adicionada.","verde",5000)
-				exports["radio"]:Add(Frequency,Keyboard[2])
+			if Frequency and string.len(Frequency) >= 1 and string.sub(Frequency,1,1) ~= "0" then
+				if not exports["radio"]:Exist(Frequency) and vRP.TakeItem(Passport,Full,1,false,Slot) then
+					TriggerClientEvent("Notify",source,"Sucesso","Frequência adicionada.","verde",5000)
+					exports["radio"]:Add(Frequency,Keyboard[2])
+				end
+			else
+				TriggerClientEvent("Notify",source,"Negado","Precisa ter no mínimo 1 número e não pode começar com zero.","vermelho",5000)
 			end
+		end
+	end,
+
+	["barbershop"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+
+		local Permissions = {}
+		for Permission in pairs(Groups) do
+			Permissions[#Permissions + 1] = Permission
+		end
+
+		table.sort(Permissions,function(a,b) return a < b end)
+
+		local Keyboard = vKEYBOARD.Instagram(source,Permissions)
+		if Keyboard and vRP.TakeItem(Passport,Full,1,false,Slot) then
+			exports["barbershop"]:Add({ Coords = vRP.GetEntityCoords(source), Permission = Keyboard[1] })
+			TriggerClientEvent("Notify",source,"Sucesso","Barbearia adicionada.","verde",5000)
+		end
+	end,
+
+	["skinshop"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+
+		local Permissions = {}
+		for Permission in pairs(Groups) do
+			Permissions[#Permissions + 1] = Permission
+		end
+
+		table.sort(Permissions,function(a,b) return a < b end)
+
+		local Keyboard = vKEYBOARD.Instagram(source,Permissions)
+		if Keyboard and vRP.TakeItem(Passport,Full,1,false,Slot) then
+			exports["skinshop"]:Add({ Coords = vRP.GetEntityCoords(source), Permission = Keyboard[1] })
+			TriggerClientEvent("Notify",source,"Sucesso","Loja de Roupas adicionada.","verde",5000)
 		end
 	end,
 

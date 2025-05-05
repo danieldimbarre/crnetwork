@@ -1173,6 +1173,26 @@ local List = {
 		["Economy"] = 100000,
 		["Rarity"] = "legendary"
 	},
+	["barbershop"] = {
+		["Index"] = "barbershop",
+		["Name"] = "Barbearia",
+		["Type"] = "Consumível",
+		["Description"] = "Define uma posição no mapa onde a <b>Barbearia</b> poderá ser acessada.",
+		["Weight"] = 0.0,
+		["Delete"] = true,
+		["Economy"] = 500000,
+		["Rarity"] = "legendary"
+	},
+	["skinshop"] = {
+		["Index"] = "skinshop",
+		["Name"] = "Loja de Roupas",
+		["Type"] = "Consumível",
+		["Description"] = "Define uma posição no mapa onde a <b>Loja de Roupas</b> poderá ser acessada.",
+		["Weight"] = 0.0,
+		["Delete"] = true,
+		["Economy"] = 500000,
+		["Rarity"] = "legendary"
+	},
 	-- NAMEDS
 	["alliance"] = {
 		["Index"] = "alliance",

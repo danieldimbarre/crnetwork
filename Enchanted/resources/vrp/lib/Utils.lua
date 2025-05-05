@@ -243,17 +243,18 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- COMPLETETIMERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function CompleteTimers(Seconds)
-	local Seconds = parseInt(Seconds)
+function CompleteTimers(Seconds,Simple)
 	local Days = math.floor(Seconds / 86400)
 	Seconds = Seconds % 86400
+
 	local Hours = math.floor(Seconds / 3600)
 	Seconds = Seconds % 3600
+
 	local Minutes = math.floor(Seconds / 60)
 	Seconds = Seconds % 60
 
 	if Days > 0 then
-		if Hours > 0 then
+		if Hours > 0 and not Simple then
 			if Minutes > 0 then
 				return string.format("%d Dias, %d Horas e %d Minutos",Days,Hours,Minutes)
 			else
@@ -263,7 +264,7 @@ function CompleteTimers(Seconds)
 			return string.format("%d Dias",Days)
 		end
 	elseif Hours > 0 then
-		if Minutes > 0 then
+		if Minutes > 0 and not Simple then
 			if Seconds > 0 then
 				return string.format("%d Horas, %d Minutos e %d Segundos",Hours,Minutes,Seconds)
 			else
@@ -273,7 +274,7 @@ function CompleteTimers(Seconds)
 			return string.format("%d Horas",Hours)
 		end
 	elseif Minutes > 0 then
-		if Seconds > 0 then
+		if Seconds > 0 and not Simple then
 			return string.format("%d Minutos e %d Segundos",Minutes,Seconds)
 		else
 			return string.format("%d Minutos",Minutes)

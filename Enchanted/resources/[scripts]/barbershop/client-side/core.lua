@@ -15,6 +15,7 @@ vSERVER = Tunnel.getInterface("barbershop")
 local Lasted = {}
 local Camera = nil
 local Default = nil
+local Locations = {}
 local Barbershop = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVE
@@ -155,27 +156,29 @@ function OpenBarbershop(Mode)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LOCATIONS
+-- BARBERSHOP:INIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Locations = {
-	vec3(-813.37,-183.85,37.57),
-	vec3(138.13,-1706.46,29.3),
-	vec3(-1280.92,-1117.07,7.0),
-	vec3(1930.54,3732.06,32.85),
-	vec3(1214.2,-473.18,66.21),
-	vec3(-33.61,-154.52,57.08),
-	vec3(-276.65,6226.76,31.7)
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADSERVERSTART
------------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
+RegisterNetEvent("barbershop:Init")
+AddEventHandler("barbershop:Init",function(Data)
+	Locations = Data
+
 	local Table = {}
-	for _,Location in ipairs(Locations) do
-		table.insert(Table,{ Location,2.5,"E","Pressione","para abrir" })
+	for _,v in pairs(Locations) do
+		table.insert(Table,{ vec3(v.Coords.x,v.Coords.y,v.Coords.z),2.5,"E","Pressione","para abrir" })
 	end
 
 	TriggerEvent("hoverfy:Insert",Table)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BARBERSHOP:INSERT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("barbershop:Insert")
+AddEventHandler("barbershop:Insert",function(Data)
+	table.insert(Locations,Data)
+
+	TriggerEvent("hoverfy:Insert",{
+		{ vec3(Data.Coords.x,Data.Coords.y,Data.Coords.z),2.5,"E","Pressione","para abrir" }
+	})
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADOPEN
@@ -187,11 +190,11 @@ CreateThread(function()
 		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
 
-			for Number = 1,#Locations do
-				if #(Coords - Locations[Number]) <= 2.5 then
+			for _,v in pairs(Locations) do
+				if #(Coords - vec3(v.Coords.x,v.Coords.y,v.Coords.z)) <= 2.5 then
 					TimeDistance = 1
 
-					if IsControlJustPressed(1,38) and not exports["hud"]:Wanted() then
+					if IsControlJustPressed(1,38) and not exports["hud"]:Wanted() and (not v.Permission or LocalPlayer["state"][v.Permission]) then
 						OpenBarbershop(vSERVER.Mode())
 					end
 				end

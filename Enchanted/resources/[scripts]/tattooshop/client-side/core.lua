@@ -15,6 +15,7 @@ local Active = {}
 local Lasted = {}
 local Camera = nil
 local Default = nil
+local Locations = {}
 local Tattooshop = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DATASET
@@ -1296,17 +1297,6 @@ local Dataset = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LOCATIONS
------------------------------------------------------------------------------------------------------------------------------------------
-local Locations = {
-	vec3(1321.46,-1653.91,52.27),
-	vec3(-1155.66,-1427.18,4.95),
-	vec3(324.47,180.0,103.59),
-	vec3(-3169.29,1077.59,20.83),
-	vec3(1864.45,3746.73,33.03),
-	vec3(-294.34,6200.93,31.48)
-}
------------------------------------------------------------------------------------------------------------------------------------------
 -- TATTOOSHOP:APPLY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("tattooshop:Apply")
@@ -1444,15 +1434,29 @@ RegisterNUICallback("Reset",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSERVERSTART
+-- TATTOOSHOP:INIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	local Tables = {}
-	for Number = 1,#Locations do
-		Tables[#Tables + 1] = { Locations[Number],2.0,"E","Pressione","para abrir" }
+RegisterNetEvent("tattooshop:Init")
+AddEventHandler("tattooshop:Init",function(Data)
+	Locations = Data
+
+	local Table = {}
+	for _,v in pairs(Locations) do
+		table.insert(Table,{ vec3(v.Coords.x,v.Coords.y,v.Coords.z),2.5,"E","Pressione","para abrir" })
 	end
 
-	TriggerEvent("hoverfy:Insert",Tables)
+	TriggerEvent("hoverfy:Insert",Table)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TATTOOSHOP:INSERT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("tattooshop:Insert")
+AddEventHandler("tattooshop:Insert",function(Data)
+	table.insert(Locations,Data)
+
+	TriggerEvent("hoverfy:Insert",{
+		{ vec3(Data.Coords.x,Data.Coords.y,Data.Coords.z),2.5,"E","Pressione","para abrir" }
+	})
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADLOCATIONS
@@ -1464,11 +1468,11 @@ CreateThread(function()
 		if not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
 
-			for Number = 1,#Locations do
-				if #(Coords - Locations[Number]) <= 2.0 then
+			for _,v in pairs(Locations) do
+				if #(Coords - vec3(v.Coords.x,v.Coords.y,v.Coords.z)) <= 2.5 then
 					TimeDistance = 1
 
-					if IsControlJustPressed(1,38) and not exports["hud"]:Wanted() then
+					if IsControlJustPressed(0,38) and not exports["hud"]:Wanted() and not exports["hud"]:Repose() and (not v.Permission or LocalPlayer["state"][v.Permission]) then
 						OpenTattooshop()
 					end
 				end

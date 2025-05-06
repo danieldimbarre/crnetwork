@@ -199,6 +199,23 @@ Use = {
 		end
 	end,
 
+	["tattooshop"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("inventory:Close",source)
+
+		local Permissions = {}
+		for Permission in pairs(Groups) do
+			Permissions[#Permissions + 1] = Permission
+		end
+
+		table.sort(Permissions,function(a,b) return a < b end)
+
+		local Keyboard = vKEYBOARD.Instagram(source,Permissions)
+		if Keyboard and vRP.TakeItem(Passport,Full,1,false,Slot) then
+			exports["tattooshop"]:Add({ Coords = vRP.GetEntityCoords(source), Permission = Keyboard[1] })
+			TriggerClientEvent("Notify",source,"Sucesso","Loja de Tatuagem adicionada.","verde",5000)
+		end
+	end,
+
 	["vehiclekey"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Vehicle,Network,Plate = vRPC.VehicleList(source)
 		if Vehicle and Plate == Split[3] then

@@ -1647,16 +1647,6 @@ local List = {
 		["Blueprint"] = true,
 		["LostWater"] = true
 	},
-	["washbattery"] = {
-		["Index"] = "washbattery",
-		["Name"] = "Bateria 75Ah",
-		["Description"] = "Fonte confiável de energia, garantindo longa duração e eficiência durante os ciclos de lavagem, ideal para manter o funcionamento contínuo sem depender exclusivamente da rede elétrica.",
-		["Type"] = "Comum",
-		["Weight"] = 17.5,
-		["Economy"] = 12750,
-		["Market"] = true,
-		["LostWater"] = true
-	},
 	["batteryaa"] = {
 		["Index"] = "batteryaa",
 		["Name"] = "Bateria AA",
@@ -2216,6 +2206,25 @@ local List = {
 		["Weight"] = 50.0,
 		["Market"] = true,
 		["Rarity"] = "legendary"
+	},
+	["washbattery"] = {
+		["Index"] = "washbattery",
+		["Name"] = "Bateria 75Ah",
+		["Description"] = "Fonte confiável de energia, garantindo longa duração e eficiência durante os ciclos de lavagem, ideal para manter o funcionamento contínuo sem depender exclusivamente da rede elétrica.",
+		["Type"] = "Comum",
+		["Weight"] = 17.5,
+		["Economy"] = 12750,
+		["Market"] = true,
+		["LostWater"] = true
+	},
+	["washbleach"] = {
+		["Index"] = "washbleach",
+		["Name"] = "Alvejante",
+		["Description"] = "Produto químico potente utilizado para remover manchas difíceis e desinfetar superfícies. Ideal para limpeza pesada de roupas brancas e ambientes que exigem higienização profunda. Deve ser manuseado com cuidado.",
+		["Type"] = "Comum",
+		["Weight"] = 0.35,
+		["Economy"] = 22725,
+		["Market"] = true
 	},
 	-- MELEES
 	["WEAPON_HATCHET"] = {

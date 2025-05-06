@@ -199,7 +199,7 @@ AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 				if Active[Passport] and os.time() >= Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
-					Player(source)state.Buttons = false
+					Player(source).state.Buttons = false
 
 					if not Config[Mode].Need or (Config[Mode].Need and Consult and vRP.ConsultItem(Passport,Consult.Item,Config[Mode].Need.Amount) and (not Config[Mode].Need.Consume or (Config[Mode].Need.Consume and vRP.TakeItem(Passport,Consult.Item,Config[Mode].Need.Amount)))) then
 						if Mode == "Eletronic" then

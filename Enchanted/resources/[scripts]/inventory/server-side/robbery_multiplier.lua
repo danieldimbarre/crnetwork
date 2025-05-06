@@ -126,6 +126,22 @@ local Config = {
 			Dict = "oddjobs@shop_robbery@rob_till",
 			Name = "loop"
 		}
+	},
+	Eletronic = {
+		Police = 5,
+		Timer = 30,
+		Wanted = 600,
+		Delay = 300,
+		Cooldown = {},
+		Percentage = 750,
+		Name = "Caixa Eletrônico",
+		Residual = "Resquício de Línter",
+		Need = {
+			Amount = 1,
+			Consume = true,
+			Item = "c4"
+		},
+		Payment = { Min = 1000, Max = 1500 }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -137,59 +153,86 @@ AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 	local Required = false
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Config[Mode] then
-		if Config[Mode]["Police"] and vRP.AmountService("Policia") < Config[Mode]["Police"] then
+		if Config[Mode].Police and vRP.AmountService("Policia") < Config[Mode].Police then
 			TriggerClientEvent("Notify",source,"Atenção","Contingente indisponível.","amarelo",5000)
 			return false
 		end
 
-		if Config[Mode]["Need"] then
-			Required = vRP.ConsultItem(Passport,Config[Mode]["Need"]["Item"],Config[Mode]["Need"]["Amount"])
+		if Config[Mode].Need then
+			Required = vRP.ConsultItem(Passport,Config[Mode].Need.Item,Config[Mode].Need.Amount)
 
 			if not Required then
-				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>"..Config[Mode]["Need"]["Amount"].."x "..ItemName(Config[Mode]["Need"]["Item"]).."</b>.","amarelo",5000)
+				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>"..Config[Mode].Need.Amount.."x "..ItemName(Config[Mode].Need.Item).."</b>.","amarelo",5000)
 				return false
 			end
 		end
 
-		if not Config[Mode]["Cooldown"][Number] or os.time() > Config[Mode]["Cooldown"][Number] then
-			Player(source)["state"]["Buttons"] = true
-			Active[Passport] = os.time() + Config[Mode]["Timer"]
-			TriggerClientEvent("player:Residual",source,Config[Mode]["Residual"])
-			TriggerClientEvent("Progress",source,"Roubando",Config[Mode]["Timer"] * 1000)
+		if not Config[Mode].Cooldown[Number] or os.time() > Config[Mode].Cooldown[Number] then
+			Player(source).state.Buttons = true
+			Active[Passport] = os.time() + Config[Mode].Timer
+			Config[Mode].Cooldown[Number] = os.time() + Config[Mode].Delay
+			TriggerClientEvent("player:Residual",source,Config[Mode].Residual)
+			TriggerClientEvent("Progress",source,"Roubando",Config[Mode].Timer * 1000)
 
-			if Config[Mode]["Animation"] then
-				vRPC.playAnim(source,false,{ Config[Mode]["Animation"]["Dict"],Config[Mode]["Animation"]["Name"] },true)
+			if Config[Mode].Animation then
+				vRPC.playAnim(source,false,{ Config[Mode].Animation.Dict,Config[Mode].Animation.Name },true)
+			elseif Mode == "Eletronic" then
+				vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+
+				SetTimeout(5000,function()
+					vRPC.Destroy(source)
+				end)
 			end
 
 			exports["vrp"]:CallPolice({
-				["Source"] = source,
-				["Passport"] = Passport,
-				["Permission"] = "Policia",
-				["Name"] = Config[Mode]["Name"],
-				["Percentage"] = Config[Mode]["Percentage"],
-				["Wanted"] = Config[Mode]["Wanted"],
-				["Code"] = 31,
-				["Color"] = 22
+				Source = source,
+				Passport = Passport,
+				Permission = "Policia",
+				Name = Config[Mode].Name,
+				Percentage = Config[Mode].Percentage,
+				Wanted = Config[Mode].Wanted,
+				Code = 31,
+				Color = 22
 			})
 
 			repeat
 				if Active[Passport] and os.time() >= Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
-					Player(source)["state"]["Buttons"] = false
+					Player(source)state.Buttons = false
 
-					if (not Config[Mode]["Cooldown"][Number] or os.time() > Config[Mode]["Cooldown"][Number]) and (not Config[Mode]["Need"] or Required and vRP.ConsultItem(Passport,Required["Item"],Config[Mode]["Need"]["Amount"]) and (not Config[Mode]["Need"]["Consume"] or (Config[Mode]["Need"]["Consume"] and vRP.TakeItem(Passport,Required["Item"],Config[Mode]["Need"]["Amount"])))) then
-						Config[Mode]["Cooldown"][Number] = os.time() + Config[Mode]["Delay"]
-						vRP.MountContainer(Passport,Mode..":"..Number,Config[Mode]["Payment"]["List"],math.random(Config[Mode]["Payment"]["Multiplier"]["Min"],Config[Mode]["Payment"]["Multiplier"]["Max"]))
-						TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
+					if not Config[Mode].Need or (Config[Mode].Need and Consult and vRP.ConsultItem(Passport,Consult.Item,Config[Mode].Need.Amount) and (not Config[Mode].Need.Consume or (Config[Mode].Need.Consume and vRP.TakeItem(Passport,Consult.Item,Config[Mode].Need.Amount)))) then
+						if Mode == "Eletronic" then
+							local Valuation = math.random(Config[Mode].Payment.Min,Config[Mode].Payment.Max)
+
+							if exports["party"]:DoesExist(Passport,2) then
+								Valuation = Valuation + (Valuation * 0.1)
+							end
+
+							if exports["inventory"]:Buffs("Dexterity",Passport) then
+								Valuation = Valuation + (Valuation * 0.1)
+							end
+
+							for Permission,Multiplier in pairs({ Ouro = 0.1, Prata = 0.075, Bronze = 0.05 }) do
+								if vRP.HasService(Passport,Permission) then
+									Valuation = Valuation + (Valuation * Multiplier)
+								end
+							end
+
+							TriggerClientEvent("inventory:Explosion",source,Multiplier[Number].Coords.xyz)
+							exports["inventory"]:Drops(Passport,source,"dirtydollar",Valuation,false,Multiplier[Number].Coords.xyz)
+						else
+							vRP.MountContainer(Passport,Mode..":"..Number,Config[Mode].Payment.List,math.random(Config[Mode].Payment.Multiplier.Min,Config[Mode].Payment.Multiplier.Max))
+							TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
+						end
 					end
 				end
 
 				Wait(100)
 			until not Active[Passport]
 		else
-			local TimeRemaining = Config[Mode]["Cooldown"][Number] - os.time()
-			if TimeRemaining >= (Config[Mode]["Delay"] - 300) then
+			local TimeRemaining = Config[Mode].Cooldown[Number] - os.time()
+			if Mode ~= "Eletronic" and TimeRemaining >= (Config[Mode].Delay - 300) then
 				TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
 			else
 				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(TimeRemaining)..".","amarelo",5000)

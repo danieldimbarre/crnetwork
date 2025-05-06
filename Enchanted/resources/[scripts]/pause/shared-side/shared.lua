@@ -618,6 +618,11 @@ ShopItens = {
 		Discount = 1.0,
 		Category = "Grupos"
 	},
+	tattooshop = {
+		Price = 25000,
+		Discount = 1.0,
+		Category = "Grupos"
+	},
 	premiumplate = {
 		Price = 5000,
 		Discount = 1.0,

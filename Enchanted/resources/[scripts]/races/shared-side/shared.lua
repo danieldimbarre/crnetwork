@@ -14,7 +14,7 @@ PropTyre = "prop_offroad_tyres02"
 Routes = {
 	{
 		Time = 275,
-		Runners = 1,
+		Runners = 4, -- Precisa ser o mesmo número da quantidade dos Positions.
 		Record = 250,
 		Payment = 1675,
 		Checkpoints = 44,

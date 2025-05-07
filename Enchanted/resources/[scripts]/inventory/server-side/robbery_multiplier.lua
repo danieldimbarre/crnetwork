@@ -149,8 +149,8 @@ local Config = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("inventory:RobberyMultiplier")
 AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
-	local source = source
-	local Required = false
+	local Required,Mode = nil,Mode
+	local source,Number = source,Number
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Config[Mode] then
 		if Config[Mode].Police and vRP.AmountService("Policia") < Config[Mode].Police then
@@ -163,6 +163,7 @@ AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 
 			if not Required then
 				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>"..Config[Mode].Need.Amount.."x "..ItemName(Config[Mode].Need.Item).."</b>.","amarelo",5000)
+
 				return false
 			end
 		end
@@ -175,7 +176,7 @@ AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 			TriggerClientEvent("Progress",source,"Roubando",Config[Mode].Timer * 1000)
 
 			if Config[Mode].Animation then
-				vRPC.playAnim(source,false,{ Config[Mode].Animation.Dict,Config[Mode].Animation.Name },true)
+				vRPC.playAnim(source,false,{Config[Mode].Animation.Dict,Config[Mode].Animation.Name},true)
 			elseif Mode == "Eletronic" then
 				vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
@@ -201,7 +202,7 @@ AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 					Active[Passport] = nil
 					Player(source).state.Buttons = false
 
-					if not Config[Mode].Need or (Config[Mode].Need and Consult and vRP.ConsultItem(Passport,Consult.Item,Config[Mode].Need.Amount) and (not Config[Mode].Need.Consume or (Config[Mode].Need.Consume and vRP.TakeItem(Passport,Consult.Item,Config[Mode].Need.Amount)))) then
+					if not Config[Mode].Need or (Config[Mode].Need and Required and (not Config[Mode].Need.Consume or (Config[Mode].Need.Consume and vRP.TakeItem(Passport,Required.Item,Config[Mode].Need.Amount)))) then
 						if Mode == "Eletronic" then
 							local Valuation = math.random(Config[Mode].Payment.Min,Config[Mode].Payment.Max)
 
@@ -219,8 +220,8 @@ AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 								end
 							end
 
-							TriggerClientEvent("inventory:Explosion",source,Multiplier[Number].Coords.xyz)
-							exports["inventory"]:Drops(Passport,source,"dirtydollar",Valuation,false,Multiplier[Number].Coords.xyz)
+							TriggerClientEvent("inventory:Explosion",source,Multiplier[Number].Coords)
+							exports["inventory"]:Drops(Passport,source,"dirtydollar",Valuation,false,Multiplier[Number].Coords)
 						else
 							vRP.MountContainer(Passport,Mode..":"..Number,Config[Mode].Payment.List,math.random(Config[Mode].Payment.Multiplier.Min,Config[Mode].Payment.Multiplier.Max))
 							TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)

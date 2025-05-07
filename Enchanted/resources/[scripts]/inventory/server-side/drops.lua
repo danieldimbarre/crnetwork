@@ -48,66 +48,68 @@ end
 -- DROPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
-	local Item = Item
-	local Force = Force
-	local Amount = Amount
-	local source = source
-	local Passport = Passport
-	local Route = GetPlayerRoutingBucket(source)
+	if Amount >= 1 then
+		local Item = Item
+		local Force = Force
+		local source = source
+		local Passport = Passport
+		local Amount = parseInt(Amount)
+		local Route = GetPlayerRoutingBucket(source)
 
-	Active[Passport] = true
+		Active[Passport] = true
 
-	Force = (Force and Item or vRP.SortNameItem(Passport,Item))
+		Force = (Force and Item or vRP.SortNameItem(Passport,Item))
 
-	if not Drops[Route] then
-		Drops[Route] = {}
-	end
-
-	repeat
-		Selected = GenerateString("DDDDDDDDD")
-	until Selected and not Reserved[Selected] and not Drops[Route][Selected]
-	Reserved[Selected] = true
-
-	local Provisory = {
-		["key"] = Force,
-		["route"] = Route,
-		["id"] = Selected,
-		["amount"] = Amount,
-		["name"] = ItemName(Force),
-		["weight"] = ItemWeight(Force),
-		["index"] = ItemIndex(Force),
-		["rarity"] = ItemRarity(Force),
-		["economy"] = ItemEconomy(Force),
-		["desc"] = ItemDescription(Force),
-		["coords"] = Coords or vRP.GetEntityCoords(source)
-	}
-
-	local Split = splitString(Force)
-
-	if not Provisory["desc"] then
-		if Split[1] == "vehiclekey" and Split[3] then
-			Provisory["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
-		elseif ItemNamed(Split[1]) and Split[2] then
-			Provisory["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
-		end
-	end
-
-	if Split[2] then
-		local Loaded = ItemLoads(Force)
-		if Loaded then
-			Provisory["charges"] = parseInt(Split[2] * (100 / Loaded))
+		if not Drops[Route] then
+			Drops[Route] = {}
 		end
 
-		local Durability = ItemDurability(Force)
-		if Durability then
-			Provisory["durability"] = parseInt(os.time() - Split[2])
-			Provisory["days"] = Durability
-		end
-	end
+		repeat
+			Selected = GenerateString("DDDDDDDDD")
+		until Selected and not Reserved[Selected] and not Drops[Route][Selected]
+		Reserved[Selected] = true
 
-	Active[Passport] = nil
-	Drops[Route][Selected] = Provisory
-	TriggerClientEvent("inventory:DropsAdicionar",-1,Route,Selected,Drops[Route][Selected])
+		local Provisory = {
+			["key"] = Force,
+			["route"] = Route,
+			["id"] = Selected,
+			["amount"] = Amount,
+			["name"] = ItemName(Force),
+			["weight"] = ItemWeight(Force),
+			["index"] = ItemIndex(Force),
+			["rarity"] = ItemRarity(Force),
+			["economy"] = ItemEconomy(Force),
+			["desc"] = ItemDescription(Force),
+			["coords"] = Coords or vRP.GetEntityCoords(source)
+		}
+
+		local Split = splitString(Force)
+
+		if not Provisory["desc"] then
+			if Split[1] == "vehiclekey" and Split[3] then
+				Provisory["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
+			elseif ItemNamed(Split[1]) and Split[2] then
+				Provisory["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+			end
+		end
+
+		if Split[2] then
+			local Loaded = ItemLoads(Force)
+			if Loaded then
+				Provisory["charges"] = parseInt(Split[2] * (100 / Loaded))
+			end
+
+			local Durability = ItemDurability(Force)
+			if Durability then
+				Provisory["durability"] = parseInt(os.time() - Split[2])
+				Provisory["days"] = Durability
+			end
+		end
+
+		Active[Passport] = nil
+		Drops[Route][Selected] = Provisory
+		TriggerClientEvent("inventory:DropsAdicionar",-1,Route,Selected,Drops[Route][Selected])
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PICKUP

@@ -22,7 +22,7 @@ Routes = {
 		Image = "littlebighorn.png",
 		Name = "Little Bighorn Avenue",
 		Init = vec4(513.24,-641.03,24.13,172.92),
-		Vehicles = {
+		Positions = {
 			vec4(514.77,-654.59,24.13,175.75),
 			vec4(510.26,-653.03,24.13,175.75),
 			vec4(515.19,-647.47,24.13,175.75),

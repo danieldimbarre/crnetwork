@@ -711,27 +711,32 @@ ShopItens = {
 	moneywash = {
 		Price = 5000,
 		Discount = 1.0,
-		Category = "Utilidades"
+		Category = "Lavagem"
 	},
 	moneywashplus = {
 		Price = 10000,
 		Discount = 0.95,
-		Category = "Utilidades"
+		Category = "Lavagem"
 	},
 	moneywashalpha = {
 		Price = 20000,
 		Discount = 0.90,
-		Category = "Utilidades"
+		Category = "Lavagem"
 	},
 	moneywashomega = {
 		Price = 100000,
 		Discount = 0.85,
-		Category = "Utilidades"
+		Category = "Lavagem"
 	},
 	washbattery = {
 		Price = 750,
 		Discount = 1.0,
-		Category = "Utilidades"
+		Category = "Lavagem"
+	},
+	washbleach = {
+		Price = 500,
+		Discount = 1.0,
+		Category = "Lavagem"
 	},
 	radiomhz = {
 		Price = 7500,

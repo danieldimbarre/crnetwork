@@ -137,8 +137,8 @@ function Creative.Permissions(Name,Mode,Item)
 	end
 
 	if Mode == "Personal" then
-		local Name = SplitOne(Name)
-		if vRP.HasPermission(Passport,Name) then
+		local ServiceName = SplitOne(Name)
+		if vRP.HasService(Passport,ServiceName) then
 			Open[Passport] = {
 				Name = "Personal:"..Passport,
 				Weight = 50,
@@ -149,11 +149,13 @@ function Creative.Permissions(Name,Mode,Item)
 			return true
 		end
 	elseif Mode == "Tray" then
+		local isRecycle = (Name == "Recycle")
+
 		Open[Passport] = {
 			Slots = 25,
 			Name = Name,
-			Recycle = (Name == "Recycle"),
-			Weight = (Name == "Recycle" and 100 or 25)
+			Recycle = isRecycle,
+			Weight = isRecycle and 100 or 25
 		}
 
 		return true
@@ -174,14 +176,14 @@ function Creative.Permissions(Name,Mode,Item)
 
 		return true
 	elseif Mode == "Item" then
-		local Previous = SplitOne(Name,":")
-		if ChestItens[Previous] then
+		local UniqueName = SplitOne(Name,":")
+		if ChestItens[UniqueName] then
 			Open[Passport] = {
 				Name = Name,
 				Save = true,
-				Unique = Previous,
-				Slots = ChestItens[Previous].Slots,
-				Weight = ChestItens[Previous].Weight,
+				Unique = UniqueName,
+				Slots = ChestItens[UniqueName].Slots,
+				Weight = ChestItens[UniqueName].Weight,
 				Item = Item
 			}
 
@@ -195,8 +197,10 @@ function Creative.Permissions(Name,Mode,Item)
 		end
 
 		if Consult and vRP.HasService(Passport,Consult.Permission) then
+			local IsPremium = vRP.Permissions(Consult.Permission, "Premium") > os.time()
+
 			Open[Passport] = {
-				Weight = (vRP.Permissions(Consult.Permission,"Premium") > os.time() and Consult.Weight * 2 or Consult.Weight),
+				Weight = IsPremium and Consult.Weight * 2 or Consult.Weight,
 				Chest = Name,
 				Slots = Consult.Slots,
 				Name = "Chest:"..Name,
@@ -222,14 +226,9 @@ function Creative.Mount()
 	end
 
 	local function ProcessItem(Index,v,Primary)
-		if v.amount <= 0 or not ItemExist(v.item) then
-			if Primary then
-				vRP.RemoveItem(Passport,v.item,v.amount,false)
-			else
-				vRP.RemoveChest(Open[Passport].Name,Index,Open[Passport].Save)
-			end
-
-			return nil
+		if Primary and v.amount <= 0 or not ItemExist(v.item) then
+			vRP.RemoveItem(Passport,v.item,v.amount,false)
+			return false
 		end
 
 		v.name = ItemName(v.item)
@@ -289,7 +288,7 @@ function Creative.Mount()
 	end
 
 	for Index,v in pairs(Chest) do
-		local Processed = ProcessItem(Index,v,false)
+		local Processed = ProcessItem(Index,v)
 		if Processed then
 			Secondary[Index] = Processed
 		end

@@ -589,6 +589,7 @@ Propertys = {
 		Name = "Fazenda",
 		Image = "fazenda",
 		Permission = "Fazenda",
+		Coords = vec3(0.0,0.0,0.0),
 		Price = 100000,
 		Discount = 1.0,
 		Duration = 2592000,

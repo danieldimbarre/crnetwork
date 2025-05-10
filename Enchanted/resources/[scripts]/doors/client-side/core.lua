@@ -9,41 +9,48 @@ vSERVER = Tunnel.getInterface("doors")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Doors = {}
 local Display = {}
 local Cooldown = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADSERVERSTART
+-- DOORS:CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-CreateThread(function()
-	for Number,v in pairs(GlobalState["Doors"]) do
-		if IsDoorRegisteredWithSystem(Number) then
-			RemoveDoorFromSystem(Number)
-		end
+RegisterNetEvent("doors:Connect")
+AddEventHandler("doors:Connect",function(Table)
+	Doors = Table
 
-		AddDoorToSystem(Number,v["Hash"],v["Coords"],false,false,true)
+	for Number,v in pairs(Doors) do
+		if not IsDoorRegisteredWithSystem(Number) then
+			AddDoorToSystem(Number,v.Hash,v.Coords,false,false,true)
+		end
 
 		DoorSystemSetOpenRatio(Number,0.0,false,true)
 		DoorSystemSetAutomaticRate(Number,5.0,false,true)
-		DoorSystemSetDoorState(Number,v["Lock"] and 1 or 0,true)
+		DoorSystemSetDoorState(Number,v.Lock and 1 or 0,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ADDSTATEBAGCHANGEHANDLER
+-- DOORS:SYNC
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Doors",nil,function(Name,Key,Value)
-	for Number,v in pairs(Value) do
-		DoorSystemSetOpenRatio(Number,0.0,false,true)
-		DoorSystemSetAutomaticRate(Number,5.0,false,true)
-		DoorSystemSetDoorState(Number,v["Lock"] and 1 or 0,true)
+RegisterNetEvent("doors:Sync")
+AddEventHandler("doors:Sync",function(Number,Status,Other)
+	if Number and Doors[Number] then
+		Doors[Number].Lock = Status
 
-		if v["Other"] then
-			DoorSystemSetOpenRatio(v["Other"],0.0,false,true)
-			DoorSystemSetAutomaticRate(v["Other"],5.0,false,true)
-			DoorSystemSetDoorState(v["Other"],v["Lock"] and 1 or 0,true)
+		if Other and Doors[Other] then
+			TriggerEvent("doors:Sync",Other,Status)
 		end
 
+		if not IsDoorRegisteredWithSystem(Number) then
+			AddDoorToSystem(Number,Doors[Number].Hash,Doors[Number].Coords,false,false,true)
+		end
+
+		DoorSystemSetOpenRatio(Number,0.0,false,true)
+		DoorSystemSetAutomaticRate(Number,5.0,false,true)
+		DoorSystemSetDoorState(Number,Status and 1 or 0,true)
+
 		if Display[Number] then
-			SendNUIMessage({ Action = "Show", Payload = { "E","Pressione",v["Lock"] and "para destrancar" or "para trancar" } })
+			SendNUIMessage({ Action = "Show", Payload = { "E","Pressione",Status and "para destrancar" or "para trancar" } })
 		end
 	end
 end)
@@ -56,13 +63,13 @@ CreateThread(function()
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
 
-		for Number,v in pairs(GlobalState["Doors"]) do
-			if not v["Disabled"] then
-				if #(Coords - v["Coords"]) <= v["Distance"] then
+		for Number,v in pairs(Doors) do
+			if not v.Disabled then
+				if #(Coords - v.Coords) <= v.Distance then
 					TimeDistance = 1
 
 					if not Display[Number] then
-						SendNUIMessage({ Action = "Show", Payload = { "E","Pressione",v["Lock"] and "para destrancar" or "para trancar" } })
+						SendNUIMessage({ Action = "Show", Payload = { "E","Pressione",v.Lock and "para destrancar" or "para trancar" } })
 						Display[Number] = true
 					end
 
@@ -70,11 +77,9 @@ CreateThread(function()
 						Cooldown = GetGameTimer() + 5000
 						vSERVER.Permission(Number)
 					end
-				else
-					if Display[Number] then
-						SendNUIMessage({ Action = "Hide" })
-						Display[Number] = nil
-					end
+				elseif Display[Number] then
+					SendNUIMessage({ Action = "Hide" })
+					Display[Number] = nil
 				end
 			end
 		end

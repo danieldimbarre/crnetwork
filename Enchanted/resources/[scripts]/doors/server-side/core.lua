@@ -94,7 +94,7 @@ function Creative.Permission(Number)
 		return false
 	end
 
-	if Doors[Number] and Doors[Number].Perm and not vRP.HasGroup(Passport,Doors[Number].Perm) then
+	if Doors[Number] and Doors[Number].Permission and not vRP.HasGroup(Passport,Doors[Number].Permission) then
 		return false
 	end
 

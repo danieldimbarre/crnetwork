@@ -102,7 +102,7 @@ exports("Apply",function(Data,Ped)
 		Barbershop = Data
 	end
 
-	for Number = 1,46 do
+	for Number = 1,49 do
 		if not Barbershop[Number] then
 			Barbershop[Number] = (Number >= 6 and Number <= 9) and -1 or 0
 		end
@@ -121,7 +121,7 @@ end)
 -- OPENBARBERSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 function OpenBarbershop(Mode)
-	for Number = 1,46 do
+	for Number = 1,49 do
 		if not Barbershop[Number] then
 			Barbershop[Number] = (Number >= 6 and Number <= 9) and -1 or 0
 		end

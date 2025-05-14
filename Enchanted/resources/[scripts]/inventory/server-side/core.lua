@@ -408,47 +408,47 @@ function Creative.Mount()
 	if Passport then
 		local Primary = {}
 		local Inv = vRP.Inventory(Passport)
-		for Index,v in pairs(Inv) do
-			if (v["amount"] <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveItem(Passport,v["item"],v["amount"],false)
+		for Slot,v in pairs(Inv) do
+			if v.amount <= 0 or not ItemExist(v.item) then
+				vRP.CleanSlot(Passport,Slot)
 			else
-				v["name"] = ItemName(v["item"])
-				v["weight"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["amount"] = parseInt(v["amount"])
-				v["rarity"] = ItemRarity(v["item"])
-				v["economy"] = ItemEconomy(v["item"])
-				v["desc"] = ItemDescription(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+				v.name = ItemName(v.item)
+				v.weight = ItemWeight(v.item)
+				v.index = ItemIndex(v.item)
+				v.amount = parseInt(v.amount)
+				v.rarity = ItemRarity(v.item)
+				v.economy = ItemEconomy(v.item)
+				v.desc = ItemDescription(v.item)
+				v.key = v.item
+				v.slot = Slot
 
-				local Split = splitString(v["item"])
+				local Split = splitString(v.item)
 
-				if not v["desc"] then
+				if not v.desc then
 					if Split[1] == "vehiclekey" and Split[3] then
-						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
+						v.desc = "Placa do Veículo: <common>"..Split[3].."</common>"
 					elseif ItemNamed(Split[1]) and Split[2] then
 						if Split[1] == "identity" then
-							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+							v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
 						else
-							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+							v.desc = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 						end
 					end
 				end
 
 				if Split[2] then
-					local Loaded = ItemLoads(v["item"])
+					local Loaded = ItemLoads(v.item)
 					if Loaded then
-						v["charges"] = parseInt(Split[2] * (100 / Loaded))
+						v.charges = parseInt(Split[2] * (100 / Loaded))
 					end
 
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
+					if ItemDurability(v.item) then
+						v.durability = parseInt(os.time() - Split[2])
+						v.days = ItemDurability(v.item)
 					end
 				end
 
-				Primary[Index] = v
+				Primary[Slot] = v
 			end
 		end
 
@@ -464,68 +464,68 @@ function Creative.Blueprint()
 	if Passport and Users["Blueprints"][Passport] then
 		local Primary = {}
 		local Inv = vRP.Inventory(Passport)
-		for Index,v in pairs(Inv) do
-			if (v["amount"] <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveItem(Passport,v["item"],v["amount"],false)
+		for Slot,v in pairs(Inv) do
+			if v.amount <= 0 or not ItemExist(v.item) then
+				vRP.CleanSlot(Passport,Slot)
 			else
-				v["name"] = ItemName(v["item"])
-				v["weight"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["amount"] = parseInt(v["amount"])
-				v["rarity"] = ItemRarity(v["item"])
-				v["economy"] = ItemEconomy(v["item"])
-				v["desc"] = ItemDescription(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+				v.name = ItemName(v.item)
+				v.weight = ItemWeight(v.item)
+				v.index = ItemIndex(v.item)
+				v.amount = parseInt(v.amount)
+				v.rarity = ItemRarity(v.item)
+				v.economy = ItemEconomy(v.item)
+				v.desc = ItemDescription(v.item)
+				v.key = v.item
+				v.slot = Slot
 
-				local Split = splitString(v["item"])
+				local Split = splitString(v.item)
 
-				if not v["desc"] then
+				if not v.desc then
 					if Split[1] == "vehiclekey" and Split[3] then
-						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
+						v.desc = "Placa do Veículo: <common>"..Split[3].."</common>"
 					elseif ItemNamed(Split[1]) and Split[2] then
 						if Split[1] == "identity" then
-							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+							v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
 						else
-							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+							v.desc = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 						end
 					end
 				end
 
 				if Split[2] then
-					local Loaded = ItemLoads(v["item"])
+					local Loaded = ItemLoads(v.item)
 					if Loaded then
-						v["charges"] = parseInt(Split[2] * (100 / Loaded))
+						v.charges = parseInt(Split[2] * (100 / Loaded))
 					end
 
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
+					if ItemDurability(v.item) then
+						v.durability = parseInt(os.time() - Split[2])
+						v.days = ItemDurability(v.item)
 					end
 				end
 
-				Primary[Index] = v
+				Primary[Slot] = v
 			end
 		end
 
 		local Secondary = {}
-		for Item,v in pairs(Users["Blueprints"][Passport]) do
-			if (not ItemExist(Item) or not ItemExist("blueprint_"..Item)) and Users["Blueprints"][Passport][Item] then
-				Users["Blueprints"][Passport][Item] = nil
+		for Item,v in pairs(Users.Blueprints[Passport]) do
+			if (not ItemExist(Item) or not ItemExist("blueprint_"..Item)) and Users.Blueprints[Passport][Item] then
+				Users.Blueprints[Passport][Item] = nil
 			else
 				local Calculated = CountTable(Secondary) + 1
 				local Number = tostring(Calculated)
 
 				Secondary[Number] = {
-					["name"] = ItemName(Item),
-					["weight"] = ItemWeight(Item),
-					["index"] = ItemIndex(Item),
-					["rarity"] = ItemRarity(Item),
-					["economy"] = ItemEconomy(Item),
-					["desc"] = ItemDescription(Item),
-					["slot"] = Number,
-					["key"] = Item,
-					["amount"] = 1
+					name = ItemName(Item),
+					weight = ItemWeight(Item),
+					index = ItemIndex(Item),
+					rarity = ItemRarity(Item),
+					economy = ItemEconomy(Item),
+					desc = ItemDescription(Item),
+					slot = Number,
+					key = Item,
+					amount = 1
 				}
 			end
 		end

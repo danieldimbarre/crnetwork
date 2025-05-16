@@ -101,8 +101,12 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 		TriggerClientEvent("Progress",source,"Desmanchando",30000)
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= Active[Passport] then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source).state.Buttons = false
@@ -143,9 +147,7 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 				vRP.PutExperience(Passport,"Dismantle",Experience)
 				vRP.GenerateItem(Passport,"ironfilings",Valuation * Members,true)
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

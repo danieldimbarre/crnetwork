@@ -544,46 +544,47 @@ function Creative.Send(Slot,Amount)
 	local ClosestPed = vRPC.ClosestPed(source)
 	if Passport and not Active[Passport] and ClosestPed and not exports["hud"]:Wanted(Passport) then
 		local Inv = vRP.Inventory(Passport)
-		if not Inv[Slot] or not Inv[Slot]["item"] then
+		if not Inv[Slot] or not Inv[Slot].item then
 			return false
 		end
 
-		local Item = Inv[Slot]["item"]
-		Active[Passport] = os.time() + 100
+		local Item = Inv[Slot].item
 		local OtherPassport = vRP.Passport(ClosestPed)
 
 		if not vRP.MaxItens(OtherPassport,Item,Amount) then
 			if vRP.CheckWeight(OtherPassport,Item,Amount) then
 				Active[Passport] = os.time() + 3
-				Player(source)["state"]["Cancel"] = true
-				Player(source)["state"]["Buttons"] = true
-				Player(ClosestPed)["state"]["Cancel"] = true
-				Player(ClosestPed)["state"]["Buttons"] = true
+				Player(source).state.Cancel = true
+				Player(source).state.Buttons = true
+				Player(ClosestPed).state.Cancel = true
+				Player(ClosestPed).state.Buttons = true
 				vRPC.CreateObjects(source,"mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
 
-				repeat
-					if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				CreateThread(function()
+					while Active[Passport] and os.time() < Active[Passport] do
+						Wait(100)
+					end
+
+					if Active[Passport] then
 						vRPC.Destroy(source)
 						Active[Passport] = nil
-						Player(source)["state"]["Cancel"] = false
-						Player(source)["state"]["Buttons"] = false
-						Player(ClosestPed)["state"]["Cancel"] = false
-						Player(ClosestPed)["state"]["Buttons"] = false
+						Player(source).state.Cancel = false
+						Player(source).state.Buttons = false
+						Player(ClosestPed).state.Cancel = false
+						Player(ClosestPed).state.Buttons = false
 
 						if vRP.TakeItem(Passport,Item,Amount,true,Slot) and vRP.GiveItem(OtherPassport,Item,Amount,true) then
 							TriggerClientEvent("inventory:Update",source)
 							TriggerClientEvent("inventory:Update",ClosestPed)
 						end
 					end
-
-					Wait(100)
-				until not Active[Passport]
+				end)
 			else
 				TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 			end
+		else
+			TriggerClientEvent("Notify",source,"Aviso","Limite atingido.","amarelo",5000)
 		end
-
-		Active[Passport] = nil
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -723,21 +724,17 @@ function Creative.Use(Slot,Amount)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
 		local Inv = vRP.Inventory(Passport)
-		if not Inv[Slot] or not Inv[Slot]["item"] then
+		if not Inv[Slot] or not Inv[Slot].item then
 			return
 		end
 
-		local Split = splitString(Inv[Slot]["item"])
-		local Full,Item = Inv[Slot]["item"],Split[1]
+		local Split = splitString(Inv[Slot].item)
+		local Full,Item = Inv[Slot].item,Split[1]
 
-		local InWater = ItemWater(Item)
-		if (Player(source)["state"]["Handcuff"] and Item ~= "lockpick") or (Item ~= "rope" and ((InWater and InWater == "In" and not vRPC.IsEntityInWater(source)) or (InWater and InWater == "Swimming" and not vRPC.IsEntityInWater(source)))) then
-			return
-		end
-
-		if ItemDurability(Full) and vRP.CheckDamaged(Full) then
-			TriggerClientEvent("inventory:Notify",source,"Atenção","<b>"..ItemName(Item).."</b> danificado.","vermelho")
-
+		local WaterItem = ItemWater(Item)
+		local WaterEntity = vRPC.IsEntityInWater(source)
+		local WaterCondition = WaterItem and ((WaterItem == "Out" and WaterEntity) or (WaterItem == "In" and not WaterEntity))
+		if (Player(source).state.Handcuff and Item ~= "lockpick") or WaterCondition or (ItemDurability(Full) and vRP.CheckDamaged(Full)) then
 			return
 		end
 
@@ -753,14 +750,14 @@ function Creative.Use(Slot,Amount)
 					local Ammunation = WeaponAmmo(Weapon)
 					if Ammunation then
 						if AmmoClip > 0 then
-							if not Users["Ammos"][Passport] then
-								Users["Ammos"][Passport] = {}
+							if not Users.Ammos[Passport] then
+								Users.Ammos[Passport] = {}
 							end
 
-							Users["Ammos"][Passport][Ammunation] = AmmoClip
+							Users.Ammos[Passport][Ammunation] = AmmoClip
 						else
-							if Users["Ammos"][Passport] and Users["Ammos"][Passport][Ammunation] then
-								Users["Ammos"][Passport][Ammunation] = nil
+							if Users.Ammos[Passport] and Users.Ammos[Passport][Ammunation] then
+								Users.Ammos[Passport][Ammunation] = nil
 							end
 						end
 					end
@@ -772,16 +769,16 @@ function Creative.Use(Slot,Amount)
 				local Attach = {}
 				local AmmoClip = 0
 				local Ammunation = WeaponAmmo(Item)
-				if Ammunation and Users["Ammos"][Passport] and Users["Ammos"][Passport][Ammunation] then
-					AmmoClip = Users["Ammos"][Passport][Ammunation]
+				if Ammunation and Users.Ammos[Passport] and Users.Ammos[Passport][Ammunation] then
+					AmmoClip = Users.Ammos[Passport][Ammunation]
 				end
 
-				if Users["Skins"][Passport] and Users["Skins"][Passport][Item] then
-					Skin = Users["Skins"][Passport][Item]
+				if Users.Skins[Passport] and Users.Skins[Passport][Item] then
+					Skin = Users.Skins[Passport][Item]
 				end
 
-				if Users["Attachs"][Passport] and Users["Attachs"][Passport][Item] then
-					Attach = Users["Attachs"][Passport][Item]
+				if Users.Attachs[Passport] and Users.Attachs[Passport][Item] then
+					Attach = Users.Attachs[Passport][Item]
 				end
 
 				if vCLIENT.TakeWeapon(source,Item,AmmoClip,Attach,false,Skin) then
@@ -803,11 +800,11 @@ function Creative.Use(Slot,Amount)
 				end
 
 				if Amount > 0 and vRP.TakeItem(Passport,Full,Amount,false,Slot) then
-					if not Users["Ammos"][Passport] then
-						Users["Ammos"][Passport] = {}
+					if not Users.Ammos[Passport] then
+						Users.Ammos[Passport] = {}
 					end
 
-					Users["Ammos"][Passport][Item] = AmmoClip + Amount
+					Users.Ammos[Passport][Item] = AmmoClip + Amount
 
 					TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),Amount,ItemName(Full),ItemRarity(Full) })
 					TriggerClientEvent("inventory:Update",source)
@@ -822,14 +819,14 @@ function Creative.Use(Slot,Amount)
 					local Amunnation = WeaponAmmo(Weapon)
 					if Amunnation then
 						if AmmoClip > 0 then
-							if not Users["Ammos"][Passport] then
-								Users["Ammos"][Passport] = {}
+							if not Users.Ammos[Passport] then
+								Users.Ammos[Passport] = {}
 							end
 
-							Users["Ammos"][Passport][Amunnation] = AmmoClip
+							Users.Ammos[Passport][Amunnation] = AmmoClip
 						else
-							if Users["Ammos"][Passport] and Users["Ammos"][Passport][Amunnation] then
-								Users["Ammos"][Passport][Amunnation] = nil
+							if Users.Ammos[Passport] and Users.Ammos[Passport][Amunnation] then
+								Users.Ammos[Passport][Amunnation] = nil
 							end
 						end
 					end
@@ -846,16 +843,16 @@ function Creative.Use(Slot,Amount)
 			if Weapon then
 				local Component = WeaponAttach(Item,Weapon)
 				if Component then
-					if not Users["Attachs"][Passport] then
-						Users["Attachs"][Passport] = {}
+					if not Users.Attachs[Passport] then
+						Users.Attachs[Passport] = {}
 					end
 
-					if not Users["Attachs"][Passport][Weapon] then
-						Users["Attachs"][Passport][Weapon] = {}
+					if not Users.Attachs[Passport][Weapon] then
+						Users.Attachs[Passport][Weapon] = {}
 					end
 
 					local Check = false
-					for Name,v in pairs(Users["Attachs"][Passport][Weapon]) do
+					for Name in pairs(Users.Attachs[Passport][Weapon]) do
 						if SplitOne(Name) == Item then
 							Check = true
 						end
@@ -864,8 +861,8 @@ function Creative.Use(Slot,Amount)
 					if not Check then
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
 							TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),1,ItemName(Full),ItemRarity(Full) })
-							Users["Attachs"][Passport][Weapon][Full] = true
 							TriggerClientEvent("inventory:Update",source)
+							Users.Attachs[Passport][Weapon][Full] = true
 							vCLIENT.GiveComponent(source,Component)
 						end
 					else
@@ -1050,8 +1047,12 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 		Loots[Box]["Players"][Number][Passport] = os.time() + Loots[Box]["Cooldown"]
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -1074,9 +1075,7 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1132,8 +1131,12 @@ AddEventHandler("inventory:ChangePlate",function(Entitys)
 		TriggerClientEvent("Progress",source,"Trocando",10000)
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -1155,9 +1158,7 @@ AddEventHandler("inventory:ChangePlate",function(Entitys)
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1166,81 +1167,75 @@ end)
 RegisterServerEvent("inventory:StealTrunk")
 AddEventHandler("inventory:StealTrunk",function(Entity)
 	local source = source
-	local Plate = Entity[1]
-	local Model = Entity[2]
-	local Network = Entity[4]
+	local Weapon = "WEAPON_CROWBAR"
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] then
-		if not vCLIENT.CheckWeapon(source,"WEAPON_CROWBAR") then
-			TriggerClientEvent("Notify",source,"Aviso","<b>Pé de Cabra</b> não encontrado.","amarelo",5000)
+	local Plate,Model = Entity[1],Entity[2]
 
-			return false
-		end
-
-		if not vRP.PassportPlate(Plate) then
-			if not Trunks[Plate] or os.time() >= Trunks[Plate] then
-				vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
-				Active[Passport] = os.time() + 100
-
-				if vRP.Task(source,5,5000) then
-					Active[Passport] = os.time() + 20
-					Player(source)["state"]["Buttons"] = true
-					TriggerClientEvent("Progress",source,"Vasculhando",20000)
-					TriggerClientEvent("player:Residual",source,"Resíduo de Ferro")
-
-					local Players = vRPC.Players(source)
-					for _,v in pairs(Players) do
-						async(function()
-							TriggerClientEvent("player:VehicleDoors",v,Network,"open")
-						end)
-					end
-
-					repeat
-						if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
-							vRPC.Destroy(source)
-							Active[Passport] = nil
-							Player(source)["state"]["Buttons"] = false
-
-							for _,v in pairs(Players) do
-								async(function()
-									TriggerClientEvent("player:VehicleDoors",v,Network,"close")
-								end)
-							end
-
-							if not Trunks[Plate] or os.time() >= Trunks[Plate] then
-								Trunks[Plate] = os.time() + 3600
-
-								local Result = RandPercentage(IlegalItens)
-								if not vRP.MaxItens(Passport,Result["Item"],Result["Valuation"]) and vRP.CheckWeight(Passport,Result["Item"],Result["Valuation"]) then
-									vRP.GenerateItem(Passport,Result["Item"],Result["Valuation"],true)
-								else
-									TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-									exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Valuation"])
-								end
-							end
-						end
-
-						Wait(100)
-					until not Active[Passport]
-				else
-					TriggerEvent("Wanted",source,Passport,30)
-					vRPC.stopAnim(source,false)
-					Active[Passport] = nil
-
-					local Coords = vRP.GetEntityCoords(source)
-					local Service = vRP.NumPermission("Policia")
-					for Passports,Sources in pairs(Service) do
-						async(function()
-							vRPC.PlaySound(Sources,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
-							TriggerClientEvent("NotifyPush",Sources,{ code = 31, title = "Roubo de Veículo", x = Coords["x"], y = Coords["y"], z = Coords["z"], vehicle = VehicleName(Model).." - "..Plate, color = 44 })
-						end)
-					end
-				end
-			end
-		else
-			TriggerClientEvent("Notify",source,"Aviso","Veículo protegido pela seguradora.","amarelo",1000)
-		end
+	if not Passport or Active[Passport] then
+		return false
 	end
+
+	if not vCLIENT.CheckWeapon(source,Weapon) then
+		TriggerClientEvent("Notify",source,"Aviso","<b>"..ItemName(Weapon).."</b> não encontrado.","amarelo",5000)
+
+		return false
+	end
+
+	if vRP.PassportPlate(Plate) then
+		TriggerClientEvent("Notify",source,"Aviso","Veículo protegido pela seguradora.","amarelo",1000)
+
+		return false
+	end
+
+	if Trunks[Plate] and os.time() < Trunks[Plate] then
+		TriggerClientEvent("chest:Open",source,"StealTrunk:"..Plate,"Custom",false,true)
+
+		return false
+	end
+
+	vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+
+	if not vRP.Task(source,5,5000) then
+		vRPC.Destroy(source)
+
+		return false
+	end
+
+	Active[Passport] = os.time() + 15
+	Player(source).state.Buttons = true
+	TriggerClientEvent("Progress",source,"Vasculhando",15000)
+	TriggerClientEvent("player:Residual",source,"Resíduo de Ferro")
+
+	exports["vrp"]:CallPolice({
+		Source = source,
+		Passport = Passport,
+		Permission = "Policia",
+		Name = "Roubo de Veículo",
+		Vehicle = VehicleName(Model).." - "..Plate,
+		Percentage = 925,
+		Wanted = 60,
+		Color = 44,
+		Code = 31
+	})
+
+	CreateThread(function()
+		while Active[Passport] and os.time() < Active[Passport] do
+			Wait(100)
+		end
+
+		if Active[Passport] then
+			vRPC.Destroy(source)
+			Active[Passport] = nil
+			Player(source).state.Buttons = false
+
+			if not Trunks[Plate] or os.time() >= Trunks[Plate] then
+				Trunks[Plate] = os.time() + 3600
+
+				vRP.MountContainer(Passport,"StealTrunk:"..Plate,IlegalItens,math.random(2),false,false,{ Item = "dirtydollar", Amount = 100 })
+				TriggerClientEvent("chest:Open",source,"StealTrunk:"..Plate,"Custom",false,true)
+			end
+		end
+	end)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ANIMALS
@@ -1261,8 +1256,12 @@ AddEventHandler("inventory:Animals",function(Entity)
 					vRPC.playAnim(source,false,{"amb@medic@standing@kneel@base","base"},true)
 					vRPC.playAnim(source,true,{"anim@gangops@facility@servers@bodysearch@","player_search"},true)
 
-					repeat
-						if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+					CreateThread(function()
+						while Active[Passport] and os.time() < Active[Passport] do
+							Wait(100)
+						end
+
+						if Active[Passport] then
 							vRPC.Destroy(source)
 							Active[Passport] = nil
 							Player(source)["state"]["Buttons"] = false
@@ -1276,9 +1275,7 @@ AddEventHandler("inventory:Animals",function(Entity)
 							vRP.GenerateItem(Passport,"meatfillet",Star,true)
 							vRP.GenerateItem(Passport,Mode..Star.."star",1,true)
 						end
-
-						Wait(100)
-					until not Active[Passport]
+					end)
 				else
 					TriggerClientEvent("Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo",5000)
 				end
@@ -1333,8 +1330,12 @@ AddEventHandler("inventory:Products",function(Service)
 			vRPC.playAnim(source,false,{Products[Service]["Animation"]["Dict"],Products[Service]["Animation"]["Anim"]},true)
 		end
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Player(source)["state"]["Buttons"] = false
 				Active[Passport] = nil
 
@@ -1356,9 +1357,7 @@ AddEventHandler("inventory:Products",function(Service)
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1392,8 +1391,12 @@ AddEventHandler("inventory:RemoveTyres",function(Entity)
 						Active[Passport] = os.time() + 10
 						TriggerClientEvent("Progress",source,"Removendo",10000)
 
-						repeat
-							if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+						CreateThread(function()
+							while Active[Passport] and os.time() < Active[Passport] do
+								Wait(100)
+							end
+
+							if Active[Passport] then
 								Active[Passport] = nil
 
 								local Networked = NetworkGetEntityFromNetworkId(Entity[4])
@@ -1410,9 +1413,7 @@ AddEventHandler("inventory:RemoveTyres",function(Entity)
 									end
 								end
 							end
-
-							Wait(100)
-						until not Active[Passport]
+						end)
 					end
 
 					Player(source)["state"]["Buttons"] = false
@@ -1443,8 +1444,12 @@ AddEventHandler("player:RollVehicle",function(Entity)
 		TriggerClientEvent("Progress",source,"Desvirando",60000)
 		vRPC.playAnim(source,false,{"mini@repair","fixing_a_player"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -1456,9 +1461,7 @@ AddEventHandler("player:RollVehicle",function(Entity)
 					end)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1560,16 +1563,18 @@ AddEventHandler("inventory:Drink",function()
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"amb@world_human_drinking@coffee@male@idle_a","idle_c","prop_plastic_cup_02",49,28422)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				vRP.UpgradeThirst(Passport,10)
 				Player(source)["state"]["Buttons"] = false
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1585,8 +1590,12 @@ AddEventHandler("inventory:RefillGallon",function()
 		TriggerClientEvent("Progress",source,"Enchendo",30000)
 		vRPC.playAnim(source,false,{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -1595,9 +1604,7 @@ AddEventHandler("inventory:RefillGallon",function()
 					vRP.GenerateItem(Passport,"purifiedwater",1)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -109,8 +109,12 @@ AddEventHandler("inventory:RobberySingle",function(Number,Mode)
 				Color = 22
 			})
 
-			repeat
-				if Active[Passport] and os.time() >= Active[Passport] then
+			CreateThread(function()
+				while Active[Passport] and os.time() < Active[Passport] do
+					Wait(100)
+				end
+
+				if Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
 					Player(source).state.Buttons = false
@@ -123,9 +127,7 @@ AddEventHandler("inventory:RobberySingle",function(Number,Mode)
 						TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)
 					end
 				end
-
-				Wait(100)
-			until not Active[Passport]
+			end)
 		else
 			if Config[Mode].Last == Number then
 				TriggerClientEvent("chest:Open",source,Mode..":"..Number,"Custom",false,true)

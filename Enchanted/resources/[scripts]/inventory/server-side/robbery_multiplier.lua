@@ -196,8 +196,12 @@ AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 				Color = 22
 			})
 
-			repeat
-				if Active[Passport] and os.time() >= Active[Passport] then
+			CreateThread(function()
+				while Active[Passport] and os.time() < Active[Passport] do
+					Wait(100)
+				end
+
+				if Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
 					Player(source).state.Buttons = false
@@ -228,9 +232,7 @@ AddEventHandler("inventory:RobberyMultiplier",function(Number,Mode)
 						end
 					end
 				end
-
-				Wait(100)
-			until not Active[Passport]
+			end)
 		else
 			local TimeRemaining = Config[Mode].Cooldown[Number] - os.time()
 			if Mode ~= "Eletronic" and TimeRemaining >= (Config[Mode].Delay - 300) then

@@ -9,8 +9,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Passando",10000)
 		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -20,9 +24,7 @@ Use = {
 					vRPC.UpgradeHealth(source,10)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["analgesic"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -32,8 +34,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Passando",5000)
 		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -43,9 +49,7 @@ Use = {
 					vRPC.UpgradeHealth(source,5)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["medkit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -55,8 +59,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Passando",25000)
 		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -66,9 +74,7 @@ Use = {
 					vRPC.UpgradeHealth(source,20)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["meth"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -78,8 +84,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Inalando",15000)
 		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -90,9 +100,7 @@ Use = {
 					vRP.SetArmour(source,10)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["ballisticplate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -102,8 +110,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Vestindo",25000)
 		vRPC.playAnim(source,true,{"clothingtie","try_tie_negative_a"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -112,9 +124,7 @@ Use = {
 					vRP.SetArmour(source,20)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["instagram"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -364,8 +374,12 @@ Use = {
 			TriggerClientEvent("Progress",source,"Usando",10000)
 			vRPC.playAnim(source,false,{"amb@world_human_bum_wash@male@high@base","base"},true)
 
-			repeat
-				if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+			CreateThread(function()
+				while Active[Passport] and os.time() < Active[Passport] do
+					Wait(100)
+				end
+
+				if Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
 					Player(source)["state"]["Buttons"] = false
@@ -374,9 +388,7 @@ Use = {
 						TriggerClientEvent("player:Residual",source)
 					end
 				end
-
-				Wait(100)
-			until not Active[Passport]
+			end)
 		end
 	end,
 
@@ -388,8 +400,12 @@ Use = {
 			TriggerClientEvent("Progress",source,"Fumando",10000)
 			vRPC.CreateObjects(source,"amb@world_human_aa_smoke@male@idle_a","idle_c","prop_cs_ciggy_01",49,28422)
 
-			repeat
-				if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+			CreateThread(function()
+				while Active[Passport] and os.time() < Active[Passport] do
+					Wait(100)
+				end
+
+				if Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
 					Player(source)["state"]["Buttons"] = false
@@ -400,9 +416,7 @@ Use = {
 						TriggerClientEvent("Joint",source)
 					end
 				end
-
-				Wait(100)
-			until not Active[Passport]
+			end)
 		end
 	end,
 
@@ -413,8 +427,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Tomando",3000)
 		vRPC.playAnim(source,true,{"mp_suicide","pill"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -424,9 +442,7 @@ Use = {
 					TriggerClientEvent("Metadone",source)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["heroin"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -436,8 +452,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Tomando",15000)
 		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -447,9 +467,7 @@ Use = {
 					TriggerClientEvent("Heroin",source)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["crack"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -459,8 +477,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Fumando",15000)
 		vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -470,9 +492,7 @@ Use = {
 					TriggerClientEvent("Crack",source)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["cocaine"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -482,8 +502,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Cheirando",5000)
 		vRPC.playAnim(source,true,{"anim@amb@nightclub@peds@","missfbi3_party_snort_coke_b_male3"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
@@ -494,9 +518,7 @@ Use = {
 					TriggerClientEvent("Cocaine",source)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["cigarette"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -507,8 +529,12 @@ Use = {
 			TriggerClientEvent("Progress",source,"Fumando",10000)
 			vRPC.CreateObjects(source,"amb@world_human_aa_smoke@male@idle_a","idle_c","prop_cs_ciggy_01",49,28422)
 
-			repeat
-				if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+			CreateThread(function()
+				while Active[Passport] and os.time() < Active[Passport] do
+					Wait(100)
+				end
+
+				if Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
 					Player(source)["state"]["Buttons"] = false
@@ -517,9 +543,7 @@ Use = {
 						vRP.DowngradeStress(Passport,10)
 					end
 				end
-
-				Wait(100)
-			until not Active[Passport]
+			end)
 		end
 	end,
 
@@ -530,16 +554,18 @@ Use = {
 		TriggerClientEvent("Progress",source,"Fumando",20000)
 		vRPC.CreateObjects(source,"anim@heists@humane_labs@finale@keycards","ped_a_enter_loop","ba_prop_battle_vape_01",49,18905,0.08,-0.00,0.03,-150.0,90.0,-10.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				vRP.DowngradeStress(Passport,20)
 				Player(source)["state"]["Buttons"] = false
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["gauze"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -550,8 +576,12 @@ Use = {
 			TriggerClientEvent("Progress",source,"Passando",3000)
 			vRPC.playAnim(source,true,{"amb@world_human_clipboard@male@idle_a","idle_c"},true)
 
-			repeat
-				if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+			CreateThread(function()
+				while Active[Passport] and os.time() < Active[Passport] do
+					Wait(100)
+				end
+
+				if Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
 					Player(source)["state"]["Buttons"] = false
@@ -560,9 +590,7 @@ Use = {
 						vPARAMEDIC.Bandage(source)
 					end
 				end
-
-				Wait(100)
-			until not Active[Passport]
+			end)
 		else
 			TriggerClientEvent("inventory:Notify",source,"Aviso","Nenhum ferimento encontrado.","amarelo")
 		end
@@ -576,8 +604,12 @@ Use = {
 			TriggerClientEvent("inventory:Close",source)
 			TriggerClientEvent("Progress",source,"Usando",5000)
 
-			repeat
-				if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+			CreateThread(function()
+				while Active[Passport] and os.time() < Active[Passport] do
+					Wait(100)
+				end
+
+				if Active[Passport] then
 					Active[Passport] = nil
 					Player(source)["state"]["Buttons"] = false
 
@@ -598,9 +630,7 @@ Use = {
 						end
 					end
 				end
-
-				Wait(100)
-			until not Active[Passport]
+			end)
 		end
 	end,
 
@@ -615,8 +645,12 @@ Use = {
 				TriggerClientEvent("inventory:Close",source)
 				TriggerClientEvent("Progress",source,"Usando",5000)
 
-				repeat
-					if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				CreateThread(function()
+					while Active[Passport] and os.time() < Active[Passport] do
+						Wait(100)
+					end
+
+					if Active[Passport] then
 						Active[Passport] = nil
 						Player(source)["state"]["Buttons"] = false
 
@@ -662,9 +696,7 @@ Use = {
 							TriggerClientEvent("Notify",source,"Informações","<b>Químicos:</b> "..chemStr.."<br><b>Álcool:</b> "..alcoholStr.."<br><b>Drogas:</b> "..weedStr,"amarelo",8000)
 						end
 					end
-
-					Wait(100)
-				until not Active[Passport]
+				end)
 			end
 		end
 	end,
@@ -687,8 +719,12 @@ Use = {
 					end)
 				end
 
-				repeat
-					if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+				CreateThread(function()
+					while Active[Passport] and os.time() < Active[Passport] do
+						Wait(100)
+					end
+
+					if Active[Passport] then
 						vRPC.Destroy(source)
 						Active[Passport] = nil
 						Player(source)["state"]["Buttons"] = false
@@ -701,15 +737,13 @@ Use = {
 						end
 					end
 
-					Wait(100)
-				until not Active[Passport]
-
-				local Players = vRPC.Players(source)
-				for _,v in pairs(Players) do
-					async(function()
-						TriggerClientEvent("player:VehicleHood",v,Network,"close")
-					end)
-				end
+					local Players = vRPC.Players(source)
+					for _,v in pairs(Players) do
+						async(function()
+							TriggerClientEvent("player:VehicleHood",v,Network,"close")
+						end)
+					end
+				end)
 			end
 		end
 	end,
@@ -720,8 +754,12 @@ Use = {
 		TriggerClientEvent("inventory:Close",source)
 		TriggerClientEvent("Progress",source,"Usando",3000)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
 
@@ -729,9 +767,7 @@ Use = {
 					vCLIENT.Parachute(source)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["advtoolbox"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -754,8 +790,12 @@ Use = {
 					Active[Passport] = os.time() + 15
 					TriggerClientEvent("Progress",source,"Reparando",15000)
 
-					repeat
-						if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+					CreateThread(function()
+						while Active[Passport] and os.time() < Active[Passport] do
+							Wait(100)
+						end
+
+						if Active[Passport] then
 							Active[Passport] = nil
 
 							if vRP.RemoveCharges(Passport,Full) then
@@ -768,20 +808,29 @@ Use = {
 							end
 						end
 
-						Wait(100)
-					until not Active[Passport]
-				end
+						local Players = vRPC.Players(source)
+						for _,v in pairs(Players) do
+							async(function()
+								TriggerClientEvent("player:VehicleHood",v,Network,"close")
+							end)
+						end
 
-				local Players = vRPC.Players(source)
-				for _,v in pairs(Players) do
-					async(function()
-						TriggerClientEvent("player:VehicleHood",v,Network,"close")
+						Player(source)["state"]["Buttons"] = false
+						Active[Passport] = nil
+						vRPC.Destroy(source)
 					end)
-				end
+				else
+					local Players = vRPC.Players(source)
+					for _,v in pairs(Players) do
+						async(function()
+							TriggerClientEvent("player:VehicleHood",v,Network,"close")
+						end)
+					end
 
-				Player(source)["state"]["Buttons"] = false
-				Active[Passport] = nil
-				vRPC.Destroy(source)
+					Player(source)["state"]["Buttons"] = false
+					Active[Passport] = nil
+					vRPC.Destroy(source)
+				end
 			end
 		end
 	end,
@@ -806,8 +855,12 @@ Use = {
 					Active[Passport] = os.time() + 15
 					TriggerClientEvent("Progress",source,"Reparando",15000)
 
-					repeat
-						if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+					CreateThread(function()
+						while Active[Passport] and os.time() < Active[Passport] do
+							Wait(100)
+						end
+
+						if Active[Passport] then
 							Active[Passport] = nil
 
 							if vRP.TakeItem(Passport,Full,1,true,Slot) then
@@ -820,20 +873,29 @@ Use = {
 							end
 						end
 
-						Wait(100)
-					until not Active[Passport]
-				end
+						local Players = vRPC.Players(source)
+						for _,v in pairs(Players) do
+							async(function()
+								TriggerClientEvent("player:VehicleHood",v,Network,"close")
+							end)
+						end
 
-				local Players = vRPC.Players(source)
-				for _,v in pairs(Players) do
-					async(function()
-						TriggerClientEvent("player:VehicleHood",v,Network,"close")
+						Player(source)["state"]["Buttons"] = false
+						Active[Passport] = nil
+						vRPC.Destroy(source)
 					end)
-				end
+				else
+					local Players = vRPC.Players(source)
+					for _,v in pairs(Players) do
+						async(function()
+							TriggerClientEvent("player:VehicleHood",v,Network,"close")
+						end)
+					end
 
-				Player(source)["state"]["Buttons"] = false
-				Active[Passport] = nil
-				vRPC.Destroy(source)
+					Player(source)["state"]["Buttons"] = false
+					Active[Passport] = nil
+					vRPC.Destroy(source)
+				end
 			end
 		end
 	end,
@@ -956,8 +1018,12 @@ Use = {
 							["Vehicle"] = VehicleName(Model).." - "..Plate
 						})
 
-						repeat
-							if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+						CreateThread(function()
+							while Active[Passport] and os.time() < Active[Passport] do
+								Wait(100)
+							end
+
+							if Active[Passport] then
 								Active[Passport] = nil
 
 								if DoesEntityExist(Networked) then
@@ -975,17 +1041,23 @@ Use = {
 								end
 							end
 
-							Wait(100)
-						until not Active[Passport]
+							Player(source)["state"]["Buttons"] = false
+							Active[Passport] = nil
+							vRPC.Destroy(source)
+
+							if math.random(1000) >= 875 then
+								vRP.RemoveItem(Passport,Full,1,true)
+							end
+						end)
 					end
-				end
+				else
+					Player(source)["state"]["Buttons"] = false
+					Active[Passport] = nil
+					vRPC.Destroy(source)
 
-				Player(source)["state"]["Buttons"] = false
-				Active[Passport] = nil
-				vRPC.Destroy(source)
-
-				if math.random(1000) >= 875 then
-					vRP.RemoveItem(Passport,Full,1,true)
+					if math.random(1000) >= 875 then
+						vRP.RemoveItem(Passport,Full,1,true)
+					end
 				end
 			end
 		else
@@ -1075,8 +1147,12 @@ Use = {
 							["Vehicle"] = VehicleName(Model).." - "..Plate
 						})
 
-						repeat
-							if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+						CreateThread(function()
+							while Active[Passport] and os.time() < Active[Passport] do
+								Wait(100)
+							end
+
+							if Active[Passport] then
 								Active[Passport] = nil
 
 								if DoesEntityExist(Networked) then
@@ -1094,14 +1170,16 @@ Use = {
 								end
 							end
 
-							Wait(100)
-						until not Active[Passport]
+							Player(source)["state"]["Buttons"] = false
+							Active[Passport] = nil
+							vRPC.Destroy(source)
+						end)
+					else
+						Player(source)["state"]["Buttons"] = false
+						Active[Passport] = nil
+						vRPC.Destroy(source)
 					end
 				end
-
-				Player(source)["state"]["Buttons"] = false
-				Active[Passport] = nil
-				vRPC.Destroy(source)
 			end
 		end
 	end,
@@ -1145,8 +1223,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1159,9 +1241,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["water"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1172,8 +1252,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",5000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1182,9 +1266,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,10)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["applejuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1195,8 +1277,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1209,9 +1295,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["orangejuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1222,8 +1306,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1236,9 +1324,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["passionjuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1249,8 +1335,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1264,9 +1354,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["tangejuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1277,8 +1365,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1291,9 +1383,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["grapejuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1304,8 +1394,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1318,9 +1412,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["lemonjuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1331,8 +1423,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1345,9 +1441,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["strawberryjuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1358,8 +1452,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1372,9 +1470,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["blueberryjuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1385,8 +1481,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1399,9 +1499,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["bananajuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1412,8 +1510,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1426,9 +1528,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["acerolajuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1439,8 +1539,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1453,9 +1557,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["guaranajuice"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1466,8 +1568,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1480,9 +1586,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end
 	end,
 
 	["coffeecup"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1493,8 +1597,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",10000)
 		vRPC.CreateObjects(source,"amb@world_human_aa_coffee@idle_a", "idle_a","p_amb_coffeecup_01",49,28422)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1503,9 +1611,7 @@ Use = {
 					vRP.UpgradeStress(Passport,7)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["sinkalmy"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1516,8 +1622,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Tomando",5000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1526,9 +1636,7 @@ Use = {
 					vRP.DowngradeStress(Passport,20)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["ritmoneury"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1539,8 +1647,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Tomando",5000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","vw_prop_casino_water_bottle_01a",49,60309,0.0,0.0,-0.06,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1549,9 +1661,7 @@ Use = {
 					vRP.DowngradeStress(Passport,40)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["cola"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1562,8 +1672,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",5000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","prop_ecola_can",49,60309,0.01,0.01,0.05,0.0,0.0,90.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1572,9 +1686,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,7)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["soda"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1585,8 +1697,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Bebendo",5000)
 		vRPC.CreateObjects(source,"mp_player_intdrink","loop_bottle","ng_proc_sodacan_01b",49,60309,0.0,0.0,-0.04,0.0,0.0,130.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1595,9 +1711,7 @@ Use = {
 					vRP.UpgradeThirst(Passport,7)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["fishingrod"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1784,8 +1898,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","knjgh_pizzaslice1",49,60309)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1798,9 +1916,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["pizzabanana"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1811,8 +1927,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","knjgh_pizzaslice2",49,60309)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1825,9 +1945,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["pizzachocolate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1838,8 +1956,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","knjgh_pizzaslice3",49,60309)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1852,9 +1974,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["sushi"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1865,8 +1985,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1879,9 +2003,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["nigirizushi"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1892,8 +2014,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1906,9 +2032,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["calzone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1919,8 +2043,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1933,9 +2061,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["cookies"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1946,8 +2072,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.playAnim(source,true,{"mp_player_inteat@burger","mp_player_int_eat_burger"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1960,9 +2090,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["hamburger"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1973,8 +2101,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",5000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_cs_burger_01",49,60309)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -1983,9 +2115,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,7)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["hamburger2"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -1996,8 +2126,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_cs_burger_01",49,60309)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2010,9 +2144,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["hamburger3"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2023,8 +2155,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_cs_burger_01",49,60309)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2037,9 +2173,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["ration"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2050,8 +2184,12 @@ Use = {
 			TriggerClientEvent("Progress",source,"Colocando",10000)
 			vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
-			repeat
-				if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+			CreateThread(function()
+				while Active[Passport] and os.time() < Active[Passport] do
+					Wait(100)
+				end
+
+				if Active[Passport] then
 					vRPC.Destroy(source)
 					Active[Passport] = nil
 					Player(source)["state"]["Buttons"] = false
@@ -2060,9 +2198,7 @@ Use = {
 						TriggerClientEvent("inventory:Ration",source)
 					end
 				end
-
-				Wait(100)
-			until not Active[Passport]
+			end)
 		end
 	end,
 
@@ -2598,8 +2734,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",5000)
 		vRPC.CreateObjects(source,"amb@code_human_wander_eating_donut@male@idle_a","idle_c","prop_cs_hotdog_01",49,28422)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2608,9 +2748,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,7)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["sandwich"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2621,8 +2759,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",5000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_sandwich_01",49,18905,0.13,0.05,0.02,-50.0,16.0,60.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2631,9 +2773,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,7)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["tacos"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2644,8 +2784,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",5000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_taco_01",49,18905,0.16,0.06,0.02,-50.0,220.0,60.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2654,9 +2798,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,7)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["fries"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2667,8 +2809,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",5000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_food_bs_chips",49,18905,0.10,0.0,0.08,150.0,320.0,160.0)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2677,9 +2823,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,7)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["milkshake"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2690,8 +2834,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Tomando",10000)
 		vRPC.CreateObjects(source,"amb@world_human_aa_coffee@idle_a", "idle_a","p_amb_coffeecup_01",49,28422)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2704,9 +2852,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["cappuccino"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2717,8 +2863,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Tomando",10000)
 		vRPC.CreateObjects(source,"amb@world_human_aa_coffee@idle_a", "idle_a","p_amb_coffeecup_01",49,28422)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2731,9 +2881,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["applelove"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2744,8 +2892,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_choc_ego",49,60309)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2758,9 +2910,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["cupcake"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2771,8 +2921,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",10000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_choc_ego",49,60309)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2785,9 +2939,7 @@ Use = {
 					end
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["chocolate"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2798,8 +2950,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",5000)
 		vRPC.CreateObjects(source,"mp_player_inteat@burger","mp_player_int_eat_burger","prop_choc_ego",49,60309)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2809,9 +2965,7 @@ Use = {
 					vRP.DowngradeStress(Passport,4)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["donut"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2822,8 +2976,12 @@ Use = {
 		TriggerClientEvent("Progress",source,"Comendo",5000)
 		vRPC.CreateObjects(source,"amb@code_human_wander_eating_donut@male@idle_a","idle_c","prop_amb_donut",49,28422)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				Active[Passport] = nil
 				vRPC.Destroy(source,"one")
 				Player(source)["state"]["Buttons"] = false
@@ -2832,9 +2990,7 @@ Use = {
 					vRP.UpgradeHunger(Passport,5)
 				end
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end,
 
 	["dismantle"] = function(source,Passport,Amount,Slot,Full,Item,Split)
@@ -2862,8 +3018,12 @@ Use = {
 					Player(source)["state"]["Buttons"] = true
 					TriggerClientEvent("Progress",source,"Colocando",10000)
 
-					repeat
-						if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+					CreateThread(function()
+						while Active[Passport] and os.time() < Active[Passport] do
+							Wait(100)
+						end
+
+						if Active[Passport] then
 							Active[Passport] = nil
 							Player(source)["state"]["Buttons"] = false
 
@@ -2881,11 +3041,11 @@ Use = {
 							end
 						end
 
-						Wait(100)
-					until not Active[Passport]
+						vRPC.Destroy(source)
+					end)
+				else
+					vRPC.Destroy(source)
 				end
-
-				vRPC.Destroy(source)
 			end
 		end
 	end,
@@ -3154,8 +3314,12 @@ for NameItem,v in pairs(Sprays) do
 					TriggerClientEvent("sounds:Private",source,"sprays",0.5)
 					vRPC.CreateObjects(source,"switch@franklin@lamar_tagging_wall","lamar_tagging_exit_loop_lamar","prop_cs_spray_can",1,28422)
 
-					repeat
-						if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+					CreateThread(function()
+						while Active[Passport] and os.time() < Active[Passport] do
+							Wait(100)
+						end
+
+						if Active[Passport] then
 							vRPC.Destroy(source)
 							Active[Passport] = nil
 
@@ -3172,11 +3336,11 @@ for NameItem,v in pairs(Sprays) do
 							end
 						end
 
-						Wait(100)
-					until not Active[Passport]
+						Player(source)["state"]["Buttons"] = false
+					end)
+				else
+					Player(source)["state"]["Buttons"] = false
 				end
-
-				Player(source)["state"]["Buttons"] = false
 			end)
 		end
 	end

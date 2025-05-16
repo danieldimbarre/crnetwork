@@ -45,15 +45,17 @@ AddEventHandler("inventory:Stockade",function(Vehicle)
 		TriggerClientEvent("Progress",source,"Roubando",20000)
 		vRPC.playAnim(source,false,{"oddjobs@shop_robbery@rob_till","loop"},true)
 
-		repeat
-			if Active[Passport] and os.time() >= parseInt(Active[Passport]) then
+		CreateThread(function()
+			while Active[Passport] and os.time() < Active[Passport] do
+				Wait(100)
+			end
+
+			if Active[Passport] then
 				vRPC.Destroy(source)
 				Active[Passport] = nil
 				Player(source)["state"]["Buttons"] = false
 				vRP.GenerateItem(Passport,"dirtydollar",7225,true)
 			end
-
-			Wait(100)
-		until not Active[Passport]
+		end)
 	end
 end)

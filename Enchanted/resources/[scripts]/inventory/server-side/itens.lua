@@ -1049,14 +1049,14 @@ Use = {
 								vRP.RemoveItem(Passport,Full,1,true)
 							end
 						end)
-					end
-				else
-					Player(source)["state"]["Buttons"] = false
-					Active[Passport] = nil
-					vRPC.Destroy(source)
+					else
+						Player(source)["state"]["Buttons"] = false
+						Active[Passport] = nil
+						vRPC.Destroy(source)
 
-					if math.random(1000) >= 875 then
-						vRP.RemoveItem(Passport,Full,1,true)
+						if math.random(1000) >= 875 then
+							vRP.RemoveItem(Passport,Full,1,true)
+						end
 					end
 				end
 			end
@@ -1586,7 +1586,7 @@ Use = {
 					end
 				end
 			end
-		end
+		end)
 	end,
 
 	["coffeecup"] = function(source,Passport,Amount,Slot,Full,Item,Split)

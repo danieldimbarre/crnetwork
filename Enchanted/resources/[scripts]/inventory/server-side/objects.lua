@@ -197,15 +197,13 @@ CreateThread(function()
 	end
 
 	local Consult = vRP.Query("entitydata/GetData",{ Name = "SaveObjects" })
-	if Consult[1] then
-		SaveObjects = json.decode(Consult[1]["Information"])
+	SaveObjects = Consult and Consult[1] and json.decode(Consult[1].Information) or {}
 
-		for Index,v in pairs(SaveObjects) do
-			if v["Item"] and ItemDurability(v["Item"]) and vRP.CheckDamaged(v["Item"]) then
-				SaveObjects[Index] = nil
-			else
-				Objects[Index] = v
-			end
+	for Index,v in pairs(SaveObjects) do
+		if v["Item"] and ItemDurability(v["Item"]) and vRP.CheckDamaged(v["Item"]) then
+			SaveObjects[Index] = nil
+		else
+			Objects[Index] = v
 		end
 	end
 

@@ -46,9 +46,9 @@ vRP.Prepare("playerdata/SetData","REPLACE INTO playerdata (Passport,Name,Informa
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENTITYDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("entitydata/GetData","SELECT * FROM entitydata WHERE Name = @Name")
-vRP.Prepare("entitydata/RemoveData","DELETE FROM entitydata WHERE Name = @Name")
-vRP.Prepare("entitydata/SetData","REPLACE INTO entitydata (Name,Information) VALUES (@Name,@Information)")
+vRP.Prepare("entitydata/RemoveData","DELETE FROM entitydata WHERE Name = @Name LIMIT 1")
+vRP.Prepare("entitydata/GetData","SELECT Information FROM entitydata WHERE Name = @Name LIMIT 1")
+vRP.Prepare("entitydata/SetData","INSERT INTO entitydata (Name,Information) VALUES (@Name,@Information) ON DUPLICATE KEY UPDATE Information = VALUES(Information)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLES
 -----------------------------------------------------------------------------------------------------------------------------------------

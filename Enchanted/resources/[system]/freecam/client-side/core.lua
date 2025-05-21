@@ -142,8 +142,7 @@ RegisterNUICallback("DeletePicture",function(data)
 end)
 
 RegisterNUICallback("TakeScreenShot",function()
-	local Webhook = ""
-	exports["screenshot-basic"]:requestScreenshotUpload(Webhook,"files[]",{ encoding = "webp", quality = 1.0 },function(Data)
+	exports["screenshot-basic"]:requestScreenshotUpload(GetConvar("Discord_FREECAM"),"files[]",{ encoding = "webp", quality = 1.0 },function(Data)
 		SendNUIMessage({
 			action = "CopyScreenshotUrl",
 			url = json.decode(Data).attachments[1].url

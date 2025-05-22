@@ -379,7 +379,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("FastBinds",function(source,Message)
 	local Ped = PlayerPedId()
-	if (parseInt(Message[1]) >= 101 and parseInt(Message[1]) <= 103) and LocalPlayer["state"]["Active"] and GetGameTimer() >= Button and not IsPauseMenuActive() and not LocalPlayer["state"]["Buttons"] and not LocalPlayer["state"]["Commands"] and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
+	if (parseInt(Message[1]) >= 101 and parseInt(Message[1]) <= 103) and LocalPlayer["state"]["Active"] and GetGameTimer() >= Button and not IsPauseMenuActive() and not LocalPlayer["state"]["Buttons"] and (LocalPlayer["state"]["Handcuff"] or not LocalPlayer["state"]["Commands"]) and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
 		Button = GetGameTimer() + 500
 		TriggerEvent("inventory:Use",Message[1])
 	end

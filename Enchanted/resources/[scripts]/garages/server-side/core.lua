@@ -96,7 +96,7 @@ AddEventHandler("garages:Respawns",function(Plate)
 	if Passport and Respawns[Plate] and Spawn[Plate] and Spawn[Plate][1] == Passport then
 		local Vehicle = vRP.SelectVehicle(Spawn[Plate][1],Spawn[Plate][2])
 		if Vehicle then
-			local Mods = vRP.GetSrvData("LsCustoms:"..Spawn[Plate][1]..":"..Spawn[Plate][2])
+			local Mods = vRP.GetSrvData("LsCustoms:"..Spawn[Plate][1]..":"..Spawn[Plate][2],true)
 			local Exist,Network,Vehicles = Creative.ServerVehicle(Spawn[Plate][2],Respawns[Plate],Plate,Vehicle["Nitro"],Vehicle["Doors"],Vehicle["Body"],Vehicle["Fuel"],Vehicle["Seatbelt"],Vehicle["Drift"])
 			if Exist then
 				local Players = vRPC.Players(source)
@@ -518,7 +518,7 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 
 				local Coords = vCLIENT.SpawnPosition(source,Number)
 				if Coords then
-					local Mods = vRP.GetSrvData("LsCustoms:"..Passport..":"..Name)
+					local Mods = vRP.GetSrvData("LsCustoms:"..Passport..":"..Name,true)
 					local Exist,Network,Vehicles = Creative.ServerVehicle(Name,Coords,Plate,Vehicle["Nitro"],Vehicle["Doors"],Vehicle["Body"],Vehicle["Fuel"],Vehicle["Seatbelt"],Vehicle["Drift"])
 
 					if Exist then

@@ -58,7 +58,7 @@ AddEventHandler("paramedic:Treatment",function(Entitys)
 				end
 
 				TriggerClientEvent("target:StartTreatment",Entitys)
-				TriggerClientEvent("Notify",source,"Centro Médico","Tratamento começou.","hospital",5000)
+				TriggerClientEvent("Notify",source,"Centro Médico","Tratamento começou.","sangue",5000)
 			else
 				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("syringe0"..Identity["Blood"]).."</b>.","amarelo",5000)
 			end

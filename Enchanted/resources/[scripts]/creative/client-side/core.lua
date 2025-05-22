@@ -373,10 +373,7 @@ CreateThread(function()
 		SetPlayerLockonRangeOverride(Pid,0.0)
 		SetCreateRandomCopsOnScenarios(false)
 		SetCreateRandomCopsNotOnScenarios(false)
-		SetEntityProofs(Ped,false,true,true,false,false,false,false,false)
 		SetPedInfiniteAmmoClip(Ped,LocalPlayer["state"]["Arena"] and true or false)
-		N_0x4757f00bc6323cfe(-1553120962,0.0)
-		N_0x4757f00bc6323cfe(539292904,0.0)
 
 		if IsPlayerWantedLevelGreater(Pid,0) then
 			ClearPlayerWantedLevel(Pid)

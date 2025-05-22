@@ -23,210 +23,211 @@ RegisterCommand("passport",function(source,Message)
 		if Keyboard then
 			local NewPassport = parseInt(Keyboard[2])
 			local OtherPassport = parseInt(Keyboard[1])
-
-			if vRP.Source(OtherPassport) then
-				return TriggerClientEvent("Notify",source,"Atenção","O passaporte "..OtherPassport.." precisa estar desconectado.","amarelo",5000)
-			end
-
-			if not vRP.Identity(OtherPassport) then
-				return TriggerClientEvent("Notify",source,"Atenção","O passaporte "..OtherPassport.." não existe.","amarelo",5000)
-			end
-
-			if vRP.Identity(NewPassport) then
-				return TriggerClientEvent("Notify",source,"Atenção","O passaporte "..NewPassport.." já existe.","amarelo",5000)
-			end
-
-			local Vehicles = exports["oxmysql"]:query_async("SELECT * FROM vehicles WHERE Passport = ?",{ OtherPassport })
-			if Vehicles and #Vehicles > 0 then
-				for _,v in pairs(Vehicles) do
-					local LsCustoms = vRP.GetSrvData("LsCustoms:"..OtherPassport..":"..v.Vehicle)
-					local Trunkchest = vRP.GetSrvData("Trunkchest:"..OtherPassport..":"..v.Vehicle)
-
-					vRP.SetSrvData("Trunkchest:"..NewPassport..":"..v.Vehicle,Trunkchest,true)
-					vRP.SetSrvData("LsCustoms:"..NewPassport..":"..v.Vehicle,LsCustoms,true)
-					vRP.RemSrvData("Trunkchest:"..OtherPassport..":"..v.Vehicle)
-					vRP.RemSrvData("LsCustoms:"..OtherPassport..":"..v.Vehicle)
+			if NewPassport > 0 and OtherPassport > 0 then
+				if vRP.Source(OtherPassport) then
+					return TriggerClientEvent("Notify",source,"Atenção","O passaporte "..OtherPassport.." precisa estar desconectado.","amarelo",5000)
 				end
 
-				exports["oxmysql"]:query_async("UPDATE vehicles SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+				if not vRP.Identity(OtherPassport) then
+					return TriggerClientEvent("Notify",source,"Atenção","O passaporte "..OtherPassport.." não existe.","amarelo",5000)
+				end
 
-			local NewEntitydata = "Personal:"..NewPassport
-			local ActualEntitydata = "Personal:"..OtherPassport
-			local Entitydata = exports["oxmysql"]:query_async("SELECT * FROM entitydata WHERE Name = ?",{ ActualEntitydata })
-			if Entitydata and #Entitydata > 0 then
-				exports["oxmysql"]:query_async("UPDATE entitydata SET Name = ? WHERE Name = ?",{ NewEntitydata,ActualEntitydata })
-			end
+				if vRP.Identity(NewPassport) then
+					return TriggerClientEvent("Notify",source,"Atenção","O passaporte "..NewPassport.." já existe.","amarelo",5000)
+				end
 
-			local Character = exports["oxmysql"]:query_async("SELECT * FROM characters WHERE id = ?",{ OtherPassport })
-			if Character and #Character > 0 then
-				exports["oxmysql"]:query_async("UPDATE characters SET id = ? WHERE id = ?",{ NewPassport,OtherPassport })
-			end
+				local Vehicles = exports["oxmysql"]:query_async("SELECT * FROM vehicles WHERE Passport = ?",{ OtherPassport })
+				if Vehicles and #Vehicles > 0 then
+					for _,v in pairs(Vehicles) do
+						local LsCustoms = vRP.GetSrvData("LsCustoms:"..OtherPassport..":"..v.Vehicle,true)
+						local Trunkchest = vRP.GetSrvData("Trunkchest:"..OtherPassport..":"..v.Vehicle,true)
 
-			local Transactions = exports["oxmysql"]:query_async("SELECT * FROM transactions WHERE Passport = ?",{ OtherPassport })
-			if Transactions and #Transactions > 0 then
-				exports["oxmysql"]:query_async("UPDATE transactions SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+						vRP.SetSrvData("Trunkchest:"..NewPassport..":"..v.Vehicle,Trunkchest,true)
+						vRP.SetSrvData("LsCustoms:"..NewPassport..":"..v.Vehicle,LsCustoms,true)
+						vRP.RemSrvData("Trunkchest:"..OtherPassport..":"..v.Vehicle)
+						vRP.RemSrvData("LsCustoms:"..OtherPassport..":"..v.Vehicle)
+					end
 
-			local Taxs = exports["oxmysql"]:query_async("SELECT * FROM taxs WHERE Passport = ?",{ OtherPassport })
-			if Taxs and #Taxs > 0 then
-				exports["oxmysql"]:query_async("UPDATE taxs SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+					exports["oxmysql"]:query_async("UPDATE vehicles SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
 
-			local Races = exports["oxmysql"]:query_async("SELECT * FROM races WHERE Passport = ?",{ OtherPassport })
-			if Races and #Races > 0 then
-				exports["oxmysql"]:query_async("UPDATE races SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+				local NewEntitydata = "Personal:"..NewPassport
+				local ActualEntitydata = "Personal:"..OtherPassport
+				local Entitydata = exports["oxmysql"]:query_async("SELECT * FROM entitydata WHERE Name = ?",{ ActualEntitydata })
+				if Entitydata and #Entitydata > 0 then
+					exports["oxmysql"]:query_async("UPDATE entitydata SET Name = ? WHERE Name = ?",{ NewEntitydata,ActualEntitydata })
+				end
 
-			local Propertys = exports["oxmysql"]:query_async("SELECT * FROM propertys WHERE Passport = ?",{ OtherPassport })
-			if Propertys and #Propertys > 0 then
-				exports["oxmysql"]:query_async("UPDATE propertys SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+				local Character = exports["oxmysql"]:query_async("SELECT * FROM characters WHERE id = ?",{ OtherPassport })
+				if Character and #Character > 0 then
+					exports["oxmysql"]:query_async("UPDATE characters SET id = ? WHERE id = ?",{ NewPassport,OtherPassport })
+				end
 
-			local Playerdata = exports["oxmysql"]:query_async("SELECT * FROM playerdata WHERE Passport = ?",{ OtherPassport })
-			if Playerdata and #Playerdata > 0 then
-				exports["oxmysql"]:query_async("UPDATE playerdata SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+				local Transactions = exports["oxmysql"]:query_async("SELECT * FROM transactions WHERE Passport = ?",{ OtherPassport })
+				if Transactions and #Transactions > 0 then
+					exports["oxmysql"]:query_async("UPDATE transactions SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
 
-			local Painel_Transactions = exports["oxmysql"]:query_async("SELECT * FROM painel_creative_transactions WHERE Passport = ?",{ OtherPassport })
-			if Painel_Transactions and #Painel_Transactions > 0 then
-				exports["oxmysql"]:query_async("UPDATE painel_creative_transactions SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+				local Taxs = exports["oxmysql"]:query_async("SELECT * FROM taxs WHERE Passport = ?",{ OtherPassport })
+				if Taxs and #Taxs > 0 then
+					exports["oxmysql"]:query_async("UPDATE taxs SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
 
-			local Painel_Transactions_Transfer = exports["oxmysql"]:query_async("SELECT * FROM painel_creative_transactions WHERE Transfer = ?",{ OtherPassport })
-			if Painel_Transactions_Transfer and #Painel_Transactions_Transfer > 0 then
-				exports["oxmysql"]:query_async("UPDATE painel_creative_transactions SET Transfer = ? WHERE Transfer = ?",{ NewPassport,OtherPassport })
-			end
+				local Races = exports["oxmysql"]:query_async("SELECT * FROM races WHERE Passport = ?",{ OtherPassport })
+				if Races and #Races > 0 then
+					exports["oxmysql"]:query_async("UPDATE races SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
 
-			local MDT_Arrest = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_arrest WHERE Passport = ?",{ OtherPassport })
-			if MDT_Arrest and #MDT_Arrest > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_arrest SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+				local Propertys = exports["oxmysql"]:query_async("SELECT * FROM propertys WHERE Passport = ?",{ OtherPassport })
+				if Propertys and #Propertys > 0 then
+					exports["oxmysql"]:query_async("UPDATE propertys SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
 
-			local MDT_Arrest_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_arrest WHERE Officer = ?",{ OtherPassport })
-			if MDT_Arrest_Officer and #MDT_Arrest_Officer > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_arrest SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
-			end
+				local Playerdata = exports["oxmysql"]:query_async("SELECT * FROM playerdata WHERE Passport = ?",{ OtherPassport })
+				if Playerdata and #Playerdata > 0 then
+					exports["oxmysql"]:query_async("UPDATE playerdata SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
 
-			local MDT_Fines = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Passport = ?",{ OtherPassport })
-			if MDT_Fines and #MDT_Fines > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+				local Painel_Transactions = exports["oxmysql"]:query_async("SELECT * FROM painel_creative_transactions WHERE Passport = ?",{ OtherPassport })
+				if Painel_Transactions and #Painel_Transactions > 0 then
+					exports["oxmysql"]:query_async("UPDATE painel_creative_transactions SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
 
-			local MDT_Fines_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Officer = ?",{ OtherPassport })
-			if MDT_Fines_Officer and #MDT_Fines_Officer > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
-			end
+				local Painel_Transactions_Transfer = exports["oxmysql"]:query_async("SELECT * FROM painel_creative_transactions WHERE Transfer = ?",{ OtherPassport })
+				if Painel_Transactions_Transfer and #Painel_Transactions_Transfer > 0 then
+					exports["oxmysql"]:query_async("UPDATE painel_creative_transactions SET Transfer = ? WHERE Transfer = ?",{ NewPassport,OtherPassport })
+				end
 
-			local MDT_Medals_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_medals")
-			if MDT_Medals_Officers and #MDT_Medals_Officers > 0 then
-				for _,v in pairs(MDT_Medals_Officers) do
-					local Updated = false
-					local Officers = json.decode(v.Officers)
-					for Index,Number in pairs(Officers) do
-						if OtherPassport == Number then
-							Officers[Index] = NewPassport
-							Updated = true
+				local MDT_Arrest = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_arrest WHERE Passport = ?",{ OtherPassport })
+				if MDT_Arrest and #MDT_Arrest > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_arrest SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
 
-							break
+				local MDT_Arrest_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_arrest WHERE Officer = ?",{ OtherPassport })
+				if MDT_Arrest_Officer and #MDT_Arrest_Officer > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_arrest SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+				end
+
+				local MDT_Fines = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Passport = ?",{ OtherPassport })
+				if MDT_Fines and #MDT_Fines > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
+
+				local MDT_Fines_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Officer = ?",{ OtherPassport })
+				if MDT_Fines_Officer and #MDT_Fines_Officer > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+				end
+
+				local MDT_Medals_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_medals")
+				if MDT_Medals_Officers and #MDT_Medals_Officers > 0 then
+					for _,v in pairs(MDT_Medals_Officers) do
+						local Updated = false
+						local Officers = json.decode(v.Officers)
+						for Index,Number in pairs(Officers) do
+							if OtherPassport == Number then
+								Officers[Index] = NewPassport
+								Updated = true
+
+								break
+							end
+						end
+
+						if Updated then
+							exports["oxmysql"]:query_async("UPDATE mdt_creative_medals SET Officers = ? WHERE id = ?",{ json.encode(Officers),v.id })
 						end
 					end
-
-					if Updated then
-						exports["oxmysql"]:query_async("UPDATE mdt_creative_medals SET Officers = ? WHERE id = ?",{ json.encode(Officers),v.id })
-					end
 				end
-			end
 
-			local MDT_Reports = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_reports WHERE Passport = ?",{ OtherPassport })
-			if MDT_Reports and #MDT_Reports > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_reports SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
+				local MDT_Reports = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_reports WHERE Passport = ?",{ OtherPassport })
+				if MDT_Reports and #MDT_Reports > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_reports SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
 
-			local MDT_Reports_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_reports WHERE Officer = ?",{ OtherPassport })
-			if MDT_Reports_Officer and #MDT_Reports_Officer > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_reports SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
-			end
+				local MDT_Reports_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_reports WHERE Officer = ?",{ OtherPassport })
+				if MDT_Reports_Officer and #MDT_Reports_Officer > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_reports SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+				end
 
-			local MDT_Units_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_units")
-			if MDT_Units_Officers and #MDT_Units_Officers > 0 then
-				for _,v in pairs(MDT_Units_Officers) do
-					local Updated = false
-					local Officers = json.decode(v.Officers)
-					for Index,Number in pairs(Officers) do
-						if OtherPassport == Number then
-							Officers[Index] = NewPassport
-							Updated = true
+				local MDT_Units_Officers = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_units")
+				if MDT_Units_Officers and #MDT_Units_Officers > 0 then
+					for _,v in pairs(MDT_Units_Officers) do
+						local Updated = false
+						local Officers = json.decode(v.Officers)
+						for Index,Number in pairs(Officers) do
+							if OtherPassport == Number then
+								Officers[Index] = NewPassport
+								Updated = true
 
-							break
+								break
+							end
+						end
+
+						if Updated then
+							exports["oxmysql"]:query_async("UPDATE mdt_creative_units SET Officers = ? WHERE id = ?",{ json.encode(Officers),v.id })
 						end
 					end
-
-					if Updated then
-						exports["oxmysql"]:query_async("UPDATE mdt_creative_units SET Officers = ? WHERE id = ?",{ json.encode(Officers),v.id })
-					end
 				end
+
+				local MDT_Vehicles = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_vehicles WHERE Passport = ?",{ OtherPassport })
+				if MDT_Vehicles and #MDT_Vehicles > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_vehicles SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
+
+				local MDT_Vehicles_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_vehicles WHERE Officer = ?",{ OtherPassport })
+				if MDT_Vehicles_Officer and #MDT_Vehicles_Officer > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_vehicles SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+				end
+
+				local MDT_Wanted = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_wanted WHERE Passport = ?",{ OtherPassport })
+				if MDT_Wanted and #MDT_Wanted > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_wanted SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
+
+				local MDT_Wanted_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_wanted WHERE Officer = ?",{ OtherPassport })
+				if MDT_Wanted_Officer and #MDT_Wanted_Officer > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_wanted SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+				end
+
+				local MDT_Warning = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_warning WHERE Passport = ?",{ OtherPassport })
+				if MDT_Warning and #MDT_Warning > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_warning SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
+
+				local MDT_Warning_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_warning WHERE Officer = ?",{ OtherPassport })
+				if MDT_Warning_Officer and #MDT_Warning_Officer > 0 then
+					exports["oxmysql"]:query_async("UPDATE mdt_creative_warning SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
+				end
+
+				local Invoices = exports["oxmysql"]:query_async("SELECT * FROM invoices WHERE Passport = ?",{ OtherPassport })
+				if Invoices and #Invoices > 0 then
+					exports["oxmysql"]:query_async("UPDATE invoices SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
+
+				local Invoices_Received = exports["oxmysql"]:query_async("SELECT * FROM invoices WHERE Received = ?",{ OtherPassport })
+				if Invoices_Received and #Invoices_Received > 0 then
+					exports["oxmysql"]:query_async("UPDATE invoices SET Received = ? WHERE Received = ?",{ NewPassport,OtherPassport })
+				end
+
+				local Investments = exports["oxmysql"]:query_async("SELECT * FROM investments WHERE Passport = ?",{ OtherPassport })
+				if Investments and #Investments > 0 then
+					exports["oxmysql"]:query_async("UPDATE investments SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				end
+
+				local Phone = exports["oxmysql"]:query_async("SELECT * FROM phone_phones WHERE owner_id = ?",{ OtherPassport })
+				if Phone and #Phone > 0 then
+					exports["oxmysql"]:query_async("UPDATE phone_phones SET owner_id = ?, id = ? WHERE owner_id = ?",{ NewPassport,NewPassport,OtherPassport })
+				end
+
+				local Permissions = vRP.UserGroups(OtherPassport)
+				for Permission,Level in pairs(Permissions) do
+					vRP.RemovePermission(OtherPassport,Permission)
+					vRP.SetPermission(NewPassport,Permission,Level)
+				end
+
+				exports["crons"]:Swap(OtherPassport,NewPassport)
+
+				TriggerClientEvent("Notify",source,"Sucesso","Atualização de passaporte concluída.","verde",5000)
 			end
-
-			local MDT_Vehicles = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_vehicles WHERE Passport = ?",{ OtherPassport })
-			if MDT_Vehicles and #MDT_Vehicles > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_vehicles SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
-
-			local MDT_Vehicles_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_vehicles WHERE Officer = ?",{ OtherPassport })
-			if MDT_Vehicles_Officer and #MDT_Vehicles_Officer > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_vehicles SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
-			end
-
-			local MDT_Wanted = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_wanted WHERE Passport = ?",{ OtherPassport })
-			if MDT_Wanted and #MDT_Wanted > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_wanted SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
-
-			local MDT_Wanted_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_wanted WHERE Officer = ?",{ OtherPassport })
-			if MDT_Wanted_Officer and #MDT_Wanted_Officer > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_wanted SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
-			end
-
-			local MDT_Warning = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_warning WHERE Passport = ?",{ OtherPassport })
-			if MDT_Warning and #MDT_Warning > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_warning SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
-
-			local MDT_Warning_Officer = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_warning WHERE Officer = ?",{ OtherPassport })
-			if MDT_Warning_Officer and #MDT_Warning_Officer > 0 then
-				exports["oxmysql"]:query_async("UPDATE mdt_creative_warning SET Officer = ? WHERE Officer = ?",{ NewPassport,OtherPassport })
-			end
-
-			local Invoices = exports["oxmysql"]:query_async("SELECT * FROM invoices WHERE Passport = ?",{ OtherPassport })
-			if Invoices and #Invoices > 0 then
-				exports["oxmysql"]:query_async("UPDATE invoices SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
-
-			local Invoices_Received = exports["oxmysql"]:query_async("SELECT * FROM invoices WHERE Received = ?",{ OtherPassport })
-			if Invoices_Received and #Invoices_Received > 0 then
-				exports["oxmysql"]:query_async("UPDATE invoices SET Received = ? WHERE Received = ?",{ NewPassport,OtherPassport })
-			end
-
-			local Investments = exports["oxmysql"]:query_async("SELECT * FROM investments WHERE Passport = ?",{ OtherPassport })
-			if Investments and #Investments > 0 then
-				exports["oxmysql"]:query_async("UPDATE investments SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
-
-			local Phone = exports["oxmysql"]:query_async("SELECT * FROM phone_phones WHERE owner_id = ?",{ OtherPassport })
-			if Phone and #Phone > 0 then
-				exports["oxmysql"]:query_async("UPDATE phone_phones SET owner_id = ?, id = ? WHERE owner_id = ?",{ NewPassport,NewPassport,OtherPassport })
-			end
-
-			local Permissions = vRP.UserGroups(OtherPassport)
-			for Permission,Level in pairs(Permissions) do
-				vRP.RemovePermission(OtherPassport,Permission)
-				vRP.SetPermission(NewPassport,Permission,Level)
-			end
-
-			exports["crons"]:Swap(OtherPassport,NewPassport)
-
-			TriggerClientEvent("Notify",source,"Sucesso","Atualização de passaporte concluída.","verde",5000)
 		end
 	end
 end)
@@ -289,6 +290,16 @@ RegisterCommand("wipebattlepass",function(source,Message)
 	if Passport and vRP.HasGroup(Passport,"Admin",1) then
 		exports["oxmysql"]:query_async("DELETE FROM playerdata WHERE Name = ?",{ "Battlepass" })
 		TriggerClientEvent("Notify",source,"Sucesso","Passe de batalha resetado.","verde",5000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WIPEDAILY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("wipedaily",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin",1) then
+		exports["oxmysql"]:query_async("UPDATE characters SET Daily = ?",{ "09-01-1990-0" })
+		TriggerClientEvent("Notify",source,"Sucesso","Daily resetado.","verde",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -392,7 +403,7 @@ RegisterCommand("wipepermissions",function(source,Message)
 			local Consult = exports["oxmysql"]:query_async("SELECT * FROM chests WHERE Permission LIKE ?",{ Permission.."%" })
 			for _,v in pairs(Consult) do
 				if SplitOne(v.Permission) == Permission then
-					if vRP.GetSrvData("Chest:"..v.Name) then
+					if vRP.GetSrvData("Chest:"..v.Name,true) then
 						vRP.RemSrvData("Chest:"..v.Name)
 					end
 
@@ -400,7 +411,7 @@ RegisterCommand("wipepermissions",function(source,Message)
 				end
 			end
 
-			if vRP.GetSrvData("Permissions:"..Permission) then
+			if vRP.GetSrvData("Permissions:"..Permission,true) then
 				vRP.RemSrvData("Permissions:"..Permission)
 			end
 
@@ -1365,6 +1376,24 @@ SetHttpHandler(function(Request,Result)
 			if OtherSource and Webhook ~= "" then
 				TriggerClientEvent("megazord:Screenshot",OtherSource,Webhook)
 				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+			else
+				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
+			end
+		end,
+
+		["/tdiscord"] = function(Data)
+			local v = json.decode(Data)
+			local CurrentDiscord = v.CurrentDiscord
+			local NewDiscord = parseInt(v.NewDiscord)
+			local OtherPassport = parseInt(v.Passport)
+			if NewDiscord and OtherPassport and CurrentDiscord then
+				local Account = vRP.AccountInformation(OtherPassport,"Discord")
+				if Account and Account == CurrentDiscord then
+					exports["oxmysql"]:query_async("UPDATE accounts SET Discord = ? WHERE Discord = ?",{ NewDiscord,Account })
+					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+				else
+					SendMessageDiscord(Result,404,"Discord atual é diferente do enviado.")
+				end
 			else
 				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
 			end

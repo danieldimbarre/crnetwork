@@ -19,8 +19,8 @@ local Saved = {}
 local Inside = {}
 local Active = {}
 local Robbery = {}
+local Markers = {}
 local CountClothes = {}
-GlobalState.Markers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:ROBBERY
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -89,7 +89,7 @@ AddEventHandler("propertys:RobberyItem",function(Number,Name)
 	end
 
 	local Locker = (Number == "Locker")
-	if (Locker and not vRP.Safecrack(source,6)) or not vRP.Task(source,5,5000) then
+	if (Locker and not vRP.Safecrack(source,6)) or (not Locker and not vRP.Task(source,5,5000)) then
 		if Lockpick and math.random(100) >= 95 then
 			vRP.RemoveItem(Passport,Lockpick.Item,1,true)
 		end
@@ -279,9 +279,7 @@ AddEventHandler("propertys:Buy",function(Name)
 		Fridge = Informations[Interior].Fridge or 0
 	})
 
-	local Markers = GlobalState.Markers
 	Markers[Name] = true
-	GlobalState.Markers = Markers
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:LOCK
@@ -303,6 +301,35 @@ AddEventHandler("propertys:Lock",function(Name)
 	Lock[Name] = not Lock[Name]
 
 	TriggerClientEvent("Notify",source,"Aviso","Propriedade "..(Lock[Name] and "trancada" or "destrancada")..".","default",10000)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPERTYS:INTERIOR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("propertys:Interior")
+AddEventHandler("propertys:Interior",function(Table)
+	local source = source
+	local Split = splitString(Table)
+	local Passport = vRP.Passport(source)
+	local Name,Interior = Split[1],Split[2]
+	local Consult = vRP.SingleQuery("propertys/Exist",{ Name = Name })
+
+	if not Passport or not Consult or Consult.Passport ~= Passport or Consult.Interior == Interior then
+		return false
+	end
+
+	TriggerClientEvent("dynamic:Close",source)
+
+	local InteriorPrice = Informations[Interior].Gemstone
+	local CurrentPrice = Informations[Consult.Interior].Gemstone
+	if vRP.Request(source,"Propriedades","Deseja efetuar a troca do interior atual para o <b>"..Interior.."</b> por <b>"..Dotted(InteriorPrice - CurrentPrice).." diamantes</b>?") then
+		if vRP.PaymentGems(Passport,InteriorPrice - CurrentPrice) then
+			exports["oxmysql"]:query_async("UPDATE propertys SET Interior = ? WHERE Name = ?",{ Interior,Name })
+			TriggerClientEvent("Notify",source,"Propriedades","Compra concluída.","verde",10000)
+			Saved[Name] = Interior
+		else
+			TriggerClientEvent("Notify",source,"Propriedades","Diamante insuficiente.","amarelo",10000)
+		end
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROPERTYS:SELL
@@ -329,10 +356,8 @@ AddEventHandler("propertys:Sell",function(Name)
 
 	local Price = Informations[Consult.Interior].Price * 0.25
 	if vRP.Request(source,"Propriedades","Vender por <b>"..Currency..Dotted(Price).."</b>?") then
-		if GlobalState.Markers[Name] then
-			local Markers = GlobalState.Markers
+		if Markers[Name] then
 			Markers[Name] = nil
-			GlobalState.Markers = Markers
 		end
 
 		vRP.GiveBank(Passport,Price)
@@ -700,15 +725,12 @@ end)
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local Markers = GlobalState.Markers
 	for _,v in pairs(vRP.Query("propertys/All")) do
 		if Propertys[v.Name] then
 			Markers[v.Name] = true
 			Lock[v.Name] = true
 		end
 	end
-
-	GlobalState.Markers = Markers
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERCHOSEN
@@ -730,3 +752,9 @@ AddEventHandler("CharacterChosen",function(Passport,source)
 
 	TriggerClientEvent("spawn:Increment",source,Increments)
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- MARKERS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Markers()
+	return Markers
+end

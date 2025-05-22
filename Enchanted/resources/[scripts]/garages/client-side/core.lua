@@ -288,11 +288,12 @@ function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Ty
 		return false
 	end
 
-	TriggerEvent("lscustoms:Apply",Vehicle,Customize)
 	SetVehicleEngineHealth(Vehicle,Engine + 0.0)
 	SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
+	SetEntityAsMissionEntity(Vehicle,true,true)
 	SetVehicleNeedsToBeHotwired(Vehicle,false)
 	DecorSetInt(Vehicle,"Player_Vehicle",-1)
+	SetEntityCleanupByEngine(Vehicle,true)
 	SetVehicleOnGroundProperly(Vehicle)
 	SetVehRadioStation(Vehicle,"OFF")
 	SetEntityHealth(Vehicle,Health)
@@ -319,6 +320,7 @@ function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Ty
 		end
 	end
 
+	TriggerEvent("lscustoms:Apply",Vehicle,Customize)
 	SetModelAsNoLongerNeeded(Model)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

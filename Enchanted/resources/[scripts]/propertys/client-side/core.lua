@@ -66,14 +66,23 @@ CreateThread(function()
 										Interior = Consult.Interior
 
 										exports["dynamic"]:AddButton("Entrar","Adentrar a propriedade.","propertys:Enter",Name,false,false)
-										exports["dynamic"]:AddButton("Credenciais","Reconfigurar os cartões de acesso.","propertys:Credentials",Name,false,true)
 										exports["dynamic"]:AddButton("Cartões","Comprar um novo cartão de acesso.","propertys:Item",Name,false,true)
 										exports["dynamic"]:AddButton("Fechadura","Trancar/Destrancar a propriedade.","propertys:Lock",Name,false,true)
+										exports["dynamic"]:AddButton("Credenciais","Reconfigurar os cartões de acesso.","propertys:Credentials",Name,false,true)
 
-										if not Propertys[Name].Galpao then
-											exports["dynamic"]:AddButton("Garagem","Adicionar/Reajustar a garagem.","garages:Propertys",Name,false,true)
+										if Interior ~= "Galpao" and Interior ~= "Amber" then
+											exports["dynamic"]:AddMenu("Interior","Trocar interior da propriedade.","interior")
+
+											local Valuation = Informations[Interior].Gemstone
+											for Line,v in pairs(Informations) do
+												local InteriorValuation = Informations[Line].Gemstone
+												if Line ~= "Galpao" and InteriorValuation > Valuation then
+													exports["dynamic"]:AddButton(Line,"Custo de <yellow>"..Dotted(InteriorValuation - Valuation).." diamantes</yellow>","propertys:Interior",Name.."-"..Line,"interior",true)
+												end
+											end
 										end
 
+										exports["dynamic"]:AddButton("Garagem","Adicionar/Reajustar a garagem.","garages:Propertys",Name,false,true)
 										exports["dynamic"]:AddButton("Vender","Se desfazer da propriedade.","propertys:Sell",Name,false,true)
 										exports["dynamic"]:AddButton("Transferência","Mudar proprietário.","propertys:Transfer",Name,false,true)
 										exports["dynamic"]:AddButton("Hipoteca",Consult.Tax,"","",false,false)
@@ -272,6 +281,7 @@ AddEventHandler("propertys:Blips",function()
 		TriggerEvent("Notify","Propriedades","Marcações desativadas.","default",10000)
 		Blips = {}
 	else
+		local Markers = vSERVER.Markers()
 		for Name,v in pairs(Propertys) do
 			if Name ~= "Hotel" then
 				Blips[Name] = AddBlipForCoord(v.Coords)
@@ -284,7 +294,7 @@ AddEventHandler("propertys:Blips",function()
 
 				SetBlipScale(Blips[Name],0.5)
 				SetBlipAsShortRange(Blips[Name],true)
-				SetBlipColour(Blips[Name],GlobalState.Markers[Name] and 35 or 43)
+				SetBlipColour(Blips[Name],Markers[Name] and 35 or 43)
 			end
 		end
 

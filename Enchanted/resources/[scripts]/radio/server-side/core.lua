@@ -12,8 +12,7 @@ Tunnel.bindInterface("radio",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Radio = {}
-local Actives = {
+local Radio = {
 	["911"] = "Policia",
 	["912"] = "Policia",
 	["913"] = "Policia",
@@ -35,7 +34,7 @@ function Creative.Frequency(Number)
 	local source = source
 	local Number = tostring(Number)
 	local Passport = vRP.Passport(source)
-	if Passport and Actives[Number] and not vRP.HasService(Passport,Actives[Number]) then
+	if Passport and Radio[Number] and not vRP.HasService(Passport,Radio[Number]) then
 		TriggerClientEvent("Notify",source,"Atenção","Necessário permissão para efetuar conexão.","amarelo",5000)
 
 		return false
@@ -47,35 +46,28 @@ end
 -- THREADINITSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local Consult = vRP.Query("entitydata/GetData",{ Name = "Radio" })
-	if Consult[1] then
-		Radio = json.decode(Consult[1]["Information"])
-
-		for Index,Permission in pairs(Radio) do
-			Actives[Index] = Permission
+	local Consult = vRP.GetSrvData("Radio",true)
+	if Consult then
+		for Number,Permission in pairs(Consult) do
+			Radio[Number] = Permission
 		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SAVESERVER
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("SaveServer",function(Silenced)
-	vRP.Query("entitydata/SetData",{ Name = "Radio", Information = json.encode(Radio) })
-
-	if not Silenced then
-		print("O resource ^2Radio^7 salvou os dados.")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EXIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Exist",function(Number)
-	return Actives[tostring(Number)]
+	return Radio[Number]
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Add",function(Number,Permission)
-	Radio[tostring(Number)] = Permission
-	Actives[tostring(Number)] = Permission
+	local Consult = vRP.GetSrvData("Radio",true)
+	if Consult then
+		Radio[Number] = Permission
+		Consult[Number] = Permission
+
+		vRP.SetSrvData("Radio",Consult,true)
+	end
 end)

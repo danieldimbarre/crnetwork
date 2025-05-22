@@ -121,7 +121,7 @@ AddEventHandler("target:Repose",function(OtherSource)
 	local OtherPassport = vRP.Passport(OtherSource)
 	local Keyboard = vKEYBOARD.Primary(source,"Minutos.")
 	if Passport and OtherPassport and Keyboard and parseInt(Keyboard[1]) > 0 then
-		TriggerClientEvent("Notify",source,"Centro Médico","Adicionou "..Keyboard[1].." minutos de repouso.","hospital",5000)
+		TriggerClientEvent("Notify",source,"Centro Médico","Adicionou "..Keyboard[1].." minutos de repouso.","sangue",5000)
 		TriggerEvent("Repose",OtherSource,OtherPassport,parseInt(Keyboard[1]) * 60)
 	end
 end)

@@ -168,7 +168,7 @@ CreateThread(function()
 				LocalPlayer["state"]:set("Cancel",false,true)
 				LocalPlayer["state"]:set("Buttons",false,true)
 				LocalPlayer["state"]:set("Commands",false,true)
-				TriggerEvent("Notify","Centro Médico","Tratamento concluido.","hospital",5000)
+				TriggerEvent("Notify","Centro Médico","Tratamento concluido.","sangue",5000)
 			end
 		end
 

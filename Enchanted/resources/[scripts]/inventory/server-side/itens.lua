@@ -1061,10 +1061,11 @@ Use = {
 				end
 			end
 		else
-			vRP.RemoveItem(Passport,Full,1,true)
 			Player(source)["state"]["Handcuff"] = false
 			Player(source)["state"]["Commands"] = false
 			TriggerClientEvent("sounds:Private",source,"uncuff",0.5)
+			vRP.RemoveItem(Passport,Full,1,true)
+			vRPC.Destroy(source)
 		end
 	end,
 

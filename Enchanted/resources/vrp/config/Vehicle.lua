@@ -9,8 +9,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["dinghy2"] = {
 		Name = "Dinghy 2",
@@ -18,8 +17,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["dinghy3"] = {
 		Name = "Dinghy 3",
@@ -27,8 +25,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["dinghy4"] = {
 		Name = "Dinghy 4",
@@ -36,8 +33,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["jetmax"] = {
 		Name = "Jetmax",
@@ -45,8 +41,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["marquis"] = {
 		Name = "Marquis",
@@ -54,8 +49,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["seashark"] = {
 		Name = "Seashark",
@@ -63,8 +57,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["seashark2"] = {
 		Name = "Seashark 2",
@@ -72,8 +65,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["seashark3"] = {
 		Name = "Seashark 3",
@@ -81,8 +73,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["speeder"] = {
 		Name = "Speeder",
@@ -90,8 +81,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["speeder2"] = {
 		Name = "Speeder 2",
@@ -99,8 +89,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["squalo"] = {
 		Name = "Squalo",
@@ -108,8 +97,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["submersible"] = {
 		Name = "Submersible",
@@ -117,8 +105,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["submersible2"] = {
 		Name = "Submersible 2",
@@ -126,8 +113,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["suntrap"] = {
 		Name = "Suntrap",
@@ -135,8 +121,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["toro"] = {
 		Name = "Toro",
@@ -144,8 +129,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["toro2"] = {
 		Name = "Toro 2",
@@ -153,8 +137,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["tropic"] = {
 		Name = "Tropic",
@@ -162,8 +145,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["tropic2"] = {
 		Name = "Tropic 2",
@@ -171,8 +153,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["tug"] = {
 		Name = "Tug",
@@ -180,8 +161,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["avisa"] = {
 		Name = "Avisa",
@@ -189,8 +169,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["dinghy5"] = {
 		Name = "Dinghy 5",
@@ -198,8 +177,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["kosatka"] = {
 		Name = "Kosatka",
@@ -207,8 +185,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["longfin"] = {
 		Name = "Longfin",
@@ -216,8 +193,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 	["patrolboat"] = {
 		Name = "Patrolboat",
@@ -225,8 +201,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "boat"
+		Class = "Embarcações"
 	},
 
 	-- COMMERCIALS
@@ -236,8 +211,7 @@ local List = {
 		Price = 187500,
 		Mode = "Rental",
 		Gemstone = 7500,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["biff"] = {
 		Name = "Biff",
@@ -245,8 +219,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["cerberus"] = {
 		Name = "Cerberus",
@@ -254,8 +227,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["cerberus2"] = {
 		Name = "Cerberus 2",
@@ -263,8 +235,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["cerberus3"] = {
 		Name = "Cerberus 3",
@@ -272,8 +243,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["hauler"] = {
 		Name = "Hauler",
@@ -281,8 +251,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["hauler2"] = {
 		Name = "Hauler 2",
@@ -290,8 +259,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["mule"] = {
 		Name = "Mule",
@@ -299,8 +267,7 @@ local List = {
 		Price = 125000,
 		Mode = "Rental",
 		Gemstone = 5000,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["mule2"] = {
 		Name = "Mule 2",
@@ -308,8 +275,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["mule3"] = {
 		Name = "Mule 3",
@@ -317,8 +283,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["mule4"] = {
 		Name = "Mule 4",
@@ -326,8 +291,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["packer"] = {
 		Name = "Packer",
@@ -335,8 +299,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["phantom"] = {
 		Name = "Phantom",
@@ -344,8 +307,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["phantom2"] = {
 		Name = "Phantom 2",
@@ -353,8 +315,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["phantom3"] = {
 		Name = "Phantom 3",
@@ -362,8 +323,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["pounder"] = {
 		Name = "Pounder",
@@ -371,8 +331,7 @@ local List = {
 		Price = 250000,
 		Mode = "Rental",
 		Gemstone = 10000,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["pounder2"] = {
 		Name = "Pounder 2",
@@ -380,8 +339,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["stockade"] = {
 		Name = "Stockade",
@@ -389,8 +347,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["stockade3"] = {
 		Name = "Stockade 3",
@@ -398,8 +355,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 	["terbyte"] = {
 		Name = "Terbyte",
@@ -407,8 +363,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões",
-		Type = "automobile"
+		Class = "Caminhões"
 	},
 
 	-- COMPACTS
@@ -418,8 +373,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["blista"] = {
 		Name = "Blista",
@@ -427,8 +381,7 @@ local List = {
 		Price = 40000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["brioso"] = {
 		Name = "Brioso",
@@ -436,8 +389,7 @@ local List = {
 		Price = 30000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["club"] = {
 		Name = "Club",
@@ -445,8 +397,7 @@ local List = {
 		Price = 65000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["dilettante"] = {
 		Name = "Dilettante",
@@ -454,8 +405,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["dilettante2"] = {
 		Name = "Dilettante 2",
@@ -463,8 +413,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["kanjo"] = {
 		Name = "Kanjo",
@@ -472,8 +421,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["issi2"] = {
 		Name = "Issi 2",
@@ -481,8 +429,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["issi3"] = {
 		Name = "Issi 3",
@@ -490,8 +437,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["issi4"] = {
 		Name = "Issi 4",
@@ -499,8 +445,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["issi5"] = {
 		Name = "Issi 5",
@@ -508,8 +453,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["issi6"] = {
 		Name = "Issi 6",
@@ -517,8 +461,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["panto"] = {
 		Name = "Panto",
@@ -526,8 +469,7 @@ local List = {
 		Price = 15000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["prairie"] = {
 		Name = "Prairie",
@@ -535,8 +477,7 @@ local List = {
 		Price = 15000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["rhapsody"] = {
 		Name = "Rhapsody",
@@ -544,8 +485,7 @@ local List = {
 		Price = 10000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["brioso2"] = {
 		Name = "Brioso 2",
@@ -553,8 +493,7 @@ local List = {
 		Price = 40000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["weevil"] = {
 		Name = "Weevil",
@@ -562,8 +501,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 
 	-- COUPES
@@ -573,8 +511,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["exemplar"] = {
 		Name = "Exemplar",
@@ -582,8 +519,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["f620"] = {
 		Name = "F620",
@@ -591,8 +527,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["felon"] = {
 		Name = "Felon",
@@ -600,8 +535,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["felon2"] = {
 		Name = "Felon 2",
@@ -609,8 +543,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["jackal"] = {
 		Name = "Jackal",
@@ -618,8 +551,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["oracle"] = {
 		Name = "Oracle",
@@ -627,8 +559,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["oracle2"] = {
 		Name = "Oracle 2",
@@ -636,8 +567,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["sentinel"] = {
 		Name = "Sentinel",
@@ -645,8 +575,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["sentinel2"] = {
 		Name = "Sentinel 2",
@@ -654,8 +583,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["windsor"] = {
 		Name = "Windsor",
@@ -663,8 +591,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["windsor2"] = {
 		Name = "Windsor 2",
@@ -672,8 +599,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["zion"] = {
 		Name = "Zion",
@@ -681,8 +607,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["zion2"] = {
 		Name = "Zion 2",
@@ -690,8 +615,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 	["previon"] = {
 		Name = "Previon",
@@ -699,8 +623,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês",
-		Type = "automobile"
+		Class = "Cupês"
 	},
 
 	-- CYCLES
@@ -710,8 +633,7 @@ local List = {
 		Price = 1000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Bicicletas",
-		Type = "bike"
+		Class = "Bicicletas"
 	},	
 	["cruiser"] = {
 		Name = "Cruiser",
@@ -719,8 +641,7 @@ local List = {
 		Price = 1000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Bicicletas",
-		Type = "bike"
+		Class = "Bicicletas"
 	},
 	["fixter"] = {
 		Name = "Fixter",
@@ -728,8 +649,7 @@ local List = {
 		Price = 1000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Bicicletas",
-		Type = "bike"
+		Class = "Bicicletas"
 	},
 	["scorcher"] = {
 		Name = "Scorcher",
@@ -737,8 +657,7 @@ local List = {
 		Price = 1000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Bicicletas",
-		Type = "bike"
+		Class = "Bicicletas"
 	},
 	["tribike"] = {
 		Name = "Tribike",
@@ -746,8 +665,7 @@ local List = {
 		Price = 1000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Bicicletas",
-		Type = "bike"
+		Class = "Bicicletas"
 	},
 	["tribike2"] = {
 		Name = "Tribike 2",
@@ -755,8 +673,7 @@ local List = {
 		Price = 1000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Bicicletas",
-		Type = "bike"
+		Class = "Bicicletas"
 	},
 	["tribike3"] = {
 		Name = "Tribike 3",
@@ -764,8 +681,7 @@ local List = {
 		Price = 1000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Bicicletas",
-		Type = "bike"
+		Class = "Bicicletas"
 	},
 
 	-- EMERGENCY
@@ -775,8 +691,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["fbi"] = {
 		Name = "Fbi",
@@ -784,8 +699,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["fbi2"] = {
 		Name = "Fbi 2",
@@ -793,8 +707,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["firetruk"] = {
 		Name = "Firetruk",
@@ -802,8 +715,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},	
 	["lguard"] = {
 		Name = "Lguard",
@@ -811,8 +723,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["pbus"] = {
 		Name = "Pbus",
@@ -820,8 +731,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["police"] = {
 		Name = "Police",
@@ -829,8 +739,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["police2"] = {
 		Name = "Police 2",
@@ -838,8 +747,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["police3"] = {
 		Name = "Police 3",
@@ -847,8 +755,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["police4"] = {
 		Name = "Police 4",
@@ -856,8 +763,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["policeb"] = {
 		Name = "Harley FLH1200",
@@ -865,8 +771,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "bike"
+		Class = "Emergência"
 	},
 	["polmav"] = {
 		Name = "Polmav",
@@ -874,8 +779,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "heli"
+		Class = "Emergência"
 	},
 	["policeold1"] = {
 		Name = "Policeold 1",
@@ -883,8 +787,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["policeold2"] = {
 		Name = "Policeold 2",
@@ -892,8 +795,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["policet"] = {
 		Name = "Police T",
@@ -901,8 +803,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["pranger"] = {
 		Name = "Pranger",
@@ -910,8 +811,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["predator"] = {
 		Name = "Predator",
@@ -919,8 +819,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["riot"] = {
 		Name = "Riot",
@@ -928,8 +827,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["riot2"] = {
 		Name = "Riot 2",
@@ -937,8 +835,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["sheriff"] = {
 		Name = "Sheriff",
@@ -946,8 +843,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 	["sheriff2"] = {
 		Name = "Sheriff 2",
@@ -955,8 +851,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência",
-		Type = "automobile"
+		Class = "Emergência"
 	},
 
 	-- HELICOPTERS
@@ -966,8 +861,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["annihilator"] = {
 		Name = "Annihilator",
@@ -975,8 +869,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["buzzard"] = {
 		Name = "Buzzard",
@@ -984,8 +877,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["buzzard2"] = {
 		Name = "Buzzard 2",
@@ -993,8 +885,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["cargobob"] = {
 		Name = "Cargobob",
@@ -1002,8 +893,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["cargobob2"] = {
 		Name = "Cargobob 2",
@@ -1011,8 +901,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["cargobob3"] = {
 		Name = "Cargobob 3",
@@ -1020,8 +909,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["cargobob4"] = {
 		Name = "Cargobob 4",
@@ -1029,8 +917,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["frogger"] = {
 		Name = "Frogger",
@@ -1038,8 +925,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["frogger2"] = {
 		Name = "Frogger 2",
@@ -1047,8 +933,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["havok"] = {
 		Name = "Havok",
@@ -1056,8 +941,7 @@ local List = {
 		Price = 262500,
 		Mode = "Work",
 		Gemstone = 7500,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["hunter"] = {
 		Name = "Hunter",
@@ -1065,8 +949,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["maverick"] = {
 		Name = "Maverick",
@@ -1074,8 +957,7 @@ local List = {
 		Price = 437500,
 		Mode = "Work",
 		Gemstone = 12500,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["savage"] = {
 		Name = "Savage",
@@ -1083,8 +965,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["seasparrow"] = {
 		Name = "Seasparrow",
@@ -1092,8 +973,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["skylift"] = {
 		Name = "Skylift",
@@ -1101,8 +981,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["supervolito"] = {
 		Name = "Supervolito",
@@ -1110,8 +989,7 @@ local List = {
 		Price = 437500,
 		Mode = "Work",
 		Gemstone = 12500,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["supervolito2"] = {
 		Name = "Supervolito 2",
@@ -1119,8 +997,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["swift"] = {
 		Name = "Swift",
@@ -1128,8 +1005,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["swift2"] = {
 		Name = "Swift 2",
@@ -1137,8 +1013,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["valkyrie"] = {
 		Name = "Valkyrie",
@@ -1146,8 +1021,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["valkyrie2"] = {
 		Name = "Valkyrie 2",
@@ -1155,8 +1029,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["volatus"] = {
 		Name = "Volatus",
@@ -1164,8 +1037,7 @@ local List = {
 		Price = 437500,
 		Mode = "Work",
 		Gemstone = 12500,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["annihilator2"] = {
 		Name = "Annihilator 2",
@@ -1173,8 +1045,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["seasparrow2"] = {
 		Name = "Seasparrow 2",
@@ -1182,8 +1053,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 	["seasparrow3"] = {
 		Name = "Seasparrow 3",
@@ -1191,8 +1061,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros",
-		Type = "heli"
+		Class = "Helicópteros"
 	},
 
 	-- INDUSTRIAL
@@ -1202,8 +1071,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["cutter"] = {
 		Name = "Cutter",
@@ -1211,8 +1079,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["dump"] = {
 		Name = "Dump",
@@ -1220,8 +1087,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["flatbed"] = {
 		Name = "Flatbed",
@@ -1229,8 +1095,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["guardian"] = {
 		Name = "Guardian",
@@ -1238,8 +1103,7 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["handler"] = {
 		Name = "Handler",
@@ -1247,8 +1111,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["mixer"] = {
 		Name = "Mixer",
@@ -1256,8 +1119,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["mixer2"] = {
 		Name = "Mixer 2",
@@ -1265,8 +1127,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["rubble"] = {
 		Name = "Rubble",
@@ -1274,8 +1135,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["tiptruck"] = {
 		Name = "Tiptruck",
@@ -1283,8 +1143,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 	["tiptruck2"] = {
 		Name = "Tiptruck 2",
@@ -1292,8 +1151,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais",
-		Type = "automobile"
+		Class = "Industriais"
 	},
 
 	-- MILITARY
@@ -1303,8 +1161,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["barracks"] = {
 		Name = "Barracks",
@@ -1312,8 +1169,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["barracks2"] = {
 		Name = "Barracks 2",
@@ -1321,8 +1177,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["barracks3"] = {
 		Name = "Barracks 3",
@@ -1330,8 +1185,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["barrage"] = {
 		Name = "Barrage",
@@ -1339,8 +1193,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["chernobog"] = {
 		Name = "Chernobog",
@@ -1348,8 +1201,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["crusader"] = {
 		Name = "Crusader",
@@ -1357,8 +1209,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["halftrack"] = {
 		Name = "Halftrack",
@@ -1366,8 +1217,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["khanjali"] = {
 		Name = "Khanjali",
@@ -1375,8 +1225,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["minitank"] = {
 		Name = "Minitank",
@@ -1384,8 +1233,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["rhino"] = {
 		Name = "Rhino",
@@ -1393,8 +1241,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["scarab"] = {
 		Name = "Scarab",
@@ -1402,8 +1249,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["scarab2"] = {
 		Name = "Scarab 2",
@@ -1411,8 +1257,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["scarab3"] = {
 		Name = "Scarab 3",
@@ -1420,8 +1265,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["thruster"] = {
 		Name = "Thruster",
@@ -1429,8 +1273,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["trailersmall2"] = {
 		Name = "Trailersmall 2",
@@ -1438,8 +1281,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 	["vetir"] = {
 		Name = "Vetir",
@@ -1447,8 +1289,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares",
-		Type = "automobile"
+		Class = "Militares"
 	},
 
 	-- BIKES
@@ -1458,8 +1299,7 @@ local List = {
 		Price = 240000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["avarus"] = {
 		Name = "Avarus",
@@ -1467,8 +1307,7 @@ local List = {
 		Price = 120000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["bagger"] = {
 		Name = "Bagger",
@@ -1476,8 +1315,7 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["bati"] = {
 		Name = "Bati",
@@ -1485,8 +1323,7 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["bati2"] = {
 		Name = "Bati 2",
@@ -1494,8 +1331,7 @@ local List = {
 		Price = 240000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["bf400"] = {
 		Name = "Bf400",
@@ -1503,8 +1339,7 @@ local List = {
 		Price = 200000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["carbonrs"] = {
 		Name = "Carbon RS",
@@ -1512,8 +1347,7 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["chimera"] = {
 		Name = "Chimera",
@@ -1521,8 +1355,7 @@ local List = {
 		Price = 130000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["cliffhanger"] = {
 		Name = "Cliffhanger",
@@ -1530,8 +1363,7 @@ local List = {
 		Price = 200000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["daemon"] = {
 		Name = "Daemon",
@@ -1539,8 +1371,7 @@ local List = {
 		Price = 140000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["daemon2"] = {
 		Name = "Daemon 2",
@@ -1548,8 +1379,7 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["defiler"] = {
 		Name = "Defiler",
@@ -1557,8 +1387,7 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["deathbike"] = {
 		Name = "Deathbike",
@@ -1566,8 +1395,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["deathbike2"] = {
 		Name = "Deathbike 2",
@@ -1575,8 +1403,7 @@ local List = {
 		Price = 65000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["deathbike3"] = {
 		Name = "Deathbike 3",
@@ -1584,8 +1411,7 @@ local List = {
 		Price = 65000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["diablous"] = {
 		Name = "Diablous",
@@ -1593,8 +1419,7 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["diablous2"] = {
 		Name = "Diablous 2",
@@ -1602,8 +1427,7 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["double"] = {
 		Name = "Double",
@@ -1611,8 +1435,7 @@ local List = {
 		Price = 200000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["enduro"] = {
 		Name = "Enduro",
@@ -1620,8 +1443,7 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["esskey"] = {
 		Name = "Esskey",
@@ -1629,8 +1451,7 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["faggio"] = {
 		Name = "Faggio",
@@ -1638,8 +1459,7 @@ local List = {
 		Price = 2000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["faggio2"] = {
 		Name = "Faggio 2",
@@ -1647,8 +1467,7 @@ local List = {
 		Price = 2000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["faggio3"] = {
 		Name = "Faggio 3",
@@ -1656,8 +1475,7 @@ local List = {
 		Price = 2000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["fcr"] = {
 		Name = "Fcr",
@@ -1665,8 +1483,7 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["fcr2"] = {
 		Name = "Fcr 2",
@@ -1674,8 +1491,7 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["gargoyle"] = {
 		Name = "Gargoyle",
@@ -1683,8 +1499,7 @@ local List = {
 		Price = 230000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["hakuchou"] = {
 		Name = "Hakuchou",
@@ -1692,8 +1507,7 @@ local List = {
 		Price = 240000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["hakuchou2"] = {
 		Name = "Hakuchou 2",
@@ -1701,8 +1515,7 @@ local List = {
 		Price = 270000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["hexer"] = {
 		Name = "Hexer",
@@ -1710,8 +1523,7 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["innovation"] = {
 		Name = "Innovation",
@@ -1719,8 +1531,7 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["lectro"] = {
 		Name = "Lectro",
@@ -1728,8 +1539,7 @@ local List = {
 		Price = 120000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["manchez"] = {
 		Name = "Manchez",
@@ -1737,8 +1547,7 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["manchez3"] = {
 		Name = "manchez3",
@@ -1746,8 +1555,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["nemesis"] = {
 		Name = "Nemesis",
@@ -1755,8 +1563,7 @@ local List = {
 		Price = 140000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["nightblade"] = {
 		Name = "Nightblade",
@@ -1764,8 +1571,7 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["oppressor"] = {
 		Name = "Oppressor",
@@ -1773,8 +1579,7 @@ local List = {
 		Price = 130000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["oppressor2"] = {
 		Name = "Oppressor 2",
@@ -1782,8 +1587,7 @@ local List = {
 		Price = 130000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["pcj"] = {
 		Name = "Pcj",
@@ -1791,8 +1595,7 @@ local List = {
 		Price = 100000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["powersurge"] = {
 		Name = "powersurge",
@@ -1800,8 +1603,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["ratbike"] = {
 		Name = "Ratbike",
@@ -1809,8 +1611,7 @@ local List = {
 		Price = 110000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["ruffian"] = {
 		Name = "Ruffian",
@@ -1818,8 +1619,7 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["rrocket"] = {
 		Name = "Rrocket",
@@ -1827,8 +1627,7 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["sanchez"] = {
 		Name = "Sanchez",
@@ -1836,8 +1635,7 @@ local List = {
 		Price = 140000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["sanchez2"] = {
 		Name = "Sanchez 2",
@@ -1845,8 +1643,7 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["sanctus"] = {
 		Name = "Sanctus",
@@ -1854,8 +1651,7 @@ local List = {
 		Price = 190000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["shotaro"] = {
 		Name = "Shotaro",
@@ -1863,8 +1659,7 @@ local List = {
 		Price = 180000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["sovereign"] = {
 		Name = "Sovereign",
@@ -1872,8 +1667,7 @@ local List = {
 		Price = 180000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["stryder"] = {
 		Name = "Stryder",
@@ -1881,8 +1675,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["thrust"] = {
 		Name = "Thrust",
@@ -1890,8 +1683,7 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["vader"] = {
 		Name = "Vader",
@@ -1899,8 +1691,7 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["vindicator"] = {
 		Name = "Vindicator",
@@ -1908,8 +1699,7 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["vortex"] = {
 		Name = "Vortex",
@@ -1917,8 +1707,7 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["wolfsbane"] = {
 		Name = "Wolfsbane",
@@ -1926,8 +1715,7 @@ local List = {
 		Price = 100000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["zombiea"] = {
 		Name = "Zombie A",
@@ -1935,8 +1723,7 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["zombieb"] = {
 		Name = "Zombie B",
@@ -1944,8 +1731,7 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 	["manchez2"] = {
 		Name = "Manchez 2",
@@ -1953,8 +1739,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas",
-		Type = "bike"
+		Class = "Motocicletas"
 	},
 
 	-- MUSCLES
@@ -1964,8 +1749,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["broadway"] = {
 		Name = "broadway",
@@ -1973,8 +1757,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["buccaneer"] = {
 		Name = "Buccaneer",
@@ -1982,8 +1765,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["buccaneer2"] = {
 		Name = "Buccaneer 2",
@@ -1991,8 +1773,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["chino"] = {
 		Name = "Chino",
@@ -2000,8 +1781,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["chino2"] = {
 		Name = "Chino 2",
@@ -2009,8 +1789,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["clique"] = {
 		Name = "Clique",
@@ -2018,8 +1797,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["coquette3"] = {
 		Name = "Coquette 3",
@@ -2027,8 +1805,7 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["deviant"] = {
 		Name = "Deviant",
@@ -2036,8 +1813,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["dominator"] = {
 		Name = "Dominator",
@@ -2045,8 +1821,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["dominator2"] = {
 		Name = "Dominator 2",
@@ -2054,8 +1829,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["dominator3"] = {
 		Name = "Dominator 3",
@@ -2063,8 +1837,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},	
 	["dominator4"] = {
 		Name = "Dominator 4",
@@ -2072,8 +1845,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["dominator5"] = {
 		Name = "Dominator 5",
@@ -2081,8 +1853,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["dominator6"] = {
 		Name = "Dominator 6",
@@ -2090,8 +1861,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["dukes"] = {
 		Name = "Dukes",
@@ -2099,8 +1869,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["dukes2"] = {
 		Name = "Dukes 2",
@@ -2108,8 +1877,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["dukes3"] = {
 		Name = "Dukes 3",
@@ -2117,8 +1885,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["faction"] = {
 		Name = "Faction",
@@ -2126,8 +1893,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["faction2"] = {
 		Name = "Faction 2",
@@ -2135,8 +1901,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["faction3"] = {
 		Name = "Faction 3",
@@ -2144,8 +1909,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["ellie"] = {
 		Name = "Ellie",
@@ -2153,8 +1917,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["eudora"] = {
 		Name = "eudora",
@@ -2162,8 +1925,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["gauntlet"] = {
 		Name = "Gauntlet",
@@ -2171,8 +1933,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["gauntlet2"] = {
 		Name = "Gauntlet 2",
@@ -2180,8 +1941,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["gauntlet3"] = {
 		Name = "Gauntlet 3",
@@ -2189,8 +1949,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["gauntlet4"] = {
 		Name = "Gauntlet 4",
@@ -2198,8 +1957,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["gauntlet5"] = {
 		Name = "Gauntlet 5",
@@ -2207,8 +1965,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["hermes"] = {
 		Name = "Hermes",
@@ -2216,8 +1973,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["hotknife"] = {
 		Name = "Hotknife",
@@ -2225,8 +1981,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["hustler"] = {
 		Name = "Hustler",
@@ -2234,8 +1989,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["impaler"] = {
 		Name = "Impaler",
@@ -2243,8 +1997,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["impaler2"] = {
 		Name = "Impaler 2",
@@ -2252,8 +2005,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["impaler3"] = {
 		Name = "Impaler 3",
@@ -2261,8 +2013,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["impaler4"] = {
 		Name = "Impaler 4",
@@ -2270,8 +2021,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["imperator"] = {
 		Name = "Imperator",
@@ -2279,8 +2029,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["imperator2"] = {
 		Name = "Imperator 2",
@@ -2288,8 +2037,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["imperator3"] = {
 		Name = "Imperator 3",
@@ -2297,8 +2045,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["lurcher"] = {
 		Name = "Lurcher",
@@ -2306,8 +2053,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["moonbeam"] = {
 		Name = "Moonbeam",
@@ -2315,8 +2061,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["moonbeam2"] = {
 		Name = "Moonbeam 2",
@@ -2324,8 +2069,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["nightshade"] = {
 		Name = "Nightshade",
@@ -2333,8 +2077,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["peyote2"] = {
 		Name = "Peyote 2",
@@ -2342,8 +2085,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["phoenix"] = {
 		Name = "Phoenix",
@@ -2351,8 +2093,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["picador"] = {
 		Name = "Picador",
@@ -2360,8 +2101,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["ratloader"] = {
 		Name = "Ratloader",
@@ -2369,8 +2109,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["ratloader2"] = {
 		Name = "Ratloader 2",
@@ -2378,8 +2117,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["ruiner"] = {
 		Name = "Ruiner",
@@ -2387,8 +2125,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["ruiner2"] = {
 		Name = "Ruiner 2",
@@ -2396,8 +2133,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["ruiner3"] = {
 		Name = "Ruiner 3",
@@ -2405,8 +2141,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["sabregt"] = {
 		Name = "Sabre GT",
@@ -2414,8 +2149,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["sabregt2"] = {
 		Name = "Sabregt 2",
@@ -2423,8 +2157,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["slamvan"] = {
 		Name = "Slamvan",
@@ -2432,8 +2165,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["slamvan2"] = {
 		Name = "Slamvan 2",
@@ -2441,8 +2173,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["slamvan3"] = {
 		Name = "Slamvan 3",
@@ -2450,8 +2181,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["slamvan4"] = {
 		Name = "Slamvan 4",
@@ -2459,8 +2189,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["slamvan5"] = {
 		Name = "Slamvan 5",
@@ -2468,8 +2197,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["slamvan6"] = {
 		Name = "Slamvan 6",
@@ -2477,8 +2205,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["stalion"] = {
 		Name = "Stalion",
@@ -2486,8 +2213,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["stalion2"] = {
 		Name = "Stalion 2",
@@ -2495,8 +2221,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["tahoma"] = {
 		Name = "tahoma",
@@ -2504,8 +2229,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["tampa"] = {
 		Name = "Tampa",
@@ -2513,8 +2237,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["tampa3"] = {
 		Name = "Tampa 3",
@@ -2522,8 +2245,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["tulip"] = {
 		Name = "Tulip",
@@ -2531,8 +2253,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["tulip2"] = {
 		Name = "tulip2",
@@ -2540,8 +2261,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["vamos"] = {
 		Name = "Vamos",
@@ -2549,8 +2269,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["vigero"] = {
 		Name = "Vigero",
@@ -2558,8 +2277,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["virgo"] = {
 		Name = "Virgo",
@@ -2567,8 +2285,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["virgo2"] = {
 		Name = "Virgo 2",
@@ -2576,8 +2293,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["virgo3"] = {
 		Name = "Virgo 3",
@@ -2585,8 +2301,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["voodoo"] = {
 		Name = "Voodoo",
@@ -2594,8 +2309,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["voodoo2"] = {
 		Name = "Voodoo 2",
@@ -2603,8 +2317,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["yosemite"] = {
 		Name = "Yosemite",
@@ -2612,8 +2325,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["yosemite2"] = {
 		Name = "Yosemite 2",
@@ -2621,8 +2333,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["yosemite3"] = {
 		Name = "Yosemite 3",
@@ -2630,8 +2341,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["dominator7"] = {
 		Name = "Dominator 7",
@@ -2639,8 +2349,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 
 	-- OFF-ROADS
@@ -2650,8 +2359,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["bifta"] = {
 		Name = "Bifta",
@@ -2659,8 +2367,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["blazer"] = {
 		Name = "Blazer",
@@ -2668,8 +2375,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["blazer2"] = {
 		Name = "Blazer 2",
@@ -2677,8 +2383,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["blazer3"] = {
 		Name = "Blazer 3",
@@ -2686,8 +2391,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["blazer4"] = {
 		Name = "Blazer 4",
@@ -2695,8 +2399,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["blazer5"] = {
 		Name = "Blazer 5",
@@ -2704,8 +2407,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["bodhi2"] = {
 		Name = "Bodhi 2",
@@ -2713,8 +2415,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["brawler"] = {
 		Name = "Brawler",
@@ -2722,8 +2423,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["bruiser"] = {
 		Name = "Bruiser",
@@ -2731,8 +2431,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["bruiser2"] = {
 		Name = "Bruiser 2",
@@ -2740,8 +2439,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["bruiser3"] = {
 		Name = "Bruiser 3",
@@ -2749,8 +2447,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["brutus"] = {
 		Name = "Brutus",
@@ -2758,8 +2455,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["brutus2"] = {
 		Name = "Brutus 2",
@@ -2767,8 +2463,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["brutus3"] = {
 		Name = "Brutus 3",
@@ -2776,8 +2471,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["caracara"] = {
 		Name = "Caracara",
@@ -2785,8 +2479,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["caracara2"] = {
 		Name = "Caracara 2",
@@ -2794,8 +2487,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["dloader"] = {
 		Name = "Dloader",
@@ -2803,8 +2495,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["dubsta3"] = {
 		Name = "Dubsta 3",
@@ -2812,8 +2503,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["dune"] = {
 		Name = "Dune",
@@ -2821,8 +2511,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["dune2"] = {
 		Name = "Dune 2",
@@ -2830,8 +2519,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["dune3"] = {
 		Name = "Dune 3",
@@ -2839,8 +2527,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["dune4"] = {
 		Name = "Dune 4",
@@ -2848,8 +2535,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["dune5"] = {
 		Name = "Dune 5",
@@ -2857,8 +2543,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["everon"] = {
 		Name = "Everon",
@@ -2866,8 +2551,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["freecrawler"] = {
 		Name = "Freecrawler",
@@ -2875,8 +2559,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["hellion"] = {
 		Name = "Hellion",
@@ -2884,8 +2567,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["insurgent"] = {
 		Name = "Insurgent",
@@ -2893,8 +2575,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["insurgent2"] = {
 		Name = "Insurgent 2",
@@ -2902,8 +2583,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["insurgent3"] = {
 		Name = "Insurgent 3",
@@ -2911,8 +2591,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["kalahari"] = {
 		Name = "Kalahari",
@@ -2920,8 +2599,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["kamacho"] = {
 		Name = "Kamacho",
@@ -2929,8 +2607,7 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["marshall"] = {
 		Name = "Marshall",
@@ -2938,8 +2615,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["mesa3"] = {
 		Name = "Mesa 3",
@@ -2947,8 +2623,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["monster"] = {
 		Name = "Monster",
@@ -2956,8 +2631,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["monster3"] = {
 		Name = "Monster 3",
@@ -2965,8 +2639,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["monster4"] = {
 		Name = "Monster 4",
@@ -2974,8 +2647,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["monster5"] = {
 		Name = "Monster 5",
@@ -2983,8 +2655,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["menacer"] = {
 		Name = "Menacer",
@@ -2992,8 +2663,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["outlaw"] = {
 		Name = "Outlaw",
@@ -3001,8 +2671,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["nightshark"] = {
 		Name = "Nightshark",
@@ -3010,8 +2679,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},	
 	["rancherxl"] = {
 		Name = "Rancher XL",
@@ -3019,8 +2687,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["rancherxl2"] = {
 		Name = "Rancher XL2",
@@ -3028,8 +2695,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["rebel"] = {
 		Name = "Rebel",
@@ -3037,8 +2703,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["rebel2"] = {
 		Name = "Rebel 2",
@@ -3046,8 +2711,7 @@ local List = {
 		Price = 85000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["rcbandito"] = {
 		Name = "RC Bandito",
@@ -3055,8 +2719,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["riata"] = {
 		Name = "Riata",
@@ -3064,8 +2727,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["sandking"] = {
 		Name = "Sandking",
@@ -3073,8 +2735,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["sandking2"] = {
 		Name = "Sandking 2",
@@ -3082,8 +2743,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["technical"] = {
 		Name = "Technical",
@@ -3091,8 +2751,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["technical2"] = {
 		Name = "Technical 2",
@@ -3100,8 +2759,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["technical3"] = {
 		Name = "Technical 3",
@@ -3109,8 +2767,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["trophytruck"] = {
 		Name = "Trophytruck",
@@ -3118,8 +2775,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["trophytruck2"] = {
 		Name = "Trophytruck 2",
@@ -3127,8 +2783,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["vagrant"] = {
 		Name = "Vagrant",
@@ -3136,8 +2791,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["zhaba"] = {
 		Name = "Zhaba",
@@ -3145,8 +2799,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["verus"] = {
 		Name = "Verus",
@@ -3154,8 +2807,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["winky"] = {
 		Name = "Winky",
@@ -3163,8 +2815,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 
 	-- OPEN WHEELS
@@ -3174,8 +2825,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Formula 1",
-		Type = "automobile"
+		Class = "Formula 1"
 	},
 	["formula2"] = {
 		Name = "Formula 2",
@@ -3183,8 +2833,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Formula 1",
-		Type = "automobile"
+		Class = "Formula 1"
 	},
 	["openwheel1"] = {
 		Name = "Openwheel 1",
@@ -3192,8 +2841,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Formula 1",
-		Type = "automobile"
+		Class = "Formula 1"
 	},
 	["openwheel2"] = {
 		Name = "Openwheel 2",
@@ -3201,8 +2849,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Formula 1",
-		Type = "automobile"
+		Class = "Formula 1"
 	},
 
 	-- PLANES
@@ -3212,8 +2859,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["avenger"] = {
 		Name = "Avenger",
@@ -3221,8 +2867,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["avenger2"] = {
 		Name = "Avenger 2",
@@ -3230,8 +2875,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["besra"] = {
 		Name = "Besra",
@@ -3239,8 +2883,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["blimp"] = {
 		Name = "Blimp",
@@ -3248,8 +2891,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["blimp2"] = {
 		Name = "Blimp 2",
@@ -3257,8 +2899,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["blimp3"] = {
 		Name = "Blimp 3",
@@ -3266,8 +2907,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["bombushka"] = {
 		Name = "Bombushka",
@@ -3275,8 +2915,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["cargoplane"] = {
 		Name = "Cargoplane",
@@ -3284,8 +2923,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["cargoplane2"] = {
 		Name = "cargoplane2",
@@ -3293,8 +2931,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["cuban800"] = {
 		Name = "Cuban800",
@@ -3302,8 +2939,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["dodo"] = {
 		Name = "Dodo",
@@ -3311,8 +2947,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["duster"] = {
 		Name = "Duster",
@@ -3320,8 +2955,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["howard"] = {
 		Name = "Howard",
@@ -3329,8 +2963,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["hydra"] = {
 		Name = "Hydra",
@@ -3338,8 +2971,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["jet"] = {
 		Name = "Jet",
@@ -3347,8 +2979,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["lazer"] = {
 		Name = "Lazer",
@@ -3356,8 +2987,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["luxor"] = {
 		Name = "Luxor",
@@ -3365,8 +2995,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["luxor2"] = {
 		Name = "Luxor 2",
@@ -3374,8 +3003,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["mammatus"] = {
 		Name = "Mammatus",
@@ -3383,8 +3011,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["microlight"] = {
 		Name = "Microlight",
@@ -3392,8 +3019,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["miljet"] = {
 		Name = "Miljet",
@@ -3401,8 +3027,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["mogul"] = {
 		Name = "Mogul",
@@ -3410,8 +3035,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["molotok"] = {
 		Name = "Molotok",
@@ -3419,8 +3043,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["nimbus"] = {
 		Name = "Nimbus",
@@ -3428,8 +3051,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["nokota"] = {
 		Name = "Nokota",
@@ -3437,8 +3059,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["pyro"] = {
 		Name = "Pyro",
@@ -3446,8 +3067,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["rogue"] = {
 		Name = "Rogue",
@@ -3455,8 +3075,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["seabreeze"] = {
 		Name = "Seabreeze",
@@ -3464,8 +3083,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["shamal"] = {
 		Name = "Shamal",
@@ -3473,8 +3091,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["starling"] = {
 		Name = "Starling",
@@ -3482,8 +3099,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["strikeforce"] = {
 		Name = "Strikeforce",
@@ -3491,8 +3107,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["stunt"] = {
 		Name = "Stunt",
@@ -3500,8 +3115,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["titan"] = {
 		Name = "Titan",
@@ -3509,8 +3123,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["tula"] = {
 		Name = "Tula",
@@ -3518,8 +3131,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["velum"] = {
 		Name = "Velum",
@@ -3527,8 +3139,7 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["velum2"] = {
 		Name = "Velum 2",
@@ -3536,8 +3147,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["vestra"] = {
 		Name = "Vestra",
@@ -3545,8 +3155,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["volatol"] = {
 		Name = "Volatol",
@@ -3554,8 +3163,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 	["alkonost"] = {
 		Name = "Alkonost",
@@ -3563,8 +3171,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões",
-		Type = "plane"
+		Class = "Aviões"
 	},
 
 	-- SUVS
@@ -3574,8 +3181,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["baller2"] = {
 		Name = "Baller 2",
@@ -3583,8 +3189,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["baller3"] = {
 		Name = "Baller 3",
@@ -3592,8 +3197,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["baller4"] = {
 		Name = "Baller 4",
@@ -3601,8 +3205,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["baller5"] = {
 		Name = "Baller 5",
@@ -3610,8 +3213,7 @@ local List = {
 		Price = 400000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["baller6"] = {
 		Name = "Baller 6",
@@ -3619,8 +3221,7 @@ local List = {
 		Price = 410000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["bjxl"] = {
 		Name = "Bjxl",
@@ -3628,8 +3229,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["cavalcade"] = {
 		Name = "Cavalcade",
@@ -3637,8 +3237,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["cavalcade2"] = {
 		Name = "Cavalcade 2",
@@ -3646,8 +3245,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["contender"] = {
 		Name = "Contender",
@@ -3655,8 +3253,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["dubsta"] = {
 		Name = "Dubsta",
@@ -3664,8 +3261,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["dubsta2"] = {
 		Name = "Dubsta 2",
@@ -3673,8 +3269,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["fq2"] = {
 		Name = "Fq2",
@@ -3682,8 +3277,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["granger"] = {
 		Name = "Granger",
@@ -3691,8 +3285,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["gresley"] = {
 		Name = "Gresley",
@@ -3700,8 +3293,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["habanero"] = {
 		Name = "Habanero",
@@ -3709,8 +3301,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["huntley"] = {
 		Name = "Huntley",
@@ -3718,8 +3309,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["issi8"] = {
 		Name = "issi8",
@@ -3727,8 +3317,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["landstalker"] = {
 		Name = "Landstalker",
@@ -3736,8 +3325,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["landstalker2"] = {
 		Name = "Landstalker 2",
@@ -3745,8 +3333,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["mesa"] = {
 		Name = "Mesa",
@@ -3754,8 +3341,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["mesa2"] = {
 		Name = "Mesa 2",
@@ -3763,8 +3349,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["novak"] = {
 		Name = "Novak",
@@ -3772,8 +3357,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["patriot"] = {
 		Name = "Patriot",
@@ -3781,8 +3365,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["patriot2"] = {
 		Name = "Patriot 2",
@@ -3790,8 +3373,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["radi"] = {
 		Name = "Radi",
@@ -3799,8 +3381,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["rebla"] = {
 		Name = "Rebla",
@@ -3808,8 +3389,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["rocoto"] = {
 		Name = "Rocoto",
@@ -3817,8 +3397,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["seminole"] = {
 		Name = "Seminole",
@@ -3826,8 +3405,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["seminole2"] = {
 		Name = "Seminole 2",
@@ -3835,8 +3413,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["serrano"] = {
 		Name = "Serrano",
@@ -3844,8 +3421,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["toros"] = {
 		Name = "Toros",
@@ -3853,8 +3429,7 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["xls"] = {
 		Name = "Xls",
@@ -3862,8 +3437,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["xls2"] = {
 		Name = "Xls 2",
@@ -3871,8 +3445,7 @@ local List = {
 		Price = 410000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["squaddie"] = {
 		Name = "Squaddie",
@@ -3880,8 +3453,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 
 	-- SEDANS
@@ -3891,8 +3463,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["asea2"] = {
 		Name = "Asea 2",
@@ -3900,8 +3471,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["asterope"] = {
 		Name = "Asterope",
@@ -3909,8 +3479,7 @@ local List = {
 		Price = 30000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["cog55"] = {
 		Name = "Cog55",
@@ -3918,8 +3487,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["cog552"] = {
 		Name = "Cog55 2",
@@ -3927,8 +3495,7 @@ local List = {
 		Price = 410000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["cognoscenti"] = {
 		Name = "Cognoscenti",
@@ -3936,8 +3503,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["cognoscenti2"] = {
 		Name = "Cognoscenti 2",
@@ -3945,8 +3511,7 @@ local List = {
 		Price = 400000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["emperor"] = {
 		Name = "Emperor",
@@ -3954,8 +3519,7 @@ local List = {
 		Price = 5000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["emperor2"] = {
 		Name = "Emperor 2",
@@ -3963,8 +3527,7 @@ local List = {
 		Price = 2000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["emperor3"] = {
 		Name = "Emperor 3",
@@ -3972,8 +3535,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["fugitive"] = {
 		Name = "Fugitive",
@@ -3981,8 +3543,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["glendale"] = {
 		Name = "Glendale",
@@ -3990,8 +3551,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["glendale2"] = {
 		Name = "Glendale 2",
@@ -3999,8 +3559,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["ingot"] = {
 		Name = "Ingot",
@@ -4008,8 +3567,7 @@ local List = {
 		Price = 15000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["intruder"] = {
 		Name = "Intruder",
@@ -4017,8 +3575,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["limo2"] = {
 		Name = "Limo 2",
@@ -4026,8 +3583,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["premier"] = {
 		Name = "Premier",
@@ -4035,8 +3591,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["primo"] = {
 		Name = "Primo",
@@ -4044,8 +3599,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["primo2"] = {
 		Name = "Primo 2",
@@ -4053,8 +3607,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["regina"] = {
 		Name = "Regina",
@@ -4062,8 +3615,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["romero"] = {
 		Name = "Romero",
@@ -4071,8 +3623,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["stafford"] = {
 		Name = "Stafford",
@@ -4080,8 +3631,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["stanier"] = {
 		Name = "Stanier",
@@ -4089,8 +3639,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["stratum"] = {
 		Name = "Stratum",
@@ -4098,8 +3647,7 @@ local List = {
 		Price = 40000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["stretch"] = {
 		Name = "Stretch",
@@ -4107,8 +3655,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["superd"] = {
 		Name = "Superd",
@@ -4116,8 +3663,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["surge"] = {
 		Name = "Surge",
@@ -4125,8 +3671,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["tailgater"] = {
 		Name = "Tailgater",
@@ -4134,8 +3679,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["warrener"] = {
 		Name = "Warrener",
@@ -4143,8 +3687,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["washington"] = {
 		Name = "Washington",
@@ -4152,8 +3695,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 	["tailgater2"] = {
 		Name = "Tailgater 2",
@@ -4161,8 +3703,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans",
-		Type = "automobile"
+		Class = "Sedans"
 	},
 
 	-- SERVICES
@@ -4172,8 +3713,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["brickade"] = {
 		Name = "Brickade",
@@ -4181,8 +3721,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["bus"] = {
 		Name = "Bus",
@@ -4190,8 +3729,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["coach"] = {
 		Name = "Coach",
@@ -4199,8 +3737,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["pbus2"] = {
 		Name = "Pbus 2",
@@ -4208,8 +3745,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["rallytruck"] = {
 		Name = "Rally Truck",
@@ -4217,8 +3753,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["rentalbus"] = {
 		Name = "Rental Bus",
@@ -4226,8 +3761,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["taxi"] = {
 		Name = "Taxi",
@@ -4235,8 +3769,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["tourbus"] = {
 		Name = "Tour Bus",
@@ -4244,8 +3777,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["trash"] = {
 		Name = "Trash",
@@ -4253,8 +3785,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["trash2"] = {
 		Name = "Trash 2",
@@ -4262,8 +3793,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["wastelander"] = {
 		Name = "Wastelander",
@@ -4271,8 +3801,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 
 	-- SPORTS
@@ -4282,8 +3811,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["banshee"] = {
 		Name = "Banshee",
@@ -4291,8 +3819,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["bestiagts"] = {
 		Name = "Bestia GTS",
@@ -4300,8 +3827,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["blista2"] = {
 		Name = "Blista 2",
@@ -4309,8 +3835,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["blista3"] = {
 		Name = "Blista 3",
@@ -4318,8 +3843,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["buffalo"] = {
 		Name = "Buffalo",
@@ -4327,8 +3851,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["buffalo2"] = {
 		Name = "Buffalo 2",
@@ -4336,8 +3859,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["buffalo3"] = {
 		Name = "Buffalo 3",
@@ -4345,8 +3867,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["carbonizzare"] = {
 		Name = "Carbonizzare",
@@ -4354,8 +3875,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["comet2"] = {
 		Name = "Comet 2",
@@ -4363,8 +3883,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["comet3"] = {
 		Name = "Comet 3",
@@ -4372,8 +3891,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["comet4"] = {
 		Name = "Comet 4",
@@ -4381,8 +3899,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["comet5"] = {
 		Name = "Comet 5",
@@ -4390,8 +3907,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["coquette"] = {
 		Name = "Coquette",
@@ -4399,8 +3915,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["coquette4"] = {
 		Name = "Coquette 4",
@@ -4408,8 +3923,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["drafter"] = {
 		Name = "Drafter",
@@ -4417,8 +3931,7 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["deveste"] = {
 		Name = "Deveste",
@@ -4426,8 +3939,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["elegy"] = {
 		Name = "Elegy",
@@ -4435,8 +3947,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["elegy2"] = {
 		Name = "Elegy 2",
@@ -4444,8 +3955,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["everon2"] = {
 		Name = "Everon2",
@@ -4453,8 +3963,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["feltzer2"] = {
 		Name = "Feltzer 2",
@@ -4462,8 +3971,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["flashgt"] = {
 		Name = "Flash GT",
@@ -4471,8 +3979,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["furoregt"] = {
 		Name = "Furore GT",
@@ -4480,8 +3987,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["fusilade"] = {
 		Name = "Fusilade",
@@ -4489,8 +3995,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["futo"] = {
 		Name = "Futo",
@@ -4498,8 +4003,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["gb200"] = {
 		Name = "Gb200",
@@ -4507,8 +4011,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["hotring"] = {
 		Name = "Hotring",
@@ -4516,8 +4019,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["komoda"] = {
 		Name = "Komoda",
@@ -4525,8 +4027,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["imorgon"] = {
 		Name = "Imorgon",
@@ -4534,8 +4035,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["issi7"] = {
 		Name = "Issi 7",
@@ -4543,8 +4043,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["italigto"] = {
 		Name = "Itali GTO",
@@ -4552,8 +4051,7 @@ local List = {
 		Price = 220000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["jugular"] = {
 		Name = "Jugular",
@@ -4561,8 +4059,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["jester"] = {
 		Name = "Jester",
@@ -4570,8 +4067,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["jester2"] = {
 		Name = "Jester 2",
@@ -4579,8 +4075,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["jester3"] = {
 		Name = "Jester 3",
@@ -4588,8 +4083,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["khamelion"] = {
 		Name = "Khamelion",
@@ -4597,8 +4091,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["kuruma"] = {
 		Name = "Kuruma",
@@ -4606,8 +4099,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["kuruma2"] = {
 		Name = "Kuruma 2",
@@ -4615,8 +4107,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["locust"] = {
 		Name = "Locust",
@@ -4624,8 +4115,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["lynx"] = {
 		Name = "Lynx",
@@ -4633,8 +4123,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["massacro"] = {
 		Name = "Massacro",
@@ -4642,8 +4131,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["massacro2"] = {
 		Name = "Massacro 2",
@@ -4651,8 +4139,7 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["neo"] = {
 		Name = "Neo",
@@ -4660,8 +4147,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["neon"] = {
 		Name = "Neon",
@@ -4669,8 +4155,7 @@ local List = {
 		Price = 230000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["ninef"] = {
 		Name = "Ninef",
@@ -4678,8 +4163,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["ninef2"] = {
 		Name = "Ninef 2",
@@ -4687,8 +4171,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["omnis"] = {
 		Name = "Omnis",
@@ -4696,8 +4179,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["paragon"] = {
 		Name = "Paragon",
@@ -4705,8 +4187,7 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["paragon2"] = {
 		Name = "Paragon 2",
@@ -4714,8 +4195,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["pariah"] = {
 		Name = "Pariah",
@@ -4723,8 +4203,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["panthere"] = {
 		Name = "panthere",
@@ -4732,8 +4211,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["penumbra"] = {
 		Name = "Penumbra",
@@ -4741,8 +4219,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["penumbra2"] = {
 		Name = "Penumbra 2",
@@ -4750,8 +4227,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["r300"] = {
 		Name = "r300",
@@ -4759,8 +4235,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["raiden"] = {
 		Name = "Raiden",
@@ -4768,8 +4243,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["rapidgt"] = {
 		Name = "Rapid GT",
@@ -4777,8 +4251,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["rapidgt2"] = {
 		Name = "Rapidgt GT2",
@@ -4786,8 +4259,7 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["raptor"] = {
 		Name = "Raptor",
@@ -4795,8 +4267,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["revolter"] = {
 		Name = "Revolter",
@@ -4804,8 +4275,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["ruston"] = {
 		Name = "Ruston",
@@ -4813,8 +4283,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["schafter2"] = {
 		Name = "Schafter 2",
@@ -4822,8 +4291,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["schafter3"] = {
 		Name = "Schafter 3",
@@ -4831,8 +4299,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["schafter4"] = {
 		Name = "Schafter 4",
@@ -4840,8 +4307,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["schafter5"] = {
 		Name = "Schafter 5",
@@ -4849,8 +4315,7 @@ local List = {
 		Price = 400000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["schafter6"] = {
 		Name = "Schafter 6",
@@ -4858,8 +4323,7 @@ local List = {
 		Price = 320000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["schlagen"] = {
 		Name = "Schlagen",
@@ -4867,8 +4331,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["schwarzer"] = {
 		Name = "Schwarzer",
@@ -4876,8 +4339,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["sentinel3"] = {
 		Name = "Sentinel 3",
@@ -4885,8 +4347,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["seven70"] = {
 		Name = "Seven 70",
@@ -4894,8 +4355,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["specter"] = {
 		Name = "Specter",
@@ -4903,8 +4363,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["specter2"] = {
 		Name = "Specter 2",
@@ -4912,8 +4371,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["streiter"] = {
 		Name = "Streiter",
@@ -4921,8 +4379,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["sugoi"] = {
 		Name = "Sugoi",
@@ -4930,8 +4387,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["sultan"] = {
 		Name = "Sultan",
@@ -4939,8 +4395,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["sultan2"] = {
 		Name = "Sultan 2",
@@ -4948,8 +4403,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["surano"] = {
 		Name = "Surano",
@@ -4957,8 +4411,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["tampa2"] = {
 		Name = "Tampa 2",
@@ -4966,8 +4419,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["tropos"] = {
 		Name = "Tropos",
@@ -4975,8 +4427,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["verlierer2"] = {
 		Name = "Verlierer 2",
@@ -4984,8 +4435,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["vstr"] = {
 		Name = "Vstr",
@@ -4993,8 +4443,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["zr380"] = {
 		Name = "Zr380",
@@ -5002,8 +4451,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["zr3802"] = {
 		Name = "Zr380 2",
@@ -5011,8 +4459,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["zr3803"] = {
 		Name = "Zr380 3",
@@ -5020,8 +4467,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["italirsx"] = {
 		Name = "Itali RSX",
@@ -5029,8 +4475,7 @@ local List = {
 		Price = 280000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["veto"] = {
 		Name = "Veto",
@@ -5038,8 +4483,7 @@ local List = {
 		Price = 20000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["veto2"] = {
 		Name = "Veto 2",
@@ -5047,8 +4491,7 @@ local List = {
 		Price = 20000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["zr350"] = {
 		Name = "ZR 350",
@@ -5056,8 +4499,7 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["calico"] = {
 		Name = "Calico",
@@ -5065,8 +4507,7 @@ local List = {
 		Price = 240000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["futo2"] = {
 		Name = "Futo 2",
@@ -5074,8 +4515,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["euros"] = {
 		Name = "Euros",
@@ -5083,8 +4523,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["jester4"] = {
 		Name = "Jester 4",
@@ -5092,8 +4531,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["remus"] = {
 		Name = "Remus",
@@ -5101,8 +4539,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["comet6"] = {
 		Name = "Comet 6",
@@ -5110,8 +4547,7 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["comet7"] = {
 		Name = "Comet 7",
@@ -5119,8 +4555,7 @@ local List = {
 		Price = 320000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["growler"] = {
 		Name = "Growler",
@@ -5128,8 +4563,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["vectre"] = {
 		Name = "Vectre",
@@ -5137,8 +4571,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["cypher"] = {
 		Name = "Cypher",
@@ -5146,8 +4579,7 @@ local List = {
 		Price = 260000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["sultan3"] = {
 		Name = "Sultan 3",
@@ -5155,8 +4587,7 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["rt3000"] = {
 		Name = "RT 3000",
@@ -5164,8 +4595,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["ardent"] = {
 		Name = "Ardent",
@@ -5173,8 +4603,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["btype"] = {
 		Name = "Btype",
@@ -5182,8 +4611,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["btype2"] = {
 		Name = "Btype 2",
@@ -5191,8 +4619,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["btype3"] = {
 		Name = "Btype 3",
@@ -5200,8 +4627,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["casco"] = {
 		Name = "Casco",
@@ -5209,8 +4635,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["cheetah2"] = {
 		Name = "Cheetah 2",
@@ -5218,8 +4643,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["coquette2"] = {
 		Name = "Coquette 2",
@@ -5227,8 +4651,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["deluxo"] = {
 		Name = "Deluxo",
@@ -5236,8 +4659,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["dynasty"] = {
 		Name = "Dynasty",
@@ -5245,8 +4667,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["fagaloa"] = {
 		Name = "Fagaloa",
@@ -5254,8 +4675,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["feltzer3"] = {
 		Name = "Feltzer 3",
@@ -5263,8 +4683,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["gt500"] = {
 		Name = "GT 500",
@@ -5272,8 +4691,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["infernus2"] = {
 		Name = "Infernus 2",
@@ -5281,8 +4699,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["jb700"] = {
 		Name = "JB 700",
@@ -5290,8 +4707,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["jb7002"] = {
 		Name = "JB 7002",
@@ -5299,8 +4715,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["mamba"] = {
 		Name = "Mamba",
@@ -5308,8 +4723,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["manana"] = {
 		Name = "Manana",
@@ -5317,8 +4731,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["manana2"] = {
 		Name = "Manana 2",
@@ -5326,8 +4739,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["michelli"] = {
 		Name = "Michelli",
@@ -5335,8 +4747,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["monroe"] = {
 		Name = "Monroe",
@@ -5344,8 +4755,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["nebula"] = {
 		Name = "Nebula",
@@ -5353,8 +4763,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["peyote"] = {
 		Name = "Peyote",
@@ -5362,8 +4771,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["peyote3"] = {
 		Name = "Peyote 3",
@@ -5371,8 +4779,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["pigalle"] = {
 		Name = "Pigalle",
@@ -5380,8 +4787,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["rapidgt3"] = {
 		Name = "Rapid GT3",
@@ -5389,8 +4795,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["retinue"] = {
 		Name = "Retinue",
@@ -5398,8 +4803,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["retinue2"] = {
 		Name = "Retinue 2",
@@ -5407,8 +4811,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["savestra"] = {
 		Name = "Savestra",
@@ -5416,8 +4819,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["stinger"] = {
 		Name = "Stinger",
@@ -5425,8 +4827,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["stingergt"] = {
 		Name = "Stinger GT",
@@ -5434,8 +4835,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["stromberg"] = {
 		Name = "Stromberg",
@@ -5443,8 +4843,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["swinger"] = {
 		Name = "Swinger",
@@ -5452,8 +4851,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["torero"] = {
 		Name = "Torero",
@@ -5461,8 +4859,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["tornado"] = {
 		Name = "Tornado",
@@ -5470,8 +4867,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["tornado2"] = {
 		Name = "Tornado 2",
@@ -5479,8 +4875,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["tornado3"] = {
 		Name = "Tornado 3",
@@ -5488,8 +4883,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["tornado4"] = {
 		Name = "Tornado 4",
@@ -5497,8 +4891,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["tornado5"] = {
 		Name = "Tornado 5",
@@ -5506,8 +4899,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["tornado6"] = {
 		Name = "Tornado 6",
@@ -5515,8 +4907,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["turismo2"] = {
 		Name = "Turismo 2",
@@ -5524,8 +4915,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["viseris"] = {
 		Name = "Viseris",
@@ -5533,8 +4923,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["z190"] = {
 		Name = "Z190",
@@ -5542,8 +4931,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["ztype"] = {
 		Name = "Ztype",
@@ -5551,8 +4939,7 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["zion3"] = {
 		Name = "Zion 3",
@@ -5560,8 +4947,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["cheburek"] = {
 		Name = "Cheburek",
@@ -5569,8 +4955,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["toreador"] = {
 		Name = "Toreador",
@@ -5578,8 +4963,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 
 	-- SUPER
@@ -5589,8 +4973,7 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["autarch"] = {
 		Name = "Autarch",
@@ -5598,8 +4981,7 @@ local List = {
 		Price = 240000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["banshee2"] = {
 		Name = "Banshee 2",
@@ -5607,8 +4989,7 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["bullet"] = {
 		Name = "Bullet",
@@ -5616,8 +4997,7 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["cheetah"] = {
 		Name = "Cheetah",
@@ -5625,8 +5005,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["cyclone"] = {
 		Name = "Cyclone",
@@ -5634,8 +5013,7 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["entity2"] = {
 		Name = "Entity 2",
@@ -5643,8 +5021,7 @@ local List = {
 		Price = 220000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["entity3"] = {
 		Name = "entity3",
@@ -5652,8 +5029,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["entityxf"] = {
 		Name = "Entity XF",
@@ -5661,8 +5037,7 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["emerus"] = {
 		Name = "Emerus",
@@ -5670,8 +5045,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["fmj"] = {
 		Name = "Fmj",
@@ -5679,8 +5053,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["furia"] = {
 		Name = "Furia",
@@ -5688,8 +5061,7 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["gp1"] = {
 		Name = "Gp1",
@@ -5697,8 +5069,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["infernus"] = {
 		Name = "Infernus",
@@ -5706,8 +5077,7 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["italigtb"] = {
 		Name = "Italigtb",
@@ -5715,8 +5085,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["italigtb2"] = {
 		Name = "Italigtb 2",
@@ -5724,8 +5093,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["krieger"] = {
 		Name = "Krieger",
@@ -5733,8 +5101,7 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["le7b"] = {
 		Name = "Le7b",
@@ -5742,8 +5109,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["nero"] = {
 		Name = "Nero",
@@ -5751,8 +5117,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["nero2"] = {
 		Name = "Nero 2",
@@ -5760,8 +5125,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["osiris"] = {
 		Name = "Osiris",
@@ -5769,8 +5133,7 @@ local List = {
 		Price = 230000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["penetrator"] = {
 		Name = "Penetrator",
@@ -5778,8 +5141,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["pfister811"] = {
 		Name = "Pfister 811",
@@ -5787,8 +5149,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["prototipo"] = {
 		Name = "Prototipo",
@@ -5796,8 +5157,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["reaper"] = {
 		Name = "Reaper",
@@ -5805,8 +5165,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["s80"] = {
 		Name = "S80",
@@ -5814,8 +5173,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["sc1"] = {
 		Name = "Sc1",
@@ -5823,8 +5181,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["scramjet"] = {
 		Name = "Scramjet",
@@ -5832,8 +5189,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["sheava"] = {
 		Name = "Sheava",
@@ -5841,8 +5197,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["sultanrs"] = {
 		Name = "Sultan RS",
@@ -5850,8 +5205,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["t20"] = {
 		Name = "T20",
@@ -5859,8 +5213,7 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["taipan"] = {
 		Name = "Taipan",
@@ -5868,8 +5221,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["tempesta"] = {
 		Name = "Tempesta",
@@ -5877,8 +5229,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["tezeract"] = {
 		Name = "Tezeract",
@@ -5886,8 +5237,7 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["thrax"] = {
 		Name = "Thrax",
@@ -5895,8 +5245,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["tigon"] = {
 		Name = "Tigon",
@@ -5904,8 +5253,7 @@ local List = {
 		Price = 220000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["turismor"] = {
 		Name = "Turismo R",
@@ -5913,8 +5261,7 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["tyrant"] = {
 		Name = "Tyrant",
@@ -5922,8 +5269,7 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["tyrus"] = {
 		Name = "Tyrus",
@@ -5931,8 +5277,7 @@ local List = {
 		Price = 220000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["vacca"] = {
 		Name = "Vacca",
@@ -5940,8 +5285,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["vagner"] = {
 		Name = "Vagner",
@@ -5949,8 +5293,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["vigilante"] = {
 		Name = "Vigilante",
@@ -5958,8 +5301,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["virtue"] = {
 		Name = "virtue",
@@ -5967,8 +5309,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["visione"] = {
 		Name = "Visione",
@@ -5976,8 +5317,7 @@ local List = {
 		Price = 230000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["voltic"] = {
 		Name = "Voltic",
@@ -5985,8 +5325,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["voltic2"] = {
 		Name = "Voltic 2",
@@ -5994,8 +5333,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["xa21"] = {
 		Name = "Xa21",
@@ -6003,8 +5341,7 @@ local List = {
 		Price = 260000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["zentorno"] = {
 		Name = "Zentorno",
@@ -6012,8 +5349,7 @@ local List = {
 		Price = 230000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["zorrusso"] = {
 		Name = "Zorrusso",
@@ -6021,8 +5357,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 
 	-- TRAILER
@@ -6032,8 +5367,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["armytrailer"] = {
 		Name = "Armytrailer",
@@ -6041,8 +5375,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["armytrailer2"] = {
 		Name = "Armytrailer 2",
@@ -6050,8 +5383,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["baletrailer"] = {
 		Name = "Baletrailer",
@@ -6059,8 +5391,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["boattrailer"] = {
 		Name = "Boattrailer",
@@ -6068,8 +5399,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["cablecar"] = {
 		Name = "Cablecar",
@@ -6077,8 +5407,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["docktrailer"] = {
 		Name = "Docktrailer",
@@ -6086,8 +5415,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["freighttrailer"] = {
 		Name = "Freighttrailer",
@@ -6095,8 +5423,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["graintrailer"] = {
 		Name = "Graintrailer",
@@ -6104,8 +5431,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["proptrailer"] = {
 		Name = "Proptrailer",
@@ -6113,8 +5439,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["raketrailer"] = {
 		Name = "Raketrailer",
@@ -6122,8 +5447,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["tr2"] = {
 		Name = "Tr2",
@@ -6131,8 +5455,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["tr3"] = {
 		Name = "Tr3",
@@ -6140,8 +5463,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["tr4"] = {
 		Name = "Tr4",
@@ -6149,8 +5471,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["trflat"] = {
 		Name = "Trflat",
@@ -6158,8 +5479,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["tvtrailer"] = {
 		Name = "Tvtrailer",
@@ -6167,8 +5487,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["tanker"] = {
 		Name = "Tanker",
@@ -6176,8 +5495,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["tanker2"] = {
 		Name = "Tanker 2",
@@ -6185,8 +5503,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["trailerlarge"] = {
 		Name = "Trailerlarge",
@@ -6194,8 +5511,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["trailerlogs"] = {
 		Name = "Trailerlogs",
@@ -6203,8 +5519,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["trailers"] = {
 		Name = "Trailers",
@@ -6212,8 +5527,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["trailers2"] = {
 		Name = "Trailers 2",
@@ -6221,8 +5535,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["trailers3"] = {
 		Name = "Trailers 3",
@@ -6230,8 +5543,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 	["trailers4"] = {
 		Name = "Trailers 4",
@@ -6239,8 +5551,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers",
-		Type = "trailer"
+		Class = "Trailers"
 	},
 
 	-- TRAINS
@@ -6250,8 +5561,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens",
-		Type = "train"
+		Class = "Trens"
 	},
 	["freightcar"] = {
 		Name = "Freightcar",
@@ -6259,8 +5569,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens",
-		Type = "train"
+		Class = "Trens"
 	},
 	["freightcont1"] = {
 		Name = "Freightcont 1",
@@ -6268,8 +5577,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens",
-		Type = "train"
+		Class = "Trens"
 	},
 	["freightcont2"] = {
 		Name = "Freightcont 2",
@@ -6277,8 +5585,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens",
-		Type = "train"
+		Class = "Trens"
 	},
 	["freightgrain"] = {
 		Name = "Freightgrain",
@@ -6286,8 +5593,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens",
-		Type = "train"
+		Class = "Trens"
 	},
 	["metrotrain"] = {
 		Name = "Metrotrain",
@@ -6295,8 +5601,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens",
-		Type = "train"
+		Class = "Trens"
 	},
 	["tankercar"] = {
 		Name = "Rankercar",
@@ -6304,8 +5609,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens",
-		Type = "train"
+		Class = "Trens"
 	},
 
 	-- UTILITY
@@ -6315,8 +5619,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["caddy"] = {
 		Name = "Caddy",
@@ -6324,8 +5627,7 @@ local List = {
 		Price = 30000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["caddy2"] = {
 		Name = "Caddy 2",
@@ -6333,8 +5635,7 @@ local List = {
 		Price = 25000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["caddy3"] = {
 		Name = "Caddy 3",
@@ -6342,8 +5643,7 @@ local List = {
 		Price = 20000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["docktug"] = {
 		Name = "Docktug",
@@ -6351,8 +5651,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["forklift"] = {
 		Name = "Forklift",
@@ -6360,8 +5659,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["mower"] = {
 		Name = "Mower",
@@ -6369,8 +5667,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["ripley"] = {
 		Name = "Ripley",
@@ -6378,8 +5675,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["sadler"] = {
 		Name = "Sadler",
@@ -6387,8 +5683,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["sadler2"] = {
 		Name = "Sadler 2",
@@ -6396,8 +5691,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["scrap"] = {
 		Name = "Scrap",
@@ -6405,8 +5699,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["towtruck"] = {
 		Name = "Towtruck",
@@ -6414,8 +5707,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["towtruck2"] = {
 		Name = "Towtruck 2",
@@ -6423,8 +5715,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["tractor"] = {
 		Name = "Tractor",
@@ -6432,8 +5723,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["tractor2"] = {
 		Name = "Tractor 2",
@@ -6441,8 +5731,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["tractor3"] = {
 		Name = "Tractor 3",
@@ -6450,8 +5739,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["utillitruck"] = {
 		Name = "Utillitruck",
@@ -6459,8 +5747,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["utillitruck2"] = {
 		Name = "Utillitruck 2",
@@ -6468,8 +5755,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["utillitruck3"] = {
 		Name = "Utillitruck 3",
@@ -6477,8 +5763,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 	["slamtruck"] = {
 		Name = "Slamtruck",
@@ -6486,8 +5771,7 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários",
-		Type = "automobile"
+		Class = "Utilitários"
 	},
 
 	-- VANS
@@ -6497,8 +5781,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["bison2"] = {
 		Name = "Bison 2",
@@ -6506,8 +5789,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["bison3"] = {
 		Name = "Bison 3",
@@ -6515,8 +5797,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["bobcatxl"] = {
 		Name = "Bobcat XL",
@@ -6524,8 +5805,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["boxville"] = {
 		Name = "Boxville",
@@ -6533,8 +5813,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["boxville2"] = {
 		Name = "Boxville",
@@ -6542,8 +5821,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Serviços",
-		Type = "automobile"
+		Class = "Serviços"
 	},
 	["boxville3"] = {
 		Name = "Boxville 3",
@@ -6551,8 +5829,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["boxville4"] = {
 		Name = "Boxville",
@@ -6560,8 +5837,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["boxville5"] = {
 		Name = "Boxville 5",
@@ -6569,8 +5845,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["burrito"] = {
 		Name = "Burrito",
@@ -6578,8 +5853,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["burrito2"] = {
 		Name = "Burrito 2",
@@ -6587,8 +5861,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["burrito3"] = {
 		Name = "Burrito 3",
@@ -6596,8 +5869,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["burrito4"] = {
 		Name = "Burrito 4",
@@ -6605,8 +5877,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["burrito5"] = {
 		Name = "Burrito 5",
@@ -6614,8 +5885,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["camper"] = {
 		Name = "Camper",
@@ -6623,8 +5893,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["gburrito"] = {
 		Name = "Gburrito",
@@ -6632,8 +5901,7 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["gburrito2"] = {
 		Name = "Gburrito 2",
@@ -6641,8 +5909,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["journey"] = {
 		Name = "Journey",
@@ -6650,8 +5917,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["journey2"] = {
 		Name = "journey2",
@@ -6659,8 +5925,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["minivan"] = {
 		Name = "Minivan",
@@ -6668,8 +5933,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["minivan2"] = {
 		Name = "Minivan 2",
@@ -6677,8 +5941,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["paradise"] = {
 		Name = "Paradise",
@@ -6686,8 +5949,7 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["pony"] = {
 		Name = "Pony",
@@ -6695,8 +5957,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["pony2"] = {
 		Name = "Pony 2",
@@ -6704,8 +5965,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["rumpo"] = {
 		Name = "Rumpo",
@@ -6713,8 +5973,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["rumpo2"] = {
 		Name = "Rumpo 2",
@@ -6722,8 +5981,7 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["rumpo3"] = {
 		Name = "Rumpo 3",
@@ -6731,8 +5989,7 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["speedo"] = {
 		Name = "Speedo",
@@ -6740,8 +5997,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["speedo2"] = {
 		Name = "Speedo 2",
@@ -6749,8 +6005,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["speedo4"] = {
 		Name = "Speedo 4",
@@ -6758,8 +6013,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["surfer"] = {
 		Name = "Surfer",
@@ -6767,8 +6021,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["surfer2"] = {
 		Name = "Surfer 2",
@@ -6776,8 +6029,7 @@ local List = {
 		Price = 40000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["surfer3"] = {
 		Name = "surfer3",
@@ -6785,8 +6037,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["taco"] = {
 		Name = "Taco",
@@ -6794,8 +6045,7 @@ local List = {
 		Price = 2000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["youga"] = {
 		Name = "Youga",
@@ -6803,8 +6053,7 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["youga2"] = {
 		Name = "Youga 2",
@@ -6812,8 +6061,7 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 	["youga3"] = {
 		Name = "Youga 3",
@@ -6821,638 +6069,28 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans",
-		Type = "automobile"
+		Class = "Vans"
 	},
 
 	-- IMPORTS
-	["22m5"] = {
-		Name = "BMW M5",
+	["teste01"] = {
+		Name = "Teste 01",
 		Weight = 60,
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["69charger"] = {
-		Name = "Dodge Charger 1969",
-		Weight = 45,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["488misha"] = {
-		Name = "Ferrari 488",
-		Weight = 30,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["675ltsp"] = {
-		Name = "McLaren 675",
-		Weight = 30,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["a45amg"] = {
-		Name = "Mercedes A45",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["a80"] = {
-		Name = "Toyota Supra A80",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["acs8"] = {
-		Name = "BMW i8",
-		Weight = 40,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["bdragon"] = {
-		Name = "Bentley Dragon",
-		Weight = 60,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["bmwr"] = {
-		Name = "BMW R1100",
-		Weight = 20,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["bt62r"] = {
-		Name = "Brabham BT62",
-		Weight = 30,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["chiron17"] = {
-		Name = "Bugatti Chiron",
-		Weight = 60,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["cp9a"] = {
-		Name = "Mitsubishi Lancer Evo 7",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["dc5"] = {
-		Name = "Honda Integra",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["demon"] = {
-		Name = "Dodge Challenger STR",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["e36prb"] = {
-		Name = "BMW M3 E36",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["evo9"] = {
-		Name = "Mitsubishi Lancer Evo 9",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["filthynsx"] = {
-		Name = "Honda Acura",
-		Weight = 40,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["fk8"] = {
-		Name = "Honda Civic Type-R",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["skyliner34"] = {
-		Name = "Nissan GTR R34",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["fnfrx7"] = {
-		Name = "Mazda RX7",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["gt63"] = {
-		Name = "Mercedes GT63",
-		Weight = 60,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["gt86"] = {
-		Name = "Toyota GT86",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["lc500"] = {
-		Name = "Lexus LC 500",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["lp700"] = {
-		Name = "Lamborghini LP 700",
-		Weight = 30,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["maj350z"] = {
-		Name = "Nissan 350z",
-		Weight = 40,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["r1"] = {
-		Name = "Yamaha R1",
-		Weight = 20,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["s1000rr"] = {
-		Name = "BMW S 1000 RR",
-		Weight = 20,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["m1000rr"] = {
-		Name = "BMW M 1000 RR",
-		Weight = 20,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["cb500x"] = {
-		Name = "CB 500X",
-		Weight = 20,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["audirs6"] = {
-		Name = "Audi RS6",
-		Weight = 60,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["r32"] = {
-		Name = "Nissan GTR R32",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["r35"] = {
-		Name = "Nissan GTR R35",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["rr14"] = {
-		Name = "Range Rover Vogue",
-		Weight = 60,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["senna"] = {
-		Name = "McLaren Senna",
-		Weight = 30,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["tsgr20"] = {
-		Name = "Toyota Supra GR",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["zx10"] = {
-		Name = "Kawasaki Ninja Zx-10r",
-		Weight = 20,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["lancerevolutionx"] = {
-		Name = "Lancer Evolution X",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["subaruimpreza"] = {
-		Name = "Subaru Impreza",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["silvias15"] = {
-		Name = "Silvia S15",
-		Weight = 50,
-		Price = 200000,
-		Mode = "Rental",
-		Gemstone = 6000,
-		Class = "Importados",
-		Type = "automobile"
-	},
-	["jester5"] = {
-		Name = "Magnus",
-		Weight = 60,
-		Price = 250000,
-		Mode = "Cars",
-		Gemstone = 50000,
-		Class = "Exclusivos",
-		Stock = 3,
-		Type = "automobile"
-	},
-	["roxanne"] = {
-		Name = "Roxanne",
-		Weight = 60,
-		Price = 250000,
-		Mode = "Cars",
-		Gemstone = 50000,
-		Class = "Exclusivos",
-		Stock = 3,
-		Type = "automobile"
-	},
-	["sunrise"] = {
-		Name = "Sunrise",
-		Weight = 60,
-		Price = 250000,
-		Mode = "Cars",
-		Gemstone = 50000,
-		Class = "Exclusivos",
-		Stock = 3,
-		Type = "automobile"
-	},
-	["teslamodels"] = {
-		Name = "Tesla Model S",
-		Weight = 60,
-		Price = 250000,
-		Mode = "Cars",
-		Gemstone = 50000,
-		Class = "Exclusivos",
-		Stock = 3,
-		Type = "automobile"
-	},
-	["pgt322"] = {
-		Name = "Porsche 911 GT3",
-		Weight = 60,
-		Price = 250000,
-		Mode = "Cars",
-		Gemstone = 50000,
-		Class = "Exclusivos",
-		Stock = 3,
-		Type = "automobile"
+		Class = "Importados"
 	},
 
-	-- SERVICES
-	["polas350"] = {
-		Name = "Polaris 350",
-		Weight = 0,
-		Price = 30000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "heli"
-	},
-	["ambulance2"] = {
-		Name = "Ambulância",
-		Weight = 20,
-		Price = 1000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["ballerpol"] = {
-		Name = "Baller",
-		Weight = 50,
-		Price = 40000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["elegy2pol"] = {
-		Name = "Elegy 2",
-		Weight = 50,
-		Price = 50000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["fugitivepol"] = {
-		Name = "Fugitive",
+	-- RACES
+	["teste02"] = {
+		Name = "Teste 02",
 		Weight = 60,
-		Price = 50000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["komodapol"] = {
-		Name = "Komoda",
-		Weight = 50,
-		Price = 50000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["kurumapol"] = {
-		Name = "Kuruma",
-		Weight = 50,
-		Price = 50000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["maverick2"] = {
-		Name = "Maverick 2",
-		Weight = 0,
-		Price = 2500,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "heli"
-	},
-	["nc700pol"] = {
-		Name = "Honda NC700",
-		Weight = 20,
-		Price = 30000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "bike"
-	},
-	["oracle2pol"] = {
-		Name = "Oracle 2",
-		Weight = 40,
-		Price = 50000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["polchall"] = {
-		Name = "Dodge Challenger",
-		Weight = 50,
-		Price = 80000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["polchar"] = {
-		Name = "Dodge Charger",
-		Weight = 50,
-		Price = 80000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["tauruspol"] = {
-		Name = "Ford Taurus",
-		Weight = 50,
-		Price = 80000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["tahoepol"] = {
-		Name = "Chevrolet Tahoe",
-		Weight = 50,
-		Price = 70000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["silveradopol"] = {
-		Name = "Chevrolet Silverado",
-		Weight = 50,
-		Price = 60000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["police3pol"] = {
-		Name = "Police 3",
-		Weight = 40,
-		Price = 20000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["policepol"] = {
-		Name = "Police",
-		Weight = 40,
-		Price = 30000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["policetpol"] = {
-		Name = "Police T",
-		Weight = 40,
-		Price = 20000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["poltang"] = {
-		Name = "Ford Mustang",
-		Weight = 50,
-		Price = 80000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["polvic"] = {
-		Name = "Crown Victoria",
-		Weight = 50,
-		Price = 70000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["r1250pol"] = {
-		Name = "BMW R1250",
-		Weight = 20,
-		Price = 20000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["schafter2pol"] = {
-		Name = "Schafter 2",
-		Weight = 40,
-		Price = 50000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["sheriff2pol"] = {
-		Name = "Sheriff 2",
-		Weight = 40,
-		Price = 30000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["sultanrspol"] = {
-		Name = "Sultan RS",
-		Weight = 40,
-		Price = 100000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
-	},
-	["tailgater2pol"] = {
-		Name = "Tailgater 2",
-		Weight = 40,
-		Price = 50000,
-		Mode = "Work",
-		Gemstone = 0,
-		Class = "Empregos",
-		Type = "automobile"
+		Price = 200000,
+		Mode = nil,
+		Gemstone = 6000,
+		Class = "Exclusivos",
+		Stock = 10
 	},
 
 	-- SEM CLASSES
@@ -7462,8 +6100,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["boor"] = {
 		Name = "boor",
@@ -7471,8 +6108,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["patriot3"] = {
 		Name = "Patriot 3",
@@ -7480,8 +6116,7 @@ local List = {
 		Price = 320000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["omnisegt"] = {
 		Name = "Omni SE GT",
@@ -7489,8 +6124,7 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["tenf2"] = {
 		Name = "Tenf 2",
@@ -7498,8 +6132,7 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["sm722"] = {
 		Name = "Mm722",
@@ -7507,8 +6140,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["brioso3"] = {
 		Name = "Brioso 3",
@@ -7516,8 +6148,7 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["lm87"] = {
 		Name = "Lm87",
@@ -7525,8 +6156,7 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["iwagen"] = {
 		Name = "Iwagen",
@@ -7534,8 +6164,7 @@ local List = {
 		Price = 260000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["jubilee"] = {
 		Name = "Jubilee",
@@ -7543,8 +6172,7 @@ local List = {
 		Price = 150000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["reever"] = {
 		Name = "Reever",
@@ -7552,8 +6180,7 @@ local List = {
 		Price = 170000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["shinobi"] = {
 		Name = "Shinobi",
@@ -7561,8 +6188,7 @@ local List = {
 		Price = 180000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["granger2"] = {
 		Name = "Granger 2",
@@ -7570,8 +6196,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["buffalo4"] = {
 		Name = "Buffalo 4",
@@ -7579,8 +6204,7 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["vigero2"] = {
 		Name = "Vigero 2",
@@ -7588,8 +6212,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["sentinel4"] = {
 		Name = "Sentinel 4",
@@ -7597,8 +6220,7 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["ignus"] = {
 		Name = "Ignus",
@@ -7606,8 +6228,7 @@ local List = {
 		Price = 250000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["youga4"] = {
 		Name = "Youga 4",
@@ -7615,8 +6236,7 @@ local List = {
 		Price = 90000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["zeno"] = {
 		Name = "Zeno",
@@ -7624,8 +6244,7 @@ local List = {
 		Price = 250000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["deity"] = {
 		Name = "Deity",
@@ -7633,8 +6252,7 @@ local List = {
 		Price = 300000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["kanjosj"] = {
 		Name = "Kanjo SJ",
@@ -7642,8 +6260,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["greenwood"] = {
 		Name = "Greenwood",
@@ -7651,8 +6268,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["corsita"] = {
 		Name = "Corsita",
@@ -7660,8 +6276,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	},
 	["cinquemila"] = {
 		Name = "Cinquemila",
@@ -7669,8 +6284,7 @@ local List = {
 		Price = 200000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["rhinehart"] = {
 		Name = "Rhinehart",
@@ -7678,8 +6292,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs",
-		Type = "automobile"
+		Class = "SUVs"
 	},
 	["tenf"] = {
 		Name = "Tenf",
@@ -7687,8 +6300,7 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["postlude"] = {
 		Name = "Postlude",
@@ -7696,8 +6308,7 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos",
-		Type = "automobile"
+		Class = "Esportivos"
 	},
 	["mule5"] = {
 		Name = "Mule 5",
@@ -7705,8 +6316,7 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["baller7"] = {
 		Name = "Baller 7",
@@ -7714,8 +6324,7 @@ local List = {
 		Price = 480000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["conada"] = {
 		Name = "Conada",
@@ -7723,8 +6332,7 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["champion"] = {
 		Name = "Champion",
@@ -7732,8 +6340,7 @@ local List = {
 		Price = 220000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["draugur"] = {
 		Name = "Draugur",
@@ -7741,8 +6348,7 @@ local List = {
 		Price = 320000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads",
-		Type = "automobile"
+		Class = "Off-Roads"
 	},
 	["astron"] = {
 		Name = "Astron",
@@ -7750,8 +6356,7 @@ local List = {
 		Price = 220000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações",
-		Type = "automobile"
+		Class = "Embarcações"
 	},
 	["ruiner4"] = {
 		Name = "Ruiner4",
@@ -7759,8 +6364,7 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles",
-		Type = "automobile"
+		Class = "Muscles"
 	},
 	["weevil2"] = {
 		Name = "Weevil 2",
@@ -7768,8 +6372,7 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos",
-		Type = "automobile"
+		Class = "Compactos"
 	},
 	["torero2"] = {
 		Name = "Torero 2",
@@ -7777,8 +6380,7 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos",
-		Type = "automobile"
+		Class = "Clássicos"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

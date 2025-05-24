@@ -28,6 +28,7 @@ function Creative.Users()
             local Ped = GetPlayerPed(Source)
             if DoesEntityExist(Ped) then
                 Markers[Source] = {
+                    Vehicle = GetVehiclePedIsIn(Ped),
                     Coords = GetEntityCoords(Ped),
                     Permission = v.Permission,
                     Level = v.Level

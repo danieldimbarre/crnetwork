@@ -6,6 +6,8 @@ ColourMarker = 77
 RankingTablet = 10
 SecondsResult = 5000
 SecondsExplode = 5000
+VehicleDuration = 2592000
+ExchangeItem = "platinum"
 PropFlags = "prop_beachflag_01"
 PropTyre = "prop_offroad_tyres02"
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -16,7 +18,7 @@ Routes = {
 		Time = 275,
 		Runners = 4, -- Precisa ser o mesmo número da quantidade dos Positions.
 		Record = 250,
-		Payment = 1675,
+		Payment = 1675, -- Valor em Platinas
 		Checkpoints = 44,
 		Difficulty = "Fácil",
 		Image = "littlebighorn.png",

@@ -23,7 +23,7 @@ AddEventHandler("player:Survival",function()
 		vRP.UpgradeThirst(Passport,100)
 		vRP.UpgradeHunger(Passport,100)
 		vRP.DowngradeStress(Passport,100)
-		exports["discord"]:Embed("Airport","**[SOURCE]:** "..source.."\n**[PASSAPORTE]:** "..Passport.."\n**[COORDS]:** "..vRP.GetEntityCoords(source).."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		exports["discord"]:Embed("Airport","**[SOURCE]:** "..source.."\n**[PASSAPORTE]:** "..Passport.."\n**[COORDS]:** "..vRP.GetEntityCoords(source))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -337,7 +337,7 @@ AddEventHandler("player:Death",function(OtherSource)
 	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.Passport(OtherSource)
 	if Passport and OtherPassport and Passport ~= OtherPassport and vRP.DoesEntityExist(source) and vRP.DoesEntityExist(OtherSource) then
-		exports["discord"]:Embed("Deaths","**[PASSAPORTE ASSASSINO]:** "..OtherPassport.."\n**[LOCALIAÇÃO ASSASSINO]:** "..vRP.GetEntityCoords(OtherSource).."\n\n**[PASSAPORTE VÍTIMA]:** "..Passport.."\n**[LOCALIZAÇÃO VÍTIMA]:** "..vRP.GetEntityCoords(source).."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+		exports["discord"]:Embed("Deaths","**[PASSAPORTE ASSASSINO]:** "..OtherPassport.."\n**[LOCALIAÇÃO ASSASSINO]:** "..vRP.GetEntityCoords(OtherSource).."\n\n**[PASSAPORTE VÍTIMA]:** "..Passport.."\n**[LOCALIZAÇÃO VÍTIMA]:** "..vRP.GetEntityCoords(source))
 		exports["inventory"]:Drops(Passport,source,"dogtag-"..Passport,1)
 	end
 end)

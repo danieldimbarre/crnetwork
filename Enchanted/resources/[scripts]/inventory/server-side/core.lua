@@ -1296,7 +1296,7 @@ AddEventHandler("inventory:Products",function(Service)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Products[Service] then
 		if Products[Service]["PolyZone"] and not vFARMER.PolyZone(source,Service) then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Farmer do "..Service.."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Farmer do "..Service,source)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
 			if Payments[Passport] >= 3 then
@@ -1631,10 +1631,6 @@ AddEventHandler("SaveServer",function(Silenced)
 	end
 
 	vRP.Query("entitydata/SetData",{ Name = "SaveObjects", Information = json.encode(SaveObjects) })
-
-	if not Silenced then
-		print("O resource ^2Inventory^7 salvou os dados.")
-	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

@@ -42,7 +42,8 @@ local Discord = {
 	Premium = "",
 	Chest = "",
 	Propertys = "",
-	Crons = ""
+	Crons = "",
+	Races = ""
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EMBED
@@ -50,8 +51,16 @@ local Discord = {
 exports("Embed",function(Hook,Message,source)
 	PerformHttpRequest(Discord[Hook],function() end,"POST",json.encode({
 		username = ServerName,
+		avatar_url = ServerAvatar,
 		embeds = {
-			{ color = 0x2b2d31, description = Message }
+			{
+				color = 6171009,
+				description = Message,
+				footer = {
+					icon_url = ServerAvatar,
+					text = os.date("%d/%m/%Y %H:%M:%S")
+				}
+			}
 		}
 	}),{ ["Content-Type"] = "application/json" })
 

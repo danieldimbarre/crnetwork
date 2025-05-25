@@ -154,6 +154,7 @@ function Creative.Permissions(Name,Mode,Item)
 		Open[Passport] = {
 			Slots = 25,
 			Name = Name,
+			Save = true,
 			Recycle = isRecycle,
 			Weight = isRecycle and 100 or 25
 		}

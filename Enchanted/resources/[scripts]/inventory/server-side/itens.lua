@@ -2381,10 +2381,13 @@ Use = {
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
 
+		local Dirty = 173
+		local Cleanup = 156
+		local Route = GetPlayerRoutingBucket(source)
 		local Hash = "bkr_prop_prtmachine_dryer_spin"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),173,156)
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,Route,Dirty,Cleanup,"dirtydollar","dollar")
 		end
 
 		Player(source)["state"]["Buttons"] = false
@@ -2394,10 +2397,13 @@ Use = {
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
 
+		local Dirty = 347
+		local Cleanup = 312
+		local Route = GetPlayerRoutingBucket(source)
 		local Hash = "bkr_prop_prtmachine_dryer_spin"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),347,312)
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,Route,Dirty,Cleanup,"dirtydollar","dollar")
 		end
 
 		Player(source)["state"]["Buttons"] = false
@@ -2407,10 +2413,13 @@ Use = {
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
 
+		local Dirty = 694
+		local Cleanup = 624
+		local Route = GetPlayerRoutingBucket(source)
 		local Hash = "bkr_prop_prtmachine_dryer_spin"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),694,624)
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,Route,Dirty,Cleanup,"dirtydollar","dollar")
 		end
 
 		Player(source)["state"]["Buttons"] = false
@@ -2420,10 +2429,13 @@ Use = {
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)
 
+		local Dirty = 3472
+		local Cleanup = 3124
+		local Route = GetPlayerRoutingBucket(source)
 		local Hash = "bkr_prop_prtmachine_dryer_spin"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash,0.675) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,GetPlayerRoutingBucket(source),3472,3124)
+			exports["moneywash"]:Wash(Passport,Full,Hash,Coords,Route,Dirty,Cleanup,"dirtydollar","dollar")
 		end
 
 		Player(source)["state"]["Buttons"] = false
@@ -3330,7 +3342,7 @@ for NameItem,v in pairs(Sprays) do
 								until Selected and not Objects[Selected]
 
 								Objects[Selected] = { Coords = Coords, Object = NameItem, Mode = "Sprays", Timer = os.time() + 1800, Ground = true, Color = v[2], Permission = v[1], Bucket = GetPlayerRoutingBucket(source) }
-								exports["discord"]:Embed("Sprays","**[PASSAPORTE]:** "..Passport.."\n**[Item]:** "..NameItem.."\n**[Coords]:** "..Coords[1]..","..Coords[2]..","..Coords[3].."\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"))
+								exports["discord"]:Embed("Sprays","**[PASSAPORTE]:** "..Passport.."\n**[Item]:** "..NameItem.."\n**[Coords]:** "..Coords[1]..","..Coords[2]..","..Coords[3])
 								SaveObjects[Selected] = Objects[Selected]
 
 								TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])

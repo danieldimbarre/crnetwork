@@ -27,7 +27,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 		Active[Passport] = true
 
 		if not Number or type(Number) ~= "number" then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
 			if Payments[Passport] >= 3 then
@@ -122,7 +122,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 		Active[Passport] = true
 
 		if not Number or type(Number) ~= "number" then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
 			if Payments[Passport] >= 3 then
@@ -192,7 +192,7 @@ AddEventHandler("farmer:Transporter",function(Number)
 		Active[Passport] = true
 
 		if not Number or type(Number) ~= "number" then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
 			if Payments[Passport] >= 3 then
@@ -246,7 +246,7 @@ AddEventHandler("farmer:Sandman",function(Number)
 		Active[Passport] = true
 
 		if not Number or type(Number) ~= "number" then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
 			if Payments[Passport] >= 3 then
@@ -301,7 +301,7 @@ AddEventHandler("farmer:Trasher",function(Number)
 		Active[Passport] = true
 
 		if not Number or type(Number) ~= "number" then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer\n**[DATA & HORA]:** "..os.date("%d/%m/%Y").." às "..os.date("%H:%M"),source)
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
 
 			Payments[Passport] = (Payments[Passport] or 0) + 1
 			if Payments[Passport] >= 3 then
@@ -322,26 +322,26 @@ AddEventHandler("farmer:Trasher",function(Number)
 			TriggerClientEvent("Progress",source,"Coletando",1000)
 			vRPC.playAnim(source,false,{"pickup_object","pickup_low"},true)
 
-			SetTimeout(1000,function()
-				if GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
-					GlobalState["Farmer:"..Number] = GlobalState["Work"] + 180
+			Wait(1000)
 
-					if not vRP.MaxItens(Passport,"binbag") and vRP.CheckWeight(Passport,"binbag") then
-						vRP.GenerateItem(Passport,"binbag",1,true)
-					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-						exports["inventory"]:Drops(Passport,source,"binbag",1)
-					end
+			if GlobalState["Work"] >= GlobalState["Farmer:"..Number] then
+				GlobalState["Farmer:"..Number] = GlobalState["Work"] + 180
 
-					vRP.PutExperience(Passport,"Garbageman",1)
-					vRP.BattlepassPoints(Passport,1)
-					vRP.UpgradeStress(Passport,1)
+				if not vRP.MaxItens(Passport,"binbag") and vRP.CheckWeight(Passport,"binbag") then
+					vRP.GenerateItem(Passport,"binbag",1,true)
+				else
+					TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
+					exports["inventory"]:Drops(Passport,source,"binbag",1)
 				end
 
-				Player(source)["state"]["Buttons"] = false
-				Player(source)["state"]["Cancel"] = false
-				vRPC.Destroy(source)
-			end)
+				vRP.PutExperience(Passport,"Garbageman",1)
+				vRP.BattlepassPoints(Passport,1)
+				vRP.UpgradeStress(Passport,1)
+			end
+
+			Player(source)["state"]["Buttons"] = false
+			Player(source)["state"]["Cancel"] = false
+			vRPC.Destroy(source)
 		end
 
 		Active[Passport] = nil

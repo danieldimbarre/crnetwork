@@ -435,3 +435,4 @@ INSERT INTO `mdt_creative_units` (`id`, `Image`, `Name`, `Permission`, `Officers
 (12, 'nui://mdt/web-side/images/Units.png', 'GRI', 'BCSO', '[]');
 
 ALTER TABLE `permissions` ADD `Premium` BIGINT(19) NOT NULL DEFAULT '0' AFTER `Bank`;
+ALTER TABLE `accounts` ADD `Passport` BIGINT(19) NOT NULL DEFAULT '0' AFTER `Characters`;

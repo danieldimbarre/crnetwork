@@ -344,6 +344,18 @@ Groups = {
 		},
 		Hierarchy = { "Membro" },
 		Block = true
+	},
+	-- PROPRIEDADES
+	Mansao01 = { -- Exemplo de propriedade com painel/permissão
+		Permission = {
+			Mansao01 = true
+		},
+		Name = "Mansão",
+		Hierarchy = { "Proprietário","Morador" },
+		Type = "Propertys",
+		Service = true,
+		Client = true,
+		Max = 5
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -1228,7 +1228,7 @@ List = {
 					["aluminum"] = 100
 				}
 			},
-			["races"] = {
+			["racesticket"] = {
 				["Amount"] = 1,
 				["Required"] = {
 					["plastic"] = 25,

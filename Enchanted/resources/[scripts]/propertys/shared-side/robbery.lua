@@ -36,7 +36,7 @@ OtherItens = {
 	{ Item = "binoculars", Chance = 75, Min = 1, Max = 1 },
 	{ Item = "camera", Chance = 75, Min = 1, Max = 1 },
 	{ Item = "repairkit01", Chance = 25, Min = 1, Max = 1 },
-	{ Item = "races", Chance = 100, Min = 1, Max = 1 },
+	{ Item = "racesticket", Chance = 100, Min = 1, Max = 1 },
 	{ Item = "postit", Chance = 100, Min = 2, Max = 5 },
 	{ Item = "techtrash", Chance = 50, Min = 1, Max = 3 },
 	{ Item = "tarp", Chance = 50, Min = 1, Max = 3 },

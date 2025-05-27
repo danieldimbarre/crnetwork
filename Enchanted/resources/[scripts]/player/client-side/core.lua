@@ -17,6 +17,8 @@ local inTrash = false
 local BoostFPS = false
 local Residuals = false
 local DeathUpdate = false
+local CruiseEnabled = false
+local CruiseVehicle = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FPS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -80,6 +82,12 @@ CreateThread(function()
 				SetPedIntoVehicle(Ped,Vehicle,0)
 				SetPedConfigFlag(Ped,184,true)
 			end
+		elseif CruiseEnabled and CruiseVehicle then
+			if DoesEntityExist(CruiseVehicle) then
+				SetEntityMaxSpeed(CruiseVehicle,GetVehicleHandlingFloat(CruiseVehicle,"CHandlingData","fInitialDriveMaxFlatVel"))
+			end
+
+			CruiseEnabled,CruiseVehicle = false,false
 		end
 
 		Wait(TimeDistance)
@@ -277,23 +285,29 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CRUISER
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("cr",function(source,Message)
+RegisterCommand("ControlCruiser",function(source,Message)
 	local Ped = PlayerPedId()
 	if IsPedInAnyVehicle(Ped) then
-		local Vehicle = GetVehiclePedIsUsing(Ped)
-		if GetPedInVehicleSeat(Vehicle,-1) == Ped and not IsEntityInAir(Vehicle) and (GetEntitySpeed(Vehicle) * 2.236936) >= 10 then
-			if not Message[1] then
-				SetEntityMaxSpeed(Vehicle,GetVehicleEstimatedMaxSpeed(Vehicle))
-				TriggerEvent("Notify","Sucesso","Controle de cruzeiro desativado.","verde",5000)
+		local Vehicle = GetVehiclePedIsIn(Ped)
+		if GetPedInVehicleSeat(Vehicle,-1) == Ped and not IsEntityInAir(Vehicle) then
+			if not CruiseEnabled then
+				CruiseEnabled = true
+				CruiseVehicle = Vehicle
+				SetEntityMaxSpeed(Vehicle,GetEntitySpeed(Vehicle))
+				TriggerEvent("Notify","Sucesso","Controle de cruzeiro ativado.","verde",5000)
 			else
-				if parseInt(Message[1]) > 10 then
-					SetEntityMaxSpeed(Vehicle,0.45 * Message[1])
-					TriggerEvent("Notify","Sucesso","Controle de cruzeiro ativado.","verde",5000)
-				end
+				CruiseEnabled = false
+				CruiseVehicle = false
+				TriggerEvent("Notify","Sucesso","Controle de cruzeiro desativado.","verde",5000)
+				SetEntityMaxSpeed(Vehicle,GetVehicleHandlingFloat(Vehicle,"CHandlingData","fInitialDriveMaxFlatVel"))
 			end
 		end
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- KEYMAPPING
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterKeyMapping("ControlCruiser","Ativar/Desativar controle de cruzeiro.","keyboard","F4")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:DEATHUPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -4003,8 +4003,8 @@ local List = {
 		["Economy"] = 2725,
 		["Market"] = true
 	},
-	["races"] = {
-		["Index"] = "races",
+	["racesticket"] = {
+		["Index"] = "racesticket",
 		["Name"] = "Cartão Descartável",
 		["Description"] = "Explore circuitos exclusivos e de acesso privilegiado, desbloqueie portas para emocionantes experiências em locais de elite ao redor do mundo.",
 		["Type"] = "Comum",

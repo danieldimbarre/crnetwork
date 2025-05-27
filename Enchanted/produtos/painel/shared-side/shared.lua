@@ -2,14 +2,12 @@
 -- CONFIG
 -----------------------------------------------------------------------------------------------------------------------------------------
 Config = {
-	MaxAmountTags = 3,
-	MaxAmountAnnouncements = 5,
-
 	BankTaxWithdraw = 1.0,
 	BankTaxTransfer = 1.0,
 
 	Permissions = { -- ( -1 = Ninguém tem permissão | 0 = Todos tem permissão | 2 = 2 e 1 tem permissão )
 		Management = {
+			View = 0,
 			Create = 2,
 			Dismiss = 2,
 			Edit = 2
@@ -23,7 +21,6 @@ Config = {
 			Avatar = -1
 		},
 		Announcements = {
-			View = 0,
 			Create = 2,
 			Edit = 2,
 			Delete = 2
@@ -47,12 +44,12 @@ Config = {
 	OtherPermissions = {
 		Paramedico = {
 			Management = {
+				View = 0,
 				Create = 2,
 				Dismiss = 2,
 				Edit = 2
 			},
 			Announcements = {
-				View = 0,
 				Create = 2,
 				Edit = 2,
 				Delete = 2
@@ -96,6 +93,20 @@ Config = {
 			Increase = 2592000,
 			Title = "Benefícios de Grupo",
 			Description = "Adquirir por <b>30 dias</b> as bonificações abaixo.<br>• Dobro de peso no compartimento dos membros.",
+			Image = "nui://painel/web-side/images/user.svg"
+		},{
+			Increase = 1,
+			Type = "Tags",
+			Price = 500000,
+			Title = "Aumento de Tags",
+			Description = "Aumenta o limite máximo de tags do grupo.",
+			Image = "nui://painel/web-side/images/user.svg"
+		},{
+			Increase = 1,
+			Price = 500000,
+			Type = "Announces",
+			Title = "Aumento de Anúncios",
+			Description = "Aumenta o limite máximo de anúncios do grupo.",
 			Image = "nui://painel/web-side/images/user.svg"
 		}
 	}

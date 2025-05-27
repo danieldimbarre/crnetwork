@@ -436,3 +436,5 @@ INSERT INTO `mdt_creative_units` (`id`, `Image`, `Name`, `Permission`, `Officers
 
 ALTER TABLE `permissions` ADD `Premium` BIGINT(19) NOT NULL DEFAULT '0' AFTER `Bank`;
 ALTER TABLE `accounts` ADD `Passport` BIGINT(19) NOT NULL DEFAULT '0' AFTER `Characters`;
+ALTER TABLE `permissions` ADD `Tags` INT(10) NOT NULL DEFAULT '3' AFTER `Members`;
+ALTER TABLE `permissions` ADD `Announces` INT(10) NOT NULL DEFAULT '3' AFTER `Members`;

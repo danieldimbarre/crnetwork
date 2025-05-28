@@ -9,8 +9,8 @@ local Active = false
 -- SYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	LoadModel("prop_mil_crate_01")
 	LoadModel("prop_crashed_heli")
+	LoadModel("m23_1_prop_m31_crate_cd_01a")
 
 	if GlobalState.Helicrash then
 		Active = GlobalState.Helicrash
@@ -35,7 +35,7 @@ CreateThread(function()
 
 				for Number,Locate in pairs(Select.Coords) do
 					if not Objects[Number] then
-						Objects[Number] = CreateObjectNoOffset("prop_mil_crate_01",Locate.xyz,false,false,false)
+						Objects[Number] = CreateObjectNoOffset("m23_1_prop_m31_crate_cd_01a",Locate.xyz,false,false,false)
 						SetEntityLodDist(Objects[Number],0xFFFF)
 						FreezeEntityPosition(Objects[Number],true)
 						PlaceObjectOnGroundProperly(Objects[Number])
@@ -45,11 +45,11 @@ CreateThread(function()
 							Fire[Number] = StartScriptFire(Locate.xyz,25,0)
 						end
 
-						exports["target"]:AddBoxZone("Helicrash:"..Number,Locate.xyz,1.25,2.0,{
+						exports["target"]:AddBoxZone("Helicrash:"..Number,Locate.xyz,1.25,2.25,{
 							name = "Helicrash:"..Number,
+							maxZ = Locate.z + 0.75,
 							heading = Locate.w,
-							minZ = Locate.z - 1.0,
-							maxZ = Locate.z + 0.75
+							minZ = Locate.z
 						},{
 							shop = "Helicrash:"..Number,
 							Distance = 2.0,

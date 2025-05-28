@@ -226,6 +226,16 @@ Use = {
 		end
 	end,
 
+	["propertys"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if Split[2] then
+			local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+			if Consult then
+				vCLIENT.Waypoint(source,exports["propertys"]:Coords(Consult.Name))
+				TriggerClientEvent("inventory:Notify",source,"Sucesso","Marcação selecionada no mapa.","verde")
+			end
+		end
+	end,
+
 	["vehiclekey"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local Vehicle,Network,Plate = vRPC.VehicleList(source)
 		if Vehicle and Plate == Split[3] then

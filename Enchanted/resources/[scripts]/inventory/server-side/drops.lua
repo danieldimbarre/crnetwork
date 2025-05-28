@@ -88,6 +88,11 @@ exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 		if not Provisory["desc"] then
 			if Split[1] == "vehiclekey" and Split[3] then
 				Provisory["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
+			elseif Split[1] == "propertys" and Split[2] then
+				local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+				if Consult then
+					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
+				end
 			elseif ItemNamed(Split[1]) and Split[2] then
 				Provisory["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
 			end

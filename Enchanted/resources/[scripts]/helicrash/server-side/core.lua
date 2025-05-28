@@ -37,11 +37,3 @@ RegisterCommand("helicrash",function(source,Message)
 		GlobalState.Helicrash = Selected
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ADDSTATEBAGCHANGEHANDLER
------------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Helibox",nil,function(Name,Key,Value)
-	if Value <= 0 then
-		GlobalState.Helicrash = false
-	end
-end)

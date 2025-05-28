@@ -11,15 +11,25 @@ local LevelsPainel = { 0,270,580,940,1350,1820,2360,2980,3690,4500,5440,6520,776
 -- CLASSCATEGORY
 -----------------------------------------------------------------------------------------------------------------------------------------
 function ClassCategory(Experience)
-	local Return = 1
-
-	for Table = 1,#Levels do
-		if Experience >= Levels[Table] then
-			Return = Table
+	for Number = #Levels,1,-1 do
+		if Experience >= Levels[Number] then
+			return Number
 		end
 	end
 
-	return Return
+	return 1
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PAINELCATEGORY
+-----------------------------------------------------------------------------------------------------------------------------------------
+function PainelCategory(Experience)
+	for Number = #LevelsPainel,1,-1 do
+		if Experience >= LevelsPainel[Number] then
+			return Number
+		end
+	end
+
+	return 1
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TABLELEVEL

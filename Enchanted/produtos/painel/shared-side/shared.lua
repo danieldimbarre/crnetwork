@@ -95,6 +95,7 @@ Config = {
 			Description = "Adquirir por <b>30 dias</b> as bonificações abaixo.<br>• Dobro de peso no compartimento dos membros.",
 			Image = "nui://painel/web-side/images/user.svg"
 		},{
+			Level = 10,
 			Increase = 1,
 			Type = "Tags",
 			Price = 500000,
@@ -102,6 +103,7 @@ Config = {
 			Description = "Aumenta o limite máximo de tags do grupo.",
 			Image = "nui://painel/web-side/images/user.svg"
 		},{
+			Level = 10,
 			Increase = 1,
 			Price = 500000,
 			Type = "Announces",

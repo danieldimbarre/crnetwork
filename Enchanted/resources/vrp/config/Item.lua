@@ -3967,7 +3967,7 @@ local List = {
 	["propertys"] = {
 		["Index"] = "propertys",
 		["Name"] = "Chave de Ferro",
-		["Type"] = "Comum",
+		["Type"] = "Consumível",
 		["Weight"] = 0.35,
 		["Delete"] = true,
 		["Economy"] = 0,
@@ -4001,7 +4001,11 @@ local List = {
 		["Durability"] = 48,
 		["Weight"] = 0.475,
 		["Economy"] = 2725,
-		["Market"] = true
+		["Market"] = true,
+		["Execute"] = {
+			["Type"] = "Server",
+			["Event"] = "races:Clean"
+		}
 	},
 	["racesticket"] = {
 		["Index"] = "racesticket",

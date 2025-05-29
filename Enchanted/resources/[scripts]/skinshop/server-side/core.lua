@@ -9,6 +9,7 @@ vRP = Proxy.getInterface("vRP")
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
 Creative = {}
+vCLIENT = Tunnel.getInterface("skinshop")
 Tunnel.bindInterface("skinshop",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCATIONS
@@ -57,16 +58,26 @@ RegisterServerEvent("skinshop:Send")
 AddEventHandler("skinshop:Send",function()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		local ClosestPed = vRPC.ClosestPed(source)
-		if ClosestPed then
-			if vRP.Request(ClosestPed,false,"Aceitar vestimentas de <b>"..vRP.FullName(Passport).."</b>?") then
-				TriggerClientEvent("Notify",source,"Sucesso","Vestimentas enviada.","verde",5000)
-				TriggerClientEvent("skinshop:Apply",ClosestPed,vCLIENT.CurrentClothes(source),true)
-			else
-				TriggerClientEvent("Notify",source,"Aviso","Vestimentas recusada.","amarelo",5000)
-			end
-		end
+
+	if not Passport then
+		return false
+	end
+
+	local OtherSource = vRPC.ClosestPed(source)
+	if not OtherSource or vRP.GetHealth(OtherSource) <= 100 then
+		return false
+	end
+
+	if vRP.ModelPlayer(source) ~= vRP.ModelPlayer(OtherSource) then
+		TriggerClientEvent("Notify",source,"Aviso","Vestimentas recusada.","amarelo",5000)
+		return false
+	end
+
+	if vRP.Request(OtherSource,false,"Aceitar vestimentas de <b>"..vRP.FullName(Passport).."</b>?") then
+		TriggerClientEvent("Notify",source,"Sucesso","Vestimentas enviada.","verde",5000)
+		TriggerClientEvent("skinshop:Apply",OtherSource,vCLIENT.CurrentClothes(source),true)
+	else
+		TriggerClientEvent("Notify",source,"Aviso","Vestimentas recusada.","amarelo",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -426,17 +426,20 @@ function Creative.Mount()
 
 				if not v.desc then
 					if Split[1] == "vehiclekey" and Split[3] then
-						v.desc = "Placa do Veículo: <common>"..Split[3].."</common>"
+						local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+						if Consult then
+							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
+						end
 					elseif Split[1] == "propertys" and Split[2] then
 						local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 						if Consult then
 							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 						end
-					elseif ItemNamed(Split[1]) and Split[2] then
+					elseif ItemNamed(Split[1]) and Split[2] and vRP.Identity(Split[2]) then
 						if Split[1] == "identity" then
 							v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
 						else
-							v.desc = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+							v.desc = "Proprietário: <common>"..vRP.FullName(Split[2]).."</common>"
 						end
 					end
 				end
@@ -487,17 +490,20 @@ function Creative.Blueprint()
 
 				if not v.desc then
 					if Split[1] == "vehiclekey" and Split[3] then
-						v.desc = "Placa do Veículo: <common>"..Split[3].."</common>"
+						local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+						if Consult then
+							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
+						end
 					elseif Split[1] == "propertys" and Split[2] then
 						local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 						if Consult then
 							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 						end
-					elseif ItemNamed(Split[1]) and Split[2] then
+					elseif ItemNamed(Split[1]) and Split[2] and vRP.Identity(Split[2]) then
 						if Split[1] == "identity" then
 							v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
 						else
-							v.desc = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+							v.desc = "Proprietário: <common>"..vRP.FullName(Split[2]).."</common>"
 						end
 					end
 				end

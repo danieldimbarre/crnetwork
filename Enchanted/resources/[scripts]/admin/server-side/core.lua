@@ -679,7 +679,7 @@ end)
 RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Motivo",{ "Horas","Dias","Permanente" },"Quantidade")
+		local Keyboard = vKEYBOARD.Banned(source,"Passaporte","Motivo",{ "Horas","Dias","Permanente" },"Quantidade")
 		if Keyboard then
 			local Mode = Keyboard[3]
 			local Reason = Keyboard[2]
@@ -1178,18 +1178,24 @@ end)
 RegisterCommand("addcar",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",1) then
-		local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Modelo",{ "Mensal","Permanente","Dias" },"Dias")
-		if Keyboard and Keyboard[1] and Keyboard[2] and Keyboard[3] and VehicleExist(Keyboard[2]) then
-			TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Keyboard[2]).."</b> entregue.","verde",5000)
-			exports["discord"]:Embed("AddCar","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Keyboard[1].."\n**[MODEL]:** "..Keyboard[2].."\n**[TIPO]:** "..Keyboard[3])
+		local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Modelo",{ "Mensal","Permanente","Dias" },"Dias",{ "Sim","Não" })
+		if Keyboard and VehicleExist(Keyboard[2]) then
+			local Mode = Keyboard[3]
+			local Model = Keyboard[2]
+			local Days = parseInt(Keyboard[4],true)
+			local OtherPassport = parseInt(Keyboard[1],true)
+			local Block = Keyboard[5] == "Sim" and true or false
 
-			if Keyboard[3] == "Mensal" then
-				vRP.Query("vehicles/rentalVehicles",{ Passport = Keyboard[1], Vehicle = Keyboard[2], Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Keyboard[2]), Work = 0 })
-			elseif Keyboard[3] == "Dias" and Keyboard[4] and parseInt(Keyboard[4]) >= 1 then
-				vRP.Query("vehicles/rentalVehicles",{ Passport = Keyboard[1], Vehicle = Keyboard[2], Plate = vRP.GeneratePlate(), Days = Keyboard[4], Weight = VehicleWeight(Keyboard[2]), Work = 0 })
-			elseif Keyboard[3] == "Permanente" then
-				vRP.Query("vehicles/addVehicles",{ Passport = Keyboard[1], Vehicle = Keyboard[2], Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Keyboard[2]), Work = 0 })
+			if Mode == "Mensal" then
+				exports["oxmysql"]:query_async("INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax,Block) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,UNIX_TIMESTAMP() + 2592000,UNIX_TIMESTAMP() + 2592000,@Block)",{ Passport = OtherPassport, Vehicle = Model, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Model), Work = (VehicleMode(Model) == "Work"), Block = Block })
+			elseif Mode == "Dias" then
+				exports["oxmysql"]:query_async("INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax,Block) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,UNIX_TIMESTAMP() + (86400 * @Days),UNIX_TIMESTAMP() + (86400 * @Days),@Block)",{ Passport = OtherPassport, Vehicle = Model, Plate = vRP.GeneratePlate(), Days = Days, Weight = VehicleWeight(Model), Work = (VehicleMode(Model) == "Work"), Block = Block })
+			elseif Mode == "Permanente" then
+				exports["oxmysql"]:query_async("INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Tax,Block) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,UNIX_TIMESTAMP() + 2592000,@Block)",{ Passport = OtherPassport, Vehicle = Model, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Model), Work = (VehicleMode(Model) == "Work"), Block = Block })
 			end
+
+			TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> entregue.","verde",5000)
+			exports["discord"]:Embed("AddCar","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[MODEL]:** "..Model.."\n**[TIPO]:** "..Mode)
 		end
 	end
 end)

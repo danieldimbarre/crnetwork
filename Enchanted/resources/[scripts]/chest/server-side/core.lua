@@ -226,9 +226,14 @@ function Creative.Mount()
 		return false
 	end
 
-	local function ProcessItem(Index,v,Primary)
-		if Primary and v.amount <= 0 or not ItemExist(v.item) then
-			vRP.RemoveItem(Passport,v.item,v.amount,false)
+	local function ProcessItem(Slot,v,Prefix,Key,Save)
+		if v.amount <= 0 or not ItemExist(v.item) then
+			if Prefix == "Inventory" then
+				vRP.CleanSlot(Passport,Slot)
+			elseif Prefix == "Chest" then
+				vRP.CleanSlotChest(Key,Slot,Save)
+			end
+
 			return false
 		end
 
@@ -240,23 +245,31 @@ function Creative.Mount()
 		v.economy = ItemEconomy(v.item)
 		v.desc = ItemDescription(v.item)
 		v.key = v.item
-		v.slot = Index
+		v.slot = Slot
 
 		local Split = splitString(v.item)
 		local Item = Split[1]
 
-		if isPrimary and ChestItens[Item] and ChestItens[Item].Close then
+		if Prefix == "Inventory" and ChestItens[Item] and ChestItens[Item].Close then
 			v.block = true
 		end
 
 		if not v.desc then
 			if Item == "vehiclekey" and Split[3] then
-				v.desc = "Placa do Veículo: <common>"..Split[3].."</common>"
-			elseif ItemNamed(Item) and Split[2] then
+				local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+				if Consult then
+					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
+				end
+			elseif Item == "propertys" and Split[2] then
+				local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+				if Consult then
+					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
+				end
+			elseif ItemNamed(Item) and Split[2] and vRP.Identity(Split[2]) then
 				if Item == "identity" then
-					v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+					v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
 				else
-					v.desc = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+					v.desc = "Proprietário: <common>"..vRP.FullName(Split[2]).."</common>"
 				end
 			end
 		end
@@ -277,21 +290,23 @@ function Creative.Mount()
 	end
 
 	local Primary = {}
-	local Secondary = {}
 	local Inventory = vRP.Inventory(Passport)
-	local Chest = vRP.GetSrvData(Open[Passport].Name,Open[Passport].Save)
-
-	for Index,v in pairs(Inventory) do
-		local Processed = ProcessItem(Index,v,true)
+	for Slot,v in pairs(Inventory) do
+		local Processed = ProcessItem(Slot,v,"Inventory")
 		if Processed then
-			Primary[Index] = Processed
+			Primary[Slot] = Processed
 		end
 	end
 
-	for Index,v in pairs(Chest) do
-		local Processed = ProcessItem(Index,v)
-		if Processed then
-			Secondary[Index] = Processed
+	local Secondary = {}
+	if Open[Passport] and Open[Passport].Name then
+		local ChestData = Open[Passport].Name
+		local Chest = vRP.GetSrvData(ChestData,Open[Passport].Save)
+		for Slot,v in pairs(Chest) do
+			local Processed = ProcessItem(Slot,v,"Chest",ChestData,Open[Passport].Save)
+			if Processed then
+				Secondary[Slot] = Processed
+			end
 		end
 	end
 

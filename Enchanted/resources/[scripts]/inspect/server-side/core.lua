@@ -61,93 +61,109 @@ function Creative.Mount()
 	if Passport then
 		local Primary = {}
 		local Inv = vRP.Inventory(Passport)
-		for Index,v in pairs(Inv) do
-			if (v["amount"] <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveItem(Passport,v["item"],v["amount"],false)
+		for Slot,v in pairs(Inv) do
+			if v.amount <= 0 or not ItemExist(v.item) then
+				vRP.CleanSlot(Passport,Slot)
 			else
-				v["name"] = ItemName(v["item"])
-				v["weight"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["amount"] = parseInt(v["amount"])
-				v["rarity"] = ItemRarity(v["item"])
-				v["economy"] = ItemEconomy(v["item"])
-				v["desc"] = ItemDescription(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+				v.name = ItemName(v.item)
+				v.weight = ItemWeight(v.item)
+				v.index = ItemIndex(v.item)
+				v.amount = parseInt(v.amount)
+				v.rarity = ItemRarity(v.item)
+				v.economy = ItemEconomy(v.item)
+				v.desc = ItemDescription(v.item)
+				v.key = v.item
+				v.slot = Slot
 
-				local Split = splitString(v["item"])
+				local Split = splitString(v.item)
 
-				if not v["desc"] then
+				if not v.desc then
 					if Split[1] == "vehiclekey" and Split[3] then
-						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
-					elseif ItemNamed(Split[1]) and Split[2] then
+						local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+						if Consult then
+							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
+						end
+					elseif Split[1] == "propertys" and Split[2] then
+						local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+						if Consult then
+							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
+						end
+					elseif ItemNamed(Split[1]) and Split[2] and vRP.Identity(Split[2]) then
 						if Split[1] == "identity" then
-							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+							v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
 						else
-							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+							v.desc = "Proprietário: <common>"..vRP.FullName(Split[2]).."</common>"
 						end
 					end
 				end
 
 				if Split[2] then
-					local Loaded = ItemLoads(v["item"])
+					local Loaded = ItemLoads(v.item)
 					if Loaded then
-						v["charges"] = parseInt(Split[2] * (100 / Loaded))
+						v.charges = parseInt(Split[2] * (100 / Loaded))
 					end
 
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
+					if ItemDurability(v.item) then
+						v.durability = parseInt(os.time() - Split[2])
+						v.days = ItemDurability(v.item)
 					end
 				end
 
-				Primary[Index] = v
+				Primary[Slot] = v
 			end
 		end
 
 		local Secondary = {}
 		local Inv = vRP.Inventory(Players[Passport])
-		for Index,v in pairs(Inv) do
-			if (v["amount"] <= 0 or not ItemExist(v["item"])) then
-				vRP.RemoveItem(Players[Passport],v["item"],v["amount"],false)
+		for Slot,v in pairs(Inv) do
+			if v.amount <= 0 or not ItemExist(v.item) then
+				vRP.CleanSlot(Players[Passport],Slot)
 			else
-				v["name"] = ItemName(v["item"])
-				v["weight"] = ItemWeight(v["item"])
-				v["index"] = ItemIndex(v["item"])
-				v["amount"] = parseInt(v["amount"])
-				v["rarity"] = ItemRarity(v["item"])
-				v["economy"] = ItemEconomy(v["item"])
-				v["desc"] = ItemDescription(v["item"])
-				v["key"] = v["item"]
-				v["slot"] = Index
+				v.name = ItemName(v.item)
+				v.weight = ItemWeight(v.item)
+				v.index = ItemIndex(v.item)
+				v.amount = parseInt(v.amount)
+				v.rarity = ItemRarity(v.item)
+				v.economy = ItemEconomy(v.item)
+				v.desc = ItemDescription(v.item)
+				v.key = v.item
+				v.slot = Slot
 
-				local Split = splitString(v["item"])
+				local Split = splitString(v.item)
 
-				if not v["desc"] then
+				if not v.desc then
 					if Split[1] == "vehiclekey" and Split[3] then
-						v["desc"] = "Placa do Veículo: <common>"..Split[3].."</common>"
-					elseif ItemNamed(Split[1]) and Split[2] then
+						local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+						if Consult then
+							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
+						end
+					elseif Split[1] == "propertys" and Split[2] then
+						local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+						if Consult then
+							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
+						end
+					elseif ItemNamed(Split[1]) and Split[2] and vRP.Identity(Split[2]) then
 						if Split[1] == "identity" then
-							v["desc"] = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
+							v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
 						else
-							v["desc"] = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
+							v.desc = "Proprietário: <common>"..vRP.FullName(Split[2]).."</common>"
 						end
 					end
 				end
 
 				if Split[2] then
-					local Loaded = ItemLoads(v["item"])
+					local Loaded = ItemLoads(v.item)
 					if Loaded then
-						v["charges"] = parseInt(Split[2] * (100 / Loaded))
+						v.charges = parseInt(Split[2] * (100 / Loaded))
 					end
 
-					if ItemDurability(v["item"]) then
-						v["durability"] = parseInt(os.time() - Split[2])
-						v["days"] = ItemDurability(v["item"])
+					if ItemDurability(v.item) then
+						v.durability = parseInt(os.time() - Split[2])
+						v.days = ItemDurability(v.item)
 					end
 				end
 
-				Secondary[Index] = v
+				Secondary[Slot] = v
 			end
 		end
 

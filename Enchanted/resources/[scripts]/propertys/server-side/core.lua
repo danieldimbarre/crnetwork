@@ -580,61 +580,83 @@ function Creative.Mount(Name,Mode)
 		end
 	end
 
-	local function ProcessItems(Items,Prefix)
-		local Processed = {}
+	local function ProcessItem(Slot,v,Prefix,Key,Save)
+		if v.amount <= 0 or not ItemExist(v.item) then
+			if Prefix == "Inventory" then
+				vRP.CleanSlot(Passport,Slot)
+			elseif Prefix == "Chest" then
+				vRP.CleanSlotChest(Key,Slot,Save)
+			end
 
-		for Index,v in pairs(Items) do
-			if v.amount <= 0 or not ItemExist(v.item) then
-				vRP.RemoveItem(Passport,v.item,v.amount)
-			else
-				v.name = ItemName(v.item)
-				v.weight = ItemWeight(v.item)
-				v.index = ItemIndex(v.item)
-				v.amount = parseInt(v.amount)
-				v.rarity = ItemRarity(v.item)
-				v.economy = ItemEconomy(v.item)
-				v.desc = ItemDescription(v.item) or ""
-				v.key = v.item
-				v.slot = Index
+			return false
+		end
 
-				local Split = splitString(v.item)
+		v.name = ItemName(v.item)
+		v.weight = ItemWeight(v.item)
+		v.index = ItemIndex(v.item)
+		v.amount = parseInt(v.amount)
+		v.rarity = ItemRarity(v.item)
+		v.economy = ItemEconomy(v.item)
+		v.desc = ItemDescription(v.item)
+		v.key = v.item
+		v.slot = Slot
 
-				if not v.desc then
-					if Split[1] == "vehiclekey" and Split[3] then
-						v.desc = "Placa do Veículo: <common>"..Split[3].."</common>"
-					elseif ItemNamed(Split[1]) and Split[2] then
-						if Split[1] == "identity" then
-							v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Passport).."</rare>"
-						else
-							v.desc = "Propriedade: <common>"..vRP.FullName(Split[2]).."</common>"
-						end
-					end
+		local Split = splitString(v.item)
+		local Item = Split[1]
+
+		if not v.desc then
+			if Item == "vehiclekey" and Split[3] then
+				local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+				if Consult then
+					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
 				end
-
-				if Split[2] then
-					local Loaded = ItemLoads(v.item)
-					if Loaded then
-						v.charges = parseInt(Split[2] * (100 / Loaded))
-					end
-
-					if ItemDurability(v.item) then
-						v.durability = parseInt(os.time() - Split[2])
-						v.days = ItemDurability(v.item)
-					end
+			elseif Item == "propertys" and Split[2] then
+				local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+				if Consult then
+					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 				end
-
-				Processed[Index] = v
+			elseif ItemNamed(Item) and Split[2] and vRP.Identity(Split[2]) then
+				if Item == "identity" then
+					v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
+				else
+					v.desc = "Proprietário: <common>"..vRP.FullName(Split[2]).."</common>"
+				end
 			end
 		end
 
-		return Processed
+		if Split[2] then
+			local Loaded = ItemLoads(v.item)
+			if Loaded then
+				v.charges = parseInt(Split[2] * (100 / Loaded))
+			end
+
+			if ItemDurability(v.item) then
+				v.durability = parseInt(os.time() - Split[2])
+				v.days = ItemDurability(v.item)
+			end
+		end
+
+		return v
 	end
 
-	local Inv = vRP.Inventory(Passport)
-	local Primary = ProcessItems(Inv,"inventory")
+	local Primary = {}
+	local Secondary = {}
+	local Inventory = vRP.Inventory(Passport)
+	local Chest = vRP.GetSrvData(Mode..":"..Name,true)
 
-	local Consult = vRP.GetSrvData(Mode..":"..Name,true)
-	local Secondary = ProcessItems(Consult,"chest")
+	for Slot,v in pairs(Inventory) do
+		local Processed = ProcessItem(Slot,v,"Inventory")
+		if Processed then
+			Primary[Slot] = Processed
+		end
+	end
+
+	for Slot,v in pairs(Chest) do
+		local Processed = ProcessItem(Slot,v,"Chest",Mode..":"..Name,true)
+		if Processed then
+			Secondary[Slot] = Processed
+		end
+	end
 
 	return Primary,Secondary,vRP.GetWeight(Passport),Weight
 end

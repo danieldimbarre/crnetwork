@@ -8,6 +8,10 @@ client_scripts {
 	"client-side/*"
 }
 
+shared_scripts {
+    "shared-side/*"
+}
+
 files {
 	"web-side/*",
 	"web-side/**/*"

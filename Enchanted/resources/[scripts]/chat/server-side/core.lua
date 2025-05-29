@@ -30,6 +30,8 @@ AddEventHandler("chat:ServerMessage", function(Mode,Message)
 		end
 	else
 		if Mode == "OOC" then
+			TriggerClientEvent("chat:ClientMessage",source,Name,Messages,Mode)
+
 			for _,Sources in pairs(vRPC.ClosestPeds(source,10)) do
 				async(function()
 					TriggerClientEvent("chat:ClientMessage",Sources,Name,Messages,Mode)

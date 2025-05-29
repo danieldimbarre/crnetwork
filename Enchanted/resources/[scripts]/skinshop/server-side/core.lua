@@ -51,6 +51,25 @@ function Creative.Update(Clothes)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SKINSHOP:SEND
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("skinshop:Send")
+AddEventHandler("skinshop:Send",function()
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		local ClosestPed = vRPC.ClosestPed(source)
+		if ClosestPed then
+			if vRP.Request(ClosestPed,false,"Aceitar vestimentas de <b>"..vRP.FullName(Passport).."</b>?") then
+				TriggerClientEvent("Notify",source,"Sucesso","Vestimentas enviada.","verde",5000)
+				TriggerClientEvent("skinshop:Apply",ClosestPed,vCLIENT.CurrentClothes(source),true)
+			else
+				TriggerClientEvent("Notify",source,"Aviso","Vestimentas recusada.","amarelo",5000)
+			end
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP:REMOVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("skinshop:Remove")

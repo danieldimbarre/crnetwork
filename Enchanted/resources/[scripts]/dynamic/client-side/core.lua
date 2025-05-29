@@ -112,6 +112,7 @@ RegisterCommand("PlayerFunctions",function()
 		exports["dynamic"]:AddButton("Calça","Colocar/Retirar a calça.","player:Outfit","Pants","clothes",true)
 		exports["dynamic"]:AddButton("Sapatos","Colocar/Retirar o sapato.","player:Outfit","Shoes","clothes",true)
 		exports["dynamic"]:AddButton("Acessórios","Colocar/Retirar os acessórios.","player:Outfit","Accessory","clothes",true)
+		exports["dynamic"]:AddButton("Enviar","Vestir roupas no próximo.","skinshop:Send","","clothes",true)
 
 		if vRP.ClosestVehicle(7) then
 			if not IsPedInAnyVehicle(Ped) then

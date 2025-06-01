@@ -6,6 +6,7 @@ ResultFinish = 5
 ColourMarker = 77
 RankingTablet = 10
 SecondsResult = 5000
+CooldownRaces = 7200
 SecondsExplode = 5000
 VehicleDuration = 604800
 ExchangeItem = "platinum"

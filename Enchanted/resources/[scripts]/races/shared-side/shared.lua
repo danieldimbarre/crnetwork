@@ -17,10 +17,10 @@ PropTyre = "prop_offroad_tyres02"
 -----------------------------------------------------------------------------------------------------------------------------------------
 Routes = {
 	{
-		Time = 275,
+		Time = 150,
 		Runners = 10,
-		Record = 275,
-		Payment = 4000,
+		Record = 80,
+		Payment = 4050,
 		Checkpoints = 20,
 		Difficulty = "Fácil",
 		Image = "china.png",
@@ -147,10 +147,10 @@ Routes = {
 			}
 		}
 	},{
-		Time = 275,
+		Time = 240,
 		Runners = 10,
-		Record = 275,
-		Payment = 6000,
+		Record = 140,
+		Payment = 7500,
 		Checkpoints = 34,
 		Difficulty = "Difícil",
 		Image = "infiniteline.png",
@@ -342,10 +342,10 @@ Routes = {
 			}
 		}
 	},{
-		Time = 275,
+		Time = 320,
 		Runners = 10,
-		Record = 275,
-		Payment = 6000,
+		Record = 225,
+		Payment = 7375,
 		Checkpoints = 58,
 		Difficulty = "Difícil",
 		Image = "elrancho.png",
@@ -657,10 +657,10 @@ Routes = {
 			}
 		}
 	},{
-		Time = 275,
+		Time = 300,
 		Runners = 10,
-		Record = 275,
-		Payment = 5000,
+		Record = 220,
+		Payment = 5100,
 		Checkpoints = 39,
 		Difficulty = "Normal",
 		Image = "praia.png",
@@ -878,10 +878,10 @@ Routes = {
 
 		}
 	},{
-		Time = 275,
+		Time = 240,
 		Runners = 10,
-		Record = 275,
-		Payment = 5000,
+		Record = 160,
+		Payment = 5100,
 		Checkpoints = 37,
 		Difficulty = "Normal",
 		Image = "centralroads.png",
@@ -1088,10 +1088,10 @@ Routes = {
 			}
 		}
 	},{
-		Time = 275,
+		Time = 320,
 		Runners = 10,
-		Record = 250,
-		Payment = 5000,
+		Record = 220,
+		Payment = 5500,
 		Checkpoints = 39,
 		Difficulty = "Normal",
 		Image = "cypress.png",
@@ -1310,13 +1310,13 @@ Routes = {
 	},{
 		Time = 275,
 		Runners = 10,
-		Record = 250,
-		Payment = 4000,
+		Record = 170,
+		Payment = 3450,
 		Checkpoints = 44,
 		Difficulty = "Fácil",
 		Image = "littlebighorn.png",
 		Name = "Little Bighorn Avenue",
-		Init = vec4(513.22,-641.27,24.21,172.92),
+		Init = vec3(513.22,-641.27,24.21),
 		Positions = {
 			vec4(514.88,-654.39,24.43,175.75),
 			vec4(509.71,-654.1,24.43,172.92),
@@ -1556,12 +1556,12 @@ Routes = {
 		Time = 200,
 		Runners = 10,
 		Record = 175,
-		Payment = 4000,
+		Payment = 3375,
 		Checkpoints = 13,
 		Difficulty = "Fácil",
 		Image = "costureira.png",
 		Name = "Darnell Bros",
-		Init = vec4(693.08,-1028.96,21.9,0.0),
+		Init = vec3(693.08,-1028.96,21.9),
 		Positions = {
 			vec4(704.3,-982.79,23.79,87.88),
 			vec4(704.73,-987.12,23.78,90.71),
@@ -1643,15 +1643,15 @@ Routes = {
 			}
 		}
 	},{
-		Time = 275,
+		Time = 270,
 		Runners = 10,
-		Record = 250,
-		Payment = 4000,
+		Record = 170,
+		Payment = 5500,
 		Checkpoints = 22,
-		Difficulty = "Fácil",
+		Difficulty = "Normal",
 		Image = "teatro.png",
 		Name = "Teatro",
-		Init = vec4(724.63,644.55,128.38,68.04),
+		Init = vec3(724.63,644.55,128.38),
 		Positions = {
 			vec4(716.8,622.87,128.6,252.29),
 			vec4(715.26,618.68,128.6,252.29),
@@ -1780,13 +1780,13 @@ Routes = {
 	},{
 		Time = 175,
 		Runners = 10,
-		Record = 150,
-		Payment = 4000,
+		Record = 100,
+		Payment = 4125,
 		Checkpoints = 22,
 		Difficulty = "Fácil",
 		Image = "mazearena.png",
 		Name = "Maze Arena",
-		Init = vec4(-256.62,-2084.53,27.09,300.48),
+		Init = vec3(-256.62,-2084.53,27.09),
 		Positions = {
 			vec4(-229.75,-2053.55,27.31,323.15),
 			vec4(-225.32,-2056.97,27.31,320.32),
@@ -1916,12 +1916,12 @@ Routes = {
 		Time = 175,
 		Runners = 10,
 		Record = 150,
-		Payment = 4000,
+		Payment = 3375,
 		Checkpoints = 25,
 		Difficulty = "Fácil",
 		Image = "pier.png",
 		Name = "Pier",
-		Init = vec4(-1558.74,-1037.97,6.76,229.61),
+		Init = vec3(-1558.74,-1037.97,6.76),
 		Positions = {
 			vec4(-1524.71,-1062.35,4.92,235.28),
 			vec4(-1527.08,-1066.53,4.9,235.28),
@@ -2065,13 +2065,13 @@ Routes = {
 	},{
 		Time = 200,
 		Runners = 10,
-		Record = 175,
-		Payment = 4000,
+		Record = 120,
+		Payment = 4200,
 		Checkpoints = 32,
 		Difficulty = "Fácil",
 		Image = "porto.png",
 		Name = "Porto Baixo",
-		Init = vec4(1279.48,-3327.63,5.37,19.85),
+		Init = vec3(1279.48,-3327.63,5.37),
 		Positions = {
 			vec4(1254.19,-3298.93,5.49,0.0),
 			vec4(1257.82,-3298.91,5.49,0.0),
@@ -2248,15 +2248,15 @@ Routes = {
 			}
 		}
 	},{
-		Time = 225,
+		Time = 240,
 		Runners = 10,
-		Record = 200,
-		Payment = 4000,
+		Record = 175,
+		Payment = 4800,
 		Checkpoints = 34,
-		Difficulty = "Fácil",
+		Difficulty = "Normal",
 		Image = "popsdiner.png",
 		Name = "Pops Dinner",
-		Init = vec4(1444.05,6552.51,14.54,155.91),
+		Init = vec3(1444.05,6552.51,14.54),
 		Positions = {
 			vec4(1403.73,6511.43,19.12,272.13),
 			vec4(1403.5,6506.88,19.23,269.3),
@@ -2445,13 +2445,13 @@ Routes = {
 	},{
 		Time = 250,
 		Runners = 10,
-		Record = 225,
-		Payment = 4000,
+		Record = 190,
+		Payment = 6500,
 		Checkpoints = 32,
-		Difficulty = "Fácil",
+		Difficulty = "Difícil",
 		Image = "aerosand.png",
 		Name = "Aero Sandy",
-		Init = vec4(1073.07,3079.09,40.27,286.3),
+		Init = vec3(1073.07,3079.09,40.27),
 		Positions = {
 			vec4(1112.99,3094.53,40.1,286.3),
 			vec4(1114.0,3090.23,40.1,286.3),
@@ -2636,12 +2636,12 @@ Routes = {
 		Time = 175,
 		Runners = 10,
 		Record = 150,
-		Payment = 4000,
+		Payment = 3375,
 		Checkpoints = 23,
 		Difficulty = "Fácil",
 		Image = "aero.png",
 		Name = "Aero",
-		Init = vec4(-820.64,-2920.7,13.43,144.57),
+		Init = vec3(-820.64,-2920.7,13.43),
 		Positions = {
 			vec4(-926.59,-2909.86,13.63,56.7),
 			vec4(-924.55,-2906.09,13.63,56.7),
@@ -2775,13 +2775,13 @@ Routes = {
 	},{
 		Time = 300,
 		Runners = 10,
-		Record = 275,
-		Payment = 4000,
+		Record = 255,
+		Payment = 6125,
 		Checkpoints = 49,
-		Difficulty = "Fácil",
+		Difficulty = "Difícil",
 		Image = "ilha.png",
 		Name = "Ilha",
-		Init = vec4(3941.03,-4696.57,3.66,291.97),
+		Init = vec3(3941.03,-4696.57,3.66),
 		Positions = {
 			vec4(4030.77,-4655.85,3.88,291.97),
 			vec4(4032.44,-4660.41,3.88,289.14),
@@ -3045,13 +3045,13 @@ Routes = {
 	},{
 		Time = 400,
 		Runners = 10,
-		Record = 400,
-		Payment = 4000,
+		Record = 295,
+		Payment = 7625,
 		Checkpoints = 49,
-		Difficulty = "Fácil",
+		Difficulty = "Difícil",
 		Image = "favelazancudo.png",
 		Name = "Favela Zancudo",
-		Init = vec4(-2546.51,2345.06,32.54,235.28),
+		Init = vec3(-2546.51,2345.06,32.54),
 		Positions = {
 			vec4(-2465.6,2315.21,31.27,249.45),
 			vec4(-2467.58,2310.36,31.31,249.45),
@@ -3315,13 +3315,13 @@ Routes = {
 	},{
 		Time = 300,
 		Runners = 10,
-		Record = 275,
-		Payment = 4000,
+		Record = 230,
+		Payment = 6750,
 		Checkpoints = 54,
-		Difficulty = "Fácil",
+		Difficulty = "Difícil",
 		Image = "porto.png",
 		Name = "Porto Alto",
-		Init = vec4(1177.77,-3172.62,5.36,82.21),
+		Init = vec3(1177.77,-3172.62,5.36),
 		Positions = {
 			vec4(1163.39,-3208.98,5.49,181.42),
 			vec4(1168.84,-3208.93,5.49,175.75),

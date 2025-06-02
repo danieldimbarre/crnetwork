@@ -339,17 +339,21 @@ CREATE TABLE IF NOT EXISTS `propertys` (
   KEY `Name` (`Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-DROP TABLE IF EXISTS `races`;
 CREATE TABLE IF NOT EXISTS `races` (
-  `id` bigint(19) NOT NULL AUTO_INCREMENT,
-  `Mode` int(5) NOT NULL DEFAULT 0,
-  `Race` int(5) NOT NULL DEFAULT 0,
-  `Passport` bigint(19) NOT NULL DEFAULT 0,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Name` varchar(100) NOT NULL DEFAULT 'Indivíduo Indigente',
+  `Mode` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `Race` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `Passport` int(10) unsigned NOT NULL DEFAULT 0,
   `Vehicle` varchar(50) NOT NULL DEFAULT 'Sultan RS',
-  `Points` bigint(19) NOT NULL DEFAULT 0,
+  `Points` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
+  KEY `Points` (`Points`),
+  KEY `Name` (`Name`),
+  KEY `Vehicle` (`Vehicle`),
   KEY `Passport` (`Passport`),
-  KEY `Race` (`Race`)
+  KEY `Race` (`Race`),
+  KEY `Mode` (`Mode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DROP TABLE IF EXISTS `taxs`;

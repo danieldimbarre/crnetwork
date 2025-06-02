@@ -159,13 +159,6 @@ vRP.Prepare("summerz/PhoneNotifications","DELETE FROM phone_notifications WHERE 
 vRP.Prepare("summerz/PhoneStorys","DELETE FROM phone_instagram_stories_views WHERE timestamp < NOW() - INTERVAL 3 DAY")
 vRP.Prepare("summerz/PhoneInstagram","DELETE FROM phone_instagram_notifications WHERE timestamp < NOW() - INTERVAL 3 DAY")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- RACES
------------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("Races/User","SELECT * FROM races WHERE Race = @Race AND Mode = @Mode AND Passport = @Passport")
-vRP.Prepare("Races/Consult","SELECT * FROM races WHERE Race = @Race AND Mode = @Mode ORDER BY Points ASC LIMIT @Count")
-vRP.Prepare("Races/Insert","INSERT INTO races (Mode,Race,Passport,Vehicle,Points) VALUES (@Mode,@Race,@Passport,@Vehicle,@Points)")
-vRP.Prepare("Races/Update","UPDATE races SET Points = @Points, Vehicle = @Vehicle WHERE Race = @Race AND Mode = @Mode AND Passport = @Passport")
------------------------------------------------------------------------------------------------------------------------------------------
 -- ARENA
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("arena/Death","UPDATE characters SET Death = Death + 1 WHERE id = @Passport")

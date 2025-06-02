@@ -110,7 +110,6 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 	if Consult then
 		vRPC.DoScreenFadeOut(source)
 		vRP.CharacterChosen(source,Consult,Sex)
-		exports["races"]:UpdateName(Consult,Name.." "..Lastname)
 	end
 
 	Active[source] = nil

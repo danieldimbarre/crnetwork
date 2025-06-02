@@ -95,8 +95,6 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 		return false
 	end
 
-	local Name = FirstName(Name)
-	local Lastname = FirstName(Lastname)
 	local Account = vRP.Account(License)
 	if Account and Account.Characters <= vRP.Scalar("characters/Count",{ License = License }) then
 		TriggerClientEvent("Notify",source,"Atenção","Limite de personagem atingido.","amarelo",5000)
@@ -105,11 +103,14 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 		return false
 	end
 
+	local Name = FirstName(Name)
+	local Lastname = FirstName(Lastname)
 	local Sexo = (Sex == "mp_f_freemode_01") and "F" or "M"
-	local Consult = exports["oxmysql"]:insert_async("INSERT INTO characters (License,Name,Lastname,Sex,Skin,Blood,Created) VALUES (@License,@Name,@Lastname,@Sex,@Skin,@Blood,UNIX_TIMESTAMP() + (86400 * 3))",{ License = License, Name = FirstText(Name), Lastname = FirstText(Lastname), Sex = Sexo, Skin = Sex, Blood = math.random(4) })
+	local Consult = exports["oxmysql"]:insert_async("INSERT INTO characters (License,Name,Lastname,Sex,Skin,Blood,Created) VALUES (@License,@Name,@Lastname,@Sex,@Skin,@Blood,UNIX_TIMESTAMP() + (86400 * 3))",{ License = License, Name = Name, Lastname = Lastname, Sex = Sexo, Skin = Sex, Blood = math.random(4) })
 	if Consult then
 		vRPC.DoScreenFadeOut(source)
 		vRP.CharacterChosen(source,Consult,Sex)
+		exports["races"]:UpdateName(Consult,Name.." "..Lastname)
 	end
 
 	Active[source] = nil
@@ -124,6 +125,6 @@ AddEventHandler("Disconnect", function(Passport, source)
 		Licensed[Connected[Passport]] = nil
 		Connected[Passport] = nil
 	end
-	
+
 	Active[source] = nil
 end)

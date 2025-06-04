@@ -275,16 +275,16 @@ exports("Apply",function(Data,Ped)
 		end
 	end
 
-	SetPedComponentVariation(Ped,4,Skinshop["pants"]["item"],Skinshop["pants"]["texture"],GetPedPaletteVariation(Ped,4))
-	SetPedComponentVariation(Ped,3,Skinshop["arms"]["item"],Skinshop["arms"]["texture"],GetPedPaletteVariation(Ped,3))
-	SetPedComponentVariation(Ped,5,Skinshop["backpack"]["item"],Skinshop["backpack"]["texture"],GetPedPaletteVariation(Ped,5))
-	SetPedComponentVariation(Ped,8,Skinshop["tshirt"]["item"],Skinshop["tshirt"]["texture"],GetPedPaletteVariation(Ped,8))
-	SetPedComponentVariation(Ped,9,Skinshop["vest"]["item"],Skinshop["vest"]["texture"],GetPedPaletteVariation(Ped,9))
-	SetPedComponentVariation(Ped,11,Skinshop["torso"]["item"],Skinshop["torso"]["texture"],GetPedPaletteVariation(Ped,11))
-	SetPedComponentVariation(Ped,6,Skinshop["shoes"]["item"],Skinshop["shoes"]["texture"],GetPedPaletteVariation(Ped,6))
-	SetPedComponentVariation(Ped,1,Skinshop["mask"]["item"],Skinshop["mask"]["texture"],GetPedPaletteVariation(Ped,1))
-	SetPedComponentVariation(Ped,10,Skinshop["decals"]["item"],Skinshop["decals"]["texture"],GetPedPaletteVariation(Ped,10))
-	SetPedComponentVariation(Ped,7,Skinshop["accessory"]["item"],Skinshop["accessory"]["texture"],GetPedPaletteVariation(Ped,7))
+	SetPedComponentVariation(Ped,4,Skinshop["pants"]["item"],Skinshop["pants"]["texture"],0)
+	SetPedComponentVariation(Ped,3,Skinshop["arms"]["item"],Skinshop["arms"]["texture"],0)
+	SetPedComponentVariation(Ped,5,Skinshop["backpack"]["item"],Skinshop["backpack"]["texture"],0)
+	SetPedComponentVariation(Ped,8,Skinshop["tshirt"]["item"],Skinshop["tshirt"]["texture"],0)
+	SetPedComponentVariation(Ped,9,Skinshop["vest"]["item"],Skinshop["vest"]["texture"],0)
+	SetPedComponentVariation(Ped,11,Skinshop["torso"]["item"],Skinshop["torso"]["texture"],0)
+	SetPedComponentVariation(Ped,6,Skinshop["shoes"]["item"],Skinshop["shoes"]["texture"],0)
+	SetPedComponentVariation(Ped,1,Skinshop["mask"]["item"],Skinshop["mask"]["texture"],0)
+	SetPedComponentVariation(Ped,10,Skinshop["decals"]["item"],Skinshop["decals"]["texture"],0)
+	SetPedComponentVariation(Ped,7,Skinshop["accessory"]["item"],Skinshop["accessory"]["texture"],0)
 
 	if Skinshop["hat"]["item"] ~= -1 and Skinshop["hat"]["item"] ~= 0 then
 		SetPedPropIndex(Ped,0,Skinshop["hat"]["item"],Skinshop["hat"]["texture"],false)
@@ -470,7 +470,7 @@ function Creative.checkShoes()
 	if Skinshop["shoes"]["item"] ~= Number then
 		Skinshop["shoes"]["item"] = Number
 		Skinshop["shoes"]["texture"] = 0
-		SetPedComponentVariation(Ped,6,Skinshop["shoes"]["item"],Skinshop["shoes"]["texture"],GetPedPaletteVariation(Ped,6))
+		SetPedComponentVariation(Ped,6,Skinshop["shoes"]["item"],Skinshop["shoes"]["texture"],0)
 
 		return true
 	end
@@ -504,9 +504,9 @@ RegisterNetEvent("skinshop:setMask")
 AddEventHandler("skinshop:setMask",function()
 	local Ped = PlayerPedId()
 	if GetPedDrawableVariation(Ped,1) == Skinshop["mask"]["item"] then
-		SetPedComponentVariation(Ped,1,0,0,GetPedPaletteVariation(Ped,1))
+		SetPedComponentVariation(Ped,1,0,0,0)
 	else
-		SetPedComponentVariation(Ped,1,Skinshop["mask"]["item"],Skinshop["mask"]["texture"],GetPedPaletteVariation(Ped,1))
+		SetPedComponentVariation(Ped,1,Skinshop["mask"]["item"],Skinshop["mask"]["texture"],0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -541,12 +541,12 @@ AddEventHandler("skinshop:setPants",function()
 	local Ped = PlayerPedId()
 	if GetPedDrawableVariation(Ped,4) == Skinshop["pants"]["item"] then
 		if GetEntityModel(Ped) == GetHashKey("mp_f_freemode_01") then
-			SetPedComponentVariation(Ped,4,17,0,GetPedPaletteVariation(Ped,4))
+			SetPedComponentVariation(Ped,4,17,0,0)
 		else
-			SetPedComponentVariation(Ped,4,61,0,GetPedPaletteVariation(Ped,4))
+			SetPedComponentVariation(Ped,4,61,0,0)
 		end
 	else
-		SetPedComponentVariation(Ped,4,Skinshop["pants"]["item"],Skinshop["pants"]["texture"],2)
+		SetPedComponentVariation(Ped,4,Skinshop["pants"]["item"],Skinshop["pants"]["texture"],0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -557,12 +557,12 @@ AddEventHandler("skinshop:setShirt",function()
 	local Ped = PlayerPedId()
 	if GetPedDrawableVariation(Ped,8) == Skinshop["tshirt"]["item"] then
 		if GetEntityModel(Ped) == GetHashKey("mp_f_freemode_01") then
-			SetPedComponentVariation(Ped,8,7,0,GetPedPaletteVariation(Ped,8))
+			SetPedComponentVariation(Ped,8,7,0,0)
 		else
-			SetPedComponentVariation(Ped,8,15,0,GetPedPaletteVariation(Ped,8))
+			SetPedComponentVariation(Ped,8,15,0,0)
 		end
 	else
-		SetPedComponentVariation(Ped,8,Skinshop["tshirt"]["item"],Skinshop["tshirt"]["texture"],2)
+		SetPedComponentVariation(Ped,8,Skinshop["tshirt"]["item"],Skinshop["tshirt"]["texture"],0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -573,12 +573,12 @@ AddEventHandler("skinshop:setTorso",function()
 	local Ped = PlayerPedId()
 	if GetPedDrawableVariation(Ped,11) == Skinshop["torso"]["item"] then
 		if GetEntityModel(Ped) == GetHashKey("mp_f_freemode_01") then
-			SetPedComponentVariation(Ped,11,18,0,2)
+			SetPedComponentVariation(Ped,11,18,0,0)
 		else
-			SetPedComponentVariation(Ped,11,15,0,2)
+			SetPedComponentVariation(Ped,11,15,0,0)
 		end
 	else
-		SetPedComponentVariation(Ped,11,Skinshop["torso"]["item"],Skinshop["torso"]["texture"],2)
+		SetPedComponentVariation(Ped,11,Skinshop["torso"]["item"],Skinshop["torso"]["texture"],0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -588,9 +588,9 @@ RegisterNetEvent("skinshop:setVest")
 AddEventHandler("skinshop:setVest",function()
 	local Ped = PlayerPedId()
 	if GetPedDrawableVariation(Ped,9) == Skinshop["vest"]["item"] then
-		SetPedComponentVariation(Ped,9,-1,0,GetPedPaletteVariation(Ped,9))
+		SetPedComponentVariation(Ped,9,-1,0,0)
 	else
-		SetPedComponentVariation(Ped,9,Skinshop["vest"]["item"],Skinshop["vest"]["texture"],GetPedPaletteVariation(Ped,9))
+		SetPedComponentVariation(Ped,9,Skinshop["vest"]["item"],Skinshop["vest"]["texture"],0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -601,12 +601,12 @@ AddEventHandler("skinshop:setShoes",function()
 	local Ped = PlayerPedId()
 	if GetPedDrawableVariation(Ped,6) == Skinshop["shoes"]["item"] then
 		if GetEntityModel(Ped) == GetHashKey("mp_f_freemode_01") then
-			SetPedComponentVariation(Ped,6,35,0,GetPedPaletteVariation(Ped,6))
+			SetPedComponentVariation(Ped,6,35,0,0)
 		else
-			SetPedComponentVariation(Ped,6,34,0,GetPedPaletteVariation(Ped,6))
+			SetPedComponentVariation(Ped,6,34,0,0)
 		end
 	else
-		SetPedComponentVariation(Ped,6,Skinshop["shoes"]["item"],Skinshop["shoes"]["texture"],2)
+		SetPedComponentVariation(Ped,6,Skinshop["shoes"]["item"],Skinshop["shoes"]["texture"],0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -616,9 +616,9 @@ RegisterNetEvent("skinshop:setArms")
 AddEventHandler("skinshop:setArms",function()
 	local Ped = PlayerPedId()
 	if GetPedDrawableVariation(Ped,3) == Skinshop["arms"]["item"] then
-		SetPedComponentVariation(Ped,3,15,0,GetPedPaletteVariation(Ped,3))
+		SetPedComponentVariation(Ped,3,15,0,0)
 	else
-		SetPedComponentVariation(Ped,3,Skinshop["arms"]["item"],Skinshop["arms"]["texture"],GetPedPaletteVariation(Ped,3))
+		SetPedComponentVariation(Ped,3,Skinshop["arms"]["item"],Skinshop["arms"]["texture"],0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -628,9 +628,9 @@ RegisterNetEvent("skinshop:setAccessory")
 AddEventHandler("skinshop:setAccessory",function()
 	local Ped = PlayerPedId()
 	if GetPedDrawableVariation(Ped,7) == Skinshop["accessory"]["item"] then
-		SetPedComponentVariation(Ped,7,-1,0,GetPedPaletteVariation(Ped,7))
+		SetPedComponentVariation(Ped,7,-1,0,0)
 	else
-		SetPedComponentVariation(Ped,7,Skinshop["accessory"]["item"],Skinshop["accessory"]["texture"],GetPedPaletteVariation(Ped,7))
+		SetPedComponentVariation(Ped,7,Skinshop["accessory"]["item"],Skinshop["accessory"]["texture"],0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -647,7 +647,7 @@ AddEventHandler("skinshop:Backpack",function(Table)
 		Skinshop["backpack"]["texture"] = Table["mp_m_freemode_01"]["Texture"]
 	end
 
-	SetPedComponentVariation(Ped,5,Skinshop["backpack"]["item"],Skinshop["backpack"]["texture"],GetPedPaletteVariation(Ped,5))
+	SetPedComponentVariation(Ped,5,Skinshop["backpack"]["item"],Skinshop["backpack"]["texture"],0)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SKINSHOP:BACKPACKREMOVE
@@ -658,7 +658,7 @@ AddEventHandler("skinshop:BackpackRemove",function()
 	Skinshop["backpack"]["item"] = -1
 	Skinshop["backpack"]["texture"] = 0
 
-	SetPedComponentVariation(Ped,5,Skinshop["backpack"]["item"],Skinshop["backpack"]["texture"],GetPedPaletteVariation(Ped,5))
+	SetPedComponentVariation(Ped,5,Skinshop["backpack"]["item"],Skinshop["backpack"]["texture"],0)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GETPLAYERMODEL

@@ -53,9 +53,10 @@ AddEventHandler("player:Demand",function(OtherSource)
 	if Passport and OtherPassport and not exports["bank"]:CheckFines(OtherPassport) then
 		local Keyboard = vKEYBOARD.Primary(source,"Valor")
 		if Keyboard and vRP.Passport(OtherSource) then
-			if vRP.Request(OtherSource,"Cobrança","Aceitar a cobrança de <b>$"..Dotted(Keyboard[1]).."</b> feita por <b>"..Passport.."</b>.") then
-				if vRP.PaymentBank(OtherPassport,Keyboard[1],true) then
-					vRP.GiveBank(Passport,Keyboard[1],true)
+			local Price = parseInt(Keyboard[1],true)
+			if vRP.Request(OtherSource,"Cobrança","Aceitar a cobrança de <b>$"..Dotted(Price).."</b> feita por <b>"..Passport.."</b>.") then
+				if vRP.PaymentBank(OtherPassport,Price,true) then
+					vRP.GiveBank(Passport,Price,true)
 				end
 			else
 				TriggerClientEvent("Notify",source,"Cobrança","Pedido recusado.","vermelho",5000)

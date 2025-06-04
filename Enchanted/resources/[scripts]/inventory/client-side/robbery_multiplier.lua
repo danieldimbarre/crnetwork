@@ -26,5 +26,5 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Explosion")
 AddEventHandler("inventory:Explosion",function(Coords)
-	AddExplosion(Coords.x,Coords.y,Coords.z,2,1.0,true,false,true)
+	AddExplosion(Coords.x,Coords.y,Coords.z,2,1.0,true,true,true)
 end)

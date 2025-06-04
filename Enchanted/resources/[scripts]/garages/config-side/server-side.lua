@@ -7,7 +7,6 @@ PercentageArrest = 0.1 -- Porcentagem a cobrar para liberar o veículo apreendid
 PercentageRescue = 0.1 -- Porcentagem a cobrar para resgatar o veículo em qualquer garagem
 CarPermission = "Admin" -- Permissão para utilizar o comando /car
 DvPermission = "Admin" -- Permissão para utilizar o comando /dv
-LockPermission = "Admin" -- Permissão para destrancar qualquer veículo
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES
 -----------------------------------------------------------------------------------------------------------------------------------------

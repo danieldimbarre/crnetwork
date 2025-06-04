@@ -84,20 +84,21 @@ exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 		}
 
 		local Split = splitString(Force)
+		local Item = Split[1]
 
 		if not Provisory.desc then
-			if Split[1] == "vehiclekey" and Split[3] then
+			if Item == "vehiclekey" and Split[3] then
 				local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
-				if Consult then
+				if Consult and VehicleExist(Consult.Vehicle) then
 					Provisory.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
 				end
-			elseif Split[1] == "propertys" and Split[2] then
+			elseif Item == "propertys" and Split[2] then
 				local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 				if Consult then
 					Provisory.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 				end
-			elseif ItemNamed(Split[1]) and Split[2] and vRP.Identity(Split[2]) then
-				if Split[1] == "identity" then
+			elseif ItemNamed(Item) and Split[2] and vRP.Identity(Split[2]) then
+				if Item == "identity" then
 					Provisory.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
 				else
 					Provisory.desc = "Proprietário: <common>"..vRP.FullName(Split[2]).."</common>"

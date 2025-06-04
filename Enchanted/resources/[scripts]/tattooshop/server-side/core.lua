@@ -34,25 +34,27 @@ end
 -- THREADINITSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local Consult = vRP.GetSrvData("Tattooshop",true)
-	if Consult then
-		for _,v in pairs(Consult) do
-			table.insert(Locations,v)
-		end
+	local Consult = vRP.Query("entitydata/GetData",{ Name = "Tattooshop" })
+	local Result = Consult and Consult[1] and json.decode(Consult[1].Information) or {}
+
+	for _,v in pairs(Result) do
+		table.insert(Locations,v)
 	end
+
+	TriggerClientEvent("tattooshop:Init",-1,Locations)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADD
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Add",function(Table)
-	local Consult = vRP.GetSrvData("Tattooshop",true)
-	if Consult then
-		table.insert(Consult,Table)
-		table.insert(Locations,Table)
+	local Consult = vRP.Query("entitydata/GetData",{ Name = "Tattooshop" })
+	local Result = Consult and Consult[1] and json.decode(Consult[1].Information) or {}
 
-		vRP.SetSrvData("Tattooshop",Consult,true)
-		TriggerClientEvent("tattooshop:Insert",-1,Table)
-	end
+	table.insert(Result,Table)
+	table.insert(Locations,Table)
+
+	TriggerClientEvent("tattooshop:Insert",-1,Table)
+	vRP.Query("entitydata/SetData",{ Name = "Tattooshop", Information = json.encode(Result) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

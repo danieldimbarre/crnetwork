@@ -55,8 +55,8 @@ CreateThread(function()
 											end
 
 											exports["dynamic"]:AddButton("Credenciais","Máximo <yellow>1</yellow> proprietário e <yellow>3</yellow> adicionais.","","",Line,false)
-											exports["dynamic"]:AddButton("Comprar com Dinheiro","Custo de <yellow>"..Currency..Dotted(v.Price).."</yellow>","propertys:Buy",Name.."-"..Line.."-Dollar",Line,true)
-											exports["dynamic"]:AddButton("Comprar com Diamantes","Custo de <yellow>"..Dotted(v.Gemstone).."</yellow>","propertys:Buy",Name.."-"..Line.."-Gemstone",Line,true)
+											exports["dynamic"]:AddButton("Comprar com Dinheiro","Custo de <yellow>"..Currency..Dotted(v.Price).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Dollar",Line,true)
+											exports["dynamic"]:AddButton("Comprar com Diamantes","Custo de <yellow>"..Dotted(v.Gemstone).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Gemstone",Line,true)
 										end
 									end
 
@@ -71,13 +71,13 @@ CreateThread(function()
 										exports["dynamic"]:AddButton("Credenciais","Reconfigurar os cartões de acesso.","propertys:Credentials",Name,false,true)
 
 										if Interior ~= "Galpao" and Interior ~= "Amber" then
-											exports["dynamic"]:AddMenu("Interior","Trocar interior da propriedade.","interior")
+											exports["dynamic"]:AddMenu("Interior","Trocar interior da propriedade.<br><yellow>O peso do baú permanece o mesmo.</yellow>","interior")
 
 											local Valuation = Informations[Interior].Gemstone
 											for Line,v in pairs(Informations) do
 												local InteriorValuation = Informations[Line].Gemstone
 												if Line ~= "Galpao" and InteriorValuation > Valuation then
-													exports["dynamic"]:AddButton(Line,"Custo de <yellow>"..Dotted(InteriorValuation - Valuation).." diamantes</yellow>","propertys:Interior",Name.."-"..Line,"interior",true)
+													exports["dynamic"]:AddButton(Line,"Custo de <yellow>"..Dotted(InteriorValuation - Valuation).." diamantes</yellow>.","propertys:Interior",Name.."-"..Line,"interior",true)
 												end
 											end
 										end

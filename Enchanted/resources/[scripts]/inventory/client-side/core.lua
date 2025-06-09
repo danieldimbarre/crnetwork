@@ -176,6 +176,17 @@ AddEventHandler("inventory:explodeTyres",function(Network,Plate,Tyre)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- TYRELIST
+-----------------------------------------------------------------------------------------------------------------------------------------
+local TyreList = {
+	["wheel_lf"] = 0,
+	["wheel_rf"] = 1,
+	["wheel_lm"] = 2,
+	["wheel_rm"] = 3,
+	["wheel_lr"] = 4,
+	["wheel_rr"] = 5
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Tyres()
@@ -184,14 +195,13 @@ function Creative.Tyres()
 		local Vehicle,Model = vRP.ClosestVehicle(7)
 		if IsEntityAVehicle(Vehicle) then
 			local Coords = GetEntityCoords(Ped)
-			local Wheels = GetVehicleNumberOfWheels(Vehicle)
 
-			for Tyre = 0,Wheels - 1 do
-				local Index = GetVehicleWheelBoneIndex(Vehicle,Tyre)
-				if Index and Index ~= -1 then
-					local CoordsWheel = GetWorldPositionOfEntityBone(Vehicle,Index)
+			for Index,Tyre in pairs(TyreList) do
+				local Selected = GetEntityBoneIndexByName(Vehicle,Index)
+				if Selected ~= -1 then
+					local CoordsWheel = GetWorldPositionOfEntityBone(Vehicle,Selected)
 					if #(Coords - CoordsWheel) <= 1.0 and GetTyreHealth(Vehicle,Tyre) ~= 1000.0 then
-						return Vehicle,Tyre,NetworkGetNetworkIdFromEntity(Vehicle),GetVehicleNumberPlateText(Vehicle),Model
+						return Vehicle,Tyre,VehToNet(Vehicle),GetVehicleNumberPlateText(Vehicle),Model
 					end
 				end
 			end

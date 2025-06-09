@@ -2,9 +2,9 @@
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for Number,v in pairs(Multiplier) do
-		exports["target"]:AddCircleZone("RobberyMultiplier:"..Number,v.Coords,0.25,{
-			name = "RobberyMultiplier:"..Number,
+	for Number,v in pairs(Robbery) do
+		exports["target"]:AddCircleZone("Robbery:"..Number,v.Coords,0.25,{
+			name = "Robbery:"..Number,
 			heading = 0.0,
 			useZ = true
 		},{
@@ -12,7 +12,7 @@ CreateThread(function()
 			Distance = 1.25,
 			options = {
 				{
-					event = "inventory:RobberyMultiplier",
+					event = "inventory:Robbery",
 					tunnel = "server",
 					label = "Roubar",
 					service = v.Mode
@@ -26,5 +26,5 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Explosion")
 AddEventHandler("inventory:Explosion",function(Coords)
-	AddExplosion(Coords.x,Coords.y,Coords.z,2,1.0,true,true,true)
+	AddExplosion(Coords.x,Coords.y,Coords.z,4,1.0,true,false,true)
 end)

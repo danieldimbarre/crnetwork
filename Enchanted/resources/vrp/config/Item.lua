@@ -1237,8 +1237,7 @@ local List = {
 		["Weight"] = 0.75,
 		["LostWater"] = true,
 		["Economy"] = 4725,
-		["Blueprint"] = true,
-		["LostWater"] = true
+		["Blueprint"] = true
 	},
 	["latex"] = {
 		["Index"] = "latex",
@@ -1426,7 +1425,6 @@ local List = {
 		["LostWater"] = true,
 		["Economy"] = 95,
 		["Blueprint"] = true,
-		["LostWater"] = true,
 		["Recycle"] = {
 			["copper"] = 2,
 			["aluminum"] = 2
@@ -2180,7 +2178,7 @@ local List = {
 	["moneywash"] = {
 		["Index"] = "moneywash",
 		["Name"] = "Máquina de Lavar",
-		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><commom>Lavagem diária: $250.000</commom>",
+		["Description"] = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><common>Lavagem diária: $250.000</common>",
 		["Type"] = "Consumível",
 		["Weight"] = 50.0,
 		["Market"] = true,
@@ -5491,6 +5489,10 @@ local List = {
 		["Economy"] = 0
 	}
 }
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+ListItem = List
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDITEM
 -----------------------------------------------------------------------------------------------------------------------------------------

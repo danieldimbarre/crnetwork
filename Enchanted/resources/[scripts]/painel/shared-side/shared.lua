@@ -41,43 +41,7 @@ Config = {
 		Perks = 1
 	},
 
-	OtherPermissions = {
-		Paramedico = {
-			Management = {
-				View = 0,
-				Create = 2,
-				Dismiss = 2,
-				Edit = 2
-			},
-			Announcements = {
-				Create = 2,
-				Edit = 2,
-				Delete = 2
-			},
-			Paramedic = {
-				View = 0,
-				Create = 0,
-				Edit = 0,
-				Delete = 0,
-				MedicPlan = 0,
-				Avatar = 0
-			},
-			Tags = {
-				View = 0,
-				Create = 2,
-				Edit = 2,
-				Delete = 2,
-				Assign = 2
-			},
-			Bank = {
-				View = 0,
-				Deposit = 0,
-				Withdraw = 2,
-				Transfer = 2
-			},
-			Perks = 1
-		}
-	},
+	OtherPermissions = {},
 
 	Perks = {
 		{

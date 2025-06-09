@@ -46,6 +46,7 @@ Theme = {
 	main = "#5865f2",
 	mainText = "#ffffff",
 	currency = Currency,
+	items = ListItem,
 
 	common = "#6fc66a",
 	rare = "#6ac6c5",

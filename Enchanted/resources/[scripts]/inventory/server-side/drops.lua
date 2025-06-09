@@ -74,12 +74,6 @@ exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 			["route"] = Route,
 			["id"] = Selected,
 			["amount"] = Amount,
-			["name"] = ItemName(Force),
-			["weight"] = ItemWeight(Force),
-			["index"] = ItemIndex(Force),
-			["rarity"] = ItemRarity(Force),
-			["economy"] = ItemEconomy(Force),
-			["desc"] = ItemDescription(Force),
 			["coords"] = Coords or vRP.GetEntityCoords(source)
 		}
 

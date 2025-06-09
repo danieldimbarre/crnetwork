@@ -16,7 +16,7 @@ function Creative.Permission(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 
-	return Passport and List[Name] and (not List[Name]["Permission"] or (List[Name]["Permission"] and vRP.HasService(Passport,List[Name]["Permission"]))) or false
+	return Passport and List[Name] and not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) and (not List[Name]["Permission"] or (List[Name]["Permission"] and vRP.HasService(Passport,List[Name]["Permission"]))) or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
@@ -31,15 +31,7 @@ function Creative.Mount(Name)
 			if v.amount <= 0 or not ItemExist(v.item) then
 				vRP.CleanSlot(Passport,Slot)
 			else
-				v.name = ItemName(v.item)
-				v.weight = ItemWeight(v.item)
-				v.index = ItemIndex(v.item)
-				v.amount = parseInt(v.amount)
-				v.rarity = ItemRarity(v.item)
-				v.economy = ItemEconomy(v.item)
-				v.desc = ItemDescription(v.item)
 				v.key = v.item
-				v.slot = Slot
 
 				local Split = splitString(v.item)
 				local Item = Split[1]

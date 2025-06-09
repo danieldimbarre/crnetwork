@@ -6,7 +6,6 @@ vRP.Prepare("characters/Delete","UPDATE characters SET Deleted = 1 WHERE id = @P
 vRP.Prepare("characters/SetSkin","UPDATE characters SET Skin = @Skin WHERE id = @Passport")
 vRP.Prepare("characters/UpdatePhone","UPDATE characters SET Phone = @Phone WHERE id = @Passport")
 vRP.Prepare("characters/UpdateDaily","UPDATE characters SET Daily = @Daily WHERE id = @Passport")
-vRP.Prepare("characters/SetMedicplan","UPDATE characters SET Medic = @Medic WHERE id = @Passport")
 vRP.Prepare("characters/AddBank","UPDATE characters SET Bank = Bank + @Bank WHERE id = @Passport")
 vRP.Prepare("characters/RemBank","UPDATE characters SET Bank = Bank - @Bank WHERE id = @Passport")
 vRP.Prepare("characters/Characters","SELECT * FROM characters WHERE License = @License AND Deleted = 0")
@@ -167,7 +166,7 @@ vRP.Prepare("arena/Killed","UPDATE characters SET Killed = Killed + 1 WHERE id =
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	vRP.Query("summerz/Prison")
+	vRP.Update("summerz/Prison")
 	vRP.Query("summerz/Playerdata")
 	vRP.Query("summerz/Entitydata")
 	vRP.Query("summerz/Transactions")

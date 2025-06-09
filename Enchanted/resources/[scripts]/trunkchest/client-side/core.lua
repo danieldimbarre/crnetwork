@@ -31,7 +31,8 @@ AddEventHandler("trunkchest:Open",function()
 	Opened = true
 	TriggerEvent("inventory:Open",{
 		Type = "Chest",
-		Resource = "trunkchest"
+		Resource = "trunkchest",
+		Right = "Porta-Malas"
 	})
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -21,7 +21,7 @@ CreateThread(function()
 	while true do
 		if os.time() >= Cooldown then
 			Cooldown = os.time() + 3600
-			vRP.Query("investments/Actives")
+			vRP.Update("investments/Actives")
 		end
 
 		Wait(1000)
@@ -141,7 +141,7 @@ function Creative.Withdraw(Valuation)
 	if Passport and not Active[Passport] and vRP.GetBank(Passport) >= Valuation then
 		Active[Passport] = true
 
-		if not exports["bank"]:CheckFines(Passport) and vRP.WithdrawCash(Passport,Valuation) then
+		if not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) and vRP.WithdrawCash(Passport,Valuation) then
 			Active[Passport] = nil
 		end
 
@@ -157,7 +157,7 @@ end
 function Creative.Transfer(OtherPassport,Valuation)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and OtherPassport ~= Passport and parseInt(Valuation) > 0 and not exports["bank"]:CheckFines(Passport) then
+	if Passport and not Active[Passport] and OtherPassport ~= Passport and parseInt(Valuation) > 0 and not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) then
 		Active[Passport] = true
 
 		if vRP.Identity(OtherPassport) and vRP.PaymentBank(Passport,Valuation,true) then
@@ -240,12 +240,6 @@ function Creative.FineList()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CHECKFINES
------------------------------------------------------------------------------------------------------------------------------------------
-exports("CheckFines",function(Passport)
-	return exports["oxmysql"]:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0 LIMIT 1",{ Passport = Passport })
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- FINEPAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.FinePayment(Number)
@@ -256,7 +250,7 @@ function Creative.FinePayment(Number)
 
 		local Consult = exports["oxmysql"]:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = @Paid AND id = @Number LIMIT 1",{ Passport = Passport, Paid = 0, Number = Number })
 		if Consult and vRP.PaymentBank(Passport,Consult.Fine) then
-			exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Paid = @Paid WHERE Passport = @Passport AND id = @Number",{ Passport = Passport, Paid = 1, Number = Number })
+			exports["oxmysql"]:update_async("UPDATE mdt_creative_fines SET Paid = @Paid WHERE Passport = @Passport AND id = @Number",{ Passport = Passport, Paid = 1, Number = Number })
 			Active[Passport] = nil
 
 			return true
@@ -280,7 +274,7 @@ function Creative.FinePaymentAll()
 		if Consult[1] then
 			for _,v in pairs(Consult) do
 				if vRP.PaymentBank(Passport,v.Fine) then
-					exports["oxmysql"]:query_async("UPDATE mdt_creative_fines SET Paid = @Paid WHERE Passport = @Passport AND id = @Number",{ Passport = Passport, Paid = 1, Number = v.id })
+					exports["oxmysql"]:update_async("UPDATE mdt_creative_fines SET Paid = @Paid WHERE Passport = @Passport AND id = @Number",{ Passport = Passport, Paid = 1, Number = v.id })
 				end
 			end
 		end
@@ -466,7 +460,7 @@ function Creative.Invest(Valuation)
 		if vRP.PaymentBank(Passport,Valuation,true) then
 			local InvestmentCheck = vRP.Query("investments/Check",{ Passport = Passport })
 			if InvestmentCheck[1] then
-				vRP.Query("investments/Invest",{ Passport = Passport, Price = Valuation })
+				vRP.Update("investments/Invest",{ Passport = Passport, Price = Valuation })
 			else
 				vRP.Query("investments/Add",{ Passport = Passport, Deposit = Valuation })
 			end
@@ -516,6 +510,32 @@ exports("AddTaxs",function(Passport,source,Name,Valuation,Message)
 	if Valuation > 0 then
 		vRP.Query("taxs/Add",{ Passport = Passport, Name = Name, Date = os.date("%d/%m/%Y"), Hour = os.date("%H:%M"), Price = parseInt(Valuation), Message = Message })
 	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECKTAXS
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("CheckTaxs",function(Passport)
+	local Passport = Passport
+	local source = vRP.Source(Passport)
+	if Passport and source and exports["oxmysql"]:single_async("SELECT * FROM taxs WHERE Passport = @Passport LIMIT 1",{ Passport = Passport }) then
+		TriggerClientEvent("Notify",source,"Impostos","Você possui débitos bancários.","amarelo",5000)
+		return true
+	end
+
+	return false
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHECKFINES
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("CheckFines",function(Passport)
+	local Passport = Passport
+	local source = vRP.Source(Passport)
+	if Passport and source and exports["oxmysql"]:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0 LIMIT 1",{ Passport = Passport }) then
+		TriggerClientEvent("Notify",source,"Multas","Você possui débitos bancários.","amarelo",5000)
+		return true
+	end
+
+	return false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDTAXS

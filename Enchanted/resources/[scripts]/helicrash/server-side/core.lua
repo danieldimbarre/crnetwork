@@ -26,8 +26,9 @@ RegisterCommand("helicrash",function(source,Message)
 		local CountCoords = CountTable(Coords)
 
 		for Number = 1,CountCoords do
-			TriggerEvent("chest:Cooldown","Helicrash:"..Number)
-			vRP.MountContainer(Passport,"Helicrash:"..Number,Loots,math.random(3,5))
+			if vRP.MountContainer(Passport,"Helicrash:"..Number,Loots,math.random(3,5)) then
+				TriggerEvent("chest:Cooldown","Helicrash:"..Number)
+			end
 		end
 
 		TriggerClientEvent("Notify",-1,"Queda da Aeronave","Mayday! Mayday! Tivemos problemas técnicos em nossos motores e estamos em queda livre.","verde",30000)

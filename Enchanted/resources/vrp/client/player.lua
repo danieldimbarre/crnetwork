@@ -140,7 +140,7 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 					tvRP.PersistentBlock(v["item"],Animation)
 				end
 
-				if Slot == "104" then
+				if Slot == "105" then
 					local Skinshop = ItemSkinshop(v["item"])
 					if Skinshop then
 						TriggerEvent("skinshop:Backpack",Skinshop)

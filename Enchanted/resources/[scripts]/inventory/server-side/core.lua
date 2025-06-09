@@ -29,8 +29,8 @@ Active = {}
 Plates = {}
 Trunks = {}
 Objects = {}
+Robberys = {}
 SaveObjects = {}
-RobberyActive = {}
 local Payments = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- USERS
@@ -412,15 +412,7 @@ function Creative.Mount()
 			if v.amount <= 0 or not ItemExist(v.item) then
 				vRP.CleanSlot(Passport,Slot)
 			else
-				v.name = ItemName(v.item)
-				v.weight = ItemWeight(v.item)
-				v.index = ItemIndex(v.item)
-				v.amount = parseInt(v.amount)
-				v.rarity = ItemRarity(v.item)
-				v.economy = ItemEconomy(v.item)
-				v.desc = ItemDescription(v.item)
 				v.key = v.item
-				v.slot = Slot
 
 				local Split = splitString(v.item)
 				local Item = Split[1]
@@ -477,15 +469,7 @@ function Creative.Blueprint()
 			if v.amount <= 0 or not ItemExist(v.item) then
 				vRP.CleanSlot(Passport,Slot)
 			else
-				v.name = ItemName(v.item)
-				v.weight = ItemWeight(v.item)
-				v.index = ItemIndex(v.item)
-				v.amount = parseInt(v.amount)
-				v.rarity = ItemRarity(v.item)
-				v.economy = ItemEconomy(v.item)
-				v.desc = ItemDescription(v.item)
 				v.key = v.item
-				v.slot = Slot
 
 				local Split = splitString(v.item)
 				local Item = Split[1]
@@ -534,22 +518,121 @@ function Creative.Blueprint()
 				local Calculated = CountTable(Secondary) + 1
 				local Number = tostring(Calculated)
 
-				Secondary[Number] = {
-					name = ItemName(Item),
-					weight = ItemWeight(Item),
-					index = ItemIndex(Item),
-					rarity = ItemRarity(Item),
-					economy = ItemEconomy(Item),
-					desc = ItemDescription(Item),
-					slot = Number,
-					key = Item,
-					amount = 1
-				}
+				Secondary[Number] = { key = Item, amount = 1 }
+
+				if Crafting[Item] then
+					Secondary[Number].required = {}
+
+					for Index,Amount in pairs(Crafting[Item].Required) do
+						local Rarity = ItemRarity(Index)
+
+						table.insert(Secondary[Number].required,"<"..Rarity..">"..Dotted(Amount).."x "..ItemName(Index).."</"..Rarity..">")
+					end
+				end
 			end
 		end
 
-		return Primary,vRP.GetWeight(Passport),Secondary
+		return Primary,Secondary,vRP.GetWeight(Passport)
 	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- MISSIONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Missions()
+	local List = {}
+	local source = source
+	local Passport = vRP.Passport(source)
+
+	if not Passport then
+		return List
+	end
+
+	local Consult = vRP.SimpleData(Passport,"Missions")
+	for Index,v in pairs(Missions) do
+		List[Index] = v
+		List[Index].Active = Consult and Consult[v.Code] and true or false
+	end
+
+	return {
+		vRP.GetExperience(Passport,"Missions"),TableLevel(),List
+	}
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RESCUEMISSION
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.RescueMission(Index)
+	local source = source
+	local Passport = vRP.Passport(source)
+
+	if not Passport or not Missions[Index] then
+		return false
+	end
+
+	local Code = Missions[Index].Code
+	local Consult = vRP.SimpleData(Passport,"Missions")
+	if not Code or (Consult and Consult[Code]) then
+		return false
+	end
+
+	for Item,Amount in pairs(Missions[Index].Required) do
+		if not vRP.ConsultItem(Passport,Item,Amount) then
+			TriggerClientEvent("inventory:Notify",source,"Atenção","Precisa de <default>"..Dotted(Amount).."x "..ItemName(Item).."</default>.","vermelho")
+			return false
+		end
+	end
+
+	for Item,Amount in pairs(Missions[Index].Required) do
+		vRP.RemoveItem(Passport,Item,Amount)
+	end
+
+	for Item,Amount in pairs(Missions[Index].Rewards) do
+		vRP.GenerateItem(Passport,Item,Amount)
+	end
+
+	if Missions[Index].Xp then
+		vRP.PutExperience(Passport,"Missions",Missions[Index].Xp)
+	end
+
+	Consult = Consult or {}
+	Consult[Code] = true
+
+	vRP.Query("playerdata/SetData",{ Passport = Passport, Name = "Missions", Information = json.encode(Consult) })
+
+	return true
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CRAFTING
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Crafting(Item,Amount,Target)
+	local source = source
+	local Target = tostring(Target)
+	local Amount = parseInt(Amount,true)
+	local Passport = vRP.Passport(source)
+	if Passport and Item and Target and Crafting[Item] then
+		if Amount > 1 and (ItemUnique(Item) or ItemLoads(Item)) then
+			Amount = 1
+		end
+
+		local Inventory = vRP.Inventory(Passport)
+		local Multiplier = Crafting[Item].Amount * Amount
+		if not vRP.MaxItens(Passport,Item,Multiplier) and vRP.CheckWeight(Passport,Item,Multiplier) and (not Inventory[Target] or (Inventory[Target] and Inventory[Target].item == Item)) then
+			for Index,Value in pairs(Crafting[Item].Required) do
+				if not vRP.ConsultItem(Passport,Index,Value * Amount) then
+					TriggerClientEvent("inventory:Notify",source,"Atenção","Precisa de <default>"..Dotted(Value * Amount).."x "..ItemName(Index).."</default>.","vermelho")
+
+					return false
+				end
+			end
+
+			for Index,Value in pairs(Crafting[Item].Required) do
+				vRP.RemoveItem(Passport,vRP.InventoryItemAmount(Passport,Index)[2],Value * Amount)
+			end
+
+			vRP.GenerateItem(Passport,Item,Multiplier,false,Target)
+		end
+	end
+
+	TriggerClientEvent("inventory:Update",source)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEND
@@ -756,7 +839,7 @@ function Creative.Use(Slot,Amount)
 			return
 		end
 
-		if ItemTypeCheck(Full,"Armamento") and (parseInt(Slot) >= 101 and parseInt(Slot) <= 103) then
+		if ItemTypeCheck(Full,"Armamento") and (parseInt(Slot) >= 101 and parseInt(Slot) <= 104) then
 			if vRP.InsideVehicle(source) and not ItemVehicle(Full) then
 				return
 			end
@@ -780,7 +863,7 @@ function Creative.Use(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("NotifyItem",source,{ "-",ItemIndex(Weapon),1,ItemName(Weapon),ItemRarity(Weapon) })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Weapon,-1 })
 				end
 			else
 				local Skin = nil
@@ -800,7 +883,7 @@ function Creative.Use(Slot,Amount)
 				end
 
 				if vCLIENT.TakeWeapon(source,Item,AmmoClip,Attach,false,Skin) then
-					TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),1,ItemName(Full),ItemRarity(Full) })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Full,1 })
 				end
 			end
 		elseif ItemTypeCheck(Full,"Munição") then
@@ -824,7 +907,7 @@ function Creative.Use(Slot,Amount)
 
 					Users.Ammos[Passport][Item] = AmmoClip + Amount
 
-					TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),Amount,ItemName(Full),ItemRarity(Full) })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Full,Amount })
 					TriggerClientEvent("inventory:Update",source)
 					vCLIENT.Reloading(source,Weapon,Amount)
 				end
@@ -849,11 +932,11 @@ function Creative.Use(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("NotifyItem",source,{ "-",ItemIndex(Weapon),1,ItemName(Weapon),ItemRarity(Weapon) })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Weapon,-1 })
 				end
 			else
 				if vCLIENT.TakeWeapon(source,Item,1,nil,Full) then
-					TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),1,ItemName(Full),ItemRarity(Full) })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Full,1 })
 				end
 			end
 		elseif ItemTypeCheck(Full,"Attachs") then
@@ -878,7 +961,7 @@ function Creative.Use(Slot,Amount)
 
 					if not Check then
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
-							TriggerClientEvent("NotifyItem",source,{ "+",ItemIndex(Full),1,ItemName(Full),ItemRarity(Full) })
+							TriggerClientEvent("inventory:NotifyItem",source,{ Full,1 })
 							TriggerClientEvent("inventory:Update",source)
 							Users.Attachs[Passport][Weapon][Full] = true
 							vCLIENT.GiveComponent(source,Component)
@@ -934,9 +1017,9 @@ AddEventHandler("inventory:Cancel",function()
 			TriggerClientEvent("inventory:Camera",source)
 		end
 
-		if RobberyActive[Passport] then
-			TriggerEvent("inventory:RobberySingleActive",RobberyActive[Passport])
-			RobberyActive[Passport] = nil
+		if Robberys[Passport] then
+			TriggerEvent("inventory:RobberyActive",Passport,Robberys[Passport].Mode,Robberys[Passport].Number)
+			Robberys[Passport] = nil
 		end
 
 		vRPC.Destroy(source)
@@ -1249,8 +1332,9 @@ AddEventHandler("inventory:StealTrunk",function(Entity)
 			if not Trunks[Plate] or os.time() >= Trunks[Plate] then
 				Trunks[Plate] = os.time() + 3600
 
-				vRP.MountContainer(Passport,"StealTrunk:"..Plate,IlegalItens,math.random(2),false,false,{ Item = "dirtydollar", Amount = 100 })
-				TriggerClientEvent("chest:Open",source,"StealTrunk:"..Plate,"Custom",false,true)
+				if vRP.MountContainer(Passport,"StealTrunk:"..Plate,IlegalItens,math.random(2),false,false,{ Item = "dirtydollar", Amount = 100 }) then
+					TriggerClientEvent("chest:Open",source,"StealTrunk:"..Plate,"Custom",false,true)
+				end
 			end
 		end
 	end)
@@ -1699,9 +1783,9 @@ AddEventHandler("Disconnect",function(Passport)
 		Carry[Passport] = nil
 	end
 
-	if RobberyActive[Passport] then
-		TriggerEvent("inventory:RobberySingleActive",RobberyActive[Passport])
-		RobberyActive[Passport] = nil
+	if Robberys[Passport] then
+		TriggerEvent("inventory:RobberyActive",Passport,Robberys[Passport].Mode,Robberys[Passport].Number)
+		Robberys[Passport] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

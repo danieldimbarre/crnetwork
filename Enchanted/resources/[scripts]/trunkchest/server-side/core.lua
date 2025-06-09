@@ -78,15 +78,7 @@ function Creative.Mount()
 			return false
 		end
 
-		v.name = ItemName(v.item)
-		v.weight = ItemWeight(v.item)
-		v.index = ItemIndex(v.item)
-		v.amount = parseInt(v.amount)
-		v.rarity = ItemRarity(v.item)
-		v.economy = ItemEconomy(v.item)
-		v.desc = ItemDescription(v.item)
 		v.key = v.item
-		v.slot = Slot
 
 		local Split = splitString(v.item)
 		local Item = Split[1]
@@ -174,7 +166,7 @@ function Creative.Store(Item,Slot,Amount,Target)
 		elseif Split == "diagram" then
 			if (Open[Passport].Weight + (10 * Amount)) <= (VehicleWeight(Name) * 5) and vRP.TakeItem(Passport,Item,Amount) then
 				Open[Passport].Weight = Open[Passport].Weight + (10 * Amount)
-				vRP.Query("vehicles/UpdateWeight",{ Passport = Open[Passport].Passport, Vehicle = Open[Passport].Model, Multiplier = Amount })
+				vRP.Update("vehicles/UpdateWeight",{ Passport = Open[Passport].Passport, Vehicle = Open[Passport].Model, Multiplier = Amount })
 				TriggerClientEvent("inventory:Notify",source,"Sucesso","Armazenamento melhorado.","verde")
 			else
 				TriggerClientEvent("inventory:Notify",source,"Atenção","Limite atingido.","vermelho")

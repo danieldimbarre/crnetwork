@@ -97,7 +97,8 @@ AddEventHandler("chest:Open",function(Name,Mode,Item,Blocked,Force)
 		TriggerEvent("inventory:Open",{
 			Type = "Chest",
 			Resource = "chest",
-			Force = Force
+			Force = Force,
+			Right = "Baú"
 		})
 	end
 end)
@@ -107,7 +108,7 @@ end)
 AddEventHandler("chest:Item",function(Name)
 	if vSERVER.Permissions(Name,"Item") and GetEntityHealth(PlayerPedId()) > 100 then
 		Opened = true
-		TriggerEvent("inventory:Open",{ Type = "Chest", Resource = "chest" })
+		TriggerEvent("inventory:Open",{ Type = "Chest", Resource = "chest", Right = "Baú" })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -116,7 +117,7 @@ end)
 AddEventHandler("chest:Recycle",function()
 	if vSERVER.Permissions("Recycle","Tray") and GetEntityHealth(PlayerPedId()) > 100 then
 		Opened = true
-		TriggerEvent("inventory:Open",{ Type = "Chest", Resource = "chest" })
+		TriggerEvent("inventory:Open",{ Type = "Chest", Resource = "chest", Right = "Baú" })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

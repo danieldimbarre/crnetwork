@@ -140,7 +140,7 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 				end
 
 				if UserVehicle and vRP.SingleQuery("vehicles/plateVehicles",{ Plate = Plate }) then
-					vRP.Query("vehicles/Arrest",{ Plate = Plate })
+					vRP.Update("vehicles/Arrest",{ Plate = Plate })
 				end
 
 				vRP.BattlepassPoints(Passport,Experience)

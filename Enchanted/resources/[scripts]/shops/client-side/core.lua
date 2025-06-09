@@ -64,7 +64,8 @@ AddEventHandler("shops:Open",function(Number)
 					Type = "Shops",
 					Mode = List[Opened]["Mode"],
 					Item = (List[Opened]["Item"] or "dollar"),
-					Resource = "shops"
+					Resource = "shops",
+					Right = Location[Number]["Name"] or "Loja"
 				})
 
 				if Location[Number]["Sound"] then
@@ -79,7 +80,8 @@ AddEventHandler("shops:Open",function(Number)
 					Type = "Shops",
 					Mode = List[Opened]["Mode"],
 					Item = (List[Opened]["Item"] or "dollar"),
-					Resource = "shops"
+					Resource = "shops",
+					Right = "Loja"
 				})
 			end
 		end

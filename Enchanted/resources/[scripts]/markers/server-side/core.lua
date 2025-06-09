@@ -66,13 +66,13 @@ exports("Enter",function(source,Permission,Level,Passport,Timed)
 
 		TriggerClientEvent("markers:Full",source,Players)
 	else
-		local timerData = Timers[Passport]
-		if Timed and timerData then
-			local currentTime = os.time()
-			if currentTime > timerData.Timer then
-				timerData.Timer = currentTime + Timed
+		local Data = Timers[Passport]
+		if Timed and Data then
+			local CurrentTimer = os.time()
+			if CurrentTimer > Data.Timer then
+				Data.Timer = CurrentTimer + Timed
 			else
-				timerData.Timer = timerData.Timer + Timed
+				Data.Timer = Data.Timer + Timed
 			end
 		end
 	end
@@ -90,12 +90,12 @@ exports("Exit",function(source,Passport)
 		end
 	end
 
-	local timerData = Timers[Passport]
-	if timerData then
-		local currentTime = os.time()
-		if timerData.Timer > currentTime then
-			timerData.Stop = true
-			timerData.Timer = timerData.Timer - currentTime
+	local Data = Timers[Passport]
+	if Data then
+		local CurrentTimer = os.time()
+		if Data.Timer > CurrentTimer then
+			Data.Stop = true
+			Data.Timer = Data.Timer - CurrentTimer
 		else
 			Timers[Passport] = nil
 		end
@@ -111,8 +111,8 @@ end)
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
-	local timerData = Timers[Passport]
-	if timerData then
-		exports["markers"]:Enter(source,timerData["Permission"],timerData["Level"],Passport,timerData["Timer"])
+	local Data = Timers[Passport]
+	if Data then
+		exports["markers"]:Enter(source,Data.Permission,Data.Level,Passport,Data.Timer)
 	end
 end)

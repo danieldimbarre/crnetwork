@@ -132,7 +132,8 @@ CreateThread(function()
 							vRP.playAnim(false,{"amb@prop_human_bum_bin@base","base"},true)
 							TriggerEvent("inventory:Open",{
 								Type = "Chest",
-								Resource = "propertys"
+								Resource = "propertys",
+								Right = "Propriedade"
 							})
 						elseif not Stealing and Line == "Clothes" and IsControlJustPressed(1,38) then
 							exports["dynamic"]:AddMenu("Armário","Abrir lista com todas as vestimentas.","wardrobe")

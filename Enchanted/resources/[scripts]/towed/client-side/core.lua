@@ -52,13 +52,13 @@ AddEventHandler("towed:Init",function(Data)
 
 	if Service then
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		exports["target"]:LabelText("Towed","Iniciar Expediente")
+		exports["target"]:LabelText("Towed:"..Data,"Iniciar Expediente")
 		Service = false
 		Locale = false
 	else
 		Locale = Data
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
-		exports["target"]:LabelText("Towed","Finalizar Expediente")
+		exports["target"]:LabelText("Towed:"..Data,"Finalizar Expediente")
 		ModelSelected = Models[math.random(#Models)]
 		Destiny = math.random(#Locations[Locale])
 		VehiclePlate = nil

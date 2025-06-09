@@ -140,7 +140,7 @@ Use = {
 
 			local Keyboard = vKEYBOARD.Instagram(source,Instagram)
 			if Keyboard and vRP.TakeItem(Passport,Full,1,true,Slot) then
-				vRP.Query("smartphone/Instagram",{ Username = Keyboard[1], Amount = 1000 })
+				vRP.Update("smartphone/Instagram",{ Username = Keyboard[1], Amount = 1000 })
 				TriggerClientEvent("Notify",source,"Sucesso","Seguidores adicionados.","verde",5000)
 			end
 		end
@@ -3082,7 +3082,7 @@ Use = {
 			local Consult = vRP.Query("vehicles/PlateUsers",{ Plate = Plate, Vehicle = Model })
 			if DoesEntityExist(Networked) and Consult[1] and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				Entity(Networked)["state"]:set("Drift",true,true)
-				vRP.Query("vehicles/CoiloverVehicles",{ Vehicle = Model, Plate = Plate })
+				vRP.Update("vehicles/CoiloverVehicles",{ Vehicle = Model, Plate = Plate })
 				TriggerClientEvent("Notify",source,"Sucesso","Suspensão Coilover instalada.","verde",5000)
 			end
 		end
@@ -3097,7 +3097,7 @@ Use = {
 			local Consult = vRP.Query("vehicles/PlateUsers",{ Plate = Plate, Vehicle = Model })
 			if DoesEntityExist(Networked) and Consult[1] and vRP.TakeItem(Passport,Full,1,true,Slot) then
 				Entity(Networked)["state"]:set("Seatbelt",true,true)
-				vRP.Query("vehicles/SeatbeltVehicles",{ Vehicle = Model, Plate = Plate })
+				vRP.Update("vehicles/SeatbeltVehicles",{ Vehicle = Model, Plate = Plate })
 				TriggerClientEvent("Notify",source,"Sucesso","Cinto de Corrida ativado.","verde",5000)
 			end
 		end
@@ -3126,7 +3126,7 @@ Use = {
 							if vRP.TakeItem(Passport,Full,1,true,Slot) then
 								local NewPlate = string.upper(NewPlate)
 
-								vRP.Query("vehicles/plateVehiclesUpdate",{ Vehicle = Model, NewPlate = NewPlate, Plate = Plate })
+								vRP.Update("vehicles/plateVehiclesUpdate",{ Vehicle = Model, NewPlate = NewPlate, Plate = Plate })
 								TriggerClientEvent("Notify",source,"Sucesso","Placa atualizada.","verde",5000)
 								TriggerEvent("garages:ChangePlate",Plate,NewPlate)
 								SetVehicleNumberPlateText(Networked,NewPlate)

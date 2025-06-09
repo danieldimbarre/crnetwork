@@ -48,7 +48,7 @@ CreateThread(function()
 	local plyTbl = GetPlayers()
 	for i = 1,#plyTbl do
 		local ply = tonumber(plyTbl[i])
-		voiceData[ply] = defaultTable(plyTbl[i])
+		voiceData[ply] = defaultTable(ply)
 	end
 end)
 

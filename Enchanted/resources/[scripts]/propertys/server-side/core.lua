@@ -116,8 +116,10 @@ AddEventHandler("propertys:RobberyItem",function(Number,Name)
 	local Itens = Locker and LockerItens or OtherItens
 	local Amount = Locker and 1 or math.random(3)
 
-	vRP.MountContainer(Passport,Container,Itens,Amount,false,Locker and 675 or 775)
-	TriggerClientEvent("chest:Open",source,Container,"Custom",false,true)
+	if vRP.MountContainer(Passport,Container,Itens,Amount,false,Locker and 675 or 775) then
+		TriggerClientEvent("chest:Open",source,Container,"Custom",false,true)
+	end
+
 	TriggerClientEvent("propertys:RemCircleZone",source,Number)
 	Robbery[Name][Number] = true
 end)
@@ -184,7 +186,7 @@ function Creative.Propertys(Name)
 
 		if vRP.Request(source,"Propriedades","Deseja pagar a hipoteca de <b>"..Currency..Dotted(Price).."</b>?") and vRP.PaymentFull(Passport,Price) then
 			TriggerClientEvent("Notify",source,"Propriedades","Pagamento concluído.","verde",5000)
-			vRP.Query("propertys/Tax",{ Name = Name })
+			vRP.Update("propertys/Tax",{ Name = Name })
 			Tax = CompleteTimers(2592000)
 		else
 			return false
@@ -230,7 +232,7 @@ AddEventHandler("propertys:Buy",function(Name)
 	local Split = splitString(Name)
 	local Passport = vRP.Passport(source)
 
-	if not Passport or exports["bank"]:CheckFines(Passport) then
+	if not Passport or exports["bank"]:CheckTaxs(Passport) or exports["bank"]:CheckFines(Passport) then
 		return false
 	end
 
@@ -323,7 +325,7 @@ AddEventHandler("propertys:Interior",function(Table)
 	local CurrentPrice = Informations[Consult.Interior].Gemstone
 	if vRP.Request(source,"Propriedades","Deseja efetuar a troca do interior atual para o <b>"..Interior.."</b> por <b>"..Dotted(InteriorPrice - CurrentPrice).." diamantes</b>?") then
 		if vRP.PaymentGems(Passport,InteriorPrice - CurrentPrice) then
-			exports["oxmysql"]:query_async("UPDATE propertys SET Interior = ? WHERE Name = ?",{ Interior,Name })
+			exports["oxmysql"]:update_async("UPDATE propertys SET Interior = ? WHERE Name = ?",{ Interior,Name })
 			TriggerClientEvent("Notify",source,"Propriedades","Compra concluída.","verde",10000)
 			Saved[Name] = Interior
 		else
@@ -398,7 +400,7 @@ AddEventHandler("propertys:Transfer",function(Name)
 	local OtherPassport = Keyboard and Keyboard[1]
 
 	if OtherPassport and vRP.Identity(OtherPassport) and vRP.Request(source,"Propriedades","Deseja transferir para o passaporte <b>"..OtherPassport.."</b>?") then
-		vRP.Query("propertys/Transfer",{ Name = Name, Passport = OtherPassport })
+		vRP.Update("propertys/Transfer",{ Name = Name, Passport = OtherPassport })
 		TriggerClientEvent("Notify",source,"Propriedades","Transferência concluída.","verde",10000)
 	end
 
@@ -421,7 +423,7 @@ AddEventHandler("propertys:Credentials",function(Name)
 
 	if vRP.Request(source,"Propriedades","Lembre-se que ao prosseguir todos os cartões atuais deixam de funcionar, deseja prosseguir?") then
 		local Serial = PropertysSerials()
-		vRP.Query("propertys/Credentials",{ Name = Name, Serial = Serial })
+		vRP.Update("propertys/Credentials",{ Name = Name, Serial = Serial })
 		vRP.GiveItem(Passport,"propertys-"..Serial,Consult.Item,true)
 	end
 end)
@@ -443,7 +445,7 @@ AddEventHandler("propertys:Item",function(Name)
 	local Price = 150000
 	if vRP.Request(source,"Propriedades","Comprar uma chave adicional por <b>"..Currency..Dotted(Price).."</b>?") then
 		if vRP.PaymentFull(Passport,Price) then
-			vRP.Query("propertys/Item",{ Name = Name })
+			vRP.Update("propertys/Item",{ Name = Name })
 			vRP.GiveItem(Passport,"propertys-"..Consult.Serial,1,true)
 		else
 			TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",10000)
@@ -690,7 +692,7 @@ function Creative.Store(Item,Slot,Amount,Target,Name,Mode)
 	if Consult then
 		if Item == "diagram" then
 			if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
-				vRP.Query("propertys/"..Mode,{ Name = Name, Weight = 10 * Amount })
+				vRP.Update("propertys/"..Mode,{ Name = Name, Weight = 10 * Amount })
 				TriggerClientEvent("inventory:Update",source)
 			end
 		else

@@ -16,7 +16,7 @@ function Creative.Permission(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 
-	return Passport and List[Name] and (not List[Name]["Permission"] or (List[Name]["Permission"] and vRP.HasService(Passport,List[Name]["Permission"]))) or false
+	return Passport and List[Name] and not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) and (not List[Name].Permission or (List[Name].Permission and vRP.HasService(Passport,List[Name].Permission))) or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
@@ -31,15 +31,7 @@ function Creative.Mount(Name)
 			if v.amount <= 0 or not ItemExist(v.item) then
 				vRP.CleanSlot(Passport,Slot)
 			else
-				v.name = ItemName(v.item)
-				v.weight = ItemWeight(v.item)
-				v.index = ItemIndex(v.item)
-				v.amount = parseInt(v.amount)
-				v.rarity = ItemRarity(v.item)
-				v.economy = ItemEconomy(v.item)
-				v.desc = ItemDescription(v.item)
 				v.key = v.item
-				v.slot = Slot
 
 				local Split = splitString(v.item)
 				local Item = Split[1]
@@ -91,7 +83,7 @@ function Creative.Take(Item,Amount,Target,Name)
 	local Target = tostring(Target)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and Item and Target and List[Name] and List[Name]["List"] and List[Name]["List"][Item] then
+	if Passport and Item and Target and List[Name] and List[Name].List and List[Name].List[Item] then
 		if Amount > 1 and (ItemUnique(Item) or ItemLoads(Item)) then
 			Amount = 1
 		end
@@ -102,20 +94,22 @@ function Creative.Take(Item,Amount,Target,Name)
 			return false
 		end
 
+		local ItemList = {}
 		local Inventory = vRP.Inventory(Passport)
-		local Multiplier = List[Name]["List"][Item]["Amount"] * Amount
-		if not vRP.MaxItens(Passport,Item,Multiplier) and vRP.CheckWeight(Passport,Item,Multiplier) and (not Inventory[Target] or (Inventory[Target] and Inventory[Target]["item"] == Item)) then
+		local Multiplier = List[Name].List[Item].Amount * Amount
+		if not vRP.MaxItens(Passport,Item,Multiplier) and vRP.CheckWeight(Passport,Item,Multiplier) and (not Inventory[Target] or (Inventory[Target] and Inventory[Target].item == Item)) then
 			for Index,Value in pairs(List[Name]["List"][Item]["Required"]) do
-				if not vRP.ConsultItem(Passport,Index,Value * Amount) then
+				local ConsultItem = vRP.ConsultItem(Passport,Index,Value * Amount)
+				if ConsultItem then
+					ItemList[ConsultItem.Item] = Value * Amount
+				else
 					TriggerClientEvent("inventory:Notify",source,"Atenção","Precisa de <default>"..Dotted(Value * Amount).."x "..ItemName(Index).."</default>.","vermelho")
-
 					return false
 				end
 			end
 
-			for Index,Value in pairs(List[Name]["List"][Item]["Required"]) do
-				local Consult = vRP.InventoryItemAmount(Passport,Index)
-				vRP.RemoveItem(Passport,Consult[2],Value * Amount)
+			for Index,Value in pairs(ItemList) do
+				vRP.RemoveItem(Passport,Index,Value)
 			end
 
 			vRP.GenerateItem(Passport,Item,Multiplier,false,Target)

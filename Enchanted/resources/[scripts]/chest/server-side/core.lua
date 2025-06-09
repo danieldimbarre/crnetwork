@@ -177,18 +177,21 @@ function Creative.Permissions(Name,Mode,Item)
 
 		return true
 	elseif Mode == "Item" then
-		local UniqueName = SplitOne(Name,":")
-		if ChestItens[UniqueName] then
-			Open[Passport] = {
-				Name = Name,
-				Save = true,
-				Unique = UniqueName,
-				Slots = ChestItens[UniqueName].Slots,
-				Weight = ChestItens[UniqueName].Weight,
-				Item = Item
-			}
+		local Split = splitString(Name,":")
+		if vRP.ConsultItem(Passport,Split[1].."-"..Split[2]) then
+			local UniqueName = SplitOne(Name,":")
+			if ChestItens[UniqueName] then
+				Open[Passport] = {
+					Name = Name,
+					Save = true,
+					Unique = UniqueName,
+					Slots = ChestItens[UniqueName].Slots,
+					Weight = ChestItens[UniqueName].Weight,
+					Item = Item
+				}
 
-			return true
+				return true
+			end
 		end
 	else
 		local Consult = vRP.SingleQuery("chests/GetChests",{ Name = Name })
@@ -237,15 +240,7 @@ function Creative.Mount()
 			return false
 		end
 
-		v.name = ItemName(v.item)
-		v.weight = ItemWeight(v.item)
-		v.index = ItemIndex(v.item)
-		v.amount = parseInt(v.amount)
-		v.rarity = ItemRarity(v.item)
-		v.economy = ItemEconomy(v.item)
-		v.desc = ItemDescription(v.item)
 		v.key = v.item
-		v.slot = Slot
 
 		local Split = splitString(v.item)
 		local Item = Split[1]
@@ -343,7 +338,7 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 	end
 
 	if Item == "diagram" and Open[Passport].Chest and vRP.TakeItem(Passport,Item,Amount) then
-		vRP.Query("chests/UpdateWeight",{ Name = Open[Passport].Chest, Multiplier = Amount })
+		vRP.Update("chests/UpdateWeight",{ Name = Open[Passport].Chest, Multiplier = Amount })
 		TriggerClientEvent("inventory:Notify",source,"Sucesso","Armazenamento melhorado.","verde")
 		Open[Passport].Weight = Open[Passport].Weight + (10 * Amount)
 		TriggerClientEvent("inventory:Update",source)
@@ -355,7 +350,7 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 	local Unique = Open[Passport].Unique
 	if (ChestItens[CleanedItem] and ChestItens[CleanedItem].Block) or (Unique and ChestItens[Unique] and ChestItens[Unique].Itens and not ChestItens[Unique].Itens[CleanedItem]) then
 		if Unique and CleanedItem == Unique then
-			TriggerClientEvent("inventory:Open",source,{ Type = "Inventory", Resource = "inventory" },true)
+			TriggerClientEvent("inventory:Open",source,{ Type = "Inventory", Resource = "inventory", Right = "Proximidade" },true)
 		else
 			TriggerClientEvent("inventory:Update",source)
 		end
@@ -394,7 +389,7 @@ function Creative.Take(Item,Slot,Amount,Target)
 	local Data = vRP.GetSrvData(Name,Saved)    
 	if (Open[Passport].Mode or Open[Passport].Item) and json.encode(Data) == "[]" then
 		if Open[Passport].Item and vRP.TakeItem(Passport,Open[Passport].Item) then
-			TriggerClientEvent("inventory:Open",source,{ Type = "Inventory", Resource = "inventory" },true)
+			TriggerClientEvent("inventory:Open",source,{ Type = "Inventory", Resource = "inventory", Right = "Baú" },true)
 		end
 
 		if SplitBoolean(Name,"Helicrash",":") then

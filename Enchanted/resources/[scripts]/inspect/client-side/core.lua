@@ -60,6 +60,7 @@ AddEventHandler("inspect:Open",function()
 	Opened = true
 	TriggerEvent("inventory:Open",{
 		Type = "Inspect",
-		Resource = "inspect"
+		Resource = "inspect",
+		Right = "Jogador"
 	})
 end)

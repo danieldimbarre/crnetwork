@@ -1555,3 +1555,10 @@ RegisterNUICallback("HandsUp",function(Data,Callback)
 
 	Callback("Ok")
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TATTOOSHOP:OPEN
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("tattooshop:Open")
+AddEventHandler("tattooshop:Open",function()
+	OpenTattooshop()
+end)

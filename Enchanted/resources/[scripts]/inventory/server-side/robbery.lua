@@ -91,14 +91,12 @@ local Config = {
 AddEventHandler("inventory:RobberyActive",function(Passport,Mode,Number)
 	local Configuration = Config[Mode]
 	if Configuration then
-		if Configuration.Active and Configuration.Active == Passport then
-			Configuration.Active = false
-		end
-
 		if type(Configuration.Cooldown) == "table" then
 			Configuration.Cooldown[Number] = os.time()
 		else
-			Configuration.Cooldown = os.time()
+			if Configuration.Last and Configuration.Last == Passport then
+				Configuration.Cooldown = os.time()
+			end
 		end
 	end
 end)
@@ -111,7 +109,7 @@ AddEventHandler("inventory:Robbery",function(Number,Mode)
 	local Configuration = Config[Mode]
 	local Passport = vRP.Passport(source)
 
-	if not Passport or Active[Passport] or not Configuration or (type(Configuration.Cooldown) == "number" and Configuration.Active) then
+	if not Passport or Active[Passport] or not Configuration then
 		return false
 	end
 
@@ -156,10 +154,6 @@ AddEventHandler("inventory:Robbery",function(Number,Mode)
 	TriggerClientEvent("Progress",source,"Roubando",(Configuration.Timer or 30) * 1000)
 	TriggerClientEvent("player:Residual",source,Configuration.Residual or "Resquício de Línter")
 
-	if type(Configuration.Cooldown) == "number" then
-		Configuration.Active = Passport
-	end
-
 	if Configuration.Explosion then
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
@@ -194,13 +188,6 @@ AddEventHandler("inventory:Robbery",function(Number,Mode)
 			Active[Passport] = nil
 
 			if (not Configuration.Need) or (RequiredItem and (not Configuration.Need.Consume or vRP.TakeItem(Passport,RequiredItem.Item,Configuration.Need.Amount))) then
-				if type(Configuration.Cooldown) == "table" then
-					Configuration.Cooldown[Number] = os.time() + (Configuration.Delay or 3600)
-				else
-					Configuration.Last = Number
-					Configuration.Cooldown = os.time() + (Configuration.Delay or 3600)
-				end
-
 				local Valuation = math.random(Configuration.Payment.Money.Min,Configuration.Payment.Money.Max)
 
 				if exports["party"]:DoesExist(Passport,2) then

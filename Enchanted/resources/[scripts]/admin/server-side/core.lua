@@ -339,6 +339,15 @@ RegisterCommand("lscustoms",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- TATTOOSHOP
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("tattooshop",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		TriggerClientEvent("tattooshop:Open",source)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- POSTIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("postit",function(source,Message)

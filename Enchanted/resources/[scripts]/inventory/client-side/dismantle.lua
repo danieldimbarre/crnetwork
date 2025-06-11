@@ -202,31 +202,36 @@ AddEventHandler("dismantle:Dispatch",function()
 
 	for Number = 1,Amounts do
 		local Cooldown = 0
-		local OtherPeds = math.random(#Peds)
-		local SpawnX = Coords["x"] + math.random(-20,20)
-		local SpawnY = Coords["y"] + math.random(-20,20)
-		local HitZ,GroundZ = GetGroundZFor_3dCoord(SpawnX,SpawnY,Coords["z"],true)
-		local HitSafe,SafeCoords = GetSafeCoordForPed(SpawnX,SpawnY,GroundZ,false,16)
+		local FoundSafe = false
+		local SpawnPosition = nil
 
 		repeat
 			Cooldown = Cooldown + 1
-			SpawnX = Coords["x"] + math.random(-20,20)
-			SpawnY = Coords["y"] + math.random(-20,20)
-			HitZ,GroundZ = GetGroundZFor_3dCoord(SpawnX,SpawnY,Coords["z"],true)
-			HitSafe,SafeCoords = GetSafeCoordForPed(SpawnX,SpawnY,GroundZ,false,16)
-		until (HitZ and HitSafe) or Cooldown >= 100
+			local x = Coords.x + math.random(-30,30)
+			local y = Coords.y + math.random(-30,30)
+			local z = Coords.z
 
-		if HitZ and HitSafe then
-			local Networked = vRPS.CreateModels(Peds[OtherPeds],SafeCoords["x"],SafeCoords["y"],SafeCoords["z"])
+			local Hitz,Groundz = GetGroundZFor_3dCoord(x,y,z,true)
+			local SafeHitz,SafeCoords = GetSafeCoordForPed(x,y,Groundz,false,16)
+
+			if Hitz and SafeHitz then
+				FoundSafe = true
+				SpawnPosition = SafeCoords
+			end
+		until FoundSafe or Cooldown >= 100
+
+		if FoundSafe and SpawnPosition then
+			local Model = Peds[math.random(#Peds)]
+			local Networked = vRPS.CreateModels(Model,SpawnPosition.x,SpawnPosition.y,SpawnPosition.z)
 			if not Networked then return end
 
 			local Entity = LoadNetwork(Networked)
 			while not DoesEntityExist(Entity) do
-				Wait(100)
+				Wait(50)
 			end
 
 			SetPedArmour(Entity,100)
-			SetPedAccuracy(Entity,75)
+			SetPedAccuracy(Entity,90)
 			SetPedAlertness(Entity,3)
 			SetPedAsEnemy(Entity,true)
 			SetPedMaxHealth(Entity,500)
@@ -235,16 +240,20 @@ AddEventHandler("dismantle:Dispatch",function()
 			SetPedCombatRange(Entity,2)
 			StopPedSpeaking(Entity,true)
 			SetPedCombatMovement(Entity,2)
+			SetPedSeeingRange(Entity,250.0)
+			SetPedHearingRange(Entity,250.0)
 			DisablePedPainAudio(Entity,true)
 			SetPedPathAvoidFire(Entity,true)
 			SetPedConfigFlag(Entity,208,true)
-			SetPedSeeingRange(Entity,10000.0)
 			SetPedCanEvasiveDive(Entity,false)
-			SetPedHearingRange(Entity,10000.0)
 			SetPedDiesWhenInjured(Entity,false)
 			SetPedPathCanUseLadders(Entity,true)
 			SetPedFleeAttributes(Entity,0,false)
+
+			SetPedCombatAttributes(Entity,0,true)
+			SetPedCombatAttributes(Entity,5,true)
 			SetPedCombatAttributes(Entity,46,true)
+
 			SetPedFiringPattern(Entity,0xC6EE6B4C)
 			SetCanAttackFriendly(Entity,true,false)
 			SetPedSuffersCriticalHits(Entity,false)
@@ -252,18 +261,23 @@ AddEventHandler("dismantle:Dispatch",function()
 			SetPedDropsWeaponsWhenDead(Entity,false)
 			SetPedEnableWeaponBlocking(Entity,false)
 			SetPedPathCanDropFromHeight(Entity,false)
-			RegisterHatedTargetsAroundPed(Entity,100.0)
-			GiveWeaponToPed(Entity,"WEAPON_PISTOL_MK2",-1,false,true)
-			SetCurrentPedWeapon(Entity,"WEAPON_PISTOL_MK2",true)
-			SetPedInfiniteAmmo(Entity,true,"WEAPON_PISTOL_MK2")
-			SetPedRelationshipGroupHash(Entity,GetHashKey("HATES_PLAYER"))
-			SetEntityCanBeDamagedByRelationshipGroup(Entity,false,"HATES_PLAYER")
-			SetRelationshipBetweenGroups(5,GetHashKey("HATES_PLAYER"),GetHashKey("PLAYER"))
-			SetRelationshipBetweenGroups(5,GetHashKey("PLAYER"),GetHashKey("HATES_PLAYER"))
+			RegisterHatedTargetsAroundPed(Entity,250.0)
+
+			local PlayerHash = GetHashKey("PLAYER")
+			local GroupHash = GetHashKey("HATES_PLAYER")
+			SetPedRelationshipGroupHash(Entity,GroupHash)
+			SetRelationshipBetweenGroups(5,GroupHash,PlayerHash)
+			SetRelationshipBetweenGroups(5,PlayerHash,GroupHash)
+
+			local Weapon = "WEAPON_CARBINERIFLE"
+			GiveWeaponToPed(Entity,Weapon,-1,false,true)
+			SetCurrentPedWeapon(Entity,Weapon,true)
+			SetPedInfiniteAmmo(Entity,true,Weapon)
+
 			TaskCombatPed(Entity,Ped,0,16)
 
 			SetTimeout(1000,function()
-				TaskWanderInArea(Entity,SafeCoords["x"],SafeCoords["y"],SafeCoords["z"],25.0,0.0,0.0)
+				TaskWanderInArea(Entity,Coords.x,Coords.y,Coords.z,50.0,0.0,0.0)
 				SetModelAsNoLongerNeeded(Peds[OtherPeds])
 			end)
 		end

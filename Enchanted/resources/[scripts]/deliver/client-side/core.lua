@@ -17,11 +17,11 @@ local Progress = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Name,v in pairs(List) do
-		exports["target"]:AddBoxZone("Deliver:"..Name,v["Coords"],0.75,0.75,{
+		exports["target"]:AddBoxZone("Deliver:"..Name,v.Coords,0.75,0.75,{
 			name = "Deliver:"..Name,
 			heading = 0.0,
-			minZ = v["Coords"]["z"] - 1.0,
-			maxZ = v["Coords"]["z"] + 1.0
+			minZ = v.Coords.z - 1.0,
+			maxZ = v.Coords.z + 1.0
 		},{
 			shop = Name,
 			Distance = 1.75,
@@ -68,34 +68,35 @@ AddEventHandler("deliver:Init",function(Service)
 				local Ped = PlayerPedId()
 				if not IsPedInAnyVehicle(Ped) then
 					local Coords = GetEntityCoords(Ped)
-					local Selected = List[Worked]["Locate"]
-					local Distance = #(Coords - Locations[Worked][Selected])
+					local Selected = List[Worked].Locate
+					local SelectedCoords = Locations[Worked][Selected]
+					local Distance = #(Coords - SelectedCoords)
 
 					if Distance <= 10.0 then
 						TimeDistance = 1
-						SetDrawOrigin(Locations[Worked][Selected]["x"],Locations[Worked][Selected]["y"],Locations[Worked][Selected]["z"])
+						SetDrawOrigin(SelectedCoords.x,SelectedCoords.y,SelectedCoords.z)
 						DrawSprite("Textures","H",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 						ClearDrawOrigin()
 
-						if Distance <= 1.0 and IsControlJustPressed(1,74) and vINVENTORY.Deliver(Worked) then
-							if List[Worked]["Route"] then
+						if Distance <= 1.0 and IsControlJustPressed(1,74) and vINVENTORY.Deliver(Worked,SelectedCoords) then
+							if List[Worked].Route then
 								if Selected >= #Locations[Worked] then
-									List[Worked]["Locate"] = 1
+									List[Worked].Locate = 1
 								else
-									List[Worked]["Locate"] = List[Worked]["Locate"] + 1
+									List[Worked].Locate = List[Worked].Locate + 1
 								end
 							else
-								local Lasted = List[Worked]["Locate"]
+								local Lasted = List[Worked].Locate
 
 								repeat
-									if Lasted == List[Worked]["Locate"] then
-										List[Worked]["Locate"] = math.random(#Locations)
+									if Lasted == List[Worked].Locate then
+										List[Worked].Locate = math.random(#Locations)
 									end
 
 									Wait(1)
-								until Lasted ~= List[Worked]["Locate"]
+								until Lasted ~= List[Worked].Locate
 
-								List[Worked]["Locate"] = math.random(#Locations[Worked])
+								List[Worked].Locate = math.random(#Locations[Worked])
 							end
 
 							BlipMarkerService()
@@ -118,9 +119,9 @@ function BlipMarkerService()
 	end
 
 	if Worked then
-		local Selected = List[Worked]["Locate"]
+		local Selected = List[Worked].Locate
 		local Coords = Locations[Worked][Selected]
-		Blip = AddBlipForCoord(Coords["x"],Coords["y"],Coords["z"])
+		Blip = AddBlipForCoord(Coords.x,Coords.y,Coords.z)
 		SetBlipSprite(Blip,1)
 		SetBlipColour(Blip,77)
 		SetBlipScale(Blip,0.5)

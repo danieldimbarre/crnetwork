@@ -28,7 +28,7 @@ end)
 RegisterNUICallback("Mount",function(Data,Callback)
 	local Primary,PrimaryWeight = vSERVER.Mount(Opened)
 	if Primary then
-		Callback({ Primary = Primary, Secondary = ItemList[Opened], PrimaryMaxWeight = PrimaryWeight, SecondarySlots = (#ItemList[Opened] > 25 and #ItemList[Opened] or 25) })
+		Callback({ Primary = Primary, Secondary = ItemList[Opened], PrimaryMaxWeight = PrimaryWeight, SecondarySlots = math.max(CountTable(ItemList[Opened]),25) })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

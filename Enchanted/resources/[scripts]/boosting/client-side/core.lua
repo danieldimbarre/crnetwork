@@ -212,7 +212,7 @@ AddEventHandler("boosting:Dispatch",function()
 			local Hitz,Groundz = GetGroundZFor_3dCoord(x,y,z,true)
 			local SafeHitz,SafeCoords = GetSafeCoordForPed(x,y,Groundz,false,16)
 
-			if Hitz and SafeHitz then
+			if Hitz and SafeHitz and IsPointOnRoad(SafeCoords.x,SafeCoords.y,SafeCoords.z,0) then
 				FoundSafe = true
 				SpawnPosition = SafeCoords
 			end
@@ -229,37 +229,39 @@ AddEventHandler("boosting:Dispatch",function()
 			end
 
 			SetPedArmour(Entity,100)
-			SetPedAccuracy(Entity,90)
-			SetPedAlertness(Entity,3)
-			SetPedAsEnemy(Entity,true)
+			SetPedAccuracy(Entity,95)
 			SetPedMaxHealth(Entity,500)
 			SetEntityHealth(Entity,500)
+
+			SetPedAlertness(Entity,3)
+			SetPedAsEnemy(Entity,true)
 			SetPedKeepTask(Entity,true)
 			SetPedCombatRange(Entity,2)
-			StopPedSpeaking(Entity,true)
-			SetPedCombatMovement(Entity,2)
-			SetPedSeeingRange(Entity,250.0)
-			SetPedHearingRange(Entity,250.0)
-			DisablePedPainAudio(Entity,true)
-			SetPedPathAvoidFire(Entity,true)
-			SetPedConfigFlag(Entity,208,true)
-			SetPedCanEvasiveDive(Entity,false)
-			SetPedDiesWhenInjured(Entity,false)
-			SetPedPathCanUseLadders(Entity,true)
-			SetPedFleeAttributes(Entity,0,false)
+			SetPedCanRagdoll(Entity,false)
+			SetPedCombatMovement(Entity,3)
+			SetPedSeeingRange(Entity,100.0)
+			SetPedHearingRange(Entity,100.0)
+			SetPedCombatAbility(Entity,3)
 
 			SetPedCombatAttributes(Entity,0,true)
+			SetPedCombatAttributes(Entity,1,true)
+			SetPedCombatAttributes(Entity,3,true)
 			SetPedCombatAttributes(Entity,5,true)
 			SetPedCombatAttributes(Entity,46,true)
 
 			SetPedFiringPattern(Entity,-957453492)
-			SetCanAttackFriendly(Entity,true,false)
-			SetPedSuffersCriticalHits(Entity,false)
+
+			SetPedPathCanUseLadders(Entity,true)
 			SetPedPathCanUseClimbovers(Entity,true)
+			SetPedPathCanDropFromHeight(Entity,true)
+			SetPedCanEvasiveDive(Entity,true)
+			SetPedFleeAttributes(Entity,0,false)
+			SetPedSuffersCriticalHits(Entity,false)
 			SetPedDropsWeaponsWhenDead(Entity,false)
 			SetPedEnableWeaponBlocking(Entity,false)
-			SetPedPathCanDropFromHeight(Entity,false)
-			RegisterHatedTargetsAroundPed(Entity,250.0)
+			SetBlockingOfNonTemporaryEvents(Entity,true)
+			DisablePedPainAudio(Entity,true)
+			StopPedSpeaking(Entity,true)
 
 			local PlayerHash = GetHashKey("PLAYER")
 			local GroupHash = GetHashKey("HATES_PLAYER")
@@ -268,16 +270,14 @@ AddEventHandler("boosting:Dispatch",function()
 			SetRelationshipBetweenGroups(5,PlayerHash,GroupHash)
 
 			local Weapon = "WEAPON_CARBINERIFLE"
-			GiveWeaponToPed(Entity,Weapon,-1,false,true)
+			GiveWeaponToPed(Entity,Weapon,250,false,true)
 			SetCurrentPedWeapon(Entity,Weapon,true)
 			SetPedInfiniteAmmo(Entity,true,Weapon)
 
-			TaskCombatPed(Entity,Ped,0,16)
+			RegisterHatedTargetsAroundPed(Entity,100.0)
+			TaskCombatHatedTargetsAroundPed(Entity,100.0,0)
 
-			SetTimeout(1000,function()
-				TaskWanderInArea(Entity,SafeCoords["x"],SafeCoords["y"],SafeCoords["z"],25.0,0.0,0.0)
-				SetModelAsNoLongerNeeded(Peds[OtherPeds])
-			end)
+			SetModelAsNoLongerNeeded(Model)
 		end
 	end
 end)

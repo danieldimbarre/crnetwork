@@ -422,33 +422,17 @@ function DisableActions()
 		DisableControlAction(0,2,true)
 	end
 
-	DisableControlAction(0,18,true)
-	DisableControlAction(0,55,true)
-	DisableControlAction(0,76,true)
-	DisableControlAction(0,22,true)
-	DisableControlAction(0,23,true)
-	DisableControlAction(0,24,true)
-	DisableControlAction(0,25,true)
-	DisableControlAction(0,75,true)
-	DisableControlAction(0,140,true)
-	DisableControlAction(0,141,true)
-	DisableControlAction(0,142,true)
-	DisableControlAction(0,143,true)
-	DisableControlAction(0,243,true)
-	DisableControlAction(0,257,true)
-	DisableControlAction(0,263,true)
-	DisableControlAction(0,311,true)
-	DisableControlAction(0,102,true)
-	DisableControlAction(0,179,true)
-	DisableControlAction(0,203,true)
+	for _,v in ipairs({ 18,55,76,22,23,24,25,75,140,141,142,143,243,257,263,311,102,179,203 }) do
+		DisableControlAction(0,v,true)
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TARGETENABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function TargetEnable()
 	local Ped = PlayerPedId()
-	if LocalPlayer["state"]["Arena"] or LocalPlayer["state"]["Cancel"] or LocalPlayer["state"]["ItemCamera"] or LocalPlayer["state"]["Freecam"] or LocalPlayer["state"]["Carry"] or not LocalPlayer["state"]["Active"] or IsPauseMenuActive() or exports["lb-phone"]:IsOpen() or not MumbleIsConnected() or LocalPlayer["state"]["Buttons"] or LocalPlayer["state"]["Commands"] or LocalPlayer["state"]["Handcuff"] or Sucess or IsPedInAnyVehicle(Ped) then
-		return
+	if LocalPlayer.state.Arena or LocalPlayer.state.Cancel or LocalPlayer.state.ItemCamera or LocalPlayer.state.Freecam or LocalPlayer.state.Carry or not LocalPlayer.state.Active or LocalPlayer.state.Buttons or LocalPlayer.state.Commands or LocalPlayer.state.Handcuff or IsPauseMenuActive() or exports["lb-phone"]:IsOpen() or not MumbleIsConnected() or Sucess or IsPedInAnyVehicle(Ped) then
+		return false
 	end
 
 	Actived = true
@@ -457,6 +441,7 @@ function TargetEnable()
 	while Actived do
 		DisableActions()
 
+		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
 		local HitCoords,Entitys,EntityHit = RayCastGamePlayCamera()
 

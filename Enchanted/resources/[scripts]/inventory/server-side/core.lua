@@ -442,6 +442,8 @@ function Creative.Send(Slot,Amount)
 						if vRP.TakeItem(Passport,Item,Amount,true,Slot) and vRP.GiveItem(OtherPassport,Item,Amount,true) then
 							TriggerClientEvent("inventory:Update",source)
 							TriggerClientEvent("inventory:Update",ClosestPed)
+
+							return true
 						end
 					end
 				end)
@@ -449,18 +451,25 @@ function Creative.Send(Slot,Amount)
 				TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 			end
 		else
-			TriggerClientEvent("Notify",source,"Aviso","Limite atingido.","amarelo",5000)
+			TriggerClientEvent("inventory:Notify",source,"Aviso","Limite atingido.","amarelo",5000)
 		end
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DELIVER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Deliver(Work)
+function Creative.Deliver(Work,OtherCoords)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
 		Active[Passport] = os.time() + 100
+
+		local Coords = vRP.GetEntityCoords(source)
+		if not OtherCoords or #(Coords - OtherCoords) > 1.0 then
+			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Deliver",source)
+		end
 
 		if Work == "Lumberman" then
 			if not vRPC.LastVehicle(source,"ratloader") then
@@ -604,7 +613,7 @@ function Creative.Use(Slot,Amount)
 			return
 		end
 
-		if ItemTypeCheck(Full,"Armamento") and (parseInt(Slot) >= 101 and parseInt(Slot) <= 104) then
+		if ItemTypeCheck(Full,"Armamento") and (parseInt(Slot) >= 100 and parseInt(Slot) <= 103) then
 			if vRP.InsideVehicle(source) and not ItemVehicle(Full) then
 				return
 			end
@@ -742,6 +751,8 @@ function Creative.Use(Slot,Amount)
 			Use[Item](source,Passport,Amount,Slot,Full,Item,Split)
 		end
 	end
+
+	return true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CANCEL

@@ -146,6 +146,10 @@ Use = {
 		end
 	end,
 
+	["mapgps"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		TriggerClientEvent("hud:Radar",source)
+	end,
+
 	["racestablet"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		TriggerClientEvent("races:Open",source)
 		TriggerClientEvent("inventory:Close",source)

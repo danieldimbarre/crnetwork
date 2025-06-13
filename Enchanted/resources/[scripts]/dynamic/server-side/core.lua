@@ -128,7 +128,7 @@ AddEventHandler("dynamic:Clothes",function(Mode)
 			end
 		elseif Split[1] == "Apply" then
 			if Consult[Name] then
-				TriggerClientEvent("skinshop:Apply",source,Consult[Name])
+				TriggerClientEvent("skinshop:Apply",source,Consult[Name],true)
 			end
 		end
 	end

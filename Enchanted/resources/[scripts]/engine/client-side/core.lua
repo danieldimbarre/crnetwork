@@ -92,7 +92,7 @@ CreateThread(function()
 			local ClassVehicle = GetVehicleClass(Vehicle)
 			if not Class[ClassVehicle] or Class[ClassVehicle] ~= 0.0 then
 				if GetVehicleFuelLevel(Vehicle) >= 1 then
-					if (GetEntitySpeed(Vehicle) * 2.236936) >= 1 and GetPedInVehicleSeat(Vehicle,-1) == Ped then
+					if (GetEntitySpeed(Vehicle) * 3.6) >= 1 and GetPedInVehicleSeat(Vehicle,-1) == Ped then
 						if not Entity(Vehicle)["state"]["Fuel"] then
 							Entity(Vehicle)["state"]:set("Fuel",100,true)
 						end

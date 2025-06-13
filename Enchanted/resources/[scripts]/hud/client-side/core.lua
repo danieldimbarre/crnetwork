@@ -8,6 +8,7 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBAL
 -----------------------------------------------------------------------------------------------------------------------------------------
+Radar = false
 Display = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -226,13 +227,13 @@ end
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddStateBagChangeHandler("Passport",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
-	SendNUIMessage({ Action = "Passport", Payload = Dotted(Value) })
+	SendNUIMessage({ Action = "Passport", Payload = Value })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddStateBagChangeHandler("Players",nil,function(Name,Key,Value)
-	SendNUIMessage({ Action = "Players", Payload = Dotted(Value) })
+	SendNUIMessage({ Action = "Players", Payload = Value })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER
@@ -301,10 +302,10 @@ end)
 -- HUD:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("hud:Active",function(Status)
-	SendNUIMessage({ Action = "Body", Payload = Status })
 	Display = Status
+	SendNUIMessage({ Action = "Body", Payload = Display })
 
-	if not Display and IsMinimapRendering() then
+	if IsMinimapRendering() then
 		DisplayRadar(false)
 	end
 end)
@@ -315,9 +316,25 @@ RegisterCommand("hud",function()
 	Display = not Display
 	SendNUIMessage({ Action = "Body", Payload = Display })
 
-	if not Display and IsMinimapRendering() then
+	if IsMinimapRendering() then
 		DisplayRadar(false)
 	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:RADAR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Radar")
+AddEventHandler("hud:Radar",function()
+	Radar = not Radar
+
+	TriggerEvent("inventory:Notify","Sucesso","Mapa adaptativo "..(Radar and "ativado" or "desativado")..".","verde")
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:RADAROFF
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Radaroff")
+AddEventHandler("hud:Radaroff",function()
+	Radar = false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PROGRESS
@@ -377,7 +394,7 @@ RegisterNetEvent("hud:AddGemstone")
 AddEventHandler("hud:AddGemstone",function(Number)
 	Gemstone = Gemstone + Number
 
-	SendNUIMessage({ Action = "Gemstone", Payload = Dotted(Gemstone) })
+	SendNUIMessage({ Action = "Gemstone", Payload = Gemstone })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:REMOVEGEMSTONE
@@ -390,7 +407,7 @@ AddEventHandler("hud:RemoveGemstone",function(Number)
 		Gemstone = 0
 	end
 
-	SendNUIMessage({ Action = "Gemstone", Payload = Dotted(Gemstone) })
+	SendNUIMessage({ Action = "Gemstone", Payload = Gemstone })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:RADIO

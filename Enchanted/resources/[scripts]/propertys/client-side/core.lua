@@ -206,7 +206,7 @@ end)
 RegisterNUICallback("Mount",function(Data,Callback)
 	local Primary,Secondary,PrimaryWeight,SecondaryWeight = vSERVER.Mount(Inside,Opened)
 	if Primary then
-		Callback({ Primary = Primary, Secondary = Secondary, PrimaryMaxWeight = PrimaryWeight, SecondaryMaxWeight = SecondaryWeight })
+		Callback({ Primary = Primary, Secondary = Secondary, PrimaryMaxWeight = PrimaryWeight, SecondaryMaxWeight = SecondaryWeight, SecondarySlots = math.max(CountTable(Secondary),100) })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

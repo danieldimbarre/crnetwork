@@ -1169,6 +1169,21 @@ local List = {
 		["Economy"] = 60000,
 		["Rarity"] = "legendary"
 	},
+	["mapgps"] = {
+		["Index"] = "mapgps",
+		["Name"] = "Mapa Adaptativo",
+		["Description"] = "Um dispositivo inteligente que, ao ser utilizado, ativa o gps no canto da tela, permitindo ao usuário visualizar melhor o terreno ao redor, rotas e a localização de pontos importantes. Ideal para navegação em áreas desconhecidas ou para ganhar vantagem tática em missões.",
+		["Type"] = "Consumível",
+		["Durability"] = 72,
+		["Weight"] = 0.0,
+		["Delete"] = true,
+		["Economy"] = 50000,
+		["Rarity"] = "legendary",
+		["Execute"] = {
+			["Type"] = "Client",
+			["Event"] = "hud:Radaroff"
+		}
+	},
 	["radiomhz"] = {
 		["Index"] = "radiomhz",
 		["Name"] = "Frequência Mhz",

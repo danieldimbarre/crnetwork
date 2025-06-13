@@ -139,31 +139,19 @@ end)
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
-	if MumbleIsConnected() then
-		vSERVER.Take(Data.item,Data.slot,Data.amount,Data.target)
-	end
-
-	Callback("Ok")
+	Callback(vSERVER.Take(Data.item,Data.slot,Data.amount,Data.target))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Store",function(Data,Callback)
-	if MumbleIsConnected() then
-		vSERVER.Store(Data.item,Data.slot,Data.amount,Data.target,Block)
-	end
-
-	Callback("Ok")
+	Callback(vSERVER.Store(Data.item,Data.slot,Data.amount,Data.target,Block))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Update",function(Data,Callback)
-	if MumbleIsConnected() then
-		vSERVER.Update(Data.slot,Data.target,Data.amount)
-	end
-
-	Callback("Ok")
+	Callback(vSERVER.Update(Data.slot,Data.target,Data.amount))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
@@ -171,6 +159,6 @@ end)
 RegisterNUICallback("Mount",function(Data,Callback)
 	local Primary,Secondary,PrimaryWeight,SecondaryWeight,Slots = vSERVER.Mount()
 	if Primary then
-		Callback({ Primary = Primary, Secondary = Secondary, PrimaryMaxWeight = PrimaryWeight, SecondaryMaxWeight = SecondaryWeight, SecondarySlots = Slots })
+		Callback({ Primary = Primary, Secondary = Secondary, PrimaryMaxWeight = PrimaryWeight, SecondaryMaxWeight = SecondaryWeight, SecondarySlots = math.max(CountTable(Secondary),Slots) })
 	end
 end)

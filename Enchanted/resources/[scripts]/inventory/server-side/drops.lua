@@ -36,13 +36,15 @@ function Creative.Drops(Item,Slot,Amount)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Amount >= 1 and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) then
 		if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
-			exports["inventory"]:Drops(Passport,source,Item,Amount,true)
+			return exports["inventory"]:Drops(Passport,source,Item,Amount,true)
 		else
 			TriggerClientEvent("inventory:Update",source)
 		end
 	else
 		TriggerClientEvent("inventory:Update",source)
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DROPS
@@ -116,7 +118,11 @@ exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 		Active[Passport] = nil
 		Drops[Route][Selected] = Provisory
 		TriggerClientEvent("inventory:DropsAdicionar",-1,Route,Selected,Drops[Route][Selected])
+
+		return true
 	end
+
+	return false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PICKUP
@@ -144,6 +150,10 @@ function Creative.Pickup(Number,Route,Target,Amount)
 							TriggerClientEvent("inventory:DropsAtualizar",-1,Route,Number,Drops[Route][Number]["amount"])
 						end
 					end
+
+					Active[Passport] = nil
+
+					return true
 				end
 			end
 		else
@@ -153,4 +163,6 @@ function Creative.Pickup(Number,Route,Target,Amount)
 		TriggerClientEvent("inventory:Update",source)
 		Active[Passport] = nil
 	end
+
+	return false
 end

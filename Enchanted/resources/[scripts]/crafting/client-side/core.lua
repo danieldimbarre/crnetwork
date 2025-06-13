@@ -27,7 +27,7 @@ end)
 RegisterNUICallback("Mount",function(Data,Callback)
 	local Primary,PrimaryWeight = vSERVER.Mount(Opened)
 	if Primary then
-		Callback({ Primary = Primary, Secondary = ItemList[Opened], PrimaryMaxWeight = PrimaryWeight, SecondarySlots = (#ItemList[Opened] > 20 and #ItemList[Opened] or 20) })
+		Callback({ Primary = Primary, Secondary = ItemList[Opened], PrimaryMaxWeight = PrimaryWeight, SecondarySlots = math.max(CountTable(ItemList[Opened]),25) })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
 	if MumbleIsConnected() then
-		vSERVER.Take(Data["item"],Data["amount"],Data["target"],Opened)
+		vSERVER.Take(Data.item,Data.amount,Data.target,Opened)
 	end
 
 	Callback("Ok")
@@ -46,14 +46,14 @@ end)
 AddEventHandler("crafting:Open",function(Number)
 	if not exports["hud"]:Wanted() then
 		if Location[Number] then
-			if vSERVER.Permission(Location[Number]["Mode"]) then
-				Opened = Location[Number]["Mode"]
+			if vSERVER.Permission(Location[Number].Mode) then
+				Opened = Location[Number].Mode
 
 				TriggerEvent("inventory:Open",{
 					Type = "Shops",
 					Mode = "Buy",
 					Resource = "crafting",
-					Right = Location[Number]["Name"] or "Produção"
+					Right = Location[Number].Name or "Produção"
 				})
 			end
 		else
@@ -75,7 +75,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Number,v in pairs(Location) do
-		exports["target"]:AddCircleZone("Crafting:"..Number,v["Coords"],v["Circle"],{
+		exports["target"]:AddCircleZone("Crafting:"..Number,v.Coords,v.Circle,{
 			name = "Crafting:"..Number,
 			heading = 0.0,
 			useZ = true

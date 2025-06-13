@@ -42,37 +42,33 @@ CreateThread(function()
 
 	while true do
 		local TimeDistance = 999
-		if LocalPlayer["state"]["Active"] then
+		if LocalPlayer["state"]["Active"] and Display then
+			if not Loadout then
+				if LoadTexture("circleminimap") then
+					AddReplaceTexture("platform:/textures/graphics","radarmasksm","circleminimap","radarmasksm")
+
+					SetMinimapComponentPosition("minimap","L","B",0.005,-0.025,0.175,0.225)
+					SetMinimapComponentPosition("minimap_mask","L","B",0.02,0.39,0.1135,0.5)
+					SetMinimapComponentPosition("minimap_blur","L","B",-0.02,-0.01,0.265,0.225)
+
+					SetBigmapActive(true,false)
+
+					repeat
+						Wait(100)
+
+						SetMinimapClipType(1)
+						SetBigmapActive(false,false)
+					until not IsBigmapActive()
+
+					SetRadarZoom(1100)
+					Loadout = true
+				end
+			end
+
 			local Ped = PlayerPedId()
-			if IsPedInAnyVehicle(Ped) then
+			local InVehicle = IsPedInAnyVehicle(Ped)
+			if InVehicle then
 				TimeDistance = 100
-
-				if not Loadout then
-					if LoadTexture("circleminimap") then
-						AddReplaceTexture("platform:/textures/graphics","radarmasksm","circleminimap","radarmasksm")
-
-						SetMinimapComponentPosition("minimap","L","B",0.005,-0.025,0.175,0.225)
-						SetMinimapComponentPosition("minimap_mask","L","B",0.02,0.39,0.1135,0.5)
-						SetMinimapComponentPosition("minimap_blur","L","B",-0.02,-0.01,0.265,0.225)
-
-						SetBigmapActive(true,false)
-
-						repeat
-							Wait(100)
-
-							SetMinimapClipType(1)
-							SetBigmapActive(false,false)
-						until not IsBigmapActive()
-
-						SetRadarZoom(1100)
-						Loadout = true
-					end
-				end
-
-				if Display and not IsMinimapRendering() then
-					SetBigmapActive(false,false)
-					DisplayRadar(true)
-				end
 
 				local Vehicle = GetVehiclePedIsUsing(Ped)
 				local VRpm = GetVehicleCurrentRpm(Vehicle)
@@ -80,7 +76,7 @@ CreateThread(function()
 				local VLocked = GetVehicleDoorLockStatus(Vehicle)
 				local VFuel = Entity(Vehicle)["state"]["Fuel"] or 0
 				local VEngineHealth = GetVehicleEngineHealth(Vehicle)
-				local VSpeed = math.ceil(EntitySpeed * 2.236936)
+				local VSpeed = math.ceil(EntitySpeed * 3.6)
 
 				if GetPedInVehicleSeat(Vehicle,-1) == Ped then
 					if GetVehicleDirtLevel(Vehicle) > 0.0 then
@@ -180,10 +176,6 @@ CreateThread(function()
 					Rpm = VRpm
 				end
 			else
-				if IsMinimapRendering() then
-					DisplayRadar(false)
-				end
-
 				if ActualVehicle then
 					ActualVehicle = nil
 					SendNUIMessage({ Action = "Vehicle", Payload = false })
@@ -201,6 +193,17 @@ CreateThread(function()
 				if LastSpeed ~= 0 then
 					LastSpeed = 0
 				end
+			end
+
+			if InVehicle or Radar then
+				if not IsMinimapRendering() then
+					SendNUIMessage({ Action = "Map", Payload = true })
+					SetBigmapActive(false,false)
+					DisplayRadar(true)
+				end
+			elseif not InVehicle and not Radar and IsMinimapRendering() then
+				SendNUIMessage({ Action = "Map", Payload = false })
+				DisplayRadar(false)
 			end
 		end
 

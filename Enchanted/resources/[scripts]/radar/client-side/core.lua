@@ -27,7 +27,7 @@ CreateThread(function()
 
 			if IsEntityAVehicle(Front) then
 				local Model = vRP.VehicleModel(Front)
-				local Speed = GetEntitySpeed(Front) * 2.236936
+				local Speed = GetEntitySpeed(Front) * 3.6
 				local Plate = GetVehicleNumberPlateText(Front)
 
 				SendNUIMessage({ radar = "top", plate = Plate, Model = VehicleName(Model), speed = Speed })
@@ -39,7 +39,7 @@ CreateThread(function()
 
 			if IsEntityAVehicle(Back) then
 				local Model = vRP.VehicleModel(Back)
-				local Speed = GetEntitySpeed(Back) * 2.236936
+				local Speed = GetEntitySpeed(Back) * 3.6
 				local Plate = GetVehicleNumberPlateText(Back)
 
 				SendNUIMessage({ radar = "bot", plate = Plate, Model = VehicleName(Model), speed = Speed })

@@ -363,6 +363,8 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 
 		return false
 	end
+
+	return true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKE
@@ -403,6 +405,8 @@ function Creative.Take(Item,Slot,Amount,Target)
 			GlobalState["ChristmasBlock:"..SplitTwo(Name,":")] = true
 		end
 	end
+
+	return true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATE
@@ -421,6 +425,8 @@ function Creative.Update(Slot,Target,Amount)
 	if vRP.UpdateChest(Passport,Name,Slot,Target,Amount,Saved) then
 		TriggerClientEvent("inventory:Update",source)
 	end
+
+	return true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHEST:COOLDOWN

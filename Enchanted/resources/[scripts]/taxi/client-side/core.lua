@@ -162,6 +162,7 @@ function CreatePassenger(Vehicle)
 		Wait(100)
 	end
 
+	SetEntityCoordsNoOffset(Current,Locations[Selected].Ped.x,Locations[Selected].Ped.y,Locations[Selected].Ped.z)
 	LocalPlayer["state"]:set("BlockLocked",true,false)
 	SetBlockingOfNonTemporaryEvents(Current,true)
 	SetEntityAsMissionEntity(Current,true,true)
@@ -171,11 +172,10 @@ function CreatePassenger(Vehicle)
 	SetPedKeepTask(Current,true)
 	Walking = true
 
-	while not IsPedSittingInVehicle(Current,Vehicle) do
-		if not IsPedWalking(Current) then
-			TaskEnterVehicle(Current,Vehicle,-1,2,1.0,8,0)
-		end
+	TaskGoToEntity(Current,Vehicle,-1,3.0,1.0,1073741824,0)
 
+	while not IsPedSittingInVehicle(Current,Vehicle) do
+		TaskEnterVehicle(Current,Vehicle,-1,2,1.0,1,0)
 		Wait(1000)
 	end
 

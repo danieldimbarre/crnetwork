@@ -593,15 +593,7 @@ function Creative.Mount(Name,Mode)
 			return false
 		end
 
-		v.name = ItemName(v.item)
-		v.weight = ItemWeight(v.item)
-		v.index = ItemIndex(v.item)
-		v.amount = parseInt(v.amount)
-		v.rarity = ItemRarity(v.item)
-		v.economy = ItemEconomy(v.item)
-		v.desc = ItemDescription(v.item)
 		v.key = v.item
-		v.slot = Slot
 
 		local Split = splitString(v.item)
 		local Item = Split[1]

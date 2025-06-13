@@ -375,11 +375,11 @@ RegisterCommand("Crouch",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- FASTBINDS
+-- INVBIND
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("FastBinds",function(source,Message)
+RegisterCommand("Invbind",function(source,Message)
 	local Ped = PlayerPedId()
-	if (parseInt(Message[1]) >= 101 and parseInt(Message[1]) <= 104) and LocalPlayer["state"]["Active"] and GetGameTimer() >= Button and not IsPauseMenuActive() and not LocalPlayer["state"]["Buttons"] and (LocalPlayer["state"]["Handcuff"] or not LocalPlayer["state"]["Commands"]) and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
+	if (parseInt(Message[1]) >= 100 and parseInt(Message[1]) <= 103) and LocalPlayer["state"]["Active"] and GetGameTimer() >= Button and not IsPauseMenuActive() and not LocalPlayer["state"]["Buttons"] and (LocalPlayer["state"]["Handcuff"] or not LocalPlayer["state"]["Commands"]) and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer["state"]["Cancel"] and not IsPedReloading(Ped) then
 		Button = GetGameTimer() + 500
 		TriggerEvent("inventory:Use",Message[1])
 	end
@@ -479,10 +479,10 @@ RegisterKeyMapping("Crouch","Agachar.","keyboard","LCONTROL")
 RegisterKeyMapping("Engine","Ligar o veículo.","keyboard","Z")
 RegisterKeyMapping("Lock","Trancar/Destrancar.","keyboard","L")
 
-RegisterKeyMapping("FastBinds 101","Interação do botão 1.","keyboard","1")
-RegisterKeyMapping("FastBinds 102","Interação do botão 2.","keyboard","2")
-RegisterKeyMapping("FastBinds 103","Interação do botão 3.","keyboard","3")
-RegisterKeyMapping("FastBinds 104","Interação do botão 4.","keyboard","4")
+RegisterKeyMapping("Invbind 100","Interação do botão 1.","keyboard","1")
+RegisterKeyMapping("Invbind 101","Interação do botão 2.","keyboard","2")
+RegisterKeyMapping("Invbind 102","Interação do botão 3.","keyboard","3")
+RegisterKeyMapping("Invbind 103","Interação do botão 4.","keyboard","4")
 
 RegisterKeyMapping("NumBinds 0","Interação de animação 0.","keyboard","NUMPAD0")
 RegisterKeyMapping("NumBinds 1","Interação de animação 1.","keyboard","NUMPAD1")

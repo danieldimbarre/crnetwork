@@ -138,12 +138,15 @@ AddEventHandler("target:Service",function(Permission)
 	end
 
 	if Permission == "Policia" then
-		if vRP.HasPermission(Passport,"LSPD") then
-			Permission = "LSPD"
-		elseif vRP.HasPermission(Passport,"SAPR") then
-			Permission = "SAPR"
-		elseif vRP.HasPermission(Passport,"BCSO") then
-			Permission = "BCSO"
+		for _,v in pairs({ "LSPD","SAPR","BCSO" }) do
+			if vRP.HasPermission(Passport,v) then
+				Permission = v
+				break
+			end
+		end
+
+		if Permission == "Policia" then
+			return false
 		end
 	end
 

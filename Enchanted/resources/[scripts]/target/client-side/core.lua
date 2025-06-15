@@ -450,7 +450,7 @@ function TargetEnable()
 					ClearDrawOrigin()
 					DisableActions()
 
-					if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+					if IsDisabledControlJustReleased(1,24) then
 						SetCursorLocation(0.5,0.5)
 						SetNuiFocus(true,true)
 						Focus = true
@@ -459,7 +459,15 @@ function TargetEnable()
 					local Ped = PlayerPedId()
 					local OtherCoords = RayCastGamePlayCamera()
 					if not Zones[Index]:isPointInside(OtherCoords) or #(GetEntityCoords(Ped) - Zones[Index].center) > v.targetoptions.Distance then
-						SendNUIMessage({ Action = "Left" })
+						if Focus then
+							SendNUIMessage({ Action = "Close" })
+							SetNuiFocus(false,false)
+							Actived = false
+							Focus = false
+						else
+							SendNUIMessage({ Action = "Left" })
+						end
+
 						Sucess = false
 					end
 
@@ -579,7 +587,7 @@ function TargetEnable()
 					while Sucess do
 						DisableActions()
 
-						if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+						if IsDisabledControlJustReleased(1,24) then
 							SetCursorLocation(0.5,0.5)
 							SetNuiFocus(true,true)
 							Focus = true
@@ -587,8 +595,16 @@ function TargetEnable()
 
 						local Ped = PlayerPedId()
 						local OtherCoords,OtherEntity = RayCastGamePlayCamera()
-						if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > 1.0 then
-							SendNUIMessage({ Action = "Left" })
+						if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > 2.0 then
+							if Focus then
+								SendNUIMessage({ Action = "Close" })
+								SetNuiFocus(false,false)
+								Actived = false
+								Focus = false
+							else
+								SendNUIMessage({ Action = "Left" })
+							end
+
 							Sucess = false
 						end
 
@@ -640,7 +656,7 @@ function TargetEnable()
 					while Sucess do
 						DisableActions()
 
-						if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+						if IsDisabledControlJustReleased(1,24) then
 							SetCursorLocation(0.5,0.5)
 							SetNuiFocus(true,true)
 							Focus = true
@@ -649,7 +665,15 @@ function TargetEnable()
 						local Ped = PlayerPedId()
 						local OtherCoords,OtherEntity = RayCastGamePlayCamera()
 						if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > 2.0 then
-							SendNUIMessage({ Action = "Left" })
+							if Focus then
+								SendNUIMessage({ Action = "Close" })
+								SetNuiFocus(false,false)
+								Actived = false
+								Focus = false
+							else
+								SendNUIMessage({ Action = "Left" })
+							end
+
 							Sucess = false
 						end
 
@@ -670,7 +694,7 @@ function TargetEnable()
 					while Sucess do
 						DisableActions()
 
-						if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+						if IsDisabledControlJustReleased(1,24) then
 							SetCursorLocation(0.5,0.5)
 							SetNuiFocus(true,true)
 							Focus = true
@@ -679,7 +703,15 @@ function TargetEnable()
 						local Ped = PlayerPedId()
 						local OtherCoords,OtherEntity = RayCastGamePlayCamera()
 						if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > 2.0 then
-							SendNUIMessage({ Action = "Left" })
+							if Focus then
+								SendNUIMessage({ Action = "Close" })
+								SetNuiFocus(false,false)
+								Actived = false
+								Focus = false
+							else
+								SendNUIMessage({ Action = "Left" })
+							end
+
 							Sucess = false
 						end
 
@@ -719,7 +751,7 @@ function TargetEnable()
 								ClearDrawOrigin()
 								DisableActions()
 
-								if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+								if IsDisabledControlJustReleased(1,24) then
 									SetCursorLocation(0.5,0.5)
 									SetNuiFocus(true,true)
 									Focus = true
@@ -727,8 +759,16 @@ function TargetEnable()
 
 								local Ped = PlayerPedId()
 								local OtherCoords,OtherEntity = RayCastGamePlayCamera()
-								if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > Models[Index].Distance then
-									SendNUIMessage({ Action = "Left" })
+								if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > 2.0 then
+									if Focus then
+										SendNUIMessage({ Action = "Close" })
+										SetNuiFocus(false,false)
+										Actived = false
+										Focus = false
+									else
+										SendNUIMessage({ Action = "Left" })
+									end
+
 									Sucess = false
 								end
 

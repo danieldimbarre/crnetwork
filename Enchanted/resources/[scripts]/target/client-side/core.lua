@@ -274,22 +274,6 @@ CreateThread(function()
 		Distance = 1.0
 	})
 
-	AddBoxZone("Pdm",vec3(-56.98,-1098.79,26.42),1.0,1.0,{
-		name = "Pdm",
-		heading = 25.52,
-		minZ = 26.42 - 1.0,
-		maxZ = 26.42 + 1.0
-	},{
-		Distance = 2.5,
-		options = {
-			{
-				event = "pdm:Open",
-				label = "Abrir",
-				tunnel = "client"
-			}
-		}
-	})
-
 	AddTargetModel({ -1691644768,-742198632 },{
 		options = {
 			{

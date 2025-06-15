@@ -46,11 +46,6 @@ local List = {
 		["Coords"] = vec4(1989.99,3781.38,32.18,119.06),
 		["Model"] = "u_m_o_finguru_01",
 		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Concessionária
-		["Distance"] = 25,
-		["Coords"] = vec4(-56.98,-1098.79,26.42,25.52),
-		["Model"] = "player_zero",
-		["Anim"] = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Bus
 		["Distance"] = 50,
 		["Coords"] = vec4(453.47,-602.34,28.59,266.46),

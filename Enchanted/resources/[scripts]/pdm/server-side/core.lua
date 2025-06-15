@@ -16,60 +16,48 @@ local Active = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BUY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Buy(Name)
+function Creative.Buy(Model)
+	local Return = false
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Name and VehicleExist(Name) then
+	if Passport and not Active[Passport] and Model and VehicleExist(Model) then
 		Active[Passport] = true
 
-		if vRP.SelectVehicle(Passport,Name) then
-			TriggerClientEvent("Notify",source,"Aviso","Já possui um <b>"..VehicleName(Name).."</b>.","amarelo",5000)
+		if vRP.SelectVehicle(Passport,Model) then
+			TriggerClientEvent("Notify",source,"Aviso","Já possui um <b>"..VehicleName(Model).."</b>.","amarelo",5000)
 		else
-			local StockVehicle = VehicleStock(Name)
-			if StockVehicle and vRP.Scalar("vehicles/Count",{ Vehicle = Name }) >= StockVehicle then
+			local VehicleStock = VehicleStock(Model)
+			if VehicleStock and vRP.Scalar("vehicles/Count",{ Vehicle = Model }) >= VehicleStock then
 				TriggerClientEvent("Notify",source,"Aviso","Estoque insuficiente.","amarelo",5000)
-				Active[Passport] = nil
-
-				return false
-			end
-
-			if VehicleMode(Name) == "Rental" then
-				local VehiclePrice = VehicleGemstone(Name)
-				if VehiclePrice and vRP.PaymentGems(Passport,VehiclePrice) then
-					vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Name), Work = 0 })
-					TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
-					Active[Passport] = nil
-
-					return true
-				else
-					TriggerClientEvent("Notify",source,"Aviso","Diamante insuficiente.","amarelo",5000)
-				end
-			elseif VehicleClass(Name) == "Exclusivos" then
-				local VehiclePrice = VehicleGemstone(Name)
-				if VehiclePrice and vRP.TakeItem(Passport,"platinum",VehiclePrice) then
-					vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Name), Work = 0 })
-					TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
-					Active[Passport] = nil
-
-					return true
-				else
-					TriggerClientEvent("Notify",source,"Aviso","Platina insuficiente.","amarelo",5000)
-				end
 			else
-				if not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) then
-					local VehiclePrice = VehiclePrice(Name)
+				if VehicleMode(Model) == "Rental" then
+					local VehicleGemstone = VehicleGemstone(Model)
+					if VehicleGemstone and vRP.PaymentGems(Passport,VehicleGemstone) then
+						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Model), Work = 0 })
+						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Model).."</b> concluído.","verde",5000)
+						Return = true
+					else
+						TriggerClientEvent("Notify",source,"Aviso","Diamante insuficiente.","amarelo",5000)
+					end
+				elseif VehicleClass(Model) == "Exclusivos" then
+					local VehicleGemstone = VehicleGemstone(Model)
+					if VehicleGemstone and vRP.TakeItem(Passport,"platinum",VehicleGemstone) then
+						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Model), Work = 0 })
+						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Model).."</b> concluído.","verde",5000)
+						Return = true
+					else
+						TriggerClientEvent("Notify",source,"Aviso","Platina insuficiente.","amarelo",5000)
+					end
+				elseif not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) then
+					local VehiclePrice = VehiclePrice(Model)
 					if VehiclePrice and vRP.PaymentFull(Passport,VehiclePrice) then
-						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Name), Work = 0 })
-						exports["bank"]:AddTaxs(Passport,source,"Concessionária",VehiclePrice,"Compra do veículo "..VehicleName(Name)..".")
+						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Model), Work = 0 })
+						exports["bank"]:AddTaxs(Passport,source,"Concessionária",VehiclePrice,"Compra do veículo "..VehicleName(Model)..".")
 						TriggerClientEvent("Notify",source,"Sucesso","Compra concluída.","verde",5000)
-						Active[Passport] = nil
-
-						return true
+						Return = true
 					else
 						TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",5000)
 					end
-				else
-					TriggerClientEvent("Notify",source,"Aviso","Você possui débitos bancários.","amarelo",5000)
 				end
 			end
 		end
@@ -77,7 +65,7 @@ function Creative.Buy(Name)
 		Active[Passport] = nil
 	end
 
-	return false
+	return Return
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECK

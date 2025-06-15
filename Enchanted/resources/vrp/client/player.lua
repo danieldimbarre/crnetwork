@@ -82,7 +82,6 @@ function tvRP.Skin(Hash)
 	local Model = GetHashKey(Hash)
 	if IsModelInCdimage(Model) and IsModelValid(Model) and LoadModel(Model) and GetEntityModel(Ped) ~= Model then
 		SetPlayerModel(Pid,Model)
-		SetModelAsNoLongerNeeded(Model)
 	end
 
 	exports["vrp"]:ReloadCharacter()

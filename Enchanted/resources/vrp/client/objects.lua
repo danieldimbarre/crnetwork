@@ -284,7 +284,6 @@ function CreateAndManageObject(Number,v,Coords)
 			Init[Number] = CreateObjectNoOffset(v["Object"],OtherCoords.x,OtherCoords.y,OtherCoords.z,false,false,false)
 			SetEntityHeading(Init[Number],v["Coords"][4])
 			FreezeEntityPosition(Init[Number],true)
-			SetModelAsNoLongerNeeded(v["Object"])
 
 			if v["Mode"] then
 				TargetLabel(Number,v["Coords"],v["Mode"],v["Weight"] or 0.0,v["Item"])

@@ -68,7 +68,6 @@ CreateThread(function()
 
 						SetEntityHeading(Display[Number],v["Coords"]["w"])
 						FreezeEntityPosition(Display[Number],true)
-						SetModelAsNoLongerNeeded(v["Model"])
 
 						if v["Model"] == "prop_rub_binbag_06" then
 							PlaceObjectOnGroundProperly(Display[Number])

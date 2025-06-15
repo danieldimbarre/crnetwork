@@ -1739,7 +1739,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"bait") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1771,7 +1771,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"bait") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1804,7 +1804,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"bait") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1839,7 +1839,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,25000) and vRP.TakeItem(Passport,"bait") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },
@@ -1876,7 +1876,7 @@ Use = {
 				vRPC.CreateObjects(source,"amb@world_human_stand_fishing@idle_a","idle_c","prop_fishing_rod_01",49,60309)
 			end
 
-			if vRP.Task(source,10,15000) and vRP.TakeItem(Passport,"boilies") then
+			if vRP.Task(source,10,15000) and vRP.TakeItem(Passport,"bait") then
 				local Result = RandPercentage({
 					{ ["Item"] = "sardine", ["Chance"] = 100, ["Amount"] = 1 },
 					{ ["Item"] = "smalltrout", ["Chance"] = 100, ["Amount"] = 1 },

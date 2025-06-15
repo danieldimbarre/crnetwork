@@ -88,13 +88,13 @@ local Config = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:ROBBERYACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("inventory:RobberyActive",function(Passport,Mode,Number)
+AddEventHandler("inventory:RobberyActive",function(Mode,Number)
 	local Configuration = Config[Mode]
 	if Configuration then
 		if type(Configuration.Cooldown) == "table" then
 			Configuration.Cooldown[Number] = os.time()
 		else
-			if Configuration.Last and Configuration.Last == Passport then
+			if Configuration.Last and Configuration.Last == Number then
 				Configuration.Cooldown = os.time()
 			end
 		end

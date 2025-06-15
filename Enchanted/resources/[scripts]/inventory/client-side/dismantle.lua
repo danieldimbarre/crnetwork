@@ -200,6 +200,11 @@ AddEventHandler("dismantle:Dispatch",function()
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
 
+	local PlayerHash = GetHashKey("PLAYER")
+	local GroupHash = GetHashKey("HATES_PLAYER")
+	SetRelationshipBetweenGroups(5,GroupHash,PlayerHash)
+	SetRelationshipBetweenGroups(5,PlayerHash,GroupHash)
+
 	for Number = 1,Amounts do
 		local Cooldown = 0
 		local FoundSafe = false
@@ -241,8 +246,8 @@ AddEventHandler("dismantle:Dispatch",function()
 			SetPedCombatRange(Entity,2)
 			SetPedCanRagdoll(Entity,false)
 			SetPedCombatMovement(Entity,3)
-			SetPedSeeingRange(Entity,100.0)
-			SetPedHearingRange(Entity,100.0)
+			SetPedSeeingRange(Entity,250.0)
+			SetPedHearingRange(Entity,250.0)
 			SetPedCombatAbility(Entity,3)
 
 			SetPedCombatAttributes(Entity,0,true)
@@ -265,21 +270,15 @@ AddEventHandler("dismantle:Dispatch",function()
 			DisablePedPainAudio(Entity,true)
 			StopPedSpeaking(Entity,true)
 
-			local PlayerHash = GetHashKey("PLAYER")
-			local GroupHash = GetHashKey("HATES_PLAYER")
 			SetPedRelationshipGroupHash(Entity,GroupHash)
-			SetRelationshipBetweenGroups(5,GroupHash,PlayerHash)
-			SetRelationshipBetweenGroups(5,PlayerHash,GroupHash)
 
 			local Weapon = "WEAPON_CARBINERIFLE"
 			GiveWeaponToPed(Entity,Weapon,250,false,true)
 			SetCurrentPedWeapon(Entity,Weapon,true)
 			SetPedInfiniteAmmo(Entity,true,Weapon)
 
-			RegisterHatedTargetsAroundPed(Entity,100.0)
-			TaskCombatHatedTargetsAroundPed(Entity,100.0,0)
-
-			SetModelAsNoLongerNeeded(Model)
+			RegisterHatedTargetsAroundPed(Entity,250.0)
+			TaskCombatHatedTargetsAroundPed(Entity,250.0,0)
 		end
 	end
 end)

@@ -3454,9 +3454,9 @@ local List = {
 		["Market"] = true
 	},
 	-- EMPREGOS
-	["boilies"] = {
-		["Index"] = "boilies",
-		["Name"] = "Boilies",
+	["bait"] = {
+		["Index"] = "bait",
+		["Name"] = "Isca",
 		["Type"] = "Comum",
 		["Weight"] = 0.25,
 		["Economy"] = 5,

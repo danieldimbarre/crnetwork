@@ -102,12 +102,10 @@ AddEventHandler("cemitery:initBody",function()
 		if LoadModel(List[Hash]) then
 			Peds = CreatePed(4,List[Hash],Locates[Selected]["x"],Locates[Selected]["y"],Locates[Selected]["z"] - 1,Locates[Selected]["w"] - 180.0,false,false)
 
-			SetPedArmour(Peds,100)
 			SetEntityInvincible(Peds,true)
 			FreezeEntityPosition(Peds,true)
+			DecorSetBool(Peds,"CREATIVE_PED",true)
 			SetBlockingOfNonTemporaryEvents(Peds,true)
-
-			SetModelAsNoLongerNeeded(List[Hash])
 
 			if LoadAnim("dead") then
 				TaskPlayAnim(Peds,"dead","dead_a",8.0,8.0,-1,1,1,0,0,0)

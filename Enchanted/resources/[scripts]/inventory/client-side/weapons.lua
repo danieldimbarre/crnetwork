@@ -295,7 +295,6 @@ AddEventHandler("inventory:CreateWeapon",function(Name)
 	SetEntityCollision(Objects[WeaponName],false,false)
 	SetEntityCompletelyDisableCollision(Objects[WeaponName],false,true)
 	AttachEntityToEntity(Objects[WeaponName],Ped,Bone,Data.x,Data.y,Data.z,Data.RotX,Data.RotY,Data.RotZ,true,true,false,false,2,true)
-	SetModelAsNoLongerNeeded(Data.Model)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSTOREWEAPON

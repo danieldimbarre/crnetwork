@@ -176,7 +176,6 @@ function tvRP.CreateObjects(Dict,Anim,Prop,Flag,Hands,Height,Pos1,Pos2,Pos3,Pos4
 		Object = Entity
 
 		SetEntityLodDist(Object,0xFFFF)
-		SetModelAsNoLongerNeeded(Prop)
 
 		if Height then
 			AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),Height,Pos1,Pos2,Pos3,Pos4,Pos5,true,true,false,true,1,true)

@@ -32,7 +32,7 @@ OtherItens = {
 	{ Item = "gunpowder", Chance = 100, Min = 3, Max = 5 },
 	{ Item = "platinum", Chance = 35, Min = 50, Max = 75 },
 	{ Item = "treasurebox", Chance = 3, Min = 1, Max = 1 },
-	{ Item = "boilies", Chance = 100, Min = 4, Max = 6 },
+	{ Item = "bait", Chance = 100, Min = 4, Max = 6 },
 	{ Item = "binoculars", Chance = 75, Min = 1, Max = 1 },
 	{ Item = "camera", Chance = 75, Min = 1, Max = 1 },
 	{ Item = "repairkit01", Chance = 25, Min = 1, Max = 1 },

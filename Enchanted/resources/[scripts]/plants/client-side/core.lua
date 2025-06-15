@@ -48,7 +48,7 @@ CreateThread(function()
 							TimeDistance = 100
 						else
 							local Vehicle = GetVehiclePedIsUsing(Ped)
-							if Vehicle ~= 0 then
+							if DoesEntityExist(Vehicle) then
 								SetEntityNoCollisionEntity(Objects[Index],Vehicle,false)
 							end
 						end
@@ -91,7 +91,7 @@ function CreateModels(Number,Hash,Coords)
 
 		local Ped = PlayerPedId()
 		local Vehicle = GetVehiclePedIsUsing(Ped)
-		if Vehicle ~= 0 then
+		if DoesEntityExist(Vehicle) then
 			SetEntityNoCollisionEntity(Objects[Number],Vehicle,false)
 		end
 
@@ -99,7 +99,6 @@ function CreateModels(Number,Hash,Coords)
 		SetEntityNoCollisionEntity(Objects[Number],Ped,false)
 		PlaceObjectOnGroundProperly(Objects[Number])
 		FreezeEntityPosition(Objects[Number],true)
-		SetModelAsNoLongerNeeded(Hash)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

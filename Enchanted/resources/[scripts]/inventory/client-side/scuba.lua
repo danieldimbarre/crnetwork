@@ -50,8 +50,6 @@ AddEventHandler("inventory:Scuba",function()
 
 		AttachEntityToEntity(ScubaTank,Ped,GetPedBoneIndex(Ped,24818),-0.28,-0.24,0.0,180.0,90.0,0.0,true,true,false,true,2,true)
 		AttachEntityToEntity(ScubaMask,Ped,GetPedBoneIndex(Ped,12844),0.0,0.0,0.0,180.0,90.0,0.0,true,true,false,true,2,true)
-		SetModelAsNoLongerNeeded("p_s_scuba_mask_s")
-		SetModelAsNoLongerNeeded("p_s_scuba_tank_s")
 		SetPedMaxTimeUnderwater(Ped,9999.0)
 		SetEntityLodDist(ScubaMask,0xFFFF)
 		SetEntityLodDist(ScubaTank,0xFFFF)

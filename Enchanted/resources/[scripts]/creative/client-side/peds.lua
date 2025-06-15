@@ -326,16 +326,16 @@ CreateThread(function()
 			if Distance <= List[Number]["Distance"] then
 				if not Spawned[Number] and LoadModel(List[Number]["Model"]) then
 					Spawned[Number] = CreatePed(4,List[Number]["Model"],List[Number]["Coords"]["x"],List[Number]["Coords"]["y"],List[Number]["Coords"]["z"] - 1,List[Number]["Coords"]["w"],false,false)
-					SetPedArmour(Spawned[Number],100)
+
 					SetEntityInvincible(Spawned[Number],true)
 					FreezeEntityPosition(Spawned[Number],true)
+					DecorSetBool(Spawned[Number],"CREATIVE_PED",true)
 
 					if not List[Number]["Collision"] then
 						SetEntityNoCollisionEntity(Spawned[Number],Ped,false)
 					end
 
 					SetBlockingOfNonTemporaryEvents(Spawned[Number],true)
-					SetModelAsNoLongerNeeded(List[Number]["Model"])
 
 					if List[Number]["Anim"] and LoadAnim(List[Number]["Anim"][1]) then
 						TaskPlayAnim(Spawned[Number],List[Number]["Anim"][1],List[Number]["Anim"][2],8.0,8.0,-1,1,1,0,0,0)

@@ -94,7 +94,6 @@ CreateThread(function()
 									local Object = CreateObjectNoOffset("prop_anim_cash_note",Coords["x"],Coords["y"],Coords["z"],false,false,false)
 									AttachEntityToEntity(Object,Entitys,GetPedBoneIndex(Entitys,28422),0.0,0.0,0.0,90.0,0.0,0.0,true,true,false,true,2,true)
 									vRP.CreateObjects("mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
-									SetModelAsNoLongerNeeded("prop_anim_cash_note")
 									ClearPedSecondaryTask(Entitys)
 									ClearPedTasks(Entitys)
 
@@ -152,7 +151,7 @@ function ClosestPed(Radius)
 	local GamePool = GetGamePool("CPed")
 
 	for _,Entity in pairs(GamePool) do
-		if Entity ~= PlayerPedId() and not IsPedAPlayer(Entity) and not IsEntityDead(Entity) and not IsPedDeadOrDying(Entity,true) and NetworkGetEntityIsNetworked(Entity) and GetPedArmour(Entity) <= 0 and not IsPedInAnyVehicle(Entity) and GetPedType(Entity) ~= 28 then
+		if Entity ~= PlayerPedId() and not IsPedAPlayer(Entity) and not IsEntityDead(Entity) and not IsPedDeadOrDying(Entity,true) and NetworkGetEntityIsNetworked(Entity) and not DecorGetBool(Entity,"CREATIVE_PED") and not IsPedInAnyVehicle(Entity) and GetPedType(Entity) ~= 28 then
 			local EntityCoords = GetEntityCoords(Entity)
 			local EntityDistance = #(Coords - EntityCoords)
 

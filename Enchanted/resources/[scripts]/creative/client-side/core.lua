@@ -504,7 +504,7 @@ CreateThread(function()
 		end
 
 		for _,Entity in pairs(GetGamePool("CPed")) do
-			if (NetworkGetEntityOwner(Entity) == -1 or NetworkGetEntityOwner(Entity) == PlayerId()) and GetPedArmour(Entity) <= 0 and not NetworkGetEntityIsNetworked(Entity) then
+			if (NetworkGetEntityOwner(Entity) == -1 or NetworkGetEntityOwner(Entity) == PlayerId()) and not DecorGetBool(Entity,"CREATIVE_PED") and not NetworkGetEntityIsNetworked(Entity) then
 				if IsPedInAnyVehicle(Entity) then
 					local Vehicle = GetVehiclePedIsUsing(Entity)
 					if NetworkGetEntityIsNetworked(Vehicle) then

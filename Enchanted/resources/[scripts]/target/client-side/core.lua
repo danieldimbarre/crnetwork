@@ -57,12 +57,12 @@ local TowedNorth = PolyZone:Create({
 -- TYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tyres = {
-	{ ["Bone"] = "wheel_lf", ["Index"] = 0 },
-	{ ["Bone"] = "wheel_rf", ["Index"] = 1 },
-	{ ["Bone"] = "wheel_lm", ["Index"] = 2 },
-	{ ["Bone"] = "wheel_rm", ["Index"] = 3 },
-	{ ["Bone"] = "wheel_lr", ["Index"] = 4 },
-	{ ["Bone"] = "wheel_rr", ["Index"] = 5 }
+	{ Bone = "wheel_lf", Index = 0 },
+	{ Bone = "wheel_rf", Index = 1 },
+	{ Bone = "wheel_lm", Index = 2 },
+	{ Bone = "wheel_rm", Index = 3 },
+	{ Bone = "wheel_lr", Index = 4 },
+	{ Bone = "wheel_rr", Index = 5 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FUELS
@@ -430,22 +430,22 @@ function TargetEnable()
 		local HitCoords,Entitys,EntityHit = RayCastGamePlayCamera()
 
 		for Index,v in pairs(Zones) do
-			if #(Coords - Zones[Index]["center"]) <= 5 then
-				SetDrawOrigin(Zones[Index]["center"]["x"],Zones[Index]["center"]["y"],Zones[Index]["center"]["z"])
+			if #(Coords - Zones[Index].center) <= 5 then
+				SetDrawOrigin(Zones[Index].center.x,Zones[Index].center.y,Zones[Index].center.z)
 				DrawSprite("Textures","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 				ClearDrawOrigin()
 			end
 
-			if Zones[Index]:isPointInside(HitCoords) and #(Coords - Zones[Index]["center"]) <= v["targetoptions"]["Distance"] then
-				if v["targetoptions"]["shop"] then
-					Selected = v["targetoptions"]["shop"]
+			if Zones[Index]:isPointInside(HitCoords) and #(Coords - Zones[Index].center) <= v.targetoptions.Distance then
+				if v.targetoptions.shop then
+					Selected = v.targetoptions.shop
 				end
 
-				SendNUIMessage({ Action = "Valid", data = Zones[Index]["targetoptions"]["options"] })
+				SendNUIMessage({ Action = "Valid", data = Zones[Index].targetoptions.options })
 
 				Sucess = true
 				while Sucess do
-					SetDrawOrigin(Zones[Index]["center"]["x"],Zones[Index]["center"]["y"],Zones[Index]["center"]["z"])
+					SetDrawOrigin(Zones[Index].center.x,Zones[Index].center.y,Zones[Index].center.z)
 					DrawSprite("Textures","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 					ClearDrawOrigin()
 					DisableActions()
@@ -458,7 +458,7 @@ function TargetEnable()
 
 					local Ped = PlayerPedId()
 					local OtherCoords = RayCastGamePlayCamera()
-					if not Zones[Index]:isPointInside(OtherCoords) or #(GetEntityCoords(Ped) - Zones[Index]["center"]) > v["targetoptions"]["Distance"] then
+					if not Zones[Index]:isPointInside(OtherCoords) or #(GetEntityCoords(Ped) - Zones[Index].center) > v.targetoptions.Distance then
 						SendNUIMessage({ Action = "Left" })
 						Sucess = false
 					end
@@ -469,14 +469,13 @@ function TargetEnable()
 		end
 
 		if EntityHit and GetEntityType(Entitys) ~= 0 then
-			if LocalPlayer["state"]["Admin"] and IsControlJustPressed(1,38) then
+			if LocalPlayer.state.Admin and IsControlJustPressed(1,38) then
 				TriggerServerEvent("admin:Doords",GetEntityCoords(Entitys),GetEntityModel(Entitys),GetEntityHeading(Entitys))
 			end
 
+			local Menu = {}
 			if IsEntityAVehicle(Entitys) and GetEntityHealth(Ped) > 100 and #(Coords - HitCoords) <= 1.0 then
-				local Menu = {}
 				local Network = nil
-				local Combustivel = false
 				local Vehicle = GetLastDrivenVehicle()
 
 				SetEntityAsMissionEntity(Entitys,true,true)
@@ -488,91 +487,89 @@ function TargetEnable()
 
 				for _,v in pairs(Fuels) do
 					if #(Coords - v) <= 2.5 then
-						Combustivel = true
+						table.insert(Menu,{ event = "engine:Supply", label = "Abastecer", tunnel = "client" })
 						break
 					end
 				end
 
-				if not Combustivel then
+				if #Menu <= 0 then
 					if GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_PETROLCAN") then
 						Selected[6] = true
-						Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }
+						table.insert(Menu,{ event = "engine:Supply", label = "Abastecer", tunnel = "client" })
 					else
-						if (TowedSouth:isPointInside(HitCoords) or TowedNorth:isPointInside(HitCoords)) and not Entity(Entitys)["state"]["Tow"] then
-							Menu[#Menu + 1] = { event = "towed:Payment", label = "Entregar", tunnel = "paramedic" }
+						if (TowedSouth:isPointInside(HitCoords) or TowedNorth:isPointInside(HitCoords)) and not Entity(Entitys).state.Tow then
+							table.insert(Menu,{ event = "towed:Payment", label = "Entregar", tunnel = "paramedic" })
 						else
-							local Lockpick = Entity(Entitys)["state"]["Lockpick"]
+							local Lockpick = Entity(Entitys).state.Lockpick
 							if Lockpick then
 								if GetVehicleDoorLockStatus(Entitys) <= 1 and GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_WRENCH") then
 									for Index = 1,#Tyres do
-										local BoneIndex = GetEntityBoneIndexByName(Entitys,Tyres[Index]["Bone"])
+										local BoneIndex = GetEntityBoneIndexByName(Entitys,Tyres[Index].Bone)
 										local TyreCoords = GetWorldPositionOfEntityBone(Vehicle,BoneIndex)
 										if #(Coords - TyreCoords) <= 1.0 then
-											Selected[6] = Tyres[Index]["Index"]
-											Menu[#Menu + 1] = { event = "inventory:RemoveTyres", label = "Retirar Pneu", tunnel = "server" }
+											Selected[6] = Tyres[Index].Index
+											table.insert(Menu,{ event = "inventory:RemoveTyres", label = "Retirar Pneu", tunnel = "server" })
 										end
 									end
 								end
 
 								if not IsPedArmed(Ped,7) and GetVehicleDoorLockStatus(Entitys) <= 1 then
 									if VehicleWeight(Selected[2]) > 0 then
-										Menu[#Menu + 1] = { event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" }
+										table.insert(Menu,{ event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" })
 									end
 
-									Menu[#Menu + 1] = { event = "inventory:ChangePlate", label = "Trocar Placa", tunnel = "server" }
+									table.insert(Menu,{ event = "inventory:ChangePlate", label = "Trocar Placa", tunnel = "server" })
 
-									if Lockpick and Lockpick == LocalPlayer["state"]["Passport"] then
-										Menu[#Menu + 1] = { event = "garages:Key", label = "Chave Veícular", tunnel = "server" }
+									if Lockpick and Lockpick == LocalPlayer.state.Passport then
+										table.insert(Menu,{ event = "garages:Key", label = "Chave Veícular", tunnel = "server" })
 									end
 								end
 
-								Menu[#Menu + 1] = { event = "engine:Vehrify", label = "Verificar", tunnel = "client" }
+								table.insert(Menu,{ event = "engine:Vehrify", label = "Verificar", tunnel = "client" })
 							else
 								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 and IsVehicleSeatFree(Entitys,-1) and GetSelectedPedWeapon(Ped) == GetHashKey("WEAPON_CROWBAR") then
-									Menu[#Menu + 1] = { event = "inventory:StealTrunk", label = "Arrombar Porta-Malas", tunnel = "server" }
+									table.insert(Menu,{ event = "inventory:StealTrunk", label = "Arrombar Porta-Malas", tunnel = "server" })
 								end
 
 								if Selected[2] == "stockade" then
-									Menu[#Menu + 1] = { event = "inventory:Stockade", label = "Vasculhar", tunnel = "server" }
+									table.insert(Menu,{ event = "inventory:Stockade", label = "Vasculhar", tunnel = "server" })
 								end
 							end
 
 							if not IsThisModelABike(Selected[5]) then
 								local Rolling = GetEntityRoll(Entitys)
 								if Rolling > 75.0 or Rolling < -75.0 then
-									Menu[#Menu + 1] = { event = "player:RollVehicle", label = "Desvirar", tunnel = "server" }
+									table.insert(Menu,{ event = "player:RollVehicle", label = "Desvirar", tunnel = "server" })
 								end
 
 								if GetEntityBoneIndexByName(Entitys,"boot") ~= -1 and not IsPedArmed(Ped,7) and GetVehicleDoorLockStatus(Entitys) <= 1 then
-									Menu[#Menu + 1] = { event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" }
-									Menu[#Menu + 1] = { event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" }
+									table.insert(Menu,{ event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" })
+									table.insert(Menu,{ event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" })
 								end
 							end
 
 							if GetEntityArchetypeName(Vehicle) == "flatbed" and Selected[2] ~= "flatbed" then
-								Menu[#Menu + 1] = { event = "inventory:Tow", label = "Rebocar", tunnel = "client" }
+								table.insert(Menu,{ event = "inventory:Tow", label = "Rebocar", tunnel = "client" })
 							end
 
 							if CheckPolice() then
-								Menu[#Menu + 1] = { event = "towed:Impound", label = "Impound", tunnel = "server" }
+								table.insert(Menu,{ event = "towed:Impound", label = "Impound", tunnel = "server" })
 
 								if GetResourceState("mdt") == "started" then
-									Menu[#Menu + 1] = { event = "mdt:Vehicle", label = "Apreender", tunnel = "server" }
+									table.insert(Menu,{ event = "mdt:Vehicle", label = "Apreender", tunnel = "server" })
 								else
-									Menu[#Menu + 1] = { event = "prison:Vehicle", label = "Apreender", tunnel = "server" }
+									table.insert(Menu,{ event = "prison:Vehicle", label = "Apreender", tunnel = "server" })
 								end
 							else
 								for _,v in pairs(Dismantle) do
 									if #(Coords - v) <= 15 then
-										Menu[#Menu + 1] = { event = "inventory:Dismantle", label = "Desmanchar", tunnel = "server" }
+										table.insert(Menu,{ event = "inventory:Dismantle", label = "Desmanchar", tunnel = "server" })
 										break
 									end
 								end
 							end
 						end
 					end
-				else
-					Menu[#Menu + 1] = { event = "engine:Supply", label = "Abastecer", tunnel = "client" }
 				end
 
 				if #Menu >= 1 then
@@ -599,42 +596,71 @@ function TargetEnable()
 					end
 				end
 			elseif IsPedAPlayer(Entitys) and GetEntityHealth(Ped) > 100 and #(Coords - HitCoords) <= 2.0 then
-				local Menu = {}
 				local Index = NetworkGetPlayerIndexFromPed(Entitys)
 				local source = GetPlayerServerId(Index)
 
 				Selected = { source }
 
-				Menu[#Menu + 1] = { event = "inspect:Player", label = "Revistar", tunnel = "paramedic" }
-				Menu[#Menu + 1] = { event = "paramedic:Diagnostic", label = "Informações", tunnel = "paramedic" }
+				table.insert(Menu,{ event = "inspect:Player", label = "Revistar", tunnel = "paramedic" })
+				table.insert(Menu,{ event = "paramedic:Diagnostic", label = "Informações", tunnel = "paramedic" })
 
 				if GetEntityHealth(Entitys) <= 100 then
-					if Player(source)["state"]["Crawl"] then
-						Menu[#Menu + 1] = { event = "paramedic:Adrenaline", label = "Ajudar", tunnel = "paramedic" }
+					if Player(source).state.Crawl then
+						table.insert(Menu,{ event = "paramedic:Adrenaline", label = "Ajudar", tunnel = "paramedic" })
 					end
 
-					if LocalPlayer["state"]["Paramedico"] then
-						Menu[#Menu + 1] = { event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" }
+					if LocalPlayer.state.Paramedico then
+						table.insert(Menu,{ event = "paramedic:Revive", label = "Reanimar", tunnel = "paramedic" })
 					end
 				else
-					Menu[#Menu + 1] = { event = "player:Demand", label = "Cobrança", tunnel = "paramedic" }
+					table.insert(Menu,{ event = "player:Demand", label = "Cobrança", tunnel = "paramedic" })
 
 					if IsEntityPlayingAnim(Entitys,"random@mugging3","handsup_standing_base",3) then
-						Menu[#Menu + 1] = { event = "player:checkShoes", label = "Roubar Sapatos", tunnel = "paramedic" }
+						table.insert(Menu,{ event = "player:checkShoes", label = "Roubar Sapatos", tunnel = "paramedic" })
 					end
 
-					if LocalPlayer["state"]["Paramedico"] then
-						Menu[#Menu + 1] = { event = "paramedic:Treatment", label = "Tratamento", tunnel = "paramedic" }
-						Menu[#Menu + 1] = { event = "paramedic:Bandage", label = "Passar Ataduras", tunnel = "paramedic" }
-						Menu[#Menu + 1] = { event = "paramedic:presetBurn", label = "Roupa de Queimadura", tunnel = "paramedic" }
-						Menu[#Menu + 1] = { event = "paramedic:presetPlaster", label = "Colocar Gesso", tunnel = "paramedic" }
-						Menu[#Menu + 1] = { event = "paramedic:extractBlood", label = "Extrair Sangue", tunnel = "paramedic" }
-						Menu[#Menu + 1] = { event = "target:Repose", label = "Repouso", tunnel = "paramedic" }
+					if LocalPlayer.state.Paramedico then
+						table.insert(Menu,{ event = "paramedic:Treatment", label = "Tratamento", tunnel = "paramedic" })
+						table.insert(Menu,{ event = "paramedic:Bandage", label = "Passar Ataduras", tunnel = "paramedic" })
+						table.insert(Menu,{ event = "paramedic:presetBurn", label = "Roupa de Queimadura", tunnel = "paramedic" })
+						table.insert(Menu,{ event = "paramedic:presetPlaster", label = "Colocar Gesso", tunnel = "paramedic" })
+						table.insert(Menu,{ event = "paramedic:extractBlood", label = "Extrair Sangue", tunnel = "paramedic" })
+						table.insert(Menu,{ event = "target:Repose", label = "Repouso", tunnel = "paramedic" })
 					end
 				end
 
 				if CheckPolice() then
-					Menu[#Menu + 1] = { event = "prison:Itens", label = "Apreender", tunnel = "paramedic" }
+					table.insert(Menu,{ event = "prison:Itens", label = "Apreender", tunnel = "paramedic" })
+				end
+
+				if #Menu >= 1 then
+					SendNUIMessage({ Action = "Valid", data = Menu })
+
+					Sucess = true
+					while Sucess do
+						DisableActions()
+
+						if (IsControlJustReleased(1,24) or IsDisabledControlJustReleased(1,24)) then
+							SetCursorLocation(0.5,0.5)
+							SetNuiFocus(true,true)
+							Focus = true
+						end
+
+						local Ped = PlayerPedId()
+						local OtherCoords,OtherEntity = RayCastGamePlayCamera()
+						if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > 2.0 then
+							SendNUIMessage({ Action = "Left" })
+							Sucess = false
+						end
+
+						Wait(1)
+					end
+				end
+			elseif IsEntityAPed(Entitys) and not DecorGetBool(Entitys,"CREATIVE_PED") and not IsPedAPlayer(Entitys) and #(Coords - HitCoords) <= 2.0 then
+				Selected = { NetworkGetNetworkIdFromEntity(Entitys) }
+
+				if LocalPlayer.state.Admin then
+					table.insert(Menu,{ event = "DeletePed", label = "Deletar", tunnel = "paramedic" })
 				end
 
 				if #Menu >= 1 then
@@ -661,16 +687,16 @@ function TargetEnable()
 					end
 				end
 			else
-				for Index,_ in pairs(Models) do
+				for Index in pairs(Models) do
 					if DoesEntityExist(Entitys) and Index == GetEntityModel(Entitys) then
 						local OtherCoords = GetEntityCoords(Entitys)
 						if #(Coords - OtherCoords) <= 5 then
-							SetDrawOrigin(OtherCoords["x"],OtherCoords["y"],OtherCoords["z"] + 1)
+							SetDrawOrigin(OtherCoords.x,OtherCoords.y,OtherCoords.z + 1)
 							DrawSprite("Textures","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 							ClearDrawOrigin()
 						end
 
-						if #(Coords - HitCoords) <= Models[Index]["Distance"] then
+						if #(Coords - HitCoords) <= Models[Index].Distance then
 							if not IsEntityAMissionEntity(Entitys) then
 								SetEntityAsMissionEntity(Entitys,true,true)
 							end
@@ -682,13 +708,13 @@ function TargetEnable()
 
 							Selected = { Entitys,Index,Network,GetEntityCoords(Entitys),IsEntityDead(Entitys) }
 
-							SendNUIMessage({ Action = "Valid", data = Models[Index]["options"] })
+							SendNUIMessage({ Action = "Valid", data = Models[Index].options })
 
 							Sucess = true
 							while Sucess do
 								local EntityCoords = GetEntityCoords(Entitys)
 
-								SetDrawOrigin(EntityCoords["x"],EntityCoords["y"],EntityCoords["z"] + 1)
+								SetDrawOrigin(EntityCoords.x,EntityCoords.y,EntityCoords.z + 1)
 								DrawSprite("Textures","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 								ClearDrawOrigin()
 								DisableActions()
@@ -701,7 +727,7 @@ function TargetEnable()
 
 								local Ped = PlayerPedId()
 								local OtherCoords,OtherEntity = RayCastGamePlayCamera()
-								if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > Models[Index]["Distance"] then
+								if GetEntityType(OtherEntity) == 0 or #(GetEntityCoords(Ped) - OtherCoords) > Models[Index].Distance then
 									SendNUIMessage({ Action = "Left" })
 									Sucess = false
 								end
@@ -745,19 +771,19 @@ end
 RegisterNUICallback("Select",function(Data,Callback)
 	TriggerEvent("target:Debug")
 
-	if not LocalPlayer["state"]["Cancel"] then
-		if Data["tunnel"] == "client" then
-			TriggerEvent(Data["event"],Selected,Data["service"])
-		elseif Data["tunnel"] == "entity" then
-			TriggerEvent(Data["event"],Selected[1],Data["service"])
-		elseif Data["tunnel"] == "products" then
-			TriggerEvent(Data["event"],Data["service"])
-		elseif Data["tunnel"] == "server" then
-			TriggerServerEvent(Data["event"],Selected,Data["service"])
-		elseif Data["tunnel"] == "paramedic" then
-			TriggerServerEvent(Data["event"],Selected[1],Data["service"])
-		elseif Data["tunnel"] == "proserver" then
-			TriggerServerEvent(Data["event"],Data["service"])
+	if not LocalPlayer.state.Cancel then
+		if Data.tunnel == "client" then
+			TriggerEvent(Data.event,Selected,Data.service)
+		elseif Data.tunnel == "entity" then
+			TriggerEvent(Data.event,Selected[1],Data.service)
+		elseif Data.tunnel == "products" then
+			TriggerEvent(Data.event,Data.service)
+		elseif Data.tunnel == "server" then
+			TriggerServerEvent(Data.event,Selected,Data.service)
+		elseif Data.tunnel == "paramedic" then
+			TriggerServerEvent(Data.event,Selected[1],Data.service)
+		elseif Data.tunnel == "proserver" then
+			TriggerServerEvent(Data.event,Data.service)
 		end
 	end
 
@@ -787,7 +813,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function GetCoordsFromCam(Distance,Coords)
 	local Rotation = GetGameplayCamRot()
-	local Adjuste = vec3((math.pi / 180) * Rotation["x"],(math.pi / 180) * Rotation["y"],(math.pi / 180) * Rotation["z"])
+	local Adjuste = vec3((math.pi / 180) * Rotation.x,(math.pi / 180) * Rotation.y,(math.pi / 180) * Rotation.z)
 	local Direction = vec3(-math.sin(Adjuste[3]) * math.abs(math.cos(Adjuste[1])),math.cos(Adjuste[3]) * math.abs(math.cos(Adjuste[1])),math.sin(Adjuste[1]))
 
 	return vec3(Coords[1] + Direction[1] * Distance, Coords[2] + Direction[2] * Distance, Coords[3] + Direction[3] * Distance)
@@ -809,7 +835,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function AddCircleZone(Name,Center,Radius,Options,Target)
 	Zones[Name] = CircleZone:Create(Center,Radius,Options)
-	Zones[Name]["targetoptions"] = Target
+	Zones[Name].targetoptions = Target
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMCIRCLEZONE
@@ -837,7 +863,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LabelText(Name,Text)
 	if Zones[Name] then
-		Zones[Name]["targetoptions"]["options"][1]["label"] = Text
+		Zones[Name].targetoptions.options[1].label = Text
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -845,7 +871,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LabelOptions(Name,Text)
 	if Zones[Name] then
-		Zones[Name]["targetoptions"]["options"] = Text
+		Zones[Name].targetoptions.options = Text
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -853,7 +879,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function AddBoxZone(Name,Center,Length,Width,Options,Target)
 	Zones[Name] = BoxZone:Create(Center,Length,Width,Options)
-	Zones[Name]["targetoptions"] = Target
+	Zones[Name].targetoptions = Target
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EXPORTS

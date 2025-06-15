@@ -34,6 +34,7 @@ function Creative.Buy(Model)
 					local VehicleGemstone = VehicleGemstone(Model)
 					if VehicleGemstone and vRP.PaymentGems(Passport,VehicleGemstone) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Model), Work = 0 })
+						exports["discord"]:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Dotted(VehicleGemstone).." diamantes.")
 						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Model).."</b> concluído.","verde",5000)
 						Return = true
 					else
@@ -43,6 +44,7 @@ function Creative.Buy(Model)
 					local VehicleGemstone = VehicleGemstone(Model)
 					if VehicleGemstone and vRP.TakeItem(Passport,"platinum",VehicleGemstone) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Model), Work = 0 })
+						exports["discord"]:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Dotted(VehicleGemstone).." platinas.")
 						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Model).."</b> concluído.","verde",5000)
 						Return = true
 					else
@@ -52,6 +54,7 @@ function Creative.Buy(Model)
 					local VehiclePrice = VehiclePrice(Model)
 					if VehiclePrice and vRP.PaymentFull(Passport,VehiclePrice) then
 						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Model), Work = 0 })
+						exports["discord"]:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Currency..Dotted(VehiclePrice))
 						exports["bank"]:AddTaxs(Passport,source,"Concessionária",VehiclePrice,"Compra do veículo "..VehicleName(Model)..".")
 						TriggerClientEvent("Notify",source,"Sucesso","Compra concluída.","verde",5000)
 						Return = true

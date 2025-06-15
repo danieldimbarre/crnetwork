@@ -243,7 +243,7 @@ Loots = {
 			{ ["Item"] = "insulatingtape", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 2 },
 			{ ["Item"] = "screws", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 2 },
 			{ ["Item"] = "screwnuts", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 2 },
-			{ ["Item"] = "boilies", ["Chance"] = 75, ["Min"] = 5, ["Max"] = 10 },
+			{ ["Item"] = "bait", ["Chance"] = 75, ["Min"] = 5, ["Max"] = 10 },
 			{ ["Item"] = "sapphire_pure", ["Chance"] = 50, ["Min"] = 3, ["Max"] = 6 },
 			{ ["Item"] = "emerald_pure", ["Chance"] = 50, ["Min"] = 3, ["Max"] = 6 },
 			{ ["Item"] = "ruby_pure", ["Chance"] = 50, ["Min"] = 3, ["Max"] = 6 },
@@ -467,7 +467,7 @@ function Creative.Deliver(Work,OtherCoords)
 		Active[Passport] = os.time() + 100
 
 		local Coords = vRP.GetEntityCoords(source)
-		if not OtherCoords or #(Coords - OtherCoords) > 1.0 then
+		if not OtherCoords or #(Coords - OtherCoords) > 2.0 then
 			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Deliver",source)
 		end
 
@@ -794,7 +794,7 @@ AddEventHandler("inventory:Cancel",function()
 		end
 
 		if Robberys[Passport] then
-			TriggerEvent("inventory:RobberyActive",Passport,Robberys[Passport].Mode,Robberys[Passport].Number)
+			TriggerEvent("inventory:RobberyActive",Robberys[Passport].Mode,Robberys[Passport].Number)
 			Robberys[Passport] = nil
 		end
 
@@ -1560,7 +1560,7 @@ AddEventHandler("Disconnect",function(Passport)
 	end
 
 	if Robberys[Passport] then
-		TriggerEvent("inventory:RobberyActive",Passport,Robberys[Passport].Mode,Robberys[Passport].Number)
+		TriggerEvent("inventory:RobberyActive",Robberys[Passport].Mode,Robberys[Passport].Number)
 		Robberys[Passport] = nil
 	end
 end)

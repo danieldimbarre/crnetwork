@@ -254,7 +254,7 @@ AddEventHandler("garages:Sell",function(Name)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] then
 		local Mode = VehicleMode(Name)
-		if Mode ~= "Work" and Mode ~= "Rental" and VehicleClass(Name) ~= "Exclusivos" then
+		if Mode ~= "Work" and Mode ~= "Rental" and VehicleClass(Name) ~= "Races" then
 			Active[Passport] = true
 			TriggerClientEvent("garages:Close",source)
 
@@ -475,12 +475,12 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 				if Gemstone > 0 and Vehicle["Rental"] ~= 0 and Vehicle["Rental"] <= os.time() then
 					TriggerClientEvent("garages:Close",source)
 
-					if VehicleClass(Name) == "Exclusivos" then
-						Coin = "Platina"
+					if VehicleClass(Name) == "Races" then
+						Coin = "Platinas"
 					end
 
 					if vRP.Request(source,"Garagem","Pagar o aluguel do veículo <b>"..VehicleName(Name).."</b> por <b>"..Dotted(Gemstone).." "..Coin.."</b>?") then
-						if (Coin == "Diamantes" and vRP.PaymentGems(Passport,Gemstone)) or (Coin == "Platina" and vRP.TakeItem(Passport,"platinum",Gemstone)) then
+						if (Coin == "Diamantes" and vRP.PaymentGems(Passport,Gemstone)) or (Coin == "Platinas" and vRP.TakeItem(Passport,"platinum",Gemstone)) then
 							vRP.Update("vehicles/rentalVehiclesUpdate",{ Passport = Passport, Vehicle = Name, Days = 30 })
 							TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> atualizado.","verde",5000)
 						else

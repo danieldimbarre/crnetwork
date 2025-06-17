@@ -6089,7 +6089,7 @@ local List = {
 		Price = 200000,
 		Mode = nil,
 		Gemstone = 6000,
-		Class = "Exclusivos",
+		Class = "Races",
 		Stock = 10
 	},
 

@@ -40,17 +40,7 @@ function Creative.Buy(Model)
 					else
 						TriggerClientEvent("Notify",source,"Aviso","Diamante insuficiente.","amarelo",5000)
 					end
-				elseif VehicleClass(Model) == "Exclusivos" then
-					local VehicleGemstone = VehicleGemstone(Model)
-					if VehicleGemstone and vRP.TakeItem(Passport,"platinum",VehicleGemstone) then
-						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Model), Work = 0 })
-						exports["discord"]:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Dotted(VehicleGemstone).." platinas.")
-						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Model).."</b> concluído.","verde",5000)
-						Return = true
-					else
-						TriggerClientEvent("Notify",source,"Aviso","Platina insuficiente.","amarelo",5000)
-					end
-				elseif not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) then
+				elseif VehicleClass(Model) ~= "Races" and not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) then
 					local VehiclePrice = VehiclePrice(Model)
 					if VehiclePrice and vRP.PaymentFull(Passport,VehiclePrice) then
 						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Model), Work = 0 })

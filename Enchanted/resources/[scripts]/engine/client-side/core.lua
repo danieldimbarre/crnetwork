@@ -49,36 +49,26 @@ AddEventHandler("engine:FuelAdmin",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CLASS
------------------------------------------------------------------------------------------------------------------------------------------
-local Class = {
-	[13] = 0.0,
-	[14] = 0.0,
-	[15] = 1.5,
-	[21] = 0.0
-}
------------------------------------------------------------------------------------------------------------------------------------------
 -- CONSUME
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Consume = {
-	[1.0] = 0.575,
-	[0.9] = 0.525,
-	[0.8] = 0.475,
-	[0.7] = 0.425,
-	[0.6] = 0.375,
-	[0.5] = 0.325,
-	[0.4] = 0.275,
-	[0.3] = 0.225,
-	[0.2] = 0.175,
+	[1.0] = 0.675,
+	[0.9] = 0.625,
+	[0.8] = 0.575,
+	[0.7] = 0.525,
+	[0.6] = 0.475,
+	[0.5] = 0.425,
+	[0.4] = 0.375,
+	[0.3] = 0.325,
+	[0.2] = 0.275,
 	[0.1] = 0.125,
-	[0.0] = 0.000
+	[0.0] = 0.025
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FLOOR
 -----------------------------------------------------------------------------------------------------------------------------------------
 function floor(Number)
-	local Mult = 10 ^ 1
-	return math.floor(Number * Mult + 0.5) / Mult
+	return math.floor(Number * 10 + 0.5) * 0.1
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADCONSUME
@@ -89,21 +79,16 @@ CreateThread(function()
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) then
 			local Vehicle = GetVehiclePedIsUsing(Ped)
-			local Multiplier = Class[GetVehicleClass(Vehicle)]
-			if Multiplier and Multiplier ~= 0.0 then
+			local Class = GetVehicleClass(Vehicle)
+			if Class ~= 13 and Class ~= 14 then
 				if GetVehicleFuelLevel(Vehicle) >= 1 then
-					if GetPedInVehicleSeat(Vehicle,-1) == Ped and (GetEntitySpeed(Vehicle) * 3.6) >= 1 then
-						local EntityState = Entity(Vehicle).state
+					if (GetEntitySpeed(Vehicle) * 3.6) >= 1 then
+						ActiveFuel = (ActiveFuel - (Consume[floor(GetVehicleCurrentRpm(Vehicle))] or 1.0) * 1.0 / 10)
+						SetVehicleFuelLevel(Vehicle,ActiveFuel + 0.0)
 
-						if not EntityState.Fuel then
-							EntityState:set("Fuel",100.0,true)
+						if GetPedInVehicleSeat(Vehicle,-1) == Ped then
+							Entity(Vehicle).state:set("Fuel",ActiveFuel + 0.0,true)
 						end
-
-						local RPM = floor(GetVehicleCurrentRpm(Vehicle))
-						local NewFuel = EntityState.Fuel - (Consume[RPM] or 1.0) * Multiplier / 10
-
-						EntityState:set("Fuel",NewFuel,true)
-						SetVehicleFuelLevel(Vehicle,NewFuel)
 					end
 				else
 					SetVehicleEngineOn(Vehicle,false,true,true)

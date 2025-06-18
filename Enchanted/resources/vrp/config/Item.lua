@@ -4064,7 +4064,7 @@ local List = {
 	},
 	["vehiclekey"] = {
 		["Index"] = "vehiclekey",
-		["Name"] = "Chave Veícular",
+		["Name"] = "Chave Reserva",
 		["Type"] = "Consumível",
 		["Durability"] = 72,
 		["Weight"] = 0.25,

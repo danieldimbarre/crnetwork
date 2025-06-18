@@ -55,7 +55,6 @@ RegisterNUICallback("Characters",function(Data,Callback)
 	SetEntityHeading(Ped,305.82)
 	SetEntityVisible(Ped,false)
 	SetEntityHealth(Ped,100)
-	SetPedArmour(Ped,0)
 	DisplayRadar(false)
 	DoScreenFadeIn(0)
 

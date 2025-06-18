@@ -31,24 +31,29 @@ end
 RegisterNetEvent("inventory:Ration")
 AddEventHandler("inventory:Ration",function(Coords)
 	local Cooldown = 0
+	local FoundSafe = false
 	local Ped = PlayerPedId()
+	local SpawnPosition = nil
 	local Coords = GetEntityCoords(Ped)
-	Model = Animals[math.random(#Animals)]
-	local SpawnX = Coords["x"] + math.random(-75,75)
-	local SpawnY = Coords["y"] + math.random(-75,75)
-	local HitZ,GroundZ = GetGroundZFor_3dCoord(SpawnX,SpawnY,Coords["z"],true)
-	local HitSafe,SafeCoords = GetSafeCoordForPed(SpawnX,SpawnY,GroundZ,false,16)
 
 	repeat
 		Cooldown = Cooldown + 1
-		SpawnX = Coords["x"] + math.random(-75,75)
-		SpawnY = Coords["y"] + math.random(-75,75)
-		HitZ,GroundZ = GetGroundZFor_3dCoord(SpawnX,SpawnY,Coords["z"],true)
-		HitSafe,SafeCoords = GetSafeCoordForPed(SpawnX,SpawnY,GroundZ,false,16)
-	until (HitZ and HitSafe) or Cooldown >= 100
+		local x = Coords.x + math.random(-75,75)
+		local y = Coords.y + math.random(-75,75)
+		local z = Coords.z
 
-	if HitZ and HitSafe then
-		local Networked = vRPS.CreateModels("a_c_"..Model,SafeCoords["x"],SafeCoords["y"],SafeCoords["z"])
+		local Hitz,Groundz = GetGroundZFor_3dCoord(x,y,z,true)
+		local SafeHitz,SafeCoords = GetSafeCoordForPed(x,y,Groundz,false,16)
+
+		if Hitz and SafeHitz then
+			FoundSafe = true
+			SpawnPosition = SafeCoords
+		end
+	until FoundSafe or Cooldown >= 100
+
+	if FoundSafe and SpawnPosition then
+		Model = Animals[math.random(#Animals)]
+		local Networked = vRPS.CreateModels("a_c_"..Model,SpawnPosition.x,SpawnPosition.y,SpawnPosition.z)
 		if not Networked then return end
 
 		Entity = LoadNetwork(Networked)
@@ -77,9 +82,10 @@ AddEventHandler("inventory:Ration",function(Coords)
 		SetPedSuffersCriticalHits(Entity,false)
 		SetPedEnableWeaponBlocking(Entity,true)
 		SetPedDropsWeaponsWhenDead(Entity,false)
+		DecorSetBool(Entity,"CREATIVE_PED",true)
 		SetBlockingOfNonTemporaryEvents(Entity,true)
 
-		TaskGoStraightToCoord(Entity,Coords["x"],Coords["y"],Coords["z"],1.0,-1,0.0,0.0)
+		TaskGoStraightToCoord(Entity,Coords.x,Coords.y,Coords.z,1.0,-1,0.0,0.0)
 
 		local Blip = AddBlipForEntity(Entity)
 		SetBlipSprite(Blip,141)

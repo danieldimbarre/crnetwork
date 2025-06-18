@@ -507,8 +507,8 @@ exports("AddTaxs",function(Passport,source,Name,Valuation,Message)
 		end
 	end
 
-	if Valuation > 0 then
-		vRP.Query("taxs/Add",{ Passport = Passport, Name = Name, Date = os.date("%d/%m/%Y"), Hour = os.date("%H:%M"), Price = parseInt(Valuation), Message = Message })
+	if Valuation > 1 then
+		vRP.Query("taxs/Add",{ Passport = Passport, Name = Name, Date = os.date("%d/%m/%Y"), Hour = os.date("%H:%M"), Price = Valuation, Message = Message })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

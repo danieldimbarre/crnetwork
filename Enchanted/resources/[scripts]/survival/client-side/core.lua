@@ -302,7 +302,7 @@ exports("Revive",function(Health,Arena)
 	SetEntityHealth(Ped,Health or 101)
 
 	if Arena then
-		SetPedArmour(Ped,99)
+		SetPedArmour(Ped,100)
 	end
 
 	if Death["Status"] then

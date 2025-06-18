@@ -10,8 +10,8 @@ CooldownRaces = 7200
 SecondsExplode = 5000
 VehicleDuration = 604800
 ExchangeItem = "platinum"
-PropFlags = "prop_beachflag_01"
-PropTyre = "prop_offroad_tyres02"
+PropFlags = "stt_prop_flagpole_2e"
+PropTyre = "tr_prop_tr_races_barrel_01a"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ROUTES
 -----------------------------------------------------------------------------------------------------------------------------------------

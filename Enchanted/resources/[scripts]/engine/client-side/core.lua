@@ -23,11 +23,11 @@ AddEventHandler("gameEventTriggered",function(Event,Message)
 		local Ped = PlayerPedId()
 		local Vehicle = Message[2]
 		if not Entity(Vehicle).state.Fuel then
-			Entity(Vehicle).state:set("Fuel",100,true)
+			Entity(Vehicle).state:set("Fuel",100.0,true)
 		end
 
 		SetPedConfigFlag(Ped,35,false)
-		SetVehicleFuelLevel(Vehicle,Entity(Vehicle).state.Fuel)
+		SetVehicleFuelLevel(Vehicle,Entity(Vehicle).state.Fuel + 0.0)
 
 		if not IsPedInAnyHeli(Ped) then
 			TriggerEvent("inventory:CleanWeapons")
@@ -42,7 +42,7 @@ AddEventHandler("engine:FuelAdmin",function()
 	local Ped = PlayerPedId()
 	if IsPedInAnyVehicle(Ped) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
-		Entity(Vehicle).state:set("Fuel",100,true)
+		Entity(Vehicle).state:set("Fuel",100.0,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

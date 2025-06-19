@@ -19,18 +19,15 @@ local VehicleFuel = false
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Event,Message)
-	if Event ~= "CEventNetworkPlayerEnteredVehicle" then
-		return
-	end
-
-	local Vehicle = Message[2]
-	if Message[1] == PlayerId() then
+	if Event == "CEventNetworkPlayerEnteredVehicle" and Message[1] == PlayerId() then
 		local Ped = PlayerPedId()
-		if not Entity(Vehicle)["state"]["Fuel"] then
-			Entity(Vehicle)["state"]:set("Fuel",100,true)
+		local Vehicle = Message[2]
+		if not Entity(Vehicle).state.Fuel then
+			Entity(Vehicle).state:set("Fuel",100,true)
 		end
 
 		SetPedConfigFlag(Ped,35,false)
+		SetVehicleFuelLevel(Vehicle,Entity(Vehicle).state.Fuel)
 
 		if not IsPedInAnyHeli(Ped) then
 			TriggerEvent("inventory:CleanWeapons")
@@ -45,7 +42,7 @@ AddEventHandler("engine:FuelAdmin",function()
 	local Ped = PlayerPedId()
 	if IsPedInAnyVehicle(Ped) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
-		Entity(Vehicle)["state"]:set("Fuel",100,true)
+		Entity(Vehicle).state:set("Fuel",100,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -81,13 +78,17 @@ CreateThread(function()
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			local Class = GetVehicleClass(Vehicle)
 			if Class ~= 13 and Class ~= 14 then
-				if GetVehicleFuelLevel(Vehicle) >= 1 then
+				local CurrentFuel = GetVehicleFuelLevel(Vehicle)
+				if CurrentFuel >= 1 then
 					if (GetEntitySpeed(Vehicle) * 3.6) >= 1 then
-						ActiveFuel = (ActiveFuel - (Consume[floor(GetVehicleCurrentRpm(Vehicle))] or 1.0) * 1.0 / 10)
-						SetVehicleFuelLevel(Vehicle,ActiveFuel + 0.0)
+						local RPM = floor(GetVehicleCurrentRpm(Vehicle))
+						local Consumption = (Consume[RPM] or 1.0) * 0.1
+						local NewFuel = CurrentFuel - Consumption
+
+						SetVehicleFuelLevel(Vehicle,NewFuel)
 
 						if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-							Entity(Vehicle).state:set("Fuel",ActiveFuel + 0.0,true)
+							Entity(Vehicle).state:set("Fuel",NewFuel,true)
 						end
 					end
 				else

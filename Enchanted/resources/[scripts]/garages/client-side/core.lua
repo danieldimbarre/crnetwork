@@ -11,10 +11,6 @@ Creative = {}
 Tunnel.bindInterface("garages",Creative)
 vSERVER = Tunnel.getInterface("garages")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DECORATIONS
------------------------------------------------------------------------------------------------------------------------------------------
-DecorRegister("Player_Vehicle",3)
------------------------------------------------------------------------------------------------------------------------------------------
 -- VARIAVEIS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Opened = "1"
@@ -292,7 +288,6 @@ function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Ty
 	SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
 	SetEntityAsMissionEntity(Vehicle,true,true)
 	SetVehicleNeedsToBeHotwired(Vehicle,false)
-	DecorSetInt(Vehicle,"Player_Vehicle",-1)
 	SetEntityCleanupByEngine(Vehicle,true)
 	SetVehicleOnGroundProperly(Vehicle)
 	SetVehRadioStation(Vehicle,"OFF")
@@ -332,7 +327,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 		Vehicle = vRP.ClosestVehicle(15)
 	end
 
-	if IsEntityAVehicle(Vehicle) and (not Entity(Vehicle)["state"]["Tow"] or LocalPlayer["state"]["Admin"]) then
+	if IsEntityAVehicle(Vehicle) and (not Entity(Vehicle).state.Tow or LocalPlayer.state.Admin) then
 		local Doors = {}
 		for Number = 0,5 do
 			Doors[Number] = IsVehicleDoorDamaged(Vehicle,Number)
@@ -356,7 +351,7 @@ function Creative.SearchBlip(Coords)
 	end
 
 	if type(Coords) == "string" then
-		Coords = vec3(Garages[Coords]["x"],Garages[Coords]["y"],Garages[Coords]["z"])
+		Coords = vec3(Garages[Coords].x,Garages[Coords].y,Garages[Coords].z)
 	end
 
 	if not Coords then
@@ -412,7 +407,6 @@ end
 function Creative.RegisterDecors(Vehicle)
 	SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
 	SetVehicleNeedsToBeHotwired(Vehicle,false)
-	DecorSetInt(Vehicle,"Player_Vehicle",-1)
 	SetVehRadioStation(Vehicle,"OFF")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -459,7 +453,7 @@ CreateThread(function()
 					TimeDistance = 1
 					DrawMarker(23,v.x,v.y,v.z - 0.95,0.0,0.0,0.0,0.0,0.0,0.0,1.75,1.75,0.0,88,101,242,175,0,0,0,0)
 
-					if Distance <= 1.25 and IsControlJustPressed(1,38) and not exports["hud"]:Wanted() and not exports["lb-phone"]:IsOpen() then
+					if Distance <= 1.25 and IsControlJustPressed(1,38) and not exports.hud:Wanted() and not exports["lb-phone"]:IsOpen() then
 						local Vehicles = vSERVER.Vehicles(Number)
 						if Vehicles then
 							Opened = Number
@@ -492,7 +486,7 @@ end)
 -- SPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Spawn",function(Data,Callback)
-	TriggerServerEvent("garages:Spawn",Data["Model"],Opened)
+	TriggerServerEvent("garages:Spawn",Data.Model,Opened)
 
 	Callback("Ok")
 end)
@@ -508,7 +502,7 @@ end)
 -- TAX
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Tax",function(Data,Callback)
-	TriggerServerEvent("garages:Tax",Data["Model"])
+	TriggerServerEvent("garages:Tax",Data.Model)
 
 	Callback("Ok")
 end)
@@ -516,7 +510,7 @@ end)
 -- SELL
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Sell",function(Data,Callback)
-	TriggerServerEvent("garages:Sell",Data["Model"])
+	TriggerServerEvent("garages:Sell",Data.Model)
 
 	Callback("Ok")
 end)
@@ -524,7 +518,7 @@ end)
 -- TRANSFER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Transfer",function(Data,Callback)
-	TriggerServerEvent("garages:Transfer",Data["Model"])
+	TriggerServerEvent("garages:Transfer",Data.Model)
 
 	Callback("Ok")
 end)
@@ -551,9 +545,9 @@ RegisterNetEvent("garages:Propertys")
 AddEventHandler("garages:Propertys",function(GaragesTable,RespawnsTable)
 	for Name,v in pairs(GaragesTable) do
 		Garages[Name] = {
-			["x"] = v["x"],
-			["y"] = v["y"],
-			["z"] = v["z"],
+			x = v.x,
+			y = v.y,
+			z = v.z,
 			["1"] = v["1"]
 		}
 	end

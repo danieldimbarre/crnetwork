@@ -6,10 +6,16 @@ local Proxy = module("vrp","lib/Proxy")
 vRPC = Tunnel.getInterface("vRP")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECTION
+-----------------------------------------------------------------------------------------------------------------------------------------
+Creative = {}
+Tunnel.bindInterface("chat",Creative)
+vKEYBOARD = Tunnel.getInterface("keyboard")
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CHAT:SERVERMESSAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("chat:ServerMessage")
-AddEventHandler("chat:ServerMessage", function(Mode,Message)
+AddEventHandler("chat:ServerMessage",function(Mode,Message)
 	local source = source
 	local Passport = vRP.Passport(source)
 
@@ -39,6 +45,21 @@ AddEventHandler("chat:ServerMessage", function(Mode,Message)
 			end
 		else
 			TriggerClientEvent("chat:ClientMessage",-1,Name,Messages,Mode)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ME
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("me",function(source,Message,History)
+	local Passport = vRP.Passport(source)
+	if Passport and Message[1] then
+		local Message = string.sub(History:sub(4),1,100)
+
+		for _,v in pairs(vRPC.Players(source)) do
+			async(function()
+				TriggerClientEvent("chat:me_new",v,source,Message,10)
+			end)
 		end
 	end
 end)

@@ -1,16 +1,4 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VRP
------------------------------------------------------------------------------------------------------------------------------------------
-local Tunnel = module("vrp","lib/Tunnel")
-local Proxy = module("vrp","lib/Proxy")
-vRP = Proxy.getInterface("vRP")
------------------------------------------------------------------------------------------------------------------------------------------
--- CONNECTION
------------------------------------------------------------------------------------------------------------------------------------------
-Creative = {}
-Tunnel.bindInterface("postit",Creative)
-vKEYBOARD = Tunnel.getInterface("keyboard")
------------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Posts = {}
@@ -24,26 +12,24 @@ function Creative.Add(Coords)
 	if Passport and not Active[Passport] then
 		Active[Passport] = true
 
+		local Route = GetPlayerRoutingBucket(source)
 		local Keyboard = vKEYBOARD.Secondary(source,"Mensagem","Distância (3 a 15)")
-		if Keyboard and parseInt(Keyboard[2]) >= 3 and parseInt(Keyboard[2]) <= 15 then
-			if vRP.TakeItem(Passport,"postit",1,true) then
-				local Route = GetPlayerRoutingBucket(source)
+		if Keyboard and parseInt(Keyboard[2]) >= 3 and parseInt(Keyboard[2]) <= 15 and vRP.TakeItem(Passport,"postit",1,true) then
+			Posts[Route] = Posts[Route] or {}
 
-				if not Posts[Route] then
-					Posts[Route] = {}
-				end
+			repeat
+				Selected = GenerateString("DDLLDDLL")
+			until Selected and not Posts[Route][Selected]
 
-				local Number = #Posts[Route] + 1
+			Posts[Route][Selected] = {
+				Coords = Coords,
+				Author = "Post-it",
+				Message = string.sub(Keyboard[1],1,100),
+				Distance = parseInt(Keyboard[2]),
+				Passport = Passport
+			}
 
-				Posts[Route][Number] = {
-					["Coords"] = Coords,
-					["Message"] = string.sub(Keyboard[1],1,100),
-					["Distance"] = parseInt(Keyboard[2]),
-					["Passport"] = Passport
-				}
-
-				TriggerClientEvent("postit:Add",-1,Route,Number,Posts[Route][Number])
-			end
+			TriggerClientEvent("chat:postit_add",-1,Route,Selected,Posts[Route][Selected])
 		end
 
 		Active[Passport] = nil
@@ -52,32 +38,50 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DELETE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Delete(Route,Number)
+function Creative.Delete(Route,Selected)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Posts[Route] and Posts[Route][Number] then
+	if Passport and not Active[Passport] and Posts[Route] and Posts[Route][Selected] then
 		Active[Passport] = true
 
 		if vRP.HasGroup(Passport,"Admin") then
-			TriggerClientEvent("Notify",source,"Sucesso","Post-It do passaporte <b>"..Posts[Route][Number]["Passport"].."</b> removido.","verde",10000)
-			TriggerClientEvent("postit:Delete",-1,Route,Number)
-			Posts[Route][Number] = nil
-		else
-			if Posts[Route][Number]["Passport"] == Passport then
-				TriggerClientEvent("postit:Delete",-1,Route,Number)
-				Posts[Route][Number] = nil
-			end
+			TriggerClientEvent("Notify",source,"Sucesso","Post-It do passaporte <b>"..Posts[Route][Selected].Passport.."</b> removido.","verde",10000)
+			TriggerClientEvent("chat:postit_remove",-1,Route,Selected)
+			Posts[Route][Selected] = nil
+		elseif Posts[Route][Selected].Passport == Passport then
+			TriggerClientEvent("chat:postit_remove",-1,Route,Selected)
+			Posts[Route][Selected] = nil
 		end
 
 		Active[Passport] = nil
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- UPDATETXT
+-- POSTIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Archive(Coords)
-	vRP.Archive("Coords.txt",Coords)
-end
+AddEventHandler("Postit",function(Passport,Author,Coords,Reason,Seconds)
+	local Route = 0
+
+	Posts[Route] = Posts[Route] or {}
+
+	repeat
+		Selected = GenerateString("DDLLDDLL")
+	until Selected and not Posts[Route][Selected]
+
+	Posts[Route][Selected] = {
+		Distance = 20,
+		Coords = Coords,
+		Message = Reason,
+		Passport = Passport,
+		Author = "Passporte: "..Passport
+	}
+
+	TriggerClientEvent("postit:Add",-1,Route,Selected,Posts[Route][Selected])
+
+	SetTimeout(Seconds * 1000,function()
+		TriggerClientEvent("postit:Delete",-1,Route,Selected)
+	end)
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -19,6 +19,7 @@ DiscordBot = true
 BaseMode = "steam"
 Whitelisted = false
 Liberation = "Token"
+DisconnectReason = 30
 NameDefault = "Indivíduo Indigente"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVER

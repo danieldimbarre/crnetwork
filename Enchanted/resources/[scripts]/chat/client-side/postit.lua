@@ -1,12 +1,4 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VRP
------------------------------------------------------------------------------------------------------------------------------------------
-local Tunnel = module("vrp","lib/Tunnel")
------------------------------------------------------------------------------------------------------------------------------------------
--- CONNECTION
------------------------------------------------------------------------------------------------------------------------------------------
-vSERVER = Tunnel.getInterface("postit")
------------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Posts = {}
@@ -24,10 +16,10 @@ function GetCoordsFromCam(Distance,Coords)
 	return Coords + Direction * Distance
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- POSTIT:INITPOSTIT
+-- CHAT:POSTIT_NEW
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("postit:initPostit")
-AddEventHandler("postit:initPostit",function(Admin)
+RegisterNetEvent("chat:postit_new")
+AddEventHandler("chat:postit_new",function(Admin)
 	if not Active then
 		Active = true
 
@@ -56,7 +48,37 @@ AddEventHandler("postit:initPostit",function(Admin)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- THREADPOSTITS
+-- CHAT:POSTIT_REMOVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("chat:postit_remove")
+AddEventHandler("chat:postit_remove",function(Route,Number)
+	if Posts[Route] and Posts[Route][Number] then
+		Posts[Route][Number] = nil
+
+		if not next(Posts[Route]) then
+			Posts[Route] = nil
+		end
+	end
+
+	if Display[Route] and Display[Route][Number] then
+		SendNUIMessage({ Action = "RemoveMe", Payload = Number })
+		Display[Route][Number] = nil
+
+		if not next(Display[Route]) then
+			Display[Route] = nil
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CHAT:POSTIT_ADD
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("chat:postit_add")
+AddEventHandler("chat:postit_add",function(Route,Number,Content)
+	Posts[Route] = Posts[Route] or {}
+	Posts[Route][Number] = Content
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
@@ -76,17 +98,17 @@ CreateThread(function()
 					Display[Route] = Display[Route] or {}
 
 					if not Display[Route][Number] then
-						SendNUIMessage({ Action = "Show", text = "", id = Number, x = x, y = y })
+						SendNUIMessage({ Action = "ShowMe", Payload = { Number,v.Author,v.Message,x,y,true } })
 						Display[Route][Number] = true
 					end
 
-					SendNUIMessage({ Action = "Update", text = v.Message, id = Number, x = x, y = y })
+					SendNUIMessage({ Action = "UpdateMe", Payload = { Number,v.Message,x,y } })
 
 					if IsControlJustPressed(0,47) and Distance <= 2 then
 						vSERVER.Delete(Route,Number)
 					end
 				elseif Display[Route] and Display[Route][Number] then
-					SendNUIMessage({ Action = "Remove", id = Number })
+					SendNUIMessage({ Action = "RemoveMe", Payload = Number })
 					Display[Route][Number] = nil
 
 					if not next(Display[Route]) then
@@ -98,34 +120,4 @@ CreateThread(function()
 
 		Wait(TimeDistance)
 	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- POSTIT:DELETE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("postit:Delete")
-AddEventHandler("postit:Delete",function(Route,Number)
-	if Posts[Route] and Posts[Route][Number] then
-		Posts[Route][Number] = nil
-
-		if not next(Posts[Route]) then
-			Posts[Route] = nil
-		end
-	end
-
-	if Display[Route] and Display[Route][Number] then
-		SendNUIMessage({ Action = "Remove", id = Number })
-		Display[Route][Number] = nil
-
-		if not next(Display[Route]) then
-			Display[Route] = nil
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- POSTIT:ADD
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("postit:Add")
-AddEventHandler("postit:Add",function(Route,Number,Content)
-	Posts[Route] = Posts[Route] or {}
-	Posts[Route][Number] = Content
 end)

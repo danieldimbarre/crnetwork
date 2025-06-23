@@ -353,7 +353,7 @@ end)
 RegisterCommand("postit",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
-		TriggerClientEvent("postit:initPostit",source,true)
+		TriggerClientEvent("chat:postit_new",source,true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

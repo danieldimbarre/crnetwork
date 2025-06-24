@@ -54,11 +54,12 @@ end)
 RegisterCommand("me",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport and Message[1] then
+		local Name = vRP.FullName(Passport)
 		local Message = string.sub(History:sub(4),1,100)
 
 		for _,v in pairs(vRPC.Players(source)) do
 			async(function()
-				TriggerClientEvent("chat:me_new",v,source,Message,10)
+				TriggerClientEvent("chat:me_new",v,source,Name,Message,10)
 			end)
 		end
 	end

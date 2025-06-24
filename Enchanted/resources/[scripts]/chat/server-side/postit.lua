@@ -59,7 +59,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POSTIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("Postit",function(Passport,Author,Coords,Reason,Seconds)
+exports("Postit",function(Passport,Author,Coords,Reason,Seconds)
 	local Route = 0
 
 	Posts[Route] = Posts[Route] or {}

@@ -7,11 +7,11 @@ local MeActive = {}
 -- CHAT:ME_NEW
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("chat:me_new")
-AddEventHandler("chat:me_new",function(source,Message,Seconds)
+AddEventHandler("chat:me_new",function(source,Name,Message,Seconds)
 	local Index = GetPlayerFromServerId(source)
 	if Index ~= -1 then
 		local Ped = GetPlayerPed(Index)
-		Me[Ped] = { Message = Message, Timer = Seconds }
+		Me[Ped] = { Message = Message, Name = Name, Timer = Seconds }
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ CreateThread(function()
 				local _,x,y = GetScreenCoordFromWorldCoord(OtherCoords.x,OtherCoords.y,OtherCoords.z + 0.7)
 
 				if not MeActive[Index] then
-					SendNUIMessage({ Action = "ShowMe", Payload = { Index,LocalPlayer.state.Name,v.Message,x,y,false } })
+					SendNUIMessage({ Action = "ShowMe", Payload = { Index,v.Name,v.Message,x,y,false } })
 					MeActive[Index] = true
 				end
 

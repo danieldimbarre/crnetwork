@@ -6632,15 +6632,22 @@ Races = {
 		Global = true,
 		Explode = true,
 		Icon = "bomb.png",
-		Name = "Detonação",
-		Description = "Modo de corrida explosivo onde pilotos enfrentam não apenas a velocidade, mas também armadilhas mortais e explosivos em cada curva, transformando pistas em arenas de destruição e desafio extremo.",
+		Name = "Corrida Terminal",
+		Description = "Neste modo eletrizante, o desafio vai além da velocidade, complete os checkpoints dentro do tempo limite ou seu veículo será detonado! Cada trecho tem um cronômetro e a pressão é constante. Errou o caminho ou vacilou na curva? A contagem regressiva não perdoa. Teste seus reflexos, domine o traçado e fuja da explosão!",
 		Routes = Routes
 	},{
 		Global = false,
 		Explode = false,
-		Icon = "flag.png",
-		Name = "Treinamento",
-		Description = "Modo de treinamento com pistas desafiadoras e feedback em tempo real ajudam pilotos a melhorar suas habilidades técnicas e estratégicas, visando a excelência na arte de conduzir um veículo.",
+		Icon = "tyre.png",
+		Name = "Pista Fantasma",
+		Description = "Perfeito para iniciantes ou para quem quer dominar cada curva sem pressão. Neste modo, não há explosões, rivais nem contagem regressiva agressiva, apenas você, a pista e o objetivo de melhorar suas habilidades. Treine seu traçado, pratique frenagens, memorize os checkpoints e explore o percurso no seu ritmo.",
+		Routes = Routes
+	},{
+		Global = true,
+		Explode = false,
+		Icon = "trophy.png",
+		Name = "Duelo de Traçado",
+		Description = "Aprenda na prática, correndo contra o tempo e outros pilotos, você pode treinar rotas e estratégias com adversários reais sem penalidades severas. Ideal para quem quer evoluir suas habilidades em um ambiente competitivo. Teste ultrapassagens, analise o comportamento dos oponentes e prepare-se para desafios.",
 		Routes = Routes
 	}
 }

@@ -27,22 +27,6 @@ AddEventHandler("player:Survival",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ME
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("me",function(source,Message,History)
-	local Passport = vRP.Passport(source)
-	if Passport and Message[1] then
-		local Message = string.sub(History:sub(4),1,100)
-
-		local Players = vRPC.Players(source)
-		for _,v in pairs(Players) do
-			async(function()
-				TriggerClientEvent("showme:pressMe",v,source,Message,10)
-			end)
-		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYER:DEMAND
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("player:Demand")
@@ -273,7 +257,7 @@ AddEventHandler("player:Preset",function(Number)
 		local Model = vRP.ModelPlayer(source)
 
 		if Preset[Number][Model] then
-			TriggerClientEvent("skinshop:Apply",source,Preset[Number][Model])
+			TriggerClientEvent("skinshop:Apply",source,Preset[Number][Model],true)
 		end
 	end
 end)

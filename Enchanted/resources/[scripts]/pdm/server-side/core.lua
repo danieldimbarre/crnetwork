@@ -31,21 +31,28 @@ function Creative.Buy(Model)
 				TriggerClientEvent("Notify",source,"Aviso","Estoque insuficiente.","amarelo",5000)
 			else
 				if VehicleMode(Model) == "Rental" then
+					local Discount = 1.0
 					local VehicleGemstone = VehicleGemstone(Model)
-					if VehicleGemstone and vRP.PaymentGems(Passport,VehicleGemstone) then
+					for Permission,Multiplier in pairs({ Ouro = 0.70, Prata = 0.80, Bronze = 0.90 }) do
+						if vRP.HasService(Passport,Permission) then
+							Discount = math.min(Discount,Multiplier)
+						end
+					end
+
+					if VehicleGemstone and vRP.PaymentGems(Passport,VehicleGemstone * Discount) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Model), Work = 0 })
-						exports["discord"]:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Dotted(VehicleGemstone).." diamantes.")
+						exports.discord:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Dotted(VehicleGemstone * Discount).." Diamantes")
 						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Model).."</b> concluído.","verde",5000)
 						Return = true
 					else
 						TriggerClientEvent("Notify",source,"Aviso","Diamante insuficiente.","amarelo",5000)
 					end
-				elseif VehicleClass(Model) ~= "Races" and not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) then
+				elseif VehicleClass(Model) ~= "Races" and not exports.bank:CheckTaxs(Passport) and not exports.bank:CheckFines(Passport) then
 					local VehiclePrice = VehiclePrice(Model)
 					if VehiclePrice and vRP.PaymentFull(Passport,VehiclePrice) then
 						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Model), Work = 0 })
-						exports["discord"]:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Currency..Dotted(VehiclePrice))
-						exports["bank"]:AddTaxs(Passport,source,"Concessionária",VehiclePrice,"Compra do veículo "..VehicleName(Model)..".")
+						exports.discord:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Currency..Dotted(VehiclePrice))
+						exports.bank:AddTaxs(Passport,source,"Concessionária",VehiclePrice,"Compra do veículo "..VehicleName(Model)..".")
 						TriggerClientEvent("Notify",source,"Sucesso","Compra concluída.","verde",5000)
 						Return = true
 					else
@@ -69,7 +76,7 @@ function Creative.Check()
 	if Passport then
 		TriggerEvent("DebugWeapons",Passport)
 		TriggerEvent("animals:Delete",Passport,source)
-		exports["vrp"]:Bucket(source,"Enter",100000 + Passport)
+		exports.vrp:Bucket(source,"Enter",100000 + Passport)
 	end
 
 	return true
@@ -82,6 +89,16 @@ function Creative.Discount()
 	local Platinas = 1.0
 	local Importados = 1.0
 
+	local source = source
+	local Passport = vRP.Passport(source)
+	if Passport then
+		for Permission,Multiplier in pairs({ Ouro = 0.70, Prata = 0.80, Bronze = 0.90 }) do
+			if vRP.HasService(Passport,Permission) then
+				Importados = math.min(Importados,Multiplier)
+			end
+		end
+	end
+
 	return { Normal,Importados,Platinas }
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -90,7 +107,7 @@ end
 function Creative.Remove()
 	local source = source
 
-	exports["vrp"]:Bucket(source,"Exit")
+	exports.vrp:Bucket(source,"Exit")
 	TriggerEvent("vRP:ReloadWeapons",source)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

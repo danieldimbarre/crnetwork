@@ -411,7 +411,7 @@ function Creative.Vehicles(Number)
 					Engine = v.Engine / 10,
 					Body = v.Body / 10,
 					Fuel = v.Fuel,
-					TaxTime = taxTime,
+					TaxTime = TaxTimer,
 					RentalTime = RentalTimer
 				})
 			end
@@ -566,17 +566,17 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 		return false
 	end
 
-	if not Vehicle then
+	if not Vehicle and Class ~= "Races" then
 		if Gemstone > 0 then
 			TriggerClientEvent("garages:Close",source)
 
-			if Class == "Races" or (Garages[Number] and Garages[Number].Platinum) then
+			if Garages[Number] and Garages[Number].Platinum then
 				Coin = "Platinas"
 			end
 
 			local Discount = 1.0
 			if Coin == "Diamantes" then
-				for Permission,Multiplier in pairs({ Diamante = 0.70, Platina = 0.85, Ouro = 0.95 }) do
+				for Permission,Multiplier in pairs({ Ouro = 0.70, Prata = 0.80, Bronze = 0.90 }) do
 					if vRP.HasService(Passport,Permission) then
 						Discount = math.min(Discount,Multiplier)
 					end
@@ -590,7 +590,7 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 				end
 
 				vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Name), Work = 1 })
-				exports.discord:Embed("Vehicles","**[PASSAPORTE]:** "..Passport.."\n**[RENOVOU]:** "..Model.."\n**[VALOR]:** "..Dotted(PaymentValue).." "..Coin)
+				exports.discord:Embed("Vehicles","**[PASSAPORTE]:** "..Passport.."\n**[RENOVOU]:** "..Name.."\n**[VALOR]:** "..Dotted(PaymentValue).." "..Coin)
 				TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
 				Vehicle = vRP.SelectVehicle(Passport,Name)
 			else
@@ -691,13 +691,13 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 		if Gemstone > 0 and Vehicle.Rental ~= 0 and Vehicle.Rental <= os.time() then
 			TriggerClientEvent("garages:Close",source)
 
-			if Class == "Races" or (Garages[Number] and Garages[Number].Platinum) then
+			if Garages[Number] and Garages[Number].Platinum then
 				Coin = "Platinas"
 			end
 
 			local Discount = 1.0
 			if Coin == "Diamantes" then
-				for Permission,Multiplier in pairs({ Diamante = 0.70, Platina = 0.85, Ouro = 0.95 }) do
+				for Permission,Multiplier in pairs({ Ouro = 0.70, Prata = 0.80, Bronze = 0.90 }) do
 					if vRP.HasService(Passport,Permission) then
 						Discount = math.min(Discount,Multiplier)
 					end
@@ -709,7 +709,7 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 				if (Coin == "Diamantes" and vRP.PaymentGems(Passport,PaymentValue)) or (Coin == "Platinas" and vRP.TakeItem(Passport,"platinum",PaymentValue)) then
 					vRP.Update("vehicles/rentalVehiclesUpdate",{ Passport = Passport, Vehicle = Name, Days = 30 })
 					TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> atualizado.","verde",5000)
-					exports.discord:Embed("Vehicles","**[PASSAPORTE]:** "..Passport.."\n**[RENOVOU]:** "..Model.."\n**[VALOR]:** "..Dotted(PaymentValue).." "..Coin)
+					exports.discord:Embed("Vehicles","**[PASSAPORTE]:** "..Passport.."\n**[RENOVOU]:** "..Name.."\n**[VALOR]:** "..Dotted(PaymentValue).." "..Coin)
 				else
 					return CancelProcess(Coin.." insuficiente.")
 				end
@@ -767,7 +767,7 @@ RegisterCommand("car",function(source,Message)
 	local Heading = GetEntityHeading(Ped)
 	local Plate = "VEH"..(10000 + Passport)
 
-	local Exist,Network,Vehicle = Creative.ServerVehicle(Model,vec4(Coords.x,Coords.y,Coords.z,Heading),Plate,2000,nil,1000,50,true,false)
+	local Exist,Network,Vehicle = Creative.ServerVehicle(Model,vec4(Coords.x,Coords.y,Coords.z,Heading),Plate,2000,nil,1000,95,true,false)
 	if not Exist then
 		return false
 	end

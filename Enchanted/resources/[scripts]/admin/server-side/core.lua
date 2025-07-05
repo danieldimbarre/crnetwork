@@ -260,7 +260,7 @@ RegisterCommand("clone",function(source,Message)
 		local Identity = vRP.Identity(OtherPassport)
 		if Identity then
 			vRPC.Skin(source,Identity["Skin"])
-			TriggerClientEvent("skinshop:Apply",source,vRP.UserData(OtherPassport,"Clothings"))
+			TriggerClientEvent("skinshop:Apply",source,vRP.UserData(OtherPassport,"Clothings"),true)
 			TriggerClientEvent("barbershop:Apply",source,vRP.UserData(OtherPassport,"Barbershop"))
 			TriggerClientEvent("tattooshop:Apply",source,vRP.UserData(OtherPassport,"Tattooshop"))
 
@@ -899,7 +899,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("admin:Doords")
 AddEventHandler("admin:Doords",function(Coords,Model,Heading)
-	vRP.Archive("coordenadas.txt","Coords = "..Coords..", Hash = "..Model..", Disabled = false, Lock = true, Distance = 1.75")
+	vRP.Archive("coordenadas.txt","Coords = "..Coords..", Heading = "..Heading..", Hash = "..Model..", Disabled = false, Lock = true, Distance = 1.75")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CDS

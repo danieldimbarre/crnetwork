@@ -59,7 +59,23 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SEATSHUFFLE
+-- GETPLAYERVEHICLESEAT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function GetPlayerVehicleSeat(Ped,Vehicle)
+	if not IsPedInAnyVehicle(Ped) then
+		return false
+	end
+
+	for Number = -1,GetVehicleModelNumberOfSeats(GetEntityModel(Vehicle)) - 1 do
+		if GetPedInVehicleSeat(Vehicle,Number) == Ped then
+			return Number
+		end
+	end
+
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
@@ -68,16 +84,16 @@ CreateThread(function()
 		if IsPedInAnyVehicle(Ped) then
 			TimeDistance = 100
 
-			local Vehicle = GetVehiclePedIsIn(Ped)
-			if GetPedInVehicleSeat(Vehicle,0) == Ped and not GetIsTaskActive(Ped,164) and GetIsTaskActive(Ped,165) then
-				SetPedIntoVehicle(Ped,Vehicle,0)
-				SetPedConfigFlag(Ped,184,true)
+			SetPedConfigFlag(Ped,184,true)
+			if GetIsTaskActive(Ped,165) then
+				local Vehicle = GetVehiclePedIsIn(Ped)
+				local Seating = GetPlayerVehicleSeat(Ped,Vehicle)
+
+				SetPedIntoVehicle(Ped,Vehicle,Seating)
 			end
 		else
-			if LocalPlayer.state.Handcuff and not LocalPlayer.state.Carry and GetEntityHealth(Ped) > 100 and not IsEntityPlayingAnim(Ped,"mp_arresting","idle",3) then
-				if LoadAnim("mp_arresting") then
-					TaskPlayAnim(Ped,"mp_arresting","idle",8.0,8.0,-1,49,1,false,false,false)
-				end
+			if LocalPlayer.state.Handcuff and not LocalPlayer.state.Carry and GetEntityHealth(Ped) > 100 and not IsEntityPlayingAnim(Ped,"mp_arresting","idle",3) and LoadAnim("mp_arresting") then
+				TaskPlayAnim(Ped,"mp_arresting","idle",8.0,8.0,-1,49,1,false,false,false)
 			end
 
 			if CruiseEnabled and CruiseVehicle then

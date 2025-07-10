@@ -26,8 +26,10 @@ AddEventHandler("gameEventTriggered",function(Event,Message)
 			Entity(Vehicle).state:set("Fuel",100.0,true)
 		end
 
+		local CurrentFuel = Entity(Vehicle).state.Fuel
+
 		SetPedConfigFlag(Ped,35,false)
-		SetVehicleFuelLevel(Vehicle,Entity(Vehicle).state.Fuel + 0.0)
+		SetVehicleFuelLevel(Vehicle,CurrentFuel + 0.0)
 
 		if not IsPedInAnyHeli(Ped) then
 			TriggerEvent("inventory:CleanWeapons")
@@ -49,17 +51,17 @@ end)
 -- CONSUME
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Consume = {
-	[1.0] = 0.675,
-	[0.9] = 0.625,
-	[0.8] = 0.575,
-	[0.7] = 0.525,
-	[0.6] = 0.475,
-	[0.5] = 0.425,
-	[0.4] = 0.375,
-	[0.3] = 0.325,
-	[0.2] = 0.275,
-	[0.1] = 0.125,
-	[0.0] = 0.025
+	[1.0] = 0.475,
+	[0.9] = 0.425,
+	[0.8] = 0.375,
+	[0.7] = 0.325,
+	[0.6] = 0.275,
+	[0.5] = 0.225,
+	[0.4] = 0.175,
+	[0.3] = 0.125,
+	[0.2] = 0.075,
+	[0.1] = 0.025,
+	[0.0] = 0.000
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FLOOR
@@ -78,17 +80,17 @@ CreateThread(function()
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			local Class = GetVehicleClass(Vehicle)
 			if Class ~= 13 and Class ~= 14 then
-				local CurrentFuel = GetVehicleFuelLevel(Vehicle)
+				local CurrentFuel = Entity(Vehicle).state.Fuel
 				if CurrentFuel >= 1 then
 					if (GetEntitySpeed(Vehicle) * 3.6) >= 1 then
 						local RPM = floor(GetVehicleCurrentRpm(Vehicle))
 						local Consumption = (Consume[RPM] or 1.0) * 0.1
 						local NewFuel = CurrentFuel - Consumption
 
-						SetVehicleFuelLevel(Vehicle,NewFuel)
+						SetVehicleFuelLevel(Vehicle,NewFuel + 0.0)
 
 						if GetPedInVehicleSeat(Vehicle,-1) == Ped then
-							Entity(Vehicle).state:set("Fuel",NewFuel,true)
+							Entity(Vehicle).state:set("Fuel",NewFuel + 0.0,true)
 						end
 					end
 				else
@@ -163,10 +165,10 @@ AddEventHandler("engine:Supply",function(Entitys)
 
 		if (VehicleFuel >= 100.0 or GetEntityHealth(Ped) <= 100 or (Gallons and GetAmmoInPedWeapon(Ped,883325847) <= 2) or IsControlJustPressed(1,38)) then
 			if not Gallons and not vSERVER.RechargeFuel(Price) then
-				VehicleState:set("Fuel",Lasted,true)
+				VehicleState:set("Fuel",Lasted + 0.0,true)
 				TriggerEvent("Notify","Aviso","Dinheiro insuficiente.","amarelo",5000)
 			else
-				VehicleState:set("Fuel",VehicleFuel,true)
+				VehicleState:set("Fuel",VehicleFuel + 0.0,true)
 
 				if Display then
 					SendNUIMessage({ Action = "Close" })

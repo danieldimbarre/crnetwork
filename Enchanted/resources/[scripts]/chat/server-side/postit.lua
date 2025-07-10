@@ -59,7 +59,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POSTIT
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Postit",function(Passport,Author,Coords,Reason,Seconds)
+exports("Postit",function(Passport,Coords,Reason,Seconds)
+	local Selected
 	local Route = 0
 
 	Posts[Route] = Posts[Route] or {}
@@ -76,10 +77,10 @@ exports("Postit",function(Passport,Author,Coords,Reason,Seconds)
 		Author = "Passporte: "..Passport
 	}
 
-	TriggerClientEvent("postit:Add",-1,Route,Selected,Posts[Route][Selected])
+	TriggerClientEvent("chat:postit_add",-1,Route,Selected,Posts[Route][Selected])
 
 	SetTimeout(Seconds * 1000,function()
-		TriggerClientEvent("postit:Delete",-1,Route,Selected)
+		TriggerClientEvent("chat:postit_remove",-1,Route,Selected)
 	end)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -71,6 +71,7 @@ local Garages = {
 	["131"] = { ["Name"] = "Helicopters" },
 
 	-- Works
+	["140"] = { ["Name"] = "Bikes" },
 	["141"] = { ["Name"] = "Lumberman" },
 	["142"] = { ["Name"] = "Driver" },
 	["143"] = { ["Name"] = "Garbageman" },
@@ -169,6 +170,10 @@ local Works = {
 	},
 	["Milkman"] = {
 		"youga2"
+	},
+	["Bikes"] = {
+		"scorcher",
+		"bmx"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -235,7 +240,7 @@ function Creative.ServerVehicle(Model,Coords,Plate,Nitrox,Doors,Body,Fuel,Seatbe
 		end
 	end
 
-	State:set("Nitro",Nitro or 0,true)
+	State:set("Nitro",Nitrox or 0,true)
 	State:set("Fuel",Fuel or 100.0,true)
 	State:set("Drift",Drift or false,true)
 	State:set("Seatbelt",Seatbelt or false,true)

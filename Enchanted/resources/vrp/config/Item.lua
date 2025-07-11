@@ -2489,6 +2489,16 @@ local List = {
 		["Economy"] = 0
 	},
 	-- ARREMESSO
+	["WEAPON_ACIDPACKAGE"] = {
+		["Index"] = "newspaper",
+		["Name"] = "Jornal",
+		["Type"] = "Arremesso",
+		["Arrest"] = true,
+		["Vehicle"] = true,
+		["Weight"] = 0.75,
+		["Economy"] = 10,
+		["Market"] = true
+	},
 	["WEAPON_BRICK"] = {
 		["Index"] = "brick",
 		["Name"] = "Tijolo",

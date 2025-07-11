@@ -205,6 +205,7 @@ List = {
 			suitcase = 275,
 			WEAPON_BRICK = 25,
 			WEAPON_SHOES = 25,
+			WEAPON_ACIDPACKAGE = 10,
 			alliance = 525,
 			GADGET_PARACHUTE = 225,
 			axe = 1225,

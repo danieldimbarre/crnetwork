@@ -1038,7 +1038,11 @@ RegisterCommand("spectate",function(source,Message)
 	end
 
 	if Spectate[Passport] then
-		SetPlayerCullingRadius(Spectate[Passport],0.0)
+		local Ped = GetPlayerPed(Spectate[Passport])
+		if DoesEntityExist(Ped) then
+			SetEntityDistanceCullingRadius(Ped,0.0)
+		end
+
 		TriggerClientEvent("admin:resetSpectate",source)
 		Spectate[Passport] = nil
 
@@ -1048,9 +1052,12 @@ RegisterCommand("spectate",function(source,Message)
 	local OtherPassport = parseInt(Message[1])
 	local OtherSource = vRP.Source(OtherPassport)
 	if OtherSource then
-		SetPlayerCullingRadius(OtherSource,999999999.0)
-		TriggerClientEvent("admin:initSpectate",source,OtherSource)
-		Spectate[Passport] = OtherSource
+		local Ped = GetPlayerPed(OtherSource)
+		if DoesEntityExist(Ped) then
+			SetEntityDistanceCullingRadius(Ped,999999999.0)
+			TriggerClientEvent("admin:initSpectate",source,OtherSource)
+			Spectate[Passport] = OtherSource
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1323,7 +1330,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport,source)
 	if Spectate[Passport] then
-		SetPlayerCullingRadius(Spectate[Passport],0.0)
+		local Ped = GetPlayerPed(Spectate[Passport])
+		if DoesEntityExist(Ped) then
+			SetPlayerCullingRadius(Ped,0.0)
+		end
+
 		Spectate[Passport] = nil
 	end
 end)

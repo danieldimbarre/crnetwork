@@ -11,10 +11,15 @@ RegisterCommand("setvoiceintent",function(source,args)
 	LocalPlayer.state:set("voiceIntent",intent,true)
 end)
 
-RegisterCommand("volume",function(_,args)
-	if not args[1] then return end
-	setVolume(tonumber(args[1]))
-	TriggerEvent("Notify","Configurações","<b>Volume:</b> "..args[1].."%","verde",5000)
+RegisterCommand("volume",function(_,Message)
+	local Volume = parseInt(Message[1],true)
+	if not Volume or Volume < 0 or Volume > 100 then
+		TriggerEvent("Notify","Configurações","Use um valor entre 0 e 100.","vermelho",5000)
+		return false
+	end
+
+	setVolume(Volume)
+	TriggerEvent("Notify","Configurações","<b>Volume:</b> "..Volume.."%","verde",5000)
 end)
 
 exports("setAllowProximityCycleState",function(state)

@@ -311,6 +311,11 @@ local List = {
 		Coords = vec4(2340.7,3126.49,48.21,351.5),
 		Model = "a_m_m_soucent_03",
 		Anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
+	},{ -- Throwing
+		Distance = 50,
+		Coords = vec4(-607.05,-925.7,23.86,218.27),
+		Model = "a_m_m_paparazzi_01",
+		Anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

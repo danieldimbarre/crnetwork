@@ -442,6 +442,12 @@ function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
 			Wait(300)
 
 			ClearPedTasks(Ped)
+
+			SetTimeout(2500,function()
+				if Weapon ~= "" and GetSelectedPedWeapon(Ped) ~= GetHashKey(Weapon) then
+					TriggerEvent("inventory:CleanWeapons")
+				end
+			end)
 		else
 			Weapon = Name
 			TriggerEvent("Weapon",Weapon)

@@ -45,6 +45,8 @@ function tvRP.VehicleName()
 
 		return GetEntityArchetypeName(Vehicle),NetworkGetNetworkIdFromEntity(Vehicle),GetVehicleNumberPlateText(Vehicle)
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLEMODEL

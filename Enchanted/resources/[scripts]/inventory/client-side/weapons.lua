@@ -6,7 +6,8 @@ local Skins = {}
 local Objects = {}
 TakeWeapon = false
 StoreWeapon = false
-local Reloaded = GetGameTimer()
+local Reload = GetGameTimer()
+local Cooldown = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:SKINS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -307,15 +308,18 @@ CreateThread(function()
 		local TimeDistance = 999
 		if Weapon ~= "" and Actived then
 			TimeDistance = 100
-			local Ped = PlayerPedId()
-			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
 
-			if GetGameTimer() >= Reloaded and IsPedReloading(Ped) then
+			local Ped = PlayerPedId()
+			local CurrentTimer = GetGameTimer()
+			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+			if IsPedReloading(Ped) and CurrentTimer >= Reload then
 				vSERVER.PreventWeapons(Weapon,Ammo)
-				Reloaded = GetGameTimer() + 100
+				Reload = CurrentTimer + 1000
 			end
 
-			if Ammo <= 0 or (Weapon == "WEAPON_PETROLCAN" and Ammo <= 135 and IsPedShooting(Ped)) or IsPedSwimming(Ped) then
+			local NoAmmo = Ammo <= 0
+			local LowPetrol = Weapon == "WEAPON_PETROLCAN" and Ammo <= 135 and IsPedShooting(Ped)
+			if (NoAmmo or LowPetrol) and CurrentTimer >= Cooldown then
 				if Types ~= "" then
 					vSERVER.RemoveThrowing(Types)
 				else
@@ -323,6 +327,7 @@ CreateThread(function()
 				end
 
 				TriggerEvent("inventory:CleanWeapons")
+				Cooldown = CurrentTimer + 1000
 			end
 		end
 
@@ -342,14 +347,15 @@ AddEventHandler("inventory:verifyWeapon",function(Item)
 		local AmmoHand = WeaponAmmo(Weapon)
 
 		if AmmoItem and AmmoHand then
-			if AmmoItem ~= AmmoHand then
-				local Ammo = GetAmmoInPedWeapon(Ped,Name)
-				if not vSERVER.VerifyWeapon(Name,Ammo) then
+			local DoesWeapon = Weapon == Name
+			local Ammo = GetAmmoInPedWeapon(Ped,DoesWeapon and Weapon or Name)
+
+			if DoesWeapon then
+				if not vSERVER.VerifyWeapon(Weapon,Ammo) then
 					TriggerEvent("inventory:CleanWeapons")
 				end
-			elseif Weapon == Name then
-				local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
-				if not vSERVER.VerifyWeapon(Weapon,Ammo) then
+			elseif AmmoItem ~= AmmoHand then
+				if not vSERVER.VerifyWeapon(Name,Ammo) then
 					TriggerEvent("inventory:CleanWeapons")
 				end
 			else

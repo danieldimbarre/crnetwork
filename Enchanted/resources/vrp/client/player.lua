@@ -126,6 +126,7 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 		exports["vrp"]:ReloadCharacter()
 		NetworkSetFriendlyFireOption(true)
 		SetCanAttackFriendly(Ped,true,false)
+		SetPedRelationshipGroupHash(Ped,1862763509)
 
 		if not Creation then
 			TriggerServerEvent("vRP:WaitCharacters")

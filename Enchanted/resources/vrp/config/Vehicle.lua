@@ -631,7 +631,7 @@ local List = {
 		Name = "Bmx",
 		Weight = 0,
 		Price = 1000,
-		Mode = "Bikes",
+		Mode = "Work",
 		Gemstone = 0,
 		Class = "Bicicletas"
 	},	
@@ -639,7 +639,7 @@ local List = {
 		Name = "Cruiser",
 		Weight = 0,
 		Price = 1000,
-		Mode = "Bikes",
+		Mode = "Work",
 		Gemstone = 0,
 		Class = "Bicicletas"
 	},
@@ -647,7 +647,7 @@ local List = {
 		Name = "Fixter",
 		Weight = 0,
 		Price = 1000,
-		Mode = "Bikes",
+		Mode = "Work",
 		Gemstone = 0,
 		Class = "Bicicletas"
 	},
@@ -655,7 +655,7 @@ local List = {
 		Name = "Scorcher",
 		Weight = 0,
 		Price = 1000,
-		Mode = "Bikes",
+		Mode = "Work",
 		Gemstone = 0,
 		Class = "Bicicletas"
 	},
@@ -663,7 +663,7 @@ local List = {
 		Name = "Tribike",
 		Weight = 0,
 		Price = 1000,
-		Mode = "Bikes",
+		Mode = "Work",
 		Gemstone = 0,
 		Class = "Bicicletas"
 	},
@@ -671,7 +671,7 @@ local List = {
 		Name = "Tribike 2",
 		Weight = 0,
 		Price = 1000,
-		Mode = "Bikes",
+		Mode = "Work",
 		Gemstone = 0,
 		Class = "Bicicletas"
 	},
@@ -679,7 +679,7 @@ local List = {
 		Name = "Tribike 3",
 		Weight = 0,
 		Price = 1000,
-		Mode = "Bikes",
+		Mode = "Work",
 		Gemstone = 0,
 		Class = "Bicicletas"
 	},

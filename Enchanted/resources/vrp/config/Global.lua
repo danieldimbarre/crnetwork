@@ -251,6 +251,7 @@ Groups = {
 			Ballas = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Domination = true,
 		Service = true,
 		Type = "Work"
 	},
@@ -259,6 +260,7 @@ Groups = {
 			Vagos = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Domination = true,
 		Service = true,
 		Type = "Work"
 	},
@@ -267,6 +269,7 @@ Groups = {
 			Families = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Domination = true,
 		Service = true,
 		Type = "Work"
 	},
@@ -275,20 +278,22 @@ Groups = {
 			Marabunta = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
-		Service = true,
-		Type = "Work"
-	},
-	Bennys = {
-		Permission = {
-			Bennys = true
-		},
-		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Domination = true,
 		Service = true,
 		Type = "Work"
 	},
 	Aztecas = {
 		Permission = {
 			Aztecas = true
+		},
+		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Domination = true,
+		Service = true,
+		Type = "Work"
+	},
+	Bennys = {
+		Permission = {
+			Bennys = true
 		},
 		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
 		Service = true,
@@ -345,6 +350,15 @@ Groups = {
 		},
 		Hierarchy = { "Membro" },
 		Block = true
+	},
+	-- FUELSTATION
+	FuelStation01 = {
+		Permission = {
+			FuelStation01 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel"
 	},
 	-- PROPRIEDADES
 	Mansao01 = { -- Exemplo de propriedade com painel/permissão

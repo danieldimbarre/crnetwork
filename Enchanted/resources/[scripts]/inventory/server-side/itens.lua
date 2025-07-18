@@ -1227,7 +1227,7 @@ Use = {
 
 	["postit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		TriggerClientEvent("inventory:Close",source)
-		TriggerClientEvent("postit:initPostit",source)
+		TriggerClientEvent("chat:postit_new",source)
 	end,
 
 	["coffeemilk"] = function(source,Passport,Amount,Slot,Full,Item,Split)

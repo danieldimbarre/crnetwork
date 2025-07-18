@@ -473,9 +473,9 @@ RegisterCommand("status",function(source,Message)
 
 			for OtherPassport in pairs(Consult) do
 				if Table[OtherPassport] then
-					Online = Online.."<online>◘</online> "..vRP.FullName(OtherPassport).." ( "..OtherPassport.." )<br>"
+					Online = Online.."<online>•</online> "..vRP.FullName(OtherPassport).." ( "..OtherPassport.." )<br>"
 				else
-					Offline = Offline.."<offline>◘</offline> "..vRP.FullName(OtherPassport).." ( "..OtherPassport.." )<br>"
+					Offline = Offline.."<offline>•</offline> "..vRP.FullName(OtherPassport).." ( "..OtherPassport.." )<br>"
 				end
 			end
 

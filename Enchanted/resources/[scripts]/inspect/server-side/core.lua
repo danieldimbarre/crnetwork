@@ -185,6 +185,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Store(Item,Slot,Amount,Target)
 	local source = source
+	local Slot = tostring(Slot)
+	local Target = tostring(Target)
 	local Passport = vRP.Passport(source)
 	if Passport and Sourcers[Passport] and vRP.DoesEntityExist(Sourcers[Passport]) then
 		if BlockDelete(Item) or vRP.MaxItens(Players[Passport],Item,Amount) then
@@ -212,6 +214,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Take(Item,Slot,Target,Amount)
 	local source = source
+	local Slot = tostring(Slot)
+	local Target = tostring(Target)
 	local Passport = vRP.Passport(source)
 	if Passport and Sourcers[Passport] and vRP.DoesEntityExist(Sourcers[Passport]) then
 		if BlockDelete(Item) or vRP.MaxItens(Passport,Item,Amount) then

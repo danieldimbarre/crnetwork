@@ -200,6 +200,21 @@ CreateThread(function()
 	RegisterCommand("-entityTarget",TargetDisable)
 	RegisterKeyMapping("+entityTarget","Interação auricular.","keyboard","LMENU")
 
+	AddCircleZone("Luckywheel",vec3(167.47,-980.35,30.61),0.25,{
+		name = "Luckywheel",
+		heading = 0.0,
+		useZ = true
+	},{
+		Distance = 2.5,
+		options = {
+			{
+				event = "luckywheel:Target",
+				label = "Girar",
+				tunnel = "server"
+			}
+		}
+	})
+
 	AddCircleZone("Trash:01",vec3(-330.36,-1564.11,25.47),0.25,{
 		name = "Trash:01",
 		heading = 0.0,

@@ -34,9 +34,9 @@ function Creative.Drops(Item,Slot,Amount)
 	local source = source
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Amount >= 1 and not Player(source)["state"]["Handcuff"] and not exports["hud"]:Wanted(Passport) and not vRP.InsideVehicle(source) then
+	if Passport and not Active[Passport] and Amount >= 1 and not Player(source).state.Handcuff and not exports.hud:Wanted(Passport) and not vRP.InsideVehicle(source) then
 		if vRP.TakeItem(Passport,Item,Amount,false,Slot) then
-			return exports["inventory"]:Drops(Passport,source,Item,Amount,true)
+			return exports.inventory:Drops(Passport,source,Item,Amount,true)
 		else
 			TriggerClientEvent("inventory:Update",source)
 		end
@@ -72,11 +72,11 @@ exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 		Reserved[Selected] = true
 
 		local Provisory = {
-			["key"] = Force,
-			["route"] = Route,
-			["id"] = Selected,
-			["amount"] = Amount,
-			["coords"] = Coords or vRP.GetEntityCoords(source)
+			key = Force,
+			route = Route,
+			id = Selected,
+			amount = Amount,
+			coords = Coords or vRP.GetEntityCoords(source)
 		}
 
 		local Split = splitString(Force)
@@ -84,12 +84,12 @@ exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 
 		if not Provisory.desc then
 			if Item == "vehiclekey" and Split[3] then
-				local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+				local Consult = exports.oxmysql:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
 				if Consult and VehicleExist(Consult.Vehicle) then
 					Provisory.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
 				end
 			elseif Item == "propertys" and Split[2] then
-				local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+				local Consult = exports.oxmysql:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 				if Consult then
 					Provisory.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 				end
@@ -105,13 +105,13 @@ exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 		if Split[2] then
 			local Loaded = ItemLoads(Force)
 			if Loaded then
-				Provisory["charges"] = parseInt(Split[2] * (100 / Loaded))
+				Provisory.charges = parseInt(Split[2] * (100 / Loaded))
 			end
 
 			local Durability = ItemDurability(Force)
 			if Durability then
-				Provisory["durability"] = parseInt(os.time() - Split[2])
-				Provisory["days"] = Durability
+				Provisory.durability = parseInt(os.time() - Split[2])
+				Provisory.days = Durability
 			end
 		end
 
@@ -129,25 +129,26 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Pickup(Number,Route,Target,Amount)
 	local source = source
+	local Target = tostring(Target)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["key"] then
+	if Passport and not Active[Passport] and Drops[Route] and Drops[Route][Number] and Drops[Route][Number].key then
 		Active[Passport] = true
 
-		if vRP.CheckWeight(Passport,Drops[Route][Number]["key"],Amount) then
+		if vRP.CheckWeight(Passport,Drops[Route][Number].key,Amount) then
 			local Inv = vRP.Inventory(Passport)
-			if not Drops[Route] or not Drops[Route][Number] or not Drops[Route][Number]["key"] or not Drops[Route][Number]["amount"] or Drops[Route][Number]["amount"] < Amount or (Inv[Target] and Inv[Target]["item"] ~= Drops[Route][Number]["key"]) or vRP.MaxItens(Passport,Drops[Route][Number]["key"],Amount) then
+			if not Drops[Route] or not Drops[Route][Number] or not Drops[Route][Number].key or not Drops[Route][Number].amount or Drops[Route][Number].amount < Amount or (Inv[Target] and Inv[Target].item ~= Drops[Route][Number].key) or vRP.MaxItens(Passport,Drops[Route][Number].key,Amount) then
 				TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
 			else
-				if vRP.GiveItem(Passport,Drops[Route][Number]["key"],Amount,false,Target) then
-					Drops[Route][Number]["amount"] = Drops[Route][Number]["amount"] - Amount
+				if vRP.GiveItem(Passport,Drops[Route][Number].key,Amount,false,Target) then
+					Drops[Route][Number].amount = Drops[Route][Number].amount - Amount
 
-					if Drops[Route] and Drops[Route][Number] and Drops[Route][Number]["amount"] then
-						if parseInt(Drops[Route][Number]["amount"]) <= 0 then
+					if Drops[Route] and Drops[Route][Number] and Drops[Route][Number].amount then
+						if parseInt(Drops[Route][Number].amount) <= 0 then
 							TriggerClientEvent("inventory:DropsRemover",-1,Route,Number)
 							Drops[Route][Number] = nil
 						else
-							TriggerClientEvent("inventory:DropsAtualizar",-1,Route,Number,Drops[Route][Number]["amount"])
+							TriggerClientEvent("inventory:DropsAtualizar",-1,Route,Number,Drops[Route][Number].amount)
 						end
 					end
 

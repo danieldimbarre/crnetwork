@@ -16,18 +16,17 @@ local Vehicle = nil
 local Locale = false
 local Service = false
 local ModelSelected = ""
-local TimeDistance = 999
 local VehiclePlate = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Name,v in pairs(Init) do
-		exports["target"]:AddBoxZone("Towed:"..Name,v["xyz"],0.75,0.75,{
+		exports.target:AddBoxZone("Towed:"..Name,v.xyz,0.75,0.75,{
 			name = "Towed:"..Name,
-			heading = v["w"],
-			minZ = v["z"] - 1.0,
-			maxZ = v["z"] + 1.0
+			heading = v.w,
+			minZ = v.z - 1.0,
+			maxZ = v.z + 1.0
 		},{
 			shop = Name,
 			Distance = 1.75,
@@ -52,13 +51,13 @@ AddEventHandler("towed:Init",function(Data)
 
 	if Service then
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		exports["target"]:LabelText("Towed:"..Data,"Iniciar Expediente")
+		exports.target:LabelText("Towed:"..Data,"Iniciar Expediente")
 		Service = false
 		Locale = false
 	else
 		Locale = Data
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
-		exports["target"]:LabelText("Towed:"..Data,"Finalizar Expediente")
+		exports.target:LabelText("Towed:"..Data,"Finalizar Expediente")
 		ModelSelected = Models[math.random(#Models)]
 		Destiny = math.random(#Locations[Locale])
 		VehiclePlate = nil
@@ -75,7 +74,6 @@ AddEventHandler("towed:Inative",function(Plate)
 		ModelSelected = Models[math.random(#Models)]
 		Destiny = math.random(#Locations[Locale])
 		VehiclePlate = false
-		TimeDistance = 999
 		MarkedVehicle()
 		Vehicle = nil
 	end
@@ -85,14 +83,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
+		local TimeDistance = 999
+
 		if Service then
-			local Ped = PlayerPedId()
-			local Coords = GetEntityCoords(Ped)
-
-			if not Vehicle and Locale then
-				TimeDistance = 1999
-
-				if #(Coords - Locations[Locale][Destiny]["xyz"]) <= 100 then
+			if not Vehicle and Locale and Locations[Locale] and Destiny and Locations[Locale][Destiny] then
+				local Ped = PlayerPedId()
+				local Coords = GetEntityCoords(Ped)
+				if #(Coords - Locations[Locale][Destiny].xyz) <= 50 then
 					local Networked,Plate = vSERVER.Vehicle(ModelSelected,Locale,Destiny)
 					if not Networked then return end
 
@@ -109,19 +106,17 @@ CreateThread(function()
 					Vehicle = Entity
 					VehiclePlate = Plate
 
-					SetVehicleEngineHealth(Vehicle,10.0)
 					SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
 					SetVehicleNeedsToBeHotwired(Vehicle,false)
-					DecorSetInt(Vehicle,"Player_Vehicle",-1)
+					SetVehicleEngineHealth(Vehicle,10.0)
 					SetVehicleOnGroundProperly(Vehicle)
 					SetVehRadioStation(Vehicle,"OFF")
-					SetEntityHealth(Vehicle,10)
 				end
-			elseif DoesEntityExist(Vehicle) and not Entity(Vehicle)["state"]["Tow"] then
+			elseif DoesEntityExist(Vehicle) and not Entity(Vehicle).state.Tow then
 				TimeDistance = 1
 
 				local OtherCoords = GetEntityCoords(Vehicle)
-				DrawMarker(22,OtherCoords["x"],OtherCoords["y"],OtherCoords["z"] + 2.5,0.0,0.0,0.0,0.0,180.0,0.0,2.5,2.5,1.5,88,101,242,175,0,0,0,1)
+				DrawMarker(22,OtherCoords.x,OtherCoords.y,OtherCoords.z + 2.5,0.0,0.0,0.0,0.0,180.0,0.0,2.5,2.5,1.5,88,101,242,175,false,false,0,true)
 			end
 		end
 
@@ -137,7 +132,7 @@ function MarkedVehicle()
 		Blip = nil
 	end
 
-	Blip = AddBlipForCoord(Locations[Locale][Destiny]["x"],Locations[Locale][Destiny]["y"],Locations[Locale][Destiny]["z"])
+	Blip = AddBlipForCoord(Locations[Locale][Destiny].xyz)
 	SetBlipSprite(Blip,1)
 	SetBlipDisplay(Blip,4)
 	SetBlipAsShortRange(Blip,true)
@@ -145,6 +140,6 @@ function MarkedVehicle()
 	SetBlipScale(Blip,0.75)
 	SetBlipRoute(Blip,true)
 	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString("Veiculo Quebrado")
+	AddTextComponentString("Veiculo")
 	EndTextCommandSetBlipName(Blip)
 end

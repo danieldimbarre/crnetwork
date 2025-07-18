@@ -123,7 +123,7 @@ AddEventHandler("skinshop:Apply",function(Table,Save)
 	Skinshop = Table
 	exports["skinshop"]:Apply()
 
-	if not Save then
+	if Save then
 		vSERVER.Update(Skinshop)
 	end
 end)
@@ -322,20 +322,17 @@ end)
 function AdjustClothingItem(Data,Index)
 	local Item = false
 	local Max = MaxValuer[Index]
-	local Clothes = Data["clothes"]
-	local CurrentItem = Clothes[Index]["item"]
+	local CurrentItem = Data.clothes[Index].item
 
-	if Skinshop[Index]["item"] > CurrentItem then
+	if Skinshop[Index].item > CurrentItem then
 		Item = CurrentItem - 1
 	else
 		Item = CurrentItem + 1
 	end
 
-	if Item >= Max["item"] then
-		Item = Max["min"]
+	if Item >= Max.item then
+		Item = Max.min
 	end
-
-	Clothes[Index]["item"] = Item
 
 	return Item
 end
@@ -347,10 +344,10 @@ function GetTextureCount(Index)
 	local Ped = PlayerPedId()
 	local MaxValue = MaxValuer[Index]
 
-	if MaxValue["mode"] == "variation" then
-		Texture = GetNumberOfPedTextureVariations(Ped,MaxValue["id"],GetPedDrawableVariation(Ped,MaxValue["id"])) - 1
-	elseif MaxValue["mode"] == "prop" then
-		Texture = GetNumberOfPedPropTextureVariations(Ped,MaxValue["id"],GetPedPropIndex(Ped,MaxValue["id"])) - 1
+	if MaxValue.mode == "variation" then
+		Texture = GetNumberOfPedTextureVariations(Ped,MaxValue.id,GetPedDrawableVariation(Ped,MaxValue.id)) - 1
+	elseif MaxValue.mode == "prop" then
+		Texture = GetNumberOfPedPropTextureVariations(Ped,MaxValue.id,GetPedPropIndex(Ped,MaxValue.id)) - 1
 	end
 
 	return math.max(Texture,0)
@@ -360,16 +357,16 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Update",function(Data,Callback)
 	local NuiChange = false
-	local Index = Data["index"]
+	local Index = Data.index
 	local Model = GetPlayerModel()
-	local Change = Data["clothes"][Index]["item"]
+	local Change = Data.clothes[Index].item
 
 	if Block[Model] and Block[Model][Index] and Block[Model][Index][Change] and not vSERVER.CheckPermission(Block[Model][Index][Change]) then
 		NuiChange = AdjustClothingItem(Data,Index)
 	end
 
-	Skinshop = Data["clothes"]
-	exports["skinshop"]:Apply()
+	Skinshop = Data.clothes
+	exports.skinshop:Apply()
 
 	Callback({ GetTextureCount(Index),NuiChange })
 end)
@@ -377,18 +374,18 @@ end)
 -- SETUP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Setup",function(Data,Callback)
-	Init = Data["value"]
+	Init = Data.value
 	local Ped = PlayerPedId()
 	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.25,1.0,0.0)
 
 	if Init == "hat" then
-		SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] + 0.45)
+		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.45)
 	elseif Init == "shirt" then
-		SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] + 0.25)
+		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.25)
 	elseif Init == "pants" then
-		SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] - 0.45)
+		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z - 0.45)
 	elseif Init == "clock" then
-		SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] + 0.05)
+		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.05)
 	end
 
 	Callback("Ok")
@@ -404,7 +401,7 @@ RegisterNUICallback("Save",function(Data,Callback)
 		Camera = nil
 	end
 
-	LocalPlayer["state"]:set("Hoverfy",true,false)
+	LocalPlayer.state:set("Hoverfy",true,false)
 	TriggerEvent("hud:Active",true)
 	SetNuiFocus(false,false)
 	vSERVER.Update(Skinshop)
@@ -423,9 +420,9 @@ RegisterNUICallback("Reset",function(Data,Callback)
 		Camera = nil
 	end
 
-	LocalPlayer["state"]:set("Hoverfy",true,false)
-	exports["skinshop"]:Apply(Lasted)
+	LocalPlayer.state:set("Hoverfy",true,false)
 	TriggerEvent("hud:Active",true)
+	exports.skinshop:Apply(Lasted)
 	SetNuiFocus(false,false)
 	Skinshop = Lasted
 	vRP.Destroy()
@@ -439,19 +436,19 @@ end)
 RegisterNUICallback("Rotate",function(Data,Callback)
 	local Ped = PlayerPedId()
 
-	if Data["direction"] == "Left" then
+	if Data.direction == "Left" then
 		SetEntityHeading(Ped,GetEntityHeading(Ped) - 5)
-	elseif Data["direction"] == "Right" then
+	elseif Data.direction == "Right" then
 		SetEntityHeading(Ped,GetEntityHeading(Ped) + 5)
-	elseif Data["direction"] == "Top" then
+	elseif Data.direction == "Top" then
 		local Coords = GetCamCoord(Camera)
-		if Coords["z"] + 0.05 <= Default + 0.50 then
-			SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] + 0.05)
+		if Coords.z + 0.05 <= Default + 0.50 then
+			SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.05)
 		end
-	elseif Data["direction"] == "Bottom" then
+	elseif Data.direction == "Bottom" then
 		local Coords = GetCamCoord(Camera)
-		if Coords["z"] - 0.05 >= Default - 0.50 then
-			SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] - 0.05)
+		if Coords.z - 0.05 >= Default - 0.50 then
+			SetCamCoord(Camera,Coords.x,Coords.y,Coords.z - 0.05)
 		end
 	end
 
@@ -467,10 +464,10 @@ function Creative.checkShoes()
 		Number = 35
 	end
 
-	if Skinshop["shoes"]["item"] ~= Number then
-		Skinshop["shoes"]["item"] = Number
-		Skinshop["shoes"]["texture"] = 0
-		SetPedComponentVariation(Ped,6,Skinshop["shoes"]["item"],Skinshop["shoes"]["texture"],0)
+	if Skinshop.shoes.item ~= Number then
+		Skinshop.shoes.item = Number
+		Skinshop.shoes.texture = 0
+		SetPedComponentVariation(Ped,6,Skinshop.shoes.item,Skinshop.shoes.texture,0)
 
 		return true
 	end
@@ -503,10 +500,10 @@ end)
 RegisterNetEvent("skinshop:setMask")
 AddEventHandler("skinshop:setMask",function()
 	local Ped = PlayerPedId()
-	if GetPedDrawableVariation(Ped,1) == Skinshop["mask"]["item"] then
+	if GetPedDrawableVariation(Ped,1) == Skinshop.mask.item then
 		SetPedComponentVariation(Ped,1,0,0,0)
 	else
-		SetPedComponentVariation(Ped,1,Skinshop["mask"]["item"],Skinshop["mask"]["texture"],0)
+		SetPedComponentVariation(Ped,1,Skinshop.mask.item,Skinshop.mask.texture,0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -515,10 +512,10 @@ end)
 RegisterNetEvent("skinshop:setHat")
 AddEventHandler("skinshop:setHat",function()
 	local Ped = PlayerPedId()
-	if GetPedPropIndex(Ped,0) == Skinshop["hat"]["item"] then
+	if GetPedPropIndex(Ped,0) == Skinshop.hat.item then
 		ClearPedProp(Ped,0)
 	else
-		SetPedPropIndex(Ped,0,Skinshop["hat"]["item"],Skinshop["hat"]["texture"],false)
+		SetPedPropIndex(Ped,0,Skinshop.hat.item,Skinshop.hat.texture,false)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -527,10 +524,10 @@ end)
 RegisterNetEvent("skinshop:setGlasses")
 AddEventHandler("skinshop:setGlasses",function()
 	local Ped = PlayerPedId()
-	if GetPedPropIndex(Ped,1) == Skinshop["glass"]["item"] then
+	if GetPedPropIndex(Ped,1) == Skinshop.glass.item then
 		ClearPedProp(Ped,1)
 	else
-		SetPedPropIndex(Ped,1,Skinshop["glass"]["item"],Skinshop["glass"]["texture"],false)
+		SetPedPropIndex(Ped,1,Skinshop.glass.item,Skinshop.glass.texture,false)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -539,14 +536,14 @@ end)
 RegisterNetEvent("skinshop:setPants")
 AddEventHandler("skinshop:setPants",function()
 	local Ped = PlayerPedId()
-	if GetPedDrawableVariation(Ped,4) == Skinshop["pants"]["item"] then
+	if GetPedDrawableVariation(Ped,4) == Skinshop.pants.item then
 		if GetEntityModel(Ped) == GetHashKey("mp_f_freemode_01") then
 			SetPedComponentVariation(Ped,4,17,0,0)
 		else
 			SetPedComponentVariation(Ped,4,61,0,0)
 		end
 	else
-		SetPedComponentVariation(Ped,4,Skinshop["pants"]["item"],Skinshop["pants"]["texture"],0)
+		SetPedComponentVariation(Ped,4,Skinshop.pants.item,Skinshop.pants.texture,0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -555,14 +552,14 @@ end)
 RegisterNetEvent("skinshop:setShirt")
 AddEventHandler("skinshop:setShirt",function()
 	local Ped = PlayerPedId()
-	if GetPedDrawableVariation(Ped,8) == Skinshop["tshirt"]["item"] then
+	if GetPedDrawableVariation(Ped,8) == Skinshop.tshirt.item then
 		if GetEntityModel(Ped) == GetHashKey("mp_f_freemode_01") then
 			SetPedComponentVariation(Ped,8,7,0,0)
 		else
 			SetPedComponentVariation(Ped,8,15,0,0)
 		end
 	else
-		SetPedComponentVariation(Ped,8,Skinshop["tshirt"]["item"],Skinshop["tshirt"]["texture"],0)
+		SetPedComponentVariation(Ped,8,Skinshop.tshirt.item,Skinshop.tshirt.texture,0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -571,14 +568,14 @@ end)
 RegisterNetEvent("skinshop:setTorso")
 AddEventHandler("skinshop:setTorso",function()
 	local Ped = PlayerPedId()
-	if GetPedDrawableVariation(Ped,11) == Skinshop["torso"]["item"] then
+	if GetPedDrawableVariation(Ped,11) == Skinshop.torso.item then
 		if GetEntityModel(Ped) == GetHashKey("mp_f_freemode_01") then
 			SetPedComponentVariation(Ped,11,18,0,0)
 		else
 			SetPedComponentVariation(Ped,11,15,0,0)
 		end
 	else
-		SetPedComponentVariation(Ped,11,Skinshop["torso"]["item"],Skinshop["torso"]["texture"],0)
+		SetPedComponentVariation(Ped,11,Skinshop.torso.item,Skinshop.torso.texture,0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

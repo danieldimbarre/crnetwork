@@ -111,6 +111,7 @@ CreateThread(function()
 					end
 
 					SendNUIMessage({ Action = "Open" })
+					SetPedRelationshipGroupHash(Ped,-276063219)
 					TriggerServerEvent("paramedic:bloodDeath")
 					exports["lb-phone"]:ToggleDisabled(true)
 					TriggerEvent("player:DeathUpdate",true)
@@ -266,6 +267,7 @@ function FinishSurvival()
 	SetEntityInvincible(Ped,false)
 	ClearFacialIdleAnimOverride(Ped)
 	NetworkSetFriendlyFireOption(true)
+	SetPedRelationshipGroupHash(Ped,1862763509)
 
 	TriggerEvent("paramedic:Reset")
 
@@ -300,6 +302,7 @@ exports("Revive",function(Health,Arena)
 
 	SetEntityInvincible(Ped,false)
 	SetEntityHealth(Ped,Health or 101)
+	SetPedRelationshipGroupHash(Ped,1862763509)
 
 	if Arena then
 		SetPedArmour(Ped,100)

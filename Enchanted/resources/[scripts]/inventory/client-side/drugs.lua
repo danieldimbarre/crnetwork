@@ -218,7 +218,6 @@ AddEventHandler("Heroin",function()
 		AnimpostfxStop("DrugsMichaelAliensFight")
 	end
 
-	TriggerEvent("Health")
 	SetPedMaxHealth(PlayerPedId(),250)
 	SetEntityMaxHealth(PlayerPedId(),250)
 	AnimpostfxPlay("DrugsMichaelAliensFight",90000,false)
@@ -331,7 +330,6 @@ CreateThread(function()
 
 				SetEntityMaxHealth(Ped,200)
 				SetPedMaxHealth(Ped,200)
-				TriggerEvent("Health")
 				Heroin = 0
 			end
 		end

@@ -235,3 +235,22 @@ AddEventHandler("SaveServer",function(Silenced)
 		print("O resource ^2Plants^7 salvou os dados.")
 	end
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- EXPLOSIONEVENT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("explosionEvent",function(source,Data)
+	if Data.explosionType == 3 then
+		local Route = GetPlayerRoutingBucket(source)
+
+		for Selected,v in pairs(Plants) do
+			if Route == v.Route then
+				local Coords = vec3(v.Coords[1],v.Coords[2],v.Coords[3])
+				local MolotovCoords = vec3(Data.posX,Data.posY,Data.posZ)
+				if #(Coords - MolotovCoords) <= 5 then
+					TriggerClientEvent("plants:Remove",-1,Selected)
+					Plants[Selected] = nil
+				end
+			end
+		end
+	end
+end)

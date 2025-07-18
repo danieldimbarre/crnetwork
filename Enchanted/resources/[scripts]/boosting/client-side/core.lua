@@ -111,25 +111,25 @@ end)
 -- ACCEPT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Accept",function(Data,Callback)
-	Callback(vSERVER.Accept(Data["Number"]))
+	Callback(vSERVER.Accept(Data.Number))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SCRATCH
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Scratch",function(Data,Callback)
-	Callback(vSERVER.Scratch(Data["Number"]))
+	Callback(vSERVER.Scratch(Data.Number))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DECLINE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Decline",function(Data,Callback)
-	Callback(vSERVER.Decline(Data["Number"]))
+	Callback(vSERVER.Decline(Data.Number))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TRANSFER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Transfer",function(Data,Callback)
-	Callback(vSERVER.Transfer(Data["Number"],Data["Passport"]))
+	Callback(vSERVER.Transfer(Data.Number,Data.Passport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOOSTING:ACTIVE
@@ -141,7 +141,7 @@ AddEventHandler("boosting:Active",function(VehicleModel,Class)
 	Model = VehicleModel
 	Selected = math.random(#Locates)
 
-	TriggerEvent("NotifyPush",{ code = 20, title = "Localização Veículo", x = Locates[Selected]["x"], y = Locates[Selected]["y"], z = Locates[Selected]["z"], vehicle = VehicleName(Model), color = 44 })
+	TriggerEvent("NotifyPush",{ code = 20, title = "Localização Veículo", x = Locates[Selected].x, y = Locates[Selected].y, z = Locates[Selected].z, vehicle = VehicleName(Model), color = 44 })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOOSTING:RESET
@@ -157,10 +157,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		if not Vehicle and Model ~= "" then
+		if not Vehicle and Model ~= "" and Selected and Locates[Selected] then
 			local Ped = PlayerPedId()
 			local Coords = GetEntityCoords(Ped)
-			if #(Coords - Locates[Selected]["xyz"]) <= 100 then
+			if #(Coords - Locates[Selected].xyz) <= 50 then
 				local Networked = vSERVER.CreateVehicle(Model,Class,Locates[Selected])
 				if not Networked then return end
 
@@ -195,11 +195,6 @@ RegisterNetEvent("boosting:Dispatch")
 AddEventHandler("boosting:Dispatch",function()
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
-
-	local PlayerHash = GetHashKey("PLAYER")
-	local GroupHash = GetHashKey("HATES_PLAYER")
-	SetRelationshipBetweenGroups(5,GroupHash,PlayerHash)
-	SetRelationshipBetweenGroups(5,PlayerHash,GroupHash)
 
 	for Number = 1,5 do
 		local Cooldown = 0
@@ -266,14 +261,13 @@ AddEventHandler("boosting:Dispatch",function()
 			DisablePedPainAudio(Entity,true)
 			StopPedSpeaking(Entity,true)
 
-			SetPedRelationshipGroupHash(Entity,GroupHash)
-
 			local Weapon = "WEAPON_CARBINERIFLE"
 			GiveWeaponToPed(Entity,Weapon,250,false,true)
 			SetCurrentPedWeapon(Entity,Weapon,true)
 			SetPedInfiniteAmmo(Entity,true,Weapon)
 
 			RegisterHatedTargetsAroundPed(Entity,250.0)
+			SetPedRelationshipGroupHash(Entity,-276063219)
 			TaskCombatHatedTargetsAroundPed(Entity,250.0,0)
 		end
 	end

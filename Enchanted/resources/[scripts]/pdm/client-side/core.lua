@@ -12,17 +12,23 @@ vSERVER = Tunnel.getInterface("pdm")
 local Lasted = ""
 local Camera = nil
 local Selected = 1
-local Mounted = nil
+local Preview = nil
+local Vehicles = VehicleList()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONFIG
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Config = {
 	{
+		List = {},
 		Coords = vec3(-56.86,-1097.95,26.33),
 		Cam = vec4(-49.14,-1099.56,26.92,294.81),
 		Spawn = vec4(-44.42,-1097.44,26.23,28.35),
 		DriveIn = vec4(-54.56,-1075.18,26.45,68.04),
-		DriveOut = vec4(-58.04,-1096.02,25.42,209.77)
+		DriveOut = vec4(-58.04,-1096.02,25.42,209.77),
+		Classes = {
+			--Compactos = true,
+			--Esportivos = true
+		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -30,7 +36,7 @@ local Config = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Index,v in pairs(Config) do
-		exports["target"]:AddCircleZone("PDM:"..Index,v.Coords,0.1,{
+		exports.target:AddCircleZone("PDM:"..Index,v.Coords,0.1,{
 			name = "PDM:"..Index,
 			heading = 0.0,
 			useZ = true
@@ -41,6 +47,16 @@ CreateThread(function()
 				{ event = "pdm:Open", label = "Abrir", tunnel = "client" }
 			}
 		})
+
+		if v.Classes and next(v.Classes) then
+			for Model,Vehicle in pairs(Vehicles) do
+				if Vehicle.Class and v.Classes[Vehicle.Class] then
+					v.List[Model] = Vehicle
+				end
+			end
+		else
+			v.List = Vehicles
+		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -55,11 +71,10 @@ function CameraActive()
 	end
 
 	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-	RenderScriptCams(true,false,0,false,false)
-	SetCamActive(Camera,true)
-
 	SetCamRot(Camera,0.0,0.0,Config[Selected].Cam.w)
 	SetCamCoord(Camera,Config[Selected].Cam.xyz)
+	RenderScriptCams(true,false,0,false,false)
+	SetCamActive(Camera,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PDM:OPEN
@@ -67,17 +82,17 @@ end
 AddEventHandler("pdm:Open",function(Number)
 	Selected = Number
 
-	if DoesEntityExist(Mounted) then
-		DeleteEntity(Mounted)
-		Mounted = nil
+	if DoesEntityExist(Preview) then
+		DeleteEntity(Preview)
+		Preview = nil
 	end
 
-	if not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not exports["hud"]:Wanted() then
+	if not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not exports.hud:Wanted() then
 		CameraActive()
 		SetNuiFocus(true,true)
 		SetCursorLocation(0.5,0.5)
 		TriggerEvent("hud:Active",false)
-		SendNUIMessage({ Action = "Open", Payload = { VehicleList(),vSERVER.Discount() } })
+		SendNUIMessage({ Action = "Open", Payload = { Config[Selected].List,vSERVER.Discount() } })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -94,19 +109,19 @@ end)
 RegisterNUICallback("Mount",function(Data,Callback)
 	local Model = Data.vehicle
 	if LoadModel(Model) and Lasted ~= Model then
-		if DoesEntityExist(Mounted) then
-			DeleteEntity(Mounted)
-			Mounted = nil
+		if DoesEntityExist(Preview) then
+			DeleteEntity(Preview)
+			Preview = nil
 		end
 
-		Mounted = CreateVehicle(Model,Config[Selected].Spawn,false,false)
-		SetVehicleCustomSecondaryColour(Mounted,88,101,242)
-		SetVehicleCustomPrimaryColour(Mounted,88,101,242)
-		SetVehicleNumberPlateText(Mounted,"PDMSPORT")
-		SetEntityCollision(Mounted,false,false)
-		FreezeEntityPosition(Mounted,true)
-		SetEntityInvincible(Mounted,true)
-		SetVehicleDirtLevel(Mounted,0.0)
+		Preview = CreateVehicle(Model,Config[Selected].Spawn,false,false)
+		SetVehicleCustomSecondaryColour(Preview,88,101,242)
+		SetVehicleCustomPrimaryColour(Preview,88,101,242)
+		SetVehicleNumberPlateText(Preview,"PDMSPORT")
+		SetEntityCollision(Preview,false,false)
+		FreezeEntityPosition(Preview,true)
+		SetEntityInvincible(Preview,true)
+		SetVehicleDirtLevel(Preview,0.0)
 		Lasted = Model
 	end
 
@@ -129,14 +144,10 @@ end)
 -- ROTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Rotate",function(Data,Callback)
-	if not DoesEntityExist(Mounted) then
-		return Callback("Ok")
+	if DoesEntityExist(Preview) then
+		local Offset = Data.direction == "Left" and -5 or 5
+		SetEntityHeading(Preview,GetEntityHeading(Preview) + Offset)
 	end
-
-	local Heading = GetEntityHeading(Mounted)
-	local Offset = Data.direction == "Left" and -5 or 5
-
-	SetEntityHeading(Mounted,Heading + Offset)
 
 	Callback("Ok")
 end)
@@ -151,41 +162,42 @@ RegisterNUICallback("Drive", function(Data, Callback)
 	SendNUIMessage({ Action = "Close" })
 	SystemClose()
 
-	if DoesEntityExist(Mounted) then
-		DeleteEntity(Mounted)
+	if DoesEntityExist(Preview) then
+		DeleteEntity(Preview)
+		Preview = nil
 	end
 
-	Mounted = CreateVehicle(Data.vehicle,Config[Selected].DriveIn,false,false)
+	Preview = CreateVehicle(Data.vehicle,Config[Selected].DriveIn,false,false)
 
-	SetVehicleModKit(Mounted,0)
-	SetVehicleDirtLevel(Mounted,0.0)
-	ToggleVehicleMod(Mounted,18,true)
-	SetEntityInvincible(Mounted,true)
-	SetPedIntoVehicle(PlayerPedId(),Mounted,-1)
-	SetVehicleNumberPlateText(Mounted,"PDMSPORT")
-	SetVehicleCustomPrimaryColour(Mounted,88,101,242)
-	SetVehicleCustomSecondaryColour(Mounted,88,101,242)
+	SetVehicleModKit(Preview,0)
+	SetVehicleDirtLevel(Preview,0.0)
+	ToggleVehicleMod(Preview,18,true)
+	SetEntityInvincible(Preview,true)
+	SetPedIntoVehicle(PlayerPedId(),Preview,-1)
+	SetVehicleNumberPlateText(Preview,"PDMSPORT")
+	SetVehicleCustomPrimaryColour(Preview,88,101,242)
+	SetVehicleCustomSecondaryColour(Preview,88,101,242)
 
-	for _,Type in ipairs({ 11, 12, 13, 15 }) do
-		SetVehicleMod(Mounted,Type,GetNumVehicleMods(Mounted,Type) - 1,false)
+	for _,Type in ipairs({ 11,12,13,15 }) do
+		SetVehicleMod(Preview,Type,GetNumVehicleMods(Preview,Type) - 1,false)
 	end
 
-	LocalPlayer["state"]:set("Commands",true,true)
-	LocalPlayer["state"]:set("TestDrive",true,false)
+	LocalPlayer.state:set("Commands",true,true)
 
 	CreateThread(function()
 		while true do
 			local Ped = PlayerPedId()
 			if not IsPedInAnyVehicle(Ped) then
 				vSERVER.Remove()
-				LocalPlayer["state"]:set("Commands",false,true)
-				LocalPlayer["state"]:set("TestDrive",false,false)
+				LocalPlayer.state:set("Commands",false,true)
 
 				SetEntityHeading(Ped,Config[Selected].DriveOut.w)
 				SetEntityCoords(Ped,Config[Selected].DriveOut.xyz)
 
-				if DoesEntityExist(Mounted) then
-					DeleteEntity(Mounted)
+				if DoesEntityExist(Preview) then
+					DeleteEntity(Preview)
+					Preview = nil
+
 					break
 				end
 			end
@@ -200,9 +212,9 @@ end)
 -- SYSTEMCLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function SystemClose()
-	if DoesEntityExist(Mounted) then
-		DeleteEntity(Mounted)
-		Mounted = nil
+	if DoesEntityExist(Preview) then
+		DeleteEntity(Preview)
+		Preview = nil
 	end
 
 	if DoesCamExist(Camera) then

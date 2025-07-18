@@ -25,7 +25,7 @@ AddEventHandler("gameEventTriggered",function(Event,Message)
 	local Ped = Message[1]
 	local Damage = Message[7]
 	local Health = GetEntityHealth(Ped) > 100
-	local Explosive = (Damage == 126349499 or Damage == 1064738331 or Damage == 85055149)
+	local Explosive = (Damage == 126349499 or Damage == 1064738331 or Damage == 85055149 or Damage == -135142818)
 
 	if Explosive and Health then
 		SetPedToRagdoll(Ped,2500,2500,0,0,0,0)

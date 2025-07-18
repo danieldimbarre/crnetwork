@@ -21,7 +21,7 @@ local Barbershop = {}
 -- SAVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Save",function(Data,Callback)
-	if LocalPlayer["state"]["Creation"] then
+	if LocalPlayer.state.Creation then
 		DoScreenFadeOut(0)
 		SetTimeout(2500,function()
 			TriggerEvent("hud:Active",true)
@@ -38,9 +38,9 @@ RegisterNUICallback("Save",function(Data,Callback)
 		Camera = nil
 	end
 
-	vSERVER.Update(Barbershop,LocalPlayer["state"]["Creation"])
-	LocalPlayer["state"]:set("Creation",false,false)
-	LocalPlayer["state"]:set("Hoverfy",true,false)
+	vSERVER.Update(Barbershop,LocalPlayer.state.Creation)
+	LocalPlayer.state:set("Creation",false,false)
+	LocalPlayer.state:set("Hoverfy",true,false)
 	SetNuiFocus(false,false)
 	vRP.Destroy()
 
@@ -50,7 +50,7 @@ end)
 -- RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Reset",function(Data,Callback)
-	if LocalPlayer["state"]["Creation"] then
+	if LocalPlayer.state.Creation then
 		DoScreenFadeOut(0)
 		SetTimeout(2500,function()
 			TriggerEvent("hud:Active",true)
@@ -67,10 +67,10 @@ RegisterNUICallback("Reset",function(Data,Callback)
 		Camera = nil
 	end
 
-	vSERVER.Update(Lasted,LocalPlayer["state"]["Creation"])
-	LocalPlayer["state"]:set("Creation",false,false)
-	LocalPlayer["state"]:set("Hoverfy",true,false)
-	exports["barbershop"]:Apply(Lasted)
+	vSERVER.Update(Lasted,LocalPlayer.state.Creation)
+	LocalPlayer.state:set("Creation",false,false)
+	LocalPlayer.state:set("Hoverfy",true,false)
+	exports.barbershop:Apply(Lasted)
 	SetNuiFocus(false,false)
 	vRP.Destroy()
 	Lasted = {}
@@ -81,7 +81,7 @@ end)
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Update",function(Data,Callback)
-	exports["barbershop"]:Apply(Data)
+	exports.barbershop:Apply(Data)
 
 	Callback("Ok")
 end)
@@ -90,7 +90,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Apply")
 AddEventHandler("barbershop:Apply",function(Data)
-	exports["barbershop"]:Apply(Data)
+	exports.barbershop:Apply(Data)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- APPLY
@@ -114,8 +114,12 @@ end)
 -- BARBERSHOP:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Open")
-AddEventHandler("barbershop:Open",function()
-	OpenBarbershop(true)
+AddEventHandler("barbershop:Open",function(Creation)
+	if Creation then
+		exports.barbershop:Creation()
+	else
+		OpenBarbershop(true)
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENBARBERSHOP
@@ -128,7 +132,7 @@ function OpenBarbershop(Mode)
 	end
 
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
-	LocalPlayer["state"]:set("Hoverfy",false,false)
+	LocalPlayer.state:set("Hoverfy",false,false)
 	TriggerEvent("hud:Active",false)
 	Lasted = Barbershop
 
@@ -137,21 +141,21 @@ function OpenBarbershop(Mode)
 	local Coords = GetOffsetFromEntityInWorldCoords(Ped,-0.05,0.7,0.5)
 
 	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-	SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"])
+	SetCamCoord(Camera,Coords.x,Coords.y,Coords.z)
 	RenderScriptCams(true,false,0,false,false)
 	SetCamRot(Camera,0.0,0.0,Heading + 200)
 	SetEntityHeading(Ped,Heading)
 	SetCamActive(Camera,true)
-	Default = Coords["z"]
+	Default = Coords.z
 
-	if LocalPlayer["state"]["Creation"] then
+	if LocalPlayer.state.Creation then
 		SetTimeout(2500,function()
-			SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,LocalPlayer["state"]["Creation"] } })
+			SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,LocalPlayer.state.Creation } })
 			SetNuiFocus(true,true)
 			DoScreenFadeIn(2500)
 		end)
 	else
-		SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,LocalPlayer["state"]["Creation"] } })
+		SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,LocalPlayer.state.Creation } })
 		SetNuiFocus(true,true)
 	end
 end
@@ -194,7 +198,7 @@ CreateThread(function()
 				if #(Coords - vec3(v.Coords.x,v.Coords.y,v.Coords.z)) <= 2.5 then
 					TimeDistance = 1
 
-					if IsControlJustPressed(1,38) and not exports["hud"]:Wanted() and (not v.Permission or LocalPlayer["state"][v.Permission]) then
+					if IsControlJustPressed(1,38) and not exports.hud:Wanted() and (not v.Permission or LocalPlayer.state[v.Permission]) then
 						OpenBarbershop(vSERVER.Mode())
 					end
 				end
@@ -207,13 +211,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATION
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Creation",function(Heading)
+exports("Creation",function()
 	local Ped = PlayerPedId()
 	if not IsEntityVisible(Ped) then
 		SetEntityVisible(Ped,true)
 	end
 
-	LocalPlayer["state"]:set("Creation",true,false)
+	LocalPlayer.state:set("Creation",true,false)
 	OpenBarbershop(true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

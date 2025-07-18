@@ -310,24 +310,22 @@ CreateThread(function()
 			TimeDistance = 100
 
 			local Ped = PlayerPedId()
-			local CurrentTimer = GetGameTimer()
 			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
-			if IsPedReloading(Ped) and CurrentTimer >= Reload then
+			if IsPedReloading(Ped) and GetGameTimer() >= Reload then
 				vSERVER.PreventWeapons(Weapon,Ammo)
-				Reload = CurrentTimer + 1000
+				Reload = GetGameTimer() + 1000
 			end
 
-			local NoAmmo = Ammo <= 0
 			local LowPetrol = Weapon == "WEAPON_PETROLCAN" and Ammo <= 135 and IsPedShooting(Ped)
-			if (NoAmmo or LowPetrol) and CurrentTimer >= Cooldown then
+			if (Ammo <= 0 or LowPetrol) and GetGameTimer() >= Cooldown then
+				Cooldown = GetGameTimer() + 1000
+				TriggerEvent("inventory:CleanWeapons")
+
 				if Types ~= "" then
 					vSERVER.RemoveThrowing(Types)
 				else
 					vSERVER.PreventWeapons(Weapon,Ammo)
 				end
-
-				TriggerEvent("inventory:CleanWeapons")
-				Cooldown = CurrentTimer + 1000
 			end
 		end
 

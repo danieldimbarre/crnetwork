@@ -179,6 +179,10 @@ local Default = {
 	-- SLOTMACHINE
 	{ ["Coords"] = { 984.25,64.95,122.12,149.36 }, ["Object"] = "vw_prop_casino_slot_04a", ["Ground"] = true },
 
+	-- LUCKYWHEEL
+	{ ["Coords"] = { 167.62,-980.22,29.1,311.78 }, ["Object"] = "vw_prop_vw_luckywheel_01a", ["Ground"] = true },
+	{ ["Coords"] = { 167.66,-980.19,29.11,312.67 }, ["Object"] = "vw_prop_vw_jackpot_on", ["Ground"] = true },
+
 	-- ADMIN
 	{ ["Coords"] = { 268.53,2861.36,42.65,31.46 }, ["Object"] = "prop_byard_machine03", ["Mode"] = "Recycle", Weight = 1.0 },
 	{ ["Coords"] = { -179.99,6263.39,30.51,41.2 }, ["Object"] = "prop_byard_machine03", ["Mode"] = "Recycle", Weight = 1.0 },

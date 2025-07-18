@@ -234,53 +234,6 @@ function Creative.CheckInterior()
 	return GetInteriorFromEntity(PlayerPedId()) ~= 0
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- LOSSANTOS
------------------------------------------------------------------------------------------------------------------------------------------
-local LosSantos = PolyZone:Create({
-	vec2(-2153.08,-3131.33),
-	vec2(-1581.58,-2092.38),
-	vec2(-3271.05,275.85),
-	vec2(-3460.83,967.42),
-	vec2(-3202.39,1555.39),
-	vec2(-1642.50,993.32),
-	vec2(312.95,1054.66),
-	vec2(1313.70,341.94),
-	vec2(1739.01,-1280.58),
-	vec2(1427.42,-3440.38),
-	vec2(-737.90,-3773.97)
-},{ name = "Santos" })
------------------------------------------------------------------------------------------------------------------------------------------
--- SANDYSHORES
------------------------------------------------------------------------------------------------------------------------------------------
-local SandyShores = PolyZone:Create({
-	vec2(-375.38,2910.14),
-	vec2(307.66,3664.47),
-	vec2(2329.64,4128.52),
-	vec2(2349.93,4578.50),
-	vec2(1680.57,4462.48),
-	vec2(1570.01,4961.27),
-	vec2(1967.55,5203.67),
-	vec2(2387.14,5273.98),
-	vec2(2735.26,4392.21),
-	vec2(2512.33,3711.16),
-	vec2(1681.79,3387.82),
-	vec2(258.85,2920.16)
-},{ name = "Sandy" })
------------------------------------------------------------------------------------------------------------------------------------------
--- PALETOBAY
------------------------------------------------------------------------------------------------------------------------------------------
-local PaletoBay = PolyZone:Create({
-	vec2(-529.40,5755.14),
-	vec2(-234.39,5978.46),
-	vec2(278.16,6381.84),
-	vec2(672.67,6434.39),
-	vec2(699.56,6877.77),
-	vec2(256.59,7058.49),
-	vec2(17.64,7054.53),
-	vec2(-489.45,6449.50),
-	vec2(-717.59,6030.94)
-},{ name = "Paleto" })
------------------------------------------------------------------------------------------------------------------------------------------
 -- CEVENTGUNSHOT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("CEventGunShot",function(_,OtherPeds)
@@ -290,14 +243,11 @@ AddEventHandler("CEventGunShot",function(_,OtherPeds)
 		TriggerEvent("player:Residual","Resíduo de Pólvora")
 
 		local Coords = GetEntityCoords(Ped)
+		local InVehicle = IsPedInAnyVehicle(Ped)
 		if not IsPedCurrentWeaponSilenced(Ped) then
-			if (LosSantos:isPointInside(Coords) or SandyShores:isPointInside(Coords) or PaletoBay:isPointInside(Coords)) then
-				vSERVER.ShotsFired(IsPedInAnyVehicle(Ped))
-			end
-		else
-			if math.random(100) >= 75 and (LosSantos:isPointInside(Coords) or SandyShores:isPointInside(Coords) or PaletoBay:isPointInside(Coords)) then
-				vSERVER.ShotsFired(IsPedInAnyVehicle(Ped))
-			end
+			vSERVER.ShotsFired(InVehicle)
+		elseif math.random(100) >= 75 then
+			vSERVER.ShotsFired(InVehicle)
 		end
 	end
 end)

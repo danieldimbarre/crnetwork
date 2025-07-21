@@ -442,6 +442,7 @@ function Creative.Send(Slot,Amount)
 						if vRP.TakeItem(Passport,Item,Amount,true,Slot) and vRP.GiveItem(OtherPassport,Item,Amount,true) then
 							TriggerClientEvent("inventory:Update",source)
 							TriggerClientEvent("inventory:Update",ClosestPed)
+							exports["discord"]:Embed("Send","**[ENVIOU]:** "..Passport.."\n**[RECEBEU]:** "..OtherPassport.."\n**[ITEM]:** "..Amount.."x "..Item)
 
 							return true
 						end

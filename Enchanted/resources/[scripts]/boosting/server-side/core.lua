@@ -775,7 +775,7 @@ function Creative.Experience()
 		return false
 	end
 
-	return { experience = vRP.GetExperience(Passport,"Boosting"), levels = Levels }
+	return { vRP.GetExperience(Passport,"Boosting"),Levels }
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACTIVES

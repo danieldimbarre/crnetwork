@@ -1054,9 +1054,12 @@ RegisterCommand("spectate",function(source,Message)
 	if OtherSource then
 		local Ped = GetPlayerPed(OtherSource)
 		if DoesEntityExist(Ped) then
-			SetEntityDistanceCullingRadius(Ped,999999999.0)
-			TriggerClientEvent("admin:initSpectate",source,OtherSource)
 			Spectate[Passport] = OtherSource
+			SetEntityDistanceCullingRadius(Ped,999999.0)
+
+			SetTimeout(1000,function()
+				TriggerClientEvent("admin:initSpectate",source,OtherSource)
+			end)
 		end
 	end
 end)
@@ -1332,7 +1335,7 @@ AddEventHandler("Disconnect",function(Passport,source)
 	if Spectate[Passport] then
 		local Ped = GetPlayerPed(Spectate[Passport])
 		if DoesEntityExist(Ped) then
-			SetPlayerCullingRadius(Ped,0.0)
+			SetEntityDistanceCullingRadius(Ped,0.0)
 		end
 
 		Spectate[Passport] = nil

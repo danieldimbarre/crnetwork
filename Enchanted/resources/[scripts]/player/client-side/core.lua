@@ -79,19 +79,8 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		local TimeDistance = 999
 		local Ped = PlayerPedId()
-		if IsPedInAnyVehicle(Ped) then
-			TimeDistance = 100
-
-			SetPedConfigFlag(Ped,184,true)
-			if GetIsTaskActive(Ped,165) then
-				local Vehicle = GetVehiclePedIsIn(Ped)
-				local Seating = GetPlayerVehicleSeat(Ped,Vehicle)
-
-				SetPedIntoVehicle(Ped,Vehicle,Seating)
-			end
-		else
+		if not IsPedInAnyVehicle(Ped) then
 			if LocalPlayer.state.Handcuff and not LocalPlayer.state.Carry and GetEntityHealth(Ped) > 100 and not IsEntityPlayingAnim(Ped,"mp_arresting","idle",3) and LoadAnim("mp_arresting") then
 				TaskPlayAnim(Ped,"mp_arresting","idle",8.0,8.0,-1,49,1,false,false,false)
 			end
@@ -105,7 +94,7 @@ CreateThread(function()
 			end
 		end
 
-		Wait(TimeDistance)
+		Wait(1000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

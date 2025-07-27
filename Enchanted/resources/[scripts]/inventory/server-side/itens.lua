@@ -2685,7 +2685,7 @@ Use = {
 					Selected = GenerateString("DDLLDDLL")
 				until Selected and not Objects[Selected]
 
-				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
+				Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
 				SaveObjects[Selected] = Objects[Selected]
 
 				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
@@ -2714,7 +2714,7 @@ Use = {
 					Selected = GenerateString("DDLLDDLL")
 				until Selected and not Objects[Selected]
 
-				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
+				Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
 				SaveObjects[Selected] = Objects[Selected]
 
 				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
@@ -2743,7 +2743,7 @@ Use = {
 					Selected = GenerateString("DDLLDDLL")
 				until Selected and not Objects[Selected]
 
-				Objects[Selected] = { Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
+				Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
 				SaveObjects[Selected] = Objects[Selected]
 
 				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])

@@ -146,6 +146,7 @@ Theme = {
 		code = true,
 		map = true,
 		settings = true,
+		hud = true,
 		disconnect = true
 	},
 	scripts = {

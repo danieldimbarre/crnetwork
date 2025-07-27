@@ -370,6 +370,7 @@ end)
 AddEventHandler("inventory:CleanWeapons",function(Ignore)
 	if Weapon ~= "" then
 		local Ped = PlayerPedId()
+		local Parachute = HasPedGotWeapon(Ped,-72657034,false)
 
 		if not Ignore then
 			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
@@ -381,6 +382,10 @@ AddEventHandler("inventory:CleanWeapons",function(Ignore)
 		TriggerEvent("Weapon","")
 		TriggerEvent("hud:Weapon",false)
 		RemoveAllPedWeapons(Ped,true)
+
+		if Parachute then
+			GiveWeaponToPed(Ped,"GADGET_PARACHUTE",1,false,true)
+		end
 
 		Actived = false
 		Weapon = ""

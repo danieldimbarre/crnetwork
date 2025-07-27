@@ -678,27 +678,33 @@ local Contracts = {
 local Minimals = {
 	[1] = {
 		Min = 300,
-		Max = 900
+		Max = 900,
+		Item = "blue_essence"
 	},
 	[2] = {
 		Min = 600,
-		Max = 1200
+		Max = 1200,
+		Item = "purple_essence"
 	},
 	[3] = {
 		Min = 900,
-		Max = 1500
+		Max = 1500,
+		Item = "green_essence"
 	},
 	[4] = {
 		Min = 1200,
-		Max = 1800
+		Max = 1800,
+		Item = "red_essence"
 	},
 	[5] = {
 		Min = 1500,
-		Max = 2100
+		Max = 2100,
+		Item = "pink_essence"
 	},
 	[6] = {
 		Min = 1800,
-		Max = 2700
+		Max = 2700,
+		Item = "pink_essence"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -770,6 +776,7 @@ end)
 -- EXPERIENCE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Experience()
+	local source = source
 	local Passport = vRP.Passport(source)
 	if not Passport then
 		return false
@@ -969,19 +976,15 @@ end)
 -- CREATEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.CreateVehicle(Model,Class,Coords)
+	local source = source
 	local Passport = vRP.Passport(source)
 	if not Passport then
 		return false
 	end
 
-	local Timeout = os.time() + 10
 	local Vehicle = CreateVehicle(Model,Coords,true,false)
 
 	while not DoesEntityExist(Vehicle) or NetworkGetNetworkIdFromEntity(Vehicle) == 0 do
-		if os.time() >= Timeout then
-			return false
-		end
-
 		Wait(100)
 	end
 
@@ -992,14 +995,14 @@ function Creative.CreateVehicle(Model,Class,Coords)
 	Active[Passport] = Active[Passport] or {}
 	Active[Passport].Plate = Plate
 
+	State:set("Nitro",2000,true)
 	State:set("Fuel",100.0,true)
 	State:set("Tower",true,true)
-	State:set("Nitro",2000,true)
 	State:set("Drift",false,true)
 	State:set("Seatbelt",false,true)
 
 	TriggerEvent("inventory:Boosting",Plate,{ Amount = 0, Source = source, Passport = Passport, Class = Class })
-	TriggerClientEvent("NotifyPush",source,{ code = 31, title = "Informações do Veículo", x = Coords.x, y = Coords.y, z = Coords.z, vehicle = VehicleName(model).." - "..Plate, color = 44 })
+	TriggerClientEvent("NotifyPush",source,{ code = 31, title = "Informações do Veículo", x = Coords.x, y = Coords.y, z = Coords.z, vehicle = VehicleName(Model).." - "..Plate, color = 44 })
 
 	return NetworkGetNetworkIdFromEntity(Vehicle)
 end
@@ -1014,13 +1017,13 @@ exports("Payment",function(source,Passport)
 			local Valuation = Active[Passport].Value * 3
 			local Total = math.random(Minimals[Class].Min,Minimals[Class].Max)
 
-			if exports.party:DoesExist(Passport,2) then
-				local Consult = exports.party:Room(Passport,source,25)
-
-				for Number = 1,CountTable(Consult) do
+			local Consult,Members = exports.party:Room(Passport,source,25,2)
+			if Consult and Members >= 2 then
+				for Number = 1,Members do
 					if vRP.Passport(Consult[Number].Source) then
 						local OtherPassport = Consult[Number].Passport
 
+						vRP.GenerateItem(OtherPassport,Minimals[Class].Item,1,true)
 						vRP.PutExperience(OtherPassport,"Boosting",GainExperience)
 						vRP.GenerateItem(OtherPassport,"platinum",Valuation,true)
 						Cooldowns[OtherPassport][Class] = os.time() + Total
@@ -1029,6 +1032,7 @@ exports("Payment",function(source,Passport)
 					end
 				end
 			else
+				vRP.GenerateItem(Passport,Minimals[Class].Item,1,true)
 				vRP.PutExperience(Passport,"Boosting",GainExperience)
 				vRP.GenerateItem(Passport,"platinum",Valuation,true)
 				Cooldowns[Passport][Class] = os.time() + Total

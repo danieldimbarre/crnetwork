@@ -1229,9 +1229,29 @@ local List = {
 		["Index"] = "alliance",
 		["Name"] = "Aliança",
 		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["Economy"] = 525,
+		["Market"] = true,
+		["Weight"] = 0.0,
 		["Named"] = true
+	},
+	["alliance2"] = {
+		["Index"] = "alliance2",
+		["Name"] = "Aliança de Diamante",
+		["Type"] = "Comum",
+		["Description"] = "<epic>Este item não pode ser roubado.</epic> Uma aliança luxuosa cravejada com um <epic>diamante brilhante</epic>. Símbolo de compromisso eterno ou riqueza extrema.",
+		["Market"] = true,
+		["Weight"] = 0.0,
+		["Named"] = true,
+		["Rarity"] = "legendary",
+		["Delete"] = true
+	},
+	["alliance3"] = {
+		["Index"] = "alliance3",
+		["Name"] = "Porta-Aliança de Diamante",
+		["Description"] = "<epic>Este item não pode ser roubado e, ao ser utilizado no alt + Relacionamento, gera dois itens que não podem ser roubados.</epic> Um pequeno estojo luxuoso, usado para guardar alianças de valor inestimável.",
+		["Type"] = "Comum",
+		["Weight"] = 0.0,
+		["Rarity"] = "legendary",
+		["Delete"] = true
 	},
 	["identity"] = {
 		["Index"] = "identity",

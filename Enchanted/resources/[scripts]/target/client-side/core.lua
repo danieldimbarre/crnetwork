@@ -645,6 +645,7 @@ function TargetEnable()
 					end
 				else
 					table.insert(Menu,{ event = "player:Demand", label = "Cobrança", tunnel = "paramedic" })
+					table.insert(Menu,{ event = "marriage:Request", label = "Relacionamento", tunnel = "paramedic" })
 
 					if IsEntityPlayingAnim(Entitys,"random@mugging3","handsup_standing_base",3) then
 						table.insert(Menu,{ event = "player:checkShoes", label = "Roubar Sapatos", tunnel = "paramedic" })

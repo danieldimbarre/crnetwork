@@ -20,13 +20,9 @@ function Device(Seconds)
 		return false
 	end
 
-	if not Seconds then
-		Seconds = 30
-	end
-
 	Progress = true
 	SetNuiFocus(true,true)
-	SendNUIMessage({ Action = "Open", Payload = Seconds })
+	SendNUIMessage({ Action = "Open", Payload = Seconds or 30 })
 
 	while Progress do
 		Wait(0)

@@ -22,10 +22,12 @@ end)
 LocalPlayer["state"]:set("Route",0,true)
 LocalPlayer["state"]:set("Name","",false)
 LocalPlayer["state"]:set("Passport",0,true)
+LocalPlayer["state"]:set("Bed",false,false)
 LocalPlayer["state"]:set("Title",false,true)
 LocalPlayer["state"]:set("Carry",false,true)
 LocalPlayer["state"]:set("Walk",false,false)
 LocalPlayer["state"]:set("Arena",false,true)
+LocalPlayer["state"]:set("Chair",false,false)
 LocalPlayer["state"]:set("Cancel",false,true)
 LocalPlayer["state"]:set("Prison",false,true)
 LocalPlayer["state"]:set("Races",false,false)
@@ -190,9 +192,11 @@ end
 function tvRP.Destroy(Mode)
 	local Ped = PlayerPedId()
 
-	if IsPedUsingScenario(Ped,"PROP_HUMAN_SEAT_CHAIR_UPRIGHT") then
+	if LocalPlayer.state.Chair then
 		TriggerEvent("target:UpChair")
-	elseif IsEntityPlayingAnim(Ped,"amb@world_human_sunbathe@female@back@idle_a","idle_a",3) or LocalPlayer["state"]["Bed"] then
+	end
+
+	if LocalPlayer.state.Bed then
 		TriggerEvent("target:UpBed")
 	end
 

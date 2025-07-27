@@ -177,21 +177,18 @@ function Creative.Permissions(Name,Mode,Item)
 
 		return true
 	elseif Mode == "Item" then
-		local Split = splitString(Name,":")
-		if vRP.ConsultItem(Passport,Split[1].."-"..Split[2]) then
-			local UniqueName = SplitOne(Name,":")
-			if ChestItens[UniqueName] then
-				Open[Passport] = {
-					Name = Name,
-					Save = true,
-					Unique = UniqueName,
-					Slots = ChestItens[UniqueName].Slots,
-					Weight = ChestItens[UniqueName].Weight,
-					Item = Item
-				}
+		local UniqueName = SplitOne(Name,":")
+		if ChestItens[UniqueName] then
+			Open[Passport] = {
+				Name = Name,
+				Save = true,
+				Unique = UniqueName,
+				Slots = ChestItens[UniqueName].Slots,
+				Weight = ChestItens[UniqueName].Weight,
+				Item = Item
+			}
 
-				return true
-			end
+			return true
 		end
 	else
 		local Consult = vRP.SingleQuery("chests/GetChests",{ Name = Name })

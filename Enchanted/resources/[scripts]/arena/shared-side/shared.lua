@@ -42,35 +42,35 @@ Zones = {
 		["Itens"] = {
 			["WEAPON_PISTOL"] = {
 				["Amount"] = 1,
-				["Slot"] = 101
+				["Slot"] = 100
 			},
 			["WEAPON_PISTOL_MK2"] = {
 				["Amount"] = 1,
-				["Slot"] = 102
+				["Slot"] = 101
 			},
 			["WEAPON_HEAVYPISTOL"] = {
 				["Amount"] = 1,
-				["Slot"] = 103
+				["Slot"] = 102
 			},
 			["WEAPON_SNSPISTOL"] = {
 				["Amount"] = 1,
-				["Slot"] = 1
+				["Slot"] = 0
 			},
 			["WEAPON_SNSPISTOL_MK2"] = {
 				["Amount"] = 1,
-				["Slot"] = 2
+				["Slot"] = 1
 			},
 			["WEAPON_VINTAGEPISTOL"] = {
 				["Amount"] = 1,
-				["Slot"] = 3
+				["Slot"] = 2
 			},
 			["WEAPON_PISTOL50"] = {
 				["Amount"] = 1,
-				["Slot"] = 4
+				["Slot"] = 3
 			},
 			["WEAPON_COMBATPISTOL"] = {
 				["Amount"] = 1,
-				["Slot"] = 5
+				["Slot"] = 4
 			}
 		}
 	},
@@ -107,35 +107,35 @@ Zones = {
 		["Itens"] = {
 			["WEAPON_APPISTOL"] = {
 				["Amount"] = 1,
-				["Slot"] = 101
+				["Slot"] = 100
 			},
 			["WEAPON_MACHINEPISTOL"] = {
 				["Amount"] = 1,
-				["Slot"] = 102
+				["Slot"] = 101
 			},
 			["WEAPON_MICROSMG"] = {
 				["Amount"] = 1,
-				["Slot"] = 103
+				["Slot"] = 102
 			},
 			["WEAPON_MINISMG"] = {
 				["Amount"] = 1,
-				["Slot"] = 1
+				["Slot"] = 0
 			},
 			["WEAPON_SMG"] = {
 				["Amount"] = 1,
-				["Slot"] = 2
+				["Slot"] = 1
 			},
 			["WEAPON_SMG_MK2"] = {
 				["Amount"] = 1,
-				["Slot"] = 3
+				["Slot"] = 2
 			},
 			["WEAPON_ASSAULTSMG"] = {
 				["Amount"] = 1,
-				["Slot"] = 4
+				["Slot"] = 3
 			},
 			["WEAPON_GUSENBERG"] = {
 				["Amount"] = 1,
-				["Slot"] = 5
+				["Slot"] = 4
 			}
 		}
 	},
@@ -173,51 +173,51 @@ Zones = {
 		["Itens"] = {
 			["WEAPON_COMPACTRIFLE"] = {
 				["Amount"] = 1,
-				["Slot"] = 101
+				["Slot"] = 100
 			},
 			["WEAPON_CARBINERIFLE"] = {
 				["Amount"] = 1,
-				["Slot"] = 102
+				["Slot"] = 101
 			},
 			["WEAPON_CARBINERIFLE_MK2"] = {
 				["Amount"] = 1,
-				["Slot"] = 103
+				["Slot"] = 102
 			},
 			["WEAPON_ADVANCEDRIFLE"] = {
 				["Amount"] = 1,
-				["Slot"] = 1
+				["Slot"] = 0
 			},
 			["WEAPON_BULLPUPRIFLE"] = {
 				["Amount"] = 1,
-				["Slot"] = 2
+				["Slot"] = 1
 			},
 			["WEAPON_BULLPUPRIFLE_MK2"] = {
 				["Amount"] = 1,
-				["Slot"] = 3
+				["Slot"] = 2
 			},
 			["WEAPON_SPECIALCARBINE"] = {
 				["Amount"] = 1,
-				["Slot"] = 4
+				["Slot"] = 3
 			},
 			["WEAPON_SPECIALCARBINE_MK2"] = {
 				["Amount"] = 1,
-				["Slot"] = 5
+				["Slot"] = 4
 			},
 			["WEAPON_TACTICALRIFLE"] = {
 				["Amount"] = 1,
-				["Slot"] = 6
+				["Slot"] = 5
 			},
 			["WEAPON_HEAVYRIFLE"] = {
 				["Amount"] = 1,
-				["Slot"] = 7
+				["Slot"] = 6
 			},
 			["WEAPON_ASSAULTRIFLE"] = {
 				["Amount"] = 1,
-				["Slot"] = 8
+				["Slot"] = 7
 			},
 			["WEAPON_ASSAULTRIFLE_MK2"] = {
 				["Amount"] = 1,
-				["Slot"] = 9
+				["Slot"] = 8
 			}
 		}
 	}

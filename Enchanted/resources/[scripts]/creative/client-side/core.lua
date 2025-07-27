@@ -326,11 +326,21 @@ CreateThread(function()
 		if IsPedInAnyVehicle(Ped) then
 			DisableControlAction(0,345,true)
 
-			if IsPedInAnyHeli(Ped) then
-				local Vehicle = GetVehiclePedIsUsing(Ped)
-				if IsControlJustPressed(1,154) and not IsAnyPedRappellingFromHeli(Vehicle) and (GetPedInVehicleSeat(Vehicle,1) == Ped or GetPedInVehicleSeat(Vehicle,2) == Ped) then
-					TaskRappelFromHeli(Ped,1)
-				end
+			local Vehicle = GetVehiclePedIsUsing(Ped)
+			if not GetPedConfigFlag(Ped,184,true) then
+				SetPedConfigFlag(Ped,184,true)
+			end
+
+			if GetPedInVehicleSeat(Vehicle,0) == Ped and GetIsTaskActive(Ped,165) then
+				SetPedIntoVehicle(Ped,Vehicle,0)
+			end
+
+			if IsPedInAnyHeli(Ped) and IsControlJustPressed(1,154) and not IsAnyPedRappellingFromHeli(Vehicle) and (GetPedInVehicleSeat(Vehicle,1) == Ped or GetPedInVehicleSeat(Vehicle,2) == Ped) then
+				TaskRappelFromHeli(Ped,1)
+			end
+		else
+			if GetPedConfigFlag(Ped,184,true) then
+				SetPedConfigFlag(Ped,184,false)
 			end
 		end
 

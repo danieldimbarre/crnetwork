@@ -14,6 +14,7 @@ vSERVER = Tunnel.getInterface("engine")
 local Price = 0
 local Lasted = 0
 local Display = false
+local PriceLitter = 0.3
 local VehicleFuel = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
@@ -144,9 +145,9 @@ AddEventHandler("engine:Supply",function(Entitys)
 		end
 
 		if not Gallons then
-			Price += 0.2
 			VehicleFuel += 0.02
-			SendNUIMessage({ Action = "Tank", Payload = { floor(VehicleFuel),Price,0.8 } })
+			Price += PriceLitter
+			SendNUIMessage({ Action = "Tank", Payload = { floor(VehicleFuel),Price,PriceLitter * 5 } })
 		else
 			local Ammo = GetAmmoInPedWeapon(Ped,883325847)
 			if Ammo > 2 then
@@ -163,17 +164,17 @@ AddEventHandler("engine:Supply",function(Entitys)
 			TaskPlayAnim(Ped,"timetable@gardener@filling_can","gar_ig_5_filling_can",8.0,8.0,-1,50,1,0,0,0)
 		end
 
-		if (VehicleFuel >= 100.0 or GetEntityHealth(Ped) <= 100 or (Gallons and GetAmmoInPedWeapon(Ped,883325847) <= 2) or IsControlJustPressed(1,38)) then
+		if (VehicleFuel >= 100 or GetEntityHealth(Ped) <= 100 or (Gallons and GetAmmoInPedWeapon(Ped,883325847) <= 2) or IsControlJustPressed(1,38) or not DoesEntityExist(Vehicle)) then
 			if not Gallons and not vSERVER.RechargeFuel(Price) then
 				VehicleState:set("Fuel",Lasted + 0.0,true)
 				TriggerEvent("Notify","Aviso","Dinheiro insuficiente.","amarelo",5000)
 			else
 				VehicleState:set("Fuel",VehicleFuel + 0.0,true)
+			end
 
-				if Display then
-					SendNUIMessage({ Action = "Close" })
-					TriggerEvent("hud:Active",true)
-				end
+			if Display then
+				SendNUIMessage({ Action = "Close" })
+				TriggerEvent("hud:Active",true)
 			end
 
 			VehicleFuel = false

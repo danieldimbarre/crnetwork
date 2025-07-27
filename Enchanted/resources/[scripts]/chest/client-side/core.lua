@@ -106,7 +106,8 @@ end)
 -- CHEST:ITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("chest:Item",function(Name)
-	if vSERVER.Permissions(Name,"Item") and GetEntityHealth(PlayerPedId()) > 100 then
+	local FullName = splitString(Name)
+	if vSERVER.Permissions(FullName[1]..":"..FullName[3],"Item") and GetEntityHealth(PlayerPedId()) > 100 then
 		Opened = true
 		TriggerEvent("inventory:Open",{ Type = "Chest", Resource = "chest", Right = "Baú" })
 	end

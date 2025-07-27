@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Previous = nil
+local OutChair = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHAIRS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -44,27 +44,36 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:UpChair")
 AddEventHandler("target:UpChair",function()
-	if Previous then
-		local Ped = PlayerPedId()
-		SetEntityCoords(Ped,Previous.x,Previous.y,Previous.z - 1)
-		FreezeEntityPosition(Ped,false)
-		Previous = nil
+	if not OutChair or not LocalPlayer.state.Chair then
+		return false
 	end
+
+	local Ped = PlayerPedId()
+	SetEntityCoords(Ped,OutChair.x,OutChair.y,OutChair.z - 1)
+	LocalPlayer.state:set("Chair",false,false)
+	FreezeEntityPosition(Ped,false)
+	OutChair = nil
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TARGET:CHAIR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("target:Chair")
 AddEventHandler("target:Chair",function(Vars)
+	if OutChair or LocalPlayer.state.Chair then
+		return false
+	end
+
 	local Model = Vars[2]
 	local Entitys = Vars[1]
-	local Ped = PlayerPedId()
 
 	if Chairs[Model] then
+		local Ped = PlayerPedId()
+
 		FreezeEntityPosition(Ped,false)
 		FreezeEntityPosition(Entitys,true)
+		LocalPlayer.state:set("Chair",true,false)
 
-		Previous = GetEntityCoords(Ped)
+		OutChair = GetEntityCoords(Ped)
 		SetEntityCoords(Ped,Vars[4].x,Vars[4].y,Vars[4].z + 0.5)
 		SetEntityHeading(Ped,GetEntityHeading(Entitys) - Chairs[Model].Heading)
 

@@ -1345,7 +1345,7 @@ end)
 -- SETHTTPHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
 SetHttpHandler(function(Request,Result)
-	if Request.headers.Auth ~= "AuthELDORADOneW" then
+	if Request.headers.Auth ~= "SuaAuthCode" then
 		return SendMessageDiscord(Result,400,"Falha na autenticação.")
 	end
 
@@ -1393,9 +1393,9 @@ SetHttpHandler(function(Request,Result)
 
 		["/tdiscord"] = function(Data)
 			local v = json.decode(Data)
-			local CurrentDiscord = v.CurrentDiscord
 			local NewDiscord = parseInt(v.NewDiscord)
 			local OtherPassport = parseInt(v.Passport)
+			local CurrentDiscord = parseInt(v.CurrentDiscord)
 			if NewDiscord and OtherPassport and CurrentDiscord then
 				local Account = vRP.AccountInformation(OtherPassport,"Discord")
 				if Account and Account == CurrentDiscord then
@@ -1404,6 +1404,17 @@ SetHttpHandler(function(Request,Result)
 				else
 					SendMessageDiscord(Result,404,"Discord atual é diferente do enviado.")
 				end
+			else
+				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
+			end
+		end,
+
+		["/banned"] = function(Data)
+			local v = json.decode(Data)
+			local OtherPassport = parseInt(v.Passport)
+			if OtherPassport and vRP.Identity(OtherPassport) then
+				vRP.SetBanned(OtherPassport,-1,"Permanente",v.Reason,OtherPassport)
+				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
 			else
 				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
 			end

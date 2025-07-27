@@ -772,7 +772,7 @@ RegisterCommand("car",function(source,Message)
 	local Heading = GetEntityHeading(Ped)
 	local Plate = "VEH"..(10000 + Passport)
 
-	local Exist,Network,Vehicle = Creative.ServerVehicle(Model,vec4(Coords.x,Coords.y,Coords.z,Heading),Plate,2000,nil,1000,95,true,false)
+	local Exist,Network,Vehicle = Creative.ServerVehicle(Model,vec4(Coords.x,Coords.y,Coords.z,Heading),Plate,2000,nil,1000,100,true,false)
 	if not Exist then
 		return false
 	end

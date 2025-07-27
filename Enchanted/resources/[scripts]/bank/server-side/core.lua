@@ -213,12 +213,12 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Fines(Passport)
 	local Table = {}
-	local Consult = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0",{ Passport = Passport })
+	local Consult = exports["oxmysql"]:query_async("SELECT id,Officer,Fine,Date,Hour,Description FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0",{ Passport = Passport })
 	if Consult[1] then
-		for _,v in pairs(Consult) do
+		for _,v in ipairs(Consult) do
 			table.insert(Table,{
 				id = v.id,
-				name = "Multa recebida por "..vRP.FullName(v.Officer),
+				name = ("Multa recebida por %s"):format(vRP.FullName(v.Officer)),
 				value = v.Fine,
 				date = v.Date,
 				hour = v.Hour,
@@ -235,9 +235,11 @@ end
 function Creative.FineList()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		return Fines(Passport)
+	if not Passport then
+		return {}
 	end
+
+	return Fines(Passport)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FINEPAYMENT
@@ -245,21 +247,22 @@ end
 function Creative.FinePayment(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] then
-		Active[Passport] = true
-
-		local Consult = exports["oxmysql"]:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = @Paid AND id = @Number LIMIT 1",{ Passport = Passport, Paid = 0, Number = Number })
-		if Consult and vRP.PaymentBank(Passport,Consult.Fine) then
-			exports["oxmysql"]:update_async("UPDATE mdt_creative_fines SET Paid = @Paid WHERE Passport = @Passport AND id = @Number",{ Passport = Passport, Paid = 1, Number = Number })
-			Active[Passport] = nil
-
-			return true
-		end
-
-		Active[Passport] = nil
+	if not Passport or Active[Passport] then
+		return false
 	end
 
-	return false
+	Active[Passport] = true
+
+	local Success = false
+	local Consult = exports.oxmysql:single_async("SELECT id,Fine FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0 AND id = @Number LIMIT 1",{ Passport = Passport, Number = Number })
+	if Consult and vRP.PaymentBank(Passport,Consult.Fine) then
+		exports.oxmysql:update_async("UPDATE mdt_creative_fines SET Paid = 1 WHERE Passport = @Passport AND id = @Number",{ Passport = Passport, Number = Number })
+		Success = true
+	end
+
+	Active[Passport] = nil
+
+	return Success
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FINEPAYMENTALL
@@ -267,22 +270,22 @@ end
 function Creative.FinePaymentAll()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] then
-		Active[Passport] = true
-
-		local Consult = exports["oxmysql"]:query_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0",{ Passport = Passport })
-		if Consult[1] then
-			for _,v in pairs(Consult) do
-				if vRP.PaymentBank(Passport,v.Fine) then
-					exports["oxmysql"]:update_async("UPDATE mdt_creative_fines SET Paid = @Paid WHERE Passport = @Passport AND id = @Number",{ Passport = Passport, Paid = 1, Number = v.id })
-				end
-			end
-		end
-
-		Active[Passport] = nil
-
-		return Fines(Passport)
+	if not Passport or Active[Passport] then
+		return {}
 	end
+
+	Active[Passport] = true
+
+	local Consult = exports.oxmysql:query_async("SELECT id, Fine FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0",{ Passport = Passport })
+	for _,v in ipairs(Consult or {}) do
+		if vRP.PaymentBank(Passport,v.Fine) then
+			exports.oxmysql:update_async("UPDATE mdt_creative_fines SET Paid = 1 WHERE Passport = @Passport AND id = @id",{ Passport = Passport, id = v.id })
+		end
+	end
+
+	Active[Passport] = nil
+
+	return Fines(Passport)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAXS
@@ -290,17 +293,15 @@ end
 function Taxs(Passport)
 	local Taxs = {}
 	local TaxList = vRP.Query("taxs/List",{ Passport = Passport })
-	if TaxList[1] then
-		for _,v in pairs(TaxList) do
-			Taxs[#Taxs + 1] = {
-				["id"] = v["id"],
-				["name"] = v["Name"],
-				["value"] = v["Price"],
-				["date"] = v["Date"],
-				["hour"] = v["Hour"],
-				["message"] = v["Message"]
-			}
-		end
+	for _,v in ipairs(TaxList or {}) do
+		table.insert(Taxs,{
+			id = v.id,
+			name = v.Name,
+			value = v.Price,
+			date = v.Date,
+			hour = v.Hour,
+			message = v.Message
+		})
 	end
 
 	return Taxs
@@ -321,23 +322,22 @@ end
 function Creative.TaxPayment(Number)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] then
-		Active[Passport] = true
-
-		local Tax = vRP.Query("taxs/Check",{ Passport = Passport, id = Number })
-		if Tax[1] then
-			if vRP.PaymentBank(Passport,Tax[1]["Price"]) then
-				vRP.Query("taxs/Remove",{ Passport = Passport, id = Number })
-				Active[Passport] = nil
-
-				return true
-			end
-		end
-
-		Active[Passport] = nil
+	if not Passport or Active[Passport] then
+		return false
 	end
 
-	return false
+	Active[Passport] = true
+
+	local Success = false
+	local Consult = vRP.SingleQuery("taxs/Check",{ Passport = Passport, id = Number })
+	if Consult and vRP.PaymentBank(Passport,Consult.Price) then
+		vRP.Query("taxs/Remove",{ Passport = Passport, id = Number })
+		Success = true
+	end
+
+	Active[Passport] = nil
+
+	return Success
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVOICELIST

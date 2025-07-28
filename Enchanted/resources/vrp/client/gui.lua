@@ -41,6 +41,7 @@ LocalPlayer["state"]:set("Safezone",false,true)
 LocalPlayer["state"]:set("Spectate",false,false)
 LocalPlayer["state"]:set("Creation",false,false)
 LocalPlayer["state"]:set("ItemCamera",false,true)
+LocalPlayer["state"]:set("SecurityCam",false,true)
 LocalPlayer["state"]:set("DamageModify",false,false)
 
 LocalPlayer["state"]:set("Nitro",false,true)

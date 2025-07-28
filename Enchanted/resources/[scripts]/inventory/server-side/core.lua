@@ -794,6 +794,10 @@ AddEventHandler("inventory:Cancel",function()
 			TriggerClientEvent("inventory:Camera",source)
 		end
 
+		if Player(source).state.SecurityCam then
+			TriggerClientEvent("securitycam:Destroy",source)
+		end
+
 		if Robberys[Passport] then
 			TriggerEvent("inventory:RobberyActive",Robberys[Passport].Mode,Robberys[Passport].Number)
 			Robberys[Passport] = nil

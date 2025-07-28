@@ -2637,6 +2637,29 @@ Use = {
 		Player(source)["state"]["Buttons"] = false
 	end,
 
+	["securitycam"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source)["state"]["Buttons"] = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "prop_cctv_cam_06a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			local Keyboard = vKEYBOARD.Primary(source,"Nome")
+			if Keyboard[1] and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Passport = Passport, Name = Keyboard[1], Coords = Coords, Object = Hash, Item = Full, Mode = "Camera", Weight = -0.25, Bucket = GetPlayerRoutingBucket(source), Ground = true }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source)["state"]["Buttons"] = false
+	end,
+
 	["barrier"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		Player(source)["state"]["Buttons"] = true
 		TriggerClientEvent("inventory:Close",source)

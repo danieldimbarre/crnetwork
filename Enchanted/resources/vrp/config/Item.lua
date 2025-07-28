@@ -2158,6 +2158,14 @@ local List = {
 		["Market"] = true,
 		["Rarity"] = "epic"
 	},
+	["securitycam"] = {
+		["Index"] = "securitycam",
+		["Name"] = "CCTV Câmera",
+		["Type"] = "Consumível",
+		["Durability"] = 240,
+		["Weight"] = 7.75,
+		["Market"] = true
+	},
 	["barrier"] = {
 		["Index"] = "barrier",
 		["Name"] = "Barreira",

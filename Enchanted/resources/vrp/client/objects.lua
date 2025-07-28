@@ -143,6 +143,17 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 				}
 			}
 		},
+		Camera = {
+			isBox = false,
+			size = { radius = 0.25 },
+			options = {
+				shop = Number,
+				Distance = 5.0,
+				options = {
+					{ event = "inventory:StoreObjects", label = "Retirar", tunnel = "server" }
+				}
+			}
+		},
 		Destroy = {
 			isBox = false,
 			size = { radius = 0.75 },

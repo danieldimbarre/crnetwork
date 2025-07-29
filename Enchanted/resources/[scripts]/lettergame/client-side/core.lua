@@ -23,9 +23,9 @@ RegisterNUICallback("Success",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- FAILED
+-- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Failed",function(Data,Callback)
+RegisterNUICallback("Close",function(Data,Callback)
 	Results = false
 	Progress = false
 	SetNuiFocus(false,false)

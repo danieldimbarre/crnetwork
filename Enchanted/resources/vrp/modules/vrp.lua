@@ -15,11 +15,10 @@ tvRP = {}
 Proxy.addInterface("vRP",vRP)
 Tunnel.bindInterface("vRP",tvRP)
 DEVICE = Tunnel.getInterface("device")
-MEMORY = Tunnel.getInterface("memory")
 REQUEST = Tunnel.getInterface("request")
 TASKBAR = Tunnel.getInterface("taskbar")
 SURVIVAL = Tunnel.getInterface("survival")
-SAFECRACK = Tunnel.getInterface("safecrack")
+LETTERGAME = Tunnel.getInterface("lettergame")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -106,20 +105,14 @@ function vRP.Task(source,Amount,Speed)
 	return TASKBAR.Task(source,Amount,Speed)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VRP.MEMORY
------------------------------------------------------------------------------------------------------------------------------------------
-function vRP.Memory(source)
-	return MEMORY.Memory(source)
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- VRP.SAFECRACK
------------------------------------------------------------------------------------------------------------------------------------------
-function vRP.Safecrack(source,Number)
-	return SAFECRACK.Safecrack(source,Number)
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- VRP.DEVICE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.Device(source,Seconds)
     return DEVICE.Device(source,Seconds)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VRP.LETTERGAME
+-----------------------------------------------------------------------------------------------------------------------------------------
+function vRP.LetterGame(source,Duration,Speed)
+    return LETTERGAME.LetterGame(source,Duration,Speed)
 end

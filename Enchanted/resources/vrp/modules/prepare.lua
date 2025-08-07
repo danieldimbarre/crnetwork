@@ -170,12 +170,4 @@ CreateThread(function()
 	vRP.Query("summerz/Playerdata")
 	vRP.Query("summerz/Entitydata")
 	vRP.Query("summerz/Transactions")
-
-	-- LB-PHONE
-	vRP.Query("summerz/PhoneCalls")
-	vRP.Query("summerz/PhoneStorys")
-	vRP.Query("summerz/PhoneMessages")
-	vRP.Query("summerz/PhoneServices")
-	vRP.Query("summerz/PhoneInstagram")
-	vRP.Query("summerz/PhoneNotifications")
 end)

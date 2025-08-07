@@ -60,13 +60,31 @@ end
 -- PHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.Phone(Passport)
-	return "Inativo"
+	local PhoneNumber = "Inativo"
+	local source = vRP.Source(Passport)
+
+	if Characters[source] and Characters[source].Phone then
+		PhoneNumber = exports["lb-phone"]:FormatNumber(Characters[source].Phone)
+	else
+		local Consult = vRP.SingleQuery("smartphone/Phone",{ Passport = Passport })
+		if Consult and Consult.phone_number then
+			PhoneNumber = exports["lb-phone"]:FormatNumber(Consult.phone_number)
+
+			if Characters[source] then
+				Characters[source].Phone = PhoneNumber
+			end
+		end
+	end
+
+	return PhoneNumber
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEANPHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function vRP.CleanPhone(Passport)
-	return false
+	local Consult = vRP.SingleQuery("smartphone/Phone",{ Passport = Passport })
+
+	return Consult and Consult.phone_number or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP.REQUEST

@@ -3299,29 +3299,31 @@ end
 -- VEHICLESSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 for Model,v in pairs(VehicleList()) do
-	if v["Item"] then
-		Use["vehicle_"..Model] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	if v.Item then
+		Use["vehicle_"..Model] = function(source,Passport,Amount,Slot,Full)
 			if vRP.SelectVehicle(Passport,Model) then
 				TriggerClientEvent("inventory:Notify",source,"Aviso","Já possui um <b>"..VehicleName(Model).."</b>.","amarelo")
-			else
-				if VehicleStock(Model) and vRP.Scalar("vehicles/Count",{ Vehicle = Model }) >= VehicleStock(Model) then
-					TriggerClientEvent("inventory:Notify",source,"Aviso","Estoque insuficiente.","amarelo")
+				return false
+			end
 
-					return false
+			local StockLimit = VehicleStock(Model)
+			if StockLimit and vRP.Scalar("vehicles/Count",{ Vehicle = Model }) >= StockLimit then
+				TriggerClientEvent("inventory:Notify",source,"Aviso","Estoque insuficiente.","amarelo")
+				return false
+			end
+
+			if vRP.TakeItem(Passport,Full,1,false,Slot) then
+				local Plate = vRP.GeneratePlate()
+				local Weight = VehicleWeight(Model)
+
+				if type(v.Item) == "number" then
+					vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Days = v.Item, Weight = Weight, Work = 0 })
+				elseif v.Item == "Permanent" then
+					vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Weight = Weight, Work = 0 })
 				end
 
-				if vRP.TakeItem(Passport,Full,1,true,Slot) then
-					local Plate = vRP.GeneratePlate()
-
-					if type(v["Item"]) == "number" then
-						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Days = v["Item"], Weight = VehicleWeight(Model), Work = 0 })
-					elseif v["Item"] == "Permanent" then
-						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Weight = VehicleWeight(Model), Work = 0 })
-					end
-
-					TriggerClientEvent("inventory:Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> adicionado.","verde")
-					TriggerClientEvent("inventory:Update",source)
-				end
+				TriggerClientEvent("inventory:Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> adicionado.","verde")
+				TriggerClientEvent("inventory:Update",source)
 			end
 		end
 	end

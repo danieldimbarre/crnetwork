@@ -193,6 +193,7 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 			isBox = true,
 			size = { width = 1.4, height = 1.7, maxZ = 1.5 },
 			options = {
+				shop = Number,
 				Distance = 1.75,
 				options = {
 					{ event = "chest:Item", label = "Abrir", tunnel = "products", service = Item },

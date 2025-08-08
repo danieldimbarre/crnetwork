@@ -162,43 +162,43 @@ RegisterKeyMapping("+Information","Visualizar passaporte.","keyboard","F7")
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local YTD = CreateRuntimeTxd("Textures")
-
-	for _,Name in pairs(TexturePack) do
-		local PNG = LoadResourceFile("vrp","config/textures/"..Name..".png")
-		local DICT = "data:image/png;base64,"..Base64(PNG)
-		local TEXTURE = CreateRuntimeTexture(YTD,Name,512,512)
-
-		SetRuntimeTextureImage(TEXTURE,DICT)
+	local TextureDict = CreateRuntimeTxd("Textures")
+	for _,TextureName in pairs(TexturePack) do
+		local TextureFile = LoadResourceFile("vrp","config/textures/"..TextureName..".png")
+		if TextureFile then
+			local TextureBase64 = "data:image/png;base64,"..Base64(TextureFile)
+			local TuntimeTexture = CreateRuntimeTexture(TextureDict,TextureName,512,512)
+			SetRuntimeTextureImage(TuntimeTexture,TextureBase64)
+		end
 	end
 
 	while true do
 		local TimeDistance = 999
-		if LocalPlayer["state"]["Active"] then
+		if LocalPlayer.state.Active and BlipAdmin then
 			local Ped = PlayerPedId()
 			local Players,Voip = GetPlayers()
-			local Coords = GetEntityCoords(Ped)
 
-			for Entitys,v in pairs(Players) do
-				local PlayerState = Player(v)["state"]
-				local Passport = PlayerState["Passport"]
-				local OtherCoords = GetEntityCoords(Entitys)
-				local Title = PlayerState["Title"]
+			for Entitys,source in pairs(Players) do
+				local PlayerState = Player(source).state
+				local Passport = PlayerState.Passport
 
-				if Ped ~= Entitys and Title and HasEntityClearLosToEntity(Ped,Entitys,17) and #(Coords - OtherCoords) <= 10.0 then
+				if Passport and Ped ~= Entitys then
 					TimeDistance = 0
 
-					DrawText3D(OtherCoords,"~w~[ "..Title.." ]",1.250)
-				end
-
-				if BlipAdmin and Ped ~= Entitys and Passport then
-					TimeDistance = 0
-
-					local Armour = GetPedArmour(Entitys)
-					local Health = GetEntityHealth(Entitys) - 100
+					local Title = PlayerState.Title
+					local Name = PlayerState.Name or "Carregando"
 					local Talking = MumbleIsPlayerTalking(Voip[Entitys])
+					local OtherCoords = GetEntityCoords(Entitys)
 
-					DrawText3D(OtherCoords,"~w~[ "..(Talking and "~q~" or "")..(PlayerState["Name"] or "Carregando").."~w~ ] [ ~y~"..Passport.."~w~ ] [ ~g~"..(Health <= 0 and "Morto" or Health).."~w~ ] [ ~b~"..Armour.."~w~ ]",1.125)
+					local Health = GetEntityHealth(Entitys) - 100
+					local IsDead = Health <= 0 and "Morto" or Health
+					local Armour = GetPedArmour(Entitys)
+
+					if Title then
+						DrawText3D(OtherCoords,"~w~[ "..Title.." ]",1.25)
+					end
+
+					DrawText3D(OtherCoords,string.format("~w~[ %s%s~w~ ] [ ~y~%s~w~ ] [ ~g~%s~w~ ] [ ~b~%s~w~ ]",(Talking and "~q~" or ""),Name,Passport,IsDead,Armour),1.125)
 				end
 			end
 		end

@@ -615,7 +615,7 @@ function Creative.Use(Slot,Amount)
 		end
 
 		if ItemTypeCheck(Full,"Armamento") and (parseInt(Slot) >= 100 and parseInt(Slot) <= 103) then
-			if vRP.InsideVehicle(source) and not ItemVehicle(Full) then
+			if Player(source).state.Safezone or (vRP.InsideVehicle(source) and not ItemVehicle(Full)) then
 				return
 			end
 
@@ -963,24 +963,25 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:SAVEARENA
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("inventory:SaveArena",function(Passport,Att,Amm)
+AddEventHandler("inventory:SaveArena",function(Passport,Attachments,Ammunations)
 	if not Arena[Passport] then
 		Arena[Passport] = {
-			["Ammos"] = Users["Ammos"][Passport] or {},
-			["Attachs"] = Users["Attachs"][Passport] or {}
+			Ammos = Users.Ammos[Passport] or {},
+			Attachs = Users.Attachs[Passport] or {}
 		}
 
-		Users["Attachs"][Passport] = Att or {}
-		Users["Ammos"][Passport] = Amm or {}
+		Users.Attachs[Passport] = Attachments or {}
+		Users.Ammos[Passport] = Ammunations or {}
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:APPLYARENA
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("inventory:ApplyArena",function(Passport)
-	if Arena[Passport] and Users["Ammos"][Passport] and Users["Attachs"][Passport] then
-		Users["Attachs"][Passport] = Arena[Passport]["Attachs"]
-		Users["Ammos"][Passport] = Arena[Passport]["Ammos"]
+	if Arena[Passport] and Users.Ammos[Passport] and Users.Attachs[Passport] then
+		Users.Attachs[Passport] = Arena[Passport].Attachs
+		Users.Ammos[Passport] = Arena[Passport].Ammos
+		TriggerEvent("vRP:ReloadWeapons",source)
 		Arena[Passport] = nil
 	end
 end)

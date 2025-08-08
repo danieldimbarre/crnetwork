@@ -100,9 +100,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("vRP:Active")
 AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
-	LocalPlayer["state"]:set("Name",Name,true)
-	LocalPlayer["state"]:set("Active",true,true)
-	LocalPlayer["state"]:set("Passport",Passport,true)
+	LocalPlayer.state:set("Name",Name,true)
+	LocalPlayer.state:set("Active",true,true)
+	LocalPlayer.state:set("Passport",Passport,true)
 
 	local Ped = PlayerPedId()
 
@@ -121,12 +121,13 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 		end
 
 		SetLocalPlayerAsGhost(false)
+		exports.vrp:ReloadCharacter()
 		SetEntityInvincible(Ped,false)
 		FreezeEntityPosition(Ped,false)
-		exports["vrp"]:ReloadCharacter()
 		NetworkSetFriendlyFireOption(true)
 		SetCanAttackFriendly(Ped,true,false)
 		SetPedRelationshipGroupHash(Ped,1862763509)
+		TriggerEvent("InitialCharacterSystemComplete")
 
 		if not Creation then
 			TriggerServerEvent("vRP:WaitCharacters")
@@ -134,14 +135,14 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 
 		if Inventory then
 			for Slot,v in pairs(Inventory) do
-				local Animation = ItemAnim(v["item"])
+				local Animation = ItemAnim(v.item)
 
 				if Animation then
-					tvRP.PersistentBlock(v["item"],Animation)
+					tvRP.PersistentBlock(v.item,Animation)
 				end
 
-				if Slot == "105" then
-					local Skinshop = ItemSkinshop(v["item"])
+				if Slot == "104" then
+					local Skinshop = ItemSkinshop(v.item)
 					if Skinshop then
 						TriggerEvent("skinshop:Backpack",Skinshop)
 					end

@@ -1,3 +1,3 @@
-xports("IsOpen",function()
+exports("IsOpen",function()
 	return false
 end)

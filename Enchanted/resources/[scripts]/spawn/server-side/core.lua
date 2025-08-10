@@ -30,7 +30,7 @@ function Creative.Characters()
 		return Characters
 	end
 
-	exports["vrp"]:Bucket(source,"Enter",50000 + source)
+	exports.vrp:Bucket(source,"Enter",50000 + source)
 
 	local Consult = vRP.Query("characters/Characters",{ License = License })
 	for _,v in ipairs(Consult) do
@@ -106,7 +106,7 @@ function Creative.NewCharacter(Name,Lastname,Sex)
 	local Name = FirstName(Name)
 	local Lastname = FirstName(Lastname)
 	local Sexo = (Sex == "mp_f_freemode_01") and "F" or "M"
-	local Consult = exports["oxmysql"]:insert_async("INSERT INTO characters (License,Name,Lastname,Sex,Skin,Blood,Created) VALUES (@License,@Name,@Lastname,@Sex,@Skin,@Blood,UNIX_TIMESTAMP() + (86400 * 3))",{ License = License, Name = Name, Lastname = Lastname, Sex = Sexo, Skin = Sex, Blood = math.random(4) })
+	local Consult = exports.oxmysql:insert_async("INSERT INTO characters (License,Name,Lastname,Sex,Skin,Blood,Created) VALUES (@License,@Name,@Lastname,@Sex,@Skin,@Blood,UNIX_TIMESTAMP() + (86400 * 3))",{ License = License, Name = Name, Lastname = Lastname, Sex = Sexo, Skin = Sex, Blood = math.random(4) })
 	if Consult then
 		vRPC.DoScreenFadeOut(source)
 		vRP.CharacterChosen(source,Consult,Sex)

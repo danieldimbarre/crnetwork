@@ -65,13 +65,12 @@ end
 -- FIRSTNAME
 -----------------------------------------------------------------------------------------------------------------------------------------
 function FirstName(Message)
-    return Message:match("^(%S+)")
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- FIRSTTEXT
------------------------------------------------------------------------------------------------------------------------------------------
-function FirstText(Message)
-    return (Message:match("^(%S+)") or ""):sub(1,1):upper()..(Message:match("^(%S+)") or ""):sub(2):lower()
+	local Original = tostring(Message or "")
+	local FirstName = Original:match("^(%S+)") or ""
+	local CleanName = FirstName:gsub("%d","")
+	CleanName = CleanName ~= "" and CleanName or "Desconhecido"
+
+	return CleanName:sub(1,1):upper()..CleanName:sub(2):lower()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SANGUINE

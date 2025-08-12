@@ -60,6 +60,27 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- CLOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Close()
+	if DoesEntityExist(Preview) then
+		DeleteEntity(Preview)
+		Preview = nil
+	end
+
+	if DoesCamExist(Camera) then
+		RenderScriptCams(false,false,0,false,false)
+		SetCamActive(Camera,false)
+		DestroyCam(Camera,false)
+		Camera = nil
+	end
+
+	Lasted = ""
+	SetNuiFocus(false,false)
+	SetCursorLocation(0.5,0.5)
+	TriggerEvent("hud:Active",true)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CAMERAACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CameraActive()
@@ -80,8 +101,6 @@ end
 -- PDM:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("pdm:Open",function(Number)
-	Selected = Number
-
 	if DoesEntityExist(Preview) then
 		DeleteEntity(Preview)
 		Preview = nil
@@ -89,17 +108,18 @@ AddEventHandler("pdm:Open",function(Number)
 
 	if not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not exports.hud:Wanted() then
 		CameraActive()
+		Selected = Number
 		SetNuiFocus(true,true)
 		SetCursorLocation(0.5,0.5)
 		TriggerEvent("hud:Active",false)
-		SendNUIMessage({ Action = "Open", Payload = { Config[Selected].List,vSERVER.Discount() } })
+		SendNUIMessage({ Action = "Open", Payload = { Config[Selected].List,vSERVER.Discount(),0.25,"MENSAL" } })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Close",function(Data,Callback)
-	SystemClose()
+	Close()
 
 	Callback("Ok")
 end)
@@ -107,7 +127,7 @@ end)
 -- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Mount",function(Data,Callback)
-	local Model = Data.vehicle
+	local Model = Data.Vehicle
 	if LoadModel(Model) and Lasted ~= Model then
 		if DoesEntityExist(Preview) then
 			DeleteEntity(Preview)
@@ -131,11 +151,11 @@ end)
 -- BUY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Buy",function(Data,Callback)
-	local Sucess = vSERVER.Buy(Data.vehicle)
+	local Sucess = vSERVER.Buy(Data.Vehicle,Data.Rental)
 
 	if Sucess then
 		SendNUIMessage({ Action = "Close" })
-		SystemClose()
+		Close()
 	end
 
 	Callback(Sucess)
@@ -145,7 +165,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Rotate",function(Data,Callback)
 	if DoesEntityExist(Preview) then
-		local Offset = Data.direction == "Left" and -5 or 5
+		local Offset = Data.Direction == "Left" and -5 or 5
 		SetEntityHeading(Preview,GetEntityHeading(Preview) + Offset)
 	end
 
@@ -155,19 +175,19 @@ end)
 -- DRIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Drive", function(Data, Callback)
-	if not vSERVER.Check() or not LoadModel(Data.vehicle) then
+	if not vSERVER.Check() or not LoadModel(Data.Vehicle) then
 		return Callback("Ok")
 	end
 
 	SendNUIMessage({ Action = "Close" })
-	SystemClose()
+	Close()
 
 	if DoesEntityExist(Preview) then
 		DeleteEntity(Preview)
 		Preview = nil
 	end
 
-	Preview = CreateVehicle(Data.vehicle,Config[Selected].DriveIn,false,false)
+	Preview = CreateVehicle(Data.Vehicle,Config[Selected].DriveIn,false,false)
 
 	SetVehicleModKit(Preview,0)
 	SetVehicleDirtLevel(Preview,0.0)
@@ -208,24 +228,3 @@ RegisterNUICallback("Drive", function(Data, Callback)
 
 	Callback("Ok")
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SYSTEMCLOSE
------------------------------------------------------------------------------------------------------------------------------------------
-function SystemClose()
-	if DoesEntityExist(Preview) then
-		DeleteEntity(Preview)
-		Preview = nil
-	end
-
-	if DoesCamExist(Camera) then
-		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
-		DestroyCam(Camera,false)
-		Camera = nil
-	end
-
-	Lasted = ""
-	SetNuiFocus(false,false)
-	SetCursorLocation(0.5,0.5)
-	TriggerEvent("hud:Active",true)
-end

@@ -469,7 +469,12 @@ local List = {
 		Price = 15000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Speed = 10,
+		Break = 10,
+		Gears = 10,
+		Acceleration = 1,
+		Performance = "A+"
 	},
 	prairie = {
 		Name = "Prairie",

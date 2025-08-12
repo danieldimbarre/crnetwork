@@ -39,9 +39,10 @@ function Creative.Buy(Model)
 						end
 					end
 
-					if VehicleGemstone and vRP.PaymentGems(Passport,VehicleGemstone * Discount) then
+					local PaymentValue = VehicleGemstone * Discount
+					if PaymentValue > 0 and vRP.PaymentGems(Passport,PaymentValue) then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Model), Work = 0 })
-						exports.discord:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Dotted(VehicleGemstone * Discount).." Diamantes")
+						exports.discord:Embed("Pdm","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Model.."\n**[VALOR]:** "..Dotted(PaymentValue).." Diamantes")
 						TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Model).."</b> concluído.","verde",5000)
 						Return = true
 					else
@@ -99,7 +100,7 @@ function Creative.Discount()
 		end
 	end
 
-	return { Normal,Importados,Platinas }
+	return { Default = Normal, Importados = Importados, Platinas = Platinas }
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMOVE

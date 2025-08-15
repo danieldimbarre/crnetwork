@@ -121,5 +121,5 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport,source,License)
 	Connected[License] = nil
-	Active[source] = nil
+	Creating[source] = nil
 end)

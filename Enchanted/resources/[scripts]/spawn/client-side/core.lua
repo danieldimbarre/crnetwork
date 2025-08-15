@@ -11,6 +11,7 @@ vSERVER = Tunnel.getInterface("spawn")
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Camera = nil
 local Characters = {}
+local Cooldown = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -79,8 +80,12 @@ end)
 -- CHARACTERCHOSEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("CharacterChosen",function(Data,Callback)
-	if vSERVER.CharacterChosen(Data["Passport"]) then
-		SendNUIMessage({ Action = "Close" })
+	if Cooldown < GetGameTimer() then
+		Cooldown = GetGameTimer() + 1000
+
+		if vSERVER.CharacterChosen(Data.Passport) then
+			SendNUIMessage({ Action = "Close" })
+		end
 	end
 
 	Callback("Ok")

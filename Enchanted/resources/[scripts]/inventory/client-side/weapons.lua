@@ -7,7 +7,6 @@ local Skins = {}
 local Objects = {}
 TakeWeapon = false
 StoreWeapon = false
-local DriveBy = false
 local Reload = GetGameTimer()
 local Cooldown = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -334,17 +333,13 @@ CreateThread(function()
 
 			if IsPedInAnyVehicle(Ped) then
 				local Allowed = false
-
 				if IsPedInAnyHeli(Ped) then
 					Allowed = (Ammos == "WEAPON_RIFLE_AMMO")
 				else
 					Allowed = (Ammos == "WEAPON_PISTOL_AMMO")
 				end
 
-				if Allowed ~= DriveBy then
-					SetPlayerCanDoDriveBy(Pid,Allowed)
-					DriveBy = Allowed
-				end
+				SetPlayerCanDoDriveBy(Pid,Allowed)
 			end
 		end
 

@@ -107,11 +107,11 @@ Values = {
 	FuelTank = 975,
 	Roof = 1275,
 	Turbo = 9275,
-	SuspensionUpgrade = { 100,200,300,400,500,600 },
-	TransmissionUpgrade = { 100,200,300,400,500,600 },
-	ShieldingUpgrade = { 100,200,300,400,500,600 },
-	EngineUpgrade = { 100,200,300,400,500,600 },
-	BrakeUpgrade = { 100,200,300,400,500,600 },
+	SuspensionUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
+	TransmissionUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
+	ShieldingUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
+	EngineUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
+	BrakeUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
 	SteeringWheel = 725,
 	Xenons = 1275
 }
@@ -211,12 +211,12 @@ function Calculate(Data,Vehicle)
 				if Index:match("Upgrade") then
 					local VehiclePrice = VehiclePrice(Vehicle)
 					Values[Index] = {
-						parseInt(VehiclePrice * 0.1),
-						parseInt(VehiclePrice * 0.2),
-						parseInt(VehiclePrice * 0.3),
-						parseInt(VehiclePrice * 0.4),
-						parseInt(VehiclePrice * 0.5),
-						parseInt(VehiclePrice * 0.6)
+						parseInt(VehiclePrice * Values[Index][1]),
+						parseInt(VehiclePrice * Values[Index][2]),
+						parseInt(VehiclePrice * Values[Index][3]),
+						parseInt(VehiclePrice * Values[Index][4]),
+						parseInt(VehiclePrice * Values[Index][5]),
+						parseInt(VehiclePrice * Values[Index][6])
 					}
 				end
 

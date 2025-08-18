@@ -13,8 +13,8 @@ vSERVER = Tunnel.getInterface("garages")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIAVEIS
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Opened = "1"
 local Respawns = {}
+local Opened = false
 local Searched = nil
 local Hotwired = false
 local Spam = GetGameTimer()
@@ -273,6 +273,7 @@ function Creative.SpawnPosition(Select)
 
 	SendNUIMessage({ Action = "Close" })
 	SetNuiFocus(false,false)
+	Opened = false
 
 	return Selected
 end
@@ -332,7 +333,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 		Vehicle = vRP.ClosestVehicle(15)
 	end
 
-	if IsEntityAVehicle(Vehicle) and (not Entity(Vehicle).state.Tow or LocalPlayer.state.Admin) then
+	if Opened and IsEntityAVehicle(Vehicle) and (not Entity(Vehicle).state.Tow or LocalPlayer.state.Admin) then
 		local Doors = {}
 		for Number = 0,5 do
 			Doors[Number] = IsVehicleDoorDamaged(Vehicle,Number)
@@ -467,6 +468,10 @@ CreateThread(function()
 							SendNUIMessage({ Action = "Open", Payload = Vehicles })
 						end
 					end
+				else
+					if Opened then
+						TriggerEvent("garages:Close")
+					end
 				end
 			end
 
@@ -532,6 +537,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Close",function(Data,Callback)
 	SetNuiFocus(false,false)
+	Opened = false
 
 	Callback("Ok")
 end)
@@ -542,6 +548,7 @@ RegisterNetEvent("garages:Close")
 AddEventHandler("garages:Close",function()
 	SendNUIMessage({ Action = "Close" })
 	SetNuiFocus(false,false)
+	Opened = false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:PROPERTYS

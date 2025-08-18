@@ -1014,14 +1014,26 @@ end)
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for _,v in pairs(vRP.Query("propertys/Garages")) do
-		local Name = v.Name
+	for _,v in ipairs(vRP.Query("propertys/Garages")) do
+		local GarageName = v.Name
 		local GarageJson = v.Garage
-		if not Propertys[Name] and GarageJson then
-			local GarageTable = json.decode(GarageJson)
-			if GarageTable and GarageTable["1"] and GarageTable["2"] then
-				Garages[Name] = { Name = "Garage", Save = true }
-				Propertys[Name] = { x = GarageTable["1"][1], y = GarageTable["1"][2], z = GarageTable["1"][3], ["1"] = GarageTable["2"] }
+
+		if not Propertys[GarageName] and GarageJson then
+			local GarageData = json.decode(GarageJson)
+
+			if GarageData and GarageData["1"] and GarageData["2"] then
+				Garages[GarageName] = {
+					Name = "Garage",
+					Save = true
+				}
+
+				local Coords = GarageData["1"]
+				Propertys[GarageName] = {
+					x = Coords[1],
+					y = Coords[2],
+					z = Coords[3],
+					["1"] = GarageData["2"]
+				}
 			end
 		end
 	end

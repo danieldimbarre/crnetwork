@@ -358,20 +358,18 @@ AddEventHandler("inventory:verifyWeapon",function(Item)
 		local AmmoItem = WeaponAmmo(Item)
 		local AmmoHand = WeaponAmmo(Weapon)
 
-		if AmmoItem and AmmoHand then
-			local SameWeapon = (Weapon == Name)
-			local TargetWeapon = SameWeapon and Weapon or Name
-			local Ammo = GetAmmoInPedWeapon(Ped,TargetWeapon)
+		local UsingWeapong = (Weapon == Name)
+		local TargetWeapon = UsingWeapong and Weapon or Name
+		local Ammo = GetAmmoInPedWeapon(Ped,TargetWeapon)
 
-			if SameWeapon then
-				if not vSERVER.VerifyWeapon(Weapon,Ammo) then
-					return TriggerEvent("inventory:CleanWeapons")
-				end
-			elseif AmmoItem == AmmoHand then
-				return TriggerEvent("inventory:RemoveWeapon",Item)
-			elseif not vSERVER.VerifyWeapon(Name,Ammo) then
+		if UsingWeapong then
+			if not vSERVER.VerifyWeapon(Weapon,Ammo) then
 				return TriggerEvent("inventory:CleanWeapons")
 			end
+		elseif AmmoItem and AmmoHand and AmmoItem == AmmoHand then
+			return TriggerEvent("inventory:RemoveWeapon",Item)
+		elseif not vSERVER.VerifyWeapon(Name,Ammo) then
+			return TriggerEvent("inventory:CleanWeapons")
 		end
 	else
 		vSERVER.VerifyWeapon(Name)

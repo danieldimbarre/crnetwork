@@ -333,7 +333,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 		Vehicle = vRP.ClosestVehicle(15)
 	end
 
-	if Opened and IsEntityAVehicle(Vehicle) and (not Entity(Vehicle).state.Tow or LocalPlayer.state.Admin) then
+	if IsEntityAVehicle(Vehicle) and (not Entity(Vehicle).state.Tow or LocalPlayer.state.Admin) then
 		local Doors = {}
 		for Number = 0,5 do
 			Doors[Number] = IsVehicleDoorDamaged(Vehicle,Number)
@@ -344,7 +344,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 			Tyres[Number] = (GetTyreHealth(Vehicle,Number) ~= 1000.0 and true or false)
 		end
 
-		vSERVER.Delete(NetworkGetNetworkIdFromEntity(Vehicle),Doors,Tyres,GetVehicleNumberPlateText(Vehicle),Opened)
+		vSERVER.Delete(NetworkGetNetworkIdFromEntity(Vehicle),Doors,Tyres,GetVehicleNumberPlateText(Vehicle),Opened or "1")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

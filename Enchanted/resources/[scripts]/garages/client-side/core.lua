@@ -468,10 +468,8 @@ CreateThread(function()
 							SendNUIMessage({ Action = "Open", Payload = Vehicles })
 						end
 					end
-				else
-					if Opened then
-						TriggerEvent("garages:Close")
-					end
+				elseif Opened and Opened == Number then
+					TriggerEvent("garages:Close")
 				end
 			end
 

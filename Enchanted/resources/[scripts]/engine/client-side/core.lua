@@ -31,10 +31,6 @@ AddEventHandler("gameEventTriggered",function(Event,Message)
 
 		SetPedConfigFlag(Ped,35,false)
 		SetVehicleFuelLevel(Vehicle,CurrentFuel + 0.0)
-
-		if not IsPedInAnyHeli(Ped) then
-			TriggerEvent("inventory:CleanWeapons")
-		end
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

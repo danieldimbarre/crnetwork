@@ -22,22 +22,30 @@ RegisterServerEvent("paramedic:Adrenaline")
 AddEventHandler("paramedic:Adrenaline",function(Entitys)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		local Adrenaline = vRP.ConsultItem(Passport,"adrenaline")
-		local AdrenalinePlus = vRP.ConsultItem(Passport,"adrenalineplus")
+	if not Passport then
+		return false
+	end
 
-		if not Adrenaline and not AdrenalinePlus then
-			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("adrenaline").."</b>.","amarelo",5000)
+	local Adrenaline = vRP.ConsultItem(Passport,"adrenaline")
+	local AdrenalinePlus = vRP.ConsultItem(Passport,"adrenalineplus")
+
+	if not Adrenaline and not AdrenalinePlus then
+		TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("adrenaline").."</b>.","amarelo",5000)
+		return false
+	end
+
+	if AdrenalinePlus and vRP.TakeItem(Passport,AdrenalinePlus.Item) then
+		vSURVIVAL.UpdateCrawl(Entitys,115)
+		exports.discord:Embed("Adrenaline",("**[PASSAPORTE]:** %s\n**[ITEM]:** adrenalineplus"):format(Passport))
+		return true
+	end
+
+	if Adrenaline and vRP.TakeItem(Passport,Adrenaline.Item) then
+		if vSURVIVAL.CheckCrawl(Entitys) then
+			vSURVIVAL.UpdateCrawl(Entitys,115)
+			exports.discord:Embed("Adrenaline",("**[PASSAPORTE]:** %s\n**[ITEM]:** adrenaline"):format(Passport))
 		else
-			if AdrenalinePlus and vRP.TakeItem(Passport,"adrenalineplus") then
-				vSURVIVAL.UpdateCrawl(Entitys,115)
-			elseif Adrenaline and vRP.TakeItem(Passport,"adrenaline") then
-				if vSURVIVAL.CheckCrawl(Entitys) then
-					vSURVIVAL.UpdateCrawl(Entitys,115)
-				else
-					TriggerClientEvent("Notify",source,"Adrenalina","Os batimentos cardiados não podem ser acelerados no momento.","amarelo",5000)
-				end
-			end
+			TriggerClientEvent("Notify",source,"Adrenalina","Os batimentos cardiacos não podem ser acelerados no momento.","amarelo",5000)
 		end
 	end
 end)

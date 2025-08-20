@@ -375,18 +375,20 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Setup",function(Data,Callback)
 	Init = Data.value
+
 	local Ped = PlayerPedId()
+	local Heading = GetEntityHeading(Ped)
 	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.25,1.0,0.0)
 
-	if Init == "hat" then
-		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.45)
-	elseif Init == "shirt" then
-		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.25)
-	elseif Init == "pants" then
-		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z - 0.45)
-	elseif Init == "clock" then
-		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.05)
-	end
+	local Offsets = {
+		hat = 0.45,
+		shirt = 0.25,
+		pants = -0.45,
+		clock = 0.05
+	}
+
+	SetCamRot(Camera,0.0,0.0,Heading + 180.0)
+	SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + (Offsets[Init] or 0.0))
 
 	Callback("Ok")
 end)

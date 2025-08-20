@@ -39,15 +39,15 @@ function Creative.Home()
 
 		local InvestmentCheck = vRP.Query("investments/Check",{ Passport = Passport })
 		if InvestmentCheck[1] then
-			Yield = InvestmentCheck[1]["Monthly"]
+			Yield = InvestmentCheck[1].Monthly
 		end
 
 		return {
-			["yield"] = Yield,
-			["cardnumber"] = "0000 0000 0000 "..1000 + Passport,
-			["balance"] = Identity["Bank"],
-			["transactions"] = Transactions(Passport),
-			["dependents"] = Dependents(Passport)
+			yield = Yield,
+			balance = Identity.Bank,
+			cardnumber = "0000 0000 0000 "..1000 + Passport,
+			transactions = Transactions(Passport),
+			dependents = Dependents(Passport)
 		}
 	end
 end
@@ -127,8 +127,8 @@ function Creative.Deposit(Valuation)
 		Active[Passport] = nil
 
 		return {
-			["balance"] = vRP.Identity(Passport)["Bank"],
-			["transactions"] = Transactions(Passport)
+			balance = vRP.Identity(Passport).Bank,
+			transactions = Transactions(Passport)
 		}
 	end
 end
@@ -141,13 +141,13 @@ function Creative.Withdraw(Valuation)
 	if Passport and not Active[Passport] and vRP.GetBank(Passport) >= Valuation then
 		Active[Passport] = true
 
-		if not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) and vRP.WithdrawCash(Passport,Valuation) then
+		if not exports.bank:CheckTaxs(Passport) and not exports.bank:CheckFines(Passport) and vRP.WithdrawCash(Passport,Valuation) then
 			Active[Passport] = nil
 		end
 
 		return {
-			["balance"] = vRP.Identity(Passport)["Bank"],
-			["transactions"] = Transactions(Passport)
+			balance = vRP.Identity(Passport).Bank,
+			transactions = Transactions(Passport)
 		}
 	end
 end
@@ -157,7 +157,7 @@ end
 function Creative.Transfer(OtherPassport,Valuation)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and OtherPassport ~= Passport and parseInt(Valuation) > 0 and not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) then
+	if Passport and not Active[Passport] and OtherPassport ~= Passport and parseInt(Valuation) > 0 and not exports.bank:CheckTaxs(Passport) and not exports.bank:CheckFines(Passport) then
 		Active[Passport] = true
 
 		if vRP.Identity(OtherPassport) and vRP.PaymentBank(Passport,Valuation,true) then
@@ -168,8 +168,8 @@ function Creative.Transfer(OtherPassport,Valuation)
 	end
 
 	return {
-		["balance"] = vRP.Identity(Passport)["Bank"],
-		["transactions"] = Transactions(Passport)
+		balance = vRP.Identity(Passport).Bank,
+		transactions = Transactions(Passport)
 	}
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -178,13 +178,13 @@ end
 function Transactions(Passport,Limit)
 	local Transaction = {}
 	local TransactionList = vRP.Query("transactions/List",{ Passport = Passport, Limit = Limit or 4 })
-	if TransactionList[1] then
+	if #TransactionList > 0 then
 		for _,v in pairs(TransactionList) do
 			Transaction[#Transaction + 1] = {
-				["type"] = v["Type"],
-				["date"] = v["Date"],
-				["value"] = v["Price"],
-				["balance"] = v["Balance"]
+				type = v.Type,
+				date = v.Date,
+				value = v.Price,
+				balance = v.Balance
 			}
 		end
 	end
@@ -197,11 +197,11 @@ end
 function Dependents(Passport)
 	local Dependents = {}
 	local DependentList = vRP.Query("dependents/List",{ Passport = Passport })
-	if DependentList[1] then
+	if #DependentList > 0 then
 		for _,v in pairs(DependentList) do
 			Dependents[#Dependents + 1] = {
-				["name"] = v["Name"],
-				["passport"] = v["Dependent"]
+				name = v.Name,
+				passport = v.Dependent
 			}
 		end
 	end
@@ -213,7 +213,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Fines(Passport)
 	local Table = {}
-	local Consult = exports["oxmysql"]:query_async("SELECT id,Officer,Fine,Date,Hour,Description FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0",{ Passport = Passport })
+	local Consult = exports.oxmysql:query_async("SELECT id,Officer,Fine,Date,Hour,Description FROM mdt_creative_fines WHERE Passport = ? AND Paid = 0",{ Passport })
 	if Consult[1] then
 		for _,v in ipairs(Consult) do
 			table.insert(Table,{
@@ -385,8 +385,8 @@ function Creative.InvoicePayment(Number)
 
 		local Invoice = vRP.Query("invoices/Check",{ id = Number })
 		if Invoice[1] then
-			if vRP.PaymentBank(Passport,Invoice[1]["Price"]) then
-				vRP.GiveBank(Invoice[1]["Received"],Invoice[1]["Price"])
+			if vRP.PaymentBank(Passport,Invoice[1].Price) then
+				vRP.GiveBank(Invoice[1].Received,Invoice[1].Price)
 				vRP.Query("invoices/Remove",{ id = Number })
 				Active[Passport] = nil
 
@@ -405,19 +405,19 @@ end
 function Invoices(Passport)
 	local Invoices = {}
 	local InvoiceList = vRP.Query("invoices/List",{ Passport = Passport })
-	if InvoiceList[1] then
+	if #InvoiceList > 0 then
 		for _,v in pairs(InvoiceList) do
-			local Type = v["Type"]
+			local Type = v.Type
 
 			if not Invoices[Type] then
 				Invoices[Type] = {}
 			end
 
 			Invoices[Type][#Invoices[Type] + 1] = {
-				["id"] = v["id"],
-				["reason"] = v["Reason"],
-				["holder"] = v["Holder"],
-				["value"] = v["Price"]
+				id = v.id,
+				reason = v.Reason,
+				holder = v.Holder,
+				value = v.Price
 			}
 		end
 	end
@@ -434,17 +434,17 @@ function Creative.Investments()
 		local Total,Brute,Liquid,Deposit = 0,0,0,0
 		local InvestmentCheck = vRP.Query("investments/Check",{ Passport = Passport })
 		if InvestmentCheck[1] then
-			Total = InvestmentCheck[1]["Deposit"] + InvestmentCheck[1]["Liquid"]
-			Brute = InvestmentCheck[1]["Deposit"]
-			Liquid = InvestmentCheck[1]["Liquid"]
-			Deposit = InvestmentCheck[1]["Deposit"]
+			Total = InvestmentCheck[1].Deposit + InvestmentCheck[1].Liquid
+			Brute = InvestmentCheck[1].Deposit
+			Liquid = InvestmentCheck[1].Liquid
+			Deposit = InvestmentCheck[1].Deposit
 		end
 
 		return {
-			["total"] = Total,
-			["brute"] = Brute,
-			["liquid"] = Liquid,
-			["deposit"] = Deposit
+			total = Total,
+			brute = Brute,
+			liquid = Liquid,
+			deposit = Deposit
 		}
 	end
 end
@@ -486,7 +486,7 @@ function Creative.InvestRescue()
 
 		local InvestmentCheck = vRP.Query("investments/Check",{ Passport = Passport })
 		if InvestmentCheck[1] then
-			local Valuation = InvestmentCheck[1]["Deposit"] + InvestmentCheck[1]["Liquid"]
+			local Valuation = InvestmentCheck[1].Deposit + InvestmentCheck[1].Liquid
 			vRP.Query("investments/Remove",{ Passport = Passport })
 			vRP.GiveBank(Passport,Valuation)
 		end
@@ -517,7 +517,7 @@ end)
 exports("CheckTaxs",function(Passport)
 	local Passport = Passport
 	local source = vRP.Source(Passport)
-	if Passport and source and exports["oxmysql"]:single_async("SELECT * FROM taxs WHERE Passport = @Passport LIMIT 1",{ Passport = Passport }) then
+	if Passport and source and exports.oxmysql:single_async("SELECT * FROM taxs WHERE Passport = ? AND CURDATE() >= DATE_ADD(STR_TO_DATE(`Date`,'%d/%m/%Y'),INTERVAL 1 DAY) LIMIT 1",{ Passport }) then
 		TriggerClientEvent("Notify",source,"Impostos","Você possui débitos bancários.","amarelo",5000)
 		return true
 	end
@@ -530,7 +530,7 @@ end)
 exports("CheckFines",function(Passport)
 	local Passport = Passport
 	local source = vRP.Source(Passport)
-	if Passport and source and exports["oxmysql"]:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = @Passport AND Paid = 0 LIMIT 1",{ Passport = Passport }) then
+	if Passport and source and exports.oxmysql:single_async("SELECT * FROM mdt_creative_fines WHERE Passport = ? AND (Timestamp + 86400) < UNIX_TIMESTAMP() AND Paid = 0 LIMIT 1",{ Passport }) then
 		TriggerClientEvent("Notify",source,"Multas","Você possui débitos bancários.","amarelo",5000)
 		return true
 	end

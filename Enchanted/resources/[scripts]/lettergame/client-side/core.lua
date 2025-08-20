@@ -23,9 +23,9 @@ RegisterNUICallback("Success",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- CLOSE
+-- FAILURE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Close",function(Data,Callback)
+RegisterNUICallback("Failure",function(Data,Callback)
 	Results = false
 	Progress = false
 	SetNuiFocus(false,false)
@@ -36,7 +36,9 @@ end)
 -- LETTERGAME
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LetterGame(Duration,Speed)
-	if Progress then return end
+	if Progress then
+		return false
+	end
 
 	Progress = true
 	SetNuiFocus(true,true)

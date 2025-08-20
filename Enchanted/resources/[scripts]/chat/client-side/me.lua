@@ -45,7 +45,7 @@ CreateThread(function()
 				local _,x,y = GetScreenCoordFromWorldCoord(OtherCoords.x,OtherCoords.y,OtherCoords.z + 0.7)
 
 				if not MeActive[Index] then
-					SendNUIMessage({ Action = "ShowMe", Payload = { Index,v.Name,v.Message,x,y,false } })
+					SendNUIMessage({ Action = "ShowMe", Payload = { Index,v.Name,v.Message,x,y } })
 					MeActive[Index] = true
 				end
 

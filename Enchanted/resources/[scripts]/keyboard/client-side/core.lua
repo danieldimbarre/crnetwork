@@ -36,7 +36,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYBOARD
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Keyboard(Rows,Title,Subtitle)
+function Keyboard(Rows,Title,Subtitle,Cancel)
 	if Progress then
 		return false
 	end
@@ -50,6 +50,7 @@ function Keyboard(Rows,Title,Subtitle)
 		Action = "Open",
 		Payload = {
 			Rows = Rows,
+			HideCancel = Cancel,
 			Title = Title or "Formulário",
 			Subtitle = Subtitle or "Preencha os campos abaixo"
 		}
@@ -127,6 +128,15 @@ Form.Banned = function(First,Second,Third,Fourth)
 		{ Mode = "options", Placeholder = "Selecione uma opção", Options = Third },
 		{ Mode = "text", Placeholder = Fourth }
 	})
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REFFERALS
+-----------------------------------------------------------------------------------------------------------------------------------------
+Form.Refferals = function(First,Second)
+	return Keyboard({
+		{ Mode = "options", Placeholder = "Selecione uma opção", Options = First },
+		{ Mode = "text", Placeholder = Second }
+	},"Referência","Preencha os campos abaixo",true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- AREA

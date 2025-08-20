@@ -288,8 +288,11 @@ end)
 RegisterCommand("wipebattlepass",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",1) then
+		vRP.Query("entitydata/SetData",{ Name = "Battlepass", Information = os.time() })
 		exports["oxmysql"]:query_async("DELETE FROM playerdata WHERE Name = ?",{ "Battlepass" })
+
 		TriggerClientEvent("Notify",source,"Sucesso","Passe de batalha resetado.","verde",5000)
+		TriggerClientEvent("pause:UpdateConfig",-1)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -928,6 +931,26 @@ RegisterCommand("announce",function(source,Message,History)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- NAMEDS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("nameds",function(source)
+	if source ~= 0 then
+		return false
+	end
+
+	local Consult = exports.oxmysql:query_async("SELECT id,Name,Lastname FROM characters")
+	for _,v in ipairs(Consult) do
+		local Name = v.Name ~= "" and FirstName(v.Name) or "Indivíduo"
+		local Lastname = v.Lastname ~= "" and FirstName(v.Lastname) or "Indigente"
+
+		exports.oxmysql:update_async("UPDATE characters SET Name = ?, Lastname = ? WHERE id = ?",{ Name,Lastname,v.id })
+
+		Wait(100)
+	end
+
+	print(("Nomes ajustados para %d personagens."):format(#Consult))
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CONSOLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("console",function(source,Message,History)
@@ -1354,6 +1377,7 @@ SetHttpHandler(function(Request,Result)
 			local v = json.decode(Data)
 			local OtherPassport = parseInt(v.Passport)
 			local OtherSource = vRP.Source(OtherPassport)
+
 			if OtherSource then
 				vRP.Revive(OtherSource,300)
 				vRP.UpgradeThirst(OtherPassport,100)
@@ -1370,6 +1394,7 @@ SetHttpHandler(function(Request,Result)
 			local v = json.decode(Data)
 			local Amount = parseInt(v.Amount)
 			local OtherPassport = parseInt(v.Passport)
+
 			if OtherPassport > 0 and Amount > 0 then
 				vRP.UpgradeGemstone(OtherPassport,Amount,true)
 				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
@@ -1383,6 +1408,7 @@ SetHttpHandler(function(Request,Result)
 			local OtherPassport = parseInt(v.Passport)
 			local OtherSource = vRP.Source(OtherPassport)
 			local Webhook = exports["discord"]:Webhook("Print")
+
 			if OtherSource and Webhook ~= "" then
 				TriggerClientEvent("megazord:Screenshot",OtherSource,Webhook)
 				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
@@ -1396,9 +1422,10 @@ SetHttpHandler(function(Request,Result)
 			local NewDiscord = parseInt(v.NewDiscord)
 			local OtherPassport = parseInt(v.Passport)
 			local CurrentDiscord = parseInt(v.CurrentDiscord)
+
 			if NewDiscord and OtherPassport and CurrentDiscord then
 				local Account = vRP.AccountInformation(OtherPassport,"Discord")
-				if Account and Account == CurrentDiscord then
+				if Account and parseInt(Account) == CurrentDiscord then
 					exports["oxmysql"]:update_async("UPDATE accounts SET Discord = ? WHERE Discord = ?",{ NewDiscord,Account })
 					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
 				else
@@ -1412,6 +1439,7 @@ SetHttpHandler(function(Request,Result)
 		["/banned"] = function(Data)
 			local v = json.decode(Data)
 			local OtherPassport = parseInt(v.Passport)
+
 			if OtherPassport and vRP.Identity(OtherPassport) then
 				vRP.SetBanned(OtherPassport,-1,"Permanente",v.Reason,OtherPassport)
 				SendMessageDiscord(Result,200,"Comando executado com sucesso.")

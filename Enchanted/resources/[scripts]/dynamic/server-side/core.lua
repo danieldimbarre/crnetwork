@@ -66,21 +66,29 @@ end)
 -- CLOTHES
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Clothes()
-	local Clothes = {}
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		CountClothes[Passport] = 2
 
-		for Permission,Multiplier in pairs({ Ouro = 6, Prata = 4, Bronze = 2 }) do
-			if vRP.HasService(Passport,Permission) then
-				CountClothes[Passport] = CountClothes[Passport] + Multiplier
-			end
+	if not Passport then
+		return {}
+	end
+
+	local MaxClothes = 2
+	for Permission,Multiplier in pairs({ Ouro = 6, Prata = 4, Bronze = 2 }) do
+		if vRP.HasService(Passport,Permission) then
+			MaxClothes = MaxClothes + Multiplier
 		end
+	end
 
-		local Consult = vRP.GetSrvData("Clothes:"..Passport,true)
-		for Table,_ in pairs(Consult) do
-			Clothes[#Clothes + 1] = Table
+	CountClothes[Passport] = MaxClothes
+
+	local Clothes = {}
+	local Consult = vRP.GetSrvData("Clothes:"..Passport,true)
+	for Table in pairs(Consult) do
+		Clothes[#Clothes + 1] = Table
+
+		if #Clothes >= MaxClothes then
+			break
 		end
 	end
 

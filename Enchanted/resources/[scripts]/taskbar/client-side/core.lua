@@ -36,7 +36,9 @@ end)
 -- MINIGAME
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Minigame(Timer)
-	if Progress then return end
+	if Progress then
+		return false
+	end
 
 	Progress = true
 	SetNuiFocus(true,false)
@@ -51,7 +53,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TASK
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Task",function(Amount,Speed)
+function Creative.Task(Amount,Speed)
 	local Return = true
 
 	for Number = 1,Amount do
@@ -63,10 +65,10 @@ exports("Task",function(Amount,Speed)
 	end
 
 	return Return
-end)
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TASK
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Task(Amount,Speed)
-	return exports.taskbar:Task(Amount,Speed)
-end
+exports("Task",function(Amount,Speed)
+	return Creative.Task(Amount,Speed)
+end)

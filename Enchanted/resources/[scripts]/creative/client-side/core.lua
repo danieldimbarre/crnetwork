@@ -280,28 +280,28 @@ local ISLAND = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 local IPL_LIST = {
 	{
-		["Props"] = {
+		Props = {
 			"swap_clean_apt",
 			"layer_debra_pic",
 			"layer_whiskey",
 			"swap_sofa_A"
 		},
-		["Coords"] = vec3(-1150.70,-1520.70,10.60)
+		Coords = vec3(-1150.70,-1520.70,10.60)
 	},{
-		["Props"] = {
+		Props = {
 			"csr_beforeMission",
 			"csr_inMission"
 		},
-		["Coords"] = vec3(-47.10,-1115.30,26.50)
+		Coords = vec3(-47.10,-1115.30,26.50)
 	},{
-		["Props"] = {
+		Props = {
 			"V_Michael_bed_tidy",
 			"V_Michael_M_items",
 			"V_Michael_D_items",
 			"V_Michael_S_items",
 			"V_Michael_L_Items"
 		},
-		["Coords"] = vec3(-802.30,175.00,72.80)
+		Coords = vec3(-802.30,175.00,72.80)
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -315,7 +315,7 @@ end)
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	if GlobalState["Blackout"] then
+	if GlobalState.Blackout then
 		SetArtificialLightsState(true)
 		SetArtificialLightsStateAffectsVehicles(false)
 	end
@@ -384,18 +384,18 @@ CreateThread(function()
 		SetPlayerLockonRangeOverride(Pid,0.0)
 		SetCreateRandomCopsOnScenarios(false)
 		SetCreateRandomCopsNotOnScenarios(false)
-		SetPedInfiniteAmmoClip(Ped,LocalPlayer["state"]["Arena"] and true or false)
+		SetPedInfiniteAmmoClip(Ped,LocalPlayer.state.Arena and true or false)
 
 		if IsPlayerWantedLevelGreater(Pid,0) then
 			ClearPlayerWantedLevel(Pid)
 		end
 
-		SetWeatherTypeNow(GlobalState["Weather"])
-		SetWeatherTypePersist(GlobalState["Weather"])
-		SetWeatherTypeNowPersist(GlobalState["Weather"])
+		SetWeatherTypeNow(GlobalState.Weather)
+		SetWeatherTypePersist(GlobalState.Weather)
+		SetWeatherTypeNowPersist(GlobalState.Weather)
 
-		if not LocalPlayer["state"]["Creation"] and LocalPlayer["state"]["Active"] then
-			NetworkOverrideClockTime(GlobalState["Hours"],GlobalState["Minutes"],0)
+		if not LocalPlayer.state.Creation and LocalPlayer.state.Active then
+			NetworkOverrideClockTime(GlobalState.Hours,GlobalState.Minutes,0)
 		else
 			NetworkOverrideClockTime(12,0,0)
 		end
@@ -420,11 +420,11 @@ CreateThread(function()
 	end
 
 	for _,v in pairs(IPL_LIST) do
-		local Interior = GetInteriorAtCoords(v["Coords"])
+		local Interior = GetInteriorAtCoords(v.Coords)
 		LoadInterior(Interior)
 
-		if v["Props"] then
-			for _,Index in pairs(v["Props"]) do
+		if v.Props then
+			for _,Index in pairs(v.Props) do
 				EnableInteriorProp(Interior,Index)
 			end
 		end
@@ -432,11 +432,11 @@ CreateThread(function()
 		RefreshInterior(Interior)
 	end
 
-	for _,alphaData in ipairs(ALPHAS) do
-		local radius = alphaData[1]
-		local Blip = AddBlipForRadius(radius["x"],radius["y"],radius["z"],alphaData[4])
-		SetBlipAlpha(Blip,alphaData[2])
-		SetBlipColour(Blip,alphaData[3])
+	for _,v in ipairs(ALPHAS) do
+		local Radius = v[1]
+		local Blip = AddBlipForRadius(Radius.x,Radius.y,Radius.z,v[4])
+		SetBlipAlpha(Blip,v[2])
+		SetBlipColour(Blip,v[3])
 	end
 
 	for _,blipData in ipairs(BLIPS) do

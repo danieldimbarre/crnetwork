@@ -56,7 +56,7 @@ CreateThread(function()
 					SetLocalPlayerAsGhost(true)
 
 					if IsPedArmed(Ped,7) then
-						TriggerEvent("inventory:CleanWeapons",true)
+						TriggerEvent("inventory:CleanWeapons")
 					end
 				end
 			else

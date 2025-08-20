@@ -18,6 +18,7 @@ DEVICE = Tunnel.getInterface("device")
 REQUEST = Tunnel.getInterface("request")
 TASKBAR = Tunnel.getInterface("taskbar")
 SURVIVAL = Tunnel.getInterface("survival")
+KEYBOARD = Tunnel.getInterface("keyboard")
 LETTERGAME = Tunnel.getInterface("lettergame")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSERVERSTART

@@ -24,8 +24,8 @@ RegisterNUICallback("Save",function(Data,Callback)
 	if LocalPlayer.state.Creation then
 		DoScreenFadeOut(0)
 		SetTimeout(2500,function()
-			TriggerServerEvent("vRP:Refferals")
 			TriggerEvent("hud:Active",true)
+			TriggerEvent("referrals:Open")
 			DoScreenFadeIn(2500)
 		end)
 	else
@@ -54,8 +54,8 @@ RegisterNUICallback("Reset",function(Data,Callback)
 	if LocalPlayer.state.Creation then
 		DoScreenFadeOut(0)
 		SetTimeout(2500,function()
-			TriggerServerEvent("vRP:Refferals")
 			TriggerEvent("hud:Active",true)
+			TriggerEvent("referrals:Open")
 			DoScreenFadeIn(2500)
 		end)
 	else

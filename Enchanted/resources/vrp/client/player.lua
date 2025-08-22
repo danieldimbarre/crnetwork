@@ -131,7 +131,7 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
 
 		if not Creation then
 			TriggerServerEvent("vRP:WaitCharacters")
-			TriggerServerEvent("vRP:Refferals")
+			TriggerEvent("referrals:Open")
 		end
 
 		if Inventory then

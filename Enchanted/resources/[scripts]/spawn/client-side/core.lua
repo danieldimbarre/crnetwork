@@ -156,8 +156,8 @@ RegisterNUICallback("Spawn",function(Data,Callback)
 	end
 
 	SendNUIMessage({ Action = "Close" })
-	TriggerServerEvent("vRP:Refferals")
 	TriggerEvent("hud:Active",true)
+	TriggerEvent("referrals:Open")
 	SetNuiFocus(false,false)
 
 	Callback("Ok")

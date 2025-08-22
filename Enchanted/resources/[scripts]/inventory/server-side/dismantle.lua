@@ -105,9 +105,8 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 		return false
 	end
 
-	local Plate = Entity[1]
-	local Model = Entity[2]
 	local Network = Entity[4]
+	local Plate,Model = Entity[1],Entity[2]
 	local UserVehicle = vRP.PassportPlate(Plate)
 	if Active[Passport] or not VehicleExist(Model) or (not UserVehicle and not Dismantle[Plate]) then
 		return false
@@ -116,7 +115,7 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 	Active[Passport] = os.time() + 30
 	Player(source).state.Buttons = true
 	TriggerClientEvent("Progress",source,"Desmanchando",30000)
-	vRPC.playAnim(source,false,{ "anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer" },true)
+	vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
 	CreateThread(function()
 		while Active[Passport] and os.time() < Active[Passport] do
@@ -139,10 +138,10 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 		TriggerClientEvent("dismantle:Reset",source)
 		TriggerEvent("garages:Deleted",Network,Plate)
 
-		local BaseExperience = 3
+		local GainExperience = 3
 		local _,Level = vRP.GetExperience(Passport,"Dismantle")
-		local BaseValue = VehiclePrice(Model) * (UserVehicle and 0.05 or 0.025)
-		local Valuation = BaseValue + (BaseValue * (0.025 * Level))
+		local Amount = VehiclePrice(Model) * (UserVehicle and 0.05 or 0.025)
+		local Valuation = Amount + (Amount * (0.025 * Level))
 
 		if exports.inventory:Buffs("Dexterity",Passport) then
 			Valuation = Valuation * 1.1
@@ -150,22 +149,22 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 
 		for Permission,Multiplier in pairs({ Ouro = 0.10, Prata = 0.075, Bronze = 0.05 }) do
 			if vRP.HasService(Passport,Permission) then
-				BaseExperience = BaseExperience + 1
+				GainExperience = GainExperience + 1
 				Valuation = Valuation * (1 + Multiplier)
 			end
 		end
 
 		local Members = 1
 		if exports.party:DoesExist(Passport,2) then
-			Members = #exports.party:Room(Passport,source,25)
+			Members = Members + 1
 		end
 
 		if UserVehicle and vRP.SingleQuery("vehicles/plateVehicles",{ Plate = Plate }) then
 			vRP.Update("vehicles/Arrest",{ Plate = Plate })
 		end
 
-		vRP.BattlepassPoints(Passport,BaseExperience)
-		vRP.PutExperience(Passport,"Dismantle",BaseExperience)
+		vRP.BattlepassPoints(Passport,GainExperience)
+		vRP.PutExperience(Passport,"Dismantle",GainExperience)
 		vRP.GenerateItem(Passport,"ironfilings",Valuation * Members,true)
 	end)
 end)

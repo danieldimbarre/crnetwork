@@ -132,7 +132,7 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 
 		Active[Passport] = nil
 
-		if not UserVehicle and not Dismantle[Plate] then
+		if (not UserVehicle and not Dismantle[Plate]) or (UserVehicle and not exports.garages:Spawn(Plate)) then
 			return false
 		end
 

@@ -330,11 +330,12 @@ CreateThread(function()
 			local Distance = #(Coords - List[Number].Coords.xyz)
 			if Distance <= List[Number].Distance then
 				if not Spawned[Number] and LoadModel(List[Number].Model) then
-					Spawned[Number] = CreatePed(4,List[Number].Model,List[Number].Coords.x,List[Number].Coords.y,List[Number].Coords.z - 1,List[Number].Coords.w,false,false)
+					Spawned[Number] = CreatePed(26,List[Number].Model,List[Number].Coords.x,List[Number].Coords.y,List[Number].Coords.z - 1,List[Number].Coords.w,false,false)
 
 					SetEntityInvincible(Spawned[Number],true)
 					FreezeEntityPosition(Spawned[Number],true)
 					DecorSetBool(Spawned[Number],"CREATIVE_PED",true)
+					SetEntityAsMissionEntity(Spawned[Number],true,true)
 					SetBlockingOfNonTemporaryEvents(Spawned[Number],true)
 
 					if not List[Number].Collision then

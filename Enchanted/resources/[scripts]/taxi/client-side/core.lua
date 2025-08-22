@@ -2,7 +2,6 @@
 -- VRP
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
-vRPS = Tunnel.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -150,47 +149,43 @@ function CreatePassenger(Vehicle)
 		TriggerServerEvent("DeletePed",NetworkGetNetworkIdFromEntity(Current))
 	end
 
-	Passenger = nil
 	Current = nil
+	Passenger = nil
 
 	local Rand = math.random(#Models)
-	local Networked = vRPS.CreateModels(Models[Rand],Locations[Selected].Ped.x,Locations[Selected].Ped.y,Locations[Selected].Ped.z)
-	if not Networked then return end
+	if LoadModel(Models[Rand]) then
+		Current = CreatePed(26,Models[Rand],Locations[Selected].Ped.x,Locations[Selected].Ped.y,Locations[Selected].Ped.z,0.0,true,false)
 
-	Current = LoadNetwork(Networked)
-	while not DoesEntityExist(Current) do
-		Wait(100)
+		SetEntityCoordsNoOffset(Current,Locations[Selected].Ped.x,Locations[Selected].Ped.y,Locations[Selected].Ped.z)
+		LocalPlayer["state"]:set("BlockLocked",true,false)
+		SetBlockingOfNonTemporaryEvents(Current,true)
+		SetEntityAsMissionEntity(Current,true,true)
+		DecorSetBool(Current,"CREATIVE_PED",true)
+		FreezeEntityPosition(Vehicle,true)
+		SetEntityInvincible(Current,true)
+		SetVehicleDoorsLocked(Vehicle,1)
+		SetPedKeepTask(Current,true)
+		Walking = true
+
+		TaskGoToEntity(Current,Vehicle,-1,3.0,1.0,1073741824,0)
+
+		while not IsPedSittingInVehicle(Current,Vehicle) do
+			TaskEnterVehicle(Current,Vehicle,-1,2,1.0,1,0)
+			Wait(1000)
+		end
+
+		LocalPlayer["state"]:set("BlockLocked",false,false)
+		FreezeEntityPosition(Vehicle,false)
+		Lasted = Selected
+
+		repeat
+			Selected = math.random(#Locations)
+		until Selected ~= Lasted
+
+		Walking = false
+		MarkedPassenger()
+		PaymentActive = true
 	end
-
-	SetEntityCoordsNoOffset(Current,Locations[Selected].Ped.x,Locations[Selected].Ped.y,Locations[Selected].Ped.z)
-	LocalPlayer["state"]:set("BlockLocked",true,false)
-	SetBlockingOfNonTemporaryEvents(Current,true)
-	SetEntityAsMissionEntity(Current,true,true)
-	DecorSetBool(Current,"CREATIVE_PED",true)
-	FreezeEntityPosition(Vehicle,true)
-	SetEntityInvincible(Current,true)
-	SetVehicleDoorsLocked(Vehicle,1)
-	SetPedKeepTask(Current,true)
-	Walking = true
-
-	TaskGoToEntity(Current,Vehicle,-1,3.0,1.0,1073741824,0)
-
-	while not IsPedSittingInVehicle(Current,Vehicle) do
-		TaskEnterVehicle(Current,Vehicle,-1,2,1.0,1,0)
-		Wait(1000)
-	end
-
-	LocalPlayer["state"]:set("BlockLocked",false,false)
-	FreezeEntityPosition(Vehicle,false)
-	Lasted = Selected
-
-	repeat
-		Selected = math.random(#Locations)
-	until Selected ~= Lasted
-
-	Walking = false
-	MarkedPassenger()
-	PaymentActive = true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MARKEDPASSENGER

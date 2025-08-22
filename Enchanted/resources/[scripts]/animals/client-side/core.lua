@@ -1,9 +1,4 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VRP
------------------------------------------------------------------------------------------------------------------------------------------
-local Tunnel = module("vrp","lib/Tunnel")
-vRPS = Tunnel.getInterface("vRP")
------------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Animal = nil
@@ -42,22 +37,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("animals:Spawn")
 AddEventHandler("animals:Spawn",function(Model)
-	if Animal and DoesEntityExist(Animal) then
+	if Animal and DoesEntityExist(Animal) and not LoadModel(Model) then
 		return false
 	end
 
 	local Ped = PlayerPedId()
+	local Heading = GetEntityHeading(Ped)
 	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,1.0,0.0)
-
-	local Networked = vRPS.CreateModels(Model,Coords.x,Coords.y,Coords.z)
-	if not Networked then
-		return false
-	end
-
-	Animal,AnimalNet = LoadNetwork(Networked)
-	while not DoesEntityExist(Animal) do
-		Wait(50)
-	end
+	Animal = CreatePed(28,Model,Coords.x,Coords.y,Coords.z,Heading,true,false)
 
 	ClearPedTasks(Animal)
 	SetPedKeepTask(Animal,true)
@@ -71,7 +58,7 @@ AddEventHandler("animals:Spawn",function(Model)
 	TaskFollowToOffsetOfEntity(Animal,Ped,0.5,0.0,0.0,5.0,-1,0.0,1)
 	GiveWeaponToPed(Animal,GetHashKey("WEAPON_ANIMAL"),200,true,true)
 
-	TriggerServerEvent("animals:Register",AnimalNet)
+	TriggerServerEvent("animals:Register",NetworkGetNetworkIdFromEntity(Animal))
 	TriggerServerEvent("dynamic:Close")
 
 	Follow = true

@@ -179,33 +179,35 @@ local Works = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENTITYREMOVED
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("entityRemoved",function(Index)
-	if IsPedAPlayer(Index) or GetEntityType(Index) ~= 2 then
+AddEventHandler("entityRemoved",function(Entitys)
+	if IsPedAPlayer(Entitys) or GetEntityType(Entitys) ~= 2 then
 		return false
 	end
 
-	local Plate = GetVehicleNumberPlateText(Index)
+	local Plate = GetVehicleNumberPlateText(Entitys)
+	Plate = Changed[Plate] or Plate
+
 	local Data = Spawn[Plate]
 	if not Data then
 		return false
 	end
 
-	local Windows = {}
-	local State = Entity(Index).state
-	local Coords = GetEntityCoords(Index)
-	local Health = GetEntityHealth(Index)
-	local Heading = GetEntityHeading(Index)
-	local Body = GetVehicleBodyHealth(Index)
-	local Engine = GetVehicleEngineHealth(Index)
+	local State = Entity(Entitys).state
+	local Health = GetEntityHealth(Entitys)
+	local Coords = GetEntityCoords(Entitys)
+	local Heading = GetEntityHeading(Entitys)
+	local Body = GetVehicleBodyHealth(Entitys)
+	local Engine = GetVehicleEngineHealth(Entitys)
 
+	local Windows = {}
 	for Number = 0,5 do
-		Windows[Number] = IsVehicleWindowIntact(Index,Number)
+		Windows[Number] = IsVehicleWindowIntact(Entitys,Number)
 	end
 
-	local VehCoords = vec4(Coords.x,Coords.y,Coords.z,Heading)
-	Respawns[Plate] = VehCoords
+	local VehicleCoords = vec4(Coords.x,Coords.y,Coords.z,Heading)
+	Respawns[Plate] = VehicleCoords
 
-	TriggerClientEvent("garages:Respawn",-1,"Add",Plate,VehCoords)
+	TriggerClientEvent("garages:Respawn",-1,"Add",Plate,VehicleCoords)
 
 	vRP.Update("vehicles/updateVehiclesRespawns",{ Passport = Data[1], Vehicle = Data[2], Nitro = parseInt(State.Nitro) or 0, Engine = parseInt(Engine), Body = parseInt(Body), Health = parseInt(Health), Fuel = parseInt(State.Fuel) or 0, Windows = json.encode(Windows) })
 end)
@@ -877,6 +879,8 @@ function Creative.Delete(Network,Doors,Tyres,Plate,Save)
 	if not DoesEntityExist(Networked) or IsPedAPlayer(Networked) or GetEntityType(Networked) ~= 2 or GetVehicleNumberPlateText(Networked) ~= Plate then
 		return false
 	end
+
+	Plate = Changed[Plate] or Plate
 
 	if Spawn[Plate] then
 		local Name = Spawn[Plate][2]

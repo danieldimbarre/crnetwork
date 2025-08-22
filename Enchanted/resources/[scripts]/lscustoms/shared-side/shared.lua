@@ -107,11 +107,11 @@ Values = {
 	FuelTank = 975,
 	Roof = 1275,
 	Turbo = 9275,
-	SuspensionUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
-	TransmissionUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
-	ShieldingUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
-	EngineUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
-	BrakeUpgrade = { 0.1,0.2,0.3,0.4,0.5,0.6 },
+	SuspensionUpgrade = { 100,200,300,400,500,600 },
+	TransmissionUpgrade = { 100,200,300,400,500,600 },
+	ShieldingUpgrade = { 100,200,300,400,500,600 },
+	EngineUpgrade = { 100,200,300,400,500,600 },
+	BrakeUpgrade = { 100,200,300,400,500,600 },
 	SteeringWheel = 725,
 	Xenons = 1275
 }
@@ -148,10 +148,10 @@ Resprays = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CALCULATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Calculate(Data,Vehicle)
+function Calculate(Table,Vehicle)
 	local Payment = 0
 
-	for Index,v in pairs(Data) do
+	for Index,v in pairs(Table) do
 		local Price = 0
 		local BasePrice = Values[Index] or 100
 		local Selected,Installed = v.Selected,v.Installed
@@ -167,7 +167,7 @@ function Calculate(Data,Vehicle)
 				local InstalledType,SelectedType = w.Installed,w.Selected
 
 				if Name == "PrimaryColour" or Name == "SecondaryColour" then
-					if InstalledType.Type ~= SelectedType.Type or InstalledType.Color[1] ~= SelectedType.Color[1] or InstalledType.Color[2] ~= SelectedType.Color[2] or InstalledType.Color[3] ~= SelectedType.Color[3] then
+					if InstalledType.Type ~= SelectedType.Type or (InstalledType.Color[1] ~= SelectedType.Color[1] or InstalledType.Color[2] ~= SelectedType.Color[2] or InstalledType.Color[3] ~= SelectedType.Color[3]) then
 						Price = Price + BasePrice
 					end
 				elseif InstalledType ~= SelectedType and SelectedType > -1 then
@@ -211,16 +211,17 @@ function Calculate(Data,Vehicle)
 				if Index:match("Upgrade") then
 					local VehiclePrice = VehiclePrice(Vehicle)
 					Values[Index] = {
-						parseInt(VehiclePrice * Values[Index][1]),
-						parseInt(VehiclePrice * Values[Index][2]),
-						parseInt(VehiclePrice * Values[Index][3]),
-						parseInt(VehiclePrice * Values[Index][4]),
-						parseInt(VehiclePrice * Values[Index][5]),
-						parseInt(VehiclePrice * Values[Index][6])
+						parseInt(VehiclePrice * 0.01),
+						parseInt(VehiclePrice * 0.02),
+						parseInt(VehiclePrice * 0.03),
+						parseInt(VehiclePrice * 0.04),
+						parseInt(VehiclePrice * 0.05),
+						parseInt(VehiclePrice * 0.06)
 					}
 				end
 
-				Price = Values[Index][math.min(Selected + 1,#Values[Index])] or BasePrice
+				local Total = #Values[Index]
+				Price = Values[Index][math.min(Selected + 1,Total)] or BasePrice
 			elseif Installed ~= Selected and Selected > -1 then
 				Price = BasePrice
 			end

@@ -336,7 +336,7 @@ CreateThread(function()
 				if IsPedInAnyHeli(Ped) then
 					Allowed = (Ammos == "WEAPON_RIFLE_AMMO")
 				else
-					Allowed = (Ammos == "WEAPON_PISTOL_AMMO")
+					Allowed = (Ammos == "WEAPON_PISTOL_AMMO" or Weapon == "WEAPON_ACIDPACKAGE")
 				end
 
 				SetPlayerCanDoDriveBy(Pid,Allowed)

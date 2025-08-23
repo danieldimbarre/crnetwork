@@ -667,7 +667,7 @@ end)
 RegisterCommand("nc",function(source)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
-		vRPC.noClip(source)
+		TriggerClientEvent("creative:NoClip",source)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

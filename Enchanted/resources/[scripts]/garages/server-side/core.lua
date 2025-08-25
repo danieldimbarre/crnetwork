@@ -880,7 +880,10 @@ function Creative.Delete(Network,Doors,Tyres,Plate,Save)
 		return false
 	end
 
-	Plate = Changed[Plate] or Plate
+	local Primary = Changed[Plate] and Plate or false
+	if Primary then
+		Plate = Changed[Plate]
+	end
 
 	if Spawn[Plate] then
 		local Name = Spawn[Plate][2]
@@ -912,6 +915,10 @@ function Creative.Delete(Network,Doors,Tyres,Plate,Save)
 	end
 
 	TriggerEvent("garages:Delete",Network,Plate)
+
+	if Primary then
+		TriggerEvent("garages:Delete",Network,Primary)
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:DELETED

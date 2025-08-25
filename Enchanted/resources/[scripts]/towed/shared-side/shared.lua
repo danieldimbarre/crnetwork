@@ -90,6 +90,6 @@ Models = {
 	"revolter","sentinel3","bati","bf400","flashgt","dominator7","osiris","turismor","jester4","pfister811",
 	"italigtb2","akuma","penumbra2","tempesta","raiden","vectre","entityxf","comet6","drafter","bati2","reaper",
 	"growler","tigon","italigtb","visione","entity2","deveste","hakuchou","vagner","tyrant","krieger","furia",
-	"xa21","neon","taipan","jugular","paragon2","hakuchou2","calico","zorrusso","italirsx","coquette4","italigto",
+	"xa21","neon","taipan","jugular","hakuchou2","calico","zorrusso","italirsx","coquette4","italigto",
 	"cyclone","neo","shinobi","thrax"
 }

@@ -4284,6 +4284,10 @@
 									<Name>COMPONENT_PISTOL_VARMOD_LUXE</Name>
 									<Default value="false" />
 								</Item>
+								<Item>
+									<Name>COMPONENT_PISTOL_FN</Name>
+									<Default value="false" />
+								</Item>
 							</Components>
 						</Item>
 						<Item>

@@ -324,10 +324,6 @@
 									<Name>COMPONENT_HEAVYPISTOL_VARMOD_LUXE</Name>
 									<Default value="false" />
 								</Item>
-								<Item>
-									<Name>COMPONENT_HEAVYPISTOL_KIMBER</Name>
-									<Default value="false" />
-								</Item>
 							</Components>
 						</Item>
 					</AttachPoints>

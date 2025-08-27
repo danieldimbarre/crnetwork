@@ -9,8 +9,14 @@
 			<lodDist value="175"/>
 		</Item>
 		<Item>
-			<modelName>w_pi_heavypistol_kimber</modelName>
-			<txdName>w_pi_heavypistol_kimber</txdName>
+			<modelName>w_pi_pistol_fn</modelName>
+			<txdName>w_pi_pistol_fn</txdName>
+			<ptfxAssetName>null</ptfxAssetName>
+			<lodDist value="175"/>
+		</Item>
+		<Item>
+			<modelName>w_pi_pistol_fn_mag1</modelName>
+			<txdName>w_pi_pistol_fn_mag1</txdName>
 			<ptfxAssetName>null</ptfxAssetName>
 			<lodDist value="175"/>
 		</Item>

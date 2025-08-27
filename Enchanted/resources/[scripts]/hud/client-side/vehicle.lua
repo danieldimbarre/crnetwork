@@ -147,13 +147,14 @@ CreateThread(function()
 					Locked = VLocked
 				end
 
-				if LocalPlayer["state"]["Nitro"] then
+				if NitroActive then
 					SendNUIMessage({ Action = "Nitro", Payload = NitroFuel })
 					Nitro = NitroFuel
 				else
-					if (Entity(Vehicle)["state"]["Nitro"] or 0) ~= Nitro then
-						SendNUIMessage({ Action = "Nitro", Payload = Entity(Vehicle)["state"]["Nitro"] or 0 })
-						Nitro = Entity(Vehicle)["state"]["Nitro"] or 0
+					local EntityState = Entity(Vehicle).state.Nitro or 0
+					if EntityState ~= Nitro then
+						SendNUIMessage({ Action = "Nitro", Payload = EntityState })
+						Nitro = EntityState
 					end
 				end
 
@@ -214,96 +215,108 @@ end)
 -- VEHICLETYREBURST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function VehicleTyreBurst(Vehicle)
-	local WheelAffect = 0
-	local NumWheels = GetVehicleNumberOfWheels(Vehicle)
+	if DoesEntityExist(Vehicle) then
+		local WheelIndex
+		local NumberWheels = GetVehicleNumberOfWheels(Vehicle)
 
-	if NumWheels == 2 then
-		WheelAffect = (math.random(2) - 1) * 4
-	elseif NumWheels == 4 then
-		WheelAffect = (math.random(4) - 1)
-
-		if WheelAffect > 1 then
-			WheelAffect = WheelAffect + 2
+		if NumberWheels == 2 then
+			WheelIndex = (math.random(2) - 1) * 4
+		elseif NumberWheels == 4 then
+			local Round = math.random(4) - 1
+			WheelIndex = (Round > 1) and (Round + 2) or Round
+		elseif NumberWheels == 6 then
+			WheelIndex = math.random(6) - 1
+		else
+			return
 		end
-	elseif NumWheels == 6 then
-		WheelAffect = (math.random(6) - 1)
-	end
 
-	if GetTyreHealth(Vehicle,WheelAffect) == 1000.0 then
-		SetVehicleTyreBurst(Vehicle,WheelAffect,true,1000.0)
-	end
+		if GetTyreHealth(Vehicle,WheelIndex) == 1000.0 then
+			SetVehicleTyreBurst(Vehicle,WheelIndex,true,1000.0)
+		end
 
-	if math.random(100) <= 25 then
-		VehicleTyreBurst(Vehicle)
+		if math.random(100) <= 25 then
+			VehicleTyreBurst(Vehicle)
+		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NITROENABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function NitroEnable()
-	if GetGameTimer() >= NitroButton and not IsPauseMenuActive() then
-		local Ped = PlayerPedId()
-		if IsPedInAnyVehicle(Ped) then
-			NitroButton = GetGameTimer() + 1000
+	if GetGameTimer() < NitroButton or IsPauseMenuActive() then
+		return false
+	end
 
-			local Vehicle = GetVehiclePedIsUsing(Ped)
-			if GetPedInVehicleSeat(Vehicle,-1) == Ped and GetVehicleTopSpeedModifier(Vehicle) < 50.0 then
-				NitroFuel = Entity(Vehicle)["state"]["Nitro"] or 0
+	local Ped = PlayerPedId()
+	if not IsPedInAnyVehicle(Ped) then
+		return false
+	end
 
-				if NitroFuel >= 1 and Speed > 10 then
-					NitroActive = true
+	local Vehicle = GetVehiclePedIsUsing(Ped)
+	if GetPedInVehicleSeat(Vehicle,-1) ~= Ped then
+		return false
+	end
 
-					while NitroActive do
-						if NitroFuel >= 1 then
-							NitroFuel = NitroFuel - 1
+	NitroButton = GetGameTimer() + 1000
 
-							if not LocalPlayer["state"]["Nitro"] then
-								LocalPlayer["state"]:set("Nitro",true,false)
-								Entity(Vehicle)["state"]:set("NitroFlame",true,true)
+	local VehicleState = Entity(Vehicle).state
+	NitroFuel = VehicleState.Nitro or 0
 
-								SetVehicleRocketBoostActive(Vehicle,true)
-								SetVehicleBoostActive(Vehicle,true)
-								ModifyVehicleTopSpeed(Vehicle,50.0)
-							end
-						else
-							if LocalPlayer["state"]["Nitro"] then
-								LocalPlayer["state"]:set("Nitro",false,false)
-								Entity(Vehicle)["state"]:set("NitroFlame",false,true)
-								Entity(Vehicle)["state"]:set("Nitro",NitroFuel,true)
-							end
+	if NitroFuel < 1 or Speed <= 10 or GetVehicleTopSpeedModifier(Vehicle) >= 100.0 then
+		return false
+	end
 
-							SetVehicleRocketBoostActive(Vehicle,false)
-							SetVehicleBoostActive(Vehicle,false)
-							ModifyVehicleTopSpeed(Vehicle,0.0)
-							NitroActive = false
-						end
+	NitroActive = true
+	LocalPlayer.state:set("Nitro",true,false)
+	VehicleState:set("NitroFlame",true,true)
 
-						Wait(1)
-					end
-				end
+	SetVehicleRocketBoostActive(Vehicle,true)
+	ModifyVehicleTopSpeed(Vehicle,100.0)
+	SetVehicleBoostActive(Vehicle,true)
+
+	CreateThread(function()
+		while NitroActive and DoesEntityExist(Vehicle) do
+			Wait(100)
+
+			NitroFuel = NitroFuel - 10
+
+			if NitroFuel > 0 then
+				VehicleState:set("Nitro",NitroFuel,true)
+			else
+				LocalPlayer.state:set("Nitro",false,false)
+				VehicleState:set("NitroFlame",false,true)
+				VehicleState:set("Nitro",0,true)
+				NitroActive = false
+
+				SetVehicleRocketBoostActive(Vehicle,false)
+				SetVehicleBoostActive(Vehicle,false)
+				ModifyVehicleTopSpeed(Vehicle,0.0)
+
+				break
 			end
 		end
-	end
+	end)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NITRODISABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function NitroDisable()
-	if LocalPlayer["state"]["Nitro"] then
-		LocalPlayer["state"]:set("Nitro",false,false)
-
-		local Vehicle = GetLastDrivenVehicle()
-		if DoesEntityExist(Vehicle) then
-			Entity(Vehicle)["state"]:set("Nitro",NitroFuel,true)
-			Entity(Vehicle)["state"]:set("NitroFlame",false,true)
-
-			SetVehicleRocketBoostActive(Vehicle,false)
-			SetVehicleBoostActive(Vehicle,false)
-			ModifyVehicleTopSpeed(Vehicle,0.0)
-		end
+	if not NitroActive then
+		return false
 	end
 
 	NitroActive = false
+	LocalPlayer.state:set("Nitro",false,false)
+
+	local Vehicle = GetLastDrivenVehicle()
+	if DoesEntityExist(Vehicle) then
+		Entity(Vehicle).state:set("Nitro",NitroFuel,true)
+		Entity(Vehicle).state:set("NitroFlame",false,true)
+
+		SetVehicleRocketBoostActive(Vehicle,false)
+		SetVehicleBoostActive(Vehicle,false)
+		ModifyVehicleTopSpeed(Vehicle,0.0)
+	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER
@@ -369,7 +382,7 @@ CreateThread(function()
 					SeatbeltLock = false
 				end
 
-				if LocalPlayer["state"]["Nitro"] then
+				if NitroActive then
 					NitroDisable()
 				end
 			end

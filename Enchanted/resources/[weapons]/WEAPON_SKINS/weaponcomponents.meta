@@ -39,8 +39,8 @@
 			<ExtraComponents />
 		</Item>
 		<Item type="CWeaponComponentVariantModelInfo">
-			<Name>COMPONENT_HEAVYPISTOL_KIMBER</Name>
-			<Model>w_pi_heavypistol_kimber</Model>
+			<Name>COMPONENT_PISTOL_FN</Name>
+			<Model>w_pi_pistol_fn</Model>
 			<LocName>WCT_INVALID</LocName>
 			<LocDesc>WCD_INVALID</LocDesc>
 			<AttachBone />
@@ -56,12 +56,12 @@
 			<TintIndexOverride value="0" />
 			<ExtraComponents>
 				<Item>
-					<ComponentName>COMPONENT_HEAVYPISTOL_CLIP_01</ComponentName>
-					<ComponentModel>w_pi_heavypistol_kimber_mag1</ComponentModel>
+					<ComponentName>COMPONENT_PISTOL_CLIP_01</ComponentName>
+					<ComponentModel>w_pi_pistol_fn_mag1</ComponentModel>
 				</Item>
 				<Item>
-					<ComponentName>COMPONENT_HEAVYPISTOL_CLIP_02</ComponentName>
-					<ComponentModel>w_pi_heavypistol_kimber_mag1</ComponentModel>
+					<ComponentName>COMPONENT_PISTOL_CLIP_02</ComponentName>
+					<ComponentModel>w_pi_pistol_fn_mag1</ComponentModel>
 				</Item>
 			</ExtraComponents>
 		</Item>

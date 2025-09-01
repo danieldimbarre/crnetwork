@@ -112,7 +112,7 @@ AddEventHandler("pdm:Open",function(Number)
 		SetNuiFocus(true,true)
 		SetCursorLocation(0.5,0.5)
 		TriggerEvent("hud:Active",false)
-		SendNUIMessage({ Action = "Open", Payload = { Config[Selected].List,vSERVER.Discount(),0.25,"MENSAL" } })
+		SendNUIMessage({ Action = "Open", Payload = { Vehicles = Config[Selected].List, Discounts = vSERVER.Discount(), Tax = 0.25, TaxTime = "MENSAL" } })
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

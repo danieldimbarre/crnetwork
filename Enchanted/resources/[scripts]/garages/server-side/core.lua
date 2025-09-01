@@ -883,6 +883,7 @@ function Creative.Delete(Network,Doors,Tyres,Plate,Save)
 	local Primary = Changed[Plate] and Plate or false
 	if Primary then
 		Plate = Changed[Plate]
+		Changed[Primary] = nil
 	end
 
 	if Spawn[Plate] then

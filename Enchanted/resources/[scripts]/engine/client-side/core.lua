@@ -42,6 +42,7 @@ AddEventHandler("engine:FuelAdmin",function()
 	if IsPedInAnyVehicle(Ped) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
 		Entity(Vehicle).state:set("Fuel",100.0,true)
+		TriggerServerEvent("engine:SyncFuel",VehToNet(Vehicle),100.0)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -163,8 +164,10 @@ AddEventHandler("engine:Supply",function(Entitys)
 		if (VehicleFuel >= 100 or GetEntityHealth(Ped) <= 100 or (Gallons and GetAmmoInPedWeapon(Ped,883325847) <= 2) or IsControlJustPressed(1,38) or not DoesEntityExist(Vehicle)) then
 			if not Gallons and not vSERVER.RechargeFuel(Price) then
 				VehicleState:set("Fuel",Lasted + 0.0,true)
+				TriggerServerEvent("engine:SyncFuel",VehToNet(Vehicle),Lasted + 0.0)
 				TriggerEvent("Notify","Aviso","Dinheiro insuficiente.","amarelo",5000)
 			else
+				TriggerServerEvent("engine:SyncFuel",VehToNet(Vehicle),VehicleFuel + 0.0)
 				VehicleState:set("Fuel",VehicleFuel + 0.0,true)
 			end
 

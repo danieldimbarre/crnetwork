@@ -21,3 +21,13 @@ function Creative.RechargeFuel(Price)
 
 	return false
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ENGINE:SYNCFUEL
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("engine:SyncFuel")
+AddEventHandler("engine:SyncFuel",function(Network,Fuel)
+	local Vehicle = NetworkGetEntityFromNetworkId(Network)
+	if DoesEntityExist(Vehicle) then
+		Entity(Vehicle).state:set("Fuel",Fuel,true)
+	end
+end)

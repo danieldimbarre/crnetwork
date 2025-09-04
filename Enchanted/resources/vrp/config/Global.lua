@@ -38,6 +38,38 @@ TexturePack = {
 	"Drop","E","H","Normal","Selected"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- FIVEGUARD
+-----------------------------------------------------------------------------------------------------------------------------------------
+FiveGuard = "nomedapasta" -- nome da pasta que colocou no fiveguard
+FiveGuardPermissions = {
+	AdminMenu = {
+		"AdminMenuAccess","AnnouncementAccess","ESPAccess","ClearEntitiesAccess",
+		"BanAndKickAccess","GotoAndBringAccess","VehicleAccess","MiscAccess",
+		"LogsAccess","PlayerSelectorAccess","BanListAndUnbanAccess","ModelChangerAccess"
+	},
+	Client = {
+		"BypassSpectate","BypassGodMode","BypassInvisible","BypassStealOutfit",
+		"BypassInfStamina","BypassNoclip","BypassSuperJump","BypassFreecam",
+		"BypassSpeedHack","BypassTeleport","BypassNightVision","BypassThermalVision",
+		"BypassExplosiveAmmo","BypassOCR","BypassNuiDevtools","BypassBlacklistedTextures",
+		"BlipsBypass","BypassCbScanner","BypassSpoofedBulletShot"
+	},
+	Weapon = {
+		"BypassWeaponDmgModifier","BypassInfAmmo","BypassNoReload","BypassRapidFire"
+	},
+	Vehicle = {
+		"BypassVehicleFixAndGodMode","BypassVehicleHandlingEdit","BypassVehicleModifier",
+		"BypassBulletproofTires","BypassVehiclePlateChanger"
+	},
+	Blacklist = {
+		"BypassModelChanger","BypassWeaponBlacklist"
+	},
+	Misc = {
+		"FGCommands","BypassVPN","BypassExplosion","BypassClearTasks",
+		"BypassParticle","BypassSpoofedWeapons"
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- THEME
 -----------------------------------------------------------------------------------------------------------------------------------------
 Theme = {
@@ -163,7 +195,7 @@ Groups = {
 		Permission = {
 			Admin = true
 		},
-		Hierarchy = { "Administrador","Moderador","Suporte" },
+		Hierarchy = { "Administrador","Diretor","Moderador","Suporte","Ajudante" },
 		Name = "Adminstradores",
 		Service = true,
 		Chat = true,
@@ -203,8 +235,8 @@ Groups = {
 		Permission = {
 			LSPD = true
 		},
-		Hierarchy = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
-		Salary = { 3750,3625,3500,3375,3250,3125 },
+		Hierarchy = { "Coronel","Tenente-Coronel","Major","Capitão","1º Tenente","2º Tenente","Aspirante","Subtenente","1º Sargento","2º Sargento","3º Sargento","Cabo","Soldado","Recruta","Delegada" },
+		Salary = { 10000,9750,9500,9250,9000,8750,8500,8250,8000,7750,7500,7250,7000,6750,6500 },
 		Name = "Los Santos Police Department",
 		Service = true,
 		Type = "Work",
@@ -215,8 +247,8 @@ Groups = {
 		Permission = {
 			BCSO = true
 		},
-		Hierarchy = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
-		Salary = { 3750,3625,3500,3375,3250,3125 },
+		Hierarchy = { "Coronel","Tenente-Coronel","Major","Capitão","1º Tenente","2º Tenente","Aspirante","Subtenente","1º Sargento","2º Sargento","3º Sargento","Cabo","Soldado","Recruta","Delegada" },
+		Salary = { 10000,9750,9500,9250,9000,8750,8500,8250,8000,7750,7500,7250,7000,6750,6500 },
 		Name = "Blaine County Sheriff Officer",
 		Service = true,
 		Type = "Work",
@@ -227,8 +259,8 @@ Groups = {
 		Permission = {
 			SAPR = true
 		},
-		Hierarchy = { "Chefe","Capitão","Tenente","Sargento","Oficial","Cadete" },
-		Salary = { 3750,3625,3500,3375,3250,3125 },
+		Hierarchy = { "Coronel","Tenente-Coronel","Major","Capitão","1º Tenente","2º Tenente","Aspirante","Subtenente","1º Sargento","2º Sargento","3º Sargento","Cabo","Soldado","Recruta","Delegada" },
+		Salary = { 10000,9750,9500,9250,9000,8750,8500,8250,8000,7750,7500,7250,7000,6750,6500 },
 		Name = "San Andreas Park Ranger",
 		Service = true,
 		Type = "Work",
@@ -239,8 +271,8 @@ Groups = {
 		Permission = {
 			Paramedico = true
 		},
-		Hierarchy = { "Chefe","Médico","Enfermeiro","Residente" },
-		Salary = { 3750,3625,3500,3375 },
+		Hierarchy = { "Diretor-Geral","Diretor Clínico","Diretor Técnico","Chefe de Corpo Clínico","Médico Supervisor","Médico Cirurgião","Médico Plantonista","Médico Especialista","Médico Clínico","Residente","Enfermeiro","Técnico de Enfermagem","Auxiliar de Enfermagem","Estagiário de Medicina","Estagiário de Enfermagem" },
+		Salary = { 8750,8500,8250,8000,7750,7500,7250,7000,6750,6500,6250,6000,5750,5500,5250 },
 		Service = true,
 		Type = "Work",
 		Markers = true,
@@ -250,7 +282,7 @@ Groups = {
 		Permission = {
 			Ballas = true
 		},
-		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
 		Domination = true,
 		Service = true,
 		Type = "Work"
@@ -259,7 +291,7 @@ Groups = {
 		Permission = {
 			Vagos = true
 		},
-		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
 		Domination = true,
 		Service = true,
 		Type = "Work"
@@ -268,7 +300,7 @@ Groups = {
 		Permission = {
 			Families = true
 		},
-		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
 		Domination = true,
 		Service = true,
 		Type = "Work"
@@ -277,7 +309,7 @@ Groups = {
 		Permission = {
 			Marabunta = true
 		},
-		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
 		Domination = true,
 		Service = true,
 		Type = "Work"
@@ -286,7 +318,7 @@ Groups = {
 		Permission = {
 			Aztecas = true
 		},
-		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
 		Domination = true,
 		Service = true,
 		Type = "Work"
@@ -295,7 +327,8 @@ Groups = {
 		Permission = {
 			Bennys = true
 		},
-		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Hierarchy = { "Dono","Gerente de Oficina","Supervisor de Oficina","Especialista Automotivo","Mecânico Sênior","Mecânico Pleno","Mecânico Júnior","Ajudante de Mecânico","Estagiário de Mecânica" },
+		Salary = { 4000,3750,3500,3250,3000,2750,2500,2250,2000 },
 		Service = true,
 		Type = "Work"
 	},
@@ -303,7 +336,8 @@ Groups = {
 		Permission = {
 			Bahamas = true
 		},
-		Hierarchy = { "Líder","Sub-Líder","Membro","Recruta" },
+		Hierarchy = { "Dono","Sócio","Gerente","Maitré","Especialista","Cozinheiro Sênior","Cozinheiro Pleno","Cozinheiro Júnior","Ajudante de Cozinha","Estagiário de Cozinha" },
+		Salary = { 4000,3750,3500,3250,3000,2750,2500,2250,2000,1750 },
 		Service = true,
 		Type = "Work"
 	},
@@ -311,7 +345,8 @@ Groups = {
 		Permission = {
 			Restaurante = true
 		},
-		Hierarchy = { "Chefe","Supervisor","Funcionário" },
+		Hierarchy = { "Dono","Sócio","Gerente","Maitré","Especialista","Cozinheiro Sênior","Cozinheiro Pleno","Cozinheiro Júnior","Ajudante de Cozinha","Estagiário de Cozinha" },
+		Salary = { 4000,3750,3500,3250,3000,2750,2500,2250,2000,1750 },
 		Service = true,
 		Type = "Work"
 	},

@@ -395,18 +395,18 @@ Weapons = {
 	},{
 		["id"] = 27,
 		["price"] = 4725,
-		["name"] = "Furia Noturna",
-		["damage"] = 35,
-		["shot_rate"] = 125,
-		["mobility"] = 40,
-		["capacity"] = 18,
+		["name"] = "FN Five-Seven",
+		["damage"] = 20,
+		["shot_rate"] = 2,
+		["mobility"] = 15,
+		["capacity"] = 0,
 		["rotate"] = true,
 		["hide"] = false,
 		["rotation"] = vec3(0.0,0.0,90.0),
 		["offset"] = vec3(0.0,0.0,0.0),
-		["weapon"] = "WEAPON_HEAVYPISTOL",
-		["description"] = "Ati FX45",
-		["component"] = "COMPONENT_HEAVYPISTOL_KIMBER"
+		["weapon"] = "WEAPON_PISTOL_MK2",
+		["description"] = "Five Seven",
+		["component"] = "COMPONENT_PISTOL_FN"
 	},{
 		["id"] = 28,
 		["price"] = 1725,

@@ -297,7 +297,7 @@ local List = {
 		Name = "Packer",
 		Weight = 0,
 		Price = 1000,
-		Mode = nil,
+		Mode = "Work",
 		Gemstone = 0,
 		Class = "Caminhões"
 	},

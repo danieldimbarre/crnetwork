@@ -216,6 +216,8 @@ exports("ReloadCharacter",function()
 	SetWeaponsNoAutoswap(true)
 	SetBlipAlpha(GetNorthRadarBlip(),0)
 	ReplaceHudColourWithRgba(116,88,101,242,225)
+	ReplaceHudColourWithRgba(140,88,101,242,150)
+	ReplaceHudColourWithRgba(142,88,101,242,225)
 
 	SetAudioFlag("ActivateSwitchWheelAudio",false)
 	SetAudioFlag("AllowAmbientSpeechInSlowMo",false)

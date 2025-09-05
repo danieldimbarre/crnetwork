@@ -63,7 +63,7 @@ local Category = {
 	},
 	[9] = {
 		"vagner","tyrant","krieger","furia","xa21",
-		"neon","taipan","jugular","paragon2","hakuchou2"
+		"neon","taipan","jugular","hakuchou2"
 	},
 	[10] = {
 		"calico","zorrusso","italirsx","coquette4",

@@ -43,9 +43,10 @@ CreateThread(function()
 	while true do
 		Wait(60000)
 
+		local CurrentTimer = os.time()
 		for Route,List in pairs(Drops) do
 			for Number,v in pairs(List) do
-				if v.created and (os.time() - v.created >= 600) then
+				if v.created and v.created < CurrentTimer then
 					HandleDropRemoval(Route,Number,v)
 				end
 			end
@@ -99,7 +100,7 @@ exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 		route = Route,
 		id = Selected,
 		amount = Amount,
-		created = os.time(),
+		created = os.time() + 600,
 		coords = Coords or vRP.GetEntityCoords(source),
 		key = Force and Item or vRP.SortNameItem(Passport,Item)
 	}
@@ -151,8 +152,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Pickup(Number,Route,Target,Amount)
 	local source = source
-	local Target = tostring(Target)
 	Amount = parseInt(Amount,true)
+	local Target = tostring(Target)
 	local Passport = vRP.Passport(source)
 	local Info = Drops[Route] and Drops[Route][Number]
 	if not (Passport and Info and Info.key and Amount >= 1) or Active[Passport] then

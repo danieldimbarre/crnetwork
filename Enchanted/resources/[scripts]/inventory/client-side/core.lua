@@ -140,6 +140,8 @@ AddEventHandler("inventory:RepairAdmin",function(Index,Plate)
 			SetVehicleDirtLevel(Vehicle,0.0)
 			SetVehicleDeformationFixed(Vehicle)
 			SetVehicleFuelLevel(Vehicle,Fuel)
+
+			TriggerEvent("target:RollVehicle",Index)
 		end
 	end
 end)
@@ -150,18 +152,6 @@ function Creative.Waypoint(Coords)
 	if Coords.x ~= 0.0 and Coords.y ~= 0.0 then
 		SetNewWaypoint(Coords.x + 0.0001,Coords.y + 0.0001)
 	end
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- FISHING
------------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Fishing()
-	local Fishing = false
-	local Ped = PlayerPedId()
-	if #(GetEntityCoords(Ped) - vec3(1183.88,4002.14,30.23)) <= 400 then
-		Fishing = true
-	end
-
-	return Fishing
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:EXPLODETYRES

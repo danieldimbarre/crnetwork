@@ -282,17 +282,47 @@ RegisterCommand("print",function(source,Message)
 		end
 	end
 end)
+------------------------------------------------------------------------------------------------------------------------------------------
+-- POINTBATTLEPASS
+------------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("pointbattlepass",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasPermission(Passport,"Admin",1) then
+		local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Quantidade")
+		if Keyboard then
+			local Amount = parseInt(Keyboard[2])
+			local OtherPassport = parseInt(Keyboard[1])
+			if vRP.Identity(OtherPassport) then
+				vRP.BattlepassPoints(OtherPassport,Amount)
+				TriggerClientEvent("Notify",source,"Sucesso","Pontos enviados.","verde",5000)
+			end
+		end
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WIPEBATTLEPASS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("wipebattlepass",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",1) then
-		vRP.Query("entitydata/SetData",{ Name = "Battlepass", Information = os.time() })
+		local CurrentTimer = os.time()
+
+		vRP.Query("entitydata/SetData",{ Name = "Battlepass", Information = CurrentTimer })
 		exports["oxmysql"]:query_async("DELETE FROM playerdata WHERE Name = ?",{ "Battlepass" })
 
 		TriggerClientEvent("Notify",source,"Sucesso","Passe de batalha resetado.","verde",5000)
-		TriggerClientEvent("pause:UpdateConfig",-1)
+		TriggerEvent("pause:WipeBattlepass",CurrentTimer)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WIPEONLINE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("wipeonline",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin",1) then
+		vRP.WipePlaying()
+		exports.oxmysql:query_async("DELETE FROM entitydata WHERE Name LIKE 'Playing:%'")
+		TriggerClientEvent("Notify",source,"Sucesso","Tempo online resetado.","verde",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -428,6 +458,21 @@ RegisterCommand("wipepermissions",function(source,Message)
 			end
 
 			exports["oxmysql"]:query_async("DELETE FROM permissions WHERE Permission = ?",{ Permission })
+		end
+	end
+end)
+------------------------------------------------------------------------------------------------------------------------------------------
+-- REFERRAL
+------------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("referral",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasPermission(Passport,"Admin") then
+		local Keyboard = vKEYBOARD.Primary(source,"Código")
+		if Keyboard then
+			local Code = Keyboard[1]
+			local Amount = exports.oxmysql:scalar_async("SELECT COUNT(Referral) FROM accounts WHERE Referral = ?",{ Code })
+
+			TriggerClientEvent("Notify",source,Code,"Utilizado por <b>"..Amount.."</b> pessoas.","verde",10000)
 		end
 	end
 end)
@@ -890,7 +935,6 @@ RegisterCommand("fix",function(source)
 			local Players = vRPC.Players(source)
 			for _,OtherSource in pairs(Players) do
 				async(function()
-					TriggerClientEvent("target:RollVehicle",OtherSource,Network)
 					TriggerClientEvent("inventory:RepairAdmin",OtherSource,Network,Plate)
 				end)
 			end

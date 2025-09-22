@@ -1,9 +1,9 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Payload = {}
 local Displays = {}
 local Active = false
+local Payload = nil
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADFY
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -13,19 +13,23 @@ CreateThread(function()
 		local Coords = GetEntityCoords(Ped)
 
 		if not Active then
-			if LocalPlayer["state"]["Route"] == 0 then
-				for Number,v in pairs(Displays) do
-					if #(Coords - v["Coords"]) <= v["Distance"] then
-						Active = Number
-						Payload = { v["Key"], v["Title"], v["Legend"] }
+			if LocalPlayer.state.Route == 0 then
+				for Index,v in pairs(Displays) do
+					if #(Coords - v.Coords) <= v.Distance then
+						Active = Index
+						Payload = { Key = v.Key, Title = v.Title, Legend = v.Legend }
 						SendNUIMessage({ Action = "Show", Payload = Payload })
+
+						break
 					end
 				end
 			end
 		else
-			if Displays[Active] and #(Coords - Displays[Active]["Coords"]) > Displays[Active]["Distance"] then
+			local Display = Displays[Active]
+			if not Display or #(Coords - Display.Coords) > Display.Distance then
 				SendNUIMessage({ Action = "Hide" })
 				Active = false
+				Payload = nil
 			end
 		end
 
@@ -36,26 +40,26 @@ end)
 -- HOVERFY:INSERT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("hoverfy:Insert")
-AddEventHandler("hoverfy:Insert",function(Table)
-	for Number = 1,#Table do
+AddEventHandler("hoverfy:Insert",function(Data)
+	for i = 1,#Data do
+		local Entry = Data[i]
 		Displays[#Displays + 1] = {
-			["Coords"] = Table[Number][1],
-			["Distance"] = Table[Number][2],
-			["Key"] = Table[Number][3],
-			["Title"] = Table[Number][4],
-			["Legend"] = Table[Number][5]
+			Coords = Entry[1],
+			Distance = Entry[2],
+			Key = Entry[3],
+			Title = Entry[4],
+			Legend = Entry[5]
 		}
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Hoverfy",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
-	if Displays[Active] then
-		if Value then
-			SendNUIMessage({ Action = "Show", Payload = Payload })
-		else
-			SendNUIMessage({ Action = "Hide" })
-		end
+AddStateBagChangeHandler("Hoverfy",("player:%s"):format(LocalPlayer.state.Source),function(_,_,Value)
+	if Active and Displays[Active] then
+		SendNUIMessage({
+			Action = Value and "Show" or "Hide",
+			Payload = Payload
+		})
 	end
 end)

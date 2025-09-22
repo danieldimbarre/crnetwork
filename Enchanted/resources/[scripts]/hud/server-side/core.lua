@@ -7,30 +7,28 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
+Creative = {}
+Tunnel.bindInterface("hud",Creative)
 vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-GlobalState["Work"] = 0
-GlobalState["Hours"] = 10
-GlobalState["Players"] = 0
-GlobalState["Minutes"] = 0
-GlobalState["Weather"] = "EXTRASUNNY"
+GlobalState.Work = 0
+GlobalState.Hours = 12
+GlobalState.Players = 0
+GlobalState.Minutes = 0
+GlobalState.Weather = "EXTRASUNNY"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYNC
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		GlobalState["Work"] = GlobalState["Work"] + 1
-		GlobalState["Minutes"] = GlobalState["Minutes"] + 1
+		GlobalState.Work = GlobalState.Work + 1
+		GlobalState.Minutes = GlobalState.Minutes + 1
 
-		if GlobalState["Minutes"] >= 60 then
-			GlobalState["Hours"] = GlobalState["Hours"] + 1
-			GlobalState["Minutes"] = 0
-
-			if GlobalState["Hours"] >= 24 then
-				GlobalState["Hours"] = 0
-			end
+		if GlobalState.Minutes >= 60 then
+			GlobalState.Hours = (GlobalState.Hours + 1) % 24
+			GlobalState.Minutes = 0
 		end
 
 		Wait(10000)
@@ -55,9 +53,9 @@ RegisterCommand("timeset",function(source,Message)
 				Minutes = 0
 			end
 
-			GlobalState["Hours"] = Hours
-			GlobalState["Minutes"] = Minutes
-			GlobalState["Weather"] = Keyboard[3]
+			GlobalState.Hours = Hours
+			GlobalState.Minutes = Minutes
+			GlobalState.Weather = Keyboard[3]
 		end
 	end
 end)

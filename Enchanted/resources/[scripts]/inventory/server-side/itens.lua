@@ -169,9 +169,9 @@ Use = {
 		if Keyboard then
 			local Frequency = sanitizeString(Keyboard[1],"0123456789")
 			if Frequency and string.len(Frequency) >= 1 and string.sub(Frequency,1,1) ~= "0" then
-				if not exports.radio:Exist(Frequency) and vRP.TakeItem(Passport,Full,1,false,Slot) then
+				if not exports.hud:RadioExist(Frequency) and vRP.TakeItem(Passport,Full,1,false,Slot) then
 					TriggerClientEvent("Notify",source,"Sucesso","Frequência adicionada.","verde",5000)
-					exports.radio:Add(Frequency,Keyboard[2])
+					exports.hud:RadioAdd(Frequency,Keyboard[2])
 				end
 			else
 				TriggerClientEvent("Notify",source,"Negado","Precisa ter no mínimo 1 número e não pode começar com zero.","vermelho",5000)
@@ -3205,7 +3205,7 @@ Use = {
 					Player(ClosestPed).state.Handcuff = true
 					Player(ClosestPed).state.Commands = true
 					TriggerClientEvent("inventory:Close",ClosestPed)
-					TriggerClientEvent("radio:RadioClean",ClosestPed)
+					TriggerClientEvent("radio:Disconnect",ClosestPed)
 				end
 
 				Player(source).state.Cancel = false

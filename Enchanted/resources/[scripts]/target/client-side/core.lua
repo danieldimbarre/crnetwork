@@ -543,7 +543,7 @@ function TargetEnable()
 
 									table.insert(Menu,{ event = "inventory:ChangePlate", label = "Trocar Placa", tunnel = "server" })
 
-									if Lockpick and Lockpick == LocalPlayer.state.Passport then
+									if Lockpick == LocalPlayer.state.Passport then
 										table.insert(Menu,{ event = "garages:Key", label = "Chave Veícular", tunnel = "server" })
 									end
 								end
@@ -632,9 +632,6 @@ function TargetEnable()
 
 				Selected = { source }
 
-				table.insert(Menu,{ event = "inspect:Player", label = "Revistar", tunnel = "paramedic" })
-				table.insert(Menu,{ event = "paramedic:Diagnostic", label = "Informações", tunnel = "paramedic" })
-
 				if GetEntityHealth(Entitys) <= 100 then
 					if Player(source).state.Crawl then
 						table.insert(Menu,{ event = "paramedic:Adrenaline", label = "Ajudar", tunnel = "paramedic" })
@@ -664,6 +661,12 @@ function TargetEnable()
 				if CheckPolice() then
 					table.insert(Menu,{ event = "prison:Itens", label = "Apreender", tunnel = "paramedic" })
 				end
+
+				if LocalPlayer.state.Paramedico then
+					table.insert(Menu,{ event = "paramedic:Diagnostic", label = "Informações", tunnel = "paramedic" })
+				end
+
+				table.insert(Menu,{ event = "inspect:Player", label = "Revistar", tunnel = "paramedic" })
 
 				if #Menu >= 1 then
 					SendNUIMessage({ Action = "Valid", data = Menu })

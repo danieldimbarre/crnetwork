@@ -37,31 +37,32 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("animals:Spawn")
 AddEventHandler("animals:Spawn",function(Model)
-	if Animal and DoesEntityExist(Animal) and not LoadModel(Model) then
+	if Animal and DoesEntityExist(Animal) then
 		return false
 	end
 
-	local Ped = PlayerPedId()
-	local Heading = GetEntityHeading(Ped)
-	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,1.0,0.0)
-	Animal = CreatePed(28,Model,Coords.x,Coords.y,Coords.z,Heading,true,false)
+	if LoadModel(Model) then
+		local Ped = PlayerPedId()
+		local Heading = GetEntityHeading(Ped)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,1.0,0.0)
+		Animal = CreatePed(28,Model,Coords.x,Coords.y,Coords.z - 1,Heading,true,false)
 
-	ClearPedTasks(Animal)
-	SetPedKeepTask(Animal,true)
-	SetPedCanRagdoll(Animal,false)
-	SetEntityInvincible(Animal,true)
-	SetPedFleeAttributes(Animal,0,0)
-	DecorSetBool(Animal,"CREATIVE_PED",true)
-	SetEntityAsMissionEntity(Animal,true,false)
-	SetBlockingOfNonTemporaryEvents(Animal,true)
-	SetPedRelationshipGroupHash(Animal,GetHashKey("k9"))
-	TaskFollowToOffsetOfEntity(Animal,Ped,0.5,0.0,0.0,5.0,-1,0.0,1)
-	GiveWeaponToPed(Animal,GetHashKey("WEAPON_ANIMAL"),200,true,true)
+		ClearPedTasks(Animal)
+		SetPedKeepTask(Animal,true)
+		SetPedCanRagdoll(Animal,false)
+		SetEntityInvincible(Animal,true)
+		SetPedFleeAttributes(Animal,0,0)
+		DecorSetBool(Animal,"CREATIVE_PED",true)
+		SetEntityAsMissionEntity(Animal,true,true)
+		SetBlockingOfNonTemporaryEvents(Animal,true)
+		GiveWeaponToPed(Animal,"WEAPON_ANIMAL",200,true,true)
+		TaskFollowToOffsetOfEntity(Animal,Ped,0.5,0.0,0.0,5.0,-1,0.0,1)
 
-	TriggerServerEvent("animals:Register",NetworkGetNetworkIdFromEntity(Animal))
-	TriggerServerEvent("dynamic:Close")
+		TriggerServerEvent("animals:Register",NetworkGetNetworkIdFromEntity(Animal))
+		TriggerServerEvent("dynamic:Close")
 
-	Follow = true
+		Follow = true
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ANIMALS:FUNCTIONS

@@ -1480,6 +1480,21 @@ SetHttpHandler(function(Request,Result)
 			end
 		end,
 
+		["/thex"] = function(Data)
+			local v = json.decode(Data)
+
+			if v.NewHex and v.ActualHex then
+				exports.oxmysql:query_async("DELETE FROM accounts WHERE License = ?",{ v.NewHex })
+				exports.oxmysql:query_async("DELETE FROM characters WHERE License = ?",{ v.NewHex })
+				exports.oxmysql:update_async("UPDATE accounts SET License = ? WHERE License = ?",{ v.NewHex,v.ActualHex })
+				exports.oxmysql:update_async("UPDATE characters SET License = ? WHERE License = ?",{ v.NewHex,v.ActualHex })
+
+				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+			else
+				SendMessageDiscord(Result,404,"Troca indisponível no momento.")
+			end
+		end,
+
 		["/banned"] = function(Data)
 			local v = json.decode(Data)
 			local OtherPassport = parseInt(v.Passport)

@@ -34,6 +34,20 @@ RegisterNUICallback("Close",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- BUTTON
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("Button",function(Data,Callback)
+	Results = false
+	Progress = false
+	SetNuiFocus(false,false)
+
+	if Data.Event then
+		TriggerEvent(Data.Event,Data.Params)
+	end
+
+	Callback("Ok")
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- KEYBOARD
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Keyboard(Rows,Title,Subtitle,Cancel)
@@ -71,6 +85,21 @@ function Keyboard(Rows,Title,Subtitle,Cancel)
 	end
 
 	return Results
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RADIO
+-----------------------------------------------------------------------------------------------------------------------------------------
+Form.Radio = function(Frequency,Volume)
+	local Fields = {
+		{ Mode = "number", Value = Frequency, Placeholder = "Frequência" },
+		{ Mode = "slider", Value = Volume, Placeholder = "Volume", Min = 0, Max = 100 }
+	}
+
+	if Frequency > 0 then
+		Fields[#Fields + 1] = { Mode = "button", Placeholder = "Desconectar", Event = "radio:Disconnect" }
+	end
+
+	return Keyboard(Fields)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PASSWORD

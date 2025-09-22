@@ -390,14 +390,18 @@ CreateThread(function()
 			ClearPlayerWantedLevel(Pid)
 		end
 
-		SetWeatherTypeNow(GlobalState.Weather)
-		SetWeatherTypePersist(GlobalState.Weather)
-		SetWeatherTypeNowPersist(GlobalState.Weather)
-
 		if not LocalPlayer.state.Creation and LocalPlayer.state.Active then
 			NetworkOverrideClockTime(GlobalState.Hours,GlobalState.Minutes,0)
+
+			SetWeatherTypeNowPersist(GlobalState.Weather)
+			SetOverrideWeather(GlobalState.Weather)
+			SetWeatherTypeNow(GlobalState.Weather)
 		else
 			NetworkOverrideClockTime(12,0,0)
+
+			SetWeatherTypeNow("EXTRASUNNY")
+			SetOverrideWeather("EXTRASUNNY")
+			SetWeatherTypeNowPersist("EXTRASUNNY")
 		end
 
 		Wait(0)
@@ -539,6 +543,6 @@ CreateThread(function()
 			EnableDispatchService(Number,false)
 		end
 
-		Wait(10000)
+		Wait(100)
 	end
 end)

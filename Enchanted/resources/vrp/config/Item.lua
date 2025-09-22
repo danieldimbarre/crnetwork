@@ -4120,7 +4120,7 @@ local List = {
 		["Weight"] = 0.75,
 		["Execute"] = {
 			["Type"] = "Client",
-			["Event"] = "radio:RadioClean"
+			["Event"] = "radio:Disconnect"
 		},
 		["LostWater"] = true,
 		["Economy"] = 975,

@@ -32,56 +32,76 @@ function addPlayerToRadio(source,radioChannel)
 	end
 
 	radioData[radioChannel] = radioData[radioChannel] or {}
-	local plyName = radioNameGetter(source)
-	for player,_ in pairs(radioData[radioChannel]) do
-		TriggerClientEvent("pma-voice:addPlayerToRadio",player,source,plyName)
+
+	local playerName = radioNameGetter(source)
+
+	for player in pairs(radioData[radioChannel]) do
+		TriggerClientEvent("pma-voice:addPlayerToRadio",player,source,playerName)
 	end
 
 	voiceData[source] = voiceData[source] or defaultTable(source)
 
 	voiceData[source].radio = radioChannel
 	radioData[radioChannel][source] = false
-	TriggerClientEvent("pma-voice:syncRadioData",source,radioData[radioChannel],plyName)
+
+	TriggerClientEvent("pma-voice:syncRadioData",source,radioData[radioChannel],playerName)
 
 	return true
 end
 
-function removePlayerFromRadio(source, radioChannel)
-	radioData[radioChannel] = radioData[radioChannel] or {}
-	for player,_ in pairs(radioData[radioChannel]) do
+function removePlayerFromRadio(source,radioChannel)
+	local channel = radioData[radioChannel]
+	if not channel then
+		return false
+	end
+
+	for player in pairs(channel) do
 		TriggerClientEvent("pma-voice:removePlayerFromRadio",player,source)
 	end
 
-	radioData[radioChannel][source] = nil
-	voiceData[source] = voiceData[source] or defaultTable(source)
-	voiceData[source].radio = 0
+	channel[source] = nil
+
+	local plyVoice = voiceData[source]
+	if not plyVoice then
+		plyVoice = defaultTable(source)
+		voiceData[source] = plyVoice
+	end
+
+	plyVoice.radio = 0
 end
 
 function setPlayerRadio(source,_radioChannel)
-	voiceData[source] = voiceData[source] or defaultTable(source)
-	local isResource = GetInvokingResource()
 	local plyVoice = voiceData[source]
-	local radioChannel = tonumber(_radioChannel)
-
-	if not radioChannel then
-		if not isResource then
-			return
-		end
+	if not plyVoice then
+		plyVoice = defaultTable(source)
+		voiceData[source] = plyVoice
 	end
 
-	if isResource then
+	local resource = GetInvokingResource()
+	local radioChannel = tonumber(_radioChannel) or 0
+
+	if not _radioChannel and not resource then
+		return
+	end
+
+	if resource then
 		TriggerClientEvent("pma-voice:clSetPlayerRadio",source,radioChannel)
 	end
 
-	if radioChannel ~= 0 then
-		if plyVoice.radio > 0 then
-			removePlayerFromRadio(source,plyVoice.radio)
+	local current = plyVoice.radio
+
+	if radioChannel > 0 then
+		if current > 0 then
+			removePlayerFromRadio(source,current)
 		end
 
-		local wasAdded = addPlayerToRadio(source,radioChannel)
-		Player(source).state.radioChannel = wasAdded and radioChannel or 0
-	elseif radioChannel == 0 then
-		removePlayerFromRadio(source,plyVoice.radio)
+		local success = addPlayerToRadio(source,radioChannel)
+		Player(source).state.radioChannel = success and radioChannel or 0
+	else
+		if current > 0 then
+			removePlayerFromRadio(source,current)
+		end
+
 		Player(source).state.radioChannel = 0
 	end
 end
@@ -91,37 +111,45 @@ RegisterNetEvent("pma-voice:setPlayerRadio",function(radioChannel)
 	setPlayerRadio(source,radioChannel)
 end)
 
-function setTalkingOnRadio(talking)
-	voiceData[source] = voiceData[source] or defaultTable(source)
+function setTalkingOnRadio(Talking)
+	local source = source
 	local plyVoice = voiceData[source]
-	local radioTbl = radioData[plyVoice.radio]
-	if radioTbl then
-		radioTbl[source] = talking
-		for player,_ in pairs(radioTbl) do
+
+	if not plyVoice then
+		plyVoice = defaultTable(source)
+		voiceData[source] = plyVoice
+	end
+
+	local radioId = plyVoice.radio
+	local radioTbl = radioData[radioId]
+	if not radioTbl then
+		return false
+	end
+
+	radioTbl[source] = Talking
+
+	for player in pairs(radioTbl) do
+		async(function()
 			if player ~= source then
-				TriggerClientEvent("pma-voice:setTalkingOnRadio",player,source,talking)
+				TriggerClientEvent("pma-voice:setTalkingOnRadio",player,source,Talking)
 			end
-		end
+		end)
 	end
 end
 RegisterNetEvent("pma-voice:setTalkingOnRadio",setTalkingOnRadio)
 
-AddEventHandler("onResourceStop",function(Resource)
+AddEventHandler("onResourceStop",function(resource)
 	for channel,cfxFunctionRef in pairs(radioChecks) do
-		local functionRef = cfxFunctionRef.__cfx_functionReference
-		local functionResource = string.match(functionRef,Resource)
-		if functionResource then
+		local ref = cfxFunctionRef.__cfx_functionReference
+		if ref and string.find(ref,resource,1,true) then
 			radioChecks[channel] = nil
 		end
 	end
 
 	if type(radioNameGetter) == "table" then
-		local radioRef = radioNameGetter.__cfx_functionReference
-		if radioRef then
-			local isResource = string.match(radioRef,Resource)
-			if isResource then
-				radioNameGetter = radioNameGetter_orig
-			end
+		local ref = radioNameGetter.__cfx_functionReference
+		if ref and string.find(ref,resource,1,true) then
+			radioNameGetter = radioNameGetter_orig
 		end
 	end
 end)

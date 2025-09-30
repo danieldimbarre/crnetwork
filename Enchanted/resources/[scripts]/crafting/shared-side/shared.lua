@@ -1158,6 +1158,7 @@ List = {
 		}
 	},
 	Lester = {
+		Permission = "Lester",
 		List = {
 			ballisticplate = {
 				Amount = 1,

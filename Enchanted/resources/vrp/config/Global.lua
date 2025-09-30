@@ -101,6 +101,7 @@ Theme = {
 			status = 10, -- [ Opções disponíveis: 1 a 12 ],
 			vehicle = 3 -- [ Opções disponíveis: 1,2,3 ]
 		},
+		logo = 75, -- tamanho da logo
 		percentage = true,
 		icons = "#FFFFFF",
 		nitro = "#f69d2a",
@@ -111,6 +112,7 @@ Theme = {
 		armor = "#A66FED",
 		hunger = "#F4B266",
 		thirst = "#7FC8F8",
+		oxygen = "#38F8F8",
 		stress = "#E287C9",
 		luck = "#F18A7C",
 		dexterity = "#E4E76E",
@@ -372,8 +374,15 @@ Groups = {
 		Hierarchy = { "Proprietário","Morador" },
 		Type = "Propertys",
 		Service = true,
-		Client = true,
 		Max = 5
+	},
+	-- DOMINATION
+	Lester = {
+		Permission = {
+			Lester = true
+		},
+		Hierarchy = { "Chefe","Subchefe","Membro" },
+		Service = true
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

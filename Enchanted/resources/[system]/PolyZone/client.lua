@@ -139,49 +139,23 @@ function PolyZone:draw()
   local points = self.points
   for i=1, #points do
     local point = self:TransformPoint(points[i])
-    DrawLine(point.x, point.y, minZ, point.x, point.y, maxZ, oR, oG, oB, 164)
 
     if i < #points then
       local p2 = self:TransformPoint(points[i+1])
-      DrawLine(point.x, point.y, maxZ, p2.x, p2.y, maxZ, oR, oG, oB, 184)
-      _drawWall(point, p2, minZ, maxZ, wR, wG, wB, 48)
+      _drawWall(point, p2, minZ, maxZ, 255, 255, 255, 50)
     end
   end
 
   if #points > 2 then
     local firstPoint = self:TransformPoint(points[1])
     local lastPoint = self:TransformPoint(points[#points])
-    DrawLine(firstPoint.x, firstPoint.y, maxZ, lastPoint.x, lastPoint.y, maxZ, oR, oG, oB, 184)
-    _drawWall(firstPoint, lastPoint, minZ, maxZ, wR, wG, wB, 48)
+    _drawWall(firstPoint, lastPoint, minZ, maxZ, 255, 255, 255, 50)
   end
 end
 
 function PolyZone.drawPoly(poly)
   PolyZone.draw(poly)
 end
-
--- Debug drawing all grid cells that are completly within the polygon
-local function _drawGrid(poly)
-  local minZ = poly.minZ
-  local maxZ = poly.maxZ
-  if not minZ or not maxZ then
-    local plyPed = PlayerPedId()
-    local plyPos = GetEntityCoords(plyPed)
-    minZ = plyPos.z - 46.0
-    maxZ = plyPos.z - 45.0
-  end
-
-  local lines = poly.lines
-  local color = poly.debugColors.grid or defaultColorGrid
-  local r, g, b = color[1], color[2], color[3]
-  for i=1, #lines do
-    local line = lines[i]
-    local min = line.min
-    local max = line.max
-    DrawLine(min.x + 0.0, min.y + 0.0, maxZ + 0.0, max.x + 0.0, max.y + 0.0, maxZ + 0.0, r, g, b, 196)
-  end
-end
-
 
 local function _pointInPoly(point, poly)
   local x = point.x
@@ -431,9 +405,6 @@ local function _initDebug(poly, options)
   CreateThread(function()
     while not poly.destroyed do
       poly:draw()
-      if options.debugGrid and poly.lines then
-        _drawGrid(poly)
-      end
       Citizen.Wait(0)
     end
   end)

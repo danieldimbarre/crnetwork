@@ -52,10 +52,22 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("radio:Disconnect")
 AddEventHandler("radio:Disconnect",function()
-	Frequency = 0
-	exports["pma-voice"]:removePlayerFromRadio()
-	SendNUIMessage({ Action = "Frequency", Payload = "OFFLINE" })
-	TriggerEvent("Notify","Radiofrequência","Desconectou de todas as frequências.","amarelo",5000)
+	if Frequency ~= 0 then
+		Frequency = 0
+		SendNUIMessage({ Action = "Frequency" })
+		exports["pma-voice"]:removePlayerFromRadio()
+		TriggerEvent("Notify","Radiofrequência","Desconectou de todas as frequências.","amarelo",5000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RADIO:DISPLAY
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("radio:Display",function(OtherSource,Enable)
+	if Enable then
+		SendNUIMessage({ Action = "Radio", Payload = { Source = OtherSource, Name = Player(OtherSource).state.Name or "Desconhecido" } })
+	else
+		SendNUIMessage({ Action = "Radio", Payload = { Source = OtherSource } })
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RADIOCONNECT
@@ -86,3 +98,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterKeyMapping("UpFrequency","Aumentar frequencia do rádio.","keyboard","PRIOR")
 RegisterKeyMapping("DownFrequency","Diminuir frequencia do rádio.","keyboard","PAGEDOWN")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- RADIO
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.Radio()
+	return Frequency
+end

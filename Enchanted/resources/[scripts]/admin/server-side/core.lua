@@ -10,9 +10,10 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 Creative = {}
 Tunnel.bindInterface("admin",Creative)
-vCLIENT = Tunnel.getInterface("admin")
 vKEYBOARD = Tunnel.getInterface("keyboard")
 vSKINWEAPON = Tunnel.getInterface("skinweapon")
+vCLIENT = Tunnel.getInterface("admin")
+vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PASSPORT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -416,14 +417,20 @@ RegisterCommand("id",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and OtherPassport and vRP.Identity(OtherPassport) and vRP.HasGroup(Passport,"Admin") then
 		local CountGroups = 0
+		local Radio = "Desligado"
 		local Message = "<br><br>"
 		local Groups = vRP.UserGroups(OtherPassport)
+		local OtherSource = vRP.Source(OtherPassport)
 		for Permission,Level in pairs(Groups) do
 			CountGroups = CountGroups + 1
 			Message = Message.."[ <warning>"..Permission.."</warning> ] "..vRP.NameHierarchy(Permission,Level).." ( "..Level.." )<br>"
 		end
 
-		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport).."<br><b>Banco:</b> "..Currency..Dotted(vRP.GetBank(OtherPassport)).."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport).."<br><b>Grupos Participantes:</b> "..CountGroups..(CountGroups >= 1 and Message or ""),(vRP.Source(OtherPassport) and "verde" or "vermelho"),10000)
+		if OtherSource then
+			Radio = vHUD.Radio(OtherSource)
+		end
+
+		TriggerClientEvent("Notify",source,"Informações","<b>Passaporte:</b> "..OtherPassport.."<br><b>Nome:</b> "..vRP.FullName(OtherPassport).."<br><b>Banco:</b> "..Currency..Dotted(vRP.GetBank(OtherPassport)).."<br><b>Radio:</b> "..(Radio > 0 and Radio.."Mhz" or "Desligado").."<br><b>Telefone:</b> "..vRP.Phone(OtherPassport).."<br><b>Grupos Participantes:</b> "..CountGroups..(CountGroups >= 1 and Message or ""),(OtherSource and "verde" or "vermelho"),10000)
 	end
 end)
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -563,11 +570,25 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("dima",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and parseInt(Message[1]) > 0 and parseInt(Message[2]) > 0 and vRP.HasGroup(Passport,"Admin",1) then
-		vRP.UpgradeGemstone(Message[1],Message[2],true)
-		TriggerClientEvent("Notify",source,"Sucesso","Diamantes entregues.","verde",5000)
-		exports["discord"]:Embed("Dima","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1].."\n**[QUANTIDADE]:** "..Message[2].."x")
+	if not Passport or not vRP.HasGroup(Passport,"Admin",1) then
+		return false
 	end
+
+	local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Quantidade")
+	if not Keyboard then
+		return false
+	end
+
+	local Amount = Keyboard[2]
+	local OtherPassport = Keyboard[1]
+	if not vRP.Identity(OtherPassport) then
+		TriggerClientEvent("Notify",source,"Aviso","Passaporte inválido.","vermelho",5000)
+		return false
+	end
+
+	vRP.UpgradeGemstone(OtherPassport,Amount,true)
+	TriggerClientEvent("Notify",source,"Sucesso","Diamantes entregues.","verde",5000)
+	exports.discord:Embed("Dima",("**[ADMIN]:** %s\n**[PASSAPORTE]:** %s\n**[QUANTIDADE]:** %sx"):format(Passport,OtherPassport,Amount))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS

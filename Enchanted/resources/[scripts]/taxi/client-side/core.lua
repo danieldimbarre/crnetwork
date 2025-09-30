@@ -99,7 +99,7 @@ CreateThread(function()
 							if Current and DoesEntityExist(Current) then
 								Passenger = NetworkGetNetworkIdFromEntity(Current)
 
-								TaskLeaveVehicle(Current,Vehicle,64)
+								TaskLeaveVehicle(Current,Vehicle,1)
 								TaskWanderStandard(Current,10.0,10)
 								vSERVER.Payment(Selected)
 							end

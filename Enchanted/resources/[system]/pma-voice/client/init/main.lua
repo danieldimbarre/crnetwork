@@ -1,6 +1,6 @@
 local volumes = {
-	["radio"] = 60 / 100,
-	["call"] = 60 / 100,
+	["radio"] = 50 / 100,
+	["call"] = 50 / 100,
 	["click_on"] = 10 / 100,
 	["click_off"] = 10 / 100,
 }

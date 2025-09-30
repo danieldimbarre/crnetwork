@@ -7,14 +7,14 @@ local Active = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:WEAPON
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("hud:Weapon",function(Status,Hash)
+AddEventHandler("hud:Weapon",function(Status,Name)
 	if Status then
 		Active = true
 
 		while Active do
 			local Ped = PlayerPedId()
-			local _,Min = GetAmmoInClip(Ped,Hash)
-			local Max = GetAmmoInPedWeapon(Ped,Hash)
+			local _,Min = GetAmmoInClip(Ped,Name)
+			local Max = GetAmmoInPedWeapon(Ped,Name)
 
 			if AmmoMax ~= Max or AmmoMin ~= Min then
 				AmmoMax = Max
@@ -26,13 +26,13 @@ AddEventHandler("hud:Weapon",function(Status,Hash)
 					Max = Max - Min
 				end
 
-				SendNUIMessage({ Action = "Weapons", Payload = { true, Min, Max, ItemName(Hash) } })
+				SendNUIMessage({ Action = "Weapons", Payload = { Name = ItemName(Name), Current = Min, Stored = Max } })
 			end
 
 			Wait(100)
 		end
 	else
-		SendNUIMessage({ Action = "Weapons", Payload = false })
+		SendNUIMessage({ Action = "Weapons" })
 		Active = false
 		AmmoMax = -1
 		AmmoMin = -1

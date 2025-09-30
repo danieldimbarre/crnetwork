@@ -56,26 +56,27 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.CharacterChosen(Passport)
 	local source = source
-	if not Playing[source] and Passport then
-		Playing[source] = true
-
-		local License = vRP.Identities(source)
-		if not License or Connected[License] then
-			DropPlayer(source,"Não foi possível efetuar conexão com a "..(BaseMode == "steam" and "Steam" or "Rockstar")..".")
-
-			return false
-		end
-
-		local Consult = vRP.SingleQuery("characters/UserLicense",{ Passport = Passport, License = License })
-		if Consult and not Connected[Consult.License] then
-			vRP.CharacterChosen(source,Passport)
-			Connected[Consult.License] = true
-
-			return true
-		end
+	if not Passport or Playing[source] then
+		return false
 	end
 
-	return false
+	Playing[source] = true
+
+	local License = vRP.Identities(source)
+	if not License or Connected[License] then
+		DropPlayer(source,("Não foi possível efetuar conexão com a %s."):format(BaseMode == "steam" and "Steam" or "Rockstar"))
+		return false
+	end
+
+	local Consult = vRP.SingleQuery("characters/UserLicense",{ Passport = Passport, License = License })
+	if not Consult or Connected[Consult.License] then
+		return false
+	end
+
+	vRP.CharacterChosen(source,Passport)
+	Connected[Consult.License] = true
+
+	return true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NEWCHARACTER

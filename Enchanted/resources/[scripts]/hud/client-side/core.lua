@@ -8,6 +8,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
+Creative = {}
+Tunnel.bindInterface("hud",Creative)
 vSERVER = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBAL
@@ -21,6 +23,7 @@ local Hood = false
 local Gemstone = 0
 local Pause = false
 local Road = "Roads"
+local Underwater = false
 local Crossing = "Crossing"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PRINCIPAL
@@ -75,7 +78,8 @@ CreateThread(function()
 	LoadMovement("move_m@injured")
 
 	while true do
-		if LocalPlayer["state"]["Active"] then
+		if LocalPlayer.state.Active then
+			local Pid = PlayerId()
 			local Ped = PlayerPedId()
 
 			if IsPauseMenuActive() then
@@ -93,7 +97,7 @@ CreateThread(function()
 					local Coords = GetEntityCoords(Ped)
 					local Armouring = GetPedArmour(Ped)
 					local Healing = GetEntityHealth(Ped) - 100
-					local MinRoad,MinCross = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
+					local MinRoad,MinCross = GetStreetNameAtCoord(Coords.x,Coords.y,Coords.z)
 					local FullRoad = GetStreetNameFromHashKey(MinRoad)
 					local FullCross = GetStreetNameFromHashKey(MinCross)
 
@@ -121,10 +125,10 @@ CreateThread(function()
 
 						if not IsPedSwimming(Ped) then
 							if Healing <= 30 and GetPedMovementClipset(Ped) ~= -650503762 then
-								LocalPlayer["state"]:set("Walk",false,false)
+								LocalPlayer.state:set("Walk",false,false)
 								SetPedMovementClipset(Ped,"move_m@injured",0.5)
 							elseif Healing > 30 and GetPedMovementClipset(Ped) == -650503762 then
-								LocalPlayer["state"]:set("Walk",false,false)
+								LocalPlayer.state:set("Walk",false,false)
 							end
 						end
 					end
@@ -144,7 +148,7 @@ CreateThread(function()
 						Crossing = FullCross
 					end
 
-					SendNUIMessage({ Action = "Clock", Payload = { GlobalState["Hours"],GlobalState["Minutes"] } })
+					SendNUIMessage({ Action = "Clock", Payload = { GlobalState.Hours,GlobalState.Minutes } })
 				end
 			end
 
@@ -213,6 +217,20 @@ CreateThread(function()
 
 					SendNUIMessage({ Action = "Thirst", Payload = Thirst })
 				end
+
+				if IsPedSwimmingUnderWater(Ped) then
+					local IsScuba = GetPedConfigFlag(Ped,135)
+					local Remaining = GetPlayerUnderwaterTimeRemaining(Pid)
+					local Calculated = (Remaining / (IsScuba and 10000 or 10) * 100)
+
+					SendNUIMessage({ Action = "Oxygen", Payload = Calculated })
+					Underwater = true
+				else
+					if Underwater then
+						SendNUIMessage({ Action = "Oxygen" })
+						Underwater = false
+					end
+				end
 			end
 		end
 
@@ -225,12 +243,12 @@ end)
 function EntityVelocity(Ped)
 	local Velocity = GetEntityVelocity(Ped)
 
-	return math.min(math.sqrt(Velocity["x"] * Velocity["x"] + Velocity["y"] * Velocity["y"] + Velocity["z"] * Velocity["z"]),10)
+	return math.min(math.sqrt(Velocity.x * Velocity.x + Velocity.y * Velocity.y + Velocity.z * Velocity.z),10)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Passport",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
+AddStateBagChangeHandler("Passport",("player:%s"):format(LocalPlayer.state.Source),function(Name,Key,Value)
 	SendNUIMessage({ Action = "Passport", Payload = Value })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -242,7 +260,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Safezone",("player:%s"):format(LocalPlayer["state"]["Source"]),function(Name,Key,Value)
+AddStateBagChangeHandler("Safezone",("player:%s"):format(LocalPlayer.state.Source),function(Name,Key,Value)
 	SendNUIMessage({ Action = "Safezone", Payload = (Value and true or false) })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -295,10 +313,10 @@ AddEventHandler("hud:Video",function(Code)
 	if Code then
 		SetNuiFocus(true,false)
 		SendNUIMessage({ Action = "Body", Payload = true })
-		SendNUIMessage({ Action = "Video", Payload = { true,Code } })
+		SendNUIMessage({ Action = "Video", Payload = Code })
 	else
 		SendNUIMessage({ Action = "Body", Payload = Display })
-		SendNUIMessage({ Action = "Video", Payload = false })
+		SendNUIMessage({ Action = "Video" })
 		SetNuiFocus(false,false)
 	end
 end)
@@ -457,13 +475,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOMINATION:TABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("domination:Table")
-AddEventHandler("domination:Table",function(Table)
+RegisterNetEvent("domination:Update")
+AddEventHandler("domination:Update",function(Table)
 	SendNUIMessage({ Action = "UpdateDomination", Payload = Table })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOMINATION:CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("domination:Close",function()
-	SendNUIMessage({ Action = "CloseDomination" })
+	SendNUIMessage({ Action = "Domination" })
 end)

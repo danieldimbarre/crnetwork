@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 MarketplaceTax = 0.03 -- Taxa em cima do valor do item anunciado.
 SalaryCooldown = 1800 -- Quantidade de segundos.
-HomeBoxes = { 1,2 } -- ID das caixas que vão aparecer no inicio
+HomeBoxes = { 1,2,3 } -- ID das caixas que vão aparecer no inicio
 ShopAllDisplay = true -- Mostra a opção "Todos" na Loja
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOXES

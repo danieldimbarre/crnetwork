@@ -27,8 +27,8 @@ end
 function handleStateBagInitilization(source)
 	local plyState = Player(source).state
 	if not plyState.pmaVoiceInit then
-		plyState:set("call",60,true)
-		plyState:set("radio",30,true)
+		plyState:set("call",50,true)
+		plyState:set("radio",50,true)
 		plyState:set("submix",nil,true)
 		plyState:set("proximity",{},true)
 		plyState:set("callChannel",0,true)

@@ -1,5 +1,6 @@
 local radioChannel = 0
 local radioNames = {}
+local RadioProp = nil
 
 function isRadioEnabled()
 	return radioEnabled and LocalPlayer.state.disableRadio == 0
@@ -106,9 +107,18 @@ RegisterCommand("+radiotalk",function()
 			radioPressed = true
 			playMicClicks(true)
 
-			if LoadAnim("random@arrests") then
-				TaskPlayAnim(Ped,"random@arrests","generic_radio_enter",8.0,2.0,-1,50,2.0,false,false,false)
+			if LoadAnim("custom@radio") then
+				TaskPlayAnim(Ped,"custom@radio","holding_radio_clip",8.0,2.0,-1,50,2.0,false,false,false)
 			end
+
+			local BoneIndex = GetPedBoneIndex(Ped,28422)
+			local Hash = GetHashKey("prop_cs_hand_radio")
+			local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,0.0,-5.0)
+			RadioProp = CreateObject(Hash,Coords.x,Coords.y,Coords.z,false,false,false)
+
+			SetEntityCollision(RadioProp,false,false)
+			SetEntityCompletelyDisableCollision(RadioProp,true,true)
+			AttachEntityToEntity(RadioProp,Ped,BoneIndex,0.0750,0.0230,-0.0230,-90.0000,0.0,-59.9999,false,false,false,false,2,true)
 
 			CreateThread(function()
 				TriggerEvent("pma-voice:radioActive",true)
@@ -122,8 +132,8 @@ RegisterCommand("+radiotalk",function()
 						break
 					end
 
-					if not IsEntityPlayingAnim(Ped,"random@arrests","generic_radio_enter",3) then
-						TaskPlayAnim(Ped,"random@arrests","generic_radio_enter",8.0,2.0,-1,50,2.0,false,false,false)
+					if not IsEntityPlayingAnim(Ped,"custom@radio","holding_radio_clip",3) then
+						TaskPlayAnim(Ped,"custom@radio","holding_radio_clip",8.0,2.0,-1,50,2.0,false,false,false)
 					end
 
 					SetControlNormal(0,249,1.0)
@@ -155,8 +165,14 @@ RegisterCommand("-radiotalk",function()
 		LocalPlayer.state:set("radioActive",false,true)
 		playMicClicks(false)
 
-		StopAnimTask(PlayerPedId(),"random@arrests","generic_radio_enter",8.0)
+		StopAnimTask(PlayerPedId(),"custom@radio","holding_radio_clip",8.0)
 		TriggerServerEvent("pma-voice:setTalkingOnRadio",false)
+
+		if DoesEntityExist(RadioProp) then
+			DeleteObject(RadioProp)
+		end
+
+		RadioProp = nil
 	end
 end,false)
 

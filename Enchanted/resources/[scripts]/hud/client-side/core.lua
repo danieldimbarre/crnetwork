@@ -473,11 +473,11 @@ AddEventHandler("hud:Hood",function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DOMINATION:TABLE
+-- DOMINATION:UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("domination:Update")
-AddEventHandler("domination:Update",function(Table)
-	SendNUIMessage({ Action = "UpdateDomination", Payload = Table })
+AddEventHandler("domination:Update",function(Data,Max)
+	SendNUIMessage({ Action = "Domination", Payload = { Data = Data, Max = Max } })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOMINATION:CLOSE

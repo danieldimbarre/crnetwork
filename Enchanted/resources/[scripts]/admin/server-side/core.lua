@@ -449,22 +449,30 @@ RegisterCommand("wipepermissions",function(source,Message)
 		local Keyboard = vKEYBOARD.Instagram(source,Permissions)
 		if Keyboard then
 			local Permission = Keyboard[1]
-			local Consult = exports["oxmysql"]:query_async("SELECT * FROM chests WHERE Permission LIKE ?",{ Permission.."%" })
+			local Consult = exports.oxmysql:query_async("SELECT * FROM chests WHERE Permission LIKE ?",{ Permission.."%" })
 			for _,v in pairs(Consult) do
-				if SplitOne(v.Permission) == Permission then
-					if vRP.GetSrvData("Chest:"..v.Name,true) then
-						vRP.RemSrvData("Chest:"..v.Name)
-					end
+				if v.Permission and SplitOne(v.Permission) == Permission and vRP.GetSrvData("Chest:"..v.Name,true) then
+					vRP.RemSrvData("Chest:"..v.Name)
+				end
 
-					exports["oxmysql"]:query_async("DELETE FROM chests WHERE id = ?",{ v.id })
+				if v.id then
+					exports.oxmysql:query_async("DELETE FROM chests WHERE id = ?",{ v.id })
 				end
 			end
 
-			if vRP.GetSrvData("Permissions:"..Permission,true) then
+			local Data = vRP.GetSrvData("Permissions:"..Permission,true)
+			if Data then
+				for OtherPassport in pairs(Data) do
+					local OtherSource = vRP.Source(OtherPassport)
+					if OtherSource then
+						vRP.ServiceLeave(OtherSource,OtherPassport,Permission,true)
+					end
+				end
+
 				vRP.RemSrvData("Permissions:"..Permission)
 			end
 
-			exports["oxmysql"]:query_async("DELETE FROM permissions WHERE Permission = ?",{ Permission })
+			exports.oxmysql:query_async("DELETE FROM permissions WHERE Permission = ?",{ Permission })
 		end
 	end
 end)
@@ -543,16 +551,41 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("skin",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and Message[1] and Message[2] and vRPC.ModelExist(source,Message[2]) and vRP.HasGroup(Passport,"Admin") then
-		local Skin = Message[2]
-		local OtherPassport = Message[1]
-		local OtherSource = vRP.Source(OtherPassport)
-		if OtherSource then
-			vRPC.Skin(OtherSource,Skin)
-			vRP.SkinCharacter(OtherPassport,Skin)
-			exports["discord"]:Embed("Skin","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[MODEL]:** "..Skin)
+	if not Passport or not vRP.HasGroup(Passport,"Admin") then
+		return false
+	end
+
+	local Keyboard = vKEYBOARD.Tertiary(source,"Passaporte","Modelo","Dias")
+	if not Keyboard then
+		return false
+	end
+
+	local Model = Keyboard[2]
+	if not vRPC.ModelExist(source,Model) then
+		TriggerClientEvent("Notify",source,"Aviso","Modelo inválido.","amarelo",5000)
+		return false
+	end
+
+	local Days = parseInt(Keyboard[3],true)
+	local OtherPassport = parseInt(Keyboard[1])
+	local OtherSource = vRP.Source(OtherPassport)
+	if OtherSource then
+		vRPC.Skin(OtherSource,Model)
+	end
+
+	if Days > 0 then
+		local CurrentTimer = os.time()
+		local ExpireTime = Days * 86400
+		local Consult = exports.oxmysql:single_async("SELECT SkinMontly FROM characters WHERE id = ? LIMIT 1",{ OtherPassport })
+		if Consult then
+			local NewExpire = (Consult.SkinMontly or 0) > CurrentTimer and Consult.SkinMontly + ExpireTime or CurrentTimer + ExpireTime
+			exports.oxmysql:update_async("UPDATE characters SET SkinMontly = ? WHERE id = ?",{ NewExpire,OtherPassport })
 		end
 	end
+
+	vRP.SkinCharacter(OtherPassport,Model)
+	TriggerClientEvent("Notify",source,"Sucesso","Aplicação concluída.","verde",5000)
+	exports.discord:Embed("Skin","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[MODEL]:** "..Model.."\n**[DIAS]:** "..Days)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEARINV
@@ -989,9 +1022,15 @@ end
 RegisterCommand("announce",function(source,Message,History)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",2) then
-		local Keyboard = vKEYBOARD.Area(source,"Mensagem")
+		local Keyboard = vKEYBOARD.Announce(source,"Título","Mensagem","Segundos",{ "amarelo","verde","vermelho","fome","sede","default","sangue","policia" },{ "middle-left","middle-right","top-left","top-center","top-right","bottom-left","bottom-center","bottom-right" })
 		if Keyboard then
-			TriggerClientEvent("Notify",-1,"Prefeitura",Keyboard[1],"vermelho",60000)
+			local Title = Keyboard[1]
+			local Colors = Keyboard[4]
+			local Message = Keyboard[2]
+			local Direction = Keyboard[5]
+			local Seconds = parseInt(Keyboard[3],true) * 1000
+
+			TriggerClientEvent("Notify",-1,Title,Message,Colors,Seconds,Direction)
 		end
 	end
 end)

@@ -17,7 +17,7 @@ local Service = false
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	exports["target"]:AddBoxZone("Throwing",Init.xyz,0.75,0.75,{
+	exports.target:AddBoxZone("Throwing",Init.xyz,0.75,0.75,{
 		name = "Throwing",
 		heading = Init.w,
 		minZ = Init.z - 1.0,
@@ -39,9 +39,9 @@ end)
 AddEventHandler("throwing:Init",function()
 	if Service then
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		exports["target"]:LabelText("Throwing","Iniciar Expediente")
+		exports.target:LabelText("Throwing","Iniciar Expediente")
 
-		for _,v in ipairs(Blips) do
+		for _,v in pairs(Blips) do
 			if DoesBlipExist(v) then
 				RemoveBlip(v)
 			end
@@ -51,7 +51,7 @@ AddEventHandler("throwing:Init",function()
 		Blips = {}
 	else
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
-		exports["target"]:LabelText("Throwing","Finalizar Expediente")
+		exports.target:LabelText("Throwing","Finalizar Expediente")
 
 		if Deliverys <= 0 then
 			List = Locations
@@ -105,9 +105,9 @@ CreateThread(function()
 
 							if Deliverys <= 0 then
 								TriggerEvent("Notify","Central de Empregos","Você finalizou todas as entregas, volte até a central para iniciar novamente.","default",5000)
-								exports["target"]:LabelText("Throwing","Iniciar Expediente")
+								exports.target:LabelText("Throwing","Iniciar Expediente")
 
-								for _,v in ipairs(Blips) do
+								for _,v in pairs(Blips) do
 									if DoesBlipExist(v) then
 										RemoveBlip(v)
 									end

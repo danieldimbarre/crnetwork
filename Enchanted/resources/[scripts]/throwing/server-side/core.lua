@@ -25,7 +25,7 @@ function Creative.Payment()
 
 		local Model = vRPC.VehicleName(source)
 		if not Model or not VehicleList[Model] then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Throwing",source)
+			exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Throwing",source)
 		end
 
 		local GainExperience = 2
@@ -33,7 +33,7 @@ function Creative.Payment()
 		local Experience,Level = vRP.GetExperience(Passport,"Throwing")
 		local Valuation = Amount + Amount * (0.05 * Level)
 
-		if exports["inventory"]:Buffs("Dexterity",Passport) then
+		if exports.inventory:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 

@@ -11,7 +11,7 @@ Config = {
 				image = "amarelo"
 			},
 			title = "#fda84f",
-			text = "#ffffffb3",
+			text = "#D1D1D1",
 			bold = "#ffffff",
 			progress = {
 				background = "#0f0f0fcc",
@@ -26,7 +26,7 @@ Config = {
 				image = "verde"
 			},
 			title = "#3fd794",
-			text = "#ffffffb3",
+			text = "#D1D1D1",
 			bold = "#ffffff",
 			progress = {
 				background = "#0f0f0fcc",
@@ -41,7 +41,7 @@ Config = {
 				image = "vermelho"
 			},
 			title = "#f3413d",
-			text = "#ffffffb3",
+			text = "#D1D1D1",
 			bold = "#ffffff",
 			progress = {
 				background = "#0f0f0fcc",
@@ -56,7 +56,7 @@ Config = {
 				image = "fome"
 			},
 			title = "#fda84f",
-			text = "#ffffffb3",
+			text = "#D1D1D1",
 			bold = "#ffffff",
 			progress = {
 				background = "#0f0f0fcc",
@@ -71,7 +71,7 @@ Config = {
 				image = "sede"
 			},
 			title = "#408df9",
-			text = "#ffffffb3",
+			text = "#D1D1D1",
 			bold = "#ffffff",
 			progress = {
 				background = "#0f0f0fcc",
@@ -86,7 +86,7 @@ Config = {
 				image = "default"
 			},
 			title = "#ffffff",
-			text = "#ffffffb3",
+			text = "#D1D1D1",
 			bold = "#ffffff",
 			progress = {
 				background = "#0f0f0fcc",
@@ -101,7 +101,7 @@ Config = {
 				image = "sangue"
 			},
 			title = "#f3413d",
-			text = "#ffffffb3",
+			text = "#D1D1D1",
 			bold = "#ffffff",
 			progress = {
 				background = "#0f0f0fcc",
@@ -116,7 +116,7 @@ Config = {
 				image = "policia"
 			},
 			title = "#408df9",
-			text = "#ffffffb3",
+			text = "#D1D1D1",
 			bold = "#ffffff",
 			progress = {
 				background = "#0f0f0fcc",

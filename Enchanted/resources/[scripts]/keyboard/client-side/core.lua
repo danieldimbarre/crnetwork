@@ -167,6 +167,18 @@ Form.Area = function(First)
 	})
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ANNOUNCE
+-----------------------------------------------------------------------------------------------------------------------------------------
+Form.Announce = function(First,Second,Third,Fourth,Fifth)
+	return Keyboard({
+		{ Mode = "text", Placeholder = First },
+		{ Mode = "area", Placeholder = Second },
+		{ Mode = "text", Placeholder = Third },
+		{ Mode = "options", Placeholder = "Selecione uma opção", Options = Fourth },
+		{ Mode = "options", Placeholder = "Selecione uma opção", Options = Fifth }
+	})
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- COPY
 -----------------------------------------------------------------------------------------------------------------------------------------
 Form.Copy = function(First,Message)

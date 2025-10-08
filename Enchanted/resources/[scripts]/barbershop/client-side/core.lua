@@ -17,16 +17,24 @@ local Camera = nil
 local Default = nil
 local Locations = {}
 local Barbershop = {}
+local Creation = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Save",function(Data,Callback)
-	if LocalPlayer.state.Creation then
+	if Creation then
 		DoScreenFadeOut(0)
+
 		SetTimeout(2500,function()
+			local Ped = PlayerPedId()
+
+			LocalPlayer.state:set("Active",true,true)
+			FreezeEntityPosition(Ped,false)
 			TriggerEvent("hud:Active",true)
 			TriggerEvent("referrals:Open")
-			DoScreenFadeIn(2500)
+			SetEntityInvincible(Ped,false)
+
+			DoScreenFadeIn(0)
 		end)
 	else
 		TriggerEvent("hud:Active",true)
@@ -39,10 +47,15 @@ RegisterNUICallback("Save",function(Data,Callback)
 		Camera = nil
 	end
 
-	vSERVER.Update(Barbershop,LocalPlayer.state.Creation)
-	LocalPlayer.state:set("Creation",false,false)
+	vSERVER.Update(Barbershop,Creation)
+
+	if Creation then
+		TriggerServerEvent("vRP:WaitCharacters")
+	end
+
 	LocalPlayer.state:set("Hoverfy",true,false)
 	SetNuiFocus(false,false)
+	Creation = false
 	vRP.Destroy()
 
 	Callback("Ok")
@@ -51,12 +64,19 @@ end)
 -- RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Reset",function(Data,Callback)
-	if LocalPlayer.state.Creation then
+	if Creation then
 		DoScreenFadeOut(0)
+
 		SetTimeout(2500,function()
+			local Ped = PlayerPedId()
+
+			LocalPlayer.state:set("Active",true,true)
+			FreezeEntityPosition(Ped,false)
 			TriggerEvent("hud:Active",true)
 			TriggerEvent("referrals:Open")
-			DoScreenFadeIn(2500)
+			SetEntityInvincible(Ped,false)
+
+			DoScreenFadeIn(0)
 		end)
 	else
 		TriggerEvent("hud:Active",true)
@@ -69,11 +89,16 @@ RegisterNUICallback("Reset",function(Data,Callback)
 		Camera = nil
 	end
 
-	vSERVER.Update(Lasted,LocalPlayer.state.Creation)
-	LocalPlayer.state:set("Creation",false,false)
+	vSERVER.Update(Lasted,Creation)
+
+	if Creation then
+		TriggerServerEvent("vRP:WaitCharacters")
+	end
+
 	LocalPlayer.state:set("Hoverfy",true,false)
 	exports.barbershop:Apply(Lasted)
 	SetNuiFocus(false,false)
+	Creation = false
 	vRP.Destroy()
 	Lasted = {}
 
@@ -116,8 +141,8 @@ end)
 -- BARBERSHOP:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("barbershop:Open")
-AddEventHandler("barbershop:Open",function(Creation)
-	if Creation then
+AddEventHandler("barbershop:Open",function(Created)
+	if Created then
 		exports.barbershop:Creation()
 	else
 		OpenBarbershop(true)
@@ -150,14 +175,14 @@ function OpenBarbershop(Mode)
 	SetCamActive(Camera,true)
 	Default = Coords.z
 
-	if LocalPlayer.state.Creation then
+	if Creation then
 		SetTimeout(2500,function()
-			SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,LocalPlayer.state.Creation } })
+			SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,Creation } })
 			SetNuiFocus(true,true)
 			DoScreenFadeIn(2500)
 		end)
 	else
-		SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,LocalPlayer.state.Creation } })
+		SendNUIMessage({ Action = "Open", Payload = { Barbershop,GetNumberOfPedDrawableVariations(Ped,2) - 1,Mode,Creation } })
 		SetNuiFocus(true,true)
 	end
 end
@@ -219,7 +244,7 @@ exports("Creation",function()
 		SetEntityVisible(Ped,true)
 	end
 
-	LocalPlayer.state:set("Creation",true,false)
+	Creation = true
 	OpenBarbershop(true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

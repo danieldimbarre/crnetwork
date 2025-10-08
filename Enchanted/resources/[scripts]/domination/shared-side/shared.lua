@@ -1,12 +1,14 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-Bucket = false -- Coloque o número caso queira que troque o bucket.
 PointSeconds = 15 -- Número em segundos que vai contar a pontuação.
 Permission = "Admin" -- Permissão para utilizar o comando.
 DominationGoal = 1000 -- Pontuação máxima para ganhar a dominação.
 DeleteVehicle = false -- Coloque true caso queira que se entrar com veículo o mesmo seja deletado.
 Command = "domination" -- Nome do comando para executar/finalizar manualmente uma dominação.
+MaxPresenceMultiplier = 3.0 -- Máximo da multiplicação com base na quantidade de jogadores.
+PresenceMultiplier = 0.25 -- Valor da multiplicação para cada jogador na area.
+PointsKillFeed = 5 -- Quantos pontos o grupo vai receber ao matar outro jogador.
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -16,9 +18,10 @@ Locations = {
 		PolyWeight = 50.0,
 		PolyDisplay = true,
 		Permission = "Lester",
+		SurvivalDistance = 500,
 		Blip = vec3(1285.15,-1730.59,52.89),
 		Execute = {
-			Hour = 20,
+			Hour = 22,
 			Minute = 00,
 			Week = "Tuesday"
 		},

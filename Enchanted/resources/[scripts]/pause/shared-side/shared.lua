@@ -633,11 +633,6 @@ ShopItens = {
 		Discount = 1.0,
 		Category = "Veículos"
 	},
-	newchars = {
-		Price = 4000,
-		Discount = 1.0,
-		Category = "Utilidades"
-	},
 	namechange = {
 		Price = 3000,
 		Discount = 1.0,

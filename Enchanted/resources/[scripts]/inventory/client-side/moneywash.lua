@@ -2,11 +2,11 @@
 -- CONFIG
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Config = {
-	["Sends"] = {},
-	["Active"] = false,
-	["Cooldown"] = GetGameTimer(),
-	["Init"] = vec4(68.93,-1569.81,29.59,48.19),
-	["Washs"] = {
+	Sends = {},
+	Active = false,
+	Cooldown = GetGameTimer(),
+	Init = vec4(68.93,-1569.81,29.59,48.19),
+	Washs = {
 		vec3(149.83,-1041.33,29.59),
 		vec3(314.17,-279.7,54.39),
 		vec3(-350.98,-50.51,49.26),
@@ -28,23 +28,16 @@ local Config = {
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	exports["target"]:AddBoxZone("MoneyWash",Config["Init"]["xyz"],0.75,0.75,{
+	exports.target:AddBoxZone("MoneyWash",Config.Init.xyz,0.75,0.75,{
 		name = "MoneyWash",
-		heading = Config["Init"]["w"],
-		minZ = Config["Init"]["z"] - 1.0,
-		maxZ = Config["Init"]["z"] + 1.0
+		heading = Config.Init.w,
+		minZ = Config.Init.z - 1.0,
+		maxZ = Config.Init.z + 1.0
 	},{
 		Distance = 1.75,
 		options = {
-			{
-				event = "moneywash:Init",
-				label = "Iniciar",
-				tunnel = "client"
-			},{
-				event = "moneywash:Swap",
-				label = "Trocar",
-				tunnel = "server"
-			}
+			{ event = "moneywash:Init", label = "Iniciar", tunnel = "client" },
+			{ event = "moneywash:Swap", label = "Trocar", tunnel = "server" }
 		}
 	})
 end)
@@ -52,18 +45,17 @@ end)
 -- MONEYWASH:INIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("moneywash:Init",function()
-	if Config["Active"] then
+	if Config.Active then
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		exports["target"]:LabelText("MoneyWash","Iniciar Expediente")
-		Config["Active"] = false
-		Config["Sends"] = {}
+		exports.target:LabelText("MoneyWash","Iniciar Expediente")
+		Config.Active = false
 		CleanBlips()
 	else
-		if Config["Cooldown"] <= GetGameTimer() then
-			Config["Cooldown"] = GetGameTimer() + (30 * 60000)
-			exports["target"]:LabelText("MoneyWash","Finalizar Expediente")
+		if Config.Cooldown <= GetGameTimer() then
+			Config.Cooldown = GetGameTimer() + (30 * 60000)
+			exports.target:LabelText("MoneyWash","Finalizar Expediente")
 			TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
-			Config["Active"] = true
+			Config.Active = true
 			MakeBlips()
 		else
 			TriggerEvent("Notify","Aviso","Aguarde seu tempo de descanso.","amarelo",5000)
@@ -74,18 +66,17 @@ end)
 -- MONEYWASH:SEND
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("moneywash:Send",function(Number,Value)
-	if Config["Sends"][Number] and vSERVER.Washers(Value) then
-		if DoesBlipExist(Config["Sends"][Number]) then
-			RemoveBlip(Config["Sends"][Number])
+	if Config.Sends[Number] and vSERVER.Washers(Value) then
+		if DoesBlipExist(Config.Sends[Number]) then
+			RemoveBlip(Config.Sends[Number])
 		end
 
-		exports["target"]:RemCircleZone("MoneyWash:"..Number)
-		Config["Sends"][Number] = nil
+		exports.target:RemCircleZone("MoneyWash:"..Number)
+		Config.Sends[Number] = nil
 
-		if CountTable(Config["Sends"]) <= 0 then
-			exports["target"]:LabelText("MoneyWash","Iniciar Expediente")
-			Config["Active"] = false
-			Config["Sends"] = {}
+		if CountTable(Config.Sends) <= 0 then
+			exports.target:LabelText("MoneyWash","Iniciar Expediente")
+			Config.Active = false
 			CleanBlips()
 		end
 	end
@@ -94,30 +85,32 @@ end)
 -- CLEANBLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CleanBlips()
-	for Selected,Blips in pairs(Config["Sends"]) do
+	for Selected,Blips in pairs(Config.Sends) do
 		if DoesBlipExist(Blips) then
 			RemoveBlip(Blips)
 		end
 
-		exports["target"]:RemCircleZone("MoneyWash:"..Selected)
-		Config["Sends"][Selected] = nil
+		exports.target:RemCircleZone("MoneyWash:"..Selected)
+		Config.Sends[Selected] = nil
 	end
+
+	Config.Sends = {}
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MAKEBLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function MakeBlips()
 	for Index = 1,7 do
-		local Selected = math.random(#Config["Washs"])
+		local Selected = math.random(#Config.Washs)
 		local Number = tostring(Selected)
-		if Config["Sends"][Number] then
+		if Config.Sends[Number] then
 			repeat
-				Selected = math.random(#Config["Washs"])
+				Selected = math.random(#Config.Washs)
 				Number = tostring(Selected)
-			until not Config["Sends"][Number]
+			until not Config.Sends[Number]
 		end
 
-		exports["target"]:AddCircleZone("MoneyWash:"..Selected,Config["Washs"][Selected],0.15,{
+		exports.target:AddCircleZone("MoneyWash:"..Selected,Config.Washs[Selected],0.15,{
 			name = "MoneyWash:"..Selected,
 			heading = 0.0,
 			useZ = true
@@ -154,14 +147,14 @@ function MakeBlips()
 			}
 		})
 
-		Config["Sends"][Number] = AddBlipForCoord(Config["Washs"][Selected])
-		SetBlipSprite(Config["Sends"][Number],434)
-		SetBlipDisplay(Config["Sends"][Number],4)
-		SetBlipAsShortRange(Config["Sends"][Number],true)
-		SetBlipColour(Config["Sends"][Number],2)
-		SetBlipScale(Config["Sends"][Number],0.75)
+		Config.Sends[Number] = AddBlipForCoord(Config.Washs[Selected])
+		SetBlipSprite(Config.Sends[Number],434)
+		SetBlipDisplay(Config.Sends[Number],4)
+		SetBlipAsShortRange(Config.Sends[Number],true)
+		SetBlipColour(Config.Sends[Number],2)
+		SetBlipScale(Config.Sends[Number],0.75)
 		BeginTextCommandSetBlipName("STRING")
 		AddTextComponentString("Lavagem de Dinheiro")
-		EndTextCommandSetBlipName(Config["Sends"][Number])
+		EndTextCommandSetBlipName(Config.Sends[Number])
 	end
 end

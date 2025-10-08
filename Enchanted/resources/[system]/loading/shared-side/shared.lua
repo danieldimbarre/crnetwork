@@ -2,28 +2,29 @@
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 Autoplay = false
+Video = "video.webm"
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SOCIALS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Socials = {
 	{
-		["type"] = "discord",
-		["url"] = "http://discord.gg"
+		type = "discord",
+		url = "http://discord.gg"
 	},{
-		["type"] = "facebook",
-		["url"] = "http://facebook.com"
+		type = "facebook",
+		url = "http://facebook.com"
 	},{
-		["type"] = "instagram",
-		["url"] = "http://instagram.com"
+		type = "instagram",
+		url = "http://instagram.com"
 	},{
-		["type"] = "tiktok",
-		["url"] = "http://tiktok.com"
+		type = "tiktok",
+		url = "http://tiktok.com"
 	},{
-		["type"] = "x",
-		["url"] = "http://x.com"
+		type = "x",
+		url = "http://x.com"
 	},{
-		["type"] = "youtube",
-		["url"] = "http://youtube.com"
+		type = "youtube",
+		url = "http://youtube.com"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -31,13 +32,13 @@ Socials = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Playlist = {
 	{
-		["artist"] = "Cartoon, Jéja (feat. Daniel Levi)",
-		["name"] = "On & On",
-		["file"] = "on_on.mp3",
+		artist = "Cartoon, Jéja (feat. Daniel Levi)",
+		name = "On & On",
+		file = "on_on.mp3",
 	},{
-		["artist"] = "Spektrem",
-		["name"] = "Shine",
-		["file"] = "shine.mp3"
+		artist = "Spektrem",
+		name = "Shine",
+		file = "shine.mp3"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -11,5 +11,5 @@ AddEventHandler("Notify",function(Title,Message,Color,Timer,Position,Mode,Route)
 	Timer = Timer or Config.Timer
 	Position = Position or Config.Position
 
-	SendNUIMessage({ Action = "Notify", Payload = { Title,Message,Timer,Config.Themes[Color],Position,Mode } })
+	SendNUIMessage({ Action = "Notify", Payload = { Title = Title, Message = Message, Timer = Timer, Theme = Config.Themes[Color], Position = Position, Progress = Mode } })
 end)

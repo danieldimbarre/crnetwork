@@ -343,7 +343,7 @@ CreateThread(function()
 					end
 
 					if List[Number].Anim and LoadAnim(List[Number].Anim[1]) then
-						TaskPlayAnim(Spawned[Number],List[Number].Anim[1],List[Number].Anim[2],8.0,8.0,-1,1,1,0,0,0)
+						TaskPlayAnim(Spawned[Number],List[Number].Anim[1],List[Number].Anim[2],8.0,8.0,-1,1,0,0,0,0)
 					end
 				end
 			else

@@ -232,7 +232,7 @@ Use = {
 
 	["propertys"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split[2] then
-			local Consult = exports.oxmysql:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+			local Consult = exports.oxmysql:single_async("SELECT Name FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 			if Consult then
 				vCLIENT.Waypoint(source,exports.propertys:Coords(Consult.Name))
 				TriggerClientEvent("inventory:Notify",source,"Sucesso","Marcação selecionada no mapa.","verde")
@@ -348,14 +348,6 @@ Use = {
 	["medicbag"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split and Split[3] then
 			TriggerClientEvent("chest:Open",source,"medicbag:"..Split[3],"Item",false,false,true)
-		end
-	end,
-
-	["newchars"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if vRP.TakeItem(Passport,Full,1,false,Slot) then
-			vRP.UpgradeCharacters(source)
-			TriggerClientEvent("inventory:Update",source)
-			TriggerClientEvent("inventory:Notify",source,"Sucesso","Personagem liberado.","verde")
 		end
 	end,
 

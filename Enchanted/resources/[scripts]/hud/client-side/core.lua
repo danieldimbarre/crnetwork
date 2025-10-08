@@ -485,3 +485,10 @@ end)
 AddEventHandler("domination:Close",function()
 	SendNUIMessage({ Action = "Domination" })
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DOMINATION:KILLFEED
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("domination:KillFeed")
+AddEventHandler("domination:KillFeed",function(Attacker,Victim)
+	SendNUIMessage({ Action = "Killfeed", Payload = { Killer = Attacker, Victim = Victim } })
+end)

@@ -16,12 +16,12 @@ local Perimeter = {}
 -- PERIMETER:DYNAMIC
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("perimeter:Dynamic",function()
-	exports["dynamic"]:AddMenu("Perimetros","Visualizar/Gerenciar perimetros.","perimeter")
-	exports["dynamic"]:AddButton("Adicionar","Demarcar novo local no mapa.","perimeter:New","","perimeter",true)
+	exports.dynamic:AddMenu("Perimetros","Visualizar/Gerenciar perimetros.","perimeter")
+	exports.dynamic:AddButton("Adicionar","Demarcar novo local no mapa.","perimeter:New","","perimeter",true)
 
 	local Perimeters = vSERVER.Perimeters()
 	for Selected,v in pairs(Perimeters) do
-		exports["dynamic"]:AddButton(v.Name,"Remover local demarcado no mapa.","perimeter:Remove",Selected,"perimeter",true)
+		exports.dynamic:AddButton(v.Name,"Remover local demarcado no mapa.","perimeter:Remove",Selected,"perimeter",true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -390,7 +390,7 @@ CreateThread(function()
 			ClearPlayerWantedLevel(Pid)
 		end
 
-		if not LocalPlayer.state.Creation and LocalPlayer.state.Active then
+		if LocalPlayer.state.Active then
 			NetworkOverrideClockTime(GlobalState.Hours,GlobalState.Minutes,0)
 
 			SetWeatherTypeNowPersist(GlobalState.Weather)

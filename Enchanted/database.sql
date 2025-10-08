@@ -443,3 +443,4 @@ ALTER TABLE `accounts` ADD `Passport` BIGINT(19) NOT NULL DEFAULT '0' AFTER `Cha
 ALTER TABLE `permissions` ADD `Tags` INT(10) NOT NULL DEFAULT '3' AFTER `Members`;
 ALTER TABLE `permissions` ADD `Announces` INT(10) NOT NULL DEFAULT '3' AFTER `Members`;
 ALTER TABLE `accounts` ADD COLUMN `Referral` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci' AFTER `Reason`;
+ALTER TABLE `characters` ADD `SkinMontly` INT(19) NOT NULL DEFAULT '0' AFTER `Skin`;

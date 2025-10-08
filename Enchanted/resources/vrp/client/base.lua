@@ -53,7 +53,7 @@ function tvRP.ClosestPeds(Radius)
 
 	for _,Entitys in pairs(GamePool) do
 		local Index = NetworkGetPlayerIndexFromPed(Entitys)
-		if IsPedAPlayer(Entitys) and Index and Ped ~= Entitys and NetworkIsPlayerConnected(Index) and #(Coords - GetEntityCoords(Entitys)) <= Radius then
+		if Ped ~= Entitys and Index and NetworkIsPlayerConnected(Index) and #(Coords - GetEntityCoords(Entitys)) <= Radius then
 			Selected[#Selected + 1] = GetPlayerServerId(Index)
 		end
 	end
@@ -125,26 +125,37 @@ end
 -- PASSPORTENALBLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function PassportEnable()
-	if not Information and not IsPauseMenuActive() then
-		Information = true
+	if Information or IsPauseMenuActive() then
+		return false
+	end
 
+	Information = true
+
+	CreateThread(function()
 		while Information do
 			local Ped = PlayerPedId()
 			local Players = GetPlayers()
 			local Coords = GetEntityCoords(Ped)
 
-			for Entitys,v in pairs(Players) do
-				local OtherCoords = GetEntityCoords(Entitys)
-				local Passport = Player(v)["state"]["Passport"]
+			for _,v in ipairs(Players) do
+				local Entitys = GetPlayerPed(v)
+				if Ped ~= Entitys and DoesEntityExist(Entitys) and IsEntityOnScreen(Entitys) and HasEntityClearLosToEntity(Ped,Entitys,17) then
+					local Passport = Player(v).state.Passport
+					if Passport then
+						local OtherCoords = GetEntityCoords(Entitys)
+						if #(Coords - OtherCoords) <= 10.0 then
+							local Head = GetPedBoneIndex(Entitys,0x796e)
+							local HeadCoords = GetWorldPositionOfEntityBone(Entitys,Head)
 
-				if Ped ~= Entitys and Passport and HasEntityClearLosToEntity(Ped,Entitys,17) and #(Coords - OtherCoords) <= 10.0 then
-					DrawText3D(OtherCoords,"~w~[ "..Passport.." ]",1.375)
+							DrawText(HeadCoords,"~w~"..Passport)
+						end
+					end
 				end
 			end
 
 			Wait(0)
 		end
-	end
+	end)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PASSPORTDISABLE
@@ -179,26 +190,31 @@ CreateThread(function()
 			local Players,Voip = GetPlayers()
 
 			for Entitys,source in pairs(Players) do
-				local PlayerState = Player(source).state
-				local Passport = PlayerState.Passport
+				if Ped ~= Entitys then
+					local PlayerState = Player(source).state
+					local Passport = PlayerState and PlayerState.Passport
 
-				if Passport and Ped ~= Entitys then
-					TimeDistance = 0
+					if Passport then
+						TimeDistance = 0
 
-					local Title = PlayerState.Title
-					local Name = PlayerState.Name or "Carregando"
-					local Talking = MumbleIsPlayerTalking(Voip[Entitys])
-					local OtherCoords = GetEntityCoords(Entitys)
+						local Head = GetPedBoneIndex(Entitys,0x796e)
+						local HeadCoords = GetWorldPositionOfEntityBone(Entitys,Head)
+						local OnScreen = World3dToScreen2d(HeadCoords.x,HeadCoords.y,HeadCoords.z)
+						if OnScreen then
+							local Name = PlayerState.Name or "Carregando..."
+							local Talking = MumbleIsPlayerTalking(Voip[Entitys])
 
-					local Health = GetEntityHealth(Entitys) - 100
-					local IsDead = Health <= 0 and "Morto" or Health
-					local Armour = GetPedArmour(Entitys)
+							local Armour = GetPedArmour(Entitys)
+							local Health = GetEntityHealth(Entitys)
+							local CheckIn = math.max(Health - 100,0)
+							local Status = (CheckIn <= 0) and "Morto" or CheckIn
 
-					if Title then
-						DrawText3D(OtherCoords,"~w~[ "..Title.." ]",1.25)
+							local Prefix = Talking and "~q~" or ""
+							local Message = ("%s%s~w~ | ~y~%s~w~ | ~g~%s~w~ | ~b~%s"):format(Prefix,Name,Passport,Status,Armour)
+
+							DrawText(HeadCoords,Message)
+						end
 					end
-
-					DrawText3D(OtherCoords,string.format("~w~[ %s%s~w~ ] [ ~y~%s~w~ ] [ ~g~%s~w~ ] [ ~b~%s~w~ ]",(Talking and "~q~" or ""),Name,Passport,IsDead,Armour),1.125)
 				end
 			end
 		end
@@ -207,27 +223,19 @@ CreateThread(function()
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DRAWTEXT3D
+-- DRAWTEXT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function DrawText3D(Coords,Text,Height,Background)
-	local onScreen,x,y = World3dToScreen2d(Coords["x"],Coords["y"],Coords["z"] + Height)
+function DrawText(Coords,Text)
+	SetDrawOrigin(Coords.x,Coords.y,Coords.z + 0.5)
 
-	if onScreen then
-		SetTextFont(4)
-		SetTextDropShadow()
-		SetTextCentre(true)
-		SetTextProportional(1)
-		SetTextScale(0.35,0.35)
-		SetTextColour(255,255,255,200)
+	SetTextFont(4)
+	SetTextCentre(true)
+	SetTextScale(0.35,0.35)
+	SetTextColour(255,255,255,255)
+	SetTextDropshadow(1,15,15,15,150)
+	BeginTextCommandDisplayText("STRING")
+	AddTextComponentSubstringPlayerName(Text)
+	EndTextCommandDisplayText(0.0,0.0)
 
-		SetTextEntry("STRING")
-		AddTextComponentString(Text)
-		EndTextCommandDisplayText(x,y)
-
-		if Background then
-			local Length = string.len(Text)
-			local Width = (Length / 160) * 0.0
-			DrawRect(x,y + 0.0125,Width,0.03,15,15,15,175)
-		end
-	end
+	ClearDrawOrigin()
 end

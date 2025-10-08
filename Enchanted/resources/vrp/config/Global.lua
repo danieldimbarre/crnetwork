@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 MaxRepair = 1
 MinimumWeight = 15
-CreatorCoords = vec4(-2006.95,2960.77,31.81,305.82)
+CreatorCoords = vec4(149.64,-157.97,-24.99,306.15)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BATTLEPASS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -36,126 +36,6 @@ SpawnCoords = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 TexturePack = {
 	"Drop","E","H","Normal","Selected","Races"
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- THEME
------------------------------------------------------------------------------------------------------------------------------------------
-Theme = {
-	shadow = true,
-	main = "#5865f2",
-	mainText = "#ffffff",
-	currency = Currency,
-	items = ListItem,
-
-	common = "#6fc66a",
-	rare = "#6ac6c5",
-	epic = "#c66a75",
-	legendary = "#c6986a",
-	accept = {
-		letter = "#dcffe9",
-		background = "#3fa466"
-	},
-	reject = {
-		letter = "#ffe8e8",
-		background = "#ad4443"
-	},
-	loading = {
-		mode = "dark", -- [ Opções disponíveis: dark,light ],
-		model = 2, -- [ Opções disponíveis: 1,2 ],
-		progress = true -- [ Opções disponíveis: true, false ],
-	},
-	chat = {
-		LSPD = {
-			background = "#16468b",
-			letter = "#ffffff"
-		},
-		BCSO = {
-			background = "#463939",
-			letter = "#ffffff"
-		},
-		BCPR = {
-			background = "#2d402d",
-			letter = "#ffffff"
-		},
-		Paramedico = {
-			background = "#9f1918",
-			letter = "#ffffff"
-		},
-		Families = {
-			background = "#4d7a06",
-			letter = "#ffffff"
-		},
-		Ballas = {
-			background = "#430d8e",
-			letter = "#ffffff"
-		},
-		Vagos = {
-			background = "#948209",
-			letter = "#ffffff"
-		}
-	},
-	hud = {
-		modes = {
-			info = 3, -- [ Opções disponíveis: 1,2,3 ],
-			icon = "fill", -- [ Opções disponíveis: fill,line ],
-			status = 10, -- [ Opções disponíveis: 1 a 12 ],
-			vehicle = 3 -- [ Opções disponíveis: 1,2,3 ]
-		},
-		logo = 75, -- tamanho da logo
-		percentage = true,
-		icons = "#FFFFFF",
-		nitro = "#f69d2a",
-		rpm = "#FFFFFF",
-		fuel = "#f94c54",
-		engine = "#ff4c55",
-		health = "#76B984",
-		armor = "#A66FED",
-		hunger = "#F4B266",
-		thirst = "#7FC8F8",
-		oxygen = "#38F8F8",
-		stress = "#E287C9",
-		luck = "#F18A7C",
-		dexterity = "#E4E76E",
-		repose = "#7FCCC7",
-		pointer = "#ef4444",
-		progress = {
-			background = "#FFFFFF",
-			circle = "#5865f2",
-			letter = "#FFFFFF"
-		}
-	},
-	notifyitem = {
-		add = {
-			letter = "#dcffe9",
-			background = "#3fa466"
-		},
-		remove = {
-			letter = "#ffe8e8",
-			background = "#ad4443"
-		}
-	},
-	pause = {
-		premium = true,
-		propertys = true,
-		store = true,
-		battlepass = true,
-		boxes = true,
-		marketplace = true,
-		skinweapon = true,
-		ranking = true,
-		daily = true,
-		code = true,
-		map = true,
-		settings = true,
-		hud = true,
-		disconnect = true
-	},
-	scripts = {
-		taximeter = {
-			main = "#efcf2f",
-			mainText = "#120b02"
-		}
-	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GROUPS
@@ -468,4 +348,125 @@ SkinshopInit = {
 BarbershopInit = {
 	mp_m_freemode_01 = { 13,25,0,3,0,-1,-1,-1,-1,13,38,38,0,0,0,0,0.5,0,0,1,0,10,1,0,1,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38 },
 	mp_f_freemode_01 = { 13,25,1,3,0,-1,-1,-1,-1,1,38,38,0,0,0,0,1,0,0,1,0,0,0,0,1,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38 }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THEME
+-----------------------------------------------------------------------------------------------------------------------------------------
+Theme = {
+	shadow = true,
+	main = "#5865f2",
+	mainText = "#ffffff",
+	currency = Currency,
+	items = ListItem,
+	groups = Groups,
+
+	common = "#6fc66a",
+	rare = "#6ac6c5",
+	epic = "#c66a75",
+	legendary = "#c6986a",
+	accept = {
+		letter = "#dcffe9",
+		background = "#3fa466"
+	},
+	reject = {
+		letter = "#ffe8e8",
+		background = "#ad4443"
+	},
+	loading = {
+		mode = "dark", -- [ Opções disponíveis: dark,light ],
+		model = 2, -- [ Opções disponíveis: 1,2 ],
+		progress = true -- [ Opções disponíveis: true, false ],
+	},
+	chat = {
+		LSPD = {
+			background = "#16468b",
+			letter = "#ffffff"
+		},
+		BCSO = {
+			background = "#463939",
+			letter = "#ffffff"
+		},
+		BCPR = {
+			background = "#2d402d",
+			letter = "#ffffff"
+		},
+		Paramedico = {
+			background = "#9f1918",
+			letter = "#ffffff"
+		},
+		Families = {
+			background = "#4d7a06",
+			letter = "#ffffff"
+		},
+		Ballas = {
+			background = "#430d8e",
+			letter = "#ffffff"
+		},
+		Vagos = {
+			background = "#948209",
+			letter = "#ffffff"
+		}
+	},
+	hud = {
+		modes = {
+			info = 3, -- [ Opções disponíveis: 1,2,3 ],
+			icon = "fill", -- [ Opções disponíveis: fill,line ],
+			status = 10, -- [ Opções disponíveis: 1 a 12 ],
+			vehicle = 3 -- [ Opções disponíveis: 1,2,3 ]
+		},
+		logo = 75, -- tamanho da logo
+		percentage = true,
+		icons = "#FFFFFF",
+		nitro = "#f69d2a",
+		rpm = "#FFFFFF",
+		fuel = "#f94c54",
+		engine = "#ff4c55",
+		health = "#76B984",
+		armor = "#A66FED",
+		hunger = "#F4B266",
+		thirst = "#7FC8F8",
+		oxygen = "#38F8F8",
+		stress = "#E287C9",
+		luck = "#F18A7C",
+		dexterity = "#E4E76E",
+		repose = "#7FCCC7",
+		pointer = "#ef4444",
+		progress = {
+			background = "#FFFFFF",
+			circle = "#5865f2",
+			letter = "#FFFFFF"
+		}
+	},
+	notifyitem = {
+		add = {
+			letter = "#dcffe9",
+			background = "#3fa466"
+		},
+		remove = {
+			letter = "#ffe8e8",
+			background = "#ad4443"
+		}
+	},
+	pause = {
+		premium = true,
+		propertys = true,
+		store = true,
+		battlepass = true,
+		boxes = true,
+		marketplace = true,
+		skinweapon = true,
+		ranking = true,
+		daily = true,
+		code = true,
+		map = true,
+		settings = true,
+		hud = true,
+		disconnect = true
+	},
+	scripts = {
+		taximeter = {
+			main = "#efcf2f",
+			mainText = "#120b02"
+		}
+	}
 }

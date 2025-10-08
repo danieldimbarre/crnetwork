@@ -34,7 +34,7 @@ function tvRP.SetHealth(Health,Death)
 	SetEntityHealth(Ped,Health)
 
 	if Death then
-		exports["survival"]:Login()
+		exports.survival:Login()
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -84,55 +84,34 @@ function tvRP.Skin(Hash)
 		SetPlayerModel(Pid,Model)
 	end
 
-	exports["vrp"]:ReloadCharacter()
+	exports.vrp:ReloadCharacter()
 	tvRP.ReloadCharacter()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RELOADCHARACTER
 -----------------------------------------------------------------------------------------------------------------------------------------
 function tvRP.ReloadCharacter()
-	exports["skinshop"]:Apply()
-	exports["barbershop"]:Apply()
-	exports["tattooshop"]:Apply()
+	exports.skinshop:Apply()
+	exports.barbershop:Apply()
+	exports.tattooshop:Apply()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP:ACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("vRP:Active")
-AddEventHandler("vRP:Active",function(Passport,Name,Inventory,Creation)
-	LocalPlayer.state:set("Name",Name,true)
-	LocalPlayer.state:set("Active",true,true)
-	LocalPlayer.state:set("Passport",Passport,true)
-
+AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
 	local Ped = PlayerPedId()
 
-	if not Creation then
-		SetEntityVisible(Ped,false)
-	end
-
 	SetLocalPlayerAsGhost(true)
-	SetEntityInvincible(Ped,true)
-	FreezeEntityPosition(Ped,true)
 	NetworkSetFriendlyFireOption(false)
 
 	SetTimeout(5000,function()
-		if not Creation then
-			SetEntityVisible(Ped,true)
-		end
-
 		SetLocalPlayerAsGhost(false)
 		exports.vrp:ReloadCharacter()
-		SetEntityInvincible(Ped,false)
-		FreezeEntityPosition(Ped,false)
 		NetworkSetFriendlyFireOption(true)
 		SetCanAttackFriendly(Ped,true,false)
 		SetPedRelationshipGroupHash(Ped,1862763509)
 		TriggerEvent("InitialCharacterSystemComplete")
-
-		if not Creation then
-			TriggerServerEvent("vRP:WaitCharacters")
-			TriggerEvent("referrals:Open")
-		end
 
 		if Inventory then
 			for Slot,v in pairs(Inventory) do

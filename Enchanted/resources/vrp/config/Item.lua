@@ -1149,16 +1149,6 @@ local List = {
 		["Economy"] = 80000,
 		["Rarity"] = "legendary"
 	},
-	["newchars"] = {
-		["Index"] = "newchars",
-		["Name"] = "Cartão de Personagem",
-		["Type"] = "Consumível",
-		["Description"] = "Aumenta 1 no limite de personagens.",
-		["Weight"] = 0.0,
-		["Delete"] = true,
-		["Economy"] = 80000,
-		["Rarity"] = "legendary"
-	},
 	["namechange"] = {
 		["Index"] = "namechange",
 		["Name"] = "Cartão de Nome",

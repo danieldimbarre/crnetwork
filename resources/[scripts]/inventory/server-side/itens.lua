@@ -363,11 +363,22 @@ Use = {
 		TriggerClientEvent("inventory:Close",source)
 
 		local Keyboard = vKEYBOARD.Secondary(source,"Nome","Sobrenome")
-		if Keyboard and vRP.Request(source,"Mudança de Nome","Finalizar a troca para <b>"..Keyboard[1].." "..Keyboard[2].."</b>?") then
+		if not Keyboard then
+			return false
+		end
+
+		local Name = Keyboard[1]
+		local Lastname = Keyboard[2]
+		if vRP.Request(source,"Mudança de Nome","Finalizar a troca para <b>"..Name.." "..Lastname.."</b>?") then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				vRP.UpgradeNames(Passport,Name,Lastname)
 				TriggerClientEvent("inventory:Update",source)
-				vRP.UpgradeNames(Passport,Keyboard[1],Keyboard[2])
-				TriggerClientEvent("inventory:Notify",source,"Sucesso","Passaporte atualizado.","verde")
+				TriggerClientEvent("inventory:Notify",source,"Sucesso","Nome atualizado.","verde")
+
+				local Account = vRP.AccountInformation(Passport,"Discord")
+				if Account then
+					exports.discord:Content("Rename",Account.." #"..OtherPassport.." "..Name.." "..Lastname)
+				end
 			end
 		end
 	end,
@@ -2438,188 +2449,6 @@ Use = {
 		Player(source).state.Buttons = false
 	end,
 
-	["weedclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"weed",{ Min = 3, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["cokeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"coke",{ Min = 3, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["tomatoclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"tomato",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["passionclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"passion",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["tangeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"tange",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["orangeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"orange",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["appleclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"apple",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["grapeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"grape",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["lemonclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"lemon",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["bananaclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"banana",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["acerolaclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"acerola",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["strawberryclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"strawberry",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["blueberryclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"blueberry",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
-	["coffeeclone"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		Player(source).state.Buttons = true
-		TriggerClientEvent("inventory:Close",source)
-
-		local Hash = "bkr_prop_weed_med_01a"
-		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
-			exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),"coffee",{ Min = 4, Max = 6 })
-		end
-
-		Player(source).state.Buttons = false
-	end,
-
 	["securitycam"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
@@ -3377,6 +3206,25 @@ for NameItem,v in pairs(Sprays) do
 					Player(source).state.Buttons = false
 				end
 			end)
+		end
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLONES
+-----------------------------------------------------------------------------------------------------------------------------------------
+for _,v in ipairs(Clones) do
+	for _,w in ipairs(Puritys) do
+		Use[v.Clone.."clone_"..w.Percent] = function(source,Passport,Amount,Slot,Full,Item,Split)
+			Player(source).state.Buttons = true
+			TriggerClientEvent("inventory:Close",source)
+
+			local Hash = v.Hash
+			local Application,Coords = vRPC.ObjectControlling(source,Hash)
+			if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				exports.plants:Plants(Hash,Coords,GetPlayerRoutingBucket(source),v.Clone,{ Min = v.Min, Max = v.Max },w.Percent)
+			end
+
+			Player(source).state.Buttons = false
 		end
 	end
 end

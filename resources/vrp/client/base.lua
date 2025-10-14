@@ -197,23 +197,18 @@ CreateThread(function()
 					if Passport then
 						TimeDistance = 0
 
+						local Armour = GetPedArmour(Entitys)
+						local Prefix = Talking and "~q~" or ""
+						local Health = GetEntityHealth(Entitys)
+						local CheckIn = math.max(Health - 100,0)
 						local Head = GetPedBoneIndex(Entitys,0x796e)
+						local Name = PlayerState.Name or "Carregando..."
+						local Check = (CheckIn <= 0) and "Morto" or CheckIn
+						local Talking = MumbleIsPlayerTalking(Voip[Entitys])
 						local HeadCoords = GetWorldPositionOfEntityBone(Entitys,Head)
-						local OnScreen = World3dToScreen2d(HeadCoords.x,HeadCoords.y,HeadCoords.z)
-						if OnScreen then
-							local Name = PlayerState.Name or "Carregando..."
-							local Talking = MumbleIsPlayerTalking(Voip[Entitys])
+						local Message = ("%s%s~w~ | ~y~%s~w~ | ~g~%s~w~ | ~b~%s"):format(Prefix,Name,Passport,Check,Armour)
 
-							local Armour = GetPedArmour(Entitys)
-							local Health = GetEntityHealth(Entitys)
-							local CheckIn = math.max(Health - 100,0)
-							local Status = (CheckIn <= 0) and "Morto" or CheckIn
-
-							local Prefix = Talking and "~q~" or ""
-							local Message = ("%s%s~w~ | ~y~%s~w~ | ~g~%s~w~ | ~b~%s"):format(Prefix,Name,Passport,Status,Armour)
-
-							DrawText(HeadCoords,Message)
-						end
+						DrawText(HeadCoords,Message)
 					end
 				end
 			end
@@ -225,7 +220,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function DrawText(Coords,Text)
+function DrawText(Coords,Message)
 	SetDrawOrigin(Coords.x,Coords.y,Coords.z + 0.5)
 
 	SetTextFont(4)
@@ -234,7 +229,7 @@ function DrawText(Coords,Text)
 	SetTextColour(255,255,255,255)
 	SetTextDropshadow(1,15,15,15,150)
 	BeginTextCommandDisplayText("STRING")
-	AddTextComponentSubstringPlayerName(Text)
+	AddTextComponentSubstringPlayerName(Message)
 	EndTextCommandDisplayText(0.0,0.0)
 
 	ClearDrawOrigin()

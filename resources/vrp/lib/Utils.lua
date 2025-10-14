@@ -262,34 +262,26 @@ function CompleteTimers(Seconds,Simple)
 	local Minutes = math.floor(Seconds / 60)
 	Seconds = Seconds % 60
 
+	local function Plural(Value,Singular,Plural)
+		return Value <= 1 and Singular or Plural
+	end
+
 	if Days > 0 then
 		if Hours > 0 and not Simple then
-			if Minutes > 0 then
-				return string.format("%d Dias, %d Horas e %d Minutos",Days,Hours,Minutes)
-			else
-				return string.format("%d Dias e %d Horas",Days,Hours)
-			end
+			return string.format("%d %s, %d %s e %d %s",Days,Plural(Days,"Dia","Dias"),Hours,Plural(Hours,"Hora","Horas"),Minutes,Plural(Minutes,"Minuto","Minutos"))
 		else
-			return string.format("%d Dias",Days)
+			return string.format("%d %s e %d %s",Days,Plural(Days,"Dia","Dias"),Hours,Plural(Hours,"Hora","Horas"))
 		end
 	elseif Hours > 0 then
 		if Minutes > 0 and not Simple then
-			if Seconds > 0 then
-				return string.format("%d Horas, %d Minutos e %d Segundos",Hours,Minutes,Seconds)
-			else
-				return string.format("%d Horas e %d Minutos",Hours,Minutes)
-			end
+			return string.format("%d %s, %d %s e %d %s",Hours,Plural(Hours,"Hora","Horas"),Minutes,Plural(Minutes,"Minuto","Minutos"),Seconds,Plural(Seconds,"Segundo","Segundos"))
 		else
-			return string.format("%d Horas",Hours)
+			return string.format("%d %s e %d %s",Hours,Plural(Hours,"Hora","Horas"),Minutes,Plural(Minutes,"Minuto","Minutos"))
 		end
 	elseif Minutes > 0 then
-		if Seconds > 0 and not Simple then
-			return string.format("%d Minutos e %d Segundos",Minutes,Seconds)
-		else
-			return string.format("%d Minutos",Minutes)
-		end
+		return string.format("%d %s e %d %s",Minutes,Plural(Minutes,"Minuto","Minutos"),Seconds,Plural(Seconds,"Segundo","Segundos"))
 	else
-		return string.format("%d Segundos",Seconds)
+		return string.format("%d %s",Seconds,Plural(Seconds,"Segundo","Segundos"))
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -382,44 +374,46 @@ end
 -- RANDPERCENTAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function RandPercentage(Table)
-	local PoolSize = 0
+	if type(Table) ~= "table" or #Table == 0 then
+		return false
+	end
+
+	local Multiplier = 0
 	for Number = 1,#Table do
-		PoolSize = PoolSize + Table[Number]["Chance"]
+		Multiplier = Multiplier + (Table[Number].Chance or 0)
 	end
 
-	local Selected = math.random(1,PoolSize)
-	for Index,v in pairs(Table) do
-		Selected = Selected - v["Chance"]
+	if Multiplier <= 0 then
+		return false
+	end
 
-		if v["Min"] and v["Max"] then
-			Table[Index]["Valuation"] = math.random(v["Min"],v["Max"])
+	local Randomize = math.random(Multiplier)
+	for Number = 1,#Table do
+		local Entry = Table[Number]
+		Randomize = Randomize - (Entry.Chance or 0)
+
+		if Entry.Min and Entry.Max then
+			Entry.Valuation = math.random(Entry.Min,Entry.Max)
 		end
 
-		if (Selected <= 0) then
-			return Table[Index]
+		if Randomize <= 0 then
+			return Entry
 		end
 	end
+
+	return false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GENERATESTRING
 -----------------------------------------------------------------------------------------------------------------------------------------
 function GenerateString(Format)
-	local Message = ""
-	local LenByte = string.byte("A")
-	local NumByte = string.byte("0")
-
+	local Return = {}
 	for Number = 1,#Format do
-		local Lenght = string.sub(Format,Number,Number)
-    	if Lenght == "D" then
-    		Message = Message..string.char(NumByte + math.random(0,9))
-		elseif Lenght == "L" then
-			Message = Message..string.char(LenByte + math.random(0,25))
-		else
-			Message = Message..Lenght
-		end
+		local Consult = string.byte(Format,Number)
+		Return[Number] = Consult == 68 and string.char(48 + math.random(0,9)) or Consult == 76 and string.char(65 + math.random(0,25)) or string.char(Consult)
 	end
 
-	return Message
+	return table.concat(Return)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BASE64

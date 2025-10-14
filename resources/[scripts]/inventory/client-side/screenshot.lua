@@ -62,7 +62,6 @@ function RemoveCamera()
 
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end

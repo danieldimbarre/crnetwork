@@ -352,43 +352,7 @@ local List = {
 			["rubber"] = 20
 		}
 	},
-	-- CLONES
-	["tomato"] = {
-		["Index"] = "tomato",
-		["Name"] = "Tomate",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["tomatoclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Tomate",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
-	},
-	["passion"] = {
-		["Index"] = "passion",
-		["Name"] = "Maracujá",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["passionclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Maracujá",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
-	},
+	-- SUCOS
 	["passionjuice"] = {
 		["Index"] = "passionjuice",
 		["Name"] = "Suco de Maracujá",
@@ -399,24 +363,6 @@ local List = {
 		["Economy"] = 175,
 		["Market"] = true,
 		["Fridge"] = true
-	},
-	["tange"] = {
-		["Index"] = "tange",
-		["Name"] = "Tangerina",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["tangeclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Tangerina",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
 	},
 	["tangejuice"] = {
 		["Index"] = "tangejuice",
@@ -429,24 +375,6 @@ local List = {
 		["Market"] = true,
 		["Fridge"] = true
 	},
-	["orange"] = {
-		["Index"] = "orange",
-		["Name"] = "Laranja",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["orangeclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Laranja",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
-	},
 	["orangejuice"] = {
 		["Index"] = "orangejuice",
 		["Name"] = "Suco de Laranja",
@@ -457,24 +385,6 @@ local List = {
 		["Economy"] = 125,
 		["Market"] = true,
 		["Fridge"] = true
-	},
-	["apple"] = {
-		["Index"] = "apple",
-		["Name"] = "Maça",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["appleclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Maça",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
 	},
 	["applejuice"] = {
 		["Index"] = "applejuice",
@@ -487,24 +397,6 @@ local List = {
 		["Market"] = true,
 		["Fridge"] = true
 	},
-	["grape"] = {
-		["Index"] = "grape",
-		["Name"] = "Uva",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["grapeclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Uva",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
-	},
 	["grapejuice"] = {
 		["Index"] = "grapejuice",
 		["Name"] = "Suco de Uva",
@@ -515,24 +407,6 @@ local List = {
 		["Economy"] = 125,
 		["Market"] = true,
 		["Fridge"] = true
-	},
-	["lemon"] = {
-		["Index"] = "lemon",
-		["Name"] = "Limão",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["lemonclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Limão",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
 	},
 	["lemonjuice"] = {
 		["Index"] = "lemonjuice",
@@ -545,24 +419,6 @@ local List = {
 		["Market"] = true,
 		["Fridge"] = true
 	},
-	["banana"] = {
-		["Index"] = "banana",
-		["Name"] = "Banana",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["bananaclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Banana",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
-	},
 	["bananajuice"] = {
 		["Index"] = "bananajuice",
 		["Name"] = "Suco de Banana",
@@ -573,24 +429,6 @@ local List = {
 		["Economy"] = 125,
 		["Market"] = true,
 		["Fridge"] = true
-	},
-	["acerola"] = {
-		["Index"] = "acerola",
-		["Name"] = "Acerola",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["acerolaclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Acerola",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
 	},
 	["acerolajuice"] = {
 		["Index"] = "acerolajuice",
@@ -603,24 +441,6 @@ local List = {
 		["Market"] = true,
 		["Fridge"] = true
 	},
-	["strawberry"] = {
-		["Index"] = "strawberry",
-		["Name"] = "Morango",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["strawberryclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Morango",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
-	},
 	["strawberryjuice"] = {
 		["Index"] = "strawberryjuice",
 		["Name"] = "Suco de Morango",
@@ -632,24 +452,6 @@ local List = {
 		["Market"] = true,
 		["Fridge"] = true
 	},
-	["blueberry"] = {
-		["Index"] = "blueberry",
-		["Name"] = "Blueberry",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["blueberryclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Blueberry",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
-	},
 	["blueberryjuice"] = {
 		["Index"] = "blueberryjuice",
 		["Name"] = "Suco de Blueberry",
@@ -660,24 +462,6 @@ local List = {
 		["Economy"] = 125,
 		["Market"] = true,
 		["Fridge"] = true
-	},
-	["coffee"] = {
-		["Index"] = "coffee",
-		["Name"] = "Café",
-		["Type"] = "Comum",
-		["Weight"] = 0.15,
-		["LostWater"] = true,
-		["Market"] = true,
-		["Economy"] = 10,
-		["Fridge"] = true
-	},
-	["coffeeclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Café",
-		["Type"] = "Consumível",
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
 	},
 	["coffeemilk"] = {
 		["Index"] = "coffeemilk",
@@ -691,25 +475,6 @@ local List = {
 		["Fridge"] = true
 	},
 	-- DROGAS
-	["weedclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Cannabis",
-		["Type"] = "Consumível",
-		["Arrest"] = true,
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
-	},
-	["weed"] = {
-		["Index"] = "weed",
-		["Name"] = "Folha de Cannabis",
-		["Type"] = "Comum",
-		["Arrest"] = true,
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["Economy"] = 5,
-		["LostWater"] = true
-	},
 	["joint"] = {
 		["Index"] = "joint",
 		["Name"] = "Cigarro de Cannabis",
@@ -729,25 +494,6 @@ local List = {
 		["Weight"] = 2.50,
 		["Market"] = true,
 		["Economy"] = 250
-	},
-	["cokeclone"] = {
-		["Index"] = "clone",
-		["Name"] = "Clonagem de Cocaína",
-		["Type"] = "Consumível",
-		["Arrest"] = true,
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["LostWater"] = true
-	},
-	["coke"] = {
-		["Index"] = "coke",
-		["Name"] = "Folha de Cocaína",
-		["Type"] = "Comum",
-		["Arrest"] = true,
-		["Weight"] = 0.05,
-		["Market"] = true,
-		["Economy"] = 5,
-		["LostWater"] = true
 	},
 	["cocaine"] = {
 		["Index"] = "cocaine",
@@ -5542,6 +5288,69 @@ ListItem = List
 AddEventHandler("AddItem",function(Name,Table)
 	List[Name] = Table
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PURITYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+Puritys = {
+	{ Percent = 0, Chance = 100 },
+	{ Percent = 10, Chance = 90 },
+	{ Percent = 20, Chance = 80 },
+	{ Percent = 30, Chance = 70 },
+	{ Percent = 40, Chance = 60 },
+	{ Percent = 50, Chance = 50 },
+	{ Percent = 60, Chance = 40 },
+	{ Percent = 70, Chance = 30 },
+	{ Percent = 80, Chance = 20 },
+	{ Percent = 90, Chance = 10 },
+	{ Percent = 100, Chance = 1 }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLONEVARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+Clones = {
+	{ Clone = "tomato", Name = "Tomate", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "passion", Name = "Maracujá", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "tange", Name = "Tangerina", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "orange", Name = "Laranja", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "apple", Name = "Maça", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "grape", Name = "Uva", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "lemon", Name = "Limão", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "banana", Name = "Banana", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "acerola", Name = "Acerola", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "strawberry", Name = "Morango", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "blueberry", Name = "Blueberry", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "coffee", Name = "Café", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "weed", Name = "Cannabis", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
+	{ Clone = "coke", Name = "Cocaína", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLONESYSTEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+for _,v in ipairs(Clones) do
+	List[v.Clone] = {
+		Index = v.Clone,
+		Name = v.Name,
+		Type = "Comum",
+		LostWater = true,
+		Weight = 0.15,
+		Market = true,
+		Economy = 15,
+		Fridge = true
+	}
+
+	for _,w in ipairs(Puritys) do
+		List[v.Clone.."clone_"..w.Percent] = {
+			Index = "clone",
+			Name = "Clonagem de "..v.Name,
+			Description = "Pureza dos frutos: <common>"..w.Percent.."%</common>",
+			Type = "Consumível",
+			Purity = w.Percent,
+			LostWater = true,
+			Weight = 0.05,
+			Market = true
+		}
+	end
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMLIST
 -----------------------------------------------------------------------------------------------------------------------------------------

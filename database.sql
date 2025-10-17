@@ -174,6 +174,16 @@ CREATE TABLE IF NOT EXISTS `mdt_creative_medals` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+CREATE TABLE IF NOT EXISTS `mdt_creative_penalcode_sections` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Type` varchar(10) NOT NULL,
+  `Title` varchar(100) NOT NULL,
+  `Description` longtext DEFAULT NULL,
+  `Order` int(10) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 CREATE TABLE IF NOT EXISTS `mdt_creative_penalcode_articles` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
   `Section` bigint(19) NOT NULL DEFAULT 0,
@@ -186,15 +196,6 @@ CREATE TABLE IF NOT EXISTS `mdt_creative_penalcode_articles` (
   PRIMARY KEY (`id`),
   KEY `MDT_Section` (`Section`),
   CONSTRAINT `MDT_Section` FOREIGN KEY (`Section`) REFERENCES `mdt_creative_penalcode_sections` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `mdt_creative_penalcode_sections` (
-  `id` bigint(19) NOT NULL AUTO_INCREMENT,
-  `Type` varchar(10) NOT NULL,
-  `Title` varchar(100) NOT NULL,
-  `Description` longtext DEFAULT NULL,
-  `Order` int(10) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `mdt_creative_reports` (

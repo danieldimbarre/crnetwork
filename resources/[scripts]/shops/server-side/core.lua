@@ -93,10 +93,6 @@ function Creative.Take(Item,Amount,Target,Name)
 			if List[Name]["Type"] == "Cash" then
 				if vRP.PaymentFull(Passport,List[Name]["List"][Item] * Amount) then
 					vRP.GenerateItem(Passport,Item,Amount,false,Target)
-
-					if Item == "WEAPON_PETROLCAN" then
-						vRP.GenerateItem(Passport,"WEAPON_PETROLCAN_AMMO",4500)
-					end
 				else
 					TriggerClientEvent("inventory:Notify",source,"Aviso","Dinheiro insuficiente.","amarelo")
 				end

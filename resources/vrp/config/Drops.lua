@@ -2,8 +2,8 @@
 -- ILEGALITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 IlegalItens = {
-	{ ["Item"] = "weedclone", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 1 },
-	{ ["Item"] = "cokeclone", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 1 },
+	{ ["Item"] = "weedclone_0", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 1 },
+	{ ["Item"] = "cokeclone_0", ["Chance"] = 5, ["Min"] = 1, ["Max"] = 1 },
 	{ ["Item"] = "adrenaline", ["Chance"] = 7, ["Min"] = 1, ["Max"] = 1 },
 	{ ["Item"] = "pistolbody", ["Chance"] = 15, ["Min"] = 1, ["Max"] = 1 },
 	{ ["Item"] = "smgbody", ["Chance"] = 10, ["Min"] = 1, ["Max"] = 1 },

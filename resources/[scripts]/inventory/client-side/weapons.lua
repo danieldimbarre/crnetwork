@@ -308,9 +308,8 @@ CreateThread(function()
 	while true do
 		local TimeDistance = 999
 		if Weapon ~= "" and Actived then
-			TimeDistance = 100
+			TimeDistance = 1
 
-			local Pid = PlayerId()
 			local Ped = PlayerPedId()
 			local CurrentTimer = GetGameTimer()
 			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
@@ -320,7 +319,7 @@ CreateThread(function()
 				Reload = CurrentTimer + 1000
 			end
 
-			if (Ammo <= 0 or (Weapon == "WEAPON_PETROLCAN" and Ammo <= 135 and IsPedShooting(Ped))) and CurrentTimer >= Cooldown then
+			if (Ammo <= 0 or (Weapon == "WEAPON_PETROLCAN" and Ammo <= 50 and IsPedShooting(Ped))) and CurrentTimer >= Cooldown then
 				Cooldown = CurrentTimer + 1000
 				TriggerEvent("inventory:CleanWeapons")
 
@@ -333,6 +332,8 @@ CreateThread(function()
 
 			if IsPedInAnyVehicle(Ped) then
 				local Allowed = false
+				local Pid = PlayerId()
+
 				if IsPedInAnyHeli(Ped) then
 					Allowed = (Ammos == "WEAPON_RIFLE_AMMO")
 				else

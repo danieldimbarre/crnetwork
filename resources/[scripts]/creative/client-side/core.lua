@@ -411,18 +411,6 @@ end)
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local mapZoomData = {
-		{ 0,0.96,0.9,0.08,0.0,0.0 },
-		{ 1,1.6,0.9,0.08,0.0,0.0 },
-		{ 2,8.6,0.9,0.08,0.0,0.0 },
-		{ 3,12.3,0.9,0.08,0.0,0.0 },
-		{ 4,22.3,0.9,0.08,0.0,0.0 }
-	}
-
-	for _,zoomData in ipairs(mapZoomData) do
-		SetMapZoomDataLevel(zoomData[1],zoomData[2],zoomData[3],zoomData[4],zoomData[5],zoomData[6])
-	end
-
 	for _,v in pairs(IPL_LIST) do
 		local Interior = GetInteriorAtCoords(v.Coords)
 		LoadInterior(Interior)

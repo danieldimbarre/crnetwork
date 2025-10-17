@@ -1,12 +1,107 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- VRP
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Tunnel = module("vrp","lib/Tunnel")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECTION
+-----------------------------------------------------------------------------------------------------------------------------------------
+vSERVER = Tunnel.getInterface("helicrash")
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Fire = {}
 local Blip = nil
+local Alpha = nil
 local Objects = {}
 local Active = false
+local InsideMarked = false
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SYSTEM
+-- CREATECRASHOBJECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+function CreateCrashObject(Model,Coords,Heading)
+	local Object = CreateObjectNoOffset(Model,Coords.xyz,false,false,false)
+	SetEntityLodDist(Object,0xFFFF)
+	FreezeEntityPosition(Object,true)
+	PlaceObjectOnGroundProperly(Object)
+	SetEntityHeading(Object,Heading)
+
+	return Object
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REMOVECRASHOBJECTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function RemoveCrashObjects()
+	for Index,Entitys in pairs(Objects) do
+		if Index ~= "Helicopter" then
+			exports.target:RemCircleZone("Helicrash:"..Index)
+		end
+
+		if DoesEntityExist(Entitys) then
+			DeleteEntity(Entitys)
+		end
+
+		if Fire[Index] then
+			RemoveScriptFire(Fire[Index])
+			Fire[Index] = nil
+		end
+
+		Objects[Index] = nil
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SETUPTARGETZONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function SetupTargetZone(Index,Coords,Heading)
+	exports.target:AddBoxZone("Helicrash:"..Index,Coords.xyz,1.25,2.25,{
+		name = "Helicrash:"..Index,
+		maxZ = Coords.z + 1.0,
+		heading = Heading,
+		minZ = Coords.z
+	},{
+		shop = "Helicrash:"..Index,
+		Distance = 2.0,
+		options = {
+			{
+				event = "chest:Open",
+				label = "Abrir",
+				tunnel = "client",
+				service = "Custom"
+			}
+		}
+	})
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- UPDATEBLIP
+-----------------------------------------------------------------------------------------------------------------------------------------
+function UpdateBlip()
+	if DoesBlipExist(Blip) then
+		RemoveBlip(Blip)
+		Blip = nil
+	end
+
+	if DoesBlipExist(Alpha) then
+		RemoveBlip(Alpha)
+		Alpha = nil
+	end
+
+	if Active and Components[Active] then
+		Blip = AddBlipForCoord(Components[Active].Center.xyz)
+		SetBlipSprite(Blip,43)
+		SetBlipDisplay(Blip,4)
+		SetBlipAsShortRange(Blip,true)
+		SetBlipColour(Blip,49)
+		SetBlipScale(Blip,1.0)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString("Helicrash")
+		EndTextCommandSetBlipName(Blip)
+
+		Alpha = AddBlipForRadius(Components[Active].Center.xyz,Components[Active].Survival)
+		SetBlipColour(Alpha,49)
+		SetBlipAlpha(Alpha,150)
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	LoadModel("prop_crashed_heli")
@@ -14,86 +109,60 @@ CreateThread(function()
 
 	if GlobalState.Helicrash then
 		Active = GlobalState.Helicrash
-		HelicrashMarkerMap()
+		UpdateBlip()
 	end
 
 	while true do
-		local TimeDistance = 5000
+		local TimeDistance = 9999
 		if Active and Components[Active] then
 			local Ped = PlayerPedId()
 			local Select = Components[Active]
 			local Coords = GetEntityCoords(Ped)
 
-			if #(Coords - Select.Center.xyz) <= 1000 then
+			if #(Coords - Select.Center.xyz) <= Select.Survival then
+				if not InsideMarked then
+					InsideMarked = true
+					vSERVER.Progress("Enter")
+				end
+
 				if not Objects.Helicopter then
-					Objects.Helicopter = CreateObjectNoOffset("prop_crashed_heli",Select.Center.xyz,false,false,false)
-					SetEntityLodDist(Objects.Helicopter,0xFFFF)
-					FreezeEntityPosition(Objects.Helicopter,true)
-					PlaceObjectOnGroundProperly(Objects.Helicopter)
-					SetEntityHeading(Objects.Helicopter,Select.Center.w)
+					Objects.Helicopter = CreateCrashObject("prop_crashed_heli",Select.Center)
 				end
 
-				for Number,Locate in pairs(Select.Coords) do
-					if not Objects[Number] then
-						Objects[Number] = CreateObjectNoOffset("m23_1_prop_m31_crate_cd_01a",Locate.xyz,false,false,false)
-						SetEntityLodDist(Objects[Number],0xFFFF)
-						FreezeEntityPosition(Objects[Number],true)
-						PlaceObjectOnGroundProperly(Objects[Number])
-						SetEntityHeading(Objects[Number],Locate.w)
+				for Index,OtherCoords in pairs(Select.Coords) do
+					if not Objects[Index] then
+						Objects[Index] = CreateCrashObject("m23_1_prop_m31_crate_cd_01a",OtherCoords,OtherCoords.w)
+						SetupTargetZone(Index,OtherCoords,OtherCoords.w)
 
-						if GlobalState.Work <= GlobalState.Helifire then
-							Fire[Number] = StartScriptFire(Locate.xyz,25,0)
+						if GlobalState.Work <= GlobalState.HelicrashFire then
+							Fire[Index] = StartScriptFire(OtherCoords.xyz,20,false)
 						end
-
-						exports["target"]:AddBoxZone("Helicrash:"..Number,Locate.xyz,1.25,2.25,{
-							name = "Helicrash:"..Number,
-							maxZ = Locate.z + 0.75,
-							heading = Locate.w,
-							minZ = Locate.z
-						},{
-							shop = "Helicrash:"..Number,
-							Distance = 2.0,
-							options = {
-								{
-									event = "chest:Open",
-									label = "Abrir",
-									tunnel = "client",
-									service = "Custom"
-								}
-							}
-						})
 					else
-						if Fire[Number] then
-							if #(Coords - Locate.xyz) <= 2.5 then
-								ApplyDamageToPed(Ped,5,false)
-								TimeDistance = 2500
-							end
-
-							if GlobalState.Work > GlobalState.Helifire then
-								RemoveScriptFire(Fire[Number])
-								Fire[Number] = nil
-							end
-						end
-					end
-				end
-			else
-				if Objects.Helicopter then
-					for Index,v in pairs(Objects) do
-						if Index ~= "Helicopter" then
-							exports["target"]:RemCircleZone("Helicrash:"..Index)
+						if Fire[Index] and #(Coords - OtherCoords.xyz) <= 5 then
+							ApplyDamageToPed(Ped,5,false)
 						end
 
-						if DoesEntityExist(Objects[Index]) then
-							DeleteEntity(Objects[Index])
-						end
-
-						if Fire[Index] then
+						if Fire[Index] and GlobalState.Work > GlobalState.HelicrashFire then
 							RemoveScriptFire(Fire[Index])
 							Fire[Index] = nil
 						end
 
-						Objects[Index] = nil
+						TimeDistance = 2500
 					end
+				end
+
+				if GetEntityHealth(Ped) <= 100 then
+					TriggerServerEvent("player:Survival")
+					exports.survival:FinishSurvival()
+				end
+			else
+				if Objects.Helicopter then
+					RemoveCrashObjects()
+				end
+
+				if InsideMarked then
+					InsideMarked = false
+					vSERVER.Progress("Exit")
 				end
 			end
 		end
@@ -104,49 +173,37 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddStateBagChangeHandler("Helicrash",nil,function(Name,Key,Value)
-	if DoesBlipExist(Blip) then
-		RemoveBlip(Blip)
-	end
-
+AddStateBagChangeHandler("Helicrash",nil,function(_,_,Value)
 	Active = Value
-
-	if Value then
-		HelicrashMarkerMap()
-	end
+	UpdateBlip()
 
 	if Objects.Helicopter then
-		for Index,v in pairs(Objects) do
-			if Index ~= "Helicopter" then
-				exports["target"]:RemCircleZone("Helicrash:"..Index)
-			end
+		RemoveCrashObjects()
+	end
 
-			if DoesEntityExist(Objects[Index]) then
-				DeleteEntity(Objects[Index])
-			end
-
-			if Fire[Index] then
-				RemoveScriptFire(Fire[Number])
-				Fire[Index] = nil
-			end
-
-			Objects[Index] = nil
-		end
+	if InsideMarked then
+		InsideMarked = false
+		vSERVER.Progress("Exit")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- HELICRASHMARKERMAP
+-- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function HelicrashMarkerMap()
-	if Components[Active] then
-		Blip = AddBlipForCoord(Components[Active].Center.xyz)
-		SetBlipSprite(Blip,43)
-		SetBlipDisplay(Blip,4)
-		SetBlipAsShortRange(Blip,true)
-		SetBlipColour(Blip,5)
-		SetBlipScale(Blip,0.8)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("Helicrash")
-		EndTextCommandSetBlipName(Blip)
+AddEventHandler("gameEventTriggered",function(Event,Message)
+	if Event ~= "CEventNetworkEntityDamage" or not InsideMarked or LocalPlayer.state.Arena or LocalPlayer.state.Death then
+		return false
 	end
-end
+
+	local Victim = Message[1]
+	local Attacker = Message[2]
+	if Victim ~= PlayerPedId() or not IsEntityAPed(Victim) or GetEntityHealth(Victim) > 100 then
+		return false
+	end
+
+	local CurrentTimer = GetGameTimer()
+	local Index = NetworkGetPlayerIndexFromPed(Attacker)
+	if Index and NetworkIsPlayerConnected(Index) and FeedCooldown < CurrentTimer then
+		FeedCooldown = CurrentTimer + 1000
+		vSERVER.KillFeed(GetPlayerServerId(Index))
+	end
+end)

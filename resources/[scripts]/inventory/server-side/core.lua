@@ -226,8 +226,8 @@ Loots = {
 		["Cooldown"] = 3600,
 		["Item"] = "utilkey",
 		["List"] = {
-			{ ["Item"] = "weedclone", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
-			{ ["Item"] = "cokeclone", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
+			{ ["Item"] = "weedclone_0", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
+			{ ["Item"] = "cokeclone_0", ["Chance"] = 1, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "plate", ["Chance"] = 25, ["Min"] = 1, ["Max"] = 1 },
 			{ ["Item"] = "plastic", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10 },
 			{ ["Item"] = "glass", ["Chance"] = 100, ["Min"] = 6, ["Max"] = 10 },
@@ -666,8 +666,8 @@ function Creative.Use(Slot,Amount)
 
 			if Weapon ~= "" and WeaponAmmo(Weapon) and Item == WeaponAmmo(Weapon) then
 				if Weapon == "WEAPON_PETROLCAN" then
-					if (AmmoClip + Amount) > 4500 then
-						Amount = 4500 - AmmoClip
+					if (AmmoClip + Amount) > 5000 then
+						Amount = 5000 - AmmoClip
 					end
 				else
 					if (AmmoClip + Amount) > 250 then

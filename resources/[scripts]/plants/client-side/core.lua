@@ -68,19 +68,30 @@ end)
 -- PLANTS:INFORMATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("plants:Informations",function(Number)
-	local Informations = vSERVER.Informations(Number)
-	if Informations then
-		exports["dynamic"]:AddButton("Germinação","Tipo de Frutos: <rare>"..ItemName(Informations[3]).."</rare>","","",false,false)
-		exports["dynamic"]:AddButton("Fototropismo",Informations[1],"plants:Collect",Number,false,true)
-		exports["dynamic"]:AddButton("Fertilização",Informations[2],"plants:Cloning",Number,false,true)
-		exports["dynamic"]:AddButton("Hidratação","Fortificação do Adubo: <epic>"..math.floor(Informations[4] * 100).."%</epic>","plants:Water",Number,false,true)
-
-		if CheckPolice() or LocalPlayer.state.Admin then
-			exports["dynamic"]:AddButton("Destruir",Informations[1],"plants:Destroy",Number,false,true)
-		end
-
-		exports["dynamic"]:Open()
+	local Information = vSERVER.Informations(Number)
+	if not Information then
+		return false
 	end
+
+	local FruitName = ItemName(Information[3])
+	local Purity = tonumber(Information[5]) or 0
+	local Water = math.floor((tonumber(Information[4]) or 0) * 100)
+
+	local AddButton = function(Title,Description,Event,Value,Close,Action)
+		exports.dynamic:AddButton(Title,Description,Event or "",Value or "",Close or false,Action or false)
+	end
+
+	AddButton("Pureza",("Nível do Fruto: <rare>%d%%</rare>"):format(Purity))
+	AddButton("Fototropismo",Information[1],"plants:Collect",Number,false,true)
+	AddButton("Fertilização",Information[2],"plants:Cloning",Number,false,true)
+	AddButton("Germinação",("Tipo de Frutos: <rare>%s</rare>"):format(FruitName))
+	AddButton("Hidratação",("Fortificação do Adubo: <epic>%d%%</epic>"):format(Water),"plants:Water",Number,false,true)
+
+	if CheckPolice() or LocalPlayer.state.Admin then
+		AddButton("Destruir",Information[1],"plants:Destroy",Number,false,true)
+	end
+
+	exports.dynamic:Open()
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEMODELS

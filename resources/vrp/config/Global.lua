@@ -236,14 +236,276 @@ Groups = {
 		Hierarchy = { "Membro" },
 		Block = true
 	},
-	-- FUELSTATION
+	-- FUELSTATIONS
 	FuelStation01 = {
 		Permission = {
 			FuelStation01 = true
 		},
 		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
 		Service = true,
-		Type = "Fuel"
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation02 = {
+		Permission = {
+			FuelStation02 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation03 = {
+		Permission = {
+			FuelStation03 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation04 = {
+		Permission = {
+			FuelStation04 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation05 = {
+		Permission = {
+			FuelStation05 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation06 = {
+		Permission = {
+			FuelStation06 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation07 = {
+		Permission = {
+			FuelStation07 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation08 = {
+		Permission = {
+			FuelStation08 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation09 = {
+		Permission = {
+			FuelStation09 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation10 = {
+		Permission = {
+			FuelStation10 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation11 = {
+		Permission = {
+			FuelStation11 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation12 = {
+		Permission = {
+			FuelStation12 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation13 = {
+		Permission = {
+			FuelStation13 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation14 = {
+		Permission = {
+			FuelStation14 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation15 = {
+		Permission = {
+			FuelStation15 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation16 = {
+		Permission = {
+			FuelStation16 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation17 = {
+		Permission = {
+			FuelStation17 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation18 = {
+		Permission = {
+			FuelStation18 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation19 = {
+		Permission = {
+			FuelStation19 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation20 = {
+		Permission = {
+			FuelStation20 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation21 = {
+		Permission = {
+			FuelStation21 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation22 = {
+		Permission = {
+			FuelStation22 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation23 = {
+		Permission = {
+			FuelStation23 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation24 = {
+		Permission = {
+			FuelStation24 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation25 = {
+		Permission = {
+			FuelStation25 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation26 = {
+		Permission = {
+			FuelStation26 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
+	},
+	FuelStation27 = {
+		Permission = {
+			FuelStation27 = true
+		},
+		Hierarchy = { "Proprietário","Gerente","Atendente","Frentista" },
+		Service = true,
+		Type = "Fuel",
+		Block = true,
+		Max = 3
 	},
 	-- PROPRIEDADES
 	Mansao01 = { -- Exemplo de propriedade com painel/permissão

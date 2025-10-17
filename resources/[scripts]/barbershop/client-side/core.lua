@@ -22,38 +22,20 @@ local Creation = false
 -- SAVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Save",function(Data,Callback)
-	if Creation then
-		DoScreenFadeOut(0)
-
-		SetTimeout(2500,function()
-			local Ped = PlayerPedId()
-
-			LocalPlayer.state:set("Active",true,true)
-			FreezeEntityPosition(Ped,false)
-			TriggerEvent("hud:Active",true)
-			TriggerEvent("referrals:Open")
-			SetEntityInvincible(Ped,false)
-
-			DoScreenFadeIn(0)
-		end)
-	else
-		TriggerEvent("hud:Active",true)
-	end
-
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end
 
-	vSERVER.Update(Barbershop,Creation)
-
 	if Creation then
-		TriggerServerEvent("vRP:WaitCharacters")
+		exports.skinshop:Creation()
+	else
+		TriggerEvent("hud:Active",true)
 	end
 
 	LocalPlayer.state:set("Hoverfy",true,false)
+	vSERVER.Update(Barbershop)
 	SetNuiFocus(false,false)
 	Creation = false
 	vRP.Destroy()
@@ -64,40 +46,22 @@ end)
 -- RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Reset",function(Data,Callback)
-	if Creation then
-		DoScreenFadeOut(0)
-
-		SetTimeout(2500,function()
-			local Ped = PlayerPedId()
-
-			LocalPlayer.state:set("Active",true,true)
-			FreezeEntityPosition(Ped,false)
-			TriggerEvent("hud:Active",true)
-			TriggerEvent("referrals:Open")
-			SetEntityInvincible(Ped,false)
-
-			DoScreenFadeIn(0)
-		end)
-	else
-		TriggerEvent("hud:Active",true)
-	end
-
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end
 
-	vSERVER.Update(Lasted,Creation)
-
 	if Creation then
-		TriggerServerEvent("vRP:WaitCharacters")
+		exports.skinshop:Creation()
+	else
+		TriggerEvent("hud:Active",true)
 	end
 
 	LocalPlayer.state:set("Hoverfy",true,false)
 	exports.barbershop:Apply(Lasted)
 	SetNuiFocus(false,false)
+	vSERVER.Update(Lasted)
 	Creation = false
 	vRP.Destroy()
 	Lasted = {}
@@ -165,13 +129,13 @@ function OpenBarbershop(Mode)
 
 	local Ped = PlayerPedId()
 	local Heading = GetEntityHeading(Ped)
-	local Coords = GetOffsetFromEntityInWorldCoords(Ped,-0.05,0.7,0.5)
-
 	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
+	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.25,0.7,0.5)
+
 	SetCamCoord(Camera,Coords.x,Coords.y,Coords.z)
 	RenderScriptCams(true,false,0,false,false)
-	SetCamRot(Camera,0.0,0.0,Heading + 200)
-	SetEntityHeading(Ped,Heading)
+	SetCamRot(Camera,0.0,0.0,(Creation and CreatorCoords.w or Heading) + 180)
+	SetEntityHeading(Ped,Creation and (CreatorCoords.w - 15) or Heading)
 	SetCamActive(Camera,true)
 	Default = Coords.z
 

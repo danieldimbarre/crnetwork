@@ -23,8 +23,8 @@ GlobalState.Weather = "EXTRASUNNY"
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		GlobalState.Work = GlobalState.Work + 1
-		GlobalState.Minutes = GlobalState.Minutes + 1
+		GlobalState.Work += 1
+		GlobalState.Minutes += 1
 
 		if GlobalState.Minutes >= 60 then
 			GlobalState.Hours = (GlobalState.Hours + 1) % 24

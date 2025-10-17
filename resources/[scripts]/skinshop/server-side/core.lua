@@ -44,11 +44,15 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Update(Clothes)
+function Creative.Update(Clothes,Creation)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		vRP.Query("playerdata/SetData",{ Passport = Passport, Name = "Clothings", Information = json.encode(Clothes) })
+
+		if Creation then
+			vRP.SpawnCreation(source)
+		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

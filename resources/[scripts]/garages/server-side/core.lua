@@ -631,46 +631,7 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 		return false
 	end
 
-	local SaveGarage = Vehicle.Save
-	if Number ~= SaveGarage then
-		if Garages[SaveGarage] and Garages[Number] and Garages[Number].Save then
-			TriggerClientEvent("Notify",source,"Aviso","O veículo não está neste local, mas será marcado no mapa por 30 segundos.","amarelo",5000)
-			TriggerClientEvent("garages:Close",source)
-			vCLIENT.SearchBlip(source,SaveGarage)
-
-			if vRP.Request(source,"Garagem",("Resgatar o veículo custa <b>%s%s</b>, deseja prosseguir?"):format(Currency,Dotted(Price * 0.1))) then
-				if not vRP.PaymentFull(Passport,Price * 0.1) then
-					return CancelProcess("Dinheiro insuficiente.")
-				end
-
-				vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
-				TriggerClientEvent("Notify",source,"Sucesso","Resgate concluído.","verde",5000)
-			else
-				return CancelProcess("Processo cancelado.")
-			end
-		else
-			vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
-		end
-	end
-
-	if Vehicle.Arrest then
-		TriggerClientEvent("garages:Close",source)
-
-		if vRP.Request(source,"Garagem",("Liberar veículo custa <b>%s%s</b>, deseja prosseguir?"):format(Currency,Dotted(Price * 0.1))) then
-			if not vRP.PaymentFull(Passport,Price * 0.1) then
-				return CancelProcess("Dinheiro insuficiente.")
-			end
-
-			vRP.Update("vehicles/PaymentArrest",{ Passport = Passport, Vehicle = Name })
-			exports.bank:AddTaxs(Passport,source,"Garagem",Price,"Liberação do veículo.")
-			TriggerClientEvent("Notify",source,"Sucesso","Veículo liberado.","policia",10000)
-		else
-			return CancelProcess("Processo cancelado.")
-		end
-	end
-
 	local Plate = Vehicle.Plate
-
 	if Spawn[Plate] then
 		if not Signal[Plate] then
 			if os.time() >= (Searched[Passport] or 0) then
@@ -695,6 +656,59 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 			TriggerClientEvent("Notify",source,"Aviso","Rastreador está desativado.","policia",5000)
 		end
 	else
+		local SaveGarage = Vehicle.Save
+		if Number ~= SaveGarage then
+			if Garages[SaveGarage] and Garages[Number] and Garages[Number].Save then
+				TriggerClientEvent("Notify",source,"Aviso","O veículo não está neste local, mas será marcado no mapa por 30 segundos.","amarelo",5000)
+				TriggerClientEvent("garages:Close",source)
+				vCLIENT.SearchBlip(source,SaveGarage)
+
+				if vRP.Request(source,"Garagem",("Resgatar o veículo custa <b>%s%s</b>, deseja prosseguir?"):format(Currency,Dotted(Price * 0.1))) then
+					if not vRP.PaymentFull(Passport,Price * 0.1) then
+						return CancelProcess("Dinheiro insuficiente.")
+					end
+
+					vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
+					TriggerClientEvent("Notify",source,"Sucesso","Resgate concluído.","verde",5000)
+				else
+					return CancelProcess("Processo cancelado.")
+				end
+			else
+				vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
+			end
+		end
+
+		if Vehicle.Arrest then
+			TriggerClientEvent("garages:Close",source)
+
+			if vRP.Request(source,"Garagem",("Liberar veículo custa <b>%s%s</b>, deseja prosseguir?"):format(Currency,Dotted(Price * 0.1))) then
+				if not vRP.PaymentFull(Passport,Price * 0.1) then
+					return CancelProcess("Dinheiro insuficiente.")
+				end
+
+				vRP.Update("vehicles/PaymentArrest",{ Passport = Passport, Vehicle = Name })
+				exports.bank:AddTaxs(Passport,source,"Garagem",Price,"Liberação do veículo.")
+				TriggerClientEvent("Notify",source,"Sucesso","Veículo liberado.","policia",10000)
+			else
+				return CancelProcess("Processo cancelado.")
+			end
+		end
+
+		if Vehicle.Tax <= os.time() then
+			TriggerClientEvent("garages:Close",source)
+
+			if vRP.Request(source,"Garagem",("Pagar a taxa do veículo <b>%s</b> por <b>%s%s</b>?"):format(VehicleName(Name),Currency,Dotted(Price * 0.15))) then
+				if not vRP.PaymentFull(Passport,Price * 0.15) then
+					return CancelProcess("Dinheiro insuficiente.")
+				end
+
+				vRP.Update("vehicles/updateVehiclesTax",{ Passport = Passport, Vehicle = Name })
+				TriggerClientEvent("Notify",source,"Sucesso","Pagamento concluído.","verde",5000)
+			else
+				return CancelProcess("Processo cancelado.")
+			end
+		end
+
 		if Gemstone > 0 and Vehicle.Rental ~= 0 and Vehicle.Rental <= os.time() then
 			TriggerClientEvent("garages:Close",source)
 
@@ -720,21 +734,6 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 				else
 					return CancelProcess(Coin.." insuficiente.")
 				end
-			else
-				return CancelProcess("Processo cancelado.")
-			end
-		end
-
-		if Vehicle.Tax <= os.time() then
-			TriggerClientEvent("garages:Close",source)
-
-			if vRP.Request(source,"Garagem",("Pagar a taxa do veículo <b>%s</b> por <b>%s%s</b>?"):format(VehicleName(Name),Currency,Dotted(Price * 0.15))) then
-				if not vRP.PaymentFull(Passport,Price * 0.15) then
-					return CancelProcess("Dinheiro insuficiente.")
-				end
-
-				vRP.Update("vehicles/updateVehiclesTax",{ Passport = Passport, Vehicle = Name })
-				TriggerClientEvent("Notify",source,"Sucesso","Pagamento concluído.","verde",5000)
 			else
 				return CancelProcess("Processo cancelado.")
 			end
@@ -774,7 +773,7 @@ RegisterCommand("car",function(source,Message)
 	local Heading = GetEntityHeading(Ped)
 	local Plate = "VEH"..(10000 + Passport)
 
-	local Exist,Network,Vehicle = Creative.ServerVehicle(Model,vec4(Coords.x,Coords.y,Coords.z,Heading),Plate,2000,nil,1000,100,true,false)
+	local Exist,Network,Vehicle = Creative.ServerVehicle(Model,vec4(Coords.x,Coords.y,Coords.z,Heading),Plate,2000,nil,1000,10,true,false)
 	if not Exist then
 		return false
 	end
@@ -1026,27 +1025,29 @@ end)
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for _,v in ipairs(vRP.Query("propertys/Garages")) do
-		local GarageName = v.Name
+	local Consult = vRP.Query("propertys/Garages")
+	for _,v in ipairs(Consult) do
+		local Name = v.Name
 		local GarageJson = v.Garage
-
-		if not Propertys[GarageName] and GarageJson then
-			local GarageData = json.decode(GarageJson)
-
-			if GarageData and GarageData["1"] and GarageData["2"] then
-				Garages[GarageName] = {
-					Name = "Garage",
-					Save = true
-				}
-
-				local Coords = GarageData["1"]
-				Propertys[GarageName] = {
-					x = Coords[1],
-					y = Coords[2],
-					z = Coords[3],
-					["1"] = GarageData["2"]
-				}
+		if not Propertys[Name] and GarageJson then
+			local GarageTable = json.decode(GarageJson)
+			if GarageTable and GarageTable["1"] and GarageTable["2"] then
+				Garages[Name] = { Name = "Garage", Save = true }
+				Propertys[Name] = { x = GarageTable["1"][1], y = GarageTable["1"][2], z = GarageTable["1"][3], ["1"] = GarageTable["2"] }
 			end
+		end
+	end
+
+	local Additional = 1296000
+	local CurrentTimer = os.time()
+	local Consult = vRP.Query("vehicles/All")
+	for _,v in ipairs(Consult) do
+		if (v.Tax + Additional) <= CurrentTimer then
+			vRP.Query("entitydata/RemoveData",{ Name = "Mods:"..v.Passport..":"..v.Vehicle })
+			vRP.Query("vehicles/removeVehicles",{ Passport = v.Passport, Vehicle = v.Vehicle })
+			vRP.Query("entitydata/RemoveData",{ Name = "Trunkchest:"..v.Passport..":"..v.Vehicle })
+
+			Wait(100)
 		end
 	end
 end)

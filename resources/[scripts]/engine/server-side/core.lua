@@ -12,12 +12,35 @@ Tunnel.bindInterface("engine",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENTFUEL
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.RechargeFuel(Price)
+function Creative.RechargeFuel(Price,Permission,Fuel)
+	local Check = false
 	local source = source
+	local Fuel = parseInt(Fuel)
 	local Passport = vRP.Passport(source)
-	if Passport and Price and vRP.PaymentFull(Passport,Price) then
+	if not Passport or not Price or Fuel <= 0 then
+		return false
+	end
+
+	if Permission then
+		local Consult = exports.oxmysql:single_async("SELECT Name,Stock FROM fuelstations_creative_informations WHERE Permission = ?",{ Permission })
+		if Consult and Consult.Stock < Fuel then
+			TriggerClientEvent("Notify",source,Consult.Name,"Combustível insuficiente.","amarelo",5000)
+			return false
+		end
+
+		Check = Consult and true or false
+	end
+
+	if vRP.PaymentFull(Passport,Price) then
+		if Check and Permission then
+			exports.fuelstations:UpdateStock(Permission,Fuel,"-",Price)
+			vRP.PermissionsUpdate(Permission,"Bank","+",Price)
+		end
+
 		return true
 	end
+
+	TriggerClientEvent("Notify",source,"Aviso","Dinheiro insuficiente.","amarelo",5000)
 
 	return false
 end

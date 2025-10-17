@@ -19,6 +19,7 @@ local Camera = nil
 local Default = nil
 local Skinshop = {}
 local Locations = {}
+local Creation = false
 local Animation = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EXCLUDE
@@ -183,9 +184,21 @@ RegisterNetEvent("skinshop:Open")
 AddEventHandler("skinshop:Open",function()
 	TriggerEvent("dynamic:Close")
 
-	if not exports["hud"]:Wanted() and not exports["hud"]:Repose() then
+	if not exports.hud:Wanted() and not exports.hud:Repose() then
 		OpenSkinshop()
 	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CREATION
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Creation",function()
+	local Ped = PlayerPedId()
+	if not IsEntityVisible(Ped) then
+		SetEntityVisible(Ped,true)
+	end
+
+	Creation = true
+	OpenSkinshop()
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MAXVALUES
@@ -213,46 +226,41 @@ end
 -- OPENSKINSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
 function OpenSkinshop()
-	Lasted = Skinshop
-	SetNuiFocus(true,true)
-	TriggerEvent("hud:Active",false)
-	LocalPlayer["state"]:set("Hoverfy",false,false)
 	vRP.playAnim(true,{"mp_sleep","bind_pose_180"},true)
-	SendNUIMessage({ Action = "Open", Payload = { Skinshop,MaxValues(),Exclude } })
+	LocalPlayer.state:set("Hoverfy",false,false)
+	TriggerEvent("hud:Active",false)
+	Lasted = Skinshop
 
-	CameraActive()
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- CAMERAACTIVE
------------------------------------------------------------------------------------------------------------------------------------------
-function CameraActive()
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
+		print("1")
 	end
 
 	local Ped = PlayerPedId()
 	local Heading = GetEntityHeading(Ped)
 	Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA",true)
-	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.25,1.0,0.0)
+	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,1.0,0.0)
 
 	if Init == "hat" then
-		SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] + 0.45)
+		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.45)
 	elseif Init == "shirt" then
-		SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] + 0.25)
+		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.25)
 	elseif Init == "pants" then
-		SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] - 0.45)
+		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z - 0.45)
 	elseif Init == "clock" then
-		SetCamCoord(Camera,Coords["x"],Coords["y"],Coords["z"] + 0.05)
+		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + 0.05)
 	end
 
 	RenderScriptCams(true,false,0,false,false)
-	SetCamRot(Camera,0.0,0.0,Heading + 180)
-	SetEntityHeading(Ped,Heading)
+	SetCamRot(Camera,0.0,0.0,(Creation and CreatorCoords.w or Heading) + 180)
+	SetEntityHeading(Ped,Creation and (CreatorCoords.w - 15) or Heading)
 	SetCamActive(Camera,true)
-	Default = Coords["z"]
+	Default = Coords.z
+
+	SendNUIMessage({ Action = "Open", Payload = { Skinshop,MaxValues(),Exclude } })
+	SetNuiFocus(true,true)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- APPLY
@@ -374,21 +382,23 @@ end)
 -- SETUP
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Setup",function(Data,Callback)
-	Init = Data.value
+	if not Creation then
+		Init = Data.value
 
-	local Ped = PlayerPedId()
-	local Heading = GetEntityHeading(Ped)
-	local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.25,1.0,0.0)
+		local Ped = PlayerPedId()
+		local Heading = GetEntityHeading(Ped)
+		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.25,1.0,0.0)
 
-	local Offsets = {
-		hat = 0.45,
-		shirt = 0.25,
-		pants = -0.45,
-		clock = 0.05
-	}
+		local Offsets = {
+			hat = 0.45,
+			shirt = 0.25,
+			pants = -0.45,
+			clock = 0.05
+		}
 
-	SetCamRot(Camera,0.0,0.0,Heading + 180.0)
-	SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + (Offsets[Init] or 0.0))
+		SetCamRot(Camera,0.0,0.0,Heading + 180.0)
+		SetCamCoord(Camera,Coords.x,Coords.y,Coords.z + (Offsets[Init] or 0.0))
+	end
 
 	Callback("Ok")
 end)
@@ -396,17 +406,36 @@ end)
 -- SAVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Save",function(Data,Callback)
+	if Creation then
+		DoScreenFadeOut(0)
+
+		SetTimeout(2500,function()
+			local Ped = PlayerPedId()
+
+			LocalPlayer.state:set("Active",true,true)
+			TriggerServerEvent("vRP:WaitCharacters")
+			FreezeEntityPosition(Ped,false)
+			TriggerEvent("hud:Active",true)
+			TriggerEvent("referrals:Open")
+			SetEntityInvincible(Ped,false)
+
+			DoScreenFadeIn(2500)
+		end)
+	else
+		TriggerEvent("hud:Active",true)
+	end
+
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end
 
 	LocalPlayer.state:set("Hoverfy",true,false)
+	vSERVER.Update(Skinshop,Creation)
 	TriggerEvent("hud:Active",true)
 	SetNuiFocus(false,false)
-	vSERVER.Update(Skinshop)
+	Creation = false
 	vRP.Destroy()
 
 	Callback("Ok")
@@ -415,9 +444,27 @@ end)
 -- RESET
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Reset",function(Data,Callback)
+	if Creation then
+		DoScreenFadeOut(0)
+
+		SetTimeout(2500,function()
+			local Ped = PlayerPedId()
+
+			LocalPlayer.state:set("Active",true,true)
+			TriggerServerEvent("vRP:WaitCharacters")
+			FreezeEntityPosition(Ped,false)
+			TriggerEvent("hud:Active",true)
+			TriggerEvent("referrals:Open")
+			SetEntityInvincible(Ped,false)
+
+			DoScreenFadeIn(2500)
+		end)
+	else
+		TriggerEvent("hud:Active",true)
+	end
+
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end
@@ -427,6 +474,7 @@ RegisterNUICallback("Reset",function(Data,Callback)
 	exports.skinshop:Apply(Lasted)
 	SetNuiFocus(false,false)
 	Skinshop = Lasted
+	Creation = false
 	vRP.Destroy()
 	Lasted = {}
 

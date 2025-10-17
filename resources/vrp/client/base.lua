@@ -137,10 +137,9 @@ function PassportEnable()
 			local Players = GetPlayers()
 			local Coords = GetEntityCoords(Ped)
 
-			for _,v in ipairs(Players) do
-				local Entitys = GetPlayerPed(v)
-				if Ped ~= Entitys and DoesEntityExist(Entitys) and IsEntityOnScreen(Entitys) and HasEntityClearLosToEntity(Ped,Entitys,17) then
-					local Passport = Player(v).state.Passport
+			for Entitys,source in pairs(Players) do
+				if Ped ~= Entitys and DoesEntityExist(Entitys) and HasEntityClearLosToEntity(Ped,Entitys,17) then
+					local Passport = Player(source).state.Passport
 					if Passport then
 						local OtherCoords = GetEntityCoords(Entitys)
 						if #(Coords - OtherCoords) <= 10.0 then

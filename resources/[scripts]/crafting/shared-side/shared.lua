@@ -296,7 +296,7 @@ List = {
 				Amount = 25,
 				Required = {
 					emptybottle = 3,
-					WEAPON_PETROLCAN_AMMO = 4500
+					WEAPON_PETROLCAN_AMMO = 5000
 				}
 			},
 			glass = {

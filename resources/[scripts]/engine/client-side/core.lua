@@ -8,14 +8,17 @@ vRP = Proxy.getInterface("vRP")
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
 vSERVER = Tunnel.getInterface("engine")
+vFUELSTATION = Tunnel.getInterface("fuelstations")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Price = 0
 local Lasted = 0
+local StockFuel = 0
 local Display = false
-local PriceLitter = 0.3
+local PriceLitter = 5.0
 local VehicleFuel = false
+local PriceLitterDefault = 5.0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -112,7 +115,22 @@ AddEventHandler("engine:Supply",function(Entitys)
 	local Ped = PlayerPedId()
 	local Vehicle = Entitys[3]
 	local Gallons = Entitys[6]
+	local Permission = Entitys[7]
 	local VehicleState = Entity(Vehicle).state
+
+	if Permission then
+		local Information = vFUELSTATION.FuelStock(Permission)
+		if Information.Stock and Information.Stock <= 0 then
+			TriggerEvent("Notify",Information.Name,"Combustível insuficiente.","amarelo",5000)
+			return false
+		end
+
+		StockFuel = Information.Stock or false
+		PriceLitter = Information.FuelPrice or PriceLitterDefault
+	else
+		StockFuel = false
+		PriceLitter = PriceLitterDefault
+	end
 
 	if not VehicleState.Fuel then
 		VehicleState:set("Fuel",100.0,true)
@@ -142,17 +160,18 @@ AddEventHandler("engine:Supply",function(Entitys)
 		end
 
 		if not Gallons then
-			VehicleFuel += 0.02
-			Price += PriceLitter
-			SendNUIMessage({ Action = "Tank", Payload = { floor(VehicleFuel),Price,PriceLitter * 5 } })
+			VehicleFuel += 0.01
+			Price += (PriceLitter / 100)
+			SendNUIMessage({ Action = "Tank", Payload = { floor(VehicleFuel),Price,PriceLitter } })
 		else
 			local Ammo = GetAmmoInPedWeapon(Ped,883325847)
-			if Ammo > 2 then
-				SetPedAmmo(Ped,883325847,math.floor(Ammo - 2))
-				VehicleFuel += 0.02
+			if Ammo > 1 then
+				SetPedAmmo(Ped,883325847,math.floor(Ammo - 1))
+				VehicleFuel += 0.01
 			end
 		end
 
+		local Consume = VehicleFuel - Lasted
 		SetDrawOrigin(Coords.x,Coords.y,Coords.z)
 		DrawSprite("Textures","E",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
 		ClearDrawOrigin()
@@ -161,11 +180,10 @@ AddEventHandler("engine:Supply",function(Entitys)
 			TaskPlayAnim(Ped,"timetable@gardener@filling_can","gar_ig_5_filling_can",8.0,8.0,-1,50,1,0,0,0)
 		end
 
-		if (VehicleFuel >= 100 or GetEntityHealth(Ped) <= 100 or (Gallons and GetAmmoInPedWeapon(Ped,883325847) <= 2) or IsControlJustPressed(1,38) or not DoesEntityExist(Vehicle)) then
-			if not Gallons and not vSERVER.RechargeFuel(Price) then
+		if ((StockFuel and Consume >= StockFuel) or VehicleFuel >= 100 or GetEntityHealth(Ped) <= 100 or (Gallons and GetAmmoInPedWeapon(Ped,883325847) <= 1) or IsControlJustPressed(1,38) or not DoesEntityExist(Vehicle)) then
+			if not Gallons and not vSERVER.RechargeFuel(Price,Permission,Consume) then
 				VehicleState:set("Fuel",Lasted + 0.0,true)
 				TriggerServerEvent("engine:SyncFuel",VehToNet(Vehicle),Lasted + 0.0)
-				TriggerEvent("Notify","Aviso","Dinheiro insuficiente.","amarelo",5000)
 			else
 				TriggerServerEvent("engine:SyncFuel",VehToNet(Vehicle),VehicleFuel + 0.0)
 				VehicleState:set("Fuel",VehicleFuel + 0.0,true)

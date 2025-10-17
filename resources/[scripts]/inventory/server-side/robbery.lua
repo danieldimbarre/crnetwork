@@ -45,7 +45,7 @@ local Config = {
 			List = {
 				{ Item = "water", Chance = 100, Min = 1, Max = 2 },
 				{ Item = "bandage", Chance = 100, Min = 1, Max = 2 },
-				{ Item = "weedclone", Chance = 100, Min = 1, Max = 2 }
+				{ Item = "weedclone_0", Chance = 100, Min = 1, Max = 2 }
 			}
 		},
 		Animation = {
@@ -64,7 +64,7 @@ local Config = {
 			List = {
 				{ Item = "water", Chance = 100, Min = 1, Max = 2 },
 				{ Item = "bandage", Chance = 100, Min = 1, Max = 2 },
-				{ Item = "weedclone", Chance = 100, Min = 1, Max = 2 }
+				{ Item = "weedclone_0", Chance = 100, Min = 1, Max = 2 }
 			}
 		},
 		Animation = {

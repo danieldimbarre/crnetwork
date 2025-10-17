@@ -1374,7 +1374,6 @@ end
 function CameraActive()
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end
@@ -1398,7 +1397,6 @@ end
 RegisterNUICallback("Save",function(Data,Callback)
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end
@@ -1418,7 +1416,6 @@ end)
 RegisterNUICallback("Reset",function(Data,Callback)
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end

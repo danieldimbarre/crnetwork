@@ -72,11 +72,10 @@ CREATE TABLE IF NOT EXISTS `entitydata` (
 CREATE TABLE IF NOT EXISTS `fuelstations_creative_informations` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
   `Permission` varchar(100) NOT NULL DEFAULT '',
-  `Name` varchar(100) NOT NULL DEFAULT 'Posto de Gasolina',
+  `Name` varchar(100) NOT NULL DEFAULT 'Posto de Combustível',
   `Color` int(3) NOT NULL DEFAULT 47,
   `Blip` int(3) NOT NULL DEFAULT 361,
   `Stock` int(9) NOT NULL DEFAULT 0,
-  `MaxStock` int(9) NOT NULL DEFAULT 1000,
   `FuelPrice` decimal(5,1) NOT NULL DEFAULT 5.0,
   `MoneyEarned` bigint(19) NOT NULL DEFAULT 0,
   `MoneySpent` bigint(19) NOT NULL DEFAULT 0,
@@ -400,23 +399,3 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `entitydata` (`Name`, `Information`) VALUES ('Permissions:Admin', '{\"1\":1}');
-
-INSERT INTO `mdt_creative_board` (`id`, `Title`, `Description`, `Permission`) VALUES
-(1, 'Titulo do aviso', 'Descrição do aviso.', 'LSPD'),
-(2, 'Titulo do aviso', 'Descrição do aviso.', 'BCSO');
-
-INSERT INTO `mdt_creative_medals` (`id`, `Image`, `Name`, `Officers`) VALUES (1, 'nui://mdt/web-side/images/Units.png', 'Honra ao Mérito', '[]');
-
-INSERT INTO `mdt_creative_units` (`id`, `Image`, `Name`, `Permission`, `Officers`) VALUES
-(1, 'nui://mdt/web-side/images/Units.png', 'RPS', 'LSPD', '[]'),
-(2, 'nui://mdt/web-side/images/Units.png', 'GRAER', 'LSPD', '[]'),
-(3, 'nui://mdt/web-side/images/Units.png', 'CMD', 'LSPD', '[1]'),
-(4, 'nui://mdt/web-side/images/Units.png', 'GAR', 'LSPD', '[]'),
-(5, 'nui://mdt/web-side/images/Units.png', 'GTM', 'LSPD', '[]'),
-(6, 'nui://mdt/web-side/images/Units.png', 'GRI', 'LSPD', '[]'),
-(7, 'nui://mdt/web-side/images/Units.png', 'RPS', 'BCSO', '[]'),
-(8, 'nui://mdt/web-side/images/Units.png', 'GRAER', 'BCSO', '[]'),
-(9, 'nui://mdt/web-side/images/Units.png', 'CMD', 'BCSO', '[]'),
-(10, 'nui://mdt/web-side/images/Units.png', 'GAR', 'BCSO', '[]'),
-(11, 'nui://mdt/web-side/images/Units.png', 'GTM', 'BCSO', '[]'),
-(12, 'nui://mdt/web-side/images/Units.png', 'GRI', 'BCSO', '[]');

@@ -24,15 +24,11 @@ local Locations = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Update(Table,Creation)
+function Creative.Update(Table)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport then
 		vRP.Query("playerdata/SetData",{ Passport = Passport, Name = "Barbershop", Information = json.encode(Table) })
-
-		if Creation then
-			vRP.SpawnCreation(source)
-		end
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

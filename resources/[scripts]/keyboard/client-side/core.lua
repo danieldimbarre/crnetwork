@@ -214,6 +214,17 @@ Form.Timeset = function(First,Second,Third)
 	})
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SPAWN
+-----------------------------------------------------------------------------------------------------------------------------------------
+Form.Spawn = function(First,Second,Third,Fourth)
+	return Keyboard({
+		{ Mode = "text", Placeholder = First },
+		{ Mode = "text", Placeholder = Second },
+		{ Mode = "options", Placeholder = "Selecione uma opção", Options = Third },
+		{ Mode = "options", Placeholder = "Selecione uma opção", Options = Fourth }
+	})
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 Form.Vehicle = function(First,Second,Third,Fourth,Fifth)

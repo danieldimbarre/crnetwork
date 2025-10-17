@@ -70,7 +70,6 @@ function Close()
 
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end
@@ -86,7 +85,6 @@ end
 function CameraActive()
 	if DoesCamExist(Camera) then
 		RenderScriptCams(false,false,0,false,false)
-		SetCamActive(Camera,false)
 		DestroyCam(Camera,false)
 		Camera = nil
 	end

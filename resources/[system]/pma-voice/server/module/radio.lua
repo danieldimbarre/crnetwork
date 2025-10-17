@@ -131,7 +131,7 @@ function setTalkingOnRadio(Talking)
 	for player in pairs(radioTbl) do
 		async(function()
 			if player ~= source then
-				TriggerClientEvent("pma-voice:setTalkingOnRadio",player,source,Talking)
+				TriggerClientEvent("pma-voice:setTalkingOnRadio",player,source,Talking,Player(source).state.Name or "Desconhecido")
 			end
 		end)
 	end

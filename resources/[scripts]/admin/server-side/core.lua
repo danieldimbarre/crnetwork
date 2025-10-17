@@ -1249,10 +1249,10 @@ RegisterCommand("video",function(source,Message)
 				table.sort(Permissions,function(a,b) return a < b end)
 				local Keyboard = vKEYBOARD.Options(source,"Código Vimeo",Permissions)
 				if Keyboard then
-					local Service = vRP.NumPermission(Keyboard[1])
+					local Service = vRP.NumPermission(Keyboard[2])
 					for Passports,Sources in pairs(Service) do
 						async(function()
-							TriggerClientEvent("hud:Video",Sources,Keyboard[2])
+							TriggerClientEvent("hud:Video",Sources,Keyboard[1])
 						end)
 					end
 
@@ -1288,21 +1288,31 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("rename",function(source)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Keyboard = vKEYBOARD.Tertiary(source,"Passaporte","Nome","Sobrenome")
-		if Keyboard then
-			local OtherPassport = parseInt(Keyboard[1])
-			local Identity = vRP.Identity(OtherPassport)
-			if Identity then
-				vRP.UpgradeNames(OtherPassport,Keyboard[2],Keyboard[3])
-				TriggerClientEvent("Notify",source,"Sucesso","Nome atualizado.","verde",5000)
+	if not Passport or not vRP.HasGroup(Passport,"Admin") then
+		return false
+	end
 
-				local Account = vRP.Account(Identity.License)
-				if Account then
-					exports["discord"]:Content("Rename",Account.Discord.." #"..OtherPassport.." "..Keyboard[2].." "..Keyboard[3])
-				end
-			end
-		end
+	local Keyboard = vKEYBOARD.Tertiary(source,"Passaporte","Nome","Sobrenome")
+	if not Keyboard then
+		return false
+	end
+
+	local Name = Keyboard[2]
+	local Lastname = Keyboard[3]
+	local OtherPassport = parseInt(Keyboard[1])
+
+	local Identity = vRP.Identity(OtherPassport)
+	if not Identity then
+		TriggerClientEvent("Notify",source,"Erro","Passaporte inválido.","vermelho",5000)
+		return false
+	end
+
+	vRP.UpgradeNames(OtherPassport,Name,Lastname)
+	TriggerClientEvent("Notify",source,"Sucesso","Nome atualizado.","verde",5000)
+
+	local Account = vRP.Account(Identity.License)
+	if Account and Account.Discord then
+		exports.discord:Content("Rename",account.Discord.." #"..OtherPassport.." "..Name.." "..Lastname)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1310,52 +1320,81 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("addcar",function(source)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin",1) then
-		local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Modelo",{ "Mensal","Permanente","Dias" },"Dias",{ "Sim","Não" })
-		if Keyboard and VehicleExist(Keyboard[2]) then
-			local Mode = Keyboard[3]
-			local Model = Keyboard[2]
-			local Days = parseInt(Keyboard[4],true)
-			local OtherPassport = parseInt(Keyboard[1],true)
-			local Block = Keyboard[5] == "Sim" and true or false
-
-			if Mode == "Mensal" then
-				exports["oxmysql"]:query_async("INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax,Block) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,UNIX_TIMESTAMP() + 2592000,UNIX_TIMESTAMP() + 2592000,@Block)",{ Passport = OtherPassport, Vehicle = Model, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Model), Work = (VehicleMode(Model) == "Work"), Block = Block })
-			elseif Mode == "Dias" then
-				exports["oxmysql"]:query_async("INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax,Block) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,UNIX_TIMESTAMP() + (86400 * @Days),UNIX_TIMESTAMP() + (86400 * @Days),@Block)",{ Passport = OtherPassport, Vehicle = Model, Plate = vRP.GeneratePlate(), Days = Days, Weight = VehicleWeight(Model), Work = (VehicleMode(Model) == "Work"), Block = Block })
-			elseif Mode == "Permanente" then
-				exports["oxmysql"]:query_async("INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Tax,Block) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,UNIX_TIMESTAMP() + 2592000,@Block)",{ Passport = OtherPassport, Vehicle = Model, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Model), Work = (VehicleMode(Model) == "Work"), Block = Block })
-			end
-
-			TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> entregue.","verde",5000)
-			exports["discord"]:Embed("AddCar","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[MODEL]:** "..Model.."\n**[TIPO]:** "..Mode)
-		end
+	if not Passport or not vRP.HasGroup(Passport,"Admin",1) then
+		return false
 	end
+
+	local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Modelo",{ "Mensal","Permanente","Dias" },"Dias",{ "Sim","Não" })
+	if not Keyboard then return end
+
+	local Mode = Keyboard[3]
+	local Model = Keyboard[2]
+	local Block = Keyboard[5] == "Sim"
+	local Days = parseInt(Keyboard[4],true)
+	local OtherPassport = parseInt(Keyboard[1],true)
+
+	if not VehicleExist(Model) then
+		TriggerClientEvent("Notify",source,"Erro","Modelo de veículo inválido.","vermelho",5000)
+		return false
+	end
+
+	local Rental,Tax = nil,nil
+	local CurrentTimer = os.time()
+	local Plate = vRP.GeneratePlate()
+	local Weight = VehicleWeight(Model)
+	local Work = VehicleMode(Model) == "Work"
+
+	if Mode == "Mensal" then
+		Rental = CurrentTimer + 30 * 24 * 60 * 60
+		Tax = Rental
+	elseif Mode == "Dias" then
+		Rental = CurrentTimer + (86400 * Days)
+		Tax = Rental
+	elseif Mode == "Permanente" then
+		Tax = CurrentTimer + 30 * 24 * 60 * 60
+	end
+
+	exports.oxmysql:query_async("INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax,Block) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,@Rental,@Tax,@Block)",{ Passport = OtherPassport, Vehicle = Model, Plate = Plate, Weight = Weight, Work = Work, Rental = Rental, Tax = Tax, Block = Block })
+	exports.discord:Embed("AddCar","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[MODEL]:** "..Model.."\n**[TIPO]:** "..Mode)
+	TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> entregue.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMCAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("remcar",function(source)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin",1) then
-		local Keyboard = vKEYBOARD.Primary(source,"Passaporte")
-		if Keyboard then
-			local Vehicles = {}
-			local OtherPassport = parseInt(Keyboard[1])
-			local Consult = vRP.Query("vehicles/UserVehicles",{ Passport = OtherPassport })
-			for _,v in pairs(Consult) do
-				Vehicles[#Vehicles + 1] = v["Vehicle"]
-			end
-
-			local Keyboard = vKEYBOARD.Instagram(source,Vehicles)
-			if Keyboard then
-				vRP.RemSrvData("LsCustoms:"..OtherPassport..":"..Keyboard[1])
-				vRP.RemSrvData("Trunkchest:"..OtherPassport..":"..Keyboard[1])
-				vRP.Query("vehicles/removeVehicles",{ Passport = OtherPassport, Vehicle = Keyboard[1] })
-				TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Keyboard[1]).."</b> removido.","verde",5000)
-			end
-		end
+	if not Passport or not vRP.HasGroup(Passport,"Admin",1) then
+		return false
 	end
+
+	local Keyboard = vKEYBOARD.Primary(source,"Passaporte")
+	if not Keyboard then
+		return false
+	end
+
+	local OtherPassport = parseInt(Keyboard[1])
+	local UserVehicles = vRP.Query("vehicles/UserVehicles",{ Passport = OtherPassport })
+	if not UserVehicles or #UserVehicles == 0 then
+		TriggerClientEvent("Notify",source,"Erro","Este usuário não possui veículos.","vermelho",5000)
+		return false
+	end
+
+	local VehicleList = {}
+	for _,v in ipairs(UserVehicles) do
+		VehicleList[#VehicleList + 1] = v.Vehicle
+	end
+
+	local Keyboard = vKEYBOARD.Instagram(source,VehicleList)
+	if not Keyboard then
+		return false
+	end
+
+	local Selected = Keyboard[1]
+	vRP.RemSrvData("LsCustoms:"..OtherPassport..":"..Selected)
+	vRP.RemSrvData("Trunkchest:"..OtherPassport..":"..Selected)
+	vRP.Query("vehicles/removeVehicles",{ Passport = OtherPassport, Vehicle = Selected })
+
+	TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Selected).."</b> removido.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NITRO
@@ -1394,65 +1433,16 @@ RegisterCommand("kill",function(source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- REMOVEWL
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("removewl",function(source,Message)
-	if source == 0 then
-		for _,v in pairs(vRP.Query("accounts/Minimals")) do
-			vRP.Update("accounts/Clean",{ License = v["License"] })
-			exports["discord"]:Content("Roles",v["Discord"].." 720476376871731241 Remover")
-
-			Wait(1000)
-		end
-
-		print("Processo de remoção das allowlists finalizada.")
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- REMOVEVEH
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("removeveh",function(source,Message)
-	if source == 0 then
-		for _,v in pairs(vRP.Query("vehicles/Minimals")) do
-			vRP.Query("entitydata/RemoveData",{ Name = "Mods:"..v["Passport"]..":"..v["Vehicle"] })
-			vRP.Query("vehicles/removeVehicles",{ Passport = v["Passport"], Vehicle = v["Vehicle"] })
-			vRP.Query("entitydata/RemoveData",{ Name = "Trunkchest:"..v["Passport"]..":"..v["Vehicle"] })
-
-			Wait(1000)
-		end
-
-		print("Processo de remoção dos veículos finalizado.")
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- REMOVEPROP
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterCommand("removeprop",function(source,Message)
-	if source == 0 then
-		for _,v in pairs(vRP.Query("propertys/Minimals")) do
-			vRP.RemSrvData("Vault:"..v["Name"])
-			vRP.RemSrvData("Fridge:"..v["Name"])
-			vRP.Query("propertys/Sell",{ Name = v["Name"] })
-
-			Wait(1000)
-		end
-
-		print("Processo de remoção das propriedades finalizada.")
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Connect",function(Passport,source)
-	local Passport = Passport
 	local Consult = vRP.GetSrvData("Offline:"..Passport,true)
-	if CountTable(Consult) >= 1 then
-		for Index,v in pairs(Consult) do
-			vRP.GenerateItem(Passport,v["Item"],v["Amount"],true)
-			Consult[Index] = nil
+	if Consult and next(Consult) then
+		for _,v in ipairs(Consult) do
+			vRP.GenerateItem(Passport,v.Item,v.Amount,true)
 		end
 
-		vRP.SetSrvData("Offline:"..Passport,Consult,true)
+		vRP.RemSrvData("Offline:"..Passport)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1461,7 +1451,7 @@ end)
 AddEventHandler("Disconnect",function(Passport,source)
 	if Spectate[Passport] then
 		local Ped = GetPlayerPed(Spectate[Passport])
-		if DoesEntityExist(Ped) then
+		if Ped and DoesEntityExist(Ped) then
 			SetEntityDistanceCullingRadius(Ped,0.0)
 		end
 

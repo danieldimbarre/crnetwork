@@ -392,9 +392,9 @@ function Creative.Take(Item,Slot,Amount,Target)
 		end
 
 		if SplitBoolean(Name,"Helicrash",":") then
-			GlobalState.Helibox = GlobalState.Helibox - 1
+			GlobalState.HelicrashBox = (GlobalState.HelicrashBox or 1) - 1
 
-			if GlobalState.Helibox <= 0 then
+			if GlobalState.HelicrashBox <= 0 then
 				GlobalState.Helicrash = false
 			end
 		elseif SplitBoolean(Name,"Christmas",":") then

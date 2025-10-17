@@ -741,10 +741,21 @@ end)
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for _,v in pairs(vRP.Query("propertys/All")) do
-		if Propertys[v.Name] then
-			Markers[v.Name] = true
-			Lock[v.Name] = true
+	local Additional = 1296000
+	local CurrentTimer = os.time()
+	local Consult = vRP.Query("propertys/All")
+	for _,v in ipairs(Consult) do
+		if (v.Tax + Additional) <= CurrentTimer then
+			vRP.RemSrvData("Vault:"..v.Name)
+			vRP.RemSrvData("Fridge:"..v.Name)
+			vRP.Query("propertys/Sell",{ Name = v.Name })
+
+			Wait(100)
+		else
+			if Propertys[v.Name] then
+				Markers[v.Name] = true
+				Lock[v.Name] = true
+			end
 		end
 	end
 end)

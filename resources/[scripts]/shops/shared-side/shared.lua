@@ -211,7 +211,19 @@ List = {
 			axe = 1225,
 			pickaxe = 1225,
 			fishingrod = 1225,
-			emptypurifiedwater = 1275
+			emptypurifiedwater = 1275,
+			tomatoclone_0 = 3000,
+			passionclone_0 = 3000,
+			tangeclone_0 = 3000,
+			orangeclone_0 = 3000,
+			appleclone_0 = 3000,
+			grapeclone_0 = 3000,
+			lemonclone_0 = 3000,
+			bananaclone_0 = 3000,
+			acerolaclone_0 = 3000,
+			strawberryclone_0 = 3000,
+			blueberryclone_0 = 3000,
+			coffeeclone_0 = 3000
 		}
 	},
 	Eletronics = {
@@ -325,13 +337,6 @@ List = {
 		List = {
 			cigarette = 15,
 			lighter = 225
-		}
-	},
-	Fuel = {
-		Mode = "Buy",
-		Type = "Cash",
-		List = {
-			WEAPON_PETROLCAN = 325
 		}
 	},
 	Paramedico = {

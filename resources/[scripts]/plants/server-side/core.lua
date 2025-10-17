@@ -32,7 +32,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLANTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-exports("Plants",function(Hash,Coords,Route,Item,Amount)
+exports("Plants",function(Hash,Coords,Route,Item,Amount,Purity)
 	repeat
 		Selected = GenerateString("LLDD")
 	until Selected and not Plants[Selected]
@@ -43,6 +43,7 @@ exports("Plants",function(Hash,Coords,Route,Item,Amount)
 		Item = Item,
 		Route = Route,
 		Coords = Coords,
+		Purity = Purity,
 		Timer = os.time() + 7200,
 		Amount = math.random(Amount.Min,Amount.Max)
 	}
@@ -83,7 +84,9 @@ AddEventHandler("plants:Collect",function(Number)
 		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
 
 		SetTimeout(10000,function()
-			local Valuation = Temporary.Amount
+			local Amount = Temporary.Amount or 1
+			local Purity = Temporary.Purity or 0
+			local Valuation = Amount * (1 + (Purity / 100))
 
 			if Temporary.Water and Valuation then
 				Valuation = Valuation + (Valuation * Temporary.Water)
@@ -125,15 +128,22 @@ AddEventHandler("plants:Cloning",function(Number)
 
 		SetTimeout(10000,function()
 			local Valuation = 2
+			local Purity = Temporary.Purity or 0
+			if Purity == 0 then
+				Purity = RandPercentage(Puritys).Percent
+			end
+
+			local NameClone = string.format("%sclone_%d",Temporary.Item,Purity)
+
 			if Temporary.Water then
 				Valuation = Valuation + (Valuation * Temporary.Water)
 			end
 
-			if vRP.CheckWeight(Passport,Temporary.Item.."clone",Valuation) then
-				vRP.GenerateItem(Passport,Temporary.Item.."clone",Valuation,true)
+			if vRP.CheckWeight(Passport,NameClone,Valuation) then
+				vRP.GenerateItem(Passport,NameClone,Valuation,true)
 			else
 				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-				exports["inventory"]:Drops(Passport,source,Temporary.Item.."clone",Valuation)
+				exports["inventory"]:Drops(Passport,source,NameClone,Valuation)
 			end
 
 			TriggerClientEvent("plants:Remove",-1,Number)
@@ -193,23 +203,25 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Informations(Number)
 	local source = source
-	if not (Number and Plants[Number] and Plants[Number].Timer and not CheckDeath(source,Number)) then
+	local Plant = Plants[Number]
+	if not (Number and Plant and Plant.Timer and not CheckDeath(source,Number)) then
 		return false
 	end
 
-	local RemainingTime = Plants[Number].Timer - os.time()
+	local Remaining = Plant.Timer - os.time()
 
-	local Collect = "Processo concluído."
-	if RemainingTime > 0 then
-		Collect = "Aguarde "..CompleteTimers(RemainingTime)
+	local function GetStatus(TimeLeft,Delay)
+		if TimeLeft > Delay then
+			return "Aguarde "..CompleteTimers(TimeLeft - Delay)
+		end
+
+		return "Processo concluído."
 	end
 
-	local Cloning = "Processo concluído."
-	if RemainingTime > 3600 then
-		Cloning = "Aguarde "..CompleteTimers(RemainingTime - 3600)
-	end
+	local CollectStatus = GetStatus(Remaining,0)
+	local CloneStatus = GetStatus(Remaining,3600)
 
-	return { Collect,Cloning,Plants[Number].Item,Plants[Number].Water }
+	return { CollectStatus,CloneStatus,Plant.Item,Plant.Water,Plant.Purity or 0 }
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

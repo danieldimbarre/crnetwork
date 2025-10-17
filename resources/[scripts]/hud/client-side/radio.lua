@@ -62,9 +62,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- RADIO:DISPLAY
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("radio:Display",function(OtherSource,Enable)
+AddEventHandler("radio:Display",function(Name,Enable)
 	if Enable then
-		SendNUIMessage({ Action = "Radio", Payload = { Source = OtherSource, Name = Player(OtherSource).state.Name or "Desconhecido" } })
+		SendNUIMessage({ Action = "Radio", Payload = { Source = OtherSource, Name = Name or "Desconhecido" } })
 	else
 		SendNUIMessage({ Action = "Radio", Payload = { Source = OtherSource } })
 	end

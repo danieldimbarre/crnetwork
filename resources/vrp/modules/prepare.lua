@@ -36,7 +36,6 @@ vRP.Prepare("accounts/AddGemstone","UPDATE accounts SET Gemstone = Gemstone + @G
 vRP.Prepare("accounts/UpdateCharacters","UPDATE accounts SET Characters = Characters + 1 WHERE License = @License")
 vRP.Prepare("accounts/RemoveGemstone","UPDATE accounts SET Gemstone = Gemstone - @Gemstone WHERE License = @License")
 vRP.Prepare("accounts/InsertBanned","UPDATE accounts SET Banned = @Timer, Reason = @Reason WHERE License = @License")
-vRP.Prepare("accounts/Minimals","SELECT * FROM accounts WHERE Login <= UNIX_TIMESTAMP() - (86400 * 15) AND License <> 0 AND Whitelist = 1")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -56,7 +55,6 @@ vRP.Prepare("vehicles/plateVehicles","SELECT * FROM vehicles WHERE Plate = @Plat
 vRP.Prepare("vehicles/Arrest","UPDATE vehicles SET Arrest = 1 WHERE Plate = @Plate")
 vRP.Prepare("vehicles/UserVehicles","SELECT * FROM vehicles WHERE Passport = @Passport")
 vRP.Prepare("vehicles/Count","SELECT COUNT(Vehicle) FROM vehicles WHERE Vehicle = @Vehicle")
-vRP.Prepare("vehicles/Minimals","SELECT * FROM vehicles WHERE Tax + (86400 * 15) <= UNIX_TIMESTAMP()")
 vRP.Prepare("vehicles/PlateUsers","SELECT * FROM vehicles WHERE Plate = @Plate AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/removeVehicles","DELETE FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/selectVehicles","SELECT * FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
@@ -98,7 +96,6 @@ vRP.Prepare("propertys/Transfer","UPDATE propertys SET Passport = @Passport WHER
 vRP.Prepare("propertys/Count","SELECT COUNT(Passport) FROM propertys WHERE Passport = @Passport")
 vRP.Prepare("propertys/Fridge","UPDATE propertys SET Fridge = Fridge + @Weight WHERE Name = @Name")
 vRP.Prepare("propertys/Check","SELECT * FROM propertys WHERE Name = @Name AND Passport = @Passport")
-vRP.Prepare("propertys/Minimals","SELECT * FROM propertys WHERE Tax + (86400 * 15) <= UNIX_TIMESTAMP()")
 vRP.Prepare("propertys/Tax","UPDATE propertys SET Tax = UNIX_TIMESTAMP() + (86400 * 30) WHERE Name = @Name")
 vRP.Prepare("propertys/Buy","INSERT INTO propertys (Name,Interior,Passport,Serial,Vault,Fridge,Tax) VALUES (@Name,@Interior,@Passport,@Serial,@Vault,@Fridge,UNIX_TIMESTAMP() + (86400 * 30))")
 -----------------------------------------------------------------------------------------------------------------------------------------

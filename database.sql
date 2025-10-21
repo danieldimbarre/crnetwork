@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `entitydata` (
   KEY `Information` (`Name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `fuelstations_creative_informations` (
+CREATE TABLE IF NOT EXISTS `fuelstations_creative` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
   `Permission` varchar(100) NOT NULL DEFAULT '',
   `Name` varchar(100) NOT NULL DEFAULT 'Posto de Combustível',
@@ -397,6 +397,32 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   PRIMARY KEY (`id`),
   KEY `Passport` (`Passport`),
   KEY `Vehicle` (`Vehicle`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `tickets_creative` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Subject` varchar(255) NOT NULL DEFAULT '',
+  `Category` varchar(100) NOT NULL DEFAULT '',
+  `Assumed` bigint(19) DEFAULT NULL,
+  `Status` tinyint(1) NOT NULL DEFAULT 0,
+  `CreatedAt` bigint(19) NOT NULL DEFAULT current_timestamp(),
+  `ClosedAt` bigint(19) DEFAULT NULL,
+  `Author` bigint(19) NOT NULL DEFAULT 0,
+  `Members` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `tickets_creative_messages` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Ticket` bigint(19) NOT NULL DEFAULT 0,
+  `Type` varchar(100) NOT NULL DEFAULT 'User',
+  `Author` bigint(19) DEFAULT NULL,
+  `Staff` tinyint(1) NOT NULL DEFAULT 0,
+  `Message` longtext DEFAULT NULL,
+  `CreatedAt` bigint(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `FK_tickets_creative_messages_tickets_creative` (`Ticket`),
+  CONSTRAINT `FK_tickets_creative_messages_tickets_creative` FOREIGN KEY (`Ticket`) REFERENCES `tickets_creative` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `entitydata` (`Name`, `Information`) VALUES ('Permissions:Admin', '{\"1\":1}');

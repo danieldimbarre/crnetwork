@@ -2501,6 +2501,66 @@ Use = {
 		Player(source).state.Buttons = false
 	end,
 
+	["personalp"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source).state.Buttons = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "m23_1_prop_m31_metalcrate_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			repeat
+				Selected = GenerateString("DDLLDDLL")
+			until Selected and not Objects[Selected]
+
+			Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Personal", Weight = 0.25, Bucket = GetPlayerRoutingBucket(source)  }
+			SaveObjects[Selected] = Objects[Selected]
+
+			TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+		end
+
+		Player(source).state.Buttons = false
+	end,
+
+	["personalm"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source).state.Buttons = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "m23_1_prop_m31_metalcrate_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			repeat
+				Selected = GenerateString("DDLLDDLL")
+			until Selected and not Objects[Selected]
+
+			Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Personal", Weight = 0.25, Bucket = GetPlayerRoutingBucket(source)  }
+			SaveObjects[Selected] = Objects[Selected]
+
+			TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+		end
+
+		Player(source).state.Buttons = false
+	end,
+
+	["personalg"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source).state.Buttons = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "m23_1_prop_m31_metalcrate_01a"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			repeat
+				Selected = GenerateString("DDLLDDLL")
+			until Selected and not Objects[Selected]
+
+			Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Personal", Weight = 0.25, Bucket = GetPlayerRoutingBucket(source)  }
+			SaveObjects[Selected] = Objects[Selected]
+
+			TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+		end
+
+		Player(source).state.Buttons = false
+	end,
+
 	["storage25"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)

@@ -167,7 +167,7 @@ function tvRP.CreateObjects(Dict,Anim,Prop,Flag,Hands,Height,Pos1,Pos2,Pos3,Pos4
 
 	if not IsPedInAnyVehicle(Ped) then
 		local Coords = GetEntityCoords(Ped)
-		local Networked = vRPS.CreateObject(Prop,Coords["x"],Coords["y"],Coords["z"])
+		local Networked = vRPS.CreateObject(Prop,Coords.x,Coords.y,Coords.z)
 		if not Networked then return end
 
 		local Entity = LoadNetwork(Networked)
@@ -218,7 +218,7 @@ function tvRP.Destroy(Mode)
 
 	if Persistent then
 		SetTimeout(250,function()
-			TriggerEvent("emotes",Persistent["Anim"])
+			TriggerEvent("emotes",Persistent.Anim)
 		end)
 	end
 end
@@ -228,7 +228,7 @@ end
 CreateThread(function()
 	while true do
 		local TimeDistance = 100
-		if LocalPlayer["state"]["Active"] and Point then
+		if LocalPlayer.state.Active and Point then
 			TimeDistance = 1
 			local Ped = PlayerPedId()
 			local Cam = GetGameplayCamRelativePitch()
@@ -254,7 +254,7 @@ CreateThread(function()
 
 			local blocked = 0
 			local Coords = GetOffsetFromEntityInWorldCoords(Ped,(cosCamHeading * - 0.2) - (sinCamHeading * (0.4 * camHeading + 0.3)),(sinCamHeading * - 0.2) + (cosCamHeading * (0.4 * camHeading + 0.3)),0.6)
-			local Ray = Cast_3dRayPointToPoint(Coords["x"],Coords["y"],Coords["z"] - 0.2,Coords["x"],Coords["y"],Coords["z"] + 0.2,0.4,95,Ped,7);
+			local Ray = Cast_3dRayPointToPoint(Coords.x,Coords.y,Coords.z - 0.2,Coords.x,Coords.y,Coords.z + 0.2,0.4,95,Ped,7)
 			_,blocked = GetRaycastResult(Ray)
 
 			SetTaskMoveNetworkSignalFloat(Ped,"Pitch",Cam)

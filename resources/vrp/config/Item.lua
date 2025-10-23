@@ -1912,6 +1912,36 @@ local List = {
 		Economy = 25,
 		Market = true
 	},
+	["personalp"] = {
+		Index = "personal",
+		Name = "Compartimento Pessoal",
+		Description = "Projetado para manter seus itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>100kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
+		Type = "Consumível",
+		Rarity = "common",
+		Delete = true,
+		Unique = true,
+		Weight = 5.25
+	},
+	["personalm"] = {
+		Index = "personal",
+		Name = "Compartimento Pessoal",
+		Description = "Projetado para manter seus itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>250kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
+		Type = "Consumível",
+		Rarity = "rare",
+		Delete = true,
+		Unique = true,
+		Weight = 5.25
+	},
+	["personalg"] = {
+		Index = "personal",
+		Name = "Compartimento Pessoal",
+		Description = "Projetado para manter seus itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>500kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
+		Type = "Consumível",
+		Rarity = "epic",
+		Delete = true,
+		Unique = true,
+		Weight = 5.25
+	},
 	["storage25"] = {
 		Index = "storage",
 		Name = "Compartimento Militar",

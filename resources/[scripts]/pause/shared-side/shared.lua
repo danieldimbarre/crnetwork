@@ -590,13 +590,28 @@ Premium = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Propertys = {
 	{
-		Name = "Fazenda",
+		Name = "Fazenda 01",
 		Image = "fazenda",
 		Permission = "Fazenda",
 		Coords = vec3(0.0,0.0,0.0),
 		Price = 100000,
 		Discount = 1.0,
 		Duration = 2592000,
+		Category = "Fazendas",
+		Rewards = {
+			"Textos da descrição. 01",
+			"Textos da descrição. 02",
+			"Textos da descrição. 03"
+		}
+	},{
+		Name = "Fazenda 02",
+		Image = "fazenda",
+		Permission = "Fazenda",
+		Coords = vec3(0.0,0.0,0.0),
+		Price = 100000,
+		Discount = 1.0,
+		Duration = 2592000,
+		Category = "Mansões",
 		Rewards = {
 			"Textos da descrição. 01",
 			"Textos da descrição. 02",
@@ -612,6 +627,21 @@ ShopItens = {
 		Price = 1,
 		Discount = 1.0,
 		Category = "Diamantes"
+	},
+	personalp = {
+		Price = 2000,
+		Discount = 1.0,
+		Category = "Pessoal"
+	},
+	personalm = {
+		Price = 4000,
+		Discount = 1.0,
+		Category = "Pessoal"
+	},
+	personalg = {
+		Price = 7000,
+		Discount = 1.0,
+		Category = "Pessoal"
 	},
 	skinshop = {
 		Price = 25000,

@@ -469,6 +469,10 @@ RegisterNUICallback("Reset",function(Data,Callback)
 		Camera = nil
 	end
 
+	if Creation then
+		vSERVER.Update(Lasted,Creation)
+	end
+
 	LocalPlayer.state:set("Hoverfy",true,false)
 	TriggerEvent("hud:Active",true)
 	exports.skinshop:Apply(Lasted)

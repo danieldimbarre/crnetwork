@@ -166,6 +166,10 @@ RegisterCommand("PlayerFunctions",function()
 
 		TriggerEvent("animals:Dynamic")
 
+		if GetResourceState("ticket") == "started" then
+			TriggerEvent("ticket:Dynamic")
+		end
+
 		exports["dynamic"]:Open()
 	end
 end)

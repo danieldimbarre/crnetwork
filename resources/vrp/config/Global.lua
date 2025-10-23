@@ -531,21 +531,21 @@ Groups = {
 -- CHARACTERITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 CharacterItens = {
-	["soda"] = 2,
-	["identity"] = 1,
-	["hamburger"] = 2
+	soda = 2,
+	identity = 1,
+	hamburger = 2
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOXES
 -----------------------------------------------------------------------------------------------------------------------------------------
 Boxes = {
-	["treasurebox"] = {
+	treasurebox = {
 		Multiplier = { Min = 1, Max = 1 },
 		List = {
 			{ Item = "dollar", Chance = 100, Min = 4250, Max = 6250 }
 		}
 	},
-	["christmas_04"] = {
+	christmas_04 = {
 		Multiplier = { Min = 1, Max = 1 },
 		List = {
 			{ Item = "christmas_01", Chance = 100, Min = 1, Max = 1 },
@@ -558,8 +558,8 @@ Boxes = {
 -- UPPERLEVEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 UpperLevel = {
-	["Trucker"] = { -- Experiência do emprego
-		["2"] = { -- Nível que vai receber a recompensa
+	Trucker = {
+		{
 			{ Item = "bandage", Min = 1, Max = 2 },
 			{ Item = "advtoolbox", Min = 1, Max = 1 }
 		}

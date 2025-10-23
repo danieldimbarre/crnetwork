@@ -22,7 +22,7 @@ function Creative.RechargeFuel(Price,Permission,Fuel)
 	end
 
 	if Permission then
-		local Consult = exports.oxmysql:single_async("SELECT Name,Stock FROM fuelstations_creative_informations WHERE Permission = ?",{ Permission })
+		local Consult = exports.oxmysql:single_async("SELECT Name,Stock FROM fuelstations_creative WHERE Permission = ?",{ Permission })
 		if Consult and Consult.Stock < Fuel then
 			TriggerClientEvent("Notify",source,Consult.Name,"Combustível insuficiente.","amarelo",5000)
 			return false

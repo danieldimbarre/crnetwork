@@ -13,8 +13,8 @@ function tvRP.SprayExist(Distance)
 	local Coords = GetEntityCoords(Ped)
 
 	for _,Spray in pairs(Sprays) do
-		if #(Coords - GetBlipCoords(Spray["Blip"])) <= (Distance or 250) then
-			return Spray["Permission"]
+		if #(Coords - GetBlipCoords(Spray.Blip)) <= (Distance or 250) then
+			return Spray.Permission
 		end
 	end
 
@@ -24,8 +24,8 @@ end
 -- OBJECTS:TABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("objects:Table")
-AddEventHandler("objects:Table",function(Table)
-	Objects = Table
+AddEventHandler("objects:Table",function(Data)
+	Objects = Data or {}
 
 	local Colors = {
 		LootMedics = 76,
@@ -34,104 +34,125 @@ AddEventHandler("objects:Table",function(Table)
 		LootLegendary = 81
 	}
 
-	for Number,v in pairs(Objects) do
-		if v["Mode"] then
-			if Colors[v["Mode"]] then
-				local Blip = AddBlipForRadius(v["Coords"][1],v["Coords"][2],v["Coords"][3],25.0)
-				SetBlipAlpha(Blip,200)
-				SetBlipColour(Blip,Colors[v["Mode"]])
-			elseif v["Mode"] == "Sprays" then
-				if not Sprays[Number] then
-					Sprays[Number] = {}
-				end
-
-				Sprays[Number]["Blip"] = AddBlipForRadius(v["Coords"][1],v["Coords"][2],v["Coords"][3],250.0)
-				SetBlipColour(Sprays[Number]["Blip"],v["Color"])
-				Sprays[Number]["Permission"] = v["Permission"]
-				SetBlipAlpha(Sprays[Number]["Blip"],150)
-			end
+	for Number,Data in pairs(Objects) do
+		local Mode = Data.Mode
+		if not Mode then
+			goto continue
 		end
+
+		local x,y,z = Data.Coords[1],Data.Coords[2],Data.Coords[3]
+
+		local Color = Colors[Mode]
+		if Color then
+			local Blip = AddBlipForRadius(x,y,z,25.0)
+			SetBlipAlpha(Blip,200)
+			SetBlipColour(Blip,Color)
+		elseif Mode == "Sprays" then
+			Sprays[Number] = Sprays[Number] or {}
+			local Blip = AddBlipForRadius(x,y,z,250.0)
+
+			SetBlipColour(Blip,Data.Color)
+			SetBlipAlpha(Blip,150)
+
+			Sprays[Number].Blip = Blip
+			Sprays[Number].Permission = Data.Permission
+		end
+
+		::continue::
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OBJECTS:ADICIONAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("objects:Adicionar")
-AddEventHandler("objects:Adicionar",function(Number,Table)
-	if not Table then return end
-
-	Objects[Number] = Table
-
-	if Table["Mode"] and Table["Mode"] == "Sprays" then
-		if not Sprays[Number] then
-			Sprays[Number] = {}
-		end
-
-		local Blip = AddBlipForRadius(Table["Coords"][1],Table["Coords"][2],Table["Coords"][3],250.0)
-		SetBlipColour(Blip,Table["Color"])
-		SetBlipAlpha(Blip,150)
-
-		Sprays[Number]["Blip"] = Blip
-		Sprays[Number]["Permission"] = Table["Permission"]
+AddEventHandler("objects:Adicionar",function(Number,Data)
+	if not Data then
+		return false
 	end
+
+	Objects[Number] = Data
+
+	if Data.Mode ~= "Sprays" then
+		return false
+	end
+
+	Sprays[Number] = Sprays[Number] or {}
+
+	local x,y,z = Data.Coords[1],Data.Coords[2],Data.Coords[3]
+	local Blip = AddBlipForRadius(x,y,z,250.0)
+
+	SetBlipColour(Blip,Data.Color)
+	SetBlipAlpha(Blip,150)
+
+	Sprays[Number].Blip = Blip
+	Sprays[Number].Permission = Data.Permission
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OBJECTS:REMOVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("objects:Remover")
 AddEventHandler("objects:Remover",function(Number)
-	if Init[Number] then
-		if DoesEntityExist(Init[Number]) then
-			DeleteEntity(Init[Number])
+	local Data = Objects[Number]
+	local Entitys = Init[Number]
+
+	if Entitys then
+		if DoesEntityExist(Entitys) then
+			DeleteEntity(Entitys)
 		end
 
-		if Objects[Number] and Objects[Number]["Mode"] then
-			exports["target"]:RemCircleZone("Objects:"..Number)
+		if Data and Data.Mode then
+			exports.target:RemCircleZone("Objects:"..Number)
 		end
 
 		Init[Number] = nil
 	end
 
-	if Objects[Number] and Objects[Number]["Active"] == "Spikes" then
+	if Data and Data.Active == "Spikes" then
 		TriggerEvent("spikes:Remover",Number)
 	end
 
-	if Sprays[Number] then
-		local Blip = Sprays[Number]
-		if DoesBlipExist(Blip["Blip"]) then
-			RemoveBlip(Blip["Blip"])
+	local Spray = Sprays[Number]
+	if Spray then
+		local Blip = Spray.Blip
+		if Blip and DoesBlipExist(Blip) then
+			RemoveBlip(Blip)
 		end
 
 		Sprays[Number] = nil
 	end
 
-	if Objects[Number] then
+	if Data then
 		Objects[Number] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDTARGETZONE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function AddTargetZone(Number,Coords,Mode,Weight,options,size,isBox)
-	local zoneParams = {
-		name = "Objects:"..Number,
-		heading = Coords[4] or 0.0
-	}
+function AddTargetZone(Number,Coords,mode,Weight,Options,Size,Box)
+	if not Coords or not Size or not Options then
+		return false
+	end
 
-	if isBox then
-		zoneParams.minZ = Coords[3]
-		zoneParams.maxZ = Coords[3] + (size.maxZ or 1.5)
-		exports["target"]:AddBoxZone("Objects:"..Number,vec3(Coords[1],Coords[2],Coords[3] + Weight),size.width,size.height,zoneParams,options)
+	local Zone = "Objects:"..Number
+	local Heading = Coords[4] or 0.0
+	local Params = { name = Zone, heading = Heading }
+	local Center = vec3(Coords[1],Coords[2],Coords[3] + (Weight or 0.0))
+
+	if Box then
+		Params.minZ = Coords[3]
+		Params.maxZ = Coords[3] + (Size.maxZ or 1.5)
+
+		exports.target:AddBoxZone(Zone,Center,Size.width or 1.0,Size.height or 1.0,Params,Options)
 	else
-		zoneParams.useZ = true
-		exports["target"]:AddCircleZone("Objects:"..Number,vec3(Coords[1],Coords[2],Coords[3] + Weight),size.radius,zoneParams,options)
+		Params.useZ = true
+		exports.target:AddCircleZone(Zone,Center,Size.radius or 1.0,Params,Options)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TARGETLABEL
 -----------------------------------------------------------------------------------------------------------------------------------------
 function TargetLabel(Number,Coords,Mode,Weight,Item)
-	local modes = {
+	local Modes = {
 		Store = {
 			isBox = false,
 			size = { radius = 0.75 },
@@ -198,6 +219,18 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 				options = {
 					{ event = "chest:Item", label = "Abrir", tunnel = "products", service = Item },
 					{ event = "inventory:StoreObjects", label = "Guardar", tunnel = "server" }
+				}
+			}
+		},
+		Personal = {
+			isBox = true,
+			size = { width = 0.6, height = 0.9, maxZ = 0.5 },
+			options = {
+				shop = Number,
+				Distance = 1.75,
+				options = {
+					{ event = "chest:Item", label = "Abrir", tunnel = "products", service = Item },
+					LocalPlayer.state.Admin and { event = "inventory:StoreObjects", label = "Guardar", tunnel = "server" }
 				}
 			}
 		},
@@ -280,34 +313,46 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 		}
 	}
 
-	if modes[Mode] then
-		AddTargetZone(Number,Coords,Mode,Weight,modes[Mode].options,modes[Mode].size,modes[Mode].isBox)
+	if Modes[Mode] then
+		AddTargetZone(Number,Coords,Mode,Weight,Modes[Mode].options,Modes[Mode].size,Modes[Mode].isBox)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEANDMANAGEOBJECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CreateAndManageObject(Number,v,Coords)
-	local OtherCoords = vec3(v["Coords"][1],v["Coords"][2],v["Coords"][3])
+	if not v or not v.Coords then
+		return false
+	end
 
-	if #(Coords - OtherCoords) <= (v["Distance"] or 100) then
-		if not Init[Number] and LoadModel(v["Object"]) then
-			Init[Number] = CreateObjectNoOffset(v["Object"],OtherCoords.x,OtherCoords.y,OtherCoords.z,false,false,false)
-			SetEntityHeading(Init[Number],v["Coords"][4])
-			FreezeEntityPosition(Init[Number],true)
+	local ObjectCoords = vec3(v.Coords[1], v.Coords[2], v.Coords[3])
+	if #(Coords - ObjectCoords) <= (v.Distance or 100) then
+		if not Init[Number] and LoadModel(v.Object) then
+			local Entitys = CreateObjectNoOffset(v.Object,ObjectCoords.x,ObjectCoords.y,ObjectCoords.z,false,false,false)
+			Init[Number] = Entitys
 
-			if v["Mode"] then
-				TargetLabel(Number,v["Coords"],v["Mode"],v["Weight"] or 0.0,v["Item"])
+			SetEntityHeading(Entitys,v.Coords[4])
+			FreezeEntityPosition(Entitys,true)
+			SetEntityLodDist(Entitys,0xFFFF)
+
+			if not v.Ground then
+				PlaceObjectOnGroundProperly(Entitys)
 			end
 
-			if not v["Ground"] then
-				PlaceObjectOnGroundProperly(Init[Number])
+			if v.Mode then
+				if v.Mode == "Chests" and v.Passport and v.Passport ~= LocalPlayer.state.Passport then
+					goto Continue
+				end
+
+				TargetLabel(Number,v.Coords,v.Mode,v.Weight or 0.0,v.Item)
+
+				::Continue::
 			end
 
-			if v["Active"] == "Spikes" then
-				local Max = GetOffsetFromEntityInWorldCoords(Init[Number],0.0,1.84,0.1)
-				local Min = GetOffsetFromEntityInWorldCoords(Init[Number],0.0,-1.84,-0.1)
-				TriggerEvent("spikes:Adicionar",Number,v["Coords"],Min,Max)
+			if v.Active == "Spikes" then
+				local MaxOffset = GetOffsetFromEntityInWorldCoords(Entitys,0.0,1.84,0.1)
+				local MinOffset = GetOffsetFromEntityInWorldCoords(Entitys,0.0,-1.84,-0.1)
+				TriggerEvent("spikes:Adicionar",Number,v.Coords,MinOffset,MaxOffset)
 			end
 		end
 	elseif Init[Number] then
@@ -321,9 +366,10 @@ CreateThread(function()
 	while true do
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
-
+		local Route = LocalPlayer.state.Route
 		for Number,v in pairs(Objects) do
-			if not v["Bucket"] or v["Bucket"] == LocalPlayer["state"]["Route"] then
+			local Bucket = v.Bucket
+			if not Bucket or Bucket == Route then
 				CreateAndManageObject(Number,v,Coords)
 			elseif Init[Number] then
 				DestroyObject(Number,v)
@@ -336,22 +382,25 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DESTROYOBJECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function DestroyObject(Number,v)
-	if Init[Number] then
-		if v["Mode"] then
-			exports["target"]:RemCircleZone("Objects:"..Number)
-		end
-
-		if DoesEntityExist(Init[Number]) then
-			DeleteEntity(Init[Number])
-		end
-
-		if v["Active"] and v["Active"] == "Spikes" then
-			TriggerEvent("spikes:Remover",Number)
-		end
-
-		Init[Number] = nil
+function DestroyObject(Number,Data)
+	local Entitys = Init[Number]
+	if not Entitys then
+		return false
 	end
+
+	if Data.Mode then
+		exports.target:RemCircleZone("Objects:"..Number)
+	end
+
+	if DoesEntityExist(Entitys) then
+		DeleteEntity(Entitys)
+	end
+
+	if Data.Active == "Spikes" then
+		TriggerEvent("spikes:Remover",Number)
+	end
+
+	Init[Number] = nil
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OBJECTCONTROLLING
@@ -368,12 +417,12 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,Align or 1.0,0.0)
 		local NextObject = CreateObjectNoOffset(Model,Coords.x,Coords.y,Coords.z,false,false,false)
 
-		SetEntityAlpha(NextObject,175,false)
+		SetEntityAlpha(NextObject,200,false)
 		PlaceObjectOnGroundProperly(NextObject)
 		SetEntityCollision(NextObject,false,false)
 		SetEntityHeading(NextObject,Heading + (Rotate or 0.0))
 
-		local defaultButtons = {
+		local DefaultButtons = {
 			{ "F","Cancelar" },
 			{ "H","Posicionar" },
 			{ "Q","Rotacionar Esquerda" },
@@ -381,7 +430,7 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 			{ "Z","Trocar Modo" }
 		}
 
-		local extendedButtons = {
+		local ExtendedButtons = {
 			{ "F","Cancelar" },
 			{ "H","Posicionar" },
 			{ "Q","Rotacionar Esquerda" },
@@ -395,7 +444,7 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 			{ "Z","Trocar Modo" }
 		}
 
-		TriggerEvent("inventory:Buttons",defaultButtons)
+		TriggerEvent("inventory:Buttons",DefaultButtons)
 
 		while Progress do
 			local controlPressed = GetMovementControls(NextObject)
@@ -415,7 +464,7 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 
 			if IsControlJustPressed(0,48) then
 				Switch = not Switch
-				TriggerEvent("inventory:Buttons",Switch and extendedButtons or defaultButtons)
+				TriggerEvent("inventory:Buttons",Switch and ExtendedButtons or defaultButtons)
 			elseif IsControlJustPressed(1,74) then
 				TriggerEvent("inventory:CloseButtons")
 				Aplication = true

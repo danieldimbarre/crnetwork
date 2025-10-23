@@ -20,6 +20,21 @@ local Cooldown = {}
 -- CHESTITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local ChestItens = {
+	["personalp"] = {
+		Slots = 100,
+		Weight = 100,
+		Block = true
+	},
+	["personalm"] = {
+		Slots = 100,
+		Weight = 250,
+		Block = true
+	},
+	["personalg"] = {
+		Slots = 100,
+		Weight = 500,
+		Block = true
+	},
 	["storage25"] = {
 		Slots = 25,
 		Weight = 25,

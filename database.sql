@@ -425,4 +425,22 @@ CREATE TABLE IF NOT EXISTS `tickets_creative_messages` (
   CONSTRAINT `FK_tickets_creative_messages_tickets_creative` FOREIGN KEY (`Ticket`) REFERENCES `tickets_creative` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE IF NOT EXISTS `codes_creative` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Code` varchar(50) NOT NULL DEFAULT '',
+  `Rewards` longtext DEFAULT NULL,
+  `Max` int(9) NOT NULL DEFAULT 1,
+  `Used` int(9) NOT NULL DEFAULT 0,
+  `CreatedAt` bigint(19) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `codes_creative_redeemd` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Code` varchar(50) NOT NULL DEFAULT '',
+  `Passport` bigint(19) NOT NULL DEFAULT 0,
+  `RedeemdAt` bigint(19) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 INSERT INTO `entitydata` (`Name`, `Information`) VALUES ('Permissions:Admin', '{\"1\":1}');

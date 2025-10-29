@@ -443,4 +443,13 @@ CREATE TABLE IF NOT EXISTS `codes_creative_redeemd` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE IF NOT EXISTS `deaths_creative` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Attacker` bigint(19) NOT NULL DEFAULT 0,
+  `Victim` bigint(19) NOT NULL DEFAULT 0,
+  `Weapon` varchar(50) NOT NULL DEFAULT 'WEAPON_PISTOL',
+  `Timestamp` bigint(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 INSERT INTO `entitydata` (`Name`, `Information`) VALUES ('Permissions:Admin', '{\"1\":1}');

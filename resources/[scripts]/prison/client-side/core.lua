@@ -1,7 +1,6 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Cooldown = GetGameTimer()
 local Center = vec3(1679.94,2513.07,45.56)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLYPRISON
@@ -81,22 +80,29 @@ local PolyPrison = PolyZone:Create({
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	while true do
-		if LocalPlayer["state"]["Prison"] then
+		if LocalPlayer.state.Prison then
 			local Ped = PlayerPedId()
-			local Coords = GetEntityCoords(Ped)
+			local CurrentTimer = GetGameTimer()
 
+			if not NextService or CurrentTimer >= NextService then
+				NextService = CurrentTimer + 60000
+				TriggerServerEvent("prison:Service")
+			end
+
+			local Coords = GetEntityCoords(Ped)
 			if not PolyPrison:isPointInside(Coords) then
 				SetEntityCoords(Ped,Center)
 			end
 
-			if GetEntityHealth(Ped) <= 100 then
-				if Cooldown <= GetGameTimer() then
-					Cooldown = GetGameTimer() + 60000
+			local Health = GetEntityHealth(Ped)
+			if Health <= 100 and (not NextRevive or CurrentTimer >= NextRevive) then
+				NextRevive = CurrentTimer + 60000
 
-					SetTimeout(15000,function()
-						exports["survival"]:Revive(110)
-					end)
-				end
+				SetTimeout(15000,function()
+					if LocalPlayer.state.Prison then
+						exports.survival:Revive(200)
+					end
+				end)
 			end
 		end
 

@@ -70,7 +70,7 @@ end
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Event,Message)
-	if Event == "CEventNetworkEntityDamage" and PlayerPedId() == Message[1] and Death.Status and Crawl.Timer > 0 then
+	if Event == "CEventNetworkEntityDamage" and PlayerPedId() == Message[1] and Message[1] ~= Message[2] and Death.Status and Crawl.Timer > 0 then
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
 		NetworkResurrectLocalPlayer(Coords,0.0)
@@ -115,7 +115,6 @@ CreateThread(function()
 					SetPedRelationshipGroupHash(Ped,-276063219)
 					TriggerServerEvent("paramedic:bloodDeath")
 					exports["lb-phone"]:ToggleDisabled(true)
-					TriggerEvent("player:DeathUpdate",true)
 					TriggerEvent("inventory:CleanWeapons")
 					TriggerServerEvent("inventory:Cancel")
 					TriggerEvent("inventory:ScubaRemove")
@@ -295,7 +294,6 @@ function FinishSurvival()
 	SetEntityCoords(Ped,315.26,-1412.37,31.62)
 
 	SetTimeout(5000,function()
-		TriggerEvent("player:DeathUpdate",false)
 		TriggerEvent("hud:Active",true)
 		exports.vrp:ReloadCharacter()
 		DoScreenFadeIn(2500)
@@ -345,7 +343,6 @@ exports("Revive",function(Health,Arena)
 
 		exports.vrp:ReloadCharacter()
 		SendNUIMessage({ Action = "Close" })
-		TriggerEvent("player:DeathUpdate",false)
 		exports["lb-phone"]:ToggleDisabled(false)
 	end
 end)

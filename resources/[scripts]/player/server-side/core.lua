@@ -318,14 +318,30 @@ end)
 -- PLAYER:DEATH
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("player:Death")
-AddEventHandler("player:Death",function(OtherSource)
+AddEventHandler("player:Death",function(OtherSource,WeaponHash)
 	local source = source
 	local Passport = vRP.Passport(source)
-	local OtherPassport = vRP.Passport(OtherSource)
-	if Passport and OtherPassport and Passport ~= OtherPassport and vRP.DoesEntityExist(source) and vRP.DoesEntityExist(OtherSource) then
-		exports["discord"]:Embed("Deaths","**[PASSAPORTE ASSASSINO]:** "..OtherPassport.."\n**[LOCALIAÇÃO ASSASSINO]:** "..vRP.GetEntityCoords(OtherSource).."\n\n**[PASSAPORTE VÍTIMA]:** "..Passport.."\n**[LOCALIZAÇÃO VÍTIMA]:** "..vRP.GetEntityCoords(source))
-		exports["inventory"]:Drops(Passport,source,"dogtag-"..Passport,1)
+	if not Passport or not OtherSource then
+		return false
 	end
+
+	local OtherPassport = vRP.Passport(OtherSource)
+	if not OtherPassport then
+		return false
+	end
+
+	local Entity = vRP.DoesEntityExist(source)
+	local OtherEntity = vRP.DoesEntityExist(OtherSource)
+	if not Entity or not OtherEntity then
+		return false
+	end
+
+	local Weapon = WeaponName(WeaponHash)
+	local Coords = vRP.GetEntityCoords(source)
+	local OtherCoords = vRP.GetEntityCoords(OtherSource)
+
+	exports.oxmysql:insert_async("INSERT INTO deaths_creative (Attacker,Victim,Weapon,Timestamp) VALUES (?,?,?,?)",{ OtherPassport,Passport,Weapon,os.time() })
+	exports.discord:Embed("Deaths","**[ASSASSINO]:** "..OtherPassport.."\n**[LOCALIZAÇÃO]:** "..OtherCoords.."\n\n**[VÍTIMA]:** "..Passport.."\n**[LOCALIZAÇÃO]:** "..Coords)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT

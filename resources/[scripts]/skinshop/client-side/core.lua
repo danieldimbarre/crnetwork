@@ -235,7 +235,6 @@ function OpenSkinshop()
 		RenderScriptCams(false,false,0,false,false)
 		DestroyCam(Camera,false)
 		Camera = nil
-		print("1")
 	end
 
 	local Ped = PlayerPedId()
@@ -433,7 +432,6 @@ RegisterNUICallback("Save",function(Data,Callback)
 
 	LocalPlayer.state:set("Hoverfy",true,false)
 	vSERVER.Update(Skinshop,Creation)
-	TriggerEvent("hud:Active",true)
 	SetNuiFocus(false,false)
 	Creation = false
 	vRP.Destroy()
@@ -474,7 +472,6 @@ RegisterNUICallback("Reset",function(Data,Callback)
 	end
 
 	LocalPlayer.state:set("Hoverfy",true,false)
-	TriggerEvent("hud:Active",true)
 	exports.skinshop:Apply(Lasted)
 	SetNuiFocus(false,false)
 	Skinshop = Lasted

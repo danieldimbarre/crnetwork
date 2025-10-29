@@ -2456,13 +2456,26 @@ Use = {
 		local Hash = "prop_cctv_cam_06a"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			local Keyboard = vKEYBOARD.Primary(source,"Nome")
+
+			local Permissions = {}
+			for Permission,v in pairs(Groups) do
+				if v.SecurityCam then
+					Permissions[#Permissions + 1] = Permission
+				end
+			end
+
+			table.sort(Permissions,function(a,b) return a < b end)
+
+			local Keyboard = vKEYBOARD.Options(source,"Nome",Permissions)
 			if Keyboard and vRP.TakeItem(Passport,Full,1,true,Slot) then
+				local Name = Keyboard[1]
+				local Permission = Keyboard[2]
+
 				repeat
 					Selected = GenerateString("DDLLDDLL")
 				until Selected and not Objects[Selected]
 
-				Objects[Selected] = { Passport = Passport, Name = Keyboard[1], Coords = Coords, Object = Hash, Item = Full, Mode = "Camera", Weight = -0.25, Bucket = GetPlayerRoutingBucket(source), Ground = true }
+				Objects[Selected] = { Passport = Passport, Name = Name, Permission = Permission, Coords = Coords, Object = Hash, Item = Full, Mode = "Camera", Weight = -0.25, Bucket = GetPlayerRoutingBucket(source), Ground = true }
 				SaveObjects[Selected] = Objects[Selected]
 
 				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])

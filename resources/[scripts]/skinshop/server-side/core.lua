@@ -51,7 +51,7 @@ function Creative.Update(Clothes,Creation)
 		vRP.Query("playerdata/SetData",{ Passport = Passport, Name = "Clothings", Information = json.encode(Clothes) })
 
 		if Creation then
-			vRP.SpawnCreation(source)
+			vRP.Creation(Passport)
 		end
 	end
 end

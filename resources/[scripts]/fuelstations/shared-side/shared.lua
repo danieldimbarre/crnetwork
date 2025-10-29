@@ -17,7 +17,6 @@ Config = {
 	ItemGallon = "WEAPON_PETROLCAN",
 	ItemGallonFuel = "WEAPON_PETROLCAN_AMMO",
 	GallonFuelAmount = 5000,
-	PriceGallon = 500,
 	StockGallon = 50,
 
 	BankTaxWithdraw = 1.0,

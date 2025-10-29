@@ -437,3 +437,155 @@ function Base64(data)
 		return b:sub(c + 1,c + 1)
 	end)..({ "","==","=" })[#data % 3 + 1])
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CONVERTSTRINGTOTABLE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ConvertStringToTable(String)
+	local Function = load("return "..String)
+	if not Function then
+		return nil
+	end
+
+	local Consult,Result = pcall(Function)
+	if not Consult then
+		return nil
+	end
+
+	return Result
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WEAPONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Weapons = {}
+local WeaponsList = {
+	WEAPON_UNARMED = "Desconhecido",
+	WEAPON_KNIFE = "Desconhecido",
+	WEAPON_NIGHTSTICK = "Desconhecido",
+	WEAPON_HAMMER = "Desconhecido",
+	WEAPON_BAT = "Desconhecido",
+	WEAPON_GOLFCLUB = "Desconhecido",
+	WEAPON_CROWBAR = "Desconhecido",
+	WEAPON_BOTTLE = "Desconhecido",
+	WEAPON_DAGGER = "Desconhecido",
+	WEAPON_HATCHET = "Desconhecido",
+	WEAPON_KNUCKLE = "Desconhecido",
+	WEAPON_MACHETE = "Desconhecido",
+	WEAPON_FLASHLIGHT = "Desconhecido",
+	WEAPON_SWITCHBLADE = "Desconhecido",
+	WEAPON_BATTLEAXE = "Desconhecido",
+	WEAPON_POOLCUE = "Desconhecido",
+	WEAPON_WRENCH = "Desconhecido",
+	WEAPON_STONE_HATCHET = "Desconhecido",
+	WEAPON_PISTOL = "Desconhecido",
+	WEAPON_PISTOL_MK2 = "Desconhecido",
+	WEAPON_COMBATPISTOL = "Desconhecido",
+	WEAPON_APPISTOL = "Desconhecido",
+	WEAPON_STUNGUN = "Desconhecido",
+	WEAPON_PISTOL50 = "Desconhecido",
+	WEAPON_SNSPISTOL = "Desconhecido",
+	WEAPON_SNSPISTOL_MK2 = "Desconhecido",
+	WEAPON_HEAVYPISTOL = "Desconhecido",
+	WEAPON_VINTAGEPISTOL = "Desconhecido",
+	WEAPON_FLAREGUN = "Desconhecido",
+	WEAPON_MARKSMANPISTOL = "Desconhecido",
+	WEAPON_REVOLVER = "Desconhecido",
+	WEAPON_REVOLVER_MK2 = "Desconhecido",
+	WEAPON_DOUBLEACTION = "Desconhecido",
+	WEAPON_CERAMICPISTOL = "Desconhecido",
+	WEAPON_NAVYREVOLVER = "Desconhecido",
+	WEAPON_GADGETPISTOL = "Desconhecido",
+	WEAPON_PISTOLXM3 = "Desconhecido",
+	WEAPON_MICROSMG = "Desconhecido",
+	WEAPON_SMG = "Desconhecido",
+	WEAPON_SMG_MK2 = "Desconhecido",
+	WEAPON_ASSAULTSMG = "Desconhecido",
+	WEAPON_COMBATPDW = "Desconhecido",
+	WEAPON_MACHINEPISTOL = "Desconhecido",
+	WEAPON_MINISMG = "Desconhecido",
+	WEAPON_TECP = "Desconhecido",
+	WEAPON_ASSAULTRIFLE = "Desconhecido",
+	WEAPON_ASSAULTRIFLE_MK2 = "Desconhecido",
+	WEAPON_CARBINERIFLE = "Desconhecido",
+	WEAPON_CARBINERIFLE_MK2 = "Desconhecido",
+	WEAPON_ADVANCEDRIFLE = "Desconhecido",
+	WEAPON_SPECIALCARBINE = "Desconhecido",
+	WEAPON_SPECIALCARBINE_MK2 = "Desconhecido",
+	WEAPON_BULLPUPRIFLE = "Desconhecido",
+	WEAPON_BULLPUPRIFLE_MK2 = "Desconhecido",
+	WEAPON_COMPACTRIFLE = "Desconhecido",
+	WEAPON_MILITARYRIFLE = "Desconhecido",
+	WEAPON_HEAVYRIFLE = "Desconhecido",
+	WEAPON_TACTICALRIFLE = "Desconhecido",
+	WEAPON_PUMPSHOTGUN = "Desconhecido",
+	WEAPON_PUMPSHOTGUN_MK2 = "Desconhecido",
+	WEAPON_SAWNOFFSHOTGUN = "Desconhecido",
+	WEAPON_ASSAULTSHOTGUN = "Desconhecido",
+	WEAPON_BULLPUPSHOTGUN = "Desconhecido",
+	WEAPON_MUSKET = "Desconhecido",
+	WEAPON_HEAVYSHOTGUN = "Desconhecido",
+	WEAPON_DBSHOTGUN = "Desconhecido",
+	WEAPON_AUTOSHOTGUN = "Desconhecido",
+	WEAPON_SNIPERRIFLE = "Desconhecido",
+	WEAPON_HEAVYSNIPER = "Desconhecido",
+	WEAPON_HEAVYSNIPER_MK2 = "Desconhecido",
+	WEAPON_MARKSMANRIFLE = "Desconhecido",
+	WEAPON_MARKSMANRIFLE_MK2 = "Desconhecido",
+	WEAPON_RPG = "Desconhecido",
+	WEAPON_GRENADELAUNCHER = "Desconhecido",
+	WEAPON_GRENADELAUNCHER_SMOKE = "Desconhecido",
+	WEAPON_MINIGUN = "Desconhecido",
+	WEAPON_FIREWORK = "Desconhecido",
+	WEAPON_RAILGUN = "Desconhecido",
+	WEAPON_HOMINGLAUNCHER = "Desconhecido",
+	WEAPON_COMPACTLAUNCHER = "Desconhecido",
+	WEAPON_RAILGUNXM3 = "Desconhecido",
+	WEAPON_GRENADE = "Desconhecido",
+	WEAPON_STICKYBOMB = "Desconhecido",
+	WEAPON_PROXMINE = "Desconhecido",
+	WEAPON_BZGAS = "Desconhecido",
+	WEAPON_MOLOTOV = "Desconhecido",
+	WEAPON_FIREEXTINGUISHER = "Desconhecido",
+	WEAPON_PETROLCAN = "Desconhecido",
+	WEAPON_SNOWBALL = "Desconhecido",
+	WEAPON_FLARE = "Desconhecido",
+	WEAPON_BALL = "Desconhecido",
+	WEAPON_SMOKEGRENADE = "Desconhecido",
+	WEAPON_ACIDPACKAGE = "Desconhecido",
+	WEAPON_DIGISCANNER = "Desconhecido",
+	GADGET_PARACHUTE = "Desconhecido",
+	WEAPON_RAYPISTOL = "Desconhecido",
+	WEAPON_RAYCARBINE = "Desconhecido",
+	WEAPON_RAYMINIGUN = "Desconhecido",
+	WEAPON_EMPLAUNCHER = "Desconhecido",
+	WEAPON_BRICK = "Desconhecido",
+	WEAPON_SHOES = "Desconhecido",
+	WEAPON_STUNGUN_MP = "Desconhecido",
+	WEAPON_PRECISIONRIFLE = "Desconhecido",
+	WEAPON_SERVICECARBINE = "Desconhecido",
+	WEAPON_COMBATMG = "Desconhecido",
+	WEAPON_COMBATMG_MK2 = "Desconhecido",
+	WEAPON_MG = "Desconhecido",
+	WEAPON_GUSENBERG = "Desconhecido",
+	WEAPON_PIPEBOMB = "Desconhecido",
+	WEAPON_CANDYCANE = "Desconhecido",
+	WEAPON_RUN_OVER_BY_CAR = "Desconhecido",
+	WEAPON_RAMMED_BY_CAR = "Desconhecido"
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HASHFORWEAPONS
+-----------------------------------------------------------------------------------------------------------------------------------------
+for Item,Name in pairs(WeaponsList) do
+	Weapons[`Item`] = { Item = Item, Name = Name }
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WEAPONNAME
+-----------------------------------------------------------------------------------------------------------------------------------------
+function WeaponName(Hash)
+	return Weapons[Hash] and Weapons[Hash].Name or "Desconhecido"
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WEAPONITEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function WeaponItem(Hash)
+	return Weapons[Hash] and Weapons[Hash].Item or Hash
+end

@@ -17,7 +17,6 @@ local Trashed = false
 local BoostFPS = false
 local Residuals = false
 local LastCameraView = 2
-local DeathUpdate = false
 local CruiseEnabled = false
 local CruiseVehicle = false
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -341,19 +340,26 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterKeyMapping("ControlCruiser","Ativar/Desativar controle de cruzeiro.","keyboard","F4")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PLAYER:DEATHUPDATE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("player:DeathUpdate",function(Status)
-	DeathUpdate = Status
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
+local FeedCooldown = GetGameTimer()
 AddEventHandler("gameEventTriggered",function(Event,Message)
-	local Victim,Attacker,Index = Message[1],Message[2],NetworkGetPlayerIndexFromPed(Message[2])
-	if Event == "CEventNetworkEntityDamage" and not LocalPlayer.state.Arena and not DeathUpdate and Victim == PlayerPedId() and IsEntityAPed(Victim) and GetEntityHealth(Victim) <= 100 and NetworkIsPlayerConnected(Index) then
-		TriggerServerEvent("player:Death",GetPlayerServerId(Index))
-		DeathUpdate = false
+	if Event ~= "CEventNetworkEntityDamage" or LocalPlayer.state.Arena or LocalPlayer.state.Death then
+		return false
+	end
+
+	local Victim = Message[1]
+	local Attacker = Message[2]
+	if Victim ~= PlayerPedId() or Victim == Attacker or not IsEntityAPed(Victim) or GetEntityHealth(Victim) > 100 then
+		return false
+	end
+
+	local Weapon = Message[7]
+	local CurrentTimer = GetGameTimer()
+	local Index = NetworkGetPlayerIndexFromPed(Attacker)
+	if Index and NetworkIsPlayerConnected(Index) and FeedCooldown < CurrentTimer then
+		FeedCooldown = CurrentTimer + 1000
+		TriggerServerEvent("player:Death",GetPlayerServerId(Index),Weapon)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

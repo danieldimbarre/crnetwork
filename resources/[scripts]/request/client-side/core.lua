@@ -16,7 +16,7 @@ local Seconds = GetGameTimer()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SUCESS
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Sucess",function(Data,Callback)
+RegisterNUICallback("Success",function(Data,Callback)
 	Results = true
 	Active = false
 
@@ -39,7 +39,7 @@ function Creative.Function(Title,Message)
 		return false
 	end
 
-	SendNUIMessage({ Action = "Open", Payload = { Title, Message } })
+	SendNUIMessage({ Action = "Open", Payload = { Title = Title, Message = Message } })
 	Seconds = GetGameTimer() + 15000
 	Active = true
 

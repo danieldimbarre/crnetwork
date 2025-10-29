@@ -197,7 +197,6 @@ CreateThread(function()
 						TimeDistance = 0
 
 						local Armour = GetPedArmour(Entitys)
-						local Prefix = Talking and "~q~" or ""
 						local Health = GetEntityHealth(Entitys)
 						local CheckIn = math.max(Health - 100,0)
 						local Head = GetPedBoneIndex(Entitys,0x796e)
@@ -205,7 +204,7 @@ CreateThread(function()
 						local Check = (CheckIn <= 0) and "Morto" or CheckIn
 						local Talking = MumbleIsPlayerTalking(Voip[Entitys])
 						local HeadCoords = GetWorldPositionOfEntityBone(Entitys,Head)
-						local Message = ("%s%s~w~ | ~y~%s~w~ | ~g~%s~w~ | ~b~%s"):format(Prefix,Name,Passport,Check,Armour)
+						local Message = ("%s%s~w~ | ~y~%s~w~ | ~g~%s~w~ | ~b~%s"):format(Talking and "~q~" or "",Name,Passport,Check,Armour)
 
 						DrawText(HeadCoords,Message)
 					end

@@ -196,7 +196,7 @@ AddEventHandler("gameEventTriggered",function(Event,Message)
 
 	local Victim = Message[1]
 	local Attacker = Message[2]
-	if Victim ~= PlayerPedId() or not IsEntityAPed(Victim) or GetEntityHealth(Victim) > 100 then
+	if Victim ~= PlayerPedId() or Victim == Attacker or not IsEntityAPed(Victim) or GetEntityHealth(Victim) > 100 then
 		return false
 	end
 

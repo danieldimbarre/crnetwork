@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 MaxRepair = 1
 MinimumWeight = 15
+PrisonCoords = vec3(1896.15,2604.44,45.75)
 CreatorCoords = vec4(149.57,-158.09,-23.99,303.31)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BATTLEPASS
@@ -88,6 +89,7 @@ Groups = {
 		Hierarchy = { "Coronel","Tenente-Coronel","Major","Capitão","1º Tenente","2º Tenente","Aspirante","Subtenente","1º Sargento","2º Sargento","3º Sargento","Cabo","Soldado","Recruta","Delegada" },
 		Salary = { 10000,9750,9500,9250,9000,8750,8500,8250,8000,7750,7500,7250,7000,6750,6500 },
 		Name = "Los Santos Police Department",
+		SecurityCam = true,
 		Service = true,
 		Type = "Work",
 		Markers = true,
@@ -100,6 +102,7 @@ Groups = {
 		Hierarchy = { "Coronel","Tenente-Coronel","Major","Capitão","1º Tenente","2º Tenente","Aspirante","Subtenente","1º Sargento","2º Sargento","3º Sargento","Cabo","Soldado","Recruta","Delegada" },
 		Salary = { 10000,9750,9500,9250,9000,8750,8500,8250,8000,7750,7500,7250,7000,6750,6500 },
 		Name = "Blaine County Sheriff Officer",
+		SecurityCam = true,
 		Service = true,
 		Type = "Work",
 		Markers = true,
@@ -112,6 +115,7 @@ Groups = {
 		Hierarchy = { "Coronel","Tenente-Coronel","Major","Capitão","1º Tenente","2º Tenente","Aspirante","Subtenente","1º Sargento","2º Sargento","3º Sargento","Cabo","Soldado","Recruta","Delegada" },
 		Salary = { 10000,9750,9500,9250,9000,8750,8500,8250,8000,7750,7500,7250,7000,6750,6500 },
 		Name = "San Andreas Park Ranger",
+		SecurityCam = true,
 		Service = true,
 		Type = "Work",
 		Markers = true,
@@ -133,6 +137,7 @@ Groups = {
 			Ballas = true
 		},
 		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
+		SecurityCam = true,
 		Domination = true,
 		Service = true,
 		Type = "Work"
@@ -142,6 +147,7 @@ Groups = {
 			Vagos = true
 		},
 		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
+		SecurityCam = true,
 		Domination = true,
 		Service = true,
 		Type = "Work"
@@ -151,6 +157,7 @@ Groups = {
 			Families = true
 		},
 		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
+		SecurityCam = true,
 		Domination = true,
 		Service = true,
 		Type = "Work"
@@ -160,6 +167,7 @@ Groups = {
 			Marabunta = true
 		},
 		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
+		SecurityCam = true,
 		Domination = true,
 		Service = true,
 		Type = "Work"
@@ -169,6 +177,7 @@ Groups = {
 			Aztecas = true
 		},
 		Hierarchy = { "Chefe","Subchefe","Conselheiro","General","Veterano","Executor","Operacional","Soldado","Novato","Aspirante" },
+		SecurityCam = true,
 		Domination = true,
 		Service = true,
 		Type = "Work"

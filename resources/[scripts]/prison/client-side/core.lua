@@ -1,6 +1,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Cooldown = GetGameTimer()
 local Center = vec3(1679.94,2513.07,45.56)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLYPRISON
@@ -104,6 +105,21 @@ CreateThread(function()
 					end
 				end)
 			end
+		end
+
+		if Cooldown <= GetGameTimer() then
+			Cooldown = GetGameTimer() + 15000
+
+			local Radius = 250.0
+			local x,y,z = Center.x,Center.y,Center.z
+
+			ClearAreaOfPeds(x,y,z,Radius,0)
+			ClearAreaOfCops(x,y,z,Radius,0)
+			ClearAreaOfObjects(x,y,z,Radius,0)
+			ClearAreaOfProjectiles(x,y,z,Radius,0)
+			ClearArea(x,y,z,Radius,true,false,false,false)
+			ClearAreaOfVehicles(x,y,z,Radius,false,false,false,false,false)
+			ClearAreaLeaveVehicleHealth(x,y,z,Radius,false,false,false,false)
 		end
 
 		Wait(1000)

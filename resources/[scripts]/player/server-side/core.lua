@@ -318,7 +318,7 @@ end)
 -- PLAYER:DEATH
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("player:Death")
-AddEventHandler("player:Death",function(OtherSource,WeaponHash)
+AddEventHandler("player:Death",function(OtherSource,Weapon)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if not Passport or not OtherSource then
@@ -336,7 +336,6 @@ AddEventHandler("player:Death",function(OtherSource,WeaponHash)
 		return false
 	end
 
-	local Weapon = WeaponName(WeaponHash)
 	local Coords = vRP.GetEntityCoords(source)
 	local OtherCoords = vRP.GetEntityCoords(OtherSource)
 

@@ -219,16 +219,17 @@ end)
 -- DRAWTEXT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function DrawText(Coords,Message)
-	SetDrawOrigin(Coords.x,Coords.y,Coords.z + 0.5)
+	local Screen,X,Y = World3dToScreen2d(Coords.x,Coords.y,Coords.z + 0.5)
 
-	SetTextFont(4)
-	SetTextCentre(true)
-	SetTextScale(0.35,0.35)
-	SetTextColour(255,255,255,255)
-	SetTextDropshadow(1,15,15,15,150)
-	BeginTextCommandDisplayText("STRING")
-	AddTextComponentSubstringPlayerName(Message)
-	EndTextCommandDisplayText(0.0,0.0)
+	if Screen then
+		SetTextFont(4)
+		SetTextCentre(true)
+		SetTextScale(0.35,0.35)
+		SetTextColour(255,255,255,255)
+		SetTextDropshadow(1,15,15,15,150)
 
-	ClearDrawOrigin()
+		BeginTextCommandDisplayText("STRING")
+		AddTextComponentSubstringPlayerName(Message)
+		EndTextCommandDisplayText(X,Y)
+	end
 end

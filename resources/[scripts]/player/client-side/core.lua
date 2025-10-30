@@ -19,6 +19,7 @@ local Residuals = false
 local LastCameraView = 2
 local CruiseEnabled = false
 local CruiseVehicle = false
+local FeedCooldown = GetGameTimer()
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- RELATIONSHIP
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -342,24 +343,23 @@ RegisterKeyMapping("ControlCruiser","Ativar/Desativar controle de cruzeiro.","ke
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GAMEEVENTTRIGGERED
 -----------------------------------------------------------------------------------------------------------------------------------------
-local FeedCooldown = GetGameTimer()
 AddEventHandler("gameEventTriggered",function(Event,Message)
-	if Event ~= "CEventNetworkEntityDamage" or LocalPlayer.state.Arena or LocalPlayer.state.Death then
-		return false
-	end
-
-	local Victim = Message[1]
-	local Attacker = Message[2]
-	if Victim ~= PlayerPedId() or Victim == Attacker or not IsEntityAPed(Victim) or GetEntityHealth(Victim) > 100 then
-		return false
-	end
-
-	local Weapon = Message[7]
 	local CurrentTimer = GetGameTimer()
+	if Event ~= "CEventNetworkEntityDamage" or LocalPlayer.state.Arena or LocalPlayer.state.Death or LocalPlayer.state.Crawl or FeedCooldown > CurrentTimer then
+		return false
+	end
+
+	local Ped = PlayerPedId()
+	local Weaponed = Message[7]
+	local Victim,Attacker = Message[1],Message[2]
+	if Victim ~= Ped or Victim == Attacker or not IsEntityAPed(Victim) or GetEntityHealth(Victim) > 100 then
+		return false
+	end
+
 	local Index = NetworkGetPlayerIndexFromPed(Attacker)
-	if Index and NetworkIsPlayerConnected(Index) and FeedCooldown < CurrentTimer then
-		FeedCooldown = CurrentTimer + 1000
-		TriggerServerEvent("player:Death",GetPlayerServerId(Index),Weapon)
+	if Index and NetworkIsPlayerConnected(Index) then
+		FeedCooldown = CurrentTimer + 10000
+		TriggerServerEvent("player:Death",GetPlayerServerId(Index),Weaponed)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

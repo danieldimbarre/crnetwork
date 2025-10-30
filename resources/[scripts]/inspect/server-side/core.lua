@@ -21,36 +21,60 @@ local Sourcers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("inv",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and not Admin[Passport] and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin") then
-		local OtherPassport = Message[1]
-		local OtherSource = vRP.Source(OtherPassport)
-		if OtherSource and OtherPassport and OtherPassport ~= Passport and vRP.DoesEntityExist(OtherSource) and not Players[OtherPassport] then
-			Admin[Passport] = true
-			Sourcers[Passport] = OtherSource
-			Players[Passport] = OtherPassport
-
-			TriggerClientEvent("inspect:Open",source)
-		end
+	if not Passport or Admin[Passport] or not Message[1] or not vRP.HasGroup(Passport,"Admin") then
+		return false
 	end
+
+	local Number = Message[1]
+	local OtherPassport = parseInt(Number,true)
+	local OtherSource = vRP.Source(OtherPassport)
+	if not OtherSource or not OtherPassport or OtherPassport == Passport or not vRP.DoesEntityExist(OtherSource) or Players[OtherPassport] then
+		return false
+	end
+
+	Admin[Passport] = true
+	Sourcers[Passport] = OtherSource
+	Players[Passport] = OtherPassport
+
+	TriggerClientEvent("inspect:Open",source)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INSPECT:PLAYER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("inspect:Player")
 AddEventHandler("inspect:Player",function(OtherSource)
+	if not vRP.DoesEntityExist(OtherSource) then
+		return false
+	end
+
 	local source = source
 	local Passport = vRP.Passport(source)
-	local OtherPassport = vRP.Passport(OtherSource)
-	if Passport and vRP.DoesEntityExist(OtherSource) and not Players[OtherPassport] and (vRP.HasService(Passport,"Policia") or vRP.GetHealth(OtherSource) <= 100 or (vRP.GetHealth(OtherSource) > 100 and vRP.Request(OtherSource,"Revistar","Você aceita ser revistado?"))) then
-		if #(vRP.GetEntityCoords(source) - vRP.GetEntityCoords(OtherSource)) <= 2 then
-			Sourcers[Passport] = OtherSource
-			Players[Passport] = OtherPassport
-
-			TriggerEvent("inventory:ServerCarry",source,Passport,OtherSource,true)
-			TriggerClientEvent("inventory:Close",OtherSource)
-			TriggerClientEvent("inspect:Open",source)
-		end
+	if not Passport or not OtherSource then
+		return false
 	end
+
+	local OtherPassport = vRP.Passport(OtherSource)
+	if not OtherPassport or Players[OtherPassport] then
+		return false
+	end
+
+	local Health = vRP.GetHealth(OtherSource)
+	if not vRP.HasService(Passport,"Policia") or Health > 100 or (Health <= 100 and not vRP.Request(OtherSource,"Revistar","Você aceita ser revistado?")) then
+		return false
+	end
+
+	local Coords = vRP.GetEntityCoords(source)
+	local OtherCoords = vRP.GetEntityCoords(OtherSource)
+	if #(Coords - OtherCoords) > 2 then
+		return false
+	end
+
+	Sourcers[Passport] = OtherSource
+	Players[Passport] = OtherPassport
+
+	TriggerEvent("inventory:ServerCarry",source,Passport,OtherSource,true)
+	TriggerClientEvent("inventory:Close",OtherSource)
+	TriggerClientEvent("inspect:Open",source)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
@@ -72,12 +96,12 @@ function Creative.Mount()
 
 				if not v.desc then
 					if Item == "vehiclekey" and Split[3] then
-						local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+						local Consult = exports.oxmysql:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
 						if Consult and VehicleExist(Consult.Vehicle) then
 							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
 						end
 					elseif Item == "propertys" and Split[2] then
-						local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+						local Consult = exports.oxmysql:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 						if Consult then
 							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 						end
@@ -119,12 +143,12 @@ function Creative.Mount()
 
 				if not v.desc then
 					if Item == "vehiclekey" and Split[3] then
-						local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+						local Consult = exports.oxmysql:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
 						if Consult and VehicleExist(Consult.Vehicle) then
 							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
 						end
 					elseif Item == "propertys" and Split[2] then
-						local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+						local Consult = exports.oxmysql:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 						if Consult then
 							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 						end
@@ -162,23 +186,23 @@ end
 function Creative.Reset()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport then
-		if Sourcers[Passport] then
-			if vRP.DoesEntityExist(Sourcers[Passport]) and not Admin[Passport] then
-				TriggerEvent("inventory:ServerCarry",source,Passport,Sourcers[Passport])
-			end
-
-			Sourcers[Passport] = nil
-		end
-
-		if Players[Passport] then
-			Players[Passport] = nil
-		end
-
-		if Admin[Passport] then
-			Admin[Passport] = nil
-		end
+	if not Passport then
+		return false
 	end
+
+	local Target = Sourcers[Passport]
+	if Target then
+		if vRP.DoesEntityExist(Target) and not Admin[Passport] then
+			FreezePlayer(Target,false)
+		end
+
+		Sourcers[Passport] = nil
+	end
+
+	Players[Passport] = nil
+	Admin[Passport] = nil
+
+	return true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STORE
@@ -188,26 +212,37 @@ function Creative.Store(Item,Slot,Amount,Target)
 	local Slot = tostring(Slot)
 	local Target = tostring(Target)
 	local Passport = vRP.Passport(source)
-	if Passport and Sourcers[Passport] and vRP.DoesEntityExist(Sourcers[Passport]) then
-		if BlockDelete(Item) or vRP.MaxItens(Players[Passport],Item,Amount) then
-			TriggerClientEvent("inventory:Update",source)
-
-			return false
-		end
-
-		if (vRP.InventoryWeight(Players[Passport]) + ItemWeight(Item) * Amount) <= vRP.GetWeight(Players[Passport]) then
-			if vRP.TakeItem(Passport,Item,Amount,true,Slot) and vRP.GiveItem(Players[Passport],Item,Amount,true,Target) then
-				TriggerClientEvent("inventory:Update",source)
-			else
-				if ItemType(Item) == "Armamento" then
-					TriggerClientEvent("inventory:Update",source)
-				end
-			end
-		else
-			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
-			TriggerClientEvent("inventory:Update",source)
-		end
+	if not Passport or not Sourcers[Passport] or not vRP.DoesEntityExist(Sourcers[Passport]) then
+		return false
 	end
+
+	local SelectPlayer = Players[Passport]
+	if not SelectPlayer or BlockDelete(Item) or vRP.MaxItens(SelectPlayer,Item,Amount) then
+		TriggerClientEvent("inventory:Update",source)
+		return false
+	end
+
+	if not vRP.CheckWeight(SelectPlayer,Item,Amount) then
+		TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila sobrecarregada.","amarelo")
+		TriggerClientEvent("inventory:Update",source)
+		return false
+	end
+
+	if not vRP.TakeItem(Passport,Item,Amount,true,Slot) then
+		TriggerClientEvent("inventory:Update",source)
+		return false
+	end
+
+	if not vRP.GiveItem(SelectPlayer,Item,Amount,true,Target) then
+		TriggerClientEvent("inventory:Update",source)
+		return false
+	end
+
+	if ItemType(Item) == "Armamento" then
+		TriggerClientEvent("inventory:Update",source)
+	end
+
+	exports.discord:Embed("Inspect","**[PASSAPORTE]:** "..Passport.."\n**[REVISTADO]:** "..SelectPlayer.."\n**[MODO]:** Enviou\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKE
@@ -217,24 +252,35 @@ function Creative.Take(Item,Slot,Target,Amount)
 	local Slot = tostring(Slot)
 	local Target = tostring(Target)
 	local Passport = vRP.Passport(source)
-	if Passport and Sourcers[Passport] and vRP.DoesEntityExist(Sourcers[Passport]) then
-		if BlockDelete(Item) or vRP.MaxItens(Passport,Item,Amount) then
-			TriggerClientEvent("inventory:Update",source)
-
-			return false
-		end
-
-		if vRP.CheckWeight(Passport,Item,Amount) then
-			if vRP.TakeItem(Players[Passport],Item,Amount,true,Slot) and vRP.GiveItem(Passport,Item,Amount,true,Target) then
-				TriggerClientEvent("inventory:Update",source)
-			else
-				if ItemType(Item) == "Armamento" then
-					TriggerClientEvent("inventory:Update",source)
-				end
-			end
-		else
-			TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
-			TriggerClientEvent("inventory:Update",source)
-		end
+	if not Passport or not Sourcers[Passport] or not vRP.DoesEntityExist(Sourcers[Passport]) then
+		return false
 	end
+
+	local SelectPlayer = Players[Passport]
+	if not SelectPlayer or BlockDelete(Item) or vRP.MaxItens(Passport,Item,Amount) then
+		TriggerClientEvent("inventory:Update",source)
+		return false
+	end
+
+	if not vRP.CheckWeight(Passport,Item,Amount) then
+		TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila sobrecarregada.","amarelo")
+		TriggerClientEvent("inventory:Update",source)
+		return false
+	end
+
+	if not vRP.TakeItem(SelectPlayer,Item,Amount,true,Slot) then
+		TriggerClientEvent("inventory:Update",source)
+		return false
+	end
+
+	if not vRP.GiveItem(Passport,Item,Amount,true,Target) then
+		TriggerClientEvent("inventory:Update",source)
+		return false
+	end
+
+	if ItemType(Item) == "Armamento" then
+		TriggerClientEvent("inventory:Update",source)
+	end
+
+	exports.discord:Embed("Inspect","**[PASSAPORTE]:** "..Passport.."\n**[REVISTADO]:** "..SelectPlayer.."\n**[MODO]:** Retirou\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x")
 end

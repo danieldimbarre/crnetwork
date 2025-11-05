@@ -54,7 +54,7 @@ end)
 -- SHOPS:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("shops:Open",function(Number)
-	if not exports["hud"]:Wanted() then
+	if not exports.hud:Wanted() then
 		if Location[Number] then
 			if vSERVER.Permission(Location[Number]["Mode"]) then
 				Opened = Location[Number]["Mode"]
@@ -92,7 +92,7 @@ end)
 CreateThread(function()
 	for Number,v in pairs(Location) do
 		if v["Circle"] then
-			exports["target"]:AddCircleZone("Shops:"..Number,v["Coords"],v["Circle"],{
+			exports.target:AddCircleZone("Shops:"..Number,v["Coords"],v["Circle"],{
 				name = "Shops:"..Number,
 				heading = 0.0,
 				useZ = true
@@ -108,7 +108,7 @@ CreateThread(function()
 				}
 			})
 		else
-			exports["target"]:AddBoxZone("Shops:"..Number,v["Coords"],0.75,0.75,{
+			exports.target:AddBoxZone("Shops:"..Number,v["Coords"],0.75,0.75,{
 				name = "Shops:"..Number,
 				heading = 0.0,
 				minZ = v["Coords"]["z"] - 1.0,

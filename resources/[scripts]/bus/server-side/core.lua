@@ -14,7 +14,6 @@ Tunnel.bindInterface("bus",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
-local Payments = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -28,12 +27,7 @@ function Creative.Payment(Selected)
 		local Inside = vRPC.LastVehicle(source,"bus")
 		local Distance = #(Coords - Locations[Selected])
 		if not Selected or not Inside or Distance > 25 then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Motorista",source)
-
-			Payments[Passport] = (Payments[Passport] or 0) + 1
-			if Payments[Passport] >= 3 then
-				vRP.SetBanned(Passport,-1,"Permanente","Hacker")
-			end
+			exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Motorista",source)
 		end
 
 		local GainExperience = 1
@@ -41,11 +35,11 @@ function Creative.Payment(Selected)
 		local _,Level = vRP.GetExperience(Passport,"Driver")
 		local Valuation = Amount + Amount * (0.05 * Level)
 
-		if exports["party"]:DoesExist(Passport,4) then
+		if exports.party:DoesExist(Passport,4) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 
-		if exports["inventory"]:Buffs("Dexterity",Passport) then
+		if exports.inventory:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 
@@ -70,9 +64,5 @@ end
 AddEventHandler("Disconnect",function(Passport,source)
 	if Active[Passport] then
 		Active[Passport] = nil
-	end
-
-	if Payments[Passport] then
-		Payments[Passport] = nil
 	end
 end)

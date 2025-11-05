@@ -17,7 +17,7 @@ local Active = false
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	exports["target"]:AddBoxZone("WorkGrime",Init["xyz"],0.75,0.75,{
+	exports.target:AddBoxZone("WorkGrime",Init["xyz"],0.75,0.75,{
 		name = "WorkGrime",
 		heading = Init["w"],
 		minZ = Init["z"] - 1.0,
@@ -48,11 +48,11 @@ AddEventHandler("grime:Init",function()
 		end
 
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		exports["target"]:LabelText("WorkGrime","Iniciar Expediente")
+		exports.target:LabelText("WorkGrime","Iniciar Expediente")
 		Active = false
 	else
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
-		exports["target"]:LabelText("WorkGrime","Finalizar Expediente")
+		exports.target:LabelText("WorkGrime","Finalizar Expediente")
 		Active = true
 
 		repeat

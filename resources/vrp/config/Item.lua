@@ -2,6 +2,23 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	-- HALLOWEEN
+	["halloween_pumpkin"] = {
+		Index = "halloween_pumpkin",
+		Name = "Abóbora de Halloween",
+		Description = "Um enfeite para sua propriedade com a temática de halloween.",
+		Rarity = "legendary",
+		Type = "Consumível",
+		Weight = 5.0
+	},
+	["halloween_ghost"] = {
+		Index = "halloween_ghost",
+		Name = "Fantasma de Halloween",
+		Description = "Um enfeite para sua propriedade com a temática de halloween.",
+		Rarity = "legendary",
+		Type = "Consumível",
+		Weight = 5.0
+	},
 	-- ESSÊNCIAS
 	["blue_essence"] = {
 		Index = "blue_essence",
@@ -42,44 +59,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.0,
 		Delete = true
-	},
-	-- NATAL
-	["christmas_01"] = {
-		Index = "christmas_01",
-		Name = "Bola",
-		Type = "Comum",
-		Weight = 0.025,
-		Market = true,
-		Delete = true,
-		Rarity = "rare"
-	},
-	["christmas_02"] = {
-		Index = "christmas_02",
-		Name = "Bengala",
-		Type = "Comum",
-		Weight = 0.025,
-		Market = true,
-		Delete = true,
-		Rarity = "rare"
-	},
-	["christmas_03"] = {
-		Index = "christmas_03",
-		Name = "Meia",
-		Type = "Comum",
-		Weight = 0.025,
-		Market = true,
-		Delete = true,
-		Rarity = "rare"
-	},
-	["christmas_04"] = {
-		Index = "christmas_04",
-		Name = "Presente",
-		Type = "Comum",
-		Weight = 0.025,
-		Market = true,
-		Delete = true,
-		Unique = true,
-		Rarity = "legendary"
 	},
 	-- ANIMAL
 	["a_c_cat_01"] = {

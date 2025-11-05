@@ -164,7 +164,7 @@ AddEventHandler("inventory:Robbery",function(Number,Mode)
 		vRPC.playAnim(source,false,{Configuration.Animation.Dict,Configuration.Animation.Name},true)
 	end
 
-	exports["vrp"]:CallPolice({
+	exports.vrp:CallPolice({
 		Source = source,
 		Passport = Passport,
 		Permission = "Policia",
@@ -190,11 +190,11 @@ AddEventHandler("inventory:Robbery",function(Number,Mode)
 			if (not Configuration.Need) or (RequiredItem and (not Configuration.Need.Consume or vRP.TakeItem(Passport,RequiredItem.Item,Configuration.Need.Amount))) then
 				local Valuation = math.random(Configuration.Payment.Money.Min,Configuration.Payment.Money.Max)
 
-				if exports["party"]:DoesExist(Passport,2) then
+				if exports.party:DoesExist(Passport,2) then
 					Valuation = Valuation * 1.1
 				end
 
-				if exports["inventory"]:Buffs("Dexterity",Passport) then
+				if exports.inventory:Buffs("Dexterity",Passport) then
 					Valuation = Valuation * 1.1
 				end
 
@@ -211,7 +211,7 @@ AddEventHandler("inventory:Robbery",function(Number,Mode)
 						end)
 					end
 
-					exports["inventory"]:Drops(Passport,source,Configuration.Payment.Money.Item,Valuation,false,Robbery[Number].Coords)
+					exports.inventory:Drops(Passport,source,Configuration.Payment.Money.Item,Valuation,false,Robbery[Number].Coords)
 				else
 					local Multiplier = math.random(Configuration.Payment.Multiplier.Min,Configuration.Payment.Multiplier.Max)
 					if vRP.MountContainer(Passport,Mode..":"..Number,Configuration.Payment.List,Multiplier,false,false,{ Item = Configuration.Payment.Money.Item, Amount = Valuation }) then

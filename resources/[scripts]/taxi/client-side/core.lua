@@ -21,7 +21,7 @@ local Selected = math.random(#Locations)
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	exports["target"]:AddBoxZone("WorkTaxi",Init.xyz,0.75,0.75,{
+	exports.target:AddBoxZone("WorkTaxi",Init.xyz,0.75,0.75,{
 		name = "WorkTaxi",
 		heading = Init.w,
 		minZ = Init.z - 1.0,
@@ -66,11 +66,11 @@ AddEventHandler("taxi:Init",function()
 
 	if Service then
 		TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
-		exports["target"]:LabelText("WorkTaxi","Iniciar Expediente")
+		exports.target:LabelText("WorkTaxi","Iniciar Expediente")
 		Service = false
 	else
 		TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
-		exports["target"]:LabelText("WorkTaxi","Finalizar Expediente")
+		exports.target:LabelText("WorkTaxi","Finalizar Expediente")
 		MarkedPassenger()
 		Service = true
 	end

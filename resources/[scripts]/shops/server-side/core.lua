@@ -16,7 +16,7 @@ function Creative.Permission(Name)
 	local source = source
 	local Passport = vRP.Passport(source)
 
-	return Passport and List[Name] and not exports["bank"]:CheckTaxs(Passport) and not exports["bank"]:CheckFines(Passport) and (not List[Name]["Permission"] or (List[Name]["Permission"] and vRP.HasService(Passport,List[Name]["Permission"]))) or false
+	return Passport and List[Name] and not exports.bank:CheckTaxs(Passport) and not exports.bank:CheckFines(Passport) and (not List[Name]["Permission"] or (List[Name]["Permission"] and vRP.HasService(Passport,List[Name]["Permission"]))) or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
@@ -38,12 +38,12 @@ function Creative.Mount(Name)
 
 				if not v.desc then
 					if Item == "vehiclekey" and Split[3] then
-						local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+						local Consult = exports.oxmysql:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
 						if Consult and VehicleExist(Consult.Vehicle) then
 							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
 						end
 					elseif Item == "propertys" and Split[2] then
-						local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+						local Consult = exports.oxmysql:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 						if Consult then
 							v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 						end

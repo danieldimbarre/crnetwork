@@ -622,12 +622,7 @@ function TargetEnable()
 							if CheckPolice() then
 								table.insert(Menu,{ event = "towed:Impound", label = "Impound", tunnel = "server" })
 								table.insert(Menu,{ event = "prison:Plate", label = "Verificar Placa", tunnel = "server" })
-
-								if GetResourceState("mdt") == "started" then
-									table.insert(Menu,{ event = "mdt:Vehicle", label = "Apreender", tunnel = "server" })
-								else
-									table.insert(Menu,{ event = "prison:Vehicle", label = "Apreender", tunnel = "server" })
-								end
+								table.insert(Menu,{ event = "mdt:Vehicle", label = "Apreender", tunnel = "server" })
 							else
 								for _,v in pairs(Dismantle) do
 									if #(Coords - v) <= 15 then

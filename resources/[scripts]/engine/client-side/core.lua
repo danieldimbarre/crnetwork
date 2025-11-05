@@ -222,18 +222,18 @@ AddEventHandler("engine:Vehrify",function(Entitys)
 		local CurrentMod = GetVehicleMod(Vehicle,v.Number)
 		if CurrentMod ~= -1 then
 			local Total = GetNumVehicleMods(Vehicle,v.Number)
-			exports["dynamic"]:AddButton(v.Name,("Modificação atual instalada: <rare>%d</rare> / %d"):format(CurrentMod + 1,Total),"","",false,false)
+			exports.dynamic:AddButton(v.Name,("Modificação atual instalada: <rare>%d</rare> / %d"):format(CurrentMod + 1,Total),"","",false,false)
 		end
 	end
 
 	local Force = parseInt(GetVehicleEngineHealth(Vehicle) / 10)
-	exports["dynamic"]:AddButton("Potência",("Potência do motor se encontra em <rare>%d%%</rare>."):format(Force),"","",false,false)
+	exports.dynamic:AddButton("Potência",("Potência do motor se encontra em <rare>%d%%</rare>."):format(Force),"","",false,false)
 
 	local Body = parseInt(GetVehicleBodyHealth(Vehicle) / 10)
-	exports["dynamic"]:AddButton("Lataria",("Qualidade da lataria se encontra em <rare>%d%%</rare>."):format(Body),"","",false,false)
+	exports.dynamic:AddButton("Lataria",("Qualidade da lataria se encontra em <rare>%d%%</rare>."):format(Body),"","",false,false)
 
 	local Health = parseInt(GetEntityHealth(Vehicle) / 10)
-	exports["dynamic"]:AddButton("Chassi",("Rigidez do chassi se encontra em <rare>%d%%</rare>."):format(Health),"","",false,false)
+	exports.dynamic:AddButton("Chassi",("Rigidez do chassi se encontra em <rare>%d%%</rare>."):format(Health),"","",false,false)
 
-	exports["dynamic"]:Open()
+	exports.dynamic:Open()
 end)

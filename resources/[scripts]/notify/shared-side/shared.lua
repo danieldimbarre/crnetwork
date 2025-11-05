@@ -3,6 +3,36 @@ Config = {
 	Mode = "circle", -- bar | circle
 	Position = "middle-right", -- middle-left | middle-right | top-left | top-center | top-right | bottom-left | bottom-center | bottom-right
 	Themes = {
+		halloween = {
+			background = "#0f0f0fcc",
+			border = "#ea7e21",
+			icon = {
+				align = "top",
+				image = "halloween"
+			},
+			title = "#ea7e21",
+			text = "#D1D1D1",
+			bold = "#ffffff",
+			progress = {
+				background = "#0f0f0fcc",
+				color = "#ea7e21"
+			}
+		},
+		server = {
+			background = "#0f0f0fcc",
+			border = "#ea7e21",
+			icon = {
+				align = "top",
+				image = "server"
+			},
+			title = "#5865f2",
+			text = "#D1D1D1",
+			bold = "#ffffff",
+			progress = {
+				background = "#0f0f0fcc",
+				color = "#5865f2"
+			}
+		},
 		amarelo = {
 			background = "#0f0f0fcc",
 			border = "#fda84f",

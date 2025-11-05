@@ -14,7 +14,6 @@ Tunnel.bindInterface("grime",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
-local Payments = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GRIME:PACKAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -27,7 +26,7 @@ AddEventHandler("grime:Package",function()
 			vRP.GenerateItem(Passport,Item,1)
 		else
 			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-			exports["inventory"]:Drops(Passport,source,Item,1)
+			exports.inventory:Drops(Passport,source,Item,1)
 		end
 	end
 end)
@@ -42,12 +41,7 @@ function Creative.Payment(Selected)
 
 		local Coords = vRP.GetEntityCoords(source)
 		if not Selected or #(Coords - Locations[Selected]) > 2.5 then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Grime",source)
-
-			Payments[Passport] = (Payments[Passport] or 0) + 1
-			if Payments[Passport] >= 3 then
-				vRP.SetBanned(Passport,-1,"Permanente","Hacker")
-			end
+			exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Grime",source)
 		end
 
 		local GainExperience = 3
@@ -55,7 +49,7 @@ function Creative.Payment(Selected)
 		local Experience,Level = vRP.GetExperience(Passport,"Grime")
 		local Valuation = Amount + Amount * (0.05 * Level)
 
-		if exports["inventory"]:Buffs("Dexterity",Passport) then
+		if exports.inventory:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 
@@ -84,9 +78,5 @@ end
 AddEventHandler("Disconnect",function(Passport,source)
 	if Active[Passport] then
 		Active[Passport] = nil
-	end
-
-	if Payments[Passport] then
-		Payments[Passport] = nil
 	end
 end)

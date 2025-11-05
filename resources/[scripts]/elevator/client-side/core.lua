@@ -14,7 +14,7 @@ CreateThread(function()
 					if Distance <= 1.75 then
 						TimeDistance = 1
 
-						if IsControlJustPressed(1,38) and not exports["hud"]:Wanted() and not exports["lb-phone"]:IsOpen() then
+						if IsControlJustPressed(1,38) and not exports.hud:Wanted() and not exports["lb-phone"]:IsOpen() then
 							SetNuiFocus(true,true)
 							SendNUIMessage({ Action = "Open", Payload = { Number,Table } })
 						end

@@ -122,7 +122,7 @@ AddEventHandler("skinshop:Apply",function(Table,Save)
 	end
 
 	Skinshop = Table
-	exports["skinshop"]:Apply()
+	exports.skinshop:Apply()
 
 	if Save then
 		vSERVER.Update(Skinshop)
@@ -167,7 +167,7 @@ CreateThread(function()
 				if #(Coords - vec3(v.Coords.x,v.Coords.y,v.Coords.z)) <= 2.5 then
 					TimeDistance = 1
 
-					if IsControlJustPressed(0,38) and not exports["hud"]:Wanted() and not exports["hud"]:Repose() and (not v.Permission or LocalPlayer["state"][v.Permission]) then
+					if IsControlJustPressed(0,38) and not exports.hud:Wanted() and not exports.hud:Repose() and (not v.Permission or LocalPlayer["state"][v.Permission]) then
 						OpenSkinshop()
 					end
 				end

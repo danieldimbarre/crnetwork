@@ -98,7 +98,7 @@ AddEventHandler("propertys:RobberyItem",function(Number,Name)
 		TriggerClientEvent("sounds:Area",-1,"alarm",1.0,Coords,75)
 		TriggerClientEvent("sounds:Area",-1,"alarm",1.0,vRP.GetEntityCoords(source),125,GetPlayerRoutingBucket(source))
 
-		exports["vrp"]:CallPolice({
+		exports.vrp:CallPolice({
 			Source = source,
 			Passport = Passport,
 			Coords = Coords,
@@ -137,7 +137,7 @@ function Creative.Police(Outside,Inside)
 	TriggerClientEvent("sounds:Area",-1,"alarm",1.0,Outside,75)
 	TriggerClientEvent("sounds:Area",-1,"alarm",1.0,Inside,125,GetPlayerRoutingBucket(source))
 
-	exports["vrp"]:CallPolice({
+	exports.vrp:CallPolice({
 		Source = source,
 		Passport = Passport,
 		Coords = Outside,
@@ -211,14 +211,14 @@ function Creative.Toggle(Name,Mode)
 
 	if Mode == "Exit" then
 		Inside[Passport] = nil
-		exports["vrp"]:Bucket(source,"Exit")
+		exports.vrp:Bucket(source,"Exit")
 		TriggerEvent("vRP:ReloadWeapons",source)
 	else
 		TriggerEvent("DebugWeapons",Passport)
 		Inside[Passport] = Propertys[Name].Coords
 
 		local Bucket = Name == "Hotel" and (200000 + Passport) or (100000 + string.sub(Name,-4))
-		exports["vrp"]:Bucket(source,"Enter",Bucket)
+		exports.vrp:Bucket(source,"Enter",Bucket)
 	end
 
 	TriggerEvent("animals:Delete",Passport,source)
@@ -232,7 +232,7 @@ AddEventHandler("propertys:Buy",function(Name)
 	local Split = splitString(Name)
 	local Passport = vRP.Passport(source)
 
-	if not Passport or exports["bank"]:CheckTaxs(Passport) or exports["bank"]:CheckFines(Passport) then
+	if not Passport or exports.bank:CheckTaxs(Passport) or exports.bank:CheckFines(Passport) then
 		return false
 	end
 
@@ -269,7 +269,7 @@ AddEventHandler("propertys:Buy",function(Name)
 	TriggerClientEvent("Notify",source,"Propriedades","Compra concluída.","verde",10000)
 
 	if Mode == "Dollar" then
-		exports["bank"]:AddTaxs(Passport,source,"Propriedades",Informations[Interior].Price,"Compra de propriedade.")
+		exports.bank:AddTaxs(Passport,source,"Propriedades",Informations[Interior].Price,"Compra de propriedade.")
 	end
 
 	vRP.Query("propertys/Buy",{
@@ -325,7 +325,7 @@ AddEventHandler("propertys:Interior",function(Table)
 	local CurrentPrice = Informations[Consult.Interior].Gemstone
 	if vRP.Request(source,"Propriedades","Deseja efetuar a troca do interior atual para o <b>"..Interior.."</b> por <b>"..Dotted(InteriorPrice - CurrentPrice).." diamantes</b>?") then
 		if vRP.PaymentGems(Passport,InteriorPrice - CurrentPrice) then
-			exports["oxmysql"]:update_async("UPDATE propertys SET Interior = ? WHERE Name = ?",{ Interior,Name })
+			exports.oxmysql:update_async("UPDATE propertys SET Interior = ? WHERE Name = ?",{ Interior,Name })
 			TriggerClientEvent("Notify",source,"Propriedades","Compra concluída.","verde",10000)
 			Saved[Name] = Interior
 		else
@@ -600,12 +600,12 @@ function Creative.Mount(Name,Mode)
 
 		if not v.desc then
 			if Item == "vehiclekey" and Split[3] then
-				local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+				local Consult = exports.oxmysql:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
 				if Consult and VehicleExist(Consult.Vehicle) then
 					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
 				end
 			elseif Item == "propertys" and Split[2] then
-				local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+				local Consult = exports.oxmysql:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 				if Consult then
 					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 				end

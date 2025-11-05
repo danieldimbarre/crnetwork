@@ -27,7 +27,7 @@ local Variants = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Index,v in pairs(Services) do
-		exports["target"]:AddCircleZone("Service:"..Index,v.Coords,v.Weight,{
+		exports.target:AddCircleZone("Service:"..Index,v.Coords,v.Weight,{
 			name = "Service:"..Index,
 			heading = 0.0,
 			useZ = true
@@ -51,7 +51,7 @@ RegisterNetEvent("service:Client")
 AddEventHandler("service:Client",function(Permission,Status)
 	for Index,v in pairs(Services) do
 		if (Variants[Permission] and Variants[Permission] == v.Permission) or Permission == v.Permission then
-			exports["target"]:LabelText("Service:"..Index,(Status and "Finalizar Expediente" or "Iniciar Expediente"))
+			exports.target:LabelText("Service:"..Index,(Status and "Finalizar Expediente" or "Iniciar Expediente"))
 		end
 	end
 end)

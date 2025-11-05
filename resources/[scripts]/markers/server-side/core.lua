@@ -23,7 +23,7 @@ function Creative.Users()
     for Source,v in pairs(Players) do
         local playerTimer = Timers[v.Passport]
         if playerTimer and not playerTimer.Stop and os.time() >= playerTimer.Timer then
-            exports["markers"]:Exit(Source,v.Passport)
+            exports.markers:Exit(Source,v.Passport)
         else
             local Ped = GetPlayerPed(Source)
             if DoesEntityExist(Ped) then
@@ -105,7 +105,7 @@ end)
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport,source)
-	exports["markers"]:Exit(source,Passport)
+	exports.markers:Exit(source,Passport)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECT
@@ -113,6 +113,6 @@ end)
 AddEventHandler("Connect",function(Passport,source)
 	local Data = Timers[Passport]
 	if Data then
-		exports["markers"]:Enter(source,Data.Permission,Data.Level,Passport,Data.Timer)
+		exports.markers:Enter(source,Data.Permission,Data.Level,Passport,Data.Timer)
 	end
 end)

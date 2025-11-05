@@ -25,7 +25,7 @@ local Location = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Number,v in pairs(Location) do
-		exports["target"]:AddCircleZone("Bank:"..Number,v,0.1,{
+		exports.target:AddCircleZone("Bank:"..Number,v,0.1,{
 			name = "Bank:"..Number,
 			heading = 0.0,
 			useZ = true
@@ -45,7 +45,7 @@ end)
 -- BANK
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Bank",function()
-	if not exports["hud"]:Wanted() then
+	if not exports.hud:Wanted() then
 		SetNuiFocus(true,true)
 		TransitionToBlurred(1000)
 		TriggerEvent("hud:Active",false)

@@ -115,7 +115,7 @@ end)
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	exports["target"]:AddBoxZone("Trucker",Init["xyz"],0.75,0.75,{
+	exports.target:AddBoxZone("Trucker",Init["xyz"],0.75,0.75,{
 		name = "Trucker",
 		heading = Init["w"],
 		minZ = Init["z"] - 1.0,

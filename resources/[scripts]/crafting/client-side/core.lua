@@ -44,7 +44,7 @@ end)
 -- CRAFTING:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("crafting:Open",function(Number)
-	if not exports["hud"]:Wanted() then
+	if not exports.hud:Wanted() then
 		if Location[Number] then
 			if vSERVER.Permission(Location[Number].Mode) then
 				Opened = Location[Number].Mode
@@ -75,7 +75,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Number,v in pairs(Location) do
-		exports["target"]:AddCircleZone("Crafting:"..Number,v.Coords,v.Circle,{
+		exports.target:AddCircleZone("Crafting:"..Number,v.Coords,v.Circle,{
 			name = "Crafting:"..Number,
 			heading = 0.0,
 			useZ = true

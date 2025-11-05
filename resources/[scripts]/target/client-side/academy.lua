@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Index,v in pairs(Academy) do
-		exports["target"]:AddCircleZone("Academy:"..Index,v["Target"],0.15,{
+		exports.target:AddCircleZone("Academy:"..Index,v["Target"],0.15,{
 			name = "Academy:"..Index,
 			heading = 0.0,
 			useZ = true

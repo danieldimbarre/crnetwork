@@ -5,6 +5,8 @@ MarketplaceTax = 0.03 -- Taxa em cima do valor do item anunciado.
 SalaryCooldown = 1800 -- Quantidade de segundos.
 HomeBoxes = { 1,2,3 } -- ID das caixas que vão aparecer no inicio
 ShopAllDisplay = true -- Mostra a opção "Todos" na Loja
+BattlepassPoints = 500 -- Pontos para resgatar cada item
+BattlepassPrice = 10000 -- Valor para comprar o passe
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BOXES
 -----------------------------------------------------------------------------------------------------------------------------------------

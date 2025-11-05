@@ -75,6 +75,7 @@ AddEventHandler("inspect:Player",function(OtherSource)
 	TriggerEvent("inventory:ServerCarry",source,Passport,OtherSource,true)
 	TriggerClientEvent("inventory:Close",OtherSource)
 	TriggerClientEvent("inspect:Open",source)
+	FreezePlayer(OtherSource,true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
@@ -283,4 +284,13 @@ function Creative.Take(Item,Slot,Target,Amount)
 	end
 
 	exports.discord:Embed("Inspect","**[PASSAPORTE]:** "..Passport.."\n**[REVISTADO]:** "..SelectPlayer.."\n**[MODO]:** Retirou\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x")
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FREEZEPLAYER
+-----------------------------------------------------------------------------------------------------------------------------------------
+function FreezePlayer(source,Toggle)
+	local Ped = GetPlayerPed(source)
+	if DoesEntityExist(Ped) then
+		FreezeEntityPosition(Ped,Toggle)
+	end
 end

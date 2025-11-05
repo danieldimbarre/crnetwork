@@ -23,7 +23,7 @@ AddEventHandler("bus:Init",function()
 		Blip = nil
 	end
 
-	exports["target"]:LabelText("WorkBus",Active and "Finalizar Expediente" or "Iniciar Expediente")
+	exports.target:LabelText("WorkBus",Active and "Finalizar Expediente" or "Iniciar Expediente")
 
 	TriggerEvent("Notify","Central de Empregos",Active and "Você acaba de dar início à sua jornada de trabalho, lembrando que a sua vida não se resume só a isso." or "Você acaba de finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
 
@@ -35,7 +35,7 @@ end)
 -- THREADACTIVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	exports["target"]:AddBoxZone("WorkBus",Init["xyz"],0.75,0.75,{
+	exports.target:AddBoxZone("WorkBus",Init["xyz"],0.75,0.75,{
 		name = "WorkBus",
 		heading = Init["w"],
 		minZ = Init["z"] - 1.0,

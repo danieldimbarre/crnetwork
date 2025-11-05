@@ -27,7 +27,7 @@ CreateThread(function()
 					local OtherCoords = vec3(v.Coords[1],v.Coords[2],v.Coords[3])
 					if #(Coords - OtherCoords) <= 50 then
 						if not Objects[Index] then
-							exports["target"]:AddBoxZone("Plants:"..Index,vec3(OtherCoords.x,OtherCoords.y,OtherCoords.z + 0.25),0.4,0.4,{
+							exports.target:AddBoxZone("Plants:"..Index,vec3(OtherCoords.x,OtherCoords.y,OtherCoords.z + 0.25),0.4,0.4,{
 								name = "Plants:"..Index,
 								heading = v.Coords[4],
 								minZ = OtherCoords.z + 0.50,
@@ -135,7 +135,7 @@ function ClearObjects(Index)
 			DeleteEntity(Objects[Index])
 		end
 
-		exports["target"]:RemCircleZone("Plants:"..Index)
+		exports.target:RemCircleZone("Plants:"..Index)
 		Objects[Index] = nil
 	end
 end

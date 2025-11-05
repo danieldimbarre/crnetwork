@@ -84,7 +84,7 @@ AddEventHandler("towed:Payment",function(Plate)
 		local _,Level = vRP.GetExperience(Passport,"Towed")
 		local Valuation = Result.Valuation + Result.Valuation * (Result.Addition * Level)
 
-		if exports["inventory"]:Buffs("Dexterity",Passport) then
+		if exports.inventory:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 

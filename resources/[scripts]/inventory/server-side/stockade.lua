@@ -17,7 +17,7 @@ AddEventHandler("inventory:Stockade",function(Vehicle)
 			Stockades[Plate] = 10
 			Cooldown = os.time() + 3600
 
-			exports["vrp"]:CallPolice({
+			exports.vrp:CallPolice({
 				["Source"] = source,
 				["Passport"] = Passport,
 				["Permission"] = "Policia",

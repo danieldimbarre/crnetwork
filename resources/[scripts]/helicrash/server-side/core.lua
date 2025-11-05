@@ -20,8 +20,8 @@ local ActivePlayers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-GlobalState.HelicrashBox = 0
-GlobalState.HelicrashFire = 0
+GlobalState.Helibox = 0
+GlobalState.Helifire = 0
 GlobalState.Helicrash = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HELICRASH
@@ -62,8 +62,8 @@ RegisterCommand("helicrash",function(source)
 
 	TriggerClientEvent("Notify",-1,"Queda da Aeronave","Mayday! Mayday! Tivemos problemas técnicos em nossos motores e estamos em queda livre.","verde",30000)
 
-	GlobalState.HelicrashBox = MultiBox
-	GlobalState.HelicrashFire = GlobalState.Work + 60
+	GlobalState.Helibox = MultiBox
+	GlobalState.Helifire = GlobalState.Work + 60
 	GlobalState.Helicrash = Selected
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -127,6 +127,14 @@ function Creative.KillFeed(OtherSource)
 		end)
 	end
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Helibox",nil,function(_,_,Value)
+	if Value <= 0 then
+		GlobalState.Helicrash = false
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -88,7 +88,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("PlayerFunctions",function()
 	local Ped = PlayerPedId()
-	if not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not LocalPlayer.state.Prison and not Dynamic and not IsPauseMenuActive() and GetEntityHealth(Ped) > 100 then
+	if not Dynamic and not IsPauseMenuActive() and not LocalPlayer.state.Banned and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not LocalPlayer.state.Prison and GetEntityHealth(Ped) > 100 then
 		exports.dynamic:AddMenu("Armário","Abrir lista com todas as vestimentas.","wardrobe")
 		exports.dynamic:AddButton("Guardar","Salvar vestimentas do corpo.","dynamic:Clothes","Save","wardrobe",true)
 
@@ -177,7 +177,7 @@ end)
 -- EMERGENCYFUNCTIONS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("EmergencyFunctions",function()
-	if not IsPauseMenuActive() and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not LocalPlayer.state.Prison and not Dynamic then
+	if not Dynamic and not IsPauseMenuActive() and not LocalPlayer.state.Banned and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not LocalPlayer.state.Prison then
 		local Ped = PlayerPedId()
 		local Health = GetEntityHealth(Ped)
 

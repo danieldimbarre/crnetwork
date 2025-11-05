@@ -134,7 +134,7 @@ CreateThread(function()
 						Objects[Index] = CreateCrashObject("m23_1_prop_m31_crate_cd_01a",OtherCoords,OtherCoords.w)
 						SetupTargetZone(Index,OtherCoords,OtherCoords.w)
 
-						if GlobalState.Work <= GlobalState.HelicrashFire then
+						if GlobalState.Work <= GlobalState.Helifire then
 							Fire[Index] = StartScriptFire(OtherCoords.xyz,20,false)
 						end
 					else
@@ -142,7 +142,7 @@ CreateThread(function()
 							ApplyDamageToPed(Ped,5,false)
 						end
 
-						if Fire[Index] and GlobalState.Work > GlobalState.HelicrashFire then
+						if Fire[Index] and GlobalState.Work > GlobalState.Helifire then
 							RemoveScriptFire(Fire[Index])
 							Fire[Index] = nil
 						end

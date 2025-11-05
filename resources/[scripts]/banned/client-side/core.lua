@@ -1,0 +1,64 @@
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local NextRevive = GetGameTimer()
+local NextService = GetGameTimer()
+local Center = vec3(-1645.35,-3131.06,13.99)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- POLYPRISON
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Poly = PolyZone:Create({
+	vec2(-1673.59,-3100.58),
+	vec2(-1707.37,-3159.48),
+	vec2(-1646.88,-3194.14),
+	vec2(-1610.94,-3151.29),
+	vec2(-1604.72,-3140.20)
+},{ name = "Banned" })
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADPRISON
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		if LocalPlayer.state.Banned then
+			local Ped = PlayerPedId()
+			local CurrentTimer = GetGameTimer()
+
+			if CurrentTimer >= NextService then
+				NextService = CurrentTimer + 60000
+				TriggerServerEvent("banned:Service")
+			end
+
+			local Coords = GetEntityCoords(Ped)
+			if not Poly:isPointInside(Coords) then
+				SetEntityCoords(Ped,Center)
+			end
+
+			local Health = GetEntityHealth(Ped)
+			if Health <= 100 and (not NextRevive or CurrentTimer >= NextRevive) then
+				NextRevive = CurrentTimer + 60000
+
+				SetTimeout(15000,function()
+					exports.survival:Revive(200)
+				end)
+			end
+		end
+
+		Wait(1000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ONCLIENTRESOURCESTOP
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onClientResourceStop",function(Resource)
+	if Resource == GetCurrentResourceName() then
+		return false
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ONRESOURCESTOP
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onResourceStop",function(Resource)
+	if Resource == GetCurrentResourceName() then
+		return false
+	end
+end)

@@ -339,12 +339,6 @@ Use = {
 		end
 	end,
 
-	["christmas_04"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if Split and Split[3] then
-			TriggerClientEvent("chest:Open",source,"christmas_04:"..Split[3],"Item",Full,true,true)
-		end
-	end,
-
 	["medicbag"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if Split and Split[3] then
 			TriggerClientEvent("chest:Open",source,"medicbag:"..Split[3],"Item",false,false,true)
@@ -367,8 +361,8 @@ Use = {
 			return false
 		end
 
-		local Name = Keyboard[1]
-		local Lastname = Keyboard[2]
+		local Name = FirstName(Keyboard[1])
+		local Lastname = FirstName(Keyboard[2])
 		if vRP.Request(source,"Mudança de Nome","Finalizar a troca para <b>"..Name.." "..Lastname.."</b>?") then
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				vRP.UpgradeNames(Passport,Name,Lastname)
@@ -377,7 +371,7 @@ Use = {
 
 				local Account = vRP.AccountInformation(Passport,"Discord")
 				if Account then
-					exports.discord:Content("Rename",Account.." #"..OtherPassport.." "..Name.." "..Lastname)
+					exports.discord:Content("Rename",Account.." #"..Passport.." "..Name.." "..Lastname)
 				end
 			end
 		end
@@ -2480,6 +2474,46 @@ Use = {
 
 				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
 			end
+		end
+
+		Player(source).state.Buttons = false
+	end,
+
+	["halloween_pumpkin"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source).state.Buttons = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "tfx-summer_abroba"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			repeat
+				Selected = GenerateString("DDLLDDLL")
+			until Selected and not Objects[Selected]
+
+			Objects[Selected] = { Coords = Coords, Object = Hash, Ground = true, Bucket = GetPlayerRoutingBucket(source) }
+			SaveObjects[Selected] = Objects[Selected]
+
+			TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+		end
+
+		Player(source).state.Buttons = false
+	end,
+
+	["halloween_ghost"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		Player(source).state.Buttons = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "tfx-summer_ghost"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) and vRP.TakeItem(Passport,Full,1,true,Slot) then
+			repeat
+				Selected = GenerateString("DDLLDDLL")
+			until Selected and not Objects[Selected]
+
+			Objects[Selected] = { Coords = Coords, Object = Hash, Ground = true, Bucket = GetPlayerRoutingBucket(source) }
+			SaveObjects[Selected] = Objects[Selected]
+
+			TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
 		end
 
 		Player(source).state.Buttons = false

@@ -17,7 +17,7 @@ local Progress = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Name,v in pairs(List) do
-		exports["target"]:AddBoxZone("Deliver:"..Name,v.Coords,0.75,0.75,{
+		exports.target:AddBoxZone("Deliver:"..Name,v.Coords,0.75,0.75,{
 			name = "Deliver:"..Name,
 			heading = 0.0,
 			minZ = v.Coords.z - 1.0,
@@ -46,7 +46,7 @@ AddEventHandler("deliver:Init",function(Service)
 			TriggerEvent("Notify","Central de Empregos","Você acaba finalizar sua jornada de trabalho, esperamos que você tenha aprendido bastante hoje.","default",5000)
 
 			for Name,_ in pairs(List) do
-				exports["target"]:LabelText("Deliver:"..Name,"Iniciar Expediente")
+				exports.target:LabelText("Deliver:"..Name,"Iniciar Expediente")
 			end
 
 			if Blip and DoesBlipExist(Blip) then
@@ -60,7 +60,7 @@ AddEventHandler("deliver:Init",function(Service)
 			TriggerEvent("Notify","Central de Empregos","Você acaba de dar inicio a sua jornada de trabalho, lembrando que a sua vida não se resume só a isso.","default",5000)
 
 			for Name,_ in pairs(List) do
-				exports["target"]:LabelText("Deliver:"..Name,"Finalizar Expediente")
+				exports.target:LabelText("Deliver:"..Name,"Finalizar Expediente")
 			end
 
 			while Progress do

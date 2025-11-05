@@ -8,18 +8,18 @@ local Follow = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("animals:Dynamic",function()
 	if Animal and DoesEntityExist(Animal) then
-		exports["dynamic"]:AddMenu("Domésticos","Todas as funções dos animais domésticos.","animal")
-		exports["dynamic"]:AddButton("Ficar/Seguir","Colocar o animal para te ficar/seguir.","animals:Functions","Seguir","animal",false)
-		exports["dynamic"]:AddButton("Guardar","Colocar o animal na casinha.","animals:Functions","Deletar","animal",false)
+		exports.dynamic:AddMenu("Domésticos","Todas as funções dos animais domésticos.","animal")
+		exports.dynamic:AddButton("Ficar/Seguir","Colocar o animal para te ficar/seguir.","animals:Functions","Seguir","animal",false)
+		exports.dynamic:AddButton("Guardar","Colocar o animal na casinha.","animals:Functions","Deletar","animal",false)
 
 		local Ped = PlayerPedId()
 		if IsPedInAnyVehicle(Ped) and not IsPedOnAnyBike(Ped) then
 			if not IsPedInAnyVehicle(Animal) then
-				exports["dynamic"]:AddButton("Colocar","Colocar o animal dentro do veículo.","animals:Functions","Colocar","animal",false)
+				exports.dynamic:AddButton("Colocar","Colocar o animal dentro do veículo.","animals:Functions","Colocar","animal",false)
 			end
 
 			if IsPedInAnyVehicle(Animal) then
-				exports["dynamic"]:AddButton("Remover","Retirar o animal de dentro do veículo.","animals:Functions","Remover","animal",false)
+				exports.dynamic:AddButton("Remover","Retirar o animal de dentro do veículo.","animals:Functions","Remover","animal",false)
 			end
 		end
 	end

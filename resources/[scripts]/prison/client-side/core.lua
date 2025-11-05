@@ -1,7 +1,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Cooldown = GetGameTimer()
+local NextRevive = GetGameTimer()
+local NextService = GetGameTimer()
 local Center = vec3(1679.94,2513.07,45.56)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLYPRISON
@@ -85,7 +86,7 @@ CreateThread(function()
 			local Ped = PlayerPedId()
 			local CurrentTimer = GetGameTimer()
 
-			if not NextService or CurrentTimer >= NextService then
+			if CurrentTimer >= NextService then
 				NextService = CurrentTimer + 60000
 				TriggerServerEvent("prison:Service")
 			end
@@ -100,26 +101,9 @@ CreateThread(function()
 				NextRevive = CurrentTimer + 60000
 
 				SetTimeout(15000,function()
-					if LocalPlayer.state.Prison then
-						exports.survival:Revive(200)
-					end
+					exports.survival:Revive(200)
 				end)
 			end
-		end
-
-		if Cooldown <= GetGameTimer() then
-			Cooldown = GetGameTimer() + 15000
-
-			local Radius = 250.0
-			local x,y,z = Center.x,Center.y,Center.z
-
-			ClearAreaOfPeds(x,y,z,Radius,0)
-			ClearAreaOfCops(x,y,z,Radius,0)
-			ClearAreaOfObjects(x,y,z,Radius,0)
-			ClearAreaOfProjectiles(x,y,z,Radius,0)
-			ClearArea(x,y,z,Radius,true,false,false,false)
-			ClearAreaOfVehicles(x,y,z,Radius,false,false,false,false,false)
-			ClearAreaLeaveVehicleHealth(x,y,z,Radius,false,false,false,false)
 		end
 
 		Wait(1000)

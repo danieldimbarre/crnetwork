@@ -96,7 +96,7 @@ AddEventHandler("plants:Collect",function(Number)
 				vRP.GenerateItem(Passport,Temporary.Item,Valuation,true)
 			else
 				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-				exports["inventory"]:Drops(Passport,source,Temporary.Item,Valuation)
+				exports.inventory:Drops(Passport,source,Temporary.Item,Valuation)
 			end
 
 			TriggerClientEvent("plants:Remove",-1,Number)
@@ -143,7 +143,7 @@ AddEventHandler("plants:Cloning",function(Number)
 				vRP.GenerateItem(Passport,NameClone,Valuation,true)
 			else
 				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-				exports["inventory"]:Drops(Passport,source,NameClone,Valuation)
+				exports.inventory:Drops(Passport,source,NameClone,Valuation)
 			end
 
 			TriggerClientEvent("plants:Remove",-1,Number)

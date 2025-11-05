@@ -35,7 +35,7 @@ AddEventHandler("player:Demand",function(OtherSource)
 	local source = source
 	local Passport = vRP.Passport(source)
 	local OtherPassport = vRP.Passport(OtherSource)
-	if Passport and OtherPassport and not exports["bank"]:CheckTaxs(OtherPassport) and not exports["bank"]:CheckFines(OtherPassport) then
+	if Passport and OtherPassport and not exports.bank:CheckTaxs(OtherPassport) and not exports.bank:CheckFines(OtherPassport) then
 		local Keyboard = vKEYBOARD.Primary(source,"Valor")
 		if Keyboard and vRP.Passport(OtherSource) then
 			local Price = parseInt(Keyboard[1],true)
@@ -310,7 +310,7 @@ RegisterServerEvent("player:Outfit")
 AddEventHandler("player:Outfit",function(Mode)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not exports["hud"]:Repose(Passport) and not exports["hud"]:Wanted(Passport) then
+	if Passport and not exports.hud:Repose(Passport) and not exports.hud:Wanted(Passport) then
 		TriggerClientEvent("skinshop:set"..Mode,source)
 	end
 end)

@@ -180,7 +180,7 @@ CreateThread(function()
 				SendNUIMessage({ Action = "Repose", Payload = { Repose,ReposeMax } })
 			end
 
-			if GetEntityHealth(Ped) > 100 then
+			if not LocalPlayer.state.Banned and not LocalPlayer.state.Prison and GetEntityHealth(Ped) > 100 then
 				if Hunger <= 10 and HungerTimer <= GetGameTimer() then
 					ApplyDamageToPed(Ped,1,false)
 					HungerTimer = GetGameTimer() + 60000

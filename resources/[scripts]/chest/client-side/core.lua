@@ -66,7 +66,7 @@ local Labels = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Name,v in pairs(Chests) do
-		exports["target"]:AddCircleZone("Chest:"..Name,v.Coords,0.25,{
+		exports.target:AddCircleZone("Chest:"..Name,v.Coords,0.25,{
 			name = "Chest:"..Name,
 			heading = 0.0,
 			useZ = true
@@ -83,7 +83,7 @@ end)
 RegisterNetEvent("chest:Open")
 AddEventHandler("chest:Open",function(Name,Mode,Item,Blocked,Force)
 	if vSERVER.Permissions(Name,Mode,Item) and GetEntityHealth(PlayerPedId()) > 100 then
-		if Blocked or SplitBoolean(Name,"Helicrash",":") or SplitBoolean(Name,"Christmas",":") then
+		if Blocked or SplitBoolean(Name,"Helicrash",":") or SplitBoolean(Name,"Halloween",":") then
 			Block = true
 		end
 
@@ -134,6 +134,21 @@ AddEventHandler("inventory:Close",function(Force)
 
 		Opened = false
 		Block = false
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INVENTORY:CLOSED
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("inventory:Closed",function(Name)
+	if Opened and Opened == Name then
+		if Animation then
+			Animation = false
+			vRP.Destroy()
+		end
+
+		Block = false
+		Opened = false
+		TriggerEvent("inventory:Close")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

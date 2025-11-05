@@ -31,7 +31,6 @@ Trunks = {}
 Objects = {}
 Robberys = {}
 SaveObjects = {}
-local Payments = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- USERS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -408,7 +407,7 @@ function Creative.Send(Slot,Amount)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
 	local ClosestPed = vRPC.ClosestPed(source)
-	if Passport and not Active[Passport] and ClosestPed and not exports["hud"]:Wanted(Passport) then
+	if Passport and not Active[Passport] and ClosestPed and not exports.hud:Wanted(Passport) then
 		local Inv = vRP.Inventory(Passport)
 		if not Inv[Slot] or not Inv[Slot].item then
 			return false
@@ -442,7 +441,7 @@ function Creative.Send(Slot,Amount)
 						if vRP.TakeItem(Passport,Item,Amount,true,Slot) and vRP.GiveItem(OtherPassport,Item,Amount,true) then
 							TriggerClientEvent("inventory:Update",source)
 							TriggerClientEvent("inventory:Update",ClosestPed)
-							exports["discord"]:Embed("Send","**[ENVIOU]:** "..Passport.."\n**[RECEBEU]:** "..OtherPassport.."\n**[ITEM]:** "..Amount.."x "..Item)
+							exports.discord:Embed("Send","**[ENVIOU]:** "..Passport.."\n**[RECEBEU]:** "..OtherPassport.."\n**[ITEM]:** "..Amount.."x "..Item)
 
 							return true
 						end
@@ -469,7 +468,7 @@ function Creative.Deliver(Work,OtherCoords)
 
 		local Coords = vRP.GetEntityCoords(source)
 		if not OtherCoords or #(Coords - OtherCoords) > 2.0 then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Deliver",source)
+			exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Deliver",source)
 		end
 
 		if Work == "Lumberman" then
@@ -486,11 +485,11 @@ function Creative.Deliver(Work,OtherCoords)
 				local Experience,Level = vRP.GetExperience(Passport,"Lumberman")
 				local Valuation = Amount + Amount * (0.05 * Level)
 
-				if exports["party"]:DoesExist(Passport,2) then
+				if exports.party:DoesExist(Passport,2) then
 					Valuation = Valuation + (Valuation * 0.1)
 				end
 
-				if exports["inventory"]:Buffs("Dexterity",Passport) then
+				if exports.inventory:Buffs("Dexterity",Passport) then
 					Valuation = Valuation + (Valuation * 0.1)
 				end
 
@@ -523,11 +522,11 @@ function Creative.Deliver(Work,OtherCoords)
 				local Experience,Level = vRP.GetExperience(Passport,"Milkman")
 				local Valuation = Amount + Amount * (0.05 * Level)
 
-				if exports["party"]:DoesExist(Passport,2) then
+				if exports.party:DoesExist(Passport,2) then
 					Valuation = Valuation + (Valuation * 0.1)
 				end
 
-				if exports["inventory"]:Buffs("Dexterity",Passport) then
+				if exports.inventory:Buffs("Dexterity",Passport) then
 					Valuation = Valuation + (Valuation * 0.1)
 				end
 
@@ -560,11 +559,11 @@ function Creative.Deliver(Work,OtherCoords)
 				local Experience,Level = vRP.GetExperience(Passport,"Transporter")
 				local Valuation = Amount + Amount * (0.05 * Level)
 
-				if exports["party"]:DoesExist(Passport,2) then
+				if exports.party:DoesExist(Passport,2) then
 					Valuation = Valuation + (Valuation * 0.1)
 				end
 
-				if exports["inventory"]:Buffs("Dexterity",Passport) then
+				if exports.inventory:Buffs("Dexterity",Passport) then
 					Valuation = Valuation + (Valuation * 0.1)
 				end
 
@@ -949,10 +948,10 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 						end
 					else
 						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-						exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Valuation"])
+						exports.inventory:Drops(Passport,source,Result["Item"],Result["Valuation"])
 
 						if Loots[Box]["Permission"] and vRP.HasService(Passport,Loots[Box]["Permission"]) then
-							exports["inventory"]:Drops(Passport,source,"dollar",275)
+							exports.inventory:Drops(Passport,source,"dollar",275)
 						end
 					end
 				end
@@ -1089,7 +1088,7 @@ AddEventHandler("inventory:StealTrunk",function(Entity)
 	TriggerClientEvent("Progress",source,"Vasculhando",15000)
 	TriggerClientEvent("player:Residual",source,"Resíduo de Ferro")
 
-	exports["vrp"]:CallPolice({
+	exports.vrp:CallPolice({
 		Source = source,
 		Passport = Passport,
 		Permission = "Policia",
@@ -1180,12 +1179,7 @@ AddEventHandler("inventory:Products",function(Service)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and Products[Service] then
 		if Products[Service]["PolyZone"] and not vFARMER.PolyZone(source,Service) then
-			exports["discord"]:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Farmer do "..Service,source)
-
-			Payments[Passport] = (Payments[Passport] or 0) + 1
-			if Payments[Passport] >= 3 then
-				vRP.SetBanned(Passport,-1,"Permanente","Hacker")
-			end
+			exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Farmer do "..Service,source)
 		end
 
 		if Products[Service]["Item"] and not vRP.ConsultItem(Passport,Products[Service]["Item"]) then
@@ -1195,7 +1189,7 @@ AddEventHandler("inventory:Products",function(Service)
 		end
 
 		if Products[Service]["Police"] and not vRP.Task(source,5,5000) then
-			exports["vrp"]:CallPolice({
+			exports.vrp:CallPolice({
 				["Source"] = source,
 				["Passport"] = Passport,
 				["Permission"] = "Policia",
@@ -1233,7 +1227,7 @@ AddEventHandler("inventory:Products",function(Service)
 						vRP.GenerateItem(Passport,Result["Item"],Result["Valuation"],true)
 					else
 						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-						exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Valuation"])
+						exports.inventory:Drops(Passport,source,Result["Item"],Result["Valuation"])
 					end
 
 					if Products[Service]["Residual"] then
@@ -1393,11 +1387,11 @@ function Creative.StealPeds()
 			vRP.GenerateItem(Passport,Result["Item"],Result["Valuation"],true)
 		else
 			TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-			exports["inventory"]:Drops(Passport,source,Result["Item"],Result["Valuation"])
+			exports.inventory:Drops(Passport,source,Result["Item"],Result["Valuation"])
 		end
 
 		if math.random(100) >= 75 and vRP.DoesEntityExist(source) then
-			exports["vrp"]:CallPolice({
+			exports.vrp:CallPolice({
 				["Source"] = source,
 				["Passport"] = Passport,
 				["Permission"] = "Policia",
@@ -1423,7 +1417,7 @@ function Creative.ShotsFired(Vehicle)
 		end
 
 		if vRP.DoesEntityExist(source) then
-			exports["vrp"]:CallPolice({
+			exports.vrp:CallPolice({
 				["Source"] = source,
 				["Passport"] = Passport,
 				["Permission"] = "Policia",
@@ -1542,10 +1536,6 @@ AddEventHandler("Disconnect",function(Passport)
 
 	if Active[Passport] then
 		Active[Passport] = nil
-	end
-
-	if Payments[Passport] then
-		Payments[Passport] = nil
 	end
 
 	if Drugs[Passport] then

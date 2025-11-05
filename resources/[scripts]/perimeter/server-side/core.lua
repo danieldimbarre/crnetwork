@@ -44,7 +44,7 @@ AddEventHandler("perimeter:New",function()
 			}
 
 			TriggerClientEvent("perimeter:Add",-1,Selected,Perimeters[Selected])
-			exports["discord"]:Embed("Perimeter","**[PASSAPORTE]:** "..Passport.."\n**[NOME]:** "..Perimeters[Selected].Name.."\n**[COORDS]:** "..Coords)
+			exports.discord:Embed("Perimeter","**[PASSAPORTE]:** "..Passport.."\n**[NOME]:** "..Perimeters[Selected].Name.."\n**[COORDS]:** "..Coords)
 			TriggerClientEvent("Notify",-1,"Informativo Policial","Informamos que o perímetro <b>"..Perimeters[Selected].Name.."</b> encontra-se fechado para circulação, pedimos a compreensão de todos e orientamos que busquem rotas alternativas, agradecemos pela colaboração.","policia",30000)
 		end
 	end

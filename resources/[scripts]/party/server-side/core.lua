@@ -239,7 +239,7 @@ exports("DoesExist",function(Passport,Players)
 
 	if Players then
 		local source = vRP.Source(Passport)
-		local Members = exports["party"]:Room(Passport,source,25)
+		local Members = exports.party:Room(Passport,source,25)
 
 		return #Members >= Players and Members or false
 	end

@@ -86,15 +86,11 @@ AddEventHandler("creative:NoClip",function()
 	NoClip = not NoClip
 	PlayerPed = PlayerPedId()
 	PlayerVehicle = GetVehiclePedIsUsing(PlayerPed)
-
-	if PlayerVehicle ~= 0 and PlayerPed == GetPedInVehicleSeat(PlayerVehicle,-1) then
-		NoClipEntity = PlayerVehicle
-	else
-		NoClipEntity = PlayerPed
-	end
+	NoClipEntity = PlayerVehicle ~= 0 and PlayerVehicle or PlayerPed
 
 	if NoClip then
 		SetEntityLocallyVisible(NoClipEntity)
+		SetEntityAlpha(NoClipEntity,100,false)
 		SetEntityCompletelyDisableCollision(NoClipEntity,false,false)
 		SetEntityCollision(NoClipEntity,false,false)
 		SetEntityVisible(NoClipEntity,false,false)
@@ -108,5 +104,6 @@ AddEventHandler("creative:NoClip",function()
 		SetEntityVisible(NoClipEntity,true,false)
 		FreezeEntityPosition(NoClipEntity,false)
 		SetEntityInvincible(NoClipEntity,false)
+		ResetEntityAlpha(NoClipEntity)
 	end
 end)

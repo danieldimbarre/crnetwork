@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	for Number,v in pairs(Robbery) do
-		exports["target"]:AddCircleZone("Robbery:"..Number,v.Coords,0.25,{
+		exports.target:AddCircleZone("Robbery:"..Number,v.Coords,0.25,{
 			name = "Robbery:"..Number,
 			heading = 0.0,
 			useZ = true

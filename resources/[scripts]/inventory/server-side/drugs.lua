@@ -74,7 +74,7 @@ function Creative.PaymentDrugs()
 		local Experience,Level = vRP.GetExperience(Passport,"Traffic")
 		local Valuation = Amount + Amount * (0.05 * Level)
 
-		if exports["inventory"]:Buffs("Dexterity",Passport) then
+		if exports.inventory:Buffs("Dexterity",Passport) then
 			Valuation = Valuation + (Valuation * 0.1)
 		end
 
@@ -97,7 +97,7 @@ function Creative.PaymentDrugs()
 		vRP.BattlepassPoints(Passport,GainExperience)
 		vRP.UpgradeStress(Passport,1)
 
-		exports["vrp"]:CallPolice({
+		exports.vrp:CallPolice({
 			Source = source,
 			Passport = Passport,
 			Permission = "Policia",

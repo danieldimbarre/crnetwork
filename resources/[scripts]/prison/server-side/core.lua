@@ -33,34 +33,6 @@ AddEventHandler("prison:Itens",function(OtherSource)
 	vRP.ArrestItens(OtherPassport)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- PRISON:VEHICLE
------------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("prison:Vehicle")
-AddEventHandler("prison:Vehicle",function(Entity)
-	local source = source
-	local Plate = Entity[1]
-	local Passport = vRP.Passport(source)
-	if not Passport or not Plate then
-		return false
-	end
-
-	if not vRP.Request(source,"Garagem","Apreender o veículo?") then
-		return false
-	end
-
-	local Consult = vRP.SingleQuery("vehicles/plateVehicles",{ Plate = Plate })
-	if not Consult then
-		return false
-	end
-
-	if not Consult.Arrest then
-		vRP.Update("vehicles/Arrest",{ Plate = Plate })
-		TriggerClientEvent("Notify",source,"Departamento Policial","Veículo apreendido.","policia",5000)
-	else
-		TriggerClientEvent("Notify",source,"Departamento Policial","Veículo já se encontra apreendido.","policia",5000)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- PRISON:PLATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("prison:Plate")

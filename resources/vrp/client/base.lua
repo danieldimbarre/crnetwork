@@ -198,15 +198,15 @@ CreateThread(function()
 
 						local Armour = GetPedArmour(Entitys)
 						local Health = GetEntityHealth(Entitys)
-						local CheckIn = math.max(Health - 100,0)
 						local Head = GetPedBoneIndex(Entitys,0x796e)
+						local ArmourPercent = math.min(Armour / 100,1.0)
 						local Name = PlayerState.Name or "Carregando..."
-						local Check = (CheckIn <= 0) and "Morto" or CheckIn
 						local Talking = MumbleIsPlayerTalking(Voip[Entitys])
+						local HealthPercent = math.max((Health - 100) / 100,0.0)
 						local HeadCoords = GetWorldPositionOfEntityBone(Entitys,Head)
-						local Message = ("%s%s~w~ | ~y~%s~w~ | ~g~%s~w~ | ~b~%s"):format(Talking and "~q~" or "",Name,Passport,Check,Armour)
+						local Message = ("%s%s ~y~%s"):format(Talking and "~q~" or "",Name,Passport)
 
-						DrawText(HeadCoords,Message)
+						DrawText(HeadCoords,HealthPercent,ArmourPercent,Message)
 					end
 				end
 			end
@@ -218,18 +218,26 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function DrawText(Coords,Message)
-	local Screen,X,Y = World3dToScreen2d(Coords.x,Coords.y,Coords.z + 0.5)
+function DrawText(Coords,Health,Armour,Message)
+	local Width = 0.05
+	local Height = 0.005
+	local Screen,X,Y = World3dToScreen2d(Coords.x,Coords.y,Coords.z + 0.325)
 
 	if Screen then
 		SetTextFont(4)
+		SetTextOutline()
 		SetTextCentre(true)
 		SetTextScale(0.35,0.35)
 		SetTextColour(255,255,255,255)
-		SetTextDropshadow(1,15,15,15,150)
 
 		BeginTextCommandDisplayText("STRING")
 		AddTextComponentSubstringPlayerName(Message)
-		EndTextCommandDisplayText(X,Y)
+		EndTextCommandDisplayText(X,Y - 0.035)
+
+		DrawRect(X,Y,Width,Height,25,25,25,125)
+		DrawRect(X - (Width - Width * Health) / 2,Y,Width * Health,Height,118,185,132,200)
+
+		DrawRect(X,Y - 0.005,Width,Height,25,25,25,125)
+		DrawRect(X - (Width - Width * Armour) / 2,Y - 0.005,Width * Armour,Height,166,111,237,200)
 	end
 end

@@ -17,7 +17,7 @@ CreateThread(function()
 					local OtherCoords = vec3(v.Coords[1],v.Coords[2],v.Coords[3])
 					if #(Coords - OtherCoords) <= 10 then
 						if not Exists[Index] then
-							exports["target"]:AddCircleZone("Pages:"..Index,OtherCoords,0.2,{
+							exports.target:AddCircleZone("Pages:"..Index,OtherCoords,0.2,{
 								name = "Pages:"..Index,
 								heading = 0.0,
 								useZ = true
@@ -51,7 +51,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function ClearExist(Selected)
 	if Exists[Selected] then
-		exports["target"]:RemCircleZone("Pages:"..Selected)
+		exports.target:RemCircleZone("Pages:"..Selected)
 		Exists[Selected] = nil
 	end
 end
@@ -97,4 +97,14 @@ end)
 RegisterNetEvent("pages:Table")
 AddEventHandler("pages:Table",function(Data)
 	Pages = Data
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PAGES:ITEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("pages:Item")
+AddEventHandler("pages:Item",function(Link)
+	SetNuiFocus(true,true)
+	TransitionToBlurred(1000)
+	TriggerEvent("hud:Active",false)
+	SendNUIMessage({ Action = "Open", Payload = Link })
 end)

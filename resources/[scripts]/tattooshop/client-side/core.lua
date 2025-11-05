@@ -1403,7 +1403,7 @@ RegisterNUICallback("Save",function(Data,Callback)
 
 	LocalPlayer["state"]:set("Hoverfy",true,false)
 	TriggerEvent("hud:Active",true)
-	exports["skinshop"]:Apply()
+	exports.skinshop:Apply()
 	vSERVER.Update(Tattooshop)
 	SetNuiFocus(false,false)
 	vRP.Destroy()
@@ -1423,7 +1423,7 @@ RegisterNUICallback("Reset",function(Data,Callback)
 	LocalPlayer["state"]:set("Hoverfy",true,false)
 	exports["tattooshop"]:Apply(Lasted)
 	TriggerEvent("hud:Active",true)
-	exports["skinshop"]:Apply()
+	exports.skinshop:Apply()
 	SetNuiFocus(false,false)
 	vRP.Destroy()
 	Lasted = {}
@@ -1469,7 +1469,7 @@ CreateThread(function()
 				if #(Coords - vec3(v.Coords.x,v.Coords.y,v.Coords.z)) <= 2.5 then
 					TimeDistance = 1
 
-					if IsControlJustPressed(0,38) and not exports["hud"]:Wanted() and not exports["hud"]:Repose() and (not v.Permission or LocalPlayer["state"][v.Permission]) then
+					if IsControlJustPressed(0,38) and not exports.hud:Wanted() and not exports.hud:Repose() and (not v.Permission or LocalPlayer["state"][v.Permission]) then
 						OpenTattooshop()
 					end
 				end

@@ -16,6 +16,13 @@ vRP.Prepare("characters/InsertPrison","UPDATE characters SET Prison = Prison + @
 vRP.Prepare("characters/Count","SELECT COUNT(License) FROM characters WHERE License = @License AND Deleted = 0")
 vRP.Prepare("characters/UpdateName","UPDATE characters SET Name = @Name, Lastname = @Lastname WHERE id = @Passport")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- BANNED
+-----------------------------------------------------------------------------------------------------------------------------------------
+vRP.Prepare("accounts/RemoveBanned","UPDATE accounts SET Banned = 0 WHERE id = @Account")
+vRP.Prepare("accounts/ReduceBanned","UPDATE accounts SET Banned = Banned - 1 WHERE id = @Account")
+vRP.Prepare("accounts/BannedPermanent","UPDATE accounts SET Banned = -1, Reason = @Reason WHERE id = @Account")
+vRP.Prepare("accounts/InsertBanned","UPDATE accounts SET Banned = Banned + @Amount, Reason = @Reason WHERE id = @Account")
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SMARTPHONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("smartphone/Phone","SELECT * FROM phone_phones WHERE owner_id = @Passport")
@@ -29,13 +36,11 @@ vRP.Prepare("accounts/Token","SELECT * FROM accounts WHERE Token = @Token")
 vRP.Prepare("accounts/Account","SELECT * FROM accounts WHERE License = @License")
 vRP.Prepare("accounts/Discord","SELECT * FROM accounts WHERE Discord = @Discord")
 vRP.Prepare("accounts/Clean","UPDATE accounts SET Whitelist = 0 WHERE License = @License")
-vRP.Prepare("accounts/RemoveBanned","UPDATE accounts SET Banned = 0 WHERE License = @License")
 vRP.Prepare("accounts/NewAccount","INSERT INTO accounts (License,Token) VALUES (@License,@Token)")
 vRP.Prepare("accounts/LastLogin","UPDATE accounts SET Login = UNIX_TIMESTAMP() WHERE License = @License")
 vRP.Prepare("accounts/AddGemstone","UPDATE accounts SET Gemstone = Gemstone + @Gemstone WHERE License = @License")
 vRP.Prepare("accounts/UpdateCharacters","UPDATE accounts SET Characters = Characters + 1 WHERE License = @License")
 vRP.Prepare("accounts/RemoveGemstone","UPDATE accounts SET Gemstone = Gemstone - @Gemstone WHERE License = @License")
-vRP.Prepare("accounts/InsertBanned","UPDATE accounts SET Banned = @Timer, Reason = @Reason WHERE License = @License")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLAYERDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -141,7 +146,6 @@ vRP.Prepare("hwid/Insert","INSERT INTO hwid (Token,Account) VALUES (@Token,@Acco
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEARTABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("summerz/Prison","UPDATE characters SET Prison = 0 WHERE Prison < 0")
 vRP.Prepare("summerz/Transactions","DELETE FROM transactions WHERE Timeset <= UNIX_TIMESTAMP()")
 vRP.Prepare("summerz/Playerdata","DELETE FROM playerdata WHERE Information = '[]' OR Information = '{}'")
 vRP.Prepare("summerz/Entitydata","DELETE FROM entitydata WHERE Information = '[]' OR Information = '{}'")
@@ -155,15 +159,9 @@ vRP.Prepare("summerz/PhoneNotifications","DELETE FROM phone_notifications WHERE 
 vRP.Prepare("summerz/PhoneStorys","DELETE FROM phone_instagram_stories_views WHERE timestamp < NOW() - INTERVAL 3 DAY")
 vRP.Prepare("summerz/PhoneInstagram","DELETE FROM phone_instagram_notifications WHERE timestamp < NOW() - INTERVAL 3 DAY")
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ARENA
------------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("arena/Death","UPDATE characters SET Death = Death + 1 WHERE id = @Passport")
-vRP.Prepare("arena/Killed","UPDATE characters SET Killed = Killed + 1 WHERE id = @Passport")
------------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	vRP.Update("summerz/Prison")
 	vRP.Query("summerz/Playerdata")
 	vRP.Query("summerz/Entitydata")
 	vRP.Query("summerz/Transactions")

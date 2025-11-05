@@ -133,11 +133,6 @@ local ChestItens = {
 		Slots = 25,
 		Weight = 50,
 		Close = true
-	},
-	["christmas_04"] = {
-		Slots = 25,
-		Weight = 50,
-		Close = true
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -263,12 +258,12 @@ function Creative.Mount()
 
 		if not v.desc then
 			if Item == "vehiclekey" and Split[3] then
-				local Consult = exports["oxmysql"]:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
+				local Consult = exports.oxmysql:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
 				if Consult and VehicleExist(Consult.Vehicle) then
 					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
 				end
 			elseif Item == "propertys" and Split[2] then
-				local Consult = exports["oxmysql"]:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
+				local Consult = exports.oxmysql:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 				if Consult then
 					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 				end
@@ -407,14 +402,10 @@ function Creative.Take(Item,Slot,Amount,Target)
 		end
 
 		if SplitBoolean(Name,"Helicrash",":") then
-			GlobalState.HelicrashBox = (GlobalState.HelicrashBox or 1) - 1
-
-			if GlobalState.HelicrashBox <= 0 then
-				GlobalState.Helicrash = false
-			end
-		elseif SplitBoolean(Name,"Christmas",":") then
-			GlobalState.ChristmasBox = GlobalState.ChristmasBox - 1
-			GlobalState["ChristmasBlock:"..SplitTwo(Name,":")] = true
+			GlobalState.Helibox = (GlobalState.Helibox or 1) - 1
+		elseif SplitBoolean(Name,"Halloween",":") then
+			GlobalState.Hallobox = (GlobalState.Hallobox or 1) - 1
+			GlobalState[Name] = false
 		end
 	end
 

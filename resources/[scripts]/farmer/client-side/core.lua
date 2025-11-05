@@ -17,7 +17,7 @@ local Display = {}
 -- INPUTTARGETPOSITION
 -----------------------------------------------------------------------------------------------------------------------------------------
 function InputTargetPosition(Number,v)
-	exports["target"]:AddBoxZone("Farmer:"..Number,v["Coords"]["xyz"],v["Width"],v["Width"],{
+	exports.target:AddBoxZone("Farmer:"..Number,v["Coords"]["xyz"],v["Width"],v["Width"],{
 		name = "Farmer:"..Number,
 		heading = v["Coords"]["w"] or 0.0,
 		minZ = v["Coords"]["z"] - (v["Lower"] or 0.0),
@@ -40,7 +40,7 @@ end
 CreateThread(function()
 	for Service,_ in pairs(FastFarmer) do
 		for Number,v in pairs(FastFarmer[Service]["Coords"]) do
-			exports["target"]:AddCircleZone(Service..":"..Number,v,FastFarmer[Service]["Width"],{
+			exports.target:AddCircleZone(Service..":"..Number,v,FastFarmer[Service]["Width"],{
 				name = Service..":"..Number,
 				heading = 0.0,
 				useZ = true
@@ -83,7 +83,7 @@ CreateThread(function()
 							DeleteEntity(Display[Number])
 						end
 
-						exports["target"]:RemCircleZone("Farmer:"..Number)
+						exports.target:RemCircleZone("Farmer:"..Number)
 						Display[Number] = nil
 					end
 				end
@@ -136,7 +136,7 @@ for Number = 1,#Objects do
 				DeleteEntity(Display[Number])
 			end
 
-			exports["target"]:RemCircleZone("Farmer:"..Number)
+			exports.target:RemCircleZone("Farmer:"..Number)
 			Display[Number] = nil
 		end
 

@@ -62,7 +62,7 @@ local List = {
 -- THREADSERVERSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	exports["target"]:AddBoxZone("WorkCemitery",Init["xyz"],0.75,0.75,{
+	exports.target:AddBoxZone("WorkCemitery",Init["xyz"],0.75,0.75,{
 		name = "WorkCemitery",
 		heading = Init["w"],
 		minZ = Init["z"] - 1.0,
@@ -84,7 +84,7 @@ end)
 AddEventHandler("cemitery:initBody",function()
 	if Peds then
 		if Selected then
-			exports["target"]:RemCircleZone("Cemitery:"..Selected)
+			exports.target:RemCircleZone("Cemitery:"..Selected)
 		end
 
 		if DoesEntityExist(Peds) then
@@ -112,7 +112,7 @@ AddEventHandler("cemitery:initBody",function()
 				TaskPlayAnim(Peds,"dead","dead_a",8.0,8.0,-1,1,1,0,0,0)
 			end
 
-			exports["target"]:AddCircleZone("Cemitery:"..Selected,vec3(Locates[Selected]["x"],Locates[Selected]["y"],Locates[Selected]["z"] - 0.75),0.5,{
+			exports.target:AddCircleZone("Cemitery:"..Selected,vec3(Locates[Selected]["x"],Locates[Selected]["y"],Locates[Selected]["z"] - 0.75),0.5,{
 				name = "Cemitery:"..Selected,
 				heading = 0.0,
 				useZ = true
@@ -139,7 +139,7 @@ AddEventHandler("cemitery:Body",function()
 	Checkouts = Checkouts + 1
 
 	if Checkouts >= 5 then
-		exports["target"]:RemCircleZone("Cemitery:"..Selected)
+		exports.target:RemCircleZone("Cemitery:"..Selected)
 		Selected = nil
 	end
 end)

@@ -520,7 +520,7 @@ RegisterCommand("print",function(source,Message)
 	if Passport and vRP.HasGroup(Passport,"Admin") and parseInt(Message[1]) > 0 then
 		local OtherPassport = parseInt(Message[1])
 		local OtherSource = vRP.Source(OtherPassport)
-		local Webhook = exports["discord"]:Webhook("Print")
+		local Webhook = exports.discord:Webhook("Print")
 		if OtherPassport and OtherSource and Webhook ~= "" then
 			TriggerClientEvent("megazord:Screenshot",OtherSource,Webhook)
 		end
@@ -863,7 +863,7 @@ RegisterCommand("clearinv",function(source,Message)
 	if Passport and parseInt(Message[1]) > 0 and vRP.HasGroup(Passport,"Admin",2) then
 		vRP.ClearInventory(Message[1],true)
 		TriggerClientEvent("Notify",source,"Sucesso","Limpeza concluída.","verde",5000)
-		exports["discord"]:Embed("ClearInv","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1])
+		exports.discord:Embed("ClearInv","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1])
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -916,7 +916,7 @@ RegisterCommand("god",function(source,Message)
 				vRP.DowngradeStress(OtherPassport,100)
 				TriggerClientEvent("paramedic:Reset",OtherSource)
 
-				exports["discord"]:Embed("God","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport)
+				exports.discord:Embed("God","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport)
 			end
 		else
 			vRP.Revive(source,300)
@@ -926,7 +926,7 @@ RegisterCommand("god",function(source,Message)
 			vRP.DowngradeStress(Passport,100)
 			TriggerClientEvent("paramedic:Reset",source)
 
-			exports["discord"]:Embed("God","**[ADMIN]:** "..Passport)
+			exports.discord:Embed("God","**[ADMIN]:** "..Passport)
 		end
 	end
 end)
@@ -985,11 +985,11 @@ RegisterCommand("item",function(source,Message)
 					end
 				end
 
-				exports["discord"]:Embed("Item","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x")
+				exports.discord:Embed("Item","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."x")
 			end
 		elseif Message[1] and Message[2] then
 			vRP.GenerateItem(Passport,Message[1],Message[2],true)
-			exports["discord"]:Embed("Item","**[ADMIN]:** "..Passport.."\n**[ITEM]:** "..Message[1].."\n**[QUANTIDADE]:** "..Message[2].."x")
+			exports.discord:Embed("Item","**[ADMIN]:** "..Passport.."\n**[ITEM]:** "..Message[1].."\n**[QUANTIDADE]:** "..Message[2].."x")
 		end
 	end
 end)
@@ -1025,7 +1025,7 @@ RegisterCommand("delete",function(source,Message)
 	if Passport and Message[1] and vRP.HasGroup(Passport,"Admin",2) then
 		vRP.Update("characters/Delete",{ Passport = Message[1] })
 		TriggerClientEvent("Notify",source,"Sucesso","Personagem <b>"..Message[1].."</b> deletado.","verde",5000)
-		exports["discord"]:Embed("Delete","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1])
+		exports.discord:Embed("Delete","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Message[1])
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1048,7 +1048,7 @@ RegisterCommand("kick",function(source,Message)
 		if OtherSource then
 			vRP.Kick(OtherSource,"Expulso da cidade")
 			TriggerClientEvent("Notify",source,"Sucesso","Passaporte <b>"..OtherPassport.."</b> expulso.","verde",5000)
-			exports["discord"]:Embed("Kick","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport)
+			exports.discord:Embed("Kick","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport)
 		end
 	end
 end)
@@ -1057,39 +1057,47 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("ban",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Keyboard = vKEYBOARD.Banned(source,"Passaporte","Motivo",{ "Horas","Dias","Permanente" },"Quantidade")
-		if Keyboard then
-			local Mode = Keyboard[3]
-			local Reason = Keyboard[2]
-			local Amount = parseInt(Keyboard[4],true)
-			local OtherPassport = parseInt(Keyboard[1])
-
-			if vRP.Identity(OtherPassport) then
-				vRP.SetBanned(OtherPassport,(Mode == "Permanente" and -1 or Amount),Mode,Reason)
-				TriggerClientEvent("Notify",source,"Sucesso","Banimento aplicado ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
-			end
-		end
+	if not Passport or not vRP.HasGroup(Passport,"Admin") then
+		return false
 	end
+
+	local Keyboard = vKEYBOARD.Codes(source,"Passaporte","Minutos","Motivo")
+	if not Keyboard then
+		return false
+	end
+
+	local Reason = Keyboard[3]
+	local Duration = Keyboard[2]
+	local OtherPassport = Keyboard[1]
+	if not vRP.Identity(OtherPassport) then
+		return false
+	end
+
+	vRP.SetBanned(OtherPassport,Duration,Reason)
+	TriggerClientEvent("Notify",source,"Sucesso","Banimento aplicado ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UNBAN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("unban",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Keyboard = vKEYBOARD.Primary(source,"Passaporte")
-		if Keyboard then
-			local OtherPassport = parseInt(Keyboard[1])
-			local Account = vRP.AccountOptimize(OtherPassport)
-			if OtherPassport and Account then
-				vRP.Update("hwid/All",{ Account = Account.id, Banned = 1 })
-				vRP.Update("accounts/RemoveBanned",{ License = Account.License })
-				TriggerClientEvent("Notify",source,"Sucesso","Revogado o banimento do passaporte <b>"..Keyboard[1].."</b>.","verde",5000)
-				exports["discord"]:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..Keyboard[1].."\n**[MODO]:** Unban")
-			end
-		end
+	if not Passport or not vRP.HasGroup(Passport,"Admin") then
+		return false
 	end
+
+	local Keyboard = vKEYBOARD.Primary(source,"Passaporte")
+	if not Keyboard then
+		return false
+	end
+
+	local OtherPassport = Keyboard[1]
+	if not vRP.Identity(OtherPassport) then
+		return false
+	end
+
+	vRP.RemoveBanned(OtherPassport)
+	exports.discord:Embed("Ban","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[MODO]:** Unban")
+	TriggerClientEvent("Notify",source,"Sucesso","Revogado o banimento do passaporte <b>"..OtherPassport.."</b>.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INSERTCRON
@@ -1116,7 +1124,7 @@ RegisterCommand("insertcron",function(source)
 				Timer = Amount * 86400
 			end
 
-			exports["crons"]:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission, Level = Hierarchy })
+			exports.cronsInsert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission, Level = Hierarchy })
 			TriggerClientEvent("Notify",source,"Sucesso","Adição efetuada.","verde",5000)
 		end
 	end
@@ -1129,7 +1137,7 @@ RegisterCommand("removecron",function(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
 		local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Permissão")
 		if Keyboard then
-			exports["crons"]:Remove(Keyboard[1],"RemovePermission",Keyboard[2])
+			exports.cronsRemove(Keyboard[1],"RemovePermission",Keyboard[2])
 			TriggerClientEvent("Notify",source,"Sucesso","Remoção efetuada.","verde",5000)
 		end
 	end
@@ -1147,6 +1155,15 @@ RegisterCommand("tpcds",function(source)
 				vRP.Teleport(source,Split[1],Split[2],Split[3])
 			end
 		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BUCKET
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("bucket",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if Passport and vRP.HasGroup(Passport,"Admin") then
+		exports.vrp:Bucket(source,"Enter",Message[1])
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1176,7 +1193,7 @@ RegisterCommand("group",function(source,Message)
 
 		vRP.SetPermission(OtherPassport,Permission,Message[3])
 		TriggerClientEvent("Notify",source,"Sucesso","Adicionado <b>"..Permission.."</b> ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
-		exports["discord"]:Embed("Group","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[Modo]:** Adicionou")
+		exports.discord:Embed("Group","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[Modo]:** Adicionou")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1193,7 +1210,7 @@ RegisterCommand("ungroup",function(source,Message)
 
 		vRP.RemovePermission(OtherPassport,Permission)
 		TriggerClientEvent("Notify",source,"Sucesso","Removido <b>"..Permission.."</b> ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
-		exports["discord"]:Embed("Group","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[Modo]:** Removeu")
+		exports.discord:Embed("Group","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[GRUPO]:** "..Permission.."\n**[Modo]:** Removeu")
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1406,7 +1423,7 @@ CreateThread(function()
 			Wait(1000)
 		end
 
-		exports["discord"]:Embed("Permissions",Message)
+		exports.discord:Embed("Permissions",Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1740,7 +1757,7 @@ SetHttpHandler(function(Request,Result)
 			local OtherPassport = parseInt(v.Passport)
 			local OtherSource = vRP.Source(OtherPassport)
 
-			if OtherSource then
+			if OtherPassport and OtherSource then
 				vRP.Revive(OtherSource,300)
 				vRP.UpgradeThirst(OtherPassport,100)
 				vRP.UpgradeHunger(OtherPassport,100)
@@ -1757,7 +1774,7 @@ SetHttpHandler(function(Request,Result)
 			local Amount = parseInt(v.Amount)
 			local OtherPassport = parseInt(v.Passport)
 
-			if OtherPassport > 0 and Amount > 0 then
+			if OtherPassport and Amount > 0 then
 				vRP.UpgradeGemstone(OtherPassport,Amount,true)
 				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
 			else
@@ -1769,9 +1786,9 @@ SetHttpHandler(function(Request,Result)
 			local v = json.decode(Data)
 			local OtherPassport = parseInt(v.Passport)
 			local OtherSource = vRP.Source(OtherPassport)
-			local Webhook = exports["discord"]:Webhook("Print")
+			local Webhook = exports.discord:Webhook("Print")
 
-			if OtherSource and Webhook ~= "" then
+			if OtherPassport and OtherSource and Webhook ~= "" then
 				TriggerClientEvent("megazord:Screenshot",OtherSource,Webhook)
 				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
 			else
@@ -1800,12 +1817,14 @@ SetHttpHandler(function(Request,Result)
 
 		["/thex"] = function(Data)
 			local v = json.decode(Data)
+			local NewHexPlayer = v.NewHex
+			local ActualHexPlayer = v.NewHex
 
-			if v.NewHex and v.ActualHex then
-				exports.oxmysql:query_async("DELETE FROM accounts WHERE License = ?",{ v.NewHex })
-				exports.oxmysql:query_async("DELETE FROM characters WHERE License = ?",{ v.NewHex })
-				exports.oxmysql:update_async("UPDATE accounts SET License = ? WHERE License = ?",{ v.NewHex,v.ActualHex })
-				exports.oxmysql:update_async("UPDATE characters SET License = ? WHERE License = ?",{ v.NewHex,v.ActualHex })
+			if NewHexPlayer and ActualHexPlayer then
+				exports.oxmysql:query_async("DELETE FROM accounts WHERE License = ?",{ NewHexPlayer })
+				exports.oxmysql:query_async("DELETE FROM characters WHERE License = ?",{ NewHexPlayer })
+				exports.oxmysql:update_async("UPDATE accounts SET License = ? WHERE License = ?",{ NewHexPlayer,ActualHexPlayer })
+				exports.oxmysql:update_async("UPDATE characters SET License = ? WHERE License = ?",{ NewHexPlayer,ActualHexPlayer })
 
 				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
 			else
@@ -1815,10 +1834,36 @@ SetHttpHandler(function(Request,Result)
 
 		["/banned"] = function(Data)
 			local v = json.decode(Data)
+			local Duration = parseInt(v.Duration)
 			local OtherPassport = parseInt(v.Passport)
 
 			if OtherPassport and vRP.Identity(OtherPassport) then
-				vRP.SetBanned(OtherPassport,-1,"Permanente",v.Reason,OtherPassport)
+				vRP.SetBanned(OtherPassport,Duration,v.Reason)
+				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+			else
+				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
+			end
+		end,
+
+		["/unbanned"] = function(Data)
+			local v = json.decode(Data)
+			local OtherPassport = parseInt(v.Passport)
+
+			if OtherPassport and vRP.Identity(OtherPassport) then
+				vRP.RemoveBanned(OtherPassport)
+				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
+			else
+				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
+			end
+		end,
+
+		["/limbo"] = function(Data)
+			local v = json.decode(Data)
+			local OtherPassport = parseInt(v.Passport)
+			local OtherSource = vRP.Source(OtherPassport)
+
+			if OtherPassport and OtherSource then
+				vRP.Teleport(OtherSource,164.3,-998.45,29.35)
 				SendMessageDiscord(Result,200,"Comando executado com sucesso.")
 			else
 				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")

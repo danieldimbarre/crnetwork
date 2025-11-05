@@ -39,63 +39,63 @@ CreateThread(function()
 							if Consult then
 								if Consult == "Nothing" then
 									if not Propertys[Name].Galpao then
-										exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
+										exports.dynamic:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
 									end
 
 									for Line,v in pairs(Informations) do
 										if (Propertys[Name].Galpao and Line == "Galpao") or (not Propertys[Name].Galpao and Line ~= "Galpao") then
-											exports["dynamic"]:AddMenu(Line,"Informações sobre o interior.",Line)
+											exports.dynamic:AddMenu(Line,"Informações sobre o interior.",Line)
 
 											if v.Vault then
-												exports["dynamic"]:AddButton("Baú","Total de <yellow>"..v.Vault.."Kg</yellow> no compartimento.","","",Line,false)
+												exports.dynamic:AddButton("Baú","Total de <yellow>"..v.Vault.."Kg</yellow> no compartimento.","","",Line,false)
 											end
 
 											if v.Fridge then
-												exports["dynamic"]:AddButton("Geladeira","Total de <yellow>"..v.Fridge.."Kg</yellow> no compartimento.","","",Line,false)
+												exports.dynamic:AddButton("Geladeira","Total de <yellow>"..v.Fridge.."Kg</yellow> no compartimento.","","",Line,false)
 											end
 
-											exports["dynamic"]:AddButton("Credenciais","Máximo <yellow>1</yellow> proprietário e <yellow>3</yellow> adicionais.","","",Line,false)
-											exports["dynamic"]:AddButton("Comprar com Dinheiro","Custo de <yellow>"..Currency..Dotted(v.Price).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Dollar",Line,true)
-											exports["dynamic"]:AddButton("Comprar com Diamantes","Custo de <yellow>"..Dotted(v.Gemstone).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Gemstone",Line,true)
+											exports.dynamic:AddButton("Credenciais","Máximo <yellow>1</yellow> proprietário e <yellow>3</yellow> adicionais.","","",Line,false)
+											exports.dynamic:AddButton("Comprar com Dinheiro","Custo de <yellow>"..Currency..Dotted(v.Price).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Dollar",Line,true)
+											exports.dynamic:AddButton("Comprar com Diamantes","Custo de <yellow>"..Dotted(v.Gemstone).."</yellow>.","propertys:Buy",Name.."-"..Line.."-Gemstone",Line,true)
 										end
 									end
 
-									exports["dynamic"]:Open()
+									exports.dynamic:Open()
 								else
 									if Consult ~= "Hotel" then
 										Interior = Consult.Interior
 
-										exports["dynamic"]:AddButton("Entrar","Adentrar a propriedade.","propertys:Enter",Name,false,false)
-										exports["dynamic"]:AddButton("Cartões","Comprar um novo cartão de acesso.","propertys:Item",Name,false,true)
-										exports["dynamic"]:AddButton("Fechadura","Trancar/Destrancar a propriedade.","propertys:Lock",Name,false,true)
-										exports["dynamic"]:AddButton("Credenciais","Reconfigurar os cartões de acesso.","propertys:Credentials",Name,false,true)
+										exports.dynamic:AddButton("Entrar","Adentrar a propriedade.","propertys:Enter",Name,false,false)
+										exports.dynamic:AddButton("Cartões","Comprar um novo cartão de acesso.","propertys:Item",Name,false,true)
+										exports.dynamic:AddButton("Fechadura","Trancar/Destrancar a propriedade.","propertys:Lock",Name,false,true)
+										exports.dynamic:AddButton("Credenciais","Reconfigurar os cartões de acesso.","propertys:Credentials",Name,false,true)
 
 										if Interior ~= "Galpao" and Interior ~= "Amber" then
-											exports["dynamic"]:AddMenu("Interior","Trocar interior da propriedade.<br><yellow>O peso do baú permanece o mesmo.</yellow>","interior")
+											exports.dynamic:AddMenu("Interior","Trocar interior da propriedade.<br><yellow>O peso do baú permanece o mesmo.</yellow>","interior")
 
 											local Valuation = Informations[Interior].Gemstone
 											for Line,v in pairs(Informations) do
 												local InteriorValuation = Informations[Line].Gemstone
 												if Line ~= "Galpao" and InteriorValuation > Valuation then
-													exports["dynamic"]:AddButton(Line,"Custo de <yellow>"..Dotted(InteriorValuation - Valuation).." diamantes</yellow>.","propertys:Interior",Name.."-"..Line,"interior",true)
+													exports.dynamic:AddButton(Line,"Custo de <yellow>"..Dotted(InteriorValuation - Valuation).." diamantes</yellow>.","propertys:Interior",Name.."-"..Line,"interior",true)
 												end
 											end
 										end
 
-										exports["dynamic"]:AddButton("Garagem","Adicionar/Reajustar a garagem.","garages:Propertys",Name,false,true)
-										exports["dynamic"]:AddButton("Vender","Se desfazer da propriedade.","propertys:Sell",Name,false,true)
-										exports["dynamic"]:AddButton("Transferência","Mudar proprietário.","propertys:Transfer",Name,false,true)
-										exports["dynamic"]:AddButton("Hipoteca",Consult.Tax,"","",false,false)
+										exports.dynamic:AddButton("Garagem","Adicionar/Reajustar a garagem.","garages:Propertys",Name,false,true)
+										exports.dynamic:AddButton("Vender","Se desfazer da propriedade.","propertys:Sell",Name,false,true)
+										exports.dynamic:AddButton("Transferência","Mudar proprietário.","propertys:Transfer",Name,false,true)
+										exports.dynamic:AddButton("Hipoteca",Consult.Tax,"","",false,false)
 
-										exports["dynamic"]:Open()
+										exports.dynamic:Open()
 									else
 										Interior = "Hotel"
 										TriggerEvent("propertys:Enter",Name,false)
 									end
 								end
 							elseif not Propertys[Name].Galpao and Name ~= "Hotel" then
-								exports["dynamic"]:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
-								exports["dynamic"]:Open()
+								exports.dynamic:AddButton("Invadir","Forçar a fechadura.","propertys:Robbery",Name,false,true)
+								exports.dynamic:Open()
 							end
 						end
 					end
@@ -117,7 +117,7 @@ CreateThread(function()
 						if Line == "Exit" and IsControlJustPressed(1,38) then
 							if Stealing and Internal[Interior].Furniture then
 								for Index in pairs(Internal[Interior].Furniture) do
-									exports["target"]:RemCircleZone("Robberys:"..Index)
+									exports.target:RemCircleZone("Robberys:"..Index)
 								end
 							end
 
@@ -136,20 +136,20 @@ CreateThread(function()
 								Right = "Propriedade"
 							})
 						elseif not Stealing and Line == "Clothes" and IsControlJustPressed(1,38) then
-							exports["dynamic"]:AddMenu("Armário","Abrir lista com todas as vestimentas.","wardrobe")
-							exports["dynamic"]:AddButton("Shopping","Abrir a loja de vestimentas.","skinshop:Open","",false,false)
-							exports["dynamic"]:AddButton("Guardar","Salvar vestimentas do corpo.","propertys:Clothes","Save","wardrobe",true)
+							exports.dynamic:AddMenu("Armário","Abrir lista com todas as vestimentas.","wardrobe")
+							exports.dynamic:AddButton("Shopping","Abrir a loja de vestimentas.","skinshop:Open","",false,false)
+							exports.dynamic:AddButton("Guardar","Salvar vestimentas do corpo.","propertys:Clothes","Save","wardrobe",true)
 
 							local Clothes = vSERVER.Clothes()
 							if #Clothes > 0 then
 								for Index,v in pairs(Clothes) do
-									exports["dynamic"]:AddMenu(v,"Informações da vestimenta.",Index,"wardrobe")
-									exports["dynamic"]:AddButton("Aplicar","Vestir-se com as vestimentas.","propertys:Clothes","Apply-"..v,Index,true)
-									exports["dynamic"]:AddButton("Remover","Deletar a vestimenta do armário.","propertys:Clothes","Delete-"..v,Index,true,true)
+									exports.dynamic:AddMenu(v,"Informações da vestimenta.",Index,"wardrobe")
+									exports.dynamic:AddButton("Aplicar","Vestir-se com as vestimentas.","propertys:Clothes","Apply-"..v,Index,true)
+									exports.dynamic:AddButton("Remover","Deletar a vestimenta do armário.","propertys:Clothes","Delete-"..v,Index,true,true)
 								end
 							end
 
-							exports["dynamic"]:Open()
+							exports.dynamic:Open()
 						end
 					end
 				end
@@ -174,7 +174,7 @@ AddEventHandler("propertys:Enter",function(Name,Theft)
 
 		if Internal[Interior] and Internal[Interior].Furniture then
 			for Number,v in pairs(Internal[Interior].Furniture) do
-				exports["target"]:AddCircleZone("Robberys:"..Number,v,0.1,{
+				exports.target:AddCircleZone("Robberys:"..Number,v,0.1,{
 					name = "Robberys:"..Number,
 					heading = 0.0,
 					useZ = true
@@ -224,7 +224,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("propertys:RemCircleZone")
 AddEventHandler("propertys:RemCircleZone",function(Index)
-	exports["target"]:RemCircleZone("Robberys:"..Index)
+	exports.target:RemCircleZone("Robberys:"..Index)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKE

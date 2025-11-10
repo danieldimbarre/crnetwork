@@ -729,6 +729,7 @@ Theme = {
 		marketplace = true,
 		skinweapon = true,
 		ranking = true,
+		statistics = true,
 		daily = true,
 		code = true,
 		map = true,

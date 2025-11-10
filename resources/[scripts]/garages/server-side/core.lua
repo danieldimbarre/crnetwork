@@ -214,7 +214,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SERVERVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.ServerVehicle(Model,Coords,Plate,Nitrox,Doors,Body,Fuel,Seatbelt,Drift)
+function Creative.ServerVehicle(Model,Coords,Plate,Nitro,Doors,Body,Fuel,Seatbelt,Drift)
+	if not Model or not Coords then
+		return false
+	end
+
 	local CurrentTimer = os.time() + 10
 	local Vehicle = CreateVehicle(Model,Coords,true,false)
 
@@ -226,7 +230,6 @@ function Creative.ServerVehicle(Model,Coords,Plate,Nitrox,Doors,Body,Fuel,Seatbe
 		Wait(100)
 	end
 
-	local State = Entity(Vehicle).state
 	Plate = Plate or vRP.GeneratePlate()
 	SetVehicleNumberPlateText(Vehicle,Plate)
 	SetVehicleBodyHealth(Vehicle,(Body or 1000) + 0.0)
@@ -234,15 +237,16 @@ function Creative.ServerVehicle(Model,Coords,Plate,Nitrox,Doors,Body,Fuel,Seatbe
 	if Doors then
 		local Decoded = json.decode(Doors)
 		if type(Decoded) == "table" then
-			for Number,v in pairs(Decoded) do
-				if v then
+			for Number,Broken in pairs(Decoded) do
+				if Broken then
 					SetVehicleDoorBroken(Vehicle,parseInt(Number),true)
 				end
 			end
 		end
 	end
 
-	State:set("Nitro",Nitrox or 0,true)
+	local State = Entity(Vehicle).state
+	State:set("Nitro",Nitro or 0,true)
 	State:set("Fuel",Fuel or 100.0,true)
 	State:set("Drift",Drift or false,true)
 	State:set("Seatbelt",Seatbelt or false,true)

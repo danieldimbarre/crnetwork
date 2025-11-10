@@ -6,7 +6,13 @@ local Spawned = {}
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
-	{ -- Essence
+	{ -- Banned
+		Distance = 100,
+		Route = 9999998,
+		Coords = vec4(-1674.58,-3174.77,13.99,331.66),
+		Model = "a_m_m_bevhills_02",
+		Collision = true
+	},{ -- Essence
 		Distance = 50,
 		Coords = vec4(87.62,-1670.45,29.18,73.71),
 		Model = "a_f_y_vinewood_01",
@@ -328,7 +334,7 @@ CreateThread(function()
 
 		for Number = 1,#List do
 			local Distance = #(Coords - List[Number].Coords.xyz)
-			if Distance <= List[Number].Distance then
+			if Distance <= List[Number].Distance and (not List[Number].Route or List[Number].Route == LocalPlayer.state.Route) then
 				if not Spawned[Number] and LoadModel(List[Number].Model) then
 					Spawned[Number] = CreatePed(26,List[Number].Model,List[Number].Coords.x,List[Number].Coords.y,List[Number].Coords.z - 1,List[Number].Coords.w,false,false)
 

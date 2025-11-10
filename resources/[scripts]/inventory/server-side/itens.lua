@@ -2,6 +2,14 @@
 -- USE
 -----------------------------------------------------------------------------------------------------------------------------------------
 Use = {
+	["banned_reduce"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		local Identity = vRP.Identity(Passport)
+		if Identity and Identity.Banned > Amount and vRP.TakeItem(Passport,Full,Amount,true,Slot) then
+			TriggerClientEvent("inventory:Update",source)
+			vRP.UpdateBanned(Passport,Amount)
+		end
+	end,
+
 	["bandage"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		Active[Passport] = os.time() + 10
 		Player(source).state.Buttons = true

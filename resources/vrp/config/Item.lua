@@ -2,6 +2,17 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	-- BANNED
+	["banned_reduce"] = {
+		Index = "banned_reduce",
+		Name = "Redução de Sentença",
+		Description = "Reduz <b>1 minutos</b> do tempo restante.",
+		Rarity = "common",
+		Type = "Consumível",
+		Market = true,
+		Delete = true,
+		Weight = 0.0
+	},
 	-- HALLOWEEN
 	["halloween_pumpkin"] = {
 		Index = "halloween_pumpkin",

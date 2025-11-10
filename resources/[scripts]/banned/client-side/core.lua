@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local NextRevive = GetGameTimer()
 local NextService = GetGameTimer()
-local Center = vec3(-1645.35,-3131.06,13.99)
+local Center = vec3(-1670.08,-3168.85,13.99)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- POLYPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -13,7 +13,7 @@ local Poly = PolyZone:Create({
 	vec2(-1646.88,-3194.14),
 	vec2(-1610.94,-3151.29),
 	vec2(-1604.72,-3140.20)
-},{ name = "Banned" })
+},{ name = "Banned", minZ = Center.z - 5, maxZ = Center.z + 25 })
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADPRISON
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -30,7 +30,17 @@ CreateThread(function()
 
 			local Coords = GetEntityCoords(Ped)
 			if not Poly:isPointInside(Coords) then
-				SetEntityCoords(Ped,Center)
+				FreezeEntityPosition(Ped,true)
+
+				LoadScene(Center.x,Center.y,Center.z)
+				RequestCollisionAtCoord(Center.x,Center.y,Center.z)
+				SetEntityCoordsNoOffset(Ped,Center.x,Center.y,Center.z)
+				while not HasCollisionLoadedAroundEntity(Ped) do
+					RequestCollisionAtCoord(Center.x,Center.y,Center.z)
+					Wait(100)
+				end
+
+				FreezeEntityPosition(Ped,false)
 			end
 
 			local Health = GetEntityHealth(Ped)
@@ -38,6 +48,18 @@ CreateThread(function()
 				NextRevive = CurrentTimer + 60000
 
 				SetTimeout(15000,function()
+					FreezeEntityPosition(Ped,true)
+
+					LoadScene(Center.x,Center.y,Center.z)
+					RequestCollisionAtCoord(Center.x,Center.y,Center.z)
+					SetEntityCoordsNoOffset(Ped,Center.x,Center.y,Center.z)
+
+					while not HasCollisionLoadedAroundEntity(Ped) do
+						RequestCollisionAtCoord(Center.x,Center.y,Center.z)
+						Wait(100)
+					end
+
+					FreezeEntityPosition(Ped,false)
 					exports.survival:Revive(200)
 				end)
 			end

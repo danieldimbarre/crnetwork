@@ -88,6 +88,11 @@ function Creative.Take(Item,Amount,Target,Name)
 			Amount = 1
 		end
 
+		if List[Name].Route and List[Name].Route ~= GetPlayerRoutingBucket(source) then
+			TriggerClientEvent("inventory:Update",source)
+			return false
+		end
+
 		local Inventory = vRP.Inventory(Passport)
 		if not vRP.MaxItens(Passport,Item,Amount) and vRP.CheckWeight(Passport,Item,Amount) and (not Inventory[Target] or (Inventory[Target] and Inventory[Target]["item"] == Item)) then
 			if List[Name]["Type"] == "Cash" then
@@ -101,6 +106,12 @@ function Creative.Take(Item,Amount,Target,Name)
 					vRP.GenerateItem(Passport,Item,Amount,false,Target)
 				else
 					TriggerClientEvent("inventory:Notify",source,"Atenção","<b>"..ItemName(List[Name]["Item"]).."</b> insuficiente.","vermelho")
+				end
+			elseif List[Name]["Type"] == "Gemstone" then
+				if vRP.PaymentGems(Passport,List[Name]["List"][Item] * Amount) then
+					vRP.GenerateItem(Passport,Item,Amount,false,Target)
+				else
+					TriggerClientEvent("inventory:Notify",source,"Atenção","<b>Diamantes</b> insuficiente.","vermelho")
 				end
 			end
 		end

@@ -290,11 +290,13 @@ function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Ty
 		return false
 	end
 
+	SetNetworkIdExistsOnAllMachines(Network,true)
 	SetVehicleEngineHealth(Vehicle,Engine + 0.0)
 	SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
 	SetEntityAsMissionEntity(Vehicle,true,true)
 	SetVehicleNeedsToBeHotwired(Vehicle,false)
 	SetEntityCleanupByEngine(Vehicle,true)
+	SetNetworkIdCanMigrate(Network,true)
 	SetVehicleOnGroundProperly(Vehicle)
 	SetVehRadioStation(Vehicle,"OFF")
 	SetEntityHealth(Vehicle,Health)

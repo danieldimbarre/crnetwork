@@ -146,7 +146,7 @@ function PassportEnable()
 							local Head = GetPedBoneIndex(Entitys,0x796e)
 							local HeadCoords = GetWorldPositionOfEntityBone(Entitys,Head)
 
-							DrawText(HeadCoords,"~w~"..Passport)
+							DrawText(HeadCoords,Passport)
 						end
 					end
 				end
@@ -206,7 +206,7 @@ CreateThread(function()
 						local HeadCoords = GetWorldPositionOfEntityBone(Entitys,Head)
 						local Message = ("%s%s ~y~%s"):format(Talking and "~q~" or "",Name,Passport)
 
-						DrawText(HeadCoords,HealthPercent,ArmourPercent,Message)
+						DrawText(HeadCoords,Message,HealthPercent,ArmourPercent)
 					end
 				end
 			end
@@ -218,7 +218,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function DrawText(Coords,Health,Armour,Message)
+function DrawText(Coords,Message,Health,Armour)
 	local Width = 0.05
 	local Height = 0.005
 	local Screen,X,Y = World3dToScreen2d(Coords.x,Coords.y,Coords.z + 0.325)
@@ -234,10 +234,14 @@ function DrawText(Coords,Health,Armour,Message)
 		AddTextComponentSubstringPlayerName(Message)
 		EndTextCommandDisplayText(X,Y - 0.035)
 
-		DrawRect(X,Y,Width,Height,25,25,25,125)
-		DrawRect(X - (Width - Width * Health) / 2,Y,Width * Health,Height,118,185,132,200)
+		if Health then
+			DrawRect(X,Y,Width,Height,25,25,25,125)
+			DrawRect(X - (Width - Width * Health) / 2,Y,Width * Health,Height,118,185,132,200)
+		end
 
-		DrawRect(X,Y - 0.005,Width,Height,25,25,25,125)
-		DrawRect(X - (Width - Width * Armour) / 2,Y - 0.005,Width * Armour,Height,166,111,237,200)
+		if Armour then
+			DrawRect(X,Y - 0.005,Width,Height,25,25,25,125)
+			DrawRect(X - (Width - Width * Armour) / 2,Y - 0.005,Width * Armour,Height,166,111,237,200)
+		end
 	end
 end

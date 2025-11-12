@@ -340,12 +340,14 @@ CREATE TABLE IF NOT EXISTS `races` (
   `Vehicle` varchar(50) NOT NULL DEFAULT 'Sultan RS',
   `Points` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_race_player` (`Mode`,`Race`,`Passport`),
   KEY `Points` (`Points`),
   KEY `Name` (`Name`),
   KEY `Vehicle` (`Vehicle`),
   KEY `Passport` (`Passport`),
   KEY `Race` (`Race`),
-  KEY `Mode` (`Mode`)
+  KEY `Mode` (`Mode`),
+  KEY `idx_races_race_points` (`Race`,`Points`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `taxs` (

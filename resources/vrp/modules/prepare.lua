@@ -19,7 +19,7 @@ vRP.Prepare("characters/UpdateName","UPDATE characters SET Name = @Name, Lastnam
 -- BANNED
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("accounts/RemoveBanned","UPDATE accounts SET Banned = 0 WHERE id = @Account")
-vRP.Prepare("accounts/ReduceBanned","UPDATE accounts SET Banned = Banned - 1 WHERE id = @Account")
+vRP.Prepare("accounts/ReduceBanned","UPDATE accounts SET Banned = Banned - @Amount WHERE id = @Account")
 vRP.Prepare("accounts/BannedPermanent","UPDATE accounts SET Banned = -1, Reason = @Reason WHERE id = @Account")
 vRP.Prepare("accounts/InsertBanned","UPDATE accounts SET Banned = Banned + @Amount, Reason = @Reason WHERE id = @Account")
 -----------------------------------------------------------------------------------------------------------------------------------------

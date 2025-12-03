@@ -46,7 +46,14 @@ SpawnCoords = {
 -- TEXTUREPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 TexturePack = {
-	"Drop","E","H","Normal","Selected","Races"
+	{ Width = 19, Height = 20, Image = "E" },
+	{ Width = 19, Height = 20, Image = "H" },
+	{ Width = 72, Height = 72, Image = "Drop" },
+	{ Width = 43, Height = 67, Image = "Races" },
+	{ Width = 72, Height = 72, Image = "Normal" },
+	{ Width = 102, Height = 20, Image = "EPress" },
+	{ Width = 102, Height = 20, Image = "HPress" },
+	{ Width = 72, Height = 72, Image = "Selected" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GROUPS
@@ -103,6 +110,7 @@ Groups = {
 		Service = true,
 		Type = "Work",
 		Markers = true,
+		Banned = true,
 		Chat = true
 	},
 	BCSO = {
@@ -116,6 +124,7 @@ Groups = {
 		Service = true,
 		Type = "Work",
 		Markers = true,
+		Banned = true,
 		Chat = true
 	},
 	SAPR = {
@@ -129,6 +138,7 @@ Groups = {
 		Service = true,
 		Type = "Work",
 		Markers = true,
+		Banned = true,
 		Chat = true
 	},
 	Paramedico = {
@@ -140,6 +150,7 @@ Groups = {
 		Service = true,
 		Type = "Work",
 		Markers = true,
+		Banned = true,
 		Chat = true
 	},
 	Ballas = {
@@ -659,7 +670,7 @@ Theme = {
 			background = "#463939",
 			letter = "#ffffff"
 		},
-		BCPR = {
+		SAPR = {
 			background = "#2d402d",
 			letter = "#ffffff"
 		},

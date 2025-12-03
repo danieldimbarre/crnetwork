@@ -172,13 +172,13 @@ RegisterKeyMapping("+Information","Visualizar passaporte.","keyboard","F7")
 -- THREADSYSTEM
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local TextureDict = CreateRuntimeTxd("Textures")
-	for _,TextureName in pairs(TexturePack) do
-		local TextureFile = LoadResourceFile("vrp","config/textures/"..TextureName..".png")
-		if TextureFile then
-			local TextureBase64 = "data:image/png;base64,"..Base64(TextureFile)
-			local TuntimeTexture = CreateRuntimeTexture(TextureDict,TextureName,512,512)
-			SetRuntimeTextureImage(TuntimeTexture,TextureBase64)
+	local Dictionaries = CreateRuntimeTxd("Textures")
+	for _,v in pairs(TexturePack) do
+		local Loaded = LoadResourceFile("vrp","config/textures/"..v.Image..".png")
+		if Loaded then
+			local TextureBase = "data:image/png;base64,"..Base64(Loaded)
+			local RuntimeTexture = CreateRuntimeTexture(Dictionaries,v.Image,v.Width,v.Height)
+			SetRuntimeTextureImage(RuntimeTexture,TextureBase)
 		end
 	end
 

@@ -347,6 +347,8 @@ function CreateAndManageObject(Number,v,Coords)
 				TargetLabel(Number,v.Coords,v.Mode,v.Weight or 0.0,v.Item)
 
 				::Continue::
+			elseif LocalPlayer.state.Admin then
+				TargetLabel(Number,v.Coords,"Store",v.Weight or 0.0,v.Item)
 			end
 
 			if v.Active == "Spikes" then

@@ -2,6 +2,13 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	encryptedkey = {
+		Index = "encryptedkey",
+		Name = "Chave Criptografada",
+		Type = "Comum",
+		Weight = 3.5,
+		Market = true
+	},
 	-- BANNED
 	["banned_reduce"] = {
 		Index = "banned_reduce",
@@ -81,9 +88,9 @@ local List = {
 		Market = true,
 		Delete = true,
 		Rarity = "rare",
-		["Execute"] = {
+		Execute = {
 			Type = "Server",
-			["Event"] = "animals:Delete"
+			Event = "animals:Delete"
 		}
 	},
 	["a_c_husky"] = {
@@ -95,9 +102,9 @@ local List = {
 		Market = true,
 		Delete = true,
 		Rarity = "rare",
-		["Execute"] = {
+		Execute = {
 			Type = "Server",
-			["Event"] = "animals:Delete"
+			Event = "animals:Delete"
 		}
 	},
 	["a_c_poodle"] = {
@@ -109,9 +116,9 @@ local List = {
 		Market = true,
 		Delete = true,
 		Rarity = "rare",
-		["Execute"] = {
+		Execute = {
 			Type = "Server",
-			["Event"] = "animals:Delete"
+			Event = "animals:Delete"
 		}
 	},
 	["a_c_pug"] = {
@@ -123,9 +130,9 @@ local List = {
 		Market = true,
 		Delete = true,
 		Rarity = "rare",
-		["Execute"] = {
+		Execute = {
 			Type = "Server",
-			["Event"] = "animals:Delete"
+			Event = "animals:Delete"
 		}
 	},
 	["a_c_retriever"] = {
@@ -137,9 +144,9 @@ local List = {
 		Market = true,
 		Delete = true,
 		Rarity = "rare",
-		["Execute"] = {
+		Execute = {
 			Type = "Server",
-			["Event"] = "animals:Delete"
+			Event = "animals:Delete"
 		}
 	},
 	["a_c_rottweiler"] = {
@@ -151,9 +158,9 @@ local List = {
 		Market = true,
 		Delete = true,
 		Rarity = "rare",
-		["Execute"] = {
+		Execute = {
 			Type = "Server",
-			["Event"] = "animals:Delete"
+			Event = "animals:Delete"
 		}
 	},
 	["a_c_shepherd"] = {
@@ -165,9 +172,9 @@ local List = {
 		Market = true,
 		Delete = true,
 		Rarity = "rare",
-		["Execute"] = {
+		Execute = {
 			Type = "Server",
-			["Event"] = "animals:Delete"
+			Event = "animals:Delete"
 		}
 	},
 	["a_c_westy"] = {
@@ -179,9 +186,9 @@ local List = {
 		Market = true,
 		Delete = true,
 		Rarity = "rare",
-		["Execute"] = {
+		Execute = {
 			Type = "Server",
-			["Event"] = "animals:Delete"
+			Event = "animals:Delete"
 		}
 	},
 	-- SPRAYS
@@ -474,7 +481,7 @@ local List = {
 		Market = true,
 		Economy = 25,
 		LostWater = true,
-		["Water"] = "Out"
+		Water = "Out"
 	},
 	["weedsack"] = {
 		Index = "weedsack",
@@ -494,7 +501,7 @@ local List = {
 		Market = true,
 		Economy = 25,
 		LostWater = true,
-		["Water"] = "Out"
+		Water = "Out"
 	},
 	["cokesack"] = {
 		Index = "cokesack",
@@ -514,7 +521,7 @@ local List = {
 		Market = true,
 		Economy = 25,
 		LostWater = true,
-		["Water"] = "Out"
+		Water = "Out"
 	},
 	["methsack"] = {
 		Index = "methsack",
@@ -533,7 +540,7 @@ local List = {
 		Weight = 0.25,
 		Market = true,
 		Economy = 375,
-		["Water"] = "Out"
+		Water = "Out"
 	},
 	["heroin"] = {
 		Index = "heroin",
@@ -543,7 +550,7 @@ local List = {
 		Weight = 0.25,
 		Market = true,
 		Economy = 525,
-		["Water"] = "Out"
+		Water = "Out"
 	},
 	["metadone"] = {
 		Index = "metadone",
@@ -553,7 +560,7 @@ local List = {
 		Weight = 0.25,
 		Market = true,
 		Economy = 475,
-		["Water"] = "Out"
+		Water = "Out"
 	},
 	["codeine"] = {
 		Index = "codeine",
@@ -582,7 +589,6 @@ local List = {
 		Weight = 1.0,
 		Market = true,
 		Economy = 2125,
-		Blueprint = true,
 		Durability = 72,
 		Recycle = {
 			["batteryaa"] = 1,
@@ -598,7 +604,6 @@ local List = {
 		Weight = 1.0,
 		Market = true,
 		Economy = 2725,
-		Blueprint = true,
 		Durability = 72,
 		Recycle = {
 			["batteryaa"] = 1,
@@ -615,7 +620,6 @@ local List = {
 		Weight = 1.0,
 		Market = true,
 		Economy = 4725,
-		Blueprint = true,
 		Durability = 72,
 		Recycle = {
 			["scotchtape"] = 1,
@@ -633,7 +637,6 @@ local List = {
 		Weight = 1.0,
 		Market = true,
 		Economy = 2225,
-		Blueprint = true,
 		Durability = 72,
 		Recycle = {
 			["rubber"] = 45,
@@ -649,7 +652,6 @@ local List = {
 		Weight = 1.0,
 		Market = true,
 		Economy = 1725,
-		Blueprint = true,
 		Durability = 72,
 		Recycle = {
 			["scotchtape"] = 1,
@@ -670,15 +672,15 @@ local List = {
 		Delete = true,
 		Economy = 100000,
 		Rarity = "rare",
-		["Backpack"] = 50,
-		["Skinshop"] = {
-			["mp_m_freemode_01"] = {
-				["Model"] = 123,
-				["Texture"] = 0
+		Backpack = 50,
+		Skinshop = {
+			mp_m_freemode_01 = {
+				Model = 123,
+				Texture = 0
 			},
-			["mp_f_freemode_01"] = {
-				["Model"] = 123,
-				["Texture"] = 0
+			mp_f_freemode_01 = {
+				Model = 123,
+				Texture = 0
 			}
 		}
 	},
@@ -694,15 +696,15 @@ local List = {
 		Delete = true,
 		Economy = 150000,
 		Rarity = "epic",
-		["Backpack"] = 75,
-		["Skinshop"] = {
-			["mp_m_freemode_01"] = {
-				["Model"] = 130,
-				["Texture"] = 0
+		Backpack = 75,
+		Skinshop = {
+			mp_m_freemode_01 = {
+				Model = 130,
+				Texture = 0
 			},
-			["mp_f_freemode_01"] = {
-				["Model"] = 128,
-				["Texture"] = 0
+			mp_f_freemode_01 = {
+				Model = 128,
+				Texture = 0
 			}
 		}
 	},
@@ -718,15 +720,15 @@ local List = {
 		Delete = true,
 		Economy = 200000,
 		Rarity = "legendary",
-		["Backpack"] = 100,
-		["Skinshop"] = {
-			["mp_m_freemode_01"] = {
-				["Model"] = 129,
-				["Texture"] = 0
+		Backpack = 100,
+		Skinshop = {
+			mp_m_freemode_01 = {
+				Model = 129,
+				Texture = 0
 			},
-			["mp_f_freemode_01"] = {
-				["Model"] = 129,
-				["Texture"] = 0
+			mp_f_freemode_01 = {
+				Model = 129,
+				Texture = 0
 			}
 		}
 	},
@@ -742,15 +744,15 @@ local List = {
 		Delete = true,
 		Economy = 200000,
 		Rarity = "legendary",
-		["Backpack"] = 100,
-		["Skinshop"] = {
-			["mp_m_freemode_01"] = {
-				["Model"] = 131,
-				["Texture"] = 0
+		Backpack = 100,
+		Skinshop = {
+			mp_m_freemode_01 = {
+				Model = 131,
+				Texture = 0
 			},
-			["mp_f_freemode_01"] = {
-				["Model"] = 131,
-				["Texture"] = 0
+			mp_f_freemode_01 = {
+				Model = 131,
+				Texture = 0
 			}
 		}
 	},
@@ -827,7 +829,7 @@ local List = {
 		Delete = true,
 		Economy = 50000,
 		Rarity = "legendary",
-		["Water"] = "In"
+		Water = "In"
 	},
 	["pickaxeplus"] = {
 		Index = "pickaxe",
@@ -905,9 +907,9 @@ local List = {
 		Delete = true,
 		Economy = 50000,
 		Rarity = "legendary",
-		["Execute"] = {
+		Execute = {
 			Type = "Client",
-			["Event"] = "hud:Radaroff"
+			Event = "hud:Radaroff"
 		}
 	},
 	["radiomhz"] = {
@@ -930,7 +932,7 @@ local List = {
 		Economy = 500000,
 		Rarity = "legendary"
 	},
-	["skinshop"] = {
+	Skinshop = {
 		Index = "skinshop",
 		Name = "Loja de Roupas",
 		Type = "Consumível",
@@ -997,15 +999,13 @@ local List = {
 		Durability = 24,
 		Weight = 0.75,
 		LostWater = true,
-		Economy = 4725,
-		Blueprint = true
+		Economy = 4725
 	},
 	["latex"] = {
 		Index = "latex",
 		Name = "Frasco de Látex",
 		Type = "Comum",
 		Weight = 1.25,
-		Blueprint = true,
 		Economy = 175
 	},
 	["sand"] = {
@@ -1034,72 +1034,63 @@ local List = {
 		Name = "Plástico",
 		Type = "Comum",
 		Weight = 0.045,
-		Economy = 8,
-		Blueprint = true
+		Economy = 8
 	},
 	["glass"] = {
 		Index = "glass",
 		Name = "Vidro",
 		Type = "Comum",
 		Weight = 0.045,
-		Economy = 8,
-		Blueprint = true
+		Economy = 8
 	},
 	["rubber"] = {
 		Index = "rubber",
 		Name = "Borracha",
 		Type = "Comum",
 		Weight = 0.045,
-		Economy = 8,
-		Blueprint = true
+		Economy = 8
 	},
 	["aluminum"] = {
 		Index = "aluminum",
 		Name = "Alumínio",
 		Type = "Comum",
 		Weight = 0.045,
-		Economy = 10,
-		Blueprint = true
+		Economy = 10
 	},
 	["copper"] = {
 		Index = "copper",
 		Name = "Cobre",
 		Type = "Comum",
 		Weight = 0.045,
-		Economy = 10,
-		Blueprint = true
+		Economy = 10
 	},
 	["sulfuric"] = {
 		Index = "sulfuric",
 		Name = "Ácido Sulfúrico",
 		Type = "Consumível",
 		Weight = 0.45,
-		Economy = 75,
-		Blueprint = true
+		Economy = 75
 	},
 	["acetone"] = {
 		Index = "acetone",
 		Name = "Acetona",
 		Type = "Comum",
 		Weight = 0.25,
-		Economy = 55,
-		Blueprint = true
+		Economy = 55
 	},
 	["saline"] = {
 		Index = "saline",
 		Name = "Soro Fisiológico",
 		Type = "Comum",
 		Weight = 0.35,
-		Economy = 35,
-		Blueprint = true
+		Economy = 35
 	},
 	["alcohol"] = {
 		Index = "alcohol",
 		Name = "Álcool",
 		Type = "Comum",
 		Weight = 0.55,
-		Economy = 45,
-		Blueprint = true
+		Economy = 45
 	},
 	["gunpowder"] = {
 		Index = "gunpowder",
@@ -1107,7 +1098,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.10,
 		Economy = 125,
-		Blueprint = true,
 		Arrest = true
 	},
 	["pistolbody"] = {
@@ -1118,7 +1108,6 @@ local List = {
 		Weight = 0.75,
 		Market = true,
 		Economy = 275,
-		Blueprint = true,
 		Recycle = {
 			["copper"] = 6,
 			["aluminum"] = 7
@@ -1132,7 +1121,6 @@ local List = {
 		Weight = 0.75,
 		Market = true,
 		Economy = 525,
-		Blueprint = true,
 		Recycle = {
 			["copper"] = 15,
 			["aluminum"] = 10
@@ -1146,7 +1134,6 @@ local List = {
 		Weight = 0.75,
 		Market = true,
 		Economy = 975,
-		Blueprint = true,
 		Recycle = {
 			["metalspring"] = 1,
 			["aluminum"] = 5
@@ -1163,8 +1150,7 @@ local List = {
 		Index = "blueprint_fragment",
 		Name = "Fragmento de Aprendizado",
 		Type = "Comum",
-		Weight = 0.0,
-		Economy = 1
+		Weight = 0.0
 	},
 	["metalspring"] = {
 		Index = "metalspring",
@@ -1172,7 +1158,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.35,
 		Economy = 425,
-		Blueprint = true,
 		Recycle = {
 			["copper"] = 8,
 			["aluminum"] = 10
@@ -1185,7 +1170,6 @@ local List = {
 		Weight = 0.65,
 		LostWater = true,
 		Economy = 95,
-		Blueprint = true,
 		Recycle = {
 			["copper"] = 2,
 			["aluminum"] = 2
@@ -1197,7 +1181,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.60,
 		Economy = 65,
-		Blueprint = true,
 		Recycle = {
 			["plastic"] = 3
 		}
@@ -1208,10 +1191,15 @@ local List = {
 		Type = "Comum",
 		Weight = 0.65,
 		Economy = 65,
-		Blueprint = true,
 		Recycle = {
 			["aluminum"] = 3
 		}
+	},
+	["fabric"] = {
+		Index = "fabric",
+		Name = "Tecido",
+		Type = "Comum",
+		Weight = 0.001
 	},
 	["ironfilings"] = {
 		Index = "ironfilings",
@@ -1226,7 +1214,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.75,
 		Economy = 125,
-		Blueprint = true,
 		Recycle = {
 			["aluminum"] = 5
 		}
@@ -1237,7 +1224,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.60,
 		Economy = 65,
-		Blueprint = true,
 		Recycle = {
 			["copper"] = 3
 		}
@@ -1250,7 +1236,6 @@ local List = {
 		Weight = 0.45,
 		LostWater = true,
 		Economy = 225,
-		Blueprint = true,
 		Recycle = {
 			["gunpowder"] = 1
 		}
@@ -1281,16 +1266,14 @@ local List = {
 		Name = "Fita Adesiva",
 		Type = "Comum",
 		Weight = 0.15,
-		Economy = 45,
-		Blueprint = true
+		Economy = 45
 	},
 	["insulatingtape"] = {
 		Index = "insulatingtape",
 		Name = "Fita Isolante",
 		Type = "Comum",
 		Weight = 0.15,
-		Economy = 55,
-		Blueprint = true
+		Economy = 55
 	},
 	["rammemory"] = {
 		Index = "rammemory",
@@ -1298,7 +1281,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.45,
 		Economy = 375,
-		Blueprint = true,
 		LostWater = true
 	},
 	["powersupply"] = {
@@ -1307,7 +1289,6 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 475,
-		Blueprint = true,
 		LostWater = true
 	},
 	["processorfan"] = {
@@ -1316,7 +1297,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.95,
 		Economy = 325,
-		Blueprint = true,
 		LostWater = true
 	},
 	["processor"] = {
@@ -1325,7 +1305,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.65,
 		Economy = 725,
-		Blueprint = true,
 		LostWater = true
 	},
 	["screws"] = {
@@ -1333,16 +1312,14 @@ local List = {
 		Name = "Parafusos",
 		Type = "Comum",
 		Weight = 0.45,
-		Economy = 45,
-		Blueprint = true
+		Economy = 45
 	},
 	["screwnuts"] = {
 		Index = "screwnuts",
 		Name = "Porcas de Parafuso",
 		Type = "Comum",
 		Weight = 0.45,
-		Economy = 45,
-		Blueprint = true
+		Economy = 45
 	},
 	["videocard"] = {
 		Index = "videocard",
@@ -1350,7 +1327,6 @@ local List = {
 		Type = "Comum",
 		Weight = 4.25,
 		Economy = 4225,
-		Blueprint = true,
 		LostWater = true
 	},
 	["television"] = {
@@ -1371,7 +1347,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.75,
 		Economy = 525,
-		Blueprint = true,
 		LostWater = true
 	},
 	["safependrive"] = {
@@ -1382,7 +1357,6 @@ local List = {
 		Weight = 0.15,
 		Economy = 3225,
 		Durability = 72,
-		Blueprint = true,
 		LostWater = true
 	},
 	["powercable"] = {
@@ -1390,8 +1364,7 @@ local List = {
 		Name = "Cabo de Alimentação",
 		Type = "Comum",
 		Weight = 0.35,
-		Economy = 225,
-		Blueprint = true
+		Economy = 225
 	},
 	["weaponparts"] = {
 		Index = "weaponparts",
@@ -1399,9 +1372,35 @@ local List = {
 		Type = "Comum",
 		Weight = 1.25,
 		Economy = 125,
-		Blueprint = true,
 		Market = true,
 		Arrest = true
+	},
+	["lightgunparts"] = {
+		Index = "lightgunparts",
+		Name = "Peças de Arma Leve",
+		Blueprint = 65,
+		Type = "Comum",
+		Weight = 1.75,
+		Economy = 625,
+		Market = true
+	},
+	["mediumgunparts"] = {
+		Index = "mediumgunparts",
+		Name = "Peças de Arma Média",
+		Blueprint = 125,
+		Type = "Comum",
+		Weight = 2.25,
+		Economy = 1250,
+		Market = true
+	},
+	["heavygunparts"] = {
+		Index = "heavygunparts",
+		Name = "Peças de Arma Pesada",
+		Blueprint = 215,
+		Type = "Comum",
+		Weight = 2.75,
+		Economy = 2125,
+		Market = true
 	},
 	["electroniccomponents"] = {
 		Index = "electroniccomponents",
@@ -1409,7 +1408,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.35,
 		Economy = 375,
-		Blueprint = true,
 		LostWater = true
 	},
 	["batteryaa"] = {
@@ -1418,7 +1416,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.15,
 		Economy = 225,
-		Blueprint = true,
 		LostWater = true
 	},
 	["batteryaaplus"] = {
@@ -1427,7 +1424,6 @@ local List = {
 		Type = "Comum",
 		Weight = 0.25,
 		Economy = 275,
-		Blueprint = true,
 		LostWater = true
 	},
 	["goldnecklace"] = {
@@ -1435,32 +1431,28 @@ local List = {
 		Name = "Colar de Ouro",
 		Type = "Comum",
 		Weight = 0.45,
-		Economy = 625,
-		Blueprint = true
+		Economy = 625
 	},
 	["silverchain"] = {
 		Index = "silverchain",
 		Name = "Corrente de Prata",
 		Type = "Comum",
 		Weight = 0.40,
-		Economy = 425,
-		Blueprint = true
+		Economy = 425
 	},
 	["horsefigurine"] = {
 		Index = "horsefigurine",
 		Name = "Estatueta de Cavalo",
 		Type = "Comum",
 		Weight = 1.25,
-		Economy = 2425,
-		Blueprint = true
+		Economy = 2425
 	},
 	["toothpaste"] = {
 		Index = "toothpaste",
 		Name = "Pasta de Dente",
 		Type = "Comum",
 		Weight = 0.15,
-		Economy = 175,
-		Blueprint = true
+		Economy = 175
 	},
 	["goldenjug"] = {
 		Index = "goldenjug",
@@ -1519,7 +1511,7 @@ local List = {
 		LostWater = true,
 		Fridge = true
 	},
-	["water"] = {
+	Water = {
 		Index = "water",
 		Name = "Garrafa de Água",
 		Type = "Consumível",
@@ -2209,7 +2201,6 @@ local List = {
 		Index = "rocket",
 		Name = "Munição de Foguete",
 		Type = "Munição",
-		Blueprint = true,
 		Arrest = true,
 		Market = true,
 		Weight = 2.25
@@ -2218,7 +2209,6 @@ local List = {
 		Index = "pistolammo",
 		Name = "Munição de Pistola",
 		Type = "Munição",
-		Blueprint = true,
 		Arrest = true,
 		Market = true,
 		Weight = 0.025,
@@ -2228,7 +2218,6 @@ local List = {
 		Index = "smgammo",
 		Name = "Munição de Sub",
 		Type = "Munição",
-		Blueprint = true,
 		Market = true,
 		Weight = 0.025,
 		Economy = 20
@@ -2237,7 +2226,6 @@ local List = {
 		Index = "rifleammo",
 		Name = "Munição de Rifle",
 		Type = "Munição",
-		Blueprint = true,
 		Arrest = true,
 		Market = true,
 		Weight = 0.025,
@@ -2247,7 +2235,6 @@ local List = {
 		Index = "shotgunammo",
 		Name = "Munição de Espingarda",
 		Type = "Munição",
-		Blueprint = true,
 		Arrest = true,
 		Market = true,
 		Weight = 0.050,
@@ -2257,7 +2244,6 @@ local List = {
 		Index = "musketammo",
 		Name = "Munição de Mosquete",
 		Type = "Munição",
-		Blueprint = true,
 		Arrest = true,
 		Market = true,
 		Weight = 0.075,
@@ -2317,7 +2303,6 @@ local List = {
 		Index = "molotov",
 		Name = "Coquetel Molotov",
 		Type = "Arremesso",
-		Blueprint = true,
 		Arrest = true,
 		Vehicle = true,
 		Market = true,
@@ -2329,7 +2314,6 @@ local List = {
 		Index = "smokegrenade",
 		Name = "Granada de Fumaça",
 		Type = "Arremesso",
-		Blueprint = true,
 		Arrest = true,
 		Vehicle = true,
 		Market = true,
@@ -2343,7 +2327,6 @@ local List = {
 		Name = "Tazer",
 		Repair = "repairkit02",
 		Type = "Armamento",
-		Blueprint = true,
 		Arrest = true,
 		Serial = true,
 		Durability = 480,
@@ -2363,7 +2346,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_PISTOL_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2387,7 +2369,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_PISTOL_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2412,7 +2393,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 4.25,
@@ -2433,7 +2413,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_SMG_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2457,7 +2436,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_PISTOL_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2481,7 +2459,6 @@ local List = {
 		Serial = true,
 		Repair = "repairkit03",
 		Ammo = "WEAPON_SMG_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2504,7 +2481,6 @@ local List = {
 		Serial = true,
 		Repair = "repairkit03",
 		Ammo = "WEAPON_SMG_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2529,7 +2505,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RPG_AMMO",
-		Blueprint = true,
 		Durability = 720,
 		Vehicle = false,
 		Market = true,
@@ -2544,7 +2519,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_SMG_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2566,7 +2540,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_PISTOL_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2588,7 +2561,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_PISTOL_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2613,7 +2585,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_PISTOL_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2636,7 +2607,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_PISTOL_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2660,7 +2630,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_PISTOL_AMMO",
-		Blueprint = true,
 		Durability = 240,
 		Vehicle = true,
 		Market = true,
@@ -2684,7 +2653,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.75,
@@ -2709,7 +2677,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 8.75,
@@ -2734,7 +2701,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.75,
@@ -2758,7 +2724,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.75,
@@ -2783,7 +2748,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.75,
@@ -2808,7 +2772,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 8.75,
@@ -2833,7 +2796,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 8.75,
@@ -2857,7 +2819,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_SHOTGUN_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.25,
@@ -2879,7 +2840,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_SHOTGUN_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.25,
@@ -2903,7 +2863,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_MUSKET_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 6.25,
@@ -2921,7 +2880,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_SHOTGUN_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 5.75,
@@ -2939,7 +2897,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_SMG_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 5.25,
@@ -2963,7 +2920,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_SMG_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Vehicle = true,
 		Market = true,
@@ -2989,7 +2945,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.75,
@@ -3014,7 +2969,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.75,
@@ -3039,7 +2993,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.75,
@@ -3064,7 +3017,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_RIFLE_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 7.75,
@@ -3089,7 +3041,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_SMG_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 5.75,
@@ -3113,7 +3064,6 @@ local List = {
 		Arrest = true,
 		Serial = true,
 		Ammo = "WEAPON_SMG_AMMO",
-		Blueprint = true,
 		Durability = 360,
 		Market = true,
 		Weight = 6.25,
@@ -3175,20 +3125,20 @@ local List = {
 		Name = "Bandagem",
 		Type = "Consumível",
 		Weight = 0.25,
-		Max = 3,
 		Economy = 275,
-		Blueprint = true,
-		Market = true
+		Blueprint = 25,
+		Market = true,
+		Max = 3
 	},
 	["medkit"] = {
 		Index = "medkit",
 		Name = "Kit de Primeiros Socorros",
 		Type = "Consumível",
 		Weight = 0.75,
-		Max = 1,
 		Economy = 575,
-		Blueprint = true,
-		Market = true
+		Blueprint = 57,
+		Market = true,
+		Max = 1,
 	},
 	["ritmoneury"] = {
 		Index = "ritmoneury",
@@ -3197,7 +3147,6 @@ local List = {
 		Weight = 0.75,
 		Max = 2,
 		Economy = 325,
-		Blueprint = true,
 		Market = true
 	},
 	["sinkalmy"] = {
@@ -3207,7 +3156,6 @@ local List = {
 		Weight = 0.75,
 		Max = 2,
 		Economy = 425,
-		Blueprint = true,
 		Market = true
 	},
 	["analgesic"] = {
@@ -3216,16 +3164,16 @@ local List = {
 		Type = "Consumível",
 		Weight = 0.25,
 		Economy = 175,
-		Blueprint = true,
+		Blueprint = 17,
 		Market = true
 	},
 	["gauze"] = {
 		Index = "gauze",
 		Name = "Ataduras",
 		Type = "Consumível",
+		Blueprint = 12,
 		Weight = 0.25,
 		Economy = 125,
-		Blueprint = true,
 		Market = true,
 		LostWater = true
 	},
@@ -3809,9 +3757,9 @@ local List = {
 		Weight = 0.475,
 		Economy = 2725,
 		Market = true,
-		["Execute"] = {
+		Execute = {
 			Type = "Server",
-			["Event"] = "races:Clean"
+			Event = "races:Clean"
 		}
 	},
 	["racesticket"] = {
@@ -3874,9 +3822,9 @@ local List = {
 		Repair = "repairkit01",
 		Durability = 168,
 		Weight = 0.75,
-		["Execute"] = {
+		Execute = {
 			Type = "Client",
-			["Event"] = "radio:Disconnect"
+			Event = "radio:Disconnect"
 		},
 		LostWater = true,
 		Economy = 975,
@@ -3906,7 +3854,7 @@ local List = {
 		Weight = 2.75,
 		Economy = 575,
 		Market = true,
-		["Water"] = "In"
+		Water = "In"
 	},
 	["fishingrod2"] = {
 		Index = "fishingrod2",
@@ -3918,7 +3866,7 @@ local List = {
 		Weight = 2.75,
 		Economy = 875,
 		Market = true,
-		["Water"] = "In"
+		Water = "In"
 	},
 	["fishingrod3"] = {
 		Index = "fishingrod3",
@@ -3930,7 +3878,7 @@ local List = {
 		Weight = 2.75,
 		Economy = 1275,
 		Market = true,
-		["Water"] = "In"
+		Water = "In"
 	},
 	["fishingrod4"] = {
 		Index = "fishingrod4",
@@ -3942,7 +3890,7 @@ local List = {
 		Weight = 2.75,
 		Economy = 1925,
 		Market = true,
-		["Water"] = "In"
+		Water = "In"
 	},
 	["pickaxe"] = {
 		Index = "pickaxe",
@@ -3999,9 +3947,9 @@ local List = {
 		Type = "Consumível",
 		Durability = 72,
 		Weight = 2.25,
-		["Execute"] = {
+		Execute = {
 			Type = "Client",
-			["Event"] = "inventory:ScubaRemove"
+			Event = "inventory:ScubaRemove"
 		},
 		Economy = 975
 	},
@@ -4029,7 +3977,7 @@ local List = {
 		Weight = 1.75,
 		Economy = 925,
 		Market = true,
-		["Water"] = "Out"
+		Water = "Out"
 	},
 	["hood"] = {
 		Index = "hood",
@@ -4166,7 +4114,7 @@ local List = {
 		Name = "Sabonete",
 		Type = "Consumível",
 		Weight = 0.25,
-		["Water"] = "In",
+		Water = "In",
 		Economy = 125,
 		Market = true
 	},
@@ -4179,1123 +4127,6 @@ local List = {
 		Recycle = {
 			["plastic"] = 1
 		}
-	},
-	-- BLUEPRINTS
-	["blueprint_WEAPON_ADVANCEDRIFLE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: MDR",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>MDR</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 11325
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_COMPACTRIFLE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: AKS74U",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>AKS74U</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 6625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_batteryaaplus"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Bateria AA+",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Bateria AA+</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 135
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_rubber"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Borracha",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Borracha</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_silverchain"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Corrente de Prata",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Corrente de Prata</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_ATTACH_GRIP"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Empunhadura",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Empunhadura</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 875
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SAWNOFFSHOTGUN"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Mossberg 500",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Mossberg 500</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 6625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_saline"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Soro Fisiológico",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Soro Fisiológico</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 325
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_glass"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Vidro",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Vidro</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_MICROSMG"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Uzi",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Uzi</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 6625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_HEAVYRIFLE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Scar-H",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Scar-H</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 12125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_PISTOL_AMMO"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Munição de Pistola",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Munição de Pistola</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_acetone"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Acetona",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Acetona</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_ASSAULTRIFLE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: AK74N",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>AK74N</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 11375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_alcohol"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Álcool",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Álcool</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_electroniccomponents"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Componentes Eletrônicos",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Componentes Eletrônicos</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 325
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_gauze"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Ataduras",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Ataduras</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 425
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_MUSKET"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Winchester 1892",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Winchester 1892</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 1625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_BULLPUPRIFLE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: QBZ-95",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>QBZ-95</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 11375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_toothpaste"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Pasta de Dente",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Pasta de Dente</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_ATTACH_MAGAZINE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Pente Estendido",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Pente Estendido</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 1125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_videocard"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Placa de Vídeo",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Placa de Vídeo</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 2115
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_screws"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Parafusos",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Parafusos</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_ASSAULTRIFLE_MK2"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: AK102",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>AK102</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 12115
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_roadsigns"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Placas de Trânsito",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Placas de Trânsito</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_processorfan"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Ventoinha do Processador",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Ventoinha do Processador</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 475
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_rammemory"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Memória RAM",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Memória RAM</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 525
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_weaponparts"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Peças de Armas",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Peças de Armas</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_MUSKET_AMMO"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Munição de Mosquete",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Munição de Mosquete</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_copper"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Cobre",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Cobre</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_smgbody"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Corpo de Sub",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Corpo de Sub</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_HEAVYPISTOL"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: M45A1",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>M45A1</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 3615
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_medkit"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Kit de Primeiros Socorros",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Kit de Primeiros Socorros</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 425
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_powercable"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Cabo de Alimentação",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Cabo de Alimentação</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 325
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_batteryaa"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Bateria AA",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Bateria AA</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 325
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_CARBINERIFLE_MK2"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: H416",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>H416</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 12115
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_ATTACH_FLASHLIGHT"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Lanterna Tatica",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Lanterna Tatica</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 1075
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_processor"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Processador",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Processador</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 475
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_insulatingtape"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Fita Isolante",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Fita Isolante</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_safependrive"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Pendrive Seguro",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Pendrive Seguro</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 1275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_riflebody"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Corpo de Rifle",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Corpo de Rifle</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 525
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_PISTOL"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: M1911",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>M1911</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 2875
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_aluminum"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Alumínio",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Alumínio</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 124
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SNSPISTOL_MK2"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: CZ52",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>CZ52</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 2625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_ATTACH_SILENCER"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Silenciador",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Silenciador</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 2375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SPECIALCARBINE_MK2"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Sig Sauer 556",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Sig Sauer 556</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 12115
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_latex"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Látex",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Látex</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_plastic"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Plástico",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Plástico</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_PISTOL50"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Deagle",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Deagle</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 4115
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_MINISMG"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: MAC-10",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>MAC-10</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 6625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_TACTICALRIFLE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: M16",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>M16</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 12115
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_metalspring"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Mola de Metal",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Mola de Metal</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 265
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_techtrash"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Lixo Eletrônico",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Lixo Eletrônico</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 225
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_scotchtape"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Fita Adesiva",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Fita Adesiva</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_STUNGUN"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Tazer",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Tazer</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 425
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_screwnuts"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Porcas de Parafuso",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Porcas de Parafuso</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SNSPISTOL"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: F57",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>F57</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 2375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_analgesic"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Analgésicos",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Analgésicos</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 325
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_sinkalmy"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Sinkalmy",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Sinkalmy</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 475
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_gunpowder"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Frasco de Pólvora",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Frasco de Pólvora</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 475
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_bandage"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Bandagem",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Bandagem</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 525
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_GUSENBERG"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: MPF45",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>MPF45</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 7625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_ASSAULTSMG"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: F2000",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>F2000</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 7625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SMG_MK2"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: MPX",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>MPX</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 7625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_pistolbody"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Corpo de Pistola",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Corpo de Pistola</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 525
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_gear"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Engrenagem",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Engrenagem</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_sheetmetal"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Chapa de Metal",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Chapa de Metal</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 145
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SMG"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: MP5",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>MP5</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 6375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_powersupply"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Fonte de Alimentação",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Fonte de Alimentação</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 525
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_PUMPSHOTGUN_MK2"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: MP133",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>MP133</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 7625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_PUMPSHOTGUN"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: M870",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>M870</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 6625
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SPECIALCARBINE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: G36C",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>G36C</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 11365
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_BULLPUPRIFLE_MK2"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: L85",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>L85</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 12115
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_CARBINERIFLE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: M4A1",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>M4A1</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 11375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_ATTACH_CROSSHAIR"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Mira Holográfica",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Mira Holográfica</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 1375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_MACHINEPISTOL"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Tec-9",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Tec-9</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 4125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_APPISTOL"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Koch Vp9",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Koch Vp9</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 3125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_PISTOL_MK2"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: T54",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>T54</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 3125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SMOKEGRENADE"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Granada de Fumaça",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Granada de Fumaça</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 1225
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_MOLOTOV"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Coquetel Molotov",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Coquetel Molotov</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 1225
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SHOTGUN_AMMO"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Munição de Espingarda",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Munição de Espingarda</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_RIFLE_AMMO"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Munição de Rifle",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Munição de Rifle</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_SMG_AMMO"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Munição de Sub",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Munição de Sub</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 275
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_COMBATPISTOL"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: G18C",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>G18C</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 3125
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_ssddrive"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Unidade SSD",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Unidade SSD</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 475
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_goldnecklace"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Colar de Ouro",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Colar de Ouro</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 525
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_WEAPON_VINTAGEPISTOL"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: M1922",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>M1922</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 2375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_explosives"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Explosivos",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Explosivos</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 425
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_tarp"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Lona",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Lona</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 175
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_ritmoneury"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Ritmoneury",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Ritmoneury</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 475
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_sulfuric"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Ácido Sulfúrico",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Ácido Sulfúrico</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 325
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_circuit"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Circuito Eletrônico",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Circuito Eletrônico</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 2375
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
-	},
-	["blueprint_horsefigurine"] = {
-		Index = "blueprint",
-		Name = "Aprendizado: Estatueta de Cavalo",
-		Description = "Após a utilização deste fragmento você se especializa na produção de <epic>Estatueta de Cavalo</epic>.",
-		Recycle = {
-			["blueprint_fragment"] = 1215
-		},
-		Type = "Consumível",
-		Rarity = "epic",
-		Weight = 0.0,
-		Economy = 0
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -5368,6 +4199,24 @@ for _,v in ipairs(Clones) do
 			LostWater = true,
 			Weight = 0.05,
 			Market = true
+		}
+	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BLUEPRINTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+for Item,v in pairs(List) do
+	local AmountBlueprint = v.Blueprint
+	if AmountBlueprint then
+		List["blueprint_"..Item] = {
+			Index = "blueprint",
+			Name = ("Aprendizado: %s"):format(v.Name),
+			Description = "Ao consumir você aprende a receita necessária para produzi-lo sempre que desejar.",
+			Type = "Consumível",
+			Weight = 0.0,
+			Recycle = {
+				blueprint_fragment = AmountBlueprint
+			}
 		}
 	end
 end
@@ -5501,13 +4350,6 @@ end
 function ItemExecute(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Execute or false
-end
------------------------------------------------------------------------------------------------------------------------------------------
--- ITEMBLUEPRINT
------------------------------------------------------------------------------------------------------------------------------------------
-function ItemBlueprint(Item)
-	local Item = SplitOne(Item)
-	return List[Item] and List[Item].Blueprint or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMARREST

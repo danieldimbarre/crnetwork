@@ -3,16 +3,40 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Answers = {}
 local Mugshot = false
+local CurrentPromise = false
+local IsTakingMugshot = false
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SAFEUNREGISTER
+-----------------------------------------------------------------------------------------------------------------------------------------
+function SafeUnregister()
+	if Mugshot then
+		UnregisterPedheadshot(Mugshot)
+		Mugshot = false
+	end
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GETMUGSHOTBASE64
 -----------------------------------------------------------------------------------------------------------------------------------------
 function GetMugShotBase64()
 	local Ped = PlayerPedId()
-	local Timeout = GetGameTimer() + 2000
+	if IsTakingMugshot then
+		return false
+	end
+
+	IsTakingMugshot = true
+
+	local Cooldown = GetGameTimer() + 5000
+	while (IsPedHuman(Ped) and not HasPedHeadBlendFinished(Ped) and GetGameTimer() < Cooldown) do
+		Wait(50)
+	end
+
+	SafeUnregister()
+
+	local Timeout = GetGameTimer() + 3000
 	local Handle = RegisterPedheadshot(Ped)
 	while (not Handle or not IsPedheadshotReady(Handle) or not IsPedheadshotValid(Handle)) and GetGameTimer() < Timeout do
-		Wait(10)
-	end
+        Wait(10)
+    end
 
 	local Texture = "none"
 	if Handle and IsPedheadshotReady(Handle) and IsPedheadshotValid(Handle) then
@@ -21,54 +45,51 @@ function GetMugShotBase64()
 	end
 
 	SendNUIMessage({
+		id = Ped,
 		type = "convert",
 		pMugShotTxd = Texture,
-		removeImageBackGround = false,
-		id = Ped
+		removeImageBackGround = false
 	})
 
-	local p = promise.new()
-	Answers[Ped] = p
+	CurrentPromise = promise.new()
+	Answers[Ped] = CurrentPromise
 
-	return Citizen.Await(p)
+	local Result = Citizen.Await(CurrentPromise)
+
+	SafeUnregister()
+	IsTakingMugshot = false
+
+	return Result
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ANSWER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Answer",function(Data,Callback)
-	local Number = Data.Id
-	if Answers[Number] then
-		if Mugshot then
-			UnregisterPedheadshot(Mugshot)
-			Mugshot = false
-		end
+    local id = Data.Id
+    local p = Answers[id]
 
-		Answers[Number]:resolve(Data.Answer)
-		Answers[Number] = nil
-	end
+    if p then
+        SafeUnregister()
+        p:resolve(Data.Answer)
+        Answers[id] = nil
+    end
 
-	if Callback then
-		Callback("Ok")
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ONRESOURCESTOP
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("onResourceStop",function(Resoruce)
-	if Resoruce ~= GetCurrentResourceName() then
-		return false
-	end
-
-	if Mugshot then
-		UnregisterPedheadshot(Mugshot)
-		Mugshot = false
-	end
-
-	Answers = {}
+    if Callback then
+    	Callback("Ok")
+    end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- AVATAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Avatar",function(Data,Callback)
-	Callback(GetMugShotBase64())
+    Callback(GetMugShotBase64())
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ONRESOURCESTOP
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onResourceStop",function(Resource)
+    if Resource == GetCurrentResourceName() then
+        SafeUnregister()
+        Answers = {}
+    end
 end)

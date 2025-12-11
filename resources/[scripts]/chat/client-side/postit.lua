@@ -98,11 +98,11 @@ CreateThread(function()
 					Display[Route] = Display[Route] or {}
 
 					if not Display[Route][Number] then
-						SendNUIMessage({ Action = "ShowMe", Payload = { Number,v.Author,v.Message,x,y,true } })
+						SendNUIMessage({ Action = "ShowMe", Payload = { Id = Number, Author = v.Author, Message = v.Message, X = x, Y = y, Postit = true } })
 						Display[Route][Number] = true
 					end
 
-					SendNUIMessage({ Action = "UpdateMe", Payload = { Number,v.Message,x,y } })
+					SendNUIMessage({ Action = "UpdateMe", Payload = { Id = Number, Message = v.Message, X = x, Y = y } })
 
 					if IsControlJustPressed(0,47) and Distance <= 2 then
 						vSERVER.Delete(Route,Number)

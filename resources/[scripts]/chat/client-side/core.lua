@@ -73,26 +73,26 @@ RegisterCommand("ChatEvent",function()
 		end
 	end
 
-	SendNUIMessage({ Action = "Chat", Payload = { Tags,Block } })
+	SendNUIMessage({ Action = "Chat", Payload = { Tags = Tags, Block = Block, Disabled = { "Importante" } } })
 	SetNuiFocus(true,true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHAT:CLIENTMESSAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("chat:ClientMessage")
-AddEventHandler("chat:ClientMessage",function(Author,Message,Mode)
-	SendNUIMessage({ Action = "Message", Payload = { Author,Message,Mode } })
+AddEventHandler("chat:ClientMessage",function(Author,Message,Mode,Html,Highlight)
+	SendNUIMessage({ Action = "Message", Payload = { Author = Author, Message = Message, Tag = Mode, Html = Html, Highlight = Highlight } })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHATSUBMIT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("ChatSubmit",function(Data,Callback)
-	if LocalPlayer.state.Active and Data["message"] ~= "" then
-		if Data["message"]:sub(1,1) == "/" then
-			ExecuteCommand(Data["message"]:sub(2))
+	if LocalPlayer.state.Active and Data.Message ~= "" then
+		if Data.Message:sub(1,1) == "/" then
+			ExecuteCommand(Data.Message:sub(2))
 			SetNuiFocus(false,false)
 		else
-			TriggerServerEvent("chat:ServerMessage",Data.tag,Data.message)
+			TriggerServerEvent("chat:ServerMessage",Data.Tag,Data.Message)
 		end
 	end
 

@@ -45,11 +45,11 @@ CreateThread(function()
 				local _,x,y = GetScreenCoordFromWorldCoord(OtherCoords.x,OtherCoords.y,OtherCoords.z + 0.7)
 
 				if not MeActive[Index] then
-					SendNUIMessage({ Action = "ShowMe", Payload = { Index,v.Name,v.Message,x,y } })
+					SendNUIMessage({ Action = "ShowMe", Payload = { Id = Index, Author = v.Name, Message = v.Message, X = x, Y = y } })
 					MeActive[Index] = true
 				end
 
-				SendNUIMessage({ Action = "UpdateMe", Payload = { Index,v.Message,x,y } })
+				SendNUIMessage({ Action = "UpdateMe", Payload = { Id = Index, Message = v.Message, X = x, Y = y } })
 			elseif MeActive[Index] then
 				SendNUIMessage({ Action = "RemoveMe", Payload = Index })
 				MeActive[Index] = nil

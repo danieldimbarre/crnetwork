@@ -6,12 +6,17 @@ ItemList = {}
 -- THREADSTARTSERVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	for Shop,v in pairs(List) do
-		ItemList[Shop] = ItemList[Shop] or {}
-
-		for Key,Data in pairs(v.List) do
-			table.insert(ItemList[Shop],{ price = Data.Amount, required = Data.Required, key = Key })
+	for Index,v in pairs(List) do
+		local Result = {}
+		for Key,Recipe in pairs(v.List) do
+			Result[#Result + 1] = {
+				key = Key,
+				price = Recipe.Amount,
+				required = Recipe.Required
+			}
 		end
+
+		ItemList[Index] = Result
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -46,18 +51,6 @@ Location = {
 		Coords = vec3(-216.72,-1318.99,30.81),
 		Mode = "Mecanico",
 		Circle = 0.1
-	},{
-		Coords = vec3(-172.89,6381.32,31.48),
-		Mode = "Pharmacy",
-		Circle = 0.5
-	},{
-		Coords = vec3(1690.07,3581.68,35.62),
-		Mode = "Pharmacy",
-		Circle = 0.5
-	},{
-		Coords = vec3(114.49,-5.03,67.82),
-		Mode = "Pharmacy",
-		Circle = 0.5
 	},{
 		Coords = vec3(1110.8,-2008.75,31.43),
 		Mode = "Furnace",
@@ -328,41 +321,6 @@ List = {
 				Amount = 5,
 				Required = {
 					chalcopyrite = 1
-				}
-			}
-		}
-	},
-	Pharmacy = {
-		List = {
-			medkit = {
-				Amount = 1,
-				Required = {
-					saline = 1,
-					acetone = 1,
-					alcohol = 1,
-					dollar = 275
-				}
-			},
-			bandage = {
-				Amount = 1,
-				Required = {
-					saline = 1,
-					alcohol = 1,
-					dollar = 75
-				}
-			},
-			gauze = {
-				Amount = 1,
-				Required = {
-					alcohol = 1,
-					dollar = 25
-				}
-			},
-			analgesic = {
-				Amount = 1,
-				Required = {
-					saline = 1,
-					dollar = 65
 				}
 			}
 		}
@@ -835,244 +793,16 @@ List = {
 	},
 	blueprint_bench = {
 		List = {
-			blueprint_WEAPON_ADVANCEDRIFLE = {
+			blueprint_gauze = {
 				Amount = 1,
 				Required = {
-					blueprint_fragment = 113625
+					blueprint_fragment = 2500
 				}
 			},
-			blueprint_WEAPON_COMPACTRIFLE = {
+			blueprint_bandage = {
 				Amount = 1,
 				Required = {
-					blueprint_fragment = 66125
-				}
-			},
-			blueprint_ATTACH_GRIP = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 8625
-				}
-			},
-			blueprint_WEAPON_SAWNOFFSHOTGUN = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 66125
-				}
-			},
-			blueprint_WEAPON_MICROSMG = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 66125
-				}
-			},
-			blueprint_WEAPON_HEAVYRIFLE = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 121125
-				}
-			},
-			blueprint_WEAPON_ASSAULTRIFLE = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 113625
-				}
-			},
-			blueprint_WEAPON_MUSKET = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 16125
-				}
-			},
-			blueprint_WEAPON_BULLPUPRIFLE = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 113625
-				}
-			},
-			blueprint_ATTACH_MAGAZINE = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 11125
-				}
-			},
-			blueprint_WEAPON_ASSAULTRIFLE_MK2 = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 121125
-				}
-			},
-			blueprint_WEAPON_HEAVYPISTOL = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 6125
-				}
-			},
-			blueprint_WEAPON_CARBINERIFLE_MK2 = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 121125
-				}
-			},
-			blueprint_ATTACH_FLASHLIGHT = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 10625
-				}
-			},
-			blueprint_WEAPON_PISTOL = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 28625
-				}
-			},
-			blueprint_WEAPON_SNSPISTOL_MK2 = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 26125
-				}
-			},
-			blueprint_ATTACH_SILENCER = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 23625
-				}
-			},
-			blueprint_WEAPON_SPECIALCARBINE_MK2 = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 121125
-				}
-			},
-			blueprint_WEAPON_PISTOL50 = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 41125
-				}
-			},
-			blueprint_WEAPON_MINISMG = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 66125
-				}
-			},
-			blueprint_WEAPON_TACTICALRIFLE = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 121125
-				}
-			},
-			blueprint_WEAPON_SNSPISTOL = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 23625
-				}
-			},
-			blueprint_WEAPON_GUSENBERG = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 76125
-				}
-			},
-			blueprint_WEAPON_ASSAULTSMG = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 76125
-				}
-			},
-			blueprint_WEAPON_SMG_MK2 = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 76125
-				}
-			},
-			blueprint_WEAPON_SMG = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 63625
-				}
-			},
-			blueprint_WEAPON_PUMPSHOTGUN_MK2 = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 76375
-				}
-			},
-			blueprint_WEAPON_PUMPSHOTGUN = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 66125
-				}
-			},
-			blueprint_WEAPON_SPECIALCARBINE = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 113625
-				}
-			},
-			blueprint_WEAPON_BULLPUPRIFLE_MK2 = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 121125
-				}
-			},
-			blueprint_WEAPON_CARBINERIFLE = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 113625
-				}
-			},
-			blueprint_ATTACH_CROSSHAIR = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 13625
-				}
-			},
-			blueprint_WEAPON_MACHINEPISTOL = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 41125
-				}
-			},
-			blueprint_WEAPON_APPISTOL = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 31125
-				}
-			},
-			blueprint_WEAPON_PISTOL_MK2 = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 31125
-				}
-			},
-			blueprint_WEAPON_SMOKEGRENADE = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 6125
-				}
-			},
-			blueprint_WEAPON_MOLOTOV = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 6125
-				}
-			},
-			blueprint_WEAPON_COMBATPISTOL = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 31125
-				}
-			},
-			blueprint_WEAPON_VINTAGEPISTOL = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 23625
-				}
-			},
-			blueprint_metalspring = {
-				Amount = 1,
-				Required = {
-					blueprint_fragment = 265
+					blueprint_fragment = 5500
 				}
 			}
 		}

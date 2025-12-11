@@ -18,12 +18,12 @@ AddEventHandler("inventory:Stockade",function(Vehicle)
 			Cooldown = os.time() + 3600
 
 			exports.vrp:CallPolice({
-				["Source"] = source,
-				["Passport"] = Passport,
-				["Permission"] = "Policia",
-				["Name"] = "Roubo a Carro Forte",
-				["Code"] = 31,
-				["Color"] = 44
+				Source = source,
+				Passport = Passport,
+				Permission = "Policia",
+				Name = "Roubo a Carro Forte",
+				Code = 31,
+				Color = 44
 			})
 		end
 

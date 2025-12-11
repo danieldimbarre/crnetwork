@@ -73,8 +73,6 @@ local function RunNoClipThread()
 				BlockWeaponWheelThisFrame()
 				SetVehicleEngineOn(NoClipEntity,false,true,true)
 			end
-
-			SetEntityLocallyVisible(NoClipEntity)
 		end
 	end)
 end
@@ -89,21 +87,18 @@ AddEventHandler("creative:NoClip",function()
 	NoClipEntity = PlayerVehicle ~= 0 and PlayerVehicle or PlayerPed
 
 	if NoClip then
-		SetEntityLocallyVisible(NoClipEntity)
-		SetEntityAlpha(NoClipEntity,100,false)
 		SetEntityCompletelyDisableCollision(NoClipEntity,false,false)
 		SetEntityCollision(NoClipEntity,false,false)
-		SetEntityVisible(NoClipEntity,false,false)
 		FreezeEntityPosition(NoClipEntity,true)
 		SetEntityInvincible(NoClipEntity,true)
+		SetEntityVisible(NoClipEntity,false)
 
 		RunNoClipThread()
 	else
 		SetEntityCompletelyDisableCollision(NoClipEntity,true,true)
 		SetEntityCollision(NoClipEntity,true,true)
-		SetEntityVisible(NoClipEntity,true,false)
 		FreezeEntityPosition(NoClipEntity,false)
 		SetEntityInvincible(NoClipEntity,false)
-		ResetEntityAlpha(NoClipEntity)
+		SetEntityVisible(NoClipEntity,true)
 	end
 end)

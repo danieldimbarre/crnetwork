@@ -21,14 +21,30 @@ local Sourcers = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("inv",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if not Passport or Admin[Passport] or not Message[1] or not vRP.HasGroup(Passport,"Admin") then
+	if not Passport or not vRP.HasGroup(Passport,"Admin") then
+		return false
+	end
+
+	if Admin[Passport] then
 		return false
 	end
 
 	local Number = Message[1]
+	if not Number then
+		return false
+	end
+
 	local OtherPassport = parseInt(Number,true)
+	if not OtherPassport or OtherPassport == Passport then
+		return false
+	end
+
 	local OtherSource = vRP.Source(OtherPassport)
-	if not OtherSource or not OtherPassport or OtherPassport == Passport or not vRP.DoesEntityExist(OtherSource) or Players[OtherPassport] then
+	if not OtherSource or not vRP.DoesEntityExist(OtherSource) then
+		return false
+	end
+
+	if Players[OtherPassport] then
 		return false
 	end
 
@@ -43,13 +59,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("inspect:Player")
 AddEventHandler("inspect:Player",function(OtherSource)
-	if not vRP.DoesEntityExist(OtherSource) then
-		return false
-	end
-
 	local source = source
 	local Passport = vRP.Passport(source)
-	if not Passport or not OtherSource then
+	if not Passport or not vRP.DoesEntityExist(OtherSource) then
 		return false
 	end
 
@@ -58,21 +70,31 @@ AddEventHandler("inspect:Player",function(OtherSource)
 		return false
 	end
 
-	local Health = vRP.GetHealth(OtherSource)
-	if not vRP.HasService(Passport,"Policia") or Health > 100 or (Health <= 100 and not vRP.Request(OtherSource,"Revistar","Você aceita ser revistado?")) then
+	local IsPolice = vRP.HasGroup(Passport,"Policia")
+	local IsOtherPolice = vRP.HasService(OtherPassport,"Policia")
+	local OtherHealth = vRP.GetHealth(OtherSource)
+
+	local CanInspect = false
+	if IsPolice then
+		CanInspect = true
+	elseif OtherHealth <= 100 then
+		CanInspect = true
+	else
+		CanInspect = vRP.Request(OtherSource,"Revistar","Você aceita ser revistado?")
+	end
+
+	if not CanInspect or IsOtherPolice then
 		return false
 	end
 
-	local Coords = vRP.GetEntityCoords(source)
-	local OtherCoords = vRP.GetEntityCoords(OtherSource)
-	if #(Coords - OtherCoords) > 2 then
+	local Distance = #(vRP.GetEntityCoords(source) - vRP.GetEntityCoords(OtherSource))
+	if Distance > 2.0 then
 		return false
 	end
 
 	Sourcers[Passport] = OtherSource
 	Players[Passport] = OtherPassport
 
-	TriggerEvent("inventory:ServerCarry",source,Passport,OtherSource,true)
 	TriggerClientEvent("inventory:Close",OtherSource)
 	TriggerClientEvent("inspect:Open",source)
 	FreezePlayer(OtherSource,true)

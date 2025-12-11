@@ -928,7 +928,11 @@ Use = {
 
 					if vDEVICE.Device(source,30) then
 						if Boosting[Plate].Class >= 4 then
-							exports.markers:Enter(source,"Boosting",1,Passport,60)
+							exports.markers:Enter(source,"Boosting")
+
+							SetTimeout(60000,function()
+								exports.markers:Exit(source)
+							end)
 						end
 
 						vRP.UpgradeStress(Passport,3)
@@ -2458,7 +2462,6 @@ Use = {
 		local Hash = "prop_cctv_cam_06a"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-
 			local Permissions = {}
 			for Permission,v in pairs(Groups) do
 				if v.SecurityCam then
@@ -2567,7 +2570,7 @@ Use = {
 				Selected = GenerateString("DDLLDDLL")
 			until Selected and not Objects[Selected]
 
-			Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Personal", Weight = 0.25, Bucket = GetPlayerRoutingBucket(source)  }
+			Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Personal", Weight = 0.25, Ground = true, Bucket = GetPlayerRoutingBucket(source)  }
 			SaveObjects[Selected] = Objects[Selected]
 
 			TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
@@ -2587,7 +2590,7 @@ Use = {
 				Selected = GenerateString("DDLLDDLL")
 			until Selected and not Objects[Selected]
 
-			Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Personal", Weight = 0.25, Bucket = GetPlayerRoutingBucket(source)  }
+			Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Personal", Weight = 0.25, Ground = true, Bucket = GetPlayerRoutingBucket(source)  }
 			SaveObjects[Selected] = Objects[Selected]
 
 			TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
@@ -2607,7 +2610,7 @@ Use = {
 				Selected = GenerateString("DDLLDDLL")
 			until Selected and not Objects[Selected]
 
-			Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Personal", Weight = 0.25, Bucket = GetPlayerRoutingBucket(source)  }
+			Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Personal", Weight = 0.25, Ground = true, Bucket = GetPlayerRoutingBucket(source)  }
 			SaveObjects[Selected] = Objects[Selected]
 
 			TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
@@ -2616,90 +2619,243 @@ Use = {
 		Player(source).state.Buttons = false
 	end,
 
-	["storage25"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	["chestgroupp"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
 
-		local Hash = "prop_mb_cargo_04a"
+		local Hash = "m23_1_prop_m31_woodencrate_01a"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
+		if not Application or not Coords then
+			Player(source).state.Buttons = false
+			return false
+		end
 
-				return false
-			end
+		if vCLIENT.ObjectExists(source,Coords,Hash) then
+			Player(source).state.Buttons = false
+			return false
+		end
 
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				repeat
-					Selected = GenerateString("DDLLDDLL")
-				until Selected and not Objects[Selected]
-
-				Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
-				SaveObjects[Selected] = Objects[Selected]
-
-				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+		local Permissions = {}
+		for Permission,v in pairs(Groups) do
+			if v.Chest then
+				Permissions[#Permissions + 1] = Permission
 			end
 		end
 
+		if #Permissions == 0 then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		table.sort(Permissions)
+
+		local Keyboard = vKEYBOARD.Instagram(source,Permissions,"Formulário","Escolha a permissão abaixo")
+		if not Keyboard then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		local Permission = Keyboard[1]
+		local HierarchyList = Groups[Permission] and Groups[Permission].Hierarchy
+		if not HierarchyList then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		Keyboard = vKEYBOARD.Instagram(source,HierarchyList,"Formulário","Escolha hierarquia mínima de acesso")
+		if not Keyboard then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		if not vRP.TakeItem(Passport,Full,1,true,Slot) then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		local HierarchyIndex = false
+		local SelectedHierarchy = Keyboard[1]
+		for Index,v in pairs(HierarchyList) do
+			if v == SelectedHierarchy then
+				HierarchyIndex = Index
+				break
+			end
+		end
+
+		if not HierarchyIndex then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		local Selected
+		repeat
+			Selected = GenerateString("DDLLDDLL")
+		until Selected and not Objects[Selected]
+
+		Objects[Selected] = { Coords = Coords, Permission = Permission.."-"..HierarchyIndex, Object = Hash, Item = Full, Mode = "Chests", Weight = 0.25, Ground = true, Bucket = GetPlayerRoutingBucket(source) }
+		SaveObjects[Selected] = Objects[Selected]
+
+		TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
 		Player(source).state.Buttons = false
 	end,
 
-	["storage50"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	["chestgroupm"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
 
-		local Hash = "prop_mb_cargo_04a"
+		local Hash = "m23_1_prop_m31_woodencrate_01a"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
+		if not Application or not Coords then
+			Player(source).state.Buttons = false
+			return false
+		end
 
-				return false
-			end
+		if vCLIENT.ObjectExists(source,Coords,Hash) then
+			Player(source).state.Buttons = false
+			return false
+		end
 
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				repeat
-					Selected = GenerateString("DDLLDDLL")
-				until Selected and not Objects[Selected]
-
-				Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
-				SaveObjects[Selected] = Objects[Selected]
-
-				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+		local Permissions = {}
+		for Permission,v in pairs(Groups) do
+			if v.Chest then
+				Permissions[#Permissions + 1] = Permission
 			end
 		end
 
+		if #Permissions == 0 then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		table.sort(Permissions)
+
+		local Keyboard = vKEYBOARD.Instagram(source,Permissions,"Formulário","Escolha a permissão abaixo")
+		if not Keyboard then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		local Permission = Keyboard[1]
+		local HierarchyList = Groups[Permission] and Groups[Permission].Hierarchy
+		if not HierarchyList then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		Keyboard = vKEYBOARD.Instagram(source,HierarchyList,"Formulário","Escolha hierarquia mínima de acesso")
+		if not Keyboard then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		if not vRP.TakeItem(Passport,Full,1,true,Slot) then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		local HierarchyIndex = false
+		local SelectedHierarchy = Keyboard[1]
+		for Index,v in pairs(HierarchyList) do
+			if v == SelectedHierarchy then
+				HierarchyIndex = Index
+				break
+			end
+		end
+
+		if not HierarchyIndex then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		local Selected
+		repeat
+			Selected = GenerateString("DDLLDDLL")
+		until Selected and not Objects[Selected]
+
+		Objects[Selected] = { Coords = Coords, Permission = Permission.."-"..HierarchyIndex, Object = Hash, Item = Full, Mode = "Chests", Weight = 0.25, Ground = true, Bucket = GetPlayerRoutingBucket(source) }
+		SaveObjects[Selected] = Objects[Selected]
+
+		TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
 		Player(source).state.Buttons = false
 	end,
 
-	["storage75"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+	["chestgroupg"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
 
-		local Hash = "prop_mb_cargo_04a"
+		local Hash = "m23_1_prop_m31_woodencrate_01a"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
-		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
+		if not Application or not Coords then
+			Player(source).state.Buttons = false
+			return false
+		end
 
-				return false
-			end
+		if vCLIENT.ObjectExists(source,Coords,Hash) then
+			Player(source).state.Buttons = false
+			return false
+		end
 
-			if vRP.TakeItem(Passport,Full,1,true,Slot) then
-				repeat
-					Selected = GenerateString("DDLLDDLL")
-				until Selected and not Objects[Selected]
-
-				Objects[Selected] = { Passport = Passport, Coords = Coords, Object = Hash, Item = Full, Mode = "Chests", Weight = 1.0, Bucket = GetPlayerRoutingBucket(source)  }
-				SaveObjects[Selected] = Objects[Selected]
-
-				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+		local Permissions = {}
+		for Permission,v in pairs(Groups) do
+			if v.Chest then
+				Permissions[#Permissions + 1] = Permission
 			end
 		end
 
+		if #Permissions == 0 then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		table.sort(Permissions)
+
+		local Keyboard = vKEYBOARD.Instagram(source,Permissions,"Formulário","Escolha a permissão abaixo")
+		if not Keyboard then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		local Permission = Keyboard[1]
+		local HierarchyList = Groups[Permission] and Groups[Permission].Hierarchy
+		if not HierarchyList then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		Keyboard = vKEYBOARD.Instagram(source,HierarchyList,"Formulário","Escolha hierarquia mínima de acesso")
+		if not Keyboard then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		if not vRP.TakeItem(Passport,Full,1,true,Slot) then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		local HierarchyIndex = false
+		local SelectedHierarchy = Keyboard[1]
+		for Index,v in pairs(HierarchyList) do
+			if v == SelectedHierarchy then
+				HierarchyIndex = Index
+				break
+			end
+		end
+
+		if not HierarchyIndex then
+			Player(source).state.Buttons = false
+			return false
+		end
+
+		local Selected
+		repeat
+			Selected = GenerateString("DDLLDDLL")
+		until Selected and not Objects[Selected]
+
+		Objects[Selected] = { Coords = Coords, Permission = Permission.."-"..HierarchyIndex, Object = Hash, Item = Full, Mode = "Chests", Weight = 0.25, Ground = true, Bucket = GetPlayerRoutingBucket(source) }
+		SaveObjects[Selected] = Objects[Selected]
+
+		TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
 		Player(source).state.Buttons = false
 	end,
 
@@ -3184,15 +3340,36 @@ Use = {
 	["pager"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		local ClosestPed = vRPC.ClosestPed(source)
 		if ClosestPed and Player(ClosestPed).state.Handcuff then
-			local OtherPassport = vRP.Passport(ClosestPed)
-			if OtherPassport then
-				if vRP.HasService(OtherPassport,"Policia") then
-					TriggerEvent("Wanted",source,Passport,600)
+			exports.markers:Exit(source)
+			TriggerClientEvent("inventory:Notify",source,"Sucesso","Comunicações foram retiradas.","verde")
+		end
+	end,
 
-					if vRP.TakeItem(Passport,Full,1,true,Slot) then
-						vRP.ServiceLeave(ClosestPed,OtherPassport,"Policia",true)
-						TriggerClientEvent("inventory:Notify",source,"Sucesso","Comunicações foram retiradas.","verde")
-					end
+	["markers"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if Player(source).state.Markers then
+			exports.markers:Exit(source)
+			Player(source).state.Markers = false
+			TriggerClientEvent("inventory:Notify",source,"Sucesso","Marcações desativadas.","verde")
+		else
+			local Permissions = {}
+			local GroupList = vRP.UserGroups(Passport)
+			for Permission in pairs(GroupList) do
+				if Groups[Permission].Markers then
+					Permissions[#Permissions + 1] = Permission
+				end
+			end
+
+			if next(Permissions) then
+				table.sort(Permissions,function(a,b) return a < b end)
+
+				local Keyboard = vKEYBOARD.Instagram(source,Permissions)
+				if Keyboard then
+					local Selected = Keyboard[1]
+					local Level = GroupList[Selected]
+
+					Player(source).state.Markers = true
+					exports.markers:Enter(source,Selected,Level)
+					TriggerClientEvent("inventory:Notify",source,"Sucesso","Marcações ativadas.","verde")
 				end
 			end
 		end
@@ -3201,23 +3378,22 @@ Use = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLUEPRINTSTART
 -----------------------------------------------------------------------------------------------------------------------------------------
-for Name,v in pairs(ItemList()) do
+for Item,v in pairs(ListItem) do
 	if v.Blueprint then
-		Use["blueprint_"..Name] = function(source,Passport,Amount,Slot,Full,Item,Split)
-			if not Users.Blueprints[Passport] then
-				Users.Blueprints[Passport] = {}
-			end
+		Use["blueprint_"..Item] = function(source,Passport,Amount,Slot,Full)
+			Users.Blueprints[Passport] = Users.Blueprints[Passport] or {}
 
-			if Users.Blueprints[Passport] and Users.Blueprints[Passport][Name] then
+			if Users.Blueprints[Passport][Item] then
 				TriggerClientEvent("inventory:Notify",source,"Aviso","Já possui este aprendizado.","amarelo")
-
 				return false
 			end
 
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				TriggerClientEvent("inventory:Notify",source,"Sucesso","Aprendizado adicionado.","verde")
 				TriggerClientEvent("inventory:Update",source)
-				Users.Blueprints[Passport][Name] = true
+				Users.Blueprints[Passport][Item] = true
+
+				return true
 			end
 		end
 	end

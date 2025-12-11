@@ -45,7 +45,7 @@ vRP.Prepare("accounts/RemoveGemstone","UPDATE accounts SET Gemstone = Gemstone -
 -- PLAYERDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
 vRP.Prepare("playerdata/GetData","SELECT * FROM playerdata WHERE Passport = @Passport AND Name = @Name")
-vRP.Prepare("playerdata/SetData","REPLACE INTO playerdata (Passport,Name,Information) VALUES (@Passport,@Name,@Information)")
+vRP.Prepare("playerdata/SetData","INSERT INTO playerdata (Passport,Name,Information) VALUES (@Passport,@Name,@Information) ON DUPLICATE KEY UPDATE Name = VALUES(Name), Information = VALUES(Information)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENTITYDATA
 -----------------------------------------------------------------------------------------------------------------------------------------

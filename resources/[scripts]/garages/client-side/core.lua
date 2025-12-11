@@ -280,9 +280,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Tyres)
-	if not NetworkDoesNetworkIdExist(Network) then
-		return false
+function Creative.CreateVehicle(Network,Engine,Health,Customize,Windows,Tyres)
+	while not NetworkDoesNetworkIdExist(Network) do
+		Wait(0)
 	end
 
 	local Vehicle = NetToEnt(Network)
@@ -290,14 +290,18 @@ function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Ty
 		return false
 	end
 
-	SetNetworkIdExistsOnAllMachines(Network,true)
-	SetVehicleEngineHealth(Vehicle,Engine + 0.0)
-	SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
+	NetworkRequestControlOfEntity(Vehicle)
+	while not NetworkHasControlOfEntity(Vehicle) do
+		Wait(0)
+	end
+
 	SetEntityAsMissionEntity(Vehicle,true,true)
+	while not IsEntityAMissionEntity(Vehicle) do
+		Wait(0)
+	end
+
+	SetVehicleEngineHealth(Vehicle,Engine + 0.0)
 	SetVehicleNeedsToBeHotwired(Vehicle,false)
-	SetEntityCleanupByEngine(Vehicle,true)
-	SetNetworkIdCanMigrate(Network,true)
-	SetVehicleOnGroundProperly(Vehicle)
 	SetVehRadioStation(Vehicle,"OFF")
 	SetEntityHealth(Vehicle,Health)
 
@@ -324,7 +328,6 @@ function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Ty
 	end
 
 	TriggerEvent("lscustoms:Apply",Vehicle,Customize)
-	SetModelAsNoLongerNeeded(Model)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:DELETE

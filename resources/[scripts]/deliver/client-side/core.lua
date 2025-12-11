@@ -75,7 +75,11 @@ AddEventHandler("deliver:Init",function(Service)
 					if Distance <= 10.0 then
 						TimeDistance = 1
 						SetDrawOrigin(SelectedCoords.x,SelectedCoords.y,SelectedCoords.z)
-						DrawSprite("Textures","H",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+						if Distance <= 1.0 then
+							DrawSprite("Textures","HPress",0.0,0.0,0.053,0.01 * GetAspectRatio(false),0.0,255,255,255,255)
+						else
+							DrawSprite("Textures","H",0.0,0.0,0.01,0.01 * GetAspectRatio(false),0.0,255,255,255,255)
+						end
 						ClearDrawOrigin()
 
 						if Distance <= 1.0 and IsControlJustPressed(1,74) and vINVENTORY.Deliver(Worked,SelectedCoords) then

@@ -277,22 +277,17 @@ AddEventHandler("garages:Respawns",function(Plate)
 	end
 
 	local Mods = vRP.GetSrvData("LsCustoms:"..OtherPassport..":"..Model,true)
-	local Exist,Network,Vehicle = Creative.ServerVehicle(Model,Respawn,Plate,VehicleData.Nitro,VehicleData.Doors,VehicleData.Body,VehicleData.Fuel,VehicleData.Seatbelt,VehicleData.Drift)
+	local Exist,Network,Entitys = Creative.ServerVehicle(Model,Respawn,Plate,VehicleData.Nitro,VehicleData.Doors,VehicleData.Body,VehicleData.Fuel,VehicleData.Seatbelt,VehicleData.Drift)
 
 	if not Exist then
 		return false
 	end
 
-	for _,OtherSource in pairs(vRPC.Players(source)) do
-		async(function()
-			vCLIENT.CreateVehicle(OtherSource,Model,Network,VehicleData.Engine,VehicleData.Health,Mods,VehicleData.Windows,VehicleData.Tyres)
-		end)
-	end
-
-	Entity(Vehicle).state:set("Lockpick",OtherPassport,true)
-	TaskWarpPedIntoVehicle(GetPlayerPed(source),Vehicle,-1)
+	vCLIENT.CreateVehicle(source,Network,VehicleData.Engine,VehicleData.Health,Mods,VehicleData.Windows,VehicleData.Tyres)
+	Entity(Entitys).state:set("Lockpick",OtherPassport,true)
+	TaskWarpPedIntoVehicle(GetPlayerPed(source),Entitys,-1)
 	TriggerClientEvent("garages:Respawn",-1,"Remove",Plate)
-	Spawn[Plate] = { OtherPassport,Model,Vehicle }
+	Spawn[Plate] = { OtherPassport,Model,Entitys }
 	Respawns[Plate] = nil
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -565,64 +560,89 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 
 	Active[Passport] = true
 
-	local Coin = "Diamantes"
-	local Class = VehicleClass(Name)
-	local Price = VehiclePrice(Name)
-	local Gemstone = VehicleGemstone(Name)
-	local Vehicle = vRP.SelectVehicle(Passport,Name)
-
 	local function CancelProcess(Message)
 		TriggerClientEvent("Notify",source,"Aviso",Message,"amarelo",5000)
 		Active[Passport] = nil
 		return false
 	end
 
+	local function GetDiscountCoin()
+		local Coin = "Diamantes"
+		if Garages[Number] and Garages[Number].Platinum then
+			Coin = "Platinas"
+		end
+
+		return Coin
+	end
+
+	local function GetDiscount(Coin,Gemstone)
+		if Coin == "Platinas" then
+			return Gemstone
+		end
+
+		local Discount = 1.0
+		local Tiers = { Ouro = 0.70, Prata = 0.80, Bronze = 0.90 }
+
+		for Rank,Multiplier in pairs(Tiers) do
+			if vRP.HasService(Passport,Rank) then
+				Discount = math.min(Discount,Multiplier)
+			end
+		end
+
+		return Gemstone * Discount
+	end
+
+	local function HandleRentalPayment(Gemstone,textName)
+		TriggerClientEvent("garages:Close",source)
+
+		local Coin = GetDiscountCoin()
+		local Value = GetDiscount(Coin,Gemstone)
+		local Message = ("Pagar o aluguel do veículo <b>%s</b> por <b>%s %s</b>?"):format(textName,Dotted(Value),Coin)
+
+		if not vRP.Request(source,"Garagem",Message) then
+			return CancelProcess("Processo cancelado.")
+		end
+
+		local Paid = (Coin == "Diamantes" and vRP.PaymentGems(Passport,Value)) or (Coin == "Platinas" and vRP.TakeItem(Passport,"platinum",Value))
+		if not Paid then
+			return CancelProcess(Coin.." insuficiente.")
+		end
+
+		return Value,Coin
+	end
+
+	local Class = VehicleClass(Name)
+	local Price = VehiclePrice(Name)
+	local Gemstone = VehicleGemstone(Name)
+	local Vehicle = vRP.SelectVehicle(Passport,Name)
+
 	if not Vehicle and Class ~= "Races" then
+		TriggerClientEvent("garages:Close",source)
+
 		if Gemstone > 0 then
-			TriggerClientEvent("garages:Close",source)
-
-			if Garages[Number] and Garages[Number].Platinum then
-				Coin = "Platinas"
+			local Value,Coin = HandleRentalPayment(Gemstone,VehicleName(Name))
+			if not Value then
+				return false
 			end
 
-			local Discount = 1.0
-			if Coin == "Diamantes" then
-				for Permission,Multiplier in pairs({ Ouro = 0.70, Prata = 0.80, Bronze = 0.90 }) do
-					if vRP.HasService(Passport,Permission) then
-						Discount = math.min(Discount,Multiplier)
-					end
-				end
-			end
-
-			local PaymentValue = (Coin == "Diamantes") and (Gemstone * Discount) or Gemstone
-			if vRP.Request(source,"Garagem",("Pagar o aluguel do veículo <b>%s</b> por <b>%s</b> %s?"):format(VehicleName(Name),PaymentValue,Coin)) then
-				if (Coin == "Diamantes" and not vRP.PaymentGems(Passport,PaymentValue)) or (Coin == "Platinas" and not vRP.TakeItem(Passport,"platinum",PaymentValue)) then
-					return CancelProcess(Coin.." insuficiente.")
-				end
-
-				vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Name), Work = 1 })
-				exports.discord:Embed("Vehicles","**[PASSAPORTE]:** "..Passport.."\n**[RENOVOU]:** "..Name.."\n**[VALOR]:** "..Dotted(PaymentValue).." "..Coin)
-				TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
-				Vehicle = vRP.SelectVehicle(Passport,Name)
-			else
-				return CancelProcess("Processo cancelado.")
-			end
+			vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Days = 30, Weight = VehicleWeight(Name), Work = 1 })
+			exports.discord:Embed("Vehicles",("**[PASSAPORTE]:** %s\n**[RENOVOU]:** %s\n**[VALOR]:** %s %s"):format(Passport,Name,Dotted(Value),Coin))
+			TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> concluído.","verde",5000)
+			Vehicle = vRP.SelectVehicle(Passport,Name)
 		else
 			if Price > 0 then
-				TriggerClientEvent("garages:Close",source)
-
-				if vRP.Request(source,"Garagem",("Comprar o veículo <b>%s</b> por <b>%s%s</b>?"):format(VehicleName(Name),Currency,Dotted(Price))) then
-					if not vRP.PaymentFull(Passport,Price) then
-						return CancelProcess("Dinheiro insuficiente.")
-					end
-
-					vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Name), Work = 1 })
-					exports.discord:Embed("Vehicles","**[PASSAPORTE]:** "..Passport.."\n**[COMPROU]:** "..Name.."\n**[VALOR]:** "..Currency..Dotted(Price))
-					exports.bank:AddTaxs(Passport,source,"Concessionária",Price,"Compra do veículo "..VehicleName(Name)..".")
-					Vehicle = vRP.SelectVehicle(Passport,Name)
-				else
+				if not vRP.Request(source,"Garagem",("Comprar o veículo <b>%s</b> por <b>%s%s</b>?"):format(VehicleName(Name),Currency,Dotted(Price))) then
 					return CancelProcess("Processo cancelado.")
 				end
+
+				if not vRP.PaymentFull(Passport,Price) then
+					return CancelProcess("Dinheiro insuficiente.")
+				end
+
+				vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Name), Work = 1 })
+				exports.discord:Embed("Vehicles",("**[PASSAPORTE]:** %s\n**[COMPROU]:** %s\n**[VALOR]:** %s%s"):format(Passport,Name,Currency,Dotted(Price)))
+				exports.bank:AddTaxs(Passport,source,"Concessionária",Price,"Compra do veículo "..VehicleName(Name)..".")
+				Vehicle = vRP.SelectVehicle(Passport,Name)
 			else
 				vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Name), Work = 1 })
 				Vehicle = vRP.SelectVehicle(Passport,Name)
@@ -637,126 +657,114 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 
 	local Plate = Vehicle.Plate
 	if Spawn[Plate] then
-		if not Signal[Plate] then
-			if os.time() >= (Searched[Passport] or 0) then
-				Searched[Passport] = os.time() + 60
+		if Signal[Plate] then
+			TriggerClientEvent("Notify",source,"Aviso","Rastreador está desativado.","policia",5000)
+			Active[Passport] = nil
+			return false
+		end
 
-				if not Respawns[Plate] then
-					if DoesEntityExist(Spawn[Plate][3]) and not IsPedAPlayer(Spawn[Plate][3]) and GetEntityType(Spawn[Plate][3]) == 2 then
-						vCLIENT.SearchBlip(source,GetEntityCoords(Spawn[Plate][3]))
-						TriggerClientEvent("Notify",source,"Atenção","Rastreador ativado por <b>30</b> segundos. A localização pode ser imprecisa se estiver em movimento.","policia",10000)
-					else
-						Spawn[Plate] = nil
-						TriggerClientEvent("Notify",source,"Sucesso","Seguradora resgatou seu veículo. Já está disponível para retirada.","policia",5000)
-					end
-				else
-					vCLIENT.SearchBlip(source,Respawns[Plate].xyz)
-					TriggerClientEvent("Notify",source,"Atenção","Rastreador ativado por <b>30</b> segundos. A localização pode ser imprecisa se estiver em movimento.","policia",10000)
-				end
+		if os.time() < (Searched[Passport] or 0) then
+			TriggerClientEvent("Notify",source,"Aviso","Rastreador pode ser ativado a cada <b>60</b> segundos.","policia",5000)
+			Active[Passport] = nil
+			return false
+		end
+
+		Searched[Passport] = os.time() + 60
+
+		local Entitys = Spawn[Plate][3]
+		if not Respawns[Plate] then
+			if DoesEntityExist(Entitys) and not IsPedAPlayer(Entitys) and GetEntityType(Entitys) == 2 and GetVehicleNumberPlateText(Entitys) == Plate then
+				vCLIENT.SearchBlip(source,GetEntityCoords(Entitys))
 			else
-				TriggerClientEvent("Notify",source,"Aviso","Rastreador pode ser ativado a cada <b>60</b> segundos.","policia",5000)
+				Spawn[Plate] = nil
+				TriggerClientEvent("Notify",source,"Sucesso","Seguradora resgatou seu veículo.","policia",5000)
 			end
 		else
-			TriggerClientEvent("Notify",source,"Aviso","Rastreador está desativado.","policia",5000)
-		end
-	else
-		local SaveGarage = Vehicle.Save
-		if Number ~= SaveGarage then
-			if Garages[SaveGarage] and Garages[Number] and Garages[Number].Save then
-				TriggerClientEvent("Notify",source,"Aviso","O veículo não está neste local, mas será marcado no mapa por 30 segundos.","amarelo",5000)
-				TriggerClientEvent("garages:Close",source)
-				vCLIENT.SearchBlip(source,SaveGarage)
-
-				if vRP.Request(source,"Garagem",("Resgatar o veículo custa <b>%s%s</b>, deseja prosseguir?"):format(Currency,Dotted(Price * 0.1))) then
-					if not vRP.PaymentFull(Passport,Price * 0.1) then
-						return CancelProcess("Dinheiro insuficiente.")
-					end
-
-					vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
-					TriggerClientEvent("Notify",source,"Sucesso","Resgate concluído.","verde",5000)
-				else
-					return CancelProcess("Processo cancelado.")
-				end
-			else
-				vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
-			end
+			vCLIENT.SearchBlip(source,Respawns[Plate].xyz)
 		end
 
-		if Vehicle.Arrest then
+		TriggerClientEvent("Notify",source,"Atenção","Rastreador ativado por <b>30</b> segundos.","policia",10000)
+		Active[Passport] = nil
+
+		return false
+	end
+
+	local SaveGarage = Vehicle.Save
+	if Number ~= SaveGarage then
+		if Garages[SaveGarage] and Garages[Number] and Garages[Number].Save then
+			TriggerClientEvent("Notify",source,"Aviso","O veículo não está neste local, mas será marcado no mapa.","amarelo",5000)
 			TriggerClientEvent("garages:Close",source)
+			vCLIENT.SearchBlip(source,SaveGarage)
 
-			if vRP.Request(source,"Garagem",("Liberar veículo custa <b>%s%s</b>, deseja prosseguir?"):format(Currency,Dotted(Price * 0.1))) then
-				if not vRP.PaymentFull(Passport,Price * 0.1) then
-					return CancelProcess("Dinheiro insuficiente.")
-				end
-
-				vRP.Update("vehicles/PaymentArrest",{ Passport = Passport, Vehicle = Name })
-				exports.bank:AddTaxs(Passport,source,"Garagem",Price,"Liberação do veículo.")
-				TriggerClientEvent("Notify",source,"Sucesso","Veículo liberado.","policia",10000)
-			else
+			local Valuation = Price * 0.1
+			if not vRP.Request(source,"Garagem",("Resgatar o veículo custa <b>%s%s</b>, deseja prosseguir?"):format(Currency,Dotted(Valuation))) then
 				return CancelProcess("Processo cancelado.")
 			end
+
+			if not vRP.PaymentFull(Passport,Valuation) then
+				return CancelProcess("Dinheiro insuficiente.")
+			end
+
+			vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
+			TriggerClientEvent("Notify",source,"Sucesso","Resgate concluído.","verde",5000)
+		else
+			vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
+		end
+	end
+
+	if Vehicle.Arrest then
+		TriggerClientEvent("garages:Close",source)
+
+		local Valuation = Price * 0.1
+		if not vRP.Request(source,"Garagem",("Liberar veículo custa <b>%s%s</b>, deseja prosseguir?"):format(Currency,Dotted(Valuation))) then
+			return CancelProcess("Processo cancelado.")
 		end
 
-		if Vehicle.Tax <= os.time() then
-			TriggerClientEvent("garages:Close",source)
-
-			if vRP.Request(source,"Garagem",("Pagar a taxa do veículo <b>%s</b> por <b>%s%s</b>?"):format(VehicleName(Name),Currency,Dotted(Price * 0.15))) then
-				if not vRP.PaymentFull(Passport,Price * 0.15) then
-					return CancelProcess("Dinheiro insuficiente.")
-				end
-
-				vRP.Update("vehicles/updateVehiclesTax",{ Passport = Passport, Vehicle = Name })
-				TriggerClientEvent("Notify",source,"Sucesso","Pagamento concluído.","verde",5000)
-			else
-				return CancelProcess("Processo cancelado.")
-			end
+		if not vRP.PaymentFull(Passport,Valuation) then
+			return CancelProcess("Dinheiro insuficiente.")
 		end
 
-		if Gemstone > 0 and Vehicle.Rental ~= 0 and Vehicle.Rental <= os.time() then
-			TriggerClientEvent("garages:Close",source)
+		vRP.Update("vehicles/PaymentArrest",{ Passport = Passport, Vehicle = Name })
+		exports.bank:AddTaxs(Passport,source,"Garagem",Price,"Liberação do veículo.")
+		TriggerClientEvent("Notify",source,"Sucesso","Veículo liberado.","policia",10000)
+	end
 
-			if Garages[Number] and Garages[Number].Platinum then
-				Coin = "Platinas"
-			end
+	if Vehicle.Tax <= os.time() then
+		TriggerClientEvent("garages:Close",source)
 
-			local Discount = 1.0
-			if Coin == "Diamantes" then
-				for Permission,Multiplier in pairs({ Ouro = 0.70, Prata = 0.80, Bronze = 0.90 }) do
-					if vRP.HasService(Passport,Permission) then
-						Discount = math.min(Discount,Multiplier)
-					end
-				end
-			end
-
-			local PaymentValue = (Coin == "Diamantes") and (Gemstone * Discount) or Gemstone
-			if vRP.Request(source,"Garagem",("Pagar aluguel do veículo <b>%s</b> por <b>%s %s</b>?"):format(VehicleName(Name),Dotted(PaymentValue),Coin)) then
-				if (Coin == "Diamantes" and vRP.PaymentGems(Passport,PaymentValue)) or (Coin == "Platinas" and vRP.TakeItem(Passport,"platinum",PaymentValue)) then
-					vRP.Update("vehicles/rentalVehiclesUpdate",{ Passport = Passport, Vehicle = Name, Days = 30 })
-					TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> atualizado.","verde",5000)
-					exports.discord:Embed("Vehicles","**[PASSAPORTE]:** "..Passport.."\n**[RENOVOU]:** "..Name.."\n**[VALOR]:** "..Dotted(PaymentValue).." "..Coin)
-				else
-					return CancelProcess(Coin.." insuficiente.")
-				end
-			else
-				return CancelProcess("Processo cancelado.")
-			end
+		local Valuation = Price * 0.15
+		if not vRP.Request(source,"Garagem",("Pagar a taxa do veículo <b>%s</b> por <b>%s%s</b>?"):format(VehicleName(Name),Currency,Dotted(Valuation))) then
+			return CancelProcess("Processo cancelado.")
 		end
 
-		local Coords = vCLIENT.SpawnPosition(source,Number)
-		if Coords then
-			local Mods = vRP.GetSrvData("LsCustoms:"..Passport..":"..Name,true)
-			local Exist,Network,Entitys = Creative.ServerVehicle(Name,Coords,Plate,Vehicle.Nitro,Vehicle.Doors,Vehicle.Body,Vehicle.Fuel,Vehicle.Seatbelt,Vehicle.Drift)
-			if Exist then
-				for _,OtherSource in pairs(vRPC.Players(source)) do
-					async(function()
-						vCLIENT.CreateVehicle(OtherSource,Name,Network,Vehicle.Engine,Vehicle.Health,Mods,Vehicle.Windows,Vehicle.Tyres)
-					end)
-				end
+		if not vRP.PaymentFull(Passport,Valuation) then
+			return CancelProcess("Dinheiro insuficiente.")
+		end
 
-				Entity(Entitys).state:set("Lockpick",Passport,true)
-				Spawn[Plate] = { Passport,Name,Entitys }
-			end
+		vRP.Update("vehicles/updateVehiclesTax",{ Passport = Passport, Vehicle = Name })
+		TriggerClientEvent("Notify",source,"Sucesso","Pagamento concluído.","verde",5000)
+	end
+
+	if Gemstone > 0 and Vehicle.Rental ~= 0 and Vehicle.Rental <= os.time() then
+		local Value,Coin = HandleRentalPayment(Gemstone,VehicleName(Name))
+		if not Value then
+			return false
+		end
+
+		vRP.Update("vehicles/rentalVehiclesUpdate",{ Passport = Passport, Vehicle = Name, Days = 30 })
+		TriggerClientEvent("Notify",source,"Sucesso","Aluguel do veículo <b>"..VehicleName(Name).."</b> atualizado.","verde",5000)
+		exports.discord:Embed("Vehicles",("**[PASSAPORTE]:** %s\n**[RENOVOU]:** %s\n**[VALOR]:** %s %s"):format(Passport,Name,Dotted(Value),Coin))
+	end
+
+	local Coords = vCLIENT.SpawnPosition(source,Number)
+	if Coords then
+		local Mods = vRP.GetSrvData("LsCustoms:"..Passport..":"..Name,true)
+		local Exist,Network,Entitys = Creative.ServerVehicle(Name,Coords,Plate,Vehicle.Nitro,Vehicle.Doors,Vehicle.Body,Vehicle.Fuel,Vehicle.Seatbelt,Vehicle.Drift)
+
+		if Exist then
+			vCLIENT.CreateVehicle(source,Network,Vehicle.Engine,Vehicle.Health,Mods,Vehicle.Windows,Vehicle.Tyres)
+			Entity(Entitys).state:set("Lockpick",Passport,true)
+			Spawn[Plate] = { Passport,Name,Entitys }
 		end
 	end
 
@@ -766,31 +774,25 @@ end)
 -- CAR
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("car",function(source,Message)
+	local Model = Message[1]
 	local Passport = vRP.Passport(source)
-	if not Passport or not vRP.HasGroup(Passport,"Admin") or not Message[1] then
-		return false
+	if not Passport or not Model or not vRP.HasGroup(Passport,"Admin") then
+		return
 	end
 
-	local Model = Message[1]
 	local Ped = GetPlayerPed(source)
 	local Coords = GetEntityCoords(Ped)
 	local Heading = GetEntityHeading(Ped)
-	local Plate = "VEH"..(10000 + Passport)
-
-	local Exist,Network,Vehicle = Creative.ServerVehicle(Model,vec4(Coords.x,Coords.y,Coords.z,Heading),Plate,2000,nil,1000,10,true,false)
-	if not Exist then
+	local Plate = ("VEH%s"):format(10000 + Passport)
+	local Spawned,Network,Entitys = Creative.ServerVehicle(Model,vec4(Coords.x,Coords.y,Coords.z,Heading),Plate,2000,nil,1000,100,true,false)
+	if not Spawned then
 		return false
 	end
 
-	for _,OtherSource in pairs(vRPC.Players(source)) do
-		async(function()
-			vCLIENT.CreateVehicle(OtherSource,Model,Network,1000,1000,nil,false,false,false)
-		end)
-	end
-
-	Entity(Vehicle).state:set("Lockpick",Passport,true)
-	Spawn[Plate] = { Passport,Model,Vehicle }
-	TaskWarpPedIntoVehicle(Ped,Vehicle,-1)
+	vCLIENT.CreateVehicle(source,Network,1000,1000,nil,false,false,false)
+	Entity(Entitys).state:set("Lockpick",Passport,true)
+	Spawn[Plate] = { Passport,Model,Entitys }
+	TaskWarpPedIntoVehicle(Ped,Entitys,-1)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DV
@@ -1042,17 +1044,14 @@ CreateThread(function()
 		end
 	end
 
-	local Additional = 1296000
-	local CurrentTimer = os.time()
-	local Consult = vRP.Query("vehicles/All")
-	for _,v in ipairs(Consult) do
-		if (v.Tax + Additional) <= CurrentTimer then
-			vRP.Query("entitydata/RemoveData",{ Name = "Mods:"..v.Passport..":"..v.Vehicle })
-			vRP.Query("vehicles/removeVehicles",{ Passport = v.Passport, Vehicle = v.Vehicle })
-			vRP.Query("entitydata/RemoveData",{ Name = "Trunkchest:"..v.Passport..":"..v.Vehicle })
+	local Vehicles = exports.oxmysql:query_async("SELECT Passport,Vehicle FROM vehicles WHERE Tax + 1296000 < UNIX_TIMESTAMP()")
+	for _,v in ipairs(Vehicles or {}) do
+		local Key = v.Passport..":"..v.Vehicle
+		vRP.Query("entitydata/RemoveData",{ Name = "Mods:"..Key })
+		vRP.Query("vehicles/removeVehicles",{ Passport = v.Passport, Vehicle = v.Vehicle })
+		vRP.Query("entitydata/RemoveData",{ Name = "Trunkchest:"..Key })
 
-			Wait(100)
-		end
+		Wait(100)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

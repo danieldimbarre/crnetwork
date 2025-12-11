@@ -2,6 +2,18 @@
 -- LIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
+	markers = {
+		Index = "markers",
+		Name = "Receptor de Sinal",
+		Type = "Consumível",
+		Description = "Dispositivo clandestino de rastreamento pessoal, utilizado em operações criminosas, que ao ser instalado transmite sua localização em tempo real para o GPS de todos os membros do grupo selecionado que possuírem um receptor compatível.<br>Possui duração ativa de 5 dias, pode ser removido ou roubado por terceiros e é indicado para perseguições prolongadas, monitoramento estratégico e emboscadas coordenadas.",
+		Weight = 0.75,
+		Durability = 120,
+		Execute = {
+			Type = "Server",
+			Event = "markers:Exit"
+		}
+	},
 	encryptedkey = {
 		Index = "encryptedkey",
 		Name = "Chave Criptografada",
@@ -1924,38 +1936,35 @@ local List = {
 		Unique = true,
 		Weight = 5.25
 	},
-	["storage25"] = {
-		Index = "storage",
+	["chestgroupp"] = {
+		Index = "chestgroup",
 		Name = "Compartimento Militar",
-		Repair = "repairkit02",
+		Description = "Projetado para manter seus e de seu grupo, itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>1.000kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
 		Type = "Consumível",
-		Durability = 168,
+		Rarity = "common",
+		Delete = true,
 		Unique = true,
-		Weight = 3.25,
-		Economy = 40000,
-		Market = true
+		Weight = 5.25
 	},
-	["storage50"] = {
-		Index = "storage",
+	["chestgroupm"] = {
+		Index = "chestgroup",
 		Name = "Compartimento Militar",
-		Repair = "repairkit03",
+		Description = "Projetado para manter seus e de seu grupo, itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>2.500kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
 		Type = "Consumível",
-		Durability = 168,
+		Rarity = "rare",
+		Delete = true,
 		Unique = true,
-		Weight = 3.25,
-		Economy = 60000,
-		Market = true
+		Weight = 5.25
 	},
-	["storage75"] = {
-		Index = "storage",
+	["chestgroupg"] = {
+		Index = "chestgroup",
 		Name = "Compartimento Militar",
-		Repair = "repairkit04",
+		Description = "Projetado para manter seus e de seu grupo, itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>5.000kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
 		Type = "Consumível",
-		Durability = 168,
+		Rarity = "epic",
+		Delete = true,
 		Unique = true,
-		Weight = 3.25,
-		Economy = 80000,
-		Market = true
+		Weight = 5.25
 	},
 	["spikestrips"] = {
 		Index = "spikestrips",

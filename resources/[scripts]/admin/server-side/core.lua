@@ -503,8 +503,8 @@ RegisterCommand("clone",function(source,Message)
 		local OtherPassport = parseInt(Message[1])
 		local Identity = vRP.Identity(OtherPassport)
 		if Identity then
-			vRPC.Skin(source,Identity["Skin"])
-			TriggerClientEvent("skinshop:Apply",source,vRP.UserData(OtherPassport,"Clothings"),true)
+			vRPC.Skin(source,Identity.Skin)
+			TriggerClientEvent("skinshop:Apply",source,vRP.UserData(OtherPassport,"Clothings"))
 			TriggerClientEvent("barbershop:Apply",source,vRP.UserData(OtherPassport,"Barbershop"))
 			TriggerClientEvent("tattooshop:Apply",source,vRP.UserData(OtherPassport,"Tattooshop"))
 
@@ -892,6 +892,31 @@ RegisterCommand("dima",function(source,Message)
 	exports.discord:Embed("Dima",("**[ADMIN]:** %s\n**[PASSAPORTE]:** %s\n**[QUANTIDADE]:** %sx"):format(Passport,OtherPassport,Amount))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- MONEY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("money",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if not Passport or not vRP.HasGroup(Passport,"Admin",1) then
+		return false
+	end
+
+	local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Quantidade")
+	if not Keyboard then
+		return false
+	end
+
+	local Amount = Keyboard[2]
+	local OtherPassport = Keyboard[1]
+	if not vRP.Identity(OtherPassport) then
+		TriggerClientEvent("Notify",source,"Aviso","Passaporte inválido.","vermelho",5000)
+		return false
+	end
+
+	vRP.GiveBank(OtherPassport,Amount,true)
+	TriggerClientEvent("Notify",source,"Sucesso","Dinheiros entregues.","verde",5000)
+	exports.discord:Embed("Money",("**[ADMIN]:** %s\n**[PASSAPORTE]:** %s\n**[QUANTIDADE]:** %sx"):format(Passport,OtherPassport,Amount))
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- BLIPS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("blips",function(source)
@@ -958,7 +983,7 @@ RegisterCommand("item",function(source,Message)
 						until Selected and not Consult[Selected]
 
 						TriggerClientEvent("Notify",source,"Sucesso","Adicionado a lista de entregas.","verde",5000)
-						Consult[Selected] = { ["Item"] = Item, ["Amount"] = Amount }
+						Consult[Selected] = { Item = Item, Amount = Amount }
 						vRP.SetSrvData("Offline:"..OtherPassport,Consult,true)
 					end
 				elseif Action == "Todos" then
@@ -1124,7 +1149,7 @@ RegisterCommand("insertcron",function(source)
 				Timer = Amount * 86400
 			end
 
-			exports.cronsInsert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission, Level = Hierarchy })
+			exports.crons:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission, Level = Hierarchy })
 			TriggerClientEvent("Notify",source,"Sucesso","Adição efetuada.","verde",5000)
 		end
 	end
@@ -1137,7 +1162,7 @@ RegisterCommand("removecron",function(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
 		local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Permissão")
 		if Keyboard then
-			exports.cronsRemove(Keyboard[1],"RemovePermission",Keyboard[2])
+			exports.crons:Remove(Keyboard[1],"RemovePermission",Keyboard[2])
 			TriggerClientEvent("Notify",source,"Sucesso","Remoção efetuada.","verde",5000)
 		end
 	end
@@ -1176,7 +1201,7 @@ RegisterCommand("cds",function(source)
 		local Coords = GetEntityCoords(Ped)
 		local Heading = GetEntityHeading(Ped)
 
-		vKEYBOARD.Copy(source,"Cordenadas",Optimize(Coords["x"])..","..Optimize(Coords["y"])..","..Optimize(Coords["z"])..","..Optimize(Heading))
+		vKEYBOARD.Copy(source,"Cordenadas",Optimize(Coords.x)..","..Optimize(Coords.y)..","..Optimize(Coords.z)..","..Optimize(Heading))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1225,7 +1250,7 @@ RegisterCommand("tptome",function(source,Message)
 			local Ped = GetPlayerPed(source)
 			local Coords = GetEntityCoords(Ped)
 
-			vRP.Teleport(OtherSource,Coords["x"],Coords["y"],Coords["z"])
+			vRP.Teleport(OtherSource,Coords.x,Coords.y,Coords.z)
 		end
 	end
 end)
@@ -1241,7 +1266,7 @@ RegisterCommand("tpto",function(source,Message)
 			local Ped = GetPlayerPed(OtherSource)
 			local Coords = GetEntityCoords(Ped)
 
-			vRP.Teleport(source,Coords["x"],Coords["y"],Coords["z"])
+			vRP.Teleport(source,Coords.x,Coords.y,Coords.z)
 		end
 	end
 end)
@@ -1298,7 +1323,7 @@ function Creative.buttonTxt()
 		local Coords = GetEntityCoords(Ped)
 		local Heading = GetEntityHeading(Ped)
 
-		vRP.Archive(Passport..".txt",Optimize(Coords["x"])..","..Optimize(Coords["y"])..","..Optimize(Coords["z"])..","..Optimize(Heading))
+		vRP.Archive(Passport..".txt",Optimize(Coords.x)..","..Optimize(Coords.y)..","..Optimize(Coords.z)..","..Optimize(Heading))
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1359,14 +1384,14 @@ RegisterCommand("kickall",function(source)
 	end
 
 	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 3 minutos.","default",60000,"bottom-center")
-	GlobalState["Weather"] = "RAIN"
+	GlobalState.Weather = "RAIN"
 	Wait(60000)
 
 	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 2 minutos.","default",60000,"bottom-center")
 	Wait(60000)
 
 	TriggerClientEvent("Notify",-1,"Prefeitura","Terremoto se aproxima em 1 minuto.","default",60000,"bottom-center")
-	GlobalState["Weather"] = "THUNDER"
+	GlobalState.Weather = "THUNDER"
 	Wait(60000)
 
 	local List = vRP.Players()
@@ -1432,9 +1457,9 @@ end)
 function Creative.RaceConfig(Left,Center,Right,Distance,Name)
 	vRP.Archive(Name..".txt","{")
 
-	vRP.Archive(Name..".txt","['Left'] = vec3("..Optimize(Left["x"])..","..Optimize(Left["y"])..","..Optimize(Left["z"]).."),")
-	vRP.Archive(Name..".txt","['Center'] = vec3("..Optimize(Center["x"])..","..Optimize(Center["y"])..","..Optimize(Center["z"]).."),")
-	vRP.Archive(Name..".txt","['Right'] = vec3("..Optimize(Right["x"])..","..Optimize(Right["y"])..","..Optimize(Right["z"]).."),")
+	vRP.Archive(Name..".txt","['Left'] = vec3("..Optimize(Left.x)..","..Optimize(Left.y)..","..Optimize(Left.z).."),")
+	vRP.Archive(Name..".txt","['Center'] = vec3("..Optimize(Center.x)..","..Optimize(Center.y)..","..Optimize(Center.z).."),")
+	vRP.Archive(Name..".txt","['Right'] = vec3("..Optimize(Right.x)..","..Optimize(Right.y)..","..Optimize(Right.z).."),")
 	vRP.Archive(Name..".txt","['Distance'] = "..Distance)
 
 	vRP.Archive(Name..".txt","},")
@@ -1478,12 +1503,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- QUAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
-GlobalState["Quake"] = false
+GlobalState.Quake = false
 RegisterCommand("quake",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin",1) then
 		TriggerClientEvent("Notify",-1,"Terromoto","Os geólogos informaram para nossa unidade governamental que foi encontrado um abalo de magnitude <b>60</b> na <b>Escala Richter</b>, encontrem abrigo até que o mesmo passe.","amarelo",60000)
-		GlobalState["Quake"] = true
+		GlobalState.Quake = true
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1691,7 +1716,7 @@ RegisterCommand("nitro",function(source,Message)
 		if Vehicle then
 			local Networked = NetworkGetEntityFromNetworkId(Network)
 			if DoesEntityExist(Networked) then
-				Entity(Networked)["state"]:set("Nitro",2000,true)
+				Entity(Networked).state:set("Nitro",2000,true)
 			end
 		end
 	end
@@ -1889,10 +1914,10 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLACKOUT
 -----------------------------------------------------------------------------------------------------------------------------------------
-GlobalState["Blackout"] = false
+GlobalState.Blackout = false
 RegisterCommand("blackout",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
-		GlobalState["Blackout"] = not GlobalState["Blackout"]
+		GlobalState.Blackout = not GlobalState.Blackout
 	end
 end)

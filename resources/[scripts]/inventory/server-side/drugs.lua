@@ -103,7 +103,6 @@ function Creative.PaymentDrugs()
 			Permission = "Policia",
 			Name = "Venda de Drogas",
 			Percentage = Drugs[Passport][4],
-			Marker = 30,
 			Wanted = 60,
 			Code = 20,
 			Color = 16

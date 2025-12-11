@@ -2,8 +2,6 @@
 -- VRP
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
-local Proxy = module("vrp","lib/Proxy")
-vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -17,10 +15,21 @@ local Opened = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Close")
 AddEventHandler("inventory:Close",function()
-	if Opened then
-		Opened = false
-	end
+	Opened = false
 end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- OPENCRAFTING
+-----------------------------------------------------------------------------------------------------------------------------------------
+function OpenCrafting(Mode)
+	Opened = Mode
+
+	TriggerEvent("inventory:Open",{
+		Mode = "Buy",
+		Type = "Shops",
+		Right = "Produção",
+		Resource = "crafting"
+	})
+end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -44,29 +53,18 @@ end)
 -- CRAFTING:OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("crafting:Open",function(Number)
-	if not exports.hud:Wanted() then
-		if Location[Number] then
-			if vSERVER.Permission(Location[Number].Mode) then
-				Opened = Location[Number].Mode
+	if exports.hud:Wanted() then
+		return false
+	end
 
-				TriggerEvent("inventory:Open",{
-					Type = "Shops",
-					Mode = "Buy",
-					Resource = "crafting",
-					Right = Location[Number].Name or "Produção"
-				})
-			end
-		else
-			if vSERVER.Permission(Number) then
-				Opened = Number
-
-				TriggerEvent("inventory:Open",{
-					Type = "Shops",
-					Mode = "Buy",
-					Resource = "crafting",
-					Right = "Produção"
-				})
-			end
+	local Data = Location[Number]
+	if Data then
+		if vSERVER.Permission(Data.Mode) then
+			OpenCrafting(Data.Mode)
+		end
+	else
+		if vSERVER.Permission(Number) then
+			OpenCrafting(Number)
 		end
 	end
 end)

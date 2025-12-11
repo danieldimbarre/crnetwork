@@ -8,7 +8,7 @@ local Frequency = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("radio:Open")
 AddEventHandler("radio:Open",function()
-	if LocalPlayer.state.Prison or not MumbleIsConnected() then
+	if LocalPlayer.state.Banned or LocalPlayer.state.Prison or not MumbleIsConnected() then
 		return false
 	end
 

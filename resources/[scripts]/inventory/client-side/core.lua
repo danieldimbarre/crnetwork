@@ -228,7 +228,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("CEventGunShot",function(_,OtherPeds)
 	local Ped = PlayerPedId()
-	if Ped == OtherPeds and not LocalPlayer["state"]["Arena"] and not CheckPolice() and GetGameTimer() >= ShotDelay and Weapon ~= "WEAPON_MUSKET" then
+	if Ped == OtherPeds and not LocalPlayer.state.Banned and not LocalPlayer.state.Arena and not CheckPolice() and GetGameTimer() >= ShotDelay and Weapon ~= "WEAPON_MUSKET" then
 		ShotDelay = GetGameTimer() + 60000
 		TriggerEvent("player:Residual","Resíduo de Pólvora")
 

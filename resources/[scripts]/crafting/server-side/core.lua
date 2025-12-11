@@ -13,10 +13,18 @@ Tunnel.bindInterface("crafting",Creative)
 -- PERMISSION
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Permission(Name)
-	local source = source
-	local Passport = vRP.Passport(source)
+    local source = source
+    local Passport = vRP.Passport(source)
+    if not Passport or not List[Name] then
+        return false
+    end
 
-	return Passport and List[Name] and not exports.bank:CheckTaxs(Passport) and not exports.bank:CheckFines(Passport) and (not List[Name].Permission or (List[Name].Permission and vRP.HasService(Passport,List[Name].Permission))) or false
+    if exports.bank:CheckTaxs(Passport) or exports.bank:CheckFines(Passport) then
+        return false
+    end
+
+    local Permission = List[Name].Permission
+    return not Permission or vRP.HasService(Passport,Permission)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
@@ -80,41 +88,52 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Take(Item,Amount,Target,Name)
 	local source = source
-	local Target = tostring(Target)
-	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if Passport and Item and Target and List[Name] and List[Name].List and List[Name].List[Item] then
-		if Amount > 1 and (ItemUnique(Item) or ItemLoads(Item)) then
-			Amount = 1
-		end
+	if not Passport then
+		return false
+	end
 
-		if ItemBlueprint(Item) and not exports.inventory:Blueprint(Passport,Item) then
-			TriggerClientEvent("inventory:Notify",source,"Aviso","Aprendizado não encontrado.","amarelo")
+	if not (List[Name] and List[Name].List and List[Name].List[Item]) then
+		return false
+	end
 
+	local Amount = parseInt(Amount,true)
+	if (ItemUnique(Item) or ItemLoads(Item)) and Amount > 1 then
+		Amount = 1
+	end
+
+	if ListItem[Item] and ListItem[Item].Blueprint and not exports.inventory:Blueprint(Passport,Item) then
+		TriggerClientEvent("inventory:Notify",source,"Aviso","Aprendizado não encontrado.","amarelo")
+		return false
+	end
+
+	local Target = tostring(Target)
+	local Recipe = List[Name].List[Item]
+	local Inventory = vRP.Inventory(Passport)
+	local TotalAmount = Recipe.Amount * Amount
+
+	if vRP.MaxItens(Passport,Item,TotalAmount) or not vRP.CheckWeight(Passport,Item,TotalAmount) or (Inventory[Target] and Inventory[Target].item ~= Item) then
+		return false
+	end
+
+	local RemoveList = {}
+	for Required,Multiplier in pairs(Recipe.Required) do
+		local NeedAmount = Multiplier * Amount
+		local ConsultItem = vRP.ConsultItem(Passport,Required,NeedAmount)
+
+		if not ConsultItem then
+			TriggerClientEvent("inventory:Notify",source,"Atenção","Precisa de <default>"..Dotted(NeedAmount).."x "..ItemName(Required).."</default>.","vermelho")
 			return false
 		end
 
-		local ItemList = {}
-		local Inventory = vRP.Inventory(Passport)
-		local Multiplier = List[Name].List[Item].Amount * Amount
-		if not vRP.MaxItens(Passport,Item,Multiplier) and vRP.CheckWeight(Passport,Item,Multiplier) and (not Inventory[Target] or (Inventory[Target] and Inventory[Target].item == Item)) then
-			for Index,Value in pairs(List[Name]["List"][Item]["Required"]) do
-				local ConsultItem = vRP.ConsultItem(Passport,Index,Value * Amount)
-				if ConsultItem then
-					ItemList[ConsultItem.Item] = Value * Amount
-				else
-					TriggerClientEvent("inventory:Notify",source,"Atenção","Precisa de <default>"..Dotted(Value * Amount).."x "..ItemName(Index).."</default>.","vermelho")
-					return false
-				end
-			end
-
-			for Index,Value in pairs(ItemList) do
-				vRP.RemoveItem(Passport,Index,Value)
-			end
-
-			vRP.GenerateItem(Passport,Item,Multiplier,false,Target)
-		end
+		RemoveList[ConsultItem.Item] = NeedAmount
 	end
+
+	for Item,Multiplier in pairs(RemoveList) do
+		vRP.RemoveItem(Passport,Item,Multiplier)
+	end
+
+	vRP.GenerateItem(Passport,Item,TotalAmount,false,Target)
 
 	TriggerClientEvent("inventory:Update",source)
 end

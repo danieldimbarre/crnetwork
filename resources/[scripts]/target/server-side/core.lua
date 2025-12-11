@@ -14,6 +14,7 @@ vKEYBOARD = Tunnel.getInterface("keyboard")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Workout = {}
+local Blackout = false
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -151,4 +152,56 @@ AddEventHandler("target:Service",function(Permission)
 	end
 
 	vRP.ServiceToggle(source,Passport,Permission)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- TARGET:BLACKOUT
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterServerEvent("target:Blackout")
+AddEventHandler("target:Blackout",function()
+	local source = source
+	local Passport = vRP.Passport(source)
+	if not Passport then
+		return false
+	end
+
+	local Permission = "Policia"
+	local IsBlackout = GlobalState.Blackout
+	local IsPolice = vRP.HasService(Passport,Permission)
+
+	if (IsPolice and not IsBlackout) or (not IsPolice and IsBlackout) or vRP.AmountService(Permission) < 10 then
+		return false
+	end
+
+	local Item = "encryptedkey"
+	local ConsultItem = vRP.ConsultItem(Passport,Item)
+	if not ConsultItem then
+		TriggerClientEvent("Notify",source,"Atenção","Você precisa de <b>1x "..ItemName(Item).."</b>.","amarelo",5000)
+		return false
+	end
+
+	if vRP.TakeItem(Passport,ConsultItem.Item) and vRP.LetterGame(source) then
+		IsBlackout = not IsBlackout
+		GlobalState.Blackout = IsBlackout
+
+		if IsBlackout then
+			Blackout = os.time() + 1800
+			TriggerClientEvent("Notify",-1,"Companhia Elétrica","A energia da cidade foi desligada.<br>A iluminação retornará em até <b>30 minutos</b> ou quando a <b>Polícia</b> realizar a religação.","verde",5000)
+		else
+			Blackout = false
+			TriggerClientEvent("Notify",-1,"Companhia Elétrica","A energia da cidade foi restaurada.<br>A iluminação foi normalizada.","verde",5000)
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADBLACKOUT
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	while true do
+		Wait(10000)
+
+		if GlobalState.Blackout and Blackout and Blackout <= os.time() then
+			GlobalState.Blackout = false
+			Blackout = false
+		end
+	end
 end)

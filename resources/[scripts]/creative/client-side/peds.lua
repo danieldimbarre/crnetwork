@@ -262,21 +262,6 @@ local List = {
 		Coords = vec4(810.22,-2158.99,29.62,0.0),
 		Model = "ig_dale",
 		Anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Pharmacy Store
-		Distance = 30,
-		Coords = vec4(-172.89,6381.32,31.48,223.94),
-		Model = "u_m_y_baygor",
-		Anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Pharmacy Store
-		Distance = 30,
-		Coords = vec4(1690.07,3581.68,35.62,212.6),
-		Model = "u_m_y_baygor",
-		Anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
-	},{ -- Pharmacy Store
-		Distance = 15,
-		Coords = vec4(114.49,-5.03,67.82,206.93),
-		Model = "u_m_y_baygor",
-		Anim = { "anim@heists@heist_corona@single_team","single_team_loop_boss" }
 	},{ -- Jewelry
 		Distance = 15,
 		Coords = vec4(-628.79,-238.7,38.05,311.82),

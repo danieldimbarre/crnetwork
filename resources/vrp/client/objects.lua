@@ -212,13 +212,13 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 		},
 		Chests = {
 			isBox = true,
-			size = { width = 1.4, height = 1.7, maxZ = 1.5 },
+			size = { width = 0.65, height = 0.95, maxZ = 0.5 },
 			options = {
 				shop = Number,
 				Distance = 1.75,
 				options = {
 					{ event = "chest:Item", label = "Abrir", tunnel = "products", service = Item },
-					{ event = "inventory:StoreObjects", label = "Guardar", tunnel = "server" }
+					LocalPlayer.state.Admin and { event = "inventory:StoreObjects", label = "Guardar", tunnel = "server" }
 				}
 			}
 		},
@@ -269,7 +269,7 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 		},
 		LootSupplies = {
 			isBox = true,
-			size = { width = 0.5, height = 1.0, maxZ = 0.55 },
+			size = { width = 0.5, maxZ = 0.55 },
 			options = {
 				shop = Number,
 				Distance = 1.5,
@@ -291,7 +291,7 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 		},
 		LootMedics = {
 			isBox = true,
-			size = { width = 0.75, height = 1.0, maxZ = 0.55 },
+			size = { width = 0.75, maxZ = 0.55 },
 			options = {
 				shop = Number,
 				Distance = 1.5,
@@ -302,7 +302,7 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 		},
 		LootCode = {
 			isBox = true,
-			size = { width = 1.0, height = 1.0, maxZ = 1.75 },
+			size = { maxZ = 1.75 },
 			options = {
 				shop = Number,
 				Distance = 1.5,
@@ -340,15 +340,22 @@ function CreateAndManageObject(Number,v,Coords)
 			end
 
 			if v.Mode then
-				if v.Mode == "Chests" and v.Passport and v.Passport ~= LocalPlayer.state.Passport then
+				if v.Mode == "Personal" and v.Passport and v.Passport ~= LocalPlayer.state.Passport then
 					goto Continue
+				end
+
+				if v.Mode == "Chests" and v.Permission then
+					local Hierarchy = SplitTwo(v.Permission)
+					local Permission = SplitOne(v.Permission)
+
+					if not LocalPlayer.state[Permission] or LocalPlayer.state[Permission] > parseInt(Hierarchy) then
+						goto Continue
+					end
 				end
 
 				TargetLabel(Number,v.Coords,v.Mode,v.Weight or 0.0,v.Item)
 
 				::Continue::
-			elseif LocalPlayer.state.Admin then
-				TargetLabel(Number,v.Coords,"Store",v.Weight or 0.0,v.Item)
 			end
 
 			if v.Active == "Spikes" then

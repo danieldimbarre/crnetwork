@@ -173,7 +173,7 @@ AddEventHandler("engine:Supply",function(Entitys)
 
 		local Consume = VehicleFuel - Lasted
 		SetDrawOrigin(Coords.x,Coords.y,Coords.z)
-		DrawSprite("Textures","E",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+		DrawSprite("Textures","EPress",0.0,0.0,0.053,0.01 * GetAspectRatio(false),0.0,255,255,255,255)
 		ClearDrawOrigin()
 
 		if not IsEntityPlayingAnim(Ped,"timetable@gardener@filling_can","gar_ig_5_filling_can",3) and LoadAnim("timetable@gardener@filling_can") then

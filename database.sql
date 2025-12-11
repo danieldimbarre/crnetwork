@@ -62,6 +62,38 @@ CREATE TABLE IF NOT EXISTS `dependents` (
   KEY `Passport` (`Passport`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE IF NOT EXISTS `ems_creative_consultations` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Reason` varchar(255) NOT NULL DEFAULT '',
+  `Passport` bigint(19) NOT NULL DEFAULT 0,
+  `Doctor` bigint(19) NOT NULL DEFAULT 0,
+  `Timestamp` bigint(19) NOT NULL DEFAULT 0,
+  `Status` varchar(255) NOT NULL DEFAULT 'appointment',
+  `Description` longtext DEFAULT NULL,
+  `Permission` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `ems_creative_exams` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) NOT NULL DEFAULT '',
+  `Passport` bigint(19) NOT NULL DEFAULT 0,
+  `Doctor` bigint(19) NOT NULL DEFAULT 0,
+  `Timestamp` bigint(19) NOT NULL DEFAULT 0,
+  `Status` varchar(255) NOT NULL DEFAULT 'appointment',
+  `Description` longtext DEFAULT NULL,
+  `Permission` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `ems_creative_specialties` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(150) NOT NULL DEFAULT 'Médico',
+  `Members` longtext NOT NULL DEFAULT '[]',
+  `Permission` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 CREATE TABLE IF NOT EXISTS `entitydata` (
   `Name` varchar(100) NOT NULL,
   `Information` longtext DEFAULT NULL,
@@ -173,7 +205,6 @@ CREATE TABLE IF NOT EXISTS `mdt_creative_medals` (
   `Officers` longtext NOT NULL DEFAULT '[]',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 CREATE TABLE IF NOT EXISTS `mdt_creative_penalcode_sections` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
@@ -297,8 +328,8 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
   `Permission` varchar(100) NOT NULL DEFAULT '',
   `Members` int(10) NOT NULL DEFAULT 10,
-  `Tags` int(10) DEFAULT 3,
-  `Announces` int(10) DEFAULT 3,
+  `Tags` int(10) NOT NULL DEFAULT 3,
+  `Announces` int(10) NOT NULL DEFAULT 3,
   `Experience` bigint(19) NOT NULL DEFAULT 0,
   `Points` bigint(19) NOT NULL DEFAULT 0,
   `Bank` bigint(19) NOT NULL DEFAULT 0,
@@ -411,6 +442,7 @@ CREATE TABLE IF NOT EXISTS `tickets_creative` (
   `ClosedAt` bigint(19) DEFAULT NULL,
   `Author` bigint(19) NOT NULL DEFAULT 0,
   `Members` longtext DEFAULT NULL,
+  `MessageAdmin` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

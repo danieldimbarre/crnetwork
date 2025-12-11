@@ -116,7 +116,7 @@ AddEventHandler("propertys:RobberyItem",function(Number,Name)
 	local Itens = Locker and LockerItens or OtherItens
 	local Amount = Locker and 1 or math.random(3)
 
-	if vRP.MountContainer(Passport,Container,Itens,Amount,false,Locker and 675 or 775) then
+	if vRP.MountContainer(Passport,Container,Itens,Amount,false,Locker and 675 or 775,GlobalState.Blackout and { Item = "dirtydollar", Amount = math.random(100,250) } or false) then
 		TriggerClientEvent("chest:Open",source,Container,"Custom",false,true)
 	end
 

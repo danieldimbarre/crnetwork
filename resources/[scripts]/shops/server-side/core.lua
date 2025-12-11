@@ -14,9 +14,21 @@ Tunnel.bindInterface("shops",Creative)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Permission(Name)
 	local source = source
+	local Data = List[Name]
 	local Passport = vRP.Passport(source)
+	if not Passport or not Data then
+		return false
+	end
 
-	return Passport and List[Name] and not exports.bank:CheckTaxs(Passport) and not exports.bank:CheckFines(Passport) and (not List[Name]["Permission"] or (List[Name]["Permission"] and vRP.HasService(Passport,List[Name]["Permission"]))) or false
+	if Name ~= "Banned" and (exports.bank:CheckTaxs(Passport) or exports.bank:CheckFines(Passport)) then
+		return false
+	end
+
+	if not Data.Permission then
+		return true
+	end
+
+	return vRP.HasService(Passport,Data.Permission) and true or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT

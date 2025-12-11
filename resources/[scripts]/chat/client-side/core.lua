@@ -54,17 +54,27 @@ end
 -- CHATEVENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("ChatEvent",function()
-	if LocalPlayer.state.Active and not IsPauseMenuActive() and not LocalPlayer.state.Handcuff and not LocalPlayer.state.Carry and not exports["lb-phone"]:IsOpen() and not IsPedReloading(Ped) then
-		local Tags = {}
-		for Permission,_ in pairs(Active) do
-			if LocalPlayer.state[Permission] then
-				table.insert(Tags,Permission)
+	local Ped = PlayerPedId()
+	local Local = LocalPlayer.state
+	if not Local.Active or IsPauseMenuActive() or Local.Handcuff or Local.Carry or exports["lb-phone"]:IsOpen() or IsPedReloading(Ped) then
+		return false
+	end
+
+	local Police = false
+	local Tags = { "Importante","Ação" }
+	for Permission in pairs(Active) do
+		if Local[Permission] then
+			Tags[#Tags + 1] = Permission
+
+			if not Police and (Permission == "LSPD" or Permission == "BCSO") then
+				Tags[#Tags + 1] = "Policia"
+				Police = true
 			end
 		end
-
-		SendNUIMessage({ Action = "Chat", Payload = { Tags,Block } })
-		SetNuiFocus(true,true)
 	end
+
+	SendNUIMessage({ Action = "Chat", Payload = { Tags,Block } })
+	SetNuiFocus(true,true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHAT:CLIENTMESSAGE

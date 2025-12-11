@@ -35,19 +35,19 @@ local ChestItens = {
 		Weight = 500,
 		Block = true
 	},
-	["storage25"] = {
-		Slots = 25,
-		Weight = 25,
+	["chestgroupp"] = {
+		Slots = 100,
+		Weight = 1000,
 		Block = true
 	},
-	["storage50"] = {
-		Slots = 25,
-		Weight = 50,
+	["chestgroupm"] = {
+		Slots = 100,
+		Weight = 2500,
 		Block = true
 	},
-	["storage75"] = {
-		Slots = 25,
-		Weight = 75,
+	["chestgroupg"] = {
+		Slots = 100,
+		Weight = 5000,
 		Block = true
 	},
 	["suitcase"] = {

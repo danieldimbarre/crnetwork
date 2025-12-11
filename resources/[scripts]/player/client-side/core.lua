@@ -20,29 +20,10 @@ local LastCameraView = 2
 local CruiseEnabled = false
 local CruiseVehicle = false
 local FeedCooldown = GetGameTimer()
-----------------------------------------------------------------------------------------------------------------------------------------
--- RELATIONSHIP
-----------------------------------------------------------------------------------------------------------------------------------------
-AddRelationshipGroup("PLAYER")
-AddRelationshipGroup("POLICIA")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADROPE
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
-	local ArmyHash = GetHashKey("ARMY")
-	local PoliceHash = GetHashKey("COP")
-	local PlayerHash = GetHashKey("POLICIA")
-	local PrisonerHash = GetHashKey("PRISONER")
-
-	SetRelationshipBetweenGroups(1,ArmyHash,PlayerHash)
-	SetRelationshipBetweenGroups(1,PlayerHash,ArmyHash)
-
-	SetRelationshipBetweenGroups(1,PoliceHash,PlayerHash)
-	SetRelationshipBetweenGroups(1,PlayerHash,PoliceHash)
-
-	SetRelationshipBetweenGroups(1,PrisonerHash,PlayerHash)
-	SetRelationshipBetweenGroups(1,PlayerHash,PrisonerHash)
-
 	while true do
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
@@ -345,7 +326,7 @@ RegisterKeyMapping("ControlCruiser","Ativar/Desativar controle de cruzeiro.","ke
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("gameEventTriggered",function(Event,Message)
 	local CurrentTimer = GetGameTimer()
-	if Event ~= "CEventNetworkEntityDamage" or LocalPlayer.state.Arena or LocalPlayer.state.Death or LocalPlayer.state.Crawl or FeedCooldown > CurrentTimer then
+	if Event ~= "CEventNetworkEntityDamage" or LocalPlayer.state.Prison or LocalPlayer.state.Banned or LocalPlayer.state.Arena or LocalPlayer.state.Death or LocalPlayer.state.Crawl or FeedCooldown > CurrentTimer then
 		return false
 	end
 
@@ -424,8 +405,8 @@ AddEventHandler("player:enterTrash",function(Entity)
 		local Ped = PlayerPedId()
 		LastCameraView = GetFollowPedCamViewMode()
 
-		LocalPlayer.state:set("Commands",true,true)
 		SetEntityCoords(Ped,Entity[4],false,false,false,false)
+		LocalPlayer.state:set("Commands",true,true)
 		FreezeEntityPosition(Ped,true)
 		SetEntityVisible(Ped,false)
 
@@ -466,23 +447,6 @@ AddEventHandler("player:checkTrash",function()
 		Trashed = false
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ADDSTATEBAGCHANGEHANDLER
------------------------------------------------------------------------------------------------------------------------------------------
-for _,v in pairs({ "LSPD","SAPR","BCSO" }) do
-	AddStateBagChangeHandler(v,("player:%s"):format(LocalPlayer.state.Source),function(Name,Key,Value)
-		if Value then
-			local Ped = PlayerPedId()
-			local ArmyHash = GetHashKey("ARMY")
-			local PoliceHash = GetHashKey("COP")
-			local PrisonerHash = GetHashKey("PRISONER")
-
-			SetPedRelationshipGroupHash(Ped,ArmyHash)
-			SetPedRelationshipGroupHash(Ped,PoliceHash)
-			SetPedRelationshipGroupHash(Ped,PrisonerHash)
-		end
-	end)
-end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ANCHOR
 -----------------------------------------------------------------------------------------------------------------------------------------

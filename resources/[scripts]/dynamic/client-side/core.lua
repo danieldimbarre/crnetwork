@@ -150,11 +150,18 @@ RegisterCommand("PlayerFunctions",function()
 					exports.dynamic:AddMenu("Computador","Abrir o software dos grupos.","painel")
 				end
 
-				local Event = (Permission == "LSPD" or Permission == "BCSO") and "mdt:Open" or "painel:Open"
+				local Events = {
+					LSPD = "mdt:Open",
+					BCSO = "mdt:Open",
+					SAPR = "mdt:Open",
+					Paramedico = "ems:Open"
+				}
+
+				local Event = Events[Permission] or "painel:Open"
 
 				exports.dynamic:AddButton(v.Name or Permission,"Painel de Controle do usuário.",Event,Permission,"painel",true)
 
-				Painels = Painels + 1
+				Painels += 1
 			end
 		end
 

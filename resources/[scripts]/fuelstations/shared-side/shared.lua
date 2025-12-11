@@ -21,6 +21,7 @@ Config = {
 
 	BankTaxWithdraw = 1.0,
 	BankTaxTransfer = 1.0,
+	TaxTransfer = 0.3,
 
 	Replenishments = {
 		{

@@ -14,10 +14,33 @@ Sprays = {
 -- CRAFTING
 -----------------------------------------------------------------------------------------------------------------------------------------
 Crafting = {
+	gauze = {
+		Amount = 1,
+		Required = {
+			fabric = 3
+		}
+	},
 	bandage = {
 		Amount = 1,
 		Required = {
-			gauze = 5
+			gauze = 4
+		}
+	},
+	medkit = {
+		Amount = 1,
+		Required = {
+			saline = 1,
+			acetone = 1,
+			alcohol = 1,
+			fabric = 5,
+			gauze = 3
+		}
+	},
+	analgesic = {
+		Amount = 1,
+		Required = {
+			fabric = 5,
+			saline = 1
 		}
 	}
 }

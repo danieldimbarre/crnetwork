@@ -253,6 +253,21 @@ CreateThread(function()
 	RegisterCommand("-entityTarget",TargetDisable)
 	RegisterKeyMapping("+entityTarget","Interação auricular.","keyboard","LMENU")
 
+	AddCircleZone("Blackout",vec3(717.99,153.35,81.00),0.25,{
+		name = "Blackout",
+		heading = 0.0,
+		useZ = true
+	},{
+		Distance = 1.25,
+		options = {
+			{
+				event = "target:Blackout",
+				label = "Conexão",
+				tunnel = "server"
+			}
+		}
+	})
+
 	AddCircleZone("Luckywheel",vec3(167.47,-980.35,30.61),0.25,{
 		name = "Luckywheel",
 		heading = 0.0,
@@ -488,7 +503,7 @@ function TargetEnable()
 		for Index,v in pairs(Zones) do
 			if #(Coords - Zones[Index].center) <= 5 then
 				SetDrawOrigin(Zones[Index].center.x,Zones[Index].center.y,Zones[Index].center.z)
-				DrawSprite("Textures","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+				DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
 				ClearDrawOrigin()
 			end
 
@@ -502,7 +517,7 @@ function TargetEnable()
 				Sucess = true
 				while Sucess do
 					SetDrawOrigin(Zones[Index].center.x,Zones[Index].center.y,Zones[Index].center.z)
-					DrawSprite("Textures","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+					DrawSprite("Textures","Selected",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
 					ClearDrawOrigin()
 					DisableActions()
 
@@ -783,7 +798,7 @@ function TargetEnable()
 						local OtherCoords = GetEntityCoords(Entitys)
 						if #(Coords - OtherCoords) <= 5 then
 							SetDrawOrigin(OtherCoords.x,OtherCoords.y,OtherCoords.z + 1)
-							DrawSprite("Textures","Normal",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+							DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
 							ClearDrawOrigin()
 						end
 
@@ -806,7 +821,7 @@ function TargetEnable()
 								local EntityCoords = GetEntityCoords(Entitys)
 
 								SetDrawOrigin(EntityCoords.x,EntityCoords.y,EntityCoords.z + 1)
-								DrawSprite("Textures","Selected",0.0,0.0,0.02,0.02 * GetAspectRatio(false),0.0,255,255,255,255)
+								DrawSprite("Textures","Selected",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
 								ClearDrawOrigin()
 								DisableActions()
 

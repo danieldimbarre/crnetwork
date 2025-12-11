@@ -14,6 +14,7 @@ Tunnel.bindInterface("taxi",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
+local Attention = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -26,6 +27,11 @@ function Creative.Payment(Selected)
 		local Coords = vRP.GetEntityCoords(source)
 		if not Selected or not vRPC.LastVehicle(source,"taxi") or #(Coords - Locations[Selected]["Vehicle"]) > 5 then
 			exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Taxista",source)
+
+			Attention[Passport] = (Attention[Passport] or 0) + 1
+			if Attention[Passport] >= 5 then
+				vRP.SetBanned(Passport,-1,"Hacker")
+			end
 		end
 
 		local GainExperience = 3
@@ -58,5 +64,9 @@ end
 AddEventHandler("Disconnect",function(Passport,source)
 	if Active[Passport] then
 		Active[Passport] = nil
+	end
+
+	if Attention[Passport] then
+		Attention[Passport] = nil
 	end
 end)

@@ -130,16 +130,16 @@ end)
 -- PARAMEDIC:DIAGNOSTIC
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("paramedic:Diagnostic")
-AddEventHandler("paramedic:Diagnostic",function(entity)
+AddEventHandler("paramedic:Diagnostic",function(Entitys)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.GetHealth(source) > 100 then
 		if vRP.HasService(Passport,"Paramedico") then
 			local Result = ""
-			local OtherPassport = vRP.Passport(entity)
+			local OtherPassport = vRP.Passport(Entitys)
 			local Identity = vRP.Identity(OtherPassport)
 			if Identity then
-				local Diagnostic,Bleeding = vCLIENT.Diagnostic(entity)
+				local Diagnostic,Bleeding = vCLIENT.Diagnostic(Entitys)
 
 				if Bleeding <= 1 then
 					Result = "<b>Sangramento:</b> Baixo<br>"

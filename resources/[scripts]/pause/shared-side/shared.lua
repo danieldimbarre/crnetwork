@@ -646,6 +646,21 @@ ShopItens = {
 		Discount = 1.0,
 		Category = "Pessoal"
 	},
+	chestgroupp = {
+		Price = 25000,
+		Discount = 1.0,
+		Category = "Grupos"
+	},
+	chestgroupm = {
+		Price = 50000,
+		Discount = 1.0,
+		Category = "Grupos"
+	},
+	chestgroupg = {
+		Price = 75000,
+		Discount = 1.0,
+		Category = "Grupos"
+	},
 	skinshop = {
 		Price = 25000,
 		Discount = 1.0,

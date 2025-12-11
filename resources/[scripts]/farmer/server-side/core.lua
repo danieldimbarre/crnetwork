@@ -9,6 +9,7 @@ vRP = Proxy.getInterface("vRP")
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
+local Attention = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GLOBALSTATE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -26,14 +27,19 @@ AddEventHandler("farmer:Minerman",function(Number)
 		return false
 	end
 
+	if not Number or type(Number) ~= "number" then
+		exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
+
+		Attention[Passport] = (Attention[Passport] or 0) + 1
+		if Attention[Passport] >= 5 then
+			vRP.SetBanned(Passport,-1,"Hacker")
+		end
+	end
+
 	local FarmerKey = "Farmer:"..Number
 	local FarmerState = GlobalState[FarmerKey]
 	if not FarmerState or GlobalState.Work < FarmerState then
 		return false
-	end
-
-	if not Number or type(Number) ~= "number" then
-		exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
 	end
 
 	local Item = "pickaxe"
@@ -128,6 +134,11 @@ AddEventHandler("farmer:Lumberman",function(Number)
 
 	if not Number or type(Number) ~= "number" then
 		exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
+
+		Attention[Passport] = (Attention[Passport] or 0) + 1
+		if Attention[Passport] >= 5 then
+			vRP.SetBanned(Passport,-1,"Hacker")
+		end
 	end
 
 	local Item = "axe"
@@ -197,6 +208,11 @@ AddEventHandler("farmer:Transporter",function(Number)
 
 	if not Number or type(Number) ~= "number" then
 		exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
+
+		Attention[Passport] = (Attention[Passport] or 0) + 1
+		if Attention[Passport] >= 5 then
+			vRP.SetBanned(Passport,-1,"Hacker")
+		end
 	end
 
 	if not vRPC.LastVehicle(source,"trash") then
@@ -256,6 +272,11 @@ AddEventHandler("farmer:Sandman",function(Number)
 
 	if not Number or type(Number) ~= "number" then
 		exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
+
+		Attention[Passport] = (Attention[Passport] or 0) + 1
+		if Attention[Passport] >= 5 then
+			vRP.SetBanned(Passport,-1,"Hacker")
+		end
 	end
 
 	if not vRPC.LastVehicle(source,"trash") then
@@ -315,6 +336,11 @@ AddEventHandler("farmer:Trasher",function(Number)
 
 	if not Number or type(Number) ~= "number" then
 		exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
+
+		Attention[Passport] = (Attention[Passport] or 0) + 1
+		if Attention[Passport] >= 5 then
+			vRP.SetBanned(Passport,-1,"Hacker")
+		end
 	end
 
 	if not vRPC.LastVehicle(source,"trash") then
@@ -364,6 +390,11 @@ AddEventHandler("farmer:Prison",function(Number)
 
 	if not Number or type(Number) ~= "number" then
 		exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Farmer",source)
+
+		Attention[Passport] = (Attention[Passport] or 0) + 1
+		if Attention[Passport] >= 5 then
+			vRP.SetBanned(Passport,-1,"Hacker")
+		end
 	end
 
 	local FarmerKey = "Farmer:"..Number
@@ -401,5 +432,9 @@ end)
 AddEventHandler("Disconnect",function(Passport,source)
 	if Active[Passport] then
 		Active[Passport] = nil
+	end
+
+	if Attention[Passport] then
+		Attention[Passport] = nil
 	end
 end)

@@ -16,37 +16,53 @@ vKEYBOARD = Tunnel.getInterface("keyboard")
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("chat:ServerMessage")
 AddEventHandler("chat:ServerMessage",function(Mode,Message)
+	if Mode == "Importante" then
+		return false
+	end
+
 	local source = source
 	local Passport = vRP.Passport(source)
-
 	if not Passport then
 		return false
 	end
 
 	local Name = vRP.FullName(Passport)
-	local Messages = Message:gsub("[<>]","")
+	local Messenger = (Message or ""):gsub("[<>]","")
 
 	if Groups[Mode] then
 		if vRP.GetHealth(source) > 100 and vRP.HasService(Passport,Mode) then
-			for _,Sources in pairs(vRP.NumPermission(Mode)) do
+			local Service = vRP.NumPermission(Mode)
+			for _,TargetSource in pairs(Service) do
 				async(function()
-					TriggerClientEvent("chat:ClientMessage",Sources,Name,Messages,Mode)
+					TriggerClientEvent("chat:ClientMessage",TargetSource,Name,Messenger,Mode)
 				end)
 			end
 		end
-	else
-		if Mode == "OOC" then
-			TriggerClientEvent("chat:ClientMessage",source,Name,Messages,Mode)
 
-			for _,Sources in pairs(vRPC.ClosestPeds(source,10)) do
-				async(function()
-					TriggerClientEvent("chat:ClientMessage",Sources,Name,Messages,Mode)
-				end)
-			end
-		else
-			TriggerClientEvent("chat:ClientMessage",-1,Name,Messages,Mode)
-		end
+		return false
 	end
+
+	if Mode == "OOC" then
+		TriggerClientEvent("chat:ClientMessage",source,Name,Messenger,Mode)
+
+		local NearbyPlayers = vRPC.ClosestPeds(source,10)
+		for _,TargetSource in pairs(NearbyPlayers) do
+			async(function()
+				TriggerClientEvent("chat:ClientMessage",TargetSource,Name,Messenger,Mode)
+			end)
+		end
+
+		return false
+	end
+
+	if Mode == "Ação" then
+		TriggerClientEvent("chat:ClientMessage",-1,"Anônimo",Messenger,Mode)
+		exports["discord"]:Embed("Chat","**[SOURCE]:** "..source.."\n**[PASSAPORTE]:** "..Passport.."\n**[MENSAGEM]:** "..Messenger..".")
+
+		return false
+	end
+
+	TriggerClientEvent("chat:ClientMessage",-1,Name,Messenger,Mode)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ME

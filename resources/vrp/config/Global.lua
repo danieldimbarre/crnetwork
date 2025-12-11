@@ -53,7 +53,8 @@ TexturePack = {
 	{ Width = 72, Height = 72, Image = "Normal" },
 	{ Width = 102, Height = 20, Image = "EPress" },
 	{ Width = 102, Height = 20, Image = "HPress" },
-	{ Width = 72, Height = 72, Image = "Selected" }
+	{ Width = 72, Height = 72, Image = "Selected" },
+	{ Width = 72, Height = 72, Image = "Marker" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GROUPS
@@ -109,7 +110,7 @@ Groups = {
 		SecurityCam = true,
 		Service = true,
 		Type = "Work",
-		Markers = true,
+		Markers = 26,
 		Banned = true,
 		Chat = true
 	},
@@ -123,7 +124,7 @@ Groups = {
 		SecurityCam = true,
 		Service = true,
 		Type = "Work",
-		Markers = true,
+		Markers = 15,
 		Banned = true,
 		Chat = true
 	},
@@ -137,7 +138,7 @@ Groups = {
 		SecurityCam = true,
 		Service = true,
 		Type = "Work",
-		Markers = true,
+		Markers = 17,
 		Banned = true,
 		Chat = true
 	},
@@ -149,7 +150,7 @@ Groups = {
 		Salary = { 8750,8500,8250,8000,7750,7500,7250,7000,6750,6500,6250,6000,5750,5500,5250 },
 		Service = true,
 		Type = "Work",
-		Markers = true,
+		Markers = 34,
 		Banned = true,
 		Chat = true
 	},
@@ -161,6 +162,7 @@ Groups = {
 		SecurityCam = true,
 		Domination = true,
 		Service = true,
+		Chest = true,
 		Type = "Work"
 	},
 	Vagos = {
@@ -171,6 +173,7 @@ Groups = {
 		SecurityCam = true,
 		Domination = true,
 		Service = true,
+		Chest = true,
 		Type = "Work"
 	},
 	Families = {
@@ -181,6 +184,7 @@ Groups = {
 		SecurityCam = true,
 		Domination = true,
 		Service = true,
+		Chest = true,
 		Type = "Work"
 	},
 	Marabunta = {
@@ -191,6 +195,7 @@ Groups = {
 		SecurityCam = true,
 		Domination = true,
 		Service = true,
+		Chest = true,
 		Type = "Work"
 	},
 	Aztecas = {
@@ -201,6 +206,7 @@ Groups = {
 		SecurityCam = true,
 		Domination = true,
 		Service = true,
+		Chest = true,
 		Type = "Work"
 	},
 	Bennys = {
@@ -210,6 +216,7 @@ Groups = {
 		Hierarchy = { "Dono","Gerente de Oficina","Supervisor de Oficina","Especialista Automotivo","Mecânico Sênior","Mecânico Pleno","Mecânico Júnior","Ajudante de Mecânico","Estagiário de Mecânica" },
 		Salary = { 4000,3750,3500,3250,3000,2750,2500,2250,2000 },
 		Service = true,
+		Chest = true,
 		Type = "Work"
 	},
 	Bahamas = {
@@ -219,6 +226,7 @@ Groups = {
 		Hierarchy = { "Dono","Sócio","Gerente","Maitré","Especialista","Cozinheiro Sênior","Cozinheiro Pleno","Cozinheiro Júnior","Ajudante de Cozinha","Estagiário de Cozinha" },
 		Salary = { 4000,3750,3500,3250,3000,2750,2500,2250,2000,1750 },
 		Service = true,
+		Chest = true,
 		Type = "Work"
 	},
 	Restaurante = {
@@ -228,6 +236,7 @@ Groups = {
 		Hierarchy = { "Dono","Sócio","Gerente","Maitré","Especialista","Cozinheiro Sênior","Cozinheiro Pleno","Cozinheiro Júnior","Ajudante de Cozinha","Estagiário de Cozinha" },
 		Salary = { 4000,3750,3500,3250,3000,2750,2500,2250,2000,1750 },
 		Service = true,
+		Chest = true,
 		Type = "Work"
 	},
 	Booster = {
@@ -264,6 +273,22 @@ Groups = {
 			Paramedico = true
 		},
 		Hierarchy = { "Membro" },
+		Block = true
+	},
+	Corredor = {
+		Permission = {
+			Corredor = true
+		},
+		Hierarchy = { "Jogador" },
+		Markers = 46,
+		Block = true
+	},
+	Boosting = {
+		Permission = {
+			Boosting = true
+		},
+		Hierarchy = { "Jogador" },
+		Markers = 50,
 		Block = true
 	},
 	-- FUELSTATIONS
@@ -662,6 +687,10 @@ Theme = {
 		progress = true -- [ Opções disponíveis: true, false ],
 	},
 	chat = {
+		Importante = {
+			background = "#9d194e",
+			letter = "#f7c1d6"
+		},
 		LSPD = {
 			background = "#16468b",
 			letter = "#ffffff"

@@ -14,6 +14,7 @@ Tunnel.bindInterface("bus",Creative)
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Active = {}
+local Attention = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -28,6 +29,11 @@ function Creative.Payment(Selected)
 		local Distance = #(Coords - Locations[Selected])
 		if not Selected or not Inside or Distance > 25 then
 			exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Motorista",source)
+
+			Attention[Passport] = (Attention[Passport] or 0) + 1
+			if Attention[Passport] >= 5 then
+				vRP.SetBanned(Passport,-1,"Hacker")
+			end
 		end
 
 		local GainExperience = 1
@@ -64,5 +70,9 @@ end
 AddEventHandler("Disconnect",function(Passport,source)
 	if Active[Passport] then
 		Active[Passport] = nil
+	end
+
+	if Attention[Passport] then
+		Attention[Passport] = nil
 	end
 end)

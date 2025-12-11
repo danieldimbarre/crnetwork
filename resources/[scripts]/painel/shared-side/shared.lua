@@ -6,78 +6,12 @@ Config = {
 	BankTaxTransfer = 1.0,
 	MedicPlanDuration = 604800,
 
-	Permissions = { -- ( -1 = Ninguém tem permissão | 0 = Todos tem permissão | 2 = 2 e 1 tem permissão )
-		Management = {
-			View = 0,
-			Create = 2,
-			Dismiss = 2,
-			Edit = 2
-		},
-		Paramedic = {
-			View = -1,
-			Create = -1,
-			Edit = -1,
-			Delete = -1,
-			MedicPlan = -1,
-			Avatar = -1
-		},
-		Announcements = {
-			Create = 2,
-			Edit = 2,
-			Delete = 2
-		},
-		Tags = {
-			View = 0,
-			Create = 2,
-			Edit = 2,
-			Delete = 2,
-			Assign = 2
-		},
-		Bank = {
-			View = 0,
-			Deposit = 0,
-			Withdraw = 2,
-			Transfer = 2
-		},
-		Perks = 1
+	Paramedics = { -- Caso tenha outras permissões, adicione abaixo.
+		Paramedico = true
 	},
 
-	OtherPermissions = {
-		Paramedico = {
-			Management = {
-				View = 0,
-				Create = 2,
-				Dismiss = 2,
-				Edit = 2
-			},
-			Paramedic = {
-				View = 0,
-				Create = 0,
-				Edit = 0,
-				Delete = 1,
-				MedicPlan = 1,
-				Avatar = 0
-			},
-			Announcements = {
-				Create = 2,
-				Edit = 2,
-				Delete = 2
-			},
-			Tags = {
-				View = 0,
-				Create = 2,
-				Edit = 2,
-				Delete = 2,
-				Assign = 2
-			},
-			Bank = {
-				View = 0,
-				Deposit = 0,
-				Withdraw = 2,
-				Transfer = 2
-			},
-			Perks = 1
-		}
+	Disabled = {
+		Mansao01 = { "Tags","Bank","Goals","Perks" }
 	},
 
 	Perks = {

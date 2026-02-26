@@ -220,7 +220,7 @@ function Creative.ServerVehicle(Model,Coords,Plate,Nitro,Doors,Body,Fuel,Seatbel
 	end
 
 	local CurrentTimer = os.time() + 10
-	local Vehicle = CreateVehicle(Model,Coords,true,false)
+	local Vehicle = CreateVehicle(Model,Coords,true,true)
 
 	while not DoesEntityExist(Vehicle) or NetworkGetNetworkIdFromEntity(Vehicle) == 0 do
 		if os.time() >= CurrentTimer then
@@ -319,7 +319,7 @@ function Creative.Vehicles(Number)
 		return false
 	end
 
-	if exports.bank:CheckTaxs(Passport) or exports.bank:CheckFines(Passport) then
+	if exports.bank:CheckTaxes(Passport) or exports.bank:CheckFines(Passport) then
 		return false
 	end
 
@@ -641,7 +641,7 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 
 				vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Name), Work = 1 })
 				exports.discord:Embed("Vehicles",("**[PASSAPORTE]:** %s\n**[COMPROU]:** %s\n**[VALOR]:** %s%s"):format(Passport,Name,Currency,Dotted(Price)))
-				exports.bank:AddTaxs(Passport,source,"Concessionária",Price,"Compra do veículo "..VehicleName(Name)..".")
+				exports.bank:AddTaxes(Passport,"Concessionária",Price,"Compra do veículo "..VehicleName(Name)..".")
 				Vehicle = vRP.SelectVehicle(Passport,Name)
 			else
 				vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Name, Plate = vRP.GeneratePlate(), Weight = VehicleWeight(Name), Work = 1 })
@@ -673,7 +673,7 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 
 		local Entitys = Spawn[Plate][3]
 		if not Respawns[Plate] then
-			if DoesEntityExist(Entitys) and not IsPedAPlayer(Entitys) and GetEntityType(Entitys) == 2 and GetVehicleNumberPlateText(Entitys) == Plate then
+			if DoesEntityExist(Entitys) and not IsPedAPlayer(Entitys) and GetEntityType(Entitys) == 2 then
 				vCLIENT.SearchBlip(source,GetEntityCoords(Entitys))
 			else
 				Spawn[Plate] = nil
@@ -724,8 +724,8 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 			return CancelProcess("Dinheiro insuficiente.")
 		end
 
+		exports.bank:AddTaxes(Passport,"Garagem",Price,"Liberação do veículo.")
 		vRP.Update("vehicles/PaymentArrest",{ Passport = Passport, Vehicle = Name })
-		exports.bank:AddTaxs(Passport,source,"Garagem",Price,"Liberação do veículo.")
 		TriggerClientEvent("Notify",source,"Sucesso","Veículo liberado.","policia",10000)
 	end
 
@@ -881,7 +881,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Delete(Network,Doors,Tyres,Plate,Save)
 	local Networked = NetworkGetEntityFromNetworkId(Network)
-	if not DoesEntityExist(Networked) or IsPedAPlayer(Networked) or GetEntityType(Networked) ~= 2 or GetVehicleNumberPlateText(Networked) ~= Plate then
+	if not DoesEntityExist(Networked) or IsPedAPlayer(Networked) or GetEntityType(Networked) ~= 2 then
 		return false
 	end
 
@@ -942,26 +942,19 @@ AddEventHandler("garages:Delete",function(Network,Plate)
 		return false
 	end
 
-	if Signal[Plate] then
-		Signal[Plate] = nil
-	end
+	Signal[Plate] = nil
 
 	if Changed[Plate] then
 		local Backup = Changed[Plate]
-		if Spawn[Backup] then
-			Spawn[Backup] = nil
-		end
-
+		Spawn[Backup] = nil
 		Changed[Plate] = nil
 	end
 
-	if Spawn[Plate] then
-		Spawn[Plate] = nil
-	end
+	Spawn[Plate] = nil
 
-	local Entitys = NetworkGetEntityFromNetworkId(Network)
-	if DoesEntityExist(Entitys) and not IsPedAPlayer(Entitys) and GetEntityType(Entitys) == 2 and GetVehicleNumberPlateText(Entitys) == Plate then
-		DeleteEntity(Entitys)
+	local Entity = NetworkGetEntityFromNetworkId(Network)
+	if Entity and DoesEntityExist(Entity) and GetEntityType(Entity) == 2 and not IsPedAPlayer(Entity) then
+		DeleteEntity(Entity)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1048,8 +1041,8 @@ CreateThread(function()
 	for _,v in ipairs(Vehicles or {}) do
 		local Key = v.Passport..":"..v.Vehicle
 		vRP.Query("entitydata/RemoveData",{ Name = "Mods:"..Key })
-		vRP.Query("vehicles/removeVehicles",{ Passport = v.Passport, Vehicle = v.Vehicle })
 		vRP.Query("entitydata/RemoveData",{ Name = "Trunkchest:"..Key })
+		vRP.Query("vehicles/removeVehicles",{ Passport = v.Passport, Vehicle = v.Vehicle })
 
 		Wait(100)
 	end

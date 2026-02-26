@@ -228,17 +228,25 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("CEventGunShot",function(_,OtherPeds)
 	local Ped = PlayerPedId()
-	if Ped == OtherPeds and not LocalPlayer.state.Banned and not LocalPlayer.state.Arena and not CheckPolice() and GetGameTimer() >= ShotDelay and Weapon ~= "WEAPON_MUSKET" then
-		ShotDelay = GetGameTimer() + 60000
-		TriggerEvent("player:Residual","Resíduo de Pólvora")
+	if Ped ~= OtherPeds or GetGameTimer() < ShotDelay then
+		return false
+	end
 
-		local Coords = GetEntityCoords(Ped)
-		local InVehicle = IsPedInAnyVehicle(Ped)
-		if not IsPedCurrentWeaponSilenced(Ped) then
-			vSERVER.ShotsFired(InVehicle)
-		elseif math.random(100) >= 75 then
-			vSERVER.ShotsFired(InVehicle)
-		end
+	if LocalPlayer.state.Banned or LocalPlayer.state.Arena or CheckPolice() then
+		return false
+	end
+
+	local Weapon = GetSelectedPedWeapon(Ped)
+	if Weapon == GetHashKey("WEAPON_MUSKET") then
+		return false
+	end
+
+	ShotDelay = GetGameTimer() + 60000
+	TriggerEvent("player:Residual","Resíduo de Pólvora")
+
+	local InVehicle = IsPedInAnyVehicle(Ped)
+	if not IsPedCurrentWeaponSilenced(Ped) or math.random(100) >= 75 then
+		vSERVER.ShotsFired(InVehicle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

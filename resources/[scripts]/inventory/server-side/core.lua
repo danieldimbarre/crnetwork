@@ -243,63 +243,107 @@ Loots = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SPAWNITEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Creative.SpawnItem(OtherPassport,Item,Amount)
+	return false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SEND
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Send(Slot,Amount)
 	local source = source
-	local Slot = tostring(Slot)
-	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	local ClosestPed = vRPC.ClosestPed(source)
-	if Passport and not Active[Passport] and ClosestPed and not exports.hud:Wanted(Passport) then
-		local Inv = vRP.Inventory(Passport)
-		if not Inv[Slot] or not Inv[Slot].item then
+	if not Passport or exports.hud:Wanted(Passport) then
+		return false
+	end
+
+	if Active[Passport] then
+		return false
+	end
+
+	local OtherSource = vRPC.ClosestPed(source)
+	if not OtherSource then
+		return false
+	end
+
+	local OtherPassport = vRP.Passport(OtherSource)
+	if not OtherPassport or Active[OtherPassport] then
+		return false
+	end
+
+	Slot = tostring(Slot)
+	Amount = parseInt(Amount,true)
+	if Amount <= 0 then
+		return false
+	end
+
+	local Inventory = vRP.Inventory(Passport)
+	local Data = Inventory[Slot]
+	if not Data or not Data.item then
+		return false
+	end
+
+	local Item = Data.item
+	local Expire = os.time() + 3
+
+	if ItemLocked(Item) then
+		return false
+	end
+
+	if vRP.MaxItens(OtherPassport,Item,Amount) then
+		TriggerClientEvent("inventory:Notify",source,"Aviso","Limite atingido.","amarelo",5000)
+		return false
+	end
+
+	if not vRP.CheckWeight(OtherPassport,Item,Amount) then
+		TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila sobrecarregada.","amarelo",5000)
+		return false
+	end
+
+	Active[Passport] = Expire
+	Active[OtherPassport] = Expire
+
+	Player(source).state.Cancel = true
+	Player(source).state.Buttons = true
+	Player(OtherSource).state.Cancel = true
+	Player(OtherSource).state.Buttons = true
+
+	vRPC.CreateObjects(source,"mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
+
+	CreateThread(function()
+		while Active[Passport] and os.time() < Expire do
+			Wait(100)
+		end
+
+		if Active[Passport] ~= Expire then
 			return false
 		end
 
-		local Item = Inv[Slot].item
-		local OtherPassport = vRP.Passport(ClosestPed)
+		Active[OtherPassport] = nil
+		Active[Passport] = nil
+		vRPC.Destroy(source)
 
-		if not vRP.MaxItens(OtherPassport,Item,Amount) then
-			if vRP.CheckWeight(OtherPassport,Item,Amount) then
-				Active[Passport] = os.time() + 3
-				Player(source).state.Cancel = true
-				Player(source).state.Buttons = true
-				Player(ClosestPed).state.Cancel = true
-				Player(ClosestPed).state.Buttons = true
-				vRPC.CreateObjects(source,"mp_safehouselost@","package_dropoff","prop_paper_bag_small",16,28422,0.0,-0.05,0.05,180.0,0.0,0.0)
+		Player(source).state.Cancel = false
+		Player(source).state.Buttons = false
+		Player(OtherSource).state.Cancel = false
+		Player(OtherSource).state.Buttons = false
 
-				CreateThread(function()
-					while Active[Passport] and os.time() < Active[Passport] do
-						Wait(100)
-					end
-
-					if Active[Passport] then
-						vRPC.Destroy(source)
-						Active[Passport] = nil
-						Player(source).state.Cancel = false
-						Player(source).state.Buttons = false
-						Player(ClosestPed).state.Cancel = false
-						Player(ClosestPed).state.Buttons = false
-
-						if vRP.TakeItem(Passport,Item,Amount,true,Slot) and vRP.GiveItem(OtherPassport,Item,Amount,true) then
-							TriggerClientEvent("inventory:Update",source)
-							TriggerClientEvent("inventory:Update",ClosestPed)
-							exports.discord:Embed("Send","**[ENVIOU]:** "..Passport.."\n**[RECEBEU]:** "..OtherPassport.."\n**[ITEM]:** "..Amount.."x "..Item)
-
-							return true
-						end
-					end
-				end)
-			else
-				TriggerClientEvent("inventory:Notify",source,"Aviso","Mochila Sobrecarregada.","amarelo")
-			end
-		else
-			TriggerClientEvent("inventory:Notify",source,"Aviso","Limite atingido.","amarelo",5000)
+		local InvCheck = vRP.Inventory(Passport)
+		local Check = InvCheck[Slot]
+		if not Check or Check.item ~= Item then
+			return false
 		end
-	end
 
-	return false
+		if vRP.TakeItem(Passport,Item,Amount,true,Slot) then
+			vRP.GiveItem(OtherPassport,Item,Amount,true)
+			TriggerClientEvent("inventory:Update",source)
+			TriggerClientEvent("inventory:Update",OtherSource)
+			exports.discord:Embed("Send",("**[ENVIOU]:** %s\n**[RECEBEU]:** %s\n**[ITEM]:** %sx %s"):format(Passport,OtherPassport,Amount,Item))
+		end
+	end)
+
+	return true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DELIVER
@@ -486,7 +530,7 @@ function Creative.Use(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("inventory:NotifyItem",source,{ Weapon,-1 })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Index = Weapon, Amount = -1 })
 				end
 			else
 				local Skin = nil
@@ -506,7 +550,7 @@ function Creative.Use(Slot,Amount)
 				end
 
 				if vCLIENT.TakeWeapon(source,Item,AmmoClip,Attach,false,Skin) then
-					TriggerClientEvent("inventory:NotifyItem",source,{ Full,1 })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Index = Full, Amount = 1 })
 				end
 			end
 		elseif ItemTypeCheck(Full,"Munição") then
@@ -530,7 +574,7 @@ function Creative.Use(Slot,Amount)
 
 					Users.Ammos[Passport][Item] = AmmoClip + Amount
 
-					TriggerClientEvent("inventory:NotifyItem",source,{ Full,Amount })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Index = Full, Amount = Amount })
 					TriggerClientEvent("inventory:Update",source)
 					vCLIENT.Reloading(source,Weapon,Amount)
 				end
@@ -555,11 +599,11 @@ function Creative.Use(Slot,Amount)
 						end
 					end
 
-					TriggerClientEvent("inventory:NotifyItem",source,{ Weapon,-1 })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Index = Weapon, Amount = -1 })
 				end
 			else
 				if vCLIENT.TakeWeapon(source,Item,1,nil,Full) then
-					TriggerClientEvent("inventory:NotifyItem",source,{ Full,1 })
+					TriggerClientEvent("inventory:NotifyItem",source,{ Index = Full, Amount = 1 })
 				end
 			end
 		elseif ItemTypeCheck(Full,"Attachs") then
@@ -584,7 +628,7 @@ function Creative.Use(Slot,Amount)
 
 					if not Check then
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
-							TriggerClientEvent("inventory:NotifyItem",source,{ Full,1 })
+							TriggerClientEvent("inventory:NotifyItem",source,{ Index = Full, Amount = 1 })
 							TriggerClientEvent("inventory:Update",source)
 							Users.Attachs[Passport][Weapon][Full] = true
 							vCLIENT.GiveComponent(source,Component)

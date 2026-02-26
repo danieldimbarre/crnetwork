@@ -60,7 +60,7 @@ function Creative.Drops(Item,Slot,Amount)
 	local source = source
 	Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if not (Passport and Amount >= 1) then
+	if not Passport or Amount < 1 or ItemLocked(Item) then
 		return false
 	end
 

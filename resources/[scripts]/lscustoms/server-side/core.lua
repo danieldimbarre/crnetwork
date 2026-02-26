@@ -28,7 +28,7 @@ function Creative.Permission(Index)
 		return false
 	end
 
-	if not exports.bank:CheckTaxs(Passport) and not exports.bank:CheckFines(Passport) then
+	if not exports.bank:CheckTaxes(Passport) and not exports.bank:CheckFines(Passport) then
 		return true
 	end
 
@@ -39,14 +39,14 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Save(Model,Plate,Initial)
 	local source = source
-	local Passport = vRP.Passport(source)
-	local Price = Calculate(Initial,Model)
-	if not Passport or (Price > 0 and not vRP.PaymentFull(Passport,Price,true)) then
+	local OtherPassport = vRP.PassportPlate(Plate)
+	if not OtherPassport then
 		return false
 	end
 
-	local OtherPassport = vRP.PassportPlate(Plate)
-	if not OtherPassport then
+	local Passport = vRP.Passport(source)
+	local Price = Calculate(Initial,Model)
+	if not Passport or (Price > 0 and not vRP.PaymentFull(Passport,Price,true)) then
 		return false
 	end
 

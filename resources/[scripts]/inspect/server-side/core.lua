@@ -200,7 +200,7 @@ function Creative.Mount()
 			end
 		end
 
-		return Primary,Secondary,vRP.GetWeight(Passport),vRP.GetWeight(Players[Passport])
+		return Primary,Secondary,vRP.GetWeight(Passport),vRP.GetWeight(Players[Passport]),vRP.InventorySlots(Passport),vRP.InventorySlots(Players[Passport])
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -235,7 +235,7 @@ function Creative.Store(Item,Slot,Amount,Target)
 	local Slot = tostring(Slot)
 	local Target = tostring(Target)
 	local Passport = vRP.Passport(source)
-	if not Passport or not Sourcers[Passport] or not vRP.DoesEntityExist(Sourcers[Passport]) then
+	if not Passport or not Sourcers[Passport] or not vRP.DoesEntityExist(Sourcers[Passport]) or ItemLocked(Item) then
 		return false
 	end
 
@@ -275,7 +275,7 @@ function Creative.Take(Item,Slot,Target,Amount)
 	local Slot = tostring(Slot)
 	local Target = tostring(Target)
 	local Passport = vRP.Passport(source)
-	if not Passport or not Sourcers[Passport] or not vRP.DoesEntityExist(Sourcers[Passport]) then
+	if not Passport or not Sourcers[Passport] or not vRP.DoesEntityExist(Sourcers[Passport]) or ItemLocked(Item) then
 		return false
 	end
 

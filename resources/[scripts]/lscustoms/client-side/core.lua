@@ -98,9 +98,9 @@ function Open(Vehicle,Logo)
 	SetNuiFocus(Focus,Focus)
 	SetCursorLocation(0.5,0.5)
 	TriggerEvent("hud:Active",false)
-	SendNUIMessage({ Action = "Open", Payload = { Logo,Initial } })
 	Information["Model"] = GetEntityArchetypeName(Information["Vehicle"])
 	Information["Plate"] = GetVehicleNumberPlateText(Information["Vehicle"])
+	SendNUIMessage({ Action = "Open", Payload = { Logo = Logo, Customs = Initial } })
 	TriggerServerEvent("lscustoms:Network",NetworkGetNetworkIdFromEntity(Information["Vehicle"]),Information["Plate"])
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -690,7 +690,7 @@ CreateThread(function()
 						TimeDistance = 1
 
 						if IsControlJustPressed(1,38) and vSERVER.Permission(Index) then
-							SetEntityCoords(Vehicle,v["Coords"]["xyz"])
+							SetEntityCoordsNoOffset(Vehicle,v["Coords"]["xyz"])
 							SetEntityHeading(Vehicle,v["Coords"]["w"])
 							Open(Vehicle,v["Logo"])
 						end
@@ -714,8 +714,8 @@ AddEventHandler("lscustoms:Open",function()
 		local Vehicle = GetVehiclePedIsUsing(Ped)
 
 		if GetPedInVehicleSeat(Vehicle,-1) == Ped then
+			SetEntityCoordsNoOffset(Vehicle,Coords)
 			SetEntityHeading(Vehicle,Heading)
-			SetEntityCoords(Vehicle,Coords)
 			Open(Vehicle,"lscustoms.png")
 		end
 	end

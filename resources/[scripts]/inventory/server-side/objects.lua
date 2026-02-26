@@ -168,13 +168,7 @@ local Default = {
 	{ Coords = { -3048.43,585.41,7.66,106.96 }, Object = "p_v_43_safe_s", Ground = true },
 
 	-- PROPERTYS
-	{ Coords = { 21.28,-34.47,-24.25,231.47 }, Object = "p_v_43_safe_s", Ground = true },
-	{ Coords = { 98.89,-107.51,-24.45,224.95 }, Object = "p_v_43_safe_s", Ground = true },
-	{ Coords = { 91.47,74.95,-24.26,269.15 }, Object = "p_v_43_safe_s", Ground = true },
-	{ Coords = { 165.72,-152.01,-18.05,214.77 }, Object = "p_v_43_safe_s", Ground = true },
-	{ Coords = { 121.21,-116.41,-31.46,186.32 }, Object = "p_v_43_safe_s", Ground = true },
-	{ Coords = { 188.09,-202.5,-24.25,89.74 }, Object = "p_v_43_safe_s", Ground = true },
-	{ Coords = { 51.0,-43.67,-24.28,52.65 }, Object = "p_v_43_safe_s", Ground = true },
+	{ Coords = { 0.38,203.2,-100.81,0.76 }, Object = "p_v_43_safe_s", Ground = true }, -- Hotel
 
 	-- SLOTMACHINE
 	{ Coords = { 984.25,64.95,122.12,149.36 }, Object = "vw_prop_casino_slot_04a", Ground = true },
@@ -186,7 +180,10 @@ local Default = {
 	-- ADMIN
 	{ Coords = { 268.53,2861.36,42.65,31.46 }, Object = "prop_byard_machine03", Mode = "Recycle", Weight = 1.0 },
 	{ Coords = { -179.99,6263.39,30.51,41.2 }, Object = "prop_byard_machine03", Mode = "Recycle", Weight = 1.0 },
-	{ Coords = { 966.66,-1912.34,30.15,0.51 }, Object = "prop_byard_machine03", Mode = "Recycle", Weight = 1.0 }
+	{ Coords = { 966.66,-1912.34,30.15,0.51 }, Object = "prop_byard_machine03", Mode = "Recycle", Weight = 1.0 },
+
+	-- CAMERAS
+	{ Coords = { 155.03,-1038.76,32.31,181.06 }, Name = "Praça", Object = "prop_cctv_cam_06a", Mode = "Camera", Weight = -0.25, Ground = true, BlockStore = true }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADINITOBJECTS
@@ -200,8 +197,8 @@ CreateThread(function()
 		Objects[Selected] = v
 	end
 
-	local Consult = vRP.Query("entitydata/GetData",{ Name = "SaveObjects" })
-	SaveObjects = Consult and Consult[1] and json.decode(Consult[1].Information) or {}
+	local Consult = vRP.SingleQuery("entitydata/GetData",{ Name = "SaveObjects" })
+	SaveObjects = Consult and json.decode(Consult.Information) or {}
 
 	for Index,v in pairs(SaveObjects) do
 		if v.Item and ItemDurability(v.Item) and vRP.CheckDamaged(v.Item) then
@@ -264,12 +261,25 @@ end)
 -- INVENTORY:STOREOBJECTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("inventory:StoreObjects")
-AddEventHandler("inventory:StoreObjects",function(Number)
+AddEventHandler("inventory:StoreObjects",function(Number,Hash)
 	local source = source
 	local Object = Objects[Number]
 	local Passport = vRP.Passport(source)
+	if not Passport or Active[Passport] then
+		return false
+	end
 
-	if not Passport or not Object or Active[Passport] then
+	local Property = exports.propertys:Inside(Passport)
+	if Property then
+		local Consult = exports.propertys:Objects(Property)
+		if not Consult then
+			return false
+		end
+
+		Object = Consult[Number]
+	end
+
+	if not Object or Object.BlockStore then
 		return false
 	end
 
@@ -286,12 +296,20 @@ AddEventHandler("inventory:StoreObjects",function(Number)
 		return false
 	end
 
-	if Object.Mode ~= "Sprays" then
+	if Property or Object.Mode ~= "Sprays" then
 		local Item = Object.Item
 		if Item and Item ~= "spikestrips" then
 			if not IsAdmin and Object.Passport and Object.Passport ~= Passport then
 				Active[Passport] = nil
 				return false
+			end
+
+			if Property then
+				local Consult = vRP.SingleQuery("propertys/Exist",{ Name = Property })
+				if not Consult or (Consult.Passport ~= Passport and not vRP.InventoryFull(Passport,"propertys-"..Consult.Serial)) then
+					Active[Passport] = nil
+					return false
+				end
 			end
 
 			if not vRP.MaxItens(Passport,Item) and vRP.CheckWeight(Passport,Item) then
@@ -302,9 +320,17 @@ AddEventHandler("inventory:StoreObjects",function(Number)
 			end
 		end
 
-		TriggerClientEvent("objects:Remover",-1,Number)
-		SaveObjects[Number] = nil
-		Objects[Number] = nil
+		if not Property then
+			TriggerClientEvent("objects:Remover",-1,Number)
+			SaveObjects[Number] = nil
+			Objects[Number] = nil
+		else
+			TriggerEvent("propertys:Remover",Property,Number)
+
+			if Hash then
+				vRP.RemSrvData(Hash)
+			end
+		end
 	else
 		if not Delay[Permission] then
 			Delay[Permission] = { Timer = CurrentTimer + 600, Number = Number }

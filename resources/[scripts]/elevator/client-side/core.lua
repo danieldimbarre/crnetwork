@@ -38,7 +38,7 @@ RegisterNUICallback("Click",function(Data,Callback)
 		DoScreenFadeOut(0)
 		SetNuiFocus(false,false)
 		TriggerEvent("hud:Active",false)
-		SetEntityCoords(Ped,Config[Selected][Floor]["Coords"])
+		SetEntityCoordsNoOffset(Ped,Config[Selected][Floor].Coords)
 
 		SetTimeout(2500,function()
 			TriggerEvent("hud:Active",true)

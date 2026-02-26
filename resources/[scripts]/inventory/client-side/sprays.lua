@@ -22,8 +22,8 @@ function Creative.SprayControlling(Model)
 		local Coords = GetEntityCoords(Ped)
 
 		TriggerEvent("inventory:Buttons",{
-			{ "F","Cancelar" },
-			{ "H","Pichar" }
+			{ Letter = "F", Text = "Cancelar" },
+			{ Letter = "H", Text = "Pichar" }
 		})
 
 		while true do

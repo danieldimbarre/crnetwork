@@ -20,8 +20,8 @@ local Plants = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
 	local CurrentTimer = os.time()
-	local Consult = vRP.Query("entitydata/GetData",{ Name = "Plants" })
-	Plants = Consult and Consult[1] and json.decode(Consult[1].Information) or {}
+	local Consult = vRP.SingleQuery("entitydata/GetData",{ Name = "Plants" })
+	Plants = Consult and json.decode(Consult.Information) or {}
 
 	for Index,v in pairs(Plants) do
 		if v.Timer and (CurrentTimer - v.Timer) > 36000 then

@@ -210,7 +210,7 @@ RegisterNUICallback("Drive", function(Data, Callback)
 				LocalPlayer.state:set("Commands",false,true)
 
 				SetEntityHeading(Ped,Config[Selected].DriveOut.w)
-				SetEntityCoords(Ped,Config[Selected].DriveOut.xyz)
+				SetEntityCoordsNoOffset(Ped,Config[Selected].DriveOut.xyz)
 
 				if DoesEntityExist(Preview) then
 					DeleteEntity(Preview)

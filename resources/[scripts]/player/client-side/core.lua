@@ -392,7 +392,7 @@ AddEventHandler("player:checkTrunk",function()
 		SetEntityVisible(Ped,true)
 		DetachEntity(Ped,false,false)
 		LocalPlayer.state:set("Commands",false,true)
-		SetEntityCoords(Ped,Coords,false,false,false,false)
+		SetEntityCoordsNoOffset(Ped,Coords,false,false,false)
 
 		Trunked = false
 	end
@@ -405,7 +405,7 @@ AddEventHandler("player:enterTrash",function(Entity)
 		local Ped = PlayerPedId()
 		LastCameraView = GetFollowPedCamViewMode()
 
-		SetEntityCoords(Ped,Entity[4],false,false,false,false)
+		SetEntityCoordsNoOffset(Ped,Entity[4],false,false,false)
 		LocalPlayer.state:set("Commands",true,true)
 		FreezeEntityPosition(Ped,true)
 		SetEntityVisible(Ped,false)
@@ -442,7 +442,7 @@ AddEventHandler("player:checkTrash",function()
 		FreezeEntityPosition(Ped,false)
 		SetFollowPedCamViewMode(LastCameraView)
 		LocalPlayer.state:set("Commands",false,true)
-		SetEntityCoords(Ped,Trashed,false,false,false,false)
+		SetEntityCoordsNoOffset(Ped,Trashed,false,false,false)
 
 		Trashed = false
 	end

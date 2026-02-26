@@ -4,7 +4,8 @@
 MarketplaceTax = 0.03 -- Taxa em cima do valor do item anunciado.
 SalaryCooldown = 1800 -- Quantidade de segundos.
 HomeBoxes = { 1,2,3 } -- ID das caixas que vão aparecer no inicio
-ShopAllDisplay = true -- Mostra a opção "Todos" na Loja
+ShopAllDisplay = false -- Mostra a opção "Todos" na Loja
+FurnituresAllDisplay = false -- Mostra a opção "Todos" na Loja de Móveis
 BattlepassPoints = 500 -- Pontos para resgatar cada item
 BattlepassPrice = 10000 -- Valor para comprar o passe
 StatisticsMessage = "As informações apresentadas nesta página não devem ser utilizadas dentro do roleplay.<br>Todo o conteúdo aqui exibido tem caráter informativo e de consulta pessoal apenas.<br>O uso dessas informações para obter vantagens, reproduzir situações ou influenciar eventos dentro do servidor é estritamente proibido e pode resultar em punições administrativas." -- Mensagem que aparece nas estatisticas, false para remover
@@ -631,21 +632,6 @@ ShopItens = {
 		Discount = 1.0,
 		Category = "Diamantes"
 	},
-	personalp = {
-		Price = 2000,
-		Discount = 1.0,
-		Category = "Pessoal"
-	},
-	personalm = {
-		Price = 4000,
-		Discount = 1.0,
-		Category = "Pessoal"
-	},
-	personalg = {
-		Price = 7000,
-		Discount = 1.0,
-		Category = "Pessoal"
-	},
 	chestgroupp = {
 		Price = 25000,
 		Discount = 1.0,
@@ -830,6 +816,41 @@ ShopItens = {
 		Price = 5000,
 		Discount = 1.0,
 		Category = "Domésticos"
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FURNITURESITENS
+-----------------------------------------------------------------------------------------------------------------------------------------
+FurnituresItens = {
+	furniture_simplebox = {
+		Price = 5000,
+		Discount = 1.0,
+		Category = "Cofres"
+	},
+	furniture_safebox = {
+		Price = 10000,
+		Discount = 1.0,
+		Category = "Cofres"
+	},
+	furniture_officebox = {
+		Price = 25000,
+		Discount = 1.0,
+		Category = "Cofres"
+	},
+	furniture_industrialbox = {
+		Price = 50000,
+		Discount = 1.0,
+		Category = "Cofres"
+	},
+	furniture_ornamentbox = {
+		Price = 75000,
+		Discount = 1.0,
+		Category = "Cofres"
+	},
+	furniture_goldenbox = {
+		Price = 125000,
+		Discount = 1.0,
+		Category = "Cofres"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

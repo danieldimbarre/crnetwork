@@ -291,7 +291,7 @@ function FinishSurvival()
 
 	DoScreenFadeOut(0)
 	SetEntityHeading(Ped,136.07)
-	SetEntityCoords(Ped,315.26,-1412.37,31.62)
+	SetEntityCoordsNoOffset(Ped,315.26,-1412.37,31.62)
 
 	SetTimeout(5000,function()
 		TriggerEvent("hud:Active",true)

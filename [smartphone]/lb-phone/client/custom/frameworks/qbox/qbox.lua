@@ -22,6 +22,7 @@ PlayerData = QB.Functions.GetPlayerData()
 
 RegisterNetEvent("QBCore:Client:OnPlayerLoaded", function()
     PlayerData = QB.Functions.GetPlayerData()
+    PlayerJob = PlayerData.job
 
     FetchPhone()
 end)
@@ -34,6 +35,12 @@ end)
 
 RegisterNetEvent("QBCore:Player:SetPlayerData", function(newData)
     PlayerData = newData
+
+    local metadata = newData.metadata or {}
+
+    if (metadata.ishandcuffed or metadata.isdead or metadata.inlaststand) and phoneOpen then
+        OnDeath()
+    end
 
     if not Config.Item.Require or Config.Item.Unique then
         return
@@ -54,12 +61,12 @@ RegisterNetEvent("QBCore:Client:OnMoneyChange", function(moneyType)
     SendReactMessage("wallet:setBalance", math.floor(PlayerData.money.bank))
 end)
 
-function CanOpenPhone()
-    local metadata = QB.Functions.GetPlayerData().metadata
+AddCheck("openPhone", function()
+    local metadata = PlayerData.metadata or {}
 
     if metadata.ishandcuffed or metadata.isdead or metadata.inlaststand then
         return false
     end
 
     return true
-end
+end)

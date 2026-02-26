@@ -13,6 +13,9 @@ local function GenerateRequestId()
     return requestId
 end
 
+---@param event string
+---@param cb? fun(...): nil
+---@param ... any
 function TriggerCallback(event, cb, ...)
     local requestId = GenerateRequestId()
 
@@ -37,6 +40,9 @@ end
 
 exports("TriggerCallback", TriggerCallback)
 
+---@param event string
+---@param ... any
+---@return ... any
 function AwaitCallback(event, ...)
     local responsePromise = promise.new()
 

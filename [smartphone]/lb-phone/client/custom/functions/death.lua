@@ -5,7 +5,7 @@ local function JustDied()
 
     OnDeath()
 
-    while IsPedDeadOrDying(PlayerPedId(), false) do
+    while IsPedDeadOrDying(PlayerPedId(), false) or ESX?.PlayerData?.dead do
         Wait(500)
     end
 

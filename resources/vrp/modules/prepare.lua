@@ -49,8 +49,8 @@ vRP.Prepare("playerdata/SetData","INSERT INTO playerdata (Passport,Name,Informat
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ENTITYDATA
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("entitydata/RemoveData","DELETE FROM entitydata WHERE Name = @Name LIMIT 1")
-vRP.Prepare("entitydata/GetData","SELECT Information FROM entitydata WHERE Name = @Name LIMIT 1")
+vRP.Prepare("entitydata/RemoveData","DELETE FROM entitydata WHERE Name = @Name")
+vRP.Prepare("entitydata/GetData","SELECT Information FROM entitydata WHERE Name = @Name")
 vRP.Prepare("entitydata/SetData","INSERT INTO entitydata (Name,Information) VALUES (@Name,@Information) ON DUPLICATE KEY UPDATE Information = VALUES(Information)")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VEHICLES
@@ -96,47 +96,11 @@ vRP.Prepare("propertys/AllUser","SELECT * FROM propertys WHERE Passport = @Passp
 vRP.Prepare("propertys/Item","UPDATE propertys SET Item = Item + 1 WHERE Name = @Name")
 vRP.Prepare("propertys/Garage","UPDATE propertys SET Garage = @Garage WHERE Name = @Name")
 vRP.Prepare("propertys/Credentials","UPDATE propertys SET Serial = @Serial WHERE Name = @Name")
-vRP.Prepare("propertys/Vault","UPDATE propertys SET Vault = Vault + @Weight WHERE Name = @Name")
 vRP.Prepare("propertys/Transfer","UPDATE propertys SET Passport = @Passport WHERE Name = @Name")
 vRP.Prepare("propertys/Count","SELECT COUNT(Passport) FROM propertys WHERE Passport = @Passport")
-vRP.Prepare("propertys/Fridge","UPDATE propertys SET Fridge = Fridge + @Weight WHERE Name = @Name")
 vRP.Prepare("propertys/Check","SELECT * FROM propertys WHERE Name = @Name AND Passport = @Passport")
 vRP.Prepare("propertys/Tax","UPDATE propertys SET Tax = UNIX_TIMESTAMP() + (86400 * 30) WHERE Name = @Name")
-vRP.Prepare("propertys/Buy","INSERT INTO propertys (Name,Interior,Passport,Serial,Vault,Fridge,Tax) VALUES (@Name,@Interior,@Passport,@Serial,@Vault,@Fridge,UNIX_TIMESTAMP() + (86400 * 30))")
------------------------------------------------------------------------------------------------------------------------------------------
--- TAXS
------------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("taxs/List","SELECT * FROM taxs WHERE Passport = @Passport")
-vRP.Prepare("taxs/Remove","DELETE FROM taxs WHERE Passport = @Passport AND id = @id")
-vRP.Prepare("taxs/Check","SELECT * FROM taxs WHERE Passport = @Passport AND id = @id")
-vRP.Prepare("taxs/Add","INSERT INTO taxs (Passport,Name,Date,Hour,Price,Message) VALUES (@Passport,@Name,@Date,@Hour,@Price,@Message)")
------------------------------------------------------------------------------------------------------------------------------------------
--- TRANSACTIONS
------------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("transactions/List","SELECT * FROM transactions WHERE Passport = @Passport ORDER BY id DESC LIMIT @Limit")
-vRP.Prepare("transactions/Add","INSERT INTO transactions (Passport,Type,Date,Price,Balance,Timeset) VALUES (@Passport,@Type,@Date,@Price,@Balance,UNIX_TIMESTAMP() + (86400 * 30))")
------------------------------------------------------------------------------------------------------------------------------------------
--- DEPENDENTS
------------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("dependents/List","SELECT * FROM dependents WHERE Passport = @Passport")
-vRP.Prepare("dependents/Remove","DELETE FROM dependents WHERE Passport = @Passport AND Dependent = @Dependent")
-vRP.Prepare("dependents/Check","SELECT * FROM dependents WHERE Passport = @Passport AND Dependent = @Dependent")
-vRP.Prepare("dependents/Add","INSERT INTO dependents (Passport,Dependent,Name) VALUES (@Passport,@Dependent,@Name)")
------------------------------------------------------------------------------------------------------------------------------------------
--- INVOICES
------------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("invoices/Remove","DELETE FROM invoices WHERE id = @id")
-vRP.Prepare("invoices/Check","SELECT * FROM invoices WHERE id = @id")
-vRP.Prepare("invoices/List","SELECT * FROM invoices WHERE Passport = @Passport")
-vRP.Prepare("invoices/Add","INSERT INTO invoices (Passport,Received,Type,Reason,Holder,Price) VALUES (@Passport,@Received,@Type,@Reason,@Holder,@Price)")
------------------------------------------------------------------------------------------------------------------------------------------
--- INVESTMENTS
------------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("investments/Remove","DELETE FROM investments WHERE Passport = @Passport")
-vRP.Prepare("investments/Check","SELECT * FROM investments  WHERE Passport = @Passport")
-vRP.Prepare("investments/Add","INSERT INTO investments (Passport,Deposit,Last) VALUES (@Passport,@Deposit,UNIX_TIMESTAMP() + 86400)")
-vRP.Prepare("investments/Invest","UPDATE investments SET Deposit = Deposit + @Price, Last = UNIX_TIMESTAMP() + 86400 WHERE Passport = @Passport")
-vRP.Prepare("investments/Actives","UPDATE investments SET Monthly = Monthly + FLOOR((Deposit + Liquid) * 0.005), Liquid = Liquid + FLOOR((Deposit + Liquid) * 0.005), Last = UNIX_TIMESTAMP() + 86400 WHERE Last < UNIX_TIMESTAMP()")
+vRP.Prepare("propertys/Buy","INSERT INTO propertys (Name,Interior,Passport,Serial,Tax) VALUES (@Name,@Interior,@Passport,@Serial,UNIX_TIMESTAMP() + (86400 * 30))")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HWID
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -146,7 +110,6 @@ vRP.Prepare("hwid/Insert","INSERT INTO hwid (Token,Account) VALUES (@Token,@Acco
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLEARTABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
-vRP.Prepare("summerz/Transactions","DELETE FROM transactions WHERE Timeset <= UNIX_TIMESTAMP()")
 vRP.Prepare("summerz/Playerdata","DELETE FROM playerdata WHERE Information = '[]' OR Information = '{}'")
 vRP.Prepare("summerz/Entitydata","DELETE FROM entitydata WHERE Information = '[]' OR Information = '{}'")
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -164,5 +127,4 @@ vRP.Prepare("summerz/PhoneInstagram","DELETE FROM phone_instagram_notifications 
 CreateThread(function()
 	vRP.Query("summerz/Playerdata")
 	vRP.Query("summerz/Entitydata")
-	vRP.Query("summerz/Transactions")
 end)

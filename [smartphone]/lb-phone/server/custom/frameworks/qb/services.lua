@@ -59,6 +59,12 @@ end
 ---@param job string
 ---@return table # Player sources
 function GetEmployees(job)
+    if QB.Functions.GetPlayersByJob then
+        return QB.Functions.GetPlayersByJob(job, true)
+    end
+
+    debugprint("Using old GetEmployees method. Consider updating qb-core for better performance.")
+
     local employees = {}
     local players = QB.Functions.GetQBPlayers()
 
@@ -109,7 +115,9 @@ function RefreshCompanies()
 end
 
 CreateThread(function()
-    for _, player in pairs(QB.Functions.GetQBPlayers()) do
+    local players = QB.Functions.GetQBPlayers()
+
+    for _, player in pairs(players) do
         local playerData = player.PlayerData
         local job = playerData.job
         local jobName = job.name
@@ -123,8 +131,6 @@ CreateThread(function()
         jobCounts[jobName] = (jobCounts[jobName] or 0) + 1
         jobDutyCounts[jobName] = (jobDutyCounts[jobName] or 0) + (onDuty and 1 or 0)
     end
-
-    debugprint("qb jobs: initial data", playerJobs, jobCounts, jobDutyCounts)
 end)
 
 AddEventHandler('QBCore:Server:PlayerLoaded', function(Player)
@@ -197,8 +203,6 @@ AddEventHandler("QBCore:Server:OnJobUpdate", function(src, job)
     if shouldRefresh then
         RefreshCompanies()
     end
-
-    debugprint(playerJobs, jobCounts, jobDutyCounts)
 end)
 
 local function UnloadJob(src)
@@ -212,8 +216,6 @@ local function UnloadJob(src)
     jobDutyCounts[lastJob.name] = (jobDutyCounts[lastJob.name] or 0) - (lastJob.onduty and 1 or 0)
 
     playerJobs[src] = nil
-
-    debugprint(playerJobs, jobCounts, jobDutyCounts)
 end
 
 AddEventHandler("QBCore:Server:OnPlayerUnload", function(src)

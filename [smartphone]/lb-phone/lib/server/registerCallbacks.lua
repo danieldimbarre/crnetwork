@@ -193,7 +193,7 @@ local function CanResourceRegisterCallback(resource, event)
 end
 
 ---@param event string
----@param handler fun(source: number, phoneNumber: string, ...) : any
+---@param handler fun(source: number, ...) : any
 ---@param options? CallbackOptions
 exports("RegisterCallback", function(event, handler, options)
     local resource = GetInvokingResource()

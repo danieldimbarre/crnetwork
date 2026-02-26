@@ -173,6 +173,9 @@ RegisterNetEvent("phone:services:newMessage", function(data)
     SendReactMessage("services:newMessage", data)
 end)
 
+---@param company string
+---@param message string
+---@param anonymous? boolean
 exports("SendCompanyMessage", function(company, message, anonymous)
     assert(type(company) == "string", "Expected string for company")
     assert(type(message) == "string", "Expected string for message")
@@ -181,6 +184,9 @@ exports("SendCompanyMessage", function(company, message, anonymous)
     return AwaitCallback("services:sendMessage", nil, company, message, anonymous == true)
 end)
 
+---@param company string
+---@param coords? vector
+---@param anonymous? boolean
 exports("SendCompanyCoords", function(company, coords, anonymous)
     assert(type(company) == "string", "Expected string for company")
 
@@ -198,10 +204,13 @@ RegisterNetEvent("phone:services:channelDeleted", function(channelId)
     SendReactMessage("services:channelDeleted", channelId)
 end)
 
+---@return boolean
 exports("GetCompanyCallsStatus", function()
     return not callsDisabled
 end)
 
+---@param enable? boolean
+---@return boolean
 exports("ToggleCompanyCalls", function(enable)
     local shouldEnable = enable == nil and not callsDisabled or enable
 

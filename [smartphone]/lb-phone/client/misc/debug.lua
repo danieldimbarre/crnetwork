@@ -5,6 +5,8 @@ RegisterCommand("phonedebug", function()
     print("DEBUG:", Config.Debug)
 end, false)
 
+---@param command string
+---@param fn fun(source: number, args: string[], rawCommand: string)
 local function RegisterDebugCommand(command, fn)
     RegisterCommand("phone" .. command, function(...)
         if not Config.Debug then

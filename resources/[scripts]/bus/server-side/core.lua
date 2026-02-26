@@ -18,15 +18,16 @@ local Attention = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAYMENT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Payment(Selected)
+function Creative.Payment(Route,Selected)
 	local source = source
+	local Select = Locations[Route]
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Locations[Selected] then
+	if Passport and not Active[Passport] and Select then
 		Active[Passport] = true
 
 		local Coords = vRP.GetEntityCoords(source)
 		local Inside = vRPC.LastVehicle(source,"bus")
-		local Distance = #(Coords - Locations[Selected])
+		local Distance = #(Coords - Select.Coords[Selected])
 		if not Selected or not Inside or Distance > 25 then
 			exports.discord:Embed("Hackers","**[PASSAPORTE]:** "..Passport.."\n**[FUNÇÃO]:** Payment do Motorista",source)
 
@@ -36,10 +37,10 @@ function Creative.Payment(Selected)
 			end
 		end
 
-		local GainExperience = 1
-		local Amount = math.random(35,45)
+		local Amount = math.random(Select.Payment.Min,Select.Payment.Max)
 		local _,Level = vRP.GetExperience(Passport,"Driver")
 		local Valuation = Amount + Amount * (0.05 * Level)
+		local GainExperience = 1
 
 		if exports.party:DoesExist(Passport,4) then
 			Valuation = Valuation + (Valuation * 0.1)

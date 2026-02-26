@@ -20,21 +20,6 @@ local Cooldown = {}
 -- CHESTITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 local ChestItens = {
-	["personalp"] = {
-		Slots = 100,
-		Weight = 100,
-		Block = true
-	},
-	["personalm"] = {
-		Slots = 100,
-		Weight = 250,
-		Block = true
-	},
-	["personalg"] = {
-		Slots = 100,
-		Weight = 500,
-		Block = true
-	},
 	["chestgroupp"] = {
 		Slots = 100,
 		Weight = 1000,
@@ -312,7 +297,7 @@ function Creative.Mount()
 		end
 	end
 
-	return Primary,Secondary,vRP.GetWeight(Passport),Open[Passport].Weight,Open[Passport].Slots
+	return Primary,Secondary,vRP.GetWeight(Passport),Open[Passport].Weight,vRP.InventorySlots(Passport),Open[Passport].Slots
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STORE
@@ -321,53 +306,70 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 	local source = source
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-
-	if not (Passport and Open[Passport] and not Inactived) then
+	local OpenData = Passport and Open[Passport]
+	if not Passport or not OpenData or Inactived or ItemLocked(Item) then
 		TriggerClientEvent("inventory:Update",source)
-
 		return false
 	end
 
-	if Open[Passport].Recycle then
+	local function UpdateInventory()
+		TriggerClientEvent("inventory:Update",source)
+	end
+
+	local function NotifyError(Message)
+		TriggerClientEvent("inventory:Notify",source,"Atenção",Message,"amarelo")
+		UpdateInventory()
+	end
+
+	if OpenData.Recycle then
+		if ItemDurability(Item) and not vRP.CheckDamaged(Item) then
+			NotifyError(ItemName(Item).." não pode ser reciclado.")
+			return false
+		end
+
 		local Recycled = ItemRecycle(Item)
-		if Recycled and vRP.TakeItem(Passport,Item,Amount) then
-			for Index,Number in pairs(Recycled) do
-				vRP.GenerateItem(Passport,Index,Number * Amount)
-			end
-
-			TriggerClientEvent("inventory:Update",source)
-		else
-			TriggerClientEvent("inventory:Notify",source,"Atenção",ItemName(Item).." não pode ser reciclado.","amarelo")
-			TriggerClientEvent("inventory:Update",source)
+		if not Recycled or not vRP.TakeItem(Passport,Item,Amount) then
+			NotifyError(ItemName(Item).." não pode ser reciclado.")
+			return false
 		end
+
+		for Index,Number in pairs(Recycled) do
+			vRP.GenerateItem(Passport,Index,Number * Amount)
+		end
+
+		UpdateInventory()
 
 		return false
 	end
 
-	if Item == "diagram" and Open[Passport].Chest and vRP.TakeItem(Passport,Item,Amount) then
-		vRP.Update("chests/UpdateWeight",{ Name = Open[Passport].Chest, Multiplier = Amount })
+	if Item == "diagram" and OpenData.Chest and vRP.TakeItem(Passport,Item,Amount) then
 		TriggerClientEvent("inventory:Notify",source,"Sucesso","Armazenamento melhorado.","verde")
-		Open[Passport].Weight = Open[Passport].Weight + (10 * Amount)
-		TriggerClientEvent("inventory:Update",source)
+		vRP.Update("chests/UpdateWeight",{ Name = OpenData.Chest, Multiplier = Amount })
+		OpenData.Weight = OpenData.Weight + (10 * Amount)
+		UpdateInventory()
 
 		return false
 	end
 
-	local CleanedItem = SplitOne(Item)
-	local Unique = Open[Passport].Unique
-	if (ChestItens[CleanedItem] and ChestItens[CleanedItem].Block) or (Unique and ChestItens[Unique] and ChestItens[Unique].Itens and not ChestItens[Unique].Itens[CleanedItem]) then
-		if Unique and CleanedItem == Unique then
-			TriggerClientEvent("inventory:Open",source,{ Type = "Inventory", Resource = "inventory", Right = "Proximidade" },true)
+	local Cleaned = SplitOne(Item)
+	local Uniqued = OpenData.Unique
+	local ChestConfig = ChestItens[Uniqued]
+	if (ChestItens[Cleaned] and ChestItens[Cleaned].Block) or (Uniqued and ChestConfig and ChestConfig.Itens and not ChestConfig.Itens[Cleaned]) then
+		if Uniqued and Cleaned == Uniqued then
+			TriggerClientEvent("inventory:Open",source,{
+				Type = "Inventory",
+				Resource = "inventory",
+				Right = "Proximidade"
+			},true)
 		else
-			TriggerClientEvent("inventory:Update",source)
+			UpdateInventory()
 		end
 
 		return false
 	end
 
-	if vRP.StoreChest(Passport,Open[Passport].Name,Amount,Open[Passport].Weight,Slot,Target,Open[Passport].Save,ChestItens[Unique]) then
-		TriggerClientEvent("inventory:Update",source)
-
+	if vRP.StoreChest(Passport,OpenData.Name,Amount,OpenData.Weight,Slot,Target,OpenData.Save,ChestConfig) then
+		UpdateInventory()
 		return false
 	end
 
@@ -405,6 +407,9 @@ function Creative.Take(Item,Slot,Amount,Target)
 			GlobalState.Helibox = (GlobalState.Helibox or 1) - 1
 		elseif SplitBoolean(Name,"Halloween",":") then
 			GlobalState.Hallobox = (GlobalState.Hallobox or 1) - 1
+			GlobalState[Name] = false
+		elseif SplitBoolean(Name,"Christmas",":") then
+			GlobalState.Christbox = (GlobalState.Christbox or 1) - 1
 			GlobalState[Name] = false
 		end
 	end

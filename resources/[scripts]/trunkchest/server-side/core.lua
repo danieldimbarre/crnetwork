@@ -137,7 +137,7 @@ function Creative.Mount()
 		end
 	end
 
-	return Primary,Secondary,vRP.GetWeight(Passport),Open[Passport] and Open[Passport].Weight or 0
+	return Primary,Secondary,vRP.GetWeight(Passport),Open[Passport] and Open[Passport].Weight or 0,vRP.InventorySlots(Passport)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATE
@@ -174,7 +174,7 @@ function Creative.Store(Item,Slot,Amount,Target)
 	local Model = Open[Passport].Model
 	local Weight  = Open[Passport].Weight
 
-	if (Store[Model] and not Store[Model][Split]) or (Blocked[Split] and Store[Model] and not Store[Model][Split]) or (Blocked[Split] and not Store[Model]) then
+	if (Store[Model] and not Store[Model][Split]) or (Blocked[Split] and Store[Model] and not Store[Model][Split]) or (Blocked[Split] and not Store[Model]) or ItemLocked(Split) then
 		TriggerClientEvent("Notify",source,"Aviso","Armazenamento proibido.","amarelo",5000)
 		TriggerClientEvent("inventory:Update",source)
 
@@ -263,7 +263,7 @@ AddEventHandler("trunkchest:openTrunk",function(Entity)
 	end
 
 	Open[Passport] = { Model = Model, Weight = Weight, Passport = OtherPassport, Data = ("Trunkchest:%s:%s"):format(OtherPassport,Model) }
-	TriggerClientEvent("trunkchest:Open",source)
+	TriggerClientEvent("trunkchest:Open",source,Entity[3])
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT

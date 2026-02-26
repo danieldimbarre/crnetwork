@@ -83,7 +83,7 @@ end)
 RegisterNetEvent("chest:Open")
 AddEventHandler("chest:Open",function(Name,Mode,Item,Blocked,Force)
 	if vSERVER.Permissions(Name,Mode,Item) and GetEntityHealth(PlayerPedId()) > 100 then
-		if Blocked or SplitBoolean(Name,"Helicrash",":") or SplitBoolean(Name,"Halloween",":") then
+		if Blocked or SplitBoolean(Name,"Helicrash",":") or SplitBoolean(Name,"Halloween",":") or SplitBoolean(Name,"Christmas",":") then
 			Block = true
 		end
 
@@ -155,26 +155,37 @@ end)
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
-	Callback(vSERVER.Take(Data.item,Data.slot,Data.amount,Data.target))
+	Callback(vSERVER.Take(Data.Item,Data.Slot,Data.Amount,Data.Target))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- STORE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Store",function(Data,Callback)
-	Callback(vSERVER.Store(Data.item,Data.slot,Data.amount,Data.target,Block))
+	Callback(vSERVER.Store(Data.Item,Data.Slot,Data.Amount,Data.Target,Block))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Update",function(Data,Callback)
-	Callback(vSERVER.Update(Data.slot,Data.target,Data.amount))
+	Callback(vSERVER.Update(Data.Slot,Data.Target,Data.Amount))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Mount",function(Data,Callback)
-	local Primary,Secondary,PrimaryWeight,SecondaryWeight,Slots = vSERVER.Mount()
+	local Primary,Secondary,PrimaryWeight,SecondaryWeight,PrimarySlots,SecondarySlots = vSERVER.Mount()
 	if Primary then
-		Callback({ Primary = Primary, Secondary = Secondary, PrimaryMaxWeight = PrimaryWeight, SecondaryMaxWeight = SecondaryWeight, SecondarySlots = math.max(CountTable(Secondary),Slots) })
+		Callback({
+			Primary = {
+				Data = Primary,
+				MaxWeight = PrimaryWeight,
+				Slots = PrimarySlots or Theme.inventory.slots.default
+			},
+			Secondary = {
+				Data = Secondary,
+				MaxWeight = SecondaryWeight,
+				Slots = SecondarySlots or Theme.inventory.slots.default
+			}
+		})
 	end
 end)

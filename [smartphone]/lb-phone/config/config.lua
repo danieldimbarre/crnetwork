@@ -3,6 +3,7 @@ Config.Debug = false -- Set to true to enable debug mode
 
 Config.Logs = {}
 Config.Logs.Enabled = false
+-- Use code "LBLOGS" for 20% off the https://fivemanage.com/ Logs Pro plan.
 Config.Logs.Service = "discord" -- fivemanage, discord or ox_lib. if discord, set your webhook in server/apiKeys.lua
 Config.Logs.Avatar = false -- attempt to get the player's avatar for discord logging?
 Config.Logs.Dataset = "default" -- fivemanage dataset
@@ -75,8 +76,9 @@ Config.Item.Name = "cellphone" -- name of the phone item
 Config.Item.Unique = false -- should each phone be unique? https://docs.lbscripts.com/phone/configuration/#unique-phones
 Config.Item.Inventory = "auto" --[[
     The inventory you use, IGNORE IF YOU HAVE Config.Item.Unique DISABLED.
-    Supported:
-        * auto: auto-detect inventory (ONLY WORKS WITH THE ONE LISTED BELOW)
+
+    Supported inventory scripts: (if you do not have one of the inventories below, you will have to leave Config.Item.Unique disabled)
+        * auto: auto-detect inventory
         * ox_inventory - https://github.com/overextended/ox_inventory
         * qb-inventory - https://github.com/qbcore-framework/qb-inventory
         * lj-inventory - https://github.com/loljoshie/lj-inventory
@@ -86,22 +88,34 @@ Config.Item.Inventory = "auto" --[[
         * codem-inventory - https://codem.tebex.io/package/5900973
 ]]
 
-Config.ServerSideSpawn = true -- should entities be spawned on the server? (phone prop, vehicles)
+Config.ServerSideSpawn = true -- should entities be spawned on the server? (vehicles)
+Config.PropSpawn = "state" --[[
+    - client: networked, spawned on the client
+    - server: networked, spawned on the server
+    - state: spawned on each client, not networked
+]]
 
 Config.PhoneModel = `prop_amb_phone` -- the prop of the phone, if you want to use a custom phone model, you can change this here
 Config.PhoneRotation = vector3(0.0, 0.0, 0.0) -- the rotation of the phone when attached to a player
 Config.PhoneOffset = vector3(0.0, -0.005, 0.0) -- the offset of the phone when attached to a player
 
-Config.DisableOpenNUI = true -- disable the phone from opening if another script has NUI focus?
+Config.DisableOpenNUI = false -- disable the phone from opening if another script has NUI focus?
 
 Config.DynamicIsland = true -- if enabled, the phone will have a Iphone 14 Pro inspired Dynamic Island.
-Config.SetupScreen = true -- if enabled, the phone will have a setup screen when the player first uses the phone.
+Config.SetupScreen = false -- if enabled, the phone will have a setup screen when the player first uses the phone.
+Config.AppDownloadTime = 2000 -- time (in ms) it takes to download an app from the app store
 
 Config.AutoDisableSparkAccounts = true -- automatically disable inactive spark accounts? This can be set to the amount of days the account needs to be inactive to disable it, or true to disable after 7 days.
 Config.AutoDeleteNotifications = true -- notifications that are more than X hours old, will be deleted. set to false to disable. if set to true, it will delete 1 week old notifications.
 Config.MaxNotifications = 5 -- the maximum amount of notifications a player can have. if they have more than this, the oldest notifications will be deleted. set to false to disable
+Config.NotificationsUpdateZIndex = true -- update the z-index when receiving notifications? this makes the notifications appear above your hud
 Config.DisabledNotifications = { -- an array of apps that should not send notifications, note that you should use the app identifier, found in config.json
     -- "DarkChat",
+}
+
+-- These channels will be automatically joined when a user first creates their DarkChat account
+Config.AutoJoinDarkChat = {
+    -- "general",
 }
 
 --[[
@@ -146,9 +160,9 @@ Config.Companies.Enabled = true -- allow players to call companies?
 Config.Companies.MessageOffline = false -- if true, players can message companies even if no one in the company is online
 Config.Companies.DefaultCallsDisabled = false -- should receiving company calls be disabled by default?
 Config.Companies.AllowAnonymous = false -- allow players to call companies with "hide caller id" enabled?
-Config.Companies.SeeEmployees = "everyone" -- who should be able to see employees? they will see name, online status & phone number. options are: "everyone", "employees" or "none"
-Config.Companies.DeleteConversations = true -- allow employees to delete conversations?
-Config.Companies.AllowNoService = false -- allow players to call & message companies even if they have no phone service (reception)?
+Config.Companies.SeeEmployees = "none" -- who should be able to see employees? they will see name, online status & phone number. options are: "everyone", "employees" or "none"
+Config.Companies.DeleteConversations = false -- allow employees to delete conversations?
+Config.Companies.AllowNoService = true -- allow players to call & message companies even if they have no phone service (reception)?
 Config.Companies.Services = {
     {
         job = "Policia",
@@ -215,13 +229,16 @@ Config.HouseScript = "auto" --[[
     The housing script you use on your server
     Supported:
         * loaf_housing - https://store.loaf-scripts.com/package/4310850
-        * qb-houses - https://github.com/qbcore-framework/qb-houses
-        * qs-housing - https://buy.quasar-store.com/package/5677308
+        * qb-houses
+        * qs-housing
+        * vms_housing
 ]]
 
 --[[ VOICE OPTIONS ]] --
 Config.Voice = {}
 Config.Voice.CallEffects = false -- enable call effects while on speaker mode? (NOTE: This may create sound-issues if you have too many submixes registered in your server)
+Config.Voice.SpatialAudio = true -- enable 3D audio for the speakerphone?
+Config.Voice.SpatialAudioSubmixes = 1 -- the amount of submixes that are created for spatial audio
 Config.Voice.System = "pma"
 --[[
     Supported voice systems:
@@ -239,16 +256,106 @@ Config.Voice.HearNearby = false --[[
 
     If true, allow nearby players to listen to phone calls if speaker is enabled
     If false, only the people in the call will be able to hear each other
-
-    This feature is a work in progress and may not work as intended. It may have an impact on performance.
 ]]
 
 Config.Voice.RecordNearby = false -- Should video recordings include nearby players?
 Config.Voice.WaitUntilNotTalking = false -- Wait until the player is not talking before recording audio? This potentially fixes bugs with PTT getting stuck.
 
 --[[ PHONE OPTIONS ]] --
+Config.Sound = {}
+Config.Sound.System = "native" -- native: use native GTA audio, nui: play audio via nui NOTE: syncing only works when using native GTA audio
+Config.Sound.Sync = true -- syncing audio only works when using native audio
+Config.Sound.Volume = {} -- the volume options only applies to native audio
+Config.Sound.Volume.Multiplier = 1.0
+Config.Sound.Volume.Static = false -- here you can set a static volume for native sounds, instead of allowing users to change volume themselves
+Config.Sound.Volume.Min = 0.0
+Config.Sound.Volume.Max = 1.0
+Config.Sound.MaxDistance = 30.0 -- the maximum distance a sound can be heard from (only applies to native audio)
+
+Config.Sound.Ringtones = {
+    ["default"] = {
+        name = "23",
+        soundSet = "ringtone"
+    },
+    ["ringtone 1"] = {
+        name = "1",
+        soundSet = "ringtone"
+    },
+    ["ringtone 2"] = {
+        name = "7",
+        soundSet = "ringtone"
+    },
+    ["ringtone 3"] = {
+        name = "10",
+        soundSet = "ringtone"
+    },
+    ["ringtone 4"] = {
+        name = "13",
+        soundSet = "ringtone"
+    },
+    ["ringtone 5"] = {
+        name = "15",
+        soundSet = "ringtone"
+    },
+    ["ringtone 6"] = {
+        name = "17",
+        soundSet = "ringtone"
+    },
+    ["ringtone 7"] = {
+        name = "19",
+        soundSet = "ringtone"
+    },
+    ["ringtone 8"] = {
+        name = "21",
+        soundSet = "ringtone"
+    },
+    ["ringtone 9"] = {
+        name = "24",
+        soundSet = "ringtone"
+    },
+}
+
+Config.Sound.Notifications = {
+    ["default"] = {
+        name = "1",
+        soundSet = "notification"
+    },
+    ["notification 1"] = {
+        name = "2",
+        soundSet = "notification"
+    },
+    ["notification 2"] = {
+        name = "3",
+        soundSet = "notification"
+    },
+    ["notification 3"] = {
+        name = "4",
+        soundSet = "notification"
+    },
+    ["notification 4"] = {
+        name = "5",
+        soundSet = "notification"
+    },
+    ["notification 5"] = {
+        name = "6",
+        soundSet = "notification"
+    },
+    ["notification 6"] = {
+        name = "7",
+        soundSet = "notification"
+    },
+    ["notification 7"] = {
+        name = "8",
+        soundSet = "notification"
+    },
+}
+
+Config.Sound.AppNotifications = {
+    -- ["Messages"] = "default"
+}
+
 Config.CellTowers = {}
-Config.CellTowers.Enabled = true
+Config.CellTowers.Enabled = true -- use the cell towers defined in the cellTowers.lua file to calculate service? if this is set to false, GetZoneScumminess will be used instead
 Config.CellTowers.Debug = false -- show the cell towers on the map?
 Config.CellTowers.MinService = 0 -- you will always have at least this many bars
 Config.CellTowers.Range = {
@@ -257,6 +364,28 @@ Config.CellTowers.Range = {
     [2] = 750.0,
     [1] = 1500.0,
 }
+
+-- Config.CustomMaps = {
+--     {
+--         label = "RDR2",
+--         url = "https://s.rsg.sc/sc/images/games/RDR2/map/{layer}/{z}/{x}/{y}.jpg",
+--         center = { 5000, 5000 },
+--         topLeft = { -7168, 4096 },
+--         bottomRight = { 5120, -5632 },
+--         resolution = { 48841, 38666 },
+--         zoom = {
+--             default = 2,
+--             max = 8,
+--             min = 2
+--         },
+--         styles = {
+--             {
+--                 name = "game",
+--                 background = "#384950"
+--             },
+--         }
+--     },
+-- }
 
 Config.Locations = { -- Locations that'll appear in the maps app.
     {
@@ -364,6 +493,10 @@ Config.Locales = { -- If your desired language isn't here, you may contribute at
     {
         locale = "ja",
         name = "日本語",
+    },
+    {
+        locale = "ko",
+        name = "한국어",
     }
 }
 
@@ -399,6 +532,7 @@ Config.TransferLimits.Weekly = false -- The maximum amount of money that can be 
 Config.EnableMessagePay = true -- Allow players to pay other players via messages?
 Config.EnableVoiceMessages = true -- Allow players to send voice messages?
 Config.EnableGIFs = true
+Config.GIFsFilter = "low" -- https://developers.google.com/tenor/guides/content-filtering#ContentFilter-options
 
 Config.CityName = "Creative Network" -- The name that's being used in the weather app etc.
 Config.RealTime = false -- if true, the time will use real life time depending on where the user lives, if false, the time will be the ingame time.
@@ -410,6 +544,7 @@ Config.DeleteMail = false -- allow players to delete mails in the mail app?
 Config.ConvertMailToMarkdown = false -- convert mails from html to markdown?
 
 Config.DeleteMessages = true -- allow players to delete messages in the messages app?
+Config.GroupMessageMemberLimit = false -- maximum amount of members in a group message
 
 Config.SyncFlash = true -- should flashlights be synced across all players? May have an impact on performance
 Config.EndLiveClose = false -- should InstaPic live end when you close the phone?
@@ -437,15 +572,31 @@ Config.ExternalBlacklistedDomains = {
 
 -- Whitelisted domains for external images. If this is not empty/nil/false, you will only be able to upload images from these domains.
 Config.ExternalWhitelistedDomains = {
-    -- "fivemanage.com"
+    "prnt.sc",
+    "pt-br.imgbb.com",
+    "ibb.co",
+    "i.ibb.co",
+    "pin.it",
+    "i.pinimg.com",
+    "fivemanage.com",
+    "fmfile.com",
+    "cfx.re"
 }
 
 -- Set to false/empty to disable
 Config.UploadWhitelistedDomains = { -- domains that are allowed to upload images to the phone (prevent using devtools to upload images)
+    "prnt.sc",
+    "pt-br.imgbb.com",
     "fivemanage.com",
     "fmfile.com",
+    "pin.it",
+    "ibb.co",
+    "i.ibb.co",
     "cfx.re" -- lb-upload
 }
+
+Config.NameFilter = ".+"
+-- Config.NameFilter = "^[%w%s']+$" -- Only alphanumeric characters, spaces and '
 
 Config.WordBlacklist = {}
 Config.WordBlacklist.Enabled = true
@@ -465,7 +616,6 @@ Config.WordBlacklist.Apps = { -- apps that should use the word blacklist (if Con
 Config.WordBlacklist.Words = {
 	"zap",
 	"macaco",
-	"preto",
 	"arrombado",
 	"viadinho",
 	"urugutango",
@@ -479,12 +629,10 @@ Config.WordBlacklist.Words = {
 	"boiola",
 	"pau",
 	"buceta",
-	"gay",
 	"piranha",
 	"monkey",
 	"vagabunda",
 	"puta",
-	"escroto",
 	"piranha",
 	"pretinho",
 	"escurinho",
@@ -528,7 +676,7 @@ Config.BirdyTrending.Enabled = true -- show trending hashtags?
 Config.BirdyTrending.Reset = 3 * 24 -- How often should trending hashtags be reset on birdy? (in hours)
 
 Config.BirdyNotifications = false -- should everyone get a notification when someone posts? (if set to false, only followers will get a notification)
-Config.InstaPicLiveNotifications = false -- should everyone get a notification when someone goes live on InstaPic? (if set to false, only followers will get a notification)
+Config.InstaPicLiveNotifications = false -- should everyone get a notification when someone goes live on InstaPic? (if set to false, only followers will get a notification) this can also be set to "all" to also notify offfline players
 
 Config.PromoteBirdy = {}
 Config.PromoteBirdy.Enabled = true -- should you be able to promote post?
@@ -612,13 +760,70 @@ Config.DynamicWebRTC.RemoveStun = false -- remove the stun servers?
 
 Config.Crypto = {}
 Config.Crypto.Enabled = false
-Config.Crypto.Coins = {"bitcoin","ethereum","tether","binancecoin","usd-coin","ripple","binance-usd","cardano","dogecoin","solana","shiba-inu","polkadot","litecoin","bitcoin-cash"}
-Config.Crypto.Currency = "usd" -- currency to use for crypto prices. https://api.coingecko.com/api/v3/simple/supported_vs_currencies
-Config.Crypto.Refresh = 5 * 60 * 1000 -- how often should the crypto prices be refreshed (client cache)? (Default 5 minutes)
+Config.Crypto.Refund = false --[[
+    The method used to refund users with old (real-life) cryptocurrencies.
+    Can be set to:
+    - "invested" to refund the amount they invested
+    - "lastValue" to refund the last known value of their crypto holdings,
+    - "convert" to convert to "LB Coin" (lbc)
+]]
+Config.Crypto.UpdateInterval = 5 -- how often (in minutes) should the crypto prices be updated?
+Config.Crypto.Coins = {
+    ["lbc"] = {
+        name = "LB Coin",
+        icon = "./assets/img/icons/crypto/coins/lbc.webp",
+        initialValue = 50.0,
+        changes = {
+            {
+                weight = 500,
+                change = { 0.0, 2.0 } -- 0.0 - 2.0% increase
+            },
+            {
+                weight = 490,
+                change = { -2.0, -0.0 } -- 0.0 - 2.0% decrease
+            },
+            {
+                weight = 5,
+                change = { 5.0, 15.0 }
+            },
+            {
+                weight = 5,
+                change = { -15.0, -5.0 }
+            }
+        },
+        permissions = {
+            buy = true,
+            sell = true,
+            transfer = true
+        }
+    }
+}
+
 Config.Crypto.QBit = false -- support QBit? (requires qb-crypto & qb-core)
 Config.Crypto.Limits = {}
 Config.Crypto.Limits.Buy = 1000000 -- how much ($) you can buy for at once
 Config.Crypto.Limits.Sell = 1000000 -- how much ($) you can sell at once
+
+--[[ Browser App Options ]] --
+Config.Browser = {}
+
+Config.Browser.CX = "32dca7fc9f06341d2" -- The CX id used to search with Google. You can get your own id from https://cse.google.com/cse/all
+
+Config.Browser.DefaultBookmarks = {
+    {
+        title = "LB",
+        url = "https://lbscripts.com/",
+        icon = "https://lbscripts.com/assets/favicon.ico"
+    }
+}
+
+Config.Browser.WhitelistedDomains = {
+    -- "lbscripts.com",
+}
+
+Config.Browser.BlacklistedDomains = {
+    -- "example.com",
+}
 
 Config.KeyBinds = {
     -- Find keybinds here: https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/
@@ -735,9 +940,9 @@ Config.Camera.Freeze.MaxTime = 60 -- max time the camera can be frozen for (in s
 Config.UploadMethod = {}
 -- You can edit the upload methods in lb-phone/shared/upload.lua
 -- We recommend Fivemanage, https://fivemanage.com
+-- Use code LBPHONE10 for 10% off on Fivemanage
 -- A video tutorial for how to set up Fivemanage can be found here: https://www.youtube.com/watch?v=y3bCaHS6Moc
 -- If you want to host uploads yourself, you can use LBUpload: https://github.com/lbphone/lb-upload
--- We STRONGLY discourage using Discord as an upload method, as uploaded files may become inaccessible after a while.
 Config.UploadMethod.Video = "Fivemanage" -- "Fivemanage" or "LBUpload" or "Custom"
 Config.UploadMethod.Image = "Fivemanage" -- "Fivemanage" or "LBUpload" or "Custom
 Config.UploadMethod.Audio = "Fivemanage" -- "Fivemanage" or "LBUpload" or "Custom"

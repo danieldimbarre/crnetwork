@@ -16,7 +16,8 @@ vSERVER = Tunnel.getInterface("lb-phone")
 ---@param itemName string
 ---@return boolean
 function HasItem(itemName)
-    if not LocalPlayer["state"]["Active"] or IsPauseMenuActive() or LocalPlayer["state"]["Buttons"] or LocalPlayer["state"]["Commands"] or LocalPlayer["state"]["Handcuff"] or LocalPlayer["state"]["Cancel"] or IsPedReloading(Ped) then
+    local Ped = PlayerPedId()
+    if LocalPlayer.state.Banned or not LocalPlayer["state"]["Active"] or IsPauseMenuActive() or LocalPlayer["state"]["Buttons"] or LocalPlayer["state"]["Commands"] or LocalPlayer["state"]["Handcuff"] or LocalPlayer["state"]["Cancel"] or IsPedReloading(Ped) then
         return false
     end
 

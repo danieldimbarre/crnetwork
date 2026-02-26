@@ -2,21 +2,26 @@ if (Config.Item.Inventory ~= "qb-inventory" and Config.Item.Inventory ~= "lj-inv
     return
 end
 
-local function GetItemsByName(name)
-    local items = {}
-    local inventory = QB.Functions.GetPlayerData().items
-    for _, item in pairs(inventory) do
-        if item?.name == name then
-            items[#items+1] = item
+---@return table
+local function GetPhonesInInventory()
+    local phones = {}
+    local items = PlayerData?.items or {}
+
+    for _, item in pairs(items) do
+        if IsItemAPhone(item.name) then
+            phones[#phones+1] = item
         end
     end
-    return items
+
+    return phones
 end
 
 function GetFirstNumber()
-    local phones = GetItemsByName(Config.Item.Name)
+    local phones = GetPhonesInInventory()
+
     for i = 1, #phones do
         local phone = phones[i]
+
         if phone?.info?.lbPhoneNumber then
             return phone.info.lbPhoneNumber
         end
@@ -24,41 +29,53 @@ function GetFirstNumber()
 end
 
 function HasPhoneNumber(number)
-    local phones = GetItemsByName(Config.Item.Name)
+    local phones = GetPhonesInInventory()
+
     for i = 1, #phones do
         local phone = phones[i]
+
         if phone?.info?.lbPhoneNumber == number then
-            return true
+            return true, GetPhoneItemVariationIndex(phone.name)
         end
     end
+
     return false
 end
 
-RegisterNetEvent("lb-phone:usePhoneItem", function(data)
-    local number = data.info?.lbPhoneNumber
+RegisterNetEvent("lb-phone:usePhoneItem", function(item)
+    local number = item.info?.lbPhoneNumber
+
     if number ~= currentPhone or number == nil then
         SetPhone(number, true)
+
+        if Config.Item.Names then
+            local variation = GetPhoneItemVariationIndex(item.name)
+
+            if variation then
+                SetPhoneVariation(variation)
+            end
+        end
     end
 
     ToggleOpen(not phoneOpen)
 end)
 
-RegisterNetEvent("lb-phone:itemRemoved", function()
-    Wait(500)
-    if currentPhone and not HasPhoneItem(currentPhone) and Config.Item.Unique then
-        SetPhone()
-    end
-end)
-
 local waitingAdded = false
-RegisterNetEvent("lb-phone:itemAdded", function()
-    Wait(500)
-    if currentPhone or waitingAdded then
-        return
-    end
 
-    waitingAdded = true
-    local firstNumber = GetFirstNumber()
-    SetPhone(firstNumber, true)
-    waitingAdded = false
+RegisterNetEvent("QBCore:Player:SetPlayerData", function(newData)
+    Wait(500)
+
+    if currentPhone then
+        if not HasPhoneItem(currentPhone) then
+            SetPhone()
+        end
+    elseif #GetPhonesInInventory() > 0 and not waitingAdded then
+        waitingAdded = true
+
+        local firstNumber = GetFirstNumber()
+
+        SetPhone(firstNumber, true)
+
+        waitingAdded = false
+    end
 end)

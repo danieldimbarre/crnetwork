@@ -1,16 +1,18 @@
 local shouldGenerateTables = false
 
+MySQL.ready.await()
+
 if not Config.DatabaseChecker?.Enabled and not shouldGenerateTables then
     debugprint("Database checker is disabled")
+    DatabaseCheckerFinished = true
     return
 end
-
-MySQL.ready.await()
 
 local database = MySQL.scalar.await("SELECT DATABASE()")
 
 if not database then
     infoprint("error", "Database checker: Failed to get database name. The script will still work, but database changes will not apply automatically. To disable this warning, set Config.DatabaseChecker.Enabled to false")
+    DatabaseCheckerFinished = true
     return
 end
 
@@ -18,6 +20,7 @@ local databaseVersion = MySQL.scalar.await("SELECT VERSION()") or ""
 
 if not databaseVersion:find("MariaDB") then
     infoprint("error", "Database checker: Your database is not MariaDB. The script may not work as expected, and database changes will not apply automatically. To disable this warning, set Config.DatabaseChecker.Enabled to false")
+    DatabaseCheckerFinished = true
     return
 end
 
@@ -28,12 +31,14 @@ minor = minor and tonumber(minor)
 patch = patch and tonumber(patch)
 
 if not major or not minor or not patch then
-    infoprint("error", "Database checker: Failed to get database version. The script will still work, but database changes will not apply automatically. To disable this warning, set Config.DatabaseChecker.Enabled to false")
+    infoprint("error", "Database checker: Failed to get database version. The script may still work, but database changes will not apply automatically. To disable this warning, set Config.DatabaseChecker.Enabled to false")
+    DatabaseCheckerFinished = true
     return
 end
 
 if major < 10 or (major == 10 and minor < 11) then
     infoprint("error", "Database checker: Your database version is outdated. Please update to MariaDB 10.11 or newer. The script may not work as expected, and database changes will not apply automatically. To disable this warning, set Config.DatabaseChecker.Enabled to false")
+    DatabaseCheckerFinished = true
     return
 end
 
@@ -112,7 +117,61 @@ if shouldGenerateTables then
 
     SaveResourceFile(GetCurrentResourceName(), "defaultdb.lua", luaTable, -1)
 
+    DatabaseCheckerFinished = true
+
     return
+end
+
+if not tables.phone_phones then
+    if not Config.DatabaseChecker.AutoFix then
+        DatabaseCheckerFinished = true
+        return error("Database checker: Missing table lbtablet_tablets. Please run tablet.sql manually using HeidiSQL")
+    end
+
+    local sqlFile = LoadResourceFile(GetCurrentResourceName(), "phone.sql")
+
+    if not sqlFile then
+        DatabaseCheckerFinished = true
+        return error("Database checker: Failed to load phone.sql")
+    end
+
+    -- remove comments & trim whitespace
+    sqlFile = sqlFile:gsub("%-%-[^\n]*", ""):gsub("/%*.-%*/", ""):gsub("^%s+", ""):gsub("%s+$", "")
+
+    local queries = {}
+
+    local triggerPattern = "(CREATE TRIGGER%s*.-%s*END //)"
+    local remainingSql = sqlFile:gsub(triggerPattern, function(trigger)
+        trigger = trigger:gsub(" //", ";")
+        queries[#queries + 1] = trigger
+
+        return ""
+    end)
+
+    remainingSql = remainingSql:gsub("DELIMITER //.*DELIMITER ;", ""):gsub("DELIMITER ;", ""):gsub("DELIMITER %s*;", "")
+
+    local i = 0
+
+    for query in remainingSql:gmatch("[^;]+") do
+        -- remove semicolon
+        query = query:sub(1, -1)
+        -- remove whitespace
+        query = query:gsub("^%s+", ""):gsub("%s+$", "")
+
+        if #query > 0 then
+            i += 1
+            table.insert(queries, i, query)
+        end
+    end
+
+    if not MySQL.transaction.await(queries) then
+        DatabaseCheckerFinished = true
+        return error("Database checker: Failed to create tables, please run phone.sql manually using HeidiSQL")
+    else
+        infoprint("success", "Database checker: Created tables successfully")
+    end
+
+    FetchTables()
 end
 
 local fixQueries = {}
@@ -791,6 +850,25 @@ local function AddIndexes()
     end
 end
 
+local function AddCryptoCoins()
+    if tables.phone_crypto_coins then
+        return
+    end
+
+    MySQL.rawExecute.await([[
+        CREATE TABLE IF NOT EXISTS `phone_crypto_coins` (
+            `coin` VARCHAR(15) NOT NULL,
+            `coin_value` DOUBLE NOT NULL DEFAULT 0,
+
+            PRIMARY KEY (`coin`)
+        ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+    ]])
+
+    infoprint("info", "Added phone_crypto_coins table.")
+
+    updateChanges = true
+end
+
 if Config.DatabaseChecker.AutoFix then
     ValidatePhotoAlbums()
     ValidateNotificationsId()
@@ -801,6 +879,7 @@ if Config.DatabaseChecker.AutoFix then
     ValidateAutoIncrementUpdate()
     AddSharedAlbums()
     AddIndexes()
+    AddCryptoCoins()
 end
 
 if updateChanges then
@@ -876,6 +955,18 @@ for tableName, columns in pairs(defaultTables) do
             goto continueColumns
         end
 
+        if defaultColumn.default ~= column.default then
+            infoprint("warning", ("Column ^5%s^7 in the table ^5%s^7 has the wrong default value."):format(defaultColumn.column, tableName))
+
+            if not defaultColumn.isKey and not column.isKey then
+                fixQueries[#fixQueries+1] = ("ALTER TABLE `%s` MODIFY COLUMN `%s` %s"):format(tableName, defaultColumn.column, GetLastArg(defaultColumn))
+            else
+                infoprint("warning", ("Column ^5%s^7 in the table ^5%s^7 is a key and cannot be modified automatically. Check the #updates channel for a query to run, or ask in #customer-support"):format(defaultColumn.column, tableName))
+            end
+
+            goto continueColumns
+        end
+
         if defaultColumn.collation and defaultColumn.collation ~= column.collation then
             infoprint("warning", ("Column ^5%s^7 in the table ^5%s^7 has the wrong collation."):format(defaultColumn.column, tableName))
         end
@@ -911,6 +1002,8 @@ if changes > 0 then
         infoprint("warning", ("Database has %i changes that need to be fixed. Try running lb-phone/fix.sql"):format(changes))
     end
 end
+
+DatabaseCheckerFinished = true
 
 local function NotifyChanges()
     if changes > 0 and not Config.DatabaseChecker.AutoFix then

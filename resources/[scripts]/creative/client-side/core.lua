@@ -608,7 +608,7 @@ CreateThread(function()
 			ClearPlayerWantedLevel(Pid)
 		end
 
-		if LocalPlayer.state.Active then
+		if LocalPlayer.state.Active and not LocalPlayer.state.Propertys then
 			NetworkOverrideClockTime(GlobalState.Hours,GlobalState.Minutes,0)
 
 			SetWeatherTypeNowPersist(GlobalState.Weather)
@@ -682,7 +682,7 @@ CreateThread(function()
 					TimeDistance = 1
 
 					if IsControlJustPressed(1,38) then
-						SetEntityCoords(Ped,TELEPORT[Number][2])
+						SetEntityCoordsNoOffset(Ped,TELEPORT[Number][2])
 					end
 				end
 			end

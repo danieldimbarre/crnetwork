@@ -222,18 +222,6 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 				}
 			}
 		},
-		Personal = {
-			isBox = true,
-			size = { width = 0.6, height = 0.9, maxZ = 0.5 },
-			options = {
-				shop = Number,
-				Distance = 1.75,
-				options = {
-					{ event = "chest:Item", label = "Abrir", tunnel = "products", service = Item },
-					LocalPlayer.state.Admin and { event = "inventory:StoreObjects", label = "Guardar", tunnel = "server" }
-				}
-			}
-		},
 		Sprays = {
 			isBox = false,
 			size = { radius = 1.0 },
@@ -320,52 +308,63 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEANDMANAGEOBJECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function CreateAndManageObject(Number,v,Coords)
-	if not v or not v.Coords then
+function CreateAndManageObject(Number,Table,Coords)
+	if not Table or not Table.Coords then
+		return
+	end
+
+	local ConsultObject = Init[Number]
+	local ObjectCoords = vec3(Table.Coords[1],Table.Coords[2],Table.Coords[3])
+	if #(Coords - ObjectCoords) > (Table.Distance or 100.0) then
+		if ConsultObject then
+			DestroyObject(Number,Table)
+		end
+
 		return false
 	end
 
-	local ObjectCoords = vec3(v.Coords[1], v.Coords[2], v.Coords[3])
-	if #(Coords - ObjectCoords) <= (v.Distance or 100) then
-		if not Init[Number] and LoadModel(v.Object) then
-			local Entitys = CreateObjectNoOffset(v.Object,ObjectCoords.x,ObjectCoords.y,ObjectCoords.z,false,false,false)
-			Init[Number] = Entitys
+	if ConsultObject or not LoadModel(Table.Object) then
+		return false
+	end
 
-			SetEntityHeading(Entitys,v.Coords[4])
-			FreezeEntityPosition(Entitys,true)
-			SetEntityLodDist(Entitys,0xFFFF)
+	local Ped = PlayerPedId()
+	local Entitys = CreateObjectNoOffset(Table.Object,ObjectCoords.x,ObjectCoords.y,ObjectCoords.z,false,false,false)
 
-			if not v.Ground then
-				PlaceObjectOnGroundProperly(Entitys)
-			end
+	Init[Number] = Entitys
 
-			if v.Mode then
-				if v.Mode == "Personal" and v.Passport and v.Passport ~= LocalPlayer.state.Passport then
-					goto Continue
-				end
+	SetEntityHeading(Entitys,Table.Coords[4] or 0.0)
+	FreezeEntityPosition(Entitys,true)
+	SetEntityLodDist(Entitys,0xFFFF)
 
-				if v.Mode == "Chests" and v.Permission then
-					local Hierarchy = SplitTwo(v.Permission)
-					local Permission = SplitOne(v.Permission)
+	if IsPedInAnyVehicle(Ped,false) then
+		local Vehicle = GetVehiclePedIsUsing(Ped)
+		if DoesEntityExist(Vehicle) then
+			SetEntityNoCollisionEntity(Vehicle,Entitys,false)
+		end
+	end
 
-					if not LocalPlayer.state[Permission] or LocalPlayer.state[Permission] > parseInt(Hierarchy) then
-						goto Continue
-					end
-				end
+	if not Table.Ground then
+		PlaceObjectOnGroundProperly(Entitys)
+	end
 
-				TargetLabel(Number,v.Coords,v.Mode,v.Weight or 0.0,v.Item)
+	if Table.Mode then
+		if Table.Mode == "Chests" and Table.Permission then
+			local Permission = SplitOne(Table.Permission)
+			local Hierarchy = tonumber(SplitTwo(Table.Permission)) or 0
 
-				::Continue::
-			end
-
-			if v.Active == "Spikes" then
-				local MaxOffset = GetOffsetFromEntityInWorldCoords(Entitys,0.0,1.84,0.1)
-				local MinOffset = GetOffsetFromEntityInWorldCoords(Entitys,0.0,-1.84,-0.1)
-				TriggerEvent("spikes:Adicionar",Number,v.Coords,MinOffset,MaxOffset)
+			local Level = LocalPlayer.state[Permission]
+			if not Level or Level > Hierarchy then
+				return false
 			end
 		end
-	elseif Init[Number] then
-		DestroyObject(Number,v)
+
+		TargetLabel(Number,Table.Coords,Table.Mode,Table.Weight or 0.0,Table.Item)
+	end
+
+	if Table.Active == "Spikes" then
+		local MaxOffset = GetOffsetFromEntityInWorldCoords(Entitys,0.0,1.84,0.1)
+		local MinOffset = GetOffsetFromEntityInWorldCoords(Entitys,0.0,-1.84,-0.1)
+		TriggerEvent("spikes:Adicionar",Number,Table.Coords,MinOffset,MaxOffset)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -376,6 +375,7 @@ CreateThread(function()
 		local Ped = PlayerPedId()
 		local Coords = GetEntityCoords(Ped)
 		local Route = LocalPlayer.state.Route
+
 		for Number,v in pairs(Objects) do
 			local Bucket = v.Bucket
 			if not Bucket or Bucket == Route then
@@ -392,8 +392,8 @@ end)
 -- DESTROYOBJECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function DestroyObject(Number,Data)
-	local Entitys = Init[Number]
-	if not Entitys then
+	local ConsultObject = Init[Number]
+	if not ConsultObject then
 		return false
 	end
 
@@ -401,8 +401,8 @@ function DestroyObject(Number,Data)
 		exports.target:RemCircleZone("Objects:"..Number)
 	end
 
-	if DoesEntityExist(Entitys) then
-		DeleteEntity(Entitys)
+	if DoesEntityExist(ConsultObject) then
+		DeleteEntity(ConsultObject)
 	end
 
 	if Data.Active == "Spikes" then
@@ -432,33 +432,33 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 		SetEntityHeading(NextObject,Heading + (Rotate or 0.0))
 
 		local DefaultButtons = {
-			{ "F","Cancelar" },
-			{ "H","Posicionar" },
-			{ "Q","Rotacionar Esquerda" },
-			{ "E","Rotacionar Direita" },
-			{ "Z","Trocar Modo" }
+			{ Letter = "F", Text = "Cancelar" },
+			{ Letter = "H", Text = "Posicionar" },
+			{ Letter = "Q", Text = "Rotacionar Esquerda" },
+			{ Letter = "E", Text = "Rotacionar Direita" },
+			{ Letter = "Z", Text = "Trocar Modo" }
 		}
 
 		local ExtendedButtons = {
-			{ "F","Cancelar" },
-			{ "H","Posicionar" },
-			{ "Q","Rotacionar Esquerda" },
-			{ "E","Rotacionar Direita" },
-			{ "-","Descer" },
-			{ "+","Subir" },
-			{ "↑","Movimentar para Frente" },
-			{ "←","Movimentar para Esquerda" },
-			{ "↓","Movimentar para Baixo" },
-			{ "→","Movimentar para Direita" },
-			{ "Z","Trocar Modo" }
+			{ Letter = "F", Text = "Cancelar" },
+			{ Letter = "H", Text = "Posicionar" },
+			{ Letter = "Q", Text = "Rotacionar Esquerda" },
+			{ Letter = "E", Text = "Rotacionar Direita" },
+			{ Letter = "-", Text = "Descer" },
+			{ Letter = "+", Text = "Subir" },
+			{ Letter = "↑", Text = "Movimentar para Frente" },
+			{ Letter = "←", Text = "Movimentar para Esquerda" },
+			{ Letter = "↓", Text = "Movimentar para Baixo" },
+			{ Letter = "→", Text = "Movimentar para Direita" },
+			{ Letter = "Z", Text = "Trocar Modo" }
 		}
 
 		TriggerEvent("inventory:Buttons",DefaultButtons)
 
 		while Progress do
-			local controlPressed = GetMovementControls(NextObject)
-			if controlPressed then
-				MoveObject(NextObject,controlPressed)
+			local ControlPressed = GetMovementControls(NextObject)
+			if ControlPressed then
+				MoveObject(NextObject,ControlPressed)
 			end
 
 			RotateObject(NextObject)
@@ -468,7 +468,7 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 				local Cam = GetGameplayCamCoord()
 				local Handle = StartExpensiveSynchronousShapeTestLosProbe(Cam,GetCoordsFromCam(10.0,Cam),-1,Ped,4)
 				local _,_,Coords = GetShapeTestResult(Handle)
-				SetEntityCoords(NextObject,Coords.x,Coords.y,Coords.z,false,false,false,false)
+				SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
 			end
 
 			if IsControlJustPressed(0,48) then
@@ -508,61 +508,61 @@ end
 -- GETMOVEMENTCONTROLS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function GetMovementControls(NextObject)
-	local controls = false
+	local Controls = false
 
 	if IsDisabledControlPressed(1,314) then
-		controls = {}
-		controls.zMoveUp = true
+		Controls = {}
+		Controls.zMoveUp = true
 	elseif IsDisabledControlPressed(1,315) then
-		controls = {}
-		controls.zMoveDown = true
+		Controls = {}
+		Controls.zMoveDown = true
 	end
 
 	if IsDisabledControlPressed(1,172) then
-		controls = {}
-		controls.xMoveRight = true
+		Controls = {}
+		Controls.xMoveRight = true
 	elseif IsDisabledControlPressed(1,173) then
-		controls = {}
-		controls.xMoveLeft = true
+		Controls = {}
+		Controls.xMoveLeft = true
 	end
 
 	if IsDisabledControlPressed(1,174) then
-		controls = {}
-		controls.yMoveBackward = true
+		Controls = {}
+		Controls.yMoveBackward = true
 	elseif IsDisabledControlPressed(1,175) then
-		controls = {}
-		controls.yMoveForward = true
+		Controls = {}
+		Controls.yMoveForward = true
 	end
 
-	return controls
+	return Controls
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- MOVEOBJECT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function MoveObject(NextObject,controls)
+function MoveObject(NextObject,Controls)
 	local Coords = GetEntityCoords(NextObject)
 
-	if controls.zMoveUp then
-		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.0,0.0,0.005)
+	if Controls.zMoveUp then
+		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.0,0.0,0.001)
 		SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
-	elseif controls.zMoveDown then
-		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.0,0.0,-0.005)
-		SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
-	end
-
-	if controls.xMoveRight then
-		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.0,0.005,0.0)
-		SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
-	elseif controls.xMoveLeft then
-		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.0,-0.005,0.0)
+	elseif Controls.zMoveDown then
+		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.0,0.0,-0.001)
 		SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
 	end
 
-	if controls.yMoveBackward then
-		Coords = GetOffsetFromEntityInWorldCoords(NextObject,-0.005,0.0,0.0)
+	if Controls.xMoveRight then
+		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.0,0.001,0.0)
 		SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
-	elseif controls.yMoveForward then
-		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.005,0.0,0.0)
+	elseif Controls.xMoveLeft then
+		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.0,-0.001,0.0)
+		SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
+	end
+
+	if Controls.yMoveBackward then
+		Coords = GetOffsetFromEntityInWorldCoords(NextObject,-0.001,0.0,0.0)
+		SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
+	elseif Controls.yMoveForward then
+		Coords = GetOffsetFromEntityInWorldCoords(NextObject,0.001,0.0,0.0)
 		SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
 	end
 end
@@ -571,9 +571,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function RotateObject(NextObject)
 	if IsControlPressed(0,38) then
-		SetEntityHeading(NextObject,GetEntityHeading(NextObject) + 0.25)
+		SetEntityHeading(NextObject,GetEntityHeading(NextObject) + 0.05)
 	elseif IsControlPressed(0,52) then
-		SetEntityHeading(NextObject,GetEntityHeading(NextObject) - 0.25)
+		SetEntityHeading(NextObject,GetEntityHeading(NextObject) - 0.05)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -598,20 +598,10 @@ end
 -- GETCOORDSFROMCAM
 -----------------------------------------------------------------------------------------------------------------------------------------
 function GetCoordsFromCam(Distance,Coords)
-    local Rotation = GetGameplayCamRot()
-    local pitch = math.rad(Rotation.x)
-    local yaw = math.rad(Rotation.y)
-    local roll = math.rad(Rotation.z)
+	local Rotation = GetGameplayCamRot()
+	local Pitch = math.rad(Rotation.x)
+	local Roll = math.rad(Rotation.z)
+	local Direction = vec3(-math.sin(Roll) * math.abs(math.cos(Pitch)),math.cos(Roll) * math.abs(math.cos(Pitch)),math.sin(Pitch))
 
-    local direction = vec3(
-        -math.sin(roll) * math.abs(math.cos(pitch)),
-        math.cos(roll) * math.abs(math.cos(pitch)),
-        math.sin(pitch)
-    )
-
-    return vec3(
-        Coords.x + direction.x * Distance,
-        Coords.y + direction.y * Distance,
-        Coords.z + direction.z * Distance
-    )
+	return vec3(Coords.x + Direction.x * Distance,Coords.y + Direction.y * Distance,Coords.z + Direction.z * Distance)
 end

@@ -1,4 +1,6 @@
-local phoneVersion = GetResourceMetadata(GetCurrentResourceName(), "version", 0) or ""
+IS_BETA_VERSION = GetResourceMetadata(GetCurrentResourceName(), "beta", 0) == "yes"
+
+local phoneVersion = (GetResourceMetadata(GetCurrentResourceName(), "version", 0) or "") .. (IS_BETA_VERSION and "-b" or "")
 
 local function IsResourceStartedOrStarting(resource)
     local state = GetResourceState(resource)
@@ -24,27 +26,35 @@ function infoprint(level, text, ...)
     print("^6[LB Phone " .. phoneVersion .. "] " .. prefix .. "^7: " .. text, ...)
 end
 
+---@param source number
+---@return string
+function DebugPlayerName(source)
+    return GetPlayerName(source) .. " (" .. source .. ")"
+end
+
 function debugprint(...)
-    if Config.Debug then
-        local data = {...}
-        local str = ""
+    if not Config.Debug then
+        return
+    end
 
-        for i = 1, #data do
-            if type(data[i]) == "table" then
-                str = str .. json.encode(data[i], { indent = true })
-            elseif type(data[i]) ~= "string" then
-                str = str .. tostring(data[i])
-            else
-                str = str .. data[i]
-            end
+    local data = {...}
+    local str = ""
 
-            if i ~= #data then
-                str = str .. " "
-            end
+    for i = 1, #data do
+        if type(data[i]) == "table" then
+            str = str .. json.encode(data[i], { indent = true })
+        elseif type(data[i]) ~= "string" then
+            str = str .. tostring(data[i])
+        else
+            str = str .. data[i]
         end
 
-        print("^6[LB Phone " .. phoneVersion .. "] ^3[Debug]^7: " .. str)
+        if i ~= #data then
+            str = str .. " "
+        end
     end
+
+    print("^6[LB Phone " .. phoneVersion .. "] ^3[Debug] ^5[" .. GetGameTimer() .. "]^7: " .. str)
 end
 
 if Config.HouseScript == "auto" then
@@ -55,7 +65,8 @@ if Config.HouseScript == "auto" then
     local houseScripts = {
         "loaf_housing",
         "qb-houses",
-        "qs-housing"
+        "qs-housing",
+        "vms_housing"
     }
 
     for i = 1, #houseScripts do
@@ -149,6 +160,7 @@ function table.deep_clone(og)
         if type(v) == "table" then
             v = table.deep_clone(v)
         end
+
         copy[k] = v
     end
 
@@ -242,9 +254,10 @@ function L(path, args)
     local translation = locales[path] or defaultLocales[path] or path
 
     if args then
-        for k, v in pairs(args) do
-            local safe_v = tostring(v):gsub("%%", "%%%%")  -- Escape % characters
-            translation = translation:gsub("{" .. k .. "}", safe_v)
+        for key, value in pairs(args) do
+            local safeValue = tostring(value):gsub("%%", "%%%%")  -- Escape % characters
+
+            translation = translation:gsub("{" .. key .. "}", safeValue)
         end
     end
 
@@ -257,6 +270,8 @@ function SeperateNumber(number)
     return res
 end
 
+---@param number string
+---@return string formattedNumber
 function FormatNumber(number)
     if not number or type(number) ~= "string" then
         return ""
@@ -316,6 +331,54 @@ function ConvertJSTimestamp(timestamp)
     return os.time(date) * 1000
 end
 
+---@return table config
 exports("GetConfig", function()
     return Config
 end)
+
+---@param bagName string
+---@return number? source
+---@return number? ped
+---@return number? playerIndex
+function GetPlayerDataFromStateBag(bagName)
+    local source = tonumber(bagName:match("player:(%d+)"))
+    local playerId = PlayerId()
+
+    if not source then
+        return
+    end
+
+    if source == GetPlayerServerId(playerId) then
+        return source, PlayerPedId(), playerId
+    end
+
+    local playerPed = PlayerPedId()
+    local player = GetPlayerFromServerId(source)
+    local ped = GetPlayerPed(player)
+    local timeout = GetGameTimer() + 1000
+
+    while player == playerId or ped == playerPed or ped == 0 do
+        Wait(0)
+
+        player = GetPlayerFromServerId(source)
+        ped = GetPlayerPed(player)
+
+        if GetGameTimer() > timeout then
+            debugprint("Timed out waiting for ped to be valid")
+            return
+        end
+    end
+
+    return source, ped, player
+end
+
+---@param text string
+---@param length number
+---@return string
+function LimitStringLength(text, length)
+    if #text > length then
+        return text:sub(1, length - 3) .. "..."
+    end
+
+    return text
+end

@@ -270,10 +270,31 @@
             "CANCEL": "Abbrechen",
             "SET": "Festlegen",
             "JOIN": "Beitreten",
+            "CREATE": "Erstellen",
             "LEAVE": "Verlassen",
-            "NEW_ROOM": "Neuer Raum",
-            "NEW_ROOM_TEXT": "Gib einen Raum-Code ein um einen neuen Raum zu erstellen oder einem bestehenden Raum beizutreten",
+            "JOIN_ROOM": "Raum beitreten",
+            "JOIN_ROOM_TEXT": "Gib einen Raum-Code ein, um einem Raum beizutreten",
+            "CREATE_ROOM": "Raum erstellen",
+            "CREATE_ROOM_TEXT": "Gib einen Raum-Code ein, um einen neuen Raum zu erstellen",
             "ROOM_CODE": "Raum-Code",
+
+            "INVALID_CHANNEL": "Ungültiger Kanal",
+            "INVALID_CHANNEL_TEXT": "Der Kanal existiert nicht",
+            "ALREADY_IN_CHANNEL": "Bereits im Kanal",
+            "ALREADY_IN_CHANNEL_TEXT": "Du bist bereits in diesem Kanal",
+            "PASSWORD_REQUIRED": "Passwort erforderlich",
+            "PASSWORD_REQUIRED_TEXT": "Für diesen Kanal wird ein Passwort benötigt",
+            "PASSWORD_PLACEHOLDER": "Passwort",
+            "PASSWORD_PLACEHOLDER_OPTIONAL": "Passwort (optional)",
+            "INCORRECT_PASSWORD": "Falsches Passwort",
+            "INCORRECT_PASSWORD_TEXT": "Das Passwort ist falsch",
+            "CHANNEL_EXISTS": "Kanal existiert",
+            "CHANNEL_EXISTS_TEXT": "Der Kanal existiert bereits",
+            "INVALID_NAME": "Ungültiger Name",
+            "INVALID_NAME_TEXT": "Der Name ist ungültig (mind. 1 Zeichen, max. 5)",
+            "UNKNOWN_ERROR": "Unbekannter Fehler",
+            "UNKNOWN_ERROR_TEXT": "Ein unbekannter Fehler ist aufgetreten",
+
             "LEAVE_ROOM": "Raum verlassen",
             "LEAVE_ROOM_TEXT": "Bist du sicher, dass du den Raum verlassen möchtest?",
             "NOW": "Jetzt",
@@ -300,7 +321,6 @@
             "USERNAME_TAKEN": "Benutzername ist bereits vergeben",
             "UNKNOWN": "Unbekannter Fehler",
             "INVALID_USERNAME": "Benutzername existiert nicht",
-            "INCORRECT_PASSWORD": "Falsches Passwort",
             "OK": "OK",
 
             "LEAVE_CHANNEL": {
@@ -542,6 +562,11 @@
                 "CANCEL": "Abbrechen",
                 "REMOVE": "Entfernen"
             },
+            "FAILED_SEND": {
+                "TITLE": "Sendefehler",
+                "DESCRIPTION": "Nachricht konnte nicht gesendet werden",
+                "OK": "OK"
+            },
             "MARK_AS_READ": "Als gelesen markieren",
             "MESSAGE_DELETED": "Nachricht gelöscht",
             "OPEN_IN_MAPS": "In Karten öffnen",
@@ -552,6 +577,10 @@
                 "TITLE": "Leere Aufnahme",
                 "DESCRIPTION": "Du kannst keine leere Aufnahme senden",
                 "OK": "OK"
+            },
+            "GROUP_MEMBER_LIMIT_NOTIFICATION": {
+                "TITLE": "Mitgliederlimit erreicht",
+                "CONTENT": "Du hast die maximale Anzahl an Mitgliedern in einer Gruppe erreicht ({limit})."
             }
         },
         "PHONE": {
@@ -634,7 +663,11 @@
                 "EMAIL": "Email",
                 "ADDRESS": "Adresse",
                 "CHANGE_AVATAR": "Avatar ändern",
-                "REMOVE_AVATAR": "Avatar entfernen"
+                "REMOVE_AVATAR": "Avatar entfernen",
+                "RINGTONES": "Klingeltöne",
+                "RINGTONE": "Klingelton",
+                "DEFAULT": "Standard",
+                "BACK": "Zurück"
             },
             "FAVOURITES": {
                 "TITLE": "Favoriten",
@@ -909,6 +942,11 @@
                 "DESCRIPTION": "Sind Sie sicher, dass Sie diese E-Mail löschen möchten?",
                 "CANCEL": "Abbrechen",
                 "DELETE": "Löschen"
+            },
+            "FAILED_SEND": {
+                "TITLE": "Senden fehlgeschlagen",
+                "DESCRIPTION": "Mailversand fehlgeschlagen (existiert der Empfänger?)",
+                "OK": "OK"
             }
         },
         "MAPS": {
@@ -979,10 +1017,11 @@
             }
         },
         "TINDER": {
-            "TITLE": "Tinder",
+            "TITLE": "Spark",
             "LIKES_YOU_TOO": "mag dich auch!",
             "KEEP_SWIPING": "Weiter swipen",
             "SAY_SOMETHING_NICE": "Sag etwas nettes",
+            "TYPE_A_MESSAGE": "Nachricht eingeben...",
             "NO_MORE": "Keine weiteren Leute gefunden. Komm später wieder!",
             "SEND": "Senden",
             "AGREE_TERMS": "Durch das drücken von 'Account erstellen' akzeptierst du unsere Nutzungsbedingungen und Datenschutzbestimmungen",
@@ -1017,10 +1056,17 @@
             "HIDDEN_WARNING": "Ihr Konto ist derzeit verborgen. Sie werden anderen Nutzern nicht angezeigt und können nicht wischen.",
             "HIDDEN_PROFILE": "Ihr Profil ist nicht aktiv. Sie können Ihr Profil in den Einstellungen aktivieren.",
             "SEARCH_MATCHES": "Matches durchsuchen",
-            "DELETE_ACCOUNT": "Konto löschen"
+            "DELETE_ACCOUNT": "Konto löschen",
+            "ERROR": {
+                "TITLE": "Fehler",
+                "SHORT_NAME": "Fehler beim Speichern des Spark-Profils (Name muss mindestens 2 Zeichen lang sein)",
+                "SHORT_BIO": "Fehler beim Speichern des Spark-Profils (Biografie muss mindestens 5 Zeichen lang sein)",
+                "NO_PHOTOS": "Fehler beim Speichern des Spark-Profils (keine Fotos vorhanden)",
+                "OK": "OK"
+            }
         },
         "INSTAGRAM": {
-            "TITLE": "Instagram",
+            "TITLE": "InstaPic",
             "SEND": "Senden",
             "POST": "Posten",
             "MESSAGE_PLACEHOLDER": "Nachricht...",
@@ -1274,7 +1320,7 @@
             "NEW_POSTS": "Neue Posts",
             "NEW_POST": "Neuer Post",
             "PROTECTED_TWEETS_TITLE": "Diese Stellen sind geschützt.",
-            "PROTECTED_TWEETS_DESCRIPTION": "Nur bestätigte Follower haben Zugang zu den Beiträgen und dem vollständigen Profil von @{Benutzername}. Tippen Sie auf die Schaltfläche \"Folgen\", um eine Folgeanfrage zu senden.",
+            "PROTECTED_TWEETS_DESCRIPTION": "Nur bestätigte Follower haben Zugang zu den Beiträgen und dem vollständigen Profil von @{username}. Tippen Sie auf die Schaltfläche \"Folgen\", um eine Folgeanfrage zu senden.",
             "INVALID_ACCOUNT": "Ungültiger Account",
             "INVALID_PASSWORD": "Ungültiges Passwort",
             "USERNAME_NOT_ALLOWED": "Benutzername nicht erlaubt",
@@ -1363,8 +1409,10 @@
             "NOT_ENOUGH_COINS": "Du hast nicht genug Coins",
             "ATLEAST_ONE_COIN": "Du must mindestens einen {currency} {action}",
             "INVALID_COIN": "Ungültige Coin",
+            "TOO_HIGH": "Betrag ist zu hoch (max {amount})",
             "NO_NUMBER": "Keine Telefonnummer angegeben",
             "INVALID_NUMBER": "Falsche Telefonnummer (der Nutzer darf nicht online sein)",
+            "CHECK_FAILED": "Prüfungen fehlgeschlagen",
             "ERROR": "Fehler",
             "CLOSE": "Schließen",
             "BUY_POPUP": {
@@ -1407,7 +1455,7 @@
             "REPLY": "Antworten",
             "VIEW_REPLIES": "Antworten anzeigen",
             "ADD_COMMENT": "Füge einen Kommentar hinzu...",
-            "REPLY_TO": "Antwort an {Name}",
+            "REPLY_TO": "Antwort an {name}",
             "PIN_COMMENT": "Kommentar anpinnen",
             "UNPIN_COMMENT": "Kommentar nicht mehr anpinnen",
             "DELETE_COMMENT": "Kommentar löschen",
@@ -1500,7 +1548,7 @@
 
             "INVALID_ACCOUNT_POPUP": {
                 "TITLE": "Ungültig {name}",
-                "DESCRIPTION": "Du bist nicht bei dem von dir eingegebenen Konto {Name} angemeldet, bitte korrigiere es.",
+                "DESCRIPTION": "Du bist nicht bei dem von dir eingegebenen Konto {name} angemeldet, bitte korrigiere es.",
                 "OK": "OK"
             },
             "REMOVE_ACCOUNT_POPUP": {
@@ -1552,6 +1600,22 @@
                 "DESCRIPTION": "Du kannst keine Aufnahme ohne Ton speichern",
                 "OK": "OK"
             }
+        },
+        "BROWSER": {
+            "TITLE": "Browser",
+            "SEARCH_PLACEHOLDER": "Suchen oder URL eingeben",
+            "NEW_TAB": "Neuer Tab",
+            "TABS": "Tabs",
+            "TAB": "Tab",
+            "DONE": "Fertig",
+            "CLOSE_ALL": "Alle schließen",
+            "HISTORY": "Verlauf",
+            "BOOKMARKS": "Lesezeichen",
+            "BOOKMARK_REMOVE": "Lesezeichen löschen",
+            "NO_BOOKMARKS": "Noch keine Lesezeichen",
+            "NO_HISTORY": "Noch kein Verlauf",
+            "FAILED_LOAD_PAGE": "Website nicht erreichbar",
+            "FAILED_LOAD_PAGE_DESCRIPTION": "Diese Website erlaubt kein Iframing. Dies ist kein Fehler."
         }
     },
     "COMPONENTS": {
@@ -1581,7 +1645,7 @@
             "USE_WALLPAPER": "Als Hintergrundbild verwenden",
             "COPY_NUMBER": "Nummer kopieren",
             "COPY_LINK": "Link kopieren",
-            "AIRDROP_SENT": "Airdrop gesendet",
+            "AIRDROP_SENT": "AirShare gesendet",
             "AIRDROP_ACCEPTED": "Angenommen",
             "AIRDROP_DECLINED": "Abgelehnt",
             "AIRDROP_NO_USERS": "Keine Handys in der Nähe",
@@ -1598,7 +1662,7 @@
             }
         },
         "AIRDROP": {
-            "TITLE": "Airdrop",
+            "TITLE": "AirShare",
             "TEXT": "{sender} will ein {type} mit dir teilen",
             "VIDEO": "Video",
             "PHOTO": "Foto",
@@ -1674,6 +1738,14 @@
         "FONT_AND_COLOR": "Schrift und Farbe"
     },
     "MISC": {
+        "ORDINAL": {
+            "ZERO": ".",
+            "ONE": ".",
+            "TWO": ".",
+            "FEW": ".",
+            "MANY": ".",
+            "OTHER": "."
+        },
         "AIRPLANE_MODE_POPUP": {
             "TITLE": "Fehler",
             "DESCRIPTION": "Du versuchst eine Aktion auszuführen, die Internetzugang erfordert. Deaktiviere den Flugmodus, um fortzufahren.",

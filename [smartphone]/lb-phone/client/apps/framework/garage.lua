@@ -1,21 +1,96 @@
+local CAYO_PERICO_SPAWN_LOCATIONS <const> = {
+    vector4(4598.8237, -4475.4131, 2.9002, 272.9770),
+    vector4(4707.2827, -4464.3730, 6.2928, 268.4773),
+    vector4(4855.9087, -4462.7256, 7.7182, 282.6064),
+    vector4(5006.5415, -4552.1567, 8.3415, 212.9783),
+    vector4(5131.4448, -4584.1104, 4.3020, 220.2149),
+    vector4(5166.1523, -4693.0278, 1.8392, 4.3738),
+    vector4(5119.9648, -4621.6299, 2.2892, 74.1784),
+    vector4(5014.7046, -4634.8291, 4.9656, 148.0110),
+    vector4(4988.7188, -4761.5308, 12.9436, 165.6532),
+    vector4(5049.9673, -4889.2188, 15.4160, 248.2871),
+    vector4(5145.2290, -4995.6030, 10.3032, 173.3521),
+    vector4(5191.7544, -5110.5376, 3.7157, 292.2820),
+    vector4(5152.7109, -5268.0054, 8.9388, 140.8557),
+    vector4(5044.9302, -5200.2583, 2.2652, 9.8930),
+    vector4(4991.7388, -5165.4199, 2.2283, 215.6515),
+    vector4(4942.1699, -5267.2148, 2.9725, 180.1120),
+    vector4(4853.0654, -5413.3242, 17.9668, 157.1860),
+    vector4(4923.0723, -5474.8091, 30.0654, 308.2514),
+    vector4(4971.1836, -5507.2646, 30.0790, 187.4170),
+    vector4(5001.5405, -5606.2769, 24.3186, 278.9176),
+    vector4(5143.4385, -5575.5127, 39.9583, 289.9014),
+    vector4(5186.5869, -5501.6851, 47.4971, 234.8895),
+    vector4(5318.4766, -5494.3599, 53.0784, 273.9213),
+    vector4(5365.0942, -5550.5723, 51.7618, 207.8264),
+    vector4(5410.0889, -5720.7417, 37.2108, 298.6440),
+    vector4(5481.6255, -5825.9458, 18.6289, 37.0951),
+    vector4(5387.8813, -5431.5820, 45.3137, 314.8591),
+    vector4(5426.1875, -5348.6470, 30.8480, 10.7427),
+    vector4(5528.5918, -5289.2905, 12.0520, 352.2754),
+    vector4(5498.0312, -5164.8589, 13.1049, 51.7445),
+    vector4(5397.5957, -5116.5781, 12.9672, 84.4087),
+    vector4(5266.6567, -5080.1255, 13.9239, 34.1018),
+    vector4(5260.7476, -5282.4302, 27.4572, 224.6745),
+    vector4(4943.1812, -5607.2212, 23.3433, 51.9790),
+    vector4(4782.3950, -5567.6636, 23.2560, 102.6193),
+    vector4(4761.4707, -5686.4087, 21.1947, 179.4478),
+    vector4(4859.2646, -5734.7715, 26.9646, 223.1559),
+    vector4(4904.1699, -5803.8511, 24.1767, 254.3895),
+    vector4(4956.9321, -5732.6733, 19.5365, 329.7887),
+}
+
 ---Function to find a spawn point for a car
 ---@param minDist? number Minimum distance from the player. Default 150
----@return nil | vector3
----@return number
+---@return vector3?, number?
 local function FindCarLocation(minDist)
     if not minDist then
         minDist = 150
     end
 
-    local plyCoords = GetEntityCoords(PlayerPedId())
-    local nth = 0
+    local position, heading
+    local coords = GetEntityCoords(PlayerPedId())
+    local isAtCayoPerico = #(coords - vector3(5000.0, -5000.0, 2.0)) < 2500.0
 
-    local success, position, heading
+    if isAtCayoPerico then
+        table.sort(CAYO_PERICO_SPAWN_LOCATIONS, function(a, b)
+            return #(coords - a.xyz) < #(coords - b.xyz)
+        end)
 
-    repeat
-        nth += 1
-        success, position, heading = GetNthClosestVehicleNodeWithHeading(plyCoords.x, plyCoords.y, plyCoords.z, nth, 0, 0, 0)
-    until #(plyCoords - position) > minDist or success == false
+        local spawnLocation = CAYO_PERICO_SPAWN_LOCATIONS[1]
+
+        position = spawnLocation.xyz
+        heading = spawnLocation.w
+
+        if #(coords - position) > 500.0 then
+            debugprint("FindCarLocation: No position found (too far away)")
+            return
+        end
+    else
+        local success
+        local nth = 0
+
+        while true do
+            nth += 1
+            success, position, heading = GetNthClosestVehicleNodeWithHeading(coords.x, coords.y, coords.z, nth, 0, 0, 0)
+
+            if not success then
+                debugprint("FindCarLocation: No position found")
+                return
+            end
+
+            local distance = #(coords - position)
+
+            if distance > 500.0 then
+                debugprint("FindCarLocation: No position found (too far away)")
+                return
+            end
+
+            if distance > minDist then
+                break
+            end
+        end
+    end
 
     return position, heading
 end
@@ -24,7 +99,7 @@ local function BringCar(data, cb)
     local minDist = Config.Valet.Drive and math.random(75, 150) or 0
     local location, heading = FindCarLocation(minDist)
 
-    if not location then
+    if not location or not heading then
         debugprint("BringCar: No location found")
         return cb(false)
     end

@@ -1,6 +1,25 @@
 local phoneVariation
 
+---@type { [string]: boolean }
+local phoneItemNames = {}
+
+if Config.Item.Name then
+    phoneItemNames[Config.Item.Name] = true
+end
+
+if Config.Item.Names then
+    for i = 1, #Config.Item.Names do
+        phoneItemNames[Config.Item.Names[i].name] = true
+    end
+end
+
+---@param itemName string
+function IsItemAPhone(itemName)
+    return phoneItemNames[itemName] or false
+end
+
 ---Check if the player has a phone
+---@param number? string
 ---@return boolean
 function HasPhoneItem(number)
     if not Config.Item.Require then
@@ -8,7 +27,13 @@ function HasPhoneItem(number)
     end
 
     if Config.Item.Unique then
-        return HasPhoneNumber(number)
+        local hasNumber, variation = HasPhoneNumber(number)
+
+        if hasNumber and variation then
+            SetPhoneVariation(variation)
+        end
+
+        return hasNumber
     end
 
     if Config.Item.Name then
@@ -48,6 +73,20 @@ end
 
 exports("HasPhoneItem", HasPhoneItem)
 
+---@param itemName string
+---@return number?
+function GetPhoneItemVariationIndex(itemName)
+    if not Config.Item.Names then
+        return
+    end
+
+    for i = 1, #Config.Item.Names do
+        if itemName == Config.Item.Names[i].name then
+            return i
+        end
+    end
+end
+
 ---@param variation number | string
 RegisterNetEvent("phone:usedPhoneVariation", function(variation)
     local variationIndex
@@ -55,12 +94,7 @@ RegisterNetEvent("phone:usedPhoneVariation", function(variation)
     if type(variation) == "number" then
         variationIndex = variation
     elseif type(variation) == "string" then
-        for i = 1, #Config.Item.Names do
-            if Config.Item.Names[i].name == variation then
-                variationIndex = i
-                break
-            end
-        end
+        variationIndex = GetPhoneItemVariationIndex(variation)
     end
 
     if not variationIndex or not Config.Item.Names[variationIndex] then

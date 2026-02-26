@@ -33,6 +33,12 @@ RegisterNetEvent("esx:playerLoaded", function(playerData)
     isFirstPlayerLoaded = false
 end)
 
+AddEventHandler("esx:setPlayerData", function(key, val, last)
+    if GetInvokingResource() == "es_extended" and ESX.PlayerData then
+        ESX.PlayerData[key] = val
+    end
+end)
+
 RegisterNetEvent("esx:onPlayerLogout", function()
     LogOut()
 end)
@@ -51,4 +57,22 @@ RegisterNetEvent("esx:setAccountMoney", function(account)
     end
 
     SendReactMessage("wallet:setBalance", math.floor(account.money))
+end)
+
+local isHandcuffed = false
+
+RegisterNetEvent("esx_policejob:handcuff", function()
+	isHandcuffed = not isHandcuffed
+
+    if isHandcuffed and phoneOpen then
+        ToggleOpen(false)
+    end
+end)
+
+AddCheck("openPhone", function()
+    if ESX.PlayerData.dead or isHandcuffed then
+        return false
+    end
+
+    return true
 end)

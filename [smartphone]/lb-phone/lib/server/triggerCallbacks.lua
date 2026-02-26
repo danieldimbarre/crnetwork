@@ -34,6 +34,7 @@ end
 ---@param event string
 ---@param source number
 ---@param cb fun(...)
+---@param ... any
 function TriggerClientCallback(event, source, cb, ...)
     local requestId = GenerateRequestId()
 
@@ -56,6 +57,7 @@ exports("TriggerClientCallback", TriggerClientCallback)
 ---@param event string
 ---@param source number
 ---@param ... any
+---@return ...
 function AwaitClientCallback(event, source, ...)
     local responsePromise = promise.new()
 

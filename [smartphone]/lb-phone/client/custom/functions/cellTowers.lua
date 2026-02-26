@@ -1,3 +1,4 @@
+---@type false | number
 local staticService = false
 local currentService = 0
 
@@ -10,6 +11,7 @@ function GetServiceBars()
     return currentService
 end
 
+---@param bars number | false | nil
 exports("SetServiceBars", function(bars)
     if not bars then
         staticService = false
@@ -21,6 +23,8 @@ exports("SetServiceBars", function(bars)
     end
 
     staticService = bars
+
+    SendReactMessage("updateService", staticService or currentService)
 end)
 
 local cellTowers = CellTowers
@@ -67,6 +71,7 @@ local function CalculateServiceBars(playerCoords)
 end
 
 CreateThread(function()
+    ---@type vector3?
     local lastCoords
 
     while true do
@@ -74,19 +79,29 @@ CreateThread(function()
         local playerCoords = GetEntityCoords(playerPed)
 
         if not lastCoords or #(lastCoords - playerCoords) > 5.0 then
+            local lastService = currentService
+
             lastCoords = playerCoords
             currentService = math.max(CalculateServiceBars(playerCoords), Config.CellTowers.MinService or 0)
+
+            if lastService ~= currentService then
+                SendReactMessage("updateService", staticService or currentService)
+            end
         end
 
-        Wait(500)
+        Wait(1000)
     end
 end)
 
 if Config.CellTowers.Debug then
     for i = 1, #cellTowers do
         local coords = cellTowers[i]
+        local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
 
-        AddBlipForCoord(coords.x, coords.y, coords.z)
+        SetBlipCategory(blip, 134)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentSubstringPlayerName(i .. " - " .. coords)
+        EndTextCommandSetBlipName(blip)
 
         local one = AddBlipForRadius(coords.x, coords.y, coords.z, Config.CellTowers.Range[1])
 

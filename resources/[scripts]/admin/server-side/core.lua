@@ -224,11 +224,6 @@ RegisterCommand("passaporte",function(source,Message)
 				exports.oxmysql:update_async("UPDATE invoices SET Received = ? WHERE Received = ?",{ NewPassport,OtherPassport })
 			end
 
-			local Investments = exports.oxmysql:query_async("SELECT * FROM investments WHERE Passport = ?",{ OtherPassport })
-			if Investments and #Investments > 0 then
-				exports.oxmysql:update_async("UPDATE investments SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
-			end
-
 			local Phone = exports.oxmysql:query_async("SELECT * FROM phone_phones WHERE owner_id = ?",{ OtherPassport })
 			if Phone and #Phone > 0 then
 				exports.oxmysql:update_async("UPDATE phone_phones SET owner_id = ?, id = ? WHERE owner_id = ?",{ NewPassport,NewPassport,OtherPassport })
@@ -446,11 +441,6 @@ RegisterCommand("passport",function(source,Message)
 				local Invoices_Received = exports.oxmysql:query_async("SELECT * FROM invoices WHERE Received = ?",{ OtherPassport })
 				if Invoices_Received and #Invoices_Received > 0 then
 					exports.oxmysql:update_async("UPDATE invoices SET Received = ? WHERE Received = ?",{ NewPassport,OtherPassport })
-				end
-
-				local Investments = exports.oxmysql:query_async("SELECT * FROM investments WHERE Passport = ?",{ OtherPassport })
-				if Investments and #Investments > 0 then
-					exports.oxmysql:update_async("UPDATE investments SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
 				end
 
 				local Phone = exports.oxmysql:query_async("SELECT * FROM phone_phones WHERE owner_id = ?",{ OtherPassport })
@@ -1100,6 +1090,29 @@ RegisterCommand("ban",function(source,Message)
 
 	vRP.SetBanned(OtherPassport,Duration,Reason)
 	TriggerClientEvent("Notify",source,"Sucesso","Banimento aplicado ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- BANR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("banr",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if not Passport or not vRP.HasGroup(Passport,"Admin") then
+		return false
+	end
+
+	local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Minutos")
+	if not Keyboard then
+		return false
+	end
+
+	local Duration = Keyboard[2]
+	local OtherPassport = Keyboard[1]
+	if not vRP.Identity(OtherPassport) then
+		return false
+	end
+
+	vRP.UpdateBanned(OtherPassport,Duration)
+	TriggerClientEvent("Notify",source,"Sucesso","Banimento reduzido ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- UNBAN
@@ -1843,7 +1856,7 @@ SetHttpHandler(function(Request,Result)
 		["/thex"] = function(Data)
 			local v = json.decode(Data)
 			local NewHexPlayer = v.NewHex
-			local ActualHexPlayer = v.NewHex
+			local ActualHexPlayer = v.ActualHex
 
 			if NewHexPlayer and ActualHexPlayer then
 				exports.oxmysql:query_async("DELETE FROM accounts WHERE License = ?",{ NewHexPlayer })

@@ -3,10 +3,13 @@
 ---@param amount number
 ---@param company string
 ---@param logo? string
----@return nil
 function AddTransaction(phoneNumber, amount, company, logo)
     if not phoneNumber or not amount or not company then
         return
+    end
+
+    if #company > 50 then
+        company = company:sub(1, 47) .. "..."
     end
 
     MySQL.insert.await("INSERT INTO phone_wallet_transactions (phone_number, amount, company, logo) VALUES (@phoneNumber, @amount, @company, @logo)", {
@@ -164,4 +167,7 @@ BaseCallback("wallet:sendPayment", function(source, phoneNumber, data)
     end)
 
     return { success = true }
-end)
+end, nil, {
+    defaultReturn = { success = false, reason = "UNKNOWN_ERROR" },
+    preventSpam = true,
+})

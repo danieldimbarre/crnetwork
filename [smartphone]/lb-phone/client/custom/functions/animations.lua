@@ -1,10 +1,135 @@
+---@alias AnimationAction "default" | "call" | "camera"
+
+---@type { [string]: boolean }
 local loadedDicts = {}
 local phoneModel = Config.PhoneModel or `prop_amb_phone`
-local currentAction, phone
-local disableAnimation = false
 local rotation = Config.PhoneRotation or vector3(0.0, 0.0, 180.0)
 local offset = Config.PhoneOffset or vector3(0.0, -0.005, 0.0)
+local animationsDisabled = false
+---@type AnimationAction?
+local currentAction
+---@type number?
+local phoneObject
+---@type number?
+local phoneVariation
+---@type number?
 local textureVariation
+---@type string?
+local oldFrameColor
+local phoneAnimations = {
+    default = {
+        onFoot = {
+            open = {
+                dict = "cellphone@",
+                anim = "cellphone_text_in",
+                flag = 2 | 16 | 32
+            },
+            base = {
+                dict = "cellphone@",
+                anim = "cellphone_text_read_base",
+                flag = 2 | 16 | 32 ,
+                blendInSpeed = 1000.0,
+            },
+            close = {
+                dict = "cellphone@",
+                anim = "cellphone_text_out",
+                flag = 16 | 32
+            }
+        },
+        inCar = {
+            open = {
+                dict = "cellphone@in_car@ds",
+                anim = "cellphone_text_in",
+                flag = 2 | 16 | 32
+            },
+            base = {
+                dict = "cellphone@in_car@ds",
+                anim = "cellphone_text_read_base",
+                flag = 2 | 16 | 32 ,
+                blendInSpeed = 1000.0
+            },
+            close = {
+                dict = "cellphone@in_car@ds",
+                anim = "cellphone_text_out",
+                flag = 16 | 32
+            }
+        },
+    },
+    call = {
+        onFoot = {
+            open = {
+                dict = "cellphone@",
+                anim = "cellphone_call_in",
+                flag = 2 | 16 | 32
+            },
+            base = {
+                dict = "cellphone@",
+                anim = "cellphone_call_listen_base",
+                flag = 2 | 16 | 32 ,
+            },
+            close = {
+                dict = "cellphone@",
+                anim = "cellphone_call_out",
+                flag = 16 | 32
+            }
+        },
+        inCar = {
+            open = {
+                dict = "cellphone@in_car@ds",
+                anim = "cellphone_call_in",
+                flag = 2 | 16 | 32
+            },
+            base = {
+                dict = "cellphone@in_car@ds",
+                anim = "cellphone_call_listen_base",
+                flag = 2 | 16 | 32 ,
+            },
+            close = {
+                dict = "cellphone@in_car@ds",
+                anim = "cellphone_call_out",
+                flag = 16 | 32
+            }
+        },
+    },
+    camera = {
+        onFoot = {
+            open = {
+                dict = "cellphone@self",
+                anim = "selfie_in",
+                flag = 2 | 16 | 32
+            },
+            base = {
+                dict = "cellphone@self",
+                anim = "selfie_in",
+                flag = 2 | 16 | 32 ,
+                blendInSpeed = 1000.0,
+                blendOutSpeed = -1000.0,
+            },
+            close = {
+                dict = "cellphone@self",
+                anim = "selfie_out",
+                flag = 16 | 32
+            }
+        },
+        inCar = {
+            open = {
+                dict = "cellphone@self",
+                anim = "selfie_in",
+                flag = 2 | 16 | 32
+            },
+            base = {
+                dict = "cellphone@self",
+                anim = "selfie",
+                flag = 2 | 16 | 32 ,
+            },
+            close = {
+                dict = "cellphone@self",
+                anim = "selfie_out",
+                flag = 16 | 32
+            }
+        },
+    }
+}
 
 CreateThread(function()
     while not loaded do
@@ -18,121 +143,7 @@ CreateThread(function()
     end
 end)
 
-local phoneAnimations = {
-    default = {
-        onFoot = {
-            open = {
-                dict = "cellphone@",
-                anim = "cellphone_text_in",
-                flag = 50
-            },
-            base = {
-                dict = "cellphone@",
-                anim = "cellphone_text_read_base",
-                flag = 50,
-                blendInSpeed = 1000.0,
-            },
-            close = {
-                dict = "cellphone@",
-                anim = "cellphone_text_out",
-                flag = 48
-            }
-        },
-        inCar = {
-            open = {
-                dict = "cellphone@in_car@ds",
-                anim = "cellphone_text_in",
-                flag = 50
-            },
-            base = {
-                dict = "cellphone@in_car@ds",
-                anim = "cellphone_text_read_base",
-                flag = 50,
-                blendInSpeed = 1000.0,
-            },
-            close = {
-                dict = "cellphone@in_car@ds",
-                anim = "cellphone_text_out",
-                flag = 48
-            }
-        },
-    },
-    call = {
-        onFoot = {
-            open = {
-                dict = "cellphone@",
-                anim = "cellphone_call_in",
-                flag = 50
-            },
-            base = {
-                dict = "cellphone@",
-                anim = "cellphone_call_listen_base",
-                flag = 50,
-            },
-            close = {
-                dict = "cellphone@",
-                anim = "cellphone_call_out",
-                flag = 48
-            }
-        },
-        inCar = {
-            open = {
-                dict = "cellphone@in_car@ds",
-                anim = "cellphone_call_in",
-                flag = 50
-            },
-            base = {
-                dict = "cellphone@in_car@ds",
-                anim = "cellphone_call_listen_base",
-                flag = 50,
-            },
-            close = {
-                dict = "cellphone@in_car@ds",
-                anim = "cellphone_call_out",
-                flag = 48
-            }
-        },
-    },
-    camera = {
-        onFoot = {
-            open = {
-                dict = "cellphone@self",
-                anim = "selfie_in",
-                flag = 50
-            },
-            base = {
-                dict = "cellphone@self",
-                anim = "selfie_in",
-                flag = 50,
-                blendInSpeed = 1000.0,
-                blendOutSpeed = -1000.0,
-            },
-            close = {
-                dict = "cellphone@self",
-                anim = "selfie_out",
-                flag = 48
-            }
-        },
-        inCar = {
-            open = {
-                dict = "cellphone@self",
-                anim = "selfie_in",
-                flag = 50
-            },
-            base = {
-                dict = "cellphone@self",
-                anim = "selfie",
-                flag = 50,
-            },
-            close = {
-                dict = "cellphone@self",
-                anim = "selfie_out",
-                flag = 48
-            }
-        },
-    }
-}
-
+---@param dict string
 local function LoadDict(dict)
     RequestAnimDict(dict)
 
@@ -145,16 +156,52 @@ local function LoadDict(dict)
     return dict
 end
 
+local handleAnimationsInterval = Interval:new(function(self)
+    local playerPed = PlayerPedId()
+    local inCar = IsPedInAnyVehicle(playerPed, true)
+
+    if not self.enabled then
+        return
+    end
+
+    local animData = phoneAnimations[currentAction][inCar and "inCar" or "onFoot"]
+
+    if animData then
+        local baseData = animData.base
+
+        if not IsEntityPlayingAnim(playerPed, animData.open.dict, animData.open.anim, 3) and not IsEntityPlayingAnim(playerPed, baseData.dict, baseData.anim, 3) then
+            TaskPlayAnim(playerPed, LoadDict(baseData.dict), baseData.anim, baseData.blendInSpeed or 8.0, baseData.blendOutSpeed or -8.0, -1, baseData.flag | 8 | 1048576, 0, false, false, false)
+        end
+    end
+end, 500, false)
+
+function handleAnimationsInterval.onStart()
+    debugprint("Started phone animations interval")
+end
+
+function handleAnimationsInterval.onStop()
+    debugprint("Stopped phone animations interval")
+end
+
+function RefreshAnimationsInterval()
+    handleAnimationsInterval:toggle(
+        (phoneOpen or (IsInCall() and not InExportCall) or IsWalkingCamEnabled())
+        and not (cameraOpen and not IsWalkingCamEnabled())
+        and currentAction
+        and not animationsDisabled
+    )
+end
+
 -- Handle phone object
-local function CreatePhone()
-    if DoesEntityExist(phone) then
+local function CreatePhoneObject()
+    if phoneObject and DoesEntityExist(phoneObject) then
         return
     end
 
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed, false)
 
-    if Config.ServerSideSpawn then
+    if Config.PropSpawn == "server" then
         if not IsModelValid(phoneModel) then
             debugprint("phoneModel is not valid")
             return
@@ -171,17 +218,21 @@ local function CreatePhone()
 
         if not entity then
             debugprint("Failed to get phone object")
-            TriggerServerEvent("phone:failedControl", netId)
+            TriggerServerEvent("phone:failedControl")
             return
         end
 
         if not TakeControlOfEntity(entity) then
             debugprint("Failed to take control of phone object")
-            TriggerServerEvent("phone:failedControl", netId)
+            TriggerServerEvent("phone:failedControl")
             return
         end
 
-        phone = entity
+        if phoneObject then
+            DeleteEntity(entity)
+        else
+            phoneObject = entity
+        end
     else
         if not IsModelValid(phoneModel) then
             debugprint("Could not load phone model")
@@ -190,27 +241,40 @@ local function CreatePhone()
 
         LoadModel(phoneModel)
 
-        phone = CreateObject(phoneModel, coords.x, coords.y, coords.z, true, true, true)
+        local networked = Config.PropSpawn ~= "state"
+
+        if phoneObject then
+            DeleteEntity(phoneObject)
+        end
+
+        phoneObject = CreateObject(phoneModel, coords.x, coords.y, coords.z, networked, true, true)
     end
 
     if textureVariation then
-        SetObjectTextureVariation(phone, textureVariation)
+        SetObjectTextureVariation(phoneObject, textureVariation)
     end
 
-    SetEntityCollision(phone, false, false)
-    AttachEntityToEntity(phone, playerPed, GetPedBoneIndex(playerPed, 28422), offset.x, offset.y, offset.z, rotation.x, rotation.y, rotation.z, false, false, false, false, 2, true)
+    SetEntityCollision(phoneObject, false, false)
+    AttachEntityToEntity(phoneObject, playerPed, GetPedBoneIndex(playerPed, 28422), offset.x, offset.y, offset.z, rotation.x, rotation.y, rotation.z, false, false, false, false, 2, true)
     SetModelAsNoLongerNeeded(phoneModel)
 
-    TriggerServerEvent("phone:setPhoneObject", NetworkGetNetworkIdFromEntity(phone))
+    if Config.PropSpawn ~= "state" then
+        TriggerServerEvent("phone:setPhoneObject", NetworkGetNetworkIdFromEntity(phoneObject))
+    end
 end
 
-local function DeletePhone()
-    if phone then
-        DeleteEntity(phone)
-        phone = nil
-
+local function DeletePhoneObject()
+    if phoneObject then
+        DeleteEntity(phoneObject)
         TriggerServerEvent("phone:setPhoneObject", nil)
+
+        phoneObject = nil
     end
+end
+
+---@return number?
+function GetPhoneObject()
+    return phoneObject
 end
 
 local function PlayOpenAnim(action)
@@ -220,7 +284,7 @@ local function PlayOpenAnim(action)
     local anim = animData.anim
     local flag = animData.flag
 
-    TaskPlayAnim(PlayerPedId(), dict, anim, 8.0, -8.0, -1, flag | 1048576, 0, false, false, false)
+    TaskPlayAnim(PlayerPedId(), dict, anim, 8.0, -8.0, -1, flag | 8 | 1048576, 0, false, false, false)
 
     return GetAnimDuration(dict, anim) * 1000
 end
@@ -229,6 +293,7 @@ local function CleanUpAssets()
     for dict, loaded in pairs(loadedDicts) do
         if loaded then
             RemoveAnimDict(dict)
+
             loadedDicts[dict] = nil
         end
     end
@@ -237,9 +302,11 @@ local function CleanUpAssets()
 end
 
 function PlayCloseAnim()
-    if IsInCall() or InExportCall or not currentAction then
+    if IsInCall() or InExportCall or (not cameraOpen and IsWalkingCamEnabled()) or not currentAction then
         return
     end
+
+    RefreshAnimationsInterval()
 
     local inCar = IsPedInAnyVehicle(PlayerPedId(), true)
     local animData = phoneAnimations[currentAction][inCar and "inCar" or "onFoot"].close
@@ -249,10 +316,11 @@ function PlayCloseAnim()
         Wait(300)
     end
 
-    DeletePhone()
+    DeletePhoneObject()
     CleanUpAssets()
 end
 
+---@param action AnimationAction
 function SetPhoneAction(action)
     if (action == currentAction and not phoneOpen) or (action ~= "call" and not phoneOpen) or not phoneAnimations[action] or InExportCall then
         return
@@ -272,34 +340,34 @@ function SetPhoneAction(action)
 
     if not playOpen then
         currentAction = action
+        RefreshAnimationsInterval()
         return
     end
 
-    CreateThread(function()
+    Citizen.CreateThreadNow(function()
         PlayOpenAnim(action)
 
         currentAction = action
 
         Wait(300)
-        CreatePhone()
+        CreatePhoneObject()
+        RefreshAnimationsInterval()
     end)
 end
 
-function GetPhoneObject()
-    return phone
-end
-
+---@param enabled boolean
+---@param action? AnimationAction
 function TogglePhoneAnimation(enabled, action)
-    disableAnimation = enabled == false
+    animationsDisabled = enabled == false
 
     if enabled then
         SetPhoneAction(action or "default")
     else
         PlayCloseAnim()
     end
-end
 
-local oldFrameColor
+    RefreshAnimationsInterval()
+end
 
 ---@param variation number
 function SetPhoneVariation(variation)
@@ -310,23 +378,55 @@ function SetPhoneVariation(variation)
         return
     end
 
+    if phoneVariation == variation then
+        if itemData.frameColor then
+            SendReactMessage("setFrameColor", itemData.frameColor)
+            SendReactMessage("updateConfigValue", {
+                config = {
+                    allowFrameColorChange = false,
+                    frameColor = itemData.frameColor
+                }
+            })
+        end
+
+        return
+    end
+
+    phoneVariation = variation
     phoneModel = itemData.model or phoneModel
     offset = itemData.offset or Config.PhoneOffset or offset
     rotation = itemData.rotation or Config.PhoneRotation or rotation
     textureVariation = itemData.textureVariation
 
+    debugprint("Set phone variation to " .. variation)
+    LocalPlayer.state:set("lbPhoneVariation", variation, true)
     SetResourceKvpInt("phone_variation", variation)
 
     if itemData.frameColor then
-        if settings and settings?.display?.frameColor then
-            oldFrameColor = settings.display.frameColor
+        if settings?.display?.frameColor ~= itemData.frameColor then
+            oldFrameColor = settings?.display?.frameColor
         end
 
         SendReactMessage("setFrameColor", itemData.frameColor)
+        SendReactMessage("updateConfigValue", {
+            config = {
+                allowFrameColorChange = false,
+                frameColor = itemData.frameColor
+            }
+        })
     else
         if oldFrameColor then
             SendReactMessage("setFrameColor", oldFrameColor)
+        else
+            SendReactMessage("setFrameColor", Config.FrameColor)
         end
+
+        SendReactMessage("updateConfigValue", {
+            config = {
+                allowFrameColorChange = Config.AllowFrameColorChange,
+                frameColor = Config.FrameColor
+            }
+        })
     end
 end
 
@@ -334,27 +434,6 @@ exports("SetPhoneVariation", SetPhoneVariation)
 
 AddEventHandler("onResourceStop", function(resource)
     if resource == GetCurrentResourceName() then
-        DeletePhone()
+        DeletePhoneObject()
     end
 end)
-
-while true do
-    local playerPed = PlayerPedId()
-
-    if (phoneOpen or (IsInCall() and not InExportCall)) and not (cameraOpen and not IsWalkingCamEnabled()) and currentAction and not disableAnimation then
-        local inCar = IsPedInAnyVehicle(playerPed, true)
-        local animData = phoneAnimations[currentAction][inCar and "inCar" or "onFoot"]
-
-        if animData then
-            local baseData = animData.base
-
-            if not IsEntityPlayingAnim(playerPed, animData.open.dict, animData.open.anim, 3) and not IsEntityPlayingAnim(playerPed, baseData.dict, baseData.anim, 3) then
-                TaskPlayAnim(playerPed, LoadDict(baseData.dict), baseData.anim, baseData.blendInSpeed or 8.0, baseData.blendOutSpeed or -8.0, -1, baseData.flag | 1048576, 0, false, false, false)
-            end
-        end
-
-        Wait(500)
-    else
-        Wait(1000)
-    end
-end

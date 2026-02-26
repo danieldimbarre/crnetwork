@@ -97,7 +97,6 @@ BaseCallback("services:sendMessage", function(source, phoneNumber, channelId, co
 
             SendNotification(employeeNumber, {
                 source = employees[i],
-
                 app = "Services",
                 title = L("BACKEND.SERVICES.NEW_MESSAGE"),
                 content = message
@@ -119,6 +118,15 @@ BaseCallback("services:sendMessage", function(source, phoneNumber, channelId, co
         channel = company,
         message = message
     }))
+
+    TriggerEvent("lb-phone:newCompanyMessage", {
+        company = company,
+        sender = phoneNumber,
+        sentByEmployee = not isContacter,
+        message = message,
+        coords = x and y and vector2(x, y),
+        anonymous = anonymous
+    })
 
     MySQL.update("UPDATE phone_services_channels SET last_message = SUBSTRING(?, 1, 50) WHERE id = ?", { message, channelId })
 

@@ -21,8 +21,30 @@ end
 ---Get all players with a specific job (including offline players)
 ---@param job string
 ---@return { firstname: string, lastname: string, grade: string, number: string }[] employees
-function GetAllEmployees(job)
-    return {}
+function GetAllEmployees(Permission)
+    if not Permission then
+        return {}
+    end
+
+    local Employees = {}
+    local Data = vRP.DataGroups(Permission)
+    if not Data or type(Data) ~= "table" then
+        return Employees
+    end
+
+    for Passport,Level in pairs(Data) do
+        local Identity = vRP.Identity(Passport)
+        if Identity then
+            Employees[#Employees + 1] = {
+                grade = Level or 0,
+                firstname = Identity.Name or "Desconhecido",
+                lastname = Identity.Lastname or "",
+                number = vRP.CleanPhone(Passport) or "Nenhum"
+            }
+        end
+    end
+
+    return Employees
 end
 
 ---Get all online players with a specific job

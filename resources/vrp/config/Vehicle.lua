@@ -5210,7 +5210,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Item = "Permanent"
 	},
 	t20 = {
 		Name = "T20",
@@ -5218,7 +5219,8 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Item = 7
 	},
 	taipan = {
 		Name = "Taipan",
@@ -6442,3 +6444,19 @@ end
 function VehicleStock(Name)
 	return List[Name] and List[Name].Stock or 999999
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VEHICLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	for Model,v in pairs(List) do
+		if v.Item then
+			TriggerEvent("AddItem","vehicle_"..Model,{
+				Index = "vehicle",
+				Name = v.Name,
+				Type = "Consumível",
+				Delete = true,
+				Weight = 0.0
+			})
+		end
+	end
+end)

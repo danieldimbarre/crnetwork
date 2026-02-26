@@ -59,16 +59,9 @@ end
 ---@param job string
 ---@return table # Player sources
 function GetEmployees(job)
-    local employees = {}
-    local players = QB.Functions.GetQBPlayers()
+    local _, playerSources = exports.qbx_core:GetDutyCountJob(job)
 
-    for _, v in pairs(players) do
-        if v?.PlayerData.job.name == job and v.PlayerData.job.onduty then
-            employees[#employees+1] = v.PlayerData.source
-        end
-    end
-
-    return employees
+    return playerSources
 end
 
 function RefreshCompanies()
@@ -108,7 +101,9 @@ function RefreshCompanies()
 end
 
 CreateThread(function()
-    for _, player in pairs(QB.Functions.GetQBPlayers()) do
+    local players = QB.Functions.GetQBPlayers()
+
+    for _, player in pairs(players) do
         local playerData = player.PlayerData
         local job = playerData.job
         local jobName = job.name

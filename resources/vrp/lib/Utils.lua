@@ -370,7 +370,7 @@ end
 -- RANDPERCENTAGE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function RandPercentage(Table)
-	if type(Table) ~= "table" or #Table == 0 then
+	if type(Table) ~= "table" or next(Table) == nil then
 		return false
 	end
 
@@ -383,16 +383,16 @@ function RandPercentage(Table)
 		return false
 	end
 
-	local Randomize = math.random(Multiplier)
+	local Randomize = math.random() * Multiplier
 	for Number = 1,#Table do
 		local Entry = Table[Number]
 		Randomize = Randomize - (Entry.Chance or 0)
 
-		if Entry.Min and Entry.Max then
-			Entry.Valuation = math.random(Entry.Min,Entry.Max)
-		end
-
 		if Randomize <= 0 then
+			if Entry.Min and Entry.Max then
+				Entry.Valuation = math.random(Entry.Min,Entry.Max)
+			end
+
 			return Entry
 		end
 	end

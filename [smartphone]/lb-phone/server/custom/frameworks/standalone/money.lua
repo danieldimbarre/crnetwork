@@ -2,27 +2,33 @@ if Config.Framework ~= "standalone" then
     return
 end
 
+local Active = {}
+
 ---Get the bank balance of a player
 ---@param source number
 ---@return integer
 function GetBalance(source)
     local Passport = vRP.Passport(source)
-    if Passport then
-        return vRP.GetBank(Passport)
+    if not Passport then
+        return 0
     end
 
-    return 0
+    return vRP.GetBank(Passport)
 end
 
 ---Add money to a player's bank account
 ---@param source number
 ---@param amount integer
 ---@return boolean success
-function AddMoney(source, amount)
+function AddMoney(source,amount)
     local Passport = vRP.Passport(source)
-    if Passport then
-        vRP.GiveBank(Passport,amount)
+    if not Passport or Active[Passport] then
+        return false
+    end
 
+    Active[Passport] = true
+    if vRP.GiveBank(Passport,amount) then
+        Active[Passport] = nil
         return true
     end
 
@@ -40,11 +46,25 @@ end
 ---@param source number
 ---@param amount integer
 ---@return boolean success
-function RemoveMoney(source, amount)
+function RemoveMoney(source,amount)
     local Passport = vRP.Passport(source)
-    if Passport and vRP.PaymentBank(Passport,amount) then
+    if not Passport or Active[Passport] then
+        return false
+    end
+
+    Active[Passport] = true
+    if vRP.PaymentBank(Passport,amount) then
+        Active[Passport] = nil
         return true
     end
 
     return false
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DISCONNECT
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Disconnect",function(Passport,source)
+    if Active[Passport] then
+        Active[Passport] = nil
+    end
+end)

@@ -370,8 +370,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 175,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["tangejuice"] = {
 		Index = "tangejuice",
@@ -381,8 +380,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["orangejuice"] = {
 		Index = "orangejuice",
@@ -392,8 +390,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["applejuice"] = {
 		Index = "applejuice",
@@ -403,8 +400,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["grapejuice"] = {
 		Index = "grapejuice",
@@ -414,8 +410,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["lemonjuice"] = {
 		Index = "lemonjuice",
@@ -425,8 +420,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["bananajuice"] = {
 		Index = "bananajuice",
@@ -436,8 +430,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["acerolajuice"] = {
 		Index = "acerolajuice",
@@ -447,8 +440,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["strawberryjuice"] = {
 		Index = "strawberryjuice",
@@ -458,8 +450,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["blueberryjuice"] = {
 		Index = "blueberryjuice",
@@ -469,8 +460,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["coffeemilk"] = {
 		Index = "coffeemilk",
@@ -480,8 +470,7 @@ local List = {
 		Weight = 0.75,
 		Max = 3,
 		Economy = 125,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	-- DROGAS
 	["joint"] = {
@@ -1347,7 +1336,7 @@ local List = {
 		Description = "Uma experiência visual imersiva equipada com tecnologia LED para cores vibrantes e detalhes nítidos oferecendo entretenimento de alta qualidade.",
 		Type = "Comum",
 		Weight = 12.5,
-		["Anim"] = "tv",
+		Anim = "tv",
 		LostWater = true,
 		Economy = 5425,
 		Market = true,
@@ -1496,8 +1485,7 @@ local List = {
 		Weight = 0.25,
 		Max = 2,
 		Economy = 20,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["tacos"] = {
 		Index = "tacos",
@@ -1508,8 +1496,7 @@ local List = {
 		Max = 2,
 		Economy = 20,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["fries"] = {
 		Index = "fries",
@@ -1520,8 +1507,7 @@ local List = {
 		Max = 2,
 		Economy = 20,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	Water = {
 		Index = "water",
@@ -1531,8 +1517,7 @@ local List = {
 		Weight = 0.25,
 		Max = 2,
 		Economy = 35,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["soda"] = {
 		Index = "soda",
@@ -1542,8 +1527,7 @@ local List = {
 		Weight = 0.25,
 		Max = 2,
 		Economy = 20,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["hotdog"] = {
 		Index = "hotdog",
@@ -1554,8 +1538,7 @@ local List = {
 		Max = 2,
 		Economy = 20,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["donut"] = {
 		Index = "donut",
@@ -1566,8 +1549,7 @@ local List = {
 		Max = 2,
 		Economy = 15,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["hamburger"] = {
 		Index = "hamburger",
@@ -1578,8 +1560,7 @@ local List = {
 		Max = 2,
 		Economy = 25,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["chocolate"] = {
 		Index = "chocolate",
@@ -1589,8 +1570,7 @@ local List = {
 		Weight = 0.15,
 		Max = 4,
 		Economy = 20,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["sandwich"] = {
 		Index = "sandwich",
@@ -1601,8 +1581,7 @@ local List = {
 		Max = 2,
 		Economy = 20,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["coffeecup"] = {
 		Index = "coffeecup",
@@ -1613,8 +1592,7 @@ local List = {
 		Max = 2,
 		Economy = 20,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	-- COMIDAS
 	["nigirizushi"] = {
@@ -1626,8 +1604,7 @@ local List = {
 		Max = 3,
 		Economy = 60,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["sushi"] = {
 		Index = "sushi",
@@ -1638,8 +1615,7 @@ local List = {
 		Max = 3,
 		Economy = 60,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["cupcake"] = {
 		Index = "cupcake",
@@ -1650,8 +1626,7 @@ local List = {
 		Max = 3,
 		Economy = 45,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["milkshake"] = {
 		Index = "milkshake",
@@ -1662,8 +1637,7 @@ local List = {
 		Max = 3,
 		Economy = 75,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["cappuccino"] = {
 		Index = "cappuccino",
@@ -1674,8 +1648,7 @@ local List = {
 		Max = 3,
 		Economy = 100,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["applelove"] = {
 		Index = "applelove",
@@ -1686,8 +1659,7 @@ local List = {
 		Max = 3,
 		Economy = 35,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["cookies"] = {
 		Index = "cookies",
@@ -1698,8 +1670,7 @@ local List = {
 		Max = 3,
 		Economy = 45,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["hamburger2"] = {
 		Index = "hamburger2",
@@ -1710,8 +1681,7 @@ local List = {
 		Max = 3,
 		Economy = 125,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["hamburger3"] = {
 		Index = "hamburger3",
@@ -1722,8 +1692,7 @@ local List = {
 		Max = 3,
 		Economy = 125,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["pizzamozzarella"] = {
 		Index = "pizzamozzarella",
@@ -1734,8 +1703,7 @@ local List = {
 		Max = 3,
 		Economy = 175,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["pizzabanana"] = {
 		Index = "pizzabanana",
@@ -1746,8 +1714,7 @@ local List = {
 		Max = 3,
 		Economy = 175,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	["pizzachocolate"] = {
 		Index = "pizzachocolate",
@@ -1758,8 +1725,7 @@ local List = {
 		Max = 3,
 		Economy = 175,
 		Market = true,
-		LostWater = true,
-		Fridge = true
+		LostWater = true
 	},
 	-- BOXES
 	["treasurebox"] = {
@@ -1891,9 +1857,11 @@ local List = {
 	["securitycam"] = {
 		Index = "securitycam",
 		Name = "CCTV Câmera",
+		Description = "Câmera de segurança instalável que permite o monitoramento em tempo real de áreas estratégicas. Após instalada, o acesso ao painel de controle fica disponível dentro do local selecionado dos grupos em suas bases, garantindo vigilância, controle e segurança do perímetro.",
 		Type = "Consumível",
 		Durability = 240,
 		Weight = 7.75,
+		Delete = true,
 		Market = true
 	},
 	["barrier"] = {
@@ -1905,36 +1873,6 @@ local List = {
 		Max = 2,
 		Economy = 25,
 		Market = true
-	},
-	["personalp"] = {
-		Index = "personal",
-		Name = "Compartimento Pessoal",
-		Description = "Projetado para manter seus itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>100kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
-		Type = "Consumível",
-		Rarity = "common",
-		Delete = true,
-		Unique = true,
-		Weight = 5.25
-	},
-	["personalm"] = {
-		Index = "personal",
-		Name = "Compartimento Pessoal",
-		Description = "Projetado para manter seus itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>250kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
-		Type = "Consumível",
-		Rarity = "rare",
-		Delete = true,
-		Unique = true,
-		Weight = 5.25
-	},
-	["personalg"] = {
-		Index = "personal",
-		Name = "Compartimento Pessoal",
-		Description = "Projetado para manter seus itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>500kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
-		Type = "Consumível",
-		Rarity = "epic",
-		Delete = true,
-		Unique = true,
-		Weight = 5.25
 	},
 	["chestgroupp"] = {
 		Index = "chestgroup",
@@ -3237,8 +3175,7 @@ local List = {
 		LostWater = true,
 		Economy = 50,
 		Market = true,
-		Fridge = true,
-		["Fishing"] = 5
+		Fishing = 5
 	},
 	["catfish"] = {
 		Index = "catfish",
@@ -3248,8 +3185,7 @@ local List = {
 		LostWater = true,
 		Economy = 70,
 		Market = true,
-		Fridge = true,
-		["Fishing"] = 7
+		Fishing = 7
 	},
 	["herring"] = {
 		Index = "herring",
@@ -3259,8 +3195,7 @@ local List = {
 		LostWater = true,
 		Economy = 80,
 		Market = true,
-		Fridge = true,
-		["Fishing"] = 8
+		Fishing = 8
 	},
 	["orangeroughy"] = {
 		Index = "orangeroughy",
@@ -3270,8 +3205,7 @@ local List = {
 		LostWater = true,
 		Economy = 60,
 		Market = true,
-		Fridge = true,
-		["Fishing"] = 6
+		Fishing = 6
 	},
 	["salmon"] = {
 		Index = "salmon",
@@ -3281,8 +3215,7 @@ local List = {
 		LostWater = true,
 		Economy = 150,
 		Market = true,
-		Fridge = true,
-		["Fishing"] = 15
+		Fishing = 15
 	},
 	["sardine"] = {
 		Index = "sardine",
@@ -3292,8 +3225,7 @@ local List = {
 		LostWater = true,
 		Economy = 60,
 		Market = true,
-		Fridge = true,
-		["Fishing"] = 6
+		Fishing = 6
 	},
 	["smallshark"] = {
 		Index = "smallshark",
@@ -3303,8 +3235,7 @@ local List = {
 		LostWater = true,
 		Economy = 250,
 		Market = true,
-		Fridge = true,
-		["Fishing"] = 25
+		Fishing = 25
 	},
 	["smalltrout"] = {
 		Index = "smalltrout",
@@ -3314,8 +3245,7 @@ local List = {
 		LostWater = true,
 		Economy = 70,
 		Market = true,
-		Fridge = true,
-		["Fishing"] = 7
+		Fishing = 7
 	},
 	["yellowperch"] = {
 		Index = "yellowperch",
@@ -3325,15 +3255,14 @@ local List = {
 		LostWater = true,
 		Economy = 80,
 		Market = true,
-		Fridge = true,
-		["Fishing"] = 8
+		Fishing = 8
 	},
 	["package"] = {
 		Index = "package",
 		Name = "Encomenda",
 		Type = "Comum",
 		Weight = 10.0,
-		["Anim"] = "caixa",
+		Anim = "caixa",
 		LostWater = true,
 		Economy = 0,
 		Market = true,
@@ -3344,7 +3273,7 @@ local List = {
 		Name = "Saco de Lixo",
 		Type = "Comum",
 		Weight = 10.0,
-		["Anim"] = "lixo",
+		Anim = "lixo",
 		LostWater = true,
 		Economy = 0,
 		Market = true,
@@ -3356,8 +3285,7 @@ local List = {
 		Type = "Comum",
 		Weight = 0.35,
 		Economy = 35,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["pouch"] = {
 		Index = "pouch",
@@ -3473,8 +3401,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 275,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["coyote2star"] = {
 		Index = "box2star",
@@ -3482,8 +3409,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 300,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["coyote3star"] = {
 		Index = "box3star",
@@ -3491,8 +3417,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 325,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["mtlion1star"] = {
 		Index = "box1star",
@@ -3500,8 +3425,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 275,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["mtlion2star"] = {
 		Index = "box2star",
@@ -3509,8 +3433,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 300,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["mtlion3star"] = {
 		Index = "box3star",
@@ -3518,8 +3441,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 325,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["boar1star"] = {
 		Index = "box1star",
@@ -3527,8 +3449,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 275,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["boar2star"] = {
 		Index = "box2star",
@@ -3536,8 +3457,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 300,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["boar3star"] = {
 		Index = "box3star",
@@ -3545,8 +3465,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 325,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["deer1star"] = {
 		Index = "box1star",
@@ -3554,8 +3473,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 275,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["deer2star"] = {
 		Index = "box2star",
@@ -3563,8 +3481,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 300,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	["deer3star"] = {
 		Index = "box3star",
@@ -3572,8 +3489,7 @@ local List = {
 		Type = "Comum",
 		Weight = 2.25,
 		Economy = 325,
-		Market = true,
-		Fridge = true
+		Market = true
 	},
 	-- OUTROS
 	["legendarykey"] = {
@@ -3768,7 +3684,7 @@ local List = {
 		Market = true,
 		Execute = {
 			Type = "Server",
-			Event = "races:Clean"
+			Event = "races:Item"
 		}
 	},
 	["racesticket"] = {
@@ -4194,8 +4110,7 @@ for _,v in ipairs(Clones) do
 		LostWater = true,
 		Weight = 0.15,
 		Market = true,
-		Economy = 15,
-		Fridge = true
+		Economy = 15
 	}
 
 	for _,w in ipairs(Puritys) do
@@ -4210,6 +4125,86 @@ for _,v in ipairs(Clones) do
 			Market = true
 		}
 	end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FURNITURE
+-----------------------------------------------------------------------------------------------------------------------------------------
+Furniture = {
+	{
+		Item = "halloween_pumpkin",
+		Name = "Abóbora de Halloween",
+		Rarity = "legendary",
+		Hash = "tfx-summer_abroba"
+	},{
+		Item = "halloween_ghost",
+		Name = "Fantasma de Halloween",
+		Rarity = "legendary",
+		Hash = "tfx-summer_ghost"
+	},{
+		Item = "largebed",
+		Name = "Cama",
+		Hash = "hei_heist_bed_double_08"
+	},{
+		Item = "browncloset",
+		Name = "Guarda-Roupas",
+		Rarity = "epic",
+		Hash = "v_res_m_armoire"
+	},{
+		Item = "simplebox",
+		Name = "Cofre Básico",
+		Hash = "prop_ld_int_safe_01",
+		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>100KG</legendary> dentro de seu compartimento.",
+		Delete = true
+	},{
+		Item = "safebox",
+		Name = "Cofre Reforçado",
+		Rarity = "rare",
+		Hash = "p_v_43_safe_s",
+		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>200KG</legendary> dentro de seu compartimento.",
+		Delete = true
+	},{
+		Item = "officebox",
+		Name = "Cofre Blindado",
+		Rarity = "epic",
+		Hash = "sf_prop_v_43_safe_s_bk_01a",
+		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>500KG</legendary> dentro de seu compartimento.",
+		Delete = true
+	},{
+		Item = "industrialbox",
+		Name = "Cofre Industrial",
+		Rarity = "epic",
+		Hash = "xm3_prop_xm3_safe_01a",
+		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>1000KG</legendary> dentro de seu compartimento.",
+		Delete = true
+	},{
+		Item = "ornamentbox",
+		Name = "Cofre Corporativo",
+		Rarity = "legendary",
+		Hash = "h4_prop_h4_safe_01a",
+		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>1500KG</legendary> dentro de seu compartimento.",
+		Delete = true
+	},{
+		Item = "goldenbox",
+		Name = "Cofre Executivo",
+		Rarity = "legendary",
+		Hash = "sf_prop_v_43_safe_s_gd_01a",
+		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>2500KG</legendary> dentro de seu compartimento.",
+		Delete = true
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- FURNITURESYSTEM
+-----------------------------------------------------------------------------------------------------------------------------------------
+for _,v in ipairs(Furniture) do
+	List["furniture_"..v.Item] = {
+		Name = v.Name,
+		Delete = v.Delete,
+		Type = "Consumível",
+		Weight = v.Weight or 2.0,
+		Index = "furniture_"..v.Item,
+		Rarity = v.Rarity or "common",
+		Description = v.Description or "Este objeto pode ser posicionado dentro de propriedades, permitindo personalizar e organizar o ambiente."
+	}
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLUEPRINTS
@@ -4396,13 +4391,6 @@ function ItemRecycle(Item)
 	return List[Item] and List[Item].Recycle or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ITEMFRIDGE
------------------------------------------------------------------------------------------------------------------------------------------
-function ItemFridge(Item)
-	local Item = SplitOne(Item)
-	return List[Item] and List[Item].Fridge or false
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMFISHING
 -----------------------------------------------------------------------------------------------------------------------------------------
 function ItemFishing(Item)
@@ -4429,6 +4417,13 @@ end
 function ItemSkinshop(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Skinshop or false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEMLOCKED
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ItemLocked(Item)
+	local Item = SplitOne(Item)
+	return List[Item] and List[Item].Locked or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLOCKDELETE

@@ -63,21 +63,6 @@
         "wallpaper20": "wallpaper20.jpg",
         "wallpaper21": "wallpaper21.jpg"
     },
-    "sounds": {
-        "ringtone": {
-            "default": "default.mp3",
-            "harp": "harp.mp3",
-            "apex": "apex.mp3",
-            "radar": "radar.mp3",
-            "sencha": "sencha.mp3",
-            "silk": "silk.mp3",
-            "summit": "summit.mp3"
-        },
-        "texttone": {
-            "default": "default.mp3"
-        },
-        "appNotifications": {}
-    },
     "apps": {
         "Phone": {
             "name": "Phone",
@@ -230,6 +215,11 @@
             "removable": true,
             "size": 223000,
             "images": ["1.webp"]
+        },
+        "Browser": {
+            "name": "Browser",
+            "removable": false,
+            "size": 5123
         }
     },
     "world_clock_locations": {

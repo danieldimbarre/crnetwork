@@ -34,7 +34,7 @@ function vRP.ClearInventory(Passport,Ignore)
 	local Passport = parseInt(Passport)
 	local Inventory = vRP.Inventory(Passport)
 
-	exports["inventory"]:CleanWeapons(Passport)
+	exports.inventory:CleanWeapons(Passport)
 	TriggerEvent("DebugWeapons",Passport)
 	TriggerEvent("DebugObjects",Passport)
 

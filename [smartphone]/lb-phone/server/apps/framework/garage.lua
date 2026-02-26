@@ -57,6 +57,12 @@ end)
 ---@param coords vector3
 ---@param heading number
 BaseCallback("garage:valetVehicle", function(source, phoneNumber, plate, coords, heading)
+    if not Config.Valet.Enabled then
+        infoprint("warning", "Player " .. source .. " attempted to use valet, but it is disabled in the config.")
+
+        return
+    end
+
     if IsVehicleOut(plate) then
         SendNotification(phoneNumber, {
             app = "Garage",
@@ -80,6 +86,7 @@ BaseCallback("garage:valetVehicle", function(source, phoneNumber, plate, coords,
     local vehicleData = GetVehicle(source, plate)
 
     if not vehicleData then
+        debugprint("valetVehicle: No vehicle data found for plate", plate)
         return
     end
 

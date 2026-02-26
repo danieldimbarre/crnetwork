@@ -1,7 +1,40 @@
----Hide hud components, used in the camera app
-function HideHudComponents()
-    HideHudAndRadarThisFrame()
-    HideHelpTextThisFrame()
+local hudDisabled = false
+
+---@param visible boolean
+function ToggleHudComponents(visible)
+    if hudDisabled == visible then
+        return
+    end
+
+    hudDisabled = visible
+
+    Citizen.CreateThreadNow(function()
+        while hudDisabled and hudDisabled == visible do
+            HideHudAndRadarThisFrame()
+            HideHelpTextThisFrame()
+
+            Wait(0)
+        end
+    end)
+end
+
+---@param buttons string[]
+function DisplayCameraButtons(buttons)
+    if hudDisabled or Config.Camera?.ShowTip == false then
+        return
+    end
+
+    if #buttons > 0 then
+        local tip = table.concat(buttons, "\n")
+
+        AddTextEntry("CAMERA_TIP2", tip)
+        BeginTextCommandDisplayHelp("CAMERA_TIP2")
+        EndTextCommandDisplayHelp(0, true, true, 0)
+    end
+end
+
+function StopDisplayingCameraButtons()
+    ClearHelp(true)
 end
 
 ---@param entity number
@@ -185,6 +218,15 @@ end
 function GiveVehicleKey(vehicle, plate)
     TriggerEvent("vehiclekeys:client:SetOwner", plate)
 end
+
+AddCheck("playNativePhoneSound", function(soundType, soundName)
+    if not IsEntityVisible(PlayerPedId()) then
+        debugprint("Cancelling native phone sound due to player ped being invisible")
+        return false
+    end
+
+    return true
+end)
 
 -- ---@param uploadType "Video" | "Image" | "Audio"
 -- ---@return UploadMethod?

@@ -506,7 +506,7 @@ function Creative.Use(Slot,Amount)
 			return
 		end
 
-		if ItemTypeCheck(Full,"Armamento") and (parseInt(Slot) >= 100 and parseInt(Slot) <= 103) then
+		if ItemTypeCheck(Full,"Armamento") and parseInt(Slot) <= 3 then
 			if Player(source).state.Safezone or (vRP.InsideVehicle(source) and not ItemVehicle(Full)) then
 				return
 			end

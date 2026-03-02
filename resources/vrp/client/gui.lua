@@ -166,25 +166,29 @@ function tvRP.CreateObjects(Dict,Anim,Prop,Flag,Hands,Height,Pos1,Pos2,Pos3,Pos4
 		AnimVars = { Dict,Anim,true,Flag }
 	end
 
-	if not IsPedInAnyVehicle(Ped) then
-		local Coords = GetEntityCoords(Ped)
-		local Networked = vRPS.CreateObject(Prop,Coords.x,Coords.y,Coords.z)
-		if not Networked then return end
+	if IsPedInAnyVehicle(Ped) then
+		return false
+	end
 
-		local Entity = LoadNetwork(Networked)
-		while not DoesEntityExist(Entity) do
-			Wait(100)
-		end
+	local Coords = GetEntityCoords(Ped)
+	local Networked = vRPS.CreateObject(Prop,Coords.x,Coords.y,Coords.z)
+	if not Networked then return end
 
-		Object = Entity
+	local Entity = LoadNetwork(Networked)
+	while not DoesEntityExist(Entity) do
+		Wait(100)
+	end
 
-		SetEntityLodDist(Object,0xFFFF)
+	Object = Entity
 
-		if Height then
-			AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),Height,Pos1,Pos2,Pos3,Pos4,Pos5,true,true,false,true,1,true)
-		else
-			AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),0.0,0.0,0.0,0.0,0.0,0.0,true,true,false,true,2,true)
-		end
+	SetEntityCollision(Object,false,true)
+	SetEntityCompletelyDisableCollision(Object,true,true)
+	SetEntityNoCollisionEntity(Object,Ped,true)
+
+	if Height then
+		AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),Height,Pos1,Pos2,Pos3,Pos4,Pos5,true,true,false,false,1,true)
+	else
+		AttachEntityToEntity(Object,Ped,GetPedBoneIndex(Ped,Hands),0.0,0.0,0.0,0.0,0.0,0.0,true,true,false,false,2,true)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

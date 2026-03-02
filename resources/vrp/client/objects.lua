@@ -334,7 +334,7 @@ function CreateAndManageObject(Number,Table,Coords)
 
 	SetEntityHeading(Entitys,Table.Coords[4] or 0.0)
 	FreezeEntityPosition(Entitys,true)
-	SetEntityLodDist(Entitys,0xFFFF)
+	SetEntityLodDist(Entitys,10000)
 
 	if IsPedInAnyVehicle(Ped,false) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)

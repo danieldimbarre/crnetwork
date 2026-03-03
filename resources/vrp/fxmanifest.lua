@@ -4,7 +4,6 @@ lua54 "yes"
 creative_network "extended"
 
 client_scripts {
-	"lib/Utils.lua",
 	"config/Native.lua",
 
 	"client/base.lua",
@@ -17,8 +16,6 @@ client_scripts {
 }
 
 server_scripts {
-	"lib/Utils.lua",
-
 	"modules/vrp.lua",
 	"modules/core.lua",
 	"modules/prepare.lua"
@@ -32,6 +29,7 @@ files {
 }
 
 shared_scripts {
+	"lib/Utils.lua",
 	"config/Item.lua",
 	"config/Vehicle.lua",
 	"config/Global.lua",

@@ -437,8 +437,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:REMOVEGEMSTONE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("hud:RemoveGemstone")
-AddEventHandler("hud:RemoveGemstone",function(Number)
+RegisterNetEvent("hud:RemoveGemstone",function(Number)
 	Gemstone = Gemstone - Number
 
 	if Gemstone < 0 then
@@ -462,8 +461,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- HUD:HOOD
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("hud:Hood")
-AddEventHandler("hud:Hood",function()
+RegisterNetEvent("hud:Hood",function()
 	if Hood then
 		DoScreenFadeIn(2500)
 		Hood = false
@@ -475,8 +473,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOMINATION:UPDATE
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("domination:Update")
-AddEventHandler("domination:Update",function(Data,Max)
+RegisterNetEvent("domination:Update",function(Data,Max)
 	SendNUIMessage({ Action = "Domination", Payload = { Data = Data, Max = Max } })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -488,7 +485,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DOMINATION:KILLFEED
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent("domination:KillFeed")
-AddEventHandler("domination:KillFeed",function(Attacker,Victim)
+RegisterNetEvent("domination:KillFeed",function(Attacker,Victim)
 	SendNUIMessage({ Action = "Killfeed", Payload = { Killer = Attacker, Victim = Victim } })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:DISPLAYEXPERIENCE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:DisplayExperience",function(Type,Amount)
+	SendNUIMessage({ Action = Type, Payload = Amount })
 end)

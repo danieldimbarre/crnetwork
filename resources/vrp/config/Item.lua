@@ -1796,7 +1796,21 @@ local List = {
 		Unique = true,
 		Market = true,
 		Economy = 1275,
-		Rarity = "rare"
+		Rarity = "rare",
+		Locked = true
+	},
+	["mechanicbag"] = {
+		Index = "mechanicbag",
+		Name = "Caixa de Ferramentas",
+		Description = "Projetada para armazenamento seguro e organizado de ferramentas, garantindo acessibilidade e segurança no ambiente de manutenção.",
+		Repair = "repairkit01",
+		Type = "Consumível",
+		Durability = 720,
+		Weight = 5.0,
+		Unique = true,
+		Market = true,
+		Economy = 4275,
+		Locked = true
 	},
 	-- OBJECTS
 	["pistol_bench"] = {

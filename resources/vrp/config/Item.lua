@@ -4069,16 +4069,6 @@ local List = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- VARIABLES
------------------------------------------------------------------------------------------------------------------------------------------
-ListItem = List
------------------------------------------------------------------------------------------------------------------------------------------
--- ADDITEM
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("AddItem",function(Name,Table)
-	List[Name] = Table
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- PURITYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Puritys = {
@@ -4113,33 +4103,6 @@ Clones = {
 	{ Clone = "weed", Name = "Cannabis", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
 	{ Clone = "coke", Name = "Cocaína", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" }
 }
------------------------------------------------------------------------------------------------------------------------------------------
--- CLONESYSTEM
------------------------------------------------------------------------------------------------------------------------------------------
-for _,v in ipairs(Clones) do
-	List[v.Clone] = {
-		Index = v.Clone,
-		Name = v.Name,
-		Type = "Comum",
-		LostWater = true,
-		Weight = 0.15,
-		Market = true,
-		Economy = 15
-	}
-
-	for _,w in ipairs(Puritys) do
-		List[v.Clone.."clone_"..w.Percent] = {
-			Index = "clone",
-			Name = "Clonagem de "..v.Name,
-			Description = "Pureza dos frutos: <common>"..w.Percent.."%</common>",
-			Type = "Consumível",
-			Purity = w.Percent,
-			LostWater = true,
-			Weight = 0.05,
-			Market = true
-		}
-	end
-end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FURNITURE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -4207,42 +4170,91 @@ Furniture = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- FURNITURESYSTEM
+-- ADDITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-for _,v in ipairs(Furniture) do
-	List["furniture_"..v.Item] = {
-		Name = v.Name,
-		Delete = v.Delete,
-		Type = "Consumível",
-		Weight = v.Weight or 2.0,
-		Index = "furniture_"..v.Item,
-		Rarity = v.Rarity or "common",
-		Description = v.Description or "Este objeto pode ser posicionado dentro de propriedades, permitindo personalizar e organizar o ambiente."
-	}
-end
+AddEventHandler("AddItem",function(Name,Data)
+	List[Name] = Data
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLUEPRINTS
 -----------------------------------------------------------------------------------------------------------------------------------------
-for Item,v in pairs(List) do
-	local AmountBlueprint = v.Blueprint
-	if AmountBlueprint then
-		List["blueprint_"..Item] = {
-			Index = "blueprint",
-			Name = ("Aprendizado: %s"):format(v.Name),
-			Description = "Ao consumir você aprende a receita necessária para produzi-lo sempre que desejar.",
-			Type = "Consumível",
-			Weight = 0.0,
-			Recycle = {
-				blueprint_fragment = AmountBlueprint
+CreateThread(function()
+	for Item,v in pairs(List) do
+		local AmountBlueprint = v.Blueprint
+		if AmountBlueprint then
+			List["blueprint_"..Item] = {
+				Name = v.Name,
+				Index = "blueprint",
+				Description = "Ao consumir você aprende a receita necessária para produzi-lo sempre que desejar.",
+				Type = "Consumível",
+				Weight = 0.0,
+				Recycle = {
+					blueprint_fragment = AmountBlueprint
+				}
 			}
+		end
+	end
+
+	for _,v in pairs(Clones) do
+		List[v.Clone] = {
+			Index = v.Clone,
+			Name = v.Name,
+			Type = "Comum",
+			LostWater = true,
+			Weight = 0.15,
+			Market = true,
+			Economy = 15
+		}
+
+		for _,w in pairs(Puritys) do
+			List[v.Clone.."clone_"..w.Percent] = {
+				Index = "clone",
+				Name = "Clonagem de "..v.Name,
+				Description = "Pureza dos frutos: <common>"..w.Percent.."%</common>",
+				Type = "Consumível",
+				Purity = w.Percent,
+				LostWater = true,
+				Weight = 0.05,
+				Market = true
+			}
+		end
+	end
+
+	for _,v in pairs(Furniture) do
+		List["furniture_"..v.Item] = {
+			Name = v.Name,
+			Delete = v.Delete,
+			Type = "Consumível",
+			Weight = v.Weight or 2.0,
+			Index = "furniture_"..v.Item,
+			Rarity = v.Rarity or "common",
+			Description = v.Description or "Este objeto pode ser posicionado dentro de propriedades, permitindo personalizar e organizar o ambiente."
 		}
 	end
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMLIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 function ItemList()
 	return List
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEMCLONES
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ItemClones()
+	return Clones
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEMPURITYS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ItemPuritys()
+	return Puritys
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEMFURNITURE
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ItemFurniture()
+	return Furniture
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMEXIST
@@ -4467,3 +4479,7 @@ function WeaponAttach(Item,Weapon)
 	local Item = SplitOne(Item)
 	return List[Weapon] and List[Weapon].Attachs and List[Weapon].Attachs[Item] or false
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+ListItem = List

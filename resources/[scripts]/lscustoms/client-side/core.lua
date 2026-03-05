@@ -97,6 +97,7 @@ function Open(Vehicle,Logo)
 	Opened = true
 	SetNuiFocus(Focus,Focus)
 	SetCursorLocation(0.5,0.5)
+	SetNuiFocusKeepInput(Focus)
 	TriggerEvent("hud:Active",false)
 	Information["Model"] = GetEntityArchetypeName(Information["Vehicle"])
 	Information["Plate"] = GetVehicleNumberPlateText(Information["Vehicle"])
@@ -639,6 +640,7 @@ RegisterNUICallback("Save",function(Data,Callback)
 	Focus = false
 	Opened = false
 	SetNuiFocus(Focus,Focus)
+	SetNuiFocusKeepInput(Focus)
 	TriggerEvent("hud:Active",true)
 	TriggerServerEvent("lscustoms:Network")
 	FreezeEntityPosition(Information["Vehicle"],false)
@@ -656,6 +658,7 @@ RegisterNUICallback("Close",function(Data,Callback)
 	Focus = false
 	Opened = false
 	SetNuiFocus(Focus,Focus)
+	SetNuiFocusKeepInput(Focus)
 	TriggerEvent("hud:Active",true)
 	TriggerServerEvent("lscustoms:Network")
 	FreezeEntityPosition(Information["Vehicle"],false)
@@ -665,9 +668,9 @@ RegisterNUICallback("Close",function(Data,Callback)
 	Callback("Ok")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
--- SPACE
+-- CAMERA
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterNUICallback("Space",function(Data,Callback)
+RegisterNUICallback("Camera",function(Data,Callback)
 	SetNuiFocusKeepInput(Focus)
 	Focus = not Focus
 

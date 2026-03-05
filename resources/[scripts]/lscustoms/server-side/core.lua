@@ -19,34 +19,41 @@ local Networked = {}
 function Creative.Permission(Index)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if not Passport then
+	if not Passport or exports.bank:CheckTaxes(Passport) or exports.bank:CheckFines(Passport) then
 		return false
 	end
 
 	local Location = Locations[Index]
-	if not Location or (Location.Permission and not vRP.HasService(Passport,Location.Permission)) then
+	if not Location then
 		return false
 	end
 
-	if not exports.bank:CheckTaxes(Passport) and not exports.bank:CheckFines(Passport) then
-		return true
+	if Location.Permission and not vRP.HasService(Passport,Location.Permission) then
+		return false
 	end
 
-	return false
+	return true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SAVE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Save(Model,Plate,Initial)
-	local source = source
+	local Passport = vRP.Passport(source)
+	if not Passport then
+		return false
+	end
+
 	local OtherPassport = vRP.PassportPlate(Plate)
 	if not OtherPassport then
 		return false
 	end
 
-	local Passport = vRP.Passport(source)
 	local Price = Calculate(Initial,Model)
-	if not Passport or (Price > 0 and not vRP.PaymentFull(Passport,Price,true)) then
+	if not Price or Price <= 0 then
+		return false
+	end
+
+	if not vRP.PaymentFull(Passport,Price,true) then
 		return false
 	end
 

@@ -149,7 +149,7 @@ end)
 -- WAYPOINT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Waypoint(Coords)
-	if Coords.x ~= 0.0 and Coords.y ~= 0.0 then
+	if Coords and Coords.x and Coords.y and Coords.x ~= 0.0 and Coords.y ~= 0.0 then
 		SetNewWaypoint(Coords.x + 0.0001,Coords.y + 0.0001)
 	end
 end
@@ -228,7 +228,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("CEventGunShot",function(_,OtherPeds)
 	local Ped = PlayerPedId()
-	if Ped ~= OtherPeds or GetGameTimer() < ShotDelay then
+	if LocalPlayer.state.Propertys or Ped ~= OtherPeds or GetGameTimer() < ShotDelay then
 		return false
 	end
 

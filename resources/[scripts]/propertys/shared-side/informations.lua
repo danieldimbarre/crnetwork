@@ -45,20 +45,16 @@ Informations = {
 	Onyx = {
 		Price = 2000000,
 		Gemstone = 100000
-	},
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EXPORTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Informations",function()
-	local Selected
-	local Count = 0
+	local Interiors = {}
 	for Name in pairs(Informations) do
-		Count = Count + 1
-		if math.random(Count) == 1 then
-			Selected = Name
-		end
+		Interiors[#Interiors + 1] = Name
 	end
 
-	return Selected
+	return Interiors[math.random(1,#Interiors)]
 end)

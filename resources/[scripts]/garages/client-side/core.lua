@@ -280,9 +280,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CREATEVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.CreateVehicle(Network,Engine,Health,Customize,Windows,Tyres)
-	while not NetworkDoesNetworkIdExist(Network) do
-		Wait(0)
+function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Tyres)
+	if not NetworkDoesNetworkIdExist(Network) then
+		return false
 	end
 
 	local Vehicle = NetToEnt(Network)
@@ -290,20 +290,22 @@ function Creative.CreateVehicle(Network,Engine,Health,Customize,Windows,Tyres)
 		return false
 	end
 
-	NetworkRequestControlOfEntity(Vehicle)
-	while not NetworkHasControlOfEntity(Vehicle) do
-		Wait(0)
-	end
+	Wait(500)
 
-	SetEntityAsMissionEntity(Vehicle,true,true)
-	while not IsEntityAMissionEntity(Vehicle) do
-		Wait(0)
-	end
-
+	SetNetworkIdExistsOnAllMachines(Network,true)
 	SetVehicleEngineHealth(Vehicle,Engine + 0.0)
+	SetVehicleHasBeenOwnedByPlayer(Vehicle,true)
+	SetEntityAsMissionEntity(Vehicle,true,true)
 	SetVehicleNeedsToBeHotwired(Vehicle,false)
+	SetEntityCleanupByEngine(Vehicle,true)
+	SetNetworkIdCanMigrate(Network,true)
+	SetVehicleOnGroundProperly(Vehicle)
 	SetVehRadioStation(Vehicle,"OFF")
 	SetEntityHealth(Vehicle,Health)
+
+	TriggerEvent("lscustoms:Apply",Vehicle,Customize)
+
+	Wait(500)
 
 	if Windows then
 		local DecodedWindows = json.decode(Windows)
@@ -327,7 +329,7 @@ function Creative.CreateVehicle(Network,Engine,Health,Customize,Windows,Tyres)
 		end
 	end
 
-	TriggerEvent("lscustoms:Apply",Vehicle,Customize)
+	SetModelAsNoLongerNeeded(Model)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:DELETE
@@ -349,7 +351,7 @@ AddEventHandler("garages:Delete",function(Vehicle)
 			Tyres[Number] = (GetTyreHealth(Vehicle,Number) ~= 1000.0 and true or false)
 		end
 
-		vSERVER.Delete(NetworkGetNetworkIdFromEntity(Vehicle),Doors,Tyres,GetVehicleNumberPlateText(Vehicle),Opened or "1")
+		vSERVER.Delete(NetworkGetNetworkIdFromEntity(Vehicle),Doors,Tyres,GetVehicleNumberPlateText(Vehicle))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -362,6 +364,10 @@ function Creative.SearchBlip(Coords)
 	end
 
 	if type(Coords) == "string" then
+		if not Garages[Coords] then
+			return false
+		end
+
 		Coords = vec3(Garages[Coords].x,Garages[Coords].y,Garages[Coords].z)
 	end
 

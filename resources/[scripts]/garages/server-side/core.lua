@@ -26,32 +26,32 @@ local Propertys = {}
 -- GARAGES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Garages = {
-	["1"] = { ["Name"] = "Garage", ["Save"] = true },
-	["2"] = { ["Name"] = "Garage", ["Save"] = true },
-	["3"] = { ["Name"] = "Garage", ["Save"] = true },
-	["4"] = { ["Name"] = "Garage", ["Save"] = true },
-	["5"] = { ["Name"] = "Garage", ["Save"] = true },
-	["6"] = { ["Name"] = "Garage", ["Save"] = true },
-	["7"] = { ["Name"] = "Garage", ["Save"] = true },
-	["8"] = { ["Name"] = "Garage", ["Save"] = true },
-	["9"] = { ["Name"] = "Garage", ["Save"] = true },
-	["10"] = { ["Name"] = "Garage", ["Save"] = true },
-	["11"] = { ["Name"] = "Garage", ["Save"] = true },
-	["12"] = { ["Name"] = "Garage", ["Save"] = true },
-	["13"] = { ["Name"] = "Garage", ["Save"] = true },
-	["14"] = { ["Name"] = "Garage", ["Save"] = true },
-	["15"] = { ["Name"] = "Garage", ["Save"] = true },
-	["16"] = { ["Name"] = "Garage", ["Save"] = true },
-	["17"] = { ["Name"] = "Garage", ["Save"] = true },
-	["18"] = { ["Name"] = "Garage", ["Save"] = true },
-	["19"] = { ["Name"] = "Garage", ["Save"] = true },
-	["20"] = { ["Name"] = "Garage", ["Save"] = true },
-	["21"] = { ["Name"] = "Garage", ["Save"] = true },
-	["22"] = { ["Name"] = "Garage", ["Save"] = true },
-	["23"] = { ["Name"] = "Garage", ["Save"] = true },
-	["24"] = { ["Name"] = "Garage", ["Save"] = true },
-	["25"] = { ["Name"] = "Garage", ["Save"] = true },
-	["26"] = { ["Name"] = "Garage", ["Save"] = true },
+	["1"] = { ["Name"] = "Garage" },
+	["2"] = { ["Name"] = "Garage" },
+	["3"] = { ["Name"] = "Garage" },
+	["4"] = { ["Name"] = "Garage" },
+	["5"] = { ["Name"] = "Garage" },
+	["6"] = { ["Name"] = "Garage" },
+	["7"] = { ["Name"] = "Garage" },
+	["8"] = { ["Name"] = "Garage" },
+	["9"] = { ["Name"] = "Garage" },
+	["10"] = { ["Name"] = "Garage" },
+	["11"] = { ["Name"] = "Garage" },
+	["12"] = { ["Name"] = "Garage" },
+	["13"] = { ["Name"] = "Garage" },
+	["14"] = { ["Name"] = "Garage" },
+	["15"] = { ["Name"] = "Garage" },
+	["16"] = { ["Name"] = "Garage" },
+	["17"] = { ["Name"] = "Garage" },
+	["18"] = { ["Name"] = "Garage" },
+	["19"] = { ["Name"] = "Garage" },
+	["20"] = { ["Name"] = "Garage" },
+	["21"] = { ["Name"] = "Garage" },
+	["22"] = { ["Name"] = "Garage" },
+	["23"] = { ["Name"] = "Garage" },
+	["24"] = { ["Name"] = "Garage" },
+	["25"] = { ["Name"] = "Garage" },
+	["26"] = { ["Name"] = "Garage" },
 
 	-- Paramedic
 	["41"] = { ["Name"] = "Paramedico", ["Permission"] = "Paramedico" },
@@ -220,7 +220,7 @@ function Creative.ServerVehicle(Model,Coords,Plate,Nitro,Doors,Body,Fuel,Seatbel
 	end
 
 	local CurrentTimer = os.time() + 10
-	local Vehicle = CreateVehicle(Model,Coords,true,true)
+	local Vehicle = CreateVehicle(Model,Coords,true,false)
 
 	while not DoesEntityExist(Vehicle) or NetworkGetNetworkIdFromEntity(Vehicle) == 0 do
 		if os.time() >= CurrentTimer then
@@ -278,12 +278,17 @@ AddEventHandler("garages:Respawns",function(Plate)
 
 	local Mods = vRP.GetSrvData("LsCustoms:"..OtherPassport..":"..Model,true)
 	local Exist,Network,Entitys = Creative.ServerVehicle(Model,Respawn,Plate,VehicleData.Nitro,VehicleData.Doors,VehicleData.Body,VehicleData.Fuel,VehicleData.Seatbelt,VehicleData.Drift)
-
 	if not Exist then
 		return false
 	end
 
-	vCLIENT.CreateVehicle(source,Network,VehicleData.Engine,VehicleData.Health,Mods,VehicleData.Windows,VehicleData.Tyres)
+	local Players = vRPC.Players(source)
+	for _,OtherSource in pairs(Players) do
+		async(function()
+			vCLIENT.CreateVehicle(OtherSource,Model,Network,VehicleData.Engine,VehicleData.Health,Mods,VehicleData.Windows,VehicleData.Tyres)
+		end)
+	end
+
 	Entity(Entitys).state:set("Lockpick",OtherPassport,true)
 	TaskWarpPedIntoVehicle(GetPlayerPed(source),Entitys,-1)
 	TriggerClientEvent("garages:Respawn",-1,"Remove",Plate)
@@ -689,29 +694,6 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 		return false
 	end
 
-	local SaveGarage = Vehicle.Save
-	if Number ~= SaveGarage then
-		if Garages[SaveGarage] and Garages[Number] and Garages[Number].Save then
-			TriggerClientEvent("Notify",source,"Aviso","O veículo não está neste local, mas será marcado no mapa.","amarelo",5000)
-			TriggerClientEvent("garages:Close",source)
-			vCLIENT.SearchBlip(source,SaveGarage)
-
-			local Valuation = Price * 0.1
-			if not vRP.Request(source,"Garagem",("Resgatar o veículo custa <b>%s%s</b>, deseja prosseguir?"):format(Currency,Dotted(Valuation))) then
-				return CancelProcess("Processo cancelado.")
-			end
-
-			if not vRP.PaymentFull(Passport,Valuation) then
-				return CancelProcess("Dinheiro insuficiente.")
-			end
-
-			vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
-			TriggerClientEvent("Notify",source,"Sucesso","Resgate concluído.","verde",5000)
-		else
-			vRP.Update("vehicles/UpdateSave",{ Passport = Passport, Vehicle = Name, Save = Number })
-		end
-	end
-
 	if Vehicle.Arrest then
 		TriggerClientEvent("garages:Close",source)
 
@@ -760,9 +742,14 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 	if Coords then
 		local Mods = vRP.GetSrvData("LsCustoms:"..Passport..":"..Name,true)
 		local Exist,Network,Entitys = Creative.ServerVehicle(Name,Coords,Plate,Vehicle.Nitro,Vehicle.Doors,Vehicle.Body,Vehicle.Fuel,Vehicle.Seatbelt,Vehicle.Drift)
-
 		if Exist then
-			vCLIENT.CreateVehicle(source,Network,Vehicle.Engine,Vehicle.Health,Mods,Vehicle.Windows,Vehicle.Tyres)
+			local Players = vRPC.Players(source)
+			for _,OtherSource in pairs(Players) do
+				async(function()
+					vCLIENT.CreateVehicle(OtherSource,Name,Network,Vehicle.Engine,Vehicle.Health,Mods,Vehicle.Windows,Vehicle.Tyres)
+				end)
+			end
+
 			Entity(Entitys).state:set("Lockpick",Passport,true)
 			Spawn[Plate] = { Passport,Name,Entitys }
 		end
@@ -789,7 +776,13 @@ RegisterCommand("car",function(source,Message)
 		return false
 	end
 
-	vCLIENT.CreateVehicle(source,Network,1000,1000,nil,false,false,false)
+	local Players = vRPC.Players(source)
+	for _,OtherSource in pairs(Players) do
+		async(function()
+			vCLIENT.CreateVehicle(OtherSource,Model,Network,1000,1000,nil,false,false,false)
+		end)
+	end
+
 	Entity(Entitys).state:set("Lockpick",Passport,true)
 	Spawn[Plate] = { Passport,Model,Entitys }
 	TaskWarpPedIntoVehicle(Ped,Entitys,-1)
@@ -879,7 +872,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DELETE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Delete(Network,Doors,Tyres,Plate,Save)
+function Creative.Delete(Network,Doors,Tyres,Plate)
 	local Networked = NetworkGetEntityFromNetworkId(Network)
 	if not DoesEntityExist(Networked) or IsPedAPlayer(Networked) or GetEntityType(Networked) ~= 2 then
 		return false
@@ -912,11 +905,7 @@ function Creative.Delete(Network,Doors,Tyres,Plate,Save)
 			local WindowsJson = json.encode(Windows)
 			local TyresJson = json.encode(Tyres)
 
-			if VehicleMode(Name) ~= "Work" and Save and Garages[Save] and Garages[Save].Name == "Garage" then
-				vRP.Update("vehicles/updateVehiclesSave",{ Passport = Passport, Vehicle = Name, Nitro = Nitro, Engine = math.floor(Engine), Body = math.floor(Body), Health = math.floor(Health), Fuel = Fuel, Doors = DoorsJson, Windows = WindowsJson, Tyres = TyresJson, Save = Save })
-			else
-				vRP.Update("vehicles/updateVehicles",{ Passport = Passport, Vehicle = Name, Nitro = Nitro, Engine = math.floor(Engine), Body = math.floor(Body), Health = math.floor(Health), Fuel = Fuel, Doors = DoorsJson, Windows = WindowsJson, Tyres = TyresJson })
-			end
+			vRP.Update("vehicles/updateVehicles",{ Passport = Passport, Vehicle = Name, Nitro = Nitro, Engine = math.floor(Engine), Body = math.floor(Body), Health = math.floor(Health), Fuel = Fuel, Doors = DoorsJson, Windows = WindowsJson, Tyres = TyresJson })
 		end
 	end
 
@@ -986,7 +975,7 @@ AddEventHandler("garages:Propertys",function(Name)
 	end
 
 	local PropertyCoords = exports.propertys:Coords(Name)
-	if #(vec3(GarageCoords[1],GarageCoords[2],GarageCoords[3]) - PropertyCoords) > 25 then
+	if PropertyCoords and #(vec3(GarageCoords[1],GarageCoords[2],GarageCoords[3]) - PropertyCoords) > 25 then
 		TriggerClientEvent("Notify",source,"Aviso","A garagem precisa ser próximo da entrada.","amarelo",5000)
 		Active[Passport] = nil
 		return false
@@ -1001,7 +990,7 @@ AddEventHandler("garages:Propertys",function(Name)
 		return false
 	end
 
-	if #(vec3(VehicleCoords[1],VehicleCoords[2],VehicleCoords[3]) - PropertyCoords) > 25 then
+	if PropertyCoords and #(vec3(VehicleCoords[1],VehicleCoords[2],VehicleCoords[3]) - PropertyCoords) > 25 then
 		TriggerClientEvent("Notify",source,"Aviso","A garagem precisa ser próximo da entrada.","amarelo",5000)
 		Active[Passport] = nil
 		return false
@@ -1012,7 +1001,7 @@ AddEventHandler("garages:Propertys",function(Name)
 		["2"] = { VehicleCoords[1],VehicleCoords[2],VehicleCoords[3] + 1,VehicleCoords[4] }
 	}
 
-	Garages[Name] = { Name = "Garage", Save = true }
+	Garages[Name] = { Name = "Garage" }
 	Propertys[Name] = { x = NewGarage["1"][1], y = NewGarage["1"][2], z = NewGarage["1"][3], ["1"] = NewGarage["2"] }
 
 	vRP.Update("propertys/Garage",{ Name = Name, Garage = json.encode(NewGarage) })
@@ -1031,7 +1020,7 @@ CreateThread(function()
 		if not Propertys[Name] and GarageJson then
 			local GarageTable = json.decode(GarageJson)
 			if GarageTable and GarageTable["1"] and GarageTable["2"] then
-				Garages[Name] = { Name = "Garage", Save = true }
+				Garages[Name] = { Name = "Garage" }
 				Propertys[Name] = { x = GarageTable["1"][1], y = GarageTable["1"][2], z = GarageTable["1"][3], ["1"] = GarageTable["2"] }
 			end
 		end

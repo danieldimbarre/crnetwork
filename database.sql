@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `mdt_creative_internalaffairs` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
   `Passport` bigint(19) NOT NULL DEFAULT 0,
   `Title` text DEFAULT NULL,
-  `Suspect` bigint(19) NOT NULL DEFAULT 0,
+  `Accused` bigint(19) NOT NULL DEFAULT 0,
   `Officer` bigint(19) NOT NULL DEFAULT 0,
   `Timestamp` bigint(19) NOT NULL DEFAULT 0,
   `Description` longtext DEFAULT NULL,
@@ -190,6 +190,7 @@ CREATE TABLE IF NOT EXISTS `mdt_creative_medals` (
   `Image` text NOT NULL DEFAULT '',
   `Name` varchar(150) NOT NULL DEFAULT 'Honra ao Mérito',
   `Officers` longtext NOT NULL DEFAULT '[]',
+  `Permission` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

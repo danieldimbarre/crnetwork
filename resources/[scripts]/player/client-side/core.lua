@@ -451,11 +451,36 @@ end)
 -- ANCHOR
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("player:Anchor",function(Vehicle)
-	if CanAnchorBoatHere(Vehicle) then
+	if not DoesEntityExist(Vehicle) then
+		return
+	end
+
+	if not NetworkHasControlOfEntity(Vehicle) then
+		NetworkRequestControlOfEntity(Vehicle)
+
+		local Timeout = GetGameTimer() + 10000
+		NetworkRequestControlOfEntity(Vehicle)
+		while not NetworkHasControlOfEntity(Vehicle) and GetGameTimer() < Timeout do
+			Wait(0)
+		end
+
+		if not NetworkHasControlOfEntity(Vehicle) then
+			TriggerEvent("Notify","Aviso","Sem controle da embarcação.","amarelo",5000)
+			return false
+		end
+	end
+
+	if GetBoatAnchor(Vehicle) then
 		SetBoatAnchor(Vehicle,false)
 		TriggerEvent("Notify","Sucesso","Embarcação desancorada.","verde",5000)
 	else
-		SetBoatAnchor(Vehicle,true)
-		TriggerEvent("Notify","Sucesso","Embarcação ancorada.","verde",5000)
+		if CanAnchorBoatHere(Vehicle) then
+			TriggerEvent("Notify","Sucesso","Embarcação ancorada.","verde",5000)
+			SetBoatRemainsAnchoredWhilePlayerIsDriver(Vehicle,true)
+			SetBoatLowLodAnchorDistance(Vehicle,100.0)
+			SetBoatAnchor(Vehicle,true)
+		else
+			TriggerEvent("Notify","Aviso","Não é possível ancorar aqui.","amarelo",5000)
+		end
 	end
 end)

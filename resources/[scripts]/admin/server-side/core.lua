@@ -664,7 +664,7 @@ end)
 RegisterCommand("cam",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Freecam") then
-		TriggerClientEvent("freecam:Active",source,Message)
+		TriggerClientEvent("creative:Freecam",source,Message)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1753,6 +1753,35 @@ RegisterCommand("kill",function(source,Message)
 		if ClosestPed then
 			vRPC.SetHealth(ClosestPed,100)
 		end
+	end
+end)
+------------------------------------------------------------------------------------------------------------------------------------------
+-- LEADERS
+------------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("leaders",function(source)
+	local Passport = vRP.Passport(source)
+	if not Passport or not vRP.HasPermission(Passport,"Admin") then
+		return false
+	end
+
+	local Message = {}
+	local HasLeaders = false
+	for Permission,v in pairs(Groups) do
+		if not v.Block then
+			local PermissionData = vRP.GetSrvData("Permissions:"..Permission,true)
+			for OtherPassport,Level in pairs(PermissionData) do
+				if Level <= 1 and vRP.Source(OtherPassport) then
+					HasLeaders = true
+					Message[#Message + 1] = string.format("%s - %s ( %s )<br>",Permission,vRP.FullName(OtherPassport),OtherPassport)
+				end
+			end
+		end
+	end
+
+	if HasLeaders then
+		TriggerClientEvent("Notify",source,"Líderes de Grupo",table.concat(Message),"verde",30000)
+	else
+		TriggerClientEvent("Notify",source,"Líderes de Grupo","Nenhum líder online no momento.","amarelo",5000)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

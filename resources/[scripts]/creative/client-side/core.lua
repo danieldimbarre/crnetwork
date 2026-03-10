@@ -580,6 +580,8 @@ CreateThread(function()
 		SetPoliceRadarBlips(false)
 		DistantCopCarSirens(false)
 		SetPauseMenuActive(false)
+		SetGarbageTrucks(false)
+		SetRandomBoats(false)
 
 		SetVehicleDensityMultiplierThisFrame(1.0)
 		SetRandomVehicleDensityMultiplierThisFrame(1.0)

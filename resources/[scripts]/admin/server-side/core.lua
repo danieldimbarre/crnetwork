@@ -1323,7 +1323,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("admin:Doords")
 AddEventHandler("admin:Doords",function(Coords,Model,Heading)
-	vRP.Archive("coordenadas.txt","Coords = "..Coords..", Heading = "..Heading..", Hash = "..Model..", Disabled = false, Lock = true, Distance = 1.75")
+	exports.admin:Archive("coordenadas.txt","Coords = "..Coords..", Heading = "..Heading..", Hash = "..Model..", Disabled = false, Lock = true, Distance = 1.75")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CDS
@@ -1336,7 +1336,7 @@ function Creative.buttonTxt()
 		local Coords = GetEntityCoords(Ped)
 		local Heading = GetEntityHeading(Ped)
 
-		vRP.Archive(Passport..".txt",Optimize(Coords.x)..","..Optimize(Coords.y)..","..Optimize(Coords.z)..","..Optimize(Heading))
+		exports.admin:Archive(Passport..".txt",Optimize(Coords.x)..","..Optimize(Coords.y)..","..Optimize(Coords.z)..","..Optimize(Heading))
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1468,14 +1468,12 @@ end)
 -- RACECONFIG
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.RaceConfig(Left,Center,Right,Distance,Name)
-	vRP.Archive(Name..".txt","{")
-
-	vRP.Archive(Name..".txt","['Left'] = vec3("..Optimize(Left.x)..","..Optimize(Left.y)..","..Optimize(Left.z).."),")
-	vRP.Archive(Name..".txt","['Center'] = vec3("..Optimize(Center.x)..","..Optimize(Center.y)..","..Optimize(Center.z).."),")
-	vRP.Archive(Name..".txt","['Right'] = vec3("..Optimize(Right.x)..","..Optimize(Right.y)..","..Optimize(Right.z).."),")
-	vRP.Archive(Name..".txt","['Distance'] = "..Distance)
-
-	vRP.Archive(Name..".txt","},")
+	exports.admin:Archive(Name..".txt","{")
+	exports.admin:Archive(Name..".txt","['Left'] = vec3("..Optimize(Left.x)..","..Optimize(Left.y)..","..Optimize(Left.z).."),")
+	exports.admin:Archive(Name..".txt","['Center'] = vec3("..Optimize(Center.x)..","..Optimize(Center.y)..","..Optimize(Center.z).."),")
+	exports.admin:Archive(Name..".txt","['Right'] = vec3("..Optimize(Right.x)..","..Optimize(Right.y)..","..Optimize(Right.z).."),")
+	exports.admin:Archive(Name..".txt","['Distance'] = "..Distance)
+	exports.admin:Archive(Name..".txt","},")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPECTATE
@@ -1961,5 +1959,16 @@ RegisterCommand("blackout",function(source,Message)
 	local Passport = vRP.Passport(source)
 	if Passport and vRP.HasGroup(Passport,"Admin") then
 		GlobalState.Blackout = not GlobalState.Blackout
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ARCHIVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Archive",function(Name,Message)
+	local Path = GetResourcePath(GetCurrentResourceName())
+	local File = io.open(Path.."/"..Name,"a")
+	if File then
+		File:write(Message.."\n")
+		File:close()
 	end
 end)

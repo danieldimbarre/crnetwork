@@ -254,7 +254,7 @@ RegisterCommand("objects",function(source,Message)
 		Objects[Selected] = Data
 		TriggerClientEvent("objects:Adicionar",-1,Selected,Data)
 
-		vRP.Archive("coordenadas.txt",json.encode(Data))
+		exports.admin:Archive("coordenadas.txt",json.encode(Data))
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -263,35 +263,37 @@ end)
 RegisterServerEvent("inventory:StoreObjects")
 AddEventHandler("inventory:StoreObjects",function(Number,Hash)
 	local source = source
-	local Object = Objects[Number]
 	local Passport = vRP.Passport(source)
 	if not Passport or Active[Passport] then
 		return false
 	end
 
+	local Object
+	local Probjects
 	local Property = exports.propertys:Inside(Passport)
 	if Property then
-		local Consult = exports.propertys:Objects(Property)
-		if not Consult then
-			return false
-		end
-
-		Object = Consult[Number]
-	end
-
-	if not Object or Object.BlockStore then
-		return false
+		Probjects = vRP.GetSrvData("Probjects:"..Property,true)
+		Object = Probjects[Number]
+	else
+		Object = Objects[Number]
 	end
 
 	Active[Passport] = true
+	if not Object or Object.BlockStore then
+		Active[Passport] = nil
+		return false
+	end
 
-	local Coords = Object.Coords
 	local CurrentTimer = os.time()
-	local Permission = Object.Permission or false
+	local Permission = Object.Permission
 	local IsAdmin = vRP.HasService(Passport,"Admin")
-
 	if Object.Timer and Object.Timer >= CurrentTimer then
 		TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Object.Timer - CurrentTimer)..".","amarelo",5000)
+		Active[Passport] = nil
+		return false
+	end
+
+	if Hash and not vRP.Request(source,"Propriedades","Ao aceitar todo conteúdo será perdido") then
 		Active[Passport] = nil
 		return false
 	end
@@ -320,21 +322,27 @@ AddEventHandler("inventory:StoreObjects",function(Number,Hash)
 			end
 		end
 
-		if not Property then
-			TriggerClientEvent("objects:Remover",-1,Number)
-			SaveObjects[Number] = nil
-			Objects[Number] = nil
-		else
+		if Property then
+			if Probjects and Probjects[Number] then
+				Probjects[Number] = nil
+				vRP.SetSrvData("Probjects:"..Property,Probjects,true)
+			end
+
 			TriggerEvent("propertys:Remover",Property,Number)
 
 			if Hash then
 				vRP.RemSrvData(Hash)
 			end
+		else
+			TriggerClientEvent("objects:Remover",-1,Number)
+			SaveObjects[Number] = nil
+			Objects[Number] = nil
 		end
 	else
 		if not Delay[Permission] then
 			Delay[Permission] = { Timer = CurrentTimer + 600, Number = Number }
 
+			local Coords = Object.Coords or { 0,0,0 }
 			for _,OtherSource in pairs(vRP.NumPermission(Permission)) do
 				async(function()
 					vRPC.PlaySound(OtherSource,"ATM_WINDOW","HUD_FRONTEND_DEFAULT_SOUNDSET")
@@ -342,10 +350,10 @@ AddEventHandler("inventory:StoreObjects",function(Number,Hash)
 				end)
 			end
 
-			TriggerClientEvent("Notify",source,"Atenção","O grupo responsável foi avisado que o spray foi violado. Nos próximos <b>10 minutos</b> se ninguém proteger o mesmo será removido.","amarelo",10000)
+			TriggerClientEvent("Notify",source,"Atenção","O grupo responsável foi avisado. Se ninguém proteger em <b>10 minutos</b> o spray será removido.","amarelo",10000)
 		elseif vRP.HasService(Passport,Permission) then
-			Delay[Permission] = nil
 			TriggerClientEvent("Notify",source,"Atenção","Remoção cancelada.","amarelo",5000)
+			Delay[Permission] = nil
 		end
 	end
 

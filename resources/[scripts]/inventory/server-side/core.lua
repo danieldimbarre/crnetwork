@@ -784,73 +784,87 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("inventory:Loot")
 AddEventHandler("inventory:Loot",function(Number,Box)
-	local Consult = nil
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and Loots[Box] then
-		if not Loots[Box]["Players"][Number] then
-			Loots[Box]["Players"][Number] = {}
+	if not Passport or Active[Passport] then
+		return false
+	end
+
+	local Loot = Loots[Box]
+	if not Loot then
+		return false
+	end
+
+	local Players = Loot.Players
+	if not Players[Number] then
+		Players[Number] = {}
+	end
+
+	local Consult
+	if Loot.Item then
+		Consult = vRP.ConsultItem(Passport,Loot.Item)
+		if not Consult then
+			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName(Loot.Item).."</b>.","amarelo",5000)
+			return false
+		end
+	end
+
+	local CurrentTimer = os.time()
+	local PlayerLoot = Players[Number]
+	local Cooldown = PlayerLoot[Passport]
+	if Cooldown and CurrentTimer <= Cooldown then
+		TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Cooldown - CurrentTimer)..".","amarelo",5000)
+		return false
+	end
+
+	if Loot.Code then
+		local Keyboard = vKEYBOARD.Password(source,"Senha")
+		if not Keyboard or Keyboard[1] ~= Loot.Code then
+			TriggerClientEvent("Notify",source,"Acesso Restrito","Senha incorreta.","vermelho",5000)
+			return false
+		end
+	end
+
+	Player(source).state.Buttons = true
+	Active[Passport] = CurrentTimer + 10
+	PlayerLoot[Passport] = CurrentTimer + Loot.Cooldown
+	TriggerClientEvent("Progress",source,"Vasculhando",10000)
+	vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+
+	CreateThread(function()
+		while Active[Passport] and os.time() < Active[Passport] do
+			Wait(100)
 		end
 
-		if Loots[Box]["Item"] then
-			Consult = vRP.ConsultItem(Passport,Loots[Box]["Item"])
-			if not Consult then
-				TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName(Loots[Box]["Item"]).."</b>.","amarelo",5000)
+		if Active[Passport] then
+			vRPC.Destroy(source)
+			Active[Passport] = nil
+			Player(source).state.Buttons = false
+
+			if Loot.Item and not (Consult and vRP.RemoveCharges(Passport,Loot.Item)) then
 				return false
 			end
-		end
 
-		if Loots[Box]["Players"][Number][Passport] then
-			if os.time() <= Loots[Box]["Players"][Number][Passport] then
-				TriggerClientEvent("Notify",source,"Atenção","Aguarde "..CompleteTimers(Loots[Box]["Players"][Number][Passport] - os.time())..".","amarelo",5000)
-				return false
-			end
-		end
+			local Result = RandPercentage(Loot.List)
+			local Item = Result.Item
+			local Amount = Result.Valuation
 
-		if Loots[Box]["Code"] then
-			local Keyboard = vKEYBOARD.Password(source,"Senha")
-			if not Keyboard or (Keyboard[1] and Keyboard[1] ~= Loots[Box]["Code"]) then
-				TriggerClientEvent("Notify",source,"Acesso Restrito","Senha incorreta.","vermelho",5000)
-				return false
-			end
-		end
+			if not vRP.MaxItens(Passport,Item,Amount) and vRP.CheckWeight(Passport,Item,Amount) then
+				vRP.GenerateItem(Passport,Item,Amount,true)
 
-		Active[Passport] = os.time() + 10
-		Player(source)["state"]["Buttons"] = true
-		TriggerClientEvent("Progress",source,"Vasculhando",10000)
-		Loots[Box]["Players"][Number][Passport] = os.time() + Loots[Box]["Cooldown"]
-		vRPC.playAnim(source,false,{"anim@amb@clubhouse@tutorial@bkr_tut_ig3@","machinic_loop_mechandplayer"},true)
+				if Loot.Permission and vRP.HasService(Passport,Loot.Permission) then
+					vRP.GenerateItem(Passport,"dollar",275,true)
+				end
+			else
+				TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
+				exports.inventory:Drops(Passport,source,Item,Amount)
 
-		CreateThread(function()
-			while Active[Passport] and os.time() < Active[Passport] do
-				Wait(100)
-			end
-
-			if Active[Passport] then
-				vRPC.Destroy(source)
-				Active[Passport] = nil
-				Player(source)["state"]["Buttons"] = false
-
-				if not Loots[Box]["Item"] or (Loots[Box]["Item"] and Consult and vRP.RemoveCharges(Passport,Loots[Box]["Item"])) then
-					local Result = RandPercentage(Loots[Box]["List"])
-					if not vRP.MaxItens(Passport,Result["Item"],Result["Valuation"]) and vRP.CheckWeight(Passport,Result["Item"],Result["Valuation"]) then
-						vRP.GenerateItem(Passport,Result["Item"],Result["Valuation"],true)
-
-						if Loots[Box]["Permission"] and vRP.HasService(Passport,Loots[Box]["Permission"]) then
-							vRP.GenerateItem(Passport,"dollar",275,true)
-						end
-					else
-						TriggerClientEvent("Notify",source,"Mochila Sobrecarregada","Sua recompensa caiu no chão.","amarelo",5000)
-						exports.inventory:Drops(Passport,source,Result["Item"],Result["Valuation"])
-
-						if Loots[Box]["Permission"] and vRP.HasService(Passport,Loots[Box]["Permission"]) then
-							exports.inventory:Drops(Passport,source,"dollar",275)
-						end
-					end
+				if Loot.Permission and vRP.HasService(Passport,Loot.Permission) then
+					exports.inventory:Drops(Passport,source,"dollar",275)
 				end
 			end
-		end)
-	end
+		end
+	end)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:SAVEARENA

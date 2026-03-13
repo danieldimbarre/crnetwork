@@ -247,8 +247,11 @@ Use = {
 		if Split[2] then
 			local Consult = exports.oxmysql:single_async("SELECT Name FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 			if Consult then
-				vCLIENT.Waypoint(source,exports.propertys:Coords(Consult.Name))
-				TriggerClientEvent("inventory:Notify",source,"Sucesso","Marcação selecionada no mapa.","verde")
+				local Coords = exports.propertys:Coords(Consult.Name)
+				if Coords then
+					vCLIENT.Waypoint(source,Coords)
+					TriggerClientEvent("inventory:Notify",source,"Sucesso","Marcação selecionada no mapa.","verde")
+				end
 			end
 		end
 	end,
@@ -3509,15 +3512,16 @@ CreateThread(function()
 			end
 
 			local Selected
-			local TableSelected = exports.propertys:Objects(Property)
+			local Probjects = vRP.GetSrvData("Probjects:"..Property,true)
 
 			repeat
 				Selected = GenerateString("LDLDDDL")
-			until Selected and not Objects[Selected] and not TableSelected[Selected]
+			until Selected and not Objects[Selected] and not Probjects[Selected]
 
 			local Data = { Coords = Coords, Object = Hash, Item = Full }
 
-			TableSelected[Selected] = Data
+			Probjects[Selected] = Data
+			vRP.SetSrvData("Probjects:"..Property,Probjects,true)
 			TriggerEvent("propertys:Adicionar",Property,Selected,Data)
 			Player(source).state.Buttons = false
 		end

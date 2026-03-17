@@ -245,8 +245,73 @@ Loots = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SPAWNITEM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.SpawnItem(OtherPassport,Item,Amount)
-	return false
+function Creative.SpawnItem(OtherPassport,Item,Amount,Mode,Distance)
+	local source = source
+	local Passport = vRP.Passport(source)
+	if not Passport or not Item or not Amount or Amount <= 0 or not vRP.HasService(Passport,"Admin",AdminHierarchy or 1) then
+		return false
+	end
+
+	local function GiveItem(TargetPassport)
+		if TargetPassport then
+			vRP.GenerateItem(TargetPassport,Item,Amount,true)
+
+			if Passport == TargetPassport then
+				TriggerClientEvent("inventory:Update",source)
+			end
+		end
+	end
+
+	if Mode == "player" then
+		if not OtherPassport then
+			return false
+		end
+
+		if vRP.Source(OtherPassport) then
+			GiveItem(OtherPassport)
+			TriggerClientEvent("inventory:Notify",source,"Sucesso","Entregue ao destinatário.","verde",5000)
+		else
+			local Selected
+			local Consult = vRP.GetSrvData("Offline:"..OtherPassport,true)
+
+			repeat
+				Selected = GenerateString("DDLLDDLL")
+			until Selected and not Consult[Selected]
+
+			Consult[Selected] = { Item = Item, Amount = Amount }
+			vRP.SetSrvData("Offline:"..OtherPassport,Consult,true)
+			TriggerClientEvent("inventory:Notify",source,"Sucesso","Adicionado à lista de entregas.","verde",5000)
+		end
+
+		exports.discord:Embed("Item","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."\n**[MODO]:** "..Mode)
+	elseif Mode == "area" then
+		Distance = Distance or 10
+
+		local Coords = vRP.GetEntityCoords(source)
+		for _,OtherSource in ipairs(GetPlayers()) do
+			async(function()
+				local TargetPassport = vRP.Passport(OtherSource)
+				local OtherCoords = vRP.GetEntityCoords(OtherSource)
+				if OtherCoords and #(Coords - OtherCoords) <= Distance then
+					GiveItem(TargetPassport)
+				end
+			end)
+		end
+
+		TriggerClientEvent("inventory:Notify",source,"Sucesso","Entregue a todos da área.","verde",5000)
+		exports.discord:Embed("Item","**[ADMIN]:** "..Passport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."\n**[MODO]:** "..Mode.."\n**[DISTÂNCIA]:** "..Distance)
+	elseif Mode == "all" then
+		for TargetPassport in pairs(vRP.Players()) do
+			async(function()
+				GiveItem(TargetPassport)
+			end)
+		end
+
+		TriggerClientEvent("inventory:Notify",source,"Sucesso","Entregue a todos do servidor.","verde",5000)
+		exports.discord:Embed("Item","**[ADMIN]:** "..Passport.."\n**[ITEM]:** "..Item.."\n**[QUANTIDADE]:** "..Amount.."\n**[MODO]:** "..Mode)
+	end
+
+	return true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEND

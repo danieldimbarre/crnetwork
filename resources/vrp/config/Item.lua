@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 local List = {
 	markers = {
+		AdminLevel = 1,
 		Index = "markers",
 		Name = "Receptor de Sinal",
 		Type = "Consumível",
@@ -15,6 +16,7 @@ local List = {
 		}
 	},
 	encryptedkey = {
+		AdminLevel = 1,
 		Index = "encryptedkey",
 		Name = "Chave Criptografada",
 		Type = "Comum",
@@ -23,6 +25,7 @@ local List = {
 	},
 	-- BANNED
 	["banned_reduce"] = {
+		AdminLevel = 1,
 		Index = "banned_reduce",
 		Name = "Redução de Sentença",
 		Description = "Reduz <b>1 minutos</b> do tempo restante.",
@@ -34,6 +37,7 @@ local List = {
 	},
 	-- HALLOWEEN
 	["halloween_pumpkin"] = {
+		AdminLevel = 1,
 		Index = "halloween_pumpkin",
 		Name = "Abóbora de Halloween",
 		Description = "Um enfeite para sua propriedade com a temática de halloween.",
@@ -42,6 +46,7 @@ local List = {
 		Weight = 5.0
 	},
 	["halloween_ghost"] = {
+		AdminLevel = 1,
 		Index = "halloween_ghost",
 		Name = "Fantasma de Halloween",
 		Description = "Um enfeite para sua propriedade com a temática de halloween.",
@@ -51,6 +56,7 @@ local List = {
 	},
 	-- ESSÊNCIAS
 	["blue_essence"] = {
+		AdminLevel = 1,
 		Index = "blue_essence",
 		Name = "Essência Azul",
 		Description = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
@@ -59,6 +65,7 @@ local List = {
 		Delete = true
 	},
 	["purple_essence"] = {
+		AdminLevel = 1,
 		Index = "purple_essence",
 		Name = "Essência Roxa",
 		Description = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
@@ -67,6 +74,7 @@ local List = {
 		Delete = true
 	},
 	["green_essence"] = {
+		AdminLevel = 1,
 		Index = "green_essence",
 		Name = "Essência Verde",
 		Description = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
@@ -75,6 +83,7 @@ local List = {
 		Delete = true
 	},
 	["red_essence"] = {
+		AdminLevel = 1,
 		Index = "red_essence",
 		Name = "Essência Vermelha",
 		Description = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
@@ -83,6 +92,7 @@ local List = {
 		Delete = true
 	},
 	["pink_essence"] = {
+		AdminLevel = 1,
 		Index = "pink_essence",
 		Name = "Essência Rosa",
 		Description = "Componente químico utilizado em experimentos, possui propriedades energéticas únicas que alimentam dispositivos experimentais, aprimoram armas modificadas ou são vendidas por um bom dinheiro.",
@@ -92,6 +102,7 @@ local List = {
 	},
 	-- ANIMAL
 	["a_c_cat_01"] = {
+		AdminLevel = 1,
 		Index = "a_c_cat_01",
 		Name = "Gato",
 		Type = "Consumível",
@@ -106,6 +117,7 @@ local List = {
 		}
 	},
 	["a_c_husky"] = {
+		AdminLevel = 1,
 		Index = "a_c_husky",
 		Name = "Husky",
 		Type = "Consumível",
@@ -120,6 +132,7 @@ local List = {
 		}
 	},
 	["a_c_poodle"] = {
+		AdminLevel = 1,
 		Index = "a_c_poodle",
 		Name = "Poodle",
 		Type = "Consumível",
@@ -134,6 +147,7 @@ local List = {
 		}
 	},
 	["a_c_pug"] = {
+		AdminLevel = 1,
 		Index = "a_c_pug",
 		Name = "Pug",
 		Type = "Consumível",
@@ -148,6 +162,7 @@ local List = {
 		}
 	},
 	["a_c_retriever"] = {
+		AdminLevel = 1,
 		Index = "a_c_retriever",
 		Name = "Retriever",
 		Type = "Consumível",
@@ -162,6 +177,7 @@ local List = {
 		}
 	},
 	["a_c_rottweiler"] = {
+		AdminLevel = 1,
 		Index = "a_c_rottweiler",
 		Name = "Rottweiler",
 		Type = "Consumível",
@@ -176,6 +192,7 @@ local List = {
 		}
 	},
 	["a_c_shepherd"] = {
+		AdminLevel = 1,
 		Index = "a_c_shepherd",
 		Name = "Shepherd",
 		Type = "Consumível",
@@ -190,6 +207,7 @@ local List = {
 		}
 	},
 	["a_c_westy"] = {
+		AdminLevel = 1,
 		Index = "a_c_westy",
 		Name = "Westy",
 		Type = "Consumível",
@@ -205,6 +223,7 @@ local List = {
 	},
 	-- SPRAYS
 	["spray_ballas"] = {
+		AdminLevel = 1,
 		Index = "sprays",
 		Name = "Spray: Ballas",
 		Description = "Liberte sua expressão urbana com spray de pichação, sua ferramenta para transformar paredes em telas vibrantes de criatividade.",
@@ -214,6 +233,7 @@ local List = {
 		Economy = 9725
 	},
 	["spray_vagos"] = {
+		AdminLevel = 1,
 		Index = "sprays",
 		Name = "Spray: Vagos",
 		Description = "Liberte sua expressão urbana com spray de pichação, sua ferramenta para transformar paredes em telas vibrantes de criatividade.",
@@ -223,6 +243,7 @@ local List = {
 		Economy = 9725
 	},
 	["spray_families"] = {
+		AdminLevel = 1,
 		Index = "sprays",
 		Name = "Spray: Families",
 		Description = "Liberte sua expressão urbana com spray de pichação, sua ferramenta para transformar paredes em telas vibrantes de criatividade.",
@@ -233,6 +254,7 @@ local List = {
 	},
 	-- REPAROS
 	["repairkit01"] = {
+		AdminLevel = 1,
 		Index = "repairkit01",
 		Name = "Kit de Reparos",
 		Description = "Solucione problemas com facilidade, seja em casa, no carro ou em qualquer lugar, indispensável para manter tudo funcionando perfeitamente.",
@@ -246,6 +268,7 @@ local List = {
 		}
 	},
 	["repairkit02"] = {
+		AdminLevel = 1,
 		Index = "repairkit02",
 		Name = "Kit de Reparos",
 		Description = "Solucione problemas com facilidade, seja em casa, no carro ou em qualquer lugar, indispensável para manter tudo funcionando perfeitamente.",
@@ -260,6 +283,7 @@ local List = {
 		}
 	},
 	["repairkit03"] = {
+		AdminLevel = 1,
 		Index = "repairkit03",
 		Name = "Kit de Reparos",
 		Description = "Solucione problemas com facilidade, seja em casa, no carro ou em qualquer lugar, indispensável para manter tudo funcionando perfeitamente.",
@@ -276,6 +300,7 @@ local List = {
 		}
 	},
 	["repairkit04"] = {
+		AdminLevel = 1,
 		Index = "repairkit04",
 		Name = "Kit de Reparos",
 		Description = "Solucione problemas com facilidade, seja em casa, no carro ou em qualquer lugar, indispensável para manter tudo funcionando perfeitamente.",
@@ -293,6 +318,7 @@ local List = {
 	},
 	-- MECANICO
 	["toolbox"] = {
+		AdminLevel = 1,
 		Index = "toolbox",
 		Name = "Kit de Ferramentas",
 		Description = "Um arsenal versátil de ferramentas essenciais para todas as suas necessidades de reparo, com qualidade premium e variedade abrangente, este kit é seu parceiro e do seu veículos.",
@@ -307,6 +333,7 @@ local List = {
 		}
 	},
 	["advtoolbox"] = {
+		AdminLevel = 1,
 		Index = "advtoolbox",
 		Name = "Conjunto de Ferramentas Mestre",
 		Description = "Um arsenal versátil de ferramentas essenciais para todas as suas necessidades de reparo, com qualidade premium e variedade abrangente, este kit é seu parceiro e do seu veículos.",
@@ -324,6 +351,7 @@ local List = {
 		}
 	},
 	["plate"] = {
+		AdminLevel = 1,
 		Index = "plate",
 		Name = "Placa Veícular",
 		Description = "Embora personalizada e distintiva, desconsidera as normas de trânsito e regulamentos legais, com um design único, destina-se a quem busca evadir-se das regras, mas não é recomendada para uso responsável e ético nas estradas.",
@@ -336,6 +364,7 @@ local List = {
 		}
 	},
 	["nitro"] = {
+		AdminLevel = 1,
 		Index = "nitro",
 		Name = "Garrafa de Nitro",
 		Type = "Consumível",
@@ -351,6 +380,7 @@ local List = {
 		}
 	},
 	["tyres"] = {
+		AdminLevel = 1,
 		Index = "tyres",
 		Name = "Pneu",
 		Type = "Consumível",
@@ -363,6 +393,7 @@ local List = {
 	},
 	-- SUCOS
 	["passionjuice"] = {
+		AdminLevel = 1,
 		Index = "passionjuice",
 		Name = "Suco de Maracujá",
 		Type = "Consumível",
@@ -373,6 +404,7 @@ local List = {
 		Market = true
 	},
 	["tangejuice"] = {
+		AdminLevel = 1,
 		Index = "tangejuice",
 		Name = "Suco de Tangerina",
 		Type = "Consumível",
@@ -383,6 +415,7 @@ local List = {
 		Market = true
 	},
 	["orangejuice"] = {
+		AdminLevel = 1,
 		Index = "orangejuice",
 		Name = "Suco de Laranja",
 		Type = "Consumível",
@@ -393,6 +426,7 @@ local List = {
 		Market = true
 	},
 	["applejuice"] = {
+		AdminLevel = 1,
 		Index = "applejuice",
 		Name = "Suco de Maça",
 		Type = "Consumível",
@@ -403,6 +437,7 @@ local List = {
 		Market = true
 	},
 	["grapejuice"] = {
+		AdminLevel = 1,
 		Index = "grapejuice",
 		Name = "Suco de Uva",
 		Type = "Consumível",
@@ -413,6 +448,7 @@ local List = {
 		Market = true
 	},
 	["lemonjuice"] = {
+		AdminLevel = 1,
 		Index = "lemonjuice",
 		Name = "Suco de Limão",
 		Type = "Consumível",
@@ -423,6 +459,7 @@ local List = {
 		Market = true
 	},
 	["bananajuice"] = {
+		AdminLevel = 1,
 		Index = "bananajuice",
 		Name = "Suco de Banana",
 		Type = "Consumível",
@@ -433,6 +470,7 @@ local List = {
 		Market = true
 	},
 	["acerolajuice"] = {
+		AdminLevel = 1,
 		Index = "acerolajuice",
 		Name = "Suco de Acerola",
 		Type = "Consumível",
@@ -443,6 +481,7 @@ local List = {
 		Market = true
 	},
 	["strawberryjuice"] = {
+		AdminLevel = 1,
 		Index = "strawberryjuice",
 		Name = "Suco de Morango",
 		Type = "Consumível",
@@ -453,6 +492,7 @@ local List = {
 		Market = true
 	},
 	["blueberryjuice"] = {
+		AdminLevel = 1,
 		Index = "blueberryjuice",
 		Name = "Suco de Blueberry",
 		Type = "Consumível",
@@ -463,6 +503,7 @@ local List = {
 		Market = true
 	},
 	["coffeemilk"] = {
+		AdminLevel = 1,
 		Index = "coffeemilk",
 		Name = "Café com Leite",
 		Type = "Consumível",
@@ -474,6 +515,7 @@ local List = {
 	},
 	-- DROGAS
 	["joint"] = {
+		AdminLevel = 1,
 		Index = "joint",
 		Name = "Cigarro de Cannabis",
 		Type = "Consumível",
@@ -485,6 +527,7 @@ local List = {
 		Water = "Out"
 	},
 	["weedsack"] = {
+		AdminLevel = 1,
 		Index = "weedsack",
 		Name = "Pacote de Cannabis",
 		Type = "Comum",
@@ -494,6 +537,7 @@ local List = {
 		Economy = 250
 	},
 	["cocaine"] = {
+		AdminLevel = 1,
 		Index = "cocaine",
 		Name = "Carreira de Cocaína",
 		Type = "Consumível",
@@ -505,6 +549,7 @@ local List = {
 		Water = "Out"
 	},
 	["cokesack"] = {
+		AdminLevel = 1,
 		Index = "cokesack",
 		Name = "Pacote de Cocaína",
 		Type = "Comum",
@@ -514,6 +559,7 @@ local List = {
 		Economy = 250
 	},
 	["meth"] = {
+		AdminLevel = 1,
 		Index = "meth",
 		Name = "Metanfetamina",
 		Type = "Consumível",
@@ -525,6 +571,7 @@ local List = {
 		Water = "Out"
 	},
 	["methsack"] = {
+		AdminLevel = 1,
 		Index = "methsack",
 		Name = "Pacote de Metanfetamina",
 		Type = "Comum",
@@ -534,6 +581,7 @@ local List = {
 		Economy = 250
 	},
 	["crack"] = {
+		AdminLevel = 1,
 		Index = "crack",
 		Name = "Seringa de Crack",
 		Type = "Consumível",
@@ -544,6 +592,7 @@ local List = {
 		Water = "Out"
 	},
 	["heroin"] = {
+		AdminLevel = 1,
 		Index = "heroin",
 		Name = "Seringa de Heroína",
 		Type = "Consumível",
@@ -554,6 +603,7 @@ local List = {
 		Water = "Out"
 	},
 	["metadone"] = {
+		AdminLevel = 1,
 		Index = "metadone",
 		Name = "Seringa de Metadona",
 		Type = "Consumível",
@@ -564,6 +614,7 @@ local List = {
 		Water = "Out"
 	},
 	["codeine"] = {
+		AdminLevel = 1,
 		Index = "codeine",
 		Name = "Seringa de Codeína",
 		Type = "Comum",
@@ -573,6 +624,7 @@ local List = {
 		Economy = 425
 	},
 	["amphetamine"] = {
+		AdminLevel = 1,
 		Index = "amphetamine",
 		Name = "Seringa de Anfetamina",
 		Type = "Comum",
@@ -583,6 +635,7 @@ local List = {
 	},
 	-- ATTACHS
 	["ATTACH_FLASHLIGHT"] = {
+		AdminLevel = 1,
 		Index = "attach_flashlight",
 		Name = "Lanterna Tatica",
 		Type = "Attachs",
@@ -598,6 +651,7 @@ local List = {
 		}
 	},
 	["ATTACH_CROSSHAIR"] = {
+		AdminLevel = 1,
 		Index = "attach_crosshair",
 		Name = "Mira Holográfica",
 		Type = "Attachs",
@@ -614,6 +668,7 @@ local List = {
 		}
 	},
 	["ATTACH_SILENCER"] = {
+		AdminLevel = 1,
 		Index = "attach_silencer",
 		Name = "Silenciador",
 		Type = "Attachs",
@@ -631,6 +686,7 @@ local List = {
 		}
 	},
 	["ATTACH_MAGAZINE"] = {
+		AdminLevel = 1,
 		Index = "attach_magazine",
 		Name = "Pente Estendido",
 		Type = "Attachs",
@@ -646,6 +702,7 @@ local List = {
 		}
 	},
 	["ATTACH_GRIP"] = {
+		AdminLevel = 1,
 		Index = "attach_grip",
 		Name = "Empunhadura",
 		Type = "Attachs",
@@ -662,6 +719,7 @@ local List = {
 	},
 	-- DOAÇÕES
 	["backpackp"] = {
+		AdminLevel = 1,
 		Index = "backpackp",
 		Name = "Mochila Pequena",
 		Description = "Compacta e leve, perfeita para carregar o essencial de forma prática, com alças ajustáveis para conforto ao transportar.<br>Aumenta o peso de sua mochila em <epic>50Kg</epic>.",
@@ -686,6 +744,7 @@ local List = {
 		}
 	},
 	["backpackm"] = {
+		AdminLevel = 1,
 		Index = "backpackm",
 		Name = "Mochila Média",
 		Description = "Versátil e compacta, ideal para o dia a dia, oferecendo espaço suficiente para itens essenciais sem ser volumosa, com alças confortáveis para fácil transporte.<br>Aumenta o peso de sua mochila em <epic>75Kg</epic>.",
@@ -710,6 +769,7 @@ local List = {
 		}
 	},
 	["backpackg"] = {
+		AdminLevel = 1,
 		Index = "backpackg",
 		Name = "Mochila Grande",
 		Description = "Espaçosa e funcional, projetada para transportar muitos itens de forma confortável, com alças ajustáveis e compartimentos organizados para facilitar o armazenamento.<br>Aumenta o peso de sua mochila em <epic>100Kg</epic>.",
@@ -734,6 +794,7 @@ local List = {
 		}
 	},
 	["teddypack"] = {
+		AdminLevel = 1,
 		Index = "teddypack",
 		Name = "Mochila de Ursinho",
 		Description = "Adorável bolsa infantil, feita de material macio e peludo, com uma carinha sorridente bordada na frente e orelhas tridimensionais, é prática e encantadora ao mesmo tempo.<br>Aumenta o peso de sua mochila em <epic>100Kg</epic>.",
@@ -758,6 +819,7 @@ local List = {
 		}
 	},
 	["WEAPON_KATANA"] = {
+		AdminLevel = 1,
 		Index = "katana",
 		Name = "Katana",
 		Type = "Armamento",
@@ -771,6 +833,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["adrenalineplus"] = {
+		AdminLevel = 1,
 		Index = "adrenaline",
 		Name = "Adrenalina ++",
 		Description = "Restaura o tempo ao ser ajudado com <common>Adrenalina</common>.",
@@ -782,6 +845,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["seatbelt"] = {
+		AdminLevel = 1,
 		Index = "seatbelt",
 		Name = "Cinto de Corrida",
 		Type = "Consumível",
@@ -791,6 +855,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["sewingkit"] = {
+		AdminLevel = 1,
 		Index = "sewingkit",
 		Name = "Kit de Costura",
 		Description = "Utilizado para reparar mochilas <common>Pequenas</common>, <common>Médias</common> e <common>Grandes</common>.",
@@ -801,6 +866,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["diagram"] = {
+		AdminLevel = 1,
 		Index = "diagram",
 		Name = "Diagrama",
 		Description = "Aumenta <common>10Kg</common> no peso do compartimento.",
@@ -811,6 +877,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["gemstone"] = {
+		AdminLevel = 1,
 		Index = "gemstone",
 		Name = "Diamante",
 		Type = "Consumível",
@@ -820,6 +887,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["fishingrodplus"] = {
+		AdminLevel = 1,
 		Index = "fishingrod",
 		Name = "Vara de Pescar ++",
 		Description = "Companheira ideal para os amantes da pesca, seja em água doce ou salgada, com sua construção leve e resistente, proporciona equilíbrio perfeito e sensibilidade para detectar até os mais sutis movimentos dos peixes, seja para pescadores iniciantes ou experientes, esta vara é a escolha confiável para horas de diversão e sucesso nas pescarias.",
@@ -833,6 +901,7 @@ local List = {
 		Water = "In"
 	},
 	["pickaxeplus"] = {
+		AdminLevel = 1,
 		Index = "pickaxe",
 		Name = "Picareta ++",
 		Description = "Ferramenta versátil e resistente, projetada para lidar com uma variedade de tarefas, com sua construção robusta e design ergonômico, oferece conforto e eficiência em cada movimento, seja para escavação no jardim, trabalhos de construção ou aventuras ao ar livre, essa picareta é a escolha confiável para enfrentar desafios com facilidade e precisão.",
@@ -845,6 +914,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["axeplus"] = {
+		AdminLevel = 1,
 		Index = "axe",
 		Name = "Machadinha ++",
 		Description = "Ferramenta robusta e confiável para os desafios mais exigentes, construído com materiais de alta qualidade e design ergonômico, proporciona precisão e potência em cada golpe, ideal para cortar lenha, realizar trabalhos de construção ou aventuras ao ar livre, é o companheiro perfeito para qualquer tarefa que exija força e eficiência.",
@@ -857,6 +927,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["lockpickplus"] = {
+		AdminLevel = 1,
 		Index = "lockpickplus",
 		Name = "Gazua ++",
 		Description = "Ferramenta fina e flexível, frequentemente feita de metal, usada para abrir fechaduras sem a chave correspondente, é uma ferramenta comum entre profissionais de segurança e em situações de emergência.",
@@ -869,6 +940,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["premiumplate"] = {
+		AdminLevel = 1,
 		Index = "platepremium",
 		Name = "Placa Customizada",
 		Type = "Consumível",
@@ -879,6 +951,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["instagram"] = {
+		AdminLevel = 1,
 		Index = "instagram",
 		Name = "Seguidores InstaPic",
 		Type = "Consumível",
@@ -889,6 +962,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["namechange"] = {
+		AdminLevel = 1,
 		Index = "namechange",
 		Name = "Cartão de Nome",
 		Type = "Consumível",
@@ -899,6 +973,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["mapgps"] = {
+		AdminLevel = 1,
 		Index = "mapgps",
 		Name = "Mapa Adaptativo",
 		Description = "Um dispositivo inteligente que, ao ser utilizado, ativa o gps no canto da tela, permitindo ao usuário visualizar melhor o terreno ao redor, rotas e a localização de pontos importantes. Ideal para navegação em áreas desconhecidas ou para ganhar vantagem tática em missões.",
@@ -914,6 +989,7 @@ local List = {
 		}
 	},
 	["radiomhz"] = {
+		AdminLevel = 1,
 		Index = "radiomhz",
 		Name = "Frequência Mhz",
 		Type = "Consumível",
@@ -924,6 +1000,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["barbershop"] = {
+		AdminLevel = 1,
 		Index = "barbershop",
 		Name = "Barbearia",
 		Type = "Consumível",
@@ -934,6 +1011,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	Skinshop = {
+		AdminLevel = 1,
 		Index = "skinshop",
 		Name = "Loja de Roupas",
 		Type = "Consumível",
@@ -944,6 +1022,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["tattooshop"] = {
+		AdminLevel = 1,
 		Index = "tattooshop",
 		Name = "Loja de Tatuagem",
 		Type = "Consumível",
@@ -955,6 +1034,7 @@ local List = {
 	},
 	-- NAMEDS
 	["alliance"] = {
+		AdminLevel = 1,
 		Index = "alliance",
 		Name = "Aliança",
 		Type = "Comum",
@@ -963,6 +1043,7 @@ local List = {
 		Named = true
 	},
 	["alliance2"] = {
+		AdminLevel = 1,
 		Index = "alliance2",
 		Name = "Aliança de Diamante",
 		Type = "Comum",
@@ -974,6 +1055,7 @@ local List = {
 		Delete = true
 	},
 	["alliance3"] = {
+		AdminLevel = 1,
 		Index = "alliance3",
 		Name = "Porta-Aliança de Diamante",
 		Description = "<epic>Este item não pode ser roubado e, ao ser utilizado no alt + Relacionamento, gera dois itens que não podem ser roubados.</epic> Um pequeno estojo luxuoso, usado para guardar alianças de valor inestimável.",
@@ -983,6 +1065,7 @@ local List = {
 		Delete = true
 	},
 	["identity"] = {
+		AdminLevel = 1,
 		Index = "identity",
 		Name = "Passaporte",
 		Type = "Comum",
@@ -993,6 +1076,7 @@ local List = {
 	},
 	-- COMPONENTES
 	["circuit"] = {
+		AdminLevel = 1,
 		Index = "circuit",
 		Name = "Circuito Eletrônico",
 		Type = "Consumível",
@@ -1003,6 +1087,7 @@ local List = {
 		Economy = 4725
 	},
 	["latex"] = {
+		AdminLevel = 1,
 		Index = "latex",
 		Name = "Frasco de Látex",
 		Type = "Comum",
@@ -1010,6 +1095,7 @@ local List = {
 		Economy = 175
 	},
 	["sand"] = {
+		AdminLevel = 1,
 		Index = "sand",
 		Name = "Areia",
 		Type = "Comum",
@@ -1017,6 +1103,7 @@ local List = {
 		Economy = 20
 	},
 	["bauxite"] = {
+		AdminLevel = 1,
 		Index = "bauxite",
 		Name = "Minério de Bauxita",
 		Type = "Comum",
@@ -1024,6 +1111,7 @@ local List = {
 		Economy = 50
 	},
 	["chalcopyrite"] = {
+		AdminLevel = 1,
 		Index = "chalcopyrite",
 		Name = "Calcopirita",
 		Type = "Comum",
@@ -1031,6 +1119,7 @@ local List = {
 		Economy = 50
 	},
 	["plastic"] = {
+		AdminLevel = 1,
 		Index = "plastic",
 		Name = "Plástico",
 		Type = "Comum",
@@ -1038,6 +1127,7 @@ local List = {
 		Economy = 8
 	},
 	["glass"] = {
+		AdminLevel = 1,
 		Index = "glass",
 		Name = "Vidro",
 		Type = "Comum",
@@ -1045,6 +1135,7 @@ local List = {
 		Economy = 8
 	},
 	["rubber"] = {
+		AdminLevel = 1,
 		Index = "rubber",
 		Name = "Borracha",
 		Type = "Comum",
@@ -1052,6 +1143,7 @@ local List = {
 		Economy = 8
 	},
 	["aluminum"] = {
+		AdminLevel = 1,
 		Index = "aluminum",
 		Name = "Alumínio",
 		Type = "Comum",
@@ -1059,6 +1151,7 @@ local List = {
 		Economy = 10
 	},
 	["copper"] = {
+		AdminLevel = 1,
 		Index = "copper",
 		Name = "Cobre",
 		Type = "Comum",
@@ -1066,6 +1159,7 @@ local List = {
 		Economy = 10
 	},
 	["sulfuric"] = {
+		AdminLevel = 1,
 		Index = "sulfuric",
 		Name = "Ácido Sulfúrico",
 		Type = "Consumível",
@@ -1073,6 +1167,7 @@ local List = {
 		Economy = 75
 	},
 	["acetone"] = {
+		AdminLevel = 1,
 		Index = "acetone",
 		Name = "Acetona",
 		Type = "Comum",
@@ -1080,6 +1175,7 @@ local List = {
 		Economy = 55
 	},
 	["saline"] = {
+		AdminLevel = 1,
 		Index = "saline",
 		Name = "Soro Fisiológico",
 		Type = "Comum",
@@ -1087,6 +1183,7 @@ local List = {
 		Economy = 35
 	},
 	["alcohol"] = {
+		AdminLevel = 1,
 		Index = "alcohol",
 		Name = "Álcool",
 		Type = "Comum",
@@ -1094,6 +1191,7 @@ local List = {
 		Economy = 45
 	},
 	["gunpowder"] = {
+		AdminLevel = 1,
 		Index = "gunpowder",
 		Name = "Frasco de Pólvora",
 		Type = "Comum",
@@ -1102,6 +1200,7 @@ local List = {
 		Arrest = true
 	},
 	["pistolbody"] = {
+		AdminLevel = 1,
 		Index = "pistolbody",
 		Name = "Corpo de Pistola",
 		Type = "Comum",
@@ -1115,6 +1214,7 @@ local List = {
 		}
 	},
 	["smgbody"] = {
+		AdminLevel = 1,
 		Index = "smgbody",
 		Name = "Corpo de Sub",
 		Type = "Comum",
@@ -1128,6 +1228,7 @@ local List = {
 		}
 	},
 	["riflebody"] = {
+		AdminLevel = 1,
 		Index = "riflebody",
 		Name = "Corpo de Rifle",
 		Type = "Comum",
@@ -1141,6 +1242,7 @@ local List = {
 		}
 	},
 	["scrapmetal"] = {
+		AdminLevel = 1,
 		Index = "scrapmetal",
 		Name = "Sucata de Metal",
 		Type = "Comum",
@@ -1148,12 +1250,14 @@ local List = {
 		Economy = 1
 	},
 	["blueprint_fragment"] = {
+		AdminLevel = 1,
 		Index = "blueprint_fragment",
 		Name = "Fragmento de Aprendizado",
 		Type = "Comum",
 		Weight = 0.0
 	},
 	["metalspring"] = {
+		AdminLevel = 1,
 		Index = "metalspring",
 		Name = "Mola de Metal",
 		Type = "Comum",
@@ -1165,6 +1269,7 @@ local List = {
 		}
 	},
 	["techtrash"] = {
+		AdminLevel = 1,
 		Index = "techtrash",
 		Name = "Lixo Eletrônico",
 		Type = "Comum",
@@ -1177,6 +1282,7 @@ local List = {
 		}
 	},
 	["tarp"] = {
+		AdminLevel = 1,
 		Index = "tarp",
 		Name = "Lona",
 		Type = "Comum",
@@ -1187,6 +1293,7 @@ local List = {
 		}
 	},
 	["sheetmetal"] = {
+		AdminLevel = 1,
 		Index = "sheetmetal",
 		Name = "Chapa de Metal",
 		Type = "Comum",
@@ -1197,12 +1304,14 @@ local List = {
 		}
 	},
 	["fabric"] = {
+		AdminLevel = 1,
 		Index = "fabric",
 		Name = "Tecido",
 		Type = "Comum",
 		Weight = 0.001
 	},
 	["ironfilings"] = {
+		AdminLevel = 1,
 		Index = "ironfilings",
 		Name = "Limalha de Ferro",
 		Type = "Comum",
@@ -1210,6 +1319,7 @@ local List = {
 		Weight = 0.001
 	},
 	["gear"] = {
+		AdminLevel = 1,
 		Index = "gear",
 		Name = "Engrenagem",
 		Type = "Comum",
@@ -1220,6 +1330,7 @@ local List = {
 		}
 	},
 	["roadsigns"] = {
+		AdminLevel = 1,
 		Index = "roadsigns",
 		Name = "Placas de Trânsito",
 		Type = "Comum",
@@ -1230,6 +1341,7 @@ local List = {
 		}
 	},
 	["explosives"] = {
+		AdminLevel = 1,
 		Index = "explosives",
 		Name = "Explosivos",
 		Type = "Comum",
@@ -1242,6 +1354,7 @@ local List = {
 		}
 	},
 	["c4"] = {
+		AdminLevel = 1,
 		Index = "c4",
 		Name = "Explosivo C4",
 		Type = "Comum",
@@ -1256,6 +1369,7 @@ local List = {
 		}
 	},
 	["wheat"] = {
+		AdminLevel = 1,
 		Index = "wheat",
 		Name = "Trigo",
 		Type = "Comum",
@@ -1263,6 +1377,7 @@ local List = {
 		Economy = 5
 	},
 	["scotchtape"] = {
+		AdminLevel = 1,
 		Index = "scotchtape",
 		Name = "Fita Adesiva",
 		Type = "Comum",
@@ -1270,6 +1385,7 @@ local List = {
 		Economy = 45
 	},
 	["insulatingtape"] = {
+		AdminLevel = 1,
 		Index = "insulatingtape",
 		Name = "Fita Isolante",
 		Type = "Comum",
@@ -1277,6 +1393,7 @@ local List = {
 		Economy = 55
 	},
 	["rammemory"] = {
+		AdminLevel = 1,
 		Index = "rammemory",
 		Name = "Memória RAM",
 		Type = "Comum",
@@ -1285,6 +1402,7 @@ local List = {
 		LostWater = true
 	},
 	["powersupply"] = {
+		AdminLevel = 1,
 		Index = "powersupply",
 		Name = "Fonte de Alimentação",
 		Type = "Comum",
@@ -1293,6 +1411,7 @@ local List = {
 		LostWater = true
 	},
 	["processorfan"] = {
+		AdminLevel = 1,
 		Index = "processorfan",
 		Name = "Ventoinha do Processador",
 		Type = "Comum",
@@ -1301,6 +1420,7 @@ local List = {
 		LostWater = true
 	},
 	["processor"] = {
+		AdminLevel = 1,
 		Index = "processor",
 		Name = "Processador",
 		Type = "Comum",
@@ -1309,6 +1429,7 @@ local List = {
 		LostWater = true
 	},
 	["screws"] = {
+		AdminLevel = 1,
 		Index = "screws",
 		Name = "Parafusos",
 		Type = "Comum",
@@ -1316,6 +1437,7 @@ local List = {
 		Economy = 45
 	},
 	["screwnuts"] = {
+		AdminLevel = 1,
 		Index = "screwnuts",
 		Name = "Porcas de Parafuso",
 		Type = "Comum",
@@ -1323,6 +1445,7 @@ local List = {
 		Economy = 45
 	},
 	["videocard"] = {
+		AdminLevel = 1,
 		Index = "videocard",
 		Name = "Placa de Vídeo",
 		Type = "Comum",
@@ -1331,6 +1454,7 @@ local List = {
 		LostWater = true
 	},
 	["television"] = {
+		AdminLevel = 1,
 		Index = "television",
 		Name = "Televisão",
 		Description = "Uma experiência visual imersiva equipada com tecnologia LED para cores vibrantes e detalhes nítidos oferecendo entretenimento de alta qualidade.",
@@ -1343,6 +1467,7 @@ local List = {
 		Max = 1
 	},
 	["ssddrive"] = {
+		AdminLevel = 1,
 		Index = "ssddrive",
 		Name = "Unidade SSD",
 		Type = "Comum",
@@ -1351,6 +1476,7 @@ local List = {
 		LostWater = true
 	},
 	["safependrive"] = {
+		AdminLevel = 1,
 		Index = "safependrive",
 		Name = "Pendrive Seguro",
 		Type = "Comum",
@@ -1361,6 +1487,7 @@ local List = {
 		LostWater = true
 	},
 	["powercable"] = {
+		AdminLevel = 1,
 		Index = "powercable",
 		Name = "Cabo de Alimentação",
 		Type = "Comum",
@@ -1368,6 +1495,7 @@ local List = {
 		Economy = 225
 	},
 	["weaponparts"] = {
+		AdminLevel = 1,
 		Index = "weaponparts",
 		Name = "Peças de Armas",
 		Type = "Comum",
@@ -1377,6 +1505,7 @@ local List = {
 		Arrest = true
 	},
 	["lightgunparts"] = {
+		AdminLevel = 1,
 		Index = "lightgunparts",
 		Name = "Peças de Arma Leve",
 		Blueprint = 65,
@@ -1386,6 +1515,7 @@ local List = {
 		Market = true
 	},
 	["mediumgunparts"] = {
+		AdminLevel = 1,
 		Index = "mediumgunparts",
 		Name = "Peças de Arma Média",
 		Blueprint = 125,
@@ -1395,6 +1525,7 @@ local List = {
 		Market = true
 	},
 	["heavygunparts"] = {
+		AdminLevel = 1,
 		Index = "heavygunparts",
 		Name = "Peças de Arma Pesada",
 		Blueprint = 215,
@@ -1404,6 +1535,7 @@ local List = {
 		Market = true
 	},
 	["electroniccomponents"] = {
+		AdminLevel = 1,
 		Index = "electroniccomponents",
 		Name = "Componentes Eletrônicos",
 		Type = "Comum",
@@ -1412,6 +1544,7 @@ local List = {
 		LostWater = true
 	},
 	["batteryaa"] = {
+		AdminLevel = 1,
 		Index = "batteryaa",
 		Name = "Bateria AA",
 		Type = "Comum",
@@ -1420,6 +1553,7 @@ local List = {
 		LostWater = true
 	},
 	["batteryaaplus"] = {
+		AdminLevel = 1,
 		Index = "batteryaaplus",
 		Name = "Bateria AA+",
 		Type = "Comum",
@@ -1428,6 +1562,7 @@ local List = {
 		LostWater = true
 	},
 	["goldnecklace"] = {
+		AdminLevel = 1,
 		Index = "goldnecklace",
 		Name = "Colar de Ouro",
 		Type = "Comum",
@@ -1435,6 +1570,7 @@ local List = {
 		Economy = 625
 	},
 	["silverchain"] = {
+		AdminLevel = 1,
 		Index = "silverchain",
 		Name = "Corrente de Prata",
 		Type = "Comum",
@@ -1442,6 +1578,7 @@ local List = {
 		Economy = 425
 	},
 	["horsefigurine"] = {
+		AdminLevel = 1,
 		Index = "horsefigurine",
 		Name = "Estatueta de Cavalo",
 		Type = "Comum",
@@ -1449,6 +1586,7 @@ local List = {
 		Economy = 2425
 	},
 	["toothpaste"] = {
+		AdminLevel = 1,
 		Index = "toothpaste",
 		Name = "Pasta de Dente",
 		Type = "Comum",
@@ -1456,6 +1594,7 @@ local List = {
 		Economy = 175
 	},
 	["goldenjug"] = {
+		AdminLevel = 1,
 		Index = "goldenjug",
 		Name = "Jarro de Ouro",
 		Type = "Comum",
@@ -1463,6 +1602,7 @@ local List = {
 		Economy = 6775
 	},
 	["goldenleopard"] = {
+		AdminLevel = 1,
 		Index = "goldenleopard",
 		Name = "Leopardo de Ouro",
 		Type = "Comum",
@@ -1470,6 +1610,7 @@ local List = {
 		Economy = 8225
 	},
 	["goldenlion"] = {
+		AdminLevel = 1,
 		Index = "goldenlion",
 		Name = "Leão de Ouro",
 		Type = "Comum",
@@ -1478,6 +1619,7 @@ local List = {
 	},
 	-- COMIDAS
 	["cola"] = {
+		AdminLevel = 1,
 		Index = "cola",
 		Name = "Cola",
 		Type = "Consumível",
@@ -1488,6 +1630,7 @@ local List = {
 		Market = true
 	},
 	["tacos"] = {
+		AdminLevel = 1,
 		Index = "tacos",
 		Name = "Tacos",
 		Type = "Consumível",
@@ -1499,6 +1642,7 @@ local List = {
 		LostWater = true
 	},
 	["fries"] = {
+		AdminLevel = 1,
 		Index = "fries",
 		Name = "Fritas",
 		Type = "Consumível",
@@ -1510,6 +1654,7 @@ local List = {
 		LostWater = true
 	},
 	Water = {
+		AdminLevel = 1,
 		Index = "water",
 		Name = "Garrafa de Água",
 		Type = "Consumível",
@@ -1520,6 +1665,7 @@ local List = {
 		Market = true
 	},
 	["soda"] = {
+		AdminLevel = 1,
 		Index = "soda",
 		Name = "Sprunk",
 		Type = "Consumível",
@@ -1530,6 +1676,7 @@ local List = {
 		Market = true
 	},
 	["hotdog"] = {
+		AdminLevel = 1,
 		Index = "hotdog",
 		Name = "Cachorro-Quente",
 		Type = "Consumível",
@@ -1541,6 +1688,7 @@ local List = {
 		LostWater = true
 	},
 	["donut"] = {
+		AdminLevel = 1,
 		Index = "donut",
 		Name = "Rosquinha",
 		Type = "Consumível",
@@ -1552,6 +1700,7 @@ local List = {
 		LostWater = true
 	},
 	["hamburger"] = {
+		AdminLevel = 1,
 		Index = "hamburger",
 		Name = "Hambúrguer",
 		Type = "Consumível",
@@ -1563,6 +1712,7 @@ local List = {
 		LostWater = true
 	},
 	["chocolate"] = {
+		AdminLevel = 1,
 		Index = "chocolate",
 		Name = "Chocolate",
 		Type = "Consumível",
@@ -1573,6 +1723,7 @@ local List = {
 		Market = true
 	},
 	["sandwich"] = {
+		AdminLevel = 1,
 		Index = "sandwich",
 		Name = "Sanduiche",
 		Type = "Consumível",
@@ -1584,6 +1735,7 @@ local List = {
 		LostWater = true
 	},
 	["coffeecup"] = {
+		AdminLevel = 1,
 		Index = "coffeecup",
 		Name = "Copo de Café",
 		Type = "Consumível",
@@ -1596,6 +1748,7 @@ local List = {
 	},
 	-- COMIDAS
 	["nigirizushi"] = {
+		AdminLevel = 1,
 		Index = "nigirizushi",
 		Name = "Nigirizushi",
 		Type = "Consumível",
@@ -1607,6 +1760,7 @@ local List = {
 		LostWater = true
 	},
 	["sushi"] = {
+		AdminLevel = 1,
 		Index = "sushi",
 		Name = "Sushi",
 		Type = "Consumível",
@@ -1618,6 +1772,7 @@ local List = {
 		LostWater = true
 	},
 	["cupcake"] = {
+		AdminLevel = 1,
 		Index = "cupcake",
 		Name = "Cupcake",
 		Type = "Consumível",
@@ -1629,6 +1784,7 @@ local List = {
 		LostWater = true
 	},
 	["milkshake"] = {
+		AdminLevel = 1,
 		Index = "milkshake",
 		Name = "Milk-shake",
 		Type = "Consumível",
@@ -1640,6 +1796,7 @@ local List = {
 		LostWater = true
 	},
 	["cappuccino"] = {
+		AdminLevel = 1,
 		Index = "cappuccino",
 		Name = "Cappuccino",
 		Type = "Consumível",
@@ -1651,6 +1808,7 @@ local List = {
 		LostWater = true
 	},
 	["applelove"] = {
+		AdminLevel = 1,
 		Index = "applelove",
 		Name = "Maça do Amor",
 		Type = "Consumível",
@@ -1662,6 +1820,7 @@ local List = {
 		LostWater = true
 	},
 	["cookies"] = {
+		AdminLevel = 1,
 		Index = "cookies",
 		Name = "Cookies",
 		Type = "Consumível",
@@ -1673,6 +1832,7 @@ local List = {
 		LostWater = true
 	},
 	["hamburger2"] = {
+		AdminLevel = 1,
 		Index = "hamburger2",
 		Name = "Hambúrguer Artesanal",
 		Type = "Consumível",
@@ -1684,6 +1844,7 @@ local List = {
 		LostWater = true
 	},
 	["hamburger3"] = {
+		AdminLevel = 1,
 		Index = "hamburger3",
 		Name = "Hambúrguer Vegetariano",
 		Type = "Consumível",
@@ -1695,6 +1856,7 @@ local List = {
 		LostWater = true
 	},
 	["pizzamozzarella"] = {
+		AdminLevel = 1,
 		Index = "pizzamozzarella",
 		Name = "Pizza de Muçarela",
 		Type = "Consumível",
@@ -1706,6 +1868,7 @@ local List = {
 		LostWater = true
 	},
 	["pizzabanana"] = {
+		AdminLevel = 1,
 		Index = "pizzabanana",
 		Name = "Pizza de Banana",
 		Type = "Consumível",
@@ -1717,6 +1880,7 @@ local List = {
 		LostWater = true
 	},
 	["pizzachocolate"] = {
+		AdminLevel = 1,
 		Index = "pizzachocolate",
 		Name = "Pizza de Chocolate",
 		Type = "Consumível",
@@ -1729,6 +1893,7 @@ local List = {
 	},
 	-- BOXES
 	["treasurebox"] = {
+		AdminLevel = 1,
 		Index = "treasurebox",
 		Name = "Baú do Tesouro",
 		Type = "Consumível",
@@ -1739,6 +1904,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["notepad"] = {
+		AdminLevel = 1,
 		Index = "notepad",
 		Name = "Bloco de Notas",
 		Type = "Consumível",
@@ -1749,6 +1915,7 @@ local List = {
 		Rarity = "common"
 	},
 	["ammobox"] = {
+		AdminLevel = 1,
 		Index = "ammobox",
 		Name = "Caixa de Munição",
 		Description = "Robusta e segura, projetada para armazenamento e transporte confiável de munições.",
@@ -1762,6 +1929,7 @@ local List = {
 		Rarity = "rare"
 	},
 	["weaponbox"] = {
+		AdminLevel = 1,
 		Index = "weaponbox",
 		Name = "Caixa de Armamento",
 		Description = "Resistente e segura, ideal para armazenamento e transporte de armas com praticidade e segurança.",
@@ -1775,6 +1943,7 @@ local List = {
 		Rarity = "rare"
 	},
 	["suitcase"] = {
+		AdminLevel = 1,
 		Index = "suitcase",
 		Name = "Mala de Dinheiro",
 		Description = "Segura e discreta para guardar dinheiro, ideal para proteger e organizar seus recursos financeiros com tranquilidade.",
@@ -1786,6 +1955,7 @@ local List = {
 		Rarity = "common"
 	},
 	["medicbag"] = {
+		AdminLevel = 1,
 		Index = "medicbag",
 		Name = "Caixa de Medicamentos",
 		Description = "Projetada para armazenamento seguro e organizado de medicamentos, garantindo acessibilidade e segurança no ambiente de saúde.",
@@ -1800,6 +1970,7 @@ local List = {
 		Locked = true
 	},
 	["mechanicbag"] = {
+		AdminLevel = 1,
 		Index = "mechanicbag",
 		Name = "Caixa de Ferramentas",
 		Description = "Projetada para armazenamento seguro e organizado de ferramentas, garantindo acessibilidade e segurança no ambiente de manutenção.",
@@ -1814,6 +1985,7 @@ local List = {
 	},
 	-- OBJECTS
 	["pistol_bench"] = {
+		AdminLevel = 1,
 		Index = "pistol_bench",
 		Name = "Mesa de Produção",
 		Description = "Mesa para fabricação de <common>Pistolas</common>.",
@@ -1825,6 +1997,7 @@ local List = {
 		Rarity = "epic"
 	},
 	["smg_bench"] = {
+		AdminLevel = 1,
 		Index = "smg_bench",
 		Name = "Mesa de Produção",
 		Description = "Mesa para fabricação de <common>Submetralhadoras</common>.",
@@ -1836,6 +2009,7 @@ local List = {
 		Rarity = "epic"
 	},
 	["rifle_bench"] = {
+		AdminLevel = 1,
 		Index = "rifle_bench",
 		Name = "Mesa de Produção",
 		Description = "Mesa para fabricação de <common>Rifles</common>.",
@@ -1847,6 +2021,7 @@ local List = {
 		Rarity = "epic"
 	},
 	["drugs_bench"] = {
+		AdminLevel = 1,
 		Index = "drugs_bench",
 		Name = "Mesa de Produção",
 		Description = "Mesa para fabricação de <common>Drogas</common>.",
@@ -1858,6 +2033,7 @@ local List = {
 		Rarity = "epic"
 	},
 	["blueprint_bench"] = {
+		AdminLevel = 1,
 		Index = "blueprint_bench",
 		Name = "Mesa de Aprendizado",
 		Description = "Mesa para aprendizado de produção.",
@@ -1869,6 +2045,7 @@ local List = {
 		Rarity = "epic"
 	},
 	["securitycam"] = {
+		AdminLevel = 1,
 		Index = "securitycam",
 		Name = "CCTV Câmera",
 		Description = "Câmera de segurança instalável que permite o monitoramento em tempo real de áreas estratégicas. Após instalada, o acesso ao painel de controle fica disponível dentro do local selecionado dos grupos em suas bases, garantindo vigilância, controle e segurança do perímetro.",
@@ -1879,6 +2056,7 @@ local List = {
 		Market = true
 	},
 	["barrier"] = {
+		AdminLevel = 1,
 		Index = "barrier",
 		Name = "Barreira",
 		Type = "Consumível",
@@ -1889,6 +2067,7 @@ local List = {
 		Market = true
 	},
 	["chestgroupp"] = {
+		AdminLevel = 1,
 		Index = "chestgroup",
 		Name = "Compartimento Militar",
 		Description = "Projetado para manter seus e de seu grupo, itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>1.000kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
@@ -1899,6 +2078,7 @@ local List = {
 		Weight = 5.25
 	},
 	["chestgroupm"] = {
+		AdminLevel = 1,
 		Index = "chestgroup",
 		Name = "Compartimento Militar",
 		Description = "Projetado para manter seus e de seu grupo, itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>2.500kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
@@ -1909,6 +2089,7 @@ local List = {
 		Weight = 5.25
 	},
 	["chestgroupg"] = {
+		AdminLevel = 1,
 		Index = "chestgroup",
 		Name = "Compartimento Militar",
 		Description = "Projetado para manter seus e de seu grupo, itens mais valiosos protegidos e sempre ao seu alcance, com capacidade máxima de <b>5.000kg</b>, ele combina segurança, praticidade e organização em um único espaço.<br><common>Ao posicionado não pode ser retirado.</common>",
@@ -1919,6 +2100,7 @@ local List = {
 		Weight = 5.25
 	},
 	["spikestrips"] = {
+		AdminLevel = 1,
 		Index = "spikestrips",
 		Name = "Tiras de Espinhos",
 		Type = "Consumível",
@@ -1928,6 +2110,7 @@ local List = {
 		Market = true
 	},
 	["moneywash"] = {
+		AdminLevel = 1,
 		Index = "moneywash",
 		Name = "Máquina de Lavar",
 		Description = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><common>Lavagem diária: $250.000</common>",
@@ -1937,6 +2120,7 @@ local List = {
 		Rarity = "common"
 	},
 	["moneywashplus"] = {
+		AdminLevel = 1,
 		Index = "moneywash",
 		Name = "Máquina de Lavar",
 		Description = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><rare>Lavagem diária: $500.000</rare>",
@@ -1946,6 +2130,7 @@ local List = {
 		Rarity = "rare"
 	},
 	["moneywashalpha"] = {
+		AdminLevel = 1,
 		Index = "moneywash",
 		Name = "Máquina de Lavar",
 		Description = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><epic>Lavagem diária: $1.000.000</epic>",
@@ -1955,6 +2140,7 @@ local List = {
 		Rarity = "epic"
 	},
 	["moneywashomega"] = {
+		AdminLevel = 1,
 		Index = "moneywash",
 		Name = "Máquina de Lavar",
 		Description = "Compacta e discreta que transforma dinheiro molhado em dinheiro limpo e pronto para uso, seja para jogos ou necessidades do dia a dia, esta máquina é a solução perfeita para lavagem de dinheiro de forma rápida e eficiente.<br><br><legendary>Lavagem diária: $5.000.000</legendary>",
@@ -1964,6 +2150,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["washbattery"] = {
+		AdminLevel = 1,
 		Index = "washbattery",
 		Name = "Bateria 75Ah",
 		Description = "Fonte confiável de energia, garantindo longa duração e eficiência durante os ciclos de lavagem, ideal para manter o funcionamento contínuo sem depender exclusivamente da rede elétrica.<br><br><legendary>Duração de 7 dias</legendary>",
@@ -1974,6 +2161,7 @@ local List = {
 		LostWater = true
 	},
 	["washbleach"] = {
+		AdminLevel = 1,
 		Index = "washbleach",
 		Name = "Alvejante",
 		Description = "Produto químico potente utilizado para remover manchas difíceis e desinfetar superfícies. Ideal para limpeza pesada de roupas brancas e ambientes que exigem higienização profunda. Deve ser manuseado com cuidado.<br><br><legendary>Duração de 6 horas</legendary>",
@@ -1984,6 +2172,7 @@ local List = {
 	},
 	-- MELEES
 	["WEAPON_HATCHET"] = {
+		AdminLevel = 1,
 		Index = "hatchet",
 		Name = "Machado",
 		Type = "Armamento",
@@ -1995,6 +2184,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_BAT"] = {
+		AdminLevel = 1,
 		Index = "bat",
 		Name = "Bastão de Beisebol",
 		Repair = "repairkit01",
@@ -2006,6 +2196,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_BATTLEAXE"] = {
+		AdminLevel = 1,
 		Index = "battleaxe",
 		Name = "Machado de Batalha",
 		Repair = "repairkit01",
@@ -2017,6 +2208,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_CROWBAR"] = {
+		AdminLevel = 1,
 		Index = "crowbar",
 		Name = "Pé de Cabra",
 		Repair = "repairkit01",
@@ -2028,6 +2220,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_SWITCHBLADE"] = {
+		AdminLevel = 1,
 		Index = "switchblade",
 		Name = "Canivete",
 		Repair = "repairkit01",
@@ -2039,6 +2232,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_GOLFCLUB"] = {
+		AdminLevel = 1,
 		Index = "golfclub",
 		Name = "Taco de Golf",
 		Repair = "repairkit01",
@@ -2050,6 +2244,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_HAMMER"] = {
+		AdminLevel = 1,
 		Index = "hammer",
 		Name = "Martelo",
 		Repair = "repairkit01",
@@ -2061,6 +2256,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_MACHETE"] = {
+		AdminLevel = 1,
 		Index = "machete",
 		Name = "Facão",
 		Repair = "repairkit01",
@@ -2072,6 +2268,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_POOLCUE"] = {
+		AdminLevel = 1,
 		Index = "poolcue",
 		Name = "Taco de Sinuca",
 		Repair = "repairkit01",
@@ -2083,6 +2280,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_STONE_HATCHET"] = {
+		AdminLevel = 1,
 		Index = "stonehatchet",
 		Name = "Machado de Pedra",
 		Repair = "repairkit01",
@@ -2094,6 +2292,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_WRENCH"] = {
+		AdminLevel = 1,
 		Index = "wrench",
 		Name = "Chave Inglesa",
 		Repair = "repairkit01",
@@ -2105,6 +2304,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_KNUCKLE"] = {
+		AdminLevel = 1,
 		Index = "knuckle",
 		Name = "Soco Inglês",
 		Repair = "repairkit01",
@@ -2116,6 +2316,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_FLASHLIGHT"] = {
+		AdminLevel = 1,
 		Index = "flashlight",
 		Name = "Lanterna",
 		Repair = "repairkit01",
@@ -2127,6 +2328,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_NIGHTSTICK"] = {
+		AdminLevel = 1,
 		Index = "nightstick",
 		Name = "Cassetete",
 		Repair = "repairkit01",
@@ -2138,6 +2340,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_PETROLCAN"] = {
+		AdminLevel = 1,
 		Index = "gallon",
 		Name = "Galão",
 		Type = "Armamento",
@@ -2148,6 +2351,7 @@ local List = {
 		Economy = 500
 	},
 	["GADGET_PARACHUTE"] = {
+		AdminLevel = 1,
 		Index = "parachute",
 		Name = "Paraquedas",
 		Description = "Lembrando que após <common>desconectar</common> da cidade o mesmo é removido.",
@@ -2159,6 +2363,7 @@ local List = {
 	},
 	-- MUNIÇÕES
 	["WEAPON_RPG_AMMO"] = {
+		AdminLevel = 1,
 		Index = "rocket",
 		Name = "Munição de Foguete",
 		Type = "Munição",
@@ -2167,6 +2372,7 @@ local List = {
 		Weight = 2.25
 	},
 	["WEAPON_PISTOL_AMMO"] = {
+		AdminLevel = 1,
 		Index = "pistolammo",
 		Name = "Munição de Pistola",
 		Type = "Munição",
@@ -2176,6 +2382,7 @@ local List = {
 		Economy = 15
 	},
 	["WEAPON_SMG_AMMO"] = {
+		AdminLevel = 1,
 		Index = "smgammo",
 		Name = "Munição de Sub",
 		Type = "Munição",
@@ -2184,6 +2391,7 @@ local List = {
 		Economy = 20
 	},
 	["WEAPON_RIFLE_AMMO"] = {
+		AdminLevel = 1,
 		Index = "rifleammo",
 		Name = "Munição de Rifle",
 		Type = "Munição",
@@ -2193,6 +2401,7 @@ local List = {
 		Economy = 25
 	},
 	["WEAPON_SHOTGUN_AMMO"] = {
+		AdminLevel = 1,
 		Index = "shotgunammo",
 		Name = "Munição de Espingarda",
 		Type = "Munição",
@@ -2202,6 +2411,7 @@ local List = {
 		Economy = 50
 	},
 	["WEAPON_MUSKET_AMMO"] = {
+		AdminLevel = 1,
 		Index = "musketammo",
 		Name = "Munição de Mosquete",
 		Type = "Munição",
@@ -2211,6 +2421,7 @@ local List = {
 		Economy = 10
 	},
 	["WEAPON_PETROLCAN_AMMO"] = {
+		AdminLevel = 1,
 		Index = "fuel",
 		Name = "Combustível",
 		Type = "Munição",
@@ -2221,6 +2432,7 @@ local List = {
 	},
 	-- ARREMESSO
 	["WEAPON_ACIDPACKAGE"] = {
+		AdminLevel = 1,
 		Index = "newspaper",
 		Name = "Jornal",
 		Type = "Arremesso",
@@ -2231,6 +2443,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_BRICK"] = {
+		AdminLevel = 1,
 		Index = "brick",
 		Name = "Tijolo",
 		Type = "Arremesso",
@@ -2241,6 +2454,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_SNOWBALL"] = {
+		AdminLevel = 1,
 		Index = "snowball",
 		Name = "Bola de Neve",
 		Type = "Arremesso",
@@ -2251,6 +2465,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_SHOES"] = {
+		AdminLevel = 1,
 		Index = "shoes",
 		Name = "Tênis",
 		Type = "Arremesso",
@@ -2261,6 +2476,7 @@ local List = {
 		Market = true
 	},
 	["WEAPON_MOLOTOV"] = {
+		AdminLevel = 1,
 		Index = "molotov",
 		Name = "Coquetel Molotov",
 		Type = "Arremesso",
@@ -2272,6 +2488,7 @@ local List = {
 		Economy = 1225
 	},
 	["WEAPON_SMOKEGRENADE"] = {
+		AdminLevel = 1,
 		Index = "smokegrenade",
 		Name = "Granada de Fumaça",
 		Type = "Arremesso",
@@ -2284,6 +2501,7 @@ local List = {
 	},
 	-- ARMAMENTOS
 	["WEAPON_STUNGUN"] = {
+		AdminLevel = 1,
 		Index = "stungun",
 		Name = "Tazer",
 		Repair = "repairkit02",
@@ -2299,6 +2517,7 @@ local List = {
 		}
 	},
 	["WEAPON_PISTOL"] = {
+		AdminLevel = 1,
 		Index = "m1911",
 		Name = "M1911",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
@@ -2322,6 +2541,7 @@ local List = {
 		}
 	},
 	["WEAPON_PISTOL_MK2"] = {
+		AdminLevel = 1,
 		Index = "t54",
 		Name = "T54",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
@@ -2346,6 +2566,7 @@ local List = {
 		}
 	},
 	["WEAPON_COMPACTRIFLE"] = {
+		AdminLevel = 1,
 		Index = "aks74u",
 		Name = "AKS74U",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2366,6 +2587,7 @@ local List = {
 		}
 	},
 	["WEAPON_APPISTOL"] = {
+		AdminLevel = 1,
 		Index = "kochvp9",
 		Name = "Koch Vp9",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
@@ -2389,6 +2611,7 @@ local List = {
 		}
 	},
 	["WEAPON_HEAVYPISTOL"] = {
+		AdminLevel = 1,
 		Index = "m45a1",
 		Name = "M45A1",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
@@ -2412,6 +2635,7 @@ local List = {
 		}
 	},
 	["WEAPON_MACHINEPISTOL"] = {
+		AdminLevel = 1,
 		Index = "tec9",
 		Name = "Tec-9",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
@@ -2434,6 +2658,7 @@ local List = {
 		}
 	},
 	["WEAPON_MICROSMG"] = {
+		AdminLevel = 1,
 		Index = "uzi",
 		Name = "Uzi",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
@@ -2458,6 +2683,7 @@ local List = {
 		}
 	},
 	["WEAPON_RPG"] = {
+		AdminLevel = 1,
 		Index = "rpg",
 		Name = "Lança Foguete",
 		Description = "Armamento que utiliza <common>Munição de Foguete</common>.",
@@ -2472,6 +2698,7 @@ local List = {
 		Weight = 12.25
 	},
 	["WEAPON_MINISMG"] = {
+		AdminLevel = 1,
 		Index = "mac10",
 		Name = "MAC-10",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
@@ -2493,6 +2720,7 @@ local List = {
 		}
 	},
 	["WEAPON_SNSPISTOL"] = {
+		AdminLevel = 1,
 		Index = "f57",
 		Name = "F57",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
@@ -2514,6 +2742,7 @@ local List = {
 		}
 	},
 	["WEAPON_SNSPISTOL_MK2"] = {
+		AdminLevel = 1,
 		Index = "cz52",
 		Name = "CZ52",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
@@ -2538,6 +2767,7 @@ local List = {
 		}
 	},
 	["WEAPON_VINTAGEPISTOL"] = {
+		AdminLevel = 1,
 		Index = "m1922",
 		Name = "M1922",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
@@ -2560,6 +2790,7 @@ local List = {
 		}
 	},
 	["WEAPON_PISTOL50"] = {
+		AdminLevel = 1,
 		Index = "deagle",
 		Name = "Deagle",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
@@ -2583,6 +2814,7 @@ local List = {
 		}
 	},
 	["WEAPON_COMBATPISTOL"] = {
+		AdminLevel = 1,
 		Index = "g18c",
 		Name = "G18C",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
@@ -2606,6 +2838,7 @@ local List = {
 		}
 	},
 	["WEAPON_CARBINERIFLE"] = {
+		AdminLevel = 1,
 		Index = "m4a1",
 		Name = "M4A1",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2630,6 +2863,7 @@ local List = {
 		}
 	},
 	["WEAPON_CARBINERIFLE_MK2"] = {
+		AdminLevel = 1,
 		Index = "h416",
 		Name = "H416",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2654,6 +2888,7 @@ local List = {
 		}
 	},
 	["WEAPON_ADVANCEDRIFLE"] = {
+		AdminLevel = 1,
 		Index = "mdr",
 		Name = "MDR",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2677,6 +2912,7 @@ local List = {
 		}
 	},
 	["WEAPON_BULLPUPRIFLE"] = {
+		AdminLevel = 1,
 		Index = "qbz95",
 		Name = "QBZ-95",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2701,6 +2937,7 @@ local List = {
 		}
 	},
 	["WEAPON_BULLPUPRIFLE_MK2"] = {
+		AdminLevel = 1,
 		Index = "l85",
 		Name = "L85",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2725,6 +2962,7 @@ local List = {
 		}
 	},
 	["WEAPON_SPECIALCARBINE"] = {
+		AdminLevel = 1,
 		Index = "g36c",
 		Name = "G36C",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2749,6 +2987,7 @@ local List = {
 		}
 	},
 	["WEAPON_SPECIALCARBINE_MK2"] = {
+		AdminLevel = 1,
 		Index = "sigsauer556",
 		Name = "Sig Sauer 556",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2772,6 +3011,7 @@ local List = {
 		}
 	},
 	["WEAPON_PUMPSHOTGUN"] = {
+		AdminLevel = 1,
 		Index = "m870",
 		Name = "M870",
 		Description = "Armamento que utiliza <common>Munição de Espingarda</common>.",
@@ -2793,6 +3033,7 @@ local List = {
 		}
 	},
 	["WEAPON_PUMPSHOTGUN_MK2"] = {
+		AdminLevel = 1,
 		Index = "mp133",
 		Name = "MP133",
 		Description = "Armamento que utiliza <common>Munição de Espingarda</common>.",
@@ -2816,6 +3057,7 @@ local List = {
 		}
 	},
 	["WEAPON_MUSKET"] = {
+		AdminLevel = 1,
 		Index = "winchester",
 		Name = "Winchester 1892",
 		Description = "Armamento que utiliza <common>Munição de Mosquete</common>.",
@@ -2833,6 +3075,7 @@ local List = {
 		}
 	},
 	["WEAPON_SAWNOFFSHOTGUN"] = {
+		AdminLevel = 1,
 		Index = "mossberg500",
 		Name = "Mossberg 500",
 		Description = "Armamento que utiliza <common>Munição de Espingarda</common>.",
@@ -2850,6 +3093,7 @@ local List = {
 		}
 	},
 	["WEAPON_SMG"] = {
+		AdminLevel = 1,
 		Index = "mp5",
 		Name = "MP5",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
@@ -2873,6 +3117,7 @@ local List = {
 		}
 	},
 	["WEAPON_SMG_MK2"] = {
+		AdminLevel = 1,
 		Index = "mpx",
 		Name = "MPX",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
@@ -2898,6 +3143,7 @@ local List = {
 		}
 	},
 	["WEAPON_TACTICALRIFLE"] = {
+		AdminLevel = 1,
 		Index = "m16",
 		Name = "M16",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2922,6 +3168,7 @@ local List = {
 		}
 	},
 	["WEAPON_HEAVYRIFLE"] = {
+		AdminLevel = 1,
 		Index = "scarh",
 		Name = "Scar-H",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2946,6 +3193,7 @@ local List = {
 		}
 	},
 	["WEAPON_ASSAULTRIFLE"] = {
+		AdminLevel = 1,
 		Index = "ak74n",
 		Name = "AK-74N",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2970,6 +3218,7 @@ local List = {
 		}
 	},
 	["WEAPON_ASSAULTRIFLE_MK2"] = {
+		AdminLevel = 1,
 		Index = "ak102",
 		Name = "AK-102",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
@@ -2994,6 +3243,7 @@ local List = {
 		}
 	},
 	["WEAPON_ASSAULTSMG"] = {
+		AdminLevel = 1,
 		Index = "f2000",
 		Name = "F2000",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
@@ -3017,6 +3267,7 @@ local List = {
 		}
 	},
 	["WEAPON_GUSENBERG"] = {
+		AdminLevel = 1,
 		Index = "mpf45",
 		Name = "MPF45",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
@@ -3038,6 +3289,7 @@ local List = {
 	},
 	-- MEDICINAL
 	["syringe01"] = {
+		AdminLevel = 1,
 		Index = "syringe",
 		Name = "Seringa A+",
 		Type = "Comum",
@@ -3049,6 +3301,7 @@ local List = {
 		}
 	},
 	["syringe02"] = {
+		AdminLevel = 1,
 		Index = "syringe",
 		Name = "Seringa B+",
 		Type = "Comum",
@@ -3060,6 +3313,7 @@ local List = {
 		}
 	},
 	["syringe03"] = {
+		AdminLevel = 1,
 		Index = "syringe",
 		Name = "Seringa A-",
 		Type = "Comum",
@@ -3071,6 +3325,7 @@ local List = {
 		}
 	},
 	["syringe04"] = {
+		AdminLevel = 1,
 		Index = "syringe",
 		Name = "Seringa B-",
 		Type = "Comum",
@@ -3082,6 +3337,7 @@ local List = {
 		}
 	},
 	["bandage"] = {
+		AdminLevel = 1,
 		Index = "bandage",
 		Name = "Bandagem",
 		Type = "Consumível",
@@ -3092,6 +3348,7 @@ local List = {
 		Max = 3
 	},
 	["medkit"] = {
+		AdminLevel = 1,
 		Index = "medkit",
 		Name = "Kit de Primeiros Socorros",
 		Type = "Consumível",
@@ -3102,6 +3359,7 @@ local List = {
 		Max = 1,
 	},
 	["ritmoneury"] = {
+		AdminLevel = 1,
 		Index = "ritmoneury",
 		Name = "Ritmoneury",
 		Type = "Consumível",
@@ -3111,6 +3369,7 @@ local List = {
 		Market = true
 	},
 	["sinkalmy"] = {
+		AdminLevel = 1,
 		Index = "sinkalmy",
 		Name = "Sinkalmy",
 		Type = "Consumível",
@@ -3120,6 +3379,7 @@ local List = {
 		Market = true
 	},
 	["analgesic"] = {
+		AdminLevel = 1,
 		Index = "analgesic",
 		Name = "Analgésicos",
 		Type = "Consumível",
@@ -3129,6 +3389,7 @@ local List = {
 		Market = true
 	},
 	["gauze"] = {
+		AdminLevel = 1,
 		Index = "gauze",
 		Name = "Ataduras",
 		Type = "Consumível",
@@ -3139,6 +3400,7 @@ local List = {
 		LostWater = true
 	},
 	["gsrkit"] = {
+		AdminLevel = 1,
 		Index = "gsrkit",
 		Name = "Kit Residual",
 		Type = "Consumível",
@@ -3148,6 +3410,7 @@ local List = {
 		Market = true
 	},
 	["gdtkit"] = {
+		AdminLevel = 1,
 		Index = "gdtkit",
 		Name = "Kit Químico",
 		Type = "Consumível",
@@ -3158,6 +3421,7 @@ local List = {
 	},
 	-- EMPREGOS
 	["bait"] = {
+		AdminLevel = 1,
 		Index = "bait",
 		Name = "Isca",
 		Type = "Comum",
@@ -3166,6 +3430,7 @@ local List = {
 		Market = true
 	},
 	["fishfillet"] = {
+		AdminLevel = 1,
 		Index = "fishfillet",
 		Name = "Filé de Peixe",
 		Type = "Comum",
@@ -3174,6 +3439,7 @@ local List = {
 		Market = true
 	},
 	["meatfillet"] = {
+		AdminLevel = 1,
 		Index = "meatfillet",
 		Name = "Filé de Carne",
 		Type = "Comum",
@@ -3182,6 +3448,7 @@ local List = {
 		Market = true
 	},
 	["anchovy"] = {
+		AdminLevel = 1,
 		Index = "anchovy",
 		Name = "Anchova",
 		Type = "Comum",
@@ -3192,6 +3459,7 @@ local List = {
 		Fishing = 5
 	},
 	["catfish"] = {
+		AdminLevel = 1,
 		Index = "catfish",
 		Name = "Peixe-Gato",
 		Type = "Comum",
@@ -3202,6 +3470,7 @@ local List = {
 		Fishing = 7
 	},
 	["herring"] = {
+		AdminLevel = 1,
 		Index = "herring",
 		Name = "Arenque",
 		Type = "Comum",
@@ -3212,6 +3481,7 @@ local List = {
 		Fishing = 8
 	},
 	["orangeroughy"] = {
+		AdminLevel = 1,
 		Index = "orangeroughy",
 		Name = "Peixe Relógio",
 		Type = "Comum",
@@ -3222,6 +3492,7 @@ local List = {
 		Fishing = 6
 	},
 	["salmon"] = {
+		AdminLevel = 1,
 		Index = "salmon",
 		Name = "Salmão",
 		Type = "Comum",
@@ -3232,6 +3503,7 @@ local List = {
 		Fishing = 15
 	},
 	["sardine"] = {
+		AdminLevel = 1,
 		Index = "sardine",
 		Name = "Sardinha",
 		Type = "Comum",
@@ -3242,6 +3514,7 @@ local List = {
 		Fishing = 6
 	},
 	["smallshark"] = {
+		AdminLevel = 1,
 		Index = "smallshark",
 		Name = "Tubarão Pequeno",
 		Type = "Comum",
@@ -3252,6 +3525,7 @@ local List = {
 		Fishing = 25
 	},
 	["smalltrout"] = {
+		AdminLevel = 1,
 		Index = "smalltrout",
 		Name = "Truta Pequena",
 		Type = "Comum",
@@ -3262,6 +3536,7 @@ local List = {
 		Fishing = 7
 	},
 	["yellowperch"] = {
+		AdminLevel = 1,
 		Index = "yellowperch",
 		Name = "Poleiro Amarelo",
 		Type = "Comum",
@@ -3272,6 +3547,7 @@ local List = {
 		Fishing = 8
 	},
 	["package"] = {
+		AdminLevel = 1,
 		Index = "package",
 		Name = "Encomenda",
 		Type = "Comum",
@@ -3283,6 +3559,7 @@ local List = {
 		Max = 1
 	},
 	["binbag"] = {
+		AdminLevel = 1,
 		Index = "binbag",
 		Name = "Saco de Lixo",
 		Type = "Comum",
@@ -3294,6 +3571,7 @@ local List = {
 		Max = 1
 	},
 	["milkbottle"] = {
+		AdminLevel = 1,
 		Index = "milkbottle",
 		Name = "Garrafa de Leite",
 		Type = "Comum",
@@ -3302,6 +3580,7 @@ local List = {
 		Market = true
 	},
 	["pouch"] = {
+		AdminLevel = 1,
 		Index = "pouch",
 		Name = "Malote",
 		Type = "Comum",
@@ -3311,6 +3590,7 @@ local List = {
 		LostWater = true
 	},
 	["woodlog"] = {
+		AdminLevel = 1,
 		Index = "woodlog",
 		Name = "Tora de Madeira",
 		Type = "Comum",
@@ -3320,6 +3600,7 @@ local List = {
 		LostWater = true
 	},
 	["sapphire_pure"] = {
+		AdminLevel = 1,
 		Index = "sapphire_pure",
 		Name = "Safira Lapidada",
 		Type = "Comum",
@@ -3329,6 +3610,7 @@ local List = {
 		Market = true
 	},
 	["emerald_pure"] = {
+		AdminLevel = 1,
 		Index = "emerald_pure",
 		Name = "Esmeralda Lapidada",
 		Type = "Comum",
@@ -3338,6 +3620,7 @@ local List = {
 		Market = true
 	},
 	["ruby_pure"] = {
+		AdminLevel = 1,
 		Index = "ruby_pure",
 		Name = "Ruby Lapidado",
 		Type = "Comum",
@@ -3347,6 +3630,7 @@ local List = {
 		Market = true
 	},
 	["gold_pure"] = {
+		AdminLevel = 1,
 		Index = "gold_pure",
 		Name = "Barra de Ouro",
 		Type = "Comum",
@@ -3356,6 +3640,7 @@ local List = {
 		Market = true
 	},
 	["iron_pure"] = {
+		AdminLevel = 1,
 		Index = "iron_pure",
 		Name = "Barra de Ferro",
 		Type = "Comum",
@@ -3365,6 +3650,7 @@ local List = {
 		Market = true
 	},
 	["lead_pure"] = {
+		AdminLevel = 1,
 		Index = "lead_pure",
 		Name = "Barra de Chumbo",
 		Type = "Comum",
@@ -3374,6 +3660,7 @@ local List = {
 		Market = true
 	},
 	["tin_pure"] = {
+		AdminLevel = 1,
 		Index = "tin_pure",
 		Name = "Barra de Estanho",
 		Type = "Comum",
@@ -3383,6 +3670,7 @@ local List = {
 		Market = true
 	},
 	["diamond_pure"] = {
+		AdminLevel = 1,
 		Index = "diamond_pure",
 		Name = "Diamante Lapidado",
 		Type = "Comum",
@@ -3392,6 +3680,7 @@ local List = {
 		Market = true
 	},
 	["copper_pure"] = {
+		AdminLevel = 1,
 		Index = "copper_pure",
 		Name = "Barra de Cobre",
 		Type = "Comum",
@@ -3401,6 +3690,7 @@ local List = {
 		Market = true
 	},
 	["ration"] = {
+		AdminLevel = 1,
 		Index = "ration",
 		Name = "Ração Animal",
 		Type = "Consumível",
@@ -3410,6 +3700,7 @@ local List = {
 		Market = true
 	},
 	["coyote1star"] = {
+		AdminLevel = 1,
 		Index = "box1star",
 		Name = "Coyote",
 		Type = "Comum",
@@ -3418,6 +3709,7 @@ local List = {
 		Market = true
 	},
 	["coyote2star"] = {
+		AdminLevel = 1,
 		Index = "box2star",
 		Name = "Coyote",
 		Type = "Comum",
@@ -3426,6 +3718,7 @@ local List = {
 		Market = true
 	},
 	["coyote3star"] = {
+		AdminLevel = 1,
 		Index = "box3star",
 		Name = "Coyote",
 		Type = "Comum",
@@ -3434,6 +3727,7 @@ local List = {
 		Market = true
 	},
 	["mtlion1star"] = {
+		AdminLevel = 1,
 		Index = "box1star",
 		Name = "Puma",
 		Type = "Comum",
@@ -3442,6 +3736,7 @@ local List = {
 		Market = true
 	},
 	["mtlion2star"] = {
+		AdminLevel = 1,
 		Index = "box2star",
 		Name = "Puma",
 		Type = "Comum",
@@ -3450,6 +3745,7 @@ local List = {
 		Market = true
 	},
 	["mtlion3star"] = {
+		AdminLevel = 1,
 		Index = "box3star",
 		Name = "Puma",
 		Type = "Comum",
@@ -3458,6 +3754,7 @@ local List = {
 		Market = true
 	},
 	["boar1star"] = {
+		AdminLevel = 1,
 		Index = "box1star",
 		Name = "Javali",
 		Type = "Comum",
@@ -3466,6 +3763,7 @@ local List = {
 		Market = true
 	},
 	["boar2star"] = {
+		AdminLevel = 1,
 		Index = "box2star",
 		Name = "Javali",
 		Type = "Comum",
@@ -3474,6 +3772,7 @@ local List = {
 		Market = true
 	},
 	["boar3star"] = {
+		AdminLevel = 1,
 		Index = "box3star",
 		Name = "Javali",
 		Type = "Comum",
@@ -3482,6 +3781,7 @@ local List = {
 		Market = true
 	},
 	["deer1star"] = {
+		AdminLevel = 1,
 		Index = "box1star",
 		Name = "Cervo",
 		Type = "Comum",
@@ -3490,6 +3790,7 @@ local List = {
 		Market = true
 	},
 	["deer2star"] = {
+		AdminLevel = 1,
 		Index = "box2star",
 		Name = "Cervo",
 		Type = "Comum",
@@ -3498,6 +3799,7 @@ local List = {
 		Market = true
 	},
 	["deer3star"] = {
+		AdminLevel = 1,
 		Index = "box3star",
 		Name = "Cervo",
 		Type = "Comum",
@@ -3507,6 +3809,7 @@ local List = {
 	},
 	-- OUTROS
 	["legendarykey"] = {
+		AdminLevel = 1,
 		Index = "legendarykey",
 		Name = "Chave da Fortuna",
 		Description = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
@@ -3518,6 +3821,7 @@ local List = {
 		Rarity = "legendary"
 	},
 	["weaponkey"] = {
+		AdminLevel = 1,
 		Index = "weaponkey",
 		Name = "Chave da Harmonia",
 		Description = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
@@ -3529,6 +3833,7 @@ local List = {
 		Rarity = "epic"
 	},
 	["medicalkey"] = {
+		AdminLevel = 1,
 		Index = "medicalkey",
 		Name = "Chave da Aurora",
 		Description = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
@@ -3540,6 +3845,7 @@ local List = {
 		Rarity = "rare"
 	},
 	["utilkey"] = {
+		AdminLevel = 1,
 		Index = "utilkey",
 		Name = "Chave do Crepúsculo",
 		Description = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
@@ -3551,6 +3857,7 @@ local List = {
 		Rarity = "common"
 	},
 	["sugarbox"] = {
+		AdminLevel = 1,
 		Index = "sugarbox",
 		Name = "Caixa de Açucar",
 		Type = "Comum",
@@ -3559,6 +3866,7 @@ local List = {
 		Market = true
 	},
 	["condensedmilk"] = {
+		AdminLevel = 1,
 		Index = "condensedmilk",
 		Name = "Leite Condensado",
 		Type = "Comum",
@@ -3567,6 +3875,7 @@ local List = {
 		Market = true
 	},
 	["mayonnaise"] = {
+		AdminLevel = 1,
 		Index = "mayonnaise",
 		Name = "Pote de Maionese",
 		Type = "Comum",
@@ -3575,6 +3884,7 @@ local List = {
 		Market = true
 	},
 	["ryebread"] = {
+		AdminLevel = 1,
 		Index = "ryebread",
 		Name = "Pão de Centeio",
 		Type = "Comum",
@@ -3583,6 +3893,7 @@ local List = {
 		Market = true
 	},
 	["ricebag"] = {
+		AdminLevel = 1,
 		Index = "ricebag",
 		Name = "Saco de Arroz",
 		Type = "Comum",
@@ -3591,6 +3902,7 @@ local List = {
 		Market = true
 	},
 	["dogtag"] = {
+		AdminLevel = 1,
 		Index = "dogtag",
 		Name = "Plaqueta de Identificação",
 		Type = "Comum",
@@ -3601,6 +3913,7 @@ local List = {
 		Arrest = true
 	},
 	["adrenaline"] = {
+		AdminLevel = 1,
 		Index = "adrenaline",
 		Name = "Adrenalina",
 		Type = "Comum",
@@ -3609,6 +3922,7 @@ local List = {
 		Economy = 4225
 	},
 	["dismantle"] = {
+		AdminLevel = 1,
 		Index = "dismantle",
 		Name = "Cartão Ilegível",
 		Type = "Consumível",
@@ -3618,6 +3932,7 @@ local List = {
 		Market = true
 	},
 	["platinum"] = {
+		AdminLevel = 1,
 		Index = "platinum",
 		Name = "Platina",
 		Type = "Comum",
@@ -3625,6 +3940,7 @@ local List = {
 		Economy = 20
 	},
 	["binoculars"] = {
+		AdminLevel = 1,
 		Index = "binoculars",
 		Name = "Binóculos",
 		Type = "Consumível",
@@ -3637,6 +3953,7 @@ local List = {
 		}
 	},
 	["camera"] = {
+		AdminLevel = 1,
 		Index = "camera",
 		Name = "Câmera",
 		Type = "Consumível",
@@ -3650,6 +3967,7 @@ local List = {
 		}
 	},
 	["creditcard"] = {
+		AdminLevel = 1,
 		Index = "creditcard",
 		Name = "Cartão de Crédito",
 		Type = "Comum",
@@ -3659,6 +3977,7 @@ local List = {
 		Market = true
 	},
 	["propertys"] = {
+		AdminLevel = 1,
 		Index = "propertys",
 		Name = "Chave de Ferro",
 		Type = "Consumível",
@@ -3668,6 +3987,7 @@ local List = {
 		Market = true
 	},
 	["emptypurifiedwater"] = {
+		AdminLevel = 1,
 		Index = "emptypurifiedwater",
 		Name = "Galão de Água Vazio",
 		Description = "Prático para transporte e armazenamento, ideal para reutilização ou descarte responsável.",
@@ -3677,6 +3997,7 @@ local List = {
 		Market = true
 	},
 	["purifiedwater"] = {
+		AdminLevel = 1,
 		Index = "purifiedwater",
 		Name = "Galão de Água Purificada",
 		Description = "Essencial para hidratação segura e saudável, ideal para uso doméstico ou comercial.",
@@ -3688,6 +4009,7 @@ local List = {
 		["Empty"] = "emptypurifiedwater"
 	},
 	["racestablet"] = {
+		AdminLevel = 1,
 		Index = "racestablet",
 		Name = "Tablet Descartável",
 		Description = "Dispositivo eletrônico compacto e temporário projetado para uso prático e conveniente em situações específicas, oferecendo funcionalidades básicas de navegação na internet, leitura e comunicação, com a vantagem de ser facilmente descartável após o uso.",
@@ -3702,6 +4024,7 @@ local List = {
 		}
 	},
 	["racesticket"] = {
+		AdminLevel = 1,
 		Index = "racesticket",
 		Name = "Cartão Descartável",
 		Description = "Explore circuitos exclusivos e de acesso privilegiado, desbloqueie portas para emocionantes experiências em locais de elite ao redor do mundo.",
@@ -3714,6 +4037,7 @@ local List = {
 		Rarity = "epic"
 	},
 	["postit"] = {
+		AdminLevel = 1,
 		Index = "postit",
 		Name = "Post-It",
 		Type = "Consumível",
@@ -3722,6 +4046,7 @@ local List = {
 		Economy = 20
 	},
 	["blocksignal"] = {
+		AdminLevel = 1,
 		Index = "blocksignal",
 		Name = "Bloqueador de Sinal",
 		Type = "Consumível",
@@ -3735,6 +4060,7 @@ local List = {
 		}
 	},
 	["coilover"] = {
+		AdminLevel = 1,
 		Index = "coilover",
 		Name = "Suspensão Coilover",
 		Description = "Projetada para oferecer ajustabilidade extrema e resposta rápida em curvas fechadas e mudanças de direção rápidas, ajuda a maximizar a aderência nas curvas e proporcionar uma sensação precisa e controlada ao volante, fundamental para executar manobras precisas e controladas durante as competições de drift.",
@@ -3744,6 +4070,7 @@ local List = {
 		Market = true
 	},
 	["vehiclekey"] = {
+		AdminLevel = 1,
 		Index = "vehiclekey",
 		Name = "Chave Reserva",
 		Type = "Consumível",
@@ -3754,6 +4081,7 @@ local List = {
 		Market = true
 	},
 	["radio"] = {
+		AdminLevel = 1,
 		Index = "radio",
 		Name = "Rádio",
 		Description = "Transceptor compacto e confiável que proporciona uma comunicação clara e segura para seu grupo, com uma frequência exclusiva para manter suas conversas privadas e protegidas.",
@@ -3773,6 +4101,7 @@ local List = {
 		}
 	},
 	["ballisticplate"] = {
+		AdminLevel = 1,
 		Index = "ballisticplate",
 		Name = "Placa Balística",
 		Repair = "repairkit01",
@@ -3784,6 +4113,7 @@ local List = {
 		Economy = 925
 	},
 	["fishingrod"] = {
+		AdminLevel = 1,
 		Index = "fishingrod",
 		Name = "Vara de Madeira",
 		Description = "Companheira ideal para os amantes da pesca, seja em água doce ou salgada, com sua construção leve e resistente, proporciona equilíbrio perfeito e sensibilidade para detectar até os mais sutis movimentos dos peixes, seja para pescadores iniciantes ou experientes, esta vara é a escolha confiável para horas de diversão e sucesso nas pescarias.",
@@ -3796,6 +4126,7 @@ local List = {
 		Water = "In"
 	},
 	["fishingrod2"] = {
+		AdminLevel = 1,
 		Index = "fishingrod2",
 		Name = "Vara de Grafite",
 		Description = "Companheira ideal para os amantes da pesca, seja em água doce ou salgada, com sua construção leve e resistente, proporciona equilíbrio perfeito e sensibilidade para detectar até os mais sutis movimentos dos peixes, seja para pescadores iniciantes ou experientes, esta vara é a escolha confiável para horas de diversão e sucesso nas pescarias.",
@@ -3808,6 +4139,7 @@ local List = {
 		Water = "In"
 	},
 	["fishingrod3"] = {
+		AdminLevel = 1,
 		Index = "fishingrod3",
 		Name = "Vara de Fibra",
 		Description = "Companheira ideal para os amantes da pesca, seja em água doce ou salgada, com sua construção leve e resistente, proporciona equilíbrio perfeito e sensibilidade para detectar até os mais sutis movimentos dos peixes, seja para pescadores iniciantes ou experientes, esta vara é a escolha confiável para horas de diversão e sucesso nas pescarias.",
@@ -3820,6 +4152,7 @@ local List = {
 		Water = "In"
 	},
 	["fishingrod4"] = {
+		AdminLevel = 1,
 		Index = "fishingrod4",
 		Name = "Vara de Carbono",
 		Description = "Companheira ideal para os amantes da pesca, seja em água doce ou salgada, com sua construção leve e resistente, proporciona equilíbrio perfeito e sensibilidade para detectar até os mais sutis movimentos dos peixes, seja para pescadores iniciantes ou experientes, esta vara é a escolha confiável para horas de diversão e sucesso nas pescarias.",
@@ -3832,6 +4165,7 @@ local List = {
 		Water = "In"
 	},
 	["pickaxe"] = {
+		AdminLevel = 1,
 		Index = "pickaxe",
 		Name = "Picareta",
 		Description = "Ferramenta versátil e resistente, projetada para lidar com uma variedade de tarefas, com sua construção robusta e design ergonômico, oferece conforto e eficiência em cada movimento, seja para escavação no jardim, trabalhos de construção ou aventuras ao ar livre, essa picareta é a escolha confiável para enfrentar desafios com facilidade e precisão.",
@@ -3843,6 +4177,7 @@ local List = {
 		Market = true
 	},
 	["axe"] = {
+		AdminLevel = 1,
 		Index = "axe",
 		Name = "Machadinha",
 		Description = "Ferramenta robusta e confiável para os desafios mais exigentes, construído com materiais de alta qualidade e design ergonômico, proporciona precisão e potência em cada golpe, ideal para cortar lenha, realizar trabalhos de construção ou aventuras ao ar livre, é o companheiro perfeito para qualquer tarefa que exija força e eficiência.",
@@ -3854,6 +4189,7 @@ local List = {
 		Market = true
 	},
 	["lockpick"] = {
+		AdminLevel = 1,
 		Index = "lockpick",
 		Name = "Gazua",
 		Description = "Ferramenta fina e flexível, frequentemente feita de metal, usada para abrir fechaduras sem a chave correspondente, é uma ferramenta comum entre profissionais de segurança e em situações de emergência.",
@@ -3866,6 +4202,7 @@ local List = {
 		Market = true
 	},
 	["cellphone"] = {
+		AdminLevel = 1,
 		Index = "cellphone",
 		Name = "Celular",
 		Repair = "repairkit01",
@@ -3880,6 +4217,7 @@ local List = {
 		}
 	},
 	["scuba"] = {
+		AdminLevel = 1,
 		Index = "scuba",
 		Name = "Roupa de Mergulho",
 		Repair = "repairkit01",
@@ -3893,6 +4231,7 @@ local List = {
 		Economy = 975
 	},
 	["handcuff"] = {
+		AdminLevel = 1,
 		Index = "handcuff",
 		Name = "Algemas",
 		Repair = "repairkit02",
@@ -3908,6 +4247,7 @@ local List = {
 		}
 	},
 	["rope"] = {
+		AdminLevel = 1,
 		Index = "rope",
 		Name = "Cordas",
 		Repair = "repairkit01",
@@ -3919,6 +4259,7 @@ local List = {
 		Water = "Out"
 	},
 	["hood"] = {
+		AdminLevel = 1,
 		Index = "hood",
 		Name = "Capuz",
 		Repair = "repairkit02",
@@ -3934,6 +4275,7 @@ local List = {
 		}
 	},
 	["cigarette"] = {
+		AdminLevel = 1,
 		Index = "cigarette",
 		Name = "Maço de Cigarros",
 		Type = "Consumível",
@@ -3943,6 +4285,7 @@ local List = {
 		Economy = 15
 	},
 	["lighter"] = {
+		AdminLevel = 1,
 		Index = "lighter",
 		Name = "Isqueiro",
 		Repair = "repairkit01",
@@ -3953,6 +4296,7 @@ local List = {
 		Economy = 225
 	},
 	["vape"] = {
+		AdminLevel = 1,
 		Index = "vape",
 		Name = "Vape",
 		Repair = "repairkit02",
@@ -3963,6 +4307,7 @@ local List = {
 		Economy = 4750
 	},
 	["dollar"] = {
+		AdminLevel = 1,
 		Index = "dollar",
 		Name = "Dólar",
 		Type = "Comum",
@@ -3972,6 +4317,7 @@ local List = {
 		Arrest = true
 	},
 	["dirtydollar"] = {
+		AdminLevel = 1,
 		Index = "dirtydollar",
 		Name = "Dólar Sujo",
 		Type = "Comum",
@@ -3982,6 +4328,7 @@ local List = {
 		Economy = 1
 	},
 	["wetdollar"] = {
+		AdminLevel = 1,
 		Index = "wetdollar",
 		Name = "Dólar Molhado",
 		Type = "Comum",
@@ -3991,6 +4338,7 @@ local List = {
 		Economy = 1
 	},
 	["promissory1000"] = {
+		AdminLevel = 1,
 		Index = "promissory",
 		Name = "Nota Promissória",
 		Type = "Comum",
@@ -4000,6 +4348,7 @@ local List = {
 		Economy = 1000
 	},
 	["promissory2000"] = {
+		AdminLevel = 1,
 		Index = "promissory",
 		Name = "Nota Promissória",
 		Type = "Comum",
@@ -4009,6 +4358,7 @@ local List = {
 		Economy = 2000
 	},
 	["promissory3000"] = {
+		AdminLevel = 1,
 		Index = "promissory",
 		Name = "Nota Promissória",
 		Type = "Comum",
@@ -4018,6 +4368,7 @@ local List = {
 		Economy = 3000
 	},
 	["promissory4000"] = {
+		AdminLevel = 1,
 		Index = "promissory",
 		Name = "Nota Promissória",
 		Type = "Comum",
@@ -4027,6 +4378,7 @@ local List = {
 		Economy = 4000
 	},
 	["promissory5000"] = {
+		AdminLevel = 1,
 		Index = "promissory",
 		Name = "Nota Promissória",
 		Type = "Comum",
@@ -4036,6 +4388,7 @@ local List = {
 		Economy = 5000
 	},
 	["pager"] = {
+		AdminLevel = 1,
 		Index = "pager",
 		Name = "Pager",
 		Type = "Consumível",
@@ -4049,6 +4402,7 @@ local List = {
 		}
 	},
 	["soap"] = {
+		AdminLevel = 1,
 		Index = "soap",
 		Name = "Sabonete",
 		Type = "Consumível",
@@ -4058,6 +4412,7 @@ local List = {
 		Market = true
 	},
 	["emptybottle"] = {
+		AdminLevel = 1,
 		Index = "emptybottle",
 		Name = "Garrafa Vazia",
 		Type = "Comum",
@@ -4072,101 +4427,287 @@ local List = {
 -- PURITYS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Puritys = {
-	{ Percent = 0, Chance = 100 },
-	{ Percent = 10, Chance = 90 },
-	{ Percent = 20, Chance = 80 },
-	{ Percent = 30, Chance = 70 },
-	{ Percent = 40, Chance = 60 },
-	{ Percent = 50, Chance = 50 },
-	{ Percent = 60, Chance = 40 },
-	{ Percent = 70, Chance = 30 },
-	{ Percent = 80, Chance = 20 },
-	{ Percent = 90, Chance = 10 },
-	{ Percent = 100, Chance = 1 }
+	{
+		Percent = 0,
+		Chance = 100
+	},{
+		Percent = 10,
+		Chance = 90
+	},{
+		Percent = 20,
+		Chance = 80
+	},{
+		Percent = 30,
+		Chance = 70
+	},{
+		Percent = 40,
+		Chance = 60
+	},{
+		Percent = 50,
+		Chance = 50
+	},{
+		Percent = 60,
+		Chance = 40
+	},{
+		Percent = 70,
+		Chance = 30
+	},{
+		Percent = 80,
+		Chance = 20
+	},{
+		Percent = 90,
+		Chance = 10
+	},{
+		Percent = 100,
+		Chance = 1
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLONEVARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
 Clones = {
-	{ Clone = "tomato", Name = "Tomate", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "passion", Name = "Maracujá", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "tange", Name = "Tangerina", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "orange", Name = "Laranja", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "apple", Name = "Maça", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "grape", Name = "Uva", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "lemon", Name = "Limão", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "banana", Name = "Banana", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "acerola", Name = "Acerola", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "strawberry", Name = "Morango", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "blueberry", Name = "Blueberry", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "coffee", Name = "Café", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01b" },
-	{ Clone = "weed", Name = "Cannabis", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" },
-	{ Clone = "coke", Name = "Cocaína", Min = 3, Max = 6, Hash = "bkr_prop_weed_med_01a" }
+	{
+		Clone = "tomato",
+		Name = "Tomate",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "passion",
+		Name = "Maracujá",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "tange",
+		Name = "Tangerina",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "orange",
+		Name = "Laranja",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "apple",
+		Name = "Maça",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "grape",
+		Name = "Uva",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "lemon",
+		Name = "Limão",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "banana",
+		Name = "Banana",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "acerola",
+		Name = "Acerola",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "strawberry",
+		Name = "Morango",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "blueberry",
+		Name = "Blueberry",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "coffee",
+		Name = "Café",
+		Hash = "bkr_prop_weed_med_01b",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "weed",
+		Name = "Cannabis",
+		Hash = "bkr_prop_weed_med_01a",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	},{
+		Clone = "coke",
+		Name = "Cocaína",
+		Hash = "bkr_prop_weed_med_01a",
+		AdminLevel = 1,
+		Min = 3,
+		Max = 6
+	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FURNITURE
 -----------------------------------------------------------------------------------------------------------------------------------------
 Furniture = {
 	{
+		Item = "pack_bathcab",
+		Name = "Armário de Banheiro",
+		Hash = "gcom_dec_pack_bathcab",
+		AdminLevel = 1
+	},{
+		Item = "pack_cabinet",
+		Name = "Armário Quatro Portas",
+		Hash = "gcom_dec_pack_cabinet",
+		AdminLevel = 1
+	},{
+		Item = "pack_cabinet_2",
+		Name = "Hack de Televisão",
+		Hash = "gcom_dec_pack_cabinet_2",
+		AdminLevel = 1
+	},{
+		Item = "pack_table_1",
+		Name = "Mesa de Escritório",
+		Hash = "gcom_dec_pack_table_1",
+		AdminLevel = 1
+	},{
+		Item = "pack_table_2",
+		Name = "Mesa de Jantar",
+		Hash = "gcom_dec_pack_table_2",
+		AdminLevel = 1
+	},{
+		Item = "pack_wall",
+		Name = "Divisor de Ambiente",
+		Hash = "gcom_dec_pack_wall",
+		AdminLevel = 1
+	},{
+		Item = "pack_wardrobe_1",
+		Name = "Guarda-Roupas Quatro Portas",
+		Hash = "gcom_dec_pack_wardrobe_1",
+		AdminLevel = 1
+	},{
+		Item = "pack_wardrobe_2",
+		Name = "Guarda-Roupas Seis Portas",
+		Hash = "gcom_dec_pack_wardrobe_2",
+		AdminLevel = 1
+	},{
+		Item = "pack_cabinet_3",
+		Name = "Guarda-Roupas Antigo",
+		Hash = "murm_dec_pack_cabinet",
+		AdminLevel = 1
+	},{
+		Item = "pack_chair_1",
+		Name = "Cadeira de Madeira",
+		Hash = "murm_dec_pack_chair_1",
+		AdminLevel = 1
+	},{
+		Item = "pack_chair_2",
+		Name = "Cadeira de Couro",
+		Hash = "murm_dec_pack_chair_2",
+		AdminLevel = 1
+	},{
+		Item = "pack_dresser",
+		Name = "Cômoda de Madeira",
+		Hash = "murm_dec_pack_dresser",
+		AdminLevel = 1
+	},{
+		Item = "pack_sofa",
+		Name = "Sofá de Courino",
+		Hash = "murm_dec_pack_sofa",
+		AdminLevel = 1
+	},{
+		Item = "pack_table",
+		Name = "Mesa de Madeira",
+		Hash = "murm_dec_pack_table",
+		AdminLevel = 1
+	},{
 		Item = "halloween_pumpkin",
 		Name = "Abóbora de Halloween",
-		Rarity = "legendary",
-		Hash = "tfx-summer_abroba"
+		Hash = "tfx-summer_abroba",
+		AdminLevel = 1
 	},{
 		Item = "halloween_ghost",
 		Name = "Fantasma de Halloween",
-		Rarity = "legendary",
-		Hash = "tfx-summer_ghost"
+		Hash = "tfx-summer_ghost",
+		AdminLevel = 1
 	},{
 		Item = "largebed",
 		Name = "Cama",
-		Hash = "hei_heist_bed_double_08"
+		Hash = "hei_heist_bed_double_08",
+		AdminLevel = 1
 	},{
 		Item = "browncloset",
-		Name = "Guarda-Roupas",
+		Name = "Guarda-Roupas Duas Portas",
 		Rarity = "epic",
-		Hash = "v_res_m_armoire"
+		Hash = "v_res_m_armoire",
+		AdminLevel = 1
 	},{
 		Item = "simplebox",
 		Name = "Cofre Básico",
 		Hash = "prop_ld_int_safe_01",
 		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>100KG</legendary> dentro de seu compartimento.",
-		Delete = true
+		Delete = true,
+		AdminLevel = 1
 	},{
 		Item = "safebox",
 		Name = "Cofre Reforçado",
 		Rarity = "rare",
 		Hash = "p_v_43_safe_s",
 		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>200KG</legendary> dentro de seu compartimento.",
-		Delete = true
+		Delete = true,
+		AdminLevel = 1
 	},{
 		Item = "officebox",
 		Name = "Cofre Blindado",
 		Rarity = "epic",
 		Hash = "sf_prop_v_43_safe_s_bk_01a",
 		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>500KG</legendary> dentro de seu compartimento.",
-		Delete = true
+		Delete = true,
+		AdminLevel = 1
 	},{
 		Item = "industrialbox",
 		Name = "Cofre Industrial",
 		Rarity = "epic",
 		Hash = "xm3_prop_xm3_safe_01a",
 		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>1000KG</legendary> dentro de seu compartimento.",
-		Delete = true
+		Delete = true,
+		AdminLevel = 1
 	},{
 		Item = "ornamentbox",
 		Name = "Cofre Corporativo",
 		Rarity = "legendary",
 		Hash = "h4_prop_h4_safe_01a",
 		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>1500KG</legendary> dentro de seu compartimento.",
-		Delete = true
+		Delete = true,
+		AdminLevel = 1
 	},{
 		Item = "goldenbox",
 		Name = "Cofre Executivo",
 		Rarity = "legendary",
 		Hash = "sf_prop_v_43_safe_s_gd_01a",
 		Description = "Este objeto pode ser posicionado dentro de propriedades, permitindo guardar <legendary>2500KG</legendary> dentro de seu compartimento.",
-		Delete = true
+		Delete = true,
+		AdminLevel = 1
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -4185,6 +4726,7 @@ CreateThread(function()
 			List["blueprint_"..Item] = {
 				Name = v.Name,
 				Index = "blueprint",
+				AdminLevel = v.AdminLevel or 1,
 				Description = "Ao consumir você aprende a receita necessária para produzi-lo sempre que desejar.",
 				Type = "Consumível",
 				Weight = 0.0,
@@ -4200,6 +4742,7 @@ CreateThread(function()
 			Index = v.Clone,
 			Name = v.Name,
 			Type = "Comum",
+			AdminLevel = v.AdminLevel or 1,
 			LostWater = true,
 			Weight = 0.15,
 			Market = true,
@@ -4210,6 +4753,7 @@ CreateThread(function()
 			List[v.Clone.."clone_"..w.Percent] = {
 				Index = "clone",
 				Name = "Clonagem de "..v.Name,
+				AdminLevel = v.AdminLevel or 1,
 				Description = "Pureza dos frutos: <common>"..w.Percent.."%</common>",
 				Type = "Consumível",
 				Purity = w.Percent,
@@ -4228,6 +4772,7 @@ CreateThread(function()
 			Weight = v.Weight or 2.0,
 			Index = "furniture_"..v.Item,
 			Rarity = v.Rarity or "common",
+			AdminLevel = v.AdminLevel or 1,
 			Description = v.Description or "Este objeto pode ser posicionado dentro de propriedades, permitindo personalizar e organizar o ambiente."
 		}
 	end
@@ -4450,6 +4995,20 @@ end
 function ItemLocked(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Locked or false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEMMARKERS
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ItemMarkers(Item)
+	local Item = SplitOne(Item)
+	return List[Item] and List[Item].Markers or false
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ITEMADMIN
+-----------------------------------------------------------------------------------------------------------------------------------------
+function ItemAdmin(Item)
+	local Item = SplitOne(Item)
+	return List[Item] and List[Item].AdminLevel or false
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLOCKDELETE

@@ -419,86 +419,99 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 	local Aplication = false
 	local OtherCoords = false
 
-	if LoadModel(Model) then
-		local Progress = true
-		local Ped = PlayerPedId()
-		local Heading = GetEntityHeading(Ped)
-		local Coords = GetOffsetFromEntityInWorldCoords(Ped,0.0,Align or 1.0,0.0)
-		local NextObject = CreateObjectNoOffset(Model,Coords.x,Coords.y,Coords.z,false,false,false)
-
-		SetEntityAlpha(NextObject,200,false)
-		PlaceObjectOnGroundProperly(NextObject)
-		SetEntityCollision(NextObject,false,false)
-		SetEntityHeading(NextObject,Heading + (Rotate or 0.0))
-
-		local DefaultButtons = {
-			{ Letter = "F", Text = "Cancelar" },
-			{ Letter = "H", Text = "Posicionar" },
-			{ Letter = "Q", Text = "Rotacionar Esquerda" },
-			{ Letter = "E", Text = "Rotacionar Direita" },
-			{ Letter = "Z", Text = "Trocar Modo" }
-		}
-
-		local ExtendedButtons = {
-			{ Letter = "F", Text = "Cancelar" },
-			{ Letter = "H", Text = "Posicionar" },
-			{ Letter = "Q", Text = "Rotacionar Esquerda" },
-			{ Letter = "E", Text = "Rotacionar Direita" },
-			{ Letter = "-", Text = "Descer" },
-			{ Letter = "+", Text = "Subir" },
-			{ Letter = "↑", Text = "Movimentar para Frente" },
-			{ Letter = "←", Text = "Movimentar para Esquerda" },
-			{ Letter = "↓", Text = "Movimentar para Baixo" },
-			{ Letter = "→", Text = "Movimentar para Direita" },
-			{ Letter = "Z", Text = "Trocar Modo" }
-		}
-
-		TriggerEvent("inventory:Buttons",DefaultButtons)
-
-		while Progress do
-			local ControlPressed = GetMovementControls(NextObject)
-			if ControlPressed then
-				MoveObject(NextObject,ControlPressed)
-			end
-
-			RotateObject(NextObject)
-			DrawGraphOutline(NextObject)
-
-			if not Switch then
-				local Cam = GetGameplayCamCoord()
-				local Handle = StartExpensiveSynchronousShapeTestLosProbe(Cam,GetCoordsFromCam(10.0,Cam),-1,Ped,4)
-				local _,_,Coords = GetShapeTestResult(Handle)
-				SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
-			end
-
-			if IsControlJustPressed(0,48) then
-				Switch = not Switch
-				TriggerEvent("inventory:Buttons",Switch and ExtendedButtons or defaultButtons)
-			elseif IsControlJustPressed(1,74) then
-				TriggerEvent("inventory:CloseButtons")
-				Aplication = true
-				Progress = false
-				Switch = false
-			elseif IsControlJustPressed(0,49) then
-				TriggerEvent("inventory:CloseButtons")
-				Aplication = false
-				Progress = false
-				Switch = false
-			end
-
-			Wait(1)
-		end
-
-		if DoesEntityExist(NextObject) then
-			local oCoords = GetEntityCoords(NextObject)
-			local oHeading = GetEntityHeading(NextObject)
-			OtherCoords = { Optimize(oCoords.x),Optimize(oCoords.y),Optimize(oCoords.z),Optimize(oHeading) }
-
-			DeleteEntity(NextObject)
-		end
+	if not LoadModel(Model) then
+		return false,false
 	end
 
-	if not OtherCoords or (OtherCoords and OtherCoords[1] == 0.0 and OtherCoords[2] == 0.0) then
+	local Ped = PlayerPedId()
+	local Heading = GetEntityHeading(Ped)
+	local Min,Max = GetModelDimensions(Model)
+	local BaseCoords = GetOffsetFromEntityInWorldCoords(Ped,0.0,Align or 1.0,0.0)
+	local Height = math.abs(Min.z)
+
+	local NextObject = CreateObjectNoOffset(Model,BaseCoords.x,BaseCoords.y,BaseCoords.z + Height,false,false,false)
+
+	SetEntityAlpha(NextObject,200,false)
+	SetEntityCollision(NextObject,false,false)
+	SetEntityHeading(NextObject,Heading + (Rotate or 0.0))
+	PlaceObjectOnGroundProperly(NextObject)
+
+	local DefaultButtons = {
+		{ Letter = "F", Text = "Cancelar" },
+		{ Letter = "H", Text = "Posicionar" },
+		{ Letter = "Q", Text = "Rotacionar Esquerda" },
+		{ Letter = "E", Text = "Rotacionar Direita" },
+		{ Letter = "Z", Text = "Trocar Modo" }
+	}
+
+	local ExtendedButtons = {
+		{ Letter = "F", Text = "Cancelar" },
+		{ Letter = "H", Text = "Posicionar" },
+		{ Letter = "Q", Text = "Rotacionar Esquerda" },
+		{ Letter = "E", Text = "Rotacionar Direita" },
+		{ Letter = "-", Text = "Descer" },
+		{ Letter = "+", Text = "Subir" },
+		{ Letter = "↑", Text = "Frente" },
+		{ Letter = "←", Text = "Esquerda" },
+		{ Letter = "↓", Text = "Trás" },
+		{ Letter = "→", Text = "Direita" },
+		{ Letter = "Z", Text = "Trocar Modo" }
+	}
+
+	TriggerEvent("inventory:Buttons",DefaultButtons)
+
+	local Progress = true
+
+	while Progress do
+		local ControlPressed = GetMovementControls(NextObject)
+		if ControlPressed then
+			MoveObject(NextObject,ControlPressed)
+		end
+
+		RotateObject(NextObject)
+		DrawGraphOutline(NextObject)
+
+		if not Switch then
+			local Cam = GetGameplayCamCoord()
+			local Dest = GetCoordsFromCam(10.0,Cam)
+			local Handle = StartExpensiveSynchronousShapeTestLosProbe(Cam.x,Cam.y,Cam.z,Dest.x,Dest.y,Dest.z,-1,Ped,4)
+			local _,Hit,Coords = GetShapeTestResult(Handle)
+			if Hit == 1 then
+				SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z + Height,false,false,false)
+			end
+		end
+
+		if IsControlJustPressed(0,48) then
+			Switch = not Switch
+			TriggerEvent("inventory:Buttons",Switch and ExtendedButtons or DefaultButtons)
+		elseif IsControlJustPressed(1,74) then
+			TriggerEvent("inventory:CloseButtons")
+			Aplication = true
+			Progress = false
+		elseif IsControlJustPressed(0,49) then
+			TriggerEvent("inventory:CloseButtons")
+			Aplication = false
+			Progress = false
+		end
+
+		Wait(0)
+	end
+
+	if DoesEntityExist(NextObject) then
+		local oCoords = GetEntityCoords(NextObject)
+		local oHeading = GetEntityHeading(NextObject)
+
+		OtherCoords = {
+			Optimize(oCoords.x),
+			Optimize(oCoords.y),
+			Optimize(oCoords.z),
+			Optimize(oHeading)
+		}
+
+		DeleteEntity(NextObject)
+	end
+
+	if not OtherCoords or (OtherCoords[1] == 0.0 and OtherCoords[2] == 0.0) then
 		Aplication = false
 	end
 

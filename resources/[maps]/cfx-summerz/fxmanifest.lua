@@ -10,3 +10,5 @@ files {
 
 data_file "DLC_ITYP_REQUEST" "stream/*.ytyp"
 data_file "DLC_ITYP_REQUEST" "stream/**/*.ytyp"
+data_file "DLC_ITYP_REQUEST" "stream/MurmDecor/gcom_decor_pack.ytyp"
+data_file "DLC_ITYP_REQUEST" "stream/MurmDecor/murm_decor_pack.ytyp"

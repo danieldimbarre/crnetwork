@@ -487,7 +487,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function TargetEnable()
 	local Ped = PlayerPedId()
-	if LocalPlayer.state.Arena or LocalPlayer.state.Cancel or LocalPlayer.state.ItemCamera or LocalPlayer.state.Freecam or LocalPlayer.state.Carry or not LocalPlayer.state.Active or LocalPlayer.state.Buttons or LocalPlayer.state.Commands or LocalPlayer.state.Handcuff or IsPauseMenuActive() or exports["lb-phone"]:IsOpen() or not MumbleIsConnected() or Sucess or IsPedInAnyVehicle(Ped) then
+	if LocalPlayer.state.Arena or LocalPlayer.state.Cancel or LocalPlayer.state.ItemCamera or LocalPlayer.state.Carry or not LocalPlayer.state.Active or LocalPlayer.state.Buttons or LocalPlayer.state.Commands or LocalPlayer.state.Handcuff or IsPauseMenuActive() or exports["lb-phone"]:IsOpen() or not MumbleIsConnected() or Sucess or IsPedInAnyVehicle(Ped) then
 		return false
 	end
 

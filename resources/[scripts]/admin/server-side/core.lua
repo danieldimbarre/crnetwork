@@ -1142,43 +1142,83 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("insertcron",function(source)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Keyboard = vKEYBOARD.Skins(source,"Passaporte","Permissão","Hierarquia","Quantidade",{ "Horas","Dias" })
-		if Keyboard then
-			local Timer = 0
-			local Mode = Keyboard[5]
-			local Permission = Keyboard[2]
-			local OtherPassport = Keyboard[1]
-			local Amount = parseInt(Keyboard[4],true)
-			local Hierarchy = parseInt(Keyboard[3],true)
-
-			if not vRP.HasPermission(OtherPassport,Permission) then
-				vRP.SetPermission(OtherPassport,Permission)
-			end
-
-			if Mode == "Horas" then
-				Timer = Amount * 3600
-			elseif Mode == "Dias" then
-				Timer = Amount * 86400
-			end
-
-			exports.crons:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission, Level = Hierarchy })
-			TriggerClientEvent("Notify",source,"Sucesso","Adição efetuada.","verde",5000)
-		end
+	if not Passport or not vRP.HasGroup(Passport,"Admin",1) then
+		return false
 	end
+
+	local Keyboard = vKEYBOARD.Skins(source,"Passaporte","Permissão","Hierarquia","Quantidade",{ "Horas","Dias" })
+	if not Keyboard then
+		return false
+	end
+
+	local OtherPassport = parseInt(Keyboard[1])
+	local Permission = tostring(Keyboard[2] or "")
+	local Hierarchy = parseInt(Keyboard[3],true)
+	local Amount = parseInt(Keyboard[4],true)
+	local Mode = tostring(Keyboard[5] or "")
+
+	if not OtherPassport or OtherPassport <= 0 then
+		return TriggerClientEvent("Notify",source,"Erro","Passaporte inválido.","vermelho",5000)
+	end
+
+	if Permission == "" then
+		return TriggerClientEvent("Notify",source,"Erro","Permissão inválida.","vermelho",5000)
+	end
+
+	if not Hierarchy or Hierarchy < 0 then
+		return TriggerClientEvent("Notify",source,"Erro","Hierarquia inválida.","vermelho",5000)
+	end
+
+	if not Amount or Amount <= 0 then
+		return TriggerClientEvent("Notify",source,"Erro","Quantidade inválida.","vermelho",5000)
+	end
+
+	local Timer = 0
+	if Mode == "Horas" then
+		Timer = Amount * 3600
+	elseif Mode == "Dias" then
+		Timer = Amount * 86400
+	else
+		return TriggerClientEvent("Notify",source,"Erro","Modo inválido.","vermelho",5000)
+	end
+
+	if Timer <= 0 then
+		return false
+	end
+
+	if not vRP.HasPermission(OtherPassport,Permission,Hierarchy) then
+		vRP.SetPermission(OtherPassport,Permission,Hierarchy)
+	end
+
+	exports.crons:Insert(OtherPassport,"RemovePermission",Timer,{ Permission = Permission, Level = Hierarchy })
+	TriggerClientEvent("Notify",source,"Sucesso","Permissão adicionada com tempo definido.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMOVECRON
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("removecron",function(source)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasGroup(Passport,"Admin") then
-		local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Permissão")
-		if Keyboard then
-			exports.crons:Remove(Keyboard[1],"RemovePermission",Keyboard[2])
-			TriggerClientEvent("Notify",source,"Sucesso","Remoção efetuada.","verde",5000)
-		end
+	if not Passport or not vRP.HasGroup(Passport,"Admin") then
+		return false
 	end
+
+	local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Permissão")
+	if not Keyboard then
+		return false
+	end
+
+	local OtherPassport = parseInt(Keyboard[1])
+	local Permission = tostring(Keyboard[2] or "")
+	if not OtherPassport or OtherPassport <= 0 then
+		return TriggerClientEvent("Notify",source,"Erro","Passaporte inválido.","vermelho",5000)
+	end
+
+	if Permission == "" then
+		return TriggerClientEvent("Notify",source,"Erro","Permissão inválida.","vermelho",5000)
+	end
+
+	exports.crons:Remove(OtherPassport,"RemovePermission",Permission)
+	TriggerClientEvent("Notify",source,"Sucesso","Cron removido com sucesso.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TPCDS
@@ -1462,6 +1502,7 @@ CreateThread(function()
 		end
 
 		exports.discord:Embed("Permissions",Message)
+		TriggerEvent("SaveServer",true)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

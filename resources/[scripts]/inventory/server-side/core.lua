@@ -248,8 +248,19 @@ Loots = {
 function Creative.SpawnItem(OtherPassport,Item,Amount,Mode,Distance)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if not Passport or not Item or not Amount or Amount <= 0 or not vRP.HasService(Passport,"Admin",AdminHierarchy or 1) then
+	if not Passport or not Item or not Amount or Amount <= 0 then
 		return false
+	end
+
+	local Level = ItemAdmin(Item)
+	if Level then
+		if not vRP.HasService(Passport,"Admin",Level) then
+			return false
+		end
+	else
+		if not vRP.HasService(Passport,"Admin") then
+			return false
+		end
 	end
 
 	local function GiveItem(TargetPassport)

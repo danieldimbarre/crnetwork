@@ -173,6 +173,10 @@ RegisterCommand("PlayerFunctions",function()
 
 		TriggerEvent("animals:Dynamic")
 
+		if LocalPlayer.state.Propertys then
+			TriggerEvent("propertys:Dynamic")
+		end
+
 		if GetResourceState("ticket") == "started" then
 			TriggerEvent("ticket:Dynamic")
 		end

@@ -425,11 +425,8 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 
 	local Ped = PlayerPedId()
 	local Heading = GetEntityHeading(Ped)
-	local Min,Max = GetModelDimensions(Model)
 	local BaseCoords = GetOffsetFromEntityInWorldCoords(Ped,0.0,Align or 1.0,0.0)
-	local Height = math.abs(Min.z)
-
-	local NextObject = CreateObjectNoOffset(Model,BaseCoords.x,BaseCoords.y,BaseCoords.z + Height,false,false,false)
+	local NextObject = CreateObjectNoOffset(Model,BaseCoords.x,BaseCoords.y,BaseCoords.z)
 
 	SetEntityAlpha(NextObject,200,false)
 	SetEntityCollision(NextObject,false,false)
@@ -477,7 +474,7 @@ function tvRP.ObjectControlling(Model,Rotate,Align)
 			local Handle = StartExpensiveSynchronousShapeTestLosProbe(Cam.x,Cam.y,Cam.z,Dest.x,Dest.y,Dest.z,-1,Ped,4)
 			local _,Hit,Coords = GetShapeTestResult(Handle)
 			if Hit == 1 then
-				SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z + Height,false,false,false)
+				SetEntityCoordsNoOffset(NextObject,Coords.x,Coords.y,Coords.z,false,false,false)
 			end
 		end
 

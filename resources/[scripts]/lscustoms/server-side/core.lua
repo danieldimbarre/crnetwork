@@ -43,11 +43,6 @@ function Creative.Save(Model,Plate,Initial)
 		return false
 	end
 
-	local OtherPassport = vRP.PassportPlate(Plate)
-	if not OtherPassport then
-		return false
-	end
-
 	local Price = Calculate(Initial,Model)
 	if not Price or Price <= 0 then
 		return false
@@ -57,67 +52,70 @@ function Creative.Save(Model,Plate,Initial)
 		return false
 	end
 
-	local Name = OtherPassport..":"..Model
-	local Consult = vRP.GetSrvData("LsCustoms:"..Name,true)
-	for Index,v in pairs(Initial) do
-		if Index == "VehicleExtras" then
-			for Type,Data in pairs(v) do
-				if Data.Installed ~= Data.Selected then
-					Consult.VehicleExtras = Consult.VehicleExtras or {}
-					Consult.VehicleExtras[Type] = Data.Selected
+	local OtherPassport = vRP.PassportPlate(Plate)
+	if OtherPassport then
+		local Name = OtherPassport..":"..Model
+		local Consult = vRP.GetSrvData("LsCustoms:"..Name,true)
+		for Index,v in pairs(Initial) do
+			if Index == "VehicleExtras" then
+				for Type,Data in pairs(v) do
+					if Data.Installed ~= Data.Selected then
+						Consult.VehicleExtras = Consult.VehicleExtras or {}
+						Consult.VehicleExtras[Type] = Data.Selected
+					end
 				end
-			end
-		elseif Index == "Respray" then
-			Consult.Respray = {
-				PrimaryColour = {
-					Type = v.PrimaryColour.Selected.Type,
-					Color = v.PrimaryColour.Selected.Color
-				},
-				SecondaryColour = {
-					Type = v.SecondaryColour.Selected.Type,
-					Color = v.SecondaryColour.Selected.Color
-				},
-				PearlescentColour = v.PearlescentColour.Selected,
-				WheelColour = v.WheelColour.Selected,
-				DashboardColour = v.DashboardColour.Selected,
-				InteriorColour = v.InteriorColour.Selected
-			}
-		elseif Index == "Wheels" then
-			for Type,Data in pairs(v) do
-				if Data.Installed ~= Data.Selected then
-					if Consult[Index] then
-						if Type == "TyreSmoke" then
-							Consult[Index].TyreSmoke = Initial[Index].TyreSmoke.Selected
-						elseif Type == "CustomTyres" then
-							Consult[Index].CustomTyres = Initial[Index].CustomTyres.Selected
+			elseif Index == "Respray" then
+				Consult.Respray = {
+					PrimaryColour = {
+						Type = v.PrimaryColour.Selected.Type,
+						Color = v.PrimaryColour.Selected.Color
+					},
+					SecondaryColour = {
+						Type = v.SecondaryColour.Selected.Type,
+						Color = v.SecondaryColour.Selected.Color
+					},
+					PearlescentColour = v.PearlescentColour.Selected,
+					WheelColour = v.WheelColour.Selected,
+					DashboardColour = v.DashboardColour.Selected,
+					InteriorColour = v.InteriorColour.Selected
+				}
+			elseif Index == "Wheels" then
+				for Type,Data in pairs(v) do
+					if Data.Installed ~= Data.Selected then
+						if Consult[Index] then
+							if Type == "TyreSmoke" then
+								Consult[Index].TyreSmoke = Initial[Index].TyreSmoke.Selected
+							elseif Type == "CustomTyres" then
+								Consult[Index].CustomTyres = Initial[Index].CustomTyres.Selected
+							else
+								Consult[Index].Category = Type
+								Consult[Index].Value = Data.Selected
+							end
 						else
-							Consult[Index].Category = Type
-							Consult[Index].Value = Data.Selected
-						end
-					else
-						if Type == "TyreSmoke" then
-							Consult[Index] = {
-								TyreSmoke = Initial[Index].TyreSmoke.Selected
-							}
-						elseif Type == "CustomTyres" then
-							Consult[Index] = {
-								CustomTyres = Initial[Index].CustomTyres.Selected
-							}
-						else
-							Consult[Index] = {
-								Category = Type,
-								Value = Data.Selected
-							}
+							if Type == "TyreSmoke" then
+								Consult[Index] = {
+									TyreSmoke = Initial[Index].TyreSmoke.Selected
+								}
+							elseif Type == "CustomTyres" then
+								Consult[Index] = {
+									CustomTyres = Initial[Index].CustomTyres.Selected
+								}
+							else
+								Consult[Index] = {
+									Category = Type,
+									Value = Data.Selected
+								}
+							end
 						end
 					end
 				end
+			elseif v.Installed ~= v.Selected then
+				Consult[Index] = v.Selected
 			end
-		elseif v.Installed ~= v.Selected then
-			Consult[Index] = v.Selected
 		end
-	end
 
-	vRP.SetSrvData("LsCustoms:"..Name,Consult,true)
+		vRP.SetSrvData("LsCustoms:"..Name,Consult,true)
+	end
 
 	return true
 end

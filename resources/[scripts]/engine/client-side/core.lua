@@ -162,7 +162,7 @@ AddEventHandler("engine:Supply",function(Entitys)
 		if not Gallons then
 			VehicleFuel += 0.01
 			Price += (PriceLitter / 100)
-			SendNUIMessage({ Action = "Tank", Payload = { floor(VehicleFuel),Price,PriceLitter } })
+			SendNUIMessage({ Action = "Update", Payload = { Tank = floor(VehicleFuel), Price = Price, PricePerLiter = PriceLitter } })
 		else
 			local Ammo = GetAmmoInPedWeapon(Ped,883325847)
 			if Ammo > 1 then

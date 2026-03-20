@@ -119,7 +119,6 @@ local Works = {
 		"polvic",
 		"r1250pol",
 		"schafter2pol",
-		"sheriff2pol",
 		"silveradopol",
 		"sultanrspol",
 		"tahoepol",
@@ -233,6 +232,7 @@ function Creative.ServerVehicle(Model,Coords,Plate,Nitro,Doors,Body,Fuel,Seatbel
 	Plate = Plate or vRP.GeneratePlate()
 	SetVehicleNumberPlateText(Vehicle,Plate)
 	SetVehicleBodyHealth(Vehicle,(Body or 1000) + 0.0)
+	SetEntityRoutingBucket(Vehicle,0)
 
 	if Doors then
 		local Decoded = json.decode(Doors)
@@ -264,13 +264,13 @@ AddEventHandler("garages:Respawns",function(Plate)
 		return false
 	end
 
-	local Spawn = Spawn[Plate]
 	local Respawn = Respawns[Plate]
-	if not (Respawn and Spawn and Spawn[1] == Passport) then
+	local VehicleSpawn = Spawn[Plate]
+	if not (Respawn and VehicleSpawn and VehicleSpawn[1] == Passport) then
 		return false
 	end
 
-	local OtherPassport,Model = Spawn[1],Spawn[2]
+	local OtherPassport,Model = VehicleSpawn[1],VehicleSpawn[2]
 	local VehicleData = vRP.SelectVehicle(OtherPassport,Model)
 	if not VehicleData then
 		return false
@@ -553,6 +553,21 @@ AddEventHandler("garages:Tax",function(Name)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- RESET
+-----------------------------------------------------------------------------------------------------------------------------------------
+function Reset(Plate)
+	Signal[Plate] = nil
+	Respawns[Plate] = nil
+
+	local Backup = Changed[Plate]
+	if Backup then
+		Spawn[Backup] = nil
+		Changed[Plate] = nil
+	end
+
+	Spawn[Plate] = nil
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:SPAWN
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterServerEvent("garages:Spawn")
@@ -668,27 +683,35 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 			return false
 		end
 
-		if os.time() < (Searched[Passport] or 0) then
+		local CurrentTimer = os.time()
+		if CurrentTimer < (Searched[Passport] or 0) then
 			TriggerClientEvent("Notify",source,"Aviso","Rastreador pode ser ativado a cada <b>60</b> segundos.","policia",5000)
 			Active[Passport] = nil
 			return false
 		end
 
-		Searched[Passport] = os.time() + 60
-
 		local Entitys = Spawn[Plate][3]
 		if not Respawns[Plate] then
-			if DoesEntityExist(Entitys) and not IsPedAPlayer(Entitys) and GetEntityType(Entitys) == 2 then
-				vCLIENT.SearchBlip(source,GetEntityCoords(Entitys))
+			if Entitys and DoesEntityExist(Entitys) and GetEntityType(Entitys) == 2 then
+				if GetEntityCoords(Entitys).z > -20 then
+					Searched[Passport] = CurrentTimer + 60
+					vCLIENT.SearchBlip(source,GetEntityCoords(Entitys))
+					TriggerClientEvent("Notify",source,"Atenção","Rastreador ativado por <b>30</b> segundos.","policia",10000)
+				else
+					Reset(Plate)
+					DeleteEntity(Entitys)
+					TriggerClientEvent("Notify",source,"Sucesso","Seguradora resgatou seu veículo.","policia",5000)
+				end
 			else
-				Spawn[Plate] = nil
+				Reset(Plate)
 				TriggerClientEvent("Notify",source,"Sucesso","Seguradora resgatou seu veículo.","policia",5000)
 			end
 		else
+			Searched[Passport] = CurrentTimer + 60
 			vCLIENT.SearchBlip(source,Respawns[Plate].xyz)
+			TriggerClientEvent("Notify",source,"Atenção","Rastreador ativado por <b>30</b> segundos.","policia",10000)
 		end
 
-		TriggerClientEvent("Notify",source,"Atenção","Rastreador ativado por <b>30</b> segundos.","policia",10000)
 		Active[Passport] = nil
 
 		return false
@@ -751,7 +774,7 @@ AddEventHandler("garages:Spawn",function(Name,Number)
 			end
 
 			Entity(Entitys).state:set("Lockpick",Passport,true)
-			Spawn[Plate] = { Passport,Name,Entitys }
+			Spawn[Plate] = { Passport,Name,Entitys,Network }
 		end
 	end
 

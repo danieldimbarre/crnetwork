@@ -299,7 +299,6 @@ function Creative.CreateVehicle(Model,Network,Engine,Health,Customize,Windows,Ty
 	SetVehicleNeedsToBeHotwired(Vehicle,false)
 	SetEntityCleanupByEngine(Vehicle,true)
 	SetNetworkIdCanMigrate(Network,true)
-	SetVehicleOnGroundProperly(Vehicle)
 	SetVehRadioStation(Vehicle,"OFF")
 	SetEntityHealth(Vehicle,Health)
 
@@ -433,7 +432,7 @@ CreateThread(function()
 	while true do
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
-		if IsPedInAnyVehicle(Ped) then
+		if LocalPlayer.state.Active and IsPedInAnyVehicle(Ped) then
 			local Vehicle = GetVehiclePedIsUsing(Ped)
 			if Vehicle then
 				local Plate = GetVehicleNumberPlateText(Vehicle)
@@ -461,7 +460,7 @@ CreateThread(function()
 	while true do
 		local TimeDistance = 999
 		local Ped = PlayerPedId()
-		if not IsPedInAnyVehicle(Ped) then
+		if LocalPlayer.state.Active and not IsPedInAnyVehicle(Ped) then
 			local Coords = GetEntityCoords(Ped)
 
 			for Number,v in pairs(Garages) do

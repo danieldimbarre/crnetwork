@@ -104,14 +104,25 @@ local ChestItens = {
 		Weight = 10,
 		Close = true,
 		Itens = {
-			["bandage"] = true,
-			["gauze"] = true,
-			["gdtkit"] = true,
-			["medkit"] = true,
-			["sinkalmy"] = true,
-			["analgesic"] = true,
-			["ritmoneury"] = true,
-			["adrenaline"] = true
+			bandage = true,
+			gauze = true,
+			gdtkit = true,
+			medkit = true,
+			sinkalmy = true,
+			analgesic = true,
+			ritmoneury = true,
+			adrenaline = true
+		}
+	},
+	["mechanicbag"] = {
+		Slots = 5,
+		Weight = 20,
+		Close = true,
+		Itens = {
+			advtoolbox = true,
+			toolbox = true,
+			WEAPON_WRENCH = true,
+			tyres = true
 		}
 	},
 	["treasurebox"] = {
@@ -307,7 +318,7 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
 	local OpenData = Passport and Open[Passport]
-	if not Passport or not OpenData or Inactived or ItemLocked(Item) then
+	if not Passport or not OpenData or Inactived then
 		TriggerClientEvent("inventory:Update",source)
 		return false
 	end
@@ -340,6 +351,11 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 		UpdateInventory()
 
 		return false
+	else
+		if ItemLocked(Item) then
+			UpdateInventory()
+			return false
+		end
 	end
 
 	if Item == "diagram" and OpenData.Chest and vRP.TakeItem(Passport,Item,Amount) then

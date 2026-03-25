@@ -667,6 +667,7 @@ Theme = {
 	mainText = "#ffffff",
 	currency = Currency,
 	items = ListItem,
+	vehicles = ListVehicles,
 	groups = Groups,
 	levels = Levels,
 	common = "#6fc66a",

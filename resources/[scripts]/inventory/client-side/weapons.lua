@@ -294,9 +294,12 @@ AddEventHandler("inventory:CreateWeapon",function(Name)
 		Wait(100)
 	end
 
-	SetEntityCollision(Objects[WeaponName],false,true)
+	SetEntityCollision(Objects[WeaponName],false,false)
 	SetEntityCompletelyDisableCollision(Objects[WeaponName],true,true)
 	SetEntityNoCollisionEntity(Objects[WeaponName],Ped,true)
+	SetEntityDynamic(Objects[WeaponName],false)
+	SetEntityHasGravity(Objects[WeaponName],false)
+	FreezeEntityPosition(Objects[WeaponName],true)
 
 	AttachEntityToEntity(Objects[WeaponName],Ped,Bone,Data.x,Data.y,Data.z,Data.RotX,Data.RotY,Data.RotZ,true,true,false,false,2,true)
 end)

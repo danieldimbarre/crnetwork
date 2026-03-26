@@ -521,17 +521,61 @@ end)
 ------------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("pointbattlepass",function(source,Message)
 	local Passport = vRP.Passport(source)
-	if Passport and vRP.HasPermission(Passport,"Admin",1) then
-		local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Quantidade")
-		if Keyboard then
-			local Amount = parseInt(Keyboard[2])
-			local OtherPassport = parseInt(Keyboard[1])
-			if vRP.Identity(OtherPassport) then
-				vRP.BattlepassPoints(OtherPassport,Amount)
-				TriggerClientEvent("Notify",source,"Sucesso","Pontos enviados.","verde",5000)
-			end
-		end
+	if not Passport or not vRP.HasPermission(Passport,"Admin",1) then
+		return false
 	end
+
+	local Keyboard = vKEYBOARD.Secondary(source,"Passaporte","Quantidade")
+	if not Keyboard then
+		return false
+	end
+
+	local Amount = parseInt(Keyboard[2])
+	local OtherPassport = parseInt(Keyboard[1])
+
+	if OtherPassport <= 0 or not vRP.Identity(OtherPassport) then
+		TriggerClientEvent("Notify",source,"Aviso","Passaporte inválido.","amarelo",5000)
+		return false
+	end
+
+	if Amount <= 0 then
+		TriggerClientEvent("Notify",source,"Aviso","Quantidade inválida.","amarelo",5000)
+		return false
+	end
+
+	vRP.BattlepassPoints(OtherPassport,Amount)
+	TriggerClientEvent("Notify",source,"Sucesso","Pontos enviados com sucesso.","verde",5000)
+end)
+------------------------------------------------------------------------------------------------------------------------------------------
+-- POINTEXPERIENCE
+------------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("pointexperience",function(source,Message)
+	local Passport = vRP.Passport(source)
+	if not Passport or not vRP.HasPermission(Passport,"Admin",1) then
+		return false
+	end
+
+	local Keyboard = vKEYBOARD.Tertiary(source,"Passaporte","Trabalho","Quantidade")
+	if not Keyboard then
+		return false
+	end
+
+	local Work = Keyboard[2]
+	local Amount = parseInt(Keyboard[3])
+	local OtherPassport = parseInt(Keyboard[1])
+
+	if OtherPassport <= 0 or not vRP.Identity(OtherPassport) then
+		TriggerClientEvent("Notify",source,"Aviso","Passaporte inválido.","amarelo",5000)
+		return false
+	end
+
+	if Amount <= 0 then
+		TriggerClientEvent("Notify",source,"Aviso","Quantidade inválida.","amarelo",5000)
+		return false
+	end
+
+	vRP.PutExperience(OtherPassport,Work,Amount)
+	TriggerClientEvent("Notify",source,"Sucesso","Pontos enviados com sucesso.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CODES
@@ -1088,7 +1132,7 @@ RegisterCommand("ban",function(source,Message)
 		return false
 	end
 
-	vRP.SetBanned(OtherPassport,Duration,Reason)
+	vRP.SetBanned(OtherPassport,Duration,Reason,Passport)
 	TriggerClientEvent("Notify",source,"Sucesso","Banimento aplicado ao passaporte <b>"..OtherPassport.."</b>.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

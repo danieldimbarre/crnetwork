@@ -2236,19 +2236,17 @@ Use = {
 			return false
 		end
 
+		if vCLIENT.CheckInterior(source) then
+			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+			return false
+		end
+
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
 
 		local Hash = "gr_prop_gr_bench_02a"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
-
-				return false
-			end
-
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				repeat
 					Selected = GenerateString("DDLLDDLL")
@@ -2269,19 +2267,17 @@ Use = {
 			return false
 		end
 
+		if vCLIENT.CheckInterior(source) then
+			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+			return false
+		end
+
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
 
 		local Hash = "gr_prop_gr_bench_02b"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
-
-				return false
-			end
-
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				repeat
 					Selected = GenerateString("DDLLDDLL")
@@ -2302,19 +2298,17 @@ Use = {
 			return false
 		end
 
+		if vCLIENT.CheckInterior(source) then
+			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+			return false
+		end
+
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
 
 		local Hash = "xm3_prop_xm3_bench_04b"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
-
-				return false
-			end
-
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				repeat
 					Selected = GenerateString("DDLLDDLL")
@@ -2335,19 +2329,17 @@ Use = {
 			return false
 		end
 
+		if vCLIENT.CheckInterior(source) then
+			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+			return false
+		end
+
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
 
 		local Hash = "bkr_prop_weed_table_01b"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
-
-				return false
-			end
-
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				repeat
 					Selected = GenerateString("DDLLDDLL")
@@ -2368,19 +2360,17 @@ Use = {
 			return false
 		end
 
+		if vCLIENT.CheckInterior(source) then
+			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+			return false
+		end
+
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
 
 		local Hash = "prop_tool_bench02"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash,90.0)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
-
-				return false
-			end
-
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				repeat
 					Selected = GenerateString("DDLLDDLL")
@@ -2401,19 +2391,17 @@ Use = {
 			return false
 		end
 
+		if vCLIENT.CheckInterior(source) then
+			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
+			return false
+		end
+
 		Player(source).state.Buttons = true
 		TriggerClientEvent("inventory:Close",source)
 
 		local Hash = "p_ld_stinger_s"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash,0.0,2.5)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
-
-				return false
-			end
-
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				repeat
 					Selected = GenerateString("DDLLDDLL")
@@ -2550,8 +2538,39 @@ Use = {
 		Player(source).state.Buttons = false
 	end,
 
+	["watercooler"] = function(source,Passport,Amount,Slot,Full,Item,Split)
+		if exports.propertys:Inside(Passport) then
+			return false
+		end
+
+		Player(source).state.Buttons = true
+		TriggerClientEvent("inventory:Close",source)
+
+		local Hash = "prop_watercooler_dark"
+		local Application,Coords = vRPC.ObjectControlling(source,Hash)
+		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
+			if vRP.TakeItem(Passport,Full,1,true,Slot) then
+				repeat
+					Selected = GenerateString("DDLLDDLL")
+				until Selected and not Objects[Selected]
+
+				Objects[Selected] = { Coords = Coords, Passport = Passport, Object = Hash, Item = Full, Mode = "Water", Weight = 0.75, Bucket = GetPlayerRoutingBucket(source) }
+				SaveObjects[Selected] = Objects[Selected]
+
+				TriggerClientEvent("objects:Adicionar",-1,Selected,Objects[Selected])
+			end
+		end
+
+		Player(source).state.Buttons = false
+	end,
+
 	["barrier"] = function(source,Passport,Amount,Slot,Full,Item,Split)
 		if exports.propertys:Inside(Passport) then
+			return false
+		end
+
+		if vCLIENT.CheckInterior(source) then
+			TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
 			return false
 		end
 
@@ -2561,13 +2580,6 @@ Use = {
 		local Hash = "prop_mp_barrier_02b"
 		local Application,Coords = vRPC.ObjectControlling(source,Hash)
 		if Application and Coords and not vCLIENT.ObjectExists(source,Coords,Hash) then
-			if vCLIENT.CheckInterior(source) then
-				TriggerClientEvent("Notify",source,"Atenção","Só pode ser posicionado fora de interiores.","amarelo",5000)
-				Player(source).state.Buttons = false
-
-				return false
-			end
-
 			if vRP.TakeItem(Passport,Full,1,true,Slot) then
 				repeat
 					Selected = GenerateString("DDLLDDLL")

@@ -6,6 +6,8 @@ Config = {
 	BankTaxTransfer = 1.0,
 	MedicPlanDuration = 604800,
 
+	GoalsItems = { "water","sandwich","applejuice" },
+
 	Paramedics = { -- Caso tenha outras permissões, adicione abaixo.
 		Paramedico = true
 	},

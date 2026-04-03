@@ -142,7 +142,23 @@ function Creative.Permissions(Name,Mode,Item)
 		return false
 	end
 
-	if Mode == "Personal" then
+	if Mode == "Goals" then
+		local SplitName = splitString(Name,":")
+		if SplitName[1] and SplitName[2] and SplitName[3] and SplitName[1] == "Painel" and SplitName[2] == "Goals" then
+			if vRP.HasService(Passport,SplitName[3]) then
+				Open[Passport] = {
+					Name = "Goals:"..SplitName[3],
+					Permission = SplitName[3],
+					Weight = 1000,
+					Save = true,
+					Slots = 500,
+					Goals = true
+				}
+
+				return true
+			end
+		end
+	elseif Mode == "Personal" then
 		local ServiceName = SplitOne(Name)
 		if vRP.HasService(Passport,ServiceName) then
 			Open[Passport] = {
@@ -204,14 +220,13 @@ function Creative.Permissions(Name,Mode,Item)
 		end
 
 		if Consult and vRP.HasService(Passport,Consult.Permission) then
-			local IsPremium = vRP.Permissions(Consult.Permission, "Premium") > os.time()
+			local IsPremium = vRP.Permissions(Consult.Permission,"Premium") > os.time()
 
 			Open[Passport] = {
 				Weight = IsPremium and Consult.Weight * 2 or Consult.Weight,
 				Chest = Name,
 				Slots = Consult.Slots,
 				Name = "Chest:"..Name,
-				Permission = Consult.Permission,
 				Save = true
 			}
 
@@ -384,9 +399,63 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 		return false
 	end
 
-	if vRP.StoreChest(Passport,OpenData.Name,Amount,OpenData.Weight,Slot,Target,OpenData.Save,ChestConfig) then
-		UpdateInventory()
-		return false
+	if OpenData.Goals and OpenData.Permission then
+		if ItemDurability(Item) and vRP.CheckDamaged(Item) then
+			UpdateInventory()
+			return false
+		end
+
+		local Weekday = os.date("*t")
+		local Goals = vRP.GetSrvData("Painel:Goals:"..OpenData.Permission,true) or {}
+		local MyGoals = vRP.GetSrvData("Goals:"..OpenData.Permission..":"..Passport,true) or {}
+
+		MyGoals.Items = MyGoals.Items or {}
+		MyGoals.Week = MyGoals.Week or { false,false,false,false,false,false,false }
+		MyGoals.Rescued = MyGoals.Rescued or false
+
+		if not Goals.Items then
+			UpdateInventory()
+			return false
+		end
+
+		local Limit = Goals.Items[Cleaned]
+		if not Limit then
+			UpdateInventory()
+			return false
+		end
+
+		MyGoals.Items[Cleaned] = MyGoals.Items[Cleaned] or 0
+
+		if (MyGoals.Items[Cleaned] + Amount) > Limit then
+			UpdateInventory()
+			return false
+		end
+
+		if vRP.StoreChest(Passport,OpenData.Name,Amount,OpenData.Weight,Slot,Target,OpenData.Save,ChestConfig) then
+			UpdateInventory()
+			return false
+		end
+
+		MyGoals.Items[Cleaned] = MyGoals.Items[Cleaned] + Amount
+
+		local Completed = true
+		for Item,Needed in pairs(Goals.Items) do
+			if (MyGoals.Items[Item] or 0) < Needed then
+				Completed = false
+				break
+			end
+		end
+
+		if Completed then
+			MyGoals.Week[Weekday.wday] = true
+		end
+
+		vRP.SetSrvData("Goals:"..OpenData.Permission..":"..Passport,MyGoals,true)
+	else
+		if vRP.StoreChest(Passport,OpenData.Name,Amount,OpenData.Weight,Slot,Target,OpenData.Save,ChestConfig) then
+			UpdateInventory()
+			return false
+		end
 	end
 
 	return true
@@ -394,15 +463,23 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function Creative.Take(Item,Slot,Amount,Target)
+function Creative.Take(Item,Slot,Amount,Target,Inactived)
 	local source = source
 	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-
 	if not Passport or not Open[Passport] then
 		TriggerClientEvent("inventory:Update",source)
 
 		return false
+	end
+
+	if Inactived then
+		local Permission = Open[Passport].Permission
+		if not Permission or not vRP.HasService(Passport,Permission,2) then
+			TriggerClientEvent("inventory:Update",source)
+
+			return false
+		end
 	end
 
 	local Name = Open[Passport].Name

@@ -1653,7 +1653,7 @@ local List = {
 		Market = true,
 		LostWater = true
 	},
-	Water = {
+	["water"] = {
 		AdminLevel = 1,
 		Index = "water",
 		Name = "Garrafa de Água",
@@ -1984,6 +1984,15 @@ local List = {
 		Locked = true
 	},
 	-- OBJECTS
+	["watercooler"] = {
+		AdminLevel = 1,
+		Index = "watercooler",
+		Name = "Bebedouro",
+		Type = "Consumível",
+		Durability = 720,
+		Weight = 2.25,
+		Market = true
+	},
 	["pistol_bench"] = {
 		AdminLevel = 1,
 		Index = "pistol_bench",

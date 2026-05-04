@@ -136,13 +136,13 @@ AddEventHandler("spawn:Finish",function(Coords,Created)
 			SetTimeout(5000,function()
 				SetEntityVisible(Ped,true)
 				SetEntityInvincible(Ped,false)
-				TriggerEvent("hud:Active",true)
 				FreezeEntityPosition(Ped,false)
-				TriggerServerEvent("vRP:WaitCharacters")
 
 				Wait(1000)
 
 				LocalPlayer.state:set("Active",true,true)
+				TriggerServerEvent("vRP:WaitCharacters")
+				TriggerEvent("hud:Active",true)
 			end)
 		end
 	end
@@ -158,8 +158,6 @@ RegisterNUICallback("Spawn",function(Data,Callback)
 	end
 
 	SendNUIMessage({ Action = "Close" })
-	TriggerEvent("hud:Active",true)
-	TriggerEvent("referrals:Open")
 	SetNuiFocus(false,false)
 
 	if not Creation then
@@ -169,12 +167,17 @@ RegisterNUICallback("Spawn",function(Data,Callback)
 			SetEntityVisible(Ped,true)
 			SetEntityInvincible(Ped,false)
 			FreezeEntityPosition(Ped,false)
-			TriggerServerEvent("vRP:WaitCharacters")
 
 			Wait(1000)
 
 			LocalPlayer.state:set("Active",true,true)
+			TriggerServerEvent("vRP:WaitCharacters")
+			TriggerEvent("hud:Active",true)
+			TriggerEvent("referrals:Open")
 		end)
+	else
+		TriggerEvent("referrals:Open")
+		TriggerEvent("hud:Active",true)
 	end
 
 	Callback("Ok")

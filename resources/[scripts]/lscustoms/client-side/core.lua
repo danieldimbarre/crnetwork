@@ -75,7 +75,7 @@ function Open(Vehicle,Logo)
 					else
 						if Mod:match("Upgrade") then
 							local Model = vRP.VehicleName()
-							local VehiclePrice = VehiclePrice(Model)
+							local VehiclePrice = exports.vrp:VehiclePrice(Model)
 
 							Values[Mod] = {
 								parseInt(VehiclePrice * 0.01),

@@ -933,46 +933,60 @@ Use = {
 		end
 	end,
 
-	["circuit"] = function(source,Passport,Amount,Slot,Full,Item,Split)
-		if not Player(source).state.Handcuff then
-			local Vehicle,Network,Plate = vRPC.VehicleList(source)
-			if Vehicle and Plate and (Boosting[Plate] and vRP.InsideVehicle(source) and Boosting[Plate].Amount < 10) then
-				if (not Travel[Passport] or #(vRP.GetEntityCoords(source) - Travel[Passport]) >= 100) then
-					TriggerClientEvent("inventory:Close",source)
+	circuit = function(source,Passport)
+		if Player(source).state.Handcuff then
+			return false
+		end
 
-					if vDEVICE.Device(source,30) then
-						if Boosting[Plate].Class >= 4 then
-							exports.markers:Enter(source,"Boosting")
+		local Vehicle,Network,Plate = vRPC.VehicleList(source)
+		if not Vehicle or not Plate then
+			TriggerClientEvent("inventory:Close",source)
+			TriggerClientEvent("boosting:Open",source)
 
-							SetTimeout(60000,function()
-								exports.markers:Exit(source)
-							end)
-						end
+			return false
+		end
 
-						vRP.UpgradeStress(Passport,3)
-						Travel[Passport] = vRP.GetEntityCoords(source)
-						Boosting[Plate].Amount = Boosting[Plate].Amount + 1
+		local Boost = Boosting[Plate]
+		if not Boost or not vRP.InsideVehicle(source) or Boost.Amount >= 10 then
+			TriggerClientEvent("inventory:Close",source)
+			TriggerClientEvent("boosting:Open",source)
 
-						if Boosting[Plate].Amount >= 10 then
-							exports.boosting:Payment(source,Boosting[Plate].Passport)
-							exports.boosting:Remove(Boosting[Plate].Passport,Plate)
-						else
-							TriggerClientEvent("Notify",source,"Boosting [ "..Boosting[Plate].Amount.." / 10 ]","Progresso atualizado com sucesso.","verde",5000)
-						end
-					else
-						Boosting[Plate].Amount = Boosting[Plate].Amount - 3
+			return false
+		end
 
-						if Boosting[Plate].Amount < 0 then
-							Boosting[Plate].Amount = 0
-						end
+		local Coords = vRP.GetEntityCoords(source)
+		if Travel[Passport] and #(Coords - Travel[Passport]) < 100 then
+			return false
+		end
 
-						TriggerClientEvent("Notify",source,"Boosting [ "..Boosting[Plate].Amount.." / 10 ]","Progresso atualizado com sucesso.","amarelo",5000)
-					end
-				end
-			else
-				TriggerClientEvent("inventory:Close",source)
-				TriggerClientEvent("boosting:Open",source)
+		TriggerClientEvent("inventory:Close",source)
+
+		if vDEVICE.Device(source,30) then
+			if Boost.Class >= 4 then
+				exports.markers:Enter(source,"Boosting")
+
+				SetTimeout(60000,function()
+					exports.markers:Exit(source)
+				end)
 			end
+
+			Travel[Passport] = Coords
+			Boost.Amount = Boost.Amount + 1
+
+			if Boost.Amount >= 10 then
+				exports.boosting:Payment(source,Boost.Passport)
+				exports.boosting:Remove(Boost.Passport,Plate)
+			else
+				TriggerClientEvent("Notify",source,"Boosting [ "..Boost.Amount.." / 10 ]","Progresso atualizado com sucesso.","verde",5000)
+			end
+
+		else
+			Boost.Amount = Boost.Amount - 3
+			if Boost.Amount < 0 then
+				Boost.Amount = 0
+			end
+
+			TriggerClientEvent("Notify",source,"Boosting [ "..Boost.Amount.." / 10 ]","Progresso atualizado com sucesso.","amarelo",5000)
 		end
 	end,
 
@@ -1003,7 +1017,7 @@ Use = {
 					Name = NotifyTitle,
 					Passport = Passport,
 					Permission = "Policia",
-					Vehicle = VehicleName(Model).." - "..Plate
+					Vehicle = exports.vrp:VehicleName(Model).." - "..Plate
 				})
 			end
 
@@ -1118,7 +1132,7 @@ Use = {
 					Name = NotifyTitle,
 					Passport = Passport,
 					Permission = "Policia",
-					Vehicle = VehicleName(Model).." - "..Plate
+					Vehicle = exports.vrp:VehicleName(Model).." - "..Plate
 				})
 			end
 
@@ -3149,10 +3163,6 @@ Use = {
 							Player(source).state.Buttons = false
 
 							if vRP.TakeItem(Passport,Full,1,true,Slot) then
-								if Model and VehicleMode(Model) == "Work" then
-									Tyre = "All"
-								end
-
 								local Players = vRPC.Players(source)
 								for _,v in pairs(Players) do
 									async(function()
@@ -3434,7 +3444,7 @@ CreateThread(function()
 		end
 	end
 
-	for Item,v in pairs(ItemList()) do
+	for Item,v in pairs(exports.vrp:ItemList()) do
 		if v.Blueprint then
 			Use["blueprint_"..Item] = function(source,Passport,Amount,Slot,Full)
 				Users.Blueprints[Passport] = Users.Blueprints[Passport] or {}
@@ -3453,15 +3463,15 @@ CreateThread(function()
 		end
 	end
 
-	for Model,v in pairs(VehicleList()) do
+	for Model,v in pairs(exports.vrp:VehicleList()) do
 		if v.Item then
 			Use["vehicle_"..Model] = function(source,Passport,Amount,Slot,Full)
 				if vRP.SelectVehicle(Passport,Model) then
-					TriggerClientEvent("inventory:Notify",source,"Aviso","Já possui um <b>"..VehicleName(Model).."</b>.","amarelo")
+					TriggerClientEvent("inventory:Notify",source,"Aviso","Já possui um <b>"..exports.vrp:VehicleName(Model).."</b>.","amarelo")
 					return false
 				end
 
-				local StockLimit = VehicleStock(Model)
+				local StockLimit = exports.vrp:VehicleStock(Model)
 				if StockLimit and vRP.Scalar("vehicles/Count",{ Vehicle = Model }) >= StockLimit then
 					TriggerClientEvent("inventory:Notify",source,"Aviso","Estoque insuficiente.","amarelo")
 					return false
@@ -3469,7 +3479,7 @@ CreateThread(function()
 
 				if vRP.TakeItem(Passport,Full,1,false,Slot) then
 					local Plate = vRP.GeneratePlate()
-					local Weight = VehicleWeight(Model)
+					local Weight = exports.vrp:VehicleWeight(Model)
 
 					if type(v.Item) == "number" then
 						vRP.Query("vehicles/rentalVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Days = v.Item, Weight = Weight, Work = 0 })
@@ -3477,15 +3487,15 @@ CreateThread(function()
 						vRP.Query("vehicles/addVehicles",{ Passport = Passport, Vehicle = Model, Plate = Plate, Weight = Weight, Work = 0 })
 					end
 
-					TriggerClientEvent("inventory:Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> adicionado.","verde")
+					TriggerClientEvent("inventory:Notify",source,"Sucesso","Veículo <b>"..exports.vrp:VehicleName(Model).."</b> adicionado.","verde")
 					TriggerClientEvent("inventory:Update",source)
 				end
 			end
 		end
 	end
 
-	for _,v in ipairs(ItemClones()) do
-		for _,w in ipairs(ItemPuritys()) do
+	for _,v in ipairs(exports.vrp:ItemClones()) do
+		for _,w in ipairs(exports.vrp:ItemPuritys()) do
 			Use[v.Clone.."clone_"..w.Percent] = function(source,Passport,Amount,Slot,Full,Item,Split)
 				Player(source).state.Buttons = true
 				TriggerClientEvent("inventory:Close",source)
@@ -3501,7 +3511,7 @@ CreateThread(function()
 		end
 	end
 
-	for _,v in ipairs(ItemFurniture()) do
+	for _,v in ipairs(exports.vrp:ItemFurniture()) do
 		Use["furniture_"..v.Item] = function(source,Passport,Amount,Slot,Full,Item,Split)
 			local Property = exports.propertys:Inside(Passport)
 			if not Property or Property == "Hotel" then

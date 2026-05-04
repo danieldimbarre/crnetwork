@@ -4,7 +4,6 @@
 vRP.Prepare("characters/Person","SELECT * FROM characters WHERE id = @Passport")
 vRP.Prepare("characters/Delete","UPDATE characters SET Deleted = 1 WHERE id = @Passport")
 vRP.Prepare("characters/SetSkin","UPDATE characters SET Skin = @Skin WHERE id = @Passport")
-vRP.Prepare("characters/UpdatePhone","UPDATE characters SET Phone = @Phone WHERE id = @Passport")
 vRP.Prepare("characters/UpdateDaily","UPDATE characters SET Daily = @Daily WHERE id = @Passport")
 vRP.Prepare("characters/AddBank","UPDATE characters SET Bank = Bank + @Bank WHERE id = @Passport")
 vRP.Prepare("characters/RemBank","UPDATE characters SET Bank = Bank - @Bank WHERE id = @Passport")
@@ -64,7 +63,6 @@ vRP.Prepare("vehicles/PlateUsers","SELECT * FROM vehicles WHERE Plate = @Plate A
 vRP.Prepare("vehicles/removeVehicles","DELETE FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/selectVehicles","SELECT * FROM vehicles WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/CoiloverVehicles","UPDATE vehicles SET Drift = 1 WHERE Vehicle = @Vehicle AND Plate = @Plate")
-vRP.Prepare("vehicles/UpdateSave","UPDATE vehicles SET Save = @Save WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/SeatbeltVehicles","UPDATE vehicles SET Seatbelt = 1 WHERE Plate = @Plate AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/PaymentArrest","UPDATE vehicles SET Arrest = 0 WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/plateVehiclesUpdate","UPDATE vehicles SET Plate = @NewPlate WHERE Plate = @Plate AND Vehicle = @Vehicle")
@@ -77,7 +75,6 @@ vRP.Prepare("vehicles/addVehicles","INSERT IGNORE INTO vehicles (Passport,Vehicl
 vRP.Prepare("vehicles/updateVehiclesRespawns","UPDATE vehicles SET Engine = @Engine, Body = @Body, Health = @Health, Fuel = @Fuel, Windows = @Windows, Nitro = @Nitro WHERE Passport = @Passport AND Vehicle = @Vehicle")
 vRP.Prepare("vehicles/rentalVehicles","INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,UNIX_TIMESTAMP() + (86400 * @Days),UNIX_TIMESTAMP() + (86400 * @Days))")
 vRP.Prepare("vehicles/updateVehicles","UPDATE vehicles SET Engine = @Engine, Body = @Body, Health = @Health, Fuel = @Fuel, Doors = @Doors, Windows = @Windows, Tyres = @Tyres, Nitro = @Nitro WHERE Passport = @Passport AND Vehicle = @Vehicle")
-vRP.Prepare("vehicles/updateVehiclesSave","UPDATE vehicles SET Engine = @Engine, Body = @Body, Health = @Health, Fuel = @Fuel, Doors = @Doors, Windows = @Windows, Tyres = @Tyres, Nitro = @Nitro, Save = @Save WHERE Passport = @Passport AND Vehicle = @Vehicle")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHESTS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -127,4 +124,12 @@ vRP.Prepare("summerz/PhoneInstagram","DELETE FROM phone_instagram_notifications 
 CreateThread(function()
 	vRP.Query("summerz/Playerdata")
 	vRP.Query("summerz/Entitydata")
+
+	-- LB-PHONE
+	vRP.Query("summerz/PhoneCalls")
+	vRP.Query("summerz/PhoneStorys")
+	vRP.Query("summerz/PhoneMessages")
+	vRP.Query("summerz/PhoneServices")
+	vRP.Query("summerz/PhoneInstagram")
+	vRP.Query("summerz/PhoneNotifications")
 end)

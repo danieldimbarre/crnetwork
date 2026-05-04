@@ -47,7 +47,7 @@ AddEventHandler("farmer:Minerman",function(Number)
 	local PickaxePlus = vRP.ConsultItem(Passport,Item.."plus")
 
 	if not Pickaxe and not PickaxePlus then
-		TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName(Item).."</b>.","amarelo",5000)
+		TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..exports.vrp:ItemName(Item).."</b>.","amarelo",5000)
 	else
 		Active[Passport] = true
 		Player(source).state.Cancel = true
@@ -146,7 +146,7 @@ AddEventHandler("farmer:Lumberman",function(Number)
 	local AxePlus = vRP.ConsultItem(Passport,Item.."plus")
 
 	if not Axe and not AxePlus then
-		TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName(Item).."</b>.","amarelo",5000)
+		TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..exports.vrp:ItemName(Item).."</b>.","amarelo",5000)
 	else
 		Active[Passport] = true
 		Player(source).state.Cancel = true

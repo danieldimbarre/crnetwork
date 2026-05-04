@@ -109,18 +109,18 @@ AddEventHandler("vRP:Active",function(Passport,Name,Inventory)
 
 		if Inventory then
 			for Slot,v in pairs(Inventory) do
-				local Animation = ItemAnim(v.item)
+				local Animation = exports.vrp:ItemAnim(v.item)
 				if Animation then
 					tvRP.PersistentBlock(v.item,Animation)
 				end
 
-				local Markers = ItemMarkers(v.item)
+				local Markers = exports.vrp:ItemMarkers(v.item)
 				if Markers then
 					TriggerServerEvent("markers:Enter",Markers)
 				end
 
 				if Slot == "104" then
-					local Skinshop = ItemSkinshop(v.item)
+					local Skinshop = exports.vrp:ItemSkinshop(v.item)
 					if Skinshop then
 						TriggerEvent("skinshop:Backpack",Skinshop)
 					end

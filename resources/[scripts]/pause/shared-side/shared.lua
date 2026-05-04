@@ -474,7 +474,6 @@ Works = {
 	Traffic = "Traficante",
 	Hunting = "Caçador",
 	Garbageman = "Lixeiro",
-	Race = "Corredor",
 	Throwing = "Entregador de Jornal"
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

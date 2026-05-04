@@ -29,7 +29,7 @@ AddEventHandler("luckywheel:Target",function()
 	end
 
 	if not vRP.TakeItem(Passport,ItemNecessary,AmountNecessary) then
-		TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>"..Dotted(AmountNecessary).."x "..ItemName(ItemNecessary).."</b>.","amarelo",5000)
+		TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>"..Dotted(AmountNecessary).."x "..exports.vrp:ItemName(ItemNecessary).."</b>.","amarelo",5000)
 		return false
 	end
 
@@ -37,7 +37,7 @@ AddEventHandler("luckywheel:Target",function()
 	Progress = CurrentTimer + 15
 	local Result = GetWheelRandom(Rewards)
 
-	exports.discord:Embed("Luckywheel","**[PASSAPORTE]:** "..Passport.."\n**[RESULTADO]:** "..Result.."\n**[ITEM]:** "..Dotted(Rewards[Result].Amount).."x "..ItemName(Rewards[Result].Item))
+	exports.discord:Embed("Luckywheel","**[PASSAPORTE]:** "..Passport.."\n**[RESULTADO]:** "..Result.."\n**[ITEM]:** "..Dotted(Rewards[Result].Amount).."x "..exports.vrp:ItemName(Rewards[Result].Item))
 
 	for _,OtherSource in pairs(vRPC.Players(source)) do
 		async(function()

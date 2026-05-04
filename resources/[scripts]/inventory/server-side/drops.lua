@@ -24,7 +24,7 @@ end
 -- HANDLEDROPREMOVAL
 -----------------------------------------------------------------------------------------------------------------------------------------
 local function HandleDropRemoval(Route,Number,v)
-	if RemoveDrop(Route,Number) and v.key and ItemUnique(v.key) then
+	if RemoveDrop(Route,Number) and v.key and exports.vrp:ItemUnique(v.key) then
 		local Unique = SplitUnique(v.key)
 		if Unique then
 			vRP.RemSrvData(Unique)
@@ -72,7 +72,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 	Amount = parseInt(Amount,true)
-	if Amount < 1 or not ItemExist(Item) or DropLock then
+	if Amount < 1 or not exports.vrp:ItemExist(Item) or DropLock then
 		return false
 	end
 
@@ -107,20 +107,20 @@ exports("Drops",function(Passport,source,Item,Amount,Force,Coords)
 	if Split[1] == "vehiclekey" and Split[3] then
 		CreateThread(function()
 			local Consult = exports.oxmysql:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
-			if Consult and VehicleExist(Consult.Vehicle) then
-				Provisory.desc = ("Proprietário: <common>%s</common><br>Modelo: <common>%s</common><br>Placa: <common>%s</common>"):format(vRP.FullName(Consult.Passport),VehicleName(Consult.Vehicle),Split[3])
+			if Consult and exports.vrp:VehicleExist(Consult.Vehicle) then
+				Provisory.desc = ("Proprietário: <common>%s</common><br>Modelo: <common>%s</common><br>Placa: <common>%s</common>"):format(vRP.FullName(Consult.Passport),exports.vrp:VehicleName(Consult.Vehicle),Split[3])
 			end
 		end)
 	end
 
 	local Value = parseInt(Split[2],true)
 	if Value > 0 then
-		local Loaded = ItemLoads(Provisory.key)
+		local Loaded = exports.vrp:ItemLoads(Provisory.key)
 		if Loaded then
 			Provisory.charges = parseInt(Value * (100 / Loaded))
 		end
 
-		local Durability = ItemDurability(Provisory.key)
+		local Durability = exports.vrp:ItemDurability(Provisory.key)
 		if Durability then
 			Provisory.durability = math.max(0,os.time() - Value)
 			Provisory.days = Durability
@@ -141,7 +141,7 @@ function Creative.Drops(Item,Slot,Amount)
 	local source = source
 	Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if not Passport or Amount < 1 or not ItemExist(Item) or ItemLocked(Item) then
+	if not Passport or Amount < 1 or not exports.vrp:ItemExist(Item) or exports.vrp:ItemLocked(Item) then
 		return false
 	end
 
@@ -170,14 +170,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Pickup(Number,Route,Target,Amount)
 	local source = source
-	Target = tonumber(Target)
-	Amount = parseInt(Amount,true)
+	local Amount = parseInt(Amount,true)
 	local Passport = vRP.Passport(source)
-	if not Passport or Amount < 1 or not Target then
-		return false
-	end
-
-	if Active[Passport] then
+	if not Passport or Amount < 1 or not Target or Active[Passport] then
 		return false
 	end
 

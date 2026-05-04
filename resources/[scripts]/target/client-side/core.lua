@@ -61,7 +61,15 @@ local Tyres = {
 	{ Bone = "wheel_lf", Index = 0 },
 	{ Bone = "wheel_rf", Index = 1 },
 	{ Bone = "wheel_lm", Index = 2 },
+	{ Bone = "wheel_lm1", Index = 2 },
+	{ Bone = "wheel_lm2", Index = 2 },
+	{ Bone = "wheel_lm3", Index = 2 },
+	{ Bone = "wheel_lm4", Index = 2 },
 	{ Bone = "wheel_rm", Index = 3 },
+	{ Bone = "wheel_rm1", Index = 3 },
+	{ Bone = "wheel_rm2", Index = 3 },
+	{ Bone = "wheel_rm3", Index = 3 },
+	{ Bone = "wheel_rm4", Index = 3 },
 	{ Bone = "wheel_lr", Index = 4 },
 	{ Bone = "wheel_rr", Index = 5 }
 }
@@ -599,7 +607,7 @@ function TargetEnable()
 								end
 
 								if not IsPedArmed(Ped,7) and GetVehicleDoorLockStatus(Entitys) <= 1 then
-									if VehicleWeight(Selected[2]) > 0 then
+									if exports.vrp:VehicleWeight(Selected[2]) > 0 then
 										table.insert(Menu,{ event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" })
 									end
 

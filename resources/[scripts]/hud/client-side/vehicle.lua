@@ -16,7 +16,7 @@ local ActualVehicle = nil
 -----------------------------------------------------------------------------------------------------------------------------------------
 local NitroFuel = 0
 local NitroActive = false
-local NitroButton = GetGameTimer()
+local NitroButton = GetNetworkTime()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEATBELT
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -27,12 +27,20 @@ local SeatbeltVelocity = vec3(0,0,0)
 -- TYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Tyres = {
-	{ ["Bone"] = "wheel_lf", ["Index"] = 0 },
-	{ ["Bone"] = "wheel_rf", ["Index"] = 1 },
-	{ ["Bone"] = "wheel_lm", ["Index"] = 2 },
-	{ ["Bone"] = "wheel_rm", ["Index"] = 3 },
-	{ ["Bone"] = "wheel_lr", ["Index"] = 4 },
-	{ ["Bone"] = "wheel_rr", ["Index"] = 5 }
+	{ Bone = "wheel_lf", Index = 0 },
+	{ Bone = "wheel_rf", Index = 1 },
+	{ Bone = "wheel_lm", Index = 2 },
+	{ Bone = "wheel_lm1", Index = 2 },
+	{ Bone = "wheel_lm2", Index = 2 },
+	{ Bone = "wheel_lm3", Index = 2 },
+	{ Bone = "wheel_lm4", Index = 2 },
+	{ Bone = "wheel_rm", Index = 3 },
+	{ Bone = "wheel_rm1", Index = 3 },
+	{ Bone = "wheel_rm2", Index = 3 },
+	{ Bone = "wheel_rm3", Index = 3 },
+	{ Bone = "wheel_rm4", Index = 3 },
+	{ Bone = "wheel_lr", Index = 4 },
+	{ Bone = "wheel_rr", Index = 5 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- THREADSYSTEM
@@ -243,7 +251,7 @@ end
 -- NITROENABLE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function NitroEnable()
-	if GetGameTimer() < NitroButton or IsPauseMenuActive() then
+	if GetNetworkTime() < NitroButton or IsPauseMenuActive() then
 		return false
 	end
 
@@ -257,7 +265,7 @@ function NitroEnable()
 		return false
 	end
 
-	NitroButton = GetGameTimer() + 1000
+	NitroButton = GetNetworkTime() + 1000
 
 	local VehicleState = Entity(Vehicle).state
 	NitroFuel = VehicleState.Nitro or 0

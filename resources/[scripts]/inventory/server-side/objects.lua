@@ -201,7 +201,7 @@ CreateThread(function()
 	SaveObjects = Consult and json.decode(Consult.Information) or {}
 
 	for Index,v in pairs(SaveObjects) do
-		if v.Item and ItemDurability(v.Item) and vRP.CheckDamaged(v.Item) then
+		if v.Item and exports.vrp:ItemDurability(v.Item) and vRP.CheckDamaged(v.Item) then
 			SaveObjects[Index] = nil
 		else
 			Objects[Index] = v

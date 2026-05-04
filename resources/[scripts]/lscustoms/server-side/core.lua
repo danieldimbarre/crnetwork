@@ -44,11 +44,7 @@ function Creative.Save(Model,Plate,Initial)
 	end
 
 	local Price = Calculate(Initial,Model)
-	if not Price or Price <= 0 then
-		return false
-	end
-
-	if not vRP.PaymentFull(Passport,Price,true) then
+	if Price > 0 and not vRP.PaymentFull(Passport,Price,true) then
 		return false
 	end
 

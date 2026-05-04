@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 Config = {
 	Group = "Policia",
+	Groups = { "LSPD","BCSO","SAPR" },
 
 	MaxFine = 100000,
 	MaxReductionFine = 100,
@@ -12,6 +13,8 @@ Config = {
 
 	BankTaxWithdraw = 1.0,
 	BankTaxTransfer = 1.0,
+
+	MaxParticipantsOperation = 10,
 
 	OperationsLocations = {
 		{

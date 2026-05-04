@@ -93,21 +93,13 @@ AddEventHandler("inventory:RepairTyres",function(Vehicle,Tyres,Plate)
 	if NetworkDoesNetworkIdExist(Vehicle) then
 		local Vehicle = NetToEnt(Vehicle)
 		if DoesEntityExist(Vehicle) and GetVehicleNumberPlateText(Vehicle) == Plate then
-			if Tyres == "All" then
-				for i = 0,10 do
-					if GetTyreHealth(Vehicle,i) ~= 1000.0 then
-						SetVehicleTyreFixed(Vehicle,i)
-					end
+			for i = 0,10 do
+				if GetTyreHealth(Vehicle,i) ~= 1000.0 then
+					SetVehicleTyreBurst(Vehicle,i,true,1000.0)
 				end
-			else
-				for i = 0,10 do
-					if GetTyreHealth(Vehicle,i) ~= 1000.0 then
-						SetVehicleTyreBurst(Vehicle,i,true,1000.0)
-					end
-				end
-
-				SetVehicleTyreFixed(Vehicle,Tyres)
 			end
+
+			SetVehicleTyreFixed(Vehicle,Tyres)
 		end
 	end
 end)
@@ -169,12 +161,20 @@ end)
 -- TYRELIST
 -----------------------------------------------------------------------------------------------------------------------------------------
 local TyreList = {
-	["wheel_lf"] = 0,
-	["wheel_rf"] = 1,
-	["wheel_lm"] = 2,
-	["wheel_rm"] = 3,
-	["wheel_lr"] = 4,
-	["wheel_rr"] = 5
+	{ Bone = "wheel_lf", Index = 0 },
+	{ Bone = "wheel_rf", Index = 1 },
+	{ Bone = "wheel_lm", Index = 2 },
+	{ Bone = "wheel_lm1", Index = 2 },
+	{ Bone = "wheel_lm2", Index = 2 },
+	{ Bone = "wheel_lm3", Index = 2 },
+	{ Bone = "wheel_lm4", Index = 2 },
+	{ Bone = "wheel_rm", Index = 3 },
+	{ Bone = "wheel_rm1", Index = 3 },
+	{ Bone = "wheel_rm2", Index = 3 },
+	{ Bone = "wheel_rm3", Index = 3 },
+	{ Bone = "wheel_rm4", Index = 3 },
+	{ Bone = "wheel_lr", Index = 4 },
+	{ Bone = "wheel_rr", Index = 5 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRES
@@ -186,12 +186,12 @@ function Creative.Tyres()
 		if IsEntityAVehicle(Vehicle) then
 			local Coords = GetEntityCoords(Ped)
 
-			for Index,Tyre in pairs(TyreList) do
-				local Selected = GetEntityBoneIndexByName(Vehicle,Index)
+			for _,v in pairs(TyreList) do
+				local Selected = GetEntityBoneIndexByName(Vehicle,v.Bone)
 				if Selected ~= -1 then
 					local CoordsWheel = GetWorldPositionOfEntityBone(Vehicle,Selected)
-					if #(Coords - CoordsWheel) <= 1.0 and GetTyreHealth(Vehicle,Tyre) ~= 1000.0 then
-						return Vehicle,Tyre,VehToNet(Vehicle),GetVehicleNumberPlateText(Vehicle),Model
+					if #(Coords - CoordsWheel) <= 1.0 and GetTyreHealth(Vehicle,v.Index) ~= 1000.0 then
+						return Vehicle,v.Index,VehToNet(Vehicle),GetVehicleNumberPlateText(Vehicle),Model
 					end
 				end
 			end

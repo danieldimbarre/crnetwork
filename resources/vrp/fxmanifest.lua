@@ -30,8 +30,7 @@ files {
 
 shared_scripts {
 	"lib/Utils.lua",
-	"config/Item.lua",
 	"config/Vehicle.lua",
-	"config/Global.lua",
-	"config/Drops.lua"
+	"config/Item.lua",
+	"config/Global.lua"
 }

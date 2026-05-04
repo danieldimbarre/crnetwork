@@ -84,9 +84,9 @@ RegisterCommand("passaporte",function(source,Message)
 				exports.oxmysql:update_async("UPDATE transactions SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
 			end
 
-			local Taxs = exports.oxmysql:query_async("SELECT * FROM taxs WHERE Passport = ?",{ OtherPassport })
+			local Taxs = exports.oxmysql:query_async("SELECT * FROM taxes WHERE Passport = ?",{ OtherPassport })
 			if Taxs and #Taxs > 0 then
-				exports.oxmysql:update_async("UPDATE taxs SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+				exports.oxmysql:update_async("UPDATE taxes SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
 			end
 
 			local Races = exports.oxmysql:query_async("SELECT * FROM races WHERE Passport = ?",{ OtherPassport })
@@ -241,6 +241,8 @@ RegisterCommand("passaporte",function(source,Message)
 			exports.oxmysql:update_async("UPDATE tickets_creative_messages SET Author = ? WHERE Author = ?",{ NewPassport,OtherPassport })
 
 			exports.crons:Swap(OtherPassport,NewPassport)
+			exports.moneywash:UpdateObjects(OtherPassport,NewPassport)
+			exports.inventory:UpdateObjects(OtherPassport,NewPassport)
 
 			local Playing = vRP.GetSrvData("Playing:"..OtherPassport,true)
 			vRP.SetSrvData("Playing:"..NewPassport,Playing,true)
@@ -303,9 +305,9 @@ RegisterCommand("passport",function(source,Message)
 					exports.oxmysql:update_async("UPDATE transactions SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
 				end
 
-				local Taxs = exports.oxmysql:query_async("SELECT * FROM taxs WHERE Passport = ?",{ OtherPassport })
+				local Taxs = exports.oxmysql:query_async("SELECT * FROM taxes WHERE Passport = ?",{ OtherPassport })
 				if Taxs and #Taxs > 0 then
-					exports.oxmysql:update_async("UPDATE taxs SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
+					exports.oxmysql:update_async("UPDATE taxes SET Passport = ? WHERE Passport = ?",{ NewPassport,OtherPassport })
 				end
 
 				local Races = exports.oxmysql:query_async("SELECT * FROM races WHERE Passport = ?",{ OtherPassport })
@@ -455,6 +457,8 @@ RegisterCommand("passport",function(source,Message)
 				end
 
 				exports.crons:Swap(OtherPassport,NewPassport)
+				exports.moneywash:UpdateObjects(OtherPassport,NewPassport)
+				exports.inventory:UpdateObjects(OtherPassport,NewPassport)
 
 				local Playing = vRP.GetSrvData("Playing:"..OtherPassport,true)
 				vRP.SetSrvData("Playing:"..NewPassport,Playing,true)
@@ -997,7 +1001,7 @@ RegisterCommand("item",function(source,Message)
 	if Passport and vRP.HasGroup(Passport,"Admin",2) then
 		if not Message[1] then
 			local Keyboard = vKEYBOARD.Item(source,"Passaporte","Item","Quantidade",{ "Jogador","Todos","Area" },"Distância")
-			if Keyboard and ItemExist(Keyboard[2]) then
+			if Keyboard and exports.vrp:ItemExist(Keyboard[2]) then
 				local Item = Keyboard[2]
 				local Action = Keyboard[4]
 				local OtherPassport = Keyboard[1]
@@ -1739,7 +1743,7 @@ RegisterCommand("addcar",function(source)
 	local Days = parseInt(Keyboard[4],true)
 	local OtherPassport = parseInt(Keyboard[1],true)
 
-	if not VehicleExist(Model) then
+	if not exports.vrp:VehicleExist(Model) then
 		TriggerClientEvent("Notify",source,"Erro","Modelo de veículo inválido.","vermelho",5000)
 		return false
 	end
@@ -1747,8 +1751,8 @@ RegisterCommand("addcar",function(source)
 	local Rental,Tax = nil,nil
 	local CurrentTimer = os.time()
 	local Plate = vRP.GeneratePlate()
-	local Weight = VehicleWeight(Model)
-	local Work = VehicleMode(Model) == "Work"
+	local Weight = exports.vrp:VehicleWeight(Model)
+	local Work = exports.vrp:VehicleMode(Model) == "Work"
 
 	if Mode == "Mensal" then
 		Rental = CurrentTimer + 30 * 24 * 60 * 60
@@ -1762,7 +1766,7 @@ RegisterCommand("addcar",function(source)
 
 	exports.oxmysql:query_async("INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax,Block) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,@Rental,@Tax,@Block)",{ Passport = OtherPassport, Vehicle = Model, Plate = Plate, Weight = Weight, Work = Work, Rental = Rental, Tax = Tax, Block = Block })
 	exports.discord:Embed("AddCar","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[MODEL]:** "..Model.."\n**[TIPO]:** "..Mode)
-	TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Model).."</b> entregue.","verde",5000)
+	TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..exports.vrp:VehicleName(Model).."</b> entregue.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMCAR
@@ -1800,7 +1804,7 @@ RegisterCommand("remcar",function(source)
 	vRP.RemSrvData("Trunkchest:"..OtherPassport..":"..Selected)
 	vRP.Query("vehicles/removeVehicles",{ Passport = OtherPassport, Vehicle = Selected })
 
-	TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..VehicleName(Selected).."</b> removido.","verde",5000)
+	TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..exports.vrp:VehicleName(Selected).."</b> removido.","verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- NITRO
@@ -1948,20 +1952,19 @@ SetHttpHandler(function(Request,Result)
 
 		["/tdiscord"] = function(Data)
 			local v = json.decode(Data)
-			local NewDiscord = parseInt(v.NewDiscord)
-			local OtherPassport = parseInt(v.Passport)
-			local CurrentDiscord = parseInt(v.CurrentDiscord)
+			local NewDiscord = v.NewDiscord
+			local CurrentDiscord = v.CurrentDiscord
 
-			if NewDiscord and OtherPassport and CurrentDiscord then
-				local Account = vRP.AccountInformation(OtherPassport,"Discord")
-				if Account and parseInt(Account) == CurrentDiscord then
-					exports.oxmysql:update_async("UPDATE accounts SET Discord = ? WHERE Discord = ?",{ NewDiscord,Account })
+			if NewDiscord and CurrentDiscord then
+				local Consult = exports.oxmysql:single_async("SELECT * FROM accounts WHERE Discord = ? LIMIT 1",{ CurrentDiscord })
+				if Consult then
+					exports.oxmysql:update_async("UPDATE accounts SET Discord = ? WHERE id = ?",{ NewDiscord,Consult.id })
 					SendMessageDiscord(Result,200,"Comando executado com sucesso.")
 				else
-					SendMessageDiscord(Result,404,"Discord atual é diferente do enviado.")
+					SendMessageDiscord(Result,404,"Não foi encontrado o discord no banco de dados.")
 				end
 			else
-				SendMessageDiscord(Result,404,"Personagem indisponível no momento.")
+				SendMessageDiscord(Result,404,"Preencha os campos necessários.")
 			end
 		end,
 

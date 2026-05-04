@@ -151,7 +151,7 @@ function Creative.Permissions(Name,Mode,Item)
 					Permission = SplitName[3],
 					Weight = 1000,
 					Save = true,
-					Slots = 500,
+					Slots = 200,
 					Goals = true
 				}
 
@@ -248,7 +248,7 @@ function Creative.Mount()
 	end
 
 	local function ProcessItem(Slot,v,Prefix,Key,Save)
-		if v.amount <= 0 or not ItemExist(v.item) then
+		if v.amount <= 0 or not exports.vrp:ItemExist(v.item) then
 			if Prefix == "Inventory" then
 				vRP.CleanSlot(Passport,Slot)
 			elseif Prefix == "Chest" then
@@ -270,15 +270,15 @@ function Creative.Mount()
 		if not v.desc then
 			if Item == "vehiclekey" and Split[3] then
 				local Consult = exports.oxmysql:single_async("SELECT * FROM vehicles WHERE Plate = ? LIMIT 1",{ Split[3] })
-				if Consult and VehicleExist(Consult.Vehicle) then
-					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
+				if Consult and exports.vrp:VehicleExist(Consult.Vehicle) then
+					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common><br>Modelo: <common>"..exports.vrp:VehicleName(Consult.Vehicle).."</common><br>Placa: <common>"..Split[3].."</common>"
 				end
 			elseif Item == "propertys" and Split[2] then
 				local Consult = exports.oxmysql:single_async("SELECT * FROM propertys WHERE Serial = ? LIMIT 1",{ Split[2] })
 				if Consult then
 					v.desc = "Proprietário: <common>"..vRP.FullName(Consult.Passport).."</common>"
 				end
-			elseif ItemNamed(Item) and Split[2] and vRP.Identity(Split[2]) then
+			elseif exports.vrp:ItemNamed(Item) and Split[2] and vRP.Identity(Split[2]) then
 				if Item == "identity" then
 					v.desc = "Passaporte: <rare>"..Dotted(Split[2]).."</rare><br>Nome: <rare>"..vRP.FullName(Split[2]).."</rare><br>Telefone: <rare>"..vRP.Phone(Split[2]).."</rare>"
 				else
@@ -288,14 +288,14 @@ function Creative.Mount()
 		end
 
 		if Split[2] then
-			local Loaded = ItemLoads(v.item)
+			local Loaded = exports.vrp:ItemLoads(v.item)
 			if Loaded then
 				v.charges = parseInt(Split[2] * (100 / Loaded))
 			end
 
-			if ItemDurability(v.item) then
+			if exports.vrp:ItemDurability(v.item) then
 				v.durability = parseInt(os.time() - Split[2])
-				v.days = ItemDurability(v.item)
+				v.days = exports.vrp:ItemDurability(v.item)
 			end
 		end
 
@@ -348,14 +348,14 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 	end
 
 	if OpenData.Recycle then
-		if ItemDurability(Item) and not vRP.CheckDamaged(Item) then
-			NotifyError(ItemName(Item).." não pode ser reciclado.")
+		if exports.vrp:ItemDurability(Item) and not vRP.CheckDamaged(Item) then
+			NotifyError(exports.vrp:ItemName(Item).." não pode ser reciclado.")
 			return false
 		end
 
-		local Recycled = ItemRecycle(Item)
+		local Recycled = exports.vrp:ItemRecycle(Item)
 		if not Recycled or not vRP.TakeItem(Passport,Item,Amount) then
-			NotifyError(ItemName(Item).." não pode ser reciclado.")
+			NotifyError(exports.vrp:ItemName(Item).." não pode ser reciclado.")
 			return false
 		end
 
@@ -367,7 +367,7 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 
 		return false
 	else
-		if ItemLocked(Item) then
+		if exports.vrp:ItemLocked(Item) then
 			UpdateInventory()
 			return false
 		end
@@ -400,7 +400,7 @@ function Creative.Store(Item,Slot,Amount,Target,Inactived)
 	end
 
 	if OpenData.Goals and OpenData.Permission then
-		if ItemDurability(Item) and vRP.CheckDamaged(Item) then
+		if exports.vrp:ItemDurability(Item) and vRP.CheckDamaged(Item) then
 			UpdateInventory()
 			return false
 		end

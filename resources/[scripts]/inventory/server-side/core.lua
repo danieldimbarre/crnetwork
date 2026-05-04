@@ -33,6 +33,23 @@ Robberys = {}
 Attention = {}
 SaveObjects = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- UPDATEOBJECTS
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("UpdateObjects",function(OldPassport,NewPassport)
+	for Selected,v in pairs(Objects) do
+		if v.Passport and v.Passport == OldPassport then
+			v.Passport = NewPassport
+			TriggerClientEvent("objects:Update",-1,Selected,NewPassport)
+		end
+	end
+
+	for Selected,v in pairs(SaveObjects) do
+		if v.Passport and v.Passport == OldPassport then
+			v.Passport = NewPassport
+		end
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- USERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 Users = {
@@ -252,15 +269,13 @@ function Creative.SpawnItem(OtherPassport,Item,Amount,Mode,Distance)
 		return false
 	end
 
-	local Level = ItemAdmin(Item)
-	if Level then
-		if not vRP.HasService(Passport,"Admin",Level) then
-			return false
-		end
-	else
-		if not vRP.HasService(Passport,"Admin") then
-			return false
-		end
+	local Level = exports.vrp:ItemAdmin(Item)
+	if not Level then
+		return false
+	end
+
+	if not vRP.HasGroup(Passport,"Admin",Level) then
+		return false
 	end
 
 	local function GiveItem(TargetPassport)
@@ -363,7 +378,7 @@ function Creative.Send(Slot,Amount)
 	local Item = Data.item
 	local Expire = os.time() + 3
 
-	if ItemLocked(Item) then
+	if exports.vrp:ItemLocked(Item) then
 		return false
 	end
 
@@ -575,15 +590,15 @@ function Creative.Use(Slot,Amount)
 		local Split = splitString(Inv[Slot].item)
 		local Full,Item = Inv[Slot].item,Split[1]
 
-		local WaterItem = ItemWater(Item)
+		local WaterItem = exports.vrp:ItemWater(Item)
 		local WaterEntity = vRPC.IsEntityInWater(source)
 		local WaterCondition = WaterItem and ((WaterItem == "Out" and WaterEntity) or (WaterItem == "In" and not WaterEntity))
-		if (Player(source).state.Handcuff and Item ~= "lockpick") or WaterCondition or (ItemDurability(Full) and vRP.CheckDamaged(Full)) then
+		if (Player(source).state.Handcuff and Item ~= "lockpick") or WaterCondition or (exports.vrp:ItemDurability(Full) and vRP.CheckDamaged(Full)) then
 			return
 		end
 
-		if ItemTypeCheck(Full,"Armamento") and parseInt(Slot) <= 3 then
-			if Player(source).state.Safezone or (vRP.InsideVehicle(source) and not ItemVehicle(Full)) then
+		if exports.vrp:ItemTypeCheck(Full,"Armamento") and parseInt(Slot) <= 3 then
+			if Player(source).state.Safezone or (vRP.InsideVehicle(source) and not exports.vrp:ItemVehicle(Full)) then
 				return
 			end
 
@@ -591,7 +606,7 @@ function Creative.Use(Slot,Amount)
 				local Check,AmmoClip,Weapon = vCLIENT.StoreWeapon(source)
 
 				if Check then
-					local Ammunation = WeaponAmmo(Weapon)
+					local Ammunation = exports.vrp:WeaponAmmo(Weapon)
 					if Ammunation then
 						if AmmoClip > 0 then
 							if not Users.Ammos[Passport] then
@@ -612,7 +627,7 @@ function Creative.Use(Slot,Amount)
 				local Skin = nil
 				local Attach = {}
 				local AmmoClip = 0
-				local Ammunation = WeaponAmmo(Item)
+				local Ammunation = exports.vrp:WeaponAmmo(Item)
 				if Ammunation and Users.Ammos[Passport] and Users.Ammos[Passport][Ammunation] then
 					AmmoClip = Users.Ammos[Passport][Ammunation]
 				end
@@ -629,10 +644,10 @@ function Creative.Use(Slot,Amount)
 					TriggerClientEvent("inventory:NotifyItem",source,{ Index = Full, Amount = 1 })
 				end
 			end
-		elseif ItemTypeCheck(Full,"Munição") then
+		elseif exports.vrp:ItemTypeCheck(Full,"Munição") then
 			local Weapon,AmmoClip = vCLIENT.InfoWeapon(source,Item)
 
-			if Weapon ~= "" and WeaponAmmo(Weapon) and Item == WeaponAmmo(Weapon) then
+			if Weapon ~= "" and exports.vrp:WeaponAmmo(Weapon) and Item == exports.vrp:WeaponAmmo(Weapon) then
 				if Weapon == "WEAPON_PETROLCAN" then
 					if (AmmoClip + Amount) > 5000 then
 						Amount = 5000 - AmmoClip
@@ -655,12 +670,12 @@ function Creative.Use(Slot,Amount)
 					vCLIENT.Reloading(source,Weapon,Amount)
 				end
 			end
-		elseif ItemTypeCheck(Full,"Arremesso") then
+		elseif exports.vrp:ItemTypeCheck(Full,"Arremesso") then
 			if vCLIENT.ReturnWeapon(source) then
 				local Check,AmmoClip,Weapon = vCLIENT.StoreWeapon(source)
 
 				if Check then
-					local Amunnation = WeaponAmmo(Weapon)
+					local Amunnation = exports.vrp:WeaponAmmo(Weapon)
 					if Amunnation then
 						if AmmoClip > 0 then
 							if not Users.Ammos[Passport] then
@@ -682,10 +697,10 @@ function Creative.Use(Slot,Amount)
 					TriggerClientEvent("inventory:NotifyItem",source,{ Index = Full, Amount = 1 })
 				end
 			end
-		elseif ItemTypeCheck(Full,"Attachs") then
+		elseif exports.vrp:ItemTypeCheck(Full,"Attachs") then
 			local Weapon = vCLIENT.ReturnWeapon(source)
 			if Weapon then
-				local Component = WeaponAttach(Item,Weapon)
+				local Component = exports.vrp:WeaponAttach(Item,Weapon)
 				if Component then
 					if not Users.Attachs[Passport] then
 						Users.Attachs[Passport] = {}
@@ -716,7 +731,7 @@ function Creative.Use(Slot,Amount)
 					TriggerClientEvent("inventory:Notify",source,"Atenção","O armamento não possui suporte ao componente.","vermelho")
 				end
 			end
-		elseif Use[Item] and ItemTypeCheck(Full,"Consumível") then
+		elseif Use[Item] and exports.vrp:ItemTypeCheck(Full,"Consumível") then
 			Use[Item](source,Passport,Amount,Slot,Full,Item,Split)
 		end
 	end
@@ -781,7 +796,7 @@ function Creative.VerifyWeapon(Item,Ammo)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and not vRP.ConsultItem(Passport,Item,1) then
-		local Ammunation = WeaponAmmo(Item)
+		local Ammunation = exports.vrp:WeaponAmmo(Item)
 		if Ammunation and Users["Ammos"][Passport] and Users["Ammos"][Passport][Ammunation] then
 			if Ammo and Ammo > 0 then
 				Users["Ammos"][Passport][Ammunation] = Ammo
@@ -838,7 +853,7 @@ function Creative.PreventWeapons(Item,Ammo)
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Users["Ammos"][Passport] then
-		local Ammunation = WeaponAmmo(Item)
+		local Ammunation = exports.vrp:WeaponAmmo(Item)
 
 		if Ammunation and Users["Ammos"][Passport][Ammunation] then
 			if Ammo > 0 then
@@ -848,7 +863,7 @@ function Creative.PreventWeapons(Item,Ammo)
 			end
 		end
 
-		if ItemTypeCheck(Item,"Armamento") and vRP.ConsultItem(Passport,Item) then
+		if exports.vrp:ItemTypeCheck(Item,"Armamento") and vRP.ConsultItem(Passport,Item) then
 			return true
 		end
 	end
@@ -880,7 +895,7 @@ AddEventHandler("inventory:Loot",function(Number,Box)
 	if Loot.Item then
 		Consult = vRP.ConsultItem(Passport,Loot.Item)
 		if not Consult then
-			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName(Loot.Item).."</b>.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..exports.vrp:ItemName(Loot.Item).."</b>.","amarelo",5000)
 			return false
 		end
 	end
@@ -986,7 +1001,7 @@ AddEventHandler("inventory:ChangePlate",function(Entitys)
 	local Passport = vRP.Passport(source)
 	if Passport and not Active[Passport] and not Plates[Plate] then
 		if not vRP.ConsultItem(Passport,"plate",1) then
-			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName("plate").."</b>.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..exports.vrp:ItemName("plate").."</b>.","amarelo",5000)
 
 			return false
 		end
@@ -1041,7 +1056,7 @@ AddEventHandler("inventory:StealTrunk",function(Entity)
 	end
 
 	if not vCLIENT.CheckWeapon(source,Weapon) then
-		TriggerClientEvent("Notify",source,"Aviso","<b>"..ItemName(Weapon).."</b> não encontrado.","amarelo",5000)
+		TriggerClientEvent("Notify",source,"Aviso","<b>"..exports.vrp:ItemName(Weapon).."</b> não encontrado.","amarelo",5000)
 
 		return false
 	end
@@ -1076,7 +1091,7 @@ AddEventHandler("inventory:StealTrunk",function(Entity)
 		Passport = Passport,
 		Permission = "Policia",
 		Name = "Roubo de Veículo",
-		Vehicle = VehicleName(Model).." - "..Plate,
+		Vehicle = exports.vrp:VehicleName(Model).." - "..Plate,
 		Percentage = 925,
 		Wanted = 60,
 		Color = 44,
@@ -1166,7 +1181,7 @@ AddEventHandler("inventory:Products",function(Service)
 		end
 
 		if Products[Service]["Item"] and not vRP.ConsultItem(Passport,Products[Service]["Item"]) then
-			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..ItemName(Products[Service]["Item"]).."</b>.","amarelo",5000)
+			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..exports.vrp:ItemName(Products[Service]["Item"]).."</b>.","amarelo",5000)
 
 			return false
 		end
@@ -1228,7 +1243,7 @@ RegisterServerEvent("inventory:RemoveTyres")
 AddEventHandler("inventory:RemoveTyres",function(Entity)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if Passport and not Active[Passport] and Entity[2] ~= "veto" and Entity[2] ~= "veto2" and VehicleMode(Entity[2]) ~= "Work" then
+	if Passport and not Active[Passport] and Entity[2] ~= "veto" and Entity[2] ~= "veto2" and exports.vrp:VehicleMode(Entity[2]) ~= "Work" then
 		if not vCLIENT.CheckWeapon(source,"WEAPON_WRENCH") then
 			TriggerClientEvent("Notify",source,"Aviso","<b>Chave Inglesa</b> não encontrada.","amarelo",5000)
 

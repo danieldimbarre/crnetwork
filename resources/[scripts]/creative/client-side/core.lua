@@ -105,7 +105,7 @@ local BLIPS = {
 	{ -339.89,-1560.35,25.22,318,62,"Lixeiro",0.6 },
 	{ 19.19,6505.68,31.49,318,62,"Lixeiro",0.6 },
 	{ -607.05,-925.7,23.86,590,62,"Entregador de Jornal",0.6 },
-	{ 408.91,-1638.21,29.28,477,62,"Reboque",0.6 },
+	{ 402.04,-1632.07,29.28,477,62,"Reboque",0.6 },
 	{ 1989.99,3781.38,32.18,477,62,"Reboque",0.6 },
 	{ 966.47,-1914.76,31.14,467,11,"Recicladora",0.7 },
 	{ -178.19,6261.09,31.49,467,11,"Recicladora",0.7 },
@@ -581,6 +581,7 @@ CreateThread(function()
 		DistantCopCarSirens(false)
 		SetPauseMenuActive(false)
 		SetGarbageTrucks(false)
+		SetRandomTrains(false)
 		SetRandomBoats(false)
 
 		SetVehicleDensityMultiplierThisFrame(1.0)

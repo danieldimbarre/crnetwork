@@ -339,7 +339,7 @@ local List = {
 		Description = "Um arsenal versátil de ferramentas essenciais para todas as suas necessidades de reparo, com qualidade premium e variedade abrangente, este kit é seu parceiro e do seu veículos.",
 		Type = "Consumível",
 		Weight = 4.75,
-		["Charges"] = 3,
+		Charges = 3,
 		Max = 2,
 		Rarity = "common",
 		Economy = 2775,
@@ -1010,7 +1010,7 @@ local List = {
 		Economy = 500000,
 		Rarity = "legendary"
 	},
-	Skinshop = {
+	["skinshop"] = {
 		AdminLevel = 1,
 		Index = "skinshop",
 		Name = "Loja de Roupas",
@@ -3823,7 +3823,7 @@ local List = {
 		Name = "Chave da Fortuna",
 		Description = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
 		Type = "Comum",
-		["Charges"] = 3,
+		Charges = 3,
 		Weight = 0.25,
 		Economy = 4225,
 		Market = true,
@@ -3835,7 +3835,7 @@ local List = {
 		Name = "Chave da Harmonia",
 		Description = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
 		Type = "Comum",
-		["Charges"] = 10,
+		Charges = 10,
 		Weight = 0.25,
 		Economy = 725,
 		Market = true,
@@ -3847,7 +3847,7 @@ local List = {
 		Name = "Chave da Aurora",
 		Description = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
 		Type = "Comum",
-		["Charges"] = 10,
+		Charges = 10,
 		Weight = 0.25,
 		Economy = 675,
 		Market = true,
@@ -3859,7 +3859,7 @@ local List = {
 		Name = "Chave do Crepúsculo",
 		Description = "Projetada para ser encontrada e utilizada como parte da progressão na história ou na resolução de um enigma, adicionando um elemento de interatividade e imersão à experiência.",
 		Type = "Comum",
-		["Charges"] = 10,
+		Charges = 10,
 		Weight = 0.25,
 		Economy = 625,
 		Market = true,
@@ -4014,8 +4014,8 @@ local List = {
 		Weight = 1.25,
 		Economy = 1275,
 		Market = true,
-		["Charges"] = 10,
-		["Empty"] = "emptypurifiedwater"
+		Charges = 10,
+		Empty = "emptypurifiedwater"
 	},
 	["racestablet"] = {
 		AdminLevel = 1,
@@ -4042,8 +4042,35 @@ local List = {
 		Weight = 0.15,
 		Economy = 2275,
 		Market = true,
-		["Charges"] = 5,
+		Charges = 5,
 		Rarity = "epic"
+	},
+	["racetrophy1"] = {
+		AdminLevel = 1,
+		Index = "racetrophy1",
+		Name = "Troféu 1º Lúgar",
+		Description = "Conquistado apenas por quem cruza a linha de chegada em primeiro lugar, este item representa habilidade, precisão e domínio absoluto nas pistas. Símbolo máximo de desempenho nas corridas, o Troféu do Campeão comprova que seu portador superou todos os adversários com excelência, garantindo seu lugar no topo do ranking.",
+		Rarity = "legendary",
+		Type = "Comum",
+		Weight = 0.0
+	},
+	["racetrophy2"] = {
+		AdminLevel = 1,
+		Index = "racetrophy2",
+		Name = "Troféu 2º Lúgar",
+		Description = "Conquistado apenas por quem cruza a linha de chegada em segundo lugar, este item representa habilidade, precisão e domínio absoluto nas pistas. Símbolo máximo de desempenho nas corridas, o Troféu do Campeão comprova que seu portador superou todos os adversários com excelência, garantindo seu lugar no topo do ranking.",
+		Rarity = "epic",
+		Type = "Comum",
+		Weight = 0.0
+	},
+	["racetrophy3"] = {
+		AdminLevel = 1,
+		Index = "racetrophy3",
+		Name = "Troféu 3º Lúgar",
+		Description = "Conquistado apenas por quem cruza a linha de chegada em terceiro lugar, este item representa habilidade, precisão e domínio absoluto nas pistas. Símbolo máximo de desempenho nas corridas, o Troféu do Campeão comprova que seu portador superou todos os adversários com excelência, garantindo seu lugar no topo do ranking.",
+		Rarity = "rare",
+		Type = "Comum",
+		Weight = 0.0
 	},
 	["postit"] = {
 		AdminLevel = 1,
@@ -4720,12 +4747,6 @@ Furniture = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
--- ADDITEM
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("AddItem",function(Name,Data)
-	List[Name] = Data
-end)
------------------------------------------------------------------------------------------------------------------------------------------
 -- BLUEPRINTS
 -----------------------------------------------------------------------------------------------------------------------------------------
 CreateThread(function()
@@ -4785,268 +4806,280 @@ CreateThread(function()
 			Description = v.Description or "Este objeto pode ser posicionado dentro de propriedades, permitindo personalizar e organizar o ambiente."
 		}
 	end
+
+	for Model,v in pairs(ListVehicles) do
+		if v.Item then
+			List["vehicle_"..Model] = {
+				Index = "vehicle",
+				Name = v.Name,
+				Type = "Consumível",
+				Delete = true,
+				Weight = 0.0
+			}
+		end
+	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMLIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemList()
+exports("ItemList",function()
 	return List
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMCLONES
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemClones()
+exports("ItemClones",function()
 	return Clones
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMPURITYS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemPuritys()
+exports("ItemPuritys",function()
 	return Puritys
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMFURNITURE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemFurniture()
+exports("ItemFurniture",function()
 	return Furniture
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMEXIST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemExist(Item)
+exports("ItemExist",function(Item)
 	return List[SplitOne(Item)]
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMINDEX
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemIndex(Item)
+exports("ItemIndex",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Index or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMNAME
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemName(Item)
+exports("ItemName",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Name or "Deletado"
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMTYPE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemType(Item)
+exports("ItemType",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Type or "Comum"
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMTYPECHECK
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemTypeCheck(Item,Mode)
+exports("ItemTypeCheck",function(Item,Mode)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Type and List[Item].Type == Mode and true or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemVehicle(Item)
+exports("ItemVehicle",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Vehicle or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMWEIGHT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemWeight(Item)
+exports("ItemWeight",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Weight or 0.0
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMBACKPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemBackpack(Item)
+exports("ItemBackpack",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Backpack or 0
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMMAXAMOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemMaxAmount(Item)
+exports("ItemMaxAmount",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Max or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMLOSTWATER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemLostWater(Item)
+exports("ItemLostWater",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].LostWater or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMWATER
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemWater(Item)
+exports("ItemWater",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Water or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMDESCRIPTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemDescription(Item)
+exports("ItemDescription",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Description or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMDURABILITY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemDurability(Item)
+exports("ItemDurability",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Durability or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMLOADS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemLoads(Item)
+exports("ItemLoads",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Charges or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMREPAIR
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemRepair(Item)
+exports("ItemRepair",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Repair or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMUNIQUE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemUnique(Item)
+exports("ItemUnique",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Unique or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMANIM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemAnim(Item)
+exports("ItemAnim",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Anim or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMEXECUTE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemExecute(Item)
+exports("ItemExecute",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Execute or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMARREST
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemArrest(Item)
+exports("ItemArrest",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Arrest or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMSERIAL
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemSerial(Item)
+exports("ItemSerial",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Serial or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMECONOMY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemEconomy(Item)
+exports("ItemEconomy",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Economy or 0
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMRARITY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemRarity(Item)
+exports("ItemRarity",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Rarity or "normal"
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMRECYCLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemRecycle(Item)
+exports("ItemRecycle",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Recycle or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMFISHING
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemFishing(Item)
+exports("ItemFishing",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Fishing or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMNAMED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemNamed(Item)
+exports("ItemNamed",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Named or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMEMPTY
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemEmpty(Item)
+exports("ItemEmpty",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Empty or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMSKINSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemSkinshop(Item)
+exports("ItemSkinshop",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Skinshop or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMLOCKED
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemLocked(Item)
+exports("ItemLocked",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Locked or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMMARKERS
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemMarkers(Item)
+exports("ItemMarkers",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Markers or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMADMIN
 -----------------------------------------------------------------------------------------------------------------------------------------
-function ItemAdmin(Item)
+exports("ItemAdmin",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].AdminLevel or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLOCKDELETE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function BlockDelete(Item)
+exports("BlockDelete",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Delete or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BLOCKMARKET
 -----------------------------------------------------------------------------------------------------------------------------------------
-function BlockMarket(Item)
+exports("BlockMarket",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Market or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ITEMAMMO
 -----------------------------------------------------------------------------------------------------------------------------------------
-function WeaponAmmo(Item)
+exports("WeaponAmmo",function(Item)
 	local Item = SplitOne(Item)
 	return List[Item] and List[Item].Ammo or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- WEAPONATTACH
 -----------------------------------------------------------------------------------------------------------------------------------------
-function WeaponAttach(Item,Weapon)
+exports("WeaponAttach",function(Item,Weapon)
 	local Item = SplitOne(Item)
 	return List[Weapon] and List[Weapon].Attachs and List[Weapon].Attachs[Item] or false
-end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------

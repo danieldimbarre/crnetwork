@@ -83,7 +83,7 @@ function Creative.CreateVehicle(Model,Coords)
 			Passport = Passport,
 			Permission = "Policia",
 			Name = "Desmanche de Veículo",
-			Vehicle = VehicleName(Model).." - "..Plate,
+			Vehicle = exports.vrp:VehicleName(Model).." - "..Plate,
 			Coords = Coords,
 			Code = 31,
 			Color = 44
@@ -108,7 +108,7 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 	local Network = Entity[4]
 	local Plate,Model = Entity[1],Entity[2]
 	local UserVehicle = vRP.PassportPlate(Plate)
-	if Active[Passport] or not VehicleExist(Model) or (not UserVehicle and not Dismantle[Plate]) then
+	if Active[Passport] or not exports.vrp:VehicleExist(Model) or (not UserVehicle and not Dismantle[Plate]) then
 		return false
 	end
 
@@ -140,7 +140,7 @@ AddEventHandler("inventory:Dismantle",function(Entity)
 
 		local GainExperience = 3
 		local _,Level = vRP.GetExperience(Passport,"Dismantle")
-		local Amount = VehiclePrice(Model) * (UserVehicle and 0.05 or 0.025)
+		local Amount = exports.vrp:VehiclePrice(Model) * (UserVehicle and 0.05 or 0.025)
 		local Valuation = Amount + (Amount * (0.025 * Level))
 
 		if exports.inventory:Buffs("Dexterity",Passport) then

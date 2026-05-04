@@ -30,22 +30,19 @@ local Drops = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 local Bonus = {
 	Ouro = {
-		Stress = 1,
-		Dollar = 100,
+		Stress = 3,
 		Experience = 3,
 		Multiplier = 0.1,
 		Battlepass = 3
 	},
 	Prata = {
 		Stress = 2,
-		Dollar = 50,
 		Experience = 2,
 		Multiplier = 0.075,
 		Battlepass = 2
 	},
 	Bronze = {
-		Stress = 3,
-		Dollar = 25,
+		Stress = 1,
 		Experience = 1,
 		Multiplier = 0.05,
 		Battlepass = 1
@@ -155,8 +152,7 @@ AddEventHandler("towed:Payment",function(Plate)
 			return false
 		end
 
-		local Stress = 3
-		local Dollar = 250
+		local Stress = 10
 		local Battlepass = 2
 		local GainExperience = 2
 		local _,Level = vRP.GetExperience(Passport,"Towed")
@@ -168,17 +164,15 @@ AddEventHandler("towed:Payment",function(Plate)
 
 		for Permission,v in pairs(Bonus) do
 			if vRP.HasService(Passport,Permission) then
-				Dollar = Dollar + v.Dollar
+				Stress = Stress - v.Stress
 				Battlepass = Battlepass + v.Battlepass
 				Valuation = Valuation * (1 + v.Multiplier)
 				GainExperience = GainExperience + v.Experience
-				Stress = Stress + v.Stress
 			end
 		end
 
 		vRP.GenerateItem(Passport,Result.Item,Valuation,true)
 		vRP.PutExperience(Passport,"Towed",GainExperience)
-		vRP.GenerateItem(Passport,"dollar",Dollar,true)
 		vRP.BattlepassPoints(Passport,Battlepass)
 		vRP.UpgradeStress(Passport,Stress)
 
@@ -216,7 +210,7 @@ AddEventHandler("towed:Impound",function(Data)
 	TriggerClientEvent("Notify",source,"Departamento Policial","Registro encaminhado aos trabalhadores.","policia",5000)
 
 	local Coords = vRP.GetEntityCoords(source)
-	local VehicleLabel = (VehicleName(Models) or "Veículo").." - "..Plate
+	local VehicleLabel = (exports.vrp:VehicleName(Models) or "Veículo").." - "..Plate
 	for Passports,Sources in pairs(Services) do
 		if Sources then
 			async(function()

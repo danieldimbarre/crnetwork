@@ -126,6 +126,15 @@ AddEventHandler("objects:Remover",function(Number)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- OBJECTS:UPDATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("objects:Update")
+AddEventHandler("objects:Update",function(Number,Passport)
+	if Objects[Number] then
+		Objects[Number].Passport = Passport
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDTARGETZONE
 -----------------------------------------------------------------------------------------------------------------------------------------
 function AddTargetZone(Number,Coords,mode,Weight,Options,Size,Box)

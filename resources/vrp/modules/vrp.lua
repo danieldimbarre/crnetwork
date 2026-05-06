@@ -39,7 +39,7 @@ function vRP.ClearInventory(Passport,Ignore)
 	TriggerEvent("DebugObjects",Passport)
 
 	for _,v in pairs(Inventory) do
-		if not BlockDelete(v.item) then
+		if not exports.vrp:BlockDelete(v.item) then
 			vRP.RemoveItem(Passport,v.item,v.amount)
 		end
 	end

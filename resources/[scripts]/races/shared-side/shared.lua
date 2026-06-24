@@ -6,7 +6,7 @@ ResultFinish = 5
 ColourMarker = 77
 RankingTablet = 10
 CooldownRaces = 600
-DurationMarkers = 60000
+DurationMarkers = 120000
 RaceItem = "racesticket"
 VehicleDuration = 604800
 ExchangeItem = "platinum"
@@ -34,7 +34,7 @@ Multipliers = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Routes = {
 	{
-		Payment = 3840,
+		Payment = 280,
 		Image = "Accelerate.jpg",
 		Name = "Accelerate",
 		Init = vec3(1819.5,2136.51,53.85),
@@ -56,10 +56,155 @@ Routes = {
 				Center = vec3(1818.51,2070.94,54.91),
 				Right = vec3(1826.53,2072.1,54.92),
 				Distance = 6.48
+			},{
+				Left = vec3(1841.87,1940.73,57.32),
+				Center = vec3(1849.53,1943.36,57.33),
+				Right = vec3(1857.2,1946.0,57.33),
+				Distance = 6.48
+			},{
+				Left = vec3(1897.43,1788.47,64.04),
+				Center = vec3(1905.63,1792.16,64.03),
+				Right = vec3(1913.84,1795.86,64.01),
+				Distance = 7.2
+			},{
+				Left = vec3(2022.17,1501.77,74.83),
+				Center = vec3(2030.54,1505.07,75.04),
+				Right = vec3(2038.91,1508.36,75.24),
+				Distance = 7.2
+			},{
+				Left = vec3(2115.64,1335.72,74.62),
+				Center = vec3(2122.63,1341.4,74.86),
+				Right = vec3(2129.61,1347.07,75.09),
+				Distance = 7.2
+			},{
+				Left = vec3(2260.01,1154.76,77.43),
+				Center = vec3(2267.86,1161.57,77.21),
+				Right = vec3(2275.72,1168.38,77.0),
+				Distance = 8.32
+			},{
+				Left = vec3(2422.57,943.96,86.81),
+				Center = vec3(2433.39,947.84,87.28),
+				Right = vec3(2444.2,951.71,87.76),
+				Distance = 9.2
+			},{
+				Left = vec3(2482.42,789.71,95.41),
+				Center = vec3(2492.31,791.18,95.49),
+				Right = vec3(2502.2,792.66,95.57),
+				Distance = 8.0
+			},{
+				Left = vec3(2506.49,647.6,105.14),
+				Center = vec3(2516.47,648.01,105.49),
+				Right = vec3(2526.46,648.41,105.84),
+				Distance = 8.0
+			},{
+				Left = vec3(2499.27,100.8,99.08),
+				Center = vec3(2509.45,98.69,98.84),
+				Right = vec3(2519.63,96.58,98.6),
+				Distance = 8.32
+			},{
+				Left = vec3(2385.6,-230.0,84.58),
+				Center = vec3(2389.19,-233.33,84.57),
+				Right = vec3(2392.79,-236.66,84.55),
+				Distance = 3.92
+			},{
+				Left = vec3(2386.36,-448.43,71.78),
+				Center = vec3(2388.29,-445.76,71.81),
+				Right = vec3(2390.23,-443.09,71.84),
+				Distance = 2.64
+			},{
+				Left = vec3(2475.22,-524.12,68.31),
+				Center = vec3(2480.05,-518.92,68.35),
+				Right = vec3(2484.88,-513.71,68.39),
+				Distance = 5.68
+			},{
+				Left = vec3(2528.03,-614.55,61.96),
+				Center = vec3(2535.77,-616.57,62.01),
+				Right = vec3(2543.52,-618.59,62.07),
+				Distance = 6.4
+			},{
+				Left = vec3(2454.04,-673.28,61.67),
+				Center = vec3(2454.68,-681.25,61.68),
+				Right = vec3(2455.33,-689.22,61.69),
+				Distance = 6.4
+			},{
+				Left = vec3(2307.01,-689.21,63.63),
+				Center = vec3(2309.61,-696.78,63.65),
+				Right = vec3(2312.21,-704.34,63.68),
+				Distance = 6.4
+			},{
+				Left = vec3(2157.15,-805.8,73.66),
+				Center = vec3(2163.33,-810.88,73.67),
+				Right = vec3(2169.51,-815.96,73.68),
+				Distance = 6.4
+			},{
+				Left = vec3(2036.4,-882.3,78.44),
+				Center = vec3(2038.86,-889.92,78.43),
+				Right = vec3(2041.32,-897.53,78.42),
+				Distance = 6.4
+			},{
+				Left = vec3(1892.76,-970.58,78.47),
+				Center = vec3(1898.38,-976.27,78.45),
+				Right = vec3(1903.99,-981.97,78.44),
+				Distance = 6.4
+			},{
+				Left = vec3(1796.89,-1162.66,82.15),
+				Center = vec3(1804.69,-1164.43,82.2),
+				Right = vec3(1812.49,-1166.21,82.25),
+				Distance = 6.4
+			},{
+				Left = vec3(1684.33,-1308.13,84.41),
+				Center = vec3(1688.35,-1315.05,84.42),
+				Right = vec3(1692.36,-1321.97,84.43),
+				Distance = 6.4
+			},{
+				Left = vec3(1511.41,-1463.98,70.47),
+				Center = vec3(1516.79,-1469.9,70.44),
+				Right = vec3(1522.17,-1475.82,70.4),
+				Distance = 6.4
+			},{
+				Left = vec3(1380.06,-1565.53,54.18),
+				Center = vec3(1384.64,-1571.21,54.15),
+				Right = vec3(1389.22,-1576.9,54.12),
+				Distance = 5.84
+			},{
+				Left = vec3(1314.89,-1556.29,49.62),
+				Center = vec3(1303.01,-1562.27,49.7),
+				Right = vec3(1291.13,-1568.25,49.78),
+				Distance = 10.64
+			},{
+				Left = vec3(1252.94,-1338.09,34.74),
+				Center = vec3(1238.31,-1336.71,34.46),
+				Right = vec3(1223.67,-1335.32,34.17),
+				Distance = 11.76
+			},{
+				Left = vec3(1205.76,-1088.79,39.73),
+				Center = vec3(1192.86,-1095.82,39.28),
+				Right = vec3(1179.96,-1102.86,38.82),
+				Distance = 11.76
+			},{
+				Left = vec3(1091.13,-953.11,45.95),
+				Center = vec3(1093.05,-962.3,45.53),
+				Right = vec3(1094.98,-971.49,45.12),
+				Distance = 7.52
+			},{
+				Left = vec3(903.44,-991.6,34.36),
+				Center = vec3(904.43,-1000.95,34.17),
+				Right = vec3(905.43,-1010.29,33.98),
+				Distance = 7.52
+			},{
+				Left = vec3(768.66,-1035.74,25.83),
+				Center = vec3(769.32,-1045.11,26.2),
+				Right = vec3(769.98,-1054.48,26.57),
+				Distance = 7.52
+			},{
+				Left = vec3(702.12,-1066.62,21.82),
+				Center = vec3(709.99,-1069.27,21.65),
+				Right = vec3(717.85,-1071.92,21.48),
+				Distance = 6.64
 			}
 		}
 	},{
-		Payment = 9600,
+		Payment = 770,
 		Image = "RedFlames.jpg",
 		Name = "Red Flames",
 		Init = vec3(-383.84,-842.33,31.63),
@@ -624,7 +769,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 6640,
+		Payment = 520,
 		Image = "LSSpeed.jpg",
 		Name = "LS Speed",
 		Init = vec3(-938.29,-2843.12,13.95),
@@ -924,7 +1069,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 3840,
+		Payment = 250,
 		Image = "PaletoBay.jpg",
 		Name = "PaletoBay",
 		Init = vec3(143.2,6604.62,31.85),
@@ -1104,7 +1249,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 380,
 		Image = "SandyLoop.jpg",
 		Name = "SandyLoop",
 		Init = vec3(340.63,3573.63,33.4),
@@ -1324,7 +1469,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 7600,
+		Payment = 580,
 		Image = "Humane.jpg",
 		Name = "Humane",
 		Init = vec3(3595.28,3788.47,29.99),
@@ -1564,7 +1709,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 9600,
+		Payment = 760,
 		Image = "BridgeAvenue.jpg",
 		Name = "BridgeAvenue",
 		Init = vec3(639.35,-1174.45,41.48),
@@ -1939,7 +2084,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 400,
 		Image = "Boreal.jpg",
 		Name = "Boreal",
 		Init = vec3(-1103.11,-213.65,37.34),
@@ -2164,7 +2309,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 8320,
+		Payment = 610,
 		Image = "Lacos.jpg",
 		Name = "Laços",
 		Init = vec3(-643.71,-1255.58,10.55),
@@ -2479,7 +2624,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4240,
+		Payment = 420,
 		Image = "Sunset.jpg",
 		Name = "Sunset",
 		Init = vec3(-1644.51,-925.3,8.39),
@@ -2769,7 +2914,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 7600,
+		Payment = 560,
 		Image = "Acampamento.jpg",
 		Name = "Acampamento",
 		Init = vec3(1533.45,6408.02,23.76),
@@ -2989,7 +3134,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 9600,
+		Payment = 800,
 		Image = "Memories.jpg",
 		Name = "Memories",
 		Init = vec3(923.15,-122.12,76.31),
@@ -3629,7 +3774,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 9600,
+		Payment = 680,
 		Image = "TheNewCypress.jpg",
 		Name = "NewCypress",
 		Init = vec3(825.74,-2481.94,23.78),
@@ -3959,7 +4104,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 6880,
+		Payment = 540,
 		Image = "BayviewLodge.jpg",
 		Name = "Bayview Lodge",
 		Init = vec3(-692.17,5773.19,17.32),
@@ -4209,7 +4354,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 400,
 		Image = "Eclipse.jpg",
 		Name = "Eclipse",
 		Init = vec3(-2137.75,-298.93,12.74),
@@ -4444,7 +4589,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 530,
 		Image = "CayoPerico.jpg",
 		Name = "Cayo Perico",
 		Init = vec3(3931.4,-4698.14,4.2),
@@ -4829,7 +4974,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 250,
 		Image = "Pier.jpg",
 		Name = "Pier",
 		Init = vec3(-1577.89,-1021.99,12.7),
@@ -4999,7 +5144,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 350,
 		Image = "Downtown.jpg",
 		Name = "Downtown",
 		Init = vec3(290.63,-560.36,42.92),
@@ -5239,7 +5384,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 550,
 		Image = "Colorido.jpg",
 		Name = "Colorido",
 		Init = vec3(-1211.2,-636.44,24.57),
@@ -5559,7 +5704,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 510,
 		Image = "NewPraia.jpg",
 		Name = "Nova Praia",
 		Init = vec3(-1341.92,-1204.69,4.7),
@@ -5909,7 +6054,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 790,
 		Image = "DesertDanger.jpg",
 		Name = "Desert Danger",
 		Init = vec3(-5863.38,2799.34,33.11),
@@ -6514,7 +6659,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 520,
 		Image = "TourDesertico.jpg",
 		Name = "Tour Desertico",
 		Init = vec3(-5852.86,2817.88,33.19),
@@ -6869,7 +7014,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 670,
 		Image = "TimberTrail.jpg",
 		Name = "Timber Trail",
 		Init = vec3(-2571.13,2334.62,32.35),
@@ -7229,7 +7374,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 250,
 		Image = "EliteGreens.jpg",
 		Name = "Elite Greens",
 		Init = vec3(-1333.35,-9.24,51.26),
@@ -7369,7 +7514,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 250,
 		Image = "StraightRush.jpg",
 		Name = "Straight Rush",
 		Init = vec3(-89.27,99.57,72.88),
@@ -7519,7 +7664,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 270,
 		Image = "HarborRun.jpg",
 		Name = "Harbor Run",
 		Init = vec3(1137.59,-3283.91,5.9),
@@ -7684,7 +7829,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 730,
 		Image = "HunterHills.jpg",
 		Name = "HunterHills",
 		Init = vec3(1431.17,-2585.73,47.72),
@@ -8059,7 +8204,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 690,
 		Image = "Fronzen.jpg",
 		Name = "Frozen",
 		Init = vec3(5718.02,5974.94,10.85),
@@ -8429,7 +8574,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 350,
 		Image = "SubDrift.jpg",
 		Name = "Drift Subterrâneo",
 		Init = vec3(965.11,-2281.34,17.51),
@@ -8779,7 +8924,7 @@ Routes = {
 			}
 		}
 	},{
-		Payment = 4720,
+		Payment = 360,
 		Image = "MirrorPark.jpg",
 		Name = "Mirror Park",
 		Init = vec3(1368.9,-581.11,74.37),

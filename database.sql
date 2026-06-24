@@ -16,6 +16,21 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   KEY `Token` (`Token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE IF NOT EXISTS `coupons_creative` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Coupon` varchar(100) NOT NULL DEFAULT '',
+  `Multiplier` FLOAT(10,2) NOT NULL DEFAULT 1.00,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `poll_creative` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Code` varchar(100) NOT NULL DEFAULT '',
+  `Passport` bigint(19) NOT NULL DEFAULT 0,
+  `Answer` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 CREATE TABLE IF NOT EXISTS `avatars` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
   `Passport` bigint(19) NOT NULL DEFAULT 0,

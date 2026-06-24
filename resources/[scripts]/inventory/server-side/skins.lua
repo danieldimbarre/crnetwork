@@ -2,10 +2,6 @@
 -- BUYSKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.BuySkin(Table)
-	if not Authentication then
-		return false
-	end
-
 	local source = source
 	local Number = tostring(Table["id"])
 	local Passport = vRP.Passport(source)
@@ -42,10 +38,6 @@ end
 -- INVENTORY:SKINPLAYER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("inventory:SkinPlayer",function(Passport,Number,Weapon,Component)
-	if not Authentication then
-		return false
-	end
-
 	if not Users["Skins"][Passport] then
 		Users["Skins"][Passport] = vRP.UserData(Passport,"Skins")
 	end
@@ -73,10 +65,6 @@ end)
 -- EXISTSKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("ExistSkin",function(Passport,Number)
-	if not Authentication then
-		return false
-	end
-
 	if not Users["Skins"][Passport] then
 		Users["Skins"][Passport] = vRP.UserData(Passport,"Skins")
 	end
@@ -91,10 +79,6 @@ end)
 -- TRANSFERSKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.TransferSkin(OtherPassport,Number,Weapon,Component)
-	if not Authentication then
-		return false
-	end
-
 	if not (Number and Weapon and Component) then return false end
 
 	local source = source
@@ -146,10 +130,6 @@ end
 -- ACTIVESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.ActiveSkin(Weapon,Component)
-	if not Authentication then
-		return false
-	end
-
 	if not (Weapon and Component) then return false end
 
 	local source = source
@@ -167,10 +147,6 @@ end
 -- INACTIVESKIN
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.InactiveSkin(Weapon,Component)
-	if not Authentication then
-		return false
-	end
-
 	if Weapon and Component then
 		local source = source
 		local Passport = vRP.Passport(source)
@@ -188,12 +164,6 @@ end
 -- USERSKINS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.UserSkins()
-	if not Authentication then
-		return {
-			["List"] = {}
-		}
-	end
-
 	local source = source
 	local Passport = vRP.Passport(source)
 	if Passport and Users["Skins"][Passport] and Users["Skins"][Passport]["List"] then

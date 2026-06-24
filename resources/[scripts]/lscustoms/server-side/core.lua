@@ -19,7 +19,11 @@ local Networked = {}
 function Creative.Permission(Index)
 	local source = source
 	local Passport = vRP.Passport(source)
-	if not Passport or exports.bank:CheckTaxes(Passport) or exports.bank:CheckFines(Passport) then
+	if not Passport then
+		return false
+	end
+
+	if exports.bank:CheckTaxes(Passport) or exports.bank:CheckFines(Passport) then
 		return false
 	end
 
@@ -28,7 +32,8 @@ function Creative.Permission(Index)
 		return false
 	end
 
-	if Location.Permission and not vRP.HasService(Passport,Location.Permission) then
+	local Permission = Location.Permission
+	if Permission and not vRP.HasService(Passport,Permission) then
 		return false
 	end
 
@@ -54,10 +59,10 @@ function Creative.Save(Model,Plate,Initial)
 		local Consult = vRP.GetSrvData("LsCustoms:"..Name,true)
 		for Index,v in pairs(Initial) do
 			if Index == "VehicleExtras" then
-				for Type,Data in pairs(v) do
+				for Extra,Data in pairs(v) do
 					if Data.Installed ~= Data.Selected then
 						Consult.VehicleExtras = Consult.VehicleExtras or {}
-						Consult.VehicleExtras[Type] = Data.Selected
+						Consult.VehicleExtras[Extra] = Data.Selected
 					end
 				end
 			elseif Index == "Respray" then
@@ -76,32 +81,17 @@ function Creative.Save(Model,Plate,Initial)
 					InteriorColour = v.InteriorColour.Selected
 				}
 			elseif Index == "Wheels" then
+				Consult.Wheels = Consult.Wheels or {}
+
 				for Type,Data in pairs(v) do
 					if Data.Installed ~= Data.Selected then
-						if Consult[Index] then
-							if Type == "TyreSmoke" then
-								Consult[Index].TyreSmoke = Initial[Index].TyreSmoke.Selected
-							elseif Type == "CustomTyres" then
-								Consult[Index].CustomTyres = Initial[Index].CustomTyres.Selected
-							else
-								Consult[Index].Category = Type
-								Consult[Index].Value = Data.Selected
-							end
+						if Type == "TyreSmoke" then
+							Consult.Wheels.TyreSmoke = Data.Selected
+						elseif Type == "CustomTyres" then
+							Consult.Wheels.CustomTyres = Data.Selected
 						else
-							if Type == "TyreSmoke" then
-								Consult[Index] = {
-									TyreSmoke = Initial[Index].TyreSmoke.Selected
-								}
-							elseif Type == "CustomTyres" then
-								Consult[Index] = {
-									CustomTyres = Initial[Index].CustomTyres.Selected
-								}
-							else
-								Consult[Index] = {
-									Category = Type,
-									Value = Data.Selected
-								}
-							end
+							Consult.Wheels.Category = Type
+							Consult.Wheels.Value = Data.Selected
 						end
 					end
 				end
@@ -126,23 +116,36 @@ AddEventHandler("lscustoms:Network",function(Network,Plate)
 		return false
 	end
 
-	if Network then
-		Networked[Passport] = { Network,Plate }
-	else
+	if not Network then
 		Networked[Passport] = nil
+		return false
 	end
+
+	local Entity = NetworkGetEntityFromNetworkId(Network)
+	if not Entity or Entity <= 0 or not DoesEntityExist(Entity) or GetEntityType(Entity) ~= 2 then
+		return false
+	end
+
+	Networked[Passport] = {
+		Entity = Entity,
+		Network = Network,
+		Plate = Plate
+	}
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DISCONNECT
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddEventHandler("Disconnect",function(Passport)
-	if not Networked[Passport] then
+	local Data = Networked[Passport]
+	if not Data then
 		return false
 	end
 
+	Networked[Passport] = nil
+
 	SetTimeout(2500,function()
-		local Network,Plate = table.unpack(Networked[Passport])
-		TriggerEvent("garages:Deleted",Network,Plate)
-		Networked[Passport] = nil
+		if DoesEntityExist(Data.Entity) then
+			TriggerEvent("garages:Deleted",Data.Network,Data.Plate)
+		end
 	end)
 end)

@@ -251,14 +251,15 @@ function Creative.Store(Item,Slot,Amount,Target)
 		return false
 	end
 
-	if not vRP.TakeItem(Passport,Item,Amount,true,Slot) then
-		TriggerClientEvent("inventory:Update",source)
-		return false
-	end
-
 	if not vRP.GiveItem(SelectPlayer,Item,Amount,true,Target) then
 		TriggerClientEvent("inventory:Update",source)
 		return false
+	else
+		if not vRP.TakeItem(Passport,Item,Amount,true,Slot) then
+			vRP.RemoveItem(SelectPlayer,Item,Amount)
+			TriggerClientEvent("inventory:Update",source)
+			return false
+		end
 	end
 
 	if exports.vrp:ItemType(Item) == "Armamento" then
@@ -291,14 +292,15 @@ function Creative.Take(Item,Slot,Target,Amount)
 		return false
 	end
 
-	if not vRP.TakeItem(SelectPlayer,Item,Amount,true,Slot) then
-		TriggerClientEvent("inventory:Update",source)
-		return false
-	end
-
 	if not vRP.GiveItem(Passport,Item,Amount,true,Target) then
 		TriggerClientEvent("inventory:Update",source)
 		return false
+	else
+		if not vRP.TakeItem(SelectPlayer,Item,Amount,true,Slot) then
+			vRP.RemoveItem(Passport,Item,Amount)
+			TriggerClientEvent("inventory:Update",source)
+			return false
+		end
 	end
 
 	if exports.vrp:ItemType(Item) == "Armamento" then

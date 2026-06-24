@@ -512,7 +512,7 @@ function TargetEnable()
 		for Index,v in pairs(Zones) do
 			if #(Coords - Zones[Index].center) <= 5 then
 				SetDrawOrigin(Zones[Index].center.x,Zones[Index].center.y,Zones[Index].center.z)
-				DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
+				DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,88,101,242,255)
 				ClearDrawOrigin()
 			end
 
@@ -534,7 +534,7 @@ function TargetEnable()
 					end
 
 					SetDrawOrigin(Zones[Index].center.x,Zones[Index].center.y,Zones[Index].center.z)
-					DrawSprite("Textures","Selected",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
+					DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,88,101,242,255)
 					ClearDrawOrigin()
 
 					local Ped = PlayerPedId()
@@ -639,6 +639,10 @@ function TargetEnable()
 									table.insert(Menu,{ event = "player:checkTrunk", label = "Checar Porta-Malas", tunnel = "server" })
 									table.insert(Menu,{ event = "player:enterTrunk", label = "Entrar no Porta-Malas", tunnel = "client" })
 								end
+							end
+
+							if GetEntitySubmergedLevel(Entitys) > 0.5 then
+								table.insert(Menu,{ event = "garages:Delete", label = "Guardar", tunnel = "client" })
 							end
 
 							if GetEntityArchetypeName(Vehicle) == "flatbed" and Selected[2] ~= "flatbed" then
@@ -826,7 +830,7 @@ function TargetEnable()
 						local CenterWorld = GetOffsetFromEntityInWorldCoords(Entitys,CenterOffset.x,CenterOffset.y,CenterOffset.z)
 
 						SetDrawOrigin(CenterWorld.x,CenterWorld.y,CenterWorld.z)
-						DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
+						DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,88,101,242,255)
 						ClearDrawOrigin()
 					end
 
@@ -850,7 +854,7 @@ function TargetEnable()
 							local CenterWorld = GetOffsetFromEntityInWorldCoords(Entitys,CenterOffset.x,CenterOffset.y,CenterOffset.z)
 
 							SetDrawOrigin(CenterWorld.x,CenterWorld.y,CenterWorld.z)
-							DrawSprite("Textures","Selected",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
+							DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,88,101,242,255)
 							ClearDrawOrigin()
 
 							local Ped = PlayerPedId()
@@ -881,7 +885,7 @@ function TargetEnable()
 						local OtherCoords = GetEntityCoords(Entitys)
 						if #(Coords - OtherCoords) <= 5 then
 							SetDrawOrigin(OtherCoords.x,OtherCoords.y,OtherCoords.z + 1)
-							DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
+							DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,88,101,242,255)
 							ClearDrawOrigin()
 						end
 
@@ -916,7 +920,7 @@ function TargetEnable()
 								local EntityCoords = GetEntityCoords(Entitys)
 
 								SetDrawOrigin(EntityCoords.x,EntityCoords.y,EntityCoords.z + 1)
-								DrawSprite("Textures","Selected",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,255,255,255,255)
+								DrawSprite("Textures","Normal",0.0,0.0,0.0185,0.0185 * GetAspectRatio(false),0.0,88,101,242,255)
 								ClearDrawOrigin()
 
 								local Ped = PlayerPedId()

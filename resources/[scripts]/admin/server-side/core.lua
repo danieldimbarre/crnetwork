@@ -15,6 +15,81 @@ vSKINWEAPON = Tunnel.getInterface("skinweapon")
 vCLIENT = Tunnel.getInterface("admin")
 vHUD = Tunnel.getInterface("hud")
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- POLLCREATIVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("PollCreative",function(Passport,source)
+	local Code = "NEW"
+	local Consult = exports.oxmysql:single_async("SELECT 1 FROM poll_creative WHERE Code = ? AND Passport = ? LIMIT 1",{ Code,Passport })
+	if Consult then
+		return false
+	end
+
+	local Question = ""
+	local Keyboard = vKEYBOARD.Instagram(source,{ "Teste 01","Teste 02","Teste 03" },"Enquete",Question)
+	if not Keyboard then
+		return false
+	end
+
+	local Answer = Keyboard[1]
+	if not Answer or Answer == "" then
+		TriggerClientEvent("Notify",source,"Enquete","Resposta inválida.","vermelho",5000)
+		return false
+	end
+
+	exports.oxmysql:insert_async("INSERT INTO poll_creative (Question,Code,Passport,Answer) VALUES (?,?,?,?)",{ Question,Code,Passport,Answer })
+	TriggerClientEvent("Notify",source,"Enquete","Resposta enviada com sucesso.","verde",5000)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ENQUETE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("enquete",function(source)
+	local Passport = vRP.Passport(source)
+	if not Passport or not vRP.HasGroup(Passport,"Admin") then
+		return false
+	end
+
+	local Codes = exports.oxmysql:query_async("SELECT DISTINCT Code FROM poll_creative ORDER BY Code ASC")
+	if not Codes or #Codes <= 0 then
+		TriggerClientEvent("Notify",source,"Enquete","Nenhuma enquete encontrada.","amarelo",5000)
+		return false
+	end
+
+	local Options = {}
+	for _,v in pairs(Codes) do
+		Options[#Options + 1] = "["..v.Code.."] Ver resultado"
+	end
+
+	local Keyboard = vKEYBOARD.Instagram(source,Options)
+	if not Keyboard then
+		return false
+	end
+
+	local Selected = Keyboard[1]
+	if not Selected then
+		return false
+	end
+
+	local Code = Selected:match("%[(.-)%]")
+	local Consult = exports.oxmysql:query_async("SELECT Answer,COUNT(*) as Total FROM poll_creative WHERE Code = ? GROUP BY Answer ORDER BY Total DESC",{ Code })
+	if not Consult or #Consult <= 0 then
+		TriggerClientEvent("Notify",source,"Enquete","Nenhuma resposta encontrada.","amarelo",5000)
+		return false
+	end
+
+	local TotalVotes = 0
+	for _,v in pairs(Consult) do
+		TotalVotes = TotalVotes + v.Total
+	end
+
+	local Message = ""
+	for _,v in pairs(Consult) do
+		local Percent = math.floor((v.Total / TotalVotes) * 100)
+		Message = Message..v.Answer.." - "..v.Total.." voto(s)".." ("..Percent.."%)<br>"
+	end
+
+	TriggerClientEvent("Notify",source,"Enquete: "..Code,Message,"verde",10000)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PASSAPORTE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("passaporte",function(source,Message)
@@ -1730,43 +1805,65 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("addcar",function(source)
 	local Passport = vRP.Passport(source)
-	if not Passport or not vRP.HasGroup(Passport,"Admin",1) then
+	if not Passport or not vRP.HasPermission(Passport,"Admin",1) then
 		return false
 	end
 
 	local Keyboard = vKEYBOARD.Vehicle(source,"Passaporte","Modelo",{ "Mensal","Permanente","Dias" },"Dias",{ "Sim","Não" })
-	if not Keyboard then return end
-
-	local Mode = Keyboard[3]
-	local Model = Keyboard[2]
-	local Block = Keyboard[5] == "Sim"
-	local Days = parseInt(Keyboard[4],true)
-	local OtherPassport = parseInt(Keyboard[1],true)
-
-	if not exports.vrp:VehicleExist(Model) then
-		TriggerClientEvent("Notify",source,"Erro","Modelo de veículo inválido.","vermelho",5000)
+	if not Keyboard then
 		return false
 	end
 
-	local Rental,Tax = nil,nil
-	local CurrentTimer = os.time()
-	local Plate = vRP.GeneratePlate()
-	local Weight = exports.vrp:VehicleWeight(Model)
-	local Work = exports.vrp:VehicleMode(Model) == "Work"
+	local OtherPassport = parseInt(Keyboard[1],true)
+	if not OtherPassport or OtherPassport <= 0 or not vRP.Identity(OtherPassport) then
+		TriggerClientEvent("Notify",source,"Atenção","Passaporte inválido.","vermelho",5000)
+		return false
+	end
 
+	local Model = Keyboard[2]
+	if not Model or Model == "" or not exports.vrp:VehicleExist(Model) then
+		TriggerClientEvent("Notify",source,"Atenção","Modelo de veículo inválido.","vermelho",5000)
+		return false
+	end
+
+	local Mode = Keyboard[3]
+	local Days = parseInt(Keyboard[4],true)
+	if Mode == "Dias" and Days <= 0 then
+		TriggerClientEvent("Notify",source,"Atenção","Quantidade de dias inválida.","vermelho",5000)
+		return false
+	end
+
+	local VehicleExists = exports.oxmysql:single_async("SELECT id FROM vehicles WHERE Passport = ? AND Vehicle = ? LIMIT 1",{ OtherPassport,Model })
+	if VehicleExists then
+		TriggerClientEvent("Notify",source,"Atenção","Este passaporte já possui este veículo.","vermelho",5000)
+		return false
+	end
+
+	local Tax = nil
+	local Rental = nil
+	local CurrentTimer = os.time()
 	if Mode == "Mensal" then
-		Rental = CurrentTimer + 30 * 24 * 60 * 60
+		Rental = CurrentTimer + 2592000
 		Tax = Rental
 	elseif Mode == "Dias" then
 		Rental = CurrentTimer + (86400 * Days)
 		Tax = Rental
 	elseif Mode == "Permanente" then
-		Tax = CurrentTimer + 30 * 24 * 60 * 60
+		Tax = CurrentTimer + 2592000
 	end
 
-	exports.oxmysql:query_async("INSERT IGNORE INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax,Block) VALUES (@Passport,@Vehicle,@Plate,@Weight,@Work,@Rental,@Tax,@Block)",{ Passport = OtherPassport, Vehicle = Model, Plate = Plate, Weight = Weight, Work = Work, Rental = Rental, Tax = Tax, Block = Block })
-	exports.discord:Embed("AddCar","**[ADMIN]:** "..Passport.."\n**[PASSAPORTE]:** "..OtherPassport.."\n**[MODEL]:** "..Model.."\n**[TIPO]:** "..Mode)
-	TriggerClientEvent("Notify",source,"Sucesso","Veículo <b>"..exports.vrp:VehicleName(Model).."</b> entregue.","verde",5000)
+	local Plate = vRP.GeneratePlate()
+	local Block = Keyboard[5] == "Sim"
+	local Weight = exports.vrp:VehicleWeight(Model)
+	local Work = exports.vrp:VehicleMode(Model) == "Work"
+	local Inserted = exports.oxmysql:insert_async("INSERT INTO vehicles (Passport,Vehicle,Plate,Weight,Work,Rental,Tax,Block) VALUES (?,?,?,?,?,?,?,?)",{ OtherPassport,Model,Plate,Weight,Work,Rental,Tax,Block })
+	if not Inserted then
+		TriggerClientEvent("Notify",source,"Erro","Falha ao registrar o veículo.","vermelho",5000)
+		return false
+	end
+
+	exports.discord:Embed("AddCar",("**[ADMIN]:** %s\n**[PASSAPORTE]:** %s\n**[MODEL]:** %s\n**[TIPO]:** %s\n**[PLACA]:** %s"):format(Passport,OtherPassport,Model,Mode,Plate))
+	TriggerClientEvent("Notify",source,"Sucesso",("Veículo <b>%s</b> entregue para o passaporte <b>%s</b>."):format(exports.vrp:VehicleName(Model),OtherPassport),"verde",5000)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REMCAR

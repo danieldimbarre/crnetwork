@@ -9,18 +9,39 @@ vSERVER = Tunnel.getInterface("crafting")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
 -----------------------------------------------------------------------------------------------------------------------------------------
+local Code = false
+local ItemList = {}
 local Opened = false
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADSTARTSERVER
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	for Index,v in pairs(List) do
+		local Result = {}
+		for Key,Recipe in pairs(v.List) do
+			Result[#Result + 1] = {
+				key = Key,
+				price = Recipe.Amount,
+				required = Recipe.Required
+			}
+		end
+
+		ItemList[Index] = Result
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INVENTORY:CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:Close")
 AddEventHandler("inventory:Close",function()
 	Opened = false
+	Code = false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPENCRAFTING
 -----------------------------------------------------------------------------------------------------------------------------------------
-function OpenCrafting(Mode)
+function OpenCrafting(Mode,Main)
+	Code = Main
 	Opened = Mode
 
 	TriggerEvent("inventory:Open",{
@@ -34,8 +55,10 @@ end
 -- MOUNT
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Mount",function(Data,Callback)
-	local Primary,PrimaryWeight,PrimarySlots = vSERVER.Mount(Opened)
-	if Primary then
+	if Opened then
+		local SecondaryData = ItemList[Opened] or {}
+		local Primary,PrimaryWeight,PrimarySlots = vSERVER.Mount(Opened)
+
 		Callback({
 			Primary = {
 				Data = Primary,
@@ -43,8 +66,8 @@ RegisterNUICallback("Mount",function(Data,Callback)
 				Slots = PrimarySlots or Theme.inventory.slots.default
 			},
 			Secondary = {
-				Data = ItemList[Opened],
-				Slots = math.max(CountTable(ItemList[Opened]),25)
+				Data = SecondaryData,
+				Slots = math.max(CountTable(SecondaryData),25)
 			}
 		})
 	end
@@ -53,8 +76,8 @@ end)
 -- TAKE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("Take",function(Data,Callback)
-	if MumbleIsConnected() then
-		vSERVER.Take(Data.Item,Data.Amount,Data.Target,Opened)
+	if Opened and Data.Item and Data.Amount and MumbleIsConnected() then
+		vSERVER.Take(Data.Item,Data.Amount,Data.Target,Opened,Code)
 	end
 
 	Callback("Ok")
@@ -70,7 +93,7 @@ AddEventHandler("crafting:Open",function(Number)
 	local Data = Location[Number]
 	if Data then
 		if vSERVER.Permission(Data.Mode) then
-			OpenCrafting(Data.Mode)
+			OpenCrafting(Data.Mode,Number)
 		end
 	else
 		if vSERVER.Permission(Number) then
@@ -94,7 +117,13 @@ CreateThread(function()
 				{
 					event = "crafting:Open",
 					label = "Abrir",
-					tunnel = "client"
+					tunnel = "client",
+					service = "Open"
+				},{
+					event = "crafting:Rescue",
+					label = "Resgatar",
+					tunnel = "server",
+					service = v.Mode
 				}
 			}
 		})

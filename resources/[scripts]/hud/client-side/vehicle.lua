@@ -50,7 +50,7 @@ CreateThread(function()
 
 	while true do
 		local TimeDistance = 999
-		if LocalPlayer["state"]["Active"] and Display then
+		if LocalPlayer["state"]["Active"] then
 			if not Loadout then
 				if LoadTexture("circleminimap") then
 					AddReplaceTexture("platform:/textures/graphics","radarmasksm","circleminimap","radarmasksm")
@@ -63,7 +63,6 @@ CreateThread(function()
 
 					repeat
 						Wait(100)
-
 						SetMinimapClipType(1)
 						SetBigmapActive(false,false)
 					until not IsBigmapActive()
@@ -95,7 +94,7 @@ CreateThread(function()
 						local Class = GetVehicleClass(Vehicle)
 						if (Class >= 0 and Class <= 7) or Class == 9 then
 							if IsControlPressed(1,21) then
-								if VSpeed <= 75.0 and not GetDriftTyresEnabled(Vehicle) then
+								if VSpeed <= 75 and not GetDriftTyresEnabled(Vehicle) then
 									SetDriftTyresEnabled(Vehicle,true)
 									SetVehicleReduceGrip(Vehicle,true)
 									SetReduceDriftVehicleSuspension(Vehicle,true)
@@ -125,66 +124,72 @@ CreateThread(function()
 						end
 					end
 
-					for Number,v in pairs(Spike) do
-						if #(GetEntityCoords(Vehicle) - v["Coords"]) <= 10 then
-							for Index = 1,#Tyres do
-								local BoneIndex = GetEntityBoneIndexByName(Vehicle,Tyres[Index]["Bone"])
-								local TirePosition = GetWorldPositionOfEntityBone(Vehicle,BoneIndex)
+					if next(Spike) then
+						for Number,v in pairs(Spike) do
+							if #(GetEntityCoords(Vehicle) - v.Coords) <= 10 then
+								for Index = 1,#Tyres do
+									local BoneIndex = GetEntityBoneIndexByName(Vehicle,Tyres[Index].Bone)
+									if BoneIndex ~= -1 then
+										local TirePosition = GetWorldPositionOfEntityBone(Vehicle,BoneIndex)
 
-								if IsPointInAngledArea(TirePosition,v["Min"],v["Max"],0.45,false,false) then
-									TriggerServerEvent("inventory:StoreObjects",Number)
-									VehicleTyreBurst(Vehicle)
+										if IsPointInAngledArea(TirePosition,v.Min,v.Max,0.45,false,false) then
+											TriggerServerEvent("inventory:StoreObjects",Number)
+											VehicleTyreBurst(Vehicle)
+										end
+									end
 								end
 							end
 						end
 					end
 				end
 
-				if ActualVehicle ~= Vehicle then
-					SendNUIMessage({ Action = "Vehicle", Payload = true })
-					ActualVehicle = Vehicle
-				end
+				if Display then
+					if ActualVehicle ~= Vehicle then
+						SendNUIMessage({ Action = "Vehicle", Payload = true })
+						ActualVehicle = Vehicle
+					end
 
-				if VEngineHealth ~= EngineHealth then
-					SendNUIMessage({ Action = "EngineHealth", Payload = VEngineHealth })
-					VEngineHealth = EngineHealth
-				end
+					if VEngineHealth ~= EngineHealth then
+						SendNUIMessage({ Action = "EngineHealth", Payload = VEngineHealth })
+						EngineHealth = VEngineHealth
+					end
 
-				if Locked ~= VLocked then
-					SendNUIMessage({ Action = "Locked", Payload = VLocked })
-					Locked = VLocked
-				end
+					if Locked ~= VLocked then
+						SendNUIMessage({ Action = "Locked", Payload = VLocked })
+						Locked = VLocked
+					end
 
-				if NitroActive then
-					SendNUIMessage({ Action = "Nitro", Payload = NitroFuel })
-					Nitro = NitroFuel
-				else
-					local EntityState = Entity(Vehicle).state.Nitro or 0
-					if EntityState ~= Nitro then
-						SendNUIMessage({ Action = "Nitro", Payload = EntityState })
-						Nitro = EntityState
+					if NitroActive then
+						SendNUIMessage({ Action = "Nitro", Payload = NitroFuel })
+						Nitro = NitroFuel
+					else
+						local EntityState = Entity(Vehicle).state.Nitro or 0
+						if EntityState ~= Nitro then
+							SendNUIMessage({ Action = "Nitro", Payload = EntityState })
+							Nitro = EntityState
+						end
+					end
+
+					if Fuel ~= VFuel then
+						SendNUIMessage({ Action = "Fuel", Payload = VFuel })
+						Fuel = VFuel
+					end
+
+					if Speed ~= VSpeed then
+						SendNUIMessage({ Action = "Speed", Payload = VSpeed })
+						Speed = VSpeed
+					end
+
+					if not GetIsVehicleEngineRunning(Vehicle) then
+						VRpm = 0.0
+					end
+
+					if Rpm ~= VRpm then
+						SendNUIMessage({ Action = "Rpm", Payload = VRpm })
+						Rpm = VRpm
 					end
 				end
-
-				if Fuel ~= VFuel then
-					SendNUIMessage({ Action = "Fuel", Payload = VFuel })
-					Fuel = VFuel
-				end
-
-				if Speed ~= VSpeed then
-					SendNUIMessage({ Action = "Speed", Payload = VSpeed })
-					Speed = VSpeed
-				end
-
-				if not GetIsVehicleEngineRunning(Vehicle) then
-					VRpm = 0.0
-				end
-
-				if Rpm ~= VRpm then
-					SendNUIMessage({ Action = "Rpm", Payload = VRpm })
-					Rpm = VRpm
-				end
-			else
+			elseif Display then
 				if ActualVehicle then
 					ActualVehicle = nil
 					SendNUIMessage({ Action = "Vehicle", Payload = false })

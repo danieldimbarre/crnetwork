@@ -18,10 +18,6 @@ end
 -- CHRISTMAS
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("christmas",function(source)
-	if not Authentication then
-		return false
-	end
-
 	local Passport = vRP.Passport(source)
 	if not Passport or not vRP.HasGroup(Passport,"Admin") then
 		return false
@@ -51,10 +47,6 @@ end)
 -- ADDSTATEBAGCHANGEHANDLER
 -----------------------------------------------------------------------------------------------------------------------------------------
 AddStateBagChangeHandler("Christbox",nil,function(_,_,Value)
-	if not Authentication then
-		return false
-	end
-
 	if Value <= 0 then
 		for Index in pairs(Locations) do
 			GlobalState["Christmas:"..Index] = false

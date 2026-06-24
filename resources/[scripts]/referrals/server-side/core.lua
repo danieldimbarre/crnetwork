@@ -15,7 +15,12 @@ Tunnel.bindInterface("referrals",Creative)
 function Creative.Check()
 	local source = source
 	local Passport = vRP.Passport(source)
-	if not Passport or vRP.AccountInformation(Passport,"Referral") then
+	if not Passport then
+		return false
+	end
+
+	if vRP.AccountInformation(Passport,"Referral") then
+		TriggerEvent("PollCreative",Passport,source)
 		return false
 	end
 
@@ -62,6 +67,8 @@ function Creative.Confirm(Origin,Code)
 			end
 		end
 	end
+
+	TriggerEvent("PollCreative",Passport,source)
 
 	return true
 end

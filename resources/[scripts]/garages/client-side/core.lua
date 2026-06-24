@@ -337,7 +337,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("garages:Delete")
 AddEventHandler("garages:Delete",function(Vehicle)
-	if not Vehicle or Vehicle == "" then
+	if Vehicle and type(Vehicle) == "table" then
+		Vehicle = Vehicle[3]
+	elseif not Vehicle or Vehicle == "" then
 		Vehicle = vRP.ClosestVehicle(15)
 	end
 

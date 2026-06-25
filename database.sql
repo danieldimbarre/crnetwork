@@ -486,3 +486,74 @@ CREATE TABLE IF NOT EXISTS `deaths_creative` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `entitydata` (`Name`, `Information`) VALUES ('Permissions:Admin', '{\"1\":1}');
+
+CREATE TABLE IF NOT EXISTS `phone_phones` (
+  `phone_number` varchar(50) NOT NULL,
+  `owner_id` varchar(50) DEFAULT NULL,
+  `format` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`phone_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `phone_instagram_accounts` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(50) DEFAULT NULL,
+  `follower_count` int(11) DEFAULT 0,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `phone_phone_calls` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `caller` varchar(50) NOT NULL,
+  `receiver` varchar(50) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `accepted` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `phone_message_messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `channel_id` int(11) NOT NULL,
+  `sender` varchar(50) NOT NULL,
+  `message` longtext DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `attachments` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `phone_services_messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(50) NOT NULL,
+  `message` longtext DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `phone_notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone_number` varchar(50) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `phone_instagram_stories_views` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `story_id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `phone_instagram_notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

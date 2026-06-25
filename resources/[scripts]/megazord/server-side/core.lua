@@ -41,9 +41,28 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- EXPLOSIONEVENT
 -----------------------------------------------------------------------------------------------------------------------------------------
+local SmokeRateLimit = {}
 AddEventHandler("explosionEvent",function(source,Data)
 	local source = source
 	local ExplosionType = tonumber(Data.explosionType)
+	
+	if ExplosionType == 19 or ExplosionType == 20 or ExplosionType == 21 then
+		local currentTime = os.time()
+		if not SmokeRateLimit[source] then
+			SmokeRateLimit[source] = { count = 1, time = currentTime }
+		else
+			if currentTime - SmokeRateLimit[source].time > 30 then
+				SmokeRateLimit[source] = { count = 1, time = currentTime }
+			else
+				SmokeRateLimit[source].count = SmokeRateLimit[source].count + 1
+			end
+		end
+
+		if SmokeRateLimit[source].count < 5 then
+			return
+		end
+	end
+
 	if Explodes[ExplosionType] then
 		CancelEvent()
 

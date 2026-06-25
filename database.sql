@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `coupons_creative` (
 
 CREATE TABLE IF NOT EXISTS `poll_creative` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(255) NOT NULL DEFAULT '',
   `Code` varchar(100) NOT NULL DEFAULT '',
   `Passport` bigint(19) NOT NULL DEFAULT 0,
   `Answer` longtext DEFAULT NULL,

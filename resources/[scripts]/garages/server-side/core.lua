@@ -887,15 +887,43 @@ AddEventHandler("garages:Lock",function(Network)
 		return false
 	end
 
+	local Plate = GetVehicleNumberPlateText(Entitys)
 	local State = Entity(Entitys).state
-	if State and State.Lockpick == Passport then
-		TriggerEvent("garages:LockVehicle",source,Network)
+	
+	local allowedLock = (GlobalState["Plates"][Plate] == Passport) or (State and State.Lockpick == Passport)
+
+	if not allowedLock then
+		local Inv = vRP.Inventory(Passport)
+		for _, v in pairs(Inv) do
+			if v and v.item then
+				if string.sub(v.item, 1, 10) == "vehiclekey" then
+					local Split = splitString(v.item, "-")
+					if Split[3] == Plate then
+						if not vRP.CheckDamaged(v.item) then
+							allowedLock = true
+							break
+						end
+					end
+				end
+			end
+		end
+	end
+
+	if not allowedLock then
+		return false
+	end
+
+	if Player(source)["state"]["BlockLocked"] then
+		TriggerClientEvent("Notify", source, "Atenção", "Para a segurança de todos, o veículo não pode ser trancado no momento.", "amarelo", 5000)
+		TriggerEvent("garages:LockVehicle", source, Network, true)
+	else
+		TriggerEvent("garages:LockVehicle", source, Network, false)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GARAGES:LOCKVEHICLE
 -----------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("garages:LockVehicle",function(source,Network)
+AddEventHandler("garages:LockVehicle",function(source,Network,OnlyUnlock)
 	local Vehicle = NetworkGetEntityFromNetworkId(Network)
 	if not DoesEntityExist(Vehicle) then
 		return false
@@ -904,6 +932,8 @@ AddEventHandler("garages:LockVehicle",function(source,Network)
 	local DoorStatus = tonumber(GetVehicleDoorLockStatus(Vehicle)) or 0
 
 	if DoorStatus <= 1 then
+		if OnlyUnlock then return false end
+
 		TriggerClientEvent("Notify",source,"Aviso","Veículo trancado.","default",5000)
 		TriggerClientEvent("sounds:Private",source,"locked",0.5)
 		SetVehicleDoorsLocked(Vehicle,2)

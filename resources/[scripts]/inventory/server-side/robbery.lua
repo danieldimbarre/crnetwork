@@ -175,6 +175,8 @@ AddEventHandler("inventory:Robbery",function(Number,Mode)
 		Color = 22
 	})
 
+	exports.discord:Embed("Robbery",("**[PASSAPORTE]:** %s\n**[ROUBO]:** %s"):format(Passport,Mode))
+
 	CreateThread(function()
 		while Active[Passport] and os.time() < Active[Passport] do
 			Wait(100)

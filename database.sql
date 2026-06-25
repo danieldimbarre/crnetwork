@@ -485,7 +485,7 @@ CREATE TABLE IF NOT EXISTS `deaths_creative` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `entitydata` (`Name`, `Information`) VALUES ('Permissions:Admin', '{\"1\":1}');
+INSERT IGNORE INTO `entitydata` (`Name`, `Information`) VALUES ('Permissions:Admin', '{\"1\":1}');
 
 CREATE TABLE IF NOT EXISTS `phone_phones` (
   `phone_number` varchar(50) NOT NULL,

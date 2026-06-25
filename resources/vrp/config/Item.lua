@@ -2995,6 +2995,32 @@ local List = {
 			["scrapmetal"] = 1825
 		}
 	},
+	["WEAPON_SPECIALCARBINE_POLICE"] = {
+		AdminLevel = 1,
+		Index = "WEAPON_SPECIALCARBINE",
+		Name = "G36C",
+		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
+		Repair = "repairkit04",
+		Type = "Armamento",
+		Arrest = true,
+		Serial = true,
+		Ammo = "WEAPON_RIFLE_AMMO",
+		Durability = 360,
+		Market = true,
+		Weight = 8.75,
+		Locked = true,
+		Attachs = {
+			["ATTACH_FLASHLIGHT"] = "COMPONENT_AT_AR_FLSH",
+			["ATTACH_CROSSHAIR"] = "COMPONENT_AT_SCOPE_MEDIUM",
+			["ATTACH_MAGAZINE"] = "COMPONENT_SPECIALCARBINE_CLIP_02",
+			["ATTACH_GRIP"] = "COMPONENT_AT_AR_AFGRIP",
+			["ATTACH_SILENCER"] = "COMPONENT_AT_AR_SUPP_02"
+		},
+		Economy = 22725,
+		Recycle = {
+			["scrapmetal"] = 1825
+		}
+	},
 	["WEAPON_SPECIALCARBINE_MK2"] = {
 		AdminLevel = 1,
 		Index = "WEAPON_SPECIALCARBINE_MK2",

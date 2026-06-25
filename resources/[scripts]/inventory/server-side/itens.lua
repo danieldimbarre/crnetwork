@@ -3163,6 +3163,10 @@ Use = {
 							Player(source).state.Buttons = false
 
 							if vRP.TakeItem(Passport,Full,1,true,Slot) then
+								if Model and exports.vrp:VehicleMode(Model) == "Work" then
+									Tyre = "All"
+								end
+
 								local Players = vRPC.Players(source)
 								for _,v in pairs(Players) do
 									async(function()

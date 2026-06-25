@@ -93,13 +93,21 @@ AddEventHandler("inventory:RepairTyres",function(Vehicle,Tyres,Plate)
 	if NetworkDoesNetworkIdExist(Vehicle) then
 		local Vehicle = NetToEnt(Vehicle)
 		if DoesEntityExist(Vehicle) and GetVehicleNumberPlateText(Vehicle) == Plate then
-			for i = 0,10 do
-				if GetTyreHealth(Vehicle,i) ~= 1000.0 then
-					SetVehicleTyreBurst(Vehicle,i,true,1000.0)
+			if Tyres == "All" then
+				for i = 0,10 do
+					if GetTyreHealth(Vehicle,i) ~= 1000.0 then
+						SetVehicleTyreFixed(Vehicle,i)
+					end
 				end
-			end
+			else
+				for i = 0,10 do
+					if GetTyreHealth(Vehicle,i) ~= 1000.0 then
+						SetVehicleTyreBurst(Vehicle,i,true,1000.0)
+					end
+				end
 
-			SetVehicleTyreFixed(Vehicle,Tyres)
+				SetVehicleTyreFixed(Vehicle,Tyres)
+			end
 		end
 	end
 end)

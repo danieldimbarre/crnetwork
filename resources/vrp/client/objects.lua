@@ -11,9 +11,11 @@ local Switch = false
 function tvRP.SprayExist(Distance)
 	local Ped = PlayerPedId()
 	local Coords = GetEntityCoords(Ped)
+	local MaxDistance = (Distance or 250.0) ^ 2
 
 	for _,Spray in pairs(Sprays) do
-		if #(Coords - GetBlipCoords(Spray.Blip)) <= (Distance or 250) then
+		local Dist = Coords - Spray.Coords
+		if (Dist.x * Dist.x + Dist.y * Dist.y + Dist.z * Dist.z) <= MaxDistance then
 			return Spray.Permission
 		end
 	end
@@ -27,38 +29,20 @@ RegisterNetEvent("objects:Table")
 AddEventHandler("objects:Table",function(Data)
 	Objects = Data or {}
 
-	local Colors = {
-		LootMedics = 76,
-		LootWeapons = 52,
-		LootSupplies = 56,
-		LootLegendary = 81
-	}
-
-	for Number,Data in pairs(Objects) do
-		local Mode = Data.Mode
-		if not Mode then
-			goto continue
-		end
-
-		local x,y,z = Data.Coords[1],Data.Coords[2],Data.Coords[3]
-
-		local Color = Colors[Mode]
-		if Color then
-			local Blip = AddBlipForRadius(x,y,z,25.0)
-			SetBlipAlpha(Blip,200)
-			SetBlipColour(Blip,Color)
-		elseif Mode == "Sprays" then
-			Sprays[Number] = Sprays[Number] or {}
+	for Number,Object in pairs(Objects) do
+		if Object.Mode == "Sprays" and not Sprays[Number] then
+			local x,y,z = table.unpack(Object.Coords)
 			local Blip = AddBlipForRadius(x,y,z,250.0)
 
-			SetBlipColour(Blip,Data.Color)
+			SetBlipColour(Blip,Object.Color)
 			SetBlipAlpha(Blip,150)
 
-			Sprays[Number].Blip = Blip
-			Sprays[Number].Permission = Data.Permission
+			Sprays[Number] = {
+				Blip = Blip,
+				Coords = vec3(x,y,z),
+				Permission = Object.Permission
+			}
 		end
-
-		::continue::
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -72,36 +56,35 @@ AddEventHandler("objects:Adicionar",function(Number,Data)
 
 	Objects[Number] = Data
 
-	if Data.Mode ~= "Sprays" then
+	if Data.Mode ~= "Sprays" or Sprays[Number] then
 		return false
 	end
 
-	Sprays[Number] = Sprays[Number] or {}
-
-	local x,y,z = Data.Coords[1],Data.Coords[2],Data.Coords[3]
+	local x,y,z = table.unpack(Data.Coords)
 	local Blip = AddBlipForRadius(x,y,z,250.0)
-
 	SetBlipColour(Blip,Data.Color)
 	SetBlipAlpha(Blip,150)
 
-	Sprays[Number].Blip = Blip
-	Sprays[Number].Permission = Data.Permission
+	Sprays[Number] = {
+		Blip = Blip,
+		Coords = vec3(x,y,z),
+		Permission = Data.Permission
+	}
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OBJECTS:REMOVER
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("objects:Remover")
 AddEventHandler("objects:Remover",function(Number)
+	local Entity = Init[Number]
 	local Data = Objects[Number]
-	local Entitys = Init[Number]
-
-	if Entitys then
-		if DoesEntityExist(Entitys) then
-			DeleteEntity(Entitys)
+	if Entity then
+		if DoesEntityExist(Entity) then
+			DeleteEntity(Entity)
 		end
 
 		if Data and Data.Mode then
-			exports.target:RemCircleZone("Objects:"..Number)
+			exports.target:RemCircleZone("Objects:" .. Number)
 		end
 
 		Init[Number] = nil
@@ -121,9 +104,7 @@ AddEventHandler("objects:Remover",function(Number)
 		Sprays[Number] = nil
 	end
 
-	if Data then
-		Objects[Number] = nil
-	end
+	Objects[Number] = nil
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OBJECTS:UPDATE
@@ -137,19 +118,19 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ADDTARGETZONE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function AddTargetZone(Number,Coords,mode,Weight,Options,Size,Box)
+function AddTargetZone(Number,Coords,Weight,Options,Size,Box)
 	if not Coords or not Size or not Options then
 		return false
 	end
 
+	local z = Coords[3]
 	local Zone = "Objects:"..Number
-	local Heading = Coords[4] or 0.0
-	local Params = { name = Zone, heading = Heading }
-	local Center = vec3(Coords[1],Coords[2],Coords[3] + (Weight or 0.0))
+	local Params = { name = Zone, heading = Coords[4] or 0.0 }
+	local Center = vec3(Coords[1],Coords[2],z + (Weight or 0.0))
 
 	if Box then
-		Params.minZ = Coords[3]
-		Params.maxZ = Coords[3] + (Size.maxZ or 1.5)
+		Params.minZ = z
+		Params.maxZ = z + (Size.maxZ or 1.5)
 
 		exports.target:AddBoxZone(Zone,Center,Size.width or 1.0,Size.height or 1.0,Params,Options)
 	else
@@ -311,7 +292,7 @@ function TargetLabel(Number,Coords,Mode,Weight,Item)
 	}
 
 	if Modes[Mode] then
-		AddTargetZone(Number,Coords,Mode,Weight,Modes[Mode].options,Modes[Mode].size,Modes[Mode].isBox)
+		AddTargetZone(Number,Coords,Weight,Modes[Mode].options,Modes[Mode].size,Modes[Mode].isBox)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -319,12 +300,22 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CreateAndManageObject(Number,Table,Coords)
 	if not Table or not Table.Coords then
-		return
+		return false
 	end
 
+	local x = Table.Coords[1]
+	local y = Table.Coords[2]
+	local z = Table.Coords[3]
+
+	local Distance = Table.Distance or 100.0
 	local ConsultObject = Init[Number]
-	local ObjectCoords = vec3(Table.Coords[1],Table.Coords[2],Table.Coords[3])
-	if #(Coords - ObjectCoords) > (Table.Distance or 100.0) then
+	local Ped = PlayerPedId()
+
+	local dx = Coords.x - x
+	local dy = Coords.y - y
+	local dz = Coords.z - z
+
+	if (dx * dx + dy * dy + dz * dz) > (Distance * Distance) then
 		if ConsultObject then
 			DestroyObject(Number,Table)
 		end
@@ -332,22 +323,53 @@ function CreateAndManageObject(Number,Table,Coords)
 		return false
 	end
 
-	if ConsultObject or not LoadModel(Table.Object) then
+	if ConsultObject then
+		if Table.Line then
+			if HasEntityClearLosToEntity(Ped,ConsultObject,17) then
+				SetEntityDrawOutline(ConsultObject,true)
+			else
+				SetEntityDrawOutline(ConsultObject,false)
+			end
+		end
+
+		return false
+	end
+
+	if Table.Mode == "Chests" and Table.Permission then
+		local Permission = SplitOne(Table.Permission)
+		local Hierarchy = tonumber(SplitTwo(Table.Permission)) or 0
+
+		local Level = LocalPlayer.state[Permission]
+		if not Level or Level > Hierarchy then
+			return false
+		end
+	end
+
+	if not LoadModel(Table.Object) then
 		return false
 	end
 
 	local Ped = PlayerPedId()
-	local Entitys = CreateObjectNoOffset(Table.Object,ObjectCoords.x,ObjectCoords.y,ObjectCoords.z,false,false,false)
+	local Entitys = CreateObjectNoOffset(Table.Object,x,y,z,false,false,false)
+	if not DoesEntityExist(Entitys) then
+		return false
+	end
 
 	Init[Number] = Entitys
 
 	SetEntityHeading(Entitys,Table.Coords[4] or 0.0)
 	FreezeEntityPosition(Entitys,true)
-	SetEntityLodDist(Entitys,0xFFFF)
+	SetEntityLodDist(Entitys,200)
+
+	if Table.Line then
+		SetEntityDrawOutlineShader(0)
+		SetEntityDrawOutlineColor(88,101,242,200)
+		SetEntityDrawOutline(Entitys,false)
+	end
 
 	if IsPedInAnyVehicle(Ped,false) then
 		local Vehicle = GetVehiclePedIsUsing(Ped)
-		if DoesEntityExist(Vehicle) then
+		if Vehicle ~= 0 and DoesEntityExist(Vehicle) then
 			SetEntityNoCollisionEntity(Vehicle,Entitys,false)
 		end
 	end
@@ -357,16 +379,6 @@ function CreateAndManageObject(Number,Table,Coords)
 	end
 
 	if Table.Mode then
-		if Table.Mode == "Chests" and Table.Permission then
-			local Permission = SplitOne(Table.Permission)
-			local Hierarchy = tonumber(SplitTwo(Table.Permission)) or 0
-
-			local Level = LocalPlayer.state[Permission]
-			if not Level or Level > Hierarchy then
-				return false
-			end
-		end
-
 		TargetLabel(Number,Table.Coords,Table.Mode,Table.Weight or 0.0,Table.Item)
 	end
 
@@ -406,19 +418,24 @@ function DestroyObject(Number,Data)
 		return false
 	end
 
+	Init[Number] = nil
+
 	if Data.Mode then
 		exports.target:RemCircleZone("Objects:"..Number)
 	end
 
 	if DoesEntityExist(ConsultObject) then
+		if Data.Line then
+			SetEntityDrawOutline(ConsultObject,false)
+		end
+
+		SetEntityAsMissionEntity(ConsultObject,true,true)
 		DeleteEntity(ConsultObject)
 	end
 
 	if Data.Active == "Spikes" then
 		TriggerEvent("spikes:Remover",Number)
 	end
-
-	Init[Number] = nil
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OBJECTCONTROLLING

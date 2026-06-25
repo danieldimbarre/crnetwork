@@ -46,14 +46,10 @@ SpawnCoords = {
 -- TEXTUREPACK
 -----------------------------------------------------------------------------------------------------------------------------------------
 TexturePack = {
-	{ Width = 19, Height = 20, Image = "E" },
-	{ Width = 19, Height = 20, Image = "H" },
-	{ Width = 72, Height = 72, Image = "Drop" },
+	{ Width = 72, Height = 72, Image = "E" },
+	{ Width = 72, Height = 72, Image = "H" },
 	{ Width = 43, Height = 67, Image = "Races" },
 	{ Width = 72, Height = 72, Image = "Normal" },
-	{ Width = 102, Height = 20, Image = "EPress" },
-	{ Width = 102, Height = 20, Image = "HPress" },
-	{ Width = 72, Height = 72, Image = "Selected" },
 	{ Width = 72, Height = 72, Image = "Marker" }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -17,8 +17,19 @@ client_scripts {
 
 server_scripts {
 	"modules/vrp.lua",
-	"modules/core.lua",
-	"modules/prepare.lua"
+	"modules/base.lua",
+	"modules/banned.lua",
+	"modules/daily.lua",
+	"modules/drugs.lua",
+	"modules/groups.lua",
+	"modules/identity.lua",
+	"modules/inventory.lua",
+	"modules/permissions.lua",
+	"modules/money.lua",
+	"modules/player.lua",
+	"modules/prepare.lua",
+	"modules/battlepass.lua",
+	"modules/vehicles.lua"
 }
 
 files {

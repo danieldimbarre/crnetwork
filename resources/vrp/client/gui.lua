@@ -293,8 +293,8 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("GuiCancel",function()
 	local Ped = PlayerPedId()
-	if LocalPlayer.state.Active and GetNetworkTime() >= Button and not IsPauseMenuActive() and not LocalPlayer.state.Handcuff and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
-		Button = GetNetworkTime() + 5000
+	if LocalPlayer.state.Active and GetNetworkTime() >= Button and not IsPauseMenuActive() and not IsPedReloading(Ped) and not LocalPlayer.state.Handcuff and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
+		Button = GetNetworkTime() + 1000
 		TriggerServerEvent("inventory:Cancel")
 
 		if LocalPlayer.state.Arena then
@@ -307,9 +307,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("GuiHandsUp",function()
 	local Ped = PlayerPedId()
-	if LocalPlayer.state.Active and GetNetworkTime() >= Button and not IsPauseMenuActive() and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not IsPedInAnyVehicle(Ped) and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
-		Button = GetNetworkTime() + 5000
-
+	if LocalPlayer.state.Active and not IsPauseMenuActive() and not IsPedReloading(Ped) and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not IsPedInAnyVehicle(Ped) and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
 		if IsEntityPlayingAnim(Ped,"random@mugging3","handsup_standing_base",3) then
 			StopAnimTask(Ped,"random@mugging3","handsup_standing_base",8.0)
 			tvRP.AnimActive()
@@ -325,9 +323,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("GuiPoint",function()
 	local Ped = PlayerPedId()
-	if LocalPlayer.state.Active and GetNetworkTime() >= Button and not IsPauseMenuActive() and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not IsPedInAnyVehicle(Ped) and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
-		Button = GetNetworkTime() + 5000
-
+	if LocalPlayer.state.Active and not IsPauseMenuActive() and not IsPedReloading(Ped) and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not IsPedInAnyVehicle(Ped) and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
 		if Point then
 			RequestTaskMoveNetworkStateTransition(Ped,"Stop")
 
@@ -354,7 +350,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("GuiEngine",function()
 	local Ped = PlayerPedId()
-	if LocalPlayer.state.Active and GetNetworkTime() >= Button and not IsPauseMenuActive() and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
+	if LocalPlayer.state.Active and not IsPauseMenuActive() and not IsPedReloading(Ped) and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
 		local Vehicle = GetVehiclePedIsIn(Ped,false)
 		if Vehicle == 0 then
 			return false
@@ -363,8 +359,6 @@ RegisterCommand("GuiEngine",function()
 		if GetPedInVehicleSeat(Vehicle,-1) ~= Ped then
 			return false
 		end
-
-		Button = GetNetworkTime() + 5000
 
 		local Running = GetIsVehicleEngineRunning(Vehicle)
 		local NewState = not Running
@@ -380,9 +374,7 @@ RegisterCommand("GuiCrouch",function()
 	DisableControlAction(0,36,true)
 
 	local Ped = PlayerPedId()
-	if LocalPlayer.state.Active and GetNetworkTime() >= Button and not IsPauseMenuActive() and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not IsPedInAnyVehicle(Ped) and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
-		Button = GetNetworkTime() + 5000
-
+	if LocalPlayer.state.Active and not IsPauseMenuActive() and not IsPedReloading(Ped) and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not IsPedInAnyVehicle(Ped) and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
 		if Crouch then
 			Crouch = false
 
@@ -409,7 +401,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("GuiBind",function(source,Message)
 	local Ped = PlayerPedId()
-	if not (GetNetworkTime() >= Button and not IsPauseMenuActive() and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not LocalPlayer.state.Cancel and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not IsPedReloading(Ped)) then
+	if not (GetNetworkTime() >= Button and not IsPauseMenuActive() and not IsPedReloading(Ped) and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not LocalPlayer.state.Cancel and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not IsPedReloading(Ped)) then
 		return false
 	end
 
@@ -418,7 +410,7 @@ RegisterCommand("GuiBind",function(source,Message)
 		return false
 	end
 
-	Button = GetNetworkTime() + 5000
+	Button = GetNetworkTime() + 1000
 
 	TriggerEvent("inventory:Use",Slot)
 end)
@@ -427,7 +419,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("GuiPads",function(source,Message)
 	local Ped = PlayerPedId()
-	if Message[1] and (Binded[Message[1]] or Message[1] == "0") and LocalPlayer.state.Active and GetNetworkTime() >= Button and not IsPauseMenuActive() and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) and not LocalPlayer.state.Handcuff and not IsPedInAnyVehicle(Ped) and not IsPedArmed(Ped,7) and not IsPedSwimming(Ped) then
+	if Message[1] and (Binded[Message[1]] or Message[1] == "0") and LocalPlayer.state.Active and not IsPauseMenuActive() and not IsPedReloading(Ped) and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) and not LocalPlayer.state.Handcuff and not IsPedInAnyVehicle(Ped) and not IsPedArmed(Ped,7) and not IsPedSwimming(Ped) then
 		local Key = tostring(Message[1])
 		if not Key then
 			return false
@@ -436,8 +428,6 @@ RegisterCommand("GuiPads",function(source,Message)
 		if not Binded[Key] and Key ~= "0" then
 			return false
 		end
-
-		Button = GetNetworkTime() + 5000
 
 		if Key == "0" then
 			SetPedToRagdoll(Ped,2500,2500,0,0,0,0)
@@ -471,13 +461,13 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand("GuiLock",function()
 	local Ped = PlayerPedId()
-	if LocalPlayer.state.Active and not LocalPlayer.state.BlockLocked and GetNetworkTime() >= Button and not IsPauseMenuActive() and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
+	if LocalPlayer.state.Active and not LocalPlayer.state.BlockLocked and GetNetworkTime() >= Button and not IsPauseMenuActive() and not IsPedReloading(Ped) and not LocalPlayer.state.Buttons and not LocalPlayer.state.Commands and not LocalPlayer.state.Handcuff and not exports["lb-phone"]:IsOpen() and GetEntityHealth(Ped) > 100 and not LocalPlayer.state.Cancel and not IsPedReloading(Ped) then
 		local Vehicle,Network = tvRP.VehicleList()
 		if not Vehicle or not Network then
 			return false
 		end
 
-		Button = GetNetworkTime() + 5000
+		Button = GetNetworkTime() + 1000
 
 		TriggerServerEvent("garages:Lock",Network)
 	end

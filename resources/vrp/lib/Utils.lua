@@ -264,6 +264,8 @@ end
 -- COMPLETETIMERS
 -----------------------------------------------------------------------------------------------------------------------------------------
 function CompleteTimers(Seconds,Simple)
+	local Message = {}
+
 	local Days = math.floor(Seconds / 86400)
 	Seconds = Seconds % 86400
 
@@ -274,22 +276,26 @@ function CompleteTimers(Seconds,Simple)
 	Seconds = Seconds % 60
 
 	local function Plural(Value,Singular,Plural)
-		return Value <= 1 and Singular or Plural
+		return Value == 1 and Singular or Plural
 	end
 
 	if Days > 0 then
-		if Hours > 0 and not Simple then
-			return string.format("%d %s, %d %s e %d %s",Days,Plural(Days,"Dia","Dias"),Hours,Plural(Hours,"Hora","Horas"),Minutes,Plural(Minutes,"Minuto","Minutos"))
-		else
-			return string.format("%d %s e %d %s",Days,Plural(Days,"Dia","Dias"),Hours,Plural(Hours,"Hora","Horas"))
-		end
-	elseif Hours > 0 then
-		return string.format("%d %s e %d %s",Hours,Plural(Hours,"Hora","Horas"),Minutes,Plural(Minutes,"Minuto","Minutos"))
-	elseif Minutes > 0 then
-		return string.format("%d %s e %d %s",Minutes,Plural(Minutes,"Minuto","Minutos"),Seconds,Plural(Seconds,"Segundo","Segundos"))
-	else
-		return string.format("%d %s",Seconds,Plural(Seconds,"Segundo","Segundos"))
+		Message[#Message + 1] = string.format("%d %s",Days,Plural(Days,"Dia","Dias"))
 	end
+
+	if Hours > 0 then
+		Message[#Message + 1] = string.format("%d %s",Hours,Plural(Hours,"Hora","Horas"))
+	end
+
+	if Minutes > 0 then
+		Message[#Message + 1] = string.format("%d %s",Minutes,Plural(Minutes,"Minuto","Minutos"))
+	end
+
+	if Seconds > 0 or #Message == 0 then
+		Message[#Message + 1] = string.format("%d %s",Seconds,Plural(Seconds,"Segundo","Segundos"))
+	end
+
+	return table.concat(Message,", ")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- BONES

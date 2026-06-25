@@ -452,16 +452,18 @@ function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
 		Ammos = exports.vrp:WeaponAmmo(Weapon)
 		TriggerEvent("Weapon",Weapon)
 		TriggerEvent("inventory:RemoveWeapon",Weapon)
-		GiveWeaponToPed(Ped,Weapon,Ammo,false,true)
+		
+		local Hash = exports.vrp:ItemIndex(Weapon) or Weapon
+		GiveWeaponToPed(Ped,Hash,Ammo,false,true)
 
 		if Skin then
-			GiveWeaponComponentToPed(Ped,Weapon,Skin)
+			GiveWeaponComponentToPed(Ped,Hash,Skin)
 		end
 
 		if Components then
 			for Item in pairs(Components) do
 				local Component = exports.vrp:WeaponAttach(SplitOne(Item),Weapon)
-				GiveWeaponComponentToPed(Ped,Weapon,Component)
+				GiveWeaponComponentToPed(Ped,Hash,Component)
 			end
 		end
 	end

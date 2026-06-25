@@ -820,7 +820,7 @@ local List = {
 	},
 	["WEAPON_KATANA"] = {
 		AdminLevel = 1,
-		Index = "katana",
+		Index = "WEAPON_KATANA",
 		Name = "Katana",
 		Type = "Armamento",
 		Arrest = true,
@@ -2182,7 +2182,7 @@ local List = {
 	-- MELEES
 	["WEAPON_HATCHET"] = {
 		AdminLevel = 1,
-		Index = "hatchet",
+		Index = "WEAPON_HATCHET",
 		Name = "Machado",
 		Type = "Armamento",
 		Arrest = true,
@@ -2194,7 +2194,7 @@ local List = {
 	},
 	["WEAPON_BAT"] = {
 		AdminLevel = 1,
-		Index = "bat",
+		Index = "WEAPON_BAT",
 		Name = "Bastão de Beisebol",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2206,7 +2206,7 @@ local List = {
 	},
 	["WEAPON_BATTLEAXE"] = {
 		AdminLevel = 1,
-		Index = "battleaxe",
+		Index = "WEAPON_BATTLEAXE",
 		Name = "Machado de Batalha",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2218,7 +2218,7 @@ local List = {
 	},
 	["WEAPON_CROWBAR"] = {
 		AdminLevel = 1,
-		Index = "crowbar",
+		Index = "WEAPON_CROWBAR",
 		Name = "Pé de Cabra",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2230,7 +2230,7 @@ local List = {
 	},
 	["WEAPON_SWITCHBLADE"] = {
 		AdminLevel = 1,
-		Index = "switchblade",
+		Index = "WEAPON_SWITCHBLADE",
 		Name = "Canivete",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2242,7 +2242,7 @@ local List = {
 	},
 	["WEAPON_GOLFCLUB"] = {
 		AdminLevel = 1,
-		Index = "golfclub",
+		Index = "WEAPON_GOLFCLUB",
 		Name = "Taco de Golf",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2254,7 +2254,7 @@ local List = {
 	},
 	["WEAPON_HAMMER"] = {
 		AdminLevel = 1,
-		Index = "hammer",
+		Index = "WEAPON_HAMMER",
 		Name = "Martelo",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2266,7 +2266,7 @@ local List = {
 	},
 	["WEAPON_MACHETE"] = {
 		AdminLevel = 1,
-		Index = "machete",
+		Index = "WEAPON_MACHETE",
 		Name = "Facão",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2278,7 +2278,7 @@ local List = {
 	},
 	["WEAPON_POOLCUE"] = {
 		AdminLevel = 1,
-		Index = "poolcue",
+		Index = "WEAPON_POOLCUE",
 		Name = "Taco de Sinuca",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2290,7 +2290,7 @@ local List = {
 	},
 	["WEAPON_STONE_HATCHET"] = {
 		AdminLevel = 1,
-		Index = "stonehatchet",
+		Index = "WEAPON_STONE_HATCHET",
 		Name = "Machado de Pedra",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2302,7 +2302,7 @@ local List = {
 	},
 	["WEAPON_WRENCH"] = {
 		AdminLevel = 1,
-		Index = "wrench",
+		Index = "WEAPON_WRENCH",
 		Name = "Chave Inglesa",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2314,7 +2314,7 @@ local List = {
 	},
 	["WEAPON_KNUCKLE"] = {
 		AdminLevel = 1,
-		Index = "knuckle",
+		Index = "WEAPON_KNUCKLE",
 		Name = "Soco Inglês",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2326,7 +2326,7 @@ local List = {
 	},
 	["WEAPON_FLASHLIGHT"] = {
 		AdminLevel = 1,
-		Index = "flashlight",
+		Index = "WEAPON_FLASHLIGHT",
 		Name = "Lanterna",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2338,7 +2338,7 @@ local List = {
 	},
 	["WEAPON_NIGHTSTICK"] = {
 		AdminLevel = 1,
-		Index = "nightstick",
+		Index = "WEAPON_NIGHTSTICK",
 		Name = "Cassetete",
 		Repair = "repairkit01",
 		Type = "Armamento",
@@ -2350,7 +2350,7 @@ local List = {
 	},
 	["WEAPON_PETROLCAN"] = {
 		AdminLevel = 1,
-		Index = "gallon",
+		Index = "WEAPON_PETROLCAN",
 		Name = "Galão",
 		Type = "Armamento",
 		Arrest = true,
@@ -2442,7 +2442,7 @@ local List = {
 	-- ARREMESSO
 	["WEAPON_ACIDPACKAGE"] = {
 		AdminLevel = 1,
-		Index = "newspaper",
+		Index = "WEAPON_ACIDPACKAGE",
 		Name = "Jornal",
 		Type = "Arremesso",
 		Arrest = true,
@@ -2453,7 +2453,7 @@ local List = {
 	},
 	["WEAPON_BRICK"] = {
 		AdminLevel = 1,
-		Index = "brick",
+		Index = "WEAPON_BRICK",
 		Name = "Tijolo",
 		Type = "Arremesso",
 		Arrest = true,
@@ -2464,7 +2464,7 @@ local List = {
 	},
 	["WEAPON_SNOWBALL"] = {
 		AdminLevel = 1,
-		Index = "snowball",
+		Index = "WEAPON_SNOWBALL",
 		Name = "Bola de Neve",
 		Type = "Arremesso",
 		Arrest = true,
@@ -2475,7 +2475,7 @@ local List = {
 	},
 	["WEAPON_SHOES"] = {
 		AdminLevel = 1,
-		Index = "shoes",
+		Index = "WEAPON_SHOES",
 		Name = "Tênis",
 		Type = "Arremesso",
 		Arrest = true,
@@ -2486,7 +2486,7 @@ local List = {
 	},
 	["WEAPON_MOLOTOV"] = {
 		AdminLevel = 1,
-		Index = "molotov",
+		Index = "WEAPON_MOLOTOV",
 		Name = "Coquetel Molotov",
 		Type = "Arremesso",
 		Arrest = true,
@@ -2498,7 +2498,7 @@ local List = {
 	},
 	["WEAPON_SMOKEGRENADE"] = {
 		AdminLevel = 1,
-		Index = "smokegrenade",
+		Index = "WEAPON_SMOKEGRENADE",
 		Name = "Granada de Fumaça",
 		Type = "Arremesso",
 		Arrest = true,
@@ -2511,7 +2511,7 @@ local List = {
 	-- ARMAMENTOS
 	["WEAPON_STUNGUN"] = {
 		AdminLevel = 1,
-		Index = "stungun",
+		Index = "WEAPON_STUNGUN",
 		Name = "Tazer",
 		Repair = "repairkit02",
 		Type = "Armamento",
@@ -2527,7 +2527,7 @@ local List = {
 	},
 	["WEAPON_PISTOL"] = {
 		AdminLevel = 1,
-		Index = "m1911",
+		Index = "WEAPON_PISTOL",
 		Name = "M1911",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		Repair = "repairkit02",
@@ -2551,7 +2551,7 @@ local List = {
 	},
 	["WEAPON_PISTOL_MK2"] = {
 		AdminLevel = 1,
-		Index = "t54",
+		Index = "WEAPON_PISTOL_MK2",
 		Name = "T54",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		Repair = "repairkit02",
@@ -2576,7 +2576,7 @@ local List = {
 	},
 	["WEAPON_COMPACTRIFLE"] = {
 		AdminLevel = 1,
-		Index = "aks74u",
+		Index = "WEAPON_COMPACTRIFLE",
 		Name = "AKS74U",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit03",
@@ -2597,7 +2597,7 @@ local List = {
 	},
 	["WEAPON_APPISTOL"] = {
 		AdminLevel = 1,
-		Index = "kochvp9",
+		Index = "WEAPON_APPISTOL",
 		Name = "Koch Vp9",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
 		Repair = "repairkit03",
@@ -2621,7 +2621,7 @@ local List = {
 	},
 	["WEAPON_HEAVYPISTOL"] = {
 		AdminLevel = 1,
-		Index = "m45a1",
+		Index = "WEAPON_HEAVYPISTOL",
 		Name = "M45A1",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		Repair = "repairkit02",
@@ -2645,7 +2645,7 @@ local List = {
 	},
 	["WEAPON_MACHINEPISTOL"] = {
 		AdminLevel = 1,
-		Index = "tec9",
+		Index = "WEAPON_MACHINEPISTOL",
 		Name = "Tec-9",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
 		Type = "Armamento",
@@ -2668,7 +2668,7 @@ local List = {
 	},
 	["WEAPON_MICROSMG"] = {
 		AdminLevel = 1,
-		Index = "uzi",
+		Index = "WEAPON_MICROSMG",
 		Name = "Uzi",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
 		Type = "Armamento",
@@ -2693,7 +2693,7 @@ local List = {
 	},
 	["WEAPON_RPG"] = {
 		AdminLevel = 1,
-		Index = "rpg",
+		Index = "WEAPON_RPG",
 		Name = "Lança Foguete",
 		Description = "Armamento que utiliza <common>Munição de Foguete</common>.",
 		Repair = "repairkit04",
@@ -2708,7 +2708,7 @@ local List = {
 	},
 	["WEAPON_MINISMG"] = {
 		AdminLevel = 1,
-		Index = "mac10",
+		Index = "WEAPON_MINISMG",
 		Name = "MAC-10",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
 		Repair = "repairkit03",
@@ -2730,7 +2730,7 @@ local List = {
 	},
 	["WEAPON_SNSPISTOL"] = {
 		AdminLevel = 1,
-		Index = "f57",
+		Index = "WEAPON_SNSPISTOL",
 		Name = "F57",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		Repair = "repairkit02",
@@ -2752,7 +2752,7 @@ local List = {
 	},
 	["WEAPON_SNSPISTOL_MK2"] = {
 		AdminLevel = 1,
-		Index = "cz52",
+		Index = "WEAPON_SNSPISTOL_MK2",
 		Name = "CZ52",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		Repair = "repairkit02",
@@ -2777,7 +2777,7 @@ local List = {
 	},
 	["WEAPON_VINTAGEPISTOL"] = {
 		AdminLevel = 1,
-		Index = "m1922",
+		Index = "WEAPON_VINTAGEPISTOL",
 		Name = "M1922",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		Repair = "repairkit02",
@@ -2800,7 +2800,7 @@ local List = {
 	},
 	["WEAPON_PISTOL50"] = {
 		AdminLevel = 1,
-		Index = "deagle",
+		Index = "WEAPON_PISTOL50",
 		Name = "Deagle",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		Repair = "repairkit03",
@@ -2824,7 +2824,7 @@ local List = {
 	},
 	["WEAPON_COMBATPISTOL"] = {
 		AdminLevel = 1,
-		Index = "g18c",
+		Index = "WEAPON_COMBATPISTOL",
 		Name = "G18C",
 		Description = "Armamento que utiliza <common>Munição de Pistola</common>.",
 		Repair = "repairkit02",
@@ -2848,7 +2848,7 @@ local List = {
 	},
 	["WEAPON_CARBINERIFLE"] = {
 		AdminLevel = 1,
-		Index = "m4a1",
+		Index = "WEAPON_CARBINERIFLE",
 		Name = "M4A1",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -2873,7 +2873,7 @@ local List = {
 	},
 	["WEAPON_CARBINERIFLE_MK2"] = {
 		AdminLevel = 1,
-		Index = "h416",
+		Index = "WEAPON_CARBINERIFLE_MK2",
 		Name = "H416",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -2898,7 +2898,7 @@ local List = {
 	},
 	["WEAPON_ADVANCEDRIFLE"] = {
 		AdminLevel = 1,
-		Index = "mdr",
+		Index = "WEAPON_ADVANCEDRIFLE",
 		Name = "MDR",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -2922,7 +2922,7 @@ local List = {
 	},
 	["WEAPON_BULLPUPRIFLE"] = {
 		AdminLevel = 1,
-		Index = "qbz95",
+		Index = "WEAPON_BULLPUPRIFLE",
 		Name = "QBZ-95",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -2947,7 +2947,7 @@ local List = {
 	},
 	["WEAPON_BULLPUPRIFLE_MK2"] = {
 		AdminLevel = 1,
-		Index = "l85",
+		Index = "WEAPON_BULLPUPRIFLE_MK2",
 		Name = "L85",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -2972,7 +2972,7 @@ local List = {
 	},
 	["WEAPON_SPECIALCARBINE"] = {
 		AdminLevel = 1,
-		Index = "g36c",
+		Index = "WEAPON_SPECIALCARBINE",
 		Name = "G36C",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -2997,7 +2997,7 @@ local List = {
 	},
 	["WEAPON_SPECIALCARBINE_MK2"] = {
 		AdminLevel = 1,
-		Index = "sigsauer556",
+		Index = "WEAPON_SPECIALCARBINE_MK2",
 		Name = "Sig Sauer 556",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -3021,7 +3021,7 @@ local List = {
 	},
 	["WEAPON_PUMPSHOTGUN"] = {
 		AdminLevel = 1,
-		Index = "m870",
+		Index = "WEAPON_PUMPSHOTGUN",
 		Name = "M870",
 		Description = "Armamento que utiliza <common>Munição de Espingarda</common>.",
 		Repair = "repairkit03",
@@ -3043,7 +3043,7 @@ local List = {
 	},
 	["WEAPON_PUMPSHOTGUN_MK2"] = {
 		AdminLevel = 1,
-		Index = "mp133",
+		Index = "WEAPON_PUMPSHOTGUN_MK2",
 		Name = "MP133",
 		Description = "Armamento que utiliza <common>Munição de Espingarda</common>.",
 		Repair = "repairkit04",
@@ -3067,7 +3067,7 @@ local List = {
 	},
 	["WEAPON_MUSKET"] = {
 		AdminLevel = 1,
-		Index = "winchester",
+		Index = "WEAPON_MUSKET",
 		Name = "Winchester 1892",
 		Description = "Armamento que utiliza <common>Munição de Mosquete</common>.",
 		Repair = "repairkit02",
@@ -3085,7 +3085,7 @@ local List = {
 	},
 	["WEAPON_SAWNOFFSHOTGUN"] = {
 		AdminLevel = 1,
-		Index = "mossberg500",
+		Index = "WEAPON_SAWNOFFSHOTGUN",
 		Name = "Mossberg 500",
 		Description = "Armamento que utiliza <common>Munição de Espingarda</common>.",
 		Repair = "repairkit03",
@@ -3103,7 +3103,7 @@ local List = {
 	},
 	["WEAPON_SMG"] = {
 		AdminLevel = 1,
-		Index = "mp5",
+		Index = "WEAPON_SMG",
 		Name = "MP5",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
 		Repair = "repairkit03",
@@ -3127,7 +3127,7 @@ local List = {
 	},
 	["WEAPON_SMG_MK2"] = {
 		AdminLevel = 1,
-		Index = "mpx",
+		Index = "WEAPON_SMG_MK2",
 		Name = "MPX",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
 		Repair = "repairkit03",
@@ -3153,7 +3153,7 @@ local List = {
 	},
 	["WEAPON_TACTICALRIFLE"] = {
 		AdminLevel = 1,
-		Index = "m16",
+		Index = "WEAPON_TACTICALRIFLE",
 		Name = "M16",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -3178,7 +3178,7 @@ local List = {
 	},
 	["WEAPON_HEAVYRIFLE"] = {
 		AdminLevel = 1,
-		Index = "scarh",
+		Index = "WEAPON_HEAVYRIFLE",
 		Name = "Scar-H",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -3203,7 +3203,7 @@ local List = {
 	},
 	["WEAPON_ASSAULTRIFLE"] = {
 		AdminLevel = 1,
-		Index = "ak74n",
+		Index = "WEAPON_ASSAULTRIFLE",
 		Name = "AK-74N",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -3228,7 +3228,7 @@ local List = {
 	},
 	["WEAPON_ASSAULTRIFLE_MK2"] = {
 		AdminLevel = 1,
-		Index = "ak102",
+		Index = "WEAPON_ASSAULTRIFLE_MK2",
 		Name = "AK-102",
 		Description = "Armamento que utiliza <common>Munição de Rifle</common>.",
 		Repair = "repairkit04",
@@ -3253,7 +3253,7 @@ local List = {
 	},
 	["WEAPON_ASSAULTSMG"] = {
 		AdminLevel = 1,
-		Index = "f2000",
+		Index = "WEAPON_ASSAULTSMG",
 		Name = "F2000",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
 		Repair = "repairkit03",
@@ -3277,7 +3277,7 @@ local List = {
 	},
 	["WEAPON_GUSENBERG"] = {
 		AdminLevel = 1,
-		Index = "mpf45",
+		Index = "WEAPON_GUSENBERG",
 		Name = "MPF45",
 		Description = "Armamento que utiliza <common>Munição de Sub</common>.",
 		Repair = "repairkit03",

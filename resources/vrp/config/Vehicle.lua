@@ -9,7 +9,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	dinghy2 = {
 		Name = "Dinghy 2",
@@ -17,7 +18,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	dinghy3 = {
 		Name = "Dinghy 3",
@@ -25,7 +27,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	dinghy4 = {
 		Name = "Dinghy 4",
@@ -33,7 +36,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	jetmax = {
 		Name = "Jetmax",
@@ -41,7 +45,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	marquis = {
 		Name = "Marquis",
@@ -49,7 +54,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	seashark = {
 		Name = "Seashark",
@@ -57,7 +63,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	seashark2 = {
 		Name = "Seashark 2",
@@ -65,7 +72,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	seashark3 = {
 		Name = "Seashark 3",
@@ -73,7 +81,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	speeder = {
 		Name = "Speeder",
@@ -81,7 +90,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	speeder2 = {
 		Name = "Speeder 2",
@@ -89,7 +99,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	squalo = {
 		Name = "Squalo",
@@ -97,7 +108,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	submersible = {
 		Name = "Submersible",
@@ -105,7 +117,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	submersible2 = {
 		Name = "Submersible 2",
@@ -113,7 +126,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	suntrap = {
 		Name = "Suntrap",
@@ -121,7 +135,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	toro = {
 		Name = "Toro",
@@ -129,7 +144,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	toro2 = {
 		Name = "Toro 2",
@@ -137,7 +153,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	tropic = {
 		Name = "Tropic",
@@ -145,7 +162,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	tropic2 = {
 		Name = "Tropic 2",
@@ -153,7 +171,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	tug = {
 		Name = "Tug",
@@ -161,7 +180,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	avisa = {
 		Name = "Avisa",
@@ -169,7 +189,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	dinghy5 = {
 		Name = "Dinghy 5",
@@ -177,7 +198,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	kosatka = {
 		Name = "Kosatka",
@@ -185,7 +207,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	longfin = {
 		Name = "Longfin",
@@ -193,7 +216,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	patrolboat = {
 		Name = "Patrolboat",
@@ -201,7 +225,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 
 	-- COMMERCIALS
@@ -211,7 +236,8 @@ local List = {
 		Price = 187500,
 		Mode = "Rental",
 		Gemstone = 7500,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	biff = {
 		Name = "Biff",
@@ -219,7 +245,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	cerberus = {
 		Name = "Cerberus",
@@ -227,7 +254,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	cerberus2 = {
 		Name = "Cerberus 2",
@@ -235,7 +263,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	cerberus3 = {
 		Name = "Cerberus 3",
@@ -243,7 +272,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	hauler = {
 		Name = "Hauler",
@@ -251,7 +281,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	hauler2 = {
 		Name = "Hauler 2",
@@ -259,7 +290,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	mule = {
 		Name = "Mule",
@@ -267,7 +299,8 @@ local List = {
 		Price = 125000,
 		Mode = "Rental",
 		Gemstone = 5000,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	mule2 = {
 		Name = "Mule 2",
@@ -275,7 +308,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	mule3 = {
 		Name = "Mule 3",
@@ -283,7 +317,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	mule4 = {
 		Name = "Mule 4",
@@ -291,7 +326,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	packer = {
 		Name = "Packer",
@@ -299,7 +335,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	phantom = {
 		Name = "Phantom",
@@ -307,7 +344,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	phantom2 = {
 		Name = "Phantom 2",
@@ -315,7 +353,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	phantom3 = {
 		Name = "Phantom 3",
@@ -323,7 +362,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	pounder = {
 		Name = "Pounder",
@@ -331,7 +371,8 @@ local List = {
 		Price = 250000,
 		Mode = "Rental",
 		Gemstone = 10000,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	pounder2 = {
 		Name = "Pounder 2",
@@ -339,7 +380,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	stockade = {
 		Name = "Stockade",
@@ -347,7 +389,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	stockade3 = {
 		Name = "Stockade 3",
@@ -355,7 +398,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 	terbyte = {
 		Name = "Terbyte",
@@ -363,7 +407,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Caminhões"
+		Class = "Caminhões",
+		Performance = "C"
 	},
 
 	-- COMPACTS
@@ -373,7 +418,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	blista = {
 		Name = "Blista",
@@ -381,7 +427,8 @@ local List = {
 		Price = 40000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	brioso = {
 		Name = "Brioso",
@@ -389,7 +436,8 @@ local List = {
 		Price = 30000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	club = {
 		Name = "Club",
@@ -397,7 +445,8 @@ local List = {
 		Price = 65000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	dilettante = {
 		Name = "Dilettante",
@@ -405,7 +454,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	dilettante2 = {
 		Name = "Dilettante 2",
@@ -413,7 +463,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	kanjo = {
 		Name = "Kanjo",
@@ -421,7 +472,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	issi2 = {
 		Name = "Issi 2",
@@ -429,7 +481,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	issi3 = {
 		Name = "Issi 3",
@@ -437,7 +490,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	issi4 = {
 		Name = "Issi 4",
@@ -445,7 +499,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	issi5 = {
 		Name = "Issi 5",
@@ -453,7 +508,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	issi6 = {
 		Name = "Issi 6",
@@ -461,7 +517,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	panto = {
 		Name = "Panto",
@@ -470,6 +527,7 @@ local List = {
 		Mode = "Cars",
 		Gemstone = 0,
 		Class = "Compactos",
+		Performance = "C",
 		Speed = 10,
 		Break = 10,
 		Gears = 10,
@@ -482,7 +540,8 @@ local List = {
 		Price = 15000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	rhapsody = {
 		Name = "Rhapsody",
@@ -490,7 +549,8 @@ local List = {
 		Price = 10000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	brioso2 = {
 		Name = "Brioso 2",
@@ -498,7 +558,8 @@ local List = {
 		Price = 40000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	weevil = {
 		Name = "Weevil",
@@ -506,7 +567,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 
 	-- COUPES
@@ -516,7 +578,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	exemplar = {
 		Name = "Exemplar",
@@ -524,7 +587,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	f620 = {
 		Name = "F620",
@@ -532,7 +596,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	felon = {
 		Name = "Felon",
@@ -540,7 +605,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	felon2 = {
 		Name = "Felon 2",
@@ -548,7 +614,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	jackal = {
 		Name = "Jackal",
@@ -556,7 +623,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	oracle = {
 		Name = "Oracle",
@@ -564,7 +632,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	oracle2 = {
 		Name = "Oracle 2",
@@ -572,7 +641,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	sentinel = {
 		Name = "Sentinel",
@@ -580,7 +650,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	sentinel2 = {
 		Name = "Sentinel 2",
@@ -588,7 +659,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	windsor = {
 		Name = "Windsor",
@@ -596,7 +668,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	windsor2 = {
 		Name = "Windsor 2",
@@ -604,7 +677,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	zion = {
 		Name = "Zion",
@@ -612,7 +686,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	zion2 = {
 		Name = "Zion 2",
@@ -620,7 +695,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 	previon = {
 		Name = "Previon",
@@ -628,7 +704,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Cupês"
+		Class = "Cupês",
+		Performance = "A"
 	},
 
 	-- CYCLES
@@ -638,7 +715,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Bicicletas"
+		Class = "Bicicletas",
+		Performance = "C"
 	},	
 	cruiser = {
 		Name = "Cruiser",
@@ -646,7 +724,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Bicicletas"
+		Class = "Bicicletas",
+		Performance = "C"
 	},
 	fixter = {
 		Name = "Fixter",
@@ -654,7 +733,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Bicicletas"
+		Class = "Bicicletas",
+		Performance = "C"
 	},
 	scorcher = {
 		Name = "Scorcher",
@@ -662,7 +742,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Bicicletas"
+		Class = "Bicicletas",
+		Performance = "C"
 	},
 	tribike = {
 		Name = "Tribike",
@@ -670,7 +751,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Bicicletas"
+		Class = "Bicicletas",
+		Performance = "C"
 	},
 	tribike2 = {
 		Name = "Tribike 2",
@@ -678,7 +760,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Bicicletas"
+		Class = "Bicicletas",
+		Performance = "C"
 	},
 	tribike3 = {
 		Name = "Tribike 3",
@@ -686,7 +769,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Bicicletas"
+		Class = "Bicicletas",
+		Performance = "C"
 	},
 
 	-- EMERGENCY
@@ -696,7 +780,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	fbi = {
 		Name = "Fbi",
@@ -704,7 +789,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	fbi2 = {
 		Name = "Fbi 2",
@@ -712,7 +798,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	firetruk = {
 		Name = "Firetruk",
@@ -720,7 +807,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},	
 	lguard = {
 		Name = "Lguard",
@@ -728,7 +816,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	pbus = {
 		Name = "Pbus",
@@ -736,7 +825,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	police = {
 		Name = "Police",
@@ -744,7 +834,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	police2 = {
 		Name = "Police 2",
@@ -752,7 +843,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	police3 = {
 		Name = "Police 3",
@@ -760,7 +852,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	police4 = {
 		Name = "Police 4",
@@ -768,7 +861,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	policeb = {
 		Name = "Harley FLH1200",
@@ -776,7 +870,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	polmav = {
 		Name = "Polmav",
@@ -784,7 +879,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	policeold1 = {
 		Name = "Policeold 1",
@@ -792,7 +888,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	policeold2 = {
 		Name = "Policeold 2",
@@ -800,7 +897,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	policet = {
 		Name = "Police T",
@@ -808,7 +906,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	pranger = {
 		Name = "Pranger",
@@ -816,7 +915,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	predator = {
 		Name = "Predator",
@@ -824,7 +924,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	riot = {
 		Name = "Riot",
@@ -832,7 +933,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	riot2 = {
 		Name = "Riot 2",
@@ -840,7 +942,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	sheriff = {
 		Name = "Sheriff",
@@ -848,7 +951,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	sheriff2 = {
 		Name = "Sheriff 2",
@@ -856,7 +960,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 
 	-- HELICOPTERS
@@ -866,7 +971,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	annihilator = {
 		Name = "Annihilator",
@@ -874,7 +980,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	buzzard = {
 		Name = "Buzzard",
@@ -882,7 +989,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	buzzard2 = {
 		Name = "Buzzard 2",
@@ -890,7 +998,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	cargobob = {
 		Name = "Cargobob",
@@ -898,7 +1007,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	cargobob2 = {
 		Name = "Cargobob 2",
@@ -906,7 +1016,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	cargobob3 = {
 		Name = "Cargobob 3",
@@ -914,7 +1025,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	cargobob4 = {
 		Name = "Cargobob 4",
@@ -922,7 +1034,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	frogger = {
 		Name = "Frogger",
@@ -930,7 +1043,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	frogger2 = {
 		Name = "Frogger 2",
@@ -938,7 +1052,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	havok = {
 		Name = "Havok",
@@ -946,7 +1061,8 @@ local List = {
 		Price = 262500,
 		Mode = "Work",
 		Gemstone = 7500,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	hunter = {
 		Name = "Hunter",
@@ -954,7 +1070,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	maverick = {
 		Name = "Maverick",
@@ -962,7 +1079,8 @@ local List = {
 		Price = 437500,
 		Mode = "Work",
 		Gemstone = 12500,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	savage = {
 		Name = "Savage",
@@ -970,7 +1088,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	seasparrow = {
 		Name = "Seasparrow",
@@ -978,7 +1097,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	skylift = {
 		Name = "Skylift",
@@ -986,7 +1106,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	supervolito = {
 		Name = "Supervolito",
@@ -994,7 +1115,8 @@ local List = {
 		Price = 437500,
 		Mode = "Work",
 		Gemstone = 12500,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	supervolito2 = {
 		Name = "Supervolito 2",
@@ -1002,7 +1124,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	swift = {
 		Name = "Swift",
@@ -1010,7 +1133,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	swift2 = {
 		Name = "Swift 2",
@@ -1018,7 +1142,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	valkyrie = {
 		Name = "Valkyrie",
@@ -1026,7 +1151,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	valkyrie2 = {
 		Name = "Valkyrie 2",
@@ -1034,7 +1160,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	volatus = {
 		Name = "Volatus",
@@ -1042,7 +1169,8 @@ local List = {
 		Price = 437500,
 		Mode = "Work",
 		Gemstone = 12500,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	annihilator2 = {
 		Name = "Annihilator 2",
@@ -1050,7 +1178,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	seasparrow2 = {
 		Name = "Seasparrow 2",
@@ -1058,7 +1187,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 	seasparrow3 = {
 		Name = "Seasparrow 3",
@@ -1066,7 +1196,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Helicópteros"
+		Class = "Helicópteros",
+		Performance = "C"
 	},
 
 	-- INDUSTRIAL
@@ -1076,7 +1207,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	cutter = {
 		Name = "Cutter",
@@ -1084,7 +1216,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	dump = {
 		Name = "Dump",
@@ -1092,7 +1225,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	flatbed = {
 		Name = "Flatbed",
@@ -1100,7 +1234,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	guardian = {
 		Name = "Guardian",
@@ -1108,7 +1243,8 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	handler = {
 		Name = "Handler",
@@ -1116,7 +1252,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	mixer = {
 		Name = "Mixer",
@@ -1124,7 +1261,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	mixer2 = {
 		Name = "Mixer 2",
@@ -1132,7 +1270,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	rubble = {
 		Name = "Rubble",
@@ -1140,7 +1279,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	tiptruck = {
 		Name = "Tiptruck",
@@ -1148,7 +1288,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 	tiptruck2 = {
 		Name = "Tiptruck 2",
@@ -1156,7 +1297,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Industriais"
+		Class = "Industriais",
+		Performance = "C"
 	},
 
 	-- MILITARY
@@ -1166,7 +1308,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	barracks = {
 		Name = "Barracks",
@@ -1174,7 +1317,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	barracks2 = {
 		Name = "Barracks 2",
@@ -1182,7 +1326,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	barracks3 = {
 		Name = "Barracks 3",
@@ -1190,7 +1335,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	barrage = {
 		Name = "Barrage",
@@ -1198,7 +1344,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	chernobog = {
 		Name = "Chernobog",
@@ -1206,7 +1353,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	crusader = {
 		Name = "Crusader",
@@ -1214,7 +1362,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	halftrack = {
 		Name = "Halftrack",
@@ -1222,7 +1371,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	khanjali = {
 		Name = "Khanjali",
@@ -1230,7 +1380,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	minitank = {
 		Name = "Minitank",
@@ -1238,7 +1389,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	rhino = {
 		Name = "Rhino",
@@ -1246,7 +1398,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	scarab = {
 		Name = "Scarab",
@@ -1254,7 +1407,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	scarab2 = {
 		Name = "Scarab 2",
@@ -1262,7 +1416,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	scarab3 = {
 		Name = "Scarab 3",
@@ -1270,7 +1425,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	thruster = {
 		Name = "Thruster",
@@ -1278,7 +1434,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	trailersmall2 = {
 		Name = "Trailersmall 2",
@@ -1286,7 +1443,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 	vetir = {
 		Name = "Vetir",
@@ -1294,7 +1452,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Militares"
+		Class = "Militares",
+		Performance = "A"
 	},
 
 	-- BIKES
@@ -1304,7 +1463,8 @@ local List = {
 		Price = 240000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	avarus = {
 		Name = "Avarus",
@@ -1312,7 +1472,8 @@ local List = {
 		Price = 120000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	bagger = {
 		Name = "Bagger",
@@ -1320,7 +1481,8 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	bati = {
 		Name = "Bati",
@@ -1328,7 +1490,8 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	bati2 = {
 		Name = "Bati 2",
@@ -1336,7 +1499,8 @@ local List = {
 		Price = 240000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	bf400 = {
 		Name = "Bf400",
@@ -1344,7 +1508,8 @@ local List = {
 		Price = 200000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	carbonrs = {
 		Name = "Carbon RS",
@@ -1352,7 +1517,8 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	chimera = {
 		Name = "Chimera",
@@ -1360,7 +1526,8 @@ local List = {
 		Price = 130000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	cliffhanger = {
 		Name = "Cliffhanger",
@@ -1368,7 +1535,8 @@ local List = {
 		Price = 200000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	daemon = {
 		Name = "Daemon",
@@ -1376,7 +1544,8 @@ local List = {
 		Price = 140000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	daemon2 = {
 		Name = "Daemon 2",
@@ -1384,7 +1553,8 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	defiler = {
 		Name = "Defiler",
@@ -1392,7 +1562,8 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	deathbike = {
 		Name = "Deathbike",
@@ -1400,7 +1571,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	deathbike2 = {
 		Name = "Deathbike 2",
@@ -1408,7 +1580,8 @@ local List = {
 		Price = 65000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	deathbike3 = {
 		Name = "Deathbike 3",
@@ -1416,7 +1589,8 @@ local List = {
 		Price = 65000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	diablous = {
 		Name = "Diablous",
@@ -1424,7 +1598,8 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	diablous2 = {
 		Name = "Diablous 2",
@@ -1432,7 +1607,8 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	double = {
 		Name = "Double",
@@ -1440,7 +1616,8 @@ local List = {
 		Price = 200000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	enduro = {
 		Name = "Enduro",
@@ -1448,7 +1625,8 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	esskey = {
 		Name = "Esskey",
@@ -1456,7 +1634,8 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	faggio = {
 		Name = "Faggio",
@@ -1464,7 +1643,8 @@ local List = {
 		Price = 2000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	faggio2 = {
 		Name = "Faggio 2",
@@ -1472,7 +1652,8 @@ local List = {
 		Price = 2000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	faggio3 = {
 		Name = "Faggio 3",
@@ -1480,7 +1661,8 @@ local List = {
 		Price = 2000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	fcr = {
 		Name = "Fcr",
@@ -1488,7 +1670,8 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	fcr2 = {
 		Name = "Fcr 2",
@@ -1496,7 +1679,8 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	gargoyle = {
 		Name = "Gargoyle",
@@ -1504,7 +1688,8 @@ local List = {
 		Price = 230000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	hakuchou = {
 		Name = "Hakuchou",
@@ -1512,7 +1697,8 @@ local List = {
 		Price = 240000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	hakuchou2 = {
 		Name = "Hakuchou 2",
@@ -1520,7 +1706,8 @@ local List = {
 		Price = 270000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	hexer = {
 		Name = "Hexer",
@@ -1528,7 +1715,8 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	innovation = {
 		Name = "Innovation",
@@ -1536,7 +1724,8 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	lectro = {
 		Name = "Lectro",
@@ -1544,7 +1733,8 @@ local List = {
 		Price = 120000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	manchez = {
 		Name = "Manchez",
@@ -1552,7 +1742,8 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	manchez3 = {
 		Name = "manchez3",
@@ -1560,7 +1751,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	nemesis = {
 		Name = "Nemesis",
@@ -1568,7 +1760,8 @@ local List = {
 		Price = 140000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	nightblade = {
 		Name = "Nightblade",
@@ -1576,7 +1769,8 @@ local List = {
 		Price = 180000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	oppressor = {
 		Name = "Oppressor",
@@ -1584,7 +1778,8 @@ local List = {
 		Price = 130000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	oppressor2 = {
 		Name = "Oppressor 2",
@@ -1592,7 +1787,8 @@ local List = {
 		Price = 130000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	pcj = {
 		Name = "Pcj",
@@ -1600,7 +1796,8 @@ local List = {
 		Price = 100000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	powersurge = {
 		Name = "powersurge",
@@ -1608,7 +1805,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	ratbike = {
 		Name = "Ratbike",
@@ -1616,7 +1814,8 @@ local List = {
 		Price = 110000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	ruffian = {
 		Name = "Ruffian",
@@ -1624,7 +1823,8 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	rrocket = {
 		Name = "Rrocket",
@@ -1632,7 +1832,8 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	sanchez = {
 		Name = "Sanchez",
@@ -1640,7 +1841,8 @@ local List = {
 		Price = 140000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	sanchez2 = {
 		Name = "Sanchez 2",
@@ -1648,7 +1850,8 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	sanctus = {
 		Name = "Sanctus",
@@ -1656,7 +1859,8 @@ local List = {
 		Price = 190000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	shotaro = {
 		Name = "Shotaro",
@@ -1664,7 +1868,8 @@ local List = {
 		Price = 180000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	sovereign = {
 		Name = "Sovereign",
@@ -1672,7 +1877,8 @@ local List = {
 		Price = 180000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	stryder = {
 		Name = "Stryder",
@@ -1680,7 +1886,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	thrust = {
 		Name = "Thrust",
@@ -1688,7 +1895,8 @@ local List = {
 		Price = 150000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	vader = {
 		Name = "Vader",
@@ -1696,7 +1904,8 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	vindicator = {
 		Name = "Vindicator",
@@ -1704,7 +1913,8 @@ local List = {
 		Price = 160000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	vortex = {
 		Name = "Vortex",
@@ -1712,7 +1922,8 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	wolfsbane = {
 		Name = "Wolfsbane",
@@ -1720,7 +1931,8 @@ local List = {
 		Price = 100000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	zombiea = {
 		Name = "Zombie A",
@@ -1728,7 +1940,8 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	zombieb = {
 		Name = "Zombie B",
@@ -1736,7 +1949,8 @@ local List = {
 		Price = 170000,
 		Mode = "Bikes",
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 	manchez2 = {
 		Name = "Manchez 2",
@@ -1744,7 +1958,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Motocicletas"
+		Class = "Motocicletas",
+		Performance = "S"
 	},
 
 	-- MUSCLES
@@ -1754,7 +1969,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	broadway = {
 		Name = "broadway",
@@ -1762,7 +1978,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	buccaneer = {
 		Name = "Buccaneer",
@@ -1770,7 +1987,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	buccaneer2 = {
 		Name = "Buccaneer 2",
@@ -1778,7 +1996,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	chino = {
 		Name = "Chino",
@@ -1786,7 +2005,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	chino2 = {
 		Name = "Chino 2",
@@ -1794,7 +2014,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	clique = {
 		Name = "Clique",
@@ -1802,7 +2023,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	coquette3 = {
 		Name = "Coquette 3",
@@ -1810,7 +2032,8 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	deviant = {
 		Name = "Deviant",
@@ -1818,7 +2041,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	dominator = {
 		Name = "Dominator",
@@ -1826,7 +2050,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	dominator2 = {
 		Name = "Dominator 2",
@@ -1834,7 +2059,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	dominator3 = {
 		Name = "Dominator 3",
@@ -1842,7 +2068,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},	
 	dominator4 = {
 		Name = "Dominator 4",
@@ -1850,7 +2077,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	dominator5 = {
 		Name = "Dominator 5",
@@ -1858,7 +2086,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	dominator6 = {
 		Name = "Dominator 6",
@@ -1866,7 +2095,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	dukes = {
 		Name = "Dukes",
@@ -1874,7 +2104,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	dukes2 = {
 		Name = "Dukes 2",
@@ -1882,7 +2113,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	dukes3 = {
 		Name = "Dukes 3",
@@ -1890,7 +2122,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	faction = {
 		Name = "Faction",
@@ -1898,7 +2131,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	faction2 = {
 		Name = "Faction 2",
@@ -1906,7 +2140,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	faction3 = {
 		Name = "Faction 3",
@@ -1914,7 +2149,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	ellie = {
 		Name = "Ellie",
@@ -1922,7 +2158,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	eudora = {
 		Name = "eudora",
@@ -1930,7 +2167,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	gauntlet = {
 		Name = "Gauntlet",
@@ -1938,7 +2176,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	gauntlet2 = {
 		Name = "Gauntlet 2",
@@ -1946,7 +2185,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	gauntlet3 = {
 		Name = "Gauntlet 3",
@@ -1954,7 +2194,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	gauntlet4 = {
 		Name = "Gauntlet 4",
@@ -1962,7 +2203,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	gauntlet5 = {
 		Name = "Gauntlet 5",
@@ -1970,7 +2212,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	hermes = {
 		Name = "Hermes",
@@ -1978,7 +2221,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	hotknife = {
 		Name = "Hotknife",
@@ -1986,7 +2230,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	hustler = {
 		Name = "Hustler",
@@ -1994,7 +2239,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	impaler = {
 		Name = "Impaler",
@@ -2002,7 +2248,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	impaler2 = {
 		Name = "Impaler 2",
@@ -2010,7 +2257,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	impaler3 = {
 		Name = "Impaler 3",
@@ -2018,7 +2266,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	impaler4 = {
 		Name = "Impaler 4",
@@ -2026,7 +2275,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	imperator = {
 		Name = "Imperator",
@@ -2034,7 +2284,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	imperator2 = {
 		Name = "Imperator 2",
@@ -2042,7 +2293,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	imperator3 = {
 		Name = "Imperator 3",
@@ -2050,7 +2302,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	lurcher = {
 		Name = "Lurcher",
@@ -2058,7 +2311,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	moonbeam = {
 		Name = "Moonbeam",
@@ -2066,7 +2320,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	moonbeam2 = {
 		Name = "Moonbeam 2",
@@ -2074,7 +2329,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	nightshade = {
 		Name = "Nightshade",
@@ -2082,7 +2338,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	peyote2 = {
 		Name = "Peyote 2",
@@ -2090,7 +2347,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	phoenix = {
 		Name = "Phoenix",
@@ -2098,7 +2356,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	picador = {
 		Name = "Picador",
@@ -2106,7 +2365,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	ratloader = {
 		Name = "Ratloader",
@@ -2114,7 +2374,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	ratloader2 = {
 		Name = "Ratloader 2",
@@ -2122,7 +2383,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	ruiner = {
 		Name = "Ruiner",
@@ -2130,7 +2392,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	ruiner2 = {
 		Name = "Ruiner 2",
@@ -2138,7 +2401,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	ruiner3 = {
 		Name = "Ruiner 3",
@@ -2146,7 +2410,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	sabregt = {
 		Name = "Sabre GT",
@@ -2154,7 +2419,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	sabregt2 = {
 		Name = "Sabregt 2",
@@ -2162,7 +2428,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	slamvan = {
 		Name = "Slamvan",
@@ -2170,7 +2437,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	slamvan2 = {
 		Name = "Slamvan 2",
@@ -2178,7 +2446,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	slamvan3 = {
 		Name = "Slamvan 3",
@@ -2186,7 +2455,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	slamvan4 = {
 		Name = "Slamvan 4",
@@ -2194,7 +2464,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	slamvan5 = {
 		Name = "Slamvan 5",
@@ -2202,7 +2473,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	slamvan6 = {
 		Name = "Slamvan 6",
@@ -2210,7 +2482,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	stalion = {
 		Name = "Stalion",
@@ -2218,7 +2491,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	stalion2 = {
 		Name = "Stalion 2",
@@ -2226,7 +2500,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	tahoma = {
 		Name = "tahoma",
@@ -2234,7 +2509,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	tampa = {
 		Name = "Tampa",
@@ -2242,7 +2518,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	tampa3 = {
 		Name = "Tampa 3",
@@ -2250,7 +2527,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	tulip = {
 		Name = "Tulip",
@@ -2258,7 +2536,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	tulip2 = {
 		Name = "tulip2",
@@ -2266,7 +2545,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	vamos = {
 		Name = "Vamos",
@@ -2274,7 +2554,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	vigero = {
 		Name = "Vigero",
@@ -2282,7 +2563,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	virgo = {
 		Name = "Virgo",
@@ -2290,7 +2572,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	virgo2 = {
 		Name = "Virgo 2",
@@ -2298,7 +2581,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	virgo3 = {
 		Name = "Virgo 3",
@@ -2306,7 +2590,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	voodoo = {
 		Name = "Voodoo",
@@ -2314,7 +2599,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	voodoo2 = {
 		Name = "Voodoo 2",
@@ -2322,7 +2608,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	yosemite = {
 		Name = "Yosemite",
@@ -2330,7 +2617,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	yosemite2 = {
 		Name = "Yosemite 2",
@@ -2338,7 +2626,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	yosemite3 = {
 		Name = "Yosemite 3",
@@ -2346,7 +2635,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	dominator7 = {
 		Name = "Dominator 7",
@@ -2354,7 +2644,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 
 	-- OFF-ROADS
@@ -2364,7 +2655,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	bifta = {
 		Name = "Bifta",
@@ -2372,7 +2664,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	blazer = {
 		Name = "Blazer",
@@ -2380,7 +2673,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	blazer2 = {
 		Name = "Blazer 2",
@@ -2388,7 +2682,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	blazer3 = {
 		Name = "Blazer 3",
@@ -2396,7 +2691,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	blazer4 = {
 		Name = "Blazer 4",
@@ -2404,7 +2700,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	blazer5 = {
 		Name = "Blazer 5",
@@ -2412,7 +2709,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	bodhi2 = {
 		Name = "Bodhi 2",
@@ -2420,7 +2718,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	brawler = {
 		Name = "Brawler",
@@ -2428,7 +2727,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	bruiser = {
 		Name = "Bruiser",
@@ -2436,7 +2736,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	bruiser2 = {
 		Name = "Bruiser 2",
@@ -2444,7 +2745,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	bruiser3 = {
 		Name = "Bruiser 3",
@@ -2452,7 +2754,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	brutus = {
 		Name = "Brutus",
@@ -2460,7 +2763,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	brutus2 = {
 		Name = "Brutus 2",
@@ -2468,7 +2772,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	brutus3 = {
 		Name = "Brutus 3",
@@ -2476,7 +2781,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	caracara = {
 		Name = "Caracara",
@@ -2484,7 +2790,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	caracara2 = {
 		Name = "Caracara 2",
@@ -2492,7 +2799,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	dloader = {
 		Name = "Dloader",
@@ -2500,7 +2808,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	dubsta3 = {
 		Name = "Dubsta 3",
@@ -2508,7 +2817,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	dune = {
 		Name = "Dune",
@@ -2516,7 +2826,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	dune2 = {
 		Name = "Dune 2",
@@ -2524,7 +2835,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	dune3 = {
 		Name = "Dune 3",
@@ -2532,7 +2844,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	dune4 = {
 		Name = "Dune 4",
@@ -2540,7 +2853,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	dune5 = {
 		Name = "Dune 5",
@@ -2548,7 +2862,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	everon = {
 		Name = "Everon",
@@ -2556,7 +2871,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	freecrawler = {
 		Name = "Freecrawler",
@@ -2564,7 +2880,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	hellion = {
 		Name = "Hellion",
@@ -2572,7 +2889,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	insurgent = {
 		Name = "Insurgent",
@@ -2580,7 +2898,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	insurgent2 = {
 		Name = "Insurgent 2",
@@ -2588,7 +2907,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	insurgent3 = {
 		Name = "Insurgent 3",
@@ -2596,7 +2916,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	kalahari = {
 		Name = "Kalahari",
@@ -2604,7 +2925,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	kamacho = {
 		Name = "Kamacho",
@@ -2612,7 +2934,8 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	marshall = {
 		Name = "Marshall",
@@ -2620,7 +2943,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	mesa3 = {
 		Name = "Mesa 3",
@@ -2628,7 +2952,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	monster = {
 		Name = "Monster",
@@ -2636,7 +2961,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	monster3 = {
 		Name = "Monster 3",
@@ -2644,7 +2970,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	monster4 = {
 		Name = "Monster 4",
@@ -2652,7 +2979,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	monster5 = {
 		Name = "Monster 5",
@@ -2660,7 +2988,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	menacer = {
 		Name = "Menacer",
@@ -2668,7 +2997,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	outlaw = {
 		Name = "Outlaw",
@@ -2676,7 +3006,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	nightshark = {
 		Name = "Nightshark",
@@ -2684,7 +3015,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},	
 	rancherxl = {
 		Name = "Rancher XL",
@@ -2692,7 +3024,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	rancherxl2 = {
 		Name = "Rancher XL2",
@@ -2700,7 +3033,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	rebel = {
 		Name = "Rebel",
@@ -2708,7 +3042,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	rebel2 = {
 		Name = "Rebel 2",
@@ -2716,7 +3051,8 @@ local List = {
 		Price = 85000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	rcbandito = {
 		Name = "RC Bandito",
@@ -2724,7 +3060,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	riata = {
 		Name = "Riata",
@@ -2732,7 +3069,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	sandking = {
 		Name = "Sandking",
@@ -2740,7 +3078,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	sandking2 = {
 		Name = "Sandking 2",
@@ -2748,7 +3087,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	technical = {
 		Name = "Technical",
@@ -2756,7 +3096,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	technical2 = {
 		Name = "Technical 2",
@@ -2764,7 +3105,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	technical3 = {
 		Name = "Technical 3",
@@ -2772,7 +3114,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	trophytruck = {
 		Name = "Trophytruck",
@@ -2780,7 +3123,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	trophytruck2 = {
 		Name = "Trophytruck 2",
@@ -2788,7 +3132,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	vagrant = {
 		Name = "Vagrant",
@@ -2796,7 +3141,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	zhaba = {
 		Name = "Zhaba",
@@ -2804,7 +3150,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	verus = {
 		Name = "Verus",
@@ -2812,7 +3159,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	winky = {
 		Name = "Winky",
@@ -2820,7 +3168,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 
 	-- OPEN WHEELS
@@ -2830,7 +3179,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Formula 1"
+		Class = "Formula 1",
+		Performance = "S+"
 	},
 	formula2 = {
 		Name = "Formula 2",
@@ -2838,7 +3188,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Formula 1"
+		Class = "Formula 1",
+		Performance = "S+"
 	},
 	openwheel1 = {
 		Name = "Openwheel 1",
@@ -2846,7 +3197,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Formula 1"
+		Class = "Formula 1",
+		Performance = "S+"
 	},
 	openwheel2 = {
 		Name = "Openwheel 2",
@@ -2854,7 +3206,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Formula 1"
+		Class = "Formula 1",
+		Performance = "S+"
 	},
 
 	-- PLANES
@@ -2864,7 +3217,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	avenger = {
 		Name = "Avenger",
@@ -2872,7 +3226,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	avenger2 = {
 		Name = "Avenger 2",
@@ -2880,7 +3235,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	besra = {
 		Name = "Besra",
@@ -2888,7 +3244,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	blimp = {
 		Name = "Blimp",
@@ -2896,7 +3253,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	blimp2 = {
 		Name = "Blimp 2",
@@ -2904,7 +3262,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	blimp3 = {
 		Name = "Blimp 3",
@@ -2912,7 +3271,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	bombushka = {
 		Name = "Bombushka",
@@ -2920,7 +3280,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	cargoplane = {
 		Name = "Cargoplane",
@@ -2928,7 +3289,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	cargoplane2 = {
 		Name = "cargoplane2",
@@ -2936,7 +3298,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	cuban800 = {
 		Name = "Cuban800",
@@ -2944,7 +3307,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	dodo = {
 		Name = "Dodo",
@@ -2952,7 +3316,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	duster = {
 		Name = "Duster",
@@ -2960,7 +3325,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	howard = {
 		Name = "Howard",
@@ -2968,7 +3334,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	hydra = {
 		Name = "Hydra",
@@ -2976,7 +3343,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	jet = {
 		Name = "Jet",
@@ -2984,7 +3352,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	lazer = {
 		Name = "Lazer",
@@ -2992,7 +3361,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	luxor = {
 		Name = "Luxor",
@@ -3000,7 +3370,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	luxor2 = {
 		Name = "Luxor 2",
@@ -3008,7 +3379,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	mammatus = {
 		Name = "Mammatus",
@@ -3016,7 +3388,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	microlight = {
 		Name = "Microlight",
@@ -3024,7 +3397,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	miljet = {
 		Name = "Miljet",
@@ -3032,7 +3406,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	mogul = {
 		Name = "Mogul",
@@ -3040,7 +3415,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	molotok = {
 		Name = "Molotok",
@@ -3048,7 +3424,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	nimbus = {
 		Name = "Nimbus",
@@ -3056,7 +3433,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	nokota = {
 		Name = "Nokota",
@@ -3064,7 +3442,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	pyro = {
 		Name = "Pyro",
@@ -3072,7 +3451,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	rogue = {
 		Name = "Rogue",
@@ -3080,7 +3460,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	seabreeze = {
 		Name = "Seabreeze",
@@ -3088,7 +3469,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	shamal = {
 		Name = "Shamal",
@@ -3096,7 +3478,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	starling = {
 		Name = "Starling",
@@ -3104,7 +3487,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	strikeforce = {
 		Name = "Strikeforce",
@@ -3112,7 +3496,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	stunt = {
 		Name = "Stunt",
@@ -3120,7 +3505,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	titan = {
 		Name = "Titan",
@@ -3128,7 +3514,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	tula = {
 		Name = "Tula",
@@ -3136,7 +3523,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	velum = {
 		Name = "Velum",
@@ -3144,7 +3532,8 @@ local List = {
 		Price = 2000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	velum2 = {
 		Name = "Velum 2",
@@ -3152,7 +3541,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	vestra = {
 		Name = "Vestra",
@@ -3160,7 +3550,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	volatol = {
 		Name = "Volatol",
@@ -3168,7 +3559,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 	alkonost = {
 		Name = "Alkonost",
@@ -3176,7 +3568,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Aviões"
+		Class = "Aviões",
+		Performance = "C"
 	},
 
 	-- SUVS
@@ -3186,7 +3579,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	baller2 = {
 		Name = "Baller 2",
@@ -3194,7 +3588,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	baller3 = {
 		Name = "Baller 3",
@@ -3202,7 +3597,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	baller4 = {
 		Name = "Baller 4",
@@ -3210,7 +3606,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	baller5 = {
 		Name = "Baller 5",
@@ -3218,7 +3615,8 @@ local List = {
 		Price = 400000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	baller6 = {
 		Name = "Baller 6",
@@ -3226,7 +3624,8 @@ local List = {
 		Price = 410000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	bjxl = {
 		Name = "Bjxl",
@@ -3234,7 +3633,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	cavalcade = {
 		Name = "Cavalcade",
@@ -3242,7 +3642,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	cavalcade2 = {
 		Name = "Cavalcade 2",
@@ -3250,7 +3651,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	contender = {
 		Name = "Contender",
@@ -3258,7 +3660,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	dubsta = {
 		Name = "Dubsta",
@@ -3266,7 +3669,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	dubsta2 = {
 		Name = "Dubsta 2",
@@ -3274,7 +3678,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	fq2 = {
 		Name = "Fq2",
@@ -3282,7 +3687,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	granger = {
 		Name = "Granger",
@@ -3290,7 +3696,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	gresley = {
 		Name = "Gresley",
@@ -3298,7 +3705,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	habanero = {
 		Name = "Habanero",
@@ -3306,7 +3714,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	huntley = {
 		Name = "Huntley",
@@ -3314,7 +3723,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	issi8 = {
 		Name = "issi8",
@@ -3322,7 +3732,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	landstalker = {
 		Name = "Landstalker",
@@ -3330,7 +3741,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	landstalker2 = {
 		Name = "Landstalker 2",
@@ -3338,7 +3750,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	mesa = {
 		Name = "Mesa",
@@ -3346,7 +3759,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	mesa2 = {
 		Name = "Mesa 2",
@@ -3354,7 +3768,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	novak = {
 		Name = "Novak",
@@ -3362,7 +3777,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	patriot = {
 		Name = "Patriot",
@@ -3370,7 +3786,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	patriot2 = {
 		Name = "Patriot 2",
@@ -3378,7 +3795,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	radi = {
 		Name = "Radi",
@@ -3386,7 +3804,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	rebla = {
 		Name = "Rebla",
@@ -3394,7 +3813,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	rocoto = {
 		Name = "Rocoto",
@@ -3402,7 +3822,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	seminole = {
 		Name = "Seminole",
@@ -3410,7 +3831,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	seminole2 = {
 		Name = "Seminole 2",
@@ -3418,7 +3840,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	serrano = {
 		Name = "Serrano",
@@ -3426,7 +3849,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	toros = {
 		Name = "Toros",
@@ -3434,7 +3858,8 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	xls = {
 		Name = "Xls",
@@ -3442,7 +3867,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	xls2 = {
 		Name = "Xls 2",
@@ -3450,7 +3876,8 @@ local List = {
 		Price = 410000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	squaddie = {
 		Name = "Squaddie",
@@ -3458,7 +3885,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 
 	-- SEDANS
@@ -3468,7 +3896,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	asea2 = {
 		Name = "Asea 2",
@@ -3476,7 +3905,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	asterope = {
 		Name = "Asterope",
@@ -3484,7 +3914,8 @@ local List = {
 		Price = 30000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	cog55 = {
 		Name = "Cog55",
@@ -3492,7 +3923,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	cog552 = {
 		Name = "Cog55 2",
@@ -3500,7 +3932,8 @@ local List = {
 		Price = 410000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	cognoscenti = {
 		Name = "Cognoscenti",
@@ -3508,7 +3941,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	cognoscenti2 = {
 		Name = "Cognoscenti 2",
@@ -3516,7 +3950,8 @@ local List = {
 		Price = 400000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	emperor = {
 		Name = "Emperor",
@@ -3524,7 +3959,8 @@ local List = {
 		Price = 5000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	emperor2 = {
 		Name = "Emperor 2",
@@ -3532,7 +3968,8 @@ local List = {
 		Price = 2000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	emperor3 = {
 		Name = "Emperor 3",
@@ -3540,7 +3977,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	fugitive = {
 		Name = "Fugitive",
@@ -3548,7 +3986,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	glendale = {
 		Name = "Glendale",
@@ -3556,7 +3995,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	glendale2 = {
 		Name = "Glendale 2",
@@ -3564,7 +4004,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	ingot = {
 		Name = "Ingot",
@@ -3572,7 +4013,8 @@ local List = {
 		Price = 15000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	intruder = {
 		Name = "Intruder",
@@ -3580,7 +4022,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	limo2 = {
 		Name = "Limo 2",
@@ -3588,7 +4031,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	premier = {
 		Name = "Premier",
@@ -3596,7 +4040,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	primo = {
 		Name = "Primo",
@@ -3604,7 +4049,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	primo2 = {
 		Name = "Primo 2",
@@ -3612,7 +4058,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	regina = {
 		Name = "Regina",
@@ -3620,7 +4067,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	romero = {
 		Name = "Romero",
@@ -3628,7 +4076,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	stafford = {
 		Name = "Stafford",
@@ -3636,7 +4085,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	stanier = {
 		Name = "Stanier",
@@ -3644,7 +4094,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	stratum = {
 		Name = "Stratum",
@@ -3652,7 +4103,8 @@ local List = {
 		Price = 40000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	stretch = {
 		Name = "Stretch",
@@ -3660,7 +4112,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	superd = {
 		Name = "Superd",
@@ -3668,7 +4121,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	surge = {
 		Name = "Surge",
@@ -3676,7 +4130,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	tailgater = {
 		Name = "Tailgater",
@@ -3684,7 +4139,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	warrener = {
 		Name = "Warrener",
@@ -3692,7 +4148,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	washington = {
 		Name = "Washington",
@@ -3700,7 +4157,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 	tailgater2 = {
 		Name = "Tailgater 2",
@@ -3708,7 +4166,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Sedans"
+		Class = "Sedans",
+		Performance = "C"
 	},
 
 	-- SERVICES
@@ -3718,7 +4177,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	brickade = {
 		Name = "Brickade",
@@ -3726,7 +4186,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	bus = {
 		Name = "Bus",
@@ -3734,7 +4195,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	coach = {
 		Name = "Coach",
@@ -3742,7 +4204,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	pbus2 = {
 		Name = "Pbus 2",
@@ -3750,7 +4213,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	rallytruck = {
 		Name = "Rally Truck",
@@ -3758,7 +4222,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	rentalbus = {
 		Name = "Rental Bus",
@@ -3766,7 +4231,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	taxi = {
 		Name = "Taxi",
@@ -3774,7 +4240,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	tourbus = {
 		Name = "Tour Bus",
@@ -3782,7 +4249,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	trash = {
 		Name = "Trash",
@@ -3790,7 +4258,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	trash2 = {
 		Name = "Trash 2",
@@ -3798,7 +4267,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	wastelander = {
 		Name = "Wastelander",
@@ -3806,7 +4276,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 
 	-- SPORTS
@@ -3816,7 +4287,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	banshee = {
 		Name = "Banshee",
@@ -3824,7 +4296,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	bestiagts = {
 		Name = "Bestia GTS",
@@ -3832,7 +4305,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	blista2 = {
 		Name = "Blista 2",
@@ -3840,7 +4314,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	blista3 = {
 		Name = "Blista 3",
@@ -3848,7 +4323,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	buffalo = {
 		Name = "Buffalo",
@@ -3856,7 +4332,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	buffalo2 = {
 		Name = "Buffalo 2",
@@ -3864,7 +4341,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	buffalo3 = {
 		Name = "Buffalo 3",
@@ -3872,7 +4350,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	carbonizzare = {
 		Name = "Carbonizzare",
@@ -3880,7 +4359,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	comet2 = {
 		Name = "Comet 2",
@@ -3888,7 +4368,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	comet3 = {
 		Name = "Comet 3",
@@ -3896,7 +4377,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	comet4 = {
 		Name = "Comet 4",
@@ -3904,7 +4386,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	comet5 = {
 		Name = "Comet 5",
@@ -3912,7 +4395,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	coquette = {
 		Name = "Coquette",
@@ -3920,7 +4404,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	coquette4 = {
 		Name = "Coquette 4",
@@ -3928,7 +4413,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	drafter = {
 		Name = "Drafter",
@@ -3936,7 +4422,8 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	deveste = {
 		Name = "Deveste",
@@ -3944,7 +4431,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	elegy = {
 		Name = "Elegy",
@@ -3952,7 +4440,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	elegy2 = {
 		Name = "Elegy 2",
@@ -3960,7 +4449,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	everon2 = {
 		Name = "Everon2",
@@ -3968,7 +4458,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	feltzer2 = {
 		Name = "Feltzer 2",
@@ -3976,7 +4467,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	flashgt = {
 		Name = "Flash GT",
@@ -3984,7 +4476,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	furoregt = {
 		Name = "Furore GT",
@@ -3992,7 +4485,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	fusilade = {
 		Name = "Fusilade",
@@ -4000,7 +4494,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	futo = {
 		Name = "Futo",
@@ -4008,7 +4503,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	gb200 = {
 		Name = "Gb200",
@@ -4016,7 +4512,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	hotring = {
 		Name = "Hotring",
@@ -4024,7 +4521,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	komoda = {
 		Name = "Komoda",
@@ -4032,7 +4530,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	imorgon = {
 		Name = "Imorgon",
@@ -4040,7 +4539,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	issi7 = {
 		Name = "Issi 7",
@@ -4048,7 +4548,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	italigto = {
 		Name = "Itali GTO",
@@ -4056,7 +4557,8 @@ local List = {
 		Price = 220000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	jugular = {
 		Name = "Jugular",
@@ -4064,7 +4566,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	jester = {
 		Name = "Jester",
@@ -4072,7 +4575,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	jester2 = {
 		Name = "Jester 2",
@@ -4080,7 +4584,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	jester3 = {
 		Name = "Jester 3",
@@ -4088,7 +4593,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	khamelion = {
 		Name = "Khamelion",
@@ -4096,7 +4602,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	kuruma = {
 		Name = "Kuruma",
@@ -4104,7 +4611,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	kuruma2 = {
 		Name = "Kuruma 2",
@@ -4112,7 +4620,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	locust = {
 		Name = "Locust",
@@ -4120,7 +4629,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	lynx = {
 		Name = "Lynx",
@@ -4128,7 +4638,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	massacro = {
 		Name = "Massacro",
@@ -4136,7 +4647,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	massacro2 = {
 		Name = "Massacro 2",
@@ -4144,7 +4656,8 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	neo = {
 		Name = "Neo",
@@ -4152,7 +4665,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	neon = {
 		Name = "Neon",
@@ -4160,7 +4674,8 @@ local List = {
 		Price = 230000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	ninef = {
 		Name = "Ninef",
@@ -4168,7 +4683,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	ninef2 = {
 		Name = "Ninef 2",
@@ -4176,7 +4692,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	omnis = {
 		Name = "Omnis",
@@ -4184,7 +4701,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	paragon = {
 		Name = "Paragon",
@@ -4192,7 +4710,8 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	paragon2 = {
 		Name = "Paragon 2",
@@ -4200,7 +4719,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	pariah = {
 		Name = "Pariah",
@@ -4208,7 +4728,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	panthere = {
 		Name = "panthere",
@@ -4216,7 +4737,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	penumbra = {
 		Name = "Penumbra",
@@ -4224,7 +4746,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	penumbra2 = {
 		Name = "Penumbra 2",
@@ -4232,7 +4755,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	r300 = {
 		Name = "r300",
@@ -4240,7 +4764,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	raiden = {
 		Name = "Raiden",
@@ -4248,7 +4773,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	rapidgt = {
 		Name = "Rapid GT",
@@ -4256,7 +4782,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	rapidgt2 = {
 		Name = "Rapidgt GT2",
@@ -4264,7 +4791,8 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	raptor = {
 		Name = "Raptor",
@@ -4272,7 +4800,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	revolter = {
 		Name = "Revolter",
@@ -4280,7 +4809,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	ruston = {
 		Name = "Ruston",
@@ -4288,7 +4818,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	schafter2 = {
 		Name = "Schafter 2",
@@ -4296,7 +4827,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	schafter3 = {
 		Name = "Schafter 3",
@@ -4304,7 +4836,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	schafter4 = {
 		Name = "Schafter 4",
@@ -4312,7 +4845,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	schafter5 = {
 		Name = "Schafter 5",
@@ -4320,7 +4854,8 @@ local List = {
 		Price = 400000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	schafter6 = {
 		Name = "Schafter 6",
@@ -4328,7 +4863,8 @@ local List = {
 		Price = 320000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	schlagen = {
 		Name = "Schlagen",
@@ -4336,7 +4872,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	schwarzer = {
 		Name = "Schwarzer",
@@ -4344,7 +4881,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	sentinel3 = {
 		Name = "Sentinel 3",
@@ -4352,7 +4890,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	seven70 = {
 		Name = "Seven 70",
@@ -4360,7 +4899,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	specter = {
 		Name = "Specter",
@@ -4368,7 +4908,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	specter2 = {
 		Name = "Specter 2",
@@ -4376,7 +4917,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	streiter = {
 		Name = "Streiter",
@@ -4384,7 +4926,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	sugoi = {
 		Name = "Sugoi",
@@ -4392,7 +4935,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	sultan = {
 		Name = "Sultan",
@@ -4400,7 +4944,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	sultan2 = {
 		Name = "Sultan 2",
@@ -4408,7 +4953,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	surano = {
 		Name = "Surano",
@@ -4416,7 +4962,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	tampa2 = {
 		Name = "Tampa 2",
@@ -4424,7 +4971,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	tropos = {
 		Name = "Tropos",
@@ -4432,7 +4980,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	verlierer2 = {
 		Name = "Verlierer 2",
@@ -4440,7 +4989,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	vstr = {
 		Name = "Vstr",
@@ -4448,7 +4998,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	zr380 = {
 		Name = "Zr380",
@@ -4456,7 +5007,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	zr3802 = {
 		Name = "Zr380 2",
@@ -4464,7 +5016,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	zr3803 = {
 		Name = "Zr380 3",
@@ -4472,7 +5025,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	italirsx = {
 		Name = "Itali RSX",
@@ -4480,7 +5034,8 @@ local List = {
 		Price = 280000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	veto = {
 		Name = "Veto",
@@ -4488,7 +5043,8 @@ local List = {
 		Price = 20000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	veto2 = {
 		Name = "Veto 2",
@@ -4496,7 +5052,8 @@ local List = {
 		Price = 20000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	zr350 = {
 		Name = "ZR 350",
@@ -4504,7 +5061,8 @@ local List = {
 		Price = 160000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	calico = {
 		Name = "Calico",
@@ -4512,7 +5070,8 @@ local List = {
 		Price = 240000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	futo2 = {
 		Name = "Futo 2",
@@ -4520,7 +5079,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	euros = {
 		Name = "Euros",
@@ -4528,7 +5088,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	jester4 = {
 		Name = "Jester 4",
@@ -4536,7 +5097,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	remus = {
 		Name = "Remus",
@@ -4544,7 +5106,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	comet6 = {
 		Name = "Comet 6",
@@ -4552,7 +5115,8 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	comet7 = {
 		Name = "Comet 7",
@@ -4560,7 +5124,8 @@ local List = {
 		Price = 320000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	growler = {
 		Name = "Growler",
@@ -4568,7 +5133,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	vectre = {
 		Name = "Vectre",
@@ -4576,7 +5142,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	cypher = {
 		Name = "Cypher",
@@ -4584,7 +5151,8 @@ local List = {
 		Price = 260000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	sultan3 = {
 		Name = "Sultan 3",
@@ -4592,7 +5160,8 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	rt3000 = {
 		Name = "RT 3000",
@@ -4600,7 +5169,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	ardent = {
 		Name = "Ardent",
@@ -4608,7 +5178,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	btype = {
 		Name = "Btype",
@@ -4616,7 +5187,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	btype2 = {
 		Name = "Btype 2",
@@ -4624,7 +5196,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	btype3 = {
 		Name = "Btype 3",
@@ -4632,7 +5205,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	casco = {
 		Name = "Casco",
@@ -4640,7 +5214,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	cheetah2 = {
 		Name = "Cheetah 2",
@@ -4648,7 +5223,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	coquette2 = {
 		Name = "Coquette 2",
@@ -4656,7 +5232,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	deluxo = {
 		Name = "Deluxo",
@@ -4664,7 +5241,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	dynasty = {
 		Name = "Dynasty",
@@ -4672,7 +5250,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	fagaloa = {
 		Name = "Fagaloa",
@@ -4680,7 +5259,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	feltzer3 = {
 		Name = "Feltzer 3",
@@ -4688,7 +5268,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	gt500 = {
 		Name = "GT 500",
@@ -4696,7 +5277,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	infernus2 = {
 		Name = "Infernus 2",
@@ -4704,7 +5286,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	jb700 = {
 		Name = "JB 700",
@@ -4712,7 +5295,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	jb7002 = {
 		Name = "JB 7002",
@@ -4720,7 +5304,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	mamba = {
 		Name = "Mamba",
@@ -4728,7 +5313,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	manana = {
 		Name = "Manana",
@@ -4736,7 +5322,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	manana2 = {
 		Name = "Manana 2",
@@ -4744,7 +5331,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	michelli = {
 		Name = "Michelli",
@@ -4752,7 +5340,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	monroe = {
 		Name = "Monroe",
@@ -4760,7 +5349,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	nebula = {
 		Name = "Nebula",
@@ -4768,7 +5358,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	peyote = {
 		Name = "Peyote",
@@ -4776,7 +5367,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	peyote3 = {
 		Name = "Peyote 3",
@@ -4784,7 +5376,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	pigalle = {
 		Name = "Pigalle",
@@ -4792,7 +5385,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	rapidgt3 = {
 		Name = "Rapid GT3",
@@ -4800,7 +5394,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	retinue = {
 		Name = "Retinue",
@@ -4808,7 +5403,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	retinue2 = {
 		Name = "Retinue 2",
@@ -4816,7 +5412,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	savestra = {
 		Name = "Savestra",
@@ -4824,7 +5421,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	stinger = {
 		Name = "Stinger",
@@ -4832,7 +5430,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	stingergt = {
 		Name = "Stinger GT",
@@ -4840,7 +5439,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	stromberg = {
 		Name = "Stromberg",
@@ -4848,7 +5448,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	swinger = {
 		Name = "Swinger",
@@ -4856,7 +5457,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	torero = {
 		Name = "Torero",
@@ -4864,7 +5466,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	tornado = {
 		Name = "Tornado",
@@ -4872,7 +5475,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	tornado2 = {
 		Name = "Tornado 2",
@@ -4880,7 +5484,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	tornado3 = {
 		Name = "Tornado 3",
@@ -4888,7 +5493,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	tornado4 = {
 		Name = "Tornado 4",
@@ -4896,7 +5502,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	tornado5 = {
 		Name = "Tornado 5",
@@ -4904,7 +5511,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	tornado6 = {
 		Name = "Tornado 6",
@@ -4912,7 +5520,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	turismo2 = {
 		Name = "Turismo 2",
@@ -4920,7 +5529,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	viseris = {
 		Name = "Viseris",
@@ -4928,7 +5538,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	z190 = {
 		Name = "Z190",
@@ -4936,7 +5547,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	ztype = {
 		Name = "Ztype",
@@ -4944,7 +5556,8 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	zion3 = {
 		Name = "Zion 3",
@@ -4952,7 +5565,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	cheburek = {
 		Name = "Cheburek",
@@ -4960,7 +5574,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	toreador = {
 		Name = "Toreador",
@@ -4968,7 +5583,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 
 	-- SUPER
@@ -4978,7 +5594,8 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	autarch = {
 		Name = "Autarch",
@@ -4986,7 +5603,8 @@ local List = {
 		Price = 240000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	banshee2 = {
 		Name = "Banshee 2",
@@ -4994,7 +5612,8 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	bullet = {
 		Name = "Bullet",
@@ -5002,7 +5621,8 @@ local List = {
 		Price = 150000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	cheetah = {
 		Name = "Cheetah",
@@ -5010,7 +5630,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	cyclone = {
 		Name = "Cyclone",
@@ -5018,7 +5639,8 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	entity2 = {
 		Name = "Entity 2",
@@ -5026,7 +5648,8 @@ local List = {
 		Price = 220000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	entity3 = {
 		Name = "entity3",
@@ -5034,7 +5657,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	entityxf = {
 		Name = "Entity XF",
@@ -5042,7 +5666,8 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	emerus = {
 		Name = "Emerus",
@@ -5050,7 +5675,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	fmj = {
 		Name = "Fmj",
@@ -5058,7 +5684,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	furia = {
 		Name = "Furia",
@@ -5066,7 +5693,8 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	gp1 = {
 		Name = "Gp1",
@@ -5074,7 +5702,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	infernus = {
 		Name = "Infernus",
@@ -5082,7 +5711,8 @@ local List = {
 		Price = 130000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	italigtb = {
 		Name = "Italigtb",
@@ -5090,7 +5720,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	italigtb2 = {
 		Name = "Italigtb 2",
@@ -5098,7 +5729,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	krieger = {
 		Name = "Krieger",
@@ -5106,7 +5738,8 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	le7b = {
 		Name = "Le7b",
@@ -5114,7 +5747,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	nero = {
 		Name = "Nero",
@@ -5122,7 +5756,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	nero2 = {
 		Name = "Nero 2",
@@ -5130,7 +5765,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	osiris = {
 		Name = "Osiris",
@@ -5138,7 +5774,8 @@ local List = {
 		Price = 230000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	penetrator = {
 		Name = "Penetrator",
@@ -5146,7 +5783,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	pfister811 = {
 		Name = "Pfister 811",
@@ -5154,7 +5792,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	prototipo = {
 		Name = "Prototipo",
@@ -5162,7 +5801,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	reaper = {
 		Name = "Reaper",
@@ -5170,7 +5810,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	s80 = {
 		Name = "S80",
@@ -5178,7 +5819,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	sc1 = {
 		Name = "Sc1",
@@ -5186,7 +5828,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	scramjet = {
 		Name = "Scramjet",
@@ -5194,7 +5837,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	sheava = {
 		Name = "Sheava",
@@ -5202,7 +5846,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	sultanrs = {
 		Name = "Sultan RS",
@@ -5211,6 +5856,7 @@ local List = {
 		Mode = "Cars",
 		Gemstone = 0,
 		Class = "Clássicos",
+		Performance = "A",
 		Item = "Permanent"
 	},
 	t20 = {
@@ -5220,6 +5866,7 @@ local List = {
 		Mode = "Cars",
 		Gemstone = 0,
 		Class = "Clássicos",
+		Performance = "A",
 		Item = 7
 	},
 	taipan = {
@@ -5228,7 +5875,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	tempesta = {
 		Name = "Tempesta",
@@ -5236,7 +5884,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	tezeract = {
 		Name = "Tezeract",
@@ -5244,7 +5893,8 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	thrax = {
 		Name = "Thrax",
@@ -5252,7 +5902,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	tigon = {
 		Name = "Tigon",
@@ -5260,7 +5911,8 @@ local List = {
 		Price = 220000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	turismor = {
 		Name = "Turismo R",
@@ -5268,7 +5920,8 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	tyrant = {
 		Name = "Tyrant",
@@ -5276,7 +5929,8 @@ local List = {
 		Price = 210000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	tyrus = {
 		Name = "Tyrus",
@@ -5284,7 +5938,8 @@ local List = {
 		Price = 220000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	vacca = {
 		Name = "Vacca",
@@ -5292,7 +5947,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	vagner = {
 		Name = "Vagner",
@@ -5300,7 +5956,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	vigilante = {
 		Name = "Vigilante",
@@ -5308,7 +5965,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	virtue = {
 		Name = "virtue",
@@ -5316,7 +5974,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	visione = {
 		Name = "Visione",
@@ -5324,7 +5983,8 @@ local List = {
 		Price = 230000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	voltic = {
 		Name = "Voltic",
@@ -5332,7 +5992,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	voltic2 = {
 		Name = "Voltic 2",
@@ -5340,7 +6001,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	xa21 = {
 		Name = "Xa21",
@@ -5348,7 +6010,8 @@ local List = {
 		Price = 260000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	zentorno = {
 		Name = "Zentorno",
@@ -5356,7 +6019,8 @@ local List = {
 		Price = 230000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	zorrusso = {
 		Name = "Zorrusso",
@@ -5364,7 +6028,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 
 	-- TRAILER
@@ -5374,7 +6039,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	armytrailer = {
 		Name = "Armytrailer",
@@ -5382,7 +6048,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	armytrailer2 = {
 		Name = "Armytrailer 2",
@@ -5390,7 +6057,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	baletrailer = {
 		Name = "Baletrailer",
@@ -5398,7 +6066,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	boattrailer = {
 		Name = "Boattrailer",
@@ -5406,7 +6075,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	cablecar = {
 		Name = "Cablecar",
@@ -5414,7 +6084,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	docktrailer = {
 		Name = "Docktrailer",
@@ -5422,7 +6093,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	freighttrailer = {
 		Name = "Freighttrailer",
@@ -5430,7 +6102,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	graintrailer = {
 		Name = "Graintrailer",
@@ -5438,7 +6111,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	proptrailer = {
 		Name = "Proptrailer",
@@ -5446,7 +6120,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	raketrailer = {
 		Name = "Raketrailer",
@@ -5454,7 +6129,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	tr2 = {
 		Name = "Tr2",
@@ -5462,7 +6138,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	tr3 = {
 		Name = "Tr3",
@@ -5470,7 +6147,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	tr4 = {
 		Name = "Tr4",
@@ -5478,7 +6156,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	trflat = {
 		Name = "Trflat",
@@ -5486,7 +6165,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	tvtrailer = {
 		Name = "Tvtrailer",
@@ -5494,7 +6174,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	tanker = {
 		Name = "Tanker",
@@ -5502,7 +6183,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	tanker2 = {
 		Name = "Tanker 2",
@@ -5510,7 +6192,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	trailerlarge = {
 		Name = "Trailerlarge",
@@ -5518,7 +6201,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	trailerlogs = {
 		Name = "Trailerlogs",
@@ -5526,7 +6210,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	trailers = {
 		Name = "Trailers",
@@ -5534,7 +6219,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	trailers2 = {
 		Name = "Trailers 2",
@@ -5542,7 +6228,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	trailers3 = {
 		Name = "Trailers 3",
@@ -5550,7 +6237,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 	trailers4 = {
 		Name = "Trailers 4",
@@ -5558,7 +6246,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trailers"
+		Class = "Trailers",
+		Performance = "C"
 	},
 
 	-- TRAINS
@@ -5568,7 +6257,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens"
+		Class = "Trens",
+		Performance = "C"
 	},
 	freightcar = {
 		Name = "Freightcar",
@@ -5576,7 +6266,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens"
+		Class = "Trens",
+		Performance = "C"
 	},
 	freightcont1 = {
 		Name = "Freightcont 1",
@@ -5584,7 +6275,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens"
+		Class = "Trens",
+		Performance = "C"
 	},
 	freightcont2 = {
 		Name = "Freightcont 2",
@@ -5592,7 +6284,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens"
+		Class = "Trens",
+		Performance = "C"
 	},
 	freightgrain = {
 		Name = "Freightgrain",
@@ -5600,7 +6293,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens"
+		Class = "Trens",
+		Performance = "C"
 	},
 	metrotrain = {
 		Name = "Metrotrain",
@@ -5608,7 +6302,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens"
+		Class = "Trens",
+		Performance = "C"
 	},
 	tankercar = {
 		Name = "Rankercar",
@@ -5616,7 +6311,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Trens"
+		Class = "Trens",
+		Performance = "C"
 	},
 
 	-- UTILITY
@@ -5626,7 +6322,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	caddy = {
 		Name = "Caddy",
@@ -5634,7 +6331,8 @@ local List = {
 		Price = 30000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	caddy2 = {
 		Name = "Caddy 2",
@@ -5642,7 +6340,8 @@ local List = {
 		Price = 25000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	caddy3 = {
 		Name = "Caddy 3",
@@ -5650,7 +6349,8 @@ local List = {
 		Price = 20000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	docktug = {
 		Name = "Docktug",
@@ -5658,7 +6358,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	forklift = {
 		Name = "Forklift",
@@ -5666,7 +6367,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	mower = {
 		Name = "Mower",
@@ -5674,7 +6376,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	ripley = {
 		Name = "Ripley",
@@ -5682,7 +6385,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	sadler = {
 		Name = "Sadler",
@@ -5690,7 +6394,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	sadler2 = {
 		Name = "Sadler 2",
@@ -5698,7 +6403,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	scrap = {
 		Name = "Scrap",
@@ -5706,7 +6412,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	towtruck = {
 		Name = "Towtruck",
@@ -5714,7 +6421,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	towtruck2 = {
 		Name = "Towtruck 2",
@@ -5722,7 +6430,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	tractor = {
 		Name = "Tractor",
@@ -5730,7 +6439,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	tractor2 = {
 		Name = "Tractor 2",
@@ -5738,7 +6448,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	tractor3 = {
 		Name = "Tractor 3",
@@ -5746,7 +6457,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	utillitruck = {
 		Name = "Utillitruck",
@@ -5754,7 +6466,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	utillitruck2 = {
 		Name = "Utillitruck 2",
@@ -5762,7 +6475,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	utillitruck3 = {
 		Name = "Utillitruck 3",
@@ -5770,7 +6484,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 	slamtruck = {
 		Name = "Slamtruck",
@@ -5778,7 +6493,8 @@ local List = {
 		Price = 10000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Utilitários"
+		Class = "Utilitários",
+		Performance = "C"
 	},
 
 	-- VANS
@@ -5788,7 +6504,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	bison2 = {
 		Name = "Bison 2",
@@ -5796,7 +6513,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	bison3 = {
 		Name = "Bison 3",
@@ -5804,7 +6522,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	bobcatxl = {
 		Name = "Bobcat XL",
@@ -5812,7 +6531,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	boxville = {
 		Name = "Boxville",
@@ -5820,7 +6540,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	boxville2 = {
 		Name = "Boxville",
@@ -5828,7 +6549,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Serviços"
+		Class = "Serviços",
+		Performance = "C"
 	},
 	boxville3 = {
 		Name = "Boxville 3",
@@ -5836,7 +6558,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	boxville4 = {
 		Name = "Boxville",
@@ -5844,7 +6567,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	boxville5 = {
 		Name = "Boxville 5",
@@ -5852,7 +6576,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	burrito = {
 		Name = "Burrito",
@@ -5860,7 +6585,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	burrito2 = {
 		Name = "Burrito 2",
@@ -5868,7 +6594,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	burrito3 = {
 		Name = "Burrito 3",
@@ -5876,7 +6603,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	burrito4 = {
 		Name = "Burrito 4",
@@ -5884,7 +6612,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	burrito5 = {
 		Name = "Burrito 5",
@@ -5892,7 +6621,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	camper = {
 		Name = "Camper",
@@ -5900,7 +6630,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	gburrito = {
 		Name = "Gburrito",
@@ -5908,7 +6639,8 @@ local List = {
 		Price = 100000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	gburrito2 = {
 		Name = "Gburrito 2",
@@ -5916,7 +6648,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	journey = {
 		Name = "Journey",
@@ -5924,7 +6657,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	journey2 = {
 		Name = "journey2",
@@ -5932,7 +6666,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	minivan = {
 		Name = "Minivan",
@@ -5940,7 +6675,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	minivan2 = {
 		Name = "Minivan 2",
@@ -5948,7 +6684,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	paradise = {
 		Name = "Paradise",
@@ -5956,7 +6693,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	pony = {
 		Name = "Pony",
@@ -5964,7 +6702,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	pony2 = {
 		Name = "Pony 2",
@@ -5972,7 +6711,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	rumpo = {
 		Name = "Rumpo",
@@ -5980,7 +6720,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	rumpo2 = {
 		Name = "Rumpo 2",
@@ -5988,7 +6729,8 @@ local List = {
 		Price = 80000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	rumpo3 = {
 		Name = "Rumpo 3",
@@ -5996,7 +6738,8 @@ local List = {
 		Price = 300000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	speedo = {
 		Name = "Speedo",
@@ -6004,7 +6747,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	speedo2 = {
 		Name = "Speedo 2",
@@ -6012,7 +6756,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	speedo4 = {
 		Name = "Speedo 4",
@@ -6020,7 +6765,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	surfer = {
 		Name = "Surfer",
@@ -6028,7 +6774,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	surfer2 = {
 		Name = "Surfer 2",
@@ -6036,7 +6783,8 @@ local List = {
 		Price = 40000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	surfer3 = {
 		Name = "surfer3",
@@ -6044,7 +6792,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	taco = {
 		Name = "Taco",
@@ -6052,7 +6801,8 @@ local List = {
 		Price = 2000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	youga = {
 		Name = "Youga",
@@ -6060,7 +6810,8 @@ local List = {
 		Price = 70000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	youga2 = {
 		Name = "Youga 2",
@@ -6068,7 +6819,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 	youga3 = {
 		Name = "Youga 3",
@@ -6076,7 +6828,8 @@ local List = {
 		Price = 90000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Vans"
+		Class = "Vans",
+		Performance = "C"
 	},
 
 	-- IMPORTS
@@ -6086,7 +6839,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["69charger"] = {
 		Name = "69charger",
@@ -6094,7 +6848,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["488misha"] = {
 		Name = "488misha",
@@ -6102,7 +6857,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["675ltsp"] = {
 		Name = "675ltsp",
@@ -6110,7 +6866,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["a45amg"] = {
 		Name = "a45amg",
@@ -6118,7 +6875,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["a80"] = {
 		Name = "a80",
@@ -6126,7 +6884,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["acs8"] = {
 		Name = "acs8",
@@ -6134,7 +6893,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["audirs6"] = {
 		Name = "audirs6",
@@ -6142,7 +6902,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["bdragon"] = {
 		Name = "bdragon",
@@ -6150,7 +6911,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["bmwr"] = {
 		Name = "bmwr",
@@ -6158,7 +6920,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["bt62r"] = {
 		Name = "bt62r",
@@ -6166,7 +6929,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["chiron17"] = {
 		Name = "chiron17",
@@ -6174,7 +6938,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["cp9a"] = {
 		Name = "cp9a",
@@ -6182,7 +6947,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["dc5"] = {
 		Name = "dc5",
@@ -6190,7 +6956,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["demon"] = {
 		Name = "demon",
@@ -6198,7 +6965,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["e36prb"] = {
 		Name = "e36prb",
@@ -6206,7 +6974,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["evo9"] = {
 		Name = "evo9",
@@ -6214,7 +6983,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["filthynsx"] = {
 		Name = "filthynsx",
@@ -6222,7 +6992,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["fk8"] = {
 		Name = "fk8",
@@ -6230,7 +7001,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["fnfrx7"] = {
 		Name = "fnfrx7",
@@ -6238,7 +7010,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["gt63"] = {
 		Name = "gt63",
@@ -6246,7 +7019,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["gt86"] = {
 		Name = "gt86",
@@ -6254,7 +7028,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["jester5"] = {
 		Name = "jester5",
@@ -6262,7 +7037,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["lancerevolutionx"] = {
 		Name = "lancerevolutionx",
@@ -6270,7 +7046,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["lc500"] = {
 		Name = "lc500",
@@ -6278,7 +7055,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["lp700"] = {
 		Name = "lp700",
@@ -6286,7 +7064,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["m1000rr"] = {
 		Name = "m1000rr",
@@ -6294,7 +7073,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["maj350z"] = {
 		Name = "maj350z",
@@ -6302,7 +7082,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["pgt322"] = {
 		Name = "pgt322",
@@ -6310,7 +7091,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["r1"] = {
 		Name = "r1",
@@ -6318,7 +7100,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["r32"] = {
 		Name = "r32",
@@ -6326,7 +7109,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["r35"] = {
 		Name = "r35",
@@ -6334,7 +7118,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["roxanne"] = {
 		Name = "roxanne",
@@ -6342,7 +7127,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["rr14"] = {
 		Name = "rr14",
@@ -6350,7 +7136,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["s1000rr"] = {
 		Name = "s1000rr",
@@ -6358,7 +7145,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["senna"] = {
 		Name = "senna",
@@ -6366,7 +7154,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["silvias15"] = {
 		Name = "silvias15",
@@ -6374,7 +7163,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["skyliner34"] = {
 		Name = "skyliner34",
@@ -6382,7 +7172,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["subaruimpreza"] = {
 		Name = "subaruimpreza",
@@ -6390,7 +7181,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["sunrise"] = {
 		Name = "sunrise",
@@ -6398,7 +7190,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["teslamodels"] = {
 		Name = "teslamodels",
@@ -6406,7 +7199,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["tsgr20"] = {
 		Name = "tsgr20",
@@ -6414,7 +7208,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["zx10"] = {
 		Name = "zx10",
@@ -6422,7 +7217,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 	["cb500x"] = {
 		Name = "cb500x",
@@ -6430,7 +7226,8 @@ local List = {
 		Price = 200000,
 		Mode = "Rental",
 		Gemstone = 6000,
-		Class = "Importados"
+		Class = "Importados",
+		Performance = "S+"
 	},
 
 	-- PARAMEDIC
@@ -6440,7 +7237,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["maverick2"] = {
 		Name = "maverick2",
@@ -6448,7 +7246,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 
 	-- POLICE
@@ -6458,7 +7257,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["elegy2pol"] = {
 		Name = "elegy2pol",
@@ -6466,7 +7266,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["fugitivepol"] = {
 		Name = "fugitivepol",
@@ -6474,7 +7275,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["komodapol"] = {
 		Name = "komodapol",
@@ -6482,7 +7284,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["kurumapol"] = {
 		Name = "kurumapol",
@@ -6490,7 +7293,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["nc700pol"] = {
 		Name = "nc700pol",
@@ -6498,7 +7302,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["oracle2pol"] = {
 		Name = "oracle2pol",
@@ -6506,7 +7311,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["polas350"] = {
 		Name = "polas350",
@@ -6514,7 +7320,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["polchall"] = {
 		Name = "polchall",
@@ -6522,7 +7329,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["polchar"] = {
 		Name = "polchar",
@@ -6530,7 +7338,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["police3pol"] = {
 		Name = "police3pol",
@@ -6538,7 +7347,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["policepol"] = {
 		Name = "policepol",
@@ -6546,7 +7356,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["policetpol"] = {
 		Name = "policetpol",
@@ -6554,7 +7365,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["poltang"] = {
 		Name = "poltang",
@@ -6562,7 +7374,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["polvic"] = {
 		Name = "polvic",
@@ -6570,7 +7383,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["r1250pol"] = {
 		Name = "r1250pol",
@@ -6578,7 +7392,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["schafter2pol"] = {
 		Name = "schafter2pol",
@@ -6586,7 +7401,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["silveradopol"] = {
 		Name = "silveradopol",
@@ -6594,7 +7410,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["sultanrspol"] = {
 		Name = "sultanrspol",
@@ -6602,7 +7419,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["tahoepol"] = {
 		Name = "tahoepol",
@@ -6610,7 +7428,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["tailgater2pol"] = {
 		Name = "tailgater2pol",
@@ -6618,7 +7437,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 	["tauruspol"] = {
 		Name = "tauruspol",
@@ -6626,7 +7446,8 @@ local List = {
 		Price = 1000,
 		Mode = "Work",
 		Gemstone = 0,
-		Class = "Emergência"
+		Class = "Emergência",
+		Performance = "A"
 	},
 
 	-- RACES
@@ -6637,6 +7458,7 @@ local List = {
 		Mode = nil,
 		Gemstone = 6000,
 		Class = "Races",
+		Performance = "S+",
 		Stock = 10
 	},
 
@@ -6647,7 +7469,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	boor = {
 		Name = "boor",
@@ -6655,7 +7478,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	patriot3 = {
 		Name = "Patriot 3",
@@ -6663,7 +7487,8 @@ local List = {
 		Price = 320000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	omnisegt = {
 		Name = "Omni SE GT",
@@ -6671,7 +7496,8 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	tenf2 = {
 		Name = "Tenf 2",
@@ -6679,7 +7505,8 @@ local List = {
 		Price = 190000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	sm722 = {
 		Name = "Mm722",
@@ -6687,7 +7514,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	brioso3 = {
 		Name = "Brioso 3",
@@ -6695,7 +7523,8 @@ local List = {
 		Price = 50000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	lm87 = {
 		Name = "Lm87",
@@ -6703,7 +7532,8 @@ local List = {
 		Price = 170000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	iwagen = {
 		Name = "Iwagen",
@@ -6711,7 +7541,8 @@ local List = {
 		Price = 260000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	jubilee = {
 		Name = "Jubilee",
@@ -6719,7 +7550,8 @@ local List = {
 		Price = 150000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	reever = {
 		Name = "Reever",
@@ -6727,7 +7559,8 @@ local List = {
 		Price = 170000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	shinobi = {
 		Name = "Shinobi",
@@ -6735,7 +7568,8 @@ local List = {
 		Price = 180000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	granger2 = {
 		Name = "Granger 2",
@@ -6743,7 +7577,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	buffalo4 = {
 		Name = "Buffalo 4",
@@ -6751,7 +7586,8 @@ local List = {
 		Price = 250000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	vigero2 = {
 		Name = "Vigero 2",
@@ -6759,7 +7595,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	sentinel4 = {
 		Name = "Sentinel 4",
@@ -6767,7 +7604,8 @@ local List = {
 		Price = 140000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	ignus = {
 		Name = "Ignus",
@@ -6775,7 +7613,8 @@ local List = {
 		Price = 250000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	youga4 = {
 		Name = "Youga 4",
@@ -6783,7 +7622,8 @@ local List = {
 		Price = 90000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	zeno = {
 		Name = "Zeno",
@@ -6791,7 +7631,8 @@ local List = {
 		Price = 250000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	deity = {
 		Name = "Deity",
@@ -6799,7 +7640,8 @@ local List = {
 		Price = 300000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	kanjosj = {
 		Name = "Kanjo SJ",
@@ -6807,7 +7649,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	greenwood = {
 		Name = "Greenwood",
@@ -6815,7 +7658,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	corsita = {
 		Name = "Corsita",
@@ -6823,7 +7667,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	},
 	cinquemila = {
 		Name = "Cinquemila",
@@ -6831,7 +7676,8 @@ local List = {
 		Price = 200000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	rhinehart = {
 		Name = "Rhinehart",
@@ -6839,7 +7685,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "SUVs"
+		Class = "SUVs",
+		Performance = "B"
 	},
 	tenf = {
 		Name = "Tenf",
@@ -6847,7 +7694,8 @@ local List = {
 		Price = 180000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	postlude = {
 		Name = "Postlude",
@@ -6855,7 +7703,8 @@ local List = {
 		Price = 60000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Esportivos"
+		Class = "Esportivos",
+		Performance = "S"
 	},
 	mule5 = {
 		Name = "Mule 5",
@@ -6863,7 +7712,8 @@ local List = {
 		Price = 1000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	baller7 = {
 		Name = "Baller 7",
@@ -6871,7 +7721,8 @@ local List = {
 		Price = 480000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	conada = {
 		Name = "Conada",
@@ -6879,7 +7730,8 @@ local List = {
 		Price = 100,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	champion = {
 		Name = "Champion",
@@ -6887,7 +7739,8 @@ local List = {
 		Price = 220000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	draugur = {
 		Name = "Draugur",
@@ -6895,7 +7748,8 @@ local List = {
 		Price = 320000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Off-Roads"
+		Class = "Off-Roads",
+		Performance = "B"
 	},
 	astron = {
 		Name = "Astron",
@@ -6903,7 +7757,8 @@ local List = {
 		Price = 220000,
 		Mode = nil,
 		Gemstone = 0,
-		Class = "Embarcações"
+		Class = "Embarcações",
+		Performance = "C"
 	},
 	ruiner4 = {
 		Name = "Ruiner4",
@@ -6911,7 +7766,8 @@ local List = {
 		Price = 110000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Muscles"
+		Class = "Muscles",
+		Performance = "A"
 	},
 	weevil2 = {
 		Name = "Weevil 2",
@@ -6919,7 +7775,8 @@ local List = {
 		Price = 120000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Compactos"
+		Class = "Compactos",
+		Performance = "C"
 	},
 	torero2 = {
 		Name = "Torero 2",
@@ -6927,7 +7784,8 @@ local List = {
 		Price = 200000,
 		Mode = "Cars",
 		Gemstone = 0,
-		Class = "Clássicos"
+		Class = "Clássicos",
+		Performance = "A"
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -6983,6 +7841,12 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 exports("VehicleStock",function(Name)
 	return List[Name] and List[Name].Stock or 999999
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VEHICLEPERFORMANCE
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("VehiclePerformance",function(Name)
+	return List[Name] and List[Name].Performance or false
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES

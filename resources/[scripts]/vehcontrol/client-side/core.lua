@@ -8,6 +8,7 @@ local DelayCast = 1000
 -----------------------------------------------------------------------------------------------------------------------------------------
 local LxSirenSend = {}
 local LxSirenState = {}
+local LxSirenSound = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARAIR
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -22,37 +23,83 @@ function TogMuteDfltSrnForVeh(Vehicle,Toggle)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SIRENSETFORVEH
+-----------------------------------------------------------------------------------------------------------------------------------------
+local DefaultSirens = { "VEHICLES_HORNS_SIREN_1","VEHICLES_HORNS_SIREN_2","VEHICLES_HORNS_POLICE_WARNING" }
+
+function SirenSetForVeh(Vehicle)
+	if GetResourceState("interceptor") == "started" then
+		local Lock = exports.interceptor:SirenSet(Vehicle)
+		if Lock then
+			return { Lock, Lock, Lock }
+		end
+	end
+
+	return DefaultSirens
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- SETLXSIRENSTATEFORVEH
 -----------------------------------------------------------------------------------------------------------------------------------------
 function SetLxSirenStateForVeh(Vehicle,State)
 	if DoesEntityExist(Vehicle) and not IsEntityDead(Vehicle) then
 		if State ~= LxSirenState[Vehicle] then
+			local Sirens = SirenSetForVeh(Vehicle)
+			local NewSound = (State >= 1 and State <= 3) and Sirens[State] or nil
+
+			if NewSound and LxSirenSend[Vehicle] and LxSirenSound[Vehicle] == NewSound then
+				LxSirenState[Vehicle] = State
+
+				return
+			end
+
 			if LxSirenSend[Vehicle] then
 				StopSound(LxSirenSend[Vehicle])
 				ReleaseSoundId(LxSirenSend[Vehicle])
 				LxSirenSend[Vehicle] = nil
+				LxSirenSound[Vehicle] = nil
 			end
 
-			if State == 1 then
-				LxSirenSend[Vehicle] = GetSoundId()	
-				PlaySoundFromEntity(LxSirenSend[Vehicle],"VEHICLES_HORNS_SIREN_1",Vehicle,0,0,0)
-				TogMuteDfltSrnForVeh(Vehicle,true)
-			elseif State == 2 then
+			if NewSound then
 				LxSirenSend[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(LxSirenSend[Vehicle],"VEHICLES_HORNS_SIREN_2",Vehicle,0,0,0)
-				TogMuteDfltSrnForVeh(Vehicle,true)
-			elseif State == 3 then
-				LxSirenSend[Vehicle] = GetSoundId()
-				PlaySoundFromEntity(LxSirenSend[Vehicle],"VEHICLES_HORNS_POLICE_WARNING",Vehicle,0,0,0)
-				TogMuteDfltSrnForVeh(Vehicle,true)
-			else
-				TogMuteDfltSrnForVeh(Vehicle,true)
+				PlaySoundFromEntity(LxSirenSend[Vehicle],NewSound,Vehicle,0,0,0)
+				LxSirenSound[Vehicle] = NewSound
 			end
+
+			TogMuteDfltSrnForVeh(Vehicle,true)
 
 			LxSirenState[Vehicle] = State
 		end
 	end
 end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REFRESHSIREN
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("RefreshSiren",function(Vehicle)
+	if not DoesEntityExist(Vehicle) then
+		return
+	end
+
+	local State = LxSirenState[Vehicle]
+	if not State or State < 1 or State > 3 then
+		return
+	end
+
+	local Sirens = SirenSetForVeh(Vehicle)
+	local NewSound = Sirens[State]
+
+	if NewSound and LxSirenSound[Vehicle] ~= NewSound then
+		if LxSirenSend[Vehicle] then
+			StopSound(LxSirenSend[Vehicle])
+			ReleaseSoundId(LxSirenSend[Vehicle])
+			LxSirenSend[Vehicle] = nil
+		end
+
+		LxSirenSend[Vehicle] = GetSoundId()
+		PlaySoundFromEntity(LxSirenSend[Vehicle],NewSound,Vehicle,0,0,0)
+		LxSirenSound[Vehicle] = NewSound
+		TogMuteDfltSrnForVeh(Vehicle,true)
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SETAIRMANUSTATEFORVEH
 -----------------------------------------------------------------------------------------------------------------------------------------

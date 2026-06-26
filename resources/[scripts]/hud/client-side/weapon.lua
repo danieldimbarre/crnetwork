@@ -13,8 +13,9 @@ AddEventHandler("hud:Weapon",function(Status,Name)
 
 		while Active do
 			local Ped = PlayerPedId()
-			local _,Min = GetAmmoInClip(Ped,Name)
-			local Max = GetAmmoInPedWeapon(Ped,Name)
+			local Hash = exports.vrp:ItemIndex(Name) or Name
+			local _,Min = GetAmmoInClip(Ped,Hash)
+			local Max = GetAmmoInPedWeapon(Ped,Hash)
 
 			if AmmoMax ~= Max or AmmoMin ~= Min then
 				AmmoMax = Max

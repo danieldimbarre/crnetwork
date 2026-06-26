@@ -317,7 +317,8 @@ CreateThread(function()
 
 			local Ped = PlayerPedId()
 			local CurrentTimer = GetGameTimer()
-			local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+			local Hash = exports.vrp:ItemIndex(Weapon) or Weapon
+			local Ammo = GetAmmoInPedWeapon(Ped,Hash)
 
 			if IsPedReloading(Ped) and CurrentTimer >= Reload then
 				vSERVER.PreventWeapons(Weapon,Ammo)
@@ -366,7 +367,8 @@ AddEventHandler("inventory:verifyWeapon",function(Item)
 
 		local UsingWeapong = (Weapon == Name)
 		local TargetWeapon = UsingWeapong and Weapon or Name
-		local Ammo = GetAmmoInPedWeapon(Ped,TargetWeapon)
+		local Hash = exports.vrp:ItemIndex(TargetWeapon) or TargetWeapon
+		local Ammo = GetAmmoInPedWeapon(Ped,Hash)
 
 		if UsingWeapong then
 			if not vSERVER.VerifyWeapon(Weapon,Ammo) then
@@ -393,7 +395,8 @@ AddEventHandler("inventory:CleanWeapons",function(Ignore)
 	local Parachute = HasPedGotWeapon(Ped,-72657034,false)
 
 	if not Ignore then
-		local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+		local Hash = exports.vrp:ItemIndex(Weapon) or Weapon
+		local Ammo = GetAmmoInPedWeapon(Ped,Hash)
 		if vSERVER.PreventWeapons(Weapon,Ammo) then
 			TriggerEvent("inventory:CreateWeapon",Weapon)
 		end
@@ -428,7 +431,8 @@ end
 -- GIVECOMPONENT
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.GiveComponent(Component)
-	GiveWeaponComponentToPed(PlayerPedId(),Weapon,Component)
+	local Hash = exports.vrp:ItemIndex(Weapon) or Weapon
+	GiveWeaponComponentToPed(PlayerPedId(),Hash,Component)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TAKEWEAPON
@@ -476,7 +480,8 @@ function Creative.TakeWeapon(Name,Ammo,Components,Type,Skin)
 		ClearPedTasks(Ped)
 
 		SetTimeout(2500,function()
-			if Weapon ~= "" and GetSelectedPedWeapon(Ped) ~= GetHashKey(Weapon) then
+			local Hash = exports.vrp:ItemIndex(Weapon) or Weapon
+			if Weapon ~= "" and GetSelectedPedWeapon(Ped) ~= GetHashKey(Hash) then
 				TriggerEvent("inventory:CleanWeapons")
 			end
 		end)
@@ -513,7 +518,8 @@ function Creative.StoreWeapon()
 
 	local Lasted = Weapon
 	local Ped = PlayerPedId()
-	local Ammo = GetAmmoInPedWeapon(Ped,Weapon)
+	local Hash = exports.vrp:ItemIndex(Weapon) or Weapon
+	local Ammo = GetAmmoInPedWeapon(Ped,Hash)
 
 	LocalPlayer.state:set("Cancel",true,true)
 
@@ -536,7 +542,8 @@ function Creative.InfoWeapon(Type)
 	local Ammo = 0
 
 	if Weapon ~= "" then
-		Ammo = GetAmmoInPedWeapon(PlayerPedId(),Weapon)
+		local Hash = exports.vrp:ItemIndex(Weapon) or Weapon
+		Ammo = GetAmmoInPedWeapon(PlayerPedId(),Hash)
 	end
 
 	return Weapon,Ammo
@@ -545,7 +552,8 @@ end
 -- RELOADING
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Creative.Reloading(Hash,Ammo)
-	AddAmmoToPed(PlayerPedId(),Hash,Ammo)
+	local RealHash = exports.vrp:ItemIndex(Hash) or Hash
+	AddAmmoToPed(PlayerPedId(),RealHash,Ammo)
 	Actived = true
 end
 -----------------------------------------------------------------------------------------------------------------------------------------

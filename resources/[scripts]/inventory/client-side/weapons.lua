@@ -256,11 +256,11 @@ local Config = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:RemoveWeapon")
 AddEventHandler("inventory:RemoveWeapon",function(Name)
-	local Name = SplitOne(Name)
+    local WeaponName = exports.vrp:ItemIndex(SplitOne(Name)) or SplitOne(Name)
 
-	if Objects[Name] then
-		TriggerServerEvent("DeleteObject",0,Name)
-		Objects[Name] = nil
+	if Objects[WeaponName] then
+		TriggerServerEvent("DeleteObject",0,WeaponName)
+		Objects[WeaponName] = nil
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

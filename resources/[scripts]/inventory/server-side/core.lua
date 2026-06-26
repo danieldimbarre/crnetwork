@@ -632,12 +632,14 @@ function Creative.Use(Slot,Amount)
 					AmmoClip = Users.Ammos[Passport][Ammunation]
 				end
 
-				if Users.Skins[Passport] and Users.Skins[Passport][Item] then
-					Skin = Users.Skins[Passport][Item]
+				local Hash = exports.vrp:ItemIndex(Item) or Item
+
+				if Users.Skins[Passport] and Users.Skins[Passport][Hash] then
+					Skin = Users.Skins[Passport][Hash]
 				end
 
-				if Users.Attachs[Passport] and Users.Attachs[Passport][Item] then
-					Attach = Users.Attachs[Passport][Item]
+				if Users.Attachs[Passport] and Users.Attachs[Passport][Hash] then
+					Attach = Users.Attachs[Passport][Hash]
 				end
 
 				if vCLIENT.TakeWeapon(source,Item,AmmoClip,Attach,false,Skin) then
@@ -698,20 +700,21 @@ function Creative.Use(Slot,Amount)
 				end
 			end
 		elseif exports.vrp:ItemTypeCheck(Full,"Attachs") then
-			local Weapon = vCLIENT.ReturnWeapon(source)
-			if Weapon then
-				local Component = exports.vrp:WeaponAttach(Item,Weapon)
+			local CustomWeapon = vCLIENT.ReturnWeapon(source)
+			if CustomWeapon then
+				local Hash = exports.vrp:ItemIndex(CustomWeapon) or CustomWeapon
+				local Component = exports.vrp:WeaponAttach(Item,Hash)
 				if Component then
 					if not Users.Attachs[Passport] then
 						Users.Attachs[Passport] = {}
 					end
 
-					if not Users.Attachs[Passport][Weapon] then
-						Users.Attachs[Passport][Weapon] = {}
+					if not Users.Attachs[Passport][Hash] then
+						Users.Attachs[Passport][Hash] = {}
 					end
 
 					local Check = false
-					for Name in pairs(Users.Attachs[Passport][Weapon]) do
+					for Name in pairs(Users.Attachs[Passport][Hash]) do
 						if SplitOne(Name) == Item then
 							Check = true
 						end
@@ -721,7 +724,7 @@ function Creative.Use(Slot,Amount)
 						if vRP.TakeItem(Passport,Full,1,false,Slot) then
 							TriggerClientEvent("inventory:NotifyItem",source,{ Index = Full, Amount = 1 })
 							TriggerClientEvent("inventory:Update",source)
-							Users.Attachs[Passport][Weapon][Full] = true
+							Users.Attachs[Passport][Hash][Full] = true
 							vCLIENT.GiveComponent(source,Component)
 						end
 					else
@@ -808,12 +811,13 @@ function Creative.VerifyWeapon(Item,Ammo)
 			end
 		end
 
-		if Users["Attachs"][Passport] and Users["Attachs"][Passport][Item] then
-			for Component,_ in pairs(Users["Attachs"][Passport][Item]) do
+		local Hash = exports.vrp:ItemIndex(Item) or Item
+		if Users["Attachs"][Passport] and Users["Attachs"][Passport][Hash] then
+			for Component,_ in pairs(Users["Attachs"][Passport][Hash]) do
 				vRP.GenerateItem(Passport,Component,1)
 			end
 
-			Users["Attachs"][Passport][Item] = nil
+			Users["Attachs"][Passport][Hash] = nil
 		end
 
 		TriggerClientEvent("inventory:RemoveWeapon",source,Item)

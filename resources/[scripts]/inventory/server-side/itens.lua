@@ -996,7 +996,11 @@ Use = {
 
 		if not PlayerState.Handcuff then
 			local Vehicle,Network,Plate,Model,Class = vRPC.VehicleList(source)
-			if not Vehicle or Model == "stockade" or Class == 15 or Class == 16 or Class == 19 then
+			if not Vehicle or Model == "stockade" or Class == 16 or Class == 19 then
+				return false
+			end
+
+			if Class == 15 and not vRP.PassportPlate(Plate) then
 				return false
 			end
 
@@ -1111,7 +1115,11 @@ Use = {
 
 		if not PlayerState.Handcuff then
 			local Vehicle,Network,Plate,Model,Class = vRPC.VehicleList(source)
-			if not Vehicle or Model == "stockade" or Class == 15 or Class == 16 or Class == 19 then
+			if not Vehicle or Model == "stockade" or Class == 16 or Class == 19 then
+				return false
+			end
+
+			if Class == 15 and not vRP.PassportPlate(Plate) then
 				return false
 			end
 

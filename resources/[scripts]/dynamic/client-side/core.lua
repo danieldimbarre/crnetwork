@@ -205,6 +205,24 @@ RegisterCommand("EmergencyFunctions",function()
 			exports.dynamic:AddButton("10-38","Abordagem de trânsito.","dynamic:Tencode","38","tencode",true)
 			exports.dynamic:AddButton("10-78","Apoio com prioridade.","dynamic:Tencode","78","tencode",true)
 
+			local Classes = exports.interceptor:ClassesForVehicle()
+			if Classes then
+				local Current = exports.interceptor:CurrentClass()
+
+				exports.dynamic:AddMenu("Classe","Definir a classe de desempenho da viatura.","vehclass")
+				exports.dynamic:AddButton("Automático","Detectar a classe pelo desempenho.","interceptor:SetClass","Auto","vehclass",false)
+
+				for Index = 1,#Classes do
+					local Key = Classes[Index]
+
+					if Current == Key then
+						exports.dynamic:AddButton("Classe "..Key,"Classe atualmente aplicada.","","","vehclass",false)
+					else
+						exports.dynamic:AddButton("Classe "..Key,"Aplicar a classe "..Key..".","interceptor:SetClass",Key,"vehclass",false)
+					end
+				end
+			end
+
 			if Health > 100 and not IsPedInAnyVehicle(Ped) then
 				exports.dynamic:AddMenu("Jogador","Pessoa mais próxima de você.","player")
 				exports.dynamic:AddButton("Carregar","Carregar a pessoa mais próxima.","inventory:Carry","","player",true)

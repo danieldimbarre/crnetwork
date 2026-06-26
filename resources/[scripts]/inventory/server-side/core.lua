@@ -998,7 +998,16 @@ RegisterServerEvent("inventory:ChangePlate")
 AddEventHandler("inventory:ChangePlate",function(Entitys)
 	local source = source
 	local Plate = Entitys[1]
+	local Model = Entitys[5]
 	local Passport = vRP.Passport(source)
+
+	if Model then
+		local Class = GetVehicleClassFromName(Model)
+		if Class == 15 or Class == 16 or Class == 19 then
+			return false
+		end
+	end
+
 	if Passport and not Active[Passport] and not Plates[Plate] then
 		if not vRP.ConsultItem(Passport,"plate",1) then
 			TriggerClientEvent("Notify",source,"Atenção","Precisa de <b>1x "..exports.vrp:ItemName("plate").."</b>.","amarelo",5000)

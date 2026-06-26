@@ -611,7 +611,10 @@ function TargetEnable()
 										table.insert(Menu,{ event = "trunkchest:openTrunk", label = "Abrir Porta-Malas", tunnel = "server" })
 									end
 
-									table.insert(Menu,{ event = "inventory:ChangePlate", label = "Trocar Placa", tunnel = "server" })
+									local Class = GetVehicleClass(Entitys)
+									if Class ~= 15 and Class ~= 16 and Class ~= 19 then
+										table.insert(Menu,{ event = "inventory:ChangePlate", label = "Trocar Placa", tunnel = "server" })
+									end
 
 									if Lockpick == LocalPlayer.state.Passport then
 										table.insert(Menu,{ event = "garages:Key", label = "Chave Veícular", tunnel = "server" })

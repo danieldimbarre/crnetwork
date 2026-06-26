@@ -268,7 +268,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent("inventory:CreateWeapon")
 AddEventHandler("inventory:CreateWeapon",function(Name)
-	local WeaponName = SplitOne(Name)
+	local WeaponName = exports.vrp:ItemIndex(SplitOne(Name)) or SplitOne(Name)
 	if not Config[WeaponName] or Objects[WeaponName] then
 		return false
 	end

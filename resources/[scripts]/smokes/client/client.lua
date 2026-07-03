@@ -1,4 +1,3 @@
-local ActiveSmokes = {}
 local SmokeTracking = {}
 
 local function ensurePtfxDict(dict)
@@ -36,31 +35,32 @@ RegisterNetEvent('client:startSmoke', function(x, y, z, time, smokeId)
 
     UseParticleFxAssetNextCall("core")
     
-    local centerFx = StartParticleFxLoopedAtCoord(
-        "exp_grd_grenade_smoke",
-        coords.x, coords.y, coords.z + 0.0,
-        0.0, 0.0, 0.0,
-        1.8,  
-        false, false, false, false
-    )
-
-    if centerFx ~= -1 then
-        table.insert(fxHandles, centerFx)
-    end
-
-    for i = 1, 12 do
-        local angle = (i / 12) * (2.0 * math.pi)
-        local offsetX = math.cos(angle) * 0.0
-        local offsetY = math.sin(angle) * 0.0
-
+    for _ = 1, 8 do
         UseParticleFxAssetNextCall("core")
         local fx = StartParticleFxLoopedAtCoord(
             "exp_grd_grenade_smoke",
-            coords.x + offsetX,
-            coords.y + offsetY,
+            coords.x,
+            coords.y,
             coords.z + 0.0,
             0.0, 0.0, 0.0,
-            1.5, 
+            0.7,
+            false, false, false, false
+        )
+
+        if fx ~= -1 then
+            table.insert(fxHandles, fx)
+        end
+    end
+
+    for i = 1, 6 do
+        UseParticleFxAssetNextCall("core")
+        local fx = StartParticleFxLoopedAtCoord(
+            "exp_grd_grenade_smoke",
+            coords.x,
+            coords.y,
+            coords.z + (0.0 + i * 0.3),
+            0.0, 0.0, 0.0,
+            0.7, 
             false, false, false, false
         )
 

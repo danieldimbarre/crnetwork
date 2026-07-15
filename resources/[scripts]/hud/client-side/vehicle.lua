@@ -16,6 +16,7 @@ local ActualVehicle = nil
 -----------------------------------------------------------------------------------------------------------------------------------------
 local NitroFuel = 0
 local NitroActive = false
+local NitroFinalBoost = (30 / 3.6)
 local NitroButton = GetNetworkTime()
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SEATBELT
@@ -23,6 +24,12 @@ local NitroButton = GetNetworkTime()
 local SeatbeltSpeed = 0
 local SeatbeltLock = false
 local SeatbeltVelocity = vec3(0,0,0)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VEHICLE SPEED LIMIT
+-----------------------------------------------------------------------------------------------------------------------------------------
+local FLAT_VEL_TO_MS = (1.2 / 0.9) / 3.6
+local CachedVeh = 0
+local CachedMaxSpeed = 0
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TYRES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -110,7 +117,12 @@ CreateThread(function()
 					end
 
 					if not IsPedOnAnyBike(Ped) and not IsPedInAnyHeli(Ped) and not IsPedInAnyBoat(Ped) and not IsPedInAnyPlane(Ped) then
-						if not LocalPlayer["state"]["Races"] and VSpeed ~= LastSpeed then
+                        if CachedMaxSpeed == 0 or CachedVeh ~= Vehicle then
+                            CachedVeh = Vehicle
+                            CachedMaxSpeed = GetVehicleHandlingFloat(Vehicle, "CHandlingData", "fInitialDriveMaxFlatVel") * FLAT_VEL_TO_MS
+                        end
+                
+                        if not LocalPlayer["state"]["Races"] and VSpeed ~= LastSpeed then
 							if (LastSpeed - VSpeed) >= (Entity(Vehicle)["state"]["Seatbelt"] and 125 or 100) then
 								VehicleTyreBurst(Vehicle)
 							end
@@ -119,9 +131,13 @@ CreateThread(function()
 						end
 
 						local Roll = GetEntityRoll(Vehicle)
-						if (Roll > 75.0 or Roll < -75.0) and math.random(100) <= 50 then
-							VehicleTyreBurst(Vehicle)
-						end
+                        if (Roll > 75.0 or Roll < -75.0) and math.random(100) <= 50 then
+                            VehicleTyreBurst(Vehicle)
+                        end
+
+                        if CachedMaxSpeed then
+                            SetEntityMaxSpeed(Vehicle, CachedMaxSpeed)
+                        end
 					end
 
 					if next(Spike) then
@@ -283,9 +299,14 @@ function NitroEnable()
 	LocalPlayer.state:set("Nitro",true,false)
 	VehicleState:set("NitroFlame",true,true)
 
-	SetVehicleRocketBoostActive(Vehicle,true)
-	ModifyVehicleTopSpeed(Vehicle,100.0)
-	SetVehicleBoostActive(Vehicle,true)
+    if CachedMaxSpeed > 0 then
+        CachedMaxSpeed = CachedMaxSpeed + NitroFinalBoost
+        SetEntityMaxSpeed(Vehicle, CachedMaxSpeed)
+    end
+
+    ModifyVehicleTopSpeed(Vehicle, 100.0)
+    SetVehicleRocketBoostActive(Vehicle, true)
+	SetVehicleBoostActive(Vehicle, true)
 
 	CreateThread(function()
 		while NitroActive and DoesEntityExist(Vehicle) do
@@ -299,7 +320,12 @@ function NitroEnable()
 				LocalPlayer.state:set("Nitro",false,false)
 				VehicleState:set("NitroFlame",false,true)
 				VehicleState:set("Nitro",0,true)
-				NitroActive = false
+                NitroActive = false
+
+                if CachedMaxSpeed > 0 then
+                    CachedMaxSpeed = CachedMaxSpeed - NitroFinalBoost
+                    SetEntityMaxSpeed(Vehicle, CachedMaxSpeed)
+                end
 
 				SetVehicleRocketBoostActive(Vehicle,false)
 				SetVehicleBoostActive(Vehicle,false)
@@ -319,12 +345,17 @@ function NitroDisable()
 	end
 
 	NitroActive = false
-	LocalPlayer.state:set("Nitro",false,false)
+    LocalPlayer.state:set("Nitro", false, false)
 
 	local Vehicle = GetLastDrivenVehicle()
 	if DoesEntityExist(Vehicle) then
 		Entity(Vehicle).state:set("Nitro",NitroFuel,true)
-		Entity(Vehicle).state:set("NitroFlame",false,true)
+        Entity(Vehicle).state:set("NitroFlame", false, true)
+
+		if CachedMaxSpeed > 0 then
+            CachedMaxSpeed = CachedMaxSpeed - NitroFinalBoost
+            SetEntityMaxSpeed(Vehicle, CachedMaxSpeed)
+        end
 
 		SetVehicleRocketBoostActive(Vehicle,false)
 		SetVehicleBoostActive(Vehicle,false)
